@@ -2798,6 +2798,7 @@
     });
 
   function updateIslandClustering(currentK) {
+    var isMobile = window.innerWidth <= 768;
     var kVal = currentK !== undefined ? currentK : ((svg.node() && d3.zoomTransform(svg.node()).k) || 1);
     var isZoomedInPacific = (kVal >= 3.0) || isEastOceaniaZoomed();
     var isZoomedInCaribe = (kVal >= 3.0) || isCaribeZoomed();
@@ -2806,6 +2807,25 @@
       mapEl.classList.toggle('pacific-zoomed', isZoomedInPacific);
       mapEl.classList.toggle('caribe-zoomed', isZoomedInCaribe);
     }
+
+    if (!isMobile) {
+      // No desktop: desativa completamente clusters e restaura marcadores de ilha como era antes
+      if (islandClusterSel) {
+        islandClusterSel
+          .style('display', 'none')
+          .style('opacity', 0);
+      }
+      if (islandMarkerSel) {
+        islandMarkerSel.each(function () {
+          d3.select(this)
+            .classed('is-clustered', false)
+            .style('display', '');
+        });
+      }
+      return;
+    }
+
+    // No mobile: mantém agrupamento inteligente para toque confortável
     if (islandClusterSel) {
       islandClusterSel.each(function (d) {
         var isZoomed = d.c === 'central' ? isZoomedInCaribe : isZoomedInPacific;
@@ -4075,8 +4095,15 @@
     }
   }
 
+  function getCountryOutletsCount(c, cont) {
+    if (!c) return 0;
+    var cMed = countryMedia(c, cont);
+    return (cMed && Array.isArray(cMed.outlets)) ? cMed.outlets.length : 0;
+  }
+
   function updateMobileChipVisibility() {
-    if (!mobileChip || !state.country || window.innerWidth > 768) {
+    var outletsCount = getCountryOutletsCount(state.country, state.cont);
+    if (!mobileChip || !state.country || window.innerWidth > 768 || outletsCount <= 1) {
       if (mobileChip) {
         mobileChip.style.opacity = '0';
         mobileChip.style.pointerEvents = 'none';
@@ -4102,8 +4129,11 @@
     }
 
     if (state.panelCollapsed) {
-      // Quando a aba/painel estiver recolhida, não dá para ver a aba, então o botão aparece para permitir abrir
-      shouldShow = true;
+      // Só exibe o botão flutuante enquanto o usuário ainda está na área do mapa (some ao rolar para baixo)
+      var scrollYChip = window.scrollY || window.pageYOffset || 0;
+      var mapRectChip = mapEl ? mapEl.getBoundingClientRect() : null;
+      var mapVisibleChip = !mapRectChip || mapRectChip.bottom > winHChip * 0.45;
+      shouldShow = mapVisibleChip && scrollYChip <= 120;
     } else if (panel && panel.classList.contains('open')) {
       var rect = panel.getBoundingClientRect();
       var winH = window.innerHeight || document.documentElement.clientHeight || 0;
@@ -4149,6 +4179,11 @@
 
   function showMobileChip(c, cont) {
     if (!mobileChip || !c) return;
+    var outletsCount = getCountryOutletsCount(c, cont);
+    if (outletsCount <= 1) {
+      hideMobileChip();
+      return;
+    }
     if (mobileChipFlag) mobileChipFlag.innerHTML = countryFlag(c, 'flag-sm', cont);
     if (mobileChipName) mobileChipName.textContent = countryDisplayName(c, cont);
     var langStr = countryDominantLangs(c, cont);
@@ -4165,6 +4200,11 @@
     mobileChip.addEventListener('click', function (e) {
       e.preventDefault();
       e.stopPropagation();
+      var outletsCount = getCountryOutletsCount(state.country, state.cont);
+      if (outletsCount <= 1) {
+        hideMobileChip();
+        return;
+      }
       if (state.panelCollapsed) {
         setPanelCollapsed(false);
       }
@@ -4204,6 +4244,7 @@
 
   window.addEventListener('resize', function () {
     scheduleFloatingControlsUpdate();
+    updateIslandClustering();
   }, { passive: true });
 
   // Toque em área vazia (oceano / fundo) limpa a seleção
@@ -4336,7 +4377,6 @@
       '</button>';
     } else if (state.cont || state.country) {
       h += '<button type="button" class="panel-collapse-btn" data-go="world" title="Voltar para a visão geral do mapa-múndi" aria-label="Voltar ao mapa-múndi">' +
-        '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>' +
         '<span>← Voltar ao Mapa</span>' +
       '</button>';
     }
@@ -4636,6 +4676,7 @@
     renderBias();
     renderOutlets();
     renderTopicSearchResults();
+    updateFloatingControlsVisibility();
   }
 
   function refreshQuickSuggestionsUI() {

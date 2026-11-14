@@ -735,6 +735,15 @@ svg *:focus-visible,
 .island-clusters-layer {
   pointer-events: none;
 }
+/* Clusters de áreas insulares: ativos EXCLUSIVAMENTE no mobile (<= 768px) */
+.island-clusters-layer {
+  display: none !important;
+}
+@media (max-width: 768px) {
+  .island-clusters-layer {
+    display: inline !important;
+  }
+}
 .island-marker,
 .island-cluster-marker {
   cursor: pointer;
@@ -848,10 +857,27 @@ svg *:focus-visible,
   filter: brightness(1.15) saturate(1.2);
 }
 
-/* No Caribe e Pacífico, o agrupamento inteligente de ilhas controla a exibição por zoom */
-.map[data-cont='central'] #legend-island-row,
-.map[data-cont='central'] #legend-island-row + .map-legend-divider {
-  display: block;
+/* No desktop: restaura o comportamento original para a América Central e Caribe */
+@media (min-width: 769px) {
+  .map[data-cont='central'] .island-markers-layer,
+  .map[data-cont='central'] .island-marker,
+  .map.caribe-zoomed .island-markers-layer,
+  .map.caribe-zoomed .island-marker {
+    display: none !important;
+  }
+
+  .map[data-cont='central'] #legend-island-row,
+  .map[data-cont='central'] #legend-island-row + .map-legend-divider {
+    display: none !important;
+  }
+}
+
+/* No mobile: o agrupamento inteligente de ilhas controla a exibição por zoom */
+@media (max-width: 768px) {
+  .map[data-cont='central'] #legend-island-row,
+  .map[data-cont='central'] #legend-island-row + .map-legend-divider {
+    display: block;
+  }
 }
 
 .tooltip {
@@ -876,22 +902,8 @@ svg *:focus-visible,
 }
 
 .mobile-chip {
-  position: fixed;
-  bottom: calc(2.25rem + env(safe-area-inset-bottom, 0px));
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 999999 !important;
-  display: inline-flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--space-2);
-  width: min(calc(100vw - 2rem), 23rem);
-  min-height: 2.85rem;
-  padding: 0.3rem 0.6rem 0.3rem 0.8rem;
-  background: var(--surface-2);
-  border: 1.5px solid var(--border);
-  border-radius: var(--radius-full);
-  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.32), 0 2px 8px rgba(0, 0, 0, 0.12);
+  display: none !important;
+}
   cursor: pointer;
   animation: chip-pop 0.22s var(--ease);
   transition: transform 0.18s var(--ease), box-shadow 0.18s var(--ease), opacity 0.2s var(--ease);
@@ -1554,10 +1566,10 @@ svg *:focus-visible,
   }
   /* No celular, colapsada mostra SOMENTE O SÍMBOLO (compacto e discreto) */
   .map-legend.is-collapsed {
-    width: 32px;
-    height: 32px;
-    min-width: 32px;
-    min-height: 32px;
+    width: 26px;
+    height: 26px;
+    min-width: 26px;
+    min-height: 26px;
     padding: 0;
     border-radius: 50%;
     display: flex;
@@ -1591,20 +1603,20 @@ svg *:focus-visible,
     display: none;
   }
   .map-legend.is-collapsed .legend-badge-symbol {
-    width: 16px;
-    height: 16px;
+    width: 13px;
+    height: 13px;
     border-width: 1.5px;
     border-color: var(--primary);
     box-shadow: 0 0 0 1px color-mix(in oklab, var(--primary) 25%, transparent);
   }
   .map-legend.is-collapsed .legend-badge-dot {
-    width: 6px;
-    height: 6px;
+    width: 5px;
+    height: 5px;
     background: var(--primary);
     box-shadow: 0 0 6px var(--primary);
   }
 
-  /* No celular, quando expandida abre um card compacto com fechamento fácil */
+  /* No celular, quando expandida abre um card compacto com o mesmo círculo em vermelho para minimizar */
   .map-legend:not(.is-collapsed) {
     width: min(285px, calc(100vw - 1.5rem));
     max-height: min(20rem, calc(100% - 105px));
@@ -1622,13 +1634,30 @@ svg *:focus-visible,
     padding: 8px 10px;
     border-bottom: 1px solid var(--divider);
   }
+  .map-legend:not(.is-collapsed) .legend-badge-symbol {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 1.5px solid #ef4444;
+    background: rgba(239, 68, 68, 0.12);
+    box-shadow: 0 0 0 1px rgba(239, 68, 68, 0.25);
+  }
+  .map-legend:not(.is-collapsed) .legend-badge-ring {
+    border-color: #ef4444;
+  }
+  .map-legend:not(.is-collapsed) .legend-badge-dot {
+    width: 5px;
+    height: 5px;
+    background: #ef4444;
+    box-shadow: 0 0 6px #ef4444;
+  }
   .map-legend:not(.is-collapsed) .map-legend-title {
     font-size: 0.8rem;
     font-weight: 700;
   }
   .map-legend:not(.is-collapsed) .map-legend-chevron {
     transform: rotate(0deg);
-    color: var(--primary);
+    color: #ef4444;
   }
   .map-legend:not(.is-collapsed) .map-legend-body {
     padding: 8px 10px 10px 10px;
@@ -8611,6 +8640,19 @@ button.support-link.topbar-more-btn:hover {
   height: 1px;
   background: var(--divider);
   margin: 8px 0;
+}
+@media (max-width: 768px) {
+  .map-layers-wrapper {
+    position: static;
+  }
+  .map-layers-popover {
+    top: calc(100% + 8px);
+    right: 0;
+    left: auto;
+    width: min(252px, calc(100vw - 24px));
+    max-width: calc(100vw - 24px);
+    padding: 8px 10px;
+  }
 }
 
 /* 3. Pílulas de Atalho Rápido na Base do Mapa */
