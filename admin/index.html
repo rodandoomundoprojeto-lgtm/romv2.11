@@ -585,8 +585,13 @@
     (function () {
       const $ = (id) => document.getElementById(id);
 
+      const defaultApiBase = (
+        window.location.protocol === 'file:' ||
+        ((window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') && window.location.port !== '8000')
+      ) ? 'http://127.0.0.1:8000' : '';
+
       const state = {
-        apiBase: sessionStorage.getItem('rom_admin_api') || '',
+        apiBase: sessionStorage.getItem('rom_admin_api') || defaultApiBase,
         token: sessionStorage.getItem('rom_admin_token') || '',
         eventos: [],
         editingEventId: null
@@ -632,6 +637,13 @@
           options.headers || {}
         );
         const res = await fetch(url, { ...options, headers });
+        const ct = (res.headers.get('content-type') || '').toLowerCase();
+        if (!ct.includes('application/json')) {
+          if (res.status === 405) {
+            throw new Error('Erro HTTP 405: esta URL não é o backend FastAPI. Preencha "URL da API FastAPI" (ex: http://127.0.0.1:8000 ou URL do Render).');
+          }
+          throw new Error('A URL da API retornou conteúdo não-JSON. Preencha "URL da API FastAPI" com o endereço do servidor Python (ex: http://127.0.0.1:8000).');
+        }
         const data = await res.json().catch(() => ({}));
         if (!res.ok) {
           throw new Error(data.detail || `Erro HTTP ${res.status}`);

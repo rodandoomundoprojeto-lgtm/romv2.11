@@ -10,9 +10,12 @@ from collections import defaultdict, deque
 from datetime import datetime, timedelta, timezone
 from typing import Optional
 
+from pathlib import Path
+
 import psycopg
 from fastapi import Depends, FastAPI, Header, HTTPException, Query, Request, Response
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse
 from psycopg.rows import dict_row
 from psycopg.types.json import Jsonb
 
@@ -38,8 +41,11 @@ app.add_middleware(
         "https://www.rodandoomundo.com.br",
         "https://rodandoomundo.com.br",
         "http://localhost:3000",
+        "http://localhost:5500",
+        "http://localhost:8000",
         "http://localhost:8080",
         "http://127.0.0.1:5500",
+        "http://127.0.0.1:8000",
     ],
     allow_credentials=True,
     allow_methods=["GET", "POST", "PATCH", "DELETE", "OPTIONS"],
@@ -108,6 +114,15 @@ def get_db():
 @app.get("/health")
 def health():
     return {"ok": True}
+
+
+@app.get("/admin", include_in_schema=False)
+@app.get("/admin/", include_in_schema=False)
+def admin_lite_page():
+    admin_html = Path(__file__).resolve().parents[2] / "admin" / "index.html"
+    if admin_html.is_file():
+        return FileResponse(admin_html)
+    return Response(status_code=404)
 
 
 @app.post("/v1/curadoria", dependencies=[Depends(verificar_token)])
