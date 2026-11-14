@@ -629,6 +629,37 @@
     }
   }
 
+  function extractSearchKeywords(text, maxWords) {
+    var limit = maxWords || 5;
+    var stop = {
+      a: 1, o: 1, os: 1, as: 1, um: 1, uma: 1, uns: 1, umas: 1,
+      de: 1, da: 1, do: 1, das: 1, dos: 1, em: 1, no: 1, na: 1, nos: 1, nas: 1,
+      para: 1, por: 1, com: 1, sem: 1, sob: 1, sobre: 1, entre: 1, apos: 1,
+      e: 1, ou: 1, que: 1, se: 1, ao: 1, aos: 1, pelo: 1, pela: 1,
+      the: 1, an: 1, of: 1, in: 1, on: 1, at: 1, to: 1, for: 1, with: 1, from: 1,
+      by: 1, and: 1, or: 1, as: 1, is: 1, are: 1, was: 1, were: 1, be: 1,
+      could: 1, may: 1, might: 1, will: 1, would: 1, should: 1, new: 1, amid: 1,
+      le: 1, la: 1, les: 1, un: 1, une: 1, des: 1, du: 1, sur: 1, dans: 1,
+      el: 1, los: 1, las: 1, del: 1, con: 1, sin: 1, y: 1
+    };
+    var clean = String(text || '')
+      .replace(/[.,\/#!$%\^&\*;:{}=\-_`~()?"'«»“”‘’]/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim();
+    if (!clean) return '';
+    var words = clean.split(' ').filter(Boolean);
+    if (words.length <= limit) return words.join(' ');
+    var picked = [];
+    for (var i = 0; i < words.length; i++) {
+      var w = words[i];
+      var wn = norm(w);
+      if (wn.length < 3 || stop[wn]) continue;
+      picked.push(w);
+      if (picked.length >= limit) break;
+    }
+    return picked.length ? picked.join(' ') : words.slice(0, limit).join(' ');
+  }
+
   function buildRelatedArticleSearchUrl(title, outletName, rawUrl) {
     var dom = '';
     try {
@@ -636,7 +667,7 @@
         dom = new URL(rawUrl).hostname.replace(/^www\./i, '');
       }
     } catch (e) {}
-    var cleanTitle = String(title || '').replace(/\s+/g, ' ').trim();
+    var cleanTitle = extractSearchKeywords(title, 5);
     var cleanOutlet = String(outletName || '').replace(/\s+/g, ' ').trim();
     var terms = [];
     if (dom) terms.push('site:' + dom);
@@ -654,19 +685,33 @@
     return u;
   }
 
-  function buildArticleLinkAttrs(rawUrl, title, outletName) {
+  function buildArticleLinkAttrs(rawUrl, title, outletName, searchTitle) {
     var u = String(rawUrl || '').trim();
-    var resolved = resolveRelatedArticleUrl(u, title, outletName);
+    var effectiveTitle = String(searchTitle || title || '').trim();
+    var resolved = resolveRelatedArticleUrl(u, effectiveTitle, outletName);
     if (!u || u === '#' || isGenericOutletUrl(u)) {
       var dom = '';
       try { if (u && u !== '#') dom = new URL(u).hostname.replace(/^www\./i, ''); } catch (e) {}
+      var ptAttr = (title && effectiveTitle && title !== effectiveTitle)
+        ? ' data-resolve-title-pt="' + esc(title) + '"'
+        : '';
       return {
         href: resolved,
         isGeneric: true,
-        attrs: ' data-resolve-article="1" data-resolve-outlet="' + esc(outletName || '') + '" data-resolve-domain="' + esc(dom) + '" data-resolve-title="' + esc(title || '') + '"'
+        attrs: ' data-resolve-article="1" data-resolve-outlet="' + esc(outletName || '') + '" data-resolve-domain="' + esc(dom) + '" data-resolve-title="' + esc(effectiveTitle) + '"' + ptAttr
       };
     }
     return { href: resolved, isGeneric: false, attrs: '' };
+  }
+
+  function inferSearchLangForCountry(a2) {
+    var code = String(a2 || '').toUpperCase();
+    if (code === 'BR' || code === 'PT' || code === 'AO' || code === 'MZ') return 'pt';
+    if (code === 'FR' || code === 'BE') return 'fr';
+    if (code === 'ES' || code === 'AR' || code === 'MX' || code === 'CO' || code === 'CL' || code === 'PE') return 'es';
+    if (code === 'DE' || code === 'AT') return 'de';
+    if (code === 'IT') return 'it';
+    return 'en';
   }
 
   function resolverLinksGenericosNaView(containerEl, queryTerm, paisIso, extraOutlets) {
@@ -681,7 +726,7 @@
     var outlets = [];
     var seenDom = {};
 
-    function addOutletEntry(name, rawU, domHint) {
+    function addOutletEntry(name, rawU, domHint, paisHint) {
       var dom = domHint || '';
       if (!dom && rawU) {
         try { dom = new URL(rawU).hostname.replace(/^www\./i, ''); } catch (e) {}
@@ -693,13 +738,13 @@
         u: rawU || ('https://' + dom + '/'),
         d: dom,
         b: 'I',
-        pais: a2
+        pais: paisHint || a2
       });
     }
 
     if (Array.isArray(extraOutlets)) {
       extraOutlets.forEach(function (o) {
-        if (o) addOutletEntry(o.n || o.veiculo, o.u || o.url, o.d);
+        if (o) addOutletEntry(o.n || o.veiculo, o.u || o.url, o.d, o.pais);
       });
     }
     links.forEach(function (a) {
@@ -707,7 +752,7 @@
     });
     if (cObj && cObj.m && Array.isArray(cObj.m.outlets)) {
       cObj.m.outlets.slice(0, 12).forEach(function (o) {
-        if (outlets.length < 22) addOutletEntry(o.n, o.u, o.d);
+        if (outlets.length < 22) addOutletEntry(o.n, o.u, o.d, a2);
       });
     }
     if (!outlets.length) return;
@@ -719,6 +764,7 @@
         q: q,
         country: a2,
         countryName: cObj ? cObj.n : a2,
+        lang: inferSearchLangForCountry(a2),
         periodo: '30d',
         outlets: outlets
       })
@@ -734,7 +780,10 @@
           var targetDom = String(a.getAttribute('data-resolve-domain') || '').toLowerCase();
           var targetName = norm(a.getAttribute('data-resolve-outlet') || '');
           var targetTitle = norm(a.getAttribute('data-resolve-title') || '');
-          var titleTokens = targetTitle.split(/\s+/).filter(function (w) { return w.length >= 4; });
+          var targetTitlePt = norm(a.getAttribute('data-resolve-title-pt') || '');
+          var titleTokens = (targetTitle + ' ' + targetTitlePt)
+            .split(/\s+/)
+            .filter(function (w) { return w.length >= 4; });
 
           var matchedGroup = null;
           for (var gi = 0; gi < groups.length; gi++) {
@@ -754,7 +803,7 @@
 
           var arts = Array.isArray(matchedGroup.artigos) ? matchedGroup.artigos : (Array.isArray(matchedGroup.itens) ? matchedGroup.itens : []);
           var bestArt = null;
-          var bestScore = -1;
+          var bestScore = 0;
           arts.forEach(function (art) {
             var artUrl = art && (art.url || art.link);
             if (!artUrl || isGenericOutletUrl(artUrl)) return;
@@ -3585,6 +3634,7 @@
           vies: biasCode,
           rotuloEspectro: specLabels[biasCode],
           titulo: v.tituloPT || v.tituloOrig || '',
+          tituloOrig: v.tituloOrig || '',
           enfoque: v.enfoque || '',
           url: v.url || (matchedOutlet && matchedOutlet.u) || '#'
         });
@@ -7815,7 +7865,7 @@
           h += '<strong class="comp-spectrum-outlet">' + esc(mItem.veiculo) + '</strong>';
           h += '<span class="comp-spectrum-pill spec-pill-' + esc(specCodeLow) + '">' + esc(grp.rotulo) + '</span>';
           h += '</div>';
-          var mLink = buildArticleLinkAttrs(mItem.url, mItem.titulo, mItem.veiculo);
+          var mLink = buildArticleLinkAttrs(mItem.url, mItem.titulo, mItem.veiculo, mItem.tituloOrig || mItem.titulo);
           h += '<h4 class="comp-spectrum-headline"><a href="' + esc(mLink.href) + '"' + mLink.attrs + ' target="_blank" rel="noopener noreferrer">' + esc(mItem.titulo) + '</a></h4>';
           if (mItem.enfoque) {
             h += '<p class="comp-spectrum-focus">' + esc(mItem.enfoque) + '</p>';
@@ -7928,7 +7978,7 @@
         h += '<p class="comparison-card-summary">' + esc(p.resumo) + '</p>';
       }
 
-      var pLink = buildArticleLinkAttrs(p.urlMateria, p.tituloPT, p.veiculo);
+      var pLink = buildArticleLinkAttrs(p.urlMateria, p.tituloPT, p.veiculo, p.tituloOriginal || p.tituloPT);
       h += '<div class="comparison-card-foot">';
       h += '<a class="comparison-outlet-link" href="' + esc(pLink.href) + '"' + pLink.attrs + ' target="_blank" rel="noopener noreferrer">' +
            (isVideoContent(p.urlMateria, p) ? 'Assistir vídeo original em ' : 'Ler matéria original em ') + esc(p.veiculo) + ' ' + ICON_ARROW + '</a>';
@@ -7980,7 +8030,7 @@
         h += '<p class="comparison-card-summary">' + esc(p.resumo) + '</p>';
       }
 
-      var pLink = buildArticleLinkAttrs(p.urlMateria, p.tituloPT, p.veiculo);
+      var pLink = buildArticleLinkAttrs(p.urlMateria, p.tituloPT, p.veiculo, p.tituloOriginal || p.tituloPT);
       h += '<div class="comparison-card-foot">';
       h += '<a class="comparison-outlet-link" href="' + esc(pLink.href) + '"' + pLink.attrs + ' target="_blank" rel="noopener noreferrer">' +
            (isVideoContent(p.urlMateria, p) ? 'Assistir vídeo original em ' : 'Ler matéria original em ') + esc(p.veiculo) + ' ' + ICON_ARROW + '</a>';
@@ -8005,7 +8055,7 @@
         h += '<h4 class="comparison-secondary-headline">' + esc(s.tituloPT) + '</h4>';
         h += '<p class="comparison-secondary-focus"><strong>Enfoque:</strong> ' + esc(s.enfoque) + '</p>';
         h += '</div>';
-        var sLink = buildArticleLinkAttrs(s.urlMateria, s.tituloPT, s.veiculo);
+        var sLink = buildArticleLinkAttrs(s.urlMateria, s.tituloPT, s.veiculo, s.tituloOriginal || s.tituloPT);
         h += '<a class="comparison-secondary-link" href="' + esc(sLink.href) + '"' + sLink.attrs + ' target="_blank" rel="noopener noreferrer">' + (isVideoContent(s.urlMateria, s) ? 'Assistir vídeo ' : 'Ler matéria ') + ICON_ARROW + '</a>';
         h += '</li>';
       });
@@ -8049,11 +8099,16 @@
     h += '</div>';
 
     compView.innerHTML = h;
+    var compSearchSeed = (compData.termoBusca || '').trim() || extrairTermoAssuntoBusca(tituloFato, compData.categoria) || tituloFato;
+    if (perspectivas.length && perspectivas[0].tituloOriginal && inferSearchLangForCountry(targetIso || 'BR') !== 'pt') {
+      var origKw = extractSearchKeywords(perspectivas[0].tituloOriginal, 3);
+      if (origKw) compSearchSeed = origKw;
+    }
     resolverLinksGenericosNaView(
       compView,
-      extrairTermoAssuntoBusca(tituloFato, compData.categoria) || tituloFato,
+      compSearchSeed,
       targetIso || 'BR',
-      perspectivas.map(function (p) { return { n: p.veiculo, u: p.urlMateria }; })
+      perspectivas.map(function (p) { return { n: p.veiculo, u: p.urlMateria, pais: p.codigoPais || targetIso || 'BR' }; })
     );
 
     var pageTitle = tituloFato + ' — Comparação Editorial | Rodando o Mundo';
