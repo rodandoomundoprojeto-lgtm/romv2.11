@@ -55,26 +55,137 @@ function cleanHtml(raw) {
     .trim();
 }
 
-function parseFirstRssItem(xml) {
-  if (!xml) return null;
-  const itemMatch = xml.match(/<item[\s>](.*?)<\/item>/s);
-  if (!itemMatch) return null;
-  const itemXml = itemMatch[1];
-  const titleMatch = itemXml.match(/<title[\s>](.*?)<\/title>/s);
-  const linkMatch = itemXml.match(/<link[\s>](.*?)<\/link>/s);
-  const descMatch = itemXml.match(/<description[\s>](.*?)<\/description>/s);
+function normalizarTexto(str) {
+  return String(str == null ? '' : str)
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .trim();
+}
 
-  const title = cleanHtml(titleMatch ? titleMatch[1] : '');
-  let link = cleanHtml(linkMatch ? linkMatch[1] : '');
-  let desc = cleanHtml(descMatch ? descMatch[1] : '');
-  if (desc.length > 220) {
-    desc = desc.slice(0, 215).replace(/[,.;:\s]+$/, '') + '…';
+const STOPWORDS_ASSUNTO = new Set([
+  'de', 'da', 'do', 'das', 'dos', 'em', 'no', 'na', 'nos', 'nas',
+  'o', 'a', 'os', 'as', 'um', 'uma', 'uns', 'umas', 'e', 'ou', 'mas',
+  'que', 'se', 'por', 'para', 'com', 'sem', 'sob', 'sobre', 'entre',
+  'apos', 'antes', 'ate', 'desde', 'contra', 'como', 'mais', 'menos',
+  'muito', 'muita', 'muitos', 'muitas', 'ja', 'ainda', 'tambem', 'so',
+  'apenas', 'nao', 'sim', 'ser', 'estar', 'ter', 'haver', 'fazer',
+  'ir', 'vir', 'poder', 'dever', 'diz', 'disse', 'afirma', 'afirmou',
+  'fala', 'falou', 'pede', 'pediu', 'veja', 'entenda', 'saiba', 'confira',
+  'novo', 'nova', 'novos', 'novas', 'maior', 'menor', 'melhor', 'pior',
+  'grande', 'primeiro', 'primeira', 'segundo', 'segunda', 'terceiro',
+  'hoje', 'ontem', 'amanha', 'dia', 'dias', 'semana', 'mes', 'ano', 'anos',
+  'brasil', 'brasileiro', 'brasileira', 'mundo', 'pais', 'paises', 'governo',
+  'video', 'foto', 'fotos', 'ao', 'aos', 'pela', 'pelo', 'pelas', 'pelos',
+  'num', 'numa', 'essa', 'esse', 'esta', 'este', 'isso', 'isto', 'aquele',
+  'aquela', 'sua', 'seu', 'suas', 'seus', 'projeto', 'lei', 'medida',
+  'plano', 'caso', 'crise', 'acao', 'acoes', 'reuniao', 'encontro',
+  'decisao', 'relatorio', 'dados', 'pesquisa', 'estudo', 'the', 'and',
+  'for', 'with', 'from', 'that', 'this'
+]);
+
+const SIGLAS_VALIDAS = new Set(['ia', 'bc', 'pt', 'pl', 'pf', 'ue', 'onu', 'eua', 'stf', 'pib']);
+
+function extrairTokensAssunto(texto) {
+  const norm = normalizarTexto(texto);
+  if (!norm) return [];
+  const partes = norm.split(/[^a-z0-9]+/).filter(Boolean);
+  const unicos = new Set();
+  for (const tk of partes) {
+    if ((tk.length >= 3 || SIGLAS_VALIDAS.has(tk)) && !STOPWORDS_ASSUNTO.has(tk)) {
+      unicos.add(tk);
+    }
   }
-  return { titulo: title, url: link, resumo: desc };
+  return [...unicos];
+}
+
+function tokensSaoEquivalentes(a, b) {
+  if (a === b) return true;
+  if (a.length >= 5 && b.length >= 5 && a.slice(0, 5) === b.slice(0, 5)) return true;
+  return false;
+}
+
+function contarTokensEmComum(tokensA, tokensB) {
+  let count = 0;
+  const usadosB = new Set();
+  for (const a of tokensA) {
+    for (let j = 0; j < tokensB.length; j++) {
+      if (!usadosB.has(j) && tokensSaoEquivalentes(a, tokensB[j])) {
+        count++;
+        usadosB.add(j);
+        break;
+      }
+    }
+  }
+  return count;
+}
+
+function normalizarUrlComparacao(rawUrl) {
+  if (!rawUrl) return '';
+  return String(rawUrl)
+    .trim()
+    .toLowerCase()
+    .replace(/^https?:\/\/(www\.)?/, '')
+    .split('?')[0]
+    .split('#')[0]
+    .replace(/\/+$/, '');
+}
+
+function avaliarSimilaridadeAssunto(cand, sel) {
+  const urlA = normalizarUrlComparacao(cand.url);
+  const urlB = normalizarUrlComparacao(sel.url);
+  if (urlA && urlB && urlA === urlB) {
+    return { mesmoAssunto: true, score: 1.0 };
+  }
+
+  const titA = extrairTokensAssunto(cand.titulo);
+  const titB = extrairTokensAssunto(sel.titulo);
+  const sharedTitle = contarTokensEmComum(titA, titB);
+  const minTitle = Math.min(titA.length, titB.length);
+  const overlapTitle = minTitle > 0 ? sharedTitle / minTitle : 0;
+
+  const combA = extrairTokensAssunto(`${cand.titulo} ${cand.resumo || ''}`);
+  const combB = extrairTokensAssunto(`${sel.titulo} ${sel.resumo || ''}`);
+  const sharedComb = contarTokensEmComum(combA, combB);
+  const minComb = Math.min(combA.length, combB.length);
+  const unionComb = combA.length + combB.length - sharedComb;
+  const overlapComb = minComb > 0 ? sharedComb / minComb : 0;
+  const jaccardComb = unionComb > 0 ? sharedComb / unionComb : 0;
+
+  const mesmoAssunto =
+    (sharedTitle >= 2 && (overlapTitle >= 0.3 || sharedTitle >= 3)) ||
+    (sharedComb >= 4 && (overlapComb >= 0.45 || jaccardComb >= 0.25));
+
+  const score = Math.max(overlapTitle, jaccardComb);
+  return { mesmoAssunto, score };
+}
+
+function parseRssItems(xml, maxItems = 15) {
+  if (!xml) return [];
+  const results = [];
+  const itemRegex = /<item[\s>](.*?)<\/item>/gs;
+  let match;
+  while ((match = itemRegex.exec(xml)) !== null && results.length < maxItems) {
+    const itemXml = match[1];
+    const titleMatch = itemXml.match(/<title[\s>](.*?)<\/title>/s);
+    const linkMatch = itemXml.match(/<link[\s>](.*?)<\/link>/s);
+    const descMatch = itemXml.match(/<description[\s>](.*?)<\/description>/s);
+
+    const title = cleanHtml(titleMatch ? titleMatch[1] : '');
+    const link = cleanHtml(linkMatch ? linkMatch[1] : '');
+    let desc = cleanHtml(descMatch ? descMatch[1] : '');
+    if (!title) continue;
+
+    if (desc.length > 220) {
+      desc = desc.slice(0, 215).replace(/[,.;:\s]+$/, '') + '…';
+    }
+    results.push({ titulo: title, url: link, resumo: desc });
+  }
+  return results;
 }
 
 async function coletarResumoDoDia() {
-  const items = await Promise.all(
+  const feedsComCandidatos = await Promise.all(
     RSS_FEEDS.map(async (f) => {
       try {
         const ctrl = new AbortController();
@@ -84,25 +195,54 @@ async function coletarResumoDoDia() {
           signal: ctrl.signal
         });
         clearTimeout(t);
-        if (!res.ok) return null;
+        if (!res.ok) return { feed: f, candidatos: [] };
         const xml = await res.text();
-        const parsed = parseFirstRssItem(xml);
-        if (!parsed || !parsed.titulo) return null;
-        return {
-          relevancia: f.relevancia,
-          categoria: f.categoria,
-          fonte: f.fonte,
-          pais: f.pais,
-          titulo: parsed.titulo,
-          url: parsed.url,
-          resumo: parsed.resumo
-        };
+        return { feed: f, candidatos: parseRssItems(xml, 15) };
       } catch {
-        return null;
+        return { feed: f, candidatos: [] };
       }
     })
   );
-  return items.filter(Boolean).sort((a, b) => a.relevancia - b.relevancia);
+
+  feedsComCandidatos.sort((a, b) => a.feed.relevancia - b.feed.relevancia);
+
+  const selecionados = [];
+  const items = [];
+  for (const { feed: f, candidatos } of feedsComCandidatos) {
+    if (!candidatos.length) continue;
+
+    let escolhido = candidatos.find(
+      (cand) => !selecionados.some((sel) => avaliarSimilaridadeAssunto(cand, sel).mesmoAssunto)
+    );
+
+    if (!escolhido) {
+      let menorScore = Infinity;
+      for (const cand of candidatos) {
+        const maxSim = selecionados.reduce(
+          (acc, sel) => Math.max(acc, avaliarSimilaridadeAssunto(cand, sel).score),
+          0
+        );
+        if (maxSim < menorScore) {
+          menorScore = maxSim;
+          escolhido = cand;
+        }
+      }
+    }
+
+    if (!escolhido) continue;
+    selecionados.push(escolhido);
+    items.push({
+      relevancia: f.relevancia,
+      categoria: f.categoria,
+      fonte: f.fonte,
+      pais: f.pais,
+      titulo: escolhido.titulo,
+      url: escolhido.url,
+      resumo: escolhido.resumo
+    });
+  }
+
+  return items;
 }
 
 function montarHtmlNewsletter(noticias, dataHoje) {

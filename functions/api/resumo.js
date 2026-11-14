@@ -348,31 +348,140 @@ function cleanHtml(raw) {
     .trim();
 }
 
-function parseFirstRssItem(xml) {
-  if (!xml) return null;
-  const itemMatch = xml.match(/<item[\s>](.*?)<\/item>/s);
-  if (!itemMatch) return null;
-  const itemXml = itemMatch[1];
+function parseRssItems(xml, maxItems = 15) {
+  if (!xml) return [];
+  const results = [];
+  const itemRegex = /<item[\s>](.*?)<\/item>/gs;
+  let match;
+  while ((match = itemRegex.exec(xml)) !== null && results.length < maxItems) {
+    const itemXml = match[1];
+    const titleMatch = itemXml.match(/<title[\s>](.*?)<\/title>/s);
+    const linkMatch = itemXml.match(/<link[\s>](.*?)<\/link>/s);
+    const descMatch = itemXml.match(/<description[\s>](.*?)<\/description>/s);
+    const dateMatch = itemXml.match(/<pubDate[\s>](.*?)<\/pubDate>/s);
 
-  const titleMatch = itemXml.match(/<title[\s>](.*?)<\/title>/s);
-  const linkMatch = itemXml.match(/<link[\s>](.*?)<\/link>/s);
-  const descMatch = itemXml.match(/<description[\s>](.*?)<\/description>/s);
-  const dateMatch = itemXml.match(/<pubDate[\s>](.*?)<\/pubDate>/s);
+    const title = cleanHtml(titleMatch ? titleMatch[1] : '');
+    const link = cleanHtml(linkMatch ? linkMatch[1] : '');
+    let desc = cleanHtml(descMatch ? descMatch[1] : '');
 
-  const title = cleanHtml(titleMatch ? titleMatch[1] : '');
-  let link = cleanHtml(linkMatch ? linkMatch[1] : '');
-  let desc = cleanHtml(descMatch ? descMatch[1] : '');
+    if (!title || !link) continue;
 
-  if (desc.length > 220) {
-    desc = desc.slice(0, 215).replace(/[,.;:\s]+$/, '') + '…';
+    if (desc.length > 220) {
+      desc = desc.slice(0, 215).replace(/[,.;:\s]+$/, '') + '…';
+    }
+
+    let dataIso;
+    try {
+      dataIso = dateMatch ? new Date(dateMatch[1]).toISOString() : new Date().toISOString();
+    } catch {
+      dataIso = new Date().toISOString();
+    }
+
+    results.push({
+      titulo: title,
+      url: link,
+      resumo: desc,
+      data: dataIso
+    });
+  }
+  return results;
+}
+
+const STOPWORDS_ASSUNTO = new Set([
+  'de', 'da', 'do', 'das', 'dos', 'em', 'no', 'na', 'nos', 'nas',
+  'o', 'a', 'os', 'as', 'um', 'uma', 'uns', 'umas', 'e', 'ou', 'mas',
+  'que', 'se', 'por', 'para', 'com', 'sem', 'sob', 'sobre', 'entre',
+  'apos', 'antes', 'ate', 'desde', 'contra', 'como', 'mais', 'menos',
+  'muito', 'muita', 'muitos', 'muitas', 'ja', 'ainda', 'tambem', 'so',
+  'apenas', 'nao', 'sim', 'ser', 'estar', 'ter', 'haver', 'fazer',
+  'ir', 'vir', 'poder', 'dever', 'diz', 'disse', 'afirma', 'afirmou',
+  'fala', 'falou', 'pede', 'pediu', 'veja', 'entenda', 'saiba', 'confira',
+  'novo', 'nova', 'novos', 'novas', 'maior', 'menor', 'melhor', 'pior',
+  'grande', 'primeiro', 'primeira', 'segundo', 'segunda', 'terceiro',
+  'hoje', 'ontem', 'amanha', 'dia', 'dias', 'semana', 'mes', 'ano', 'anos',
+  'brasil', 'brasileiro', 'brasileira', 'mundo', 'pais', 'paises', 'governo',
+  'video', 'foto', 'fotos', 'ao', 'aos', 'pela', 'pelo', 'pelas', 'pelos',
+  'num', 'numa', 'essa', 'esse', 'esta', 'este', 'isso', 'isto', 'aquele',
+  'aquela', 'sua', 'seu', 'suas', 'seus', 'projeto', 'lei', 'medida',
+  'plano', 'caso', 'crise', 'acao', 'acoes', 'reuniao', 'encontro',
+  'decisao', 'relatorio', 'dados', 'pesquisa', 'estudo', 'the', 'and',
+  'for', 'with', 'from', 'that', 'this'
+]);
+
+const SIGLAS_VALIDAS = new Set(['ia', 'bc', 'pt', 'pl', 'pf', 'ue', 'onu', 'eua', 'stf', 'pib']);
+
+function extrairTokensAssunto(texto) {
+  const norm = normalizarTexto(texto);
+  if (!norm) return [];
+  const partes = norm.split(/[^a-z0-9]+/).filter(Boolean);
+  const unicos = new Set();
+  for (const tk of partes) {
+    if ((tk.length >= 3 || SIGLAS_VALIDAS.has(tk)) && !STOPWORDS_ASSUNTO.has(tk)) {
+      unicos.add(tk);
+    }
+  }
+  return [...unicos];
+}
+
+function tokensSaoEquivalentes(a, b) {
+  if (a === b) return true;
+  if (a.length >= 5 && b.length >= 5 && a.slice(0, 5) === b.slice(0, 5)) return true;
+  return false;
+}
+
+function contarTokensEmComum(tokensA, tokensB) {
+  let count = 0;
+  const usadosB = new Set();
+  for (const a of tokensA) {
+    for (let j = 0; j < tokensB.length; j++) {
+      if (!usadosB.has(j) && tokensSaoEquivalentes(a, tokensB[j])) {
+        count++;
+        usadosB.add(j);
+        break;
+      }
+    }
+  }
+  return count;
+}
+
+function normalizarUrlComparacao(rawUrl) {
+  if (!rawUrl) return '';
+  return String(rawUrl)
+    .trim()
+    .toLowerCase()
+    .replace(/^https?:\/\/(www\.)?/, '')
+    .split('?')[0]
+    .split('#')[0]
+    .replace(/\/+$/, '');
+}
+
+function avaliarSimilaridadeAssunto(cand, sel) {
+  const urlA = normalizarUrlComparacao(cand.url);
+  const urlB = normalizarUrlComparacao(sel.url);
+  if (urlA && urlB && urlA === urlB) {
+    return { mesmoAssunto: true, score: 1.0 };
   }
 
-  return {
-    titulo: title,
-    url: link,
-    resumo: desc,
-    data: dateMatch ? new Date(dateMatch[1]).toISOString() : new Date().toISOString()
-  };
+  const titA = extrairTokensAssunto(cand.titulo);
+  const titB = extrairTokensAssunto(sel.titulo);
+  const sharedTitle = contarTokensEmComum(titA, titB);
+  const minTitle = Math.min(titA.length, titB.length);
+  const overlapTitle = minTitle > 0 ? sharedTitle / minTitle : 0;
+
+  const combA = extrairTokensAssunto(`${cand.titulo} ${cand.resumo || ''}`);
+  const combB = extrairTokensAssunto(`${sel.titulo} ${sel.resumo || ''}`);
+  const sharedComb = contarTokensEmComum(combA, combB);
+  const minComb = Math.min(combA.length, combB.length);
+  const unionComb = combA.length + combB.length - sharedComb;
+  const overlapComb = minComb > 0 ? sharedComb / minComb : 0;
+  const jaccardComb = unionComb > 0 ? sharedComb / unionComb : 0;
+
+  const mesmoAssunto =
+    (sharedTitle >= 2 && (overlapTitle >= 0.3 || sharedTitle >= 3)) ||
+    (sharedComb >= 4 && (overlapComb >= 0.45 || jaccardComb >= 0.25));
+
+  const score = Math.max(overlapTitle, jaccardComb);
+  return { mesmoAssunto, score };
 }
 
 let memoryCache = {
@@ -408,7 +517,7 @@ export async function onRequestGet(context) {
     });
   }
 
-  const items = await Promise.all(
+  const feedsComCandidatos = await Promise.all(
     RSS_FEEDS.map(async (f) => {
       try {
         const ctrl = new AbortController();
@@ -423,57 +532,92 @@ export async function onRequestGet(context) {
         clearTimeout(t);
         if (!res.ok) throw new Error('Status ' + res.status);
         const xml = await res.text();
-        const parsed = parseFirstRssItem(xml);
-        if (!parsed || !parsed.titulo || !parsed.url) {
-          throw new Error('Item inválido');
+        const candidatos = parseRssItems(xml, 15);
+        if (!candidatos.length) {
+          throw new Error('Nenhum item válido');
         }
-
-        const paisInferido = inferirPaisDaManchete(parsed.titulo, parsed.resumo, f);
-
-        return {
-          relevancia: f.relevancia,
-          categoria: f.categoria,
-          titulo: parsed.titulo,
-          resumo: parsed.resumo || 'Acompanhe a cobertura deste tema na matéria original.',
-          resumoCurto: parsed.resumo || 'Acompanhe a cobertura deste tema na matéria original.',
-          fonte: f.fonte,
-          dominio: f.dominio,
-          termoBusca: parsed.titulo.slice(0, 50),
-          url: parsed.url,
-          urlMateriaOriginal: parsed.url,
-          paginaTematica: paisInferido.paginaTematica,
-          labelTematica: f.labelTematica,
-          explicacaoId: f.explicacaoId,
-          pais: paisInferido.pais,
-          codigoPais: paisInferido.codigoPais,
-          continente: paisInferido.continente,
-          tipoNoticia: f.tipoNoticia,
-          publicadoEm: parsed.data
-        };
-      } catch (err) {
-        return {
-          relevancia: f.relevancia,
-          categoria: f.categoria,
-          titulo: `Principais desdobramentos em ${f.categoria}`,
-          resumo: 'Acompanhe os acontecimentos e a cobertura comparada do dia.',
-          resumoCurto: 'Acompanhe os acontecimentos e a cobertura comparada do dia.',
-          fonte: f.fonte,
-          dominio: f.dominio,
-          termoBusca: f.categoria,
-          url: `https://${f.dominio}`,
-          urlMateriaOriginal: `https://${f.dominio}`,
-          paginaTematica: f.paginaTematica,
-          labelTematica: f.labelTematica,
-          explicacaoId: f.explicacaoId,
-          pais: f.pais,
-          codigoPais: f.codigoPais,
-          continente: f.continente,
-          tipoNoticia: f.tipoNoticia,
-          publicadoEm: now.toISOString()
-        };
+        return { feed: f, candidatos };
+      } catch {
+        return { feed: f, candidatos: [] };
       }
     })
   );
+
+  feedsComCandidatos.sort((a, b) => a.feed.relevancia - b.feed.relevancia);
+
+  const selecionados = [];
+  const items = feedsComCandidatos.map(({ feed: f, candidatos }) => {
+    let escolhido = null;
+
+    if (candidatos.length) {
+      // 1. Tenta o primeiro candidato que não repita nenhum assunto já escolhido
+      escolhido = candidatos.find(
+        (cand) => !selecionados.some((sel) => avaliarSimilaridadeAssunto(cand, sel).mesmoAssunto)
+      );
+
+      // 2. Fallback: se todos tiverem alguma sobreposição, escolhe o de menor similaridade
+      if (!escolhido) {
+        let menorScore = Infinity;
+        for (const cand of candidatos) {
+          const maxSim = selecionados.reduce(
+            (acc, sel) => Math.max(acc, avaliarSimilaridadeAssunto(cand, sel).score),
+            0
+          );
+          if (maxSim < menorScore) {
+            menorScore = maxSim;
+            escolhido = cand;
+          }
+        }
+      }
+    }
+
+    if (!escolhido) {
+      return {
+        relevancia: f.relevancia,
+        categoria: f.categoria,
+        titulo: `Principais desdobramentos em ${f.categoria}`,
+        resumo: 'Acompanhe os acontecimentos e a cobertura comparada do dia.',
+        resumoCurto: 'Acompanhe os acontecimentos e a cobertura comparada do dia.',
+        fonte: f.fonte,
+        dominio: f.dominio,
+        termoBusca: f.categoria,
+        url: `https://${f.dominio}`,
+        urlMateriaOriginal: `https://${f.dominio}`,
+        paginaTematica: f.paginaTematica,
+        labelTematica: f.labelTematica,
+        explicacaoId: f.explicacaoId,
+        pais: f.pais,
+        codigoPais: f.codigoPais,
+        continente: f.continente,
+        tipoNoticia: f.tipoNoticia,
+        publicadoEm: now.toISOString()
+      };
+    }
+
+    selecionados.push(escolhido);
+    const paisInferido = inferirPaisDaManchete(escolhido.titulo, escolhido.resumo, f);
+
+    return {
+      relevancia: f.relevancia,
+      categoria: f.categoria,
+      titulo: escolhido.titulo,
+      resumo: escolhido.resumo || 'Acompanhe a cobertura deste tema na matéria original.',
+      resumoCurto: escolhido.resumo || 'Acompanhe a cobertura deste tema na matéria original.',
+      fonte: f.fonte,
+      dominio: f.dominio,
+      termoBusca: escolhido.titulo.slice(0, 50),
+      url: escolhido.url,
+      urlMateriaOriginal: escolhido.url,
+      paginaTematica: paisInferido.paginaTematica,
+      labelTematica: f.labelTematica,
+      explicacaoId: f.explicacaoId,
+      pais: paisInferido.pais,
+      codigoPais: paisInferido.codigoPais,
+      continente: paisInferido.continente,
+      tipoNoticia: f.tipoNoticia,
+      publicadoEm: escolhido.data
+    };
+  });
 
   const payload = {
     dataEdicao: hojeStr,

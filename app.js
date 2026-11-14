@@ -850,6 +850,7 @@
         btn.setAttribute('aria-pressed', String(nowFav));
         btn.innerHTML = nowFav ? ICON_STAR_ON : ICON_STAR_OFF;
         btn.title = nowFav ? 'Remover notícia dos favoritos' : 'Salvar notícia nos favoritos';
+        try { btn.blur(); } catch (err) {}
       });
     });
   }
@@ -3515,13 +3516,17 @@
     }
 
     if (shouldShow) {
-      mobileChip.hidden = false;
-      mobileChip.style.opacity = '1';
-      mobileChip.style.pointerEvents = 'auto';
+      if (mobileChip.hidden || mobileChip.style.opacity !== '1') {
+        mobileChip.hidden = false;
+        mobileChip.style.opacity = '1';
+        mobileChip.style.pointerEvents = 'auto';
+      }
     } else {
-      mobileChip.style.opacity = '0';
-      mobileChip.style.pointerEvents = 'none';
-      mobileChip.hidden = true;
+      if (!mobileChip.hidden || mobileChip.style.opacity !== '0') {
+        mobileChip.style.opacity = '0';
+        mobileChip.style.pointerEvents = 'none';
+        mobileChip.hidden = true;
+      }
     }
   }
 
@@ -3578,13 +3583,22 @@
     });
   }
 
+  var floatingControlsRaf = 0;
+  function scheduleFloatingControlsUpdate() {
+    if (floatingControlsRaf) return;
+    floatingControlsRaf = requestAnimationFrame(function () {
+      floatingControlsRaf = 0;
+      updateFloatingControlsVisibility();
+    });
+  }
+
   window.addEventListener('scroll', function () {
-    if (tip) tip.hidden = true;
-    updateFloatingControlsVisibility();
+    if (tip && !tip.hidden) tip.hidden = true;
+    scheduleFloatingControlsUpdate();
   }, { passive: true });
 
   window.addEventListener('resize', function () {
-    updateFloatingControlsVisibility();
+    scheduleFloatingControlsUpdate();
   }, { passive: true });
 
   // Toque em área vazia (oceano / fundo) limpa a seleção
@@ -5784,6 +5798,21 @@
     return pool;
   }
 
+  var rotatorTranslatedUrls = {};
+
+  function getRotatorItemDisplay(item) {
+    var orig = String((item && item.title) || '');
+    var key = (item && item.href) || orig;
+    var cached = orig ? translationCache['pt::' + orig] : '';
+    var isTr = Boolean(key && rotatorTranslatedUrls[key] && cached);
+    return {
+      key: key,
+      origTitle: orig,
+      displayTitle: isTr ? cached : orig,
+      isTranslated: isTr
+    };
+  }
+
   function renderOutletStackedListHTML(pool, offset) {
     if (!pool || !pool.length) return '';
     var count = Math.min(3, pool.length);
@@ -5791,12 +5820,18 @@
     var lines = '';
     for (var i = 0; i < count; i++) {
       var item = pool[(start + i) % pool.length];
+      var trInfo = getRotatorItemDisplay(item);
       lines += '<li class="outlet-rotator-item">' +
         '<button type="button" class="outlet-rotator-tag" data-rotator-topic="' + esc(item.topicKey) + '" title="Filtrar painel pelo contexto ' + esc(item.topicLabel) + '">' + esc(item.topicLabel) + '</button>' +
-        '<a class="outlet-rotator-link" href="' + esc(item.href) + '" target="_blank" rel="noopener noreferrer" title="' + esc(item.title) + '">' +
-          '<span class="outlet-rotator-text' + (item.isLoading ? ' is-loading-title' : '') + '">' + esc(item.title) + '</span>' +
+        '<a class="outlet-rotator-link" href="' + esc(item.href) + '" target="_blank" rel="noopener noreferrer" title="' + esc(trInfo.displayTitle) + '">' +
+          '<span class="outlet-rotator-text' + (item.isLoading ? ' is-loading-title' : '') + '">' + esc(trInfo.displayTitle) + '</span>' +
           ICON_ARROW +
         '</a>' +
+        (!item.isLoading ? (
+          '<button type="button" class="outlet-rotator-translate-btn is-compact' + (trInfo.isTranslated ? ' is-translated' : '') + '" data-rot-translate data-rot-key="' + esc(trInfo.key) + '" data-rot-orig="' + esc(trInfo.origTitle) + '" aria-pressed="' + trInfo.isTranslated + '" title="' + (trInfo.isTranslated ? 'Ver título original' : 'Traduzir título para português') + '" aria-label="' + (trInfo.isTranslated ? 'Ver título original' : 'Traduzir título para português') + '">' +
+            ICON_TRANSLATE +
+          '</button>'
+        ) : '') +
       '</li>';
     }
     return lines;
@@ -5807,13 +5842,14 @@
     var total = pool.length;
     var idx = ((offset || 0) % total + total) % total;
     var item = pool[idx];
+    var trInfo = getRotatorItemDisplay(item);
     var theme = TOPIC_THEMES[item.topicKey] || TOPIC_THEMES.politica;
     var countText = item.isLoading ? '…' : ((idx + 1) + '/' + total);
     var fallbackStyle = 'background:' + theme.gradient + ';color:#ffffff;';
 
     var thumbHtml = '';
     if (item.image) {
-      thumbHtml = '<a class="outlet-single-thumb-link" href="' + esc(item.href) + '" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-hidden="true" title="' + esc(item.title) + '">' +
+      thumbHtml = '<a class="outlet-single-thumb-link" href="' + esc(item.href) + '" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-hidden="true" title="' + esc(trInfo.displayTitle) + '">' +
         '<img class="outlet-single-thumb-img" src="' + esc(item.image) + '" alt="" loading="lazy" onerror="this.style.display=\'none\';if(this.nextElementSibling)this.nextElementSibling.style.display=\'flex\';">' +
         '<div class="outlet-single-thumb-fallback" style="display:none;' + fallbackStyle + '">' +
           theme.iconSvg +
@@ -5821,7 +5857,7 @@
         '</div>' +
       '</a>';
     } else {
-      thumbHtml = '<a class="outlet-single-thumb-link" href="' + esc(item.href) + '" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-hidden="true" title="' + esc(item.title) + '">' +
+      thumbHtml = '<a class="outlet-single-thumb-link" href="' + esc(item.href) + '" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-hidden="true" title="' + esc(trInfo.displayTitle) + '">' +
         '<div class="outlet-single-thumb-fallback" style="display:flex;' + fallbackStyle + '">' +
           theme.iconSvg +
           '<span class="outlet-single-thumb-label">' + esc(theme.label) + '</span>' +
@@ -5841,10 +5877,18 @@
       '<div class="outlet-single-content">' +
         thumbHtml +
         '<div class="outlet-single-body">' +
-          '<a class="outlet-single-title-link" href="' + esc(item.href) + '" target="_blank" rel="noopener noreferrer" title="' + esc(item.title) + '">' +
-            '<span class="outlet-single-title' + (item.isLoading ? ' is-loading-title' : '') + '">' + esc(item.title) + '</span>' +
-            '<span class="outlet-single-arrow-wrap">' + ICON_ARROW + '</span>' +
-          '</a>' +
+          '<div class="outlet-single-headline-wrap">' +
+            '<a class="outlet-single-title-link" href="' + esc(item.href) + '" target="_blank" rel="noopener noreferrer" title="' + esc(trInfo.displayTitle) + '">' +
+              '<span class="outlet-single-title' + (item.isLoading ? ' is-loading-title' : '') + '">' + esc(trInfo.displayTitle) + '</span>' +
+              '<span class="outlet-single-arrow-wrap">' + ICON_ARROW + '</span>' +
+            '</a>' +
+            (!item.isLoading ? (
+              '<button type="button" class="outlet-rotator-translate-btn' + (trInfo.isTranslated ? ' is-translated' : '') + '" data-rot-translate data-rot-key="' + esc(trInfo.key) + '" data-rot-orig="' + esc(trInfo.origTitle) + '" aria-pressed="' + trInfo.isTranslated + '" title="' + (trInfo.isTranslated ? 'Ver título original' : 'Traduzir título para português') + '">' +
+                ICON_TRANSLATE +
+                '<span>' + (trInfo.isTranslated ? 'Original' : 'Traduzir') + '</span>' +
+              '</button>'
+            ) : '') +
+          '</div>' +
         '</div>' +
       '</div>' +
     '</div>';
@@ -5880,6 +5924,9 @@
         starBtn.setAttribute('data-news-title', curItem.title || '');
         starBtn.setAttribute('data-news-source', oItem.n || '');
         starBtn.setAttribute('data-news-country', cCode || 'BR');
+        if (!newsFav && document.activeElement === starBtn) {
+          try { starBtn.blur(); } catch (err) {}
+        }
         return;
       }
     }
@@ -5890,6 +5937,9 @@
     starBtn.title = outFav ? 'Remover veículo dos favoritos' : 'Salvar veículo nos favoritos';
     starBtn.setAttribute('aria-label', (outFav ? 'Remover dos favoritos: ' : 'Favoritar veículo: ') + oItem.n);
     starBtn.setAttribute('data-fav-mode', 'outlet');
+    if (!outFav && document.activeElement === starBtn) {
+      try { starBtn.blur(); } catch (err) {}
+    }
   }
 
   function enrichOutletsWithLiveHeadlines(list, cCode, lang) {
@@ -6087,9 +6137,108 @@
       '</article>';
     }).join('');
 
+    var ROTATOR_MS = 7000;
+    var ROTATOR_TICK = 200;
+
     if (!box._rotatorTopicBound) {
       box._rotatorTopicBound = true;
       box.addEventListener('click', function (e) {
+        var trBtn = e.target && e.target.closest ? e.target.closest('[data-rot-translate]') : null;
+        if (trBtn) {
+          e.preventDefault();
+          e.stopPropagation();
+          if (trBtn.disabled || trBtn.classList.contains('is-loading')) return;
+          var rotBox = trBtn.closest('[data-outlet-rotator-idx]');
+          var trKey = trBtn.getAttribute('data-rot-key') || '';
+          var origTitle = trBtn.getAttribute('data-rot-orig') || '';
+          if (!trKey || !origTitle) return;
+
+          var isCompact = trBtn.classList.contains('is-compact');
+          var itemEl = isCompact ? trBtn.closest('.outlet-rotator-item') : null;
+          var titleSpan = isCompact
+            ? (itemEl && itemEl.querySelector('.outlet-rotator-text'))
+            : (rotBox && rotBox.querySelector('.outlet-single-title'));
+          var titleLink = isCompact
+            ? (itemEl && itemEl.querySelector('.outlet-rotator-link'))
+            : (rotBox && rotBox.querySelector('.outlet-single-title-link'));
+
+          var applyTitleState = function (displayText, translatedFlag) {
+            if (titleSpan) titleSpan.textContent = displayText;
+            if (titleLink) titleLink.setAttribute('title', displayText);
+            trBtn.classList.toggle('is-translated', translatedFlag);
+            trBtn.setAttribute('aria-pressed', String(translatedFlag));
+            trBtn.setAttribute('title', translatedFlag ? 'Ver título original' : 'Traduzir título para português');
+            trBtn.setAttribute('aria-label', translatedFlag ? 'Ver título original' : 'Traduzir título para português');
+            if (!isCompact) {
+              var lbl = trBtn.querySelector('span');
+              if (lbl) lbl.textContent = translatedFlag ? 'Original' : 'Traduzir';
+            }
+          };
+
+          if (rotatorTranslatedUrls[trKey]) {
+            delete rotatorTranslatedUrls[trKey];
+            applyTitleState(origTitle, false);
+            if (rotBox) {
+              rotBox._rotRemaining = ROTATOR_MS;
+              rotBox._isTranslating = false;
+            }
+            return;
+          }
+
+          if (rotBox) {
+            rotBox._isTranslating = true;
+          }
+
+          var cachedTr = translationCache['pt::' + origTitle];
+          if (cachedTr) {
+            rotatorTranslatedUrls[trKey] = true;
+            applyTitleState(cachedTr, true);
+            if (rotBox) {
+              rotBox._rotRemaining = ROTATOR_MS;
+              rotBox._isTranslating = false;
+            }
+            return;
+          }
+
+          trBtn.classList.add('is-loading');
+          trBtn.disabled = true;
+          if (!isCompact) {
+            var lblLoading = trBtn.querySelector('span');
+            if (lblLoading) lblLoading.textContent = 'Traduzindo…';
+          }
+
+          var reqToken = rotBox ? (rotBox._rotTransToken = (rotBox._rotTransToken || 0) + 1) : 1;
+
+          translateTextsMap({ t: origTitle }, 'pt')
+            .then(function (resMap) {
+              var trText = (resMap && resMap.t && String(resMap.t).trim()) ? String(resMap.t).trim() : origTitle;
+              if (trText) {
+                translationCache['pt::' + origTitle] = trText;
+                rotatorTranslatedUrls[trKey] = true;
+              }
+              if (rotBox && rotBox._rotTransToken !== reqToken) return;
+              if (document.body.contains(trBtn)) {
+                applyTitleState(trText || origTitle, Boolean(trText));
+              }
+            })
+            .catch(function () {
+              if (document.body.contains(trBtn) && (!rotBox || rotBox._rotTransToken === reqToken)) {
+                applyTitleState(origTitle, false);
+              }
+            })
+            .finally(function () {
+              if (document.body.contains(trBtn)) {
+                trBtn.classList.remove('is-loading');
+                trBtn.disabled = false;
+              }
+              if (rotBox && rotBox._rotTransToken === reqToken) {
+                rotBox._rotRemaining = ROTATOR_MS;
+                rotBox._isTranslating = false;
+              }
+            });
+          return;
+        }
+
         var navBtn = e.target && e.target.closest ? e.target.closest('[data-rot-dir]') : null;
         if (navBtn) {
           e.preventDefault();
@@ -6106,6 +6255,8 @@
           var cur = Number(rotatorEl.getAttribute('data-step') || '0');
           var next = ((cur + dir) % p.length + p.length) % p.length;
           rotatorEl.setAttribute('data-step', String(next));
+          rotatorEl._rotTransToken = (rotatorEl._rotTransToken || 0) + 1;
+          rotatorEl._isTranslating = false;
           rotatorEl._rotRemaining = ROTATOR_MS;
           rotatorEl.classList.add('is-rotating');
           setTimeout(function () {
@@ -6145,11 +6296,10 @@
 
     // Rotação a cada 7s por veículo. Ao passar o cursor (ou focar) a caixa, a contagem pausa
     // e, ao sair, continua do tempo restante (não reinicia do zero).
-    var ROTATOR_MS = 7000;
-    var ROTATOR_TICK = 200;
     box.querySelectorAll('[data-outlet-rotator-idx]').forEach(function (ul) {
       ul._rotRemaining = ROTATOR_MS;
       ul._rotPaused = false;
+      ul._isTranslating = false;
       var hoverZone = ul.closest('.outlet-col-rotator') || ul;
       hoverZone.addEventListener('mouseenter', function () { ul._rotPaused = true; });
       hoverZone.addEventListener('mouseleave', function () { ul._rotPaused = false; });
@@ -6167,7 +6317,7 @@
       }
       if (document.hidden) return;
       box.querySelectorAll('[data-outlet-rotator-idx]').forEach(function (ul) {
-        if (ul._rotPaused) return;
+        if (ul._rotPaused || ul._isTranslating) return;
         if (typeof ul._rotRemaining !== 'number') ul._rotRemaining = ROTATOR_MS;
         ul._rotRemaining -= ROTATOR_TICK;
         if (ul._rotRemaining > 0) return;
@@ -6218,6 +6368,7 @@
               publishedAt: ''
             });
             syncOutletCardFavBtn(cardEl, itemObj, cCode, poolNow, stepNow);
+            try { starBtn.blur(); } catch (err) {}
             return;
           }
         }
@@ -6226,6 +6377,7 @@
         starBtn.setAttribute('aria-pressed', String(nowFav));
         starBtn.innerHTML = nowFav ? ICON_STAR_ON : ICON_STAR_OFF;
         starBtn.title = nowFav ? 'Remover veículo dos favoritos' : 'Salvar veículo nos favoritos';
+        try { starBtn.blur(); } catch (err) {}
       });
     });
 
@@ -6778,6 +6930,7 @@
     if (sectionKey === 'resumo-do-dia') enrichResumoDoDiaOnce();
     if (sectionKey === 'ultimas-noticias') renderUltimasNoticiasView();
     if (sectionKey === 'radar') renderRadarEditorialView();
+    else stopRadarAutoRefresh();
     if (sectionKey === 'entenda') carregarColunasEntendaV2(false);
     syncMobileEditorialToggle(sectionKey);
 
@@ -7444,12 +7597,17 @@
     var track = compView.querySelector('#comparison-track');
     var dots = compView.querySelectorAll('.carousel-dot');
     if (track && dots.length) {
+      var trackScrollRaf = 0;
       track.addEventListener('scroll', function () {
-        var scrollLeft = track.scrollLeft;
-        var width = track.clientWidth || 300;
-        var curIdx = Math.round(scrollLeft / width);
-        dots.forEach(function (d, i) {
-          d.classList.toggle('is-active', i === curIdx);
+        if (trackScrollRaf) return;
+        trackScrollRaf = requestAnimationFrame(function () {
+          trackScrollRaf = 0;
+          var scrollLeft = track.scrollLeft;
+          var width = track.clientWidth || 300;
+          var curIdx = Math.round(scrollLeft / width);
+          dots.forEach(function (d, i) {
+            d.classList.toggle('is-active', i === curIdx);
+          });
         });
       }, { passive: true });
 
@@ -8138,9 +8296,61 @@
     return false;
   }
 
+  var RADAR_AUTO_REFRESH_MS = 5 * 60 * 1000; // 5 minutos
   var radarFeedCache = null;
   var radarUpdatedLabel = '';
   var radarCategoryFilter = 'todos';
+  var radarAutoRefreshTimer = null;
+  var radarLastFetchAt = 0;
+  var radarVisibilityBound = false;
+
+  function stopRadarAutoRefresh() {
+    if (radarAutoRefreshTimer) {
+      clearInterval(radarAutoRefreshTimer);
+      radarAutoRefreshTimer = null;
+    }
+  }
+
+  function startRadarAutoRefresh() {
+    stopRadarAutoRefresh();
+    radarAutoRefreshTimer = setInterval(function () {
+      if (state.editorialSection !== 'radar') {
+        stopRadarAutoRefresh();
+        return;
+      }
+      if (document.visibilityState === 'hidden') return;
+      loadRadarCards(false, true);
+    }, RADAR_AUTO_REFRESH_MS);
+  }
+
+  function bindRadarVisibilityListener() {
+    if (radarVisibilityBound) return;
+    radarVisibilityBound = true;
+    document.addEventListener('visibilitychange', function () {
+      if (document.visibilityState !== 'visible') return;
+      if (state.editorialSection !== 'radar') return;
+      if (Date.now() - radarLastFetchAt >= RADAR_AUTO_REFRESH_MS) {
+        loadRadarCards(false, true);
+      }
+    });
+  }
+
+  function getRadarItemKey(item) {
+    if (!item) return '';
+    return String(item.fonte_url || item.titulo || '');
+  }
+
+  function updateRadarUpdatedBadge(label) {
+    var updatedEl = document.getElementById('radar-last-updated');
+    if (!updatedEl) return;
+    updatedEl.textContent = label || '';
+    if (label) {
+      updatedEl.classList.add('is-live');
+      updatedEl.setAttribute('title', 'Sincronização automática no navegador a cada 5 minutos');
+    } else {
+      updatedEl.classList.remove('is-live');
+    }
+  }
 
   function renderRadarEditorialView() {
     var container = document.getElementById('radar-editorial-view');
@@ -8159,7 +8369,7 @@
     headerHtml += '<p class="editorial-section-sub">Monitoramento contínuo dos principais canais e analistas de geopolítica, política, economia e cultura com síntese factual e avaliação de impacto.</p>';
     headerHtml += '</div>';
     headerHtml += '<div style="display:flex;gap:var(--space-2);align-items:center;flex-wrap:wrap;">';
-    headerHtml += '<span class="radar-updated-badge" id="radar-last-updated">' + esc(radarUpdatedLabel || '') + '</span>';
+    headerHtml += '<span class="radar-updated-badge' + (radarUpdatedLabel ? ' is-live' : '') + '" id="radar-last-updated" title="Sincronização automática no navegador a cada 5 minutos">' + esc(radarUpdatedLabel || '') + '</span>';
     headerHtml += '<a href="/resumo-do-dia" class="btn btn-secondary" data-spa-link title="Ver o Resumo do Dia com as 5 principais notícias">📰 Resumo do Dia</a>';
     headerHtml += '<button type="button" class="btn btn-secondary" id="btn-atualizar-radar">🔄 Atualizar radar</button>';
     headerHtml += '</div>';
@@ -8178,7 +8388,7 @@
     var btnRefresh = document.getElementById('btn-atualizar-radar');
     if (btnRefresh) {
       btnRefresh.addEventListener('click', function () {
-        loadRadarCards(true);
+        loadRadarCards(true, false);
       });
     }
 
@@ -8188,16 +8398,25 @@
         filterBtns.forEach(function (b) { b.classList.remove('is-active'); });
         btn.classList.add('is-active');
         radarCategoryFilter = btn.getAttribute('data-radar-cat') || 'todos';
-        renderRadarCardsList();
+        renderRadarCardsList(false);
       });
     });
 
-    loadRadarCards(false);
+    loadRadarCards(false, false);
+    startRadarAutoRefresh();
+    bindRadarVisibilityListener();
   }
 
-  function loadRadarCards(forceRefresh) {
+  function hasRadarFeedChanged(prevItems, nextItems) {
+    if (!Array.isArray(prevItems) || !Array.isArray(nextItems)) return true;
+    if (prevItems.length !== nextItems.length) return true;
+    if (prevItems.length === 0) return false;
+    return getRadarItemKey(prevItems[0]) !== getRadarItemKey(nextItems[0]) ||
+      String(prevItems[0].data_publicacao || '') !== String(nextItems[0].data_publicacao || '');
+  }
+
+  function loadRadarCards(forceRefresh, isAutoRefresh) {
     var btnRefresh = document.getElementById('btn-atualizar-radar');
-    var updatedEl = document.getElementById('radar-last-updated');
     if (forceRefresh) {
       radarFeedCache = null;
       try { localStorage.removeItem('rom_radar_cache'); } catch (e) {}
@@ -8210,9 +8429,9 @@
       if (listLoading) {
         listLoading.innerHTML = '<p class="radar-loading">Sincronizando pulso em tempo real e briefings do radar...</p>';
       }
-    } else if (radarFeedCache) {
-      if (updatedEl && radarUpdatedLabel) updatedEl.textContent = radarUpdatedLabel;
-      renderRadarCardsList();
+    } else if (!isAutoRefresh && radarFeedCache && (Date.now() - radarLastFetchAt < RADAR_AUTO_REFRESH_MS)) {
+      updateRadarUpdatedBadge(radarUpdatedLabel);
+      renderRadarCardsList(false);
       return;
     }
 
@@ -8227,11 +8446,15 @@
       })
       .then(function (data) {
         if (data && data.ok && Array.isArray(data.items)) {
+          radarLastFetchAt = Date.now();
+          var changed = hasRadarFeedChanged(radarFeedCache, data.items);
           radarFeedCache = data.items;
           radarUpdatedLabel = data.atualizado_em || 'Atualizado agora';
-          if (updatedEl) updatedEl.textContent = radarUpdatedLabel;
-          renderRadarCardsList();
-          triggerHotNewsPulseCycle();
+          updateRadarUpdatedBadge(radarUpdatedLabel);
+          if (!isAutoRefresh || changed) {
+            renderRadarCardsList(!!isAutoRefresh);
+            triggerHotNewsPulseCycle();
+          }
           return;
         }
         throw new Error('Formato inesperado');
@@ -8244,13 +8467,19 @@
             return res.json();
           })
           .then(function (data) {
-            radarFeedCache = Array.isArray(data) ? data : [];
+            radarLastFetchAt = Date.now();
+            var nextItems = Array.isArray(data) ? data : [];
+            var changed = hasRadarFeedChanged(radarFeedCache, nextItems);
+            radarFeedCache = nextItems;
             radarUpdatedLabel = 'Atualizado agora';
-            if (updatedEl) updatedEl.textContent = radarUpdatedLabel;
-            renderRadarCardsList();
-            triggerHotNewsPulseCycle();
+            updateRadarUpdatedBadge(radarUpdatedLabel);
+            if (!isAutoRefresh || changed) {
+              renderRadarCardsList(!!isAutoRefresh);
+              triggerHotNewsPulseCycle();
+            }
           })
           .catch(function (err) {
+            if (isAutoRefresh) return; // falha silenciosa no auto-refresh para não interromper leitura
             var listEl = document.getElementById('radar-cards-list');
             if (listEl) {
               listEl.innerHTML = '<p class="radar-empty">Não foi possível carregar as novidades do radar neste momento (' + esc(err.message) + ').</p>';
@@ -8258,6 +8487,7 @@
           });
       })
       .finally(function () {
+        if (isAutoRefresh) return;
         var btnNow = document.getElementById('btn-atualizar-radar');
         if (btnNow) {
           btnNow.disabled = false;
@@ -8329,9 +8559,18 @@
     });
   }
 
-  function renderRadarCardsList() {
+  function renderRadarCardsList(preserveExpanded) {
     var listEl = document.getElementById('radar-cards-list');
     if (!listEl) return;
+
+    var expandedKeys = [];
+    if (preserveExpanded) {
+      listEl.querySelectorAll('.radar-card.is-expanded').forEach(function (openCard) {
+        var key = openCard.getAttribute('data-radar-key');
+        if (key) expandedKeys.push(key);
+      });
+    }
+
     if (!radarFeedCache || radarFeedCache.length === 0) {
       listEl.innerHTML = '<p class="radar-empty">Nenhum briefing disponível no momento.</p>';
       return;
@@ -8358,6 +8597,7 @@
       var catKey = (item.categoria || 'geral').toLowerCase();
       var catLabel = catLabels[catKey] || catKey.toUpperCase();
       var detailsId = 'radar-details-' + idx;
+      var itemKey = getRadarItemKey(item);
       var dataPub = '';
       try {
         if (item.data_publicacao) {
@@ -8368,7 +8608,7 @@
         dataPub = '';
       }
 
-      var card = '<article class="radar-card radar-cat-' + esc(catKey) + (item.origem_v2 ? ' is-v2-card' : '') + '">';
+      var card = '<article class="radar-card radar-cat-' + esc(catKey) + (item.origem_v2 ? ' is-v2-card' : '') + '" data-radar-key="' + esc(itemKey) + '">';
       card += '<div class="radar-card-header">';
       card += '<div class="radar-card-meta">';
       card += '<span class="radar-badge-cat">' + esc(catLabel) + '</span>';
@@ -8427,6 +8667,14 @@
     listEl.innerHTML = html;
     bindNewsFavButtons(listEl);
     bindRadarCardAccordions(listEl);
+    if (expandedKeys.length > 0) {
+      listEl.querySelectorAll('.radar-card').forEach(function (card) {
+        var key = card.getAttribute('data-radar-key');
+        if (key && expandedKeys.indexOf(key) !== -1) {
+          toggleRadarCard(card);
+        }
+      });
+    }
   }
 
   function renderResumoDoDiaDOM() {
@@ -11830,16 +12078,25 @@
       var winScrolled = (window.scrollY || document.documentElement.scrollTop || 0) > 420;
       var panelScrolled = panel && panel.classList.contains('open') && panel.scrollTop > 420;
       var show = winScrolled || panelScrolled;
-      scrollBtn.hidden = !show;
+      if (scrollBtn.hidden !== !show) scrollBtn.hidden = !show;
       if (show) {
         var floatingCloseVisible = panelFloatingClose && !panelFloatingClose.hidden && window.innerWidth <= 768;
         scrollBtn.classList.toggle('above-panel-close', !!floatingCloseVisible);
       }
     }
 
-    window.addEventListener('scroll', updateScrollBtn, { passive: true });
-    if (panel) panel.addEventListener('scroll', updateScrollBtn, { passive: true });
-    window.addEventListener('resize', updateScrollBtn, { passive: true });
+    var scrollBtnRaf = 0;
+    function scheduleScrollBtnUpdate() {
+      if (scrollBtnRaf) return;
+      scrollBtnRaf = requestAnimationFrame(function () {
+        scrollBtnRaf = 0;
+        updateScrollBtn();
+      });
+    }
+
+    window.addEventListener('scroll', scheduleScrollBtnUpdate, { passive: true });
+    if (panel) panel.addEventListener('scroll', scheduleScrollBtnUpdate, { passive: true });
+    window.addEventListener('resize', scheduleScrollBtnUpdate, { passive: true });
 
     scrollBtn.addEventListener('click', function () {
       if (panel && panel.classList.contains('open') && panel.scrollTop > 120) {
@@ -11941,15 +12198,26 @@
       }
     });
 
+    var menuPosRaf = 0;
+    function schedulePosicionarMenu() {
+      if (menuPosRaf) return;
+      menuPosRaf = requestAnimationFrame(function () {
+        menuPosRaf = 0;
+        if (!menu.hidden && !menu.hasAttribute('hidden')) {
+          posicionarMenu();
+        }
+      });
+    }
+
     window.addEventListener('resize', function () {
       if (!menu.hidden && !menu.hasAttribute('hidden')) {
-        posicionarMenu();
+        schedulePosicionarMenu();
       }
     }, { passive: true });
 
     window.addEventListener('scroll', function () {
       if (window.innerWidth <= 768 && !menu.hidden && !menu.hasAttribute('hidden')) {
-        posicionarMenu();
+        schedulePosicionarMenu();
       }
     }, { passive: true });
 
