@@ -10,12 +10,14 @@ Implementa as rotas oficiais definidas no plano arquitetural (`docs/arquitetura_
 import json
 import os
 import re
+import secrets
 from datetime import datetime, timezone
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Literal, Optional
 
 import psycopg
-from fastapi import APIRouter, BackgroundTasks, Body, Depends, HTTPException, Query, Response
+from fastapi import APIRouter, BackgroundTasks, Body, Depends, Header, HTTPException, Query, Response
 from psycopg.rows import dict_row
+from psycopg.types.json import Jsonb
 from pydantic import BaseModel, Field
 
 from redacao_v2.coletor_estudo import advisory_lock
@@ -1075,4 +1077,445 @@ def obter_entenda_o_assunto_por_slug(
         "entenda_o_assunto": bloco_entenda,
         "coluna_editorial": coluna_associada,
         "painel_verificacao": painel_verificacao.model_dump(),
+    }
+
+
+# ============================================================================
+# 9. ADMIN LITE — INTELIGÊNCIA & ATLAS (/v2/admin/*)
+# ============================================================================
+
+def verificar_admin_token(authorization: Optional[str] = Header(default=None)) -> None:
+    """Autenticação Bearer usando CURADORIA_SECRET_TOKEN (padrão do projeto)."""
+    token_esperado = (
+        os.getenv("CURADORIA_SECRET_TOKEN")
+        or os.getenv("ADMIN_SECRET_TOKEN")
+        or ""
+    ).strip()
+    if not token_esperado:
+        raise HTTPException(
+            status_code=503,
+            detail="CURADORIA_SECRET_TOKEN não configurado no servidor.",
+        )
+    if not authorization or not authorization.startswith("Bearer "):
+        raise HTTPException(status_code=401, detail="Token Bearer ausente ou inválido.")
+    token = authorization.removeprefix("Bearer ").strip()
+    if not secrets.compare_digest(token, token_esperado):
+        raise HTTPException(status_code=403, detail="Token não autorizado.")
+
+
+def _require_db(conn: Any) -> Any:
+    if conn is None:
+        raise HTTPException(status_code=503, detail="Banco de dados PostgreSQL indisponível.")
+    return conn
+
+
+class AdminKillSwitchRequest(BaseModel):
+    ativo: bool
+
+
+class AdminFonteCreateRequest(BaseModel):
+    nome: str = Field(min_length=2, max_length=150)
+    url: str = Field(min_length=8, max_length=2000)
+    tipo_fonte: Literal["rss_feed", "artigo_avulso", "fonte_primaria", "youtube_rss"]
+    cadencia: Literal["pulso_30m", "ciclo_3h"]
+    peso_confianca: int = Field(default=3, ge=1, le=5)
+    aprovar_imediato: bool = False
+
+
+class AdminFonteAtivoRequest(BaseModel):
+    ativo: bool
+
+
+class AdminEventoStatusRequest(BaseModel):
+    status: Literal["aguardando_revisao", "publicado", "arquivado"]
+
+
+class AdminEditarSinteseRequest(BaseModel):
+    sintese_com_ressalvas: str = Field(min_length=10, max_length=8000)
+    tipo_alteracao: Literal["ajuste_menor", "correcao_material"]
+    errata: Optional[str] = Field(default=None, max_length=1000)
+
+
+@router.get("/v2/admin/config/kill-switch", dependencies=[Depends(verificar_admin_token)])
+def admin_obter_kill_switch(
+    response: Response,
+    conn: Any = Depends(get_db),
+) -> Dict[str, Any]:
+    """Lê o estado atual do Kill Switch (`publicacao_automatica_ativa`) em `ai_config_operacional`."""
+    aplicar_no_cache_headers(response)
+    db = _require_db(conn)
+    with db.cursor() as cur:
+        cur.execute(
+            """
+            SELECT valor, updated_at
+            FROM ai_config_operacional
+            WHERE chave = 'publicacao_automatica_ativa'
+            LIMIT 1;
+            """
+        )
+        row = cur.fetchone()
+    ativo = bool(row and str(row.get("valor") or "").strip().lower() == "true")
+    return {
+        "ok": True,
+        "publicacao_automatica_ativa": ativo,
+        "updated_at": _serializar_valor_temporal(row.get("updated_at")) if row else None,
+    }
+
+
+@router.post("/v2/admin/config/kill-switch", dependencies=[Depends(verificar_admin_token)])
+def admin_atualizar_kill_switch(
+    payload: AdminKillSwitchRequest,
+    response: Response,
+    conn: Any = Depends(get_db),
+) -> Dict[str, Any]:
+    """Liga ou desliga `publicacao_automatica_ativa` em `ai_config_operacional`."""
+    aplicar_no_cache_headers(response)
+    db = _require_db(conn)
+    valor_str = "true" if payload.ativo else "false"
+    with db.cursor() as cur:
+        cur.execute(
+            """
+            INSERT INTO ai_config_operacional (chave, valor, updated_at)
+            VALUES ('publicacao_automatica_ativa', %s, NOW())
+            ON CONFLICT (chave) DO UPDATE
+            SET valor = EXCLUDED.valor, updated_at = NOW()
+            RETURNING updated_at;
+            """,
+            (valor_str,),
+        )
+        row = cur.fetchone()
+    db.commit()
+    return {
+        "ok": True,
+        "publicacao_automatica_ativa": payload.ativo,
+        "updated_at": _serializar_valor_temporal(row.get("updated_at")) if row else None,
+    }
+
+
+@router.post("/v2/admin/coleta/executar", dependencies=[Depends(verificar_admin_token)])
+async def admin_executar_coleta_agora(
+    response: Response,
+    payload_req: Optional[ExecutarPulsoRequest] = Body(default=None),
+    conn: Any = Depends(get_db),
+) -> Dict[str, Any]:
+    """Dispara a coleta manual reutilizando exatamente a função protegida por `pg_try_advisory_lock`."""
+    return await executar_noticias_quentes_manual(
+        response=response,
+        payload_req=payload_req,
+        dry_run_query=False,
+        conn=conn,
+    )
+
+
+@router.get("/v2/admin/fontes", dependencies=[Depends(verificar_admin_token)])
+def admin_listar_fontes(
+    response: Response,
+    conn: Any = Depends(get_db),
+) -> Dict[str, Any]:
+    """Lista fontes cadastradas em `ai_fontes_referencia`."""
+    aplicar_no_cache_headers(response)
+    db = _require_db(conn)
+    with db.cursor() as cur:
+        cur.execute(
+            """
+            SELECT id, nome, url, tipo_fonte, cadencia, peso_confianca,
+                   politica_uso_status, coleta_permitida, ativo, revisado_por, created_at
+            FROM ai_fontes_referencia
+            ORDER BY id DESC
+            LIMIT 100;
+            """
+        )
+        rows = cur.fetchall()
+    fontes = [
+        {
+            **dict(r),
+            "created_at": _serializar_valor_temporal(r.get("created_at")),
+        }
+        for r in rows
+    ]
+    return {"ok": True, "fontes": fontes}
+
+
+@router.post("/v2/admin/fontes", dependencies=[Depends(verificar_admin_token)])
+def admin_criar_fonte(
+    payload: AdminFonteCreateRequest,
+    response: Response,
+    conn: Any = Depends(get_db),
+) -> Dict[str, Any]:
+    """Cadastra uma fonte em `ai_fontes_referencia` com opção de aprovação imediata."""
+    aplicar_no_cache_headers(response)
+    db = _require_db(conn)
+    url_limpa = payload.url.strip()
+    if not (url_limpa.startswith("http://") or url_limpa.startswith("https://")):
+        raise HTTPException(status_code=422, detail="URL deve começar com http:// ou https://")
+
+    politica_status = "aprovada" if payload.aprovar_imediato else "pendente"
+    coleta_permitida = bool(payload.aprovar_imediato)
+    revisado_por = "Revisado por Equipe RoM" if payload.aprovar_imediato else None
+    revisado_em = datetime.now(timezone.utc) if payload.aprovar_imediato else None
+
+    try:
+        with db.cursor() as cur:
+            cur.execute(
+                """
+                INSERT INTO ai_fontes_referencia (
+                    nome, url, tipo_fonte, cadencia, peso_confianca,
+                    politica_uso_status, coleta_permitida, armazenamento_permitido,
+                    exibicao_permitida, revisado_por, revisado_em, ativo
+                ) VALUES (
+                    %s, %s, %s, %s, %s,
+                    %s, %s, 'apenas_metadados',
+                    'sintese_e_link', %s, %s, TRUE
+                )
+                RETURNING id, nome, url, tipo_fonte, cadencia, peso_confianca,
+                          politica_uso_status, coleta_permitida, ativo, revisado_por, created_at;
+                """,
+                (
+                    payload.nome.strip(),
+                    url_limpa,
+                    payload.tipo_fonte,
+                    payload.cadencia,
+                    payload.peso_confianca,
+                    politica_status,
+                    coleta_permitida,
+                    revisado_por,
+                    revisado_em,
+                ),
+            )
+            row = cur.fetchone()
+        db.commit()
+    except psycopg.errors.UniqueViolation as exc:
+        db.rollback()
+        raise HTTPException(status_code=409, detail="Já existe uma fonte cadastrada com esta URL.") from exc
+
+    fonte = dict(row) if row else {}
+    if "created_at" in fonte:
+        fonte["created_at"] = _serializar_valor_temporal(fonte["created_at"])
+    return {"ok": True, "fonte": fonte}
+
+
+@router.patch("/v2/admin/fontes/{fonte_id}/ativo", dependencies=[Depends(verificar_admin_token)])
+def admin_alternar_fonte_ativo(
+    fonte_id: int,
+    payload: AdminFonteAtivoRequest,
+    response: Response,
+    conn: Any = Depends(get_db),
+) -> Dict[str, Any]:
+    """Ativa ou desativa rapidamente uma fonte em `ai_fontes_referencia`."""
+    aplicar_no_cache_headers(response)
+    db = _require_db(conn)
+    with db.cursor() as cur:
+        cur.execute(
+            """
+            UPDATE ai_fontes_referencia
+            SET ativo = %s
+            WHERE id = %s
+            RETURNING id, ativo;
+            """,
+            (payload.ativo, fonte_id),
+        )
+        row = cur.fetchone()
+    if not row:
+        raise HTTPException(status_code=404, detail="Fonte não encontrada.")
+    db.commit()
+    return {"ok": True, "id": row["id"], "ativo": row["ativo"]}
+
+
+@router.delete("/v2/admin/fontes/{fonte_id}", dependencies=[Depends(verificar_admin_token)])
+def admin_excluir_fonte(
+    fonte_id: int,
+    response: Response,
+    conn: Any = Depends(get_db),
+) -> Dict[str, Any]:
+    """Exclui uma fonte de `ai_fontes_referencia`."""
+    aplicar_no_cache_headers(response)
+    db = _require_db(conn)
+    try:
+        with db.cursor() as cur:
+            cur.execute(
+                "DELETE FROM ai_fontes_referencia WHERE id = %s RETURNING id;",
+                (fonte_id,),
+            )
+            row = cur.fetchone()
+        if not row:
+            raise HTTPException(status_code=404, detail="Fonte não encontrada.")
+        db.commit()
+    except psycopg.errors.ForeignKeyViolation as exc:
+        db.rollback()
+        raise HTTPException(
+            status_code=409,
+            detail="Fonte possui documentos coletados vinculados; desative-a em vez de excluir.",
+        ) from exc
+    return {"ok": True, "id": fonte_id}
+
+
+@router.get("/v2/admin/eventos", dependencies=[Depends(verificar_admin_token)])
+def admin_listar_eventos(
+    response: Response,
+    limite: int = Query(30, ge=1, le=100),
+    conn: Any = Depends(get_db),
+) -> Dict[str, Any]:
+    """Lista os últimos eventos de `ai_eventos` com a síntese mais recente."""
+    aplicar_no_cache_headers(response)
+    db = _require_db(conn)
+    with db.cursor() as cur:
+        cur.execute(
+            """
+            SELECT
+                e.id, e.slug, e.titulo_evento, e.categoria, e.nivel_confianca,
+                e.status, e.aviso_correcao_material, e.updated_at,
+                (
+                    SELECT cg.payload_json->>'sintese_com_ressalvas'
+                    FROM ai_conteudos_gerados cg
+                    WHERE cg.event_id = e.id
+                    ORDER BY cg.versao DESC
+                    LIMIT 1
+                ) AS sintese_com_ressalvas
+            FROM ai_eventos e
+            ORDER BY e.updated_at DESC, e.id DESC
+            LIMIT %s;
+            """,
+            (limite,),
+        )
+        rows = cur.fetchall()
+    eventos = [
+        {
+            **dict(r),
+            "updated_at": _serializar_valor_temporal(r.get("updated_at")),
+        }
+        for r in rows
+    ]
+    return {"ok": True, "eventos": eventos}
+
+
+@router.patch("/v2/admin/eventos/{event_id}/status", dependencies=[Depends(verificar_admin_token)])
+def admin_atualizar_status_evento(
+    event_id: int,
+    payload: AdminEventoStatusRequest,
+    response: Response,
+    conn: Any = Depends(get_db),
+) -> Dict[str, Any]:
+    """Altera o status de um evento (`publicado`, `arquivado`, `aguardando_revisao`)."""
+    aplicar_no_cache_headers(response)
+    db = _require_db(conn)
+    with db.cursor() as cur:
+        cur.execute(
+            """
+            UPDATE ai_eventos
+            SET status = %s, updated_at = NOW()
+            WHERE id = %s
+            RETURNING id, status, updated_at;
+            """,
+            (payload.status, event_id),
+        )
+        row = cur.fetchone()
+    if not row:
+        raise HTTPException(status_code=404, detail="Evento não encontrado.")
+    db.commit()
+    return {
+        "ok": True,
+        "id": row["id"],
+        "status": row["status"],
+        "updated_at": _serializar_valor_temporal(row.get("updated_at")),
+    }
+
+
+@router.patch("/v2/admin/eventos/{event_id}/sintese", dependencies=[Depends(verificar_admin_token)])
+def admin_editar_sintese_evento(
+    event_id: int,
+    payload: AdminEditarSinteseRequest,
+    response: Response,
+    conn: Any = Depends(get_db),
+) -> Dict[str, Any]:
+    """Salva nova versão da síntese em `ai_conteudos_gerados` e registra errata se `correcao_material`."""
+    aplicar_no_cache_headers(response)
+    db = _require_db(conn)
+    errata_limpa = (payload.errata or "").strip()
+    if payload.tipo_alteracao == "correcao_material" and not errata_limpa:
+        raise HTTPException(
+            status_code=422,
+            detail="Informe o texto da errata quando selecionar 'correcao_material'.",
+        )
+
+    with db.cursor() as cur:
+        cur.execute("SELECT id FROM ai_eventos WHERE id = %s LIMIT 1;", (event_id,))
+        if not cur.fetchone():
+            raise HTTPException(status_code=404, detail="Evento não encontrado.")
+
+        cur.execute(
+            """
+            SELECT tipo_conteudo, versao, payload_json, evidence_ids, model_id, prompt_version
+            FROM ai_conteudos_gerados
+            WHERE event_id = %s
+            ORDER BY versao DESC
+            LIMIT 1;
+            """,
+            (event_id,),
+        )
+        ultimo = cur.fetchone()
+
+        nova_versao = int(ultimo["versao"]) + 1 if ultimo else 1
+        tipo_conteudo = (ultimo.get("tipo_conteudo") if ultimo else None) or "sintese_comparada"
+        payload_atual = _decodificar_jsonb(ultimo.get("payload_json") if ultimo else None, {})
+        if not isinstance(payload_atual, dict):
+            payload_atual = {}
+        payload_atual["sintese_com_ressalvas"] = payload.sintese_com_ressalvas.strip()
+
+        evidence_ids = list(ultimo.get("evidence_ids") or []) if ultimo else []
+        model_id = (ultimo.get("model_id") if ultimo else None) or "manual_admin"
+        prompt_version = (ultimo.get("prompt_version") if ultimo else None) or "admin_lite_v1"
+        nota_publica = (
+            f"Correção material: {errata_limpa}"
+            if payload.tipo_alteracao == "correcao_material"
+            else "Ajuste menor de redação"
+        )
+
+        cur.execute(
+            """
+            INSERT INTO ai_conteudos_gerados (
+                event_id, tipo_conteudo, versao, tipo_alteracao,
+                nota_historico_publico, payload_json, evidence_ids,
+                model_id, prompt_version, review_status, reviewed_by
+            ) VALUES (
+                %s, %s, %s, %s,
+                %s, %s, %s,
+                %s, %s, 'publicado', 'Equipe RoM'
+            )
+            RETURNING versao;
+            """,
+            (
+                event_id,
+                tipo_conteudo,
+                nova_versao,
+                payload.tipo_alteracao,
+                nota_publica,
+                Jsonb(payload_atual),
+                evidence_ids,
+                model_id,
+                prompt_version,
+            ),
+        )
+
+        if payload.tipo_alteracao == "correcao_material":
+            cur.execute(
+                """
+                UPDATE ai_eventos
+                SET aviso_correcao_material = %s, updated_at = NOW()
+                WHERE id = %s;
+                """,
+                (errata_limpa, event_id),
+            )
+        else:
+            cur.execute(
+                "UPDATE ai_eventos SET updated_at = NOW() WHERE id = %s;",
+                (event_id,),
+            )
+
+    db.commit()
+    return {
+        "ok": True,
+        "event_id": event_id,
+        "versao": nova_versao,
+        "tipo_alteracao": payload.tipo_alteracao,
+        "aviso_correcao_material": errata_limpa if payload.tipo_alteracao == "correcao_material" else None,
     }

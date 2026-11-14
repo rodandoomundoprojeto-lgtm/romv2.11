@@ -10,8 +10,11 @@ from dotenv import load_dotenv
 # Carrega variáveis do arquivo .env local se existir
 load_dotenv()
 
+from pathlib import Path
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse, Response
 
 from api.routes_v2 import router as router_v2
 from src.collector import collect_new_items
@@ -33,7 +36,7 @@ app.add_middleware(
         "http://127.0.0.1:5500",
     ],
     allow_credentials=True,
-    allow_methods=["GET", "POST", "OPTIONS"],
+    allow_methods=["GET", "POST", "PATCH", "DELETE", "OPTIONS"],
     allow_headers=["*"],
 )
 
@@ -43,6 +46,15 @@ app.include_router(router_v2)
 @app.get("/health")
 def health():
     return {"ok": True, "motor": "v2.2"}
+
+
+@app.get("/admin", include_in_schema=False)
+@app.get("/admin/", include_in_schema=False)
+def admin_lite_page():
+    admin_html = Path(__file__).resolve().parent / "admin" / "index.html"
+    if admin_html.is_file():
+        return FileResponse(admin_html)
+    return Response(status_code=404)
 
 
 

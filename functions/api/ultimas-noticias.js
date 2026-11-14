@@ -174,19 +174,40 @@ function extrairTag(bloco, tag) {
 }
 
 function extrairImagem(bloco) {
-  const mEnc = bloco.match(/<enclosure[^>]+url=["']([^"']+)["'][^>]*>/i);
-  if (mEnc && mEnc[1]) return mEnc[1];
+  let raw = '';
+  const mNews = bloco.match(/<News:Image[^>]*>([^<]+)<\/News:Image>/i);
+  if (mNews && mNews[1]) raw = mNews[1];
 
-  const mMed = bloco.match(/<media:content[^>]+url=["']([^"']+)["'][^>]*>/i);
-  if (mMed && mMed[1]) return mMed[1];
-
-  const mThumb = bloco.match(/<media:thumbnail[^>]+url=["']([^"']+)["'][^>]*>/i);
-  if (mThumb && mThumb[1]) return mThumb[1];
-
-  const mImg = bloco.match(/<img[^>]+src=["']([^"']+)["'][^>]*>/i);
-  if (mImg && mImg[1]) return mImg[1];
-
-  return '';
+  if (!raw) {
+    const mEnc = bloco.match(/<enclosure[^>]+url=["']([^"']+)["'][^>]*>/i);
+    if (mEnc && mEnc[1]) raw = mEnc[1];
+  }
+  if (!raw) {
+    const mMed = bloco.match(/<media:content[^>]+url=["']([^"']+)["'][^>]*>/i);
+    if (mMed && mMed[1]) raw = mMed[1];
+  }
+  if (!raw) {
+    const mThumb = bloco.match(/<media:thumbnail[^>]+url=["']([^"']+)["'][^>]*>/i);
+    if (mThumb && mThumb[1]) raw = mThumb[1];
+  }
+  if (!raw) {
+    const mImg = bloco.match(/<img[^>]+src=["']([^"']+)["'][^>]*>/i);
+    if (mImg && mImg[1]) raw = mImg[1];
+  }
+  if (!raw) {
+    const decoded = decodificarEntidades(bloco);
+    const mDecImg = decoded.match(/<img[^>]+src=["']([^"']+)["'][^>]*>/i);
+    if (mDecImg && mDecImg[1]) raw = mDecImg[1];
+  }
+  if (!raw) return '';
+  const limpo = decodificarEntidades(raw).trim();
+  const lower = limpo.toLowerCase();
+  if (!limpo || /^(null|undefined|none|false)$/i.test(limpo) || lower.startsWith('data:') || lower.includes('news.google.com/') || lower.includes('1x1.')) {
+    return '';
+  }
+  if (limpo.startsWith('//')) return 'https:' + limpo;
+  if (limpo.startsWith('http://')) return 'https://' + limpo.slice(7);
+  return /^https:\/\//i.test(limpo) ? limpo : '';
 }
 
 function calcularTempoRelativo(isoString) {

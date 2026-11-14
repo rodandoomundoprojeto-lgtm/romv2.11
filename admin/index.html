@@ -1,0 +1,942 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Inteligência &amp; Atlas (Admin Lite) | Rodando o Mundo</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Instrument+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <script>
+    (function () {
+      var saved = null;
+      try { saved = localStorage.getItem('rom_theme'); } catch (e) { }
+      var t = (saved === 'dark' || saved === 'light')
+        ? saved
+        : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+  <style>
+    .admin-wrap {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: var(--space-6) var(--space-4) var(--space-12);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-5);
+    }
+
+    .admin-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-5);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .admin-card-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+      margin-bottom: var(--space-4);
+    }
+
+    .admin-card-title {
+      font-family: var(--font-display);
+      font-size: var(--text-lg);
+      font-weight: 600;
+      margin: 0;
+      color: var(--text);
+    }
+
+    .admin-sub {
+      font-size: var(--text-xs);
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    .admin-auth-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+      align-items: flex-end;
+    }
+
+    .admin-field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      min-width: 0;
+    }
+
+    .admin-field label {
+      font-size: var(--text-xs);
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .admin-input,
+    .admin-select,
+    .admin-textarea {
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      color: var(--text);
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 0.5rem 0.7rem;
+      outline: none;
+      transition: border-color var(--transition);
+    }
+
+    .admin-input:focus,
+    .admin-select:focus,
+    .admin-textarea:focus {
+      border-color: var(--primary);
+    }
+
+    .admin-btn {
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      font-weight: 600;
+      border-radius: var(--radius-sm);
+      padding: 0.5rem 0.9rem;
+      border: 1px solid var(--border);
+      background: var(--surface-2);
+      color: var(--text);
+      cursor: pointer;
+      transition: background var(--transition), border-color var(--transition), opacity var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      white-space: nowrap;
+    }
+
+    .admin-btn:hover:not(:disabled) {
+      border-color: var(--primary);
+    }
+
+    .admin-btn:disabled {
+      opacity: 0.55;
+      cursor: not-allowed;
+    }
+
+    .admin-btn-primary {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #fff;
+    }
+
+    .admin-btn-primary:hover:not(:disabled) {
+      background: var(--primary-hover);
+      border-color: var(--primary-hover);
+    }
+
+    .admin-btn-danger {
+      color: var(--bias-E);
+      border-color: var(--border);
+    }
+
+    .admin-btn-danger:hover:not(:disabled) {
+      background: var(--bias-E-soft);
+      border-color: var(--bias-E);
+    }
+
+    .admin-btn-sm {
+      padding: 0.32rem 0.65rem;
+      font-size: 0.78rem;
+    }
+
+    .admin-controls-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-4);
+      flex-wrap: wrap;
+    }
+
+    .switch-wrap {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .switch-input {
+      position: relative;
+      width: 46px;
+      height: 26px;
+      appearance: none;
+      -webkit-appearance: none;
+      background: var(--surface-offset);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      transition: background var(--transition), border-color var(--transition);
+      flex-shrink: 0;
+    }
+
+    .switch-input::after {
+      content: "";
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--surface-2);
+      box-shadow: var(--shadow-sm);
+      transition: transform var(--transition);
+    }
+
+    .switch-input:checked {
+      background: var(--primary);
+      border-color: var(--primary);
+    }
+
+    .switch-input:checked::after {
+      transform: translateX(20px);
+    }
+
+    .admin-banner {
+      margin-top: var(--space-3);
+      padding: 0.6rem 0.85rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.86rem;
+      border: 1px solid var(--border);
+      background: var(--surface-2);
+      color: var(--text);
+      display: none;
+    }
+
+    .admin-banner.show {
+      display: block;
+    }
+
+    .admin-banner.ok {
+      border-color: #27ae60;
+      background: color-mix(in srgb, #27ae60 10%, var(--surface-2));
+    }
+
+    .admin-banner.warn {
+      border-color: var(--sun);
+      background: color-mix(in srgb, var(--sun) 12%, var(--surface-2));
+    }
+
+    .admin-banner.err {
+      border-color: var(--bias-E);
+      background: var(--bias-E-soft);
+      color: var(--text);
+    }
+
+    .admin-form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: var(--space-3);
+      align-items: end;
+      margin-bottom: var(--space-4);
+    }
+
+    .admin-checkbox-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+      grid-column: 1 / -1;
+      padding-top: 0.25rem;
+    }
+
+    .admin-check-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.86rem;
+      color: var(--text);
+      cursor: pointer;
+    }
+
+    .admin-table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      background: var(--surface-2);
+    }
+
+    .admin-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.86rem;
+      text-align: left;
+    }
+
+    .admin-table th,
+    .admin-table td {
+      padding: 0.65rem 0.8rem;
+      border-bottom: 1px solid var(--divider);
+      vertical-align: middle;
+    }
+
+    .admin-table th {
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--text-muted);
+      background: var(--surface);
+      font-weight: 600;
+    }
+
+    .admin-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 0.16rem 0.52rem;
+      border-radius: var(--radius-full);
+      font-size: 0.74rem;
+      font-weight: 600;
+      background: var(--surface-offset);
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+    }
+
+    .badge-ok {
+      background: color-mix(in srgb, #27ae60 15%, var(--surface-2));
+      color: #1e8449;
+      border-color: color-mix(in srgb, #27ae60 40%, var(--border));
+    }
+
+    [data-theme='dark'] .badge-ok {
+      color: #6ee7a0;
+    }
+
+    .badge-warn {
+      background: color-mix(in srgb, var(--sun) 15%, var(--surface-2));
+      color: #9a5b08;
+      border-color: color-mix(in srgb, var(--sun) 40%, var(--border));
+    }
+
+    [data-theme='dark'] .badge-warn {
+      color: #f6c978;
+    }
+
+    .admin-actions {
+      display: inline-flex;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+    }
+
+    .admin-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 20, 28, 0.62);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-4);
+      z-index: 1200;
+    }
+
+    .admin-modal-backdrop.open {
+      display: flex;
+    }
+
+    .admin-modal {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      width: 100%;
+      max-width: 620px;
+      padding: var(--space-5);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+    }
+
+    .admin-modal-foot {
+      display: flex;
+      justify-content: flex-end;
+      gap: var(--space-2);
+    }
+
+    .hidden {
+      display: none !important;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar header-single" id="main-header">
+    <div class="header-container" style="justify-content: space-between;">
+      <a class="brand" href="/" aria-label="Rodando o Mundo — início">
+        <svg class="logo" viewBox="0 0 48 48" aria-hidden="true">
+          <circle cx="24" cy="24" r="19" class="logo-sea" />
+          <ellipse cx="24" cy="24" rx="19" ry="7" class="logo-line" />
+          <ellipse cx="24" cy="24" rx="8" ry="19" class="logo-line" />
+          <circle cx="24" cy="24" r="19" class="logo-ring" />
+        </svg>
+        <div class="brand-text">
+          <span class="brand-name">Rodando <em>o</em> Mundo</span>
+          <span class="brand-sub">Inteligência &amp; Atlas (Admin Lite)</span>
+        </div>
+      </a>
+
+      <div style="display:flex; align-items:center; gap:0.65rem;">
+        <button id="theme-toggle" class="admin-btn admin-btn-sm" type="button" aria-label="Alternar tema">
+          Tema
+        </button>
+        <a href="/" class="admin-btn admin-btn-sm" style="text-decoration:none;">Voltar ao Atlas</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="admin-wrap">
+    <!-- Autenticação (CURADORIA_SECRET_TOKEN) -->
+    <section class="admin-card" aria-label="Autenticação do Painel">
+      <div class="admin-auth-bar">
+        <div class="admin-field" style="flex: 1 1 240px;">
+          <label for="api-base">URL da API FastAPI</label>
+          <input id="api-base" class="admin-input" type="url" placeholder="Mesma origem (ou ex: http://127.0.0.1:8000)">
+        </div>
+        <div class="admin-field" style="flex: 1 1 260px;">
+          <label for="admin-token">Token de Acesso (CURADORIA_SECRET_TOKEN)</label>
+          <input id="admin-token" class="admin-input" type="password" placeholder="Cole o token Bearer">
+        </div>
+        <button id="btn-conectar" class="admin-btn admin-btn-primary" type="button">Conectar</button>
+      </div>
+      <div id="auth-banner" class="admin-banner"></div>
+    </section>
+
+    <div id="admin-panels" class="hidden" style="display:flex; flex-direction:column; gap:var(--space-5);">
+      <!-- BLOCO 1: CONTROLE RÁPIDO -->
+      <section class="admin-card" aria-labelledby="blk1-title">
+        <div class="admin-card-head">
+          <div>
+            <h1 id="blk1-title" class="admin-card-title">1. Controle Rápido</h1>
+            <p class="admin-sub">Kill Switch editorial (`ai_config_operacional`) e disparo manual protegido por advisory lock.</p>
+          </div>
+          <span id="kill-switch-badge" class="badge">Carregando...</span>
+        </div>
+
+        <div class="admin-controls-row">
+          <label class="switch-wrap" for="kill-switch-toggle">
+            <input id="kill-switch-toggle" class="switch-input" type="checkbox">
+            <span>
+              <strong>Publicação automática ativa</strong>
+              <span class="admin-sub" style="display:block;">Desligado = novos eventos entram como <code>aguardando_revisao</code></span>
+            </span>
+          </label>
+
+          <button id="btn-rodar-coleta" class="admin-btn admin-btn-primary" type="button">
+            Rodar Coleta Agora
+          </button>
+        </div>
+        <div id="coleta-banner" class="admin-banner"></div>
+      </section>
+
+      <!-- BLOCO 2: CADASTRO RÁPIDO DE FONTES -->
+      <section class="admin-card" aria-labelledby="blk2-title">
+        <div class="admin-card-head">
+          <div>
+            <h2 id="blk2-title" class="admin-card-title">2. Cadastro Rápido de Fontes</h2>
+            <p class="admin-sub">Tabela <code>ai_fontes_referencia</code> — cadastro e governança de coleta.</p>
+          </div>
+          <button id="btn-recarregar-fontes" class="admin-btn admin-btn-sm" type="button">Atualizar Lista</button>
+        </div>
+
+        <form id="form-nova-fonte" class="admin-form-grid">
+          <div class="admin-field">
+            <label for="f-nome">Nome</label>
+            <input id="f-nome" class="admin-input" type="text" required minlength="2" maxlength="150" placeholder="Ex: Agência Brasil">
+          </div>
+          <div class="admin-field" style="grid-column: span 2;">
+            <label for="f-url">URL do Feed / Fonte</label>
+            <input id="f-url" class="admin-input" type="url" required placeholder="https://...">
+          </div>
+          <div class="admin-field">
+            <label for="f-tipo">Tipo</label>
+            <select id="f-tipo" class="admin-select">
+              <option value="rss_feed">rss_feed</option>
+              <option value="fonte_primaria">fonte_primaria</option>
+              <option value="youtube_rss">youtube_rss</option>
+              <option value="artigo_avulso">artigo_avulso</option>
+            </select>
+          </div>
+          <div class="admin-field">
+            <label for="f-cadencia">Cadência</label>
+            <select id="f-cadencia" class="admin-select">
+              <option value="pulso_30m">pulso_30m</option>
+              <option value="ciclo_3h">ciclo_3h</option>
+            </select>
+          </div>
+          <div class="admin-field">
+            <label for="f-peso">Confiança (1–5)</label>
+            <input id="f-peso" class="admin-input" type="number" min="1" max="5" value="3" required>
+          </div>
+
+          <div class="admin-checkbox-row">
+            <label class="admin-check-label" for="f-aprovar">
+              <input id="f-aprovar" type="checkbox">
+              <span><strong>Aprovar para coleta imediata</strong> (status <code>aprovada</code>, <code>apenas_metadados</code>, <code>sintese_e_link</code>)</span>
+            </label>
+            <button type="submit" class="admin-btn admin-btn-primary">Cadastrar Fonte</button>
+          </div>
+        </form>
+        <div id="fontes-banner" class="admin-banner"></div>
+
+        <div class="admin-table-wrap">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Nome</th>
+                <th>Tipo</th>
+                <th>Política</th>
+                <th>Ativo</th>
+                <th>Ação</th>
+              </tr>
+            </thead>
+            <tbody id="tbody-fontes">
+              <tr><td colspan="5" class="admin-sub">Nenhuma fonte carregada.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- BLOCO 3: FILA DE EVENTOS -->
+      <section class="admin-card" aria-labelledby="blk3-title">
+        <div class="admin-card-head">
+          <div>
+            <h2 id="blk3-title" class="admin-card-title">3. Fila de Eventos</h2>
+            <p class="admin-sub">Últimos eventos em <code>ai_eventos</code> — aprovação, edição de síntese/errata e arquivamento.</p>
+          </div>
+          <button id="btn-recarregar-eventos" class="admin-btn admin-btn-sm" type="button">Atualizar Fila</button>
+        </div>
+        <div id="eventos-banner" class="admin-banner"></div>
+
+        <div class="admin-table-wrap">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Evento</th>
+                <th>Categoria</th>
+                <th>Confiança</th>
+                <th>Status</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody id="tbody-eventos">
+              <tr><td colspan="5" class="admin-sub">Nenhum evento carregado.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Modal simples: Editar Síntese / Errata -->
+  <div id="modal-sintese" class="admin-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="admin-modal">
+      <div class="admin-card-head" style="margin-bottom:0;">
+        <h3 id="modal-title" class="admin-card-title" style="font-size:1.15rem;">Editar Síntese</h3>
+        <button id="btn-fechar-modal" class="admin-btn admin-btn-sm" type="button">Fechar</button>
+      </div>
+      <p id="modal-evento-nome" class="admin-sub"></p>
+
+      <div class="admin-field">
+        <label for="m-sintese">Síntese com ressalvas</label>
+        <textarea id="m-sintese" class="admin-textarea" rows="5"></textarea>
+      </div>
+
+      <div class="admin-field">
+        <label for="m-tipo-alteracao">Tipo de alteração</label>
+        <select id="m-tipo-alteracao" class="admin-select">
+          <option value="ajuste_menor">ajuste_menor (histórico secundário)</option>
+          <option value="correcao_material">correcao_material (banner de errata visível)</option>
+        </select>
+      </div>
+
+      <div id="m-errata-wrap" class="admin-field hidden">
+        <label for="m-errata">Texto da Errata (obrigatório para correção material)</label>
+        <textarea id="m-errata" class="admin-textarea" rows="3" placeholder="Descreva objetivamente o que foi corrigido..."></textarea>
+      </div>
+
+      <div id="modal-banner" class="admin-banner"></div>
+
+      <div class="admin-modal-foot">
+        <button id="btn-cancelar-modal" class="admin-btn" type="button">Cancelar</button>
+        <button id="btn-salvar-sintese" class="admin-btn admin-btn-primary" type="button">Salvar Alteração</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const $ = (id) => document.getElementById(id);
+
+      const state = {
+        apiBase: sessionStorage.getItem('rom_admin_api') || '',
+        token: sessionStorage.getItem('rom_admin_token') || '',
+        eventos: [],
+        editingEventId: null
+      };
+
+      // Tema claro/escuro seguindo padrão do portal
+      $('theme-toggle').addEventListener('click', () => {
+        const cur = document.documentElement.getAttribute('data-theme') || 'light';
+        const next = cur === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        try { localStorage.setItem('rom_theme', next); } catch (e) { }
+      });
+
+      function showBanner(elId, msg, kind = 'ok') {
+        const el = $(elId);
+        el.textContent = msg;
+        el.className = 'admin-banner show ' + kind;
+      }
+
+      function hideBanner(elId) {
+        const el = $(elId);
+        el.className = 'admin-banner';
+        el.textContent = '';
+      }
+
+      function escapeHtml(str) {
+        return String(str ?? '')
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#39;');
+      }
+
+      async function apiFetch(path, options = {}) {
+        const base = (state.apiBase || '').replace(/\/+$/, '');
+        const url = base + path + (path.includes('?') ? '&' : '?') + '_t=' + Date.now();
+        const headers = Object.assign(
+          {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + state.token
+          },
+          options.headers || {}
+        );
+        const res = await fetch(url, { ...options, headers });
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok) {
+          throw new Error(data.detail || `Erro HTTP ${res.status}`);
+        }
+        return data;
+      }
+
+      function renderKillSwitch(ativo) {
+        $('kill-switch-toggle').checked = Boolean(ativo);
+        const badge = $('kill-switch-badge');
+        badge.textContent = ativo ? 'Publicação Automática: LIGADA' : 'Publicação Automática: DESLIGADA';
+        badge.className = 'badge ' + (ativo ? 'badge-ok' : 'badge-warn');
+      }
+
+      async function carregarKillSwitch() {
+        const data = await apiFetch('/v2/admin/config/kill-switch');
+        renderKillSwitch(data.publicacao_automatica_ativa);
+      }
+
+      async function carregarFontes() {
+        const data = await apiFetch('/v2/admin/fontes');
+        const tbody = $('tbody-fontes');
+        const fontes = data.fontes || [];
+        if (!fontes.length) {
+          tbody.innerHTML = '<tr><td colspan="5" class="admin-sub">Nenhuma fonte cadastrada.</td></tr>';
+          return;
+        }
+        tbody.innerHTML = fontes.map((f) => {
+          const polClass = f.politica_uso_status === 'aprovada' ? 'badge-ok' : 'badge-warn';
+          return `
+            <tr>
+              <td>
+                <strong>${escapeHtml(f.nome)}</strong>
+                <div class="admin-sub" style="max-width:300px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">${escapeHtml(f.url)}</div>
+              </td>
+              <td><code>${escapeHtml(f.tipo_fonte)}</code></td>
+              <td><span class="badge ${polClass}">${escapeHtml(f.politica_uso_status)}</span></td>
+              <td>
+                <input class="switch-input" type="checkbox" data-toggle-fonte="${f.id}" ${f.ativo ? 'checked' : ''} aria-label="Ativar fonte ${escapeHtml(f.nome)}">
+              </td>
+              <td>
+                <button class="admin-btn admin-btn-sm admin-btn-danger" type="button" data-del-fonte="${f.id}">Excluir</button>
+              </td>
+            </tr>
+          `;
+        }).join('');
+      }
+
+      async function carregarEventos() {
+        const data = await apiFetch('/v2/admin/eventos');
+        state.eventos = data.eventos || [];
+        const tbody = $('tbody-eventos');
+        if (!state.eventos.length) {
+          tbody.innerHTML = '<tr><td colspan="5" class="admin-sub">Nenhum evento na fila.</td></tr>';
+          return;
+        }
+        tbody.innerHTML = state.eventos.map((ev) => {
+          const stClass = ev.status === 'publicado' ? 'badge-ok' : (ev.status === 'aguardando_revisao' ? 'badge-warn' : '');
+          const errataTag = ev.aviso_correcao_material ? '<span class="badge badge-warn" style="margin-left:0.35rem;">Errata</span>' : '';
+          return `
+            <tr>
+              <td>
+                <strong>${escapeHtml(ev.titulo_evento)}</strong>${errataTag}
+                <div class="admin-sub"><code>/${escapeHtml(ev.slug)}</code></div>
+              </td>
+              <td>${escapeHtml(ev.categoria)}</td>
+              <td>${escapeHtml(ev.nivel_confianca)}</td>
+              <td><span class="badge ${stClass}">${escapeHtml(ev.status)}</span></td>
+              <td>
+                <div class="admin-actions">
+                  ${ev.status !== 'publicado' ? `<button class="admin-btn admin-btn-sm admin-btn-primary" type="button" data-pub-ev="${ev.id}">Publicar</button>` : ''}
+                  <button class="admin-btn admin-btn-sm" type="button" data-edit-ev="${ev.id}">Editar Síntese</button>
+                  ${ev.status !== 'arquivado' ? `<button class="admin-btn admin-btn-sm admin-btn-danger" type="button" data-arq-ev="${ev.id}">Arquivar</button>` : ''}
+                </div>
+              </td>
+            </tr>
+          `;
+        }).join('');
+      }
+
+      async function conectarEPreencher() {
+        state.apiBase = $('api-base').value.trim();
+        state.token = $('admin-token').value.trim();
+        if (!state.token) {
+          showBanner('auth-banner', 'Informe o token de acesso para conectar.', 'err');
+          return;
+        }
+        sessionStorage.setItem('rom_admin_api', state.apiBase);
+        sessionStorage.setItem('rom_admin_token', state.token);
+
+        try {
+          await carregarKillSwitch();
+          await Promise.all([carregarFontes(), carregarEventos()]);
+          $('admin-panels').classList.remove('hidden');
+          showBanner('auth-banner', 'Conectado com sucesso.', 'ok');
+        } catch (err) {
+          $('admin-panels').classList.add('hidden');
+          showBanner('auth-banner', 'Falha ao autenticar/carregar: ' + err.message, 'err');
+        }
+      }
+
+      $('api-base').value = state.apiBase;
+      $('admin-token').value = state.token;
+      $('btn-conectar').addEventListener('click', conectarEPreencher);
+
+      // Bloco 1: Kill Switch
+      $('kill-switch-toggle').addEventListener('change', async (e) => {
+        const ativo = e.target.checked;
+        try {
+          const res = await apiFetch('/v2/admin/config/kill-switch', {
+            method: 'POST',
+            body: JSON.stringify({ ativo })
+          });
+          renderKillSwitch(res.publicacao_automatica_ativa);
+          showBanner('coleta-banner', `Kill Switch atualizado: publicação automática ${ativo ? 'LIGADA' : 'DESLIGADA'}.`, 'ok');
+        } catch (err) {
+          e.target.checked = !ativo;
+          showBanner('coleta-banner', 'Erro ao atualizar Kill Switch: ' + err.message, 'err');
+        }
+      });
+
+      // Bloco 1: Rodar Coleta Agora
+      $('btn-rodar-coleta').addEventListener('click', async () => {
+        const btn = $('btn-rodar-coleta');
+        btn.disabled = true;
+        btn.textContent = 'Executando coleta...';
+        showBanner('coleta-banner', 'Disparando pipeline de coleta protegido por pg_try_advisory_lock...', 'warn');
+        try {
+          const res = await apiFetch('/v2/admin/coleta/executar', {
+            method: 'POST',
+            body: JSON.stringify({ dry_run: false })
+          });
+          if (res.status === 'ignorado_lock_ocupado') {
+            showBanner('coleta-banner', 'Lock ocupado (ignorado_lock_ocupado): já existe uma coleta em execução no momento.', 'warn');
+          } else if (res.status === 'concluido') {
+            showBanner('coleta-banner', `Coleta concluída! Notícias processadas: ${res.total_noticias ?? 0}.`, 'ok');
+            await carregarEventos();
+          } else {
+            showBanner('coleta-banner', `Execução finalizada com status: ${res.status || 'sem_itens'}.`, 'ok');
+          }
+        } catch (err) {
+          showBanner('coleta-banner', 'Erro ao executar coleta: ' + err.message, 'err');
+        } finally {
+          btn.disabled = false;
+          btn.textContent = 'Rodar Coleta Agora';
+        }
+      });
+
+      // Bloco 2: Cadastro de Fonte
+      $('form-nova-fonte').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        hideBanner('fontes-banner');
+        const payload = {
+          nome: $('f-nome').value.trim(),
+          url: $('f-url').value.trim(),
+          tipo_fonte: $('f-tipo').value,
+          cadencia: $('f-cadencia').value,
+          peso_confianca: Number($('f-peso').value) || 3,
+          aprovar_imediato: $('f-aprovar').checked
+        };
+        try {
+          await apiFetch('/v2/admin/fontes', {
+            method: 'POST',
+            body: JSON.stringify(payload)
+          });
+          e.target.reset();
+          $('f-peso').value = 3;
+          showBanner('fontes-banner', 'Fonte cadastrada com sucesso.', 'ok');
+          await carregarFontes();
+        } catch (err) {
+          showBanner('fontes-banner', 'Erro ao cadastrar fonte: ' + err.message, 'err');
+        }
+      });
+
+      $('btn-recarregar-fontes').addEventListener('click', () => carregarFontes().catch((err) => showBanner('fontes-banner', err.message, 'err')));
+
+      // Bloco 2: Toggle ativo e Excluir
+      $('tbody-fontes').addEventListener('change', async (e) => {
+        const id = e.target.getAttribute('data-toggle-fonte');
+        if (!id) return;
+        const ativo = e.target.checked;
+        try {
+          await apiFetch(`/v2/admin/fontes/${id}/ativo`, {
+            method: 'PATCH',
+            body: JSON.stringify({ ativo })
+          });
+        } catch (err) {
+          e.target.checked = !ativo;
+          showBanner('fontes-banner', 'Erro ao atualizar status da fonte: ' + err.message, 'err');
+        }
+      });
+
+      $('tbody-fontes').addEventListener('click', async (e) => {
+        const id = e.target.getAttribute('data-del-fonte');
+        if (!id) return;
+        if (!confirm('Excluir esta fonte permanentemente?')) return;
+        try {
+          await apiFetch(`/v2/admin/fontes/${id}`, { method: 'DELETE' });
+          showBanner('fontes-banner', 'Fonte excluída.', 'ok');
+          await carregarFontes();
+        } catch (err) {
+          showBanner('fontes-banner', 'Erro ao excluir: ' + err.message, 'err');
+        }
+      });
+
+      // Bloco 3: Ações da Fila de Eventos
+      $('btn-recarregar-eventos').addEventListener('click', () => carregarEventos().catch((err) => showBanner('eventos-banner', err.message, 'err')));
+
+      $('tbody-eventos').addEventListener('click', async (e) => {
+        const pubId = e.target.getAttribute('data-pub-ev');
+        const arqId = e.target.getAttribute('data-arq-ev');
+        const editId = e.target.getAttribute('data-edit-ev');
+
+        if (pubId) {
+          try {
+            await apiFetch(`/v2/admin/eventos/${pubId}/status`, {
+              method: 'PATCH',
+              body: JSON.stringify({ status: 'publicado' })
+            });
+            showBanner('eventos-banner', 'Evento publicado.', 'ok');
+            await carregarEventos();
+          } catch (err) {
+            showBanner('eventos-banner', 'Erro ao publicar: ' + err.message, 'err');
+          }
+          return;
+        }
+
+        if (arqId) {
+          try {
+            await apiFetch(`/v2/admin/eventos/${arqId}/status`, {
+              method: 'PATCH',
+              body: JSON.stringify({ status: 'arquivado' })
+            });
+            showBanner('eventos-banner', 'Evento arquivado.', 'ok');
+            await carregarEventos();
+          } catch (err) {
+            showBanner('eventos-banner', 'Erro ao arquivar: ' + err.message, 'err');
+          }
+          return;
+        }
+
+        if (editId) {
+          const ev = state.eventos.find((x) => String(x.id) === String(editId));
+          if (!ev) return;
+          state.editingEventId = ev.id;
+          $('modal-evento-nome').textContent = ev.titulo_evento;
+          $('m-sintese').value = ev.sintese_com_ressalvas || '';
+          $('m-tipo-alteracao').value = 'ajuste_menor';
+          $('m-errata').value = ev.aviso_correcao_material || '';
+          $('m-errata-wrap').classList.add('hidden');
+          hideBanner('modal-banner');
+          $('modal-sintese').classList.add('open');
+        }
+      });
+
+      // Modal Síntese
+      $('m-tipo-alteracao').addEventListener('change', (e) => {
+        $('m-errata-wrap').classList.toggle('hidden', e.target.value !== 'correcao_material');
+      });
+
+      function fecharModal() {
+        $('modal-sintese').classList.remove('open');
+        state.editingEventId = null;
+      }
+
+      $('btn-fechar-modal').addEventListener('click', fecharModal);
+      $('btn-cancelar-modal').addEventListener('click', fecharModal);
+
+      $('btn-salvar-sintese').addEventListener('click', async () => {
+        if (!state.editingEventId) return;
+        const tipo = $('m-tipo-alteracao').value;
+        const sintese = $('m-sintese').value.trim();
+        const errata = $('m-errata').value.trim();
+
+        if (sintese.length < 10) {
+          showBanner('modal-banner', 'A síntese deve ter pelo menos 10 caracteres.', 'err');
+          return;
+        }
+        if (tipo === 'correcao_material' && !errata) {
+          showBanner('modal-banner', 'Informe o texto da errata para correção material.', 'err');
+          return;
+        }
+
+        try {
+          await apiFetch(`/v2/admin/eventos/${state.editingEventId}/sintese`, {
+            method: 'PATCH',
+            body: JSON.stringify({
+              sintese_com_ressalvas: sintese,
+              tipo_alteracao: tipo,
+              errata: tipo === 'correcao_material' ? errata : null
+            })
+          });
+          fecharModal();
+          showBanner('eventos-banner', 'Síntese atualizada com sucesso.', 'ok');
+          await carregarEventos();
+        } catch (err) {
+          showBanner('modal-banner', 'Erro ao salvar síntese: ' + err.message, 'err');
+        }
+      });
+
+      if (state.token) {
+        conectarEPreencher();
+      }
+    })();
+  </script>
+</body>
+
+</html>

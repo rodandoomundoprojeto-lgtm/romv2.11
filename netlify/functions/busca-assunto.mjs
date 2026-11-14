@@ -591,8 +591,20 @@ function extrairUrlReal(rawLink) {
 function normalizarImagem(rawImg) {
   if (!rawImg) return '';
   const limpo = decodificarEntidades(rawImg).trim();
+  if (!limpo || /^(null|undefined|none|false)$/i.test(limpo) || limpo.startsWith('data:')) return '';
+  const lower = limpo.toLowerCase();
+  if (
+    lower.includes('j6_cofbogxhri9im864nl_ligxvsqp2aupskei7z0cnnfdvgumwuy20nuhkreqyrpy4beeibuc') ||
+    lower.includes('news.google.com/') ||
+    lower.includes('/favicon') ||
+    lower.includes('1x1.') ||
+    lower.includes('pixel.') ||
+    lower.includes('spacer.')
+  ) {
+    return '';
+  }
   try {
-    const u = new URL(limpo);
+    const u = new URL(limpo.startsWith('//') ? 'https:' + limpo : limpo);
     if (u.hostname.includes('bing.com') && u.pathname.startsWith('/th')) {
       u.protocol = 'https:';
       if (!u.searchParams.has('w')) u.searchParams.set('w', '480');
@@ -632,13 +644,16 @@ function parseRssItems(xml, nomeVeiculo) {
 
     const pubDate = dataISO(extrairTag(bloco, 'pubDate') || extrairTag(bloco, 'dc:date'));
     const rawDesc = extrairTag(bloco, 'description');
+    const rawContent = extrairTag(bloco, 'content:encoded');
 
     const rawImg =
       extrairTag(bloco, 'News:Image') ||
       extrairAtributo(bloco, 'media:content', 'url') ||
       extrairAtributo(bloco, 'media:thumbnail', 'url') ||
       extrairAtributo(bloco, 'enclosure', 'url') ||
-      extrairAtributo(decodificarEntidades(rawDesc), 'img', 'src');
+      extrairTag(bloco, 'image') ||
+      extrairAtributo(decodificarEntidades(rawDesc), 'img', 'src') ||
+      extrairAtributo(decodificarEntidades(rawContent), 'img', 'src');
     const imagem = normalizarImagem(rawImg);
 
     let resumo = limparHtml(rawDesc, 190);
@@ -1088,6 +1103,10 @@ async function buscarArtigosAgregadosPais(dominios, qBusca, loc, per, topicTrad 
   }
 
   const consultas = [];
+  const bingInterval = per === '24h' ? '&qft=interval%3d%227%22' : (per === '7d' ? '&qft=interval%3d%228%22' : (per === '30d' ? '&qft=interval%3d%229%22' : ''));
+  consultas.push(
+    fetchXml(`https://www.bing.com/news/search?q=${encodeURIComponent(qConsulta)}&format=rss&mkt=${encodeURIComponent(loc.mkt)}${bingInterval}`, 3800)
+  );
   for (const lote of lotes) {
     const orClause = lote.map((d) => `site:${d}`).join(' OR ');
     const qPrincipal = `${qConsulta} (${orClause})${whenTag}`;
@@ -1366,6 +1385,13 @@ export default async (req) => {
       )
     ]);
 
+    const imagensPorTitulo = new Map();
+    for (const art of agregadosRaw) {
+      if (art && art.imagem && art.titulo) {
+        const tk = normalizar(art.titulo).replace(/[^a-z0-9]/g, '').slice(0, 42);
+        if (tk && !imagensPorTitulo.has(tk)) imagensPorTitulo.set(tk, art.imagem);
+      }
+    }
     const artigosPorDominio = new Map();
     for (const art of agregadosRaw) {
       if (!art || !art.url) continue;
@@ -1395,11 +1421,20 @@ export default async (req) => {
       const extras = artigosPorDominio.get(veic.d) || [];
       const todos = [...artigosRaw, ...extras];
       const combinados = deduplicarEOrdenar(todos, normalizar(qBaseEfetiva), termoNormTokens, maxArtigos, topic);
-      const artigos = combinados.map((art) => ({
-        ...art,
-        pais: codigoPaisVeic,
-        bandeira: bandeiraUrl,
-      }));
+      const artigos = combinados.map((art) => {
+        let img = art.imagem || '';
+        if (!img && art.titulo) {
+          const tk = normalizar(art.titulo).replace(/[^a-z0-9]/g, '').slice(0, 42);
+          if (tk && imagensPorTitulo.has(tk)) img = imagensPorTitulo.get(tk);
+        }
+        return {
+          ...art,
+          imagem: img,
+          image: img,
+          pais: codigoPaisVeic,
+          bandeira: bandeiraUrl,
+        };
+      });
       return {
         veiculo: veic.n,
         dominio: veic.d,
@@ -1428,6 +1463,15 @@ export default async (req) => {
     if (grupos7d.reduce((acc, g) => acc + g.artigos.length, 0) > totalInicial) {
       periodoEfetivo = '7d';
       grupos = grupos7d;
+      totalInicial = grupos.reduce((acc, g) => acc + g.artigos.length, 0);
+    }
+  }
+
+  if (!isEnrich && totalInicial === 0 && periodoEfetivo !== 'all' && (Date.now() - inicioExecucao < TEMPO_LIMITE_MS - 1800)) {
+    const gruposAll = await coletarPorPeriodo('all');
+    if (gruposAll.reduce((acc, g) => acc + g.artigos.length, 0) > 0) {
+      periodoEfetivo = 'all';
+      grupos = gruposAll;
       totalInicial = grupos.reduce((acc, g) => acc + g.artigos.length, 0);
     }
   }
