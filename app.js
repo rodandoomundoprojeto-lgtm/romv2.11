@@ -1731,11 +1731,12 @@
   function setPanelCollapsed(collapsed) {
     state.panelCollapsed = !!collapsed;
     if (panel) {
-      var isWorldMode = !state.cont;
-      panel.classList.toggle('collapsed', state.panelCollapsed);
-      panel.classList.toggle('open', !state.panelCollapsed);
-      panel.classList.toggle('floating-panel', isWorldMode);
-      panel.setAttribute('aria-hidden', String(state.panelCollapsed));
+      var isWorldMode = !state.cont && !state.country;
+      var shouldHidePanel = isWorldMode || state.panelCollapsed;
+      panel.classList.toggle('collapsed', shouldHidePanel);
+      panel.classList.toggle('open', !shouldHidePanel);
+      panel.classList.remove('floating-panel');
+      panel.setAttribute('aria-hidden', String(shouldHidePanel));
     }
     if (panelExpandPill) {
       if (state.panelCollapsed && state.cont) {
@@ -2500,11 +2501,12 @@
     backBtn.hidden = !state.cont;
     updateFocusCaribeBtn();
     mapEl.setAttribute('data-open', String(!!state.cont));
-    var isWorldMode = !state.cont;
-    panel.classList.toggle('open', !state.panelCollapsed);
-    panel.classList.toggle('floating-panel', isWorldMode);
-    panel.classList.toggle('collapsed', !!state.panelCollapsed);
-    panel.setAttribute('aria-hidden', String(!!state.panelCollapsed));
+    var isWorldMode = !state.cont && !state.country;
+    var shouldHidePanel = isWorldMode || !!state.panelCollapsed;
+    panel.classList.toggle('open', !shouldHidePanel);
+    panel.classList.remove('floating-panel');
+    panel.classList.toggle('collapsed', shouldHidePanel);
+    panel.setAttribute('aria-hidden', String(shouldHidePanel));
     if (hint) {
       hint.textContent = state.cont ? 'Clique em um país para ver os veículos de comunicação' : 'Clique em um continente para ver os países';
     }
@@ -2709,28 +2711,329 @@
       });
     }
 
-    if (!Object.keys(map).length) {
-      var fallbackHot = [
-        { a2: 'BR', title: 'Congresso e Planalto negociam prioridades fiscais e econômicas da semana', source: 'Agência Brasil', url: 'https://agenciabrasil.ebc.com.br/', summary: 'Lideranças partidárias definem pauta prioritária de votações econômicas e medidas fiscais.' },
-        { a2: 'US', title: 'Política comercial e tarifas globais concentram atenções em Washington', source: 'Reuters', url: 'https://www.reuters.com/', summary: 'Novas diretrizes de tarifas e comércio internacional são debatidas no Congresso americano.' },
-        { a2: 'UA', title: 'Negociações diplomáticas e segurança energética na Europa Oriental', source: 'Euronews', url: 'https://pt.euronews.com/', summary: 'Encontros diplomáticos abordam infraestrutura e rotas de abastecimento no leste europeu.' }
-      ];
-      fallbackHot.forEach(function (fb) {
-        var cObj = byA2[fb.a2];
+    var curatedPulsingDefaults = [
+      {
+        a2: 'BR',
+        title: 'Planalto e Congresso negociam Orçamento, meta fiscal e regras para emendas parlamentares',
+        shortTitle: 'Meta fiscal e pacote de corte de gastos',
+        source: 'Folha de S.Paulo',
+        category: 'Brasil · Política & Fiscal',
+        url: 'https://folha.uol.com.br/',
+        summary: 'Articulação entre Executivo e Legislativo busca equilibrar o cumprimento do arcabouço fiscal com transparência nas emendas.',
+        comparacaoSlug: 'orcamento-brasil-fiscal'
+      },
+      {
+        a2: 'US',
+        title: 'Transição e novas diretrizes em Washington sobre tarifas mobilizam governos e mercados globais',
+        shortTitle: 'Tarifas comerciais e reação global',
+        source: 'Associated Press',
+        category: 'Geopolítica & Economia',
+        url: 'https://apnews.com/hub/donald-trump',
+        summary: 'Definições da Casa Branca sobre tarifas comerciais levam União Europeia, China e América Latina a recalibrar estratégias.',
+        comparacaoSlug: 'transicao-eua-tarifas'
+      },
+      {
+        a2: 'UA',
+        title: 'Negociações diplomáticas e segurança energética na Europa Oriental',
+        shortTitle: 'Negociações de cessar-fogo e segurança no Leste Europeu',
+        source: 'The Kyiv Independent',
+        category: 'Segurança Internacional',
+        url: 'https://kyivindependent.com/',
+        summary: 'Encontros diplomáticos abordam infraestrutura elétrica e rotas de abastecimento no leste europeu.',
+        comparacaoSlug: null
+      },
+      {
+        a2: 'GB',
+        title: 'Reino Unido debate acordos comerciais pós-Brexit e orçamento de defesa europeu',
+        shortTitle: 'Acordos comerciais pós-Brexit e defesa europeia',
+        source: 'BBC News',
+        category: 'Europa & Economia',
+        url: 'https://www.bbc.com/news',
+        summary: 'Parlamento britânico discute cooperação comercial e financiamento estratégico com aliados europeus.',
+        comparacaoSlug: null
+      },
+      {
+        a2: 'FR',
+        title: 'Impasse orçamentário na Assembleia Nacional francesa e diretrizes da União Europeia',
+        shortTitle: 'Impasse orçamentário na Assembleia Nacional e UE',
+        source: 'Le Monde',
+        category: 'Política Europeia',
+        url: 'https://www.lemonde.fr/',
+        summary: 'Bancadas debatem metas de déficit público e competitividade industrial no bloco europeu.',
+        comparacaoSlug: null
+      }
+    ];
+
+    curatedPulsingDefaults.forEach(function (fb) {
+      var cObj = byA2[fb.a2];
+      if (!map[fb.a2]) {
         map[fb.a2] = {
           a2: fb.a2,
           countryName: (cObj && cObj.n) || fb.a2,
           title: fb.title,
+          shortTitle: fb.shortTitle,
           source: fb.source,
-          category: 'Destaque',
+          category: fb.category || 'Destaque',
           url: fb.url,
           summary: fb.summary,
-          termoBusca: extrairTermoAssuntoBusca(fb.title, 'Destaque')
+          termoBusca: extrairTermoAssuntoBusca(fb.shortTitle || fb.title, fb.category || 'Destaque'),
+          comparacaoSlug: fb.comparacaoSlug || null
         };
-      });
-    }
+      } else {
+        if (!map[fb.a2].shortTitle) map[fb.a2].shortTitle = fb.shortTitle;
+        if (fb.a2 === 'BR' && !map[fb.a2].comparacaoSlug) map[fb.a2].comparacaoSlug = 'orcamento-brasil-fiscal';
+        if (fb.a2 === 'US' && !map[fb.a2].comparacaoSlug) map[fb.a2].comparacaoSlug = 'transicao-eua-tarifas';
+      }
+    });
     return map;
   }
+
+  function getVeiculosCountByPais(paisIso) {
+    var a2 = String(paisIso || '').toUpperCase().trim();
+    if (!a2) return 0;
+    var cObj = byA2[a2];
+    var cMed = cObj ? countryMedia(cObj, cObj.c) : (DATA && DATA.media ? DATA.media[a2] : null);
+    var veiculosFiltrados = (cMed && Array.isArray(cMed.outlets)) ? cMed.outlets : [];
+    return veiculosFiltrados.length;
+  }
+
+  function obterManchetesAgrupadasPorEspectro(paisIso, hotItem) {
+    var a2 = String(paisIso || '').toUpperCase().trim();
+    if (!a2) return [];
+    var slug = (hotItem && hotItem.comparacaoSlug) || '';
+    if (!slug) {
+      if (a2 === 'BR') slug = 'orcamento-brasil-fiscal';
+      else if (a2 === 'US') slug = 'transicao-eua-tarifas';
+    }
+    var comp = (slug && EDITORIAL && EDITORIAL.comparacoes && EDITORIAL.comparacoes[slug])
+      ? EDITORIAL.comparacoes[slug]
+      : null;
+
+    var specMap = { E: [], I: [], D: [] };
+    var specLabels = { E: 'Esquerda', I: 'Centro', D: 'Direita' };
+
+    if (comp && String(comp.paisIso || '').toUpperCase() === a2 && Array.isArray(comp.veiculosComparados)) {
+      var cObj = byA2[a2];
+      var cMed = cObj ? countryMedia(cObj, cObj.c) : (DATA && DATA.media ? DATA.media[a2] : null);
+      var outletsByName = {};
+      if (cMed && Array.isArray(cMed.outlets)) {
+        cMed.outlets.forEach(function (o) {
+          if (o && o.n) outletsByName[o.n.toLowerCase()] = o;
+        });
+      }
+
+      comp.veiculosComparados.forEach(function (v) {
+        if (!v || !v.veiculo) return;
+        var matchedOutlet = outletsByName[String(v.veiculo).toLowerCase()];
+        var biasCode = v.vies || (matchedOutlet && matchedOutlet.b) || 'I';
+        if (!specMap[biasCode]) biasCode = 'I';
+        specMap[biasCode].push({
+          veiculo: v.veiculo,
+          pais: v.pais || a2,
+          vies: biasCode,
+          rotuloEspectro: specLabels[biasCode],
+          titulo: v.tituloPT || v.tituloOrig || '',
+          enfoque: v.enfoque || '',
+          url: v.url || (matchedOutlet && matchedOutlet.u) || '#'
+        });
+      });
+    } else if (hotItem && hotItem.title) {
+      specMap.I.push({
+        veiculo: hotItem.source || 'Imprensa',
+        pais: a2,
+        vies: 'I',
+        rotuloEspectro: 'Centro',
+        titulo: hotItem.title,
+        enfoque: hotItem.summary || '',
+        url: hotItem.url || '#'
+      });
+    }
+
+    var grupos = [];
+    ['E', 'I', 'D'].forEach(function (code) {
+      if (specMap[code] && specMap[code].length > 0) {
+        grupos.push({
+          codigo: code,
+          rotulo: specLabels[code],
+          manchetes: specMap[code]
+        });
+      }
+    });
+    return grupos;
+  }
+
+  function getDestaquesPulsando() {
+    if (!hotNewsByCountry || !Object.keys(hotNewsByCountry).length) {
+      hotNewsByCountry = buildHotNewsMapFromEditorial();
+    }
+    var preferredOrder = ['BR', 'US', 'UA', 'GB', 'FR', 'DE', 'AR', 'CN', 'IL', 'JP'];
+    var activeCodes = Object.keys(hotNewsByCountry);
+    activeCodes.sort(function (a, b) {
+      var ia = preferredOrder.indexOf(a);
+      var ib = preferredOrder.indexOf(b);
+      if (ia === -1 && ib === -1) return a.localeCompare(b);
+      if (ia === -1) return 1;
+      if (ib === -1) return -1;
+      return ia - ib;
+    });
+
+    var selecionados = activeCodes.slice(0, 5);
+    return selecionados.map(function (iso) {
+      var hot = hotNewsByCountry[iso] || {};
+      var cObj = byA2[iso] || { id: iso, a2: iso, n: hot.countryName || iso, c: 'europa' };
+      var cMed = countryMedia(cObj, cObj.c);
+      var veiculosFiltrados = (cMed && Array.isArray(cMed.outlets)) ? cMed.outlets : [];
+      var manchetesAgrupadas = obterManchetesAgrupadasPorEspectro(iso, hot);
+      var temComparacao = manchetesAgrupadas.length >= 2;
+      var compSlug = hot.comparacaoSlug || (iso === 'BR' ? 'orcamento-brasil-fiscal' : (iso === 'US' ? 'transicao-eua-tarifas' : ''));
+      var rawTitle = hot.shortTitle || hot.title || 'Notícias em destaque agora';
+
+      return {
+        paisIso: iso,
+        paisNome: countryDisplayName(cObj, cObj.c) || hot.countryName || iso,
+        bandeira: getFlagEmoji(iso),
+        temaTitulo: rawTitle,
+        temaSlug: temComparacao ? compSlug : (hot.termoBusca || ''),
+        veiculosCount: veiculosFiltrados.length,
+        temComparacaoEspectro: temComparacao,
+        espectrosDisponiveis: manchetesAgrupadas.map(function (g) { return g.rotulo; }),
+        manchetesAgrupadas: manchetesAgrupadas
+      };
+    });
+  }
+
+  function selecionarPais(paisIso, opts) {
+    opts = opts || {};
+    var iso = String(paisIso || '').toUpperCase().trim();
+    if (!iso) return;
+    var cObj = byA2[iso];
+    if (!cObj) return;
+    var contKey = cObj.c || 'europa';
+    go(contKey, cObj, {
+      keepPanelClosed: !!opts.keepPanelClosed,
+      replaceUrl: !!opts.replaceUrl
+    });
+    var trackEl = document.getElementById('pulsando-agora-track');
+    if (trackEl) {
+      trackEl.querySelectorAll('.pulsando-card').forEach(function (card) {
+        var isMatch = card.getAttribute('data-country-iso') === iso;
+        card.classList.toggle('is-active', isMatch);
+      });
+    }
+  }
+
+  function handlePulsandoCardActivation(item) {
+    if (!item || !item.paisIso) return;
+    if (item.temComparacaoEspectro && item.temaSlug) {
+      selecionarPais(item.paisIso, { keepPanelClosed: true, replaceUrl: true });
+      showComparisonPage(item.temaSlug, {
+        inlineBelowMap: true,
+        paisIso: item.paisIso,
+        replaceUrl: true
+      });
+      var compViewEl = document.getElementById('comparison-view');
+      if (compViewEl && !compViewEl.hidden) {
+        setTimeout(function () {
+          compViewEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 60);
+      }
+    } else {
+      var compViewHide = document.getElementById('comparison-view');
+      if (compViewHide) {
+        compViewHide.hidden = true;
+        compViewHide.innerHTML = '';
+      }
+      selecionarPais(item.paisIso, { keepPanelClosed: false });
+      if (panel && window.innerWidth <= 768) {
+        setTimeout(function () {
+          panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 120);
+      }
+    }
+  }
+
+  function renderPulsandoAgoraTrack() {
+    var trackEl = document.getElementById('pulsando-agora-track');
+    if (!trackEl) return;
+    var destaques = getDestaquesPulsando();
+    if (!destaques || !destaques.length) {
+      trackEl.innerHTML = '';
+      return;
+    }
+
+    var activeIso = (state && state.country && state.country.a2) ? String(state.country.a2).toUpperCase() : '';
+    var html = '';
+    destaques.forEach(function (item, idx) {
+      var cObj = byA2[item.paisIso];
+      var flagHtml = (cObj && typeof countryFlag === 'function')
+        ? countryFlag(cObj, 'flag-xs', cObj.c)
+        : '<span class="pulsando-card-emoji-flag" aria-hidden="true">' + esc(item.bandeira) + '</span>';
+      var isCurrent = activeIso && activeIso === item.paisIso;
+
+      var footerHtml = '';
+      if (item.temComparacaoEspectro) {
+        var pillsHtml = item.espectrosDisponiveis.map(function (rotulo) {
+          var codeCls = rotulo === 'Esquerda' ? 'spec-e' : (rotulo === 'Direita' ? 'spec-d' : 'spec-i');
+          return '<span class="pulsando-spec-pill ' + codeCls + '">' + esc(rotulo) + '</span>';
+        }).join('<span class="pulsando-spec-dot" aria-hidden="true">•</span>');
+
+        footerHtml =
+          '<div class="pulsando-card-spectra" aria-label="Espectros disponíveis: ' + esc(item.espectrosDisponiveis.join(', ')) + '">' +
+            pillsHtml +
+          '</div>' +
+          '<span class="pulsando-card-cta is-compare">Comparar cobertura →</span>';
+      } else {
+        footerHtml =
+          '<div class="pulsando-card-spectra is-single">' +
+            '<span class="pulsando-spec-single">Cobertura em tempo real</span>' +
+          '</div>' +
+          '<span class="pulsando-card-cta is-map">Ver no mapa →</span>';
+      }
+
+      html +=
+        '<article class="pulsando-card' + (isCurrent ? ' is-active' : '') + '" role="listitem" tabindex="0"' +
+          ' data-pulsando-idx="' + idx + '"' +
+          ' data-country-iso="' + esc(item.paisIso) + '"' +
+          ' data-tema-slug="' + esc(item.temaSlug || '') + '"' +
+          ' data-tem-comparacao="' + String(!!item.temComparacaoEspectro) + '"' +
+          ' aria-label="' + esc(item.paisNome + ' — ' + item.veiculosCount + ' veículos — ' + item.temaTitulo) + '">' +
+          '<div class="pulsando-card-top">' +
+            '<div class="pulsando-card-country">' +
+              flagHtml +
+              '<span class="pulsando-card-country-name">' + esc(item.paisNome) + '</span>' +
+            '</div>' +
+            '<span class="pulsando-card-badge">' + esc(item.veiculosCount) + ' veículos</span>' +
+          '</div>' +
+          '<div class="pulsando-card-body">' +
+            '<h3 class="pulsando-card-title">' + esc(item.temaTitulo) + '</h3>' +
+          '</div>' +
+          '<div class="pulsando-card-footer">' +
+            footerHtml +
+          '</div>' +
+        '</article>';
+    });
+
+    trackEl.innerHTML = html;
+
+    trackEl.querySelectorAll('.pulsando-card').forEach(function (cardEl) {
+      var idx = parseInt(cardEl.getAttribute('data-pulsando-idx'), 10);
+      var itemObj = destaques[idx];
+      if (!itemObj) return;
+      cardEl.addEventListener('click', function () {
+        handlePulsandoCardActivation(itemObj);
+      });
+      cardEl.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          handlePulsandoCardActivation(itemObj);
+        }
+      });
+    });
+  }
+
+  window.getDestaquesPulsando = getDestaquesPulsando;
+  window.selecionarPais = selecionarPais;
+  window.renderPulsandoAgoraTrack = renderPulsandoAgoraTrack;
 
   function updateHotNewsPillUI() {
     var pill = document.getElementById('map-hot-news-pill');
@@ -2753,6 +3056,7 @@
     hotNewsByCountry = buildHotNewsMapFromEditorial();
     hotPulseActive = true;
     updateHotNewsPillUI();
+    renderPulsandoAgoraTrack();
     var pill = document.getElementById('map-hot-news-pill');
     if (pill) pill.classList.add('is-pulsing');
     if (countrySel) {
@@ -3189,72 +3493,13 @@
   }
 
   function renderWorld() {
-    var brCountry = byA2['BR'] || { id: '076', a2: 'BR', n: 'Brasil', c: 'sul' };
-    var brMedia = countryMedia(brCountry, 'sul');
-    var brOutletsCount = (brMedia && brMedia.outlets) ? brMedia.outlets.length : 34;
-
-    var h = '<div class="floating-context-panel world-welcome-card" role="region" aria-label="Painel Contextual do Mapa">' +
-      '<div class="floating-panel-top">' +
-        '<div class="floating-badge-live">' +
-          '<span class="nav-live-dot" aria-hidden="true"></span>' +
-          '<span>Destaque ao vivo · Brasil</span>' +
-        '</div>' +
-        '<div class="floating-panel-top-right">' +
-          '<span class="floating-panel-flag" aria-hidden="true">🇧🇷</span>' +
-          '<button type="button" class="panel-close floating-panel-close" data-close aria-label="Recolher destaque" title="Recolher destaque"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>' +
-        '</div>' +
-      '</div>' +
-      '<h2 class="floating-panel-title">Brasil em Foco</h2>' +
-      '<p class="floating-panel-meta"><strong>' + brOutletsCount + ' veículos</strong> cobrindo o país agora</p>' +
-      '<p class="floating-panel-sub">Congresso e Planalto buscam consenso sobre metas fiscais e arcabouço orçamentário para 2026.</p>' +
-      '<div class="floating-panel-actions">' +
-        '<a class="btn-compare-primary" href="/comparar/orcamento-brasil-fiscal" data-spa-link>' +
-          '<span class="btn-compare-icon" aria-hidden="true">⚖️</span> Comparar cobertura (34 veículos) →' +
-        '</a>' +
-        '<button type="button" class="btn-secondary" id="btn-floating-open-br">' +
-          '<span>🗺️</span> Ver veículos do Brasil no mapa' +
-        '</button>' +
-      '</div>' +
-      '<div class="world-welcome-shortcuts">' +
-        '<p class="world-shortcuts-label">Ou explore por continentes no mapa:</p>' +
-        '<div class="world-shortcuts-pills">' +
-          '<button type="button" class="world-shortcut-pill" data-cont="sul">🌎 América do Sul</button>' +
-          '<button type="button" class="world-shortcut-pill" data-cont="europa">🌍 Europa</button>' +
-          '<button type="button" class="world-shortcut-pill" data-cont="norte">🌎 América do Norte</button>' +
-          '<button type="button" class="world-shortcut-pill" data-cont="asia">🌏 Ásia</button>' +
-          '<button type="button" class="world-shortcut-pill" data-cont="africa">🌍 África</button>' +
-        '</div>' +
-      '</div>' +
-    '</div>';
-
-    panel.innerHTML = h;
-
-    var closeWorldBtn = panel.querySelector('[data-close]');
-    if (closeWorldBtn) {
-      closeWorldBtn.addEventListener('click', function () {
-        setPanelCollapsed(true);
-      });
+    if (panel) {
+      panel.innerHTML = '';
+      panel.classList.remove('open', 'floating-panel');
+      panel.classList.add('collapsed');
+      panel.setAttribute('aria-hidden', 'true');
     }
-
-    var btnOpenBr = panel.querySelector('#btn-floating-open-br');
-    if (btnOpenBr) {
-      btnOpenBr.addEventListener('click', function () {
-        setPanelCollapsed(false);
-        go('sul', brCountry);
-      });
-    }
-
-    panel.querySelectorAll('.world-shortcut-pill').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        var cKey = btn.getAttribute('data-cont');
-        if (cKey && CONT[cKey]) {
-          setPanelCollapsed(false);
-          go(cKey, null);
-        }
-      });
-    });
-
-    bindDynamicEditorialActions(panel);
+    renderPulsandoAgoraTrack();
   }
   function countryRow(c) {
     var m = countryMedia(c, state.cont);
@@ -6387,8 +6632,10 @@
       return;
     }
 
+    var targetIso = String(opts.paisIso || compData.paisIso || (compData.slug && compData.slug.indexOf('brasil') > -1 ? 'BR' : (compData.slug && compData.slug.indexOf('eua') > -1 ? 'US' : ''))).toUpperCase();
+    var dynamicVeiculosCount = targetIso ? getVeiculosCountByPais(targetIso) : 0;
     var tituloFato = compData.tituloFato || compData.tituloNeutro || 'Comparação de Cobertura Editorial';
-    var totalVeiculos = compData.totalVeiculos || compData.veiculosCount || 20;
+    var totalVeiculos = dynamicVeiculosCount || compData.totalVeiculos || compData.veiculosCount || 20;
     var paisesCobertura = compData.paisesCobertura || compData.paisesCount || 10;
     var atualizadoMin = compData.atualizadoMinutosAtras || compData.atualizadoMin || 15;
 
@@ -6446,37 +6693,52 @@
       return out;
     })();
 
+    var isInlineBelowMap = !!opts.inlineBelowMap;
     state.notFound = false;
     state.hubRoute = null;
     state.entendaSlug = null;
     state.editorialSection = null;
     state.compareSlug = compData.slug;
-    state.cont = null;
-    state.country = null;
-    hideMobileChip();
-    if (panelFloatingClose) panelFloatingClose.hidden = true;
-    if (notFoundView) notFoundView.hidden = true;
-    if (mapWrapSection) mapWrapSection.hidden = true;
-    if (quickCountryView) quickCountryView.hidden = true;
-    var vitrineIaSec = document.getElementById('vitrine-ia');
-    if (vitrineIaSec) vitrineIaSec.hidden = true;
-    if (thematicHubView) {
-      thematicHubView.hidden = true;
-      thematicHubView.innerHTML = '';
-    }
-    if (editorialHomeWrap) {
-      editorialHomeWrap.hidden = true;
-      editorialHomeWrap.classList.remove('is-ultimas-mode');
+    if (!isInlineBelowMap) {
+      state.cont = null;
+      state.country = null;
+      hideMobileChip();
+      if (panelFloatingClose) panelFloatingClose.hidden = true;
+      if (notFoundView) notFoundView.hidden = true;
+      if (mapWrapSection) mapWrapSection.hidden = true;
+      if (quickCountryView) quickCountryView.hidden = true;
+      var vitrineIaSec = document.getElementById('vitrine-ia');
+      if (vitrineIaSec) vitrineIaSec.hidden = true;
+      if (thematicHubView) {
+        thematicHubView.hidden = true;
+        thematicHubView.innerHTML = '';
+      }
+      if (editorialHomeWrap) {
+        editorialHomeWrap.hidden = true;
+        editorialHomeWrap.classList.remove('is-ultimas-mode');
+      }
+    } else {
+      if (notFoundView) notFoundView.hidden = true;
+      if (mapWrapSection) mapWrapSection.hidden = false;
     }
 
     var compView = document.getElementById('comparison-view');
     if (!compView) return;
     compView.hidden = false;
+    compView.classList.toggle('is-inline-below-map', isInlineBelowMap);
+
+    var spectrumGroups = targetIso ? obterManchetesAgrupadasPorEspectro(targetIso, { comparacaoSlug: compData.slug }) : [];
+    var targetCountryObj = targetIso ? byA2[targetIso] : null;
+    var targetCountryName = targetCountryObj ? countryDisplayName(targetCountryObj, targetCountryObj.c) : targetIso;
 
     var h = '<div class="comparison-container">';
 
     h += '<div class="comparison-nav-bar">';
-    h += '<a href="/" class="comparison-back-btn" data-home data-spa-link>← Voltar ao mapa</a>';
+    if (isInlineBelowMap) {
+      h += '<button type="button" class="comparison-back-btn btn-close-inline-comparison" data-close-inline-comparison>↑ Voltar para a faixa Pulsando Agora</button>';
+    } else {
+      h += '<a href="/" class="comparison-back-btn" data-home data-spa-link>← Voltar ao mapa</a>';
+    }
     h += '<span class="comparison-nav-sep" aria-hidden="true">/</span>';
     h += '<a href="/resumo-do-dia" class="comparison-nav-link" data-spa-link>Resumo do dia</a>';
     h += '<span class="comparison-nav-sep" aria-hidden="true">/</span>';
@@ -6486,17 +6748,53 @@
     h += '<header class="comparison-header">';
     h += '<div class="comparison-badge-row">';
     h += '<span class="comparison-tag">' + esc(compData.categoria) + '</span>';
-    h += '<span class="comparison-live-badge"><span class="comparison-live-dot" aria-hidden="true"></span> Cobertura Internacional</span>';
+    h += '<span class="comparison-live-badge"><span class="comparison-live-dot" aria-hidden="true"></span> Cobertura Comparada</span>';
     h += '</div>';
     h += '<h1 class="comparison-title">' + esc(tituloFato) + '</h1>';
     h += '<div class="comparison-meta-row">';
-    h += '<span class="comparison-meta-item"><strong>' + esc(totalVeiculos) + ' veículos</strong> analisados</span>';
+    h += '<span class="comparison-meta-item"><strong>' + esc(totalVeiculos) + ' veículos</strong>' + (targetCountryName ? ' (' + esc(targetCountryName) + ')' : ' analisados') + '</span>';
     h += '<span class="comparison-meta-bullet" aria-hidden="true">•</span>';
     h += '<span class="comparison-meta-item"><strong>' + esc(paisesCobertura) + ' países</strong></span>';
     h += '<span class="comparison-meta-bullet" aria-hidden="true">•</span>';
     h += '<span class="comparison-meta-item">Atualizado há <strong>' + esc(atualizadoMin) + ' min</strong></span>';
     h += '</div>';
     h += '</header>';
+
+    if (spectrumGroups.length >= 2) {
+      h += '<section class="comp-spectrum-section" aria-label="Manchetes agrupadas por espectro editorial">';
+      h += '<div class="comp-spectrum-head">';
+      h += '<h2 class="comp-spectrum-title">Comparação Direta por Espectro Editorial' + (targetCountryName ? ' · ' + esc(targetCountryName) : '') + '</h2>';
+      h += '<p class="comp-spectrum-sub">Como veículos de diferentes linhas editoriais enquadram o mesmo acontecimento agora:</p>';
+      h += '</div>';
+      h += '<div class="comp-spectrum-grid">';
+      spectrumGroups.forEach(function (grp) {
+        var specCodeLow = String(grp.codigo || 'I').toLowerCase();
+        var headerLabel = grp.codigo === 'E' ? 'Esquerda' : (grp.codigo === 'D' ? 'Direita' : 'Imparcial / Centro');
+        h += '<div class="comp-spectrum-col spec-col-' + esc(specCodeLow) + '">';
+        h += '<div class="comp-spectrum-col-header">';
+        h += '<span class="comp-spectrum-dot spec-dot-' + esc(specCodeLow) + '" aria-hidden="true"></span>';
+        h += '<h3>' + esc(headerLabel) + '</h3>';
+        h += '<span class="comp-spectrum-count">' + grp.manchetes.length + (grp.manchetes.length === 1 ? ' fonte' : ' fontes') + '</span>';
+        h += '</div>';
+        h += '<ul class="comp-spectrum-list">';
+        grp.manchetes.forEach(function (mItem) {
+          h += '<li class="comp-spectrum-item">';
+          h += '<div class="comp-spectrum-outlet-row">';
+          h += '<strong class="comp-spectrum-outlet">' + esc(mItem.veiculo) + '</strong>';
+          h += '<span class="comp-spectrum-pill spec-pill-' + esc(specCodeLow) + '">' + esc(grp.rotulo) + '</span>';
+          h += '</div>';
+          h += '<h4 class="comp-spectrum-headline"><a href="' + esc(mItem.url) + '" target="_blank" rel="noopener noreferrer">' + esc(mItem.titulo) + '</a></h4>';
+          if (mItem.enfoque) {
+            h += '<p class="comp-spectrum-focus">' + esc(mItem.enfoque) + '</p>';
+          }
+          h += '</li>';
+        });
+        h += '</ul>';
+        h += '</div>';
+      });
+      h += '</div>';
+      h += '</section>';
+    }
 
     h += '<section class="consenso-box" aria-labelledby="consenso-heading">';
     h += '<div class="consenso-header">';
@@ -6719,14 +7017,28 @@
     var pageTitle = tituloFato + ' — Comparação Editorial | Rodando o Mundo';
     var pageDesc = 'Compare como ' + totalVeiculos + ' veículos de ' + paisesCobertura + ' países cobrem: "' + tituloFato + '". Veja o que é consenso e as diferentes perspectivas.';
     updateSeoMeta(pageTitle, pageDesc, '/comparar/' + compData.slug);
-    window.scrollTo({ top: 0, behavior: 'auto' });
+    if (!isInlineBelowMap) {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
 
-    if (!opts.fromPopState) {
+    if (!opts.fromPopState && !isInlineBelowMap) {
       try {
         var targetUrl = '/comparar/' + compData.slug;
         if (opts.replaceUrl) history.replaceState({ compareSlug: compData.slug }, '', targetUrl);
         else if (location.pathname !== targetUrl || location.hash) history.pushState({ compareSlug: compData.slug }, '', targetUrl);
       } catch (e) {}
+    }
+
+    var closeInlineBtn = compView.querySelector('[data-close-inline-comparison]');
+    if (closeInlineBtn) {
+      closeInlineBtn.addEventListener('click', function () {
+        compView.hidden = true;
+        compView.classList.remove('is-inline-below-map');
+        var pulsandoSec = document.getElementById('pulsando-agora-container') || document.getElementById('map-wrap-section');
+        if (pulsandoSec) {
+          pulsandoSec.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      });
     }
 
     var consensoToggle = compView.querySelector('.consenso-toggle-btn');
@@ -7829,7 +8141,8 @@
 
       var compSlug = item.comparacaoSlug;
       var compObj = (compSlug && EDITORIAL.comparacoes && EDITORIAL.comparacoes[compSlug]) ? EDITORIAL.comparacoes[compSlug] : null;
-      var totalVeiculos = (compObj && compObj.totalVeiculos) ? compObj.totalVeiculos : (item.veiculosRelacionados || 18);
+      var compIso = (compObj && compObj.paisIso) ? compObj.paisIso : cCodeUp;
+      var totalVeiculos = getVeiculosCountByPais(compIso) || (compObj && (compObj.totalVeiculos || compObj.veiculosCount)) || (item.veiculosRelacionados || 18);
 
       rh += '<li class="resumo-dia-card" id="' + cardId + '">';
       rh += '<div class="resumo-rank-col"><span class="resumo-rank-badge" title="Ordem de relevância">#' + esc(item.relevancia) + '</span></div>';
@@ -9017,7 +9330,7 @@
     if (!opts.keepListMode) {
       state.viewMode = 'map';
     }
-    setPanelCollapsed(false);
+    setPanelCollapsed(!!opts.keepPanelClosed);
     var stageElCheck = mapWrapSection ? mapWrapSection.querySelector('.stage') : null;
     var wasHiddenMap = (mapWrapSection && mapWrapSection.hidden) || (stageElCheck && stageElCheck.hidden);
     hideSpecialViews();
@@ -9069,6 +9382,13 @@
     hideMobileChip();
     paintMap();
     render();
+    var pulsandoTrackSync = document.getElementById('pulsando-agora-track');
+    if (pulsandoTrackSync) {
+      var curA2 = (country && country.a2) ? String(country.a2).toUpperCase() : '';
+      pulsandoTrackSync.querySelectorAll('.pulsando-card').forEach(function (card) {
+        card.classList.toggle('is-active', !!curA2 && card.getAttribute('data-country-iso') === curA2);
+      });
+    }
     if (opts.pinnedOutlet) {
       setTimeout(function () {
         var el = panel.querySelector('.outlet.is-pinned') || panel.querySelector('#veiculos');

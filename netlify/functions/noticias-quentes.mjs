@@ -1,0 +1,746 @@
+// GET /api/noticias-quentes
+// Proxy / Fallback Serverless (Netlify Functions) para o Pulso de Notícias Quentes e Países em Alta no Mapa (Motor V2).
+// Segue estritamente o contrato .agents/contracts/INT-V2-SITE.md.
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import { json } from '../lib/ia.mjs';
+
+const CORS_HEADERS = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Methods': 'GET, OPTIONS',
+  'Access-Control-Allow-Headers': 'Content-Type, Accept, Authorization',
+};
+
+const MAPA_CATEGORIA_V2 = {
+  Geopolitica_Radar: 'geopolitica',
+  Politica: 'politica',
+  Economia: 'economia',
+  Cultura: 'cultura',
+  Eleicoes: 'politica',
+  Resumo_Ultimas: 'geral',
+};
+
+const MAPA_LABEL_EDITORIA = {
+  Geopolitica_Radar: 'Radar',
+  Politica: 'Política',
+  Economia: 'Economia',
+  Cultura: 'Cultura',
+  Eleicoes: 'Eleições',
+  Resumo_Ultimas: 'Últimas Notícias',
+};
+
+const MAPA_ROTAS_EDITORIA = {
+  Politica: '/politica',
+  Economia: '/economia',
+  Cultura: '/cultura',
+  Eleicoes: '/eleicoes',
+  Geopolitica_Radar: '/radar',
+  Resumo_Ultimas: '/ultimas-noticias',
+};
+
+export const CATALOGO_PAISES = [
+  {
+    a2: 'US',
+    countryName: 'Estados Unidos',
+    continente: 'norte',
+    paginaTematica: '/politica/estados-unidos',
+    termos: [
+      'estados unidos', 'eua', 'faa', 'washington', 'trump', 'biden', 'casa branca',
+      'pentagono', 'wall street', 'reserva federal', 'departamento de estado',
+      'congresso dos estados unidos', 'aviacao americana', 'infraestruturas criticas americanas',
+      'nova york', 'california', 'texas', 'florida',
+    ],
+  },
+  {
+    a2: 'PH',
+    countryName: 'Filipinas',
+    continente: 'asia',
+    paginaTematica: '/radar',
+    termos: ['filipinas', 'manila', 'filipino', 'filipina', 'marcos jr', 'cupula asean manila'],
+  },
+  {
+    a2: 'CN',
+    countryName: 'China',
+    continente: 'asia',
+    paginaTematica: '/economia/china',
+    termos: [
+      'china', 'chines', 'chinesa', 'chineses', 'pequim', 'beijing', 'xi jinping',
+      'xangai', 'shanghai', 'shenzhen', 'partido comunista chines', 'taiwan',
+    ],
+  },
+  {
+    a2: 'AR',
+    countryName: 'Argentina',
+    continente: 'sul',
+    paginaTematica: '/politica/argentina',
+    termos: ['argentina', 'argentino', 'argentinos', 'buenos aires', 'milei', 'casa rosada', 'patagonia'],
+  },
+  {
+    a2: 'FR',
+    countryName: 'França',
+    continente: 'europa',
+    paginaTematica: '/politica/franca',
+    termos: ['franca', 'frances', 'francesa', 'paris', 'macron', 'eliseu'],
+  },
+  {
+    a2: 'DE',
+    countryName: 'Alemanha',
+    continente: 'europa',
+    paginaTematica: '/economia/alemanha',
+    termos: ['alemanha', 'alemao', 'alema', 'berlim', 'scholz', 'merz', 'bundestag', 'frankfurt'],
+  },
+  {
+    a2: 'GB',
+    countryName: 'Reino Unido',
+    continente: 'europa',
+    paginaTematica: '/politica/reino-unido',
+    termos: ['reino unido', 'inglaterra', 'londres', 'britanico', 'britanica', 'starmer', 'escocia', 'downing street'],
+  },
+  {
+    a2: 'PT',
+    countryName: 'Portugal',
+    continente: 'europa',
+    paginaTematica: '/ultimas-noticias',
+    termos: ['portugal', 'portugues', 'portuguesa', 'lisboa', 'porto'],
+  },
+  {
+    a2: 'UA',
+    countryName: 'Ucrânia',
+    continente: 'europa',
+    paginaTematica: '/guerra-ucrania',
+    termos: ['ucrania', 'ucraniano', 'ucraniana', 'kiev', 'kyiv', 'zelensky', 'donbass', 'kharkiv'],
+  },
+  {
+    a2: 'RU',
+    countryName: 'Rússia',
+    continente: 'europa',
+    paginaTematica: '/guerra-ucrania',
+    termos: ['russia', 'russo', 'russa', 'moscou', 'kremlin', 'putin', 'sovietica', 'uniao sovietica'],
+  },
+  {
+    a2: 'IL',
+    countryName: 'Israel',
+    continente: 'asia',
+    paginaTematica: '/radar',
+    termos: ['israel', 'israelense', 'tel aviv', 'jerusalem', 'netanyahu', 'mossad', 'faixa de gaza', 'idf'],
+  },
+  {
+    a2: 'IR',
+    countryName: 'Irã',
+    continente: 'asia',
+    paginaTematica: '/radar',
+    termos: ['ira', 'iraniano', 'iraniana', 'teera', 'khamenei', 'persa', 'uranio enriquecido'],
+  },
+  {
+    a2: 'JP',
+    countryName: 'Japão',
+    continente: 'asia',
+    paginaTematica: '/economia',
+    termos: ['japao', 'japones', 'japonesa', 'toquio', 'tokyo', 'iene'],
+  },
+  {
+    a2: 'IN',
+    countryName: 'Índia',
+    continente: 'asia',
+    paginaTematica: '/economia',
+    termos: ['india', 'indiano', 'indiana', 'nova delhi', 'modi', 'mumbai'],
+  },
+  {
+    a2: 'MX',
+    countryName: 'México',
+    continente: 'norte',
+    paginaTematica: '/ultimas-noticias',
+    termos: ['mexico', 'mexicano', 'mexicana', 'cidade do mexico', 'sheinbaum'],
+  },
+  {
+    a2: 'ES',
+    countryName: 'Espanha',
+    continente: 'europa',
+    paginaTematica: '/ultimas-noticias',
+    termos: ['espanha', 'espanhol', 'espanhola', 'madri', 'madrid', 'barcelona', 'sanchez'],
+  },
+  {
+    a2: 'IT',
+    countryName: 'Itália',
+    continente: 'europa',
+    paginaTematica: '/ultimas-noticias',
+    termos: ['italia', 'italiano', 'italiana', 'roma', 'meloni', 'milao'],
+  },
+  {
+    a2: 'CA',
+    countryName: 'Canadá',
+    continente: 'norte',
+    paginaTematica: '/ultimas-noticias',
+    termos: ['canada', 'canadense', 'ottawa', 'trudeau', 'toronto', 'vancouver'],
+  },
+  {
+    a2: 'ZA',
+    countryName: 'África do Sul',
+    continente: 'africa',
+    paginaTematica: '/ultimas-noticias',
+    termos: ['africa do sul', 'sul-africano', 'sul-africana', 'pretoria', 'joanesburgo', 'cidade do cabo'],
+  },
+  {
+    a2: 'CO',
+    countryName: 'Colômbia',
+    continente: 'sul',
+    paginaTematica: '/ultimas-noticias',
+    termos: ['colombia', 'colombiano', 'colombiana', 'bogota', 'gustavo petro'],
+  },
+  {
+    a2: 'CL',
+    countryName: 'Chile',
+    continente: 'sul',
+    paginaTematica: '/ultimas-noticias',
+    termos: ['chile', 'chileno', 'chilena', 'santiago', 'boric'],
+  },
+  {
+    a2: 'VE',
+    countryName: 'Venezuela',
+    continente: 'sul',
+    paginaTematica: '/ultimas-noticias',
+    termos: ['venezuela', 'venezuelano', 'venezuelana', 'caracas', 'maduro'],
+  },
+  {
+    a2: 'PY',
+    countryName: 'Paraguai',
+    continente: 'sul',
+    paginaTematica: '/ultimas-noticias',
+    termos: ['paraguai', 'paraguaio', 'assuncao', 'itaipu'],
+  },
+  {
+    a2: 'UY',
+    countryName: 'Uruguai',
+    continente: 'sul',
+    paginaTematica: '/ultimas-noticias',
+    termos: ['uruguai', 'uruguaio', 'montevideu'],
+  },
+  {
+    a2: 'PE',
+    countryName: 'Peru',
+    continente: 'sul',
+    paginaTematica: '/ultimas-noticias',
+    termos: ['peru', 'peruano', 'lima'],
+  },
+  {
+    a2: 'KR',
+    countryName: 'Coreia do Sul',
+    continente: 'asia',
+    paginaTematica: '/tecnologia',
+    termos: ['coreia do sul', 'sul-coreano', 'seul'],
+  },
+  {
+    a2: 'KP',
+    countryName: 'Coreia do Norte',
+    continente: 'asia',
+    paginaTematica: '/radar',
+    termos: ['coreia do norte', 'norte-coreano', 'pyongyang', 'kim jong'],
+  },
+  {
+    a2: 'SA',
+    countryName: 'Arábia Saudita',
+    continente: 'asia',
+    paginaTematica: '/economia',
+    termos: ['arabia saudita', 'saudita', 'riad'],
+  },
+  {
+    a2: 'TR',
+    countryName: 'Turquia',
+    continente: 'europa',
+    paginaTematica: '/radar',
+    termos: ['turquia', 'turco', 'ancara', 'istambul', 'erdogan'],
+  },
+  {
+    a2: 'EG',
+    countryName: 'Egito',
+    continente: 'africa',
+    paginaTematica: '/radar',
+    termos: ['egito', 'egipcio', 'cairo', 'suez'],
+  },
+  {
+    a2: 'AU',
+    countryName: 'Austrália',
+    continente: 'oceania',
+    paginaTematica: '/ultimas-noticias',
+    termos: ['australia', 'australiano', 'camberra', 'sydney', 'melbourne'],
+  },
+  {
+    a2: 'BR',
+    countryName: 'Brasil',
+    continente: 'sul',
+    paginaTematica: '/politica/brasil',
+    termos: [
+      'brasil', 'brasileiro', 'brasileira', 'brasileiros', 'brasilia', 'lula',
+      'stf', 'supremo tribunal federal', 'senado', 'camara dos deputados',
+      'congresso nacional', 'planalto', 'cnj', 'stj', 'itamaraty', 'petrobras',
+      'banco central do brasil', 'ibge', 'policia federal', 'defesa civil',
+      'sao paulo', 'rio de janeiro', 'tocantins', 'minas gerais', 'bahia',
+    ],
+  },
+];
+
+const MAPA_PAIS_POR_A2 = Object.fromEntries(CATALOGO_PAISES.map((p) => [p.a2, p]));
+
+const FALLBACK_SNAPSHOT = {
+  ok: true,
+  cached: false,
+  source: 'snapshot',
+  updatedAt: '2026-11-14T00:55:57Z',
+  temas_ativos: [
+    {
+      slug: 'faa-suspende-voos-eua-falha-comunicacao-sistemas',
+      titulo_tema: 'Paralisação Total dos Voos nos EUA por Falha Crítica de Comunicação',
+      status: 'novo',
+      categoria_primaria: 'Geopolitica_Radar',
+      categorias_cruzadas: ['Economia', 'Resumo_Ultimas'],
+      rota_editoria: '/radar',
+      relevancia_score: 93,
+      palavras_chave_busca: [
+        'faa voos eua',
+        'paralisacao aviacao americana',
+        'telecommunication outage faa',
+        'voos cancelados eua',
+        'seguranca cibernetica infraestrutura',
+        'tráfego aereo global',
+      ],
+      gatilho_vitrine: 'Colapso de comunicação na aviação dos EUA gera efeito cascata no transporte aéreo e comércio global.',
+      sintese_nerd: 'A ordem de paralisação em solo decretada pela FAA devido a uma falha em sistemas de comunicação expõe a vulnerabilidade das infraestruturas críticas americanas. O incidente causa caos logístico imediato com potencial de impacto em conexões financeiras e de suprimentos globais.',
+    },
+    {
+      slug: 'pane-global-microsoft-outlook-impacto-judiciario-brasil',
+      titulo_tema: 'Apagão Tecnológico da Microsoft Causa Transtornos Globais e Paralisa Prazos no STF',
+      status: 'em_alta',
+      categoria_primaria: 'Geopolitica_Radar',
+      categorias_cruzadas: ['Politica', 'Economia', 'Cultura'],
+      rota_editoria: '/radar',
+      relevancia_score: 89,
+      palavras_chave_busca: [
+        'pane microsoft outlook',
+        'apagao cibernetico microsoft',
+        'cnj suspende prazos',
+        'stf falha microsoft',
+        'nuvem resiliencia infraestrutura',
+        'indenizacao apagao tecnologico',
+      ],
+      gatilho_vitrine: 'Instabilidade em serviços da Microsoft atinge de tribunais brasileiros a empresas globais.',
+      sintese_nerd: 'A pane prolongada nos servidores da Microsoft paralisou fluxos corporativos e forçou o CNJ a suspender prazos processuais no STF e instâncias federais. O episódio acende o alerta sobre a dependência excessiva do setor público e privado em monopólios de infraestrutura em nuvem.',
+    },
+    {
+      slug: 'lula-filipinas-brasil-parceiro-dialogo-asean',
+      titulo_tema: 'Brasil Busca Aproximação Estratégica com a ASEAN durante Visita às Filipinas',
+      status: 'novo',
+      categoria_primaria: 'Geopolitica_Radar',
+      categorias_cruzadas: ['Politica', 'Economia'],
+      rota_editoria: '/radar',
+      relevancia_score: 86,
+      palavras_chave_busca: [
+        'lula filipinas',
+        'brasil asean parceiro dialogo',
+        'comercio sudeste asiatico',
+        'diplomacia lula asia',
+        'cupula asean manila',
+        'agronegocio exportacao asia',
+      ],
+      gatilho_vitrine: 'Brasil formaliza ofensiva comercial e geopolítica com bloco do Sudeste Asiático.',
+      sintese_nerd: 'A presença do governo brasileiro na Cúpula da ASEAN busca diversificar parceiros comerciais fora do eixo tradicional ocidental, mirando um mercado consumidor em rápida expansão. A mudança de status para Parceiro de Diálogo pode facilitar acordos tarifários estratégicos para commodities e tecnologia.',
+    },
+    {
+      slug: 'ajuste-fiscal-senado-placar-alerta-governo-pecs-2027',
+      titulo_tema: 'Placar Estreito no Ajuste Fiscal no Senado Sinaliza Entrave para PECs Estruturais',
+      status: 'novo',
+      categoria_primaria: 'Politica',
+      categorias_cruzadas: ['Economia'],
+      rota_editoria: '/politica',
+      relevancia_score: 84,
+      palavras_chave_busca: [
+        'ajuste fiscal senado',
+        'votação ajuste fiscal 45 votos',
+        'governo lula articulacao senado',
+        'aprovacao pec senado 49 votos',
+        'pacote fiscal sustentabilidade',
+        'meta fiscal brasil 2027',
+      ],
+      gatilho_vitrine: 'Placar de 45 votos no Senado evidencia margem apertada para reformas constitucionais.',
+      sintese_nerd: 'Embora o governo tenha aprovado a matéria ordinária do ajuste fiscal com 45 votos, o resultado ficou abaixo da fasquia de 49 votos exigida para alterar a Constituição. O mapa de votação acena para a necessidade de maior concessão política ao centro caso o Planalto queira votar novas PECs.',
+    },
+    {
+      slug: 'stf-camara-regras-transicao-escala-trabalho-5x2',
+      titulo_tema: 'STF Forma Maioria pela Escala 5x2 Enquanto Câmara Questiona Interferência',
+      status: 'em_alta',
+      categoria_primaria: 'Politica',
+      categorias_cruzadas: ['Economia', 'Cultura'],
+      rota_editoria: '/politica',
+      relevancia_score: 82,
+      palavras_chave_busca: [
+        'escala 5x2 stf',
+        'decisao flavio dino escala',
+        'camara dos deputados stf 5x2',
+        'transicao escala 6x1',
+        'reforma trabalhista jornada',
+        'clt escala de trabalho',
+      ],
+      gatilho_vitrine: 'STF e Câmara divergem sobre o ritmo e os critérios da transição para a escala 5x2.',
+      sintese_nerd: 'O avanço de votos no STF para manter o início da transição da jornada em 16 de dezembro reacendeu a fricção institucional com o Legislativo, que argumenta usurpação de competência. A controvérsia gera incerteza jurídica para empregadores e trabalhadores no planejamento das escalas de fim de ano.',
+    },
+  ],
+};
+
+function normalizar(str) {
+  return String(str == null ? '' : str)
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .trim();
+}
+
+function limparPrefixoGatilho(str) {
+  return String(str || '')
+    .replace(/^[A-Z0-9_]{3,30}:\s*/, '')
+    .trim();
+}
+
+export function formatarHoraCurta(isoDateStr) {
+  try {
+    const dt = isoDateStr ? new Date(isoDateStr) : new Date();
+    const d = Number.isNaN(dt.getTime()) ? new Date() : dt;
+    const partes = new Intl.DateTimeFormat('pt-BR', {
+      timeZone: 'America/Sao_Paulo',
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false,
+    }).formatToParts(d);
+    const hh = partes.find((p) => p.type === 'hour')?.value || '00';
+    const mm = partes.find((p) => p.type === 'minute')?.value || '00';
+    return `Atualizado às ${hh}h${mm}`;
+  } catch {
+    const d = new Date();
+    const hh = String(d.getUTCHours()).padStart(2, '0');
+    const mm = String(d.getUTCMinutes()).padStart(2, '0');
+    return `Atualizado às ${hh}h${mm}`;
+  }
+}
+
+function escapeRegex(s) {
+  return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+/**
+ * Infere dinamicamente códigos ISO-2 de países mencionados no texto e nas palavras-chave,
+ * usando pontuação ponderada sem jamais fixar BR/US/UA estaticamente.
+ */
+export function detectarPaisesNoTexto(texto, palavrasChave = []) {
+  const kwJoined = Array.isArray(palavrasChave) ? palavrasChave.join(' ') : String(palavrasChave || '');
+  const textoNorm = normalizar(texto);
+  const kwNorm = normalizar(kwJoined);
+  const combinado = `${textoNorm} ${kwNorm}`.trim();
+  if (!combinado) return [];
+
+  const pontuados = [];
+
+  for (const pais of CATALOGO_PAISES) {
+    let score = 0;
+    for (const termo of pais.termos) {
+      const rx = new RegExp(`(?:^|[^a-z0-9])${escapeRegex(termo)}(?:$|[^a-z0-9])`, 'i');
+      if (rx.test(kwNorm)) {
+        score += 45;
+      }
+      if (rx.test(textoNorm)) {
+        score += 30;
+      }
+    }
+    if (score > 0) {
+      // Prioriza países estrangeiros específicos quando empatados com menção genérica ao Brasil em pautas bilaterais
+      const bonusEspecificidade = pais.a2 !== 'BR' ? 5 : 0;
+      pontuados.push({ a2: pais.a2, score: score + bonusEspecificidade });
+    }
+  }
+
+  pontuados.sort((a, b) => b.score - a.score);
+  return pontuados.map((p) => p.a2);
+}
+
+function construirHeadersCache(isRefresh) {
+  if (isRefresh) {
+    return {
+      'Cache-Control': 'no-store, no-cache, must-revalidate',
+      'X-Content-Type-Options': 'nosniff',
+      ...CORS_HEADERS,
+    };
+  }
+  return {
+    'Cache-Control': 'public, max-age=60, s-maxage=180',
+    'Netlify-CDN-Cache-Control': 'public, durable, s-maxage=180, stale-while-revalidate=60',
+    'X-Content-Type-Options': 'nosniff',
+    ...CORS_HEADERS,
+  };
+}
+
+async function carregarSnapshotEstatico(request) {
+  try {
+    const filePath = path.resolve(process.cwd(), 'data', 'vitrine_ia.json');
+    const raw = await fs.readFile(filePath, 'utf-8');
+    const parsed = JSON.parse(raw);
+    if (parsed && Array.isArray(parsed.temas_ativos) && parsed.temas_ativos.length > 0) {
+      return parsed;
+    }
+  } catch {
+    // Tenta via URL da CDN se fs não encontrar no bundle
+  }
+  try {
+    const assetUrl = new URL('/data/vitrine_ia.json', request.url);
+    const ctrl = new AbortController();
+    const timer = setTimeout(() => ctrl.abort(), 2000);
+    const resp = await fetch(assetUrl.toString(), { signal: ctrl.signal });
+    clearTimeout(timer);
+    if (resp.ok) {
+      const data = await resp.json();
+      if (data && Array.isArray(data.temas_ativos) && data.temas_ativos.length > 0) {
+        return data;
+      }
+    }
+  } catch {
+    // Usa fallback embutido
+  }
+  return FALLBACK_SNAPSHOT;
+}
+
+async function consultarBackendExterno(backendUrl, caminho, searchParams) {
+  const ctrl = new AbortController();
+  const timer = setTimeout(() => ctrl.abort(), 3000);
+  try {
+    const alvo = new URL(caminho, backendUrl.endsWith('/') ? backendUrl : backendUrl + '/');
+    searchParams.forEach((v, k) => alvo.searchParams.set(k, v));
+    const resp = await fetch(alvo.toString(), {
+      headers: { Accept: 'application/json' },
+      signal: ctrl.signal,
+    });
+    if (!resp.ok) return null;
+    return await resp.json();
+  } catch {
+    return null;
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+function construirPaisesEmAlta(noticiasQuentes) {
+  const mapaPaises = new Map();
+
+  for (const item of noticiasQuentes) {
+    const codigos = Array.isArray(item.paises_envolvidos) ? item.paises_envolvidos : [];
+    for (const codigo of codigos) {
+      const a2 = String(codigo || '').toUpperCase().trim();
+      if (!a2 || mapaPaises.has(a2)) continue;
+      const metaPais = MAPA_PAIS_POR_A2[a2];
+      const nomePais = metaPais ? metaPais.countryName : a2;
+      const kws = Array.isArray(item.palavras_chave) ? item.palavras_chave : [];
+      mapaPaises.set(a2, {
+        a2,
+        countryName: nomePais,
+        title: item.titulo_curto || '',
+        source: 'Síntese Rodando o Mundo · V2',
+        category: item._label_editoria || 'Radar',
+        url: item._rota_editoria || '/radar',
+        summary: item.resumo_pulso || '',
+        termoBusca: kws[0] || item.titulo_curto || nomePais,
+        urgencia_score: Number(item.urgencia_score || item.relevancia_score || 80),
+      });
+    }
+  }
+
+  return Array.from(mapaPaises.values()).sort((a, b) => b.urgencia_score - a.urgencia_score);
+}
+
+function converterTemasParaNoticiasQuentes(temasAtivos, updatedAtIso, carimboHora) {
+  return temasAtivos.map((tema) => {
+    const catPrimaria = tema.categoria_primaria || 'Geopolitica_Radar';
+    const categoria = MAPA_CATEGORIA_V2[catPrimaria] || 'geopolitica';
+    const rotaEditoria = tema.rota_editoria || MAPA_ROTAS_EDITORIA[catPrimaria] || '/radar';
+    const labelEditoria = MAPA_LABEL_EDITORIA[catPrimaria] || 'Radar';
+    const titulo = tema.titulo_tema || tema.titulo_curto || '';
+    const resumo = limparPrefixoGatilho(tema.gatilho_vitrine || tema.resumo_pulso || '');
+    const impacto = tema.sintese_nerd || tema.impacto_pratico || resumo;
+    const kws = Array.isArray(tema.palavras_chave_busca)
+      ? tema.palavras_chave_busca
+      : Array.isArray(tema.palavras_chave)
+      ? tema.palavras_chave
+      : [];
+
+    const paisesDetectados =
+      Array.isArray(tema.paises_envolvidos) && tema.paises_envolvidos.length > 0
+        ? tema.paises_envolvidos
+        : detectarPaisesNoTexto(`${titulo} ${resumo} ${impacto}`, kws);
+
+    const score = Number(tema.urgencia_score || tema.relevancia_score || 80);
+
+    return {
+      slug: tema.slug || '',
+      titulo_curto: titulo,
+      resumo_pulso: resumo,
+      impacto_pratico: impacto,
+      categoria,
+      paises_envolvidos: paisesDetectados,
+      urgencia_score: score,
+      relevancia_score: score,
+      veiculos_origem: Array.isArray(tema.veiculos_origem) && tema.veiculos_origem.length > 0
+        ? tema.veiculos_origem
+        : ['Curadoria IA · Pulso V2'],
+      fontes_urls: Array.isArray(tema.fontes_urls) ? tema.fontes_urls : [],
+      palavras_chave: kws,
+      atualizado_em: carimboHora,
+      updated_at: tema.updated_at || updatedAtIso,
+      _rota_editoria: rotaEditoria,
+      _label_editoria: labelEditoria,
+    };
+  });
+}
+
+export default async (request) => {
+  if (request.method === 'OPTIONS') {
+    return new Response(null, { status: 204, headers: CORS_HEADERS });
+  }
+
+  const url = new URL(request.url);
+  const isRefresh = url.searchParams.has('_t') || url.searchParams.get('refresh') === '1';
+  const headers = construirHeadersCache(isRefresh);
+
+  const categoriaFiltro = normalizar(url.searchParams.get('categoria') || '');
+  const paisFiltro = String(url.searchParams.get('pais') || '').toUpperCase().trim();
+  const limiteParam = parseInt(url.searchParams.get('limite') || '15', 10);
+  const limite = Number.isNaN(limiteParam) ? 15 : Math.min(50, Math.max(1, limiteParam));
+
+  const backendUrl = String(process.env.CURADORIA_BACKEND_URL || '').trim();
+  const temBackendAtivo =
+    backendUrl &&
+    /^https?:\/\//i.test(backendUrl) &&
+    !backendUrl.includes('api.rodandoomundo.com.br');
+
+  try {
+    if (temBackendAtivo) {
+      const params = new URLSearchParams({ limite: String(limite) });
+      if (categoriaFiltro && categoriaFiltro !== 'todos') params.set('categoria', categoriaFiltro);
+      if (paisFiltro) params.set('pais', paisFiltro);
+      if (isRefresh) {
+        params.set('refresh', '1');
+        params.set('_t', String(Date.now()));
+      }
+
+      const ext = await consultarBackendExterno(backendUrl, 'v1/noticias-quentes', params);
+      if (ext && Array.isArray(ext.noticias_quentes) && ext.noticias_quentes.length > 0) {
+        const nowIso = ext.updatedAt || new Date().toISOString();
+        const carimbo = ext.atualizado_em || formatarHoraCurta(nowIso);
+        const noticiasEnriquecidas = ext.noticias_quentes.map((n) => {
+          const textoAlvo = `${n.titulo_curto || ''} ${n.resumo_pulso || ''} ${n.impacto_pratico || ''}`;
+          const paises =
+            Array.isArray(n.paises_envolvidos) && n.paises_envolvidos.length > 0
+              ? n.paises_envolvidos
+              : detectarPaisesNoTexto(textoAlvo, n.palavras_chave || []);
+          return {
+            ...n,
+            paises_envolvidos: paises,
+            atualizado_em: n.atualizado_em || carimbo,
+            updated_at: n.updated_at || nowIso,
+          };
+        });
+
+        const paisesEmAlta =
+          Array.isArray(ext.paises_em_alta) && ext.paises_em_alta.length > 0
+            ? ext.paises_em_alta
+            : construirPaisesEmAlta(noticiasEnriquecidas);
+
+        const limpas = noticiasEnriquecidas.slice(0, limite).map(({ _rota_editoria, _label_editoria, ...rest }) => rest);
+
+        return json(
+          {
+            ok: true,
+            cached: false,
+            source: 'v2_api',
+            identificacao_editorial: ext.identificacao_editorial || 'Síntese Rodando o Mundo',
+            atualizado_em: carimbo,
+            updatedAt: nowIso,
+            total: limpas.length,
+            noticias_quentes: limpas,
+            paises_em_alta: paisesEmAlta,
+            eventos_principais: Array.isArray(ext.eventos_principais) ? ext.eventos_principais : [],
+          },
+          200,
+          headers
+        );
+      }
+    }
+
+    const snap = await carregarSnapshotEstatico(request);
+    const updatedAtIso = isRefresh ? new Date().toISOString() : (snap.updatedAt || new Date().toISOString());
+    const carimboHora = formatarHoraCurta(updatedAtIso);
+
+    let noticiasInternas = converterTemasParaNoticiasQuentes(
+      Array.isArray(snap.temas_ativos) ? snap.temas_ativos : [],
+      snap.updatedAt || updatedAtIso,
+      carimboHora
+    );
+
+    if (categoriaFiltro && categoriaFiltro !== 'todos') {
+      noticiasInternas = noticiasInternas.filter((n) => normalizar(n.categoria) === categoriaFiltro);
+    }
+    if (paisFiltro) {
+      noticiasInternas = noticiasInternas.filter(
+        (n) => Array.isArray(n.paises_envolvidos) && n.paises_envolvidos.includes(paisFiltro)
+      );
+    }
+
+    noticiasInternas.sort((a, b) => b.urgencia_score - a.urgencia_score);
+    const paisesEmAlta = construirPaisesEmAlta(noticiasInternas);
+    const noticiasFinais = noticiasInternas
+      .slice(0, limite)
+      .map(({ _rota_editoria, _label_editoria, ...rest }) => rest);
+
+    return json(
+      {
+        ok: true,
+        cached: !isRefresh,
+        source: 'vitrine_snapshot',
+        identificacao_editorial: 'Síntese Rodando o Mundo',
+        atualizado_em: carimboHora,
+        updatedAt: updatedAtIso,
+        total: noticiasFinais.length,
+        noticias_quentes: noticiasFinais,
+        paises_em_alta: paisesEmAlta,
+        eventos_principais: [],
+      },
+      200,
+      headers
+    );
+  } catch (err) {
+    const fallbackIso = new Date().toISOString();
+    const carimboFallback = formatarHoraCurta(fallbackIso);
+    const noticiasFallback = converterTemasParaNoticiasQuentes(
+      FALLBACK_SNAPSHOT.temas_ativos,
+      FALLBACK_SNAPSHOT.updatedAt,
+      carimboFallback
+    );
+    const paisesFallback = construirPaisesEmAlta(noticiasFallback);
+    const limpas = noticiasFallback.map(({ _rota_editoria, _label_editoria, ...rest }) => rest);
+
+    return json(
+      {
+        ok: true,
+        cached: false,
+        source: 'vitrine_snapshot',
+        identificacao_editorial: 'Síntese Rodando o Mundo',
+        atualizado_em: carimboFallback,
+        updatedAt: fallbackIso,
+        total: limpas.length,
+        noticias_quentes: limpas,
+        paises_em_alta: paisesFallback,
+        eventos_principais: [],
+      },
+      200,
+      headers
+    );
+  }
+};
+
+export const config = {
+  path: '/api/noticias-quentes',
+  method: ['GET', 'OPTIONS'],
+};

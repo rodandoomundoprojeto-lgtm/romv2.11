@@ -357,6 +357,18 @@
         </button>
         <aside class="panel" id="painel" aria-live="polite" tabindex="-1" aria-hidden="true"></aside>
       </div>
+
+      <!-- Faixa horizontal de países pulsando agora (Sincronizada com o pulso de 5 min do mapa) -->
+      <section class="pulsando-agora-container" id="pulsando-agora-container" aria-label="Países com notícias quentes agora">
+        <div class="pulsando-agora-header">
+          <span class="pulso-indicador" aria-hidden="true"></span>
+          <span>Pulsando agora no mapa</span>
+        </div>
+
+        <div id="pulsando-agora-track" class="pulsando-agora-track" role="list">
+          <!-- Cards injetados dinamicamente via JS -->
+        </div>
+      </section>
     </section>
 
     <!-- ROM V2.12: Modo Feed / Explorador Rápido de Países -->
