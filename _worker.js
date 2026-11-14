@@ -457,12 +457,19 @@ export default {
     // Se retornou 404 e é uma rota SPA (sem extensão de arquivo como .js, .css, .png, etc.)
     const isStaticFileWithExt = /\.[a-zA-Z0-9]+$/.test(url.pathname);
     if (!isStaticFileWithExt) {
-      // Serve o index.html com status 200 para a SPA assumir a rota no client-side
-      const indexRequest = new Request(new URL('/index.html', request.url), request);
-      const indexResponse = await env.ASSETS.fetch(indexRequest);
-      return new Response(indexResponse.body, {
+      // Serve a raiz / para obter o index.html renderizado nativamente pelo Cloudflare Assets
+      const rootRequest = new Request(new URL('/', request.url), request);
+      const rootResponse = await env.ASSETS.fetch(rootRequest);
+
+      // Sanitiza cabeçalhos: remove qualquer Location residual de redirect e assegura HTML UTF-8
+      const headers = new Headers(rootResponse.headers);
+      headers.delete('Location');
+      headers.set('Content-Type', 'text/html; charset=utf-8');
+      headers.set('Cache-Control', 'public, max-age=0, must-revalidate');
+
+      return new Response(rootResponse.body, {
         status: 200,
-        headers: indexResponse.headers
+        headers: headers
       });
     }
 
