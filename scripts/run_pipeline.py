@@ -404,6 +404,14 @@ def main(argv: Optional[List[str]] = None) -> int:
     parser = criar_parser()
     args = parser.parse_args(argv)
 
+    if not args.dry_run and not _tem_chave_gemini():
+        print(
+            "[ERRO] GEMINI_API_KEY ausente. Cadastre a secret GEMINI_API_KEY em "
+            "GitHub > Settings > Secrets and variables > Actions (ou no .env local).",
+            file=sys.stderr,
+        )
+        return 3
+
     if args.modo == "pulso":
         saida = asyncio.run(_executar_modo_pulso(dry_run=args.dry_run, limit=args.limit))
     elif args.modo == "curadoria":
