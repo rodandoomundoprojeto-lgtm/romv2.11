@@ -1,6 +1,7 @@
 """
-Orquestrador Principal: Radar de Notícias & Briefing Editorial
-Fluxo: Coleta -> Filtro -> Análise IA -> Publicação -> Histórico
+Orquestrador Principal: Radar de Notícias & Briefing Editorial + API FastAPI (Motor V2)
+Fluxo CLI: Coleta -> Filtro -> Análise IA -> Publicação -> Histórico
+Fluxo API: uvicorn main:app --reload --port 8000 (inclui rotas V1/V2 de api.routes_v2)
 """
 import sys
 import time
@@ -9,9 +10,40 @@ from dotenv import load_dotenv
 # Carrega variáveis do arquivo .env local se existir
 load_dotenv()
 
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+
+from api.routes_v2 import router as router_v2
 from src.collector import collect_new_items
 from src.analyst import analyze_item
 from src.publisher import publish_cards, update_history
+
+app = FastAPI(
+    title="API Rodando o Mundo — Motor Editorial V2 & Pulso 30m",
+    version="2.2.0",
+)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "https://www.rodandoomundo.com.br",
+        "https://rodandoomundo.com.br",
+        "http://localhost:3000",
+        "http://localhost:8080",
+        "http://127.0.0.1:5500",
+    ],
+    allow_credentials=True,
+    allow_methods=["GET", "POST", "OPTIONS"],
+    allow_headers=["*"],
+)
+
+app.include_router(router_v2)
+
+
+@app.get("/health")
+def health():
+    return {"ok": True, "motor": "v2.2"}
+
 
 
 def run_pipeline():

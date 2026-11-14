@@ -2,7 +2,7 @@ services:
   - type: web
     name: rom-curadoria-api
     env: python
-    buildCommand: pip install -r curadoria/requirements.txt
+    buildCommand: pip install -r requirements.txt && pip install -r curadoria/requirements.txt
     startCommand: uvicorn curadoria.api.main:app --host 0.0.0.0 --port $PORT
     envVars:
       - key: PYTHON_VERSION
@@ -11,4 +11,37 @@ services:
         sync: false
       - key: CURADORIA_SECRET_TOKEN
         sync: false
+      - key: GEMINI_API_KEY
+        sync: false
+
+  - type: cron
+    name: rom-pulso-noticias-quentes-30m
+    env: python
+    schedule: "*/30 * * * *"
+    buildCommand: pip install -r requirements.txt && pip install -r curadoria/requirements.txt
+    startCommand: python scripts/run_pipeline.py --modo pulso
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.0
+      - key: CURADORIA_DATABASE_URL
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
+
+  - type: cron
+    name: rom-curadoria-e-colunas-3h
+    env: python
+    schedule: "0 */3 * * *"
+    buildCommand: pip install -r requirements.txt && pip install -r curadoria/requirements.txt
+    startCommand: python scripts/run_pipeline.py --modo curadoria && python scripts/run_pipeline.py --modo coluna
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.0
+      - key: CURADORIA_DATABASE_URL
+        sync: false
+      - key: CURADORIA_SECRET_TOKEN
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
+
 

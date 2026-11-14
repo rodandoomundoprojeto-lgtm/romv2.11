@@ -17,6 +17,7 @@ from psycopg.rows import dict_row
 from psycopg.types.json import Jsonb
 
 from ..agente.schemas import MAPA_ROTAS_EDITORIA, CategoriaType, CuradoriaPayload
+from api.routes_v2 import router as router_v2
 
 try:
     from pathlib import Path
@@ -27,6 +28,7 @@ except ImportError:
     pass
 
 app = FastAPI(title="API de Inteligência - Rodando o Mundo")
+app.include_router(router_v2)
 
 # CORS para permitir acesso seguro a partir do portal e dev
 app.add_middleware(
