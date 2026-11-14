@@ -2091,33 +2091,41 @@
       : 'Aproximar o mapa nas ilhas da Polinésia / Pacífico (esquerda da Oceania)';
   }
 
+  function closeMapLayersPopoverOnMobile() {
+    if (window.innerWidth > 768) return;
+    var popLayers = document.getElementById('map-layers-popover');
+    var btnLayers = document.getElementById('btn-map-layers');
+    if (popLayers) popLayers.hidden = true;
+    if (btnLayers) btnLayers.setAttribute('aria-expanded', 'false');
+  }
+
+  function handleIslandClusterFocus(contId, stateKey, updateBtnFn) {
+    var isMobile = window.innerWidth <= 768;
+    closeMapLayersPopoverOnMobile();
+    if (state.cont !== contId) {
+      state[stateKey] = true;
+      setZoomedState(true);
+      go(contId, null, isMobile ? { keepPanelClosed: true } : undefined);
+      return;
+    }
+    state[stateKey] = !state[stateKey];
+    if (isMobile) {
+      setPanelCollapsed(true);
+    }
+    setZoomedState(true);
+    applyZoom(true);
+    updateBtnFn();
+  }
+
   if (btnFocusCaribe) {
     btnFocusCaribe.addEventListener('click', function () {
-      if (state.cont !== 'central') {
-        state.focusCaribe = true;
-        setZoomedState(true);
-        go('central', null);
-        return;
-      }
-      state.focusCaribe = !state.focusCaribe;
-      setZoomedState(true);
-      applyZoom(true);
-      updateFocusCaribeBtn();
+      handleIslandClusterFocus('central', 'focusCaribe', updateFocusCaribeBtn);
     });
   }
 
   if (btnFocusOceania) {
     btnFocusOceania.addEventListener('click', function () {
-      if (state.cont !== 'oceania') {
-        state.focusEastOceania = true;
-        setZoomedState(true);
-        go('oceania', null);
-        return;
-      }
-      state.focusEastOceania = !state.focusEastOceania;
-      setZoomedState(true);
-      applyZoom(true);
-      updateFocusOceaniaBtn();
+      handleIslandClusterFocus('oceania', 'focusEastOceania', updateFocusOceaniaBtn);
     });
   }
 
