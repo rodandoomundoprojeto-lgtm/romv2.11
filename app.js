@@ -2557,15 +2557,139 @@
 
   // Monitoramento discreto de notícias quentes no mapa (checagem a cada 5 minutos, pulso temporário e não contínuo)
   var hotNewsByCountry = {};
+  var v2HotNewsByCountry = {};
+  var v2HotNewsUpdatedLabel = '';
   var hotPulseActive = false;
   var hotPulseTimer = null;
 
+  var CLIENT_COUNTRY_PATTERNS = [
+    { a2: 'BR', rx: /\b(brasil|bras[ií]lia|lula|stf|congresso|senado|c[aâ]mara|planalto|itamaraty|s[aã]o paulo|rio de janeiro|petrobras|ibovespa|real brasileiro)\b/i },
+    { a2: 'US', rx: /\b(eua|estados unidos|washington|casa branca|trump|biden|fed|pent[aá]gono|wall street|nova york|faa|nasa|americano|americanos|americana)\b/i },
+    { a2: 'PH', rx: /\b(filipinas|manila|marcos jr|filipino|filipinos)\b/i },
+    { a2: 'CN', rx: /\b(china|pequim|beijing|xi jinping|chin[eê]s|chinesa|chineses|xangai|taiwan)\b/i },
+    { a2: 'AR', rx: /\b(argentina|buenos aires|milei|argentino|argentinos)\b/i },
+    { a2: 'FR', rx: /\b(fran[cç]a|paris|macron|franc[eê]s|francesa)\b/i },
+    { a2: 'DE', rx: /\b(alemanha|berlim|scholz|merz|alem[aã]o|alem[aã]|bundestag)\b/i },
+    { a2: 'GB', rx: /\b(reino unido|londres|inglaterra|brit[aâ]nico|brit[aâ]nica|starmer|downing street)\b/i },
+    { a2: 'PT', rx: /\b(portugal|lisboa|porto|portugu[eê]s|portuguesa|montenegro)\b/i },
+    { a2: 'UA', rx: /\b(ucr[aâ]nia|kiev|kyiv|zelensky|ucraniano|ucraniana|donbas)\b/i },
+    { a2: 'RU', rx: /\b(r[uú]ssia|moscou|kremlin|putin|russo|russa)\b/i },
+    { a2: 'IL', rx: /\b(israel|gaza|tel aviv|jerusal[eé]m|netanyahu|israelense|oriente m[eé]dio)\b/i },
+    { a2: 'IR', rx: /\b(ir[aã]|teer[aã]|iraniano|iraniana)\b/i },
+    { a2: 'JP', rx: /\b(jap[aã]o|t[oó]quio|japon[eê]s|japonesa|iene)\b/i },
+    { a2: 'IN', rx: /\b([ií]ndia|nova d[eé]lhi|modi|indiano|indiana)\b/i },
+    { a2: 'MX', rx: /\b(m[eé]xico|cidade do m[eé]xico|sheinbaum|mexicano|mexicana)\b/i },
+    { a2: 'ES', rx: /\b(espanha|madri|madrid|s[aá]nchez|espanhol|espanhola)\b/i },
+    { a2: 'IT', rx: /\b(it[aá]lia|roma|meloni|italiano|italiana|vaticano)\b/i },
+    { a2: 'CA', rx: /\b(canad[aá]|ottawa|toronto|canadense|trudeau|carney)\b/i },
+    { a2: 'CL', rx: /\b(chile|santiago|boric|chileno)\b/i },
+    { a2: 'CO', rx: /\b(col[oô]mbia|bogot[aá]|petro|colombiano)\b/i },
+    { a2: 'VE', rx: /\b(venezuela|caracas|maduro|venezuelano)\b/i },
+    { a2: 'KR', rx: /\b(coreia do sul|seul|sul-coreano)\b/i },
+    { a2: 'KP', rx: /\b(coreia do norte|pyongyang|kim jong)\b/i },
+    { a2: 'AU', rx: /\b(austr[aá]lia|sydney|camberra|australiano)\b/i },
+    { a2: 'ZA', rx: /\b([aá]frica do sul|joanesburgo|pret[oó]ria|ramaphosa)\b/i }
+  ];
+
+  function inferirPaisesDeTextoClient(texto) {
+    var str = String(texto || '');
+    if (!str) return [];
+    var found = [];
+    CLIENT_COUNTRY_PATTERNS.forEach(function (pat) {
+      if (pat.rx.test(str) && found.indexOf(pat.a2) === -1) {
+        found.push(pat.a2);
+      }
+    });
+    return found;
+  }
+
   function buildHotNewsMapFromEditorial() {
     var map = {};
+
+    // Prioridade 1: v2HotNewsByCountry (abastecido por /api/noticias-quentes)
+    if (v2HotNewsByCountry && typeof v2HotNewsByCountry === 'object') {
+      Object.keys(v2HotNewsByCountry).forEach(function (code) {
+        var a2 = String(code || '').toUpperCase().trim();
+        if (a2 && v2HotNewsByCountry[code] && !map[a2]) {
+          map[a2] = v2HotNewsByCountry[code];
+        }
+      });
+    }
+
+    // Prioridade 2: Temas ativos da Vitrine IA (vitrineIaMemoryTemas ou lerCacheVitrineIA(true))
+    var vitrineTemas = (Array.isArray(vitrineIaMemoryTemas) && vitrineIaMemoryTemas.length)
+      ? vitrineIaMemoryTemas
+      : (typeof lerCacheVitrineIA === 'function' ? lerCacheVitrineIA(true) : []);
+    if (Array.isArray(vitrineTemas) && vitrineTemas.length) {
+      vitrineTemas.forEach(function (tm) {
+        if (!tm || !tm.titulo_tema) return;
+        var kwsStr = Array.isArray(tm.palavras_chave_busca) ? tm.palavras_chave_busca.join(' ') : '';
+        var scanText = [tm.titulo_tema || '', tm.gatilho_vitrine || '', tm.sintese_nerd || '', kwsStr].join(' ');
+        var codes = inferirPaisesDeTextoClient(scanText);
+        if (!codes.length && (tm.categoria_primaria === 'Politica' || tm.categoria_primaria === 'Economia')) {
+          codes = ['BR'];
+        }
+        codes.forEach(function (a2) {
+          if (!map[a2]) {
+            var cObj = byA2[a2];
+            var kwFirst = (Array.isArray(tm.palavras_chave_busca) && tm.palavras_chave_busca[0]) || tm.titulo_tema;
+            map[a2] = {
+              a2: a2,
+              countryName: (cObj && cObj.n) || a2,
+              title: tm.titulo_tema,
+              source: 'Síntese Rodando o Mundo · V2',
+              category: tm.categoria_primaria || 'Em Alta',
+              url: tm.rota_editoria || '/radar',
+              summary: tm.sintese_nerd || tm.gatilho_vitrine || '',
+              termoBusca: extrairTermoAssuntoBusca(kwFirst, tm.categoria_primaria)
+            };
+          }
+        });
+      });
+    }
+
+    // Prioridade 3: radarFeedCache (usando paises_envolvidos ou inferirPaisesDeTextoClient)
+    if (Array.isArray(radarFeedCache) && radarFeedCache.length) {
+      radarFeedCache.forEach(function (rItem) {
+        if (!rItem || !rItem.titulo) return;
+        var rCodes = [];
+        if (Array.isArray(rItem.paises_envolvidos) && rItem.paises_envolvidos.length) {
+          rItem.paises_envolvidos.forEach(function (c) {
+            var up = String(c || '').toUpperCase().trim();
+            if (up && rCodes.indexOf(up) === -1) rCodes.push(up);
+          });
+        }
+        var textToScan = (rItem.titulo || '') + ' ' + (rItem.resumo || '') + ' ' + (rItem.analise || '');
+        inferirPaisesDeTextoClient(textToScan).forEach(function (c) {
+          if (rCodes.indexOf(c) === -1) rCodes.push(c);
+        });
+        rCodes.forEach(function (a2) {
+          if (!map[a2]) {
+            var cObj = byA2[a2];
+            var rUrl = rItem.fonte_url || rItem.url || rItem.link || '/radar';
+            map[a2] = {
+              a2: a2,
+              countryName: (cObj && cObj.n) || a2,
+              title: rItem.titulo,
+              source: rItem.fonte_nome || 'Radar ao Vivo',
+              category: rItem.categoria || 'Radar',
+              url: rUrl,
+              summary: rItem.resumo || '',
+              termoBusca: extrairTermoAssuntoBusca(rItem.titulo, rItem.categoria),
+              dominio: rItem.dominio || ''
+            };
+          }
+        });
+      });
+    }
+
+    // Prioridade 4: EDITORIAL.resumoDoDia (inferindo país pelo título/resumo primeiro para evitar UA/US fixos incorretos)
     if (EDITORIAL && Array.isArray(EDITORIAL.resumoDoDia)) {
       EDITORIAL.resumoDoDia.forEach(function (item) {
         if (!item || !item.titulo) return;
-        var a2 = String(item.codigoPais || '').toUpperCase().trim();
+        var scanTxt = (item.titulo || '') + ' ' + (item.resumoCurto || item.resumo || '');
+        var inferred = inferirPaisesDeTextoClient(scanTxt);
+        var a2 = inferred.length ? inferred[0] : String(item.codigoPais || '').toUpperCase().trim();
         if (a2 && !map[a2]) {
           var cObj = byA2[a2];
           var urlOrig = item.urlMateriaOriginal || item.url || '';
@@ -2584,42 +2708,7 @@
         }
       });
     }
-    if (Array.isArray(radarFeedCache) && radarFeedCache.length) {
-      var kwCountries = [
-        { a2: 'BR', rx: /\b(brasil|bras[ií]lia|lula|stf|congresso|senado|c[aâ]mara)\b/i },
-        { a2: 'US', rx: /\b(eua|estados unidos|washington|casa branca|trump|fed)\b/i },
-        { a2: 'UA', rx: /\b(ucr[aâ]nia|kiev|kyiv|zelensky)\b/i },
-        { a2: 'RU', rx: /\b(r[uú]ssia|moscou|kremlin|putin)\b/i },
-        { a2: 'IL', rx: /\b(israel|gaza|tel aviv|oriente m[eé]dio)\b/i },
-        { a2: 'CN', rx: /\b(china|pequim|beijing)\b/i },
-        { a2: 'AR', rx: /\b(argentina|buenos aires|milei)\b/i },
-        { a2: 'FR', rx: /\b(fran[cç]a|paris|macron)\b/i },
-        { a2: 'DE', rx: /\b(alemanha|berlim)\b/i },
-        { a2: 'GB', rx: /\b(reino unido|londres|inglaterra)\b/i },
-        { a2: 'PT', rx: /\b(portugal|lisboa)\b/i }
-      ];
-      radarFeedCache.forEach(function (rItem) {
-        if (!rItem || !rItem.titulo) return;
-        var textToScan = (rItem.titulo || '') + ' ' + (rItem.resumo || '');
-        kwCountries.forEach(function (kc) {
-          if (!map[kc.a2] && kc.rx.test(textToScan)) {
-            var cObj = byA2[kc.a2];
-            var rUrl = rItem.url || rItem.link || '';
-            map[kc.a2] = {
-              a2: kc.a2,
-              countryName: (cObj && cObj.n) || kc.a2,
-              title: rItem.titulo,
-              source: rItem.fonte_nome || 'Radar ao Vivo',
-              category: rItem.categoria || 'Radar',
-              url: rUrl,
-              summary: rItem.resumo || '',
-              termoBusca: extrairTermoAssuntoBusca(rItem.titulo, rItem.categoria),
-              dominio: rItem.dominio || ''
-            };
-          }
-        });
-      });
-    }
+
     if (!Object.keys(map).length) {
       var fallbackHot = [
         { a2: 'BR', title: 'Congresso e Planalto negociam prioridades fiscais e econômicas da semana', source: 'Agência Brasil', url: 'https://agenciabrasil.ebc.com.br/', summary: 'Lideranças partidárias definem pauta prioritária de votações econômicas e medidas fiscais.' },
@@ -2656,7 +2745,7 @@
       return hotNewsByCountry[code].countryName || code;
     });
     var extra = codes.length > 4 ? ' +' + (codes.length - 4) : '';
-    pillText.textContent = '🔥 Notícias quentes agora: ' + names.join(', ') + extra + ' · Passe o cursor no país para ler (atualizado a cada 5 min)';
+    pillText.textContent = '🔥 Notícias quentes agora: ' + names.join(', ') + extra + ' · ' + (v2HotNewsUpdatedLabel || 'Passe o cursor no país para ler');
     pill.hidden = false;
   }
 
@@ -2689,19 +2778,91 @@
   function checkHotNewsOnMap(isPeriodic) {
     if (!isPeriodic) {
       triggerHotNewsPulseCycle();
-      return;
     }
-    fetch('/api/resumo?_t=' + Date.now(), { headers: { Accept: 'application/json' } })
+    var hotUrl = '/api/noticias-quentes?_t=' + Date.now() + (isPeriodic ? '&refresh=1' : '');
+    fetch(hotUrl, { cache: 'no-store', headers: { Accept: 'application/json' } })
       .then(function (r) { return r && r.ok ? r.json() : null; })
       .then(function (data) {
-        if (data && Array.isArray(data.items) && data.items.length) {
-          EDITORIAL.resumoDoDia = data.items;
+        if (!data || !data.ok) return;
+        var nextV2Map = {};
+        if (Array.isArray(data.paises_em_alta)) {
+          data.paises_em_alta.forEach(function (pa) {
+            if (!pa || !pa.a2) return;
+            var a2 = String(pa.a2).toUpperCase().trim();
+            var cObj = byA2[a2];
+            if (a2 && !nextV2Map[a2]) {
+              nextV2Map[a2] = {
+                a2: a2,
+                countryName: pa.countryName || (cObj && cObj.n) || a2,
+                title: pa.title || '',
+                source: pa.source || data.identificacao_editorial || 'Síntese Rodando o Mundo · V2',
+                category: pa.category || 'Radar',
+                url: pa.url || '/radar',
+                summary: pa.summary || '',
+                termoBusca: extrairTermoAssuntoBusca(pa.termoBusca || pa.title || '', pa.category || 'Radar')
+              };
+            }
+          });
+        }
+        if (Array.isArray(data.noticias_quentes)) {
+          data.noticias_quentes.forEach(function (nq) {
+            if (!nq || !nq.titulo_curto) return;
+            var codes = [];
+            if (Array.isArray(nq.paises_envolvidos) && nq.paises_envolvidos.length) {
+              nq.paises_envolvidos.forEach(function (c) {
+                var up = String(c || '').toUpperCase().trim();
+                if (up && codes.indexOf(up) === -1) codes.push(up);
+              });
+            }
+            if (!codes.length) {
+              var scan = [nq.titulo_curto || '', nq.resumo_pulso || '', (nq.palavras_chave || []).join(' ')].join(' ');
+              codes = inferirPaisesDeTextoClient(scan);
+            }
+            codes.forEach(function (a2) {
+              if (a2 && !nextV2Map[a2]) {
+                var cObj = byA2[a2];
+                var srcName = (Array.isArray(nq.veiculos_origem) && nq.veiculos_origem[0]) || data.identificacao_editorial || 'Síntese Rodando o Mundo · V2';
+                var fUrl = (Array.isArray(nq.fontes_urls) && nq.fontes_urls[0]) || '/radar';
+                var kw = (Array.isArray(nq.palavras_chave) && nq.palavras_chave[0]) || nq.titulo_curto;
+                nextV2Map[a2] = {
+                  a2: a2,
+                  countryName: (cObj && cObj.n) || a2,
+                  title: nq.titulo_curto,
+                  source: srcName,
+                  category: nq.categoria || 'Radar',
+                  url: fUrl,
+                  summary: nq.resumo_pulso || nq.impacto_pratico || '',
+                  termoBusca: extrairTermoAssuntoBusca(kw, nq.categoria || 'Radar')
+                };
+              }
+            });
+          });
+        }
+        if (Object.keys(nextV2Map).length > 0) {
+          v2HotNewsByCountry = nextV2Map;
+        }
+        if (data.atualizado_em) {
+          v2HotNewsUpdatedLabel = data.atualizado_em;
         }
       })
       .catch(function () {})
       .finally(function () {
         triggerHotNewsPulseCycle();
       });
+
+    if (isPeriodic) {
+      fetch('/api/resumo?_t=' + Date.now(), { cache: 'no-store', headers: { Accept: 'application/json' } })
+        .then(function (r) { return r && r.ok ? r.json() : null; })
+        .then(function (data) {
+          if (data && Array.isArray(data.items) && data.items.length) {
+            EDITORIAL.resumoDoDia = data.items;
+          }
+        })
+        .catch(function () {})
+        .finally(function () {
+          triggerHotNewsPulseCycle();
+        });
+    }
   }
 
   // Interação B3: hover no desktop, toque no celular com duplo toque ou chip
@@ -6046,6 +6207,7 @@
     if (sectionKey === 'resumo-do-dia') enrichResumoDoDiaOnce();
     if (sectionKey === 'ultimas-noticias') renderUltimasNoticiasView();
     if (sectionKey === 'radar') renderRadarEditorialView();
+    if (sectionKey === 'entenda') carregarColunasEntendaV2(false);
     syncMobileEditorialToggle(sectionKey);
 
     updateRobotsMeta(sectionKey === 'aplicacao-parceiros');
@@ -7330,6 +7492,7 @@
   }
 
   var radarFeedCache = null;
+  var radarUpdatedLabel = '';
   var radarCategoryFilter = 'todos';
 
   function renderRadarEditorialView() {
@@ -7349,6 +7512,7 @@
     headerHtml += '<p class="editorial-section-sub">Monitoramento contínuo dos principais canais e analistas de geopolítica, política, economia e cultura com síntese factual e avaliação de impacto.</p>';
     headerHtml += '</div>';
     headerHtml += '<div style="display:flex;gap:var(--space-2);align-items:center;flex-wrap:wrap;">';
+    headerHtml += '<span class="radar-updated-badge" id="radar-last-updated">' + esc(radarUpdatedLabel || '') + '</span>';
     headerHtml += '<a href="/resumo-do-dia" class="btn btn-secondary" data-spa-link title="Ver o Resumo do Dia com as 5 principais notícias">📰 Resumo do Dia</a>';
     headerHtml += '<button type="button" class="btn btn-secondary" id="btn-atualizar-radar">🔄 Atualizar radar</button>';
     headerHtml += '</div>';
@@ -7367,7 +7531,6 @@
     var btnRefresh = document.getElementById('btn-atualizar-radar');
     if (btnRefresh) {
       btnRefresh.addEventListener('click', function () {
-        radarFeedCache = null;
         loadRadarCards(true);
       });
     }
@@ -7386,24 +7549,73 @@
   }
 
   function loadRadarCards(forceRefresh) {
-    if (radarFeedCache && !forceRefresh) {
+    var btnRefresh = document.getElementById('btn-atualizar-radar');
+    var updatedEl = document.getElementById('radar-last-updated');
+    if (forceRefresh) {
+      radarFeedCache = null;
+      try { localStorage.removeItem('rom_radar_cache'); } catch (e) {}
+      if (btnRefresh) {
+        btnRefresh.disabled = true;
+        btnRefresh.classList.add('is-loading');
+        btnRefresh.innerHTML = '⏳ Atualizando radar...';
+      }
+      var listLoading = document.getElementById('radar-cards-list');
+      if (listLoading) {
+        listLoading.innerHTML = '<p class="radar-loading">Sincronizando pulso em tempo real e briefings do radar...</p>';
+      }
+    } else if (radarFeedCache) {
+      if (updatedEl && radarUpdatedLabel) updatedEl.textContent = radarUpdatedLabel;
       renderRadarCardsList();
       return;
     }
-    var url = '/data/feed_output.json?_t=' + Date.now();
-    fetch(url)
+
+    var apiUrl = forceRefresh
+      ? ('/api/radar?refresh=1&_t=' + Date.now())
+      : ('/api/radar?_t=' + Date.now());
+
+    fetch(apiUrl, { cache: 'no-store', headers: { Accept: 'application/json' } })
       .then(function (res) {
-        if (!res.ok) throw new Error('Status ' + res.status);
+        if (!res || !res.ok) throw new Error('Status ' + (res ? res.status : 0));
         return res.json();
       })
       .then(function (data) {
-        radarFeedCache = Array.isArray(data) ? data : [];
-        renderRadarCardsList();
+        if (data && data.ok && Array.isArray(data.items)) {
+          radarFeedCache = data.items;
+          radarUpdatedLabel = data.atualizado_em || 'Atualizado agora';
+          if (updatedEl) updatedEl.textContent = radarUpdatedLabel;
+          renderRadarCardsList();
+          triggerHotNewsPulseCycle();
+          return;
+        }
+        throw new Error('Formato inesperado');
       })
-      .catch(function (err) {
-        var listEl = document.getElementById('radar-cards-list');
-        if (listEl) {
-          listEl.innerHTML = '<p class="radar-empty">Não foi possível carregar as novidades do radar neste momento (' + esc(err.message) + ').</p>';
+      .catch(function () {
+        var fallbackUrl = '/data/feed_output.json?_t=' + Date.now();
+        return fetch(fallbackUrl, { cache: 'no-store' })
+          .then(function (res) {
+            if (!res.ok) throw new Error('Status ' + res.status);
+            return res.json();
+          })
+          .then(function (data) {
+            radarFeedCache = Array.isArray(data) ? data : [];
+            radarUpdatedLabel = 'Atualizado agora';
+            if (updatedEl) updatedEl.textContent = radarUpdatedLabel;
+            renderRadarCardsList();
+            triggerHotNewsPulseCycle();
+          })
+          .catch(function (err) {
+            var listEl = document.getElementById('radar-cards-list');
+            if (listEl) {
+              listEl.innerHTML = '<p class="radar-empty">Não foi possível carregar as novidades do radar neste momento (' + esc(err.message) + ').</p>';
+            }
+          });
+      })
+      .finally(function () {
+        var btnNow = document.getElementById('btn-atualizar-radar');
+        if (btnNow) {
+          btnNow.disabled = false;
+          btnNow.classList.remove('is-loading');
+          btnNow.innerHTML = '🔄 Atualizar radar';
         }
       });
   }
@@ -7509,10 +7721,13 @@
         dataPub = '';
       }
 
-      var card = '<article class="radar-card radar-cat-' + esc(catKey) + '">';
+      var card = '<article class="radar-card radar-cat-' + esc(catKey) + (item.origem_v2 ? ' is-v2-card' : '') + '">';
       card += '<div class="radar-card-header">';
       card += '<div class="radar-card-meta">';
       card += '<span class="radar-badge-cat">' + esc(catLabel) + '</span>';
+      if (item.origem_v2) {
+        card += '<span class="radar-v2-pill radar-badge-v2">⚡ Pulso V2</span>';
+      }
       card += '<span class="radar-source-name">📺 ' + esc(item.fonte_nome || 'Fonte') + '</span>';
       if (dataPub) card += '<time class="radar-pub-date">' + esc(dataPub) + '</time>';
       if (item.fonte_url) {
@@ -7586,6 +7801,7 @@
     rh += '<p class="editorial-section-sub">As 5 principais notícias do dia selecionadas por relevância editorial, com síntese de fatos e comparação direta de cobertura entre veículos.</p>';
     rh += '</div>';
     rh += '<div style="display:flex;gap:var(--space-2);align-items:center;flex-wrap:wrap;">';
+    rh += '<button type="button" class="btn btn-secondary btn-sm" id="btn-refresh-resumo-dia">🔄 Atualizar resumo</button>';
     rh += '<a href="/radar" class="btn btn-secondary" data-spa-link title="Ver todos os briefings em tempo real">📡 Radar ao Vivo</a>';
     rh += '<button type="button" class="btn resumo-email-btn" id="btn-resumo-email" data-open-newsletter="Resumo do dia">Receber por e-mail</button>';
     rh += '</div>';
@@ -7651,6 +7867,19 @@
     });
     rh += '</ol>';
     resumoSec.innerHTML = rh;
+    var btnRefreshResumo = document.getElementById('btn-refresh-resumo-dia');
+    if (btnRefreshResumo) {
+      btnRefreshResumo.addEventListener('click', function () {
+        try {
+          localStorage.removeItem('rom_resumo_items');
+          localStorage.removeItem('rom_resumo_date');
+        } catch (e) {}
+        btnRefreshResumo.disabled = true;
+        btnRefreshResumo.classList.add('is-loading');
+        btnRefreshResumo.textContent = '⏳ Atualizando...';
+        atualizarResumoDoDiaAutomatico(true);
+      });
+    }
     bindDynamicEditorialActions(resumoSec);
   }
 
@@ -7665,7 +7894,12 @@
     }
 
     resumoAutoAtualizando = true;
-    fetch('/api/resumo', { headers: { Accept: 'application/json' } })
+    var resumoUrl = forcar ? ('/api/resumo?refresh=1&_t=' + Date.now()) : '/api/resumo';
+    var resumoOpts = forcar
+      ? { cache: 'no-store', headers: { Accept: 'application/json' } }
+      : { headers: { Accept: 'application/json' } };
+
+    fetch(resumoUrl, resumoOpts)
       .then(function (r) {
         var ct = r.headers.get('content-type') || '';
         if (r.ok && ct.indexOf('application/json') > -1) {
@@ -7680,12 +7914,13 @@
             localStorage.setItem('rom_resumo_items', JSON.stringify(data.items));
             localStorage.setItem('rom_resumo_date', data.dataEdicao || hoje);
           } catch (e) {}
-          renderResumoDoDiaDOM();
         }
       })
       .catch(function () {})
       .finally(function () {
         resumoAutoAtualizando = false;
+        renderResumoDoDiaDOM();
+        triggerHotNewsPulseCycle();
       });
   }
 
@@ -8629,12 +8864,138 @@
         eh += '</article>';
       });
       eh += '</div>';
+      eh += '<div id="entenda-v2-colunas-wrap" class="entenda-v2-colunas-wrap" hidden></div>';
       eh += '<div class="entenda-more-row">';
       eh += '<a href="/entenda" class="btn btn-secondary entenda-view-all-btn" data-spa-link>Explorar todos os ' + expKeys.length + ' guias do glossário →</a>';
       eh += '</div>';
       entendaSec.innerHTML = eh;
       bindDynamicEditorialActions(entendaSec);
+      carregarColunasEntendaV2(false);
     }
+  }
+
+  var v2EntendaColunasCache = null;
+  var v2EntendaAtualizadoEm = '';
+
+  function renderColunasEntendaV2DOM(colunas, atualizadoEm) {
+    var wrap = document.getElementById('entenda-v2-colunas-wrap');
+    if (!wrap) return;
+    if (!Array.isArray(colunas) || !colunas.length) {
+      wrap.hidden = true;
+      wrap.innerHTML = '';
+      return;
+    }
+
+    var ch = '<div class="entenda-v2-block">';
+    ch += '<div class="entenda-v2-head">';
+    ch += '<div class="entenda-v2-title-group">';
+    ch += '<span class="entenda-v2-pill">⚡ Síntese Rodando o Mundo · V2</span>';
+    ch += '<h3 class="entenda-v2-heading">Análises em Tempo Real · Motor V2</h3>';
+    ch += '<p class="entenda-v2-sub">Dossiês analíticos e contexto estrutural gerados continuamente sobre os temas em alta.</p>';
+    ch += '</div>';
+    ch += '<div class="entenda-v2-meta-actions">';
+    if (atualizadoEm) {
+      ch += '<span class="radar-updated-badge">' + esc(atualizadoEm) + '</span>';
+    }
+    ch += '<button type="button" class="btn btn-secondary btn-sm" id="btn-refresh-entenda-v2">🔄 Atualizar análises</button>';
+    ch += '</div>';
+    ch += '</div>';
+
+    ch += '<div class="entenda-cards-grid entenda-v2-grid">';
+    colunas.slice(0, 6).forEach(function (col, idx) {
+      var colSlug = col.slug || ('v2-col-' + idx);
+      var detailsId = 'entenda-v2-details-' + idx;
+      var catLabel = col.categoria || 'Análise Contextual';
+      var rotaHref = col.rota_editoria || '/radar';
+      var kwFirst = (Array.isArray(col.palavras_chave) && col.palavras_chave[0]) || col.titulo || '';
+      var codes = inferirPaisesDeTextoClient((col.titulo || '') + ' ' + (col.resumo || '') + ' ' + kwFirst);
+      var cCode = codes[0] || 'BR';
+      var cObj = byA2[cCode] || byA2['BR'];
+      var cCont = (cObj && cObj.c) || 'sul';
+
+      ch += '<article class="entenda-home-card entenda-card-compact entenda-v2-card" id="entenda-v2-card-' + esc(colSlug) + '">';
+      ch += '<div class="entenda-card-meta">';
+      ch += '<span class="radar-v2-pill">⚡ Síntese Rodando o Mundo · V2</span>';
+      ch += '<span class="entenda-v2-cat">' + esc(catLabel) + '</span>';
+      ch += '</div>';
+      ch += '<h3><a href="' + esc(rotaHref) + '" data-spa-link>' + esc(col.titulo || '') + '</a></h3>';
+      if (col.resumo) {
+        ch += '<p class="entenda-summary-compact">' + esc(col.resumo) + '</p>';
+      }
+      if (col.analise_aprofundada) {
+        ch += '<div class="entenda-v2-analysis-box" id="' + esc(detailsId) + '" hidden>';
+        ch += '<strong>💡 Análise aprofundada (Motor V2):</strong>';
+        ch += '<p>' + esc(col.analise_aprofundada) + '</p>';
+        ch += '</div>';
+      }
+      ch += '<div class="entenda-card-actions">';
+      if (col.analise_aprofundada) {
+        ch += '<button type="button" class="btn btn-sm btn-primary entenda-v2-toggle-btn" data-target="' + esc(detailsId) + '" aria-expanded="false">Ler análise V2 ▾</button>';
+      }
+      ch += '<a class="btn btn-sm btn-secondary" href="' + esc(rotaHref) + '" data-spa-link>Ir para editoria →</a>';
+      if (kwFirst) {
+        ch += '<button type="button" class="btn btn-sm btn-ghost entenda-news-btn" data-ver-noticias-assunto data-termo="' + esc(kwFirst) + '" data-pais="' + esc(cCode) + '" data-cont="' + esc(cCont) + '" data-topico="politica">Notícias relacionadas</button>';
+      }
+      ch += '</div>';
+      ch += '</article>';
+    });
+    ch += '</div>';
+    ch += '</div>';
+
+    wrap.innerHTML = ch;
+    wrap.hidden = false;
+
+    wrap.querySelectorAll('.entenda-v2-toggle-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var targetId = btn.getAttribute('data-target');
+        var box = targetId ? document.getElementById(targetId) : null;
+        if (!box) return;
+        var isExp = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!isExp));
+        box.hidden = isExp;
+        btn.textContent = isExp ? 'Ler análise V2 ▾' : 'Recolher análise ▴';
+      });
+    });
+
+    var btnRefV2 = document.getElementById('btn-refresh-entenda-v2');
+    if (btnRefV2) {
+      btnRefV2.addEventListener('click', function () {
+        btnRefV2.disabled = true;
+        btnRefV2.classList.add('is-loading');
+        btnRefV2.textContent = '⏳ Atualizando...';
+        carregarColunasEntendaV2(true);
+      });
+    }
+
+    bindDynamicEditorialActions(wrap);
+  }
+
+  function carregarColunasEntendaV2(forceRefresh) {
+    var wrap = document.getElementById('entenda-v2-colunas-wrap');
+    if (!wrap) return;
+    if (!forceRefresh && Array.isArray(v2EntendaColunasCache) && v2EntendaColunasCache.length) {
+      renderColunasEntendaV2DOM(v2EntendaColunasCache, v2EntendaAtualizadoEm);
+      return;
+    }
+    var url = '/api/entenda-o-assunto?acao=colunas&_t=' + Date.now() + (forceRefresh ? '&refresh=1' : '');
+    fetch(url, { cache: 'no-store', headers: { Accept: 'application/json' } })
+      .then(function (r) { return r && r.ok ? r.json() : null; })
+      .then(function (data) {
+        if (data && data.ok && Array.isArray(data.colunas) && data.colunas.length) {
+          v2EntendaColunasCache = data.colunas;
+          v2EntendaAtualizadoEm = data.atualizado_em || '';
+          renderColunasEntendaV2DOM(v2EntendaColunasCache, v2EntendaAtualizadoEm);
+        }
+      })
+      .catch(function () {})
+      .finally(function () {
+        var btnRefV2 = document.getElementById('btn-refresh-entenda-v2');
+        if (btnRefV2) {
+          btnRefV2.disabled = false;
+          btnRefV2.classList.remove('is-loading');
+          btnRefV2.textContent = '🔄 Atualizar análises';
+        }
+      });
   }
 
   function buildPath(cont, country) {
@@ -10491,8 +10852,8 @@
     }
   })();
 
-  /* ---------- Versão do sistema (definida pelo nome da pasta do deploy, ex: ROM V2.12 -> v2.12) ---------- */
-  var ROM_CURRENT_VERSION = 'v2.12';
+  /* ---------- Versão do sistema (definida pelo nome da pasta do deploy, ex: ROM V2 -> v2, ROM V2.10 -> v2.10) ---------- */
+  var ROM_CURRENT_VERSION = 'v2';
 
   function initSiteVersion() {
     try {
@@ -10530,7 +10891,7 @@
         });
       }
 
-      var verEls = document.querySelectorAll('.current-rom-version');
+      var verEls = document.querySelectorAll('.current-rom-version, .about-version-chip');
       verEls.forEach(function (el) {
         el.textContent = ROM_CURRENT_VERSION;
       });
@@ -11349,6 +11710,7 @@
         if (temas.length > 0) {
           salvarCacheVitrineIA(temas);
           renderVitrineIACards(temas, vitrineIaSelectedCategory);
+          triggerHotNewsPulseCycle();
         } else {
           var stale = lerCacheVitrineIA(true);
           if (stale && stale.length && !forceRefresh) {

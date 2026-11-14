@@ -10638,3 +10638,151 @@ button.support-link.topbar-more-btn:hover {
     -webkit-overflow-scrolling: touch;
   }
 }
+
+/* ==========================================================================
+   INT-V2-SITE: PULSO V2 NO RADAR, RESUMO DO DIA E ENTENDA O ASSUNTO
+   ========================================================================== */
+
+.radar-updated-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.28rem 0.68rem;
+  border-radius: var(--radius-full);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.radar-updated-badge:empty {
+  display: none;
+}
+
+.radar-v2-pill,
+.radar-badge-v2 {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.16rem 0.52rem;
+  border-radius: var(--radius-full);
+  background: var(--primary-soft);
+  color: var(--primary);
+  border: 1px solid color-mix(in oklab, var(--primary) 35%, transparent);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+#btn-atualizar-radar.is-loading,
+#btn-refresh-resumo-dia.is-loading,
+#btn-refresh-entenda-v2.is-loading {
+  opacity: 0.72;
+  cursor: wait;
+}
+
+.radar-card.is-v2-card {
+  border-color: color-mix(in oklab, var(--primary) 32%, var(--border));
+}
+
+.entenda-v2-colunas-wrap {
+  margin-top: var(--space-5);
+  margin-bottom: var(--space-4);
+}
+
+.entenda-v2-block {
+  padding: var(--space-4);
+  background: var(--surface-2);
+  border: 1px solid color-mix(in oklab, var(--primary) 30%, var(--border));
+  border-radius: var(--radius-lg);
+}
+
+.entenda-v2-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-4);
+}
+
+.entenda-v2-title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.entenda-v2-pill {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-full);
+  background: var(--primary-soft);
+  color: var(--primary);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.entenda-v2-heading {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.05rem, 0.95rem + 0.5vw, 1.35rem);
+  font-weight: 700;
+  color: var(--text);
+}
+
+.entenda-v2-sub {
+  margin: 0;
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+}
+
+.entenda-v2-meta-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.entenda-v2-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+
+.entenda-v2-cat {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.entenda-v2-analysis-box {
+  margin: var(--space-2) 0 var(--space-3);
+  padding: var(--space-3);
+  background: var(--surface-2);
+  border-left: 3px solid var(--primary);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: var(--text-xs);
+  color: var(--text);
+  line-height: 1.55;
+}
+
+.entenda-v2-analysis-box strong {
+  display: block;
+  margin-bottom: 0.25rem;
+  color: var(--primary);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.entenda-v2-analysis-box p {
+  margin: 0;
+  color: var(--text-muted);
+}
