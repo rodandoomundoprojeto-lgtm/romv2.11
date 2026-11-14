@@ -480,10 +480,16 @@ async def executar_noticias_quentes_manual(
                     "noticias_quentes": [],
                 }
 
-    resultado = await executar_pipeline_pulso_async(
-        db_url=db_url,
-        dry_run=modo_dry_run,
-    )
+    try:
+        resultado = await executar_pipeline_pulso_async(
+            db_url=db_url,
+            dry_run=modo_dry_run,
+        )
+    except Exception as exc:  # noqa: BLE001
+        raise HTTPException(
+            status_code=500,
+            detail=f"Falha ao executar pipeline de coleta: {exc}",
+        ) from exc
 
     if resultado is None:
         return {

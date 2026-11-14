@@ -22,6 +22,7 @@ from google import genai
 from google.genai import types
 
 from .coletor_estudo import (
+    FONTES_NOTICIAS_QUENTES_30MIN,
     advisory_lock,
     buscar_artigos_publicados_rom_async,
     coletar_noticias_quentes_30min_async,
@@ -38,7 +39,16 @@ from .schemas import (
 
 PROMPTS_DIR = Path(__file__).resolve().parent / "prompts"
 PROMPT_0_PATH = PROMPTS_DIR / "prompt_0_pulso_noticias_quentes.md"
-MODELO_PULSO = "gemini-2.5-flash"
+MODELO_PULSO = os.getenv("GEMINI_MODEL_PULSO", "gemini-3.5-flash").strip() or "gemini-3.5-flash"
+MODELOS_PULSO_FALLBACK = [
+    "gemini-3.5-flash",
+    "gemini-3.7-flash",
+    "gemini-3.6-flash",
+    "gemini-3.5-flash-lite",
+    "gemini-3.1-flash-lite",
+    "gemini-3.8-flash",
+    "gemini-2.5-flash",
+]
 LOCK_PULSO_KEY = "pipeline_pulso:noticias_quentes_30m"
 
 
@@ -213,31 +223,50 @@ NOTICIAS_ATIVAS_NO_BANCO (expires_at > NOW() — Deduplique contra estes itens; 
 {json.dumps(noticias_ativas_banco, ensure_ascii=False, indent=2)}
 
 ACERVO_REAL_DISPONIVEL (Use exclusivamente estas URLs em links_internos_relacionados):
-{json.dumps(acervo[:50], ensure_ascii=False, indent=2)}
+{json.dumps(acervo[:25], ensure_ascii=False, indent=2)}
 
 LOTE_DE_FEEDS_PULSO_30MIN:
-{json.dumps(itens_coletados[:40], ensure_ascii=False, indent=2)}
+{json.dumps(itens_coletados[:25], ensure_ascii=False, indent=2)}
 
 Analise o lote, deduplique contra as notícias ativas no banco e retorne o JSON seguindo estritamente PayloadNoticiasQuentes.
 """.strip()
 
-    response = gemini_client.models.generate_content(
-        model=model,
-        contents=prompt_usuario,
-        config=types.GenerateContentConfig(
-            system_instruction=system_prompt,
-            response_mime_type="application/json",
-            response_schema=PayloadNoticiasQuentes,
-            temperature=0.2,
-        ),
-    )
+    candidatos_modelo = [model] + [m for m in MODELOS_PULSO_FALLBACK if m != model]
+    response = None
+    modelo_usado = model
+    ultimo_erro: Optional[Exception] = None
+
+    for candidato in candidatos_modelo:
+        try:
+            response = gemini_client.models.generate_content(
+                model=candidato,
+                contents=prompt_usuario,
+                config=types.GenerateContentConfig(
+                    system_instruction=system_prompt,
+                    response_mime_type="application/json",
+                    response_schema=PayloadNoticiasQuentes,
+                    temperature=0.2,
+                ),
+            )
+            modelo_usado = candidato
+            break
+        except Exception as exc:  # noqa: BLE001
+            ultimo_erro = exc
+            msg = str(exc).upper()
+            if any(k in msg for k in ("404", "NOT_FOUND", "503", "UNAVAILABLE", "504", "DEADLINE_EXCEEDED", "TIMEOUT", "429", "RESOURCE_EXHAUSTED")):
+                print(f"[pulso_30m] Modelo {candidato} indisponível ({msg[:80]}), tentando próximo fallback...")
+                continue
+            raise
+
+    if response is None:
+        raise RuntimeError(f"Nenhum modelo Gemini disponível para pulso: {ultimo_erro}")
 
     payload: Optional[PayloadNoticiasQuentes] = getattr(response, "parsed", None)
     if payload is None:
         payload = PayloadNoticiasQuentes.model_validate_json(response.text)
 
     payload.batch_id = payload.batch_id or batch_atual
-    payload.model_id = model
+    payload.model_id = modelo_usado
     payload.noticias_quentes.sort(
         key=lambda n: (n.urgencia_score, n.relevancia_score),
         reverse=True,
@@ -351,6 +380,75 @@ def executar_upsert_noticias_quentes(
                 "updated_at": ref_time,
             }
             cur.execute(UPSERT_NOTICIA_QUENTE_SQL, params)
+
+            # Alimenta também ai_eventos + ai_conteudos_gerados para a Fila de Eventos e Atlas V2
+            status_evento = "publicado" if status_inicial == "ativo" else "aguardando_revisao"
+            try:
+                cur.execute(
+                    """
+                    INSERT INTO ai_eventos (
+                        slug, titulo_evento, categoria, paises_envolvidos,
+                        urgencia_score, relevancia_score, nivel_confianca,
+                        destaque_ate, status, updated_at
+                    ) VALUES (
+                        %(slug)s, %(titulo_evento)s, %(categoria)s, %(paises_envolvidos)s,
+                        %(urgencia_score)s, %(relevancia_score)s, %(nivel_confianca)s,
+                        %(destaque_ate)s, %(status)s, %(updated_at)s
+                    )
+                    ON CONFLICT (slug) DO UPDATE SET
+                        titulo_evento = EXCLUDED.titulo_evento,
+                        categoria = EXCLUDED.categoria,
+                        paises_envolvidos = EXCLUDED.paises_envolvidos,
+                        urgencia_score = EXCLUDED.urgencia_score,
+                        relevancia_score = EXCLUDED.relevancia_score,
+                        nivel_confianca = EXCLUDED.nivel_confianca,
+                        destaque_ate = EXCLUDED.destaque_ate,
+                        updated_at = EXCLUDED.updated_at
+                    RETURNING id;
+                    """,
+                    {
+                        "slug": item.slug[:200],
+                        "titulo_evento": item.titulo_curto[:220],
+                        "categoria": item.categoria[:50],
+                        "paises_envolvidos": list(item.paises_envolvidos),
+                        "urgencia_score": item.urgencia_score,
+                        "relevancia_score": item.relevancia_score,
+                        "nivel_confianca": item.nivel_confianca,
+                        "destaque_ate": destaque_ate,
+                        "status": status_evento,
+                        "updated_at": ref_time,
+                    },
+                )
+                ev_row = cur.fetchone()
+                if ev_row:
+                    ev_id = ev_row["id"] if isinstance(ev_row, dict) else ev_row[0]
+                    cur.execute(
+                        "SELECT COALESCE(MAX(versao), 0) FROM ai_conteudos_gerados WHERE event_id = %s;",
+                        (ev_id,),
+                    )
+                    max_v_row = cur.fetchone()
+                    prox_versao = int((max_v_row["coalesce"] if isinstance(max_v_row, dict) else max_v_row[0]) or 0) + 1
+                    cur.execute(
+                        """
+                        INSERT INTO ai_conteudos_gerados (
+                            event_id, tipo_conteudo, versao, tipo_alteracao,
+                            payload_json, evidence_ids, model_id, prompt_version, review_status
+                        ) VALUES (
+                            %s, 'sintese_comparada', %s, 'criacao',
+                            %s::jsonb, '{}', %s, 'pulso_v2', %s
+                        );
+                        """,
+                        (
+                            ev_id,
+                            prox_versao,
+                            json.dumps({"sintese_com_ressalvas": item.resumo_pulso}, ensure_ascii=False),
+                            payload.model_id or MODELO_PULSO,
+                            status_evento,
+                        ),
+                    )
+            except Exception as exc_ev:  # noqa: BLE001
+                print(f"[Aviso] Não foi possível sincronizar ai_eventos para '{item.slug}': {exc_ev}")
+
             salvos += 1
 
     conn.commit()
@@ -446,22 +544,68 @@ def verificar_kill_switch_publicacao(conn: Any, default_status: str = "ativo") -
     return default_status
 
 
+def _carregar_fontes_pulso_com_banco(database_url: str) -> List[Dict[str, Any]]:
+    """Combina FONTES_NOTICIAS_QUENTES_30MIN com fontes aprovadas em `ai_fontes_referencia`."""
+    fontes: List[Dict[str, Any]] = list(FONTES_NOTICIAS_QUENTES_30MIN)
+    urls_vistas = {str(f.get("url") or "").strip() for f in fontes}
+    if not database_url:
+        return fontes
+    try:
+        import psycopg
+
+        with psycopg.connect(database_url, connect_timeout=5, prepare_threshold=None) as conn:
+            with conn.cursor() as cur:
+                cur.execute(
+                    """
+                    SELECT nome, url, pais_iso, regiao, idioma, tipo_fonte, cadencia
+                    FROM ai_fontes_referencia
+                    WHERE ativo = TRUE
+                      AND politica_uso_status = 'aprovada'
+                      AND coleta_permitida = TRUE
+                      AND tipo_fonte IN ('rss_feed', 'fonte_primaria', 'youtube_rss')
+                    ORDER BY peso_confianca DESC, id DESC
+                    LIMIT 40;
+                    """
+                )
+                for row in cur.fetchall():
+                    nome, url, pais_iso, regiao, idioma, tipo_fonte, cadencia = row
+                    url_limpa = str(url or "").strip()
+                    if not url_limpa or url_limpa in urls_vistas:
+                        continue
+                    urls_vistas.add(url_limpa)
+                    fontes.append(
+                        {
+                            "nome": nome,
+                            "url": url_limpa,
+                            "pais_iso": pais_iso or "BR",
+                            "regiao": regiao or "Global",
+                            "idioma": idioma or "pt",
+                            "tipo_fonte": tipo_fonte or "rss_feed",
+                            "cadencia": cadencia or "pulso_30m",
+                        }
+                    )
+    except Exception as exc:  # noqa: BLE001
+        print(f"[Aviso] Falha ao carregar fontes extras de ai_fontes_referencia: {exc}")
+    return fontes
+
+
 async def executar_pipeline_pulso_async(
     db_url: Optional[str] = None,
     dry_run: bool = False,
     client: Optional[Any] = None,
 ) -> Optional[PayloadNoticiasQuentes]:
     """Executa o ciclo completo de 30 minutos:
-    1. Coleta feeds (`FONTES_NOTICIAS_QUENTES_30MIN`) e acervo publicado (`buscar_artigos_publicados_rom_async`);
+    1. Coleta feeds (`FONTES_NOTICIAS_QUENTES_30MIN` + `ai_fontes_referencia` aprovadas) e acervo publicado;
     2. Busca notícias ativas no banco (`expires_at > NOW()`) para deduplicação;
-    3. Chama `gemini-2.5-flash` com `response_schema=PayloadNoticiasQuentes`;
-    4. Executa UPSERT em `ai_noticias_quentes` calculando `expires_at` via `ttl_horas`,
+    3. Chama Gemini Flash com `response_schema=PayloadNoticiasQuentes`;
+    4. Executa UPSERT em `ai_noticias_quentes` e `ai_eventos` respeitando o Kill Switch,
        protegido por `advisory_lock` e auditado em `ai_execucoes_pipeline`.
     """
     database_url = _obter_db_url(db_url)
+    fontes_pulso = await asyncio.to_thread(_carregar_fontes_pulso_com_banco, database_url)
 
     itens_coletados, acervo_rom = await asyncio.gather(
-        coletar_noticias_quentes_30min_async(),
+        coletar_noticias_quentes_30min_async(fontes_custom=fontes_pulso),
         buscar_artigos_publicados_rom_async(db_url=database_url),
     )
 
@@ -512,7 +656,8 @@ async def executar_pipeline_pulso_async(
                     status="em_execucao",
                 )
                 try:
-                    salvos = executar_upsert_noticias_quentes(conn, payload, status_inicial="ativo")
+                    status_kill = verificar_kill_switch_publicacao(conn, default_status="aguardando_revisao")
+                    salvos = executar_upsert_noticias_quentes(conn, payload, status_inicial=status_kill)
                     registrar_auditoria_execucao(
                         conn,
                         job_nome="pulso_noticias_quentes_30m",
