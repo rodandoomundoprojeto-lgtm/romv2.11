@@ -585,9 +585,10 @@
     (function () {
       const $ = (id) => document.getElementById(id);
 
+      const isLocalHost = ['127.0.0.1', 'localhost', '0.0.0.0', '[::1]'].includes(window.location.hostname);
       const defaultApiBase = (
         window.location.protocol === 'file:' ||
-        ((window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') && window.location.port !== '8000')
+        (isLocalHost && window.location.port !== '8000')
       ) ? 'http://127.0.0.1:8000' : '';
 
       const state = {
@@ -640,7 +641,7 @@
         const ct = (res.headers.get('content-type') || '').toLowerCase();
         if (!ct.includes('application/json')) {
           if (res.status === 405) {
-            throw new Error('Erro HTTP 405: esta URL não é o backend FastAPI. Preencha "URL da API FastAPI" (ex: http://127.0.0.1:8000 ou URL do Render).');
+            throw new Error('Erro HTTP 405: o servidor estático (Cloudflare / Live Server) recusou o método. Preencha "URL da API FastAPI" com o endereço do backend Python (ex: http://127.0.0.1:8000) ou configure CURADORIA_BACKEND_URL.');
           }
           throw new Error('A URL da API retornou conteúdo não-JSON. Preencha "URL da API FastAPI" com o endereço do servidor Python (ex: http://127.0.0.1:8000).');
         }

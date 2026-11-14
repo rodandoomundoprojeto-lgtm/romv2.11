@@ -5623,25 +5623,6 @@ dialog:not([open]) {
   }
 }
 
-/* ===== Ocultar selos/badges injetados pelo Netlify que colidem no mobile e desktop ===== */
-.netlify-badge,
-[class*="netlify-badge"],
-[id*="netlify-badge"],
-a[href*="netlify.com"]:not(.support-link):not(.brand),
-div:has(> a[href*="netlify.com"]:not(.support-link):not(.brand)),
-iframe[src*="netlify"] {
-  display: none !important;
-  visibility: hidden !important;
-  opacity: 0 !important;
-  pointer-events: none !important;
-  width: 0 !important;
-  height: 0 !important;
-  overflow: hidden !important;
-  position: absolute !important;
-  left: -9999px !important;
-  z-index: -1 !important;
-}
-
 /* ===== Metodologia Editorial & Transparência ===== */
 .metodologia-section {
   padding: clamp(var(--space-5), 4vw, var(--space-8));

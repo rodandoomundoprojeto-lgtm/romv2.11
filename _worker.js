@@ -17,9 +17,165 @@ function escapeHtml(str) {
 
 const CORS_HEADERS = {
   'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
-  'Access-Control-Allow-Headers': 'Content-Type, Accept'
+  'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
+  'Access-Control-Allow-Headers': 'Content-Type, Accept, Authorization'
 };
+
+function getResendKey(env = {}) {
+  if (env.RESEND_API_KEY) return env.RESEND_API_KEY;
+  for (const [k, v] of Object.entries(env)) {
+    if (k.startsWith('re_')) return k;
+    if (typeof v === 'string' && v.startsWith('re_')) return v;
+  }
+  return 're_QpeSXWvN_2N1aagUEH3yF4cpM9hBGkJix';
+}
+
+async function handleTesteEnvio(request, env, url) {
+  if (request.method === 'OPTIONS') {
+    return new Response(null, { status: 204, headers: CORS_HEADERS });
+  }
+  if (request.method !== 'GET') {
+    return new Response(JSON.stringify({ ok: false, error: 'Método não permitido' }), {
+      status: 405,
+      headers: { ...CORS_HEADERS, 'Content-Type': 'application/json; charset=utf-8' }
+    });
+  }
+
+  const testEmail = url.searchParams.get('email') || url.searchParams.get('teste');
+  const apiKey = (env && env.RESEND_API_KEY) || getResendKey(env);
+
+  if (!apiKey) {
+    return new Response(JSON.stringify({
+      status: 'erro_configuracao',
+      mensagem: 'A variável RESEND_API_KEY não foi detectada no Cloudflare Pages.'
+    }, null, 2), {
+      status: 200,
+      headers: { ...CORS_HEADERS, 'Content-Type': 'application/json; charset=utf-8' }
+    });
+  }
+
+  if (!testEmail) {
+    return new Response(JSON.stringify({
+      status: 'chave_encontrada',
+      mensagem: 'A chave RESEND_API_KEY está configurada no Cloudflare Pages! Para testar o envio, passe seu e-mail na URL.',
+      exemplo_url: '/api/teste-envio?email=seu-email@gmail.com'
+    }, null, 2), {
+      status: 200,
+      headers: { ...CORS_HEADERS, 'Content-Type': 'application/json; charset=utf-8' }
+    });
+  }
+
+  const fromEmail = (env && env.RESEND_FROM_EMAIL) || 'Rodando o Mundo <onboarding@resend.dev>';
+  try {
+    const res = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${apiKey}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        from: fromEmail,
+        to: [testEmail],
+        subject: 'Teste de Envio — Rodando o Mundo (Cloudflare Pages)',
+        html: `<div style="font-family:sans-serif;padding:20px;background:#0d1117;color:#c9d1d9;border-radius:8px;">
+          <h2 style="color:#58a6ff;">Rodando o Mundo — E-mail de Teste</h2>
+          <p>A integração com o <strong>Resend</strong> via <strong>Cloudflare Pages</strong> está funcionando com sucesso.</p>
+          <p>Horário do teste: ${escapeHtml(new Date().toLocaleString('pt-BR'))}</p>
+        </div>`
+      })
+    });
+    const resJson = await res.json().catch(() => ({}));
+    return new Response(JSON.stringify({
+      status: res.ok ? 'sucesso' : 'erro_resend',
+      codigo_http_resend: res.status,
+      resposta_resend: resJson,
+      destinatario: testEmail,
+      remetente: fromEmail
+    }, null, 2), {
+      status: 200,
+      headers: { ...CORS_HEADERS, 'Content-Type': 'application/json; charset=utf-8' }
+    });
+  } catch (err) {
+    return new Response(JSON.stringify({ status: 'erro_execucao', erro: err.message }, null, 2), {
+      status: 500,
+      headers: { ...CORS_HEADERS, 'Content-Type': 'application/json; charset=utf-8' }
+    });
+  }
+}
+
+async function handleBackendProxy(request, env, url) {
+  if (request.method === 'OPTIONS') {
+    return new Response(null, { status: 204, headers: CORS_HEADERS });
+  }
+
+  const backendUrl = String((env && env.CURADORIA_BACKEND_URL) || '').trim().replace(/\/+$/, '');
+  if (!backendUrl) {
+    return new Response(JSON.stringify({
+      ok: false,
+      detail: 'Backend FastAPI não configurado no Cloudflare Pages (variável CURADORIA_BACKEND_URL ausente). Preencha "URL da API FastAPI" no painel Admin com o endereço do servidor Python.'
+    }), {
+      status: 503,
+      headers: { ...CORS_HEADERS, 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' }
+    });
+  }
+
+  let targetUrl;
+  try {
+    targetUrl = new URL(url.pathname + url.search, backendUrl);
+  } catch (e) {
+    return new Response(JSON.stringify({
+      ok: false,
+      detail: 'CURADORIA_BACKEND_URL inválida no Cloudflare Pages.'
+    }), {
+      status: 500,
+      headers: { ...CORS_HEADERS, 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' }
+    });
+  }
+
+  // Evita loop recursivo caso CURADORIA_BACKEND_URL aponte para o próprio domínio estático
+  if (targetUrl.hostname === url.hostname) {
+    return new Response(JSON.stringify({
+      ok: false,
+      detail: 'CURADORIA_BACKEND_URL aponta para o próprio domínio estático. Configure a URL pública do backend FastAPI.'
+    }), {
+      status: 502,
+      headers: { ...CORS_HEADERS, 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' }
+    });
+  }
+
+  const forwardHeaders = new Headers(request.headers);
+  forwardHeaders.delete('host');
+
+  const init = {
+    method: request.method,
+    headers: forwardHeaders
+  };
+  if (request.method !== 'GET' && request.method !== 'HEAD') {
+    init.body = request.body;
+  }
+
+  try {
+    const upstreamRes = await fetch(targetUrl.toString(), init);
+    const respHeaders = new Headers(upstreamRes.headers);
+    for (const [k, v] of Object.entries(CORS_HEADERS)) {
+      respHeaders.set(k, v);
+    }
+    respHeaders.set('Cache-Control', 'no-store');
+    return new Response(upstreamRes.body, {
+      status: upstreamRes.status,
+      statusText: upstreamRes.statusText,
+      headers: respHeaders
+    });
+  } catch (err) {
+    return new Response(JSON.stringify({
+      ok: false,
+      detail: 'Falha ao conectar no backend FastAPI (' + (err && err.message ? err.message : 'erro de rede') + ').'
+    }), {
+      status: 502,
+      headers: { ...CORS_HEADERS, 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' }
+    });
+  }
+}
 
 async function handleContato(request, env) {
   if (request.method === 'OPTIONS') {
@@ -111,27 +267,7 @@ async function handleContato(request, env) {
     }
   }
 
-  // 2º Tenta repassar para a função Netlify (caso ativa)
-  try {
-    const netlifyRes = await fetch('https://rodandoomundo.netlify.app/api/contato', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify(data)
-    });
-    if (netlifyRes.ok) {
-      const netlifyJson = await netlifyRes.json().catch(() => ({}));
-      if (netlifyJson && netlifyJson.ok !== false) {
-        return new Response(JSON.stringify({ ok: true, success: true, canal: 'netlify_proxy' }), {
-          status: 200,
-          headers: { ...CORS_HEADERS, 'Content-Type': 'application/json' }
-        });
-      }
-    }
-  } catch (e) {
-    // continua para fallback FormSubmit
-  }
-
-  // 3º Fallback server-side via FormSubmit (com DNS e IP públicos limpos a partir do Cloudflare Edge)
+  // 2º Fallback server-side via FormSubmit (com DNS e IP públicos limpos a partir do Cloudflare Edge)
   try {
     const fsRes = await fetch('https://formsubmit.co/ajax/' + destEmail, {
       method: 'POST',
@@ -170,21 +306,24 @@ export default {
       return handleContato(request, env);
     }
 
-    // Proxy para testes de envio ou outras funções da API
+    // Rota da API de Teste de Envio (Resend via Cloudflare)
     if (url.pathname === '/api/teste-envio') {
-      return fetch('https://rodandoomundo.netlify.app/api/teste-envio' + url.search, {
-        headers: request.headers
-      });
+      return handleTesteEnvio(request, env, url);
     }
 
-    // Repassar outras chamadas de API normalmente
-    if (url.pathname.startsWith('/api/') || url.pathname.startsWith('/.netlify/')) {
+    // Proxy das rotas FastAPI (Motor V2 e V1) para CURADORIA_BACKEND_URL — evita fallback SPA (HTML/405)
+    if (url.pathname.startsWith('/v2/') || url.pathname.startsWith('/v1/')) {
+      return handleBackendProxy(request, env, url);
+    }
+
+    // Repassar outras chamadas /api/ normalmente
+    if (url.pathname.startsWith('/api/')) {
       return env.ASSETS.fetch(request);
     }
 
     // Bloqueia acesso público a arquivos internos, scripts, documentações e modelos sensíveis
     const blockedPaths = [
-      /^\/(\.agents|\.antigravity|\.github|\.pytest_cache|config|curadoria|docs|functions|migrations|netlify|redacao_v2|src|workers|_backups)(\/|$)/i,
+      /^\/(\.agents|\.antigravity|\.github|\.pytest_cache|config|curadoria|docs|functions|migrations|redacao_v2|src|workers|_backups)(\/|$)/i,
       /\.(md|py|toml|zip|sql|ya?ml)$/i,
       /^\/(GEMINI\.md|PLANO_DEFINITIVO_V2\.md|LEIA-ME\.txt|requirements\.txt|\.env|\.assetsignore)$/i
     ];
