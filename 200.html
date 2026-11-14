@@ -130,9 +130,39 @@
           </svg>
           <span class="theme-label sr-only">Modo escuro</span>
         </button>
+
+        <button class="mobile-menu-btn" id="mobile-menu-btn" type="button" aria-label="Abrir menu de navegação"
+          aria-expanded="false" aria-controls="mobile-nav-drawer" title="Menu">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="3" y1="6" x2="21" y2="6" />
+            <line x1="3" y1="12" x2="21" y2="12" />
+            <line x1="3" y1="18" x2="21" y2="18" />
+          </svg>
+        </button>
       </nav>
     </div>
   </header>
+
+  <div class="mobile-nav-backdrop" id="mobile-nav-backdrop" hidden></div>
+  <nav class="mobile-nav-drawer" id="mobile-nav-drawer" aria-label="Menu de navegação mobile" hidden>
+    <div class="mobile-nav-drawer-header">
+      <span class="mobile-nav-drawer-title">Navegação</span>
+      <button type="button" class="mobile-nav-close" id="mobile-nav-close" aria-label="Fechar menu">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2"
+          stroke-linecap="round" aria-hidden="true">
+          <path d="M6 6l12 12M18 6L6 18" />
+        </svg>
+      </button>
+    </div>
+    <div class="mobile-nav-links">
+      <a class="mobile-nav-link" href="/" data-home id="mobile-nav-explorar-mapa">Explorar Mapa</a>
+      <a class="mobile-nav-link" href="/radar" data-spa-link id="mobile-nav-radar">Radar</a>
+      <a class="mobile-nav-link" href="/resumo-do-dia" data-spa-link id="mobile-nav-resumo-dia">Resumo do Dia</a>
+      <a class="mobile-nav-link" href="/temas" data-spa-link id="mobile-nav-dossies">Dossiês</a>
+      <a class="mobile-nav-link" href="/clube" data-spa-link id="mobile-nav-apoie">Apoie</a>
+    </div>
+  </nav>
 
   <!-- Slot Comercial 1: Cota Presenting (Master Global) -->
   <aside id="slot-cota-master" class="sponsor-slot sponsor-slot-master" hidden aria-label="Patrocínio Master">

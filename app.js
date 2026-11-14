@@ -6322,6 +6322,8 @@
 
   function syncMobileEditorialToggle(sectionKey) {
     var btnRadar = document.getElementById('btn-mode-radar');
+    var btnModeMap = document.getElementById('btn-mode-map');
+    var btnModeList = document.getElementById('btn-mode-list');
     var heroBar = document.getElementById('hero-mode-bar');
     var isMobile = (window.innerWidth <= 768);
 
@@ -6342,6 +6344,14 @@
     var labelText = document.getElementById('btn-mode-radar-text');
 
     if (sectionKey === 'radar') {
+      if (btnModeMap) {
+        btnModeMap.classList.remove('is-active');
+        btnModeMap.setAttribute('aria-selected', 'false');
+      }
+      if (btnModeList) {
+        btnModeList.classList.remove('is-active');
+        btnModeList.setAttribute('aria-selected', 'false');
+      }
       btnRadar.classList.add('is-active');
       btnRadar.setAttribute('aria-selected', 'true');
       if (isMobile) {
@@ -6361,6 +6371,14 @@
         if (iconResumo) iconResumo.style.display = 'none';
       }
     } else if (sectionKey === 'resumo-do-dia') {
+      if (btnModeMap) {
+        btnModeMap.classList.remove('is-active');
+        btnModeMap.setAttribute('aria-selected', 'false');
+      }
+      if (btnModeList) {
+        btnModeList.classList.remove('is-active');
+        btnModeList.setAttribute('aria-selected', 'false');
+      }
       btnRadar.classList.add('is-active');
       btnRadar.setAttribute('aria-selected', 'true');
       if (isMobile) {
@@ -6498,7 +6516,7 @@
   }
 
   function updateNavActive(path) {
-    document.querySelectorAll('.topbar .support-link, .header-nav-link, .footer-legal-links a').forEach(function (l) {
+    document.querySelectorAll('.topbar .support-link, .header-nav-link, .mobile-nav-link, .footer-legal-links a').forEach(function (l) {
       var href = l.getAttribute('href');
       if (!href) return;
       var isActive = false;
@@ -7134,6 +7152,14 @@
     updateSeoMeta(pageTitle, pageDesc, '/comparar/' + compData.slug);
     if (!isInlineBelowMap) {
       window.scrollTo({ top: 0, behavior: 'auto' });
+    } else {
+      requestAnimationFrame(function () {
+        setTimeout(function () {
+          if (compView && !compView.hidden) {
+            compView.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }, 80);
+      });
     }
 
     if (!opts.fromPopState && !isInlineBelowMap) {
@@ -12213,6 +12239,60 @@
   initParceriaLeadModal();
   initParceriasForm();
   initClubeMembros();
+  function initMobileNavDrawer() {
+    var menuBtn = document.getElementById('mobile-menu-btn');
+    var drawer = document.getElementById('mobile-nav-drawer');
+    var backdrop = document.getElementById('mobile-nav-backdrop');
+    var closeBtn = document.getElementById('mobile-nav-close');
+    if (!menuBtn || !drawer) return;
+
+    function openDrawer() {
+      drawer.hidden = false;
+      if (backdrop) backdrop.hidden = false;
+      menuBtn.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeDrawer() {
+      drawer.hidden = true;
+      if (backdrop) backdrop.hidden = true;
+      menuBtn.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+
+    menuBtn.addEventListener('click', function () {
+      if (drawer.hidden) openDrawer();
+      else closeDrawer();
+    });
+
+    if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+    if (backdrop) backdrop.addEventListener('click', closeDrawer);
+
+    drawer.querySelectorAll('.mobile-nav-link').forEach(function (link) {
+      link.addEventListener('click', function () {
+        closeDrawer();
+      });
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && !drawer.hidden) {
+        closeDrawer();
+        menuBtn.focus();
+      }
+    });
+  }
+
+  function initMobileMapLegendCollapse() {
+    var legendEl = document.getElementById('map-legend');
+    var legendToggleBtn = document.getElementById('map-legend-toggle');
+    if (legendEl && legendToggleBtn && window.innerWidth <= 768) {
+      legendEl.classList.add('is-collapsed');
+      legendToggleBtn.setAttribute('aria-expanded', 'false');
+    }
+  }
+
+  initMobileNavDrawer();
+  initMobileMapLegendCollapse();
   initQuickCountryView();
   initHeroAndMapControls();
   atualizarResumoDoDiaAutomatico();
