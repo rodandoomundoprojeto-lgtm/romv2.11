@@ -182,6 +182,16 @@ export default {
       return env.ASSETS.fetch(request);
     }
 
+    // Bloqueia acesso público a arquivos internos, scripts, documentações e modelos sensíveis
+    const blockedPaths = [
+      /^\/(\.agents|\.antigravity|\.github|\.pytest_cache|config|curadoria|docs|functions|migrations|netlify|redacao_v2|src|workers|_backups)(\/|$)/i,
+      /\.(md|py|toml|zip|sql|ya?ml)$/i,
+      /^\/(GEMINI\.md|PLANO_DEFINITIVO_V2\.md|LEIA-ME\.txt|requirements\.txt|\.env|\.assetsignore)$/i
+    ];
+    if (blockedPaths.some(rx => rx.test(url.pathname))) {
+      return new Response('Not Found', { status: 404 });
+    }
+
     // Tentar servir o arquivo estático existente (HTML, CSS, JS, SVG, imagens, etc.)
     const response = await env.ASSETS.fetch(request);
 
