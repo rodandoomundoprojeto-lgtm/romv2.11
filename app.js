@@ -252,6 +252,7 @@
     islandName: null,
     islandFlag: null,
     focusCaribe: false,
+    focusEastOceania: false,
     panelCollapsed: false,
     bias: 'all',
     topic: null,
@@ -581,7 +582,7 @@
   }
 
   var ICON_SEARCH = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4-4"/></svg>';
-  var ICON_ARROW = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>';
+  var ICON_ARROW = '<svg class="icon-arrow-ext" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>';
   function isVideoContent(url, item) {
     var u = String(url || '').toLowerCase();
     if (/youtube\.com|youtu\.be|vimeo\.com|dailymotion\.com|twitch\.tv|rumble\.com|odysee\.com/.test(u)) {
@@ -1806,11 +1807,16 @@
   var hint = document.getElementById('dica');
   var backBtn = document.getElementById('voltar-mundo');
   var btnFocusCaribe = document.getElementById('btn-focus-caribe');
+  var btnFocusOceania = document.getElementById('btn-focus-oceania');
   var panelFloatingClose = document.getElementById('panel-floating-close');
   var panelExpandPill = document.getElementById('panel-expand-pill');
 
   function isCaribeZoomed() {
     return state.cont === 'central' && (state.focusCaribe || (state.country && isCaribIslandCountry(state.country, state.islandName)));
+  }
+
+  function isEastOceaniaZoomed() {
+    return state.cont === 'oceania' && (state.focusEastOceania || (state.country && isEastOceania(state.country, state.islandName)));
   }
 
   function updateFocusCaribeBtn() {
@@ -1823,9 +1829,7 @@
       legendEl.classList.toggle('caribe-hidden', !!isZoomedIn);
     }
     if (!btnFocusCaribe) return;
-    var show = !state.cont || state.cont === 'central';
-    btnFocusCaribe.hidden = !show;
-    if (!show) return;
+    btnFocusCaribe.hidden = false;
     btnFocusCaribe.setAttribute('aria-pressed', String(!!isZoomedIn));
     var lblFull = btnFocusCaribe.querySelector('.btn-focus-caribe-label .lbl-full');
     var lblShort = btnFocusCaribe.querySelector('.btn-focus-caribe-label .lbl-short');
@@ -1838,11 +1842,24 @@
       var lbl = btnFocusCaribe.querySelector('.btn-focus-caribe-label');
       if (lbl) {
         lbl.textContent = fullTxt;
+      } else {
+        btnFocusCaribe.textContent = isZoomedIn ? 'Central toda' : 'Aproximar';
       }
     }
     btnFocusCaribe.title = isZoomedIn
       ? 'Afastar o mapa para ver toda a América Central'
       : 'Aproximar o mapa no aglomerado de ilhas do Caribe para facilitar a seleção no celular';
+  }
+
+  function updateFocusOceaniaBtn() {
+    var isZoomedIn = isEastOceaniaZoomed();
+    if (!btnFocusOceania) return;
+    btnFocusOceania.hidden = false;
+    btnFocusOceania.setAttribute('aria-pressed', String(!!isZoomedIn));
+    btnFocusOceania.textContent = isZoomedIn ? 'Oceania toda' : 'Aproximar';
+    btnFocusOceania.title = isZoomedIn
+      ? 'Afastar o mapa para ver a Oceania principal (Austrália e Nova Zelândia)'
+      : 'Aproximar o mapa nas ilhas da Polinésia / Pacífico (esquerda da Oceania)';
   }
 
   if (btnFocusCaribe) {
@@ -1857,6 +1874,21 @@
       setZoomedState(true);
       applyZoom(true);
       updateFocusCaribeBtn();
+    });
+  }
+
+  if (btnFocusOceania) {
+    btnFocusOceania.addEventListener('click', function () {
+      if (state.cont !== 'oceania') {
+        state.focusEastOceania = true;
+        setZoomedState(true);
+        go('oceania', null);
+        return;
+      }
+      state.focusEastOceania = !state.focusEastOceania;
+      setZoomedState(true);
+      applyZoom(true);
+      updateFocusOceaniaBtn();
     });
   }
 
@@ -2405,7 +2437,7 @@
     var targetCountry = c !== undefined ? c : state.country;
     var b;
     if (k === 'oceania') {
-      if (isEastOceania(targetCountry, state && state.islandName)) {
+      if (state.focusEastOceania || isEastOceania(targetCountry, state && state.islandName)) {
         // Ilhas da Oceania do lado esquerdo do mapa (Polinésia: Niue, Cook, Samoa, Tonga, Kiribati, PF, Havaí, Páscoa etc.)
         b = [[-180, -32], [-105, 24]];
       } else {
@@ -2635,9 +2667,11 @@
   document.getElementById('zoom-out').addEventListener('click', function () { zoomBy(1 / 1.6); });
   document.getElementById('zoom-reset').addEventListener('click', function () {
     state.focusCaribe = false;
+    state.focusEastOceania = false;
     setZoomedState(false);
     avisoGestoExibido = false;
     updateFocusCaribeBtn();
+    updateFocusOceaniaBtn();
     applyZoom(true);
   });
 
@@ -2797,6 +2831,7 @@
     }
     backBtn.hidden = !state.cont;
     updateFocusCaribeBtn();
+    updateFocusOceaniaBtn();
     mapEl.setAttribute('data-open', String(!!state.cont));
     var isWorldMode = !state.cont && !state.country;
     var shouldHidePanel = isWorldMode || !!state.panelCollapsed;
@@ -9350,7 +9385,12 @@
         rh += '<button type="button" class="btn-compare-primary" data-ver-noticias-assunto data-termo="' + esc(qBusca) + '" data-pais="' + esc(cCodeUp) + '" data-cont="' + esc(cContKey) + '" data-topico="' + esc(cTopicKey) + '">' +
               '<span class="btn-compare-icon" aria-hidden="true">⚖️</span> Comparar cobertura deste tema →</button>';
       }
-      rh += '<a class="link-original-secondary" href="' + esc(urlOrig) + '" target="_blank" rel="noopener noreferrer" data-resumo-link>' + (isVideoContent(urlOrig, item) ? 'Assistir vídeo em ' : 'Ler original em ') + resFlag + ' ' + esc(item.fonte) + ' ' + ICON_ARROW + '</a>';
+      var origLabel = isVideoContent(urlOrig, item) ? 'Assistir vídeo em' : 'Ler original em';
+      rh += '<a class="link-original-secondary" href="' + esc(urlOrig) + '" target="_blank" rel="noopener noreferrer" data-resumo-link>' +
+            '<span>' + origLabel + '</span> ' +
+            (resFlag ? resFlag + ' ' : '') +
+            '<span class="link-original-source">' + esc(item.fonte) + '</span> ' +
+            ICON_ARROW + '</a>';
       rh += '</div>';
 
       rh += '</div>';
@@ -10820,6 +10860,9 @@
     var caribChanged = cont === 'central' && (isCaribIslandCountry(country, nextIsland) !== isCaribIslandCountry(state.country, state.islandName));
     if (cont !== 'central') {
       state.focusCaribe = false;
+    }
+    if (cont !== 'oceania') {
+      state.focusEastOceania = false;
     }
     if (country !== state.country || contChanged) {
       state.bias = 'all';
@@ -12505,98 +12548,6 @@
     tick();
   })();
 
-  /* ---------- D3: Tutorial rápido de 6 passos no 1º acesso ---------- */
-  (function () {
-    var tut = document.getElementById('tutorial-bubble');
-    var helpBtn = document.getElementById('help-btn');
-    if (!tut) return;
-
-    var tutStep = 1;
-    var TUT_KEY = 'rom_tutorial_v2';
-    var PASSOS_TUTORIAL = [
-      {
-        badge: '1/6 · Mapa interativo',
-        texto: 'Escolha um continente ou clique em um país no mapa para explorar a imprensa local e internacional.'
-      },
-      {
-        badge: '2/6 · Comparar perspectivas',
-        texto: 'Dentro de cada país, filtre por viés político (Esquerda, Imparcial ou Direita), pesquise assuntos específicos e traduza manchetes estrangeiras para o português.'
-      },
-      {
-        badge: '3/6 · Favoritos',
-        texto: 'Toque na estrela ao lado de países, veículos e notícias para salvá-los. Depois, acesse tudo pela estrela no menu superior, separado em países, veículos e notícias.',
-        alvo: '#fav-top-btn'
-      },
-      {
-        badge: '4/6 · Temas em destaque',
-        texto: 'No menu superior (botão "+"), acesse "Temas" para explorar páginas especiais sobre Política, Economia, Clima, Eleições, Tecnologia, Esportes e Cultura.',
-        alvo: '#topbar-more-btn'
-      },
-      {
-        badge: '5/6 · Resumo do dia',
-        texto: 'No menu superior, acesse "Resumo do dia" para ver as 5 principais notícias do momento por ordem de relevância, com link direto para a matéria original e comparação do tema.',
-        alvo: '.topbar-actions a[href="/resumo-do-dia"]'
-      },
-      {
-        badge: '6/6 · Entenda o assunto',
-        texto: 'No menu superior (botão "+"), consulte em "Entenda" guias rápidos e didáticos que explicam conceitos-chave do noticiário (como inflação, orçamento e sanções).',
-        alvo: '#topbar-more-btn'
-      }
-    ];
-
-    function destacarAlvoTutorial(step) {
-      document.querySelectorAll('.tutorial-target-highlight').forEach(function (el) {
-        el.classList.remove('tutorial-target-highlight');
-      });
-      var info = PASSOS_TUTORIAL[step - 1];
-      var selector = info && info.alvo ? info.alvo : null;
-      if (selector) {
-        var target = document.querySelector(selector);
-        if (target) target.classList.add('tutorial-target-highlight');
-      }
-    }
-
-    function fecharTutorial() {
-      tut.hidden = true;
-      destacarAlvoTutorial(0);
-      try { localStorage.setItem(TUT_KEY, '1'); } catch (e) {}
-    }
-
-    function mostrarPasso(step) {
-      tutStep = step;
-      tut.hidden = false;
-      var info = PASSOS_TUTORIAL[step - 1] || PASSOS_TUTORIAL[0];
-      var badge = tut.querySelector('#tutorial-step-indicator') || tut.querySelector('.tutorial-badge');
-      var body = tut.querySelector('#tutorial-text') || tut.querySelector('.tutorial-text');
-      var nextBtn = tut.querySelector('#tutorial-next');
-      if (badge) badge.textContent = info.badge;
-      if (body) body.textContent = info.texto;
-      if (nextBtn) {
-        nextBtn.textContent = step < PASSOS_TUTORIAL.length ? 'Próximo →' : 'Concluir!';
-      }
-      destacarAlvoTutorial(step);
-    }
-
-    var skipBtn = tut.querySelector('#tutorial-skip');
-    var nextBtn = tut.querySelector('#tutorial-next');
-    if (skipBtn) skipBtn.addEventListener('click', fecharTutorial);
-    if (nextBtn) nextBtn.addEventListener('click', function () {
-      if (tutStep < PASSOS_TUTORIAL.length) mostrarPasso(tutStep + 1);
-      else fecharTutorial();
-    });
-
-    if (helpBtn) {
-      helpBtn.addEventListener('click', function () {
-        mostrarPasso(1);
-      });
-    }
-
-    var jaViu = false;
-    try { jaViu = !!localStorage.getItem(TUT_KEY); } catch (e) {}
-    if (!jaViu) {
-      setTimeout(function () { mostrarPasso(1); }, 1200);
-    }
-  })();
 
   /* ---------- D5: Relato de bugs via FormSubmit ---------- */
   (function () {

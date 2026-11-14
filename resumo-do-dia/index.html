@@ -201,7 +201,7 @@
 
             <!-- Popover discreto: Camadas do mapa -->
             <div class="map-layers-wrapper" id="map-layers-wrapper">
-              <button type="button" id="btn-map-layers" class="chip-btn btn-map-layers" aria-expanded="false" aria-haspopup="true" title="Camadas do mapa (linhas geográficas e aproximação do Caribe)">
+              <button type="button" id="btn-map-layers" class="chip-btn btn-map-layers" aria-expanded="false" aria-haspopup="true" title="Camadas do mapa (linhas geográficas, aproximação do Caribe e Polinésia / Ilhas do Pacífico)">
                 <svg viewBox="0 0 24 24" aria-hidden="true" width="15" height="15" fill="none" stroke="currentColor"
                   stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
@@ -229,6 +229,16 @@
                     <small>Facilita a seleção no aglomerado de ilhas</small>
                   </div>
                   <button type="button" id="btn-focus-caribe" class="btn btn-sm btn-secondary" title="Aproximar Caribe">
+                    Aproximar
+                  </button>
+                </div>
+                <div class="map-layer-divider"></div>
+                <div class="map-layer-item">
+                  <div class="map-layer-text">
+                    <strong>Polinésia / Ilhas do Pacífico</strong>
+                    <small>Ilhas da Oceania à esquerda do mapa</small>
+                  </div>
+                  <button type="button" id="btn-focus-oceania" class="btn btn-sm btn-secondary" title="Aproximar Polinésia / Ilhas do Pacífico">
                     Aproximar
                   </button>
                 </div>
@@ -1794,16 +1804,6 @@
       </form>
     </div>
   </dialog>
-
-  <aside class="tutorial-bubble" id="tutorial-bubble" role="dialog" aria-label="Guia rápido do site" hidden>
-    <div class="tutorial-arrow" aria-hidden="true"></div>
-    <div class="tutorial-badge">Dica rápida · <span id="tutorial-step-indicator">1/6</span></div>
-    <p class="tutorial-text" id="tutorial-text">Escolha uma região ou continente para aproximar o mapa.</p>
-    <div class="tutorial-actions">
-      <button type="button" class="tutorial-skip" id="tutorial-skip">Pular</button>
-      <button type="button" class="btn btn-sm tutorial-next" id="tutorial-next">Próximo →</button>
-    </div>
-  </aside>
 
   <button class="scroll-top-floating" id="scroll-top-btn" type="button" aria-label="Voltar ao topo"
     title="Voltar ao topo" hidden>
