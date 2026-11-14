@@ -1,0 +1,62 @@
+# Rodando o Mundo — configuração para a Netlify
+# Site estático (sem etapa de build) + Netlify Functions para notícias e busca por assunto.
+[build]
+  publish = "."
+  functions = "netlify/functions"
+
+[functions]
+  node_bundler = "esbuild"
+
+# Disparo diário automático da newsletter às 07:00 da manhã (horário de Brasília / 10:00 UTC)
+[functions."enviar-resumo-diario"]
+  schedule = "0 10 * * *"
+
+# Redirecionamento Canônico 301 do subdomínio Netlify e domínio raiz sem www para o domínio oficial com www
+[[redirects]]
+  from = "https://rodandoomundo.netlify.app/*"
+  to = "https://www.rodandoomundo.com.br/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://rodandoomundo.com.br/*"
+  to = "https://www.rodandoomundo.com.br/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://rodandoomundo.com.br/*"
+  to = "https://www.rodandoomundo.com.br/:splat"
+  status = 301
+  force = true
+
+# Redirecionar requisições de API para as Netlify Functions
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+
+# Não publicar o código das funções nem backups como arquivos estáticos
+[[redirects]]
+  from = "/netlify/*"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/curadoria/*"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/_backups/*"
+  to = "/404.html"
+  status = 404
+  force = true
+
+# Rotas limpas (SPA): qualquer rota interna é servida pelo index.html
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

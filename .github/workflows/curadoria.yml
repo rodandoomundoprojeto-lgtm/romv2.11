@@ -1,0 +1,53 @@
+name: Agente de Curadoria IA
+
+on:
+  schedule:
+    # A cada 3 horas (UTC)
+    - cron: '0 */3 * * *'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Apenas gerar JSON, sem enviar ao backend'
+        type: boolean
+        default: true
+
+jobs:
+  curadoria:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+          cache-dependency-path: curadoria/requirements.txt
+
+      - name: Instalar dependencias
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r curadoria/requirements.txt
+
+      - name: Testes do contrato
+        run: python -m pytest curadoria/tests -q
+
+      - name: Executar pipeline
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          CURADORIA_BACKEND_URL: ${{ secrets.CURADORIA_BACKEND_URL }}
+          CURADORIA_SECRET_TOKEN: ${{ secrets.CURADORIA_SECRET_TOKEN }}
+        run: |
+          if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
+            python -m curadoria.pipeline --dry-run
+          else
+            python -m curadoria.pipeline
+          fi
+
+      - name: Publicar payload como artefato
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: curadoria-payload
+          path: curadoria/output/ultimo_payload.json
+          if-no-files-found: ignore
+

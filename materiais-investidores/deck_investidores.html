@@ -1,0 +1,882 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pitch Deck: Rodando o Mundo — Investidores &amp; Parceiros</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090d16;
+      --surface: #121824;
+      --surface-2: #192233;
+      --border: #243147;
+      --text: #f0f4f8;
+      --text-muted: #8c9cb3;
+      --primary: #38bdf8;
+      --primary-soft: rgba(56, 189, 248, 0.12);
+      --accent: #22c55e;
+      --accent-soft: rgba(34, 197, 94, 0.12);
+      --font-body: 'Instrument Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-serif: 'Newsreader', Georgia, serif;
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+      --radius-full: 9999px;
+    }
+
+    [data-theme="light"] {
+      --bg: #f4f6f9;
+      --surface: #ffffff;
+      --surface-2: #eef2f6;
+      --border: #dbe2ec;
+      --text: #0f172a;
+      --text-muted: #62748d;
+      --primary: #0284c7;
+      --primary-soft: rgba(2, 132, 199, 0.1);
+      --accent: #16a34a;
+      --accent-soft: rgba(22, 163, 74, 0.1);
+    }
+
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      overflow: hidden;
+      transition: background 0.25s, color 0.25s;
+    }
+
+    /* Deck Layout */
+    .deck-container {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      width: 100vw;
+    }
+
+    /* Top Bar */
+    .deck-topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 1.5rem;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      z-index: 10;
+      gap: 1rem;
+    }
+
+    .deck-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      text-decoration: none;
+      color: var(--text);
+    }
+
+    .brand-title {
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: -0.01em;
+    }
+
+    .brand-title em {
+      font-family: var(--font-serif);
+      font-style: italic;
+      color: var(--primary);
+    }
+
+    .deck-tag {
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.15rem 0.5rem;
+      border-radius: var(--radius-full);
+      background: var(--primary-soft);
+      color: var(--primary);
+      border: 1px solid currentColor;
+    }
+
+    .deck-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .deck-btn {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.4rem 0.75rem;
+      border-radius: var(--radius-full);
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: all 0.2s ease;
+    }
+
+    .deck-btn:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .deck-btn.active {
+      background: var(--primary);
+      color: #090d16;
+      border-color: var(--primary);
+    }
+
+    /* Slide Stage */
+    .deck-stage {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .slide {
+      display: none;
+      width: 100%;
+      max-width: 1100px;
+      aspect-ratio: 16 / 9;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: clamp(2rem, 4vw, 3.5rem);
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.25);
+      position: relative;
+      flex-direction: column;
+      justify-content: space-between;
+      animation: fadeIn 0.3s ease;
+      overflow-y: auto;
+    }
+
+    .slide.is-active {
+      display: flex;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Slide Typography */
+    .slide-header {
+      margin-bottom: 1.5rem;
+    }
+
+    .slide-eyebrow {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 700;
+      color: var(--primary);
+      margin: 0 0 0.5rem;
+    }
+
+    .slide-title {
+      font-family: var(--font-serif);
+      font-size: clamp(1.8rem, 3.2vw, 2.5rem);
+      font-weight: 600;
+      line-height: 1.15;
+      margin: 0 0 0.5rem;
+      color: var(--text);
+    }
+
+    .slide-subtitle {
+      font-size: 1rem;
+      color: var(--text-muted);
+      margin: 0;
+      line-height: 1.5;
+      max-width: 850px;
+    }
+
+    .slide-body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .slide-footer-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid var(--border);
+      padding-top: 1rem;
+      margin-top: 1.5rem;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    /* Grids & Cards */
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .card h3 {
+      font-size: 1.05rem;
+      margin: 0 0 0.25rem;
+      color: var(--text);
+    }
+
+    .card p {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    .metric-big {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 700;
+      color: var(--primary);
+      line-height: 1;
+    }
+
+    .metric-label {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    /* Tables */
+    .deck-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+      margin: 0.5rem 0;
+    }
+
+    .deck-table th, .deck-table td {
+      padding: 0.75rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .deck-table th {
+      background: var(--surface-2);
+      color: var(--text-muted);
+      font-weight: 600;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .price-badge {
+      font-family: var(--font-serif);
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--accent);
+    }
+
+    /* Bottom Navigation Bar */
+    .deck-bottombar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 2rem;
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+    }
+
+    .slide-dots {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: var(--radius-full);
+      background: var(--border);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .dot.active {
+      background: var(--primary);
+      width: 24px;
+    }
+
+    .speaker-drawer {
+      display: none;
+      position: absolute;
+      bottom: 60px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+      max-width: 900px;
+      background: #0f172a;
+      border: 1px solid #38bdf8;
+      border-radius: var(--radius-md);
+      padding: 1rem 1.5rem;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+      z-index: 20;
+      color: #e2e8f0;
+      font-size: 0.88rem;
+      line-height: 1.6;
+    }
+
+    .speaker-drawer.visible {
+      display: block;
+    }
+
+    .speaker-drawer-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #38bdf8;
+    }
+
+    /* Print / PDF Mode */
+    @media print {
+      body {
+        overflow: visible;
+        background: #fff;
+        color: #000;
+      }
+      .deck-topbar, .deck-bottombar, .speaker-drawer {
+        display: none !important;
+      }
+      .deck-stage {
+        padding: 0;
+        display: block;
+      }
+      .slide {
+        display: flex !important;
+        page-break-after: always;
+        break-after: page;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 2rem;
+        aspect-ratio: 16 / 9;
+        height: 100vh;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .grid-4, .grid-3 { grid-template-columns: 1fr; }
+      .grid-2 { grid-template-columns: 1fr; }
+      .slide { aspect-ratio: auto; height: 100%; padding: 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="deck-container">
+    <!-- Topbar -->
+    <header class="deck-topbar">
+      <div class="deck-brand">
+        <span class="brand-title">Rodando <em>o</em> Mundo</span>
+        <span class="deck-tag">Pitch Deck Executivo</span>
+      </div>
+
+      <div class="deck-controls">
+        <button type="button" class="deck-btn" id="currency-toggle" title="Alternar Moeda">
+          <span>Moeda:</span> <strong id="currency-label">BRL (R$)</strong>
+        </button>
+        <button type="button" class="deck-btn" id="notes-toggle" title="Atalho: Tecla 'S'">
+          <span>🎙️ Notas do Orador</span>
+        </button>
+        <button type="button" class="deck-btn" id="theme-toggle">
+          <span id="theme-icon">☀️</span>
+        </button>
+        <button type="button" class="deck-btn" onclick="window.print()" title="Salvar em PDF">
+          <span>📄 PDF</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Slide Stage -->
+    <main class="deck-stage">
+      <!-- SLIDE 1 -->
+      <section class="slide is-active" data-slide="1" data-notes="Olá a todos. O Rodando o Mundo nasceu para resolver uma das maiores crises da sociedade conectada moderna: a perda de visão panorâmica sobre os acontecimentos do planeta devido aos algoritmos de redes sociais, que nos prendem em bolhas de confirmação e ruído. Desenvolvemos uma plataforma geoespacial onde qualquer cidadão, investidor ou pesquisador navega pelo mapa-múndi e acessa a cobertura de veículos plurais em 235 territórios.">
+        <div class="slide-header">
+          <p class="slide-eyebrow">Apresentação para Investidores &amp; Parceiros</p>
+          <h1 class="slide-title">Rodando o Mundo</h1>
+          <p class="slide-subtitle">O Atlas Jornalístico Interativo Global que combate a polarização e bolhas informativas através de leitura geoespacial comparada.</p>
+        </div>
+
+        <div class="slide-body">
+          <div class="grid-3">
+            <div class="card">
+              <span style="font-size: 1.5rem;">🌍</span>
+              <h3>+1.000 Veículos Globais</h3>
+              <p>Mapeamento ativo de agências, grandes portais e jornalismo independente em 235 países e territórios.</p>
+            </div>
+            <div class="card">
+              <span style="font-size: 1.5rem;">🛡️</span>
+              <h3>100% Brand Safety</h3>
+              <p>Zero anúncios programáticos ruidosos, pop-ups ou rastreadores invasivos. Modelo de patrocínio nativo e ético.</p>
+            </div>
+            <div class="card">
+              <span style="font-size: 1.5rem;">⚖️</span>
+              <h3>Metodologia Auditada &amp; LGPD</h3>
+              <p>Curadoria orientada por parâmetros internacionais (AllSides, MBFC, RSF) e rigorosa conformidade jurídica.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide-footer-meta">
+          <span>Fundador: <strong>Sávio Anderson Lourenço D.</strong> · Santa Catarina, Brasil</span>
+          <span>rodandoomundo.com.br</span>
+        </div>
+      </section>
+
+      <!-- SLIDE 2 -->
+      <section class="slide" data-slide="2" data-notes="Hoje, a maioria das pessoas consome notícias globais através de feeds de redes sociais. O resultado é polarização extrema e um modelo publicitário decadente, cheio de pop-ups que o leitor bloqueia com AdBlockers. Para marcas de prestígio, anunciar na internet virou uma roleta russa de Brand Safety. É esse ecossistema quebrado que o Rodando o Mundo substitui.">
+        <div class="slide-header">
+          <p class="slide-eyebrow">O Diagnóstico</p>
+          <h2 class="slide-title">O Ecossistema Informativo Atual Está Quebrado</h2>
+          <p class="slide-subtitle">Quatro grandes gargalos degradam a experiência do leitor e o retorno dos anunciantes.</p>
+        </div>
+
+        <div class="slide-body">
+          <div class="grid-2">
+            <div class="card">
+              <h3>1. Bolhas Algorítmicas de Filtro</h3>
+              <p>Redes sociais priorizam engajamento por indignação, isolando o leitor em bolhas ideológicas e polarização tóxica.</p>
+            </div>
+            <div class="card">
+              <h3>2. Desertos de Cobertura Internacional</h3>
+              <p>O fechamento de correspondências locais reduziu as notícias mundiais a despachos repetitivos e superficiais.</p>
+            </div>
+            <div class="card">
+              <h3>3. Mídia Programática Predatória</h3>
+              <p>Páginas abarrotadas de banners piscantes, pop-ups de consentimento abusivos e rastreadores pesados.</p>
+            </div>
+            <div class="card">
+              <h3>4. Risco Extremo de Brand Safety</h3>
+              <p>Marcas de prestígio têm anúncios veiculados aleatoriamente ao lado de fake news, discursos de ódio e desinformação.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide-footer-meta">
+          <span>Problema Validado no Mercado</span>
+          <span>Slide 2 / 9</span>
+        </div>
+      </section>
+
+      <!-- SLIDE 3 -->
+      <section class="slide" data-slide="3" data-notes="Nossa solução é simples e elegante: transformamos o jornalismo em um atlas interativo. Ao invés de empurrar opiniões por algoritmo, entregamos o controle nas mãos do usuário. Ele clica na Alemanha, no Japão, na Nigéria ou no Brasil e vê como os veículos locais estão reportando os fatos.">
+        <div class="slide-header">
+          <p class="slide-eyebrow">A Solução</p>
+          <h2 class="slide-title">Um Atlas Interativo com Autonomia para o Leitor</h2>
+          <p class="slide-subtitle">Informação primária, neutra e sem intermediários ruidosos.</p>
+        </div>
+
+        <div class="slide-body">
+          <div class="grid-3">
+            <div class="card">
+              <h3>🗺️ Navegação Geoespacial</h3>
+              <p>Mapa-múndi vetorial ultrarrápido em SVG/TopoJSON. O usuário clica em qualquer país e explora os veículos locais em segundos.</p>
+            </div>
+            <div class="card">
+              <h3>⚖️ Comparação de Perspectivas</h3>
+              <p>Linhas editoriais plurais (Esquerda, Centro/Imparcial, Direita) devidamente contextualizadas e auditadas.</p>
+            </div>
+            <div class="card">
+              <h3>📰 Resumo do Dia &amp; Hubs</h3>
+              <p>Compilado matinal com as 5 principais notícias globais e dossiês permanentes em Economia, Tecnologia e Clima.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide-footer-meta">
+          <span>Experiência do Usuário (UX) &amp; Valor</span>
+          <span>Slide 3 / 9</span>
+        </div>
+      </section>
+
+      <!-- SLIDE 4 -->
+      <section class="slide" data-slide="4" data-notes="Já temos mapeados mais de mil jornais e agências em 235 países. Isso atrai um público altamente especializado e de alto valor: tomadores de decisão, profissionais do mercado financeiro, viajantes frequentes e acadêmicos. Essa audiência tem rejeição a banners programáticos genéricos, mas valoriza marcas que apoiam projetos culturais.">
+        <div class="slide-header">
+          <p class="slide-eyebrow">Tração &amp; Audiência</p>
+          <h2 class="slide-title">Métricas Sólidas e Público Altamente Qualificado</h2>
+          <p class="slide-subtitle">Uma base engajada de leitores formadores de opinião e tomadores de decisão.</p>
+        </div>
+
+        <div class="slide-body">
+          <div class="grid-4" style="margin-bottom: 1.25rem;">
+            <div class="card">
+              <span class="metric-big">+1.000</span>
+              <span class="metric-label">Veículos Curados</span>
+              <p>Agências e portais locais em monitoramento contínuo.</p>
+            </div>
+            <div class="card">
+              <span class="metric-big">235</span>
+              <span class="metric-label">Territórios</span>
+              <p>Cobertura geoespacial nos 5 continentes do globo.</p>
+            </div>
+            <div class="card">
+              <span class="metric-big">100%</span>
+              <span class="metric-label">Livre de Pop-ups</span>
+              <p>Navegação limpa sem AdBlocker necessário.</p>
+            </div>
+            <div class="card">
+              <span class="metric-big">Qualificada</span>
+              <span class="metric-label">Perfil do Leitor</span>
+              <p>Diplomacia, finanças, tech, acadêmicos e executivos.</p>
+            </div>
+          </div>
+
+          <div class="card" style="background: var(--primary-soft); border-color: var(--primary);">
+            <p style="color: var(--text); font-size: 0.88rem;"><strong>🎯 Destaque de Engajamento:</strong> O modelo cartográfico retém a atenção do usuário significativamente mais tempo que portais convencionais, permitindo exploração comparativa contínua de múltiplos países por sessão.</p>
+          </div>
+        </div>
+
+        <div class="slide-footer-meta">
+          <span>Métricas de Audiência</span>
+          <span>Slide 4 / 9</span>
+        </div>
+      </section>
+
+      <!-- SLIDE 5 -->
+      <section class="slide" data-slide="5" data-notes="Nenhum investidor ou marca institucional coloca seu nome em um projeto sem garantias de conformidade. Nós já construímos essa governança: publicamos nossa metodologia editorial detalhada, implementamos conformidade estrita com a LGPD e estabelecemos termos de uso claros com foro em Santa Catarina.">
+        <div class="slide-header">
+          <p class="slide-eyebrow">Governança &amp; Due Diligence</p>
+          <h2 class="slide-title">Credibilidade Editorial e Conformidade Jurídica</h2>
+          <p class="slide-subtitle">Transparência ativa que confere segurança jurídica para investidores e patrocinadores.</p>
+        </div>
+
+        <div class="slide-body">
+          <div class="grid-3">
+            <div class="card">
+              <h3>📐 Metodologia Aberta</h3>
+              <p>Página pública `/metodologia` explicando o espectro político sob diretrizes internacionais (MBFC, AllSides e RSF).</p>
+            </div>
+            <div class="card">
+              <h3>🔒 Compliance LGPD</h3>
+              <p>Política em `/privacidade` em estrita conformidade com a Lei 13.709/18. Preferências salvas localmente no dispositivo.</p>
+            </div>
+            <div class="card">
+              <h3>⚖️ Independência Editorial</h3>
+              <p>Separação estrita: patrocinadores não têm ingerência sobre a curadoria dos veículos nem sobre o viés político exibido.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide-footer-meta">
+          <span>Governança &amp; Compliance Ativos</span>
+          <span>Slide 5 / 9</span>
+        </div>
+      </section>
+
+      <!-- SLIDE 6 -->
+      <section class="slide" data-slide="6" data-notes="Nosso formato comercial não utiliza banners piscantes do Google AdSense. Trabalhamos exclusivamente com patrocínios nativos de alta elegância. A marca se associa diretamente à exploração de um continente ou tema de seu interesse, ganhando reputação de prestígio e Brand Safety total.">
+        <div class="slide-header">
+          <p class="slide-eyebrow">Formatos Comerciais Nativos (v2.12)</p>
+          <h2 class="slide-title">Integração Orgânica &amp; Brand Safety Inegociável</h2>
+          <p class="slide-subtitle">Três posições de alto impacto e elegância, totalmente adaptadas aos Modos Claro e Escuro.</p>
+        </div>
+
+        <div class="slide-body">
+          <div class="grid-2">
+            <div class="card" style="border-left: 3px solid #f59e0b;">
+              <span class="deck-tag" style="align-self: flex-start; background: #f59e0b; color: #000;">① Cota Master (Global)</span>
+              <h3>Assinatura Âncora no Topo</h3>
+              <p>Destaque exclusivo: <em>"Apresentado com exclusividade global por [Marca]"</em>. Visibilidade máxima no cabeçalho em todos os continentes e países navegados.</p>
+            </div>
+            <div class="card" style="border-left: 3px solid #38bdf8;">
+              <span class="deck-tag" style="align-self: flex-start;">② Gaveta Contextual &amp; Entenda</span>
+              <h3>Presença Regional e Temática</h3>
+              <p>Card nativo no rodapé da gaveta de países estratégicos (ex.: EUA, Europa, Ásia) e guias <code>/entenda</code>. Sinergia perfeita para contas globais, seguros e idiomas.</p>
+            </div>
+            <div class="card" style="border-left: 3px solid #10b981;">
+              <span class="deck-tag" style="align-self: flex-start;">③ Resumo do Dia &amp; Newsletter</span>
+              <h3>Inserção Matinal de Conteúdo</h3>
+              <p>Oferecimento exclusivo de 1 parágrafo com Call To Action matinal no site e na newsletter enviada por e-mail para milhares de líderes formadores de opinião.</p>
+            </div>
+            <div class="card" style="border-left: 3px solid var(--accent);">
+              <span class="deck-tag" style="align-self: flex-start;">🛡️ Blindagem Editorial</span>
+              <h3>Independência Garantida</h3>
+              <p>Separação total entre patrocinadores e jornalismo: zero interferência em curadoria, exclusões de veículos ou classificação de viés político.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide-footer-meta">
+          <span>Brand Safety &amp; Inserção Orgânica · Simulador disponível em /simulador-comercial</span>
+          <span>Slide 6 / 9</span>
+        </div>
+      </section>
+
+      <!-- SLIDE 7 -->
+      <section class="slide" data-slide="7" data-notes="Estruturamos planos acessíveis para marcas inovadoras testarem com retorno rápido, além de cotas de faturamento previsível para apoios anuais com 20% de desconto. Aceitamos faturamento em Reais para parceiros nacionais e em Dólares para fintechs e fundações sediadas no exterior.">
+        <div class="slide-header">
+          <p class="slide-eyebrow">Oportunidade Comercial</p>
+          <h2 class="slide-title">Tabela de Cotas &amp; Retorno para o Parceiro</h2>
+          <p class="slide-subtitle">Opções em Reais (BRL) e Dólares (USD) com condições exclusivas para parceiros fundadores.</p>
+        </div>
+
+        <div class="slide-body">
+          <table class="deck-table">
+            <thead>
+              <tr>
+                <th>Cota de Patrocínio</th>
+                <th>Entregáveis &amp; Alcance</th>
+                <th>Piloto / Mensal</th>
+                <th>Anual (-20%)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>1. Cota Presenting (Master)</strong></td>
+                <td>Assinatura fixa no topo do atlas + todos os continentes + menção semanal na newsletter</td>
+                <td><span class="price-badge price-val" data-brl="R$ 10.000 / mês" data-usd="$ 2,000 / mo">R$ 10.000 / mês</span></td>
+                <td><span class="price-val" data-brl="R$ 96.000 / ano" data-usd="$ 19,200 / yr">R$ 96.000 / ano</span></td>
+              </tr>
+              <tr>
+                <td><strong>2. Patrocínio de Dossiê (/temas)</strong></td>
+                <td>Exclusividade em 1 hub permanente (Economia, Clima/COP30, IA/Tech ou Eleições)</td>
+                <td><span class="price-badge price-val" data-brl="R$ 3.000 / mês" data-usd="$ 600 / mo">R$ 3.000 / mês</span></td>
+                <td><span class="price-val" data-brl="R$ 28.800 / ano" data-usd="$ 5,760 / yr">R$ 28.800 / ano</span></td>
+              </tr>
+              <tr>
+                <td><strong>3. Resumo do Dia (Web + E-mail)</strong></td>
+                <td>Inserção matinal exclusiva no resumo das 5 matérias essenciais + newsletter diária</td>
+                <td><span class="price-badge price-val" data-brl="R$ 2.000 / mês" data-usd="$ 400 / mo">R$ 2.000 / mês</span></td>
+                <td><span class="price-val" data-brl="R$ 19.200 / ano" data-usd="$ 3,840 / yr">R$ 19.200 / ano</span></td>
+              </tr>
+              <tr>
+                <td><strong>4. Gaveta Contextual &amp; Entenda</strong></td>
+                <td>Card nativo nos países de maior interesse (EUA/Europa/Ásia) ou guias conceituais</td>
+                <td><span class="price-badge price-val" data-brl="R$ 1.500 / mês" data-usd="$ 300 / mo">R$ 1.500 / mês (Piloto)</span></td>
+                <td><span class="price-val" data-brl="R$ 14.400 / ano" data-usd="$ 2,880 / yr">R$ 14.400 / ano</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="slide-footer-meta">
+          <span>Cotas Abertas para Parceiros Fundadores</span>
+          <span>Slide 7 / 9</span>
+        </div>
+      </section>
+
+      <!-- SLIDE 8 -->
+      <section class="slide" data-slide="8" data-notes="Não estamos construindo apenas um agregador estático; estamos desenvolvendo a infraestrutura definitiva de inteligência jornalística aberta. No nosso roadmap dos próximos trimestres, traremos inteligência artificial para resumir coberturas cruzadas em tempo real e criaremos versões em inglês e espanhol, multiplicando nossa base por dez.">
+        <div class="slide-header">
+          <p class="slide-eyebrow">Roadmap &amp; Futuro</p>
+          <h2 class="slide-title">Visão de Longo Prazo e Próximos Ciclos</h2>
+          <p class="slide-subtitle">Infraestrutura em constante expansão técnica e geográfica.</p>
+        </div>
+
+        <div class="slide-body">
+          <div class="grid-3">
+            <div class="card">
+              <span class="deck-tag" style="align-self: flex-start; color: var(--accent);">Fase 1 (Concluída)</span>
+              <h3>Atlas Global &amp; Due Diligence</h3>
+              <p>Mapeamento de 235 países, PIX/Doações, conformidade com LGPD, Metodologia Editorial e canal comercial B2B.</p>
+            </div>
+            <div class="card">
+              <span class="deck-tag" style="align-self: flex-start; color: var(--primary);">Fase 2 (Próximos 6 meses)</span>
+              <h3>App Mobile &amp; IA Comparada</h3>
+              <p>Lançamento de aplicativo PWA nativo com notificações matinais e sumarização em tempo real de matérias cruzadas via IA.</p>
+            </div>
+            <div class="card">
+              <span class="deck-tag" style="align-self: flex-start; color: #a855f7;">Fase 3 (Próximos 12 meses)</span>
+              <h3>API de Dados &amp; Internacionalização</h3>
+              <p>Versão em Inglês e Espanhol para escala internacional e API de dados estruturados para universidades e embaixadas.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide-footer-meta">
+          <span>Inovação &amp; Escala</span>
+          <span>Slide 8 / 9</span>
+        </div>
+      </section>
+
+      <!-- SLIDE 9 -->
+      <section class="slide" data-slide="9" data-notes="Agradeço muito pelo tempo de vocês. Convido todos a abrirem rodandoomundo.com.br e experimentarem o atlas ao vivo. Estamos prontos para fechar os primeiros parceiros fundadores com condições especiais de estreia. Muito obrigado!">
+        <div class="slide-header">
+          <p class="slide-eyebrow">Próximos Passos</p>
+          <h2 class="slide-title">Vamos Construir Essa Parceria?</h2>
+          <p class="slide-subtitle">Associe sua marca à vanguarda da informação global livre e independente.</p>
+        </div>
+
+        <div class="slide-body">
+          <div class="grid-2">
+            <div class="card" style="justify-content: center; gap: 0.75rem;">
+              <h3 style="font-size: 1.25rem;">Agende uma Conversa de 15 Minutos</h3>
+              <p>Apresentamos o atlas ao vivo e desenhamos uma proposta customizada para os objetivos da sua organização.</p>
+              <div style="margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.35rem; font-size: 0.88rem;">
+                <div>✉️ <strong>E-mail:</strong> <a href="mailto:rodandoomundoprojeto@gmail.com" style="color: var(--primary);">rodandoomundoprojeto@gmail.com</a></div>
+                <div>🌐 <strong>Mídia Kit Online:</strong> <a href="https://rodandoomundo.com.br/parcerias" target="_blank" style="color: var(--primary);">rodandoomundo.com.br/parcerias</a></div>
+                <div>📍 <strong>Sede:</strong> Santa Catarina, Brasil</div>
+              </div>
+            </div>
+
+            <div class="card" style="background: var(--surface); border: 2px dashed var(--primary); text-align: center; justify-content: center; align-items: center; padding: 2rem;">
+              <span style="font-size: 2.5rem; margin-bottom: 0.5rem;">🌍</span>
+              <h3 style="font-size: 1.2rem; margin: 0;">"O mundo está rodando agora."</h3>
+              <p style="margin-top: 0.5rem;">Acesse o mapa interativo em tempo real:</p>
+              <a href="https://rodandoomundo.com.br" target="_blank" class="deck-btn active" style="margin-top: 0.75rem; text-decoration: none;">Acessar rodandoomundo.com.br →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide-footer-meta">
+          <span>Obrigado! · Sávio Anderson Lourenço D.</span>
+          <span>Slide 9 / 9</span>
+        </div>
+      </section>
+    </main>
+
+    <!-- Bottom Navigation Bar -->
+    <footer class="deck-bottombar">
+      <div style="display: flex; align-items: center; gap: 0.75rem;">
+        <button type="button" class="deck-btn" id="btn-prev">← Anterior</button>
+        <button type="button" class="deck-btn" id="btn-next">Próximo →</button>
+        <span style="font-size: 0.85rem; font-weight: 600; color: var(--text-muted); margin-left: 0.5rem;" id="slide-indicator">1 / 9</span>
+      </div>
+
+      <div class="slide-dots" id="slide-dots"></div>
+
+      <div style="font-size: 0.75rem; color: var(--text-muted);">
+        Use as teclas <kbd>←</kbd> <kbd>→</kbd> ou <kbd>Espaço</kbd>
+      </div>
+    </footer>
+
+    <!-- Speaker Notes Drawer -->
+    <div class="speaker-drawer" id="speaker-drawer">
+      <div class="speaker-drawer-header">
+        <span>🎙️ Roteiro do Apresentador (Speaker Notes)</span>
+        <button type="button" style="background:none; border:none; color:#38bdf8; cursor:pointer;" onclick="toggleNotes()">✕ Fechar</button>
+      </div>
+      <div id="speaker-text">...</div>
+    </div>
+  </div>
+
+  <script>
+    let currentSlide = 1;
+    const totalSlides = 9;
+    const slides = document.querySelectorAll('.slide');
+    const dotsContainer = document.getElementById('slide-dots');
+    const indicator = document.getElementById('slide-indicator');
+    const speakerDrawer = document.getElementById('speaker-drawer');
+    const speakerText = document.getElementById('speaker-text');
+
+    // Build Dots
+    for (let i = 1; i <= totalSlides; i++) {
+      const dot = document.createElement('div');
+      dot.className = 'dot' + (i === 1 ? ' active' : '');
+      dot.title = 'Ir para slide ' + i;
+      dot.addEventListener('click', () => goToSlide(i));
+      dotsContainer.appendChild(dot);
+    }
+
+    function updateSpeakerNotes() {
+      const active = document.querySelector('.slide.is-active');
+      if (active && speakerText) {
+        speakerText.textContent = active.getAttribute('data-notes') || 'Sem notas para este slide.';
+      }
+    }
+
+    function goToSlide(n) {
+      if (n < 1 || n > totalSlides) return;
+      currentSlide = n;
+      slides.forEach((s, idx) => {
+        s.classList.toggle('is-active', idx + 1 === currentSlide);
+      });
+      document.querySelectorAll('.dot').forEach((d, idx) => {
+        d.classList.toggle('active', idx + 1 === currentSlide);
+      });
+      indicator.textContent = currentSlide + ' / ' + totalSlides;
+      updateSpeakerNotes();
+    }
+
+    document.getElementById('btn-prev').addEventListener('click', () => goToSlide(currentSlide - 1));
+    document.getElementById('btn-next').addEventListener('click', () => goToSlide(currentSlide + 1));
+
+    // Keyboard navigation
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+        goToSlide(currentSlide + 1);
+      } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+        goToSlide(currentSlide - 1);
+      } else if (e.key.toLowerCase() === 's') {
+        toggleNotes();
+      }
+    });
+
+    // Speaker Notes Toggle
+    function toggleNotes() {
+      speakerDrawer.classList.toggle('visible');
+      document.getElementById('notes-toggle').classList.toggle('active', speakerDrawer.classList.contains('visible'));
+      updateSpeakerNotes();
+    }
+    document.getElementById('notes-toggle').addEventListener('click', toggleNotes);
+
+    // Theme Toggle
+    const themeBtn = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+    themeBtn.addEventListener('click', () => {
+      const cur = document.documentElement.getAttribute('data-theme');
+      const next = cur === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      themeIcon.textContent = next === 'dark' ? '☀️' : '🌙';
+    });
+
+    // Currency Toggle (BRL / USD)
+    let currentCurrency = 'BRL';
+    const currBtn = document.getElementById('currency-toggle');
+    const currLabel = document.getElementById('currency-label');
+    currBtn.addEventListener('click', () => {
+      currentCurrency = currentCurrency === 'BRL' ? 'USD' : 'BRL';
+      currLabel.textContent = currentCurrency === 'BRL' ? 'BRL (R$)' : 'USD ($)';
+      document.querySelectorAll('.price-val').forEach(el => {
+        el.textContent = currentCurrency === 'BRL' ? el.getAttribute('data-brl') : el.getAttribute('data-usd');
+      });
+    });
+
+    updateSpeakerNotes();
+  </script>
+</body>
+</html>

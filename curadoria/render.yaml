@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: rom-curadoria-api
+    env: python
+    buildCommand: pip install -r curadoria/requirements.txt
+    startCommand: uvicorn curadoria.api.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.0
+      - key: CURADORIA_DATABASE_URL
+        sync: false
+      - key: CURADORIA_SECRET_TOKEN
+        sync: false
+

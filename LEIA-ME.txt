@@ -1,0 +1,47 @@
+====================================================================
+RODANDO O MUNDO — PACOTE DE ATUALIZAÇÃO V2.12
+====================================================================
+
+Este pacote contém os arquivos atualizados da versão V2.12 do Rodando o Mundo,
+focados no desmolduramento visual Edge-to-Edge, modo dual de navegação,
+gaveta lateral contínua e facilidades de tradução de veículos estrangeiros.
+
+NOVIDADES DA VERSÃO V2.12:
+--------------------------------------------------------------------
+1. Desmolduramento Edge-to-Edge:
+   - Remoção de bordas e molduras confinantes no mapa (aproveitamento total da tela).
+   - Gaveta lateral direita contínua no desktop e Bottom Sheet fluido no mobile.
+
+2. Modo Dual de Navegação (Mapa vs. Feed por País):
+   - Alternador rápido no topo para escolher entre Mapa Interativo e Feed por País.
+   - Explorador rápido com busca em tempo real e chips de acesso direto.
+
+3. Redução da Barreira de Idioma e Fricção de Acesso:
+   - Botão de Tradução em 1 clique [Traduzir 🌐] para jornais e veículos estrangeiros.
+   - Indicador/badge explícito de "Assinatura" (paywall) em veículos pagos.
+
+4. Topbar Otimizada e Sincronização v2.12:
+   - Topbar despoluída e limpa.
+   - Versão v2.12 atualizada no rodapé e metadados.
+
+COMO APLICAR NO SEU COMPUTADOR:
+--------------------------------------------------------------------
+1. Abra a pasta do seu site no computador.
+2. Extraia o conteúdo deste arquivo ZIP diretamente dentro dela.
+3. Quando o sistema perguntar se deseja substituir os arquivos existentes,
+   confirme clicando em "Substituir" / "Substituir todos".
+
+ARQUIVOS PRINCIPAIS INCLUÍDOS:
+--------------------------------------------------------------------
+• index.html        -> Topbar atualizada, alternador de modo (Mapa/Feed),
+                       seção #quick-country-view e rodapé v2.12.
+• 200.html          -> Sincronizado com index.html para compatibilidade SPA.
+• 404.html          -> Página 404 atualizada com versão v2.12.
+• sobre.html        -> Página Sobre atualizada com versão v2.12.
+• app.js            -> Lógica de modo dual, gaveta lateral, injeção de tradutor
+                       Google e badges de assinatura.
+• styles.css        -> Estilos completos com layout Edge-to-Edge, gaveta lateral,
+                       estilos do modo feed, botões de tradução e badges.
+• README.md         -> Documentação técnica atualizada com novidades da V2.12.
+• LEIA-ME.txt       -> Este guia rápido de instruções.
+====================================================================

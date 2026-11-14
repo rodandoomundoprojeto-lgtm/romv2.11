@@ -1,0 +1,43 @@
+name: Radar de Noticias & Briefing Editorial
+
+on:
+  schedule:
+    # Executa a cada 30 minutos
+    - cron: '*/30 * * * *'
+  workflow_dispatch: # Permite disparo manual no painel do GitHub
+
+jobs:
+  radar:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write # Necessario para commitar os arquivos de dados atualizados
+
+    steps:
+      - name: Checkout do Repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Instalar Dependencias
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Executar Pipeline do Radar
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
+        run: |
+          python main.py
+
+      - name: Salvar Atualizacoes de Dados
+        run: |
+          git config --local user.email "radar-bot@github.com"
+          git config --local user.name "Radar Bot"
+          git add data/feed_output.json data/history.json
+          git diff --quiet && git diff --staged --quiet || (git commit -m "chore(radar): atualiza feed_output e history [skip ci]" && git push)

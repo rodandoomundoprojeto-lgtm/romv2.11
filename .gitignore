@@ -1,0 +1,24 @@
+# Cloudflare local cache
+.wrangler
+.netlify/
+
+# Backups temporários e locais
+_backups/*
+!_backups/LEIA-ME.txt
+*.backup*
+_backup*
+
+# Python & Ambiente Virtual
+.venv/
+__pycache__/
+*.pyc
+.env
+.pytest_cache/
+.antigravity/
+
+# Pacotes e artefatos pesados
+*.zip
+
+# Agente de Curadoria IA — payloads gerados localmente
+curadoria/output/
+

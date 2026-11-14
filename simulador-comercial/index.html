@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="dark">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Simulador Comercial & Mockup de Marcas B2B | Rodando o Mundo</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600&family=Instrument+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <style>
+    /* Estilos específicos da tela de simulação */
+    .sim-page-wrapper {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      background: var(--bg);
+      color: var(--text);
+    }
+    .sim-header {
+      border-bottom: 1px solid var(--border);
+      padding: 0.75rem 1.5rem;
+      background: var(--surface);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .sim-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: inherit;
+    }
+    .sim-badge-demo {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      background: #f59e0b;
+      color: #000;
+      padding: 0.2rem 0.55rem;
+      border-radius: 4px;
+    }
+    .sim-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 1.5rem;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    .sim-showcase-grid {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 1.5rem;
+      align-items: start;
+    }
+    @media (max-width: 1024px) {
+      .sim-showcase-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .sim-stage-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg, 12px);
+      padding: 1.5rem;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    }
+    .sim-stage-title {
+      font-family: var(--font-display, serif);
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .sim-drawer-mock {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg, 12px);
+      padding: 1.25rem;
+      position: relative;
+    }
+    .sim-outlet-mock {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin: 1rem 0;
+      padding: 0.75rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: var(--surface-card, rgba(0,0,0,0.1));
+    }
+    .sim-instructions-card {
+      background: var(--surface-hover);
+      border: 1px dashed var(--border);
+      border-radius: var(--radius-md, 8px);
+      padding: 1rem 1.25rem;
+      font-size: var(--text-xs);
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .sim-instructions-card code {
+      background: rgba(0,0,0,0.2);
+      padding: 0.15rem 0.35rem;
+      border-radius: 4px;
+      color: var(--primary);
+    }
+    /* Setas numeradas posicionadas nos 3 slots */
+    .pointer-pos-master {
+      top: -12px;
+      left: 20px;
+    }
+    .pointer-pos-drawer {
+      top: -14px;
+      right: 20px;
+    }
+    .pointer-pos-resumo {
+      top: -12px;
+      right: 20px;
+    }
+    .btn-restore-controls {
+      position: fixed;
+      bottom: 1rem;
+      right: 1rem;
+      background: var(--surface-card);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.4rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
+      z-index: 999;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="sim-page-wrapper">
+    <!-- Topbar Simulado com Slot 1 (Cota Master) -->
+    <header class="sim-header">
+      <div class="sim-brand">
+        <svg class="logo" viewBox="0 0 48 48" aria-hidden="true" width="28" height="28">
+          <circle cx="24" cy="24" r="19" fill="#1e293b" />
+          <circle cx="24" cy="24" r="19" fill="none" stroke="currentColor" stroke-width="2" />
+        </svg>
+        <span style="font-weight: 700; font-size: 1rem;">Rodando o Mundo</span>
+        <span class="sim-badge-demo">Simulador Comercial B2B</span>
+      </div>
+      <div>
+        <a href="/parcerias" class="btn btn-secondary" style="font-size: 0.8rem;">Mídia Kit Oficial</a>
+      </div>
+    </header>
+
+    <!-- Slot Comercial 1: Cota Master (Global) -->
+    <aside id="slot-cota-master" class="sponsor-slot sponsor-slot-master" aria-label="Patrocínio Master">
+      <div class="commercial-pointer pointer-pos-master" id="ptr-master">
+        <span class="commercial-pointer-num">1</span> Cota Master (Global)
+      </div>
+      <div class="sponsor-inner">
+        <span class="sponsor-eyebrow">Apresentado com exclusividade global por</span>
+        <span class="mock-brand-logo sponsor-brand-target" id="mock-brand-1">XP Investimentos</span>
+        <a class="sponsor-cta-link" href="#" onclick="return false;">Conheça os serviços internacionais →</a>
+      </div>
+    </aside>
+
+    <main class="sim-container">
+      <!-- Instruções de Uso da Ferramenta de Vendas -->
+      <div class="sim-instructions-card">
+        <strong>💡 Como usar esse protótipo na venda comercial:</strong><br>
+        1. <strong>Para Mídia Kit / Apresentações:</strong> Alterne entre Modo Claro e Escuro, ative as <em>Setas Numeradas</em> e capture o print da tela para a página de Formatos Comerciais.<br>
+        2. <strong>Para Reuniões e Prospecção Ativa:</strong> Digite o nome do cliente (ex.: <code>Wise</code>, <code>Cultura Inglesa</code>, <code>Allianz Travel</code>) no campo abaixo. Os 3 slots serão preenchidos imediatamente. O decisor já enxerga a própria marca integrada ao site, elevando a taxa de conversão da proposta de piloto de 30 dias.
+      </div>
+
+      <div class="sim-showcase-grid">
+        <!-- Coluna Esquerda: Resumo do Dia (Slot 2) e Conteúdo Principal -->
+        <div class="sim-stage-box">
+          <div class="sim-stage-title">
+            <span>📰 Edição Diária &amp; Dossiês Temáticos</span>
+          </div>
+
+          <!-- Slot Comercial 2: Resumo do Dia -->
+          <div id="slot-sponsor-resumo" class="sponsor-slot sponsor-slot-resumo" aria-label="Oferecimento do Resumo do Dia">
+            <div class="commercial-pointer pointer-pos-resumo" id="ptr-resumo">
+              <span class="commercial-pointer-num">3</span> Resumo do Dia &amp; Newsletter
+            </div>
+            <div class="sponsor-resumo-badge">
+              <span class="sponsor-tag">Oferecimento</span>
+              <span class="mock-brand-logo sponsor-brand-target" id="mock-brand-3">XP Investimentos</span>
+              <span class="sponsor-resumo-desc" id="sim-resumo-desc">— Análise macroeconômica, inteligência geopolítica e conexão aos mercados mundiais.</span>
+            </div>
+            <a class="sponsor-cta-pill" href="#" onclick="return false;">Acessar relatório</a>
+          </div>
+
+          <!-- Matérias Fictícias do Resumo -->
+          <div style="display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem;">
+            <article style="border: 1px solid var(--border); border-radius: 8px; padding: 1rem; background: var(--surface-card, rgba(0,0,0,0.05));">
+              <span style="font-size: 0.75rem; color: var(--primary); font-weight: 700; text-transform: uppercase;">1 · Estados Unidos / Economia Global</span>
+              <h3 style="font-size: 1.05rem; margin: 0.35rem 0 0.5rem 0;">Federal Reserve sinaliza nova taxa de juros com impacto direto nos fluxos de capitais globais</h3>
+              <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; margin: 0;">Análise comparada entre The New York Times, The Wall Street Journal e Financial Times sobre os desdobramentos monetários para economias emergentes.</p>
+            </article>
+
+            <article style="border: 1px solid var(--border); border-radius: 8px; padding: 1rem; background: var(--surface-card, rgba(0,0,0,0.05));">
+              <span style="font-size: 0.75rem; color: var(--primary); font-weight: 700; text-transform: uppercase;">2 · União Europeia / Transição Energética</span>
+              <h3 style="font-size: 1.05rem; margin: 0.35rem 0 0.5rem 0;">Parlamento Europeu aprova marco regulatório para descarbonização industrial</h3>
+              <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; margin: 0;">Cobertura unificada com fontes da Alemanha (Der Spiegel), França (Le Monde) e Espanha (El País).</p>
+            </article>
+          </div>
+        </div>
+
+        <!-- Coluna Direita: Gaveta Lateral / Contextual (Slot 3) -->
+        <div class="sim-drawer-mock">
+          <div class="sim-stage-title" style="font-size: 1.1rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem;">
+            <span>🇺🇸 Painel de Notícias: Estados Unidos</span>
+          </div>
+          <p style="font-size: 0.8rem; color: var(--text-muted); margin: 0.5rem 0 1rem 0;">8 veículos ativos cadastrados com curadoria factual e transparência editorial.</p>
+
+          <div class="sim-outlet-mock">
+            <strong style="font-size: 0.9rem;">The New York Times</strong>
+            <span style="font-size: 0.75rem; color: var(--text-muted);">Diário de referência internacional · Nova York</span>
+          </div>
+          <div class="sim-outlet-mock">
+            <strong style="font-size: 0.9rem;">The Washington Post</strong>
+            <span style="font-size: 0.75rem; color: var(--text-muted);">Cobertura política e geopolítica · Washington</span>
+          </div>
+
+          <!-- Slot Comercial 3: Gaveta Contextual -->
+          <div id="slot-sponsor-drawer" class="sponsor-slot sponsor-slot-drawer" aria-label="Apoio Contextual" style="margin-top: 1.5rem;">
+            <div class="commercial-pointer pointer-pos-drawer" id="ptr-drawer">
+              <span class="commercial-pointer-num">2</span> Gaveta Contextual (País/Hub)
+            </div>
+            <div class="sponsor-drawer-card">
+              <div class="sponsor-drawer-head">
+                <span class="sponsor-tag">Destaque de Mercado</span>
+                <span class="mock-brand-logo sponsor-brand-target" id="mock-brand-2">XP Investimentos</span>
+              </div>
+              <p class="sponsor-drawer-msg" id="sim-drawer-msg">Câmbio comercial, contas internacionais e carteiras globais para seus investimentos nos Estados Unidos.</p>
+              <a class="btn btn-secondary sponsor-drawer-btn" href="#" onclick="return false;">Abrir conta internacional</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Botão de Restauração quando a barra estiver oculta -->
+    <button type="button" class="btn-restore-controls" id="btn-restore-controls" hidden onclick="toggleToolbar(true)">
+      ⚙️ Mostrar Controles do Simulador
+    </button>
+
+    <!-- Toolbar Flutuante de Controle Comercial -->
+    <div class="simulador-toolbar" id="simulador-toolbar" role="toolbar" aria-label="Controles do Simulador Comercial">
+      <div class="simulador-toolbar-item">
+        <label for="input-brand-name" style="font-size: 0.75rem; font-weight: 600; color: var(--text-muted);">Marca:</label>
+        <input type="text" id="input-brand-name" class="simulador-input" value="XP Investimentos" placeholder="Ex: Nomad, Wise, Allianz...">
+      </div>
+
+      <div class="simulador-toolbar-item">
+        <label for="select-vertical" style="font-size: 0.75rem; font-weight: 600; color: var(--text-muted);">Vertical:</label>
+        <select id="select-vertical" class="simulador-input" style="padding-right: 0.5rem;">
+          <option value="financas">Finanças &amp; Câmbio</option>
+          <option value="educacao">Educação &amp; Idiomas</option>
+          <option value="turismo">Turismo &amp; Mobilidade</option>
+        </select>
+      </div>
+
+      <button type="button" class="simulador-btn" id="btn-toggle-theme" onclick="toggleTheme()">
+        <span id="theme-btn-icon">☀️</span> <span id="theme-btn-text">Modo Claro</span>
+      </button>
+
+      <button type="button" class="simulador-btn is-active" id="btn-toggle-pointers" onclick="togglePointers()">
+        <span>📍 Setas Numeradas (1, 2, 3)</span>
+      </button>
+
+      <button type="button" class="simulador-btn" onclick="toggleToolbar(false)" title="Ocultar para tirar print limpo da tela">
+        <span>📷 Ocultar Barra (Print)</span>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    var currentTheme = 'dark';
+    var pointersVisible = true;
+
+    // Inicialização por URL Params
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      var brand = params.get('marca') || params.get('brand');
+      var vert = params.get('vertical') || params.get('segmento');
+      if (brand) {
+        document.getElementById('input-brand-name').value = brand;
+      }
+      if (vert) {
+        document.getElementById('select-vertical').value = vert;
+      }
+      updateMockBrand();
+    })();
+
+    function updateMockBrand() {
+      var name = document.getElementById('input-brand-name').value.trim() || 'Sua Marca Aqui';
+      var vert = document.getElementById('select-vertical').value;
+
+      document.querySelectorAll('.mock-brand-logo').forEach(function (el) {
+        el.textContent = name;
+      });
+
+      var drawerMsg = document.getElementById('sim-drawer-msg');
+      var resumoDesc = document.getElementById('sim-resumo-desc');
+
+      if (vert === 'educacao') {
+        if (drawerMsg) drawerMsg.textContent = 'Cursos de idiomas, intercâmbio e certificações de proficiência com foco nos Estados Unidos.';
+        if (resumoDesc) resumoDesc.textContent = '— Capacitação global, línguas estrangeiras e oportunidades acadêmicas internacionais.';
+      } else if (vert === 'turismo') {
+        if (drawerMsg) drawerMsg.textContent = 'Seguro viagem internacional com cobertura completa médica e extravio de bagagem nos Estados Unidos.';
+        if (resumoDesc) resumoDesc.textContent = '— Assistência ao viajante, conectividade eSIM global e mobilidade sem fronteiras.';
+      } else {
+        if (drawerMsg) drawerMsg.textContent = 'Câmbio comercial, contas internacionais e carteiras globais para seus investimentos nos Estados Unidos.';
+        if (resumoDesc) resumoDesc.textContent = '— Análise macroeconômica, inteligência geopolítica e conexão aos mercados mundiais.';
+      }
+    }
+
+    document.getElementById('input-brand-name').addEventListener('input', updateMockBrand);
+    document.getElementById('select-vertical').addEventListener('change', updateMockBrand);
+
+    function toggleTheme() {
+      currentTheme = (currentTheme === 'dark') ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', currentTheme);
+      var btnText = document.getElementById('theme-btn-text');
+      var btnIcon = document.getElementById('theme-btn-icon');
+      if (currentTheme === 'light') {
+        btnText.textContent = 'Modo Escuro';
+        btnIcon.textContent = '🌙';
+      } else {
+        btnText.textContent = 'Modo Claro';
+        btnIcon.textContent = '☀️';
+      }
+    }
+
+    function togglePointers() {
+      pointersVisible = !pointersVisible;
+      var btn = document.getElementById('btn-toggle-pointers');
+      btn.classList.toggle('is-active', pointersVisible);
+      document.querySelectorAll('.commercial-pointer').forEach(function (p) {
+        p.style.display = pointersVisible ? 'inline-flex' : 'none';
+      });
+    }
+
+    function toggleToolbar(show) {
+      var bar = document.getElementById('simulador-toolbar');
+      var restoreBtn = document.getElementById('btn-restore-controls');
+      bar.hidden = !show;
+      restoreBtn.hidden = show;
+    }
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        toggleToolbar(true);
+      }
+    });
+  </script>
+</body>
+</html>
