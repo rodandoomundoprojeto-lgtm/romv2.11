@@ -11480,3 +11480,108 @@ button.support-link.topbar-more-btn:hover {
     right: calc(16px + env(safe-area-inset-right, 0px));
   }
 }
+
+
+/* =====================================================================
+   MOBILE UX — Bottom sheet (snap points), toque sem seleção e aviso de pinça
+   ===================================================================== */
+button, [role="button"], .quick-region-pill, .continents button, .panel-sheet-head, .map-gesture {
+  -webkit-user-select: none; user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+}
+button *, [role="button"] *, .panel-sheet-head * { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
+button, [role="button"], .quick-region-pill { touch-action: manipulation; }
+
+/* Aviso de pinça: fade-in suave, fade-out rápido */
+.map-gesture { transition: opacity .15s ease; will-change: opacity; }
+.map-gesture.show { transition: opacity .25s ease; }
+
+.panel-sheet-head .sheet-grabber { display: none; }
+
+@media (max-width: 768px) {
+  :root {
+    --sheet-h: 88vh;
+    --sheet-mid: 52vh;
+    --sheet-min: calc(88px + env(safe-area-inset-bottom, 0px));
+  }
+  @supports (height: 100dvh) {
+    :root { --sheet-h: 88dvh; --sheet-mid: 52dvh; }
+  }
+
+  body.has-sheet { padding-bottom: var(--sheet-min); }
+
+  #painel.panel {
+    position: fixed; top: auto; left: 0; right: 0; bottom: 0;
+    width: auto; height: var(--sheet-h); margin: 0;
+    display: block !important;
+    overflow-x: hidden; overflow-y: auto;
+    -webkit-overflow-scrolling: touch; overscroll-behavior: contain;
+    touch-action: pan-y;
+    padding: 0 var(--space-4) calc(var(--space-8) + env(safe-area-inset-bottom, 0px));
+    border: 1px solid var(--border); border-bottom: 0;
+    border-radius: 18px 18px 0 0;
+    box-shadow: 0 -8px 28px rgba(0, 0, 0, .18);
+    z-index: 400;
+    animation: none !important;
+    visibility: visible;
+    transform: translateY(100%);
+    transition: transform .32s cubic-bezier(.2, .8, .2, 1);
+    will-change: transform;
+  }
+  #painel.panel[data-snap="full"] { transform: translateY(0); }
+  #painel.panel[data-snap="mid"]  { transform: translateY(calc(var(--sheet-h) - var(--sheet-mid))); }
+  #painel.panel[data-snap="min"]  { transform: translateY(calc(var(--sheet-h) - var(--sheet-min))); overflow-y: hidden; }
+  #painel.panel.is-dragging { transition: none !important; }
+  #painel.panel.collapsed,
+  #painel.panel[data-world="true"] {
+    transform: translateY(100%) !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+  /* mid: só a área da lista rola; a altura visível é limitada pelo snap */
+  #painel.panel[data-snap="mid"] { padding-bottom: calc(var(--sheet-h) - var(--sheet-mid) + var(--space-6)); }
+
+  /* Cabeçalho = área de arraste (sem rolagem) / lista = área de rolagem */
+  .panel-sheet-head {
+    position: sticky; top: 0; z-index: 6;
+    display: flex; flex-wrap: wrap; align-items: center;
+    margin: 0 calc(-1 * var(--space-4)) var(--space-3);
+    padding: 0 var(--space-4) var(--space-2);
+    background: var(--surface);
+    touch-action: none; cursor: grab;
+  }
+  .panel-sheet-head .sheet-grabber {
+    display: block; flex: 0 0 100%; height: 24px; position: relative; touch-action: none;
+  }
+  .panel-sheet-head .sheet-grabber::after {
+    content: ''; position: absolute; left: 50%; top: 10px; width: 44px; height: 5px;
+    border-radius: 99px; background: var(--border); transform: translateX(-50%);
+  }
+  .panel-sheet-head .panel-top-controls {
+    float: none; order: 1; margin: 0 0 0 auto; flex-wrap: nowrap;
+  }
+  .panel-sheet-head .crumbs { order: 2; flex: 1 1 100%; margin: 6px 0 0; }
+  #painel.panel[data-snap="min"] .panel-sheet-head .crumbs { display: none; }
+
+  /* Áreas de toque >= 44px */
+  .panel-sheet-head .panel-collapse-btn { height: auto; min-height: 44px; padding: 0 .9rem; }
+  .panel-sheet-head .panel-close { width: 44px; height: 44px; min-width: 44px; margin: 0; }
+  .panel-sheet-head .crumbs button { min-height: 44px; padding: 0 .35rem; }
+  .continents button { min-height: 44px; }
+  .map-quick-regions .quick-region-pill {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-height: 44px; padding: 0 12px !important;
+  }
+
+  /* Ícone indicador do Recolher/Expandir: gira entre os estados */
+  #painel .panel-collapse-btn#btn-collapse-panel svg { transform: rotate(90deg); transition: transform .25s var(--ease); }
+  #painel[data-snap="min"] .panel-collapse-btn#btn-collapse-panel svg { transform: rotate(-90deg); }
+
+  /* O bottom sheet substitui a pílula de expandir e o fechar flutuante */
+  .panel-expand-pill, .panel-floating-close { display: none !important; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #painel.panel, .map-gesture { transition: none !important; }
+}

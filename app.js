@@ -1871,9 +1871,157 @@
     if (typeof updateFloatingControlsVisibility === 'function') {
       updateFloatingControlsVisibility();
     }
+    applySheetState();
     if (state.cont && window.innerWidth > 760) {
       applyZoom(true);
     }
+  }
+
+  /* ---------- Bottom sheet mobile (snap points: min / mid / full) ---------- */
+  var SHEET_MQ = window.matchMedia('(max-width: 768px)');
+  function isSheetMode() { return SHEET_MQ.matches; }
+
+  function applySheetState() {
+    if (!panel) return;
+    if (!isSheetMode()) {
+      panel.removeAttribute('data-snap');
+      panel.removeAttribute('data-world');
+      panel.style.removeProperty('transform');
+      panel.classList.remove('is-dragging');
+      document.body.classList.remove('has-sheet');
+      return;
+    }
+    var isWorld = !state.cont && !state.country;
+    var snap = state.sheetSnap || 'mid';
+    if (state.panelCollapsed) snap = 'min';
+    else if (snap === 'min') snap = 'mid';
+    state.sheetSnap = snap;
+    panel.setAttribute('data-snap', snap);
+    panel.setAttribute('data-world', String(isWorld));
+    panel.classList.toggle('collapsed', isWorld);
+    panel.classList.toggle('open', !isWorld);
+    panel.setAttribute('aria-hidden', String(isWorld));
+    document.body.classList.toggle('has-sheet', !isWorld);
+    var btn = panel.querySelector('#btn-collapse-panel');
+    if (btn) {
+      var minimized = snap === 'min';
+      var lbl = btn.querySelector('span');
+      if (lbl) lbl.textContent = minimized ? 'Expandir' : 'Recolher';
+      var t = minimized ? 'Expandir painel' : 'Recolher painel para ver o mapa';
+      btn.setAttribute('aria-label', t);
+      btn.setAttribute('title', t);
+      btn.setAttribute('aria-expanded', String(!minimized));
+    }
+  }
+
+  function setSheetSnap(snap) {
+    state.sheetSnap = snap;
+    setPanelCollapsed(snap === 'min');
+  }
+
+  function measureCss(expr) {
+    var p = document.createElement('div');
+    p.style.cssText = 'position:fixed;left:-9999px;top:0;width:1px;visibility:hidden;pointer-events:none;height:' + expr;
+    document.body.appendChild(p);
+    var h = p.offsetHeight;
+    document.body.removeChild(p);
+    return h;
+  }
+
+  var sheetDrag = null;
+  if (panel) {
+    panel.addEventListener('pointerdown', function (e) {
+      if (!isSheetMode() || (e.pointerType === 'mouse' && e.button !== 0)) return;
+      var head = e.target.closest ? e.target.closest('.panel-sheet-head') : null;
+      if (!head || e.target.closest('button, a, input, select, textarea')) return;
+      var h = measureCss('var(--sheet-h)');
+      var offs = {
+        full: 0,
+        mid: Math.max(0, h - measureCss('var(--sheet-mid)')),
+        min: Math.max(0, h - measureCss('var(--sheet-min)'))
+      };
+      var cur = panel.getAttribute('data-snap') || 'mid';
+      sheetDrag = {
+        id: e.pointerId, y0: e.clientY, last: e.clientY, lastT: e.timeStamp, v: 0,
+        moved: false, offs: offs, start: offs[cur], y: offs[cur],
+        tap: !!e.target.closest('.sheet-grabber')
+      };
+      try { panel.setPointerCapture(e.pointerId); } catch (err) {}
+    });
+    panel.addEventListener('pointermove', function (e) {
+      if (!sheetDrag || e.pointerId !== sheetDrag.id) return;
+      var dy = e.clientY - sheetDrag.y0;
+      if (!sheetDrag.moved && Math.abs(dy) < 6) return;
+      if (!sheetDrag.moved) {
+        sheetDrag.moved = true;
+        panel.classList.add('is-dragging');
+      }
+      var dt = e.timeStamp - sheetDrag.lastT;
+      if (dt > 0) sheetDrag.v = (e.clientY - sheetDrag.last) / dt;
+      sheetDrag.last = e.clientY;
+      sheetDrag.lastT = e.timeStamp;
+      sheetDrag.y = Math.min(sheetDrag.offs.min, Math.max(0, sheetDrag.start + dy));
+      panel.style.transform = 'translateY(' + sheetDrag.y + 'px)';
+    });
+    var endSheetDrag = function (e, cancelled) {
+      if (!sheetDrag || e.pointerId !== sheetDrag.id) return;
+      var d = sheetDrag;
+      sheetDrag = null;
+      try { panel.releasePointerCapture(e.pointerId); } catch (err) {}
+      panel.classList.remove('is-dragging');
+      panel.style.removeProperty('transform');
+      if (!d.moved) {
+        if (!cancelled && d.tap) setSheetSnap(panel.getAttribute('data-snap') === 'min' ? 'mid' : 'min');
+        return;
+      }
+      var proj = d.y + d.v * 180, best = 'mid', bd = Infinity;
+      ['full', 'mid', 'min'].forEach(function (k) {
+        var dist = Math.abs(d.offs[k] - proj);
+        if (dist < bd) { bd = dist; best = k; }
+      });
+      setSheetSnap(best);
+    };
+    panel.addEventListener('pointerup', function (e) { endSheetDrag(e, false); });
+    panel.addEventListener('pointercancel', function (e) { endSheetDrag(e, true); });
+  }
+  if (SHEET_MQ.addEventListener) {
+    SHEET_MQ.addEventListener('change', function () { setPanelCollapsed(state.panelCollapsed); });
+  } else if (SHEET_MQ.addListener) {
+    SHEET_MQ.addListener(function () { setPanelCollapsed(state.panelCollapsed); });
+  }
+
+  /* ---------- Filtro de continentes (pílulas) sincronizado com o estado ---------- */
+  function syncQuickRegionPills(scroll) {
+    var c = document.getElementById('map-quick-regions');
+    if (!c) return;
+    var key = state.cont || 'world', active = null;
+    c.querySelectorAll('.quick-region-pill, .btn-quick-region').forEach(function (btn) {
+      var cAttr = btn.getAttribute('data-cont') || btn.getAttribute('data-region');
+      var isMatch = (cAttr === key) || (cAttr === 'americas' && (key === 'sul' || key === 'norte' || key === 'central'));
+      btn.classList.toggle('is-active', isMatch);
+      btn.setAttribute('aria-pressed', String(isMatch));
+      if (isMatch && !active) active = btn;
+    });
+    if (scroll && active && active.scrollIntoView) {
+      var r = c.getBoundingClientRect();
+      if (r.bottom > 0 && r.top < window.innerHeight) {
+        try {
+          active.scrollIntoView({ behavior: reduceMotion() ? 'auto' : 'smooth', inline: 'center', block: 'nearest' });
+        } catch (err) { active.scrollIntoView(); }
+      }
+    }
+  }
+
+  /* ---------- Reset unificado: Voltar ao Mapa / X / Todos ---------- */
+  function resetToWorld() {
+    state.originRoute = null;
+    state.sheetSnap = 'mid';
+    setZoomedState(false);
+    avisoGestoExibido = false;
+    go(null, null);
+    applyZoom(true);
+    syncQuickRegionPills(true);
+    if (mapEl) mapEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
 
   if (panelExpandPill) {
@@ -2344,6 +2492,18 @@
     clearTimeout(gestoT);
     gestoT = setTimeout(function () { gesto.classList.remove('show'); }, 1800);
   }
+  var gestoHideT = null;
+  function showTouchHint(txt) {
+    if (!gesto || gesto.classList.contains('show')) return;
+    gesto.textContent = txt;
+    gesto.classList.add('show');
+    clearTimeout(gestoHideT);
+    gestoHideT = setTimeout(hideTouchHint, 2500);
+  }
+  function hideTouchHint() {
+    clearTimeout(gestoHideT);
+    if (gesto) gesto.classList.remove('show');
+  }
   var svgNode = svg.node();
   // Trava o zoom do navegador ao rolar com Ctrl/Cmd dentro da área do mapa (mesmo no zoom mínimo)
   mapEl.addEventListener('wheel', function (e) {
@@ -2366,6 +2526,7 @@
   var toque = null;
   svgNode.addEventListener('touchstart', function (e) {
     if (tip) tip.hidden = true;
+    hideTouchHint();
     if (e.touches.length > 1) {
       setZoomedState(true);
       avisoGestoExibido = true;
@@ -2383,21 +2544,27 @@
       setZoomedState(true);
       avisoGestoExibido = true;
       toque = null;
+      hideTouchHint();
       return;
     }
-    if (toque && !hasZoomed && !avisoGestoExibido) {
+    // Aviso só aparece em scroll vertical de 1 dedo sobre o mapa (ainda sem zoom)
+    if (toque && !hasZoomed) {
       var dx = e.touches[0].clientX - toque.x, dy = e.touches[0].clientY - toque.y;
-      if (dx * dx + dy * dy > 144) {
-        avisoGesto('Dê pinça com dois dedos para dar zoom no mapa');
+      if (Math.abs(dy) > 12 && Math.abs(dy) > Math.abs(dx) * 1.5) {
+        showTouchHint('Dê pinça com dois dedos para dar zoom no mapa');
+      } else if (Math.abs(dx) > Math.abs(dy) * 1.5) {
+        hideTouchHint();
       }
     }
   }, { passive: true });
 
   svgNode.addEventListener('touchend', function (e) {
+    hideTouchHint();
     if (e.touches.length === 0) {
       setTimeout(function () { pinchActive = false; }, 200);
     }
   }, { passive: true });
+  svgNode.addEventListener('touchcancel', hideTouchHint, { passive: true });
 
   // B1 / Req 4: Limites geográficos navegáveis ao redor dos continentes com pequena margem de oceano
   function setExtent() {
@@ -2612,6 +2779,7 @@
     panel.classList.remove('floating-panel');
     panel.classList.toggle('collapsed', shouldHidePanel);
     panel.setAttribute('aria-hidden', String(shouldHidePanel));
+    applySheetState();
     if (hint) {
       hint.textContent = state.cont ? 'Clique em um país para ver os veículos de comunicação' : 'Clique em um continente para ver os países';
     }
@@ -2621,15 +2789,7 @@
       if (on && nav.scrollWidth > nav.clientWidth) nav.scrollTo({ left: on.offsetLeft - nav.offsetLeft - 16, behavior: 'smooth' });
     }
 
-    var activeRegionKey = state.cont || 'world';
-    var quickRegContainer = document.getElementById('map-quick-regions');
-    if (quickRegContainer) {
-      quickRegContainer.querySelectorAll('.quick-region-pill, .btn-quick-region').forEach(function (btn) {
-        var cAttr = btn.getAttribute('data-cont') || btn.getAttribute('data-region');
-        var isMatch = (cAttr === activeRegionKey) || (cAttr === 'americas' && (activeRegionKey === 'sul' || activeRegionKey === 'norte' || activeRegionKey === 'central'));
-        btn.classList.toggle('is-active', isMatch);
-      });
-    }
+    syncQuickRegionPills(false);
 
     // C2: botão flutuante de fechar no painel de veículos
     if (panelFloatingClose) {
@@ -3530,12 +3690,7 @@
       .on('click', handleMapItemClick);
   }
 
-  backBtn.addEventListener('click', function () {
-    setZoomedState(false);
-    avisoGestoExibido = false;
-    setPanelCollapsed(false);
-    go(null, null);
-  });
+  backBtn.addEventListener('click', resetToWorld);
 
   // C2: Botão flutuante de fechar na tela de veículos
   if (panelFloatingClose) {
@@ -3547,7 +3702,7 @@
 
   /* ---------- panel ---------- */
   function crumbs() {
-    var h = '<div class="panel-top-controls">';
+    var h = '<div class="panel-sheet-head"><span class="sheet-grabber" aria-hidden="true"></span><div class="panel-top-controls">';
     if (state.originRoute) {
       h += '<button type="button" class="panel-collapse-btn btn-voltar-origem" data-action="go-back" data-fallback="' + esc(state.originRoute) + '" title="Voltar para a página anterior" aria-label="Voltar para onde estava">' +
         '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>' +
@@ -3589,16 +3744,18 @@
         h += '<span aria-hidden="true">/</span><span>' + esc(cName) + '</span>';
       }
     }
-    return h + '</nav>';
+    return h + '</nav></div>';
   }
   function bindCrumbs() {
     var x = panel.querySelector('[data-close]');
     if (x) x.addEventListener('click', function () {
-      setPanelCollapsed(true);
+      if (isSheetMode()) resetToWorld();
+      else setPanelCollapsed(true);
     });
     var collapseBtn = panel.querySelector('#btn-collapse-panel');
     if (collapseBtn) collapseBtn.addEventListener('click', function () {
-      setPanelCollapsed(true);
+      if (isSheetMode()) setSheetSnap(state.sheetSnap === 'min' ? 'mid' : 'min');
+      else setPanelCollapsed(true);
     });
     panel.querySelectorAll('[data-action="clear-topic"]').forEach(function (b) {
       b.addEventListener('click', function () {
@@ -3609,19 +3766,16 @@
     });
     panel.querySelectorAll('[data-go]').forEach(function (b) {
       b.addEventListener('click', function () {
-        var target = b.getAttribute('data-go') === 'world' ? null : state.cont;
-        if (!target) {
-          setZoomedState(false);
-          avisoGestoExibido = false;
+        if (b.getAttribute('data-go') === 'world') {
+          resetToWorld();
+          return;
         }
         setPanelCollapsed(false);
         state.originRoute = null;
-        go(target, null);
-        if (!target && mapEl) {
-          mapEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
+        go(state.cont, null);
       });
     });
+    applySheetState();
   }
 
   function renderWorld() {
@@ -6106,6 +6260,7 @@
     if (state.country) renderCountry();
     else if (state.cont) renderContinent();
     else renderWorld();
+    applySheetState();
     if (typeof updateFloatingControlsVisibility === 'function') {
       updateFloatingControlsVisibility();
     }
@@ -9562,6 +9717,7 @@
     hideMobileChip();
     paintMap();
     render();
+    syncQuickRegionPills(true);
     var pulsandoTrackSync = document.getElementById('pulsando-agora-track');
     if (pulsandoTrackSync) {
       var curA2 = (country && country.a2) ? String(country.a2).toUpperCase() : '';
@@ -11993,9 +12149,7 @@
         btn.addEventListener('click', function () {
           var targetCont = btn.getAttribute('data-cont') || btn.getAttribute('data-region');
           if (targetCont === 'world') {
-            setPanelCollapsed(false);
-            go(null, null);
-            fitAspect();
+            resetToWorld();
           } else if (targetCont === 'americas') {
             setPanelCollapsed(false);
             go('sul', null);
