@@ -13,13 +13,18 @@ from google.genai.errors import APIError
 from .prompt import SYSTEM_PROMPT
 from .schemas import CuradoriaPayload
 
-MODELO_PADRAO = os.getenv("CURADORIA_MODEL", "gemini-3.5-flash")
-MODELOS_FALLBACK = ["gemini-3.5-flash", "gemini-3.5-flash-lite"]
+MODELO_PADRAO = os.getenv("CURADORIA_MODEL", "gemini-3.5-flash-lite")
+MODELOS_FALLBACK = [
+    "gemini-3.5-flash-lite",
+    "gemini-3.5-flash",
+    "gemini-3.8-flash",
+    "gemini-3.1-flash-lite",
+]
 
 
 def executar_agente_analisador(noticias_brutas: List[dict], temas_recentes_enviados: List[str]) -> CuradoriaPayload:
     # lê GEMINI_API_KEY do ambiente; timeout (ms) evita travar o pipeline indefinidamente
-    client = genai.Client(http_options=types.HttpOptions(timeout=90_000))
+    client = genai.Client(http_options=types.HttpOptions(timeout=45_000))
     batch_atual = datetime.now(timezone.utc).strftime("%Y%m%d-%H%M")
 
     # Limita o lote para manter a janela ágil e evitar estouro de tokens/timeout

@@ -49,10 +49,44 @@ PROMPT_2_PATH = PROMPTS_DIR / "prompt_2_advogado_do_diabo.md"
 PROMPT_3_PATH = PROMPTS_DIR / "prompt_3_colunista_nerd.md"
 PROMPT_4_PATH = PROMPTS_DIR / "prompt_4_auditor_fact_checker.md"
 
-MODELO_EDITORIAL = "gemini-2.5-pro"
+MODELO_EDITORIAL = os.getenv("GEMINI_MODEL_EDITORIAL", "gemini-3.5-flash-lite").strip() or "gemini-3.5-flash-lite"
+MODELOS_EDITORIAL_FALLBACK = [
+    "gemini-3.5-flash-lite",
+    "gemini-3.8-flash",
+    "gemini-3.5-flash",
+    "gemini-3.7-flash",
+    "gemini-3.1-flash-lite",
+]
 NOTA_ISENCAO_MINIMA = 85
 MAX_TENTATIVAS_REESCRITA = 2
 STATUS_RASCUNHO_AUDITADO = "rascunho_auditado"
+
+
+def _gerar_com_fallback(
+    gemini_client: Any,
+    model: str,
+    contents: str,
+    config: types.GenerateContentConfig,
+) -> Tuple[Any, str]:
+    """Executa generate_content com fallback automático entre modelos Gemini disponíveis."""
+    candidatos = [model] + [m for m in MODELOS_EDITORIAL_FALLBACK if m != model]
+    ultimo_erro: Optional[Exception] = None
+    for candidato in candidatos:
+        try:
+            resp = gemini_client.models.generate_content(
+                model=candidato,
+                contents=contents,
+                config=config,
+            )
+            return resp, candidato
+        except Exception as exc:  # noqa: BLE001
+            ultimo_erro = exc
+            msg = str(exc).upper()
+            if any(k in msg for k in ("404", "NOT_FOUND", "503", "UNAVAILABLE", "504", "DEADLINE_EXCEEDED", "TIMEOUT", "429", "RESOURCE_EXHAUSTED")):
+                print(f"[editorial_v2] Modelo {candidato} indisponível ({msg[:80]}), tentando fallback...")
+                continue
+            raise
+    raise RuntimeError(f"Nenhum modelo Gemini disponível para editorial: {ultimo_erro}")
 
 
 def carregar_prompt(caminho: Path, prefixo_fallback: str) -> str:
@@ -163,10 +197,11 @@ DOCUMENTOS_E_FONTES_COLETADAS:
 Extraia os fatos verificados, dados numéricos, fontes primárias, coberturas de imprensa e pontos incertos.
 """.strip()
 
-    response = gemini_client.models.generate_content(
-        model=model,
-        contents=prompt_usuario,
-        config=types.GenerateContentConfig(
+    response, _ = _gerar_com_fallback(
+        gemini_client,
+        model,
+        prompt_usuario,
+        types.GenerateContentConfig(
             system_instruction=system_prompt,
             response_mime_type="application/json",
             response_schema=DossiePesquisaFactual,
@@ -195,10 +230,11 @@ DOSSIE_PESQUISA_FACTUAL (Etapa 1):
 Questione teses frágeis, aponte vieses das fontes, previna falsa simetria e defina as ressalvas obrigatórias.
 """.strip()
 
-    response = gemini_client.models.generate_content(
-        model=model,
-        contents=prompt_usuario,
-        config=types.GenerateContentConfig(
+    response, _ = _gerar_com_fallback(
+        gemini_client,
+        model,
+        prompt_usuario,
+        types.GenerateContentConfig(
             system_instruction=system_prompt,
             response_mime_type="application/json",
             response_schema=ParecerAdvogadoDiabo,
@@ -291,10 +327,11 @@ ACERVO_REAL_DISPONIVEL (Use EXCLUSIVAMENTE URLs desta lista em artigos_existente
 Redija a ColunaEditorial completa e o bloco entenda_o_assunto correspondente.
 """.strip()
 
-    response = gemini_client.models.generate_content(
-        model=model,
-        contents=prompt_usuario,
-        config=types.GenerateContentConfig(
+    response, modelo_usado = _gerar_com_fallback(
+        gemini_client,
+        model,
+        prompt_usuario,
+        types.GenerateContentConfig(
             system_instruction=system_prompt,
             response_mime_type="application/json",
             response_schema=ColunaEditorial,
@@ -305,7 +342,7 @@ Redija a ColunaEditorial completa e o bloco entenda_o_assunto correspondente.
     if coluna is None:
         coluna = ColunaEditorial.model_validate_json(response.text)
 
-    coluna.model_id = model
+    coluna.model_id = modelo_usado
     garantir_bloco_entenda_o_assunto(coluna, dossie)
     return coluna
 
@@ -348,10 +385,11 @@ COLUNA_EDITORIAL_PARA_AUDITORIA (Etapa 3):
 Audite rigorosamente a precisão factual, a integração das ressalvas e atribua nota_isencao (0 a 100).
 """.strip()
 
-    response = gemini_client.models.generate_content(
-        model=model,
-        contents=prompt_usuario,
-        config=types.GenerateContentConfig(
+    response, _ = _gerar_com_fallback(
+        gemini_client,
+        model,
+        prompt_usuario,
+        types.GenerateContentConfig(
             system_instruction=system_prompt,
             response_mime_type="application/json",
             response_schema=ResultadoAuditoria,

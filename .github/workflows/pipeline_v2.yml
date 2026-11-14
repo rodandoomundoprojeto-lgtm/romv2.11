@@ -32,6 +32,9 @@ jobs:
   executar-pipeline-v2:
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: write
+
     steps:
       - name: Checkout do Repositorio
         uses: actions/checkout@v4
@@ -87,3 +90,10 @@ jobs:
           else
             python scripts/run_pipeline.py --modo "${{ github.event.inputs.modo }}" $DRY_FLAG
           fi
+
+      - name: Salvar Snapshot da Vitrine IA (se atualizado)
+        run: |
+          git config --local user.email "pipeline-v2-bot@github.com"
+          git config --local user.name "Pipeline V2 Bot"
+          git add data/vitrine_ia.json
+          git diff --quiet && git diff --staged --quiet || (git commit -m "chore(curadoria): atualiza vitrine_ia.json [skip ci]" && git push)

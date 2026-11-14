@@ -57,38 +57,49 @@ INSTRUÇÕES E REGRAS MANDATÓRIAS:
    - "analise": Análise curta de contexto e impacto ("Por que isso importa" na categoria {item.get('categoria')}, de 2 a 3 frases, tom analítico, isento e sóbrio).
 """
 
-    client = genai.Client(api_key=key)
+    client = genai.Client(api_key=key, http_options=types.HttpOptions(timeout=35_000))
+    modelos = ["gemini-3.5-flash-lite", "gemini-3.5-flash", "gemini-3.8-flash", "gemini-3.1-flash-lite"]
 
-    try:
-        # Chamada com resposta JSON estruturada
-        response = client.models.generate_content(
-            model="gemini-3.5-flash-lite",
-            contents=prompt,
-            config=types.GenerateContentConfig(
-                response_mime_type="application/json",
-                temperature=0.2,
-            ),
-        )
+    last_err = None
+    for modelo in modelos:
+        try:
+            # Chamada com resposta JSON estruturada
+            response = client.models.generate_content(
+                model=modelo,
+                contents=prompt,
+                config=types.GenerateContentConfig(
+                    response_mime_type="application/json",
+                    temperature=0.2,
+                ),
+            )
 
-        raw_json = response.text.strip()
-        parsed = json.loads(raw_json)
+            raw_json = response.text.strip()
+            parsed = json.loads(raw_json)
 
-        # Se for duplicado semanticamente, avisamos o chamador
-        if parsed.get("duplicado") is True:
-            return {"duplicado": True, "item_id": item.get("item_id")}
+            # Se for duplicado semanticamente, avisamos o chamador
+            if parsed.get("duplicado") is True:
+                return {"duplicado": True, "item_id": item.get("item_id")}
 
-        return {
-            "duplicado": False,
-            "item_id": item.get("item_id"),
-            "titulo": parsed.get("titulo", "")[:120].strip(),
-            "resumo": parsed.get("resumo", "").strip(),
-            "analise": parsed.get("analise", "").strip(),
-            "categoria": item.get("categoria"),
-            "fonte_nome": item.get("fonte_nome"),
-            "fonte_url": item.get("fonte_url"),
-            "data_publicacao": item.get("data_publicacao")
-        }
+            return {
+                "duplicado": False,
+                "item_id": item.get("item_id"),
+                "titulo": parsed.get("titulo", "")[:120].strip(),
+                "resumo": parsed.get("resumo", "").strip(),
+                "analise": parsed.get("analise", "").strip(),
+                "categoria": item.get("categoria"),
+                "fonte_nome": item.get("fonte_nome"),
+                "fonte_url": item.get("fonte_url"),
+                "data_publicacao": item.get("data_publicacao")
+            }
 
-    except Exception as e:
-        print(f"[!] Erro ao analisar item com Gemini ({item.get('fonte_nome')}): {e}")
-        return None
+        except Exception as e:
+            last_err = e
+            msg = str(e).upper()
+            if any(k in msg for k in ("404", "NOT_FOUND", "503", "UNAVAILABLE", "504", "TIMEOUT", "429", "RESOURCE_EXHAUSTED")):
+                print(f"[!] Modelo {modelo} indisponível para '{item.get('fonte_nome')}', tentando fallback...")
+                continue
+            print(f"[!] Erro ao analisar item com Gemini ({item.get('fonte_nome')}): {e}")
+            return None
+
+    print(f"[!] Todos os modelos falharam para '{item.get('fonte_nome')}': {last_err}")
+    return None

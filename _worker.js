@@ -1,9 +1,30 @@
 /**
  * Cloudflare Pages Worker (_worker.js)
- * 1. Processa envios de formulários (/api/contato) com Resend e fallback FormSubmit
- * 2. Garante roteamento nativo de SPA (Single Page Application) sem erros 404
- *    ao recarregar (F5/Refresh) ou acessar diretamente URLs limpas como /clube, /Sul, etc.
+ * 1. Despacha rotas /api/* para os módulos em functions/api/* (evitando sombreamento)
+ * 2. Faz proxy das rotas FastAPI (/v1/*, /v2/*) para CURADORIA_BACKEND_URL
+ * 3. Garante roteamento nativo de SPA (Single Page Application) sem erros 404
  */
+import * as apiBuscaAssunto from './functions/api/busca-assunto.js';
+import * as apiNewsletterSubscribe from './functions/api/newsletter-subscribe.js';
+import * as apiNoticiasQuentes from './functions/api/noticias-quentes.js';
+import * as apiNoticias from './functions/api/noticias.js';
+import * as apiPesquisa from './functions/api/pesquisa.js';
+import * as apiResumo from './functions/api/resumo.js';
+import * as apiTraduzir from './functions/api/traduzir.js';
+import * as apiUltimasNoticias from './functions/api/ultimas-noticias.js';
+import * as apiVitrineEmAlta from './functions/api/vitrine-em-alta.js';
+
+const API_FUNCTION_ROUTES = {
+  '/api/busca-assunto': apiBuscaAssunto,
+  '/api/newsletter-subscribe': apiNewsletterSubscribe,
+  '/api/noticias-quentes': apiNoticiasQuentes,
+  '/api/noticias': apiNoticias,
+  '/api/pesquisa': apiPesquisa,
+  '/api/resumo': apiResumo,
+  '/api/traduzir': apiTraduzir,
+  '/api/ultimas-noticias': apiUltimasNoticias,
+  '/api/vitrine-em-alta': apiVitrineEmAlta,
+};
 
 function escapeHtml(str) {
   if (str === null || str === undefined) return '';
@@ -292,6 +313,84 @@ async function handleContato(request, env) {
   }
 }
 
+async function dispatchApiFunction(mod, request, env) {
+  const method = request.method.toUpperCase();
+  const handler =
+    (method === 'GET' && mod.onRequestGet) ||
+    (method === 'POST' && mod.onRequestPost) ||
+    (method === 'OPTIONS' && mod.onRequestOptions) ||
+    mod.onRequest;
+  if (typeof handler === 'function') {
+    return handler({ request, env });
+  }
+  return new Response(JSON.stringify({ ok: false, error: 'Método não permitido' }), {
+    status: 405,
+    headers: { ...CORS_HEADERS, 'Content-Type': 'application/json; charset=utf-8' }
+  });
+}
+
+async function handleRadarFeed(request, env) {
+  if (request.method === 'OPTIONS') {
+    return new Response(null, { status: 204, headers: CORS_HEADERS });
+  }
+  const feedReq = new Request(new URL('/data/feed_output.json', request.url), { method: 'GET' });
+  const assetRes = await env.ASSETS.fetch(feedReq);
+  if (!assetRes.ok) {
+    return new Response(JSON.stringify({ ok: false, items: [], error: 'Feed indisponível' }), {
+      status: 200,
+      headers: { ...CORS_HEADERS, 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' }
+    });
+  }
+  const items = await assetRes.json().catch(() => []);
+  const lista = Array.isArray(items) ? items : [];
+  const ultimaData = lista.length && lista[0].data_publicacao ? lista[0].data_publicacao : new Date().toISOString();
+  return new Response(JSON.stringify({
+    ok: true,
+    source: 'feed_output',
+    atualizado_em: ultimaData,
+    total: lista.length,
+    items: lista
+  }), {
+    status: 200,
+    headers: { ...CORS_HEADERS, 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' }
+  });
+}
+
+async function handleEntendaOAssunto(request, env, url) {
+  if (request.method === 'OPTIONS') {
+    return new Response(null, { status: 204, headers: CORS_HEADERS });
+  }
+  const backendUrl = String((env && env.CURADORIA_BACKEND_URL) || '').trim().replace(/\/+$/, '');
+  const acao = url.searchParams.get('acao') || '';
+  const slug = url.searchParams.get('slug') || '';
+  const targetPath = slug
+    ? `/v2/entenda-o-assunto/${encodeURIComponent(slug)}`
+    : (acao === 'colunas' ? '/v2/colunas' : '/v2/colunas');
+
+  if (backendUrl && /^https?:\/\//i.test(backendUrl) && !backendUrl.includes('api.rodandoomundo.com.br')) {
+    const proxyUrl = new URL(targetPath + url.search, backendUrl);
+    if (proxyUrl.hostname !== url.hostname) {
+      try {
+        const res = await fetch(proxyUrl.toString(), { headers: { Accept: 'application/json' } });
+        if (res.ok) {
+          const data = await res.json();
+          return new Response(JSON.stringify(data), {
+            status: 200,
+            headers: { ...CORS_HEADERS, 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' }
+          });
+        }
+      } catch (e) {
+        // fallback para resposta offline limpa
+      }
+    }
+  }
+
+  return new Response(JSON.stringify({ ok: false, colunas: [], source: 'offline' }), {
+    status: 200,
+    headers: { ...CORS_HEADERS, 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' }
+  });
+}
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
@@ -314,6 +413,22 @@ export default {
     // Proxy das rotas FastAPI (Motor V2 e V1) para CURADORIA_BACKEND_URL — evita fallback SPA (HTML/405)
     if (url.pathname.startsWith('/v2/') || url.pathname.startsWith('/v1/')) {
       return handleBackendProxy(request, env, url);
+    }
+
+    // Despacha rotas /api/* para os handlers em functions/api/*.js
+    const apiMod = API_FUNCTION_ROUTES[url.pathname];
+    if (apiMod) {
+      return dispatchApiFunction(apiMod, request, env);
+    }
+
+    // Rota /api/radar: serve /data/feed_output.json no formato esperado por app.js sem cache
+    if (url.pathname === '/api/radar') {
+      return handleRadarFeed(request, env);
+    }
+
+    // Rota /api/entenda-o-assunto: proxy para /v2/colunas ou /v2/entenda-o-assunto/{slug}
+    if (url.pathname === '/api/entenda-o-assunto') {
+      return handleEntendaOAssunto(request, env, url);
     }
 
     // Repassar outras chamadas /api/ normalmente

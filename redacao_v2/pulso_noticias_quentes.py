@@ -39,15 +39,13 @@ from .schemas import (
 
 PROMPTS_DIR = Path(__file__).resolve().parent / "prompts"
 PROMPT_0_PATH = PROMPTS_DIR / "prompt_0_pulso_noticias_quentes.md"
-MODELO_PULSO = os.getenv("GEMINI_MODEL_PULSO", "gemini-3.5-flash").strip() or "gemini-3.5-flash"
+MODELO_PULSO = os.getenv("GEMINI_MODEL_PULSO", "gemini-3.5-flash-lite").strip() or "gemini-3.5-flash-lite"
 MODELOS_PULSO_FALLBACK = [
-    "gemini-3.5-flash",
-    "gemini-3.7-flash",
-    "gemini-3.6-flash",
     "gemini-3.5-flash-lite",
-    "gemini-3.1-flash-lite",
+    "gemini-3.5-flash",
     "gemini-3.8-flash",
-    "gemini-2.5-flash",
+    "gemini-3.7-flash",
+    "gemini-3.1-flash-lite",
 ]
 LOCK_PULSO_KEY = "pipeline_pulso:noticias_quentes_30m"
 
@@ -212,7 +210,7 @@ def gerar_pulso_noticias_quentes(
 ) -> PayloadNoticiasQuentes:
     """Chama `gemini-2.5-flash` com `response_schema=PayloadNoticiasQuentes` e deduplicação de ativos."""
     system_prompt = carregar_prompt_pulso()
-    gemini_client = client or genai.Client(http_options=types.HttpOptions(timeout=90_000))
+    gemini_client = client or genai.Client(http_options=types.HttpOptions(timeout=35_000))
     batch_atual = datetime.now(timezone.utc).strftime("%Y%m%d-%H%M")
     acervo = acervo_publicado or []
 

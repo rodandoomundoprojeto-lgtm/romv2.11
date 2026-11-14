@@ -88,12 +88,13 @@ def run_pipeline():
         print(f"      [{idx}/{len(new_items)}] Analisando: {fonte} [{cat}]...")
 
         result = analyze_item(item)
-        processed_ids.append(item.get("item_id"))
 
         if not result:
-            print("          ⚠️ Falha ou erro na resposta da IA. Pulando.")
+            print("          ⚠️ Falha ou erro na resposta da IA. Pulando sem marcar no histórico.")
             time.sleep(4)
             continue
+
+        processed_ids.append(item.get("item_id"))
 
         if result.get("duplicado") is True:
             print("          🔁 Descartado por duplicação semântica recente.")
