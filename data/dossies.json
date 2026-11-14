@@ -1,0 +1,880 @@
+{
+  "gerado_em": "2026-11-14T20:46:00.243053+00:00",
+  "dossies": [
+    {
+      "slug": "politica-brasil",
+      "titulo": "Política no Brasil",
+      "subtitulo": "Acompanhe as decisões do Planalto, do Congresso Nacional e do STF sob a ótica de veículos de diferentes linhas editoriais.",
+      "tipo": "permanente",
+      "categoria": "Geopolítica",
+      "icone_ou_bandeira": "BR",
+      "data_inicio": null,
+      "data_fim": null,
+      "regras_classificacao": {
+        "palavras_chave": [
+          "planalto",
+          "congresso",
+          "stf",
+          "senado",
+          "câmara dos deputados",
+          "lula"
+        ],
+        "paises": [
+          "BR"
+        ]
+      },
+      "meta_info": null,
+      "rota": "/politica/brasil",
+      "ordem": 1
+    },
+    {
+      "slug": "politica-estados-unidos",
+      "titulo": "Política nos Estados Unidos",
+      "subtitulo": "Casa Branca, Congresso americano, Suprema Corte e o impacto global das decisões de Washington.",
+      "tipo": "permanente",
+      "categoria": "Geopolítica",
+      "icone_ou_bandeira": "US",
+      "data_inicio": null,
+      "data_fim": null,
+      "regras_classificacao": {
+        "palavras_chave": [
+          "casa branca",
+          "trump",
+          "congresso americano",
+          "suprema corte",
+          "washington"
+        ],
+        "paises": [
+          "US"
+        ]
+      },
+      "meta_info": null,
+      "rota": "/politica/estados-unidos",
+      "ordem": 2
+    },
+    {
+      "slug": "eleicoes-democracia-mundo",
+      "titulo": "Eleições e Democracia no Mundo",
+      "subtitulo": "Cobertura eleitoral, sistemas de votação, pesquisas e disputas políticas no Brasil e no exterior.",
+      "tipo": "permanente",
+      "categoria": "Geopolítica",
+      "icone_ou_bandeira": "GLOBAL",
+      "data_inicio": null,
+      "data_fim": null,
+      "regras_classificacao": {
+        "palavras_chave": [
+          "eleição",
+          "eleições",
+          "pesquisa eleitoral",
+          "voto",
+          "urnas",
+          "democracia"
+        ],
+        "paises": []
+      },
+      "meta_info": null,
+      "rota": "/eleicoes",
+      "ordem": 3
+    },
+    {
+      "slug": "conflitos-medio-oriente",
+      "titulo": "Conflitos no Médio Oriente",
+      "subtitulo": "Acompanhe os desdobramentos militares, acordos diplomáticos, crises humanitárias e o impacto energético na região sob diferentes perspetivas internacionais.",
+      "tipo": "permanente",
+      "categoria": "Geopolítica",
+      "icone_ou_bandeira": "MIDEAST",
+      "data_inicio": null,
+      "data_fim": null,
+      "regras_classificacao": {
+        "palavras_chave": [
+          "gaza",
+          "israel",
+          "irã",
+          "líbano",
+          "hamas",
+          "cessar-fogo",
+          "oriente médio"
+        ],
+        "paises": [
+          "IL",
+          "IR",
+          "LB",
+          "PS"
+        ]
+      },
+      "meta_info": null,
+      "rota": null,
+      "ordem": 4
+    },
+    {
+      "slug": "guerra-europa-leste",
+      "titulo": "Guerra na Europa de Leste",
+      "subtitulo": "Evolução do conflito entre Rússia e Ucrânia, sanções económicas, segurança da NATO e repercussões geopolíticas no continente europeu.",
+      "tipo": "permanente",
+      "categoria": "Geopolítica",
+      "icone_ou_bandeira": "UA",
+      "data_inicio": null,
+      "data_fim": null,
+      "regras_classificacao": {
+        "palavras_chave": [
+          "ucrânia",
+          "rússia",
+          "putin",
+          "zelensky",
+          "otan",
+          "nato",
+          "sanções"
+        ],
+        "paises": [
+          "UA",
+          "RU"
+        ]
+      },
+      "meta_info": null,
+      "rota": "/guerra-ucrania",
+      "ordem": 5
+    },
+    {
+      "slug": "indo-pacifico-china",
+      "titulo": "Tensões no Indo-Pacífico e China",
+      "subtitulo": "Disputas comerciais, tecnologia, a questão de Taiwan e o equilíbrio de poder entre Pequim, Washington e aliados asiáticos.",
+      "tipo": "permanente",
+      "categoria": "Geopolítica",
+      "icone_ou_bandeira": "CN",
+      "data_inicio": null,
+      "data_fim": null,
+      "regras_classificacao": {
+        "palavras_chave": [
+          "china",
+          "taiwan",
+          "pequim",
+          "xi jinping",
+          "indo-pacífico",
+          "mar da china"
+        ],
+        "paises": [
+          "CN",
+          "TW"
+        ]
+      },
+      "meta_info": null,
+      "rota": null,
+      "ordem": 6
+    },
+    {
+      "slug": "uniao-europeia-politica",
+      "titulo": "União Europeia e Política Continental",
+      "subtitulo": "Decisões de Bruxelas, crises migratórias, transição energética e o avanço de novas forças políticas nos parlamentos europeus.",
+      "tipo": "permanente",
+      "categoria": "Geopolítica",
+      "icone_ou_bandeira": "EU",
+      "data_inicio": null,
+      "data_fim": null,
+      "regras_classificacao": {
+        "palavras_chave": [
+          "união europeia",
+          "bruxelas",
+          "parlamento europeu",
+          "comissão europeia"
+        ],
+        "paises": [
+          "EU"
+        ]
+      },
+      "meta_info": null,
+      "rota": null,
+      "ordem": 7
+    },
+    {
+      "slug": "america-latina-transformacao",
+      "titulo": "América Latina em Transformação",
+      "subtitulo": "Cenários políticos, integração regional, crises institucionais e movimentos sociais nos países vizinhos ao Brasil.",
+      "tipo": "permanente",
+      "categoria": "Geopolítica",
+      "icone_ou_bandeira": "LATAM",
+      "data_inicio": null,
+      "data_fim": null,
+      "regras_classificacao": {
+        "palavras_chave": [
+          "argentina",
+          "milei",
+          "venezuela",
+          "méxico",
+          "colômbia",
+          "chile",
+          "mercosul"
+        ],
+        "paises": [
+          "AR",
+          "VE",
+          "MX",
+          "CO",
+          "CL"
+        ]
+      },
+      "meta_info": null,
+      "rota": null,
+      "ordem": 8
+    },
+    {
+      "slug": "economia-brasil",
+      "titulo": "Economia no Brasil",
+      "subtitulo": "Inflação, taxa Selic, câmbio, mercado de trabalho, agronegócio e contas públicas em múltiplas fontes.",
+      "tipo": "permanente",
+      "categoria": "Economia",
+      "icone_ou_bandeira": "BR",
+      "data_inicio": null,
+      "data_fim": null,
+      "regras_classificacao": {
+        "palavras_chave": [
+          "selic",
+          "inflação",
+          "ipca",
+          "câmbio",
+          "dólar",
+          "pib",
+          "banco central",
+          "copom"
+        ],
+        "paises": [
+          "BR"
+        ]
+      },
+      "meta_info": null,
+      "rota": "/economia/brasil",
+      "ordem": 9
+    },
+    {
+      "slug": "economia-global-bancos-centrais",
+      "titulo": "Economia Global e Bancos Centrais",
+      "subtitulo": "Taxas de juro, inflação mundial, decisões do Fed e do BCE, cadeias de suprimentos e riscos de recessão nos principais mercados.",
+      "tipo": "permanente",
+      "categoria": "Economia",
+      "icone_ou_bandeira": "GLOBAL",
+      "data_inicio": null,
+      "data_fim": null,
+      "regras_classificacao": {
+        "palavras_chave": [
+          "fed",
+          "bce",
+          "juros",
+          "recessão",
+          "inflação global",
+          "banco central europeu"
+        ],
+        "paises": []
+      },
+      "meta_info": null,
+      "rota": null,
+      "ordem": 10
+    },
+    {
+      "slug": "transicao-energetica-petroleo",
+      "titulo": "Transição Energética e Petróleo",
+      "subtitulo": "OPEP+, preços dos combustíveis, investimentos em energias renováveis, hidrogénio verde e a disputa global por minerais críticos.",
+      "tipo": "permanente",
+      "categoria": "Economia",
+      "icone_ou_bandeira": "ENERGY",
+      "data_inicio": null,
+      "data_fim": null,
+      "regras_classificacao": {
+        "palavras_chave": [
+          "opep",
+          "petróleo",
+          "combustíveis",
+          "energia renovável",
+          "hidrogênio verde",
+          "minerais críticos"
+        ],
+        "paises": []
+      },
+      "meta_info": null,
+      "rota": null,
+      "ordem": 11
+    },
+    {
+      "slug": "comercio-internacional-tarifas",
+      "titulo": "Comércio Internacional e Tarifas",
+      "subtitulo": "Acordos comerciais, protecionismo, cadeias globais de produção e o papel de blocos como BRICS, Mercosul e G20.",
+      "tipo": "permanente",
+      "categoria": "Economia",
+      "icone_ou_bandeira": "TRADE",
+      "data_inicio": null,
+      "data_fim": null,
+      "regras_classificacao": {
+        "palavras_chave": [
+          "tarifas",
+          "comércio exterior",
+          "brics",
+          "mercosul",
+          "omc",
+          "protecionismo"
+        ],
+        "paises": []
+      },
+      "meta_info": null,
+      "rota": null,
+      "ordem": 12
+    },
+    {
+      "slug": "futuro-trabalho-emprego",
+      "titulo": "Futuro do Trabalho e Emprego",
+      "subtitulo": "Automação, trabalho remoto, reformas laborais, produtividade e o impacto das novas tecnologias nas profissões.",
+      "tipo": "permanente",
+      "categoria": "Economia",
+      "icone_ou_bandeira": "WORK",
+      "data_inicio": null,
+      "data_fim": null,
+      "regras_classificacao": {
+        "palavras_chave": [
+          "desemprego",
+          "trabalho remoto",
+          "reforma trabalhista",
+          "automação",
+          "escala 6x1"
+        ],
+        "paises": []
+      },
+      "meta_info": null,
+      "rota": null,
+      "ordem": 13
+    },
+    {
+      "slug": "crise-habitacional-custo-vida",
+      "titulo": "Crise Habitacional e Custo de Vida",
+      "subtitulo": "Mercado imobiliário, especulação urbana, acesso à moradia e políticas públicas nas grandes metrópoles do mundo.",
+      "tipo": "permanente",
+      "categoria": "Economia",
+      "icone_ou_bandeira": "HOUSING",
+      "data_inicio": null,
+      "data_fim": null,
+      "regras_classificacao": {
+        "palavras_chave": [
+          "moradia",
+          "aluguel",
+          "imobiliário",
+          "custo de vida",
+          "habitação"
+        ],
+        "paises": []
+      },
+      "meta_info": null,
+      "rota": null,
+      "ordem": 14
+    },
+    {
+      "slug": "ia-regulacao",
+      "titulo": "Inteligência Artificial e Regulação",
+      "subtitulo": "Avanços dos grandes modelos de IA, impactos éticos, direitos de autor, corrida tecnológica e leis de controlo global.",
+      "tipo": "permanente",
+      "categoria": "Tecnologia",
+      "icone_ou_bandeira": "AI",
+      "data_inicio": null,
+      "data_fim": null,
+      "regras_classificacao": {
+        "palavras_chave": [
+          "inteligência artificial",
+          "openai",
+          "gemini",
+          "chatgpt",
+          "regulação de ia",
+          "llm"
+        ],
+        "paises": []
+      },
+      "meta_info": null,
+      "rota": null,
+      "ordem": 15
+    },
+    {
+      "slug": "big-tech-redes-privacidade",
+      "titulo": "Big Tech, Redes Sociais e Privacidade",
+      "subtitulo": "Monopólios digitais, moderação de conteúdo, desinformação, segurança de dados e embates regulatórios com governos.",
+      "tipo": "permanente",
+      "categoria": "Tecnologia",
+      "icone_ou_bandeira": "TECH",
+      "data_inicio": null,
+      "data_fim": null,
+      "regras_classificacao": {
+        "palavras_chave": [
+          "big tech",
+          "meta",
+          "google",
+          "x",
+          "tiktok",
+          "privacidade",
+          "lgpd",
+          "desinformação"
+        ],
+        "paises": []
+      },
+      "meta_info": null,
+      "rota": "/tecnologia",
+      "ordem": 16
+    },
+    {
+      "slug": "ciberseguranca-guerra-digital",
+      "titulo": "Cibersegurança e Guerra Digital",
+      "subtitulo": "Ataques a infraestruturas críticas, espionagem estatal, proteção de dados e a nova fronteira da defesa nacional.",
+      "tipo": "permanente",
+      "categoria": "Tecnologia",
+      "icone_ou_bandeira": "CYBER",
+      "data_inicio": null,
+      "data_fim": null,
+      "regras_classificacao": {
+        "palavras_chave": [
+          "ciberataque",
+          "hacker",
+          "ransomware",
+          "espionagem",
+          "vazamento de dados"
+        ],
+        "paises": []
+      },
+      "meta_info": null,
+      "rota": null,
+      "ordem": 17
+    },
+    {
+      "slug": "crise-climatica-eventos-extremos",
+      "titulo": "Crise Climática e Eventos Extremos",
+      "subtitulo": "Acordos globais, metas de carbono, desastres ambientais, transição ecológica e os impactos económicos do aquecimento global.",
+      "tipo": "permanente",
+      "categoria": "Clima e Ciência",
+      "icone_ou_bandeira": "CLIMATE",
+      "data_inicio": null,
+      "data_fim": null,
+      "regras_classificacao": {
+        "palavras_chave": [
+          "clima",
+          "aquecimento global",
+          "emissões",
+          "enchente",
+          "seca",
+          "furacão",
+          "onda de calor"
+        ],
+        "paises": []
+      },
+      "meta_info": null,
+      "rota": "/clima",
+      "ordem": 18
+    },
+    {
+      "slug": "amazonia-meio-ambiente-brasil",
+      "titulo": "Amazónia e Meio Ambiente no Brasil",
+      "subtitulo": "Desmatamento, bioeconomia, políticas de preservação, povos indígenas e o papel ambiental do Brasil no cenário externo.",
+      "tipo": "permanente",
+      "categoria": "Clima e Ciência",
+      "icone_ou_bandeira": "BR",
+      "data_inicio": null,
+      "data_fim": null,
+      "regras_classificacao": {
+        "palavras_chave": [
+          "amazônia",
+          "desmatamento",
+          "queimadas",
+          "indígenas",
+          "ibama",
+          "bioeconomia"
+        ],
+        "paises": [
+          "BR"
+        ]
+      },
+      "meta_info": null,
+      "rota": null,
+      "ordem": 19
+    },
+    {
+      "slug": "saude-global-pandemias",
+      "titulo": "Saúde Global e Pandemias",
+      "subtitulo": "Vigilância epidemiológica, avanços na medicina, sistemas públicos de saúde, vacinas e preparação para emergências sanitárias.",
+      "tipo": "permanente",
+      "categoria": "Clima e Ciência",
+      "icone_ou_bandeira": "HEALTH",
+      "data_inicio": null,
+      "data_fim": null,
+      "regras_classificacao": {
+        "palavras_chave": [
+          "oms",
+          "vacina",
+          "pandemia",
+          "epidemia",
+          "surto",
+          "sus",
+          "dengue"
+        ],
+        "paises": []
+      },
+      "meta_info": null,
+      "rota": "/saude",
+      "ordem": 20
+    },
+    {
+      "slug": "corrida-espacial-ciencia",
+      "titulo": "Corrida Espacial e Exploração Científica",
+      "subtitulo": "Missões lunares, satélites comerciais, agências estatais, empresas privadas e as novas fronteiras da ciência espacial.",
+      "tipo": "permanente",
+      "categoria": "Clima e Ciência",
+      "icone_ou_bandeira": "SPACE",
+      "data_inicio": null,
+      "data_fim": null,
+      "regras_classificacao": {
+        "palavras_chave": [
+          "nasa",
+          "spacex",
+          "lua",
+          "foguete",
+          "satélite",
+          "artemis",
+          "espaço"
+        ],
+        "paises": []
+      },
+      "meta_info": null,
+      "rota": null,
+      "ordem": 21
+    },
+    {
+      "slug": "seguranca-publica-crime-organizado",
+      "titulo": "Segurança Pública e Crime Organizado",
+      "subtitulo": "Narcotráfico internacional, violência urbana, políticas de encarceramento e cooperação policial transnacional.",
+      "tipo": "permanente",
+      "categoria": "Sociedade",
+      "icone_ou_bandeira": "SECURITY",
+      "data_inicio": null,
+      "data_fim": null,
+      "regras_classificacao": {
+        "palavras_chave": [
+          "crime organizado",
+          "tráfico",
+          "facção",
+          "pcc",
+          "segurança pública",
+          "operação policial"
+        ],
+        "paises": []
+      },
+      "meta_info": null,
+      "rota": null,
+      "ordem": 22
+    },
+    {
+      "slug": "migracoes-crises-humanitarias",
+      "titulo": "Migrações e Crises Humanitárias",
+      "subtitulo": "Fluxos migratórios globais, políticas de fronteira, refugiados climáticos e os desafios de integração nos países de acolhimento.",
+      "tipo": "permanente",
+      "categoria": "Sociedade",
+      "icone_ou_bandeira": "MIGRATION",
+      "data_inicio": null,
+      "data_fim": null,
+      "regras_classificacao": {
+        "palavras_chave": [
+          "migrantes",
+          "refugiados",
+          "imigração",
+          "fronteira",
+          "deportação",
+          "acnur"
+        ],
+        "paises": []
+      },
+      "meta_info": null,
+      "rota": null,
+      "ordem": 23
+    },
+    {
+      "slug": "direitos-humanos-liberdade-imprensa",
+      "titulo": "Direitos Humanos e Liberdade de Imprensa",
+      "subtitulo": "Censura, perseguição a jornalistas, direitos civis, igualdade de género e o estado das liberdades individuais pelo mundo.",
+      "tipo": "permanente",
+      "categoria": "Sociedade",
+      "icone_ou_bandeira": "RIGHTS",
+      "data_inicio": null,
+      "data_fim": null,
+      "regras_classificacao": {
+        "palavras_chave": [
+          "direitos humanos",
+          "censura",
+          "jornalistas",
+          "liberdade de imprensa",
+          "anistia internacional"
+        ],
+        "paises": []
+      },
+      "meta_info": null,
+      "rota": null,
+      "ordem": 24
+    },
+    {
+      "slug": "copa-do-mundo-fifa-2026",
+      "titulo": "Copa do Mundo FIFA 2026",
+      "subtitulo": "Acompanhe a fase de grupos, resultados, bastidores das seleções, impacto económico nas cidades-sede e a repercussão na imprensa internacional.",
+      "tipo": "especial",
+      "categoria": "Eventos",
+      "icone_ou_bandeira": "Trophy",
+      "data_inicio": "2026-06-11T00:00:00-03:00",
+      "data_fim": "2026-07-19T23:59:59-03:00",
+      "regras_classificacao": {
+        "palavras_chave": [
+          "copa do mundo",
+          "fifa",
+          "seleção",
+          "mundial 2026"
+        ],
+        "paises": []
+      },
+      "meta_info": "11 jun – 19 jul 2026",
+      "rota": null,
+      "ordem": 25
+    },
+    {
+      "slug": "eleicoes-gerais-brasil-2026",
+      "titulo": "Eleições Gerais no Brasil 2026",
+      "subtitulo": "Pesquisas de intenção de voto, debates presidenciais, alianças partidárias, campanhas nos estados e cobertura comparada das redações brasileiras.",
+      "tipo": "especial",
+      "categoria": "Eventos",
+      "icone_ou_bandeira": "Vote",
+      "data_inicio": "2026-08-16T00:00:00-03:00",
+      "data_fim": "2026-10-31T23:59:59-03:00",
+      "regras_classificacao": {
+        "palavras_chave": [
+          "eleições 2026",
+          "presidente",
+          "debate",
+          "tse",
+          "candidato",
+          "segundo turno"
+        ],
+        "paises": []
+      },
+      "meta_info": "16 ago – 31 out 2026",
+      "rota": null,
+      "ordem": 26
+    },
+    {
+      "slug": "eleicoes-intercalares-eua-midterms",
+      "titulo": "Eleições Intercalares nos EUA (Midterms)",
+      "subtitulo": "Disputa pelo controlo do Congresso americano, impacto na governação da Casa Branca e reflexos nos mercados internacionais.",
+      "tipo": "especial",
+      "categoria": "Eventos",
+      "icone_ou_bandeira": "Vote",
+      "data_inicio": "2026-10-01T00:00:00-03:00",
+      "data_fim": "2026-11-30T23:59:59-03:00",
+      "regras_classificacao": {
+        "palavras_chave": [
+          "midterms",
+          "eleições intercalares",
+          "congresso americano",
+          "republicanos",
+          "democratas"
+        ],
+        "paises": []
+      },
+      "meta_info": "1 out – 30 nov 2026",
+      "rota": null,
+      "ordem": 27
+    },
+    {
+      "slug": "conferencia-do-clima-cop",
+      "titulo": "Conferência do Clima (COP)",
+      "subtitulo": "Negociações diplomáticas, metas de financiamento climático, protestos ambientais e compromissos assumidos pelas grandes potências.",
+      "tipo": "especial",
+      "categoria": "Eventos",
+      "icone_ou_bandeira": "Globe",
+      "data_inicio": "2026-11-09T00:00:00-03:00",
+      "data_fim": "2026-11-20T23:59:59-03:00",
+      "regras_classificacao": {
+        "palavras_chave": [
+          "cop31",
+          "cop",
+          "conferência do clima",
+          "financiamento climático",
+          "antalya"
+        ],
+        "paises": []
+      },
+      "meta_info": "9 – 20 nov 2026",
+      "rota": null,
+      "ordem": 28
+    },
+    {
+      "slug": "cimeira-do-g20",
+      "titulo": "Cimeira do G20",
+      "subtitulo": "Encontros bilaterais, acordos comerciais, declarações conjuntas e os bastidores das decisões entre as maiores economias do planeta.",
+      "tipo": "especial",
+      "categoria": "Eventos",
+      "icone_ou_bandeira": "Globe",
+      "data_inicio": "2026-12-14T00:00:00-03:00",
+      "data_fim": "2026-12-15T23:59:59-03:00",
+      "regras_classificacao": {
+        "palavras_chave": [
+          "g20",
+          "cúpula do g20",
+          "cimeira"
+        ],
+        "paises": []
+      },
+      "meta_info": "14 – 15 dez 2026",
+      "rota": null,
+      "ordem": 29
+    },
+    {
+      "slug": "assembleia-geral-onu",
+      "titulo": "Assembleia Geral da ONU",
+      "subtitulo": "Discursos dos chefes de Estado, resoluções sobre crises globais, votações no Conselho de Segurança e articulações diplomáticas em Nova Iorque.",
+      "tipo": "especial",
+      "categoria": "Eventos",
+      "icone_ou_bandeira": "Globe",
+      "data_inicio": "2026-09-22T00:00:00-03:00",
+      "data_fim": "2026-09-30T23:59:59-03:00",
+      "regras_classificacao": {
+        "palavras_chave": [
+          "assembleia geral da onu",
+          "onu",
+          "conselho de segurança",
+          "nova york"
+        ],
+        "paises": []
+      },
+      "meta_info": "22 – 30 set 2026",
+      "rota": null,
+      "ordem": 30
+    },
+    {
+      "slug": "forum-economico-mundial-davos",
+      "titulo": "Fórum Económico Mundial (Davos)",
+      "subtitulo": "Tendências financeiras, debates sobre inteligência artificial, previsões de crescimento e a visão dos principais líderes empresariais e políticos.",
+      "tipo": "especial",
+      "categoria": "Eventos",
+      "icone_ou_bandeira": "Globe",
+      "data_inicio": "2027-01-18T00:00:00-03:00",
+      "data_fim": "2027-01-22T23:59:59-03:00",
+      "regras_classificacao": {
+        "palavras_chave": [
+          "davos",
+          "fórum econômico mundial",
+          "wef"
+        ],
+        "paises": []
+      },
+      "meta_info": "18 – 22 jan 2027",
+      "rota": null,
+      "ordem": 31
+    },
+    {
+      "slug": "jogos-olimpicos-paralimpicos",
+      "titulo": "Jogos Olímpicos e Paralímpicos",
+      "subtitulo": "Quadro de medalhas, recordes, histórias dos atletas, organização do evento e cobertura comparada dos principais meios desportivos do mundo.",
+      "tipo": "especial",
+      "categoria": "Eventos",
+      "icone_ou_bandeira": "Award",
+      "data_inicio": "2028-07-14T00:00:00-03:00",
+      "data_fim": "2028-08-27T23:59:59-03:00",
+      "regras_classificacao": {
+        "palavras_chave": [
+          "olimpíadas",
+          "jogos olímpicos",
+          "paralimpíadas",
+          "medalhas",
+          "los angeles 2028"
+        ],
+        "paises": []
+      },
+      "meta_info": "14 jul – 27 ago 2028",
+      "rota": null,
+      "ordem": 32
+    },
+    {
+      "slug": "final-uefa-champions-league",
+      "titulo": "Final da UEFA Champions League",
+      "subtitulo": "Análises táticas, movimentação de adeptos, impacto financeiro nos clubes europeus e cobertura pré e pós-jogo em múltiplas fontes.",
+      "tipo": "especial",
+      "categoria": "Eventos",
+      "icone_ou_bandeira": "Trophy",
+      "data_inicio": "2027-05-17T00:00:00-03:00",
+      "data_fim": "2027-05-31T23:59:59-03:00",
+      "regras_classificacao": {
+        "palavras_chave": [
+          "champions league",
+          "uefa",
+          "final da champions"
+        ],
+        "paises": []
+      },
+      "meta_info": "17 – 31 mai 2027",
+      "rota": null,
+      "ordem": 33
+    },
+    {
+      "slug": "temporada-premios-oscars",
+      "titulo": "Temporada de Prémios e Óscares",
+      "subtitulo": "Indicados, críticas de cinema, bastidores da indústria audiovisual, bilheteiras e a receção cultural dos grandes vencedores.",
+      "tipo": "especial",
+      "categoria": "Eventos",
+      "icone_ou_bandeira": "Award",
+      "data_inicio": "2027-01-01T00:00:00-03:00",
+      "data_fim": "2027-03-08T23:59:59-03:00",
+      "regras_classificacao": {
+        "palavras_chave": [
+          "oscar",
+          "óscar",
+          "indicados",
+          "globo de ouro",
+          "academia de hollywood"
+        ],
+        "paises": []
+      },
+      "meta_info": "jan – mar 2027",
+      "rota": null,
+      "ordem": 34
+    },
+    {
+      "slug": "premios-nobel",
+      "titulo": "Prémios Nobel",
+      "subtitulo": "Anúncios diários em Medicina, Física, Química, Literatura, Paz e Economia, com o impacto científico e político de cada laureado.",
+      "tipo": "especial",
+      "categoria": "Eventos",
+      "icone_ou_bandeira": "Award",
+      "data_inicio": "2026-10-05T00:00:00-03:00",
+      "data_fim": "2026-10-12T23:59:59-03:00",
+      "regras_classificacao": {
+        "palavras_chave": [
+          "nobel",
+          "prêmio nobel",
+          "nobel da paz",
+          "laureado"
+        ],
+        "paises": []
+      },
+      "meta_info": "5 – 12 out 2026",
+      "rota": null,
+      "ordem": 35
+    },
+    {
+      "slug": "missoes-espaciais-eclipses",
+      "titulo": "Missões Espaciais e Eclipses",
+      "subtitulo": "Lançamentos históricos, pouso de sondas, fenómenos astronómicos globais e a cobertura científica em tempo real.",
+      "tipo": "especial",
+      "categoria": "Eventos",
+      "icone_ou_bandeira": "Rocket",
+      "data_inicio": "2026-10-01T00:00:00-03:00",
+      "data_fim": "2026-12-31T23:59:59-03:00",
+      "regras_classificacao": {
+        "palavras_chave": [
+          "lançamento",
+          "sonda",
+          "eclipse",
+          "missão espacial",
+          "artemis",
+          "nasa"
+        ],
+        "paises": []
+      },
+      "meta_info": "out – dez 2026",
+      "rota": null,
+      "ordem": 36
+    }
+  ]
+}

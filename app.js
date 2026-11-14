@@ -971,21 +971,21 @@
       .then(function (data) {
         if (data && data.itens && typeof data.itens === 'object') {
           var serverItens = data.itens;
-          var algumValido = false;
+          var algumAlterado = false;
           pendingKeys.forEach(function (k) {
             var tr = serverItens[k];
             if (tr && typeof tr === 'string') {
               var trTrim = tr.trim();
-              if (trTrim) {
+              if (trTrim && trTrim !== pending[k]) {
                 translationCache[lang + '::' + pending[k]] = trTrim;
                 result[k] = trTrim;
-                algumValido = true;
+                algumAlterado = true;
               }
             }
           });
-          if (algumValido) return result;
+          if (algumAlterado) return result;
         }
-        throw new Error('Retorno vazio da api');
+        throw new Error('Retorno sem tradução da api');
       })
       .catch(function () {
         if (timer) clearTimeout(timer);
@@ -1760,6 +1760,32 @@
     });
   });
   syncThemeLabel();
+
+  if (window.matchMedia) {
+    var darkMql = window.matchMedia('(prefers-color-scheme: dark)');
+    var onSchemeChange = function (ev) {
+      try {
+        if (!localStorage.getItem('rom_theme')) {
+          root.setAttribute('data-theme', ev.matches ? 'dark' : 'light');
+          syncThemeLabel();
+        }
+      } catch (e) {}
+    };
+    if (darkMql.addEventListener) darkMql.addEventListener('change', onSchemeChange);
+  }
+
+  document.addEventListener('keydown', function (ev) {
+    if (ev.key === '/' && !ev.ctrlKey && !ev.metaKey && !ev.altKey) {
+      var activeTag = (document.activeElement && document.activeElement.tagName) || '';
+      if (!/INPUT|TEXTAREA|SELECT/.test(activeTag)) {
+        var searchInput = document.getElementById('busca');
+        if (searchInput) {
+          ev.preventDefault();
+          searchInput.focus();
+        }
+      }
+    }
+  });
 
   /* ---------- continents nav (B2) ---------- */
   var nav = document.getElementById('continentes');
@@ -2666,10 +2692,8 @@
   var legendEl = document.getElementById('map-legend');
   var legendToggleBtn = document.getElementById('map-legend-toggle');
   if (legendEl && legendToggleBtn) {
-    if (window.innerWidth <= 768) {
-      legendEl.classList.add('is-collapsed');
-      legendToggleBtn.setAttribute('aria-expanded', 'false');
-    }
+    legendEl.classList.add('is-collapsed');
+    legendToggleBtn.setAttribute('aria-expanded', 'false');
     legendToggleBtn.addEventListener('click', function (e) {
       e.stopPropagation();
       var isCol = legendEl.classList.toggle('is-collapsed');
@@ -3450,8 +3474,25 @@
     } else {
       tip.textContent = text;
     }
-    tip.style.left = (evt.clientX - r.left) + 'px';
-    tip.style.top = (evt.clientY - r.top) + 'px';
+
+    tip.classList.remove('tooltip--below');
+    var tipRect = tip.getBoundingClientRect();
+    var x = evt.clientX - r.left;
+    var y = evt.clientY - r.top;
+
+    // Se não couber acima do cursor, inverte para baixo para não cortar no topo do mapa
+    if (y - tipRect.height - 14 < 8) {
+      tip.classList.add('tooltip--below');
+    }
+
+    // Garante que não ultrapasse as bordas laterais do mapa
+    var halfW = tipRect.width / 2;
+    var minX = halfW + 8;
+    var maxX = Math.max(minX, r.width - halfW - 8);
+    x = Math.max(minX, Math.min(maxX, x));
+
+    tip.style.left = x + 'px';
+    tip.style.top = y + 'px';
   }
 
   function updateFloatingControlsVisibility() {
@@ -6211,14 +6252,18 @@
 
           translateTextsMap({ t: origTitle }, 'pt')
             .then(function (resMap) {
-              var trText = (resMap && resMap.t && String(resMap.t).trim()) ? String(resMap.t).trim() : origTitle;
-              if (trText) {
+              var trText = (resMap && resMap.t && String(resMap.t).trim()) ? String(resMap.t).trim() : '';
+              var didTranslate = Boolean(trText && trText !== origTitle);
+              if (didTranslate) {
                 translationCache['pt::' + origTitle] = trText;
                 rotatorTranslatedUrls[trKey] = true;
+              } else {
+                delete translationCache['pt::' + origTitle];
+                delete rotatorTranslatedUrls[trKey];
               }
               if (rotBox && rotBox._rotTransToken !== reqToken) return;
               if (document.body.contains(trBtn)) {
-                applyTitleState(trText || origTitle, Boolean(trText));
+                applyTitleState(didTranslate ? trText : origTitle, didTranslate);
               }
             })
             .catch(function () {
@@ -6866,7 +6911,7 @@
       if (!href) return;
       var isActive = false;
       if (path === '/' && (href === '/' || l.hasAttribute('data-home'))) isActive = true;
-      else if (path && href === path) isActive = true;
+      else if (path && (href === path || ((path === '/dossies' || path.indexOf('/dossies/') === 0) && href === '/temas'))) isActive = true;
       if (isActive) {
         l.classList.add('active');
         l.setAttribute('aria-current', 'page');
@@ -6929,6 +6974,7 @@
     }
     if (sectionKey === 'resumo-do-dia') enrichResumoDoDiaOnce();
     if (sectionKey === 'ultimas-noticias') renderUltimasNoticiasView();
+    if (sectionKey === 'temas') renderTemasHubsSection();
     if (sectionKey === 'radar') renderRadarEditorialView();
     else stopRadarAutoRefresh();
     if (sectionKey === 'entenda') carregarColunasEntendaV2(false);
@@ -6953,9 +6999,9 @@
         path: '/resumo-do-dia'
       },
       'temas': {
-        title: 'Páginas temáticas — Cobertura permanente | Rodando o Mundo',
-        desc: 'Explore os dossiês e páginas temáticas permanentes do Rodando o Mundo com resumo de contexto, comparação de perspectivas e linhas do tempo.',
-        path: '/temas'
+        title: 'Dossiês — Cobertura Permanente e Eventos Especiais | Rodando o Mundo',
+        desc: 'Explore os dossiês permanentes e especiais do Rodando o Mundo com acompanhamento em tempo real, múltiplas perspectivas e histórico editorial.',
+        path: (opts.routePath === '/dossies') ? '/dossies' : '/temas'
       },
       'entenda': {
         title: 'Entenda o assunto — Guia explicativo | Rodando o Mundo',
@@ -7983,7 +8029,7 @@
     h += '<div class="hub-nav-header-row">';
     h += '<button type="button" class="btn-back-topic" data-action="go-back" data-fallback="/temas" aria-label="Voltar para onde estava" title="Voltar para onde estava">';
     h += '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>';
-    h += '<span>← Voltar</span>';
+    h += '<span>Voltar</span>';
     h += '</button>';
     h += '<nav class="hub-breadcrumbs" aria-label="Navegação estrutural">';
     h += '<a href="/" data-spa-link>Início</a> <span aria-hidden="true">/</span> ';
@@ -8165,6 +8211,294 @@
     }
   }
 
+  function fetchDossieLiveNews(dossie, customQuery, targetContainerId) {
+    var container = document.getElementById(targetContainerId);
+    if (!container) return;
+    var kws = (dossie && dossie.regras_classificacao && Array.isArray(dossie.regras_classificacao.palavras_chave))
+      ? dossie.regras_classificacao.palavras_chave
+      : [];
+    var q = (customQuery || '').trim() || kws.slice(0, 2).join(' ') || (dossie && dossie.titulo) || '';
+    if (!q) {
+      container.innerHTML = '<p class="dossie-empty-msg">Nenhuma matéria recente encontrada para este dossiê.</p>';
+      return;
+    }
+
+    var paises = (dossie && dossie.regras_classificacao && Array.isArray(dossie.regras_classificacao.paises) && dossie.regras_classificacao.paises.length)
+      ? dossie.regras_classificacao.paises
+      : ['BR', 'US', 'GB'];
+    var primaryA2 = paises[0] === 'GLOBAL' ? 'BR' : paises[0];
+    var cObj = byA2[primaryA2] || byA2['BR'];
+    var outlets = (cObj && cObj.m && Array.isArray(cObj.m.outlets)) ? cObj.m.outlets.slice(0, 8) : [];
+
+    container.innerHTML = '<div class="dossie-loading-inline">Buscando matérias recentes sobre <strong>' + esc(q) + '</strong>…</div>';
+
+    var payload = {
+      assunto: q,
+      pais: primaryA2,
+      paisNome: cObj ? cObj.n : primaryA2,
+      periodo: '7d',
+      veiculos: outlets.map(function (o) {
+        return { n: o.n, u: o.u, b: o.b || '' };
+      })
+    };
+
+    var isFile = (location.protocol === 'file:');
+    var url = (isFile ? 'https://www.rodandoomundo.com.br/api/busca-assunto' : '/api/busca-assunto') + '?_t=' + Date.now();
+    fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    }).then(function (r) {
+      return r.ok ? r.json() : null;
+    }).then(function (data) {
+      var groups = (data && Array.isArray(data.resultados)) ? data.resultados : [];
+      var flat = [];
+      groups.forEach(function (g) {
+        (g.itens || []).forEach(function (it) {
+          flat.push({
+            materia_titulo: it.titulo || it.title || '',
+            materia_url: it.link || it.url || '',
+            veiculo_nome: g.veiculo || it.fonte || '',
+            pais_veiculo: primaryA2,
+            vies: g.vies || '',
+            publicado_em: it.data || it.publishedAt || ''
+          });
+        });
+      });
+
+      if (!flat.length) {
+        var fallbackHub = (dossie && dossie.rota && EDITORIAL.paginasTematicas) ? EDITORIAL.paginasTematicas[dossie.rota] : null;
+        if (fallbackHub && Array.isArray(fallbackHub.ultimasNoticias) && fallbackHub.ultimasNoticias.length) {
+          flat = fallbackHub.ultimasNoticias.map(function (n) {
+            return {
+              materia_titulo: n.titulo,
+              materia_url: n.url,
+              veiculo_nome: n.fonte,
+              pais_veiculo: fallbackHub.pais || primaryA2,
+              vies: n.vies || '',
+              publicado_em: n.data ? (n.data + 'T12:00:00Z') : ''
+            };
+          });
+        }
+      }
+
+      if (!flat.length) {
+        container.innerHTML = '<p class="dossie-empty-msg">Nenhuma matéria encontrada para “' + esc(q) + '” nos últimos 7 dias. Tente outro termo na busca abaixo.</p>';
+        return;
+      }
+
+      container.innerHTML = renderDossieMateriasGridHtml(flat.slice(0, 18), primaryA2);
+    }).catch(function () {
+      container.innerHTML = '<p class="dossie-empty-msg">Não foi possível carregar as matérias ao vivo neste momento.</p>';
+    });
+  }
+
+  function renderDossieMateriasGridHtml(materias, defaultPais) {
+    if (!Array.isArray(materias) || !materias.length) {
+      return '<p class="dossie-empty-msg">Nenhuma matéria indexada ainda para este dossiê.</p>';
+    }
+    var mh = '<div class="hub-latest-grid dossie-materias-grid">';
+    materias.forEach(function (m) {
+      var title = m.materia_titulo || m.titulo || '';
+      var url = m.materia_url || m.url || '#';
+      var source = m.veiculo_nome || m.fonte || 'Veículo';
+      var pais = m.pais_veiculo || defaultPais || 'BR';
+      var biasLabel = (m.vies && BIAS[m.vies]) ? '<span class="badge badge-bias">' + esc(BIAS[m.vies]) + '</span>' : '';
+      var srcFlag = outletFlagImg(source, pais, url);
+      var pubStr = m.publicado_em ? formatSearchDate(m.publicado_em) : '';
+      mh += '<article class="hub-news-card">';
+      mh += '<div class="hub-news-meta">';
+      mh += '<span class="hub-news-source">' + srcFlag + ' ' + esc(source) + '</span>';
+      mh += biasLabel;
+      if (pubStr) mh += '<time datetime="' + esc(m.publicado_em) + '">' + esc(pubStr) + '</time>';
+      mh += renderNewsFavBtn({ url: url, title: title, source: source, countryCode: pais, publishedAt: m.publicado_em || '' });
+      mh += '</div>';
+      mh += '<h3><a href="' + esc(url) + '" target="_blank" rel="noopener noreferrer">' + esc(title) + '</a></h3>';
+      mh += '<a class="topic-news-open" href="' + esc(url) + '" target="_blank" rel="noopener noreferrer">' + (isVideoContent(url, m) ? 'Assistir vídeo ' : 'Abrir matéria ') + ICON_ARROW + '</a>';
+      mh += '</article>';
+    });
+    mh += '</div>';
+    return mh;
+  }
+
+  function renderDossieDetailDOM(d, materias, slug) {
+    if (!thematicHubView) return;
+    var status = computeDossieStatus(d);
+    var isEspecial = (d.tipo === 'especial');
+    var legHub = (d.rota && EDITORIAL.paginasTematicas) ? EDITORIAL.paginasTematicas[d.rota] : null;
+    var kws = (d.regras_classificacao && Array.isArray(d.regras_classificacao.palavras_chave)) ? d.regras_classificacao.palavras_chave : [];
+    var paises = (d.regras_classificacao && Array.isArray(d.regras_classificacao.paises)) ? d.regras_classificacao.paises : [];
+
+    updateSeoMeta(
+      d.titulo + ' — Dossiê | Rodando o Mundo',
+      d.subtitulo || 'Cobertura completa e acompanhamento em tempo real no Rodando o Mundo.',
+      '/dossies/' + slug
+    );
+
+    var h = '<div class="hub-container dossie-detail-view">';
+    h += '<div class="hub-nav-header-row">';
+    h += '<button type="button" class="btn-back-topic" data-action="go-back" data-fallback="/dossies" aria-label="Voltar para dossiês" title="Voltar para dossiês">';
+    h += '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>';
+    h += '<span>Voltar</span>';
+    h += '</button>';
+    h += '<nav class="hub-breadcrumbs" aria-label="Navegação estrutural">';
+    h += '<a href="/" data-spa-link>Início</a> <span aria-hidden="true">/</span> ';
+    h += '<a href="/dossies" data-spa-link>Dossiês</a> <span aria-hidden="true">/</span> ';
+    h += '<span>' + esc(d.titulo) + '</span>';
+    h += '</nav>';
+    h += '</div>';
+
+    h += '<header class="hub-hero dossie-detail-hero">';
+    h += '<div class="hub-hero-badges dossie-detail-badges">';
+    h += '<span class="dossie-detail-icon-wrap">' + renderDossieIconHtml(d) + '</span>';
+    if (d.categoria) {
+      h += '<span class="dossie-category-badge">' + esc(d.categoria) + '</span>';
+    }
+    if (isEspecial) {
+      h += renderDossieStatusBadge(d, status);
+    } else {
+      h += '<span class="dossie-status-badge is-permanente">Cobertura permanente</span>';
+    }
+    h += '</div>';
+    h += '<h1 class="hub-title" id="hub-main-title">' + esc(d.titulo) + '</h1>';
+    if (d.meta_info) {
+      h += '<div class="dossie-meta-period dossie-detail-period">' + esc(d.meta_info) + '</div>';
+    }
+    if (d.subtitulo) {
+      h += '<p class="hub-subtitle">' + esc(d.subtitulo) + '</p>';
+    }
+
+    h += '<div class="hub-hero-actions">';
+    h += '<button type="button" class="btn" data-open-newsletter="' + esc(d.titulo) + '">Receber atualizações por e-mail</button>';
+    if (legHub) {
+      h += '<a class="btn btn-secondary" href="' + esc(legHub.rota) + '" data-spa-link>Ver contexto editorial e linha do tempo →</a>';
+    }
+    paises.slice(0, 3).forEach(function (a2) {
+      var cObj = byA2[a2];
+      if (cObj) {
+        h += '<a class="btn btn-secondary" href="/' + esc(CONT_SLUGS[cObj.c] || 'Sul') + '/' + esc(cObj.a2) + '" data-spa-link>' + countryFlag(cObj, 'flag-xs', cObj.c) + ' ' + esc(countryDisplayName(cObj, cObj.c)) + '</a>';
+      }
+    });
+    h += '</div>';
+
+    if (kws.length) {
+      h += '<div class="dossie-keywords-row" aria-label="Palavras-chave monitoradas">';
+      kws.slice(0, 8).forEach(function (kw) {
+        h += '<button type="button" class="dossie-kw-chip" data-dossie-kw="' + esc(kw) + '">' + esc(kw) + '</button>';
+      });
+      h += '</div>';
+    }
+    h += '</header>';
+
+    if (legHub && Array.isArray(legHub.resumoEditorial) && legHub.resumoEditorial.length) {
+      h += '<section class="hub-block hub-context-block" aria-labelledby="dossie-context-heading">';
+      h += '<h2 id="dossie-context-heading">Contexto editorial</h2>';
+      legHub.resumoEditorial.forEach(function (par) {
+        h += '<p>' + esc(par) + '</p>';
+      });
+      h += '</section>';
+    }
+
+    h += '<section class="hub-block hub-news-block" aria-labelledby="dossie-materias-heading">';
+    h += '<div class="hub-block-head">';
+    h += '<h2 id="dossie-materias-heading">Cobertura e matérias recentes</h2>';
+    h += '<p>Acompanhamento de múltiplos veículos com acesso direto às fontes originais.</p>';
+    h += '</div>';
+    h += '<form class="topic-search-form hub-search-form" id="dossie-live-search-form" role="search" novalidate>';
+    h += '<div class="topic-search-input-wrap">';
+    h += '<button type="submit" class="topic-search-icon-btn" aria-label="Buscar" title="Buscar"><svg class="topic-search-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4-4"/></svg></button>';
+    h += '<input type="search" id="dossie-live-search-input" class="topic-search-input" placeholder="Filtrar ou buscar assunto neste dossiê" aria-label="Buscar assunto neste dossiê" value="' + esc(kws[0] || '') + '">';
+    h += '</div>';
+    h += '<button type="submit" class="btn topic-search-btn">Buscar ao vivo</button>';
+    h += '</form>';
+    h += '<div id="dossie-materias-results" aria-live="polite">';
+    if (Array.isArray(materias) && materias.length) {
+      h += renderDossieMateriasGridHtml(materias, paises[0] || 'BR');
+    } else {
+      h += '<div class="dossie-loading-inline">Carregando matérias em tempo real…</div>';
+    }
+    h += '</div>';
+    h += '</section>';
+
+    h += '</div>';
+    thematicHubView.innerHTML = h;
+    window.scrollTo({ top: 0, behavior: 'auto' });
+    bindDynamicEditorialActions(thematicHubView);
+
+    if (!Array.isArray(materias) || !materias.length) {
+      fetchDossieLiveNews(d, '', 'dossie-materias-results');
+    }
+
+    var liveForm = document.getElementById('dossie-live-search-form');
+    var liveInput = document.getElementById('dossie-live-search-input');
+    if (liveForm && liveInput) {
+      liveForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        fetchDossieLiveNews(d, liveInput.value, 'dossie-materias-results');
+      });
+    }
+    thematicHubView.querySelectorAll('.dossie-kw-chip').forEach(function (chip) {
+      chip.addEventListener('click', function () {
+        var kw = chip.getAttribute('data-dossie-kw') || '';
+        if (liveInput) liveInput.value = kw;
+        fetchDossieLiveNews(d, kw, 'dossie-materias-results');
+      });
+    });
+  }
+
+  function showDossieDetail(slug, opts) {
+    opts = opts || {};
+    var normalizedSlug = String(slug || '').toLowerCase();
+    var targetPath = '/dossies/' + normalizedSlug;
+
+    state.notFound = false;
+    state.hubRoute = targetPath;
+    state.entendaSlug = null;
+    state.editorialSection = null;
+    state.cont = null;
+    state.country = null;
+    hideMobileChip();
+    if (panelFloatingClose) panelFloatingClose.hidden = true;
+    if (notFoundView) notFoundView.hidden = true;
+    if (mapWrapSection) mapWrapSection.hidden = true;
+    if (quickCountryView) quickCountryView.hidden = true;
+    var vitrineIaSec = document.getElementById('vitrine-ia');
+    if (vitrineIaSec) vitrineIaSec.hidden = true;
+    if (editorialHomeWrap) {
+      editorialHomeWrap.hidden = true;
+      editorialHomeWrap.classList.remove('is-ultimas-mode');
+    }
+    if (thematicHubView) {
+      thematicHubView.hidden = false;
+      thematicHubView.innerHTML = '<div class="hub-container dossie-detail-view"><div class="dossie-loading-inline">Carregando dossiê…</div></div>';
+    }
+    updateNavActive('/dossies');
+
+    if (!opts.fromPopState) {
+      try {
+        if (opts.replaceUrl) history.replaceState({ dossieSlug: normalizedSlug }, '', targetPath);
+        else if (location.pathname !== targetPath || location.hash) history.pushState({ dossieSlug: normalizedSlug }, '', targetPath);
+      } catch (e) {}
+    }
+
+    var apiPromise = fetch('/v2/dossies/' + encodeURIComponent(normalizedSlug) + '?_t=' + Date.now(), { cache: 'no-store' })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .catch(function () { return null; });
+
+    var listPromise = dossiesState.loaded ? Promise.resolve() : carregarDossiesV2(false);
+
+    Promise.all([apiPromise, listPromise]).then(function (res) {
+      var apiData = res[0];
+      var dossie = (apiData && apiData.ok && apiData.dossie) ? apiData.dossie : dossiesState.bySlug[normalizedSlug];
+      if (!dossie) {
+        showNotFound(targetPath);
+        return;
+      }
+      var materias = (apiData && apiData.ok && Array.isArray(apiData.materias)) ? apiData.materias : [];
+      renderDossieDetailDOM(dossie, materias, normalizedSlug);
+    });
+  }
+
   function showExplanationPage(slug, opts) {
     opts = opts || {};
     var ex = EDITORIAL.explicacoes[slug];
@@ -8199,7 +8533,7 @@
     h += '<div class="hub-nav-header-row">';
     h += '<button type="button" class="btn-back-topic" data-action="go-back" data-fallback="/entenda" aria-label="Voltar para onde estava" title="Voltar para onde estava">';
     h += '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>';
-    h += '<span>← Voltar</span>';
+    h += '<span>Voltar</span>';
     h += '</button>';
     h += '<nav class="hub-breadcrumbs" aria-label="Navegação estrutural">';
     h += '<a href="/" data-spa-link>Início</a> <span aria-hidden="true">/</span> ';
@@ -8359,7 +8693,7 @@
     var headerHtml = '<div class="hub-nav-header-row hubs-header-row">';
     headerHtml += '<button type="button" class="btn-back-topic" data-action="go-back" data-fallback="/" aria-label="Voltar para onde estava" title="Voltar para onde estava">';
     headerHtml += '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>';
-    headerHtml += '<span>← Voltar</span>';
+    headerHtml += '<span>Voltar</span>';
     headerHtml += '</button>';
     headerHtml += '</div>';
     headerHtml += '<div class="editorial-section-head">';
@@ -8415,6 +8749,49 @@
       String(prevItems[0].data_publicacao || '') !== String(nextItems[0].data_publicacao || '');
   }
 
+  function formatarRotuloAtualizacaoRadar(items, labelSugerido) {
+    var itemMaisRecente = 0;
+    if (Array.isArray(items) && items.length > 0) {
+      for (var i = 0; i < items.length; i++) {
+        var dStr = items[i].data_publicacao || items[i].updated_at;
+        if (dStr) {
+          var t = new Date(dStr).getTime();
+          if (!isNaN(t) && t > itemMaisRecente) {
+            itemMaisRecente = t;
+          }
+        }
+      }
+    }
+
+    if (itemMaisRecente > 0) {
+      var diffMs = Date.now() - itemMaisRecente;
+      var diffMin = Math.floor(diffMs / 60000);
+      if (diffMin < 0) diffMin = 0;
+
+      if (diffMin < 5) {
+        return 'Atualizado agora';
+      }
+      if (diffMin < 60) {
+        return 'Atualizado há ' + diffMin + ' min';
+      }
+      var d = new Date(itemMaisRecente);
+      var hora = ('0' + d.getHours()).slice(-2);
+      var min = ('0' + d.getMinutes()).slice(-2);
+      var hoje = new Date();
+      if (d.getDate() === hoje.getDate() && d.getMonth() === hoje.getMonth() && d.getFullYear() === hoje.getFullYear()) {
+        return 'Atualizado às ' + hora + 'h' + min;
+      }
+      var dia = ('0' + d.getDate()).slice(-2);
+      var mes = ('0' + (d.getMonth() + 1)).slice(-2);
+      return 'Atualizado em ' + dia + '/' + mes + ' às ' + hora + 'h' + min;
+    }
+
+    if (labelSugerido && typeof labelSugerido === 'string' && labelSugerido.trim() && labelSugerido !== 'Atualizado agora') {
+      return labelSugerido;
+    }
+    return 'Atualizado agora';
+  }
+
   function loadRadarCards(forceRefresh, isAutoRefresh) {
     var btnRefresh = document.getElementById('btn-atualizar-radar');
     if (forceRefresh) {
@@ -8449,7 +8826,7 @@
           radarLastFetchAt = Date.now();
           var changed = hasRadarFeedChanged(radarFeedCache, data.items);
           radarFeedCache = data.items;
-          radarUpdatedLabel = data.atualizado_em || 'Atualizado agora';
+          radarUpdatedLabel = formatarRotuloAtualizacaoRadar(data.items, data.atualizado_em);
           updateRadarUpdatedBadge(radarUpdatedLabel);
           if (!isAutoRefresh || changed) {
             renderRadarCardsList(!!isAutoRefresh);
@@ -8467,11 +8844,32 @@
             return res.json();
           })
           .then(function (data) {
-            radarLastFetchAt = Date.now();
             var nextItems = Array.isArray(data) ? data : [];
+            if (forceRefresh && nextItems.length > 0) {
+              var topTime = new Date(nextItems[0].data_publicacao || 0).getTime();
+              if (Date.now() - topTime > 30 * 60 * 1000) {
+                return fetch('https://raw.githubusercontent.com/rodandoomundoprojeto-lgtm/romv2.11/main/data/feed_output.json?_t=' + Date.now(), { cache: 'no-store' })
+                  .then(function (ghRes) {
+                    if (ghRes.ok) return ghRes.json();
+                    return nextItems;
+                  })
+                  .then(function (ghData) {
+                    if (Array.isArray(ghData) && ghData.length > 0) {
+                      var ghTop = new Date(ghData[0].data_publicacao || 0).getTime();
+                      if (ghTop > topTime) return ghData;
+                    }
+                    return nextItems;
+                  })
+                  .catch(function () { return nextItems; });
+              }
+            }
+            return nextItems;
+          })
+          .then(function (nextItems) {
+            radarLastFetchAt = Date.now();
             var changed = hasRadarFeedChanged(radarFeedCache, nextItems);
             radarFeedCache = nextItems;
-            radarUpdatedLabel = 'Atualizado agora';
+            radarUpdatedLabel = formatarRotuloAtualizacaoRadar(nextItems);
             updateRadarUpdatedBadge(radarUpdatedLabel);
             if (!isAutoRefresh || changed) {
               renderRadarCardsList(!!isAutoRefresh);
@@ -9676,53 +10074,347 @@
     }
   }
 
-  function renderEditorialHomeSections() {
+  var dossiesState = {
+    loaded: false,
+    loading: false,
+    permanentes: [],
+    especiais: [],
+    especiaisByStatus: { ao_vivo: [], em_breve: [], arquivo: [] },
+    all: [],
+    bySlug: {},
+    categoriaAtiva: 'Todos'
+  };
+  var dossiesLoadPromise = null;
+
+  function computeDossieStatus(d) {
+    if (!d) return 'permanente';
+    if (d.status === 'permanente' || d.status === 'ao_vivo' || d.status === 'em_breve' || d.status === 'arquivo') {
+      return d.status;
+    }
+    if (d.tipo === 'permanente') return 'permanente';
+    var now = Date.now();
+    var start = d.data_inicio ? Date.parse(d.data_inicio) : NaN;
+    var end = d.data_fim ? Date.parse(d.data_fim) : NaN;
+    if (!isNaN(start) && now < start) return 'em_breve';
+    if (!isNaN(end) && now > end) return 'arquivo';
+    return 'ao_vivo';
+  }
+
+  function getDossieSvgPath(iconKey) {
+    var k = String(iconKey || '').trim().toLowerCase();
+    var map = {
+      trophy: '<path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/>',
+      vote: '<path d="m9 12 2 2 4-4"/><path d="M5 7c0-1.1.9-2 2-2h10a2 2 0 0 1 2 2v12H5V7Z"/><path d="M22 19H2"/>',
+      globe: '<circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/>',
+      award: '<circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>',
+      rocket: '<path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/>',
+      leaf: '<path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>',
+      landmark: '<line x1="3" x2="21" y1="22" y2="22"/><line x1="6" x2="6" y1="18" y2="11"/><line x1="10" x2="10" y1="18" y2="11"/><line x1="14" x2="14" y1="18" y2="11"/><line x1="18" x2="18" y1="18" y2="11"/><polygon points="12 2 20 7 4 7"/>',
+      film: '<rect width="18" height="18" x="3" y="3" rx="2"/><path d="M7 3v18"/><path d="M3 7.5h4"/><path d="M3 12h18"/><path d="M3 16.5h4"/><path d="M17 3v18"/><path d="M17 7.5h4"/><path d="M17 16.5h4"/>',
+      energy: '<polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>',
+      trade: '<path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/>',
+      work: '<rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>',
+      housing: '<path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>',
+      ai: '<rect width="16" height="16" x="4" y="4" rx="2"/><rect width="6" height="6" x="9" y="9" rx="1"/><path d="M15 2v2"/><path d="M15 20v2"/><path d="M2 15h2"/><path d="M2 9h2"/><path d="M20 15h2"/><path d="M20 9h2"/><path d="M9 2v2"/><path d="M9 20v2"/>',
+      tech: '<rect width="16" height="16" x="4" y="4" rx="2"/><rect width="6" height="6" x="9" y="9" rx="1"/><path d="M15 2v2"/><path d="M15 20v2"/><path d="M2 15h2"/><path d="M2 9h2"/><path d="M20 15h2"/><path d="M20 9h2"/><path d="M9 2v2"/><path d="M9 20v2"/>',
+      cyber: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/>',
+      security: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/>',
+      climate: '<path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>',
+      health: '<path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>',
+      space: '<path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/>',
+      migration: '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>',
+      rights: '<path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/>',
+      global: '<circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/>',
+      mideast: '<circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/>',
+      eu: '<circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/>',
+      latam: '<circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/>'
+    };
+    return map[k] || map.globe;
+  }
+
+  function renderDossieSvgBadge(iconKey, extraCls) {
+    var paths = getDossieSvgPath(iconKey);
+    return '<span class="dossie-svg-icon ' + (extraCls || '') + '" aria-hidden="true">' +
+      '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">' +
+      paths + '</svg></span>';
+  }
+
+  function renderDossieIconHtml(d) {
+    if (!d) return '';
+    var code = String(d.icone_ou_bandeira || '').trim();
+    if (d.tipo === 'especial') {
+      return renderDossieSvgBadge(code || 'Globe', 'is-especial');
+    }
+    var upper = code.toUpperCase();
+    if (upper.length === 2 && byA2[upper]) {
+      var cObj = byA2[upper];
+      return '<span class="hub-home-flag">' + countryFlag(cObj, 'flag-sm', cObj.c) + '</span>';
+    }
+    return renderDossieSvgBadge(code || 'GLOBAL', 'is-thematic');
+  }
+
+  function renderDossieStatusBadge(d, statusOverride) {
+    var st = statusOverride || computeDossieStatus(d);
+    if (st === 'ao_vivo') {
+      var vCount = Number(d.veiculos_count || 0);
+      var suffix = vCount > 0 ? ' · ' + vCount + ' veículos' : '';
+      return '<span class="dossie-status-badge is-ao-vivo"><span class="dossie-pulse-dot" aria-hidden="true"></span>Ao vivo' + esc(suffix) + '</span>';
+    }
+    if (st === 'em_breve') {
+      return '<span class="dossie-status-badge is-em-breve">⏳ ' + esc(d.meta_info || 'Em breve') + '</span>';
+    }
+    return '<span class="dossie-status-badge is-arquivo">✓ Arquivo · ' + esc(d.meta_info || 'Encerrado') + '</span>';
+  }
+
+  function normalizeDossiesPayload(data) {
+    var perms = [];
+    var espsByStatus = { ao_vivo: [], em_breve: [], arquivo: [] };
+
+    if (Array.isArray(data)) {
+      data.forEach(function (item) {
+        if (!item || !item.slug) return;
+        item.status = computeDossieStatus(item);
+        if (item.tipo === 'especial') {
+          espsByStatus[item.status] = espsByStatus[item.status] || [];
+          espsByStatus[item.status].push(item);
+        } else {
+          perms.push(item);
+        }
+      });
+    } else if (data && typeof data === 'object') {
+      var rawPerms = Array.isArray(data.permanentes) ? data.permanentes : (Array.isArray(data.dossies) ? data.dossies.filter(function (x) { return x.tipo !== 'especial'; }) : []);
+      rawPerms.forEach(function (item) {
+        if (!item || !item.slug) return;
+        item.status = 'permanente';
+        perms.push(item);
+      });
+
+      if (data.especiais && !Array.isArray(data.especiais) && typeof data.especiais === 'object') {
+        ['ao_vivo', 'em_breve', 'arquivo'].forEach(function (stKey) {
+          var arr = Array.isArray(data.especiais[stKey]) ? data.especiais[stKey] : [];
+          arr.forEach(function (item) {
+            if (!item || !item.slug) return;
+            item.status = computeDossieStatus(Object.assign({}, item, { status: item.status || stKey }));
+            espsByStatus[item.status] = espsByStatus[item.status] || [];
+            espsByStatus[item.status].push(item);
+          });
+        });
+      } else {
+        var rawEsps = Array.isArray(data.especiais) ? data.especiais : (Array.isArray(data.dossies) ? data.dossies.filter(function (x) { return x.tipo === 'especial'; }) : []);
+        rawEsps.forEach(function (item) {
+          if (!item || !item.slug) return;
+          item.status = computeDossieStatus(item);
+          espsByStatus[item.status] = espsByStatus[item.status] || [];
+          espsByStatus[item.status].push(item);
+        });
+      }
+    }
+
+    var espsOrdered = []
+      .concat(espsByStatus.ao_vivo || [])
+      .concat(espsByStatus.em_breve || [])
+      .concat(espsByStatus.arquivo || []);
+    var all = espsOrdered.concat(perms);
+    var bySlug = {};
+    all.forEach(function (d) {
+      bySlug[String(d.slug).toLowerCase()] = d;
+    });
+
+    dossiesState.permanentes = perms;
+    dossiesState.especiaisByStatus = espsByStatus;
+    dossiesState.especiais = espsOrdered;
+    dossiesState.all = all;
+    dossiesState.bySlug = bySlug;
+    dossiesState.loaded = true;
+    dossiesState.loading = false;
+    SEARCH_INDEX = null;
+  }
+
+  function carregarDossiesV2(forceRefresh) {
+    if (dossiesState.loading && dossiesLoadPromise && !forceRefresh) return dossiesLoadPromise;
+    dossiesState.loading = true;
+    var ts = Date.now();
+    var isFile = (location.protocol === 'file:');
+    var primaryUrl = (isFile ? 'https://www.rodandoomundo.com.br/v2/dossies' : '/v2/dossies') + '?_t=' + ts;
+    var fallbackUrl = (isFile ? 'https://www.rodandoomundo.com.br/data/dossies.json' : '/data/dossies.json') + '?_t=' + ts;
+
+    dossiesLoadPromise = fetch(primaryUrl, { cache: 'no-store' })
+      .then(function (r) {
+        if (!r.ok) throw new Error('API /v2/dossies indisponível');
+        return r.json();
+      })
+      .then(function (data) {
+        if (!data || data.ok === false) throw new Error('Resposta inválida /v2/dossies');
+        normalizeDossiesPayload(data);
+        renderTemasHubsSection();
+        return dossiesState;
+      })
+      .catch(function () {
+        return fetch(fallbackUrl, { cache: 'no-store' })
+          .then(function (r) {
+            if (!r.ok) throw new Error('Espelho /data/dossies.json indisponível');
+            return r.json();
+          })
+          .then(function (mirrorData) {
+            normalizeDossiesPayload(mirrorData);
+            renderTemasHubsSection();
+            return dossiesState;
+          })
+          .catch(function () {
+            dossiesState.loading = false;
+            return dossiesState;
+          });
+      });
+
+    return dossiesLoadPromise;
+  }
+
+  function renderTemasHubsSection() {
     var hubsSec = document.getElementById('temas-hubs');
-    var entendaSec = document.getElementById('entenda-o-assunto');
+    if (!hubsSec) return;
 
-    renderResumoDoDiaDOM();
+    var isFullPage = (state.editorialSection === 'temas');
+    var catAtiva = dossiesState.categoriaAtiva || 'Todos';
+    var categorias = ['Todos', 'Geopolítica', 'Economia', 'Tecnologia', 'Clima e Ciência', 'Sociedade'];
 
-    if (hubsSec && EDITORIAL.paginasTematicas) {
-      var hubKeys = Object.keys(EDITORIAL.paginasTematicas);
-      var topHubKeys = hubKeys.slice(0, 4);
-      var hh = '<div class="hub-nav-header-row hubs-header-row">';
-      hh += '<button type="button" class="btn-back-topic" data-action="go-back" data-fallback="/" aria-label="Voltar para onde estava" title="Voltar para onde estava">';
-      hh += '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>';
-      hh += '<span>← Voltar</span>';
-      hh += '</button>';
-      hh += '</div>';
+    var especiaisList = dossiesState.especiais || [];
+    var permanentesList = dossiesState.permanentes || [];
+
+    // Fallback instantâneo antes do fetch resolver
+    if (!dossiesState.loaded && EDITORIAL.paginasTematicas) {
+      permanentesList = Object.keys(EDITORIAL.paginasTematicas).map(function (k) {
+        var hb = EDITORIAL.paginasTematicas[k];
+        return {
+          slug: hb.rota.replace(/^\/+/, '').replace(/\//g, '-'),
+          titulo: hb.titulo,
+          subtitulo: hb.subtitulo,
+          tipo: 'permanente',
+          categoria: 'Geopolítica',
+          icone_ou_bandeira: hb.pais || 'BR',
+          rota: hb.rota,
+          status: 'permanente',
+          veiculos_count: (hb.ultimasNoticias && hb.ultimasNoticias.length) ? Math.max(hb.ultimasNoticias.length * 3, 12) : 18
+        };
+      });
+    }
+
+    var totalEspeciais = especiaisList.length;
+    var totalPermanentes = permanentesList.length;
+    var especiaisVisiveis = isFullPage ? especiaisList : especiaisList.slice(0, 6);
+    var permanentesFiltrados = permanentesList.filter(function (d) {
+      if (catAtiva === 'Todos') return true;
+      return String(d.categoria || '').toLowerCase() === catAtiva.toLowerCase();
+    });
+    var permanentesVisiveis = isFullPage ? permanentesFiltrados : permanentesFiltrados.slice(0, 6);
+
+    var hh = '<div class="hub-nav-header-row hubs-header-row">';
+    hh += '<button type="button" class="btn-back-topic" data-action="go-back" data-fallback="/" aria-label="Voltar para onde estava" title="Voltar para onde estava">';
+    hh += '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>';
+    hh += '<span>Voltar</span>';
+    hh += '</button>';
+    hh += '</div>';
+
+    // Seção Superior: Dossiês Especiais
+    if (especiaisVisiveis.length) {
+      hh += '<div class="dossies-especiais-section">';
       hh += '<div class="editorial-section-head">';
       hh += '<div>';
-      hh += '<p class="editorial-eyebrow">Cobertura permanente · Hubs temáticos</p>';
-      hh += '<h2 id="temas-hubs-titulo">Dossiês Permanentes</h2>';
-      hh += '<p class="editorial-section-sub">Acompanhe a evolução dos principais temas globais com histórico, perspectivas comparadas e cobertura multimídia contínua.</p>';
+      hh += '<p class="editorial-eyebrow">COBERTURA TEMPORÁRIA · EVENTOS EM DESTAQUE</p>';
+      hh += '<h2 class="dossies-especiais-titulo">Dossiês Especiais</h2>';
+      hh += '<p class="editorial-section-sub">Acompanhamento intensivo em tempo real de grandes eventos globais, cimeiras, eleições e marcos culturais.</p>';
       hh += '</div>';
-      hh += '<a href="/temas" class="btn btn-secondary hubs-head-view-all" data-spa-link>Ver todos os ' + hubKeys.length + ' dossiês →</a>';
+      if (!isFullPage) {
+        hh += '<a href="/dossies" class="btn btn-secondary hubs-head-view-all" data-spa-link>Ver todos os ' + totalEspeciais + ' especiais →</a>';
+      }
       hh += '</div>';
-      hh += '<div class="hubs-cards-grid">';
-      topHubKeys.forEach(function (k) {
-        var hb = EDITORIAL.paginasTematicas[k];
-        var cObj = byA2[hb.pais] || byA2['BR'];
-        var vCount = (hb.ultimasNoticias && hb.ultimasNoticias.length) ? Math.max(hb.ultimasNoticias.length * 3, 12) : 18;
-        hh += '<article class="hub-home-card">';
+      hh += '<div class="hubs-cards-grid dossies-especiais-grid">';
+      especiaisVisiveis.forEach(function (d) {
+        var href = '/dossies/' + encodeURIComponent(d.slug);
+        hh += '<article class="hub-home-card dossie-especial-card">';
         hh += '<div class="hub-home-card-top">';
-        hh += '<span class="hub-home-flag">' + (cObj ? countryFlag(cObj, 'flag-sm', hb.continente) : '') + '</span>';
-        hh += '<span class="hub-home-meta-badge">' + vCount + ' veículos · Atualizado hoje</span>';
+        hh += renderDossieIconHtml(d);
+        hh += renderDossieStatusBadge(d);
         hh += '</div>';
-        hh += '<h3><a href="' + esc(hb.rota) + '" data-spa-link>' + esc(hb.titulo) + '</a></h3>';
-        hh += '<p>' + esc(hb.subtitulo) + '</p>';
+        hh += '<h3><a href="' + esc(href) + '" data-spa-link>' + esc(d.titulo) + '</a></h3>';
+        if (d.meta_info) {
+          hh += '<div class="dossie-meta-period">' + esc(d.meta_info) + '</div>';
+        }
+        hh += '<p>' + esc(d.subtitulo || '') + '</p>';
         hh += '<div class="hub-home-card-foot">';
-        hh += '<a class="hub-home-open" href="' + esc(hb.rota) + '" data-spa-link>Acessar dossiê completo →</a>';
+        hh += '<a class="hub-home-open" href="' + esc(href) + '" data-spa-link>Acessar dossiê →</a>';
         hh += '</div>';
         hh += '</article>';
       });
       hh += '</div>';
-      hh += '<div class="hubs-more-row">';
-      hh += '<a href="/temas" class="btn btn-secondary hubs-view-all-btn" data-spa-link>Ver todos os ' + hubKeys.length + ' dossiês temáticos permanentes →</a>';
       hh += '</div>';
-      hubsSec.innerHTML = hh;
-      bindDynamicEditorialActions(hubsSec);
     }
+
+    // Seção Principal: Dossiês Permanentes
+    hh += '<div class="dossies-permanentes-section">';
+    hh += '<div class="editorial-section-head">';
+    hh += '<div>';
+    hh += '<p class="editorial-eyebrow">COBERTURA PERMANENTE · HUBS TEMÁTICOS</p>';
+    hh += '<h2 id="temas-hubs-titulo">Dossiês Permanentes</h2>';
+    hh += '<p class="editorial-section-sub">Acompanhe a evolução dos principais temas globais com histórico, perspectivas comparadas e cobertura multimídia contínua.</p>';
+    hh += '</div>';
+    if (!isFullPage) {
+      hh += '<a href="/dossies" class="btn btn-secondary hubs-head-view-all" data-spa-link>Ver todos os ' + totalPermanentes + ' dossiês →</a>';
+    }
+    hh += '</div>';
+
+    // Pílulas de filtro por categoria
+    hh += '<div class="dossies-category-filters" role="group" aria-label="Filtrar dossiês permanentes por categoria">';
+    categorias.forEach(function (cat) {
+      var isPressed = (cat === catAtiva);
+      hh += '<button type="button" class="dossie-filter-pill' + (isPressed ? ' is-active' : '') + '" data-dossie-cat="' + esc(cat) + '" aria-pressed="' + String(isPressed) + '">' + esc(cat) + '</button>';
+    });
+    hh += '</div>';
+
+    hh += '<div class="hubs-cards-grid">';
+    if (permanentesVisiveis.length) {
+      permanentesVisiveis.forEach(function (d) {
+        var href = '/dossies/' + encodeURIComponent(d.slug);
+        var vCount = Number(d.veiculos_count || 0);
+        var metaText = d.categoria ? esc(d.categoria) + (vCount > 0 ? ' · ' + vCount + ' veículos' : '') : (vCount > 0 ? vCount + ' veículos · Atualizado hoje' : 'Cobertura contínua');
+        hh += '<article class="hub-home-card">';
+        hh += '<div class="hub-home-card-top">';
+        hh += renderDossieIconHtml(d);
+        hh += '<span class="hub-home-meta-badge">' + metaText + '</span>';
+        hh += '</div>';
+        hh += '<h3><a href="' + esc(href) + '" data-spa-link>' + esc(d.titulo) + '</a></h3>';
+        hh += '<p>' + esc(d.subtitulo || '') + '</p>';
+        hh += '<div class="hub-home-card-foot">';
+        hh += '<a class="hub-home-open" href="' + esc(href) + '" data-spa-link>Acessar dossiê completo →</a>';
+        hh += '</div>';
+        hh += '</article>';
+      });
+    } else {
+      hh += '<p class="dossie-empty-msg">Nenhum dossiê permanente encontrado nesta categoria.</p>';
+    }
+    hh += '</div>';
+
+    if (!isFullPage) {
+      hh += '<div class="hubs-view-all-row">';
+      hh += '<a href="/dossies" class="btn btn-secondary hubs-view-all-btn" data-spa-link>Ver todos os ' + totalPermanentes + ' dossiês →</a>';
+      hh += '</div>';
+    }
+    hh += '</div>';
+
+    hubsSec.innerHTML = hh;
+    bindDynamicEditorialActions(hubsSec);
+    hubsSec.querySelectorAll('.dossie-filter-pill').forEach(function (pill) {
+      pill.addEventListener('click', function () {
+        dossiesState.categoriaAtiva = pill.getAttribute('data-dossie-cat') || 'Todos';
+        renderTemasHubsSection();
+      });
+    });
+  }
+
+  function renderEditorialHomeSections() {
+    var entendaSec = document.getElementById('entenda-o-assunto');
+
+    renderResumoDoDiaDOM();
+    renderTemasHubsSection();
 
     if (entendaSec && EDITORIAL.explicacoes) {
       var expKeys = Object.keys(EDITORIAL.explicacoes);
@@ -9730,7 +10422,7 @@
       var eh = '<div class="hub-nav-header-row hubs-header-row">';
       eh += '<button type="button" class="btn-back-topic" data-action="go-back" data-fallback="/" aria-label="Voltar para onde estava" title="Voltar para onde estava">';
       eh += '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>';
-      eh += '<span>← Voltar</span>';
+      eh += '<span>Voltar</span>';
       eh += '</button>';
       eh += '</div>';
       eh += '<div class="editorial-section-head">';
@@ -9916,7 +10608,11 @@
     setPanelCollapsed(!!opts.keepPanelClosed);
     var stageElCheck = mapWrapSection ? mapWrapSection.querySelector('.stage') : null;
     var wasHiddenMap = (mapWrapSection && mapWrapSection.hidden) || (stageElCheck && stageElCheck.hidden);
+    var wasEditorialTemas = (state.editorialSection === 'temas');
     hideSpecialViews();
+    if (wasEditorialTemas) {
+      renderTemasHubsSection();
+    }
     if (wasHiddenMap && state.viewMode === 'map') {
       fitAspect();
     }
@@ -10056,8 +10752,14 @@
     if (normalizedRoute === '/resumo-do-dia' || normalizedRoute === '/resumo') {
       return { valid: true, type: 'editorial-section', sectionKey: 'resumo-do-dia', replaceUrl: legacyHash };
     }
-    if (normalizedRoute === '/temas' || normalizedRoute === '/temas-hubs') {
-      return { valid: true, type: 'editorial-section', sectionKey: 'temas', replaceUrl: legacyHash };
+    if (normalizedRoute === '/temas' || normalizedRoute === '/temas-hubs' || normalizedRoute === '/dossies') {
+      return {
+        valid: true,
+        type: 'editorial-section',
+        sectionKey: 'temas',
+        routePath: (normalizedRoute === '/dossies') ? '/dossies' : '/temas',
+        replaceUrl: legacyHash
+      };
     }
     if (normalizedRoute === '/entenda' || normalizedRoute === '/entenda-o-assunto') {
       return { valid: true, type: 'editorial-section', sectionKey: 'entenda', replaceUrl: legacyHash };
@@ -10094,6 +10796,10 @@
     }
 
     var segs = clean.split('/');
+    if (segs.length === 2 && segs[0].toLowerCase() === 'dossies') {
+      var dossieSlug = decodeURIComponent(segs[1]).toLowerCase();
+      return { valid: true, type: 'dossie-detail', slug: dossieSlug, replaceUrl: legacyHash };
+    }
     if (segs.length === 2 && segs[0].toLowerCase() === 'entenda') {
       var slug = decodeURIComponent(segs[1]).toLowerCase();
       if (EDITORIAL.explicacoes && EDITORIAL.explicacoes[slug]) {
@@ -10160,7 +10866,11 @@
       return;
     }
     if (parsed.type === 'editorial-section') {
-      showEditorialSectionPage(parsed.sectionKey, { fromPopState: false });
+      showEditorialSectionPage(parsed.sectionKey, { fromPopState: false, routePath: parsed.routePath });
+      return;
+    }
+    if (parsed.type === 'dossie-detail') {
+      showDossieDetail(parsed.slug, { fromPopState: false });
       return;
     }
     if (parsed.type === 'hub') {
@@ -10186,7 +10896,11 @@
       return;
     }
     if (parsed.type === 'editorial-section') {
-      showEditorialSectionPage(parsed.sectionKey, { fromPopState: !parsed.replaceUrl, replaceUrl: parsed.replaceUrl });
+      showEditorialSectionPage(parsed.sectionKey, { fromPopState: !parsed.replaceUrl, replaceUrl: parsed.replaceUrl, routePath: parsed.routePath });
+      return;
+    }
+    if (parsed.type === 'dossie-detail') {
+      showDossieDetail(parsed.slug, { fromPopState: !parsed.replaceUrl, replaceUrl: parsed.replaceUrl });
       return;
     }
     if (parsed.type === 'hub') {
@@ -10407,6 +11121,25 @@
       }
     });
 
+    if (Array.isArray(dossiesState.all) && dossiesState.all.length) {
+      dossiesState.all.forEach(function (d) {
+        if (!d || !d.slug || !d.titulo) return;
+        var kws = (d.regras_classificacao && Array.isArray(d.regras_classificacao.palavras_chave))
+          ? d.regras_classificacao.palavras_chave.join(' ')
+          : '';
+        items.push({
+          type: 'dossie',
+          n: d.titulo,
+          norm: norm(d.titulo),
+          clean: norm(d.titulo).replace(/[^a-z0-9]/g, ''),
+          subNorm: norm(d.subtitulo || ''),
+          catNorm: norm(d.categoria || ''),
+          kwNorm: norm(kws),
+          dossie: d
+        });
+      });
+    }
+
     SEARCH_INDEX = items;
     return SEARCH_INDEX;
   }
@@ -10425,6 +11158,11 @@
       if (qClean && it.clean && it.clean.indexOf(qClean) > -1) return true;
       if (it.type === 'country' && it.a2 && it.a2 === q) return true;
       if (it.type === 'outlet' && it.host && it.host.indexOf(q) > -1) return true;
+      if (it.type === 'dossie') {
+        if (it.subNorm && it.subNorm.indexOf(q) > -1) return true;
+        if (it.catNorm && it.catNorm.indexOf(q) > -1) return true;
+        if (it.kwNorm && it.kwNorm.indexOf(q) > -1) return true;
+      }
       return combinaTextoFuzzy(it.n, q, qTokens);
     }).sort(function (a, b) {
       var aExact = a.norm === q ? 0 : 1;
@@ -10466,6 +11204,15 @@
           '<div class="search-item-main"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" style="margin-right:8px;vertical-align:-2px;flex-shrink:0"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><span class="search-item-name">Comparar notícias sobre <strong>“' + esc(it.query) + '”</strong></span></div>' +
           '<small><span class="search-type-pill is-topic">Assunto</span> em ' + esc(it.countryName) + '</small></li>';
       }
+      if (it.type === 'dossie') {
+        var d = it.dossie;
+        var dIcon = renderDossieIconHtml(d);
+        var dCat = d.categoria ? ' · ' + esc(d.categoria) : '';
+        var dTipoLabel = d.tipo === 'especial' ? 'Especial' : 'Dossiê';
+        return '<li role="option" id="opt-' + i + '" aria-selected="' + (i === cur) + '" data-i="' + i + '">' +
+          '<div class="search-item-main">' + dIcon + '<span class="search-item-name">' + esc(it.n) + '</span></div>' +
+          '<small><span class="search-type-pill is-dossie">' + dTipoLabel + '</span>' + dCat + '</small></li>';
+      }
       var c = it.country;
       var flagImg = countryFlag(c, 'flag-sm', c.c) || '<span class="flag-placeholder flag-sm"></span>';
       var isOutlet = it.type === 'outlet';
@@ -10482,6 +11229,10 @@
   function pick(i) {
     var it = results[i]; if (!it) return;
     input.value = ''; sl.hidden = true; input.setAttribute('aria-expanded', 'false'); input.blur();
+    if (it.type === 'dossie') {
+      navigateSpa('/dossies/' + encodeURIComponent(it.dossie.slug));
+      return;
+    }
     if (it.type === 'topic_search') {
       var cObj = it.country;
       var realCountryObj = cObj.orig || byA2[cObj.a2] || byId[cObj.id] || cObj;
@@ -11757,7 +12508,7 @@
   })();
 
   /* ---------- Versão do sistema (definida pelo nome da pasta do deploy, ex: ROM V2 -> v2, ROM V2.10 -> v2.10) ---------- */
-  var ROM_CURRENT_VERSION = 'v2';
+  var ROM_CURRENT_VERSION = 'v2.1';
 
   function initSiteVersion() {
     try {
@@ -12745,6 +13496,7 @@
   sincronizarPoolsComEditorial();
   carregarResumoCacheLocal();
   renderEditorialHomeSections();
+  carregarDossiesV2(false);
   initVitrineIA();
   initCadastroVeiculoForm();
   initParceriaLeadModal();
@@ -12796,7 +13548,7 @@
   function initMobileMapLegendCollapse() {
     var legendEl = document.getElementById('map-legend');
     var legendToggleBtn = document.getElementById('map-legend-toggle');
-    if (legendEl && legendToggleBtn && window.innerWidth <= 768) {
+    if (legendEl && legendToggleBtn) {
       legendEl.classList.add('is-collapsed');
       legendToggleBtn.setAttribute('aria-expanded', 'false');
     }

@@ -12,6 +12,7 @@ import os
 import re
 import secrets
 from datetime import datetime, timezone
+from pathlib import Path
 from typing import Any, Dict, List, Literal, Optional
 
 import psycopg
@@ -511,6 +512,68 @@ async def executar_noticias_quentes_manual(
         "model_id": resultado.model_id,
         "total_noticias": len(resultado.noticias_quentes),
         "noticias_quentes": [item.model_dump() for item in resultado.noticias_quentes],
+    }
+
+
+# ============================================================================
+# 5.1. ROTA RADAR EDITORIAL: GET /api/radar e GET /radar
+# ============================================================================
+
+@router.get("/api/radar")
+@router.get("/radar")
+def obter_feed_radar(
+    response: Response,
+    categoria: Optional[str] = Query(None, description="Filtrar por categoria do Radar"),
+    _t: Optional[str] = Query(None, description="Timestamp de cache-busting"),
+    refresh: Optional[str] = Query(None, description="Flag de atualização em tempo real"),
+) -> Dict[str, Any]:
+    """Retorna os briefings do Radar Editorial mesclando dados de feed_output.json e vitrine_ia.json."""
+    aplicar_no_cache_headers(response)
+    raiz = Path(__file__).resolve().parents[1]
+    feed_path = raiz / "data" / "feed_output.json"
+
+    items: List[Dict[str, Any]] = []
+    if feed_path.is_file():
+        try:
+            feed_raw = json.loads(feed_path.read_text(encoding="utf-8"))
+            if isinstance(feed_raw, list):
+                items.extend(feed_raw)
+        except Exception:
+            pass
+
+    if categoria and categoria.lower() != "todos":
+        cat_norm = categoria.lower().strip()
+        items = [it for it in items if str(it.get("categoria", "")).lower() == cat_norm]
+
+    mais_recente_iso = None
+    if items and items[0].get("data_publicacao"):
+        mais_recente_iso = items[0].get("data_publicacao")
+
+    agora_iso = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+    carimbo = "Atualizado agora"
+    if mais_recente_iso:
+        try:
+            dt = datetime.fromisoformat(mais_recente_iso.replace("Z", "+00:00"))
+            agora_dt = datetime.now(timezone.utc)
+            diff_min = int((agora_dt - dt).total_seconds() / 60)
+            if diff_min < 5:
+                carimbo = "Atualizado agora"
+            elif diff_min < 60:
+                carimbo = f"Atualizado há {diff_min} min"
+            else:
+                carimbo = _formatar_horario_editorial()
+        except Exception:
+            carimbo = _formatar_horario_editorial()
+
+    return {
+        "ok": True,
+        "cached": False,
+        "source": "v2_hybrid",
+        "atualizado_em": carimbo,
+        "updatedAt": agora_iso,
+        "total": len(items),
+        "items": items,
     }
 
 
@@ -1213,33 +1276,167 @@ async def admin_executar_coleta_agora(
     )
 
 
+def _coletar_fontes_codigo() -> List[Dict[str, Any]]:
+    """Reúne todas as fontes configuradas em `coletor_estudo.py` e `config/sources.json`."""
+    from pathlib import Path
+    from redacao_v2.coletor_estudo import FONTES_ESTUDO_V2, FONTES_NOTICIAS_QUENTES_30MIN
+
+    combinadas: Dict[str, Dict[str, Any]] = {}
+    for item in list(FONTES_NOTICIAS_QUENTES_30MIN) + list(FONTES_ESTUDO_V2):
+        url = str(item.get("url") or "").strip()
+        if not url or url in combinadas:
+            continue
+        combinadas[url] = {
+            "nome": str(item.get("nome") or "Fonte").strip(),
+            "url": url,
+            "pais_iso": str(item.get("pais_iso") or "BR").strip()[:2].upper(),
+            "regiao": str(item.get("regiao") or "Global").strip(),
+            "idioma": str(item.get("idioma") or "pt").strip(),
+            "tipo_fonte": str(item.get("tipo_fonte") or "rss_feed").strip(),
+            "cadencia": str(item.get("cadencia") or "ciclo_3h").strip(),
+            "peso_confianca": int(item.get("peso_confianca") or 4),
+            "politica_uso_status": str(item.get("politica_uso_status") or "aprovada").strip(),
+            "coleta_permitida": bool(item.get("coleta_permitida", True)),
+            "armazenamento_permitido": str(item.get("armazenamento_permitido") or "apenas_metadados").strip(),
+            "exibicao_permitida": str(item.get("exibicao_permitida") or "sintese_e_link").strip(),
+            "atribuicao_exigida": str(item.get("atribuicao_exigida") or item.get("nome") or "").strip(),
+        }
+
+    sources_json_path = Path(__file__).resolve().parents[1] / "config" / "sources.json"
+    if sources_json_path.exists():
+        try:
+            raw_sources = json.loads(sources_json_path.read_text(encoding="utf-8"))
+            for s in raw_sources:
+                tipo = str(s.get("tipo") or "rss").strip().lower()
+                id_ou_url = str(s.get("id_ou_url") or "").strip()
+                if not id_ou_url:
+                    continue
+                if tipo == "youtube":
+                    url = f"https://www.youtube.com/feeds/videos.xml?channel_id={id_ou_url}"
+                    tipo_fonte = "youtube_rss"
+                else:
+                    url = id_ou_url
+                    tipo_fonte = "rss_feed"
+                if url in combinadas:
+                    continue
+                nome = str(s.get("nome") or "Fonte").strip()
+                categoria = str(s.get("categoria") or "geral").strip().lower()
+                regiao = "Global" if categoria == "geopolitica" else "America_do_Sul"
+                combinadas[url] = {
+                    "nome": nome,
+                    "url": url,
+                    "pais_iso": "BR",
+                    "regiao": regiao,
+                    "idioma": "pt",
+                    "tipo_fonte": tipo_fonte,
+                    "cadencia": "ciclo_3h",
+                    "peso_confianca": 4,
+                    "politica_uso_status": "aprovada",
+                    "coleta_permitida": True,
+                    "armazenamento_permitido": "apenas_metadados",
+                    "exibicao_permitida": "sintese_e_link",
+                    "atribuicao_exigida": nome,
+                }
+        except Exception:  # noqa: BLE001
+            pass
+
+    return list(combinadas.values())
+
+
+def sincronizar_fontes_sistema(db: Any) -> int:
+    """Insere novas fontes do código em `ai_fontes_referencia` preservando registros existentes."""
+    fontes = _coletar_fontes_codigo()
+    inseridas = 0
+    with db.cursor() as cur:
+        for f in fontes:
+            cur.execute(
+                """
+                INSERT INTO ai_fontes_referencia (
+                    nome, url, pais_iso, regiao, idioma, tipo_fonte, cadencia,
+                    peso_confianca, politica_uso_status, coleta_permitida,
+                    armazenamento_permitido, exibicao_permitida, atribuicao_exigida,
+                    revisado_por, revisado_em, ativo
+                ) VALUES (
+                    %s, %s, %s, %s, %s, %s, %s,
+                    %s, %s, %s,
+                    %s, %s, %s,
+                    'Sistema RoM (Auto-Sync)', NOW(), TRUE
+                )
+                ON CONFLICT (url) DO NOTHING
+                RETURNING id;
+                """,
+                (
+                    f["nome"],
+                    f["url"],
+                    f["pais_iso"],
+                    f["regiao"],
+                    f["idioma"],
+                    f["tipo_fonte"],
+                    f["cadencia"],
+                    f["peso_confianca"],
+                    f["politica_uso_status"],
+                    f["coleta_permitida"],
+                    f["armazenamento_permitido"],
+                    f["exibicao_permitida"],
+                    f["atribuicao_exigida"],
+                ),
+            )
+            if cur.fetchone():
+                inseridas += 1
+    if inseridas > 0:
+        db.commit()
+    return inseridas
+
+
 @router.get("/v2/admin/fontes", dependencies=[Depends(verificar_admin_token)])
 def admin_listar_fontes(
     response: Response,
+    auto_sync: bool = Query(default=True),
     conn: Any = Depends(get_db),
 ) -> Dict[str, Any]:
-    """Lista fontes cadastradas em `ai_fontes_referencia`."""
+    """Lista fontes cadastradas em `ai_fontes_referencia`, sincronizando automaticamente novidades do código."""
     aplicar_no_cache_headers(response)
     db = _require_db(conn)
+    novas_sincronizadas = 0
+    if auto_sync:
+        try:
+            novas_sincronizadas = sincronizar_fontes_sistema(db)
+        except Exception:  # noqa: BLE001
+            db.rollback()
+
     with db.cursor() as cur:
         cur.execute(
             """
             SELECT id, nome, url, tipo_fonte, cadencia, peso_confianca,
-                   politica_uso_status, coleta_permitida, ativo, revisado_por, created_at
+                   politica_uso_status, coleta_permitida, ativo, revisado_por,
+                   ultima_coleta_at, created_at
             FROM ai_fontes_referencia
             ORDER BY id DESC
-            LIMIT 100;
+            LIMIT 500;
             """
         )
         rows = cur.fetchall()
     fontes = [
         {
             **dict(r),
+            "ultima_coleta_at": _serializar_valor_temporal(r.get("ultima_coleta_at")),
             "created_at": _serializar_valor_temporal(r.get("created_at")),
         }
         for r in rows
     ]
-    return {"ok": True, "fontes": fontes}
+    return {"ok": True, "fontes": fontes, "novas_sincronizadas": novas_sincronizadas}
+
+
+@router.post("/v2/admin/fontes/sincronizar", dependencies=[Depends(verificar_admin_token)])
+def admin_sincronizar_fontes(
+    response: Response,
+    conn: Any = Depends(get_db),
+) -> Dict[str, Any]:
+    """Sincroniza manualmente as fontes de `coletor_estudo.py` e `config/sources.json` com `ai_fontes_referencia`."""
+    aplicar_no_cache_headers(response)
+    db = _require_db(conn)
+    inseridas = sincronizar_fontes_sistema(db)
+    return {"ok": True, "novas_inseridas": inseridas}
 
 
 @router.post("/v2/admin/fontes", dependencies=[Depends(verificar_admin_token)])

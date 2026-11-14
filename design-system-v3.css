@@ -1,0 +1,418 @@
+/* ==========================================================================
+   RODANDO O MUNDO — DESIGN SYSTEM V3 (Apple × Linear × Stripe × Nothing)
+   Camada de refinamento visual aplicada sobre os seletores do site
+   ========================================================================== */
+
+/* 1. TIPOGRAFIA & ACESSIBILIDADE GLOBAL
+   -------------------------------------------------------------------------- */
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, .section-title, .panel-head h2, .resumo-title {
+  letter-spacing: -0.02em;
+}
+
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* 2. HEADER TRANSLÚCIDO (48px–52px), BUSCA EM PÍLULA & CONTROLE DE TEMA
+   -------------------------------------------------------------------------- */
+.topbar.header-single {
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  background-color: var(--glass-bg);
+  border-bottom: 1px solid var(--glass-border);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  transition: background-color 0.25s var(--ease), border-color 0.25s var(--ease);
+}
+
+.topbar.header-single .header-container {
+  min-height: 48px;
+  padding-block: 6px;
+}
+
+@media (min-width: 768px) {
+  .topbar.header-single .header-container {
+    min-height: 52px;
+    padding-block: 6px;
+  }
+}
+
+.brand-name {
+  font-family: var(--font-logo);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.brand-sub {
+  font-size: 0.6875rem;
+  color: var(--text-muted);
+  letter-spacing: 0.02em;
+}
+
+/* Busca em Pílula */
+.header-search {
+  border-radius: var(--radius-pill);
+}
+
+.header-search input#busca {
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border);
+  background-color: var(--surface);
+  color: var(--text);
+  font-size: var(--text-xs);
+  transition: background-color 0.18s var(--ease),
+              border-color 0.18s var(--ease),
+              box-shadow 0.18s var(--ease);
+}
+
+.header-search input#busca:hover {
+  border-color: var(--border-strong);
+}
+
+.header-search input#busca:focus {
+  background-color: var(--surface-2);
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-soft);
+}
+
+.search-list {
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--glass-border);
+  background-color: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  box-shadow: var(--shadow-md);
+}
+
+/* Navegação e Botões em Pílula */
+.header-nav-link {
+  border-radius: var(--radius-pill);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  color: var(--text-muted);
+  transition: color 0.16s var(--ease), background-color 0.16s var(--ease);
+}
+
+.header-nav-link:hover,
+.header-nav-link.is-active,
+.header-nav-link[aria-current="page"] {
+  color: var(--text);
+  background-color: var(--surface);
+}
+
+.theme-toggle,
+.fav-top-btn,
+.mobile-menu-btn {
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border);
+  background-color: transparent;
+  color: var(--text-muted);
+  transition: color 0.16s var(--ease),
+              background-color 0.16s var(--ease),
+              border-color 0.16s var(--ease),
+              transform 0.14s var(--ease);
+}
+
+.theme-toggle:hover,
+.fav-top-btn:hover,
+.mobile-menu-btn:hover {
+  color: var(--text);
+  background-color: var(--surface);
+  border-color: var(--border-strong);
+}
+
+.theme-toggle:active,
+.fav-top-btn:active {
+  transform: scale(0.95);
+}
+
+/* 3. PALCO FULL-BLEED DO MAPA & CONTROLES FLUTUANTES EM PÍLULA
+   -------------------------------------------------------------------------- */
+.hero-mode-bar {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-block: var(--space-3);
+  padding-inline: var(--space-4);
+  gap: 8px;
+}
+
+.map-hot-news-pill {
+  position: static;
+  order: 2;
+  width: 100%;
+  max-width: 100%;
+  background-color: var(--glass-bg);
+  color: var(--text);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-sm);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  padding: 6px 12px;
+}
+
+.map-hot-news-pill:hover,
+.map-hot-news-pill:focus-visible {
+  background-color: var(--surface-2);
+  color: var(--text);
+  border-color: var(--accent-amber);
+}
+
+@media (min-width: 960px) {
+  .hero-mode-bar {
+    min-height: 52px;
+  }
+
+  .map-hot-news-pill {
+    position: absolute;
+    top: 50%;
+    left: var(--space-4);
+    transform: translateY(-50%);
+    z-index: 10;
+    order: 0;
+    width: auto;
+    max-width: min(320px, calc(50vw - 230px));
+    transition: max-width 0.24s var(--ease),
+                background-color 0.18s var(--ease),
+                border-color 0.18s var(--ease),
+                box-shadow 0.18s var(--ease);
+  }
+
+  .map-hot-news-pill:hover,
+  .map-hot-news-pill:focus-visible {
+    max-width: 440px;
+    box-shadow: var(--shadow-md);
+  }
+}
+
+.view-mode-toggle {
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--glass-border);
+  background-color: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  padding: 4px;
+  box-shadow: var(--shadow-sm);
+}
+
+.view-mode-btn {
+  border-radius: var(--radius-pill);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  transition: background-color 0.18s var(--ease), color 0.18s var(--ease);
+}
+
+.view-mode-btn.is-active {
+  background-color: var(--text);
+  color: var(--bg);
+}
+
+.map-wrap .stage {
+  border: 0;
+  border-radius: 0;
+  background: var(--ocean);
+  box-shadow: none;
+}
+
+.map-wrap .map {
+  background: var(--ocean);
+  border-radius: 0;
+}
+
+/* Controles Flutuantes em Pílula */
+.chip-btn,
+.zoom-ctrl,
+.mobile-chip {
+  background-color: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  box-shadow: var(--shadow-md);
+  border-radius: var(--radius-pill);
+}
+
+.zoom-ctrl button {
+  border-radius: var(--radius-pill);
+  transition: background-color 0.16s var(--ease), color 0.16s var(--ease);
+}
+
+.zoom-ctrl button:hover {
+  background-color: var(--surface);
+}
+
+.map-layers-popover,
+.tooltip {
+  background-color: var(--glass-bg);
+  color: var(--text);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+.tooltip-hot-news {
+  background: var(--surface);
+  border: 1px solid rgba(245, 158, 11, 0.28);
+  border-left: 3px solid var(--accent-amber);
+  border-radius: var(--radius-md);
+  color: var(--text);
+}
+
+.tooltip-hot-news strong {
+  color: #B45309;
+}
+
+.tooltip-hot-news span {
+  color: var(--text);
+}
+
+.tooltip-hot-cta {
+  border-top-color: var(--border);
+  color: var(--primary);
+}
+
+[data-theme='dark'] .tooltip-hot-news {
+  background: var(--surface-2);
+  border-color: rgba(245, 158, 11, 0.35);
+  color: var(--text);
+}
+
+[data-theme='dark'] .tooltip-hot-news strong {
+  color: #FBBF24;
+}
+
+[data-theme='dark'] .tooltip-hot-news span {
+  color: var(--text);
+}
+
+[data-theme='dark'] .tooltip-hot-cta {
+  color: #FBBF24;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) .tooltip-hot-news {
+    background: var(--surface-2);
+    border-color: rgba(245, 158, 11, 0.35);
+    color: var(--text);
+  }
+  :root:not([data-theme='light']) .tooltip-hot-news strong,
+  :root:not([data-theme='light']) .tooltip-hot-cta {
+    color: #FBBF24;
+  }
+  :root:not([data-theme='light']) .tooltip-hot-news span {
+    color: var(--text);
+  }
+}
+
+/* Pulso Âmbar Discreto (Nothing-inspired) para Notícias Quentes */
+.hot-dot,
+.live-dot,
+.radar-live-dot {
+  background-color: var(--accent-amber);
+  box-shadow: 0 0 0 0 var(--accent-amber-ring);
+  animation: rom-amber-pulse 2.2s infinite var(--ease);
+}
+
+@keyframes rom-amber-pulse {
+  0%   { box-shadow: 0 0 0 0 var(--accent-amber-ring); }
+  70%  { box-shadow: 0 0 0 6px rgba(245, 158, 11, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); }
+}
+
+/* 4. BENTO GRID EDITORIAL, CARDS, LEITURA COMPARADA & RODAPÉ MINIMALISTA
+   -------------------------------------------------------------------------- */
+.panel,
+.resumo-card,
+.radar-card,
+.outlet-card,
+.news-card,
+.compare-card,
+.dossie-card {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  transition: transform 0.24s var(--ease),
+              border-color 0.18s var(--ease),
+              box-shadow 0.24s var(--ease);
+}
+
+.radar-card:hover,
+.resumo-card:hover,
+.outlet-card:hover,
+.news-card:hover {
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow-md);
+}
+
+.btn,
+.btn-primary,
+.btn-secondary {
+  border-radius: var(--radius-pill);
+  font-weight: 500;
+  transition: background-color 0.18s var(--ease),
+              border-color 0.18s var(--ease),
+              transform 0.14s var(--ease);
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  border-color: var(--primary);
+  color: #FFFFFF;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+  border-color: var(--primary-hover);
+}
+
+/* Rodapé Minimalista */
+.footer {
+  background-color: var(--bg);
+  border-top: 1px solid var(--border);
+  padding-block: var(--space-10) var(--space-8);
+  color: var(--text-muted);
+}
+
+.footer-social-link {
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border);
+  transition: border-color 0.16s var(--ease), color 0.16s var(--ease), background-color 0.16s var(--ease);
+}
+
+.footer-social-link:hover {
+  border-color: var(--border-strong);
+  color: var(--text);
+  background-color: var(--surface);
+}
+
+.footer-version {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  color: var(--text-faint);
+}

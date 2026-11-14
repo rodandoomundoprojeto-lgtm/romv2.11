@@ -17,6 +17,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, Response
 
 from api.routes_v2 import router as router_v2
+from api.routes_dossies import router as router_dossies
 from src.collector import collect_new_items
 from src.analyst import analyze_item
 from src.publisher import publish_cards, update_history
@@ -44,6 +45,7 @@ app.add_middleware(
 )
 
 app.include_router(router_v2)
+app.include_router(router_dossies)
 
 
 @app.get("/health")

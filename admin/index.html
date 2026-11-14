@@ -374,6 +374,157 @@
     .hidden {
       display: none !important;
     }
+
+    /* Dossiês Editoriais */
+    .dossie-badges-row {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      flex-wrap: wrap;
+      margin-top: 0.45rem;
+    }
+
+    .badge-live {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.38rem;
+      background: color-mix(in srgb, #27ae60 16%, var(--surface-2));
+      color: #1e8449;
+      border-color: color-mix(in srgb, #27ae60 45%, var(--border));
+    }
+
+    [data-theme='dark'] .badge-live {
+      color: #6ee7a0;
+    }
+
+    .badge-soon {
+      background: color-mix(in srgb, var(--primary) 14%, var(--surface-2));
+      color: var(--primary);
+      border-color: color-mix(in srgb, var(--primary) 40%, var(--border));
+    }
+
+    .badge-archive {
+      background: var(--surface-offset);
+      color: var(--text-muted);
+      border-color: var(--border);
+    }
+
+    .dossie-pulse-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #27ae60;
+      display: inline-block;
+      box-shadow: 0 0 0 0 rgba(39, 174, 96, 0.7);
+      animation: dossiePulse 1.6s infinite;
+    }
+
+    [data-theme='dark'] .dossie-pulse-dot {
+      background: #4ade80;
+    }
+
+    @keyframes dossiePulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(39, 174, 96, 0.65);
+      }
+      70% {
+        box-shadow: 0 0 0 6px rgba(39, 174, 96, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(39, 174, 96, 0);
+      }
+    }
+
+    .dossie-filters {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      flex-wrap: wrap;
+      margin-bottom: var(--space-3);
+    }
+
+    .dossie-filter-btn {
+      font-family: var(--font-ui);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.36rem 0.75rem;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--border);
+      background: var(--surface-2);
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: background var(--transition), color var(--transition), border-color var(--transition);
+    }
+
+    .dossie-filter-btn:hover {
+      border-color: var(--primary);
+      color: var(--text);
+    }
+
+    .dossie-filter-btn.active {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #fff;
+    }
+
+    .admin-modal-lg {
+      max-width: 700px;
+      max-height: 92vh;
+      overflow-y: auto;
+    }
+
+    .admin-modal-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-3);
+    }
+
+    .admin-modal-grid .full-span {
+      grid-column: 1 / -1;
+    }
+
+    @media (max-width: 600px) {
+      .admin-modal-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .admin-toast {
+      position: fixed;
+      right: 1.25rem;
+      bottom: 1.25rem;
+      z-index: 1400;
+      min-width: 240px;
+      max-width: 420px;
+      padding: 0.75rem 1rem;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      box-shadow: var(--shadow-md);
+      font-size: 0.86rem;
+      font-weight: 500;
+      opacity: 0;
+      transform: translateY(10px);
+      pointer-events: none;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    .admin-toast.show {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .admin-toast.ok {
+      border-color: #27ae60;
+      background: color-mix(in srgb, #27ae60 12%, var(--surface));
+    }
+
+    .admin-toast.err {
+      border-color: var(--bias-E);
+      background: color-mix(in srgb, var(--bias-E) 12%, var(--surface));
+    }
   </style>
 </head>
 
@@ -542,6 +693,54 @@
           </table>
         </div>
       </section>
+
+      <!-- BLOCO 4: DOSSIÊS EDITORIAIS -->
+      <section class="admin-card" id="admin-dossies-card" aria-labelledby="blk4-title">
+        <div class="admin-card-head">
+          <div>
+            <h2 id="blk4-title" class="admin-card-title">4. Dossiês Editoriais (Permanentes &amp; Especiais)</h2>
+            <p class="admin-sub">Gerenciamento de dossiês temáticos, períodos de cobertura especial e regras de classificação.</p>
+            <div class="dossie-badges-row">
+              <span class="badge">Total: <strong id="dossies-count-total">0</strong></span>
+              <span class="badge badge-live"><span class="dossie-pulse-dot" aria-hidden="true"></span> Ao Vivo: <strong id="dossies-count-aovivo">0</strong></span>
+              <span class="badge badge-soon">Em Breve: <strong id="dossies-count-embreve">0</strong></span>
+              <span class="badge badge-archive">Arquivo: <strong id="dossies-count-arquivo">0</strong></span>
+            </div>
+          </div>
+          <div class="admin-actions">
+            <button id="btn-recarregar-dossies" class="admin-btn admin-btn-sm" type="button">Atualizar</button>
+            <button id="btn-novo-dossie" class="admin-btn admin-btn-primary admin-btn-sm" type="button">+ Novo Dossiê Especial</button>
+          </div>
+        </div>
+
+        <div class="dossie-filters" role="group" aria-label="Filtrar dossiês">
+          <button type="button" class="dossie-filter-btn active" data-dossie-filter="all">Todos</button>
+          <button type="button" class="dossie-filter-btn" data-dossie-filter="especiais_ativos">Especiais (Ao Vivo / Em Breve)</button>
+          <button type="button" class="dossie-filter-btn" data-dossie-filter="especiais_arquivo">Especiais (Arquivo)</button>
+          <button type="button" class="dossie-filter-btn" data-dossie-filter="permanentes">Permanentes</button>
+        </div>
+
+        <div id="dossies-banner" class="admin-banner"></div>
+
+        <div class="admin-table-wrap">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Ícone</th>
+                <th>Título / Slug</th>
+                <th>Tipo</th>
+                <th>Status</th>
+                <th>Período</th>
+                <th>Matérias</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody id="tbody-dossies">
+              <tr><td colspan="7" class="admin-sub">Nenhum dossiê carregado.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
     </div>
   </main>
 
@@ -581,6 +780,81 @@
     </div>
   </div>
 
+  <!-- Modal: Criar / Editar Dossiê Editorial -->
+  <div id="modal-dossie" class="admin-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modal-dossie-title">
+    <div class="admin-modal admin-modal-lg">
+      <div class="admin-card-head" style="margin-bottom:0;">
+        <div>
+          <h3 id="modal-dossie-title" class="admin-card-title" style="font-size:1.15rem;">Novo Dossiê Especial</h3>
+          <p id="modal-dossie-sub" class="admin-sub"></p>
+        </div>
+        <button id="btn-fechar-modal-dossie" class="admin-btn admin-btn-sm" type="button">Fechar</button>
+      </div>
+
+      <div class="admin-modal-grid">
+        <div class="admin-field full-span">
+          <label for="d-titulo">Título *</label>
+          <input id="d-titulo" class="admin-input" type="text" placeholder="Ex: Copa do Mundo FIFA 2026" />
+        </div>
+
+        <div id="d-slug-wrap" class="admin-field">
+          <label for="d-slug">Slug * (identificador na URL)</label>
+          <input id="d-slug" class="admin-input" type="text" placeholder="ex: copa-do-mundo-2026" />
+        </div>
+
+        <div class="admin-field">
+          <label for="d-categoria">Categoria</label>
+          <input id="d-categoria" class="admin-input" type="text" placeholder="Eventos" />
+        </div>
+
+        <div class="admin-field full-span">
+          <label for="d-subtitulo">Subtítulo / Descrição</label>
+          <textarea id="d-subtitulo" class="admin-textarea" rows="2" placeholder="Resumo editorial do dossiê..."></textarea>
+        </div>
+
+        <div class="admin-field">
+          <label for="d-icone">Ícone ou Bandeira</label>
+          <input id="d-icone" class="admin-input" type="text" placeholder="Globe, Trophy, 🇧🇷..." />
+        </div>
+
+        <div class="admin-field">
+          <label for="d-meta-info">Período / Meta Info (exibição)</label>
+          <input id="d-meta-info" class="admin-input" type="text" placeholder="Ex: 11 jun – 19 jul 2026" />
+        </div>
+
+        <div class="admin-field">
+          <label for="d-data-inicio">Data de Início <span id="d-data-inicio-req">*</span></label>
+          <input id="d-data-inicio" class="admin-input" type="date" />
+        </div>
+
+        <div class="admin-field">
+          <label for="d-data-fim">Data de Término</label>
+          <input id="d-data-fim" class="admin-input" type="date" />
+        </div>
+
+        <div class="admin-field full-span">
+          <label for="d-palavras-chave">Palavras-chave (separadas por vírgula)</label>
+          <input id="d-palavras-chave" class="admin-input" type="text" placeholder="Ex: copa, fifa, seleção, mundial" />
+        </div>
+
+        <div class="admin-field full-span">
+          <label for="d-paises">Países (códigos ISO separados por vírgula)</label>
+          <input id="d-paises" class="admin-input" type="text" placeholder="Ex: BR, US, MX, CA" />
+        </div>
+      </div>
+
+      <div id="modal-dossie-banner" class="admin-banner"></div>
+
+      <div class="admin-modal-foot">
+        <button id="btn-cancelar-modal-dossie" class="admin-btn" type="button">Cancelar</button>
+        <button id="btn-salvar-dossie" class="admin-btn admin-btn-primary" type="button">Salvar Dossiê</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast flutuante -->
+  <div id="admin-toast" class="admin-toast" role="status" aria-live="polite"></div>
+
   <script>
     (function () {
       const $ = (id) => document.getElementById(id);
@@ -595,8 +869,27 @@
         apiBase: sessionStorage.getItem('rom_admin_api') || defaultApiBase,
         token: sessionStorage.getItem('rom_admin_token') || '',
         eventos: [],
-        editingEventId: null
+        editingEventId: null,
+        dossies: [],
+        dossiesContagens: { total: 0, permanentes: 0, ao_vivo: 0, em_breve: 0, arquivo: 0 },
+        dossieFilter: 'all',
+        dossieModalMode: 'create',
+        editingDossieSlug: null,
+        editingDossieTipo: 'especial',
+        slugManuallyEdited: false
       };
+
+      let toastTimer = null;
+      function showToast(msg, kind = 'ok') {
+        const el = $('admin-toast');
+        if (!el) return;
+        el.textContent = msg;
+        el.className = 'admin-toast show ' + (kind === 'err' ? 'err' : 'ok');
+        if (toastTimer) clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => {
+          el.className = 'admin-toast';
+        }, 3800);
+      }
 
       // Tema claro/escuro seguindo padrão do portal
       $('theme-toggle').addEventListener('click', () => {
@@ -737,7 +1030,7 @@
 
         try {
           await carregarKillSwitch();
-          await Promise.all([carregarFontes(), carregarEventos()]);
+          await Promise.all([carregarFontes(), carregarEventos(), carregarDossiesAdmin()]);
           $('admin-panels').classList.remove('hidden');
           showBanner('auth-banner', 'Conectado com sucesso.', 'ok');
         } catch (err) {
@@ -942,6 +1235,327 @@
           await carregarEventos();
         } catch (err) {
           showBanner('modal-banner', 'Erro ao salvar síntese: ' + err.message, 'err');
+        }
+      });
+
+      // ============================================================
+      // BLOCO 4: Dossiês Editoriais (Permanentes & Especiais)
+      // ============================================================
+      function slugify(str) {
+        return String(str || '')
+          .normalize('NFD')
+          .replace(/[\u0300-\u036f]/g, '')
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g, '-')
+          .replace(/^-+|-+$/g, '');
+      }
+
+      function toDateInputValue(val) {
+        if (!val) return '';
+        const m = String(val).match(/^(\d{4}-\d{2}-\d{2})/);
+        return m ? m[1] : '';
+      }
+
+      function parseTagsCsv(str) {
+        return String(str || '')
+          .split(',')
+          .map((s) => s.trim())
+          .filter(Boolean);
+      }
+
+      function renderDossieStatusBadge(status) {
+        const s = String(status || '').toLowerCase();
+        if (s === 'ao_vivo') {
+          return '<span class="badge badge-live"><span class="dossie-pulse-dot" aria-hidden="true"></span> ao_vivo</span>';
+        }
+        if (s === 'em_breve') {
+          return '<span class="badge badge-soon">em_breve</span>';
+        }
+        if (s === 'arquivo') {
+          return '<span class="badge badge-archive">arquivo</span>';
+        }
+        return `<span class="badge badge-ok">${escapeHtml(s || 'ativo')}</span>`;
+      }
+
+      function formatDossiePeriodo(d) {
+        if (d.meta_info) return escapeHtml(d.meta_info);
+        const ini = toDateInputValue(d.data_inicio);
+        const fim = toDateInputValue(d.data_fim);
+        if (ini && fim) return `${ini} – ${fim}`;
+        if (ini) return `A partir de ${ini}`;
+        return d.tipo === 'permanente' ? 'Contínuo' : '—';
+      }
+
+      function renderDossiesContagens() {
+        const c = state.dossiesContagens || {};
+        $('dossies-count-total').textContent = c.total ?? state.dossies.length ?? 0;
+        $('dossies-count-aovivo').textContent = c.ao_vivo ?? 0;
+        $('dossies-count-embreve').textContent = c.em_breve ?? 0;
+        $('dossies-count-arquivo').textContent = c.arquivo ?? 0;
+      }
+
+      function filtrarDossies(lista) {
+        const f = state.dossieFilter;
+        if (f === 'especiais_ativos') {
+          return lista.filter((d) => d.tipo === 'especial' && (d.status === 'ao_vivo' || d.status === 'em_breve'));
+        }
+        if (f === 'especiais_arquivo') {
+          return lista.filter((d) => d.tipo === 'especial' && d.status === 'arquivo');
+        }
+        if (f === 'permanentes') {
+          return lista.filter((d) => d.tipo === 'permanente');
+        }
+        return lista;
+      }
+
+      function renderDossies() {
+        const tbody = $('tbody-dossies');
+        const filtrados = filtrarDossies(state.dossies || []);
+        if (!filtrados.length) {
+          tbody.innerHTML = '<tr><td colspan="7" class="admin-sub">Nenhum dossiê encontrado para este filtro.</td></tr>';
+          return;
+        }
+        tbody.innerHTML = filtrados.map((d) => {
+          const isEspecial = d.tipo === 'especial';
+          const materias = d.materias_count ?? 0;
+          const veiculos = d.veiculos_count ?? 0;
+          const tipoBadge = isEspecial
+            ? '<span class="badge badge-warn">especial</span>'
+            : '<span class="badge">permanente</span>';
+
+          return `
+            <tr>
+              <td><strong>${escapeHtml(d.icone_ou_bandeira || 'Globe')}</strong></td>
+              <td>
+                <strong>${escapeHtml(d.titulo)}</strong><br />
+                <span class="admin-sub"><code>${escapeHtml(d.slug)}</code> · ${escapeHtml(d.categoria || '—')}</span>
+              </td>
+              <td>${tipoBadge}</td>
+              <td>${renderDossieStatusBadge(d.status)}</td>
+              <td>${formatDossiePeriodo(d)}</td>
+              <td>${materias} mat. / ${veiculos} veíc.</td>
+              <td>
+                <div class="admin-actions">
+                  <button class="admin-btn admin-btn-sm" data-dossie-action="editar" data-slug="${escapeHtml(d.slug)}" type="button">Editar</button>
+                  ${isEspecial
+                    ? `<button class="admin-btn admin-btn-sm admin-btn-danger" data-dossie-action="excluir" data-slug="${escapeHtml(d.slug)}" type="button">Excluir</button>`
+                    : ''}
+                </div>
+              </td>
+            </tr>
+          `;
+        }).join('');
+      }
+
+      async function carregarDossiesAdmin() {
+        const data = await apiFetch('/v2/admin/dossies');
+        state.dossies = data.dossies || [];
+        state.dossiesContagens = data.contagens || {
+          total: state.dossies.length,
+          permanentes: state.dossies.filter((d) => d.tipo === 'permanente').length,
+          ao_vivo: state.dossies.filter((d) => d.status === 'ao_vivo').length,
+          em_breve: state.dossies.filter((d) => d.status === 'em_breve').length,
+          arquivo: state.dossies.filter((d) => d.status === 'arquivo').length
+        };
+        renderDossiesContagens();
+        renderDossies();
+      }
+
+      function abrirModalDossie(mode, dossie = null) {
+        state.dossieModalMode = mode;
+        state.slugManuallyEdited = false;
+        hideBanner('modal-dossie-banner');
+
+        if (mode === 'create') {
+          state.editingDossieSlug = null;
+          state.editingDossieTipo = 'especial';
+          $('modal-dossie-title').textContent = 'Novo Dossiê Especial';
+          $('modal-dossie-sub').textContent = 'Criação de cobertura especial temporária (POST /v2/admin/dossies).';
+          $('d-slug').value = '';
+          $('d-slug').disabled = false;
+          $('d-data-inicio-req').classList.remove('hidden');
+          $('d-titulo').value = '';
+          $('d-subtitulo').value = '';
+          $('d-categoria').value = 'Eventos';
+          $('d-icone').value = 'Globe';
+          $('d-meta-info').value = '';
+          $('d-data-inicio').value = '';
+          $('d-data-fim').value = '';
+          $('d-palavras-chave').value = '';
+          $('d-paises').value = '';
+          $('btn-salvar-dossie').textContent = 'Criar Dossiê';
+        } else if (dossie) {
+          state.editingDossieSlug = dossie.slug;
+          state.editingDossieTipo = dossie.tipo || 'especial';
+          $('modal-dossie-title').textContent = `Editar Dossiê: ${dossie.titulo}`;
+          $('modal-dossie-sub').textContent = dossie.tipo === 'permanente'
+            ? `Dossiê Permanente (${dossie.slug}) — slug bloqueado; título, subtítulo, tags e período editáveis.`
+            : `Dossiê Especial (${dossie.slug}) — atualização via PATCH /v2/admin/dossies/${dossie.slug}.`;
+          $('d-slug').value = dossie.slug || '';
+          $('d-slug').disabled = true;
+          $('d-data-inicio-req').classList.toggle('hidden', dossie.tipo === 'permanente');
+          $('d-titulo').value = dossie.titulo || '';
+          $('d-subtitulo').value = dossie.subtitulo || '';
+          $('d-categoria').value = dossie.categoria || '';
+          $('d-icone').value = dossie.icone_ou_bandeira || '';
+          $('d-meta-info').value = dossie.meta_info || '';
+          $('d-data-inicio').value = toDateInputValue(dossie.data_inicio);
+          $('d-data-fim').value = toDateInputValue(dossie.data_fim);
+          const regras = dossie.regras_classificacao || {};
+          $('d-palavras-chave').value = Array.isArray(regras.palavras_chave) ? regras.palavras_chave.join(', ') : '';
+          $('d-paises').value = Array.isArray(regras.paises) ? regras.paises.join(', ') : '';
+          $('btn-salvar-dossie').textContent = 'Salvar Alterações';
+        }
+
+        $('modal-dossie').classList.add('open');
+      }
+
+      function fecharModalDossie() {
+        $('modal-dossie').classList.remove('open');
+        state.editingDossieSlug = null;
+      }
+
+      $('btn-novo-dossie').addEventListener('click', () => abrirModalDossie('create'));
+      $('btn-fechar-modal-dossie').addEventListener('click', fecharModalDossie);
+      $('btn-cancelar-modal-dossie').addEventListener('click', fecharModalDossie);
+
+      $('btn-recarregar-dossies').addEventListener('click', async () => {
+        try {
+          await carregarDossiesAdmin();
+          showToast('Lista de dossiês atualizada.', 'ok');
+        } catch (err) {
+          showBanner('dossies-banner', 'Erro ao atualizar dossiês: ' + err.message, 'err');
+          showToast('Erro ao atualizar dossiês.', 'err');
+        }
+      });
+
+      document.querySelectorAll('.dossie-filter-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.dossie-filter-btn').forEach((b) => b.classList.remove('active'));
+          btn.classList.add('active');
+          state.dossieFilter = btn.dataset.dossieFilter || 'all';
+          renderDossies();
+        });
+      });
+
+      $('d-titulo').addEventListener('input', (e) => {
+        if (state.dossieModalMode === 'create' && !state.slugManuallyEdited) {
+          $('d-slug').value = slugify(e.target.value);
+        }
+      });
+
+      $('d-slug').addEventListener('input', (e) => {
+        state.slugManuallyEdited = Boolean(e.target.value.trim());
+      });
+
+      $('tbody-dossies').addEventListener('click', async (e) => {
+        const btn = e.target.closest('button[data-dossie-action]');
+        if (!btn) return;
+        const action = btn.dataset.dossieAction;
+        const slug = btn.dataset.slug;
+
+        if (action === 'editar') {
+          const dossie = state.dossies.find((d) => d.slug === slug);
+          if (dossie) abrirModalDossie('edit', dossie);
+          return;
+        }
+
+        if (action === 'excluir') {
+          if (!window.confirm(`Excluir permanentemente o dossiê especial "${slug}"?`)) return;
+          try {
+            await apiFetch(`/v2/admin/dossies/${encodeURIComponent(slug)}`, { method: 'DELETE' });
+            showToast(`Dossiê "${slug}" excluído com sucesso.`, 'ok');
+            showBanner('dossies-banner', `Dossiê "${slug}" excluído.`, 'ok');
+            await carregarDossiesAdmin();
+          } catch (err) {
+            showBanner('dossies-banner', 'Erro ao excluir dossiê: ' + err.message, 'err');
+            showToast('Erro ao excluir dossiê: ' + err.message, 'err');
+          }
+        }
+      });
+
+      $('btn-salvar-dossie').addEventListener('click', async () => {
+        hideBanner('modal-dossie-banner');
+        const titulo = $('d-titulo').value.trim();
+        const slug = slugify($('d-slug').value.trim() || titulo);
+        const subtitulo = $('d-subtitulo').value.trim();
+        const categoria = $('d-categoria').value.trim() || 'Eventos';
+        const icone = $('d-icone').value.trim() || 'Globe';
+        const metaInfo = $('d-meta-info').value.trim();
+        const dataInicio = $('d-data-inicio').value;
+        const dataFim = $('d-data-fim').value;
+        const palavrasChave = parseTagsCsv($('d-palavras-chave').value);
+        const paises = parseTagsCsv($('d-paises').value).map((p) => p.toUpperCase());
+
+        if (!titulo) {
+          showBanner('modal-dossie-banner', 'Informe o título do dossiê.', 'err');
+          return;
+        }
+        if (state.dossieModalMode === 'create' && !slug) {
+          showBanner('modal-dossie-banner', 'Informe um slug válido para o dossiê.', 'err');
+          return;
+        }
+        if (state.dossieModalMode === 'create' && !dataInicio) {
+          showBanner('modal-dossie-banner', 'A data de início é obrigatória para criar um dossiê especial.', 'err');
+          return;
+        }
+        if (dataInicio && dataFim && dataFim < dataInicio) {
+          showBanner('modal-dossie-banner', 'A data de término deve ser maior ou igual à data de início.', 'err');
+          return;
+        }
+
+        const btn = $('btn-salvar-dossie');
+        btn.disabled = true;
+
+        try {
+          if (state.dossieModalMode === 'create') {
+            await apiFetch('/v2/admin/dossies', {
+              method: 'POST',
+              body: JSON.stringify({
+                slug,
+                titulo,
+                subtitulo,
+                categoria,
+                icone_ou_bandeira: icone,
+                data_inicio: dataInicio,
+                data_fim: dataFim || null,
+                meta_info: metaInfo || null,
+                regras_classificacao: {
+                  palavras_chave: palavrasChave,
+                  paises
+                }
+              })
+            });
+            fecharModalDossie();
+            showToast(`Dossiê "${titulo}" criado com sucesso!`, 'ok');
+            showBanner('dossies-banner', `Dossiê "${titulo}" criado.`, 'ok');
+          } else {
+            await apiFetch(`/v2/admin/dossies/${encodeURIComponent(state.editingDossieSlug)}`, {
+              method: 'PATCH',
+              body: JSON.stringify({
+                titulo,
+                subtitulo,
+                categoria,
+                icone_ou_bandeira: icone,
+                data_inicio: dataInicio || null,
+                data_fim: dataFim || null,
+                meta_info: metaInfo || null,
+                regras_classificacao: {
+                  palavras_chave: palavrasChave,
+                  paises
+                }
+              })
+            });
+            fecharModalDossie();
+            showToast(`Dossiê "${titulo}" atualizado com sucesso!`, 'ok');
+            showBanner('dossies-banner', `Dossiê "${titulo}" atualizado.`, 'ok');
+          }
+          await carregarDossiesAdmin();
+        } catch (err) {
+          showBanner('modal-dossie-banner', 'Erro ao salvar dossiê: ' + err.message, 'err');
+          showToast('Erro ao salvar dossiê: ' + err.message, 'err');
+        } finally {
+          btn.disabled = false;
         }
       });
 

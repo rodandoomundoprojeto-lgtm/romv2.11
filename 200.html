@@ -33,9 +33,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500;1,6..72,600&family=Instrument+Sans:wght@400;500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500;1,6..72,600&family=Instrument+Sans:wght@400;500;600;700&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/design-system-v3.css">
   <script>
     // Tema inicial: preferência salva pelo usuário ou segue o sistema
     (function () {
@@ -188,6 +189,12 @@
     <section class="thematic-hub-view" id="thematic-hub-view" hidden aria-live="polite"></section>
 
     <div class="hero-mode-bar" id="hero-mode-bar">
+      <!-- Indicador discreto de países com notícias quentes -->
+      <div class="map-hot-news-pill" id="map-hot-news-pill" hidden role="status" aria-live="polite" title="Clique ou passe o cursor sobre os países destacados para ver a notícia quente do momento">
+        <span class="map-hot-news-dot" aria-hidden="true"></span>
+        <span class="map-hot-news-text" id="map-hot-news-text">Pulso suave: países com notícias de última hora (atualizado a cada 5 min)</span>
+      </div>
+
       <div class="view-mode-toggle" id="view-mode-toggle" role="tablist" aria-label="Modo de visualização">
         <button type="button" class="view-mode-btn is-active" id="btn-mode-map" role="tab" aria-selected="true" title="Explorar o mapa-múndi interativo">
           <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
@@ -287,12 +294,6 @@
           </div>
           <div class="map-gesture" id="map-gesto" aria-hidden="true"></div>
 
-          <!-- Indicador discreto de países com notícias quentes no mapa -->
-          <div class="map-hot-news-pill" id="map-hot-news-pill" hidden role="status" aria-live="polite" title="Clique ou passe o cursor sobre os países destacados para ver a notícia quente do momento">
-            <span class="map-hot-news-dot" aria-hidden="true"></span>
-            <span class="map-hot-news-text" id="map-hot-news-text">Pulso suave: países com notícias de última hora (atualizado a cada 5 min)</span>
-          </div>
-
           <!-- Pílulas discretas de atalho rápido na base do mapa -->
           <nav class="map-quick-regions" id="map-quick-regions" aria-label="Atalhos rápidos por continente">
             <button type="button" class="quick-region-pill btn-quick-region is-active" data-region="world" data-cont="world">Todos</button>
@@ -305,8 +306,8 @@
             <button type="button" class="quick-region-pill btn-quick-region" data-region="oceania" data-cont="oceania">Oceania</button>
           </nav>
 
-          <aside class="map-legend" id="map-legend" aria-label="Legenda do mapa">
-            <button type="button" class="map-legend-toggle" id="map-legend-toggle" aria-expanded="true"
+          <aside class="map-legend is-collapsed" id="map-legend" aria-label="Legenda do mapa">
+            <button type="button" class="map-legend-toggle" id="map-legend-toggle" aria-expanded="false"
               aria-controls="map-legend-body" aria-label="Legenda do mapa"
               title="Minimizar ou expandir legenda do mapa">
               <span class="map-legend-head-content">
@@ -1750,7 +1751,7 @@
       <span aria-hidden="true">•</span>
       <a href="/termos" data-spa-link>Termos de Uso</a>
     </div>
-    <p class="footer-credit">© <span id="ano">2026</span> ROM · <span class="footer-version" title="Versão atual do site: v2">v2</span> · Todos os direitos reservados.</p>
+    <p class="footer-credit">© <span id="ano">2026</span> ROM · <span class="footer-version" title="Versão atual do site: v2.1">v2.1</span> · Todos os direitos reservados.</p>
   </footer>
 
   <dialog class="bug-dialog" id="bug-dialog" aria-labelledby="bug-dialog-title">
