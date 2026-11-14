@@ -1351,6 +1351,18 @@ window.RDM = {
       "c": "oceania"
     },
     {
+      "id": "798",
+      "a2": "TV",
+      "n": "Tuvalu",
+      "c": "oceania"
+    },
+    {
+      "id": "772",
+      "a2": "TK",
+      "n": "Tokelau",
+      "c": "oceania"
+    },
+    {
       "id": "051",
       "a2": "AM",
       "n": "Arménia",
@@ -7237,6 +7249,53 @@ window.RDM = {
         {
           "n": "Norfolk Online News",
           "u": "https://www.norfolkonlinenews.com",
+          "b": "I",
+          "s": {},
+          "ind": 1
+        }
+      ]
+    },
+    "TV": {
+      "lang": "en",
+      "dt": "2026-11",
+      "outlets": [
+        {
+          "n": "Tuvalu News (Fenui)",
+          "u": "https://www.tuvaluislands.com",
+          "b": "I",
+          "s": {},
+          "ind": 1
+        },
+        {
+          "n": "RNZ Pacific (Tuvalu)",
+          "u": "https://www.rnz.co.nz/international/pacific-news",
+          "b": "I",
+          "s": {},
+          "ind": 1
+        },
+        {
+          "n": "PINA Pacnews",
+          "u": "https://pina.com.fj",
+          "b": "I",
+          "s": {},
+          "ind": 1
+        }
+      ]
+    },
+    "TK": {
+      "lang": "en",
+      "dt": "2026-11",
+      "outlets": [
+        {
+          "n": "Tokelau Government News",
+          "u": "https://www.tokelau.org.nz",
+          "b": "I",
+          "s": {},
+          "ind": 1
+        },
+        {
+          "n": "RNZ Pacific (Tokelau)",
+          "u": "https://www.rnz.co.nz/international/programmes/datelinepacific",
           "b": "I",
           "s": {},
           "ind": 1

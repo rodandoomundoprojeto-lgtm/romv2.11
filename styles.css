@@ -731,16 +731,19 @@ svg *:focus-visible,
 .country[data-sa='GF'] { fill: var(--c-sa-gf) !important; }
 
 /* Marcadores de ilhas e microterritórios */
-.island-markers-layer {
+.island-markers-layer,
+.island-clusters-layer {
   pointer-events: none;
 }
-.island-marker {
+.island-marker,
+.island-cluster-marker {
   cursor: pointer;
   pointer-events: all;
   outline: none !important;
-  transition: opacity .25s var(--ease);
+  transition: opacity .25s var(--ease), transform .2s var(--ease);
 }
-.island-marker .island-marker-hit {
+.island-marker .island-marker-hit,
+.island-cluster-marker .island-cluster-hit {
   fill: transparent;
   stroke: none;
   cursor: pointer;
@@ -760,6 +763,54 @@ svg *:focus-visible,
   vector-effect: non-scaling-stroke;
   filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.28));
   transition: filter .2s var(--ease), transform .2s var(--ease);
+}
+
+/* Clusters de áreas insulares (Polinésia / Oceania e Caribe / América Central) */
+.island-cluster-marker .island-cluster-halo {
+  fill: var(--c-oceania);
+  fill-opacity: 0.22;
+  stroke: var(--c-oceania);
+  stroke-width: 0.8px;
+  stroke-opacity: 0.55;
+  vector-effect: non-scaling-stroke;
+  transition: fill-opacity .2s var(--ease), stroke-opacity .2s var(--ease);
+}
+.island-cluster-marker .island-cluster-ring {
+  fill: none;
+  stroke: #ffffff;
+  stroke-width: 1.2px;
+  stroke-opacity: 0.9;
+  vector-effect: non-scaling-stroke;
+}
+.island-cluster-marker .island-cluster-dot {
+  fill: var(--c-oceania);
+  stroke: #ffffff;
+  stroke-width: 0.8px;
+  vector-effect: non-scaling-stroke;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.35));
+}
+.island-cluster-marker:hover .island-cluster-halo {
+  fill-opacity: 0.45;
+  stroke-opacity: 0.95;
+}
+.island-cluster-marker:hover .island-cluster-dot {
+  filter: drop-shadow(0 0 5px var(--c-oceania)) brightness(1.3);
+}
+
+/* Cluster do Caribe (América Central) */
+.island-cluster-marker.carib-cluster .island-cluster-halo {
+  fill: var(--c-central);
+  stroke: var(--c-central);
+}
+.island-cluster-marker.carib-cluster .island-cluster-dot {
+  fill: var(--c-central);
+}
+.island-cluster-marker.carib-cluster:hover .island-cluster-dot {
+  filter: drop-shadow(0 0 5px var(--c-central)) brightness(1.3);
+}
+
+.island-marker.is-clustered {
+  display: none !important;
 }
 .island-marker:hover .island-marker-ring,
 .island-marker.cont-hover .island-marker-ring {
@@ -797,18 +848,10 @@ svg *:focus-visible,
   filter: brightness(1.15) saturate(1.2);
 }
 
-/* Ao abrir a América Central ou aproximar/navegar pelas ilhas do Caribe, oculta os círculos das ilhas para não atrapalhar a visualização */
-.map[data-cont='central'] .island-markers-layer,
-.map[data-cont='central'] .island-marker,
-.map.caribe-zoomed .island-markers-layer,
-.map.caribe-zoomed .island-marker {
-  display: none !important;
-}
-
-/* Quando os círculos das ilhas estiverem ocultos na América Central, oculta também a linha explicativa na legenda */
+/* No Caribe e Pacífico, o agrupamento inteligente de ilhas controla a exibição por zoom */
 .map[data-cont='central'] #legend-island-row,
 .map[data-cont='central'] #legend-island-row + .map-legend-divider {
-  display: none !important;
+  display: block;
 }
 
 .tooltip {
@@ -8363,6 +8406,77 @@ button.support-link.topbar-more-btn:hover {
   font-weight: 600;
   flex-shrink: 0;
   white-space: nowrap;
+}
+
+/* Moldura Âmbar nos Países com Notícias Quentes (Sincronizado com o Mapa) */
+.quick-country-card.hot-spot-marker {
+  border: 1.5px solid #f59e0b;
+  box-shadow: 0 0 0 1px rgba(245, 158, 11, 0.28), 0 2px 8px rgba(245, 158, 11, 0.12);
+  position: relative;
+}
+
+.quick-country-card.hot-spot-marker:hover {
+  border-color: #d97706;
+  box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.45), 0 4px 12px rgba(245, 158, 11, 0.22);
+  transform: translateY(-2px);
+}
+
+.quick-country-card.hot-spot-marker .quick-country-badge {
+  background: rgba(245, 158, 11, 0.12);
+  color: #b45309;
+  border: 1px solid rgba(245, 158, 11, 0.28);
+}
+
+.quick-country-hot-badge {
+  display: inline-block;
+  font-size: 0.85rem;
+  margin-left: 5px;
+  vertical-align: middle;
+  line-height: 1;
+  filter: drop-shadow(0 1px 2px rgba(245, 158, 11, 0.4));
+}
+
+/* Pulso visual suave sincronizado com o mapa (durante o ciclo ativo de ~14s) */
+@keyframes hotCardAmberPulse {
+  0%, 100% {
+    border-color: rgba(245, 158, 11, 0.7);
+    box-shadow: 0 0 0 1px rgba(245, 158, 11, 0.22), 0 2px 6px rgba(245, 158, 11, 0.08);
+  }
+  50% {
+    border-color: #f59e0b;
+    box-shadow: 0 0 0 2.5px rgba(245, 158, 11, 0.55), 0 4px 14px rgba(245, 158, 11, 0.32);
+  }
+}
+
+.quick-country-card.hot-spot-pulsing {
+  animation: hotCardAmberPulse 2.6s ease-in-out 5;
+}
+
+.quick-chip.hot-spot-marker {
+  border-color: #f59e0b;
+  box-shadow: 0 0 0 1px rgba(245, 158, 11, 0.3);
+}
+
+/* Suporte ao Modo Escuro */
+[data-theme='dark'] .quick-country-card.hot-spot-marker {
+  border: 1.5px solid #f59e0b;
+  box-shadow: 0 0 0 1px rgba(245, 158, 11, 0.35), 0 2px 8px rgba(0, 0, 0, 0.35);
+}
+
+[data-theme='dark'] .quick-country-card.hot-spot-marker:hover {
+  border-color: #fbbf24;
+  box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.5), 0 4px 14px rgba(245, 158, 11, 0.3);
+}
+
+[data-theme='dark'] .quick-country-card.hot-spot-marker .quick-country-badge {
+  background: rgba(245, 158, 11, 0.2);
+  color: #fbbf24;
+  border: 1px solid rgba(245, 158, 11, 0.35);
+}
+
+[data-theme='dark'] .quick-chip.hot-spot-marker {
+  border-color: #f59e0b;
+  box-shadow: 0 0 0 1px rgba(245, 158, 11, 0.35);
 }
 
 @media (max-width: 768px) {

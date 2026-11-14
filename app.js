@@ -190,7 +190,10 @@
     // Oceania
     AU: 'Inglês', NZ: 'Inglês e Maori', PG: 'Inglês, Tok Pisin e Hiri Motu',
     FJ: 'Inglês e Fijiano', SB: 'Inglês e Pijin', VU: 'Bislama, Francês e Inglês',
-    WS: 'Samoano e Inglês', TO: 'Tonganês e Inglês'
+    WS: 'Samoano e Inglês', TO: 'Tonganês e Inglês', TV: 'Tuvaluano e Inglês',
+    TK: 'Tokelauano e Inglês', CK: 'Maori das Ilhas Cook e Inglês', NU: 'Niueano e Inglês',
+    PF: 'Francês e Taitiano', WF: 'Francês e Wallisiano', AS: 'Samoano e Inglês',
+    KI: 'Quiribatiano e Inglês', PN: 'Pitcairnês e Inglês'
   };
 
   var BIAS = { E: 'Esquerda', I: 'Imparcial', D: 'Direita' };
@@ -215,6 +218,9 @@
 
   if (byA2['CL']) {
     byId['152-easter'] = { id: '152-easter', a2: 'CL', n: 'Ilha de Páscoa (Chile)', c: 'oceania', islandName: 'Ilha de Páscoa (Chile)', islandFlag: 'cl', m: byA2['CL'].m, orig: byA2['CL'] };
+  }
+  if (byA2['EC']) {
+    byId['218-galapagos'] = { id: '218-galapagos', a2: 'EC', n: 'Ilhas Galápagos (Equador)', c: 'sul', islandName: 'Ilhas Galápagos (Equador)', islandFlag: 'ec', m: byA2['EC'].m, orig: byA2['EC'] };
   }
   if (byA2['US']) {
     byId['840-hawaii'] = { id: '840-hawaii', a2: 'US', n: 'Havaí (Estados Unidos)', c: 'oceania', islandName: 'Havaí (Estados Unidos)', islandFlag: 'us', m: byA2['US'].m, orig: byA2['US'] };
@@ -557,6 +563,9 @@
       if (us) list.push({ id: '840-hawaii', a2: 'US', n: 'Havaí (Estados Unidos)', c: 'oceania', islandName: 'Havaí (Estados Unidos)', islandFlag: 'us', m: us.m, orig: us });
       var cl = byA2['CL'];
       if (cl) list.push({ id: '152-easter', a2: 'CL', n: 'Ilha de Páscoa (Chile)', c: 'oceania', islandName: 'Ilha de Páscoa (Chile)', islandFlag: 'cl', m: cl.m, orig: cl });
+    } else if (k === 'sul') {
+      var ec = byA2['EC'];
+      if (ec) list.push({ id: '218-galapagos', a2: 'EC', n: 'Ilhas Galápagos (Equador)', c: 'sul', islandName: 'Ilhas Galápagos (Equador)', islandFlag: 'ec', m: ec.m, orig: ec });
     } else if (k === 'africa') {
       var es = byA2['ES'];
       if (es) list.push({ id: '724-canarias', a2: 'ES', n: 'Ilhas Canárias (Espanha)', c: 'africa', islandName: 'Ilhas Canárias (Espanha)', islandFlag: 'es', m: es.m, orig: es });
@@ -595,6 +604,177 @@
       if (/youtube/.test(src)) return true;
     }
     return false;
+  }
+
+  function isGenericOutletUrl(rawUrl) {
+    var u = String(rawUrl || '').trim();
+    if (!u || u === '#' || u.charAt(0) === '/') return true;
+    try {
+      var parsed = new URL(u);
+      var search = String(parsed.search || '').toLowerCase();
+      if (/[?&](q|s|query|busca|search|id|p)=/.test(search)) return false;
+      var segs = String(parsed.pathname || '').split('/').filter(Boolean);
+      if (segs.length === 0) return true;
+      var last = segs[segs.length - 1];
+      var hasDigits = /\d/.test(parsed.pathname);
+      if (!hasDigits && segs.length === 1 && last.length < 18 && (last.match(/-/g) || []).length < 2) {
+        return true;
+      }
+      if (!hasDigits && segs.length === 2 && last.length < 18 && (last.match(/-/g) || []).length < 2) {
+        return true;
+      }
+      return false;
+    } catch (e) {
+      return true;
+    }
+  }
+
+  function buildRelatedArticleSearchUrl(title, outletName, rawUrl) {
+    var dom = '';
+    try {
+      if (rawUrl && rawUrl !== '#') {
+        dom = new URL(rawUrl).hostname.replace(/^www\./i, '');
+      }
+    } catch (e) {}
+    var cleanTitle = String(title || '').replace(/\s+/g, ' ').trim();
+    var cleanOutlet = String(outletName || '').replace(/\s+/g, ' ').trim();
+    var terms = [];
+    if (dom) terms.push('site:' + dom);
+    else if (cleanOutlet) terms.push(cleanOutlet);
+    if (cleanTitle) terms.push(cleanTitle);
+    var q = terms.join(' ').trim() || cleanOutlet || 'notícias';
+    return 'https://www.google.com/search?q=' + encodeURIComponent(q);
+  }
+
+  function resolveRelatedArticleUrl(rawUrl, title, outletName) {
+    var u = String(rawUrl || '').trim();
+    if (!u || u === '#' || isGenericOutletUrl(u)) {
+      return buildRelatedArticleSearchUrl(title, outletName, u);
+    }
+    return u;
+  }
+
+  function buildArticleLinkAttrs(rawUrl, title, outletName) {
+    var u = String(rawUrl || '').trim();
+    var resolved = resolveRelatedArticleUrl(u, title, outletName);
+    if (!u || u === '#' || isGenericOutletUrl(u)) {
+      var dom = '';
+      try { if (u && u !== '#') dom = new URL(u).hostname.replace(/^www\./i, ''); } catch (e) {}
+      return {
+        href: resolved,
+        isGeneric: true,
+        attrs: ' data-resolve-article="1" data-resolve-outlet="' + esc(outletName || '') + '" data-resolve-domain="' + esc(dom) + '" data-resolve-title="' + esc(title || '') + '"'
+      };
+    }
+    return { href: resolved, isGeneric: false, attrs: '' };
+  }
+
+  function resolverLinksGenericosNaView(containerEl, queryTerm, paisIso, extraOutlets) {
+    if (!containerEl || location.protocol === 'file:') return;
+    var links = containerEl.querySelectorAll('a[data-resolve-article="1"]');
+    if (!links || !links.length) return;
+    var q = String(queryTerm || '').trim();
+    if (!q) return;
+
+    var a2 = String(paisIso || 'BR').toUpperCase();
+    var cObj = byA2[a2] || byA2['BR'];
+    var outlets = [];
+    var seenDom = {};
+
+    function addOutletEntry(name, rawU, domHint) {
+      var dom = domHint || '';
+      if (!dom && rawU) {
+        try { dom = new URL(rawU).hostname.replace(/^www\./i, ''); } catch (e) {}
+      }
+      if (!dom || seenDom[dom]) return;
+      seenDom[dom] = true;
+      outlets.push({
+        n: name || dom,
+        u: rawU || ('https://' + dom + '/'),
+        d: dom,
+        b: 'I',
+        pais: a2
+      });
+    }
+
+    if (Array.isArray(extraOutlets)) {
+      extraOutlets.forEach(function (o) {
+        if (o) addOutletEntry(o.n || o.veiculo, o.u || o.url, o.d);
+      });
+    }
+    links.forEach(function (a) {
+      addOutletEntry(a.getAttribute('data-resolve-outlet'), '', a.getAttribute('data-resolve-domain'));
+    });
+    if (cObj && cObj.m && Array.isArray(cObj.m.outlets)) {
+      cObj.m.outlets.slice(0, 12).forEach(function (o) {
+        if (outlets.length < 22) addOutletEntry(o.n, o.u, o.d);
+      });
+    }
+    if (!outlets.length) return;
+
+    fetch('/api/busca-assunto?_t=' + Date.now(), {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        q: q,
+        country: a2,
+        countryName: cObj ? cObj.n : a2,
+        periodo: '30d',
+        outlets: outlets
+      })
+    })
+      .then(function (r) { return r && r.ok ? r.json() : null; })
+      .then(function (data) {
+        var groups = (data && Array.isArray(data.grupos))
+          ? data.grupos
+          : ((data && Array.isArray(data.resultados)) ? data.resultados : []);
+        if (!groups.length) return;
+
+        links.forEach(function (a) {
+          var targetDom = String(a.getAttribute('data-resolve-domain') || '').toLowerCase();
+          var targetName = norm(a.getAttribute('data-resolve-outlet') || '');
+          var targetTitle = norm(a.getAttribute('data-resolve-title') || '');
+          var titleTokens = targetTitle.split(/\s+/).filter(function (w) { return w.length >= 4; });
+
+          var matchedGroup = null;
+          for (var gi = 0; gi < groups.length; gi++) {
+            var g = groups[gi];
+            var gDom = String(g.dominio || '').replace(/^www\./i, '').toLowerCase();
+            if (!gDom && g.url) {
+              try { gDom = new URL(g.url).hostname.replace(/^www\./i, '').toLowerCase(); } catch (e) {}
+            }
+            var gName = norm(g.veiculo || '');
+            if ((targetDom && gDom && (gDom === targetDom || gDom.indexOf(targetDom) > -1 || targetDom.indexOf(gDom) > -1)) ||
+                (targetName && gName && (gName === targetName || gName.indexOf(targetName) > -1 || targetName.indexOf(gName) > -1))) {
+              matchedGroup = g;
+              break;
+            }
+          }
+          if (!matchedGroup) return;
+
+          var arts = Array.isArray(matchedGroup.artigos) ? matchedGroup.artigos : (Array.isArray(matchedGroup.itens) ? matchedGroup.itens : []);
+          var bestArt = null;
+          var bestScore = -1;
+          arts.forEach(function (art) {
+            var artUrl = art && (art.url || art.link);
+            if (!artUrl || isGenericOutletUrl(artUrl)) return;
+            var artTit = norm(art.titulo || art.title || '');
+            var sc = 0;
+            titleTokens.forEach(function (tk) {
+              if (artTit.indexOf(tk) > -1) sc += 2;
+            });
+            if (sc > bestScore) {
+              bestScore = sc;
+              bestArt = art;
+            }
+          });
+          if (bestArt && (bestArt.url || bestArt.link)) {
+            a.setAttribute('href', bestArt.url || bestArt.link);
+            a.removeAttribute('data-resolve-article');
+          }
+        });
+      })
+      .catch(function () {});
   }
   var ICON_TRANSLATE = '<svg viewBox="0 0 24 24" aria-hidden="true" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></svg>';
   var ICON_STAR_ON = '<svg viewBox="0 0 24 24" aria-hidden="true" width="16" height="16" fill="currentColor"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5-4.8-4.6 6.6-.9L12 2.5z"/></svg>';
@@ -2102,6 +2282,34 @@
   var feats = topojson.feature(world, world.objects.countries).features
     .filter(function (f) { return byId[f.id]; });
 
+  // Feições virtuais para microterritórios insulares da Oceania ausentes no TopoJSON
+  if (!feats.some(function (f) { return f.id === '798'; }) && byId['798']) {
+    feats.push({
+      type: 'Feature',
+      id: '798',
+      geometry: {
+        type: 'Polygon',
+        coordinates: [[
+          [177.63, -7.10], [177.67, -7.10], [177.67, -7.12], [177.63, -7.12], [177.63, -7.10]
+        ]]
+      },
+      properties: { name: 'Tuvalu' }
+    });
+  }
+  if (!feats.some(function (f) { return f.id === '772'; }) && byId['772']) {
+    feats.push({
+      type: 'Feature',
+      id: '772',
+      geometry: {
+        type: 'Polygon',
+        coordinates: [[
+          [-171.86, -9.19], [-171.83, -9.19], [-171.83, -9.21], [-171.86, -9.21], [-171.86, -9.19]
+        ]]
+      },
+      properties: { name: 'Tokelau' }
+    });
+  }
+
   function islandInfo(c, lon, lat, k) {
     if (!c) return null;
     if (c.a2 === 'US' && k === 'oceania') {
@@ -2112,6 +2320,9 @@
     }
     if (c.a2 === 'CL' && lon < -100) {
       return { name: 'Ilha de Páscoa (Chile)', flag: 'cl' };
+    }
+    if (c.a2 === 'EC' && lon < -85) {
+      return { name: 'Ilhas Galápagos (Equador)', flag: 'ec' };
     }
     if (c.a2 === 'FR' && k === 'africa') {
       if (lon < 50) return { name: 'Mayotte (França)', flag: 'yt' };
@@ -2136,6 +2347,7 @@
       case 'US': if (lon < -150 && lon > -179 && lat < 30) return 'oceania'; break;
       case 'ES': if (lat < 30 && lon < -12) return 'africa'; break;
       case 'CL': if (lon < -100) return 'oceania'; return 'sul';
+      case 'EC': if (lon < -85) return 'sul'; break;
       case 'TR': if (lon < 29.5 && lat > 40.5) return 'europa'; return 'asia';
       case 'RU': return (lon > 0 && (lon < 66 || (lat > 76 && lon < 70))) ? 'europa' : 'asia';
     }
@@ -2359,18 +2571,214 @@
     .attr('dy', function (d) { return d.type === 'meridian' ? '4px' : '-5px'; })
     .text(function (d) { return d.labelTitle; });
 
+  /* ---------- Paleta Colorida Própria para Ilhas (Pacífico e Caribe) ---------- */
+  var ISLAND_COLORS = {
+    // Polinésia / Oceania
+    WS: 'var(--p2)',            // Samoa (verde)
+    AS: 'var(--p4)',            // Samoa Americana (amarelo)
+    TO: 'var(--p0)',            // Tonga (azul)
+    WF: 'var(--p1)',            // Wallis e Futuna (laranja)
+    TK: 'var(--p5)',            // Tokelau (ciano)
+    NU: 'var(--p6)',            // Niue (roxo)
+    CK: 'var(--p3)',            // Ilhas Cook (vermelho)
+    PF: 'var(--p1)',            // Polinésia Francesa (laranja vibrante)
+    PN: 'var(--p2)',            // Ilhas Pitcairn (verde)
+    TV: 'var(--p4)',            // Tuvalu (amarelo)
+    KI: 'var(--p0)',            // Kiribati (azul)
+    FJ: 'var(--p5)',            // Fiji (ciano)
+    VU: 'var(--p6)',            // Vanuatu (roxo)
+    NR: 'var(--p3)',            // Nauru (vermelho)
+    PW: 'var(--p2)',            // Palau (verde)
+    FM: 'var(--p4)',            // Micronésia (amarelo)
+    MH: 'var(--p1)',            // Ilhas Marshall (laranja)
+    '840-hawaii': 'var(--p3)',  // Havaí (vermelho-coral próprio)
+    '152-easter': 'var(--p6)',  // Ilha de Páscoa (roxo próprio)
+    '218-galapagos': 'var(--p2)', // Galápagos (verde próprio)
+
+    // Caribe (cores ricas e alternadas ao aproximar)
+    PR: 'var(--p0)',
+    VI: 'var(--p4)',
+    VG: 'var(--p2)',
+    AI: 'var(--p5)',
+    MF: 'var(--p6)',
+    SX: 'var(--p1)',
+    BL: 'var(--p3)',
+    KN: 'var(--p2)',
+    AG: 'var(--p1)',
+    MS: 'var(--p3)',
+    '250-guadeloupe': 'var(--p0)',
+    DM: 'var(--p2)',
+    '250-martinique': 'var(--p4)',
+    LC: 'var(--p6)',
+    BB: 'var(--p5)',
+    VC: 'var(--p1)',
+    GD: 'var(--p3)',
+    TT: 'var(--p0)',
+    AW: 'var(--p2)',
+    CW: 'var(--p4)',
+    '528-bonaire': 'var(--p6)',
+    '528-saba': 'var(--p1)',
+    '528-st-eustatius': 'var(--p3)',
+    BS: 'var(--p5)',
+    TC: 'var(--p1)',
+    KY: 'var(--p3)'
+  };
+
+  function getIslandColor(p) {
+    if (!p) return 'var(--p5)';
+    var pId = String(p.id || '');
+    if (ISLAND_COLORS[pId]) return ISLAND_COLORS[pId];
+    var a2 = (p.country && p.country.a2) || '';
+    if (ISLAND_COLORS[a2]) return ISLAND_COLORS[a2];
+    var pal = ['var(--p0)', 'var(--p1)', 'var(--p2)', 'var(--p3)', 'var(--p4)', 'var(--p5)', 'var(--p6)'];
+    var hash = 0;
+    var str = pId + a2 + (p.islandName || '');
+    for (var i = 0; i < str.length; i++) hash = (hash * 31 + str.charCodeAt(i)) & 0xffffffff;
+    return pal[Math.abs(hash) % pal.length];
+  }
+
   var islandGroup = gZoom.append('g').attr('class', 'island-markers-layer');
   var islandMarkerSel = islandGroup.selectAll('g.island-marker')
     .data(islandParts)
     .join('g')
     .attr('class', 'island-marker')
     .attr('data-c', function (p) { return p.c; })
-    .style('fill', function (p) { return 'var(--c-' + p.c + ')'; })
+    .style('fill', function (p) {
+      if (p.isIsland || p.islandName) return getIslandColor(p);
+      return 'var(--c-' + p.c + ')';
+    })
     .attr('tabindex', -1);
 
   islandMarkerSel.append('circle').attr('class', 'island-marker-hit').attr('r', 9);
   islandMarkerSel.append('circle').attr('class', 'island-marker-ring').attr('r', 4.2);
   islandMarkerSel.append('circle').attr('class', 'island-marker-dot').attr('r', 2.2);
+
+  /* ---------- Agrupamento Dinâmico por Área no Pacífico (Polinésia / Oceania) e Caribe ---------- */
+  var PACIFIC_CLUSTERS = [
+    {
+      id: 'cluster-polynesia-central',
+      name: 'Polinésia Central',
+      centroid: [-173.0, -14.5],
+      codes: ['WS', 'AS', 'TO', 'WF', 'TK'],
+      c: 'oceania'
+    },
+    {
+      id: 'cluster-cook-niue',
+      name: 'Ilhas Cook e Niue',
+      centroid: [-164.5, -20.0],
+      codes: ['CK', 'NU'],
+      c: 'oceania'
+    },
+    {
+      id: 'cluster-french-polynesia',
+      name: 'Polinésia Oriental e Pitcairn',
+      centroid: [-142.0, -19.5],
+      codes: ['PF', 'PN'],
+      c: 'oceania'
+    },
+    {
+      id: 'cluster-caribe-antilhas',
+      name: 'Pequenas Antilhas (Caribe)',
+      centroid: [-61.3, 14.8],
+      codes: [],
+      c: 'central'
+    }
+  ];
+
+  var PACIFIC_CLUSTERED_A2 = {
+    WS: 1, AS: 1, TO: 1, WF: 1, TK: 1, CK: 1, NU: 1, PF: 1, PN: 1
+  };
+
+  // No Caribe, não deixar círculos na visão geral para não poluir a imagem
+  var CARIBBEAN_CLUSTERED_A2 = {
+    AG: 1, AI: 1, AW: 1, BB: 1, BL: 1, BM: 1, BS: 1, CU: 1, CW: 1, DM: 1, DO: 1,
+    GD: 1, HT: 1, JM: 1, KN: 1, KY: 1, LC: 1, MF: 1, MS: 1, PR: 1, SX: 1, TC: 1,
+    TT: 1, VC: 1, VG: 1, VI: 1
+  };
+  var CARIBBEAN_CLUSTERED_IDS = {
+    '250-guadeloupe': 1, '250-martinique': 1, '528-bonaire': 1, '528-saba': 1, '528-st-eustatius': 1
+  };
+
+  var islandClusterGroup = gZoom.append('g').attr('class', 'island-clusters-layer');
+  var islandClusterSel = islandClusterGroup.selectAll('g.island-cluster-marker')
+    .data(PACIFIC_CLUSTERS)
+    .join('g')
+    .attr('class', function (d) {
+      return 'island-cluster-marker' + (d.c === 'central' ? ' carib-cluster' : '');
+    })
+    .attr('data-cluster-id', function (d) { return d.id; })
+    .style('fill', function (d) { return 'var(--c-' + d.c + ')'; })
+    .style('cursor', 'pointer');
+
+  islandClusterSel.append('circle').attr('class', 'island-cluster-hit').attr('r', 16);
+  islandClusterSel.append('circle').attr('class', 'island-cluster-halo').attr('r', 8.5);
+  islandClusterSel.append('circle').attr('class', 'island-cluster-ring').attr('r', 5.5);
+  islandClusterSel.append('circle').attr('class', 'island-cluster-dot').attr('r', 3.0);
+
+  islandClusterSel.on('click', function (e, d) {
+    e.stopPropagation();
+    if (d.c === 'central') {
+      state.cont = 'central';
+      state.focusCaribe = true;
+      setZoomedState(true);
+      applyZoom(true);
+      updateFocusCaribeBtn();
+    } else {
+      state.cont = 'oceania';
+      state.focusEastOceania = true;
+      setZoomedState(true);
+      applyZoom(true);
+      updateFocusOceaniaBtn();
+    }
+  });
+
+  islandClusterSel
+    .on('mousemove', function (e, d) {
+      showTip(e, d.name);
+    })
+    .on('mouseleave', function () {
+      if (tip) tip.hidden = true;
+    });
+
+  function updateIslandClustering(currentK) {
+    var kVal = currentK !== undefined ? currentK : ((svg.node() && d3.zoomTransform(svg.node()).k) || 1);
+    var isZoomedInPacific = (kVal >= 3.0) || isEastOceaniaZoomed();
+    var isZoomedInCaribe = (kVal >= 3.0) || isCaribeZoomed();
+
+    if (mapEl) {
+      mapEl.classList.toggle('pacific-zoomed', isZoomedInPacific);
+      mapEl.classList.toggle('caribe-zoomed', isZoomedInCaribe);
+    }
+    if (islandClusterSel) {
+      islandClusterSel.each(function (d) {
+        var isZoomed = d.c === 'central' ? isZoomedInCaribe : isZoomedInPacific;
+        d3.select(this)
+          .style('display', isZoomed ? 'none' : '')
+          .style('opacity', isZoomed ? 0 : 1);
+      });
+    }
+    if (islandMarkerSel) {
+      islandMarkerSel.each(function (p) {
+        var a2 = (p.country && p.country.a2) || '';
+        var pId = String(p.id || '');
+        var isPacClustered = PACIFIC_CLUSTERED_A2[a2];
+        var isCaribIsland = (p.c === 'central' && a2 !== 'BM') || (a2 !== 'BM' && CARIBBEAN_CLUSTERED_A2[a2]) || CARIBBEAN_CLUSTERED_IDS[pId];
+
+        if (isPacClustered) {
+          var isCurrent = state.country && (state.country.a2 === a2 || state.country.id === p.id);
+          var hide = !isZoomedInPacific && !isCurrent;
+          d3.select(this)
+            .classed('is-clustered', hide)
+            .style('display', hide ? 'none' : '');
+        } else if (isCaribIsland) {
+          // No Caribe: nunca exibir marcadores circulares (nem na visão geral, nem após aproximar)
+          d3.select(this)
+            .classed('is-clustered', true)
+            .style('display', 'none');
+        }
+      });
+    }
+  }
 
   var mapBounds = null;
 
@@ -2398,6 +2806,13 @@
     if (islandMarkerSel) {
       islandMarkerSel.attr('transform', function (p) {
         var pt = projection(p.centroid);
+        if (!pt || isNaN(pt[0]) || isNaN(pt[1])) return 'translate(-9999,-9999)';
+        return 'translate(' + pt[0] + ',' + pt[1] + ')';
+      });
+    }
+    if (islandClusterSel) {
+      islandClusterSel.attr('transform', function (d) {
+        var pt = projection(d.centroid);
         if (!pt || isNaN(pt[0]) || isNaN(pt[1])) return 'translate(-9999,-9999)';
         return 'translate(' + pt[0] + ',' + pt[1] + ')';
       });
@@ -2531,6 +2946,13 @@
         islandMarkerSel.selectAll('.island-marker-dot').attr('r', 2.2 * s);
         islandMarkerSel.selectAll('.island-marker-ring').attr('r', 4.2 * s);
         islandMarkerSel.selectAll('.island-marker-hit').attr('r', Math.max(6, 9 * s));
+        if (islandClusterSel) {
+          islandClusterSel.selectAll('.island-cluster-dot').attr('r', 3.0 * s);
+          islandClusterSel.selectAll('.island-cluster-ring').attr('r', 5.5 * s);
+          islandClusterSel.selectAll('.island-cluster-halo').attr('r', 8.5 * s);
+          islandClusterSel.selectAll('.island-cluster-hit').attr('r', Math.max(10, 16 * s));
+        }
+        updateIslandClustering(e.transform.k);
         if (state.cont === 'central') {
           var isHighZoomCaribe = isCaribeZoomed() || e.transform.k >= 7;
           if (mapEl) mapEl.classList.toggle('caribe-zoomed', isHighZoomCaribe);
@@ -2807,12 +3229,16 @@
     if (islandMarkerSel) {
       islandMarkerSel
         .style('fill', function (p) {
+          if (p.isIsland || p.islandName) {
+            return getIslandColor(p);
+          }
           if (state.cont && p.c === state.cont) {
             if (state.cont === 'sul') {
               if (p.country.a2 === 'BR') return 'var(--c-sa-br)';
               if (p.country.a2 === 'PE') return 'var(--c-sa-pe)';
               if (p.country.a2 === 'UY') return 'var(--c-sa-uy)';
               if (p.country.a2 === 'FR') return 'var(--c-sa-gf)';
+              if (p.country.a2 === 'EC') return 'var(--c-sul)';
             }
             return 'var(--p' + (p.country.pi || 0) + ')';
           }
@@ -2832,6 +3258,7 @@
     backBtn.hidden = !state.cont;
     updateFocusCaribeBtn();
     updateFocusOceaniaBtn();
+    updateIslandClustering();
     mapEl.setAttribute('data-open', String(!!state.cont));
     var isWorldMode = !state.cont && !state.country;
     var shouldHidePanel = isWorldMode || !!state.panelCollapsed;
@@ -3377,6 +3804,48 @@
     pill.hidden = false;
   }
 
+  function syncQuickCountryCardsHotNews() {
+    var cards = document.querySelectorAll('.quick-country-card');
+    if (cards && cards.length) {
+      cards.forEach(function (card) {
+        var a2 = String(card.getAttribute('data-country-a2') || '').toUpperCase().trim();
+        var hasHot = !!(a2 && hotNewsByCountry && hotNewsByCountry[a2]);
+        if (hasHot) {
+          card.classList.add('hot-spot-marker');
+          if (hotPulseActive) {
+            card.classList.add('hot-spot-pulsing');
+          } else {
+            card.classList.remove('hot-spot-pulsing');
+          }
+          var item = hotNewsByCountry[a2];
+          if (item && (item.title || item.summary)) {
+            card.setAttribute('title', '🔥 Notícia quente em tempo real: ' + (item.title || item.summary));
+          }
+        } else {
+          card.classList.remove('hot-spot-marker', 'hot-spot-pulsing');
+        }
+      });
+    }
+
+    var chips = document.querySelectorAll('.quick-popular-chips .quick-chip');
+    if (chips && chips.length) {
+      chips.forEach(function (chip) {
+        var code = String(chip.getAttribute('data-quick-country') || '').toUpperCase().trim();
+        var hasHot = !!(code && hotNewsByCountry && hotNewsByCountry[code]);
+        if (hasHot) {
+          chip.classList.add('hot-spot-marker');
+          if (hotPulseActive) {
+            chip.classList.add('hot-spot-pulsing');
+          } else {
+            chip.classList.remove('hot-spot-pulsing');
+          }
+        } else {
+          chip.classList.remove('hot-spot-marker', 'hot-spot-pulsing');
+        }
+      });
+    }
+  }
+
   function triggerHotNewsPulseCycle() {
     hotNewsByCountry = buildHotNewsMapFromEditorial();
     hotPulseActive = true;
@@ -3393,6 +3862,7 @@
           return !!(p.country && p.country.a2 && hotNewsByCountry[p.country.a2]);
         });
     }
+    syncQuickCountryCardsHotNews();
     if (hotPulseTimer) clearTimeout(hotPulseTimer);
     // Pulso discreto dura apenas ~14 segundos (5 ciclos suaves) e depois para, evitando animação contínua
     hotPulseTimer = setTimeout(function () {
@@ -3401,6 +3871,7 @@
       if (countrySel) {
         countrySel.classed('hot-spot-pulsing', false);
       }
+      syncQuickCountryCardsHotNews();
     }, 14000);
   }
 
@@ -4940,7 +5411,8 @@
       h += '<h5 class="timeline-item-title">' + esc(ev.titulo) + '</h5>';
       h += '<p class="timeline-item-summary">' + esc(ev.resumo) + '</p>';
       h += '<div class="timeline-item-actions">';
-      h += '<a class="timeline-article-link" href="' + esc(ev.urlMateria) + '" target="_blank" rel="noopener noreferrer">' + esc(ev.tituloMateria || ((isVideoContent(ev.urlMateria, ev) ? 'Assistir vídeo em ' : 'Ler matéria em ') + ev.fonte)) + ' ' + ICON_ARROW + '</a>';
+      var evLink = buildArticleLinkAttrs(ev.urlMateria, ev.tituloMateria || ev.titulo, ev.fonte);
+      h += '<a class="timeline-article-link" href="' + esc(evLink.href) + '"' + evLink.attrs + ' target="_blank" rel="noopener noreferrer">' + esc(ev.tituloMateria || ((isVideoContent(ev.urlMateria, ev) ? 'Assistir vídeo em ' : 'Ler matéria em ') + ev.fonte)) + ' ' + ICON_ARROW + '</a>';
       h += '<button type="button" class="btn btn-sm btn-outline timeline-coverage-btn" data-coverage-query="' + esc(ev.termoCobertura || ev.titulo) + '">Ver cobertura completa</button>';
       h += '</div>';
       h += '</div>';
@@ -7343,7 +7815,8 @@
           h += '<strong class="comp-spectrum-outlet">' + esc(mItem.veiculo) + '</strong>';
           h += '<span class="comp-spectrum-pill spec-pill-' + esc(specCodeLow) + '">' + esc(grp.rotulo) + '</span>';
           h += '</div>';
-          h += '<h4 class="comp-spectrum-headline"><a href="' + esc(mItem.url) + '" target="_blank" rel="noopener noreferrer">' + esc(mItem.titulo) + '</a></h4>';
+          var mLink = buildArticleLinkAttrs(mItem.url, mItem.titulo, mItem.veiculo);
+          h += '<h4 class="comp-spectrum-headline"><a href="' + esc(mLink.href) + '"' + mLink.attrs + ' target="_blank" rel="noopener noreferrer">' + esc(mItem.titulo) + '</a></h4>';
           if (mItem.enfoque) {
             h += '<p class="comp-spectrum-focus">' + esc(mItem.enfoque) + '</p>';
           }
@@ -7455,8 +7928,9 @@
         h += '<p class="comparison-card-summary">' + esc(p.resumo) + '</p>';
       }
 
+      var pLink = buildArticleLinkAttrs(p.urlMateria, p.tituloPT, p.veiculo);
       h += '<div class="comparison-card-foot">';
-      h += '<a class="comparison-outlet-link" href="' + esc(p.urlMateria) + '" target="_blank" rel="noopener noreferrer">' +
+      h += '<a class="comparison-outlet-link" href="' + esc(pLink.href) + '"' + pLink.attrs + ' target="_blank" rel="noopener noreferrer">' +
            (isVideoContent(p.urlMateria, p) ? 'Assistir vídeo original em ' : 'Ler matéria original em ') + esc(p.veiculo) + ' ' + ICON_ARROW + '</a>';
       h += '</div>';
       h += '</article>';
@@ -7506,8 +7980,9 @@
         h += '<p class="comparison-card-summary">' + esc(p.resumo) + '</p>';
       }
 
+      var pLink = buildArticleLinkAttrs(p.urlMateria, p.tituloPT, p.veiculo);
       h += '<div class="comparison-card-foot">';
-      h += '<a class="comparison-outlet-link" href="' + esc(p.urlMateria) + '" target="_blank" rel="noopener noreferrer">' +
+      h += '<a class="comparison-outlet-link" href="' + esc(pLink.href) + '"' + pLink.attrs + ' target="_blank" rel="noopener noreferrer">' +
            (isVideoContent(p.urlMateria, p) ? 'Assistir vídeo original em ' : 'Ler matéria original em ') + esc(p.veiculo) + ' ' + ICON_ARROW + '</a>';
       h += '</div>';
       h += '</article>';
@@ -7530,7 +8005,8 @@
         h += '<h4 class="comparison-secondary-headline">' + esc(s.tituloPT) + '</h4>';
         h += '<p class="comparison-secondary-focus"><strong>Enfoque:</strong> ' + esc(s.enfoque) + '</p>';
         h += '</div>';
-        h += '<a class="comparison-secondary-link" href="' + esc(s.urlMateria) + '" target="_blank" rel="noopener noreferrer">' + (isVideoContent(s.urlMateria, s) ? 'Assistir vídeo ' : 'Ler matéria ') + ICON_ARROW + '</a>';
+        var sLink = buildArticleLinkAttrs(s.urlMateria, s.tituloPT, s.veiculo);
+        h += '<a class="comparison-secondary-link" href="' + esc(sLink.href) + '"' + sLink.attrs + ' target="_blank" rel="noopener noreferrer">' + (isVideoContent(s.urlMateria, s) ? 'Assistir vídeo ' : 'Ler matéria ') + ICON_ARROW + '</a>';
         h += '</li>';
       });
       h += '</ul>';
@@ -7573,6 +8049,12 @@
     h += '</div>';
 
     compView.innerHTML = h;
+    resolverLinksGenericosNaView(
+      compView,
+      extrairTermoAssuntoBusca(tituloFato, compData.categoria) || tituloFato,
+      targetIso || 'BR',
+      perspectivas.map(function (p) { return { n: p.veiculo, u: p.urlMateria }; })
+    );
 
     var pageTitle = tituloFato + ' — Comparação Editorial | Rodando o Mundo';
     var pageDesc = 'Compare como ' + totalVeiculos + ' veículos de ' + paisesCobertura + ' países cobrem: "' + tituloFato + '". Veja o que é consenso e as diferentes perspectivas.';
@@ -8104,16 +8586,17 @@
     (hub.ultimasNoticias || []).forEach(function (n) {
       var biasLabel = (n.vies && BIAS[n.vies]) ? '<span class="badge badge-bias">' + esc(BIAS[n.vies]) + '</span>' : '';
       var srcFlag = outletFlagImg(n.fonte, hub.pais, n.url);
+      var nLink = buildArticleLinkAttrs(n.url, n.titulo, n.fonte);
       h += '<article class="hub-news-card">';
       h += '<div class="hub-news-meta">';
       h += '<span class="hub-news-source">' + srcFlag + ' ' + esc(n.fonte) + '</span>';
       h += biasLabel;
       h += '<time datetime="' + esc(n.data) + '">' + esc(formatSearchDate(n.data + 'T12:00:00Z')) + '</time>';
-      h += renderNewsFavBtn({ url: n.url, title: n.titulo, source: n.fonte, countryCode: hub.pais, publishedAt: n.data + 'T12:00:00Z' });
+      h += renderNewsFavBtn({ url: nLink.href, title: n.titulo, source: n.fonte, countryCode: hub.pais, publishedAt: n.data + 'T12:00:00Z' });
       h += '</div>';
-      h += '<h3><a href="' + esc(n.url) + '" target="_blank" rel="noopener noreferrer">' + esc(n.titulo) + '</a></h3>';
+      h += '<h3><a href="' + esc(nLink.href) + '"' + nLink.attrs + ' target="_blank" rel="noopener noreferrer">' + esc(n.titulo) + '</a></h3>';
       h += '<p>' + esc(n.resumo) + '</p>';
-      h += '<a class="topic-news-open" href="' + esc(n.url) + '" target="_blank" rel="noopener noreferrer">' + (isVideoContent(n.url, n) ? 'Assistir vídeo ' : 'Abrir matéria ') + ICON_ARROW + '</a>';
+      h += '<a class="topic-news-open" href="' + esc(nLink.href) + '"' + nLink.attrs + ' target="_blank" rel="noopener noreferrer">' + (isVideoContent(n.url, n) ? 'Assistir vídeo ' : 'Abrir matéria ') + ICON_ARROW + '</a>';
       h += '</article>';
     });
     h += '</div>';
@@ -8206,6 +8689,7 @@
 
     h += '</div>';
     thematicHubView.innerHTML = h;
+    resolverLinksGenericosNaView(thematicHubView, hub.termoBuscaPadrao || hub.titulo, hub.pais || 'BR');
     window.scrollTo({ top: 0, behavior: 'auto' });
 
     var hubForm = thematicHubView.querySelector('#hub-search-form');
@@ -8798,10 +9282,11 @@
       h += '<h2 id="entenda-rel-news">Notícias relacionadas</h2>';
       h += '<div class="hub-latest-grid">';
       ex.noticiasRelacionadas.forEach(function (n) {
+        var exLink = buildArticleLinkAttrs(n.url, n.titulo, n.fonte);
         h += '<article class="hub-news-card">';
-        h += '<div class="hub-news-meta"><span class="hub-news-source">' + esc(n.fonte) + '</span><time>' + esc(formatSearchDate(n.data + 'T12:00:00Z')) + '</time>' + renderNewsFavBtn({ url: n.url, title: n.titulo, source: n.fonte, countryCode: ex.pais, publishedAt: n.data + 'T12:00:00Z' }) + '</div>';
-        h += '<h3><a href="' + esc(n.url) + '" target="_blank" rel="noopener noreferrer">' + esc(n.titulo) + '</a></h3>';
-        h += '<a class="topic-news-open" href="' + esc(n.url) + '" target="_blank" rel="noopener noreferrer">' + (isVideoContent(n.url, n) ? 'Assistir vídeo ' : 'Abrir matéria ') + ICON_ARROW + '</a>';
+        h += '<div class="hub-news-meta"><span class="hub-news-source">' + esc(n.fonte) + '</span><time>' + esc(formatSearchDate(n.data + 'T12:00:00Z')) + '</time>' + renderNewsFavBtn({ url: exLink.href, title: n.titulo, source: n.fonte, countryCode: ex.pais, publishedAt: n.data + 'T12:00:00Z' }) + '</div>';
+        h += '<h3><a href="' + esc(exLink.href) + '"' + exLink.attrs + ' target="_blank" rel="noopener noreferrer">' + esc(n.titulo) + '</a></h3>';
+        h += '<a class="topic-news-open" href="' + esc(exLink.href) + '"' + exLink.attrs + ' target="_blank" rel="noopener noreferrer">' + (isVideoContent(n.url, n) ? 'Assistir vídeo ' : 'Abrir matéria ') + ICON_ARROW + '</a>';
         h += '</article>';
       });
       h += '</div>';
@@ -8827,6 +9312,7 @@
     h += '</article>';
     h += '</div>';
     thematicHubView.innerHTML = h;
+    resolverLinksGenericosNaView(thematicHubView, ex.termoBusca || ex.titulo, ex.pais || 'BR');
     window.scrollTo({ top: 0, behavior: 'auto' });
     bindDynamicEditorialActions(thematicHubView);
 
@@ -9350,6 +9836,7 @@
       var cTopicKey = item.tipoNoticia || 'politica';
       var qBusca = item.termoBusca || item.titulo;
       var urlOrig = item.urlMateriaOriginal || item.url || '#';
+      var resLink = buildArticleLinkAttrs(urlOrig, item.titulo, item.fonte);
       var resFlag = outletFlagImg(item.fonte, cCodeUp, item.dominio || urlOrig);
 
       var compSlug = item.comparacaoSlug;
@@ -9369,11 +9856,11 @@
         rh += '<span class="resumo-card-top-tag">' + esc(item.categoria) + '</span>';
       }
       rh += '<span class="resumo-source-name">Fonte: ' + resFlag + ' <span data-resumo-source>' + esc(item.fonte) + '</span></span>';
-      rh += renderNewsFavBtn({ url: urlOrig, title: item.titulo, source: item.fonte, countryCode: cCodeUp, publishedAt: item.publicadoEm || '' });
+      rh += renderNewsFavBtn({ url: resLink.href, title: item.titulo, source: item.fonte, countryCode: cCodeUp, publishedAt: item.publicadoEm || '' });
       rh += '</div>';
 
       // Título e resumo
-      rh += '<h3 class="resumo-item-title"><a href="' + esc(urlOrig) + '" target="_blank" rel="noopener noreferrer" data-resumo-link data-resumo-title>' + esc(item.titulo) + '</a></h3>';
+      rh += '<h3 class="resumo-item-title"><a href="' + esc(resLink.href) + '"' + resLink.attrs + ' target="_blank" rel="noopener noreferrer" data-resumo-link data-resumo-title>' + esc(item.titulo) + '</a></h3>';
       rh += '<p class="resumo-item-summary" data-resumo-summary>' + esc(item.resumoCurto || item.resumo || '') + '</p>';
 
       // Hierarquia estrita de 2 ações na base: Botão Primário em destaque + Link Secundário discreto
@@ -9386,7 +9873,7 @@
               '<span class="btn-compare-icon" aria-hidden="true">⚖️</span> Comparar cobertura deste tema →</button>';
       }
       var origLabel = isVideoContent(urlOrig, item) ? 'Assistir vídeo em' : 'Ler original em';
-      rh += '<a class="link-original-secondary" href="' + esc(urlOrig) + '" target="_blank" rel="noopener noreferrer" data-resumo-link>' +
+      rh += '<a class="link-original-secondary" href="' + esc(resLink.href) + '"' + resLink.attrs + ' target="_blank" rel="noopener noreferrer" data-resumo-link>' +
             '<span>' + origLabel + '</span> ' +
             (resFlag ? resFlag + ' ' : '') +
             '<span class="link-original-source">' + esc(item.fonte) + '</span> ' +
@@ -10828,6 +11315,7 @@
     var cSlug = CONT_SLUGS[cont] || cont;
     if (!country) return '/' + cSlug;
     if (cont === 'sul' && (country.a2 === 'FR' || country.id === '250')) return '/' + cSlug + '/GF';
+    if (cont === 'sul' && (country.id === '218-galapagos' || (country.a2 === 'EC' && (country.islandName || (state && state.islandName)))) ) return '/' + cSlug + '/218-galapagos';
     if (cont === 'oceania' && (country.id === '152-easter' || (country.a2 === 'CL' && (country.islandName || (state && state.islandName)))) ) return '/' + cSlug + '/152-easter';
     if (cont === 'oceania' && (country.id === '840-hawaii' || (country.a2 === 'US' && (country.islandName || (state && state.islandName)))) ) return '/' + cSlug + '/840-hawaii';
     var code = (country.a2 || country.id);
@@ -11065,6 +11553,8 @@
       var country = null;
       if (cKey2 === 'sul' && upperCode === 'GF') {
         country = byA2['FR'] || byId['250'] || null;
+      } else if (cKey2 === 'sul' && (upperCode === 'EC-W' || rawCode === '218-galapagos')) {
+        country = byId['218-galapagos'] || byA2['EC'] || null;
       } else if (cKey2 === 'oceania' && (upperCode === 'CL' || rawCode === '152-easter')) {
         country = byId['152-easter'] || byA2['CL'] || null;
       } else if (cKey2 === 'oceania' && (upperCode === 'US' || rawCode === '840-hawaii')) {
@@ -11245,6 +11735,17 @@
       islandFlag: 'cl',
       m: byA2['CL'] ? byA2['CL'].m : null,
       orig: byA2['CL']
+    });
+    allCountries.push({
+      id: '218-galapagos',
+      a2: 'EC',
+      flagCode: 'ec',
+      n: 'Ilhas Galápagos (Equador)',
+      c: 'sul',
+      islandName: 'Ilhas Galápagos (Equador)',
+      islandFlag: 'ec',
+      m: byA2['EC'] ? byA2['EC'].m : null,
+      orig: byA2['EC']
     });
     allCountries.push({
       id: '250-mayotte',
@@ -13218,11 +13719,18 @@
         var totalOutlets = (cMed && cMed.outlets) ? cMed.outlets.length : 0;
         var flagHtml = countryFlag(c, 'flag-sm', c.c) || '<span class="flag-placeholder flag-sm"></span>';
         var contLabel = (CONT[c.c] && CONT[c.c].n) || CONT_SLUGS[c.c] || c.c || '';
-        return '<button type="button" class="quick-country-card" data-country-a2="' + esc(c.a2 || '') + '" data-country-id="' + esc(c.id || '') + '" data-cont="' + esc(c.c || '') + '">' +
+        var a2 = String(c.a2 || '').toUpperCase().trim();
+        var hasHot = !!(a2 && hotNewsByCountry && hotNewsByCountry[a2]);
+        var hotItem = hasHot ? hotNewsByCountry[a2] : null;
+        var hotClasses = hasHot ? (' hot-spot-marker' + (hotPulseActive ? ' hot-spot-pulsing' : '')) : '';
+        var hotTitle = (hotItem && (hotItem.title || hotItem.summary))
+          ? (' title="🔥 Notícia quente em tempo real: ' + esc(hotItem.title || hotItem.summary) + '"')
+          : '';
+        return '<button type="button" class="quick-country-card' + hotClasses + '" data-country-a2="' + esc(c.a2 || '') + '" data-country-id="' + esc(c.id || '') + '" data-cont="' + esc(c.c || '') + '"' + hotTitle + '>' +
           '<div class="quick-country-card-main">' +
             '<span class="quick-country-flag" aria-hidden="true">' + flagHtml + '</span>' +
             '<div class="quick-country-info">' +
-              '<div class="quick-country-name">' + esc(c.n) + '</div>' +
+              '<div class="quick-country-name">' + esc(c.n) + (hasHot ? ' <span class="quick-country-hot-badge" title="Notícia quente no país" aria-label="Notícia quente">🔥</span>' : '') + '</div>' +
               '<div class="quick-country-meta">' + esc(contLabel) + '</div>' +
             '</div>' +
           '</div>' +
@@ -13262,6 +13770,8 @@
         });
       });
     }
+
+    syncQuickCountryCardsHotNews();
   }
 
   function initHeroAndMapControls() {
