@@ -12043,3 +12043,16 @@ body.dark .dossie-filter-pill.is-active {
   color: #ffffff;
   border-color: var(--primary);
 }
+
+.dossie-period-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+  margin-bottom: 16px;
+}
+
+.dossie-results-header {
+  margin-top: 8px;
+  margin-bottom: 14px;
+}

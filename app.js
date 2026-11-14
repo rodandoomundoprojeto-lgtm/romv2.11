@@ -8211,65 +8211,216 @@
     }
   }
 
-  function fetchDossieLiveNews(dossie, customQuery, targetContainerId) {
+  function collectDossieOutlets(dossie) {
+    var rawPaises = (dossie && dossie.regras_classificacao && Array.isArray(dossie.regras_classificacao.paises) && dossie.regras_classificacao.paises.length)
+      ? dossie.regras_classificacao.paises
+      : ['BR', 'US', 'GB'];
+    var paises = [];
+    rawPaises.forEach(function (code) {
+      var up = String(code || '').toUpperCase().trim();
+      if (!up) return;
+      if (up === 'GLOBAL') {
+        ['BR', 'US', 'GB'].forEach(function (gCode) {
+          if (paises.indexOf(gCode) === -1) paises.push(gCode);
+        });
+      } else if (paises.indexOf(up) === -1) {
+        paises.push(up);
+      }
+    });
+    if (!paises.length) paises = ['BR', 'US', 'GB'];
+
+    var primaryA2 = paises[0];
+    var outlets = [];
+    var seenDomains = {};
+    var perCountryLimit = paises.length === 1 ? 14 : (paises.length === 2 ? 8 : 5);
+
+    paises.forEach(function (a2) {
+      var cObj = byA2[a2];
+      var list = (cObj && cObj.m && Array.isArray(cObj.m.outlets)) ? cObj.m.outlets.slice(0, perCountryLimit) : [];
+      list.forEach(function (o) {
+        if (outlets.length >= 20) return;
+        var dom = '';
+        try {
+          dom = o.d || new URL(o.u).hostname.replace(/^www\./i, '');
+        } catch (e) {}
+        if (!dom || seenDomains[dom]) return;
+        seenDomains[dom] = true;
+        outlets.push({
+          n: o.n,
+          u: o.u,
+          d: dom,
+          b: o.b || 'I',
+          ind: !!o.ind,
+          st: !!o.st,
+          pais: a2
+        });
+      });
+    });
+
+    if (!outlets.length && byA2['BR'] && byA2['BR'].m && Array.isArray(byA2['BR'].m.outlets)) {
+      byA2['BR'].m.outlets.slice(0, 10).forEach(function (o) {
+        outlets.push({ n: o.n, u: o.u, b: o.b || 'I', pais: 'BR' });
+      });
+      primaryA2 = 'BR';
+    }
+
+    return { primaryA2: primaryA2, outlets: outlets, paises: paises };
+  }
+
+  function matchLocalDossieFeedFallback(dossie, queryStr) {
+    var kws = (dossie && dossie.regras_classificacao && Array.isArray(dossie.regras_classificacao.palavras_chave))
+      ? dossie.regras_classificacao.palavras_chave
+      : [];
+    var terms = [];
+    if (queryStr) terms.push(norm(queryStr));
+    kws.forEach(function (k) {
+      var nk = norm(k);
+      if (nk && terms.indexOf(nk) === -1) terms.push(nk);
+    });
+    if (!terms.length) return Promise.resolve([]);
+
+    var loadFeed = window._romFeedOutputCache
+      ? Promise.resolve(window._romFeedOutputCache)
+      : fetch('/data/feed_output.json?_t=' + Date.now(), { cache: 'no-store' })
+          .then(function (r) { return r.ok ? r.json() : []; })
+          .then(function (arr) {
+            window._romFeedOutputCache = Array.isArray(arr) ? arr : [];
+            return window._romFeedOutputCache;
+          })
+          .catch(function () { return []; });
+
+    return loadFeed.then(function (items) {
+      var scored = [];
+      (items || []).forEach(function (it) {
+        var text = norm((it.titulo || '') + ' ' + (it.resumo || '') + ' ' + (it.analise || ''));
+        if (!text) return;
+        var score = 0;
+        terms.forEach(function (t, idx) {
+          if (text.indexOf(t) !== -1) {
+            score += (idx === 0 ? 10 : 4);
+          } else {
+            var tokens = t.split(/\s+/).filter(function (w) { return w.length >= 4; });
+            tokens.forEach(function (w) {
+              if (text.indexOf(w) !== -1) score += 2;
+            });
+          }
+        });
+        if (score > 0) {
+          scored.push({
+            score: score,
+            item: {
+              materia_titulo: it.titulo || '',
+              materia_url: it.fonte_url || '#',
+              veiculo_nome: it.fonte_nome || 'Veículo',
+              pais_veiculo: 'BR',
+              vies: '',
+              publicado_em: it.data_publicacao || ''
+            }
+          });
+        }
+      });
+      scored.sort(function (a, b) { return b.score - a.score; });
+      return scored.slice(0, 12).map(function (s) { return s.item; });
+    });
+  }
+
+  function fetchDossieLiveNews(dossie, customQuery, targetContainerId, opts) {
+    opts = opts || {};
     var container = document.getElementById(targetContainerId);
     if (!container) return;
     var kws = (dossie && dossie.regras_classificacao && Array.isArray(dossie.regras_classificacao.palavras_chave))
       ? dossie.regras_classificacao.palavras_chave
       : [];
-    var q = (customQuery || '').trim() || kws.slice(0, 2).join(' ') || (dossie && dossie.titulo) || '';
+    var q = (customQuery || '').trim() || kws[0] || (dossie && dossie.titulo) || '';
     if (!q) {
       container.innerHTML = '<p class="dossie-empty-msg">Nenhuma matéria recente encontrada para este dossiê.</p>';
       return;
     }
 
-    var paises = (dossie && dossie.regras_classificacao && Array.isArray(dossie.regras_classificacao.paises) && dossie.regras_classificacao.paises.length)
-      ? dossie.regras_classificacao.paises
-      : ['BR', 'US', 'GB'];
-    var primaryA2 = paises[0] === 'GLOBAL' ? 'BR' : paises[0];
+    var statusAtual = computeDossieStatus(dossie);
+    var per = opts.periodo || (statusAtual === 'arquivo' ? 'all' : '7d');
+    var collected = collectDossieOutlets(dossie);
+    var primaryA2 = collected.primaryA2;
     var cObj = byA2[primaryA2] || byA2['BR'];
-    var outlets = (cObj && cObj.m && Array.isArray(cObj.m.outlets)) ? cObj.m.outlets.slice(0, 8) : [];
+    var outlets = collected.outlets;
 
     container.innerHTML = '<div class="dossie-loading-inline">Buscando matérias recentes sobre <strong>' + esc(q) + '</strong>…</div>';
 
-    var payload = {
-      assunto: q,
-      pais: primaryA2,
-      paisNome: cObj ? cObj.n : primaryA2,
-      periodo: '7d',
-      veiculos: outlets.map(function (o) {
-        return { n: o.n, u: o.u, b: o.b || '' };
-      })
-    };
-
     var isFile = (location.protocol === 'file:');
-    var url = (isFile ? 'https://www.rodandoomundo.com.br/api/busca-assunto' : '/api/busca-assunto') + '?_t=' + Date.now();
-    fetch(url, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
-    }).then(function (r) {
-      return r.ok ? r.json() : null;
-    }).then(function (data) {
-      var groups = (data && Array.isArray(data.resultados)) ? data.resultados : [];
-      var flat = [];
-      groups.forEach(function (g) {
-        (g.itens || []).forEach(function (it) {
-          flat.push({
-            materia_titulo: it.titulo || it.title || '',
-            materia_url: it.link || it.url || '',
-            veiculo_nome: g.veiculo || it.fonte || '',
-            pais_veiculo: primaryA2,
-            vies: g.vies || '',
-            publicado_em: it.data || it.publishedAt || ''
+    var baseUrl = isFile ? 'https://www.rodandoomundo.com.br/api/busca-assunto' : '/api/busca-assunto';
+
+    function runBuscaQuery(queryTerm, periodoBusca) {
+      var payload = {
+        q: queryTerm,
+        country: primaryA2,
+        countryName: cObj ? cObj.n : primaryA2,
+        periodo: periodoBusca,
+        outlets: outlets
+      };
+      return fetch(baseUrl + '?_t=' + Date.now(), {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      }).then(function (r) {
+        return r.ok ? r.json() : null;
+      }).then(function (data) {
+        var groups = (data && Array.isArray(data.grupos))
+          ? data.grupos
+          : ((data && Array.isArray(data.resultados)) ? data.resultados : []);
+        var flat = [];
+        var seenUrls = {};
+        groups.forEach(function (g) {
+          var arts = Array.isArray(g.artigos) ? g.artigos : (Array.isArray(g.itens) ? g.itens : []);
+          arts.forEach(function (it) {
+            var u = it.url || it.link || '';
+            if (!u || seenUrls[u]) return;
+            seenUrls[u] = true;
+            flat.push({
+              materia_titulo: it.titulo || it.title || '',
+              materia_url: u,
+              veiculo_nome: g.veiculo || it.fonte || 'Veículo',
+              pais_veiculo: g.pais || it.pais || primaryA2,
+              vies: g.vies || '',
+              publicado_em: it.publicadoEm || it.data || it.publishedAt || ''
+            });
           });
         });
+        flat.sort(function (a, b) {
+          var da = a.publicado_em ? Date.parse(a.publicado_em) || 0 : 0;
+          var db = b.publicado_em ? Date.parse(b.publicado_em) || 0 : 0;
+          return db - da;
+        });
+        return { flat: flat, groupsCount: groups.length, periodoEfetivo: (data && data.periodo) || periodoBusca };
       });
+    }
 
-      if (!flat.length) {
+    runBuscaQuery(q, per).then(function (res) {
+      if (res.flat.length > 0) return res;
+      if (!opts.explicitPeriod && per !== 'all') {
+        var nextPer = (per === '24h' || per === '7d') ? '30d' : 'all';
+        return runBuscaQuery(q, nextPer).then(function (resExp) {
+          if (resExp.flat.length > 0) return resExp;
+          if (nextPer !== 'all') return runBuscaQuery(q, 'all');
+          return resExp;
+        });
+      }
+      return res;
+    }).then(function (res) {
+      if (res.flat.length > 0 || !kws.length) return res;
+      var altKw = kws.find(function (k) { return norm(k) !== norm(q); });
+      if (!altKw) return res;
+      return runBuscaQuery(altKw, '30d').then(function (altRes) {
+        return altRes.flat.length > 0 ? { flat: altRes.flat, groupsCount: altRes.groupsCount, periodoEfetivo: altRes.periodoEfetivo, fallbackTerm: altKw } : res;
+      });
+    }).then(function (res) {
+      if (res.flat.length > 0) return res;
+      return matchLocalDossieFeedFallback(dossie, q).then(function (localItems) {
+        if (localItems.length > 0) {
+          return { flat: localItems, groupsCount: localItems.length, periodoEfetivo: res.periodoEfetivo };
+        }
         var fallbackHub = (dossie && dossie.rota && EDITORIAL.paginasTematicas) ? EDITORIAL.paginasTematicas[dossie.rota] : null;
         if (fallbackHub && Array.isArray(fallbackHub.ultimasNoticias) && fallbackHub.ultimasNoticias.length) {
-          flat = fallbackHub.ultimasNoticias.map(function (n) {
+          var hubItems = fallbackHub.ultimasNoticias.map(function (n) {
             return {
               materia_titulo: n.titulo,
               materia_url: n.url,
@@ -8279,15 +8430,35 @@
               publicado_em: n.data ? (n.data + 'T12:00:00Z') : ''
             };
           });
+          return { flat: hubItems, groupsCount: hubItems.length, periodoEfetivo: res.periodoEfetivo };
         }
-      }
-
-      if (!flat.length) {
-        container.innerHTML = '<p class="dossie-empty-msg">Nenhuma matéria encontrada para “' + esc(q) + '” nos últimos 7 dias. Tente outro termo na busca abaixo.</p>';
+        return res;
+      });
+    }).then(function (res) {
+      if (!res || !res.flat.length) {
+        container.innerHTML = '<p class="dossie-empty-msg">Nenhuma matéria encontrada para “' + esc(q) + '”. Tente outro termo ou clique em uma das palavras-chave acima.</p>';
         return;
       }
 
-      container.innerHTML = renderDossieMateriasGridHtml(flat.slice(0, 18), primaryA2);
+      if (res.periodoEfetivo && thematicHubView) {
+        thematicHubView.querySelectorAll('#dossie-period-filters .period-btn').forEach(function (btn) {
+          btn.setAttribute('aria-pressed', String(btn.getAttribute('data-period') === res.periodoEfetivo));
+        });
+      }
+
+      var itemsToShow = res.flat.slice(0, 24);
+      var veiculosUnicos = {};
+      itemsToShow.forEach(function (it) { veiculosUnicos[it.veiculo_nome] = true; });
+      var qtdVeiculos = Object.keys(veiculosUnicos).length;
+      var termoLabel = res.fallbackTerm ? res.fallbackTerm : q;
+
+      var headerHtml = '<div class="topic-search-header dossie-results-header">';
+      headerHtml += '<p class="topic-search-summary">Exibindo <strong>' + itemsToShow.length + '</strong> ' + (itemsToShow.length === 1 ? 'matéria' : 'matérias') + ' sobre <strong>“' + esc(termoLabel) + '”</strong> em ' + qtdVeiculos + (qtdVeiculos === 1 ? ' veículo' : ' veículos') + '</p>';
+      headerHtml += '<button type="button" class="topic-translate-all-btn" data-translate-all aria-pressed="false" title="Traduzir todos os títulos para português">' + ICON_TRANSLATE + ' <span>Traduzir todas</span></button>';
+      headerHtml += '</div>';
+
+      container.innerHTML = headerHtml + renderDossieMateriasGridHtml(itemsToShow, primaryA2);
+      bindCardTranslations(container);
     }).catch(function () {
       container.innerHTML = '<p class="dossie-empty-msg">Não foi possível carregar as matérias ao vivo neste momento.</p>';
     });
@@ -8306,14 +8477,14 @@
       var biasLabel = (m.vies && BIAS[m.vies]) ? '<span class="badge badge-bias">' + esc(BIAS[m.vies]) + '</span>' : '';
       var srcFlag = outletFlagImg(source, pais, url);
       var pubStr = m.publicado_em ? formatSearchDate(m.publicado_em) : '';
-      mh += '<article class="hub-news-card">';
+      mh += '<article class="hub-news-card topic-news-card">';
       mh += '<div class="hub-news-meta">';
       mh += '<span class="hub-news-source">' + srcFlag + ' ' + esc(source) + '</span>';
       mh += biasLabel;
       if (pubStr) mh += '<time datetime="' + esc(m.publicado_em) + '">' + esc(pubStr) + '</time>';
       mh += renderNewsFavBtn({ url: url, title: title, source: source, countryCode: pais, publishedAt: m.publicado_em || '' });
       mh += '</div>';
-      mh += '<h3><a href="' + esc(url) + '" target="_blank" rel="noopener noreferrer">' + esc(title) + '</a></h3>';
+      mh += '<h3 class="topic-news-title"><a href="' + esc(url) + '" target="_blank" rel="noopener noreferrer">' + esc(title) + '</a></h3>';
       mh += '<a class="topic-news-open" href="' + esc(url) + '" target="_blank" rel="noopener noreferrer">' + (isVideoContent(url, m) ? 'Assistir vídeo ' : 'Abrir matéria ') + ICON_ARROW + '</a>';
       mh += '</article>';
     });
@@ -8399,6 +8570,9 @@
       h += '</section>';
     }
 
+    var defaultPer = (status === 'arquivo') ? 'all' : '7d';
+    var activePer = defaultPer;
+
     h += '<section class="hub-block hub-news-block" aria-labelledby="dossie-materias-heading">';
     h += '<div class="hub-block-head">';
     h += '<h2 id="dossie-materias-heading">Cobertura e matérias recentes</h2>';
@@ -8411,8 +8585,18 @@
     h += '</div>';
     h += '<button type="submit" class="btn topic-search-btn">Buscar ao vivo</button>';
     h += '</form>';
+    h += '<div class="period-filters dossie-period-filters" id="dossie-period-filters" role="group" aria-label="Período da busca">';
+    h += '<button type="button" class="period-btn" data-period="24h" aria-pressed="' + (defaultPer === '24h') + '">24h</button>';
+    h += '<button type="button" class="period-btn" data-period="7d" aria-pressed="' + (defaultPer === '7d') + '">7 dias</button>';
+    h += '<button type="button" class="period-btn" data-period="30d" aria-pressed="' + (defaultPer === '30d') + '">30 dias</button>';
+    h += '<button type="button" class="period-btn" data-period="all" aria-pressed="' + (defaultPer === 'all') + '">Tudo</button>';
+    h += '</div>';
     h += '<div id="dossie-materias-results" aria-live="polite">';
     if (Array.isArray(materias) && materias.length) {
+      h += '<div class="topic-search-header dossie-results-header">';
+      h += '<p class="topic-search-summary">Exibindo <strong>' + materias.length + '</strong> ' + (materias.length === 1 ? 'matéria indexada' : 'matérias indexadas') + ' para este dossiê</p>';
+      h += '<button type="button" class="topic-translate-all-btn" data-translate-all aria-pressed="false" title="Traduzir todos os títulos para português">' + ICON_TRANSLATE + ' <span>Traduzir todas</span></button>';
+      h += '</div>';
       h += renderDossieMateriasGridHtml(materias, paises[0] || 'BR');
     } else {
       h += '<div class="dossie-loading-inline">Carregando matérias em tempo real…</div>';
@@ -8425,8 +8609,11 @@
     window.scrollTo({ top: 0, behavior: 'auto' });
     bindDynamicEditorialActions(thematicHubView);
 
-    if (!Array.isArray(materias) || !materias.length) {
-      fetchDossieLiveNews(d, '', 'dossie-materias-results');
+    var resultsBox = document.getElementById('dossie-materias-results');
+    if (Array.isArray(materias) && materias.length && resultsBox) {
+      bindCardTranslations(resultsBox);
+    } else {
+      fetchDossieLiveNews(d, '', 'dossie-materias-results', { periodo: activePer });
     }
 
     var liveForm = document.getElementById('dossie-live-search-form');
@@ -8434,14 +8621,24 @@
     if (liveForm && liveInput) {
       liveForm.addEventListener('submit', function (e) {
         e.preventDefault();
-        fetchDossieLiveNews(d, liveInput.value, 'dossie-materias-results');
+        fetchDossieLiveNews(d, liveInput.value, 'dossie-materias-results', { periodo: activePer });
       });
     }
+    thematicHubView.querySelectorAll('#dossie-period-filters .period-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var newPer = btn.getAttribute('data-period') || '7d';
+        activePer = newPer;
+        thematicHubView.querySelectorAll('#dossie-period-filters .period-btn').forEach(function (b) {
+          b.setAttribute('aria-pressed', String(b === btn));
+        });
+        fetchDossieLiveNews(d, liveInput ? liveInput.value : '', 'dossie-materias-results', { periodo: newPer, explicitPeriod: true });
+      });
+    });
     thematicHubView.querySelectorAll('.dossie-kw-chip').forEach(function (chip) {
       chip.addEventListener('click', function () {
         var kw = chip.getAttribute('data-dossie-kw') || '';
         if (liveInput) liveInput.value = kw;
-        fetchDossieLiveNews(d, kw, 'dossie-materias-results');
+        fetchDossieLiveNews(d, kw, 'dossie-materias-results', { periodo: activePer });
       });
     });
   }

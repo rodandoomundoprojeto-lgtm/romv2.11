@@ -41,13 +41,13 @@ def montar_registros() -> list:
             "regras_classificacao": {"palavras_chave": kws, "paises": paises},
             "meta_info": None, "rota": rota, "ordem": ordem,
         })
-    for slug, titulo, icone, desc, ini, fim, meta, kws in ESPECIAIS:
+    for slug, titulo, icone, desc, ini, fim, meta, kws, paises in ESPECIAIS:
         ordem += 1
         regs.append({
             "slug": slug, "titulo": titulo, "subtitulo": desc, "tipo": "especial",
             "categoria": "Eventos", "icone_ou_bandeira": icone,
             "data_inicio": _ts(ini), "data_fim": _ts(fim, True),
-            "regras_classificacao": {"palavras_chave": kws, "paises": []},
+            "regras_classificacao": {"palavras_chave": kws, "paises": paises},
             "meta_info": meta, "rota": None, "ordem": ordem,
         })
     return regs

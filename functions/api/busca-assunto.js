@@ -1240,20 +1240,24 @@ async function handleBuscaAssunto(req) {
 
   const isTrendingMode = Boolean(params.mode === 'trending' || params.trending);
   const isEnrich = Boolean(params.isEnrich || params.enrich);
-  const q = limparTermo(params.q || '');
+  const q = limparTermo(params.q || params.assunto || '');
   if (!isTrendingMode && !isEnrich && q.length < 2) {
     return json({ erro: 'vazio', mensagem: 'Digite pelo menos 2 caracteres para buscar.' }, 400, SEM_CACHE);
   }
 
   const cont = String(params.cont || '').slice(0, 20);
-  const country = String(params.country || '').slice(0, 10);
-  const countryName = String(params.countryName || '').slice(0, 80);
+  const country = String(params.country || params.pais || '').slice(0, 10);
+  const countryName = String(params.countryName || params.paisNome || '').slice(0, 80);
   const topic = String(params.topic || '').slice(0, 30);
   const topicTerm = String(params.topicTerm || '').slice(0, 50);
   const lang = String(params.lang || 'pt').slice(0, 10);
   const periodo = ['24h', '7d', '30d', 'all'].includes(params.periodo) ? params.periodo : (isEnrich ? 'all' : '24h');
 
-  let listaVeiculos = (Array.isArray(params.outlets) ? params.outlets : [])
+  const rawOutlets = Array.isArray(params.outlets)
+    ? params.outlets
+    : (Array.isArray(params.veiculos) ? params.veiculos : []);
+
+  let listaVeiculos = rawOutlets
     .slice(0, MAX_VEICULOS_PAIS)
     .map((o) => {
       let d = String(o.d || '').replace(/^www\./i, '').trim();
@@ -1486,6 +1490,7 @@ async function handleBuscaAssunto(req) {
     periodoSolicitado: periodo,
     contexto: { cont, country, countryName, topic },
     grupos,
+    resultados: grupos,
     topicosEmAlta,
     totalArtigos,
     atualizadoEm: new Date().toISOString(),
