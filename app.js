@@ -779,6 +779,22 @@
     return !!k && favState.noticias.some(function (n) { return n.key === k; });
   }
 
+  // Heurística: a notícia está em idioma diferente do português (idioma da interface)?
+  function isFavNewsForeign(n) {
+    var t = String((n && n.title) || '');
+    if (!t.trim()) return false;
+    // Alfabetos não latinos (cirílico, árabe, CJK, grego, hebraico etc.)
+    if (/[\u0370-\u03FF\u0400-\u052F\u0590-\u06FF\u0900-\u0DFF\u0E00-\u0EFF\u3040-\u30FF\u3400-\u9FFF\uAC00-\uD7AF]/.test(t)) return true;
+    var low = ' ' + t.toLowerCase().replace(/[^a-zà-ÿ\s]/g, ' ').replace(/\s+/g, ' ') + ' ';
+    var ptHits = (low.match(/ (de|do|da|dos|das|em|no|na|nos|nas|para|por|com|que|um|uma|os|as|se|ao|aos|é|não|mais|após|sobre|entre|como) /g) || []).length;
+    var otherHits = (low.match(/ (the|of|and|to|in|is|for|on|with|at|by|el|la|los|las|del|y|en|por|une?|les|des|et|du|der|die|das|und|le|il|di|che|per|van|het|een|och|att) /g) || []).length;
+    if (/[ãõ]|ç[ãa]o/.test(low) && otherHits < 2) return false;
+    if (ptHits > otherHits) return false;
+    if (otherHits > 0) return true;
+    // Sem pistas no texto: usa o país (lusófonos = nativo)
+    return ['BR', 'PT', 'AO', 'MZ', 'CV', 'GW', 'ST', 'TL'].indexOf(String((n && n.countryCode) || '').toUpperCase()) === -1;
+  }
+
   function toggleNewsFavorite(item) {
     if (!item || (!item.url && !item.title)) return false;
     var k = getNewsFavKey(item.url, item.title);
@@ -3304,6 +3320,20 @@
     }
 
     var shouldShow = false;
+    var winHChip = window.innerHeight || document.documentElement.clientHeight || 0;
+
+    // Leitura comparada ativa (Cobertura Comparada / espectro editorial): se o usuário já chegou
+    // à seção comparativa (ou está rolando por ela), o chip "Ver veículos" é desnecessário.
+    var compViewChip = document.getElementById('comparison-view');
+    if (compViewChip && !compViewChip.hidden && compViewChip.offsetParent !== null) {
+      var compRectChip = compViewChip.getBoundingClientRect();
+      if (compRectChip.height > 0 && compRectChip.top < winHChip) {
+        mobileChip.style.opacity = '0';
+        mobileChip.style.pointerEvents = 'none';
+        mobileChip.hidden = true;
+        return;
+      }
+    }
 
     if (state.panelCollapsed) {
       // Quando a aba/painel estiver recolhida, não dá para ver a aba, então o botão aparece para permitir abrir
@@ -3371,7 +3401,20 @@
       mobileChip.style.opacity = '0';
       mobileChip.style.pointerEvents = 'none';
       mobileChip.hidden = true;
-      panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      // Rola sempre PARA BAIXO até a âncora da lista de veículos (#veiculos), nunca para o topo.
+      // Aguarda o layout do painel recém-expandido antes de medir.
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () {
+          var anchor = document.getElementById('veiculos');
+          if (!anchor || anchor.offsetParent === null) anchor = panel;
+          if (!anchor || anchor.offsetParent === null) return;
+          var aRect = anchor.getBoundingClientRect();
+          // Se a âncora já está acima da viewport, não faz scroll reverso para o topo
+          if (aRect.top < 0 && aRect.bottom > 0) return;
+          if (aRect.bottom <= 0) return;
+          anchor.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      });
     });
   }
 
@@ -3690,11 +3733,13 @@
       var hotUrl = hotItem.url || '';
       var hotTerm = extrairTermoAssuntoBusca(hotItem.termoBusca || hotItem.title, '');
       var canCompareHot = !!(hotItem.comparacaoSlug || (hotTerm && hotTerm.replace(/[^a-zA-Z0-9À-ÿ]/g, '').length >= 3));
-      h += '<aside class="panel-hot-news-banner" aria-label="Notícia quente em destaque">' +
+      var hotImgUrl = isValidNewsImageUrl(hotItem.imageUrl || hotItem.imagem || hotItem.image || hotItem.thumbnail || '');
+      h += '<aside class="panel-hot-news-banner' + (hotImgUrl ? ' has-media' : ' no-media') + '" aria-label="Notícia quente em destaque">' +
         '<div class="panel-hot-news-header">' +
           '<span class="panel-hot-badge"><span class="panel-hot-pulse-dot" aria-hidden="true"></span> Notícia quente agora</span>' +
           '<span class="panel-hot-source">' + esc(hotItem.source) + (hotItem.category ? ' · ' + esc(hotItem.category) : '') + '</span>' +
         '</div>' +
+        (hotImgUrl ? '<figure class="panel-hot-media"><img src="' + esc(hotImgUrl) + '" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="var b=this.closest(\'.panel-hot-news-banner\');var m=this.closest(\'.panel-hot-media\');if(m)m.remove();if(b){b.classList.remove(\'has-media\');b.classList.add(\'no-media\');}" onload="if(this.naturalWidth<=2){var b=this.closest(\'.panel-hot-news-banner\');var m=this.closest(\'.panel-hot-media\');if(m)m.remove();if(b){b.classList.remove(\'has-media\');b.classList.add(\'no-media\');}}"></figure>' : '') +
         '<h4 class="panel-hot-title">' +
           (hotUrl ? '<a href="' + esc(hotUrl) + '" target="_blank" rel="noopener noreferrer" title="' + (isVideoContent(hotUrl, hotItem) ? 'Assistir vídeo no canal original' : 'Abrir matéria completa no portal original') + '">' + esc(hotItem.title) + ' ' + ICON_ARROW + '</a>' : esc(hotItem.title)) +
         '</h4>' +
@@ -5861,7 +5906,7 @@
         ? '<div class="outlet-rotator-single" data-outlet-rotator-idx="' + idx + '" data-step="0">' + rotContentHtml + '</div>'
         : '<ul class="outlet-rotator-list" data-outlet-rotator-idx="' + idx + '" data-step="0">' + rotContentHtml + '</ul>';
 
-      // ROM V2.12: Paywall badge & Detecção de idioma para Tradução em 1 clique
+      // ROM V2.12: Paywall badge
       var isKnownPaywall = Boolean(
         o.paywall ||
         /nytimes\.com|wsj\.com|washingtonpost\.com|ft\.com|economist\.com|thetimes\.co\.uk|lefigaro\.fr|lemonde\.fr|corriere\.it|elpais\.com|clarin\.com|lanacion\.com\.ar|folha\.uol\.com\.br|estadao\.com\.br|globo\.com/i.test(o.u)
@@ -5870,19 +5915,12 @@
         ? '<span class="badge-paywall" title="Veículo pode requerer assinatura paga ou ter limite de artigos gratuitos">Assinatura</span>'
         : '<span class="badge-free" title="Acesso livre ou majoritariamente gratuito">Aberto</span>';
 
-      var isForeignLang = Boolean(cMed.lang && cMed.lang.toLowerCase() !== 'pt');
-      var translateBtn = isForeignLang
-        ? '<a class="btn-translate-outlet" href="https://translate.google.com/translate?sl=auto&tl=pt&u=' + encodeURIComponent(o.u) + '" target="_blank" rel="noopener noreferrer" title="Abrir site traduzido para o português via Google Tradutor">' +
-            ICON_TRANSLATE + '<span>Traduzir</span>' +
-          '</a>'
-        : '';
-
       return '<article class="outlet' + (isPinned ? ' is-pinned' : '') + '" data-b="' + (pol ? o.b : 'N') + '" data-outlet-name="' + esc(o.n) + '" style="animation-delay:' + (idx * 30) + 'ms">' +
         '<div class="outlet-body-grid' + (isSingle ? ' is-single-topic' : '') + '">' +
           '<div class="outlet-col-left">' +
             '<div class="outlet-head"><img src="https://www.google.com/s2/favicons?domain=' + encodeURIComponent(host(o.u)) + '&sz=64" alt="" loading="lazy" width="24" height="24">' +
             '<a href="' + esc(o.u) + '" target="_blank" rel="noopener"><h3>' + oFlag + ' ' + esc(o.n) + '</h3><span class="domain">' + esc(host(o.u)) + '</span></a></div>' +
-            '<div class="topics">' + topics + translateBtn + '</div>' +
+            '<div class="topics">' + topics + '</div>' +
           '</div>' +
           '<div class="outlet-col-rotator' + (isSingle ? ' is-single-topic' : '') + '" aria-label="Destaques e contextos de ' + esc(o.n) + '">' +
             rotContainerHtml +
@@ -11480,16 +11518,53 @@
             return '<li class="fav-item-row fav-item-outlet">' +
               '<div class="fav-outlet-info">' +
                 '<div class="fav-outlet-text">' +
-                  '<a href="' + esc(n.url) + '" target="_blank" rel="noopener noreferrer" class="fav-outlet-name">' + esc(n.title) + '</a>' +
+                  '<a href="' + esc(n.url) + '" target="_blank" rel="noopener noreferrer" class="fav-outlet-name" data-fav-news-title="' + idx + '">' + esc(n.title) + '</a>' +
                   '<span class="fav-item-meta">' + flagHtml + ' ' + esc(n.source || host(n.url)) + (dtStr ? ' · ' + esc(dtStr) : '') + '</span>' +
                 '</div>' +
               '</div>' +
               '<div class="fav-outlet-actions">' +
                 '<a class="btn btn-sm fav-visit-btn" href="' + esc(n.url) + '" target="_blank" rel="noopener noreferrer" title="Alguns sites podem exigir assinatura">Abrir ' + ICON_ARROW + '</a>' +
+                (isFavNewsForeign(n) ? '<button type="button" class="btn btn-sm fav-translate-btn" data-fav-translate="' + idx + '" aria-pressed="false" title="Traduzir título para português">' + ICON_TRANSLATE + '<span>Traduzir</span></button>' : '') +
                 '<button type="button" class="fav-remove-btn" data-remove-fav-news="' + idx + '" title="Remover dos favoritos" aria-label="Remover notícia">✕</button>' +
               '</div>' +
             '</li>';
           }).join('') + '</ul>';
+
+          pNoticias.querySelectorAll('[data-fav-translate]').forEach(function (btn) {
+            var sp = btn.querySelector('span');
+            var i = Number(btn.getAttribute('data-fav-translate'));
+            var n = favState.noticias[i];
+            var titleEl = pNoticias.querySelector('[data-fav-news-title="' + i + '"]');
+            if (!n || !titleEl) return;
+            btn.addEventListener('click', function () {
+              if (btn.disabled) return;
+              if (btn.getAttribute('aria-pressed') === 'true') {
+                titleEl.textContent = n.title;
+                btn.setAttribute('aria-pressed', 'false');
+                btn.title = 'Traduzir título para português';
+                if (sp) sp.textContent = 'Traduzir';
+                return;
+              }
+              btn.disabled = true;
+              btn.classList.add('is-loading');
+              if (sp) sp.textContent = 'Traduzindo…';
+              translateSingleTextGoogle(n.title, 'pt').then(function (tr) {
+                if (tr && tr.trim()) {
+                  titleEl.textContent = tr;
+                  btn.setAttribute('aria-pressed', 'true');
+                  btn.title = 'Ver título original';
+                  if (sp) sp.textContent = 'Ver original';
+                } else if (sp) {
+                  sp.textContent = 'Traduzir';
+                }
+              }).catch(function () {
+                if (sp) sp.textContent = 'Traduzir';
+              }).then(function () {
+                btn.disabled = false;
+                btn.classList.remove('is-loading');
+              });
+            });
+          });
 
           pNoticias.querySelectorAll('[data-remove-fav-news]').forEach(function (btn) {
             btn.addEventListener('click', function () {
@@ -11580,6 +11655,20 @@
   (function setupScrollTopButton() {
     var scrollBtn = document.getElementById('scroll-top-btn');
     if (!scrollBtn) return;
+
+    // Agrupa "↑ Topo" e "✕ Voltar ao mapa" num único container flex vertical fixo
+    // (evita sobreposição no mobile; ordem: Topo em cima, Voltar ao mapa embaixo).
+    (function mountFloatingActionsStack() {
+      var stack = document.getElementById('floating-actions-stack');
+      if (!stack) {
+        stack = document.createElement('div');
+        stack.id = 'floating-actions-stack';
+        stack.className = 'floating-actions-stack';
+        document.body.appendChild(stack);
+      }
+      if (scrollBtn.parentNode !== stack) stack.appendChild(scrollBtn);
+      if (panelFloatingClose && panelFloatingClose.parentNode !== stack) stack.appendChild(panelFloatingClose);
+    })();
 
     function updateScrollBtn() {
       var winScrolled = (window.scrollY || document.documentElement.scrollTop || 0) > 420;
