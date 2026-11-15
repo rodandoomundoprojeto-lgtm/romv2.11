@@ -383,9 +383,13 @@ function formatarRotuloRelativoWorker(isoDateStr) {
     const dt = isoDateStr ? new Date(isoDateStr) : new Date();
     const t = dt.getTime();
     if (isNaN(t)) return 'Atualizado agora';
-    const diffMin = Math.floor((Date.now() - t) / 60000);
-    if (diffMin < 5) return 'Atualizado agora';
-    if (diffMin < 60) return `Atualizado há ${diffMin} min`;
+    const diffMs = Date.now() - t;
+    let diffMin = Math.floor(diffMs / 60000);
+    if (diffMin < 0 && diffMs >= -300000) {
+      diffMin = 0;
+    }
+    if (diffMin >= 0 && diffMin < 5) return 'Atualizado agora';
+    if (diffMin >= 5 && diffMin < 60) return `Atualizado há ${diffMin} min`;
     return formatarHoraCurtaWorker(isoDateStr);
   } catch {
     return 'Atualizado agora';

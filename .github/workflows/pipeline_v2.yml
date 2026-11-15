@@ -4,8 +4,9 @@ on:
   schedule:
     # Pipeline de Pulso de Notícias Quentes (a cada 30 minutos — gemini-2.5-flash)
     - cron: '*/30 * * * *'
-    # Pipeline de Curadoria e Colunas Editoriais (a cada 3 horas — gemini-2.5-pro)
-    - cron: '0 */3 * * *'
+    # Pipeline de Curadoria e Colunas Editoriais (a cada 3 horas, minuto 10 — gemini-2.5-pro)
+    # Minuto 10 evita coincidir com o pulso (*/30) e com o radar (5,35).
+    - cron: '10 */3 * * *'
   workflow_dispatch:
     inputs:
       modo:
@@ -38,6 +39,9 @@ jobs:
     steps:
       - name: Checkout do Repositorio
         uses: actions/checkout@v4
+        with:
+          # Histórico completo: o publish faz rebase em origin/main.
+          fetch-depth: 0
 
       - name: Configurar Python 3.12
         uses: actions/setup-python@v5
@@ -60,8 +64,8 @@ jobs:
         run: |
           python scripts/run_pipeline.py --modo pulso
 
-      - name: Executar Curadoria & Coluna 3h (Agendado 0 */3 * * *)
-        if: github.event_name == 'schedule' && github.event.schedule == '0 */3 * * *'
+      - name: Executar Curadoria & Coluna 3h (Agendado 10 */3 * * *)
+        if: github.event_name == 'schedule' && github.event.schedule == '10 */3 * * *'
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           DATABASE_URL: ${{ secrets.CURADORIA_DATABASE_URL }}
@@ -95,11 +99,6 @@ jobs:
         run: |
           git config --local user.email "pipeline-v2-bot@github.com"
           git config --local user.name "Pipeline V2 Bot"
-          git add -f data/vitrine_ia.json
-          if git diff --staged --quiet; then
-            echo "Sem alterações em data/vitrine_ia.json"
-          else
-            git commit -m "chore(pipeline): atualiza vitrine_ia.json (pulso/curadoria) [skip ci]"
-            git pull --rebase origin "${GITHUB_REF_NAME}" || true
-            git push
-          fi
+          bash scripts/sync_generated_data.sh \
+            "chore(pipeline): atualiza vitrine_ia.json (pulso/curadoria) [skip ci]" \
+            data/vitrine_ia.json

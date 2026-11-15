@@ -2,8 +2,9 @@ name: Radar de Noticias & Briefing Editorial
 
 on:
   schedule:
-    # Executa a cada 30 minutos
-    - cron: '*/30 * * * *'
+    # Minutos 5 e 35: escalonado em relação ao pipeline_v2 (minutos 0 e 30)
+    # para reduzir corrida de push nos mesmos arquivos de dados.
+    - cron: '5,35 * * * *'
   workflow_dispatch: # Permite disparo manual no painel do GitHub
 
 jobs:
@@ -16,6 +17,9 @@ jobs:
     steps:
       - name: Checkout do Repositorio
         uses: actions/checkout@v4
+        with:
+          # Histórico completo: o publish faz rebase em origin/main.
+          fetch-depth: 0
 
       - name: Configurar Python
         uses: actions/setup-python@v5
@@ -39,5 +43,6 @@ jobs:
         run: |
           git config --local user.email "radar-bot@github.com"
           git config --local user.name "Radar Bot"
-          git add data/feed_output.json data/history.json
-          git diff --quiet && git diff --staged --quiet || (git commit -m "chore(radar): atualiza feed_output e history [skip ci]" && git push)
+          bash scripts/sync_generated_data.sh \
+            "chore(radar): atualiza feed_output e history [skip ci]" \
+            data/feed_output.json data/history.json

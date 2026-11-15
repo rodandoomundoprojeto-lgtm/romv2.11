@@ -110,6 +110,14 @@ assert.ok(
   !workerJsCode.includes('data_publicacao: t.updated_at || updatedAtIso'),
   '_worker.js não deve colocar t.updated_at || updatedAtIso'
 );
+assert.ok(
+  workerJsCode.includes('diffMs >= -300000') && workerJsCode.includes('let diffMin'),
+  '_worker.js deve absorver clock skew de até 5 minutos, com a mesma regra do edge'
+);
+assert.ok(
+  !workerJsCode.includes("if (diffMin < 5) return 'Atualizado agora';"),
+  '_worker.js não deve usar a regra antiga que tratava diffMin negativo como agora'
+);
 console.log('  [OK] _worker.js preserva data_publicacao e não sobrescreve com updatedAtIso.');
 
 // 4. Validar que app.js possui formatarDataPublicacaoCardRadar e renderiza o datetime no DOM
