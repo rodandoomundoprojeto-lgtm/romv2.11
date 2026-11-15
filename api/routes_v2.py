@@ -1304,6 +1304,7 @@ def _coletar_fontes_codigo() -> List[Dict[str, Any]]:
             "armazenamento_permitido": str(item.get("armazenamento_permitido") or "apenas_metadados").strip(),
             "exibicao_permitida": str(item.get("exibicao_permitida") or "sintese_e_link").strip(),
             "atribuicao_exigida": str(item.get("atribuicao_exigida") or item.get("nome") or "").strip(),
+            "referencia_condicoes_uso": item.get("referencia_condicoes_uso"),
         }
 
     sources_json_path = Path(__file__).resolve().parents[1] / "config" / "sources.json"
@@ -1340,6 +1341,7 @@ def _coletar_fontes_codigo() -> List[Dict[str, Any]]:
                     "armazenamento_permitido": "apenas_metadados",
                     "exibicao_permitida": "sintese_e_link",
                     "atribuicao_exigida": nome,
+                    "referencia_condicoes_uso": s.get("url_canal"),
                 }
         except Exception:  # noqa: BLE001
             pass
@@ -1359,11 +1361,13 @@ def sincronizar_fontes_sistema(db: Any) -> int:
                     nome, url, pais_iso, regiao, idioma, tipo_fonte, cadencia,
                     peso_confianca, politica_uso_status, coleta_permitida,
                     armazenamento_permitido, exibicao_permitida, atribuicao_exigida,
+                    referencia_condicoes_uso,
                     revisado_por, revisado_em, ativo
                 ) VALUES (
                     %s, %s, %s, %s, %s, %s, %s,
                     %s, %s, %s,
                     %s, %s, %s,
+                    %s,
                     'Sistema RoM (Auto-Sync)', NOW(), TRUE
                 )
                 ON CONFLICT (url) DO NOTHING
@@ -1383,6 +1387,7 @@ def sincronizar_fontes_sistema(db: Any) -> int:
                     f["armazenamento_permitido"],
                     f["exibicao_permitida"],
                     f["atribuicao_exigida"],
+                    f.get("referencia_condicoes_uso"),
                 ),
             )
             if cur.fetchone():

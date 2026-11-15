@@ -92,7 +92,7 @@ FONTES_NOTICIAS_QUENTES_30MIN: List[Dict[str, Any]] = [
     },
     {
         "nome": "Agência Câmara",
-        "url": "https://www.camara.leg.br/noticias/rss/todas-as-noticias",
+        "url": "https://www.camara.leg.br/noticias/rss",
         "pais_iso": "BR",
         "regiao": "America_do_Sul",
         "idioma": "pt",
@@ -309,7 +309,7 @@ FONTES_ESTUDO_V2: List[Dict[str, Any]] = [
     },
     {
         "nome": "Petit Journal (YouTube)",
-        "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCnPW1aOwBnB7IO2wznXh62A",
+        "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UC-g5Ls_uobMiRatAWzhSTqA",
         "pais_iso": "BR",
         "regiao": "Global",
         "idioma": "pt",
