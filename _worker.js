@@ -4,6 +4,7 @@
  * 2. Faz proxy das rotas FastAPI (/v1/*, /v2/*) para CURADORIA_BACKEND_URL
  * 3. Garante roteamento nativo de SPA (Single Page Application) sem erros 404
  */
+import * as apiAtlasPais from './functions/api/atlas-pais.js';
 import * as apiBuscaAssunto from './functions/api/busca-assunto.js';
 import * as apiNewsletterSubscribe from './functions/api/newsletter-subscribe.js';
 import * as apiNoticiasQuentes from './functions/api/noticias-quentes.js';
@@ -16,6 +17,7 @@ import * as apiVitrineEmAlta from './functions/api/vitrine-em-alta.js';
 import { sortirCardsRodizioAmplo } from './functions/api/radar.js';
 
 const API_FUNCTION_ROUTES = {
+  '/api/atlas-pais': apiAtlasPais,
   '/api/busca-assunto': apiBuscaAssunto,
   '/api/newsletter-subscribe': apiNewsletterSubscribe,
   '/api/noticias-quentes': apiNoticiasQuentes,
@@ -330,45 +332,227 @@ async function dispatchApiFunction(mod, request, env) {
   });
 }
 
-async function handleRadarFeed(request, env) {
+const MAPA_CATEGORIA_RADAR_WORKER = {
+  Geopolitica_Radar: 'geopolitica',
+  Politica: 'politica',
+  Economia: 'economia',
+  Cultura: 'cultura',
+  Eleicoes: 'politica',
+  Resumo_Ultimas: 'geopolitica',
+  Geopolitica_Relacoes: 'geopolitica',
+  Economia_Comercio: 'economia',
+  Sociedade_Cultura: 'cultura',
+  Mobilidade_Fronteiras: 'geopolitica',
+  Ciencia_Clima: 'geopolitica',
+};
+
+function normalizarRadar(str) {
+  return String(str == null ? '' : str)
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .trim();
+}
+
+function limparPrefixoGatilhoWorker(str) {
+  return String(str || '')
+    .replace(/^[A-Z0-9_]{3,30}:\s*/, '')
+    .trim();
+}
+
+function formatarHoraCurtaWorker(isoDateStr) {
+  try {
+    const dt = isoDateStr ? new Date(isoDateStr) : new Date();
+    const d = Number.isNaN(dt.getTime()) ? new Date() : dt;
+    const partes = new Intl.DateTimeFormat('pt-BR', {
+      timeZone: 'America/Sao_Paulo',
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false,
+    }).formatToParts(d);
+    const h = partes.find((p) => p.type === 'hour')?.value || '00';
+    const m = partes.find((p) => p.type === 'minute')?.value || '00';
+    return `Atualizado às ${h}h${m}`;
+  } catch {
+    return 'Atualizado agora';
+  }
+}
+
+function formatarRotuloRelativoWorker(isoDateStr) {
+  try {
+    const dt = isoDateStr ? new Date(isoDateStr) : new Date();
+    const t = dt.getTime();
+    if (isNaN(t)) return 'Atualizado agora';
+    const diffMin = Math.floor((Date.now() - t) / 60000);
+    if (diffMin < 5) return 'Atualizado agora';
+    if (diffMin < 60) return `Atualizado há ${diffMin} min`;
+    return formatarHoraCurtaWorker(isoDateStr);
+  } catch {
+    return 'Atualizado agora';
+  }
+}
+
+async function carregarAssetWorker(path, request, env) {
+  try {
+    const assetUrl = new URL(path.startsWith('/') ? path : '/' + path, request.url);
+    if (env && env.ASSETS && typeof env.ASSETS.fetch === 'function') {
+      const res = await env.ASSETS.fetch(new Request(assetUrl, { method: 'GET' }));
+      if (res && res.ok) {
+        return await res.json();
+      }
+    }
+    const res = await fetch(assetUrl.toString());
+    if (res && res.ok) {
+      return await res.json();
+    }
+  } catch {
+    // Falha silenciosa
+  }
+  return null;
+}
+
+async function handleRadarHybrid(request, env) {
   if (request.method === 'OPTIONS') {
     return new Response(null, { status: 204, headers: CORS_HEADERS });
   }
-  const feedReq = new Request(new URL('/data/feed_output.json', request.url), { method: 'GET' });
-  const assetRes = await env.ASSETS.fetch(feedReq);
-  if (!assetRes.ok) {
-    return new Response(JSON.stringify({ ok: false, items: [], error: 'Feed indisponível' }), {
+
+  const url = new URL(request.url);
+  const isRefresh = url.searchParams.has('_t') || url.searchParams.get('refresh') === '1';
+  const cacheControl = isRefresh
+    ? 'no-store, no-cache, must-revalidate'
+    : 'public, max-age=60, s-maxage=300';
+  const headers = {
+    ...CORS_HEADERS,
+    'Content-Type': 'application/json; charset=utf-8',
+    'Cache-Control': cacheControl,
+    'X-Content-Type-Options': 'nosniff',
+  };
+
+  const categoriaFiltro = normalizarRadar(url.searchParams.get('categoria') || 'todos');
+
+  try {
+    const [vitrineSnap, feedOutput] = await Promise.all([
+      carregarAssetWorker('data/vitrine_ia.json', request, env),
+      carregarAssetWorker('data/feed_output.json', request, env),
+    ]);
+
+    const updatedAtIso = isRefresh
+      ? new Date().toISOString()
+      : (vitrineSnap && vitrineSnap.updatedAt) || new Date().toISOString();
+
+    const temasVitrine =
+      vitrineSnap && Array.isArray(vitrineSnap.temas_ativos) && vitrineSnap.temas_ativos.length > 0
+        ? vitrineSnap.temas_ativos.filter((t) => t && typeof t === 'object')
+        : [];
+
+    const itensV2 = temasVitrine.map((t) => {
+      const catRaw = t.categoria || t.categoria_primaria || 'Geopolitica_Radar';
+      const catNorm = MAPA_CATEGORIA_RADAR_WORKER[catRaw] || normalizarRadar(catRaw) || 'geopolitica';
+      const slug = t.slug || normalizarRadar(t.titulo_tema || t.titulo_curto || '').replace(/[^a-z0-9]+/g, '-');
+      const titulo = t.titulo_tema || t.titulo_curto || t.titulo || '';
+      const resumo = limparPrefixoGatilhoWorker(t.gatilho_vitrine || t.resumo_pulso || t.resumo || '');
+      const analise = t.sintese_nerd || t.impacto_pratico || t.analise || resumo;
+      const kws = Array.isArray(t.palavras_chave_busca)
+        ? t.palavras_chave_busca
+        : (Array.isArray(t.palavras_chave) ? t.palavras_chave : []);
+      const paises = Array.isArray(t.paises_envolvidos) && t.paises_envolvidos.length > 0
+        ? t.paises_envolvidos
+        : ['BR'];
+      const score = Number(t.urgencia_score || t.relevancia_score || 85);
+      const urlsFontes = Array.isArray(t.fontes_urls) ? t.fontes_urls : [];
+      const fonteUrl = urlsFontes[0] || t.fonte_url || t.rota_editoria || '/radar';
+
+      return {
+        id: `v2-${slug}`,
+        slug,
+        titulo,
+        resumo,
+        analise,
+        categoria: ['geopolitica', 'politica', 'economia', 'cultura'].includes(catNorm) ? catNorm : 'geopolitica',
+        fonte_nome: 'Síntese Rodando o Mundo · Pulso V2',
+        fonte_url: fonteUrl,
+        data_publicacao: t.updated_at || updatedAtIso,
+        origem_v2: true,
+        urgencia_score: score,
+        paises_envolvidos: paises,
+        palavras_chave: kws,
+      };
+    });
+
+    const cardsFeed = Array.isArray(feedOutput)
+      ? feedOutput
+          .filter((card) => card && typeof card === 'object')
+          .map((card, idx) => ({
+            id: card.id || `feed-${idx + 1}`,
+            slug: card.slug || '',
+            titulo: card.titulo || '',
+            resumo: card.resumo || '',
+            analise: card.analise || '',
+            categoria: normalizarRadar(card.categoria || 'geopolitica') || 'geopolitica',
+            fonte_nome: card.fonte_nome || 'Radar Editorial',
+            fonte_url: card.fonte_url || '/radar',
+            data_publicacao: card.data_publicacao || updatedAtIso,
+            origem_v2: false,
+            urgencia_score: Number(card.urgencia_score || 70),
+            paises_envolvidos: Array.isArray(card.paises_envolvidos) ? card.paises_envolvidos : [],
+            palavras_chave: Array.isArray(card.palavras_chave) ? card.palavras_chave : [],
+          }))
+      : [];
+
+    const titulosVistos = new Set();
+    const combinados = [];
+
+    for (const item of [...itensV2, ...cardsFeed]) {
+      if (!item || typeof item !== 'object') continue;
+      const chave = normalizarRadar(item.titulo);
+      if (!chave || titulosVistos.has(chave)) continue;
+      titulosVistos.add(chave);
+      combinados.push(item);
+    }
+
+    const combinadosOrdenados = sortirCardsRodizioAmplo(combinados, 2);
+    const filtrados = (categoriaFiltro && categoriaFiltro !== 'todos')
+      ? sortirCardsRodizioAmplo(
+          combinadosOrdenados.filter((it) => normalizarRadar(it.categoria) === categoriaFiltro),
+          2
+        )
+      : combinadosOrdenados;
+
+    let maisRecenteIso = updatedAtIso;
+    if (filtrados.length > 0) {
+      let maxTs = 0;
+      for (const it of filtrados) {
+        const ts = Date.parse(it?.data_publicacao || '') || 0;
+        if (ts > maxTs && it?.data_publicacao) {
+          maxTs = ts;
+          maisRecenteIso = it.data_publicacao;
+        }
+      }
+    }
+
+    return new Response(JSON.stringify({
+      ok: true,
+      cached: !isRefresh,
+      source: itensV2.length > 0 ? 'v2_hybrid' : 'feed_output',
+      atualizado_em: formatarRotuloRelativoWorker(maisRecenteIso),
+      updatedAt: updatedAtIso,
+      total: filtrados.length,
+      items: filtrados,
+    }), {
       status: 200,
-      headers: { ...CORS_HEADERS, 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' }
+      headers,
+    });
+  } catch (err) {
+    return new Response(JSON.stringify({
+      ok: false,
+      source: 'error_fallback',
+      items: [],
+      error: 'Falha no processamento do radar híbrido',
+    }), {
+      status: 200,
+      headers,
     });
   }
-  const items = await assetRes.json().catch(() => []);
-  const url = new URL(request.url);
-  const categoriaFiltro = (url.searchParams.get('categoria') || '').trim().toLowerCase();
-  const baseLista = Array.isArray(items) ? items : [];
-  const filtrada = categoriaFiltro && categoriaFiltro !== 'todos'
-    ? baseLista.filter((it) => String(it?.categoria || '').trim().toLowerCase() === categoriaFiltro)
-    : baseLista;
-  const lista = sortirCardsRodizioAmplo(filtrada, 2);
-  let ultimaData = new Date().toISOString();
-  let maxTs = 0;
-  for (const it of lista) {
-    const ts = Date.parse(it?.data_publicacao || '') || 0;
-    if (ts > maxTs && it?.data_publicacao) {
-      maxTs = ts;
-      ultimaData = it.data_publicacao;
-    }
-  }
-  return new Response(JSON.stringify({
-    ok: true,
-    source: 'feed_output',
-    atualizado_em: ultimaData,
-    total: lista.length,
-    items: lista
-  }), {
-    status: 200,
-    headers: { ...CORS_HEADERS, 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' }
-  });
 }
 
 async function handleEntendaOAssunto(request, env, url) {
@@ -436,9 +620,9 @@ export default {
       return dispatchApiFunction(apiMod, request, env);
     }
 
-    // Rota /api/radar: serve /data/feed_output.json no formato esperado por app.js sem cache
+    // Rota /api/radar: serve conteúdo dinâmico e fresco com rodízio amplo e suporte a refresh
     if (url.pathname === '/api/radar') {
-      return handleRadarFeed(request, env);
+      return handleRadarHybrid(request, env);
     }
 
     // Rota /api/entenda-o-assunto: proxy para /v2/colunas ou /v2/entenda-o-assunto/{slug}

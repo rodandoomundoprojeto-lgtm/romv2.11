@@ -453,7 +453,7 @@ function construirHeadersCache(isRefresh) {
   return {
     'Cache-Control': isRefresh
       ? 'no-store, no-cache, must-revalidate'
-      : 'public, max-age=60, s-maxage=180',
+      : 'public, max-age=60, s-maxage=300',
     'X-Content-Type-Options': 'nosniff',
     ...CORS_HEADERS,
   };
@@ -526,7 +526,10 @@ function construirPaisesEmAlta(noticiasQuentes) {
 }
 
 function converterTemasParaNoticiasQuentes(temasAtivos, updatedAtIso, carimboHora) {
-  return temasAtivos.map((tema) => {
+  const listaValida = Array.isArray(temasAtivos)
+    ? temasAtivos.filter((t) => t && typeof t === 'object')
+    : [];
+  return listaValida.map((tema) => {
     const catPrimaria = tema.categoria_primaria || 'Geopolitica_Radar';
     const categoria = MAPA_CATEGORIA_V2[catPrimaria] || 'geopolitica';
     const rotaEditoria = tema.rota_editoria || MAPA_ROTAS_EDITORIA[catPrimaria] || '/radar';

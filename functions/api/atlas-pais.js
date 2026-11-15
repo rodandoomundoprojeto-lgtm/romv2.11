@@ -11,6 +11,7 @@ const CORS_HEADERS = {
 
 const CACHE_TTL_MS = 15 * 60 * 1000; // 15 minutos em memória / cache
 const CACHE_LOCAL = new Map();
+const PT_COUNTRIES = new Set(['BR', 'PT', 'AO', 'MZ', 'CV', 'GW', 'ST', 'TL']);
 
 function cleanHtml(raw) {
   if (!raw) return '';
@@ -36,27 +37,58 @@ function hashString(str) {
   return 'h_' + Math.abs(h).toString(36);
 }
 
-// Tradução ultrarrápida via clients5 (Google Dict / Chrome Ex API)
+// Tradução ultrarrápida via clients5 com fallback para translate.googleapis.com
 async function traduzirTexto(texto, targetLang = 'pt') {
   const clean = String(texto || '').trim();
   if (!clean || clean.length < 3) return clean;
 
-  const url = `https://clients5.google.com/translate_a/t?client=dict-chrome-ex&sl=auto&tl=${encodeURIComponent(targetLang)}&q=${encodeURIComponent(clean)}`;
+  const tl = encodeURIComponent(targetLang);
+  const q = encodeURIComponent(clean);
+
+  // 1. Tentativa primária: clients5.google.com
+  const primaryUrl = `https://clients5.google.com/translate_a/t?client=dict-chrome-ex&sl=auto&tl=${tl}&q=${q}`;
   try {
     const ctrl = new AbortController();
     const tid = setTimeout(() => ctrl.abort(), 4000);
-    const resp = await fetch(url, { signal: ctrl.signal });
+    const resp = await fetch(primaryUrl, { signal: ctrl.signal });
     clearTimeout(tid);
-    if (!resp.ok) return clean;
-    const data = await resp.json();
-    if (Array.isArray(data)) {
-      if (typeof data[0] === 'string') return data[0];
-      if (Array.isArray(data[0]) && typeof data[0][0] === 'string') return data[0][0];
+    if (resp.ok) {
+      const data = await resp.json();
+      let translated = '';
+      if (Array.isArray(data)) {
+        if (typeof data[0] === 'string') translated = data[0];
+        else if (Array.isArray(data[0]) && typeof data[0][0] === 'string') translated = data[0][0];
+      }
+      if (translated && translated.trim() && translated.trim() !== clean) {
+        return translated.trim();
+      }
     }
-    return clean;
   } catch {
-    return clean;
+    // Segue para fallback
   }
+
+  // 2. Fallback: translate.googleapis.com (client=gtx)
+  const fallbackUrl = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=${tl}&dt=t&q=${q}`;
+  try {
+    const ctrl = new AbortController();
+    const tid = setTimeout(() => ctrl.abort(), 4000);
+    const resp = await fetch(fallbackUrl, { signal: ctrl.signal });
+    clearTimeout(tid);
+    if (resp.ok) {
+      const data = await resp.json();
+      if (Array.isArray(data) && Array.isArray(data[0])) {
+        const translated = data[0]
+          .map((seg) => (Array.isArray(seg) && typeof seg[0] === 'string' ? seg[0] : ''))
+          .join('')
+          .trim();
+        if (translated) return translated;
+      }
+    }
+  } catch {
+    // Mantém original se fallback também falhar
+  }
+
+  return clean;
 }
 
 function parseRssXml(xmlText, countryCode) {
@@ -167,21 +199,22 @@ export async function handleAtlasPais(request, env = {}) {
     items = [];
   }
 
-  // 2. Tradução em lote para PT-BR se necessário
-  const langTargets = ['pt', 'pt-BR', 'pt-PT'];
-  for (let i = 0; i < Math.min(items.length, 12); i++) {
-    const it = items[i];
-    // Se o título aparenta ser em outro idioma (ex: caracteres não latinos ou termos estrangeiros)
-    if (it.titleOriginal && !/^(o|a|os|as|um|uma|de|do|da|em|no|na|com|por)\b/i.test(it.titleOriginal)) {
-      try {
-        const traduzido = await traduzirTexto(it.titleOriginal, 'pt');
-        if (traduzido && traduzido !== it.titleOriginal) {
-          it.titlePt = traduzido;
+  // 2. Tradução em paralelo para PT-BR em países não lusófonos (até 12 itens)
+  if (!PT_COUNTRIES.has(pais) && items.length > 0) {
+    const alvos = items.slice(0, 12);
+    await Promise.all(
+      alvos.map(async (it) => {
+        if (!it.titleOriginal) return;
+        try {
+          const traduzido = await traduzirTexto(it.titleOriginal, 'pt');
+          if (traduzido && traduzido !== it.titleOriginal) {
+            it.titlePt = traduzido;
+          }
+        } catch {
+          // Mantém original se tradução falhar
         }
-      } catch {
-        // Mantém original se tradução falhar
-      }
-    }
+      })
+    );
   }
 
   // Salva no cache local

@@ -69,6 +69,192 @@ def _obter_db_url(db_url: Optional[str] = None) -> str:
     ).strip()
 
 
+ROOT_DIR = Path(__file__).resolve().parents[1]
+SNAPSHOT_VITRINE_PATH = ROOT_DIR / "data" / "vitrine_ia.json"
+
+MAPA_CATEGORIA_PARA_PRIMARIA = {
+    "Geopolitica_Relacoes": "Geopolitica_Radar",
+    "Economia_Comercio": "Economia",
+    "Sociedade_Cultura": "Cultura",
+    "Mobilidade_Fronteiras": "Geopolitica_Radar",
+    "Ciencia_Clima": "Geopolitica_Radar",
+}
+
+MAPA_ROTAS_EDITORIA_PULSO = {
+    "Geopolitica_Radar": "/radar",
+    "Politica": "/politica",
+    "Economia": "/economia",
+    "Cultura": "/cultura",
+    "Eleicoes": "/eleicoes",
+    "Resumo_Ultimas": "/ultimas-noticias",
+}
+
+
+def salvar_snapshot_vitrine_pulso(
+    payload: Any,
+    caminho: Optional[Path] = None,
+) -> Path:
+    """Sincroniza e mescla as notícias quentes ativas em `data/vitrine_ia.json`.
+
+    Mantém o contrato estruturado compatível com `functions/api/noticias-quentes.js`,
+    `functions/api/radar.js` e `functions/api/vitrine-em-alta.js`, atualizando `updatedAt`.
+    """
+    caminho_arquivo = caminho or SNAPSHOT_VITRINE_PATH
+    agora_iso = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+    # Extrai a lista de notícias quentes do payload (suporta Pydantic ou dict)
+    if hasattr(payload, "noticias_quentes"):
+        itens_brutos = payload.noticias_quentes
+        batch_id = getattr(payload, "batch_id", "") or datetime.now(timezone.utc).strftime("%Y%m%d-%H%M")
+    elif isinstance(payload, dict):
+        itens_brutos = payload.get("noticias_quentes", [])
+        batch_id = payload.get("batch_id") or datetime.now(timezone.utc).strftime("%Y%m%d-%H%M")
+    elif isinstance(payload, list):
+        itens_brutos = payload
+        batch_id = datetime.now(timezone.utc).strftime("%Y%m%d-%H%M")
+    else:
+        itens_brutos = []
+        batch_id = datetime.now(timezone.utc).strftime("%Y%m%d-%H%M")
+
+    # Lê dados existentes para mesclagem se o arquivo já existir
+    temas_existentes: List[Dict[str, Any]] = []
+    nq_existentes: List[Dict[str, Any]] = []
+    if caminho_arquivo.exists():
+        try:
+            conteudo_existente = json.loads(caminho_arquivo.read_text(encoding="utf-8"))
+            if isinstance(conteudo_existente, dict):
+                raw_temas = conteudo_existente.get("temas_ativos")
+                temas_existentes = [t for t in raw_temas if isinstance(t, dict)] if isinstance(raw_temas, list) else []
+                raw_nq = conteudo_existente.get("noticias_quentes")
+                nq_existentes = [n for n in raw_nq if isinstance(n, dict)] if isinstance(raw_nq, list) else []
+        except Exception as exc:
+            import sys
+            print(f"[pulso_30m] Aviso: falha ao ler snapshot existente ({exc}); iniciando novo.", file=sys.stderr)
+
+    novos_temas: List[Dict[str, Any]] = []
+    novas_nq: List[Dict[str, Any]] = []
+
+    for item in itens_brutos:
+        d = item.model_dump() if hasattr(item, "model_dump") else (dict(item) if isinstance(item, dict) else {})
+        if not d:
+            continue
+
+        slug = str(d.get("slug") or "")
+        titulo = str(d.get("titulo_curto") or d.get("titulo_tema") or d.get("titulo") or "").strip()
+        if not titulo:
+            continue
+
+        cat_atlas = str(d.get("categoria") or "Geopolitica_Relacoes")
+        cat_primaria = MAPA_CATEGORIA_PARA_PRIMARIA.get(cat_atlas, "Geopolitica_Radar")
+        rota_ed = MAPA_ROTAS_EDITORIA_PULSO.get(cat_primaria, "/radar")
+
+        resumo = str(d.get("resumo_pulso") or d.get("gatilho_vitrine") or d.get("resumo") or "").strip()
+        impacto = str(d.get("impacto_pratico") or d.get("sintese_nerd") or resumo).strip()
+        kws = [str(k).lower().strip() for k in (d.get("palavras_chave") or d.get("palavras_chave_busca") or [])]
+
+        novos_temas.append({
+            "slug": slug,
+            "titulo_tema": titulo,
+            "titulo_curto": titulo,
+            "status": "novo",
+            "categoria_primaria": cat_primaria,
+            "categoria": cat_atlas,
+            "categorias_cruzadas": ["Economia", "Resumo_Ultimas"],
+            "rota_editoria": rota_ed,
+            "relevancia_score": int(d.get("relevancia_score") or 85),
+            "urgencia_score": int(d.get("urgencia_score") or 85),
+            "palavras_chave_busca": kws,
+            "palavras_chave": kws,
+            "gatilho_vitrine": resumo,
+            "resumo_pulso": resumo,
+            "sintese_nerd": impacto,
+            "impacto_pratico": impacto,
+            "paises_envolvidos": list(d.get("paises_envolvidos") or ["BR"]),
+            "veiculos_origem": list(d.get("veiculos_origem") or ["Síntese Rodando o Mundo · Pulso V2"]),
+            "fontes_urls": list(d.get("fontes_urls") or []),
+            "updated_at": agora_iso,
+        })
+        novas_nq.append(d)
+
+    # Mesclagem com deduplicação por slug e título
+    vistos_slugs = set()
+    vistos_titulos = set()
+    temas_mesclados: List[Dict[str, Any]] = []
+
+    for t in novos_temas:
+        s = t.get("slug")
+        tit = (t.get("titulo_tema") or "").lower().strip()
+        if s and s in vistos_slugs:
+            continue
+        if tit and tit in vistos_titulos:
+            continue
+        if s:
+            vistos_slugs.add(s)
+        if tit:
+            vistos_titulos.add(tit)
+        temas_mesclados.append(t)
+
+    for t in temas_existentes:
+        s = t.get("slug")
+        tit = (t.get("titulo_tema") or t.get("titulo_curto") or "").lower().strip()
+        if s and s in vistos_slugs:
+            continue
+        if tit and tit in vistos_titulos:
+            continue
+        if s:
+            vistos_slugs.add(s)
+        if tit:
+            vistos_titulos.add(tit)
+        temas_mesclados.append(t)
+
+    temas_mesclados = temas_mesclados[:20]
+
+    # Mescla lista de noticias_quentes brutas
+    vistos_nq_slugs = set()
+    vistos_nq_titulos = set()
+    nq_mescladas: List[Dict[str, Any]] = []
+    for item in novas_nq:
+        s = item.get("slug")
+        tit = (item.get("titulo_curto") or item.get("titulo_tema") or item.get("titulo") or "").lower().strip()
+        if s and s in vistos_nq_slugs:
+            continue
+        if tit and tit in vistos_nq_titulos:
+            continue
+        if s:
+            vistos_nq_slugs.add(s)
+        if tit:
+            vistos_nq_titulos.add(tit)
+        nq_mescladas.append(item)
+    for item in nq_existentes:
+        s = item.get("slug")
+        tit = (item.get("titulo_curto") or item.get("titulo_tema") or item.get("titulo") or "").lower().strip()
+        if s and s in vistos_nq_slugs:
+            continue
+        if tit and tit in vistos_nq_titulos:
+            continue
+        if s:
+            vistos_nq_slugs.add(s)
+        if tit:
+            vistos_nq_titulos.add(tit)
+        nq_mescladas.append(item)
+    nq_mescladas = nq_mescladas[:20]
+
+    snapshot = {
+        "ok": True,
+        "cached": False,
+        "source": "snapshot",
+        "updatedAt": agora_iso,
+        "batch_id": batch_id,
+        "temas_ativos": temas_mesclados,
+        "noticias_quentes": nq_mescladas,
+    }
+
+    caminho_arquivo.parent.mkdir(parents=True, exist_ok=True)
+    caminho_arquivo.write_text(json.dumps(snapshot, ensure_ascii=False, indent=2), encoding="utf-8")
+    print(f"[pulso_30m] Snapshot público sincronizado -> {caminho_arquivo} ({len(temas_mesclados)} temas)")
+    return caminho_arquivo
+
+
 # ============================================================================
 # 1. DEDUPLICAÇÃO: BUSCA DE NOTÍCIAS ATIVAS NO BANCO (expires_at > NOW())
 # ============================================================================
@@ -628,6 +814,8 @@ async def executar_pipeline_pulso_async(
 
     if dry_run or not database_url:
         print(f"[pulso_30m] Modo dry-run/sem banco: {len(payload.noticias_quentes)} notícias geradas.")
+        if not dry_run:
+            salvar_snapshot_vitrine_pulso(payload)
         return payload
 
     def _persistir_com_lock() -> int:
@@ -681,6 +869,7 @@ async def executar_pipeline_pulso_async(
 
     total_salvos = await asyncio.to_thread(_persistir_com_lock)
     print(f"[pulso_30m] UPSERT concluído em ai_noticias_quentes: {total_salvos} registros atualizados.")
+    salvar_snapshot_vitrine_pulso(payload)
     return payload
 
 

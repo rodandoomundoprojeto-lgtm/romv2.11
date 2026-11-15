@@ -1060,27 +1060,49 @@
       (favOn ? ICON_STAR_ON : ICON_STAR_OFF) + '</button>';
   }
 
+  function handleNewsFavClick(btn, e) {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    if (!btn) return;
+    var item = {
+      url: btn.getAttribute('data-news-url') || '',
+      title: btn.getAttribute('data-news-title') || '',
+      source: btn.getAttribute('data-news-source') || '',
+      countryCode: btn.getAttribute('data-news-country') || 'BR',
+      publishedAt: btn.getAttribute('data-news-date') || ''
+    };
+    var nowFav = toggleNewsFavorite(item);
+    var key = getNewsFavKey(item.url, item.title);
+    document.querySelectorAll('button[data-fav-news]').forEach(function (otherBtn) {
+      var otherUrl = otherBtn.getAttribute('data-news-url') || '';
+      var otherTitle = otherBtn.getAttribute('data-news-title') || '';
+      if (otherBtn === btn || (key && getNewsFavKey(otherUrl, otherTitle) === key)) {
+        otherBtn.classList.toggle('is-fav', nowFav);
+        otherBtn.setAttribute('aria-pressed', String(nowFav));
+        otherBtn.innerHTML = nowFav ? ICON_STAR_ON : ICON_STAR_OFF;
+        otherBtn.title = nowFav ? 'Remover notícia dos favoritos' : 'Salvar notícia nos favoritos';
+        otherBtn.setAttribute('aria-label', nowFav ? 'Remover notícia dos favoritos' : 'Favoritar notícia');
+      }
+    });
+    try { btn.blur(); } catch (err) {}
+  }
+
+  document.addEventListener('click', function (e) {
+    var btn = e.target && e.target.closest ? e.target.closest('button[data-fav-news]') : null;
+    if (btn) {
+      handleNewsFavClick(btn, e);
+    }
+  });
+
   function bindNewsFavButtons(rootEl) {
     if (!rootEl) return;
     rootEl.querySelectorAll('button[data-fav-news]').forEach(function (btn) {
       if (btn._favNewsBound) return;
       btn._favNewsBound = true;
       btn.addEventListener('click', function (e) {
-        e.preventDefault();
-        e.stopPropagation();
-        var item = {
-          url: btn.getAttribute('data-news-url') || '',
-          title: btn.getAttribute('data-news-title') || '',
-          source: btn.getAttribute('data-news-source') || '',
-          countryCode: btn.getAttribute('data-news-country') || 'BR',
-          publishedAt: btn.getAttribute('data-news-date') || ''
-        };
-        var nowFav = toggleNewsFavorite(item);
-        btn.classList.toggle('is-fav', nowFav);
-        btn.setAttribute('aria-pressed', String(nowFav));
-        btn.innerHTML = nowFav ? ICON_STAR_ON : ICON_STAR_OFF;
-        btn.title = nowFav ? 'Remover notícia dos favoritos' : 'Salvar notícia nos favoritos';
-        try { btn.blur(); } catch (err) {}
+        handleNewsFavClick(btn, e);
       });
     });
   }
@@ -3936,11 +3958,146 @@
     }
   }
 
+  // =========================================================================
+  // GESTOR DE ATUALIZAÇÕES AUTÔNOMAS E UX ANTI-LAYOUT SHIFT (MOTOR V2)
+  // =========================================================================
+  var AUTONOMOUS_INTERVAL_MS = 6 * 60 * 1000; // 6 minutos (faixa 5-8 min)
+  var VISIBILITY_STALE_MS = 10 * 60 * 1000; // 10 minutos para revalidar ao voltar para a aba
+
+  var pendingAutonomousUpdates = {
+    radar: null,
+    vitrineIa: null,
+    entendaV2: null,
+    hotNews: null
+  };
+
+  var lastAutonomousFetchTimestamps = {
+    radar: 0,
+    vitrineIa: 0,
+    entendaV2: 0,
+    hotNews: 0
+  };
+
+  function isUserReadingOrInteractingWith(elementOrId) {
+    var el = typeof elementOrId === 'string' ? document.getElementById(elementOrId) : elementOrId;
+    if (!el || el.hidden) return false;
+
+    var rect = el.getBoundingClientRect();
+    var vh = window.innerHeight || document.documentElement.clientHeight || 800;
+    var vw = window.innerWidth || document.documentElement.clientWidth || 1200;
+
+    // Está dentro do viewport visível?
+    var inViewport = (rect.bottom > 50 && rect.top < vh - 50 && rect.right > 0 && rect.left < vw);
+    if (!inViewport) return false;
+
+    // Hover ativo ou cursor sobre o elemento
+    try {
+      if (el.matches(':hover') || el.querySelector(':hover')) return true;
+    } catch (e) {}
+
+    // Foco ou seleção ativa de texto pelo leitor
+    try {
+      if (el.contains(document.activeElement) && document.activeElement !== document.body) return true;
+      var sel = window.getSelection();
+      if (sel && sel.rangeCount > 0 && !sel.isCollapsed && sel.anchorNode && el.contains(sel.anchorNode)) {
+        return true;
+      }
+    } catch (e) {}
+
+    // Card ou sanfona expandida pelo usuário
+    if (el.querySelector('.is-expanded, [aria-expanded="true"]')) return true;
+
+    return true;
+  }
+
+  function flushPendingAutonomousUpdates() {
+    var keys = ['radar', 'vitrineIa', 'entendaV2', 'hotNews'];
+    var targetElements = {
+      radar: 'radar-cards-list',
+      vitrineIa: 'vitrine-ia-grid',
+      entendaV2: 'entenda-v2-colunas-wrap',
+      hotNews: 'pulsando-agora-container'
+    };
+
+    keys.forEach(function (k) {
+      if (typeof pendingAutonomousUpdates[k] === 'function') {
+        var elId = targetElements[k];
+        if (document.hidden || !isUserReadingOrInteractingWith(elId)) {
+          var updateFn = pendingAutonomousUpdates[k];
+          pendingAutonomousUpdates[k] = null;
+          try {
+            updateFn();
+          } catch (e) {
+            console.warn('[AutonomousUpdate] Erro ao aplicar atualização suave (' + k + '):', e);
+          }
+        }
+      }
+    });
+  }
+
+  function startUnifiedAutonomousUpdates() {
+    // 1. Polling contínuo autônomo em segundo plano (a cada 6 minutos)
+    setInterval(function () {
+      if (document.hidden) return;
+      checkHotNewsOnMap(true);
+      if (typeof carregarVitrineIA === 'function') {
+        carregarVitrineIA({ isAutoRefresh: true, categoria: vitrineIaSelectedCategory });
+      }
+      if (state && state.editorialSection === 'radar' && typeof loadRadarCards === 'function') {
+        loadRadarCards(false, true);
+      }
+      if (typeof carregarColunasEntendaV2 === 'function') {
+        carregarColunasEntendaV2(false, true);
+      }
+    }, AUTONOMOUS_INTERVAL_MS);
+
+    // 2. Revalidação ao alternar de aba (visibilitychange)
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) {
+        flushPendingAutonomousUpdates();
+      } else {
+        var now = Date.now();
+        if (now - lastAutonomousFetchTimestamps.hotNews >= VISIBILITY_STALE_MS) {
+          checkHotNewsOnMap(true);
+        }
+        if (typeof carregarVitrineIA === 'function' && (now - lastAutonomousFetchTimestamps.vitrineIa >= VISIBILITY_STALE_MS)) {
+          carregarVitrineIA({ isAutoRefresh: true, categoria: vitrineIaSelectedCategory });
+        }
+        if (state && state.editorialSection === 'radar' && typeof loadRadarCards === 'function' && (now - lastAutonomousFetchTimestamps.radar >= VISIBILITY_STALE_MS)) {
+          loadRadarCards(false, true);
+        }
+        if (typeof carregarColunasEntendaV2 === 'function' && (now - lastAutonomousFetchTimestamps.entendaV2 >= VISIBILITY_STALE_MS)) {
+          carregarColunasEntendaV2(false, true);
+        }
+        flushPendingAutonomousUpdates();
+      }
+    });
+
+    // 3. Despejo suave de buffer quando o leitor rolar para fora da seção
+    var scrollThrottleTimer = null;
+    window.addEventListener('scroll', function () {
+      if (scrollThrottleTimer) return;
+      scrollThrottleTimer = setTimeout(function () {
+        scrollThrottleTimer = null;
+        flushPendingAutonomousUpdates();
+      }, 300);
+    }, { passive: true });
+  }
+
   function triggerHotNewsPulseCycle() {
     hotNewsByCountry = buildHotNewsMapFromEditorial();
     hotPulseActive = true;
     updateHotNewsPillUI();
-    renderPulsandoAgoraTrack();
+    var pulsandoEl = document.getElementById('pulsando-agora-container');
+    if (isUserReadingOrInteractingWith(pulsandoEl)) {
+      pendingAutonomousUpdates.hotNews = function () {
+        renderPulsandoAgoraTrack();
+        syncQuickCountryCardsHotNews();
+      };
+    } else {
+      renderPulsandoAgoraTrack();
+      syncQuickCountryCardsHotNews();
+    }
     var pill = document.getElementById('map-hot-news-pill');
     if (pill) pill.classList.add('is-pulsing');
     if (countrySel) {
@@ -3966,6 +4123,7 @@
   }
 
   function checkHotNewsOnMap(isPeriodic) {
+    lastAutonomousFetchTimestamps.hotNews = Date.now();
     if (!isPeriodic) {
       triggerHotNewsPulseCycle();
     }
@@ -4580,7 +4738,7 @@
       '<div class="atlas-live-head">' +
         '<div class="atlas-live-title-wrap">' +
           '<span class="atlas-live-dot" aria-hidden="true"></span>' +
-          '<h3 class="atlas-live-title" id="atlas-live-heading">Manchetes ao vivo · ' + esc(cName) + '</h3>' +
+          '<h3 class="atlas-live-title" id="atlas-live-heading">Últimas manchetes · ' + esc(cName) + '</h3>' +
         '</div>' +
         '<div class="atlas-live-controls">' +
           '<span class="atlas-live-updated" id="atlas-live-updated-label">Sincronizando...</span>' +
@@ -4764,7 +4922,7 @@
           '<a href="' + esc(it.url) + '" target="_blank" rel="noopener noreferrer" data-atlas-title-link>' + esc(pt) + '</a>' +
         '</h4>' +
         '<div class="atlas-live-card-actions">' +
-          (temTraducao ? '<button type="button" class="atlas-lang-toggle" data-pt="' + esc(pt) + '" data-orig="' + esc(orig) + '" data-showing="pt">Ver original</button>' : '') +
+          (temTraducao ? '<button type="button" class="atlas-lang-toggle" title="Traduzir para o idioma original" data-pt="' + esc(pt) + '" data-orig="' + esc(orig) + '" data-showing="pt">Ver original</button>' : '') +
           renderNewsFavBtn({ url: it.url, title: pt, source: it.source || 'Atlas', countryCode: cCode, publishedAt: it.publishedAt || '' }) +
         '</div>' +
       '</article>';
@@ -4781,13 +4939,51 @@
           link.textContent = tBtn.getAttribute('data-orig') || '';
           tBtn.setAttribute('data-showing', 'orig');
           tBtn.textContent = 'Ver em português';
+          tBtn.title = 'Ver em português';
         } else {
           link.textContent = tBtn.getAttribute('data-pt') || '';
           tBtn.setAttribute('data-showing', 'pt');
           tBtn.textContent = 'Ver original';
+          tBtn.title = 'Traduzir para o idioma original';
         }
       });
     });
+    bindNewsFavButtons(listEl);
+  }
+
+  function ensureAtlasItemsTranslated(items, cCode, onTranslated) {
+    var isLusophone = ['BR', 'PT', 'AO', 'MZ', 'CV', 'GW', 'ST', 'TL'].indexOf(String(cCode || '').toUpperCase()) !== -1;
+    if (isLusophone || !Array.isArray(items) || !items.length) return;
+    var pendingMap = {};
+    var hasPending = false;
+    items.slice(0, 10).forEach(function (it, idx) {
+      var orig = String(it.titleOriginal || it.titlePt || '').trim();
+      var pt = String(it.titlePt || '').trim();
+      if (orig && (!pt || pt === orig)) {
+        pendingMap[String(idx)] = orig;
+        hasPending = true;
+      }
+    });
+    if (!hasPending) return;
+    translateTextsMap(pendingMap, 'pt').then(function (translatedMap) {
+      if (!translatedMap || typeof translatedMap !== 'object') return;
+      var changed = false;
+      Object.keys(pendingMap).forEach(function (k) {
+        var idx = Number(k);
+        var tr = translatedMap[k];
+        if (tr && typeof tr === 'string') {
+          var trTrim = tr.trim();
+          if (trTrim && items[idx] && trTrim !== items[idx].titlePt) {
+            items[idx].titlePt = trTrim;
+            if (!items[idx].titleOriginal) items[idx].titleOriginal = pendingMap[k];
+            changed = true;
+          }
+        }
+      });
+      if (changed && typeof onTranslated === 'function') {
+        onTranslated(items);
+      }
+    }).catch(function () {});
   }
 
   function carregarAtlasPaisAoVivo(cCode, cName, forceRefresh) {
@@ -4814,6 +5010,15 @@
           var parsed = JSON.parse(raw);
           if (parsed && Array.isArray(parsed.items) && parsed.items.length && (Date.now() - (parsed.ts || 0) < 15 * 60 * 1000)) {
             renderAtlasPaisItems(parsed.items, cCode, parsed.updatedAt);
+            ensureAtlasItemsTranslated(parsed.items, cCode, function (updatedItems) {
+              try {
+                localStorage.setItem(cacheKey, JSON.stringify({ ts: parsed.ts || Date.now(), updatedAt: parsed.updatedAt, items: updatedItems }));
+              } catch (e) {}
+              var activeFeed = panel.querySelector('#atlas-live-news-feed');
+              if (activeFeed && activeFeed.getAttribute('data-country') === String(cCode)) {
+                renderAtlasPaisItems(updatedItems, cCode, parsed.updatedAt);
+              }
+            });
             atlasAutoRefreshTimer = setTimeout(function () {
               var currentFeed = panel.querySelector('#atlas-live-news-feed');
               if (currentFeed && currentFeed.getAttribute('data-country') === String(cCode)) {
@@ -4884,10 +5089,20 @@
         if (!currentFeed || currentFeed.getAttribute('data-country') !== String(cCode)) return;
 
         if (data && data.ok && Array.isArray(data.items) && data.items.length) {
+          var savedTs = Date.now();
           try {
-            localStorage.setItem(cacheKey, JSON.stringify({ ts: Date.now(), updatedAt: data.updatedAt, items: data.items }));
+            localStorage.setItem(cacheKey, JSON.stringify({ ts: savedTs, updatedAt: data.updatedAt, items: data.items }));
           } catch (e) {}
           renderAtlasPaisItems(data.items, cCode, data.updatedAt);
+          ensureAtlasItemsTranslated(data.items, cCode, function (updatedItems) {
+            try {
+              localStorage.setItem(cacheKey, JSON.stringify({ ts: savedTs, updatedAt: data.updatedAt, items: updatedItems }));
+            } catch (e) {}
+            var activeFeed = panel.querySelector('#atlas-live-news-feed');
+            if (activeFeed && activeFeed.getAttribute('data-country') === String(cCode)) {
+              renderAtlasPaisItems(updatedItems, cCode, data.updatedAt);
+            }
+          });
         } else {
           renderAtlasPaisItems([], cCode, '');
         }
@@ -6099,6 +6314,7 @@
       if (tlBox) {
         tlBox.innerHTML = matchedTimeline ? renderTimelineHTML(matchedTimeline, 'panel-tl', cCode) : '';
         bindDynamicEditorialActions(tlBox);
+        bindNewsFavButtons(tlBox);
       }
       bindDynamicEditorialActions(box);
       return;
@@ -6122,6 +6338,7 @@
       if (tlBox) {
         tlBox.innerHTML = matchedTimeline ? renderTimelineHTML(matchedTimeline, 'panel-tl', cCode) : '';
         bindDynamicEditorialActions(tlBox);
+        bindNewsFavButtons(tlBox);
       }
       var allPerBtn = box.querySelector('#btn-search-all-periods');
       if (allPerBtn) {
@@ -6222,6 +6439,7 @@
     if (tlBox) {
       tlBox.innerHTML = matchedTimeline ? renderTimelineHTML(matchedTimeline, 'panel-tl', cCode) : '';
       bindDynamicEditorialActions(tlBox);
+      bindNewsFavButtons(tlBox);
     }
 
     box.querySelectorAll('.carousel-btn').forEach(function (btn) {
@@ -6236,6 +6454,7 @@
     bindPeriodButtons(box);
     bindCardTranslations(box);
     bindDynamicEditorialActions(box);
+    bindNewsFavButtons(box);
   }
 
   function executeTopicSearch(rawQuery, opts) {
@@ -8113,6 +8332,7 @@
     state.editorialSection = sectionKey;
     state.cont = null;
     state.country = null;
+    flushPendingAutonomousUpdates();
     hideMobileChip();
     if (panelFloatingClose) panelFloatingClose.hidden = true;
     if (notFoundView) notFoundView.hidden = true;
@@ -9393,6 +9613,7 @@
     h += '</div>';
     thematicHubView.innerHTML = h;
     resolverLinksGenericosNaView(thematicHubView, hub.termoBuscaPadrao || hub.titulo, hub.pais || 'BR');
+    bindNewsFavButtons(thematicHubView);
     window.scrollTo({ top: 0, behavior: 'auto' });
 
     var hubForm = thematicHubView.querySelector('#hub-search-form');
@@ -9682,6 +9903,7 @@
 
       container.innerHTML = headerHtml + renderDossieMateriasGridHtml(itemsToShow, primaryA2);
       bindCardTranslations(container);
+      bindNewsFavButtons(container);
     }).catch(function () {
       container.innerHTML = '<p class="dossie-empty-msg">Não foi possível carregar as matérias ao vivo neste momento.</p>';
     });
@@ -9834,6 +10056,7 @@
     var resultsBox = document.getElementById('dossie-materias-results');
     if (Array.isArray(materias) && materias.length && resultsBox) {
       bindCardTranslations(resultsBox);
+      bindNewsFavButtons(resultsBox);
     } else {
       fetchDossieLiveNews(d, '', 'dossie-materias-results', { periodo: activePer });
     }
@@ -10124,9 +10347,8 @@
     headerHtml += '<p class="editorial-section-sub">Monitoramento contínuo dos principais canais e analistas de geopolítica, política, economia e cultura com síntese factual e avaliação de impacto.</p>';
     headerHtml += '</div>';
     headerHtml += '<div style="display:flex;gap:var(--space-2);align-items:center;flex-wrap:wrap;">';
-    headerHtml += '<span class="radar-updated-badge' + (radarUpdatedLabel ? ' is-live' : '') + '" id="radar-last-updated" title="Sincronização automática no navegador a cada 5 minutos">' + esc(radarUpdatedLabel || '') + '</span>';
+    headerHtml += '<span class="radar-updated-badge' + (radarUpdatedLabel ? ' is-live' : '') + '" id="radar-last-updated" title="Sincronização automática no navegador a cada 5 a 8 minutos">' + esc(radarUpdatedLabel || '') + '</span>';
     headerHtml += '<a href="/resumo-do-dia" class="btn btn-secondary" data-spa-link title="Ver o Resumo do Dia com as 5 principais notícias">📰 Resumo do Dia</a>';
-    headerHtml += '<button type="button" class="btn btn-secondary" id="btn-atualizar-radar">🔄 Atualizar radar</button>';
     headerHtml += '</div>';
     headerHtml += '</div>';
 
@@ -10139,13 +10361,6 @@
     filtersHtml += '</div>';
 
     container.innerHTML = headerHtml + filtersHtml + '<div class="radar-cards-grid" id="radar-cards-list"><p class="radar-loading">Carregando briefings do radar...</p></div>';
-
-    var btnRefresh = document.getElementById('btn-atualizar-radar');
-    if (btnRefresh) {
-      btnRefresh.addEventListener('click', function () {
-        loadRadarCards(true, false);
-      });
-    }
 
     var filterBtns = container.querySelectorAll('.radar-filter-btn');
     filterBtns.forEach(function (btn) {
@@ -10214,15 +10429,9 @@
   }
 
   function loadRadarCards(forceRefresh, isAutoRefresh) {
-    var btnRefresh = document.getElementById('btn-atualizar-radar');
     if (forceRefresh) {
       radarFeedCache = null;
       try { localStorage.removeItem('rom_radar_cache'); } catch (e) {}
-      if (btnRefresh) {
-        btnRefresh.disabled = true;
-        btnRefresh.classList.add('is-loading');
-        btnRefresh.innerHTML = '⏳ Atualizando radar...';
-      }
       var listLoading = document.getElementById('radar-cards-list');
       if (listLoading) {
         listLoading.innerHTML = '<p class="radar-loading">Sincronizando pulso em tempo real e briefings do radar...</p>';
@@ -10245,13 +10454,22 @@
       .then(function (data) {
         if (data && data.ok && Array.isArray(data.items) && data.items.length > 0) {
           radarLastFetchAt = Date.now();
+          lastAutonomousFetchTimestamps.radar = Date.now();
           var changed = hasRadarFeedChanged(radarFeedCache, data.items);
           radarFeedCache = data.items;
           radarUpdatedLabel = formatarRotuloAtualizacaoRadar(data.items, data.atualizado_em);
           updateRadarUpdatedBadge(radarUpdatedLabel);
           if (!isAutoRefresh || changed) {
-            renderRadarCardsList(!!isAutoRefresh);
-            triggerHotNewsPulseCycle();
+            var listEl = document.getElementById('radar-cards-list');
+            if (isAutoRefresh && isUserReadingOrInteractingWith(listEl)) {
+              pendingAutonomousUpdates.radar = function () {
+                renderRadarCardsList(true);
+                triggerHotNewsPulseCycle();
+              };
+            } else {
+              renderRadarCardsList(!!isAutoRefresh);
+              triggerHotNewsPulseCycle();
+            }
           }
           return;
         }
@@ -10265,36 +10483,26 @@
             return res.json();
           })
           .then(function (data) {
-            var nextItems = Array.isArray(data) ? data : [];
-            if (forceRefresh && nextItems.length > 0) {
-              var topTime = new Date(nextItems[0].data_publicacao || 0).getTime();
-              if (Date.now() - topTime > 30 * 60 * 1000) {
-                return fetch('https://raw.githubusercontent.com/rodandoomundoprojeto-lgtm/romv2.11/main/data/feed_output.json?_t=' + Date.now(), { cache: 'no-store' })
-                  .then(function (ghRes) {
-                    if (ghRes.ok) return ghRes.json();
-                    return nextItems;
-                  })
-                  .then(function (ghData) {
-                    if (Array.isArray(ghData) && ghData.length > 0) {
-                      var ghTop = new Date(ghData[0].data_publicacao || 0).getTime();
-                      if (ghTop > topTime) return ghData;
-                    }
-                    return nextItems;
-                  })
-                  .catch(function () { return nextItems; });
-              }
-            }
-            return nextItems;
+            return Array.isArray(data) ? data : [];
           })
           .then(function (nextItems) {
             radarLastFetchAt = Date.now();
+            lastAutonomousFetchTimestamps.radar = Date.now();
             var changed = hasRadarFeedChanged(radarFeedCache, nextItems);
             radarFeedCache = nextItems;
             radarUpdatedLabel = formatarRotuloAtualizacaoRadar(nextItems);
             updateRadarUpdatedBadge(radarUpdatedLabel);
             if (!isAutoRefresh || changed) {
-              renderRadarCardsList(!!isAutoRefresh);
-              triggerHotNewsPulseCycle();
+              var listEl = document.getElementById('radar-cards-list');
+              if (isAutoRefresh && isUserReadingOrInteractingWith(listEl)) {
+                pendingAutonomousUpdates.radar = function () {
+                  renderRadarCardsList(true);
+                  triggerHotNewsPulseCycle();
+                };
+              } else {
+                renderRadarCardsList(!!isAutoRefresh);
+                triggerHotNewsPulseCycle();
+              }
             }
           })
           .catch(function (err) {
@@ -10304,15 +10512,6 @@
               listEl.innerHTML = '<p class="radar-empty">Não foi possível carregar as novidades do radar neste momento (' + esc(err.message) + ').</p>';
             }
           });
-      })
-      .finally(function () {
-        if (isAutoRefresh) return;
-        var btnNow = document.getElementById('btn-atualizar-radar');
-        if (btnNow) {
-          btnNow.disabled = false;
-          btnNow.classList.remove('is-loading');
-          btnNow.innerHTML = '🔄 Atualizar radar';
-        }
       });
   }
 
@@ -12012,7 +12211,6 @@
     if (atualizadoEm) {
       ch += '<span class="radar-updated-badge">' + esc(atualizadoEm) + '</span>';
     }
-    ch += '<button type="button" class="btn btn-secondary btn-sm" id="btn-refresh-entenda-v2">🔄 Atualizar análises</button>';
     ch += '</div>';
     ch += '</div>';
 
@@ -12072,23 +12270,13 @@
       });
     });
 
-    var btnRefV2 = document.getElementById('btn-refresh-entenda-v2');
-    if (btnRefV2) {
-      btnRefV2.addEventListener('click', function () {
-        btnRefV2.disabled = true;
-        btnRefV2.classList.add('is-loading');
-        btnRefV2.textContent = '⏳ Atualizando...';
-        carregarColunasEntendaV2(true);
-      });
-    }
-
     bindDynamicEditorialActions(wrap);
   }
 
-  function carregarColunasEntendaV2(forceRefresh) {
+  function carregarColunasEntendaV2(forceRefresh, isAutoRefresh) {
     var wrap = document.getElementById('entenda-v2-colunas-wrap');
     if (!wrap) return;
-    if (!forceRefresh && Array.isArray(v2EntendaColunasCache) && v2EntendaColunasCache.length) {
+    if (!forceRefresh && !isAutoRefresh && Array.isArray(v2EntendaColunasCache) && v2EntendaColunasCache.length) {
       renderColunasEntendaV2DOM(v2EntendaColunasCache, v2EntendaAtualizadoEm);
       return;
     }
@@ -12099,18 +12287,17 @@
         if (data && data.ok && Array.isArray(data.colunas) && data.colunas.length) {
           v2EntendaColunasCache = data.colunas;
           v2EntendaAtualizadoEm = data.atualizado_em || '';
-          renderColunasEntendaV2DOM(v2EntendaColunasCache, v2EntendaAtualizadoEm);
+          lastAutonomousFetchTimestamps.entendaV2 = Date.now();
+          if (isAutoRefresh && isUserReadingOrInteractingWith(wrap)) {
+            pendingAutonomousUpdates.entendaV2 = function () {
+              renderColunasEntendaV2DOM(v2EntendaColunasCache, v2EntendaAtualizadoEm);
+            };
+          } else {
+            renderColunasEntendaV2DOM(v2EntendaColunasCache, v2EntendaAtualizadoEm);
+          }
         }
       })
-      .catch(function () {})
-      .finally(function () {
-        var btnRefV2 = document.getElementById('btn-refresh-entenda-v2');
-        if (btnRefV2) {
-          btnRefV2.disabled = false;
-          btnRefV2.classList.remove('is-loading');
-          btnRefV2.textContent = '🔄 Atualizar análises';
-        }
-      });
+      .catch(function () {});
   }
 
   function buildPath(cont, country) {
@@ -14870,18 +15057,18 @@
   function carregarVitrineIA(opcoes) {
     opcoes = opcoes || {};
     var forceRefresh = !!opcoes.forceRefresh;
+    var isAutoRefresh = !!opcoes.isAutoRefresh;
     var categoria = typeof opcoes.categoria === 'string' ? opcoes.categoria : vitrineIaSelectedCategory;
     vitrineIaSelectedCategory = categoria || '';
 
     var secEl = document.getElementById('vitrine-ia');
     var gridEl = document.getElementById('vitrine-ia-grid');
-    var refreshBtn = document.getElementById('btn-refresh-vitrine-ia');
     if (!secEl || !gridEl) return;
 
     if (forceRefresh) {
       vitrineIaMemoryTemas = [];
       try { localStorage.removeItem(VITRINE_IA_CACHE_KEY); } catch (e) {}
-    } else {
+    } else if (!isAutoRefresh) {
       var cached = lerCacheVitrineIA(false);
       if (cached && cached.length) {
         renderVitrineIACards(cached, vitrineIaSelectedCategory);
@@ -14889,16 +15076,11 @@
       }
     }
 
-    if (refreshBtn) {
-      refreshBtn.classList.add('is-loading');
-      refreshBtn.disabled = true;
-    }
-
-    var endpoint = forceRefresh
-      ? ('/api/vitrine-em-alta?_t=' + Date.now() + '&refresh=1')
+    var endpoint = (forceRefresh || isAutoRefresh)
+      ? ('/api/vitrine-em-alta?_t=' + Date.now() + (forceRefresh ? '&refresh=1' : ''))
       : '/api/vitrine-em-alta';
 
-    var fetchOpts = forceRefresh
+    var fetchOpts = (forceRefresh || isAutoRefresh)
       ? { cache: 'no-store', headers: { 'Accept': 'application/json' } }
       : { headers: { 'Accept': 'application/json' } };
 
@@ -14908,15 +15090,19 @@
         return r.json();
       })
       .then(function (data) {
-        if (refreshBtn) {
-          refreshBtn.classList.remove('is-loading');
-          refreshBtn.disabled = false;
-        }
         var temas = (data && Array.isArray(data.temas_ativos)) ? data.temas_ativos : [];
+        lastAutonomousFetchTimestamps.vitrineIa = Date.now();
         if (temas.length > 0) {
           salvarCacheVitrineIA(temas);
-          renderVitrineIACards(temas, vitrineIaSelectedCategory);
-          triggerHotNewsPulseCycle();
+          if (isAutoRefresh && isUserReadingOrInteractingWith(gridEl)) {
+            pendingAutonomousUpdates.vitrineIa = function () {
+              renderVitrineIACards(temas, vitrineIaSelectedCategory);
+              triggerHotNewsPulseCycle();
+            };
+          } else {
+            renderVitrineIACards(temas, vitrineIaSelectedCategory);
+            triggerHotNewsPulseCycle();
+          }
         } else {
           var stale = lerCacheVitrineIA(true);
           if (stale && stale.length && !forceRefresh) {
@@ -14927,10 +15113,6 @@
         }
       })
       .catch(function () {
-        if (refreshBtn) {
-          refreshBtn.classList.remove('is-loading');
-          refreshBtn.disabled = false;
-        }
         var stale = lerCacheVitrineIA(true);
         if (stale && stale.length) {
           renderVitrineIACards(stale, vitrineIaSelectedCategory);
@@ -14943,13 +15125,6 @@
   function initVitrineIA() {
     var secEl = document.getElementById('vitrine-ia');
     if (!secEl) return;
-
-    var refreshBtn = document.getElementById('btn-refresh-vitrine-ia');
-    if (refreshBtn) {
-      refreshBtn.addEventListener('click', function () {
-        carregarVitrineIA({ forceRefresh: true, categoria: vitrineIaSelectedCategory });
-      });
-    }
 
     var chipsWrap = document.getElementById('vitrine-ia-chips');
     if (chipsWrap) {
@@ -15043,9 +15218,7 @@
   atualizarResumoDoDiaAutomatico();
   initCommercialSimulator();
   checkHotNewsOnMap(false);
-  setInterval(function () {
-    checkHotNewsOnMap(true);
-  }, 5 * 60 * 1000);
+  startUnifiedAutonomousUpdates();
   var hotPillEl = document.getElementById('map-hot-news-pill');
   if (hotPillEl) {
     hotPillEl.addEventListener('click', function () {

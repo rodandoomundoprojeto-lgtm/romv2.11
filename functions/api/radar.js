@@ -66,9 +66,10 @@ function timestampPublicacao(item) {
 }
 
 export function sortirCardsRodizioAmplo(itens, maxV2Topo = 2) {
-  if (!Array.isArray(itens) || itens.length === 0) return [];
+  const validItens = (itens || []).filter((it) => it && typeof it === 'object');
+  if (validItens.length === 0) return [];
 
-  const ordenados = [...itens].sort((a, b) => timestampPublicacao(b) - timestampPublicacao(a));
+  const ordenados = [...validItens].sort((a, b) => timestampPublicacao(b) - timestampPublicacao(a));
   const topV2 = [];
   const pool = [];
 
@@ -194,7 +195,7 @@ function construirHeadersCache(isRefresh) {
     };
   }
   return {
-    'Cache-Control': 'public, max-age=60, s-maxage=180, stale-while-revalidate=60',
+    'Cache-Control': 'public, max-age=60, s-maxage=300',
     'X-Content-Type-Options': 'nosniff',
     ...CORS_HEADERS,
   };
@@ -274,7 +275,7 @@ export async function onRequestGet(context) {
 
     const temasVitrine =
       vitrineSnap && Array.isArray(vitrineSnap.temas_ativos) && vitrineSnap.temas_ativos.length > 0
-        ? vitrineSnap.temas_ativos
+        ? vitrineSnap.temas_ativos.filter((t) => t && typeof t === 'object')
         : FALLBACK_VITRINE_TEMAS;
 
     const itensV2Snapshot = temasVitrine.map((t) =>
@@ -282,7 +283,9 @@ export async function onRequestGet(context) {
     );
 
     const cardsFeed = Array.isArray(feedOutput)
-      ? feedOutput.map((card, idx) => {
+      ? feedOutput
+          .filter((card) => card && typeof card === 'object')
+          .map((card, idx) => {
           const textoCard = `${card.titulo || ''} ${card.resumo || ''} ${card.analise || ''}`;
           return {
             id: card.id || `feed-${idx + 1}`,
