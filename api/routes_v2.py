@@ -37,6 +37,7 @@ from redacao_v2.schemas import (
     EvidenciaResolvidaPublica,
     PainelVerificacaoEvento,
 )
+from src.publisher import sortir_cards_rodizio_amplo
 
 router = APIRouter(tags=["Motor Editorial V2 & Pulso 30m"])
 
@@ -545,9 +546,12 @@ def obter_feed_radar(
         cat_norm = categoria.lower().strip()
         items = [it for it in items if str(it.get("categoria", "")).lower() == cat_norm]
 
-    mais_recente_iso = None
-    if items and items[0].get("data_publicacao"):
-        mais_recente_iso = items[0].get("data_publicacao")
+    items = sortir_cards_rodizio_amplo(items, max_v2_topo=2)
+
+    mais_recente_iso = max(
+        (str(it.get("data_publicacao")) for it in items if it.get("data_publicacao")),
+        default=None,
+    )
 
     agora_iso = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 

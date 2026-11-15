@@ -49,6 +49,104 @@ function normalizar(str) {
     .trim();
 }
 
+export function normalizarFonteKey(fonteNome) {
+  const limpo = normalizar(fonteNome).replace(/\s+/g, ' ').trim();
+  return limpo || 'desconhecida';
+}
+
+function ehDestaquePulsoV2(item) {
+  if (!item) return false;
+  if (item.origem_v2 === true) return true;
+  return normalizarFonteKey(item.fonte_nome).includes('pulso v2');
+}
+
+function timestampPublicacao(item) {
+  const t = Date.parse((item && item.data_publicacao) || '');
+  return Number.isNaN(t) ? 0 : t;
+}
+
+export function sortirCardsRodizioAmplo(itens, maxV2Topo = 2) {
+  if (!Array.isArray(itens) || itens.length === 0) return [];
+
+  const ordenados = [...itens].sort((a, b) => timestampPublicacao(b) - timestampPublicacao(a));
+  const topV2 = [];
+  const pool = [];
+
+  for (const item of ordenados) {
+    if (ehDestaquePulsoV2(item) && topV2.length < maxV2Topo) {
+      topV2.push(item);
+    } else {
+      pool.push(item);
+    }
+  }
+
+  const resultado = [...topV2];
+  const recentes = [];
+  let consecFonte = null;
+  let consecCount = 0;
+
+  for (const item of topV2) {
+    const fk = normalizarFonteKey(item.fonte_nome);
+    recentes.push(fk);
+    if (fk === consecFonte) {
+      consecCount += 1;
+    } else {
+      consecFonte = fk;
+      consecCount = 1;
+    }
+  }
+
+  while (pool.length > 0) {
+    const fontesDistintas = new Set(pool.map((it) => normalizarFonteKey(it.fonte_nome))).size;
+    if (fontesDistintas <= 1) {
+      resultado.push(...pool);
+      break;
+    }
+
+    const windowSize = Math.min(3, fontesDistintas - 1);
+    const janelaRecente = windowSize > 0 ? new Set(recentes.slice(-windowSize)) : new Set();
+
+    let escolhidoIdx = -1;
+
+    // 1ª passada: respeita teto consecutivo (<= 2) e janela de rodízio amplo
+    for (let i = 0; i < pool.length; i++) {
+      const fk = normalizarFonteKey(pool[i].fonte_nome);
+      if (consecCount >= 2 && fk === consecFonte) continue;
+      if (janelaRecente.has(fk)) continue;
+      escolhidoIdx = i;
+      break;
+    }
+
+    // 2ª passada: relaxa janela de rodízio, mantendo teto consecutivo
+    if (escolhidoIdx === -1) {
+      for (let i = 0; i < pool.length; i++) {
+        const fk = normalizarFonteKey(pool[i].fonte_nome);
+        if (consecCount >= 2 && fk === consecFonte) continue;
+        escolhidoIdx = i;
+        break;
+      }
+    }
+
+    // 3ª passada (esgotamento): pega o mais recente disponível
+    if (escolhidoIdx === -1) {
+      escolhidoIdx = 0;
+    }
+
+    const [escolhido] = pool.splice(escolhidoIdx, 1);
+    const fkEscolhido = normalizarFonteKey(escolhido.fonte_nome);
+    resultado.push(escolhido);
+    recentes.push(fkEscolhido);
+    if (fkEscolhido === consecFonte) {
+      consecCount += 1;
+    } else {
+      consecFonte = fkEscolhido;
+      consecCount = 1;
+    }
+  }
+
+  return resultado;
+}
+
 function limparPrefixoGatilho(str) {
   return String(str || '')
     .replace(/^[A-Z0-9_]{3,30}:\s*/, '')
@@ -216,14 +314,26 @@ export async function onRequestGet(context) {
       combinados.push(item);
     }
 
+    const combinadosOrdenados = sortirCardsRodizioAmplo(combinados, 2);
+
     const filtrados =
       categoriaFiltro && categoriaFiltro !== 'todos'
-        ? combinados.filter((item) => normalizar(item.categoria) === categoriaFiltro)
-        : combinados;
+        ? sortirCardsRodizioAmplo(
+            combinadosOrdenados.filter((item) => normalizar(item.categoria) === categoriaFiltro),
+            2
+          )
+        : combinadosOrdenados;
 
     let maisRecenteIso = updatedAtIso;
-    if (filtrados.length > 0 && filtrados[0].data_publicacao) {
-      maisRecenteIso = filtrados[0].data_publicacao;
+    if (filtrados.length > 0) {
+      let maxTs = 0;
+      for (const item of filtrados) {
+        const ts = timestampPublicacao(item);
+        if (ts > maxTs && item.data_publicacao) {
+          maxTs = ts;
+          maisRecenteIso = item.data_publicacao;
+        }
+      }
     }
     const carimboHora = formatarRotuloRelativo(maisRecenteIso);
 

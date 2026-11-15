@@ -2767,10 +2767,26 @@
     .style('fill', function (d) { return 'var(--c-' + d.c + ')'; })
     .style('cursor', 'pointer');
 
-  islandClusterSel.append('circle').attr('class', 'island-cluster-hit').attr('r', 16);
-  islandClusterSel.append('circle').attr('class', 'island-cluster-halo').attr('r', 8.5);
-  islandClusterSel.append('circle').attr('class', 'island-cluster-ring').attr('r', 5.5);
-  islandClusterSel.append('circle').attr('class', 'island-cluster-dot').attr('r', 3.0);
+  function isMobileMapViewport() {
+    return (typeof window !== 'undefined' && window.innerWidth <= 768);
+  }
+
+  function getClusterBaseRadii() {
+    var isMob = isMobileMapViewport();
+    return {
+      hit: isMob ? 16 : 9,
+      halo: isMob ? 8.5 : 4.8,
+      ring: isMob ? 5.5 : 3.6,
+      dot: isMob ? 3.0 : 2.2,
+      minHit: isMob ? 10 : 7
+    };
+  }
+
+  var initialClusterRadii = getClusterBaseRadii();
+  islandClusterSel.append('circle').attr('class', 'island-cluster-hit').attr('r', initialClusterRadii.hit);
+  islandClusterSel.append('circle').attr('class', 'island-cluster-halo').attr('r', initialClusterRadii.halo);
+  islandClusterSel.append('circle').attr('class', 'island-cluster-ring').attr('r', initialClusterRadii.ring);
+  islandClusterSel.append('circle').attr('class', 'island-cluster-dot').attr('r', initialClusterRadii.dot);
 
   islandClusterSel.on('click', function (e, d) {
     e.stopPropagation();
@@ -2798,36 +2814,23 @@
     });
 
   function updateIslandClustering(currentK) {
-    var isMobile = window.innerWidth <= 768;
     var kVal = currentK !== undefined ? currentK : ((svg.node() && d3.zoomTransform(svg.node()).k) || 1);
     var isZoomedInPacific = (kVal >= 3.0) || isEastOceaniaZoomed();
     var isZoomedInCaribe = (kVal >= 3.0) || isCaribeZoomed();
+    var isMob = isMobileMapViewport();
 
     if (mapEl) {
       mapEl.classList.toggle('pacific-zoomed', isZoomedInPacific);
       mapEl.classList.toggle('caribe-zoomed', isZoomedInCaribe);
     }
-
-    if (!isMobile) {
-      // No desktop: desativa completamente clusters e restaura marcadores de ilha como era antes
-      if (islandClusterSel) {
-        islandClusterSel
-          .style('display', 'none')
-          .style('opacity', 0);
-      }
-      if (islandMarkerSel) {
-        islandMarkerSel.each(function () {
-          d3.select(this)
-            .classed('is-clustered', false)
-            .style('display', '');
-        });
-      }
-      return;
-    }
-
-    // No mobile: mantém agrupamento inteligente para toque confortável
     if (islandClusterSel) {
       islandClusterSel.each(function (d) {
+        if (d.c === 'central' && !isMob) {
+          d3.select(this)
+            .style('display', 'none')
+            .style('opacity', 0);
+          return;
+        }
         var isZoomed = d.c === 'central' ? isZoomedInCaribe : isZoomedInPacific;
         d3.select(this)
           .style('display', isZoomed ? 'none' : '')
@@ -2893,6 +2896,14 @@
         if (!pt || isNaN(pt[0]) || isNaN(pt[1])) return 'translate(-9999,-9999)';
         return 'translate(' + pt[0] + ',' + pt[1] + ')';
       });
+      var curKVal = (svg.node() && d3.zoomTransform(svg.node()).k) || 1;
+      var curScale = Math.max(0.35, Math.min(1, 1 / Math.pow(curKVal, 0.45)));
+      var curRadii = getClusterBaseRadii();
+      islandClusterSel.selectAll('.island-cluster-dot').attr('r', curRadii.dot * curScale);
+      islandClusterSel.selectAll('.island-cluster-ring').attr('r', curRadii.ring * curScale);
+      islandClusterSel.selectAll('.island-cluster-halo').attr('r', curRadii.halo * curScale);
+      islandClusterSel.selectAll('.island-cluster-hit').attr('r', Math.max(curRadii.minHit, curRadii.hit * curScale));
+      updateIslandClustering(curKVal);
     }
     var ring = 'M' + URAL_D.map(function (q) { return projection(q).join(','); }).join('L') + 'Z';
     clipEu.attr('d', ring);
@@ -3024,10 +3035,11 @@
         islandMarkerSel.selectAll('.island-marker-ring').attr('r', 4.2 * s);
         islandMarkerSel.selectAll('.island-marker-hit').attr('r', Math.max(6, 9 * s));
         if (islandClusterSel) {
-          islandClusterSel.selectAll('.island-cluster-dot').attr('r', 3.0 * s);
-          islandClusterSel.selectAll('.island-cluster-ring').attr('r', 5.5 * s);
-          islandClusterSel.selectAll('.island-cluster-halo').attr('r', 8.5 * s);
-          islandClusterSel.selectAll('.island-cluster-hit').attr('r', Math.max(10, 16 * s));
+          var cRadii = getClusterBaseRadii();
+          islandClusterSel.selectAll('.island-cluster-dot').attr('r', cRadii.dot * s);
+          islandClusterSel.selectAll('.island-cluster-ring').attr('r', cRadii.ring * s);
+          islandClusterSel.selectAll('.island-cluster-halo').attr('r', cRadii.halo * s);
+          islandClusterSel.selectAll('.island-cluster-hit').attr('r', Math.max(cRadii.minHit, cRadii.hit * s));
         }
         updateIslandClustering(e.transform.k);
         if (state.cont === 'central') {
@@ -4244,7 +4256,6 @@
 
   window.addEventListener('resize', function () {
     scheduleFloatingControlsUpdate();
-    updateIslandClustering();
   }, { passive: true });
 
   // Toque em área vazia (oceano / fundo) limpa a seleção
@@ -9779,6 +9790,118 @@
     });
   }
 
+  function intercalarCardsRadarPorFonte(items) {
+    if (!Array.isArray(items) || items.length <= 1) {
+      return Array.isArray(items) ? items.slice() : [];
+    }
+
+    function normalizeFonteKey(fonteNome) {
+      var raw = String(fonteNome || '');
+      if (typeof raw.normalize === 'function') {
+        raw = raw.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+      }
+      var clean = raw.toLowerCase().replace(/\s+/g, ' ').trim();
+      return clean || 'desconhecida';
+    }
+
+    function isPulsoV2(item) {
+      if (!item) return false;
+      if (item.origem_v2 === true) return true;
+      var fonte = String(item.fonte_nome || '').toLowerCase();
+      return fonte.indexOf('pulso v2') !== -1;
+    }
+
+    function getPubTimestamp(item) {
+      if (!item || !item.data_publicacao) return 0;
+      var ts = Date.parse(item.data_publicacao);
+      return isNaN(ts) ? 0 : ts;
+    }
+
+    var sorted = items.slice().sort(function (a, b) {
+      return getPubTimestamp(b) - getPubTimestamp(a);
+    });
+
+    var topV2 = [];
+    var pool = [];
+    for (var i = 0; i < sorted.length; i++) {
+      var current = sorted[i];
+      if (isPulsoV2(current) && topV2.length < 2) {
+        topV2.push(current);
+      } else {
+        pool.push(current);
+      }
+    }
+
+    var result = topV2.slice();
+
+    while (pool.length > 0) {
+      var distinctMap = Object.create(null);
+      var distinctCount = 0;
+      for (var d = 0; d < pool.length; d++) {
+        var fKey = normalizeFonteKey(pool[d].fonte_nome);
+        if (!distinctMap[fKey]) {
+          distinctMap[fKey] = true;
+          distinctCount++;
+        }
+      }
+
+      if (distinctCount <= 1) {
+        for (var r = 0; r < pool.length; r++) {
+          result.push(pool[r]);
+        }
+        break;
+      }
+
+      var windowSize = Math.min(3, distinctCount - 1);
+
+      var consecFonte = '';
+      var consecCount = 0;
+      if (result.length > 0) {
+        consecFonte = normalizeFonteKey(result[result.length - 1].fonte_nome);
+        consecCount = 1;
+        for (var c = result.length - 2; c >= 0; c--) {
+          if (normalizeFonteKey(result[c].fonte_nome) === consecFonte) {
+            consecCount++;
+          } else {
+            break;
+          }
+        }
+      }
+
+      var recentFontes = Object.create(null);
+      var startRecent = Math.max(0, result.length - windowSize);
+      for (var w = startRecent; w < result.length; w++) {
+        recentFontes[normalizeFonteKey(result[w].fonte_nome)] = true;
+      }
+
+      var chosenIdx = -1;
+      for (var p = 0; p < pool.length; p++) {
+        var candFonte = normalizeFonteKey(pool[p].fonte_nome);
+        if (consecCount >= 2 && candFonte === consecFonte) continue;
+        if (recentFontes[candFonte]) continue;
+        chosenIdx = p;
+        break;
+      }
+
+      if (chosenIdx === -1) {
+        for (var p2 = 0; p2 < pool.length; p2++) {
+          var candFonte2 = normalizeFonteKey(pool[p2].fonte_nome);
+          if (consecCount >= 2 && candFonte2 === consecFonte) continue;
+          chosenIdx = p2;
+          break;
+        }
+      }
+
+      if (chosenIdx === -1) {
+        chosenIdx = 0;
+      }
+
+      result.push(pool.splice(chosenIdx, 1)[0]);
+    }
+
+    return result;
+  }
+
   function renderRadarCardsList(preserveExpanded) {
     var listEl = document.getElementById('radar-cards-list');
     if (!listEl) return;
@@ -9805,6 +9928,8 @@
       listEl.innerHTML = '<p class="radar-empty">Nenhum briefing encontrado para a categoria selecionada.</p>';
       return;
     }
+
+    filtered = intercalarCardsRadarPorFonte(filtered);
 
     var catLabels = {
       'geopolitica': 'Geopolítica',

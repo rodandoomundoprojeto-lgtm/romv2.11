@@ -13,6 +13,7 @@ import * as apiResumo from './functions/api/resumo.js';
 import * as apiTraduzir from './functions/api/traduzir.js';
 import * as apiUltimasNoticias from './functions/api/ultimas-noticias.js';
 import * as apiVitrineEmAlta from './functions/api/vitrine-em-alta.js';
+import { sortirCardsRodizioAmplo } from './functions/api/radar.js';
 
 const API_FUNCTION_ROUTES = {
   '/api/busca-assunto': apiBuscaAssunto,
@@ -342,8 +343,22 @@ async function handleRadarFeed(request, env) {
     });
   }
   const items = await assetRes.json().catch(() => []);
-  const lista = Array.isArray(items) ? items : [];
-  const ultimaData = lista.length && lista[0].data_publicacao ? lista[0].data_publicacao : new Date().toISOString();
+  const url = new URL(request.url);
+  const categoriaFiltro = (url.searchParams.get('categoria') || '').trim().toLowerCase();
+  const baseLista = Array.isArray(items) ? items : [];
+  const filtrada = categoriaFiltro && categoriaFiltro !== 'todos'
+    ? baseLista.filter((it) => String(it?.categoria || '').trim().toLowerCase() === categoriaFiltro)
+    : baseLista;
+  const lista = sortirCardsRodizioAmplo(filtrada, 2);
+  let ultimaData = new Date().toISOString();
+  let maxTs = 0;
+  for (const it of lista) {
+    const ts = Date.parse(it?.data_publicacao || '') || 0;
+    if (ts > maxTs && it?.data_publicacao) {
+      maxTs = ts;
+      ultimaData = it.data_publicacao;
+    }
+  }
   return new Response(JSON.stringify({
     ok: true,
     source: 'feed_output',
