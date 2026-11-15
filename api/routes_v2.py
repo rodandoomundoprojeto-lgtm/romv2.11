@@ -11,9 +11,10 @@ import json
 import os
 import re
 import secrets
+import time
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any, Dict, List, Literal, Optional
+from typing import Any, Dict, List, Literal, Optional, Tuple
 
 import psycopg
 from fastapi import APIRouter, BackgroundTasks, Body, Depends, Header, HTTPException, Query, Response
@@ -1730,4 +1731,359 @@ def admin_editar_sintese_evento(
         "versao": nova_versao,
         "tipo_alteracao": payload.tipo_alteracao,
         "aviso_correcao_material": errata_limpa if payload.tipo_alteracao == "correcao_material" else None,
+    }
+
+
+# ============================================================================
+# 15. BUSCA CONTEXTUAL POR PAÍS: /v2/sugestoes-contextuais & /v2/artigos-por-assunto
+# ============================================================================
+
+_SUGESTOES_CACHE: Dict[str, Tuple[float, Dict[str, Any]]] = {}
+_SUGESTOES_CACHE_TTL_SEC = 120.0
+
+_SIGLAS_PRESERVAR = {
+    "mei", "stf", "tse", "eua", "usa", "faa", "pib", "onu", "un", "ia", "ai",
+    "otan", "nato", "brics", "ue", "eu", "g7", "g20", "fmi", "oms", "bce",
+    "fed", "ibge", "inss", "sus", "das", "pix", "cop", "asean", "mercosul",
+}
+
+_BLOCOS_POR_PAIS: Dict[str, Tuple[List[str], List[str]]] = {
+    # ISO-2 -> (códigos de bloco/organização em paises_envolvidos, termos textuais indiretos)
+    "BR": (["UN", "BRICS", "MERCOSUL", "LATAM"], ["brasil", "américa do sul", "américa latina", "mercosul", "brics", "g20"]),
+    "AR": (["UN", "MERCOSUL", "LATAM"], ["argentina", "américa do sul", "américa latina", "mercosul", "g20"]),
+    "UY": (["UN", "MERCOSUL", "LATAM"], ["uruguai", "américa do sul", "mercosul"]),
+    "PY": (["UN", "MERCOSUL", "LATAM"], ["paraguai", "américa do sul", "mercosul"]),
+    "CL": (["UN", "LATAM"], ["chile", "américa do sul", "américa latina"]),
+    "CO": (["UN", "LATAM"], ["colômbia", "américa do sul", "américa latina"]),
+    "PE": (["UN", "LATAM"], ["peru", "américa do sul", "américa latina"]),
+    "EC": (["UN", "LATAM"], ["equador", "américa do sul", "américa latina"]),
+    "BO": (["UN", "MERCOSUL", "LATAM"], ["bolívia", "américa do sul", "mercosul"]),
+    "VE": (["UN", "LATAM"], ["venezuela", "américa do sul", "américa latina"]),
+    "MX": (["UN", "LATAM"], ["méxico", "américa do norte", "américa latina", "usmca"]),
+    "US": (["UN", "OTAN", "NATO", "G7"], ["estados unidos", "eua", "américa do norte", "otan", "g7", "g20"]),
+    "CA": (["UN", "OTAN", "NATO", "G7"], ["canadá", "américa do norte", "otan", "g7", "g20"]),
+    "FR": (["EU", "UN", "OTAN", "NATO", "G7"], ["frança", "união europeia", "europa", "eurozona", "otan", "g7"]),
+    "DE": (["EU", "UN", "OTAN", "NATO", "G7"], ["alemanha", "união europeia", "europa", "eurozona", "otan", "g7"]),
+    "IT": (["EU", "UN", "OTAN", "NATO", "G7"], ["itália", "união europeia", "europa", "eurozona", "otan", "g7"]),
+    "ES": (["EU", "UN", "OTAN", "NATO"], ["espanha", "união europeia", "europa", "eurozona", "otan"]),
+    "PT": (["EU", "UN", "OTAN", "NATO"], ["portugal", "união europeia", "europa", "eurozona", "otan"]),
+    "GB": (["UN", "OTAN", "NATO", "G7"], ["reino unido", "europa", "otan", "g7"]),
+    "UA": (["EU", "UN", "OTAN"], ["ucrânia", "europa", "otan", "união europeia"]),
+    "RU": (["UN", "BRICS"], ["rússia", "brics", "eurásia"]),
+    "CN": (["UN", "BRICS"], ["china", "brics", "ásia", "indo-pacífico", "g20"]),
+    "JP": (["UN", "G7"], ["japão", "ásia", "indo-pacífico", "g7", "g20"]),
+    "KR": (["UN"], ["coreia do sul", "ásia", "indo-pacífico", "g20"]),
+    "IN": (["UN", "BRICS"], ["índia", "brics", "ásia", "indo-pacífico", "g20"]),
+    "PH": (["UN", "ASEAN"], ["filipinas", "asean", "ásia", "indo-pacífico"]),
+    "SG": (["UN", "ASEAN"], ["singapura", "cingapura", "asean", "ásia", "indo-pacífico"]),
+    "AU": (["UN"], ["austrália", "oceania", "indo-pacífico", "g20"]),
+    "ZA": (["UN", "BRICS"], ["áfrica do sul", "áfrica", "brics", "g20"]),
+    "IL": (["UN"], ["israel", "oriente médio"]),
+    "SA": (["UN", "BRICS"], ["arábia saudita", "oriente médio", "brics", "g20"]),
+    "IR": (["UN", "BRICS"], ["irã", "oriente médio", "brics"]),
+}
+
+_ATIVOS_SQL = [
+    "expires_at > NOW()",
+    "destaque_ate > NOW()",
+    "status IN ('ativo', 'publicado', 'aguardando_revisao')",
+]
+
+
+def _formatar_termo_sugestao(raw: str) -> str:
+    """Formata a tag preservando siglas conhecidas e capitalizando termos em minúsculo."""
+    limpo = " ".join(str(raw or "").strip().split())
+    if not limpo:
+        return ""
+    if limpo != limpo.lower():
+        return limpo
+    preposicoes = {"de", "da", "do", "das", "dos", "e", "em", "na", "no", "para", "com", "a", "o"}
+    palavras = limpo.split(" ")
+    out: List[str] = []
+    for idx, p in enumerate(palavras):
+        low = p.lower()
+        if low in _SIGLAS_PRESERVAR:
+            out.append(low.upper())
+        elif idx > 0 and low in preposicoes:
+            out.append(low)
+        else:
+            out.append(low.capitalize())
+    return " ".join(out)
+
+
+def _construir_where_escopo_pais(
+    pais: Optional[str],
+    escopo: str,
+    categoria: Optional[str] = None,
+) -> Tuple[str, List[Any]]:
+    """Constrói cláusula WHERE determinística compartilhada entre sugestão e listagem de artigos."""
+    conds = list(_ATIVOS_SQL)
+    params: List[Any] = []
+
+    if categoria:
+        conds.append("categoria = %s")
+        params.append(categoria)
+
+    pais_up = pais.strip().upper() if pais and pais.strip() else ""
+    if escopo == "direto" and pais_up:
+        conds.append("%s = ANY(paises_envolvidos)")
+        params.append(pais_up)
+    elif escopo == "indireto" and pais_up:
+        blocos_iso, termos_texto = _BLOCOS_POR_PAIS.get(pais_up, (["UN"], [pais_up.lower()]))
+        conds.append("NOT (%s = ANY(paises_envolvidos))")
+        params.append(pais_up)
+
+        like_patterns = [f"%{t}%" for t in termos_texto]
+        conds.append(
+            "("
+            "paises_envolvidos && %s::text[] "
+            "OR EXISTS (SELECT 1 FROM unnest(palavras_chave) kw WHERE LOWER(TRIM(kw)) = ANY(%s::text[])) "
+            "OR titulo_curto ILIKE ANY(%s::text[]) "
+            "OR resumo_pulso ILIKE ANY(%s::text[]) "
+            "OR COALESCE(impacto_pratico, '') ILIKE ANY(%s::text[])"
+            ")"
+        )
+        params.extend([blocos_iso, termos_texto, like_patterns, like_patterns, like_patterns])
+
+    return " AND ".join(conds), params
+
+
+def _construir_where_artigos_assunto(
+    termo: str,
+    pais: Optional[str],
+    escopo: str,
+    categoria: Optional[str] = None,
+) -> Tuple[str, List[Any]]:
+    """Aplica o mesmo filtro de escopo + correspondência exata do termo nas matérias ativas."""
+    where_escopo, params = _construir_where_escopo_pais(pais, escopo, categoria)
+    termo_limpo = termo.strip()
+    like_termo = f"%{termo_limpo}%"
+    where_full = (
+        f"{where_escopo} AND ("
+        "EXISTS (SELECT 1 FROM unnest(palavras_chave) AS kw WHERE LOWER(TRIM(kw)) = LOWER(TRIM(%s))) "
+        "OR titulo_curto ILIKE %s "
+        "OR resumo_pulso ILIKE %s"
+        ")"
+    )
+    params.extend([termo_limpo, like_termo, like_termo])
+    return where_full, params
+
+
+def _consultar_sugestoes_por_escopo(
+    cur: Any,
+    pais: Optional[str],
+    escopo: str,
+    categoria: Optional[str],
+    limite: int,
+    excluir_norms: Optional[set] = None,
+) -> List[Dict[str, Any]]:
+    """Agrega tags reais de `ai_noticias_quentes` garantindo `COUNT(DISTINCT id) > 0`."""
+    where_sql, params = _construir_where_escopo_pais(pais, escopo, categoria)
+    excluir = list(excluir_norms or set())
+    exclusao_sql = ""
+    if excluir:
+        exclusao_sql = "AND NOT (LOWER(TRIM(kw)) = ANY(%s::text[]))"
+        params.append(excluir)
+
+    params.append(limite)
+
+    query = f"""
+        WITH artigos_ativos AS (
+            SELECT id, palavras_chave, urgencia_score, relevancia_score, updated_at
+            FROM ai_noticias_quentes
+            WHERE {where_sql}
+        ),
+        tags_expandidas AS (
+            SELECT
+                a.id AS artigo_id,
+                LOWER(TRIM(kw)) AS tag_norm,
+                TRIM(kw) AS tag_raw,
+                a.urgencia_score,
+                a.relevancia_score,
+                a.updated_at
+            FROM artigos_ativos a,
+            LATERAL unnest(a.palavras_chave) AS kw
+            WHERE LENGTH(TRIM(kw)) >= 2
+              {exclusao_sql}
+        )
+        SELECT
+            tag_norm,
+            MIN(tag_raw) AS tag_display,
+            COUNT(DISTINCT artigo_id)::int AS artigos_count,
+            MAX(urgencia_score * 0.6 + relevancia_score * 0.4) AS score_max,
+            MAX(updated_at) AS ultima_atualizacao
+        FROM tags_expandidas
+        GROUP BY tag_norm
+        HAVING COUNT(DISTINCT artigo_id) > 0
+        ORDER BY artigos_count DESC, score_max DESC, ultima_atualizacao DESC
+        LIMIT %s;
+    """
+    cur.execute(query, tuple(params))
+    rows = cur.fetchall()
+    resultados: List[Dict[str, Any]] = []
+    for r in rows:
+        count = int(r["artigos_count"] or 0)
+        if count <= 0:
+            continue
+        resultados.append({
+            "termo": _formatar_termo_sugestao(r["tag_display"]),
+            "termo_busca": str(r["tag_display"]).strip(),
+            "prioridade": escopo,
+            "count": count,
+            "score": round(float(r["score_max"] or 0), 2),
+            "ultima_atualizacao": _serializar_valor_temporal(r["ultima_atualizacao"]),
+        })
+    return resultados
+
+
+@router.get("/v2/sugestoes-contextuais")
+def obter_sugestoes_contextuais(
+    response: Response,
+    pais: Optional[str] = Query(None, description="Código ISO-2 do país (ex: BR, US). Omitir para fallback global."),
+    categoria: Optional[str] = Query(None, description="Filtrar por categoria do Atlas"),
+    limit: int = Query(4, ge=1, le=6, description="Quantidade de sugestões (padrão 4, retorna 3 a 4)"),
+    refresh: Optional[str] = Query(None, description="Ignorar cache em memória"),
+    conn: Any = Depends(get_db),
+) -> Dict[str, Any]:
+    """Retorna de 3 a 4 sugestões quentes confirmadas no banco (`COUNT(*) > 0`) por país ou global."""
+    pais_norm = pais.strip().upper() if pais and pais.strip() else None
+    cat_norm = categoria.strip() if categoria and categoria.strip() else None
+    cache_key = f"{pais_norm or 'GLOBAL'}|{cat_norm or 'ALL'}|{limit}"
+
+    if not refresh:
+        cached = _SUGESTOES_CACHE.get(cache_key)
+        if cached and time.monotonic() < cached[0]:
+            response.headers["Cache-Control"] = "public, max-age=60, stale-while-revalidate=60"
+            return {**cached[1], "cached": True}
+
+    aplicar_no_cache_headers(response)
+    if conn is None:
+        return {
+            "ok": True,
+            "cached": False,
+            "source": "sem_banco",
+            "pais": pais_norm,
+            "sugestoes": [],
+        }
+
+    sugestoes: List[Dict[str, Any]] = []
+    seen_norms: set = set()
+
+    try:
+        with conn.cursor() as cur:
+            if pais_norm:
+                # Prioridade 1 (Direto): artigos publicados vinculados diretamente ao país
+                diretas = _consultar_sugestoes_por_escopo(
+                    cur, pais_norm, "direto", cat_norm, limit, seen_norms
+                )
+                for item in diretas:
+                    k = item["termo_busca"].lower().strip()
+                    if k not in seen_norms:
+                        seen_norms.add(k)
+                        sugestoes.append(item)
+
+                # Prioridade 2 (Indireto / Geopolítica): se < 3 diretas, complementa com impacto regional/blocos
+                if len(sugestoes) < 3:
+                    faltantes = max(0, limit - len(sugestoes))
+                    if faltantes > 0:
+                        indiretas = _consultar_sugestoes_por_escopo(
+                            cur, pais_norm, "indireto", cat_norm, faltantes, seen_norms
+                        )
+                        for item in indiretas:
+                            k = item["termo_busca"].lower().strip()
+                            if k not in seen_norms and len(sugestoes) < limit:
+                                seen_norms.add(k)
+                                sugestoes.append(item)
+            else:
+                # Fallback Global (home sem país)
+                globais = _consultar_sugestoes_por_escopo(
+                    cur, None, "global", cat_norm, limit, seen_norms
+                )
+                sugestoes.extend(globais[:limit])
+    except Exception as e:  # noqa: BLE001
+        try:
+            conn.rollback()
+        except Exception:  # noqa: BLE001
+            pass
+        print(f"[Aviso] Erro ao gerar sugestões contextuais: {e}")
+
+    payload = {
+        "ok": True,
+        "cached": False,
+        "source": "database",
+        "pais": pais_norm,
+        "total": len(sugestoes),
+        "sugestoes": sugestoes,
+    }
+    _SUGESTOES_CACHE[cache_key] = (time.monotonic() + _SUGESTOES_CACHE_TTL_SEC, payload)
+    response.headers["Cache-Control"] = "public, max-age=60, stale-while-revalidate=60"
+    return payload
+
+
+@router.get("/v2/artigos-por-assunto")
+def listar_artigos_por_assunto(
+    response: Response,
+    termo: str = Query(..., min_length=1, description="Termo/tag selecionado no chip"),
+    pais: Optional[str] = Query(None, description="Código ISO-2 do país (opcional)"),
+    escopo: Literal["direto", "indireto", "global"] = Query("direto", description="Mesmo escopo validado na sugestão"),
+    categoria: Optional[str] = Query(None, description="Filtrar por categoria do Atlas"),
+    limit: int = Query(20, ge=1, le=50),
+    conn: Any = Depends(get_db),
+) -> Dict[str, Any]:
+    """Lista matérias ativas aplicando exatamente o mesmo critério de filtro de `/v2/sugestoes-contextuais`."""
+    aplicar_no_cache_headers(response)
+    pais_norm = pais.strip().upper() if pais and pais.strip() else None
+    escopo_efetivo = escopo if pais_norm else "global"
+
+    if conn is None:
+        return {"ok": True, "termo": termo, "pais": pais_norm, "escopo": escopo_efetivo, "total": 0, "artigos": []}
+
+    where_sql, params = _construir_where_artigos_assunto(termo, pais_norm, escopo_efetivo, categoria)
+    params.append(limit)
+
+    query = f"""
+        SELECT
+            slug, titulo_curto, resumo_pulso, impacto_pratico,
+            categoria, paises_envolvidos, urgencia_score, relevancia_score,
+            veiculos_origem, fontes_urls, palavras_chave, updated_at
+        FROM ai_noticias_quentes
+        WHERE {where_sql}
+        ORDER BY urgencia_score DESC, relevancia_score DESC, updated_at DESC
+        LIMIT %s;
+    """
+
+    artigos: List[Dict[str, Any]] = []
+    try:
+        with conn.cursor() as cur:
+            cur.execute(query, tuple(params))
+            for r in cur.fetchall():
+                artigos.append({
+                    "slug": r["slug"],
+                    "titulo": r["titulo_curto"],
+                    "resumo": r["resumo_pulso"],
+                    "impacto_pratico": r["impacto_pratico"],
+                    "categoria": r["categoria"],
+                    "paises_envolvidos": list(r["paises_envolvidos"] or []),
+                    "veiculos_origem": list(r["veiculos_origem"] or []),
+                    "fontes_urls": list(r["fontes_urls"] or []),
+                    "palavras_chave": list(r["palavras_chave"] or []),
+                    "urgencia_score": int(r["urgencia_score"] or 0),
+                    "relevancia_score": int(r["relevancia_score"] or 0),
+                    "atualizado_em": _formatar_horario_editorial(r["updated_at"]),
+                    "updated_at": _serializar_valor_temporal(r["updated_at"]),
+                })
+    except Exception as e:  # noqa: BLE001
+        try:
+            conn.rollback()
+        except Exception:  # noqa: BLE001
+            pass
+        print(f"[Aviso] Erro ao listar artigos por assunto: {e}")
+
+    return {
+        "ok": True,
+        "termo": termo,
+        "pais": pais_norm,
+        "escopo": escopo_efetivo,
+        "total": len(artigos),
+        "artigos": artigos,
     }

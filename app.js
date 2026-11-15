@@ -4587,8 +4587,10 @@
     TOPICS.forEach(function (t) { h += '<button type="button" data-v="' + t.k + '"' + (t.k === 'politica' ? ' data-dica="vies"' : '') + ' aria-pressed="' + (state.topic === t.k) + '">' + t.l + '</button>'; });
     h += '</div><div id="vies"></div>';
 
-    // Req 1 & Req 2: Seção "Comparar perspectivas" dentro de cada tipo de notícia
-    var quickTerms = getQuickSuggestions(c, state.cont, state.topic, 3);
+    // Busca Contextual por País: [Sugestão 1] [Sugestão 2] [Sugestão 3] 🔍
+    var cCodeCtx = (state.cont === 'sul' && (c.a2 === 'FR' || c.id === '250')) ? 'GF' : (c.a2 || c.id || '');
+    var cachedCtx = getContextualSuggestionsCached(cCodeCtx);
+    var showFallbackOpen = !!(state.searchQuery && !state.searchFromContextualChip);
 
     h += '<section class="topic-search-section perspective-compare-section" id="busca-assunto-wrap" aria-labelledby="comparar-perspectivas-heading">';
     h += '<div class="perspective-section-head">';
@@ -4596,7 +4598,18 @@
     h += '<p class="perspective-section-sub">Compare as últimas notícias e as diferentes perspectivas sobre o assunto.</p>';
     h += '</div>';
 
-    h += '<form class="topic-search-form" id="topic-search-form" role="search" novalidate>';
+    h += '<div class="contextual-search-bar" id="contextual-search-bar">';
+    h += '<div class="contextual-chips-track" id="contextual-chips-track" role="list" aria-label="Assuntos em alta no país"' + (cachedCtx && cachedCtx.length ? '' : ' hidden') + '>';
+    if (cachedCtx && cachedCtx.length) {
+      h += renderContextualChipsHTML(cachedCtx);
+    }
+    h += '</div>';
+    h += '<button type="button" class="contextual-loupe-btn" id="contextual-search-toggle" aria-expanded="' + (showFallbackOpen ? 'true' : 'false') + '" aria-controls="topic-search-form" aria-label="Pesquisar assunto específico" title="Pesquisar assunto específico">';
+    h += '<svg class="contextual-loupe-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4-4"/></svg>';
+    h += '</button>';
+    h += '</div>';
+
+    h += '<form class="topic-search-form contextual-fallback-form" id="topic-search-form" role="search" novalidate' + (showFallbackOpen ? '' : ' hidden') + '>';
     h += '<div class="topic-search-input-wrap">';
     h += '<button type="submit" class="topic-search-icon-btn" aria-label="Buscar" title="Buscar"><svg class="topic-search-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4-4"/></svg></button>';
     h += '<input type="search" id="topic-search-input" class="topic-search-input" placeholder="Procurar algo específico" aria-label="Procurar algo específico" autocomplete="off" value="' + esc(state.searchQuery) + '">';
@@ -4604,18 +4617,6 @@
     h += '</div>';
     h += '<button type="submit" id="topic-search-btn" class="btn topic-search-btn">Buscar</button>';
     h += '</form>';
-
-    h += '<div class="perspective-controls-row">';
-    h += '<div class="perspective-quick-tags" id="perspective-quick-tags" aria-label="Sugestões de assuntos">';
-    h += '<span class="quick-tags-label">Sugestões:</span>';
-    h += '<span class="quick-tags-list" id="quick-tags-list">';
-    quickTerms.forEach(function (qt) {
-      h += '<button type="button" class="quick-tag-chip" data-quick-term="' + esc(qt) + '">' + esc(qt) + '</button>';
-    });
-    h += '</span>';
-    h += '<button type="button" class="quick-tags-refresh" id="quick-tags-refresh" title="Mais sugestões de assuntos" aria-label="Ver outras sugestões de assuntos">↻</button>';
-    h += '</div>';
-    h += '</div>';
 
     h += '<div id="topic-search-results" class="topic-search-results" aria-live="polite"></div>';
     h += '</section>';
@@ -4652,6 +4653,7 @@
       });
     }
     bindTopicSearch();
+    carregarSugestoesContextuais(cCodeCtx);
     var hotCompareBtn = panel.querySelector('[data-hot-compare-term]');
     if (hotCompareBtn) {
       hotCompareBtn.addEventListener('click', function () {
@@ -5445,11 +5447,192 @@
     renderTopicSearchResults();
   }
 
+  var contextualSuggestionsCache = {};
+  var contextualSuggestionsTTL = 2 * 60 * 1000;
+
+  function getContextualSuggestionsCached(paisCode) {
+    var key = (paisCode || 'GLOBAL').toUpperCase();
+    var entry = contextualSuggestionsCache[key];
+    if (entry && (Date.now() - entry.ts < contextualSuggestionsTTL)) {
+      return entry.sugestoes;
+    }
+    return null;
+  }
+
+  function renderContextualChipsHTML(sugestoes) {
+    if (!Array.isArray(sugestoes) || !sugestoes.length) return '';
+    return sugestoes.map(function (s) {
+      var label = s.termo || s.termo_busca || '';
+      var termoBusca = s.termo_busca || label;
+      var escopo = s.prioridade || 'direto';
+      var isActive = state.searchFromContextualChip && norm(state.searchQuery) === norm(label);
+      return '<button type="button" class="contextual-chip' + (isActive ? ' is-active' : '') + '" ' +
+        'data-ctx-term="' + esc(label) + '" ' +
+        'data-ctx-query="' + esc(termoBusca) + '" ' +
+        'data-ctx-escopo="' + esc(escopo) + '" ' +
+        'aria-pressed="' + (isActive ? 'true' : 'false') + '" role="listitem">' +
+        esc(label) +
+        '</button>';
+    }).join('');
+  }
+
+  function bindContextualChips() {
+    var track = panel.querySelector('#contextual-chips-track');
+    if (!track) return;
+    track.querySelectorAll('[data-ctx-term]').forEach(function (chip) {
+      chip.addEventListener('click', function () {
+        var label = chip.getAttribute('data-ctx-term') || '';
+        var termoBusca = chip.getAttribute('data-ctx-query') || label;
+        var escopo = chip.getAttribute('data-ctx-escopo') || 'direto';
+        if (!termoBusca) return;
+        executeContextualChipSearch({ termo: label, termo_busca: termoBusca, prioridade: escopo });
+      });
+    });
+  }
+
+  function atualizarBarraSugestoesContextuais(paisCode, sugestoes) {
+    var track = panel.querySelector('#contextual-chips-track');
+    if (!track) return;
+    var curPais = state.country
+      ? ((state.cont === 'sul' && (state.country.a2 === 'FR' || state.country.id === '250')) ? 'GF' : (state.country.a2 || state.country.id || ''))
+      : '';
+    if (String(curPais || '').toUpperCase() !== String(paisCode || '').toUpperCase()) return;
+    if (!Array.isArray(sugestoes) || !sugestoes.length) {
+      track.innerHTML = '';
+      track.hidden = true;
+      return;
+    }
+    track.innerHTML = renderContextualChipsHTML(sugestoes);
+    track.hidden = false;
+    bindContextualChips();
+  }
+
+  function carregarSugestoesContextuais(paisCode) {
+    var key = (paisCode || 'GLOBAL').toUpperCase();
+    var cached = getContextualSuggestionsCached(paisCode);
+    if (cached) {
+      atualizarBarraSugestoesContextuais(paisCode, cached);
+      return;
+    }
+    var qs = '?limit=4' + (paisCode ? '&pais=' + encodeURIComponent(key) : '');
+    var isFile = (location.protocol === 'file:');
+    var primaryUrl = (isFile ? 'https://www.rodandoomundo.com.br' : '') + '/v2/sugestoes-contextuais' + qs;
+
+    fetch(primaryUrl, { headers: { Accept: 'application/json' } })
+      .then(function (r) {
+        if (!r.ok && (location.hostname === 'localhost' || location.hostname === '127.0.0.1')) {
+          return fetch('https://www.rodandoomundo.com.br/v2/sugestoes-contextuais' + qs, { headers: { Accept: 'application/json' } });
+        }
+        return r;
+      })
+      .then(function (r) {
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        return r.json();
+      })
+      .then(function (data) {
+        var list = (data && Array.isArray(data.sugestoes)) ? data.sugestoes : [];
+        contextualSuggestionsCache[key] = { ts: Date.now(), sugestoes: list };
+        atualizarBarraSugestoesContextuais(paisCode, list);
+      })
+      .catch(function () {
+        atualizarBarraSugestoesContextuais(paisCode, []);
+      });
+  }
+
+  function executeContextualChipSearch(sugestao) {
+    var c = state.country;
+    var cCode = c ? ((state.cont === 'sul' && (c.a2 === 'FR' || c.id === '250')) ? 'GF' : (c.a2 || c.id || '')) : '';
+    var label = sugestao.termo || sugestao.termo_busca || '';
+    var termoBusca = sugestao.termo_busca || label;
+    var escopo = sugestao.prioridade || (cCode ? 'direto' : 'global');
+
+    if (activeSearchController) {
+      try { activeSearchController.abort(); } catch (e) {}
+    }
+    activeSearchController = window.AbortController ? new AbortController() : null;
+
+    state.searchFromContextualChip = true;
+    state.searchQuery = label;
+    state.searchLoading = true;
+    state.searchError = '';
+    state.searchData = null;
+
+    var track = panel.querySelector('#contextual-chips-track');
+    if (track) {
+      track.querySelectorAll('[data-ctx-term]').forEach(function (btn) {
+        var active = norm(btn.getAttribute('data-ctx-term')) === norm(label);
+        btn.classList.toggle('is-active', active);
+        btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+      });
+    }
+
+    renderTopicSearchResults();
+
+    var qs = '?termo=' + encodeURIComponent(termoBusca) +
+      (cCode ? '&pais=' + encodeURIComponent(cCode) : '') +
+      '&escopo=' + encodeURIComponent(escopo) +
+      '&limit=20';
+    var isFile = (location.protocol === 'file:');
+    var primaryUrl = (isFile ? 'https://www.rodandoomundo.com.br' : '') + '/v2/artigos-por-assunto' + qs;
+
+    fetch(primaryUrl, {
+      headers: { Accept: 'application/json' },
+      signal: activeSearchController ? activeSearchController.signal : undefined
+    })
+      .then(function (r) {
+        if (!r.ok && (location.hostname === 'localhost' || location.hostname === '127.0.0.1')) {
+          return fetch('https://www.rodandoomundo.com.br/v2/artigos-por-assunto' + qs, { headers: { Accept: 'application/json' } });
+        }
+        return r;
+      })
+      .then(function (r) {
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        return r.json();
+      })
+      .then(function (data) {
+        var artigos = (data && Array.isArray(data.artigos)) ? data.artigos : [];
+        state.searchLoading = false;
+        state.searchError = '';
+        state.searchData = {
+          isContextualDbResult: true,
+          termo: label,
+          termoBusca: termoBusca,
+          escopo: escopo,
+          artigos: artigos,
+          totalArtigos: artigos.length,
+          grupos: []
+        };
+        renderTopicSearchResults();
+      })
+      .catch(function (err) {
+        if (err && err.name === 'AbortError') return;
+        state.searchLoading = false;
+        state.searchError = 'Não foi possível carregar as matérias deste assunto agora.';
+        state.searchData = null;
+        renderTopicSearchResults();
+      });
+  }
+
   function bindTopicSearch() {
     var formEl = panel.querySelector('#topic-search-form');
     var inputEl = panel.querySelector('#topic-search-input');
     var clearEl = panel.querySelector('#topic-search-clear');
-    var refreshBtn = panel.querySelector('#quick-tags-refresh');
+    var toggleBtn = panel.querySelector('#contextual-search-toggle');
+
+    bindContextualChips();
+
+    if (toggleBtn && formEl) {
+      toggleBtn.addEventListener('click', function () {
+        var willOpen = formEl.hidden;
+        formEl.hidden = !willOpen;
+        toggleBtn.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+        toggleBtn.classList.toggle('is-open', willOpen);
+        if (willOpen && inputEl) {
+          setTimeout(function () { inputEl.focus(); }, 20);
+        }
+      });
+    }
+
     if (!formEl || !inputEl) return;
 
     inputEl.addEventListener('input', function () {
@@ -5467,24 +5650,9 @@
       });
     }
 
-    if (refreshBtn) {
-      refreshBtn.addEventListener('click', function () {
-        refreshQuickSuggestionsUI();
-      });
-    }
-
-    panel.querySelectorAll('[data-quick-term]').forEach(function (chip) {
-      chip.addEventListener('click', function () {
-        var term = chip.getAttribute('data-quick-term') || '';
-        if (!term) return;
-        inputEl.value = term;
-        if (clearEl) clearEl.hidden = false;
-        executeTopicSearch(term);
-      });
-    });
-
     formEl.addEventListener('submit', function (e) {
       e.preventDefault();
+      state.searchFromContextualChip = false;
       var q = (inputEl.value || '').trim();
       if (!q) {
         state.searchQuery = '';
@@ -5655,6 +5823,73 @@
     var grupos = (data && Array.isArray(data.grupos)) ? data.grupos : [];
     var matchedTimeline = EDITORIAL.encontrarLinhaDoTempoPorTermo(termoEfetivo, cCode, state.topic);
     var relatedLinksHTML = renderRelatedEditorialLinksHTML(termoEfetivo, cCode, state.topic);
+
+    if (data && data.isContextualDbResult && Array.isArray(data.artigos) && data.artigos.length > 0) {
+      var ctxHtml = '<div class="contextual-results-head">' +
+        '<div class="contextual-results-title-wrap">' +
+          '<h4 class="perspective-dynamic-title">' + esc(data.termo) + '</h4>' +
+          '<span class="contextual-results-count">' + data.artigos.length + (data.artigos.length === 1 ? ' matéria confirmada' : ' matérias confirmadas') + '</span>' +
+        '</div>' +
+        '<button type="button" class="btn btn-sm btn-ghost contextual-clear-btn" id="btn-ctx-clear">Limpar</button>' +
+      '</div>';
+
+      ctxHtml += '<div class="contextual-articles-list">';
+      data.artigos.forEach(function (art) {
+        var fontesHtml = '';
+        if (Array.isArray(art.fontes_urls) && art.fontes_urls.length) {
+          fontesHtml = '<div class="contextual-article-sources">' +
+            art.fontes_urls.slice(0, 3).map(function (u, idx) {
+              var nome = (Array.isArray(art.veiculos_origem) && art.veiculos_origem[idx]) ? art.veiculos_origem[idx] : 'Fonte original';
+              return '<a class="contextual-source-link" href="' + esc(u) + '" target="_blank" rel="noopener noreferrer">' + esc(nome) + ' ↗</a>';
+            }).join('') +
+          '</div>';
+        }
+        ctxHtml += '<article class="contextual-article-card">' +
+          '<div class="contextual-article-meta">' +
+            '<span class="contextual-article-cat">' + esc((art.categoria || '').replace(/_/g, ' ')) + '</span>' +
+            (art.atualizado_em ? '<span class="contextual-article-time">' + esc(art.atualizado_em) + '</span>' : '') +
+          '</div>' +
+          '<h5 class="contextual-article-title">' + esc(art.titulo) + '</h5>' +
+          (art.resumo ? '<p class="contextual-article-summary">' + esc(art.resumo) + '</p>' : '') +
+          (art.impacto_pratico ? '<p class="contextual-article-impact"><strong>Impacto:</strong> ' + esc(art.impacto_pratico) + '</p>' : '') +
+          fontesHtml +
+        '</article>';
+      });
+      ctxHtml += '</div>';
+
+      ctxHtml += '<div class="contextual-results-footer">' +
+        '<button type="button" class="btn btn-sm btn-outline" id="btn-ctx-expand-live">Buscar também nos feeds ao vivo dos veículos</button>' +
+      '</div>';
+
+      box.innerHTML = ctxHtml + relatedLinksHTML;
+      var clearBtn = box.querySelector('#btn-ctx-clear');
+      if (clearBtn) {
+        clearBtn.addEventListener('click', function () {
+          state.searchFromContextualChip = false;
+          state.searchQuery = '';
+          state.searchData = null;
+          state.searchError = '';
+          panel.querySelectorAll('.contextual-chip.is-active').forEach(function (b) {
+            b.classList.remove('is-active');
+            b.setAttribute('aria-pressed', 'false');
+          });
+          renderTopicSearchResults();
+        });
+      }
+      var expandBtn = box.querySelector('#btn-ctx-expand-live');
+      if (expandBtn) {
+        expandBtn.addEventListener('click', function () {
+          state.searchFromContextualChip = false;
+          executeTopicSearch(data.termoBusca || data.termo);
+        });
+      }
+      if (tlBox) {
+        tlBox.innerHTML = matchedTimeline ? renderTimelineHTML(matchedTimeline, 'panel-tl', cCode) : '';
+        bindDynamicEditorialActions(tlBox);
+      }
+      bindDynamicEditorialActions(box);
+      return;
+    }
 
     if (!grupos.length) {
       var gNewsSearchUrl = 'https://news.google.com/search?q=' + encodeURIComponent(termoEfetivo + (cCode === 'BR' ? ' brasil' : '')) + '&hl=pt-BR&gl=BR&ceid=BR:pt-419';

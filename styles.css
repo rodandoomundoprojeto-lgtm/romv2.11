@@ -3914,6 +3914,182 @@ dialog:not([open]) {
   padding-top: var(--space-3);
   border-top: 1px solid var(--divider);
 }
+/* Barra Inline Contextual: [Sugestão 1] [Sugestão 2] [Sugestão 3] 🔍 */
+.contextual-search-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  width: 100%;
+  min-width: 0;
+  margin-bottom: var(--space-2);
+}
+.contextual-chips-track {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding: 2px 0;
+}
+.contextual-chips-track::-webkit-scrollbar {
+  display: none;
+}
+.contextual-chips-track[hidden] {
+  display: none;
+}
+.contextual-chip {
+  flex: 0 0 auto;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  height: 2.1rem;
+  padding: 0 0.85rem;
+  font-size: var(--text-xs, 0.8125rem);
+  font-weight: 500;
+  color: var(--text);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: border-color .18s, background-color .18s, color .18s;
+}
+.contextual-chip:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  background: var(--primary-soft, rgba(37, 99, 235, 0.08));
+}
+.contextual-chip.is-active,
+.contextual-chip[aria-pressed="true"] {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+  font-weight: 600;
+}
+.contextual-loupe-btn {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.15rem;
+  height: 2.15rem;
+  padding: 0;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color .18s, border-color .18s, background-color .18s;
+}
+.contextual-loupe-btn:hover,
+.contextual-loupe-btn.is-open {
+  color: var(--primary);
+  border-color: var(--primary);
+  background: var(--primary-soft, rgba(37, 99, 235, 0.08));
+}
+.contextual-loupe-icon {
+  width: 1.05rem;
+  height: 1.05rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.contextual-fallback-form[hidden] {
+  display: none;
+}
+.contextual-fallback-form {
+  margin-top: var(--space-2);
+  animation: ctxFadeIn .16s ease-out;
+}
+@keyframes ctxFadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.contextual-results-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+}
+.contextual-results-title-wrap {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+.contextual-results-count {
+  font-size: var(--text-xs, 0.8rem);
+  color: var(--text-muted);
+}
+.contextual-articles-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.contextual-article-card {
+  padding: var(--space-3);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md, 10px);
+}
+.contextual-article-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-bottom: 0.35rem;
+}
+.contextual-article-cat {
+  font-weight: 600;
+  color: var(--primary);
+}
+.contextual-article-title {
+  margin: 0 0 0.35rem;
+  font-size: 0.95rem;
+  line-height: 1.35;
+  color: var(--text);
+}
+.contextual-article-summary {
+  margin: 0 0 0.45rem;
+  font-size: 0.84rem;
+  line-height: 1.45;
+  color: var(--text-muted);
+}
+.contextual-article-impact {
+  margin: 0 0 0.5rem;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  color: var(--text);
+}
+.contextual-article-sources {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+.contextual-source-link {
+  font-size: 0.75rem;
+  padding: 0.18rem 0.55rem;
+  border-radius: var(--radius-full);
+  background: var(--surface-offset);
+  color: var(--primary);
+  text-decoration: none;
+  border: 1px solid var(--border);
+}
+.contextual-source-link:hover {
+  border-color: var(--primary);
+}
+.contextual-results-footer {
+  margin-top: var(--space-3);
+  display: flex;
+  justify-content: flex-end;
+}
 .topic-search-form {
   display: flex;
   align-items: center;
