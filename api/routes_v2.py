@@ -12,7 +12,7 @@ import os
 import re
 import secrets
 import time
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any, Dict, List, Literal, Optional, Tuple
 
@@ -86,7 +86,7 @@ def aplicar_no_cache_headers(response: Response) -> None:
 
 
 def _formatar_horario_editorial(dt: Optional[Any] = None) -> str:
-    """Formata o carimbo editorial 'Atualizado às HHhMM' (Seção 1 de docs/arquitetura_v2.md)."""
+    """Formata o carimbo editorial 'Atualizado às HHhMM' (Seção 1 de docs/arquitetura_v2.md) no fuso editorial de Brasília."""
     if isinstance(dt, str):
         try:
             dt = datetime.fromisoformat(dt.replace("Z", "+00:00"))
@@ -94,6 +94,14 @@ def _formatar_horario_editorial(dt: Optional[Any] = None) -> str:
             dt = datetime.now(timezone.utc)
     elif not isinstance(dt, datetime):
         dt = datetime.now(timezone.utc)
+    try:
+        from zoneinfo import ZoneInfo
+        tz_br = ZoneInfo("America/Sao_Paulo")
+    except Exception:  # ambientes sem tzdata (ex.: python:3.12-slim)
+        tz_br = timezone(timedelta(hours=-3))
+    if dt.tzinfo is None:
+        dt = dt.replace(tzinfo=timezone.utc)
+    dt = dt.astimezone(tz_br)
     return f"Atualizado às {dt.strftime('%Hh%M')}"
 
 
@@ -662,14 +670,16 @@ def obter_feed_radar(
             dt = datetime.fromisoformat(mais_recente_iso.replace("Z", "+00:00"))
             agora_dt = datetime.now(timezone.utc)
             diff_min = int((agora_dt - dt).total_seconds() / 60)
-            if diff_min < 5:
+            if diff_min < 0 and (agora_dt - dt).total_seconds() >= -300:
+                diff_min = 0
+            if 0 <= diff_min < 5:
                 carimbo = "Atualizado agora"
-            elif diff_min < 60:
+            elif 5 <= diff_min < 60:
                 carimbo = f"Atualizado há {diff_min} min"
             else:
                 carimbo = _formatar_horario_editorial(dt)
         except Exception:
-            carimbo = _formatar_horario_editorial(dt)
+            carimbo = _formatar_horario_editorial()
 
     return {
         "ok": True,

@@ -8,7 +8,7 @@ import tempfile
 import unittest
 from datetime import datetime, timezone
 from pathlib import Path
-from unittest.mock import MagicMock
+from unittest.mock import MagicMock, patch
 
 from redacao_v2.pulso_noticias_quentes import salvar_snapshot_vitrine_pulso
 from src.publisher import publish_cards, sortir_cards_rodizio_amplo
@@ -234,6 +234,69 @@ class TestRadarPublicationTime(unittest.TestCase):
                     ts1, ts2,
                     f"Notícia '{titulo}' teve seu horário alterado de {ts1} para {ts2} ao recarregar!"
                 )
+
+    def test_rota_radar_tolera_data_publicacao_invalida(self):
+        """
+        Regressão: /api/radar não deve estourar (UnboundLocalError) quando o item
+        mais recente tem data_publicacao truthy mas em formato não parseável
+        (ex.: data legada de feed/RSS). Deve responder com carimbo de fallback.
+        """
+        from api import routes_v2
+
+        raiz = Path(self.temp_dir.name)
+        (raiz / "data").mkdir()
+        (raiz / "data" / "feed_output.json").write_text(
+            json.dumps(
+                [
+                    {
+                        "titulo": "Notícia com data em formato legado",
+                        "fonte_url": "https://exemplo.com/legado",
+                        "data_publicacao": "15/11/2026 10:00",
+                    }
+                ],
+                ensure_ascii=False,
+            ),
+            encoding="utf-8",
+        )
+        (raiz / "data" / "vitrine_ia.json").write_text(
+            json.dumps(
+                {"updatedAt": "2026-11-15T00:00:00Z", "temas_ativos": []},
+                ensure_ascii=False,
+            ),
+            encoding="utf-8",
+        )
+
+        class PathRaizFake:
+            """Aponta Path(__file__).resolve().parents[1] para o diretório temporário."""
+
+            def __init__(self, caminho):
+                self._caminho = Path(caminho)
+
+            def resolve(self):
+                return self
+
+            @property
+            def parents(self):
+                return (None, raiz)
+
+            def __truediv__(self, outro):
+                return PathRaizFake(self._caminho / outro)
+
+            def is_file(self):
+                return self._caminho.is_file()
+
+            def read_text(self, *args, **kwargs):
+                return self._caminho.read_text(*args, **kwargs)
+
+        mock_response = MagicMock()
+        mock_response.headers = {}
+
+        with patch.object(routes_v2, "Path", PathRaizFake):
+            resultado = routes_v2.obter_feed_radar(response=mock_response)
+
+        self.assertTrue(resultado["ok"])
+        self.assertEqual(resultado["total"], 1)
+        self.assertTrue(resultado["atualizado_em"].startswith("Atualizado"))
 
     def test_preservacao_timestamp_curadoria_pipeline(self):
         """
