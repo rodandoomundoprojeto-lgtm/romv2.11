@@ -201,6 +201,71 @@ const CATALOGO_PAISES = [
     termos: ['australia', 'australiano', 'camberra', 'sydney', 'melbourne'],
   },
   {
+    a2: 'NZ',
+    countryName: 'Nova Zelândia',
+    termos: ['nova zelandia', 'neozelandes', 'wellington', 'auckland'],
+  },
+  {
+    a2: 'EC',
+    countryName: 'Equador',
+    termos: ['equador', 'equatoriano', 'quito', 'guayaquil', 'noboa'],
+  },
+  {
+    a2: 'BO',
+    countryName: 'Bolívia',
+    termos: ['bolivia', 'boliviano', 'la paz', 'sucre', 'arce'],
+  },
+  {
+    a2: 'PL',
+    countryName: 'Polônia',
+    termos: ['polonia', 'polones', 'varsovia', 'tusk'],
+  },
+  {
+    a2: 'SE',
+    countryName: 'Suécia',
+    termos: ['suecia', 'sueco', 'estocolmo'],
+  },
+  {
+    a2: 'NO',
+    countryName: 'Noruega',
+    termos: ['noruega', 'noruegues', 'oslo'],
+  },
+  {
+    a2: 'NL',
+    countryName: 'Países Baixos',
+    termos: ['paises baixos', 'holanda', 'holandes', 'amsterda', 'haia'],
+  },
+  {
+    a2: 'CH',
+    countryName: 'Suíça',
+    termos: ['suica', 'suico', 'berna', 'genebra', 'zurique'],
+  },
+  {
+    a2: 'NG',
+    countryName: 'Nigéria',
+    termos: ['nigeria', 'nigeriano', 'abuja', 'lagos', 'tinubu'],
+  },
+  {
+    a2: 'KE',
+    countryName: 'Quênia',
+    termos: ['quenia', 'queniano', 'nairobi', 'ruto'],
+  },
+  {
+    a2: 'AO',
+    countryName: 'Angola',
+    termos: ['angola', 'angolano', 'luanda', 'lourenco'],
+  },
+  {
+    a2: 'MZ',
+    countryName: 'Moçambique',
+    termos: ['mocambique', 'mocambicano', 'maputo', 'chapog'],
+  },
+  {
+    a2: 'CU',
+    countryName: 'Cuba',
+    termos: ['cuba', 'cubano', 'havana', 'diaz-canel'],
+  },
+  {
     a2: 'BR',
     countryName: 'Brasil',
     termos: [
@@ -552,10 +617,37 @@ export async function handleNoticiasQuentes(request, env = {}) {
           };
         });
 
-        const paisesEmAlta =
+        let paisesEmAlta =
           Array.isArray(ext.paises_em_alta) && ext.paises_em_alta.length > 0
             ? ext.paises_em_alta
             : construirPaisesEmAlta(noticiasEnriquecidas);
+
+        try {
+          const extPulso = await consultarBackendExterno(backendUrl, 'v1/atlas/pulso-continental', new URLSearchParams());
+          if (extPulso && Array.isArray(extPulso.paises_ativos)) {
+            const existentes = new Set(paisesEmAlta.map((p) => p.a2));
+            for (const cCode of extPulso.paises_ativos) {
+              const a2 = String(cCode || '').toUpperCase().trim();
+              if (a2 && !existentes.has(a2)) {
+                existentes.add(a2);
+                const meta = MAPA_PAIS_POR_A2[a2];
+                paisesEmAlta.push({
+                  a2,
+                  countryName: meta ? meta.countryName : a2,
+                  title: `Cobertura ativa em ${meta ? meta.countryName : a2}`,
+                  source: 'Pulso Continental · RoM',
+                  category: 'Mundo',
+                  url: '/radar',
+                  summary: 'Novas manchetes registradas na região.',
+                  termoBusca: meta ? meta.countryName : a2,
+                  urgencia_score: 75,
+                });
+              }
+            }
+          }
+        } catch {
+          // Pulso continental opcional
+        }
 
         const limpas = noticiasEnriquecidas.slice(0, limite).map(({ _rota_editoria, _label_editoria, ...rest }) => rest);
 

@@ -4576,11 +4576,34 @@
       '</aside>';
     }
 
+    var atlasSectionHtml = '<section class="atlas-live-section" id="atlas-live-news-feed" data-country="' + esc(cCodeUp) + '" aria-labelledby="atlas-live-heading">' +
+      '<div class="atlas-live-head">' +
+        '<div class="atlas-live-title-wrap">' +
+          '<span class="atlas-live-dot" aria-hidden="true"></span>' +
+          '<h3 class="atlas-live-title" id="atlas-live-heading">Manchetes ao vivo · ' + esc(cName) + '</h3>' +
+        '</div>' +
+        '<div class="atlas-live-controls">' +
+          '<span class="atlas-live-updated" id="atlas-live-updated-label">Sincronizando...</span>' +
+          '<button type="button" class="btn-atlas-refresh" id="btn-atlas-refresh" title="Atualizar notícias agora (sem cache)" aria-label="Atualizar notícias agora">' +
+            '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>' +
+            '<span>Atualizar</span>' +
+          '</button>' +
+        '</div>' +
+      '</div>' +
+      '<div class="atlas-live-list is-loading" id="atlas-live-news-list" aria-live="polite">' +
+        '<div class="atlas-live-skeleton"></div><div class="atlas-live-skeleton"></div><div class="atlas-live-skeleton"></div>' +
+      '</div>' +
+    '</section>';
+
     if (!cMed || !cMed.outlets || !cMed.outlets.length) {
       var q = encodeURIComponent(cName);
-      h += '<div class="empty-state"><h3>Ainda sem veículos cadastrados</h3><p>Estamos ampliando o atlas. Enquanto isso, veja as manchetes sobre ' + esc(cName) + ' no Google Notícias.</p>' +
-        '<a class="btn" target="_blank" rel="noopener" href="https://news.google.com/search?q=' + q + '&hl=pt-BR&gl=BR&ceid=BR:pt-419">Notícias sobre ' + esc(cName) + ICON_ARROW.replace('<svg', '<svg width="16" height="16" style="fill:none;stroke:currentColor;stroke-width:2.2"') + '</a></div>';
-      panel.innerHTML = h; bindCrumbs(); return;
+      h += atlasSectionHtml;
+      h += '<div class="atlas-live-fallback-note"><p>Cobertura contínua via Atlas Vivo. <a target="_blank" rel="noopener" href="https://news.google.com/search?q=' + q + '&hl=pt-BR&gl=BR&ceid=BR:pt-419">Ver mais no Google Notícias ' + ICON_ARROW.replace('<svg', '<svg width="14" height="14" style="fill:none;stroke:currentColor;stroke-width:2.2"') + '</a></p></div>';
+      panel.innerHTML = h;
+      bindCrumbs();
+      bindAtlasLiveRefresh(cCodeUp, cName);
+      carregarAtlasPaisAoVivo(cCodeUp, cName, false);
+      return;
     }
     h += '<p class="group-label">Tipo de notícia</p><div class="seg" id="f-topic">';
     h += '<button type="button" data-v="" aria-pressed="' + (!state.topic) + '">Todos os temas</button>';
@@ -4621,6 +4644,7 @@
     h += '<div id="topic-search-results" class="topic-search-results" aria-live="polite"></div>';
     h += '</section>';
 
+    h += atlasSectionHtml;
     h += '<p class="outlets-paywall-notice">Alguns sites podem exigir assinatura.</p>';
     h += '<div class="outlets" id="veiculos"></div>';
     h += '<div id="panel-timeline-slot" class="panel-timeline-slot"></div>';
@@ -4689,7 +4713,147 @@
     renderBias();
     renderOutlets();
     renderTopicSearchResults();
+    bindAtlasLiveRefresh(cCodeUp, cName);
+    carregarAtlasPaisAoVivo(cCodeUp, cName, false);
     updateFloatingControlsVisibility();
+  }
+
+  var atlasAutoRefreshTimer = null;
+
+  function getAtlasPaisCacheKey(a2) {
+    return 'rom_atlas_pais_' + String(a2 || 'BR').toUpperCase().trim();
+  }
+
+  function bindAtlasLiveRefresh(cCode, cName) {
+    var btn = panel.querySelector('#btn-atlas-refresh');
+    if (btn) {
+      btn.addEventListener('click', function () {
+        carregarAtlasPaisAoVivo(cCode, cName, true);
+      });
+    }
+  }
+
+  function renderAtlasPaisItems(items, cCode, updatedAtIso) {
+    var listEl = panel.querySelector('#atlas-live-news-list');
+    var updatedEl = panel.querySelector('#atlas-live-updated-label');
+    if (!listEl) return;
+
+    listEl.classList.remove('is-loading');
+    if (updatedEl) {
+      var rel = updatedAtIso ? formatSearchDate(updatedAtIso) : 'agora mesmo';
+      updatedEl.textContent = 'Atualizado ' + (rel || 'agora mesmo');
+    }
+
+    if (!Array.isArray(items) || !items.length) {
+      listEl.innerHTML = '<p class="atlas-live-empty">Nenhuma manchete recente encontrada no momento. Clique em Atualizar para tentar novamente.</p>';
+      return;
+    }
+
+    var html = '';
+    items.slice(0, 10).forEach(function (it, idx) {
+      var pt = it.titlePt || it.titleOriginal || '';
+      var orig = it.titleOriginal || '';
+      var temTraducao = !!(orig && pt && orig !== pt);
+      var timeStr = it.publishedAt ? formatSearchDate(it.publishedAt) : '';
+      html += '<article class="atlas-live-card" data-atlas-idx="' + idx + '">' +
+        '<div class="atlas-live-card-top">' +
+          '<span class="atlas-live-source">' + esc(it.source || 'Imprensa') + '</span>' +
+          (timeStr ? '<time class="atlas-live-time">' + esc(timeStr) + '</time>' : '') +
+        '</div>' +
+        '<h4 class="atlas-live-card-title">' +
+          '<a href="' + esc(it.url) + '" target="_blank" rel="noopener noreferrer" data-atlas-title-link>' + esc(pt) + '</a>' +
+        '</h4>' +
+        '<div class="atlas-live-card-actions">' +
+          (temTraducao ? '<button type="button" class="atlas-lang-toggle" data-pt="' + esc(pt) + '" data-orig="' + esc(orig) + '" data-showing="pt">Ver original</button>' : '') +
+          renderNewsFavBtn({ url: it.url, title: pt, source: it.source || 'Atlas', countryCode: cCode, publishedAt: it.publishedAt || '' }) +
+        '</div>' +
+      '</article>';
+    });
+    listEl.innerHTML = html;
+
+    listEl.querySelectorAll('.atlas-lang-toggle').forEach(function (tBtn) {
+      tBtn.addEventListener('click', function () {
+        var card = tBtn.closest('.atlas-live-card');
+        var link = card ? card.querySelector('[data-atlas-title-link]') : null;
+        if (!link) return;
+        var showing = tBtn.getAttribute('data-showing');
+        if (showing === 'pt') {
+          link.textContent = tBtn.getAttribute('data-orig') || '';
+          tBtn.setAttribute('data-showing', 'orig');
+          tBtn.textContent = 'Ver em português';
+        } else {
+          link.textContent = tBtn.getAttribute('data-pt') || '';
+          tBtn.setAttribute('data-showing', 'pt');
+          tBtn.textContent = 'Ver original';
+        }
+      });
+    });
+  }
+
+  function carregarAtlasPaisAoVivo(cCode, cName, forceRefresh) {
+    if (atlasAutoRefreshTimer) {
+      clearTimeout(atlasAutoRefreshTimer);
+      atlasAutoRefreshTimer = null;
+    }
+
+    var section = panel.querySelector('#atlas-live-news-feed');
+    if (!section) return;
+
+    var cacheKey = getAtlasPaisCacheKey(cCode);
+    var refreshBtn = panel.querySelector('#btn-atlas-refresh');
+    var listEl = panel.querySelector('#atlas-live-news-list');
+
+    if (forceRefresh) {
+      try { localStorage.removeItem(cacheKey); } catch (e) {}
+      if (refreshBtn) refreshBtn.classList.add('is-refreshing');
+      if (listEl) listEl.classList.add('is-loading');
+    } else {
+      try {
+        var raw = localStorage.getItem(cacheKey);
+        if (raw) {
+          var parsed = JSON.parse(raw);
+          if (parsed && Array.isArray(parsed.items) && parsed.items.length && (Date.now() - (parsed.ts || 0) < 15 * 60 * 1000)) {
+            renderAtlasPaisItems(parsed.items, cCode, parsed.updatedAt);
+            atlasAutoRefreshTimer = setTimeout(function () {
+              var currentFeed = panel.querySelector('#atlas-live-news-feed');
+              if (currentFeed && currentFeed.getAttribute('data-country') === String(cCode)) {
+                carregarAtlasPaisAoVivo(cCode, cName, true);
+              }
+            }, 240000);
+            return;
+          }
+        }
+      } catch (e) {}
+    }
+
+    var url = '/api/atlas-pais?pais=' + encodeURIComponent(cCode) + '&nome=' + encodeURIComponent(cName) + (forceRefresh ? '&refresh=1&_t=' + Date.now() : '');
+    fetch(url, { cache: forceRefresh ? 'no-store' : 'default', headers: { Accept: 'application/json' } })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (data) {
+        if (refreshBtn) refreshBtn.classList.remove('is-refreshing');
+        var currentFeed = panel.querySelector('#atlas-live-news-feed');
+        if (!currentFeed || currentFeed.getAttribute('data-country') !== String(cCode)) return;
+
+        if (data && data.ok && Array.isArray(data.items)) {
+          try {
+            localStorage.setItem(cacheKey, JSON.stringify({ ts: Date.now(), updatedAt: data.updatedAt, items: data.items }));
+          } catch (e) {}
+          renderAtlasPaisItems(data.items, cCode, data.updatedAt);
+        } else {
+          renderAtlasPaisItems([], cCode, '');
+        }
+
+        atlasAutoRefreshTimer = setTimeout(function () {
+          var stillHere = panel.querySelector('#atlas-live-news-feed');
+          if (stillHere && stillHere.getAttribute('data-country') === String(cCode)) {
+            carregarAtlasPaisAoVivo(cCode, cName, true);
+          }
+        }, 240000);
+      })
+      .catch(function () {
+        if (refreshBtn) refreshBtn.classList.remove('is-refreshing');
+        renderAtlasPaisItems([], cCode, '');
+      });
   }
 
   function refreshQuickSuggestionsUI() {

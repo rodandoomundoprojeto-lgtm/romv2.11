@@ -2087,3 +2087,92 @@ def listar_artigos_por_assunto(
         "total": len(artigos),
         "artigos": artigos,
     }
+
+
+# ============================================================================
+# 11. ENDPOINTS ATLAS VIVO (CONTRATO ATLAS-VIVO.md — PARTES 1, 2 E 4)
+# ============================================================================
+
+@router.post("/v1/atlas/atualizar-pulso-continental")
+def atualizar_pulso_continental(
+    payload: Dict[str, Any] = Body(...),
+    authorization: Optional[str] = Header(None),
+    conn=Depends(get_db),
+):
+    """Persiste o pulso continental sincronizado pelo Worker Cron no PostgreSQL."""
+    secret = (os.getenv("CURADORIA_SECRET_TOKEN") or "").strip()
+    if secret:
+        token = (authorization or "").replace("Bearer ", "").strip()
+        if token != secret:
+            raise HTTPException(status_code=401, detail="Token de autorização inválido.")
+
+    if not conn:
+        return {"ok": False, "mensagem": "PostgreSQL indisponível no momento."}
+
+    continentes = payload.get("continentes") or {}
+    try:
+        with conn.cursor() as cur:
+            for cont_key, data in continentes.items():
+                headlines = data.get("headlines") or []
+                active_paises = list({h.get("countryCode") for h in headlines if h.get("countryCode")})
+                cur.execute(
+                    """
+                    INSERT INTO atlas_pulso_continental (continent_key, headlines_json, active_countries, updated_at)
+                    VALUES (%s, %s, %s, NOW())
+                    ON CONFLICT (continent_key) DO UPDATE
+                    SET headlines_json = EXCLUDED.headlines_json,
+                        active_countries = EXCLUDED.active_countries,
+                        updated_at = NOW();
+                    """,
+                    (cont_key, Jsonb(headlines), Jsonb(active_paises)),
+                )
+        return {"ok": True, "continentes_atualizados": list(continentes.keys())}
+    except Exception as e:
+        try:
+            conn.rollback()
+        except Exception:
+            pass
+        return {"ok": False, "erro": str(e)}
+
+
+@router.get("/v1/atlas/pulso-continental")
+def obter_pulso_continental(
+    continente: Optional[str] = Query(None),
+    conn=Depends(get_db),
+):
+    """Retorna o pulso continental atualizado para o mapa e o ticker global."""
+    if not conn:
+        return {"ok": False, "continentes": {}}
+
+    try:
+        with conn.cursor() as cur:
+            if continente:
+                cur.execute(
+                    "SELECT continent_key, headlines_json, active_countries, updated_at FROM atlas_pulso_continental WHERE continent_key = %s;",
+                    (continente,),
+                )
+            else:
+                cur.execute(
+                    "SELECT continent_key, headlines_json, active_countries, updated_at FROM atlas_pulso_continental;"
+                )
+            rows = cur.fetchall()
+            continentes_dict = {}
+            paises_ativos = set()
+            for r in rows:
+                k = r["continent_key"]
+                h = list(r["headlines_json"] or [])
+                c = list(r["active_countries"] or [])
+                paises_ativos.update(c)
+                continentes_dict[k] = {
+                    "headlines": h,
+                    "active_countries": c,
+                    "updated_at": _serializar_valor_temporal(r["updated_at"]),
+                }
+            return {
+                "ok": True,
+                "continentes": continentes_dict,
+                "paises_ativos": sorted(paises_ativos),
+            }
+    except Exception as e:
+        return {"ok": False, "erro": str(e), "continentes": {}}
+

@@ -1,0 +1,7 @@
+name = "rom-atlas-pulso"
+main = "index.js"
+compatibility_date = "2024-09-23"
+
+# Disparo a cada 10 minutos para manter o pulso continental do mapa vivo
+[triggers]
+crons = ["*/10 * * * *"]
