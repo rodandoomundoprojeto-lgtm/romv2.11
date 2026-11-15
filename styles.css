@@ -2525,6 +2525,22 @@ svg *:focus-visible,
   background: var(--surface); padding: 0.45rem 0.65rem; border-radius: var(--radius-sm);
   border: 1px solid var(--border);
 }
+.pix-beneficiary-toggle {
+  display: inline-flex; align-items: center; gap: 6px; width: 100%;
+  padding: 0.1rem 0; border: 0; background: transparent;
+  color: var(--text-muted); font-family: inherit; font-size: 0.72rem; font-weight: 600;
+  cursor: pointer; text-align: left; transition: color .15s ease;
+}
+.pix-beneficiary-toggle:hover,
+.pix-beneficiary-toggle:focus-visible { color: var(--text); }
+.pix-beneficiary-toggle .icon-eye-closed { display: none; }
+.pix-beneficiary-toggle.is-revealed .icon-eye-open { display: none; }
+.pix-beneficiary-toggle.is-revealed .icon-eye-closed { display: inline-block; }
+.pix-beneficiary-details {
+  display: flex; flex-direction: column; gap: 2px;
+  margin-top: 4px; padding-top: 6px; border-top: 1px dashed var(--border);
+}
+.pix-beneficiary-details[hidden] { display: none; }
 .pix-data-line { display: flex; align-items: baseline; gap: 6px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .pix-data-label { color: var(--text-muted); font-size: 0.7rem; flex-shrink: 0; }
 .pix-data-val { color: var(--text); font-weight: 600; font-size: 0.76rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }

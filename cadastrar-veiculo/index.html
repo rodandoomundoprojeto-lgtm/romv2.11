@@ -1510,25 +1510,25 @@
             </div>
           </div>
           <div class="support-methods-tabs" role="tablist" aria-label="Forma de contribuição">
-            <button type="button" class="support-method-btn is-active" id="tab-pix" role="tab" aria-selected="true" aria-controls="panel-pix">
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true" class="pix-brand-icon">
-                <path d="M12 2.5a2.5 2.5 0 0 0-1.77.73L6.47 6.99a2.5 2.5 0 0 0 0 3.54l3.76 3.76a2.5 2.5 0 0 0 3.54 0l3.76-3.76a2.5 2.5 0 0 0 0-3.54L13.77 3.23A2.5 2.5 0 0 0 12 2.5zm0 1.8c.2 0 .4.08.55.23l3.76 3.76a.78.78 0 0 1 0 1.1l-3.76 3.76a.78.78 0 0 1-1.1 0L7.69 9.39a.78.78 0 0 1 0-1.1l3.76-3.76c.15-.15.35-.23.55-.23zm-7.07 8.49a2.5 2.5 0 0 0-1.7.73l-1.5 1.5a2.5 2.5 0 0 0 0 3.54l3.76 3.76a2.5 2.5 0 0 0 3.54 0l1.5-1.5a2.5 2.5 0 0 0 0-3.54l-3.76-3.76a2.48 2.48 0 0 0-1.84-.73zm14.14 0c-.64 0-1.28.24-1.77.73l-3.76 3.76a2.5 2.5 0 0 0 0 3.54l1.5 1.5a2.5 2.5 0 0 0 3.54 0l3.76-3.76a2.5 2.5 0 0 0 0-3.54l-1.5-1.5a2.5 2.5 0 0 0-1.77-.73z"/>
-              </svg>
-              <span>PIX (Brasil)</span>
-            </button>
-            <button type="button" class="support-method-btn" id="tab-paypal" role="tab" aria-selected="false" aria-controls="panel-paypal">
+            <button type="button" class="support-method-btn is-active" id="tab-paypal" role="tab" aria-selected="true" aria-controls="panel-paypal">
               <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" class="paypal-brand-icon">
                 <path d="M7.4 21H4.2a.5.5 0 0 1-.5-.6L6.6 3.4A.9.9 0 0 1 7.5 2.6h6.1c3.4 0 5.4 1.8 4.9 4.8-.6 3.7-3 5.4-6.6 5.4H9.6l-1.2 7.4a.9.9 0 0 1-1 .8z" fill="#003087" />
                 <path d="M19.4 8.1c.6 3.6-1.8 6.5-5.7 6.5h-1.6l-1 6a.8.8 0 0 1-.8.7H8" fill="#009cde" />
               </svg>
               <span>PayPal (Exterior)</span>
             </button>
+            <button type="button" class="support-method-btn" id="tab-pix" role="tab" aria-selected="false" aria-controls="panel-pix">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true" class="pix-brand-icon">
+                <path d="M12 2.5a2.5 2.5 0 0 0-1.77.73L6.47 6.99a2.5 2.5 0 0 0 0 3.54l3.76 3.76a2.5 2.5 0 0 0 3.54 0l3.76-3.76a2.5 2.5 0 0 0 0-3.54L13.77 3.23A2.5 2.5 0 0 0 12 2.5zm0 1.8c.2 0 .4.08.55.23l3.76 3.76a.78.78 0 0 1 0 1.1l-3.76 3.76a.78.78 0 0 1-1.1 0L7.69 9.39a.78.78 0 0 1 0-1.1l3.76-3.76c.15-.15.35-.23.55-.23zm-7.07 8.49a2.5 2.5 0 0 0-1.7.73l-1.5 1.5a2.5 2.5 0 0 0 0 3.54l3.76 3.76a2.5 2.5 0 0 0 3.54 0l1.5-1.5a2.5 2.5 0 0 0 0-3.54l-3.76-3.76a2.48 2.48 0 0 0-1.84-.73zm14.14 0c-.64 0-1.28.24-1.77.73l-3.76 3.76a2.5 2.5 0 0 0 0 3.54l1.5 1.5a2.5 2.5 0 0 0 3.54 0l3.76-3.76a2.5 2.5 0 0 0 0-3.54l-1.5-1.5a2.5 2.5 0 0 0-1.77-.73z"/>
+              </svg>
+              <span>PIX (Brasil)</span>
+            </button>
           </div>
         </div>
 
         <div class="support-content-box">
           <!-- PAINEL PIX -->
-          <div class="support-panel is-active" id="panel-pix" role="tabpanel" aria-labelledby="tab-pix">
+          <div class="support-panel" id="panel-pix" role="tabpanel" aria-labelledby="tab-pix" hidden>
             <div class="pix-layout">
               <figure class="pix-qr-figure">
                 <img src="/pix-qr.png" alt="QR Code PIX para doação ao Rodando o Mundo" width="128" height="128" class="pix-qr-img">
@@ -1536,13 +1536,27 @@
               </figure>
               <div class="pix-info-col">
                 <div class="pix-beneficiary-card">
-                  <div class="pix-data-line">
-                    <span class="pix-data-label">Favorecido:</span>
-                    <strong class="pix-data-val">Sávio Anderson Lourenço D.</strong>
-                  </div>
-                  <div class="pix-data-line">
-                    <span class="pix-data-label">Estado:</span>
-                    <span class="pix-data-val">Santa Catarina (SC) / Brasil</span>
+                  <button type="button" class="pix-beneficiary-toggle" id="btn-toggle-pix-info" aria-expanded="false" aria-controls="pix-beneficiary-details" aria-label="Mostrar dados do favorecido do PIX">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-eye-open" aria-hidden="true">
+                      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                      <circle cx="12" cy="12" r="3"></circle>
+                    </svg>
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-eye-closed" aria-hidden="true">
+                      <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"></path>
+                      <path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"></path>
+                      <line x1="1" y1="1" x2="23" y2="23"></line>
+                    </svg>
+                    <span class="pix-toggle-label">Ver dados do favorecido</span>
+                  </button>
+                  <div class="pix-beneficiary-details" id="pix-beneficiary-details" hidden>
+                    <div class="pix-data-line">
+                      <span class="pix-data-label">Favorecido:</span>
+                      <strong class="pix-data-val">Sávio Anderson Lourenço D.</strong>
+                    </div>
+                    <div class="pix-data-line">
+                      <span class="pix-data-label">Estado:</span>
+                      <span class="pix-data-val">Santa Catarina (SC) / Brasil</span>
+                    </div>
                   </div>
                 </div>
 
@@ -1566,7 +1580,7 @@
           </div>
 
           <!-- PAINEL PAYPAL -->
-          <div class="support-panel" id="panel-paypal" role="tabpanel" aria-labelledby="tab-paypal" hidden>
+          <div class="support-panel is-active" id="panel-paypal" role="tabpanel" aria-labelledby="tab-paypal">
             <div class="paypal-layout">
               <figure class="qr">
                 <img src="/paypal-qr.png" alt="QR code para doação via PayPal" width="112" height="112">

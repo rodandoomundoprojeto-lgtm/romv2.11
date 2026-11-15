@@ -2176,3 +2176,184 @@ def obter_pulso_continental(
     except Exception as e:
         return {"ok": False, "erro": str(e), "continentes": {}}
 
+
+def _traduzir_lote_rapido_pt(texto: str) -> str:
+    """Traduz manchete curta para PT-BR via Google Dict API com fallback seguro."""
+    import urllib.parse
+    import urllib.request
+
+    clean = (texto or "").strip()
+    if not clean or len(clean) < 3:
+        return clean
+    url = (
+        "https://clients5.google.com/translate_a/t?client=dict-chrome-ex&sl=auto&tl=pt&q="
+        + urllib.parse.quote(clean)
+    )
+    try:
+        req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+        with urllib.request.urlopen(req, timeout=3.5) as resp:
+            data = json.loads(resp.read().decode("utf-8"))
+            if isinstance(data, list) and data:
+                if isinstance(data[0], str):
+                    return data[0]
+                if isinstance(data[0], list) and data[0] and isinstance(data[0][0], str):
+                    return data[0][0]
+    except Exception:
+        pass
+    return clean
+
+
+@router.get("/api/atlas-pais")
+def obter_atlas_pais_ao_vivo(
+    response: Response,
+    pais: str = Query("BR", min_length=2, max_length=8),
+    nome: Optional[str] = Query(None),
+    refresh: Optional[str] = Query(None),
+    _t: Optional[str] = Query(None),
+    conn=Depends(get_db),
+):
+    """Endpoint FastAPI espelho do /api/atlas-pais com cache persistido no PostgreSQL."""
+    import email.utils
+    import hashlib
+    import urllib.parse
+    import urllib.request
+    import xml.etree.ElementTree as ET
+
+    c_code = pais.upper().strip()
+    c_name = (nome or c_code).strip()
+    is_refresh = bool(_t or refresh == "1")
+
+    if is_refresh:
+        response.headers["Cache-Control"] = "no-store, no-cache, must-revalidate"
+    else:
+        response.headers["Cache-Control"] = "public, max-age=180, stale-while-revalidate=60"
+
+    # 1. Tenta ler cache fresco do PostgreSQL
+    if conn and not is_refresh:
+        try:
+            with conn.cursor() as cur:
+                cur.execute(
+                    """
+                    SELECT items_json, updated_at
+                      FROM atlas_pais_noticias
+                     WHERE country_code = %s
+                       AND item_count > 0
+                       AND expires_at > NOW();
+                    """,
+                    (c_code,),
+                )
+                row = cur.fetchone()
+                if row and row.get("items_json"):
+                    return {
+                        "ok": True,
+                        "cached": True,
+                        "source": "postgres_cache",
+                        "country": c_code,
+                        "countryName": c_name,
+                        "updatedAt": _serializar_valor_temporal(row["updated_at"]),
+                        "total": len(row["items_json"]),
+                        "items": list(row["items_json"]),
+                    }
+        except Exception:
+            try:
+                conn.rollback()
+            except Exception:
+                pass
+
+    # 2. Coleta ao vivo via Google News RSS (local/regional)
+    if c_code == "BR":
+        rss_url = "https://news.google.com/rss/headlines/section/geo/Brasil?hl=pt-BR&gl=BR&ceid=BR:pt-419"
+    else:
+        rss_url = (
+            f"https://news.google.com/rss/search?q={urllib.parse.quote(c_name)}"
+            f"&hl=en&gl={urllib.parse.quote(c_code)}&ceid={urllib.parse.quote(c_code)}:en"
+        )
+
+    items: List[Dict[str, Any]] = []
+    try:
+        req = urllib.request.Request(
+            rss_url,
+            headers={"User-Agent": "Mozilla/5.0 (compatible; RodandoOMundoAtlas/2.1)"},
+        )
+        with urllib.request.urlopen(req, timeout=6.0) as resp:
+            xml_bytes = resp.read()
+        root = ET.fromstring(xml_bytes)
+        for item_el in root.findall(".//item")[:14]:
+            raw_title = (item_el.findtext("title") or "").strip()
+            raw_link = (item_el.findtext("link") or "").strip()
+            raw_source = (item_el.findtext("source") or "").strip()
+            raw_pub = (item_el.findtext("pubDate") or "").strip()
+            if not raw_title or not raw_link.startswith("http"):
+                continue
+
+            title_clean = raw_title
+            detected_source = raw_source
+            if " - " in title_clean:
+                idx = title_clean.rfind(" - ")
+                if idx > 15:
+                    if not detected_source:
+                        detected_source = title_clean[idx + 3 :].strip()
+                    title_clean = title_clean[:idx].strip()
+
+            try:
+                dt = email.utils.parsedate_to_datetime(raw_pub)
+                iso_pub = dt.astimezone(timezone.utc).isoformat()
+            except Exception:
+                iso_pub = datetime.now(timezone.utc).isoformat()
+
+            title_pt = title_clean
+            if c_code != "BR" and len(items) < 10:
+                title_pt = _traduzir_lote_rapido_pt(title_clean)
+
+            items.append({
+                "id": "h_" + hashlib.sha1(raw_link.encode("utf-8")).hexdigest()[:10],
+                "titleOriginal": title_clean,
+                "titlePt": title_pt,
+                "url": raw_link,
+                "source": detected_source or "Imprensa Internacional",
+                "publishedAt": iso_pub,
+                "score": 85,
+                "country": c_code,
+            })
+    except Exception:
+        items = []
+
+    now_iso = datetime.now(timezone.utc).isoformat()
+
+    # 3. Persiste no PostgreSQL se houver itens
+    if conn and items:
+        try:
+            with conn.cursor() as cur:
+                cur.execute(
+                    """
+                    INSERT INTO atlas_pais_noticias (
+                        country_code, country_name, items_json, source_mode, item_count, updated_at, expires_at
+                    )
+                    VALUES (%s, %s, %s, 'hybrid_rss', %s, NOW(), NOW() + INTERVAL '15 minutes')
+                    ON CONFLICT (country_code) DO UPDATE SET
+                        country_name = EXCLUDED.country_name,
+                        items_json = EXCLUDED.items_json,
+                        source_mode = EXCLUDED.source_mode,
+                        item_count = EXCLUDED.item_count,
+                        updated_at = NOW(),
+                        expires_at = NOW() + INTERVAL '15 minutes';
+                    """,
+                    (c_code, c_name, Jsonb(items), len(items)),
+                )
+        except Exception:
+            try:
+                conn.rollback()
+            except Exception:
+                pass
+
+    return {
+        "ok": True,
+        "cached": False,
+        "source": "live_hybrid",
+        "country": c_code,
+        "countryName": c_name,
+        "updatedAt": now_iso,
+        "total": len(items),
+        "items": items,
+    }
+

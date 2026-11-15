@@ -145,8 +145,9 @@ export async function handleAtlasPais(request, env = {}) {
   }
 
   // 1. Busca Multi-Motor RSS para o país
-  const query = `${nomePais} notícias`;
-  const rssUrl = `https://news.google.com/rss/search?q=${encodeURIComponent(query)}&hl=pt-BR&gl=BR&ceid=BR:pt-419`;
+  const rssUrl = pais === 'BR'
+    ? 'https://news.google.com/rss/headlines/section/geo/Brasil?hl=pt-BR&gl=BR&ceid=BR:pt-419'
+    : `https://news.google.com/rss/search?q=${encodeURIComponent(nomePais)}&hl=en&gl=${encodeURIComponent(pais)}&ceid=${encodeURIComponent(pais)}:en`;
 
   let items = [];
   try {
