@@ -10381,8 +10381,13 @@
     if (!Array.isArray(prevItems) || !Array.isArray(nextItems)) return true;
     if (prevItems.length !== nextItems.length) return true;
     if (prevItems.length === 0) return false;
-    return getRadarItemKey(prevItems[0]) !== getRadarItemKey(nextItems[0]) ||
-      String(prevItems[0].data_publicacao || '') !== String(nextItems[0].data_publicacao || '');
+    for (var i = 0; i < prevItems.length; i++) {
+      if (getRadarItemKey(prevItems[i]) !== getRadarItemKey(nextItems[i]) ||
+          String(prevItems[i].data_publicacao || '') !== String(nextItems[i].data_publicacao || '')) {
+        return true;
+      }
+    }
+    return false;
   }
 
   function formatarDataPublicacaoCardRadar(isoDateStr) {
@@ -10404,6 +10409,10 @@
     var diffMs = Date.now() - d.getTime();
     var diffMin = Math.floor(diffMs / 60000);
 
+    if (diffMin < 0 && diffMs >= -300000) {
+      diffMin = 0;
+    }
+
     var isMesmoDia = d.getDate() === agora.getDate() &&
                      d.getMonth() === agora.getMonth() &&
                      d.getFullYear() === agora.getFullYear();
@@ -10415,6 +10424,8 @@
       texto = 'Publicada há ' + diffMin + ' min';
     } else if (isMesmoDia) {
       texto = 'Publicada às ' + hora + 'h' + min;
+    } else if (ano !== agora.getFullYear()) {
+      texto = 'Publicada em ' + dia + '/' + mes + '/' + ano + ' às ' + hora + 'h' + min;
     } else {
       texto = 'Publicada em ' + dia + '/' + mes + ' às ' + hora + 'h' + min;
     }

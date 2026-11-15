@@ -179,6 +179,16 @@ def publish_cards(cards: List[Dict[str, Any]], max_items: int = 50) -> int:
     novos_publicados = 0
     agora_iso = datetime.now(timezone.utc).isoformat()
 
+    # Garante que itens pré-existentes preservem data_publicacao consistente
+    for item in existing_feed:
+        if not item.get("data_publicacao"):
+            item["data_publicacao"] = (
+                item.get("published_at")
+                or item.get("created_at")
+                or item.get("publicado_em")
+                or agora_iso
+            )
+
     for card in cards:
         titulo_norm = normalizar_fonte_key(card.get("titulo"))
         fonte_url = card.get("fonte_url")

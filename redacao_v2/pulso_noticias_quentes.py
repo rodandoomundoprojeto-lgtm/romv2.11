@@ -271,6 +271,13 @@ def salvar_snapshot_vitrine_pulso(
             continue
         if tit and tit in vistos_nq_titulos:
             continue
+        if not item.get("data_publicacao"):
+            item["data_publicacao"] = (
+                item.get("created_at")
+                or item.get("publicado_em")
+                or item.get("updated_at")
+                or agora_iso
+            )
         if s:
             vistos_nq_slugs.add(s)
         if tit:

@@ -38,7 +38,7 @@ from redacao_v2.schemas import (
     EvidenciaResolvidaPublica,
     PainelVerificacaoEvento,
 )
-from src.publisher import sortir_cards_rodizio_amplo, normalizar_fonte_key
+from src.publisher import sortir_cards_rodizio_amplo, normalizar_fonte_key, _timestamp_publicacao
 
 router = APIRouter(tags=["Motor Editorial V2 & Pulso 30m"])
 
@@ -647,10 +647,12 @@ def obter_feed_radar(
         cat_norm = categoria.lower().strip()
         combinados = [it for it in combinados if str(it.get("categoria", "")).lower() == cat_norm]
 
-    mais_recente_iso = max(
-        (str(it.get("data_publicacao")) for it in combinados if it.get("data_publicacao")),
+    item_mais_recente = max(
+        (it for it in combinados if it.get("data_publicacao")),
+        key=_timestamp_publicacao,
         default=None,
     )
+    mais_recente_iso = item_mais_recente.get("data_publicacao") if item_mais_recente else None
 
     agora_iso = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
@@ -665,9 +667,9 @@ def obter_feed_radar(
             elif diff_min < 60:
                 carimbo = f"Atualizado há {diff_min} min"
             else:
-                carimbo = _formatar_horario_editorial()
+                carimbo = _formatar_horario_editorial(dt)
         except Exception:
-            carimbo = _formatar_horario_editorial()
+            carimbo = _formatar_horario_editorial(dt)
 
     return {
         "ok": True,

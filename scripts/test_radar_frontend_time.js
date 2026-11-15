@@ -27,6 +27,10 @@ function formatarDataPublicacaoCardRadar(isoDateStr, nowMs) {
   var diffMs = (nowMs || Date.now()) - d.getTime();
   var diffMin = Math.floor(diffMs / 60000);
 
+  if (diffMin < 0 && diffMs >= -300000) {
+    diffMin = 0;
+  }
+
   var isMesmoDia = d.getDate() === agora.getDate() &&
                    d.getMonth() === agora.getMonth() &&
                    d.getFullYear() === agora.getFullYear();
@@ -38,6 +42,8 @@ function formatarDataPublicacaoCardRadar(isoDateStr, nowMs) {
     texto = 'Publicada há ' + diffMin + ' min';
   } else if (isMesmoDia) {
     texto = 'Publicada às ' + hora + 'h' + min;
+  } else if (ano !== agora.getFullYear()) {
+    texto = 'Publicada em ' + dia + '/' + mes + '/' + ano + ' às ' + hora + 'h' + min;
   } else {
     texto = 'Publicada em ' + dia + '/' + mes + ' às ' + hora + 'h' + min;
   }
@@ -51,6 +57,10 @@ const resAgora = formatarDataPublicacaoCardRadar('2026-11-15T14:58:00Z', now);
 assert.strictEqual(resAgora.text, 'Publicada agora');
 assert.ok(resAgora.title.includes('Publicada no Rodando o Mundo em'));
 
+// Teste 1b: Clock skew do cliente (servidor adiantado em 30s) -> ainda "Publicada agora"
+const resSkew = formatarDataPublicacaoCardRadar('2026-11-15T15:00:30Z', now);
+assert.strictEqual(resSkew.text, 'Publicada agora', 'Clock skew de até 5 minutos para o futuro deve ser absorvido como "Publicada agora"');
+
 // Teste 2: Publicada há 25 minutos -> "Publicada há 25 min"
 const res25 = formatarDataPublicacaoCardRadar('2026-11-15T14:35:00Z', now);
 assert.strictEqual(res25.text, 'Publicada há 25 min');
@@ -62,6 +72,14 @@ assert.ok(res3h.text.startsWith('Publicada às '), `Esperado começar com 'Publi
 // Teste 4: Publicada em dia anterior
 const resAnt = formatarDataPublicacaoCardRadar('2026-11-10T10:30:00Z', now);
 assert.ok(resAnt.text.startsWith('Publicada em 10/11'), `Esperado data anterior, obtido: ${resAnt.text}`);
+
+// Teste 4b: Publicada em ano anterior (ex: 2025)
+const resAnoAnt = formatarDataPublicacaoCardRadar('2025-11-10T10:30:00Z', now);
+assert.ok(resAnoAnt.text.includes('/2025'), `Esperado incluir o ano, obtido: ${resAnoAnt.text}`);
+
+// Teste 4c: Entrada nula ou inválida
+assert.strictEqual(formatarDataPublicacaoCardRadar(null).text, '');
+assert.strictEqual(formatarDataPublicacaoCardRadar('data-invalida').text, '');
 console.log('  [OK] formatarDataPublicacaoCardRadar formata os rótulos temporais com clareza e precisão.');
 
 // 2. Validar que functions/api/radar.js prioriza data_publicacao
@@ -99,5 +117,39 @@ const appJsCode = fs.readFileSync('app.js', 'utf-8');
 assert.ok(appJsCode.includes('formatarDataPublicacaoCardRadar'), 'app.js deve conter a função formatarDataPublicacaoCardRadar');
 assert.ok(appJsCode.includes('class="radar-pub-date" datetime='), 'app.js deve renderizar <time class="radar-pub-date" datetime=...>');
 console.log('  [OK] app.js renderiza <time class="radar-pub-date" datetime=...> com acessibilidade.');
+
+// 5. Validar lógica de hasRadarFeedChanged em múltiplos itens
+function getRadarItemKey(item) {
+  if (!item) return '';
+  return String(item.fonte_url || item.titulo || '');
+}
+function hasRadarFeedChanged(prevItems, nextItems) {
+  if (!Array.isArray(prevItems) || !Array.isArray(nextItems)) return true;
+  if (prevItems.length !== nextItems.length) return true;
+  if (prevItems.length === 0) return false;
+  for (var i = 0; i < prevItems.length; i++) {
+    if (getRadarItemKey(prevItems[i]) !== getRadarItemKey(nextItems[i]) ||
+        String(prevItems[i].data_publicacao || '') !== String(nextItems[i].data_publicacao || '')) {
+      return true;
+    }
+  }
+  return false;
+}
+
+const listA = [
+  { titulo: 'Notícia 1', data_publicacao: '2026-11-15T10:00:00Z' },
+  { titulo: 'Notícia 2', data_publicacao: '2026-11-15T09:00:00Z' }
+];
+const listB = [
+  { titulo: 'Notícia 1', data_publicacao: '2026-11-15T10:00:00Z' },
+  { titulo: 'Notícia 2', data_publicacao: '2026-11-15T09:00:00Z' }
+];
+const listC = [
+  { titulo: 'Notícia 1', data_publicacao: '2026-11-15T10:00:00Z' },
+  { titulo: 'Notícia 2', data_publicacao: '2026-11-15T09:30:00Z' } // Timestamp alterado no item 2
+];
+assert.strictEqual(hasRadarFeedChanged(listA, listB), false, 'Feeds idênticos não devem acusar mudança');
+assert.strictEqual(hasRadarFeedChanged(listA, listC), true, 'Mudança de timestamp no item 2 DEVE ser detectada');
+console.log('  [OK] hasRadarFeedChanged detecta mudanças e preserva estabilidade.');
 
 console.log('=== TODOS OS TESTES JS DO RADAR EDITORIAL PASSARAM COM SUCESSO ===');

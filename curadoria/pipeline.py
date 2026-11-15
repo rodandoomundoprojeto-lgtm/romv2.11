@@ -32,6 +32,7 @@ def salvar_snapshot_vitrine(payload: CuradoriaPayload) -> None:
     agora_iso = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
     mapa_existente: Dict[str, str] = {}
+    dados_prev: Dict[str, Any] = {}
     if SNAPSHOT_VITRINE.exists():
         try:
             dados_prev = json.loads(SNAPSHOT_VITRINE.read_text(encoding="utf-8"))
@@ -48,7 +49,7 @@ def salvar_snapshot_vitrine(payload: CuradoriaPayload) -> None:
                         if s and dp:
                             mapa_existente[s] = dp
         except Exception:
-            pass
+            dados_prev = {}
 
     temas_ativos = []
     for item in payload.insights:
@@ -75,6 +76,8 @@ def salvar_snapshot_vitrine(payload: CuradoriaPayload) -> None:
         "batch_id": payload.batch_id,
         "temas_ativos": temas_ativos,
     }
+    if isinstance(dados_prev, dict) and "noticias_quentes" in dados_prev:
+        snapshot["noticias_quentes"] = dados_prev["noticias_quentes"]
     SNAPSHOT_VITRINE.parent.mkdir(parents=True, exist_ok=True)
     SNAPSHOT_VITRINE.write_text(json.dumps(snapshot, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"[curadoria] Snapshot público atualizado -> {SNAPSHOT_VITRINE} ({len(temas_ativos)} temas)")

@@ -211,10 +211,18 @@ class TestRadarPublicationTime(unittest.TestCase):
         # Mapeia os timestamps da primeira chamada
         timestamps_1 = {it["titulo"]: it.get("data_publicacao") for it in items1}
 
+        # Confirma que há tanto itens de pulso V2 quanto do feed
+        origens_v2 = [it.get("origem_v2") for it in items1]
+        self.assertIn(True, origens_v2, "O radar híbrido deve conter itens de pulso V2 da vitrine.")
+        self.assertIn(False, origens_v2, "O radar híbrido deve conter itens do feed_output.")
+
         # Simula recarregamento subsequente com novo timestamp de cache-busting
         res2 = obter_feed_radar(response=mock_response, _t="22222222", refresh="1")
         self.assertTrue(res2["ok"])
         items2 = res2["items"]
+
+        # O carimbo editorial de atualização do radar deve ser consistente entre recarregamentos
+        self.assertEqual(res1["atualizado_em"], res2["atualizado_em"])
 
         timestamps_2 = {it["titulo"]: it.get("data_publicacao") for it in items2}
 
@@ -226,6 +234,89 @@ class TestRadarPublicationTime(unittest.TestCase):
                     ts1, ts2,
                     f"Notícia '{titulo}' teve seu horário alterado de {ts1} para {ts2} ao recarregar!"
                 )
+
+    def test_preservacao_timestamp_curadoria_pipeline(self):
+        """
+        Garante que a função salvar_snapshot_vitrine do pipeline de curadoria
+        preserve a data_publicacao original ao gerar novos snapshots.
+        """
+        import curadoria.pipeline as pipe
+        from curadoria.agente.schemas import CuradoriaPayload
+
+        old_snapshot_path = pipe.SNAPSHOT_VITRINE
+        pipe.SNAPSHOT_VITRINE = self.caminho_vitrine
+
+        try:
+            ts_inicial = "2026-11-15T08:00:00Z"
+            # Cria snapshot inicial com data_publicacao
+            snapshot_inicial = {
+                "ok": True,
+                "cached": False,
+                "source": "snapshot",
+                "updatedAt": ts_inicial,
+                "batch_id": "batch-01",
+                "temas_ativos": [
+                    {
+                        "slug": "tema-curadoria-01",
+                        "titulo_tema": "Tema Curado Inicial",
+                        "categoria_primaria": "Geopolitica_Radar",
+                        "relevancia_score": 90,
+                        "data_publicacao": ts_inicial,
+                        "updated_at": ts_inicial,
+                    }
+                ],
+                "noticias_quentes": [
+                    {
+                        "slug": "nq-01",
+                        "titulo_curto": "Notícia Quente Preservada",
+                    }
+                ]
+            }
+            with open(self.caminho_vitrine, "w", encoding="utf-8") as f:
+                json.dump(snapshot_inicial, f)
+
+            # Executa salvar_snapshot_vitrine com novo payload contendo o mesmo slug
+            payload_novo = CuradoriaPayload.model_validate({
+                "batch_id": "batch-02",
+                "insights": [
+                    {
+                        "slug": "tema-curadoria-01",
+                        "titulo_tema": "Tema Curado com Título Atualizado",
+                        "status": "em_alta",
+                        "categoria_primaria": "Economia",
+                        "categorias_cruzadas": ["Geopolitica_Radar"],
+                        "relevancia_score": 95,
+                        "ttl_horas": 48,
+                        "palavras_chave_busca": ["economia", "mercados", "cambio", "investimentos"],
+                        "gatilho_vitrine": "Análise econômica detalhada",
+                        "sintese_nerd": "Síntese dos impactos financeiros",
+                        "sugestao_pauta_gap": {
+                            "titulo_seo": "Análise econômica detalhada sobre mercados e câmbio",
+                            "angulo_editorial": "Avaliar o impacto direto nos investimentos e inflação.",
+                            "formato_ideal": "Guia Explicativo",
+                        },
+                    }
+                ]
+            })
+
+            pipe.salvar_snapshot_vitrine(payload_novo)
+
+            with open(self.caminho_vitrine, "r", encoding="utf-8") as f:
+                snap_pos = json.load(f)
+
+            tema_resultante = snap_pos["temas_ativos"][0]
+            self.assertEqual(tema_resultante["slug"], "tema-curadoria-01")
+            # A data_publicacao original DEVE ser mantida intacta
+            self.assertEqual(
+                tema_resultante["data_publicacao"],
+                ts_inicial,
+                "A data_publicacao original deve ser preservada entre execuções do pipeline de curadoria!"
+            )
+            # Noticias quentes existentes devem ser preservadas
+            self.assertIn("noticias_quentes", snap_pos)
+            self.assertEqual(len(snap_pos["noticias_quentes"]), 1)
+        finally:
+            pipe.SNAPSHOT_VITRINE = old_snapshot_path
 
 
 if __name__ == "__main__":
