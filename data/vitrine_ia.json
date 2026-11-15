@@ -2,34 +2,56 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-15T00:30:26Z",
-  "batch_id": "20261115-0030",
+  "updatedAt": "2026-11-15T03:40:08Z",
+  "batch_id": "20261115-0340",
   "temas_ativos": [
     {
-      "slug": "caos-aereo-eua-afeta-voos-brasil",
-      "titulo_tema": "Pane nos EUA afeta 21 de 29 voos do Brasil após falha em cabos e caos aéreo",
+      "slug": "lula-73-indicacoes-agencias-reguladoras-bc-centrao",
+      "titulo_tema": "Lula ganha poder de barganha com 73 indicações para agências e BC",
       "status": "novo",
-      "categoria_primaria": "Geopolitica_Radar",
+      "categoria_primaria": "Politica",
       "categorias_cruzadas": [
         "Economia",
-        "Resumo_Ultimas"
+        "Eleicoes"
       ],
-      "rota_editoria": "/radar",
+      "rota_editoria": "/politica",
       "relevancia_score": 92,
       "palavras_chave_busca": [
-        "caos aereo eua",
-        "pane voos brasil",
-        "anac",
-        "governo trump",
-        "infraestrutura eua",
-        "transporte aereo internacional"
+        "lula",
+        "agencias reguladoras",
+        "banco central",
+        "centrao",
+        "governo federal",
+        "diretoria bc"
       ],
-      "gatilho_vitrine": "Destacar o impacto internacional na aviação e o reflexo imediato nas conexões entre Brasil e Estados Unidos.",
-      "sintese_nerd": "Uma falha estrutural e troca de cabos nos sistemas de aviação dos Estados Unidos provocou o maior caos aéreo desde o 11 de Setembro, forçando o cancelamento de dezenas de voos internacionais. A interrupção drástica repercute na logística e no turismo global, afetando diretamente centenas de passageiros em rotas que partem do Brasil rumo ao mercado norte-americano."
+      "gatilho_vitrine": "Exibir na home em Política e Economia com foco na articulação de poder para o próximo mandato e impactos na política monetária.",
+      "sintese_nerd": "O poder de nomeação de dezenas de dirigentes para agências reguladoras e para o Banco Central dá ao Palácio do Planalto uma importante moeda de troca nas negociações com o Centrão no Congresso. Essa articulação política direta influencia diretamente a governança macroeconômica e a previsibilidade regulatória no Brasil nos próximos anos."
     },
     {
-      "slug": "julgamento-escala-5x2-stf-fux",
-      "titulo_tema": "Fux suspende julgamento sobre escala 5x2 e leva caso para plenário físico do STF",
+      "slug": "cashback-reforma-tributaria-janeiro",
+      "titulo_tema": "Cashback da Reforma Tributária beneficia 70 milhões a partir de janeiro",
+      "status": "novo",
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Politica",
+        "Cultura"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 90,
+      "palavras_chave_busca": [
+        "cashback",
+        "reforma tributaria",
+        "consumo",
+        "baixa renda",
+        "receita federal",
+        "impostos"
+      ],
+      "gatilho_vitrine": "Destacar na editoria de Economia conectando a simplificação fiscal ao alívio no bolso das famílias de baixa renda.",
+      "sintese_nerd": "A operacionalização do cashback da reforma tributária injeta previsibilidade no orçamento de dezenas de milhões de brasileiros de baixa renda através da devolução automática de tributos sobre consumo básico. A medida altera estruturalmente a dinâmica de arrecadação fiscal do país e afeta diretamente o poder de compra da população."
+    },
+    {
+      "slug": "fux-suspende-julgamento-escala-5x2-stf",
+      "titulo_tema": "Fux suspende julgamento sobre escala 5x2 e leva caso ao plenário do STF",
       "status": "novo",
       "categoria_primaria": "Politica",
       "categorias_cruzadas": [
@@ -39,37 +61,36 @@
       "rota_editoria": "/politica",
       "relevancia_score": 88,
       "palavras_chave_busca": [
-        "escala 5x2",
-        "stf",
         "luiz fux",
-        "jornada de trabalho",
-        "flavio dino",
-        "plenario do stf"
+        "escala 5x2",
+        "escala 6x1",
+        "stf",
+        "supremo tribunal federal",
+        "trabalho"
       ],
-      "gatilho_vitrine": "Centralizar as discussões sobre o futuro das leis trabalhistas brasileiras e o debate institucional no Supremo Tribunal Federal.",
-      "sintese_nerd": "A decisão do ministro Luiz Fux de levar a discussão sobre a transição da jornada de trabalho para o plenário físico do STF desloca o debate trabalhista para o centro do poder institucional. A medida exige negociação coletiva e sindicatos na transição, equilibrando pressões econômicas empresariais e reivindicações sociais de reestruturação da carga horária."
+      "gatilho_vitrine": "Dar destaque na editoria de Política e Sociedade cobrindo o debate jurídico e trabalhista sobre a jornada de trabalho.",
+      "sintese_nerd": "A decisão do ministro Luiz Fux de levar a discussão sobre a jornada de trabalho para o plenário físico do STF eleva o peso institucional do debate sobre o fim da escala tradicional de trabalho. O impasse mexe diretamente com a relação entre produtividade econômica corporativa e direitos trabalhistas no país."
     },
     {
-      "slug": "proibicao-obsolescencia-programada-senado",
-      "titulo_tema": "Comissão do Senado aprova proibição de obsolescência programada e direito ao reparo",
+      "slug": "caos-aereo-eua-falha-tecnica-faa",
+      "titulo_tema": "Falha em cabos da FAA provoca maior caos aéreo nos EUA desde o 11 de Setembro",
       "status": "novo",
-      "categoria_primaria": "Cultura",
+      "categoria_primaria": "Geopolitica_Radar",
       "categorias_cruzadas": [
-        "Economia",
-        "Politica"
+        "Economia"
       ],
-      "rota_editoria": "/cultura",
-      "relevancia_score": 85,
+      "rota_editoria": "/radar",
+      "relevancia_score": 86,
       "palavras_chave_busca": [
-        "obsolescencia programada",
-        "direito ao reparo",
-        "senado federal",
-        "consumidor",
-        "tecnologia e sociedade",
-        "sustentabilidade"
+        "caos aereo",
+        "faa",
+        "estados unidos",
+        "transporte aereo",
+        "infraestrutura",
+        "tecnologia"
       ],
-      "gatilho_vitrine": "Dar visibilidade ao projeto regulatório que altera a relação entre consumo de tecnologia, eletrônicos e vida útil de produtos no Brasil.",
-      "sintese_nerd": "A aprovação na comissão do Senado de projeto que veta a redução intencional da vida útil de eletrônicos inaugura uma nova fase de regulação tecnológica no país em linha com normas europeias de direito ao reparo. A medida restringe práticas comerciais de grandes fabricantes globais e redefine os custos operacionais e de consumo interno."
+      "gatilho_vitrine": "Posicionar no Radar Geopolítico como um alerta sobre a fragilidade de infraestruturas críticas globais.",
+      "sintese_nerd": "A interrupção de sistemas centrais de controle de tráfego aéreo nos Estados Unidos devido a falhas técnicas expõe a vulnerabilidade de redes corporativas e governamentais críticas. O incidente paralisa rotas internacionais e repercute nas cadeias globais de logística e turismo."
     }
   ]
 }
