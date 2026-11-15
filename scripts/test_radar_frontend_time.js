@@ -118,6 +118,12 @@ assert.ok(
   !workerJsCode.includes("if (diffMin < 5) return 'Atualizado agora';"),
   '_worker.js não deve usar a regra antiga que tratava diffMin negativo como agora'
 );
+assert.ok(
+  !workerJsCode.includes('Object.keys(payload).length > 0 ? payload : null') &&
+  workerJsCode.includes('payload.temas_ativos.length > 0') &&
+  workerJsCode.includes('payload.noticias_quentes.length > 0'),
+  "_worker.js não deve aceitar snapshot de estado vazio (só com chaves) como conteúdo — deve cair para o asset"
+);
 console.log('  [OK] _worker.js preserva data_publicacao e não sobrescreve com updatedAtIso.');
 
 // 4. Validar que app.js possui formatarDataPublicacaoCardRadar e renderiza o datetime no DOM

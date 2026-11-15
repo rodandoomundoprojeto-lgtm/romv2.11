@@ -442,9 +442,11 @@ async function carregarEstadoWorker(chave, request, env) {
     if (!payload) return null;
     if (Array.isArray(payload)) return payload.length > 0 ? payload : null;
     if (typeof payload === 'object') {
+      // Espelha a regra do backend (api/routes_v2.py): snapshot sem temas_ativos
+      // e sem noticias_quentes é "sem conteúdo" — cai para o asset versionado.
       if (Array.isArray(payload.temas_ativos) && payload.temas_ativos.length > 0) return payload;
       if (Array.isArray(payload.noticias_quentes) && payload.noticias_quentes.length > 0) return payload;
-      return Object.keys(payload).length > 0 ? payload : null;
+      return null;
     }
     return null;
   } catch {

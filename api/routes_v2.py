@@ -47,19 +47,30 @@ router = APIRouter(tags=["Motor Editorial V2 & Pulso 30m"])
 # 1. DEPENDÊNCIA DE BANCO DE DADOS E CABEÇALHOS DE CACHE (REGRA 7 GEMINI.md)
 # ============================================================================
 
+_MARCADORES_URL_INVALIDA = ("[YOUR-PASSWORD]", "[POOLER-HOST]")
+
+
 def obter_database_url() -> str:
-    """Resolve a URL de conexão PostgreSQL a partir das variáveis de ambiente."""
-    return (
+    """Resolve a URL de conexão PostgreSQL a partir das variáveis de ambiente.
+
+    Mesmo critério de `src.estado_db.obter_database_url`: URLs com placeholders
+    de configuração são tratadas como ausentes, evitando tentativas de conexão
+    com host/senha inválidos.
+    """
+    url = (
         os.getenv("DATABASE_URL")
         or os.getenv("CURADORIA_DATABASE_URL")
         or ""
     ).strip()
+    if not url or any(marcador in url for marcador in _MARCADORES_URL_INVALIDA):
+        return ""
+    return url
 
 
 def get_db():
     """Dependência FastAPI para conexão com PostgreSQL (sobreponível via dependency_overrides)."""
     db_url = obter_database_url()
-    if not db_url or "[YOUR-PASSWORD]" in db_url:
+    if not db_url:
         yield None
         return
 
