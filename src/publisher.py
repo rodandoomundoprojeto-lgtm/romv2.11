@@ -10,8 +10,19 @@ from datetime import datetime, timezone
 from typing import List, Dict, Any, Optional
 import requests
 
-FEED_OUTPUT_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data", "feed_output.json")
-HISTORY_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data", "history.json")
+FEED_OUTPUT_PATH_PADRAO = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data", "feed_output.json")
+HISTORY_PATH_PADRAO = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data", "history.json")
+FEED_OUTPUT_PATH = FEED_OUTPUT_PATH_PADRAO
+HISTORY_PATH = HISTORY_PATH_PADRAO
+
+
+def _estado_db_ativo(caminho_atual: str, caminho_padrao: str) -> bool:
+    """Só espelha no banco o caminho canônico de produção.
+
+    Testes e execuções ad-hoc trocam ``FEED_OUTPUT_PATH``/``HISTORY_PATH`` por
+    caminhos temporários; nesses casos o comportamento continua 100% em arquivo.
+    """
+    return os.path.abspath(caminho_atual) == os.path.abspath(caminho_padrao)
 
 
 def normalizar_fonte_key(fonte_nome: Optional[str]) -> str:
@@ -135,26 +146,145 @@ def send_to_webhook(payload: Dict[str, Any], webhook_url: Optional[str] = None) 
         return False
 
 
-def update_history(processed_ids: List[str]) -> None:
-    """Registra novos IDs no histórico para não processar novamente."""
-    if not processed_ids:
-        return
-    existing = set()
-    if os.path.exists(HISTORY_PATH):
-        try:
-            with open(HISTORY_PATH, "r", encoding="utf-8") as f:
-                data = json.load(f)
-                existing = set(data.get("processed_ids", []))
-        except Exception:
-            existing = set()
+def _ler_history_arquivo() -> Dict[str, Any]:
+    if not os.path.exists(HISTORY_PATH):
+        return {"processed_ids": []}
+    try:
+        with open(HISTORY_PATH, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        if isinstance(data, dict):
+            return data
+    except Exception:
+        pass
+    return {"processed_ids": []}
 
-    existing.update(processed_ids)
+
+def _unir_history(dados: Any, novos_ids: List[str]) -> Dict[str, Any]:
+    """Une IDs preservando a ordem de chegada e sem descartar histórico."""
+    existentes: List[str] = []
+    if isinstance(dados, dict) and isinstance(dados.get("processed_ids"), list):
+        existentes = [str(item) for item in dados["processed_ids"] if item]
+
+    vistos = set(existentes)
+    for item in novos_ids:
+        if not item:
+            continue
+        item = str(item)
+        if item not in vistos:
+            vistos.add(item)
+            existentes.append(item)
 
     # Mantém os últimos 2000 IDs para evitar crescimento descontrolado
-    updated_list = list(existing)[-2000:]
+    return {"processed_ids": existentes[-2000:]}
 
+
+def _gravar_history_arquivo(dados: Dict[str, Any]) -> None:
+    os.makedirs(os.path.dirname(HISTORY_PATH), exist_ok=True)
     with open(HISTORY_PATH, "w", encoding="utf-8") as f:
-        json.dump({"processed_ids": updated_list}, f, ensure_ascii=False, indent=2)
+        json.dump(dados, f, ensure_ascii=False, indent=2)
+
+
+def update_history(processed_ids: List[str]) -> None:
+    """Registra novos IDs no histórico (banco primeiro, arquivo como espelho).
+
+    A união é feita dentro de uma transação com ``SELECT ... FOR UPDATE`` quando
+    o banco está disponível, então dois ciclos concorrentes não perdem IDs.
+    """
+    if not processed_ids:
+        return
+
+    ids = [str(item) for item in processed_ids if item]
+    final: Optional[Dict[str, Any]] = None
+
+    if _estado_db_ativo(HISTORY_PATH, HISTORY_PATH_PADRAO):
+        try:
+            from src.estado_db import atualizar_estado
+
+            ids_arquivo = _unir_history(_ler_history_arquivo(), []).get("processed_ids", [])
+
+            def _transformar(atual: Any) -> Dict[str, Any]:
+                base = _unir_history(atual, ids_arquivo)
+                return _unir_history(base, ids)
+
+            final = atualizar_estado(
+                "history",
+                _transformar,
+                default={"processed_ids": []},
+            )
+        except Exception:
+            final = None
+
+    if not isinstance(final, dict):
+        final = _unir_history(_ler_history_arquivo(), ids)
+
+    _gravar_history_arquivo(final)
+
+
+def _mesclar_lista_feed(base: List[Dict[str, Any]], adicionais: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    """Une dois feeds preservando a ordem e removendo duplicatas por URL/título."""
+    resultado = [dict(item) for item in base if isinstance(item, dict)]
+    urls = {item.get("fonte_url") for item in resultado if item.get("fonte_url")}
+    titulos = {
+        normalizar_fonte_key(item.get("titulo"))
+        for item in resultado
+        if item.get("titulo")
+    }
+
+    for item in adicionais:
+        if not isinstance(item, dict):
+            continue
+        url = item.get("fonte_url")
+        titulo = normalizar_fonte_key(item.get("titulo")) if item.get("titulo") else ""
+        if (url and url in urls) or (titulo and titulo in titulos):
+            continue
+        resultado.append(item)
+        if url:
+            urls.add(url)
+        if titulo:
+            titulos.add(titulo)
+
+    return resultado
+
+
+def _ler_feed_existente() -> List[Dict[str, Any]]:
+    itens_db: List[Dict[str, Any]] = []
+    if _estado_db_ativo(FEED_OUTPUT_PATH, FEED_OUTPUT_PATH_PADRAO):
+        try:
+            from src.estado_db import ler_estado
+
+            estado = ler_estado("feed_output")
+            if isinstance(estado, list):
+                itens_db = [item for item in estado if isinstance(item, dict)]
+        except Exception:
+            itens_db = []
+
+    itens_arquivo: List[Dict[str, Any]] = []
+    if os.path.exists(FEED_OUTPUT_PATH):
+        try:
+            with open(FEED_OUTPUT_PATH, "r", encoding="utf-8") as f:
+                dados = json.load(f)
+            if isinstance(dados, list):
+                itens_arquivo = [item for item in dados if isinstance(item, dict)]
+        except Exception:
+            itens_arquivo = []
+
+    if itens_db:
+        return _mesclar_lista_feed(itens_db, itens_arquivo)
+    return itens_arquivo
+
+
+def _persistir_feed(feed: List[Dict[str, Any]]) -> None:
+    if _estado_db_ativo(FEED_OUTPUT_PATH, FEED_OUTPUT_PATH_PADRAO):
+        try:
+            from src.estado_db import gravar_estado
+
+            gravar_estado("feed_output", feed)
+        except Exception:
+            pass
+
+    os.makedirs(os.path.dirname(FEED_OUTPUT_PATH), exist_ok=True)
+    with open(FEED_OUTPUT_PATH, "w", encoding="utf-8") as f:
+        json.dump(feed, f, ensure_ascii=False, indent=2)
 
 
 def publish_cards(cards: List[Dict[str, Any]], max_items: int = 50) -> int:
@@ -165,13 +295,7 @@ def publish_cards(cards: List[Dict[str, Any]], max_items: int = 50) -> int:
     if not cards:
         return 0
 
-    existing_feed: List[Dict[str, Any]] = []
-    if os.path.exists(FEED_OUTPUT_PATH):
-        try:
-            with open(FEED_OUTPUT_PATH, "r", encoding="utf-8") as f:
-                existing_feed = json.load(f)
-        except Exception:
-            existing_feed = []
+    existing_feed: List[Dict[str, Any]] = _ler_feed_existente()
 
     # Mescla evitando duplicação por fonte_url ou título normalizado
     seen_urls = {item.get("fonte_url") for item in existing_feed if item.get("fonte_url")}
@@ -236,7 +360,6 @@ def publish_cards(cards: List[Dict[str, Any]], max_items: int = 50) -> int:
     existing_feed.sort(key=_timestamp_publicacao, reverse=True)
     trimmed_feed = sortir_cards_rodizio_amplo(existing_feed[:max_items])
 
-    with open(FEED_OUTPUT_PATH, "w", encoding="utf-8") as f:
-        json.dump(trimmed_feed, f, ensure_ascii=False, indent=2)
+    _persistir_feed(trimmed_feed)
 
     return novos_publicados

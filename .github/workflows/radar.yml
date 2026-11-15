@@ -11,15 +11,9 @@ jobs:
   radar:
     runs-on: ubuntu-latest
 
-    permissions:
-      contents: write # Necessario para commitar os arquivos de dados atualizados
-
     steps:
       - name: Checkout do Repositorio
         uses: actions/checkout@v4
-        with:
-          # Histórico completo: o publish faz rebase em origin/main.
-          fetch-depth: 0
 
       - name: Configurar Python
         uses: actions/setup-python@v5
@@ -36,13 +30,7 @@ jobs:
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
+          DATABASE_URL: ${{ secrets.CURADORIA_DATABASE_URL }}
+          CURADORIA_DATABASE_URL: ${{ secrets.CURADORIA_DATABASE_URL }}
         run: |
           python main.py
-
-      - name: Salvar Atualizacoes de Dados
-        run: |
-          git config --local user.email "radar-bot@github.com"
-          git config --local user.name "Radar Bot"
-          bash scripts/sync_generated_data.sh \
-            "chore(radar): atualiza feed_output e history [skip ci]" \
-            data/feed_output.json data/history.json

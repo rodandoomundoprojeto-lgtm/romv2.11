@@ -90,6 +90,44 @@ MAPA_ROTAS_EDITORIA_PULSO = {
 }
 
 
+def _ler_snapshot_pulso_previo(caminho: Path) -> Dict[str, Any]:
+    """Lê o snapshot anterior do banco (caminho canônico) ou do arquivo local."""
+    if caminho == SNAPSHOT_VITRINE_PATH:
+        try:
+            from src.estado_db import ler_estado
+
+            estado = ler_estado("vitrine_ia")
+            if isinstance(estado, dict) and estado:
+                return estado
+        except Exception:
+            pass
+
+    if caminho.exists():
+        try:
+            conteudo = json.loads(caminho.read_text(encoding="utf-8"))
+            if isinstance(conteudo, dict):
+                return conteudo
+        except Exception as exc:
+            import sys
+
+            print(f"[pulso_30m] Aviso: falha ao ler snapshot existente ({exc}); iniciando novo.", file=sys.stderr)
+    return {}
+
+
+def _gravar_snapshot_pulso(caminho: Path, snapshot: Dict[str, Any]) -> None:
+    """Grava o snapshot no arquivo e espelha no banco quando disponível."""
+    caminho.parent.mkdir(parents=True, exist_ok=True)
+    caminho.write_text(json.dumps(snapshot, ensure_ascii=False, indent=2), encoding="utf-8")
+
+    if caminho == SNAPSHOT_VITRINE_PATH:
+        try:
+            from src.estado_db import gravar_estado
+
+            gravar_estado("vitrine_ia", snapshot)
+        except Exception:
+            pass
+
+
 def salvar_snapshot_vitrine_pulso(
     payload: Any,
     caminho: Optional[Path] = None,
@@ -116,20 +154,15 @@ def salvar_snapshot_vitrine_pulso(
         itens_brutos = []
         batch_id = datetime.now(timezone.utc).strftime("%Y%m%d-%H%M")
 
-    # Lê dados existentes para mesclagem se o arquivo já existir
+    # Lê dados existentes para mesclagem (banco primeiro, arquivo como fallback)
     temas_existentes: List[Dict[str, Any]] = []
     nq_existentes: List[Dict[str, Any]] = []
-    if caminho_arquivo.exists():
-        try:
-            conteudo_existente = json.loads(caminho_arquivo.read_text(encoding="utf-8"))
-            if isinstance(conteudo_existente, dict):
-                raw_temas = conteudo_existente.get("temas_ativos")
-                temas_existentes = [t for t in raw_temas if isinstance(t, dict)] if isinstance(raw_temas, list) else []
-                raw_nq = conteudo_existente.get("noticias_quentes")
-                nq_existentes = [n for n in raw_nq if isinstance(n, dict)] if isinstance(raw_nq, list) else []
-        except Exception as exc:
-            import sys
-            print(f"[pulso_30m] Aviso: falha ao ler snapshot existente ({exc}); iniciando novo.", file=sys.stderr)
+    conteudo_existente = _ler_snapshot_pulso_previo(caminho_arquivo)
+    if conteudo_existente:
+        raw_temas = conteudo_existente.get("temas_ativos")
+        temas_existentes = [t for t in raw_temas if isinstance(t, dict)] if isinstance(raw_temas, list) else []
+        raw_nq = conteudo_existente.get("noticias_quentes")
+        nq_existentes = [n for n in raw_nq if isinstance(n, dict)] if isinstance(raw_nq, list) else []
 
     novos_temas: List[Dict[str, Any]] = []
     novas_nq: List[Dict[str, Any]] = []
@@ -295,8 +328,7 @@ def salvar_snapshot_vitrine_pulso(
         "noticias_quentes": nq_mescladas,
     }
 
-    caminho_arquivo.parent.mkdir(parents=True, exist_ok=True)
-    caminho_arquivo.write_text(json.dumps(snapshot, ensure_ascii=False, indent=2), encoding="utf-8")
+    _gravar_snapshot_pulso(caminho_arquivo, snapshot)
     print(f"[pulso_30m] Snapshot público sincronizado -> {caminho_arquivo} ({len(temas_mesclados)} temas)")
     return caminho_arquivo
 

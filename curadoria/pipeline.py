@@ -9,6 +9,7 @@ import json
 import os
 from datetime import datetime, timezone
 from pathlib import Path
+from typing import Any, Dict
 
 import requests
 
@@ -24,7 +25,44 @@ from .agente.coletor import coletar_feeds_rss, coletar_google_trends
 from .agente.schemas import MAPA_ROTAS_EDITORIA, CuradoriaPayload
 
 SAIDA_LOCAL = Path(__file__).resolve().parent / "output" / "ultimo_payload.json"
-SNAPSHOT_VITRINE = Path(__file__).resolve().parents[1] / "data" / "vitrine_ia.json"
+SNAPSHOT_VITRINE_PADRAO = Path(__file__).resolve().parents[1] / "data" / "vitrine_ia.json"
+SNAPSHOT_VITRINE = SNAPSHOT_VITRINE_PADRAO
+
+
+def _ler_snapshot_vitrine_previo(caminho: Path) -> Dict[str, Any]:
+    """Lê o snapshot anterior do banco (caminho canônico) ou do arquivo local."""
+    if caminho == SNAPSHOT_VITRINE_PADRAO:
+        try:
+            from src.estado_db import ler_estado
+
+            estado = ler_estado("vitrine_ia")
+            if isinstance(estado, dict) and estado:
+                return estado
+        except Exception:
+            pass
+
+    if caminho.exists():
+        try:
+            dados = json.loads(caminho.read_text(encoding="utf-8"))
+            if isinstance(dados, dict):
+                return dados
+        except Exception:
+            return {}
+    return {}
+
+
+def _gravar_snapshot_vitrine(caminho: Path, snapshot: Dict[str, Any]) -> None:
+    """Grava o snapshot no arquivo e espelha no banco quando disponível."""
+    caminho.parent.mkdir(parents=True, exist_ok=True)
+    caminho.write_text(json.dumps(snapshot, ensure_ascii=False, indent=2), encoding="utf-8")
+
+    if caminho == SNAPSHOT_VITRINE_PADRAO:
+        try:
+            from src.estado_db import gravar_estado
+
+            gravar_estado("vitrine_ia", snapshot)
+        except Exception:
+            pass
 
 
 def salvar_snapshot_vitrine(payload: CuradoriaPayload) -> None:
@@ -32,24 +70,19 @@ def salvar_snapshot_vitrine(payload: CuradoriaPayload) -> None:
     agora_iso = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
     mapa_existente: Dict[str, str] = {}
-    dados_prev: Dict[str, Any] = {}
-    if SNAPSHOT_VITRINE.exists():
-        try:
-            dados_prev = json.loads(SNAPSHOT_VITRINE.read_text(encoding="utf-8"))
-            if isinstance(dados_prev, dict) and isinstance(dados_prev.get("temas_ativos"), list):
-                for t_prev in dados_prev["temas_ativos"]:
-                    if isinstance(t_prev, dict):
-                        s = str(t_prev.get("slug") or "")
-                        dp = (
-                            t_prev.get("data_publicacao")
-                            or t_prev.get("created_at")
-                            or t_prev.get("publicado_em")
-                            or t_prev.get("updated_at")
-                        )
-                        if s and dp:
-                            mapa_existente[s] = dp
-        except Exception:
-            dados_prev = {}
+    dados_prev = _ler_snapshot_vitrine_previo(SNAPSHOT_VITRINE)
+    if isinstance(dados_prev.get("temas_ativos"), list):
+        for t_prev in dados_prev["temas_ativos"]:
+            if isinstance(t_prev, dict):
+                s = str(t_prev.get("slug") or "")
+                dp = (
+                    t_prev.get("data_publicacao")
+                    or t_prev.get("created_at")
+                    or t_prev.get("publicado_em")
+                    or t_prev.get("updated_at")
+                )
+                if s and dp:
+                    mapa_existente[s] = dp
 
     temas_ativos = []
     for item in payload.insights:
@@ -76,10 +109,9 @@ def salvar_snapshot_vitrine(payload: CuradoriaPayload) -> None:
         "batch_id": payload.batch_id,
         "temas_ativos": temas_ativos,
     }
-    if isinstance(dados_prev, dict) and "noticias_quentes" in dados_prev:
+    if "noticias_quentes" in dados_prev:
         snapshot["noticias_quentes"] = dados_prev["noticias_quentes"]
-    SNAPSHOT_VITRINE.parent.mkdir(parents=True, exist_ok=True)
-    SNAPSHOT_VITRINE.write_text(json.dumps(snapshot, ensure_ascii=False, indent=2), encoding="utf-8")
+    _gravar_snapshot_vitrine(SNAPSHOT_VITRINE, snapshot)
     print(f"[curadoria] Snapshot público atualizado -> {SNAPSHOT_VITRINE} ({len(temas_ativos)} temas)")
 
 

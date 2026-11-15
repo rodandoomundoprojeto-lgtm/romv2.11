@@ -22,15 +22,31 @@ def load_sources() -> List[Dict[str, Any]]:
 
 
 def load_history() -> set:
-    """Carrega os IDs já processados do histórico."""
-    if not os.path.exists(HISTORY_PATH):
-        return set()
+    """Carrega os IDs já processados do histórico (banco + arquivo).
+
+    A leitura é a união das duas fontes para nunca perder deduplicação durante a
+    migração. Se o banco não estiver configurado, o arquivo continua mandando.
+    """
+    ids: set = set()
+
     try:
-        with open(HISTORY_PATH, "r", encoding="utf-8") as f:
-            data = json.load(f)
-            return set(data.get("processed_ids", []))
+        from src.estado_db import ler_estado
+
+        estado = ler_estado("history")
+        if isinstance(estado, dict):
+            ids.update(str(item) for item in estado.get("processed_ids", []) if item)
     except Exception:
-        return set()
+        pass
+
+    if os.path.exists(HISTORY_PATH):
+        try:
+            with open(HISTORY_PATH, "r", encoding="utf-8") as f:
+                data = json.load(f)
+            ids.update(str(item) for item in data.get("processed_ids", []) if item)
+        except Exception:
+            pass
+
+    return ids
 
 
 def _get_field(obj: Any, field: str, default: Any = None) -> Any:

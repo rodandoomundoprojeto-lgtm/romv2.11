@@ -526,6 +526,111 @@ async def executar_noticias_quentes_manual(
 
 
 # ============================================================================
+# 5.0. ESTADO DO PIPELINE: GET/PUT /v1/estado/{chave} (Nível 2B)
+# ============================================================================
+
+CHAVES_ESTADO_PUBLICAS = {"vitrine_ia", "feed_output"}
+CHAVES_ESTADO_PROTEGIDAS = {"history"}
+CHAVES_ESTADO_VALIDAS = CHAVES_ESTADO_PUBLICAS | CHAVES_ESTADO_PROTEGIDAS
+
+
+def _caminho_arquivo_estado(chave: str) -> Path:
+    return Path(__file__).resolve().parents[1] / "data" / f"{chave}.json"
+
+
+def _ler_estado_arquivo(chave: str) -> Optional[Any]:
+    caminho = _caminho_arquivo_estado(chave)
+    if not caminho.is_file():
+        return None
+    try:
+        return json.loads(caminho.read_text(encoding="utf-8"))
+    except Exception:
+        return None
+
+
+@router.get("/v1/estado/{chave}")
+def obter_estado_pipeline(
+    chave: str,
+    response: Response,
+    authorization: Optional[str] = Header(default=None),
+    x_admin_user: Optional[str] = Header(default=None, alias="X-Admin-User"),
+    conn: Any = Depends(get_db),
+) -> Dict[str, Any]:
+    """Retorna o estado de execução do pipeline (banco primeiro, arquivo como fallback).
+
+    Chaves públicas: ``vitrine_ia`` e ``feed_output``. A chave ``history``
+    contém IDs de deduplicação e exige token administrativo.
+    """
+    aplicar_no_cache_headers(response)
+    chave_norm = (chave or "").strip().lower()
+    if chave_norm not in CHAVES_ESTADO_VALIDAS:
+        raise HTTPException(status_code=404, detail="Chave de estado desconhecida.")
+
+    if chave_norm in CHAVES_ESTADO_PROTEGIDAS:
+        verificar_admin_token(authorization=authorization, x_admin_user=x_admin_user)
+
+    payload: Optional[Any] = None
+    origem: Optional[str] = None
+
+    if conn is not None:
+        try:
+            from src.estado_db import ler_estado
+
+            payload = ler_estado(chave_norm, conn=conn)
+            if payload is not None:
+                origem = "db"
+        except Exception:
+            payload = None
+
+    if payload is None:
+        payload = _ler_estado_arquivo(chave_norm)
+        if payload is not None:
+            origem = "arquivo"
+
+    if payload is None:
+        raise HTTPException(status_code=404, detail="Estado ainda não gerado.")
+
+    return {
+        "ok": True,
+        "chave": chave_norm,
+        "origem": origem,
+        "payload": payload,
+    }
+
+
+@router.put("/v1/estado/{chave}")
+def gravar_estado_pipeline(
+    chave: str,
+    payload: Any = Body(...),
+    authorization: Optional[str] = Header(default=None),
+    x_admin_user: Optional[str] = Header(default=None, alias="X-Admin-User"),
+    conn: Any = Depends(get_db),
+) -> Dict[str, Any]:
+    """Grava/atualiza uma chave de estado no banco (rota administrativa)."""
+    verificar_admin_token(authorization=authorization, x_admin_user=x_admin_user)
+
+    chave_norm = (chave or "").strip().lower()
+    if chave_norm not in CHAVES_ESTADO_VALIDAS:
+        raise HTTPException(status_code=404, detail="Chave de estado desconhecida.")
+    if not isinstance(payload, (dict, list)):
+        raise HTTPException(status_code=422, detail="Payload deve ser objeto ou lista JSON.")
+    if conn is None:
+        raise HTTPException(status_code=503, detail="Banco de dados indisponível.")
+
+    try:
+        from src.estado_db import gravar_estado
+
+        gravado = gravar_estado(chave_norm, payload, conn=conn)
+    except Exception as exc:  # noqa: BLE001
+        raise HTTPException(status_code=500, detail=f"Falha ao gravar estado: {exc}") from exc
+
+    if not gravado:
+        raise HTTPException(status_code=500, detail="Falha ao gravar estado no banco.")
+
+    return {"ok": True, "chave": chave_norm, "origem": "db", "total": len(payload)}
+
+
+# ============================================================================
 # 5.1. ROTA RADAR EDITORIAL: GET /api/radar e GET /radar
 # ============================================================================
 
@@ -536,12 +641,26 @@ def obter_feed_radar(
     categoria: Optional[str] = Query(None, description="Filtrar por categoria do Radar"),
     _t: Optional[str] = Query(None, description="Timestamp de cache-busting"),
     refresh: Optional[str] = Query(None, description="Flag de atualização em tempo real"),
+    conn: Any = Depends(get_db),
 ) -> Dict[str, Any]:
     """Retorna os briefings do Radar Editorial mesclando dados de feed_output.json e vitrine_ia.json."""
     aplicar_no_cache_headers(response)
     raiz = Path(__file__).resolve().parents[1]
     feed_path = raiz / "data" / "feed_output.json"
     vitrine_path = raiz / "data" / "vitrine_ia.json"
+
+    # Banco primeiro; arquivo local como fallback durante a migração (Nível 2B).
+    vitrine_raw: Optional[Any] = None
+    feed_raw: Optional[Any] = None
+    if conn is not None and hasattr(conn, "cursor"):
+        try:
+            from src.estado_db import ler_estado
+
+            vitrine_raw = ler_estado("vitrine_ia", conn=conn)
+            feed_raw = ler_estado("feed_output", conn=conn)
+        except Exception:
+            vitrine_raw = None
+            feed_raw = None
 
     base_snapshot_iso = "2026-11-15T00:00:00Z"
     itens_v2: List[Dict[str, Any]] = []
@@ -560,9 +679,13 @@ def obter_feed_radar(
         "Resumo_Ultimas": "geopolitica",
     }
 
-    if vitrine_path.is_file():
+    if isinstance(vitrine_raw, dict) or vitrine_path.is_file():
         try:
-            vitrine_raw = json.loads(vitrine_path.read_text(encoding="utf-8"))
+            if not isinstance(vitrine_raw, dict) or not (
+                vitrine_raw.get("temas_ativos") or vitrine_raw.get("noticias_quentes")
+            ):
+                if vitrine_path.is_file():
+                    vitrine_raw = json.loads(vitrine_path.read_text(encoding="utf-8"))
             if isinstance(vitrine_raw, dict):
                 base_snapshot_iso = vitrine_raw.get("updatedAt") or base_snapshot_iso
                 temas = vitrine_raw.get("temas_ativos") or []
@@ -608,9 +731,11 @@ def obter_feed_radar(
             pass
 
     cards_feed: List[Dict[str, Any]] = []
-    if feed_path.is_file():
+    if isinstance(feed_raw, list) or feed_path.is_file():
         try:
-            feed_raw = json.loads(feed_path.read_text(encoding="utf-8"))
+            if not isinstance(feed_raw, list) or not feed_raw:
+                if feed_path.is_file():
+                    feed_raw = json.loads(feed_path.read_text(encoding="utf-8"))
             if isinstance(feed_raw, list):
                 for idx, card in enumerate(feed_raw):
                     if not isinstance(card, dict):

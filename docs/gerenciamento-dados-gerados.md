@@ -135,3 +135,66 @@ commitam, a corrida pode voltar. A correção definitiva é tirar o estado do gi
 
 Em ambos os casos, a ordem é sempre: **mover a persistência primeiro, remover
 do git depois**.
+
+## Nível 2B — estado no PostgreSQL (migração em andamento)
+
+O estado gerado deixou de depender do git para circular em produção. A fonte de
+verdade passa a ser a tabela `ai_pipeline_state` (PostgreSQL/JSONB), criada de
+forma idempotente por [`migrations/006_pipeline_state.sql`](../migrations/006_pipeline_state.sql)
+(também espelhada em `curadoria/db/migrations/004_pipeline_state.sql`).
+
+| `chave` | Conteúdo | Quem grava |
+|---|---|---|
+| `vitrine_ia` | Snapshot da vitrine (`temas_ativos` + `noticias_quentes`) | `curadoria/pipeline.py`, `redacao_v2/pulso_noticias_quentes.py` |
+| `feed_output` | Feed acumulado do Radar | `src/publisher.py` |
+| `history` | `processed_ids` (dedupe do coletor) | `src/publisher.py` |
+
+### Ordem de leitura e escrita
+
+1. **Leitura:** banco primeiro (`src.estado_db.ler_estado`), arquivo local como
+   fallback. Se o banco estiver vazio, o arquivo existente semeia a tabela na
+   primeira escrita.
+2. **Escrita:** grava no banco e no arquivo. O arquivo continua sendo servido
+   como asset de fallback pelo edge.
+3. **Histórico:** a união de `processed_ids` roda em transação com
+   `SELECT ... FOR UPDATE`, então ciclos concorrentes não perdem IDs.
+4. **Sem banco configurado:** todo o pipeline continua funcionando exatamente
+   como antes, 100% em arquivo.
+
+### Endpoints
+
+- `GET /v1/estado/{chave}` — `vitrine_ia` e `feed_output` são públicos;
+  `history` exige token administrativo (`CURADORIA_SECRET_TOKEN`, `ADMIN_USERS`
+  ou `ADMIN_PASSWORD`).
+- `PUT /v1/estado/{chave}` — rota administrativa para corrigir/seed manual de
+  uma chave.
+
+O `_worker.js` consulta `GET /v1/estado/<chave>` (timeout de 2,5s) e só cai
+para o asset `data/<chave>.json` quando o backend não responde ou não tem
+conteúdo.
+
+### Workflows
+
+Os workflows `radar.yml` e `pipeline_v2.yml` **não commitam mais** os JSONs:
+não há `git push` de bot, então não há mais corrida de rebase nesses arquivos.
+O `scripts/sync_generated_data.sh` permanece no repositório como ferramenta
+manual de emergência.
+
+Pré-requisito em produção: definir `CURADORIA_DATABASE_URL` (ou `DATABASE_URL`)
+nos secrets do GitHub Actions e nas variáveis do Render/Cloudflare.
+
+### Ordem de rollback
+
+Se precisar voltar atrás, basta remover `DATABASE_URL`/`CURADORIA_DATABASE_URL`
+do ambiente: a leitura e a escrita voltam a usar somente os arquivos locais,
+sem mudança de código.
+
+### Próximo passo (após validar em produção)
+
+1. Confirmar que `GET /v1/estado/vitrine_ia` e `GET /v1/estado/feed_output`
+   respondem com `origem: "db"`.
+2. Confirmar que `/api/radar` serve os itens do banco mesmo com o asset
+   desatualizado.
+3. Só então remover `data/vitrine_ia.json`, `data/feed_output.json` e
+   `data/history.json` do versionamento (mantendo-os no `.gitignore`) e
+   simplificar/remover o script de sincronização.

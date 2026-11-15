@@ -415,6 +415,51 @@ async function carregarAssetWorker(path, request, env) {
   return null;
 }
 
+async function carregarEstadoWorker(chave, request, env) {
+  const backendUrl = String((env && env.CURADORIA_BACKEND_URL) || '').trim().replace(/\/+$/, '');
+  if (!backendUrl || !/^https?:\/\//i.test(backendUrl)) return null;
+
+  // Evita loop recursivo caso o backend aponte para o próprio domínio estático.
+  try {
+    const alvoHost = new URL(backendUrl).hostname;
+    const atualHost = new URL(request.url).hostname;
+    if (alvoHost === atualHost) return null;
+  } catch {
+    return null;
+  }
+
+  const ctrl = new AbortController();
+  const timer = setTimeout(() => ctrl.abort(), 2500);
+  try {
+    const alvo = `${backendUrl}/v1/estado/${encodeURIComponent(chave)}`;
+    const resp = await fetch(alvo, {
+      signal: ctrl.signal,
+      headers: { Accept: 'application/json' },
+    });
+    if (!resp || !resp.ok) return null;
+    const data = await resp.json();
+    const payload = data && Object.prototype.hasOwnProperty.call(data, 'payload') ? data.payload : data;
+    if (!payload) return null;
+    if (Array.isArray(payload)) return payload.length > 0 ? payload : null;
+    if (typeof payload === 'object') {
+      if (Array.isArray(payload.temas_ativos) && payload.temas_ativos.length > 0) return payload;
+      if (Array.isArray(payload.noticias_quentes) && payload.noticias_quentes.length > 0) return payload;
+      return Object.keys(payload).length > 0 ? payload : null;
+    }
+    return null;
+  } catch {
+    return null;
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+async function carregarEstadoOuAssetWorker(chave, path, request, env) {
+  const estado = await carregarEstadoWorker(chave, request, env);
+  if (estado) return estado;
+  return carregarAssetWorker(path, request, env);
+}
+
 async function handleRadarHybrid(request, env) {
   if (request.method === 'OPTIONS') {
     return new Response(null, { status: 204, headers: CORS_HEADERS });
@@ -436,8 +481,8 @@ async function handleRadarHybrid(request, env) {
 
   try {
     const [vitrineSnap, feedOutput] = await Promise.all([
-      carregarAssetWorker('data/vitrine_ia.json', request, env),
-      carregarAssetWorker('data/feed_output.json', request, env),
+      carregarEstadoOuAssetWorker('vitrine_ia', 'data/vitrine_ia.json', request, env),
+      carregarEstadoOuAssetWorker('feed_output', 'data/feed_output.json', request, env),
     ]);
 
     const baseSnapshotIso = (vitrineSnap && vitrineSnap.updatedAt) || '2026-11-15T00:00:00Z';

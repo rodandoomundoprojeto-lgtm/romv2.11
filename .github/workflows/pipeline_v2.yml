@@ -33,15 +33,9 @@ jobs:
   executar-pipeline-v2:
     runs-on: ubuntu-latest
 
-    permissions:
-      contents: write
-
     steps:
       - name: Checkout do Repositorio
         uses: actions/checkout@v4
-        with:
-          # Histórico completo: o publish faz rebase em origin/main.
-          fetch-depth: 0
 
       - name: Configurar Python 3.12
         uses: actions/setup-python@v5
@@ -94,11 +88,3 @@ jobs:
           else
             python scripts/run_pipeline.py --modo "${{ github.event.inputs.modo }}" $DRY_FLAG
           fi
-
-      - name: Salvar Snapshot da Vitrine IA (Pulso & Curadoria)
-        run: |
-          git config --local user.email "pipeline-v2-bot@github.com"
-          git config --local user.name "Pipeline V2 Bot"
-          bash scripts/sync_generated_data.sh \
-            "chore(pipeline): atualiza vitrine_ia.json (pulso/curadoria) [skip ci]" \
-            data/vitrine_ia.json
