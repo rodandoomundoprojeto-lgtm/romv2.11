@@ -20,7 +20,7 @@ from psycopg.rows import dict_row
 from psycopg.types.json import Jsonb
 
 from ..agente.schemas import MAPA_ROTAS_EDITORIA, CategoriaType, CuradoriaPayload
-from api.routes_v2 import router as router_v2
+from api.routes_v2 import router as router_v2, verificar_admin_token
 
 try:
     from pathlib import Path
@@ -53,7 +53,8 @@ app.add_middleware(
 )
 
 DATABASE_URL = os.getenv("CURADORIA_DATABASE_URL", "postgresql://usuario:senha@localhost:5432/rodandoomundo")
-API_SECRET_TOKEN = os.getenv("CURADORIA_SECRET_TOKEN", "")
+API_SECRET_TOKEN = os.getenv("CURADORIA_SECRET_TOKEN", "").strip()
+ADMIN_PASSWORD = (os.getenv("ADMIN_PASSWORD") or os.getenv("ADMIN_SENHA") or "").strip()
 
 CAMPOS_PUBLICOS = """
     slug, titulo_tema, status, categoria_primaria, categorias_cruzadas,
@@ -88,14 +89,11 @@ def aplicar_cache_headers(response: Response, _t: Optional[str] = None, refresh:
         response.headers["Cache-Control"] = "public, max-age=120, s-maxage=300"
 
 
-def verificar_token(authorization: str = Header(...)) -> None:
-    if not API_SECRET_TOKEN:
-        raise HTTPException(status_code=503, detail="CURADORIA_SECRET_TOKEN não configurado")
-    if not authorization.startswith("Bearer "):
-        raise HTTPException(status_code=401, detail="Formato de token inválido")
-    token = authorization.removeprefix("Bearer ").strip()
-    if not secrets.compare_digest(token, API_SECRET_TOKEN):
-        raise HTTPException(status_code=403, detail="Token não autorizado")
+def verificar_token(
+    authorization: Optional[str] = Header(default=None),
+    x_admin_user: Optional[str] = Header(default=None, alias="X-Admin-User"),
+) -> None:
+    verificar_admin_token(authorization=authorization, x_admin_user=x_admin_user)
 
 
 def get_db():

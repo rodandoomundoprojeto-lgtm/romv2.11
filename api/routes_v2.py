@@ -1158,23 +1158,93 @@ def obter_entenda_o_assunto_por_slug(
 # 9. ADMIN LITE — INTELIGÊNCIA & ATLAS (/v2/admin/*)
 # ============================================================================
 
-def verificar_admin_token(authorization: Optional[str] = Header(default=None)) -> None:
-    """Autenticação Bearer usando CURADORIA_SECRET_TOKEN (padrão do projeto)."""
+def _carregar_admins_configurados() -> Dict[str, str]:
+    """
+    Carrega o mapa {nome_admin: senha} a partir de ADMIN_USERS
+    (aceita JSON '{"user":"senha"}' ou pares 'user:senha,user2:senha2').
+    """
+    raw = (os.getenv("ADMIN_USERS") or "").strip()
+    if not raw:
+        return {}
+    if raw.startswith("{"):
+        try:
+            data = json.loads(raw)
+            if isinstance(data, dict):
+                return {
+                    str(k).strip(): str(v).strip()
+                    for k, v in data.items()
+                    if str(k).strip() and str(v).strip()
+                }
+        except Exception:
+            pass
+    admins: Dict[str, str] = {}
+    for item in raw.split(","):
+        if ":" in item:
+            user, pwd = item.split(":", 1)
+            user, pwd = user.strip(), pwd.strip()
+            if user and pwd:
+                admins[user] = pwd
+    return admins
+
+
+def verificar_admin_token(
+    authorization: Optional[str] = Header(default=None),
+    x_admin_user: Optional[str] = Header(default=None, alias="X-Admin-User"),
+) -> None:
+    """
+    Autenticação Bearer para rotas /v2/admin/*:
+    - Aceita o token de máquina (CURADORIA_SECRET_TOKEN / ADMIN_SECRET_TOKEN) sem precisar de nome de usuário.
+    - Aceita nome de admin + senha (X-Admin-User + Bearer <senha>) configurados em ADMIN_USERS.
+    - Mantém fallback para ADMIN_PASSWORD / ADMIN_SENHA quando ADMIN_USERS não estiver definido.
+    """
     token_esperado = (
         os.getenv("CURADORIA_SECRET_TOKEN")
         or os.getenv("ADMIN_SECRET_TOKEN")
         or ""
     ).strip()
-    if not token_esperado:
+    senha_esperada = (
+        os.getenv("ADMIN_PASSWORD")
+        or os.getenv("ADMIN_SENHA")
+        or ""
+    ).strip()
+    admins = _carregar_admins_configurados()
+
+    if not token_esperado and not senha_esperada and not admins:
         raise HTTPException(
             status_code=503,
-            detail="CURADORIA_SECRET_TOKEN não configurado no servidor.",
+            detail="Nenhuma credencial administrativa (CURADORIA_SECRET_TOKEN, ADMIN_USERS ou ADMIN_PASSWORD) configurada no servidor.",
         )
     if not authorization or not authorization.startswith("Bearer "):
-        raise HTTPException(status_code=401, detail="Token Bearer ausente ou inválido.")
-    token = authorization.removeprefix("Bearer ").strip()
-    if not secrets.compare_digest(token, token_esperado):
-        raise HTTPException(status_code=403, detail="Token não autorizado.")
+        raise HTTPException(status_code=401, detail="Token ou senha Bearer ausente ou inválido.")
+
+    credencial = authorization.removeprefix("Bearer ").strip()
+    usuario = (x_admin_user or "").strip()
+
+    if usuario:
+        if admins:
+            senha_usuario = admins.get(usuario, "")
+            if senha_usuario and secrets.compare_digest(credencial, senha_usuario):
+                return
+            raise HTTPException(status_code=403, detail="Nome de admin ou senha incorretos.")
+        valido_fallback = (
+            (bool(token_esperado) and secrets.compare_digest(credencial, token_esperado))
+            or (bool(senha_esperada) and secrets.compare_digest(credencial, senha_esperada))
+        )
+        if valido_fallback:
+            return
+        raise HTTPException(status_code=403, detail="Nome de admin ou senha incorretos.")
+
+    # Sem X-Admin-User: aceita token de máquina (Dashboard / scripts / cron)
+    if token_esperado and secrets.compare_digest(credencial, token_esperado):
+        return
+
+    # Sem X-Admin-User e sem ADMIN_USERS: aceita ADMIN_PASSWORD legado
+    if not admins and senha_esperada and secrets.compare_digest(credencial, senha_esperada):
+        return
+
+    if admins:
+        raise HTTPException(status_code=403, detail="Informe o nome do admin e a senha (ou o token oficial).")
+    raise HTTPException(status_code=403, detail="Senha ou token não autorizado.")
 
 
 def _require_db(conn: Any) -> Any:

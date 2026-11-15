@@ -42,7 +42,7 @@ function escapeHtml(str) {
 const CORS_HEADERS = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
-  'Access-Control-Allow-Headers': 'Content-Type, Accept, Authorization'
+  'Access-Control-Allow-Headers': 'Content-Type, Accept, Authorization, X-Admin-User'
 };
 
 function getResendKey(env = {}) {

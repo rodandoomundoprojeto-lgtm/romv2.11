@@ -11,6 +11,8 @@ services:
         sync: false
       - key: CURADORIA_SECRET_TOKEN
         sync: false
+      - key: ADMIN_USERS
+        sync: false
       - key: GEMINI_API_KEY
         sync: false
 
@@ -40,6 +42,8 @@ services:
       - key: CURADORIA_DATABASE_URL
         sync: false
       - key: CURADORIA_SECRET_TOKEN
+        sync: false
+      - key: ADMIN_USERS
         sync: false
       - key: GEMINI_API_KEY
         sync: false

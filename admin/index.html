@@ -554,19 +554,39 @@
   </header>
 
   <main class="admin-wrap">
-    <!-- Autenticação (CURADORIA_SECRET_TOKEN) -->
+    <!-- Autenticação (Senha Admin ou Token) -->
     <section class="admin-card" aria-label="Autenticação do Painel">
       <div class="admin-auth-bar">
+        <div class="admin-field" style="flex: 1 1 180px;">
+          <label for="admin-user">Nome do Admin</label>
+          <input id="admin-user" class="admin-input" type="text" autocomplete="username" placeholder="Ex: $$$$$ ou ototot (opcional p/ token)">
+        </div>
         <div class="admin-field" style="flex: 1 1 240px;">
-          <label for="api-base">URL da API FastAPI</label>
-          <input id="api-base" class="admin-input" type="url" placeholder="Mesma origem (ou ex: http://127.0.0.1:8000)">
+          <label for="admin-token">Senha de Acesso ou Token</label>
+          <div style="display:flex; gap:0.4rem; align-items:center;">
+            <input id="admin-token" class="admin-input" type="password" autocomplete="current-password" placeholder="Digite sua senha ou cole o token" style="flex:1; min-width:0;">
+            <button id="btn-toggle-pass" class="admin-btn admin-btn-sm" type="button" title="Mostrar ou ocultar senha" aria-label="Mostrar ou ocultar senha" style="padding:0.5rem 0.65rem;">👁️</button>
+          </div>
         </div>
-        <div class="admin-field" style="flex: 1 1 260px;">
-          <label for="admin-token">Token de Acesso (CURADORIA_SECRET_TOKEN)</label>
-          <input id="admin-token" class="admin-input" type="password" placeholder="Cole o token Bearer">
-        </div>
-        <button id="btn-conectar" class="admin-btn admin-btn-primary" type="button">Conectar</button>
+        <button id="btn-conectar" class="admin-btn admin-btn-primary" type="button">Entrar</button>
+        <button id="btn-sair" class="admin-btn admin-btn-danger hidden" type="button">Sair</button>
       </div>
+
+      <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:0.75rem; margin-top:0.75rem;">
+        <label class="admin-check-label" style="font-size:0.82rem; color:var(--text-muted);">
+          <input id="admin-remember" type="checkbox" checked>
+          Manter conectado neste dispositivo
+        </label>
+
+        <details id="admin-api-advanced" style="font-size:0.8rem; color:var(--text-muted);">
+          <summary style="cursor:pointer; user-select:none;">Configurações avançadas (URL da API)</summary>
+          <div class="admin-field" style="margin-top:0.5rem; min-width:260px;">
+            <label for="api-base">URL da API FastAPI (opcional)</label>
+            <input id="api-base" class="admin-input" type="url" placeholder="Mesma origem (ou ex: https://seu-backend.onrender.com)">
+          </div>
+        </details>
+      </div>
+
       <div id="auth-banner" class="admin-banner"></div>
     </section>
 
@@ -865,9 +885,14 @@
         (isLocalHost && window.location.port !== '8000')
       ) ? 'http://127.0.0.1:8000' : '';
 
+      const readSaved = (k) => {
+        try { return localStorage.getItem(k) || sessionStorage.getItem(k) || ''; } catch (e) { return ''; }
+      };
+
       const state = {
-        apiBase: sessionStorage.getItem('rom_admin_api') || defaultApiBase,
-        token: sessionStorage.getItem('rom_admin_token') || '',
+        apiBase: readSaved('rom_admin_api') || defaultApiBase,
+        user: readSaved('rom_admin_user'),
+        token: readSaved('rom_admin_token'),
         eventos: [],
         editingEventId: null,
         dossies: [],
@@ -923,11 +948,15 @@
       async function apiFetch(path, options = {}) {
         const base = (state.apiBase || '').replace(/\/+$/, '');
         const url = base + path + (path.includes('?') ? '&' : '?') + '_t=' + Date.now();
+        const baseHeaders = {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + state.token
+        };
+        if (state.user) {
+          baseHeaders['X-Admin-User'] = state.user;
+        }
         const headers = Object.assign(
-          {
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + state.token
-          },
+          baseHeaders,
           options.headers || {}
         );
         const res = await fetch(url, { ...options, headers });
@@ -1018,30 +1047,83 @@
         }).join('');
       }
 
+      function saveCredentials(apiBase, user, token, remember) {
+        try {
+          localStorage.removeItem('rom_admin_api');
+          localStorage.removeItem('rom_admin_user');
+          localStorage.removeItem('rom_admin_token');
+          sessionStorage.removeItem('rom_admin_api');
+          sessionStorage.removeItem('rom_admin_user');
+          sessionStorage.removeItem('rom_admin_token');
+          const store = remember ? localStorage : sessionStorage;
+          if (apiBase) store.setItem('rom_admin_api', apiBase);
+          if (user) store.setItem('rom_admin_user', user);
+          if (token) store.setItem('rom_admin_token', token);
+        } catch (e) { }
+      }
+
       async function conectarEPreencher() {
         state.apiBase = $('api-base').value.trim();
+        state.user = $('admin-user').value.trim();
         state.token = $('admin-token').value.trim();
+        const remember = $('admin-remember').checked;
         if (!state.token) {
-          showBanner('auth-banner', 'Informe o token de acesso para conectar.', 'err');
+          showBanner('auth-banner', 'Informe a senha de acesso ou token para entrar.', 'err');
           return;
         }
-        sessionStorage.setItem('rom_admin_api', state.apiBase);
-        sessionStorage.setItem('rom_admin_token', state.token);
+        saveCredentials(state.apiBase, state.user, state.token, remember);
+
+        const btn = $('btn-conectar');
+        btn.disabled = true;
+        btn.textContent = 'Entrando...';
 
         try {
           await carregarKillSwitch();
           await Promise.all([carregarFontes(), carregarEventos(), carregarDossiesAdmin()]);
           $('admin-panels').classList.remove('hidden');
-          showBanner('auth-banner', 'Conectado com sucesso.', 'ok');
+          $('btn-sair').classList.remove('hidden');
+          const who = state.user ? ` como ${state.user}` : '';
+          showBanner('auth-banner', `Conectado${who} com sucesso.`, 'ok');
         } catch (err) {
           $('admin-panels').classList.add('hidden');
+          $('btn-sair').classList.add('hidden');
           showBanner('auth-banner', 'Falha ao autenticar/carregar: ' + err.message, 'err');
+        } finally {
+          btn.disabled = false;
+          btn.textContent = 'Entrar';
         }
       }
 
       $('api-base').value = state.apiBase;
+      $('admin-user').value = state.user;
       $('admin-token').value = state.token;
       $('btn-conectar').addEventListener('click', conectarEPreencher);
+      [$('admin-user'), $('admin-token')].forEach((el) => {
+        el.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter') {
+            e.preventDefault();
+            conectarEPreencher();
+          }
+        });
+      });
+
+      $('btn-toggle-pass').addEventListener('click', () => {
+        const input = $('admin-token');
+        const isPass = input.type === 'password';
+        input.type = isPass ? 'text' : 'password';
+        $('btn-toggle-pass').textContent = isPass ? '🙈' : '👁️';
+      });
+
+      $('btn-sair').addEventListener('click', () => {
+        state.user = '';
+        state.token = '';
+        $('admin-user').value = '';
+        $('admin-token').value = '';
+        saveCredentials('', '', '', false);
+        $('admin-panels').classList.add('hidden');
+        $('btn-sair').classList.add('hidden');
+        showBanner('auth-banner', 'Sessão encerrada neste dispositivo.', 'ok');
+      });
 
       // Bloco 1: Kill Switch
       $('kill-switch-toggle').addEventListener('change', async (e) => {

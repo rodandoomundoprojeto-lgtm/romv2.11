@@ -33,13 +33,36 @@ def load_history() -> set:
         return set()
 
 
+def _get_field(obj: Any, field: str, default: Any = None) -> Any:
+    """Acessa um atributo ou chave de dicionário de forma segura."""
+    if isinstance(obj, dict):
+        val = obj.get(field)
+        if val is not None:
+            return val
+    try:
+        return getattr(obj, field, default)
+    except Exception:
+        return default
+
+
 def extract_youtube_video_id(entry: Any) -> str:
     """Extrai o ID do vídeo a partir da entrada do feed do YouTube."""
-    if hasattr(entry, "yt_videoid"):
-        return entry.yt_videoid
-    # Fallback via regex no link
-    link = getattr(entry, "link", "")
-    match = re.search(r"(?:v=|\/embed\/|\/watch\?v=|\/v\/|youtu\.be\/|\/shorts\/)([A-Za-z0-9_-]{11})", link)
+    yt_vid = _get_field(entry, "yt_videoid")
+    if yt_vid and isinstance(yt_vid, str) and re.fullmatch(r"[A-Za-z0-9_-]{11}", yt_vid.strip()):
+        return yt_vid.strip()
+
+    # Se id for no formato canônico do YouTube: yt:video:ID
+    item_id = _get_field(entry, "id")
+    if isinstance(item_id, str) and item_id.strip().startswith("yt:video:"):
+        vid = item_id.strip().removeprefix("yt:video:").strip()
+        if re.fullmatch(r"[A-Za-z0-9_-]{11}", vid):
+            return vid
+
+    # Fallback via regex no link (suporta watch, youtu.be, shorts, embed, live)
+    link = str(_get_field(entry, "link") or "").strip()
+    if not link:
+        return ""
+    match = re.search(r"(?:v=|\/embed\/|\/watch\?v=|\/v\/|youtu\.be\/|\/shorts\/|\/live\/)([A-Za-z0-9_-]{11})", link)
     if match:
         return match.group(1)
     return ""
@@ -47,21 +70,32 @@ def extract_youtube_video_id(entry: Any) -> str:
 
 def get_youtube_content(entry: Any, video_id: str) -> str:
     """Obtém a transcrição do vídeo ou faz fallback para título e descrição."""
-    title = getattr(entry, "title", "").strip()
-    summary = getattr(entry, "summary", "") or ""
-    
+    title = str(_get_field(entry, "title") or "").strip()
+    summary = str(_get_field(entry, "summary") or _get_field(entry, "description") or "").strip()
+
     # Se media_description existir
-    if hasattr(entry, "media_description"):
-        summary = entry.media_description
+    media_desc = _get_field(entry, "media_description")
+    if media_desc and str(media_desc).strip():
+        summary = str(media_desc).strip()
 
     transcript_text = ""
     if video_id:
         try:
-            transcript_list = YouTubeTranscriptApi.get_transcript(
-                video_id, languages=["pt", "pt-BR", "en", "es"]
-            )
+            if hasattr(YouTubeTranscriptApi, "get_transcript"):
+                transcript_list = YouTubeTranscriptApi.get_transcript(
+                    video_id, languages=["pt", "pt-BR", "en", "es"]
+                )
+            else:
+                transcript_list = YouTubeTranscriptApi().fetch(
+                    video_id, languages=["pt", "pt-BR", "en", "es"]
+                )
             # Unir falas com limite de segurança para economia de tokens
-            transcript_text = " ".join([t.get("text", "") for t in transcript_list])
+            falas = []
+            for t in transcript_list:
+                texto = t.get("text") if isinstance(t, dict) else getattr(t, "text", str(t))
+                if texto:
+                    falas.append(str(texto))
+            transcript_text = " ".join(falas)
         except (TranscriptsDisabled, NoTranscriptFound):
             pass
         except Exception:
@@ -69,19 +103,32 @@ def get_youtube_content(entry: Any, video_id: str) -> str:
 
     if transcript_text and len(transcript_text.strip()) >= 100:
         return f"Título: {title}\n\nTranscrição:\n{transcript_text[:4000]}"
-    
+
     # Fallback para descrição
     return f"Título: {title}\n\nDescrição:\n{summary}".strip()
 
 
 def parse_entry_date(entry: Any) -> str:
     """Retorna a data de publicação no padrão ISO 8601 UTC."""
-    if hasattr(entry, "published_parsed") and entry.published_parsed:
-        dt = datetime(*entry.published_parsed[:6], tzinfo=timezone.utc)
-        return dt.isoformat()
-    if hasattr(entry, "updated_parsed") and entry.updated_parsed:
-        dt = datetime(*entry.updated_parsed[:6], tzinfo=timezone.utc)
-        return dt.isoformat()
+    try:
+        pub = _get_field(entry, "published_parsed")
+        if pub:
+            dt = datetime(*pub[:6], tzinfo=timezone.utc)
+            return dt.isoformat()
+        upd = _get_field(entry, "updated_parsed")
+        if upd:
+            dt = datetime(*upd[:6], tzinfo=timezone.utc)
+            return dt.isoformat()
+        for date_field in ("published", "updated", "data_publicacao"):
+            raw_str = _get_field(entry, date_field)
+            if isinstance(raw_str, str) and raw_str.strip():
+                try:
+                    dt = datetime.fromisoformat(raw_str.replace("Z", "+00:00"))
+                    return dt.isoformat()
+                except Exception:
+                    pass
+    except Exception:
+        pass
     return datetime.now(timezone.utc).isoformat()
 
 
@@ -92,14 +139,17 @@ def collect_new_items() -> List[Dict[str, Any]]:
     new_items: List[Dict[str, Any]] = []
 
     for source in sources:
-        nome = source.get("nome", "Fonte Desconhecida")
-        tipo = source.get("tipo", "rss")
-        id_ou_url = source.get("id_ou_url", "")
-        categoria = source.get("categoria", "geral")
+        nome = str(source.get("nome", "Fonte Desconhecida")).strip()
+        tipo = str(source.get("tipo", "rss")).strip().lower()
+        id_ou_url = str(source.get("id_ou_url", "")).strip()
+        categoria = str(source.get("categoria", "geral")).strip()
 
         if tipo == "youtube":
-            # Converte Channel ID para feed XML oficial do YouTube
-            feed_url = f"https://www.youtube.com/feeds/videos.xml?channel_id={id_ou_url}"
+            # Converte Channel ID para feed XML oficial do YouTube (suporta ID puro ou URL completa)
+            if id_ou_url.startswith("http://") or id_ou_url.startswith("https://"):
+                feed_url = id_ou_url
+            else:
+                feed_url = f"https://www.youtube.com/feeds/videos.xml?channel_id={id_ou_url}"
         else:
             feed_url = id_ou_url
 
@@ -111,22 +161,22 @@ def collect_new_items() -> List[Dict[str, Any]]:
             # Processa até os 5 itens mais recentes de cada fonte por execução
             for entry in feed.entries[:5]:
                 # Identificador único (id da entrada ou link)
-                item_id = getattr(entry, "id", None) or getattr(entry, "link", None)
+                item_id = _get_field(entry, "id") or _get_field(entry, "link")
                 if not item_id:
                     continue
 
                 if item_id in history:
                     continue
 
-                link = getattr(entry, "link", "")
+                link = str(_get_field(entry, "link") or "").strip()
                 data_pub = parse_entry_date(entry)
 
                 if tipo == "youtube":
                     video_id = extract_youtube_video_id(entry)
                     raw_content = get_youtube_content(entry, video_id)
                 else:
-                    title = getattr(entry, "title", "").strip()
-                    summary = getattr(entry, "summary", "") or getattr(entry, "description", "") or ""
+                    title = str(_get_field(entry, "title") or "").strip()
+                    summary = str(_get_field(entry, "summary") or _get_field(entry, "description") or "").strip()
                     raw_content = f"Título: {title}\n\nConteúdo:\n{summary}".strip()
 
                 # Regra de Economia: Ignora conteúdos menores que 100 caracteres
