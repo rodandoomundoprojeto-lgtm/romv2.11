@@ -10385,6 +10385,43 @@
       String(prevItems[0].data_publicacao || '') !== String(nextItems[0].data_publicacao || '');
   }
 
+  function formatarDataPublicacaoCardRadar(isoDateStr) {
+    if (!isoDateStr) return { text: '', title: '', iso: '' };
+    var d = new Date(isoDateStr);
+    if (isNaN(d.getTime())) return { text: '', title: '', iso: '' };
+
+    var iso = d.toISOString();
+    var dia = ('0' + d.getDate()).slice(-2);
+    var mes = ('0' + (d.getMonth() + 1)).slice(-2);
+    var ano = d.getFullYear();
+    var hora = ('0' + d.getHours()).slice(-2);
+    var min = ('0' + d.getMinutes()).slice(-2);
+
+    var dataCompleta = dia + '/' + mes + '/' + ano + ' às ' + hora + 'h' + min;
+    var title = 'Publicada no Rodando o Mundo em ' + dataCompleta;
+
+    var agora = new Date();
+    var diffMs = Date.now() - d.getTime();
+    var diffMin = Math.floor(diffMs / 60000);
+
+    var isMesmoDia = d.getDate() === agora.getDate() &&
+                     d.getMonth() === agora.getMonth() &&
+                     d.getFullYear() === agora.getFullYear();
+
+    var texto = '';
+    if (diffMin >= 0 && diffMin < 5) {
+      texto = 'Publicada agora';
+    } else if (diffMin >= 5 && diffMin < 60) {
+      texto = 'Publicada há ' + diffMin + ' min';
+    } else if (isMesmoDia) {
+      texto = 'Publicada às ' + hora + 'h' + min;
+    } else {
+      texto = 'Publicada em ' + dia + '/' + mes + ' às ' + hora + 'h' + min;
+    }
+
+    return { text: texto, title: title, iso: iso };
+  }
+
   function formatarRotuloAtualizacaoRadar(items, labelSugerido) {
     var itemMaisRecente = 0;
     if (Array.isArray(items) && items.length > 0) {
@@ -10730,15 +10767,7 @@
       var catLabel = catLabels[catKey] || catKey.toUpperCase();
       var detailsId = 'radar-details-' + idx;
       var itemKey = getRadarItemKey(item);
-      var dataPub = '';
-      try {
-        if (item.data_publicacao) {
-          var d = new Date(item.data_publicacao);
-          dataPub = new Intl.DateTimeFormat('pt-BR', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' }).format(d);
-        }
-      } catch (e) {
-        dataPub = '';
-      }
+      var dataPubMeta = formatarDataPublicacaoCardRadar(item.data_publicacao);
 
       var card = '<article class="radar-card radar-cat-' + esc(catKey) + (item.origem_v2 ? ' is-v2-card' : '') + '" data-radar-key="' + esc(itemKey) + '">';
       card += '<div class="radar-card-header">';
@@ -10748,7 +10777,9 @@
         card += '<span class="radar-v2-pill radar-badge-v2">⚡ Pulso V2</span>';
       }
       card += '<span class="radar-source-name">📺 ' + esc(item.fonte_nome || 'Fonte') + '</span>';
-      if (dataPub) card += '<time class="radar-pub-date">' + esc(dataPub) + '</time>';
+      if (dataPubMeta.text) {
+        card += '<time class="radar-pub-date" datetime="' + esc(dataPubMeta.iso) + '" title="' + esc(dataPubMeta.title) + '" aria-label="' + esc(dataPubMeta.title) + '">' + esc(dataPubMeta.text) + '</time>';
+      }
       if (item.fonte_url) {
         card += renderNewsFavBtn({
           url: item.fonte_url,

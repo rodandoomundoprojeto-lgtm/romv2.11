@@ -436,6 +436,7 @@ async function handleRadarHybrid(request, env) {
       carregarAssetWorker('data/feed_output.json', request, env),
     ]);
 
+    const baseSnapshotIso = (vitrineSnap && vitrineSnap.updatedAt) || '2026-11-15T00:00:00Z';
     const updatedAtIso = isRefresh
       ? new Date().toISOString()
       : (vitrineSnap && vitrineSnap.updatedAt) || new Date().toISOString();
@@ -461,6 +462,12 @@ async function handleRadarHybrid(request, env) {
       const score = Number(t.urgencia_score || t.relevancia_score || 85);
       const urlsFontes = Array.isArray(t.fontes_urls) ? t.fontes_urls : [];
       const fonteUrl = urlsFontes[0] || t.fonte_url || t.rota_editoria || '/radar';
+      const dataPub =
+        t.data_publicacao ||
+        t.created_at ||
+        t.publicado_em ||
+        t.updated_at ||
+        baseSnapshotIso;
 
       return {
         id: `v2-${slug}`,
@@ -471,7 +478,7 @@ async function handleRadarHybrid(request, env) {
         categoria: ['geopolitica', 'politica', 'economia', 'cultura'].includes(catNorm) ? catNorm : 'geopolitica',
         fonte_nome: 'Síntese Rodando o Mundo · Pulso V2',
         fonte_url: fonteUrl,
-        data_publicacao: t.updated_at || updatedAtIso,
+        data_publicacao: dataPub,
         origem_v2: true,
         urgencia_score: score,
         paises_envolvidos: paises,
@@ -491,7 +498,11 @@ async function handleRadarHybrid(request, env) {
             categoria: normalizarRadar(card.categoria || 'geopolitica') || 'geopolitica',
             fonte_nome: card.fonte_nome || 'Radar Editorial',
             fonte_url: card.fonte_url || '/radar',
-            data_publicacao: card.data_publicacao || updatedAtIso,
+            data_publicacao:
+              card.data_publicacao ||
+              card.created_at ||
+              card.publicado_em ||
+              baseSnapshotIso,
             origem_v2: false,
             urgencia_score: Number(card.urgencia_score || 70),
             paises_envolvidos: Array.isArray(card.paises_envolvidos) ? card.paises_envolvidos : [],

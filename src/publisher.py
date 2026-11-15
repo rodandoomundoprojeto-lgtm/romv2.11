@@ -6,7 +6,7 @@ import json
 import os
 import re
 import unicodedata
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import List, Dict, Any, Optional
 import requests
 
@@ -173,11 +173,28 @@ def publish_cards(cards: List[Dict[str, Any]], max_items: int = 50) -> int:
         except Exception:
             existing_feed = []
 
-    # Mescla evitando duplicação por fonte_url ou título
+    # Mescla evitando duplicação por fonte_url ou título normalizado
     seen_urls = {item.get("fonte_url") for item in existing_feed if item.get("fonte_url")}
+    seen_titles = {normalizar_fonte_key(item.get("titulo")) for item in existing_feed if item.get("titulo")}
     novos_publicados = 0
+    agora_iso = datetime.now(timezone.utc).isoformat()
 
     for card in cards:
+        titulo_norm = normalizar_fonte_key(card.get("titulo"))
+        fonte_url = card.get("fonte_url")
+
+        # Se já existe no feed, preserva o card original com seu timestamp inalterado
+        if (fonte_url and fonte_url in seen_urls) or (titulo_norm and titulo_norm in seen_titles):
+            continue
+
+        # Garante data_publicacao consistente para quando o item ingressou na cobertura
+        data_pub = (
+            card.get("data_publicacao")
+            or card.get("published_at")
+            or card.get("created_at")
+            or agora_iso
+        )
+
         # Prepara objeto limpo sem campos de controle interno
         clean_card = {
             "titulo": card.get("titulo"),
@@ -186,22 +203,24 @@ def publish_cards(cards: List[Dict[str, Any]], max_items: int = 50) -> int:
             "categoria": card.get("categoria"),
             "fonte_nome": card.get("fonte_nome"),
             "fonte_url": card.get("fonte_url"),
-            "data_publicacao": card.get("data_publicacao")
+            "data_publicacao": data_pub
         }
 
-        if clean_card["fonte_url"] not in seen_urls:
-            existing_feed.insert(0, clean_card)
+        existing_feed.insert(0, clean_card)
+        if clean_card["fonte_url"]:
             seen_urls.add(clean_card["fonte_url"])
-            novos_publicados += 1
+        if titulo_norm:
+            seen_titles.add(titulo_norm)
+        novos_publicados += 1
 
-            # Disparo opcional de webhook para cada card novo
-            send_to_webhook(clean_card)
-            try:
-                from src.notifier import send_discord_webhook, send_telegram_alert
-                send_discord_webhook(clean_card)
-                send_telegram_alert(clean_card)
-            except Exception:
-                pass
+        # Disparo opcional de webhook para cada card novo
+        send_to_webhook(clean_card)
+        try:
+            from src.notifier import send_discord_webhook, send_telegram_alert
+            send_discord_webhook(clean_card)
+            send_telegram_alert(clean_card)
+        except Exception:
+            pass
 
     # Ordena decrescente por data de publicação, limita aos últimos N itens e aplica rodízio amplo
     existing_feed.sort(key=_timestamp_publicacao, reverse=True)

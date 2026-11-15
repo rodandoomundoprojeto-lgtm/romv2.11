@@ -238,6 +238,12 @@ function mapearItemV2ParaRadar(item, fallbackDateIso) {
       : detectarPaisesNoTexto(`${titulo} ${resumo} ${analise}`, kws);
 
   const score = Number(item.urgencia_score || item.relevancia_score || 85);
+  const dataPubOrig =
+    item.data_publicacao ||
+    item.created_at ||
+    item.publicado_em ||
+    item.updated_at ||
+    fallbackDateIso;
 
   return {
     id: `v2-${slug}`,
@@ -248,7 +254,7 @@ function mapearItemV2ParaRadar(item, fallbackDateIso) {
     categoria: ['geopolitica', 'politica', 'economia', 'cultura'].includes(catNorm) ? catNorm : 'geopolitica',
     fonte_nome: 'Síntese Rodando o Mundo · Pulso V2',
     fonte_url: fonteUrl,
-    data_publicacao: item.updated_at || item.data_publicacao || fallbackDateIso,
+    data_publicacao: dataPubOrig,
     origem_v2: true,
     urgencia_score: score,
     paises_envolvidos: paises,
@@ -269,6 +275,7 @@ export async function onRequestGet(context) {
       carregarAssetJson('data/feed_output.json', request),
     ]);
 
+    const baseSnapshotIso = (vitrineSnap && vitrineSnap.updatedAt) || '2026-11-15T00:00:00Z';
     const updatedAtIso = isRefresh
       ? new Date().toISOString()
       : (vitrineSnap && vitrineSnap.updatedAt) || new Date().toISOString();
@@ -279,7 +286,7 @@ export async function onRequestGet(context) {
         : FALLBACK_VITRINE_TEMAS;
 
     const itensV2Snapshot = temasVitrine.map((t) =>
-      mapearItemV2ParaRadar(t, (vitrineSnap && vitrineSnap.updatedAt) || updatedAtIso)
+      mapearItemV2ParaRadar(t, baseSnapshotIso)
     );
 
     const cardsFeed = Array.isArray(feedOutput)
@@ -287,6 +294,12 @@ export async function onRequestGet(context) {
           .filter((card) => card && typeof card === 'object')
           .map((card, idx) => {
           const textoCard = `${card.titulo || ''} ${card.resumo || ''} ${card.analise || ''}`;
+          const dataPub =
+            card.data_publicacao ||
+            card.created_at ||
+            card.publicado_em ||
+            baseSnapshotIso;
+
           return {
             id: card.id || `feed-${idx + 1}`,
             slug: card.slug || '',
@@ -296,7 +309,7 @@ export async function onRequestGet(context) {
             categoria: normalizar(card.categoria || 'geopolitica') || 'geopolitica',
             fonte_nome: card.fonte_nome || 'Radar Editorial',
             fonte_url: card.fonte_url || '/radar',
-            data_publicacao: card.data_publicacao || updatedAtIso,
+            data_publicacao: dataPub,
             origem_v2: false,
             urgencia_score: Number(card.urgencia_score || 70),
             paises_envolvidos: Array.isArray(card.paises_envolvidos)
@@ -354,15 +367,16 @@ export async function onRequestGet(context) {
       headers
     );
   } catch {
-    const fallbackIso = new Date().toISOString();
-    const fallbackItems = FALLBACK_VITRINE_TEMAS.map((t) => mapearItemV2ParaRadar(t, fallbackIso));
+    const baseFallback = '2026-11-15T00:00:00Z';
+    const fallbackItems = FALLBACK_VITRINE_TEMAS.map((t) => mapearItemV2ParaRadar(t, baseFallback));
+    const nowIso = new Date().toISOString();
     return json(
       {
         ok: true,
         cached: false,
         source: 'v2_hybrid',
-        atualizado_em: formatarRotuloRelativo(fallbackIso),
-        updatedAt: fallbackIso,
+        atualizado_em: formatarRotuloRelativo(nowIso),
+        updatedAt: nowIso,
         total: fallbackItems.length,
         items: fallbackItems,
       },

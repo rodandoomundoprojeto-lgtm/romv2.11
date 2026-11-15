@@ -30,8 +30,29 @@ SNAPSHOT_VITRINE = Path(__file__).resolve().parents[1] / "data" / "vitrine_ia.js
 def salvar_snapshot_vitrine(payload: CuradoriaPayload) -> None:
     """Gera data/vitrine_ia.json no formato exato da seção 4.2 do contrato SUG-CURADORIA-IA."""
     agora_iso = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+    mapa_existente: Dict[str, str] = {}
+    if SNAPSHOT_VITRINE.exists():
+        try:
+            dados_prev = json.loads(SNAPSHOT_VITRINE.read_text(encoding="utf-8"))
+            if isinstance(dados_prev, dict) and isinstance(dados_prev.get("temas_ativos"), list):
+                for t_prev in dados_prev["temas_ativos"]:
+                    if isinstance(t_prev, dict):
+                        s = str(t_prev.get("slug") or "")
+                        dp = (
+                            t_prev.get("data_publicacao")
+                            or t_prev.get("created_at")
+                            or t_prev.get("publicado_em")
+                            or t_prev.get("updated_at")
+                        )
+                        if s and dp:
+                            mapa_existente[s] = dp
+        except Exception:
+            pass
+
     temas_ativos = []
     for item in payload.insights:
+        data_pub = mapa_existente.get(item.slug, agora_iso)
         temas_ativos.append({
             "slug": item.slug,
             "titulo_tema": item.titulo_tema,
@@ -43,6 +64,8 @@ def salvar_snapshot_vitrine(payload: CuradoriaPayload) -> None:
             "palavras_chave_busca": [kw.lower().strip() for kw in item.palavras_chave_busca],
             "gatilho_vitrine": item.gatilho_vitrine,
             "sintese_nerd": item.sintese_nerd,
+            "data_publicacao": data_pub,
+            "updated_at": agora_iso,
         })
     snapshot = {
         "ok": True,

@@ -38,7 +38,7 @@ from redacao_v2.schemas import (
     EvidenciaResolvidaPublica,
     PainelVerificacaoEvento,
 )
-from src.publisher import sortir_cards_rodizio_amplo
+from src.publisher import sortir_cards_rodizio_amplo, normalizar_fonte_key
 
 router = APIRouter(tags=["Motor Editorial V2 & Pulso 30m"])
 
@@ -533,24 +533,122 @@ def obter_feed_radar(
     aplicar_no_cache_headers(response)
     raiz = Path(__file__).resolve().parents[1]
     feed_path = raiz / "data" / "feed_output.json"
+    vitrine_path = raiz / "data" / "vitrine_ia.json"
 
-    items: List[Dict[str, Any]] = []
+    base_snapshot_iso = "2026-11-15T00:00:00Z"
+    itens_v2: List[Dict[str, Any]] = []
+
+    mapa_cat_radar = {
+        "Geopolitica_Radar": "geopolitica",
+        "Geopolitica_Relacoes": "geopolitica",
+        "Politica": "politica",
+        "Economia": "economia",
+        "Economia_Comercio": "economia",
+        "Cultura": "cultura",
+        "Sociedade_Cultura": "cultura",
+        "Ciencia_Clima": "geopolitica",
+        "Mobilidade_Fronteiras": "geopolitica",
+        "Eleicoes": "politica",
+        "Resumo_Ultimas": "geopolitica",
+    }
+
+    if vitrine_path.is_file():
+        try:
+            vitrine_raw = json.loads(vitrine_path.read_text(encoding="utf-8"))
+            if isinstance(vitrine_raw, dict):
+                base_snapshot_iso = vitrine_raw.get("updatedAt") or base_snapshot_iso
+                temas = vitrine_raw.get("temas_ativos") or []
+                if isinstance(temas, list):
+                    for t in temas:
+                        if not isinstance(t, dict):
+                            continue
+                        cat_raw = t.get("categoria_primaria") or t.get("categoria") or "Geopolitica_Radar"
+                        cat_norm = mapa_cat_radar.get(str(cat_raw), "geopolitica")
+                        slug = str(t.get("slug") or "")
+                        titulo = str(t.get("titulo_tema") or t.get("titulo_curto") or t.get("titulo") or "").strip()
+                        resumo = str(t.get("gatilho_vitrine") or t.get("resumo_pulso") or t.get("resumo") or "").strip()
+                        analise = str(t.get("sintese_nerd") or t.get("impacto_pratico") or t.get("analise") or resumo).strip()
+                        kws = t.get("palavras_chave_busca") or t.get("palavras_chave") or []
+                        urls = t.get("fontes_urls") or []
+                        fonte_url = urls[0] if urls else (t.get("fonte_url") or t.get("rota_editoria") or "/radar")
+
+                        # Preservação mandatória do horário de inclusão no Rodando o Mundo
+                        data_pub = (
+                            t.get("data_publicacao")
+                            or t.get("created_at")
+                            or t.get("publicado_em")
+                            or t.get("updated_at")
+                            or base_snapshot_iso
+                        )
+
+                        itens_v2.append({
+                            "id": f"v2-{slug}",
+                            "slug": slug,
+                            "titulo": titulo,
+                            "resumo": resumo,
+                            "analise": analise,
+                            "categoria": cat_norm,
+                            "fonte_nome": "Síntese Rodando o Mundo · Pulso V2",
+                            "fonte_url": fonte_url,
+                            "data_publicacao": data_pub,
+                            "origem_v2": True,
+                            "urgencia_score": int(t.get("urgencia_score") or t.get("relevancia_score") or 85),
+                            "paises_envolvidos": list(t.get("paises_envolvidos") or ["BR"]),
+                            "palavras_chave": list(kws),
+                        })
+        except Exception:
+            pass
+
+    cards_feed: List[Dict[str, Any]] = []
     if feed_path.is_file():
         try:
             feed_raw = json.loads(feed_path.read_text(encoding="utf-8"))
             if isinstance(feed_raw, list):
-                items.extend(feed_raw)
+                for idx, card in enumerate(feed_raw):
+                    if not isinstance(card, dict):
+                        continue
+                    data_pub = (
+                        card.get("data_publicacao")
+                        or card.get("created_at")
+                        or card.get("publicado_em")
+                        or base_snapshot_iso
+                    )
+                    cards_feed.append({
+                        "id": card.get("id") or f"feed-{idx + 1}",
+                        "slug": card.get("slug") or "",
+                        "titulo": card.get("titulo") or "",
+                        "resumo": card.get("resumo") or "",
+                        "analise": card.get("analise") or "",
+                        "categoria": str(card.get("categoria") or "geopolitica").lower(),
+                        "fonte_nome": card.get("fonte_nome") or "Radar Editorial",
+                        "fonte_url": card.get("fonte_url") or "/radar",
+                        "data_publicacao": data_pub,
+                        "origem_v2": False,
+                        "urgencia_score": int(card.get("urgencia_score") or 70),
+                        "paises_envolvidos": list(card.get("paises_envolvidos") or []),
+                        "palavras_chave": list(card.get("palavras_chave") or []),
+                    })
         except Exception:
             pass
 
-    if categoria and categoria.lower() != "todos":
-        cat_norm = categoria.lower().strip()
-        items = [it for it in items if str(it.get("categoria", "")).lower() == cat_norm]
+    # Deduplicação por título mantendo a primeira ocorrência
+    titulos_vistos = set()
+    combinados: List[Dict[str, Any]] = []
+    for item in itens_v2 + cards_feed:
+        tit_norm = normalizar_fonte_key(item.get("titulo"))
+        if not tit_norm or tit_norm in titulos_vistos:
+            continue
+        titulos_vistos.add(tit_norm)
+        combinados.append(item)
 
-    items = sortir_cards_rodizio_amplo(items, max_v2_topo=2)
+    combinados = sortir_cards_rodizio_amplo(combinados, max_v2_topo=2)
+
+    if isinstance(categoria, str) and categoria.lower() != "todos":
+        cat_norm = categoria.lower().strip()
+        combinados = [it for it in combinados if str(it.get("categoria", "")).lower() == cat_norm]
 
     mais_recente_iso = max(
-        (str(it.get("data_publicacao")) for it in items if it.get("data_publicacao")),
+        (str(it.get("data_publicacao")) for it in combinados if it.get("data_publicacao")),
         default=None,
     )
 
@@ -577,8 +675,8 @@ def obter_feed_radar(
         "source": "v2_hybrid",
         "atualizado_em": carimbo,
         "updatedAt": agora_iso,
-        "total": len(items),
-        "items": items,
+        "total": len(combinados),
+        "items": combinados,
     }
 
 

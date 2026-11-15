@@ -134,6 +134,16 @@ def salvar_snapshot_vitrine_pulso(
     novos_temas: List[Dict[str, Any]] = []
     novas_nq: List[Dict[str, Any]] = []
 
+    # Mapa para recuperar horários de publicação originais de temas pré-existentes
+    mapa_temas_existentes: Dict[str, Dict[str, Any]] = {}
+    for t_ex in temas_existentes:
+        s_ex = str(t_ex.get("slug") or "").strip()
+        tit_ex = str(t_ex.get("titulo_tema") or t_ex.get("titulo_curto") or t_ex.get("titulo") or "").lower().strip()
+        if s_ex:
+            mapa_temas_existentes[s_ex] = t_ex
+        if tit_ex:
+            mapa_temas_existentes[tit_ex] = t_ex
+
     for item in itens_brutos:
         d = item.model_dump() if hasattr(item, "model_dump") else (dict(item) if isinstance(item, dict) else {})
         if not d:
@@ -151,6 +161,25 @@ def salvar_snapshot_vitrine_pulso(
         resumo = str(d.get("resumo_pulso") or d.get("gatilho_vitrine") or d.get("resumo") or "").strip()
         impacto = str(d.get("impacto_pratico") or d.get("sintese_nerd") or resumo).strip()
         kws = [str(k).lower().strip() for k in (d.get("palavras_chave") or d.get("palavras_chave_busca") or [])]
+
+        # Preservação mandatória do horário original em que a notícia ingressou na cobertura do Rodando o Mundo
+        tema_preexistente = mapa_temas_existentes.get(slug) or mapa_temas_existentes.get(titulo.lower())
+        if tema_preexistente:
+            data_pub_original = (
+                tema_preexistente.get("data_publicacao")
+                or tema_preexistente.get("created_at")
+                or tema_preexistente.get("publicado_em")
+                or tema_preexistente.get("updated_at")
+                or agora_iso
+            )
+        else:
+            data_pub_original = (
+                d.get("data_publicacao")
+                or d.get("published_at")
+                or d.get("created_at")
+                or d.get("publicado_em")
+                or agora_iso
+            )
 
         novos_temas.append({
             "slug": slug,
@@ -172,9 +201,12 @@ def salvar_snapshot_vitrine_pulso(
             "paises_envolvidos": list(d.get("paises_envolvidos") or ["BR"]),
             "veiculos_origem": list(d.get("veiculos_origem") or ["Síntese Rodando o Mundo · Pulso V2"]),
             "fontes_urls": list(d.get("fontes_urls") or []),
+            "data_publicacao": data_pub_original,
             "updated_at": agora_iso,
         })
-        novas_nq.append(d)
+        d_clone = dict(d)
+        d_clone["data_publicacao"] = data_pub_original
+        novas_nq.append(d_clone)
 
     # Mesclagem com deduplicação por slug e título
     vistos_slugs = set()
@@ -201,6 +233,13 @@ def salvar_snapshot_vitrine_pulso(
             continue
         if tit and tit in vistos_titulos:
             continue
+        if not t.get("data_publicacao"):
+            t["data_publicacao"] = (
+                t.get("created_at")
+                or t.get("publicado_em")
+                or t.get("updated_at")
+                or agora_iso
+            )
         if s:
             vistos_slugs.add(s)
         if tit:
