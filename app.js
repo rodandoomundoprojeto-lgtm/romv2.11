@@ -9655,7 +9655,7 @@
         return res.json();
       })
       .then(function (data) {
-        if (data && data.ok && Array.isArray(data.items)) {
+        if (data && data.ok && Array.isArray(data.items) && data.items.length > 0) {
           radarLastFetchAt = Date.now();
           var changed = hasRadarFeedChanged(radarFeedCache, data.items);
           radarFeedCache = data.items;
