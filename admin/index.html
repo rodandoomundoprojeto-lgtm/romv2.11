@@ -427,9 +427,11 @@
       0% {
         box-shadow: 0 0 0 0 rgba(39, 174, 96, 0.65);
       }
+
       70% {
         box-shadow: 0 0 0 6px rgba(39, 174, 96, 0);
       }
+
       100% {
         box-shadow: 0 0 0 0 rgba(39, 174, 96, 0);
       }
@@ -558,21 +560,25 @@
     <section class="admin-card" aria-label="Autenticação do Painel">
       <div class="admin-auth-bar">
         <div class="admin-field" style="flex: 1 1 180px;">
-          <label for="admin-user">Nome do Admin</label>
-          <input id="admin-user" class="admin-input" type="text" autocomplete="username" placeholder="Ex: $$$$$ ou ototot (opcional p/ token)">
+          <label for="admin-user">Admin</label>
+          <input id="admin-user" class="admin-input" type="text" autocomplete="username"
+            placeholder="Admin User (opcional p/ token)">
         </div>
         <div class="admin-field" style="flex: 1 1 240px;">
-          <label for="admin-token">Senha de Acesso ou Token</label>
+          <label for="admin-token">Admin Token</label>
           <div style="display:flex; gap:0.4rem; align-items:center;">
-            <input id="admin-token" class="admin-input" type="password" autocomplete="current-password" placeholder="Digite sua senha ou cole o token" style="flex:1; min-width:0;">
-            <button id="btn-toggle-pass" class="admin-btn admin-btn-sm" type="button" title="Mostrar ou ocultar senha" aria-label="Mostrar ou ocultar senha" style="padding:0.5rem 0.65rem;">👁️</button>
+            <input id="admin-token" class="admin-input" type="password" autocomplete="current-password"
+              placeholder="Digite sua senha ou cole o token" style="flex:1; min-width:0;">
+            <button id="btn-toggle-pass" class="admin-btn admin-btn-sm" type="button" title="Mostrar ou ocultar senha"
+              aria-label="Mostrar ou ocultar senha" style="padding:0.5rem 0.65rem;">👁️</button>
           </div>
         </div>
         <button id="btn-conectar" class="admin-btn admin-btn-primary" type="button">Entrar</button>
         <button id="btn-sair" class="admin-btn admin-btn-danger hidden" type="button">Sair</button>
       </div>
 
-      <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:0.75rem; margin-top:0.75rem;">
+      <div
+        style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:0.75rem; margin-top:0.75rem;">
         <label class="admin-check-label" style="font-size:0.82rem; color:var(--text-muted);">
           <input id="admin-remember" type="checkbox" checked>
           Manter conectado neste dispositivo
@@ -582,7 +588,8 @@
           <summary style="cursor:pointer; user-select:none;">Configurações avançadas (URL da API)</summary>
           <div class="admin-field" style="margin-top:0.5rem; min-width:260px;">
             <label for="api-base">URL da API FastAPI (opcional)</label>
-            <input id="api-base" class="admin-input" type="url" placeholder="Mesma origem (ou ex: https://seu-backend.onrender.com)">
+            <input id="api-base" class="admin-input" type="url"
+              placeholder="Mesma origem (ou ex: https://seu-backend.onrender.com)">
           </div>
         </details>
       </div>
@@ -596,7 +603,8 @@
         <div class="admin-card-head">
           <div>
             <h1 id="blk1-title" class="admin-card-title">1. Controle Rápido</h1>
-            <p class="admin-sub">Kill Switch editorial (`ai_config_operacional`) e disparo manual protegido por advisory lock.</p>
+            <p class="admin-sub">Kill Switch editorial (`ai_config_operacional`) e disparo manual protegido por advisory
+              lock.</p>
           </div>
           <span id="kill-switch-badge" class="badge">Carregando...</span>
         </div>
@@ -606,7 +614,8 @@
             <input id="kill-switch-toggle" class="switch-input" type="checkbox">
             <span>
               <strong>Publicação automática ativa</strong>
-              <span class="admin-sub" style="display:block;">Desligado = novos eventos entram como <code>aguardando_revisao</code></span>
+              <span class="admin-sub" style="display:block;">Desligado = novos eventos entram como
+                <code>aguardando_revisao</code></span>
             </span>
           </label>
 
@@ -630,7 +639,8 @@
         <form id="form-nova-fonte" class="admin-form-grid">
           <div class="admin-field">
             <label for="f-nome">Nome</label>
-            <input id="f-nome" class="admin-input" type="text" required minlength="2" maxlength="150" placeholder="Ex: Agência Brasil">
+            <input id="f-nome" class="admin-input" type="text" required minlength="2" maxlength="150"
+              placeholder="Ex: Agência Brasil">
           </div>
           <div class="admin-field" style="grid-column: span 2;">
             <label for="f-url">URL do Feed / Fonte</label>
@@ -660,7 +670,8 @@
           <div class="admin-checkbox-row">
             <label class="admin-check-label" for="f-aprovar">
               <input id="f-aprovar" type="checkbox">
-              <span><strong>Aprovar para coleta imediata</strong> (status <code>aprovada</code>, <code>apenas_metadados</code>, <code>sintese_e_link</code>)</span>
+              <span><strong>Aprovar para coleta imediata</strong> (status <code>aprovada</code>,
+                <code>apenas_metadados</code>, <code>sintese_e_link</code>)</span>
             </label>
             <button type="submit" class="admin-btn admin-btn-primary">Cadastrar Fonte</button>
           </div>
@@ -679,7 +690,9 @@
               </tr>
             </thead>
             <tbody id="tbody-fontes">
-              <tr><td colspan="5" class="admin-sub">Nenhuma fonte carregada.</td></tr>
+              <tr>
+                <td colspan="5" class="admin-sub">Nenhuma fonte carregada.</td>
+              </tr>
             </tbody>
           </table>
         </div>
@@ -690,7 +703,8 @@
         <div class="admin-card-head">
           <div>
             <h2 id="blk3-title" class="admin-card-title">3. Fila de Eventos</h2>
-            <p class="admin-sub">Últimos eventos em <code>ai_eventos</code> — aprovação, edição de síntese/errata e arquivamento.</p>
+            <p class="admin-sub">Últimos eventos em <code>ai_eventos</code> — aprovação, edição de síntese/errata e
+              arquivamento.</p>
           </div>
           <button id="btn-recarregar-eventos" class="admin-btn admin-btn-sm" type="button">Atualizar Fila</button>
         </div>
@@ -708,7 +722,9 @@
               </tr>
             </thead>
             <tbody id="tbody-eventos">
-              <tr><td colspan="5" class="admin-sub">Nenhum evento carregado.</td></tr>
+              <tr>
+                <td colspan="5" class="admin-sub">Nenhum evento carregado.</td>
+              </tr>
             </tbody>
           </table>
         </div>
@@ -719,24 +735,29 @@
         <div class="admin-card-head">
           <div>
             <h2 id="blk4-title" class="admin-card-title">4. Dossiês Editoriais (Permanentes &amp; Especiais)</h2>
-            <p class="admin-sub">Gerenciamento de dossiês temáticos, períodos de cobertura especial e regras de classificação.</p>
+            <p class="admin-sub">Gerenciamento de dossiês temáticos, períodos de cobertura especial e regras de
+              classificação.</p>
             <div class="dossie-badges-row">
               <span class="badge">Total: <strong id="dossies-count-total">0</strong></span>
-              <span class="badge badge-live"><span class="dossie-pulse-dot" aria-hidden="true"></span> Ao Vivo: <strong id="dossies-count-aovivo">0</strong></span>
+              <span class="badge badge-live"><span class="dossie-pulse-dot" aria-hidden="true"></span> Ao Vivo: <strong
+                  id="dossies-count-aovivo">0</strong></span>
               <span class="badge badge-soon">Em Breve: <strong id="dossies-count-embreve">0</strong></span>
               <span class="badge badge-archive">Arquivo: <strong id="dossies-count-arquivo">0</strong></span>
             </div>
           </div>
           <div class="admin-actions">
             <button id="btn-recarregar-dossies" class="admin-btn admin-btn-sm" type="button">Atualizar</button>
-            <button id="btn-novo-dossie" class="admin-btn admin-btn-primary admin-btn-sm" type="button">+ Novo Dossiê Especial</button>
+            <button id="btn-novo-dossie" class="admin-btn admin-btn-primary admin-btn-sm" type="button">+ Novo Dossiê
+              Especial</button>
           </div>
         </div>
 
         <div class="dossie-filters" role="group" aria-label="Filtrar dossiês">
           <button type="button" class="dossie-filter-btn active" data-dossie-filter="all">Todos</button>
-          <button type="button" class="dossie-filter-btn" data-dossie-filter="especiais_ativos">Especiais (Ao Vivo / Em Breve)</button>
-          <button type="button" class="dossie-filter-btn" data-dossie-filter="especiais_arquivo">Especiais (Arquivo)</button>
+          <button type="button" class="dossie-filter-btn" data-dossie-filter="especiais_ativos">Especiais (Ao Vivo / Em
+            Breve)</button>
+          <button type="button" class="dossie-filter-btn" data-dossie-filter="especiais_arquivo">Especiais
+            (Arquivo)</button>
           <button type="button" class="dossie-filter-btn" data-dossie-filter="permanentes">Permanentes</button>
         </div>
 
@@ -756,7 +777,9 @@
               </tr>
             </thead>
             <tbody id="tbody-dossies">
-              <tr><td colspan="7" class="admin-sub">Nenhum dossiê carregado.</td></tr>
+              <tr>
+                <td colspan="7" class="admin-sub">Nenhum dossiê carregado.</td>
+              </tr>
             </tbody>
           </table>
         </div>
@@ -788,7 +811,8 @@
 
       <div id="m-errata-wrap" class="admin-field hidden">
         <label for="m-errata">Texto da Errata (obrigatório para correção material)</label>
-        <textarea id="m-errata" class="admin-textarea" rows="3" placeholder="Descreva objetivamente o que foi corrigido..."></textarea>
+        <textarea id="m-errata" class="admin-textarea" rows="3"
+          placeholder="Descreva objetivamente o que foi corrigido..."></textarea>
       </div>
 
       <div id="modal-banner" class="admin-banner"></div>
@@ -801,7 +825,8 @@
   </div>
 
   <!-- Modal: Criar / Editar Dossiê Editorial -->
-  <div id="modal-dossie" class="admin-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modal-dossie-title">
+  <div id="modal-dossie" class="admin-modal-backdrop" role="dialog" aria-modal="true"
+    aria-labelledby="modal-dossie-title">
     <div class="admin-modal admin-modal-lg">
       <div class="admin-card-head" style="margin-bottom:0;">
         <div>
@@ -829,7 +854,8 @@
 
         <div class="admin-field full-span">
           <label for="d-subtitulo">Subtítulo / Descrição</label>
-          <textarea id="d-subtitulo" class="admin-textarea" rows="2" placeholder="Resumo editorial do dossiê..."></textarea>
+          <textarea id="d-subtitulo" class="admin-textarea" rows="2"
+            placeholder="Resumo editorial do dossiê..."></textarea>
         </div>
 
         <div class="admin-field">
@@ -1420,8 +1446,8 @@
                 <div class="admin-actions">
                   <button class="admin-btn admin-btn-sm" data-dossie-action="editar" data-slug="${escapeHtml(d.slug)}" type="button">Editar</button>
                   ${isEspecial
-                    ? `<button class="admin-btn admin-btn-sm admin-btn-danger" data-dossie-action="excluir" data-slug="${escapeHtml(d.slug)}" type="button">Excluir</button>`
-                    : ''}
+              ? `<button class="admin-btn admin-btn-sm admin-btn-danger" data-dossie-action="excluir" data-slug="${escapeHtml(d.slug)}" type="button">Excluir</button>`
+              : ''}
                 </div>
               </td>
             </tr>
