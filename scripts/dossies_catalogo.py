@@ -17,7 +17,7 @@ PERMANENTES = [
      ["eleição", "eleições", "pesquisa eleitoral", "voto", "urnas", "democracia"], ["BR", "US", "GB", "FR", "DE"], "/eleicoes"),
     ("conflitos-medio-oriente", "Conflitos no Médio Oriente", "MIDEAST", "Geopolítica",
      "Acompanhe os desdobramentos militares, acordos diplomáticos, crises humanitárias e o impacto energético na região sob diferentes perspetivas internacionais.",
-     ["gaza", "israel", "irã", "líbano", "hamas", "cessar-fogo", "oriente médio"], ["IL", "IR", "LB", "PS", "US", "BR"], None),
+     ["gaza", "israel", "irã", "líbano", "hamas", "cessar-fogo", "oriente médio"], ["PS", "LB", "IL", "IR", "US", "BR"], None),
     ("guerra-europa-leste", "Guerra na Europa de Leste", "UA", "Geopolítica",
      "Evolução do conflito entre Rússia e Ucrânia, sanções económicas, segurança da NATO e repercussões geopolíticas no continente europeu.",
      ["ucrânia", "rússia", "putin", "zelensky", "otan", "nato", "sanções"], ["UA", "RU", "US", "BR", "GB"], "/guerra-ucrania"),

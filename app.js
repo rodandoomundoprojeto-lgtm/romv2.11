@@ -9915,33 +9915,49 @@
         return res;
       });
     }).then(function (res) {
-      if (!res || !res.flat.length) {
-        container.innerHTML = '<p class="dossie-empty-msg">Nenhuma matéria encontrada para “' + esc(q) + '”. Tente outro termo ou clique em uma das palavras-chave acima.</p>';
+      var extraPromise = Promise.resolve(null);
+      if (dossie && dossie.slug === 'conflitos-medio-oriente' && /gaza/i.test(q || '')) {
+        extraPromise = runBuscaQuery('Gaza Palestine', (res && res.periodoEfetivo) || per).catch(function(){ return null; });
+      }
+      return extraPromise.then(function(extra){
+        if (extra && extra.flat && extra.flat.length && res && res.flat){
+          var seen = {};
+          res.flat.forEach(function(it){ if(it && it.materia_url) seen[it.materia_url]=1; });
+          extra.flat.forEach(function(it){
+            if(it && it.materia_url && !seen[it.materia_url]){ res.flat.push(it); seen[it.materia_url]=1; }
+          });
+          res.flat.sort(function(a,b){
+            var da = a.publicado_em ? Date.parse(a.publicado_em) || 0 : 0;
+            var db = b.publicado_em ? Date.parse(b.publicado_em) || 0 : 0;
+            return db - da;
+          });
+        }
+        return res;
+      });
+    }).then(function (res) {
+      if (!res || !res.flat || !res.flat.length) {
+        container.innerHTML = '<p class="dossie-empty-msg">Nenhuma materia encontrada para "' + esc(q) + '". Tente outro termo.</p>';
         return;
       }
-
       if (res.periodoEfetivo && thematicHubView) {
         thematicHubView.querySelectorAll('#dossie-period-filters .period-btn').forEach(function (btn) {
           btn.setAttribute('aria-pressed', String(btn.getAttribute('data-period') === res.periodoEfetivo));
         });
       }
-
       var itemsToShow = res.flat.slice(0, 24);
       var veiculosUnicos = {};
       itemsToShow.forEach(function (it) { veiculosUnicos[it.veiculo_nome] = true; });
       var qtdVeiculos = Object.keys(veiculosUnicos).length;
       var termoLabel = res.fallbackTerm ? res.fallbackTerm : q;
-
       var headerHtml = '<div class="topic-search-header dossie-results-header">';
-      headerHtml += '<p class="topic-search-summary">Exibindo <strong>' + itemsToShow.length + '</strong> ' + (itemsToShow.length === 1 ? 'matéria' : 'matérias') + ' sobre <strong>“' + esc(termoLabel) + '”</strong> em ' + qtdVeiculos + (qtdVeiculos === 1 ? ' veículo' : ' veículos') + '</p>';
-      headerHtml += '<button type="button" class="topic-translate-all-btn" data-translate-all aria-pressed="false" title="Traduzir todos os títulos para português">' + ICON_TRANSLATE + ' <span>Traduzir todas</span></button>';
+      headerHtml += '<p class="topic-search-summary">Exibindo <strong>' + itemsToShow.length + '</strong> ' + (itemsToShow.length === 1 ? 'materia' : 'materias') + ' sobre <strong>"' + esc(termoLabel) + '"</strong> em ' + qtdVeiculos + (qtdVeiculos === 1 ? ' veiculo' : ' veiculos') + '</p>';
+      headerHtml += '<button type="button" class="topic-translate-all-btn" data-translate-all aria-pressed="false">Traduzir todas</button>';
       headerHtml += '</div>';
-
       container.innerHTML = headerHtml + renderDossieMateriasGridHtml(itemsToShow, primaryA2);
       bindCardTranslations(container);
       bindNewsFavButtons(container);
     }).catch(function () {
-      container.innerHTML = '<p class="dossie-empty-msg">Não foi possível carregar as matérias ao vivo neste momento.</p>';
+      container.innerHTML = '<p class="dossie-empty-msg">Nao foi possivel carregar as materias ao vivo.</p>';
     });
   }
 

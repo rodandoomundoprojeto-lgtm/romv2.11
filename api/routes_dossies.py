@@ -431,12 +431,12 @@ def admin_criar_dossie(
             cur.execute(
                 """INSERT INTO dossies (
                        slug, titulo, subtitulo, tipo, categoria, icone_ou_bandeira,
-                       data_inicio, data_fim, regras_classificacao, meta_info, rota, ordem
+                       data_inicio, data_fim, regras_classificacao, meta_info, rota, ordem, workflow_status
                    )
                    VALUES (
                        %(slug)s, %(titulo)s, %(subtitulo)s, 'especial', %(categoria)s, %(icone_ou_bandeira)s,
                        %(data_inicio)s, %(data_fim)s, %(regras)s, %(meta_info)s, NULL,
-                       COALESCE((SELECT MAX(ordem) FROM dossies), 0) + 1
+                       COALESCE((SELECT MAX(ordem) FROM dossies), 0) + 1, 'draft'
                    );""",
                 {
                     "slug": payload.slug,
@@ -487,8 +487,132 @@ def admin_remover_dossie(
 
 
 # ---------------------------------------------------------------------------
-# Dossiês 2.0 — Geração editorial por IA (Gemini) + revisão
+# Dossiês 2.0 — Sugestão de novo dossiê por IA (assuntos do momento) + geração editorial
 # ---------------------------------------------------------------------------
+
+class DossieSuggestPayload(BaseModel):
+    country: str = Field(default="BR", min_length=2, max_length=10)
+    lang: str = Field(default="pt", min_length=2, max_length=10)
+    hint: Optional[str] = Field(default=None, max_length=240)
+
+
+class DossieSuggestModel(BaseModel):
+    slug: str = Field(description="Slug URL-friendly em minúsculas com hífens (sem acentos).")
+    titulo: str = Field(description="Título curto e jornalístico do dossiê (máx. 90 caracteres).")
+    subtitulo: str = Field(description="Descrição editorial objetiva em 1-2 frases (120 a 220 caracteres).")
+    categoria: str = Field(description="Categoria principal (ex.: Política, Economia, Internacional, Tecnologia, Esportes, Clima, Segurança).")
+    icone_ou_bandeira: str = Field(description="Emoji/bandeira ou nome curto de ícone (ex.: Globe, Trophy, 🇧🇷).")
+    meta_info: str = Field(description="Período ou contexto curto para exibição (ex.: 'Atualizado em 2026', 'Abr–Mai 2026').")
+    data_inicio: Optional[str] = Field(default=None, description="Data inicial sugerida no formato YYYY-MM-DD, ou null se não aplicável.")
+    data_fim: Optional[str] = Field(default=None, description="Data final sugerida no formato YYYY-MM-DD, ou null se não aplicável/cobertura contínua.")
+    palavras_chave: List[str] = Field(description="5 a 10 palavras-chave ou entidades para classificação (PT-BR, minúsculas quando apropriado).")
+    paises: List[str] = Field(description="Lista de códigos ISO-2 de países/blocos relevantes (ex.: BR, US). Pode ser vazia.")
+
+
+def _extrair_trends_google_rss(country: str = "BR", limit: int = 10) -> List[str]:
+    """Obtém títulos de assuntos em alta via Google Trends RSS (best-effort)."""
+    try:
+        import urllib.request
+        import xml.etree.ElementTree as ET
+
+        url = f"https://trends.google.com/trending/rss?geo={(country or 'BR').upper()}"
+        req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (RodandoOMundoBot/1.0)"})
+        with urllib.request.urlopen(req, timeout=12) as resp:  # nosec B310 - URL fixa de serviço público conhecido
+            xml_data = resp.read()
+        root = ET.fromstring(xml_data)
+        titles: List[str] = []
+        for item in root.findall(".//item/title"):
+            txt = (item.text or "").strip()
+            if txt and txt not in titles:
+                titles.append(txt)
+            if len(titles) >= limit:
+                break
+        return titles
+    except Exception:  # noqa: BLE001
+        return []
+
+
+def _montar_prompt_sugestao_dossie(trends: List[str], today_iso: str, hint: Optional[str]) -> str:
+    trends_block = "\n".join(f"- {t}" for t in trends) if trends else "- (indisponível; sugira um tema geopolítico/jornalístico relevante do momento)"
+    hint_block = f"\nFOCO/PISTA DO EDITOR: {hint}\n" if hint else ""
+    return f"""Você é editor-chefe do portal "Rodando o Mundo — Atlas Jornalístico".
+Sua tarefa é propor UM novo Dossiê Temático (cobertura especial) baseado nos assuntos do momento.
+
+DATA DE REFERÊNCIA: {today_iso}
+{hint_block}
+ASSUNTOS EM ALTA / SINAIS RECENTES (Brasil/mundo):
+{trends_block}
+
+DIRETRIZES:
+1. Escolha o assunto com maior relevância jornalística, impacto internacional ou interesse público sustentado (não apenas viral efêmero), coerente com geopolítica, política, economia, clima, segurança, tecnologia ou sociedade.
+2. Gere campos prontos para cadastro no admin: slug único e descritivo, título claro, subtítulo analítico objetivo, categoria, ícone/bandeira, meta_info, palavras-chave e países ISO-2 quando aplicável.
+3. Sugira data_inicio/data_fim apenas se fizer sentido como janela temporal; caso contrário use null (cobertura contínua/especial sem janela rígida).
+4. Escreva em Português do Brasil (PT-BR), tom neutro e informativo."""
+
+
+@router.post("/v2/admin/dossies/suggest-ai")
+def admin_sugerir_dossie_ia(
+    response: Response,
+    payload: Optional[DossieSuggestPayload] = None,
+    conn: Any = Depends(get_db),
+    _: None = Depends(verificar_admin_token),
+):
+    aplicar_no_cache_headers(response)
+
+    api_key = os.getenv("GEMINI_API_KEY", "").strip()
+    if not api_key:
+        raise HTTPException(status_code=503, detail="GEMINI_API_KEY não configurada no ambiente.")
+
+    try:
+        from google import genai
+        from google.genai import types
+    except Exception as exc:  # noqa: BLE001
+        raise HTTPException(status_code=503, detail=f"SDK google-genai indisponível: {exc}") from exc
+
+    body = payload or DossieSuggestPayload()
+    trends = _extrair_trends_google_rss(body.country or "BR", limit=12)
+    today_iso = datetime.now(timezone.utc).date().isoformat()
+    prompt = _montar_prompt_sugestao_dossie(trends, today_iso, body.hint)
+
+    model_name = os.getenv("GEMINI_DOSSIER_MODEL", "gemini-3.1-flash-lite")
+    try:
+        client = genai.Client(api_key=api_key, http_options=types.HttpOptions(timeout=90_000))
+        result = client.models.generate_content(
+            model=model_name,
+            contents=prompt,
+            config=types.GenerateContentConfig(
+                response_mime_type="application/json",
+                response_schema=DossieSuggestModel,
+                temperature=0.4,
+            ),
+        )
+        generated: Optional[DossieSuggestModel] = getattr(result, "parsed", None)
+        if generated is None:
+            generated = DossieSuggestModel.model_validate_json(result.text)
+    except Exception as exc:  # noqa: BLE001
+        raise HTTPException(status_code=502, detail=f"Falha ao gerar sugestão com a IA: {exc}") from exc
+
+    data = generated.model_dump()
+    # Normalizações defensivas para o formulário admin
+    slug = re.sub(r"[^a-z0-9]+", "-", str(data.get("slug") or "").lower()).strip("-") or f"dossie-{today_iso}"
+    paises = [str(p).strip().upper() for p in (data.get("paises") or []) if str(p).strip()]
+    palavras = [str(p).strip() for p in (data.get("palavras_chave") or []) if str(p).strip()]
+
+    sugestao = {
+        "slug": slug,
+        "titulo": str(data.get("titulo") or "").strip(),
+        "subtitulo": str(data.get("subtitulo") or "").strip(),
+        "categoria": str(data.get("categoria") or "Eventos").strip() or "Eventos",
+        "icone_ou_bandeira": str(data.get("icone_ou_bandeira") or "Globe").strip() or "Globe",
+        "meta_info": str(data.get("meta_info") or "").strip(),
+        "data_inicio": data.get("data_inicio"),
+        "data_fim": data.get("data_fim"),
+        "regras_classificacao": {"palavras_chave": palavras[:12], "paises": paises[:12]},
+    }
+    return {"ok": True, "sugestao": sugestao, "trends": trends, "fonte_trends": "google_trends_rss" if trends else "indisponivel"}
+
+
+# Dossiês 2.0 — Geração editorial por IA (Gemini) + revisão
 
 
 class DossierPillarModel(BaseModel):

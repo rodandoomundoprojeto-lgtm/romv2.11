@@ -955,12 +955,15 @@
   <div id="modal-dossie" class="admin-modal-backdrop" role="dialog" aria-modal="true"
     aria-labelledby="modal-dossie-title">
     <div class="admin-modal admin-modal-lg">
-      <div class="admin-card-head" style="margin-bottom:0;">
-        <div>
+      <div class="admin-card-head" style="margin-bottom:0;align-items:flex-start;gap:10px;">
+        <div style="flex:1;min-width:0;">
           <h3 id="modal-dossie-title" class="admin-card-title" style="font-size:1.15rem;">Novo Dossiê Especial</h3>
           <p id="modal-dossie-sub" class="admin-sub"></p>
         </div>
-        <button id="btn-fechar-modal-dossie" class="admin-btn admin-btn-sm" type="button">Fechar</button>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;">
+          <button id="btn-sugerir-ia-dossie" class="admin-btn admin-btn-sm" type="button" title="Gera uma sugestão de dossiê com base nos assuntos do momento">✨ Sugerir com IA (assuntos do momento)</button>
+          <button id="btn-fechar-modal-dossie" class="admin-btn admin-btn-sm" type="button">Fechar</button>
+        </div>
       </div>
 
       <div class="admin-modal-grid">
@@ -1771,7 +1774,7 @@
           state.editingDossieSlug = null;
           state.editingDossieTipo = 'especial';
           $('modal-dossie-title').textContent = 'Novo Dossiê Especial';
-          $('modal-dossie-sub').textContent = 'Criação de cobertura especial temporária (POST /v2/admin/dossies). Salve primeiro para habilitar a geração com IA.';
+          $('modal-dossie-sub').textContent = 'Criação no modelo novo (Dossiês 2.0): salve para habilitar a camada editorial (IA), revisão e publicação. Você também pode gerar uma sugestão com base nos assuntos do momento.';
           $('d-slug').value = '';
           $('d-slug').disabled = false;
           $('d-data-inicio-req').classList.remove('hidden');
@@ -1925,10 +1928,17 @@
                 regras_classificacao: { palavras_chave: palavrasChave, paises }
               })
             });
-            fecharModalDossie();
-            showToast(`Dossiê "${titulo}" criado com sucesso!`, 'ok');
-            showBanner('dossies-banner', `Dossiê "${titulo}" criado. Abra para gerar conteúdo com IA.`, 'ok');
+            const created = data.dossie || data;
+            showToast(`Dossiê "${titulo}" criado no modelo novo (rascunho).`, 'ok');
+            showBanner('dossies-banner', `Dossiê "${titulo}" criado. Gere e revise a camada editorial 2.0 antes de publicar.`, 'ok');
             await carregarDossiesAdmin();
+            // Alterna para modo edição para habilitar camada editorial/IA (modelo novo)
+            if (created && created.slug) {
+              abrirModalDossie('edit', created);
+              showBanner('modal-dossie-banner', 'Dossiê criado como rascunho. Use "Gerar / Atualizar com IA" para montar a síntese e a linha do tempo.', 'ok');
+            } else {
+              fecharModalDossie();
+            }
             return data;
           } else {
             let ai = { executive_summary: { context: '', pillars: [] }, timeline: [] };
@@ -2019,6 +2029,44 @@
 
       $('d-exec-context').addEventListener('input', () => {
         $('d-exec-context-count').textContent = String(($('d-exec-context').value || '').length);
+      });
+
+      $('btn-sugerir-ia-dossie').addEventListener('click', async () => {
+        const btn = $('btn-sugerir-ia-dossie');
+        const prev = btn.textContent;
+        btn.disabled = true;
+        btn.textContent = 'Buscando assuntos e gerando...';
+        hideBanner('modal-dossie-banner');
+        try {
+          const data = await apiFetch('/v2/admin/dossies/suggest-ai', {
+            method: 'POST',
+            body: JSON.stringify({ country: 'BR', lang: 'pt', hint: $('d-titulo').value.trim() || null })
+          });
+          const s = data.sugestao || data;
+          if (!s) throw new Error('A IA não retornou uma sugestão válida.');
+          // Preenche o formulário (create ou edit) com a sugestão
+          $('d-titulo').value = s.titulo || '';
+          state.slugManuallyEdited = Boolean(s.slug);
+          $('d-slug').value = slugify(s.slug || s.titulo || '');
+          $('d-subtitulo').value = s.subtitulo || '';
+          $('d-categoria').value = s.categoria || 'Eventos';
+          $('d-icone').value = s.icone_ou_bandeira || 'Globe';
+          $('d-meta-info').value = s.meta_info || '';
+          $('d-data-inicio').value = toDateInputValue(s.data_inicio);
+          $('d-data-fim').value = toDateInputValue(s.data_fim);
+          const regras = s.regras_classificacao || {};
+          $('d-palavras-chave').value = Array.isArray(regras.palavras_chave) ? regras.palavras_chave.join(', ') : '';
+          $('d-paises').value = Array.isArray(regras.paises) ? regras.paises.join(', ') : '';
+          const fonteTrends = data.fonte_trends === 'google_trends_rss' ? 'assuntos do momento (Google Trends)' : 'contexto editorial atual';
+          showBanner('modal-dossie-banner', `Sugestão gerada com base em ${fonteTrends}. Revise os campos e salve para criar no modelo novo.`, 'ok');
+          showToast('Sugestão de dossiê preenchida pela IA.', 'ok');
+        } catch (err) {
+          showBanner('modal-dossie-banner', 'Erro ao gerar sugestão com IA: ' + err.message, 'err');
+          showToast('Erro ao sugerir dossiê com IA.', 'err');
+        } finally {
+          btn.disabled = false;
+          btn.textContent = prev;
+        }
       });
 
       $('btn-timeline-add').addEventListener('click', () => {
