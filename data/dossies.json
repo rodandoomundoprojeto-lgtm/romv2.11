@@ -1,5 +1,5 @@
 {
-  "gerado_em": "2026-11-14T21:27:21.414268+00:00",
+  "gerado_em": "2026-11-16T23:23:23.540629+00:00",
   "dossies": [
     {
       "slug": "politica-brasil",
@@ -25,7 +25,70 @@
       },
       "meta_info": null,
       "rota": "/politica/brasil",
-      "ordem": 1
+      "ordem": 1,
+      "workflow_status": "review",
+      "executive_summary": {
+        "context": "A política brasileira contemporânea é marcada por uma tensão estrutural entre os Três Poderes, refletindo a polarização social e a busca por estabilidade institucional. Desde a redemocratização, o equilíbrio entre o ativismo do STF, a fragmentação partidária no Congresso e a gestão do Planalto define a governabilidade. Entender este cenário é crucial, pois as decisões tomadas em Brasília impactam diretamente a segurança jurídica, a confiança dos investidores e o papel do Brasil no cenário global.",
+        "pillars": [
+          {
+            "title": "Equilíbrio entre Poderes",
+            "category": "politica",
+            "description": "A constante fricção entre o STF e o Legislativo molda a governabilidade e a eficácia das políticas públicas em um ambiente de alta fragmentação política."
+          },
+          {
+            "title": "Estabilidade Econômica",
+            "category": "economia",
+            "description": "As decisões fiscais do Planalto e a tramitação de reformas no Congresso são os principais vetores de confiança para o mercado e o crescimento do PIB."
+          },
+          {
+            "title": "Segurança Institucional",
+            "category": "seguranca",
+            "description": "A preservação do Estado Democrático de Direito frente a pressões internas e externas é o pilar que sustenta a previsibilidade do ambiente de negócios."
+          }
+        ]
+      },
+      "timeline": [
+        {
+          "date": "2023-01-01",
+          "type": "past",
+          "title": "Início do terceiro mandato de Lula",
+          "summary": "O governo assume com o desafio de pacificar o país e retomar a agenda econômica após um período de intensa polarização política e social no Brasil.",
+          "display_date": "Jan 2023"
+        },
+        {
+          "date": "2024-05-15",
+          "type": "past",
+          "title": "Avanço da Reforma Tributária",
+          "summary": "O Congresso Nacional aprova marcos regulatórios essenciais, sinalizando um esforço de articulação política para modernizar o sistema de impostos brasileiro.",
+          "display_date": "Mai 2024"
+        },
+        {
+          "date": "2026-10-04",
+          "type": "turning_point",
+          "title": "Eleições Gerais e Municipais",
+          "summary": "O pleito de 2026 atua como um divisor de águas, redefinindo as forças políticas no Congresso e as perspectivas para a sucessão presidencial de 2026.",
+          "display_date": "Out 2026"
+        },
+        {
+          "date": "2026-12-15",
+          "type": "upcoming",
+          "title": "Fechamento do Orçamento Anual",
+          "summary": "O Congresso finaliza a votação da Lei Orçamentária Anual, definindo as prioridades de gastos e investimentos do governo federal para o próximo exercício.",
+          "display_date": "Dez 2026"
+        },
+        {
+          "date": "2027-02-01",
+          "type": "upcoming",
+          "title": "Abertura do Ano Legislativo",
+          "summary": "Início da nova legislatura com a eleição das mesas diretoras da Câmara e do Senado, definindo a agenda de prioridades e a relação com o Poder Executivo.",
+          "display_date": "Fev 2027"
+        }
+      ],
+      "ai_metadata": {
+        "model": "gemini-3.1-flash-lite",
+        "generated_at": "2026-11-16T23:15:27.334602+00:00",
+        "articles_analyzed": 0
+      }
     },
     {
       "slug": "politica-estados-unidos",
@@ -50,7 +113,70 @@
       },
       "meta_info": null,
       "rota": "/politica/estados-unidos",
-      "ordem": 2
+      "ordem": 2,
+      "workflow_status": "review",
+      "executive_summary": {
+        "context": "A política dos Estados Unidos atravessa um período de profunda polarização institucional, onde a interação entre a Casa Branca, o Congresso e a Suprema Corte define a estabilidade da maior economia global. A raiz deste cenário reside na erosão do consenso bipartidário e no ativismo judicial, que agora moldam a agenda legislativa e administrativa. Compreender este dinamismo é vital, pois as decisões tomadas em Washington reverberam diretamente na segurança internacional e nos mercados financeiros globais.",
+        "pillars": [
+          {
+            "title": "Polarização Institucional",
+            "category": "politica",
+            "description": "O impasse entre o Executivo e o Legislativo trava reformas estruturais, elevando o risco de paralisia governamental e incerteza sobre políticas públicas."
+          },
+          {
+            "title": "Impacto Econômico Global",
+            "category": "economia",
+            "description": "Decisões sobre taxas de juros, comércio exterior e dívida pública americana ditam o fluxo de capitais e a inflação em economias emergentes e desenvolvidas."
+          },
+          {
+            "title": "Geopolítica e Segurança",
+            "category": "geopolitica",
+            "description": "A postura de Washington em alianças militares e conflitos regionais define a arquitetura de segurança global e a eficácia das sanções econômicas aplicadas."
+          }
+        ]
+      },
+      "timeline": [
+        {
+          "date": "2024-11-05",
+          "type": "past",
+          "title": "Eleições Gerais nos EUA",
+          "summary": "O pleito definiu a composição do Congresso e a presidência, estabelecendo o novo equilíbrio de poder que dita a governabilidade atual do país.",
+          "display_date": "Nov 2024"
+        },
+        {
+          "date": "2025-01-20",
+          "type": "past",
+          "title": "Posse Presidencial",
+          "summary": "O início do mandato marcou a transição administrativa e a implementação das prioridades legislativas prioritárias para a nova gestão em Washington.",
+          "display_date": "Jan 2025"
+        },
+        {
+          "date": "2026-11-03",
+          "type": "turning_point",
+          "title": "Eleições de Meio de Termo",
+          "summary": "Momento decisivo que reconfigurou o controle das casas legislativas, impactando diretamente a capacidade de manobra da Casa Branca até o fim do mandato.",
+          "display_date": "Nov 2026"
+        },
+        {
+          "date": "2027-01-03",
+          "type": "upcoming",
+          "title": "Abertura do 120º Congresso",
+          "summary": "Início da nova legislatura com a posse dos parlamentares eleitos, definindo as comissões e a agenda de prioridades para os próximos dois anos.",
+          "display_date": "Jan 2027"
+        },
+        {
+          "date": "2028-11-07",
+          "type": "upcoming",
+          "title": "Eleições Presidenciais",
+          "summary": "O próximo ciclo eleitoral determinará a continuidade ou a mudança de rumo na política externa e interna dos Estados Unidos para a próxima década.",
+          "display_date": "Nov 2028"
+        }
+      ],
+      "ai_metadata": {
+        "model": "gemini-3.1-flash-lite",
+        "generated_at": "2026-11-16T23:15:48.000541+00:00",
+        "articles_analyzed": 0
+      }
     },
     {
       "slug": "eleicoes-democracia-mundo",
@@ -80,7 +206,70 @@
       },
       "meta_info": null,
       "rota": "/eleicoes",
-      "ordem": 3
+      "ordem": 3,
+      "workflow_status": "review",
+      "executive_summary": {
+        "context": "A democracia global enfrenta um momento de inflexão histórica, marcado pela erosão da confiança institucional e pela polarização acentuada por novas tecnologias de informação. A raiz deste fenômeno reside na transição de sistemas tradicionais de representação para modelos de engajamento digital, onde a desinformação e o populismo desafiam a estabilidade das instituições. Compreender este cenário é vital para antecipar riscos à governança e à ordem geopolítica internacional.",
+        "pillars": [
+          {
+            "title": "Crise de Legitimidade",
+            "category": "politica",
+            "description": "O declínio da confiança nas instituições eleitorais gera instabilidade política e questionamentos sobre a integridade dos processos democráticos."
+          },
+          {
+            "title": "Volatilidade de Mercado",
+            "category": "economia",
+            "description": "Resultados eleitorais inesperados em grandes economias provocam oscilações imediatas em ativos financeiros e incertezas nas políticas fiscais."
+          },
+          {
+            "title": "Realinhamento Geopolítico",
+            "category": "geopolitica",
+            "description": "Mudanças de liderança alteram alianças estratégicas e a postura de nações em conflitos regionais, redefinindo o equilíbrio de poder global."
+          }
+        ]
+      },
+      "timeline": [
+        {
+          "date": "2024-11-05",
+          "type": "past",
+          "title": "Eleições Presidenciais nos EUA",
+          "summary": "O pleito norte-americano consolidou a polarização política global, influenciando agendas de segurança e comércio internacional para os anos seguintes.",
+          "display_date": "Nov 2024"
+        },
+        {
+          "date": "2025-06-15",
+          "type": "past",
+          "title": "Cúpula Global pela Democracia",
+          "summary": "Líderes mundiais debateram a regulação de plataformas digitais e o combate à desinformação como pilares fundamentais para a preservação do voto.",
+          "display_date": "Jun 2025"
+        },
+        {
+          "date": "2026-10-04",
+          "type": "turning_point",
+          "title": "Eleições Gerais no Brasil",
+          "summary": "O processo eleitoral brasileiro serviu como ponto de inflexão para a governabilidade e a definição das prioridades econômicas do país até 2030.",
+          "display_date": "Out 2026"
+        },
+        {
+          "date": "2027-03-15",
+          "type": "upcoming",
+          "title": "Transição de Poder no Brasil",
+          "summary": "A posse e o início da nova gestão marcam a implementação efetiva das promessas de campanha e o ajuste das relações diplomáticas regionais.",
+          "display_date": "Mar 2027"
+        },
+        {
+          "date": "2027-09-20",
+          "type": "upcoming",
+          "title": "Ciclo Eleitoral Europeu",
+          "summary": "Novas rodadas de eleições no bloco europeu definirão a continuidade das políticas de integração e a postura frente a crises de segurança externas.",
+          "display_date": "Set 2027"
+        }
+      ],
+      "ai_metadata": {
+        "model": "gemini-3.1-flash-lite",
+        "generated_at": "2026-11-16T23:15:56.957754+00:00",
+        "articles_analyzed": 0
+      }
     },
     {
       "slug": "conflitos-medio-oriente",
@@ -112,7 +301,70 @@
       },
       "meta_info": null,
       "rota": null,
-      "ordem": 4
+      "ordem": 4,
+      "workflow_status": "review",
+      "executive_summary": {
+        "context": "A instabilidade no Médio Oriente é enraizada na disputa territorial histórica entre israelitas e palestinianos, exacerbada pela rivalidade regional entre Israel e o Irão. A complexidade atual deriva da fragmentação de atores não estatais, como Hamas e Hezbollah, que redefinem a segurança regional. O conflito é vital hoje pois ameaça a estabilidade dos fluxos energéticos globais e testa a eficácia das alianças diplomáticas ocidentais e regionais na contenção de uma escalada bélica de larga escala.",
+        "pillars": [
+          {
+            "title": "Segurança e Defesa Regional",
+            "category": "seguranca",
+            "description": "A escalada militar entre Israel e grupos apoiados pelo Irão altera o equilíbrio de poder, exigindo novas estratégias de dissuasão e defesa aérea."
+          },
+          {
+            "title": "Diplomacia e Mediação",
+            "category": "geopolitica",
+            "description": "Esforços internacionais buscam cessar-fogos duradouros, enfrentando o desafio de alinhar interesses divergentes entre potências regionais e globais."
+          },
+          {
+            "title": "Impacto Económico Global",
+            "category": "economia",
+            "description": "A volatilidade nos preços do petróleo e a segurança das rotas marítimas no Mar Vermelho impõem riscos diretos à economia e cadeias de suprimentos."
+          }
+        ]
+      },
+      "timeline": [
+        {
+          "date": "2023-10-07",
+          "type": "past",
+          "title": "Ataque do Hamas a Israel",
+          "summary": "O ataque sem precedentes do Hamas ao sul de Israel desencadeou uma resposta militar massiva em Gaza, alterando permanentemente o status quo regional.",
+          "display_date": "07 Out 2023"
+        },
+        {
+          "date": "2024-04-13",
+          "type": "turning_point",
+          "title": "Ataque direto do Irão a Israel",
+          "summary": "O Irão lançou centenas de drones e mísseis contra Israel, marcando a primeira vez que Teerão atacou o território israelita diretamente a partir do seu solo.",
+          "display_date": "13 Abr 2024"
+        },
+        {
+          "date": "2025-09-15",
+          "type": "past",
+          "title": "Intensificação no Líbano",
+          "summary": "Aumento significativo das hostilidades na fronteira norte de Israel, resultando em deslocamentos em massa e pressão diplomática por uma zona de segurança.",
+          "display_date": "Set 2025"
+        },
+        {
+          "date": "2026-11-16",
+          "type": "past",
+          "title": "Estado de Tensão Atual",
+          "summary": "O cenário atual reflete um impasse diplomático com escaramuças contínuas e a necessidade urgente de um quadro de segurança regional mais robusto.",
+          "display_date": "16 Nov 2026"
+        },
+        {
+          "date": "2027-03-01",
+          "type": "upcoming",
+          "title": "Cimeira de Estabilização",
+          "summary": "Previsão de conferência internacional para discutir a reconstrução de Gaza e a implementação de mecanismos de monitorização de fronteiras no Líbano.",
+          "display_date": "Mar 2027"
+        }
+      ],
+      "ai_metadata": {
+        "model": "gemini-3.1-flash-lite",
+        "generated_at": "2026-11-16T23:16:06.165440+00:00",
+        "articles_analyzed": 0
+      }
     },
     {
       "slug": "guerra-europa-leste",
@@ -143,7 +395,70 @@
       },
       "meta_info": null,
       "rota": "/guerra-ucrania",
-      "ordem": 5
+      "ordem": 5,
+      "workflow_status": "review",
+      "executive_summary": {
+        "context": "O conflito entre Rússia e Ucrânia, enraizado na dissolução da URSS e na expansão da influência ocidental, representa a maior crise de segurança europeia desde 1945. A invasão russa de 2022 rompeu a arquitetura de segurança continental, forçando uma reconfiguração das alianças globais. Hoje, o impasse militar e a exaustão econômica testam a resiliência das democracias liberais e a capacidade da OTAN de sustentar um apoio prolongado frente a uma Rússia que busca redefinir as fronteiras de sua esfera de influência.",
+        "pillars": [
+          {
+            "title": "Segurança e Defesa Coletiva",
+            "category": "seguranca",
+            "description": "A expansão da OTAN e o rearmamento europeu alteram o equilíbrio de poder, forçando a integração militar profunda entre os membros da aliança atlântica."
+          },
+          {
+            "title": "Estabilidade Econômica Global",
+            "category": "economia",
+            "description": "Sanções e a fragmentação das cadeias de suprimentos energéticos impõem custos estruturais, pressionando a inflação e a transição energética europeia."
+          },
+          {
+            "title": "Realinhamento Geopolítico",
+            "category": "geopolitica",
+            "description": "A guerra catalisa a formação de blocos rivais, testando a neutralidade de potências emergentes e a coesão das instituições multilaterais globais."
+          }
+        ]
+      },
+      "timeline": [
+        {
+          "date": "2022-02-24",
+          "type": "past",
+          "title": "Início da Invasão em Larga Escala",
+          "summary": "Forças russas iniciam uma ofensiva militar total contra a Ucrânia, marcando o início de um conflito que alterou a ordem geopolítica mundial contemporânea.",
+          "display_date": "24 Fev 2022"
+        },
+        {
+          "date": "2022-09-21",
+          "type": "turning_point",
+          "title": "Mobilização Parcial na Rússia",
+          "summary": "Putin decreta mobilização, sinalizando uma escalada no esforço de guerra e a transição para um conflito de atrito prolongado contra as forças ucranianas.",
+          "display_date": "21 Set 2022"
+        },
+        {
+          "date": "2023-06-04",
+          "type": "past",
+          "title": "Contraofensiva Ucraniana",
+          "summary": "Ucrânia lança esforços para recuperar territórios ocupados no sul e leste, enfrentando linhas defensivas russas fortificadas em uma fase decisiva da guerra.",
+          "display_date": "04 Jun 2023"
+        },
+        {
+          "date": "2024-02-24",
+          "type": "past",
+          "title": "Dois Anos de Conflito",
+          "summary": "O conflito atinge o marco de dois anos com impasse militar e crescente dependência ucraniana de auxílio financeiro e militar ocidental para sobrevivência.",
+          "display_date": "24 Fev 2024"
+        },
+        {
+          "date": "2027-01-20",
+          "type": "upcoming",
+          "title": "Revisão da Estratégia de Apoio",
+          "summary": "Expectativa de novas diretrizes políticas das potências ocidentais para sustentar o esforço de guerra ucraniano frente ao desgaste prolongado das reservas.",
+          "display_date": "Jan 2027"
+        }
+      ],
+      "ai_metadata": {
+        "model": "gemini-3.1-flash-lite",
+        "generated_at": "2026-11-16T23:16:15.581516+00:00",
+        "articles_analyzed": 0
+      }
     },
     {
       "slug": "indo-pacifico-china",
@@ -173,7 +488,70 @@
       },
       "meta_info": null,
       "rota": null,
-      "ordem": 6
+      "ordem": 6,
+      "workflow_status": "review",
+      "executive_summary": {
+        "context": "A rivalidade no Indo-Pacífico é o eixo central da política global contemporânea, enraizada na transição de poder entre a hegemonia dos Estados Unidos e a ascensão da China. A disputa transcende o status de Taiwan, envolvendo a supremacia tecnológica em semicondutores, o controle de rotas marítimas vitais e a reconfiguração de alianças regionais. A instabilidade atual reflete a colisão entre a soberania reivindicada por Pequim e a ordem internacional baseada em regras defendida por Washington.",
+        "pillars": [
+          {
+            "title": "Soberania e Segurança Regional",
+            "category": "geopolitica",
+            "description": "O status de Taiwan permanece como o ponto de maior atrito, testando a capacidade de dissuasão militar e a integridade das alianças dos EUA na Ásia."
+          },
+          {
+            "title": "Guerra Tecnológica Global",
+            "category": "economia",
+            "description": "A restrição ao acesso de chips avançados e IA molda a competitividade econômica, forçando blocos a buscarem autonomia em cadeias de suprimentos críticas."
+          },
+          {
+            "title": "Realinhamento de Alianças",
+            "category": "politica",
+            "description": "A diplomacia de blocos, como o AUKUS e o Quad, redefine a arquitetura de segurança, forçando nações asiáticas a equilibrarem laços comerciais e militares."
+          }
+        ]
+      },
+      "timeline": [
+        {
+          "date": "1949-10-01",
+          "type": "past",
+          "title": "Proclamação da República Popular da China",
+          "summary": "O fim da guerra civil chinesa estabelece o governo comunista em Pequim, forçando o governo nacionalista a se refugiar em Taiwan, criando a divisão atual.",
+          "display_date": "Out 1949"
+        },
+        {
+          "date": "2022-08-02",
+          "type": "past",
+          "title": "Visita de Nancy Pelosi a Taiwan",
+          "summary": "A visita da então presidente da Câmara dos EUA elevou as tensões militares, resultando em exercícios chineses sem precedentes ao redor da ilha de Taiwan.",
+          "display_date": "Ago 2022"
+        },
+        {
+          "date": "2024-01-13",
+          "type": "turning_point",
+          "title": "Eleições Presidenciais em Taiwan",
+          "summary": "A vitória do DPP, partido que defende a soberania taiwanesa, consolidou o momento de virada na retórica de Pequim sobre a reunificação forçada da ilha.",
+          "display_date": "Jan 2024"
+        },
+        {
+          "date": "2026-05-20",
+          "type": "past",
+          "title": "Posse e Discurso de Estabilização",
+          "summary": "O governo de Taiwan reafirmou o status quo, enquanto Pequim intensificou o bloqueio econômico e a pressão diplomática sobre parceiros comerciais da ilha.",
+          "display_date": "Mai 2026"
+        },
+        {
+          "date": "2027-01-01",
+          "type": "upcoming",
+          "title": "Revisão da Estratégia de Defesa dos EUA",
+          "summary": "Espera-se que o Pentágono atualize sua postura no Indo-Pacífico para enfrentar a modernização acelerada das forças navais chinesas no Mar da China Meridional.",
+          "display_date": "Jan 2027"
+        }
+      ],
+      "ai_metadata": {
+        "model": "gemini-3.1-flash-lite",
+        "generated_at": "2026-11-16T23:16:24.960135+00:00",
+        "articles_analyzed": 0
+      }
     },
     {
       "slug": "uniao-europeia-politica",
@@ -202,7 +580,70 @@
       },
       "meta_info": null,
       "rota": null,
-      "ordem": 7
+      "ordem": 7,
+      "workflow_status": "review",
+      "executive_summary": {
+        "context": "A União Europeia atravessa um momento de redefinição estrutural, pressionada pela ascensão de correntes políticas eurocéticas e pela necessidade de autonomia estratégica em um cenário global fragmentado. A tensão entre a soberania nacional e a integração supranacional, somada aos desafios da transição energética e da gestão migratória, coloca Bruxelas diante de um dilema existencial: aprofundar a coesão interna ou ceder às pressões centrífugas que ameaçam a estabilidade do bloco europeu.",
+        "pillars": [
+          {
+            "title": "Polarização Política",
+            "category": "politica",
+            "description": "O avanço de forças populistas e nacionalistas no Parlamento Europeu altera a dinâmica de votação, dificultando a construção de consensos legislativos."
+          },
+          {
+            "title": "Autonomia Estratégica",
+            "category": "economia",
+            "description": "A transição energética e a segurança industrial tornaram-se pilares vitais para reduzir a dependência externa e garantir a competitividade econômica."
+          },
+          {
+            "title": "Crise Migratória",
+            "category": "geopolitica",
+            "description": "A pressão nas fronteiras externas exige uma reforma profunda no Pacto de Migração e Asilo, testando a solidariedade entre os Estados-membros do bloco."
+          }
+        ]
+      },
+      "timeline": [
+        {
+          "date": "2020-07-21",
+          "type": "past",
+          "title": "Fundo de Recuperação Pós-Pandemia",
+          "summary": "Acordo histórico para emissão de dívida comum, marcando um passo inédito na integração fiscal europeia para enfrentar a crise econômica da COVID-19.",
+          "display_date": "Jul 2020"
+        },
+        {
+          "date": "2024-06-09",
+          "type": "turning_point",
+          "title": "Eleições para o Parlamento Europeu",
+          "summary": "O pleito consolidou o avanço de partidos de direita e extrema-direita, forçando uma reconfiguração das alianças políticas tradicionais em Bruxelas.",
+          "display_date": "Jun 2024"
+        },
+        {
+          "date": "2025-01-01",
+          "type": "past",
+          "title": "Implementação do Pacto de Migração",
+          "summary": "Entrada em vigor de novas regras para o controle de fronteiras e distribuição de refugiados, gerando resistência em diversos governos nacionais do bloco.",
+          "display_date": "Jan 2025"
+        },
+        {
+          "date": "2026-05-15",
+          "type": "past",
+          "title": "Revisão do Green Deal Europeu",
+          "summary": "Ajustes nas metas de descarbonização foram debatidos para equilibrar a sustentabilidade ambiental com a preservação da competitividade industrial europeia.",
+          "display_date": "Mai 2026"
+        },
+        {
+          "date": "2027-03-10",
+          "type": "upcoming",
+          "title": "Cúpula de Reforma Institucional",
+          "summary": "Encontro decisivo para discutir a expansão do bloco e a possível eliminação do voto por unanimidade em questões de política externa e defesa comum.",
+          "display_date": "Mar 2027"
+        }
+      ],
+      "ai_metadata": {
+        "model": "gemini-3.1-flash-lite",
+        "generated_at": "2026-11-16T23:16:33.750980+00:00",
+        "articles_analyzed": 0
+      }
     },
     {
       "slug": "america-latina-transformacao",
@@ -234,7 +675,70 @@
       },
       "meta_info": null,
       "rota": null,
-      "ordem": 8
+      "ordem": 8,
+      "workflow_status": "review",
+      "executive_summary": {
+        "context": "A América Latina atravessa um ciclo de fragmentação ideológica e instabilidade institucional, marcado pela ascensão de governos de espectros opostos e pela erosão da coesão regional. A crise venezuelana, as reformas liberais na Argentina e a transição política no México redefinem o equilíbrio de poder. Este cenário é crucial pois impacta diretamente a segurança energética, os fluxos migratórios e a capacidade do Mercosul de negociar blocos comerciais em um mundo cada vez mais multipolar e protecionista.",
+        "pillars": [
+          {
+            "title": "Polarização e Crise Institucional",
+            "category": "politica",
+            "description": "A instabilidade democrática e a polarização extrema dificultam consensos regionais, fragilizando instituições e a governabilidade em nações chave."
+          },
+          {
+            "title": "Reconfiguração Econômica",
+            "category": "economia",
+            "description": "Reformas estruturais e a busca por novos parceiros comerciais alteram o fluxo de investimentos e a integração produtiva entre os países do bloco."
+          },
+          {
+            "title": "Geopolítica e Soberania",
+            "category": "geopolitica",
+            "description": "A disputa por influência entre potências globais na região pressiona a autonomia diplomática e a segurança estratégica dos países latino-americanos."
+          }
+        ]
+      },
+      "timeline": [
+        {
+          "date": "2023-12-10",
+          "type": "past",
+          "title": "Posse de Javier Milei na Argentina",
+          "summary": "O início do governo Milei marca uma guinada radical na política econômica argentina, com foco em austeridade fiscal e desregulamentação do mercado interno.",
+          "display_date": "Dez 2023"
+        },
+        {
+          "date": "2024-06-02",
+          "type": "past",
+          "title": "Eleições Gerais no México",
+          "summary": "A vitória de Claudia Sheinbaum consolida a continuidade do projeto político de Morena, mantendo o México em uma trajetória de forte intervenção estatal.",
+          "display_date": "Jun 2024"
+        },
+        {
+          "date": "2024-07-28",
+          "type": "turning_point",
+          "title": "Eleições Presidenciais na Venezuela",
+          "summary": "O pleito controverso aprofundou o isolamento diplomático do regime de Maduro e intensificou a crise migratória que afeta toda a América do Sul.",
+          "display_date": "Jul 2024"
+        },
+        {
+          "date": "2026-03-15",
+          "type": "past",
+          "title": "Cúpula do Mercosul em Assunção",
+          "summary": "Encontro focado na revisão das tarifas externas comuns e na tentativa de destravar o acordo comercial com a União Europeia em meio a divergências internas.",
+          "display_date": "Mar 2026"
+        },
+        {
+          "date": "2027-01-01",
+          "type": "upcoming",
+          "title": "Transição de Poder no Chile",
+          "summary": "O ciclo eleitoral chileno definirá o rumo das reformas sociais e a viabilidade de novos projetos de mineração estratégica para a transição energética.",
+          "display_date": "Jan 2027"
+        }
+      ],
+      "ai_metadata": {
+        "model": "gemini-3.1-flash-lite",
+        "generated_at": "2026-11-16T23:16:42.576163+00:00",
+        "articles_analyzed": 0
+      }
     },
     {
       "slug": "economia-brasil",
@@ -262,7 +766,70 @@
       },
       "meta_info": null,
       "rota": "/economia/brasil",
-      "ordem": 9
+      "ordem": 9,
+      "workflow_status": "review",
+      "executive_summary": {
+        "context": "A economia brasileira atravessa um ciclo de ajuste estrutural condicionado pela necessidade de conciliar a disciplina fiscal com a demanda por investimentos sociais. Historicamente marcada pela volatilidade inflacionária, a gestão macroeconômica atual enfrenta o desafio de ancorar expectativas em um cenário de juros elevados e câmbio pressionado. A relevância deste tema reside na capacidade do país de manter a atratividade para capitais estrangeiros enquanto busca a estabilidade necessária para o crescimento sustentável.",
+        "pillars": [
+          {
+            "title": "Política Monetária e Inflação",
+            "category": "economia",
+            "description": "O Banco Central busca o equilíbrio entre o controle da inflação e a atividade econômica, utilizando a Selic como principal instrumento de estabilização."
+          },
+          {
+            "title": "Sustentabilidade Fiscal",
+            "category": "politica",
+            "description": "A trajetória da dívida pública e o cumprimento das metas fiscais são determinantes para a confiança dos investidores e a estabilidade da moeda nacional."
+          },
+          {
+            "title": "Inserção no Comércio Global",
+            "category": "geopolitica",
+            "description": "O desempenho do agronegócio e a atração de investimentos externos diretos definem o papel do Brasil na dinâmica geopolítica e comercial das commodities."
+          }
+        ]
+      },
+      "timeline": [
+        {
+          "date": "2023-01-01",
+          "type": "past",
+          "title": "Início do novo ciclo de gestão econômica",
+          "summary": "O governo assume com o desafio de redefinir o arcabouço fiscal e promover a retomada do crescimento após anos de instabilidade pós-pandemia.",
+          "display_date": "Jan 2023"
+        },
+        {
+          "date": "2024-05-15",
+          "type": "past",
+          "title": "Implementação do Novo Arcabouço Fiscal",
+          "summary": "Aprovado para substituir o teto de gastos, o novo regime busca conciliar a responsabilidade fiscal com a flexibilidade para investimentos públicos essenciais.",
+          "display_date": "Mai 2024"
+        },
+        {
+          "date": "2026-06-20",
+          "type": "turning_point",
+          "title": "Pico de volatilidade cambial",
+          "summary": "A desvalorização do real frente ao dólar atinge patamares críticos, forçando o Banco Central a intervir para conter a pressão inflacionária importada.",
+          "display_date": "Jun 2026"
+        },
+        {
+          "date": "2026-11-06",
+          "type": "past",
+          "title": "Decisão do Copom sobre a Selic",
+          "summary": "O Comitê de Política Monetária mantém a trajetória de juros em resposta aos indicadores de inflação persistentes e à incerteza sobre as contas públicas.",
+          "display_date": "06 Nov 2026"
+        },
+        {
+          "date": "2027-02-15",
+          "type": "upcoming",
+          "title": "Revisão das metas fiscais para 2027",
+          "summary": "O governo deve apresentar as novas diretrizes orçamentárias, sinalizando o compromisso com o equilíbrio das contas para o restante do mandato.",
+          "display_date": "Fev 2027"
+        }
+      ],
+      "ai_metadata": {
+        "model": "gemini-3.1-flash-lite",
+        "generated_at": "2026-11-16T23:16:52.015753+00:00",
+        "articles_analyzed": 0
+      }
     },
     {
       "slug": "economia-global-bancos-centrais",
@@ -292,7 +859,70 @@
       },
       "meta_info": null,
       "rota": null,
-      "ordem": 10
+      "ordem": 10,
+      "workflow_status": "review",
+      "executive_summary": {
+        "context": "A economia global atravessa um ciclo de reajuste estrutural pós-pandemia, marcado pela persistência da inflação e pela rigidez das políticas monetárias. A divergência entre o Federal Reserve e o Banco Central Europeu reflete desafios distintos de crescimento e dívida soberana. Este cenário é crítico agora, pois a fragilidade das cadeias de suprimentos e a instabilidade geopolítica pressionam a estabilidade financeira, forçando bancos centrais a equilibrar o controle inflacionário com o risco de recessão.",
+        "pillars": [
+          {
+            "title": "Divergência Monetária",
+            "category": "economia",
+            "description": "As políticas distintas entre Fed e BCE geram volatilidade cambial e afetam o fluxo de capitais globais, complicando a estabilidade das economias emergentes."
+          },
+          {
+            "title": "Riscos de Recessão",
+            "category": "geopolitica",
+            "description": "O aperto prolongado nos juros eleva o custo da dívida, elevando o risco de contração econômica severa em mercados desenvolvidos e desaceleração industrial."
+          },
+          {
+            "title": "Resiliência das Cadeias",
+            "category": "politica",
+            "description": "A fragmentação comercial e tensões geopolíticas elevam os custos de produção, tornando o combate à inflação um desafio estrutural de longo prazo."
+          }
+        ]
+      },
+      "timeline": [
+        {
+          "date": "2022-03-16",
+          "type": "past",
+          "title": "Início do ciclo de alta de juros",
+          "summary": "O Federal Reserve inicia o ciclo de aperto monetário mais agressivo em décadas para conter a escalada inflacionária global pós-pandemia.",
+          "display_date": "Mar 2022"
+        },
+        {
+          "date": "2023-07-27",
+          "type": "turning_point",
+          "title": "Pico de restrição monetária",
+          "summary": "Bancos centrais atingem patamares elevados de juros, sinalizando uma mudança definitiva na era do dinheiro barato e liquidez abundante.",
+          "display_date": "Jul 2023"
+        },
+        {
+          "date": "2026-09-18",
+          "type": "past",
+          "title": "Ajuste de rota do Fed",
+          "summary": "O Federal Reserve implementa cortes graduais nas taxas, tentando evitar uma recessão técnica enquanto monitora a inflação de serviços.",
+          "display_date": "Set 2026"
+        },
+        {
+          "date": "2026-12-10",
+          "type": "upcoming",
+          "title": "Reunião final do BCE",
+          "summary": "Expectativa de decisão do Banco Central Europeu sobre a manutenção ou redução de juros diante da estagnação econômica na zona do euro.",
+          "display_date": "Dez 2026"
+        },
+        {
+          "date": "2027-03-15",
+          "type": "upcoming",
+          "title": "Revisão de metas globais",
+          "summary": "Instituições financeiras internacionais projetam o cenário de estabilização para o primeiro semestre de 2027, focando em crescimento sustentável.",
+          "display_date": "Mar 2027"
+        }
+      ],
+      "ai_metadata": {
+        "model": "gemini-3.1-flash-lite",
+        "generated_at": "2026-11-16T23:17:01.282782+00:00",
+        "articles_analyzed": 0
+      }
     },
     {
       "slug": "transicao-energetica-petroleo",
@@ -322,7 +952,70 @@
       },
       "meta_info": null,
       "rota": null,
-      "ordem": 11
+      "ordem": 11,
+      "workflow_status": "review",
+      "executive_summary": {
+        "context": "A transição energética global é impulsionada pela necessidade de descarbonização frente à crise climática, colidindo com a dependência histórica de hidrocarbonetos. A OPEP+ mantém influência sobre a oferta, enquanto potências globais travam uma corrida estratégica por minerais críticos, essenciais para tecnologias renováveis. Este cenário redefine alianças geopolíticas, transformando a segurança energética em um pilar central da soberania nacional e da estabilidade econômica mundial no século XXI.",
+        "pillars": [
+          {
+            "title": "Geopolítica dos Recursos",
+            "category": "geopolitica",
+            "description": "A disputa por minerais críticos como lítio e cobalto altera o mapa de influência global, criando novas dependências entre produtores e potências industriais."
+          },
+          {
+            "title": "Volatilidade de Mercado",
+            "category": "economia",
+            "description": "O equilíbrio entre a produção de petróleo da OPEP+ e o avanço das energias renováveis gera incertezas constantes nos preços globais de combustíveis fósseis."
+          },
+          {
+            "title": "Soberania Energética",
+            "category": "politica",
+            "description": "Nações buscam autonomia através do hidrogênio verde e matrizes limpas para mitigar riscos geopolíticos e cumprir metas climáticas internacionais vinculantes."
+          }
+        ]
+      },
+      "timeline": [
+        {
+          "date": "2015-12-12",
+          "type": "past",
+          "title": "Acordo de Paris",
+          "summary": "O marco global que estabeleceu metas para limitar o aquecimento, forçando a aceleração da transição energética e o abandono gradual dos combustíveis fósseis.",
+          "display_date": "Dez 2015"
+        },
+        {
+          "date": "2022-02-24",
+          "type": "turning_point",
+          "title": "Invasão da Ucrânia",
+          "summary": "O conflito expôs a vulnerabilidade energética europeia, acelerando investimentos em renováveis e alterando fluxos globais de petróleo e gás natural.",
+          "display_date": "Fev 2022"
+        },
+        {
+          "date": "2025-06-15",
+          "type": "past",
+          "title": "Pico de Demanda de Petróleo",
+          "summary": "Analistas identificam o início da estagnação na demanda global por petróleo, pressionando produtores a diversificar economias antes da queda estrutural.",
+          "display_date": "Jun 2025"
+        },
+        {
+          "date": "2026-12-01",
+          "type": "upcoming",
+          "title": "Cúpula da OPEP+ sobre Oferta",
+          "summary": "Reunião decisiva para definir cotas de produção em meio à pressão internacional por preços mais baixos e o avanço das alternativas de energia limpa.",
+          "display_date": "Dez 2026"
+        },
+        {
+          "date": "2027-05-20",
+          "type": "upcoming",
+          "title": "Expansão do Hidrogênio Verde",
+          "summary": "Previsão de entrada em operação de grandes plantas industriais de hidrogênio verde, sinalizando a viabilidade comercial da tecnologia em larga escala.",
+          "display_date": "Mai 2027"
+        }
+      ],
+      "ai_metadata": {
+        "model": "gemini-3.1-flash-lite",
+        "generated_at": "2026-11-16T23:17:10.980297+00:00",
+        "articles_analyzed": 0
+      }
     },
     {
       "slug": "comercio-internacional-tarifas",
@@ -351,7 +1044,70 @@
       },
       "meta_info": null,
       "rota": null,
-      "ordem": 12
+      "ordem": 12,
+      "workflow_status": "review",
+      "executive_summary": {
+        "context": "O sistema de comércio global atravessa uma transição estrutural, movendo-se da hiperglobalização para um modelo de segurança econômica e protecionismo estratégico. A erosão da autoridade da OMC e a ascensão de blocos como o BRICS refletem a busca por autonomia frente à hegemonia ocidental. Hoje, o comércio não é apenas uma troca de bens, mas uma ferramenta de poder geopolítico, onde tarifas e restrições tecnológicas definem a nova ordem de influência entre as potências globais.",
+        "pillars": [
+          {
+            "title": "Fragmentação Geopolítica",
+            "category": "geopolitica",
+            "description": "A ascensão de blocos alternativos ao G7 altera fluxos comerciais e desafia a hegemonia do dólar, reconfigurando alianças estratégicas globais."
+          },
+          {
+            "title": "Protecionismo Estratégico",
+            "category": "economia",
+            "description": "Governos priorizam a resiliência das cadeias de suprimentos sobre a eficiência, elevando tarifas para proteger indústrias nacionais e tecnologias."
+          },
+          {
+            "title": "Crise da Governança",
+            "category": "politica",
+            "description": "A paralisia da OMC e a proliferação de acordos bilaterais criam um ambiente de incerteza jurídica e instabilidade para o comércio internacional."
+          }
+        ]
+      },
+      "timeline": [
+        {
+          "date": "1995-01-01",
+          "type": "past",
+          "title": "Fundação da OMC",
+          "summary": "Criação da Organização Mundial do Comércio para regular o comércio global, promovendo a redução de tarifas e a resolução de disputas entre nações.",
+          "display_date": "Jan 1995"
+        },
+        {
+          "date": "2009-06-16",
+          "type": "past",
+          "title": "Cúpula Inaugural do BRIC",
+          "summary": "Brasil, Rússia, Índia e China reúnem-se para discutir a reforma da arquitetura financeira global e aumentar o peso das economias emergentes no mundo.",
+          "display_date": "Jun 2009"
+        },
+        {
+          "date": "2018-03-22",
+          "type": "turning_point",
+          "title": "Início da Guerra Comercial EUA-China",
+          "summary": "A imposição de tarifas agressivas sobre produtos chineses marca o ponto de virada para o retorno do protecionismo como política de Estado central.",
+          "display_date": "Mar 2018"
+        },
+        {
+          "date": "2024-01-01",
+          "type": "past",
+          "title": "Expansão do BRICS+",
+          "summary": "A entrada de novos membros consolida o bloco como um contrapeso geopolítico relevante, focando em sistemas de pagamentos alternativos e comércio.",
+          "display_date": "Jan 2024"
+        },
+        {
+          "date": "2027-06-01",
+          "type": "upcoming",
+          "title": "Revisão do Acordo Mercosul-UE",
+          "summary": "Prazo estimado para a ratificação ou colapso definitivo do acordo, testando a capacidade de blocos regionais em navegar exigências ambientais e tarifas.",
+          "display_date": "Jun 2027"
+        }
+      ],
+      "ai_metadata": {
+        "model": "gemini-3.1-flash-lite",
+        "generated_at": "2026-11-16T23:17:19.220430+00:00",
+        "articles_analyzed": 0
+      }
     },
     {
       "slug": "futuro-trabalho-emprego",
@@ -378,7 +1134,70 @@
       },
       "meta_info": null,
       "rota": null,
-      "ordem": 13
+      "ordem": 13,
+      "workflow_status": "review",
+      "executive_summary": {
+        "context": "A transição para a economia digital e a automação avançada reconfiguram as relações laborais globais, rompendo modelos industriais estabelecidos desde o século XX. A convergência entre inteligência artificial, trabalho remoto e a pressão por jornadas flexíveis, como a escala 6x1, cria um dilema entre produtividade tecnológica e proteção social. Este cenário exige reformas estruturais urgentes para mitigar o desemprego tecnológico e garantir a sustentabilidade dos sistemas previdenciários.",
+        "pillars": [
+          {
+            "title": "Produtividade e Automação",
+            "category": "economia",
+            "description": "A integração de IA e robótica redefine a demanda por competências, forçando uma requalificação massiva da força de trabalho global para evitar a obsolescência."
+          },
+          {
+            "title": "Reforma das Relações Laborais",
+            "category": "politica",
+            "description": "O debate sobre jornadas flexíveis e trabalho remoto desafia legislações rígidas, buscando equilibrar bem-estar social com a eficiência operacional das empresas."
+          },
+          {
+            "title": "Impacto na Estabilidade Social",
+            "category": "sociedade",
+            "description": "A precarização do emprego e a desigualdade tecnológica emergem como riscos geopolíticos, podendo desencadear instabilidade política e pressões migratórias."
+          }
+        ]
+      },
+      "timeline": [
+        {
+          "date": "2020-03-15",
+          "type": "past",
+          "title": "Aceleração do Trabalho Remoto",
+          "summary": "A pandemia forçou a adoção global do teletrabalho, alterando permanentemente a dinâmica de escritórios e a viabilidade da jornada presencial tradicional.",
+          "display_date": "Mar 2020"
+        },
+        {
+          "date": "2023-11-30",
+          "type": "past",
+          "title": "Ascensão da IA Generativa",
+          "summary": "O avanço da IA generativa marca o início de uma nova era de automação, impactando diretamente setores intelectuais e administrativos em larga escala.",
+          "display_date": "Nov 2023"
+        },
+        {
+          "date": "2026-05-10",
+          "type": "turning_point",
+          "title": "Crise da Escala 6x1",
+          "summary": "Movimentos globais de trabalhadores ganham força contra jornadas exaustivas, tornando-se o ponto de inflexão para novas legislações de proteção laboral.",
+          "display_date": "Mai 2026"
+        },
+        {
+          "date": "2027-02-01",
+          "type": "upcoming",
+          "title": "Novas Diretrizes de IA no Trabalho",
+          "summary": "Organismos internacionais preveem a implementação de marcos regulatórios para o uso de algoritmos na gestão de pessoal e monitoramento de produtividade.",
+          "display_date": "Fev 2027"
+        },
+        {
+          "date": "2027-09-15",
+          "type": "upcoming",
+          "title": "Cúpula Global de Emprego",
+          "summary": "Líderes mundiais se reúnem para discutir a taxação de robôs e o financiamento de redes de proteção social em economias altamente automatizadas.",
+          "display_date": "Set 2027"
+        }
+      ],
+      "ai_metadata": {
+        "model": "gemini-3.1-flash-lite",
+        "generated_at": "2026-11-16T23:17:29.013257+00:00",
+        "articles_analyzed": 0
+      }
     },
     {
       "slug": "crise-habitacional-custo-vida",
@@ -406,7 +1225,70 @@
       },
       "meta_info": null,
       "rota": null,
-      "ordem": 14
+      "ordem": 14,
+      "workflow_status": "review",
+      "executive_summary": {
+        "context": "A crise habitacional global é o resultado da convergência entre a financeirização dos ativos imobiliários, a urbanização acelerada e a estagnação dos salários reais. Desde a crise de 2008, o setor tornou-se um refúgio de capital, elevando preços acima da capacidade de pagamento das populações. Hoje, a escassez de moradia acessível não é apenas um desafio urbano, mas um risco sistêmico à estabilidade social e à produtividade econômica das metrópoles globais no pós-pandemia.",
+        "pillars": [
+          {
+            "title": "Financeirização do Imobiliário",
+            "category": "economia",
+            "description": "A transformação de moradias em ativos financeiros globais desvincula os preços da realidade local, exacerbando a desigualdade e a exclusão urbana."
+          },
+          {
+            "title": "Tensão Social e Populismo",
+            "category": "politica",
+            "description": "O custo proibitivo de aluguéis alimenta o descontentamento popular, pressionando governos a adotar medidas intervencionistas e gerando instabilidade."
+          },
+          {
+            "title": "Planejamento e Infraestrutura",
+            "category": "sociedade",
+            "description": "A falha em integrar transporte e habitação cria desertos urbanos, forçando migrações pendulares que sobrecarregam a infraestrutura e o meio ambiente."
+          }
+        ]
+      },
+      "timeline": [
+        {
+          "date": "2008-09-15",
+          "type": "past",
+          "title": "Colapso do Mercado Subprime",
+          "summary": "A crise financeira global iniciada nos EUA alterou o mercado imobiliário mundial, consolidando a entrada de fundos institucionais no setor de aluguéis.",
+          "display_date": "Set 2008"
+        },
+        {
+          "date": "2020-03-10",
+          "type": "past",
+          "title": "Impacto da Pandemia de COVID-19",
+          "summary": "Mudanças nos padrões de trabalho e migração urbana intensificaram a demanda por espaços, gerando uma inflação recorde nos preços de aluguéis em metrópoles.",
+          "display_date": "Mar 2020"
+        },
+        {
+          "date": "2024-06-15",
+          "type": "turning_point",
+          "title": "Pico da Inflação de Aluguéis",
+          "summary": "O momento de virada onde o custo da moradia superou a inflação geral em quase todas as capitais do G20, forçando a pauta para o centro do debate político.",
+          "display_date": "Jun 2024"
+        },
+        {
+          "date": "2026-05-20",
+          "type": "past",
+          "title": "Cúpula Global de Habitação",
+          "summary": "Líderes internacionais discutiram a regulação de plataformas de aluguel de curta duração e a taxação de imóveis vazios como resposta à crise habitacional.",
+          "display_date": "Mai 2026"
+        },
+        {
+          "date": "2027-02-01",
+          "type": "upcoming",
+          "title": "Novas Leis de Zoneamento",
+          "summary": "Previsão de implementação de reformas estruturais em grandes metrópoles para incentivar a construção de habitações populares em áreas centrais densas.",
+          "display_date": "Fev 2027"
+        }
+      ],
+      "ai_metadata": {
+        "model": "gemini-3.1-flash-lite",
+        "generated_at": "2026-11-16T23:17:37.611298+00:00",
+        "articles_analyzed": 0
+      }
     },
     {
       "slug": "ia-regulacao",
@@ -436,7 +1318,70 @@
       },
       "meta_info": null,
       "rota": null,
-      "ordem": 15
+      "ordem": 15,
+      "workflow_status": "review",
+      "executive_summary": {
+        "context": "A ascensão da inteligência artificial generativa marca uma mudança de paradigma comparável à Revolução Industrial. A disputa pela soberania tecnológica entre EUA e China, aliada à necessidade urgente de mitigar riscos existenciais e éticos, forçou governos a buscarem marcos regulatórios globais. O tema é vital hoje pois a velocidade da inovação supera a capacidade legislativa, criando um vácuo de governança que impacta mercados, direitos autorais e a estabilidade democrática mundial.",
+        "pillars": [
+          {
+            "title": "Soberania Tecnológica",
+            "category": "geopolitica",
+            "description": "A corrida pelo domínio de LLMs dita a nova hierarquia de poder global, onde o controle de chips e dados define a influência geopolítica das nações."
+          },
+          {
+            "title": "Impacto no Mercado",
+            "category": "economia",
+            "description": "A automação em larga escala redefine a produtividade global, forçando uma reestruturação profunda das cadeias de valor e do mercado de trabalho mundial."
+          },
+          {
+            "title": "Ética e Governança",
+            "category": "politica",
+            "description": "O desafio de equilibrar inovação aberta com salvaguardas contra desinformação e viés algorítmico exige cooperação internacional sem precedentes."
+          }
+        ]
+      },
+      "timeline": [
+        {
+          "date": "2022-11-30",
+          "type": "past",
+          "title": "Lançamento do ChatGPT",
+          "summary": "A OpenAI libera o ChatGPT, disparando a corrida global pela IA generativa e forçando legisladores a encarar a velocidade da inovação tecnológica.",
+          "display_date": "Nov 2022"
+        },
+        {
+          "date": "2023-10-30",
+          "type": "past",
+          "title": "Ordem Executiva dos EUA",
+          "summary": "O governo Biden estabelece padrões de segurança e proteção para IA, marcando a primeira grande tentativa de regulação estatal no setor tecnológico.",
+          "display_date": "Out 2023"
+        },
+        {
+          "date": "2024-05-21",
+          "type": "turning_point",
+          "title": "Adoção do AI Act da UE",
+          "summary": "A União Europeia aprova o primeiro marco legal abrangente do mundo para IA, estabelecendo regras baseadas em risco para o desenvolvimento de modelos.",
+          "display_date": "Mai 2024"
+        },
+        {
+          "date": "2026-06-15",
+          "type": "past",
+          "title": "Cúpula Global de Segurança",
+          "summary": "Líderes mundiais assinam o primeiro tratado internacional vinculativo para mitigar riscos catastróficos decorrentes de modelos de IA de fronteira.",
+          "display_date": "Jun 2026"
+        },
+        {
+          "date": "2027-03-01",
+          "type": "upcoming",
+          "title": "Implementação do AI Act",
+          "summary": "Entra em vigor a fase final de conformidade do AI Act europeu, forçando empresas globais a adaptarem seus modelos aos padrões de transparência exigidos.",
+          "display_date": "Mar 2027"
+        }
+      ],
+      "ai_metadata": {
+        "model": "gemini-3.1-flash-lite",
+        "generated_at": "2026-11-16T23:17:46.102334+00:00",
+        "articles_analyzed": 0
+      }
     },
     {
       "slug": "big-tech-redes-privacidade",
@@ -467,7 +1412,70 @@
       },
       "meta_info": null,
       "rota": "/tecnologia",
-      "ordem": 16
+      "ordem": 16,
+      "workflow_status": "review",
+      "executive_summary": {
+        "context": "A ascensão das Big Tech consolidou um poder transnacional que desafia a soberania dos Estados-nação. A arquitetura da economia digital, baseada na extração de dados e algoritmos de engajamento, transformou o fluxo de informação em um campo de batalha geopolítico. Hoje, a tensão entre a regulação estatal, a proteção da privacidade individual e a liberdade de expressão define a estabilidade democrática global, exigindo um novo contrato social para a era da inteligência artificial e vigilância.",
+        "pillars": [
+          {
+            "title": "Soberania Digital e Regulação",
+            "category": "politica",
+            "description": "Governos buscam limitar o poder de monopólios digitais através de leis antitruste e normas de proteção de dados para garantir a autonomia nacional."
+          },
+          {
+            "title": "Economia de Dados e Mercado",
+            "category": "economia",
+            "description": "A concentração de capital nas mãos de poucas corporações altera a dinâmica de mercado global e impõe desafios inéditos à concorrência e inovação."
+          },
+          {
+            "title": "Segurança e Desinformação",
+            "category": "seguranca",
+            "description": "O uso de redes sociais como vetores de influência estrangeira e desinformação exige novas estratégias de segurança cibernética e defesa nacional."
+          }
+        ]
+      },
+      "timeline": [
+        {
+          "date": "2018-05-25",
+          "type": "past",
+          "title": "Implementação do GDPR na União Europeia",
+          "summary": "O Regulamento Geral sobre a Proteção de Dados estabeleceu o padrão global de privacidade, forçando Big Techs a reformularem suas políticas de coleta.",
+          "display_date": "Mai 2018"
+        },
+        {
+          "date": "2022-10-27",
+          "type": "past",
+          "title": "Aquisição do Twitter por Elon Musk",
+          "summary": "A compra da plataforma marcou uma mudança radical na moderação de conteúdo, gerando debates globais sobre limites da liberdade de expressão e algoritmos.",
+          "display_date": "Out 2022"
+        },
+        {
+          "date": "2024-03-07",
+          "type": "turning_point",
+          "title": "Entrada em vigor do Digital Markets Act (DMA)",
+          "summary": "A UE impôs regras rigorosas contra práticas anticompetitivas, forçando gigantes digitais a abrir seus ecossistemas para garantir a interoperabilidade.",
+          "display_date": "Mar 2024"
+        },
+        {
+          "date": "2026-05-15",
+          "type": "past",
+          "title": "Acordo Global de Governança de IA",
+          "summary": "Nações líderes assinaram diretrizes para mitigar riscos de desinformação gerada por IA, tentando conter o impacto nas eleições e na estabilidade social.",
+          "display_date": "Mai 2026"
+        },
+        {
+          "date": "2027-02-01",
+          "type": "upcoming",
+          "title": "Revisão das Leis de Responsabilidade Digital",
+          "summary": "Espera-se uma nova rodada de legislações nacionais focadas em responsabilizar plataformas pelos danos causados por algoritmos de recomendação extrema.",
+          "display_date": "Fev 2027"
+        }
+      ],
+      "ai_metadata": {
+        "model": "gemini-3.1-flash-lite",
+        "generated_at": "2026-11-16T23:17:55.099715+00:00",
+        "articles_analyzed": 0
+      }
     },
     {
       "slug": "ciberseguranca-guerra-digital",
@@ -495,7 +1503,70 @@
       },
       "meta_info": null,
       "rota": null,
-      "ordem": 17
+      "ordem": 17,
+      "workflow_status": "review",
+      "executive_summary": {
+        "context": "A cibersegurança transicionou de uma preocupação técnica para o pilar central da soberania nacional no século XXI. A digitalização acelerada de infraestruturas críticas, aliada à ascensão de grupos de hackers patrocinados por Estados, criou um campo de batalha invisível onde fronteiras são irrelevantes. Hoje, a resiliência cibernética define a estabilidade econômica e a capacidade de defesa de uma nação, tornando o controle de dados e redes o novo paradigma do poder geopolítico global.",
+        "pillars": [
+          {
+            "title": "Soberania e Defesa Nacional",
+            "category": "seguranca",
+            "description": "A proteção de infraestruturas críticas contra ataques estatais tornou-se prioridade máxima para evitar o colapso de serviços essenciais e da segurança."
+          },
+          {
+            "title": "Estabilidade Econômica",
+            "category": "economia",
+            "description": "O aumento de ataques de ransomware gera prejuízos bilionários, forçando empresas a redefinirem seus orçamentos de risco e governança de dados digitais."
+          },
+          {
+            "title": "Diplomacia Digital",
+            "category": "geopolitica",
+            "description": "A ausência de normas internacionais claras sobre ciberespionagem intensifica tensões diplomáticas e a necessidade de tratados de cooperação tecnológica."
+          }
+        ]
+      },
+      "timeline": [
+        {
+          "date": "2017-05-12",
+          "type": "past",
+          "title": "Ataque global WannaCry",
+          "summary": "O surto de ransomware paralisou sistemas hospitalares e industriais globalmente, expondo a vulnerabilidade crítica de sistemas legados em redes conectadas.",
+          "display_date": "Mai 2017"
+        },
+        {
+          "date": "2020-12-13",
+          "type": "past",
+          "title": "Incidente SolarWinds",
+          "summary": "Uma sofisticada campanha de espionagem comprometeu agências governamentais dos EUA, marcando um ponto de inflexão na sofisticação de ataques à cadeia de suprimentos.",
+          "display_date": "Dez 2020"
+        },
+        {
+          "date": "2022-02-24",
+          "type": "turning_point",
+          "title": "Guerra Híbrida na Ucrânia",
+          "summary": "O início do conflito marcou o uso massivo de ciberataques contra redes elétricas e comunicações, consolidando a guerra digital como parte da doutrina militar.",
+          "display_date": "Fev 2022"
+        },
+        {
+          "date": "2026-05-15",
+          "type": "past",
+          "title": "Cúpula Global de Cibersegurança",
+          "summary": "Líderes mundiais debateram a criação de um tratado para proibir ataques a infraestruturas civis, buscando estabelecer normas de conduta no ciberespaço.",
+          "display_date": "Mai 2026"
+        },
+        {
+          "date": "2027-03-01",
+          "type": "upcoming",
+          "title": "Implementação do Protocolo AI-Defesa",
+          "summary": "Previsão de adoção de sistemas de defesa autônomos baseados em IA para detectar e neutralizar ameaças em tempo real antes da exploração de vulnerabilidades.",
+          "display_date": "Mar 2027"
+        }
+      ],
+      "ai_metadata": {
+        "model": "gemini-3.1-flash-lite",
+        "generated_at": "2026-11-16T23:18:04.000165+00:00",
+        "articles_analyzed": 0
+      }
     },
     {
       "slug": "crise-climatica-eventos-extremos",
@@ -525,7 +1596,70 @@
       },
       "meta_info": null,
       "rota": "/clima",
-      "ordem": 18
+      "ordem": 18,
+      "workflow_status": "review",
+      "executive_summary": {
+        "context": "A crise climática contemporânea é o resultado de dois séculos de industrialização baseada em combustíveis fósseis, que alterou a composição atmosférica e desestabilizou o equilíbrio térmico global. Hoje, o fenômeno transcende a ciência ambiental, tornando-se um catalisador de instabilidade geopolítica, migrações forçadas e riscos sistêmicos aos mercados financeiros. A urgência reside na necessidade de conciliar o crescimento econômico com a descarbonização profunda em um cenário de crescente polarização.",
+        "pillars": [
+          {
+            "title": "Geopolítica da Transição",
+            "category": "geopolitica",
+            "description": "A disputa pelo controle de minerais críticos e tecnologias verdes redefine alianças estratégicas e cria novas dependências entre potências globais."
+          },
+          {
+            "title": "Resiliência Econômica",
+            "category": "economia",
+            "description": "Eventos extremos impõem custos bilionários em infraestrutura e seguros, forçando governos a reavaliar modelos de desenvolvimento e cadeias produtivas."
+          },
+          {
+            "title": "Segurança e Migração",
+            "category": "seguranca",
+            "description": "A escassez de recursos hídricos e alimentares gera tensões sociais internas e fluxos migratórios transfronteiriços que desafiam a soberania nacional."
+          }
+        ]
+      },
+      "timeline": [
+        {
+          "date": "2015-12-12",
+          "type": "past",
+          "title": "Acordo de Paris",
+          "summary": "O marco histórico onde quase todas as nações se comprometeram a limitar o aquecimento global a bem menos de 2 graus Celsius acima dos níveis pré-industriais.",
+          "display_date": "Dez 2015"
+        },
+        {
+          "date": "2021-11-13",
+          "type": "turning_point",
+          "title": "Pacto Climático de Glasgow",
+          "summary": "A COP26 consolidou o compromisso de reduzir o uso de carvão e acelerar o financiamento climático para países em desenvolvimento, marcando um ponto de virada.",
+          "display_date": "Nov 2021"
+        },
+        {
+          "date": "2023-12-13",
+          "type": "past",
+          "title": "Consenso da COP28",
+          "summary": "Pela primeira vez, nações concordaram formalmente em realizar uma transição para abandonar os combustíveis fósseis nos sistemas energéticos globais.",
+          "display_date": "Dez 2023"
+        },
+        {
+          "date": "2026-11-11",
+          "type": "upcoming",
+          "title": "COP31: Abertura das Negociações",
+          "summary": "O encontro atual foca na revisão das metas nacionais de emissões e na implementação efetiva de fundos de perdas e danos para nações vulneráveis.",
+          "display_date": "Nov 2026"
+        },
+        {
+          "date": "2030-01-01",
+          "type": "upcoming",
+          "title": "Prazo das Metas de 2030",
+          "summary": "Data limite para que os países alcancem reduções significativas de emissões, servindo como o teste definitivo para a viabilidade dos acordos climáticos.",
+          "display_date": "Jan 2030"
+        }
+      ],
+      "ai_metadata": {
+        "model": "gemini-3.1-flash-lite",
+        "generated_at": "2026-11-16T23:18:12.240135+00:00",
+        "articles_analyzed": 0
+      }
     },
     {
       "slug": "amazonia-meio-ambiente-brasil",
@@ -551,7 +1685,70 @@
       },
       "meta_info": null,
       "rota": null,
-      "ordem": 19
+      "ordem": 19,
+      "workflow_status": "review",
+      "executive_summary": {
+        "context": "A Amazônia brasileira, maior floresta tropical do mundo, é o epicentro de um dilema geopolítico entre a soberania nacional e a governança climática global. Historicamente marcada por ciclos de exploração predatória, a região tornou-se um ativo estratégico central na transição energética e na diplomacia ambiental. O desafio atual reside em conciliar a preservação da biodiversidade e dos direitos indígenas com a necessidade de desenvolvimento econômico sustentável em um cenário de crise climática.",
+        "pillars": [
+          {
+            "title": "Soberania e Governança",
+            "category": "geopolitica",
+            "description": "O Brasil equilibra a gestão territorial interna com pressões internacionais por resultados concretos no combate ao desmatamento ilegal na região."
+          },
+          {
+            "title": "Bioeconomia e Mercados",
+            "category": "economia",
+            "description": "A transição para um modelo de desenvolvimento baseado na floresta em pé busca atrair investimentos verdes e valorizar ativos de carbono globais."
+          },
+          {
+            "title": "Direitos e Proteção Social",
+            "category": "sociedade",
+            "description": "A demarcação de terras indígenas e o fortalecimento de órgãos de fiscalização são pilares críticos para a estabilidade social e ambiental do país."
+          }
+        ]
+      },
+      "timeline": [
+        {
+          "date": "2019-01-01",
+          "type": "past",
+          "title": "Mudança na Política Ambiental",
+          "summary": "Início de um ciclo marcado pela flexibilização de normas de fiscalização e aumento expressivo das taxas de desmatamento na Amazônia Legal brasileira.",
+          "display_date": "Jan 2019"
+        },
+        {
+          "date": "2023-01-01",
+          "type": "turning_point",
+          "title": "Retomada do Plano de Ação",
+          "summary": "Implementação de novas diretrizes para o PPCDAm, focando na reestruturação do IBAMA e no combate rigoroso ao crime organizado na região amazônica.",
+          "display_date": "Jan 2023"
+        },
+        {
+          "date": "2025-11-10",
+          "type": "past",
+          "title": "COP30 no Brasil",
+          "summary": "O Brasil sedia a conferência do clima, consolidando sua posição como protagonista nas negociações sobre financiamento climático e metas de emissão.",
+          "display_date": "Nov 2025"
+        },
+        {
+          "date": "2026-06-30",
+          "type": "past",
+          "title": "Relatório de Metas 2026",
+          "summary": "Divulgação de dados sobre a redução do desmatamento, servindo como termômetro para a eficácia das políticas públicas implementadas nos últimos anos.",
+          "display_date": "Jun 2026"
+        },
+        {
+          "date": "2027-01-15",
+          "type": "upcoming",
+          "title": "Revisão do Fundo Amazônia",
+          "summary": "Avaliação dos aportes internacionais e da eficácia dos projetos financiados para a bioeconomia e proteção das comunidades tradicionais na floresta.",
+          "display_date": "Jan 2027"
+        }
+      ],
+      "ai_metadata": {
+        "model": "gemini-3.1-flash-lite",
+        "generated_at": "2026-11-16T23:18:20.167607+00:00",
+        "articles_analyzed": 0
+      }
     },
     {
       "slug": "saude-global-pandemias",
@@ -581,7 +1778,70 @@
       },
       "meta_info": null,
       "rota": "/saude",
-      "ordem": 20
+      "ordem": 20,
+      "workflow_status": "review",
+      "executive_summary": {
+        "context": "A segurança sanitária global transita de uma era de respostas reativas para um paradigma de vigilância preditiva. A interdependência econômica e a rápida mobilidade humana tornaram surtos locais em riscos sistêmicos globais. A eficácia das políticas públicas de saúde agora depende da cooperação multilateral, do financiamento sustentável e da capacidade de mitigar desigualdades no acesso a tecnologias médicas, elementos fundamentais para a estabilidade das nações no século XXI.",
+        "pillars": [
+          {
+            "title": "Governança e Diplomacia",
+            "category": "geopolitica",
+            "description": "A reforma da OMS e a criação de tratados globais são cruciais para garantir respostas coordenadas e transparentes frente a futuras emergências sanitárias."
+          },
+          {
+            "title": "Sustentabilidade Econômica",
+            "category": "economia",
+            "description": "O impacto financeiro de pandemias exige investimentos robustos em sistemas de saúde resilientes para evitar colapsos nas cadeias de suprimentos globais."
+          },
+          {
+            "title": "Inovação e Equidade",
+            "category": "sociedade",
+            "description": "A democratização do acesso a vacinas e insumos médicos é o principal desafio para assegurar a proteção de populações vulneráveis em escala mundial."
+          }
+        ]
+      },
+      "timeline": [
+        {
+          "date": "2020-03-11",
+          "type": "past",
+          "title": "OMS declara pandemia de COVID-19",
+          "summary": "A Organização Mundial da Saúde classifica o surto de coronavírus como pandemia, alterando permanentemente as políticas globais de saúde e vigilância.",
+          "display_date": "Mar 2020"
+        },
+        {
+          "date": "2021-12-01",
+          "type": "past",
+          "title": "Início das negociações do Tratado de Pandemias",
+          "summary": "Estados-membros da OMS iniciam debates para um instrumento jurídico internacional visando fortalecer a prevenção e resposta a futuras emergências sanitárias.",
+          "display_date": "Dez 2021"
+        },
+        {
+          "date": "2024-06-01",
+          "type": "turning_point",
+          "title": "Aprovação de emendas ao RSI",
+          "summary": "A Assembleia Mundial da Saúde aprova emendas ao Regulamento Sanitário Internacional para melhorar a coordenação e o compartilhamento de dados críticos.",
+          "display_date": "Jun 2024"
+        },
+        {
+          "date": "2026-05-20",
+          "type": "past",
+          "title": "Conferência de Revisão de Metas",
+          "summary": "Líderes globais avaliam o progresso na implementação de sistemas de vigilância genômica e a distribuição equitativa de insumos médicos essenciais.",
+          "display_date": "Mai 2026"
+        },
+        {
+          "date": "2027-01-15",
+          "type": "upcoming",
+          "title": "Implementação do Fundo de Pandemias",
+          "summary": "Entrada em vigor de novos mecanismos de financiamento para apoiar países de baixa renda no fortalecimento de suas infraestruturas de saúde pública.",
+          "display_date": "Jan 2027"
+        }
+      ],
+      "ai_metadata": {
+        "model": "gemini-3.1-flash-lite",
+        "generated_at": "2026-11-16T23:18:28.821560+00:00",
+        "articles_analyzed": 0
+      }
     },
     {
       "slug": "corrida-espacial-ciencia",
@@ -612,7 +1872,70 @@
       },
       "meta_info": null,
       "rota": null,
-      "ordem": 21
+      "ordem": 21,
+      "workflow_status": "review",
+      "executive_summary": {
+        "context": "A exploração espacial contemporânea transcendeu a corrida ideológica da Guerra Fria, consolidando-se como um pilar estratégico de soberania nacional e viabilidade econômica. A convergência entre agências estatais e o setor privado, impulsionada pela redução de custos de lançamento, transformou a órbita terrestre e a Lua em zonas de disputa por recursos, infraestrutura crítica e influência geopolítica, redefinindo as normas de governança global para o século XXI.",
+        "pillars": [
+          {
+            "title": "Soberania e Geopolítica",
+            "category": "geopolitica",
+            "description": "O controle de rotas orbitais e bases lunares define a nova hierarquia de poder, onde a presença física no espaço projeta influência diplomática terrestre."
+          },
+          {
+            "title": "Economia da Nova Fronteira",
+            "category": "economia",
+            "description": "A exploração comercial de recursos espaciais e a infraestrutura de satélites movimentam trilhões, criando um mercado global de alta tecnologia e inovação."
+          },
+          {
+            "title": "Segurança e Defesa",
+            "category": "seguranca",
+            "description": "A militarização do espaço exige novos tratados internacionais, visto que a dependência de satélites torna a infraestrutura espacial um alvo estratégico vital."
+          }
+        ]
+      },
+      "timeline": [
+        {
+          "date": "1969-07-20",
+          "type": "past",
+          "title": "Apollo 11: O Primeiro Pouso Lunar",
+          "summary": "O marco histórico que estabeleceu a liderança tecnológica dos EUA e iniciou a era da exploração humana em corpos celestes fora da Terra.",
+          "display_date": "20 Jul 1969"
+        },
+        {
+          "date": "2022-11-16",
+          "type": "past",
+          "title": "Lançamento da Missão Artemis I",
+          "summary": "O voo não tripulado da NASA marcou o retorno do programa de exploração lunar, testando o foguete SLS para futuras missões tripuladas ao satélite.",
+          "display_date": "16 Nov 2022"
+        },
+        {
+          "date": "2026-09-01",
+          "type": "turning_point",
+          "title": "Artemis III: O Retorno Humano à Lua",
+          "summary": "Momento decisivo para a exploração espacial, com o pouso planejado de astronautas no polo sul lunar, visando estabelecer presença sustentável.",
+          "display_date": "Set 2026"
+        },
+        {
+          "date": "2027-05-15",
+          "type": "upcoming",
+          "title": "Expansão da Estação Gateway",
+          "summary": "A NASA e parceiros internacionais avançam na construção da estação orbital lunar, servindo como ponto de apoio para missões em Marte e além.",
+          "display_date": "Mai 2027"
+        },
+        {
+          "date": "2028-12-01",
+          "type": "upcoming",
+          "title": "Base Lunar Permanente",
+          "summary": "Previsão para a instalação de infraestrutura básica na superfície lunar, permitindo a exploração de recursos e experimentos científicos de longo prazo.",
+          "display_date": "Dez 2028"
+        }
+      ],
+      "ai_metadata": {
+        "model": "gemini-3.1-flash-lite",
+        "generated_at": "2026-11-16T23:18:37.189496+00:00",
+        "articles_analyzed": 0
+      }
     },
     {
       "slug": "seguranca-publica-crime-organizado",
@@ -641,7 +1964,70 @@
       },
       "meta_info": null,
       "rota": null,
-      "ordem": 22
+      "ordem": 22,
+      "workflow_status": "review",
+      "executive_summary": {
+        "context": "O crime organizado transnacional evoluiu de redes locais para corporações globais altamente resilientes, capitalizando sobre a porosidade de fronteiras e a digitalização de fluxos financeiros. A convergência entre o narcotráfico, o tráfico de armas e a lavagem de dinheiro desafia a soberania estatal, exigindo uma reavaliação das políticas de segurança pública que, historicamente, falharam ao focar apenas na repressão tática em vez de desmantelar as estruturas logísticas e financeiras das facções.",
+        "pillars": [
+          {
+            "title": "Desafio à Soberania Estatal",
+            "category": "seguranca",
+            "description": "O avanço das facções sobre territórios urbanos e rurais compromete o monopólio da força pelo Estado, exigindo estratégias de inteligência e integração."
+          },
+          {
+            "title": "Economia do Crime Global",
+            "category": "economia",
+            "description": "A integração do narcotráfico aos mercados financeiros globais via criptoativos e empresas de fachada exige cooperação internacional de alto nível."
+          },
+          {
+            "title": "Diplomacia da Segurança",
+            "category": "geopolitica",
+            "description": "A cooperação transnacional tornou-se vital para conter fluxos ilícitos, forçando governos a alinhar agendas de segurança e controle de fronteiras."
+          }
+        ]
+      },
+      "timeline": [
+        {
+          "date": "2010-01-01",
+          "type": "past",
+          "title": "Expansão das Redes Transnacionais",
+          "summary": "Facções criminosas consolidam rotas de exportação de entorpecentes, transformando o tráfico local em um modelo de negócio internacional altamente lucrativo.",
+          "display_date": "Jan 2010"
+        },
+        {
+          "date": "2020-05-15",
+          "type": "past",
+          "title": "Digitalização do Crime",
+          "summary": "O uso de criptomoedas e plataformas criptografadas acelera a lavagem de dinheiro, dificultando o rastreamento por agências de inteligência financeira globais.",
+          "display_date": "Mai 2020"
+        },
+        {
+          "date": "2025-12-10",
+          "type": "turning_point",
+          "title": "Cúpula Global de Segurança",
+          "summary": "Momento de virada onde nações reconhecem a necessidade de uma força-tarefa integrada para combater o crime organizado como uma ameaça à segurança nacional.",
+          "display_date": "Dez 2025"
+        },
+        {
+          "date": "2026-08-20",
+          "type": "past",
+          "title": "Operação Fronteira Unificada",
+          "summary": "Iniciativa de cooperação policial entre blocos regionais para desarticular centros logísticos de facções em zonas de fronteira crítica.",
+          "display_date": "Ago 2026"
+        },
+        {
+          "date": "2027-03-01",
+          "type": "upcoming",
+          "title": "Novo Protocolo de Inteligência",
+          "summary": "Previsão de implementação de um sistema compartilhado de dados biométricos e financeiros para monitorar lideranças criminosas em escala global.",
+          "display_date": "Mar 2027"
+        }
+      ],
+      "ai_metadata": {
+        "model": "gemini-3.1-flash-lite",
+        "generated_at": "2026-11-16T23:18:45.769163+00:00",
+        "articles_analyzed": 0
+      }
     },
     {
       "slug": "migracoes-crises-humanitarias",
@@ -671,7 +2057,70 @@
       },
       "meta_info": null,
       "rota": null,
-      "ordem": 23
+      "ordem": 23,
+      "workflow_status": "review",
+      "executive_summary": {
+        "context": "A crise migratória global é um fenômeno estrutural impulsionado pela convergência de instabilidade política, disparidades econômicas e, crescentemente, pela degradação climática. O deslocamento forçado de milhões de pessoas desafia a soberania das fronteiras nacionais e a coesão social das nações receptoras. Atualmente, a questão transcende o humanitarismo, tornando-se um eixo central na polarização política interna e na redefinição de alianças diplomáticas e acordos de segurança internacional.",
+        "pillars": [
+          {
+            "title": "Polarização Política Interna",
+            "category": "politica",
+            "description": "O aumento dos fluxos migratórios alimenta movimentos populistas e pressiona governos a adotarem políticas de fronteira mais rígidas e restritivas."
+          },
+          {
+            "title": "Impacto Econômico e Laboral",
+            "category": "economia",
+            "description": "A integração de migrantes é vista como solução para o envelhecimento populacional, mas gera tensões sobre a oferta de serviços públicos e salários."
+          },
+          {
+            "title": "Segurança e Diplomacia",
+            "category": "geopolitica",
+            "description": "A gestão de fronteiras tornou-se uma ferramenta de barganha geopolítica, alterando acordos bilaterais e a cooperação entre blocos regionais globais."
+          }
+        ]
+      },
+      "timeline": [
+        {
+          "date": "1951-07-28",
+          "type": "past",
+          "title": "Convenção de Genebra sobre Refugiados",
+          "summary": "Estabelecimento do marco jurídico internacional para a proteção de refugiados, definindo direitos fundamentais e a obrigação de não repulsão dos Estados.",
+          "display_date": "Jul 1951"
+        },
+        {
+          "date": "2015-09-02",
+          "type": "turning_point",
+          "title": "Crise Migratória Europeia",
+          "summary": "O ápice do fluxo migratório em direção à Europa, desencadeado por conflitos no Oriente Médio, forçou uma revisão profunda das políticas da União Europeia.",
+          "display_date": "Set 2015"
+        },
+        {
+          "date": "2023-05-11",
+          "type": "past",
+          "title": "Fim do Título 42 nos EUA",
+          "summary": "A expiração da política de saúde pública utilizada para expulsões rápidas na fronteira EUA-México marcou uma mudança na gestão de fluxos migratórios.",
+          "display_date": "Mai 2023"
+        },
+        {
+          "date": "2026-06-01",
+          "type": "upcoming",
+          "title": "Pacto Global de Migração Climática",
+          "summary": "Iniciativa internacional para reconhecer o status de refugiado climático, visando criar mecanismos de realocação para populações de áreas submersas.",
+          "display_date": "Jun 2026"
+        },
+        {
+          "date": "2027-01-15",
+          "type": "upcoming",
+          "title": "Cúpula de Segurança de Fronteiras",
+          "summary": "Encontro de cúpula para discutir a implementação de tecnologias de vigilância automatizada e a cooperação regional no controle de fluxos migratórios.",
+          "display_date": "Jan 2027"
+        }
+      ],
+      "ai_metadata": {
+        "model": "gemini-3.1-flash-lite",
+        "generated_at": "2026-11-16T23:18:53.782797+00:00",
+        "articles_analyzed": 0
+      }
     },
     {
       "slug": "direitos-humanos-liberdade-imprensa",
@@ -699,7 +2148,70 @@
       },
       "meta_info": null,
       "rota": null,
-      "ordem": 24
+      "ordem": 24,
+      "workflow_status": "review",
+      "executive_summary": {
+        "context": "A erosão global das liberdades civis reflete uma crise sistêmica na governança democrática, onde regimes autoritários e democracias iliberais utilizam a vigilância digital e a desinformação para silenciar vozes dissidentes. A liberdade de imprensa tornou-se o termômetro da estabilidade política, sendo o alvo principal de estratégias que visam deslegitimar o contraditório. Este cenário é crítico agora, pois a fragilização dos direitos humanos desestabiliza tratados internacionais e a segurança global.",
+        "pillars": [
+          {
+            "title": "Degradação do Espaço Cívico",
+            "category": "politica",
+            "description": "O fechamento de ONGs e a criminalização de ativistas reduzem a capacidade de fiscalização estatal, fragilizando a proteção de minorias e direitos básicos."
+          },
+          {
+            "title": "Ameaça à Integridade da Informação",
+            "category": "sociedade",
+            "description": "A perseguição a jornalistas e o controle de plataformas digitais distorcem a percepção pública, dificultando o debate democrático e a transparência social."
+          },
+          {
+            "title": "Instabilidade Geopolítica",
+            "category": "geopolitica",
+            "description": "A violação sistemática de direitos humanos isola nações, gera sanções econômicas e desencadeia crises migratórias que afetam a segurança das regiões vizinhas."
+          }
+        ]
+      },
+      "timeline": [
+        {
+          "date": "1948-12-10",
+          "type": "past",
+          "title": "Declaração Universal dos Direitos Humanos",
+          "summary": "A ONU estabelece o marco normativo global que define as liberdades fundamentais como inalienáveis, servindo de base para o direito internacional moderno.",
+          "display_date": "10 Dez 1948"
+        },
+        {
+          "date": "2022-02-24",
+          "type": "past",
+          "title": "Início da Guerra na Ucrânia",
+          "summary": "O conflito intensificou a censura estatal na Rússia e o monitoramento de jornalistas, marcando um retrocesso acentuado na liberdade de imprensa europeia.",
+          "display_date": "24 Fev 2022"
+        },
+        {
+          "date": "2024-05-03",
+          "type": "turning_point",
+          "title": "Cúpula Global de Liberdade de Imprensa",
+          "summary": "Momento crítico onde líderes mundiais reconheceram a vigilância digital como a maior ameaça contemporânea ao exercício do jornalismo independente global.",
+          "display_date": "03 Mai 2024"
+        },
+        {
+          "date": "2026-06-15",
+          "type": "past",
+          "title": "Relatório de Vigilância Digital da ONU",
+          "summary": "Documento aponta o uso crescente de softwares espiões contra jornalistas, consolidando a preocupação internacional com a privacidade e a segurança física.",
+          "display_date": "15 Jun 2026"
+        },
+        {
+          "date": "2027-03-20",
+          "type": "upcoming",
+          "title": "Conferência Internacional de Direitos",
+          "summary": "Reunião de cúpula prevista para discutir novas regulações globais contra a censura algorítmica e a proteção de profissionais de imprensa em zonas de risco.",
+          "display_date": "Mar 2027"
+        }
+      ],
+      "ai_metadata": {
+        "model": "gemini-3.1-flash-lite",
+        "generated_at": "2026-11-16T23:19:03.318328+00:00",
+        "articles_analyzed": 0
+      }
     },
     {
       "slug": "copa-do-mundo-fifa-2026",
@@ -727,7 +2239,70 @@
       },
       "meta_info": "11 jun – 19 jul 2026",
       "rota": null,
-      "ordem": 25
+      "ordem": 25,
+      "workflow_status": "review",
+      "executive_summary": {
+        "context": "A Copa do Mundo de 2026 marca um ponto de inflexão na história do esporte ao ser a primeira edição sediada conjuntamente por três nações: EUA, México e Canadá. Com a expansão para 48 seleções, o torneio reflete a tentativa da FIFA de maximizar receitas globais e consolidar a América do Norte como um hub central do futebol. O evento transcende o campo, servindo como um teste de infraestrutura, segurança transfronteiriça e diplomacia cultural em um cenário de crescente polarização geopolítica.",
+        "pillars": [
+          {
+            "title": "Legado de Infraestrutura",
+            "category": "economia",
+            "description": "O investimento massivo em estádios e mobilidade urbana redefine a capacidade logística das cidades-sede norte-americanas para grandes eventos globais."
+          },
+          {
+            "title": "Diplomacia do Esporte",
+            "category": "geopolitica",
+            "description": "A cooperação entre EUA, México e Canadá fortalece laços regionais em um momento de tensões migratórias e desafios comerciais no bloco da América do Norte."
+          },
+          {
+            "title": "Segurança e Vigilância",
+            "category": "seguranca",
+            "description": "A gestão de multidões e a proteção contra ameaças cibernéticas e físicas tornam-se prioridades críticas para a estabilidade interna das nações anfitriãs."
+          }
+        ]
+      },
+      "timeline": [
+        {
+          "date": "2026-06-11",
+          "type": "past",
+          "title": "Cerimônia de Abertura",
+          "summary": "O torneio teve início oficial na Cidade do México, marcando o começo da maior edição da história da FIFA com 48 seleções participantes em solo tripartido.",
+          "display_date": "11 Jun 2026"
+        },
+        {
+          "date": "2026-06-25",
+          "type": "past",
+          "title": "Conclusão da Fase de Grupos",
+          "summary": "O encerramento da primeira etapa definiu os classificados para o mata-mata, consolidando o novo formato competitivo e o alto volume de jogos realizados.",
+          "display_date": "25 Jun 2026"
+        },
+        {
+          "date": "2026-07-19",
+          "type": "turning_point",
+          "title": "Final em Nova York/Nova Jersey",
+          "summary": "O MetLife Stadium sediou a grande final, coroando o campeão mundial e encerrando o ciclo de 39 dias de competição intensa e impacto global sem precedentes.",
+          "display_date": "19 Jul 2026"
+        },
+        {
+          "date": "2026-08-15",
+          "type": "upcoming",
+          "title": "Auditoria de Impacto Econômico",
+          "summary": "Divulgação dos relatórios oficiais sobre o retorno financeiro, geração de empregos e custos operacionais nas doze cidades-sede do torneio norte-americano.",
+          "display_date": "Ago 2026"
+        },
+        {
+          "date": "2026-12-01",
+          "type": "upcoming",
+          "title": "Avaliação de Segurança Pós-Evento",
+          "summary": "Publicação do balanço final sobre os protocolos de segurança e cooperação transfronteiriça implementados durante o período do mundial de 2026.",
+          "display_date": "Dez 2026"
+        }
+      ],
+      "ai_metadata": {
+        "model": "gemini-3.1-flash-lite",
+        "generated_at": "2026-11-16T23:19:12.559369+00:00",
+        "articles_analyzed": 0
+      }
     },
     {
       "slug": "eleicoes-gerais-brasil-2026",
@@ -754,7 +2329,70 @@
       },
       "meta_info": "16 ago – 31 out 2026",
       "rota": null,
-      "ordem": 26
+      "ordem": 26,
+      "workflow_status": "review",
+      "executive_summary": {
+        "context": "As eleições gerais de 2026 no Brasil representam um momento crítico de consolidação democrática e definição de rumos para a maior economia da América Latina. O pleito ocorre em um cenário de polarização persistente, exigindo que o sistema eleitoral gerencie tensões institucionais enquanto o país busca equilibrar responsabilidade fiscal com demandas sociais. O resultado determinará a trajetória das reformas estruturais e o posicionamento do Brasil no complexo tabuleiro geopolítico global atual.",
+        "pillars": [
+          {
+            "title": "Estabilidade Institucional",
+            "category": "politica",
+            "description": "O processo eleitoral testa a resiliência das instituições brasileiras frente à desinformação e à necessidade de transição pacífica entre os poderes."
+          },
+          {
+            "title": "Confiança dos Mercados",
+            "category": "economia",
+            "description": "Investidores monitoram a viabilidade fiscal dos programas de governo, buscando sinais de previsibilidade econômica para o próximo ciclo administrativo."
+          },
+          {
+            "title": "Projeção Geopolítica",
+            "category": "geopolitica",
+            "description": "A política externa brasileira será moldada pelo alinhamento do novo governo frente aos blocos comerciais e às tensões diplomáticas internacionais."
+          }
+        ]
+      },
+      "timeline": [
+        {
+          "date": "2026-08-16",
+          "type": "past",
+          "title": "Início oficial da campanha",
+          "summary": "O TSE autoriza o início da propaganda eleitoral, marcando o começo formal da disputa presidencial e legislativa em todo o território nacional brasileiro.",
+          "display_date": "16 Ago 2026"
+        },
+        {
+          "date": "2026-09-15",
+          "type": "past",
+          "title": "Primeiro debate presidencial",
+          "summary": "Candidatos apresentam propostas econômicas e sociais em rede nacional, estabelecendo o tom da campanha e as principais linhas de ataque entre adversários.",
+          "display_date": "15 Set 2026"
+        },
+        {
+          "date": "2026-10-04",
+          "type": "turning_point",
+          "title": "Primeiro turno das eleições",
+          "summary": "O eleitorado brasileiro vai às urnas para definir a composição do Congresso e decidir se haverá segundo turno para o cargo de Presidente da República.",
+          "display_date": "04 Out 2026"
+        },
+        {
+          "date": "2026-10-25",
+          "type": "past",
+          "title": "Segundo turno presidencial",
+          "summary": "A votação decisiva que define o próximo chefe do Executivo federal, encerrando o ciclo de incertezas eleitorais e consolidando o resultado das urnas.",
+          "display_date": "25 Out 2026"
+        },
+        {
+          "date": "2026-12-18",
+          "type": "upcoming",
+          "title": "Diplomação dos eleitos",
+          "summary": "O Tribunal Superior Eleitoral realiza a cerimônia oficial de diplomação, confirmando a aptidão dos eleitos para a posse em janeiro de 2027.",
+          "display_date": "18 Dez 2026"
+        }
+      ],
+      "ai_metadata": {
+        "model": "gemini-3.1-flash-lite",
+        "generated_at": "2026-11-16T23:19:23.304383+00:00",
+        "articles_analyzed": 0
+      }
     },
     {
       "slug": "eleicoes-intercalares-eua-midterms",
@@ -781,7 +2419,70 @@
       },
       "meta_info": "1 out – 30 nov 2026",
       "rota": null,
-      "ordem": 27
+      "ordem": 27,
+      "workflow_status": "review",
+      "executive_summary": {
+        "context": "As eleições intercalares americanas de 2026 representam o teste definitivo para a administração vigente, ocorrendo em um cenário de polarização estrutural e fadiga institucional. Historicamente, o pleito serve como um referendo sobre a gestão da Casa Branca, redefinindo o equilíbrio de poder no Capitólio. A relevância atual reside na capacidade do Congresso em bloquear ou viabilizar agendas legislativas cruciais, afetando diretamente a estabilidade fiscal e a projeção de poder global dos EUA.",
+        "pillars": [
+          {
+            "title": "Equilíbrio de Poder Legislativo",
+            "category": "politica",
+            "description": "A disputa pelo controle da Câmara e do Senado dita a viabilidade da agenda presidencial e a capacidade de nomeações judiciais e administrativas."
+          },
+          {
+            "title": "Volatilidade dos Mercados",
+            "category": "economia",
+            "description": "Investidores monitoram o risco de paralisia orçamentária e mudanças nas políticas fiscais que podem impactar a inflação e a confiança global."
+          },
+          {
+            "title": "Projeção Geopolítica",
+            "category": "geopolitica",
+            "description": "O resultado eleitoral sinaliza a continuidade ou revisão de compromissos externos, influenciando alianças militares e acordos comerciais globais."
+          }
+        ]
+      },
+      "timeline": [
+        {
+          "date": "2026-10-01",
+          "type": "past",
+          "title": "Intensificação das Campanhas",
+          "summary": "Partidos iniciam a fase final de mobilização, focando em estados-chave para consolidar bases eleitorais e atrair eleitores independentes indecisos.",
+          "display_date": "Out 2026"
+        },
+        {
+          "date": "2026-10-15",
+          "type": "past",
+          "title": "Debates Televisivos Finais",
+          "summary": "Candidatos ao Congresso confrontam visões sobre economia e política externa, definindo as narrativas dominantes para o eleitorado nacional.",
+          "display_date": "15 Out 2026"
+        },
+        {
+          "date": "2026-11-03",
+          "type": "turning_point",
+          "title": "Dia da Eleição (Midterms)",
+          "summary": "O momento decisivo onde o eleitorado americano define a nova composição do Congresso, selando o destino da segunda metade do mandato presidencial.",
+          "display_date": "03 Nov 2026"
+        },
+        {
+          "date": "2026-11-10",
+          "type": "past",
+          "title": "Certificação dos Resultados",
+          "summary": "Estados finalizam a contagem dos votos e a certificação oficial, confirmando a nova maioria parlamentar e o início das transições de liderança.",
+          "display_date": "10 Nov 2026"
+        },
+        {
+          "date": "2026-11-30",
+          "type": "upcoming",
+          "title": "Ajuste de Rota Governamental",
+          "summary": "A Casa Branca avalia os resultados para reajustar sua estratégia legislativa e diplomática frente ao novo cenário de forças no Capitólio.",
+          "display_date": "30 Nov 2026"
+        }
+      ],
+      "ai_metadata": {
+        "model": "gemini-3.1-flash-lite",
+        "generated_at": "2026-11-16T23:19:31.484216+00:00",
+        "articles_analyzed": 0
+      }
     },
     {
       "slug": "conferencia-do-clima-cop",
@@ -810,7 +2511,70 @@
       },
       "meta_info": "9 – 20 nov 2026",
       "rota": null,
-      "ordem": 28
+      "ordem": 28,
+      "workflow_status": "review",
+      "executive_summary": {
+        "context": "A COP31 em Antalya representa um ponto de inflexão na governança climática global, onde a urgência da transição energética colide com a fragilidade das economias em desenvolvimento. Historicamente, o impasse reside na responsabilidade histórica das nações industrializadas versus a necessidade de financiamento para mitigação no Sul Global. O evento é crucial agora para definir mecanismos de mercado de carbono e garantir que o Acordo de Paris não se torne uma promessa vazia diante da crise climática.",
+        "pillars": [
+          {
+            "title": "Financiamento Climático",
+            "category": "economia",
+            "description": "A disputa central gira em torno da mobilização de trilhões de dólares para apoiar a transição energética e a adaptação em países vulneráveis ao clima."
+          },
+          {
+            "title": "Geopolítica da Energia",
+            "category": "geopolitica",
+            "description": "Grandes potências buscam equilibrar a segurança energética nacional com as metas de descarbonização, gerando tensões sobre o uso de combustíveis fósseis."
+          },
+          {
+            "title": "Pressão da Sociedade Civil",
+            "category": "sociedade",
+            "description": "Movimentos globais exigem transparência e metas vinculantes, pressionando governos a adotarem políticas públicas mais rigorosas e imediatas contra o aquecimento."
+          }
+        ]
+      },
+      "timeline": [
+        {
+          "date": "2015-12-12",
+          "type": "past",
+          "title": "Assinatura do Acordo de Paris",
+          "summary": "O marco histórico que estabeleceu o objetivo global de limitar o aquecimento a 1,5°C, servindo como base para todas as negociações climáticas subsequentes.",
+          "display_date": "Dez 2015"
+        },
+        {
+          "date": "2025-11-20",
+          "type": "past",
+          "title": "Encerramento da COP30",
+          "summary": "A cúpula anterior definiu as bases para a revisão das metas nacionais de emissões, preparando o terreno para as decisões financeiras esperadas na COP31.",
+          "display_date": "Nov 2025"
+        },
+        {
+          "date": "2026-11-09",
+          "type": "turning_point",
+          "title": "Abertura da COP31 em Antalya",
+          "summary": "Início oficial das negociações em Antalya, com foco na implementação de mecanismos financeiros e no cumprimento das metas de descarbonização das potências.",
+          "display_date": "09 Nov 2026"
+        },
+        {
+          "date": "2026-11-16",
+          "type": "turning_point",
+          "title": "Rodada de Negociações Técnicas",
+          "summary": "Momento crítico de debate sobre o novo objetivo coletivo quantificado de financiamento climático, com divergências entre blocos desenvolvidos e emergentes.",
+          "display_date": "16 Nov 2026"
+        },
+        {
+          "date": "2026-11-20",
+          "type": "upcoming",
+          "title": "Encerramento da COP31",
+          "summary": "Data prevista para a assinatura do documento final, que consolidará os compromissos de financiamento e as diretrizes para a próxima década climática global.",
+          "display_date": "20 Nov 2026"
+        }
+      ],
+      "ai_metadata": {
+        "model": "gemini-3.1-flash-lite",
+        "generated_at": "2026-11-16T23:19:40.471902+00:00",
+        "articles_analyzed": 0
+      }
     },
     {
       "slug": "cimeira-do-g20",
@@ -838,7 +2602,70 @@
       },
       "meta_info": "14 – 15 dez 2026",
       "rota": null,
-      "ordem": 29
+      "ordem": 29,
+      "workflow_status": "review",
+      "executive_summary": {
+        "context": "O G20 consolidou-se como o principal fórum de cooperação econômica internacional, reunindo as maiores economias globais para coordenar políticas frente a crises sistêmicas. Sua relevância atual reside na capacidade de mediar tensões entre o Norte Global e o Sul Global, abordando desafios como a transição energética, a reforma das instituições financeiras multilaterais e a estabilidade das cadeias de suprimentos em um cenário de crescente fragmentação geopolítica e protecionismo comercial.",
+        "pillars": [
+          {
+            "title": "Reforma Financeira Global",
+            "category": "economia",
+            "description": "O debate foca na reestruturação de dívidas soberanas e no financiamento climático, visando maior equidade para economias emergentes no sistema monetário."
+          },
+          {
+            "title": "Geopolítica da Transição",
+            "category": "geopolitica",
+            "description": "Líderes buscam alinhar metas de descarbonização com a segurança energética, equilibrando interesses industriais nacionais e compromissos ambientais globais."
+          },
+          {
+            "title": "Diplomacia de Blocos",
+            "category": "politica",
+            "description": "A cúpula serve como termômetro para as relações entre potências rivais, testando a viabilidade de consensos em meio a conflitos regionais persistentes."
+          }
+        ]
+      },
+      "timeline": [
+        {
+          "date": "2023-09-09",
+          "type": "past",
+          "title": "Cúpula de Nova Deli",
+          "summary": "O G20 reafirmou compromissos de crescimento sustentável e incluiu a União Africana como membro permanente, ampliando a representatividade do bloco global.",
+          "display_date": "Set 2023"
+        },
+        {
+          "date": "2024-11-18",
+          "type": "past",
+          "title": "Cúpula do Rio de Janeiro",
+          "summary": "Foco central na Aliança Global contra a Fome e a Pobreza, estabelecendo metas ambiciosas para o combate à desigualdade social em escala internacional.",
+          "display_date": "Nov 2024"
+        },
+        {
+          "date": "2026-11-16",
+          "type": "past",
+          "title": "Preparativos Finais",
+          "summary": "Diplomatas finalizam as minutas da declaração conjunta, buscando consensos sobre comércio internacional e regulação de tecnologias emergentes e IA.",
+          "display_date": "16 Nov 2026"
+        },
+        {
+          "date": "2026-12-14",
+          "type": "turning_point",
+          "title": "Início da Cúpula do G20",
+          "summary": "Líderes das maiores economias se reúnem para debater a estabilidade econômica mundial e os desafios geopolíticos que definem a agenda do final de 2026.",
+          "display_date": "14 Dez 2026"
+        },
+        {
+          "date": "2026-12-15",
+          "type": "upcoming",
+          "title": "Encerramento e Declaração",
+          "summary": "Divulgação do comunicado final com diretrizes sobre política monetária, transição energética e cooperação multilateral para o próximo ciclo econômico.",
+          "display_date": "15 Dez 2026"
+        }
+      ],
+      "ai_metadata": {
+        "model": "gemini-3.1-flash-lite",
+        "generated_at": "2026-11-16T23:19:49.074891+00:00",
+        "articles_analyzed": 0
+      }
     },
     {
       "slug": "assembleia-geral-onu",
@@ -865,7 +2692,70 @@
       },
       "meta_info": "22 – 30 set 2026",
       "rota": null,
-      "ordem": 30
+      "ordem": 30,
+      "workflow_status": "review",
+      "executive_summary": {
+        "context": "A Assembleia Geral da ONU em 2026 ocorre em um cenário de fragmentação da ordem liberal estabelecida no pós-guerra. A crise de eficácia do Conselho de Segurança, paralisado por vetos cruzados e pela ascensão de potências regionais, coloca em xeque a relevância da organização. O evento é crucial agora para medir a capacidade de mediação multilateral frente a conflitos prolongados e a necessidade urgente de reformas estruturais que reflitam a nova realidade geopolítica multipolar do século XXI.",
+        "pillars": [
+          {
+            "title": "Crise de Governança Global",
+            "category": "geopolitica",
+            "description": "A paralisia do Conselho de Segurança exige reformas urgentes para evitar a irrelevância institucional frente aos novos blocos de poder globais."
+          },
+          {
+            "title": "Diplomacia de Blocos",
+            "category": "politica",
+            "description": "A articulação entre potências emergentes e tradicionais redefine alianças estratégicas, impactando diretamente a votação de resoluções críticas."
+          },
+          {
+            "title": "Sustentabilidade e Finanças",
+            "category": "economia",
+            "description": "A pressão por novos mecanismos de financiamento climático dita o tom das negociações econômicas entre o Norte Global e as nações do Sul."
+          }
+        ]
+      },
+      "timeline": [
+        {
+          "date": "2026-09-22",
+          "type": "past",
+          "title": "Abertura da 81ª Assembleia Geral",
+          "summary": "Chefes de Estado reúnem-se em Nova Iorque sob o tema da cooperação em tempos de crise, marcando o início oficial dos debates de alto nível na ONU.",
+          "display_date": "22 Set 2026"
+        },
+        {
+          "date": "2026-09-25",
+          "type": "turning_point",
+          "title": "Debate Central sobre Reformas",
+          "summary": "Momento decisivo onde potências globais confrontaram a necessidade de reformar o Conselho de Segurança, expondo divisões profundas sobre a representatividade.",
+          "display_date": "25 Set 2026"
+        },
+        {
+          "date": "2026-09-30",
+          "type": "past",
+          "title": "Encerramento da Assembleia",
+          "summary": "Conclusão das sessões com a ratificação de resoluções sobre crises humanitárias, encerrando o ciclo de negociações diplomáticas intensas do mês de setembro.",
+          "display_date": "30 Set 2026"
+        },
+        {
+          "date": "2026-12-15",
+          "type": "upcoming",
+          "title": "Revisão das Metas de Financiamento",
+          "summary": "Comitês técnicos da ONU analisam a viabilidade das promessas de financiamento climático feitas durante a Assembleia Geral de setembro.",
+          "display_date": "Dez 2026"
+        },
+        {
+          "date": "2027-03-01",
+          "type": "upcoming",
+          "title": "Relatório de Implementação",
+          "summary": "Publicação do relatório oficial sobre o cumprimento das resoluções aprovadas, servindo como termômetro para a eficácia diplomática da organização.",
+          "display_date": "Mar 2027"
+        }
+      ],
+      "ai_metadata": {
+        "model": "gemini-3.1-flash-lite",
+        "generated_at": "2026-11-16T23:19:57.259276+00:00",
+        "articles_analyzed": 0
+      }
     },
     {
       "slug": "forum-economico-mundial-davos",
@@ -892,7 +2782,70 @@
       },
       "meta_info": "18 – 22 jan 2027",
       "rota": null,
-      "ordem": 31
+      "ordem": 31,
+      "workflow_status": "review",
+      "executive_summary": {
+        "context": "O Fórum Econômico Mundial em Davos consolidou-se como o epicentro da governança global privada desde 1971. Em um cenário marcado pela fragmentação geopolítica, a edição de 2027 ganha relevância crítica ao tentar reconciliar a aceleração disruptiva da inteligência artificial com a necessidade de estabilidade macroeconômica. O evento é o termômetro das elites globais frente a crises climáticas, tensões comerciais e a reconfiguração das cadeias de suprimentos em um mundo multipolar.",
+        "pillars": [
+          {
+            "title": "Governança da Inteligência Artificial",
+            "category": "seguranca",
+            "description": "Líderes buscam consenso sobre regulação ética e segurança tecnológica, visando mitigar riscos sistêmicos e disparidades globais na adoção da IA."
+          },
+          {
+            "title": "Resiliência Econômica e Inflação",
+            "category": "economia",
+            "description": "Debates focam na estabilização de mercados sob juros elevados e na busca por modelos de crescimento sustentável em economias altamente endividadas."
+          },
+          {
+            "title": "Realinhamento Geopolítico",
+            "category": "geopolitica",
+            "description": "O fórum serve como plataforma para diplomacia de bastidores, abordando a fragmentação do comércio global e a cooperação em blocos regionais rivais."
+          }
+        ]
+      },
+      "timeline": [
+        {
+          "date": "2024-01-15",
+          "type": "past",
+          "title": "Davos 2024: Foco em IA e Conflitos",
+          "summary": "O fórum destacou a IA como motor de crescimento e a necessidade de cooperação internacional em meio a conflitos regionais crescentes no Oriente Médio.",
+          "display_date": "Jan 2024"
+        },
+        {
+          "date": "2025-01-20",
+          "type": "past",
+          "title": "Davos 2025: Transição Energética",
+          "summary": "Discussões centrais sobre o custo da transição verde e a pressão sobre cadeias de suprimentos globais frente às novas políticas protecionistas adotadas.",
+          "display_date": "Jan 2025"
+        },
+        {
+          "date": "2026-05-10",
+          "type": "past",
+          "title": "Preparativos Estratégicos WEF",
+          "summary": "O comitê organizador define a pauta para 2027, priorizando a governança de tecnologias emergentes e a estabilidade financeira pós-crise inflacionária.",
+          "display_date": "Mai 2026"
+        },
+        {
+          "date": "2027-01-18",
+          "type": "turning_point",
+          "title": "Abertura do Fórum Econômico Mundial",
+          "summary": "Início oficial da edição de 2027, reunindo chefes de Estado e CEOs para debater o futuro da economia global sob a sombra de novas tensões geopolíticas.",
+          "display_date": "18 Jan 2027"
+        },
+        {
+          "date": "2027-01-22",
+          "type": "upcoming",
+          "title": "Encerramento e Declaração Final",
+          "summary": "Divulgação do relatório final com diretrizes sobre cooperação tecnológica e compromissos econômicos assumidos pelos líderes globais durante o encontro.",
+          "display_date": "22 Jan 2027"
+        }
+      ],
+      "ai_metadata": {
+        "model": "gemini-3.1-flash-lite",
+        "generated_at": "2026-11-16T23:20:06.343238+00:00",
+        "articles_analyzed": 0
+      }
     },
     {
       "slug": "jogos-olimpicos-paralimpicos",
@@ -921,7 +2874,77 @@
       },
       "meta_info": "14 jul – 27 ago 2028",
       "rota": null,
-      "ordem": 32
+      "ordem": 32,
+      "workflow_status": "review",
+      "executive_summary": {
+        "context": "Os Jogos Olímpicos e Paralímpicos de Los Angeles 2028 representam o ápice do soft power global, consolidando a intersecção entre excelência atlética e diplomacia internacional. Historicamente, o evento transcende o esporte ao servir como vitrine para a capacidade logística e a estabilidade política das nações anfitriãs. Em um cenário de crescente fragmentação geopolítica, a edição de 2028 é crucial para medir a influência cultural dos Estados Unidos e a resiliência do modelo olímpico frente a desafios econômicos.",
+        "pillars": [
+          {
+            "title": "Diplomacia e Soft Power",
+            "category": "geopolitica",
+            "description": "O evento atua como palco para a projeção de valores nacionais e influência global, testando a capacidade dos EUA em mediar tensões internacionais no esporte."
+          },
+          {
+            "title": "Impacto Econômico e Legado",
+            "category": "economia",
+            "description": "A organização exige investimentos massivos em infraestrutura urbana, gerando debates sobre sustentabilidade financeira e o legado a longo prazo para a cidade."
+          },
+          {
+            "title": "Inclusão e Governança",
+            "category": "sociedade",
+            "description": "A integração dos Jogos Paralímpicos e a política de equidade definem novos padrões de governança esportiva, impactando a percepção pública sobre diversidade."
+          }
+        ]
+      },
+      "timeline": [
+        {
+          "date": "2017-09-13",
+          "type": "past",
+          "title": "Escolha de Los Angeles como sede",
+          "summary": "O COI oficializa Los Angeles como sede dos Jogos de 2028, após acordo histórico que garantiu Paris 2024 e LA 2028 simultaneamente.",
+          "display_date": "Set 2017"
+        },
+        {
+          "date": "2024-08-11",
+          "type": "past",
+          "title": "Passagem da bandeira olímpica",
+          "summary": "Durante a cerimônia de encerramento em Paris, Los Angeles recebe oficialmente a bandeira olímpica, iniciando o ciclo final de preparação.",
+          "display_date": "Ago 2024"
+        },
+        {
+          "date": "2028-07-14",
+          "type": "turning_point",
+          "title": "Cerimônia de Abertura",
+          "summary": "Início oficial dos Jogos Olímpicos de Los Angeles 2028, marcando o retorno do evento aos Estados Unidos após décadas de espera.",
+          "display_date": "14 Jul 2028"
+        },
+        {
+          "date": "2028-07-30",
+          "type": "upcoming",
+          "title": "Pico das competições",
+          "summary": "Período de maior concentração de finais e disputa pelo quadro de medalhas entre as potências esportivas globais.",
+          "display_date": "30 Jul 2028"
+        },
+        {
+          "date": "2028-08-15",
+          "type": "upcoming",
+          "title": "Início dos Jogos Paralímpicos",
+          "summary": "Abertura oficial dos Jogos Paralímpicos, focando na inclusão e superação de recordes mundiais por atletas de alto rendimento.",
+          "display_date": "15 Ago 2028"
+        },
+        {
+          "date": "2028-08-27",
+          "type": "upcoming",
+          "title": "Cerimônia de Encerramento",
+          "summary": "Encerramento oficial das atividades esportivas, consolidando os resultados finais e o impacto do evento para a cidade de Los Angeles.",
+          "display_date": "27 Ago 2028"
+        }
+      ],
+      "ai_metadata": {
+        "model": "gemini-3.1-flash-lite",
+        "generated_at": "2026-11-16T23:20:14.836095+00:00",
+        "articles_analyzed": 0
+      }
     },
     {
       "slug": "final-uefa-champions-league",
@@ -949,7 +2972,70 @@
       },
       "meta_info": "17 – 31 mai 2027",
       "rota": null,
-      "ordem": 33
+      "ordem": 33,
+      "workflow_status": "review",
+      "executive_summary": {
+        "context": "A final da UEFA Champions League transcende o esporte, consolidando-se como o maior evento anual de clubes do planeta. Historicamente enraizada na reconstrução europeia pós-guerra, a competição evoluiu para um colosso financeiro que movimenta bilhões em direitos de transmissão e turismo. Hoje, o torneio é um termômetro da hegemonia econômica do futebol europeu, refletindo tensões entre a tradição das ligas nacionais e a pressão por modelos de negócios globais cada vez mais centralizados.",
+        "pillars": [
+          {
+            "title": "Impacto Econômico Global",
+            "category": "economia",
+            "description": "A final gera receitas massivas em turismo e publicidade, consolidando o futebol como um ativo estratégico de alto valor para as cidades-sede europeias."
+          },
+          {
+            "title": "Geopolítica do Futebol",
+            "category": "geopolitica",
+            "description": "O torneio serve como vitrine de soft power, onde clubes e nações disputam influência através de investimentos massivos e diplomacia esportiva global."
+          },
+          {
+            "title": "Segurança e Logística",
+            "category": "seguranca",
+            "description": "A gestão de grandes fluxos de adeptos exige cooperação internacional intensa, tornando a segurança pública um desafio crítico para a organização da UEFA."
+          }
+        ]
+      },
+      "timeline": [
+        {
+          "date": "2026-05-30",
+          "type": "past",
+          "title": "Final da Champions League 2026",
+          "summary": "Realização da final da temporada 2025-2026, consolidando os padrões de segurança e logística exigidos pela UEFA para grandes eventos esportivos europeus.",
+          "display_date": "30 Mai 2026"
+        },
+        {
+          "date": "2026-09-15",
+          "type": "past",
+          "title": "Início da Fase de Grupos 2026/27",
+          "summary": "O pontapé inicial da temporada atual, marcando o início da jornada das equipes rumo à grande final que será disputada em maio de 2027.",
+          "display_date": "15 Set 2026"
+        },
+        {
+          "date": "2027-05-17",
+          "type": "upcoming",
+          "title": "Início da Semana da Final",
+          "summary": "Abertura oficial dos eventos preparatórios e chegada das delegações e torcedores à cidade-sede, dando início à contagem regressiva para o confronto decisivo.",
+          "display_date": "17 Mai 2027"
+        },
+        {
+          "date": "2027-05-29",
+          "type": "turning_point",
+          "title": "Final da Champions League 2027",
+          "summary": "O momento central do calendário esportivo europeu, onde os dois finalistas disputam o troféu mais cobiçado do futebol de clubes mundial.",
+          "display_date": "29 Mai 2027"
+        },
+        {
+          "date": "2027-05-31",
+          "type": "upcoming",
+          "title": "Encerramento e Balanço",
+          "summary": "Conclusão das atividades pós-jogo, com a análise dos impactos econômicos, operacionais e o fechamento oficial da temporada europeia de clubes.",
+          "display_date": "31 Mai 2027"
+        }
+      ],
+      "ai_metadata": {
+        "model": "gemini-3.1-flash-lite",
+        "generated_at": "2026-11-16T23:20:23.556986+00:00",
+        "articles_analyzed": 0
+      }
     },
     {
       "slug": "temporada-premios-oscars",
@@ -977,7 +3063,70 @@
       },
       "meta_info": "jan – mar 2027",
       "rota": null,
-      "ordem": 34
+      "ordem": 34,
+      "workflow_status": "review",
+      "executive_summary": {
+        "context": "A temporada de premiações cinematográficas transcende o entretenimento, funcionando como um termômetro da hegemonia cultural global e da economia da atenção. Historicamente, o domínio de Hollywood molda narrativas sociais e padrões estéticos mundiais. Atualmente, a relevância do Oscar é testada pela ascensão de plataformas de streaming e pela necessidade de diversidade, tornando a disputa um campo de batalha estratégico entre modelos de negócio e a influência diplomática dos EUA.",
+        "pillars": [
+          {
+            "title": "Economia da Atenção",
+            "category": "economia",
+            "description": "A temporada impulsiona bilheteiras e assinaturas, consolidando o valor de mercado de estúdios e plataformas em um cenário de alta concorrência global."
+          },
+          {
+            "title": "Soft Power Cultural",
+            "category": "geopolitica",
+            "description": "O Oscar atua como ferramenta de projeção de valores americanos, influenciando tendências globais e a percepção internacional sobre a indústria dos EUA."
+          },
+          {
+            "title": "Representatividade Social",
+            "category": "sociedade",
+            "description": "A pressão por inclusão e diversidade nas indicações reflete tensões sociais internas, forçando a Academia a adaptar seus critérios de seleção e prestígio."
+          }
+        ]
+      },
+      "timeline": [
+        {
+          "date": "2026-09-15",
+          "type": "past",
+          "title": "Estreias do Festival de Veneza",
+          "summary": "O circuito de festivais de outono define os primeiros favoritos da crítica, estabelecendo o tom para a corrida dos prêmios que se inicia no final do ano.",
+          "display_date": "Set 2026"
+        },
+        {
+          "date": "2026-12-10",
+          "type": "past",
+          "title": "Anúncio dos Indicados ao Globo de Ouro",
+          "summary": "A revelação dos indicados marca o início oficial da temporada de premiações, servindo como um indicador preliminar das tendências para o Oscar de 2027.",
+          "display_date": "10 Dez 2026"
+        },
+        {
+          "date": "2027-01-15",
+          "type": "turning_point",
+          "title": "Anúncio dos Indicados ao Oscar",
+          "summary": "O momento decisivo que consolida os favoritos e gera o debate público sobre as escolhas da Academia, definindo o foco da cobertura midiática global.",
+          "display_date": "15 Jan 2027"
+        },
+        {
+          "date": "2027-02-10",
+          "type": "upcoming",
+          "title": "Cerimônia do BAFTA",
+          "summary": "A premiação britânica atua como um termômetro final antes do Oscar, refletindo a influência da indústria europeia e o peso dos votantes internacionais.",
+          "display_date": "10 Fev 2027"
+        },
+        {
+          "date": "2027-03-14",
+          "type": "upcoming",
+          "title": "99ª Cerimônia do Oscar",
+          "summary": "O ápice da temporada, onde vencedores são coroados e o impacto econômico e cultural das produções é finalmente validado pelo prestígio da estatueta dourada.",
+          "display_date": "14 Mar 2027"
+        }
+      ],
+      "ai_metadata": {
+        "model": "gemini-3.1-flash-lite",
+        "generated_at": "2026-11-16T23:20:32.179687+00:00",
+        "articles_analyzed": 0
+      }
     },
     {
       "slug": "premios-nobel",
@@ -1005,7 +3154,70 @@
       },
       "meta_info": "5 – 12 out 2026",
       "rota": null,
-      "ordem": 35
+      "ordem": 35,
+      "workflow_status": "review",
+      "executive_summary": {
+        "context": "Instituídos pelo testamento de Alfred Nobel em 1895, os Prêmios Nobel consolidaram-se como o padrão ouro da excelência intelectual global. Mais do que reconhecer avanços científicos e humanitários, a premiação reflete as tensões geopolíticas e as prioridades acadêmicas de cada época. Em 2026, a seleção dos laureados ganha relevância ao destacar a diplomacia científica em um mundo fragmentado, onde a cooperação transnacional enfrenta desafios crescentes de soberania e segurança tecnológica.",
+        "pillars": [
+          {
+            "title": "Geopolítica da Ciência",
+            "category": "geopolitica",
+            "description": "A premiação sinaliza a liderança global em pesquisa, influenciando o soft power das nações e a atração de talentos em setores estratégicos de ponta."
+          },
+          {
+            "title": "Impacto Econômico e Inovação",
+            "category": "economia",
+            "description": "Laureados em Economia e áreas técnicas catalisam investimentos em mercados de tecnologia, moldando políticas públicas e estratégias de inovação global."
+          },
+          {
+            "title": "Legitimidade e Diplomacia",
+            "category": "politica",
+            "description": "O Nobel da Paz atua como um termômetro das crises humanitárias, conferindo autoridade moral a atores que buscam mediação em conflitos internacionais."
+          }
+        ]
+      },
+      "timeline": [
+        {
+          "date": "2026-10-05",
+          "type": "past",
+          "title": "Abertura da Semana Nobel",
+          "summary": "Início do ciclo de anúncios em Estocolmo e Oslo, marcando o início da expectativa global sobre os laureados em Medicina e áreas fundamentais da ciência.",
+          "display_date": "05 Out 2026"
+        },
+        {
+          "date": "2026-10-09",
+          "type": "turning_point",
+          "title": "Anúncio do Nobel da Paz",
+          "summary": "O Comitê Norueguês revela o laureado da Paz, momento de maior tensão política e escrutínio internacional sobre a neutralidade e relevância da premiação.",
+          "display_date": "09 Out 2026"
+        },
+        {
+          "date": "2026-10-12",
+          "type": "past",
+          "title": "Encerramento da Semana",
+          "summary": "Conclusão dos anúncios com a categoria de Economia, fechando o ciclo de reconhecimento acadêmico que pautará as discussões científicas do próximo ano.",
+          "display_date": "12 Out 2026"
+        },
+        {
+          "date": "2026-12-10",
+          "type": "upcoming",
+          "title": "Cerimônia de Entrega",
+          "summary": "Data tradicional da entrega das medalhas e diplomas, consolidando o legado dos laureados e promovendo o debate público sobre suas descobertas e causas.",
+          "display_date": "10 Dez 2026"
+        },
+        {
+          "date": "2027-01-15",
+          "type": "upcoming",
+          "title": "Início do Ciclo 2027",
+          "summary": "Abertura do processo de indicação para o próximo ano, reiniciando o ciclo de consultas globais entre academias, universidades e governos ao redor do mundo.",
+          "display_date": "Jan 2027"
+        }
+      ],
+      "ai_metadata": {
+        "model": "gemini-3.1-flash-lite",
+        "generated_at": "2026-11-16T23:20:41.876442+00:00",
+        "articles_analyzed": 0
+      }
     },
     {
       "slug": "missoes-espaciais-eclipses",
@@ -1034,7 +3246,269 @@
       },
       "meta_info": "out – dez 2026",
       "rota": null,
-      "ordem": 36
+      "ordem": 36,
+      "workflow_status": "review",
+      "executive_summary": {
+        "context": "A exploração espacial contemporânea transcendeu a mera curiosidade científica, consolidando-se como um pilar de soberania nacional e poder econômico. A corrida atual, marcada pelo programa Artemis e pela cooperação internacional, reflete uma disputa por recursos lunares e domínio tecnológico. Eventos astronômicos, como eclipses, servem agora como janelas críticas para observação científica, unindo nações em torno de uma infraestrutura orbital cada vez mais congestionada e estratégica.",
+        "pillars": [
+          {
+            "title": "Soberania e Geopolítica Orbital",
+            "category": "geopolitica",
+            "description": "A ocupação lunar e a presença em órbita tornaram-se indicadores de poder, redefinindo alianças estratégicas e o controle sobre rotas de acesso ao espaço."
+          },
+          {
+            "title": "Economia do Setor Aeroespacial",
+            "category": "economia",
+            "description": "O crescimento da indústria privada e o investimento público em missões de exploração impulsionam inovações tecnológicas com alto retorno econômico global."
+          },
+          {
+            "title": "Cooperação Científica Global",
+            "category": "sociedade",
+            "description": "Fenômenos astronômicos e missões de sondas exigem coordenação técnica internacional, promovendo a diplomacia científica em um cenário de alta tensão."
+          }
+        ]
+      },
+      "timeline": [
+        {
+          "date": "2026-10-05",
+          "type": "past",
+          "title": "Lançamento da Sonda de Observação Lunar",
+          "summary": "Missão internacional iniciou o mapeamento de recursos hídricos no polo sul lunar, preparando o terreno para futuras bases permanentes de exploração humana.",
+          "display_date": "Out 2026"
+        },
+        {
+          "date": "2026-10-28",
+          "type": "turning_point",
+          "title": "Eclipse Solar de Alta Precisão",
+          "summary": "O eclipse serviu como laboratório natural para testes de sensores de sondas espaciais, permitindo calibrações cruciais para a navegação em órbita terrestre.",
+          "display_date": "28 Out 2026"
+        },
+        {
+          "date": "2026-11-15",
+          "type": "past",
+          "title": "Pouso da Sonda de Superfície",
+          "summary": "A sonda alcançou com sucesso o solo lunar, transmitindo dados em tempo real sobre a composição do regolito para as agências espaciais participantes.",
+          "display_date": "15 Nov 2026"
+        },
+        {
+          "date": "2026-12-05",
+          "type": "upcoming",
+          "title": "Simulação de Missão Artemis",
+          "summary": "Treinamento intensivo para tripulações visando a próxima etapa do programa Artemis, focando em sistemas de suporte à vida e segurança em ambiente lunar.",
+          "display_date": "Dez 2026"
+        },
+        {
+          "date": "2026-12-20",
+          "type": "upcoming",
+          "title": "Cúpula Internacional de Espaço",
+          "summary": "Encontro de líderes globais para discutir a governança de recursos espaciais e a sustentabilidade das operações em órbita terrestre e lunar para 2027.",
+          "display_date": "20 Dez 2026"
+        }
+      ],
+      "ai_metadata": {
+        "model": "gemini-3.1-flash-lite",
+        "generated_at": "2026-11-16T23:20:51.970458+00:00",
+        "articles_analyzed": 0
+      }
+    },
+    {
+      "slug": "a-disputa-pelos-minerais-criticos",
+      "titulo": "A Disputa pelos Minerais Críticos",
+      "subtitulo": "A corrida global por lítio, terras raras e cobalto redesenha alianças comerciais entre o Sul Global, China, EUA e União Europeia. Acompanhe o cruzamento editorial sobre cadeias de suprimento, soberania mineral e impactos socioambientais.",
+      "tipo": "especial",
+      "categoria": "Geopolítica",
+      "icone_ou_bandeira": "Globe",
+      "data_inicio": "2026-06-01T00:00:00+00:00",
+      "data_fim": null,
+      "regras_classificacao": {
+        "paises": [
+          "CN",
+          "CD",
+          "CL",
+          "BR",
+          "US",
+          "AU",
+          "AO"
+        ],
+        "palavras_chave": [
+          "minerais críticos",
+          "terras raras",
+          "lítio",
+          "cobalto",
+          "transição energética",
+          "baterias",
+          "mineração",
+          "cadeia de suprimentos",
+          "corredor do lobito",
+          "descarbonização"
+        ]
+      },
+      "meta_info": null,
+      "rota": null,
+      "ordem": 37,
+      "workflow_status": "review",
+      "executive_summary": {
+        "context": "A transição energética global transformou minerais críticos como lítio, cobalto e terras raras nos novos pilares da segurança nacional. Historicamente dependentes de cadeias concentradas na China, potências ocidentais buscam agora diversificar o suprimento através de parcerias com o Sul Global. Este movimento não é apenas comercial; trata-se de uma reconfiguração geopolítica onde a soberania mineral define a capacidade de liderança tecnológica e industrial nas próximas décadas.",
+        "pillars": [
+          {
+            "title": "Soberania e Cadeia de Suprimento",
+            "category": "geopolitica",
+            "description": "A disputa pelo controle de minas e processamento redefine a autonomia industrial, forçando potências a buscar parcerias estratégicas para evitar gargalos."
+          },
+          {
+            "title": "Impacto Econômico e Transição",
+            "category": "economia",
+            "description": "A volatilidade dos preços e o alto custo de capital para novos projetos de mineração impactam diretamente a viabilidade das metas globais de descarbonização."
+          },
+          {
+            "title": "Geopolítica do Sul Global",
+            "category": "politica",
+            "description": "Países ricos em recursos minerais, como Chile e RDC, ganham poder de barganha para exigir maior valor agregado e melhores padrões socioambientais locais."
+          }
+        ]
+      },
+      "timeline": [
+        {
+          "date": "2023-01-15",
+          "type": "past",
+          "title": "Consolidação da Política de Lítio no Chile",
+          "summary": "O governo chileno anuncia a Estratégia Nacional do Lítio, visando maior controle estatal sobre a exploração do recurso para garantir benefícios nacionais.",
+          "display_date": "Jan 2023"
+        },
+        {
+          "date": "2023-11-28",
+          "type": "past",
+          "title": "Lançamento do Corredor do Lobito",
+          "summary": "EUA e UE apoiam a infraestrutura ferroviária ligando a RDC a Angola, visando escoar cobalto e cobre sem depender exclusivamente de rotas controladas pela China.",
+          "display_date": "Nov 2023"
+        },
+        {
+          "date": "2025-06-10",
+          "type": "turning_point",
+          "title": "A Crise de Oferta de Terras Raras",
+          "summary": "O momento decisivo onde restrições chinesas à exportação forçaram o Ocidente a acelerar investimentos em minas alternativas e tecnologias de reciclagem.",
+          "display_date": "Jun 2025"
+        },
+        {
+          "date": "2026-05-20",
+          "type": "past",
+          "title": "Acordo de Parceria Brasil-UE",
+          "summary": "Brasil e União Europeia firmam cooperação técnica para exploração sustentável de minerais críticos, focando em rastreabilidade e padrões ambientais rigorosos.",
+          "display_date": "Mai 2026"
+        },
+        {
+          "date": "2027-03-01",
+          "type": "upcoming",
+          "title": "Início da Operação do Corredor do Lobito",
+          "summary": "Previsão de início das operações logísticas em larga escala, testando a eficácia da rota alternativa para o suprimento global de minerais estratégicos.",
+          "display_date": "Mar 2027"
+        }
+      ],
+      "ai_metadata": {
+        "model": "gemini-3.1-flash-lite",
+        "generated_at": "2026-11-16T23:21:01.040066+00:00",
+        "articles_analyzed": 0
+      }
+    },
+    {
+      "slug": "crise-das-rotas-maritimas-e-comercio-global",
+      "titulo": "Crise das Rotas Marítimas e Comércio Global",
+      "subtitulo": "Tensões no Mar Vermelho, disputas no Estreito de Taiwan, mudanças climáticas no Canal do Panamá e o degelo das rotas do Ártico ameaçam as cadeias logísticas mundiais. Compare como a imprensa global analisa fretes, seguros e segurança naval.",
+      "tipo": "especial",
+      "categoria": "Geopolítica",
+      "icone_ou_bandeira": "Globe",
+      "data_inicio": "2026-11-15T00:00:00+00:00",
+      "data_fim": null,
+      "regras_classificacao": {
+        "paises": [
+          "YE",
+          "EG",
+          "PA",
+          "TW",
+          "CN",
+          "US",
+          "IR",
+          "SG"
+        ],
+        "palavras_chave": [
+          "rotas marítimas",
+          "mar vermelho",
+          "estreito de hormuz",
+          "canal de suez",
+          "canal do panamá",
+          "comércio global",
+          "frete marítimo",
+          "estreito de taiwan",
+          "logística",
+          "ártico"
+        ]
+      },
+      "meta_info": "15 nov 2026",
+      "rota": null,
+      "ordem": 38,
+      "workflow_status": "review",
+      "executive_summary": {
+        "context": "A interdependência do comércio global repousa sobre gargalos marítimos vulneráveis, historicamente moldados por potências coloniais e hoje disputados por novas hegemonias. A convergência de instabilidades no Mar Vermelho, tensões em Taiwan e crises climáticas no Panamá expõe a fragilidade das cadeias de suprimentos. Este cenário é crítico agora pois a fragmentação geopolítica transforma rotas comerciais em alavancas de pressão, elevando custos de frete e seguros em escala mundial.",
+        "pillars": [
+          {
+            "title": "Segurança e Militarização",
+            "category": "seguranca",
+            "description": "A escalada de conflitos em pontos estratégicos força a presença naval de potências, elevando o risco de confrontos diretos e bloqueios de rotas vitais."
+          },
+          {
+            "title": "Inflação e Logística",
+            "category": "economia",
+            "description": "A instabilidade nas rotas marítimas encarece o frete e seguros, gerando pressões inflacionárias que afetam diretamente o custo de vida e o consumo global."
+          },
+          {
+            "title": "Geopolítica do Ártico",
+            "category": "geopolitica",
+            "description": "O degelo abre novas rotas que alteram o equilíbrio de poder, forçando nações a redefinir soberania e estratégias de exploração em regiões anteriormente isoladas."
+          }
+        ]
+      },
+      "timeline": [
+        {
+          "date": "2023-11-19",
+          "type": "past",
+          "title": "Início da Crise no Mar Vermelho",
+          "summary": "A captura do navio Galaxy Leader por rebeldes Houthis marca o início de uma série de ataques que desestabilizaram o tráfego no Canal de Suez.",
+          "display_date": "Nov 2023"
+        },
+        {
+          "date": "2024-05-15",
+          "type": "past",
+          "title": "Seca Crítica no Canal do Panamá",
+          "summary": "Níveis recordes de baixa nos reservatórios limitam o tráfego de navios, forçando uma reavaliação global sobre a dependência de rotas de água doce.",
+          "display_date": "Mai 2024"
+        },
+        {
+          "date": "2026-01-10",
+          "type": "turning_point",
+          "title": "Escalada no Estreito de Taiwan",
+          "summary": "O aumento da atividade militar chinesa na região cria o maior ponto de tensão logística do ano, ameaçando o fluxo de semicondutores e bens essenciais.",
+          "display_date": "Jan 2026"
+        },
+        {
+          "date": "2026-11-16",
+          "type": "upcoming",
+          "title": "Cúpula de Segurança Marítima",
+          "summary": "Líderes globais reúnem-se para discutir protocolos de proteção a navios mercantes diante da crescente ameaça de pirataria e conflitos estatais.",
+          "display_date": "16 Nov 2026"
+        },
+        {
+          "date": "2027-03-01",
+          "type": "upcoming",
+          "title": "Abertura da Rota do Ártico",
+          "summary": "Previsão de início da temporada de navegação ártica com novas regras de exploração, alterando permanentemente as rotas entre Ásia e Europa.",
+          "display_date": "Mar 2027"
+        }
+      ],
+      "ai_metadata": {
+        "model": "gemini-3.1-flash-lite",
+        "generated_at": "2026-11-16T23:21:09.548919+00:00",
+        "articles_analyzed": 0
+      }
     }
   ]
 }

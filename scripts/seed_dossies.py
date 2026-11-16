@@ -40,6 +40,7 @@ def montar_registros() -> list:
             "data_inicio": None, "data_fim": None,
             "regras_classificacao": {"palavras_chave": kws, "paises": paises},
             "meta_info": None, "rota": rota, "ordem": ordem,
+            "workflow_status": "published", "executive_summary": {}, "timeline": [], "ai_metadata": {},
         })
     for slug, titulo, icone, desc, ini, fim, meta, kws, paises in ESPECIAIS:
         ordem += 1
@@ -49,11 +50,31 @@ def montar_registros() -> list:
             "data_inicio": _ts(ini), "data_fim": _ts(fim, True),
             "regras_classificacao": {"palavras_chave": kws, "paises": paises},
             "meta_info": meta, "rota": None, "ordem": ordem,
+            "workflow_status": "published", "executive_summary": {}, "timeline": [], "ai_metadata": {},
         })
     return regs
 
 
 def gerar_json(regs: list) -> None:
+    # Preserva campos 2.0 (síntese/timeline/metadados de IA) já gerados,
+    # para que regenerar o espelho não apague o enriquecimento existente.
+    existentes = {}
+    if SAIDA_JSON.is_file():
+        try:
+            existentes = {d.get("slug"): d for d in json.loads(SAIDA_JSON.read_text(encoding="utf-8")).get("dossies", [])}
+        except (json.JSONDecodeError, OSError):
+            existentes = {}
+    for r in regs:
+        antigo = existentes.get(r.get("slug")) or {}
+        for campo in ("workflow_status", "executive_summary", "timeline", "ai_metadata"):
+            if campo in antigo and antigo.get(campo) not in (None, {}, []):
+                r[campo] = antigo.get(campo)
+    # Preserva dossiês existentes que não estão mais no catálogo (ex.: criados via admin),
+    # para não apagar enriquecimento nem registros manuais ao regenerar o espelho.
+    slugs_novos = {r.get("slug") for r in regs}
+    for slug, antigo in existentes.items():
+        if slug not in slugs_novos:
+            regs.append(antigo)
     payload = {"gerado_em": datetime.now(timezone.utc).isoformat(), "dossies": regs}
     SAIDA_JSON.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"[seed] {len(regs)} dossiês -> {SAIDA_JSON}")

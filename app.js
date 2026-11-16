@@ -4542,18 +4542,22 @@
       var topicoObj = TOPICS.find(function (t) { return t.k === state.topic; });
       var topicoNome = topicoObj ? topicoObj.l : state.topic;
       h += '<button type="button" class="panel-collapse-btn btn-voltar-topico" data-action="clear-topic" title="Voltar para todos os temas de ' + esc(countryDisplayName(state.country, state.cont)) + '" aria-label="Voltar para todos os temas">' +
-        '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>' +
         '<span>← Voltar (Todos os temas)</span>' +
       '</button>';
     } else if (state.cont || state.country) {
+      h += '<button type="button" class="panel-collapse-btn" id="btn-collapse-panel" title="Recolher painel para ver o mapa" aria-label="Recolher painel para ver o mapa">' +
+        '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>' +
+        '<span>Recolher</span>' +
+      '</button>';
       h += '<button type="button" class="panel-collapse-btn" data-go="world" title="Voltar para a visão geral do mapa-múndi" aria-label="Voltar ao mapa-múndi">' +
         '<span>← Voltar ao Mapa</span>' +
       '</button>';
+    } else {
+      h += '<button type="button" class="panel-collapse-btn" id="btn-collapse-panel" title="Recolher painel para ver o mapa" aria-label="Recolher painel para ver o mapa">' +
+        '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>' +
+        '<span>Recolher</span>' +
+      '</button>';
     }
-    h += '<button type="button" class="panel-collapse-btn" id="btn-collapse-panel" title="Recolher painel para ver o mapa" aria-label="Recolher painel para ver o mapa">' +
-      '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>' +
-      '<span>Recolher</span>' +
-    '</button>';
     h += '<button type="button" class="panel-close" data-close aria-label="Fechar painel" title="Fechar / Recolher painel"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>';
     h += '</div>';
     h += '<nav class="crumbs" aria-label="Navegação">';
