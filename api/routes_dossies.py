@@ -11,10 +11,11 @@ Status (especiais): em_breve (agora < data_inicio) | ao_vivo | arquivo (agora > 
 Sem banco, cai no espelho data/dossies.json calculando o mesmo status em Python.
 """
 import json
+import os
 import re
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Literal, Optional
 
 from fastapi import APIRouter, Depends, HTTPException, Response
 from pydantic import BaseModel, Field, field_validator, model_validator
@@ -67,6 +68,9 @@ class DossieUpdatePayload(BaseModel):
     data_fim: Optional[datetime] = None
     meta_info: Optional[str] = Field(default=None, max_length=120)
     regras_classificacao: Optional[Dict[str, Any]] = None
+    workflow_status: Optional[str] = Field(default=None, pattern=r"^(draft|review|published)$")
+    executive_summary: Optional[Dict[str, Any]] = None
+    timeline: Optional[List[Dict[str, Any]]] = None
 
     @field_validator("data_inicio", mode="before")
     @classmethod
@@ -84,6 +88,24 @@ class DossieUpdatePayload(BaseModel):
         if v is None:
             return None
         return _normalizar_regras(v)
+
+    @field_validator("executive_summary", mode="before")
+    @classmethod
+    def _val_executive_summary(cls, v: Any) -> Optional[Dict[str, Any]]:
+        if v is None:
+            return None
+        if not isinstance(v, dict):
+            raise ValueError("executive_summary deve ser um objeto JSON.")
+        return v
+
+    @field_validator("timeline", mode="before")
+    @classmethod
+    def _val_timeline(cls, v: Any) -> Optional[List[Dict[str, Any]]]:
+        if v is None:
+            return None
+        if not isinstance(v, list):
+            raise ValueError("timeline deve ser uma lista JSON.")
+        return v
 
     @model_validator(mode="after")
     def _val_intervalo(self) -> "DossieUpdatePayload":
@@ -167,6 +189,10 @@ def _normalizar(row: Dict[str, Any]) -> Dict[str, Any]:
         "data_inicio": _iso(row.get("data_inicio")), "data_fim": _iso(row.get("data_fim")),
         "meta_info": row.get("meta_info"), "rota": row.get("rota"),
         "status": row["status"],
+        "workflow_status": row.get("workflow_status") or "published",
+        "executive_summary": row.get("executive_summary") or {},
+        "timeline": row.get("timeline") or [],
+        "ai_metadata": row.get("ai_metadata") or {},
         "veiculos_count": int(row.get("veiculos_count") or 0),
         "materias_count": int(row.get("materias_count") or 0),
         "regras_classificacao": row.get("regras_classificacao") or {},
@@ -333,6 +359,12 @@ def admin_atualizar_dossie(
 
     from psycopg.types.json import Jsonb
 
+    # Campos editoriais 2.0: ai_metadata pode ser mesclado (ex.: reviewed_at ao publicar)
+    with conn.cursor() as cur:
+        cur.execute("SELECT ai_metadata FROM dossies WHERE slug = %s;", (slug_norm,))
+        meta_row = cur.fetchone() or {}
+    current_ai_meta = meta_row.get("ai_metadata") or {}
+
     colunas_permitidas = (
         "titulo",
         "subtitulo",
@@ -342,6 +374,9 @@ def admin_atualizar_dossie(
         "data_fim",
         "meta_info",
         "regras_classificacao",
+        "workflow_status",
+        "executive_summary",
+        "timeline",
     )
     sets: List[str] = []
     params: Dict[str, Any] = {"slug": slug_norm}
@@ -351,8 +386,15 @@ def admin_atualizar_dossie(
         valor = getattr(payload, campo)
         if campo == "regras_classificacao":
             valor = Jsonb(_normalizar_regras(valor))
+        elif campo in ("executive_summary", "timeline"):
+            valor = Jsonb(valor if valor is not None else ({} if campo == "executive_summary" else []))
         sets.append(f"{campo} = %({campo})s")
         params[campo] = valor
+
+    if "workflow_status" in fields and payload.workflow_status == "published":
+        merged_meta = {**current_ai_meta, "reviewed_at": datetime.now(timezone.utc).isoformat()}
+        sets.append("ai_metadata = %(ai_metadata)s")
+        params["ai_metadata"] = Jsonb(merged_meta)
 
     sets.append("ultima_atualizacao = NOW()")
     sql = f"UPDATE dossies SET {', '.join(sets)} WHERE slug = %(slug)s;"
@@ -442,3 +484,191 @@ def admin_remover_dossie(
         cur.execute("DELETE FROM dossies WHERE slug = %s;", (slug_norm,))
     conn.commit()
     return {"ok": True, "deleted_slug": slug_norm}
+
+
+# ---------------------------------------------------------------------------
+# Dossiês 2.0 — Geração editorial por IA (Gemini) + revisão
+# ---------------------------------------------------------------------------
+
+
+class DossierPillarModel(BaseModel):
+    title: str = Field(description="Título curto do pilar (máx. 35 caracteres).")
+    description: str = Field(description="Análise objetiva do impacto em 2 linhas (110 a 160 caracteres).")
+    category: Literal["politica", "economia", "geopolitica", "seguranca", "sociedade"] = Field(
+        description="Categoria visual para definição de ícone e cor de destaque."
+    )
+
+
+class DossierExecutiveSummaryModel(BaseModel):
+    context: str = Field(
+        description="Parágrafo único e denso (350 a 500 caracteres) explicando a raiz geopolítica/histórica do tema e por que ele importa agora."
+    )
+    pillars: List[DossierPillarModel] = Field(
+        description="Exatamente 3 pilares estratégicos que resumem o que está em jogo."
+    )
+
+
+class DossierTimelineItemModel(BaseModel):
+    date: str = Field(description="Data ISO para ordenação (YYYY-MM-DD).")
+    display_date: str = Field(description="Data formatada para exibição (ex: 'Out 2026', '03 Nov 2026', 'Jan 2027').")
+    title: str = Field(description="Título factual do marco (máx. 60 caracteres).")
+    summary: str = Field(description="Resumo factual do ocorrido ou do que esperar (100 a 170 caracteres).")
+    type: Literal["past", "turning_point", "upcoming"] = Field(
+        description="'past' para eventos ocorridos, 'turning_point' para o momento decisivo central, 'upcoming' para próximos passos."
+    )
+
+
+class DossierGenerationModel(BaseModel):
+    executive_summary: DossierExecutiveSummaryModel
+    timeline: List[DossierTimelineItemModel]
+
+
+def _montar_prompt_geracao_dossie(dossie: Dict[str, Any], materias: List[Dict[str, Any]], today_iso: str) -> str:
+    regras = dossie.get("regras_classificacao") or {}
+    paises = regras.get("paises") or []
+    tags = regras.get("palavras_chave") or []
+    if not paises and dossie.get("icone_ou_bandeira"):
+        ic = str(dossie.get("icone_ou_bandeira")).upper()
+        if len(ic) == 2 and ic.isalpha():
+            paises = [ic]
+
+    def _fmt_artigo(i: int, a: Dict[str, Any]) -> str:
+        pub = _iso(a.get("publicado_em")) or ""
+        pub = pub[:10] if pub else "s/ data"
+        fonte = a.get("veiculo_nome") or a.get("fonte_nome") or "Fonte"
+        vies = a.get("vies") or a.get("editorial_bias")
+        vies_txt = f" ({vies})" if vies else ""
+        titulo = a.get("materia_titulo") or a.get("titulo") or ""
+        return f'{i}. [{pub}] {fonte}{vies_txt}: "{titulo}"'
+
+    articles_block = "\n".join(_fmt_artigo(i, a) for i, a in enumerate(materias, 1))
+    period_label = dossie.get("meta_info") or (
+        "Cobertura permanente" if dossie.get("tipo") == "permanente" else "Cobertura especial"
+    )
+
+    return f"""Você é o editor-chefe de geopolítica do portal "Rodando o Mundo — Atlas Jornalístico".
+Sua missão é estruturar a camada analítica de um Dossiê Temático com rigor factual, neutralidade editorial (padrão agência de notícias como Reuters/AFP) e clareza visual.
+
+DATA DE REFERÊNCIA ATUAL: {today_iso}
+
+DADOS DO DOSSIÊ:
+- Título: {dossie.get("titulo", "")}
+- Escopo/Resumo: {dossie.get("subtitulo", "")}
+- Janela Temporal: {period_label}
+- Países/Blocos Principais: {", ".join(paises) if paises else "Não especificado"}
+- Palavras-chave: {", ".join(tags) if tags else "Não especificadas"}
+
+MANCHETES RECENTES COLETADAS NO ATLAS (multi-perspectiva):
+{articles_block or "Nenhuma matéria recente vinculada; utilize o conhecimento histórico e geopolítico consolidado."}
+
+DIRETRIZES OBRIGATÓRIAS:
+1. SÍNTESE EXECUTIVA ("O que está em jogo"):
+   - Escreva em Português do Brasil (PT-BR), tom analítico, direto e sem opinião partidária.
+   - O campo "context" deve explicar em um único parágrafo coeso a raiz do tema e sua relevância atual.
+   - Crie EXATAMENTE 3 pilares ("pillars") cobrindo dimensões complementares (ex: disputa política interna, impacto econômico/mercados e desdobramentos diplomáticos/geopolíticos).
+2. LINHA DO TEMPO INTERATIVA:
+   - Gere entre 5 e 7 marcos cronológicos ordenados do mais antigo para o mais recente/futuro.
+   - Combine antecedentes estruturais recentes com os eventos das manchetes fornecidas e os próximos marcos decisivos previstos.
+   - Classifique corretamente cada item em "past" (antes de {today_iso}), "turning_point" (o evento central/virada) ou "upcoming" (após {today_iso}).
+3. RIGOR E CONCISÃO:
+   - Respeite estritamente os limites de caracteres indicados no schema para não quebrar os cards da interface."""
+
+
+@router.post("/v2/admin/dossies/{slug}/generate")
+def admin_gerar_dossie_ia(
+    slug: str,
+    response: Response,
+    conn: Any = Depends(get_db),
+    _: None = Depends(verificar_admin_token),
+):
+    aplicar_no_cache_headers(response)
+    if conn is None:
+        raise HTTPException(status_code=503, detail="Banco de dados indisponível.")
+
+    slug_norm = slug.strip().lower()
+    dossie = _buscar_dossie_view(conn, slug_norm)
+    if not dossie:
+        raise HTTPException(status_code=404, detail=f"Dossiê '{slug_norm}' não encontrado.")
+
+    materias: List[Dict[str, Any]] = []
+    try:
+        with conn.cursor() as cur:
+            cur.execute(
+                """SELECT m.materia_titulo, m.materia_url, m.veiculo_nome, m.pais_veiculo, m.vies, m.publicado_em
+                   FROM dossie_materias m JOIN dossies d ON d.id = m.dossie_id
+                   WHERE d.slug = %s
+                   ORDER BY m.publicado_em DESC NULLS LAST
+                   LIMIT 30;""",
+                (slug_norm,),
+            )
+            materias = [dict(r) for r in cur.fetchall()]
+    except Exception:  # noqa: BLE001
+        materias = []
+
+    api_key = os.getenv("GEMINI_API_KEY", "").strip()
+    if not api_key:
+        raise HTTPException(status_code=503, detail="GEMINI_API_KEY não configurada no ambiente.")
+
+    try:
+        from google import genai
+        from google.genai import types
+    except Exception as exc:  # noqa: BLE001
+        raise HTTPException(status_code=503, detail=f"SDK google-genai indisponível: {exc}") from exc
+
+    today_iso = datetime.now(timezone.utc).date().isoformat()
+    prompt = _montar_prompt_geracao_dossie(dossie, materias, today_iso)
+
+    model_name = os.getenv("GEMINI_DOSSIER_MODEL", "gemini-2.5-flash")
+    try:
+        client = genai.Client(api_key=api_key, http_options=types.HttpOptions(timeout=120_000))
+        result = client.models.generate_content(
+            model=model_name,
+            contents=prompt,
+            config=types.GenerateContentConfig(
+                response_mime_type="application/json",
+                response_schema=DossierGenerationModel,
+                temperature=0.3,
+            ),
+        )
+        generated: Optional[DossierGenerationModel] = getattr(result, "parsed", None)
+        if generated is None:
+            generated = DossierGenerationModel.model_validate_json(result.text)
+    except Exception as exc:  # noqa: BLE001
+        raise HTTPException(status_code=502, detail=f"Falha ao gerar conteúdo com a IA: {exc}") from exc
+
+    payload = generated.model_dump()
+    timeline = payload.get("timeline") or []
+    timeline.sort(key=lambda x: (x.get("date") or ""))
+
+    ai_metadata = {
+        "model": model_name,
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "articles_analyzed": len(materias),
+    }
+
+    from psycopg.types.json import Jsonb
+
+    try:
+        with conn.cursor() as cur:
+            cur.execute(
+                """UPDATE dossies
+                   SET executive_summary = %(executive_summary)s,
+                       timeline = %(timeline)s,
+                       workflow_status = 'review',
+                       ai_metadata = %(ai_metadata)s,
+                       ultima_atualizacao = NOW()
+                   WHERE slug = %(slug)s;""",
+                {
+                    "slug": slug_norm,
+                    "executive_summary": Jsonb(payload.get("executive_summary") or {}),
+                    "timeline": Jsonb(timeline),
+                    "ai_metadata": Jsonb(ai_metadata),
+                },
+            )
+        conn.commit()
+    except Exception as exc:  # noqa: BLE001
+        conn.rollback()
+        raise HTTPException(status_code=500, detail=f"Falha ao salvar conteúdo gerado: {exc}") from exc
+
+    atualizado = _buscar_dossie_view(conn, slug_norm)
+    return {"ok": True, "dossie": atualizado}

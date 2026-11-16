@@ -109,6 +109,7 @@
         <a class="header-nav-link" href="/radar" data-spa-link id="nav-radar">Radar</a>
         <a class="header-nav-link" href="/resumo-do-dia" data-spa-link id="nav-resumo-dia">Resumo do Dia</a>
         <a class="header-nav-link" href="/temas" data-spa-link id="nav-dossies">Dossiês</a>
+        <a class="header-nav-link" href="/radar" data-spa-link id="nav-curadoria">Curadoria</a>
         <a class="header-nav-link" href="/clube" data-spa-link id="nav-apoie">Apoie</a>
 
         <button class="support-link fav-top-btn" id="fav-top-btn" type="button" aria-label="Meus favoritos"
@@ -161,6 +162,7 @@
       <a class="mobile-nav-link" href="/radar" data-spa-link id="mobile-nav-radar">Radar</a>
       <a class="mobile-nav-link" href="/resumo-do-dia" data-spa-link id="mobile-nav-resumo-dia">Resumo do Dia</a>
       <a class="mobile-nav-link" href="/temas" data-spa-link id="mobile-nav-dossies">Dossiês</a>
+      <a class="mobile-nav-link" href="/radar" data-spa-link id="mobile-nav-curadoria">Curadoria</a>
       <a class="mobile-nav-link" href="/clube" data-spa-link id="mobile-nav-apoie">Apoie</a>
     </div>
   </nav>
@@ -447,30 +449,17 @@
     <!-- Nova tela de Comparação de Cobertura Editorial (/comparar) -->
     <section class="comparison-view" id="comparison-view" hidden aria-label="Comparação de Cobertura Editorial"></section>
 
-    <!-- SUG-CURADORIA-IA: Vitrine de Temas em Alta pela Curadoria IA -->
-    <section id="vitrine-ia" class="vitrine-ia-section" aria-label="Temas em Alta pela Curadoria IA">
-      <div class="vitrine-ia-header">
-        <div class="vitrine-ia-title-group">
-          <div class="vitrine-ia-badge-row">
-            <span class="vitrine-ia-badge"><span class="vitrine-ia-pulse" aria-hidden="true"></span> Curadoria IA · Tempo Real</span>
-          </div>
-          <h2 class="vitrine-ia-title">Radar em Alta &amp; Cruzamento Editorial</h2>
-          <p class="vitrine-ia-subtitle">Conecta acontecimentos globais em tempo real às editorias do portal e destaca sínteses de contexto verificadas.</p>
+    <!-- SUG-182: Dossiês em Foco na Home (rotativo a cada 40 min) — substitui a Vitrine de Curadoria IA -->
+    <section id="dossies-rotativos" class="editorial-section dossies-rotativos-section" aria-label="Dossiês em foco">
+      <div class="editorial-section-head">
+        <div>
+          <p class="editorial-eyebrow">COBERTURA EM TEMPO REAL · DOSSIÊS</p>
+          <h2 id="dossies-rotativos-titulo">Dossiês em Foco</h2>
+          <p class="editorial-section-sub">Seleção rotativa de dossiês do atlas, atualizada periodicamente para não poluir a home.</p>
         </div>
-        <div class="vitrine-ia-actions"></div>
+        <a href="/dossies" class="btn btn-secondary" data-spa-link>Ver todos os dossiês →</a>
       </div>
-
-      <div class="vitrine-ia-chips" id="vitrine-ia-chips" role="tablist" aria-label="Filtrar temas em alta por editoria">
-        <button type="button" class="vitrine-ia-chip is-active" data-cat="" role="tab" aria-selected="true">Todos</button>
-        <button type="button" class="vitrine-ia-chip" data-cat="Politica" role="tab" aria-selected="false">Política</button>
-        <button type="button" class="vitrine-ia-chip" data-cat="Economia" role="tab" aria-selected="false">Economia</button>
-        <button type="button" class="vitrine-ia-chip" data-cat="Cultura" role="tab" aria-selected="false">Cultura</button>
-        <button type="button" class="vitrine-ia-chip" data-cat="Eleicoes" role="tab" aria-selected="false">Eleições</button>
-        <button type="button" class="vitrine-ia-chip" data-cat="Geopolitica_Radar" role="tab" aria-selected="false">Radar</button>
-        <button type="button" class="vitrine-ia-chip" data-cat="Resumo_Ultimas" role="tab" aria-selected="false">Resumo &amp; Últimas</button>
-      </div>
-
-      <div id="vitrine-ia-grid" class="vitrine-ia-grid" aria-live="polite"></div>
+      <div id="dossies-rotativos-grid" class="hubs-cards-grid" aria-live="polite"></div>
     </section>
 
     <div class="editorial-home-wrap" id="editorial-home-wrap" hidden>

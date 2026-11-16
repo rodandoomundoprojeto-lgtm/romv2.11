@@ -1,5 +1,8 @@
 name: Agente de Curadoria IA
 
+permissions:
+  contents: write
+
 on:
   schedule:
     # A cada 3 horas (UTC)
@@ -50,4 +53,19 @@ jobs:
           name: curadoria-payload
           path: curadoria/output/ultimo_payload.json
           if-no-files-found: ignore
+
+      - name: Commitar snapshot da vitrine (data/vitrine_ia.json)
+        if: always()
+        run: |
+          if [ -f data/vitrine_ia.json ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add data/vitrine_ia.json
+            if ! git diff --cached --quiet; then
+              git commit -m "chore(pipeline): atualiza vitrine_ia.json (curadoria) [skip ci]"
+              git push
+            else
+              echo "Sem mudanças em data/vitrine_ia.json"
+            fi
+          fi
 

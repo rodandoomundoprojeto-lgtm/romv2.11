@@ -136,7 +136,7 @@ function construirHeadersCache(isRefresh) {
   return {
     'Cache-Control': isRefresh
       ? 'no-store, no-cache, must-revalidate'
-      : 'public, max-age=120, s-maxage=300',
+      : 'public, max-age=60, s-maxage=120',
     'X-Content-Type-Options': 'nosniff',
     ...CORS_HEADERS,
   };

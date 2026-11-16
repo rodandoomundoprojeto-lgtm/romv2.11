@@ -201,7 +201,7 @@ export async function handleAtlasPais(request, env = {}) {
 
   // 2. Tradução em paralelo para PT-BR em países não lusófonos (até 12 itens)
   if (!PT_COUNTRIES.has(pais) && items.length > 0) {
-    const alvos = items.slice(0, 12);
+    const alvos = items.slice(0, 4);
     await Promise.all(
       alvos.map(async (it) => {
         if (!it.titleOriginal) return;
@@ -216,6 +216,13 @@ export async function handleAtlasPais(request, env = {}) {
       })
     );
   }
+
+  // SUG-181: ordena da última notícia (mais recente) para a mais antiga
+  items.sort((a, b) => {
+    const da = a && a.publishedAt ? new Date(a.publishedAt).getTime() : 0;
+    const db = b && b.publishedAt ? new Date(b.publishedAt).getTime() : 0;
+    return (isNaN(db) ? 0 : db) - (isNaN(da) ? 0 : da);
+  });
 
   // Salva no cache local
   CACHE_LOCAL.set(cacheKey, { timestamp: agora, items });

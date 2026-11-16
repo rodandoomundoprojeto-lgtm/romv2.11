@@ -527,6 +527,133 @@
       border-color: var(--bias-E);
       background: color-mix(in srgb, var(--bias-E) 12%, var(--surface));
     }
+  /* Áreas minimizáveis (collapsible cards) */
+  .admin-card { position: relative; }
+  .admin-card-head { position: relative; padding-right: 2.6rem; }
+  .admin-collapse-btn {
+    position: absolute;
+    right: var(--space-4);
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.95rem;
+    line-height: 1;
+    padding: 0.25rem 0.6rem;
+    border: 1px solid var(--border);
+    background: var(--surface-2);
+    color: var(--text-muted);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: background var(--transition), border-color var(--transition), color var(--transition);
+  }
+  .admin-collapse-btn:hover {
+    border-color: var(--primary);
+    color: var(--text);
+  }
+  .admin-card.collapsed > *:not(.admin-card-head) {
+    display: none !important;
+  }
+  .admin-card.collapsed .admin-card-head {
+    margin-bottom: 0;
+  }
+
+  /* Responsividade mobile: evita cortes e permite rolagem horizontal das tabelas */
+  html { overflow-x: auto !important; }
+  body { overflow-x: visible !important; }
+
+  @media (max-width: 768px) {
+    .admin-wrap {
+      max-width: 100%;
+      padding: var(--space-3) var(--space-2) var(--space-8);
+      gap: var(--space-3);
+    }
+    .admin-card {
+      padding: var(--space-3);
+      border-radius: var(--radius-md);
+    }
+    .admin-card-head {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--space-2);
+      padding-right: 2.4rem;
+    }
+    .admin-card-title {
+      font-size: var(--text-md, 1rem);
+    }
+    .admin-auth-bar {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .admin-field {
+      min-width: 0;
+      width: 100%;
+    }
+    .admin-controls-row {
+      flex-direction: column;
+      align-items: stretch;
+      gap: var(--space-3);
+    }
+    .admin-form-grid {
+      grid-template-columns: 1fr;
+    }
+    .admin-modal-grid {
+      grid-template-columns: 1fr;
+    }
+    .admin-modal {
+      max-width: 96vw;
+      max-height: 94vh;
+      padding: var(--space-3);
+    }
+    .admin-modal-lg {
+      max-width: 96vw;
+    }
+    .admin-table-wrap {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      max-width: 100%;
+    }
+    .admin-table {
+      min-width: 520px;
+      font-size: 0.78rem;
+    }
+    .admin-table th,
+    .admin-table td {
+      padding: 0.45rem 0.55rem;
+      white-space: nowrap;
+    }
+    .admin-table td .admin-sub {
+      white-space: normal;
+      max-width: 220px;
+    }
+    .admin-actions {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .admin-btn {
+      white-space: normal;
+    }
+    .dossie-filters {
+      overflow-x: auto;
+      flex-wrap: nowrap;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 0.25rem;
+    }
+    .admin-toast {
+      left: 0.75rem;
+      right: 0.75rem;
+      bottom: 0.75rem;
+      min-width: 0;
+      max-width: none;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .admin-table {
+      min-width: 460px;
+    }
+    .topbar .brand-text .brand-sub {
+      display: none;
+    }
+  }
   </style>
 </head>
 
@@ -889,11 +1016,68 @@
         </div>
       </div>
 
+      <hr style="border:0;border-top:1px solid rgba(255,255,255,.1);margin:18px 0;" />
+      <div id="dossie-ai-section" style="display:none;">
+        <div class="admin-card-head" style="margin-bottom:10px;align-items:flex-start;">
+          <div>
+            <h4 class="admin-card-title" style="font-size:1rem;margin:0;">Dossiês 2.0 — Camada Editorial (IA)</h4>
+            <p class="admin-sub" id="d-ai-meta" style="margin-top:4px;">Gere, revise e publique a Síntese Executiva e a Linha do Tempo.</p>
+          </div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;">
+            <span id="d-workflow-badge" class="badge">workflow: -</span>
+            <button id="btn-gerar-ia-dossie" class="admin-btn admin-btn-sm" type="button">✨ Gerar / Atualizar com IA</button>
+          </div>
+        </div>
+
+        <div class="admin-field full-span" style="margin-bottom:12px;">
+          <label for="d-exec-context">Síntese Executiva — Contexto (350-500 chars recomendado)</label>
+          <textarea id="d-exec-context" class="admin-textarea" rows="4" placeholder="Explique a raiz do tema e por que importa agora..."></textarea>
+          <div class="admin-sub"><span id="d-exec-context-count">0</span> caracteres</div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin-bottom:14px;">
+          <div class="admin-field" style="padding:10px;border:1px solid rgba(255,255,255,.08);border-radius:10px;">
+            <label>Pilar 01 — Categoria</label>
+            <select id="d-p0-cat" class="admin-input"><option value="politica">Política & Poder</option><option value="economia">Economia & Mercados</option><option value="geopolitica">Geopolítica</option><option value="seguranca">Defesa & Segurança</option><option value="sociedade">Sociedade</option></select>
+            <label style="margin-top:6px;display:block;">Título</label>
+            <input id="d-p0-title" class="admin-input" type="text" maxlength="60" placeholder="Título curto" />
+            <label style="margin-top:6px;display:block;">Descrição</label>
+            <textarea id="d-p0-desc" class="admin-textarea" rows="3" maxlength="220" placeholder="Análise objetiva em 2 linhas"></textarea>
+          </div>
+          <div class="admin-field" style="padding:10px;border:1px solid rgba(255,255,255,.08);border-radius:10px;">
+            <label>Pilar 02 — Categoria</label>
+            <select id="d-p1-cat" class="admin-input"><option value="politica">Política & Poder</option><option value="economia">Economia & Mercados</option><option value="geopolitica">Geopolítica</option><option value="seguranca">Defesa & Segurança</option><option value="sociedade">Sociedade</option></select>
+            <label style="margin-top:6px;display:block;">Título</label>
+            <input id="d-p1-title" class="admin-input" type="text" maxlength="60" placeholder="Título curto" />
+            <label style="margin-top:6px;display:block;">Descrição</label>
+            <textarea id="d-p1-desc" class="admin-textarea" rows="3" maxlength="220" placeholder="Análise objetiva em 2 linhas"></textarea>
+          </div>
+          <div class="admin-field" style="padding:10px;border:1px solid rgba(255,255,255,.08);border-radius:10px;">
+            <label>Pilar 03 — Categoria</label>
+            <select id="d-p2-cat" class="admin-input"><option value="politica">Política & Poder</option><option value="economia">Economia & Mercados</option><option value="geopolitica">Geopolítica</option><option value="seguranca">Defesa & Segurança</option><option value="sociedade">Sociedade</option></select>
+            <label style="margin-top:6px;display:block;">Título</label>
+            <input id="d-p2-title" class="admin-input" type="text" maxlength="60" placeholder="Título curto" />
+            <label style="margin-top:6px;display:block;">Descrição</label>
+            <textarea id="d-p2-desc" class="admin-textarea" rows="3" maxlength="220" placeholder="Análise objetiva em 2 linhas"></textarea>
+          </div>
+        </div>
+
+        <div class="admin-field full-span">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:6px;">
+            <label style="margin:0;">Linha do Tempo (5-7 marcos) — edite em JSON para controle total</label>
+            <button id="btn-timeline-add" class="admin-btn admin-btn-sm" type="button" title="Adicionar item modelo">+ Marco</button>
+          </div>
+          <textarea id="d-timeline-json" class="admin-textarea" rows="10" style="font-family:ui-monospace,monospace;font-size:12px;" placeholder='[{"date":"2026-10-01","display_date":"Out 2026","title":"...","summary":"...","type":"past"}]'></textarea>
+          <div class="admin-sub">Campos por item: <code>date</code> (YYYY-MM-DD), <code>display_date</code>, <code>title</code>, <code>summary</code>, <code>type</code> (past|turning_point|upcoming).</div>
+        </div>
+      </div>
+
       <div id="modal-dossie-banner" class="admin-banner"></div>
 
-      <div class="admin-modal-foot">
+      <div class="admin-modal-foot" style="gap:8px;flex-wrap:wrap;">
         <button id="btn-cancelar-modal-dossie" class="admin-btn" type="button">Cancelar</button>
         <button id="btn-salvar-dossie" class="admin-btn admin-btn-primary" type="button">Salvar Dossiê</button>
+        <button id="btn-publicar-dossie-ia" class="admin-btn admin-btn-primary" type="button" style="display:none;background:#059669;border-color:#059669;">Aprovar e Publicar no Portal</button>
       </div>
     </div>
   </div>
@@ -914,6 +1098,38 @@
       const readSaved = (k) => {
         try { return localStorage.getItem(k) || sessionStorage.getItem(k) || ''; } catch (e) { return ''; }
       };
+
+      // Áreas minimizáveis: adiciona botão de recolher em cada card
+      function initCollapsibleCards() {
+        const cards = document.querySelectorAll('.admin-card');
+        cards.forEach((card, idx) => {
+          const head = card.querySelector('.admin-card-head');
+          if (!head) return;
+          const key = 'rom_admin_card_collapsed_' + idx;
+          let btn = head.querySelector('.admin-collapse-btn');
+          if (!btn) {
+            btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'admin-collapse-btn';
+            btn.setAttribute('aria-label', 'Minimizar ou expandir área');
+            btn.textContent = '−';
+            head.appendChild(btn);
+          }
+          const apply = (collapsed) => {
+            card.classList.toggle('collapsed', collapsed);
+            btn.textContent = collapsed ? '+' : '−';
+            btn.setAttribute('aria-expanded', String(!collapsed));
+          };
+          let collapsed = false;
+          try { collapsed = localStorage.getItem(key) === '1'; } catch (e) { }
+          apply(collapsed);
+          btn.addEventListener('click', () => {
+            const now = !card.classList.contains('collapsed');
+            apply(now);
+            try { localStorage.setItem(key, now ? '1' : '0'); } catch (e) { }
+          });
+        });
+      }
 
       const state = {
         apiBase: readSaved('rom_admin_api') || defaultApiBase,
@@ -1469,6 +1685,83 @@
         renderDossies();
       }
 
+      function setDossieAiSectionVisible(visible) {
+        const sec = $('dossie-ai-section');
+        const pub = $('btn-publicar-dossie-ia');
+        if (sec) sec.style.display = visible ? 'block' : 'none';
+        if (pub) pub.style.display = visible ? 'inline-flex' : 'none';
+      }
+
+      function workflowBadgeLabel(ws) {
+        if (ws === 'published') return 'Publicado';
+        if (ws === 'review') return 'Aguardando Revisão IA';
+        return 'Rascunho';
+      }
+
+      function renderDossieWorkflowBadge(ws) {
+        const el = $('d-workflow-badge');
+        if (!el) return;
+        const label = workflowBadgeLabel(ws || 'draft');
+        el.textContent = label;
+        el.className = 'badge ' + (ws === 'published' ? 'badge-ok' : (ws === 'review' ? 'badge-warn' : ''));
+      }
+
+      function getAiFieldsFromModal() {
+        const context = ($('d-exec-context').value || '').trim();
+        const pillars = [0,1,2].map((i) => ({
+          title: ($(`d-p${i}-title`).value || '').trim(),
+          description: ($(`d-p${i}-desc`).value || '').trim(),
+          category: $(`d-p${i}-cat`).value || 'politica'
+        }));
+        let timeline = [];
+        const raw = ($('d-timeline-json').value || '').trim();
+        if (raw) {
+          try {
+            const parsed = JSON.parse(raw);
+            if (Array.isArray(parsed)) timeline = parsed;
+          } catch (e) {
+            throw new Error('JSON da Linha do Tempo inválido: ' + e.message);
+          }
+        }
+        return { executive_summary: { context, pillars }, timeline };
+      }
+
+      function fillAiFieldsFromDossie(dossie) {
+        const es = dossie.executive_summary || {};
+        const pillars = Array.isArray(es.pillars) ? es.pillars : [];
+        $('d-exec-context').value = es.context || '';
+        $('d-exec-context-count').textContent = String(($('d-exec-context').value || '').length);
+        [0,1,2].forEach((i) => {
+          const p = pillars[i] || { title: '', description: '', category: ['politica','economia','geopolitica'][i] || 'politica' };
+          $(`d-p${i}-cat`).value = p.category || 'politica';
+          $(`d-p${i}-title`).value = p.title || '';
+          $(`d-p${i}-desc`).value = p.description || '';
+        });
+        const tl = Array.isArray(dossie.timeline) ? dossie.timeline : [];
+        $('d-timeline-json').value = tl.length ? JSON.stringify(tl, null, 2) : '[]';
+        renderDossieWorkflowBadge(dossie.workflow_status || 'published');
+        const meta = dossie.ai_metadata || {};
+        if (meta.generated_at) {
+          const dt = new Date(meta.generated_at);
+          $('d-ai-meta').textContent = `Última geração IA: ${dt.toLocaleString('pt-BR')} · ${meta.articles_analyzed ?? 0} matérias analisadas${meta.model ? ' · ' + meta.model : ''}`;
+        } else {
+          $('d-ai-meta').textContent = 'Gere, revise e publique a Síntese Executiva e a Linha do Tempo.';
+        }
+      }
+
+      function clearAiFields() {
+        $('d-exec-context').value = '';
+        $('d-exec-context-count').textContent = '0';
+        [0,1,2].forEach((i) => {
+          $(`d-p${i}-cat`).value = ['politica','economia','geopolitica'][i];
+          $(`d-p${i}-title`).value = '';
+          $(`d-p${i}-desc`).value = '';
+        });
+        $('d-timeline-json').value = '[]';
+        renderDossieWorkflowBadge('draft');
+        $('d-ai-meta').textContent = 'Gere, revise e publique a Síntese Executiva e a Linha do Tempo.';
+      }
+
       function abrirModalDossie(mode, dossie = null) {
         state.dossieModalMode = mode;
         state.slugManuallyEdited = false;
@@ -1478,7 +1771,7 @@
           state.editingDossieSlug = null;
           state.editingDossieTipo = 'especial';
           $('modal-dossie-title').textContent = 'Novo Dossiê Especial';
-          $('modal-dossie-sub').textContent = 'Criação de cobertura especial temporária (POST /v2/admin/dossies).';
+          $('modal-dossie-sub').textContent = 'Criação de cobertura especial temporária (POST /v2/admin/dossies). Salve primeiro para habilitar a geração com IA.';
           $('d-slug').value = '';
           $('d-slug').disabled = false;
           $('d-data-inicio-req').classList.remove('hidden');
@@ -1492,12 +1785,14 @@
           $('d-palavras-chave').value = '';
           $('d-paises').value = '';
           $('btn-salvar-dossie').textContent = 'Criar Dossiê';
+          clearAiFields();
+          setDossieAiSectionVisible(false);
         } else if (dossie) {
           state.editingDossieSlug = dossie.slug;
           state.editingDossieTipo = dossie.tipo || 'especial';
           $('modal-dossie-title').textContent = `Editar Dossiê: ${dossie.titulo}`;
           $('modal-dossie-sub').textContent = dossie.tipo === 'permanente'
-            ? `Dossiê Permanente (${dossie.slug}) — slug bloqueado; título, subtítulo, tags e período editáveis.`
+            ? `Dossiê Permanente (${dossie.slug}) — slug bloqueado; edite metadados e camada editorial 2.0.`
             : `Dossiê Especial (${dossie.slug}) — atualização via PATCH /v2/admin/dossies/${dossie.slug}.`;
           $('d-slug').value = dossie.slug || '';
           $('d-slug').disabled = true;
@@ -1513,6 +1808,8 @@
           $('d-palavras-chave').value = Array.isArray(regras.palavras_chave) ? regras.palavras_chave.join(', ') : '';
           $('d-paises').value = Array.isArray(regras.paises) ? regras.paises.join(', ') : '';
           $('btn-salvar-dossie').textContent = 'Salvar Alterações';
+          fillAiFieldsFromDossie(dossie);
+          setDossieAiSectionVisible(true);
         }
 
         $('modal-dossie').classList.add('open');
@@ -1582,7 +1879,7 @@
         }
       });
 
-      $('btn-salvar-dossie').addEventListener('click', async () => {
+      async function salvarDossieModal(targetWorkflowStatus = null) {
         hideBanner('modal-dossie-banner');
         const titulo = $('d-titulo').value.trim();
         const slug = slugify($('d-slug').value.trim() || titulo);
@@ -1597,27 +1894,24 @@
 
         if (!titulo) {
           showBanner('modal-dossie-banner', 'Informe o título do dossiê.', 'err');
-          return;
+          return null;
         }
         if (state.dossieModalMode === 'create' && !slug) {
           showBanner('modal-dossie-banner', 'Informe um slug válido para o dossiê.', 'err');
-          return;
+          return null;
         }
         if (state.dossieModalMode === 'create' && !dataInicio) {
           showBanner('modal-dossie-banner', 'A data de início é obrigatória para criar um dossiê especial.', 'err');
-          return;
+          return null;
         }
         if (dataInicio && dataFim && dataFim < dataInicio) {
           showBanner('modal-dossie-banner', 'A data de término deve ser maior ou igual à data de início.', 'err');
-          return;
+          return null;
         }
-
-        const btn = $('btn-salvar-dossie');
-        btn.disabled = true;
 
         try {
           if (state.dossieModalMode === 'create') {
-            await apiFetch('/v2/admin/dossies', {
+            const data = await apiFetch('/v2/admin/dossies', {
               method: 'POST',
               body: JSON.stringify({
                 slug,
@@ -1628,44 +1922,119 @@
                 data_inicio: dataInicio,
                 data_fim: dataFim || null,
                 meta_info: metaInfo || null,
-                regras_classificacao: {
-                  palavras_chave: palavrasChave,
-                  paises
-                }
+                regras_classificacao: { palavras_chave: palavrasChave, paises }
               })
             });
             fecharModalDossie();
             showToast(`Dossiê "${titulo}" criado com sucesso!`, 'ok');
-            showBanner('dossies-banner', `Dossiê "${titulo}" criado.`, 'ok');
+            showBanner('dossies-banner', `Dossiê "${titulo}" criado. Abra para gerar conteúdo com IA.`, 'ok');
+            await carregarDossiesAdmin();
+            return data;
           } else {
-            await apiFetch(`/v2/admin/dossies/${encodeURIComponent(state.editingDossieSlug)}`, {
+            let ai = { executive_summary: { context: '', pillars: [] }, timeline: [] };
+            try {
+              ai = getAiFieldsFromModal();
+            } catch (e) {
+              showBanner('modal-dossie-banner', e.message, 'err');
+              return null;
+            }
+            const payload = {
+              titulo,
+              subtitulo,
+              categoria,
+              icone_ou_bandeira: icone,
+              data_inicio: dataInicio || null,
+              data_fim: dataFim || null,
+              meta_info: metaInfo || null,
+              regras_classificacao: { palavras_chave: palavrasChave, paises },
+              executive_summary: ai.executive_summary,
+              timeline: ai.timeline
+            };
+            if (targetWorkflowStatus) payload.workflow_status = targetWorkflowStatus;
+
+            const data = await apiFetch(`/v2/admin/dossies/${encodeURIComponent(state.editingDossieSlug)}`, {
               method: 'PATCH',
-              body: JSON.stringify({
-                titulo,
-                subtitulo,
-                categoria,
-                icone_ou_bandeira: icone,
-                data_inicio: dataInicio || null,
-                data_fim: dataFim || null,
-                meta_info: metaInfo || null,
-                regras_classificacao: {
-                  palavras_chave: palavrasChave,
-                  paises
-                }
-              })
+              body: JSON.stringify(payload)
             });
-            fecharModalDossie();
-            showToast(`Dossiê "${titulo}" atualizado com sucesso!`, 'ok');
-            showBanner('dossies-banner', `Dossiê "${titulo}" atualizado.`, 'ok');
+            const updated = data.dossie || data;
+            // Atualiza estado local/modal sem fechar para permitir fluxo de revisão
+            const idx = (state.dossies || []).findIndex((d) => d.slug === state.editingDossieSlug);
+            if (idx >= 0) state.dossies[idx] = updated;
+            if (targetWorkflowStatus === 'published') {
+              fecharModalDossie();
+              showToast(`Dossiê "${titulo}" aprovado e publicado!`, 'ok');
+              showBanner('dossies-banner', `Dossiê "${titulo}" publicado no portal.`, 'ok');
+            } else {
+              fillAiFieldsFromDossie(updated);
+              showToast(`Dossiê "${titulo}" salvo.`, 'ok');
+              showBanner('modal-dossie-banner', 'Alterações salvas com sucesso.', 'ok');
+            }
+            await carregarDossiesAdmin();
+            return data;
           }
-          await carregarDossiesAdmin();
         } catch (err) {
           showBanner('modal-dossie-banner', 'Erro ao salvar dossiê: ' + err.message, 'err');
           showToast('Erro ao salvar dossiê: ' + err.message, 'err');
+          return null;
+        }
+      }
+
+      $('btn-salvar-dossie').addEventListener('click', async () => {
+        const btn = $('btn-salvar-dossie');
+        btn.disabled = true;
+        try { await salvarDossieModal(null); } finally { btn.disabled = false; }
+      });
+
+      $('btn-publicar-dossie-ia').addEventListener('click', async () => {
+        if (state.dossieModalMode !== 'edit') return;
+        const btn = $('btn-publicar-dossie-ia');
+        btn.disabled = true;
+        try { await salvarDossieModal('published'); } finally { btn.disabled = false; }
+      });
+
+      $('btn-gerar-ia-dossie').addEventListener('click', async () => {
+        if (state.dossieModalMode !== 'edit' || !state.editingDossieSlug) return;
+        const btn = $('btn-gerar-ia-dossie');
+        const prev = btn.textContent;
+        btn.disabled = true;
+        btn.textContent = 'Gerando análise...';
+        hideBanner('modal-dossie-banner');
+        try {
+          const data = await apiFetch(`/v2/admin/dossies/${encodeURIComponent(state.editingDossieSlug)}/generate`, { method: 'POST' });
+          const updated = data.dossie || data;
+          const idx = (state.dossies || []).findIndex((d) => d.slug === state.editingDossieSlug);
+          if (idx >= 0) state.dossies[idx] = updated;
+          fillAiFieldsFromDossie(updated);
+          showBanner('modal-dossie-banner', 'Rascunho gerado pela IA! Revise os campos antes de publicar.', 'ok');
+          showToast('Conteúdo gerado pela IA (status: revisão).', 'ok');
+          await carregarDossiesAdmin();
+        } catch (err) {
+          showBanner('modal-dossie-banner', 'Erro ao gerar com IA: ' + err.message, 'err');
+          showToast('Erro na geração com IA.', 'err');
         } finally {
           btn.disabled = false;
+          btn.textContent = prev;
         }
       });
+
+      $('d-exec-context').addEventListener('input', () => {
+        $('d-exec-context-count').textContent = String(($('d-exec-context').value || '').length);
+      });
+
+      $('btn-timeline-add').addEventListener('click', () => {
+        let arr = [];
+        try { arr = JSON.parse($('d-timeline-json').value || '[]'); if (!Array.isArray(arr)) arr = []; } catch (e) { arr = []; }
+        arr.push({
+          date: new Date().toISOString().slice(0,10),
+          display_date: 'MMM AAAA',
+          title: 'Novo marco',
+          summary: 'Resumo objetivo do marco...',
+          type: 'upcoming'
+        });
+        $('d-timeline-json').value = JSON.stringify(arr, null, 2);
+      });
+
+      initCollapsibleCards();
 
       if (state.token) {
         conectarEPreencher();
