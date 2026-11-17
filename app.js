@@ -14142,6 +14142,7 @@
     var submitBtn = document.getElementById('parceria-lead-submit');
     var nomeInput = document.getElementById('parceria-lead-nome');
     var emailInput = document.getElementById('parceria-lead-email');
+    var cotaSelecionadaAtual = 'geral';
 
     if (!leadDialog) return;
 
@@ -14159,6 +14160,7 @@
     function openLeadModal(btn) {
       var cotaKey = (btn && btn.getAttribute && btn.getAttribute('data-cota')) || 'geral';
       var cotaInfo = getCotaInfo(cotaKey);
+      cotaSelecionadaAtual = cotaKey;
       if (leadDialog) leadDialog.setAttribute('data-cota-selecionada', cotaKey);
       var leadTitleEl = document.getElementById('parceria-lead-title');
       var leadSubtitleEl = document.getElementById('parceria-lead-subtitle');
@@ -14241,7 +14243,7 @@
           nome: nomeVal,
           email: emailVal,
           origem: 'pagina-parcerias',
-          cota_selecionada: cotaKey || 'geral'
+          cota_selecionada: cotaSelecionadaAtual
         };
 
         function handleSuccess() {
