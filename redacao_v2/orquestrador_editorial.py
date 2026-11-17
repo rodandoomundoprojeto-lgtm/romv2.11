@@ -793,6 +793,14 @@ async def executar_orquestrador_editorial_async(
             with advisory_lock(conn, lock_key) as adquirido:
                 if not adquirido:
                     print(f"[editorial_v2] Lock ocupado ({lock_key}). Abortando gravação concorrente.")
+                    registrar_auditoria_execucao(
+                        conn,
+                        job_nome="orquestrador_editorial_v2",
+                        recurso_chave=lock_key,
+                        status="ignorado_lock_ocupado",
+                        documentos_novos=0,
+                        eventos_atualizados=0,
+                    )
                     return None
                 return salvar_resultado_editorial_aprovado(
                     conn=conn,

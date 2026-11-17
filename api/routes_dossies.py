@@ -483,7 +483,7 @@ def admin_remover_dossie(
     with conn.cursor() as cur:
         cur.execute("DELETE FROM dossies WHERE slug = %s;", (slug_norm,))
     conn.commit()
-    return {"ok": True, "deleted_slug": slug_norm}
+    return {"ok": True, "slug": slug_norm}
 
 
 # ---------------------------------------------------------------------------

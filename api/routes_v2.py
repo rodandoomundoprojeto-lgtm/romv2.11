@@ -38,7 +38,16 @@ from redacao_v2.schemas import (
     EvidenciaResolvidaPublica,
     PainelVerificacaoEvento,
 )
-from src.publisher import sortir_cards_rodizio_amplo, normalizar_fonte_key, _timestamp_publicacao
+from src.publisher import (
+    _ler_feed_existente,
+    _timestamp_publicacao,
+    atualizar_card_manual,
+    listar_cards_manuais,
+    normalizar_fonte_key,
+    publicar_card_manual,
+    remover_card_manual,
+    sortir_cards_rodizio_amplo,
+)
 
 router = APIRouter(tags=["Motor Editorial V2 & Pulso 30m"])
 
@@ -498,6 +507,7 @@ async def executar_noticias_quentes_manual(
                     "status": "ignorado_lock_ocupado",
                     "recurso_chave": LOCK_PULSO_KEY,
                     "detalhe": "Já existe uma execução ativa do pipeline de pulso segurando o Advisory Lock.",
+                    "dry_run": modo_dry_run,
                     "total_noticias": 0,
                     "noticias_quentes": [],
                 }
@@ -1438,10 +1448,13 @@ def verificar_admin_token(
     x_admin_user: Optional[str] = Header(default=None, alias="X-Admin-User"),
 ) -> None:
     """
-    Autenticação Bearer para rotas /v2/admin/*:
-    - Aceita o token de máquina (CURADORIA_SECRET_TOKEN / ADMIN_SECRET_TOKEN) sem precisar de nome de usuário.
-    - Aceita nome de admin + senha (X-Admin-User + Bearer <senha>) configurados em ADMIN_USERS.
-    - Mantém fallback para ADMIN_PASSWORD / ADMIN_SENHA quando ADMIN_USERS não estiver definido.
+    Autenticação Bearer simplificada (apenas senha / token de máquina) para rotas /v2/admin/*:
+
+    1. Bearer `<token de máquina>` (CURADORIA_SECRET_TOKEN / ADMIN_SECRET_TOKEN);
+    2. Bearer `<senha>` quando bate com ADMIN_PASSWORD / ADMIN_SENHA ou com algum admin em ADMIN_USERS;
+    3. Bearer `<senha>` + X-Admin-User `<user>` com admin/senha em ADMIN_USERS.
+
+    Erros: `401` sem credencial; `403` com credencial inválida.
     """
     token_esperado = (
         os.getenv("CURADORIA_SECRET_TOKEN")
@@ -1455,42 +1468,36 @@ def verificar_admin_token(
     ).strip()
     admins = _carregar_admins_configurados()
 
-    if not token_esperado and not senha_esperada and not admins:
+    credencial: Optional[str] = None
+    if authorization:
+        esquema, _, valor = authorization.partition(" ")
+        if esquema.strip().lower() == "bearer" and valor.strip():
+            credencial = valor.strip()
+    if not credencial:
         raise HTTPException(
-            status_code=503,
-            detail="Nenhuma credencial administrativa (CURADORIA_SECRET_TOKEN, ADMIN_USERS ou ADMIN_PASSWORD) configurada no servidor.",
+            status_code=401,
+            detail="Credencial ausente ou malformada. Envie: `Authorization: Bearer <token-ou-senha>`.",
         )
-    if not authorization or not authorization.startswith("Bearer "):
-        raise HTTPException(status_code=401, detail="Token ou senha Bearer ausente ou inválido.")
 
-    credencial = authorization.removeprefix("Bearer ").strip()
-    usuario = (x_admin_user or "").strip()
-
-    if usuario:
-        if admins:
-            senha_usuario = admins.get(usuario, "")
-            if senha_usuario and secrets.compare_digest(credencial, senha_usuario):
-                return
-            raise HTTPException(status_code=403, detail="Nome de admin ou senha incorretos.")
-        valido_fallback = (
-            (bool(token_esperado) and secrets.compare_digest(credencial, token_esperado))
-            or (bool(senha_esperada) and secrets.compare_digest(credencial, senha_esperada))
-        )
-        if valido_fallback:
-            return
-        raise HTTPException(status_code=403, detail="Nome de admin ou senha incorretos.")
-
-    # Sem X-Admin-User: aceita token de máquina (Dashboard / scripts / cron)
+    # 1. Token de máquina (Dashboard / scripts / cron)
     if token_esperado and secrets.compare_digest(credencial, token_esperado):
         return
 
-    # Sem X-Admin-User e sem ADMIN_USERS: aceita ADMIN_PASSWORD legado
-    if not admins and senha_esperada and secrets.compare_digest(credencial, senha_esperada):
+    # 2. Senha pura (ADMIN_PASSWORD / ADMIN_SENHA) ou senha de algum admin em ADMIN_USERS
+    if senha_esperada and secrets.compare_digest(credencial, senha_esperada):
         return
-
     if admins:
-        raise HTTPException(status_code=403, detail="Informe o nome do admin e a senha (ou o token oficial).")
-    raise HTTPException(status_code=403, detail="Senha ou token não autorizado.")
+        usuario = (x_admin_user or "").strip()
+        senha_admin = admins.get(usuario) if usuario else None
+        if senha_admin and secrets.compare_digest(credencial, senha_admin):
+            return
+        if not usuario:
+            for _nome_admin, senha_admin_candidata in admins.items():
+                if senha_admin_candidata and secrets.compare_digest(credencial, senha_admin_candidata):
+                    return
+
+    # 3. Sem credencial válida
+    raise HTTPException(status_code=403, detail="Credencial administrativa inválida ou sem permissão.")
 
 
 def _require_db(conn: Any) -> Any:
@@ -1524,6 +1531,55 @@ class AdminEditarSinteseRequest(BaseModel):
     sintese_com_ressalvas: str = Field(min_length=10, max_length=8000)
     tipo_alteracao: Literal["ajuste_menor", "correcao_material"]
     errata: Optional[str] = Field(default=None, max_length=1000)
+
+
+class AdminRadarManualCreateRequest(BaseModel):
+    """Card manual criado via painel administrativo (Radar)."""
+    slug: Optional[str] = Field(default=None, max_length=200)
+    titulo: str = Field(min_length=3, max_length=255)
+    resumo: Optional[str] = Field(default=None, max_length=2000)
+    contexto: Optional[str] = Field(default=None, max_length=8000)
+    categoria: Optional[str] = Field(default=None, max_length=50)
+    urgencia_score: Optional[int] = Field(default=None, ge=0, le=100)
+    fonte_nome: Optional[str] = Field(default=None, max_length=150)
+    fonte_url: Optional[str] = Field(default=None, max_length=2000)
+    pais_regiao: Optional[str] = Field(default=None, max_length=8)
+    coordenadas_geojson: Optional[Dict[str, Any]] = None
+    data_publicacao: Optional[str] = Field(default=None, max_length=40)
+    origem_manual: Optional[bool] = Field(default=True)
+
+
+class AdminRadarManualUpdateRequest(BaseModel):
+    """Card manual atualizado via painel administrativo (PATCH parcial)."""
+    titulo: Optional[str] = Field(default=None, max_length=255)
+    resumo: Optional[str] = Field(default=None, max_length=2000)
+    contexto: Optional[str] = Field(default=None, max_length=8000)
+    categoria: Optional[str] = Field(default=None, max_length=50)
+    urgencia_score: Optional[int] = Field(default=None, ge=0, le=100)
+    fonte_nome: Optional[str] = Field(default=None, max_length=150)
+    fonte_url: Optional[str] = Field(default=None, max_length=2000)
+    palavras_chave: Optional[List[str]] = Field(default=None, max_length=20)
+    data_publicacao: Optional[str] = Field(default=None, max_length=40)
+
+
+class AdminNoticiasQuentesUpdateRequest(BaseModel):
+    """Notícia quente atualizada via painel administrativo (PATCH parcial)."""
+    titulo_curto: Optional[str] = Field(default=None, max_length=160)
+    resumo_pulso: Optional[str] = Field(default=None, max_length=2000)
+    impacto_pratico: Optional[str] = Field(default=None, max_length=2000)
+    categoria: Optional[str] = Field(default=None, max_length=50)
+    urgencia_score: Optional[int] = Field(default=None, ge=0, le=100)
+    relevancia_score: Optional[int] = Field(default=None, ge=0, le=100)
+    nivel_confianca: Optional[str] = Field(default=None, max_length=20)
+    ttl_horas: Optional[int] = Field(default=None, ge=1, le=168)
+    horas_em_destaque: Optional[int] = Field(default=None, ge=1, le=24)
+    status: Optional[str] = Field(default=None, max_length=30)
+    destaque_ate: Optional[str] = Field(default=None, max_length=40)
+    expires_at: Optional[str] = Field(default=None, max_length=40)
+    paises_envolvidos: Optional[List[str]] = Field(default=None)
+    palavras_chave: Optional[List[str]] = Field(default=None)
+    veiculos_origem: Optional[List[str]] = Field(default=None)
+    fontes_urls: Optional[List[str]] = Field(default=None)
 
 
 @router.get("/v2/admin/config/kill-switch", dependencies=[Depends(verificar_admin_token)])
@@ -2048,6 +2104,337 @@ def admin_editar_sintese_evento(
         "tipo_alteracao": payload.tipo_alteracao,
         "aviso_correcao_material": errata_limpa if payload.tipo_alteracao == "correcao_material" else None,
     }
+
+
+# ============================================================================
+# 16. ADMIN RADAR MANUAL & NOTÍCIAS QUENTES CRUD (CONTRATO ADMIN-REBUILD-MODERNO-2026-11)
+# ============================================================================
+
+def _serializar_card_manual_response(card: Dict[str, Any]) -> Dict[str, Any]:
+    """Serializa um card manual para o contrato do Radar (Seção 4.7 do contrato da task)."""
+    return {
+        "id": str(card.get("id") or f"manual-{card.get('slug')}"),
+        "slug": str(card.get("slug") or ""),
+        "titulo": str(card.get("titulo") or ""),
+        "resumo": str(card.get("resumo") or ""),
+        "analise": str(card.get("analise") or ""),
+        "categoria": str(card.get("categoria") or "geral").strip().lower(),
+        "fonte_nome": str(card.get("fonte_nome") or ""),
+        "fonte_url": str(card.get("fonte_url") or ""),
+        "data_publicacao": str(card.get("data_publicacao") or ""),
+        "urgencia_score": int(card.get("urgencia_score") or 80),
+        "paises_envolvidos": list(card.get("paises_envolvidos") or []),
+        "palavras_chave": list(card.get("palavras_chave") or []),
+        "origem_v2": False,
+    }
+
+
+def _serializar_noticia_quente(row: Dict[str, Any]) -> Dict[str, Any]:
+    """Serializa uma notícia quente (admin) no contrato de resposta de `/v2/admin/noticias-quentes`."""
+    return {
+        "slug": row.get("slug"),
+        "batch_id": row.get("batch_id"),
+        "titulo_curto": row.get("titulo_curto"),
+        "resumo_pulso": row.get("resumo_pulso"),
+        "impacto_pratico": row.get("impacto_pratico"),
+        "categoria": row.get("categoria"),
+        "paises_envolvidos": list(row.get("paises_envolvidos") or []),
+        "urgencia_score": int(row.get("urgencia_score") or 0),
+        "relevancia_score": int(row.get("relevancia_score") or 0),
+        "nivel_confianca": row.get("nivel_confianca") or "alta",
+        "ttl_horas": int(row.get("ttl_horas") or 6),
+        "horas_em_destaque": int(row.get("horas_em_destaque") or 6),
+        "veiculos_origem": list(row.get("veiculos_origem") or []),
+        "fontes_urls": list(row.get("fontes_urls") or []),
+        "palavras_chave": list(row.get("palavras_chave") or []),
+        "links_internos_relacionados": _decodificar_jsonb(row.get("links_internos_relacionados"), []),
+        "identificacao_editorial": "Síntese Rodando o Mundo",
+        "atualizado_em": _formatar_horario_editorial(row.get("updated_at")),
+        "destaque_ate": _serializar_valor_temporal(row.get("destaque_ate")),
+        "expires_at": _serializar_valor_temporal(row.get("expires_at")),
+        "updated_at": _serializar_valor_temporal(row.get("updated_at")),
+        "status": row.get("status"),
+    }
+
+
+def _parse_iso_utc(valor: Optional[str]) -> Optional[datetime]:
+    """Converte string ISO-8601 (UTC) em datetime aware UTC para persistência em TIMESTAMPTZ."""
+    if not valor:
+        return None
+    try:
+        dt = datetime.fromisoformat(str(valor).strip().replace("Z", "+00:00"))
+        if dt.tzinfo is None:
+            dt = dt.replace(tzinfo=timezone.utc)
+        return dt.astimezone(timezone.utc)
+    except Exception:  # noqa: BLE001
+        return None
+
+
+@router.get("/v2/admin/execucoes", dependencies=[Depends(verificar_admin_token)])
+def admin_listar_execucoes(
+    response: Response,
+    limit: int = Query(20, ge=1, le=100),
+    conn: Any = Depends(get_db),
+) -> Dict[str, Any]:
+    """Lista as execuções de pipeline registradas em `ai_execucoes_pipeline` (mais recentes primeiro)."""
+    aplicar_no_cache_headers(response)
+    db = _require_db(conn)
+    with db.cursor() as cur:
+        cur.execute(
+            """
+            SELECT
+                id, job_nome, recurso_chave, status, documentos_novos, eventos_atualizados,
+                erro_detalhe, started_at, finished_at
+            FROM ai_execucoes_pipeline
+            ORDER BY started_at DESC, id DESC
+            LIMIT %s;
+            """,
+            (limit,),
+        )
+        rows = cur.fetchall()
+
+    execucoes: List[Dict[str, Any]] = []
+    for r in rows:
+        row = dict(r)
+        execucoes.append({
+            "id": row.get("id"),
+            "job_nome": row.get("job_nome"),
+            "recurso_chave": row.get("recurso_chave"),
+            "status": row.get("status"),
+            "documentos_novos": int(row.get("documentos_novos") or 0),
+            "eventos_atualizados": int(row.get("eventos_atualizados") or 0),
+            "erro_detalhe": row.get("erro_detalhe"),
+            "started_at": _serializar_valor_temporal(row.get("started_at")),
+            "finished_at": _serializar_valor_temporal(row.get("finished_at")),
+        })
+    return {"ok": True, "execucoes": execucoes}
+
+
+@router.get("/v2/admin/radar/manual", dependencies=[Depends(verificar_admin_token)])
+def admin_listar_radar_manual(response: Response) -> Dict[str, Any]:
+    """Lista os cards manuais do Radar (`origem_manual`) gerenciados pelo painel administrativo."""
+    aplicar_no_cache_headers(response)
+    cards = listar_cards_manuais()
+    return {"ok": True, "cards": [_serializar_card_manual_response(c) for c in cards]}
+
+
+@router.post("/v2/admin/radar/manual", dependencies=[Depends(verificar_admin_token)])
+def admin_criar_radar_manual(
+    response: Response,
+    payload: AdminRadarManualCreateRequest,
+) -> Dict[str, Any]:
+    """Cria um card manual no feed do Radar (PostgreSQL via `src.estado_db` + fallback arquivo) e dispara webhook/notifier."""
+    aplicar_no_cache_headers(response)
+    card_in = {
+        "slug": payload.slug,
+        "titulo": payload.titulo,
+        "resumo": payload.resumo,
+        "contexto": payload.contexto,
+        "categoria": payload.categoria,
+        "urgencia_score": payload.urgencia_score,
+        "fonte_nome": payload.fonte_nome,
+        "fonte_url": payload.fonte_url,
+        "pais_regiao": payload.pais_regiao,
+        "coordenadas_geojson": payload.coordenadas_geojson,
+        "data_publicacao": payload.data_publicacao,
+        "origem_manual": payload.origem_manual,
+    }
+    card = publicar_card_manual(card_in)
+    feed = _ler_feed_existente()
+    return {
+        "ok": True,
+        "card": _serializar_card_manual_response(card),
+        "total_feed": len(feed) if isinstance(feed, list) else 0,
+    }
+
+
+@router.patch("/v2/admin/radar/manual/{slug}", dependencies=[Depends(verificar_admin_token)])
+def admin_atualizar_radar_manual(
+    slug: str,
+    response: Response,
+    payload: AdminRadarManualUpdateRequest,
+) -> Dict[str, Any]:
+    """Atualiza campos parciais de um card manual do Radar (por slug)."""
+    aplicar_no_cache_headers(response)
+    card = atualizar_card_manual(slug, payload.model_dump(exclude_none=True))
+    if card is None:
+        raise HTTPException(status_code=404, detail="Card manual não encontrado.")
+    return {"ok": True, "card": _serializar_card_manual_response(card)}
+
+
+@router.delete("/v2/admin/radar/manual/{slug}", dependencies=[Depends(verificar_admin_token)])
+def admin_remover_radar_manual(slug: str, response: Response) -> Dict[str, Any]:
+    """Remove cards manuais do Radar pelo slug."""
+    aplicar_no_cache_headers(response)
+    removidos = remover_card_manual(slug)
+    return {"ok": True, "slug": slug, "removidos": removidos}
+
+
+@router.get("/v2/admin/noticias-quentes", dependencies=[Depends(verificar_admin_token)])
+def admin_listar_noticias_quentes(
+    response: Response,
+    limit: int = Query(50, ge=1, le=200),
+    status: Optional[str] = Query(None, description="Filtrar por status (ativo/publicado/aguardando_revisao/expirado/arquivado)"),
+    conn: Any = Depends(get_db),
+) -> Dict[str, Any]:
+    """Lista notícias quentes em `ai_noticias_quentes` para o painel administrativo (com filtro de status)."""
+    aplicar_no_cache_headers(response)
+    db = _require_db(conn)
+
+    filtros = [
+        "expires_at > NOW()",
+        "destaque_ate > NOW()",
+    ]
+    params: List[Any] = []
+    condicao_status = "status IN ('ativo', 'publicado', 'aguardando_revisao')"
+    if status:
+        condicao_status = "status = %s"
+        params.append(status)
+    filtros.append(condicao_status)
+    params.append(limit)
+    where_sql = " WHERE " + " AND ".join(filtros)
+
+    query = f"""
+        SELECT
+            slug, batch_id, titulo_curto, resumo_pulso, impacto_pratico,
+            categoria, paises_envolvidos, urgencia_score, relevancia_score,
+            nivel_confianca, ttl_horas, horas_em_destaque, veiculos_origem,
+            fontes_urls, palavras_chave, links_internos_relacionados,
+            status, destaque_ate, expires_at, updated_at
+        FROM ai_noticias_quentes
+        {where_sql}
+        ORDER BY urgencia_score DESC, relevancia_score DESC, updated_at DESC
+        LIMIT %s;
+    """
+
+    noticias: List[Dict[str, Any]] = []
+    try:
+        with db.cursor() as cur:
+            cur.execute(query, tuple(params))
+            rows = cur.fetchall()
+        for r in rows:
+            noticias.append(_serializar_noticia_quente(dict(r)))
+    except Exception as e:  # noqa: BLE001
+        try:
+            db.rollback()
+        except Exception:  # noqa: BLE001
+            pass
+        print(f"[Aviso] Erro ao consultar ai_noticias_quentes (admin): {e}")
+
+    return {"ok": True, "noticias": noticias}
+
+
+@router.patch("/v2/admin/noticias-quentes/{slug}", dependencies=[Depends(verificar_admin_token)])
+def admin_atualizar_noticia_quente(
+    slug: str,
+    response: Response,
+    payload: AdminNoticiasQuentesUpdateRequest,
+    conn: Any = Depends(get_db),
+) -> Dict[str, Any]:
+    """Atualiza campos parciais de uma notícia quente em `ai_noticias_quentes`."""
+    aplicar_no_cache_headers(response)
+    db = _require_db(conn)
+    updates = payload.model_dump(exclude_none=True)
+    if not updates:
+        raise HTTPException(status_code=422, detail="Nenhum campo alterável informado para atualização.")
+
+    assignments: List[str] = []
+    params: List[Any] = []
+
+    def _add(col: str, valor: Any) -> None:
+        assignments.append(f"{col} = %s")
+        params.append(valor)
+
+    agora = datetime.now(timezone.utc)
+    if "titulo_curto" in updates:
+        _add("titulo_curto", updates["titulo_curto"])
+    if "resumo_pulso" in updates:
+        _add("resumo_pulso", updates["resumo_pulso"])
+    if "impacto_pratico" in updates:
+        _add("impacto_pratico", updates["impacto_pratico"])
+    if "categoria" in updates:
+        _add("categoria", updates["categoria"])
+    if "urgencia_score" in updates:
+        _add("urgencia_score", int(updates["urgencia_score"]))
+    if "relevancia_score" in updates:
+        _add("relevancia_score", int(updates["relevancia_score"]))
+    if "nivel_confianca" in updates:
+        _add("nivel_confianca", updates["nivel_confianca"])
+    if "paises_envolvidos" in updates:
+        _add("paises_envolvidos", list(updates["paises_envolvidos"] or []))
+    if "palavras_chave" in updates:
+        _add("palavras_chave", [str(k).lower().strip() for k in (updates["palavras_chave"] or []) if str(k).strip()])
+    if "veiculos_origem" in updates:
+        _add("veiculos_origem", list(updates["veiculos_origem"] or []))
+    if "fontes_urls" in updates:
+        _add("fontes_urls", list(updates["fontes_urls"] or []))
+    if "status" in updates:
+        _add("status", updates["status"])
+    if "ttl_horas" in updates:
+        ttl_valido = max(1, int(updates["ttl_horas"] or 6))
+        _add("expires_at", agora + timedelta(hours=ttl_valido))
+    if "horas_em_destaque" in updates:
+        horas_validas = max(1, min(24, int(updates["horas_em_destaque"] or 6)))
+        _add("destaque_ate", agora + timedelta(hours=horas_validas))
+    if "destaque_ate" in updates:
+        dt_dest = _parse_iso_utc(updates["destaque_ate"])
+        if dt_dest is not None:
+            _add("destaque_ate", dt_dest)
+    if "expires_at" in updates:
+        dt_exp = _parse_iso_utc(updates["expires_at"])
+        if dt_exp is not None:
+            _add("expires_at", dt_exp)
+
+    if not assignments:
+        raise HTTPException(status_code=422, detail="Nenhum campo alterável informado para atualização.")
+
+    set_sql = ", ".join(assignments)
+    with db.cursor() as cur:
+        cur.execute(
+            f"UPDATE ai_noticias_quentes SET {set_sql} WHERE slug = %s RETURNING slug, status;",
+            (*params, slug),
+        )
+        row = cur.fetchone()
+    db.commit()
+
+    if not row:
+        raise HTTPException(status_code=404, detail="Notícia quente não encontrada.")
+
+    with db.cursor() as cur:
+        cur.execute(
+            """
+            SELECT
+                slug, batch_id, titulo_curto, resumo_pulso, impacto_pratico,
+                categoria, paises_envolvidos, urgencia_score, relevancia_score,
+                nivel_confianca, ttl_horas, horas_em_destaque, veiculos_origem,
+                fontes_urls, palavras_chave, links_internos_relacionados,
+                status, destaque_ate, expires_at, updated_at
+            FROM ai_noticias_quentes
+            WHERE slug = %s;
+            """,
+            (slug,),
+        )
+        row_atual = cur.fetchone()
+    noticia = _serializar_noticia_quente(dict(row_atual)) if row_atual else {}
+
+    return {"ok": True, "noticia": noticia}
+
+
+@router.delete("/v2/admin/noticias-quentes/{slug}", dependencies=[Depends(verificar_admin_token)])
+def admin_remover_noticia_quente(
+    slug: str,
+    response: Response,
+    conn: Any = Depends(get_db),
+) -> Dict[str, Any]:
+    """Remove uma notícia quente de `ai_noticias_quentes` pelo slug."""
+    aplicar_no_cache_headers(response)
+    db = _require_db(conn)
+    with db.cursor() as cur:
+        cur.execute("DELETE FROM ai_noticias_quentes WHERE slug = %s RETURNING slug;", (slug,))
+        row = cur.fetchone()
+    db.commit()
+    removido = 1 if row else 0
+    return {"ok": True, "slug": slug, "removido": removido}
 
 
 # ============================================================================

@@ -945,8 +945,12 @@ async def executar_pipeline_pulso_async(
                     )
                     raise
 
-    total_salvos = await asyncio.to_thread(_persistir_com_lock)
-    print(f"[pulso_30m] UPSERT concluído em ai_noticias_quentes: {total_salvos} registros atualizados.")
+    resultado_persistencia = await asyncio.to_thread(_persistir_com_lock)
+    if resultado_persistencia is None or resultado_persistencia == -1:
+        # Lock de execução ocupado (ou falha registrada): aborta SEM gravar snapshot nem expor estado.
+        return None
+
+    print(f"[pulso_30m] UPSERT concluído em ai_noticias_quentes: {resultado_persistencia} registros atualizados.")
     salvar_snapshot_vitrine_pulso(payload)
     return payload
 

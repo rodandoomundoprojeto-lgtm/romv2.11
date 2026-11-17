@@ -3,9 +3,9 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="robots" content="noindex, nofollow">
-  <title>Inteligência &amp; Atlas (Admin Lite) | Rodando o Mundo</title>
+  <title>Admin | Rodando o Mundo</title>
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -64,11 +64,22 @@
       margin: 0;
     }
 
+    .admin-head-actions {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      flex-wrap: wrap;
+    }
+
     .admin-auth-bar {
       display: flex;
       flex-wrap: wrap;
       gap: var(--space-3);
       align-items: flex-end;
+    }
+
+    .admin-auth-bar .admin-field {
+      flex: 1 1 260px;
     }
 
     .admin-field {
@@ -94,8 +105,10 @@
       border: 1px solid var(--border);
       border-radius: var(--radius-sm);
       padding: 0.5rem 0.7rem;
+      min-height: 44px;
       outline: none;
       transition: border-color var(--transition);
+      width: 100%;
     }
 
     .admin-input:focus,
@@ -104,12 +117,18 @@
       border-color: var(--primary);
     }
 
+    .admin-textarea {
+      resize: vertical;
+      min-height: 70px;
+    }
+
     .admin-btn {
       font-family: var(--font-body);
       font-size: 0.85rem;
       font-weight: 600;
       border-radius: var(--radius-sm);
-      padding: 0.5rem 0.9rem;
+      padding: 0.55rem 0.95rem;
+      min-height: 44px;
       border: 1px solid var(--border);
       background: var(--surface-2);
       color: var(--text);
@@ -117,6 +136,7 @@
       transition: background var(--transition), border-color var(--transition), opacity var(--transition);
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 0.4rem;
       white-space: nowrap;
     }
@@ -152,7 +172,8 @@
     }
 
     .admin-btn-sm {
-      padding: 0.32rem 0.65rem;
+      min-height: 44px;
+      padding: 0.3rem 0.7rem;
       font-size: 0.78rem;
     }
 
@@ -266,6 +287,41 @@
       cursor: pointer;
     }
 
+    .admin-toolbar {
+      display: flex;
+      align-items: flex-end;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+      margin-bottom: var(--space-4);
+    }
+
+    .admin-toolbar .admin-field {
+      min-width: 180px;
+    }
+
+    .admin-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+
+    .admin-execucao {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+      padding: 0.65rem 0.85rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      background: var(--surface-2);
+    }
+
+    .admin-execucao-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
     .admin-table-wrap {
       overflow-x: auto;
       border: 1px solid var(--border);
@@ -363,12 +419,18 @@
       display: flex;
       flex-direction: column;
       gap: var(--space-4);
+      max-height: 92vh;
+    }
+
+    .admin-modal-lg {
+      max-width: 700px;
     }
 
     .admin-modal-foot {
       display: flex;
       justify-content: flex-end;
       gap: var(--space-2);
+      flex-wrap: wrap;
     }
 
     .hidden {
@@ -469,12 +531,6 @@
       color: #fff;
     }
 
-    .admin-modal-lg {
-      max-width: 700px;
-      max-height: 92vh;
-      overflow-y: auto;
-    }
-
     .admin-modal-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -527,133 +583,173 @@
       border-color: var(--bias-E);
       background: color-mix(in srgb, var(--bias-E) 12%, var(--surface));
     }
-  /* Áreas minimizáveis (collapsible cards) */
-  .admin-card { position: relative; }
-  .admin-card-head { position: relative; padding-right: 2.6rem; }
-  .admin-collapse-btn {
-    position: absolute;
-    right: var(--space-4);
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 0.95rem;
-    line-height: 1;
-    padding: 0.25rem 0.6rem;
-    border: 1px solid var(--border);
-    background: var(--surface-2);
-    color: var(--text-muted);
-    border-radius: var(--radius-sm);
-    cursor: pointer;
-    transition: background var(--transition), border-color var(--transition), color var(--transition);
-  }
-  .admin-collapse-btn:hover {
-    border-color: var(--primary);
-    color: var(--text);
-  }
-  .admin-card.collapsed > *:not(.admin-card-head) {
-    display: none !important;
-  }
-  .admin-card.collapsed .admin-card-head {
-    margin-bottom: 0;
-  }
 
-  /* Responsividade mobile: evita cortes e permite rolagem horizontal das tabelas */
-  html { overflow-x: auto !important; }
-  body { overflow-x: visible !important; }
-
-  @media (max-width: 768px) {
-    .admin-wrap {
-      max-width: 100%;
-      padding: var(--space-3) var(--space-2) var(--space-8);
-      gap: var(--space-3);
-    }
+    /* Áreas minimizáveis (collapsible cards) */
     .admin-card {
-      padding: var(--space-3);
-      border-radius: var(--radius-md);
+      position: relative;
     }
-    .admin-card-head {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: var(--space-2);
-      padding-right: 2.4rem;
-    }
-    .admin-card-title {
-      font-size: var(--text-md, 1rem);
-    }
-    .admin-auth-bar {
-      flex-direction: column;
-      align-items: stretch;
-    }
-    .admin-field {
-      min-width: 0;
-      width: 100%;
-    }
-    .admin-controls-row {
-      flex-direction: column;
-      align-items: stretch;
-      gap: var(--space-3);
-    }
-    .admin-form-grid {
-      grid-template-columns: 1fr;
-    }
-    .admin-modal-grid {
-      grid-template-columns: 1fr;
-    }
-    .admin-modal {
-      max-width: 96vw;
-      max-height: 94vh;
-      padding: var(--space-3);
-    }
-    .admin-modal-lg {
-      max-width: 96vw;
-    }
-    .admin-table-wrap {
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-      max-width: 100%;
-    }
-    .admin-table {
-      min-width: 520px;
-      font-size: 0.78rem;
-    }
-    .admin-table th,
-    .admin-table td {
-      padding: 0.45rem 0.55rem;
-      white-space: nowrap;
-    }
-    .admin-table td .admin-sub {
-      white-space: normal;
-      max-width: 220px;
-    }
-    .admin-actions {
-      flex-direction: column;
-      align-items: stretch;
-    }
-    .admin-btn {
-      white-space: normal;
-    }
-    .dossie-filters {
-      overflow-x: auto;
-      flex-wrap: nowrap;
-      -webkit-overflow-scrolling: touch;
-      padding-bottom: 0.25rem;
-    }
-    .admin-toast {
-      left: 0.75rem;
-      right: 0.75rem;
-      bottom: 0.75rem;
-      min-width: 0;
-      max-width: none;
-    }
-  }
 
-  @media (max-width: 480px) {
-    .admin-table {
-      min-width: 460px;
+    .admin-card-head {
+      position: relative;
+      padding-right: 2.6rem;
     }
-    .topbar .brand-text .brand-sub {
-      display: none;
+
+    .admin-collapse-btn {
+      position: absolute;
+      right: var(--space-4);
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 0.95rem;
+      line-height: 1;
+      padding: 0.25rem 0.6rem;
+      border: 1px solid var(--border);
+      background: var(--surface-2);
+      color: var(--text-muted);
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: background var(--transition), border-color var(--transition), color var(--transition);
     }
-  }
+
+    .admin-collapse-btn:hover {
+      border-color: var(--primary);
+      color: var(--text);
+    }
+
+    .admin-card.collapsed > *:not(.admin-card-head) {
+      display: none !important;
+    }
+
+    .admin-card.collapsed .admin-card-head {
+      margin-bottom: 0;
+    }
+
+    /* Responsividade mobile: evita cortes e permite rolagem horizontal das tabelas */
+    html {
+      overflow-x: auto !important;
+    }
+
+    body {
+      overflow-x: visible !important;
+    }
+
+    @media (max-width: 768px) {
+      .admin-wrap {
+        max-width: 100%;
+        padding: var(--space-3) var(--space-2) var(--space-8);
+        gap: var(--space-3);
+      }
+
+      .admin-card {
+        padding: var(--space-3);
+        border-radius: var(--radius-md);
+      }
+
+      .admin-card-head {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-2);
+        padding-right: 2.4rem;
+      }
+
+      .admin-card-title {
+        font-size: var(--text-md, 1rem);
+      }
+
+      .admin-auth-bar {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .admin-field {
+        min-width: 0;
+        width: 100%;
+      }
+
+      .admin-controls-row {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .admin-form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .admin-modal-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .admin-modal {
+        max-width: 96vw;
+        max-height: 94vh;
+        padding: var(--space-3);
+        border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+      }
+
+      .admin-modal-backdrop {
+        align-items: flex-end;
+        padding: var(--space-2);
+      }
+
+      .admin-modal-lg {
+        max-width: 100%;
+      }
+
+      .admin-table-wrap {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        max-width: 100%;
+      }
+
+      .admin-table {
+        min-width: 520px;
+        font-size: 0.78rem;
+      }
+
+      .admin-table th,
+      .admin-table td {
+        padding: 0.45rem 0.55rem;
+        white-space: nowrap;
+      }
+
+      .admin-table td .admin-sub {
+        white-space: normal;
+        max-width: 220px;
+      }
+
+      .admin-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .admin-btn {
+        white-space: normal;
+      }
+
+      .dossie-filters {
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 0.25rem;
+      }
+
+      .admin-toast {
+        left: 0.75rem;
+        right: 0.75rem;
+        bottom: 0.75rem;
+        min-width: 0;
+        max-width: none;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .admin-table {
+        min-width: 460px;
+      }
+
+      .topbar .brand-text .brand-sub {
+        display: none;
+      }
+    }
   </style>
 </head>
 
@@ -669,7 +765,7 @@
         </svg>
         <div class="brand-text">
           <span class="brand-name">Rodando <em>o</em> Mundo</span>
-          <span class="brand-sub">Inteligência &amp; Atlas (Admin Lite)</span>
+          <span class="brand-sub">Admin</span>
         </div>
       </a>
 
@@ -683,57 +779,42 @@
   </header>
 
   <main class="admin-wrap">
-    <!-- Autenticação (Senha Admin ou Token) -->
-    <section class="admin-card" aria-label="Autenticação do Painel">
-      <div class="admin-auth-bar">
-        <div class="admin-field" style="flex: 1 1 180px;">
-          <label for="admin-user">Admin</label>
-          <input id="admin-user" class="admin-input" type="text" autocomplete="username"
-            placeholder="Admin User (opcional p/ token)">
+    <!-- Autenticação: apenas senha (Bearer = senha) -->
+    <section class="admin-card" id="admin-auth-card" aria-label="Autenticação do painel">
+      <div class="admin-card-head" style="margin-bottom: var(--space-4);">
+        <div>
+          <h2 class="admin-card-title" style="font-size: var(--text-xl);">Acesso Restrito</h2>
+          <p class="admin-sub">Painel administrativo — autenticação via token Bearer (senha).</p>
         </div>
-        <div class="admin-field" style="flex: 1 1 240px;">
-          <label for="admin-token">Admin Token</label>
-          <div style="display:flex; gap:0.4rem; align-items:center;">
-            <input id="admin-token" class="admin-input" type="password" autocomplete="current-password"
-              placeholder="Digite sua senha ou cole o token" style="flex:1; min-width:0;">
-            <button id="btn-toggle-pass" class="admin-btn admin-btn-sm" type="button" title="Mostrar ou ocultar senha"
-              aria-label="Mostrar ou ocultar senha" style="padding:0.5rem 0.65rem;">👁️</button>
-          </div>
+      </div>
+
+      <div class="admin-auth-bar">
+        <div class="admin-field" style="flex: 1 1 260px;">
+          <label for="admin-password">Senha de acesso</label>
+          <input id="admin-password" class="admin-input" type="password" autocomplete="current-password"
+            placeholder="Digite a senha de acesso" />
         </div>
         <button id="btn-conectar" class="admin-btn admin-btn-primary" type="button">Entrar</button>
         <button id="btn-sair" class="admin-btn admin-btn-danger hidden" type="button">Sair</button>
-      </div>
-
-      <div
-        style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:0.75rem; margin-top:0.75rem;">
-        <label class="admin-check-label" style="font-size:0.82rem; color:var(--text-muted);">
-          <input id="admin-remember" type="checkbox" checked>
-          Manter conectado neste dispositivo
-        </label>
-
-        <details id="admin-api-advanced" style="font-size:0.8rem; color:var(--text-muted);">
-          <summary style="cursor:pointer; user-select:none;">Configurações avançadas (URL da API)</summary>
-          <div class="admin-field" style="margin-top:0.5rem; min-width:260px;">
-            <label for="api-base">URL da API FastAPI (opcional)</label>
-            <input id="api-base" class="admin-input" type="url"
-              placeholder="Mesma origem (ou ex: https://seu-backend.onrender.com)">
-          </div>
-        </details>
       </div>
 
       <div id="auth-banner" class="admin-banner"></div>
     </section>
 
     <div id="admin-panels" class="hidden" style="display:flex; flex-direction:column; gap:var(--space-5);">
-      <!-- BLOCO 1: CONTROLE RÁPIDO -->
-      <section class="admin-card" aria-labelledby="blk1-title">
+      <!-- SEÇÃO 1: CONTROLE RÁPIDO -->
+      <section class="admin-card" id="admin-section-controle-rapido" data-admin-section="controle-rapido"
+        aria-labelledby="admin-section-controle-rapido-title">
         <div class="admin-card-head">
           <div>
-            <h1 id="blk1-title" class="admin-card-title">1. Controle Rápido</h1>
-            <p class="admin-sub">Kill Switch editorial (`ai_config_operacional`) e disparo manual protegido por advisory
+            <h2 id="admin-section-controle-rapido-title" class="admin-card-title">Controle Rápido</h2>
+            <p class="admin-sub">Kill Switch editorial (<code>ai_config_operacional</code>) e disparo manual protegido por advisory
               lock.</p>
           </div>
-          <span id="kill-switch-badge" class="badge">Carregando...</span>
+          <div class="admin-head-actions">
+            <span id="kill-switch-badge" class="badge">Carregando...</span>
+            <button class="admin-collapse-btn" type="button" aria-label="Minimizar seção Controle Rápido" aria-expanded="true">−</button>
+          </div>
         </div>
 
         <div class="admin-controls-row">
@@ -750,120 +831,115 @@
             Rodar Coleta Agora
           </button>
         </div>
+
         <div id="coleta-banner" class="admin-banner"></div>
+
+        <h3 class="admin-card-title" style="font-size: 1rem; margin: 0 0 var(--space-2);">Status da Coleta &amp; Execuções</h3>
+        <p class="admin-sub" style="margin-bottom: var(--space-3);">Últimas execuções registradas em <code>ai_execucoes_pipeline</code>.</p>
+        <div id="execucoes-lista" class="admin-list">
+          <div class="admin-sub">Carregando execuções...</div>
+        </div>
       </section>
 
-      <!-- BLOCO 2: CADASTRO RÁPIDO DE FONTES -->
-      <section class="admin-card" aria-labelledby="blk2-title">
+      <!-- SEÇÃO 2: RADAR — NOTÍCIAS MANUAIS -->
+      <section class="admin-card" id="admin-section-radar" data-admin-section="radar" aria-labelledby="admin-section-radar_title">
         <div class="admin-card-head">
           <div>
-            <h2 id="blk2-title" class="admin-card-title">2. Cadastro Rápido de Fontes</h2>
-            <p class="admin-sub">Tabela <code>ai_fontes_referencia</code> — cadastro e governança de coleta.</p>
+            <h2 id="admin-section-radar_title" class="admin-card-title">Radar — Notícias Manuais</h2>
+            <p class="admin-sub">Cadastro e curadoria manual de notícias no feed editorial (<code>/v2/admin/radar/manual</code>).</p>
           </div>
-          <button id="btn-recarregar-fontes" class="admin-btn admin-btn-sm" type="button">Atualizar Lista</button>
+          <div class="admin-head-actions">
+            <button id="btn-recarregar-radar" class="admin-btn admin-btn-sm" type="button">Atualizar</button>
+            <button id="btn-adicionar-radar" class="admin-btn admin-btn-primary admin-btn-sm" type="button">+ Adicionar Notícia Manual</button>
+            <button class="admin-collapse-btn" type="button" aria-label="Minimizar seção Radar" aria-expanded="true">−</button>
+          </div>
         </div>
 
-        <form id="form-nova-fonte" class="admin-form-grid">
+        <div class="admin-toolbar">
           <div class="admin-field">
-            <label for="f-nome">Nome</label>
-            <input id="f-nome" class="admin-input" type="text" required minlength="2" maxlength="150"
-              placeholder="Ex: Agência Brasil">
-          </div>
-          <div class="admin-field" style="grid-column: span 2;">
-            <label for="f-url">URL do Feed / Fonte</label>
-            <input id="f-url" class="admin-input" type="url" required placeholder="https://...">
+            <label for="radar-busca">Buscar</label>
+            <input id="radar-busca" class="admin-input" type="search" placeholder="Título, fonte, país..." />
           </div>
           <div class="admin-field">
-            <label for="f-tipo">Tipo</label>
-            <select id="f-tipo" class="admin-select">
-              <option value="rss_feed">rss_feed</option>
-              <option value="fonte_primaria">fonte_primaria</option>
-              <option value="youtube_rss">youtube_rss</option>
-              <option value="artigo_avulso">artigo_avulso</option>
+            <label for="radar-filtro">Categoria</label>
+            <select id="radar-filtro" class="admin-select">
+              <option value="all">Todas</option>
+              <option value="geopolitica">Geopolítica</option>
+              <option value="politica">Política</option>
+              <option value="economia">Economia</option>
+              <option value="cultura">Cultura</option>
+              <option value="geral">Geral</option>
             </select>
           </div>
-          <div class="admin-field">
-            <label for="f-cadencia">Cadência</label>
-            <select id="f-cadencia" class="admin-select">
-              <option value="pulso_30m">pulso_30m</option>
-              <option value="ciclo_3h">ciclo_3h</option>
-            </select>
-          </div>
-          <div class="admin-field">
-            <label for="f-peso">Confiança (1–5)</label>
-            <input id="f-peso" class="admin-input" type="number" min="1" max="5" value="3" required>
-          </div>
-
-          <div class="admin-checkbox-row">
-            <label class="admin-check-label" for="f-aprovar">
-              <input id="f-aprovar" type="checkbox">
-              <span><strong>Aprovar para coleta imediata</strong> (status <code>aprovada</code>,
-                <code>apenas_metadados</code>, <code>sintese_e_link</code>)</span>
-            </label>
-            <button type="submit" class="admin-btn admin-btn-primary">Cadastrar Fonte</button>
-          </div>
-        </form>
-        <div id="fontes-banner" class="admin-banner"></div>
+        </div>
 
         <div class="admin-table-wrap">
           <table class="admin-table">
             <thead>
               <tr>
-                <th>Nome</th>
-                <th>Tipo</th>
-                <th>Política</th>
-                <th>Ativo</th>
-                <th>Ação</th>
+                <th>Notícia</th>
+                <th>Categoria</th>
+                <th>Urgência</th>
+                <th>Fonte</th>
+                <th>Publicação</th>
+                <th>Ações</th>
               </tr>
             </thead>
-            <tbody id="tbody-fontes">
+            <tbody id="tbody-radar">
               <tr>
-                <td colspan="5" class="admin-sub">Nenhuma fonte carregada.</td>
+                <td colspan="6" class="admin-sub">Nenhuma notícia manual carregada.</td>
               </tr>
             </tbody>
           </table>
         </div>
+
+        <div id="radar-banner" class="admin-banner"></div>
       </section>
 
-      <!-- BLOCO 3: FILA DE EVENTOS -->
-      <section class="admin-card" aria-labelledby="blk3-title">
+      <!-- SEÇÃO 3: NOTÍCIAS QUENTES -->
+      <section class="admin-card" id="admin-section-noticias-quentes" data-admin-section="noticias-quentes"
+        aria-labelledby="admin-section-noticias-quentes_title">
         <div class="admin-card-head">
           <div>
-            <h2 id="blk3-title" class="admin-card-title">3. Fila de Eventos</h2>
-            <p class="admin-sub">Últimos eventos em <code>ai_eventos</code> — aprovação, edição de síntese/errata e
-              arquivamento.</p>
+            <h2 id="admin-section-noticias-quentes_title" class="admin-card-title">Notícias Quentes</h2>
+            <p class="admin-sub">CRUD do painel de notícias quentes do pulso (<code>/v2/admin/noticias-quentes</code>).</p>
           </div>
-          <button id="btn-recarregar-eventos" class="admin-btn admin-btn-sm" type="button">Atualizar Fila</button>
+          <div class="admin-head-actions">
+            <button id="btn-recarregar-noticias-quentes" class="admin-btn admin-btn-sm" type="button">Atualizar</button>
+            <button id="btn-nova-noticia-quente" class="admin-btn admin-btn-primary admin-btn-sm" type="button">+ Nova Notícia Quente</button>
+            <button class="admin-collapse-btn" type="button" aria-label="Minimizar seção Notícias Quentes" aria-expanded="true">−</button>
+          </div>
         </div>
-        <div id="eventos-banner" class="admin-banner"></div>
+
+        <div id="noticias-quentes-banner" class="admin-banner"></div>
 
         <div class="admin-table-wrap">
           <table class="admin-table">
             <thead>
               <tr>
-                <th>Evento</th>
+                <th>Slug</th>
+                <th>Título</th>
                 <th>Categoria</th>
-                <th>Confiança</th>
+                <th>Urgência</th>
                 <th>Status</th>
                 <th>Ações</th>
               </tr>
             </thead>
-            <tbody id="tbody-eventos">
+            <tbody id="tbody-noticias-quentes">
               <tr>
-                <td colspan="5" class="admin-sub">Nenhum evento carregado.</td>
+                <td colspan="6" class="admin-sub">Nenhuma notícia quente carregada.</td>
               </tr>
             </tbody>
           </table>
         </div>
       </section>
 
-      <!-- BLOCO 4: DOSSIÊS EDITORIAIS -->
-      <section class="admin-card" id="admin-dossies-card" aria-labelledby="blk4-title">
+      <!-- SEÇÃO 4: DOSSIÊS EDITORIAIS -->
+      <section class="admin-card" id="admin-section-dossies" data-admin-section="dossies" aria-labelledby="admin-section-dossies_title">
         <div class="admin-card-head">
           <div>
-            <h2 id="blk4-title" class="admin-card-title">4. Dossiês Editoriais (Permanentes &amp; Especiais)</h2>
-            <p class="admin-sub">Gerenciamento de dossiês temáticos, períodos de cobertura especial e regras de
-              classificação.</p>
+            <h2 id="admin-section-dossies_title" class="admin-card-title">Dossiês Editoriais</h2>
+            <p class="admin-sub">Gerenciamento de dossiês temáticos, períodos de cobertura especial e regras de classificação.</p>
             <div class="dossie-badges-row">
               <span class="badge">Total: <strong id="dossies-count-total">0</strong></span>
               <span class="badge badge-live"><span class="dossie-pulse-dot" aria-hidden="true"></span> Ao Vivo: <strong
@@ -872,10 +948,10 @@
               <span class="badge badge-archive">Arquivo: <strong id="dossies-count-arquivo">0</strong></span>
             </div>
           </div>
-          <div class="admin-actions">
+          <div class="admin-head-actions">
             <button id="btn-recarregar-dossies" class="admin-btn admin-btn-sm" type="button">Atualizar</button>
-            <button id="btn-novo-dossie" class="admin-btn admin-btn-primary admin-btn-sm" type="button">+ Novo Dossiê
-              Especial</button>
+            <button id="btn-novo-dossie" class="admin-btn admin-btn-primary admin-btn-sm" type="button">+ Novo Dossiê Especial</button>
+            <button class="admin-collapse-btn" type="button" aria-label="Minimizar seção Dossiês Editoriais" aria-expanded="true">−</button>
           </div>
         </div>
 
@@ -911,10 +987,132 @@
           </table>
         </div>
       </section>
+
+      <!-- SEÇÃO 5: CURADORIA & BOT -->
+      <section class="admin-card" id="admin-section-curadoria" data-admin-section="curadoria" aria-labelledby="admin-section-curadoria_title">
+        <div class="admin-card-head">
+          <div>
+            <h2 id="admin-section-curadoria_title" class="admin-card-title">Curadoria &amp; Bot</h2>
+            <p class="admin-sub">Status do bot, disparos de pipeline, fila de eventos e edição de síntese.</p>
+          </div>
+          <div class="admin-head-actions">
+            <button class="admin-collapse-btn" type="button" aria-label="Minimizar seção Curadoria" aria-expanded="true">−</button>
+          </div>
+        </div>
+
+        <div class="admin-controls-row">
+          <div>
+            <strong>Disparos do bot</strong>
+            <div class="admin-actions" style="margin-top: 0.5rem;">
+              <button id="btn-rodar-pulso" class="admin-btn admin-btn-sm" type="button">Rodar Pulso Agora</button>
+              <button id="btn-gerar-coluna" class="admin-btn admin-btn-sm" type="button">Gerar Coluna Editorial</button>
+            </div>
+          </div>
+          <div class="admin-actions">
+            <button id="btn-recarregar-eventos" class="admin-btn admin-btn-sm" type="button">Atualizar Fila</button>
+          </div>
+        </div>
+
+        <div id="eventos-banner" class="admin-banner"></div>
+
+        <div class="admin-table-wrap">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Evento</th>
+                <th>Categoria</th>
+                <th>Confiança</th>
+                <th>Status</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody id="tbody-eventos">
+              <tr>
+                <td colspan="5" class="admin-sub">Nenhum evento na fila.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- SEÇÃO 6: FONTES -->
+      <section class="admin-card" id="admin-section-fontes" data-admin-section="fontes" aria-labelledby="admin-section-fontes_title">
+        <div class="admin-card-head">
+          <div>
+            <h2 id="admin-section-fontes_title" class="admin-card-title">Fontes</h2>
+            <p class="admin-sub">Cadastro e governança de fontes de coleta (<code>/v2/admin/fontes</code>).</p>
+          </div>
+          <div class="admin-head-actions">
+            <button id="btn-recarregar-fontes" class="admin-btn admin-btn-sm" type="button">Atualizar Lista</button>
+            <button class="admin-collapse-btn" type="button" aria-label="Minimizar seção Fontes" aria-expanded="true">−</button>
+          </div>
+        </div>
+
+        <form id="form-nova-fonte" class="admin-form-grid">
+          <div class="admin-field">
+            <label for="f-nome">Nome</label>
+            <input id="f-nome" class="admin-input" type="text" required minlength="2" maxlength="150"
+              placeholder="Ex: Agência Brasil" />
+          </div>
+          <div class="admin-field" style="grid-column: span 2;">
+            <label for="f-url">URL do Feed / Fonte</label>
+            <input id="f-url" class="admin-input" type="url" required placeholder="https://..." />
+          </div>
+          <div class="admin-field">
+            <label for="f-tipo">Tipo</label>
+            <select id="f-tipo" class="admin-select">
+              <option value="rss_feed">rss_feed</option>
+              <option value="fonte_primaria">fonte_primaria</option>
+              <option value="youtube_rss">youtube_rss</option>
+              <option value="artigo_avulso">artigo_avulso</option>
+            </select>
+          </div>
+          <div class="admin-field">
+            <label for="f-cadencia">Cadência</label>
+            <select id="f-cadencia" class="admin-select">
+              <option value="pulso_30m">pulso_30m</option>
+              <option value="ciclo_3h">ciclo_3h</option>
+            </select>
+          </div>
+          <div class="admin-field">
+            <label for="f-peso">Confiança (1–5)</label>
+            <input id="f-peso" class="admin-input" type="number" min="1" max="5" value="3" required />
+          </div>
+
+          <div class="admin-checkbox-row">
+            <label class="admin-check-label" for="f-aprovar">
+              <input id="f-aprovar" type="checkbox" />
+              <span><strong>Aprovar para coleta imediata</strong> (status <code>aprovada</code>,
+                <code>apenas_metadados</code>, <code>sintese_e_link</code>)</span>
+            </label>
+            <button type="submit" class="admin-btn admin-btn-primary">Cadastrar Fonte</button>
+          </div>
+        </form>
+        <div id="fontes-banner" class="admin-banner"></div>
+
+        <div class="admin-table-wrap">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Nome</th>
+                <th>Tipo</th>
+                <th>Política</th>
+                <th>Ativo</th>
+                <th>Ação</th>
+              </tr>
+            </thead>
+            <tbody id="tbody-fontes">
+              <tr>
+                <td colspan="5" class="admin-sub">Nenhuma fonte cadastrada.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
     </div>
   </main>
 
-  <!-- Modal simples: Editar Síntese / Errata -->
+  <!-- Modal: Editar Síntese / Errata -->
   <div id="modal-sintese" class="admin-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modal-title">
     <div class="admin-modal">
       <div class="admin-card-head" style="margin-bottom:0;">
@@ -952,8 +1150,7 @@
   </div>
 
   <!-- Modal: Criar / Editar Dossiê Editorial -->
-  <div id="modal-dossie" class="admin-modal-backdrop" role="dialog" aria-modal="true"
-    aria-labelledby="modal-dossie-title">
+  <div id="modal-dossie" class="admin-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modal-dossie-title">
     <div class="admin-modal admin-modal-lg">
       <div class="admin-card-head" style="margin-bottom:0;align-items:flex-start;gap:10px;">
         <div style="flex:1;min-width:0;">
@@ -972,7 +1169,7 @@
           <input id="d-titulo" class="admin-input" type="text" placeholder="Ex: Copa do Mundo FIFA 2026" />
         </div>
 
-        <div id="d-slug-wrap" class="admin-field">
+        <div class="admin-field full-span">
           <label for="d-slug">Slug * (identificador na URL)</label>
           <input id="d-slug" class="admin-input" type="text" placeholder="ex: copa-do-mundo-2026" />
         </div>
@@ -984,8 +1181,7 @@
 
         <div class="admin-field full-span">
           <label for="d-subtitulo">Subtítulo / Descrição</label>
-          <textarea id="d-subtitulo" class="admin-textarea" rows="2"
-            placeholder="Resumo editorial do dossiê..."></textarea>
+          <textarea id="d-subtitulo" class="admin-textarea" rows="2" placeholder="Resumo editorial do dossiê..."></textarea>
         </div>
 
         <div class="admin-field">
@@ -1041,7 +1237,7 @@
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin-bottom:14px;">
           <div class="admin-field" style="padding:10px;border:1px solid rgba(255,255,255,.08);border-radius:10px;">
             <label>Pilar 01 — Categoria</label>
-            <select id="d-p0-cat" class="admin-input"><option value="politica">Política & Poder</option><option value="economia">Economia & Mercados</option><option value="geopolitica">Geopolítica</option><option value="seguranca">Defesa & Segurança</option><option value="sociedade">Sociedade</option></select>
+            <select id="d-p0-cat" class="admin-input"><option value="politica">Política &amp; Poder</option><option value="economia">Economia &amp; Mercados</option><option value="geopolitica">Geopolítica</option><option value="seguranca">Defesa &amp; Segurança</option><option value="sociedade">Sociedade</option></select>
             <label style="margin-top:6px;display:block;">Título</label>
             <input id="d-p0-title" class="admin-input" type="text" maxlength="60" placeholder="Título curto" />
             <label style="margin-top:6px;display:block;">Descrição</label>
@@ -1049,7 +1245,7 @@
           </div>
           <div class="admin-field" style="padding:10px;border:1px solid rgba(255,255,255,.08);border-radius:10px;">
             <label>Pilar 02 — Categoria</label>
-            <select id="d-p1-cat" class="admin-input"><option value="politica">Política & Poder</option><option value="economia">Economia & Mercados</option><option value="geopolitica">Geopolítica</option><option value="seguranca">Defesa & Segurança</option><option value="sociedade">Sociedade</option></select>
+            <select id="d-p1-cat" class="admin-input"><option value="politica">Política &amp; Poder</option><option value="economia">Economia &amp; Mercados</option><option value="geopolitica">Geopolítica</option><option value="seguranca">Defesa &amp; Segurança</option><option value="sociedade">Sociedade</option></select>
             <label style="margin-top:6px;display:block;">Título</label>
             <input id="d-p1-title" class="admin-input" type="text" maxlength="60" placeholder="Título curto" />
             <label style="margin-top:6px;display:block;">Descrição</label>
@@ -1057,7 +1253,7 @@
           </div>
           <div class="admin-field" style="padding:10px;border:1px solid rgba(255,255,255,.08);border-radius:10px;">
             <label>Pilar 03 — Categoria</label>
-            <select id="d-p2-cat" class="admin-input"><option value="politica">Política & Poder</option><option value="economia">Economia & Mercados</option><option value="geopolitica">Geopolítica</option><option value="seguranca">Defesa & Segurança</option><option value="sociedade">Sociedade</option></select>
+            <select id="d-p2-cat" class="admin-input"><option value="politica">Política &amp; Poder</option><option value="economia">Economia &amp; Mercados</option><option value="geopolitica">Geopolítica</option><option value="seguranca">Defesa &amp; Segurança</option><option value="sociedade">Sociedade</option></select>
             <label style="margin-top:6px;display:block;">Título</label>
             <input id="d-p2-title" class="admin-input" type="text" maxlength="60" placeholder="Título curto" />
             <label style="margin-top:6px;display:block;">Descrição</label>
@@ -1085,6 +1281,185 @@
     </div>
   </div>
 
+  <!-- Modal: Adicionar / Editar Notícia Manual (Radar) -->
+  <div id="modal-radar" class="admin-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modal-radar_title">
+    <div class="admin-modal admin-modal-lg">
+      <div class="admin-card-head" style="margin-bottom:0;align-items:flex-start;gap:10px;">
+        <div style="flex:1;min-width:0;">
+          <h3 id="modal-radar_title" class="admin-card-title" style="font-size:1.15rem;">Nova Notícia Manual</h3>
+          <p id="modal-radar_sub" class="admin-sub"></p>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;">
+          <button id="btn-excluir-radar" class="admin-btn admin-btn-sm admin-btn-danger" type="button" style="display:none;">Excluir</button>
+          <button id="btn-fechar-modal-radar" class="admin-btn admin-btn-sm" type="button">Fechar</button>
+        </div>
+      </div>
+
+      <div class="admin-modal-grid">
+        <div class="admin-field full-span">
+          <label for="r-titulo">Título *</label>
+          <input id="r-titulo" class="admin-input" type="text" maxlength="180" placeholder="Manchete da notícia..." />
+        </div>
+
+        <div class="admin-field full-span">
+          <label for="r-resumo">Resumo *</label>
+          <textarea id="r-resumo" class="admin-textarea" rows="2" placeholder="Resumo curto para o card..."></textarea>
+        </div>
+
+        <div class="admin-field full-span">
+          <label for="r-contexto">Contexto / Análise</label>
+          <textarea id="r-contexto" class="admin-textarea" rows="3" placeholder="Contexto editorial..."></textarea>
+        </div>
+
+        <div class="admin-field">
+          <label for="r-categoria">Categoria</label>
+          <select id="r-categoria" class="admin-select">
+            <option value="geopolitica">Geopolítica</option>
+            <option value="politica">Política</option>
+            <option value="economia">Economia</option>
+            <option value="cultura">Cultura</option>
+            <option value="geral">Geral</option>
+          </select>
+        </div>
+
+        <div class="admin-field">
+          <label for="r-urgencia">Urgência (0–100)</label>
+          <input id="r-urgencia" class="admin-input" type="number" min="0" max="100" value="50" />
+        </div>
+
+        <div class="admin-field">
+          <label for="r-fonte-nome">Fonte</label>
+          <input id="r-fonte-nome" class="admin-input" type="text" placeholder="Ex: Agência Brasil" />
+        </div>
+
+        <div class="admin-field">
+          <label for="r-fonte-url">URL da Fonte</label>
+          <input id="r-fonte-url" class="admin-input" type="url" placeholder="https://..." />
+        </div>
+
+        <div class="admin-field">
+          <label for="r-pais">País / Região</label>
+          <input id="r-pais" class="admin-input" type="text" maxlength="8" placeholder="BR" />
+        </div>
+
+        <div class="admin-field">
+          <label for="r-data">Data de Publicação</label>
+          <input id="r-data" class="admin-input" type="date" />
+        </div>
+
+        <div class="admin-field full-span">
+          <label for="r-slug">Slug</label>
+          <input id="r-slug" class="admin-input" type="text" placeholder="Ex: agencia-brasil-nova-acao" />
+        </div>
+      </div>
+
+      <div id="modal-radar-banner" class="admin-banner"></div>
+
+      <div class="admin-modal-foot">
+        <button id="btn-cancelar-modal-radar" class="admin-btn" type="button">Cancelar</button>
+        <button id="btn-salvar-radar" class="admin-btn admin-btn-primary" type="button">Salvar Notícia</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Criar / Editar Notícia Quente -->
+  <div id="modal-noticias-quente" class="admin-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modal-noticias-quente_title">
+    <div class="admin-modal admin-modal-lg">
+      <div class="admin-card-head" style="margin-bottom:0;align-items:flex-start;gap:10px;">
+        <div style="flex:1;min-width:0;">
+          <h3 id="modal-noticias-quente_title" class="admin-card-title" style="font-size:1.15rem;">Nova Notícia Quente</h3>
+          <p id="modal-noticias-quente_sub" class="admin-sub"></p>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;">
+          <button id="btn-fechar-modal-noticia-quente" class="admin-btn admin-btn-sm" type="button">Fechar</button>
+        </div>
+      </div>
+
+      <div class="admin-modal-grid">
+        <div class="admin-field full-span">
+          <label for="nq-titulo-curto">Título Curto *</label>
+          <input id="nq-titulo-curto" class="admin-input" type="text" maxlength="160" placeholder="Manchete curta e direta..." />
+        </div>
+
+        <div class="admin-field full-span">
+          <label for="nq-resumo-pulso">Resumo Pulso *</label>
+          <textarea id="nq-resumo-pulso" class="admin-textarea" rows="3" placeholder="Síntese em 2 a 3 frases..."></textarea>
+        </div>
+
+        <div class="admin-field full-span">
+          <label for="nq-impacto-pratico">Impacto Prático</label>
+          <textarea id="nq-impacto-pratico" class="admin-textarea" rows="2" placeholder="Consequência direta para cidadãos..."></textarea>
+        </div>
+
+        <div class="admin-field">
+          <label for="nq-categoria">Categoria</label>
+          <input id="nq-categoria" class="admin-input" type="text" placeholder="Geopolitica_Relacoes" />
+        </div>
+
+        <div class="admin-field">
+          <label for="nq-urgencia-score">Urgência (0–100)</label>
+          <input id="nq-urgencia-score" class="admin-input" type="number" min="0" max="100" value="50" />
+        </div>
+
+        <div class="admin-field">
+          <label for="nq-relevancia-score">Relevância (0–100)</label>
+          <input id="nq-relevancia-score" class="admin-input" type="number" min="0" max="100" value="70" />
+        </div>
+
+        <div class="admin-field">
+          <label for="nq-nivel-confianca">Nível de Confiança</label>
+          <select id="nq-nivel-confianca" class="admin-select">
+            <option value="alta">alta</option>
+            <option value="media">media</option>
+            <option value="preliminar">preliminar</option>
+          </select>
+        </div>
+
+        <div class="admin-field">
+          <label for="nq-ttl-horas">TTL (horas)</label>
+          <input id="nq-ttl-horas" class="admin-input" type="number" min="1" max="168" value="6" />
+        </div>
+
+        <div class="admin-field">
+          <label for="nq-horas-destaque">Horas em Destaque</label>
+          <input id="nq-horas-destaque" class="admin-input" type="number" min="1" max="24" value="6" />
+        </div>
+
+        <div class="admin-field">
+          <label for="nq-status">Status</label>
+          <select id="nq-status" class="admin-select">
+            <option value="aguardando_revisao">aguardando_revisao</option>
+            <option value="ativo">ativo</option>
+            <option value="publicado">publicado</option>
+            <option value="arquivado">arquivado</option>
+          </select>
+        </div>
+
+        <div class="admin-field">
+          <label for="nq-slug">Slug *</label>
+          <input id="nq-slug" class="admin-input" type="text" placeholder="ex: bcb-selic-impacto-cambio" />
+        </div>
+
+        <div class="admin-field full-span">
+          <label for="nq-destaque-ate">Destaque Até (data/hora)</label>
+          <input id="nq-destaque-ate" class="admin-input" type="datetime-local" />
+        </div>
+
+        <div class="admin-field full-span">
+          <label for="nq-paises">Países (códigos ISO separados por vírgula)</label>
+          <input id="nq-paises" class="admin-input" type="text" placeholder="Ex: BR, US" />
+        </div>
+      </div>
+
+      <div id="modal-noticias-quente-banner" class="admin-banner"></div>
+
+      <div class="admin-modal-foot">
+        <button id="btn-cancelar-modal-noticia-quente" class="admin-btn" type="button">Cancelar</button>
+        <button id="btn-salvar-noticia-quente" class="admin-btn admin-btn-primary" type="button">Salvar Notícia</button>
+      </div>
+    </div>
+  </div>
+
   <!-- Toast flutuante -->
   <div id="admin-toast" class="admin-toast" role="status" aria-live="polite"></div>
 
@@ -1093,51 +1468,26 @@
       const $ = (id) => document.getElementById(id);
 
       const isLocalHost = ['127.0.0.1', 'localhost', '0.0.0.0', '[::1]'].includes(window.location.hostname);
-      const defaultApiBase = (
-        window.location.protocol === 'file:' ||
-        (isLocalHost && window.location.port !== '8000')
-      ) ? 'http://127.0.0.1:8000' : '';
+      const defaultApiBase = (window.location.protocol === 'file:' || !isLocalHost) ? '' : 'http://127.0.0.1:8000';
 
       const readSaved = (k) => {
         try { return localStorage.getItem(k) || sessionStorage.getItem(k) || ''; } catch (e) { return ''; }
       };
 
-      // Áreas minimizáveis: adiciona botão de recolher em cada card
-      function initCollapsibleCards() {
-        const cards = document.querySelectorAll('.admin-card');
-        cards.forEach((card, idx) => {
-          const head = card.querySelector('.admin-card-head');
-          if (!head) return;
-          const key = 'rom_admin_card_collapsed_' + idx;
-          let btn = head.querySelector('.admin-collapse-btn');
-          if (!btn) {
-            btn = document.createElement('button');
-            btn.type = 'button';
-            btn.className = 'admin-collapse-btn';
-            btn.setAttribute('aria-label', 'Minimizar ou expandir área');
-            btn.textContent = '−';
-            head.appendChild(btn);
-          }
-          const apply = (collapsed) => {
-            card.classList.toggle('collapsed', collapsed);
-            btn.textContent = collapsed ? '+' : '−';
-            btn.setAttribute('aria-expanded', String(!collapsed));
-          };
-          let collapsed = false;
-          try { collapsed = localStorage.getItem(key) === '1'; } catch (e) { }
-          apply(collapsed);
-          btn.addEventListener('click', () => {
-            const now = !card.classList.contains('collapsed');
-            apply(now);
-            try { localStorage.setItem(key, now ? '1' : '0'); } catch (e) { }
-          });
-        });
-      }
+      const persistToken = (t) => {
+        try { localStorage.setItem('rom_admin_token', t); } catch (e) { }
+      };
+
+      const clearPersistedToken = () => {
+        try {
+          localStorage.removeItem('rom_admin_token');
+          sessionStorage.removeItem('rom_admin_token');
+        } catch (e) { }
+      };
 
       const state = {
         apiBase: readSaved('rom_admin_api') || defaultApiBase,
-        user: readSaved('rom_admin_user'),
-        token: readSaved('rom_admin_token'),
+        token: readSaved('rom_admin_token') || '',
         eventos: [],
         editingEventId: null,
         dossies: [],
@@ -1146,7 +1496,11 @@
         dossieModalMode: 'create',
         editingDossieSlug: null,
         editingDossieTipo: 'especial',
-        slugManuallyEdited: false
+        slugManuallyEdited: false,
+        radar: [],
+        editingRadarSlug: null,
+        noticiasQuentes: [],
+        editingNoticiaSlug: null
       };
 
       let toastTimer = null;
@@ -1161,22 +1515,16 @@
         }, 3800);
       }
 
-      // Tema claro/escuro seguindo padrão do portal
-      $('theme-toggle').addEventListener('click', () => {
-        const cur = document.documentElement.getAttribute('data-theme') || 'light';
-        const next = cur === 'dark' ? 'light' : 'dark';
-        document.documentElement.setAttribute('data-theme', next);
-        try { localStorage.setItem('rom_theme', next); } catch (e) { }
-      });
-
-      function showBanner(elId, msg, kind = 'ok') {
-        const el = $(elId);
+      function showBanner(id, msg, kind = 'ok') {
+        const el = $(id);
+        if (!el) return;
         el.textContent = msg;
         el.className = 'admin-banner show ' + kind;
       }
 
-      function hideBanner(elId) {
-        const el = $(elId);
+      function hideBanner(id) {
+        const el = $(id);
+        if (!el) return;
         el.className = 'admin-banner';
         el.textContent = '';
       }
@@ -1193,37 +1541,36 @@
       async function apiFetch(path, options = {}) {
         const base = (state.apiBase || '').replace(/\/+$/, '');
         const url = base + path + (path.includes('?') ? '&' : '?') + '_t=' + Date.now();
-        const baseHeaders = {
+        const headers = {
           'Content-Type': 'application/json',
           'Authorization': 'Bearer ' + state.token
         };
-        if (state.user) {
-          baseHeaders['X-Admin-User'] = state.user;
-        }
-        const headers = Object.assign(
-          baseHeaders,
-          options.headers || {}
-        );
-        const res = await fetch(url, { ...options, headers });
+        const finalHeaders = Object.assign({}, headers, options.headers || {});
+        const res = await fetch(url, { ...options, headers: finalHeaders });
         const ct = (res.headers.get('content-type') || '').toLowerCase();
-        if (!ct.includes('application/json')) {
-          if (res.status === 405) {
-            throw new Error('Erro HTTP 405: o servidor estático (Cloudflare / Live Server) recusou o método. Preencha "URL da API FastAPI" com o endereço do backend Python (ex: http://127.0.0.1:8000) ou configure CURADORIA_BACKEND_URL.');
-          }
-          throw new Error('A URL da API retornou conteúdo não-JSON. Preencha "URL da API FastAPI" com o endereço do servidor Python (ex: http://127.0.0.1:8000).');
-        }
         const data = await res.json().catch(() => ({}));
         if (!res.ok) {
-          throw new Error(data.detail || `Erro HTTP ${res.status}`);
+          let msg = (data && data.detail) || ('Erro HTTP ' + res.status);
+          if (res.status === 401) msg = 'Sessão expirada. Faça login novamente.';
+          if (res.status === 403) msg = 'Acesso negado. Senha ou token inválidos.';
+          if (res.status === 404) msg = 'Endpoint não encontrado no backend (verifique a rota).';
+          if (res.status >= 500) msg = 'Erro interno do servidor (HTTP ' + res.status + ').';
+          throw new Error(msg);
+        }
+        if (ct && !ct.includes('application/json')) {
+          throw new Error('A API retornou conteúdo não-JSON. Confira a URL do backend.');
         }
         return data;
       }
 
       function renderKillSwitch(ativo) {
-        $('kill-switch-toggle').checked = Boolean(ativo);
+        const toggle = $('kill-switch-toggle');
+        if (toggle) toggle.checked = Boolean(ativo);
         const badge = $('kill-switch-badge');
-        badge.textContent = ativo ? 'Publicação Automática: LIGADA' : 'Publicação Automática: DESLIGADA';
-        badge.className = 'badge ' + (ativo ? 'badge-ok' : 'badge-warn');
+        if (badge) {
+          badge.textContent = ativo ? 'Publicação Automática: LIGADA' : 'Publicação Automática: DESLIGADA';
+          badge.className = 'badge ' + (ativo ? 'badge-ok' : 'badge-warn');
+        }
       }
 
       async function carregarKillSwitch() {
@@ -1231,6 +1578,19 @@
         renderKillSwitch(data.publicacao_automatica_ativa);
       }
 
+      $('kill-switch-toggle').addEventListener('change', async (e) => {
+        const ativo = e.target.checked;
+        try {
+          const res = await apiFetch('/v2/admin/config/kill-switch', { method: 'POST', body: JSON.stringify({ ativo }) });
+          renderKillSwitch(res.publicacao_automatica_ativa);
+          showBanner('coleta-banner', `Kill Switch atualizado: publicação automática ${ativo ? 'LIGADA' : 'DESLIGADA'}.`, 'ok');
+        } catch (err) {
+          e.target.checked = !ativo;
+          showBanner('coleta-banner', 'Erro ao atualizar Kill Switch: ' + err.message, 'err');
+        }
+      });
+
+      // ============================ FONTES ============================
       async function carregarFontes() {
         const data = await apiFetch('/v2/admin/fontes');
         const tbody = $('tbody-fontes');
@@ -1260,6 +1620,57 @@
         }).join('');
       }
 
+      $('tbody-fontes').addEventListener('change', async (e) => {
+        const id = e.target.getAttribute('data-toggle-fonte');
+        if (!id) return;
+        const ativo = e.target.checked;
+        try {
+          await apiFetch(`/v2/admin/fontes/${id}/ativo`, { method: 'PATCH', body: JSON.stringify({ ativo }) });
+          showBanner('fontes-banner', 'Status da fonte atualizado.', 'ok');
+        } catch (err) {
+          e.target.checked = !ativo;
+          showBanner('fontes-banner', 'Erro ao atualizar status da fonte: ' + err.message, 'err');
+        }
+      });
+
+      $('tbody-fontes').addEventListener('click', async (e) => {
+        const id = e.target.getAttribute('data-del-fonte');
+        if (!id) return;
+        if (!confirm('Excluir esta fonte permanentemente?')) return;
+        try {
+          await apiFetch(`/v2/admin/fontes/${id}`, { method: 'DELETE' });
+          showBanner('fontes-banner', 'Fonte excluída.', 'ok');
+          await carregarFontes();
+        } catch (err) {
+          showBanner('fontes-banner', 'Erro ao excluir: ' + err.message, 'err');
+        }
+      });
+
+      $('form-nova-fonte').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        hideBanner('fontes-banner');
+        const payload = {
+          nome: $('f-nome').value.trim(),
+          url: $('f-url').value.trim(),
+          tipo_fonte: $('f-tipo').value,
+          cadencia: $('f-cadencia').value,
+          peso_confianca: Number($('f-peso').value) || 3,
+          aprovar_imediato: $('f-aprovar').checked
+        };
+        try {
+          await apiFetch('/v2/admin/fontes', { method: 'POST', body: JSON.stringify(payload) });
+          e.target.reset();
+          $('f-peso').value = 3;
+          showBanner('fontes-banner', 'Fonte cadastrada com sucesso.', 'ok');
+          await carregarFontes();
+        } catch (err) {
+          showBanner('fontes-banner', 'Erro ao cadastrar fonte: ' + err.message, 'err');
+        }
+      });
+
+      $('btn-recarregar-fontes').addEventListener('click', () => carregarFontes().catch((err) => showBanner('fontes-banner', err.message, 'err')));
+
+      // ============================ EVENTOS / CURADORIA ============================
       async function carregarEventos() {
         const data = await apiFetch('/v2/admin/eventos');
         state.eventos = data.eventos || [];
@@ -1292,185 +1703,6 @@
         }).join('');
       }
 
-      function saveCredentials(apiBase, user, token, remember) {
-        try {
-          localStorage.removeItem('rom_admin_api');
-          localStorage.removeItem('rom_admin_user');
-          localStorage.removeItem('rom_admin_token');
-          sessionStorage.removeItem('rom_admin_api');
-          sessionStorage.removeItem('rom_admin_user');
-          sessionStorage.removeItem('rom_admin_token');
-          const store = remember ? localStorage : sessionStorage;
-          if (apiBase) store.setItem('rom_admin_api', apiBase);
-          if (user) store.setItem('rom_admin_user', user);
-          if (token) store.setItem('rom_admin_token', token);
-        } catch (e) { }
-      }
-
-      async function conectarEPreencher() {
-        state.apiBase = $('api-base').value.trim();
-        state.user = $('admin-user').value.trim();
-        state.token = $('admin-token').value.trim();
-        const remember = $('admin-remember').checked;
-        if (!state.token) {
-          showBanner('auth-banner', 'Informe a senha de acesso ou token para entrar.', 'err');
-          return;
-        }
-        saveCredentials(state.apiBase, state.user, state.token, remember);
-
-        const btn = $('btn-conectar');
-        btn.disabled = true;
-        btn.textContent = 'Entrando...';
-
-        try {
-          await carregarKillSwitch();
-          await Promise.all([carregarFontes(), carregarEventos(), carregarDossiesAdmin()]);
-          $('admin-panels').classList.remove('hidden');
-          $('btn-sair').classList.remove('hidden');
-          const who = state.user ? ` como ${state.user}` : '';
-          showBanner('auth-banner', `Conectado${who} com sucesso.`, 'ok');
-        } catch (err) {
-          $('admin-panels').classList.add('hidden');
-          $('btn-sair').classList.add('hidden');
-          showBanner('auth-banner', 'Falha ao autenticar/carregar: ' + err.message, 'err');
-        } finally {
-          btn.disabled = false;
-          btn.textContent = 'Entrar';
-        }
-      }
-
-      $('api-base').value = state.apiBase;
-      $('admin-user').value = state.user;
-      $('admin-token').value = state.token;
-      $('btn-conectar').addEventListener('click', conectarEPreencher);
-      [$('admin-user'), $('admin-token')].forEach((el) => {
-        el.addEventListener('keydown', (e) => {
-          if (e.key === 'Enter') {
-            e.preventDefault();
-            conectarEPreencher();
-          }
-        });
-      });
-
-      $('btn-toggle-pass').addEventListener('click', () => {
-        const input = $('admin-token');
-        const isPass = input.type === 'password';
-        input.type = isPass ? 'text' : 'password';
-        $('btn-toggle-pass').textContent = isPass ? '🙈' : '👁️';
-      });
-
-      $('btn-sair').addEventListener('click', () => {
-        state.user = '';
-        state.token = '';
-        $('admin-user').value = '';
-        $('admin-token').value = '';
-        saveCredentials('', '', '', false);
-        $('admin-panels').classList.add('hidden');
-        $('btn-sair').classList.add('hidden');
-        showBanner('auth-banner', 'Sessão encerrada neste dispositivo.', 'ok');
-      });
-
-      // Bloco 1: Kill Switch
-      $('kill-switch-toggle').addEventListener('change', async (e) => {
-        const ativo = e.target.checked;
-        try {
-          const res = await apiFetch('/v2/admin/config/kill-switch', {
-            method: 'POST',
-            body: JSON.stringify({ ativo })
-          });
-          renderKillSwitch(res.publicacao_automatica_ativa);
-          showBanner('coleta-banner', `Kill Switch atualizado: publicação automática ${ativo ? 'LIGADA' : 'DESLIGADA'}.`, 'ok');
-        } catch (err) {
-          e.target.checked = !ativo;
-          showBanner('coleta-banner', 'Erro ao atualizar Kill Switch: ' + err.message, 'err');
-        }
-      });
-
-      // Bloco 1: Rodar Coleta Agora
-      $('btn-rodar-coleta').addEventListener('click', async () => {
-        const btn = $('btn-rodar-coleta');
-        btn.disabled = true;
-        btn.textContent = 'Executando coleta...';
-        showBanner('coleta-banner', 'Disparando pipeline de coleta protegido por pg_try_advisory_lock...', 'warn');
-        try {
-          const res = await apiFetch('/v2/admin/coleta/executar', {
-            method: 'POST',
-            body: JSON.stringify({ dry_run: false })
-          });
-          if (res.status === 'ignorado_lock_ocupado') {
-            showBanner('coleta-banner', 'Lock ocupado (ignorado_lock_ocupado): já existe uma coleta em execução no momento.', 'warn');
-          } else if (res.status === 'concluido') {
-            showBanner('coleta-banner', `Coleta concluída! Notícias processadas: ${res.total_noticias ?? 0}.`, 'ok');
-            await carregarEventos();
-          } else {
-            showBanner('coleta-banner', `Execução finalizada com status: ${res.status || 'sem_itens'}.`, 'ok');
-          }
-        } catch (err) {
-          showBanner('coleta-banner', 'Erro ao executar coleta: ' + err.message, 'err');
-        } finally {
-          btn.disabled = false;
-          btn.textContent = 'Rodar Coleta Agora';
-        }
-      });
-
-      // Bloco 2: Cadastro de Fonte
-      $('form-nova-fonte').addEventListener('submit', async (e) => {
-        e.preventDefault();
-        hideBanner('fontes-banner');
-        const payload = {
-          nome: $('f-nome').value.trim(),
-          url: $('f-url').value.trim(),
-          tipo_fonte: $('f-tipo').value,
-          cadencia: $('f-cadencia').value,
-          peso_confianca: Number($('f-peso').value) || 3,
-          aprovar_imediato: $('f-aprovar').checked
-        };
-        try {
-          await apiFetch('/v2/admin/fontes', {
-            method: 'POST',
-            body: JSON.stringify(payload)
-          });
-          e.target.reset();
-          $('f-peso').value = 3;
-          showBanner('fontes-banner', 'Fonte cadastrada com sucesso.', 'ok');
-          await carregarFontes();
-        } catch (err) {
-          showBanner('fontes-banner', 'Erro ao cadastrar fonte: ' + err.message, 'err');
-        }
-      });
-
-      $('btn-recarregar-fontes').addEventListener('click', () => carregarFontes().catch((err) => showBanner('fontes-banner', err.message, 'err')));
-
-      // Bloco 2: Toggle ativo e Excluir
-      $('tbody-fontes').addEventListener('change', async (e) => {
-        const id = e.target.getAttribute('data-toggle-fonte');
-        if (!id) return;
-        const ativo = e.target.checked;
-        try {
-          await apiFetch(`/v2/admin/fontes/${id}/ativo`, {
-            method: 'PATCH',
-            body: JSON.stringify({ ativo })
-          });
-        } catch (err) {
-          e.target.checked = !ativo;
-          showBanner('fontes-banner', 'Erro ao atualizar status da fonte: ' + err.message, 'err');
-        }
-      });
-
-      $('tbody-fontes').addEventListener('click', async (e) => {
-        const id = e.target.getAttribute('data-del-fonte');
-        if (!id) return;
-        if (!confirm('Excluir esta fonte permanentemente?')) return;
-        try {
-          await apiFetch(`/v2/admin/fontes/${id}`, { method: 'DELETE' });
-          showBanner('fontes-banner', 'Fonte excluída.', 'ok');
-          await carregarFontes();
-        } catch (err) {
-          showBanner('fontes-banner', 'Erro ao excluir: ' + err.message, 'err');
-        }
-      });
-
-      // Bloco 3: Ações da Fila de Eventos
       $('btn-recarregar-eventos').addEventListener('click', () => carregarEventos().catch((err) => showBanner('eventos-banner', err.message, 'err')));
 
       $('tbody-eventos').addEventListener('click', async (e) => {
@@ -1480,10 +1712,7 @@
 
         if (pubId) {
           try {
-            await apiFetch(`/v2/admin/eventos/${pubId}/status`, {
-              method: 'PATCH',
-              body: JSON.stringify({ status: 'publicado' })
-            });
+            await apiFetch(`/v2/admin/eventos/${pubId}/status`, { method: 'PATCH', body: JSON.stringify({ status: 'publicado' }) });
             showBanner('eventos-banner', 'Evento publicado.', 'ok');
             await carregarEventos();
           } catch (err) {
@@ -1494,10 +1723,7 @@
 
         if (arqId) {
           try {
-            await apiFetch(`/v2/admin/eventos/${arqId}/status`, {
-              method: 'PATCH',
-              body: JSON.stringify({ status: 'arquivado' })
-            });
+            await apiFetch(`/v2/admin/eventos/${arqId}/status`, { method: 'PATCH', body: JSON.stringify({ status: 'arquivado' }) });
             showBanner('eventos-banner', 'Evento arquivado.', 'ok');
             await carregarEventos();
           } catch (err) {
@@ -1551,11 +1777,7 @@
         try {
           await apiFetch(`/v2/admin/eventos/${state.editingEventId}/sintese`, {
             method: 'PATCH',
-            body: JSON.stringify({
-              sintese_com_ressalvas: sintese,
-              tipo_alteracao: tipo,
-              errata: tipo === 'correcao_material' ? errata : null
-            })
+            body: JSON.stringify({ sintese_com_ressalvas: sintese, tipo_alteracao: tipo, errata: tipo === 'correcao_material' ? errata : null })
           });
           fecharModal();
           showBanner('eventos-banner', 'Síntese atualizada com sucesso.', 'ok');
@@ -1565,9 +1787,7 @@
         }
       });
 
-      // ============================================================
-      // BLOCO 4: Dossiês Editoriais (Permanentes & Especiais)
-      // ============================================================
+      // ============================ DOSSIÊS ============================
       function slugify(str) {
         return String(str || '')
           .normalize('NFD')
@@ -1615,10 +1835,14 @@
 
       function renderDossiesContagens() {
         const c = state.dossiesContagens || {};
-        $('dossies-count-total').textContent = c.total ?? state.dossies.length ?? 0;
-        $('dossies-count-aovivo').textContent = c.ao_vivo ?? 0;
-        $('dossies-count-embreve').textContent = c.em_breve ?? 0;
-        $('dossies-count-arquivo').textContent = c.arquivo ?? 0;
+        const total = $('dossies-count-total');
+        const aovivo = $('dossies-count-aovivo');
+        const embreve = $('dossies-count-embreve');
+        const arquivo = $('dossies-count-arquivo');
+        if (total) total.textContent = c.total ?? (state.dossies || []).length ?? 0;
+        if (aovivo) aovivo.textContent = c.ao_vivo ?? 0;
+        if (embreve) embreve.textContent = c.em_breve ?? 0;
+        if (arquivo) arquivo.textContent = c.arquivo ?? 0;
       }
 
       function filtrarDossies(lista) {
@@ -1665,8 +1889,8 @@
                 <div class="admin-actions">
                   <button class="admin-btn admin-btn-sm" data-dossie-action="editar" data-slug="${escapeHtml(d.slug)}" type="button">Editar</button>
                   ${isEspecial
-              ? `<button class="admin-btn admin-btn-sm admin-btn-danger" data-dossie-action="excluir" data-slug="${escapeHtml(d.slug)}" type="button">Excluir</button>`
-              : ''}
+                    ? `<button class="admin-btn admin-btn-sm admin-btn-danger" data-dossie-action="excluir" data-slug="${escapeHtml(d.slug)}" type="button">Excluir</button>`
+                    : ''}
                 </div>
               </td>
             </tr>
@@ -1711,7 +1935,7 @@
 
       function getAiFieldsFromModal() {
         const context = ($('d-exec-context').value || '').trim();
-        const pillars = [0,1,2].map((i) => ({
+        const pillars = [0, 1, 2].map((i) => ({
           title: ($(`d-p${i}-title`).value || '').trim(),
           description: ($(`d-p${i}-desc`).value || '').trim(),
           category: $(`d-p${i}-cat`).value || 'politica'
@@ -1734,8 +1958,8 @@
         const pillars = Array.isArray(es.pillars) ? es.pillars : [];
         $('d-exec-context').value = es.context || '';
         $('d-exec-context-count').textContent = String(($('d-exec-context').value || '').length);
-        [0,1,2].forEach((i) => {
-          const p = pillars[i] || { title: '', description: '', category: ['politica','economia','geopolitica'][i] || 'politica' };
+        [0, 1, 2].forEach((i) => {
+          const p = pillars[i] || { title: '', description: '', category: ['politica', 'economia', 'geopolitica'][i] || 'politica' };
           $(`d-p${i}-cat`).value = p.category || 'politica';
           $(`d-p${i}-title`).value = p.title || '';
           $(`d-p${i}-desc`).value = p.description || '';
@@ -1755,8 +1979,8 @@
       function clearAiFields() {
         $('d-exec-context').value = '';
         $('d-exec-context-count').textContent = '0';
-        [0,1,2].forEach((i) => {
-          $(`d-p${i}-cat`).value = ['politica','economia','geopolitica'][i];
+        [0, 1, 2].forEach((i) => {
+          $(`d-p${i}-cat`).value = ['politica', 'economia', 'geopolitica'][i];
           $(`d-p${i}-title`).value = '';
           $(`d-p${i}-desc`).value = '';
         });
@@ -1932,7 +2156,6 @@
             showToast(`Dossiê "${titulo}" criado no modelo novo (rascunho).`, 'ok');
             showBanner('dossies-banner', `Dossiê "${titulo}" criado. Gere e revise a camada editorial 2.0 antes de publicar.`, 'ok');
             await carregarDossiesAdmin();
-            // Alterna para modo edição para habilitar camada editorial/IA (modelo novo)
             if (created && created.slug) {
               abrirModalDossie('edit', created);
               showBanner('modal-dossie-banner', 'Dossiê criado como rascunho. Use "Gerar / Atualizar com IA" para montar a síntese e a linha do tempo.', 'ok');
@@ -1967,7 +2190,6 @@
               body: JSON.stringify(payload)
             });
             const updated = data.dossie || data;
-            // Atualiza estado local/modal sem fechar para permitir fluxo de revisão
             const idx = (state.dossies || []).findIndex((d) => d.slug === state.editingDossieSlug);
             if (idx >= 0) state.dossies[idx] = updated;
             if (targetWorkflowStatus === 'published') {
@@ -2044,7 +2266,6 @@
           });
           const s = data.sugestao || data;
           if (!s) throw new Error('A IA não retornou uma sugestão válida.');
-          // Preenche o formulário (create ou edit) com a sugestão
           $('d-titulo').value = s.titulo || '';
           state.slugManuallyEdited = Boolean(s.slug);
           $('d-slug').value = slugify(s.slug || s.titulo || '');
@@ -2073,7 +2294,7 @@
         let arr = [];
         try { arr = JSON.parse($('d-timeline-json').value || '[]'); if (!Array.isArray(arr)) arr = []; } catch (e) { arr = []; }
         arr.push({
-          date: new Date().toISOString().slice(0,10),
+          date: new Date().toISOString().slice(0, 10),
           display_date: 'MMM AAAA',
           title: 'Novo marco',
           summary: 'Resumo objetivo do marco...',
@@ -2082,10 +2303,523 @@
         $('d-timeline-json').value = JSON.stringify(arr, null, 2);
       });
 
+      // ============================ EXECUÇÕES ============================
+      async function carregarExecucoes() {
+        const data = await apiFetch('/v2/admin/execucoes?limit=20');
+        const lista = $('execucoes-lista');
+        const execucoes = data.execucoes || [];
+        if (!execucoes.length) {
+          lista.innerHTML = '<div class="admin-sub">Nenhuma execução registrada.</div>';
+          return;
+        }
+        lista.innerHTML = execucoes.map((e) => `
+          <div class="admin-execucao">
+            <div style="display:flex; justify-content:space-between; gap: 0.5rem; flex-wrap: wrap;">
+              <div>
+                <strong>${escapeHtml(e.job_nome || e.recurso_chave || 'job')}</strong>
+                <span class="admin-sub"> · ${escapeHtml(e.recurso_chave || '')}</span>
+              </div>
+              <span class="badge">${escapeHtml(e.status)}</span>
+            </div>
+            <div class="admin-execucao-meta">
+              <span class="admin-sub">docs: ${e.documentos_novos ?? 0} · eventos: ${e.eventos_atualizados ?? 0}</span>
+              <span class="admin-sub">${escapeHtml(e.started_at || '')} → ${escapeHtml(e.finished_at || '')}</span>
+            </div>
+            ${e.erro_detalhe ? `<div class="admin-sub">Erro: ${escapeHtml(e.erro_detalhe)}</div>` : ''}
+          </div>
+        `).join('');
+      }
+
+      $('btn-rodar-coleta').addEventListener('click', async () => {
+        const btn = $('btn-rodar-coleta');
+        btn.disabled = true;
+        btn.textContent = 'Executando coleta...';
+        showBanner('coleta-banner', 'Disparando pipeline de coleta protegido por pg_try_advisory_lock...', 'warn');
+        try {
+          const res = await apiFetch('/v2/admin/coleta/executar', { method: 'POST', body: JSON.stringify({ dry_run: false }) });
+          if (res.status === 'ignorado_lock_ocupado') {
+            showBanner('coleta-banner', 'Lock ocupado (ignorado_lock_ocupado): já existe uma coleta em execução no momento.', 'warn');
+          } else if (res.status === 'concluido') {
+            showBanner('coleta-banner', `Coleta concluída! Notícias processadas: ${res.total_noticias ?? 0}.`, 'ok');
+            await carregarEventos();
+          } else {
+            showBanner('coleta-banner', `Execução finalizada com status: ${res.status || 'sem_itens'}.`, 'ok');
+          }
+          await carregarExecucoes();
+        } catch (err) {
+          showBanner('coleta-banner', 'Erro ao executar coleta: ' + err.message, 'err');
+        } finally {
+          btn.disabled = false;
+          btn.textContent = 'Rodar Coleta Agora';
+        }
+      });
+
+      // ============================ BOT: PULSO / COLUNA ============================
+      $('btn-rodar-pulso').addEventListener('click', async () => {
+        const btn = $('btn-rodar-pulso');
+        const prev = btn.textContent;
+        btn.disabled = true;
+        btn.textContent = 'Rodando pulso...';
+        showBanner('coleta-banner', 'Disparando pulso de notícias quentes (30min)...', 'warn');
+        try {
+          const res = await apiFetch('/v1/noticias-quentes/executar', { method: 'POST', body: JSON.stringify({ dry_run: false }) });
+          showBanner('coleta-banner', `Pulso executado com status: ${res.status || 'concluido'}.`, res.status === 'concluido' ? 'ok' : 'warn');
+          showToast('Pulso de notícias quentes executado.', 'ok');
+          await carregarNoticiasQuentes();
+        } catch (err) {
+          showBanner('coleta-banner', 'Erro ao rodar pulso: ' + err.message, 'err');
+          showToast('Erro ao rodar pulso: ' + err.message, 'err');
+        } finally {
+          btn.disabled = false;
+          btn.textContent = prev;
+        }
+      });
+
+      $('btn-gerar-coluna').addEventListener('click', async () => {
+        const btn = $('btn-gerar-coluna');
+        const prev = btn.textContent;
+        btn.disabled = true;
+        btn.textContent = 'Gerando coluna...';
+        showBanner('coleta-banner', 'Gerando coluna editorial...', 'warn');
+        try {
+          const res = await apiFetch('/v2/gerar-coluna', { method: 'POST', body: JSON.stringify({ dry_run: false, sincrono: true }) });
+          if (res && res.status === 'agendado_em_background') {
+            showToast('Coluna editorial agendada para execução em background.', 'ok');
+          } else {
+            showToast('Coluna editorial gerada com sucesso.', 'ok');
+          }
+          showBanner('coleta-banner', 'Coluna editorial: ' + ((res && res.status) || 'concluido'), (res && res.status) === 'concluido' ? 'ok' : 'warn');
+          await carregarDossiesAdmin();
+        } catch (err) {
+          showBanner('coleta-banner', 'Erro ao gerar coluna: ' + err.message, 'err');
+          showToast('Erro ao gerar coluna: ' + err.message, 'err');
+        } finally {
+          btn.disabled = false;
+          btn.textContent = prev;
+        }
+      });
+
+      // ============================ RADAR ============================
+      async function carregarRadar() {
+        const data = await apiFetch('/v2/admin/radar/manual');
+        state.radar = data.cards || [];
+        renderRadar();
+      }
+
+      function renderRadar() {
+        const tbody = $('tbody-radar');
+        const q = ($('radar-busca').value || '').trim().toLowerCase();
+        const f = $('radar-filtro').value || 'all';
+        let lista = state.radar;
+        if (f && f !== 'all') {
+          lista = lista.filter((c) => String(c.categoria || '').toLowerCase() === f);
+        }
+        if (q) {
+          lista = lista.filter((c) => {
+            const hay = [c.titulo, c.resumo, c.analise, c.fonte_nome, c.pais_regiao, c.pais_envolvidos].filter(Boolean).join(' ').toLowerCase();
+            return hay.includes(q);
+          });
+        }
+        if (!lista.length) {
+          tbody.innerHTML = '<tr><td colspan="6" class="admin-sub">Nenhuma notícia encontrada.</td></tr>';
+          return;
+        }
+        tbody.innerHTML = lista.map((c) => `
+          <tr>
+            <td>
+              <strong>${escapeHtml(c.titulo)}</strong>
+              <div class="admin-sub"><code>${escapeHtml(c.slug)}</code></div>
+            </td>
+            <td><span class="badge">${escapeHtml(c.categoria || '—')}</span></td>
+            <td>${escapeHtml(c.urgencia_score ?? 0)}</td>
+            <td>${escapeHtml(c.fonte_nome || '—')}</td>
+            <td>${escapeHtml(c.data_publicacao || '—')}</td>
+            <td>
+              <div class="admin-actions">
+                <button class="admin-btn admin-btn-sm" type="button" data-edit-radar="${escapeHtml(c.slug)}">Editar</button>
+                <button class="admin-btn admin-btn-sm admin-btn-danger" type="button" data-del-radar="${escapeHtml(c.slug)}">Excluir</button>
+              </div>
+            </td>
+          </tr>
+        `).join('');
+      }
+
+      function abrirModalRadar() {
+        const card = state.radar.find((c) => c.slug === state.editingRadarSlug);
+        $('modal-radar_title').textContent = state.editingRadarSlug ? 'Editar Notícia Manual' : 'Nova Notícia Manual';
+        $('modal-radar_sub').textContent = state.editingRadarSlug
+          ? 'Edição parcial via PATCH /v2/admin/radar/manual/' + state.editingRadarSlug + '.'
+          : 'Cadastro via POST /v2/admin/radar/manual.';
+        $('btn-excluir-radar').style.display = state.editingRadarSlug ? 'inline-flex' : 'none';
+        $('r-titulo').value = card ? (card.titulo || '') : '';
+        $('r-resumo').value = card ? (card.resumo || '') : '';
+        $('r-contexto').value = card ? (card.analise || '') : '';
+        $('r-categoria').value = card ? (card.categoria || 'geral') : 'geral';
+        $('r-urgencia').value = card ? (card.urgencia_score ?? 50) : 50;
+        $('r-fonte-nome').value = card ? (card.fonte_nome || '') : '';
+        $('r-fonte-url').value = card ? (card.fonte_url || '') : '';
+        $('r-pais').value = card ? (card.pais_regiao || '') : '';
+        $('r-data').value = card ? (card.data_publicacao || '') : '';
+        $('r-slug').value = card ? (card.slug || '') : (slugify($('r-titulo').value) || '');
+        $('r-slug').disabled = Boolean(card);
+        hideBanner('modal-radar-banner');
+        $('modal-radar').classList.add('open');
+      }
+
+      function fecharModalRadar() {
+        $('modal-radar').classList.remove('open');
+        state.editingRadarSlug = null;
+      }
+
+      $('btn-adicionar-radar').addEventListener('click', () => {
+        state.editingRadarSlug = null;
+        abrirModalRadar();
+      });
+
+      $('btn-recarregar-radar').addEventListener('click', () => carregarRadar().catch((err) => showBanner('radar-banner', err.message, 'err')));
+
+      $('tbody-radar').addEventListener('click', async (e) => {
+        const editBtn = e.target.closest('button[data-edit-radar]');
+        const delBtn = e.target.closest('button[data-del-radar]');
+        if (!editBtn && !delBtn) return;
+        if (editBtn) {
+          state.editingRadarSlug = editBtn.getAttribute('data-edit-radar');
+          abrirModalRadar();
+          return;
+        }
+        const slug = delBtn.getAttribute('data-del-radar');
+        if (!confirm('Excluir esta notícia manual do radar?')) return;
+        try {
+          const res = await apiFetch(`/v2/admin/radar/manual/${encodeURIComponent(slug)}`, { method: 'DELETE' });
+          showBanner('radar-banner', 'Notícia manual excluída.', 'ok');
+          await carregarRadar();
+        } catch (err) {
+          showBanner('radar-banner', 'Erro ao excluir notícia: ' + err.message, 'err');
+        }
+      });
+
+      $('btn-salvar-radar').addEventListener('click', async () => {
+        const bannerEl = $('modal-radar-banner');
+        const titulo = $('r-titulo').value.trim();
+        if (!titulo) {
+          showBanner('modal-radar-banner', 'Informe o título da notícia.', 'err');
+          return;
+        }
+        const body = {
+          titulo: titulo,
+          resumo: $('r-resumo').value.trim(),
+          contexto: $('r-contexto').value.trim(),
+          categoria: $('r-categoria').value,
+          urgencia_score: Number($('r-urgencia').value) || 0,
+          fonte_nome: $('r-fonte-nome').value.trim(),
+          fonte_url: $('r-fonte-url').value.trim(),
+          pais_regiao: ($('r-pais').value || '').trim().toUpperCase(),
+          data_publicacao: $('r-data').value || null
+        };
+        try {
+          if (state.editingRadarSlug) {
+            const res = await apiFetch(`/v2/admin/radar/manual/${encodeURIComponent(state.editingRadarSlug)}`, {
+              method: 'PATCH',
+              body: JSON.stringify(body)
+            });
+            showBanner('radar-banner', 'Notícia manual atualizada.', 'ok');
+          } else {
+            const slug = slugify(titulo) || ('manual-' + Date.now().toString(36));
+            const res = await apiFetch('/v2/admin/radar/manual', {
+              method: 'POST',
+              body: JSON.stringify({ ...body, slug: slug, origem_manual: true })
+            });
+            showBanner('radar-banner', 'Notícia manual criada.', 'ok');
+          }
+          await carregarRadar();
+          fecharModalRadar();
+        } catch (err) {
+          showBanner('modal-radar-banner', 'Erro ao salvar notícia: ' + err.message, 'err');
+        }
+      });
+
+      $('btn-fechar-modal-radar').addEventListener('click', fecharModalRadar);
+      $('btn-cancelar-modal-radar').addEventListener('click', fecharModalRadar);
+
+      $('btn-excluir-radar').addEventListener('click', async () => {
+        if (!state.editingRadarSlug) return;
+        if (!confirm('Excluir esta notícia manual do radar?')) return;
+        try {
+          const res = await apiFetch(`/v2/admin/radar/manual/${encodeURIComponent(state.editingRadarSlug)}`, { method: 'DELETE' });
+          showBanner('radar-banner', 'Notícia manual excluída.', 'ok');
+          await carregarRadar();
+          fecharModalRadar();
+        } catch (err) {
+          showBanner('radar-banner', 'Erro ao excluir notícia: ' + err.message, 'err');
+        }
+      });
+      $('r-titulo').addEventListener('input', (e) => {
+        if (state.editingRadarSlug === null) {
+          $('r-slug').value = slugify(e.target.value);
+        }
+      });
+
+      // ============================ NOTÍCIAS QUENTES ============================
+      async function carregarNoticiasQuentes() {
+        const data = await apiFetch('/v2/admin/noticias-quentes?limit=50');
+        state.noticiasQuentes = data.noticias || [];
+        renderNoticiasQuentes();
+      }
+
+      function renderNoticiasQuentes() {
+        const tbody = $('tbody-noticias-quentes');
+        const lista = state.noticiasQuentes;
+        if (!lista || !lista.length) {
+          tbody.innerHTML = '<tr><td colspan="6" class="admin-sub">Nenhuma notícia quente encontrada.</td></tr>';
+          return;
+        }
+        tbody.innerHTML = lista.map((n) => `
+          <tr>
+            <td><code>${escapeHtml(n.slug)}</code></td>
+            <td><strong>${escapeHtml(n.titulo_curto)}</strong></td>
+            <td>${escapeHtml(n.categoria || '—')}</td>
+            <td>${escapeHtml(n.urgencia_score ?? 0)}</td>
+            <td><span class="badge ${n.status === 'publicado' || n.status === 'ativo' ? 'badge-ok' : 'badge-warn'}">${escapeHtml(n.status || '—')}</span></td>
+            <td>
+              <div class="admin-actions">
+                <button class="admin-btn admin-btn-sm" type="button" data-edit-nq="${escapeHtml(n.slug)}">Editar</button>
+                <button class="admin-btn admin-btn-sm" type="button" data-toggle-nq="${escapeHtml(n.slug)}">${n.status === 'ativo' ? 'Desativar' : 'Ativar'}</button>
+                <button class="admin-btn admin-btn-sm admin-btn-danger" type="button" data-del-nq="${escapeHtml(n.slug)}">Excluir</button>
+              </div>
+            </td>
+          </tr>
+        `).join('');
+      }
+
+      $('btn-recarregar-noticias-quentes').addEventListener('click', () => carregarNoticiasQuentes().catch((err) => showBanner('noticias-quentes-banner', err.message, 'err')));
+
+      $('btn-nova-noticia-quente').addEventListener('click', () => {
+        state.editingNoticiaSlug = null;
+        $('modal-noticias-quente_title').textContent = 'Nova Notícia Quente';
+        $('modal-noticias-quente_sub').textContent = 'Criação/atualização via PATCH /v2/admin/noticias-quentes/{slug}.';
+        $('nq-titulo-curto').value = '';
+        $('nq-resumo-pulso').value = '';
+        $('nq-impacto-pratico').value = '';
+        $('nq-categoria').value = '';
+        $('nq-urgencia-score').value = 50;
+        $('nq-relevancia-score').value = 70;
+        $('nq-nivel-confianca').value = 'alta';
+        $('nq-ttl-horas').value = 6;
+        $('nq-horas-destaque').value = 6;
+        $('nq-status').value = 'aguardando_revisao';
+        $('nq-slug').value = '';
+        $('nq-destaque-ate').value = '';
+        $('nq-paises').value = '';
+        hideBanner('modal-noticias-quente-banner');
+        $('modal-noticias-quente').classList.add('open');
+      });
+
+      $('tbody-noticias-quentes').addEventListener('click', async (e) => {
+        const editBtn = e.target.closest('button[data-edit-nq]');
+        const delBtn = e.target.closest('button[data-del-nq]');
+        const toggleBtn = e.target.closest('button[data-toggle-nq]');
+        if (!editBtn && !delBtn && !toggleBtn) return;
+        const slug = editBtn ? editBtn.getAttribute('data-edit-nq') : (toggleBtn ? toggleBtn.getAttribute('data-toggle-nq') : delBtn.getAttribute('data-del-nq'));
+
+        if (editBtn) {
+          state.editingNoticiaSlug = editBtn.getAttribute('data-edit-nq');
+          const n = state.noticiasQuentes.find((x) => x.slug === state.editingNoticiaSlug);
+          if (!n) return;
+          $('modal-noticias-quente_title').textContent = 'Editar Notícia Quente';
+          $('modal-noticias-quente_sub').textContent = `Edição via PATCH /v2/admin/noticias-quentes/${n.slug}.`;
+          $('nq-titulo-curto').value = n.titulo_curto || '';
+          $('nq-resumo-pulso').value = n.resumo_pulso || '';
+          $('nq-impacto-pratico').value = n.impacto_pratico || '';
+          $('nq-categoria').value = n.categoria || '';
+          $('nq-urgencia-score').value = n.urgencia_score ?? 50;
+          $('nq-relevancia-score').value = n.relevancia_score ?? 70;
+          $('nq-nivel-confianca').value = n.nivel_confianca || 'alta';
+          $('nq-ttl-horas').value = n.ttl_horas ?? 6;
+          $('nq-horas-destaque').value = n.horas_em_destaque ?? 6;
+          $('nq-status').value = n.status || 'aguardando_revisao';
+          $('nq-slug').value = n.slug || '';
+          $('nq-destaque-ate').value = n.destaque_ate ? String(n.destaque_ate).slice(0, 16) : '';
+          $('nq-paises').value = Array.isArray(n.paises_envolvidos) ? n.paises_envolvidos.join(', ') : '';
+          hideBanner('modal-noticias-quente-banner');
+          $('modal-noticias-quente').classList.add('open');
+          return;
+        }
+
+        if (toggleBtn) {
+          const atual = state.noticiasQuentes.find((x) => x.slug === slug);
+          const proximo = atual && atual.status === 'ativo' ? 'aguardando_revisao' : 'ativo';
+          try {
+            await apiFetch(`/v2/admin/noticias-quentes/${encodeURIComponent(slug)}`, { method: 'PATCH', body: JSON.stringify({ status: proximo }) });
+            showBanner('noticias-quentes-banner', `Notícia quente ${proximo === 'ativo' ? 'ativada' : 'desativada'} com sucesso.`, 'ok');
+            await carregarNoticiasQuentes();
+          } catch (err) {
+            showBanner('noticias-quentes-banner', 'Erro ao atualizar status: ' + err.message, 'err');
+          }
+          return;
+        }
+
+        if (!confirm('Excluir esta notícia quente?')) return;
+        try {
+          const res = await apiFetch(`/v2/admin/noticias-quentes/${encodeURIComponent(slug)}`, { method: 'DELETE' });
+          showBanner('noticias-quentes-banner', 'Notícia quente excluída.', 'ok');
+          await carregarNoticiasQuentes();
+        } catch (err) {
+          showBanner('noticias-quentes-banner', 'Erro ao excluir: ' + err.message, 'err');
+        }
+      });
+
+      $('btn-salvar-noticia-quente').addEventListener('click', async () => {
+        const bannerEl = $('modal-noticias-quente-banner');
+        const slug = ($('nq-slug').value || '').trim();
+        if (!slug) {
+          showBanner('modal-noticias-quente-banner', 'Informe o slug da notícia.', 'err');
+          return;
+        }
+        const body = {};
+        const tituloCurto = ($('nq-titulo-curto').value || '').trim();
+        const resumoPulso = ($('nq-resumo-pulso').value || '').trim();
+        const impacto = ($('nq-impacto-pratico').value || '').trim();
+        const categoria = ($('nq-categoria').value || '').trim();
+        const urgencia = Number($('nq-urgencia-score').value) || 0;
+        const relevancia = Number($('nq-relevancia-score').value) || 0;
+        const conf = $('nq-nivel-confianca').value;
+        const ttl = Number($('nq-ttl-horas').value) || 6;
+        const horas = Number($('nq-horas-destaque').value) || 6;
+        const status = $('nq-status').value;
+        const destaqueAte = $('nq-destaque-ate').value;
+        const paises = ($('nq-paises').value || '').split(',').map((p) => p.trim().toUpperCase()).filter(Boolean);
+
+        if (tituloCurto) body.titulo_curto = tituloCurto;
+        if (resumoPulso) body.resumo_pulso = resumoPulso;
+        if (impacto) body.impacto_pratico = impacto;
+        if (categoria) body.categoria = categoria;
+        if (urgencia) body.urgencia_score = urgencia;
+        if (relevancia) body.relevancia_score = relevancia;
+        body.nivel_confianca = conf;
+        body.ttl_horas = ttl;
+        body.horas_em_destaque = horas;
+        body.status = status;
+        if (destaqueAte) body.destaque_ate = new Date(destaqueAte).toISOString();
+        if (paises.length) body.paises_envolvidos = paises;
+
+        try {
+          await apiFetch(`/v2/admin/noticias-quentes/${encodeURIComponent(slug)}`, { method: 'PATCH', body: JSON.stringify(body) });
+          showBanner('noticias-quentes-banner', 'Notícia quente salva.', 'ok');
+          await carregarNoticiasQuentes();
+          fecharModalNoticiaQuente();
+        } catch (err) {
+          showBanner('modal-noticias-quente-banner', 'Erro ao salvar notícia quente: ' + err.message, 'err');
+        }
+      });
+
+      function fecharModalNoticiaQuente() {
+        $('modal-noticias-quente').classList.remove('open');
+        state.editingNoticiaSlug = null;
+      }
+
+      $('btn-fechar-modal-noticia-quente').addEventListener('click', fecharModalNoticiaQuente);
+      $('btn-cancelar-modal-noticia-quente').addEventListener('click', fecharModalNoticiaQuente);
+
+      // ============================ COLLAPSIBLE ============================
+      function initCollapsibleCards() {
+        const cards = document.querySelectorAll('.admin-card[data-admin-section]');
+        cards.forEach((card) => {
+          const sectionId = card.getAttribute('data-admin-section');
+          const head = card.querySelector('.admin-card-head');
+          if (!head) return;
+          const key = 'rom_admin_acc_' + sectionId;
+          let btn = head.querySelector('.admin-collapse-btn');
+          if (!btn) {
+            btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'admin-collapse-btn';
+            btn.setAttribute('aria-label', 'Minimizar ou expandir área');
+            btn.textContent = '−';
+            head.appendChild(btn);
+          }
+          const apply = (collapsed) => {
+            card.classList.toggle('collapsed', collapsed);
+            btn.textContent = collapsed ? '+' : '−';
+            btn.setAttribute('aria-expanded', String(!collapsed));
+          };
+          let collapsed = false;
+          try { collapsed = localStorage.getItem(key) === '1'; } catch (e) { }
+          apply(collapsed);
+          btn.addEventListener('click', () => {
+            const now = card.classList.contains('collapsed');
+            apply(!now);
+            try { localStorage.setItem(key, now ? '0' : '1'); } catch (e) { }
+          });
+        });
+      }
+
+      // ============================ TEMA ============================
+      $('theme-toggle').addEventListener('click', () => {
+        const cur = document.documentElement.getAttribute('data-theme') || 'light';
+        const next = cur === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        try { localStorage.setItem('rom_theme', next); } catch (e) { }
+      });
+
+      // ============================ AUTENTICAÇÃO ============================
+      async function carregarTudo() {
+        await carregarKillSwitch();
+        await Promise.all([carregarFontes(), carregarEventos(), carregarDossiesAdmin(), carregarExecucoes(), carregarRadar(), carregarNoticiasQuentes()]);
+      }
+
+      async function conectar() {
+        const password = ($('admin-password').value || '').trim();
+        if (!password) {
+          showBanner('auth-banner', 'Informe a senha de acesso.', 'err');
+          return;
+        }
+        state.token = password;
+        persistToken(password);
+
+        const btn = $('btn-conectar');
+        btn.disabled = true;
+        btn.textContent = 'Entrando...';
+
+        try {
+          await carregarTudo();
+          $('admin-panels').classList.remove('hidden');
+          $('btn-sair').classList.remove('hidden');
+          showBanner('auth-banner', 'Conectado com sucesso.', 'ok');
+        } catch (err) {
+          $('admin-panels').classList.add('hidden');
+          $('btn-sair').classList.add('hidden');
+          showBanner('auth-banner', 'Falha ao autenticar/carregar: ' + err.message, 'err');
+        } finally {
+          btn.disabled = false;
+          btn.textContent = 'Entrar';
+        }
+      }
+
+      function sair() {
+        clearPersistedToken();
+        state.token = '';
+        state.editingEventId = null;
+        $('admin-panels').classList.add('hidden');
+        $('btn-sair').classList.add('hidden');
+        showBanner('auth-banner', 'Sessão encerrada neste dispositivo.', 'ok');
+        const pwd = $('admin-password');
+        if (pwd) pwd.value = '';
+      }
+
+      $('btn-conectar').addEventListener('click', conectar);
+      $('admin-password').addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          conectar();
+        }
+      });
+      $('btn-sair').addEventListener('click', sair);
+
+      // Inicialização
       initCollapsibleCards();
 
       if (state.token) {
-        conectarEPreencher();
+        conectar();
       }
     })();
   </script>
