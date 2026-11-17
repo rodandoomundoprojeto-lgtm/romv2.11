@@ -14090,6 +14090,46 @@
     return s;
   }
 
+  /* ---------- Mídia Kit & Parcerias: catálogo de cotas contextual (MK-COTAS-PARCERIAS) ---------- */
+  var COTAS_PARCERIAS = {
+    cota_master: {
+      key: 'cota_master',
+      label: 'Cota 01 — Founding Partner (Master)',
+      titulo: 'Cota 01 — Founding Partner (Master)',
+      subtitle: 'Esta é a solicitação da Cota 01 — Founding Partner (Master). O time institucional está preparando o Mídia Kit desta cota exclusiva e enviará o material completo junto com as condições vigentes por e-mail.'
+    },
+    dossie_tematico: {
+      key: 'dossie_tematico',
+      label: 'Cota 02 — Inteligência Setorial (Dossiês)',
+      titulo: 'Cota 02 — Inteligência Setorial (Dossiês)',
+      subtitle: 'Esta é a solicitação da Cota 02 — Inteligência Setorial (Dossiês). O time institucional está preparando o dossiê setorial exclusivo e enviará o material completo junto com as condições vigentes por e-mail.'
+    },
+    resumo_dia: {
+      key: 'resumo_dia',
+      label: 'Cota 03 — Briefing Matinal (Resumo do Dia)',
+      titulo: 'Cota 03 — Briefing Matinal (Resumo do Dia)',
+      subtitle: 'Esta é a solicitação da Cota 03 — Briefing Matinal (Resumo do Dia). O time institucional está preparando o briefing matinal exclusivo e enviará o material completo junto com as condições vigentes por e-mail.'
+    },
+    gaveta_contextual: {
+      key: 'gaveta_contextual',
+      label: 'Cota 04 — Território & Contexto (Geo)',
+      titulo: 'Cota 04 — Território & Contexto (Geo)',
+      subtitle: 'Esta é a solicitação da Cota 04 — Território & Contexto (Geo). O time institucional está preparando a contextualização territorial exclusiva e enviará o material completo junto com as condições vigentes por e-mail.'
+    },
+    geral: {
+      key: 'geral',
+      label: 'CTA Geral — Mídia Kit Completo',
+      titulo: 'Receba o formulário de parceria',
+      subtitle: 'Informe seus dados abaixo e o link exclusivo para o formulário de aplicação será enviado imediatamente para o seu e-mail.'
+    }
+  };
+
+  function getCotaInfo(cotaKey) {
+    var c = COTAS_PARCERIAS[cotaKey];
+    if (c) return c;
+    return COTAS_PARCERIAS.geral;
+  }
+
   /* ---------- modal de captura de lead para envio do formulário de parceria ---------- */
   function initParceriaLeadModal() {
     var leadDialog = document.getElementById('parceria-lead-dialog');
@@ -14116,7 +14156,14 @@
       statusEl.className = 'bug-status parceria-lead-status ' + (type || 'ok');
     }
 
-    function openLeadModal() {
+    function openLeadModal(btn) {
+      var cotaKey = (btn && btn.getAttribute && btn.getAttribute('data-cota')) || 'geral';
+      var cotaInfo = getCotaInfo(cotaKey);
+      if (leadDialog) leadDialog.setAttribute('data-cota-selecionada', cotaKey);
+      var leadTitleEl = document.getElementById('parceria-lead-title');
+      var leadSubtitleEl = document.getElementById('parceria-lead-subtitle');
+      if (leadTitleEl) leadTitleEl.textContent = cotaInfo.titulo;
+      if (leadSubtitleEl) leadSubtitleEl.textContent = cotaInfo.subtitle;
       if (leadForm) leadForm.reset();
       if (fieldsBox) fieldsBox.hidden = false;
       if (confirmBox) confirmBox.hidden = true;
@@ -14146,11 +14193,11 @@
     }
 
     if (btnOpen) {
-      btnOpen.addEventListener('click', openLeadModal);
+      btnOpen.addEventListener('click', function () { openLeadModal(btnOpen); });
     }
 
     document.querySelectorAll('[data-open-parceria-modal]').forEach(function (btn) {
-      btn.addEventListener('click', openLeadModal);
+      btn.addEventListener('click', function () { openLeadModal(btn); });
     });
 
     if (btnCloseX) {
@@ -14193,7 +14240,8 @@
         var webhookPayload = {
           nome: nomeVal,
           email: emailVal,
-          origem: 'pagina-parcerias'
+          origem: 'pagina-parcerias',
+          cota_selecionada: cotaKey || 'geral'
         };
 
         function handleSuccess() {
@@ -14304,16 +14352,11 @@
       };
 
       var formatoLabels = {
-        'cota_master': '1. Cota Presenting (Master)',
-        'dossie_tematico': '2. Patrocínio de Dossiê (/temas)',
-        'resumo_dia': '3. Resumo do Dia (Web + E-mail)',
-        'gaveta_contextual': '4. Gaveta Contextual & Entenda',
-        'geografico': 'Patrocínio Geográfico (Continente / País)',
-        'tematico': 'Patrocínio de Hubs Temáticos',
-        'newsletter': 'Resumo do Dia & Newsletter',
-        'institucional': 'Grant / Apoio Institucional / Acadêmico',
-        'projeto_especial': 'Projeto Especial / Outro',
-        'customizado': 'Proposta Customizada / Outros'
+        'cota_master': 'Cota 01 — Founding Partner (Master)',
+        'dossie_tematico': 'Cota 02 — Inteligência Setorial (Dossiês)',
+        'resumo_dia': 'Cota 03 — Briefing Matinal (Resumo do Dia)',
+        'gaveta_contextual': 'Cota 04 — Território & Contexto (Geo)',
+        'projeto_especial': 'Projeto Especial / Outros'
       };
 
       var orcamentoLabels = {

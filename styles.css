@@ -6732,6 +6732,38 @@ dialog:not([open]) {
   color: #81c995;
 }
 
+/* Balão específico de solicitação por cota (Mídia Kit & Parcerias — MK-COTAS-PARCERIAS) */
+.parceria-cota-cta {
+  align-self: flex-start;
+  margin-top: var(--space-2);
+}
+
+.parceria-format-card .parceria-cota-cta:hover,
+.parceria-format-card .parceria-cota-cta:focus-visible {
+  transform: translateY(-1px);
+}
+
+/* Estados do modal de captura de lead por cota contextual */
+#parceria-lead-dialog[data-cota-selecionada='geral'] .parceria-lead-box {
+  border-color: var(--border);
+}
+
+#parceria-lead-dialog[data-cota-selecionada='cota_master'] .parceria-lead-box {
+  border-color: color-mix(in oklab, var(--primary) 60%, var(--border));
+}
+
+#parceria-lead-dialog[data-cota-selecionada='dossie_tematico'] .parceria-lead-box {
+  border-color: color-mix(in oklab, var(--bias-D) 60%, var(--border));
+}
+
+#parceria-lead-dialog[data-cota-selecionada='resumo_dia'] .parceria-lead-box {
+  border-color: color-mix(in oklab, var(--accent-amber) 55%, var(--border));
+}
+
+#parceria-lead-dialog[data-cota-selecionada='gaveta_contextual'] .parceria-lead-box {
+  border-color: color-mix(in oklab, var(--primary) 60%, var(--border));
+}
+
 /* ====================================================================
    CLUBE DE MEMBROS — ESTILOS VISUAIS E COMPONENTES
    ==================================================================== */
