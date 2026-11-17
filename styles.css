@@ -12265,6 +12265,96 @@ button, [role="button"], .quick-region-pill { touch-action: manipulation; }
   }
 }
 
+/* --- SUG-182: Vitrine rotativa de dossiês da Home (tempo real + permanentes) --- */
+.dossie-rotativo-card {
+  height: 100%;
+}
+
+.dossies-rotativos-section .hub-home-card-top {
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.dossies-rotativos-section .hub-home-meta-badge {
+  max-width: 100%;
+  white-space: normal;
+  line-height: 1.3;
+}
+
+.dossie-rotativo-nav {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  margin-top: var(--space-4);
+}
+
+.dossie-rotativo-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--text);
+  cursor: pointer;
+  transition: border-color var(--transition), color var(--transition), transform var(--transition), background var(--transition);
+}
+
+.dossie-rotativo-arrow:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.dossie-rotativo-arrow:active {
+  transform: scale(0.93);
+}
+
+.dossie-rotativo-counter {
+  min-width: 54px;
+  text-align: center;
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Celular: 1 dossiê por vez, trocando sozinho, com setas de navegação */
+@media (max-width: 768px) {
+  .dossie-rotativo-nav:not([hidden]) {
+    display: flex;
+  }
+
+  #dossies-rotativos-grid.is-carousel {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 0;
+    overflow: hidden;
+  }
+
+  #dossies-rotativos-grid.is-carousel .dossie-rotativo-slide {
+    display: flex;
+    flex: 0 0 100%;
+    min-width: 100%;
+    max-width: 100%;
+    transform: translateX(calc(var(--dossie-slide-index, 0) * -100%));
+    transition: transform 0.45s ease;
+  }
+
+  #dossies-rotativos-grid.is-carousel .dossie-rotativo-slide .hub-home-card {
+    flex: 1;
+    min-width: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #dossies-rotativos-grid.is-carousel .dossie-rotativo-slide {
+    transition: none;
+  }
+}
+
 .dossie-svg-icon {
   display: inline-flex;
   align-items: center;

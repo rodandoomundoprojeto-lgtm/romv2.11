@@ -447,17 +447,26 @@
     <!-- Nova tela de Comparação de Cobertura Editorial (/comparar) -->
     <section class="comparison-view" id="comparison-view" hidden aria-label="Comparação de Cobertura Editorial"></section>
 
-    <!-- SUG-182: Dossiês em Foco na Home (rotativo a cada 40 min) — substitui a Vitrine de Curadoria IA -->
+    <!-- SUG-182: Dossiês em Foco na Home (rotação mista: tempo real + permanentes). No celular: 1 dossiê por vez com setas -->
     <section id="dossies-rotativos" class="editorial-section dossies-rotativos-section" aria-label="Dossiês em foco">
       <div class="editorial-section-head">
         <div>
-          <p class="editorial-eyebrow">COBERTURA EM TEMPO REAL · DOSSIÊS</p>
+          <p class="editorial-eyebrow">COBERTURA EM TEMPO REAL + PERMANENTE · DOSSIÊS</p>
           <h2 id="dossies-rotativos-titulo">Dossiês em Foco</h2>
-          <p class="editorial-section-sub">Seleção rotativa de dossiês do atlas, atualizada periodicamente para não poluir a home.</p>
+          <p class="editorial-section-sub">Dossiês ao vivo e permanentes do atlas em rotação constante. No celular a vitrine mostra um por vez, com setas para voltar ou avançar.</p>
         </div>
         <a href="/dossies" class="btn btn-secondary" data-spa-link>Ver todos os dossiês →</a>
       </div>
       <div id="dossies-rotativos-grid" class="hubs-cards-grid" aria-live="polite"></div>
+      <div class="dossie-rotativo-nav" id="dossies-rotativos-nav" hidden>
+        <button type="button" class="dossie-rotativo-arrow" id="dossie-rot-prev" aria-label="Ver dossiê anterior" title="Dossiê anterior">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-7-7 7-7"/></svg>
+        </button>
+        <span class="dossie-rotativo-counter" id="dossie-rot-counter">1 / 1</span>
+        <button type="button" class="dossie-rotativo-arrow" id="dossie-rot-next" aria-label="Ver próximo dossiê" title="Próximo dossiê">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l7 6-7 6"/></svg>
+        </button>
+      </div>
     </section>
 
     <div class="editorial-home-wrap" id="editorial-home-wrap" hidden>

@@ -12473,72 +12473,263 @@
     });
   }
 
+  // --- SUG-182: Vitrine rotativa de dossiês da Home ---
+  // Mistura cobertura em tempo real (especiais/ao vivo) com permanentes e gira o cardápio.
+  // No celular: 1 dossiê por vez, trocando sozinho, com setas para voltar/avançar.
+  var dossieRotativo = {
+    index: 0,
+    slug: '',
+    total: 0,
+    timer: null,
+    mobile: false,
+    bound: false,
+    touchStartX: null,
+    touchStartY: null
+  };
+  var DOSSIE_ROTATIVO_BUCKET_MS = 3 * 60 * 1000; // cardápio novo a cada 3 min
+  var DOSSIE_ROTATIVO_AUTO_MS = 6000;            // troca automática do card no celular
+
+  function dossiesRotativosIsHome() {
+    return !(state.cont || state.country || state.editorialSection || state.hubRoute ||
+      state.entendaSlug || state.notFound || state.compareSlug);
+  }
+
+  function isDossieRotativosMobile() {
+    return typeof window.matchMedia === 'function' && window.matchMedia('(max-width: 768px)').matches;
+  }
+
+  function rotateDossieList(list, offset) {
+    if (!list || list.length < 2) return (list || []).slice();
+    var off = ((offset % list.length) + list.length) % list.length;
+    return list.slice(off).concat(list.slice(0, off));
+  }
+
+  // Interpola tempo real + permanentes para a vitrine nunca exibir só um tipo
+  function buildDossieMixedPicks(especiais, permanentes, limit, offset) {
+    var espLive = [];
+    var espOther = [];
+    (especiais || []).forEach(function (d) {
+      var st = (d && d.status) ? d.status : computeDossieStatus(d);
+      if (st === 'ao_vivo') espLive.push(d);
+      else espOther.push(d);
+    });
+    var esp = espLive.concat(rotateDossieList(espOther, offset));
+    var perm = rotateDossieList(permanentes || [], offset);
+
+    var out = [];
+    var ie = 0;
+    var ip = 0;
+    var turnEsp = true;
+    while (out.length < limit && (ie < esp.length || ip < perm.length)) {
+      var pushed = false;
+      if (turnEsp) {
+        if (ie < esp.length) { out.push(esp[ie++]); pushed = true; }
+        else if (ip < perm.length) { out.push(perm[ip++]); pushed = true; }
+      } else {
+        if (ip < perm.length) { out.push(perm[ip++]); pushed = true; }
+        else if (ie < esp.length) { out.push(esp[ie++]); pushed = true; }
+      }
+      if (!pushed) break;
+      turnEsp = !turnEsp;
+    }
+    return out;
+  }
+
+  function buildDossieRotativoFallbackPermanentes() {
+    if (dossiesState.loaded || !EDITORIAL.paginasTematicas) return [];
+    return Object.keys(EDITORIAL.paginasTematicas).map(function (k) {
+      var hb = EDITORIAL.paginasTematicas[k] || {};
+      return {
+        slug: String(hb.rota || '').replace(/^\/+/, '').replace(/\//g, '-'),
+        titulo: hb.titulo || k,
+        subtitulo: hb.subtitulo || '',
+        tipo: 'permanente',
+        categoria: 'Geopolítica',
+        icone_ou_bandeira: hb.pais || 'BR',
+        rota: hb.rota || '/',
+        status: 'permanente',
+        veiculos_count: (hb.ultimasNoticias && hb.ultimasNoticias.length) ? Math.max(hb.ultimasNoticias.length * 3, 12) : 18
+      };
+    }).filter(function (d) { return !!d.slug; });
+  }
+
+  function buildDossieRotativoCardHtml(d) {
+    var href = '/dossies/' + encodeURIComponent(d.slug);
+    var st = (d && d.status) ? d.status : computeDossieStatus(d);
+    var vCount = Number(d.veiculos_count || 0);
+    var metaText = d.categoria ? esc(d.categoria) + (vCount > 0 ? ' · ' + vCount + ' veículos' : '') : (vCount > 0 ? vCount + ' veículos · Atualizado hoje' : 'Cobertura contínua');
+    var statusHtml = (d.tipo === 'especial')
+      ? renderDossieStatusBadge(d, st)
+      : '<span class="hub-home-meta-badge">Permanente · ' + metaText + '</span>';
+    return '<article class="hub-home-card dossie-rotativo-card">' +
+      '<div class="hub-home-card-top">' +
+        renderDossieIconHtml(d) +
+        statusHtml +
+      '</div>' +
+      '<h3><a href="' + esc(href) + '" data-spa-link>' + esc(d.titulo) + '</a></h3>' +
+      (d.meta_info && d.tipo === 'especial' ? '<div class="dossie-meta-period">' + esc(d.meta_info) + '</div>' : '') +
+      '<p>' + esc(d.subtitulo || '') + '</p>' +
+      '<div class="hub-home-card-foot">' +
+        '<a class="hub-home-open" href="' + esc(href) + '" data-spa-link>Acessar dossiê →</a>' +
+      '</div>' +
+    '</article>';
+  }
+
+  function stopDossieRotativoTimer() {
+    if (dossieRotativo.timer) {
+      clearInterval(dossieRotativo.timer);
+      dossieRotativo.timer = null;
+    }
+  }
+
+  function applyDossieRotativoIndex() {
+    var gridEl = document.getElementById('dossies-rotativos-grid');
+    if (!gridEl || !dossieRotativo.total) return;
+    if (dossieRotativo.index >= dossieRotativo.total) dossieRotativo.index = 0;
+    if (dossieRotativo.index < 0) dossieRotativo.index = dossieRotativo.total - 1;
+
+    gridEl.style.setProperty('--dossie-slide-index', String(dossieRotativo.index));
+    var slides = gridEl.querySelectorAll('.dossie-rotativo-slide');
+    var activeSlug = '';
+    slides.forEach(function (s, i) {
+      var isActive = (i === dossieRotativo.index);
+      s.classList.toggle('is-active', isActive);
+      s.setAttribute('aria-hidden', isActive ? 'false' : 'true');
+      if (isActive) {
+        s.removeAttribute('inert');
+        activeSlug = s.getAttribute('data-slug') || '';
+      } else {
+        s.setAttribute('inert', '');
+      }
+    });
+    dossieRotativo.slug = activeSlug;
+
+    var counter = document.getElementById('dossie-rot-counter');
+    if (counter) counter.textContent = (dossieRotativo.index + 1) + ' / ' + dossieRotativo.total;
+  }
+
+  function restartDossieRotativoTimer() {
+    stopDossieRotativoTimer();
+    if (!dossieRotativo.mobile || dossieRotativo.total < 2) return;
+    dossieRotativo.timer = setInterval(function () {
+      if (document.hidden) return;
+      var secEl = document.getElementById('dossies-rotativos');
+      if (!secEl || secEl.hidden || !dossieRotativo.mobile || dossieRotativo.total < 2) return;
+      dossieRotativo.index = (dossieRotativo.index + 1) % dossieRotativo.total;
+      applyDossieRotativoIndex();
+    }, DOSSIE_ROTATIVO_AUTO_MS);
+  }
+
+  function stepDossieRotativo(delta) {
+    if (dossieRotativo.total < 2) return;
+    dossieRotativo.index = (dossieRotativo.index + delta + dossieRotativo.total) % dossieRotativo.total;
+    applyDossieRotativoIndex();
+    restartDossieRotativoTimer(); // reseta a troca automática após navegação manual
+  }
+
+  function bindDossieRotativoNav() {
+    if (dossieRotativo.bound) return;
+    var prev = document.getElementById('dossie-rot-prev');
+    var next = document.getElementById('dossie-rot-next');
+    var gridEl = document.getElementById('dossies-rotativos-grid');
+    if (!prev || !next || !gridEl) return;
+
+    prev.addEventListener('click', function () { stepDossieRotativo(-1); });
+    next.addEventListener('click', function () { stepDossieRotativo(1); });
+
+    // Swipe horizontal (opcional nas setas) sem atraplar o scroll vertical
+    gridEl.addEventListener('touchstart', function (e) {
+      if (!dossieRotativo.mobile || !e.touches || e.touches.length !== 1) return;
+      dossieRotativo.touchStartX = e.touches[0].clientX;
+      dossieRotativo.touchStartY = e.touches[0].clientY;
+    }, { passive: true });
+    gridEl.addEventListener('touchend', function (e) {
+      if (!dossieRotativo.mobile || dossieRotativo.touchStartX === null) return;
+      var t = e.changedTouches && e.changedTouches[0];
+      if (!t) return;
+      var dx = t.clientX - dossieRotativo.touchStartX;
+      var dy = t.clientY - dossieRotativo.touchStartY;
+      dossieRotativo.touchStartX = null;
+      dossieRotativo.touchStartY = null;
+      if (Math.abs(dx) < 50 || Math.abs(dx) < Math.abs(dy) * 1.5) return;
+      stepDossieRotativo(dx < 0 ? 1 : -1);
+    }, { passive: true });
+
+    dossieRotativo.bound = true;
+  }
+
   function renderDossiesRotativosHome() {
     var secEl = document.getElementById('dossies-rotativos');
     var gridEl = document.getElementById('dossies-rotativos-grid');
+    var navEl = document.getElementById('dossies-rotativos-nav');
     if (!secEl || !gridEl) return;
 
     // O bloco rotativo de dossiês é exclusivo da Home
-    if (state.cont || state.country || state.editorialSection || state.hubRoute || state.entendaSlug || state.notFound || state.compareSlug) {
+    if (!dossiesRotativosIsHome()) {
       secEl.hidden = true;
+      if (navEl) navEl.hidden = true;
+      stopDossieRotativoTimer();
       return;
     }
 
-    var pool = (dossiesState.all && dossiesState.all.length)
-      ? dossiesState.all.slice()
-      : (dossiesState.permanentes || []).concat(dossiesState.especiais || []);
-    if (!pool.length) {
+    var especiais = (dossiesState.especiais || []).slice();
+    var permanentes = (dossiesState.permanentes && dossiesState.permanentes.length)
+      ? dossiesState.permanentes.slice()
+      : buildDossieRotativoFallbackPermanentes();
+
+    if (!especiais.length && !permanentes.length) {
       secEl.hidden = true;
       gridEl.innerHTML = '';
+      if (navEl) navEl.hidden = true;
+      stopDossieRotativoTimer();
       return;
     }
 
-    // Priorizar especiais ao vivo, depois demais especiais, depois permanentes
-    pool.sort(function (a, b) {
-      var prio = function (d) {
-        var st = (d && d.status) ? d.status : computeDossieStatus(d);
-        if (d && d.tipo === 'especial' && st === 'ao_vivo') return 0;
-        if (d && d.tipo === 'especial') return 1;
-        return 2;
-      };
-      return prio(a) - prio(b);
-    });
+    var isMobile = isDossieRotativosMobile();
+    var bucket = Math.floor(Date.now() / DOSSIE_ROTATIVO_BUCKET_MS);
+    // Celular: 12 cards navegáveis (1 por vez). Demais telas: grade de 6.
+    var picks = buildDossieMixedPicks(especiais, permanentes, isMobile ? 12 : 6, bucket);
 
-    var isDesktop = typeof window.matchMedia === 'function' && window.matchMedia('(min-width: 900px)').matches;
-    var LIMIT = isDesktop ? 6 : 3;
-    var BUCKET_MS = 40 * 60 * 1000; // 40 minutos
-    var bucket = Math.floor(Date.now() / BUCKET_MS);
-    var start = (bucket * LIMIT) % pool.length;
-    var picks = [];
-    for (var i = 0; i < LIMIT && i < pool.length; i++) {
-      picks.push(pool[(start + i) % pool.length]);
-    }
+    dossieRotativo.mobile = isMobile;
+    dossieRotativo.total = isMobile ? picks.length : 0;
 
     secEl.hidden = false;
-    var html = picks.map(function (d) {
-      var href = '/dossies/' + encodeURIComponent(d.slug);
-      var st = (d && d.status) ? d.status : computeDossieStatus(d);
-      var vCount = Number(d.veiculos_count || 0);
-      var metaText = d.categoria ? esc(d.categoria) + (vCount > 0 ? ' · ' + vCount + ' veículos' : '') : (vCount > 0 ? vCount + ' veículos · Atualizado hoje' : 'Cobertura contínua');
-      var statusHtml = (d.tipo === 'especial')
-        ? renderDossieStatusBadge(d, st)
-        : '<span class="hub-home-meta-badge">' + metaText + '</span>';
-      return '<article class="hub-home-card dossie-rotativo-card">' +
-        '<div class="hub-home-card-top">' +
-          renderDossieIconHtml(d) +
-          statusHtml +
-        '</div>' +
-        '<h3><a href="' + esc(href) + '" data-spa-link>' + esc(d.titulo) + '</a></h3>' +
-        (d.meta_info && d.tipo === 'especial' ? '<div class="dossie-meta-period">' + esc(d.meta_info) + '</div>' : '') +
-        '<p>' + esc(d.subtitulo || '') + '</p>' +
-        '<div class="hub-home-card-foot">' +
-          '<a class="hub-home-open" href="' + esc(href) + '" data-spa-link>Acessar dossiê →</a>' +
-        '</div>' +
-      '</article>';
+    gridEl.classList.toggle('is-carousel', isMobile);
+    gridEl.setAttribute('aria-live', isMobile ? 'off' : 'polite');
+
+    // Resolve o índice antes de injetar o HTML para o slide já nascer na posição certa (sem "pulo")
+    var idx = 0;
+    if (isMobile && dossieRotativo.slug) {
+      for (var i = 0; i < picks.length; i++) {
+        if (String(picks[i].slug) === dossieRotativo.slug) { idx = i; break; }
+      }
+    }
+    dossieRotativo.index = (idx >= 0 && idx < picks.length) ? idx : 0;
+    if (isMobile) {
+      gridEl.style.setProperty('--dossie-slide-index', String(dossieRotativo.index));
+    } else {
+      dossieRotativo.index = 0;
+      dossieRotativo.slug = '';
+      gridEl.style.removeProperty('--dossie-slide-index');
+    }
+
+    gridEl.innerHTML = picks.map(function (d) {
+      var card = buildDossieRotativoCardHtml(d);
+      return isMobile
+        ? '<div class="dossie-rotativo-slide" data-slug="' + esc(d.slug) + '">' + card + '</div>'
+        : card;
     }).join('');
 
-    gridEl.innerHTML = html;
     bindDynamicEditorialActions(gridEl);
+    bindDossieRotativoNav();
+    if (navEl) navEl.hidden = !isMobile || picks.length < 2;
+
+    if (isMobile) {
+      applyDossieRotativoIndex(); // sincroniza aria/inert/contador com o índice
+      if (!dossieRotativo.timer) restartDossieRotativoTimer();
+    } else {
+      stopDossieRotativoTimer();
+    }
   }
 
   function renderEditorialHomeSections() {
@@ -15585,6 +15776,18 @@
   renderEditorialHomeSections();
   carregarDossiesV2(false);
   renderDossiesRotativosHome();
+  // Vitrine de dossiês: re-render ao trocar de breakpoint (grade x carrossel de 1 card)
+  if (typeof window.matchMedia === 'function') {
+    var dossieRotativoMq = window.matchMedia('(max-width: 768px)');
+    var onDossieRotativoMq = function () { renderDossiesRotativosHome(); };
+    if (typeof dossieRotativoMq.addEventListener === 'function') dossieRotativoMq.addEventListener('change', onDossieRotativoMq);
+    else if (typeof dossieRotativoMq.addListener === 'function') dossieRotativoMq.addListener(onDossieRotativoMq);
+  }
+  // Rotação autônoma do cardápio (mistura tempo real + permanente) a cada 3 min
+  setInterval(function () {
+    if (document.hidden) return;
+    renderDossiesRotativosHome();
+  }, DOSSIE_ROTATIVO_BUCKET_MS);
   initVitrineIA();
   initCadastroVeiculoForm();
   initParceriaLeadModal();
