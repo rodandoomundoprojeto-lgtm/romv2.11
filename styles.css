@@ -12694,3 +12694,43 @@ body.dark .dossie-filter-pill.is-active {
 .dossie-tl-title { display: block; font-weight: 700; font-size: 0.98rem; margin-bottom: 4px; }
 .dossie-tl-summary { display: block; font-size: 0.9rem; line-height: 1.55; opacity: .9; }
 @media (max-width: 700px) { .dossie-pillars-grid { grid-template-columns: 1fr; } .dossie-timeline-list { margin-left: 4px; padding-left: 18px; } .dossie-tl-dot { left: -25px; } }
+
+/* Radar & Curadoria hub (tabs) */
+.radar-hub-tabs {
+  display: flex;
+  gap: 8px;
+  margin: 0 0 var(--space-4, 16px);
+  padding: 4px;
+  background: var(--surface-2, rgba(148,163,184,0.12));
+  border: 1px solid var(--border-subtle, rgba(148,163,184,0.25));
+  border-radius: 999px;
+  width: fit-content;
+  max-width: 100%;
+}
+.radar-hub-tab {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: var(--text-secondary, #475569);
+  font: inherit;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background .15s ease, color .15s ease, box-shadow .15s ease;
+}
+.radar-hub-tab:hover {
+  color: var(--text-primary, #0f172a);
+}
+.radar-hub-tab.is-active {
+  background: var(--surface-1, #fff);
+  color: var(--text-primary, #0f172a);
+  box-shadow: 0 1px 2px rgba(15,23,42,.08);
+}
+[data-theme="dark"] .radar-hub-tab.is-active {
+  background: rgba(255,255,255,0.08);
+  color: #f8fafc;
+}
+.radar-hub-panel[hidden] { display: none !important; }
+.radar-curadoria-section { margin-top: 0; }
+.radar-curadoria-section .vitrine-ia-header { margin-bottom: var(--space-3, 12px); }

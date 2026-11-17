@@ -8336,12 +8336,20 @@
   }
 
   function updateNavActive(path) {
+    var onRadar = (path === '/radar' && state.editorialSection === 'radar');
     document.querySelectorAll('.topbar .support-link, .header-nav-link, .mobile-nav-link, .footer-legal-links a').forEach(function (l) {
-      var href = l.getAttribute('href');
+      var href = l.getAttribute('href') || '';
       if (!href) return;
       var isActive = false;
-      if (path === '/' && (href === '/' || l.hasAttribute('data-home'))) isActive = true;
-      else if (path && (href === path || ((path === '/dossies' || path.indexOf('/dossies/') === 0) && href === '/temas'))) isActive = true;
+      var hrefPath = href.split('#')[0] || href;
+      if (path === '/' && (hrefPath === '/' || l.hasAttribute('data-home'))) isActive = true;
+      else if (onRadar) {
+        if (l.id === 'nav-curadoria' || l.id === 'mobile-nav-curadoria') isActive = (radarHubSubtab === 'curadoria');
+        else if (l.id === 'nav-radar' || l.id === 'mobile-nav-radar') isActive = (radarHubSubtab !== 'curadoria');
+        else if (hrefPath === '/radar' && l.id.indexOf('curadoria') === -1) isActive = (radarHubSubtab !== 'curadoria');
+      } else if (path && (hrefPath === path || ((path === '/dossies' || path.indexOf('/dossies/') === 0) && hrefPath === '/temas'))) {
+        isActive = true;
+      }
       if (isActive) {
         l.classList.add('active');
         l.setAttribute('aria-current', 'page');
@@ -8360,14 +8368,19 @@
     state.editorialSection = sectionKey;
     state.cont = null;
     state.country = null;
+    if (sectionKey === 'radar') {
+      radarHubSubtab = (opts.radarTab === 'curadoria' || getRadarHubSubtabFromLocation() === 'curadoria') ? 'curadoria' : 'radar';
+    }
     flushPendingAutonomousUpdates();
     hideMobileChip();
     if (panelFloatingClose) panelFloatingClose.hidden = true;
     if (notFoundView) notFoundView.hidden = true;
     if (mapWrapSection) mapWrapSection.hidden = true;
     if (quickCountryView) quickCountryView.hidden = true;
-    var vitrineIaSec = document.getElementById('vitrine-ia');
-    if (vitrineIaSec) vitrineIaSec.hidden = true;
+    if (sectionKey !== 'radar') {
+      var vitrineIaSec = document.getElementById('vitrine-ia');
+      if (vitrineIaSec) vitrineIaSec.hidden = true;
+    }
     var dossiesRotSec = document.getElementById('dossies-rotativos');
     if (dossiesRotSec) dossiesRotSec.hidden = true;
     if (thematicHubView) {
@@ -8417,8 +8430,8 @@
 
     var metaMap = {
       'radar': {
-        title: 'Radar Editorial — Monitoramento e Inteligência em Tempo Real | Rodando o Mundo',
-        desc: 'Briefings factuais e análises em tempo real sobre geopolítica, política, economia e cultura gerados a partir dos principais canais e fontes globais.',
+        title: 'Radar & Curadoria — Inteligência e Análise em Tempo Real | Rodando o Mundo',
+        desc: 'Radar editorial com briefings factuais e Curadoria em tempo real (análise de temas em alta) sobre geopolítica, política, economia e cultura.',
         path: '/radar'
       },
       'ultimas-noticias': {
@@ -8482,11 +8495,21 @@
     updateNavActive(meta.path);
     window.scrollTo({ top: 0, behavior: 'auto' });
 
+    var targetUrl = meta.path;
+    if (sectionKey === 'radar') {
+      targetUrl = '/radar' + (radarHubSubtab === 'curadoria' ? '#curadoria' : '');
+      applyRadarHubTabUI();
+      updateNavActive('/radar');
+    }
+
     if (!opts.fromPopState) {
       try {
-        if (opts.replaceUrl) history.replaceState({ editorialSection: sectionKey }, '', meta.path);
-        else if (location.pathname !== meta.path || location.hash) history.pushState({ editorialSection: sectionKey }, '', meta.path);
+        if (opts.replaceUrl) history.replaceState({ editorialSection: sectionKey, radarTab: (sectionKey === 'radar' ? radarHubSubtab : undefined) }, '', targetUrl);
+        else if ((location.pathname + location.hash) !== targetUrl) history.pushState({ editorialSection: sectionKey, radarTab: (sectionKey === 'radar' ? radarHubSubtab : undefined) }, '', targetUrl);
       } catch (e) {}
+    } else if (sectionKey === 'radar') {
+      applyRadarHubTabUI();
+      updateNavActive('/radar');
     }
   }
 
@@ -10397,30 +10420,6 @@
     }
   }
 
-  function obterDataHojeLocal() {
-    var now = new Date();
-    var y = now.getFullYear();
-    var m = String(now.getMonth() + 1).padStart ? String(now.getMonth() + 1).padStart(2, '0') : (now.getMonth() + 1 < 10 ? '0' + (now.getMonth() + 1) : String(now.getMonth() + 1));
-    var d = String(now.getDate()).padStart ? String(now.getDate()).padStart(2, '0') : (now.getDate() < 10 ? '0' + now.getDate() : String(now.getDate()));
-    return y + '-' + m + '-' + d;
-  }
-
-  function carregarResumoCacheLocal() {
-    try {
-      var savedDate = localStorage.getItem('rom_resumo_date');
-      var savedItems = localStorage.getItem('rom_resumo_items');
-      var hoje = obterDataHojeLocal();
-      if (savedDate === hoje && savedItems) {
-        var parsed = JSON.parse(savedItems);
-        if (Array.isArray(parsed) && parsed.length >= 3) {
-          EDITORIAL.resumoDoDia = parsed;
-          return true;
-        }
-      }
-    } catch (e) {}
-    return false;
-  }
-
   var RADAR_AUTO_REFRESH_MS = 5 * 60 * 1000; // 5 minutos
   var radarFeedCache = null;
   var radarUpdatedLabel = '';
@@ -10428,6 +10427,76 @@
   var radarAutoRefreshTimer = null;
   var radarLastFetchAt = 0;
   var radarVisibilityBound = false;
+  var radarHubSubtab = 'radar'; // 'radar' | 'curadoria'
+
+  function getRadarHubSubtabFromLocation() {
+    try {
+      var h = (location.hash || '').replace(/^#/, '').toLowerCase();
+      if (h === 'curadoria') return 'curadoria';
+      if (h === 'radar') return 'radar';
+    } catch (e) {}
+    return 'radar';
+  }
+
+  function setRadarHubSubtab(tab, opts) {
+    opts = opts || {};
+    radarHubSubtab = (tab === 'curadoria') ? 'curadoria' : 'radar';
+    if (state.editorialSection === 'radar') {
+      var targetPath = '/radar' + (radarHubSubtab === 'curadoria' ? '#curadoria' : '');
+      if (opts.updateUrl !== false) {
+        try {
+          if (opts.replaceUrl) history.replaceState({ editorialSection: 'radar', radarTab: radarHubSubtab }, '', targetPath);
+          else if ((location.pathname + location.hash) !== targetPath) history.pushState({ editorialSection: 'radar', radarTab: radarHubSubtab }, '', targetPath);
+        } catch (e) {}
+      }
+      updateNavActive('/radar');
+      applyRadarHubTabUI();
+    }
+  }
+
+  function applyRadarHubTabUI() {
+    if (state.editorialSection !== 'radar') return;
+    var container = document.getElementById('radar-editorial-view');
+    if (!container) return;
+    var isCur = radarHubSubtab === 'curadoria';
+    var panelRadar = container.querySelector('#radar-panel-radar');
+    var panelCur = container.querySelector('#radar-panel-curadoria');
+    if (panelRadar) panelRadar.hidden = isCur;
+    if (panelCur) panelCur.hidden = !isCur;
+    container.querySelectorAll('[data-radar-tab]').forEach(function (btn) {
+      var t = btn.getAttribute('data-radar-tab');
+      var active = (t === 'curadoria') === isCur;
+      btn.classList.toggle('is-active', active);
+      btn.setAttribute('aria-selected', active ? 'true' : 'false');
+      btn.setAttribute('tabindex', active ? '0' : '-1');
+    });
+    if (isCur) {
+      if (typeof carregarVitrineIA === 'function') carregarVitrineIA({ forceRefresh: false, categoria: vitrineIaSelectedCategory || '' });
+      var chipsWrap = container.querySelector('#vitrine-ia-chips');
+      if (chipsWrap && !chipsWrap._bound) {
+        chipsWrap._bound = true;
+        chipsWrap.querySelectorAll('.vitrine-ia-chip').forEach(function (chip) {
+          chip.addEventListener('click', function () {
+            var cat = chip.getAttribute('data-cat') || '';
+            vitrineIaSelectedCategory = cat;
+            chipsWrap.querySelectorAll('.vitrine-ia-chip').forEach(function (c) {
+              var activeChip = c === chip;
+              c.classList.toggle('is-active', activeChip);
+              c.setAttribute('aria-selected', String(activeChip));
+            });
+            var cached = (typeof lerCacheVitrineIA === 'function') ? lerCacheVitrineIA(true) : null;
+            if (cached && cached.length) {
+              if (document.getElementById('vitrine-ia-grid')) renderVitrineIACards(cached, vitrineIaSelectedCategory);
+            } else if (typeof carregarVitrineIA === 'function') {
+              carregarVitrineIA({ forceRefresh: false, categoria: vitrineIaSelectedCategory });
+            }
+          });
+        });
+      }
+    } else {
+      if (typeof startRadarAutoRefresh === 'function') startRadarAutoRefresh();
+    }
+  }
 
   function stopRadarAutoRefresh() {
     if (radarAutoRefreshTimer) {
@@ -10481,23 +10550,63 @@
     var container = document.getElementById('radar-editorial-view');
     if (!container) return;
 
-    var headerHtml = '<div class="hub-nav-header-row hubs-header-row">';
-    headerHtml += '<button type="button" class="btn-back-topic" data-action="go-back" data-fallback="/" aria-label="Voltar para onde estava" title="Voltar para onde estava">';
-    headerHtml += '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>';
-    headerHtml += '<span>Voltar</span>';
-    headerHtml += '</button>';
-    headerHtml += '</div>';
-    headerHtml += '<div class="editorial-section-head">';
-    headerHtml += '<div>';
-    headerHtml += '<p class="editorial-eyebrow">Inteligência em Tempo Real · YouTube & RSS · Análise por IA</p>';
-    headerHtml += '<h2 id="radar-editorial-titulo">Radar Editorial</h2>';
-    headerHtml += '<p class="editorial-section-sub">Monitoramento contínuo dos principais canais e analistas de geopolítica, política, economia e cultura com síntese factual e avaliação de impacto.</p>';
-    headerHtml += '</div>';
-    headerHtml += '<div style="display:flex;gap:var(--space-2);align-items:center;flex-wrap:wrap;">';
-    headerHtml += '<span class="radar-updated-badge' + (radarUpdatedLabel ? ' is-live' : '') + '" id="radar-last-updated" title="Sincronização automática no navegador a cada 5 a 8 minutos">' + esc(radarUpdatedLabel || '') + '</span>';
-    headerHtml += '<a href="/resumo-do-dia" class="btn btn-secondary" data-spa-link title="Ver o Resumo do Dia com as 5 principais notícias">📰 Resumo do Dia</a>';
-    headerHtml += '</div>';
-    headerHtml += '</div>';
+    var activeTab = (radarHubSubtab === 'curadoria') ? 'curadoria' : 'radar';
+    var radarHidden = activeTab === 'curadoria' ? ' hidden' : '';
+    var curHidden = activeTab === 'curadoria' ? '' : ' hidden';
+
+    var html = '';
+    html += '<div class="hub-nav-header-row hubs-header-row">';
+    html += '<button type="button" class="btn-back-topic" data-action="go-back" data-fallback="/" aria-label="Voltar para onde estava" title="Voltar para onde estava">';
+    html += '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>';
+    html += '<span>Voltar</span>';
+    html += '</button>';
+    html += '</div>';
+
+    html += '<div class="radar-hub-tabs" role="tablist" aria-label="Seções de Radar e Curadoria">';
+    html += '<button type="button" class="radar-hub-tab' + (activeTab === 'radar' ? ' is-active' : '') + '" role="tab" id="radar-tab-radar" aria-controls="radar-panel-radar" aria-selected="' + (activeTab === 'radar' ? 'true' : 'false') + '" tabindex="' + (activeTab === 'radar' ? '0' : '-1') + '" data-radar-tab="radar">Radar</button>';
+    html += '<button type="button" class="radar-hub-tab' + (activeTab === 'curadoria' ? ' is-active' : '') + '" role="tab" id="radar-tab-curadoria" aria-controls="radar-panel-curadoria" aria-selected="' + (activeTab === 'curadoria' ? 'true' : 'false') + '" tabindex="' + (activeTab === 'curadoria' ? '0' : '-1') + '" data-radar-tab="curadoria">Curadoria</button>';
+    html += '</div>';
+
+    html += '<section id="radar-panel-curadoria" class="radar-hub-panel" role="tabpanel" aria-labelledby="radar-tab-curadoria"' + curHidden + '>';
+    html += '<div class="vitrine-ia-section radar-curadoria-section" id="vitrine-ia">';
+    html += '<div class="vitrine-ia-header">';
+    html += '<div class="vitrine-ia-title-group">';
+    html += '<div class="vitrine-ia-badge-row"><span class="vitrine-ia-badge"><span class="vitrine-ia-pulse" aria-hidden="true"></span> Análise em Tempo Real</span></div>';
+    html += '<h2 class="vitrine-ia-title">Curadoria em Tempo Real</h2>';
+    html += '<p class="vitrine-ia-subtitle">Temas em alta, cruzamento editorial e sinais relevantes monitorados continuamente pela curadoria IA — a análise em tempo real que antes aparecia na página inicial.</p>';
+    html += '</div>';
+    html += '</div>';
+    html += '<div class="vitrine-ia-chips" id="vitrine-ia-chips" role="tablist" aria-label="Filtrar curadoria por categoria">';
+    var curCats = [
+      { k: '', label: 'Todos' },
+      { k: 'Politica', label: 'Política' },
+      { k: 'Economia', label: 'Economia' },
+      { k: 'Cultura', label: 'Cultura' },
+      { k: 'Eleicoes', label: 'Eleições' },
+      { k: 'Geopolitica_Radar', label: 'Geopolítica' },
+      { k: 'Resumo_Ultimas', label: 'Resumo & Últimas' }
+    ];
+    curCats.forEach(function (c) {
+      var active = (vitrineIaSelectedCategory || '') === c.k;
+      html += '<button type="button" class="vitrine-ia-chip' + (active ? ' is-active' : '') + '" data-cat="' + esc(c.k) + '" role="tab" aria-selected="' + (active ? 'true' : 'false') + '">' + esc(c.label) + '</button>';
+    });
+    html += '</div>';
+    html += '<div class="vitrine-ia-grid" id="vitrine-ia-grid" aria-live="polite"><p class="radar-loading">Carregando análise em tempo real da curadoria...</p></div>';
+    html += '</div>';
+    html += '</section>';
+
+    html += '<section id="radar-panel-radar" class="radar-hub-panel" role="tabpanel" aria-labelledby="radar-tab-radar"' + radarHidden + '>';
+    html += '<div class="editorial-section-head">';
+    html += '<div>';
+    html += '<p class="editorial-eyebrow">Inteligência em Tempo Real · YouTube & RSS · Análise por IA</p>';
+    html += '<h2 id="radar-editorial-titulo">Radar Editorial</h2>';
+    html += '<p class="editorial-section-sub">Monitoramento contínuo dos principais canais e analistas de geopolítica, política, economia e cultura com síntese factual e avaliação de impacto.</p>';
+    html += '</div>';
+    html += '<div style="display:flex;gap:var(--space-2);align-items:center;flex-wrap:wrap;">';
+    html += '<span class="radar-updated-badge' + (radarUpdatedLabel ? ' is-live' : '') + '" id="radar-last-updated" title="Sincronização automática no navegador a cada 5 a 8 minutos">' + esc(radarUpdatedLabel || '') + '</span>';
+    html += '<a href="/resumo-do-dia" class="btn btn-secondary" data-spa-link title="Ver o Resumo do Dia com as 5 principais notícias">📰 Resumo do Dia</a>';
+    html += '</div>';
+    html += '</div>';
 
     var filtersHtml = '<div class="radar-filters-bar">';
     filtersHtml += '<button type="button" class="chip-btn radar-filter-btn' + (radarCategoryFilter === 'todos' ? ' is-active' : '') + '" data-radar-cat="todos">Todos</button>';
@@ -10507,7 +10616,17 @@
     filtersHtml += '<button type="button" class="chip-btn radar-filter-btn' + (radarCategoryFilter === 'cultura' ? ' is-active' : '') + '" data-radar-cat="cultura">Cultura & Viagens</button>';
     filtersHtml += '</div>';
 
-    container.innerHTML = headerHtml + filtersHtml + '<div class="radar-cards-grid" id="radar-cards-list"><p class="radar-loading">Carregando briefings do radar...</p></div>';
+    html += filtersHtml + '<div class="radar-cards-grid" id="radar-cards-list"><p class="radar-loading">Carregando briefings do radar...</p></div>';
+    html += '</section>';
+
+    container.innerHTML = html;
+
+    container.querySelectorAll('[data-radar-tab]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var tab = btn.getAttribute('data-radar-tab') === 'curadoria' ? 'curadoria' : 'radar';
+        setRadarHubSubtab(tab);
+      });
+    });
 
     var filterBtns = container.querySelectorAll('.radar-filter-btn');
     filterBtns.forEach(function (btn) {
@@ -10519,11 +10638,14 @@
       });
     });
 
+    bindDynamicEditorialActions(container);
     loadRadarCards(false, false);
     startRadarAutoRefresh();
     bindRadarVisibilityListener();
+    if (activeTab === 'curadoria' && typeof carregarVitrineIA === 'function') {
+      carregarVitrineIA({ forceRefresh: false, categoria: vitrineIaSelectedCategory || '' });
+    }
   }
-
   function hasRadarFeedChanged(prevItems, nextItems) {
     if (!Array.isArray(prevItems) || !Array.isArray(nextItems)) return true;
     if (prevItems.length !== nextItems.length) return true;
@@ -12847,7 +12969,11 @@
       return;
     }
     if (parsed.type === 'editorial-section') {
-      showEditorialSectionPage(parsed.sectionKey, { fromPopState: false, routePath: parsed.routePath });
+      var secOpts = { fromPopState: false, routePath: parsed.routePath };
+      if (parsed.sectionKey === 'radar') {
+        secOpts.radarTab = (u.hash === '#curadoria' ? 'curadoria' : 'radar');
+      }
+      showEditorialSectionPage(parsed.sectionKey, secOpts);
       return;
     }
     if (parsed.type === 'dossie-detail') {
@@ -12877,7 +13003,11 @@
       return;
     }
     if (parsed.type === 'editorial-section') {
-      showEditorialSectionPage(parsed.sectionKey, { fromPopState: !parsed.replaceUrl, replaceUrl: parsed.replaceUrl, routePath: parsed.routePath });
+      var secOpts2 = { fromPopState: !parsed.replaceUrl, replaceUrl: parsed.replaceUrl, routePath: parsed.routePath };
+      if (parsed.sectionKey === 'radar') {
+        secOpts2.radarTab = (location.hash === '#curadoria' ? 'curadoria' : 'radar');
+      }
+      showEditorialSectionPage(parsed.sectionKey, secOpts2);
       return;
     }
     if (parsed.type === 'dossie-detail') {
@@ -15232,12 +15362,18 @@
     var allTemas = Array.isArray(temasAtivos) ? temasAtivos : [];
     if (!allTemas.length) {
       secEl.setAttribute('data-empty-fallback', 'true');
-      secEl.hidden = true;
-      gridEl.innerHTML = '';
+      if (state.editorialSection === 'radar' || secEl.classList.contains('radar-curadoria-section')) {
+        secEl.hidden = false;
+        gridEl.innerHTML = '<div class="vitrine-ia-empty">Nenhum tema ativo no momento. A curadoria em tempo real será exibida aqui assim que houver novos sinais.</div>';
+      } else {
+        secEl.hidden = true;
+        gridEl.innerHTML = '';
+      }
       return;
     }
 
     secEl.removeAttribute('data-empty-fallback');
+    secEl.hidden = false;
     if (!state.editorialSection && !state.hubRoute && !state.entendaSlug && !state.notFound && !state.compareSlug) {
       secEl.hidden = false;
     }
