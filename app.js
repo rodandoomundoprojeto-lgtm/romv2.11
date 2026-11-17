@@ -10420,6 +10420,30 @@
     }
   }
 
+  function obterDataHojeLocal() {
+    var now = new Date();
+    var y = now.getFullYear();
+    var m = String(now.getMonth() + 1).padStart ? String(now.getMonth() + 1).padStart(2, '0') : (now.getMonth() + 1 < 10 ? '0' + (now.getMonth() + 1) : String(now.getMonth() + 1));
+    var d = String(now.getDate()).padStart ? String(now.getDate()).padStart(2, '0') : (now.getDate() < 10 ? '0' + now.getDate() : String(now.getDate()));
+    return y + '-' + m + '-' + d;
+  }
+
+  function carregarResumoCacheLocal() {
+    try {
+      var savedDate = localStorage.getItem('rom_resumo_date');
+      var savedItems = localStorage.getItem('rom_resumo_items');
+      var hoje = obterDataHojeLocal();
+      if (savedDate === hoje && savedItems) {
+        var parsed = JSON.parse(savedItems);
+        if (Array.isArray(parsed) && parsed.length >= 3) {
+          EDITORIAL.resumoDoDia = parsed;
+          return true;
+        }
+      }
+    } catch (e) {}
+    return false;
+  }
+
   var RADAR_AUTO_REFRESH_MS = 5 * 60 * 1000; // 5 minutos
   var radarFeedCache = null;
   var radarUpdatedLabel = '';
