@@ -105,6 +105,98 @@ def aplicar_no_cache_headers(response: Response) -> None:
     response.headers["Expires"] = "0"
 
 
+def _carregar_admins_configurados() -> Dict[str, str]:
+    """
+    Carrega o mapa {nome_admin: senha} a partir de ADMIN_USERS
+    (aceita JSON '{"user":"senha"}' ou pares 'user:senha,user2:senha2').
+    """
+    raw = (os.getenv("ADMIN_USERS") or "").strip()
+    if not raw:
+        return {}
+    if raw.startswith("{"):
+        try:
+            data = json.loads(raw)
+            if isinstance(data, dict):
+                return {
+                    str(k).strip(): str(v).strip()
+                    for k, v in data.items()
+                    if str(k).strip() and str(v).strip()
+                }
+        except Exception:
+            pass
+    admins: Dict[str, str] = {}
+    for item in raw.split(","):
+        if ":" in item:
+            user, pwd = item.split(":", 1)
+            user, pwd = user.strip(), pwd.strip()
+            if user and pwd:
+                admins[user] = pwd
+    return admins
+
+
+def verificar_admin_token(
+    authorization: Optional[str] = Header(default=None),
+    x_admin_user: Optional[str] = Header(default=None, alias="X-Admin-User"),
+) -> None:
+    """
+    Autenticação Bearer para rotas administrativas:
+
+    1. Bearer `<token de máquina>` (CURADORIA_SECRET_TOKEN / ADMIN_SECRET_TOKEN);
+    2. Bearer `<senha>` quando bate com ADMIN_PASSWORD / ADMIN_SENHA ou com algum admin em ADMIN_USERS;
+    3. Bearer `<senha>` + X-Admin-User `<user>` com admin/senha em ADMIN_USERS.
+
+    Erros: `401` sem credencial; `403` com credencial inválida.
+    """
+    token_esperado = (
+        os.getenv("CURADORIA_SECRET_TOKEN")
+        or os.getenv("ADMIN_SECRET_TOKEN")
+        or ""
+    ).strip()
+    senha_esperada = (
+        os.getenv("ADMIN_PASSWORD")
+        or os.getenv("ADMIN_SENHA")
+        or ""
+    ).strip()
+    admins = _carregar_admins_configurados()
+
+    credencial: Optional[str] = None
+    if authorization:
+        esquema, _, valor = authorization.partition(" ")
+        if esquema.strip().lower() == "bearer" and valor.strip():
+            credencial = valor.strip()
+    if not credencial:
+        raise HTTPException(
+            status_code=401,
+            detail="Credencial ausente ou malformada. Envie: `Authorization: Bearer <token-ou-senha>`.",
+        )
+
+    # 1. Token de máquina (Dashboard / scripts / cron)
+    if token_esperado and secrets.compare_digest(credencial, token_esperado):
+        return
+
+    # 2. Senha pura (ADMIN_PASSWORD / ADMIN_SENHA) ou senha de algum admin em ADMIN_USERS
+    if senha_esperada and secrets.compare_digest(credencial, senha_esperada):
+        return
+    if admins:
+        usuario = (x_admin_user or "").strip()
+        senha_admin = admins.get(usuario) if usuario else None
+        if senha_admin and secrets.compare_digest(credencial, senha_admin):
+            return
+        if not usuario:
+            for _nome_admin, senha_admin_candidata in admins.items():
+                if senha_admin_candidata and secrets.compare_digest(credencial, senha_admin_candidata):
+                    return
+
+    # 3. Sem credencial válida
+    raise HTTPException(status_code=403, detail="Credencial administrativa inválida ou sem permissão.")
+
+
+def _require_db(conn: Any) -> Any:
+    if conn is None:
+        raise HTTPException(status_code=503, detail="Banco de dados PostgreSQL indisponível.")
+    return conn
+
+
 def _formatar_horario_editorial(dt: Optional[Any] = None) -> str:
     """Formata o carimbo editorial 'Atualizado às HHhMM' (Seção 1 de docs/arquitetura_v2.md) no fuso editorial de Brasília."""
     if isinstance(dt, str):
@@ -474,7 +566,7 @@ def listar_noticias_quentes(
 # 5. ROTA 2: POST /v1/noticias-quentes/executar
 # ============================================================================
 
-@router.post("/v1/noticias-quentes/executar")
+@router.post("/v1/noticias-quentes/executar", dependencies=[Depends(verificar_admin_token)])
 async def executar_noticias_quentes_manual(
     response: Response,
     payload_req: Optional[ExecutarPulsoRequest] = Body(default=None),
@@ -902,7 +994,7 @@ async def _tarefa_background_gerar_coluna(
         raise
 
 
-@router.post("/v2/gerar-coluna", status_code=202)
+@router.post("/v2/gerar-coluna", status_code=202, dependencies=[Depends(verificar_admin_token)])
 async def gerar_coluna_editorial(
     req: GerarColunaRequest,
     background_tasks: BackgroundTasks,
@@ -1028,6 +1120,9 @@ def listar_colunas_editoriais(
         params.append(pais.upper())
 
     params.append(qtd_limite)
+    if not status:
+        # Aprovação humana: somente colunas publicadas/aprovadas aparecem publicamente.
+        filtros.append("(status IN ('publicado', 'aprovado') OR review_status IN ('publicado', 'aprovado'))")
     where_sql = f"WHERE {' AND '.join(filtros)}" if filtros else ""
 
     query = f"""
@@ -1414,98 +1509,6 @@ def obter_entenda_o_assunto_por_slug(
 # 9. ADMIN LITE — INTELIGÊNCIA & ATLAS (/v2/admin/*)
 # ============================================================================
 
-def _carregar_admins_configurados() -> Dict[str, str]:
-    """
-    Carrega o mapa {nome_admin: senha} a partir de ADMIN_USERS
-    (aceita JSON '{"user":"senha"}' ou pares 'user:senha,user2:senha2').
-    """
-    raw = (os.getenv("ADMIN_USERS") or "").strip()
-    if not raw:
-        return {}
-    if raw.startswith("{"):
-        try:
-            data = json.loads(raw)
-            if isinstance(data, dict):
-                return {
-                    str(k).strip(): str(v).strip()
-                    for k, v in data.items()
-                    if str(k).strip() and str(v).strip()
-                }
-        except Exception:
-            pass
-    admins: Dict[str, str] = {}
-    for item in raw.split(","):
-        if ":" in item:
-            user, pwd = item.split(":", 1)
-            user, pwd = user.strip(), pwd.strip()
-            if user and pwd:
-                admins[user] = pwd
-    return admins
-
-
-def verificar_admin_token(
-    authorization: Optional[str] = Header(default=None),
-    x_admin_user: Optional[str] = Header(default=None, alias="X-Admin-User"),
-) -> None:
-    """
-    Autenticação Bearer simplificada (apenas senha / token de máquina) para rotas /v2/admin/*:
-
-    1. Bearer `<token de máquina>` (CURADORIA_SECRET_TOKEN / ADMIN_SECRET_TOKEN);
-    2. Bearer `<senha>` quando bate com ADMIN_PASSWORD / ADMIN_SENHA ou com algum admin em ADMIN_USERS;
-    3. Bearer `<senha>` + X-Admin-User `<user>` com admin/senha em ADMIN_USERS.
-
-    Erros: `401` sem credencial; `403` com credencial inválida.
-    """
-    token_esperado = (
-        os.getenv("CURADORIA_SECRET_TOKEN")
-        or os.getenv("ADMIN_SECRET_TOKEN")
-        or ""
-    ).strip()
-    senha_esperada = (
-        os.getenv("ADMIN_PASSWORD")
-        or os.getenv("ADMIN_SENHA")
-        or ""
-    ).strip()
-    admins = _carregar_admins_configurados()
-
-    credencial: Optional[str] = None
-    if authorization:
-        esquema, _, valor = authorization.partition(" ")
-        if esquema.strip().lower() == "bearer" and valor.strip():
-            credencial = valor.strip()
-    if not credencial:
-        raise HTTPException(
-            status_code=401,
-            detail="Credencial ausente ou malformada. Envie: `Authorization: Bearer <token-ou-senha>`.",
-        )
-
-    # 1. Token de máquina (Dashboard / scripts / cron)
-    if token_esperado and secrets.compare_digest(credencial, token_esperado):
-        return
-
-    # 2. Senha pura (ADMIN_PASSWORD / ADMIN_SENHA) ou senha de algum admin em ADMIN_USERS
-    if senha_esperada and secrets.compare_digest(credencial, senha_esperada):
-        return
-    if admins:
-        usuario = (x_admin_user or "").strip()
-        senha_admin = admins.get(usuario) if usuario else None
-        if senha_admin and secrets.compare_digest(credencial, senha_admin):
-            return
-        if not usuario:
-            for _nome_admin, senha_admin_candidata in admins.items():
-                if senha_admin_candidata and secrets.compare_digest(credencial, senha_admin_candidata):
-                    return
-
-    # 3. Sem credencial válida
-    raise HTTPException(status_code=403, detail="Credencial administrativa inválida ou sem permissão.")
-
-
-def _require_db(conn: Any) -> Any:
-    if conn is None:
-        raise HTTPException(status_code=503, detail="Banco de dados PostgreSQL indisponível.")
-    return conn
-
-
 class AdminKillSwitchRequest(BaseModel):
     ativo: bool
 
@@ -1523,8 +1526,18 @@ class AdminFonteAtivoRequest(BaseModel):
     ativo: bool
 
 
+class AdminFonteSugestaoRequest(BaseModel):
+    tema: str = Field(min_length=2, max_length=300)
+    categoria: Optional[str] = Field(default=None, max_length=60)
+    quantidade: int = Field(default=3, ge=1, le=5)
+
+
+class AdminColunaStatusRequest(BaseModel):
+    status: Literal["publicado", "aprovado", "rejeitado", "rascunho_auditado"]
+
+
 class AdminEventoStatusRequest(BaseModel):
-    status: Literal["aguardando_revisao", "publicado", "arquivado"]
+    status: Literal["aguardando_revisao", "publicado", "arquivado", "excluido"]
 
 
 class AdminEditarSinteseRequest(BaseModel):
@@ -1879,6 +1892,143 @@ def admin_criar_fonte(
     return {"ok": True, "fonte": fonte}
 
 
+def _normalizar_url_fonte(url: str) -> str:
+    """Normaliza URL para comparação de duplicidade (sem esquema, www, query e barra final)."""
+    valor = (url or "").strip().lower()
+    valor = re.sub(r"^https?://", "", valor)
+    valor = re.sub(r"^www\.", "", valor)
+    valor = valor.split("#", 1)[0].split("?", 1)[0]
+    return valor.rstrip("/")
+
+
+def _dominio_url(url: str) -> str:
+    normal = _normalizar_url_fonte(url)
+    return normal.split("/", 1)[0]
+
+
+@router.post("/v2/admin/fontes/sugerir", dependencies=[Depends(verificar_admin_token)])
+def admin_sugerir_fonte(
+    payload: AdminFonteSugestaoRequest,
+    response: Response,
+    conn: Any = Depends(get_db),
+) -> Dict[str, Any]:
+    """Usa o Gemini para sugerir fontes (RSS/fonte primária) do segmento informado, evitando duplicatas."""
+    aplicar_no_cache_headers(response)
+
+    chave = (os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY") or "").strip()
+    if not chave or chave.startswith("sua_chave"):
+        raise HTTPException(
+            status_code=503,
+            detail="GEMINI_API_KEY não configurada no servidor; sugestão por IA indisponível.",
+        )
+
+    cadastradas: List[Dict[str, str]] = []
+    if conn is not None:
+        try:
+            with conn.cursor() as cur:
+                cur.execute("SELECT nome, url FROM ai_fontes_referencia ORDER BY nome;")
+                cadastradas = [
+                    {"nome": str(r.get("nome") or ""), "url": str(r.get("url") or "")}
+                    for r in cur.fetchall()
+                ]
+        except Exception:  # noqa: BLE001
+            cadastradas = []
+
+    lista_atual = "\n".join(f"- {f['nome']} ({f['url']})" for f in cadastradas[:400]) or "- (nenhuma)"
+    quantidade = int(payload.quantidade or 3)
+    segmento = (payload.categoria or "").strip()
+
+    prompt = f"""Você é curador de fontes do portal jornalístico Rodando o Mundo.
+Tema/assunto pedido pelo editor: {payload.tema}
+Segmento editorial: {segmento or 'livre'}
+
+Fontes JÁ CADASTRADAS (NÃO repita nenhuma delas nem o mesmo domínio):
+{lista_atual}
+
+Sugira exatamente {quantidade} fonte(s) NOVAS e reais para cobrir esse tema.
+Regras:
+1. Priorize fontes primárias oficiais (governo, banco central, organismos internacionais, institutos de pesquisa) e imprensa de referência.
+2. A URL deve ser um feed RSS/Atom real e estável OU a página oficial da fonte. Nunca invente URLs.
+3. Se não tiver certeza de uma URL válida, escolha outra fonte que você conheça bem.
+4. Responda SOMENTE com JSON válido, sem markdown, no formato:
+{{"sugestoes":[{{"nome":"...","url":"https://...","tipo_fonte":"rss_feed|fonte_primaria|youtube_rss|artigo_avulso","cadencia":"pulso_30m|ciclo_3h","pais_iso":"BR","justificativa":"por que cobre o tema"}}]}}
+"""
+
+    modelo_env = (os.getenv("GEMINI_SUGESTAO_MODEL") or os.getenv("GEMINI_MODEL") or "").strip()
+    modelos_tentar = [modelo_env] if modelo_env else []
+    modelos_tentar += ["gemini-3.5-flash-lite", "gemini-3.5-flash", "gemini-3.8-flash", "gemini-3.1-flash-lite"]
+    # remove duplicatas mantendo ordem
+    vistos_modelo = set()
+    modelos_tentar = [m for m in modelos_tentar if not (m in vistos_modelo or vistos_modelo.add(m))]
+
+    texto = ""
+    ultimo_erro = None
+    for modelo in modelos_tentar:
+        try:
+            from google import genai
+            from google.genai import types as genai_types
+
+            client = genai.Client(http_options=genai_types.HttpOptions(timeout=45_000))
+            resposta = client.models.generate_content(model=modelo, contents=prompt)
+            texto = (getattr(resposta, "text", None) or "").strip()
+            if texto:
+                break
+        except Exception as exc:  # noqa: BLE001
+            ultimo_erro = exc
+            texto = ""
+            continue
+    if not texto:
+        raise HTTPException(status_code=502, detail=f"Falha ao consultar a IA: {ultimo_erro}") from ultimo_erro
+
+    texto = re.sub(r"^```(?:json)?", "", texto).strip()
+    texto = re.sub(r"```$", "", texto).strip()
+    try:
+        dados = json.loads(texto)
+    except Exception as exc:  # noqa: BLE001
+        raise HTTPException(status_code=502, detail="A IA retornou um formato inválido.") from exc
+
+    sugestoes_brutas = dados.get("sugestoes") if isinstance(dados, dict) else None
+    if not isinstance(sugestoes_brutas, list):
+        sugestoes_brutas = []
+
+    urls_cadastradas = {_normalizar_url_fonte(f["url"]) for f in cadastradas}
+    dominios_cadastrados = {_dominio_url(f["url"]) for f in cadastradas if f.get("url")}
+
+    sugestoes: List[Dict[str, Any]] = []
+    vistos: set[str] = set()
+    for item in sugestoes_brutas:
+        if not isinstance(item, dict):
+            continue
+        nome = str(item.get("nome") or "").strip()[:150]
+        url = str(item.get("url") or "").strip()[:2000]
+        if not nome or not url.lower().startswith("http"):
+            continue
+        chave_url = _normalizar_url_fonte(url)
+        if chave_url in vistos:
+            continue
+        vistos.add(chave_url)
+        ja_cadastrada = chave_url in urls_cadastradas or _dominio_url(url) in dominios_cadastrados
+        tipo = str(item.get("tipo_fonte") or "rss_feed").strip()
+        if tipo not in {"rss_feed", "fonte_primaria", "youtube_rss", "artigo_avulso"}:
+            tipo = "rss_feed"
+        cadencia = str(item.get("cadencia") or "pulso_30m").strip()
+        if cadencia not in {"pulso_30m", "ciclo_3h"}:
+            cadencia = "pulso_30m"
+        sugestoes.append(
+            {
+                "nome": nome,
+                "url": url,
+                "tipo_fonte": tipo,
+                "cadencia": cadencia,
+                "pais_iso": str(item.get("pais_iso") or "BR").strip()[:2].upper(),
+                "justificativa": str(item.get("justificativa") or "").strip()[:600],
+                "ja_cadastrada": ja_cadastrada,
+            }
+        )
+
+    return {"ok": True, "tema": payload.tema, "sugestoes": sugestoes[:quantidade]}
+
+
 @router.patch("/v2/admin/fontes/{fonte_id}/ativo", dependencies=[Depends(verificar_admin_token)])
 def admin_alternar_fonte_ativo(
     fonte_id: int,
@@ -1938,14 +2088,22 @@ def admin_excluir_fonte(
 def admin_listar_eventos(
     response: Response,
     limite: int = Query(30, ge=1, le=100),
+    status: Optional[str] = Query(
+        None,
+        description="Filtra por status (aguardando_revisao/publicado/arquivado/excluido)",
+    ),
     conn: Any = Depends(get_db),
 ) -> Dict[str, Any]:
-    """Lista os últimos eventos de `ai_eventos` com a síntese mais recente."""
+    """Lista os últimos eventos de `ai_eventos` com a síntese mais recente e contagens por status."""
     aplicar_no_cache_headers(response)
     db = _require_db(conn)
+    status_norm = (status or "").strip().lower()
+    filtro_sql = "WHERE e.status = %s" if status_norm else ""
+    params: List[Any] = [status_norm] if status_norm else []
+    params.append(limite)
     with db.cursor() as cur:
         cur.execute(
-            """
+            f"""
             SELECT
                 e.id, e.slug, e.titulo_evento, e.categoria, e.nivel_confianca,
                 e.status, e.aviso_correcao_material, e.updated_at,
@@ -1957,12 +2115,15 @@ def admin_listar_eventos(
                     LIMIT 1
                 ) AS sintese_com_ressalvas
             FROM ai_eventos e
+            {filtro_sql}
             ORDER BY e.updated_at DESC, e.id DESC
             LIMIT %s;
             """,
-            (limite,),
+            tuple(params),
         )
         rows = cur.fetchall()
+        cur.execute("SELECT status, COUNT(*) AS total FROM ai_eventos GROUP BY status;")
+        contagens_rows = cur.fetchall()
     eventos = [
         {
             **dict(r),
@@ -1970,7 +2131,9 @@ def admin_listar_eventos(
         }
         for r in rows
     ]
-    return {"ok": True, "eventos": eventos}
+    contagens = {str(r["status"]): int(r["total"]) for r in contagens_rows}
+    contagens["total"] = sum(contagens.values())
+    return {"ok": True, "eventos": eventos, "contagens": contagens}
 
 
 @router.patch("/v2/admin/eventos/{event_id}/status", dependencies=[Depends(verificar_admin_token)])
@@ -1992,6 +2155,37 @@ def admin_atualizar_status_evento(
             RETURNING id, status, updated_at;
             """,
             (payload.status, event_id),
+        )
+        row = cur.fetchone()
+    if not row:
+        raise HTTPException(status_code=404, detail="Evento não encontrado.")
+    db.commit()
+    return {
+        "ok": True,
+        "id": row["id"],
+        "status": row["status"],
+        "updated_at": _serializar_valor_temporal(row.get("updated_at")),
+    }
+
+
+@router.delete("/v2/admin/eventos/{event_id}", dependencies=[Depends(verificar_admin_token)])
+def admin_excluir_evento(
+    event_id: int,
+    response: Response,
+    conn: Any = Depends(get_db),
+) -> Dict[str, Any]:
+    """Exclusão lógica de evento (`status = 'excluido'`), preservando auditoria e permitindo restaurar."""
+    aplicar_no_cache_headers(response)
+    db = _require_db(conn)
+    with db.cursor() as cur:
+        cur.execute(
+            """
+            UPDATE ai_eventos
+            SET status = 'excluido', updated_at = NOW()
+            WHERE id = %s
+            RETURNING id, status, updated_at;
+            """,
+            (event_id,),
         )
         row = cur.fetchone()
     if not row:
@@ -2435,6 +2629,133 @@ def admin_remover_noticia_quente(
     db.commit()
     removido = 1 if row else 0
     return {"ok": True, "slug": slug, "removido": removido}
+
+
+# ============================================================================
+# 14.1 COLUNAS EDITORIAIS — APROVAÇÃO HUMANA (/v2/admin/colunas)
+# ============================================================================
+
+@router.get("/v2/admin/colunas", dependencies=[Depends(verificar_admin_token)])
+def admin_listar_colunas(
+    response: Response,
+    status: Optional[str] = Query(
+        None,
+        description="Filtra por status (rascunho_auditado/aguardando_revisao/aprovado/publicado/rejeitado)",
+    ),
+    limite: int = Query(50, ge=1, le=200),
+    conn: Any = Depends(get_db),
+) -> Dict[str, Any]:
+    """Lista colunas editoriais para revisão humana (rascunhos auditados, aprovadas e publicadas)."""
+    aplicar_no_cache_headers(response)
+    db = _require_db(conn)
+    status_norm = (status or "").strip().lower()
+    filtro_sql = "WHERE (status = %s OR review_status = %s)" if status_norm else ""
+    params: List[Any] = [status_norm, status_norm] if status_norm else []
+    params.append(limite)
+    with db.cursor() as cur:
+        cur.execute(
+            f"""
+            SELECT
+                slug, titulo, subtitulo, categoria, tempo_leitura_min,
+                auditoria_aprovada, model_id, status, review_status,
+                reviewed_by, published_at, created_at, updated_at,
+                COALESCE(auditoria_resultado->>'nota_isencao', '') AS nota_isencao,
+                COALESCE(auditoria_resultado->>'score_qualidade', '') AS score_qualidade
+            FROM ai_colunas_editoriais
+            {filtro_sql}
+            ORDER BY COALESCE(published_at, created_at) DESC, updated_at DESC
+            LIMIT %s;
+            """,
+            tuple(params),
+        )
+        rows = cur.fetchall()
+        cur.execute(
+            "SELECT COALESCE(status, 'rascunho_auditado') AS status, COUNT(*) AS total "
+            "FROM ai_colunas_editoriais GROUP BY 1;"
+        )
+        contagens_rows = cur.fetchall()
+    colunas = [
+        {
+            **dict(r),
+            "published_at": _serializar_valor_temporal(r.get("published_at")),
+            "created_at": _serializar_valor_temporal(r.get("created_at")),
+            "updated_at": _serializar_valor_temporal(r.get("updated_at")),
+        }
+        for r in rows
+    ]
+    contagens = {str(r["status"]): int(r["total"]) for r in contagens_rows}
+    contagens["total"] = sum(contagens.values())
+    return {"ok": True, "colunas": colunas, "contagens": contagens}
+
+
+@router.patch("/v2/admin/colunas/{slug}/status", dependencies=[Depends(verificar_admin_token)])
+def admin_atualizar_status_coluna(
+    slug: str,
+    payload: AdminColunaStatusRequest,
+    response: Response,
+    conn: Any = Depends(get_db),
+) -> Dict[str, Any]:
+    """Aprova, publica, rejeita ou devolve uma coluna para rascunho (fluxo de revisão humana)."""
+    aplicar_no_cache_headers(response)
+    db = _require_db(conn)
+    status_novo = payload.status
+
+    if status_novo == "publicado":
+        set_sql = (
+            "status = 'publicado', review_status = 'publicado', "
+            "published_at = COALESCE(published_at, NOW()), updated_at = NOW()"
+        )
+    elif status_novo == "aprovado":
+        set_sql = "status = 'aprovado', review_status = 'aprovado', updated_at = NOW()"
+    elif status_novo == "rejeitado":
+        set_sql = "status = 'rejeitado', review_status = 'rejeitado', updated_at = NOW()"
+    else:
+        set_sql = (
+            "status = 'rascunho_auditado', review_status = 'rascunho_auditado', "
+            "published_at = NULL, updated_at = NOW()"
+        )
+
+    with db.cursor() as cur:
+        cur.execute(
+            f"UPDATE ai_colunas_editoriais SET {set_sql} WHERE slug = %s "
+            "RETURNING slug, status, review_status, published_at, updated_at;",
+            (slug,),
+        )
+        row = cur.fetchone()
+    if not row:
+        raise HTTPException(status_code=404, detail="Coluna não encontrada.")
+    db.commit()
+    return {
+        "ok": True,
+        "slug": row["slug"],
+        "status": row["status"],
+        "review_status": row["review_status"],
+        "published_at": _serializar_valor_temporal(row.get("published_at")),
+        "updated_at": _serializar_valor_temporal(row.get("updated_at")),
+    }
+
+
+@router.delete("/v2/admin/colunas/{slug}", dependencies=[Depends(verificar_admin_token)])
+def admin_excluir_coluna(
+    slug: str,
+    response: Response,
+    conn: Any = Depends(get_db),
+) -> Dict[str, Any]:
+    """Remove permanentemente uma coluna editorial (e o bloco 'Entenda o Assunto' associado)."""
+    aplicar_no_cache_headers(response)
+    db = _require_db(conn)
+    with db.cursor() as cur:
+        cur.execute(
+            "DELETE FROM ai_entenda_o_assunto WHERE slug = %s OR slug = %s;",
+            (f"entenda-{slug}", slug),
+        )
+        cur.execute("DELETE FROM ai_colunas_editoriais WHERE slug = %s RETURNING slug;", (slug,))
+        row = cur.fetchone()
+    if not row:
+        db.rollback()
+        raise HTTPException(status_code=404, detail="Coluna não encontrada.")
+    db.commit()
+    return {"ok": True, "slug": row["slug"]}
 
 
 # ============================================================================

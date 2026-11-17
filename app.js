@@ -4007,7 +4007,8 @@
     // Card ou sanfona expandida pelo usuário
     if (el.querySelector('.is-expanded, [aria-expanded="true"]')) return true;
 
-    return true;
+    // Visível, mas sem interação ativa: pode receber atualizações suaves sem atrapalhar a leitura.
+    return false;
   }
 
   function flushPendingAutonomousUpdates() {
@@ -12325,6 +12326,11 @@
           })
           .catch(function () {
             dossiesState.loading = false;
+            // Mantém a Home utilizável mesmo se ambas as fontes falharem: tenta fallback editorial local.
+            try {
+              if (typeof renderTemasHubsSection === 'function') renderTemasHubsSection();
+              if (typeof renderDossiesRotativosHome === 'function') renderDossiesRotativosHome();
+            } catch (e) {}
             return dossiesState;
           });
       });
@@ -12536,7 +12542,7 @@
   }
 
   function buildDossieRotativoFallbackPermanentes() {
-    if (dossiesState.loaded || !EDITORIAL.paginasTematicas) return [];
+    if (!EDITORIAL.paginasTematicas) return [];
     return Object.keys(EDITORIAL.paginasTematicas).map(function (k) {
       var hb = EDITORIAL.paginasTematicas[k] || {};
       return {

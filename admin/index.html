@@ -393,6 +393,61 @@
       flex-wrap: wrap;
     }
 
+    .admin-tabs {
+      display: flex;
+      gap: 0.35rem;
+      flex-wrap: wrap;
+      margin: 0 0 var(--space-3);
+    }
+
+    .admin-tab {
+      appearance: none;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text);
+      border-radius: 999px;
+      padding: 0.5rem 0.9rem;
+      min-height: 44px;
+      font: inherit;
+      font-size: 0.86rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .admin-tab span {
+      font-weight: 500;
+      opacity: 0.7;
+    }
+
+    .admin-tab.active {
+      background: var(--text);
+      color: var(--surface);
+      border-color: var(--text);
+    }
+
+    .admin-tab.active span {
+      opacity: 0.85;
+    }
+
+    .admin-sugestao {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: var(--space-3);
+      margin-bottom: var(--space-3);
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .admin-sugestao a {
+      color: var(--accent);
+      word-break: break-all;
+      font-size: 0.82rem;
+    }
+
     .admin-modal-backdrop {
       position: fixed;
       inset: 0;
@@ -784,15 +839,20 @@
       <div class="admin-card-head" style="margin-bottom: var(--space-4);">
         <div>
           <h2 class="admin-card-title" style="font-size: var(--text-xl);">Acesso Restrito</h2>
-          <p class="admin-sub">Painel administrativo — autenticação via token Bearer (senha).</p>
+          <p class="admin-sub">Painel administrativo — entre com usuário e senha.</p>
         </div>
       </div>
 
       <div class="admin-auth-bar">
-        <div class="admin-field" style="flex: 1 1 260px;">
-          <label for="admin-password">Senha de acesso</label>
+        <div class="admin-field" style="flex: 1 1 180px;">
+          <label for="admin-user">Usuário</label>
+          <input id="admin-user" class="admin-input" type="text" autocomplete="username"
+            placeholder="Seu usuário" />
+        </div>
+        <div class="admin-field" style="flex: 1 1 220px;">
+          <label for="admin-password">Senha</label>
           <input id="admin-password" class="admin-input" type="password" autocomplete="current-password"
-            placeholder="Digite a senha de acesso" />
+            placeholder="Sua senha" />
         </div>
         <button id="btn-conectar" class="admin-btn admin-btn-primary" type="button">Entrar</button>
         <button id="btn-sair" class="admin-btn admin-btn-danger hidden" type="button">Sair</button>
@@ -993,7 +1053,7 @@
         <div class="admin-card-head">
           <div>
             <h2 id="admin-section-curadoria_title" class="admin-card-title">Curadoria &amp; Bot</h2>
-            <p class="admin-sub">Status do bot, disparos de pipeline, fila de eventos e edição de síntese.</p>
+            <p class="admin-sub">Disparos do bot, fila de eventos (aprovar/arquivar/excluir) e colunas aguardando revisão humana.</p>
           </div>
           <div class="admin-head-actions">
             <button class="admin-collapse-btn" type="button" aria-label="Minimizar seção Curadoria" aria-expanded="true">−</button>
@@ -1001,19 +1061,39 @@
         </div>
 
         <div class="admin-controls-row">
-          <div>
-            <strong>Disparos do bot</strong>
-            <div class="admin-actions" style="margin-top: 0.5rem;">
-              <button id="btn-rodar-pulso" class="admin-btn admin-btn-sm" type="button">Rodar Pulso Agora</button>
-              <button id="btn-gerar-coluna" class="admin-btn admin-btn-sm" type="button">Gerar Coluna Editorial</button>
-            </div>
+          <div class="admin-field" style="flex:1 1 320px;">
+            <label for="coluna-tema">Tema da coluna (opcional)</label>
+            <input id="coluna-tema" class="admin-input" type="text" maxlength="240"
+              placeholder="Ex: Acordo Mercosul-UE e impactos comerciais" />
           </div>
-          <div class="admin-actions">
-            <button id="btn-recarregar-eventos" class="admin-btn admin-btn-sm" type="button">Atualizar Fila</button>
-          </div>
+          <label class="admin-check-label" for="coluna-dry-run">
+            <input id="coluna-dry-run" type="checkbox" />
+            <span><strong>Dry-run</strong> (gera sem gravar no banco)</span>
+          </label>
+        </div>
+
+        <div class="admin-actions" style="margin: 0 0 var(--space-3);">
+          <button id="btn-rodar-pulso" class="admin-btn admin-btn-sm" type="button">Rodar Pulso Agora</button>
+          <button id="btn-gerar-coluna" class="admin-btn admin-btn-sm admin-btn-primary" type="button">Gerar Coluna Editorial</button>
+          <button id="btn-recarregar-eventos" class="admin-btn admin-btn-sm" type="button">Atualizar</button>
         </div>
 
         <div id="eventos-banner" class="admin-banner"></div>
+
+        <div class="admin-tabs" id="eventos-tabs" role="tablist" aria-label="Filtrar eventos por status">
+          <button class="admin-tab active" type="button" role="tab" aria-selected="true" data-ev-status="aguardando_revisao">
+            Aguardando <span id="ev-count-aguardando_revisao">0</span>
+          </button>
+          <button class="admin-tab" type="button" role="tab" aria-selected="false" data-ev-status="publicado">
+            Publicados <span id="ev-count-publicado">0</span>
+          </button>
+          <button class="admin-tab" type="button" role="tab" aria-selected="false" data-ev-status="arquivado">
+            Arquivados <span id="ev-count-arquivado">0</span>
+          </button>
+          <button class="admin-tab" type="button" role="tab" aria-selected="false" data-ev-status="excluido">
+            Excluídos <span id="ev-count-excluido">0</span>
+          </button>
+        </div>
 
         <div class="admin-table-wrap">
           <table class="admin-table">
@@ -1033,6 +1113,35 @@
             </tbody>
           </table>
         </div>
+
+        <div class="admin-card-head" style="margin-top: var(--space-5); margin-bottom: var(--space-3);">
+          <div>
+            <h3 class="admin-card-title" style="font-size: 1rem;">Colunas Editoriais — aprovação humana</h3>
+            <p class="admin-sub">A IA audita, mas só vai ao site depois de <strong>Publicar</strong> aqui.</p>
+          </div>
+          <button id="btn-recarregar-colunas" class="admin-btn admin-btn-sm" type="button">Atualizar Colunas</button>
+        </div>
+
+        <div id="colunas-banner" class="admin-banner"></div>
+
+        <div class="admin-table-wrap">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Título</th>
+                <th>Categoria</th>
+                <th>Nota IA</th>
+                <th>Status</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody id="tbody-colunas">
+              <tr>
+                <td colspan="5" class="admin-sub">Nenhuma coluna gerada.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </section>
 
       <!-- SEÇÃO 6: FONTES -->
@@ -1043,6 +1152,7 @@
             <p class="admin-sub">Cadastro e governança de fontes de coleta (<code>/v2/admin/fontes</code>).</p>
           </div>
           <div class="admin-head-actions">
+            <button id="btn-buscar-fonte-ia" class="admin-btn admin-btn-sm admin-btn-primary" type="button">✨ Buscar fonte com IA</button>
             <button id="btn-recarregar-fontes" class="admin-btn admin-btn-sm" type="button">Atualizar Lista</button>
             <button class="admin-collapse-btn" type="button" aria-label="Minimizar seção Fontes" aria-expanded="true">−</button>
           </div>
@@ -1117,7 +1227,10 @@
     <div class="admin-modal">
       <div class="admin-card-head" style="margin-bottom:0;">
         <h3 id="modal-title" class="admin-card-title" style="font-size:1.15rem;">Editar Síntese</h3>
-        <button id="btn-fechar-modal" class="admin-btn admin-btn-sm" type="button">Fechar</button>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;">
+          <button id="btn-salvar-sintese-top" class="admin-btn admin-btn-sm admin-btn-primary" type="button">Salvar</button>
+          <button id="btn-fechar-modal" class="admin-btn admin-btn-sm" type="button">Fechar</button>
+        </div>
       </div>
       <p id="modal-evento-nome" class="admin-sub"></p>
 
@@ -1159,6 +1272,7 @@
         </div>
         <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;">
           <button id="btn-sugerir-ia-dossie" class="admin-btn admin-btn-sm" type="button" title="Gera uma sugestão de dossiê com base nos assuntos do momento">✨ Sugerir com IA (assuntos do momento)</button>
+          <button id="btn-salvar-dossie-top" class="admin-btn admin-btn-sm admin-btn-primary" type="button">Salvar</button>
           <button id="btn-fechar-modal-dossie" class="admin-btn admin-btn-sm" type="button">Fechar</button>
         </div>
       </div>
@@ -1291,6 +1405,7 @@
         </div>
         <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;">
           <button id="btn-excluir-radar" class="admin-btn admin-btn-sm admin-btn-danger" type="button" style="display:none;">Excluir</button>
+          <button id="btn-salvar-radar-top" class="admin-btn admin-btn-sm admin-btn-primary" type="button">Salvar</button>
           <button id="btn-fechar-modal-radar" class="admin-btn admin-btn-sm" type="button">Fechar</button>
         </div>
       </div>
@@ -1371,6 +1486,7 @@
           <p id="modal-noticias-quente_sub" class="admin-sub"></p>
         </div>
         <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;">
+          <button id="btn-salvar-noticia-quente-top" class="admin-btn admin-btn-sm admin-btn-primary" type="button">Salvar</button>
           <button id="btn-fechar-modal-noticia-quente" class="admin-btn admin-btn-sm" type="button">Fechar</button>
         </div>
       </div>
@@ -1461,6 +1577,72 @@
   </div>
 
   <!-- Toast flutuante -->
+  <!-- Modal: Buscar fonte com IA -->
+  <div id="modal-fonte-ia" class="admin-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modal-fonte-ia_title">
+    <div class="admin-modal admin-modal-lg">
+      <div class="admin-card-head" style="margin-bottom:0;align-items:flex-start;gap:10px;">
+        <div style="flex:1;min-width:0;">
+          <h3 id="modal-fonte-ia_title" class="admin-card-title" style="font-size:1.15rem;">Buscar fonte com IA</h3>
+          <p class="admin-sub">Escolha o tema e a IA sugere fontes reais que ainda não estão no banco.</p>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;">
+          <button id="btn-fechar-modal-fonte-ia" class="admin-btn admin-btn-sm" type="button">Fechar</button>
+        </div>
+      </div>
+
+      <div class="admin-form-grid" style="margin-top: var(--space-3);">
+        <div class="admin-field">
+          <label for="fia-tema">Tema / segmento</label>
+          <input id="fia-tema" class="admin-input" type="text" list="fia-temas" maxlength="300"
+            placeholder="Ex: Banco Central, energia, América Latina..." />
+          <datalist id="fia-temas">
+            <option value="Política brasileira"></option>
+            <option value="Economia e mercados"></option>
+            <option value="Geopolítica e relações internacionais"></option>
+            <option value="Cultura e sociedade"></option>
+            <option value="Meio ambiente e clima"></option>
+            <option value="Tecnologia e inovação"></option>
+            <option value="Esportes"></option>
+          </datalist>
+        </div>
+        <div class="admin-field">
+          <label for="fia-quantidade">Quantidade</label>
+          <select id="fia-quantidade" class="admin-select">
+            <option value="1">1 fonte</option>
+            <option value="3" selected>3 fontes</option>
+            <option value="5">5 fontes</option>
+          </select>
+        </div>
+        <div class="admin-field" style="align-self:end;">
+          <button id="btn-sugerir-fonte-ia" class="admin-btn admin-btn-primary" type="button">Buscar com IA</button>
+        </div>
+      </div>
+
+      <div id="fonte-ia-banner" class="admin-banner"></div>
+      <div id="fonte-ia-resultados"></div>
+    </div>
+  </div>
+
+  <!-- Modal: Prévia de coluna editorial -->
+  <div id="modal-coluna" class="admin-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modal-coluna_title">
+    <div class="admin-modal admin-modal-lg">
+      <div class="admin-card-head" style="margin-bottom:0;align-items:flex-start;gap:10px;">
+        <div style="flex:1;min-width:0;">
+          <h3 id="modal-coluna_title" class="admin-card-title" style="font-size:1.15rem;">Coluna Editorial</h3>
+          <p id="modal-coluna_sub" class="admin-sub"></p>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;">
+          <button id="btn-aprovar-coluna" class="admin-btn admin-btn-sm admin-btn-primary" type="button">Aprovar</button>
+          <button id="btn-publicar-coluna" class="admin-btn admin-btn-sm" type="button" style="background:#059669;border-color:#059669;color:#fff;">Publicar no site</button>
+          <button id="btn-rejeitar-coluna" class="admin-btn admin-btn-sm admin-btn-danger" type="button">Rejeitar</button>
+          <button id="btn-fechar-modal-coluna" class="admin-btn admin-btn-sm" type="button">Fechar</button>
+        </div>
+      </div>
+      <div id="coluna-banner" class="admin-banner"></div>
+      <div id="coluna-preview" style="max-height:60vh;overflow:auto;margin-top:var(--space-3);"></div>
+    </div>
+  </div>
+
   <div id="admin-toast" class="admin-toast" role="status" aria-live="polite"></div>
 
   <script>
@@ -1478,17 +1660,28 @@
         try { localStorage.setItem('rom_admin_token', t); } catch (e) { }
       };
 
+      const persistUser = (u) => {
+        try { localStorage.setItem('rom_admin_user', u); } catch (e) { }
+      };
+
       const clearPersistedToken = () => {
         try {
           localStorage.removeItem('rom_admin_token');
+          localStorage.removeItem('rom_admin_user');
           sessionStorage.removeItem('rom_admin_token');
+          sessionStorage.removeItem('rom_admin_user');
         } catch (e) { }
       };
 
       const state = {
         apiBase: readSaved('rom_admin_api') || defaultApiBase,
+        user: readSaved('rom_admin_user') || '',
         token: readSaved('rom_admin_token') || '',
         eventos: [],
+        eventosContagens: {},
+        eventoFiltro: 'aguardando_revisao',
+        colunas: [],
+        editingColunaSlug: null,
         editingEventId: null,
         dossies: [],
         dossiesContagens: { total: 0, permanentes: 0, ao_vivo: 0, em_breve: 0, arquivo: 0 },
@@ -1500,7 +1693,8 @@
         radar: [],
         editingRadarSlug: null,
         noticiasQuentes: [],
-        editingNoticiaSlug: null
+        editingNoticiaSlug: null,
+        iaSugestoes: []
       };
 
       let toastTimer = null;
@@ -1545,6 +1739,9 @@
           'Content-Type': 'application/json',
           'Authorization': 'Bearer ' + state.token
         };
+        if (state.user) {
+          headers['X-Admin-User'] = state.user;
+        }
         const finalHeaders = Object.assign({}, headers, options.headers || {});
         const res = await fetch(url, { ...options, headers: finalHeaders });
         const ct = (res.headers.get('content-type') || '').toLowerCase();
@@ -1670,18 +1867,118 @@
 
       $('btn-recarregar-fontes').addEventListener('click', () => carregarFontes().catch((err) => showBanner('fontes-banner', err.message, 'err')));
 
+      // ============================ FONTES — SUGESTÃO POR IA ============================
+      function abrirModalFonteIa() {
+        $('fia-tema').value = '';
+        $('fia-quantidade').value = '3';
+        $('fonte-ia-banner').className = 'admin-banner';
+        $('fonte-ia-banner').textContent = '';
+        $('fonte-ia-resultados').innerHTML = '';
+        $('modal-fonte-ia').classList.add('open');
+      }
+
+      function fecharModalFonteIa() {
+        $('modal-fonte-ia').classList.remove('open');
+      }
+
+      $('btn-buscar-fonte-ia').addEventListener('click', abrirModalFonteIa);
+      $('btn-fechar-modal-fonte-ia').addEventListener('click', fecharModalFonteIa);
+
+      $('btn-sugerir-fonte-ia').addEventListener('click', async () => {
+        const tema = ($('fia-tema').value || '').trim();
+        if (!tema) {
+          showBanner('fonte-ia-banner', 'Informe um tema.', 'err');
+          return;
+        }
+        const qtd = Number($('fia-quantidade').value) || 3;
+        const btn = $('btn-sugerir-fonte-ia');
+        btn.disabled = true;
+        btn.textContent = 'Buscando...';
+        hideBanner('fonte-ia-banner');
+        $('fonte-ia-resultados').innerHTML = '<div class="admin-sub">Consultando a IA…</div>';
+        try {
+          const data = await apiFetch('/v2/admin/fontes/sugerir', {
+            method: 'POST',
+            body: JSON.stringify({ tema, quantidade: qtd }),
+          });
+          const lista = data.sugestoes || [];
+          if (!lista.length) {
+            $('fonte-ia-resultados').innerHTML = '<div class="admin-sub">Nenhuma sugestão retornada.</div>';
+            return;
+          }
+          $('fonte-ia-resultados').innerHTML = lista.map((s, idx) => `
+            <div class="admin-sugestao">
+              <div style="display:flex;justify-content:space-between;gap:8px;align-items:flex-start;flex-wrap:wrap;">
+                <strong>${escapeHtml(s.nome)}</strong>
+                ${s.ja_cadastrada ? '<span class="badge badge-warn">já cadastrada</span>' : '<span class="badge badge-ok">nova</span>'}
+              </div>
+              <a href="${escapeHtml(s.url)}" target="_blank" rel="noopener">${escapeHtml(s.url)}</a>
+              <div class="admin-sub">${escapeHtml(s.tipo_fonte)} · ${escapeHtml(s.cadencia)} · ${escapeHtml(s.pais_iso)} · ${escapeHtml(s.justificativa)}</div>
+              <div class="admin-actions">
+                <button class="admin-btn admin-btn-sm admin-btn-primary" type="button" data-add-fonte-ia="${idx}">Cadastrar como fonte</button>
+              </div>
+            </div>
+          `).join('');
+
+          // Guarda as sugestões para cadastro
+          state.iaSugestoes = lista;
+          $('fonte-ia-resultados').querySelectorAll('button[data-add-fonte-ia]').forEach((b) => {
+            b.addEventListener('click', async () => {
+              const idx = Number(b.getAttribute('data-add-fonte-ia'));
+              const s = (state.iaSugestoes || [])[idx];
+              if (!s) return;
+              try {
+                await apiFetch('/v2/admin/fontes', {
+                  method: 'POST',
+                  body: JSON.stringify({
+                    nome: s.nome,
+                    url: s.url,
+                    tipo_fonte: s.tipo_fonte,
+                    cadencia: s.cadencia,
+                    peso_confianca: 3,
+                    aprovar_imediato: false,
+                  }),
+                });
+                showBanner('fonte-ia-banner', 'Fonte cadastrada. Aprove-a na lista abaixo.', 'ok');
+                showToast('Fonte cadastrada.', 'ok');
+                await carregarFontes();
+              } catch (err) {
+                showBanner('fonte-ia-banner', 'Erro ao cadastrar: ' + err.message, 'err');
+              }
+            });
+          });
+        } catch (err) {
+          $('fonte-ia-resultados').innerHTML = '';
+          showBanner('fonte-ia-banner', err.message, 'err');
+        } finally {
+          btn.disabled = false;
+          btn.textContent = 'Buscar com IA';
+        }
+      });
+
       // ============================ EVENTOS / CURADORIA ============================
       async function carregarEventos() {
-        const data = await apiFetch('/v2/admin/eventos');
+        const qs = state.eventoFiltro ? ('?status=' + encodeURIComponent(state.eventoFiltro) + '&limite=60') : '?limite=60';
+        const data = await apiFetch('/v2/admin/eventos' + qs);
         state.eventos = data.eventos || [];
+        state.eventosContagens = data.contagens || {};
+        const cont = state.eventosContagens || {};
+        ['aguardando_revisao', 'publicado', 'arquivado', 'excluido'].forEach((k) => {
+          const el = $('ev-count-' + k);
+          if (el) el.textContent = cont[k] || 0;
+        });
         const tbody = $('tbody-eventos');
         if (!state.eventos.length) {
-          tbody.innerHTML = '<tr><td colspan="5" class="admin-sub">Nenhum evento na fila.</td></tr>';
+          tbody.innerHTML = '<tr><td colspan="5" class="admin-sub">Nenhum evento nesta categoria.</td></tr>';
           return;
         }
         tbody.innerHTML = state.eventos.map((ev) => {
-          const stClass = ev.status === 'publicado' ? 'badge-ok' : (ev.status === 'aguardando_revisao' ? 'badge-warn' : '');
+          const stClass = ev.status === 'publicado' ? 'badge-ok' : (ev.status === 'aguardando_revisao' ? 'badge-warn' : (ev.status === 'excluido' ? 'badge-warn' : ''));
           const errataTag = ev.aviso_correcao_material ? '<span class="badge badge-warn" style="margin-left:0.35rem;">Errata</span>' : '';
+          const podePublicar = ev.status !== 'publicado' && ev.status !== 'excluido';
+          const podeArquivar = ev.status !== 'arquivado' && ev.status !== 'excluido';
+          const podeExcluir = ev.status !== 'excluido';
+          const podeRestaurar = ev.status === 'excluido';
           return `
             <tr>
               <td>
@@ -1693,9 +1990,11 @@
               <td><span class="badge ${stClass}">${escapeHtml(ev.status)}</span></td>
               <td>
                 <div class="admin-actions">
-                  ${ev.status !== 'publicado' ? `<button class="admin-btn admin-btn-sm admin-btn-primary" type="button" data-pub-ev="${ev.id}">Publicar</button>` : ''}
+                  ${podePublicar ? `<button class="admin-btn admin-btn-sm admin-btn-primary" type="button" data-pub-ev="${ev.id}">Publicar</button>` : ''}
+                  ${podeRestaurar ? `<button class="admin-btn admin-btn-sm admin-btn-primary" type="button" data-restore-ev="${ev.id}">Restaurar</button>` : ''}
                   <button class="admin-btn admin-btn-sm" type="button" data-edit-ev="${ev.id}">Editar Síntese</button>
-                  ${ev.status !== 'arquivado' ? `<button class="admin-btn admin-btn-sm admin-btn-danger" type="button" data-arq-ev="${ev.id}">Arquivar</button>` : ''}
+                  ${podeArquivar ? `<button class="admin-btn admin-btn-sm" type="button" data-arq-ev="${ev.id}">Arquivar</button>` : ''}
+                  ${podeExcluir ? `<button class="admin-btn admin-btn-sm admin-btn-danger" type="button" data-del-ev="${ev.id}">Excluir</button>` : ''}
                 </div>
               </td>
             </tr>
@@ -1709,6 +2008,8 @@
         const pubId = e.target.getAttribute('data-pub-ev');
         const arqId = e.target.getAttribute('data-arq-ev');
         const editId = e.target.getAttribute('data-edit-ev');
+        const delId = e.target.getAttribute('data-del-ev');
+        const restoreId = e.target.getAttribute('data-restore-ev');
 
         if (pubId) {
           try {
@@ -1717,6 +2018,29 @@
             await carregarEventos();
           } catch (err) {
             showBanner('eventos-banner', 'Erro ao publicar: ' + err.message, 'err');
+          }
+          return;
+        }
+
+        if (restoreId) {
+          try {
+            await apiFetch(`/v2/admin/eventos/${restoreId}/status`, { method: 'PATCH', body: JSON.stringify({ status: 'aguardando_revisao' }) });
+            showBanner('eventos-banner', 'Evento restaurado para a fila.', 'ok');
+            await carregarEventos();
+          } catch (err) {
+            showBanner('eventos-banner', 'Erro ao restaurar: ' + err.message, 'err');
+          }
+          return;
+        }
+
+        if (delId) {
+          if (!confirm('Excluir este evento da fila? (pode ser restaurado depois)')) return;
+          try {
+            await apiFetch(`/v2/admin/eventos/${delId}`, { method: 'DELETE' });
+            showBanner('eventos-banner', 'Evento excluído.', 'ok');
+            await carregarEventos();
+          } catch (err) {
+            showBanner('eventos-banner', 'Erro ao excluir: ' + err.message, 'err');
           }
           return;
         }
@@ -1744,6 +2068,24 @@
           hideBanner('modal-banner');
           $('modal-sintese').classList.add('open');
         }
+      });
+
+      // Tabs de eventos
+      document.querySelectorAll('#eventos-tabs .admin-tab').forEach((tab) => {
+        tab.addEventListener('click', async () => {
+          const status = tab.getAttribute('data-ev-status');
+          state.eventoFiltro = status;
+          document.querySelectorAll('#eventos-tabs .admin-tab').forEach((t) => {
+            const ativo = t === tab;
+            t.classList.toggle('active', ativo);
+            t.setAttribute('aria-selected', ativo ? 'true' : 'false');
+          });
+          try {
+            await carregarEventos();
+          } catch (err) {
+            showBanner('eventos-banner', err.message, 'err');
+          }
+        });
       });
 
       // Modal Síntese
@@ -2360,14 +2702,14 @@
         const prev = btn.textContent;
         btn.disabled = true;
         btn.textContent = 'Rodando pulso...';
-        showBanner('coleta-banner', 'Disparando pulso de notícias quentes (30min)...', 'warn');
+        showBanner('eventos-banner', 'Disparando pulso de notícias quentes (30min)...', 'warn');
         try {
           const res = await apiFetch('/v1/noticias-quentes/executar', { method: 'POST', body: JSON.stringify({ dry_run: false }) });
-          showBanner('coleta-banner', `Pulso executado com status: ${res.status || 'concluido'}.`, res.status === 'concluido' ? 'ok' : 'warn');
+          showBanner('eventos-banner', `Pulso executado com status: ${res.status || 'concluido'}.`, res.status === 'concluido' ? 'ok' : 'warn');
           showToast('Pulso de notícias quentes executado.', 'ok');
-          await carregarNoticiasQuentes();
+          await Promise.all([carregarNoticiasQuentes(), carregarEventos(), carregarExecucoes()]);
         } catch (err) {
-          showBanner('coleta-banner', 'Erro ao rodar pulso: ' + err.message, 'err');
+          showBanner('eventos-banner', 'Erro ao rodar pulso: ' + err.message, 'err');
           showToast('Erro ao rodar pulso: ' + err.message, 'err');
         } finally {
           btn.disabled = false;
@@ -2380,18 +2722,36 @@
         const prev = btn.textContent;
         btn.disabled = true;
         btn.textContent = 'Gerando coluna...';
-        showBanner('coleta-banner', 'Gerando coluna editorial...', 'warn');
+        const tema = ($('coluna-tema').value || '').trim();
+        const dryRun = $('coluna-dry-run').checked;
+        showBanner('eventos-banner', 'Gerando coluna editorial (pode levar alguns minutos)...', 'warn');
         try {
-          const res = await apiFetch('/v2/gerar-coluna', { method: 'POST', body: JSON.stringify({ dry_run: false, sincrono: true }) });
+          const res = await apiFetch('/v2/gerar-coluna', {
+            method: 'POST',
+            body: JSON.stringify({ tema: tema || null, dry_run: dryRun, sincrono: false }),
+          });
           if (res && res.status === 'agendado_em_background') {
-            showToast('Coluna editorial agendada para execução em background.', 'ok');
+            showToast('Coluna editorial agendada em background.', 'ok');
+            showBanner('eventos-banner', `Coluna agendada (${res.slug_alvo || 'analise-automatica'}). Acompanhe em Execuções e Colunas.`, 'ok');
           } else {
-            showToast('Coluna editorial gerada com sucesso.', 'ok');
+            showToast('Coluna editorial gerada.', (res && res.status) === 'concluido' ? 'ok' : 'warn');
+            showBanner('eventos-banner', 'Coluna editorial: ' + ((res && res.status) || 'concluido'), (res && res.status) === 'concluido' ? 'ok' : 'warn');
           }
-          showBanner('coleta-banner', 'Coluna editorial: ' + ((res && res.status) || 'concluido'), (res && res.status) === 'concluido' ? 'ok' : 'warn');
-          await carregarDossiesAdmin();
+          await carregarColunas();
+          // Polling leve para acompanhar a conclusão em background
+          if (res && res.status === 'agendado_em_background') {
+            let tentativas = 0;
+            const poll = setInterval(async () => {
+              tentativas += 1;
+              try {
+                await carregarColunas();
+                await carregarExecucoes();
+              } catch (e) { /* ignore */ }
+              if (tentativas >= 12) clearInterval(poll);
+            }, 10000);
+          }
         } catch (err) {
-          showBanner('coleta-banner', 'Erro ao gerar coluna: ' + err.message, 'err');
+          showBanner('eventos-banner', 'Erro ao gerar coluna: ' + err.message, 'err');
           showToast('Erro ao gerar coluna: ' + err.message, 'err');
         } finally {
           btn.disabled = false;
@@ -2591,6 +2951,149 @@
         `).join('');
       }
 
+      async function carregarColunas() {
+        const data = await apiFetch('/v2/admin/colunas?limite=50');
+        state.colunas = data.colunas || [];
+        renderColunas();
+      }
+
+      function notaColuna(c) {
+        const n = c.nota_isencao || c.score_qualidade || '';
+        return n ? String(n) : '—';
+      }
+
+      function statusBadgeColuna(s) {
+        const v = String(s || 'rascunho_auditado');
+        if (v === 'publicado') return '<span class="badge badge-ok">publicado</span>';
+        if (v === 'aprovado') return '<span class="badge badge-ok">aprovado</span>';
+        if (v === 'rejeitado') return '<span class="badge badge-warn">rejeitado</span>';
+        return '<span class="badge badge-warn">rascunho</span>';
+      }
+
+      function renderColunas() {
+        const tbody = $('tbody-colunas');
+        const lista = state.colunas || [];
+        if (!lista.length) {
+          tbody.innerHTML = '<tr><td colspan="5" class="admin-sub">Nenhuma coluna gerada.</td></tr>';
+          return;
+        }
+        tbody.innerHTML = lista.map((c) => `
+          <tr>
+            <td>
+              <strong>${escapeHtml(c.titulo)}</strong>
+              <div class="admin-sub"><code>/${escapeHtml(c.slug)}</code></div>
+            </td>
+            <td>${escapeHtml(c.categoria || '—')}</td>
+            <td>${escapeHtml(notaColuna(c))}</td>
+            <td>${statusBadgeColuna(c.status || c.review_status)}</td>
+            <td>
+              <div class="admin-actions">
+                <button class="admin-btn admin-btn-sm" type="button" data-ver-coluna="${escapeHtml(c.slug)}">Ver</button>
+                ${c.status !== 'aprovado' && c.status !== 'publicado' ? `<button class="admin-btn admin-btn-sm admin-btn-primary" type="button" data-aprovar-coluna="${escapeHtml(c.slug)}">Aprovar</button>` : ''}
+                ${c.status !== 'publicado' ? `<button class="admin-btn admin-btn-sm" type="button" style="background:#059669;border-color:#059669;color:#fff;" data-publicar-coluna="${escapeHtml(c.slug)}">Publicar</button>` : ''}
+                ${c.status !== 'rejeitado' ? `<button class="admin-btn admin-btn-sm admin-btn-danger" type="button" data-rejeitar-coluna="${escapeHtml(c.slug)}">Rejeitar</button>` : ''}
+                <button class="admin-btn admin-btn-sm admin-btn-danger" type="button" data-excluir-coluna="${escapeHtml(c.slug)}">Excluir</button>
+              </div>
+            </td>
+          </tr>
+        `).join('');
+      }
+
+      $('btn-recarregar-colunas').addEventListener('click', () => carregarColunas().catch((err) => showBanner('colunas-banner', err.message, 'err')));
+
+      $('tbody-colunas').addEventListener('click', async (e) => {
+        const ver = e.target.getAttribute('data-ver-coluna');
+        const aprovar = e.target.getAttribute('data-aprovar-coluna');
+        const publicar = e.target.getAttribute('data-publicar-coluna');
+        const rejeitar = e.target.getAttribute('data-rejeitar-coluna');
+        const excluir = e.target.getAttribute('data-excluir-coluna');
+
+        if (ver) {
+          const c = (state.colunas || []).find((x) => x.slug === ver);
+          if (!c) return;
+          state.editingColunaSlug = ver;
+          $('modal-coluna_title').textContent = c.titulo || 'Coluna Editorial';
+          $('modal-coluna_sub').textContent = `/${c.slug} · status: ${c.status || c.review_status}`;
+          const preview = $('coluna-preview');
+          preview.innerHTML = '<div class="admin-sub" style="white-space:pre-wrap;">' + escapeHtml(c.corpo_markdown || '') + '</div>';
+          $('coluna-banner').className = 'admin-banner';
+          $('coluna-banner').textContent = '';
+          $('modal-coluna').classList.add('open');
+          return;
+        }
+
+        const setStatus = async (slug, status, msgOk) => {
+          try {
+            await apiFetch(`/v2/admin/colunas/${encodeURIComponent(slug)}/status`, {
+              method: 'PATCH',
+              body: JSON.stringify({ status }),
+            });
+            showBanner('colunas-banner', msgOk, 'ok');
+            await carregarColunas();
+          } catch (err) {
+            showBanner('colunas-banner', 'Erro: ' + err.message, 'err');
+          }
+        };
+
+        if (aprovar) { await setStatus(aprovar, 'aprovado', 'Coluna aprovada.'); return; }
+        if (publicar) { await setStatus(publicar, 'publicado', 'Coluna publicada no site.'); return; }
+        if (rejeitar) {
+          if (!confirm('Rejeitar esta coluna?')) return;
+          await setStatus(rejeitar, 'rejeitado', 'Coluna rejeitada.');
+          return;
+        }
+        if (excluir) {
+          if (!confirm('Excluir esta coluna permanentemente?')) return;
+          try {
+            await apiFetch(`/v2/admin/colunas/${encodeURIComponent(excluir)}`, { method: 'DELETE' });
+            showBanner('colunas-banner', 'Coluna excluída.', 'ok');
+            await carregarColunas();
+          } catch (err) {
+            showBanner('colunas-banner', 'Erro ao excluir: ' + err.message, 'err');
+          }
+          return;
+        }
+      });
+
+      $('btn-fechar-modal-coluna').addEventListener('click', () => $('modal-coluna').classList.remove('open'));
+      $('btn-aprovar-coluna').addEventListener('click', async () => {
+        const slug = state.editingColunaSlug;
+        if (!slug) return;
+        try {
+          await apiFetch(`/v2/admin/colunas/${encodeURIComponent(slug)}/status`, { method: 'PATCH', body: JSON.stringify({ status: 'aprovado' }) });
+          showBanner('colunas-banner', 'Coluna aprovada.', 'ok');
+          $('modal-coluna').classList.remove('open');
+          await carregarColunas();
+        } catch (err) {
+          showBanner('coluna-banner', 'Erro: ' + err.message, 'err');
+        }
+      });
+      $('btn-publicar-coluna').addEventListener('click', async () => {
+        const slug = state.editingColunaSlug;
+        if (!slug) return;
+        try {
+          await apiFetch(`/v2/admin/colunas/${encodeURIComponent(slug)}/status`, { method: 'PATCH', body: JSON.stringify({ status: 'publicado' }) });
+          showBanner('colunas-banner', 'Coluna publicada no site.', 'ok');
+          $('modal-coluna').classList.remove('open');
+          await carregarColunas();
+        } catch (err) {
+          showBanner('coluna-banner', 'Erro: ' + err.message, 'err');
+        }
+      });
+      $('btn-rejeitar-coluna').addEventListener('click', async () => {
+        const slug = state.editingColunaSlug;
+        if (!slug) return;
+        if (!confirm('Rejeitar esta coluna?')) return;
+        try {
+          await apiFetch(`/v2/admin/colunas/${encodeURIComponent(slug)}/status`, { method: 'PATCH', body: JSON.stringify({ status: 'rejeitado' }) });
+          showBanner('colunas-banner', 'Coluna rejeitada.', 'ok');
+          $('modal-coluna').classList.remove('open');
+          await carregarColunas();
+        } catch (err) {
+          showBanner('coluna-banner', 'Erro: ' + err.message, 'err');
+        }
+      });
+
       $('btn-recarregar-noticias-quentes').addEventListener('click', () => carregarNoticiasQuentes().catch((err) => showBanner('noticias-quentes-banner', err.message, 'err')));
 
       $('btn-nova-noticia-quente').addEventListener('click', () => {
@@ -2712,6 +3215,17 @@
         }
       });
 
+      // Atalhos: botões "Salvar" no topo dos modais disparam o mesmo salvamento
+      const wireTopSave = (topId, footerId) => {
+        const top = $(topId);
+        const footer = $(footerId);
+        if (top && footer) top.addEventListener('click', () => footer.click());
+      };
+      wireTopSave('btn-salvar-sintese-top', 'btn-salvar-sintese');
+      wireTopSave('btn-salvar-dossie-top', 'btn-salvar-dossie');
+      wireTopSave('btn-salvar-radar-top', 'btn-salvar-radar');
+      wireTopSave('btn-salvar-noticia-quente-top', 'btn-salvar-noticia-quente');
+
       function fecharModalNoticiaQuente() {
         $('modal-noticias-quente').classList.remove('open');
         state.editingNoticiaSlug = null;
@@ -2764,16 +3278,19 @@
       // ============================ AUTENTICAÇÃO ============================
       async function carregarTudo() {
         await carregarKillSwitch();
-        await Promise.all([carregarFontes(), carregarEventos(), carregarDossiesAdmin(), carregarExecucoes(), carregarRadar(), carregarNoticiasQuentes()]);
+        await Promise.all([carregarFontes(), carregarEventos(), carregarDossiesAdmin(), carregarExecucoes(), carregarRadar(), carregarNoticiasQuentes(), carregarColunas()]);
       }
 
       async function conectar() {
+        const user = ($('admin-user').value || '').trim();
         const password = ($('admin-password').value || '').trim();
-        if (!password) {
-          showBanner('auth-banner', 'Informe a senha de acesso.', 'err');
+        if (!user || !password) {
+          showBanner('auth-banner', 'Informe usuário e senha.', 'err');
           return;
         }
+        state.user = user;
         state.token = password;
+        persistUser(user);
         persistToken(password);
 
         const btn = $('btn-conectar');
@@ -2797,16 +3314,22 @@
 
       function sair() {
         clearPersistedToken();
+        state.user = '';
         state.token = '';
         state.editingEventId = null;
         $('admin-panels').classList.add('hidden');
         $('btn-sair').classList.add('hidden');
         showBanner('auth-banner', 'Sessão encerrada neste dispositivo.', 'ok');
+        const u = $('admin-user');
         const pwd = $('admin-password');
+        if (u) u.value = '';
         if (pwd) pwd.value = '';
       }
 
       $('btn-conectar').addEventListener('click', conectar);
+      $('admin-user').addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') { e.preventDefault(); conectar(); }
+      });
       $('admin-password').addEventListener('keydown', (e) => {
         if (e.key === 'Enter') {
           e.preventDefault();
