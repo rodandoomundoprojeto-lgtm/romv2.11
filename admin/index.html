@@ -1354,6 +1354,9 @@
       </div>
 
       <div id="auth-banner" class="admin-banner"></div>
+      <div id="auth-env-hint" class="admin-sub" style="margin-top: var(--space-3); padding: 10px 14px; border-radius: var(--radius-md); background: rgba(88, 166, 255, 0.08); border: 1px solid rgba(88, 166, 255, 0.2); font-size: 0.85rem; line-height: 1.4; display: none;">
+        💡 <strong>Acesso pelo Computador:</strong> O servidor backend FastAPI roda localmente na porta 8000. Acesse diretamente pelo endereço local: <a href="http://127.0.0.1:8000/admin" style="color: var(--primary); font-weight: 600; text-decoration: underline;">http://127.0.0.1:8000/admin</a>.
+      </div>
     </section>
 
       <div id="admin-panels" class="admin-layout hidden">
@@ -4870,6 +4873,11 @@
       initCollapsibleCards();
       initFiltros();
       initNavegacao();
+
+      if (!isLocalHost) {
+        const envHint = $('auth-env-hint');
+        if (envHint) envHint.style.display = 'block';
+      }
 
       if ($('admin-user') && state.user) $('admin-user').value = state.user;
       if ($('admin-password') && state.token) $('admin-password').value = state.token;

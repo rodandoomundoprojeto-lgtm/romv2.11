@@ -140,10 +140,10 @@ async function handleBackendProxy(request, env, url) {
   }
 
   const backendUrl = String((env && env.CURADORIA_BACKEND_URL) || '').trim().replace(/\/+$/, '');
-  if (!backendUrl) {
+  if (!backendUrl || backendUrl.includes('api.rodandoomundo.com.br')) {
     return new Response(JSON.stringify({
       ok: false,
-      detail: 'Backend FastAPI não configurado no Cloudflare Pages (variável CURADORIA_BACKEND_URL ausente). Preencha "URL da API FastAPI" no painel Admin com o endereço do servidor Python.'
+      detail: 'O backend FastAPI (Motor V2 em Python) roda localmente no seu computador. Inicie o servidor (iniciar_servidor_fastapi.bat) e acesse o painel pelo endereço: http://127.0.0.1:8000/admin'
     }), {
       status: 503,
       headers: { ...CORS_HEADERS, 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' }
