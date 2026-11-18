@@ -56,12 +56,34 @@ def health():
     return {"ok": True, "motor": "v2.2"}
 
 
+@app.get("/", include_in_schema=False)
+def root_redirect():
+    from fastapi.responses import RedirectResponse
+    return RedirectResponse(url="/admin")
+
+
+@app.get("/styles.css", include_in_schema=False)
+def serve_styles_css():
+    css_file = Path(__file__).resolve().parent / "styles.css"
+    if css_file.is_file():
+        return FileResponse(css_file, media_type="text/css", headers={"Cache-Control": "no-cache, must-revalidate"})
+    return Response(status_code=404)
+
+
+@app.get("/favicon.svg", include_in_schema=False)
+def serve_favicon_svg():
+    fav_file = Path(__file__).resolve().parent / "favicon.svg"
+    if fav_file.is_file():
+        return FileResponse(fav_file, media_type="image/svg+xml", headers={"Cache-Control": "public, max-age=86400"})
+    return Response(status_code=404)
+
+
 @app.get("/admin", include_in_schema=False)
 @app.get("/admin/", include_in_schema=False)
 def admin_lite_page():
     admin_html = Path(__file__).resolve().parent / "admin" / "index.html"
     if admin_html.is_file():
-        return FileResponse(admin_html)
+        return FileResponse(admin_html, headers={"Cache-Control": "no-cache, must-revalidate"})
     return Response(status_code=404)
 
 

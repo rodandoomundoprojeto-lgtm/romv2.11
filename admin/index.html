@@ -12,7 +12,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Instrument+Sans:wght@400;500;600;700&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/styles.css?v=2.2.0">
   <script>
     (function () {
       var saved = null;
@@ -24,6 +24,16 @@
     })();
   </script>
   <style>
+    .logo {
+      width: 32px;
+      height: 32px;
+      min-width: 32px;
+      min-height: 32px;
+      max-width: 32px;
+      max-height: 32px;
+      flex-shrink: 0;
+    }
+
     .admin-wrap {
       max-width: 1120px;
       margin: 0 auto;
@@ -1327,7 +1337,7 @@
   <header class="topbar header-single" id="main-header">
     <div class="header-container" style="justify-content: space-between;">
       <a class="brand" href="/" aria-label="Rodando o Mundo — início">
-        <svg class="logo" viewBox="0 0 48 48" aria-hidden="true">
+        <svg class="logo" viewBox="0 0 48 48" width="32" height="32" style="width:32px;height:32px;min-width:32px;min-height:32px;max-width:32px;max-height:32px;flex-shrink:0;" aria-hidden="true">
           <circle cx="24" cy="24" r="19" class="logo-sea" />
           <ellipse cx="24" cy="24" rx="19" ry="7" class="logo-line" />
           <ellipse cx="24" cy="24" rx="8" ry="19" class="logo-line" />
