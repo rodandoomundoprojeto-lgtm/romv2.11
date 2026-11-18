@@ -23,7 +23,10 @@ from psycopg.types.json import Jsonb
 from pydantic import BaseModel, Field
 
 from redacao_v2.coletor_estudo import advisory_lock
-from redacao_v2.orquestrador_editorial import executar_orquestrador_editorial_async
+from redacao_v2.orquestrador_editorial import (
+    MODELO_EDITORIAL,
+    executar_orquestrador_editorial_async,
+)
 from redacao_v2.pulso_noticias_quentes import (
     LOCK_PULSO_KEY,
     executar_pipeline_pulso_async,
@@ -768,7 +771,7 @@ async def executar_noticias_quentes_manual(
 # 5.0. ESTADO DO PIPELINE: GET/PUT /v1/estado/{chave} (Nível 2B)
 # ============================================================================
 
-CHAVES_ESTADO_PUBLICAS = {"vitrine_ia", "feed_output"}
+CHAVES_ESTADO_PUBLICAS = {"vitrine_ia", "feed_output", "entenda_v2"}
 CHAVES_ESTADO_PROTEGIDAS = {"history"}
 CHAVES_ESTADO_VALIDAS = CHAVES_ESTADO_PUBLICAS | CHAVES_ESTADO_PROTEGIDAS
 
@@ -1070,6 +1073,7 @@ async def _tarefa_background_gerar_coluna(
     recurso_chave: str,
     db_url: str,
     dry_run: bool = False,
+    slug_alvo: Optional[str] = None,
 ) -> Optional[Dict[str, Any]]:
     """Executa o orquestrador editorial de 4 agentes em BackgroundTasks com auditoria de execução."""
     exec_id: Optional[int] = None
@@ -1090,11 +1094,26 @@ async def _tarefa_background_gerar_coluna(
             tema_foco=tema,
             db_url=db_url,
             dry_run=dry_run,
+            slug_alvo=slug_alvo,
         )
         if db_url and not dry_run and exec_id is not None:
             try:
                 with psycopg.connect(db_url, connect_timeout=8, prepare_threshold=None) as conn:
                     aprovado = bool(res and res.get("aprovado"))
+                    erro_msg: Optional[str] = None
+                    if not aprovado:
+                        if res is None:
+                            erro_msg = "Nenhum documento ou pauta disponível para gerar o artigo."
+                        else:
+                            aud = res.get("auditoria")
+                            nota = getattr(aud, "nota_isencao", None)
+                            probs = list(getattr(aud, "problemas_encontrados", None) or [])
+                            resumo_probs = "; ".join(str(p) for p in probs[:3])
+                            erro_msg = (
+                                f"Coluna reprovada na auditoria (nota_isencao={nota}): {resumo_probs}"
+                                if resumo_probs
+                                else "Coluna reprovada na auditoria de isenção/fatos."
+                            )[:500]
                     registrar_auditoria_execucao(
                         conn,
                         job_nome="orquestrador_editorial_v2",
@@ -1102,7 +1121,7 @@ async def _tarefa_background_gerar_coluna(
                         status="concluido" if aprovado else "falha",
                         documentos_novos=1 if res else 0,
                         eventos_atualizados=1 if aprovado else 0,
-                        erro_detalhe=None if aprovado else "Coluna reprovada na auditoria de isenção/fatos.",
+                        erro_detalhe=erro_msg,
                         execucao_id=exec_id,
                     )
             except Exception:  # noqa: BLE001
@@ -1132,7 +1151,7 @@ async def gerar_coluna_editorial(
     response: Response,
     conn: Any = Depends(get_db),
 ) -> Dict[str, Any]:
-    """Dispara o pipeline editorial sequencial de 4 agentes (`gemini-2.5-pro`) em `BackgroundTasks`.
+    """Dispara o pipeline editorial sequencial de 4 agentes em `BackgroundTasks`.
 
     Respeita o Kill Switch (`publicacao_automatica_ativa` em `ai_config_operacional`) e a
     validação estrita de URLs internas contra o banco/sitemap (Regra 11 do GEMINI.md).
@@ -1140,9 +1159,9 @@ async def gerar_coluna_editorial(
     aplicar_no_cache_headers(response)
     db_url = obter_database_url()
 
-    slug_base = req.slug or (
-        re.sub(r"[^a-z0-9]+", "-", (req.tema or "analise-automatica").lower()).strip("-")[:80]
-    )
+    slug_base = re.sub(
+        r"[^a-z0-9]+", "-", (req.slug or req.tema or "analise-automatica").lower()
+    ).strip("-")[:80] or "analise-automatica"
     recurso_chave = f"evento_consolida:{slug_base}"
 
     status_kill_switch = "aguardando_revisao"
@@ -1157,6 +1176,7 @@ async def gerar_coluna_editorial(
             recurso_chave=recurso_chave,
             db_url=db_url,
             dry_run=req.dry_run,
+            slug_alvo=req.slug,
         )
         if not resultado:
             return {
@@ -1186,6 +1206,7 @@ async def gerar_coluna_editorial(
         recurso_chave,
         db_url,
         req.dry_run,
+        req.slug,
     )
 
     return {
@@ -1195,7 +1216,7 @@ async def gerar_coluna_editorial(
         "tema": req.tema,
         "slug_alvo": slug_base,
         "event_id": req.event_id,
-        "model_id": "gemini-2.5-pro",
+        "model_id": MODELO_EDITORIAL,
         "kill_switch_publicacao_automatica": publicacao_automatica_ativa,
         "status_revisao_inicial": "aguardando_revisao" if not publicacao_automatica_ativa else "publicado",
         "detalhe": (
@@ -1320,8 +1341,346 @@ def listar_colunas_editoriais(
 
 
 # ============================================================================
-# 8. ROTA 5: GET /v2/entenda-o-assunto/{slug}
+# 8. ROTA 5: GET /v2/entenda-o-assunto, /v2/entenda-o-assunto/{slug} & /api/entenda-o-assunto
 # ============================================================================
+
+_MAPA_LABEL_CATEGORIA_ENTENDA = {
+    "Geopolitica_Relacoes": "Geopolítica & Relações",
+    "Geopolitica_Radar": "Geopolítica & Radar",
+    "Economia_Comercio": "Economia & Comércio",
+    "Economia": "Economia",
+    "Politica": "Política & Instituições",
+    "Sociedade_Cultura": "Sociedade & Cultura",
+    "Cultura": "Sociedade & Cultura",
+    "Mobilidade_Fronteiras": "Mobilidade & Fronteiras",
+    "Ciencia_Clima": "Ciência & Clima",
+    "Eleicoes": "Eleições & Democracia",
+    "Resumo_Ultimas": "Panorama Global",
+}
+
+
+def _normalizar_slug_entenda_limpo(slug_raw: Optional[str]) -> str:
+    s = (slug_raw or "").strip().strip("/").lower()
+    return s.removeprefix("entenda-") or s
+
+
+def _montar_artigo_entenda_unificado(
+    bloco_entenda: Optional[Dict[str, Any]] = None,
+    coluna_associada: Optional[Dict[str, Any]] = None,
+) -> Optional[Dict[str, Any]]:
+    """Normaliza um registro unificado de Entenda o Assunto para vitrine, detalhe e espelho JSON."""
+    if not bloco_entenda and not coluna_associada:
+        return None
+    be = bloco_entenda or {}
+    col = coluna_associada or {}
+
+    raw_slug = col.get("slug") or be.get("slug") or ""
+    clean_slug = _normalizar_slug_entenda_limpo(raw_slug)
+    entenda_slug = be.get("slug") or (f"entenda-{clean_slug}" if clean_slug else "")
+    titulo = be.get("titulo_assunto") or col.get("titulo") or clean_slug
+    titulo_coluna = col.get("titulo") or titulo
+    subtitulo = col.get("subtitulo") or be.get("pergunta_central") or ""
+    pergunta_central = be.get("pergunta_central") or subtitulo
+    resumo = be.get("resumo_executivo") or col.get("subtitulo") or col.get("resumo_seo") or ""
+    contexto_historico = be.get("contexto_historico") or col.get("tese_central") or ""
+    tese_central = col.get("tese_central") or contexto_historico
+    corpo_markdown = col.get("corpo_markdown") or ""
+    categoria = be.get("categoria") or col.get("categoria") or "Geopolitica_Relacoes"
+    categoria_label = _MAPA_LABEL_CATEGORIA_ENTENDA.get(categoria, str(categoria).replace("_", " "))
+    paises = list(be.get("paises_relacionados") or col.get("paises_abordados") or [])
+    tags = list(be.get("tags") or col.get("tags") or [])
+    tempo_leitura = int(col.get("tempo_leitura_min") or 5)
+    impactos = be.get("impactos_praticos") or col.get("impactos_praticos") or []
+    faqs = be.get("perguntas_frequentes") or []
+    fontes = be.get("fontes_referencia") or col.get("fontes_citadas") or []
+    links = be.get("links_acervo_interno") or col.get("links_acervo_interno") or []
+    updated_at = col.get("updated_at") or be.get("updated_at")
+    published_at = col.get("published_at") or updated_at
+    atualizado_em = col.get("atualizado_em") or be.get("atualizado_em") or _formatar_horario_editorial()
+
+    return {
+        "slug": clean_slug,
+        "entenda_slug": entenda_slug,
+        "titulo": titulo,
+        "titulo_coluna": titulo_coluna,
+        "subtitulo": subtitulo,
+        "pergunta_central": pergunta_central,
+        "resumo": resumo,
+        "contexto_historico": contexto_historico,
+        "tese_central": tese_central,
+        "corpo_markdown": corpo_markdown,
+        "categoria": categoria,
+        "categoria_label": categoria_label,
+        "paises_relacionados": paises,
+        "tags": tags,
+        "tempo_leitura_min": tempo_leitura,
+        "impactos_praticos": impactos,
+        "perguntas_frequentes": faqs,
+        "fontes_referencia": fontes,
+        "links_acervo_interno": links,
+        "rota_editoria": f"/entenda/{clean_slug}" if clean_slug else "/entenda",
+        "analise_aprofundada": tese_central or contexto_historico,
+        "palavras_chave": tags,
+        "identificacao_editorial": "Síntese Rodando o Mundo",
+        "atualizado_em": atualizado_em,
+        "published_at": published_at,
+        "updated_at": updated_at,
+        "origem_v2": True,
+    }
+
+
+def _coletar_entenda_publicados(
+    conn: Any,
+    limit: int = 60,
+    categoria: Optional[str] = None,
+) -> List[Dict[str, Any]]:
+    """Consulta artigos publicados para `/entenda` pareando `ai_colunas_editoriais` e `ai_entenda_o_assunto`."""
+    if conn is None:
+        return []
+
+    filtros_col = ["(c.status = 'publicado' OR c.review_status = 'publicado')"]
+    params_col: List[Any] = []
+    filtros_ea = ["status = 'publicado'"]
+    params_ea: List[Any] = []
+
+    if categoria and categoria.strip():
+        cat_clean = categoria.strip()
+        filtros_col.append("c.categoria = %s")
+        params_col.append(cat_clean)
+        filtros_ea.append("categoria = %s")
+        params_ea.append(cat_clean)
+
+    params_col.append(int(limit))
+    params_ea.append(int(limit))
+    where_col = " AND ".join(filtros_col)
+    where_ea = " AND ".join(filtros_ea)
+
+    artigos: List[Dict[str, Any]] = []
+    slugs_vistos: set[str] = set()
+
+    try:
+        with conn.cursor() as cur:
+            cur.execute(
+                f"""
+                SELECT
+                    c.id AS col_id, c.slug AS col_slug, c.titulo AS col_titulo, c.subtitulo AS col_subtitulo,
+                    c.tese_central, c.corpo_markdown, c.resumo_seo, c.categoria AS col_categoria,
+                    c.paises_abordados, c.tags AS col_tags, c.tempo_leitura_min,
+                    c.impactos_praticos AS col_impactos, c.fontes_citadas, c.links_acervo_interno AS col_links,
+                    c.aviso_correcao_material, c.published_at, c.created_at AS col_created_at, c.updated_at AS col_updated_at,
+                    ea.slug AS ea_slug, ea.titulo_assunto, ea.pergunta_central, ea.resumo_executivo,
+                    ea.contexto_historico, ea.categoria AS ea_categoria, ea.paises_relacionados,
+                    ea.tags AS ea_tags, ea.impactos_praticos AS ea_impactos, ea.perguntas_frequentes,
+                    ea.fontes_referencia, ea.links_acervo_interno AS ea_links, ea.relevancia_score,
+                    ea.updated_at AS ea_updated_at
+                FROM ai_colunas_editoriais c
+                LEFT JOIN LATERAL (
+                    SELECT *
+                    FROM ai_entenda_o_assunto e
+                    WHERE e.slug = c.slug
+                       OR e.slug = ('entenda-' || c.slug)
+                       OR (e.id = c.id AND ABS(EXTRACT(EPOCH FROM (e.created_at - c.created_at))) < 30)
+                    ORDER BY
+                        CASE
+                            WHEN e.slug = ('entenda-' || c.slug) THEN 0
+                            WHEN e.slug = c.slug THEN 1
+                            ELSE 2
+                        END,
+                        e.updated_at DESC
+                    LIMIT 1
+                ) ea ON TRUE
+                WHERE {where_col}
+                ORDER BY COALESCE(c.published_at, c.created_at) DESC, c.updated_at DESC
+                LIMIT %s;
+                """,
+                tuple(params_col),
+            )
+            for row in cur.fetchall():
+                r = dict(row)
+                col_dict = {
+                    "slug": r.get("col_slug"),
+                    "titulo": r.get("col_titulo"),
+                    "subtitulo": r.get("col_subtitulo"),
+                    "tese_central": r.get("tese_central"),
+                    "corpo_markdown": r.get("corpo_markdown"),
+                    "resumo_seo": r.get("resumo_seo"),
+                    "categoria": r.get("col_categoria"),
+                    "paises_abordados": list(r.get("paises_abordados") or []),
+                    "tags": list(r.get("col_tags") or []),
+                    "tempo_leitura_min": int(r.get("tempo_leitura_min") or 5),
+                    "impactos_praticos": _decodificar_jsonb(r.get("col_impactos"), []),
+                    "fontes_citadas": _decodificar_jsonb(r.get("fontes_citadas"), []),
+                    "links_acervo_interno": _decodificar_jsonb(r.get("col_links"), []),
+                    "atualizado_em": _formatar_horario_editorial(r.get("col_updated_at")),
+                    "published_at": _serializar_valor_temporal(r.get("published_at")),
+                    "updated_at": _serializar_valor_temporal(r.get("col_updated_at")),
+                }
+                be_dict = None
+                if r.get("ea_slug") or r.get("titulo_assunto"):
+                    be_dict = {
+                        "slug": r.get("ea_slug"),
+                        "titulo_assunto": r.get("titulo_assunto"),
+                        "pergunta_central": r.get("pergunta_central"),
+                        "resumo_executivo": r.get("resumo_executivo"),
+                        "contexto_historico": r.get("contexto_historico"),
+                        "categoria": r.get("ea_categoria"),
+                        "paises_relacionados": list(r.get("paises_relacionados") or []),
+                        "tags": list(r.get("ea_tags") or []),
+                        "impactos_praticos": _decodificar_jsonb(r.get("ea_impactos"), []),
+                        "perguntas_frequentes": _decodificar_jsonb(r.get("perguntas_frequentes"), []),
+                        "fontes_referencia": _decodificar_jsonb(r.get("fontes_referencia"), []),
+                        "links_acervo_interno": _decodificar_jsonb(r.get("ea_links"), []),
+                        "relevancia_score": int(r.get("relevancia_score") or 85),
+                        "atualizado_em": _formatar_horario_editorial(r.get("ea_updated_at")),
+                        "updated_at": _serializar_valor_temporal(r.get("ea_updated_at")),
+                    }
+                art = _montar_artigo_entenda_unificado(bloco_entenda=be_dict, coluna_associada=col_dict)
+                if art and art["slug"] and art["slug"] not in slugs_vistos:
+                    slugs_vistos.add(art["slug"])
+                    if be_dict and be_dict.get("slug"):
+                        slugs_vistos.add(_normalizar_slug_entenda_limpo(be_dict["slug"]))
+                    artigos.append(art)
+
+            if len(artigos) < int(limit):
+                cur.execute(
+                    f"""
+                    SELECT
+                        slug AS ea_slug, titulo_assunto, pergunta_central, resumo_executivo,
+                        contexto_historico, categoria AS ea_categoria, paises_relacionados,
+                        tags AS ea_tags, impactos_praticos AS ea_impactos, perguntas_frequentes,
+                        fontes_referencia, links_acervo_interno AS ea_links, relevancia_score,
+                        updated_at AS ea_updated_at
+                    FROM ai_entenda_o_assunto
+                    WHERE {where_ea}
+                    ORDER BY updated_at DESC
+                    LIMIT %s;
+                    """,
+                    tuple(params_ea),
+                )
+                for row_ea in cur.fetchall():
+                    e = dict(row_ea)
+                    clean_ea = _normalizar_slug_entenda_limpo(e.get("ea_slug"))
+                    if not clean_ea or clean_ea in slugs_vistos:
+                        continue
+                    be_only = {
+                        "slug": e.get("ea_slug"),
+                        "titulo_assunto": e.get("titulo_assunto"),
+                        "pergunta_central": e.get("pergunta_central"),
+                        "resumo_executivo": e.get("resumo_executivo"),
+                        "contexto_historico": e.get("contexto_historico"),
+                        "categoria": e.get("ea_categoria"),
+                        "paises_relacionados": list(e.get("paises_relacionados") or []),
+                        "tags": list(e.get("ea_tags") or []),
+                        "impactos_praticos": _decodificar_jsonb(e.get("ea_impactos"), []),
+                        "perguntas_frequentes": _decodificar_jsonb(e.get("perguntas_frequentes"), []),
+                        "fontes_referencia": _decodificar_jsonb(e.get("fontes_referencia"), []),
+                        "links_acervo_interno": _decodificar_jsonb(e.get("ea_links"), []),
+                        "relevancia_score": int(e.get("relevancia_score") or 85),
+                        "atualizado_em": _formatar_horario_editorial(e.get("ea_updated_at")),
+                        "updated_at": _serializar_valor_temporal(e.get("ea_updated_at")),
+                    }
+                    art = _montar_artigo_entenda_unificado(bloco_entenda=be_only, coluna_associada=None)
+                    if art and art["slug"]:
+                        slugs_vistos.add(art["slug"])
+                        artigos.append(art)
+                        if len(artigos) >= int(limit):
+                            break
+    except Exception as exc:  # noqa: BLE001
+        try:
+            conn.rollback()
+        except Exception:  # noqa: BLE001
+            pass
+        print(f"[Aviso] Erro ao coletar artigos publicados de Entenda o assunto: {exc}")
+
+    return artigos[: int(limit)]
+
+
+def _sincronizar_espelho_entenda_v2(conn: Any) -> Dict[str, Any]:
+    """Atualiza o snapshot público `entenda_v2` em `ai_pipeline_state` e em `data/entenda_v2.json`."""
+    artigos = _coletar_entenda_publicados(conn, limit=60)
+    agora_iso = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    snapshot = {
+        "ok": True,
+        "updatedAt": agora_iso,
+        "atualizado_em": _formatar_horario_editorial(),
+        "total": len(artigos),
+        "artigos": artigos,
+        "colunas": artigos,
+    }
+    try:
+        from src.estado_db import gravar_estado
+
+        gravar_estado("entenda_v2", snapshot, conn=conn)
+    except Exception as exc:  # noqa: BLE001
+        print(f"[Aviso] Erro ao gravar estado entenda_v2 no banco: {exc}")
+
+    try:
+        caminho = _caminho_arquivo_estado("entenda_v2")
+        caminho.parent.mkdir(parents=True, exist_ok=True)
+        caminho.write_text(json.dumps(snapshot, ensure_ascii=False, indent=2), encoding="utf-8")
+    except Exception as exc:  # noqa: BLE001
+        print(f"[Aviso] Erro ao gravar espelho data/entenda_v2.json: {exc}")
+
+    return snapshot
+
+
+@router.get("/v2/entenda-o-assunto")
+def listar_entenda_o_assunto(
+    response: Response,
+    categoria: Optional[str] = Query(None, description="Filtrar por categoria editorial"),
+    limit: int = Query(60, ge=1, le=100, description="Quantidade máxima de artigos"),
+    _t: Optional[str] = Query(None, description="Cache-busting timestamp"),
+    refresh: Optional[str] = Query(None, description="Forçar refresh sem cache"),
+    conn: Any = Depends(get_db),
+) -> Dict[str, Any]:
+    """Lista artigos publicados de Entenda o Assunto para a vitrine pública `/entenda`."""
+    aplicar_no_cache_headers(response)
+    agora_iso = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    limit_int = int(limit) if isinstance(limit, int) else 60
+    cat_val = categoria if isinstance(categoria, str) and categoria.strip() else None
+
+    if conn is not None:
+        artigos = _coletar_entenda_publicados(conn, limit=limit_int, categoria=cat_val)
+        return {
+            "ok": True,
+            "source": "database",
+            "identificacao_editorial": "Síntese Rodando o Mundo",
+            "atualizado_em": _formatar_horario_editorial(),
+            "updatedAt": agora_iso,
+            "total": len(artigos),
+            "artigos": artigos,
+            "colunas": artigos,
+        }
+
+    snap = None
+    try:
+        from src.estado_db import ler_estado
+
+        snap = ler_estado("entenda_v2")
+    except Exception:  # noqa: BLE001
+        snap = None
+    if not isinstance(snap, dict):
+        snap = _ler_estado_arquivo("entenda_v2")
+
+    artigos_fb: List[Dict[str, Any]] = []
+    if isinstance(snap, dict):
+        brutos = snap.get("artigos") or snap.get("colunas") or []
+        if isinstance(brutos, list):
+            artigos_fb = [
+                a for a in brutos
+                if isinstance(a, dict) and (not cat_val or a.get("categoria") == cat_val)
+            ][:limit_int]
+
+    return {
+        "ok": True,
+        "source": "entenda_snapshot",
+        "identificacao_editorial": "Síntese Rodando o Mundo",
+        "atualizado_em": (snap or {}).get("atualizado_em") or _formatar_horario_editorial(),
+        "updatedAt": (snap or {}).get("updatedAt") or agora_iso,
+        "total": len(artigos_fb),
+        "artigos": artigos_fb,
+        "colunas": artigos_fb,
+    }
 
 def _montar_painel_verificacao_evento(
     conn: Any,
@@ -1514,11 +1873,11 @@ def obter_entenda_o_assunto_por_slug(
             cur.execute(
                 """
                 SELECT
-                    slug, titulo, subtitulo, tese_central, corpo_markdown,
+                    id, slug, titulo, subtitulo, tese_central, corpo_markdown,
                     resumo_seo, categoria, paises_abordados, tags,
                     tempo_leitura_min, impactos_praticos, fontes_citadas,
                     links_acervo_interno, aviso_correcao_material,
-                    status, review_status, published_at, updated_at
+                    status, review_status, published_at, created_at, updated_at
                 FROM ai_colunas_editoriais
                 WHERE slug = ANY(%s)
                 ORDER BY updated_at DESC
@@ -1549,6 +1908,41 @@ def obter_entenda_o_assunto_por_slug(
                     "published_at": _serializar_valor_temporal(c.get("published_at")),
                     "updated_at": _serializar_valor_temporal(c.get("updated_at")),
                 }
+                if bloco_entenda is None and c.get("id") is not None and c.get("created_at") is not None:
+                    cur.execute(
+                        """
+                        SELECT
+                            slug, titulo_assunto, pergunta_central, resumo_executivo,
+                            contexto_historico, categoria, paises_relacionados, tags,
+                            impactos_praticos, perguntas_frequentes, fontes_referencia,
+                            links_acervo_interno, relevancia_score, status, updated_at
+                        FROM ai_entenda_o_assunto
+                        WHERE id = %s AND ABS(EXTRACT(EPOCH FROM (created_at - %s))) < 30
+                        LIMIT 1;
+                        """,
+                        (c.get("id"), c.get("created_at")),
+                    )
+                    row_legado = cur.fetchone()
+                    if row_legado:
+                        d_leg = dict(row_legado)
+                        bloco_entenda = {
+                            "slug": d_leg.get("slug"),
+                            "titulo_assunto": d_leg.get("titulo_assunto"),
+                            "pergunta_central": d_leg.get("pergunta_central"),
+                            "resumo_executivo": d_leg.get("resumo_executivo"),
+                            "contexto_historico": d_leg.get("contexto_historico"),
+                            "categoria": d_leg.get("categoria"),
+                            "paises_relacionados": list(d_leg.get("paises_relacionados") or []),
+                            "tags": list(d_leg.get("tags") or []),
+                            "impactos_praticos": _decodificar_jsonb(d_leg.get("impactos_praticos"), []),
+                            "perguntas_frequentes": _decodificar_jsonb(d_leg.get("perguntas_frequentes"), []),
+                            "fontes_referencia": _decodificar_jsonb(d_leg.get("fontes_referencia"), []),
+                            "links_acervo_interno": _decodificar_jsonb(d_leg.get("links_acervo_interno"), []),
+                            "relevancia_score": int(d_leg.get("relevancia_score") or 85),
+                            "identificacao_editorial": "Síntese Rodando o Mundo",
+                            "atualizado_em": _formatar_horario_editorial(d_leg.get("updated_at")),
+                            "updated_at": _serializar_valor_temporal(d_leg.get("updated_at")),
+                        }
 
             # 3. Verifica se existe evento direto em ai_eventos
             cur.execute(
@@ -1626,14 +2020,51 @@ def obter_entenda_o_assunto_por_slug(
         coluna_associada=coluna_associada,
     )
 
+    artigo_normalizado = _montar_artigo_entenda_unificado(
+        bloco_entenda=bloco_entenda,
+        coluna_associada=coluna_associada,
+    )
+
     return {
         "ok": True,
         "slug": slug_limpo,
         "identificacao_editorial": "Síntese Rodando o Mundo",
+        "artigo": artigo_normalizado,
         "entenda_o_assunto": bloco_entenda,
         "coluna_editorial": coluna_associada,
         "painel_verificacao": painel_verificacao.model_dump(),
     }
+
+
+@router.get("/api/entenda-o-assunto")
+def espelho_api_entenda_o_assunto(
+    response: Response,
+    slug: Optional[str] = Query(None, description="Slug opcional para consultar detalhe"),
+    acao: Optional[str] = Query("entenda", description="entenda | colunas"),
+    categoria: Optional[str] = Query(None, description="Filtrar por categoria editorial"),
+    limit: int = Query(60, ge=1, le=100),
+    _t: Optional[str] = Query(None, description="Cache-busting timestamp"),
+    refresh: Optional[str] = Query(None, description="Forçar refresh sem cache"),
+    conn: Any = Depends(get_db),
+) -> Dict[str, Any]:
+    """Espelho FastAPI de `/api/entenda-o-assunto` para desenvolvimento local e proxy direto."""
+    slug_clean = (slug or "").strip() if isinstance(slug, str) else ""
+    if slug_clean:
+        return obter_entenda_o_assunto_por_slug(
+            slug=slug_clean,
+            response=response,
+            _t=_t,
+            refresh=refresh,
+            conn=conn,
+        )
+    return listar_entenda_o_assunto(
+        response=response,
+        categoria=categoria,
+        limit=limit,
+        _t=_t,
+        refresh=refresh,
+        conn=conn,
+    )
 
 
 # ============================================================================
@@ -2093,7 +2524,7 @@ Regras:
 
     modelo_env = (os.getenv("GEMINI_SUGESTAO_MODEL") or os.getenv("GEMINI_MODEL") or "").strip()
     modelos_tentar = [modelo_env] if modelo_env else []
-    modelos_tentar += ["gemini-2.5-flash", "gemini-2.5-flash-lite"]
+    modelos_tentar += ["gemini-3.1-flash-lite", "gemini-3.5-flash-lite", "gemini-3.8-flash"]
     # remove duplicatas mantendo ordem
     vistos_modelo = set()
     modelos_tentar = [m for m in modelos_tentar if not (m in vistos_modelo or vistos_modelo.add(m))]
@@ -3039,21 +3470,38 @@ def admin_listar_colunas(
     db = _require_db(conn)
     status_norm = (status if isinstance(status, str) else "").strip().lower()
     limite_int = int(limite) if isinstance(limite, (int, str)) and str(limite).isdigit() else 50
-    filtro_sql = "WHERE (status = %s OR review_status = %s)" if status_norm else ""
+    filtro_sql = "WHERE (c.status = %s OR c.review_status = %s)" if status_norm else ""
     params: List[Any] = [status_norm, status_norm] if status_norm else []
     params.append(limite_int)
     with db.cursor() as cur:
         cur.execute(
             f"""
             SELECT
-                slug, titulo, subtitulo, categoria, tempo_leitura_min,
-                auditoria_aprovada, model_id, status, review_status,
-                reviewed_by, published_at, created_at, updated_at,
-                COALESCE(auditoria_resultado->>'nota_isencao', '') AS nota_isencao,
-                COALESCE(auditoria_resultado->>'score_qualidade', '') AS score_qualidade
-            FROM ai_colunas_editoriais
+                c.slug, c.titulo, c.subtitulo, c.tese_central, c.corpo_markdown, c.resumo_seo,
+                c.categoria, c.tempo_leitura_min, c.auditoria_aprovada, c.model_id,
+                c.status, c.review_status, c.reviewed_by, c.published_at, c.created_at, c.updated_at,
+                COALESCE(c.auditoria_resultado->>'nota_isencao', '') AS nota_isencao,
+                COALESCE(c.auditoria_resultado->>'score_qualidade', '') AS score_qualidade,
+                ea.slug AS entenda_slug,
+                ea.titulo_assunto AS entenda_titulo
+            FROM ai_colunas_editoriais c
+            LEFT JOIN LATERAL (
+                SELECT slug, titulo_assunto
+                FROM ai_entenda_o_assunto e
+                WHERE e.slug = c.slug
+                   OR e.slug = ('entenda-' || c.slug)
+                   OR (e.id = c.id AND ABS(EXTRACT(EPOCH FROM (e.created_at - c.created_at))) < 30)
+                ORDER BY
+                    CASE
+                        WHEN e.slug = ('entenda-' || c.slug) THEN 0
+                        WHEN e.slug = c.slug THEN 1
+                        ELSE 2
+                    END,
+                    e.updated_at DESC
+                LIMIT 1
+            ) ea ON TRUE
             {filtro_sql}
-            ORDER BY COALESCE(published_at, created_at) DESC, updated_at DESC
+            ORDER BY COALESCE(c.published_at, c.created_at) DESC, c.updated_at DESC
             LIMIT %s;
             """,
             tuple(params),
@@ -3085,7 +3533,7 @@ def admin_atualizar_status_coluna(
     response: Response,
     conn: Any = Depends(get_db),
 ) -> Dict[str, Any]:
-    """Aprova, publica, rejeita ou devolve uma coluna para rascunho (fluxo de revisão humana)."""
+    """Aprova, publica, rejeita ou devolve uma coluna para rascunho (sincronizando `ai_entenda_o_assunto`)."""
     aplicar_no_cache_headers(response)
     db = _require_db(conn)
     status_novo = payload.status
@@ -3095,26 +3543,46 @@ def admin_atualizar_status_coluna(
             "status = 'publicado', review_status = 'publicado', "
             "published_at = COALESCE(published_at, NOW()), updated_at = NOW()"
         )
+        entenda_status = "publicado"
     elif status_novo == "aprovado":
         set_sql = "status = 'aprovado', review_status = 'aprovado', updated_at = NOW()"
+        entenda_status = "aprovado"
     elif status_novo == "rejeitado":
         set_sql = "status = 'rejeitado', review_status = 'rejeitado', updated_at = NOW()"
+        entenda_status = "rejeitado"
     else:
         set_sql = (
             "status = 'rascunho_auditado', review_status = 'rascunho_auditado', "
             "published_at = NULL, updated_at = NOW()"
         )
+        entenda_status = "rascunho_auditado"
 
     with db.cursor() as cur:
         cur.execute(
             f"UPDATE ai_colunas_editoriais SET {set_sql} WHERE slug = %s "
-            "RETURNING slug, status, review_status, published_at, updated_at;",
+            "RETURNING id, slug, status, review_status, published_at, created_at, updated_at;",
             (slug,),
         )
         row = cur.fetchone()
+        if row:
+            cur.execute(
+                "UPDATE ai_entenda_o_assunto SET status = %s, updated_at = NOW() "
+                "WHERE slug = %s OR slug = %s;",
+                (entenda_status, f"entenda-{slug}", slug),
+            )
+            if cur.rowcount == 0 and row.get("id") is not None and row.get("created_at") is not None:
+                cur.execute(
+                    "UPDATE ai_entenda_o_assunto SET status = %s, updated_at = NOW() "
+                    "WHERE id = %s AND ABS(EXTRACT(EPOCH FROM (created_at - %s))) < 30;",
+                    (entenda_status, row["id"], row["created_at"]),
+                )
     if not row:
         raise HTTPException(status_code=404, detail="Coluna não encontrada.")
     db.commit()
+    try:
+        _sincronizar_espelho_entenda_v2(db)
+    except Exception as exc:  # noqa: BLE001
+        print(f"[Aviso] Falha ao sincronizar espelho entenda_v2 após PATCH status: {exc}")
     return {
         "ok": True,
         "slug": row["slug"],
@@ -3139,13 +3607,145 @@ def admin_excluir_coluna(
             "DELETE FROM ai_entenda_o_assunto WHERE slug = %s OR slug = %s;",
             (f"entenda-{slug}", slug),
         )
-        cur.execute("DELETE FROM ai_colunas_editoriais WHERE slug = %s RETURNING slug;", (slug,))
+        cur.execute(
+            "DELETE FROM ai_colunas_editoriais WHERE slug = %s RETURNING id, slug, created_at;",
+            (slug,),
+        )
         row = cur.fetchone()
+        if row and row.get("id") is not None and row.get("created_at") is not None:
+            cur.execute(
+                "DELETE FROM ai_entenda_o_assunto WHERE id = %s AND ABS(EXTRACT(EPOCH FROM (created_at - %s))) < 30;",
+                (row["id"], row["created_at"]),
+            )
     if not row:
         db.rollback()
         raise HTTPException(status_code=404, detail="Coluna não encontrada.")
     db.commit()
+    try:
+        _sincronizar_espelho_entenda_v2(db)
+    except Exception as exc:  # noqa: BLE001
+        print(f"[Aviso] Falha ao sincronizar espelho entenda_v2 após DELETE coluna: {exc}")
     return {"ok": True, "slug": row["slug"]}
+
+
+@router.get("/v2/admin/entenda/tendencias", dependencies=[Depends(verificar_admin_token)])
+def admin_entenda_tendencias(
+    response: Response,
+    country: str = Query("BR", min_length=2, max_length=2, description="Código ISO-2 do país"),
+    lang: str = Query("pt", min_length=2, max_length=10, description="Idioma"),
+    conn: Any = Depends(get_db),
+) -> Dict[str, Any]:
+    """Sugere assuntos do momento combinando Google Trends RSS, notícias quentes do banco e Google News RSS."""
+    import urllib.request
+    import xml.etree.ElementTree as ET
+
+    aplicar_no_cache_headers(response)
+    c_code = (country or "BR").strip().upper()[:2] or "BR"
+    l_code = (lang or "pt").strip().lower() or "pt"
+
+    topicos: List[Dict[str, Any]] = []
+    vistos: set[str] = set()
+
+    def _adicionar_topico(label: str, origem: str, volume: str = "") -> None:
+        txt = re.sub(r"\s+", " ", (label or "")).strip()
+        if not txt or len(txt) < 3:
+            return
+        chave = txt.lower()
+        if chave in vistos:
+            return
+        vistos.add(chave)
+        topicos.append({
+            "label": txt,
+            "tema": txt,
+            "volume": volume,
+            "origem": origem,
+        })
+
+    # 1. Google Trends RSS
+    try:
+        trends_url = f"https://trends.google.com/trending/rss?geo={c_code}"
+        req = urllib.request.Request(
+            trends_url,
+            headers={"User-Agent": "Mozilla/5.0 (compatible; RodandoOMundoBot/2.2)"},
+        )
+        with urllib.request.urlopen(req, timeout=6.0) as resp:
+            xml_bytes = resp.read()
+        root = ET.fromstring(xml_bytes)
+        for item_el in root.findall(".//item"):
+            title = ""
+            traffic = ""
+            for child in item_el:
+                tag_name = child.tag.rsplit("}", 1)[-1]
+                if tag_name == "title" and child.text:
+                    title = child.text.strip()
+                elif tag_name == "approx_traffic" and child.text:
+                    traffic = child.text.strip()
+            if title:
+                _adicionar_topico(title, "google_trends", traffic)
+            if len(topicos) >= 8:
+                break
+    except Exception:  # noqa: BLE001
+        pass
+
+    # 2. Notícias quentes ativas no banco
+    if conn is not None:
+        try:
+            with conn.cursor() as cur:
+                cur.execute(
+                    """
+                    SELECT titulo_curto, categoria
+                    FROM ai_noticias_quentes
+                    WHERE (expires_at IS NULL OR expires_at > NOW())
+                    ORDER BY urgencia_score DESC, updated_at DESC
+                    LIMIT 8;
+                    """
+                )
+                for r in cur.fetchall():
+                    _adicionar_topico(str(r.get("titulo_curto") or ""), "noticias_quentes")
+        except Exception:  # noqa: BLE001
+            try:
+                conn.rollback()
+            except Exception:  # noqa: BLE001
+                pass
+
+    # 3. Fallback / complemento: Google News Top RSS
+    if len(topicos) < 8:
+        locale_map = {
+            "BR": ("pt-BR", "BR", "BR:pt-419"),
+            "PT": ("pt-PT", "PT", "PT:pt-150"),
+            "US": ("en-US", "US", "US:en"),
+            "GB": ("en-GB", "GB", "GB:en"),
+            "AR": ("es-419", "AR", "AR:es-419"),
+            "ES": ("es", "ES", "ES:es"),
+            "FR": ("fr", "FR", "FR:fr"),
+            "DE": ("de", "DE", "DE:de"),
+        }
+        hl, gl, ceid = locale_map.get(c_code, (f"{l_code}-{c_code}" if l_code else "pt-BR", c_code, f"{c_code}:{l_code}"))
+        try:
+            gnews_url = f"https://news.google.com/rss?hl={hl}&gl={gl}&ceid={ceid}"
+            req = urllib.request.Request(
+                gnews_url,
+                headers={"User-Agent": "Mozilla/5.0 (compatible; RodandoOMundoBot/2.2)"},
+            )
+            with urllib.request.urlopen(req, timeout=6.0) as resp:
+                xml_bytes = resp.read()
+            root = ET.fromstring(xml_bytes)
+            for item_el in root.findall(".//item"):
+                raw_t = (item_el.findtext("title") or "").strip()
+                if " - " in raw_t:
+                    raw_t = raw_t.rsplit(" - ", 1)[0].strip()
+                _adicionar_topico(raw_t, "google_news")
+                if len(topicos) >= 12:
+                    break
+        except Exception:  # noqa: BLE001
+            pass
+
+    return {
+        "ok": True,
+        "country": c_code,
+        "lang": l_code,
+        "topicos": topicos[:12],
+    }
 
 
 # ============================================================================

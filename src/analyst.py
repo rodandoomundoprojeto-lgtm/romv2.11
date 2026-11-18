@@ -90,7 +90,7 @@ INSTRUÇÕES E REGRAS MANDATÓRIAS:
 
     client = genai.Client(api_key=key, http_options=types.HttpOptions(timeout=35_000))
     modelo_env = (os.getenv("GEMINI_MODEL_RADAR") or os.getenv("GEMINI_MODEL") or "").strip()
-    modelos = ([modelo_env] if modelo_env else []) + ["gemini-2.5-flash", "gemini-3.1-flash-lite", "gemini-3.8-flash"]
+    modelos = ([modelo_env] if modelo_env else []) + ["gemini-3.1-flash-lite", "gemini-3.5-flash-lite", "gemini-3.8-flash"]
     vistos_m = set()
     modelos = [m for m in modelos if not (m in vistos_m or vistos_m.add(m))]
 

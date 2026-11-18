@@ -11022,6 +11022,8 @@
   var radarFetchSeq = 0;
   var radarUpdatedLabel = '';
   var radarCategoryFilter = 'todos';
+  var RADAR_PAGE_SIZE = 15; // 5 linhas de 3 colunas = 15 briefings por lote
+  var radarVisibleCount = RADAR_PAGE_SIZE;
   var radarAutoRefreshTimer = null;
   var radarLastFetchAt = 0;
   var radarVisibilityBound = false;
@@ -11278,6 +11280,7 @@
         filterBtns.forEach(function (b) { b.classList.remove('is-active'); });
         btn.classList.add('is-active');
         radarCategoryFilter = btn.getAttribute('data-radar-cat') || 'todos';
+        radarVisibleCount = RADAR_PAGE_SIZE;
         renderRadarCardsList(false);
       });
     });
@@ -11403,6 +11406,7 @@
     var refreshBtn = document.getElementById('btn-atualizar-radar');
 
     if (forceRefresh) {
+      radarVisibleCount = RADAR_PAGE_SIZE;
       try { localStorage.removeItem('rom_radar_cache'); } catch (e) {}
       if (!prevCache || !prevCache.length) {
         var listLoading = document.getElementById('radar-cards-list');
@@ -11705,6 +11709,8 @@
 
     if (!radarFeedCache || radarFeedCache.length === 0) {
       listEl.innerHTML = '<p class="radar-empty">Nenhum briefing disponível no momento.</p>';
+      var wrapEmpty = document.getElementById('radar-load-more-wrap');
+      if (wrapEmpty) wrapEmpty.style.display = 'none';
       return;
     }
 
@@ -11715,10 +11721,24 @@
 
     if (filtered.length === 0) {
       listEl.innerHTML = '<p class="radar-empty">Nenhum briefing encontrado para a categoria selecionada.</p>';
+      var wrapEmptyCat = document.getElementById('radar-load-more-wrap');
+      if (wrapEmptyCat) wrapEmptyCat.style.display = 'none';
       return;
     }
 
     filtered = intercalarCardsRadarPorFonte(filtered);
+    // Garante rigor cronológico estrito: as mais novas SEMPRE aparecem primeiro, sem inversões
+    filtered.sort(function (a, b) {
+      var ta = getRadarPubTimestamp(a);
+      var tb = getRadarPubTimestamp(b);
+      if (ta > 0 && tb > 0) return tb - ta;
+      if (ta > 0) return -1;
+      if (tb > 0) return 1;
+      return Number(b.urgencia_score || 0) - Number(a.urgencia_score || 0);
+    });
+
+    var totalCards = filtered.length;
+    var visibleCards = filtered.slice(0, radarVisibleCount);
 
     var catLabels = {
       'geopolitica': 'Geopolítica',
@@ -11727,7 +11747,7 @@
       'cultura': 'Cultura & Viagens'
     };
 
-    var html = filtered.map(function (item, idx) {
+    var html = visibleCards.map(function (item, idx) {
       var catKey = (item.categoria || 'geral').toLowerCase();
       var catLabel = catLabels[catKey] || catKey.toUpperCase();
       var detailsId = 'radar-details-' + idx;
@@ -11820,6 +11840,40 @@
           toggleRadarCard(card);
         }
       });
+    }
+
+    var loadMoreWrap = document.getElementById('radar-load-more-wrap');
+    if (!loadMoreWrap) {
+      loadMoreWrap = document.createElement('div');
+      loadMoreWrap.id = 'radar-load-more-wrap';
+      loadMoreWrap.className = 'radar-load-more-wrap';
+      listEl.parentNode.insertBefore(loadMoreWrap, listEl.nextSibling);
+    }
+
+    if (radarVisibleCount < totalCards) {
+      var remaining = totalCards - radarVisibleCount;
+      var nextBatch = Math.min(RADAR_PAGE_SIZE, remaining);
+      loadMoreWrap.innerHTML = 
+        '<button type="button" class="btn btn-secondary radar-btn-load-more" id="radar-btn-load-more" title="Carregar mais novidades em ordem cronológica">' +
+        '<span>Ver + (' + nextBatch + ' notícias)</span> <span aria-hidden="true">▾</span>' +
+        '</button>' +
+        '<p class="radar-load-more-hint">Exibindo ' + visibleCards.length + ' de ' + totalCards + ' novidades (mais recentes primeiro)</p>';
+      loadMoreWrap.style.display = 'flex';
+      var btnLoadMore = loadMoreWrap.querySelector('#radar-btn-load-more');
+      if (btnLoadMore) {
+        btnLoadMore.onclick = function () {
+          radarVisibleCount += RADAR_PAGE_SIZE;
+          renderRadarCardsList(true);
+        };
+      }
+    } else {
+      if (totalCards > RADAR_PAGE_SIZE) {
+        loadMoreWrap.innerHTML = '<p class="radar-load-more-hint">✅ Todos os ' + totalCards + ' briefings exibidos em ordem cronológica.</p>';
+        loadMoreWrap.style.display = 'flex';
+      } else {
+        loadMoreWrap.style.display = 'none';
+        loadMoreWrap.innerHTML = '';
+      }
     }
   }
 

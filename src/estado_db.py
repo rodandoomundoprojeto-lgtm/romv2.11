@@ -32,7 +32,7 @@ except Exception:  # pragma: no cover - ambiente sem psycopg (fallback para arqu
     Jsonb = None  # type: ignore[assignment]
 
 TABELA_ESTADO = "ai_pipeline_state"
-CHAVES_ESTADO = ("vitrine_ia", "feed_output", "history")
+CHAVES_ESTADO = ("vitrine_ia", "feed_output", "history", "entenda_v2")
 
 _PLACEHOLDERS = ("[YOUR-PASSWORD]", "[POOLER-HOST]")
 

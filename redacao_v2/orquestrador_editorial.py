@@ -20,6 +20,7 @@ import asyncio
 import json
 import os
 import re
+import unicodedata
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
@@ -31,6 +32,7 @@ from .coletor_estudo import (
     advisory_lock,
     buscar_artigos_publicados_rom_async,
     coletar_fontes_estudo_v2_async,
+    coletar_fontes_por_tema_async,
     validar_urls_internas,
 )
 from .schemas import (
@@ -49,14 +51,29 @@ PROMPT_2_PATH = PROMPTS_DIR / "prompt_2_advogado_do_diabo.md"
 PROMPT_3_PATH = PROMPTS_DIR / "prompt_3_colunista_nerd.md"
 PROMPT_4_PATH = PROMPTS_DIR / "prompt_4_auditor_fact_checker.md"
 
-MODELO_EDITORIAL = os.getenv("GEMINI_MODEL_EDITORIAL", "gemini-2.5-pro").strip() or "gemini-2.5-pro"
+MODELO_EDITORIAL = (
+    os.getenv("GEMINI_MODEL_EDITORIAL") or os.getenv("GEMINI_MODEL") or "gemini-3.5-flash-lite"
+).strip() or "gemini-3.5-flash-lite"
 MODELOS_EDITORIAL_FALLBACK = [
-    "gemini-2.5-pro",
-    "gemini-2.5-flash",
+    "gemini-3.5-flash-lite",
+    "gemini-3.1-flash-lite",
+    "gemini-3.8-flash",
+    "gemini-3.7-flash",
+    "gemini-3.5-flash",
 ]
 NOTA_ISENCAO_MINIMA = 85
 MAX_TENTATIVAS_REESCRITA = 2
 STATUS_RASCUNHO_AUDITADO = "rascunho_auditado"
+
+
+def _normalizar_slug_base(raw: Optional[str]) -> str:
+    """Normaliza um slug base (sem prefixo 'entenda-') com no máximo 180 chars."""
+    texto = unicodedata.normalize("NFKD", (raw or "").strip().lower()).encode("ascii", "ignore").decode("ascii")
+    slug = re.sub(r"[^a-z0-9]+", "-", texto).strip("-")
+    while slug.startswith("entenda-"):
+        slug = slug[len("entenda-"):].strip("-")
+    slug = slug[:180].strip("-")
+    return slug or "analise-editorial"
 
 
 def _gerar_com_fallback(
@@ -66,7 +83,7 @@ def _gerar_com_fallback(
     config: types.GenerateContentConfig,
 ) -> Tuple[Any, str]:
     """Executa generate_content com fallback automático entre modelos Gemini disponíveis."""
-    candidatos = [model] + [m for m in MODELOS_EDITORIAL_FALLBACK if m != model]
+    candidatos = list(dict.fromkeys([model] + [m for m in MODELOS_EDITORIAL_FALLBACK if m != model]))
     ultimo_erro: Optional[Exception] = None
     for candidato in candidatos:
         try:
@@ -183,7 +200,25 @@ def executar_pesquisador_factual(
     system_prompt = carregar_prompt(PROMPT_1_PATH, "prompt_1")
     gemini_client = client or genai.Client(http_options=types.HttpOptions(timeout=120_000))
 
-    foco_str = f"TEMA PRIORITÁRIO SOLICITADO: {tema_foco}\n\n" if tema_foco else ""
+    foco_str = ""
+    instrucao_foco = ""
+    if tema_foco:
+        foco_str = (
+            f"TEMA PRIORITÁRIO SOLICITADO: {tema_foco}\n"
+            "REGRA CRÍTICA DE FOCO: O dossiê DEVE tratar exclusivamente do TEMA PRIORITÁRIO SOLICITADO acima. "
+            "Ignore notícias genéricas de outros assuntos nos feeds gerais que não tenham relação com o tema pedido. "
+            "Se o tema for explicativo, conceitual ou geopolítico estrutural, combine os documentos coletados relevantes "
+            "com contexto conceitual e histórico factual consolidado, sem inventar estatísticas recentes nem URLs.\n\n"
+        )
+        instrucao_foco = (
+            f"Foque estritamente no tema '{tema_foco}', extraindo fatos verificados, definições conceituais consolidadas, "
+            "exemplos históricos reais, fontes primárias, coberturas de imprensa e pontos incertos."
+        )
+    else:
+        instrucao_foco = (
+            "Extraia os fatos verificados, dados numéricos, fontes primárias, coberturas de imprensa e pontos incertos."
+        )
+
     prompt_usuario = f"""
 {foco_str}ACERVO_REAL_DISPONIVEL (Use somente estas URLs para artigos_acervo_candidatos):
 {json.dumps(acervo_real[:60], ensure_ascii=False, indent=2)}
@@ -191,7 +226,7 @@ def executar_pesquisador_factual(
 DOCUMENTOS_E_FONTES_COLETADAS:
 {json.dumps(documentos_coletados[:35], ensure_ascii=False, indent=2)}
 
-Extraia os fatos verificados, dados numéricos, fontes primárias, coberturas de imprensa e pontos incertos.
+{instrucao_foco}
 """.strip()
 
     response, _ = _gerar_com_fallback(
@@ -352,6 +387,7 @@ def executar_auditor_fact_checker(
     urls_invalidas: List[str],
     client: Optional[Any] = None,
     model: str = MODELO_EDITORIAL,
+    tema_foco: Optional[str] = None,
 ) -> ResultadoAuditoria:
     """Etapa 4: Auditor / Fact-Checker (Prompt 4 -> `ResultadoAuditoria`).
 
@@ -366,7 +402,16 @@ def executar_auditor_fact_checker(
         "urls_internas_invalidas_detectadas": urls_invalidas,
     }
 
-    prompt_usuario = f"""
+    nota_guia_explicativo = ""
+    if tema_foco:
+        nota_guia_explicativo = (
+            f"\nTEMA_SOLICITADO_PELO_EDITOR: {tema_foco}\n"
+            "CRITÉRIO PARA GUIA EXPLICATIVO: Em guias explicativos de tema conceitual ou estrutural, "
+            "explicações conceituais e contextualizações históricas consolidadas do tema são permitidas e esperadas, "
+            "desde que não haja cifras/estatísticas recentes inventadas e nenhuma URL interna inválida.\n"
+        )
+
+    prompt_usuario = f"""{nota_guia_explicativo}
 DOSSIE_PESQUISA_FACTUAL (Etapa 1):
 {dossie.model_dump_json(indent=2)}
 
@@ -508,13 +553,16 @@ def salvar_resultado_editorial_aprovado(
             f"nota_isencao={auditoria.nota_isencao})."
         )
 
+    base_slug = _normalizar_slug_base(coluna.slug)
+    coluna.slug = base_slug
+
     agora = datetime.now(timezone.utc)
     bloco_entenda = coluna.entenda_o_assunto
     if bloco_entenda is None and dossie is not None:
         bloco_entenda = garantir_bloco_entenda_o_assunto(coluna, dossie)
     elif bloco_entenda is None:
         bloco_entenda = BlocoEntendaOAssunto(
-            slug=f"entenda-{coluna.slug}"[:200],
+            slug=f"entenda-{base_slug}"[:200],
             titulo_assunto=f"Entenda: {coluna.titulo}"[:220],
             pergunta_central=f"Por que {coluna.titulo} é relevante?"[:255],
             resumo_executivo=coluna.subtitulo,
@@ -529,13 +577,15 @@ def salvar_resultado_editorial_aprovado(
             relevancia_score=90,
         )
 
+    bloco_entenda.slug = f"entenda-{base_slug}"[:200]
+
     links_validados_json = json.dumps(
         [l.model_dump() for l in coluna.artigos_existentes_para_linkar],
         ensure_ascii=False,
     )
 
     params_coluna = {
-        "slug": coluna.slug[:200],
+        "slug": base_slug[:200],
         "titulo": coluna.titulo[:255],
         "subtitulo": coluna.subtitulo,
         "tese_central": coluna.tese_central,
@@ -560,7 +610,7 @@ def salvar_resultado_editorial_aprovado(
     }
 
     params_entenda = {
-        "slug": bloco_entenda.slug[:200],
+        "slug": f"entenda-{base_slug}"[:200],
         "titulo_assunto": bloco_entenda.titulo_assunto[:220],
         "pergunta_central": bloco_entenda.pergunta_central[:255],
         "resumo_executivo": bloco_entenda.resumo_executivo,
@@ -611,6 +661,15 @@ def salvar_resultado_editorial_aprovado(
 # 4. PIPELINE ORQUESTRADOR COMPLETO COM LOOP DE ATÉ 2 REESCRITAS
 # ============================================================================
 
+def _aplicar_slug_pareado(coluna: ColunaEditorial, slug_alvo: Optional[str]) -> str:
+    """Garante slug determinístico pareado 1:1 entre `ColunaEditorial` e `BlocoEntendaOAssunto`."""
+    base_slug = _normalizar_slug_base(slug_alvo) if slug_alvo else _normalizar_slug_base(coluna.slug)
+    coluna.slug = base_slug[:200]
+    if coluna.entenda_o_assunto is not None:
+        coluna.entenda_o_assunto.slug = f"entenda-{base_slug}"[:200]
+    return base_slug
+
+
 def executar_pipeline_editorial_sequencial(
     documentos_coletados: List[Dict[str, Any]],
     acervo_real: List[Dict[str, str]],
@@ -619,8 +678,9 @@ def executar_pipeline_editorial_sequencial(
     client: Optional[Any] = None,
     model: str = MODELO_EDITORIAL,
     conn: Optional[Any] = None,
+    slug_alvo: Optional[str] = None,
 ) -> Dict[str, Any]:
-    """Executa o pipeline sequencial completo em `gemini-2.5-pro`:
+    """Executa o pipeline sequencial completo editorial:
       1. Pesquisador Factual -> `DossiePesquisaFactual`
       2. Advogado do Diabo -> `ParecerAdvogadoDiabo`
       3. Colunista Nerd -> `ColunaEditorial`
@@ -634,7 +694,7 @@ def executar_pipeline_editorial_sequencial(
     gemini_client = client or genai.Client(http_options=types.HttpOptions(timeout=120_000))
 
     # Etapa 1: Pesquisador Factual
-    print("[editorial_v2] Etapa 1/4: Executando Pesquisador Factual (gemini-2.5-pro)...")
+    print(f"[editorial_v2] Etapa 1/4: Executando Pesquisador Factual ({model})...")
     dossie = executar_pesquisador_factual(
         documentos_coletados=documentos_coletados,
         acervo_real=acervo_real,
@@ -644,7 +704,7 @@ def executar_pipeline_editorial_sequencial(
     )
 
     # Etapa 2: Advogado do Diabo
-    print("[editorial_v2] Etapa 2/4: Executando Advogado do Diabo (gemini-2.5-pro)...")
+    print(f"[editorial_v2] Etapa 2/4: Executando Advogado do Diabo ({model})...")
     parecer = executar_advogado_do_diabo(
         dossie=dossie,
         client=gemini_client,
@@ -662,6 +722,7 @@ def executar_pipeline_editorial_sequencial(
         client=gemini_client,
         model=model,
     )
+    _aplicar_slug_pareado(coluna, slug_alvo)
 
     # Validação determinística em Python ANTES de chamar o LLM Auditor
     _, urls_validas, urls_invalidas = validar_artigos_existentes_para_linkar(coluna, acervo_real)
@@ -676,6 +737,7 @@ def executar_pipeline_editorial_sequencial(
         urls_invalidas=urls_invalidas,
         client=gemini_client,
         model=model,
+        tema_foco=tema_foco,
     )
 
     # Loop de até 2 tentativas de reescrita caso aprovado == False ou nota_isencao < 85
@@ -700,6 +762,7 @@ def executar_pipeline_editorial_sequencial(
             client=gemini_client,
             model=model,
         )
+        _aplicar_slug_pareado(coluna, slug_alvo)
 
         # Revalida em Python todas as URLs em artigos_existentes_para_linkar antes de reauditar
         _, urls_validas, urls_invalidas = validar_artigos_existentes_para_linkar(coluna, acervo_real)
@@ -712,6 +775,7 @@ def executar_pipeline_editorial_sequencial(
             urls_invalidas=urls_invalidas,
             client=gemini_client,
             model=model,
+            tema_foco=tema_foco,
         )
 
     aprovado_final = bool(auditoria.aprovado and auditoria.nota_isencao >= NOTA_ISENCAO_MINIMA)
@@ -742,16 +806,37 @@ async def executar_orquestrador_editorial_async(
     db_url: Optional[str] = None,
     dry_run: bool = False,
     client: Optional[Any] = None,
+    slug_alvo: Optional[str] = None,
 ) -> Optional[Dict[str, Any]]:
     """Coleta as fontes de estudo V2 e o acervo publicado, executa o pipeline sequencial
     e grava o resultado aprovado em `ai_colunas_editoriais` e `ai_entenda_o_assunto`.
     """
     database_url = _obter_db_url(db_url)
+    tema_limpo = (tema_foco or "").strip() or None
 
-    documentos_coletados, acervo_real = await asyncio.gather(
-        coletar_fontes_estudo_v2_async(),
-        buscar_artigos_publicados_rom_async(db_url=database_url),
-    )
+    if tema_limpo:
+        docs_tema, docs_gerais, acervo_real = await asyncio.gather(
+            coletar_fontes_por_tema_async(tema_limpo, limite=14),
+            coletar_fontes_estudo_v2_async(),
+            buscar_artigos_publicados_rom_async(db_url=database_url),
+        )
+        documentos_coletados: List[Dict[str, Any]] = list(docs_tema or [])
+        if len(documentos_coletados) < 3:
+            documentos_coletados.append({
+                "titulo": f"Pauta Editorial Solicitada: {tema_limpo}",
+                "fonte": "Redação Rodando o Mundo",
+                "fonte_nome": "Redação Rodando o Mundo",
+                "tipo_fonte": "pauta_editorial",
+                "resumo": f"Elaborar guia explicativo 'Entenda o Assunto' aprofundado sobre: {tema_limpo}.",
+                "url": "https://www.rodandoomundo.com.br/entenda",
+            })
+        # Complementa com feeds gerais sem sobrescrever o topo direcionado ao tema
+        documentos_coletados.extend(docs_gerais or [])
+    else:
+        documentos_coletados, acervo_real = await asyncio.gather(
+            coletar_fontes_estudo_v2_async(),
+            buscar_artigos_publicados_rom_async(db_url=database_url),
+        )
 
     if not documentos_coletados:
         print("[editorial_v2] Nenhum documento coletado das fontes de estudo V2.")
@@ -761,11 +846,12 @@ async def executar_orquestrador_editorial_async(
         executar_pipeline_editorial_sequencial,
         documentos_coletados,
         acervo_real,
-        tema_foco,
+        tema_limpo,
         MAX_TENTATIVAS_REESCRITA,
         client,
         MODELO_EDITORIAL,
         None,
+        slug_alvo,
     )
 
     if not resultado["aprovado"]:
@@ -817,6 +903,7 @@ def executar_orquestrador_editorial(
     db_url: Optional[str] = None,
     dry_run: bool = False,
     client: Optional[Any] = None,
+    slug_alvo: Optional[str] = None,
 ) -> Optional[Dict[str, Any]]:
     """Wrapper síncrono para `executar_orquestrador_editorial_async`."""
     return asyncio.run(
@@ -825,6 +912,7 @@ def executar_orquestrador_editorial(
             db_url=db_url,
             dry_run=dry_run,
             client=client,
+            slug_alvo=slug_alvo,
         )
     )
 

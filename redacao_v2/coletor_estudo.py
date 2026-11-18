@@ -22,7 +22,7 @@ from datetime import datetime, timedelta, timezone
 from email.utils import parsedate_to_datetime
 from pathlib import Path
 from typing import Any, Dict, Generator, List, Optional, Tuple, Union
-from urllib.parse import urlparse
+from urllib.parse import quote_plus, urlparse
 
 import feedparser
 import httpx
@@ -1048,6 +1048,85 @@ async def coletar_fontes_estudo_v2_async(
     """Coleta de forma assíncrona a lista `FONTES_ESTUDO_V2`."""
     alvo = fontes_custom if fontes_custom is not None else FONTES_ESTUDO_V2
     return await coletar_fontes_async(alvo, max_itens_por_fonte=max_itens_por_fonte)
+
+
+async def coletar_fontes_por_tema_async(
+    tema: str,
+    limite: int = 12,
+) -> List[Dict[str, Any]]:
+    """Busca notícias/artigos no Google News RSS direcionados ao `tema` solicitado."""
+    termo = (tema or "").strip()
+    if not termo:
+        return []
+
+    q_enc = quote_plus(termo)
+    fontes_busca = [
+        {
+            "nome": f"Google News RSS (PT-BR: {termo[:60]})",
+            "url": f"https://news.google.com/rss/search?q={q_enc}&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+            "pais_iso": "BR",
+            "idioma": "pt",
+            "tipo_fonte": "rss_feed",
+            "cadencia": "ciclo_3h",
+            "peso_confianca": 4,
+            "exibicao_permitida": "sintese_e_link",
+        },
+        {
+            "nome": f"Google News RSS (EN-US: {termo[:60]})",
+            "url": f"https://news.google.com/rss/search?q={q_enc}&hl=en-US&gl=US&ceid=US:en",
+            "pais_iso": "US",
+            "idioma": "en",
+            "tipo_fonte": "rss_feed",
+            "cadencia": "ciclo_3h",
+            "peso_confianca": 4,
+            "exibicao_permitida": "sintese_e_link",
+        },
+    ]
+
+    headers = {
+        "User-Agent": USER_AGENT,
+        "Accept": "application/rss+xml, application/atom+xml, application/xml, text/xml, */*;q=0.8",
+    }
+    coletados: List[Dict[str, Any]] = []
+    titulos_vistos = set()
+
+    try:
+        async with httpx.AsyncClient(headers=headers, timeout=10.0) as client:
+            pt_itens = await coletar_feed_individual_async(
+                client,
+                fontes_busca[0],
+                max_itens=max(limite, 8),
+                permitir_sem_data=True,
+            )
+            brutos = list(pt_itens)
+            if len(brutos) < 4:
+                en_itens = await coletar_feed_individual_async(
+                    client,
+                    fontes_busca[1],
+                    max_itens=max(limite, 8),
+                    permitir_sem_data=True,
+                )
+                brutos.extend(en_itens)
+
+            for item in brutos:
+                titulo_norm = re.sub(r"\s+", " ", (item.get("titulo") or "").lower()).strip()
+                if not titulo_norm or titulo_norm in titulos_vistos:
+                    continue
+                titulos_vistos.add(titulo_norm)
+                fonte_nome = item.get("fonte") or "Google News"
+                item_norm = dict(item)
+                item_norm["fonte_nome"] = fonte_nome
+                item_norm["tipo_fonte"] = "rss_feed"
+                item_norm["peso_confianca"] = 4
+                item_norm["tema_pesquisado"] = termo
+                coletados.append(item_norm)
+                if len(coletados) >= limite:
+                    break
+    except Exception as exc:  # noqa: BLE001
+        print(f"[Aviso] Falha na busca direcionada por tema '{termo}': {exc}")
+        return []
+
+    return coletados
 
 
 # ============================================================================
