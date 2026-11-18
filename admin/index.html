@@ -1334,15 +1334,20 @@
       </div>
 
       <div class="admin-auth-bar">
-        <div class="admin-field" style="flex: 1 1 180px;">
+        <div class="admin-field" style="flex: 1 1 160px;">
           <label for="admin-user">Usuário</label>
           <input id="admin-user" class="admin-input" type="text" autocomplete="username"
             placeholder="Seu usuário" />
         </div>
-        <div class="admin-field" style="flex: 1 1 220px;">
+        <div class="admin-field" style="flex: 1 1 200px;">
           <label for="admin-password">Senha</label>
           <input id="admin-password" class="admin-input" type="password" autocomplete="current-password"
             placeholder="Sua senha" />
+        </div>
+        <div class="admin-field" style="flex: 1 1 260px;" id="field-admin-api">
+          <label for="admin-api">URL da API FastAPI</label>
+          <input id="admin-api" class="admin-input" type="url"
+            placeholder="Mesma origem (ou ex: http://127.0.0.1:8000)" />
         </div>
         <button id="btn-conectar" class="admin-btn admin-btn-primary" type="button">Entrar</button>
         <button id="btn-sair" class="admin-btn admin-btn-danger hidden" type="button">Sair</button>
@@ -2449,6 +2454,16 @@
         try { localStorage.setItem('rom_admin_user', u); } catch (e) { }
       };
 
+      const persistApiBase = (u) => {
+        try {
+          if (u) {
+            localStorage.setItem('rom_admin_api', u);
+          } else {
+            localStorage.removeItem('rom_admin_api');
+          }
+        } catch (e) { }
+      };
+
       const clearPersistedToken = () => {
         try {
           localStorage.removeItem('rom_admin_token');
@@ -2534,19 +2549,34 @@
           headers['X-Admin-User'] = state.user;
         }
         const finalHeaders = Object.assign({}, headers, options.headers || {});
-        const res = await fetch(url, { ...options, headers: finalHeaders });
+        let res;
+        try {
+          res = await fetch(url, { ...options, headers: finalHeaders });
+        } catch (netErr) {
+          throw new Error('Falha de conexão com a API (' + (state.apiBase || 'mesma origem') + '): ' + (netErr.message || 'servidor inacessível') + '. Verifique se o backend FastAPI está ativo (iniciar_servidor_fastapi.bat).');
+        }
+
         const ct = (res.headers.get('content-type') || '').toLowerCase();
         const data = await res.json().catch(() => ({}));
         if (!res.ok) {
           let msg = (data && data.detail) || ('Erro HTTP ' + res.status);
-          if (res.status === 401) msg = 'Sessão expirada. Faça login novamente.';
-          if (res.status === 403) msg = 'Acesso negado. Senha ou token inválidos.';
-          if (res.status === 404) msg = 'Endpoint não encontrado no backend (verifique a rota).';
-          if (res.status >= 500) msg = 'Erro interno do servidor (HTTP ' + res.status + ').';
+          if (res.status === 401) {
+            msg = 'Sessão expirada. Faça login novamente.';
+          } else if (res.status === 403) {
+            msg = 'Acesso negado. Senha ou token inválidos.';
+          } else if (res.status === 404) {
+            msg = 'Endpoint não encontrado no backend (verifique a rota).';
+          } else if (res.status === 502 || res.status === 503) {
+            msg = (data && data.detail)
+              ? `Erro ${res.status}: ${data.detail}`
+              : `Erro ${res.status} (Bad Gateway): O servidor backend FastAPI está offline ou inacessível. Se estiver no computador, execute iniciar_servidor_fastapi.bat. Se estiver em produção, configure o campo "URL da API FastAPI".`;
+          } else if (res.status >= 500 && !data.detail) {
+            msg = 'Erro interno do servidor (HTTP ' + res.status + ').';
+          }
           throw new Error(msg);
         }
         if (ct && !ct.includes('application/json')) {
-          throw new Error('A API retornou conteúdo não-JSON. Confira a URL do backend.');
+          throw new Error('A API retornou conteúdo não-JSON. Confira a URL da API FastAPI.');
         }
         return data;
       }
@@ -4749,12 +4779,15 @@
       async function conectar() {
         const user = ($('admin-user').value || '').trim();
         const password = ($('admin-password').value || '').trim();
+        const apiBaseInput = $('admin-api') ? ($('admin-api').value || '').trim().replace(/\/+$/, '') : '';
         if (!password) {
           showBanner('auth-banner', 'Informe a senha de acesso.', 'err');
           return;
         }
         state.user = user;
         state.token = password;
+        state.apiBase = apiBaseInput || defaultApiBase;
+        persistApiBase(apiBaseInput);
         if (user) {
           persistUser(user);
         } else {
@@ -4775,7 +4808,8 @@
           const authCard = $('admin-auth-card');
           if (authCard) authCard.classList.add('is-connected');
           const navUser = $('nav-user-label');
-          if (navUser) navUser.textContent = user ? ('Conectado: ' + user) : 'Conectado';
+          const apiLabel = state.apiBase ? state.apiBase.replace(/^https?:\/\//, '') : 'Backend Edge';
+          if (navUser) navUser.textContent = user ? (`Conectado: ${user} (${apiLabel})`) : (`Conectado (${apiLabel})`);
           $('admin-panels').classList.remove('hidden');
           $('btn-sair').classList.remove('hidden');
           atualizarNavPorScroll();
@@ -4822,6 +4856,14 @@
           conectar();
         }
       });
+      if ($('admin-api')) {
+        $('admin-api').addEventListener('keydown', (e) => {
+          if (e.key === 'Enter') {
+            e.preventDefault();
+            conectar();
+          }
+        });
+      }
       $('btn-sair').addEventListener('click', sair);
 
       // Inicialização
@@ -4831,6 +4873,7 @@
 
       if ($('admin-user') && state.user) $('admin-user').value = state.user;
       if ($('admin-password') && state.token) $('admin-password').value = state.token;
+      if ($('admin-api')) $('admin-api').value = readSaved('rom_admin_api') || '';
       if (state.token) {
         conectar();
       }

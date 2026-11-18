@@ -167,6 +167,17 @@ async function handleBackendProxy(request, env, url) {
     });
   }
 
+  // Previne chamadas loopback a partir do Cloudflare Edge (que causam 502 nativo no runtime)
+  if (['127.0.0.1', 'localhost', '0.0.0.0', '::1', '[::1]'].includes(targetUrl.hostname)) {
+    return new Response(JSON.stringify({
+      ok: false,
+      detail: 'CURADORIA_BACKEND_URL aponta para endereço local (' + targetUrl.hostname + '), inacessível pelo Cloudflare Edge. Configure no painel Admin (/admin) a URL da API FastAPI ou utilize um túnel público.'
+    }), {
+      status: 503,
+      headers: { ...CORS_HEADERS, 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' }
+    });
+  }
+
   const forwardHeaders = new Headers(request.headers);
   forwardHeaders.delete('host');
 
@@ -185,6 +196,20 @@ async function handleBackendProxy(request, env, url) {
       respHeaders.set(k, v);
     }
     respHeaders.set('Cache-Control', 'no-store');
+
+    // Se o upstream falhou com 502/503/504 (ex: proxy intermediário ou servidor desligado)
+    if (upstreamRes.status === 502 || upstreamRes.status === 503 || upstreamRes.status === 504) {
+      const upstreamText = await upstreamRes.text().catch(() => '');
+      return new Response(JSON.stringify({
+        ok: false,
+        detail: `Backend FastAPI retornou status ${upstreamRes.status} (${upstreamRes.statusText || 'Bad Gateway'}). O servidor Python pode estar fora do ar ou reiniciando.`,
+        upstream_error: upstreamText ? upstreamText.slice(0, 300) : null
+      }), {
+        status: 502,
+        headers: { ...CORS_HEADERS, 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' }
+      });
+    }
+
     return new Response(upstreamRes.body, {
       status: upstreamRes.status,
       statusText: upstreamRes.statusText,

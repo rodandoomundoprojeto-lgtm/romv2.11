@@ -7,6 +7,10 @@ echo   Porta: 8000
 echo   URL: http://127.0.0.1:8000
 echo ========================================================
 echo.
-call .venv\Scripts\activate.bat
+if exist .venv\Scripts\activate.bat (
+    call .venv\Scripts\activate.bat
+) else if exist venv\Scripts\activate.bat (
+    call venv\Scripts\activate.bat
+)
 python -m uvicorn main:app --reload --port 8000
 pause
