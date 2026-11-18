@@ -1909,6 +1909,37 @@
             </div>
 
             <div id="entenda-banner" class="admin-banner"></div>
+
+            <div class="admin-subhead" id="entenda-artigos-lista-head" style="margin-top: var(--space-4);">
+              <div>
+                <h3 class="admin-card-title admin-subhead-title">Artigos de Entenda o assunto (revisão &amp; publicação em <code>/entenda</code>)</h3>
+                <p class="admin-sub">Revise o texto gerado pela IA e clique em <strong>Publicar em /entenda</strong> para exibir publicamente no portal.</p>
+              </div>
+              <div class="admin-actions">
+                <button id="btn-entenda-ir-curadoria" class="admin-btn admin-btn-sm" type="button">Abrir em Curadoria &amp; Bot</button>
+                <button id="btn-entenda-atualizar-lista" class="admin-btn admin-btn-sm" type="button">Atualizar lista</button>
+              </div>
+            </div>
+
+            <div class="admin-table-wrap admin-table-scroll">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Artigo / Rota</th>
+                    <th>Categoria</th>
+                    <th>Nota IA</th>
+                    <th>Status</th>
+                    <th>Data de Entrada</th>
+                    <th>Ações</th>
+                  </tr>
+                </thead>
+                <tbody id="tbody-entenda-artigos">
+                  <tr>
+                    <td colspan="6" class="admin-sub">Nenhum artigo gerado.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </section>
           </div>
           <div class="admin-group" id="admin-group-operacao" data-admin-group="operacao">
@@ -4176,10 +4207,50 @@
         return '<span class="badge badge-warn">rascunho</span>';
       }
 
+      function renderEntendaArtigos(todas) {
+        const tbodyEnt = $('tbody-entenda-artigos');
+        if (!tbodyEnt) return;
+        const lista = Array.isArray(todas) ? todas : [];
+        if (!lista.length) {
+          tbodyEnt.innerHTML = '<tr><td colspan="6" class="admin-sub">Nenhum artigo gerado.</td></tr>';
+          return;
+        }
+        tbodyEnt.innerHTML = lista.map((c) => {
+          const st = statusNormColuna(c);
+          const slugClean = String(c.slug || '').replace(/^entenda-/, '');
+          const rotaRel = `/entenda/${slugClean}`;
+          const linkPublico = st === 'publicado'
+            ? `<a href="https://www.rodandoomundo.com.br${escapeHtml(rotaRel)}" target="_blank" rel="noopener noreferrer" title="Abrir em /entenda"><code>${escapeHtml(rotaRel)}</code> ↗</a>`
+            : `<code>${escapeHtml(rotaRel)}</code>`;
+          const tituloExibido = c.entenda_titulo || c.titulo || slugClean;
+          return `
+            <tr>
+              <td>
+                <strong>${escapeHtml(tituloExibido)}</strong>
+                <div class="admin-sub">${linkPublico}</div>
+              </td>
+              <td>${escapeHtml(c.categoria || '—')}</td>
+              <td>${escapeHtml(notaColuna(c))}</td>
+              <td>${statusBadgeColuna(c.status || c.review_status)}</td>
+              <td>${renderBadgeDataEntrada(c.created_at || c.published_at || c.updated_at)}</td>
+              <td>
+                <div class="admin-actions">
+                  <button class="admin-btn admin-btn-sm" type="button" data-ver-coluna="${escapeHtml(c.slug)}">Ver</button>
+                  ${st !== 'publicado' ? `<button class="admin-btn admin-btn-sm" type="button" style="background:#059669;border-color:#059669;color:#fff;" data-publicar-coluna="${escapeHtml(c.slug)}">Publicar em /entenda</button>` : `<button class="admin-btn admin-btn-sm" type="button" data-rascunho-coluna="${escapeHtml(c.slug)}">Despublicar</button>`}
+                  ${st !== 'rejeitado' ? `<button class="admin-btn admin-btn-sm admin-btn-danger" type="button" data-rejeitar-coluna="${escapeHtml(c.slug)}">Rejeitar</button>` : ''}
+                  <button class="admin-btn admin-btn-sm admin-btn-danger" type="button" data-excluir-coluna="${escapeHtml(c.slug)}">Excluir</button>
+                </div>
+              </td>
+            </tr>
+          `;
+        }).join('');
+      }
+
       function renderColunas() {
         agendarResumo();
         const tbody = $('tbody-colunas');
         const todas = state.colunas || [];
+        renderEntendaArtigos(todas);
         preencherSelect('col-categoria', todas.map((c) => c.categoria), 'Todas');
         const q = $('col-busca') ? $('col-busca').value : '';
         const fSt = valorFiltro('col-status');
@@ -4191,7 +4262,7 @@
           if (fSt !== 'all' && fSt !== 'pendentes' && st !== fSt) return false;
           if (fCat !== 'all' && String(c.categoria || '') !== fCat) return false;
           if (!dentroPeriodo(c, fPer, ['updated_at', 'created_at', 'published_at'])) return false;
-          return combinaBusca(q, [c.titulo, c.subtitulo, c.slug, c.tese_central, c.categoria, c.tags]);
+          return combinaBusca(q, [c.titulo, c.subtitulo, c.slug, c.tese_central, c.categoria, c.tags, c.entenda_titulo]);
         });
         atualizarResultadoFiltro('col', lista.length, todas.length);
         if (!todas.length) {
@@ -4206,7 +4277,7 @@
           <tr>
             <td>
               <strong>${escapeHtml(c.titulo)}</strong>
-              <div class="admin-sub"><code>/${escapeHtml(c.slug)}</code></div>
+              <div class="admin-sub"><code>/entenda/${escapeHtml(String(c.slug || '').replace(/^entenda-/, ''))}</code></div>
             </td>
             <td>${escapeHtml(c.categoria || '—')}</td>
             <td>${escapeHtml(notaColuna(c))}</td>
@@ -4225,26 +4296,68 @@
         `).join('');
       }
 
-      $('btn-recarregar-colunas').addEventListener('click', () => carregarColunas().catch((err) => showBanner('colunas-banner', err.message, 'err')));
+      async function abrirModalColunaPreview(c) {
+        if (!c) return;
+        state.editingColunaSlug = c.slug;
+        const slugClean = String(c.slug || '').replace(/^entenda-/, '');
+        const rotaEntenda = `/entenda/${slugClean}`;
+        const st = statusNormColuna(c);
+        $('modal-coluna_title').textContent = c.titulo || 'Coluna Editorial';
+        $('modal-coluna_sub').innerHTML = st === 'publicado'
+          ? `<code>${escapeHtml(rotaEntenda)}</code> · status: <strong>${escapeHtml(c.status || c.review_status)}</strong> · <a href="https://www.rodandoomundo.com.br${escapeHtml(rotaEntenda)}" target="_blank" rel="noopener noreferrer">Abrir em /entenda ↗</a>`
+          : `<code>${escapeHtml(rotaEntenda)}</code> · status: ${escapeHtml(c.status || c.review_status)}`;
 
-      $('tbody-colunas').addEventListener('click', async (e) => {
-        const ver = e.target.getAttribute('data-ver-coluna');
-        const aprovar = e.target.getAttribute('data-aprovar-coluna');
-        const publicar = e.target.getAttribute('data-publicar-coluna');
-        const rejeitar = e.target.getAttribute('data-rejeitar-coluna');
-        const excluir = e.target.getAttribute('data-excluir-coluna');
+        let sub = c.subtitulo || '';
+        let tese = c.tese_central || '';
+        let corpo = c.corpo_markdown || '';
+        const preview = $('coluna-preview');
+
+        const renderPreviewBody = (s, t, m) => {
+          let html = '';
+          if (s) html += `<p style="margin:0 0 0.65rem;font-weight:600;">${escapeHtml(s)}</p>`;
+          if (t) html += `<p class="admin-sub" style="margin:0 0 0.85rem;padding:0.6rem 0.75rem;border-left:3px solid var(--primary,#3b82f6);background:rgba(148,163,184,0.08);"><strong>Tese central:</strong> ${escapeHtml(t)}</p>`;
+          html += `<div class="admin-sub" style="white-space:pre-wrap;line-height:1.55;">${escapeHtml(m || 'Sem conteúdo Markdown carregado.')}</div>`;
+          preview.innerHTML = html;
+        };
+
+        renderPreviewBody(sub, tese, corpo || 'Carregando conteúdo completo...');
+        $('coluna-banner').className = 'admin-banner';
+        $('coluna-banner').textContent = '';
+        $('modal-coluna').classList.add('open');
+
+        if (!corpo) {
+          try {
+            const det = await apiFetch(`/v2/entenda-o-assunto/${encodeURIComponent(c.slug)}`);
+            const colDet = (det && det.coluna_editorial) || {};
+            const artDet = (det && det.artigo) || {};
+            sub = sub || colDet.subtitulo || artDet.subtitulo || '';
+            tese = tese || colDet.tese_central || artDet.tese_central || '';
+            corpo = colDet.corpo_markdown || artDet.corpo_markdown || '';
+            renderPreviewBody(sub, tese, corpo);
+          } catch (_) {
+            renderPreviewBody(sub, tese, corpo);
+          }
+        }
+      }
+
+      async function handleColunaActionClick(e, bannerId) {
+        const verBtn = e.target.closest('[data-ver-coluna]');
+        const aprovarBtn = e.target.closest('[data-aprovar-coluna]');
+        const publicarBtn = e.target.closest('[data-publicar-coluna]');
+        const rascunhoBtn = e.target.closest('[data-rascunho-coluna]');
+        const rejeitarBtn = e.target.closest('[data-rejeitar-coluna]');
+        const excluirBtn = e.target.closest('[data-excluir-coluna]');
+
+        const ver = verBtn && verBtn.getAttribute('data-ver-coluna');
+        const aprovar = aprovarBtn && aprovarBtn.getAttribute('data-aprovar-coluna');
+        const publicar = publicarBtn && publicarBtn.getAttribute('data-publicar-coluna');
+        const rascunho = rascunhoBtn && rascunhoBtn.getAttribute('data-rascunho-coluna');
+        const rejeitar = rejeitarBtn && rejeitarBtn.getAttribute('data-rejeitar-coluna');
+        const excluir = excluirBtn && excluirBtn.getAttribute('data-excluir-coluna');
 
         if (ver) {
           const c = (state.colunas || []).find((x) => x.slug === ver);
-          if (!c) return;
-          state.editingColunaSlug = ver;
-          $('modal-coluna_title').textContent = c.titulo || 'Coluna Editorial';
-          $('modal-coluna_sub').textContent = `/${c.slug} · status: ${c.status || c.review_status}`;
-          const preview = $('coluna-preview');
-          preview.innerHTML = '<div class="admin-sub" style="white-space:pre-wrap;">' + escapeHtml(c.corpo_markdown || '') + '</div>';
-          $('coluna-banner').className = 'admin-banner';
-          $('coluna-banner').textContent = '';
-          $('modal-coluna').classList.add('open');
+          await abrirModalColunaPreview(c);
           return;
         }
 
@@ -4254,32 +4367,50 @@
               method: 'PATCH',
               body: JSON.stringify({ status }),
             });
-            showBanner('colunas-banner', msgOk, 'ok');
+            showBanner(bannerId, msgOk, 'ok');
+            showToast(msgOk, 'ok');
             await carregarColunas();
           } catch (err) {
-            showBanner('colunas-banner', 'Erro: ' + err.message, 'err');
+            showBanner(bannerId, 'Erro: ' + err.message, 'err');
           }
         };
 
-        if (aprovar) { await setStatus(aprovar, 'aprovado', 'Coluna aprovada.'); return; }
-        if (publicar) { await setStatus(publicar, 'publicado', 'Coluna publicada no site.'); return; }
+        if (aprovar) { await setStatus(aprovar, 'aprovado', 'Artigo aprovado.'); return; }
+        if (publicar) { await setStatus(publicar, 'publicado', 'Artigo publicado em /entenda com sucesso.'); return; }
+        if (rascunho) { await setStatus(rascunho, 'rascunho_auditado', 'Artigo movido para rascunho.'); return; }
         if (rejeitar) {
-          if (!confirm('Rejeitar esta coluna?')) return;
-          await setStatus(rejeitar, 'rejeitado', 'Coluna rejeitada.');
+          if (!confirm('Rejeitar este artigo?')) return;
+          await setStatus(rejeitar, 'rejeitado', 'Artigo rejeitado.');
           return;
         }
         if (excluir) {
-          if (!confirm('Excluir esta coluna permanentemente?')) return;
+          if (!confirm('Excluir este artigo permanentemente?')) return;
           try {
             await apiFetch(`/v2/admin/colunas/${encodeURIComponent(excluir)}`, { method: 'DELETE' });
-            showBanner('colunas-banner', 'Coluna excluída.', 'ok');
+            showBanner(bannerId, 'Artigo excluído.', 'ok');
+            showToast('Artigo excluído.', 'ok');
             await carregarColunas();
           } catch (err) {
-            showBanner('colunas-banner', 'Erro ao excluir: ' + err.message, 'err');
+            showBanner(bannerId, 'Erro ao excluir: ' + err.message, 'err');
           }
           return;
         }
-      });
+      }
+
+      $('btn-recarregar-colunas').addEventListener('click', () => carregarColunas().catch((err) => showBanner('colunas-banner', err.message, 'err')));
+      if ($('btn-entenda-atualizar-lista')) {
+        $('btn-entenda-atualizar-lista').addEventListener('click', () => carregarColunas().catch((err) => showBanner('entenda-banner', err.message, 'err')));
+      }
+      if ($('btn-entenda-ir-curadoria')) {
+        $('btn-entenda-ir-curadoria').addEventListener('click', () => {
+          if (typeof irPara === 'function') irPara('admin-section-curadoria');
+        });
+      }
+
+      $('tbody-colunas').addEventListener('click', (e) => handleColunaActionClick(e, 'colunas-banner'));
+      if ($('tbody-entenda-artigos')) {
+        $('tbody-entenda-artigos').addEventListener('click', (e) => handleColunaActionClick(e, 'entenda-banner'));
+      }
 
       $('btn-fechar-modal-coluna').addEventListener('click', () => $('modal-coluna').classList.remove('open'));
       $('btn-aprovar-coluna').addEventListener('click', async () => {
@@ -4870,12 +5001,17 @@
         const candidatos = payload && (payload.topicosEmAlta || payload.topicos || payload.assuntos || payload.sugestoes || payload.temas || payload.trending);
         if (!Array.isArray(candidatos)) return [];
         return candidatos.map((t) => {
-          if (typeof t === 'string') return { label: t, tema: t };
+          if (typeof t === 'string') return { label: t, tema: t, volume: '', origem: '' };
           if (!t || typeof t !== 'object') return null;
           const label = t.titulo || t.title || t.nome || t.name || t.termo || t.topic || t.assunto || t.query || '';
           const tema = t.tema || t.prompt || t.slug || label;
           if (!label) return null;
-          return { label: String(label), tema: String(tema || label), volume: t.volume || t.trafego || t.traffic || '' };
+          return {
+            label: String(label),
+            tema: String(tema || label),
+            volume: t.volume || t.trafego || t.traffic || '',
+            origem: t.origem || '',
+          };
         }).filter(Boolean);
       }
 
@@ -4890,25 +5026,38 @@
         try {
           const country = (($('entenda-trend-country') || {}).value || 'BR').trim().toUpperCase() || 'BR';
           const lang = (($('entenda-trend-lang') || {}).value || 'pt').trim().toLowerCase() || 'pt';
-          const res = await fetch(`/api/busca-assunto?mode=trending&country=${encodeURIComponent(country)}&lang=${encodeURIComponent(lang)}&_t=${Date.now()}`, {
-            method: 'GET',
-            cache: 'no-store',
-            headers: { 'Accept': 'application/json' },
-          });
-          const data = await res.json().catch(() => ({}));
-          if (!res.ok) throw new Error(data.erro || data.error || ('Falha ao buscar tendências (HTTP ' + res.status + ')'));
+          let data = null;
+          try {
+            data = await apiFetch(`/v2/admin/entenda/tendencias?country=${encodeURIComponent(country)}&lang=${encodeURIComponent(lang)}`);
+          } catch (_) {
+            data = null;
+          }
+          if (!data || !extrairTopicosTrending(data).length) {
+            const res = await fetch(`/api/busca-assunto?mode=trending&country=${encodeURIComponent(country)}&lang=${encodeURIComponent(lang)}&_t=${Date.now()}`, {
+              method: 'GET',
+              cache: 'no-store',
+              headers: { 'Accept': 'application/json' },
+            });
+            const fbData = await res.json().catch(() => ({}));
+            if (res.ok) {
+              data = fbData;
+            } else if (!data) {
+              throw new Error(fbData.erro || fbData.error || ('Falha ao buscar tendências (HTTP ' + res.status + ')'));
+            }
+          }
           const topicos = extrairTopicosTrending(data);
           if (!topicos.length) {
             lista.innerHTML = '<div class="admin-sub">Nenhum assunto em alta encontrado agora. Você ainda pode informar um tema manualmente abaixo.</div>';
             showBanner('entenda-banner', 'Busca concluída, mas sem sugestões retornadas no momento.', 'warn');
             return;
           }
-          lista.innerHTML = topicos.slice(0, 12).map((t, idx) => {
+          lista.innerHTML = topicos.slice(0, 12).map((t) => {
             const vol = t.volume ? ` <span class="badge">${escapeHtml(String(t.volume))}</span>` : '';
+            const orig = t.origem ? ` <span class="badge">${escapeHtml(String(t.origem).replace(/_/g, ' '))}</span>` : '';
             return `
               <div class="admin-execucao">
                 <div class="admin-execucao-meta">
-                  <strong>${escapeHtml(t.label)}</strong>${vol}
+                  <strong>${escapeHtml(t.label)}</strong>${vol}${orig}
                 </div>
                 <div class="admin-actions" style="margin-top:0.35rem;">
                   <button class="admin-btn admin-btn-sm admin-btn-primary" type="button" data-entenda-tema="${escapeHtml(t.tema || t.label)}">Usar como tema</button>
@@ -4951,6 +5100,7 @@
             try { $('entenda-tema').focus(); } catch (_) {}
             return;
           }
+          const lastExecId = (state.execucoes || []).reduce((maxId, item) => Math.max(maxId, Number((item && item.id) || 0)), 0);
           btn.disabled = true;
           btn.textContent = 'Gerando artigo...';
           showBanner('entenda-banner', 'Gerando artigo em Entenda o assunto (pipeline editorial). Isso pode levar alguns minutos...', 'warn');
@@ -4963,18 +5113,46 @@
             });
             if (res && res.status === 'agendado_em_background') {
               showToast('Artigo de Entenda o assunto agendado em background.', 'ok');
-              showBanner('entenda-banner', `Geração agendada (${res.slug_alvo || 'analise-automatica'}). Acompanhe em Execuções e em Colunas Editoriais para revisão/publicação no Entenda o assunto.`, 'ok');
+              showBanner('entenda-banner', `Geração agendada (${res.slug_alvo || 'analise-automatica'}). Acompanhe abaixo o andamento...`, 'warn');
               try { await carregarColunas(); await carregarExecucoes(); } catch (_) {}
               let tentativas = 0;
               const poll = setInterval(async () => {
                 tentativas += 1;
-                try { await carregarColunas(); await carregarExecucoes(); } catch (_) {}
-                if (tentativas >= 12) clearInterval(poll);
-              }, 10000);
+                try {
+                  await carregarColunas();
+                  await carregarExecucoes();
+                  const execMatch = (state.execucoes || []).find((ex) => (
+                    ex &&
+                    ex.job_nome === 'orquestrador_editorial_v2' &&
+                    ex.recurso_chave === res.recurso_chave &&
+                    Number(ex.id || 0) > lastExecId
+                  ));
+                  if (execMatch && execMatch.status === 'falha') {
+                    clearInterval(poll);
+                    const msgErro = execMatch.erro_detalhe || 'Falha na geração editorial.';
+                    showBanner('entenda-banner', 'Erro ao gerar artigo: ' + msgErro, 'err');
+                    showToast('Erro ao gerar artigo: ' + msgErro, 'err');
+                    return;
+                  }
+                  if (execMatch && execMatch.status === 'concluido') {
+                    clearInterval(poll);
+                    showBanner('entenda-banner', 'Artigo gerado com sucesso! Ele já está listado na tabela logo abaixo, pronto para revisão e clique em "Publicar em /entenda".', 'ok');
+                    showToast('Artigo gerado! Pronto para publicar em /entenda.', 'ok');
+                    return;
+                  }
+                } catch (_) {}
+                if (tentativas >= 20) clearInterval(poll);
+              }, 8000);
+            } else if (dryRun) {
+              const tituloDry = (res && res.coluna && res.coluna.titulo) ? ` ("${res.coluna.titulo}")` : '';
+              const notaDry = (res && res.auditoria && res.auditoria.nota_isencao != null) ? ` · Nota IA: ${res.auditoria.nota_isencao}` : '';
+              const statusDry = (res && res.status) || 'concluido';
+              showToast('Simulação Dry-run concluída.', statusDry === 'concluido' ? 'ok' : 'warn');
+              showBanner('entenda-banner', `Modo Dry-run concluído (${statusDry})${tituloDry}${notaDry} — simulação: NÃO foi gravado no banco. Desmarque Dry-run para salvar e publicar em /entenda.`, 'warn');
             } else {
               const status = (res && res.status) || 'concluido';
               showToast('Geração de artigo concluída.', status === 'concluido' ? 'ok' : 'warn');
-              showBanner('entenda-banner', 'Geração concluída: ' + status + '. Revise e publique em Colunas Editoriais para exibir no Entenda o assunto.', status === 'concluido' ? 'ok' : 'warn');
+              showBanner('entenda-banner', 'Geração concluída: ' + status + '. Revise e clique em "Publicar em /entenda" na lista abaixo para exibir no portal.', status === 'concluido' ? 'ok' : 'warn');
               try { await carregarColunas(); } catch (_) {}
             }
           } catch (err) {

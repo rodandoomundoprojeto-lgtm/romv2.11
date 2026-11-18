@@ -8948,6 +8948,12 @@
     if (sectionKey === 'resumo-do-dia') enrichResumoDoDiaOnce();
     if (sectionKey === 'ultimas-noticias') renderUltimasNoticiasView();
     if (sectionKey === 'temas') renderTemasHubsSection();
+    if (sectionKey === 'entenda') {
+      renderEntendaSection();
+      if (!entendaV2State.loaded) {
+        carregarArtigosEntendaV2(false);
+      }
+    }
     if (sectionKey === 'radar') renderRadarEditorialView();
     else stopRadarAutoRefresh();
     syncMobileEditorialToggle(sectionKey);
@@ -10853,11 +10859,348 @@
     });
   }
 
+  function normalizarSlugEntendaClient(raw) {
+    return String(raw || '')
+      .trim()
+      .replace(/^\/+|\/+$/g, '')
+      .toLowerCase()
+      .replace(/^entenda-/, '');
+  }
+
+  function renderSafeMarkdownHTML(md) {
+    var raw = String(md || '').replace(/\r\n?/g, '\n').trim();
+    if (!raw) return '';
+
+    function formatInline(lineRaw) {
+      var safe = esc(lineRaw);
+      safe = safe.replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, function (_m, label, urlSafe) {
+        var urlClean = String(urlSafe || '').replace(/&amp;/g, '&').trim();
+        if (/^https?:\/\//i.test(urlClean)) {
+          return '<a href="' + esc(urlClean) + '" target="_blank" rel="noopener noreferrer">' + label + '</a>';
+        }
+        if (urlClean.charAt(0) === '/') {
+          return '<a href="' + esc(urlClean) + '" data-spa-link>' + label + '</a>';
+        }
+        return label;
+      });
+      safe = safe.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+      safe = safe.replace(/\*([^*]+)\*/g, '<em>$1</em>');
+      return safe;
+    }
+
+    var lines = raw.split('\n');
+    var out = [];
+    var inList = false;
+    var paraBuf = [];
+
+    function flushPara() {
+      if (!paraBuf.length) return;
+      out.push('<p>' + formatInline(paraBuf.join(' ')) + '</p>');
+      paraBuf = [];
+    }
+    function closeList() {
+      if (inList) {
+        out.push('</ul>');
+        inList = false;
+      }
+    }
+
+    lines.forEach(function (line) {
+      var trimmed = line.trim();
+      if (!trimmed) {
+        flushPara();
+        closeList();
+        return;
+      }
+      if (/^###\s+/.test(trimmed)) {
+        flushPara();
+        closeList();
+        out.push('<h3>' + formatInline(trimmed.replace(/^###\s+/, '')) + '</h3>');
+        return;
+      }
+      if (/^#{1,2}\s+/.test(trimmed)) {
+        flushPara();
+        closeList();
+        out.push('<h2>' + formatInline(trimmed.replace(/^#{1,2}\s+/, '')) + '</h2>');
+        return;
+      }
+      if (/^>\s+/.test(trimmed)) {
+        flushPara();
+        closeList();
+        out.push('<blockquote>' + formatInline(trimmed.replace(/^>\s+/, '')) + '</blockquote>');
+        return;
+      }
+      if (/^[-*•]\s+/.test(trimmed)) {
+        flushPara();
+        if (!inList) {
+          out.push('<ul>');
+          inList = true;
+        }
+        out.push('<li>' + formatInline(trimmed.replace(/^[-*•]\s+/, '')) + '</li>');
+        return;
+      }
+      closeList();
+      paraBuf.push(trimmed);
+    });
+    flushPara();
+    closeList();
+    return out.join('');
+  }
+
+  function renderEntendaV2DetailDOM(payload, slug) {
+    if (!thematicHubView) return;
+    var cleanSlug = normalizarSlugEntendaClient(slug);
+    var art = (payload && payload.artigo) || {};
+    var be = (payload && payload.entenda_o_assunto) || {};
+    var col = (payload && payload.coluna_editorial) || {};
+    var painel = (payload && payload.painel_verificacao) || {};
+
+    var titulo = art.titulo || be.titulo_assunto || col.titulo || cleanSlug;
+    var subtitulo = art.subtitulo || col.subtitulo || be.pergunta_central || '';
+    var resumo = art.resumo || be.resumo_executivo || col.resumo_seo || subtitulo || '';
+    var contexto = art.contexto_historico || be.contexto_historico || col.tese_central || '';
+    var corpoMd = art.corpo_markdown || col.corpo_markdown || '';
+    var categoriaLabel = art.categoria_label || art.categoria || be.categoria || col.categoria || 'Análise Contextual';
+    var tempoMin = Number(art.tempo_leitura_min || col.tempo_leitura_min || 5);
+    var atualizadoStr = art.atualizado_em || be.atualizado_em || col.atualizado_em || 'Atualizado recentemente';
+    var paises = Array.isArray(art.paises_relacionados) ? art.paises_relacionados
+      : (Array.isArray(be.paises_relacionados) ? be.paises_relacionados : (Array.isArray(col.paises_abordados) ? col.paises_abordados : []));
+    var tags = Array.isArray(art.tags) ? art.tags
+      : (Array.isArray(be.tags) ? be.tags : (Array.isArray(col.tags) ? col.tags : []));
+    var impactos = Array.isArray(art.impactos_praticos) && art.impactos_praticos.length ? art.impactos_praticos
+      : (Array.isArray(be.impactos_praticos) && be.impactos_praticos.length ? be.impactos_praticos : (Array.isArray(col.impactos_praticos) ? col.impactos_praticos : []));
+    var faqs = Array.isArray(art.perguntas_frequentes) && art.perguntas_frequentes.length ? art.perguntas_frequentes
+      : (Array.isArray(be.perguntas_frequentes) ? be.perguntas_frequentes : []);
+    var fontes = Array.isArray(art.fontes_referencia) && art.fontes_referencia.length ? art.fontes_referencia
+      : (Array.isArray(be.fontes_referencia) && be.fontes_referencia.length ? be.fontes_referencia : (Array.isArray(col.fontes_citadas) ? col.fontes_citadas : []));
+    var linksInternos = Array.isArray(art.links_acervo_interno) && art.links_acervo_interno.length ? art.links_acervo_interno
+      : (Array.isArray(be.links_acervo_interno) && be.links_acervo_interno.length ? be.links_acervo_interno : (Array.isArray(col.links_acervo_interno) ? col.links_acervo_interno : []));
+
+    var termoBusca = (tags && tags[0]) || titulo;
+    var cCode = (paises && paises[0]) ? String(paises[0]).toUpperCase() : '';
+    if (!cCode || !byA2[cCode]) {
+      var inf = inferirPaisesDeTextoClient(titulo + ' ' + resumo);
+      cCode = inf[0] || 'BR';
+    }
+    var cObj = byA2[cCode] || byA2['BR'];
+    var cCont = (cObj && cObj.c) || 'sul';
+
+    var routePath = '/entenda/' + cleanSlug;
+    updateSeoMeta(titulo + ' — Entenda o assunto | Rodando o Mundo', resumo || titulo, routePath);
+
+    var h = '<div class="hub-container entenda-page-container">';
+    h += '<div class="hub-nav-header-row">';
+    h += '<button type="button" class="btn-back-topic" data-action="go-back" data-fallback="/entenda" aria-label="Voltar para Entenda o assunto" title="Voltar para Entenda o assunto">';
+    h += '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>';
+    h += '<span>Voltar</span>';
+    h += '</button>';
+    h += '<nav class="hub-breadcrumbs" aria-label="Navegação estrutural">';
+    h += '<a href="/" data-spa-link>Início</a> <span aria-hidden="true">/</span> ';
+    h += '<a href="/entenda" data-spa-link>Entenda o assunto</a> <span aria-hidden="true">/</span> ';
+    h += '<span>' + esc(titulo) + '</span>';
+    h += '</nav>';
+    h += '</div>';
+
+    h += '<article class="entenda-full-article">';
+    h += '<header class="hub-hero">';
+    h += '<div class="hub-hero-badges">';
+    h += '<span class="editorial-eyebrow">⚡ Entenda o assunto · Análise Editorial</span>';
+    h += '<span class="entenda-meta-pill">' + esc(categoriaLabel) + ' · ⏱️ ' + tempoMin + ' min · ' + esc(atualizadoStr) + '</span>';
+    h += '</div>';
+    h += '<h1 class="hub-title">' + esc(titulo) + '</h1>';
+    if (subtitulo && subtitulo !== titulo) {
+      h += '<p class="hub-subtitle">' + esc(subtitulo) + '</p>';
+    }
+    h += '<div class="hub-hero-actions">';
+    h += '<button type="button" class="btn" data-ver-noticias-assunto data-termo="' + esc(termoBusca) + '" data-pais="' + esc(cCode) + '" data-cont="' + esc(cCont) + '" data-topico="politica">Ver últimas notícias sobre este assunto</button>';
+    h += renderShareBtn({ url: routePath, title: titulo, source: 'Entenda o assunto · Rodando o Mundo', type: 'dossie', summary: resumo });
+    h += '</div>';
+    h += '</header>';
+
+    if (resumo || contexto) {
+      h += '<section class="hub-block entenda-v2-summary-box" aria-label="Resumo executivo e contexto">';
+      if (resumo) {
+        h += '<p class="entenda-v2-summary-lead"><strong>Em resumo:</strong> ' + esc(resumo) + '</p>';
+      }
+      if (contexto && contexto !== resumo) {
+        h += '<p class="entenda-v2-context-lead"><strong>Contexto histórico e estrutural:</strong> ' + esc(contexto) + '</p>';
+      }
+      h += '</section>';
+    }
+
+    if (corpoMd) {
+      h += '<div class="hub-block entenda-body-prose entenda-v2-markdown">';
+      h += renderSafeMarkdownHTML(corpoMd);
+      h += '</div>';
+    }
+
+    if (impactos.length) {
+      h += '<section class="hub-block" aria-labelledby="entenda-v2-impactos-heading">';
+      h += '<h2 id="entenda-v2-impactos-heading">Impactos práticos</h2>';
+      h += '<div class="entenda-v2-impactos-grid">';
+      impactos.forEach(function (imp) {
+        if (!imp || typeof imp !== 'object') return;
+        var pub = imp.publico_afetado || imp.publico || 'Impacto geral';
+        var desc = imp.descricao || imp.impacto || '';
+        if (!desc) return;
+        h += '<div class="entenda-v2-impacto-card">';
+        h += '<span class="entenda-v2-impacto-tag">' + esc(String(pub).replace(/_/g, ' ')) + '</span>';
+        h += '<p>' + esc(desc) + '</p>';
+        h += '</div>';
+      });
+      h += '</div>';
+      h += '</section>';
+    }
+
+    if (faqs.length) {
+      h += '<section class="hub-block" aria-labelledby="entenda-v2-faq-heading">';
+      h += '<h2 id="entenda-v2-faq-heading">Perguntas frequentes</h2>';
+      h += '<div class="entenda-v2-faq-list">';
+      faqs.forEach(function (faq) {
+        if (!faq || !faq.pergunta) return;
+        h += '<details class="entenda-v2-faq-item">';
+        h += '<summary>' + esc(faq.pergunta) + '</summary>';
+        h += '<p>' + esc(faq.resposta || '') + '</p>';
+        h += '</details>';
+      });
+      h += '</div>';
+      h += '</section>';
+    }
+
+    var fontesColetadas = fontes.slice();
+    if (painel && Array.isArray(painel.documentos_oficiais)) {
+      painel.documentos_oficiais.forEach(function (d) {
+        if (d && d.veiculo_nome && fontesColetadas.indexOf(d.veiculo_nome) === -1) {
+          fontesColetadas.push(d.veiculo_nome + (d.manchete_original ? ' — ' + d.manchete_original : ''));
+        }
+      });
+    }
+    if (painel && Array.isArray(painel.coberturas_imprensa)) {
+      painel.coberturas_imprensa.forEach(function (d) {
+        if (d && d.veiculo_nome && fontesColetadas.indexOf(d.veiculo_nome) === -1) {
+          fontesColetadas.push(d.veiculo_nome + (d.manchete_original ? ' — ' + d.manchete_original : ''));
+        }
+      });
+    }
+
+    if (fontesColetadas.length) {
+      h += '<section class="hub-block" aria-labelledby="entenda-v2-fontes-heading">';
+      h += '<h2 id="entenda-v2-fontes-heading">Fontes e referências</h2>';
+      h += '<ul class="entenda-v2-sources-list">';
+      fontesColetadas.forEach(function (f) {
+        var fStr = typeof f === 'string' ? f : (f && (f.nome || f.titulo || f.url) || '');
+        if (!fStr) return;
+        h += '<li>' + esc(fStr) + '</li>';
+      });
+      h += '</ul>';
+      h += '</section>';
+    }
+
+    if (linksInternos.length) {
+      h += '<section class="hub-block" aria-labelledby="entenda-v2-acervo-heading">';
+      h += '<h2 id="entenda-v2-acervo-heading">Continue lendo no Rodando o Mundo</h2>';
+      h += '<div class="hub-related-links">';
+      linksInternos.forEach(function (lk) {
+        if (!lk || typeof lk !== 'object') return;
+        var rawUrl = String(lk.url_existente || lk.url || '').trim();
+        var titleLk = lk.titulo_existente || lk.titulo || rawUrl;
+        var motivoLk = lk.motivo_conexao || lk.resumo || '';
+        if (!rawUrl) return;
+        var relHref = rawUrl.replace(/^https?:\/\/(?:www\.)?rodandoomundo\.com\.br/i, '') || '/';
+        if (relHref.charAt(0) !== '/') return;
+        h += '<a class="hub-related-card" href="' + esc(relHref) + '" data-spa-link>';
+        h += '<strong>' + esc(titleLk) + '</strong>';
+        if (motivoLk) h += '<span>' + esc(motivoLk) + '</span>';
+        h += '</a>';
+      });
+      h += '</div>';
+      h += '</section>';
+    }
+
+    h += '</article>';
+    h += '</div>';
+
+    thematicHubView.innerHTML = h;
+    window.scrollTo({ top: 0, behavior: 'auto' });
+    bindDynamicEditorialActions(thematicHubView);
+  }
+
   function showExplanationPage(slug, opts) {
     opts = opts || {};
-    var ex = EDITORIAL.explicacoes[slug];
+    var cleanSlug = normalizarSlugEntendaClient(slug);
+    var ex = (EDITORIAL.explicacoes && (EDITORIAL.explicacoes[slug] || EDITORIAL.explicacoes[cleanSlug])) || null;
     if (!ex) {
-      showNotFound('/entenda/' + slug);
+      state.notFound = false;
+      state.hubRoute = null;
+      state.entendaSlug = cleanSlug;
+      state.editorialSection = null;
+      state.cont = null;
+      state.country = null;
+      hideMobileChip();
+      if (panelFloatingClose) panelFloatingClose.hidden = true;
+      if (notFoundView) notFoundView.hidden = true;
+      if (mapWrapSection) mapWrapSection.hidden = true;
+      if (quickCountryView) quickCountryView.hidden = true;
+      var vitrineIaSec2 = document.getElementById('vitrine-ia');
+      if (vitrineIaSec2) vitrineIaSec2.hidden = true;
+      var dossiesRotSec2 = document.getElementById('dossies-rotativos');
+      if (dossiesRotSec2) dossiesRotSec2.hidden = true;
+      if (editorialHomeWrap) {
+        editorialHomeWrap.hidden = true;
+        editorialHomeWrap.classList.remove('is-ultimas-mode');
+      }
+      if (thematicHubView) thematicHubView.hidden = false;
+      updateNavActive('/entenda');
+
+      var routePathDyn = '/entenda/' + cleanSlug;
+      if (!opts.fromPopState) {
+        try {
+          if (opts.replaceUrl) history.replaceState({ entendaSlug: cleanSlug }, '', routePathDyn);
+          else if (location.pathname !== routePathDyn || location.hash) history.pushState({ entendaSlug: cleanSlug }, '', routePathDyn);
+        } catch (e) {}
+      }
+
+      var cachedArt = entendaV2State.bySlug[cleanSlug] || entendaV2State.bySlug[String(slug || '').toLowerCase()];
+      if (cachedArt && (cachedArt.corpo_markdown || cachedArt.contexto_historico)) {
+        renderEntendaV2DetailDOM({ artigo: cachedArt }, cleanSlug);
+      } else if (thematicHubView) {
+        thematicHubView.innerHTML = '<div class="hub-container entenda-page-container"><div class="dossie-loading-inline">Carregando guia explicativo…</div></div>';
+      }
+
+      var fetchJsonSafe = function (u) {
+        return fetch(u, { cache: 'no-store', headers: { Accept: 'application/json' } })
+          .then(function (r) { return r && r.ok ? r.json() : null; })
+          .catch(function () { return null; });
+      };
+
+      var tsNow = Date.now();
+      fetchJsonSafe('/api/entenda-o-assunto?slug=' + encodeURIComponent(cleanSlug) + '&_t=' + tsNow)
+        .then(function (d1) {
+          if (d1 && d1.ok && (d1.artigo || d1.entenda_o_assunto || d1.coluna_editorial)) return d1;
+          return fetchJsonSafe('/v2/entenda-o-assunto/' + encodeURIComponent(cleanSlug) + '?_t=' + tsNow);
+        })
+        .then(function (d2) {
+          if (d2 && d2.ok && (d2.artigo || d2.entenda_o_assunto || d2.coluna_editorial)) return d2;
+          return fetchJsonSafe('/data/entenda_v2.json?_t=' + tsNow).then(function (snap) {
+            if (!snap) return null;
+            var lista = snap.artigos || snap.colunas || [];
+            var found = lista.find(function (it) {
+              return it && normalizarSlugEntendaClient(it.slug) === cleanSlug;
+            });
+            return found ? { ok: true, artigo: found } : null;
+          });
+        })
+        .then(function (finalData) {
+          if (state.entendaSlug !== cleanSlug) return;
+          if (finalData && (finalData.artigo || finalData.entenda_o_assunto || finalData.coluna_editorial)) {
+            if (finalData.artigo && finalData.artigo.slug) {
+              entendaV2State.bySlug[normalizarSlugEntendaClient(finalData.artigo.slug)] = finalData.artigo;
+            }
+            renderEntendaV2DetailDOM(finalData, cleanSlug);
+          } else if (!cachedArt) {
+            showNotFound(routePathDyn);
+          }
+        });
       return;
     }
     state.notFound = false;
@@ -13543,54 +13886,202 @@
     }
   }
 
-  function renderEditorialHomeSections() {
+  var entendaV2State = {
+    loaded: false,
+    loading: false,
+    items: [],
+    bySlug: {},
+    atualizadoEm: ''
+  };
+
+  function renderEntendaSection() {
     var entendaSec = document.getElementById('entenda-o-assunto');
+    if (!entendaSec) return;
 
-    renderResumoDoDiaDOM();
-    renderTemasHubsSection();
+    var isFullPage = (state.editorialSection === 'entenda');
+    var v2Items = Array.isArray(entendaV2State.items) ? entendaV2State.items : [];
+    var staticMap = EDITORIAL.explicacoes || {};
+    var v2SlugSet = {};
+    v2Items.forEach(function (it) {
+      if (it && it.slug) v2SlugSet[normalizarSlugEntendaClient(it.slug)] = true;
+    });
 
-    if (entendaSec && EDITORIAL.explicacoes) {
-      var expKeys = Object.keys(EDITORIAL.explicacoes);
-      var topExpKeys = expKeys.slice(0, 4);
-      var eh = '<div class="hub-nav-header-row hubs-header-row">';
-      eh += '<button type="button" class="btn-back-topic" data-action="go-back" data-fallback="/" aria-label="Voltar para onde estava" title="Voltar para onde estava">';
-      eh += '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>';
-      eh += '<span>Voltar</span>';
-      eh += '</button>';
+    var staticKeys = Object.keys(staticMap).filter(function (k) {
+      return !v2SlugSet[normalizarSlugEntendaClient(k)];
+    });
+
+    var totalGuias = v2Items.length + staticKeys.length;
+    var eh = '<div class="hub-nav-header-row hubs-header-row">';
+    eh += '<button type="button" class="btn-back-topic" data-action="go-back" data-fallback="/" aria-label="Voltar para onde estava" title="Voltar para onde estava">';
+    eh += '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>';
+    eh += '<span>Voltar</span>';
+    eh += '</button>';
+    eh += '</div>';
+
+    eh += '<div class="editorial-section-head">';
+    eh += '<div>';
+    eh += '<p class="editorial-eyebrow">Contexto em linguagem simples · Guia do leitor</p>';
+    eh += '<h2 id="entenda-titulo">Entenda o assunto</h2>';
+    eh += '<p class="editorial-section-sub">Explicações diretas e acessíveis sobre conceitos fundamentais na política, na economia e nas relações internacionais.</p>';
+    eh += '</div>';
+    if (isFullPage) {
+      eh += '<div style="display:flex;gap:var(--space-2);align-items:center;flex-wrap:wrap;">';
+      if (entendaV2State.atualizadoEm) {
+        eh += '<span id="entenda-last-updated" class="radar-updated-badge">' + esc(entendaV2State.atualizadoEm) + '</span>';
+      } else {
+        eh += '<span id="entenda-last-updated" class="radar-updated-badge" hidden></span>';
+      }
+      eh += '<button type="button" class="btn btn-secondary' + (entendaV2State.loading ? ' is-loading' : '') + '" id="btn-refresh-entenda" title="Atualizar guias de Entenda o assunto"' + (entendaV2State.loading ? ' disabled' : '') + '>↻ ' + (entendaV2State.loading ? 'Atualizando…' : 'Atualizar') + '</button>';
       eh += '</div>';
-      eh += '<div class="editorial-section-head">';
-      eh += '<div>';
-      eh += '<p class="editorial-eyebrow">Contexto em linguagem simples · Guia do leitor</p>';
-      eh += '<h2 id="entenda-titulo">Entenda o assunto</h2>';
-      eh += '<p class="editorial-section-sub">Explicações diretas e acessíveis sobre conceitos fundamentais na política, na economia e nas relações internacionais.</p>';
-      eh += '</div>';
-      eh += '<a href="/entenda" class="btn btn-secondary entenda-head-view-all" data-spa-link>Ver todos os ' + expKeys.length + ' guias →</a>';
-      eh += '</div>';
+    } else {
+      eh += '<a href="/entenda" class="btn btn-secondary entenda-head-view-all" data-spa-link>Ver todos os ' + totalGuias + ' guias →</a>';
+    }
+    eh += '</div>';
+
+    function renderCardV2(art) {
+      var slug = normalizarSlugEntendaClient(art.slug);
+      var readTimeMin = Number(art.tempo_leitura_min || 5);
+      var catLabel = art.categoria_label || art.categoria || 'Análise Contextual';
+      var paises = Array.isArray(art.paises_relacionados) ? art.paises_relacionados : [];
+      var cCode = paises[0] || 'BR';
+      var cObj = byA2[cCode] || byA2['BR'];
+      var cCont = (cObj && cObj.c) || 'sul';
+      var termo = (Array.isArray(art.tags) && art.tags[0]) || art.titulo || '';
+      var updLabel = art.atualizado_em || 'Recente';
+
+      var card = '<article class="entenda-home-card entenda-card-compact entenda-v2-card" id="entenda-card-' + esc(slug) + '">';
+      card += '<div class="entenda-card-meta">';
+      card += '<span class="radar-v2-pill">⚡ Guia Editorial</span>';
+      card += '<span class="entenda-reading-time">' + esc(catLabel) + ' · ⏱️ ' + readTimeMin + ' min</span>';
+      card += '<span class="entenda-update-date">' + esc(updLabel) + '</span>';
+      card += '</div>';
+      card += '<h3><a href="/entenda/' + esc(slug) + '" data-spa-link>' + esc(art.titulo || slug) + '</a></h3>';
+      card += '<p class="entenda-summary-compact">' + esc(art.resumo || art.subtitulo || '') + '</p>';
+      card += '<div class="entenda-card-actions">';
+      card += '<a class="btn btn-sm btn-primary entenda-read-btn" href="/entenda/' + esc(slug) + '" data-spa-link>Ler guia completo →</a>';
+      card += '<button type="button" class="btn btn-sm btn-ghost entenda-news-btn" data-ver-noticias-assunto data-termo="' + esc(termo) + '" data-pais="' + esc(cCode) + '" data-cont="' + esc(cCont) + '" data-topico="politica">Notícias relacionadas</button>';
+      card += '</div>';
+      card += '</article>';
+      return card;
+    }
+
+    function renderCardStatic(slug) {
+      var ex = staticMap[slug];
+      if (!ex) return '';
+      var wordCount = (ex.textoExplicativo || []).join(' ').trim().split(/\s+/).length;
+      var readTimeMin = Math.max(2, Math.round(wordCount / 180));
+      var card = '<article class="entenda-home-card entenda-card-compact" id="entenda-card-' + esc(ex.slug) + '">';
+      card += '<div class="entenda-card-meta">';
+      card += '<span class="entenda-reading-time">⏱️ ' + readTimeMin + ' min de leitura</span>';
+      card += '<span class="entenda-update-date">Guia essencial</span>';
+      card += '</div>';
+      card += '<h3><a href="/entenda/' + esc(ex.slug) + '" data-spa-link>' + esc(ex.titulo) + '</a></h3>';
+      card += '<p class="entenda-summary-compact">' + esc(ex.resumoSimples) + '</p>';
+      card += '<div class="entenda-card-actions">';
+      card += '<a class="btn btn-sm btn-primary entenda-read-btn" href="/entenda/' + esc(ex.slug) + '" data-spa-link>Ler guia completo →</a>';
+      card += '<button type="button" class="btn btn-sm btn-ghost entenda-news-btn" data-ver-noticias-assunto data-termo="' + esc(ex.termoBusca) + '" data-pais="' + esc(ex.pais) + '" data-cont="' + esc(ex.continente) + '" data-topico="' + esc(ex.tipoNoticia) + '">Notícias relacionadas</button>';
+      card += '</div>';
+      card += '</article>';
+      return card;
+    }
+
+    if (isFullPage) {
+      if (v2Items.length > 0) {
+        eh += '<h3 class="entenda-v2-section-label">Artigos &amp; Guias Recentes · Redação Rodando o Mundo</h3>';
+        eh += '<div class="entenda-cards-grid entenda-compact-grid">';
+        v2Items.forEach(function (art) { eh += renderCardV2(art); });
+        eh += '</div>';
+      }
+      if (staticKeys.length > 0) {
+        eh += '<h3 class="entenda-v2-section-label">Guias Essenciais do Glossário</h3>';
+        eh += '<div class="entenda-cards-grid entenda-compact-grid">';
+        staticKeys.forEach(function (slug) { eh += renderCardStatic(slug); });
+        eh += '</div>';
+      }
+    } else {
+      var homeV2 = v2Items.slice(0, 4);
+      var remaining = Math.max(0, 4 - homeV2.length);
+      var homeStatic = staticKeys.slice(0, remaining);
       eh += '<div class="entenda-cards-grid entenda-compact-grid">';
-      topExpKeys.forEach(function (slug) {
-        var ex = EDITORIAL.explicacoes[slug];
-        var wordCount = (ex.textoExplicativo || []).join(' ').trim().split(/\s+/).length;
-        var readTimeMin = Math.max(2, Math.round(wordCount / 180));
-        eh += '<article class="entenda-home-card entenda-card-compact" id="entenda-card-' + esc(ex.slug) + '">';
-        eh += '<div class="entenda-card-meta">';
-        eh += '<span class="entenda-reading-time">⏱️ ' + readTimeMin + ' min de leitura</span>';
-        eh += '<span class="entenda-update-date">Atualizado hoje</span>';
-        eh += '</div>';
-        eh += '<h3><a href="/entenda/' + esc(ex.slug) + '" data-spa-link>' + esc(ex.titulo) + '</a></h3>';
-        eh += '<p class="entenda-summary-compact">' + esc(ex.resumoSimples) + '</p>';
-        eh += '<div class="entenda-card-actions">';
-        eh += '<a class="btn btn-sm btn-primary entenda-read-btn" href="/entenda/' + esc(ex.slug) + '" data-spa-link>Ler guia completo →</a>';
-        eh += '<button type="button" class="btn btn-sm btn-ghost entenda-news-btn" data-ver-noticias-assunto data-termo="' + esc(ex.termoBusca) + '" data-pais="' + esc(ex.pais) + '" data-cont="' + esc(ex.continente) + '" data-topico="' + esc(ex.tipoNoticia) + '">Notícias relacionadas</button>';
-        eh += '</div>';
-        eh += '</article>';
-      });
+      homeV2.forEach(function (art) { eh += renderCardV2(art); });
+      homeStatic.forEach(function (slug) { eh += renderCardStatic(slug); });
       eh += '</div>';
       eh += '<div class="entenda-more-row">';
-      eh += '<a href="/entenda" class="btn btn-secondary entenda-view-all-btn" data-spa-link>Explorar todos os ' + expKeys.length + ' guias do glossário →</a>';
+      eh += '<a href="/entenda" class="btn btn-secondary entenda-view-all-btn" data-spa-link>Explorar todos os ' + totalGuias + ' guias do glossário →</a>';
       eh += '</div>';
-      entendaSec.innerHTML = eh;
-      bindDynamicEditorialActions(entendaSec);
     }
+
+    entendaSec.innerHTML = eh;
+    bindDynamicEditorialActions(entendaSec);
+
+    var refreshBtn = document.getElementById('btn-refresh-entenda');
+    if (refreshBtn) {
+      refreshBtn.addEventListener('click', function () {
+        carregarArtigosEntendaV2(true);
+      });
+    }
+  }
+
+  function carregarArtigosEntendaV2(forceRefresh) {
+    if (entendaV2State.loading && !forceRefresh) return;
+    entendaV2State.loading = true;
+    var btn = document.getElementById('btn-refresh-entenda');
+    if (btn) {
+      btn.disabled = true;
+      btn.classList.add('is-loading');
+      btn.textContent = '↻ Atualizando…';
+    }
+
+    var ts = Date.now();
+    var q = '?acao=entenda&_t=' + ts + (forceRefresh ? '&refresh=1' : '');
+    var opts = { cache: 'no-store', headers: { Accept: 'application/json' } };
+
+    var tentarJson = function (u) {
+      return fetch(u, opts)
+        .then(function (r) { return r && r.ok ? r.json() : null; })
+        .catch(function () { return null; });
+    };
+
+    tentarJson('/api/entenda-o-assunto' + q)
+      .then(function (d1) {
+        if (d1 && d1.ok && Array.isArray(d1.artigos)) return d1;
+        return tentarJson('/v2/entenda-o-assunto?_t=' + ts + (forceRefresh ? '&refresh=1' : ''));
+      })
+      .then(function (d2) {
+        if (d2 && d2.ok && Array.isArray(d2.artigos)) return d2;
+        return tentarJson('/data/entenda_v2.json?_t=' + ts);
+      })
+      .then(function (data) {
+        entendaV2State.loading = false;
+        entendaV2State.loaded = true;
+        if (data && Array.isArray(data.artigos)) {
+          var bySlug = {};
+          var limpos = [];
+          data.artigos.forEach(function (a) {
+            if (!a || !a.slug) return;
+            var s = normalizarSlugEntendaClient(a.slug);
+            a.slug = s;
+            bySlug[s] = a;
+            if (a.entenda_slug) bySlug[String(a.entenda_slug).toLowerCase()] = a;
+            limpos.push(a);
+          });
+          entendaV2State.items = limpos;
+          entendaV2State.bySlug = bySlug;
+          entendaV2State.atualizadoEm = data.atualizado_em || '';
+        }
+        renderEntendaSection();
+      })
+      .catch(function () {
+        entendaV2State.loading = false;
+        entendaV2State.loaded = true;
+        renderEntendaSection();
+      });
+  }
+
+  function renderEditorialHomeSections() {
+    renderResumoDoDiaDOM();
+    renderTemasHubsSection();
+    renderEntendaSection();
     renderDossiesRotativosHome();
   }
 
@@ -13631,8 +14122,9 @@
     colunas.slice(0, 6).forEach(function (col, idx) {
       var colSlug = col.slug || ('v2-col-' + idx);
       var detailsId = 'entenda-v2-details-' + idx;
-      var catLabel = col.categoria || 'Análise Contextual';
-      var rotaHref = col.rota_editoria || '/radar';
+      var catLabel = col.categoria_label || col.categoria || 'Análise Contextual';
+      var rotaHref = col.slug ? ('/entenda/' + normalizarSlugEntendaClient(col.slug)) : (col.rota_editoria || '/radar');
+      var rotaBtnLabel = col.slug ? 'Ler guia completo →' : 'Ir para editoria →';
       var kwFirst = (Array.isArray(col.palavras_chave) && col.palavras_chave[0]) || col.titulo || '';
       var codes = inferirPaisesDeTextoClient((col.titulo || '') + ' ' + (col.resumo || '') + ' ' + kwFirst);
       var cCode = codes[0] || 'BR';
@@ -13658,7 +14150,7 @@
       if (col.analise_aprofundada) {
         ch += '<button type="button" class="btn btn-sm btn-primary entenda-v2-toggle-btn" data-target="' + esc(detailsId) + '" aria-expanded="false">Ler análise V2 ▾</button>';
       }
-      ch += '<a class="btn btn-sm btn-secondary" href="' + esc(rotaHref) + '" data-spa-link>Ir para editoria →</a>';
+      ch += '<a class="btn btn-sm btn-secondary" href="' + esc(rotaHref) + '" data-spa-link>' + rotaBtnLabel + '</a>';
       if (kwFirst) {
         ch += '<button type="button" class="btn btn-sm btn-ghost entenda-news-btn" data-ver-noticias-assunto data-termo="' + esc(kwFirst) + '" data-pais="' + esc(cCode) + '" data-cont="' + esc(cCont) + '" data-topico="politica">Notícias relacionadas</button>';
       }
@@ -13946,8 +14438,8 @@
       return { valid: true, type: 'dossie-detail', slug: dossieSlug, replaceUrl: legacyHash };
     }
     if (segs.length === 2 && segs[0].toLowerCase() === 'entenda') {
-      var slug = decodeURIComponent(segs[1]).toLowerCase();
-      if (EDITORIAL.explicacoes && EDITORIAL.explicacoes[slug]) {
+      var slug = decodeURIComponent(segs[1]).toLowerCase().trim();
+      if (slug) {
         return { valid: true, type: 'entenda', slug: slug, replaceUrl: legacyHash };
       }
       return { valid: false, badPath: rawPath };
@@ -16649,6 +17141,7 @@
   carregarResumoCacheLocal();
   renderEditorialHomeSections();
   carregarDossiesV2(false);
+  carregarArtigosEntendaV2(false);
   renderDossiesRotativosHome();
   // Vitrine de dossiês: re-render ao trocar de breakpoint (grade x carrossel de 1 card)
   if (typeof window.matchMedia === 'function') {

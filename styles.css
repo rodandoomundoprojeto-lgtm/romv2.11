@@ -13391,3 +13391,181 @@ body.dark .dossie-tl-item.tl-upcoming .dossie-tl-badge {
 .radar-hub-panel[hidden] { display: none !important; }
 .radar-curadoria-section { margin-top: 0; }
 .radar-curadoria-section .vitrine-ia-header { margin-bottom: var(--space-3, 12px); }
+
+/* Entenda o assunto V2 — Vitrine & Detalhe (/entenda e /entenda/{slug}) */
+.entenda-v2-section-label {
+  margin: var(--space-4) 0 var(--space-3);
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+#btn-refresh-entenda.is-loading {
+  opacity: 0.72;
+  cursor: wait;
+}
+
+.entenda-v2-summary-box {
+  background: var(--surface-2);
+  border-left: 4px solid var(--primary);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+.entenda-v2-summary-lead,
+.entenda-v2-context-lead {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--text);
+}
+
+.entenda-v2-markdown {
+  margin-bottom: var(--space-4);
+}
+
+.entenda-v2-markdown h2 {
+  margin: var(--space-5) 0 var(--space-2);
+  font-family: var(--font-display);
+  font-size: 1.32rem;
+  color: var(--text);
+}
+
+.entenda-v2-markdown h2:first-child,
+.entenda-v2-markdown h3:first-child {
+  margin-top: 0;
+}
+
+.entenda-v2-markdown h3 {
+  margin: var(--space-4) 0 var(--space-2);
+  font-family: var(--font-display);
+  font-size: 1.08rem;
+  color: var(--text);
+}
+
+.entenda-v2-markdown ul {
+  margin: 0 0 var(--space-3) 1.25rem;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.entenda-v2-markdown li {
+  font-family: var(--font-serif);
+  font-size: 1.02rem;
+  line-height: 1.65;
+  color: var(--text);
+}
+
+.entenda-v2-markdown blockquote {
+  margin: var(--space-3) 0;
+  padding: var(--space-3) var(--space-4);
+  background: var(--surface-2);
+  border-left: 3px solid var(--primary);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.entenda-v2-markdown a {
+  color: var(--primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.entenda-v2-impactos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: var(--space-3);
+}
+
+.entenda-v2-impacto-card {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.entenda-v2-impacto-card p {
+  margin: 0;
+  font-size: var(--text-sm);
+  line-height: 1.55;
+  color: var(--text);
+}
+
+.entenda-v2-impacto-tag {
+  align-self: flex-start;
+  display: inline-block;
+  padding: 2px 9px;
+  border-radius: var(--radius-full);
+  background: var(--primary-soft);
+  color: var(--primary);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.entenda-v2-faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.entenda-v2-faq-item {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-4);
+}
+
+.entenda-v2-faq-item summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--text);
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.entenda-v2-faq-item summary::after {
+  content: '+';
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.entenda-v2-faq-item[open] summary::after {
+  content: '−';
+}
+
+.entenda-v2-faq-item p {
+  margin: var(--space-2) 0 0;
+  font-size: var(--text-sm);
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+.entenda-v2-sources-list {
+  margin: 0;
+  padding-left: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+  line-height: 1.5;
+}
+
+.entenda-full-article > .hub-block {
+  margin-bottom: var(--space-4);
+}
+
