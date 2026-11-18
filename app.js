@@ -4016,7 +4016,7 @@
     var targetElements = {
       radar: 'radar-cards-list',
       vitrineIa: 'vitrine-ia-grid',
-      entendaV2: 'entenda-v2-colunas-wrap',
+      entendaV2: 'radar-v2-colunas-wrap',
       hotNews: 'pulsando-agora-container'
     };
 
@@ -8370,7 +8370,8 @@
     state.cont = null;
     state.country = null;
     if (sectionKey === 'radar') {
-      radarHubSubtab = (opts.radarTab === 'curadoria' || getRadarHubSubtabFromLocation() === 'curadoria') ? 'curadoria' : 'radar';
+      var requestedTab = opts.radarTab || getRadarHubSubtabFromLocation();
+      radarHubSubtab = (requestedTab === 'curadoria' || requestedTab === 'colunas') ? requestedTab : 'radar';
     }
     flushPendingAutonomousUpdates();
     hideMobileChip();
@@ -8424,7 +8425,6 @@
     if (sectionKey === 'temas') renderTemasHubsSection();
     if (sectionKey === 'radar') renderRadarEditorialView();
     else stopRadarAutoRefresh();
-    if (sectionKey === 'entenda') carregarColunasEntendaV2(false);
     syncMobileEditorialToggle(sectionKey);
 
     updateRobotsMeta(sectionKey === 'aplicacao-parceiros');
@@ -10452,12 +10452,13 @@
   var radarAutoRefreshTimer = null;
   var radarLastFetchAt = 0;
   var radarVisibilityBound = false;
-  var radarHubSubtab = 'radar'; // 'radar' | 'curadoria'
+  var radarHubSubtab = 'radar'; // 'radar' | 'curadoria' | 'colunas'
 
   function getRadarHubSubtabFromLocation() {
     try {
       var h = (location.hash || '').replace(/^#/, '').toLowerCase();
       if (h === 'curadoria') return 'curadoria';
+      if (h === 'colunas') return 'colunas';
       if (h === 'radar') return 'radar';
     } catch (e) {}
     return 'radar';
@@ -10465,9 +10466,10 @@
 
   function setRadarHubSubtab(tab, opts) {
     opts = opts || {};
-    radarHubSubtab = (tab === 'curadoria') ? 'curadoria' : 'radar';
+    radarHubSubtab = (tab === 'curadoria' || tab === 'colunas') ? tab : 'radar';
     if (state.editorialSection === 'radar') {
-      var targetPath = '/radar' + (radarHubSubtab === 'curadoria' ? '#curadoria' : '');
+      var hash = radarHubSubtab === 'curadoria' ? '#curadoria' : (radarHubSubtab === 'colunas' ? '#colunas' : '');
+      var targetPath = '/radar' + hash;
       if (opts.updateUrl !== false) {
         try {
           if (opts.replaceUrl) history.replaceState({ editorialSection: 'radar', radarTab: radarHubSubtab }, '', targetPath);
@@ -10483,19 +10485,21 @@
     if (state.editorialSection !== 'radar') return;
     var container = document.getElementById('radar-editorial-view');
     if (!container) return;
-    var isCur = radarHubSubtab === 'curadoria';
+    var activeTab = radarHubSubtab || 'radar';
     var panelRadar = container.querySelector('#radar-panel-radar');
     var panelCur = container.querySelector('#radar-panel-curadoria');
-    if (panelRadar) panelRadar.hidden = isCur;
-    if (panelCur) panelCur.hidden = !isCur;
+    var panelCol = container.querySelector('#radar-panel-colunas');
+    if (panelRadar) panelRadar.hidden = activeTab !== 'radar';
+    if (panelCur) panelCur.hidden = activeTab !== 'curadoria';
+    if (panelCol) panelCol.hidden = activeTab !== 'colunas';
     container.querySelectorAll('[data-radar-tab]').forEach(function (btn) {
       var t = btn.getAttribute('data-radar-tab');
-      var active = (t === 'curadoria') === isCur;
+      var active = t === activeTab;
       btn.classList.toggle('is-active', active);
       btn.setAttribute('aria-selected', active ? 'true' : 'false');
       btn.setAttribute('tabindex', active ? '0' : '-1');
     });
-    if (isCur) {
+    if (activeTab === 'curadoria') {
       if (typeof carregarVitrineIA === 'function') carregarVitrineIA({ forceRefresh: false, categoria: vitrineIaSelectedCategory || '' });
       var chipsWrap = container.querySelector('#vitrine-ia-chips');
       if (chipsWrap && !chipsWrap._bound) {
@@ -10518,6 +10522,8 @@
           });
         });
       }
+    } else if (activeTab === 'colunas') {
+      if (typeof carregarColunasEntendaV2 === 'function') carregarColunasEntendaV2(false);
     } else {
       if (typeof startRadarAutoRefresh === 'function') startRadarAutoRefresh();
     }
@@ -10575,9 +10581,10 @@
     var container = document.getElementById('radar-editorial-view');
     if (!container) return;
 
-    var activeTab = (radarHubSubtab === 'curadoria') ? 'curadoria' : 'radar';
-    var radarHidden = activeTab === 'curadoria' ? ' hidden' : '';
-    var curHidden = activeTab === 'curadoria' ? '' : ' hidden';
+    var activeTab = (radarHubSubtab === 'curadoria' || radarHubSubtab === 'colunas') ? radarHubSubtab : 'radar';
+    var radarHidden = activeTab !== 'radar' ? ' hidden' : '';
+    var curHidden = activeTab !== 'curadoria' ? ' hidden' : '';
+    var colHidden = activeTab !== 'colunas' ? ' hidden' : '';
 
     var html = '';
     html += '<div class="hub-nav-header-row hubs-header-row">';
@@ -10587,9 +10594,10 @@
     html += '</button>';
     html += '</div>';
 
-    html += '<div class="radar-hub-tabs" role="tablist" aria-label="Seções de Radar e Curadoria">';
+    html += '<div class="radar-hub-tabs" role="tablist" aria-label="Seções de Radar, Curadoria e Colunas">';
     html += '<button type="button" class="radar-hub-tab' + (activeTab === 'radar' ? ' is-active' : '') + '" role="tab" id="radar-tab-radar" aria-controls="radar-panel-radar" aria-selected="' + (activeTab === 'radar' ? 'true' : 'false') + '" tabindex="' + (activeTab === 'radar' ? '0' : '-1') + '" data-radar-tab="radar">Radar</button>';
     html += '<button type="button" class="radar-hub-tab' + (activeTab === 'curadoria' ? ' is-active' : '') + '" role="tab" id="radar-tab-curadoria" aria-controls="radar-panel-curadoria" aria-selected="' + (activeTab === 'curadoria' ? 'true' : 'false') + '" tabindex="' + (activeTab === 'curadoria' ? '0' : '-1') + '" data-radar-tab="curadoria">Curadoria</button>';
+    html += '<button type="button" class="radar-hub-tab' + (activeTab === 'colunas' ? ' is-active' : '') + '" role="tab" id="radar-tab-colunas" aria-controls="radar-panel-colunas" aria-selected="' + (activeTab === 'colunas' ? 'true' : 'false') + '" tabindex="' + (activeTab === 'colunas' ? '0' : '-1') + '" data-radar-tab="colunas" aria-label="Colunas Editoriais">Colunas</button>';
     html += '</div>';
 
     html += '<section id="radar-panel-curadoria" class="radar-hub-panel" role="tabpanel" aria-labelledby="radar-tab-curadoria"' + curHidden + '>';
@@ -10620,6 +10628,17 @@
     html += '</div>';
     html += '</section>';
 
+    html += '<section id="radar-panel-colunas" class="radar-hub-panel" role="tabpanel" aria-labelledby="radar-tab-colunas"' + colHidden + '>';
+    html += '<div class="editorial-section-head">';
+    html += '<div>';
+    html += '<p class="editorial-eyebrow">Análises Aprofundadas · Motor V2</p>';
+    html += '<h2>Colunas Editoriais</h2>';
+    html += '<p class="editorial-section-sub">Colunas editoriais geradas, revisadas e publicadas pela curadoria do Rodando o Mundo.</p>';
+    html += '</div>';
+    html += '</div>';
+    html += '<div id="radar-v2-colunas-wrap" class="entenda-v2-colunas-wrap" aria-live="polite"><p class="radar-loading">Carregando colunas editoriais...</p></div>';
+    html += '</section>';
+
     html += '<section id="radar-panel-radar" class="radar-hub-panel" role="tabpanel" aria-labelledby="radar-tab-radar"' + radarHidden + '>';
     html += '<div class="editorial-section-head">';
     html += '<div>';
@@ -10648,7 +10667,8 @@
 
     container.querySelectorAll('[data-radar-tab]').forEach(function (btn) {
       btn.addEventListener('click', function () {
-        var tab = btn.getAttribute('data-radar-tab') === 'curadoria' ? 'curadoria' : 'radar';
+        var t = btn.getAttribute('data-radar-tab');
+        var tab = (t === 'curadoria' || t === 'colunas') ? t : 'radar';
         setRadarHubSubtab(tab);
       });
     });
@@ -10669,6 +10689,8 @@
     bindRadarVisibilityListener();
     if (activeTab === 'curadoria' && typeof carregarVitrineIA === 'function') {
       carregarVitrineIA({ forceRefresh: false, categoria: vitrineIaSelectedCategory || '' });
+    } else if (activeTab === 'colunas' && typeof carregarColunasEntendaV2 === 'function') {
+      carregarColunasEntendaV2(false);
     }
   }
   function hasRadarFeedChanged(prevItems, nextItems) {
@@ -12780,13 +12802,11 @@
         eh += '</article>';
       });
       eh += '</div>';
-      eh += '<div id="entenda-v2-colunas-wrap" class="entenda-v2-colunas-wrap" hidden></div>';
       eh += '<div class="entenda-more-row">';
       eh += '<a href="/entenda" class="btn btn-secondary entenda-view-all-btn" data-spa-link>Explorar todos os ' + expKeys.length + ' guias do glossário →</a>';
       eh += '</div>';
       entendaSec.innerHTML = eh;
       bindDynamicEditorialActions(entendaSec);
-      carregarColunasEntendaV2(false);
     }
     renderDossiesRotativosHome();
   }
@@ -12795,11 +12815,16 @@
   var v2EntendaAtualizadoEm = '';
 
   function renderColunasEntendaV2DOM(colunas, atualizadoEm) {
-    var wrap = document.getElementById('entenda-v2-colunas-wrap');
+    var wrap = document.getElementById('radar-v2-colunas-wrap') || document.getElementById('entenda-v2-colunas-wrap');
     if (!wrap) return;
     if (!Array.isArray(colunas) || !colunas.length) {
-      wrap.hidden = true;
-      wrap.innerHTML = '';
+      if (wrap.id === 'radar-v2-colunas-wrap') {
+        wrap.hidden = false;
+        wrap.innerHTML = '<p class="radar-loading">Nenhuma coluna editorial publicada no momento.</p>';
+      } else {
+        wrap.hidden = true;
+        wrap.innerHTML = '';
+      }
       return;
     }
 
@@ -12877,7 +12902,7 @@
   }
 
   function carregarColunasEntendaV2(forceRefresh, isAutoRefresh) {
-    var wrap = document.getElementById('entenda-v2-colunas-wrap');
+    var wrap = document.getElementById('radar-v2-colunas-wrap') || document.getElementById('entenda-v2-colunas-wrap');
     if (!wrap) return;
     if (!forceRefresh && !isAutoRefresh && Array.isArray(v2EntendaColunasCache) && v2EntendaColunasCache.length) {
       renderColunasEntendaV2DOM(v2EntendaColunasCache, v2EntendaAtualizadoEm);
@@ -12898,6 +12923,8 @@
           } else {
             renderColunasEntendaV2DOM(v2EntendaColunasCache, v2EntendaAtualizadoEm);
           }
+        } else {
+          renderColunasEntendaV2DOM([], '');
         }
       })
       .catch(function () {});

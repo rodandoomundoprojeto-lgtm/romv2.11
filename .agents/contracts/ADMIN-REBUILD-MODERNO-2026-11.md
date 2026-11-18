@@ -57,6 +57,9 @@
 | POST | `/v1/noticias-quentes/executar` | Query `dry_run`, Body opcional `{dry_run}` | `{ok, status, batch_id, gerado_em, model_id, total_noticias, noticias_quentes: [...]}` |
 | POST | `/v2/gerar-coluna` | Body `{tema?, slug?, event_id?, fontes_urls?, dry_run?, sincrono?}` | 202 `{ok, status:"agendado_em_background", ...}` ou sync `{ok, status:"concluido"\|"reprovado_auditoria", coluna, auditoria, persistencia}` |
 | GET | `/v2/colunas` | Query `status?`, `categoria?`, `pais?`, `limit?`, `_t?`, `refresh?` | `{ok, colunas: [{slug,titulo,subtitulo,tese_central,corpo_markdown,resumo_seo,categoria,paises_abordados,tags,tempo_leitura_min,impactos_praticos,fontes_citadas,links_acervo_interno,auditoria_aprovada,aviso_correcao_material,model_id,status,review_status,published_at,created_at,updated_at}]}` |
+| GET | `/v2/admin/colunas` | Query `status?`, `limite?` (default 50) | `{ok, colunas: [{slug,titulo,subtitulo,categoria,tempo_leitura_min,auditoria_aprovada,model_id,status,review_status,reviewed_by,published_at,created_at,updated_at,nota_isencao,score_qualidade}], contagens}` |
+| PATCH | `/v2/admin/colunas/{slug}/status` | Body `{status: "rascunho_auditado"\|"aprovado"\|"publicado"\|"rejeitado"}` | `{ok, slug, status, review_status, published_at, updated_at}` |
+| DELETE | `/v2/admin/colunas/{slug}` | — | `{ok, slug}` |
 
 ### 4.3 Execuções de Pipeline (NOVO)
 | Método | Path | Query | Resposta |
@@ -69,11 +72,13 @@
 - `PATCH /v2/admin/fontes/{fonte_id}/ativo` body `{ativo}` → `{ok, id, ativo}`
 - `DELETE /v2/admin/fontes/{fonte_id}` → `{ok, id}`
 - `POST /v2/admin/fontes/sincronizar` → `{ok, novas_inseridas}`
+- `POST /v2/admin/fontes/sugerir` body `{tema, quantidade?, categoria?}` → `{ok, sugestoes:[{nome,url,tipo_fonte,cadencia,pais_iso,justificativa,ja_cadastrada}]}`
 
 ### 4.5 Eventos / Curadoria (existentes)
-- `GET /v2/admin/eventos?limite=30` → `{ok, eventos:[{id,slug,titulo_evento,categoria,nivel_confianca,status,aviso_correcao_material,updated_at,sintese_com_ressalvas}]}`
-- `PATCH /v2/admin/eventos/{event_id}/status` body `{status:"aguardando_revisao"|"publicado"|"arquivado"}` → `{ok, id, status, updated_at}`
+- `GET /v2/admin/eventos?status=&limite=60` (`status?` opcional; `limite` default 30, UI usa 60) → `{ok, eventos:[{id,slug,titulo_evento,categoria,nivel_confianca,status,aviso_correcao_material,updated_at,sintese_com_ressalvas}], contagens:{aguardando_revisao?,publicado?,arquivado?,excluido?,total}}`
+- `PATCH /v2/admin/eventos/{event_id}/status` body `{status:"aguardando_revisao"|"publicado"|"arquivado"|"excluido"}` → `{ok, id, status, updated_at}`
 - `PATCH /v2/admin/eventos/{event_id}/sintese` body `{sintese_com_ressalvas, tipo_alteracao, errata?}` → `{ok, event_id, versao, tipo_alteracao, aviso_correcao_material}`
+- `DELETE /v2/admin/eventos/{event_id}` → `{ok, id, status:"excluido", updated_at}` (exclusão lógica restaurável via `PATCH .../status`)
 
 ### 4.6 Dossies (existentes + PATCH tema/assunto)
 - `GET /v2/admin/dossies` → `{ok, dossies:[...], contagens:{total,permanentes,ao_vivo,em_breve,arquivo}}`
@@ -117,22 +122,43 @@ Card retornado deve conter: `id, slug, titulo, resumo, analise, categoria, fonte
 ### 4.9 Radar público (referência frontend)
 - `GET /api/radar` (ou `/radar`) → `{ok, cached, source, atualizado_em, updatedAt, total, items:[{id,slug,titulo,resumo,analise,categoria,fonte_nome,fonte_url,data_publicacao,origem_v2}]}`
 
+### 4.10 Entenda o Assunto — Tendências (Functions)
+- `GET /api/busca-assunto?mode=trending&country=BR&lang=pt&_t=...` (`cache: 'no-store'`) → `{country, lang, topicosEmAlta:[{titulo|title|nome|termo, tema?, volume?}], atualizadoEm, cache?}`
+
 ---
 
 ## 5. Contrato Frontend (`/admin/index.html` ↔ Backend)
 
 ### 5.1 Autenticação (Login simplificado)
-- Campos: **apenas** `#admin-password` (Senha, type=password) + botões `#btn-conectar` / `#btn-sair`.
-- `Bearer <senha>` no `apiFetch`.
-- Remover exigência de `#admin-user` / `#admin-token` / `#api-base` visível (manter fallback oculto/seletor para dev opcional).
+- Campos: `#admin-user` (opcional quando usar senha/token global; enviado no header `X-Admin-User` se preenchido) + `#admin-password` (Senha ou token, `type=password`, enviado como `Authorization: Bearer <senha>`) + botões `#btn-conectar` / `#btn-sair` (além de `#btn-nav-sair` na navegação lateral).
+- Persistência & auto-login: chaves `rom_admin_token`, `rom_admin_user` (removida quando usuário estiver vazio) e `rom_admin_api` (fallback oculto) em `localStorage`/`sessionStorage`; no carregamento, preenche `#admin-user` e `#admin-password` com os valores salvos e executa `conectar()` automaticamente se `rom_admin_token` existir.
+- Estado conectado: ao autenticar com sucesso, aplica `#admin-auth-card.is-connected` (`display: none`), exibe `#admin-panels` e `#btn-sair`, preenche `#nav-user-label` (`Conectado: <user>` ou `Conectado`) e executa `marcarAtualizado()` + `atualizarNavPorScroll()`. Em erro ou em `sair()`, remove `.is-connected`, limpa `#nav-user-label` e oculta `#admin-panels` / `#btn-sair`.
+- Sem `#admin-token` ou `#api-base` visíveis na UI.
 
 ### 5.2 Accordion
-- Cada `.admin-card` é minimizável via `.admin-collapse-btn`.
-- Chave localStorage: `rom_admin_acc_<sectionId>`.
-- Estado visual: classe `.collapsed` no card; `aria-expanded`.
+- Cada `.admin-card[data-admin-section]` (7 seções) é minimizável via `.admin-collapse-btn` (alvo tátil `>= 44x44px`).
+- Chave localStorage: `rom_admin_acc_<sectionId>` (`'1'` / `'0'`), tendo prioridade sobre o estado padrão.
+- Estado inicial padrão (quando `rom_admin_acc_<sectionId>` não existe): seções prioritárias de análise (`#admin-group-analise`: `noticias-quentes`, `curadoria`, `radar`) iniciam expandidas; demais seções (`dossies`, `entenda`, `controle-rapido`, `fontes`) possuem `data-default-collapsed="1"` e iniciam colapsadas.
+- Estado visual e acessibilidade: classe `.collapsed` no card e `aria-expanded` no botão.
 
 ### 5.3 Cache / Refresh
 - Toda chamada deve usar `?_t=${Date.now()}` (já existente) e backend com `Cache-Control: no-store, no-cache, must-revalidate`.
+
+### 5.4 Navegação Rápida Sticky (`#admin-nav`)
+- Barra sticky horizontal em mobile/tablet (`top: 56px` em `<= 768px` para alinhar com `.topbar.header-single`) e sidebar sticky em desktop (`>= 1100px`, `220px`).
+- Elementos obrigatórios: `#btn-ir-analise`, 7 âncoras `.admin-nav-link[data-nav-target]` com `scroll-spy` (`.active` + `aria-current="true"`), 6 contadores vivos (`#nav-count-quentes`, `#nav-count-curadoria`, `#nav-count-radar`, `#nav-count-dossies`, `#nav-count-controle`, `#nav-count-fontes`), `#btn-recolher-demais` ("Focar na análise"), `#btn-nav-sair` e `#nav-user-label`.
+
+### 5.5 Visão Geral (`#admin-section-visao-geral`)
+- Topo do painel conectado com `#overview-updated` (atualizado por `marcarAtualizado()`), `#btn-atualizar-tudo` e 6 KPIs clicáveis (`.admin-kpi[data-goto]`): `#kpi-eventos`, `#kpi-colunas`, `#kpi-quentes`, `#kpi-radar`, `#kpi-autopub`, `#kpi-execucao`.
+- Clicar em um KPI expande a seção alvo (se colapsada), rola até `data-goto` e aplica tab/filtro quando especificado (`data-goto-ev-status`, `data-goto-col-status`).
+
+### 5.6 Barras de Filtro (`.admin-filterbar`) e IDs das 7 Seções
+- Todas as 4 listas de análise (`nq`, `ev`, `col`, `radar`) possuem `.admin-filterbar` persistente com busca contextual (`combinaBusca`), selects, contador `#<prefix>-resultado`, classe `.is-filtered` e botão `[data-clear-filters]`.
+- Desambiguação de IDs em Notícias Quentes: a barra de filtro usa `#nq-filtro-status` e `#nq-filtro-categoria`, mantendo `#nq-status` e `#nq-categoria` exclusivos do modal `#modal-noticias-quente`.
+- IDs das 7 seções (`data-admin-section` / `#admin-section-<id>`):
+  - Grupo `analise` (`#admin-group-analise`): `noticias-quentes` (`#admin-section-noticias-quentes`), `curadoria` (`#admin-section-curadoria`), `radar` (`#admin-section-radar`).
+  - Grupo `conteudo` (`#admin-group-conteudo`): `dossies` (`#admin-section-dossies`), `entenda` (`#admin-section-entenda`).
+  - Grupo `operacao` (`#admin-group-operacao`): `controle-rapido` (`#admin-section-controle-rapido`), `fontes` (`#admin-section-fontes`).
 
 ---
 

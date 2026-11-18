@@ -12853,6 +12853,18 @@ body.dark .dossie-filter-pill.is-active {
   background: rgba(255,255,255,0.08);
   color: #f8fafc;
 }
+@media (max-width: 640px) {
+  .radar-hub-tabs {
+    width: 100%;
+  }
+  .radar-hub-tab {
+    flex: 1 1 0;
+    min-width: 0;
+    padding: 8px 10px;
+    text-align: center;
+    font-size: 0.92rem;
+  }
+}
 .radar-hub-panel[hidden] { display: none !important; }
 .radar-curadoria-section { margin-top: 0; }
 .radar-curadoria-section .vitrine-ia-header { margin-bottom: var(--space-3, 12px); }

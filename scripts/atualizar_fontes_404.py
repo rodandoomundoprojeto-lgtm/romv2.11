@@ -19,7 +19,7 @@ ATUALIZACOES_FONTES = [
     ("TSE - YouTube Oficial", "https://www.youtube.com/feeds/videos.xml?channel_id=UC1kilS1DdyYOEGItHPRukBw", "https://www.youtube.com/@justicaeleitoral"),
     ("Canal Gov / Planalto - YouTube", "https://www.youtube.com/feeds/videos.xml?channel_id=UCjaWLFTNqLkq3ZY2BJ4NYRg", "https://www.youtube.com/@canalgov"),
     ("Petit Journal (YouTube)", "https://www.youtube.com/feeds/videos.xml?channel_id=UC-g5Ls_uobMiRatAWzhSTqA", None),
-    ("Prof Ricardo Marcílio", "https://www.youtube.com/feeds/videos.xml?channel_id=UCj31rMDv-YYnn2ITNFItGUQ", None),
+    ("Prof Ricardo Marcílio", "https://www.youtube.com/feeds/videos.xml?channel_id=UCT6Imb3GXhF8GmjpIk6y2lg", None),
     ("André Nômade Raiz", "https://www.youtube.com/feeds/videos.xml?channel_id=UCTUkOhJTsv868_efzbyeTKA", None),
     ("TSE Notícias", "https://www.tse.jus.br/noticias-em-rss", None),
     ("Agência Gov (Planalto)", "https://agenciabrasil.ebc.com.br/rss/politica/feed.xml", None),

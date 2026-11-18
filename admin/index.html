@@ -648,14 +648,19 @@
 
     .admin-card-head {
       position: relative;
-      padding-right: 2.6rem;
+      padding-right: 3.5rem;
     }
 
     .admin-collapse-btn {
       position: absolute;
-      right: var(--space-4);
+      right: var(--space-2);
       top: 50%;
       transform: translateY(-50%);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 44px;
+      min-height: 44px;
       font-size: 0.95rem;
       line-height: 1;
       padding: 0.25rem 0.6rem;
@@ -705,7 +710,7 @@
         flex-direction: column;
         align-items: flex-start;
         gap: var(--space-2);
-        padding-right: 2.4rem;
+        padding-right: 3.25rem;
       }
 
       .admin-card-title {
@@ -807,6 +812,489 @@
         display: none;
       }
     }
+
+    /* ================= UX-ADMIN-ANALISE: navegação rápida, visão geral e filtros ================= */
+    .admin-wrap {
+      max-width: 1400px;
+    }
+
+    #admin-auth-card {
+      width: 100%;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    #admin-auth-card.is-connected {
+      display: none;
+    }
+
+    .admin-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-4);
+      align-items: start;
+    }
+
+    .admin-main {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-5);
+      min-width: 0;
+    }
+
+    .admin-group {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+    }
+
+    .admin-group-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      padding: 0 0.15rem;
+      margin-bottom: calc(-1 * var(--space-2));
+    }
+
+    .admin-card[data-admin-section],
+    .admin-overview,
+    .admin-subhead {
+      scroll-margin-top: 140px;
+    }
+
+    /* Nav sticky */
+    .admin-nav {
+      position: sticky;
+      top: 64px;
+      z-index: 900;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin;
+      padding: 0.5rem;
+      margin: 0 calc(-1 * var(--space-2));
+      background: color-mix(in oklab, var(--bg) 94%, transparent);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--divider);
+    }
+
+    .admin-nav-group {
+      display: none;
+    }
+
+    .admin-nav-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.45rem;
+      min-height: 44px;
+      padding: 0.35rem 0.75rem;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      font-size: 0.84rem;
+      font-weight: 600;
+      text-decoration: none;
+      white-space: nowrap;
+      flex: 0 0 auto;
+      transition: background var(--transition), border-color var(--transition);
+    }
+
+    .admin-nav-link:hover {
+      border-color: var(--primary);
+    }
+
+    .admin-nav-link.active {
+      border-color: var(--primary);
+      background: color-mix(in srgb, var(--primary) 12%, var(--surface));
+    }
+
+    .admin-nav-count {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 1.6rem;
+      padding: 0.05rem 0.45rem;
+      border-radius: var(--radius-full);
+      font-size: 0.72rem;
+      font-weight: 700;
+      background: var(--surface-offset);
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+    }
+
+    .admin-nav-count.is-warn {
+      background: color-mix(in srgb, var(--sun) 22%, var(--surface-2));
+      color: #9a5b08;
+      border-color: color-mix(in srgb, var(--sun) 50%, var(--border));
+    }
+
+    .admin-nav-count.is-err {
+      background: color-mix(in srgb, var(--bias-E) 18%, var(--surface-2));
+      color: var(--bias-E);
+      border-color: color-mix(in srgb, var(--bias-E) 50%, var(--border));
+    }
+
+    .admin-nav-count.is-ok {
+      background: color-mix(in srgb, #27ae60 15%, var(--surface-2));
+      color: #1e8449;
+      border-color: color-mix(in srgb, #27ae60 40%, var(--border));
+    }
+
+    [data-theme='dark'] .admin-nav-count.is-warn {
+      color: #f6c978;
+    }
+
+    [data-theme='dark'] .admin-nav-count.is-ok {
+      color: #6ee7a0;
+    }
+
+    .admin-nav-cta {
+      flex: 0 0 auto;
+      white-space: nowrap;
+    }
+
+    .admin-nav-foot {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      flex: 0 0 auto;
+    }
+
+    .admin-nav-foot .admin-btn {
+      white-space: nowrap;
+    }
+
+    #nav-user-label {
+      display: none;
+    }
+
+    @media (min-width: 1100px) {
+      .admin-layout {
+        grid-template-columns: 220px minmax(0, 1fr);
+        gap: var(--space-5);
+      }
+
+      .admin-nav {
+        top: calc(64px + var(--space-4));
+        flex-direction: column;
+        align-items: stretch;
+        overflow: visible;
+        margin: 0;
+        padding: var(--space-3);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        background: var(--surface);
+        box-shadow: var(--shadow-sm);
+        max-height: calc(100vh - 64px - 2 * var(--space-4));
+        overflow-y: auto;
+      }
+
+      .admin-nav-group {
+        display: block;
+        margin: var(--space-3) 0 0.15rem;
+        font-size: 0.68rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--text-muted);
+      }
+
+      .admin-nav-link {
+        border-radius: var(--radius-sm);
+        border-color: transparent;
+        background: transparent;
+        min-height: 38px;
+      }
+
+      .admin-nav-link:hover {
+        background: var(--surface-2);
+      }
+
+      .admin-nav-foot {
+        flex-direction: column;
+        align-items: stretch;
+        margin-top: var(--space-3);
+        padding-top: var(--space-3);
+        border-top: 1px solid var(--divider);
+      }
+
+      #nav-user-label {
+        display: block;
+        text-align: center;
+      }
+
+      .admin-card[data-admin-section],
+      .admin-overview,
+      .admin-subhead {
+        scroll-margin-top: 84px;
+      }
+    }
+
+    /* Visão geral */
+    .admin-overview {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-4);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .admin-overview-head {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+      margin-bottom: var(--space-3);
+    }
+
+    .admin-overview-head .admin-card-title {
+      font-size: 1.05rem;
+    }
+
+    .admin-overview-head #btn-atualizar-tudo {
+      margin-left: auto;
+    }
+
+    .admin-kpis {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: var(--space-2);
+    }
+
+    .admin-kpi {
+      appearance: none;
+      text-align: left;
+      font: inherit;
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      min-height: 72px;
+      padding: 0.6rem 0.75rem;
+      border: 1px solid var(--border);
+      border-left-width: 4px;
+      border-radius: var(--radius-md);
+      background: var(--surface-2);
+      cursor: pointer;
+      transition: border-color var(--transition), transform var(--transition);
+    }
+
+    .admin-kpi:hover {
+      border-color: var(--primary);
+    }
+
+    .admin-kpi:focus-visible,
+    .admin-nav-link:focus-visible {
+      outline: 2px solid var(--primary);
+      outline-offset: 2px;
+    }
+
+    .admin-kpi-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .admin-kpi-value {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      line-height: 1.1;
+    }
+
+    .admin-kpi-value-sm {
+      font-size: 1rem;
+      font-family: var(--font-ui, inherit);
+    }
+
+    .admin-kpi.is-warn {
+      border-left-color: var(--sun);
+    }
+
+    .admin-kpi.is-ok {
+      border-left-color: #27ae60;
+    }
+
+    .admin-kpi.is-err {
+      border-left-color: var(--bias-E);
+      background: color-mix(in srgb, var(--bias-E) 8%, var(--surface-2));
+    }
+
+    /* Subcabeçalho interno (não conta como .admin-card-head para o accordion) */
+    .admin-subhead {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+      margin: var(--space-5) 0 var(--space-3);
+    }
+
+    .admin-subhead:first-of-type {
+      margin-top: var(--space-2);
+    }
+
+    .admin-subhead-title {
+      font-size: 1rem;
+    }
+
+    /* Disparos do bot recolhíveis */
+    .admin-details {
+      border: 1px dashed var(--border);
+      border-radius: var(--radius-md);
+      padding: 0.15rem 0.75rem;
+      margin-bottom: var(--space-3);
+      background: var(--surface-2);
+    }
+
+    .admin-details summary {
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.88rem;
+      min-height: 40px;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .admin-details-body {
+      padding: var(--space-2) 0 var(--space-3);
+    }
+
+    #curadoria-disparos .admin-actions {
+      margin-top: var(--space-2);
+    }
+
+    /* Barra de filtros consistente */
+    .admin-filterbar {
+      display: flex;
+      align-items: flex-end;
+      gap: var(--space-2);
+      flex-wrap: wrap;
+      margin-bottom: var(--space-3);
+      padding: var(--space-3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      background: var(--surface-2);
+    }
+
+    .admin-filterbar .admin-field {
+      flex: 0 1 150px;
+    }
+
+    .admin-filterbar .admin-field-grow {
+      flex: 1 1 220px;
+    }
+
+    .admin-filterbar .admin-input,
+    .admin-filterbar .admin-select {
+      background: var(--surface);
+      min-height: 40px;
+    }
+
+    .admin-filter-meta {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      margin-left: auto;
+      min-height: 40px;
+    }
+
+    .admin-filterbar.is-filtered {
+      border-color: var(--primary);
+    }
+
+    /* Tabelas de análise: altura limitada + cabeçalho fixo (desktop) */
+    @media (min-width: 769px) {
+      .admin-table-scroll {
+        max-height: min(62vh, 560px);
+        overflow: auto;
+      }
+
+      .admin-table-scroll thead th {
+        position: sticky;
+        top: 0;
+        z-index: 1;
+      }
+    }
+
+    .admin-card.flash {
+      animation: adminFlash 1.2s ease;
+    }
+
+    @keyframes adminFlash {
+      0% {
+        box-shadow: 0 0 0 0 color-mix(in srgb, var(--primary) 55%, transparent);
+      }
+
+      100% {
+        box-shadow: 0 0 0 10px transparent;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .admin-nav {
+        top: 56px;
+      }
+
+      .admin-filterbar .admin-input,
+      .admin-filterbar .admin-select,
+      .admin-filter-meta,
+      .admin-details summary {
+        min-height: 44px;
+      }
+
+      .admin-kpis {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .admin-kpi {
+        min-height: 60px;
+        padding: 0.5rem 0.6rem;
+      }
+
+      .admin-kpi-value {
+        font-size: 1.25rem;
+      }
+
+      .admin-filterbar .admin-field,
+      .admin-filterbar .admin-field-grow {
+        flex: 1 1 calc(50% - var(--space-2));
+        width: auto;
+      }
+
+      .admin-filterbar .admin-field-grow {
+        flex-basis: 100%;
+      }
+
+      .admin-filter-meta {
+        width: 100%;
+        justify-content: space-between;
+        margin-left: 0;
+      }
+
+      .admin-group-label {
+        margin-bottom: 0;
+      }
+    }
+
+    @media (pointer: coarse) {
+      .admin-nav-link,
+      .admin-filterbar .admin-input,
+      .admin-filterbar .admin-select,
+      .admin-filter-meta,
+      .admin-details summary {
+        min-height: 44px;
+      }
+    }
   </style>
 </head>
 
@@ -863,365 +1351,623 @@
       <div id="auth-banner" class="admin-banner"></div>
     </section>
 
-    <div id="admin-panels" class="hidden" style="display:flex; flex-direction:column; gap:var(--space-5);">
-      <!-- SEÇÃO 1: CONTROLE RÁPIDO -->
-      <section class="admin-card" id="admin-section-controle-rapido" data-admin-section="controle-rapido"
-        aria-labelledby="admin-section-controle-rapido-title">
-        <div class="admin-card-head">
-          <div>
-            <h2 id="admin-section-controle-rapido-title" class="admin-card-title">Controle Rápido</h2>
-            <p class="admin-sub">Kill Switch editorial (<code>ai_config_operacional</code>) e disparo manual protegido por advisory
-              lock.</p>
+      <div id="admin-panels" class="admin-layout hidden">
+        <!-- Navegação rápida (sticky: lateral no desktop, barra compacta no mobile) -->
+        <nav class="admin-nav" id="admin-nav" aria-label="Navegação rápida do painel">
+          <button id="btn-ir-analise" class="admin-btn admin-btn-primary admin-btn-sm admin-nav-cta" type="button">Ir para análise</button>
+          <div class="admin-nav-group">Análise</div>
+          <a class="admin-nav-link" href="#admin-section-noticias-quentes" data-nav-target="admin-section-noticias-quentes">
+            <span>Notícias Quentes</span><span class="admin-nav-count" id="nav-count-quentes" title="Quentes ativas">0</span>
+          </a>
+          <a class="admin-nav-link" href="#admin-section-curadoria" data-nav-target="admin-section-curadoria">
+            <span>Curadoria &amp; Bot</span><span class="admin-nav-count" id="nav-count-curadoria" title="Eventos + colunas aguardando revisão">0</span>
+          </a>
+          <a class="admin-nav-link" href="#admin-section-radar" data-nav-target="admin-section-radar">
+            <span>Radar manual</span><span class="admin-nav-count" id="nav-count-radar" title="Notícias manuais no feed">0</span>
+          </a>
+          <div class="admin-nav-group">Conteúdo</div>
+          <a class="admin-nav-link" href="#admin-section-dossies" data-nav-target="admin-section-dossies">
+            <span>Dossiês</span><span class="admin-nav-count" id="nav-count-dossies" title="Total de dossiês">0</span>
+          </a>
+          <a class="admin-nav-link" href="#admin-section-entenda" data-nav-target="admin-section-entenda">
+            <span>Entenda o assunto</span>
+          </a>
+          <div class="admin-nav-group">Operação</div>
+          <a class="admin-nav-link" href="#admin-section-controle-rapido" data-nav-target="admin-section-controle-rapido">
+            <span>Controle Rápido</span><span class="admin-nav-count" id="nav-count-controle" title="Status da última execução">—</span>
+          </a>
+          <a class="admin-nav-link" href="#admin-section-fontes" data-nav-target="admin-section-fontes">
+            <span>Fontes</span><span class="admin-nav-count" id="nav-count-fontes" title="Fontes ativas">0</span>
+          </a>
+          <div class="admin-nav-foot">
+            <button id="btn-recolher-demais" class="admin-btn admin-btn-sm" type="button" title="Expande Análise e recolhe as demais seções">Focar na análise</button>
+            <button id="btn-nav-sair" class="admin-btn admin-btn-sm admin-btn-danger" type="button">Sair</button>
+            <span class="admin-sub" id="nav-user-label"></span>
           </div>
-          <div class="admin-head-actions">
-            <span id="kill-switch-badge" class="badge">Carregando...</span>
-            <button class="admin-collapse-btn" type="button" aria-label="Minimizar seção Controle Rápido" aria-expanded="true">−</button>
-          </div>
-        </div>
-
-        <div class="admin-controls-row">
-          <label class="switch-wrap" for="kill-switch-toggle">
-            <input id="kill-switch-toggle" class="switch-input" type="checkbox">
-            <span>
-              <strong>Publicação automática ativa</strong>
-              <span class="admin-sub" style="display:block;">Desligado = novos eventos entram como
-                <code>aguardando_revisao</code></span>
-            </span>
-          </label>
-
-          <button id="btn-rodar-coleta" class="admin-btn admin-btn-primary" type="button">
-            Rodar Coleta Agora
-          </button>
-        </div>
-
-        <div id="coleta-banner" class="admin-banner"></div>
-
-        <h3 class="admin-card-title" style="font-size: 1rem; margin: 0 0 var(--space-2);">Status da Coleta &amp; Execuções</h3>
-        <p class="admin-sub" style="margin-bottom: var(--space-3);">Últimas execuções registradas em <code>ai_execucoes_pipeline</code>.</p>
-        <div id="execucoes-lista" class="admin-list">
-          <div class="admin-sub">Carregando execuções...</div>
-        </div>
-      </section>
-
-      <!-- SEÇÃO 2: RADAR — NOTÍCIAS MANUAIS -->
-      <section class="admin-card" id="admin-section-radar" data-admin-section="radar" aria-labelledby="admin-section-radar_title">
-        <div class="admin-card-head">
-          <div>
-            <h2 id="admin-section-radar_title" class="admin-card-title">Radar — Notícias Manuais</h2>
-            <p class="admin-sub">Cadastro e curadoria manual de notícias no feed editorial (<code>/v2/admin/radar/manual</code>).</p>
-          </div>
-          <div class="admin-head-actions">
-            <button id="btn-recarregar-radar" class="admin-btn admin-btn-sm" type="button">Atualizar</button>
-            <button id="btn-adicionar-radar" class="admin-btn admin-btn-primary admin-btn-sm" type="button">+ Adicionar Notícia Manual</button>
-            <button class="admin-collapse-btn" type="button" aria-label="Minimizar seção Radar" aria-expanded="true">−</button>
-          </div>
-        </div>
-
-        <div class="admin-toolbar">
-          <div class="admin-field">
-            <label for="radar-busca">Buscar</label>
-            <input id="radar-busca" class="admin-input" type="search" placeholder="Título, fonte, país..." />
-          </div>
-          <div class="admin-field">
-            <label for="radar-filtro">Categoria</label>
-            <select id="radar-filtro" class="admin-select">
-              <option value="all">Todas</option>
-              <option value="geopolitica">Geopolítica</option>
-              <option value="politica">Política</option>
-              <option value="economia">Economia</option>
-              <option value="cultura">Cultura</option>
-              <option value="geral">Geral</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="admin-table-wrap">
-          <table class="admin-table">
-            <thead>
-              <tr>
-                <th>Notícia</th>
-                <th>Categoria</th>
-                <th>Urgência</th>
-                <th>Fonte</th>
-                <th>Publicação</th>
-                <th>Ações</th>
-              </tr>
-            </thead>
-            <tbody id="tbody-radar">
-              <tr>
-                <td colspan="6" class="admin-sub">Nenhuma notícia manual carregada.</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div id="radar-banner" class="admin-banner"></div>
-      </section>
-
-      <!-- SEÇÃO 3: NOTÍCIAS QUENTES -->
-      <section class="admin-card" id="admin-section-noticias-quentes" data-admin-section="noticias-quentes"
-        aria-labelledby="admin-section-noticias-quentes_title">
-        <div class="admin-card-head">
-          <div>
-            <h2 id="admin-section-noticias-quentes_title" class="admin-card-title">Notícias Quentes</h2>
-            <p class="admin-sub">CRUD do painel de notícias quentes do pulso (<code>/v2/admin/noticias-quentes</code>).</p>
-          </div>
-          <div class="admin-head-actions">
-            <button id="btn-recarregar-noticias-quentes" class="admin-btn admin-btn-sm" type="button">Atualizar</button>
-            <button id="btn-nova-noticia-quente" class="admin-btn admin-btn-primary admin-btn-sm" type="button">+ Nova Notícia Quente</button>
-            <button class="admin-collapse-btn" type="button" aria-label="Minimizar seção Notícias Quentes" aria-expanded="true">−</button>
-          </div>
-        </div>
-
-        <div id="noticias-quentes-banner" class="admin-banner"></div>
-
-        <div class="admin-table-wrap">
-          <table class="admin-table">
-            <thead>
-              <tr>
-                <th>Slug</th>
-                <th>Título</th>
-                <th>Categoria</th>
-                <th>Urgência</th>
-                <th>Status</th>
-                <th>Ações</th>
-              </tr>
-            </thead>
-            <tbody id="tbody-noticias-quentes">
-              <tr>
-                <td colspan="6" class="admin-sub">Nenhuma notícia quente carregada.</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      <!-- SEÇÃO 4: DOSSIÊS EDITORIAIS -->
-      <section class="admin-card" id="admin-section-dossies" data-admin-section="dossies" aria-labelledby="admin-section-dossies_title">
-        <div class="admin-card-head">
-          <div>
-            <h2 id="admin-section-dossies_title" class="admin-card-title">Dossiês Editoriais</h2>
-            <p class="admin-sub">Gerenciamento de dossiês temáticos, períodos de cobertura especial e regras de classificação.</p>
-            <div class="dossie-badges-row">
-              <span class="badge">Total: <strong id="dossies-count-total">0</strong></span>
-              <span class="badge badge-live"><span class="dossie-pulse-dot" aria-hidden="true"></span> Ao Vivo: <strong
-                  id="dossies-count-aovivo">0</strong></span>
-              <span class="badge badge-soon">Em Breve: <strong id="dossies-count-embreve">0</strong></span>
-              <span class="badge badge-archive">Arquivo: <strong id="dossies-count-arquivo">0</strong></span>
+        </nav>
+        <div class="admin-main">
+          <!-- Visão geral: pendências e estado (clique leva à área de ação) -->
+          <section class="admin-overview" id="admin-section-visao-geral" aria-labelledby="admin-overview-title">
+            <div class="admin-overview-head">
+              <h2 id="admin-overview-title" class="admin-card-title">Visão geral</h2>
+              <span class="admin-sub" id="overview-updated">—</span>
+              <button id="btn-atualizar-tudo" class="admin-btn admin-btn-sm" type="button">Atualizar tudo</button>
             </div>
+            <div class="admin-kpis">
+              <button type="button" class="admin-kpi" id="kpi-eventos" data-goto="admin-section-curadoria" data-goto-ev-status="aguardando_revisao">
+                <span class="admin-kpi-label">Eventos aguardando revisão</span>
+                <strong class="admin-kpi-value" id="kpi-eventos-val">—</strong>
+              </button>
+              <button type="button" class="admin-kpi" id="kpi-colunas" data-goto="curadoria-colunas" data-goto-col-status="pendentes">
+                <span class="admin-kpi-label">Colunas p/ aprovar</span>
+                <strong class="admin-kpi-value" id="kpi-colunas-val">—</strong>
+              </button>
+              <button type="button" class="admin-kpi" id="kpi-quentes" data-goto="admin-section-noticias-quentes">
+                <span class="admin-kpi-label">Quentes ativas</span>
+                <strong class="admin-kpi-value" id="kpi-quentes-val">—</strong>
+              </button>
+              <button type="button" class="admin-kpi" id="kpi-radar" data-goto="admin-section-radar">
+                <span class="admin-kpi-label">Radar manual</span>
+                <strong class="admin-kpi-value" id="kpi-radar-val">—</strong>
+              </button>
+              <button type="button" class="admin-kpi" id="kpi-autopub" data-goto="admin-section-controle-rapido">
+                <span class="admin-kpi-label">Publicação automática</span>
+                <strong class="admin-kpi-value" id="kpi-autopub-val">—</strong>
+              </button>
+              <button type="button" class="admin-kpi" id="kpi-execucao" data-goto="admin-section-controle-rapido">
+                <span class="admin-kpi-label">Última execução</span>
+                <strong class="admin-kpi-value admin-kpi-value-sm" id="kpi-execucao-val">—</strong>
+                <span class="admin-sub" id="kpi-execucao-meta"></span>
+              </button>
+            </div>
+          </section>
+          <div class="admin-group" id="admin-group-analise" data-admin-group="analise">
+            <div class="admin-group-label">Análise &amp; triagem</div>
+          <!-- ANÁLISE 1: NOTÍCIAS QUENTES -->
+          <section class="admin-card" id="admin-section-noticias-quentes" data-admin-section="noticias-quentes"
+            aria-labelledby="admin-section-noticias-quentes_title">
+            <div class="admin-card-head">
+              <div>
+                <h2 id="admin-section-noticias-quentes_title" class="admin-card-title">Notícias Quentes</h2>
+                <p class="admin-sub">CRUD do painel de notícias quentes do pulso (<code>/v2/admin/noticias-quentes</code>).</p>
+              </div>
+              <div class="admin-head-actions">
+                <button id="btn-recarregar-noticias-quentes" class="admin-btn admin-btn-sm" type="button">Atualizar</button>
+                <button id="btn-nova-noticia-quente" class="admin-btn admin-btn-primary admin-btn-sm" type="button">+ Nova Notícia Quente</button>
+                <button class="admin-collapse-btn" type="button" aria-label="Minimizar seção Notícias Quentes" aria-expanded="true">−</button>
+              </div>
+            </div>
+
+            <div id="noticias-quentes-banner" class="admin-banner"></div>
+
+            <div class="admin-filterbar" role="search" aria-label="Filtrar notícias quentes">
+              <div class="admin-field admin-field-grow">
+                <label for="nq-busca">Buscar</label>
+                <input id="nq-busca" class="admin-input" type="search" placeholder="Título, slug, país, palavra-chave..." />
+              </div>
+              <div class="admin-field">
+                <label for="nq-filtro-status">Status</label>
+                <select id="nq-filtro-status" class="admin-select"><option value="all">Todos</option></select>
+              </div>
+              <div class="admin-field">
+                <label for="nq-filtro-categoria">Categoria</label>
+                <select id="nq-filtro-categoria" class="admin-select"><option value="all">Todas</option></select>
+              </div>
+              <div class="admin-field">
+                <label for="nq-urgencia">Urgência</label>
+                <select id="nq-urgencia" class="admin-select">
+                  <option value="all">Todas</option>
+                  <option value="alta">Alta</option>
+                  <option value="media">Média</option>
+                  <option value="baixa">Baixa</option>
+                </select>
+              </div>
+              <div class="admin-field">
+                <label for="nq-periodo">Período</label>
+                <select id="nq-periodo" class="admin-select">
+                  <option value="all">Qualquer</option>
+                  <option value="6">Últimas 6h</option>
+                  <option value="24">Últimas 24h</option>
+                  <option value="168">Últimos 7 dias</option>
+                </select>
+              </div>
+              <div class="admin-filter-meta">
+                <span class="admin-sub" id="nq-resultado" aria-live="polite"></span>
+                <button type="button" class="admin-btn admin-btn-sm" data-clear-filters="nq">Limpar filtros</button>
+              </div>
+            </div>
+
+            <div class="admin-table-wrap admin-table-scroll">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Notícia</th>
+                    <th>Categoria</th>
+                    <th>Urgência</th>
+                    <th>Status</th>
+                    <th>Atualizado</th>
+                    <th>Ações</th>
+                  </tr>
+                </thead>
+                <tbody id="tbody-noticias-quentes">
+                  <tr>
+                    <td colspan="6" class="admin-sub">Nenhuma notícia quente carregada.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <!-- ANÁLISE 2: CURADORIA & BOT -->
+          <section class="admin-card" id="admin-section-curadoria" data-admin-section="curadoria" aria-labelledby="admin-section-curadoria_title">
+            <div class="admin-card-head">
+              <div>
+                <h2 id="admin-section-curadoria_title" class="admin-card-title">Curadoria &amp; Bot</h2>
+                <p class="admin-sub">Fila de eventos (publicar/arquivar/excluir) e colunas aguardando revisão humana.</p>
+              </div>
+              <div class="admin-head-actions">
+                <button id="btn-recarregar-eventos" class="admin-btn admin-btn-sm" type="button">Atualizar</button>
+                <button class="admin-collapse-btn" type="button" aria-label="Minimizar seção Curadoria" aria-expanded="true">−</button>
+              </div>
+            </div>
+
+            <details class="admin-details" id="curadoria-disparos">
+              <summary>Disparos do bot <span class="admin-sub">— Rodar Pulso / Gerar Coluna Editorial</span></summary>
+              <div class="admin-details-body">
+                <div class="admin-controls-row">
+                  <div class="admin-field" style="flex:1 1 320px;">
+                    <label for="coluna-tema">Tema da coluna (opcional)</label>
+                    <input id="coluna-tema" class="admin-input" type="text" maxlength="240"
+                      placeholder="Ex: Acordo Mercosul-UE e impactos comerciais" />
+                  </div>
+                  <label class="admin-check-label" for="coluna-dry-run">
+                    <input id="coluna-dry-run" type="checkbox" />
+                    <span><strong>Dry-run</strong> (gera sem gravar no banco)</span>
+                  </label>
+                </div>
+                <div class="admin-actions">
+                  <button id="btn-rodar-pulso" class="admin-btn admin-btn-sm" type="button">Rodar Pulso Agora</button>
+                  <button id="btn-gerar-coluna" class="admin-btn admin-btn-sm admin-btn-primary" type="button">Gerar Coluna Editorial</button>
+                </div>
+              </div>
+            </details>
+
+            <div id="eventos-banner" class="admin-banner"></div>
+
+            <div class="admin-subhead" id="curadoria-eventos">
+              <h3 class="admin-card-title admin-subhead-title">Fila de eventos</h3>
+            </div>
+
+            <div class="admin-tabs" id="eventos-tabs" role="tablist" aria-label="Filtrar eventos por status">
+              <button class="admin-tab active" type="button" role="tab" aria-selected="true" data-ev-status="aguardando_revisao">
+                Aguardando <span id="ev-count-aguardando_revisao">0</span>
+              </button>
+              <button class="admin-tab" type="button" role="tab" aria-selected="false" data-ev-status="publicado">
+                Publicados <span id="ev-count-publicado">0</span>
+              </button>
+              <button class="admin-tab" type="button" role="tab" aria-selected="false" data-ev-status="arquivado">
+                Arquivados <span id="ev-count-arquivado">0</span>
+              </button>
+              <button class="admin-tab" type="button" role="tab" aria-selected="false" data-ev-status="excluido">
+                Excluídos <span id="ev-count-excluido">0</span>
+              </button>
+            </div>
+
+            <div class="admin-filterbar" role="search" aria-label="Filtrar fila de eventos">
+              <div class="admin-field admin-field-grow">
+                <label for="ev-busca">Buscar</label>
+                <input id="ev-busca" class="admin-input" type="search" placeholder="Título ou slug do evento..." />
+              </div>
+              <div class="admin-field">
+                <label for="ev-categoria">Categoria</label>
+                <select id="ev-categoria" class="admin-select"><option value="all">Todas</option></select>
+              </div>
+              <div class="admin-field">
+                <label for="ev-confianca">Confiança</label>
+                <select id="ev-confianca" class="admin-select"><option value="all">Todas</option></select>
+              </div>
+              <div class="admin-field">
+                <label for="ev-periodo">Período</label>
+                <select id="ev-periodo" class="admin-select">
+                  <option value="all">Qualquer</option>
+                  <option value="6">Últimas 6h</option>
+                  <option value="24">Últimas 24h</option>
+                  <option value="168">Últimos 7 dias</option>
+                </select>
+              </div>
+              <div class="admin-filter-meta">
+                <span class="admin-sub" id="ev-resultado" aria-live="polite"></span>
+                <button type="button" class="admin-btn admin-btn-sm" data-clear-filters="ev">Limpar filtros</button>
+              </div>
+            </div>
+
+            <div class="admin-table-wrap admin-table-scroll">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Evento</th>
+                    <th>Categoria</th>
+                    <th>Confiança</th>
+                    <th>Status</th>
+                    <th>Ações</th>
+                  </tr>
+                </thead>
+                <tbody id="tbody-eventos">
+                  <tr>
+                    <td colspan="5" class="admin-sub">Nenhum evento na fila.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="admin-subhead" id="curadoria-colunas">
+              <div>
+                <h3 class="admin-card-title admin-subhead-title">Colunas Editoriais — aprovação humana</h3>
+                <p class="admin-sub">A IA audita, mas só vai ao site depois de <strong>Publicar</strong> aqui.</p>
+              </div>
+              <button id="btn-recarregar-colunas" class="admin-btn admin-btn-sm" type="button">Atualizar Colunas</button>
+            </div>
+
+            <div id="colunas-banner" class="admin-banner"></div>
+
+            <div class="admin-filterbar" role="search" aria-label="Filtrar colunas editoriais">
+              <div class="admin-field admin-field-grow">
+                <label for="col-busca">Buscar</label>
+                <input id="col-busca" class="admin-input" type="search" placeholder="Título, slug, tese..." />
+              </div>
+              <div class="admin-field">
+                <label for="col-status">Status</label>
+                <select id="col-status" class="admin-select">
+                  <option value="all">Todos</option>
+                  <option value="pendentes">Pendentes (rascunho + aprovado)</option>
+                  <option value="rascunho">Rascunho</option>
+                  <option value="aprovado">Aprovado</option>
+                  <option value="publicado">Publicado</option>
+                  <option value="rejeitado">Rejeitado</option>
+                </select>
+              </div>
+              <div class="admin-field">
+                <label for="col-categoria">Categoria</label>
+                <select id="col-categoria" class="admin-select"><option value="all">Todas</option></select>
+              </div>
+              <div class="admin-field">
+                <label for="col-periodo">Período</label>
+                <select id="col-periodo" class="admin-select">
+                  <option value="all">Qualquer</option>
+                  <option value="24">Últimas 24h</option>
+                  <option value="168">Últimos 7 dias</option>
+                  <option value="720">Últimos 30 dias</option>
+                </select>
+              </div>
+              <div class="admin-filter-meta">
+                <span class="admin-sub" id="col-resultado" aria-live="polite"></span>
+                <button type="button" class="admin-btn admin-btn-sm" data-clear-filters="col">Limpar filtros</button>
+              </div>
+            </div>
+
+            <div class="admin-table-wrap admin-table-scroll">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Título</th>
+                    <th>Categoria</th>
+                    <th>Nota IA</th>
+                    <th>Status</th>
+                    <th>Ações</th>
+                  </tr>
+                </thead>
+                <tbody id="tbody-colunas">
+                  <tr>
+                    <td colspan="5" class="admin-sub">Nenhuma coluna gerada.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <!-- ANÁLISE 3: RADAR — NOTÍCIAS MANUAIS -->
+          <section class="admin-card" id="admin-section-radar" data-admin-section="radar" aria-labelledby="admin-section-radar_title">
+            <div class="admin-card-head">
+              <div>
+                <h2 id="admin-section-radar_title" class="admin-card-title">Radar — Notícias Manuais</h2>
+                <p class="admin-sub">Cadastro e curadoria manual de notícias no feed editorial (<code>/v2/admin/radar/manual</code>).</p>
+              </div>
+              <div class="admin-head-actions">
+                <button id="btn-recarregar-radar" class="admin-btn admin-btn-sm" type="button">Atualizar</button>
+                <button id="btn-adicionar-radar" class="admin-btn admin-btn-primary admin-btn-sm" type="button">+ Adicionar Notícia Manual</button>
+                <button class="admin-collapse-btn" type="button" aria-label="Minimizar seção Radar" aria-expanded="true">−</button>
+              </div>
+            </div>
+
+            <div class="admin-filterbar" role="search" aria-label="Filtrar notícias manuais do radar">
+              <div class="admin-field admin-field-grow">
+                <label for="radar-busca">Buscar</label>
+                <input id="radar-busca" class="admin-input" type="search" placeholder="Título, fonte, país..." />
+              </div>
+              <div class="admin-field">
+                <label for="radar-filtro">Categoria</label>
+                <select id="radar-filtro" class="admin-select">
+                  <option value="all">Todas</option>
+                  <option value="geopolitica">Geopolítica</option>
+                  <option value="politica">Política</option>
+                  <option value="economia">Economia</option>
+                  <option value="cultura">Cultura</option>
+                  <option value="geral">Geral</option>
+                </select>
+              </div>
+              <div class="admin-field">
+                <label for="radar-urgencia">Urgência</label>
+                <select id="radar-urgencia" class="admin-select">
+                  <option value="all">Todas</option>
+                  <option value="alta">Alta</option>
+                  <option value="media">Média</option>
+                  <option value="baixa">Baixa</option>
+                </select>
+              </div>
+              <div class="admin-field">
+                <label for="radar-periodo">Período</label>
+                <select id="radar-periodo" class="admin-select">
+                  <option value="all">Qualquer</option>
+                  <option value="6">Últimas 6h</option>
+                  <option value="24">Últimas 24h</option>
+                  <option value="168">Últimos 7 dias</option>
+                </select>
+              </div>
+              <div class="admin-filter-meta">
+                <span class="admin-sub" id="radar-resultado" aria-live="polite"></span>
+                <button type="button" class="admin-btn admin-btn-sm" data-clear-filters="radar">Limpar filtros</button>
+              </div>
+            </div>
+
+            <div class="admin-table-wrap admin-table-scroll">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Notícia</th>
+                    <th>Categoria</th>
+                    <th>Urgência</th>
+                    <th>Fonte</th>
+                    <th>Publicação</th>
+                    <th>Ações</th>
+                  </tr>
+                </thead>
+                <tbody id="tbody-radar">
+                  <tr>
+                    <td colspan="6" class="admin-sub">Nenhuma notícia manual carregada.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div id="radar-banner" class="admin-banner"></div>
+          </section>
           </div>
-          <div class="admin-head-actions">
-            <button id="btn-recarregar-dossies" class="admin-btn admin-btn-sm" type="button">Atualizar</button>
-            <button id="btn-novo-dossie" class="admin-btn admin-btn-primary admin-btn-sm" type="button">+ Novo Dossiê Especial</button>
-            <button class="admin-collapse-btn" type="button" aria-label="Minimizar seção Dossiês Editoriais" aria-expanded="true">−</button>
+          <div class="admin-group" id="admin-group-conteudo" data-admin-group="conteudo">
+            <div class="admin-group-label">Conteúdo editorial</div>
+          <!-- CONTEÚDO 1: DOSSIÊS EDITORIAIS -->
+          <section class="admin-card" id="admin-section-dossies" data-admin-section="dossies" data-default-collapsed="1" aria-labelledby="admin-section-dossies_title">
+            <div class="admin-card-head">
+              <div>
+                <h2 id="admin-section-dossies_title" class="admin-card-title">Dossiês Editoriais</h2>
+                <p class="admin-sub">Gerenciamento de dossiês temáticos, períodos de cobertura especial e regras de classificação.</p>
+                <div class="dossie-badges-row">
+                  <span class="badge">Total: <strong id="dossies-count-total">0</strong></span>
+                  <span class="badge badge-live"><span class="dossie-pulse-dot" aria-hidden="true"></span> Ao Vivo: <strong
+                      id="dossies-count-aovivo">0</strong></span>
+                  <span class="badge badge-soon">Em Breve: <strong id="dossies-count-embreve">0</strong></span>
+                  <span class="badge badge-archive">Arquivo: <strong id="dossies-count-arquivo">0</strong></span>
+                </div>
+              </div>
+              <div class="admin-head-actions">
+                <button id="btn-recarregar-dossies" class="admin-btn admin-btn-sm" type="button">Atualizar</button>
+                <button id="btn-novo-dossie" class="admin-btn admin-btn-primary admin-btn-sm" type="button">+ Novo Dossiê Especial</button>
+                <button class="admin-collapse-btn" type="button" aria-label="Minimizar seção Dossiês Editoriais" aria-expanded="true">−</button>
+              </div>
+            </div>
+
+            <div class="dossie-filters" role="group" aria-label="Filtrar dossiês">
+              <button type="button" class="dossie-filter-btn active" data-dossie-filter="all">Todos</button>
+              <button type="button" class="dossie-filter-btn" data-dossie-filter="especiais_ativos">Especiais (Ao Vivo / Em
+                Breve)</button>
+              <button type="button" class="dossie-filter-btn" data-dossie-filter="especiais_arquivo">Especiais
+                (Arquivo)</button>
+              <button type="button" class="dossie-filter-btn" data-dossie-filter="permanentes">Permanentes</button>
+            </div>
+
+            <div id="dossies-banner" class="admin-banner"></div>
+
+            <div class="admin-table-wrap">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Ícone</th>
+                    <th>Título / Slug</th>
+                    <th>Tipo</th>
+                    <th>Status</th>
+                    <th>Período</th>
+                    <th>Matérias</th>
+                    <th>Ações</th>
+                  </tr>
+                </thead>
+                <tbody id="tbody-dossies">
+                  <tr>
+                    <td colspan="7" class="admin-sub">Nenhum dossiê carregado.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <!-- CONTEÚDO 2: ENTENDA O ASSUNTO -->
+          <section class="admin-card" id="admin-section-entenda" data-admin-section="entenda" data-default-collapsed="1" aria-labelledby="admin-section-entenda_title">
+            <div class="admin-card-head">
+              <div>
+                <h2 id="admin-section-entenda_title" class="admin-card-title">Entenda o assunto — Gerar artigos</h2>
+                <p class="admin-sub">Gere novos artigos/análises em <strong>Entenda o assunto</strong> (V2) com base nos assuntos do momento. O conteúdo passa pelo pipeline editorial e pode ser revisado/publicado em <strong>Colunas Editoriais</strong>.</p>
+              </div>
+              <div class="admin-head-actions">
+                <button class="admin-collapse-btn" type="button" aria-label="Minimizar seção Entenda o assunto" aria-expanded="true">−</button>
+              </div>
+            </div>
+
+            <div class="admin-controls-row" style="align-items:flex-end;">
+              <div class="admin-field" style="flex:0 1 140px;">
+                <label for="entenda-trend-country">País (tendências)</label>
+                <input id="entenda-trend-country" class="admin-input" type="text" value="BR" maxlength="2" placeholder="BR" />
+              </div>
+              <div class="admin-field" style="flex:0 1 120px;">
+                <label for="entenda-trend-lang">Idioma</label>
+                <input id="entenda-trend-lang" class="admin-input" type="text" value="pt" maxlength="5" placeholder="pt" />
+              </div>
+              <div class="admin-actions" style="margin-left:auto;">
+                <button id="btn-entenda-buscar-assuntos" class="admin-btn admin-btn-sm" type="button">Buscar assuntos do momento</button>
+              </div>
+            </div>
+
+            <div id="entenda-assuntos-lista" class="admin-list" style="margin: var(--space-3) 0;">
+              <div class="admin-sub">Clique em “Buscar assuntos do momento” para sugerir temas em alta (Google Trends / manchetes).</div>
+            </div>
+
+            <div class="admin-form-grid" style="margin-top: var(--space-3);">
+              <div class="admin-field" style="grid-column: span 2;">
+                <label for="entenda-tema">Tema do artigo *</label>
+                <input id="entenda-tema" class="admin-input" type="text" maxlength="240" placeholder="Ex.: Tensão no Oriente Médio e impacto no petróleo" />
+              </div>
+              <div class="admin-field">
+                <label for="entenda-slug">Slug (opcional)</label>
+                <input id="entenda-slug" class="admin-input" type="text" maxlength="180" placeholder="ex.: tensao-oriente-medio-petroleo" />
+              </div>
+              <div class="admin-checkbox-row">
+                <label class="admin-check-label" for="entenda-dry-run">
+                  <input id="entenda-dry-run" type="checkbox" />
+                  <span><strong>Dry-run</strong> (gera sem gravar no banco)</span>
+                </label>
+                <button id="btn-entenda-gerar" class="admin-btn admin-btn-primary" type="button">Gerar artigo em Entenda o assunto</button>
+              </div>
+            </div>
+
+            <div id="entenda-banner" class="admin-banner"></div>
+          </section>
+          </div>
+          <div class="admin-group" id="admin-group-operacao" data-admin-group="operacao">
+            <div class="admin-group-label">Operação &amp; configuração</div>
+          <!-- OPERAÇÃO 1: CONTROLE RÁPIDO -->
+          <section class="admin-card" id="admin-section-controle-rapido" data-admin-section="controle-rapido" data-default-collapsed="1"
+            aria-labelledby="admin-section-controle-rapido-title">
+            <div class="admin-card-head">
+              <div>
+                <h2 id="admin-section-controle-rapido-title" class="admin-card-title">Controle Rápido</h2>
+                <p class="admin-sub">Kill Switch editorial (<code>ai_config_operacional</code>) e disparo manual protegido por advisory
+                  lock.</p>
+              </div>
+              <div class="admin-head-actions">
+                <span id="kill-switch-badge" class="badge">Carregando...</span>
+                <button class="admin-collapse-btn" type="button" aria-label="Minimizar seção Controle Rápido" aria-expanded="true">−</button>
+              </div>
+            </div>
+
+            <div class="admin-controls-row">
+              <label class="switch-wrap" for="kill-switch-toggle">
+                <input id="kill-switch-toggle" class="switch-input" type="checkbox">
+                <span>
+                  <strong>Publicação automática ativa</strong>
+                  <span class="admin-sub" style="display:block;">Desligado = novos eventos entram como
+                    <code>aguardando_revisao</code></span>
+                </span>
+              </label>
+
+              <button id="btn-rodar-coleta" class="admin-btn admin-btn-primary" type="button">
+                Rodar Coleta Agora
+              </button>
+            </div>
+
+            <div id="coleta-banner" class="admin-banner"></div>
+
+            <h3 class="admin-card-title" style="font-size: 1rem; margin: 0 0 var(--space-2);">Status da Coleta &amp; Execuções</h3>
+            <p class="admin-sub" style="margin-bottom: var(--space-3);">Últimas execuções registradas em <code>ai_execucoes_pipeline</code>.</p>
+            <div id="execucoes-lista" class="admin-list">
+              <div class="admin-sub">Carregando execuções...</div>
+            </div>
+          </section>
+
+          <!-- OPERAÇÃO 2: FONTES -->
+          <section class="admin-card" id="admin-section-fontes" data-admin-section="fontes" data-default-collapsed="1" aria-labelledby="admin-section-fontes_title">
+            <div class="admin-card-head">
+              <div>
+                <h2 id="admin-section-fontes_title" class="admin-card-title">Fontes</h2>
+                <p class="admin-sub">Cadastro e governança de fontes de coleta (<code>/v2/admin/fontes</code>).</p>
+              </div>
+              <div class="admin-head-actions">
+                <button id="btn-buscar-fonte-ia" class="admin-btn admin-btn-sm admin-btn-primary" type="button">✨ Buscar fonte com IA</button>
+                <button id="btn-recarregar-fontes" class="admin-btn admin-btn-sm" type="button">Atualizar Lista</button>
+                <button class="admin-collapse-btn" type="button" aria-label="Minimizar seção Fontes" aria-expanded="true">−</button>
+              </div>
+            </div>
+
+            <form id="form-nova-fonte" class="admin-form-grid">
+              <div class="admin-field">
+                <label for="f-nome">Nome</label>
+                <input id="f-nome" class="admin-input" type="text" required minlength="2" maxlength="150"
+                  placeholder="Ex: Agência Brasil" />
+              </div>
+              <div class="admin-field" style="grid-column: span 2;">
+                <label for="f-url">URL do Feed / Fonte</label>
+                <input id="f-url" class="admin-input" type="url" required placeholder="https://..." />
+              </div>
+              <div class="admin-field">
+                <label for="f-tipo">Tipo</label>
+                <select id="f-tipo" class="admin-select">
+                  <option value="rss_feed">rss_feed</option>
+                  <option value="fonte_primaria">fonte_primaria</option>
+                  <option value="youtube_rss">youtube_rss</option>
+                  <option value="artigo_avulso">artigo_avulso</option>
+                </select>
+              </div>
+              <div class="admin-field">
+                <label for="f-cadencia">Cadência</label>
+                <select id="f-cadencia" class="admin-select">
+                  <option value="pulso_30m">pulso_30m</option>
+                  <option value="ciclo_3h">ciclo_3h</option>
+                </select>
+              </div>
+              <div class="admin-field">
+                <label for="f-peso">Confiança (1–5)</label>
+                <input id="f-peso" class="admin-input" type="number" min="1" max="5" value="3" required />
+              </div>
+
+              <div class="admin-checkbox-row">
+                <label class="admin-check-label" for="f-aprovar">
+                  <input id="f-aprovar" type="checkbox" />
+                  <span><strong>Aprovar para coleta imediata</strong> (status <code>aprovada</code>,
+                    <code>apenas_metadados</code>, <code>sintese_e_link</code>)</span>
+                </label>
+                <button type="submit" class="admin-btn admin-btn-primary">Cadastrar Fonte</button>
+              </div>
+            </form>
+            <div id="fontes-banner" class="admin-banner"></div>
+
+            <div class="admin-table-wrap">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Nome</th>
+                    <th>Tipo</th>
+                    <th>Política</th>
+                    <th>Ativo</th>
+                    <th>Ação</th>
+                  </tr>
+                </thead>
+                <tbody id="tbody-fontes">
+                  <tr>
+                    <td colspan="5" class="admin-sub">Nenhuma fonte cadastrada.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
           </div>
         </div>
-
-        <div class="dossie-filters" role="group" aria-label="Filtrar dossiês">
-          <button type="button" class="dossie-filter-btn active" data-dossie-filter="all">Todos</button>
-          <button type="button" class="dossie-filter-btn" data-dossie-filter="especiais_ativos">Especiais (Ao Vivo / Em
-            Breve)</button>
-          <button type="button" class="dossie-filter-btn" data-dossie-filter="especiais_arquivo">Especiais
-            (Arquivo)</button>
-          <button type="button" class="dossie-filter-btn" data-dossie-filter="permanentes">Permanentes</button>
-        </div>
-
-        <div id="dossies-banner" class="admin-banner"></div>
-
-        <div class="admin-table-wrap">
-          <table class="admin-table">
-            <thead>
-              <tr>
-                <th>Ícone</th>
-                <th>Título / Slug</th>
-                <th>Tipo</th>
-                <th>Status</th>
-                <th>Período</th>
-                <th>Matérias</th>
-                <th>Ações</th>
-              </tr>
-            </thead>
-            <tbody id="tbody-dossies">
-              <tr>
-                <td colspan="7" class="admin-sub">Nenhum dossiê carregado.</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      <!-- SEÇÃO 5: CURADORIA & BOT -->
-      <section class="admin-card" id="admin-section-curadoria" data-admin-section="curadoria" aria-labelledby="admin-section-curadoria_title">
-        <div class="admin-card-head">
-          <div>
-            <h2 id="admin-section-curadoria_title" class="admin-card-title">Curadoria &amp; Bot</h2>
-            <p class="admin-sub">Disparos do bot, fila de eventos (aprovar/arquivar/excluir) e colunas aguardando revisão humana.</p>
-          </div>
-          <div class="admin-head-actions">
-            <button class="admin-collapse-btn" type="button" aria-label="Minimizar seção Curadoria" aria-expanded="true">−</button>
-          </div>
-        </div>
-
-        <div class="admin-controls-row">
-          <div class="admin-field" style="flex:1 1 320px;">
-            <label for="coluna-tema">Tema da coluna (opcional)</label>
-            <input id="coluna-tema" class="admin-input" type="text" maxlength="240"
-              placeholder="Ex: Acordo Mercosul-UE e impactos comerciais" />
-          </div>
-          <label class="admin-check-label" for="coluna-dry-run">
-            <input id="coluna-dry-run" type="checkbox" />
-            <span><strong>Dry-run</strong> (gera sem gravar no banco)</span>
-          </label>
-        </div>
-
-        <div class="admin-actions" style="margin: 0 0 var(--space-3);">
-          <button id="btn-rodar-pulso" class="admin-btn admin-btn-sm" type="button">Rodar Pulso Agora</button>
-          <button id="btn-gerar-coluna" class="admin-btn admin-btn-sm admin-btn-primary" type="button">Gerar Coluna Editorial</button>
-          <button id="btn-recarregar-eventos" class="admin-btn admin-btn-sm" type="button">Atualizar</button>
-        </div>
-
-        <div id="eventos-banner" class="admin-banner"></div>
-
-        <div class="admin-tabs" id="eventos-tabs" role="tablist" aria-label="Filtrar eventos por status">
-          <button class="admin-tab active" type="button" role="tab" aria-selected="true" data-ev-status="aguardando_revisao">
-            Aguardando <span id="ev-count-aguardando_revisao">0</span>
-          </button>
-          <button class="admin-tab" type="button" role="tab" aria-selected="false" data-ev-status="publicado">
-            Publicados <span id="ev-count-publicado">0</span>
-          </button>
-          <button class="admin-tab" type="button" role="tab" aria-selected="false" data-ev-status="arquivado">
-            Arquivados <span id="ev-count-arquivado">0</span>
-          </button>
-          <button class="admin-tab" type="button" role="tab" aria-selected="false" data-ev-status="excluido">
-            Excluídos <span id="ev-count-excluido">0</span>
-          </button>
-        </div>
-
-        <div class="admin-table-wrap">
-          <table class="admin-table">
-            <thead>
-              <tr>
-                <th>Evento</th>
-                <th>Categoria</th>
-                <th>Confiança</th>
-                <th>Status</th>
-                <th>Ações</th>
-              </tr>
-            </thead>
-            <tbody id="tbody-eventos">
-              <tr>
-                <td colspan="5" class="admin-sub">Nenhum evento na fila.</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="admin-card-head" style="margin-top: var(--space-5); margin-bottom: var(--space-3);">
-          <div>
-            <h3 class="admin-card-title" style="font-size: 1rem;">Colunas Editoriais — aprovação humana</h3>
-            <p class="admin-sub">A IA audita, mas só vai ao site depois de <strong>Publicar</strong> aqui.</p>
-          </div>
-          <button id="btn-recarregar-colunas" class="admin-btn admin-btn-sm" type="button">Atualizar Colunas</button>
-        </div>
-
-        <div id="colunas-banner" class="admin-banner"></div>
-
-        <div class="admin-table-wrap">
-          <table class="admin-table">
-            <thead>
-              <tr>
-                <th>Título</th>
-                <th>Categoria</th>
-                <th>Nota IA</th>
-                <th>Status</th>
-                <th>Ações</th>
-              </tr>
-            </thead>
-            <tbody id="tbody-colunas">
-              <tr>
-                <td colspan="5" class="admin-sub">Nenhuma coluna gerada.</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      <!-- SEÇÃO 6: FONTES -->
-      <section class="admin-card" id="admin-section-fontes" data-admin-section="fontes" aria-labelledby="admin-section-fontes_title">
-        <div class="admin-card-head">
-          <div>
-            <h2 id="admin-section-fontes_title" class="admin-card-title">Fontes</h2>
-            <p class="admin-sub">Cadastro e governança de fontes de coleta (<code>/v2/admin/fontes</code>).</p>
-          </div>
-          <div class="admin-head-actions">
-            <button id="btn-buscar-fonte-ia" class="admin-btn admin-btn-sm admin-btn-primary" type="button">✨ Buscar fonte com IA</button>
-            <button id="btn-recarregar-fontes" class="admin-btn admin-btn-sm" type="button">Atualizar Lista</button>
-            <button class="admin-collapse-btn" type="button" aria-label="Minimizar seção Fontes" aria-expanded="true">−</button>
-          </div>
-        </div>
-
-        <form id="form-nova-fonte" class="admin-form-grid">
-          <div class="admin-field">
-            <label for="f-nome">Nome</label>
-            <input id="f-nome" class="admin-input" type="text" required minlength="2" maxlength="150"
-              placeholder="Ex: Agência Brasil" />
-          </div>
-          <div class="admin-field" style="grid-column: span 2;">
-            <label for="f-url">URL do Feed / Fonte</label>
-            <input id="f-url" class="admin-input" type="url" required placeholder="https://..." />
-          </div>
-          <div class="admin-field">
-            <label for="f-tipo">Tipo</label>
-            <select id="f-tipo" class="admin-select">
-              <option value="rss_feed">rss_feed</option>
-              <option value="fonte_primaria">fonte_primaria</option>
-              <option value="youtube_rss">youtube_rss</option>
-              <option value="artigo_avulso">artigo_avulso</option>
-            </select>
-          </div>
-          <div class="admin-field">
-            <label for="f-cadencia">Cadência</label>
-            <select id="f-cadencia" class="admin-select">
-              <option value="pulso_30m">pulso_30m</option>
-              <option value="ciclo_3h">ciclo_3h</option>
-            </select>
-          </div>
-          <div class="admin-field">
-            <label for="f-peso">Confiança (1–5)</label>
-            <input id="f-peso" class="admin-input" type="number" min="1" max="5" value="3" required />
-          </div>
-
-          <div class="admin-checkbox-row">
-            <label class="admin-check-label" for="f-aprovar">
-              <input id="f-aprovar" type="checkbox" />
-              <span><strong>Aprovar para coleta imediata</strong> (status <code>aprovada</code>,
-                <code>apenas_metadados</code>, <code>sintese_e_link</code>)</span>
-            </label>
-            <button type="submit" class="admin-btn admin-btn-primary">Cadastrar Fonte</button>
-          </div>
-        </form>
-        <div id="fontes-banner" class="admin-banner"></div>
-
-        <div class="admin-table-wrap">
-          <table class="admin-table">
-            <thead>
-              <tr>
-                <th>Nome</th>
-                <th>Tipo</th>
-                <th>Política</th>
-                <th>Ativo</th>
-                <th>Ação</th>
-              </tr>
-            </thead>
-            <tbody id="tbody-fontes">
-              <tr>
-                <td colspan="5" class="admin-sub">Nenhuma fonte cadastrada.</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-    </div>
+      </div>
   </main>
 
   <!-- Modal: Editar Síntese / Errata -->
@@ -1696,7 +2442,12 @@
         editingRadarSlug: null,
         noticiasQuentes: [],
         editingNoticiaSlug: null,
-        iaSugestoes: []
+        iaSugestoes: [],
+        fontes: [],
+        execucoes: [],
+        autoPub: null,
+        eventosAguardando: null,
+        carregadoEm: null
       };
 
       let toastTimer = null;
@@ -1763,6 +2514,8 @@
       }
 
       function renderKillSwitch(ativo) {
+        state.autoPub = Boolean(ativo);
+        agendarResumo();
         const toggle = $('kill-switch-toggle');
         if (toggle) toggle.checked = Boolean(ativo);
         const badge = $('kill-switch-badge');
@@ -1794,6 +2547,8 @@
         const data = await apiFetch('/v2/admin/fontes');
         const tbody = $('tbody-fontes');
         const fontes = data.fontes || [];
+        state.fontes = fontes;
+        agendarResumo();
         if (!fontes.length) {
           tbody.innerHTML = '<tr><td colspan="5" class="admin-sub">Nenhuma fonte cadastrada.</td></tr>';
           return;
@@ -1969,12 +2724,42 @@
           const el = $('ev-count-' + k);
           if (el) el.textContent = cont[k] || 0;
         });
+        if (data.contagens && typeof data.contagens === 'object') {
+          state.eventosAguardando = Number(data.contagens.aguardando_revisao) || 0;
+        } else if (state.eventoFiltro === 'aguardando_revisao') {
+          state.eventosAguardando = state.eventos.length;
+          const el = $('ev-count-aguardando_revisao');
+          if (el) el.textContent = state.eventos.length;
+        }
+        preencherSelect('ev-categoria', state.eventos.map((ev) => ev.categoria), 'Todas');
+        preencherSelect('ev-confianca', state.eventos.map((ev) => ev.nivel_confianca), 'Todas');
+        renderEventos();
+      }
+
+      function renderEventos() {
+        agendarResumo();
         const tbody = $('tbody-eventos');
-        if (!state.eventos.length) {
+        const total = state.eventos.length;
+        const q = $('ev-busca') ? $('ev-busca').value : '';
+        const fCat = valorFiltro('ev-categoria');
+        const fConf = valorFiltro('ev-confianca');
+        const fPer = valorFiltro('ev-periodo');
+        const lista = state.eventos.filter((ev) => {
+          if (fCat !== 'all' && String(ev.categoria || '') !== fCat) return false;
+          if (fConf !== 'all' && String(ev.nivel_confianca || '') !== fConf) return false;
+          if (!dentroPeriodo(ev, fPer, ['updated_at', 'created_at'])) return false;
+          return combinaBusca(q, [ev.titulo_evento, ev.slug, ev.categoria, ev.sintese_com_ressalvas]);
+        });
+        atualizarResultadoFiltro('ev', lista.length, total);
+        if (!total) {
           tbody.innerHTML = '<tr><td colspan="5" class="admin-sub">Nenhum evento nesta categoria.</td></tr>';
           return;
         }
-        tbody.innerHTML = state.eventos.map((ev) => {
+        if (!lista.length) {
+          tbody.innerHTML = '<tr><td colspan="5" class="admin-sub">Nenhum evento corresponde aos filtros.</td></tr>';
+          return;
+        }
+        tbody.innerHTML = lista.map((ev) => {
           const stClass = ev.status === 'publicado' ? 'badge-ok' : (ev.status === 'aguardando_revisao' ? 'badge-warn' : (ev.status === 'excluido' ? 'badge-warn' : ''));
           const errataTag = ev.aviso_correcao_material ? '<span class="badge badge-warn" style="margin-left:0.35rem;">Errata</span>' : '';
           const podePublicar = ev.status !== 'publicado' && ev.status !== 'excluido';
@@ -2178,6 +2963,7 @@
       }
 
       function renderDossiesContagens() {
+        agendarResumo();
         const c = state.dossiesContagens || {};
         const total = $('dossies-count-total');
         const aovivo = $('dossies-count-aovivo');
@@ -2652,6 +3438,8 @@
         const data = await apiFetch('/v2/admin/execucoes?limit=20');
         const lista = $('execucoes-lista');
         const execucoes = data.execucoes || [];
+        state.execucoes = execucoes;
+        agendarResumo();
         if (!execucoes.length) {
           lista.innerHTML = '<div class="admin-sub">Nenhuma execução registrada.</div>';
           return;
@@ -2769,21 +3557,29 @@
       }
 
       function renderRadar() {
+        agendarResumo();
         const tbody = $('tbody-radar');
-        const q = ($('radar-busca').value || '').trim().toLowerCase();
+        const q = $('radar-busca').value || '';
         const f = $('radar-filtro').value || 'all';
+        const fUrg = valorFiltro('radar-urgencia');
+        const fPer = valorFiltro('radar-periodo');
+        const escala = escalaUrgencia(state.radar);
         let lista = state.radar;
         if (f && f !== 'all') {
           lista = lista.filter((c) => String(c.categoria || '').toLowerCase() === f);
         }
-        if (q) {
-          lista = lista.filter((c) => {
-            const hay = [c.titulo, c.resumo, c.analise, c.fonte_nome, c.pais_regiao, c.pais_envolvidos].filter(Boolean).join(' ').toLowerCase();
-            return hay.includes(q);
-          });
+        if (fUrg !== 'all') {
+          lista = lista.filter((c) => nivelUrgencia(c.urgencia_score, escala) === fUrg);
         }
+        if (fPer !== 'all') {
+          lista = lista.filter((c) => dentroPeriodo(c, fPer, ['data_publicacao', 'updated_at', 'created_at']));
+        }
+        if (q.trim()) {
+          lista = lista.filter((c) => combinaBusca(q, [c.titulo, c.resumo, c.analise, c.fonte_nome, c.pais_regiao, c.pais_envolvidos, c.paises_envolvidos, c.slug]));
+        }
+        atualizarResultadoFiltro('radar', lista.length, state.radar.length);
         if (!lista.length) {
-          tbody.innerHTML = '<tr><td colspan="6" class="admin-sub">Nenhuma notícia encontrada.</td></tr>';
+          tbody.innerHTML = `<tr><td colspan="6" class="admin-sub">${state.radar.length ? 'Nenhuma notícia corresponde aos filtros.' : 'Nenhuma notícia manual cadastrada.'}</td></tr>`;
           return;
         }
         tbody.innerHTML = lista.map((c) => `
@@ -2929,19 +3725,43 @@
       }
 
       function renderNoticiasQuentes() {
+        agendarResumo();
         const tbody = $('tbody-noticias-quentes');
-        const lista = state.noticiasQuentes;
-        if (!lista || !lista.length) {
+        const todas = state.noticiasQuentes || [];
+        preencherSelect('nq-filtro-status', todas.map((n) => n.status), 'Todos');
+        preencherSelect('nq-filtro-categoria', todas.map((n) => n.categoria), 'Todas');
+        const q = $('nq-busca') ? $('nq-busca').value : '';
+        const fSt = valorFiltro('nq-filtro-status');
+        const fCat = valorFiltro('nq-filtro-categoria');
+        const fUrg = valorFiltro('nq-urgencia');
+        const fPer = valorFiltro('nq-periodo');
+        const escala = escalaUrgencia(todas);
+        const lista = todas.filter((n) => {
+          if (fSt !== 'all' && String(n.status || '') !== fSt) return false;
+          if (fCat !== 'all' && String(n.categoria || '') !== fCat) return false;
+          if (fUrg !== 'all' && nivelUrgencia(n.urgencia_score, escala) !== fUrg) return false;
+          if (!dentroPeriodo(n, fPer, ['atualizado_em', 'updated_at'])) return false;
+          return combinaBusca(q, [n.titulo_curto, n.slug, n.resumo_pulso, n.impacto_pratico, n.categoria, n.paises_envolvidos, n.palavras_chave, n.veiculos_origem]);
+        });
+        atualizarResultadoFiltro('nq', lista.length, todas.length);
+        if (!todas.length) {
           tbody.innerHTML = '<tr><td colspan="6" class="admin-sub">Nenhuma notícia quente encontrada.</td></tr>';
+          return;
+        }
+        if (!lista.length) {
+          tbody.innerHTML = '<tr><td colspan="6" class="admin-sub">Nenhuma notícia quente corresponde aos filtros.</td></tr>';
           return;
         }
         tbody.innerHTML = lista.map((n) => `
           <tr>
-            <td><code>${escapeHtml(n.slug)}</code></td>
-            <td><strong>${escapeHtml(n.titulo_curto)}</strong></td>
+            <td>
+              <strong>${escapeHtml(n.titulo_curto)}</strong>
+              <div class="admin-sub"><code>${escapeHtml(n.slug)}</code></div>
+            </td>
             <td>${escapeHtml(n.categoria || '—')}</td>
-            <td>${escapeHtml(n.urgencia_score ?? 0)}</td>
+            <td><span class="badge ${nivelUrgencia(n.urgencia_score, escala) === 'alta' ? 'badge-warn' : ''}">${escapeHtml(n.urgencia_score ?? 0)}</span></td>
             <td><span class="badge ${n.status === 'publicado' || n.status === 'ativo' ? 'badge-ok' : 'badge-warn'}">${escapeHtml(n.status || '—')}</span></td>
+            <td><span class="admin-sub" title="${escapeHtml(n.atualizado_em || n.updated_at || '')}">${escapeHtml(formatarRelativo(n.updated_at || n.atualizado_em))}</span></td>
             <td>
               <div class="admin-actions">
                 <button class="admin-btn admin-btn-sm" type="button" data-edit-nq="${escapeHtml(n.slug)}">Editar</button>
@@ -2964,6 +3784,11 @@
         return n ? String(n) : '—';
       }
 
+      function statusNormColuna(c) {
+        const v = String((c && (c.status || c.review_status)) || 'rascunho');
+        return (v === 'publicado' || v === 'aprovado' || v === 'rejeitado') ? v : 'rascunho';
+      }
+
       function statusBadgeColuna(s) {
         const v = String(s || 'rascunho_auditado');
         if (v === 'publicado') return '<span class="badge badge-ok">publicado</span>';
@@ -2973,10 +3798,29 @@
       }
 
       function renderColunas() {
+        agendarResumo();
         const tbody = $('tbody-colunas');
-        const lista = state.colunas || [];
-        if (!lista.length) {
+        const todas = state.colunas || [];
+        preencherSelect('col-categoria', todas.map((c) => c.categoria), 'Todas');
+        const q = $('col-busca') ? $('col-busca').value : '';
+        const fSt = valorFiltro('col-status');
+        const fCat = valorFiltro('col-categoria');
+        const fPer = valorFiltro('col-periodo');
+        const lista = todas.filter((c) => {
+          const st = statusNormColuna(c);
+          if (fSt === 'pendentes' && !(st === 'rascunho' || st === 'aprovado')) return false;
+          if (fSt !== 'all' && fSt !== 'pendentes' && st !== fSt) return false;
+          if (fCat !== 'all' && String(c.categoria || '') !== fCat) return false;
+          if (!dentroPeriodo(c, fPer, ['updated_at', 'created_at', 'published_at'])) return false;
+          return combinaBusca(q, [c.titulo, c.subtitulo, c.slug, c.tese_central, c.categoria, c.tags]);
+        });
+        atualizarResultadoFiltro('col', lista.length, todas.length);
+        if (!todas.length) {
           tbody.innerHTML = '<tr><td colspan="5" class="admin-sub">Nenhuma coluna gerada.</td></tr>';
+          return;
+        }
+        if (!lista.length) {
+          tbody.innerHTML = '<tr><td colspan="5" class="admin-sub">Nenhuma coluna corresponde aos filtros.</td></tr>';
           return;
         }
         tbody.innerHTML = lista.map((c) => `
@@ -3237,6 +4081,21 @@
       $('btn-cancelar-modal-noticia-quente').addEventListener('click', fecharModalNoticiaQuente);
 
       // ============================ COLLAPSIBLE ============================
+      // Estado salvo em localStorage (rom_admin_acc_<sectionId>) tem prioridade.
+      // Sem preferência salva, usa data-default-collapsed="1" (seções fora de "Análise").
+      function setCardCollapsed(card, collapsed, persist) {
+        if (!card) return;
+        const btn = card.querySelector('.admin-card-head .admin-collapse-btn');
+        card.classList.toggle('collapsed', collapsed);
+        if (btn) {
+          btn.textContent = collapsed ? '+' : '−';
+          btn.setAttribute('aria-expanded', String(!collapsed));
+        }
+        if (persist) {
+          try { localStorage.setItem('rom_admin_acc_' + card.getAttribute('data-admin-section'), collapsed ? '1' : '0'); } catch (e) { }
+        }
+      }
+
       function initCollapsibleCards() {
         const cards = document.querySelectorAll('.admin-card[data-admin-section]');
         cards.forEach((card) => {
@@ -3253,19 +4112,467 @@
             btn.textContent = '−';
             head.appendChild(btn);
           }
-          const apply = (collapsed) => {
-            card.classList.toggle('collapsed', collapsed);
-            btn.textContent = collapsed ? '+' : '−';
-            btn.setAttribute('aria-expanded', String(!collapsed));
-          };
-          let collapsed = false;
-          try { collapsed = localStorage.getItem(key) === '1'; } catch (e) { }
-          apply(collapsed);
+          let saved = null;
+          try { saved = localStorage.getItem(key); } catch (e) { }
+          const collapsed = saved === null ? card.getAttribute('data-default-collapsed') === '1' : saved === '1';
+          setCardCollapsed(card, collapsed, false);
           btn.addEventListener('click', () => {
-            const now = card.classList.contains('collapsed');
-            apply(!now);
-            try { localStorage.setItem(key, now ? '0' : '1'); } catch (e) { }
+            setCardCollapsed(card, !card.classList.contains('collapsed'), true);
           });
+        });
+      }
+
+      // ===================== FILTROS / VISÃO GERAL / NAVEGAÇÃO =====================
+      function normTxt(s) {
+        return String(s == null ? '' : s).normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+      }
+
+      // Busca contextual: frase exata OU todos os termos em qualquer campo (título + corpo + metadados).
+      function combinaBusca(q, campos) {
+        const termo = normTxt(q).trim();
+        if (!termo) return true;
+        const hay = normTxt((campos || []).map((v) => Array.isArray(v) ? v.join(' ') : (v && typeof v === 'object' ? JSON.stringify(v) : v)).filter(Boolean).join(' '));
+        if (hay.includes(termo)) return true;
+        const tokens = termo.split(/\s+/).filter((t) => t.length > 0);
+        return tokens.length > 0 && tokens.every((t) => hay.includes(t));
+      }
+
+      function valorFiltro(id) {
+        const el = $(id);
+        return (el && el.value) ? el.value : 'all';
+      }
+
+      function preencherSelect(id, valores, rotuloTodos) {
+        const sel = $(id);
+        if (!sel) return;
+        const atual = sel.value || 'all';
+        const uniq = [...new Set((valores || []).filter((v) => v !== undefined && v !== null && String(v).trim() !== '').map((v) => String(v)))]
+          .sort((a, b) => a.localeCompare(b, 'pt-BR'));
+        sel.innerHTML = `<option value="all">${escapeHtml(rotuloTodos)}</option>` +
+          uniq.map((v) => `<option value="${escapeHtml(v)}">${escapeHtml(v)}</option>`).join('');
+        sel.value = uniq.includes(atual) ? atual : 'all';
+      }
+
+      function parseDataMs(v) {
+        if (!v) return NaN;
+        const t = Date.parse(v);
+        return Number.isFinite(t) ? t : NaN;
+      }
+
+      function dentroPeriodo(item, horas, campos) {
+        if (!horas || horas === 'all') return true;
+        const limite = Date.now() - Number(horas) * 3600 * 1000;
+        for (const c of campos) {
+          const t = parseDataMs(item && item[c]);
+          if (Number.isFinite(t)) return t >= limite;
+        }
+        return false;
+      }
+
+      function escalaUrgencia(lista) {
+        const max = Math.max(0, ...(lista || []).map((x) => Number(x && x.urgencia_score) || 0));
+        return max <= 1 ? 1 : (max <= 10 ? 10 : 100);
+      }
+
+      function nivelUrgencia(score, escala) {
+        const r = (Number(score) || 0) / (escala || 100);
+        return r >= 0.7 ? 'alta' : (r >= 0.4 ? 'media' : 'baixa');
+      }
+
+      function formatarRelativo(v) {
+        const t = parseDataMs(v);
+        if (!Number.isFinite(t)) return '—';
+        const min = Math.round((Date.now() - t) / 60000);
+        if (min < 1) return 'agora';
+        if (min < 60) return 'há ' + min + ' min';
+        const h = Math.round(min / 60);
+        if (h < 48) return 'há ' + h + ' h';
+        return 'há ' + Math.round(h / 24) + ' d';
+      }
+
+      const FILTROS = {
+        nq: { campos: ['nq-busca', 'nq-filtro-status', 'nq-filtro-categoria', 'nq-urgencia', 'nq-periodo'], render: () => renderNoticiasQuentes() },
+        ev: { campos: ['ev-busca', 'ev-categoria', 'ev-confianca', 'ev-periodo'], render: () => renderEventos() },
+        col: { campos: ['col-busca', 'col-status', 'col-categoria', 'col-periodo'], render: () => renderColunas() },
+        radar: { campos: ['radar-busca', 'radar-filtro', 'radar-urgencia', 'radar-periodo'], render: () => renderRadar() }
+      };
+
+      function filtroAtivo(prefixo) {
+        const cfg = FILTROS[prefixo];
+        if (!cfg) return false;
+        return cfg.campos.some((id) => {
+          const el = $(id);
+          if (!el) return false;
+          return el.tagName === 'SELECT' ? (el.value && el.value !== 'all') : Boolean((el.value || '').trim());
+        });
+      }
+
+      function atualizarResultadoFiltro(prefixo, mostrados, total) {
+        const out = $(prefixo + '-resultado');
+        const ativo = filtroAtivo(prefixo);
+        if (out) out.textContent = ativo ? `Mostrando ${mostrados} de ${total}` : `${total} ${total === 1 ? 'item' : 'itens'}`;
+        const bar = out ? out.closest('.admin-filterbar') : null;
+        if (bar) bar.classList.toggle('is-filtered', ativo);
+      }
+
+      function limparFiltros(prefixo) {
+        const cfg = FILTROS[prefixo];
+        if (!cfg) return;
+        cfg.campos.forEach((id) => {
+          const el = $(id);
+          if (!el) return;
+          el.value = el.tagName === 'SELECT' ? 'all' : '';
+        });
+        cfg.render();
+      }
+
+      function initFiltros() {
+        Object.keys(FILTROS).forEach((prefixo) => {
+          const cfg = FILTROS[prefixo];
+          let t = null;
+          cfg.campos.forEach((id) => {
+            const el = $(id);
+            if (!el) return;
+            if (el.tagName === 'SELECT') {
+              el.addEventListener('change', () => cfg.render());
+            } else {
+              el.addEventListener('input', () => { clearTimeout(t); t = setTimeout(() => cfg.render(), 140); });
+              el.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && el.value) { e.preventDefault(); el.value = ''; cfg.render(); }
+              });
+            }
+          });
+        });
+        document.querySelectorAll('[data-clear-filters]').forEach((btn) => {
+          btn.addEventListener('click', () => limparFiltros(btn.getAttribute('data-clear-filters')));
+        });
+      }
+
+      function setNavCount(id, valor, tom) {
+        const el = $(id);
+        if (!el) return;
+        el.textContent = valor;
+        el.classList.toggle('is-warn', tom === 'warn');
+        el.classList.toggle('is-err', tom === 'err');
+        el.classList.toggle('is-ok', tom === 'ok');
+      }
+
+      function setKpi(id, valor, tom) {
+        const val = $(id + '-val');
+        if (val) val.textContent = valor;
+        const card = $(id);
+        if (card) {
+          card.classList.toggle('is-warn', tom === 'warn');
+          card.classList.toggle('is-err', tom === 'err');
+          card.classList.toggle('is-ok', tom === 'ok');
+        }
+      }
+
+      let resumoTimer = null;
+      function agendarResumo() {
+        clearTimeout(resumoTimer);
+        resumoTimer = setTimeout(atualizarResumo, 40);
+      }
+
+      function atualizarResumo() {
+        // Curadoria: eventos aguardando + colunas pendentes
+        const evAg = state.eventosAguardando;
+        const colPend = (state.colunas || []).filter((c) => {
+          const st = statusNormColuna(c);
+          return st === 'rascunho' || st === 'aprovado';
+        }).length;
+        setKpi('kpi-eventos', evAg == null ? '—' : String(evAg), evAg > 0 ? 'warn' : 'ok');
+        setKpi('kpi-colunas', String(colPend), colPend > 0 ? 'warn' : 'ok');
+        const pendCur = (Number(evAg) || 0) + colPend;
+        setNavCount('nav-count-curadoria', String(pendCur), pendCur > 0 ? 'warn' : 'ok');
+
+        // Quentes
+        const nq = state.noticiasQuentes || [];
+        const ativas = nq.filter((n) => n.status === 'ativo' || n.status === 'publicado').length;
+        setKpi('kpi-quentes', `${ativas} / ${nq.length}`, ativas > 0 ? 'ok' : 'warn');
+        setNavCount('nav-count-quentes', String(ativas), ativas > 0 ? 'ok' : 'warn');
+
+        // Radar
+        const rd = (state.radar || []).length;
+        setKpi('kpi-radar', String(rd), '');
+        setNavCount('nav-count-radar', String(rd), '');
+
+        // Kill switch
+        if (state.autoPub === null || state.autoPub === undefined) {
+          setKpi('kpi-autopub', '—', '');
+        } else {
+          setKpi('kpi-autopub', state.autoPub ? 'Ligada' : 'Desligada', state.autoPub ? 'ok' : 'warn');
+        }
+
+        // Última execução
+        const ex = (state.execucoes || [])[0];
+        const meta = $('kpi-execucao-meta');
+        if (!ex) {
+          setKpi('kpi-execucao', 'Sem registro', '');
+          if (meta) meta.textContent = '';
+          setNavCount('nav-count-controle', '—', '');
+        } else {
+          const st = String(ex.status || '');
+          const tom = st === 'falha' ? 'err' : (st === 'concluido' ? 'ok' : 'warn');
+          const rotulo = st === 'falha' ? 'Falha' : (st === 'concluido' ? 'Concluída' : (st === 'em_execucao' ? 'Em execução' : (st.replace(/_/g, ' ') || '—')));
+          setKpi('kpi-execucao', rotulo, tom);
+          if (meta) meta.textContent = `${ex.job_nome || ex.recurso_chave || 'job'} · ${formatarRelativo(ex.finished_at || ex.started_at)}`;
+          const kpi = $('kpi-execucao');
+          if (kpi) kpi.title = ex.erro_detalhe ? ('Erro: ' + ex.erro_detalhe) : '';
+          setNavCount('nav-count-controle', st === 'falha' ? 'Falha' : (st === 'concluido' ? 'OK' : '…'), tom);
+        }
+
+        // Conteúdo / Operação
+        const dc = state.dossiesContagens || {};
+        setNavCount('nav-count-dossies', String(dc.total || (state.dossies || []).length || 0), '');
+        const fontesAtivas = (state.fontes || []).filter((f) => f.ativo).length;
+        setNavCount('nav-count-fontes', String(fontesAtivas), '');
+      }
+
+      function marcarAtualizado() {
+        state.carregadoEm = new Date();
+        const el = $('overview-updated');
+        if (el) el.textContent = 'Atualizado às ' + state.carregadoEm.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+      }
+
+      const reduzMovimento = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      function irPara(targetId) {
+        const el = $(targetId);
+        if (!el) return;
+        const card = el.matches('.admin-card[data-admin-section]') ? el : el.closest('.admin-card[data-admin-section]');
+        if (card && card.classList.contains('collapsed')) setCardCollapsed(card, false, true);
+        el.scrollIntoView({ behavior: reduzMovimento ? 'auto' : 'smooth', block: 'start' });
+        if (card) {
+          card.classList.remove('flash');
+          void card.offsetWidth;
+          card.classList.add('flash');
+        }
+        try { history.replaceState(null, '', '#' + targetId); } catch (e) { }
+        marcarNavAtivo(card ? card.id : targetId);
+      }
+
+      function cardsAnalise() {
+        return Array.from(document.querySelectorAll('#admin-group-analise .admin-card[data-admin-section]'));
+      }
+
+      function marcarNavAtivo(id) {
+        const nav = $('admin-nav');
+        if (!nav) return;
+        let ativo = null;
+        nav.querySelectorAll('.admin-nav-link').forEach((a) => {
+          const on = a.getAttribute('data-nav-target') === id;
+          a.classList.toggle('active', on);
+          if (on) { a.setAttribute('aria-current', 'true'); ativo = a; } else { a.removeAttribute('aria-current'); }
+        });
+        // Barra horizontal (mobile): mantém o chip ativo visível
+        if (ativo && nav.scrollWidth > nav.clientWidth + 4) {
+          const l = ativo.offsetLeft - nav.offsetLeft;
+          if (l < nav.scrollLeft || l + ativo.offsetWidth > nav.scrollLeft + nav.clientWidth) {
+            nav.scrollTo({ left: Math.max(0, l - 16), behavior: reduzMovimento ? 'auto' : 'smooth' });
+          }
+        }
+      }
+
+      let navRaf = null;
+      function atualizarNavPorScroll() {
+        if (navRaf) return;
+        navRaf = requestAnimationFrame(() => {
+          navRaf = null;
+          if ($('admin-panels').classList.contains('hidden')) return;
+          const offset = window.innerWidth >= 1100 ? 110 : 170;
+          let atual = null;
+          document.querySelectorAll('#admin-panels .admin-card[data-admin-section]').forEach((card) => {
+            if (card.getBoundingClientRect().top - offset <= 0) atual = card.id;
+          });
+          if (!atual) {
+            const primeiro = cardsAnalise()[0];
+            atual = primeiro ? primeiro.id : null;
+          }
+          if (atual) marcarNavAtivo(atual);
+        });
+      }
+
+      function initNavegacao() {
+        document.querySelectorAll('#admin-nav .admin-nav-link').forEach((a) => {
+          a.addEventListener('click', (e) => {
+            e.preventDefault();
+            irPara(a.getAttribute('data-nav-target'));
+          });
+        });
+
+        $('btn-ir-analise').addEventListener('click', () => {
+          cardsAnalise().forEach((c) => { if (c.classList.contains('collapsed')) setCardCollapsed(c, false, true); });
+          irPara('admin-section-noticias-quentes');
+        });
+
+        $('btn-recolher-demais').addEventListener('click', () => {
+          document.querySelectorAll('#admin-panels .admin-card[data-admin-section]').forEach((c) => {
+            const analise = Boolean(c.closest('#admin-group-analise'));
+            setCardCollapsed(c, !analise, true);
+          });
+          irPara('admin-section-noticias-quentes');
+          showToast('Foco na análise: demais seções recolhidas.', 'ok');
+        });
+
+        $('btn-nav-sair').addEventListener('click', () => $('btn-sair').click());
+
+        document.querySelectorAll('.admin-kpi[data-goto]').forEach((kpi) => {
+          kpi.addEventListener('click', async () => {
+            const evStatus = kpi.getAttribute('data-goto-ev-status');
+            const colStatus = kpi.getAttribute('data-goto-col-status');
+            if (colStatus && $('col-status')) {
+              $('col-status').value = colStatus;
+              renderColunas();
+            }
+            irPara(kpi.getAttribute('data-goto'));
+            if (evStatus && state.eventoFiltro !== evStatus) {
+              const tab = document.querySelector(`#eventos-tabs .admin-tab[data-ev-status="${evStatus}"]`);
+              if (tab) tab.click();
+            }
+          });
+        });
+
+        $('btn-atualizar-tudo').addEventListener('click', async () => {
+          const btn = $('btn-atualizar-tudo');
+          btn.disabled = true;
+          const prev = btn.textContent;
+          btn.textContent = 'Atualizando...';
+          try {
+            await carregarTudo();
+            marcarAtualizado();
+            showToast('Painel atualizado.', 'ok');
+          } catch (err) {
+            showToast('Falha ao atualizar: ' + err.message, 'err');
+          } finally {
+            btn.disabled = false;
+            btn.textContent = prev;
+          }
+        });
+
+        window.addEventListener('scroll', atualizarNavPorScroll, { passive: true });
+        window.addEventListener('resize', atualizarNavPorScroll, { passive: true });
+      }
+
+      // ============================ ENTENDA O ASSUNTO ============================
+      function extrairTopicosTrending(payload) {
+        const candidatos = payload && (payload.topicosEmAlta || payload.topicos || payload.assuntos || payload.sugestoes || payload.temas || payload.trending);
+        if (!Array.isArray(candidatos)) return [];
+        return candidatos.map((t) => {
+          if (typeof t === 'string') return { label: t, tema: t };
+          if (!t || typeof t !== 'object') return null;
+          const label = t.titulo || t.title || t.nome || t.name || t.termo || t.topic || t.assunto || t.query || '';
+          const tema = t.tema || t.prompt || t.slug || label;
+          if (!label) return null;
+          return { label: String(label), tema: String(tema || label), volume: t.volume || t.trafego || t.traffic || '' };
+        }).filter(Boolean);
+      }
+
+      async function buscarAssuntosMomentoEntenda() {
+        const btn = $('btn-entenda-buscar-assuntos');
+        const lista = $('entenda-assuntos-lista');
+        const prev = btn.textContent;
+        btn.disabled = true;
+        btn.textContent = 'Buscando...';
+        lista.innerHTML = '<div class="admin-sub">Buscando assuntos do momento...</div>';
+        hideBanner('entenda-banner');
+        try {
+          const country = (($('entenda-trend-country') || {}).value || 'BR').trim().toUpperCase() || 'BR';
+          const lang = (($('entenda-trend-lang') || {}).value || 'pt').trim().toLowerCase() || 'pt';
+          const res = await fetch(`/api/busca-assunto?mode=trending&country=${encodeURIComponent(country)}&lang=${encodeURIComponent(lang)}&_t=${Date.now()}`, {
+            method: 'GET',
+            cache: 'no-store',
+            headers: { 'Accept': 'application/json' },
+          });
+          const data = await res.json().catch(() => ({}));
+          if (!res.ok) throw new Error(data.erro || data.error || ('Falha ao buscar tendências (HTTP ' + res.status + ')'));
+          const topicos = extrairTopicosTrending(data);
+          if (!topicos.length) {
+            lista.innerHTML = '<div class="admin-sub">Nenhum assunto em alta encontrado agora. Você ainda pode informar um tema manualmente abaixo.</div>';
+            showBanner('entenda-banner', 'Busca concluída, mas sem sugestões retornadas no momento.', 'warn');
+            return;
+          }
+          lista.innerHTML = topicos.slice(0, 12).map((t, idx) => {
+            const vol = t.volume ? ` <span class="badge">${escapeHtml(String(t.volume))}</span>` : '';
+            return `
+              <div class="admin-execucao">
+                <div class="admin-execucao-meta">
+                  <strong>${escapeHtml(t.label)}</strong>${vol}
+                </div>
+                <div class="admin-actions" style="margin-top:0.35rem;">
+                  <button class="admin-btn admin-btn-sm admin-btn-primary" type="button" data-entenda-tema="${escapeHtml(t.tema || t.label)}">Usar como tema</button>
+                </div>
+              </div>
+            `;
+          }).join('');
+          showBanner('entenda-banner', `Encontrados ${Math.min(topicos.length, 12)} assuntos do momento. Clique em “Usar como tema” para preencher o gerador.`, 'ok');
+        } catch (err) {
+          lista.innerHTML = '<div class="admin-sub">Não foi possível carregar os assuntos do momento.</div>';
+          showBanner('entenda-banner', 'Erro ao buscar assuntos do momento: ' + err.message, 'err');
+        } finally {
+          btn.disabled = false;
+          btn.textContent = prev;
+        }
+      }
+
+      if ($('btn-entenda-buscar-assuntos')) {
+        $('btn-entenda-buscar-assuntos').addEventListener('click', buscarAssuntosMomentoEntenda);
+      }
+      if ($('entenda-assuntos-lista')) {
+        $('entenda-assuntos-lista').addEventListener('click', (e) => {
+          const btn = e.target.closest('[data-entenda-tema]');
+          if (!btn) return;
+          const tema = btn.getAttribute('data-entenda-tema') || '';
+          if ($('entenda-tema')) $('entenda-tema').value = tema;
+          showBanner('entenda-banner', 'Tema preenchido. Ajuste se necessário e clique em “Gerar artigo em Entenda o assunto”.', 'ok');
+          try { $('entenda-tema').focus(); } catch (_) {}
+        });
+      }
+      if ($('btn-entenda-gerar')) {
+        $('btn-entenda-gerar').addEventListener('click', async () => {
+          const btn = $('btn-entenda-gerar');
+          const prev = btn.textContent;
+          const tema = (($('entenda-tema') || {}).value || '').trim();
+          const slug = (($('entenda-slug') || {}).value || '').trim();
+          const dryRun = !!(($('entenda-dry-run') || {}).checked);
+          if (!tema) {
+            showBanner('entenda-banner', 'Informe um tema para gerar o artigo em Entenda o assunto.', 'warn');
+            try { $('entenda-tema').focus(); } catch (_) {}
+            return;
+          }
+          btn.disabled = true;
+          btn.textContent = 'Gerando artigo...';
+          showBanner('entenda-banner', 'Gerando artigo em Entenda o assunto (pipeline editorial). Isso pode levar alguns minutos...', 'warn');
+          try {
+            const body = { tema, dry_run: dryRun, sincrono: false };
+            if (slug) body.slug = slug;
+            const res = await apiFetch('/v2/gerar-coluna', {
+              method: 'POST',
+              body: JSON.stringify(body),
+            });
+            if (res && res.status === 'agendado_em_background') {
+              showToast('Artigo de Entenda o assunto agendado em background.', 'ok');
+              showBanner('entenda-banner', `Geração agendada (${res.slug_alvo || 'analise-automatica'}). Acompanhe em Execuções e em Colunas Editoriais para revisão/publicação no Entenda o assunto.`, 'ok');
+              try { await carregarColunas(); await carregarExecucoes(); } catch (_) {}
+              let tentativas = 0;
+              const poll = setInterval(async () => {
+                tentativas += 1;
+                try { await carregarColunas(); await carregarExecucoes(); } catch (_) {}
+                if (tentativas >= 12) clearInterval(poll);
+              }, 10000);
+            } else {
+              const status = (res && res.status) || 'concluido';
+              showToast('Geração de artigo concluída.', status === 'concluido' ? 'ok' : 'warn');
+              showBanner('entenda-banner', 'Geração concluída: ' + status + '. Revise e publique em Colunas Editoriais para exibir no Entenda o assunto.', status === 'concluido' ? 'ok' : 'warn');
+              try { await carregarColunas(); } catch (_) {}
+            }
+          } catch (err) {
+            showBanner('entenda-banner', 'Erro ao gerar artigo: ' + err.message, 'err');
+            showToast('Erro ao gerar artigo: ' + err.message, 'err');
+          } finally {
+            btn.disabled = false;
+            btn.textContent = prev;
+          }
         });
       }
 
@@ -3286,13 +4593,20 @@
       async function conectar() {
         const user = ($('admin-user').value || '').trim();
         const password = ($('admin-password').value || '').trim();
-        if (!user || !password) {
-          showBanner('auth-banner', 'Informe usuário e senha.', 'err');
+        if (!password) {
+          showBanner('auth-banner', 'Informe a senha de acesso.', 'err');
           return;
         }
         state.user = user;
         state.token = password;
-        persistUser(user);
+        if (user) {
+          persistUser(user);
+        } else {
+          try {
+            localStorage.removeItem('rom_admin_user');
+            sessionStorage.removeItem('rom_admin_user');
+          } catch (e) { }
+        }
         persistToken(password);
 
         const btn = $('btn-conectar');
@@ -3301,10 +4615,20 @@
 
         try {
           await carregarTudo();
+          marcarAtualizado();
+          const authCard = $('admin-auth-card');
+          if (authCard) authCard.classList.add('is-connected');
+          const navUser = $('nav-user-label');
+          if (navUser) navUser.textContent = user ? ('Conectado: ' + user) : 'Conectado';
           $('admin-panels').classList.remove('hidden');
           $('btn-sair').classList.remove('hidden');
+          atualizarNavPorScroll();
           showBanner('auth-banner', 'Conectado com sucesso.', 'ok');
         } catch (err) {
+          const authCard = $('admin-auth-card');
+          if (authCard) authCard.classList.remove('is-connected');
+          const navUser = $('nav-user-label');
+          if (navUser) navUser.textContent = '';
           $('admin-panels').classList.add('hidden');
           $('btn-sair').classList.add('hidden');
           showBanner('auth-banner', 'Falha ao autenticar/carregar: ' + err.message, 'err');
@@ -3319,6 +4643,10 @@
         state.user = '';
         state.token = '';
         state.editingEventId = null;
+        const authCard = $('admin-auth-card');
+        if (authCard) authCard.classList.remove('is-connected');
+        const navUser = $('nav-user-label');
+        if (navUser) navUser.textContent = '';
         $('admin-panels').classList.add('hidden');
         $('btn-sair').classList.add('hidden');
         showBanner('auth-banner', 'Sessão encerrada neste dispositivo.', 'ok');
@@ -3342,7 +4670,11 @@
 
       // Inicialização
       initCollapsibleCards();
+      initFiltros();
+      initNavegacao();
 
+      if ($('admin-user') && state.user) $('admin-user').value = state.user;
+      if ($('admin-password') && state.token) $('admin-password').value = state.token;
       if (state.token) {
         conectar();
       }
