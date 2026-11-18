@@ -42,10 +42,15 @@ from src.publisher import (
     _ler_feed_existente,
     _timestamp_publicacao,
     atualizar_card_manual,
+    atualizar_card_radar,
+    fixar_card_radar,
     listar_cards_manuais,
+    listar_todos_cards_radar,
+    normalizar_card_manual,
     normalizar_fonte_key,
     publicar_card_manual,
     remover_card_manual,
+    remover_card_radar,
     sortir_cards_rodizio_amplo,
 )
 
@@ -1693,7 +1698,7 @@ class AdminRadarManualCreateRequest(BaseModel):
 
 
 class AdminRadarManualUpdateRequest(BaseModel):
-    """Card manual atualizado via painel administrativo (PATCH parcial)."""
+    """Card manual ou feed do Radar atualizado via painel administrativo (PATCH parcial)."""
     titulo: Optional[str] = Field(default=None, max_length=255)
     resumo: Optional[str] = Field(default=None, max_length=2000)
     contexto: Optional[str] = Field(default=None, max_length=8000)
@@ -1701,8 +1706,10 @@ class AdminRadarManualUpdateRequest(BaseModel):
     urgencia_score: Optional[int] = Field(default=None, ge=0, le=100)
     fonte_nome: Optional[str] = Field(default=None, max_length=150)
     fonte_url: Optional[str] = Field(default=None, max_length=2000)
+    pais_regiao: Optional[str] = Field(default=None, max_length=8)
     palavras_chave: Optional[List[str]] = Field(default=None, max_length=20)
     data_publicacao: Optional[str] = Field(default=None, max_length=40)
+    fixado: Optional[bool] = None
 
 
 class AdminNoticiasQuentesUpdateRequest(BaseModel):
@@ -2086,7 +2093,7 @@ Regras:
 
     modelo_env = (os.getenv("GEMINI_SUGESTAO_MODEL") or os.getenv("GEMINI_MODEL") or "").strip()
     modelos_tentar = [modelo_env] if modelo_env else []
-    modelos_tentar += ["gemini-2.5-flash"]
+    modelos_tentar += ["gemini-2.5-flash", "gemini-2.5-flash-lite"]
     # remove duplicatas mantendo ordem
     vistos_modelo = set()
     modelos_tentar = [m for m in modelos_tentar if not (m in vistos_modelo or vistos_modelo.add(m))]
@@ -2272,16 +2279,17 @@ def admin_listar_eventos(
     """Lista os últimos eventos de `ai_eventos` com a síntese mais recente e contagens por status."""
     aplicar_no_cache_headers(response)
     db = _require_db(conn)
-    status_norm = (status or "").strip().lower()
+    status_norm = (status if isinstance(status, str) else "").strip().lower()
+    limite_int = int(limite) if isinstance(limite, (int, str)) and str(limite).isdigit() else 30
     filtro_sql = "WHERE e.status = %s" if status_norm else ""
     params: List[Any] = [status_norm] if status_norm else []
-    params.append(limite)
+    params.append(limite_int)
     with db.cursor() as cur:
         cur.execute(
             f"""
             SELECT
                 e.id, e.slug, e.titulo_evento, e.categoria, e.nivel_confianca,
-                e.status, e.aviso_correcao_material, e.updated_at,
+                e.status, e.aviso_correcao_material, e.created_at, e.updated_at,
                 (
                     SELECT cg.payload_json->>'sintese_com_ressalvas'
                     FROM ai_conteudos_gerados cg
@@ -2302,6 +2310,7 @@ def admin_listar_eventos(
     eventos = [
         {
             **dict(r),
+            "created_at": _serializar_valor_temporal(r.get("created_at")),
             "updated_at": _serializar_valor_temporal(r.get("updated_at")),
         }
         for r in rows
@@ -2581,6 +2590,209 @@ def admin_listar_execucoes(
     return {"ok": True, "execucoes": execucoes}
 
 
+@router.get("/v2/admin/radar/feed", dependencies=[Depends(verificar_admin_token)])
+@router.get("/v2/admin/radar", dependencies=[Depends(verificar_admin_token)])
+def admin_listar_radar_feed(
+    response: Response,
+    origem: Optional[str] = Query(None, description="Filtrar por origem: todos, manual, rss, pulso_v2"),
+    categoria: Optional[str] = Query(None, description="Filtrar por categoria"),
+    urgencia: Optional[str] = Query(None, description="Filtrar por urgência: alta, media, baixa"),
+    q: Optional[str] = Query(None, description="Termo de busca textual"),
+    limit: int = Query(100, ge=1, le=200),
+    conn: Any = Depends(get_db),
+) -> Dict[str, Any]:
+    """Lista o feed completo do Radar para o painel administrativo com curadoria integrada (manuais, RSS e Pulso V2)."""
+    aplicar_no_cache_headers(response)
+    limite_int = int(limit) if isinstance(limit, (int, str)) and str(limit).isdigit() else 100
+    cards_feed = listar_todos_cards_radar(max_items=limite_int)
+
+    itens_v2: List[Dict[str, Any]] = []
+    raiz = Path(__file__).resolve().parents[1]
+    vitrine_path = raiz / "data" / "vitrine_ia.json"
+    vitrine_raw: Optional[Any] = None
+    if conn is not None and hasattr(conn, "cursor"):
+        try:
+            from src.estado_db import ler_estado
+            vitrine_raw = ler_estado("vitrine_ia", conn=conn)
+        except Exception:
+            vitrine_raw = None
+    if not isinstance(vitrine_raw, dict) or not (
+        vitrine_raw.get("temas_ativos") or vitrine_raw.get("noticias_quentes")
+    ):
+        if vitrine_path.is_file():
+            try:
+                vitrine_raw = json.loads(vitrine_path.read_text(encoding="utf-8"))
+            except Exception:
+                vitrine_raw = None
+
+    mapa_cat_radar = {
+        "Geopolitica_Radar": "geopolitica",
+        "Geopolitica_Relacoes": "geopolitica",
+        "Politica": "politica",
+        "Economia": "economia",
+        "Economia_Comercio": "economia",
+        "Cultura": "cultura",
+        "Sociedade_Cultura": "cultura",
+        "Ciencia_Clima": "geopolitica",
+        "Mobilidade_Fronteiras": "geopolitica",
+        "Eleicoes": "politica",
+        "Resumo_Ultimas": "geopolitica",
+    }
+
+    if isinstance(vitrine_raw, dict):
+        agora_utc = datetime.now(timezone.utc)
+        temas = vitrine_raw.get("temas_ativos") or []
+        for t in temas:
+            if not isinstance(t, dict):
+                continue
+            exp_dt = _parse_iso_utc(t.get("expires_at"))
+            if exp_dt is not None and exp_dt <= agora_utc:
+                continue
+            slug = str(t.get("slug") or "")
+            titulo = str(t.get("titulo_tema") or t.get("titulo_curto") or t.get("titulo") or "").strip()
+            if not titulo:
+                continue
+            cat_raw = t.get("categoria_primaria") or t.get("categoria") or "Geopolitica_Radar"
+            cat_norm = mapa_cat_radar.get(str(cat_raw), "geopolitica")
+            resumo = str(t.get("gatilho_vitrine") or t.get("resumo_pulso") or t.get("resumo") or "").strip()
+            analise = str(t.get("sintese_nerd") or t.get("impacto_pratico") or t.get("analise") or resumo).strip()
+            urls = t.get("fontes_urls") or []
+            fonte_url = urls[0] if urls else (t.get("fonte_url") or t.get("rota_editoria") or "/radar")
+            data_pub = (
+                t.get("data_publicacao")
+                or t.get("created_at")
+                or t.get("publicado_em")
+                or t.get("updated_at")
+                or ""
+            )
+            urgencia_score = int(t.get("urgencia_score") or t.get("relevancia_score") or 85)
+            itens_v2.append({
+                "id": f"v2-{slug}" if slug else f"v2-{os.urandom(3).hex()}",
+                "slug": slug or f"v2-{os.urandom(3).hex()}",
+                "titulo": titulo,
+                "resumo": resumo,
+                "analise": analise,
+                "categoria": cat_norm,
+                "fonte_nome": "Síntese Rodando o Mundo · Pulso V2",
+                "fonte_url": fonte_url,
+                "data_publicacao": data_pub,
+                "urgencia_score": urgencia_score,
+                "fixado": False,
+                "paises_envolvidos": list(t.get("paises_envolvidos") or ["BR"]),
+                "palavras_chave": list(t.get("palavras_chave_busca") or t.get("palavras_chave") or []),
+                "origem": "pulso_v2",
+                "origem_manual": False,
+                "origem_v2": True,
+            })
+
+    todos_candidatos = sorted(itens_v2 + cards_feed, key=_timestamp_publicacao, reverse=True)
+    titulos_vistos = set()
+    combinados: List[Dict[str, Any]] = []
+    contadores = {"total": 0, "manuais": 0, "rss": 0, "pulso_v2": 0}
+
+    for item in todos_candidatos:
+        tit_norm = normalizar_fonte_key(item.get("titulo"))
+        if not tit_norm or tit_norm in titulos_vistos:
+            continue
+        titulos_vistos.add(tit_norm)
+        orig = item.get("origem") or ("manual" if item.get("origem_manual") else "rss")
+        if orig == "manual":
+            contadores["manuais"] += 1
+        elif orig == "pulso_v2":
+            contadores["pulso_v2"] += 1
+        else:
+            contadores["rss"] += 1
+        combinados.append(item)
+
+    contadores["total"] = len(combinados)
+
+    resultado = combinados
+    origem_str = origem if isinstance(origem, str) else None
+    categoria_str = categoria if isinstance(categoria, str) else None
+    urgencia_str = urgencia if isinstance(urgencia, str) else None
+    q_str = q if isinstance(q, str) else None
+
+    if origem_str and origem_str.lower() not in ("todos", "all"):
+        orig_alvo = origem_str.lower().strip()
+        resultado = [c for c in resultado if c.get("origem") == orig_alvo]
+    if categoria_str and categoria_str.lower() not in ("todas", "all"):
+        cat_alvo = categoria_str.lower().strip()
+        resultado = [c for c in resultado if str(c.get("categoria") or "").lower() == cat_alvo]
+    if urgencia_str and urgencia_str.lower() not in ("todas", "all"):
+        u_alvo = urgencia_str.lower().strip()
+        if u_alvo == "alta":
+            resultado = [c for c in resultado if int(c.get("urgencia_score") or 0) >= 80]
+        elif u_alvo == "media":
+            resultado = [c for c in resultado if 50 <= int(c.get("urgencia_score") or 0) < 80]
+        elif u_alvo == "baixa":
+            resultado = [c for c in resultado if int(c.get("urgencia_score") or 0) < 50]
+    if q_str and q_str.strip():
+        termos = [t.lower() for t in q_str.strip().split() if len(t) >= 2]
+        if termos:
+            def _combina(c: Dict[str, Any]) -> bool:
+                texto = f"{c.get('titulo', '')} {c.get('resumo', '')} {c.get('analise', '')} {c.get('fonte_nome', '')} {' '.join(c.get('paises_envolvidos', []))}".lower()
+                return any(t in texto for t in termos)
+            resultado = [c for c in resultado if _combina(c)]
+
+    return {
+        "ok": True,
+        "total": len(resultado),
+        "contadores": contadores,
+        "cards": resultado,
+    }
+
+
+@router.patch("/v2/admin/radar/feed/{slug}", dependencies=[Depends(verificar_admin_token)])
+def admin_atualizar_radar_feed(
+    slug: str,
+    response: Response,
+    payload: AdminRadarManualUpdateRequest,
+) -> Dict[str, Any]:
+    """Atualiza campos parciais de qualquer notícia no feed do Radar (manual, RSS ou override)."""
+    aplicar_no_cache_headers(response)
+    card = atualizar_card_radar(slug, payload.model_dump(exclude_none=True))
+    if card is None:
+        raise HTTPException(status_code=404, detail="Notícia do Radar não encontrada.")
+    return {"ok": True, "card": card}
+
+
+@router.delete("/v2/admin/radar/feed/{slug}", dependencies=[Depends(verificar_admin_token)])
+def admin_remover_radar_feed(slug: str, response: Response) -> Dict[str, Any]:
+    """Remove uma notícia do feed do Radar (seja RSS ou manual)."""
+    aplicar_no_cache_headers(response)
+    removidos = remover_card_radar(slug)
+    if slug.startswith("v2-") or removidos == 0:
+        alvo_v2 = slug.removeprefix("v2-")
+        try:
+            from src.estado_db import atualizar_estado, banco_disponivel
+            def _remove_v2(vit: Any) -> Any:
+                if not isinstance(vit, dict):
+                    return vit
+                temas = [t for t in vit.get("temas_ativos", []) if str(t.get("slug") or "") != alvo_v2]
+                vit["temas_ativos"] = temas
+                return vit
+            if banco_disponivel():
+                atualizar_estado("vitrine_ia", _remove_v2)
+            removidos += 1
+        except Exception:
+            pass
+    return {"ok": True, "slug": slug, "removidos": removidos}
+
+
+@router.post("/v2/admin/radar/feed/{slug}/fixar", dependencies=[Depends(verificar_admin_token)])
+def admin_fixar_radar_feed(
+    slug: str,
+    response: Response,
+    fixar: bool = Query(True, description="True para fixar no topo, False para desafixar"),
+) -> Dict[str, Any]:
+    """Fixa ou desafixa um card no topo do Radar (urgência máxima 99)."""
+    aplicar_no_cache_headers(response)
+    card = fixar_card_radar(slug, fixar=fixar)
+    if card is None:
+        raise HTTPException(status_code=404, detail="Notícia do Radar não encontrada.")
+    return {"ok": True, "card": card, "fixado": fixar}
+
+
 @router.get("/v2/admin/radar/manual", dependencies=[Depends(verificar_admin_token)])
 def admin_listar_radar_manual(response: Response) -> Dict[str, Any]:
     """Lista os cards manuais do Radar (`origem_manual`) gerenciados pelo painel administrativo."""
@@ -2627,7 +2839,7 @@ def admin_atualizar_radar_manual(
 ) -> Dict[str, Any]:
     """Atualiza campos parciais de um card manual do Radar (por slug)."""
     aplicar_no_cache_headers(response)
-    card = atualizar_card_manual(slug, payload.model_dump(exclude_none=True))
+    card = atualizar_card_radar(slug, payload.model_dump(exclude_none=True))
     if card is None:
         raise HTTPException(status_code=404, detail="Card manual não encontrado.")
     return {"ok": True, "card": _serializar_card_manual_response(card)}
@@ -2637,7 +2849,7 @@ def admin_atualizar_radar_manual(
 def admin_remover_radar_manual(slug: str, response: Response) -> Dict[str, Any]:
     """Remove cards manuais do Radar pelo slug."""
     aplicar_no_cache_headers(response)
-    removidos = remover_card_manual(slug)
+    removidos = remover_card_radar(slug)
     return {"ok": True, "slug": slug, "removidos": removidos}
 
 
@@ -2825,10 +3037,11 @@ def admin_listar_colunas(
     """Lista colunas editoriais para revisão humana (rascunhos auditados, aprovadas e publicadas)."""
     aplicar_no_cache_headers(response)
     db = _require_db(conn)
-    status_norm = (status or "").strip().lower()
+    status_norm = (status if isinstance(status, str) else "").strip().lower()
+    limite_int = int(limite) if isinstance(limite, (int, str)) and str(limite).isdigit() else 50
     filtro_sql = "WHERE (status = %s OR review_status = %s)" if status_norm else ""
     params: List[Any] = [status_norm, status_norm] if status_norm else []
-    params.append(limite)
+    params.append(limite_int)
     with db.cursor() as cur:
         cur.execute(
             f"""

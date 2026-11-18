@@ -387,6 +387,31 @@
       color: #f6c978;
     }
 
+    .badge-manual {
+      background: rgba(46, 160, 67, 0.15);
+      color: #3fb950;
+      border-color: rgba(46, 160, 67, 0.4);
+    }
+
+    .badge-rss {
+      background: rgba(56, 139, 253, 0.15);
+      color: #58a6ff;
+      border-color: rgba(56, 139, 253, 0.4);
+    }
+
+    .badge-ia {
+      background: rgba(163, 113, 247, 0.15);
+      color: #bc8cff;
+      border-color: rgba(163, 113, 247, 0.4);
+    }
+
+    .badge-pinned {
+      background: rgba(210, 153, 34, 0.18);
+      color: #e3b341;
+      border-color: rgba(210, 153, 34, 0.5);
+      font-weight: 700;
+    }
+
     .admin-actions {
       display: inline-flex;
       gap: 0.4rem;
@@ -1371,7 +1396,7 @@
             <span>Curadoria &amp; Bot</span><span class="admin-nav-count" id="nav-count-curadoria" title="Eventos + colunas aguardando revisão">0</span>
           </a>
           <a class="admin-nav-link" href="#admin-section-radar" data-nav-target="admin-section-radar">
-            <span>Radar manual</span><span class="admin-nav-count" id="nav-count-radar" title="Notícias manuais no feed">0</span>
+            <span>Radar Editorial</span><span class="admin-nav-count" id="nav-count-radar" title="Notícias ativas no feed do Radar">0</span>
           </a>
           <div class="admin-nav-group">Conteúdo</div>
           <a class="admin-nav-link" href="#admin-section-dossies" data-nav-target="admin-section-dossies">
@@ -1415,7 +1440,7 @@
                 <strong class="admin-kpi-value" id="kpi-quentes-val">—</strong>
               </button>
               <button type="button" class="admin-kpi" id="kpi-radar" data-goto="admin-section-radar">
-                <span class="admin-kpi-label">Radar manual</span>
+                <span class="admin-kpi-label">Radar Editorial</span>
                 <strong class="admin-kpi-value" id="kpi-radar-val">—</strong>
               </button>
               <button type="button" class="admin-kpi" id="kpi-autopub" data-goto="admin-section-controle-rapido">
@@ -1493,7 +1518,7 @@
                     <th>Categoria</th>
                     <th>Urgência</th>
                     <th>Status</th>
-                    <th>Atualizado</th>
+                    <th>Data de Entrada</th>
                     <th>Ações</th>
                   </tr>
                 </thead>
@@ -1597,12 +1622,13 @@
                     <th>Categoria</th>
                     <th>Confiança</th>
                     <th>Status</th>
+                    <th>Data de Entrada</th>
                     <th>Ações</th>
                   </tr>
                 </thead>
                 <tbody id="tbody-eventos">
                   <tr>
-                    <td colspan="5" class="admin-sub">Nenhum evento na fila.</td>
+                    <td colspan="6" class="admin-sub">Nenhum evento na fila.</td>
                   </tr>
                 </tbody>
               </table>
@@ -1661,36 +1687,52 @@
                     <th>Categoria</th>
                     <th>Nota IA</th>
                     <th>Status</th>
+                    <th>Data de Entrada</th>
                     <th>Ações</th>
                   </tr>
                 </thead>
                 <tbody id="tbody-colunas">
                   <tr>
-                    <td colspan="5" class="admin-sub">Nenhuma coluna gerada.</td>
+                    <td colspan="6" class="admin-sub">Nenhuma coluna gerada.</td>
                   </tr>
                 </tbody>
               </table>
             </div>
           </section>
 
-          <!-- ANÁLISE 3: RADAR — NOTÍCIAS MANUAIS -->
+          <!-- ANÁLISE 3: RADAR — CURADORIA & CONTROLE DO FEED -->
           <section class="admin-card" id="admin-section-radar" data-admin-section="radar" aria-labelledby="admin-section-radar_title">
             <div class="admin-card-head">
               <div>
-                <h2 id="admin-section-radar_title" class="admin-card-title">Radar — Notícias Manuais</h2>
-                <p class="admin-sub">Cadastro e curadoria manual de notícias no feed editorial (<code>/v2/admin/radar/manual</code>).</p>
+                <h2 id="admin-section-radar_title" class="admin-card-title">Radar Editorial — Curadoria do Feed</h2>
+                <p class="admin-sub">Controle e curadoria do feed em tempo real (<code>/radar</code>): notícias automáticas (RSS), sínteses Pulso V2 e notícias manuais.</p>
               </div>
               <div class="admin-head-actions">
-                <button id="btn-recarregar-radar" class="admin-btn admin-btn-sm" type="button">Atualizar</button>
+                <button id="btn-recarregar-radar" class="admin-btn admin-btn-sm" type="button">Atualizar Feed</button>
                 <button id="btn-adicionar-radar" class="admin-btn admin-btn-primary admin-btn-sm" type="button">+ Adicionar Notícia Manual</button>
                 <button class="admin-collapse-btn" type="button" aria-label="Minimizar seção Radar" aria-expanded="true">−</button>
               </div>
             </div>
 
-            <div class="admin-filterbar" role="search" aria-label="Filtrar notícias manuais do radar">
+            <div class="admin-tabs" role="tablist" id="radar-tabs" style="margin-bottom: var(--space-3);">
+              <button class="admin-tab active" type="button" role="tab" aria-selected="true" data-radar-tab="all">
+                Todos no Feed <span id="radar-count-tab-all">0</span>
+              </button>
+              <button class="admin-tab" type="button" role="tab" aria-selected="false" data-radar-tab="manual">
+                Manuais <span id="radar-count-tab-manual">0</span>
+              </button>
+              <button class="admin-tab" type="button" role="tab" aria-selected="false" data-radar-tab="rss">
+                RSS / Automáticas <span id="radar-count-tab-rss">0</span>
+              </button>
+              <button class="admin-tab" type="button" role="tab" aria-selected="false" data-radar-tab="pulso_v2">
+                Pulso V2 (IA) <span id="radar-count-tab-pulso">0</span>
+              </button>
+            </div>
+
+            <div class="admin-filterbar" role="search" aria-label="Filtrar notícias do radar">
               <div class="admin-field admin-field-grow">
                 <label for="radar-busca">Buscar</label>
-                <input id="radar-busca" class="admin-input" type="search" placeholder="Título, fonte, país..." />
+                <input id="radar-busca" class="admin-input" type="search" placeholder="Título, fonte, resumo, país..." />
               </div>
               <div class="admin-field">
                 <label for="radar-filtro">Categoria</label>
@@ -1732,16 +1774,16 @@
                 <thead>
                   <tr>
                     <th>Notícia</th>
+                    <th>Origem</th>
                     <th>Categoria</th>
                     <th>Urgência</th>
-                    <th>Fonte</th>
-                    <th>Publicação</th>
+                    <th>Data de Entrada</th>
                     <th>Ações</th>
                   </tr>
                 </thead>
                 <tbody id="tbody-radar">
                   <tr>
-                    <td colspan="6" class="admin-sub">Nenhuma notícia manual carregada.</td>
+                    <td colspan="6" class="admin-sub">Nenhuma notícia do Radar carregada.</td>
                   </tr>
                 </tbody>
               </table>
@@ -1793,6 +1835,7 @@
                     <th>Título / Slug</th>
                     <th>Tipo</th>
                     <th>Status</th>
+                    <th>Data de Entrada</th>
                     <th>Período</th>
                     <th>Matérias</th>
                     <th>Ações</th>
@@ -1800,7 +1843,7 @@
                 </thead>
                 <tbody id="tbody-dossies">
                   <tr>
-                    <td colspan="7" class="admin-sub">Nenhum dossiê carregado.</td>
+                    <td colspan="8" class="admin-sub">Nenhum dossiê carregado.</td>
                   </tr>
                 </tbody>
               </table>
@@ -1962,13 +2005,14 @@
                     <th>Nome</th>
                     <th>Tipo</th>
                     <th>Política</th>
+                    <th>Data de Entrada</th>
                     <th>Ativo</th>
                     <th>Ação</th>
                   </tr>
                 </thead>
                 <tbody id="tbody-fontes">
                   <tr>
-                    <td colspan="5" class="admin-sub">Nenhuma fonte cadastrada.</td>
+                    <td colspan="6" class="admin-sub">Nenhuma fonte cadastrada.</td>
                   </tr>
                 </tbody>
               </table>
@@ -2495,6 +2539,8 @@
         slugManuallyEdited: false,
         pendingAiMeta: null,
         radar: [],
+        radarTab: 'all',
+        radarContadores: { total: 0, manuais: 0, rss: 0, pulso_v2: 0 },
         editingRadarSlug: null,
         noticiasQuentes: [],
         editingNoticiaSlug: null,
@@ -2621,7 +2667,7 @@
         state.fontes = fontes;
         agendarResumo();
         if (!fontes.length) {
-          tbody.innerHTML = '<tr><td colspan="5" class="admin-sub">Nenhuma fonte cadastrada.</td></tr>';
+          tbody.innerHTML = '<tr><td colspan="6" class="admin-sub">Nenhuma fonte cadastrada.</td></tr>';
           return;
         }
         tbody.innerHTML = fontes.map((f) => {
@@ -2637,6 +2683,7 @@
               </td>
               <td><code>${escapeHtml(f.tipo_fonte)}</code></td>
               <td><span class="badge ${polClass}">${escapeHtml(f.politica_uso_status)}</span></td>
+              <td>${renderBadgeDataEntrada(f.created_at || f.ultima_coleta_at)}</td>
               <td>
                 <input class="switch-input" type="checkbox" data-toggle-fonte="${f.id}" ${f.ativo ? 'checked' : ''} aria-label="Ativar fonte ${escapeHtml(f.nome)}">
               </td>
@@ -2864,11 +2911,11 @@
         });
         atualizarResultadoFiltro('ev', lista.length, total);
         if (!total) {
-          tbody.innerHTML = '<tr><td colspan="5" class="admin-sub">Nenhum evento nesta categoria.</td></tr>';
+          tbody.innerHTML = '<tr><td colspan="6" class="admin-sub">Nenhum evento nesta categoria.</td></tr>';
           return;
         }
         if (!lista.length) {
-          tbody.innerHTML = '<tr><td colspan="5" class="admin-sub">Nenhum evento corresponde aos filtros.</td></tr>';
+          tbody.innerHTML = '<tr><td colspan="6" class="admin-sub">Nenhum evento corresponde aos filtros.</td></tr>';
           return;
         }
         tbody.innerHTML = lista.map((ev) => {
@@ -2887,6 +2934,7 @@
               <td>${escapeHtml(ev.categoria)}</td>
               <td>${escapeHtml(ev.nivel_confianca)}</td>
               <td><span class="badge ${stClass}">${escapeHtml(ev.status)}</span></td>
+              <td>${renderBadgeDataEntrada(ev.created_at || ev.updated_at)}</td>
               <td>
                 <div class="admin-actions">
                   ${podePublicar ? `<button class="admin-btn admin-btn-sm admin-btn-primary" type="button" data-pub-ev="${ev.id}">Publicar</button>` : ''}
@@ -3112,7 +3160,7 @@
         const tbody = $('tbody-dossies');
         const filtrados = filtrarDossies(state.dossies || []);
         if (!filtrados.length) {
-          tbody.innerHTML = '<tr><td colspan="7" class="admin-sub">Nenhum dossiê encontrado para este filtro.</td></tr>';
+          tbody.innerHTML = '<tr><td colspan="8" class="admin-sub">Nenhum dossiê encontrado para este filtro.</td></tr>';
           return;
         }
         tbody.innerHTML = filtrados.map((d) => {
@@ -3132,6 +3180,7 @@
               </td>
               <td>${tipoBadge}</td>
               <td>${renderDossieStatusBadge(d.status)} ${renderDossieWorkflowStatusBadge(d.workflow_status)}</td>
+              <td>${renderBadgeDataEntrada(d.data_inicio || d.created_at || d.ultima_atualizacao)}</td>
               <td>${formatDossiePeriodo(d)}</td>
               <td>${materias} mat. / ${veiculos} veíc.</td>
               <td>
@@ -3644,7 +3693,7 @@
             </div>
             <div class="admin-execucao-meta">
               <span class="admin-sub">docs: ${e.documentos_novos ?? 0} · eventos: ${e.eventos_atualizados ?? 0}</span>
-              <span class="admin-sub">${escapeHtml(e.started_at || '')} → ${escapeHtml(e.finished_at || '')}</span>
+              <span class="admin-sub" title="Entrada / Início: ${escapeHtml(e.started_at || '')}">📅 Entrada: ${formatarRelativo(e.started_at)} (${formatarDataHora(e.started_at)})</span>
             </div>
             ${e.erro_detalhe ? `<div class="admin-sub">Erro: ${escapeHtml(e.erro_detalhe)}</div>` : ''}
           </div>
@@ -3740,24 +3789,65 @@
 
       // ============================ RADAR ============================
       async function carregarRadar() {
-        const data = await apiFetch('/v2/admin/radar/manual');
+        let data;
+        try {
+          data = await apiFetch('/v2/admin/radar/feed');
+        } catch (err) {
+          // Fallback gracioso para a rota manual se feed falhar
+          data = await apiFetch('/v2/admin/radar/manual');
+        }
         state.radar = data.cards || [];
+        state.radarContadores = data.contadores || {
+          total: state.radar.length,
+          manuais: state.radar.filter((c) => c.origem === 'manual').length,
+          rss: state.radar.filter((c) => c.origem === 'rss').length,
+          pulso_v2: state.radar.filter((c) => c.origem === 'pulso_v2').length
+        };
+        atualizarTabsRadar();
         renderRadar();
+      }
+
+      function atualizarTabsRadar() {
+        const c = state.radarContadores || {};
+        const tot = c.total != null ? c.total : state.radar.length;
+        const man = c.manuais != null ? c.manuais : state.radar.filter((x) => x.origem === 'manual').length;
+        const rss = c.rss != null ? c.rss : state.radar.filter((x) => x.origem === 'rss').length;
+        const pul = c.pulso_v2 != null ? c.pulso_v2 : state.radar.filter((x) => x.origem === 'pulso_v2').length;
+
+        if ($('radar-count-tab-all')) $('radar-count-tab-all').textContent = tot;
+        if ($('radar-count-tab-manual')) $('radar-count-tab-manual').textContent = man;
+        if ($('radar-count-tab-rss')) $('radar-count-tab-rss').textContent = rss;
+        if ($('radar-count-tab-pulso')) $('radar-count-tab-pulso').textContent = pul;
+
+        if ($('nav-count-radar')) $('nav-count-radar').textContent = tot;
+        if ($('kpi-radar-val')) $('kpi-radar-val').textContent = tot + ' no feed';
       }
 
       function renderRadar() {
         agendarResumo();
+        atualizarTabsRadar();
         const tbody = $('tbody-radar');
         const q = $('radar-busca').value || '';
         const f = $('radar-filtro').value || 'all';
         const fUrg = valorFiltro('radar-urgencia');
         const fPer = valorFiltro('radar-periodo');
-        const escala = escalaUrgencia(state.radar);
+        const tab = state.radarTab || 'all';
+
         let lista = state.radar;
+
+        // Filtro da aba de origem (todos, manual, rss, pulso_v2)
+        if (tab !== 'all') {
+          lista = lista.filter((c) => {
+            const o = c.origem || (c.origem_manual ? 'manual' : (c.origem_v2 ? 'pulso_v2' : 'rss'));
+            return o === tab;
+          });
+        }
+
         if (f && f !== 'all') {
           lista = lista.filter((c) => String(c.categoria || '').toLowerCase() === f);
         }
         if (fUrg !== 'all') {
+          const escala = escalaUrgencia(state.radar);
           lista = lista.filter((c) => nivelUrgencia(c.urgencia_score, escala) === fUrg);
         }
         if (fPer !== 'all') {
@@ -3766,47 +3856,84 @@
         if (q.trim()) {
           lista = lista.filter((c) => combinaBusca(q, [c.titulo, c.resumo, c.analise, c.fonte_nome, c.pais_regiao, c.pais_envolvidos, c.paises_envolvidos, c.slug]));
         }
+
         atualizarResultadoFiltro('radar', lista.length, state.radar.length);
+
         if (!lista.length) {
-          tbody.innerHTML = `<tr><td colspan="6" class="admin-sub">${state.radar.length ? 'Nenhuma notícia corresponde aos filtros.' : 'Nenhuma notícia manual cadastrada.'}</td></tr>`;
+          tbody.innerHTML = `<tr><td colspan="6" class="admin-sub" style="text-align:center;padding:2rem;">${state.radar.length ? 'Nenhuma notícia corresponde aos filtros selecionados.' : 'Nenhuma notícia carregada no feed.'}</td></tr>`;
           return;
         }
-        tbody.innerHTML = lista.map((c) => `
-          <tr>
-            <td>
-              <strong>${escapeHtml(c.titulo)}</strong>
-              <div class="admin-sub"><code>${escapeHtml(c.slug)}</code></div>
-            </td>
-            <td><span class="badge">${escapeHtml(c.categoria || '—')}</span></td>
-            <td>${escapeHtml(c.urgencia_score ?? 0)}</td>
-            <td>${escapeHtml(c.fonte_nome || '—')}</td>
-            <td>${escapeHtml(c.data_publicacao || '—')}</td>
-            <td>
-              <div class="admin-actions">
-                <button class="admin-btn admin-btn-sm" type="button" data-edit-radar="${escapeHtml(c.slug)}">Editar</button>
-                <button class="admin-btn admin-btn-sm admin-btn-danger" type="button" data-del-radar="${escapeHtml(c.slug)}">Excluir</button>
-              </div>
-            </td>
-          </tr>
-        `).join('');
+
+        tbody.innerHTML = lista.map((c) => {
+          const isFixed = Boolean(c.fixado || (c.urgencia_score && c.urgencia_score >= 95));
+          const orig = c.origem || (c.origem_manual ? 'manual' : (c.origem_v2 ? 'pulso_v2' : 'rss'));
+          let badgeOrigem = '';
+          if (orig === 'manual') {
+            badgeOrigem = '<span class="badge badge-manual">Manual</span>';
+          } else if (orig === 'pulso_v2') {
+            badgeOrigem = '<span class="badge badge-ia" title="Síntese IA · Pulso V2">Pulso V2 · IA</span>';
+          } else {
+            const fnome = escapeHtml(c.fonte_nome || 'RSS');
+            badgeOrigem = `<span class="badge badge-rss" title="Coletado via RSS (${fnome})">RSS · ${fnome}</span>`;
+          }
+
+          const pinBadge = isFixed ? '<span class="badge badge-pinned" title="Fixado no topo">📌 Topo</span> ' : '';
+          const urgScore = Number(c.urgencia_score ?? 70);
+          const urgTom = urgScore >= 80 ? 'color: var(--danger,#e63946);font-weight:700;' : (urgScore >= 50 ? 'color: var(--sun,#f39c12);font-weight:600;' : 'color: var(--text-muted);');
+
+          const paises = Array.isArray(c.paises_envolvidos) && c.paises_envolvidos.length ? `<span class="admin-sub" style="margin-left:6px;font-size:0.75rem;">🌍 ${escapeHtml(c.paises_envolvidos.join(', '))}</span>` : '';
+
+          const linkExt = c.fonte_url && c.fonte_url !== '/radar' ? ` <a href="${escapeHtml(c.fonte_url)}" target="_blank" rel="noopener noreferrer" title="Abrir link original da notícia" style="color:var(--primary);text-decoration:none;font-size:0.8rem;">↗</a>` : '';
+
+          const resumoCurto = c.resumo ? `<div class="admin-sub" style="margin-top:3px;font-size:0.8rem;line-height:1.35;max-width:540px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;" title="${escapeHtml(c.resumo)}">${escapeHtml(c.resumo)}</div>` : '';
+
+          return `
+            <tr>
+              <td>
+                <div style="font-weight:600;line-height:1.35;">${escapeHtml(c.titulo)}${linkExt}</div>
+                ${resumoCurto}
+                <div class="admin-sub" style="margin-top:3px;font-size:0.75rem;">
+                  <code>${escapeHtml(c.slug)}</code>${paises}
+                </div>
+              </td>
+              <td>${badgeOrigem}</td>
+              <td><span class="badge">${escapeHtml(c.categoria || 'geral')}</span></td>
+              <td>
+                ${pinBadge}<span style="${urgTom}">${urgScore}</span>
+              </td>
+              <td>${renderBadgeDataEntrada(c.data_publicacao || c.created_at)}</td>
+              <td>
+                <div class="admin-actions">
+                  <button class="admin-btn admin-btn-sm" type="button" data-pin-radar="${escapeHtml(c.slug)}" data-is-pinned="${isFixed ? '1' : '0'}" title="${isFixed ? 'Desafixar notícia' : 'Fixar no topo do Radar'}">
+                    ${isFixed ? 'Desafixar' : '📌 Fixar'}
+                  </button>
+                  <button class="admin-btn admin-btn-sm" type="button" data-edit-radar="${escapeHtml(c.slug)}" title="Editar notícia">Editar</button>
+                  <button class="admin-btn admin-btn-sm admin-btn-danger" type="button" data-del-radar="${escapeHtml(c.slug)}" title="Remover notícia do feed">Excluir</button>
+                </div>
+              </td>
+            </tr>
+          `;
+        }).join('');
       }
 
       function abrirModalRadar() {
-        const card = state.radar.find((c) => c.slug === state.editingRadarSlug);
-        $('modal-radar_title').textContent = state.editingRadarSlug ? 'Editar Notícia Manual' : 'Nova Notícia Manual';
-        $('modal-radar_sub').textContent = state.editingRadarSlug
-          ? 'Edição parcial via PATCH /v2/admin/radar/manual/' + state.editingRadarSlug + '.'
-          : 'Cadastro via POST /v2/admin/radar/manual.';
-        $('btn-excluir-radar').style.display = state.editingRadarSlug ? 'inline-flex' : 'none';
+        const card = (state.radar || []).find((c) => c.slug === state.editingRadarSlug);
+        const ehNovo = !state.editingRadarSlug;
+        $('modal-radar_title').textContent = ehNovo ? 'Nova Notícia Manual' : 'Editar Notícia do Radar';
+        const origDesc = card ? (card.origem === 'pulso_v2' ? 'Síntese IA · Pulso V2' : (card.origem === 'rss' ? `RSS (${card.fonte_nome || 'Feed'})` : 'Notícia Manual')) : '';
+        $('modal-radar_sub').textContent = ehNovo
+          ? 'Cadastro via POST /v2/admin/radar/manual.'
+          : `Editando notícia (${origDesc}) via PATCH /v2/admin/radar/feed/${state.editingRadarSlug}.`;
+        $('btn-excluir-radar').style.display = ehNovo ? 'none' : 'inline-flex';
         $('r-titulo').value = card ? (card.titulo || '') : '';
         $('r-resumo').value = card ? (card.resumo || '') : '';
         $('r-contexto').value = card ? (card.analise || '') : '';
         $('r-categoria').value = card ? (card.categoria || 'geral') : 'geral';
-        $('r-urgencia').value = card ? (card.urgencia_score ?? 50) : 50;
+        $('r-urgencia').value = card ? (card.urgencia_score ?? 70) : 70;
         $('r-fonte-nome').value = card ? (card.fonte_nome || '') : '';
         $('r-fonte-url').value = card ? (card.fonte_url || '') : '';
-        $('r-pais').value = card ? (card.pais_regiao || '') : '';
-        $('r-data').value = card ? (card.data_publicacao || '') : '';
+        $('r-pais').value = card ? (Array.isArray(card.paises_envolvidos) && card.paises_envolvidos[0] ? card.paises_envolvidos[0] : (card.pais_regiao || '')) : '';
+        $('r-data').value = card ? (card.data_publicacao ? card.data_publicacao.slice(0, 10) : '') : '';
         $('r-slug').value = card ? (card.slug || '') : (slugify($('r-titulo').value) || '');
         $('r-slug').disabled = Boolean(card);
         hideBanner('modal-radar-banner');
@@ -3823,30 +3950,78 @@
         abrirModalRadar();
       });
 
-      $('btn-recarregar-radar').addEventListener('click', () => carregarRadar().catch((err) => showBanner('radar-banner', err.message, 'err')));
+      $('btn-recarregar-radar').addEventListener('click', () => {
+        const btn = $('btn-recarregar-radar');
+        btn.disabled = true;
+        const prev = btn.textContent;
+        btn.textContent = 'Atualizando...';
+        carregarRadar()
+          .then(() => showToast('Feed do Radar atualizado.', 'ok'))
+          .catch((err) => showBanner('radar-banner', err.message, 'err'))
+          .finally(() => {
+            btn.disabled = false;
+            btn.textContent = prev;
+          });
+      });
+
+      if ($('radar-tabs')) {
+        $('radar-tabs').addEventListener('click', (e) => {
+          const tabBtn = e.target.closest('button[data-radar-tab]');
+          if (!tabBtn) return;
+          $('radar-tabs').querySelectorAll('.admin-tab').forEach((b) => {
+            b.classList.remove('active');
+            b.setAttribute('aria-selected', 'false');
+          });
+          tabBtn.classList.add('active');
+          tabBtn.setAttribute('aria-selected', 'true');
+          state.radarTab = tabBtn.getAttribute('data-radar-tab') || 'all';
+          renderRadar();
+        });
+      }
 
       $('tbody-radar').addEventListener('click', async (e) => {
+        const pinBtn = e.target.closest('button[data-pin-radar]');
         const editBtn = e.target.closest('button[data-edit-radar]');
         const delBtn = e.target.closest('button[data-del-radar]');
-        if (!editBtn && !delBtn) return;
+        if (!pinBtn && !editBtn && !delBtn) return;
+
+        if (pinBtn) {
+          const slug = pinBtn.getAttribute('data-pin-radar');
+          const isPinned = pinBtn.getAttribute('data-is-pinned') === '1';
+          try {
+            await apiFetch(`/v2/admin/radar/feed/${encodeURIComponent(slug)}/fixar?fixar=${!isPinned}`, { method: 'POST' });
+            showToast(!isPinned ? 'Notícia fixada no topo do Radar.' : 'Notícia desafixada.', 'ok');
+            await carregarRadar();
+          } catch (err) {
+            showBanner('radar-banner', 'Erro ao alterar destaque: ' + err.message, 'err');
+          }
+          return;
+        }
+
         if (editBtn) {
           state.editingRadarSlug = editBtn.getAttribute('data-edit-radar');
           abrirModalRadar();
           return;
         }
-        const slug = delBtn.getAttribute('data-del-radar');
-        if (!confirm('Excluir esta notícia manual do radar?')) return;
-        try {
-          const res = await apiFetch(`/v2/admin/radar/manual/${encodeURIComponent(slug)}`, { method: 'DELETE' });
-          showBanner('radar-banner', 'Notícia manual excluída.', 'ok');
-          await carregarRadar();
-        } catch (err) {
-          showBanner('radar-banner', 'Erro ao excluir notícia: ' + err.message, 'err');
+
+        if (delBtn) {
+          const slug = delBtn.getAttribute('data-del-radar');
+          const card = (state.radar || []).find((c) => c.slug === slug);
+          const tit = card ? card.titulo : slug;
+          if (!confirm(`Excluir a notícia "${tit}" do feed do Radar?`)) return;
+          try {
+            await apiFetch(`/v2/admin/radar/feed/${encodeURIComponent(slug)}`, { method: 'DELETE' });
+            showBanner('radar-banner', 'Notícia excluída do Radar.', 'ok');
+            showToast('Notícia removida do feed do Radar.', 'ok');
+            await carregarRadar();
+          } catch (err) {
+            showBanner('radar-banner', 'Erro ao excluir notícia: ' + err.message, 'err');
+          }
+          return;
         }
       });
 
       $('btn-salvar-radar').addEventListener('click', async () => {
-        const bannerEl = $('modal-radar-banner');
         const titulo = $('r-titulo').value.trim();
         if (!titulo) {
           showBanner('modal-radar-banner', 'Informe o título da notícia.', 'err');
@@ -3865,18 +4040,20 @@
         };
         try {
           if (state.editingRadarSlug) {
-            const res = await apiFetch(`/v2/admin/radar/manual/${encodeURIComponent(state.editingRadarSlug)}`, {
+            await apiFetch(`/v2/admin/radar/feed/${encodeURIComponent(state.editingRadarSlug)}`, {
               method: 'PATCH',
               body: JSON.stringify(body)
             });
-            showBanner('radar-banner', 'Notícia manual atualizada.', 'ok');
+            showBanner('radar-banner', 'Notícia do Radar atualizada.', 'ok');
+            showToast('Notícia do Radar atualizada com sucesso.', 'ok');
           } else {
             const slug = slugify(titulo) || ('manual-' + Date.now().toString(36));
-            const res = await apiFetch('/v2/admin/radar/manual', {
+            await apiFetch('/v2/admin/radar/manual', {
               method: 'POST',
               body: JSON.stringify({ ...body, slug: slug, origem_manual: true })
             });
             showBanner('radar-banner', 'Notícia manual criada.', 'ok');
+            showToast('Nova notícia manual adicionada ao Radar.', 'ok');
           }
           await carregarRadar();
           fecharModalRadar();
@@ -3890,10 +4067,13 @@
 
       $('btn-excluir-radar').addEventListener('click', async () => {
         if (!state.editingRadarSlug) return;
-        if (!confirm('Excluir esta notícia manual do radar?')) return;
+        const card = (state.radar || []).find((c) => c.slug === state.editingRadarSlug);
+        const tit = card ? card.titulo : state.editingRadarSlug;
+        if (!confirm(`Excluir a notícia "${tit}" do feed do Radar?`)) return;
         try {
-          const res = await apiFetch(`/v2/admin/radar/manual/${encodeURIComponent(state.editingRadarSlug)}`, { method: 'DELETE' });
-          showBanner('radar-banner', 'Notícia manual excluída.', 'ok');
+          await apiFetch(`/v2/admin/radar/feed/${encodeURIComponent(state.editingRadarSlug)}`, { method: 'DELETE' });
+          showBanner('radar-banner', 'Notícia excluída do Radar.', 'ok');
+          showToast('Notícia removida do feed.', 'ok');
           await carregarRadar();
           fecharModalRadar();
         } catch (err) {
@@ -3950,7 +4130,7 @@
             <td>${escapeHtml(n.categoria || '—')}</td>
             <td><span class="badge ${nivelUrgencia(n.urgencia_score, escala) === 'alta' ? 'badge-warn' : ''}">${escapeHtml(n.urgencia_score ?? 0)}</span></td>
             <td><span class="badge ${n.status === 'publicado' || n.status === 'ativo' ? 'badge-ok' : 'badge-warn'}">${escapeHtml(n.status || '—')}</span></td>
-            <td><span class="admin-sub" title="${escapeHtml(n.atualizado_em || n.updated_at || '')}">${escapeHtml(formatarRelativo(n.updated_at || n.atualizado_em))}</span></td>
+            <td>${renderBadgeDataEntrada(n.created_at || n.data_publicacao || n.updated_at || n.atualizado_em)}</td>
             <td>
               <div class="admin-actions">
                 <button class="admin-btn admin-btn-sm" type="button" data-edit-nq="${escapeHtml(n.slug)}">Editar</button>
@@ -4005,11 +4185,11 @@
         });
         atualizarResultadoFiltro('col', lista.length, todas.length);
         if (!todas.length) {
-          tbody.innerHTML = '<tr><td colspan="5" class="admin-sub">Nenhuma coluna gerada.</td></tr>';
+          tbody.innerHTML = '<tr><td colspan="6" class="admin-sub">Nenhuma coluna gerada.</td></tr>';
           return;
         }
         if (!lista.length) {
-          tbody.innerHTML = '<tr><td colspan="5" class="admin-sub">Nenhuma coluna corresponde aos filtros.</td></tr>';
+          tbody.innerHTML = '<tr><td colspan="6" class="admin-sub">Nenhuma coluna corresponde aos filtros.</td></tr>';
           return;
         }
         tbody.innerHTML = lista.map((c) => `
@@ -4021,6 +4201,7 @@
             <td>${escapeHtml(c.categoria || '—')}</td>
             <td>${escapeHtml(notaColuna(c))}</td>
             <td>${statusBadgeColuna(c.status || c.review_status)}</td>
+            <td>${renderBadgeDataEntrada(c.created_at || c.published_at || c.updated_at)}</td>
             <td>
               <div class="admin-actions">
                 <button class="admin-btn admin-btn-sm" type="button" data-ver-coluna="${escapeHtml(c.slug)}">Ver</button>
@@ -4379,6 +4560,35 @@
         return 'há ' + Math.round(h / 24) + ' d';
       }
 
+      function formatarDataHora(v) {
+        const t = parseDataMs(v);
+        if (!Number.isFinite(t)) return '—';
+        try {
+          const d = new Date(t);
+          return d.toLocaleString('pt-BR', {
+            timeZone: 'America/Sao_Paulo',
+            day: '2-digit',
+            month: '2-digit',
+            year: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: false
+          });
+        } catch {
+          return '—';
+        }
+      }
+
+      function renderBadgeDataEntrada(v, fallback = '—') {
+        if (!v) return `<span class="admin-sub">${escapeHtml(fallback)}</span>`;
+        const rel = formatarRelativo(v);
+        const exata = formatarDataHora(v);
+        return `
+          <div style="font-size:0.82rem;font-weight:600;white-space:nowrap;" title="${escapeHtml(String(v))}">${escapeHtml(rel)}</div>
+          <div class="admin-sub" style="font-size:0.72rem;white-space:nowrap;">${escapeHtml(exata)}</div>
+        `;
+      }
+
       const FILTROS = {
         nq: { campos: ['nq-busca', 'nq-filtro-status', 'nq-filtro-categoria', 'nq-urgencia', 'nq-periodo'], render: () => renderNoticiasQuentes() },
         ev: { campos: ['ev-busca', 'ev-categoria', 'ev-confianca', 'ev-periodo'], render: () => renderEventos() },
@@ -4483,8 +4693,10 @@
 
         // Radar
         const rd = (state.radar || []).length;
-        setKpi('kpi-radar', String(rd), '');
-        setNavCount('nav-count-radar', String(rd), '');
+        const cRd = state.radarContadores || {};
+        const totalFeed = cRd.total != null ? cRd.total : rd;
+        setKpi('kpi-radar', `${totalFeed} no feed`, totalFeed > 0 ? 'ok' : '');
+        setNavCount('nav-count-radar', String(totalFeed), totalFeed > 0 ? 'ok' : '');
 
         // Kill switch
         if (state.autoPub === null || state.autoPub === undefined) {

@@ -838,7 +838,7 @@ def admin_sugerir_dossie_ia(
     today_iso = datetime.now(timezone.utc).date().isoformat()
     prompt = _montar_prompt_sugestao_dossie(trends, fontes_pesquisadas, today_iso, hint_clean)
 
-    model_name = os.getenv("GEMINI_DOSSIER_MODEL", "gemini-2.5-flash")
+    model_name = os.getenv("GEMINI_DOSSIER_MODEL", "gemini-3.1-flash-lite")
     try:
         client = genai.Client(api_key=api_key, http_options=types.HttpOptions(timeout=90_000))
         result = client.models.generate_content(
@@ -1004,7 +1004,7 @@ def admin_gerar_dossie_ia(
     today_iso = datetime.now(timezone.utc).date().isoformat()
     prompt = _montar_prompt_geracao_dossie(dossie, materias, today_iso)
 
-    model_name = os.getenv("GEMINI_DOSSIER_MODEL", "gemini-2.5-flash")
+    model_name = os.getenv("GEMINI_DOSSIER_MODEL", "gemini-3.1-flash-lite")
     try:
         client = genai.Client(api_key=api_key, http_options=types.HttpOptions(timeout=120_000))
         result = client.models.generate_content(

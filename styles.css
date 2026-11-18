@@ -12980,43 +12980,308 @@ body.dark .dossie-filter-pill.is-active {
   text-transform: uppercase;
   margin-bottom: 2px;
 }
+.dossie-section-kicker.kicker-sintese {
+  color: #0284c7;
+}
+.dossie-section-kicker.kicker-cronologia {
+  color: #b45309;
+}
+
 .dossie-exec-context {
-  background: rgba(17, 24, 39, 0.72);
-  border: 1px solid rgba(255,255,255,0.1);
+  background: var(--surface);
+  border: 1px solid var(--border);
   border-radius: 12px;
   padding: 16px 18px;
   margin: 8px 0 16px;
+  color: var(--text);
 }
 .dossie-exec-context p { margin: 0; line-height: 1.65; font-size: 0.98rem; }
 .dossie-pillars-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
-.dossie-pillar-card { background: rgba(17, 24, 39, 0.55); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 14px 16px; }
+.dossie-pillar-card {
+  background: var(--surface-2, #ffffff);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 16px;
+  color: var(--text);
+  box-shadow: var(--shadow-sm);
+}
 .dossie-pillar-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 8px; }
-.dossie-pillar-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 0.72rem; font-weight: 600; padding: 4px 8px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.04); }
-.dossie-pillar-num { font-size: 0.72rem; opacity: .6; font-family: ui-monospace, monospace; }
-.dossie-pillar-title { margin: 0 0 6px; font-size: 1rem; line-height: 1.3; }
-.dossie-pillar-desc { margin: 0; font-size: 0.9rem; line-height: 1.55; opacity: .9; }
-.dossie-pillar-card.cat-politica .dossie-pillar-badge { color: #38bdf8; border-color: rgba(56,189,248,.25); background: rgba(56,189,248,.08); }
-.dossie-pillar-card.cat-economia .dossie-pillar-badge { color: #34d399; border-color: rgba(52,211,153,.25); background: rgba(52,211,153,.08); }
-.dossie-pillar-card.cat-geopolitica .dossie-pillar-badge { color: #fbbf24; border-color: rgba(251,191,36,.25); background: rgba(251,191,36,.08); }
-.dossie-pillar-card.cat-seguranca .dossie-pillar-badge { color: #fb7185; border-color: rgba(251,113,133,.25); background: rgba(251,113,133,.08); }
-.dossie-pillar-card.cat-sociedade .dossie-pillar-badge { color: #c084fc; border-color: rgba(192,132,252,.25); background: rgba(192,132,252,.08); }
-.dossie-timeline-list { position: relative; margin-left: 8px; padding-left: 22px; border-left: 1px solid rgba(255,255,255,0.15); display: flex; flex-direction: column; gap: 12px; }
-.dossie-tl-item { position: relative; width: 100%; text-align: left; background: rgba(17,24,39,0.5); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 12px 14px; cursor: pointer; color: inherit; font: inherit; }
-.dossie-tl-item:hover { border-color: rgba(255,255,255,0.22); }
-.dossie-tl-item.is-selected { outline: 1px solid rgba(255,255,255,0.28); }
-.dossie-tl-dot { position: absolute; left: -29px; top: 16px; width: 12px; height: 12px; border-radius: 50%; background: #94a3b8; box-shadow: 0 0 0 4px rgba(148,163,184,0.18); }
-.dossie-tl-item.tl-turning .dossie-tl-dot { background: #fbbf24; box-shadow: 0 0 0 4px rgba(251,191,36,0.22); }
-.dossie-tl-item.tl-upcoming .dossie-tl-dot { background: #38bdf8; box-shadow: 0 0 0 4px rgba(56,189,248,0.22); }
-.dossie-tl-item.tl-turning { border-color: rgba(251,191,36,0.35); background: rgba(120,53,15,0.12); }
-.dossie-tl-item.tl-upcoming { border-color: rgba(56,189,248,0.22); }
+.dossie-pillar-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface-offset, rgba(0,0,0,0.04));
+  color: var(--text);
+}
+.dossie-pillar-num { font-size: 0.72rem; opacity: .7; font-family: ui-monospace, monospace; }
+.dossie-pillar-title { margin: 0 0 6px; font-size: 1rem; line-height: 1.3; color: var(--text); }
+.dossie-pillar-desc { margin: 0; font-size: 0.9rem; line-height: 1.55; color: var(--text-muted); }
+
+/* Categorias de pilares em modo claro */
+.dossie-pillar-card.cat-politica .dossie-pillar-badge { color: #0284c7; border-color: rgba(2,132,199,.3); background: rgba(2,132,199,.08); }
+.dossie-pillar-card.cat-economia .dossie-pillar-badge { color: #059669; border-color: rgba(5,150,105,.3); background: rgba(5,150,105,.08); }
+.dossie-pillar-card.cat-geopolitica .dossie-pillar-badge { color: #b45309; border-color: rgba(180,83,9,.3); background: rgba(180,83,9,.08); }
+.dossie-pillar-card.cat-seguranca .dossie-pillar-badge { color: #e11d48; border-color: rgba(225,29,72,.3); background: rgba(225,29,72,.08); }
+.dossie-pillar-card.cat-sociedade .dossie-pillar-badge { color: #7e22ce; border-color: rgba(126,34,206,.3); background: rgba(126,34,206,.08); }
+
+/* Timeline */
+.dossie-timeline-list {
+  position: relative;
+  margin-left: 8px;
+  padding-left: 22px;
+  border-left: 1px solid var(--border, rgba(0,0,0,0.12));
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.dossie-tl-item {
+  position: relative;
+  width: 100%;
+  text-align: left;
+  background: var(--surface-2, #ffffff);
+  border: 1px solid var(--border, rgba(0,0,0,0.08));
+  border-radius: 12px;
+  padding: 12px 14px;
+  cursor: pointer;
+  color: var(--text, #1D1D1F);
+  font: inherit;
+  box-shadow: var(--shadow-sm);
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+.dossie-tl-item:hover { border-color: var(--border-strong, rgba(0,0,0,0.22)); }
+.dossie-tl-item.is-selected { outline: 2px solid var(--primary, #0071E3); }
+.dossie-tl-dot {
+  position: absolute;
+  left: -29px;
+  top: 16px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #64748b;
+  box-shadow: 0 0 0 4px rgba(100,116,139,0.18);
+}
 .dossie-tl-content { display: block; }
 .dossie-tl-meta { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
-.dossie-tl-date { font-size: 0.78rem; font-weight: 700; font-family: ui-monospace, monospace; }
-.dossie-tl-badge { font-size: 0.72rem; padding: 2px 8px; border-radius: 999px; background: rgba(255,255,255,0.06); }
-.dossie-tl-item.tl-turning .dossie-tl-badge { color: #fcd34d; background: rgba(251,191,36,0.14); }
-.dossie-tl-item.tl-upcoming .dossie-tl-badge { color: #7dd3fc; background: rgba(56,189,248,0.14); }
-.dossie-tl-title { display: block; font-weight: 700; font-size: 0.98rem; margin-bottom: 4px; }
-.dossie-tl-summary { display: block; font-size: 0.9rem; line-height: 1.55; opacity: .9; }
+.dossie-tl-date { font-size: 0.78rem; font-weight: 700; font-family: ui-monospace, monospace; color: var(--text-muted, #475569); }
+.dossie-tl-badge {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--surface-offset, rgba(0,0,0,0.06));
+  color: var(--text, #334155);
+  border: 1px solid var(--border, rgba(0,0,0,0.08));
+}
+.dossie-tl-title { display: block; font-weight: 700; font-size: 0.98rem; margin-bottom: 4px; color: var(--text); }
+.dossie-tl-summary { display: block; font-size: 0.9rem; line-height: 1.55; color: var(--text-muted); }
+
+/* Ponto de Virada (tl-turning) - Modo Claro */
+.dossie-tl-item.tl-turning {
+  border-color: rgba(217, 119, 6, 0.35);
+  background: rgba(254, 243, 199, 0.5);
+}
+.dossie-tl-item.tl-turning .dossie-tl-dot {
+  background: #d97706;
+  box-shadow: 0 0 0 4px rgba(217, 119, 6, 0.22);
+}
+.dossie-tl-item.tl-turning .dossie-tl-badge {
+  color: #92400e;
+  background: #fef3c7;
+  border-color: rgba(217, 119, 6, 0.35);
+}
+
+/* Próximo Marco (tl-upcoming) - Modo Claro */
+.dossie-tl-item.tl-upcoming {
+  border-color: rgba(2, 132, 199, 0.3);
+  background: rgba(224, 242, 254, 0.5);
+}
+.dossie-tl-item.tl-upcoming .dossie-tl-dot {
+  background: #0284c7;
+  box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.22);
+}
+.dossie-tl-item.tl-upcoming .dossie-tl-badge {
+  color: #0369a1;
+  background: #e0f2fe;
+  border-color: rgba(2, 132, 199, 0.3);
+}
+
+/* Dark Mode explícito para Síntese & Timeline */
+html[data-theme="dark"] .dossie-section-kicker.kicker-sintese,
+[data-theme="dark"] .dossie-section-kicker.kicker-sintese,
+body.dark .dossie-section-kicker.kicker-sintese {
+  color: #38bdf8;
+}
+html[data-theme="dark"] .dossie-section-kicker.kicker-cronologia,
+[data-theme="dark"] .dossie-section-kicker.kicker-cronologia,
+body.dark .dossie-section-kicker.kicker-cronologia {
+  color: #fbbf24;
+}
+
+html[data-theme="dark"] .dossie-exec-context,
+[data-theme="dark"] .dossie-exec-context,
+body.dark .dossie-exec-context {
+  background: rgba(17, 24, 39, 0.72);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+html[data-theme="dark"] .dossie-pillar-card,
+[data-theme="dark"] .dossie-pillar-card,
+body.dark .dossie-pillar-card {
+  background: rgba(17, 24, 39, 0.55);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: inherit;
+  box-shadow: none;
+}
+html[data-theme="dark"] .dossie-pillar-badge,
+[data-theme="dark"] .dossie-pillar-badge,
+body.dark .dossie-pillar-badge {
+  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  color: inherit;
+}
+html[data-theme="dark"] .dossie-pillar-title,
+[data-theme="dark"] .dossie-pillar-title,
+body.dark .dossie-pillar-title {
+  color: inherit;
+}
+html[data-theme="dark"] .dossie-pillar-desc,
+[data-theme="dark"] .dossie-pillar-desc,
+body.dark .dossie-pillar-desc {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+html[data-theme="dark"] .dossie-pillar-card.cat-politica .dossie-pillar-badge,
+[data-theme="dark"] .dossie-pillar-card.cat-politica .dossie-pillar-badge,
+body.dark .dossie-pillar-card.cat-politica .dossie-pillar-badge {
+  color: #38bdf8;
+  border-color: rgba(56,189,248,.25);
+  background: rgba(56,189,248,.08);
+}
+html[data-theme="dark"] .dossie-pillar-card.cat-economia .dossie-pillar-badge,
+[data-theme="dark"] .dossie-pillar-card.cat-economia .dossie-pillar-badge,
+body.dark .dossie-pillar-card.cat-economia .dossie-pillar-badge {
+  color: #34d399;
+  border-color: rgba(52,211,153,.25);
+  background: rgba(52,211,153,.08);
+}
+html[data-theme="dark"] .dossie-pillar-card.cat-geopolitica .dossie-pillar-badge,
+[data-theme="dark"] .dossie-pillar-card.cat-geopolitica .dossie-pillar-badge,
+body.dark .dossie-pillar-card.cat-geopolitica .dossie-pillar-badge {
+  color: #fbbf24;
+  border-color: rgba(251,191,36,.25);
+  background: rgba(251,191,36,.08);
+}
+html[data-theme="dark"] .dossie-pillar-card.cat-seguranca .dossie-pillar-badge,
+[data-theme="dark"] .dossie-pillar-card.cat-seguranca .dossie-pillar-badge,
+body.dark .dossie-pillar-card.cat-seguranca .dossie-pillar-badge {
+  color: #fb7185;
+  border-color: rgba(251,113,133,.25);
+  background: rgba(251,113,133,.08);
+}
+html[data-theme="dark"] .dossie-pillar-card.cat-sociedade .dossie-pillar-badge,
+[data-theme="dark"] .dossie-pillar-card.cat-sociedade .dossie-pillar-badge,
+body.dark .dossie-pillar-card.cat-sociedade .dossie-pillar-badge {
+  color: #c084fc;
+  border-color: rgba(192,132,252,.25);
+  background: rgba(192,132,252,.08);
+}
+
+html[data-theme="dark"] .dossie-timeline-list,
+[data-theme="dark"] .dossie-timeline-list,
+body.dark .dossie-timeline-list {
+  border-left-color: rgba(255, 255, 255, 0.15);
+}
+html[data-theme="dark"] .dossie-tl-item,
+[data-theme="dark"] .dossie-tl-item,
+body.dark .dossie-tl-item {
+  background: rgba(17, 24, 39, 0.5);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: inherit;
+  box-shadow: none;
+}
+html[data-theme="dark"] .dossie-tl-item:hover,
+[data-theme="dark"] .dossie-tl-item:hover,
+body.dark .dossie-tl-item:hover {
+  border-color: rgba(255, 255, 255, 0.22);
+}
+html[data-theme="dark"] .dossie-tl-item.is-selected,
+[data-theme="dark"] .dossie-tl-item.is-selected,
+body.dark .dossie-tl-item.is-selected {
+  outline: 1px solid rgba(255, 255, 255, 0.28);
+}
+html[data-theme="dark"] .dossie-tl-dot,
+[data-theme="dark"] .dossie-tl-dot,
+body.dark .dossie-tl-dot {
+  background: #94a3b8;
+  box-shadow: 0 0 0 4px rgba(148, 163, 184, 0.18);
+}
+html[data-theme="dark"] .dossie-tl-date,
+[data-theme="dark"] .dossie-tl-date,
+body.dark .dossie-tl-date {
+  color: inherit;
+}
+html[data-theme="dark"] .dossie-tl-title,
+[data-theme="dark"] .dossie-tl-title,
+body.dark .dossie-tl-title {
+  color: inherit;
+}
+html[data-theme="dark"] .dossie-tl-summary,
+[data-theme="dark"] .dossie-tl-summary,
+body.dark .dossie-tl-summary {
+  color: rgba(255, 255, 255, 0.8);
+}
+html[data-theme="dark"] .dossie-tl-badge,
+[data-theme="dark"] .dossie-tl-badge,
+body.dark .dossie-tl-badge {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: inherit;
+}
+
+html[data-theme="dark"] .dossie-tl-item.tl-turning,
+[data-theme="dark"] .dossie-tl-item.tl-turning,
+body.dark .dossie-tl-item.tl-turning {
+  border-color: rgba(251, 191, 36, 0.35);
+  background: rgba(120, 53, 15, 0.16);
+}
+html[data-theme="dark"] .dossie-tl-item.tl-turning .dossie-tl-dot,
+[data-theme="dark"] .dossie-tl-item.tl-turning .dossie-tl-dot,
+body.dark .dossie-tl-item.tl-turning .dossie-tl-dot {
+  background: #fbbf24;
+  box-shadow: 0 0 0 4px rgba(251, 191, 36, 0.22);
+}
+html[data-theme="dark"] .dossie-tl-item.tl-turning .dossie-tl-badge,
+[data-theme="dark"] .dossie-tl-item.tl-turning .dossie-tl-badge,
+body.dark .dossie-tl-item.tl-turning .dossie-tl-badge {
+  color: #fde68a;
+  background: rgba(251, 191, 36, 0.16);
+  border-color: rgba(251, 191, 36, 0.25);
+}
+
+html[data-theme="dark"] .dossie-tl-item.tl-upcoming,
+[data-theme="dark"] .dossie-tl-item.tl-upcoming,
+body.dark .dossie-tl-item.tl-upcoming {
+  border-color: rgba(56, 189, 248, 0.25);
+  background: rgba(8, 47, 73, 0.2);
+}
+html[data-theme="dark"] .dossie-tl-item.tl-upcoming .dossie-tl-dot,
+[data-theme="dark"] .dossie-tl-item.tl-upcoming .dossie-tl-dot,
+body.dark .dossie-tl-item.tl-upcoming .dossie-tl-dot {
+  background: #38bdf8;
+  box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.22);
+}
+html[data-theme="dark"] .dossie-tl-item.tl-upcoming .dossie-tl-badge,
+[data-theme="dark"] .dossie-tl-item.tl-upcoming .dossie-tl-badge,
+body.dark .dossie-tl-item.tl-upcoming .dossie-tl-badge {
+  color: #7dd3fc;
+  background: rgba(56, 189, 248, 0.16);
+  border-color: rgba(56, 189, 248, 0.25);
+}
+
 @media (max-width: 700px) { .dossie-pillars-grid { grid-template-columns: 1fr; } .dossie-timeline-list { margin-left: 4px; padding-left: 18px; } .dossie-tl-dot { left: -25px; } }
 
 /* Radar & Curadoria hub (tabs) */

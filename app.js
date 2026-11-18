@@ -7083,21 +7083,28 @@
         if (!data || !Array.isArray(data.grupos)) throw new Error('Invalid payload');
         if (periodo === '24h' && data.grupos.length === 0 && data.periodo !== '7d' && !state.periodManual) {
           state.searchPeriod = '7d';
-          executeTopicSearch(q, { keepPeriod: true, ignoreTopic: opts.ignoreTopic, fromHotCompareBtn: opts.fromHotCompareBtn, hasFallbackShortTerm: opts.hasFallbackShortTerm, originalLongQuery: opts.originalLongQuery });
+          executeTopicSearch(q, { keepPeriod: true, ignoreTopic: opts.ignoreTopic, fromHotCompareBtn: opts.fromHotCompareBtn, hasFallbackShortTerm: opts.hasFallbackShortTerm, hasHotCountryFallback: opts.hasHotCountryFallback, originalLongQuery: opts.originalLongQuery });
           return;
         }
         if (periodo === '7d' && data.grupos.length === 0 && data.periodo !== 'all' && !state.periodManual) {
           state.searchPeriod = 'all';
-          executeTopicSearch(q, { keepPeriod: true, ignoreTopic: true, fromHotCompareBtn: opts.fromHotCompareBtn, hasFallbackShortTerm: opts.hasFallbackShortTerm, originalLongQuery: opts.originalLongQuery });
+          executeTopicSearch(q, { keepPeriod: true, ignoreTopic: true, fromHotCompareBtn: opts.fromHotCompareBtn, hasFallbackShortTerm: opts.hasFallbackShortTerm, hasHotCountryFallback: opts.hasHotCountryFallback, originalLongQuery: opts.originalLongQuery });
           return;
         }
         if (data.grupos.length === 0 && !opts.hasFallbackShortTerm) {
           var rawWords = q.trim().split(/\s+/).filter(Boolean);
-          if (rawWords.length > 3) {
+          if (rawWords.length > 1) {
             var centralTerm = extrairTermoAssuntoBusca(q);
+            if (!centralTerm || norm(centralTerm) === norm(q)) {
+              var capWord = rawWords.find(function (w) { return /^[A-ZÀ-Ý]/.test(w) && w.length >= 3; });
+              centralTerm = capWord || rawWords.slice().sort(function (a, b) { return b.length - a.length; })[0];
+            }
             if (centralTerm && norm(centralTerm) !== norm(q)) {
+              var inpFallback = panel ? panel.querySelector('#topic-search-input') : null;
+              if (inpFallback) inpFallback.value = centralTerm;
               executeTopicSearch(centralTerm, {
                 hasFallbackShortTerm: true,
+                hasHotCountryFallback: opts.hasHotCountryFallback,
                 originalLongQuery: q,
                 keepPeriod: true,
                 ignoreTopic: opts.ignoreTopic,
@@ -7107,9 +7114,21 @@
             }
           }
         }
-        if (data.grupos.length === 0 && opts.fromHotCompareBtn && panel) {
-          var hotCmpEl = panel.querySelector('[data-hot-compare-term]');
-          if (hotCmpEl) hotCmpEl.style.display = 'none';
+        if (data.grupos.length === 0 && opts.fromHotCompareBtn && !opts.hasHotCountryFallback && cName && norm(q) !== norm(cName)) {
+          var fallbackCountryTerm = (Array.isArray(liveTrendingByCountry[cCode]) && liveTrendingByCountry[cCode][0]) || cName;
+          if (fallbackCountryTerm && norm(fallbackCountryTerm) !== norm(q)) {
+            var inpCountryFb = panel ? panel.querySelector('#topic-search-input') : null;
+            if (inpCountryFb) inpCountryFb.value = fallbackCountryTerm;
+            executeTopicSearch(fallbackCountryTerm, {
+              hasFallbackShortTerm: true,
+              hasHotCountryFallback: true,
+              originalLongQuery: opts.originalLongQuery || q,
+              keepPeriod: true,
+              ignoreTopic: true,
+              fromHotCompareBtn: true
+            });
+            return;
+          }
         }
         if (opts.originalLongQuery) {
           data.fallbackDeFraseLonga = opts.originalLongQuery;
@@ -10546,7 +10565,7 @@
 
     var h = '<section class="hub-block dossie-exec-summary" aria-labelledby="dossie-exec-heading">';
     h += '<div class="hub-block-head">';
-    h += '<span class="dossie-section-kicker" style="color:#38bdf8">Síntese Executiva</span>';
+    h += '<span class="dossie-section-kicker kicker-sintese">Síntese Executiva</span>';
     h += '<h2 id="dossie-exec-heading">O que está em jogo</h2>';
     h += '</div>';
 
@@ -10586,7 +10605,7 @@
 
     var h = '<section class="hub-block dossie-timeline" aria-labelledby="dossie-timeline-heading">';
     h += '<div class="hub-block-head">';
-    h += '<span class="dossie-section-kicker" style="color:#fbbf24">Cronologia</span>';
+    h += '<span class="dossie-section-kicker kicker-cronologia">Cronologia</span>';
     h += '<h2 id="dossie-timeline-heading">Linha do Tempo &amp; Marcos Decisivos</h2>';
     h += '<p>Clique em um marco para destacar os detalhes.</p>';
     h += '</div>';

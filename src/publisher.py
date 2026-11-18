@@ -432,7 +432,7 @@ def publish_cards(cards: List[Dict[str, Any]], max_items: int = 50) -> int:
 
 
 # ============================================================================
-# 8. CARDS MANUAIS DO RADAR (CONTRATO ADMIN-REBUILD-MODERNO-2026-11)
+# 8. CARDS DO RADAR & CURADORIA (CONTRATO ADMIN-REBUILD-MODERNO-2026-11)
 # ============================================================================
 
 def _eh_card_manual(card: Dict[str, Any]) -> bool:
@@ -443,6 +443,25 @@ def _eh_card_manual(card: Dict[str, Any]) -> bool:
     if bool(origem):
         return True
     return str(card.get("slug") or "").strip().lower().startswith("manual-")
+
+
+def gerar_slug_card(card: Dict[str, Any]) -> str:
+    """Retorna ou gera um slug determinístico e estável para qualquer card do Radar."""
+    slug = str(card.get("slug") or "").strip().lower()
+    if slug:
+        return slug
+    tit = str(card.get("titulo") or "").strip()
+    if tit:
+        texto = unicodedata.normalize("NFD", tit)
+        sem_acentos = "".join(ch for ch in texto if unicodedata.category(ch) != "Mn")
+        s = re.sub(r"[^a-z0-9]+", "-", sem_acentos.lower()).strip("-")
+        if s:
+            return s[:80]
+    raw_id = str(card.get("id") or card.get("fonte_url") or "")
+    if raw_id:
+        import hashlib
+        return f"card-{hashlib.md5(raw_id.encode('utf-8')).hexdigest()[:10]}"
+    return f"card-{os.urandom(4).hex()}"
 
 
 def normalizar_card_manual(card: Dict[str, Any]) -> Dict[str, Any]:
@@ -468,6 +487,7 @@ def normalizar_card_manual(card: Dict[str, Any]) -> Dict[str, Any]:
         "fonte_url": str(card.get("fonte_url") or "/radar").strip(),
         "data_publicacao": str(card.get("data_publicacao") or card.get("publicado_em") or card.get("created_at") or agora_iso),
         "urgencia_score": int(card.get("urgencia_score") or 80),
+        "fixado": bool(card.get("fixado") or int(card.get("urgencia_score") or 0) >= 95),
         "paises_envolvidos": [
             str(p).strip().upper()
             for p in (card.get("paises_envolvidos") or [card.get("pais_regiao") or "BR"]) or []
@@ -489,6 +509,45 @@ def listar_cards_manuais() -> List[Dict[str, Any]]:
     manuais = [c for c in feed if isinstance(c, dict) and _eh_card_manual(c)]
     manuais.sort(key=_timestamp_publicacao, reverse=True)
     return manuais
+
+
+def listar_todos_cards_radar(max_items: int = 100) -> List[Dict[str, Any]]:
+    """Lista todos os cards do feed_output (manuais e RSS automáticos), com slugs e metadados normalizados."""
+    feed = _ler_feed_existente()
+    cards_norm: List[Dict[str, Any]] = []
+    for c in feed:
+        if not isinstance(c, dict):
+            continue
+        slug = gerar_slug_card(c)
+        data_pub = (
+            c.get("data_publicacao")
+            or c.get("published_at")
+            or c.get("created_at")
+            or c.get("publicado_em")
+            or ""
+        )
+        eh_manual = _eh_card_manual(c)
+        urgencia = int(c.get("urgencia_score") or (80 if eh_manual else 70))
+        cards_norm.append({
+            "id": str(c.get("id") or f"feed-{slug}"),
+            "slug": slug,
+            "titulo": str(c.get("titulo") or "").strip(),
+            "resumo": str(c.get("resumo") or "").strip(),
+            "analise": str(c.get("analise") or c.get("contexto") or c.get("resumo") or "").strip(),
+            "categoria": str(c.get("categoria") or "geral").strip().lower(),
+            "fonte_nome": str(c.get("fonte_nome") or ("Síntese Manual" if eh_manual else "Radar Editorial")).strip(),
+            "fonte_url": str(c.get("fonte_url") or "/radar").strip(),
+            "data_publicacao": data_pub,
+            "urgencia_score": urgencia,
+            "fixado": bool(c.get("fixado") or urgencia >= 95),
+            "paises_envolvidos": list(c.get("paises_envolvidos") or ([c.get("pais_regiao")] if c.get("pais_regiao") else [])),
+            "palavras_chave": list(c.get("palavras_chave") or []),
+            "origem": "manual" if eh_manual else "rss",
+            "origem_manual": eh_manual,
+            "origem_v2": False,
+        })
+    cards_norm.sort(key=_timestamp_publicacao, reverse=True)
+    return cards_norm[:max_items]
 
 
 def publicar_card_manual(card: Dict[str, Any], max_items: int = 50) -> Dict[str, Any]:
@@ -536,16 +595,18 @@ def publicar_card_manual(card: Dict[str, Any], max_items: int = 50) -> Dict[str,
     return card_normalizado
 
 
-def atualizar_card_manual(slug: str, updates: Dict[str, Any], max_items: int = 50) -> Optional[Dict[str, Any]]:
-    """Atualiza campos parciais de um card manual existente (por slug) no feed (banco + arquivo)."""
-    alvo = str(slug or "").strip().lower()
+def atualizar_card_radar(slug_or_id: str, updates: Dict[str, Any], max_items: int = 100) -> Optional[Dict[str, Any]]:
+    """Atualiza campos parciais de qualquer card (manual ou RSS) no feed do Radar por slug ou identificador."""
+    alvo = str(slug_or_id or "").strip().lower()
 
     def _aplicar_update(feed_atual: Any) -> tuple[List[Dict[str, Any]], Optional[Dict[str, Any]], bool]:
         lista = [c for c in (feed_atual or []) if isinstance(c, dict)]
         card_atual: Optional[Dict[str, Any]] = None
         restante: List[Dict[str, Any]] = []
         for c in lista:
-            if str(c.get("slug") or "").strip().lower() == alvo and _eh_card_manual(c):
+            c_slug = gerar_slug_card(c)
+            c_id = str(c.get("id") or "").strip().lower()
+            if (c_slug == alvo or c_id == alvo or str(c.get("slug") or "").strip().lower() == alvo) and card_atual is None:
                 card_atual = dict(c)
             else:
                 restante.append(dict(c))
@@ -554,33 +615,49 @@ def atualizar_card_manual(slug: str, updates: Dict[str, Any], max_items: int = 5
 
         mudancas: Dict[str, Any] = {}
         if updates.get("titulo") is not None:
-            mudancas["titulo"] = str(updates.get("titulo"))
+            mudancas["titulo"] = str(updates.get("titulo")).strip()
         if updates.get("resumo") is not None:
-            mudancas["resumo"] = str(updates.get("resumo"))
+            mudancas["resumo"] = str(updates.get("resumo")).strip()
         if updates.get("contexto") is not None:
-            mudancas["analise"] = str(updates.get("contexto"))
+            mudancas["analise"] = str(updates.get("contexto")).strip()
+        elif updates.get("analise") is not None:
+            mudancas["analise"] = str(updates.get("analise")).strip()
         if updates.get("categoria") is not None:
-            mudancas["categoria"] = str(updates.get("categoria"))
+            mudancas["categoria"] = str(updates.get("categoria")).strip().lower()
         if updates.get("urgencia_score") is not None:
             mudancas["urgencia_score"] = int(updates.get("urgencia_score"))
         if updates.get("fonte_nome") is not None:
-            mudancas["fonte_nome"] = str(updates.get("fonte_nome"))
+            mudancas["fonte_nome"] = str(updates.get("fonte_nome")).strip()
         if updates.get("fonte_url") is not None:
-            mudancas["fonte_url"] = str(updates.get("fonte_url"))
+            mudancas["fonte_url"] = str(updates.get("fonte_url")).strip()
         if updates.get("palavras_chave") is not None:
             mudancas["palavras_chave"] = list(updates.get("palavras_chave") or [])
+        if updates.get("paises_envolvidos") is not None:
+            mudancas["paises_envolvidos"] = list(updates.get("paises_envolvidos") or [])
+        elif updates.get("pais_regiao") is not None:
+            p = str(updates.get("pais_regiao")).strip().upper()
+            if p:
+                mudancas["paises_envolvidos"] = [p]
         if updates.get("data_publicacao") is not None:
             mudancas["data_publicacao"] = str(updates.get("data_publicacao"))
-
-        if not mudancas:
-            return lista, card_atual, False
+        if "fixado" in updates:
+            mudancas["fixado"] = bool(updates.get("fixado"))
+            if mudancas["fixado"] and mudancas.get("urgencia_score", 0) < 95:
+                mudancas["urgencia_score"] = 99
 
         card_atual.update(mudancas)
-        card_final = normalizar_card_manual(card_atual)
-        card_final["slug"] = alvo
-        restante.insert(0, card_final)
-        restante.sort(key=_timestamp_publicacao, reverse=True)
-        return restante[:max_items], card_final, True
+        card_atual["slug"] = alvo
+        if "id" not in card_atual:
+            card_atual["id"] = f"feed-{alvo}"
+
+        # Se fixado ou urgência alta, vai pro topo absoluto
+        if card_atual.get("fixado") or int(card_atual.get("urgencia_score") or 0) >= 95:
+            restante.insert(0, card_atual)
+        else:
+            restante.insert(0, card_atual)
+            restante.sort(key=_timestamp_publicacao, reverse=True)
+
+        return restante[:max_items], card_atual, True
 
     resultado_card: List[Optional[Dict[str, Any]]] = [None]
     persistido = False
@@ -611,23 +688,27 @@ def atualizar_card_manual(slug: str, updates: Dict[str, Any], max_items: int = 5
     return resultado_card[0]
 
 
-def remover_card_manual(slug: str) -> int:
-    """Remove cards manuais do feed pelo slug (banco + arquivo). Retorna a quantidade removida."""
-    alvo = str(slug or "").strip().lower()
+def atualizar_card_manual(slug: str, updates: Dict[str, Any], max_items: int = 50) -> Optional[Dict[str, Any]]:
+    """Atualiza campos parciais de um card manual existente (por slug) no feed (banco + arquivo)."""
+    return atualizar_card_radar(slug, updates, max_items=max_items)
+
+
+def remover_card_radar(slug_or_id: str) -> int:
+    """Remove qualquer card (manual ou RSS) do feed pelo slug ou identificador. Retorna a quantidade removida."""
+    alvo = str(slug_or_id or "").strip().lower()
 
     def _aplicar_remocao(feed_atual: Any) -> tuple[List[Dict[str, Any]], int]:
         restante: List[Dict[str, Any]] = []
         removidos = 0
         for c in (feed_atual or []):
-            if (
-                isinstance(c, dict)
-                and str(c.get("slug") or "").strip().lower() == alvo
-                and _eh_card_manual(c)
-            ):
+            if not isinstance(c, dict):
+                continue
+            c_slug = gerar_slug_card(c)
+            c_id = str(c.get("id") or "").strip().lower()
+            if c_slug == alvo or c_id == alvo or str(c.get("slug") or "").strip().lower() == alvo:
                 removidos += 1
                 continue
-            if isinstance(c, dict):
-                restante.append(dict(c))
+            restante.append(dict(c))
         return restante, removidos
 
     removidos_total = [0]
@@ -658,3 +739,17 @@ def remover_card_manual(slug: str) -> int:
             _persistir_feed(restante)
 
     return removidos_total[0]
+
+
+def remover_card_manual(slug: str) -> int:
+    """Remove cards manuais do feed pelo slug (banco + arquivo). Retorna a quantidade removida."""
+    return remover_card_radar(slug)
+
+
+def fixar_card_radar(slug_or_id: str, fixar: bool = True) -> Optional[Dict[str, Any]]:
+    """Fixa ou desafixa um card no topo do Radar."""
+    updates = {
+        "fixado": fixar,
+        "urgencia_score": 99 if fixar else 70,
+    }
+    return atualizar_card_radar(slug_or_id, updates)
