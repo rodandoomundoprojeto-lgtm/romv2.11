@@ -1250,8 +1250,8 @@
 
   function positionSharePopover(pop, btn) {
     var rect = btn.getBoundingClientRect();
-    var popW = 210;
-    var popH = 220;
+    var popW = pop.offsetWidth || 210;
+    var popH = pop.offsetHeight || 250;
     var pad = 8;
 
     var left = rect.right - popW;
@@ -1262,8 +1262,13 @@
     if (left < pad) left = pad;
 
     var top = rect.bottom + 6;
-    if (top + popH > window.innerHeight - pad && rect.top > popH + pad) {
-      top = rect.top - popH - 6;
+    if (top + popH > window.innerHeight - pad) {
+      var aboveTop = rect.top - popH - 6;
+      if (aboveTop >= pad) {
+        top = aboveTop;
+      } else {
+        top = Math.max(pad, window.innerHeight - popH - pad);
+      }
     }
 
     pop.style.left = Math.round(left) + 'px';
@@ -2180,7 +2185,8 @@
     var targetCount = Math.min(count || 3, 8);
     var a2 = country && country.a2 ? String(country.a2).toUpperCase() : '';
     var loadedArticles = a2 ? getLiveCountryHeadlinesPool(a2) : [];
-    var hotItem = (a2 && hotNewsByCountry && hotNewsByCountry[a2]) ? hotNewsByCountry[a2] : null;
+    var isIslandOrSovereignDep = !!(state.islandName || (cont === 'sul' && a2 === 'FR'));
+    var hotItem = (!isIslandOrSovereignDep && a2 && hotNewsByCountry && hotNewsByCountry[a2]) ? hotNewsByCountry[a2] : null;
     var hasLoadedBase = loadedArticles.length >= 3;
 
     var picked = [];
@@ -3620,10 +3626,10 @@
 
     countrySel
       .classed('hot-spot-marker', function (p) {
-        return !!(p.country && p.country.a2 && hotNewsByCountry[p.country.a2]);
+        return !!getHotNewsForMapPart(p);
       })
       .classed('hot-spot-pulsing', function (p) {
-        return !!(hotPulseActive && p.country && p.country.a2 && hotNewsByCountry[p.country.a2]);
+        return !!(hotPulseActive && getHotNewsForMapPart(p));
       });
 
     countrySel.filter('.active').raise();
@@ -3716,6 +3722,23 @@
   var v2HotNewsUpdatedLabel = '';
   var hotPulseActive = false;
   var hotPulseTimer = null;
+
+  function getHotNewsForMapPart(p) {
+    if (!p || !p.country || !hotNewsByCountry) return null;
+    // Ilhas e arquipélagos ultramarinos com soberania associada (ex: Havaí, Canárias, Galápagos, Páscoa, etc.)
+    // não devem pulsar quando a notícia quente for do país continental soberano.
+    if (p.islandName) {
+      if (p.id && hotNewsByCountry[p.id]) return hotNewsByCountry[p.id];
+      return null;
+    }
+    // Território ultramarino continental (ex: Guiana Francesa na América do Sul responde por GF, não FR)
+    if (p.country.a2 === 'FR' && p.c === 'sul') {
+      if (hotNewsByCountry['GF']) return hotNewsByCountry['GF'];
+      return null;
+    }
+    var a2 = String(p.country.a2 || '').toUpperCase().trim();
+    return (a2 && hotNewsByCountry[a2]) ? hotNewsByCountry[a2] : null;
+  }
 
   var CLIENT_COUNTRY_PATTERNS = [
     { a2: 'BR', rx: /\b(brasil|bras[ií]lia|lula|stf|congresso|senado|c[aâ]mara|planalto|itamaraty|s[aã]o paulo|rio de janeiro|petrobras|ibovespa|real brasileiro)\b/i },
@@ -4396,10 +4419,10 @@
     if (countrySel) {
       countrySel
         .classed('hot-spot-marker', function (p) {
-          return !!(p.country && p.country.a2 && hotNewsByCountry[p.country.a2]);
+          return !!getHotNewsForMapPart(p);
         })
         .classed('hot-spot-pulsing', function (p) {
-          return !!(p.country && p.country.a2 && hotNewsByCountry[p.country.a2]);
+          return !!(hotPulseActive && getHotNewsForMapPart(p));
         });
     }
     syncQuickCountryCardsHotNews();
@@ -4725,7 +4748,7 @@
     var c = p.country;
     var cName = p.islandName || countryDisplayName(c, p.c);
     var m = countryMedia(c, p.c);
-    var hotInfo = (c && c.a2 && hotNewsByCountry[c.a2]) ? hotNewsByCountry[c.a2] : null;
+    var hotInfo = getHotNewsForMapPart(p);
     if (!state.cont || p.c !== state.cont) {
       countrySel.classed('cont-hover', function (g) { return g.c === p.c; });
       if (islandMarkerSel) islandMarkerSel.classed('cont-hover', function (g) { return g.c === p.c; });
@@ -5006,7 +5029,19 @@
     var cCode = (state.cont === 'sul' && (c.a2 === 'FR' || c.id === '250')) ? 'GF' : (c.a2 || c.id || '');
     var cCodeUp = String(cCode).toUpperCase();
     var cA2Up = c && c.a2 ? String(c.a2).toUpperCase() : '';
-    var hotItem = (hotNewsByCountry && (hotNewsByCountry[cCodeUp] || hotNewsByCountry[cA2Up])) ? (hotNewsByCountry[cCodeUp] || hotNewsByCountry[cA2Up]) : null;
+    var isIslandOrSovereignDep = !!(state.islandName || (state.cont === 'sul' && (c.a2 === 'FR' || c.id === '250')));
+    var hotItem = null;
+    if (hotNewsByCountry) {
+      if (isIslandOrSovereignDep) {
+        if (state.cont === 'sul' && (c.a2 === 'FR' || c.id === '250')) {
+          hotItem = hotNewsByCountry['GF'] || null;
+        } else if (c && c.id && hotNewsByCountry[c.id]) {
+          hotItem = hotNewsByCountry[c.id];
+        }
+      } else {
+        hotItem = hotNewsByCountry[cCodeUp] || (cA2Up ? hotNewsByCountry[cA2Up] : null);
+      }
+    }
     if (hotItem && hotItem.title) {
       var hotUrl = hotItem.url || '';
       var hotTerm = extrairTermoAssuntoBusca(hotItem.termoBusca || hotItem.title, '');
@@ -5871,7 +5906,8 @@
     var seen = {};
     var a2 = country && country.a2 ? String(country.a2).toUpperCase() : '';
     var loadedArticles = a2 ? getLiveCountryHeadlinesPool(a2) : [];
-    var hotItem = (a2 && hotNewsByCountry && hotNewsByCountry[a2]) ? hotNewsByCountry[a2] : null;
+    var isIslandOrSovereignDep = !!(state.islandName || (cont === 'sul' && a2 === 'FR'));
+    var hotItem = (!isIslandOrSovereignDep && a2 && hotNewsByCountry && hotNewsByCountry[a2]) ? hotNewsByCountry[a2] : null;
     var hasLoadedBase = loadedArticles.length >= 2;
 
     function add(term, skipValidation) {

@@ -1760,6 +1760,7 @@
               </div>
               <div class="admin-head-actions">
                 <button id="btn-recarregar-dossies" class="admin-btn admin-btn-sm" type="button">Atualizar</button>
+                <button id="btn-novo-dossie-ia" class="admin-btn admin-btn-sm" type="button" title="Pesquisar fatos reais e preencher um novo dossiê com IA">✨ Criar com IA</button>
                 <button id="btn-novo-dossie" class="admin-btn admin-btn-primary admin-btn-sm" type="button">+ Novo Dossiê Especial</button>
                 <button class="admin-collapse-btn" type="button" aria-label="Minimizar seção Dossiês Editoriais" aria-expanded="true">−</button>
               </div>
@@ -2143,6 +2144,42 @@
     </div>
   </div>
 
+  <!-- Modal: Sugerir Tema para Dossiê com IA -->
+  <div id="modal-dossie-tema-ia" class="admin-modal-backdrop" style="z-index:1250;" role="dialog" aria-modal="true" aria-labelledby="modal-dossie-tema-ia-title">
+    <div class="admin-modal">
+      <div class="admin-card-head" style="margin-bottom:0;align-items:flex-start;gap:10px;">
+        <div style="flex:1;min-width:0;">
+          <h3 id="modal-dossie-tema-ia-title" class="admin-card-title" style="font-size:1.1rem;">✨ Criar Dossiê com IA</h3>
+          <p class="admin-sub">Informe um tema para a IA pesquisar fatos reais (Google News RSS / acervo) e preencher metadados, síntese executiva e linha do tempo.</p>
+        </div>
+      </div>
+
+      <div class="admin-field full-span">
+        <label for="ia-tema-input">Tema do Dossiê (opcional)</label>
+        <textarea id="ia-tema-input" class="admin-textarea" rows="3" placeholder="Ex: Acordo Mercosul-UE, Eleições na Alemanha 2026, Crise energética na Europa..."></textarea>
+        <div class="admin-sub">Deixe em branco para a IA escolher automaticamente dos assuntos do momento.</div>
+      </div>
+
+      <div class="admin-field">
+        <label for="ia-tema-pais">País / Foco Editorial</label>
+        <select id="ia-tema-pais" class="admin-input">
+          <option value="BR">BR — Brasil</option>
+          <option value="US">US — Estados Unidos</option>
+          <option value="PT">PT — Portugal</option>
+          <option value="AR">AR — Argentina</option>
+          <option value="GLOBAL">GLOBAL — Mundo</option>
+        </select>
+      </div>
+
+      <div id="modal-dossie-tema-ia-banner" class="admin-banner"></div>
+
+      <div class="admin-modal-foot" style="gap:8px;flex-wrap:wrap;">
+        <button id="btn-cancelar-tema-ia" class="admin-btn" type="button">Cancelar</button>
+        <button id="btn-executar-pesquisa-ia" class="admin-btn admin-btn-primary" type="button">Pesquisar fatos e preencher</button>
+      </div>
+    </div>
+  </div>
+
   <!-- Modal: Adicionar / Editar Notícia Manual (Radar) -->
   <div id="modal-radar" class="admin-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modal-radar_title">
     <div class="admin-modal admin-modal-lg">
@@ -2438,6 +2475,7 @@
         editingDossieSlug: null,
         editingDossieTipo: 'especial',
         slugManuallyEdited: false,
+        pendingAiMeta: null,
         radar: [],
         editingRadarSlug: null,
         noticiasQuentes: [],
@@ -2581,40 +2619,57 @@
       }
 
       $('tbody-fontes').addEventListener('change', async (e) => {
-        const id = e.target.getAttribute('data-toggle-fonte');
+        const target = e.target;
+        const id = target && target.getAttribute ? target.getAttribute('data-toggle-fonte') : null;
         if (!id) return;
-        const ativo = e.target.checked;
+        const ativo = !!target.checked;
         try {
           await apiFetch(`/v2/admin/fontes/${id}/ativo`, { method: 'PATCH', body: JSON.stringify({ ativo }) });
           showBanner('fontes-banner', 'Status da fonte atualizado.', 'ok');
         } catch (err) {
-          e.target.checked = !ativo;
+          target.checked = !ativo;
           showBanner('fontes-banner', 'Erro ao atualizar status da fonte: ' + err.message, 'err');
         }
       });
 
       $('tbody-fontes').addEventListener('click', async (e) => {
-        const aprovarId = e.target.getAttribute('data-aprovar-fonte');
+        const aprovarBtn = e.target.closest ? e.target.closest('[data-aprovar-fonte]') : null;
+        const aprovarId = aprovarBtn ? aprovarBtn.getAttribute('data-aprovar-fonte') : (e.target.getAttribute && e.target.getAttribute('data-aprovar-fonte'));
         if (aprovarId) {
+          const originalLabel = aprovarBtn ? aprovarBtn.textContent : '';
+          if (aprovarBtn) {
+            aprovarBtn.disabled = true;
+            aprovarBtn.textContent = 'Aprovando...';
+          }
           try {
-            await apiFetch(`/v2/admin/fontes/${aprovarId}/aprovar`, { method: 'PATCH', body: JSON.stringify({ aprovar: true }) });
+            await apiFetch(`/v2/admin/fontes/${encodeURIComponent(aprovarId)}/aprovar`, {
+              method: 'PATCH',
+              body: JSON.stringify({ aprovar: true })
+            });
             showBanner('fontes-banner', 'Fonte aprovada para coleta.', 'ok');
+            showToast('Fonte aprovada para coleta.', 'ok');
             await carregarFontes();
           } catch (err) {
-            showBanner('fontes-banner', 'Erro ao aprovar fonte: ' + err.message, 'err');
+            showBanner('fontes-banner', 'Erro ao aprovar fonte: ' + (err && err.message ? err.message : err), 'err');
+            if (aprovarBtn) {
+              aprovarBtn.disabled = false;
+              aprovarBtn.textContent = originalLabel || 'Aprovar';
+            }
           }
           return;
         }
 
-        const id = e.target.getAttribute('data-del-fonte');
+        const delBtn = e.target.closest ? e.target.closest('[data-del-fonte]') : null;
+        const id = delBtn ? delBtn.getAttribute('data-del-fonte') : (e.target.getAttribute && e.target.getAttribute('data-del-fonte'));
         if (!id) return;
         if (!confirm('Excluir esta fonte permanentemente?')) return;
         try {
-          await apiFetch(`/v2/admin/fontes/${id}`, { method: 'DELETE' });
+          await apiFetch(`/v2/admin/fontes/${encodeURIComponent(id)}`, { method: 'DELETE' });
           showBanner('fontes-banner', 'Fonte excluída.', 'ok');
+          showToast('Fonte excluída.', 'ok');
           await carregarFontes();
         } catch (err) {
-          showBanner('fontes-banner', 'Erro ao excluir: ' + err.message, 'err');
+          showBanner('fontes-banner', 'Erro ao excluir: ' + (err && err.message ? err.message : err), 'err');
         }
       });
 
@@ -2702,6 +2757,9 @@
               const idx = Number(b.getAttribute('data-add-fonte-ia'));
               const s = (state.iaSugestoes || [])[idx];
               if (!s) return;
+              const originalLabel = b.textContent;
+              b.disabled = true;
+              b.textContent = 'Cadastrando...';
               try {
                 await apiFetch('/v2/admin/fontes', {
                   method: 'POST',
@@ -2714,11 +2772,14 @@
                     aprovar_imediato: false,
                   }),
                 });
-                showBanner('fonte-ia-banner', 'Fonte cadastrada. Aprove-a na lista abaixo.', 'ok');
-                showToast('Fonte cadastrada.', 'ok');
+                showBanner('fontes-banner', `Fonte "${s.nome}" cadastrada por IA. Ela ficou pendente: clique em "Aprovar" na lista para liberar a coleta.`, 'ok');
+                showToast('Fonte cadastrada. Aprove na lista de fontes.', 'ok');
+                fecharModalFonteIa();
                 await carregarFontes();
               } catch (err) {
-                showBanner('fonte-ia-banner', 'Erro ao cadastrar: ' + err.message, 'err');
+                showBanner('fonte-ia-banner', 'Erro ao cadastrar: ' + (err && err.message ? err.message : err), 'err');
+                b.disabled = false;
+                b.textContent = originalLabel || 'Cadastrar como fonte';
               }
             });
           });
@@ -2957,6 +3018,13 @@
           .filter(Boolean);
       }
 
+      function renderDossieWorkflowStatusBadge(ws) {
+        const w = String(ws || 'published').toLowerCase();
+        if (w === 'published') return '<span class="badge badge-ok">Publicado</span>';
+        if (w === 'review') return '<span class="badge badge-warn">Em Revisão</span>';
+        return '<span class="badge">Rascunho</span>';
+      }
+
       function renderDossieStatusBadge(status) {
         const s = String(status || '').toLowerCase();
         if (s === 'ao_vivo') {
@@ -3030,7 +3098,7 @@
                 <span class="admin-sub"><code>${escapeHtml(d.slug)}</code> · ${escapeHtml(d.categoria || '—')}</span>
               </td>
               <td>${tipoBadge}</td>
-              <td>${renderDossieStatusBadge(d.status)}</td>
+              <td>${renderDossieStatusBadge(d.status)} ${renderDossieWorkflowStatusBadge(d.workflow_status)}</td>
               <td>${formatDossiePeriodo(d)}</td>
               <td>${materias} mat. / ${veiculos} veíc.</td>
               <td>
@@ -3140,6 +3208,7 @@
       function abrirModalDossie(mode, dossie = null) {
         state.dossieModalMode = mode;
         state.slugManuallyEdited = false;
+        state.pendingAiMeta = null;
         hideBanner('modal-dossie-banner');
 
         if (mode === 'create') {
@@ -3193,9 +3262,23 @@
       function fecharModalDossie() {
         $('modal-dossie').classList.remove('open');
         state.editingDossieSlug = null;
+        state.pendingAiMeta = null;
+      }
+
+      function abrirModalTemaIa(initialHint = '') {
+        hideBanner('modal-dossie-tema-ia-banner');
+        $('ia-tema-input').value = initialHint || '';
+        $('modal-dossie-tema-ia').classList.add('open');
+        setTimeout(() => $('ia-tema-input').focus(), 40);
+      }
+
+      function fecharModalTemaIa() {
+        $('modal-dossie-tema-ia').classList.remove('open');
       }
 
       $('btn-novo-dossie').addEventListener('click', () => abrirModalDossie('create'));
+      $('btn-novo-dossie-ia').addEventListener('click', () => abrirModalTemaIa(''));
+      $('btn-cancelar-tema-ia').addEventListener('click', fecharModalTemaIa);
       $('btn-fechar-modal-dossie').addEventListener('click', fecharModalDossie);
       $('btn-cancelar-modal-dossie').addEventListener('click', fecharModalDossie);
 
@@ -3286,29 +3369,61 @@
 
         try {
           if (state.dossieModalMode === 'create') {
+            const aiSec = $('dossie-ai-section');
+            const aiVisible = Boolean(aiSec && aiSec.style.display !== 'none');
+            const payload = {
+              slug,
+              titulo,
+              subtitulo,
+              categoria,
+              icone_ou_bandeira: icone,
+              data_inicio: dataInicio,
+              data_fim: dataFim || null,
+              meta_info: metaInfo || null,
+              regras_classificacao: { palavras_chave: palavrasChave, paises }
+            };
+            if (aiVisible) {
+              let ai = { executive_summary: { context: '', pillars: [] }, timeline: [] };
+              try {
+                ai = getAiFieldsFromModal();
+              } catch (e) {
+                showBanner('modal-dossie-banner', e.message, 'err');
+                return null;
+              }
+              payload.executive_summary = ai.executive_summary;
+              payload.timeline = ai.timeline;
+              if (state.pendingAiMeta) payload.ai_metadata = state.pendingAiMeta;
+              payload.workflow_status = targetWorkflowStatus || (state.pendingAiMeta ? 'review' : 'draft');
+            } else if (targetWorkflowStatus) {
+              payload.workflow_status = targetWorkflowStatus;
+            }
+
             const data = await apiFetch('/v2/admin/dossies', {
               method: 'POST',
-              body: JSON.stringify({
-                slug,
-                titulo,
-                subtitulo,
-                categoria,
-                icone_ou_bandeira: icone,
-                data_inicio: dataInicio,
-                data_fim: dataFim || null,
-                meta_info: metaInfo || null,
-                regras_classificacao: { palavras_chave: palavrasChave, paises }
-              })
+              body: JSON.stringify(payload)
             });
             const created = data.dossie || data;
-            showToast(`Dossiê "${titulo}" criado no modelo novo (rascunho).`, 'ok');
-            showBanner('dossies-banner', `Dossiê "${titulo}" criado. Gere e revise a camada editorial 2.0 antes de publicar.`, 'ok');
             await carregarDossiesAdmin();
-            if (created && created.slug) {
-              abrirModalDossie('edit', created);
-              showBanner('modal-dossie-banner', 'Dossiê criado como rascunho. Use "Gerar / Atualizar com IA" para montar a síntese e a linha do tempo.', 'ok');
-            } else {
+            if (targetWorkflowStatus === 'published') {
               fecharModalDossie();
+              showToast(`Dossiê "${titulo}" aprovado e publicado no portal!`, 'ok');
+              showBanner('dossies-banner', `Dossiê "${titulo}" publicado no portal.`, 'ok');
+            } else {
+              const isReview = payload.workflow_status === 'review';
+              showToast(`Dossiê "${titulo}" salvo (${isReview ? 'em revisão' : 'rascunho'}).`, 'ok');
+              showBanner('dossies-banner', `Dossiê "${titulo}" criado (${isReview ? 'em revisão' : 'rascunho'}). Aprove quando estiver pronto para ir ao portal.`, 'ok');
+              if (created && created.slug) {
+                abrirModalDossie('edit', created);
+                showBanner(
+                  'modal-dossie-banner',
+                  isReview
+                    ? 'Dossiê salvo para revisão. Revise os campos e clique em "Aprovar e Publicar no Portal" quando estiver pronto.'
+                    : 'Dossiê criado como rascunho. Use "Gerar / Atualizar com IA" para montar a síntese e a linha do tempo.',
+                  'ok'
+                );
+              } else {
+                fecharModalDossie();
+              }
             }
             return data;
           } else {
@@ -3331,6 +3446,7 @@
               executive_summary: ai.executive_summary,
               timeline: ai.timeline
             };
+            if (state.pendingAiMeta) payload.ai_metadata = state.pendingAiMeta;
             if (targetWorkflowStatus) payload.workflow_status = targetWorkflowStatus;
 
             const data = await apiFetch(`/v2/admin/dossies/${encodeURIComponent(state.editingDossieSlug)}`, {
@@ -3366,7 +3482,6 @@
       });
 
       $('btn-publicar-dossie-ia').addEventListener('click', async () => {
-        if (state.dossieModalMode !== 'edit') return;
         const btn = $('btn-publicar-dossie-ia');
         btn.disabled = true;
         try { await salvarDossieModal('published'); } finally { btn.disabled = false; }
@@ -3401,22 +3516,36 @@
         $('d-exec-context-count').textContent = String(($('d-exec-context').value || '').length);
       });
 
-      $('btn-sugerir-ia-dossie').addEventListener('click', async () => {
-        const btn = $('btn-sugerir-ia-dossie');
+      $('btn-sugerir-ia-dossie').addEventListener('click', () => {
+        abrirModalTemaIa(($('d-titulo').value || '').trim());
+      });
+
+      $('btn-executar-pesquisa-ia').addEventListener('click', async () => {
+        const btn = $('btn-executar-pesquisa-ia');
         const prev = btn.textContent;
+        const country = ($('ia-tema-pais').value || 'BR').trim();
+        const hint = ($('ia-tema-input').value || '').trim() || null;
         btn.disabled = true;
-        btn.textContent = 'Buscando assuntos e gerando...';
-        hideBanner('modal-dossie-banner');
+        btn.textContent = 'Pesquisando fatos e preenchendo...';
+        hideBanner('modal-dossie-tema-ia-banner');
         try {
           const data = await apiFetch('/v2/admin/dossies/suggest-ai', {
             method: 'POST',
-            body: JSON.stringify({ country: 'BR', lang: 'pt', hint: $('d-titulo').value.trim() || null })
+            body: JSON.stringify({ country, lang: 'pt', hint })
           });
           const s = data.sugestao || data;
           if (!s) throw new Error('A IA não retornou uma sugestão válida.');
+
+          fecharModalTemaIa();
+          if (!$('modal-dossie').classList.contains('open')) {
+            abrirModalDossie('create');
+          }
+
           $('d-titulo').value = s.titulo || '';
-          state.slugManuallyEdited = Boolean(s.slug);
-          $('d-slug').value = slugify(s.slug || s.titulo || '');
+          if (state.dossieModalMode === 'create') {
+            state.slugManuallyEdited = Boolean(s.slug);
+            $('d-slug').value = slugify(s.slug || s.titulo || '');
+          }
           $('d-subtitulo').value = s.subtitulo || '';
           $('d-categoria').value = s.categoria || 'Eventos';
           $('d-icone').value = s.icone_ou_bandeira || 'Globe';
@@ -3426,12 +3555,21 @@
           const regras = s.regras_classificacao || {};
           $('d-palavras-chave').value = Array.isArray(regras.palavras_chave) ? regras.palavras_chave.join(', ') : '';
           $('d-paises').value = Array.isArray(regras.paises) ? regras.paises.join(', ') : '';
-          const fonteTrends = data.fonte_trends === 'google_trends_rss' ? 'assuntos do momento (Google Trends)' : 'contexto editorial atual';
-          showBanner('modal-dossie-banner', `Sugestão gerada com base em ${fonteTrends}. Revise os campos e salve para criar no modelo novo.`, 'ok');
-          showToast('Sugestão de dossiê preenchida pela IA.', 'ok');
+
+          state.pendingAiMeta = s.ai_metadata || null;
+          setDossieAiSectionVisible(true);
+          fillAiFieldsFromDossie({ ...s, workflow_status: 'review' });
+
+          const qtdFontes = Array.isArray(data.fontes_pesquisadas) ? data.fontes_pesquisadas.length : 0;
+          showBanner(
+            'modal-dossie-banner',
+            `Dossiê preenchido pela IA com base em ${qtdFontes} fonte(s)/fato(s) pesquisado(s). Revise todos os campos, síntese e linha do tempo antes de aprovar e publicar.`,
+            'ok'
+          );
+          showToast('Fatos pesquisados e dossiê preenchido pela IA.', 'ok');
         } catch (err) {
-          showBanner('modal-dossie-banner', 'Erro ao gerar sugestão com IA: ' + err.message, 'err');
-          showToast('Erro ao sugerir dossiê com IA.', 'err');
+          showBanner('modal-dossie-tema-ia-banner', 'Erro ao pesquisar com IA: ' + err.message, 'err');
+          showToast('Erro ao pesquisar tema com IA.', 'err');
         } finally {
           btn.disabled = false;
           btn.textContent = prev;

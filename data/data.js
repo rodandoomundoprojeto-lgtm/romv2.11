@@ -5495,6 +5495,13 @@ window.RDM = {
           "ind": 0
         },
         {
+          "n": "+972 Magazine",
+          "u": "https://www.972mag.com",
+          "b": "E",
+          "s": {},
+          "ind": 1
+        },
+        {
           "n": "Al-Quds",
           "u": "https://www.alquds.com",
           "b": "I",

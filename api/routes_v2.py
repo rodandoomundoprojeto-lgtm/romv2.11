@@ -2070,7 +2070,8 @@ def admin_aprovar_fonte(
     """Aprova ou reverte para pendente uma fonte em `ai_fontes_referencia`."""
     aplicar_no_cache_headers(response)
     db = _require_db(conn)
-    if payload.aprovar:
+    aprovar = True if payload.aprovar is None else bool(payload.aprovar)
+    if aprovar:
         politica_status = "aprovada"
         coleta_permitida = True
         revisado_por = "Revisado por Equipe RoM"
@@ -2090,7 +2091,7 @@ def admin_aprovar_fonte(
                 revisado_por = %s,
                 revisado_em = %s
             WHERE id = %s
-            RETURNING id, politica_uso_status, coleta_permitida, revisado_por, revisado_em;
+            RETURNING id, politica_uso_status, coleta_permitida, revisado_por, revisado_em, ativo;
             """,
             (politica_status, coleta_permitida, revisado_por, revisado_em, fonte_id),
         )
