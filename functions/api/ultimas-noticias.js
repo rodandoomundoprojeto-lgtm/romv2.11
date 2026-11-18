@@ -2,6 +2,12 @@
 // Agrega as últimas notícias do Brasil divididas por macrorregiões e veículos
 // com cache em memória e fallback resiliente.
 import { json, limparTermo } from '../lib/ia.js';
+import {
+  isRefreshRequest,
+  newsResponseHeaders,
+  compareIsoDesc,
+  parseFeedItems,
+} from '../lib/rss.js';
 
 const CACHE_TTL_MS = 6 * 60 * 1000; // 6 minutos para frescor de notícias em tempo real
 let cacheMemoria = null;
@@ -13,19 +19,8 @@ const CORS_HEADERS = {
   'Access-Control-Allow-Headers': 'Content-Type, Accept',
 };
 
-const CACHE_HEADERS = {
-  'Cache-Control': 'public, max-age=120, stale-while-revalidate=60',
-  'X-Content-Type-Options': 'nosniff',
-  ...CORS_HEADERS,
-};
-
-const SEM_CACHE = {
-  'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
-  'Pragma': 'no-cache',
-  'Expires': '0',
-  'X-Content-Type-Options': 'nosniff',
-  ...CORS_HEADERS,
-};
+const CACHE_HEADERS = newsResponseHeaders({ isRefresh: false, isFallback: false, corsHeaders: CORS_HEADERS });
+const SEM_CACHE = newsResponseHeaders({ isRefresh: true, isFallback: true, corsHeaders: CORS_HEADERS });
 
 // Fontes categorizadas por macrorregião brasileira
 const FONTES_BRASIL = [
@@ -229,44 +224,32 @@ function calcularTempoRelativo(isoString) {
   }
 }
 
-async function buscarFeedXml(fonte) {
+async function buscarFeedXml(fonte, isRefresh = false) {
   const ctrl = new AbortController();
   const timer = setTimeout(() => ctrl.abort(), 4500);
 
   try {
     const resp = await fetch(fonte.url, {
+      cache: 'no-store',
       headers: {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 RodandoOMundo/2.12',
-        Accept: 'application/rss+xml, application/xml, text/xml, */*',
+        Accept: 'application/rss+xml, application/atom+xml, application/xml, text/xml, */*',
+        ...(isRefresh ? { 'Cache-Control': 'no-cache', Pragma: 'no-cache' } : {}),
       },
       signal: ctrl.signal,
     });
 
     if (!resp.ok) return [];
     const xml = await resp.text();
+    const parsed = parseFeedItems(xml);
     const itens = [];
 
-    const rawItems = xml.match(/<item[\s>].*?<\/item>/gis) || [];
-    for (let i = 0; i < Math.min(rawItems.length, 10); i++) {
-      const bloco = rawItems[i];
-      let titulo = limparHtml(extrairTag(bloco, 'title'));
-      let link = extrairTag(bloco, 'link');
-
-      if (!link) {
-        const mHref = bloco.match(/<link[^>]+href=["']([^"']+)["'][^>]*\/?>/i);
-        if (mHref) link = mHref[1];
-      }
-      link = limparHtml(link);
-
-      const pubDate = extrairTag(bloco, 'pubDate') || extrairTag(bloco, 'dc:date');
-      let dataIso = '';
-      try {
-        const parsedD = new Date(pubDate);
-        if (!isNaN(parsedD.getTime())) dataIso = parsedD.toISOString();
-      } catch {}
-
-      let resumo = limparHtml(extrairTag(bloco, 'description'));
-      const imagem = extrairImagem(bloco);
+    for (const entry of parsed) {
+      let titulo = entry.title || '';
+      const link = entry.link || '';
+      const dataIso = entry.pubDateIso || '';
+      const resumo = entry.description || '';
+      const imagem = extrairImagem(entry.rawBlock || '');
 
       let nomeVeiculo = fonte.nome;
       if (fonte.tipo === 'google') {
@@ -278,7 +261,6 @@ async function buscarFeedXml(fonte) {
       }
 
       if (titulo && titulo.length > 6 && link) {
-        // Gera id estável sem depender de Buffer
         let hash = 0;
         const str = link || titulo;
         for (let j = 0; j < str.length; j++) {
@@ -295,12 +277,14 @@ async function buscarFeedXml(fonte) {
           regiao: fonte.regiao,
           regiaoLabel: fonte.regiaoLabel,
           estado: fonte.estado,
-          publicadoEm: dataIso || new Date().toISOString(),
-          tempoRelativo: calcularTempoRelativo(dataIso || new Date()),
+          publicadoEm: dataIso,
+          tempoRelativo: dataIso ? calcularTempoRelativo(dataIso) : '',
         });
       }
     }
-    return itens;
+
+    itens.sort((a, b) => compareIsoDesc(a.publicadoEm, b.publicadoEm));
+    return itens.slice(0, 10);
   } catch {
     return [];
   } finally {
@@ -309,7 +293,6 @@ async function buscarFeedXml(fonte) {
 }
 
 function obterNoticiasFallback() {
-  const agora = new Date().toISOString();
   return [
     {
       id: 'fb-1',
@@ -321,8 +304,8 @@ function obterNoticiasFallback() {
       regiao: 'nacional',
       regiaoLabel: 'Nacional',
       estado: 'DF/Brasil',
-      publicadoEm: agora,
-      tempoRelativo: 'há 30 min',
+      publicadoEm: '',
+      tempoRelativo: '',
     },
     {
       id: 'fb-2',
@@ -334,8 +317,8 @@ function obterNoticiasFallback() {
       regiao: 'sudeste',
       regiaoLabel: 'Sudeste',
       estado: 'SP',
-      publicadoEm: agora,
-      tempoRelativo: 'há 1 hora',
+      publicadoEm: '',
+      tempoRelativo: '',
     },
     {
       id: 'fb-3',
@@ -347,8 +330,8 @@ function obterNoticiasFallback() {
       regiao: 'sul',
       regiaoLabel: 'Sul',
       estado: 'PR/Sul',
-      publicadoEm: agora,
-      tempoRelativo: 'há 2 horas',
+      publicadoEm: '',
+      tempoRelativo: '',
     },
     {
       id: 'fb-4',
@@ -360,8 +343,8 @@ function obterNoticiasFallback() {
       regiao: 'nordeste',
       regiaoLabel: 'Nordeste',
       estado: 'Nordeste',
-      publicadoEm: agora,
-      tempoRelativo: 'há 3 horas',
+      publicadoEm: '',
+      tempoRelativo: '',
     },
     {
       id: 'fb-5',
@@ -373,8 +356,8 @@ function obterNoticiasFallback() {
       regiao: 'centro-oeste',
       regiaoLabel: 'Centro-Oeste',
       estado: 'DF/Centro-Oeste',
-      publicadoEm: agora,
-      tempoRelativo: 'há 4 horas',
+      publicadoEm: '',
+      tempoRelativo: '',
     },
     {
       id: 'fb-6',
@@ -386,8 +369,8 @@ function obterNoticiasFallback() {
       regiao: 'norte',
       regiaoLabel: 'Norte',
       estado: 'AM/Norte',
-      publicadoEm: agora,
-      tempoRelativo: 'há 5 horas',
+      publicadoEm: '',
+      tempoRelativo: '',
     },
   ];
 }
@@ -505,7 +488,7 @@ export async function onRequestGet(context) {
   const u = new URL(req.url);
   const regiaoFiltro = (u.searchParams.get('regiao') || 'todas').toLowerCase().trim();
   const termoBusca = limparTermo(u.searchParams.get('q') || '').toLowerCase().trim();
-  const forcarAtualizacao = u.searchParams.has('refresh') || u.searchParams.get('force') === '1';
+  const forcarAtualizacao = isRefreshRequest(req);
 
   if (forcarAtualizacao) {
     cacheMemoria = null;
@@ -514,37 +497,49 @@ export async function onRequestGet(context) {
 
   const agora = Date.now();
   let todasNoticias = [];
+  let usedFallback = false;
 
   if (!forcarAtualizacao && cacheMemoria && agora - cacheTimestamp < CACHE_TTL_MS) {
     todasNoticias = cacheMemoria;
   } else {
-    const promessas = FONTES_BRASIL.map((fonte) => buscarFeedXml(fonte));
+    const promessas = FONTES_BRASIL.map((fonte) => buscarFeedXml(fonte, forcarAtualizacao));
     const resultados = await Promise.allSettled(promessas);
 
-    const agregadas = [];
-    const titulosVistos = new Set();
+    const porChaveTitulo = new Map();
 
     resultados.forEach((res) => {
       if (res.status === 'fulfilled' && Array.isArray(res.value)) {
         res.value.forEach((item) => {
           const chaveTitulo = item.titulo.toLowerCase().replace(/[^a-z0-9]/g, '').slice(0, 45);
-          if (chaveTitulo && !titulosVistos.has(chaveTitulo)) {
-            titulosVistos.add(chaveTitulo);
-            agregadas.push(item);
+          if (!chaveTitulo) return;
+          const prev = porChaveTitulo.get(chaveTitulo);
+          if (!prev) {
+            porChaveTitulo.set(chaveTitulo, item);
+          } else if (!prev.publicadoEm && item.publicadoEm) {
+            porChaveTitulo.set(chaveTitulo, item);
+          } else if (prev.publicadoEm && item.publicadoEm && compareIsoDesc(item.publicadoEm, prev.publicadoEm) < 0) {
+            porChaveTitulo.set(chaveTitulo, item);
           }
         });
       }
     });
 
+    const agregadas = [...porChaveTitulo.values()];
+    agregadas.sort((a, b) => compareIsoDesc(a.publicadoEm, b.publicadoEm));
+
     if (agregadas.length >= 3) {
-      agregadas.sort((a, b) => new Date(b.publicadoEm) - new Date(a.publicadoEm));
       cacheMemoria = agregadas;
       cacheTimestamp = agora;
       todasNoticias = agregadas;
-    } else if (cacheMemoria && cacheMemoria.length) {
+    } else if (agregadas.length > 0) {
+      todasNoticias = agregadas;
+      usedFallback = true;
+    } else if (!forcarAtualizacao && cacheMemoria && cacheMemoria.length && agora - cacheTimestamp < CACHE_TTL_MS * 3) {
       todasNoticias = cacheMemoria;
+      usedFallback = true;
     } else {
       todasNoticias = obterNoticiasFallback();
+      usedFallback = true;
     }
   }
 
@@ -577,7 +572,7 @@ export async function onRequestGet(context) {
       .map((item) => ({ item, score: calcularRelevanciaUltimas(item, termoNorm, tokens) }))
       .sort((a, b) => {
         if (b.score !== a.score) return b.score - a.score;
-        return new Date(b.item.publicadoEm) - new Date(a.item.publicadoEm);
+        return compareIsoDesc(a.item.publicadoEm, b.item.publicadoEm);
       })
       .map((entry) => entry.item);
   }
@@ -585,6 +580,7 @@ export async function onRequestGet(context) {
   return json(
     {
       ok: true,
+      fallback: usedFallback,
       total: filtradas.length,
       totalGeral: todasNoticias.length,
       atualizadoEm: new Date(cacheTimestamp || agora).toISOString(),
@@ -593,7 +589,7 @@ export async function onRequestGet(context) {
       noticias: filtradas,
     },
     200,
-    forcarAtualizacao ? SEM_CACHE : CACHE_HEADERS
+    newsResponseHeaders({ isRefresh: forcarAtualizacao, isFallback: usedFallback, corsHeaders: CORS_HEADERS })
   );
 }
 

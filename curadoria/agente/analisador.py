@@ -13,12 +13,10 @@ from google.genai.errors import APIError
 from .prompt import SYSTEM_PROMPT
 from .schemas import CuradoriaPayload
 
-MODELO_PADRAO = os.getenv("CURADORIA_MODEL", "gemini-3.5-flash-lite")
+MODELO_PADRAO = os.getenv("CURADORIA_MODEL", "gemini-2.5-flash").strip() or "gemini-2.5-flash"
 MODELOS_FALLBACK = [
-    "gemini-3.5-flash-lite",
-    "gemini-3.5-flash",
-    "gemini-3.8-flash",
-    "gemini-3.1-flash-lite",
+    "gemini-2.5-flash",
+    "gemini-2.5-pro",
 ]
 
 
@@ -27,8 +25,13 @@ def executar_agente_analisador(noticias_brutas: List[dict], temas_recentes_envia
     client = genai.Client(http_options=types.HttpOptions(timeout=45_000))
     batch_atual = datetime.now(timezone.utc).strftime("%Y%m%d-%H%M")
 
-    # Limita o lote para manter a janela ágil e evitar estouro de tokens/timeout
-    lote_filtrado = noticias_brutas[:35]
+    # Prioriza itens RSS mais recentes por data_publicacao antes de fatiar o lote (evita que Politica sufoque outras editorias)
+    trends = [it for it in noticias_brutas if isinstance(it, dict) and "google trends" in str(it.get("origem", "")).lower()]
+    rss = [it for it in noticias_brutas if isinstance(it, dict) and "google trends" not in str(it.get("origem", "")).lower()]
+    rss.sort(key=lambda it: str(it.get("data_publicacao") or ""), reverse=True)
+    trends_lote = trends[:10]
+    rss_lote = rss[: max(0, 35 - len(trends_lote))]
+    lote_filtrado = (trends_lote + rss_lote)[:35]
 
     prompt_usuario = f"""
 BATCH_ID ATUAL: {batch_atual}

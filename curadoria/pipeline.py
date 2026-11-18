@@ -7,9 +7,9 @@ Uso:
 import argparse
 import json
 import os
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
-from typing import Any, Dict
+from typing import Any, Dict, List, Optional
 
 import requests
 
@@ -29,6 +29,55 @@ SNAPSHOT_VITRINE_PADRAO = Path(__file__).resolve().parents[1] / "data" / "vitrin
 SNAPSHOT_VITRINE = SNAPSHOT_VITRINE_PADRAO
 
 
+def _parse_iso_utc(raw: Any) -> Optional[datetime]:
+    """Converte string ISO-8601 ou datetime em datetime aware UTC."""
+    if isinstance(raw, datetime):
+        dt = raw
+    elif isinstance(raw, str) and raw.strip():
+        try:
+            dt = datetime.fromisoformat(raw.strip().replace("Z", "+00:00"))
+        except Exception:
+            return None
+    else:
+        return None
+    if dt.tzinfo is None:
+        dt = dt.replace(tzinfo=timezone.utc)
+    return dt.astimezone(timezone.utc)
+
+
+def _parse_iso_ts(raw: Any) -> float:
+    dt = _parse_iso_utc(raw)
+    return dt.timestamp() if dt is not None else 0.0
+
+
+def _item_nao_expirado(item: Dict[str, Any], agora: datetime) -> bool:
+    """Retorna False apenas se o item possui expires_at explícito <= agora."""
+    exp_dt = _parse_iso_utc(item.get("expires_at"))
+    if exp_dt is not None:
+        return exp_dt > agora
+    return True
+
+
+def _chave_sort_vitrine(item: Dict[str, Any]) -> tuple:
+    """Chave de ordenação decrescente por recência (`data_publicacao` -> `updated_at` -> score)."""
+    pub_raw = item.get("data_publicacao") or item.get("created_at") or item.get("publicado_em") or ""
+    pub_ts = _parse_iso_ts(pub_raw)
+    upd_ts = _parse_iso_ts(item.get("updated_at"))
+    score = int(item.get("urgencia_score") or item.get("relevancia_score") or 0)
+    return (1 if pub_ts > 0 else 0, pub_ts, upd_ts, score)
+
+
+def _ler_snapshot_arquivo(caminho: Path) -> Dict[str, Any]:
+    if caminho.exists():
+        try:
+            dados = json.loads(caminho.read_text(encoding="utf-8"))
+            if isinstance(dados, dict):
+                return dados
+        except Exception:
+            return {}
+    return {}
+
+
 def _ler_snapshot_vitrine_previo(caminho: Path) -> Dict[str, Any]:
     """Lê o snapshot anterior do banco (caminho canônico) ou do arquivo local."""
     if caminho == SNAPSHOT_VITRINE_PADRAO:
@@ -41,20 +90,17 @@ def _ler_snapshot_vitrine_previo(caminho: Path) -> Dict[str, Any]:
         except Exception:
             pass
 
-    if caminho.exists():
-        try:
-            dados = json.loads(caminho.read_text(encoding="utf-8"))
-            if isinstance(dados, dict):
-                return dados
-        except Exception:
-            return {}
-    return {}
+    return _ler_snapshot_arquivo(caminho)
+
+
+def _gravar_snapshot_arquivo(caminho: Path, snapshot: Dict[str, Any]) -> None:
+    caminho.parent.mkdir(parents=True, exist_ok=True)
+    caminho.write_text(json.dumps(snapshot, ensure_ascii=False, indent=2), encoding="utf-8")
 
 
 def _gravar_snapshot_vitrine(caminho: Path, snapshot: Dict[str, Any]) -> None:
     """Grava o snapshot no arquivo e espelha no banco quando disponível."""
-    caminho.parent.mkdir(parents=True, exist_ok=True)
-    caminho.write_text(json.dumps(snapshot, ensure_ascii=False, indent=2), encoding="utf-8")
+    _gravar_snapshot_arquivo(caminho, snapshot)
 
     if caminho == SNAPSHOT_VITRINE_PADRAO:
         try:
@@ -65,53 +111,149 @@ def _gravar_snapshot_vitrine(caminho: Path, snapshot: Dict[str, Any]) -> None:
             pass
 
 
-def salvar_snapshot_vitrine(payload: CuradoriaPayload) -> None:
-    """Gera data/vitrine_ia.json no formato exato da seção 4.2 do contrato SUG-CURADORIA-IA."""
-    agora_iso = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+def _construir_snapshot_vitrine_mesclado(
+    dados_prev: Any,
+    payload: CuradoriaPayload,
+    agora: Optional[datetime] = None,
+) -> Dict[str, Any]:
+    """Mescla insights de curadoria preservando itens não expirados do pulso e `data_publicacao` originais."""
+    ref_agora = agora or datetime.now(timezone.utc)
+    agora_iso = ref_agora.strftime("%Y-%m-%dT%H:%M:%SZ")
+    prev = dados_prev if isinstance(dados_prev, dict) else {}
 
     mapa_existente: Dict[str, str] = {}
-    dados_prev = _ler_snapshot_vitrine_previo(SNAPSHOT_VITRINE)
-    if isinstance(dados_prev.get("temas_ativos"), list):
-        for t_prev in dados_prev["temas_ativos"]:
-            if isinstance(t_prev, dict):
-                s = str(t_prev.get("slug") or "")
-                dp = (
-                    t_prev.get("data_publicacao")
-                    or t_prev.get("created_at")
-                    or t_prev.get("publicado_em")
-                    or t_prev.get("updated_at")
-                )
-                if s and dp:
-                    mapa_existente[s] = dp
+    for lista_key in ("temas_ativos", "temas_curadoria"):
+        raw_lista = prev.get(lista_key)
+        if not isinstance(raw_lista, list):
+            continue
+        for t_prev in raw_lista:
+            if not isinstance(t_prev, dict):
+                continue
+            dp = (
+                t_prev.get("data_publicacao")
+                or t_prev.get("created_at")
+                or t_prev.get("publicado_em")
+                or t_prev.get("updated_at")
+            )
+            if not dp:
+                continue
+            s = str(t_prev.get("slug") or "").strip()
+            tit = str(t_prev.get("titulo_tema") or t_prev.get("titulo_curto") or "").lower().strip()
+            if s and s not in mapa_existente:
+                mapa_existente[s] = str(dp)
+            if tit and tit not in mapa_existente:
+                mapa_existente[tit] = str(dp)
 
-    temas_ativos = []
+    temas_curadoria: List[Dict[str, Any]] = []
+    vistos_slugs = set()
+    vistos_titulos = set()
+
     for item in payload.insights:
-        data_pub = mapa_existente.get(item.slug, agora_iso)
-        temas_ativos.append({
+        tit_norm = item.titulo_tema.lower().strip()
+        data_pub = (
+            mapa_existente.get(item.slug)
+            or mapa_existente.get(tit_norm)
+            or agora_iso
+        )
+        ttl_h = max(1, int(item.ttl_horas or 24))
+        expires_iso = (ref_agora + timedelta(hours=ttl_h)).strftime("%Y-%m-%dT%H:%M:%SZ")
+        tema_obj = {
             "slug": item.slug,
             "titulo_tema": item.titulo_tema,
             "status": item.status,
+            "origem_pipeline": "curadoria",
             "categoria_primaria": item.categoria_primaria,
             "categorias_cruzadas": list(item.categorias_cruzadas),
             "rota_editoria": MAPA_ROTAS_EDITORIA.get(item.categoria_primaria, "/ultimas-noticias"),
             "relevancia_score": item.relevancia_score,
+            "ttl_horas": ttl_h,
+            "expires_at": expires_iso,
             "palavras_chave_busca": [kw.lower().strip() for kw in item.palavras_chave_busca],
             "gatilho_vitrine": item.gatilho_vitrine,
             "sintese_nerd": item.sintese_nerd,
             "data_publicacao": data_pub,
             "updated_at": agora_iso,
-        })
-    snapshot = {
+        }
+        temas_curadoria.append(tema_obj)
+        if item.slug:
+            vistos_slugs.add(item.slug)
+        if tit_norm:
+            vistos_titulos.add(tit_norm)
+
+    temas_mesclados: List[Dict[str, Any]] = list(temas_curadoria)
+    if isinstance(prev.get("temas_ativos"), list):
+        for t_prev in prev["temas_ativos"]:
+            if not isinstance(t_prev, dict):
+                continue
+            s_prev = str(t_prev.get("slug") or "").strip()
+            tit_prev = str(t_prev.get("titulo_tema") or t_prev.get("titulo_curto") or t_prev.get("titulo") or "").lower().strip()
+            if s_prev and s_prev in vistos_slugs:
+                continue
+            if tit_prev and tit_prev in vistos_titulos:
+                continue
+            if not _item_nao_expirado(t_prev, ref_agora):
+                continue
+            # Preserva temas do pulso (ou outros não-curadoria) sem que o ciclo de 3h os apague
+            if str(t_prev.get("origem_pipeline") or "").strip().lower() == "curadoria":
+                continue
+            if s_prev:
+                vistos_slugs.add(s_prev)
+            if tit_prev:
+                vistos_titulos.add(tit_prev)
+            temas_mesclados.append(dict(t_prev))
+
+    temas_curadoria_ord = sorted(temas_curadoria, key=_chave_sort_vitrine, reverse=True)[:20]
+    temas_mesclados.sort(key=_chave_sort_vitrine, reverse=True)
+    temas_mesclados = temas_mesclados[:20]
+
+    snapshot: Dict[str, Any] = {
         "ok": True,
         "cached": False,
         "source": "snapshot",
         "updatedAt": agora_iso,
         "batch_id": payload.batch_id,
-        "temas_ativos": temas_ativos,
+        "temas_ativos": temas_mesclados,
+        "temas_curadoria": temas_curadoria_ord,
     }
-    if "noticias_quentes" in dados_prev:
-        snapshot["noticias_quentes"] = dados_prev["noticias_quentes"]
-    _gravar_snapshot_vitrine(SNAPSHOT_VITRINE, snapshot)
+    if isinstance(prev.get("noticias_quentes"), list):
+        nq_ativas = [
+            dict(n)
+            for n in prev["noticias_quentes"]
+            if isinstance(n, dict) and _item_nao_expirado(n, ref_agora)
+        ]
+        nq_ativas.sort(key=_chave_sort_vitrine, reverse=True)
+        snapshot["noticias_quentes"] = nq_ativas[:20]
+    return snapshot
+
+
+def salvar_snapshot_vitrine(payload: CuradoriaPayload) -> None:
+    """Gera/atualiza `vitrine_ia` preservando temas do pulso, timestamps originais e ordem cronológica."""
+    snapshot: Optional[Dict[str, Any]] = None
+
+    if SNAPSHOT_VITRINE == SNAPSHOT_VITRINE_PADRAO:
+        try:
+            from src.estado_db import atualizar_estado
+
+            snapshot_db = atualizar_estado(
+                "vitrine_ia",
+                lambda atual: _construir_snapshot_vitrine_mesclado(
+                    atual if isinstance(atual, dict) and atual else _ler_snapshot_arquivo(SNAPSHOT_VITRINE),
+                    payload,
+                ),
+                default={},
+            )
+            if isinstance(snapshot_db, dict) and snapshot_db:
+                snapshot = snapshot_db
+                _gravar_snapshot_arquivo(SNAPSHOT_VITRINE, snapshot)
+        except Exception:
+            snapshot = None
+
+    if snapshot is None:
+        dados_prev = _ler_snapshot_vitrine_previo(SNAPSHOT_VITRINE)
+        snapshot = _construir_snapshot_vitrine_mesclado(dados_prev, payload)
+        _gravar_snapshot_arquivo(SNAPSHOT_VITRINE, snapshot)
+
+    temas_ativos = snapshot.get("temas_ativos") or []
     print(f"[curadoria] Snapshot público atualizado -> {SNAPSHOT_VITRINE} ({len(temas_ativos)} temas)")
 
 

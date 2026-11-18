@@ -1,10 +1,11 @@
 """Motor de coleta: RSS editoriais + config/sources.json + Google Trends BR, com limpeza de HTML e janela temporal."""
+import calendar
 import json
 import re
-import time
 from datetime import datetime, timedelta, timezone
+from email.utils import parsedate_to_datetime
 from pathlib import Path
-from typing import Dict, List
+from typing import Any, Dict, List, Optional, Tuple
 
 import feedparser
 import requests
@@ -53,12 +54,49 @@ def limpar_html(texto_sujo: str, limite: int = 450) -> str:
     return re.sub(r"\s+", " ", texto).strip()[:limite]
 
 
+def extrair_data_publicacao_entry(entry: Any) -> Optional[datetime]:
+    """Extrai a data de publicação UTC de um item RSS/Atom (retorna None se ausente/inválida)."""
+    for attr in ("published_parsed", "updated_parsed"):
+        pub = entry.get(attr) if isinstance(entry, dict) else getattr(entry, attr, None)
+        if not pub:
+            continue
+        try:
+            if isinstance(pub, tuple) or hasattr(pub, "tm_year"):
+                seq = tuple(pub)
+                if len(seq) >= 6:
+                    if len(seq) < 9:
+                        seq = seq + (0,) * (9 - len(seq))
+                    return datetime.fromtimestamp(calendar.timegm(seq[:9]), tz=timezone.utc)
+        except Exception:
+            pass
+
+    for attr in ("published", "updated", "pubDate", "data_publicacao"):
+        raw = entry.get(attr) if isinstance(entry, dict) else getattr(entry, attr, None)
+        if isinstance(raw, str) and raw.strip():
+            texto = raw.strip()
+            try:
+                dt = datetime.fromisoformat(texto.replace("Z", "+00:00"))
+                if dt.tzinfo is None:
+                    dt = dt.replace(tzinfo=timezone.utc)
+                return dt.astimezone(timezone.utc)
+            except Exception:
+                pass
+            try:
+                dt = parsedate_to_datetime(texto)
+                if dt.tzinfo is None:
+                    dt = dt.replace(tzinfo=timezone.utc)
+                return dt.astimezone(timezone.utc)
+            except Exception:
+                pass
+    return None
+
+
 def dentro_da_janela_tempo(entry, horas_limite: int = 12) -> bool:
-    pub = getattr(entry, "published_parsed", None)
-    if not pub:
-        return True
-    data_pub = datetime.fromtimestamp(time.mktime(pub), tz=timezone.utc)
-    return data_pub >= datetime.now(timezone.utc) - timedelta(hours=horas_limite)
+    data_pub = extrair_data_publicacao_entry(entry)
+    if data_pub is None:
+        return False
+    agora = datetime.now(timezone.utc)
+    return data_pub >= agora - timedelta(hours=horas_limite)
 
 
 def coletar_feeds_rss(horas_limite: int = 12, por_feed: int = 10) -> List[Dict]:
@@ -82,10 +120,20 @@ def coletar_feeds_rss(horas_limite: int = 12, por_feed: int = 10) -> List[Dict]:
             try:
                 resp = requests.get(url, headers=headers, timeout=10)
                 feed = feedparser.parse(resp.content)
-                for entry in feed.entries[:por_feed]:
+                entries_validas: List[Tuple[datetime, Any]] = []
+                for entry in (feed.entries or []):
+                    if not dentro_da_janela_tempo(entry, horas_limite):
+                        continue
+                    data_pub = extrair_data_publicacao_entry(entry)
+                    if data_pub is not None:
+                        entries_validas.append((data_pub, entry))
+
+                entries_validas.sort(key=lambda pair: pair[0], reverse=True)
+
+                for data_pub, entry in entries_validas[:por_feed]:
                     titulo = limpar_html(entry.get("title", ""))
                     chave = titulo.lower()
-                    if not titulo or chave in vistos or not dentro_da_janela_tempo(entry, horas_limite):
+                    if not titulo or chave in vistos:
                         continue
                     vistos.add(chave)
                     itens.append({
@@ -94,9 +142,12 @@ def coletar_feeds_rss(horas_limite: int = 12, por_feed: int = 10) -> List[Dict]:
                         "titulo": titulo,
                         "resumo": limpar_html(entry.get("summary", entry.get("description", ""))),
                         "link": entry.get("link", ""),
+                        "data_publicacao": data_pub.strftime("%Y-%m-%dT%H:%M:%SZ"),
                     })
             except Exception as e:  # noqa: BLE001 - feed individual não pode derrubar o pipeline
                 print(f"[Aviso] Falha ao ler feed {url}: {e}")
+
+    itens.sort(key=lambda it: str(it.get("data_publicacao") or ""), reverse=True)
     return itens
 
 
@@ -104,16 +155,18 @@ def coletar_google_trends(limite: int = 15) -> List[Dict]:
     tendencias: List[Dict] = []
     try:
         feed = feedparser.parse(GOOGLE_TRENDS_RSS, agent=USER_AGENT)
-        for entry in feed.entries[:limite]:
+        for entry in (feed.entries or [])[:limite]:
             termo = limpar_html(entry.get("title", ""))
             trafego = entry.get("ht_approx_traffic", "Alta")
             noticia = limpar_html(entry.get("ht_news_item_title", ""))
+            data_pub = extrair_data_publicacao_entry(entry)
             tendencias.append({
                 "origem": "Google Trends (Buscas em Alta)",
                 "fonte": "Google Trends BR",
                 "titulo": f"Termo em alta: {termo} (Volume: {trafego})",
                 "resumo": f"Contexto associado nas buscas: {noticia}" if noticia else "Pico repentino de pesquisas no Brasil.",
                 "link": entry.get("link", ""),
+                "data_publicacao": data_pub.strftime("%Y-%m-%dT%H:%M:%SZ") if data_pub else None,
             })
     except Exception as e:  # noqa: BLE001
         print(f"[Aviso] Falha ao coletar Google Trends: {e}")

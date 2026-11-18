@@ -52,22 +52,34 @@ def _timestamp_publicacao(item: Dict[str, Any]) -> float:
         return 0.0
 
 
-def sortir_cards_rodizio_amplo(cards: List[Dict[str, Any]], max_v2_topo: int = 2) -> List[Dict[str, Any]]:
+def sortir_cards_rodizio_amplo(
+    cards: List[Dict[str, Any]],
+    max_v2_topo: int = 2,
+    max_age_delta_sec: float = 3600.0,
+    max_lookahead: int = 5,
+    max_v2_age_delta_sec: float = 7200.0,
+) -> List[Dict[str, Any]]:
     """
-    Aplica sortimento com rodízio amplo de veículos/mídias (contrato RADAR-SORT):
-    - Preserva até `max_v2_topo` destaques Pulso V2 no topo; excedentes entram no pool geral.
+    Aplica sortimento com rodízio amplo de veículos/mídias (contrato RADAR-SORT) com janela limitada de recência:
+    - Preserva até `max_v2_topo` destaques Pulso V2 no topo apenas quando dentro de `max_v2_age_delta_sec` do item mais novo.
     - Máximo de 2 cards consecutivos da mesma `fonteKey`.
-    - Janela de rodízio amplo `min(3, fontes_distintas_restantes - 1)` com relaxamento progressivo.
+    - Janela de rodízio amplo `min(3, fontes_distintas_restantes - 1)` limitada a `max_lookahead` e `max_age_delta_sec`.
     """
     if not cards:
         return []
 
     ordenados = sorted(cards, key=_timestamp_publicacao, reverse=True)
+    newest_ts = _timestamp_publicacao(ordenados[0]) if ordenados else 0.0
 
     top_v2: List[Dict[str, Any]] = []
     pool: List[Dict[str, Any]] = []
     for item in ordenados:
-        if _eh_destaque_pulso_v2(item) and len(top_v2) < max_v2_topo:
+        ts_item = _timestamp_publicacao(item)
+        v2_recente = (
+            newest_ts == 0.0
+            or (ts_item > 0.0 and (newest_ts - ts_item) <= max_v2_age_delta_sec)
+        )
+        if _eh_destaque_pulso_v2(item) and len(top_v2) < max_v2_topo and v2_recente:
             top_v2.append(item)
         else:
             pool.append(item)
@@ -92,13 +104,27 @@ def sortir_cards_rodizio_amplo(cards: List[Dict[str, Any]], max_v2_topo: int = 2
             resultado.extend(pool)
             break
 
+        head_ts = _timestamp_publicacao(pool[0])
+
+        def _candidato_elegivel(idx: int, cand: Dict[str, Any]) -> bool:
+            if idx == 0:
+                return True
+            if idx >= max_lookahead:
+                return False
+            if head_ts == 0.0:
+                return True
+            cand_ts = _timestamp_publicacao(cand)
+            return cand_ts > 0.0 and (head_ts - cand_ts) <= max_age_delta_sec
+
         window_size = min(3, fontes_distintas - 1)
         janela_recente = set(recentes[-window_size:]) if window_size > 0 else set()
 
         escolhido_idx: Optional[int] = None
 
-        # 1ª passada: respeita teto consecutivo (<= 2) e janela de rodízio amplo
+        # 1ª passada: respeita teto consecutivo (<= 2), janela de rodízio amplo e limite de recência
         for idx, cand in enumerate(pool):
+            if not _candidato_elegivel(idx, cand):
+                break
             fk = normalizar_fonte_key(cand.get("fonte_nome"))
             if consec_count >= 2 and fk == consec_fonte:
                 continue
@@ -107,9 +133,11 @@ def sortir_cards_rodizio_amplo(cards: List[Dict[str, Any]], max_v2_topo: int = 2
             escolhido_idx = idx
             break
 
-        # 2ª passada: relaxa janela de rodízio, mantendo teto consecutivo
+        # 2ª passada: relaxa janela de rodízio, mantendo teto consecutivo e limite de recência
         if escolhido_idx is None:
             for idx, cand in enumerate(pool):
+                if not _candidato_elegivel(idx, cand):
+                    break
                 fk = normalizar_fonte_key(cand.get("fonte_nome"))
                 if consec_count >= 2 and fk == consec_fonte:
                     continue
@@ -246,31 +274,36 @@ def _mesclar_lista_feed(base: List[Dict[str, Any]], adicionais: List[Dict[str, A
     return resultado
 
 
-def _ler_feed_existente() -> List[Dict[str, Any]]:
-    itens_db: List[Dict[str, Any]] = []
-    if _estado_db_ativo(FEED_OUTPUT_PATH, FEED_OUTPUT_PATH_PADRAO):
-        try:
-            from src.estado_db import ler_estado
-
-            estado = ler_estado("feed_output")
-            if isinstance(estado, list):
-                itens_db = [item for item in estado if isinstance(item, dict)]
-        except Exception:
-            itens_db = []
-
-    itens_arquivo: List[Dict[str, Any]] = []
+def _ler_feed_arquivo() -> List[Dict[str, Any]]:
     if os.path.exists(FEED_OUTPUT_PATH):
         try:
             with open(FEED_OUTPUT_PATH, "r", encoding="utf-8") as f:
                 dados = json.load(f)
             if isinstance(dados, list):
-                itens_arquivo = [item for item in dados if isinstance(item, dict)]
+                return [item for item in dados if isinstance(item, dict)]
         except Exception:
-            itens_arquivo = []
+            return []
+    return []
 
-    if itens_db:
-        return _mesclar_lista_feed(itens_db, itens_arquivo)
-    return itens_arquivo
+
+def _ler_feed_existente() -> List[Dict[str, Any]]:
+    if _estado_db_ativo(FEED_OUTPUT_PATH, FEED_OUTPUT_PATH_PADRAO):
+        try:
+            from src.estado_db import ler_estado
+
+            estado = ler_estado("feed_output")
+            if isinstance(estado, list) and len(estado) > 0:
+                return [item for item in estado if isinstance(item, dict)]
+        except Exception:
+            pass
+
+    return _ler_feed_arquivo()
+
+
+def _gravar_feed_arquivo(feed: List[Dict[str, Any]]) -> None:
+    os.makedirs(os.path.dirname(FEED_OUTPUT_PATH), exist_ok=True)
+    with open(FEED_OUTPUT_PATH, "w", encoding="utf-8") as f:
+        json.dump(feed, f, ensure_ascii=False, indent=2)
 
 
 def _persistir_feed(feed: List[Dict[str, Any]]) -> None:
@@ -282,54 +315,47 @@ def _persistir_feed(feed: List[Dict[str, Any]]) -> None:
         except Exception:
             pass
 
-    os.makedirs(os.path.dirname(FEED_OUTPUT_PATH), exist_ok=True)
-    with open(FEED_OUTPUT_PATH, "w", encoding="utf-8") as f:
-        json.dump(feed, f, ensure_ascii=False, indent=2)
+    _gravar_feed_arquivo(feed)
 
 
-def publish_cards(cards: List[Dict[str, Any]], max_items: int = 50) -> int:
-    """
-    Insere novos cards no data/feed_output.json, ordena por data mais recente
-    e limita a `max_items`.
-    """
-    if not cards:
-        return 0
+def _mesclar_e_ordenar_feed(
+    existing_raw: Any,
+    cards: List[Dict[str, Any]],
+    max_items: int = 50,
+) -> tuple[List[Dict[str, Any]], List[Dict[str, Any]]]:
+    """Mescla novos cards preservando timestamps originais, sem carimbar itens sem data com `now()`."""
+    existing_feed: List[Dict[str, Any]] = [
+        dict(item) for item in (existing_raw or []) if isinstance(item, dict)
+    ]
 
-    existing_feed: List[Dict[str, Any]] = _ler_feed_existente()
-
-    # Mescla evitando duplicação por fonte_url ou título normalizado
-    seen_urls = {item.get("fonte_url") for item in existing_feed if item.get("fonte_url")}
-    seen_titles = {normalizar_fonte_key(item.get("titulo")) for item in existing_feed if item.get("titulo")}
-    novos_publicados = 0
-    agora_iso = datetime.now(timezone.utc).isoformat()
-
-    # Garante que itens pré-existentes preservem data_publicacao consistente
     for item in existing_feed:
         if not item.get("data_publicacao"):
             item["data_publicacao"] = (
                 item.get("published_at")
                 or item.get("created_at")
                 or item.get("publicado_em")
-                or agora_iso
+                or ""
             )
+
+    seen_urls = {item.get("fonte_url") for item in existing_feed if item.get("fonte_url")}
+    seen_titles = {normalizar_fonte_key(item.get("titulo")) for item in existing_feed if item.get("titulo")}
+    novos_itens: List[Dict[str, Any]] = []
 
     for card in cards:
         titulo_norm = normalizar_fonte_key(card.get("titulo"))
         fonte_url = card.get("fonte_url")
 
-        # Se já existe no feed, preserva o card original com seu timestamp inalterado
         if (fonte_url and fonte_url in seen_urls) or (titulo_norm and titulo_norm in seen_titles):
             continue
 
-        # Garante data_publicacao consistente para quando o item ingressou na cobertura
         data_pub = (
             card.get("data_publicacao")
             or card.get("published_at")
             or card.get("created_at")
-            or agora_iso
+            or card.get("publicado_em")
+            or ""
         )
 
-        # Prepara objeto limpo sem campos de controle interno
         clean_card = {
             "titulo": card.get("titulo"),
             "resumo": card.get("resumo"),
@@ -337,7 +363,7 @@ def publish_cards(cards: List[Dict[str, Any]], max_items: int = 50) -> int:
             "categoria": card.get("categoria"),
             "fonte_nome": card.get("fonte_nome"),
             "fonte_url": card.get("fonte_url"),
-            "data_publicacao": data_pub
+            "data_publicacao": data_pub,
         }
 
         existing_feed.insert(0, clean_card)
@@ -345,9 +371,15 @@ def publish_cards(cards: List[Dict[str, Any]], max_items: int = 50) -> int:
             seen_urls.add(clean_card["fonte_url"])
         if titulo_norm:
             seen_titles.add(titulo_norm)
-        novos_publicados += 1
+        novos_itens.append(clean_card)
 
-        # Disparo opcional de webhook para cada card novo
+    existing_feed.sort(key=_timestamp_publicacao, reverse=True)
+    trimmed_feed = sortir_cards_rodizio_amplo(existing_feed[:max_items])
+    return trimmed_feed, novos_itens
+
+
+def _notificar_novos_cards(novos_itens: List[Dict[str, Any]]) -> None:
+    for clean_card in novos_itens:
         send_to_webhook(clean_card)
         try:
             from src.notifier import send_discord_webhook, send_telegram_alert
@@ -356,13 +388,47 @@ def publish_cards(cards: List[Dict[str, Any]], max_items: int = 50) -> int:
         except Exception:
             pass
 
-    # Ordena decrescente por data de publicação, limita aos últimos N itens e aplica rodízio amplo
-    existing_feed.sort(key=_timestamp_publicacao, reverse=True)
-    trimmed_feed = sortir_cards_rodizio_amplo(existing_feed[:max_items])
 
-    _persistir_feed(trimmed_feed)
+def publish_cards(cards: List[Dict[str, Any]], max_items: int = 50) -> int:
+    """
+    Insere novos cards no estado `feed_output` (DB atômico + espelho em arquivo),
+    ordena por data mais recente, limita a `max_items` e aplica rodízio amplo.
+    """
+    if not cards:
+        return 0
 
-    return novos_publicados
+    novos_capturados: List[Dict[str, Any]] = []
+    final_feed: Optional[List[Dict[str, Any]]] = None
+
+    if _estado_db_ativo(FEED_OUTPUT_PATH, FEED_OUTPUT_PATH_PADRAO):
+        try:
+            from src.estado_db import atualizar_estado, banco_disponivel
+
+            if banco_disponivel():
+                def _transformar(atual: Any) -> List[Dict[str, Any]]:
+                    novos_capturados.clear()
+                    trimmed, novos = _mesclar_e_ordenar_feed(atual, cards, max_items=max_items)
+                    novos_capturados.extend(novos)
+                    return trimmed
+
+                resultado_db = atualizar_estado(
+                    "feed_output",
+                    _transformar,
+                    default=_ler_feed_arquivo(),
+                )
+                if isinstance(resultado_db, list):
+                    final_feed = resultado_db
+                    _gravar_feed_arquivo(final_feed)
+        except Exception:
+            final_feed = None
+
+    if final_feed is None:
+        existing_feed = _ler_feed_existente()
+        final_feed, novos_capturados = _mesclar_e_ordenar_feed(existing_feed, cards, max_items=max_items)
+        _persistir_feed(final_feed)
+
+    _notificar_novos_cards(novos_capturados)
+    return len(novos_capturados)
 
 
 # ============================================================================
@@ -425,20 +491,39 @@ def listar_cards_manuais() -> List[Dict[str, Any]]:
     return manuais
 
 
-def publicar_card_manual(card: Dict[str, Any]) -> Dict[str, Any]:
+def publicar_card_manual(card: Dict[str, Any], max_items: int = 50) -> Dict[str, Any]:
     """Grava (upsert por slug) um card manual no feed com persistência no PostgreSQL + fallback arquivo.
 
     Dispara webhook/notifier após a persistência. Retorna o card normalizado.
     """
     card_normalizado = normalizar_card_manual(card)
-    feed = _ler_feed_existente()
     slug = card_normalizado["slug"]
-    feed = [
-        c for c in feed
-        if not (isinstance(c, dict) and str(c.get("slug") or "").strip().lower() == slug)
-    ]
-    feed.insert(0, card_normalizado)
-    _persistir_feed(feed)
+
+    def _aplicar_upsert(feed_atual: Any) -> List[Dict[str, Any]]:
+        lista = [
+            dict(c) for c in (feed_atual or [])
+            if isinstance(c, dict) and str(c.get("slug") or "").strip().lower() != slug
+        ]
+        lista.insert(0, card_normalizado)
+        lista.sort(key=_timestamp_publicacao, reverse=True)
+        return lista[:max_items]
+
+    final_feed: Optional[List[Dict[str, Any]]] = None
+    if _estado_db_ativo(FEED_OUTPUT_PATH, FEED_OUTPUT_PATH_PADRAO):
+        try:
+            from src.estado_db import atualizar_estado, banco_disponivel
+
+            if banco_disponivel():
+                res = atualizar_estado("feed_output", _aplicar_upsert, default=_ler_feed_arquivo())
+                if isinstance(res, list):
+                    final_feed = res
+                    _gravar_feed_arquivo(final_feed)
+        except Exception:
+            final_feed = None
+
+    if final_feed is None:
+        final_feed = _aplicar_upsert(_ler_feed_existente())
+        _persistir_feed(final_feed)
 
     send_to_webhook(card_normalizado)
     try:
@@ -451,74 +536,125 @@ def publicar_card_manual(card: Dict[str, Any]) -> Dict[str, Any]:
     return card_normalizado
 
 
-def atualizar_card_manual(slug: str, updates: Dict[str, Any]) -> Optional[Dict[str, Any]]:
+def atualizar_card_manual(slug: str, updates: Dict[str, Any], max_items: int = 50) -> Optional[Dict[str, Any]]:
     """Atualiza campos parciais de um card manual existente (por slug) no feed (banco + arquivo)."""
     alvo = str(slug or "").strip().lower()
-    feed = _ler_feed_existente()
-    card_atual: Optional[Dict[str, Any]] = None
-    restante: List[Dict[str, Any]] = []
-    for c in feed:
-        if not isinstance(c, dict):
-            restante.append(c)
-            continue
-        if str(c.get("slug") or "").strip().lower() == alvo and _eh_card_manual(c):
-            card_atual = dict(c)
-        else:
-            restante.append(c)
 
-    if card_atual is None:
-        return None
+    def _aplicar_update(feed_atual: Any) -> tuple[List[Dict[str, Any]], Optional[Dict[str, Any]], bool]:
+        lista = [c for c in (feed_atual or []) if isinstance(c, dict)]
+        card_atual: Optional[Dict[str, Any]] = None
+        restante: List[Dict[str, Any]] = []
+        for c in lista:
+            if str(c.get("slug") or "").strip().lower() == alvo and _eh_card_manual(c):
+                card_atual = dict(c)
+            else:
+                restante.append(dict(c))
+        if card_atual is None:
+            return lista, None, False
 
-    mudancas: Dict[str, Any] = {}
-    if updates.get("titulo") is not None:
-        mudancas["titulo"] = str(updates.get("titulo"))
-    if updates.get("resumo") is not None:
-        mudancas["resumo"] = str(updates.get("resumo"))
-    if updates.get("contexto") is not None:
-        mudancas["analise"] = str(updates.get("contexto"))
-    if updates.get("categoria") is not None:
-        mudancas["categoria"] = str(updates.get("categoria"))
-    if updates.get("urgencia_score") is not None:
-        mudancas["urgencia_score"] = int(updates.get("urgencia_score"))
-    if updates.get("fonte_nome") is not None:
-        mudancas["fonte_nome"] = str(updates.get("fonte_nome"))
-    if updates.get("fonte_url") is not None:
-        mudancas["fonte_url"] = str(updates.get("fonte_url"))
-    if updates.get("palavras_chave") is not None:
-        mudancas["palavras_chave"] = list(updates.get("palavras_chave") or [])
-    if updates.get("data_publicacao") is not None:
-        mudancas["data_publicacao"] = str(updates.get("data_publicacao"))
+        mudancas: Dict[str, Any] = {}
+        if updates.get("titulo") is not None:
+            mudancas["titulo"] = str(updates.get("titulo"))
+        if updates.get("resumo") is not None:
+            mudancas["resumo"] = str(updates.get("resumo"))
+        if updates.get("contexto") is not None:
+            mudancas["analise"] = str(updates.get("contexto"))
+        if updates.get("categoria") is not None:
+            mudancas["categoria"] = str(updates.get("categoria"))
+        if updates.get("urgencia_score") is not None:
+            mudancas["urgencia_score"] = int(updates.get("urgencia_score"))
+        if updates.get("fonte_nome") is not None:
+            mudancas["fonte_nome"] = str(updates.get("fonte_nome"))
+        if updates.get("fonte_url") is not None:
+            mudancas["fonte_url"] = str(updates.get("fonte_url"))
+        if updates.get("palavras_chave") is not None:
+            mudancas["palavras_chave"] = list(updates.get("palavras_chave") or [])
+        if updates.get("data_publicacao") is not None:
+            mudancas["data_publicacao"] = str(updates.get("data_publicacao"))
 
-    if not mudancas:
-        return card_atual
+        if not mudancas:
+            return lista, card_atual, False
 
-    card_atual.update(mudancas)
-    card_final = normalizar_card_manual(card_atual)
-    card_final["slug"] = alvo
-    restante = [
-        c for c in restante
-        if not (isinstance(c, dict) and str(c.get("slug") or "").strip().lower() == alvo)
-    ]
-    restante.insert(0, card_final)
-    _persistir_feed(restante)
-    return card_final
+        card_atual.update(mudancas)
+        card_final = normalizar_card_manual(card_atual)
+        card_final["slug"] = alvo
+        restante.insert(0, card_final)
+        restante.sort(key=_timestamp_publicacao, reverse=True)
+        return restante[:max_items], card_final, True
+
+    resultado_card: List[Optional[Dict[str, Any]]] = [None]
+    persistido = False
+
+    if _estado_db_ativo(FEED_OUTPUT_PATH, FEED_OUTPUT_PATH_PADRAO):
+        try:
+            from src.estado_db import atualizar_estado, banco_disponivel
+
+            if banco_disponivel():
+                def _transformar(atual: Any) -> List[Dict[str, Any]]:
+                    novo_feed, card_final, _ = _aplicar_update(atual)
+                    resultado_card[0] = card_final
+                    return novo_feed
+
+                res = atualizar_estado("feed_output", _transformar, default=_ler_feed_arquivo())
+                if isinstance(res, list):
+                    persistido = True
+                    _gravar_feed_arquivo(res)
+        except Exception:
+            persistido = False
+
+    if not persistido:
+        novo_feed, card_final, mudou = _aplicar_update(_ler_feed_existente())
+        resultado_card[0] = card_final
+        if mudou:
+            _persistir_feed(novo_feed)
+
+    return resultado_card[0]
 
 
 def remover_card_manual(slug: str) -> int:
     """Remove cards manuais do feed pelo slug (banco + arquivo). Retorna a quantidade removida."""
     alvo = str(slug or "").strip().lower()
-    feed = _ler_feed_existente()
-    restante: List[Dict[str, Any]] = []
-    removidos = 0
-    for c in feed:
-        if (
-            isinstance(c, dict)
-            and str(c.get("slug") or "").strip().lower() == alvo
-            and _eh_card_manual(c)
-        ):
-            removidos += 1
-            continue
-        restante.append(c)
-    if removidos:
-        _persistir_feed(restante)
-    return removidos
+
+    def _aplicar_remocao(feed_atual: Any) -> tuple[List[Dict[str, Any]], int]:
+        restante: List[Dict[str, Any]] = []
+        removidos = 0
+        for c in (feed_atual or []):
+            if (
+                isinstance(c, dict)
+                and str(c.get("slug") or "").strip().lower() == alvo
+                and _eh_card_manual(c)
+            ):
+                removidos += 1
+                continue
+            if isinstance(c, dict):
+                restante.append(dict(c))
+        return restante, removidos
+
+    removidos_total = [0]
+    persistido = False
+
+    if _estado_db_ativo(FEED_OUTPUT_PATH, FEED_OUTPUT_PATH_PADRAO):
+        try:
+            from src.estado_db import atualizar_estado, banco_disponivel
+
+            if banco_disponivel():
+                def _transformar(atual: Any) -> List[Dict[str, Any]]:
+                    restante, rem = _aplicar_remocao(atual)
+                    removidos_total[0] = rem
+                    return restante
+
+                res = atualizar_estado("feed_output", _transformar, default=_ler_feed_arquivo())
+                if isinstance(res, list):
+                    persistido = True
+                    if removidos_total[0]:
+                        _gravar_feed_arquivo(res)
+        except Exception:
+            persistido = False
+
+    if not persistido:
+        restante, rem = _aplicar_remocao(_ler_feed_existente())
+        removidos_total[0] = rem
+        if rem:
+            _persistir_feed(restante)
+
+    return removidos_total[0]

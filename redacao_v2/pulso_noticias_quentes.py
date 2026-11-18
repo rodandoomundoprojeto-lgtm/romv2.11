@@ -16,7 +16,7 @@ import json
 import os
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Tuple
 
 from google import genai
 from google.genai import types
@@ -39,13 +39,10 @@ from .schemas import (
 
 PROMPTS_DIR = Path(__file__).resolve().parent / "prompts"
 PROMPT_0_PATH = PROMPTS_DIR / "prompt_0_pulso_noticias_quentes.md"
-MODELO_PULSO = os.getenv("GEMINI_MODEL_PULSO", "gemini-3.5-flash-lite").strip() or "gemini-3.5-flash-lite"
+MODELO_PULSO = os.getenv("GEMINI_MODEL_PULSO", "gemini-2.5-flash").strip() or "gemini-2.5-flash"
 MODELOS_PULSO_FALLBACK = [
-    "gemini-3.5-flash-lite",
-    "gemini-3.5-flash",
-    "gemini-3.8-flash",
-    "gemini-3.7-flash",
-    "gemini-3.1-flash-lite",
+    "gemini-2.5-flash",
+    "gemini-2.5-flash-lite",
 ]
 LOCK_PULSO_KEY = "pipeline_pulso:noticias_quentes_30m"
 
@@ -90,18 +87,57 @@ MAPA_ROTAS_EDITORIA_PULSO = {
 }
 
 
-def _ler_snapshot_pulso_previo(caminho: Path) -> Dict[str, Any]:
-    """Lê o snapshot anterior do banco (caminho canônico) ou do arquivo local."""
-    if caminho == SNAPSHOT_VITRINE_PATH:
+def _parse_iso_dt_utc(raw: Any) -> Optional[datetime]:
+    """Converte string ISO-8601 ou datetime para datetime aware UTC."""
+    if isinstance(raw, datetime):
+        dt = raw
+    elif isinstance(raw, str) and raw.strip():
         try:
-            from src.estado_db import ler_estado
-
-            estado = ler_estado("vitrine_ia")
-            if isinstance(estado, dict) and estado:
-                return estado
+            dt = datetime.fromisoformat(raw.strip().replace("Z", "+00:00"))
         except Exception:
-            pass
+            return None
+    else:
+        return None
+    if dt.tzinfo is None:
+        dt = dt.replace(tzinfo=timezone.utc)
+    return dt.astimezone(timezone.utc)
 
+
+def _parse_iso_ts(raw: Any) -> float:
+    """Extrai timestamp numérico UTC (0.0 quando ausente/inválido)."""
+    dt = _parse_iso_dt_utc(raw)
+    return dt.timestamp() if dt is not None else 0.0
+
+
+def _item_nao_expirado_pulso(item: Dict[str, Any], agora: datetime) -> bool:
+    """Retorna True se o item ainda não expirou (poda itens vencidos ou legados antigos sem expires_at)."""
+    exp_dt = _parse_iso_dt_utc(item.get("expires_at"))
+    if exp_dt is not None:
+        return exp_dt > agora
+    ref_dt = _parse_iso_dt_utc(
+        item.get("updated_at")
+        or item.get("data_publicacao")
+        or item.get("created_at")
+        or item.get("publicado_em")
+    )
+    if ref_dt is not None:
+        ttl_horas = max(1, int(item.get("ttl_horas") or item.get("horas_em_destaque") or 6))
+        return (ref_dt + timedelta(hours=ttl_horas)) > agora
+    return True
+
+
+def _chave_ordenacao_vitrine(item: Dict[str, Any]) -> tuple:
+    """Chave de ordenação decrescente: recência primária (`data_publicacao`), `updated_at` e score como desempate."""
+    pub_raw = item.get("data_publicacao") or item.get("created_at") or item.get("publicado_em") or ""
+    pub_ts = _parse_iso_ts(pub_raw)
+    upd_ts = _parse_iso_ts(item.get("updated_at"))
+    urg = int(item.get("urgencia_score") or 0)
+    rel = int(item.get("relevancia_score") or 0)
+    return (1 if pub_ts > 0 else 0, pub_ts, upd_ts, urg, rel)
+
+
+def _ler_snapshot_pulso_arquivo(caminho: Path) -> Dict[str, Any]:
+    """Lê o snapshot JSON apenas do arquivo local."""
     if caminho.exists():
         try:
             conteudo = json.loads(caminho.read_text(encoding="utf-8"))
@@ -114,10 +150,30 @@ def _ler_snapshot_pulso_previo(caminho: Path) -> Dict[str, Any]:
     return {}
 
 
-def _gravar_snapshot_pulso(caminho: Path, snapshot: Dict[str, Any]) -> None:
-    """Grava o snapshot no arquivo e espelha no banco quando disponível."""
+def _ler_snapshot_pulso_previo(caminho: Path) -> Dict[str, Any]:
+    """Lê o snapshot anterior do banco (caminho canônico) ou do arquivo local."""
+    if caminho == SNAPSHOT_VITRINE_PATH:
+        try:
+            from src.estado_db import ler_estado
+
+            estado = ler_estado("vitrine_ia")
+            if isinstance(estado, dict) and estado:
+                return estado
+        except Exception:
+            pass
+
+    return _ler_snapshot_pulso_arquivo(caminho)
+
+
+def _gravar_snapshot_pulso_arquivo(caminho: Path, snapshot: Dict[str, Any]) -> None:
+    """Grava apenas o arquivo JSON local."""
     caminho.parent.mkdir(parents=True, exist_ok=True)
     caminho.write_text(json.dumps(snapshot, ensure_ascii=False, indent=2), encoding="utf-8")
+
+
+def _gravar_snapshot_pulso(caminho: Path, snapshot: Dict[str, Any]) -> None:
+    """Grava o snapshot no arquivo e espelha no banco quando disponível."""
+    _gravar_snapshot_pulso_arquivo(caminho, snapshot)
 
     if caminho == SNAPSHOT_VITRINE_PATH:
         try:
@@ -128,46 +184,34 @@ def _gravar_snapshot_pulso(caminho: Path, snapshot: Dict[str, Any]) -> None:
             pass
 
 
-def salvar_snapshot_vitrine_pulso(
+def _mesclar_snapshot_vitrine_pulso(
+    conteudo_existente: Any,
     payload: Any,
-    caminho: Optional[Path] = None,
-) -> Path:
-    """Sincroniza e mescla as notícias quentes ativas em `data/vitrine_ia.json`.
+    agora_dt: Optional[datetime] = None,
+) -> Dict[str, Any]:
+    """Mescla de forma pura e determinística os itens de pulso no snapshot `vitrine_ia`."""
+    agora = agora_dt or datetime.now(timezone.utc)
+    agora_iso = agora.strftime("%Y-%m-%dT%H:%M:%SZ")
 
-    Mantém o contrato estruturado compatível com `functions/api/noticias-quentes.js`,
-    `functions/api/radar.js` e `functions/api/vitrine-em-alta.js`, atualizando `updatedAt`.
-    """
-    caminho_arquivo = caminho or SNAPSHOT_VITRINE_PATH
-    agora_iso = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
-
-    # Extrai a lista de notícias quentes do payload (suporta Pydantic ou dict)
     if hasattr(payload, "noticias_quentes"):
         itens_brutos = payload.noticias_quentes
-        batch_id = getattr(payload, "batch_id", "") or datetime.now(timezone.utc).strftime("%Y%m%d-%H%M")
+        batch_id = getattr(payload, "batch_id", "") or agora.strftime("%Y%m%d-%H%M")
     elif isinstance(payload, dict):
         itens_brutos = payload.get("noticias_quentes", [])
-        batch_id = payload.get("batch_id") or datetime.now(timezone.utc).strftime("%Y%m%d-%H%M")
+        batch_id = payload.get("batch_id") or agora.strftime("%Y%m%d-%H%M")
     elif isinstance(payload, list):
         itens_brutos = payload
-        batch_id = datetime.now(timezone.utc).strftime("%Y%m%d-%H%M")
+        batch_id = agora.strftime("%Y%m%d-%H%M")
     else:
         itens_brutos = []
-        batch_id = datetime.now(timezone.utc).strftime("%Y%m%d-%H%M")
+        batch_id = agora.strftime("%Y%m%d-%H%M")
 
-    # Lê dados existentes para mesclagem (banco primeiro, arquivo como fallback)
-    temas_existentes: List[Dict[str, Any]] = []
-    nq_existentes: List[Dict[str, Any]] = []
-    conteudo_existente = _ler_snapshot_pulso_previo(caminho_arquivo)
-    if conteudo_existente:
-        raw_temas = conteudo_existente.get("temas_ativos")
-        temas_existentes = [t for t in raw_temas if isinstance(t, dict)] if isinstance(raw_temas, list) else []
-        raw_nq = conteudo_existente.get("noticias_quentes")
-        nq_existentes = [n for n in raw_nq if isinstance(n, dict)] if isinstance(raw_nq, list) else []
+    existente = conteudo_existente if isinstance(conteudo_existente, dict) else {}
+    raw_temas = existente.get("temas_ativos")
+    temas_existentes = [dict(t) for t in raw_temas if isinstance(t, dict)] if isinstance(raw_temas, list) else []
+    raw_nq = existente.get("noticias_quentes")
+    nq_existentes = [dict(n) for n in raw_nq if isinstance(n, dict)] if isinstance(raw_nq, list) else []
 
-    novos_temas: List[Dict[str, Any]] = []
-    novas_nq: List[Dict[str, Any]] = []
-
-    # Mapa para recuperar horários de publicação originais de temas pré-existentes
     mapa_temas_existentes: Dict[str, Dict[str, Any]] = {}
     for t_ex in temas_existentes:
         s_ex = str(t_ex.get("slug") or "").strip()
@@ -177,12 +221,24 @@ def salvar_snapshot_vitrine_pulso(
         if tit_ex:
             mapa_temas_existentes[tit_ex] = t_ex
 
+    mapa_nq_existentes: Dict[str, Dict[str, Any]] = {}
+    for n_ex in nq_existentes:
+        s_ex = str(n_ex.get("slug") or "").strip()
+        tit_ex = str(n_ex.get("titulo_curto") or n_ex.get("titulo_tema") or n_ex.get("titulo") or "").lower().strip()
+        if s_ex:
+            mapa_nq_existentes[s_ex] = n_ex
+        if tit_ex:
+            mapa_nq_existentes[tit_ex] = n_ex
+
+    novos_temas: List[Dict[str, Any]] = []
+    novas_nq: List[Dict[str, Any]] = []
+
     for item in itens_brutos:
         d = item.model_dump() if hasattr(item, "model_dump") else (dict(item) if isinstance(item, dict) else {})
         if not d:
             continue
 
-        slug = str(d.get("slug") or "")
+        slug = str(d.get("slug") or "").strip()
         titulo = str(d.get("titulo_curto") or d.get("titulo_tema") or d.get("titulo") or "").strip()
         if not titulo:
             continue
@@ -194,17 +250,34 @@ def salvar_snapshot_vitrine_pulso(
         resumo = str(d.get("resumo_pulso") or d.get("gatilho_vitrine") or d.get("resumo") or "").strip()
         impacto = str(d.get("impacto_pratico") or d.get("sintese_nerd") or resumo).strip()
         kws = [str(k).lower().strip() for k in (d.get("palavras_chave") or d.get("palavras_chave_busca") or [])]
+        ttl_horas = max(1, int(d.get("ttl_horas") or d.get("horas_em_destaque") or 6))
 
-        # Preservação mandatória do horário original em que a notícia ingressou na cobertura do Rodando o Mundo
-        tema_preexistente = mapa_temas_existentes.get(slug) or mapa_temas_existentes.get(titulo.lower())
-        if tema_preexistente:
+        tema_pre = mapa_temas_existentes.get(slug) or mapa_temas_existentes.get(titulo.lower())
+        nq_pre = mapa_nq_existentes.get(slug) or mapa_nq_existentes.get(titulo.lower())
+        pre = tema_pre or nq_pre
+
+        if pre:
             data_pub_original = (
-                tema_preexistente.get("data_publicacao")
-                or tema_preexistente.get("created_at")
-                or tema_preexistente.get("publicado_em")
-                or tema_preexistente.get("updated_at")
+                pre.get("data_publicacao")
+                or pre.get("created_at")
+                or pre.get("publicado_em")
+                or pre.get("updated_at")
+                or d.get("data_publicacao")
+                or d.get("published_at")
                 or agora_iso
             )
+            exp_pre = _parse_iso_dt_utc(pre.get("expires_at"))
+            if exp_pre is not None:
+                expires_at_str = pre.get("expires_at")
+            else:
+                ref_dt = _parse_iso_dt_utc(pre.get("updated_at") or data_pub_original) or agora
+                expires_at_str = (ref_dt + timedelta(hours=ttl_horas)).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+            pre_titulo = str(pre.get("titulo_tema") or pre.get("titulo_curto") or pre.get("titulo") or "").strip()
+            pre_resumo = str(pre.get("resumo_pulso") or pre.get("gatilho_vitrine") or pre.get("resumo") or "").strip()
+            pre_impacto = str(pre.get("impacto_pratico") or pre.get("sintese_nerd") or pre_resumo).strip()
+            mudou_conteudo = (titulo != pre_titulo) or (resumo != pre_resumo) or (impacto != pre_impacto)
+            updated_at_str = agora_iso if mudou_conteudo else (pre.get("updated_at") or agora_iso)
         else:
             data_pub_original = (
                 d.get("data_publicacao")
@@ -213,18 +286,27 @@ def salvar_snapshot_vitrine_pulso(
                 or d.get("publicado_em")
                 or agora_iso
             )
+            expires_at_str = (
+                d.get("expires_at")
+                if _parse_iso_dt_utc(d.get("expires_at")) is not None
+                else (agora + timedelta(hours=ttl_horas)).strftime("%Y-%m-%dT%H:%M:%SZ")
+            )
+            updated_at_str = d.get("updated_at") or agora_iso
 
         novos_temas.append({
             "slug": slug,
             "titulo_tema": titulo,
             "titulo_curto": titulo,
             "status": "novo",
+            "origem_pipeline": "pulso",
             "categoria_primaria": cat_primaria,
             "categoria": cat_atlas,
             "categorias_cruzadas": ["Economia", "Resumo_Ultimas"],
             "rota_editoria": rota_ed,
             "relevancia_score": int(d.get("relevancia_score") or 85),
             "urgencia_score": int(d.get("urgencia_score") or 85),
+            "ttl_horas": ttl_horas,
+            "expires_at": expires_at_str,
             "palavras_chave_busca": kws,
             "palavras_chave": kws,
             "gatilho_vitrine": resumo,
@@ -235,13 +317,15 @@ def salvar_snapshot_vitrine_pulso(
             "veiculos_origem": list(d.get("veiculos_origem") or ["Síntese Rodando o Mundo · Pulso V2"]),
             "fontes_urls": list(d.get("fontes_urls") or []),
             "data_publicacao": data_pub_original,
-            "updated_at": agora_iso,
+            "updated_at": updated_at_str,
         })
         d_clone = dict(d)
         d_clone["data_publicacao"] = data_pub_original
+        d_clone["ttl_horas"] = ttl_horas
+        d_clone["expires_at"] = expires_at_str
+        d_clone["updated_at"] = updated_at_str
         novas_nq.append(d_clone)
 
-    # Mesclagem com deduplicação por slug e título
     vistos_slugs = set()
     vistos_titulos = set()
     temas_mesclados: List[Dict[str, Any]] = []
@@ -252,6 +336,8 @@ def salvar_snapshot_vitrine_pulso(
         if s and s in vistos_slugs:
             continue
         if tit and tit in vistos_titulos:
+            continue
+        if not _item_nao_expirado_pulso(t, agora):
             continue
         if s:
             vistos_slugs.add(s)
@@ -266,12 +352,14 @@ def salvar_snapshot_vitrine_pulso(
             continue
         if tit and tit in vistos_titulos:
             continue
+        if not _item_nao_expirado_pulso(t, agora):
+            continue
         if not t.get("data_publicacao"):
             t["data_publicacao"] = (
                 t.get("created_at")
                 or t.get("publicado_em")
                 or t.get("updated_at")
-                or agora_iso
+                or ""
             )
         if s:
             vistos_slugs.add(s)
@@ -279,9 +367,9 @@ def salvar_snapshot_vitrine_pulso(
             vistos_titulos.add(tit)
         temas_mesclados.append(t)
 
+    temas_mesclados.sort(key=_chave_ordenacao_vitrine, reverse=True)
     temas_mesclados = temas_mesclados[:20]
 
-    # Mescla lista de noticias_quentes brutas
     vistos_nq_slugs = set()
     vistos_nq_titulos = set()
     nq_mescladas: List[Dict[str, Any]] = []
@@ -292,11 +380,14 @@ def salvar_snapshot_vitrine_pulso(
             continue
         if tit and tit in vistos_nq_titulos:
             continue
+        if not _item_nao_expirado_pulso(item, agora):
+            continue
         if s:
             vistos_nq_slugs.add(s)
         if tit:
             vistos_nq_titulos.add(tit)
         nq_mescladas.append(item)
+
     for item in nq_existentes:
         s = item.get("slug")
         tit = (item.get("titulo_curto") or item.get("titulo_tema") or item.get("titulo") or "").lower().strip()
@@ -304,21 +395,25 @@ def salvar_snapshot_vitrine_pulso(
             continue
         if tit and tit in vistos_nq_titulos:
             continue
+        if not _item_nao_expirado_pulso(item, agora):
+            continue
         if not item.get("data_publicacao"):
             item["data_publicacao"] = (
                 item.get("created_at")
                 or item.get("publicado_em")
                 or item.get("updated_at")
-                or agora_iso
+                or ""
             )
         if s:
             vistos_nq_slugs.add(s)
         if tit:
             vistos_nq_titulos.add(tit)
         nq_mescladas.append(item)
+
+    nq_mescladas.sort(key=_chave_ordenacao_vitrine, reverse=True)
     nq_mescladas = nq_mescladas[:20]
 
-    snapshot = {
+    snapshot: Dict[str, Any] = {
         "ok": True,
         "cached": False,
         "source": "snapshot",
@@ -327,8 +422,53 @@ def salvar_snapshot_vitrine_pulso(
         "temas_ativos": temas_mesclados,
         "noticias_quentes": nq_mescladas,
     }
+    if isinstance(existente.get("temas_curadoria"), list):
+        cur_ativos = [
+            dict(c)
+            for c in existente["temas_curadoria"]
+            if isinstance(c, dict) and _item_nao_expirado_pulso(c, agora)
+        ]
+        cur_ativos.sort(key=_chave_ordenacao_vitrine, reverse=True)
+        snapshot["temas_curadoria"] = cur_ativos[:20]
+    return snapshot
 
-    _gravar_snapshot_pulso(caminho_arquivo, snapshot)
+
+def salvar_snapshot_vitrine_pulso(
+    payload: Any,
+    caminho: Optional[Path] = None,
+) -> Path:
+    """Sincroniza e mescla as notícias quentes ativas em `data/vitrine_ia.json`.
+
+    Mantém o contrato estruturado compatível com `functions/api/noticias-quentes.js`,
+    `functions/api/radar.js` e `functions/api/vitrine-em-alta.js`, atualizando `updatedAt`.
+    """
+    caminho_arquivo = caminho or SNAPSHOT_VITRINE_PATH
+    snapshot: Optional[Dict[str, Any]] = None
+
+    if caminho_arquivo == SNAPSHOT_VITRINE_PATH:
+        try:
+            from src.estado_db import atualizar_estado
+
+            snapshot_db = atualizar_estado(
+                "vitrine_ia",
+                lambda atual: _mesclar_snapshot_vitrine_pulso(
+                    atual if isinstance(atual, dict) and atual else _ler_snapshot_pulso_arquivo(caminho_arquivo),
+                    payload,
+                ),
+                default={},
+            )
+            if isinstance(snapshot_db, dict) and snapshot_db:
+                snapshot = snapshot_db
+                _gravar_snapshot_pulso_arquivo(caminho_arquivo, snapshot)
+        except Exception:
+            snapshot = None
+
+    if snapshot is None:
+        conteudo_existente = _ler_snapshot_pulso_previo(caminho_arquivo)
+        snapshot = _mesclar_snapshot_vitrine_pulso(conteudo_existente, payload)
+        _gravar_snapshot_pulso_arquivo(caminho_arquivo, snapshot)
+
+    temas_mesclados = snapshot.get("temas_ativos") or []
     print(f"[pulso_30m] Snapshot público sincronizado -> {caminho_arquivo} ({len(temas_mesclados)} temas)")
     return caminho_arquivo
 
@@ -347,10 +487,10 @@ def buscar_noticias_ativas_banco(
     """
     query = """
         SELECT slug, titulo_curto, resumo_pulso, categoria,
-               urgencia_score, relevancia_score, ttl_horas, expires_at
+               urgencia_score, relevancia_score, ttl_horas, expires_at, created_at
         FROM ai_noticias_quentes
         WHERE expires_at > NOW()
-        ORDER BY urgencia_score DESC, relevancia_score DESC
+        ORDER BY created_at DESC, urgencia_score DESC
         LIMIT %s;
     """
 
@@ -365,11 +505,13 @@ def buscar_noticias_ativas_banco(
             else:
                 col_names = [
                     "slug", "titulo_curto", "resumo_pulso", "categoria",
-                    "urgencia_score", "relevancia_score", "ttl_horas", "expires_at",
+                    "urgencia_score", "relevancia_score", "ttl_horas", "expires_at", "created_at",
                 ]
                 item = dict(zip(col_names, r))
             if isinstance(item.get("expires_at"), datetime):
                 item["expires_at"] = item["expires_at"].isoformat()
+            if isinstance(item.get("created_at"), datetime):
+                item["created_at"] = item["created_at"].isoformat()
             ativas.append(item)
         return ativas
 
@@ -529,8 +671,63 @@ Analise o lote, deduplique contra as notícias ativas no banco e retorne o JSON 
 
     payload.batch_id = payload.batch_id or batch_atual
     payload.model_id = modelo_usado
+
+    # Resolve data_publicacao deterministicamente (DB ativo -> URLs coletadas -> n.data_publicacao válida -> gerado_em)
+    agora_ref = datetime.now(timezone.utc)
+    limite_futuro = agora_ref + timedelta(minutes=15)
+    mapa_db_pub: Dict[str, str] = {}
+    for row_db in (noticias_ativas_banco or []):
+        if isinstance(row_db, dict):
+            s_db = str(row_db.get("slug") or "").strip()
+            dp_db = row_db.get("data_publicacao") or row_db.get("created_at") or row_db.get("updated_at")
+            if s_db and dp_db:
+                mapa_db_pub[s_db] = str(dp_db)
+
+    mapa_url_pub: Dict[str, str] = {}
+    for col in (itens_coletados or []):
+        if not isinstance(col, dict):
+            continue
+        pub_col = col.get("published_at") or col.get("data_publicacao")
+        if not pub_col:
+            continue
+        for k_url in ("canonical_url", "url"):
+            u = str(col.get(k_url) or "").strip().lower()
+            if u and u not in mapa_url_pub:
+                mapa_url_pub[u] = str(pub_col)
+
+    for n in payload.noticias_quentes:
+        s_item = str(n.slug or "").strip()
+        if s_item and s_item in mapa_db_pub:
+            n.data_publicacao = mapa_db_pub[s_item]
+            continue
+
+        candidatas: List[Tuple[float, str]] = []
+        for u in (n.fontes_urls or []):
+            u_norm = str(u or "").strip().lower()
+            pub_match = mapa_url_pub.get(u_norm)
+            if pub_match:
+                dt_m = _parse_iso_dt_utc(pub_match)
+                if dt_m is not None and dt_m <= limite_futuro:
+                    candidatas.append((dt_m.timestamp(), dt_m.strftime("%Y-%m-%dT%H:%M:%SZ")))
+        if candidatas:
+            candidatas.sort(key=lambda pair: pair[0], reverse=True)
+            n.data_publicacao = candidatas[0][1]
+            continue
+
+        dt_prop = _parse_iso_dt_utc(n.data_publicacao)
+        if dt_prop is not None and dt_prop <= limite_futuro:
+            n.data_publicacao = dt_prop.strftime("%Y-%m-%dT%H:%M:%SZ")
+        else:
+            dt_gerado = _parse_iso_dt_utc(payload.gerado_em) or agora_ref
+            n.data_publicacao = dt_gerado.strftime("%Y-%m-%dT%H:%M:%SZ")
+
     payload.noticias_quentes.sort(
-        key=lambda n: (n.urgencia_score, n.relevancia_score),
+        key=lambda n: (
+            1 if _parse_iso_ts(n.data_publicacao) > 0 else 0,
+            _parse_iso_ts(n.data_publicacao),
+            n.urgencia_score,
+            n.relevancia_score,
+        ),
         reverse=True,
     )
 
@@ -550,13 +747,13 @@ INSERT INTO ai_noticias_quentes (
     categoria, paises_envolvidos, urgencia_score, relevancia_score,
     nivel_confianca, ttl_horas, horas_em_destaque, veiculos_origem,
     fontes_urls, palavras_chave, links_internos_relacionados,
-    payload_json, model_id, status, destaque_ate, expires_at, updated_at
+    payload_json, model_id, status, data_publicacao, destaque_ate, expires_at, updated_at
 ) VALUES (
     %(slug)s, %(batch_id)s, %(titulo_curto)s, %(resumo_pulso)s, %(impacto_pratico)s,
     %(categoria)s, %(paises_envolvidos)s, %(urgencia_score)s, %(relevancia_score)s,
     %(nivel_confianca)s, %(ttl_horas)s, %(horas_em_destaque)s, %(veiculos_origem)s,
     %(fontes_urls)s, %(palavras_chave)s, %(links_internos_relacionados)s::jsonb,
-    %(payload_json)s::jsonb, %(model_id)s, %(status)s, %(destaque_ate)s, %(expires_at)s, %(updated_at)s
+    %(payload_json)s::jsonb, %(model_id)s, %(status)s, %(data_publicacao)s, %(destaque_ate)s, %(expires_at)s, %(updated_at)s
 )
 ON CONFLICT (slug) DO UPDATE SET
     batch_id = EXCLUDED.batch_id,
@@ -577,9 +774,23 @@ ON CONFLICT (slug) DO UPDATE SET
     payload_json = EXCLUDED.payload_json,
     model_id = EXCLUDED.model_id,
     status = EXCLUDED.status,
-    destaque_ate = EXCLUDED.destaque_ate,
-    expires_at = EXCLUDED.expires_at,
-    updated_at = EXCLUDED.updated_at;
+    data_publicacao = COALESCE(ai_noticias_quentes.data_publicacao, ai_noticias_quentes.created_at, EXCLUDED.data_publicacao),
+    destaque_ate = LEAST(
+        EXCLUDED.destaque_ate,
+        COALESCE(ai_noticias_quentes.data_publicacao, ai_noticias_quentes.created_at, EXCLUDED.data_publicacao)
+        + make_interval(hours => GREATEST(1, LEAST(24, EXCLUDED.horas_em_destaque)))
+    ),
+    expires_at = LEAST(
+        EXCLUDED.expires_at,
+        COALESCE(ai_noticias_quentes.data_publicacao, ai_noticias_quentes.created_at, EXCLUDED.data_publicacao)
+        + make_interval(hours => GREATEST(1, LEAST(168, EXCLUDED.ttl_horas)))
+    ),
+    updated_at = CASE
+        WHEN ai_noticias_quentes.titulo_curto IS DISTINCT FROM EXCLUDED.titulo_curto
+          OR ai_noticias_quentes.resumo_pulso IS DISTINCT FROM EXCLUDED.resumo_pulso
+        THEN EXCLUDED.updated_at
+        ELSE ai_noticias_quentes.updated_at
+    END;
 """
 
 
@@ -600,10 +811,13 @@ def executar_upsert_noticias_quentes(
     salvos = 0
 
     with conn.cursor() as cur:
-        # Garante compatibilidade caso a tabela já exista sem a coluna ttl_horas
+        # Garante compatibilidade caso a tabela já exista sem as colunas ttl_horas ou data_publicacao
         try:
             cur.execute(
                 "ALTER TABLE ai_noticias_quentes ADD COLUMN IF NOT EXISTS ttl_horas INTEGER NOT NULL DEFAULT 6;"
+            )
+            cur.execute(
+                "ALTER TABLE ai_noticias_quentes ADD COLUMN IF NOT EXISTS data_publicacao TIMESTAMPTZ;"
             )
         except Exception:  # noqa: BLE001
             pass
@@ -611,8 +825,9 @@ def executar_upsert_noticias_quentes(
         for item in payload.noticias_quentes:
             ttl = max(1, int(item.ttl_horas or item.horas_em_destaque or 6))
             horas_destaque = max(1, min(24, int(item.horas_em_destaque or ttl)))
-            expires_at = calcular_expires_at(ref_time, ttl)
-            destaque_ate = ref_time + timedelta(hours=horas_destaque)
+            data_pub_dt = _parse_iso_dt_utc(getattr(item, "data_publicacao", None)) or ref_time
+            expires_at = calcular_expires_at(data_pub_dt, ttl)
+            destaque_ate = data_pub_dt + timedelta(hours=horas_destaque)
 
             params = {
                 "slug": item.slug,
@@ -637,6 +852,7 @@ def executar_upsert_noticias_quentes(
                 "payload_json": json.dumps(item.model_dump(), ensure_ascii=False),
                 "model_id": payload.model_id or MODELO_PULSO,
                 "status": status_inicial,
+                "data_publicacao": data_pub_dt,
                 "destaque_ate": destaque_ate,
                 "expires_at": expires_at,
                 "updated_at": ref_time,
@@ -664,8 +880,15 @@ def executar_upsert_noticias_quentes(
                         urgencia_score = EXCLUDED.urgencia_score,
                         relevancia_score = EXCLUDED.relevancia_score,
                         nivel_confianca = EXCLUDED.nivel_confianca,
-                        destaque_ate = EXCLUDED.destaque_ate,
-                        updated_at = EXCLUDED.updated_at
+                        destaque_ate = LEAST(
+                            EXCLUDED.destaque_ate,
+                            ai_eventos.created_at + make_interval(hours => %(horas_em_destaque)s)
+                        ),
+                        updated_at = CASE
+                            WHEN ai_eventos.titulo_evento IS DISTINCT FROM EXCLUDED.titulo_evento
+                            THEN EXCLUDED.updated_at
+                            ELSE ai_eventos.updated_at
+                        END
                     RETURNING id;
                     """,
                     {
@@ -676,6 +899,7 @@ def executar_upsert_noticias_quentes(
                         "urgencia_score": item.urgencia_score,
                         "relevancia_score": item.relevancia_score,
                         "nivel_confianca": item.nivel_confianca,
+                        "horas_em_destaque": horas_destaque,
                         "destaque_ate": destaque_ate,
                         "status": status_evento,
                         "updated_at": ref_time,

@@ -208,6 +208,10 @@ class NoticiaQuenteItem(BaseModel):
         default_factory=list,
         description="Termos de busca e entidades centrais para impulsionar a pesquisa contextual"
     )
+    data_publicacao: Optional[str] = Field(
+        default=None,
+        description="Timestamp ISO-8601 UTC da publicação original do fato/notícia"
+    )
     links_internos_relacionados: List[LinkAcervoInterno] = Field(
         default_factory=list,
         description="Links internos validados contra banco de dados ou sitemap.xml"

@@ -191,6 +191,7 @@ def atualizar_estado(
         with conexao:
             garantir_tabela(conexao, commit=False)
             with conexao.cursor() as cur:
+                cur.execute("SELECT pg_advisory_xact_lock(hashtext(%s));", (chave,))
                 cur.execute(
                     f"SELECT payload FROM {TABELA_ESTADO} WHERE chave = %s FOR UPDATE",
                     (chave,),

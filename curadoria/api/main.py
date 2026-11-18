@@ -3,6 +3,7 @@
 Rodar local:
     uvicorn curadoria.api.main:app --reload --port 8000
 """
+import json
 import os
 import secrets
 import time
@@ -58,7 +59,8 @@ ADMIN_PASSWORD = (os.getenv("ADMIN_PASSWORD") or os.getenv("ADMIN_SENHA") or "")
 
 CAMPOS_PUBLICOS = """
     slug, titulo_tema, status, categoria_primaria, categorias_cruzadas,
-    relevancia_score, palavras_chave_busca, gatilho_vitrine, sintese_nerd
+    relevancia_score, palavras_chave_busca, gatilho_vitrine, sintese_nerd,
+    created_at, updated_at
 """
 
 
@@ -83,10 +85,18 @@ def verificar_rate_limit(request: Request) -> None:
 
 
 def aplicar_cache_headers(response: Response, _t: Optional[str] = None, refresh: Optional[str] = None) -> None:
-    if _t is not None or str(refresh) == "1":
-        response.headers["Cache-Control"] = "no-store, no-cache, must-revalidate"
-    else:
-        response.headers["Cache-Control"] = "public, max-age=120, s-maxage=300"
+    response.headers["Cache-Control"] = "no-store, no-cache, must-revalidate"
+    response.headers["Pragma"] = "no-cache"
+    response.headers["Expires"] = "0"
+
+
+def _iso_temporal(val) -> Optional[str]:
+    if val is None:
+        return None
+    if isinstance(val, datetime):
+        dt = val if val.tzinfo is not None else val.replace(tzinfo=timezone.utc)
+        return dt.astimezone(timezone.utc).isoformat()
+    return str(val)
 
 
 def verificar_token(
@@ -181,51 +191,190 @@ def obter_historico_recente(horas: int = Query(48, ge=1, le=720), conn=Depends(g
         return {"slugs_recentes": [r["slug"] for r in cur.fetchall()]}
 
 
+def get_db_optional():
+    try:
+        conn = psycopg.connect(DATABASE_URL, row_factory=dict_row, connect_timeout=5, prepare_threshold=None)
+    except Exception:
+        yield None
+        return
+    with conn:
+        yield conn
+
+
+def _carregar_temas_snapshot_fallback(
+    categoria: Optional[CategoriaType] = None,
+    limite: int = 6,
+) -> list[dict]:
+    caminhos: list[Path] = []
+    try:
+        from .. import pipeline as _cur_pipe
+        for attr in ("SNAPSHOT_VITRINE", "SNAPSHOT_VITRINE_PADRAO", "SNAPSHOT_PUBLICO_PATH"):
+            p = getattr(_cur_pipe, attr, None)
+            if p:
+                caminhos.append(Path(p))
+    except Exception:
+        pass
+    try:
+        import redacao_v2.pulso_noticias_quentes as _pulso_mod
+        p = getattr(_pulso_mod, "SNAPSHOT_VITRINE_PATH", None)
+        if p:
+            caminhos.append(Path(p))
+    except Exception:
+        pass
+    caminhos.append(Path(__file__).resolve().parents[2] / "data" / "vitrine_ia.json")
+
+    estado_vitrine = None
+    for cam in caminhos:
+        try:
+            if cam and cam.is_file():
+                raw = json.loads(cam.read_text(encoding="utf-8"))
+                if isinstance(raw, dict):
+                    estado_vitrine = raw
+                    break
+        except Exception:
+            continue
+
+    if not isinstance(estado_vitrine, dict) or not isinstance(estado_vitrine.get("temas_ativos"), list):
+        return []
+
+    brutos = [dict(t) for t in estado_vitrine["temas_ativos"] if isinstance(t, dict)]
+    if categoria:
+        brutos = [
+            t for t in brutos
+            if t.get("categoria_primaria") == categoria
+            or t.get("categoria") == categoria
+            or categoria in (t.get("categorias_cruzadas") or [])
+        ]
+    for t in brutos:
+        cat_prim = t.get("categoria_primaria") or t.get("categoria") or "Geopolitica_Radar"
+        t.setdefault("categoria_primaria", cat_prim)
+        t.setdefault("rota_editoria", MAPA_ROTAS_EDITORIA.get(cat_prim, "/ultimas-noticias"))
+        pub = t.get("data_publicacao") or t.get("created_at") or t.get("updated_at") or estado_vitrine.get("updatedAt")
+        t.setdefault("data_publicacao", _iso_temporal(pub))
+        t.setdefault("updated_at", _iso_temporal(t.get("updated_at") or pub))
+    brutos.sort(
+        key=lambda t: (
+            str(t.get("data_publicacao") or t.get("created_at") or t.get("updated_at") or ""),
+            int(t.get("relevancia_score") or t.get("urgencia_score") or 0),
+        ),
+        reverse=True,
+    )
+    return brutos[:limite]
+
+
 @app.get("/v1/vitrine/em-alta", dependencies=[Depends(verificar_rate_limit)])
 def listar_temas_vitrine(
     response: Response,
+    request: Request,
     categoria: Optional[CategoriaType] = None,
     limite: int = Query(6, ge=1, le=20),
     _t: Optional[str] = Query(None),
     refresh: Optional[str] = Query(None),
-    conn=Depends(get_db),
+    force: Optional[str] = Query(None),
+    conn=Depends(get_db_optional),
 ):
-    aplicar_cache_headers(response, _t=_t, refresh=refresh)
-    with conn.cursor() as cur:
-        if categoria:
-            cur.execute(
-                f"""
-                SELECT {CAMPOS_PUBLICOS} FROM ai_curadoria_insights
-                WHERE expires_at > NOW()
-                  AND (categoria_primaria = %s OR %s = ANY(categorias_cruzadas))
-                ORDER BY relevancia_score DESC LIMIT %s;
-                """,
-                (categoria, categoria, limite),
-            )
-        else:
-            cur.execute(
-                f"""
-                SELECT {CAMPOS_PUBLICOS} FROM ai_curadoria_insights
-                WHERE expires_at > NOW()
-                ORDER BY relevancia_score DESC LIMIT %s;
-                """,
-                (limite,),
-            )
-        rows = cur.fetchall()
-        temas = [
-            {
-                **r,
-                "rota_editoria": MAPA_ROTAS_EDITORIA.get(r["categoria_primaria"], "/ultimas-noticias"),
-            }
-            for r in rows
-        ]
-        return {
-            "ok": True,
-            "cached": False,
-            "source": "api",
-            "updatedAt": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
-            "temas_ativos": temas,
-        }
+    aplicar_cache_headers(response, _t=_t, refresh=refresh or force)
+    if get_db in request.app.dependency_overrides:
+        try:
+            ov = request.app.dependency_overrides[get_db]()
+            conn = next(ov) if hasattr(ov, "__next__") else ov
+        except Exception:
+            conn = None
+
+    stale_fallback = False
+    temas: list[dict] = []
+
+    if conn is not None:
+        try:
+            with conn.cursor() as cur:
+                if categoria:
+                    cur.execute(
+                        f"""
+                        SELECT {CAMPOS_PUBLICOS} FROM ai_curadoria_insights
+                        WHERE expires_at > NOW()
+                          AND (categoria_primaria = %s OR %s = ANY(categorias_cruzadas))
+                        ORDER BY updated_at DESC, created_at DESC, relevancia_score DESC LIMIT %s;
+                        """,
+                        (categoria, categoria, limite),
+                    )
+                else:
+                    cur.execute(
+                        f"""
+                        SELECT {CAMPOS_PUBLICOS} FROM ai_curadoria_insights
+                        WHERE expires_at > NOW()
+                        ORDER BY updated_at DESC, created_at DESC, relevancia_score DESC LIMIT %s;
+                        """,
+                        (limite,),
+                    )
+                rows = cur.fetchall()
+                if not rows:
+                    stale_fallback = True
+                    if categoria:
+                        cur.execute(
+                            f"""
+                            SELECT {CAMPOS_PUBLICOS} FROM ai_curadoria_insights
+                            WHERE (categoria_primaria = %s OR %s = ANY(categorias_cruzadas))
+                            ORDER BY updated_at DESC, created_at DESC, relevancia_score DESC LIMIT %s;
+                            """,
+                            (categoria, categoria, limite),
+                        )
+                    else:
+                        cur.execute(
+                            f"""
+                            SELECT {CAMPOS_PUBLICOS} FROM ai_curadoria_insights
+                            ORDER BY updated_at DESC, created_at DESC, relevancia_score DESC LIMIT %s;
+                            """,
+                            (limite,),
+                        )
+                    rows = cur.fetchall()
+
+                temas = [
+                    {
+                        **r,
+                        "created_at": _iso_temporal(r.get("created_at")),
+                        "updated_at": _iso_temporal(r.get("updated_at")),
+                        "data_publicacao": _iso_temporal(r.get("created_at") or r.get("updated_at")),
+                        "rota_editoria": MAPA_ROTAS_EDITORIA.get(r["categoria_primaria"], "/ultimas-noticias"),
+                    }
+                    for r in rows
+                ]
+                if not temas:
+                    try:
+                        from src.estado_db import ler_estado
+
+                        estado_vitrine = ler_estado("vitrine_ia", conn=conn)
+                        if isinstance(estado_vitrine, dict) and isinstance(estado_vitrine.get("temas_ativos"), list):
+                            stale_fallback = True
+                            brutos = [dict(t) for t in estado_vitrine["temas_ativos"] if isinstance(t, dict)]
+                            if categoria:
+                                brutos = [
+                                    t for t in brutos
+                                    if t.get("categoria_primaria") == categoria
+                                    or categoria in (t.get("categorias_cruzadas") or [])
+                                ]
+                            brutos.sort(
+                                key=lambda t: str(t.get("data_publicacao") or t.get("created_at") or t.get("updated_at") or ""),
+                                reverse=True,
+                            )
+                            temas = brutos[:limite]
+                    except Exception:
+                        pass
+        except Exception:
+            stale_fallback = True
+            temas = []
+
+    if not temas:
+        stale_fallback = True
+        temas = _carregar_temas_snapshot_fallback(categoria=categoria, limite=limite)
+
+    return {
+        "ok": True,
+        "cached": False,
+        "source": "api_recency_fallback" if stale_fallback else "api",
+        "stale_fallback": stale_fallback,
+        "updatedAt": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "temas_ativos": temas,
+    }
 
 
 @app.get("/v1/gaps", dependencies=[Depends(verificar_token)])
@@ -287,10 +436,19 @@ def expandir_termo_busca(
             SELECT titulo_tema, relevancia_score, palavras_chave_busca, gatilho_vitrine, sintese_nerd
             FROM ai_curadoria_insights
             WHERE expires_at > NOW()
-            ORDER BY relevancia_score DESC LIMIT 20;
+            ORDER BY updated_at DESC, created_at DESC, relevancia_score DESC LIMIT 20;
             """
         )
         candidatos = cur.fetchall()
+        if not candidatos:
+            cur.execute(
+                """
+                SELECT titulo_tema, relevancia_score, palavras_chave_busca, gatilho_vitrine, sintese_nerd
+                FROM ai_curadoria_insights
+                ORDER BY updated_at DESC, created_at DESC, relevancia_score DESC LIMIT 20;
+                """
+            )
+            candidatos = cur.fetchall()
 
     pontuados = []
     for r in candidatos:

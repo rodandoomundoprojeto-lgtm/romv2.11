@@ -58,7 +58,6 @@ async def _executar_modo_pulso(dry_run: bool, limit: int = 10) -> Dict[str, Any]
     )
     from redacao_v2.pulso_noticias_quentes import (
         executar_pipeline_pulso_async,
-        salvar_snapshot_vitrine_pulso,
     )
     from redacao_v2.schemas import (
         LinkAcervoInterno,
@@ -70,8 +69,6 @@ async def _executar_modo_pulso(dry_run: bool, limit: int = 10) -> Dict[str, Any]
         if _tem_chave_gemini() or not dry_run:
             payload = await executar_pipeline_pulso_async(dry_run=dry_run)
             if payload is not None:
-                if not dry_run:
-                    salvar_snapshot_vitrine_pulso(payload)
                 if limit and len(payload.noticias_quentes) > limit:
                     payload.noticias_quentes = payload.noticias_quentes[:limit]
                 return payload.model_dump()
@@ -114,6 +111,7 @@ async def _executar_modo_pulso(dry_run: bool, limit: int = 10) -> Dict[str, Any]
                 veiculos_origem=[str(item.get("fonte") or "Fonte Verificada")],
                 fontes_urls=[str(item.get("canonical_url") or item.get("url") or "")],
                 palavras_chave=["radar", "tempo real", str(item.get("pais_iso") or "br").lower()],
+                data_publicacao=item.get("published_at"),
                 links_internos_relacionados=links_validos,
             )
         )

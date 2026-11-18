@@ -2,6 +2,13 @@
 // Proxy / Fallback Serverless (Cloudflare Pages Function) para o Pulso de Notícias Quentes e Países em Alta no Mapa (Motor V2).
 // Segue estritamente o contrato .agents/contracts/INT-V2-SITE.md.
 import { json } from '../lib/ia.js';
+import {
+  isRefreshRequest,
+  newsResponseHeaders,
+  parseTimestampIso,
+  compararRecenciaDesc,
+  resolverBackendUrl,
+} from '../lib/rss.js';
 
 const CORS_HEADERS = {
   'Access-Control-Allow-Origin': '*',
@@ -449,28 +456,61 @@ export function detectarPaisesNoTexto(texto, palavrasChave = []) {
   return pontuados.map((p) => p.a2);
 }
 
-function construirHeadersCache(isRefresh) {
-  return {
-    'Cache-Control': isRefresh
-      ? 'no-store, no-cache, must-revalidate'
-      : 'public, max-age=60, s-maxage=300',
-    'X-Content-Type-Options': 'nosniff',
-    ...CORS_HEADERS,
-  };
+function construirHeadersCache(isRefresh, isFallback = false) {
+  return newsResponseHeaders({ isRefresh, isFallback, corsHeaders: CORS_HEADERS });
 }
 
-async function carregarSnapshotEstatico(request) {
+function itemNaoExpirado(item, nowMs = Date.now()) {
+  if (!item || !item.expires_at) return true;
+  const expMs = Date.parse(String(item.expires_at));
+  if (Number.isNaN(expMs)) return true;
+  return expMs > nowMs;
+}
+
+function filtrarExpiradosComResguardo(lista, nowMs = Date.now()) {
+  const validos = (lista || []).filter((it) => it && typeof it === 'object');
+  const naoExpirados = validos.filter((it) => itemNaoExpirado(it, nowMs));
+  return naoExpirados.length > 0 ? naoExpirados : validos;
+}
+
+async function carregarSnapshotEstatico(request, env, isRefresh = false) {
   try {
     const assetUrl = new URL('/data/vitrine_ia.json', request.url);
-    const ctrl = new AbortController();
-    const timer = setTimeout(() => ctrl.abort(), 2000);
-    const resp = await fetch(assetUrl.toString(), { signal: ctrl.signal });
-    clearTimeout(timer);
-    if (resp.ok) {
-      const data = await resp.json();
-      if (data && Array.isArray(data.temas_ativos) && data.temas_ativos.length > 0) {
-        return data;
+    if (env && env.ASSETS && typeof env.ASSETS.fetch === 'function') {
+      const respAsset = await env.ASSETS.fetch(new Request(assetUrl, { method: 'GET' }));
+      if (respAsset && respAsset.ok) {
+        const data = await respAsset.json();
+        if (
+          data &&
+          ((Array.isArray(data.temas_ativos) && data.temas_ativos.length > 0) ||
+            (Array.isArray(data.noticias_quentes) && data.noticias_quentes.length > 0))
+        ) {
+          return data;
+        }
       }
+    }
+    if (isRefresh) {
+      assetUrl.searchParams.set('_t', String(Date.now()));
+    }
+    const ctrl = new AbortController();
+    const timer = setTimeout(() => ctrl.abort(), 3000);
+    try {
+      const resp = await fetch(assetUrl.toString(), {
+        cache: 'no-store',
+        signal: ctrl.signal,
+      });
+      if (resp && resp.ok) {
+        const data = await resp.json();
+        if (
+          data &&
+          ((Array.isArray(data.temas_ativos) && data.temas_ativos.length > 0) ||
+            (Array.isArray(data.noticias_quentes) && data.noticias_quentes.length > 0))
+        ) {
+          return data;
+        }
+      }
+    } finally {
+      clearTimeout(timer);
     }
   } catch {
     // Usa fallback embutido
@@ -478,17 +518,24 @@ async function carregarSnapshotEstatico(request) {
   return FALLBACK_SNAPSHOT;
 }
 
-async function consultarBackendExterno(backendUrl, caminho, searchParams) {
+async function consultarBackendExterno(backendUrl, caminho, searchParams, timeoutMs = 9000) {
   const ctrl = new AbortController();
-  const timer = setTimeout(() => ctrl.abort(), 3000);
+  const timer = setTimeout(() => ctrl.abort(), timeoutMs);
   try {
     const alvo = new URL(caminho, backendUrl.endsWith('/') ? backendUrl : backendUrl + '/');
-    searchParams.forEach((v, k) => alvo.searchParams.set(k, v));
+    if (searchParams) {
+      searchParams.forEach((v, k) => alvo.searchParams.set(k, v));
+    }
     const resp = await fetch(alvo.toString(), {
-      headers: { Accept: 'application/json' },
+      cache: 'no-store',
+      headers: {
+        Accept: 'application/json',
+        'X-Rom-Edge-Hop': '1',
+        'X-ROM-Edge-Proxy': '1',
+      },
       signal: ctrl.signal,
     });
-    if (!resp.ok) return null;
+    if (!resp || !resp.ok) return null;
     return await resp.json();
   } catch {
     return null;
@@ -518,11 +565,61 @@ function construirPaisesEmAlta(noticiasQuentes) {
         summary: item.resumo_pulso || '',
         termoBusca: kws[0] || item.titulo_curto || nomePais,
         urgencia_score: Number(item.urgencia_score || item.relevancia_score || 80),
+        data_publicacao: item.data_publicacao || '',
+        updated_at: item.updated_at || '',
       });
     }
   }
 
-  return Array.from(mapaPaises.values()).sort((a, b) => b.urgencia_score - a.urgencia_score);
+  return Array.from(mapaPaises.values()).sort((a, b) =>
+    compararRecenciaDesc(a, b, 'urgencia_score')
+  );
+}
+
+function normalizarNoticiaQuenteBruta(n, carimboHora) {
+  const catPrimaria = n.categoria_primaria || n.categoria || 'Geopolitica_Radar';
+  const categoria = MAPA_CATEGORIA_V2[catPrimaria] || normalizar(n.categoria || '') || 'geopolitica';
+  const rotaEditoria = n._rota_editoria || n.rota_editoria || MAPA_ROTAS_EDITORIA[catPrimaria] || '/radar';
+  const labelEditoria = n._label_editoria || MAPA_LABEL_EDITORIA[catPrimaria] || 'Radar';
+  const titulo = n.titulo_curto || n.titulo_tema || n.titulo || '';
+  const resumo = limparPrefixoGatilho(n.resumo_pulso || n.gatilho_vitrine || n.resumo || '');
+  const impacto = n.impacto_pratico || n.sintese_nerd || resumo;
+  const kws = Array.isArray(n.palavras_chave)
+    ? n.palavras_chave
+    : Array.isArray(n.palavras_chave_busca)
+    ? n.palavras_chave_busca
+    : [];
+  const paises =
+    Array.isArray(n.paises_envolvidos) && n.paises_envolvidos.length > 0
+      ? n.paises_envolvidos
+      : detectarPaisesNoTexto(`${titulo} ${resumo} ${impacto}`, kws);
+  const score = Number(n.urgencia_score || n.relevancia_score || 80);
+  const dataPub = parseTimestampIso(n.data_publicacao || n.publicado_em || n.created_at || '');
+  const updatedAt = parseTimestampIso(n.updated_at || '') || dataPub;
+
+  return {
+    ...n,
+    slug: n.slug || '',
+    titulo_curto: titulo,
+    resumo_pulso: resumo,
+    impacto_pratico: impacto,
+    categoria,
+    paises_envolvidos: paises,
+    urgencia_score: score,
+    relevancia_score: Number(n.relevancia_score || score),
+    veiculos_origem:
+      Array.isArray(n.veiculos_origem) && n.veiculos_origem.length > 0
+        ? n.veiculos_origem
+        : ['Curadoria IA · Pulso V2'],
+    fontes_urls: Array.isArray(n.fontes_urls) ? n.fontes_urls : [],
+    palavras_chave: kws,
+    atualizado_em: n.atualizado_em || carimboHora,
+    data_publicacao: dataPub,
+    updated_at: updatedAt,
+    expires_at: n.expires_at || null,
+    _rota_editoria: rotaEditoria,
+    _label_editoria: labelEditoria,
+  };
 }
 
 function converterTemasParaNoticiasQuentes(temasAtivos, updatedAtIso, carimboHora) {
@@ -549,6 +646,8 @@ function converterTemasParaNoticiasQuentes(temasAtivos, updatedAtIso, carimboHor
         : detectarPaisesNoTexto(`${titulo} ${resumo} ${impacto}`, kws);
 
     const score = Number(tema.urgencia_score || tema.relevancia_score || 80);
+    const dataPub = parseTimestampIso(tema.data_publicacao || tema.publicado_em || tema.created_at || '');
+    const updatedAt = parseTimestampIso(tema.updated_at || '') || dataPub;
 
     return {
       slug: tema.slug || '',
@@ -559,17 +658,72 @@ function converterTemasParaNoticiasQuentes(temasAtivos, updatedAtIso, carimboHor
       paises_envolvidos: paisesDetectados,
       urgencia_score: score,
       relevancia_score: score,
-      veiculos_origem: Array.isArray(tema.veiculos_origem) && tema.veiculos_origem.length > 0
-        ? tema.veiculos_origem
-        : ['Curadoria IA · Pulso V2'],
+      veiculos_origem:
+        Array.isArray(tema.veiculos_origem) && tema.veiculos_origem.length > 0
+          ? tema.veiculos_origem
+          : ['Curadoria IA · Pulso V2'],
       fontes_urls: Array.isArray(tema.fontes_urls) ? tema.fontes_urls : [],
       palavras_chave: kws,
       atualizado_em: carimboHora,
-      updated_at: tema.updated_at || updatedAtIso,
+      data_publicacao: dataPub,
+      updated_at: updatedAt,
+      expires_at: tema.expires_at || null,
       _rota_editoria: rotaEditoria,
       _label_editoria: labelEditoria,
     };
   });
+}
+
+function mesclarNoticiasSnapshot(snap, carimboHora) {
+  const deNoticias = Array.isArray(snap && snap.noticias_quentes)
+    ? snap.noticias_quentes
+        .filter((n) => n && typeof n === 'object')
+        .map((n) => normalizarNoticiaQuenteBruta(n, carimboHora))
+    : [];
+  const deTemas = converterTemasParaNoticiasQuentes(
+    Array.isArray(snap && snap.temas_ativos) ? snap.temas_ativos : [],
+    (snap && snap.updatedAt) || '',
+    carimboHora
+  );
+
+  const porChave = new Map();
+  for (const item of [...deNoticias, ...deTemas]) {
+    const chave = item.slug || normalizar(item.titulo_curto);
+    if (!chave) continue;
+    const prev = porChave.get(chave);
+    if (!prev) {
+      porChave.set(chave, item);
+    } else if (compararRecenciaDesc(item, prev, 'urgencia_score') < 0) {
+      porChave.set(chave, item);
+    }
+  }
+  return Array.from(porChave.values());
+}
+
+function mesclarPulsoContinental(paisesEmAlta, extPulso) {
+  if (!extPulso || !Array.isArray(extPulso.paises_ativos)) return paisesEmAlta;
+  const existentes = new Set(paisesEmAlta.map((p) => p.a2));
+  for (const cCode of extPulso.paises_ativos) {
+    const a2 = String(cCode || '').toUpperCase().trim();
+    if (a2 && !existentes.has(a2)) {
+      existentes.add(a2);
+      const meta = MAPA_PAIS_POR_A2[a2];
+      paisesEmAlta.push({
+        a2,
+        countryName: meta ? meta.countryName : a2,
+        title: `Cobertura ativa em ${meta ? meta.countryName : a2}`,
+        source: 'Pulso Continental · RoM',
+        category: 'Mundo',
+        url: '/radar',
+        summary: 'Novas manchetes registradas na região.',
+        termoBusca: meta ? meta.countryName : a2,
+        urgencia_score: 75,
+        data_publicacao: '',
+        updated_at: '',
+      });
+    }
+  }
+  return paisesEmAlta.sort((a, b) => compararRecenciaDesc(a, b, 'urgencia_score'));
 }
 
 export async function handleNoticiasQuentes(request, env = {}) {
@@ -578,109 +732,149 @@ export async function handleNoticiasQuentes(request, env = {}) {
   }
 
   const url = new URL(request.url);
-  const isRefresh = url.searchParams.has('_t') || url.searchParams.get('refresh') === '1';
-  const headers = construirHeadersCache(isRefresh);
+  const isRefresh = isRefreshRequest(request);
 
   const categoriaFiltro = normalizar(url.searchParams.get('categoria') || '');
   const paisFiltro = String(url.searchParams.get('pais') || '').toUpperCase().trim();
   const limiteParam = parseInt(url.searchParams.get('limite') || '15', 10);
   const limite = Number.isNaN(limiteParam) ? 15 : Math.min(50, Math.max(1, limiteParam));
 
-  const backendUrl = String(env.CURADORIA_BACKEND_URL || '').trim();
-  const temBackendAtivo =
-    backendUrl &&
-    /^https?:\/\//i.test(backendUrl) &&
-    !backendUrl.includes('api.rodandoomundo.com.br');
+  const backendUrl = resolverBackendUrl(env, request);
 
   try {
-    if (temBackendAtivo) {
+    if (backendUrl) {
       const params = new URLSearchParams({ limite: String(limite) });
       if (categoriaFiltro && categoriaFiltro !== 'todos') params.set('categoria', categoriaFiltro);
       if (paisFiltro) params.set('pais', paisFiltro);
       if (isRefresh) {
         params.set('refresh', '1');
+        params.set('force', '1');
         params.set('_t', String(Date.now()));
       }
 
-      const ext = await consultarBackendExterno(backendUrl, 'v1/noticias-quentes', params);
+      const [resExt, resPulso] = await Promise.allSettled([
+        consultarBackendExterno(backendUrl, 'v1/noticias-quentes', params, 9000),
+        consultarBackendExterno(backendUrl, 'v1/atlas/pulso-continental', new URLSearchParams(), 5000),
+      ]);
+
+      const ext = resExt.status === 'fulfilled' ? resExt.value : null;
+      const extPulso = resPulso.status === 'fulfilled' ? resPulso.value : null;
+
       if (ext && Array.isArray(ext.noticias_quentes) && ext.noticias_quentes.length > 0) {
-        const nowIso = ext.updatedAt || new Date().toISOString();
-        const carimbo = ext.atualizado_em || formatarHoraCurta(nowIso);
-        const noticiasEnriquecidas = ext.noticias_quentes.map((n) => {
-          const textoAlvo = `${n.titulo_curto || ''} ${n.resumo_pulso || ''} ${n.impacto_pratico || ''}`;
-          const paises =
-            Array.isArray(n.paises_envolvidos) && n.paises_envolvidos.length > 0
-              ? n.paises_envolvidos
-              : detectarPaisesNoTexto(textoAlvo, n.palavras_chave || []);
-          return {
-            ...n,
-            paises_envolvidos: paises,
-            atualizado_em: n.atualizado_em || carimbo,
-            updated_at: n.updated_at || nowIso,
-          };
-        });
+        const refIso = ext.updatedAt || '';
+        const carimbo = ext.atualizado_em || (refIso ? formatarHoraCurta(refIso) : '');
+        let noticiasEnriquecidas = filtrarExpiradosComResguardo(
+          ext.noticias_quentes.map((n) => normalizarNoticiaQuenteBruta(n, carimbo))
+        );
+
+        noticiasEnriquecidas.sort((a, b) => compararRecenciaDesc(a, b, 'urgencia_score'));
 
         let paisesEmAlta =
           Array.isArray(ext.paises_em_alta) && ext.paises_em_alta.length > 0
             ? ext.paises_em_alta
+                .map((p) => ({
+                  ...p,
+                  data_publicacao: parseTimestampIso(p.data_publicacao || ''),
+                  updated_at: parseTimestampIso(p.updated_at || '') || parseTimestampIso(p.data_publicacao || ''),
+                }))
+                .sort((a, b) => compararRecenciaDesc(a, b, 'urgencia_score'))
             : construirPaisesEmAlta(noticiasEnriquecidas);
 
-        try {
-          const extPulso = await consultarBackendExterno(backendUrl, 'v1/atlas/pulso-continental', new URLSearchParams());
-          if (extPulso && Array.isArray(extPulso.paises_ativos)) {
-            const existentes = new Set(paisesEmAlta.map((p) => p.a2));
-            for (const cCode of extPulso.paises_ativos) {
-              const a2 = String(cCode || '').toUpperCase().trim();
-              if (a2 && !existentes.has(a2)) {
-                existentes.add(a2);
-                const meta = MAPA_PAIS_POR_A2[a2];
-                paisesEmAlta.push({
-                  a2,
-                  countryName: meta ? meta.countryName : a2,
-                  title: `Cobertura ativa em ${meta ? meta.countryName : a2}`,
-                  source: 'Pulso Continental · RoM',
-                  category: 'Mundo',
-                  url: '/radar',
-                  summary: 'Novas manchetes registradas na região.',
-                  termoBusca: meta ? meta.countryName : a2,
-                  urgencia_score: 75,
-                });
-              }
-            }
-          }
-        } catch {
-          // Pulso continental opcional
-        }
+        paisesEmAlta = mesclarPulsoContinental(paisesEmAlta, extPulso);
 
-        const limpas = noticiasEnriquecidas.slice(0, limite).map(({ _rota_editoria, _label_editoria, ...rest }) => rest);
+        const limpas = noticiasEnriquecidas
+          .slice(0, limite)
+          .map(({ _rota_editoria, _label_editoria, ...rest }) => rest);
 
         return json(
           {
             ok: true,
             cached: false,
+            fallback: false,
             source: 'v2_api',
             identificacao_editorial: ext.identificacao_editorial || 'Síntese Rodando o Mundo',
             atualizado_em: carimbo,
-            updatedAt: nowIso,
+            updatedAt: refIso,
             total: limpas.length,
             noticias_quentes: limpas,
             paises_em_alta: paisesEmAlta,
             eventos_principais: Array.isArray(ext.eventos_principais) ? ext.eventos_principais : [],
           },
           200,
-          headers
+          construirHeadersCache(isRefresh, false)
+        );
+      }
+
+      // Tenta snapshot ao vivo no backend (/v1/estado/vitrine_ia) antes de cair para arquivo estático
+      const estadoParams = isRefresh
+        ? new URLSearchParams({ refresh: '1', _t: String(Date.now()) })
+        : new URLSearchParams();
+      const estadoRaw = await consultarBackendExterno(
+        backendUrl,
+        'v1/estado/vitrine_ia',
+        estadoParams,
+        9000
+      );
+      const estadoPayload =
+        estadoRaw && Object.prototype.hasOwnProperty.call(estadoRaw, 'payload')
+          ? estadoRaw.payload
+          : estadoRaw;
+
+      if (
+        estadoPayload &&
+        ((Array.isArray(estadoPayload.noticias_quentes) && estadoPayload.noticias_quentes.length > 0) ||
+          (Array.isArray(estadoPayload.temas_ativos) && estadoPayload.temas_ativos.length > 0))
+      ) {
+        const refIso = estadoPayload.updatedAt || '';
+        const carimbo = refIso ? formatarHoraCurta(refIso) : '';
+        let noticiasEstado = filtrarExpiradosComResguardo(
+          mesclarNoticiasSnapshot(estadoPayload, carimbo)
+        );
+        if (categoriaFiltro && categoriaFiltro !== 'todos') {
+          noticiasEstado = noticiasEstado.filter(
+            (n) => normalizar(n.categoria) === categoriaFiltro
+          );
+        }
+        if (paisFiltro) {
+          noticiasEstado = noticiasEstado.filter(
+            (n) => Array.isArray(n.paises_envolvidos) && n.paises_envolvidos.includes(paisFiltro)
+          );
+        }
+        noticiasEstado.sort((a, b) => compararRecenciaDesc(a, b, 'urgencia_score'));
+        const paisesEmAlta = mesclarPulsoContinental(
+          construirPaisesEmAlta(noticiasEstado),
+          extPulso
+        );
+        const limpas = noticiasEstado
+          .slice(0, limite)
+          .map(({ _rota_editoria, _label_editoria, ...rest }) => rest);
+
+        return json(
+          {
+            ok: true,
+            cached: false,
+            fallback: false,
+            source: 'v2_api',
+            identificacao_editorial: 'Síntese Rodando o Mundo',
+            atualizado_em: carimbo,
+            updatedAt: refIso,
+            total: limpas.length,
+            noticias_quentes: limpas,
+            paises_em_alta: paisesEmAlta,
+            eventos_principais: [],
+          },
+          200,
+          construirHeadersCache(isRefresh, false)
         );
       }
     }
 
-    const snap = await carregarSnapshotEstatico(request);
-    const updatedAtIso = isRefresh ? new Date().toISOString() : (snap.updatedAt || new Date().toISOString());
-    const carimboHora = formatarHoraCurta(updatedAtIso);
+    const snap = await carregarSnapshotEstatico(request, env, isRefresh);
+    const updatedAtIso = snap.updatedAt || '';
+    const carimboHora = updatedAtIso ? formatarHoraCurta(updatedAtIso) : '';
 
-    let noticiasInternas = converterTemasParaNoticiasQuentes(
-      Array.isArray(snap.temas_ativos) ? snap.temas_ativos : [],
-      snap.updatedAt || updatedAtIso,
-      carimboHora
+    let noticiasInternas = filtrarExpiradosComResguardo(
+      mesclarNoticiasSnapshot(snap, carimboHora)
     );
 
     if (categoriaFiltro && categoriaFiltro !== 'todos') {
@@ -692,7 +886,7 @@ export async function handleNoticiasQuentes(request, env = {}) {
       );
     }
 
-    noticiasInternas.sort((a, b) => b.urgencia_score - a.urgencia_score);
+    noticiasInternas.sort((a, b) => compararRecenciaDesc(a, b, 'urgencia_score'));
     const paisesEmAlta = construirPaisesEmAlta(noticiasInternas);
     const noticiasFinais = noticiasInternas
       .slice(0, limite)
@@ -701,7 +895,8 @@ export async function handleNoticiasQuentes(request, env = {}) {
     return json(
       {
         ok: true,
-        cached: !isRefresh,
+        cached: false,
+        fallback: true,
         source: 'vitrine_snapshot',
         identificacao_editorial: 'Síntese Rodando o Mundo',
         atualizado_em: carimboHora,
@@ -712,24 +907,36 @@ export async function handleNoticiasQuentes(request, env = {}) {
         eventos_principais: [],
       },
       200,
-      headers
+      construirHeadersCache(isRefresh, true)
     );
   } catch {
-    const fallbackIso = new Date().toISOString();
+    const fallbackIso = FALLBACK_SNAPSHOT.updatedAt;
     const carimboFallback = formatarHoraCurta(fallbackIso);
-    const noticiasFallback = converterTemasParaNoticiasQuentes(
+    let noticiasFallback = converterTemasParaNoticiasQuentes(
       FALLBACK_SNAPSHOT.temas_ativos,
-      FALLBACK_SNAPSHOT.updatedAt,
+      fallbackIso,
       carimboFallback
     );
+    if (categoriaFiltro && categoriaFiltro !== 'todos') {
+      noticiasFallback = noticiasFallback.filter((n) => normalizar(n.categoria) === categoriaFiltro);
+    }
+    if (paisFiltro) {
+      noticiasFallback = noticiasFallback.filter(
+        (n) => Array.isArray(n.paises_envolvidos) && n.paises_envolvidos.includes(paisFiltro)
+      );
+    }
+    noticiasFallback.sort((a, b) => compararRecenciaDesc(a, b, 'urgencia_score'));
     const paisesFallback = construirPaisesEmAlta(noticiasFallback);
-    const limpas = noticiasFallback.map(({ _rota_editoria, _label_editoria, ...rest }) => rest);
+    const limpas = noticiasFallback
+      .slice(0, limite)
+      .map(({ _rota_editoria, _label_editoria, ...rest }) => rest);
 
     return json(
       {
         ok: true,
         cached: false,
-        source: 'vitrine_snapshot',
+        fallback: true,
+        source: 'fallback_snapshot',
         identificacao_editorial: 'Síntese Rodando o Mundo',
         atualizado_em: carimboFallback,
         updatedAt: fallbackIso,
@@ -739,7 +946,7 @@ export async function handleNoticiasQuentes(request, env = {}) {
         eventos_principais: [],
       },
       200,
-      headers
+      construirHeadersCache(isRefresh, true)
     );
   }
 }

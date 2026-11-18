@@ -49,13 +49,10 @@ PROMPT_2_PATH = PROMPTS_DIR / "prompt_2_advogado_do_diabo.md"
 PROMPT_3_PATH = PROMPTS_DIR / "prompt_3_colunista_nerd.md"
 PROMPT_4_PATH = PROMPTS_DIR / "prompt_4_auditor_fact_checker.md"
 
-MODELO_EDITORIAL = os.getenv("GEMINI_MODEL_EDITORIAL", "gemini-3.5-flash-lite").strip() or "gemini-3.5-flash-lite"
+MODELO_EDITORIAL = os.getenv("GEMINI_MODEL_EDITORIAL", "gemini-2.5-pro").strip() or "gemini-2.5-pro"
 MODELOS_EDITORIAL_FALLBACK = [
-    "gemini-3.5-flash-lite",
-    "gemini-3.8-flash",
-    "gemini-3.5-flash",
-    "gemini-3.7-flash",
-    "gemini-3.1-flash-lite",
+    "gemini-2.5-pro",
+    "gemini-2.5-flash",
 ]
 NOTA_ISENCAO_MINIMA = 85
 MAX_TENTATIVAS_REESCRITA = 2

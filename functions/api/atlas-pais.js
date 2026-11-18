@@ -2,6 +2,12 @@
 // API On-Demand por País com Busca Multi-Motor e Tradução em Lote (ATLAS-VIVO Parte 3)
 // Contrato: .agents/contracts/ATLAS-VIVO.md
 import { json } from '../lib/ia.js';
+import {
+  isRefreshRequest,
+  newsResponseHeaders,
+  compareIsoDesc,
+  parseFeedItems,
+} from '../lib/rss.js';
 
 const CORS_HEADERS = {
   'Access-Control-Allow-Origin': '*',
@@ -92,56 +98,60 @@ async function traduzirTexto(texto, targetLang = 'pt') {
 }
 
 function parseRssXml(xmlText, countryCode) {
+  const parsed = parseFeedItems(xmlText);
   const items = [];
-  const itemRegex = /<item\b[^>]*>(.*?)<\/item>/gis;
-  let match;
 
-  while ((match = itemRegex.exec(xmlText)) !== null) {
-    const block = match[1];
-    const titleM = block.match(/<title\b[^>]*>(.*?)<\/title>/is);
-    const linkM = block.match(/<link\b[^>]*>(.*?)<\/link>/is) || block.match(/<guid\b[^>]*>(https?:\/\/[^<]+)<\/guid>/is);
-    const sourceM = block.match(/<source\b[^>]*>(.*?)<\/source>/is);
-    const pubM = block.match(/<pubDate\b[^>]*>(.*?)<\/pubDate>/is);
+  for (const entry of parsed) {
+    const rawTitle = entry.title || '';
+    const rawLink = entry.link || '';
+    const rawSource = entry.source || '';
 
-    if (titleM && linkM) {
-      const rawTitle = cleanHtml(titleM[1]);
-      const rawLink = cleanHtml(linkM[1]);
-      const rawSource = sourceM ? cleanHtml(sourceM[1]) : '';
-      const rawPub = pubM ? cleanHtml(pubM[1]) : '';
-
-      if (rawTitle && rawLink && rawLink.startsWith('http')) {
-        let isoPub;
-        try {
-          const d = new Date(rawPub);
-          isoPub = isNaN(d.getTime()) ? new Date().toISOString() : d.toISOString();
-        } catch {
-          isoPub = new Date().toISOString();
-        }
-
-        // Remove sufixo do veículo no título se presente (" - G1", " - BBC")
-        let titleClean = rawTitle;
-        const lastDash = titleClean.lastIndexOf(' - ');
-        let detectedSource = rawSource;
-        if (lastDash > 15) {
-          if (!detectedSource) detectedSource = titleClean.slice(lastDash + 3).trim();
-          titleClean = titleClean.slice(0, lastDash).trim();
-        }
-
-        items.push({
-          id: hashString(rawLink),
-          titleOriginal: titleClean,
-          titlePt: titleClean,
-          url: rawLink,
-          source: detectedSource || 'Imprensa Internacional',
-          publishedAt: isoPub,
-          score: 85,
-          country: countryCode,
-        });
+    if (rawTitle && rawLink && /^https?:\/\//i.test(rawLink)) {
+      let titleClean = rawTitle;
+      const lastDash = titleClean.lastIndexOf(' - ');
+      let detectedSource = rawSource;
+      if (lastDash > 15) {
+        if (!detectedSource) detectedSource = titleClean.slice(lastDash + 3).trim();
+        titleClean = titleClean.slice(0, lastDash).trim();
       }
+
+      items.push({
+        id: hashString(rawLink),
+        titleOriginal: titleClean,
+        titlePt: titleClean,
+        url: rawLink,
+        source: detectedSource || 'Imprensa Internacional',
+        publishedAt: entry.pubDateIso || '',
+        score: 85,
+        country: countryCode,
+      });
     }
-    if (items.length >= 15) break;
   }
-  return items;
+
+  items.sort((a, b) => compareIsoDesc(a.publishedAt, b.publishedAt));
+  return items.slice(0, 15);
+}
+
+async function fetchRssAtlas(rssUrl, countryCode, isRefresh) {
+  const ctrl = new AbortController();
+  const tid = setTimeout(() => ctrl.abort(), 6000);
+  try {
+    const resp = await fetch(rssUrl, {
+      cache: 'no-store',
+      signal: ctrl.signal,
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (compatible; RodandoOMundoAtlas/2.1)',
+        ...(isRefresh ? { 'Cache-Control': 'no-cache', Pragma: 'no-cache' } : {}),
+      },
+    });
+    if (!resp.ok) return { ok: false, items: [] };
+    const xml = await resp.text();
+    return { ok: true, items: parseRssXml(xml, countryCode) };
+  } catch {
+    return { ok: false, items: [] };
+  } finally {
+    clearTimeout(tid);
+  }
 }
 
 export async function handleAtlasPais(request, env = {}) {
@@ -152,54 +162,54 @@ export async function handleAtlasPais(request, env = {}) {
   const url = new URL(request.url);
   const pais = String(url.searchParams.get('pais') || 'BR').toUpperCase().trim();
   const nomePais = String(url.searchParams.get('nome') || pais).trim();
-  const isRefresh = url.searchParams.has('_t') || url.searchParams.get('refresh') === '1';
+  const isRefresh = isRefreshRequest(request);
 
   const cacheKey = `atlas_${pais}`;
   const agora = Date.now();
 
+  if (isRefresh) {
+    CACHE_LOCAL.delete(cacheKey);
+  }
+
   // Verifica cache em memória
   if (!isRefresh && CACHE_LOCAL.has(cacheKey)) {
     const entry = CACHE_LOCAL.get(cacheKey);
-    if (agora - entry.timestamp < CACHE_TTL_MS) {
+    if (entry && Array.isArray(entry.items) && entry.items.length > 0 && agora - entry.timestamp < CACHE_TTL_MS) {
       return json({
         ok: true,
         cached: true,
+        fallback: false,
         source: 'memory_cache',
         country: pais,
         countryName: nomePais,
         updatedAt: new Date(entry.timestamp).toISOString(),
         items: entry.items,
-      }, 200, {
-        ...CORS_HEADERS,
-        'Cache-Control': 'public, max-age=180, stale-while-revalidate=60',
-      });
+      }, 200, newsResponseHeaders({ isRefresh: false, isFallback: false, corsHeaders: CORS_HEADERS }));
     }
   }
 
-  // 1. Busca Multi-Motor RSS para o país
+  // 1. Busca Multi-Motor RSS para o país (com when:7d para não-BR)
   const rssUrl = pais === 'BR'
     ? 'https://news.google.com/rss/headlines/section/geo/Brasil?hl=pt-BR&gl=BR&ceid=BR:pt-419'
-    : `https://news.google.com/rss/search?q=${encodeURIComponent(nomePais)}&hl=en&gl=${encodeURIComponent(pais)}&ceid=${encodeURIComponent(pais)}:en`;
+    : `https://news.google.com/rss/search?q=${encodeURIComponent(`${nomePais} when:7d`)}&hl=en&gl=${encodeURIComponent(pais)}&ceid=${encodeURIComponent(pais)}:en`;
 
-  let items = [];
-  try {
-    const ctrl = new AbortController();
-    const tid = setTimeout(() => ctrl.abort(), 6000);
-    const resp = await fetch(rssUrl, {
-      signal: ctrl.signal,
-      headers: { 'User-Agent': 'Mozilla/5.0 (compatible; RodandoOMundoAtlas/2.1)' },
-    });
-    clearTimeout(tid);
+  let usedFallback = false;
+  let resRss = await fetchRssAtlas(rssUrl, pais, isRefresh);
+  let items = resRss.items;
 
-    if (resp.ok) {
-      const xml = await resp.text();
-      items = parseRssXml(xml, pais);
+  if (pais !== 'BR' && items.length === 0) {
+    const fallbackUrl30d = `https://news.google.com/rss/search?q=${encodeURIComponent(`${nomePais} when:30d`)}&hl=en&gl=${encodeURIComponent(pais)}&ceid=${encodeURIComponent(pais)}:en`;
+    const res30d = await fetchRssAtlas(fallbackUrl30d, pais, isRefresh);
+    if (res30d.items.length > 0) {
+      items = res30d.items;
+      usedFallback = true;
     }
-  } catch {
-    items = [];
   }
 
-  // 2. Tradução em paralelo para PT-BR em países não lusófonos (até 12 itens)
+  // Ordena cronologicamente ANTES de selecionar os 4 itens mais recentes para tradução
+  items.sort((a, b) => compareIsoDesc(a.publishedAt, b.publishedAt));
+
+  // 2. Tradução em paralelo para PT-BR em países não lusófonos (4 itens mais recentes)
   if (!PT_COUNTRIES.has(pais) && items.length > 0) {
     const alvos = items.slice(0, 4);
     await Promise.all(
@@ -217,23 +227,19 @@ export async function handleAtlasPais(request, env = {}) {
     );
   }
 
-  // SUG-181: ordena da última notícia (mais recente) para a mais antiga
-  items.sort((a, b) => {
-    const da = a && a.publishedAt ? new Date(a.publishedAt).getTime() : 0;
-    const db = b && b.publishedAt ? new Date(b.publishedAt).getTime() : 0;
-    return (isNaN(db) ? 0 : db) - (isNaN(da) ? 0 : da);
-  });
+  const isFallback = usedFallback || items.length === 0;
 
-  // Salva no cache local
-  CACHE_LOCAL.set(cacheKey, { timestamp: agora, items });
+  // Salva no cache local apenas quando há itens válidos da janela principal
+  if (!isFallback) {
+    CACHE_LOCAL.set(cacheKey, { timestamp: agora, items });
+  }
 
-  const headers = isRefresh
-    ? { ...CORS_HEADERS, 'Cache-Control': 'no-store, no-cache, must-revalidate' }
-    : { ...CORS_HEADERS, 'Cache-Control': 'public, max-age=180, stale-while-revalidate=60' };
+  const headers = newsResponseHeaders({ isRefresh, isFallback, corsHeaders: CORS_HEADERS });
 
   return json({
     ok: true,
     cached: false,
+    fallback: isFallback,
     source: 'live_hybrid',
     country: pais,
     countryName: nomePais,

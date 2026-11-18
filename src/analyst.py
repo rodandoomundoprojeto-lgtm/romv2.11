@@ -4,23 +4,54 @@ para gerar resumos estruturados e realizar deduplicação semântica.
 """
 import json
 import os
+from datetime import datetime, timezone
 from typing import Dict, Any, List, Optional
 from google import genai
 from google.genai import types
 
-FEED_OUTPUT_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data", "feed_output.json")
+FEED_OUTPUT_PATH_PADRAO = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data", "feed_output.json")
+FEED_OUTPUT_PATH = FEED_OUTPUT_PATH_PADRAO
+
+
+def _timestamp_item(item: Dict[str, Any]) -> float:
+    raw = str(item.get("data_publicacao") or item.get("published_at") or item.get("created_at") or "").strip()
+    if not raw:
+        return 0.0
+    try:
+        dt = datetime.fromisoformat(raw.replace("Z", "+00:00"))
+        if dt.tzinfo is None:
+            dt = dt.replace(tzinfo=timezone.utc)
+        return dt.timestamp()
+    except Exception:
+        return 0.0
 
 
 def get_recent_titles(limit: int = 10) -> List[str]:
     """Retorna os títulos mais recentes já publicados para deduplicação semântica."""
-    if not os.path.exists(FEED_OUTPUT_PATH):
+    dados: Any = None
+    if os.path.abspath(FEED_OUTPUT_PATH) == os.path.abspath(FEED_OUTPUT_PATH_PADRAO):
+        try:
+            from src.estado_db import ler_estado
+
+            estado = ler_estado("feed_output")
+            if isinstance(estado, list) and estado:
+                dados = estado
+        except Exception:
+            dados = None
+
+    if dados is None and os.path.exists(FEED_OUTPUT_PATH):
+        try:
+            with open(FEED_OUTPUT_PATH, "r", encoding="utf-8") as f:
+                dados = json.load(f)
+        except Exception:
+            dados = None
+
+    if not isinstance(dados, list):
         return []
-    try:
-        with open(FEED_OUTPUT_PATH, "r", encoding="utf-8") as f:
-            data = json.load(f)
-            return [item.get("titulo", "") for item in data[:limit] if item.get("titulo")]
-    except Exception:
-        return []
+
+    itens_validos = [it for it in dados if isinstance(it, dict) and it.get("titulo")]
+    itens_validos.sort(key=_timestamp_item, reverse=True)
+    return [str(item.get("titulo", "")) for item in itens_validos[:limit] if item.get("titulo")]
 
 
 def analyze_item(item: Dict[str, Any], api_key: Optional[str] = None) -> Optional[Dict[str, Any]]:
@@ -58,7 +89,10 @@ INSTRUÇÕES E REGRAS MANDATÓRIAS:
 """
 
     client = genai.Client(api_key=key, http_options=types.HttpOptions(timeout=35_000))
-    modelos = ["gemini-3.5-flash-lite", "gemini-3.5-flash", "gemini-3.8-flash", "gemini-3.1-flash-lite"]
+    modelo_env = (os.getenv("GEMINI_MODEL_RADAR") or os.getenv("GEMINI_MODEL") or "").strip()
+    modelos = ([modelo_env] if modelo_env else []) + ["gemini-2.5-flash"]
+    vistos_m = set()
+    modelos = [m for m in modelos if not (m in vistos_m or vistos_m.add(m))]
 
     last_err = None
     for modelo in modelos:

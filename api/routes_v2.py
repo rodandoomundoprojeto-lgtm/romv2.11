@@ -316,45 +316,50 @@ def _carregar_eventos_ativos_comparados(
 ) -> List[Dict[str, Any]]:
     """Carrega eventos ativos de `ai_eventos` aplicando isolamento de fontes primárias e `exibicao_permitida`."""
     try:
-        filtros = ["e.destaque_ate > NOW()", "e.status IN ('ativo', 'publicado', 'aguardando_revisao')"]
-        params: List[Any] = []
+        filtros_comuns = ["e.status IN ('ativo', 'publicado', 'aguardando_revisao')"]
+        params_comuns: List[Any] = []
 
         if categoria:
-            filtros.append("e.categoria = %s")
-            params.append(categoria)
+            filtros_comuns.append("e.categoria = %s")
+            params_comuns.append(categoria)
         if pais:
-            filtros.append("%s = ANY(e.paises_envolvidos)")
-            params.append(pais.upper())
+            filtros_comuns.append("%s = ANY(e.paises_envolvidos)")
+            params_comuns.append(pais.upper())
 
-        params.append(limite)
-        where_sql = " AND ".join(filtros)
+        def _exec_query(filtros_lista: List[str], params_lista: List[Any]) -> List[Dict[str, Any]]:
+            where_sql = " AND ".join(filtros_lista)
+            with conn.cursor() as cur:
+                cur.execute(
+                    f"""
+                    SELECT
+                        e.id, e.slug, e.titulo_evento, e.categoria, e.paises_envolvidos,
+                        e.urgencia_score, e.relevancia_score, e.nivel_confianca,
+                        e.aviso_correcao_material, e.destaque_ate, e.status, e.updated_at,
+                        (
+                            SELECT cg.payload_json->>'sintese_com_ressalvas'
+                            FROM ai_conteudos_gerados cg
+                            WHERE cg.event_id = e.id
+                            ORDER BY cg.versao DESC
+                            LIMIT 1
+                        ) AS sintese_com_ressalvas,
+                        EXISTS(
+                            SELECT 1 FROM ai_entenda_o_assunto ea
+                            WHERE ea.slug = e.slug OR ea.slug = ('entenda-' || e.slug)
+                        ) AS tem_contexto_disponivel
+                    FROM ai_eventos e
+                    WHERE {where_sql}
+                    ORDER BY e.updated_at DESC, e.urgencia_score DESC, e.relevancia_score DESC
+                    LIMIT %s;
+                    """,
+                    tuple(params_lista + [limite]),
+                )
+                return cur.fetchall()
+
+        eventos_rows = _exec_query(["e.destaque_ate > NOW()"] + filtros_comuns, params_comuns)
+        if not eventos_rows:
+            eventos_rows = _exec_query(filtros_comuns, params_comuns)
 
         with conn.cursor() as cur:
-            cur.execute(
-                f"""
-                SELECT
-                    e.id, e.slug, e.titulo_evento, e.categoria, e.paises_envolvidos,
-                    e.urgencia_score, e.relevancia_score, e.nivel_confianca,
-                    e.aviso_correcao_material, e.destaque_ate, e.status, e.updated_at,
-                    (
-                        SELECT cg.payload_json->>'sintese_com_ressalvas'
-                        FROM ai_conteudos_gerados cg
-                        WHERE cg.event_id = e.id
-                        ORDER BY cg.versao DESC
-                        LIMIT 1
-                    ) AS sintese_com_ressalvas,
-                    EXISTS(
-                        SELECT 1 FROM ai_entenda_o_assunto ea
-                        WHERE ea.slug = e.slug OR ea.slug = ('entenda-' || e.slug)
-                    ) AS tem_contexto_disponivel
-                FROM ai_eventos e
-                WHERE {where_sql}
-                ORDER BY e.urgencia_score DESC, e.relevancia_score DESC, e.updated_at DESC
-                LIMIT %s;
-                """,
-                tuple(params),
-            )
-            eventos_rows = cur.fetchall()
 
             eventos_publicos: List[Dict[str, Any]] = []
             for ev in eventos_rows:
@@ -441,6 +446,105 @@ def _carregar_eventos_ativos_comparados(
 # 4. ROTA 1: GET /v1/noticias-quentes
 # ============================================================================
 
+def _carregar_noticias_quentes_fallback_snapshot(
+    categoria: Optional[str] = None,
+    pais: Optional[str] = None,
+    limite: int = 15,
+) -> List[Dict[str, Any]]:
+    """Lê notícias quentes ou temas ativos do snapshot `vitrine_ia.json` em caso de indisponibilidade/vazio do banco."""
+    snap_data: Optional[Dict[str, Any]] = None
+    caminhos_candidatos: List[Path] = []
+    try:
+        import redacao_v2.pulso_noticias_quentes as _pulso_mod
+        snap_pulso = getattr(_pulso_mod, "SNAPSHOT_VITRINE_PATH", None)
+        if snap_pulso:
+            caminhos_candidatos.append(Path(snap_pulso))
+    except Exception:
+        pass
+    try:
+        import curadoria.pipeline as _cur_mod
+        snap_cur = getattr(_cur_mod, "SNAPSHOT_VITRINE", None)
+        if snap_cur:
+            caminhos_candidatos.append(Path(snap_cur))
+    except Exception:
+        pass
+    caminhos_candidatos.append(_caminho_arquivo_estado("vitrine_ia"))
+
+    for cam in caminhos_candidatos:
+        try:
+            if cam and cam.is_file():
+                raw = json.loads(cam.read_text(encoding="utf-8"))
+                if isinstance(raw, dict):
+                    snap_data = raw
+                    break
+        except Exception:
+            continue
+
+    if not isinstance(snap_data, dict):
+        return []
+
+    brutos = snap_data.get("noticias_quentes")
+    if not isinstance(brutos, list) or not brutos:
+        brutos = snap_data.get("temas_ativos")
+    if not isinstance(brutos, list):
+        return []
+
+    itens: List[Dict[str, Any]] = []
+    for item in brutos:
+        if not isinstance(item, dict):
+            continue
+        cat_item = str(item.get("categoria") or item.get("categoria_primaria") or "Geopolitica_Relacoes")
+        paises_item = [str(p).upper() for p in (item.get("paises_envolvidos") or ["BR"])]
+        if categoria and cat_item != categoria:
+            continue
+        if pais and pais.upper() not in paises_item:
+            continue
+        data_pub_val = (
+            item.get("data_publicacao")
+            or item.get("created_at")
+            or item.get("updated_at")
+            or snap_data.get("updatedAt")
+        )
+        upd_val = item.get("updated_at") or data_pub_val
+        urg = int(item.get("urgencia_score") or item.get("relevancia_score") or 80)
+        rel = int(item.get("relevancia_score") or urg)
+        itens.append({
+            "slug": item.get("slug") or "",
+            "batch_id": item.get("batch_id") or snap_data.get("batch_id") or "snapshot",
+            "titulo_curto": item.get("titulo_curto") or item.get("titulo_tema") or item.get("titulo") or "",
+            "resumo_pulso": item.get("resumo_pulso") or item.get("gatilho_vitrine") or item.get("resumo") or "",
+            "impacto_pratico": item.get("impacto_pratico") or item.get("sintese_nerd") or "",
+            "categoria": cat_item,
+            "paises_envolvidos": paises_item,
+            "urgencia_score": urg,
+            "relevancia_score": rel,
+            "nivel_confianca": item.get("nivel_confianca") or "alta",
+            "ttl_horas": int(item.get("ttl_horas") or 6),
+            "horas_em_destaque": int(item.get("horas_em_destaque") or 6),
+            "veiculos_origem": list(item.get("veiculos_origem") or []),
+            "fontes_urls": list(item.get("fontes_urls") or []),
+            "palavras_chave": list(item.get("palavras_chave") or item.get("palavras_chave_busca") or []),
+            "links_internos_relacionados": list(item.get("links_internos_relacionados") or []),
+            "identificacao_editorial": "Síntese Rodando o Mundo",
+            "atualizado_em": _formatar_horario_editorial(upd_val),
+            "data_publicacao": _serializar_valor_temporal(data_pub_val),
+            "created_at": _serializar_valor_temporal(item.get("created_at") or data_pub_val),
+            "destaque_ate": _serializar_valor_temporal(item.get("destaque_ate")),
+            "expires_at": _serializar_valor_temporal(item.get("expires_at")),
+            "updated_at": _serializar_valor_temporal(upd_val),
+        })
+
+    itens.sort(
+        key=lambda x: (
+            str(x.get("data_publicacao") or x.get("updated_at") or ""),
+            int(x.get("urgencia_score") or 0),
+            int(x.get("relevancia_score") or 0),
+        ),
+        reverse=True,
+    )
+    return itens[:limite]
+
+
 @router.get("/v1/noticias-quentes")
 def listar_noticias_quentes(
     response: Response,
@@ -450,16 +554,20 @@ def listar_noticias_quentes(
     limite: Optional[int] = Query(None, ge=1, le=50, description="Alias opcional para limit"),
     _t: Optional[str] = Query(None, description="Parâmetro de cache-busting"),
     refresh: Optional[str] = Query(None, description="Flag de atualização em tempo real"),
+    force: Optional[str] = Query(None, description="Flag opcional de revalidação forçada"),
     conn: Any = Depends(get_db),
 ) -> Dict[str, Any]:
-    """Retorna as notícias quentes e eventos ativos (`destaque_ate > NOW()` e `expires_at > NOW()`)
-    ordenados por `urgencia_score DESC, relevancia_score DESC, updated_at DESC`.
-    """
+    """Retorna as notícias quentes e eventos ativos ordenados por recência (`updated_at DESC`) e urgência."""
     aplicar_no_cache_headers(response)
     qtd_limite = limite if limite is not None else limit
     agora_iso = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
     if conn is None:
+        noticias_fb = _carregar_noticias_quentes_fallback_snapshot(
+            categoria=categoria,
+            pais=pais,
+            limite=qtd_limite,
+        )
         return {
             "ok": True,
             "cached": False,
@@ -467,49 +575,51 @@ def listar_noticias_quentes(
             "identificacao_editorial": "Síntese Rodando o Mundo",
             "atualizado_em": _formatar_horario_editorial(),
             "updatedAt": agora_iso,
-            "total": 0,
-            "noticias_quentes": [],
+            "total": len(noticias_fb),
+            "noticias_quentes": noticias_fb,
             "eventos_principais": [],
         }
 
-    filtros = [
-        "expires_at > NOW()",
-        "destaque_ate > NOW()",
-        "status IN ('ativo', 'publicado', 'aguardando_revisao')",
-    ]
-    params: List[Any] = []
+    filtros_comuns = ["status IN ('ativo', 'publicado', 'aguardando_revisao')"]
+    params_comuns: List[Any] = []
 
     if categoria:
-        filtros.append("categoria = %s")
-        params.append(categoria)
+        filtros_comuns.append("categoria = %s")
+        params_comuns.append(categoria)
     if pais:
-        filtros.append("%s = ANY(paises_envolvidos)")
-        params.append(pais.upper())
+        filtros_comuns.append("%s = ANY(paises_envolvidos)")
+        params_comuns.append(pais.upper())
 
-    params.append(qtd_limite)
-    where_clause = " AND ".join(filtros)
-
-    query = f"""
-        SELECT
-            slug, batch_id, titulo_curto, resumo_pulso, impacto_pratico,
-            categoria, paises_envolvidos, urgencia_score, relevancia_score,
-            nivel_confianca, ttl_horas, horas_em_destaque, veiculos_origem,
-            fontes_urls, palavras_chave, links_internos_relacionados,
-            status, destaque_ate, expires_at, updated_at
-        FROM ai_noticias_quentes
-        WHERE {where_clause}
-        ORDER BY urgencia_score DESC, relevancia_score DESC, updated_at DESC
-        LIMIT %s;
-    """
+    def _montar_query(filtros_lista: List[str]) -> str:
+        where_clause = " AND ".join(filtros_lista)
+        return f"""
+            SELECT
+                slug, batch_id, titulo_curto, resumo_pulso, impacto_pratico,
+                categoria, paises_envolvidos, urgencia_score, relevancia_score,
+                nivel_confianca, ttl_horas, horas_em_destaque, veiculos_origem,
+                fontes_urls, palavras_chave, links_internos_relacionados,
+                status, destaque_ate, expires_at, created_at, updated_at
+            FROM ai_noticias_quentes
+            WHERE {where_clause}
+            ORDER BY updated_at DESC, urgencia_score DESC, relevancia_score DESC
+            LIMIT %s;
+        """
 
     noticias: List[Dict[str, Any]] = []
+    source_label = "database"
     try:
         with conn.cursor() as cur:
-            cur.execute(query, tuple(params))
+            filtros_ativos = ["expires_at > NOW()", "destaque_ate > NOW()"] + filtros_comuns
+            cur.execute(_montar_query(filtros_ativos), tuple(params_comuns + [qtd_limite]))
             rows = cur.fetchall()
+            if not rows:
+                source_label = "database_recent_fallback"
+                cur.execute(_montar_query(filtros_comuns), tuple(params_comuns + [qtd_limite]))
+                rows = cur.fetchall()
 
         for r in rows:
             row_dict = dict(r)
+            data_pub_val = row_dict.get("data_publicacao") or row_dict.get("created_at") or row_dict.get("updated_at")
             noticias.append({
                 "slug": row_dict.get("slug"),
                 "batch_id": row_dict.get("batch_id"),
@@ -531,6 +641,8 @@ def listar_noticias_quentes(
                 ),
                 "identificacao_editorial": "Síntese Rodando o Mundo",
                 "atualizado_em": _formatar_horario_editorial(row_dict.get("updated_at")),
+                "data_publicacao": _serializar_valor_temporal(data_pub_val),
+                "created_at": _serializar_valor_temporal(row_dict.get("created_at")),
                 "destaque_ate": _serializar_valor_temporal(row_dict.get("destaque_ate")),
                 "expires_at": _serializar_valor_temporal(row_dict.get("expires_at")),
                 "updated_at": _serializar_valor_temporal(row_dict.get("updated_at")),
@@ -542,6 +654,15 @@ def listar_noticias_quentes(
             pass
         print(f"[Aviso] Erro ao consultar ai_noticias_quentes: {e}")
 
+    if not noticias:
+        noticias = _carregar_noticias_quentes_fallback_snapshot(
+            categoria=categoria,
+            pais=pais,
+            limite=qtd_limite,
+        )
+        if noticias:
+            source_label = "snapshot_fallback"
+
     eventos_principais = _carregar_eventos_ativos_comparados(
         conn,
         categoria=categoria,
@@ -552,7 +673,7 @@ def listar_noticias_quentes(
     return {
         "ok": True,
         "cached": False,
-        "source": "database",
+        "source": source_label,
         "identificacao_editorial": "Síntese Rodando o Mundo",
         "atualizado_em": _formatar_horario_editorial(),
         "updatedAt": agora_iso,
@@ -800,11 +921,14 @@ def obter_feed_radar(
                 if vitrine_path.is_file():
                     vitrine_raw = json.loads(vitrine_path.read_text(encoding="utf-8"))
             if isinstance(vitrine_raw, dict):
-                base_snapshot_iso = vitrine_raw.get("updatedAt") or base_snapshot_iso
+                agora_radar_utc = datetime.now(timezone.utc)
                 temas = vitrine_raw.get("temas_ativos") or []
                 if isinstance(temas, list):
                     for t in temas:
                         if not isinstance(t, dict):
+                            continue
+                        exp_dt = _parse_iso_utc(t.get("expires_at"))
+                        if exp_dt is not None and exp_dt <= agora_radar_utc:
                             continue
                         cat_raw = t.get("categoria_primaria") or t.get("categoria") or "Geopolitica_Radar"
                         cat_norm = mapa_cat_radar.get(str(cat_raw), "geopolitica")
@@ -816,13 +940,13 @@ def obter_feed_radar(
                         urls = t.get("fontes_urls") or []
                         fonte_url = urls[0] if urls else (t.get("fonte_url") or t.get("rota_editoria") or "/radar")
 
-                        # Preservação mandatória do horário de inclusão no Rodando o Mundo
+                        # Preservação mandatória do horário de inclusão (sem carimbar com updatedAt do snapshot)
                         data_pub = (
                             t.get("data_publicacao")
                             or t.get("created_at")
                             or t.get("publicado_em")
                             or t.get("updated_at")
-                            or base_snapshot_iso
+                            or ""
                         )
 
                         itens_v2.append({
@@ -855,9 +979,10 @@ def obter_feed_radar(
                         continue
                     data_pub = (
                         card.get("data_publicacao")
+                        or card.get("published_at")
                         or card.get("created_at")
                         or card.get("publicado_em")
-                        or base_snapshot_iso
+                        or ""
                     )
                     cards_feed.append({
                         "id": card.get("id") or f"feed-{idx + 1}",
@@ -877,10 +1002,11 @@ def obter_feed_radar(
         except Exception:
             pass
 
-    # Deduplicação por título mantendo a primeira ocorrência
+    # Ordena cronologicamente (mais recentes primeiro) antes de deduplicar por título
+    todos_candidatos = sorted(itens_v2 + cards_feed, key=_timestamp_publicacao, reverse=True)
     titulos_vistos = set()
     combinados: List[Dict[str, Any]] = []
-    for item in itens_v2 + cards_feed:
+    for item in todos_candidatos:
         tit_norm = normalizar_fonte_key(item.get("titulo"))
         if not tit_norm or tit_norm in titulos_vistos:
             continue
@@ -1960,7 +2086,7 @@ Regras:
 
     modelo_env = (os.getenv("GEMINI_SUGESTAO_MODEL") or os.getenv("GEMINI_MODEL") or "").strip()
     modelos_tentar = [modelo_env] if modelo_env else []
-    modelos_tentar += ["gemini-3.5-flash-lite", "gemini-3.5-flash", "gemini-3.8-flash", "gemini-3.1-flash-lite"]
+    modelos_tentar += ["gemini-2.5-flash"]
     # remove duplicatas mantendo ordem
     vistos_modelo = set()
     modelos_tentar = [m for m in modelos_tentar if not (m in vistos_modelo or vistos_modelo.add(m))]
@@ -2393,6 +2519,8 @@ def _serializar_noticia_quente(row: Dict[str, Any]) -> Dict[str, Any]:
         "links_internos_relacionados": _decodificar_jsonb(row.get("links_internos_relacionados"), []),
         "identificacao_editorial": "Síntese Rodando o Mundo",
         "atualizado_em": _formatar_horario_editorial(row.get("updated_at")),
+        "data_publicacao": _serializar_valor_temporal(row.get("data_publicacao") or row.get("created_at") or row.get("updated_at")),
+        "created_at": _serializar_valor_temporal(row.get("created_at")),
         "destaque_ate": _serializar_valor_temporal(row.get("destaque_ate")),
         "expires_at": _serializar_valor_temporal(row.get("expires_at")),
         "updated_at": _serializar_valor_temporal(row.get("updated_at")),
@@ -2543,10 +2671,10 @@ def admin_listar_noticias_quentes(
             categoria, paises_envolvidos, urgencia_score, relevancia_score,
             nivel_confianca, ttl_horas, horas_em_destaque, veiculos_origem,
             fontes_urls, palavras_chave, links_internos_relacionados,
-            status, destaque_ate, expires_at, updated_at
+            status, destaque_ate, expires_at, created_at, updated_at
         FROM ai_noticias_quentes
         {where_sql}
-        ORDER BY urgencia_score DESC, relevancia_score DESC, updated_at DESC
+        ORDER BY updated_at DESC, urgencia_score DESC, relevancia_score DESC
         LIMIT %s;
     """
 
@@ -2888,9 +3016,10 @@ def _construir_where_escopo_pais(
     pais: Optional[str],
     escopo: str,
     categoria: Optional[str] = None,
+    somente_ativos: bool = True,
 ) -> Tuple[str, List[Any]]:
     """Constrói cláusula WHERE determinística compartilhada entre sugestão e listagem de artigos."""
-    conds = list(_ATIVOS_SQL)
+    conds = list(_ATIVOS_SQL) if somente_ativos else ["status IN ('ativo', 'publicado', 'aguardando_revisao')"]
     params: List[Any] = []
 
     if categoria:
@@ -2926,9 +3055,10 @@ def _construir_where_artigos_assunto(
     pais: Optional[str],
     escopo: str,
     categoria: Optional[str] = None,
+    somente_ativos: bool = True,
 ) -> Tuple[str, List[Any]]:
     """Aplica o mesmo filtro de escopo + correspondência exata do termo nas matérias ativas."""
-    where_escopo, params = _construir_where_escopo_pais(pais, escopo, categoria)
+    where_escopo, params = _construir_where_escopo_pais(pais, escopo, categoria, somente_ativos=somente_ativos)
     termo_limpo = termo.strip()
     like_termo = f"%{termo_limpo}%"
     where_full = (
@@ -3015,21 +3145,27 @@ def obter_sugestoes_contextuais(
     pais: Optional[str] = Query(None, description="Código ISO-2 do país (ex: BR, US). Omitir para fallback global."),
     categoria: Optional[str] = Query(None, description="Filtrar por categoria do Atlas"),
     limit: int = Query(4, ge=1, le=6, description="Quantidade de sugestões (padrão 4, retorna 3 a 4)"),
+    _t: Optional[str] = Query(None, description="Timestamp de cache-busting"),
     refresh: Optional[str] = Query(None, description="Ignorar cache em memória"),
+    force: Optional[str] = Query(None, description="Forçar bypass de cache"),
     conn: Any = Depends(get_db),
 ) -> Dict[str, Any]:
     """Retorna de 3 a 4 sugestões quentes confirmadas no banco (`COUNT(*) > 0`) por país ou global."""
+    aplicar_no_cache_headers(response)
     pais_norm = pais.strip().upper() if pais and pais.strip() else None
     cat_norm = categoria.strip() if categoria and categoria.strip() else None
     cache_key = f"{pais_norm or 'GLOBAL'}|{cat_norm or 'ALL'}|{limit}"
+    is_refresh = bool(
+        _t
+        or (refresh and refresh.strip().lower() not in ("0", "false", ""))
+        or (force and force.strip().lower() not in ("0", "false", ""))
+    )
 
-    if not refresh:
+    if not is_refresh:
         cached = _SUGESTOES_CACHE.get(cache_key)
         if cached and time.monotonic() < cached[0]:
-            response.headers["Cache-Control"] = "public, max-age=60, stale-while-revalidate=60"
             return {**cached[1], "cached": True}
 
-    aplicar_no_cache_headers(response)
     if conn is None:
         return {
             "ok": True,
@@ -3088,8 +3224,8 @@ def obter_sugestoes_contextuais(
         "total": len(sugestoes),
         "sugestoes": sugestoes,
     }
-    _SUGESTOES_CACHE[cache_key] = (time.monotonic() + _SUGESTOES_CACHE_TTL_SEC, payload)
-    response.headers["Cache-Control"] = "public, max-age=60, stale-while-revalidate=60"
+    if sugestoes:
+        _SUGESTOES_CACHE[cache_key] = (time.monotonic() + _SUGESTOES_CACHE_TTL_SEC, payload)
     return payload
 
 
@@ -3101,6 +3237,8 @@ def listar_artigos_por_assunto(
     escopo: Literal["direto", "indireto", "global"] = Query("direto", description="Mesmo escopo validado na sugestão"),
     categoria: Optional[str] = Query(None, description="Filtrar por categoria do Atlas"),
     limit: int = Query(20, ge=1, le=50),
+    _t: Optional[str] = Query(None, description="Timestamp de cache-busting"),
+    refresh: Optional[str] = Query(None, description="Flag de atualização em tempo real"),
     conn: Any = Depends(get_db),
 ) -> Dict[str, Any]:
     """Lista matérias ativas aplicando exatamente o mesmo critério de filtro de `/v2/sugestoes-contextuais`."""
@@ -3111,25 +3249,34 @@ def listar_artigos_por_assunto(
     if conn is None:
         return {"ok": True, "termo": termo, "pais": pais_norm, "escopo": escopo_efetivo, "total": 0, "artigos": []}
 
-    where_sql, params = _construir_where_artigos_assunto(termo, pais_norm, escopo_efetivo, categoria)
-    params.append(limit)
-
-    query = f"""
-        SELECT
-            slug, titulo_curto, resumo_pulso, impacto_pratico,
-            categoria, paises_envolvidos, urgencia_score, relevancia_score,
-            veiculos_origem, fontes_urls, palavras_chave, updated_at
-        FROM ai_noticias_quentes
-        WHERE {where_sql}
-        ORDER BY urgencia_score DESC, relevancia_score DESC, updated_at DESC
-        LIMIT %s;
-    """
+    def _montar_query_artigos(where_clause: str) -> str:
+        return f"""
+            SELECT
+                slug, titulo_curto, resumo_pulso, impacto_pratico,
+                categoria, paises_envolvidos, urgencia_score, relevancia_score,
+                veiculos_origem, fontes_urls, palavras_chave, created_at, updated_at
+            FROM ai_noticias_quentes
+            WHERE {where_clause}
+            ORDER BY updated_at DESC, urgencia_score DESC, relevancia_score DESC
+            LIMIT %s;
+        """
 
     artigos: List[Dict[str, Any]] = []
     try:
         with conn.cursor() as cur:
-            cur.execute(query, tuple(params))
-            for r in cur.fetchall():
+            where_sql, params = _construir_where_artigos_assunto(
+                termo, pais_norm, escopo_efetivo, categoria, somente_ativos=True
+            )
+            cur.execute(_montar_query_artigos(where_sql), tuple(params + [limit]))
+            rows = cur.fetchall()
+            if not rows:
+                where_fb, params_fb = _construir_where_artigos_assunto(
+                    termo, pais_norm, escopo_efetivo, categoria, somente_ativos=False
+                )
+                cur.execute(_montar_query_artigos(where_fb), tuple(params_fb + [limit]))
+                rows = cur.fetchall()
+
+            for r in rows:
                 artigos.append({
                     "slug": r["slug"],
                     "titulo": r["titulo_curto"],
@@ -3142,6 +3289,7 @@ def listar_artigos_por_assunto(
                     "palavras_chave": list(r["palavras_chave"] or []),
                     "urgencia_score": int(r["urgencia_score"] or 0),
                     "relevancia_score": int(r["relevancia_score"] or 0),
+                    "data_publicacao": _serializar_valor_temporal(r.get("created_at") or r.get("updated_at")),
                     "atualizado_em": _formatar_horario_editorial(r["updated_at"]),
                     "updated_at": _serializar_valor_temporal(r["updated_at"]),
                 })
@@ -3208,12 +3356,28 @@ def atualizar_pulso_continental(
         return {"ok": False, "erro": str(e)}
 
 
+def _ts_ordenacao_atlas(item: Dict[str, Any]) -> Tuple[int, float]:
+    raw = (
+        item.get("publishedAt")
+        or item.get("data_publicacao")
+        or item.get("updated_at")
+        or item.get("created_at")
+        or ""
+    )
+    dt = _parse_iso_utc(str(raw) if raw else None)
+    if dt is None:
+        return (0, 0.0)
+    return (1, dt.timestamp())
+
+
 @router.get("/v1/atlas/pulso-continental")
 def obter_pulso_continental(
+    response: Response,
     continente: Optional[str] = Query(None),
     conn=Depends(get_db),
 ):
     """Retorna o pulso continental atualizado para o mapa e o ticker global."""
+    aplicar_no_cache_headers(response)
     if not conn:
         return {"ok": False, "continentes": {}}
 
@@ -3233,7 +3397,11 @@ def obter_pulso_continental(
             paises_ativos = set()
             for r in rows:
                 k = r["continent_key"]
-                h = list(r["headlines_json"] or [])
+                h = [dict(it) if isinstance(it, dict) else it for it in (r["headlines_json"] or [])]
+                h.sort(
+                    key=lambda it: _ts_ordenacao_atlas(it) if isinstance(it, dict) else (0, 0.0),
+                    reverse=True,
+                )
                 c = list(r["active_countries"] or [])
                 paises_ativos.update(c)
                 continentes_dict[k] = {
@@ -3276,6 +3444,49 @@ def _traduzir_lote_rapido_pt(texto: str) -> str:
     return clean
 
 
+def _parse_atlas_pub_date(raw_pub: str) -> str:
+    """Converte data RSS/Atom em ISO-8601 UTC ou retorna '' quando ausente/inválida."""
+    import email.utils
+
+    texto = (raw_pub or "").strip()
+    if not texto:
+        return ""
+    try:
+        dt = email.utils.parsedate_to_datetime(texto)
+        if dt.tzinfo is None:
+            dt = dt.replace(tzinfo=timezone.utc)
+        return dt.astimezone(timezone.utc).isoformat()
+    except Exception:
+        pass
+    try:
+        dt = datetime.fromisoformat(texto.replace("Z", "+00:00"))
+        if dt.tzinfo is None:
+            dt = dt.replace(tzinfo=timezone.utc)
+        return dt.astimezone(timezone.utc).isoformat()
+    except Exception:
+        return ""
+
+
+def _xml_child_text(elem: Any, *names: str) -> str:
+    for child in elem:
+        local = child.tag.rsplit("}", 1)[-1]
+        if local in names and child.text:
+            return child.text.strip()
+    return ""
+
+
+def _xml_atom_link(elem: Any) -> str:
+    for child in elem:
+        local = child.tag.rsplit("}", 1)[-1]
+        if local == "link":
+            href = (child.attrib.get("href") or "").strip()
+            if href:
+                return href
+            if child.text and child.text.strip():
+                return child.text.strip()
+    return ""
+
+
 @router.get("/api/atlas-pais")
 def obter_atlas_pais_ao_vivo(
     response: Response,
@@ -3283,10 +3494,10 @@ def obter_atlas_pais_ao_vivo(
     nome: Optional[str] = Query(None),
     refresh: Optional[str] = Query(None),
     _t: Optional[str] = Query(None),
+    force: Optional[str] = Query(None),
     conn=Depends(get_db),
 ):
     """Endpoint FastAPI espelho do /api/atlas-pais com cache persistido no PostgreSQL."""
-    import email.utils
     import hashlib
     import urllib.parse
     import urllib.request
@@ -3294,12 +3505,13 @@ def obter_atlas_pais_ao_vivo(
 
     c_code = pais.upper().strip()
     c_name = (nome or c_code).strip()
-    is_refresh = bool(_t or refresh == "1")
+    is_refresh = bool(
+        _t
+        or (refresh and refresh.strip().lower() not in ("0", "false", ""))
+        or (force and force.strip().lower() not in ("0", "false", ""))
+    )
 
-    if is_refresh:
-        response.headers["Cache-Control"] = "no-store, no-cache, must-revalidate"
-    else:
-        response.headers["Cache-Control"] = "public, max-age=180, stale-while-revalidate=60"
+    aplicar_no_cache_headers(response)
 
     # 1. Tenta ler cache fresco do PostgreSQL
     if conn and not is_refresh:
@@ -3317,6 +3529,11 @@ def obter_atlas_pais_ao_vivo(
                 )
                 row = cur.fetchone()
                 if row and row.get("items_json"):
+                    cached_items = [dict(it) if isinstance(it, dict) else it for it in row["items_json"]]
+                    cached_items.sort(
+                        key=lambda it: _ts_ordenacao_atlas(it) if isinstance(it, dict) else (0, 0.0),
+                        reverse=True,
+                    )
                     return {
                         "ok": True,
                         "cached": True,
@@ -3324,8 +3541,8 @@ def obter_atlas_pais_ao_vivo(
                         "country": c_code,
                         "countryName": c_name,
                         "updatedAt": _serializar_valor_temporal(row["updated_at"]),
-                        "total": len(row["items_json"]),
-                        "items": list(row["items_json"]),
+                        "total": len(cached_items),
+                        "items": cached_items,
                     }
         except Exception:
             try:
@@ -3338,7 +3555,7 @@ def obter_atlas_pais_ao_vivo(
         rss_url = "https://news.google.com/rss/headlines/section/geo/Brasil?hl=pt-BR&gl=BR&ceid=BR:pt-419"
     else:
         rss_url = (
-            f"https://news.google.com/rss/search?q={urllib.parse.quote(c_name)}"
+            f"https://news.google.com/rss/search?q={urllib.parse.quote(c_name + ' when:7d')}"
             f"&hl=en&gl={urllib.parse.quote(c_code)}&ceid={urllib.parse.quote(c_code)}:en"
         )
 
@@ -3351,11 +3568,17 @@ def obter_atlas_pais_ao_vivo(
         with urllib.request.urlopen(req, timeout=6.0) as resp:
             xml_bytes = resp.read()
         root = ET.fromstring(xml_bytes)
-        for item_el in root.findall(".//item")[:14]:
-            raw_title = (item_el.findtext("title") or "").strip()
-            raw_link = (item_el.findtext("link") or "").strip()
-            raw_source = (item_el.findtext("source") or "").strip()
-            raw_pub = (item_el.findtext("pubDate") or "").strip()
+
+        entries_xml = [
+            el for el in root.iter()
+            if el.tag.rsplit("}", 1)[-1] in ("item", "entry")
+        ]
+        candidatos: List[Dict[str, Any]] = []
+        for item_el in entries_xml:
+            raw_title = _xml_child_text(item_el, "title")
+            raw_link = _xml_atom_link(item_el)
+            raw_source = _xml_child_text(item_el, "source")
+            raw_pub = _xml_child_text(item_el, "pubDate", "published", "updated", "date")
             if not raw_title or not raw_link.startswith("http"):
                 continue
 
@@ -3368,26 +3591,23 @@ def obter_atlas_pais_ao_vivo(
                         detected_source = title_clean[idx + 3 :].strip()
                     title_clean = title_clean[:idx].strip()
 
-            try:
-                dt = email.utils.parsedate_to_datetime(raw_pub)
-                iso_pub = dt.astimezone(timezone.utc).isoformat()
-            except Exception:
-                iso_pub = datetime.now(timezone.utc).isoformat()
-
-            title_pt = title_clean
-            if c_code != "BR" and len(items) < 10:
-                title_pt = _traduzir_lote_rapido_pt(title_clean)
-
-            items.append({
+            iso_pub = _parse_atlas_pub_date(raw_pub)
+            candidatos.append({
                 "id": "h_" + hashlib.sha1(raw_link.encode("utf-8")).hexdigest()[:10],
                 "titleOriginal": title_clean,
-                "titlePt": title_pt,
+                "titlePt": title_clean,
                 "url": raw_link,
                 "source": detected_source or "Imprensa Internacional",
                 "publishedAt": iso_pub,
                 "score": 85,
                 "country": c_code,
             })
+
+        candidatos.sort(key=_ts_ordenacao_atlas, reverse=True)
+        items = candidatos[:14]
+        if c_code != "BR":
+            for idx_tr, item_tr in enumerate(items[:10]):
+                item_tr["titlePt"] = _traduzir_lote_rapido_pt(item_tr["titleOriginal"])
     except Exception:
         items = []
 

@@ -2,6 +2,12 @@
 // Endpoint unificado do Radar Editorial (/radar), mesclando itens em tempo real do Motor V2 com briefings de data/feed_output.json.
 // Segue estritamente o contrato .agents/contracts/INT-V2-SITE.md.
 import { json } from '../lib/ia.js';
+import {
+  isRefreshRequest,
+  newsResponseHeaders,
+  parseTimestampIso,
+  resolverBackendUrl,
+} from '../lib/rss.js';
 import { detectarPaisesNoTexto } from './noticias-quentes.js';
 
 const CORS_HEADERS = {
@@ -28,18 +34,8 @@ const MAPA_ROTAS_EDITORIA = {
   Resumo_Ultimas: '/ultimas-noticias',
 };
 
-const FALLBACK_VITRINE_TEMAS = [
-  {
-    slug: 'faa-suspende-voos-eua-falha-comunicacao-sistemas',
-    titulo_tema: 'Paralisação Total dos Voos nos EUA por Falha Crítica de Comunicação',
-    categoria_primaria: 'Geopolitica_Radar',
-    rota_editoria: '/radar',
-    relevancia_score: 93,
-    palavras_chave_busca: ['faa voos eua', 'paralisacao aviacao americana', 'telecommunication outage faa'],
-    gatilho_vitrine: 'Colapso de comunicação na aviação dos EUA gera efeito cascata no transporte aéreo e comércio global.',
-    sintese_nerd: 'A ordem de paralisação em solo decretada pela FAA devido a uma falha em sistemas de comunicação expõe a vulnerabilidade das infraestruturas críticas americanas.',
-  },
-];
+const MAX_V2_PROMOTE_LAG_MS = 2 * 60 * 60 * 1000;
+const MAX_ROTATION_LAG_MS = 2 * 60 * 60 * 1000;
 
 function normalizar(str) {
   return String(str == null ? '' : str)
@@ -69,12 +65,25 @@ export function sortirCardsRodizioAmplo(itens, maxV2Topo = 2) {
   const validItens = (itens || []).filter((it) => it && typeof it === 'object');
   if (validItens.length === 0) return [];
 
-  const ordenados = [...validItens].sort((a, b) => timestampPublicacao(b) - timestampPublicacao(a));
+  const ordenados = [...validItens].sort((a, b) => {
+    const ta = timestampPublicacao(a);
+    const tb = timestampPublicacao(b);
+    if (ta > 0 && tb > 0) {
+      if (tb !== ta) return tb - ta;
+      return Number(b.urgencia_score || 0) - Number(a.urgencia_score || 0);
+    }
+    if (ta !== tb) return ta > 0 ? -1 : 1;
+    return Number(b.urgencia_score || 0) - Number(a.urgencia_score || 0);
+  });
+
+  const newestTs = timestampPublicacao(ordenados[0]);
   const topV2 = [];
   const pool = [];
 
   for (const item of ordenados) {
-    if (ehDestaquePulsoV2(item) && topV2.length < maxV2Topo) {
+    const ts = timestampPublicacao(item);
+    const dentroJanelaTopo = newestTs === 0 || (ts > 0 && newestTs - ts <= MAX_V2_PROMOTE_LAG_MS);
+    if (ehDestaquePulsoV2(item) && topV2.length < maxV2Topo && dentroJanelaTopo) {
       topV2.push(item);
     } else {
       pool.push(item);
@@ -106,11 +115,18 @@ export function sortirCardsRodizioAmplo(itens, maxV2Topo = 2) {
 
     const windowSize = Math.min(3, fontesDistintas - 1);
     const janelaRecente = windowSize > 0 ? new Set(recentes.slice(-windowSize)) : new Set();
+    const refTs = timestampPublicacao(pool[0]);
+    const dentroJanelaRotacao = (cand) => {
+      if (refTs === 0) return true;
+      const candTs = timestampPublicacao(cand);
+      return candTs > 0 && refTs - candTs <= MAX_ROTATION_LAG_MS;
+    };
 
     let escolhidoIdx = -1;
 
-    // 1ª passada: respeita teto consecutivo (<= 2) e janela de rodízio amplo
+    // 1ª passada: respeita teto consecutivo (<= 2), janela de rodízio e limite de recência
     for (let i = 0; i < pool.length; i++) {
+      if (!dentroJanelaRotacao(pool[i])) continue;
       const fk = normalizarFonteKey(pool[i].fonte_nome);
       if (consecCount >= 2 && fk === consecFonte) continue;
       if (janelaRecente.has(fk)) continue;
@@ -118,9 +134,10 @@ export function sortirCardsRodizioAmplo(itens, maxV2Topo = 2) {
       break;
     }
 
-    // 2ª passada: relaxa janela de rodízio, mantendo teto consecutivo
+    // 2ª passada: relaxa janela de rodízio, mantendo teto consecutivo e limite de recência
     if (escolhidoIdx === -1) {
       for (let i = 0; i < pool.length; i++) {
+        if (!dentroJanelaRotacao(pool[i])) continue;
         const fk = normalizarFonteKey(pool[i].fonte_nome);
         if (consecCount >= 2 && fk === consecFonte) continue;
         escolhidoIdx = i;
@@ -190,30 +207,31 @@ function formatarRotuloRelativo(isoDateStr) {
   }
 }
 
-function construirHeadersCache(isRefresh) {
-  if (isRefresh) {
-    return {
-      'Cache-Control': 'no-store, no-cache, must-revalidate',
-      'X-Content-Type-Options': 'nosniff',
-      ...CORS_HEADERS,
-    };
-  }
-  return {
-    'Cache-Control': 'public, max-age=60, s-maxage=300',
-    'X-Content-Type-Options': 'nosniff',
-    ...CORS_HEADERS,
-  };
+function construirHeadersCache(isRefresh, isFallback = false) {
+  return newsResponseHeaders({ isRefresh, isFallback, corsHeaders: CORS_HEADERS });
 }
 
-async function carregarAssetJson(relPath, request) {
+async function carregarAssetJson(relPath, request, env) {
   try {
     const assetUrl = new URL('/' + relPath.replace(/^\/+/, ''), request.url);
+    if (env && env.ASSETS && typeof env.ASSETS.fetch === 'function') {
+      const res = await env.ASSETS.fetch(new Request(assetUrl, { method: 'GET' }));
+      if (res && res.ok) {
+        return await res.json();
+      }
+    }
     const ctrl = new AbortController();
-    const timer = setTimeout(() => ctrl.abort(), 2000);
-    const resp = await fetch(assetUrl.toString(), { signal: ctrl.signal });
-    clearTimeout(timer);
-    if (resp.ok) {
-      return await resp.json();
+    const timer = setTimeout(() => ctrl.abort(), 3000);
+    try {
+      const resp = await fetch(assetUrl.toString(), {
+        cache: 'no-store',
+        signal: ctrl.signal,
+      });
+      if (resp && resp.ok) {
+        return await resp.json();
+      }
+    } finally {
+      clearTimeout(timer);
     }
   } catch {
     // Ignora falha de leitura
@@ -221,7 +239,50 @@ async function carregarAssetJson(relPath, request) {
   return null;
 }
 
-function mapearItemV2ParaRadar(item, fallbackDateIso) {
+async function carregarEstadoBackend(chave, request, env, isRefresh = false) {
+  const backendUrl = resolverBackendUrl(env, request);
+  if (!backendUrl) return null;
+
+  const ctrl = new AbortController();
+  const timer = setTimeout(() => ctrl.abort(), 9000);
+  try {
+    const sufixoRefresh = isRefresh ? `?_t=${Date.now()}&refresh=1` : '';
+    const alvo = `${backendUrl}/v1/estado/${encodeURIComponent(chave)}${sufixoRefresh}`;
+    const resp = await fetch(alvo, {
+      signal: ctrl.signal,
+      cache: 'no-store',
+      headers: {
+        Accept: 'application/json',
+        'X-ROM-Edge-Proxy': '1',
+        'X-Rom-Edge-Hop': '1',
+      },
+    });
+    if (!resp || !resp.ok) return null;
+    const data = await resp.json();
+    const payload = data && Object.prototype.hasOwnProperty.call(data, 'payload') ? data.payload : data;
+    if (!payload) return null;
+    if (Array.isArray(payload)) return payload.length > 0 ? payload : null;
+    if (typeof payload === 'object') {
+      if (Array.isArray(payload.temas_ativos) && payload.temas_ativos.length > 0) return payload;
+      if (Array.isArray(payload.noticias_quentes) && payload.noticias_quentes.length > 0) return payload;
+      return null;
+    }
+    return null;
+  } catch {
+    return null;
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+async function carregarEstadoOuAssetRadar(chave, relPath, request, env, isRefresh = false) {
+  const estado = await carregarEstadoBackend(chave, request, env, isRefresh);
+  if (estado) return { data: estado, fallback: false };
+  const assetData = await carregarAssetJson(relPath, request, env);
+  return { data: assetData, fallback: true };
+}
+
+function mapearItemV2ParaRadar(item) {
   const catRaw = item.categoria || item.categoria_primaria || 'Geopolitica_Radar';
   const catNorm = MAPA_CATEGORIA_RADAR[catRaw] || normalizar(catRaw) || 'geopolitica';
   const slug = item.slug || normalizar(item.titulo_tema || item.titulo_curto || '').replace(/[^a-z0-9]+/g, '-');
@@ -242,12 +303,13 @@ function mapearItemV2ParaRadar(item, fallbackDateIso) {
       : detectarPaisesNoTexto(`${titulo} ${resumo} ${analise}`, kws);
 
   const score = Number(item.urgencia_score || item.relevancia_score || 85);
-  const dataPubOrig =
+  const dataPubOrig = parseTimestampIso(
     item.data_publicacao ||
     item.created_at ||
     item.publicado_em ||
     item.updated_at ||
-    fallbackDateIso;
+    ''
+  );
 
   return {
     id: `v2-${slug}`,
@@ -269,99 +331,95 @@ function mapearItemV2ParaRadar(item, fallbackDateIso) {
 export async function onRequestGet(context) {
   const { request, env } = context;
   const url = new URL(request.url);
-  const isRefresh = url.searchParams.has('_t') || url.searchParams.get('refresh') === '1';
-  const headers = construirHeadersCache(isRefresh);
+  const isRefresh = isRefreshRequest(request);
   const categoriaFiltro = normalizar(url.searchParams.get('categoria') || 'todos');
 
   try {
-    const [vitrineSnap, feedOutput] = await Promise.all([
-      carregarAssetJson('data/vitrine_ia.json', request),
-      carregarAssetJson('data/feed_output.json', request),
+    const [vitrineRes, feedRes] = await Promise.all([
+      carregarEstadoOuAssetRadar('vitrine_ia', 'data/vitrine_ia.json', request, env, isRefresh),
+      carregarEstadoOuAssetRadar('feed_output', 'data/feed_output.json', request, env, isRefresh),
     ]);
 
-    const baseSnapshotIso = (vitrineSnap && vitrineSnap.updatedAt) || '2026-11-15T00:00:00Z';
-    const updatedAtIso = isRefresh
-      ? new Date().toISOString()
-      : (vitrineSnap && vitrineSnap.updatedAt) || new Date().toISOString();
+    const vitrineSnap = vitrineRes.data;
+    const feedOutput = feedRes.data;
+    const usedFallback = Boolean(vitrineRes.fallback || feedRes.fallback);
+    const headers = construirHeadersCache(isRefresh, usedFallback);
 
     const temasVitrine =
       vitrineSnap && Array.isArray(vitrineSnap.temas_ativos) && vitrineSnap.temas_ativos.length > 0
         ? vitrineSnap.temas_ativos.filter((t) => t && typeof t === 'object')
-        : FALLBACK_VITRINE_TEMAS;
+        : [];
 
-    const itensV2Snapshot = temasVitrine.map((t) =>
-      mapearItemV2ParaRadar(t, baseSnapshotIso)
-    );
+    const itensV2 = temasVitrine.map((t) => mapearItemV2ParaRadar(t));
 
     const cardsFeed = Array.isArray(feedOutput)
       ? feedOutput
           .filter((card) => card && typeof card === 'object')
           .map((card, idx) => {
-          const textoCard = `${card.titulo || ''} ${card.resumo || ''} ${card.analise || ''}`;
-          const dataPub =
-            card.data_publicacao ||
-            card.created_at ||
-            card.publicado_em ||
-            baseSnapshotIso;
+            const textoCard = `${card.titulo || ''} ${card.resumo || ''} ${card.analise || ''}`;
+            const dataPub = parseTimestampIso(
+              card.data_publicacao ||
+              card.created_at ||
+              card.publicado_em ||
+              card.updated_at ||
+              ''
+            );
 
-          return {
-            id: card.id || `feed-${idx + 1}`,
-            slug: card.slug || '',
-            titulo: card.titulo || '',
-            resumo: card.resumo || '',
-            analise: card.analise || '',
-            categoria: normalizar(card.categoria || 'geopolitica') || 'geopolitica',
-            fonte_nome: card.fonte_nome || 'Radar Editorial',
-            fonte_url: card.fonte_url || '/radar',
-            data_publicacao: dataPub,
-            origem_v2: false,
-            urgencia_score: Number(card.urgencia_score || 70),
-            paises_envolvidos: Array.isArray(card.paises_envolvidos)
-              ? card.paises_envolvidos
-              : detectarPaisesNoTexto(textoCard, []),
-            palavras_chave: Array.isArray(card.palavras_chave) ? card.palavras_chave : [],
-          };
-        })
+            return {
+              id: card.id || `feed-${idx + 1}`,
+              slug: card.slug || '',
+              titulo: card.titulo || '',
+              resumo: card.resumo || '',
+              analise: card.analise || '',
+              categoria: normalizar(card.categoria || 'geopolitica') || 'geopolitica',
+              fonte_nome: card.fonte_nome || 'Radar Editorial',
+              fonte_url: card.fonte_url || '/radar',
+              data_publicacao: dataPub,
+              origem_v2: false,
+              urgencia_score: Number(card.urgencia_score || 70),
+              paises_envolvidos: Array.isArray(card.paises_envolvidos)
+                ? card.paises_envolvidos
+                : detectarPaisesNoTexto(textoCard, []),
+              palavras_chave: Array.isArray(card.palavras_chave) ? card.palavras_chave : [],
+            };
+          })
       : [];
 
     const titulosVistos = new Set();
     const combinados = [];
 
-    for (const item of [...itensV2Snapshot, ...cardsFeed]) {
+    for (const item of [...itensV2, ...cardsFeed]) {
       const chaveTitulo = normalizar(item.titulo);
       if (!chaveTitulo || titulosVistos.has(chaveTitulo)) continue;
       titulosVistos.add(chaveTitulo);
       combinados.push(item);
     }
 
-    const combinadosOrdenados = sortirCardsRodizioAmplo(combinados, 2);
-
-    const filtrados =
+    const paraOrdenar =
       categoriaFiltro && categoriaFiltro !== 'todos'
-        ? sortirCardsRodizioAmplo(
-            combinadosOrdenados.filter((item) => normalizar(item.categoria) === categoriaFiltro),
-            2
-          )
-        : combinadosOrdenados;
+        ? combinados.filter((item) => normalizar(item.categoria) === categoriaFiltro)
+        : combinados;
 
-    let maisRecenteIso = updatedAtIso;
-    if (filtrados.length > 0) {
-      let maxTs = 0;
-      for (const item of filtrados) {
-        const ts = timestampPublicacao(item);
-        if (ts > maxTs && item.data_publicacao) {
-          maxTs = ts;
-          maisRecenteIso = item.data_publicacao;
-        }
+    const filtrados = sortirCardsRodizioAmplo(paraOrdenar, 2);
+
+    let maisRecenteIso = (vitrineSnap && vitrineSnap.updatedAt) || '';
+    let maxTs = 0;
+    for (const item of filtrados) {
+      const ts = timestampPublicacao(item);
+      if (ts > maxTs && item.data_publicacao) {
+        maxTs = ts;
+        maisRecenteIso = item.data_publicacao;
       }
     }
-    const carimboHora = formatarRotuloRelativo(maisRecenteIso);
+    const updatedAtIso = (vitrineSnap && vitrineSnap.updatedAt) || maisRecenteIso || '';
+    const carimboHora = maisRecenteIso ? formatarRotuloRelativo(maisRecenteIso) : '';
 
     return json(
       {
         ok: true,
-        cached: !isRefresh,
-        source: 'v2_hybrid',
+        cached: !isRefresh && !usedFallback,
+        fallback: usedFallback,
+        source: itensV2.length > 0 ? 'v2_hybrid' : 'feed_output',
         atualizado_em: carimboHora,
         updatedAt: updatedAtIso,
         total: filtrados.length,
@@ -371,21 +429,18 @@ export async function onRequestGet(context) {
       headers
     );
   } catch {
-    const baseFallback = '2026-11-15T00:00:00Z';
-    const fallbackItems = FALLBACK_VITRINE_TEMAS.map((t) => mapearItemV2ParaRadar(t, baseFallback));
-    const nowIso = new Date().toISOString();
     return json(
       {
-        ok: true,
+        ok: false,
         cached: false,
-        source: 'v2_hybrid',
-        atualizado_em: formatarRotuloRelativo(nowIso),
-        updatedAt: nowIso,
-        total: fallbackItems.length,
-        items: fallbackItems,
+        fallback: true,
+        source: 'error_fallback',
+        items: [],
+        total: 0,
+        error: 'Falha no processamento do radar híbrido',
       },
       200,
-      headers
+      construirHeadersCache(isRefresh, true)
     );
   }
 }

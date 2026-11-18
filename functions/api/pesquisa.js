@@ -1,12 +1,11 @@
 // GET /api/pesquisa?q=termo&lang=pt&period=all&topic=politica
 // Pesquisa em tempo real com um modelo da Perplexity (busca na web) via Cloudflare Pages Functions.
 import { IDIOMAS, MAX_TERMO, limparTermo, json, chat, extrairJSON, chaveURL, dominio } from '../lib/ia.js';
+import { isRefreshRequest, newsResponseHeaders, compareIsoDesc } from '../lib/rss.js';
 
 // MODELO resolvido dinamicamente via context.env
-const SEM_CACHE = { 'Cache-Control': 'no-store' };
-const CACHE_15MIN = {
-  'Cache-Control': 'public, max-age=0, must-revalidate',
-};
+const SEM_CACHE = newsResponseHeaders({ isRefresh: true, isFallback: true });
+const CACHE_15MIN = newsResponseHeaders({ isRefresh: false, isFallback: false });
 
 function hojeISO() { return new Date().toISOString().slice(0, 10); }
 
@@ -86,7 +85,7 @@ function montar(dados, fontes, termoOriginal, modeloUsado = 'perplexity/sonar-pr
       url: ok(n.url),
     }))
     .filter((n) => n.url && n.titulo)
-    .sort((a, b) => (b.data || '').localeCompare(a.data || ''))
+    .sort((a, b) => compareIsoDesc(a.data, b.data))
     .slice(0, 16);
   const citacoes = (Array.isArray(dados.citacoes) ? dados.citacoes : [])
     .map((c) => ({
@@ -101,18 +100,20 @@ function montar(dados, fontes, termoOriginal, modeloUsado = 'perplexity/sonar-pr
       traduzida: !!c.traduzida,
     }))
     .filter((c) => c.url && c.texto && c.autor)
-    .sort((a, b) => (b.data || '').localeCompare(a.data || ''))
+    .sort((a, b) => compareIsoDesc(a.data, b.data))
     .slice(0, 8);
   const resumo = texto(dados.resumo, 1500);
   const sugestoes = Array.isArray(dados.sugestoes)
     ? dados.sugestoes.map((s) => texto(s, 100)).filter(Boolean).slice(0, 6)
     : [];
-  const lista = [...fontes.values()].map((f) => ({
-    url: f.url,
-    titulo: texto(f.titulo, 200),
-    dominio: f.dominio,
-    data: dataISO(f.data),
-  }));
+  const lista = [...fontes.values()]
+    .map((f) => ({
+      url: f.url,
+      titulo: texto(f.titulo, 200),
+      dominio: f.dominio,
+      data: dataISO(f.data),
+    }))
+    .sort((a, b) => compareIsoDesc(a.data, b.data));
   const pessoa = dados.pessoa && (dados.pessoa.foto_url || dados.pessoa.nome) ? {
     nome: texto(dados.pessoa.nome, 100),
     foto_url: dados.pessoa.foto_url ? String(dados.pessoa.foto_url) : '',
@@ -138,6 +139,7 @@ function montar(dados, fontes, termoOriginal, modeloUsado = 'perplexity/sonar-pr
 
 export async function onRequestGet(context) { const req = context.request; const env = context.env || {}; const MODELO = env.MODELO_PESQUISA || 'perplexity/sonar-pro';
   if (req.method !== 'GET') return json({ erro: 'metodo', mensagem: 'Use GET.' }, 405, SEM_CACHE);
+  const isRefresh = isRefreshRequest(req);
   const u = new URL(req.url);
   const bruto = u.searchParams.get('q') || '';
   if (bruto.length > MAX_TERMO * 2) return json({ erro: 'longo', mensagem: 'Use até ' + MAX_TERMO + ' caracteres.' }, 400, SEM_CACHE);
@@ -162,7 +164,8 @@ export async function onRequestGet(context) { const req = context.request; const
     const resultado = montar(dados, fontes, q, MODELO);
     resultado.lang = lang;
     resultado.period = period;
-    return json(resultado, 200, CACHE_15MIN);
+    resultado.fallback = !resultado.encontrado;
+    return json(resultado, 200, isRefresh || !resultado.encontrado ? SEM_CACHE : CACHE_15MIN);
   } catch (err) {
     console.error('[pesquisa]', err && err.code, err && err.message);
     if (err.code === 'limite') return json({ erro: 'limite', mensagem: 'Muitas pesquisas em pouco tempo.' }, 429, SEM_CACHE);

@@ -12,13 +12,14 @@ Responsabilidades:
      e validação estrita de URLs internas (`validar_urls_internas`).
 """
 import asyncio
+import calendar
 import hashlib
 import os
 import re
-import time
 import xml.etree.ElementTree as ET
 from contextlib import contextmanager
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
+from email.utils import parsedate_to_datetime
 from pathlib import Path
 from typing import Any, Dict, Generator, List, Optional, Tuple, Union
 from urllib.parse import urlparse
@@ -762,14 +763,58 @@ def gerar_content_hash(canonical_url: str, titulo: str) -> str:
     return hashlib.sha256(base.encode("utf-8")).hexdigest()
 
 
+def _parse_iso_dt_utc(val: Optional[str]) -> Optional[datetime]:
+    """Converte string ISO-8601 em datetime aware UTC ou None."""
+    if not val:
+        return None
+    try:
+        dt = datetime.fromisoformat(str(val).strip().replace("Z", "+00:00"))
+        if dt.tzinfo is None:
+            dt = dt.replace(tzinfo=timezone.utc)
+        return dt.astimezone(timezone.utc)
+    except Exception:
+        return None
+
+
+def _parse_iso_ts(val: Optional[str]) -> float:
+    """Converte string ISO-8601 para timestamp numérico UTC (0.0 se ausente/inválido)."""
+    dt = _parse_iso_dt_utc(val)
+    return dt.timestamp() if dt is not None else 0.0
+
+
 def extrair_data_publicacao(entry: Any) -> Optional[str]:
     """Converte a data de publicação do feedparser para string ISO-8601 UTC."""
     for attr in ("published_parsed", "updated_parsed"):
-        parsed = getattr(entry, attr, None)
-        if parsed:
+        parsed = entry.get(attr) if isinstance(entry, dict) else getattr(entry, attr, None)
+        if not parsed:
+            continue
+        try:
+            if isinstance(parsed, (tuple,)) or hasattr(parsed, "tm_year"):
+                seq = tuple(parsed)
+                if len(seq) >= 6:
+                    if len(seq) < 9:
+                        seq = seq + (0,) * (9 - len(seq))
+                    dt = datetime.fromtimestamp(calendar.timegm(seq[:9]), tz=timezone.utc)
+                    return dt.isoformat()
+        except Exception:
+            pass
+
+    for attr in ("published", "updated", "pubDate", "dc_date", "data_publicacao"):
+        raw = entry.get(attr) if isinstance(entry, dict) else getattr(entry, attr, None)
+        if isinstance(raw, str) and raw.strip():
+            texto = raw.strip()
             try:
-                dt = datetime.fromtimestamp(time.mktime(parsed), tz=timezone.utc)
-                return dt.isoformat()
+                dt = datetime.fromisoformat(texto.replace("Z", "+00:00"))
+                if dt.tzinfo is None:
+                    dt = dt.replace(tzinfo=timezone.utc)
+                return dt.astimezone(timezone.utc).isoformat()
+            except Exception:
+                pass
+            try:
+                dt = parsedate_to_datetime(texto)
+                if dt.tzinfo is None:
+                    dt = dt.replace(tzinfo=timezone.utc)
+                return dt.astimezone(timezone.utc).isoformat()
             except Exception:
                 pass
     return None
@@ -837,6 +882,8 @@ async def coletar_feed_individual_async(
     client: httpx.AsyncClient,
     fonte_raw: Union[str, Dict[str, Any]],
     max_itens: int = 10,
+    max_idade_horas: Optional[float] = None,
+    permitir_sem_data: bool = True,
 ) -> List[Dict[str, Any]]:
     """Coleta e processa um único feed RSS/Atom/YouTube XML de forma assíncrona."""
     fonte = normalizar_config_fonte(fonte_raw)
@@ -873,12 +920,25 @@ async def coletar_feed_individual_async(
         else "Política da fonte permite apenas retenção de metadados; texto integral descartado após processamento."
     )
 
+    corte_utc: Optional[datetime] = None
+    if max_idade_horas is not None:
+        corte_utc = datetime.now(timezone.utc) - timedelta(hours=float(max_idade_horas))
+
     itens: List[Dict[str, Any]] = []
-    for entry in (feed.entries or [])[:max_itens]:
+    for entry in (feed.entries or []):
         titulo = limpar_html(entry.get("title", ""), limite=240)
         link = (entry.get("link") or "").strip()
         if not titulo or not link:
             continue
+
+        published_at = extrair_data_publicacao(entry)
+        if published_at is None:
+            if not permitir_sem_data:
+                continue
+        elif corte_utc is not None:
+            pub_dt = _parse_iso_dt_utc(published_at)
+            if pub_dt is None or pub_dt < corte_utc:
+                continue
 
         # Em feeds YouTube RSS, a descrição vem em media_description ou summary
         resumo_bruto = (
@@ -907,10 +967,14 @@ async def coletar_feed_individual_async(
             "original_retido": original_retido,
             "limitacao_auditoria": limitacao_auditoria,
             "content_hash": content_hash,
-            "published_at": extrair_data_publicacao(entry),
+            "published_at": published_at,
         })
 
-    return itens
+    itens.sort(
+        key=lambda it: (1 if it.get("published_at") else 0, _parse_iso_ts(it.get("published_at"))),
+        reverse=True,
+    )
+    return itens[:max_itens]
 
 
 async def coletar_fontes_async(
@@ -918,6 +982,8 @@ async def coletar_fontes_async(
     max_itens_por_fonte: int = 10,
     concorrencia_max: int = 6,
     timeout_segundos: float = 12.0,
+    max_idade_horas: Optional[float] = None,
+    permitir_sem_data: bool = True,
 ) -> List[Dict[str, Any]]:
     """Lê múltiplas fontes RSS/XML em paralelo com `httpx.AsyncClient` e deduplicação por URL/título."""
     semaforo = asyncio.Semaphore(concorrencia_max)
@@ -929,7 +995,13 @@ async def coletar_fontes_async(
     async with httpx.AsyncClient(headers=headers, timeout=timeout_segundos) as client:
         async def _tarefa(f: Union[str, Dict[str, Any]]) -> List[Dict[str, Any]]:
             async with semaforo:
-                return await coletar_feed_individual_async(client, f, max_itens=max_itens_por_fonte)
+                return await coletar_feed_individual_async(
+                    client,
+                    f,
+                    max_itens=max_itens_por_fonte,
+                    max_idade_horas=max_idade_horas,
+                    permitir_sem_data=permitir_sem_data,
+                )
 
         resultados = await asyncio.gather(*[_tarefa(f) for f in fontes], return_exceptions=True)
 
@@ -946,16 +1018,27 @@ async def coletar_fontes_async(
             chaves_vistas.add(chave)
             itens_consolidados.append(item)
 
+    itens_consolidados.sort(
+        key=lambda it: (1 if it.get("published_at") else 0, _parse_iso_ts(it.get("published_at"))),
+        reverse=True,
+    )
     return itens_consolidados
 
 
 async def coletar_noticias_quentes_30min_async(
     max_itens_por_fonte: int = 8,
     fontes_custom: Optional[List[Union[str, Dict[str, Any]]]] = None,
+    max_idade_horas: Optional[float] = 48.0,
+    permitir_sem_data: bool = False,
 ) -> List[Dict[str, Any]]:
     """Coleta de forma assíncrona a lista `FONTES_NOTICIAS_QUENTES_30MIN`."""
     alvo = fontes_custom if fontes_custom is not None else FONTES_NOTICIAS_QUENTES_30MIN
-    return await coletar_fontes_async(alvo, max_itens_por_fonte=max_itens_por_fonte)
+    return await coletar_fontes_async(
+        alvo,
+        max_itens_por_fonte=max_itens_por_fonte,
+        max_idade_horas=max_idade_horas,
+        permitir_sem_data=permitir_sem_data,
+    )
 
 
 async def coletar_fontes_estudo_v2_async(

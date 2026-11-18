@@ -15,6 +15,13 @@ import * as apiTraduzir from './functions/api/traduzir.js';
 import * as apiUltimasNoticias from './functions/api/ultimas-noticias.js';
 import * as apiVitrineEmAlta from './functions/api/vitrine-em-alta.js';
 import { sortirCardsRodizioAmplo } from './functions/api/radar.js';
+import {
+  isRefreshRequest,
+  newsResponseHeaders,
+  parseTimestampIso,
+  resolverBackendUrl,
+  STATIC_SITE_HOSTS,
+} from './functions/lib/rss.js';
 
 const API_FUNCTION_ROUTES = {
   '/api/atlas-pais': apiAtlasPais,
@@ -156,8 +163,13 @@ async function handleBackendProxy(request, env, url) {
     });
   }
 
-  // Evita loop recursivo caso CURADORIA_BACKEND_URL aponte para o próprio domínio estático
-  if (targetUrl.hostname === url.hostname) {
+  // Evita loop recursivo caso CURADORIA_BACKEND_URL aponte para o próprio domínio estático ou cabeçalho de salto
+  if (
+    request.headers.get('X-ROM-Edge-Proxy') === '1' ||
+    request.headers.get('X-Rom-Edge-Hop') === '1' ||
+    targetUrl.hostname === url.hostname ||
+    STATIC_SITE_HOSTS.has(targetUrl.hostname.toLowerCase())
+  ) {
     return new Response(JSON.stringify({
       ok: false,
       detail: 'CURADORIA_BACKEND_URL aponta para o próprio domínio estático. Configure a URL pública do backend FastAPI.'
@@ -180,6 +192,8 @@ async function handleBackendProxy(request, env, url) {
 
   const forwardHeaders = new Headers(request.headers);
   forwardHeaders.delete('host');
+  forwardHeaders.set('X-ROM-Edge-Proxy', '1');
+  forwardHeaders.set('X-Rom-Edge-Hop', '1');
 
   const init = {
     method: request.method,
@@ -430,7 +444,7 @@ async function carregarAssetWorker(path, request, env) {
         return await res.json();
       }
     }
-    const res = await fetch(assetUrl.toString());
+    const res = await fetch(assetUrl.toString(), { cache: 'no-store' });
     if (res && res.ok) {
       return await res.json();
     }
@@ -440,26 +454,23 @@ async function carregarAssetWorker(path, request, env) {
   return null;
 }
 
-async function carregarEstadoWorker(chave, request, env) {
-  const backendUrl = String((env && env.CURADORIA_BACKEND_URL) || '').trim().replace(/\/+$/, '');
-  if (!backendUrl || !/^https?:\/\//i.test(backendUrl)) return null;
-
-  // Evita loop recursivo caso o backend aponte para o próprio domínio estático.
-  try {
-    const alvoHost = new URL(backendUrl).hostname;
-    const atualHost = new URL(request.url).hostname;
-    if (alvoHost === atualHost) return null;
-  } catch {
-    return null;
-  }
+async function carregarEstadoWorker(chave, request, env, isRefresh = false) {
+  const backendUrl = resolverBackendUrl(env, request);
+  if (!backendUrl) return null;
 
   const ctrl = new AbortController();
-  const timer = setTimeout(() => ctrl.abort(), 2500);
+  const timer = setTimeout(() => ctrl.abort(), 9000);
   try {
-    const alvo = `${backendUrl}/v1/estado/${encodeURIComponent(chave)}`;
+    const sufixoRefresh = isRefresh ? `?_t=${Date.now()}&refresh=1` : '';
+    const alvo = `${backendUrl}/v1/estado/${encodeURIComponent(chave)}${sufixoRefresh}`;
     const resp = await fetch(alvo, {
       signal: ctrl.signal,
-      headers: { Accept: 'application/json' },
+      cache: 'no-store',
+      headers: {
+        Accept: 'application/json',
+        'X-ROM-Edge-Proxy': '1',
+        'X-Rom-Edge-Hop': '1',
+      },
     });
     if (!resp || !resp.ok) return null;
     const data = await resp.json();
@@ -481,10 +492,11 @@ async function carregarEstadoWorker(chave, request, env) {
   }
 }
 
-async function carregarEstadoOuAssetWorker(chave, path, request, env) {
-  const estado = await carregarEstadoWorker(chave, request, env);
-  if (estado) return estado;
-  return carregarAssetWorker(path, request, env);
+async function carregarEstadoOuAssetWorker(chave, path, request, env, isRefresh = false) {
+  const estado = await carregarEstadoWorker(chave, request, env, isRefresh);
+  if (estado) return { data: estado, fallback: false };
+  const assetData = await carregarAssetWorker(path, request, env);
+  return { data: assetData, fallback: true };
 }
 
 async function handleRadarHybrid(request, env) {
@@ -493,29 +505,19 @@ async function handleRadarHybrid(request, env) {
   }
 
   const url = new URL(request.url);
-  const isRefresh = url.searchParams.has('_t') || url.searchParams.get('refresh') === '1';
-  const cacheControl = isRefresh
-    ? 'no-store, no-cache, must-revalidate'
-    : 'public, max-age=60, s-maxage=300';
-  const headers = {
-    ...CORS_HEADERS,
-    'Content-Type': 'application/json; charset=utf-8',
-    'Cache-Control': cacheControl,
-    'X-Content-Type-Options': 'nosniff',
-  };
-
+  const isRefresh = isRefreshRequest(request);
   const categoriaFiltro = normalizarRadar(url.searchParams.get('categoria') || 'todos');
 
   try {
-    const [vitrineSnap, feedOutput] = await Promise.all([
-      carregarEstadoOuAssetWorker('vitrine_ia', 'data/vitrine_ia.json', request, env),
-      carregarEstadoOuAssetWorker('feed_output', 'data/feed_output.json', request, env),
+    const [vitrineRes, feedRes] = await Promise.all([
+      carregarEstadoOuAssetWorker('vitrine_ia', 'data/vitrine_ia.json', request, env, isRefresh),
+      carregarEstadoOuAssetWorker('feed_output', 'data/feed_output.json', request, env, isRefresh),
     ]);
 
-    const baseSnapshotIso = (vitrineSnap && vitrineSnap.updatedAt) || '2026-11-15T00:00:00Z';
-    const updatedAtIso = isRefresh
-      ? new Date().toISOString()
-      : (vitrineSnap && vitrineSnap.updatedAt) || new Date().toISOString();
+    const vitrineSnap = vitrineRes.data;
+    const feedOutput = feedRes.data;
+    const usedFallback = Boolean(vitrineRes.fallback || feedRes.fallback);
+    const headers = newsResponseHeaders({ isRefresh, isFallback: usedFallback, corsHeaders: CORS_HEADERS });
 
     const temasVitrine =
       vitrineSnap && Array.isArray(vitrineSnap.temas_ativos) && vitrineSnap.temas_ativos.length > 0
@@ -538,12 +540,13 @@ async function handleRadarHybrid(request, env) {
       const score = Number(t.urgencia_score || t.relevancia_score || 85);
       const urlsFontes = Array.isArray(t.fontes_urls) ? t.fontes_urls : [];
       const fonteUrl = urlsFontes[0] || t.fonte_url || t.rota_editoria || '/radar';
-      const dataPub =
+      const dataPub = parseTimestampIso(
         t.data_publicacao ||
         t.created_at ||
         t.publicado_em ||
         t.updated_at ||
-        baseSnapshotIso;
+        ''
+      );
 
       return {
         id: `v2-${slug}`,
@@ -574,11 +577,13 @@ async function handleRadarHybrid(request, env) {
             categoria: normalizarRadar(card.categoria || 'geopolitica') || 'geopolitica',
             fonte_nome: card.fonte_nome || 'Radar Editorial',
             fonte_url: card.fonte_url || '/radar',
-            data_publicacao:
+            data_publicacao: parseTimestampIso(
               card.data_publicacao ||
               card.created_at ||
               card.publicado_em ||
-              baseSnapshotIso,
+              card.updated_at ||
+              ''
+            ),
             origem_v2: false,
             urgencia_score: Number(card.urgencia_score || 70),
             paises_envolvidos: Array.isArray(card.paises_envolvidos) ? card.paises_envolvidos : [],
@@ -597,31 +602,28 @@ async function handleRadarHybrid(request, env) {
       combinados.push(item);
     }
 
-    const combinadosOrdenados = sortirCardsRodizioAmplo(combinados, 2);
-    const filtrados = (categoriaFiltro && categoriaFiltro !== 'todos')
-      ? sortirCardsRodizioAmplo(
-          combinadosOrdenados.filter((it) => normalizarRadar(it.categoria) === categoriaFiltro),
-          2
-        )
-      : combinadosOrdenados;
+    const paraOrdenar = (categoriaFiltro && categoriaFiltro !== 'todos')
+      ? combinados.filter((it) => normalizarRadar(it.categoria) === categoriaFiltro)
+      : combinados;
+    const filtrados = sortirCardsRodizioAmplo(paraOrdenar, 2);
 
-    let maisRecenteIso = updatedAtIso;
-    if (filtrados.length > 0) {
-      let maxTs = 0;
-      for (const it of filtrados) {
-        const ts = Date.parse(it?.data_publicacao || '') || 0;
-        if (ts > maxTs && it?.data_publicacao) {
-          maxTs = ts;
-          maisRecenteIso = it.data_publicacao;
-        }
+    let maisRecenteIso = (vitrineSnap && vitrineSnap.updatedAt) || '';
+    let maxTs = 0;
+    for (const it of filtrados) {
+      const ts = Date.parse(it?.data_publicacao || '') || 0;
+      if (ts > maxTs && it?.data_publicacao) {
+        maxTs = ts;
+        maisRecenteIso = it.data_publicacao;
       }
     }
+    const updatedAtIso = (vitrineSnap && vitrineSnap.updatedAt) || maisRecenteIso || '';
 
     return new Response(JSON.stringify({
       ok: true,
-      cached: !isRefresh,
+      cached: !isRefresh && !usedFallback,
+      fallback: usedFallback,
       source: itensV2.length > 0 ? 'v2_hybrid' : 'feed_output',
-      atualizado_em: formatarRotuloRelativoWorker(maisRecenteIso),
+      atualizado_em: maisRecenteIso ? formatarRotuloRelativoWorker(maisRecenteIso) : '',
       updatedAt: updatedAtIso,
       total: filtrados.length,
       items: filtrados,
@@ -632,12 +634,15 @@ async function handleRadarHybrid(request, env) {
   } catch (err) {
     return new Response(JSON.stringify({
       ok: false,
+      cached: false,
+      fallback: true,
       source: 'error_fallback',
       items: [],
+      total: 0,
       error: 'Falha no processamento do radar híbrido',
     }), {
       status: 200,
-      headers,
+      headers: newsResponseHeaders({ isRefresh, isFallback: true, corsHeaders: CORS_HEADERS }),
     });
   }
 }
@@ -646,34 +651,44 @@ async function handleEntendaOAssunto(request, env, url) {
   if (request.method === 'OPTIONS') {
     return new Response(null, { status: 204, headers: CORS_HEADERS });
   }
-  const backendUrl = String((env && env.CURADORIA_BACKEND_URL) || '').trim().replace(/\/+$/, '');
+  const backendUrl = resolverBackendUrl(env, request);
   const acao = url.searchParams.get('acao') || '';
   const slug = url.searchParams.get('slug') || '';
   const targetPath = slug
     ? `/v2/entenda-o-assunto/${encodeURIComponent(slug)}`
     : (acao === 'colunas' ? '/v2/colunas' : '/v2/colunas');
 
-  if (backendUrl && /^https?:\/\//i.test(backendUrl) && !backendUrl.includes('api.rodandoomundo.com.br')) {
+  if (backendUrl) {
     const proxyUrl = new URL(targetPath + url.search, backendUrl);
-    if (proxyUrl.hostname !== url.hostname) {
-      try {
-        const res = await fetch(proxyUrl.toString(), { headers: { Accept: 'application/json' } });
-        if (res.ok) {
-          const data = await res.json();
-          return new Response(JSON.stringify(data), {
-            status: 200,
-            headers: { ...CORS_HEADERS, 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' }
-          });
-        }
-      } catch (e) {
-        // fallback para resposta offline limpa
+    const ctrl = new AbortController();
+    const timer = setTimeout(() => ctrl.abort(), 9000);
+    try {
+      const res = await fetch(proxyUrl.toString(), {
+        signal: ctrl.signal,
+        cache: 'no-store',
+        headers: {
+          Accept: 'application/json',
+          'X-ROM-Edge-Proxy': '1',
+          'X-Rom-Edge-Hop': '1',
+        },
+      });
+      if (res.ok) {
+        const data = await res.json();
+        return new Response(JSON.stringify(data), {
+          status: 200,
+          headers: { ...CORS_HEADERS, 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store, no-cache, must-revalidate' }
+        });
       }
+    } catch (e) {
+      // fallback para resposta offline limpa
+    } finally {
+      clearTimeout(timer);
     }
   }
 
-  return new Response(JSON.stringify({ ok: false, colunas: [], source: 'offline' }), {
+  return new Response(JSON.stringify({ ok: false, fallback: true, colunas: [], source: 'offline' }), {
     status: 200,
-    headers: { ...CORS_HEADERS, 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' }
+    headers: { ...CORS_HEADERS, 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store, no-cache, must-revalidate' }
   });
 }
 

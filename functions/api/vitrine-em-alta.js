@@ -2,6 +2,13 @@
 // Proxy / Fallback Serverless para a Vitrine de Temas em Alta e Expansão Semântica da Curadoria IA.
 // Segue estritamente o contrato .agents/contracts/SUG-CURADORIA-IA.md.
 import { json, limparTermo } from '../lib/ia.js';
+import {
+  isRefreshRequest,
+  newsResponseHeaders,
+  parseTimestampIso,
+  compararRecenciaDesc,
+  resolverBackendUrl,
+} from '../lib/rss.js';
 
 const CORS_HEADERS = {
   'Access-Control-Allow-Origin': '*',
@@ -132,18 +139,14 @@ function normalizar(str) {
     .trim();
 }
 
-function construirHeadersCache(isRefresh) {
-  return {
-    'Cache-Control': isRefresh
-      ? 'no-store, no-cache, must-revalidate'
-      : 'public, max-age=60, s-maxage=120',
-    'X-Content-Type-Options': 'nosniff',
-    ...CORS_HEADERS,
-  };
+function construirHeadersCache(isRefresh, isFallback = false) {
+  return newsResponseHeaders({ isRefresh, isFallback, corsHeaders: CORS_HEADERS });
 }
 
 function normalizarItemVitrine(item) {
   const cat = item.categoria_primaria || 'Resumo_Ultimas';
+  const dataPub = parseTimestampIso(item.data_publicacao || item.publicado_em || item.created_at || '');
+  const updatedAt = parseTimestampIso(item.updated_at || '') || dataPub;
   return {
     slug: item.slug || '',
     titulo_tema: item.titulo_tema || '',
@@ -155,7 +158,23 @@ function normalizarItemVitrine(item) {
     palavras_chave_busca: Array.isArray(item.palavras_chave_busca) ? item.palavras_chave_busca : [],
     gatilho_vitrine: item.gatilho_vitrine || '',
     sintese_nerd: item.sintese_nerd || '',
+    data_publicacao: dataPub,
+    updated_at: updatedAt,
+    expires_at: item.expires_at || null,
   };
+}
+
+function itemNaoExpirado(item, nowMs = Date.now()) {
+  if (!item || !item.expires_at) return true;
+  const expMs = Date.parse(String(item.expires_at));
+  if (Number.isNaN(expMs)) return true;
+  return expMs > nowMs;
+}
+
+function filtrarExpiradosComResguardo(lista, nowMs = Date.now()) {
+  const validos = (lista || []).filter((it) => it && typeof it === 'object');
+  const naoExpirados = validos.filter((it) => itemNaoExpirado(it, nowMs));
+  return naoExpirados.length > 0 ? naoExpirados : validos;
 }
 
 // Expansão semântica por pontuação ponderada (NUNCA usa tokens.every)
@@ -222,18 +241,36 @@ function expandirTermoLocal(qRaw, temasAtivos) {
   };
 }
 
-async function carregarSnapshotEstatico(request) {
+async function carregarSnapshotEstatico(request, env, isRefresh = false) {
   try {
     const assetUrl = new URL('/data/vitrine_ia.json', request.url);
-    const ctrl = new AbortController();
-    const timer = setTimeout(() => ctrl.abort(), 2000);
-    const resp = await fetch(assetUrl.toString(), { signal: ctrl.signal });
-    clearTimeout(timer);
-    if (resp.ok) {
-      const data = await resp.json();
-      if (data && Array.isArray(data.temas_ativos) && data.temas_ativos.length > 0) {
-        return data;
+    if (env && env.ASSETS && typeof env.ASSETS.fetch === 'function') {
+      const respAsset = await env.ASSETS.fetch(new Request(assetUrl, { method: 'GET' }));
+      if (respAsset && respAsset.ok) {
+        const data = await respAsset.json();
+        if (data && Array.isArray(data.temas_ativos) && data.temas_ativos.length > 0) {
+          return data;
+        }
       }
+    }
+    if (isRefresh) {
+      assetUrl.searchParams.set('_t', String(Date.now()));
+    }
+    const ctrl = new AbortController();
+    const timer = setTimeout(() => ctrl.abort(), 3000);
+    try {
+      const resp = await fetch(assetUrl.toString(), {
+        cache: 'no-store',
+        signal: ctrl.signal,
+      });
+      if (resp && resp.ok) {
+        const data = await resp.json();
+        if (data && Array.isArray(data.temas_ativos) && data.temas_ativos.length > 0) {
+          return data;
+        }
+      }
+    } finally {
+      clearTimeout(timer);
     }
   } catch {
     // Usa fallback embutido
@@ -241,17 +278,24 @@ async function carregarSnapshotEstatico(request) {
   return FALLBACK_SNAPSHOT;
 }
 
-async function consultarBackendExterno(backendUrl, caminho, searchParams) {
+async function consultarBackendExterno(backendUrl, caminho, searchParams, timeoutMs = 9000) {
   const ctrl = new AbortController();
-  const timer = setTimeout(() => ctrl.abort(), 3000);
+  const timer = setTimeout(() => ctrl.abort(), timeoutMs);
   try {
     const alvo = new URL(caminho, backendUrl.endsWith('/') ? backendUrl : backendUrl + '/');
-    searchParams.forEach((v, k) => alvo.searchParams.set(k, v));
+    if (searchParams) {
+      searchParams.forEach((v, k) => alvo.searchParams.set(k, v));
+    }
     const resp = await fetch(alvo.toString(), {
-      headers: { Accept: 'application/json' },
+      cache: 'no-store',
+      headers: {
+        Accept: 'application/json',
+        'X-Rom-Edge-Hop': '1',
+        'X-ROM-Edge-Proxy': '1',
+      },
       signal: ctrl.signal,
     });
-    if (!resp.ok) return null;
+    if (!resp || !resp.ok) return null;
     return await resp.json();
   } catch {
     return null;
@@ -266,8 +310,7 @@ export async function handleVitrineEmAlta(request, env = {}) {
   }
 
   const url = new URL(request.url);
-  const isRefresh = url.searchParams.has('_t') || url.searchParams.get('refresh') === '1';
-  const headers = construirHeadersCache(isRefresh);
+  const isRefresh = isRefreshRequest(request);
 
   const acao = (url.searchParams.get('acao') || '').toLowerCase().trim();
   const q = url.searchParams.get('q') || '';
@@ -276,49 +319,115 @@ export async function handleVitrineEmAlta(request, env = {}) {
   const limiteParam = parseInt(url.searchParams.get('limite') || '6', 10);
   const limite = Number.isNaN(limiteParam) ? 6 : Math.min(20, Math.max(1, limiteParam));
 
-  const backendUrl = String(env.CURADORIA_BACKEND_URL || '').trim();
-  const temBackendAtivo =
-    backendUrl &&
-    /^https?:\/\//i.test(backendUrl) &&
-    !backendUrl.includes('api.rodandoomundo.com.br');
+  const backendUrl = resolverBackendUrl(env, request);
 
   try {
     if (acao === 'expansao') {
-      if (temBackendAtivo && q.trim().length >= 2) {
+      if (backendUrl && q.trim().length >= 2) {
         const params = new URLSearchParams({ q: q.trim() });
-        if (isRefresh) params.set('_t', String(Date.now()));
-        const ext = await consultarBackendExterno(backendUrl, 'v1/busca/expansao', params);
+        if (isRefresh) {
+          params.set('refresh', '1');
+          params.set('force', '1');
+          params.set('_t', String(Date.now()));
+        }
+        const ext = await consultarBackendExterno(backendUrl, 'v1/busca/expansao', params, 9000);
         if (ext && Array.isArray(ext.termos_turbinados)) {
-          return json({ ok: true, ...ext }, 200, headers);
+          return json(
+            { ok: true, fallback: false, ...ext },
+            200,
+            construirHeadersCache(isRefresh, false)
+          );
         }
       }
-      const snap = await carregarSnapshotEstatico(request);
-      const temas = (snap.temas_ativos || []).map(normalizarItemVitrine);
-      return json(expandirTermoLocal(q, temas), 200, headers);
+      const snap = await carregarSnapshotEstatico(request, env, isRefresh);
+      const temas = filtrarExpiradosComResguardo((snap.temas_ativos || []).map(normalizarItemVitrine));
+      return json(
+        { ...expandirTermoLocal(q, temas), fallback: true },
+        200,
+        construirHeadersCache(isRefresh, true)
+      );
     }
 
-    if (temBackendAtivo) {
+    if (backendUrl) {
       const params = new URLSearchParams({ limite: String(limite) });
       if (categoria) params.set('categoria', categoria);
-      if (isRefresh) params.set('_t', String(Date.now()));
-      const ext = await consultarBackendExterno(backendUrl, 'v1/vitrine/em-alta', params);
-      if (ext && Array.isArray(ext.temas_ativos)) {
+      if (isRefresh) {
+        params.set('refresh', '1');
+        params.set('force', '1');
+        params.set('_t', String(Date.now()));
+      }
+      const ext = await consultarBackendExterno(backendUrl, 'v1/vitrine/em-alta', params, 9000);
+      if (ext && Array.isArray(ext.temas_ativos) && ext.temas_ativos.length > 0) {
+        let temasApi = filtrarExpiradosComResguardo(ext.temas_ativos.map(normalizarItemVitrine));
+        if (categoria) {
+          temasApi = temasApi.filter(
+            (t) =>
+              t.categoria_primaria === categoria ||
+              (Array.isArray(t.categorias_cruzadas) && t.categorias_cruzadas.includes(categoria))
+          );
+        }
+        temasApi.sort((a, b) => compararRecenciaDesc(a, b, 'relevancia_score'));
         return json(
           {
             ok: true,
             cached: false,
+            fallback: false,
             source: 'api',
-            updatedAt: ext.updatedAt || new Date().toISOString(),
-            temas_ativos: ext.temas_ativos.map(normalizarItemVitrine).slice(0, limite),
+            updatedAt: ext.updatedAt || '',
+            temas_ativos: temasApi.slice(0, limite),
           },
           200,
-          headers
+          construirHeadersCache(isRefresh, false)
+        );
+      }
+
+      // Fallback ao vivo para /v1/estado/vitrine_ia antes de usar o snapshot estático
+      const estadoParams = isRefresh
+        ? new URLSearchParams({ refresh: '1', _t: String(Date.now()) })
+        : new URLSearchParams();
+      const estadoRaw = await consultarBackendExterno(
+        backendUrl,
+        'v1/estado/vitrine_ia',
+        estadoParams,
+        9000
+      );
+      const estadoPayload =
+        estadoRaw && Object.prototype.hasOwnProperty.call(estadoRaw, 'payload')
+          ? estadoRaw.payload
+          : estadoRaw;
+      if (
+        estadoPayload &&
+        Array.isArray(estadoPayload.temas_ativos) &&
+        estadoPayload.temas_ativos.length > 0
+      ) {
+        let temasEstado = filtrarExpiradosComResguardo(
+          estadoPayload.temas_ativos.map(normalizarItemVitrine)
+        );
+        if (categoria) {
+          temasEstado = temasEstado.filter(
+            (t) =>
+              t.categoria_primaria === categoria ||
+              (Array.isArray(t.categorias_cruzadas) && t.categorias_cruzadas.includes(categoria))
+          );
+        }
+        temasEstado.sort((a, b) => compararRecenciaDesc(a, b, 'relevancia_score'));
+        return json(
+          {
+            ok: true,
+            cached: false,
+            fallback: false,
+            source: 'api',
+            updatedAt: estadoPayload.updatedAt || '',
+            temas_ativos: temasEstado.slice(0, limite),
+          },
+          200,
+          construirHeadersCache(isRefresh, false)
         );
       }
     }
 
-    const snap = await carregarSnapshotEstatico(request);
-    let temas = (snap.temas_ativos || []).map(normalizarItemVitrine);
+    const snap = await carregarSnapshotEstatico(request, env, isRefresh);
+    let temas = filtrarExpiradosComResguardo((snap.temas_ativos || []).map(normalizarItemVitrine));
     if (categoria) {
       temas = temas.filter(
         (t) =>
@@ -326,29 +435,31 @@ export async function handleVitrineEmAlta(request, env = {}) {
           (Array.isArray(t.categorias_cruzadas) && t.categorias_cruzadas.includes(categoria))
       );
     }
-    temas.sort((a, b) => b.relevancia_score - a.relevancia_score);
+    temas.sort((a, b) => compararRecenciaDesc(a, b, 'relevancia_score'));
 
     return json(
       {
         ok: true,
-        cached: !isRefresh,
+        cached: false,
+        fallback: true,
         source: 'snapshot',
-        updatedAt: snap.updatedAt || new Date().toISOString(),
+        updatedAt: snap.updatedAt || '',
         temas_ativos: temas.slice(0, limite),
       },
       200,
-      headers
+      construirHeadersCache(isRefresh, true)
     );
   } catch (err) {
     return json(
       {
         ok: false,
+        fallback: true,
         error: err && err.message ? err.message : 'Erro ao carregar vitrine de curadoria IA',
         temas_ativos: [],
         termos_turbinados: [],
       },
       200,
-      headers
+      construirHeadersCache(isRefresh, true)
     );
   }
 }

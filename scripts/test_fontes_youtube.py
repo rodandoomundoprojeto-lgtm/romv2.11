@@ -196,19 +196,30 @@ class TestYouTubeFontesEconomia(unittest.TestCase):
 
         entry_bad_parsed = MagicMock()
         entry_bad_parsed.published_parsed = "invalid_string_date"
+        entry_bad_parsed.updated_parsed = None
+        entry_bad_parsed.published = None
+        entry_bad_parsed.updated = None
+        entry_bad_parsed.data_publicacao = None
         date_bad = parse_entry_date(entry_bad_parsed)
-        self.assertIn("T", date_bad)
+        self.assertEqual(date_bad, "")
 
         entry_short_tuple = MagicMock()
         entry_short_tuple.published_parsed = (2026, 11)
+        entry_short_tuple.updated_parsed = None
+        entry_short_tuple.published = None
+        entry_short_tuple.updated = None
+        entry_short_tuple.data_publicacao = None
         date_short = parse_entry_date(entry_short_tuple)
-        self.assertIn("T", date_short)
+        self.assertEqual(date_short, "")
 
         entry_none = MagicMock()
         entry_none.published_parsed = None
         entry_none.updated_parsed = None
+        entry_none.published = None
+        entry_none.updated = None
+        entry_none.data_publicacao = None
         date_none = parse_entry_date(entry_none)
-        self.assertIn("T", date_none)
+        self.assertEqual(date_none, "")
 
     def test_database_sync(self):
         """Valida que as fontes estão cadastradas e ativas em ai_fontes_referencia se o DB estiver disponível."""

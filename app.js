@@ -2057,15 +2057,20 @@
     } catch (e) {}
   }
 
+  var DINAMICOS_TTL_MS = 15 * 60 * 1000;
+
   function carregarTopicosDinamicosSalvos(cCode) {
     if (!cCode) return;
     try {
       var a2 = String(cCode).toUpperCase();
-      var raw = localStorage.getItem('rdm_dinamicos_' + a2);
+      var key = 'rdm_dinamicos_' + a2;
+      var raw = localStorage.getItem(key);
       if (raw) {
-        var list = JSON.parse(raw);
-        if (Array.isArray(list) && list.length) {
-          incorporarTopicosEmAlta(a2, list, true);
+        var parsed = JSON.parse(raw);
+        if (parsed && !Array.isArray(parsed) && Array.isArray(parsed.items) && parsed.items.length && Number(parsed.ts) > 0 && (Date.now() - Number(parsed.ts) < DINAMICOS_TTL_MS)) {
+          incorporarTopicosEmAlta(a2, parsed.items, true);
+        } else {
+          localStorage.removeItem(key);
         }
       }
     } catch (e) {}
@@ -2095,7 +2100,7 @@
     if (adicionados.length > 0 && !semSalvar) {
       try {
         var paraSalvar = pool.slice(0, 15);
-        localStorage.setItem('rdm_dinamicos_' + a2, JSON.stringify(paraSalvar));
+        localStorage.setItem('rdm_dinamicos_' + a2, JSON.stringify({ ts: Date.now(), items: paraSalvar }));
       } catch (e) {}
     }
   }
@@ -2121,9 +2126,10 @@
     if (Array.isArray(outlets) && outlets.length) {
       url += '&outlets=' + encodeURIComponent(JSON.stringify(outlets.slice(0, 8)));
     }
+    url += '&_t=' + Date.now();
 
     var doFetch = function (endpoint) {
-      return fetch(endpoint, { headers: { Accept: 'application/json' } });
+      return fetch(endpoint, { cache: 'no-store', headers: { Accept: 'application/json' } });
     };
 
     doFetch(url)
@@ -3722,6 +3728,9 @@
   var v2HotNewsUpdatedLabel = '';
   var hotPulseActive = false;
   var hotPulseTimer = null;
+  var hotNewsInitialFetchDone = false;
+  var hotNewsLiveLoaded = false;
+  var hotNewsFetchSeq = 0;
 
   function getHotNewsForMapPart(p) {
     if (!p || !p.country || !hotNewsByCountry) return null;
@@ -3784,22 +3793,39 @@
   function buildHotNewsMapFromEditorial() {
     var map = {};
 
-    // Prioridade 1: v2HotNewsByCountry (abastecido por /api/noticias-quentes)
+    // Prioridade 1: v2HotNewsByCountry (abastecido ao vivo por /api/noticias-quentes)
     if (v2HotNewsByCountry && typeof v2HotNewsByCountry === 'object') {
       Object.keys(v2HotNewsByCountry).forEach(function (code) {
         var a2 = String(code || '').toUpperCase().trim();
-        if (a2 && v2HotNewsByCountry[code] && !map[a2]) {
-          map[a2] = v2HotNewsByCountry[code];
+        var src = v2HotNewsByCountry[code];
+        if (a2 && src && !map[a2]) {
+          map[a2] = {
+            a2: a2,
+            countryName: src.countryName || a2,
+            title: src.title || '',
+            source: src.source || 'Síntese Rodando o Mundo · V2',
+            category: src.category || 'Radar',
+            url: src.url || '/radar',
+            summary: src.summary || '',
+            termoBusca: src.termoBusca || '',
+            comparacaoSlug: src.comparacaoSlug || null,
+            imageUrl: src.imageUrl || '',
+            publishedAt: src.publishedAt || '',
+            isLive: true
+          };
         }
       });
     }
 
-    // Prioridade 2: Temas ativos da Vitrine IA (vitrineIaMemoryTemas ou lerCacheVitrineIA(true))
-    var vitrineTemas = (Array.isArray(vitrineIaMemoryTemas) && vitrineIaMemoryTemas.length)
-      ? vitrineIaMemoryTemas
-      : (typeof lerCacheVitrineIA === 'function' ? lerCacheVitrineIA(true) : []);
+    // Prioridade 2: Temas ativos frescos da Vitrine IA (TTL respeitado)
+    var vitrineTemas = (typeof lerCacheVitrineIA === 'function') ? lerCacheVitrineIA(false) : [];
     if (Array.isArray(vitrineTemas) && vitrineTemas.length) {
-      vitrineTemas.forEach(function (tm) {
+      var sortedVitrine = vitrineTemas.slice().sort(function (a, b) {
+        var ta = (typeof getVitrineItemTimestamp === 'function') ? getVitrineItemTimestamp(a) : 0;
+        var tb = (typeof getVitrineItemTimestamp === 'function') ? getVitrineItemTimestamp(b) : 0;
+        return tb - ta;
+      });
+      sortedVitrine.forEach(function (tm) {
         if (!tm || !tm.titulo_tema) return;
         var kwsStr = Array.isArray(tm.palavras_chave_busca) ? tm.palavras_chave_busca.join(' ') : '';
         var scanText = [tm.titulo_tema || '', tm.gatilho_vitrine || '', tm.sintese_nerd || '', kwsStr].join(' ');
@@ -3819,16 +3845,22 @@
               category: tm.categoria_primaria || 'Em Alta',
               url: tm.rota_editoria || '/radar',
               summary: tm.sintese_nerd || tm.gatilho_vitrine || '',
-              termoBusca: extrairTermoAssuntoBusca(kwFirst, tm.categoria_primaria)
+              termoBusca: extrairTermoAssuntoBusca(kwFirst, tm.categoria_primaria),
+              publishedAt: tm.data_publicacao || tm.updated_at || ''
             };
           }
         });
       });
     }
 
-    // Prioridade 3: radarFeedCache (usando paises_envolvidos ou inferirPaisesDeTextoClient)
-    if (Array.isArray(radarFeedCache) && radarFeedCache.length) {
-      radarFeedCache.forEach(function (rItem) {
+    // Prioridade 3: radarFeedCache ao vivo (ignora fallback estático e ordena do mais recente ao mais antigo)
+    if (Array.isArray(radarFeedCache) && radarFeedCache.length && !radarFeedIsFallback) {
+      var sortedRadar = radarFeedCache.slice().sort(function (a, b) {
+        var ta = (typeof getRadarPubTimestamp === 'function') ? getRadarPubTimestamp(a) : 0;
+        var tb = (typeof getRadarPubTimestamp === 'function') ? getRadarPubTimestamp(b) : 0;
+        return tb - ta;
+      });
+      sortedRadar.forEach(function (rItem) {
         if (!rItem || !rItem.titulo) return;
         var rCodes = [];
         if (Array.isArray(rItem.paises_envolvidos) && rItem.paises_envolvidos.length) {
@@ -3854,15 +3886,16 @@
               url: rUrl,
               summary: rItem.resumo || '',
               termoBusca: extrairTermoAssuntoBusca(rItem.titulo, rItem.categoria),
-              dominio: rItem.dominio || ''
+              dominio: rItem.dominio || '',
+              publishedAt: rItem.data_publicacao || rItem.updated_at || ''
             };
           }
         });
       });
     }
 
-    // Prioridade 4: EDITORIAL.resumoDoDia (inferindo país pelo título/resumo primeiro para evitar UA/US fixos incorretos)
-    if (EDITORIAL && Array.isArray(EDITORIAL.resumoDoDia)) {
+    // Prioridade 4: EDITORIAL.resumoDoDia somente quando carregado ao vivo (nunca itens estáticos de data/editorial.js)
+    if (EDITORIAL && EDITORIAL._resumoLiveLoaded === true && Array.isArray(EDITORIAL.resumoDoDia)) {
       EDITORIAL.resumoDoDia.forEach(function (item) {
         if (!item || !item.titulo) return;
         var scanTxt = (item.titulo || '') + ' ' + (item.resumoCurto || item.resumo || '');
@@ -3881,86 +3914,13 @@
             summary: item.resumoCurto || item.resumo || '',
             termoBusca: extrairTermoAssuntoBusca(item.termoBusca || item.titulo, item.categoria),
             comparacaoSlug: item.comparacaoSlug || null,
-            dominio: item.dominio || ''
+            dominio: item.dominio || '',
+            publishedAt: item.publicadoEm || ''
           };
         }
       });
     }
 
-    var curatedPulsingDefaults = [
-      {
-        a2: 'BR',
-        title: 'Planalto e Congresso negociam Orçamento, meta fiscal e regras para emendas parlamentares',
-        shortTitle: 'Meta fiscal e pacote de corte de gastos',
-        source: 'Folha de S.Paulo',
-        category: 'Brasil · Política & Fiscal',
-        url: 'https://folha.uol.com.br/',
-        summary: 'Articulação entre Executivo e Legislativo busca equilibrar o cumprimento do arcabouço fiscal com transparência nas emendas.',
-        comparacaoSlug: 'orcamento-brasil-fiscal'
-      },
-      {
-        a2: 'US',
-        title: 'Transição e novas diretrizes em Washington sobre tarifas mobilizam governos e mercados globais',
-        shortTitle: 'Tarifas comerciais e reação global',
-        source: 'Associated Press',
-        category: 'Geopolítica & Economia',
-        url: 'https://apnews.com/hub/donald-trump',
-        summary: 'Definições da Casa Branca sobre tarifas comerciais levam União Europeia, China e América Latina a recalibrar estratégias.',
-        comparacaoSlug: 'transicao-eua-tarifas'
-      },
-      {
-        a2: 'UA',
-        title: 'Negociações diplomáticas e segurança energética na Europa Oriental',
-        shortTitle: 'Negociações de cessar-fogo e segurança no Leste Europeu',
-        source: 'The Kyiv Independent',
-        category: 'Segurança Internacional',
-        url: 'https://kyivindependent.com/',
-        summary: 'Encontros diplomáticos abordam infraestrutura elétrica e rotas de abastecimento no leste europeu.',
-        comparacaoSlug: null
-      },
-      {
-        a2: 'GB',
-        title: 'Reino Unido debate acordos comerciais pós-Brexit e orçamento de defesa europeu',
-        shortTitle: 'Acordos comerciais pós-Brexit e defesa europeia',
-        source: 'BBC News',
-        category: 'Europa & Economia',
-        url: 'https://www.bbc.com/news',
-        summary: 'Parlamento britânico discute cooperação comercial e financiamento estratégico com aliados europeus.',
-        comparacaoSlug: null
-      },
-      {
-        a2: 'FR',
-        title: 'Impasse orçamentário na Assembleia Nacional francesa e diretrizes da União Europeia',
-        shortTitle: 'Impasse orçamentário na Assembleia Nacional e UE',
-        source: 'Le Monde',
-        category: 'Política Europeia',
-        url: 'https://www.lemonde.fr/',
-        summary: 'Bancadas debatem metas de déficit público e competitividade industrial no bloco europeu.',
-        comparacaoSlug: null
-      }
-    ];
-
-    curatedPulsingDefaults.forEach(function (fb) {
-      var cObj = byA2[fb.a2];
-      if (!map[fb.a2]) {
-        map[fb.a2] = {
-          a2: fb.a2,
-          countryName: (cObj && cObj.n) || fb.a2,
-          title: fb.title,
-          shortTitle: fb.shortTitle,
-          source: fb.source,
-          category: fb.category || 'Destaque',
-          url: fb.url,
-          summary: fb.summary,
-          termoBusca: extrairTermoAssuntoBusca(fb.shortTitle || fb.title, fb.category || 'Destaque'),
-          comparacaoSlug: fb.comparacaoSlug || null
-        };
-      } else {
-        if (!map[fb.a2].shortTitle) map[fb.a2].shortTitle = fb.shortTitle;
-        if (fb.a2 === 'BR' && !map[fb.a2].comparacaoSlug) map[fb.a2].comparacaoSlug = 'orcamento-brasil-fiscal';
-        if (fb.a2 === 'US' && !map[fb.a2].comparacaoSlug) map[fb.a2].comparacaoSlug = 'transicao-eua-tarifas';
-      }
-    });
     return map;
   }
 
@@ -3977,10 +3937,6 @@
     var a2 = String(paisIso || '').toUpperCase().trim();
     if (!a2) return [];
     var slug = (hotItem && hotItem.comparacaoSlug) || '';
-    if (!slug) {
-      if (a2 === 'BR') slug = 'orcamento-brasil-fiscal';
-      else if (a2 === 'US') slug = 'transicao-eua-tarifas';
-    }
     var comp = (slug && EDITORIAL && EDITORIAL.comparacoes && EDITORIAL.comparacoes[slug])
       ? EDITORIAL.comparacoes[slug]
       : null;
@@ -4041,6 +3997,10 @@
 
   function getDestaquesPulsando() {
     if (!hotNewsByCountry || !Object.keys(hotNewsByCountry).length) {
+      var hasLiveV2 = !!(v2HotNewsByCountry && Object.keys(v2HotNewsByCountry).length > 0);
+      if (!hotNewsInitialFetchDone && !hasLiveV2) {
+        return [];
+      }
       hotNewsByCountry = buildHotNewsMapFromEditorial();
     }
     var preferredOrder = ['BR', 'US', 'UA', 'GB', 'FR', 'DE', 'AR', 'CN', 'IL', 'JP'];
@@ -4062,8 +4022,8 @@
       var veiculosFiltrados = (cMed && Array.isArray(cMed.outlets)) ? cMed.outlets : [];
       var manchetesAgrupadas = obterManchetesAgrupadasPorEspectro(iso, hot);
       var temComparacao = manchetesAgrupadas.length >= 2;
-      var compSlug = hot.comparacaoSlug || (iso === 'BR' ? 'orcamento-brasil-fiscal' : (iso === 'US' ? 'transicao-eua-tarifas' : ''));
-      var rawTitle = hot.shortTitle || hot.title || 'Notícias em destaque agora';
+      var compSlug = (hot && hot.comparacaoSlug) || '';
+      var rawTitle = (hot && (hot.title || hot.shortTitle)) || 'Notícias em destaque agora';
 
       return {
         paisIso: iso,
@@ -4130,13 +4090,16 @@
   }
 
   function renderPulsandoAgoraTrack() {
+    var containerEl = document.getElementById('pulsando-agora-container');
     var trackEl = document.getElementById('pulsando-agora-track');
     if (!trackEl) return;
     var destaques = getDestaquesPulsando();
     if (!destaques || !destaques.length) {
       trackEl.innerHTML = '';
+      if (containerEl) containerEl.hidden = true;
       return;
     }
+    if (containerEl) containerEl.hidden = false;
 
     var activeIso = (state && state.country && state.country.a2) ? String(state.country.a2).toUpperCase() : '';
     var html = '';
@@ -4248,6 +4211,7 @@
           }
         } else {
           card.classList.remove('hot-spot-marker', 'hot-spot-pulsing');
+          card.removeAttribute('title');
         }
       });
     }
@@ -4276,6 +4240,10 @@
   // =========================================================================
   var AUTONOMOUS_INTERVAL_MS = 6 * 60 * 1000; // 6 minutos (faixa 5-8 min)
   var VISIBILITY_STALE_MS = 10 * 60 * 1000; // 10 minutos para revalidar ao voltar para a aba
+  var MAX_AUTONOMOUS_DEFER_MS = 90 * 1000; // Máximo 90s de adiamento antes de aplicar fora de interação ativa
+  var EXPANDED_READING_WINDOW_MS = 2 * 60 * 1000; // Janela de leitura para card expandido
+  var unifiedVisibilityBound = false;
+  var autonomousDeferTimer = null;
 
   var pendingAutonomousUpdates = {
     radar: null,
@@ -4284,12 +4252,37 @@
     hotNews: null
   };
 
+  var pendingAutonomousQueuedAt = {
+    radar: 0,
+    vitrineIa: 0,
+    entendaV2: 0,
+    hotNews: 0
+  };
+
   var lastAutonomousFetchTimestamps = {
     radar: 0,
     vitrineIa: 0,
     entendaV2: 0,
     hotNews: 0
   };
+
+  function hasActiveHoverOrSelectionOrFocus(el) {
+    if (!el || el.hidden) return false;
+    try {
+      if (el.matches && el.matches(':hover')) return true;
+      if (el.querySelector && el.querySelector(':hover')) return true;
+    } catch (e) {}
+    try {
+      if (el.contains && document.activeElement && document.activeElement !== document.body && el.contains(document.activeElement)) return true;
+      if (window.getSelection) {
+        var sel = window.getSelection();
+        if (sel && sel.rangeCount > 0 && !sel.isCollapsed && sel.anchorNode && el.contains && el.contains(sel.anchorNode)) {
+          return true;
+        }
+      }
+    } catch (e) {}
+    return false;
+  }
 
   function isUserReadingOrInteractingWith(elementOrId) {
     var el = typeof elementOrId === 'string' ? document.getElementById(elementOrId) : elementOrId;
@@ -4303,25 +4296,43 @@
     var inViewport = (rect.bottom > 50 && rect.top < vh - 50 && rect.right > 0 && rect.left < vw);
     if (!inViewport) return false;
 
-    // Hover ativo ou cursor sobre o elemento
-    try {
-      if (el.matches(':hover') || el.querySelector(':hover')) return true;
-    } catch (e) {}
+    if (hasActiveHoverOrSelectionOrFocus(el)) return true;
 
-    // Foco ou seleção ativa de texto pelo leitor
+    // Card ou sanfona expandida dentro da janela ativa de leitura (não bloqueia indefinidamente)
     try {
-      if (el.contains(document.activeElement) && document.activeElement !== document.body) return true;
-      var sel = window.getSelection();
-      if (sel && sel.rangeCount > 0 && !sel.isCollapsed && sel.anchorNode && el.contains(sel.anchorNode)) {
-        return true;
+      var expandedNodes = el.querySelectorAll ? el.querySelectorAll('.is-expanded, [aria-expanded="true"]') : [];
+      if (expandedNodes && expandedNodes.length) {
+        var nowExp = Date.now();
+        for (var i = 0; i < expandedNodes.length; i++) {
+          var node = expandedNodes[i];
+          var expAt = Number(node.getAttribute && node.getAttribute('data-expanded-at') || 0);
+          if (!expAt) {
+            if (node.setAttribute) node.setAttribute('data-expanded-at', String(nowExp));
+            return true;
+          }
+          if (nowExp - expAt < EXPANDED_READING_WINDOW_MS) {
+            return true;
+          }
+        }
       }
     } catch (e) {}
 
-    // Card ou sanfona expandida pelo usuário
-    if (el.querySelector('.is-expanded, [aria-expanded="true"]')) return true;
-
     // Visível, mas sem interação ativa: pode receber atualizações suaves sem atrapalhar a leitura.
     return false;
+  }
+
+  function queueAutonomousUpdate(key, updateFn) {
+    if (!key || typeof updateFn !== 'function') return;
+    pendingAutonomousUpdates[key] = updateFn;
+    if (!pendingAutonomousQueuedAt[key]) {
+      pendingAutonomousQueuedAt[key] = Date.now();
+    }
+    if (!autonomousDeferTimer) {
+      autonomousDeferTimer = setTimeout(function () {
+        autonomousDeferTimer = null;
+        flushPendingAutonomousUpdates();
+      }, MAX_AUTONOMOUS_DEFER_MS + 100);
+    }
   }
 
   function flushPendingAutonomousUpdates() {
@@ -4333,32 +4344,51 @@
       hotNews: 'pulsando-agora-container'
     };
 
+    var hasRemaining = false;
+    var nowFlush = Date.now();
     keys.forEach(function (k) {
       if (typeof pendingAutonomousUpdates[k] === 'function') {
         var elId = targetElements[k];
-        if (document.hidden || !isUserReadingOrInteractingWith(elId)) {
+        var el = document.getElementById(elId);
+        var queuedAt = pendingAutonomousQueuedAt[k] || 0;
+        var maxDeferExpired = queuedAt > 0 && (nowFlush - queuedAt >= MAX_AUTONOMOUS_DEFER_MS) && !hasActiveHoverOrSelectionOrFocus(el);
+        if (document.hidden || !isUserReadingOrInteractingWith(elId) || maxDeferExpired) {
           var updateFn = pendingAutonomousUpdates[k];
           pendingAutonomousUpdates[k] = null;
+          pendingAutonomousQueuedAt[k] = 0;
           try {
             updateFn();
           } catch (e) {
             console.warn('[AutonomousUpdate] Erro ao aplicar atualização suave (' + k + '):', e);
           }
+        } else {
+          hasRemaining = true;
         }
       }
     });
+    if (!hasRemaining && autonomousDeferTimer) {
+      clearTimeout(autonomousDeferTimer);
+      autonomousDeferTimer = null;
+    } else if (hasRemaining && !autonomousDeferTimer) {
+      autonomousDeferTimer = setTimeout(function () {
+        autonomousDeferTimer = null;
+        flushPendingAutonomousUpdates();
+      }, 15000);
+    }
   }
 
   function startUnifiedAutonomousUpdates() {
+    unifiedVisibilityBound = true;
     // 1. Polling contínuo autônomo em segundo plano (a cada 6 minutos)
     setInterval(function () {
       if (document.hidden) return;
+      flushPendingAutonomousUpdates();
       checkHotNewsOnMap(true);
       if (typeof carregarVitrineIA === 'function') {
         carregarVitrineIA({ isAutoRefresh: true, categoria: vitrineIaSelectedCategory });
       }
       if (typeof renderDossiesRotativosHome === 'function') renderDossiesRotativosHome();
-      if (state && state.editorialSection === 'radar' && typeof loadRadarCards === 'function') {
+      if (state && state.editorialSection === 'radar' && typeof loadRadarCards === 'function' && (Date.now() - radarLastFetchAt >= RADAR_AUTO_REFRESH_MS - 30000)) {
         loadRadarCards(false, true);
       }
       if (typeof carregarColunasEntendaV2 === 'function') {
@@ -4366,7 +4396,7 @@
       }
     }, AUTONOMOUS_INTERVAL_MS);
 
-    // 2. Revalidação ao alternar de aba (visibilitychange)
+    // 2. Revalidação ao alternar de aba (visibilitychange único e deduplicado)
     document.addEventListener('visibilitychange', function () {
       if (document.hidden) {
         flushPendingAutonomousUpdates();
@@ -4379,7 +4409,8 @@
           carregarVitrineIA({ isAutoRefresh: true, categoria: vitrineIaSelectedCategory });
         }
         if (typeof renderDossiesRotativosHome === 'function') renderDossiesRotativosHome();
-        if (state && state.editorialSection === 'radar' && typeof loadRadarCards === 'function' && (now - lastAutonomousFetchTimestamps.radar >= VISIBILITY_STALE_MS)) {
+        var lastRadarTs = Math.max(lastAutonomousFetchTimestamps.radar || 0, radarLastFetchAt || 0);
+        if (state && state.editorialSection === 'radar' && typeof loadRadarCards === 'function' && (now - lastRadarTs >= RADAR_AUTO_REFRESH_MS)) {
           loadRadarCards(false, true);
         }
         if (typeof carregarColunasEntendaV2 === 'function' && (now - lastAutonomousFetchTimestamps.entendaV2 >= VISIBILITY_STALE_MS)) {
@@ -4389,7 +4420,7 @@
       }
     });
 
-    // 3. Despejo suave de buffer quando o leitor rolar para fora da seção
+    // 3. Despejo suave de buffer quando o leitor rolar para fora ou encerrar hover/foco
     var scrollThrottleTimer = null;
     window.addEventListener('scroll', function () {
       if (scrollThrottleTimer) return;
@@ -4398,6 +4429,20 @@
         flushPendingAutonomousUpdates();
       }, 300);
     }, { passive: true });
+
+    var interactionFlushTimer = null;
+    function scheduleInteractionFlush(e) {
+      var t = e && e.target;
+      if (!t || !t.closest) return;
+      if (!t.closest('#radar-cards-list, #vitrine-ia-grid, #pulsando-agora-container, #radar-v2-colunas-wrap')) return;
+      if (interactionFlushTimer) clearTimeout(interactionFlushTimer);
+      interactionFlushTimer = setTimeout(function () {
+        interactionFlushTimer = null;
+        flushPendingAutonomousUpdates();
+      }, 250);
+    }
+    document.addEventListener('mouseleave', scheduleInteractionFlush, true);
+    document.addEventListener('focusout', scheduleInteractionFlush, true);
   }
 
   function triggerHotNewsPulseCycle() {
@@ -4406,10 +4451,10 @@
     updateHotNewsPillUI();
     var pulsandoEl = document.getElementById('pulsando-agora-container');
     if (isUserReadingOrInteractingWith(pulsandoEl)) {
-      pendingAutonomousUpdates.hotNews = function () {
+      queueAutonomousUpdate('hotNews', function () {
         renderPulsandoAgoraTrack();
         syncQuickCountryCardsHotNews();
-      };
+      });
     } else {
       renderPulsandoAgoraTrack();
       syncQuickCountryCardsHotNews();
@@ -4440,38 +4485,62 @@
 
   function checkHotNewsOnMap(isPeriodic) {
     lastAutonomousFetchTimestamps.hotNews = Date.now();
-    if (!isPeriodic) {
-      triggerHotNewsPulseCycle();
-    }
+    var seq = ++hotNewsFetchSeq;
     var hotUrl = '/api/noticias-quentes?_t=' + Date.now() + (isPeriodic ? '&refresh=1' : '');
     fetch(hotUrl, { cache: 'no-store', headers: { Accept: 'application/json' } })
-      .then(function (r) { return r && r.ok ? r.json() : null; })
+      .then(function (r) {
+        if (!r || !r.ok) throw new Error('HTTP ' + (r ? r.status : 0));
+        return r.json();
+      })
       .then(function (data) {
-        if (!data || !data.ok) return;
+        if (seq !== hotNewsFetchSeq) return;
+        if (!data || !data.ok) throw new Error('Payload inválido');
         var nextV2Map = {};
         if (Array.isArray(data.paises_em_alta)) {
-          data.paises_em_alta.forEach(function (pa) {
-            if (!pa || !pa.a2) return;
-            var a2 = String(pa.a2).toUpperCase().trim();
+          var sortedPaises = data.paises_em_alta.slice().sort(function (a, b) {
+            var ta = Date.parse((a && (a.data_publicacao || a.updated_at)) || '') || 0;
+            var tb = Date.parse((b && (b.data_publicacao || b.updated_at)) || '') || 0;
+            if (tb !== ta) return tb - ta;
+            return (Number(b && b.urgencia_score) || 0) - (Number(a && a.urgencia_score) || 0);
+          });
+          sortedPaises.forEach(function (pa) {
+            var rawA2 = pa && (pa.a2 || pa.pais_a2);
+            if (!pa || !rawA2) return;
+            var a2 = String(rawA2).toUpperCase().trim();
             var cObj = byA2[a2];
-            if (a2 && !nextV2Map[a2]) {
+            var paTitle = pa.title || pa.titulo || '';
+            if (a2 && paTitle && !nextV2Map[a2]) {
               nextV2Map[a2] = {
                 a2: a2,
                 countryName: pa.countryName || (cObj && cObj.n) || a2,
-                title: pa.title || '',
+                title: paTitle,
                 source: pa.source || data.identificacao_editorial || 'Síntese Rodando o Mundo · V2',
                 category: pa.category || 'Radar',
                 url: pa.url || '/radar',
                 summary: pa.summary || '',
-                termoBusca: extrairTermoAssuntoBusca(pa.termoBusca || pa.title || '', pa.category || 'Radar')
+                termoBusca: extrairTermoAssuntoBusca(pa.termoBusca || paTitle, pa.category || 'Radar'),
+                comparacaoSlug: pa.comparacaoSlug || pa.comparacao_slug || null,
+                publishedAt: pa.data_publicacao || pa.updated_at || '',
+                isLive: true
               };
             }
           });
         }
         if (Array.isArray(data.noticias_quentes)) {
-          data.noticias_quentes.forEach(function (nq) {
-            if (!nq || !nq.titulo_curto) return;
+          var sortedHot = data.noticias_quentes.slice().sort(function (a, b) {
+            var ta = Date.parse((a && (a.data_publicacao || a.updated_at)) || '') || 0;
+            var tb = Date.parse((b && (b.data_publicacao || b.updated_at)) || '') || 0;
+            if (tb !== ta) return tb - ta;
+            return (Number(b && b.urgencia_score) || 0) - (Number(a && a.urgencia_score) || 0);
+          });
+          sortedHot.forEach(function (nq) {
+            var nqTitle = nq && (nq.title || nq.titulo || nq.titulo_curto);
+            if (!nq || !nqTitle) return;
             var codes = [];
+            if (nq.pais_a2) {
+              var directUp = String(nq.pais_a2).toUpperCase().trim();
+              if (directUp) codes.push(directUp);
+            }
             if (Array.isArray(nq.paises_envolvidos) && nq.paises_envolvidos.length) {
               nq.paises_envolvidos.forEach(function (c) {
                 var up = String(c || '').toUpperCase().trim();
@@ -4479,7 +4548,7 @@
               });
             }
             if (!codes.length) {
-              var scan = [nq.titulo_curto || '', nq.resumo_pulso || '', (nq.palavras_chave || []).join(' ')].join(' ');
+              var scan = [nqTitle, nq.resumo_pulso || '', (nq.palavras_chave || []).join(' ')].join(' ');
               codes = inferirPaisesDeTextoClient(scan);
             }
             codes.forEach(function (a2) {
@@ -4487,39 +4556,49 @@
                 var cObj = byA2[a2];
                 var srcName = (Array.isArray(nq.veiculos_origem) && nq.veiculos_origem[0]) || data.identificacao_editorial || 'Síntese Rodando o Mundo · V2';
                 var fUrl = (Array.isArray(nq.fontes_urls) && nq.fontes_urls[0]) || '/radar';
-                var kw = (Array.isArray(nq.palavras_chave) && nq.palavras_chave[0]) || nq.titulo_curto;
+                var kw = (Array.isArray(nq.palavras_chave) && nq.palavras_chave[0]) || nqTitle;
                 nextV2Map[a2] = {
                   a2: a2,
                   countryName: (cObj && cObj.n) || a2,
-                  title: nq.titulo_curto,
+                  title: nqTitle,
                   source: srcName,
                   category: nq.categoria || 'Radar',
                   url: fUrl,
                   summary: nq.resumo_pulso || nq.impacto_pratico || '',
-                  termoBusca: extrairTermoAssuntoBusca(kw, nq.categoria || 'Radar')
+                  termoBusca: extrairTermoAssuntoBusca(kw, nq.categoria || 'Radar'),
+                  comparacaoSlug: nq.comparacaoSlug || nq.comparacao_slug || null,
+                  publishedAt: nq.data_publicacao || nq.updated_at || '',
+                  isLive: true
                 };
               }
             });
           });
         }
-        if (Object.keys(nextV2Map).length > 0) {
-          v2HotNewsByCountry = nextV2Map;
-        }
-        if (data.atualizado_em) {
-          v2HotNewsUpdatedLabel = data.atualizado_em;
-        }
+        v2HotNewsByCountry = nextV2Map;
+        v2HotNewsUpdatedLabel = Object.keys(nextV2Map).length ? (data.atualizado_em || '') : '';
+        hotNewsInitialFetchDone = true;
+        hotNewsLiveLoaded = true;
       })
-      .catch(function () {})
+      .catch(function () {
+        if (seq !== hotNewsFetchSeq) return;
+        if (!isPeriodic || !hotNewsLiveLoaded) {
+          v2HotNewsByCountry = {};
+          v2HotNewsUpdatedLabel = '';
+        }
+        hotNewsInitialFetchDone = true;
+      })
       .finally(function () {
-        triggerHotNewsPulseCycle();
+        if (seq === hotNewsFetchSeq) {
+          triggerHotNewsPulseCycle();
+        }
       });
 
     if (isPeriodic) {
       fetch('/api/resumo?_t=' + Date.now(), { cache: 'no-store', headers: { Accept: 'application/json' } })
         .then(function (r) { return r && r.ok ? r.json() : null; })
         .then(function (data) {
-          if (data && Array.isArray(data.items) && data.items.length) {
-            EDITORIAL.resumoDoDia = data.items;
+          if (typeof aplicarDadosResumoDoDia === 'function' && aplicarDadosResumoDoDia(data)) {
+            renderResumoDoDiaDOM();
           }
         })
         .catch(function () {})
@@ -5250,6 +5329,20 @@
     }
   }
 
+  var ATLAS_PAIS_TTL_MS = 3 * 60 * 1000;
+  var atlasSessionRevalidated = {};
+
+  function sortAtlasPaisItems(items) {
+    if (!Array.isArray(items)) return [];
+    return items.slice().sort(function (a, b) {
+      var da = a && a.publishedAt ? new Date(a.publishedAt).getTime() : 0;
+      var db = b && b.publishedAt ? new Date(b.publishedAt).getTime() : 0;
+      if (isNaN(da)) da = 0;
+      if (isNaN(db)) db = 0;
+      return db - da;
+    });
+  }
+
   function renderAtlasPaisItems(items, cCode, updatedAtIso) {
     var listEl = panel.querySelector('#atlas-live-news-list');
     var updatedEl = panel.querySelector('#atlas-live-updated-label');
@@ -5267,13 +5360,7 @@
     }
 
     // SUG-181: sempre 4 manchetes, da última notícia (mais recente) para a mais antiga.
-    var orderedItems = items.slice().sort(function (a, b) {
-      var da = a && a.publishedAt ? new Date(a.publishedAt).getTime() : 0;
-      var db = b && b.publishedAt ? new Date(b.publishedAt).getTime() : 0;
-      if (isNaN(da)) da = 0;
-      if (isNaN(db)) db = 0;
-      return db - da;
-    });
+    var orderedItems = sortAtlasPaisItems(items);
 
     var html = '';
     orderedItems.slice(0, 4).forEach(function (it, idx) {
@@ -5325,9 +5412,10 @@
   function ensureAtlasItemsTranslated(items, cCode, onTranslated) {
     var isLusophone = ['BR', 'PT', 'AO', 'MZ', 'CV', 'GW', 'ST', 'TL'].indexOf(String(cCode || '').toUpperCase()) !== -1;
     if (isLusophone || !Array.isArray(items) || !items.length) return;
+    var orderedItems = sortAtlasPaisItems(items);
     var pendingMap = {};
     var hasPending = false;
-    items.slice(0, 4).forEach(function (it, idx) {
+    orderedItems.slice(0, 4).forEach(function (it, idx) {
       var orig = String(it.titleOriginal || it.titlePt || '').trim();
       var pt = String(it.titlePt || '').trim();
       if (orig && (!pt || pt === orig)) {
@@ -5344,15 +5432,15 @@
         var tr = translatedMap[k];
         if (tr && typeof tr === 'string') {
           var trTrim = tr.trim();
-          if (trTrim && items[idx] && trTrim !== items[idx].titlePt) {
-            items[idx].titlePt = trTrim;
-            if (!items[idx].titleOriginal) items[idx].titleOriginal = pendingMap[k];
+          if (trTrim && orderedItems[idx] && trTrim !== orderedItems[idx].titlePt) {
+            orderedItems[idx].titlePt = trTrim;
+            if (!orderedItems[idx].titleOriginal) orderedItems[idx].titleOriginal = pendingMap[k];
             changed = true;
           }
         }
       });
       if (changed && typeof onTranslated === 'function') {
-        onTranslated(items);
+        onTranslated(orderedItems);
       }
     }).catch(function () {});
   }
@@ -5371,15 +5459,16 @@
     var listEl = panel.querySelector('#atlas-live-news-list');
 
     if (forceRefresh) {
+      delete atlasSessionRevalidated[cCode];
       try { localStorage.removeItem(cacheKey); } catch (e) {}
       if (refreshBtn) refreshBtn.classList.add('is-refreshing');
       if (listEl) listEl.classList.add('is-loading');
-    } else {
+    } else if (atlasSessionRevalidated[cCode] && (Date.now() - atlasSessionRevalidated[cCode] < ATLAS_PAIS_TTL_MS)) {
       try {
         var raw = localStorage.getItem(cacheKey);
         if (raw) {
           var parsed = JSON.parse(raw);
-          if (parsed && Array.isArray(parsed.items) && parsed.items.length && (Date.now() - (parsed.ts || 0) < 15 * 60 * 1000)) {
+          if (parsed && Array.isArray(parsed.items) && parsed.items.length && Number(parsed.ts) > 0 && (Date.now() - Number(parsed.ts) < ATLAS_PAIS_TTL_MS)) {
             renderAtlasPaisItems(parsed.items, cCode, parsed.updatedAt);
             ensureAtlasItemsTranslated(parsed.items, cCode, function (updatedItems) {
               try {
@@ -5402,9 +5491,10 @@
       } catch (e) {}
     }
 
-    var qs = '?pais=' + encodeURIComponent(cCode) + '&nome=' + encodeURIComponent(cName) + (forceRefresh ? '&refresh=1&_t=' + Date.now() : '');
+    var qs = '?pais=' + encodeURIComponent(cCode) + '&nome=' + encodeURIComponent(cName) + '&_t=' + Date.now() + (forceRefresh ? '&refresh=1' : '');
     var url = '/api/atlas-pais' + qs;
-    var fetchOpts = { cache: forceRefresh ? 'no-store' : 'default', headers: { Accept: 'application/json' } };
+    var fetchOpts = { cache: 'no-store', headers: { Accept: 'application/json' } };
+    var fromLiveApi = false;
 
     function parseJsonIfValid(resp) {
       if (!resp || !resp.ok) return Promise.resolve(null);
@@ -5418,24 +5508,27 @@
         ? 'https://news.google.com/rss/headlines/section/geo/Brasil?hl=pt-BR&gl=BR&ceid=BR:pt-419'
         : 'https://news.google.com/rss/search?q=' + encodeURIComponent(cName) + '&hl=en&gl=' + encodeURIComponent(cCode) + '&ceid=' + encodeURIComponent(cCode) + ':en';
       var proxyUrl = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(rssTarget);
-      return fetch(proxyUrl)
+      return fetch(proxyUrl, { cache: 'no-store' })
         .then(function (r) { return r.ok ? r.json() : null; })
         .then(function (j) {
           if (!j || j.status !== 'ok' || !Array.isArray(j.items)) return null;
-          var mapped = j.items.slice(0, 4).map(function (it) {
+          var mapped = j.items.map(function (it) {
             var rawT = String(it.title || '').trim();
             var dash = rawT.lastIndexOf(' - ');
             var cleanT = dash > 15 ? rawT.slice(0, dash).trim() : rawT;
             var src = dash > 15 ? rawT.slice(dash + 3).trim() : (it.author || 'Imprensa Internacional');
+            var dt = it.pubDate ? new Date(String(it.pubDate).replace(' ', 'T') + 'Z') : null;
+            var isoPub = (dt && !isNaN(dt.getTime())) ? dt.toISOString() : '';
             return {
               titleOriginal: cleanT,
               titlePt: cleanT,
               url: it.link,
               source: src,
-              publishedAt: it.pubDate ? new Date(it.pubDate.replace(' ', 'T') + 'Z').toISOString() : new Date().toISOString()
+              publishedAt: isoPub
             };
-          });
-          return { ok: true, updatedAt: new Date().toISOString(), items: mapped };
+          }).filter(function (it) { return it.titleOriginal && it.url; });
+          var sortedFallback = sortAtlasPaisItems(mapped).slice(0, 8);
+          return { ok: true, updatedAt: '', items: sortedFallback, fallback: true };
         })
         .catch(function () { return null; });
     }
@@ -5451,7 +5544,10 @@
         return null;
       })
       .then(function (data) {
-        if (data && data.ok && Array.isArray(data.items) && data.items.length) return data;
+        if (data && data.ok && Array.isArray(data.items) && data.items.length) {
+          fromLiveApi = !data.fallback;
+          return data;
+        }
         return fallbackRssBrowser();
       })
       .then(function (data) {
@@ -5460,15 +5556,21 @@
         if (!currentFeed || currentFeed.getAttribute('data-country') !== String(cCode)) return;
 
         if (data && data.ok && Array.isArray(data.items) && data.items.length) {
+          var sortedItems = sortAtlasPaisItems(data.items);
           var savedTs = Date.now();
-          try {
-            localStorage.setItem(cacheKey, JSON.stringify({ ts: savedTs, updatedAt: data.updatedAt, items: data.items }));
-          } catch (e) {}
-          renderAtlasPaisItems(data.items, cCode, data.updatedAt);
-          ensureAtlasItemsTranslated(data.items, cCode, function (updatedItems) {
+          if (fromLiveApi) {
+            atlasSessionRevalidated[cCode] = savedTs;
             try {
-              localStorage.setItem(cacheKey, JSON.stringify({ ts: savedTs, updatedAt: data.updatedAt, items: updatedItems }));
+              localStorage.setItem(cacheKey, JSON.stringify({ ts: savedTs, updatedAt: data.updatedAt, items: sortedItems }));
             } catch (e) {}
+          }
+          renderAtlasPaisItems(sortedItems, cCode, data.updatedAt);
+          ensureAtlasItemsTranslated(sortedItems, cCode, function (updatedItems) {
+            if (fromLiveApi) {
+              try {
+                localStorage.setItem(cacheKey, JSON.stringify({ ts: savedTs, updatedAt: data.updatedAt, items: updatedItems }));
+              } catch (e) {}
+            }
             var activeFeed = panel.querySelector('#atlas-live-news-feed');
             if (activeFeed && activeFeed.getAttribute('data-country') === String(cCode)) {
               renderAtlasPaisItems(updatedItems, cCode, data.updatedAt);
@@ -5996,22 +6098,52 @@
   var VITRINE_IA_CACHE_KEY = 'rom_cache_vitrine_ia';
   var VITRINE_IA_TTL_MS = 2 * 60 * 1000;
   var vitrineIaMemoryTemas = [];
+  var vitrineIaMemoryTs = 0;
+  var vitrineIaFetchedInSession = false;
+  var vitrineIaSourceIsFallback = false;
+  var vitrineIaFetchSeq = 0;
   var vitrineIaExpansaoCache = {};
   var vitrineIaSelectedCategory = '';
 
+  function getVitrineItemTimestamp(tm) {
+    if (!tm) return 0;
+    var raw = tm.data_publicacao || tm.updated_at || tm.created_at || tm.publicado_em || '';
+    if (!raw) return 0;
+    var ts = Date.parse(raw);
+    return isNaN(ts) ? 0 : ts;
+  }
+
+  function getVitrineMaxTimestamp(items) {
+    if (!Array.isArray(items) || !items.length) return 0;
+    var maxTs = 0;
+    for (var i = 0; i < items.length; i++) {
+      var ts = getVitrineItemTimestamp(items[i]);
+      if (ts > maxTs) maxTs = ts;
+    }
+    return maxTs;
+  }
+
   function lerCacheVitrineIA(ignoreTtl) {
+    var forceIgnore = !!ignoreTtl;
     if (vitrineIaMemoryTemas && vitrineIaMemoryTemas.length) {
-      return vitrineIaMemoryTemas;
+      if (forceIgnore || (vitrineIaMemoryTs > 0 && (Date.now() - vitrineIaMemoryTs <= VITRINE_IA_TTL_MS))) {
+        return vitrineIaMemoryTemas;
+      }
+      vitrineIaMemoryTemas = [];
+      vitrineIaMemoryTs = 0;
     }
     try {
       var raw = localStorage.getItem(VITRINE_IA_CACHE_KEY);
       if (!raw) return [];
       var parsed = JSON.parse(raw);
       if (!parsed || !Array.isArray(parsed.temas_ativos)) return [];
-      if (!ignoreTtl && parsed.ts && (Date.now() - parsed.ts > VITRINE_IA_TTL_MS)) {
+      var tsVal = (typeof parsed.ts === 'number' && parsed.ts > 0) ? parsed.ts : 0;
+      if (!forceIgnore && (!tsVal || (Date.now() - tsVal > VITRINE_IA_TTL_MS))) {
+        localStorage.removeItem(VITRINE_IA_CACHE_KEY);
         return [];
       }
       vitrineIaMemoryTemas = parsed.temas_ativos;
+      vitrineIaMemoryTs = tsVal;
       return parsed.temas_ativos;
     } catch (e) {
       return [];
@@ -6020,10 +6152,12 @@
 
   function salvarCacheVitrineIA(temasAtivos, updatedAt) {
     var lista = Array.isArray(temasAtivos) ? temasAtivos : [];
+    var nowTs = Date.now();
     vitrineIaMemoryTemas = lista;
+    vitrineIaMemoryTs = nowTs;
     try {
       localStorage.setItem(VITRINE_IA_CACHE_KEY, JSON.stringify({
-        ts: Date.now(),
+        ts: nowTs,
         updatedAt: updatedAt || '',
         temas_ativos: lista
       }));
@@ -6048,7 +6182,7 @@
       vitrineIaExpansaoCache[qNorm].termos.forEach(addTerm);
     }
 
-    var temas = lerCacheVitrineIA(true);
+    var temas = lerCacheVitrineIA(false);
     var qTokens = qNorm.split(/\s+/).filter(function (tk) { return tk.length >= 3 && (!STOPWORDS_BUSCA || !STOPWORDS_BUSCA[tk]); });
     temas.forEach(function (tm) {
       if (!tm) return;
@@ -6093,8 +6227,8 @@
       if (typeof callback === 'function') callback(vitrineIaExpansaoCache[qNorm].termos || []);
       return;
     }
-    var url = '/api/vitrine-em-alta?acao=expansao&q=' + encodeURIComponent(q);
-    fetch(url, { headers: { 'Accept': 'application/json' } })
+    var url = '/api/vitrine-em-alta?acao=expansao&q=' + encodeURIComponent(q) + '&_t=' + Date.now();
+    fetch(url, { cache: 'no-store', headers: { 'Accept': 'application/json' } })
       .then(function (r) { return r && r.ok ? r.json() : null; })
       .then(function (data) {
         var turb = [];
@@ -6315,14 +6449,14 @@
       atualizarBarraSugestoesContextuais(paisCode, cached);
       return;
     }
-    var qs = '?limit=4' + (paisCode ? '&pais=' + encodeURIComponent(key) : '');
+    var qs = '?limit=4' + (paisCode ? '&pais=' + encodeURIComponent(key) : '') + '&_t=' + Date.now();
     var isFile = (location.protocol === 'file:');
     var primaryUrl = (isFile ? 'https://www.rodandoomundo.com.br' : '') + '/v2/sugestoes-contextuais' + qs;
 
-    fetch(primaryUrl, { headers: { Accept: 'application/json' } })
+    fetch(primaryUrl, { cache: 'no-store', headers: { Accept: 'application/json' } })
       .then(function (r) {
         if (!r.ok && (location.hostname === 'localhost' || location.hostname === '127.0.0.1')) {
-          return fetch('https://www.rodandoomundo.com.br/v2/sugestoes-contextuais' + qs, { headers: { Accept: 'application/json' } });
+          return fetch('https://www.rodandoomundo.com.br/v2/sugestoes-contextuais' + qs, { cache: 'no-store', headers: { Accept: 'application/json' } });
         }
         return r;
       })
@@ -6919,8 +7053,10 @@
     }
 
     var doSearchFetch = function (url) {
-      return fetch(url, {
+      var sep = url.indexOf('?') > -1 ? '&' : '?';
+      return fetch(url + sep + '_t=' + Date.now(), {
         method: 'POST',
+        cache: 'no-store',
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json'
@@ -7353,7 +7489,9 @@
     panel.querySelectorAll('#f-topic button').forEach(function (b) { b.setAttribute('aria-pressed', String((b.getAttribute('data-v') || null) === state.topic)); });
   }
 
+  var OUTLET_ROTATOR_TTL_MS = 5 * 60 * 1000;
   var outletRotatorCache = Object.assign({}, (window.ROM_INITIAL_HEADLINES || {}));
+  var outletRotatorFetchedAt = {};
   var outletEnrichChecked = {};
   var activeEnrichReorderToken = 0;
   var outletRotatorInterval = null;
@@ -7412,7 +7550,6 @@
       var art = cached[i];
       var ts = art && art.publicadoEm ? new Date(art.publicadoEm).getTime() : NaN;
       if (Number.isNaN(ts)) {
-        count24h++;
         continue;
       }
       var ageH = Math.max(0, (now - ts) / 3600000);
@@ -7750,10 +7887,13 @@
   function enrichOutletsWithLiveHeadlines(list, cCode, lang) {
     if (!list || !list.length) return;
     var tKeyCache = state.topic || 'all';
+    var nowEnrich = Date.now();
     var missing = list.filter(function (o) {
       var dom = siteScope(o.u);
       var k = dom + '|' + tKeyCache;
-      return !outletRotatorCache[k] && !outletEnrichChecked[k];
+      var hasLiveCache = Array.isArray(outletRotatorCache[k]) && outletRotatorFetchedAt[k] && (nowEnrich - outletRotatorFetchedAt[k] < OUTLET_ROTATOR_TTL_MS);
+      var recentlyChecked = outletEnrichChecked[k] && (nowEnrich - outletEnrichChecked[k] < OUTLET_ROTATOR_TTL_MS);
+      return !hasLiveCache && !recentlyChecked;
     });
     if (!missing.length) return;
 
@@ -7823,6 +7963,7 @@
           data.grupos.forEach(function (g) {
             if (!g || !g.dominio || !Array.isArray(g.artigos) || !g.artigos.length) return;
             var key = g.dominio + '|' + tKeyCache;
+            outletRotatorFetchedAt[key] = Date.now();
             outletRotatorCache[key] = g.artigos.slice(0, 8).map(function (a) {
               return {
                 titulo: a.titulo,
@@ -7853,17 +7994,19 @@
 
         var isFile = window.location.protocol === 'file:';
         var isLocal = isFile || window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-        var primaryUrl = isFile ? 'https://www.rodandoomundo.com.br/api/busca-assunto' : apiEndpoint;
+        var primaryUrl = (isFile ? 'https://www.rodandoomundo.com.br/api/busca-assunto' : apiEndpoint) + '?_t=' + Date.now();
 
         fetch(primaryUrl, {
           method: 'POST',
+          cache: 'no-store',
           headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
           body: payloadBody
         })
           .then(function (r) {
-            if (!r.ok && isLocal && primaryUrl !== 'https://www.rodandoomundo.com.br/api/busca-assunto') {
-              return fetch('https://www.rodandoomundo.com.br/api/busca-assunto', {
+            if (!r.ok && isLocal && primaryUrl.indexOf('https://www.rodandoomundo.com.br') !== 0) {
+              return fetch('https://www.rodandoomundo.com.br/api/busca-assunto?_t=' + Date.now(), {
                 method: 'POST',
+                cache: 'no-store',
                 headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
                 body: payloadBody
               }).then(function (r2) { return r2.ok ? r2.json() : null; });
@@ -8861,7 +9004,7 @@
 
     var targetUrl = meta.path;
     if (sectionKey === 'radar') {
-      targetUrl = '/radar' + (radarHubSubtab === 'curadoria' ? '#curadoria' : '');
+      targetUrl = '/radar' + (radarHubSubtab === 'curadoria' ? '#curadoria' : (radarHubSubtab === 'colunas' ? '#colunas' : ''));
       applyRadarHubTabUI();
       updateNavActive('/radar');
     }
@@ -10232,6 +10375,7 @@
       };
       return fetch(baseUrl + '?_t=' + Date.now(), {
         method: 'POST',
+        cache: 'no-store',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
       }).then(function (r) {
@@ -10809,15 +10953,20 @@
     return y + '-' + m + '-' + d;
   }
 
+  var RESUMO_CACHE_TTL_MS = 5 * 60 * 1000;
+  var resumoLastFetchAt = 0;
+  var resumoAtualizadoEm = '';
+  var resumoPendingForce = false;
+
   function carregarResumoCacheLocal() {
     try {
-      var savedDate = localStorage.getItem('rom_resumo_date');
       var savedItems = localStorage.getItem('rom_resumo_items');
-      var hoje = obterDataHojeLocal();
-      if (savedDate === hoje && savedItems) {
+      var savedTs = Number(localStorage.getItem('rom_resumo_ts') || 0);
+      if (savedItems && savedTs > 0 && (Date.now() - savedTs <= RESUMO_CACHE_TTL_MS)) {
         var parsed = JSON.parse(savedItems);
         if (Array.isArray(parsed) && parsed.length >= 3) {
           EDITORIAL.resumoDoDia = parsed;
+          resumoAtualizadoEm = localStorage.getItem('rom_resumo_updated_at') || '';
           return true;
         }
       }
@@ -10825,8 +10974,33 @@
     return false;
   }
 
+  function aplicarDadosResumoDoDia(data) {
+    if (!data || !Array.isArray(data.items) || !data.items.length) return false;
+    EDITORIAL.resumoDoDia = data.items;
+    EDITORIAL._resumoLiveLoaded = !data.fallback;
+    resumoLastFetchAt = Date.now();
+    resumoAtualizadoEm = data.atualizadoEm || '';
+    if (!data.fallback) {
+      try {
+        localStorage.setItem('rom_resumo_items', JSON.stringify(data.items));
+        localStorage.setItem('rom_resumo_ts', String(resumoLastFetchAt));
+        localStorage.setItem('rom_resumo_updated_at', resumoAtualizadoEm);
+        if (data.dataEdicao) {
+          localStorage.setItem('rom_resumo_date', String(data.dataEdicao));
+        } else {
+          localStorage.removeItem('rom_resumo_date');
+        }
+      } catch (e) {}
+    }
+    return true;
+  }
+
   var RADAR_AUTO_REFRESH_MS = 5 * 60 * 1000; // 5 minutos
+  var RADAR_ROTATION_RECENCY_WINDOW_MS = 4 * 60 * 60 * 1000; // 4 horas máx. de janela de rodízio
+  var RADAR_PULSO_PIN_MAX_AGE_MS = 6 * 60 * 60 * 1000; // 6 horas máx. para fixação de Pulso V2
   var radarFeedCache = null;
+  var radarFeedIsFallback = false;
+  var radarFetchSeq = 0;
   var radarUpdatedLabel = '';
   var radarCategoryFilter = 'todos';
   var radarAutoRefreshTimer = null;
@@ -10861,6 +11035,32 @@
     }
   }
 
+  function bindVitrineIaChips(rootEl) {
+    var scope = rootEl || document;
+    var chipsWrap = scope.querySelector ? scope.querySelector('#vitrine-ia-chips') : document.getElementById('vitrine-ia-chips');
+    if (!chipsWrap || chipsWrap._bound) return;
+    chipsWrap._bound = true;
+    chipsWrap.querySelectorAll('.vitrine-ia-chip').forEach(function (chip) {
+      chip.addEventListener('click', function () {
+        var cat = chip.getAttribute('data-cat') || '';
+        vitrineIaSelectedCategory = cat;
+        chipsWrap.querySelectorAll('.vitrine-ia-chip').forEach(function (c) {
+          var activeChip = c === chip;
+          c.classList.toggle('is-active', activeChip);
+          c.setAttribute('aria-selected', String(activeChip));
+        });
+        var cached = (vitrineIaFetchedInSession && !vitrineIaSourceIsFallback && typeof lerCacheVitrineIA === 'function')
+          ? lerCacheVitrineIA(false)
+          : null;
+        if (cached && cached.length) {
+          if (document.getElementById('vitrine-ia-grid')) renderVitrineIACards(cached, vitrineIaSelectedCategory);
+        } else if (typeof carregarVitrineIA === 'function') {
+          carregarVitrineIA({ forceRefresh: false, categoria: vitrineIaSelectedCategory });
+        }
+      });
+    });
+  }
+
   function applyRadarHubTabUI() {
     if (state.editorialSection !== 'radar') return;
     var container = document.getElementById('radar-editorial-view');
@@ -10880,28 +11080,8 @@
       btn.setAttribute('tabindex', active ? '0' : '-1');
     });
     if (activeTab === 'curadoria') {
+      bindVitrineIaChips(container);
       if (typeof carregarVitrineIA === 'function') carregarVitrineIA({ forceRefresh: false, categoria: vitrineIaSelectedCategory || '' });
-      var chipsWrap = container.querySelector('#vitrine-ia-chips');
-      if (chipsWrap && !chipsWrap._bound) {
-        chipsWrap._bound = true;
-        chipsWrap.querySelectorAll('.vitrine-ia-chip').forEach(function (chip) {
-          chip.addEventListener('click', function () {
-            var cat = chip.getAttribute('data-cat') || '';
-            vitrineIaSelectedCategory = cat;
-            chipsWrap.querySelectorAll('.vitrine-ia-chip').forEach(function (c) {
-              var activeChip = c === chip;
-              c.classList.toggle('is-active', activeChip);
-              c.setAttribute('aria-selected', String(activeChip));
-            });
-            var cached = (typeof lerCacheVitrineIA === 'function') ? lerCacheVitrineIA(true) : null;
-            if (cached && cached.length) {
-              if (document.getElementById('vitrine-ia-grid')) renderVitrineIACards(cached, vitrineIaSelectedCategory);
-            } else if (typeof carregarVitrineIA === 'function') {
-              carregarVitrineIA({ forceRefresh: false, categoria: vitrineIaSelectedCategory });
-            }
-          });
-        });
-      }
     } else if (activeTab === 'colunas') {
       if (typeof carregarColunasEntendaV2 === 'function') carregarColunasEntendaV2(false);
     } else {
@@ -10929,7 +11109,7 @@
   }
 
   function bindRadarVisibilityListener() {
-    if (radarVisibilityBound) return;
+    if (radarVisibilityBound || unifiedVisibilityBound) return;
     radarVisibilityBound = true;
     document.addEventListener('visibilitychange', function () {
       if (document.visibilityState !== 'visible') return;
@@ -10943,6 +11123,24 @@
   function getRadarItemKey(item) {
     if (!item) return '';
     return String(item.fonte_url || item.titulo || '');
+  }
+
+  function getRadarPubTimestamp(item) {
+    if (!item) return 0;
+    var raw = item.data_publicacao || item.updated_at || item.publicado_em || item.created_at || '';
+    if (!raw) return 0;
+    var ts = Date.parse(raw);
+    return isNaN(ts) ? 0 : ts;
+  }
+
+  function getRadarMaxTimestamp(items) {
+    if (!Array.isArray(items) || !items.length) return 0;
+    var maxTs = 0;
+    for (var i = 0; i < items.length; i++) {
+      var ts = getRadarPubTimestamp(items[i]);
+      if (ts > maxTs) maxTs = ts;
+    }
+    return maxTs;
   }
 
   function updateRadarUpdatedBadge(label) {
@@ -10988,6 +11186,7 @@
     html += '<h2 class="vitrine-ia-title">Curadoria em Tempo Real</h2>';
     html += '<p class="vitrine-ia-subtitle">Temas em alta, cruzamento editorial e sinais relevantes monitorados continuamente pela curadoria IA — a análise em tempo real que antes aparecia na página inicial.</p>';
     html += '</div>';
+    html += '<div class="vitrine-ia-actions"><button type="button" class="btn btn-secondary" id="btn-refresh-vitrine-ia" data-action="refresh-vitrine" title="Atualizar curadoria em tempo real (sem cache)">🔄 Atualizar</button></div>';
     html += '</div>';
     html += '<div class="vitrine-ia-chips" id="vitrine-ia-chips" role="tablist" aria-label="Filtrar curadoria por categoria">';
     var curCats = [
@@ -11028,6 +11227,7 @@
     html += '</div>';
     html += '<div style="display:flex;gap:var(--space-2);align-items:center;flex-wrap:wrap;">';
     html += '<span class="radar-updated-badge' + (radarUpdatedLabel ? ' is-live' : '') + '" id="radar-last-updated" title="Sincronização automática no navegador a cada 5 a 8 minutos">' + esc(radarUpdatedLabel || '') + '</span>';
+    html += '<button type="button" class="btn btn-secondary" id="btn-atualizar-radar" title="Atualizar briefings do Radar agora (sem cache)">🔄 Atualizar Radar</button>';
     html += '<a href="/resumo-do-dia" class="btn btn-secondary" data-spa-link title="Ver o Resumo do Dia com as 5 principais notícias">📰 Resumo do Dia</a>';
     html += '</div>';
     html += '</div>';
@@ -11063,7 +11263,24 @@
       });
     });
 
+    var btnAtualizarRadar = container.querySelector('#btn-atualizar-radar');
+    if (btnAtualizarRadar) {
+      btnAtualizarRadar.addEventListener('click', function () {
+        loadRadarCards(true, false);
+      });
+    }
+
+    var btnRefreshVitrine = container.querySelector('#btn-refresh-vitrine-ia');
+    if (btnRefreshVitrine) {
+      btnRefreshVitrine.addEventListener('click', function () {
+        if (typeof carregarVitrineIA === 'function') {
+          carregarVitrineIA({ forceRefresh: true, categoria: vitrineIaSelectedCategory || '' });
+        }
+      });
+    }
+
     bindDynamicEditorialActions(container);
+    bindVitrineIaChips(container);
     loadRadarCards(false, false);
     startRadarAutoRefresh();
     bindRadarVisibilityListener();
@@ -11079,7 +11296,7 @@
     if (prevItems.length === 0) return false;
     for (var i = 0; i < prevItems.length; i++) {
       if (getRadarItemKey(prevItems[i]) !== getRadarItemKey(nextItems[i]) ||
-          String(prevItems[i].data_publicacao || '') !== String(nextItems[i].data_publicacao || '')) {
+          getRadarPubTimestamp(prevItems[i]) !== getRadarPubTimestamp(nextItems[i])) {
         return true;
       }
     }
@@ -11130,18 +11347,7 @@
   }
 
   function formatarRotuloAtualizacaoRadar(items, labelSugerido) {
-    var itemMaisRecente = 0;
-    if (Array.isArray(items) && items.length > 0) {
-      for (var i = 0; i < items.length; i++) {
-        var dStr = items[i].data_publicacao || items[i].updated_at;
-        if (dStr) {
-          var t = new Date(dStr).getTime();
-          if (!isNaN(t) && t > itemMaisRecente) {
-            itemMaisRecente = t;
-          }
-        }
-      }
-    }
+    var itemMaisRecente = getRadarMaxTimestamp(items);
 
     if (itemMaisRecente > 0) {
       var diffMs = Date.now() - itemMaisRecente;
@@ -11173,19 +11379,29 @@
   }
 
   function loadRadarCards(forceRefresh, isAutoRefresh) {
+    var prevCache = Array.isArray(radarFeedCache) ? radarFeedCache.slice() : null;
+    var prevIsFallback = radarFeedIsFallback;
+    var refreshBtn = document.getElementById('btn-atualizar-radar');
+
     if (forceRefresh) {
-      radarFeedCache = null;
       try { localStorage.removeItem('rom_radar_cache'); } catch (e) {}
-      var listLoading = document.getElementById('radar-cards-list');
-      if (listLoading) {
-        listLoading.innerHTML = '<p class="radar-loading">Sincronizando pulso em tempo real e briefings do radar...</p>';
+      if (!prevCache || !prevCache.length) {
+        var listLoading = document.getElementById('radar-cards-list');
+        if (listLoading) {
+          listLoading.innerHTML = '<p class="radar-loading">Sincronizando pulso em tempo real e briefings do radar...</p>';
+        }
       }
-    } else if (!isAutoRefresh && radarFeedCache && (Date.now() - radarLastFetchAt < RADAR_AUTO_REFRESH_MS)) {
+      if (refreshBtn) {
+        refreshBtn.classList.add('is-loading');
+        refreshBtn.disabled = true;
+      }
+    } else if (!isAutoRefresh && !radarFeedIsFallback && Array.isArray(radarFeedCache) && radarFeedCache.length > 0 && (Date.now() - radarLastFetchAt < RADAR_AUTO_REFRESH_MS)) {
       updateRadarUpdatedBadge(radarUpdatedLabel);
       renderRadarCardsList(false);
       return;
     }
 
+    var seq = ++radarFetchSeq;
     var apiUrl = forceRefresh
       ? ('/api/radar?refresh=1&_t=' + Date.now())
       : ('/api/radar?_t=' + Date.now());
@@ -11196,20 +11412,26 @@
         return res.json();
       })
       .then(function (data) {
+        if (seq !== radarFetchSeq) return;
         if (data && data.ok && Array.isArray(data.items) && data.items.length > 0) {
-          radarLastFetchAt = Date.now();
+          var incomingIsFallback = !!data.fallback;
+          if (incomingIsFallback && Array.isArray(prevCache) && prevCache.length > 0 && getRadarMaxTimestamp(prevCache) >= getRadarMaxTimestamp(data.items)) {
+            return;
+          }
+          radarFeedIsFallback = incomingIsFallback;
+          radarLastFetchAt = incomingIsFallback ? 0 : Date.now();
           lastAutonomousFetchTimestamps.radar = Date.now();
-          var changed = hasRadarFeedChanged(radarFeedCache, data.items);
+          var changed = hasRadarFeedChanged(prevCache, data.items);
           radarFeedCache = data.items;
           radarUpdatedLabel = formatarRotuloAtualizacaoRadar(data.items, data.atualizado_em);
           updateRadarUpdatedBadge(radarUpdatedLabel);
-          if (!isAutoRefresh || changed) {
+          if (!isAutoRefresh || changed || prevIsFallback !== incomingIsFallback) {
             var listEl = document.getElementById('radar-cards-list');
             if (isAutoRefresh && isUserReadingOrInteractingWith(listEl)) {
-              pendingAutonomousUpdates.radar = function () {
+              queueAutonomousUpdate('radar', function () {
                 renderRadarCardsList(true);
                 triggerHotNewsPulseCycle();
-              };
+              });
             } else {
               renderRadarCardsList(!!isAutoRefresh);
               triggerHotNewsPulseCycle();
@@ -11220,6 +11442,11 @@
         throw new Error('Formato inesperado');
       })
       .catch(function () {
+        if (seq !== radarFetchSeq) return;
+        // Nunca sobrescrever cache já carregado (nem durante auto-refresh nem em falha após carga viva) com /data/feed_output.json
+        if (isAutoRefresh || (Array.isArray(prevCache) && prevCache.length > 0)) {
+          return;
+        }
         var fallbackUrl = '/data/feed_output.json?_t=' + Date.now();
         return fetch(fallbackUrl, { cache: 'no-store' })
           .then(function (res) {
@@ -11230,32 +11457,35 @@
             return Array.isArray(data) ? data : [];
           })
           .then(function (nextItems) {
-            radarLastFetchAt = Date.now();
+            if (seq !== radarFetchSeq) return;
+            if (Array.isArray(radarFeedCache) && radarFeedCache.length > 0 && getRadarMaxTimestamp(radarFeedCache) > getRadarMaxTimestamp(nextItems)) {
+              return;
+            }
+            radarFeedIsFallback = true;
+            radarLastFetchAt = 0; // força revalidação em /api/radar na próxima navegação
             lastAutonomousFetchTimestamps.radar = Date.now();
-            var changed = hasRadarFeedChanged(radarFeedCache, nextItems);
+            var changed = hasRadarFeedChanged(prevCache, nextItems);
             radarFeedCache = nextItems;
             radarUpdatedLabel = formatarRotuloAtualizacaoRadar(nextItems);
             updateRadarUpdatedBadge(radarUpdatedLabel);
-            if (!isAutoRefresh || changed) {
-              var listEl = document.getElementById('radar-cards-list');
-              if (isAutoRefresh && isUserReadingOrInteractingWith(listEl)) {
-                pendingAutonomousUpdates.radar = function () {
-                  renderRadarCardsList(true);
-                  triggerHotNewsPulseCycle();
-                };
-              } else {
-                renderRadarCardsList(!!isAutoRefresh);
-                triggerHotNewsPulseCycle();
-              }
+            if (changed) {
+              renderRadarCardsList(false);
+              triggerHotNewsPulseCycle();
             }
           })
           .catch(function (err) {
-            if (isAutoRefresh) return; // falha silenciosa no auto-refresh para não interromper leitura
+            if (isAutoRefresh || (Array.isArray(prevCache) && prevCache.length > 0)) return;
             var listEl = document.getElementById('radar-cards-list');
             if (listEl) {
               listEl.innerHTML = '<p class="radar-empty">Não foi possível carregar as novidades do radar neste momento (' + esc(err.message) + ').</p>';
             }
           });
+      })
+      .finally(function () {
+        if (seq === radarFetchSeq && refreshBtn) {
+          refreshBtn.classList.remove('is-loading');
+          refreshBtn.disabled = false;
+        }
       });
   }
 
@@ -11267,6 +11497,7 @@
 
     if (isExpanded) {
       cardEl.classList.remove('is-expanded');
+      cardEl.removeAttribute('data-expanded-at');
       if (btn) {
         btn.setAttribute('aria-expanded', 'false');
         btn.setAttribute('title', 'Expandir briefing');
@@ -11275,8 +11506,10 @@
       if (details) {
         details.hidden = true;
       }
+      flushPendingAutonomousUpdates();
     } else {
       cardEl.classList.add('is-expanded');
+      cardEl.setAttribute('data-expanded-at', String(Date.now()));
       if (btn) {
         btn.setAttribute('aria-expanded', 'true');
         btn.setAttribute('title', 'Recolher briefing');
@@ -11342,21 +11575,18 @@
       return fonte.indexOf('pulso v2') !== -1;
     }
 
-    function getPubTimestamp(item) {
-      if (!item || !item.data_publicacao) return 0;
-      var ts = Date.parse(item.data_publicacao);
-      return isNaN(ts) ? 0 : ts;
-    }
-
     var sorted = items.slice().sort(function (a, b) {
-      return getPubTimestamp(b) - getPubTimestamp(a);
+      return getRadarPubTimestamp(b) - getRadarPubTimestamp(a);
     });
 
+    var newestTs = sorted.length ? getRadarPubTimestamp(sorted[0]) : 0;
     var topV2 = [];
     var pool = [];
     for (var i = 0; i < sorted.length; i++) {
       var current = sorted[i];
-      if (isPulsoV2(current) && topV2.length < 2) {
+      var curTs = getRadarPubTimestamp(current);
+      var withinPinAge = (newestTs === 0) || (curTs > 0 && (newestTs - curTs) <= RADAR_PULSO_PIN_MAX_AGE_MS);
+      if (isPulsoV2(current) && topV2.length < 2 && withinPinAge) {
         topV2.push(current);
       } else {
         pool.push(current);
@@ -11405,8 +11635,13 @@
         recentFontes[normalizeFonteKey(result[w].fonte_nome)] = true;
       }
 
+      var topPoolTs = getRadarPubTimestamp(pool[0]);
       var chosenIdx = -1;
       for (var p = 0; p < pool.length; p++) {
+        if (topPoolTs > 0) {
+          var candTs = getRadarPubTimestamp(pool[p]);
+          if (candTs === 0 || (topPoolTs - candTs) > RADAR_ROTATION_RECENCY_WINDOW_MS) break;
+        }
         var candFonte = normalizeFonteKey(pool[p].fonte_nome);
         if (consecCount >= 2 && candFonte === consecFonte) continue;
         if (recentFontes[candFonte]) continue;
@@ -11416,6 +11651,10 @@
 
       if (chosenIdx === -1) {
         for (var p2 = 0; p2 < pool.length; p2++) {
+          if (topPoolTs > 0) {
+            var candTs2 = getRadarPubTimestamp(pool[p2]);
+            if (candTs2 === 0 || (topPoolTs - candTs2) > RADAR_ROTATION_RECENCY_WINDOW_MS) break;
+          }
           var candFonte2 = normalizeFonteKey(pool[p2].fonte_nome);
           if (consecCount >= 2 && candFonte2 === consecFonte) continue;
           chosenIdx = p2;
@@ -11474,7 +11713,8 @@
       var catLabel = catLabels[catKey] || catKey.toUpperCase();
       var detailsId = 'radar-details-' + idx;
       var itemKey = getRadarItemKey(item);
-      var dataPubMeta = formatarDataPublicacaoCardRadar(item.data_publicacao);
+      var pubRaw = item.data_publicacao || item.updated_at || item.publicado_em || item.created_at || '';
+      var dataPubMeta = formatarDataPublicacaoCardRadar(pubRaw);
 
       var card = '<article class="radar-card radar-cat-' + esc(catKey) + (item.origem_v2 ? ' is-v2-card' : '') + '" data-radar-key="' + esc(itemKey) + '">';
       card += '<div class="radar-card-header">';
@@ -11495,7 +11735,7 @@
           title: item.titulo,
           source: item.fonte_nome,
           countryCode: 'BR',
-          publishedAt: item.data_publicacao || ''
+          publishedAt: pubRaw
         });
       }
       card += renderShareBtn({
@@ -11576,13 +11816,25 @@
     } catch (e) {
       todayStr = 'Edição atualizada';
     }
+    var updatedSuffix = '';
+    if (resumoAtualizadoEm) {
+      try {
+        var updDt = new Date(resumoAtualizadoEm);
+        if (!isNaN(updDt.getTime())) {
+          var hh = ('0' + updDt.getHours()).slice(-2);
+          var mm = ('0' + updDt.getMinutes()).slice(-2);
+          updatedSuffix = ' · Atualizado às ' + hh + 'h' + mm;
+        }
+      } catch (e) {}
+    }
     var rh = '<div class="editorial-section-head">';
     rh += '<div>';
-    rh += '<p class="editorial-eyebrow">Edição diária · Atualização automática · ' + esc(todayStr) + '</p>';
+    rh += '<p class="editorial-eyebrow">Edição diária · Atualização automática' + esc(updatedSuffix) + ' · ' + esc(todayStr) + '</p>';
     rh += '<h2 id="resumo-dia-titulo">Resumo do dia</h2>';
     rh += '<p class="editorial-section-sub">As 5 principais notícias do dia selecionadas por relevância editorial, com síntese de fatos e comparação direta de cobertura entre veículos.</p>';
     rh += '</div>';
     rh += '<div style="display:flex;gap:var(--space-2);align-items:center;flex-wrap:wrap;">';
+    rh += '<button type="button" class="btn btn-secondary' + (resumoAutoAtualizando ? ' is-loading' : '') + '" id="btn-refresh-resumo-dia" title="Atualizar Resumo do Dia agora"' + (resumoAutoAtualizando ? ' disabled' : '') + '>↻ ' + (resumoAutoAtualizando ? 'Atualizando…' : 'Atualizar') + '</button>';
     rh += '<a href="/radar" class="btn btn-secondary" data-spa-link title="Ver todos os briefings em tempo real">📡 Radar ao Vivo</a>';
     rh += '<button type="button" class="btn resumo-email-btn" id="btn-resumo-email" data-open-newsletter="Resumo do dia">Receber por e-mail</button>';
     rh += '</div>';
@@ -11658,24 +11910,44 @@
     });
     rh += '</ol>';
     resumoSec.innerHTML = rh;
+    var btnRefreshResumo = resumoSec.querySelector('#btn-refresh-resumo-dia');
+    if (btnRefreshResumo) {
+      btnRefreshResumo.addEventListener('click', function () {
+        btnRefreshResumo.classList.add('is-loading');
+        btnRefreshResumo.disabled = true;
+        atualizarResumoDoDiaAutomatico(true);
+      });
+    }
     bindDynamicEditorialActions(resumoSec);
   }
 
   var resumoAutoAtualizando = false;
   function atualizarResumoDoDiaAutomatico(forcar) {
-    if (resumoAutoAtualizando) return;
-    var hoje = obterDataHojeLocal();
-    var jaTemHoje = carregarResumoCacheLocal();
-    if (jaTemHoje && !forcar) {
+    if (resumoAutoAtualizando) {
+      if (forcar) resumoPendingForce = true;
+      return;
+    }
+    if (!forcar && resumoLastFetchAt > 0 && (Date.now() - resumoLastFetchAt < RESUMO_CACHE_TTL_MS)) {
       renderResumoDoDiaDOM();
       return;
     }
 
     resumoAutoAtualizando = true;
-    var resumoUrl = forcar ? ('/api/resumo?refresh=1&_t=' + Date.now()) : '/api/resumo';
-    var resumoOpts = forcar
-      ? { cache: 'no-store', headers: { Accept: 'application/json' } }
-      : { headers: { Accept: 'application/json' } };
+    var btnEl = document.getElementById('btn-refresh-resumo-dia');
+    if (btnEl) {
+      btnEl.classList.add('is-loading');
+      btnEl.disabled = true;
+    }
+    if (forcar) {
+      try {
+        localStorage.removeItem('rom_resumo_items');
+        localStorage.removeItem('rom_resumo_ts');
+        localStorage.removeItem('rom_resumo_date');
+      } catch (e) {}
+    }
+
+    var resumoUrl = '/api/resumo?_t=' + Date.now() + (forcar ? '&refresh=1' : '');
+    var resumoOpts = { cache: 'no-store', headers: { Accept: 'application/json' } };
 
     fetch(resumoUrl, resumoOpts)
       .then(function (r) {
@@ -11686,19 +11958,17 @@
         return null;
       })
       .then(function (data) {
-        if (data && Array.isArray(data.items) && data.items.length) {
-          EDITORIAL.resumoDoDia = data.items;
-          try {
-            localStorage.setItem('rom_resumo_items', JSON.stringify(data.items));
-            localStorage.setItem('rom_resumo_date', data.dataEdicao || hoje);
-          } catch (e) {}
-        }
+        aplicarDadosResumoDoDia(data);
       })
       .catch(function () {})
       .finally(function () {
         resumoAutoAtualizando = false;
         renderResumoDoDiaDOM();
         triggerHotNewsPulseCycle();
+        if (resumoPendingForce) {
+          resumoPendingForce = false;
+          atualizarResumoDoDiaAutomatico(true);
+        }
       });
   }
 
@@ -11726,7 +11996,6 @@
   }
 
   function obterNoticiasFallbackClient() {
-    var agora = new Date().toISOString();
     return [
       {
         id: 'fb-nac-1',
@@ -11737,8 +12006,8 @@
         regiao: 'nacional',
         regiaoLabel: 'Nacional',
         estado: 'DF/Brasil',
-        publicadoEm: agora,
-        tempoRelativo: 'há 20 min'
+        publicadoEm: '',
+        tempoRelativo: 'destaque editorial'
       },
       {
         id: 'fb-nac-2',
@@ -11749,8 +12018,8 @@
         regiao: 'nacional',
         regiaoLabel: 'Nacional',
         estado: 'DF/Nacional',
-        publicadoEm: agora,
-        tempoRelativo: 'há 45 min'
+        publicadoEm: '',
+        tempoRelativo: 'destaque editorial'
       },
       {
         id: 'fb-sud-1',
@@ -11761,8 +12030,8 @@
         regiao: 'sudeste',
         regiaoLabel: 'Sudeste',
         estado: 'SP',
-        publicadoEm: agora,
-        tempoRelativo: 'há 1 hora'
+        publicadoEm: '',
+        tempoRelativo: 'destaque editorial'
       },
       {
         id: 'fb-sud-2',
@@ -11773,8 +12042,8 @@
         regiao: 'sudeste',
         regiaoLabel: 'Sudeste',
         estado: 'SP/RJ',
-        publicadoEm: agora,
-        tempoRelativo: 'há 2 horas'
+        publicadoEm: '',
+        tempoRelativo: 'destaque editorial'
       },
       {
         id: 'fb-sul-1',
@@ -11785,8 +12054,8 @@
         regiao: 'sul',
         regiaoLabel: 'Sul',
         estado: 'PR/Sul',
-        publicadoEm: agora,
-        tempoRelativo: 'há 1 hora'
+        publicadoEm: '',
+        tempoRelativo: 'destaque editorial'
       },
       {
         id: 'fb-sul-2',
@@ -11797,8 +12066,8 @@
         regiao: 'sul',
         regiaoLabel: 'Sul',
         estado: 'RS/SC/PR',
-        publicadoEm: agora,
-        tempoRelativo: 'há 3 horas'
+        publicadoEm: '',
+        tempoRelativo: 'destaque editorial'
       },
       {
         id: 'fb-nord-1',
@@ -11809,8 +12078,8 @@
         regiao: 'nordeste',
         regiaoLabel: 'Nordeste',
         estado: 'CE/BA/PE',
-        publicadoEm: agora,
-        tempoRelativo: 'há 2 horas'
+        publicadoEm: '',
+        tempoRelativo: 'destaque editorial'
       },
       {
         id: 'fb-nord-2',
@@ -11821,8 +12090,8 @@
         regiao: 'nordeste',
         regiaoLabel: 'Nordeste',
         estado: 'PE/Nordeste',
-        publicadoEm: agora,
-        tempoRelativo: 'há 4 horas'
+        publicadoEm: '',
+        tempoRelativo: 'destaque editorial'
       },
       {
         id: 'fb-co-1',
@@ -11833,8 +12102,8 @@
         regiao: 'centro-oeste',
         regiaoLabel: 'Centro-Oeste',
         estado: 'DF/Centro-Oeste',
-        publicadoEm: agora,
-        tempoRelativo: 'há 1 hora'
+        publicadoEm: '',
+        tempoRelativo: 'destaque editorial'
       },
       {
         id: 'fb-co-2',
@@ -11845,8 +12114,8 @@
         regiao: 'centro-oeste',
         regiaoLabel: 'Centro-Oeste',
         estado: 'DF/GO',
-        publicadoEm: agora,
-        tempoRelativo: 'há 3 horas'
+        publicadoEm: '',
+        tempoRelativo: 'destaque editorial'
       },
       {
         id: 'fb-norte-1',
@@ -11857,8 +12126,8 @@
         regiao: 'norte',
         regiaoLabel: 'Norte',
         estado: 'AM/Amazônia',
-        publicadoEm: agora,
-        tempoRelativo: 'há 2 horas'
+        publicadoEm: '',
+        tempoRelativo: 'destaque editorial'
       },
       {
         id: 'fb-norte-2',
@@ -11869,49 +12138,63 @@
         regiao: 'norte',
         regiaoLabel: 'Norte',
         estado: 'AM/PA',
-        publicadoEm: agora,
-        tempoRelativo: 'há 5 horas'
+        publicadoEm: '',
+        tempoRelativo: 'destaque editorial'
       }
     ];
   }
 
-  var ultimasCacheInicial = null;
-  try {
-    var rawCacheInit = localStorage.getItem('rom_ultimas_noticias');
-    if (rawCacheInit) ultimasCacheInicial = JSON.parse(rawCacheInit);
-  } catch (e) {}
+  var ULTIMAS_CACHE_TTL_MS = 3 * 60 * 1000;
+
+  function parseUltimasTs(it) {
+    if (!it || !it.publicadoEm) return 0;
+    var ts = Date.parse(it.publicadoEm);
+    return isNaN(ts) ? 0 : ts;
+  }
+
+  function lerCacheUltimasLocal() {
+    try {
+      var raw = localStorage.getItem('rom_ultimas_noticias');
+      if (!raw) return null;
+      var parsed = JSON.parse(raw);
+      if (parsed && Array.isArray(parsed.noticias) && parsed.noticias.length >= 3 && Number(parsed.ts) > 0 && (Date.now() - Number(parsed.ts) < ULTIMAS_CACHE_TTL_MS)) {
+        return parsed;
+      }
+      localStorage.removeItem('rom_ultimas_noticias');
+    } catch (e) {}
+    return null;
+  }
 
   var ultimasNoticiasState = {
     carregando: false,
-    dados: (ultimasCacheInicial && Array.isArray(ultimasCacheInicial.noticias) && ultimasCacheInicial.noticias.length >= 3) ? ultimasCacheInicial.noticias : null,
+    dados: null,
+    ultimaBuscaLiveAt: 0,
+    tentouLiveNaSessao: false,
     regiaoAtiva: 'todas',
     termoBusca: '',
     erro: '',
-    atualizadoEm: (ultimasCacheInicial && ultimasCacheInicial.atualizadoEm) || ''
+    atualizadoEm: ''
   };
 
   function tentarFallbackClientSideOuCache() {
-    // 1. Tentar ler do localStorage se houver dados válidos
-    try {
-      var raw = localStorage.getItem('rom_ultimas_noticias');
-      if (raw) {
-        var parsed = JSON.parse(raw);
-        if (parsed && Array.isArray(parsed.noticias) && parsed.noticias.length >= 3) {
-          ultimasNoticiasState.carregando = false;
-          ultimasNoticiasState.dados = parsed.noticias;
-          ultimasNoticiasState.atualizadoEm = parsed.atualizadoEm || '';
-          ultimasNoticiasState.erro = '';
-          renderUltimasNoticiasView();
-          return;
-        }
-      }
-    } catch (e) {}
+    // 1. Tentar ler do localStorage apenas se ainda estiver dentro do TTL
+    var cachedLocal = lerCacheUltimasLocal();
+    if (cachedLocal) {
+      ultimasNoticiasState.carregando = false;
+      ultimasNoticiasState.dados = cachedLocal.noticias.slice().sort(function (a, b) {
+        return parseUltimasTs(b) - parseUltimasTs(a);
+      });
+      ultimasNoticiasState.atualizadoEm = cachedLocal.atualizadoEm || '';
+      ultimasNoticiasState.erro = '';
+      renderUltimasNoticiasView();
+      return;
+    }
 
     // 2. Tentar RSS client-side via rss2json
     var rssUrl = 'https://news.google.com/rss?hl=pt-BR&gl=BR&ceid=BR:pt-419';
     var apiUrl = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(rssUrl);
 
-    fetch(apiUrl)
+    fetch(apiUrl, { cache: 'no-store' })
       .then(function (r) {
         if (!r.ok) throw new Error('rss2json status ' + r.status);
         return r.json();
@@ -11954,8 +12237,8 @@
               est = 'Sudeste';
             }
 
-            var dt = it.pubDate ? new Date(String(it.pubDate).replace(' ', 'T') + 'Z') : new Date();
-            var isoD = (!isNaN(dt.getTime())) ? dt.toISOString() : new Date().toISOString();
+            var dt = it.pubDate ? new Date(String(it.pubDate).replace(' ', 'T') + 'Z') : null;
+            var isoD = (dt && !isNaN(dt.getTime())) ? dt.toISOString() : '';
 
             return {
               id: 'rss-' + idx + '-' + Date.now(),
@@ -11967,9 +12250,13 @@
               regiaoLabel: regLbl,
               estado: est,
               publicadoEm: isoD,
-              tempoRelativo: formatarTempoRelativoNoticia(isoD)
+              tempoRelativo: isoD ? formatarTempoRelativoNoticia(isoD) : 'recentemente'
             };
           }).filter(function (x) { return x.titulo && x.url; });
+
+          mapped.sort(function (a, b) {
+            return parseUltimasTs(b) - parseUltimasTs(a);
+          });
 
           if (mapped.length >= 3) {
             ultimasNoticiasState.carregando = false;
@@ -11978,6 +12265,7 @@
             ultimasNoticiasState.erro = '';
             try {
               localStorage.setItem('rom_ultimas_noticias', JSON.stringify({
+                ts: Date.now(),
                 noticias: mapped,
                 atualizadoEm: ultimasNoticiasState.atualizadoEm
               }));
@@ -11989,11 +12277,11 @@
         throw new Error('Sem itens suficientes no feed RSS');
       })
       .catch(function () {
-        // 3. Fallback editorial pré-empacotado garantido
+        // 3. Fallback editorial pré-empacotado garantido (sem forjar timestamp now())
         var fb = obterNoticiasFallbackClient();
         ultimasNoticiasState.carregando = false;
         ultimasNoticiasState.dados = fb;
-        ultimasNoticiasState.atualizadoEm = new Date().toISOString();
+        ultimasNoticiasState.atualizadoEm = '';
         ultimasNoticiasState.erro = '';
         renderUltimasNoticiasView();
       });
@@ -12002,6 +12290,7 @@
   function carregarUltimasNoticias(forcar) {
     if (ultimasNoticiasState.carregando) return;
     ultimasNoticiasState.carregando = true;
+    ultimasNoticiasState.tentouLiveNaSessao = true;
     ultimasNoticiasState.erro = '';
     if (forcar) {
       try {
@@ -12015,6 +12304,7 @@
 
     var doFetchUltimas = function (endpoint) {
       return fetch(endpoint, {
+        cache: 'no-store',
         headers: { Accept: 'application/json', 'Cache-Control': 'no-cache' }
       });
     };
@@ -12035,16 +12325,23 @@
       })
       .then(function (res) {
         if (res && Array.isArray(res.noticias) && res.noticias.length >= 3) {
+          var sortedNoticias = res.noticias.slice().sort(function (a, b) {
+            return parseUltimasTs(b) - parseUltimasTs(a);
+          });
           ultimasNoticiasState.carregando = false;
-          ultimasNoticiasState.dados = res.noticias;
+          ultimasNoticiasState.dados = sortedNoticias;
+          ultimasNoticiasState.ultimaBuscaLiveAt = Date.now();
           ultimasNoticiasState.atualizadoEm = res.atualizadoEm || new Date().toISOString();
           ultimasNoticiasState.erro = '';
-          try {
-            localStorage.setItem('rom_ultimas_noticias', JSON.stringify({
-              noticias: res.noticias,
-              atualizadoEm: ultimasNoticiasState.atualizadoEm
-            }));
-          } catch (e) {}
+          if (!res.fallback) {
+            try {
+              localStorage.setItem('rom_ultimas_noticias', JSON.stringify({
+                ts: Date.now(),
+                noticias: sortedNoticias,
+                atualizadoEm: ultimasNoticiasState.atualizadoEm
+              }));
+            } catch (e) {}
+          }
           renderUltimasNoticiasView();
         } else {
           tentarFallbackClientSideOuCache();
@@ -12255,9 +12552,13 @@
         })
         .sort(function (a, b) {
           if (b.score !== a.score) return b.score - a.score;
-          return new Date(b.item.publicadoEm) - new Date(a.item.publicadoEm);
+          return parseUltimasTs(b.item) - parseUltimasTs(a.item);
         })
         .map(function (entry) { return entry.item; });
+    } else {
+      filtradas = filtradas.slice().sort(function (a, b) {
+        return parseUltimasTs(b) - parseUltimasTs(a);
+      });
     }
 
     return {
@@ -12426,7 +12727,7 @@
     var sec = document.getElementById('ultimas-noticias-view');
     if (!sec) return;
 
-    if (!ultimasNoticiasState.dados && !ultimasNoticiasState.carregando && !ultimasNoticiasState.erro) {
+    if (!ultimasNoticiasState.carregando && ((!ultimasNoticiasState.dados && !ultimasNoticiasState.erro) || (!apenasConteudo && !ultimasNoticiasState.tentouLiveNaSessao))) {
       carregarUltimasNoticias(false);
       return;
     }
@@ -13220,7 +13521,9 @@
     renderDossiesRotativosHome();
   }
 
+  var V2_ENTENDA_COLUNAS_TTL_MS = 3 * 60 * 1000;
   var v2EntendaColunasCache = null;
+  var v2EntendaColunasCacheTs = 0;
   var v2EntendaAtualizadoEm = '';
 
   function renderColunasEntendaV2DOM(colunas, atualizadoEm) {
@@ -13302,8 +13605,16 @@
         if (!box) return;
         var isExp = btn.getAttribute('aria-expanded') === 'true';
         btn.setAttribute('aria-expanded', String(!isExp));
+        if (!isExp) {
+          btn.setAttribute('data-expanded-at', String(Date.now()));
+        } else {
+          btn.removeAttribute('data-expanded-at');
+        }
         box.hidden = isExp;
         btn.textContent = isExp ? 'Ler análise V2 ▾' : 'Recolher análise ▴';
+        if (isExp) {
+          flushPendingAutonomousUpdates();
+        }
       });
     });
 
@@ -13313,7 +13624,7 @@
   function carregarColunasEntendaV2(forceRefresh, isAutoRefresh) {
     var wrap = document.getElementById('radar-v2-colunas-wrap') || document.getElementById('entenda-v2-colunas-wrap');
     if (!wrap) return;
-    if (!forceRefresh && !isAutoRefresh && Array.isArray(v2EntendaColunasCache) && v2EntendaColunasCache.length) {
+    if (!forceRefresh && !isAutoRefresh && Array.isArray(v2EntendaColunasCache) && v2EntendaColunasCache.length && v2EntendaColunasCacheTs > 0 && (Date.now() - v2EntendaColunasCacheTs < V2_ENTENDA_COLUNAS_TTL_MS)) {
       renderColunasEntendaV2DOM(v2EntendaColunasCache, v2EntendaAtualizadoEm);
       return;
     }
@@ -13323,16 +13634,19 @@
       .then(function (data) {
         if (data && data.ok && Array.isArray(data.colunas) && data.colunas.length) {
           v2EntendaColunasCache = data.colunas;
-          v2EntendaAtualizadoEm = data.atualizado_em || '';
+          v2EntendaColunasCacheTs = Date.now();
+          v2EntendaAtualizadoEm = data.atualizado_em || (data.updatedAt ? formatSearchDate(data.updatedAt) : '');
           lastAutonomousFetchTimestamps.entendaV2 = Date.now();
           if (isAutoRefresh && isUserReadingOrInteractingWith(wrap)) {
-            pendingAutonomousUpdates.entendaV2 = function () {
+            queueAutonomousUpdate('entendaV2', function () {
               renderColunasEntendaV2DOM(v2EntendaColunasCache, v2EntendaAtualizadoEm);
-            };
+            });
           } else {
             renderColunasEntendaV2DOM(v2EntendaColunasCache, v2EntendaAtualizadoEm);
           }
         } else {
+          v2EntendaColunasCache = [];
+          v2EntendaColunasCacheTs = 0;
           renderColunasEntendaV2DOM([], '');
         }
       })
@@ -13628,7 +13942,8 @@
     if (parsed.type === 'editorial-section') {
       var secOpts = { fromPopState: false, routePath: parsed.routePath };
       if (parsed.sectionKey === 'radar') {
-        secOpts.radarTab = (u.hash === '#curadoria' ? 'curadoria' : 'radar');
+        var rHash = (u.hash || '').toLowerCase();
+        secOpts.radarTab = (rHash === '#curadoria' ? 'curadoria' : (rHash === '#colunas' ? 'colunas' : 'radar'));
       }
       showEditorialSectionPage(parsed.sectionKey, secOpts);
       return;
@@ -13662,7 +13977,8 @@
     if (parsed.type === 'editorial-section') {
       var secOpts2 = { fromPopState: !parsed.replaceUrl, replaceUrl: parsed.replaceUrl, routePath: parsed.routePath };
       if (parsed.sectionKey === 'radar') {
-        secOpts2.radarTab = (location.hash === '#curadoria' ? 'curadoria' : 'radar');
+        var locHash = (location.hash || '').toLowerCase();
+        secOpts2.radarTab = (locHash === '#curadoria' ? 'curadoria' : (locHash === '#colunas' ? 'colunas' : 'radar'));
       }
       showEditorialSectionPage(parsed.sectionKey, secOpts2);
       return;
@@ -16094,6 +16410,13 @@
       return;
     }
 
+    filtered = filtered.slice().sort(function (a, b) {
+      var ta = getVitrineItemTimestamp(a);
+      var tb = getVitrineItemTimestamp(b);
+      if (tb !== ta) return tb - ta;
+      return (Number(b && b.relevancia_score) || 0) - (Number(a && a.relevancia_score) || 0);
+    });
+
     var html = filtered.slice(0, 12).map(function (tm) {
       var stKey = (tm.status && VITRINE_STATUS_META[tm.status]) ? tm.status : 'em_alta';
       var stMeta = VITRINE_STATUS_META[stKey];
@@ -16169,8 +16492,10 @@
 
     if (forceRefresh) {
       vitrineIaMemoryTemas = [];
+      vitrineIaMemoryTs = 0;
+      vitrineIaSourceIsFallback = false;
       try { localStorage.removeItem(VITRINE_IA_CACHE_KEY); } catch (e) {}
-    } else if (!isAutoRefresh) {
+    } else if (!isAutoRefresh && vitrineIaFetchedInSession && !vitrineIaSourceIsFallback) {
       var cached = lerCacheVitrineIA(false);
       if (cached && cached.length) {
         if (hasGrid) renderVitrineIACards(cached, vitrineIaSelectedCategory);
@@ -16179,13 +16504,9 @@
       }
     }
 
-    var endpoint = (forceRefresh || isAutoRefresh)
-      ? ('/api/vitrine-em-alta?_t=' + Date.now() + (forceRefresh ? '&refresh=1' : ''))
-      : '/api/vitrine-em-alta';
-
-    var fetchOpts = (forceRefresh || isAutoRefresh)
-      ? { cache: 'no-store', headers: { 'Accept': 'application/json' } }
-      : { headers: { 'Accept': 'application/json' } };
+    var seq = ++vitrineIaFetchSeq;
+    var endpoint = '/api/vitrine-em-alta?_t=' + Date.now() + (forceRefresh ? '&refresh=1' : '');
+    var fetchOpts = { cache: 'no-store', headers: { 'Accept': 'application/json' } };
 
     fetch(endpoint, fetchOpts)
       .then(function (r) {
@@ -16193,17 +16514,27 @@
         return r.json();
       })
       .then(function (data) {
+        if (seq !== vitrineIaFetchSeq) return;
         var temas = (data && Array.isArray(data.temas_ativos)) ? data.temas_ativos : [];
+        var incomingFallback = !!(data && (data.fallback || data.source === 'snapshot'));
         lastAutonomousFetchTimestamps.vitrineIa = Date.now();
         if (temas.length > 0) {
+          if (incomingFallback && !vitrineIaSourceIsFallback && vitrineIaMemoryTemas.length > 0 && getVitrineMaxTimestamp(vitrineIaMemoryTemas) > getVitrineMaxTimestamp(temas)) {
+            return;
+          }
+          vitrineIaFetchedInSession = true;
+          vitrineIaSourceIsFallback = incomingFallback;
           vitrineIaMemoryTemas = temas;
-          salvarCacheVitrineIA(temas, data.updatedAt);
+          vitrineIaMemoryTs = Date.now();
+          if (!incomingFallback) {
+            salvarCacheVitrineIA(temas, data.updatedAt);
+          }
           if (hasGrid) {
             if (isAutoRefresh && isUserReadingOrInteractingWith(gridEl)) {
-              pendingAutonomousUpdates.vitrineIa = function () {
+              queueAutonomousUpdate('vitrineIa', function () {
                 renderVitrineIACards(temas, vitrineIaSelectedCategory);
                 triggerHotNewsPulseCycle();
-              };
+              });
             } else {
               renderVitrineIACards(temas, vitrineIaSelectedCategory);
               triggerHotNewsPulseCycle();
@@ -16212,49 +16543,32 @@
             triggerHotNewsPulseCycle();
           }
         } else {
-          var stale = lerCacheVitrineIA(true);
-          if (stale && stale.length && !forceRefresh) {
-            if (hasGrid) renderVitrineIACards(stale, vitrineIaSelectedCategory);
-          } else if (hasGrid) {
+          vitrineIaFetchedInSession = true;
+          vitrineIaSourceIsFallback = incomingFallback;
+          vitrineIaMemoryTemas = [];
+          vitrineIaMemoryTs = 0;
+          try { localStorage.removeItem(VITRINE_IA_CACHE_KEY); } catch (e) {}
+          if (hasGrid) {
             renderVitrineIACards([], vitrineIaSelectedCategory);
           }
         }
       })
       .catch(function () {
-        var stale = lerCacheVitrineIA(true);
-        if (stale && stale.length) {
-          if (hasGrid) renderVitrineIACards(stale, vitrineIaSelectedCategory);
-          else vitrineIaMemoryTemas = stale;
-        } else if (hasGrid) {
-          renderVitrineIACards([], vitrineIaSelectedCategory);
+        if (seq !== vitrineIaFetchSeq) return;
+        var fresh = (vitrineIaFetchedInSession && !vitrineIaSourceIsFallback) ? lerCacheVitrineIA(false) : [];
+        if (fresh && fresh.length) {
+          if (hasGrid) renderVitrineIACards(fresh, vitrineIaSelectedCategory);
+          else vitrineIaMemoryTemas = fresh;
+        } else {
+          vitrineIaMemoryTemas = [];
+          vitrineIaMemoryTs = 0;
+          if (hasGrid) renderVitrineIACards([], vitrineIaSelectedCategory);
         }
       });
   }
 
   function initVitrineIA() {
-    var secEl = document.getElementById('vitrine-ia');
-    var chipsWrap = document.getElementById('vitrine-ia-chips');
-    if (chipsWrap) {
-      chipsWrap.querySelectorAll('.vitrine-ia-chip').forEach(function (chip) {
-        chip.addEventListener('click', function () {
-          var cat = chip.getAttribute('data-cat') || '';
-          vitrineIaSelectedCategory = cat;
-          chipsWrap.querySelectorAll('.vitrine-ia-chip').forEach(function (c) {
-            var active = c === chip;
-            c.classList.toggle('is-active', active);
-            c.setAttribute('aria-selected', String(active));
-          });
-          var cached = lerCacheVitrineIA(true);
-          if (cached && cached.length) {
-            if (document.getElementById('vitrine-ia-grid')) renderVitrineIACards(cached, vitrineIaSelectedCategory);
-            else vitrineIaMemoryTemas = cached;
-          } else {
-            carregarVitrineIA({ forceRefresh: false, categoria: vitrineIaSelectedCategory });
-          }
-        });
-      });
-    }
-
+    bindVitrineIaChips(document);
     carregarVitrineIA({ forceRefresh: false });
   }
 

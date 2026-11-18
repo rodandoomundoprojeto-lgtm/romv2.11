@@ -3,6 +3,13 @@
 // consultando feeds RSS (Bing News RSS + Google News RSS) para os veículos cadastrados,
 // filtrando, ordenando por data e agrupando os resultados em carrosséis por veículo.
 import { json, limparTermo } from '../lib/ia.js';
+import {
+  isRefreshRequest,
+  newsResponseHeaders,
+  parseTimestampIso,
+  compareIsoDesc,
+  parseFeedItems,
+} from '../lib/rss.js';
 
 const MAX_POR_VEICULO_PADRAO = 12;
 const MAX_POR_VEICULO_30D = 16;
@@ -17,16 +24,8 @@ const CORS_HEADERS = {
   'Access-Control-Allow-Headers': 'Content-Type, Accept, Authorization',
 };
 
-const CACHE_HEADERS = {
-  'Cache-Control': 'public, max-age=300, stale-while-revalidate=60',
-  'X-Content-Type-Options': 'nosniff',
-  ...CORS_HEADERS,
-};
-const SEM_CACHE = {
-  'Cache-Control': 'no-store',
-  'X-Content-Type-Options': 'nosniff',
-  ...CORS_HEADERS,
-};
+const CACHE_HEADERS = newsResponseHeaders({ isRefresh: false, isFallback: false, corsHeaders: CORS_HEADERS });
+const SEM_CACHE = newsResponseHeaders({ isRefresh: true, isFallback: true, corsHeaders: CORS_HEADERS });
 
 // Vocabulário semântico por tópico para enriquecer a busca e ranquear melhor cada editoria
 const TERMOS_CONTEXTO_TOPICO = {
@@ -628,22 +627,19 @@ function dataISO(rawDate) {
 
 function parseRssItems(xml, nomeVeiculo) {
   if (!xml) return [];
+  const parsed = parseFeedItems(xml);
   const items = [];
-  const regex = /<item\b[^>]*>([\s\S]*?)<\/item>/gi;
-  let match;
-  while ((match = regex.exec(xml)) !== null) {
-    const bloco = match[1];
-    const rawTitle = extrairTag(bloco, 'title');
-    const titulo = limparTitulo(rawTitle, nomeVeiculo);
+  for (const entry of parsed) {
+    const titulo = limparTitulo(entry.title, nomeVeiculo);
     if (!titulo) continue;
 
-    const rawLink = extrairTag(bloco, 'link');
-    const url = extrairUrlReal(rawLink);
+    const url = extrairUrlReal(entry.link);
     if (!url) continue;
 
-    const pubDate = dataISO(extrairTag(bloco, 'pubDate') || extrairTag(bloco, 'dc:date'));
-    const rawDesc = extrairTag(bloco, 'description');
-    const rawContent = extrairTag(bloco, 'content:encoded');
+    const pubDate = entry.pubDateIso || '';
+    const bloco = entry.rawBlock || '';
+    const rawDesc = entry.rawDescription || '';
+    const rawContent = entry.rawContent || '';
 
     const rawImg =
       extrairTag(bloco, 'News:Image') ||
@@ -794,14 +790,16 @@ function combinaComTermo(item, termoNorm, tokens) {
   return false;
 }
 
-async function fetchXml(url, timeoutMs = 4200) {
+async function fetchXml(url, timeoutMs = 4200, isRefresh = false) {
   const ctrl = new AbortController();
   const timer = setTimeout(() => ctrl.abort(), timeoutMs);
   try {
     const resp = await fetch(url, {
+      cache: 'no-store',
       headers: {
         'User-Agent': 'Mozilla/5.0 (compatible; RodandoOMundo/2.11)',
-        Accept: 'application/rss+xml, application/xml, text/xml, */*',
+        Accept: 'application/rss+xml, application/atom+xml, application/xml, text/xml, */*',
+        ...(isRefresh ? { 'Cache-Control': 'no-cache', Pragma: 'no-cache' } : {}),
       },
       signal: ctrl.signal,
     });
@@ -953,18 +951,21 @@ function deduplicarEOrdenar(lista, termoNorm, tokens, maxItens = MAX_POR_VEICULO
 
   return [...mapa.values()]
     .sort((a, b) => {
+      const hasA = Boolean(parseTimestampIso(a.publicadoEm));
+      const hasB = Boolean(parseTimestampIso(b.publicadoEm));
+      if (hasA !== hasB) return hasA ? -1 : 1;
       const diffRel = (b.relevancia || 0) - (a.relevancia || 0);
       if (Math.abs(diffRel) >= 15) return diffRel;
-      return (b.publicadoEm || '').localeCompare(a.publicadoEm || '');
+      return compareIsoDesc(a.publicadoEm, b.publicadoEm);
     })
     .slice(0, maxItens);
 }
 
 function dentroDoPeriodo(publicadoEm, periodo) {
   if (!periodo || periodo === 'all') return true;
-  if (!publicadoEm) return true;
+  if (!publicadoEm) return false;
   const ts = new Date(publicadoEm).getTime();
-  if (Number.isNaN(ts)) return true;
+  if (Number.isNaN(ts)) return false;
   const diffMs = Math.max(0, Date.now() - ts);
   if (periodo === '24h') return diffMs <= 36 * 60 * 60 * 1000;
   if (periodo === '7d') return diffMs <= 8 * 24 * 60 * 60 * 1000;
@@ -972,11 +973,11 @@ function dentroDoPeriodo(publicadoEm, periodo) {
   return true;
 }
 
-async function descobrirTermoViaGoogleNews(q, loc) {
+async function descobrirTermoViaGoogleNews(q, loc, isRefresh = false) {
   if (!q || q.length < 3) return '';
   try {
     const url = `https://news.google.com/rss/search?q=${encodeURIComponent(q)}&hl=${encodeURIComponent(loc.hl)}&gl=${encodeURIComponent(loc.gl)}&ceid=${encodeURIComponent(loc.ceid)}`;
-    const xml = await fetchXml(url, 3200);
+    const xml = await fetchXml(url, 3200, isRefresh);
     if (!xml) return '';
     const itens = parseRssItems(xml, '');
     return descobrirCorrecaoEmTitulos(q, itens);
@@ -985,7 +986,7 @@ async function descobrirTermoViaGoogleNews(q, loc) {
   }
 }
 
-async function buscarPorVeiculo(veiculo, q, topicTerm, loc, periodo = '24h', qTrad = '', topicTrad = '', qCorrigido = '', isEnrich = false, topicKey = '') {
+async function buscarPorVeiculo(veiculo, q, topicTerm, loc, periodo = '24h', qTrad = '', topicTrad = '', qCorrigido = '', isEnrich = false, topicKey = '', isRefresh = false) {
   const dom = String(veiculo.d || '').trim().toLowerCase();
   if (!dom) return [];
   const maxArtigos = limiteArtigosPorPeriodo(periodo);
@@ -995,14 +996,14 @@ async function buscarPorVeiculo(veiculo, q, topicTerm, loc, periodo = '24h', qTr
     const bingUrl = `https://www.bing.com/news/search?q=${encodeURIComponent(qFoco)}&format=rss&mkt=${encodeURIComponent(loc.mkt)}`;
     const googleUrl = `https://news.google.com/rss/search?q=${encodeURIComponent(qFoco)}&hl=${encodeURIComponent(loc.hl)}&gl=${encodeURIComponent(loc.gl)}&ceid=${encodeURIComponent(loc.ceid)}`;
 
-    const [bingXml, googleXml] = await Promise.all([fetchXml(bingUrl, 3800), fetchXml(googleUrl, 3800)]);
+    const [bingXml, googleXml] = await Promise.all([fetchXml(bingUrl, 3800, isRefresh), fetchXml(googleUrl, 3800, isRefresh)]);
     let itensBing = parseRssItems(bingXml, veiculo.n);
     let itensGoogle = parseRssItems(googleXml, veiculo.n);
 
     if (!itensBing.length && !itensGoogle.length) {
       const bFall = `https://www.bing.com/news/search?q=${encodeURIComponent(`site:${dom}`)}&format=rss&mkt=${encodeURIComponent(loc.mkt)}`;
       const gFall = `https://news.google.com/rss/search?q=${encodeURIComponent(`site:${dom}`)}&hl=${encodeURIComponent(loc.hl)}&gl=${encodeURIComponent(loc.gl)}&ceid=${encodeURIComponent(loc.ceid)}`;
-      const [bfXml, gfXml] = await Promise.all([fetchXml(bFall, 3500), fetchXml(gFall, 3500)]);
+      const [bfXml, gfXml] = await Promise.all([fetchXml(bFall, 3500, isRefresh), fetchXml(gFall, 3500, isRefresh)]);
       itensBing = parseRssItems(bfXml, veiculo.n);
       itensGoogle = parseRssItems(gfXml, veiculo.n);
     }
@@ -1029,25 +1030,25 @@ async function buscarPorVeiculo(veiculo, q, topicTerm, loc, periodo = '24h', qTr
   const qBaseConsulta = extrairTermoResilienteConsulta(qBase);
 
   const requisicoes = [
-    fetchXml(`https://www.bing.com/news/search?q=${encodeURIComponent(`${qConsulta} site:${dom}`)}&format=rss&mkt=${encodeURIComponent(loc.mkt)}${bingInterval}`),
-    fetchXml(`https://news.google.com/rss/search?q=${encodeURIComponent(`${qConsulta} site:${dom}` + whenTag)}&hl=${encodeURIComponent(loc.hl)}&gl=${encodeURIComponent(loc.gl)}&ceid=${encodeURIComponent(loc.ceid)}`),
+    fetchXml(`https://www.bing.com/news/search?q=${encodeURIComponent(`${qConsulta} site:${dom}`)}&format=rss&mkt=${encodeURIComponent(loc.mkt)}${bingInterval}`, 4200, isRefresh),
+    fetchXml(`https://news.google.com/rss/search?q=${encodeURIComponent(`${qConsulta} site:${dom}` + whenTag)}&hl=${encodeURIComponent(loc.hl)}&gl=${encodeURIComponent(loc.gl)}&ceid=${encodeURIComponent(loc.ceid)}`, 4200, isRefresh),
   ];
 
   // Em "Todo o período" (ou quando há tópico ativo), executa queries adicionais de profundidade
   if (periodo === 'all') {
     if (tEfetivo && normalizar(tEfetivo) !== normalizar(qConsulta)) {
       requisicoes.push(
-        fetchXml(`https://news.google.com/rss/search?q=${encodeURIComponent(`${qConsulta} ${tEfetivo} site:${dom}`)}&hl=${encodeURIComponent(loc.hl)}&gl=${encodeURIComponent(loc.gl)}&ceid=${encodeURIComponent(loc.ceid)}`, 3800)
+        fetchXml(`https://news.google.com/rss/search?q=${encodeURIComponent(`${qConsulta} ${tEfetivo} site:${dom}`)}&hl=${encodeURIComponent(loc.hl)}&gl=${encodeURIComponent(loc.gl)}&ceid=${encodeURIComponent(loc.ceid)}`, 3800, isRefresh)
       );
     }
     if (normalizar(qBaseConsulta) !== normalizar(qConsulta)) {
       requisicoes.push(
-        fetchXml(`https://news.google.com/rss/search?q=${encodeURIComponent(`${qBaseConsulta} site:${dom}`)}&hl=${encodeURIComponent(loc.hl)}&gl=${encodeURIComponent(loc.gl)}&ceid=${encodeURIComponent(loc.ceid)}`, 3600)
+        fetchXml(`https://news.google.com/rss/search?q=${encodeURIComponent(`${qBaseConsulta} site:${dom}`)}&hl=${encodeURIComponent(loc.hl)}&gl=${encodeURIComponent(loc.gl)}&ceid=${encodeURIComponent(loc.ceid)}`, 3600, isRefresh)
       );
     }
   } else if (tEfetivo && normalizar(tEfetivo) !== normalizar(qConsulta)) {
     requisicoes.push(
-      fetchXml(`https://news.google.com/rss/search?q=${encodeURIComponent(`${qConsulta} ${tEfetivo} site:${dom}` + whenTag)}&hl=${encodeURIComponent(loc.hl)}&gl=${encodeURIComponent(loc.gl)}&ceid=${encodeURIComponent(loc.ceid)}`, 3500)
+      fetchXml(`https://news.google.com/rss/search?q=${encodeURIComponent(`${qConsulta} ${tEfetivo} site:${dom}` + whenTag)}&hl=${encodeURIComponent(loc.hl)}&gl=${encodeURIComponent(loc.gl)}&ceid=${encodeURIComponent(loc.ceid)}`, 3500, isRefresh)
     );
   }
 
@@ -1059,7 +1060,7 @@ async function buscarPorVeiculo(veiculo, q, topicTerm, loc, periodo = '24h', qTr
 
   if (todosBrutos.length === 0 && periodo === '24h') {
     const googleSemWhenUrl = `https://news.google.com/rss/search?q=${encodeURIComponent(`${qConsulta} site:${dom}`)}&hl=${encodeURIComponent(loc.hl)}&gl=${encodeURIComponent(loc.gl)}&ceid=${encodeURIComponent(loc.ceid)}`;
-    const fallbackXml = await fetchXml(googleSemWhenUrl, 4200);
+    const fallbackXml = await fetchXml(googleSemWhenUrl, 4200, isRefresh);
     todosBrutos = parseRssItems(fallbackXml, veiculo.n);
   }
 
@@ -1090,7 +1091,7 @@ function limparCacheExpirado() {
 }
 
 // Busca agregada em lotes de domínios para capturar muito mais matérias em "Todo o período"
-async function buscarArtigosAgregadosPais(dominios, qBusca, loc, per, topicTrad = '') {
+async function buscarArtigosAgregadosPais(dominios, qBusca, loc, per, topicTrad = '', isRefresh = false) {
   if (!dominios || !dominios.length || !qBusca) return [];
   const whenTag = per === '24h' ? ' when:1d' : (per === '7d' ? ' when:7d' : (per === '30d' ? ' when:30d' : ''));
   const qConsulta = extrairTermoResilienteConsulta(qBusca);
@@ -1104,18 +1105,18 @@ async function buscarArtigosAgregadosPais(dominios, qBusca, loc, per, topicTrad 
   const consultas = [];
   const bingInterval = per === '24h' ? '&qft=interval%3d%227%22' : (per === '7d' ? '&qft=interval%3d%228%22' : (per === '30d' ? '&qft=interval%3d%229%22' : ''));
   consultas.push(
-    fetchXml(`https://www.bing.com/news/search?q=${encodeURIComponent(qConsulta)}&format=rss&mkt=${encodeURIComponent(loc.mkt)}${bingInterval}`, 3800)
+    fetchXml(`https://www.bing.com/news/search?q=${encodeURIComponent(qConsulta)}&format=rss&mkt=${encodeURIComponent(loc.mkt)}${bingInterval}`, 3800, isRefresh)
   );
   for (const lote of lotes) {
     const orClause = lote.map((d) => `site:${d}`).join(' OR ');
     const qPrincipal = `${qConsulta} (${orClause})${whenTag}`;
     consultas.push(
-      fetchXml(`https://news.google.com/rss/search?q=${encodeURIComponent(qPrincipal)}&hl=${encodeURIComponent(loc.hl)}&gl=${encodeURIComponent(loc.gl)}&ceid=${encodeURIComponent(loc.ceid)}`, 4200)
+      fetchXml(`https://news.google.com/rss/search?q=${encodeURIComponent(qPrincipal)}&hl=${encodeURIComponent(loc.hl)}&gl=${encodeURIComponent(loc.gl)}&ceid=${encodeURIComponent(loc.ceid)}`, 4200, isRefresh)
     );
     if (per === 'all' && topicTrad && normalizar(topicTrad) !== normalizar(qConsulta)) {
       const qTematica = `${qConsulta} ${topicTrad} (${orClause})`;
       consultas.push(
-        fetchXml(`https://news.google.com/rss/search?q=${encodeURIComponent(qTematica)}&hl=${encodeURIComponent(loc.hl)}&gl=${encodeURIComponent(loc.gl)}&ceid=${encodeURIComponent(loc.ceid)}`, 4000)
+        fetchXml(`https://news.google.com/rss/search?q=${encodeURIComponent(qTematica)}&hl=${encodeURIComponent(loc.hl)}&gl=${encodeURIComponent(loc.gl)}&ceid=${encodeURIComponent(loc.ceid)}`, 4000, isRefresh)
       );
     }
   }
@@ -1128,22 +1129,23 @@ async function buscarArtigosAgregadosPais(dominios, qBusca, loc, per, topicTrad 
   return todos.filter((it) => dentroDoPeriodo(it.publicadoEm, per));
 }
 
-async function buscarTopicosEmAltaPais(loc, dominios = [], topicTerm = '') {
+async function buscarTopicosEmAltaPais(loc, dominios = [], topicTerm = '', isRefresh = false) {
   try {
     const urlHeadlines = topicTerm
       ? `https://news.google.com/rss/search?q=${encodeURIComponent(topicTerm + ' when:7d')}&hl=${encodeURIComponent(loc.hl)}&gl=${encodeURIComponent(loc.gl)}&ceid=${encodeURIComponent(loc.ceid)}`
       : `https://news.google.com/rss?hl=${encodeURIComponent(loc.hl)}&gl=${encodeURIComponent(loc.gl)}&ceid=${encodeURIComponent(loc.ceid)}`;
-    let xml = await fetchXml(urlHeadlines, 3800);
+    let xml = await fetchXml(urlHeadlines, 3800, isRefresh);
     let itens = parseRssItems(xml, '');
 
     if (!itens.length && dominios.length > 0) {
       const orClause = dominios.slice(0, 8).map((d) => `site:${d}`).join(' OR ');
       const urlFall = `https://news.google.com/rss/search?q=${encodeURIComponent(`(${orClause}) when:7d`)}&hl=${encodeURIComponent(loc.hl)}&gl=${encodeURIComponent(loc.gl)}&ceid=${encodeURIComponent(loc.ceid)}`;
-      xml = await fetchXml(urlFall, 3800);
+      xml = await fetchXml(urlFall, 3800, isRefresh);
       itens = parseRssItems(xml, '');
     }
 
     if (!itens.length) return [];
+    itens.sort((a, b) => compareIsoDesc(a.publicadoEm, b.publicadoEm));
     return extrairTopicosEmAlta([{ artigos: itens }], '');
   } catch {
     return [];
@@ -1238,6 +1240,7 @@ async function handleBuscaAssunto(req) {
     }
   }
 
+  const isRefresh = isRefreshRequest(req, req.method === 'POST' ? params : null);
   const isTrendingMode = Boolean(params.mode === 'trending' || params.trending);
   const isEnrich = Boolean(params.isEnrich || params.enrich);
   const q = limparTermo(params.q || params.assunto || '');
@@ -1298,6 +1301,7 @@ async function handleBuscaAssunto(req) {
       contexto: { cont, country, countryName, topic },
       grupos: [],
       totalArtigos: 0,
+      fallback: true,
       atualizadoEm: new Date().toISOString(),
     }, 200, SEM_CACHE);
   }
@@ -1314,9 +1318,13 @@ async function handleBuscaAssunto(req) {
   ].join('|');
 
   limparCacheExpirado();
-  const emCache = CACHE_MEMORIA.get(chaveCache);
-  if (emCache && emCache.expiraEm > Date.now()) {
-    return json({ ...emCache.payload, cache: true }, 200, CACHE_HEADERS);
+  if (isRefresh) {
+    CACHE_MEMORIA.delete(chaveCache);
+  } else {
+    const emCache = CACHE_MEMORIA.get(chaveCache);
+    if (emCache && emCache.expiraEm > Date.now()) {
+      return json({ ...emCache.payload, cache: true, fallback: false }, 200, CACHE_HEADERS);
+    }
   }
 
   const loc = localeParams(lang, country);
@@ -1324,23 +1332,35 @@ async function handleBuscaAssunto(req) {
   if (isTrendingMode) {
     const chaveCacheTrend = `trending|${(country || 'BR').toUpperCase()}|${(lang || 'pt').toLowerCase()}|${topic || 'all'}`;
     limparCacheExpirado();
-    const emCacheTrend = CACHE_MEMORIA.get(chaveCacheTrend);
-    if (emCacheTrend && emCacheTrend.expiraEm > Date.now()) {
-      return json({ ...emCacheTrend.payload, cache: true }, 200, CACHE_HEADERS);
+    if (isRefresh) {
+      CACHE_MEMORIA.delete(chaveCacheTrend);
+    } else {
+      const emCacheTrend = CACHE_MEMORIA.get(chaveCacheTrend);
+      if (emCacheTrend && emCacheTrend.expiraEm > Date.now()) {
+        return json({ ...emCacheTrend.payload, cache: true, fallback: false }, 200, CACHE_HEADERS);
+      }
     }
     const domsTrend = listaVeiculos.map((v) => v.d).filter(Boolean);
-    const topicosTrend = await buscarTopicosEmAltaPais(loc, domsTrend, topicTerm);
+    const topicosTrend = await buscarTopicosEmAltaPais(loc, domsTrend, topicTerm, isRefresh);
+    const isTrendFallback = topicosTrend.length === 0;
     const payloadTrend = {
       country: (country || 'BR').toUpperCase(),
       lang: lang || 'pt',
       topicosEmAlta: topicosTrend,
+      fallback: isTrendFallback,
       atualizadoEm: new Date().toISOString(),
     };
-    CACHE_MEMORIA.set(chaveCacheTrend, {
-      expiraEm: Date.now() + CACHE_TTL_MS,
-      payload: payloadTrend,
-    });
-    return json(payloadTrend, 200, CACHE_HEADERS);
+    if (!isTrendFallback) {
+      CACHE_MEMORIA.set(chaveCacheTrend, {
+        expiraEm: Date.now() + CACHE_TTL_MS,
+        payload: payloadTrend,
+      });
+    }
+    return json(
+      payloadTrend,
+      200,
+      newsResponseHeaders({ isRefresh, isFallback: isTrendFallback, corsHeaders: CORS_HEADERS })
+    );
   }
 
   let qCorrigido = isEnrich ? q : corrigirTermoEstatico(q);
@@ -1351,7 +1371,7 @@ async function handleBuscaAssunto(req) {
     const res = await Promise.all([
       traduzirTermoParaIdioma(jaCorrigiuEstatico ? qCorrigido : q, lang),
       topicTerm ? traduzirTermoParaIdioma(topicTerm, lang) : Promise.resolve(''),
-      jaCorrigiuEstatico ? Promise.resolve('') : descobrirTermoViaGoogleNews(q, loc),
+      jaCorrigiuEstatico ? Promise.resolve('') : descobrirTermoViaGoogleNews(q, loc, isRefresh),
     ]);
     qTrad = res[0] || '';
     topicTrad = res[1] || '';
@@ -1372,7 +1392,7 @@ async function handleBuscaAssunto(req) {
     const qFinalBusca = qTrad && normalizar(qTrad) !== normalizar(qBaseEfetiva) ? qTrad : qBaseEfetiva;
 
     const agregadosRawPromise = (!isEnrich && dominiosPais.length > 0)
-      ? buscarArtigosAgregadosPais(dominiosPais, qFinalBusca, loc, per, topicTrad || topicTerm)
+      ? buscarArtigosAgregadosPais(dominiosPais, qFinalBusca, loc, per, topicTrad || topicTerm, isRefresh)
       : Promise.resolve([]);
 
     const [agregadosRaw, resultadosIndividuais] = await Promise.all([
@@ -1382,7 +1402,7 @@ async function handleBuscaAssunto(req) {
           const codigoPaisVeic = String(veic.pais || country || '').toUpperCase();
           const flagCode = codigoPaisVeic ? codigoPaisVeic.toLowerCase() : codigoBandeiraPadrao;
           const bandeiraUrl = flagCode ? `https://flagcdn.com/w80/${flagCode}.png` : '';
-          const artigosRaw = await buscarPorVeiculo(veic, q, topicTerm, loc, per, qTrad, topicTrad, termoCorrigidoFinal, isEnrich, topic);
+          const artigosRaw = await buscarPorVeiculo(veic, q, topicTerm, loc, per, qTrad, topicTrad, termoCorrigidoFinal, isEnrich, topic, isRefresh);
           return { veic, artigosRaw, codigoPaisVeic, bandeiraUrl };
         })
       )
@@ -1482,6 +1502,7 @@ async function handleBuscaAssunto(req) {
 
   const totalArtigos = grupos.reduce((acc, g) => acc + g.artigos.length, 0);
   const topicosEmAlta = isEnrich ? [] : extrairTopicosEmAlta(grupos, q);
+  const isFallback = totalArtigos === 0;
 
   const payload = {
     termo: q,
@@ -1493,15 +1514,22 @@ async function handleBuscaAssunto(req) {
     resultados: grupos,
     topicosEmAlta,
     totalArtigos,
+    fallback: isFallback,
     atualizadoEm: new Date().toISOString(),
   };
 
-  CACHE_MEMORIA.set(chaveCache, {
-    expiraEm: Date.now() + CACHE_TTL_MS,
-    payload,
-  });
+  if (!isFallback) {
+    CACHE_MEMORIA.set(chaveCache, {
+      expiraEm: Date.now() + CACHE_TTL_MS,
+      payload,
+    });
+  }
 
-  return json(payload, 200, CACHE_HEADERS);
+  return json(
+    payload,
+    200,
+    newsResponseHeaders({ isRefresh, isFallback, corsHeaders: CORS_HEADERS })
+  );
 };
 
 export async function onRequestGet(context) {

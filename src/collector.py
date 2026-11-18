@@ -1,9 +1,12 @@
 """
 Módulo de Coleta: Lê config/sources.json, processa RSS e YouTube, e extrai textos/legendas.
 """
+import calendar
+import email.utils
 import json
 import os
 import re
+import time
 from datetime import datetime, timezone
 from typing import List, Dict, Any
 import feedparser
@@ -125,27 +128,55 @@ def get_youtube_content(entry: Any, video_id: str) -> str:
 
 
 def parse_entry_date(entry: Any) -> str:
-    """Retorna a data de publicação no padrão ISO 8601 UTC."""
+    """Retorna a data de publicação no padrão ISO 8601 UTC ou string vazia se ausente/inválida."""
+    for field in ("published_parsed", "updated_parsed"):
+        parsed = _get_field(entry, field)
+        if not parsed:
+            continue
+        try:
+            if isinstance(parsed, (tuple, time.struct_time)):
+                seq = tuple(parsed)
+                if len(seq) >= 6:
+                    if len(seq) < 9:
+                        seq = seq + (0,) * (9 - len(seq))
+                    ts = calendar.timegm(seq[:9])
+                    return datetime.fromtimestamp(ts, tz=timezone.utc).isoformat()
+        except Exception:
+            pass
+
+    for date_field in ("published", "updated", "data_publicacao", "pubDate"):
+        raw_str = _get_field(entry, date_field)
+        if not isinstance(raw_str, str) or not raw_str.strip():
+            continue
+        texto = raw_str.strip()
+        try:
+            dt = datetime.fromisoformat(texto.replace("Z", "+00:00"))
+            if dt.tzinfo is None:
+                dt = dt.replace(tzinfo=timezone.utc)
+            return dt.astimezone(timezone.utc).isoformat()
+        except Exception:
+            pass
+        try:
+            dt = email.utils.parsedate_to_datetime(texto)
+            if dt.tzinfo is None:
+                dt = dt.replace(tzinfo=timezone.utc)
+            return dt.astimezone(timezone.utc).isoformat()
+        except Exception:
+            pass
+
+    return ""
+
+
+def _entry_sort_timestamp(entry: Any) -> float:
+    """Converte a data da entrada para timestamp numérico UTC (0.0 se ausente)."""
+    iso_pub = parse_entry_date(entry)
+    if not iso_pub:
+        return 0.0
     try:
-        pub = _get_field(entry, "published_parsed")
-        if pub:
-            dt = datetime(*pub[:6], tzinfo=timezone.utc)
-            return dt.isoformat()
-        upd = _get_field(entry, "updated_parsed")
-        if upd:
-            dt = datetime(*upd[:6], tzinfo=timezone.utc)
-            return dt.isoformat()
-        for date_field in ("published", "updated", "data_publicacao"):
-            raw_str = _get_field(entry, date_field)
-            if isinstance(raw_str, str) and raw_str.strip():
-                try:
-                    dt = datetime.fromisoformat(raw_str.replace("Z", "+00:00"))
-                    return dt.isoformat()
-                except Exception:
-                    pass
+        dt = datetime.fromisoformat(iso_pub.replace("Z", "+00:00"))
+        return dt.timestamp()
     except Exception:
-        pass
-    return datetime.now(timezone.utc).isoformat()
+        return 0.0
 
 
 def collect_new_items() -> List[Dict[str, Any]]:
@@ -174,8 +205,9 @@ def collect_new_items() -> List[Dict[str, Any]]:
             if not feed.entries:
                 continue
 
-            # Processa até os 5 itens mais recentes de cada fonte por execução
-            for entry in feed.entries[:5]:
+            # Ordena todas as entradas por data de publicação decrescente antes de fatiar [:5]
+            entries_ordenadas = sorted(feed.entries, key=_entry_sort_timestamp, reverse=True)
+            for entry in entries_ordenadas[:5]:
                 # Identificador único (id da entrada ou link)
                 item_id = _get_field(entry, "id") or _get_field(entry, "link")
                 if not item_id:

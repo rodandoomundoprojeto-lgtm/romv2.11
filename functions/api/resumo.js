@@ -1,6 +1,12 @@
 // Cloudflare Pages Function: /api/resumo
 // Atualização automática diária do Resumo do Dia para o Rodando o Mundo
-// Agrega e seleciona as 5 principais manchetes por relevância editorial com cache diário e suporte a refresh em tempo real (_t / refresh=1)
+// Agrega e seleciona as 5 principais manchetes por relevância editorial com suporte a refresh em tempo real (_t / refresh=1 / force=1)
+import {
+  isRefreshRequest,
+  newsResponseHeaders,
+  compareIsoDesc,
+  parseFeedItems,
+} from '../lib/rss.js';
 
 const RSS_FEEDS = [
   {
@@ -350,19 +356,13 @@ function cleanHtml(raw) {
 
 function parseRssItems(xml, maxItems = 15) {
   if (!xml) return [];
+  const parsed = parseFeedItems(xml);
   const results = [];
-  const itemRegex = /<item[\s>](.*?)<\/item>/gs;
-  let match;
-  while ((match = itemRegex.exec(xml)) !== null && results.length < maxItems) {
-    const itemXml = match[1];
-    const titleMatch = itemXml.match(/<title[\s>](.*?)<\/title>/s);
-    const linkMatch = itemXml.match(/<link[\s>](.*?)<\/link>/s);
-    const descMatch = itemXml.match(/<description[\s>](.*?)<\/description>/s);
-    const dateMatch = itemXml.match(/<pubDate[\s>](.*?)<\/pubDate>/s);
 
-    const title = cleanHtml(titleMatch ? titleMatch[1] : '');
-    const link = cleanHtml(linkMatch ? linkMatch[1] : '');
-    let desc = cleanHtml(descMatch ? descMatch[1] : '');
+  for (const entry of parsed) {
+    const title = entry.title || '';
+    const link = entry.link || '';
+    let desc = entry.description || '';
 
     if (!title || !link) continue;
 
@@ -370,21 +370,16 @@ function parseRssItems(xml, maxItems = 15) {
       desc = desc.slice(0, 215).replace(/[,.;:\s]+$/, '') + '…';
     }
 
-    let dataIso;
-    try {
-      dataIso = dateMatch ? new Date(dateMatch[1]).toISOString() : new Date().toISOString();
-    } catch {
-      dataIso = new Date().toISOString();
-    }
-
     results.push({
       titulo: title,
       url: link,
       resumo: desc,
-      data: dataIso
+      data: entry.pubDateIso || '',
     });
   }
-  return results;
+
+  results.sort((a, b) => compareIsoDesc(a.data, b.data));
+  return results.slice(0, maxItems);
 }
 
 const STOPWORDS_ASSUNTO = new Set([
@@ -484,6 +479,8 @@ function avaliarSimilaridadeAssunto(cand, sel) {
   return { mesmoAssunto, score };
 }
 
+const RESUMO_MEMORY_TTL_MS = 5 * 60 * 1000;
+
 let memoryCache = {
   date: '',
   timestamp: 0,
@@ -493,26 +490,28 @@ let memoryCache = {
 export async function onRequestGet(context) {
   const now = new Date();
   const hojeStr = now.toISOString().slice(0, 10);
+  const isRefresh = isRefreshRequest(context.request);
 
-  let isRefresh = false;
-  try {
-    const reqUrl = new URL(context.request.url);
-    isRefresh = reqUrl.searchParams.has('_t') || reqUrl.searchParams.get('refresh') === '1';
-  } catch {
-    isRefresh = false;
+  if (isRefresh) {
+    memoryCache = { date: '', timestamp: 0, data: null };
   }
 
-  const cacheControlHeader = isRefresh
-    ? 'no-store, no-cache, must-revalidate'
-    : 'public, max-age=1800, s-maxage=43200, stale-while-revalidate=86400';
-
-  if (!isRefresh && memoryCache.data && memoryCache.date === hojeStr && (Date.now() - memoryCache.timestamp < 7200000)) {
+  if (
+    !isRefresh &&
+    memoryCache.data &&
+    !memoryCache.data.fallback &&
+    memoryCache.date === hojeStr &&
+    (Date.now() - memoryCache.timestamp < RESUMO_MEMORY_TTL_MS)
+  ) {
     return new Response(JSON.stringify(memoryCache.data), {
       status: 200,
       headers: {
         'Content-Type': 'application/json; charset=utf-8',
-        'Cache-Control': cacheControlHeader,
-        'Access-Control-Allow-Origin': '*'
+        ...newsResponseHeaders({
+          isRefresh: false,
+          isFallback: false,
+          corsHeaders: { 'Access-Control-Allow-Origin': '*' },
+        }),
       }
     });
   }
@@ -523,6 +522,7 @@ export async function onRequestGet(context) {
         const ctrl = new AbortController();
         const t = setTimeout(() => ctrl.abort(), 4500);
         const res = await fetch(f.url, {
+          cache: 'no-store',
           headers: {
             'User-Agent': 'Mozilla/5.0 (compatible; RodandoOMundoBot/2.12; +https://www.rodandoomundo.com.br)',
             ...(isRefresh ? { 'Cache-Control': 'no-cache', Pragma: 'no-cache' } : {})
@@ -546,11 +546,12 @@ export async function onRequestGet(context) {
   feedsComCandidatos.sort((a, b) => a.feed.relevancia - b.feed.relevancia);
 
   const selecionados = [];
+  let usedFallback = false;
   const items = feedsComCandidatos.map(({ feed: f, candidatos }) => {
     let escolhido = null;
 
     if (candidatos.length) {
-      // 1. Tenta o primeiro candidato que não repita nenhum assunto já escolhido
+      // 1. Tenta o primeiro candidato mais recente que não repita nenhum assunto já escolhido
       escolhido = candidatos.find(
         (cand) => !selecionados.some((sel) => avaliarSimilaridadeAssunto(cand, sel).mesmoAssunto)
       );
@@ -572,6 +573,7 @@ export async function onRequestGet(context) {
     }
 
     if (!escolhido) {
+      usedFallback = true;
       return {
         relevancia: f.relevancia,
         categoria: f.categoria,
@@ -590,7 +592,7 @@ export async function onRequestGet(context) {
         codigoPais: f.codigoPais,
         continente: f.continente,
         tipoNoticia: f.tipoNoticia,
-        publicadoEm: now.toISOString()
+        publicadoEm: ''
       };
     }
 
@@ -615,28 +617,34 @@ export async function onRequestGet(context) {
       codigoPais: paisInferido.codigoPais,
       continente: paisInferido.continente,
       tipoNoticia: f.tipoNoticia,
-      publicadoEm: escolhido.data
+      publicadoEm: escolhido.data || ''
     };
   });
 
   const payload = {
     dataEdicao: hojeStr,
     atualizadoEm: now.toISOString(),
+    fallback: usedFallback,
     items: items
   };
 
-  memoryCache = {
-    date: hojeStr,
-    timestamp: Date.now(),
-    data: payload
-  };
+  if (!usedFallback && selecionados.length > 0) {
+    memoryCache = {
+      date: hojeStr,
+      timestamp: Date.now(),
+      data: payload
+    };
+  }
 
   return new Response(JSON.stringify(payload), {
     status: 200,
     headers: {
       'Content-Type': 'application/json; charset=utf-8',
-      'Cache-Control': cacheControlHeader,
-      'Access-Control-Allow-Origin': '*'
+      ...newsResponseHeaders({
+        isRefresh,
+        isFallback: usedFallback,
+        corsHeaders: { 'Access-Control-Allow-Origin': '*' },
+      }),
     }
   });
 }
