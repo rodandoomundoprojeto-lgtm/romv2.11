@@ -3564,6 +3564,163 @@ dialog:not([open]) {
 [data-theme='dark'] .country-list button.fav-star-btn.is-fav {
   color: #fbbf24;
 }
+
+/* ==========================================================================
+   BOTÃO DISCRETO DE COMPARTILHAMENTO & POPOVER INTELIGENTE (RoM)
+   ========================================================================== */
+.share-btn {
+  display: inline-grid;
+  place-items: center;
+  width: 1.85rem;
+  height: 1.85rem;
+  min-width: 1.85rem;
+  max-width: 1.85rem;
+  padding: 0;
+  margin: 0;
+  flex: 0 0 1.85rem;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--text-muted);
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  transition: border-color 0.15s var(--ease), color 0.15s var(--ease), background-color 0.15s var(--ease), transform 0.12s var(--ease);
+}
+.share-btn svg {
+  width: 0.92rem;
+  height: 0.92rem;
+  display: block;
+  flex: none;
+  pointer-events: none;
+}
+@media (hover: hover) and (pointer: fine) {
+  .share-btn:hover {
+    border-color: var(--primary, #0284c7);
+    color: var(--primary, #0284c7);
+    background: color-mix(in oklab, var(--primary, #0284c7) 12%, var(--surface-2));
+  }
+  [data-theme='dark'] .share-btn:hover {
+    border-color: #38bdf8;
+    color: #38bdf8;
+    background: color-mix(in oklab, #0284c7 20%, var(--surface-2));
+  }
+}
+.share-btn:active {
+  transform: scale(0.92);
+}
+.share-btn:focus-visible {
+  outline: 2px solid var(--primary, #0284c7);
+  outline-offset: 2px;
+}
+
+.item-action-btns {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-left: auto;
+}
+.hub-home-card-top .share-btn {
+  margin-left: auto;
+}
+.radar-card-footer .share-btn {
+  margin-left: auto;
+}
+.btn-share-dossie {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+.btn-share-dossie svg {
+  flex: none;
+  width: 15px;
+  height: 15px;
+}
+
+/* Popover Flutuante Global de Compartilhamento */
+.rom-share-popover {
+  position: fixed;
+  z-index: 999999;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md, 10px);
+  padding: 6px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2), 0 2px 8px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 195px;
+  max-width: 260px;
+  font-family: var(--font-body, system-ui, sans-serif);
+  animation: dropdownFadeIn 0.16s var(--ease);
+}
+.rom-share-popover[hidden] {
+  display: none !important;
+}
+.share-popover-header {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+  color: var(--text-muted);
+  padding: 4px 8px 6px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.share-popover-item {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  width: 100%;
+  padding: 7px 10px;
+  font-size: var(--text-xs, 0.82rem);
+  font-weight: 500;
+  color: var(--text);
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  text-align: left;
+  transition: background-color 0.12s ease, color 0.12s ease;
+  line-height: 1.25;
+}
+.share-popover-item:hover,
+.share-popover-item:focus-visible {
+  background: color-mix(in oklab, var(--primary, #0284c7) 12%, var(--surface-2));
+  color: var(--primary, #0284c7);
+  outline: none;
+}
+[data-theme='dark'] .share-popover-item:hover,
+[data-theme='dark'] .share-popover-item:focus-visible {
+  background: color-mix(in oklab, #0284c7 22%, var(--surface-2));
+  color: #38bdf8;
+}
+.share-popover-item.is-copied {
+  background: color-mix(in oklab, #10b981 18%, var(--surface-2)) !important;
+  color: #059669 !important;
+  font-weight: 600;
+}
+[data-theme='dark'] .share-popover-item.is-copied {
+  color: #34d399 !important;
+}
+.share-popover-icon {
+  width: 16px;
+  height: 16px;
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+}
+.share-popover-icon svg {
+  width: 15px;
+  height: 15px;
+  display: block;
+}
+
 .territory-notice-btn {
   display: inline-grid; place-items: center; width: 1.85rem; height: 1.85rem;
   min-width: 1.85rem; max-width: 1.85rem; padding: 0; margin: 0; flex: 0 0 1.85rem;
@@ -12657,7 +12814,8 @@ body.dark .dossie-filter-pill.is-active {
   color: var(--text-muted);
 }
 
-.btn-atlas-refresh {
+.btn-atlas-refresh,
+.btn-atlas-toggle {
   display: inline-flex;
   align-items: center;
   gap: 5px;
@@ -12672,13 +12830,26 @@ body.dark .dossie-filter-pill.is-active {
   transition: all 0.2s ease;
 }
 
-.btn-atlas-refresh:hover {
+.btn-atlas-refresh:hover,
+.btn-atlas-toggle:hover {
   border-color: var(--primary);
   color: var(--primary);
 }
 
 .btn-atlas-refresh.is-refreshing svg {
   animation: topic-spin 0.8s linear infinite;
+}
+
+.btn-atlas-toggle svg {
+  transition: transform 0.2s ease;
+}
+
+.atlas-live-section.is-minimized .atlas-live-list {
+  display: none;
+}
+
+.atlas-live-section.is-minimized .atlas-live-head {
+  margin-bottom: 0;
 }
 
 .atlas-live-list {

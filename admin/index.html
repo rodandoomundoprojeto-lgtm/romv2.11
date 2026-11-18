@@ -2555,6 +2555,9 @@
         }
         tbody.innerHTML = fontes.map((f) => {
           const polClass = f.politica_uso_status === 'aprovada' ? 'badge-ok' : 'badge-warn';
+          const aprovarBtn = f.politica_uso_status === 'aprovada'
+            ? ''
+            : `<button class="admin-btn admin-btn-sm admin-btn-primary" type="button" data-aprovar-fonte="${f.id}">Aprovar</button>`;
           return `
             <tr>
               <td>
@@ -2567,7 +2570,10 @@
                 <input class="switch-input" type="checkbox" data-toggle-fonte="${f.id}" ${f.ativo ? 'checked' : ''} aria-label="Ativar fonte ${escapeHtml(f.nome)}">
               </td>
               <td>
-                <button class="admin-btn admin-btn-sm admin-btn-danger" type="button" data-del-fonte="${f.id}">Excluir</button>
+                <div class="admin-actions" style="gap:6px;flex-wrap:wrap;">
+                  ${aprovarBtn}
+                  <button class="admin-btn admin-btn-sm admin-btn-danger" type="button" data-del-fonte="${f.id}">Excluir</button>
+                </div>
               </td>
             </tr>
           `;
@@ -2588,6 +2594,18 @@
       });
 
       $('tbody-fontes').addEventListener('click', async (e) => {
+        const aprovarId = e.target.getAttribute('data-aprovar-fonte');
+        if (aprovarId) {
+          try {
+            await apiFetch(`/v2/admin/fontes/${aprovarId}/aprovar`, { method: 'PATCH', body: JSON.stringify({ aprovar: true }) });
+            showBanner('fontes-banner', 'Fonte aprovada para coleta.', 'ok');
+            await carregarFontes();
+          } catch (err) {
+            showBanner('fontes-banner', 'Erro ao aprovar fonte: ' + err.message, 'err');
+          }
+          return;
+        }
+
         const id = e.target.getAttribute('data-del-fonte');
         if (!id) return;
         if (!confirm('Excluir esta fonte permanentemente?')) return;

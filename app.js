@@ -828,6 +828,7 @@
   var ICON_TRANSLATE = '<svg viewBox="0 0 24 24" aria-hidden="true" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></svg>';
   var ICON_STAR_ON = '<svg viewBox="0 0 24 24" aria-hidden="true" width="16" height="16" fill="currentColor"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5-4.8-4.6 6.6-.9L12 2.5z"/></svg>';
   var ICON_STAR_OFF = '<svg viewBox="0 0 24 24" aria-hidden="true" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5-4.8-4.6 6.6-.9L12 2.5z"/></svg>';
+  var ICON_SHARE = '<svg viewBox="0 0 24 24" aria-hidden="true" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>';
 
   var FAV_STORAGE_KEY = 'rom_favorites_v1';
   var favState = { paises: [], veiculos: [], noticias: [] };
@@ -1089,7 +1090,296 @@
     try { btn.blur(); } catch (err) {}
   }
 
+  function renderShareBtn(item) {
+    if (!item) return '';
+    var url = String(item.url || '').trim();
+    var title = String(item.title || '').trim();
+    var source = String(item.source || '').trim();
+    var type = String(item.type || 'noticia').trim();
+    var summary = String(item.summary || '').trim();
+    var label = type === 'radar' ? 'Compartilhar briefing' : (type === 'dossie' ? 'Compartilhar dossiê' : 'Compartilhar notícia');
+    return '<button type="button" class="share-btn share-action-btn"' +
+      ' data-share-btn="1"' +
+      ' data-share-url="' + esc(url) + '"' +
+      ' data-share-title="' + esc(title) + '"' +
+      ' data-share-source="' + esc(source) + '"' +
+      ' data-share-type="' + esc(type) + '"' +
+      (summary ? ' data-share-summary="' + esc(summary) + '"' : '') +
+      ' aria-haspopup="dialog"' +
+      ' aria-expanded="false"' +
+      ' title="' + esc(label) + '"' +
+      ' aria-label="' + esc(label) + '">' +
+      ICON_SHARE + '</button>';
+  }
+
+  var activeSharePopover = null;
+
+  function closeSharePopover() {
+    if (!activeSharePopover) return;
+    if (activeSharePopover.triggerBtn) {
+      activeSharePopover.triggerBtn.setAttribute('aria-expanded', 'false');
+    }
+    if (activeSharePopover.el) {
+      activeSharePopover.el.hidden = true;
+    }
+    activeSharePopover = null;
+  }
+
+  function getSharePopoverEl() {
+    var pop = document.getElementById('rom-share-popover');
+    if (!pop) {
+      pop = document.createElement('div');
+      pop.id = 'rom-share-popover';
+      pop.className = 'rom-share-popover';
+      pop.setAttribute('role', 'dialog');
+      pop.setAttribute('aria-label', 'Opções de compartilhamento');
+      pop.hidden = true;
+      document.body.appendChild(pop);
+    }
+    return pop;
+  }
+
+  function formatSharePayload(item) {
+    var type = item.type || 'noticia';
+    var rawUrl = item.url || '';
+    var title = item.title || '';
+    var source = item.source || '';
+    var summary = item.summary || '';
+    var origin = (typeof window !== 'undefined' && window.location && window.location.origin)
+      ? window.location.origin
+      : 'https://rodandoomundo.com.br';
+
+    var finalUrl = rawUrl;
+    if (!finalUrl || finalUrl === '#' || finalUrl === '/radar' || finalUrl.indexOf('/dossies') === 0 || finalUrl.charAt(0) === '/') {
+      if (!finalUrl || finalUrl === '#') {
+        finalUrl = (typeof window !== 'undefined' && window.location && window.location.href) ? window.location.href : origin;
+      } else {
+        finalUrl = origin + (finalUrl.charAt(0) === '/' ? finalUrl : '/' + finalUrl);
+      }
+    }
+
+    var textShare = '';
+    var twitterText = '';
+    if (type === 'dossie') {
+      textShare = 'Dossiê: ' + title + (summary ? ' — ' + summary : '') + ' | Acompanhe no Rodando o Mundo: ' + finalUrl;
+      twitterText = 'Dossiê: ' + title + ' — Rodando o Mundo';
+    } else if (type === 'radar') {
+      textShare = '⚡ Radar RoM: ' + title + (source ? ' (' + source + ')' : '') + (summary ? '\n\n' + summary : '') + '\n\n' + finalUrl;
+      twitterText = '⚡ Radar: ' + title + (source ? ' (' + source + ')' : '') + ' — no Rodando o Mundo';
+    } else {
+      textShare = '«' + title + '»' + (source ? ' — via ' + source : '') + '\n\nConfira no Rodando o Mundo: ' + finalUrl;
+      twitterText = '«' + title + '»' + (source ? ' — via ' + source : '');
+    }
+
+    return {
+      url: finalUrl,
+      title: title,
+      text: textShare,
+      twitterText: twitterText,
+      type: type
+    };
+  }
+
+  function handleShareBtnClick(btn) {
+    if (!btn) return;
+    if (activeSharePopover && activeSharePopover.triggerBtn === btn) {
+      closeSharePopover();
+      return;
+    }
+    closeSharePopover();
+
+    var item = {
+      url: btn.getAttribute('data-share-url') || '',
+      title: btn.getAttribute('data-share-title') || '',
+      source: btn.getAttribute('data-share-source') || '',
+      type: btn.getAttribute('data-share-type') || 'noticia',
+      summary: btn.getAttribute('data-share-summary') || ''
+    };
+
+    var payload = formatSharePayload(item);
+    var pop = getSharePopoverEl();
+    btn.setAttribute('aria-expanded', 'true');
+
+    var typeLabel = payload.type === 'dossie' ? 'Dossiê' : (payload.type === 'radar' ? 'Briefing' : 'Notícia');
+    var hasNativeShare = typeof navigator !== 'undefined' && typeof navigator.share === 'function';
+
+    var html = '<div class="share-popover-header"><span>Compartilhar ' + esc(typeLabel) + '</span></div>';
+
+    html += '<button type="button" class="share-popover-item" data-share-action="copy">' +
+      '<span class="share-popover-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></span>' +
+      '<span class="share-popover-text">Copiar link</span></button>';
+
+    html += '<button type="button" class="share-popover-item" data-share-action="whatsapp">' +
+      '<span class="share-popover-icon" style="color:#25d366;"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg></span>' +
+      '<span class="share-popover-text">WhatsApp</span></button>';
+
+    html += '<button type="button" class="share-popover-item" data-share-action="twitter">' +
+      '<span class="share-popover-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></span>' +
+      '<span class="share-popover-text">X (Twitter)</span></button>';
+
+    html += '<button type="button" class="share-popover-item" data-share-action="telegram">' +
+      '<span class="share-popover-icon" style="color:#229ed9;"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 0 0-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg></span>' +
+      '<span class="share-popover-text">Telegram</span></button>';
+
+    html += '<button type="button" class="share-popover-item" data-share-action="linkedin">' +
+      '<span class="share-popover-icon" style="color:#0a66c2;"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg></span>' +
+      '<span class="share-popover-text">LinkedIn</span></button>';
+
+    if (hasNativeShare) {
+      html += '<button type="button" class="share-popover-item" data-share-action="native">' +
+        '<span class="share-popover-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></span>' +
+        '<span class="share-popover-text">Mais opções…</span></button>';
+    }
+
+    pop.innerHTML = html;
+    pop.hidden = false;
+
+    positionSharePopover(pop, btn);
+
+    activeSharePopover = { el: pop, triggerBtn: btn, payload: payload };
+
+    pop.querySelectorAll('[data-share-action]').forEach(function (optBtn) {
+      optBtn.addEventListener('click', function (ev) {
+        ev.preventDefault();
+        ev.stopPropagation();
+        var act = optBtn.getAttribute('data-share-action');
+        executeShareAction(act, payload, optBtn);
+      });
+    });
+  }
+
+  function positionSharePopover(pop, btn) {
+    var rect = btn.getBoundingClientRect();
+    var popW = 210;
+    var popH = 220;
+    var pad = 8;
+
+    var left = rect.right - popW;
+    if (left < pad) left = rect.left;
+    if (left + popW > window.innerWidth - pad) {
+      left = window.innerWidth - popW - pad;
+    }
+    if (left < pad) left = pad;
+
+    var top = rect.bottom + 6;
+    if (top + popH > window.innerHeight - pad && rect.top > popH + pad) {
+      top = rect.top - popH - 6;
+    }
+
+    pop.style.left = Math.round(left) + 'px';
+    pop.style.top = Math.round(top) + 'px';
+  }
+
+  function executeShareAction(action, payload, optBtn) {
+    if (action === 'copy') {
+      var copyText = payload.url;
+      var done = false;
+      if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
+        navigator.clipboard.writeText(copyText).catch(function () {
+          fallbackCopyText(copyText);
+        });
+        done = true;
+      } else {
+        done = fallbackCopyText(copyText);
+      }
+      if (optBtn) {
+        optBtn.classList.add('is-copied');
+        var txtEl = optBtn.querySelector('.share-popover-text');
+        if (txtEl) txtEl.textContent = '✓ Link copiado!';
+        setTimeout(function () {
+          closeSharePopover();
+        }, 800);
+      } else {
+        closeSharePopover();
+      }
+      return;
+    }
+
+    if (action === 'whatsapp') {
+      var waUrl = 'https://api.whatsapp.com/send?text=' + encodeURIComponent(payload.text);
+      window.open(waUrl, '_blank', 'noopener,noreferrer');
+      closeSharePopover();
+      return;
+    }
+
+    if (action === 'twitter') {
+      var twUrl = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(payload.twitterText) + '&url=' + encodeURIComponent(payload.url);
+      window.open(twUrl, '_blank', 'noopener,noreferrer');
+      closeSharePopover();
+      return;
+    }
+
+    if (action === 'telegram') {
+      var tgUrl = 'https://t.me/share/url?url=' + encodeURIComponent(payload.url) + '&text=' + encodeURIComponent(payload.twitterText);
+      window.open(tgUrl, '_blank', 'noopener,noreferrer');
+      closeSharePopover();
+      return;
+    }
+
+    if (action === 'linkedin') {
+      var liUrl = 'https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(payload.url);
+      window.open(liUrl, '_blank', 'noopener,noreferrer');
+      closeSharePopover();
+      return;
+    }
+
+    if (action === 'native') {
+      if (navigator.share) {
+        navigator.share({
+          title: payload.title,
+          text: payload.text,
+          url: payload.url
+        }).catch(function () {});
+      }
+      closeSharePopover();
+      return;
+    }
+
+    closeSharePopover();
+  }
+
+  function fallbackCopyText(text) {
+    try {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.top = '-9999px';
+      ta.style.left = '-9999px';
+      document.body.appendChild(ta);
+      ta.focus();
+      ta.select();
+      var ok = document.execCommand('copy');
+      document.body.removeChild(ta);
+      return ok;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  window.addEventListener('resize', function () {
+    if (activeSharePopover) closeSharePopover();
+  });
+  window.addEventListener('scroll', function () {
+    if (activeSharePopover) closeSharePopover();
+  }, { passive: true });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && activeSharePopover) {
+      closeSharePopover();
+    }
+  });
+
   document.addEventListener('click', function (e) {
+    var shareBtn = e.target && e.target.closest ? e.target.closest('button[data-share-btn]') : null;
+    if (shareBtn) {
+      e.preventDefault();
+      e.stopPropagation();
+      handleShareBtnClick(shareBtn);
+      return;
+    }
+    if (activeSharePopover && !e.target.closest('#rom-share-popover')) {
+      closeSharePopover();
+    }
     var btn = e.target && e.target.closest ? e.target.closest('button[data-fav-news]') : null;
     if (btn) {
       handleNewsFavClick(btn, e);
@@ -4740,7 +5030,9 @@
       '</aside>';
     }
 
-    var atlasSectionHtml = '<section class="atlas-live-section" id="atlas-live-news-feed" data-country="' + esc(cCodeUp) + '" aria-labelledby="atlas-live-heading">' +
+    var atlasMinimized = false;
+    try { atlasMinimized = localStorage.getItem('rom_atlas_live_minimized') === '1'; } catch (e) {}
+    var atlasSectionHtml = '<section class="atlas-live-section' + (atlasMinimized ? ' is-minimized' : '') + '" id="atlas-live-news-feed" data-country="' + esc(cCodeUp) + '" aria-labelledby="atlas-live-heading">' +
       '<div class="atlas-live-head">' +
         '<div class="atlas-live-title-wrap">' +
           '<span class="atlas-live-dot" aria-hidden="true"></span>' +
@@ -4748,13 +5040,17 @@
         '</div>' +
         '<div class="atlas-live-controls">' +
           '<span class="atlas-live-updated" id="atlas-live-updated-label">Sincronizando...</span>' +
+          '<button type="button" class="btn-atlas-toggle" id="btn-atlas-toggle" aria-expanded="' + (!atlasMinimized) + '" aria-controls="atlas-live-news-list" title="' + (atlasMinimized ? 'Expandir últimas manchetes' : 'Minimizar últimas manchetes') + '" aria-label="' + (atlasMinimized ? 'Expandir últimas manchetes' : 'Minimizar últimas manchetes') + '">' +
+            '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>' +
+            '<span>' + (atlasMinimized ? 'Expandir' : 'Minimizar') + '</span>' +
+          '</button>' +
           '<button type="button" class="btn-atlas-refresh" id="btn-atlas-refresh" title="Atualizar notícias agora (sem cache)" aria-label="Atualizar notícias agora">' +
             '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>' +
             '<span>Atualizar</span>' +
           '</button>' +
         '</div>' +
       '</div>' +
-      '<div class="atlas-live-list is-loading" id="atlas-live-news-list" aria-live="polite">' +
+      '<div class="atlas-live-list is-loading" id="atlas-live-news-list" aria-live="polite"' + (atlasMinimized ? ' hidden' : '') + '>' +
         '<div class="atlas-live-skeleton"></div><div class="atlas-live-skeleton"></div><div class="atlas-live-skeleton"></div>' +
       '</div>' +
     '</section>';
@@ -4895,6 +5191,28 @@
         carregarAtlasPaisAoVivo(cCode, cName, true);
       });
     }
+    var toggleBtn = panel.querySelector('#btn-atlas-toggle');
+    var section = panel.querySelector('#atlas-live-news-feed');
+    var listEl = panel.querySelector('#atlas-live-news-list');
+    if (toggleBtn && section && listEl) {
+      toggleBtn.addEventListener('click', function () {
+        var minimized = section.classList.toggle('is-minimized');
+        listEl.hidden = minimized;
+        toggleBtn.setAttribute('aria-expanded', String(!minimized));
+        var label = minimized ? 'Expandir' : 'Minimizar';
+        var title = minimized ? 'Expandir últimas manchetes' : 'Minimizar últimas manchetes';
+        toggleBtn.title = title;
+        toggleBtn.setAttribute('aria-label', title);
+        var span = toggleBtn.querySelector('span');
+        if (span) span.textContent = label;
+        var svg = toggleBtn.querySelector('svg');
+        if (svg) svg.style.transform = minimized ? 'rotate(-90deg)' : '';
+        try { localStorage.setItem('rom_atlas_live_minimized', minimized ? '1' : '0'); } catch (e) {}
+      });
+      var initMin = section.classList.contains('is-minimized');
+      var initSvg = toggleBtn.querySelector('svg');
+      if (initSvg) initSvg.style.transform = initMin ? 'rotate(-90deg)' : '';
+    }
   }
 
   function renderAtlasPaisItems(items, cCode, updatedAtIso) {
@@ -4938,7 +5256,10 @@
         '</h4>' +
         '<div class="atlas-live-card-actions">' +
           (temTraducao ? '<button type="button" class="atlas-lang-toggle" title="Traduzir para o idioma original" data-pt="' + esc(pt) + '" data-orig="' + esc(orig) + '" data-showing="pt">Ver original</button>' : '') +
+          '<div class="item-action-btns">' +
           renderNewsFavBtn({ url: it.url, title: pt, source: it.source || 'Atlas', countryCode: cCode, publishedAt: it.publishedAt || '' }) +
+          renderShareBtn({ url: it.url, title: pt, source: it.source || 'Atlas', type: 'noticia' }) +
+          '</div>' +
         '</div>' +
       '</article>';
     });
@@ -6128,7 +6449,10 @@
       h += '<div class="timeline-meta">';
       h += '<time class="timeline-date" datetime="' + esc(ev.dataISO || '') + '">' + esc(ev.data) + '</time>';
       h += '<span class="timeline-source-badge">Fonte: ' + evFlag + ' ' + esc(ev.fonte) + '</span>';
-      h += renderNewsFavBtn({ url: ev.urlMateria, title: ev.tituloMateria || ev.titulo, source: ev.fonte, countryCode: fallbackCode, publishedAt: (ev.dataISO || '') + 'T12:00:00Z' });
+      h += '<div class="item-action-btns">' +
+        renderNewsFavBtn({ url: ev.urlMateria, title: ev.tituloMateria || ev.titulo, source: ev.fonte, countryCode: fallbackCode, publishedAt: (ev.dataISO || '') + 'T12:00:00Z' }) +
+        renderShareBtn({ url: ev.urlMateria, title: ev.tituloMateria || ev.titulo, source: ev.fonte, type: 'noticia' }) +
+        '</div>';
       h += '</div>';
       h += '<h5 class="timeline-item-title">' + esc(ev.titulo) + '</h5>';
       h += '<p class="timeline-item-summary">' + esc(ev.resumo) + '</p>';
@@ -6439,7 +6763,10 @@
         h += '<a class="topic-news-open" href="' + esc(art.url) + '" target="_blank" rel="noopener noreferrer" title="' + (isVideoContent(art.url, art) ? 'Assistir vídeo no canal original' : 'Abrir matéria no site original (alguns sites podem exigir assinatura)') + '">' + (isVideoContent(art.url, art) ? 'Assistir vídeo ' : 'Abrir matéria ') + ICON_ARROW + '</a>';
         h += '<div class="topic-news-card-actions">' +
           '<button type="button" class="topic-news-translate-btn" data-translate-card aria-pressed="false" title="Traduzir notícia para português">' + ICON_TRANSLATE + ' <span>Traduzir</span></button>' +
+          '<div class="item-action-btns">' +
           renderNewsFavBtn({ url: art.url, title: art.titulo, source: artSource, countryCode: rawArt.pais || g.pais || cCode, publishedAt: art.publicadoEm }) +
+          renderShareBtn({ url: art.url, title: art.titulo, source: artSource, type: 'noticia' }) +
+          '</div>' +
           '</div>';
         h += '</div>';
         h += '</div>';
@@ -9288,7 +9615,10 @@
         h += '<a class="topic-news-open" href="' + esc(art.url) + '" target="_blank" rel="noopener noreferrer" title="' + (isVideoContent(art.url, art) ? 'Assistir vídeo no canal original' : 'Abrir matéria no site original (alguns sites podem exigir assinatura)') + '">' + (isVideoContent(art.url, art) ? 'Assistir vídeo ' : 'Abrir matéria ') + ICON_ARROW + '</a>';
         h += '<div class="topic-news-card-actions">' +
           '<button type="button" class="topic-news-translate-btn" data-translate-card aria-pressed="false" title="Traduzir notícia para português">' + ICON_TRANSLATE + ' <span>Traduzir</span></button>' +
+          '<div class="item-action-btns">' +
           renderNewsFavBtn({ url: art.url, title: art.titulo, source: artSource, countryCode: art.pais || g.pais || hub.pais, publishedAt: art.publicadoEm }) +
+          renderShareBtn({ url: art.url, title: art.titulo, source: artSource, type: 'noticia' }) +
+          '</div>' +
           '</div>';
         h += '</div>';
         h += '</div>';
@@ -9348,7 +9678,10 @@
           '<span class="hub-news-source">' + srcFlag + ' ' + esc(n.fonte) + '</span>' +
           biasLabel +
           (dtStr ? '<time datetime="' + esc(dtIso) + '">' + esc(dtStr) + '</time>' : '') +
+          '<div class="item-action-btns">' +
           renderNewsFavBtn({ url: nLink.href, title: n.titulo, source: n.fonte, countryCode: hub.pais, publishedAt: dtIso }) +
+          renderShareBtn({ url: nLink.href, title: n.titulo, source: n.fonte, type: 'noticia' }) +
+          '</div>' +
           '</div>' +
           '<h3><a href="' + esc(nLink.href) + '"' + nLink.attrs + ' target="_blank" rel="noopener noreferrer">' + esc(n.titulo) + '</a></h3>' +
           (n.resumo ? '<p>' + esc(n.resumo) + '</p>' : '') +
@@ -10003,7 +10336,10 @@
       mh += '<span class="hub-news-source">' + srcFlag + ' ' + esc(source) + '</span>';
       mh += biasLabel;
       if (pubStr) mh += '<time datetime="' + esc(m.publicado_em) + '">' + esc(pubStr) + '</time>';
-      mh += renderNewsFavBtn({ url: url, title: title, source: source, countryCode: pais, publishedAt: m.publicado_em || '' });
+      mh += '<div class="item-action-btns">' +
+        renderNewsFavBtn({ url: url, title: title, source: source, countryCode: pais, publishedAt: m.publicado_em || '' }) +
+        renderShareBtn({ url: url, title: title, source: source, type: 'noticia' }) +
+        '</div>';
       mh += '</div>';
       mh += '<h3 class="topic-news-title"><a href="' + esc(url) + '" target="_blank" rel="noopener noreferrer">' + esc(title) + '</a></h3>';
       mh += '<a class="topic-news-open" href="' + esc(url) + '" target="_blank" rel="noopener noreferrer">' + (isVideoContent(url, m) ? 'Assistir vídeo ' : 'Abrir matéria ') + ICON_ARROW + '</a>';
@@ -10141,6 +10477,14 @@
     }
 
     h += '<div class="hub-hero-actions">';
+    h += '<button type="button" class="btn btn-secondary btn-share-dossie" data-share-btn="1"' +
+      ' data-share-url="/dossies/' + encodeURIComponent(slug) + '"' +
+      ' data-share-title="' + esc(d.titulo) + '"' +
+      ' data-share-source="Dossiê RoM"' +
+      ' data-share-type="dossie"' +
+      (d.subtitulo ? ' data-share-summary="' + esc(d.subtitulo) + '"' : '') +
+      ' aria-haspopup="dialog" aria-expanded="false" title="Compartilhar dossiê" aria-label="Compartilhar dossiê">' +
+      ICON_SHARE + ' <span>Compartilhar dossiê</span></button>';
     if (legHub) {
       h += '<a class="btn btn-secondary" href="' + esc(legHub.rota) + '" data-spa-link>Ver contexto editorial e linha do tempo →</a>';
     }
@@ -10381,7 +10725,7 @@
       ex.noticiasRelacionadas.forEach(function (n) {
         var exLink = buildArticleLinkAttrs(n.url, n.titulo, n.fonte);
         h += '<article class="hub-news-card">';
-        h += '<div class="hub-news-meta"><span class="hub-news-source">' + esc(n.fonte) + '</span><time>' + esc(formatSearchDate(n.data + 'T12:00:00Z')) + '</time>' + renderNewsFavBtn({ url: exLink.href, title: n.titulo, source: n.fonte, countryCode: ex.pais, publishedAt: n.data + 'T12:00:00Z' }) + '</div>';
+        h += '<div class="hub-news-meta"><span class="hub-news-source">' + esc(n.fonte) + '</span><time>' + esc(formatSearchDate(n.data + 'T12:00:00Z')) + '</time><div class="item-action-btns">' + renderNewsFavBtn({ url: exLink.href, title: n.titulo, source: n.fonte, countryCode: ex.pais, publishedAt: n.data + 'T12:00:00Z' }) + renderShareBtn({ url: exLink.href, title: n.titulo, source: n.fonte, type: 'noticia' }) + '</div></div>';
         h += '<h3><a href="' + esc(exLink.href) + '"' + exLink.attrs + ' target="_blank" rel="noopener noreferrer">' + esc(n.titulo) + '</a></h3>';
         h += '<a class="topic-news-open" href="' + esc(exLink.href) + '"' + exLink.attrs + ' target="_blank" rel="noopener noreferrer">' + (isVideoContent(n.url, n) ? 'Assistir vídeo ' : 'Abrir matéria ') + ICON_ARROW + '</a>';
         h += '</article>';
@@ -11107,6 +11451,8 @@
       if (dataPubMeta.text) {
         card += '<time class="radar-pub-date" datetime="' + esc(dataPubMeta.iso) + '" title="' + esc(dataPubMeta.title) + '" aria-label="' + esc(dataPubMeta.title) + '">' + esc(dataPubMeta.text) + '</time>';
       }
+      var rSummary = (item.resumo || '') + (item.analise ? ' | ' + item.analise : '');
+      card += '<div class="item-action-btns">';
       if (item.fonte_url) {
         card += renderNewsFavBtn({
           url: item.fonte_url,
@@ -11116,6 +11462,14 @@
           publishedAt: item.data_publicacao || ''
         });
       }
+      card += renderShareBtn({
+        url: item.fonte_url || '/radar',
+        title: item.titulo,
+        source: item.fonte_nome || 'Radar ao Vivo',
+        type: 'radar',
+        summary: rSummary
+      });
+      card += '</div>';
       card += '</div>';
 
       card += '<h3 class="radar-card-title" role="button" tabindex="0" title="Clique para expandir ou recolher os detalhes">' + esc(item.titulo || '') + '</h3>';
@@ -11143,11 +11497,18 @@
       }
       card += '</div>'; // .radar-card-body
 
+      card += '<div class="radar-card-footer">';
       if (item.fonte_url) {
-        card += '<div class="radar-card-footer">';
         card += '<a href="' + esc(item.fonte_url) + '" target="_blank" rel="noopener noreferrer" class="radar-source-link">' + (isVideoContent(item.fonte_url, item) ? 'Assistir vídeo original ↗' : 'Acessar conteúdo original ↗') + '</a>';
-        card += '</div>';
       }
+      card += renderShareBtn({
+        url: item.fonte_url || '/radar',
+        title: item.titulo,
+        source: item.fonte_nome || 'Radar ao Vivo',
+        type: 'radar',
+        summary: rSummary
+      });
+      card += '</div>';
       card += '</div>'; // .radar-card-details
 
       card += '</article>';
@@ -11229,7 +11590,10 @@
         rh += '<span class="resumo-card-top-tag">' + esc(item.categoria) + '</span>';
       }
       rh += '<span class="resumo-source-name">Fonte: ' + resFlag + ' <span data-resumo-source>' + esc(item.fonte) + '</span></span>';
-      rh += renderNewsFavBtn({ url: resLink.href, title: item.titulo, source: item.fonte, countryCode: cCodeUp, publishedAt: item.publicadoEm || '' });
+      rh += '<div class="item-action-btns">' +
+        renderNewsFavBtn({ url: resLink.href, title: item.titulo, source: item.fonte, countryCode: cCodeUp, publishedAt: item.publicadoEm || '' }) +
+        renderShareBtn({ url: resLink.href, title: item.titulo, source: item.fonte, type: 'noticia' }) +
+        '</div>';
       rh += '</div>';
 
       // Título e resumo
@@ -11952,7 +12316,15 @@
         html += '<span class="ultimas-region-tag ' + regBadgeClass + '">' + esc(noticia.regiaoLabel || 'Brasil') + '</span>';
         html += '<span class="ultimas-source-tag">📍 ' + esc(noticia.fonte) + (noticia.estado ? ' (' + esc(noticia.estado) + ')' : '') + '</span>';
         html += '</div>';
-        html += favBtnHtml;
+        html += '<div class="item-action-btns">' +
+          favBtnHtml +
+          renderShareBtn({
+            url: noticia.url,
+            title: noticia.titulo,
+            source: noticia.fonte,
+            type: 'noticia'
+          }) +
+          '</div>';
         html += '</div>';
 
         html += '<h3 class="ultimas-card-title">';
@@ -12593,6 +12965,7 @@
       '<div class="hub-home-card-top">' +
         renderDossieIconHtml(d) +
         statusHtml +
+        renderShareBtn({ url: href, title: d.titulo, source: 'Dossiê RoM', type: 'dossie', summary: d.subtitulo || '' }) +
       '</div>' +
       '<h3><a href="' + esc(href) + '" data-spa-link>' + esc(d.titulo) + '</a></h3>' +
       (d.meta_info && d.tipo === 'especial' ? '<div class="dossie-meta-period">' + esc(d.meta_info) + '</div>' : '') +

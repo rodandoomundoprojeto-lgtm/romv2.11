@@ -1526,6 +1526,10 @@ class AdminFonteAtivoRequest(BaseModel):
     ativo: bool
 
 
+class AdminFonteAprovarRequest(BaseModel):
+    aprovar: bool = True
+
+
 class AdminFonteSugestaoRequest(BaseModel):
     tema: str = Field(min_length=2, max_length=300)
     categoria: Optional[str] = Field(default=None, max_length=60)
@@ -2054,6 +2058,50 @@ def admin_alternar_fonte_ativo(
         raise HTTPException(status_code=404, detail="Fonte não encontrada.")
     db.commit()
     return {"ok": True, "id": row["id"], "ativo": row["ativo"]}
+
+
+@router.patch("/v2/admin/fontes/{fonte_id}/aprovar", dependencies=[Depends(verificar_admin_token)])
+def admin_aprovar_fonte(
+    fonte_id: int,
+    payload: AdminFonteAprovarRequest,
+    response: Response,
+    conn: Any = Depends(get_db),
+) -> Dict[str, Any]:
+    """Aprova ou reverte para pendente uma fonte em `ai_fontes_referencia`."""
+    aplicar_no_cache_headers(response)
+    db = _require_db(conn)
+    if payload.aprovar:
+        politica_status = "aprovada"
+        coleta_permitida = True
+        revisado_por = "Revisado por Equipe RoM"
+        revisado_em = datetime.now(timezone.utc)
+    else:
+        politica_status = "pendente"
+        coleta_permitida = False
+        revisado_por = None
+        revisado_em = None
+
+    with db.cursor() as cur:
+        cur.execute(
+            """
+            UPDATE ai_fontes_referencia
+            SET politica_uso_status = %s,
+                coleta_permitida = %s,
+                revisado_por = %s,
+                revisado_em = %s
+            WHERE id = %s
+            RETURNING id, politica_uso_status, coleta_permitida, revisado_por, revisado_em;
+            """,
+            (politica_status, coleta_permitida, revisado_por, revisado_em, fonte_id),
+        )
+        row = cur.fetchone()
+    if not row:
+        raise HTTPException(status_code=404, detail="Fonte não encontrada.")
+    db.commit()
+    fonte = dict(row)
+    if "revisado_em" in fonte:
+        fonte["revisado_em"] = _serializar_valor_temporal(fonte["revisado_em"])
+    return {"ok": True, "fonte": fonte}
 
 
 @router.delete("/v2/admin/fontes/{fonte_id}", dependencies=[Depends(verificar_admin_token)])
