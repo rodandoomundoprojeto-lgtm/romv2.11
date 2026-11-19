@@ -1,12 +1,15 @@
 name: Pipeline Editorial V2 & Pulso 30m
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
+
 on:
   schedule:
     # Pipeline de Pulso de Notícias Quentes (a cada 30 minutos — gemini-2.5-flash)
     - cron: '*/30 * * * *'
-    # Pipeline de Curadoria e Colunas Editoriais (a cada 3 horas, minuto 10 — gemini-2.5-pro)
-    # Minuto 10 evita coincidir com o pulso (*/30) e com o radar (5,35).
-    - cron: '10 */3 * * *'
+    # Pipeline de Curadoria e Colunas Editoriais (a cada 3 horas, minuto 20 — gemini-2.5-pro)
+    # Minuto 20 evita coincidir com pulso (0/30), radar (8/38) e curadoria isolada (45).
+    - cron: '20 */3 * * *'
   workflow_dispatch:
     inputs:
       modo:
@@ -28,6 +31,10 @@ on:
         required: false
         default: ''
         type: string
+
+concurrency:
+  group: rom-ia-pipeline-v2
+  cancel-in-progress: false
 
 jobs:
   executar-pipeline-v2:
@@ -53,19 +60,36 @@ jobs:
         if: github.event_name == 'schedule' && github.event.schedule == '*/30 * * * *'
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          XAI_API_KEY: ${{ secrets.XAI_API_KEY }}
+          GROK_API_KEY: ${{ secrets.GROK_API_KEY }}
+          XAI_MODEL: 'grok-2-mini'
+          GROQ_MODEL: 'openai/gpt-oss-20b'
           DATABASE_URL: ${{ secrets.CURADORIA_DATABASE_URL }}
           CURADORIA_DATABASE_URL: ${{ secrets.CURADORIA_DATABASE_URL }}
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          DISCORD_WEBHOOK_MANUTENCAO: ${{ secrets.DISCORD_WEBHOOK_MANUTENCAO }}
+          DISCORD_WEBHOOK_CRITICO: ${{ secrets.DISCORD_WEBHOOK_CRITICO }}
+          DISCORD_PING_ON_CRITICAL: ${{ secrets.DISCORD_PING_ON_CRITICAL || 'true' }}
         run: |
           python scripts/run_pipeline.py --modo pulso
 
-      - name: Executar Curadoria & Coluna 3h (Agendado 10 */3 * * *)
-        if: github.event_name == 'schedule' && github.event.schedule == '10 */3 * * *'
+      - name: Executar Curadoria & Coluna 3h (Agendado 20 */3 * * *)
+        if: github.event_name == 'schedule' && github.event.schedule == '20 */3 * * *'
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          XAI_API_KEY: ${{ secrets.XAI_API_KEY }}
+          GROK_API_KEY: ${{ secrets.GROK_API_KEY }}
+          XAI_MODEL: 'grok-2-mini'
+          GROQ_MODEL: 'openai/gpt-oss-20b'
           DATABASE_URL: ${{ secrets.CURADORIA_DATABASE_URL }}
           CURADORIA_DATABASE_URL: ${{ secrets.CURADORIA_DATABASE_URL }}
           CURADORIA_BACKEND_URL: ${{ secrets.CURADORIA_BACKEND_URL }}
           CURADORIA_SECRET_TOKEN: ${{ secrets.CURADORIA_SECRET_TOKEN }}
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          DISCORD_WEBHOOK_EDITORIAL: ${{ secrets.DISCORD_WEBHOOK_EDITORIAL }}
+          DISCORD_WEBHOOK_CRITICO: ${{ secrets.DISCORD_WEBHOOK_CRITICO }}
+          DISCORD_WEBHOOK_MANUTENCAO: ${{ secrets.DISCORD_WEBHOOK_MANUTENCAO }}
+          DISCORD_PING_ON_CRITICAL: ${{ secrets.DISCORD_PING_ON_CRITICAL || 'true' }}
         run: |
           python scripts/run_pipeline.py --modo curadoria
           python scripts/run_pipeline.py --modo coluna
@@ -74,10 +98,19 @@ jobs:
         if: github.event_name == 'workflow_dispatch'
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          XAI_API_KEY: ${{ secrets.XAI_API_KEY }}
+          GROK_API_KEY: ${{ secrets.GROK_API_KEY }}
+          XAI_MODEL: 'grok-2-mini'
+          GROQ_MODEL: 'openai/gpt-oss-20b'
           DATABASE_URL: ${{ secrets.CURADORIA_DATABASE_URL }}
           CURADORIA_DATABASE_URL: ${{ secrets.CURADORIA_DATABASE_URL }}
           CURADORIA_BACKEND_URL: ${{ secrets.CURADORIA_BACKEND_URL }}
           CURADORIA_SECRET_TOKEN: ${{ secrets.CURADORIA_SECRET_TOKEN }}
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          DISCORD_WEBHOOK_EDITORIAL: ${{ secrets.DISCORD_WEBHOOK_EDITORIAL }}
+          DISCORD_WEBHOOK_CRITICO: ${{ secrets.DISCORD_WEBHOOK_CRITICO }}
+          DISCORD_WEBHOOK_MANUTENCAO: ${{ secrets.DISCORD_WEBHOOK_MANUTENCAO }}
+          DISCORD_PING_ON_CRITICAL: ${{ secrets.DISCORD_PING_ON_CRITICAL || 'true' }}
         run: |
           DRY_FLAG=""
           if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then

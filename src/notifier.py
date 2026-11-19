@@ -1,5 +1,6 @@
 import os
 import json
+from typing import Optional
 import requests
 from dotenv import load_dotenv
 
@@ -46,11 +47,35 @@ def send_telegram_alert(card: dict) -> bool:
         return False
 
 
-def send_discord_webhook(card: dict) -> bool:
+def _limpar_webhook_url(url: Optional[str]) -> str:
+    """Retorna a URL apenas se for um webhook completo do Discord (ignora prefixos vazios)."""
+    u = (url or "").strip()
+    if not u or u == "https://discord.com/api/webhooks/" or len(u) < 45:
+        return ""
+    return u
+
+
+def get_discord_webhook_url(canal: str = "radar") -> str:
     """
-    Envia card formatado para o Discord via Embed se DISCORD_WEBHOOK_URL existir.
+    Retorna a URL do webhook específica do canal solicitado com fallback para DISCORD_WEBHOOK_URL geral.
+    Canais suportados: 'critico', 'manutencao', 'editorial', 'radar'.
     """
-    webhook_url = os.getenv("DISCORD_WEBHOOK_URL")
+    canal_map = {
+        "critico": os.getenv("DISCORD_WEBHOOK_CRITICO"),
+        "manutencao": os.getenv("DISCORD_WEBHOOK_MANUTENCAO"),
+        "editorial": os.getenv("DISCORD_WEBHOOK_EDITORIAL"),
+        "radar": os.getenv("DISCORD_WEBHOOK_RADAR"),
+    }
+    especifico = _limpar_webhook_url(canal_map.get(canal))
+    geral = _limpar_webhook_url(os.getenv("DISCORD_WEBHOOK_URL"))
+    return especifico or geral
+
+
+def send_discord_webhook(card: dict, canal: str = "radar") -> bool:
+    """
+    Envia card formatado para o Discord via Embed no canal correspondente (ou canal geral).
+    """
+    webhook_url = get_discord_webhook_url(canal)
     if not webhook_url:
         return False
 
@@ -63,6 +88,7 @@ def send_discord_webhook(card: dict) -> bool:
     cat = (card.get("categoria") or "geral").lower()
     color = cat_colors.get(cat, 3447003)
 
+    selo_canal = "Editorial & Curadoria" if canal == "editorial" else "Radar Editorial"
     embed = {
         "title": card.get("titulo", ""),
         "url": card.get("fonte_url", ""),
@@ -70,17 +96,17 @@ def send_discord_webhook(card: dict) -> bool:
         "fields": [
             {
                 "name": "📌 O que aconteceu",
-                "value": card.get("resumo", "")[:1024],
+                "value": (card.get("resumo") or "")[:1024],
                 "inline": False
             },
             {
                 "name": "💡 Por que importa",
-                "value": card.get("analise", "")[:1024],
+                "value": (card.get("analise") or "")[:1024],
                 "inline": False
             }
         ],
         "footer": {
-            "text": f"Radar Editorial · {card.get('fonte_nome', '')} · {card.get('categoria', '').upper()}"
+            "text": f"{selo_canal} · {card.get('fonte_nome', '')} · {card.get('categoria', '').upper()}"
         }
     }
 
@@ -88,5 +114,48 @@ def send_discord_webhook(card: dict) -> bool:
         r = requests.post(webhook_url, json={"embeds": [embed]}, timeout=8)
         return r.status_code in [200, 204]
     except Exception as e:
-        print(f"[!] Erro ao enviar para o Discord: {e}")
+        print(f"[!] Erro ao enviar para o Discord ({canal}): {e}")
+        return False
+
+
+def send_discord_system_alert(
+    titulo: str,
+    descricao: str,
+    nivel: str = "info",
+    canal_override: Optional[str] = None,
+) -> bool:
+    """
+    Envia alertas do sistema (SRE, manutenção, erros críticos, editorial).
+    nivel: 'critico' (vermelho), 'aviso' (amarelo), 'sucesso' (verde), 'info' (azul).
+    """
+    canal = canal_override or ("critico" if nivel == "critico" else "manutencao")
+    webhook_url = get_discord_webhook_url(canal)
+    if not webhook_url:
+        return False
+
+    cores = {
+        "critico": 15158332, # Vermelho escuro
+        "aviso": 16776960,   # Amarelo
+        "sucesso": 3066993,  # Verde
+        "info": 3447003      # Azul
+    }
+
+    payload = {
+        "embeds": [{
+            "title": titulo,
+            "description": descricao[:4096],
+            "color": cores.get(nivel, 3447003)
+        }]
+    }
+
+    # Se for crítico, pode marcar @here se configurado
+    ping_critico = os.getenv("DISCORD_PING_ON_CRITICAL", "").strip().lower() in ("true", "1", "yes")
+    if nivel == "critico" and ping_critico:
+        payload["content"] = "@here 🚨 **Atenção: Falha crítica detectada no sistema!**"
+
+    try:
+        r = requests.post(webhook_url, json=payload, timeout=8)
+        return r.status_code in [200, 204]
+    except Exception as e:
+        print(f"[!] Erro ao enviar alerta para Discord ({canal}): {e}")
         return False

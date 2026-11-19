@@ -565,9 +565,17 @@ class TestM1FreshnessCycles(unittest.TestCase):
         with patch("urllib.request.urlopen", side_effect=fake_urlopen):
             with patch.object(routes_v2, "_traduzir_lote_rapido_pt", side_effect=lambda t: t):
                 r_ap = client.get("/api/atlas-pais?pais=US&nome=United%20States&_t=999")
+                r_ap_fb = client.get("/api/atlas-pais?pais=IS&nome=Iceland&_t=999")
         self.assertEqual(r_ap.status_code, 200)
+        self.assertEqual(r_ap_fb.status_code, 200)
         self.assertEqual(r_ap.headers.get("cache-control"), "no-store, no-cache, must-revalidate")
-        self.assertTrue(any("when%3A7d" in u or "when:7d" in u for u in urls_chamadas))
+        self.assertTrue(
+            any(
+                "ceid=US%3Aen" in u or "ceid=US:en" in u or "when%3A24h" in u or "when:24h" in u or "when%3A7d" in u or "when:7d" in u
+                for u in urls_chamadas
+            )
+        )
+        self.assertTrue(any("when%3A24h" in u or "when:24h" in u for u in urls_chamadas))
         ap_items = r_ap.json()["items"]
         self.assertEqual([i["titleOriginal"] for i in ap_items], ["Noticia Mais Nova", "Noticia Antiga", "Noticia Sem Data"])
         self.assertEqual(ap_items[2]["publishedAt"], "")

@@ -444,6 +444,10 @@
 
   function resolveOutletFlagCode(sourceName, fallbackCode, domainOrUrl) {
     var fb = String(fallbackCode || '').trim().toLowerCase();
+    var srcTrim = String(sourceName || '').trim();
+    if ((!fb || fb.length !== 2 || !byA2[fb.toUpperCase()]) && srcTrim.length === 2 && byA2[srcTrim.toUpperCase()]) {
+      return srcTrim.toLowerCase();
+    }
 
     // 1. Prioridade para domínio específico, pois domínios não colidem (ex: elpais.com vs elpais.com.uy)
     if (domainOrUrl) {
@@ -8979,6 +8983,32 @@
     state.editorialSection = sectionKey;
     state.cont = null;
     state.country = null;
+    if (sectionKey === 'resumo-do-dia') {
+      try {
+        var rawSearch = (typeof opts.searchQuery === 'string') ? opts.searchQuery : (window.location.search || '');
+        if (rawSearch && rawSearch.length > 1) {
+          var sp = new URLSearchParams(rawSearch);
+          var dlItem = sp.get('item') || '';
+          var dlComp = sp.get('comparar') || '';
+          var dlQ = sp.get('q') || '';
+          var dlPais = sp.get('pais') || '';
+          var dlCont = sp.get('cont') || '';
+          var dlTopico = sp.get('topico') || '';
+          if (dlItem || dlComp === '1' || dlQ) {
+            pendingResumoDeepLink = {
+              item: dlItem,
+              comparar: dlComp,
+              q: dlQ,
+              pais: dlPais,
+              cont: dlCont,
+              topico: dlTopico
+            };
+            opts.replaceUrl = true;
+            opts.fromPopState = false;
+          }
+        }
+      } catch (eDl) {}
+    }
     if (sectionKey === 'radar') {
       var requestedTab = opts.radarTab || getRadarHubSubtabFromLocation();
       radarHubSubtab = (requestedTab === 'curadoria' || requestedTab === 'colunas') ? requestedTab : 'radar';
@@ -12351,6 +12381,7 @@
       '<a class="sponsor-cta-pill" href="/parcerias" data-spa-link>Saiba mais</a>' +
     '</div>';
 
+    var defaultEditoriaColors = ['#388bfd', '#2ea043', '#d29922', '#f85149', '#a371f7'];
     rh += '<ol class="resumo-dia-list">';
     sortedResumo.forEach(function (item, idx) {
       var cardId = 'resumo-item-' + idx;
@@ -12360,53 +12391,70 @@
       var qBusca = item.termoBusca || item.titulo;
       var urlOrig = item.urlMateriaOriginal || item.url || '#';
       var resLink = buildArticleLinkAttrs(urlOrig, item.titulo, item.fonte);
-      var resFlag = outletFlagImg(item.fonte, cCodeUp, item.dominio || urlOrig);
+      var rankNum = item.relevancia || (idx + 1);
+      var corEditoria = item.corEditoria || defaultEditoriaColors[(Number(rankNum) - 1) % defaultEditoriaColors.length] || '#388bfd';
+
+      var isGlobal = (String(item.pais || '').trim().toLowerCase() === 'global');
+      var paisLabel = item.pais || ((byA2[cCodeUp] && byA2[cCodeUp].n) ? byA2[cCodeUp].n : 'Brasil');
+      var countryChipInner = isGlobal
+        ? '<span class="resumo-country-globe" aria-hidden="true">' + esc(item.bandeiraEmoji || '🌍') + '</span> <span>Global</span>'
+        : outletFlagImg(cCodeUp, paisLabel) + ' <span>' + esc(paisLabel) + '</span>';
 
       var compSlug = item.comparacaoSlug;
       var compObj = (compSlug && EDITORIAL.comparacoes && EDITORIAL.comparacoes[compSlug]) ? EDITORIAL.comparacoes[compSlug] : null;
       var compIso = (compObj && compObj.paisIso) ? compObj.paisIso : cCodeUp;
       var totalVeiculos = getVeiculosCountByPais(compIso) || (compObj && (compObj.totalVeiculos || compObj.veiculosCount)) || (item.veiculosRelacionados || 18);
 
-      rh += '<li class="resumo-dia-card" id="' + cardId + '">';
-      rh += '<div class="resumo-rank-col"><span class="resumo-rank-badge" title="Ordem de relevância">#' + esc(item.relevancia) + '</span></div>';
-      rh += '<div class="resumo-body-col">';
+      var hasMultiSources = (Array.isArray(item.fontesAgrupadas) && item.fontesAgrupadas.length > 1);
+      var sourcesLabel = hasMultiSources
+        ? 'Fontes: ' + esc(item.fontesAgrupadas.join(' + '))
+        : 'Fonte: ' + esc(item.fonte || 'Agência Internacional');
 
-      // 1. Tag no topo do card (Categoria clicável) + Fonte e Favorito
-      rh += '<div class="resumo-meta-row">';
+      rh += '<li class="resumo-dia-card" id="' + cardId + '" style="--resumo-accent: ' + esc(corEditoria) + ';">';
+
+      // Linha 1 — Topo em 1 linha (.resumo-card-header-line)
+      rh += '<div class="resumo-card-header-line">';
+      rh += '<span class="resumo-rank-badge" title="Ordem de relevância">#' + esc(rankNum) + '</span>';
       if (item.paginaTematica) {
         rh += '<a class="resumo-card-top-tag" href="' + esc(item.paginaTematica) + '" data-spa-link title="Ver dossiê completo sobre este tema">' + esc(item.categoria) + '</a>';
       } else {
         rh += '<span class="resumo-card-top-tag">' + esc(item.categoria) + '</span>';
       }
-      rh += '<span class="resumo-source-name">Fonte: ' + resFlag + ' <span data-resumo-source>' + esc(item.fonte) + '</span></span>';
+      rh += '<span class="resumo-country-chip">' + countryChipInner + '</span>';
+      rh += '</div>';
+
+      // Linha 2 — Corpo com Mini-Thumbnail 64x64 à direita (.resumo-card-main-row)
+      rh += '<div class="resumo-card-main-row">';
+      rh += '<div class="resumo-card-text-col">';
+      rh += '<h3 class="resumo-item-title"><a href="' + esc(resLink.href) + '"' + resLink.attrs + ' target="_blank" rel="noopener noreferrer" data-resumo-link data-resumo-title>' + esc(item.titulo) + '</a></h3>';
+      rh += '<p class="resumo-item-summary" data-resumo-summary>' + esc(item.resumoCurto || item.resumo || '') + '</p>';
+      rh += '</div>';
+      if (item.imagemUrl) {
+        rh += '<div class="resumo-thumb-wrap">' +
+          '<img class="resumo-thumb-64" src="' + esc(item.imagemUrl) + '" alt="" width="64" height="64" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.parentElement.style.display=\'none\'">' +
+          '</div>';
+      }
+      rh += '</div>';
+
+      // Linha 3 — Rodapé sem quebra no mobile (.resumo-card-footer-line)
+      rh += '<div class="resumo-card-footer-line">';
+      rh += '<span class="resumo-sources-pill' + (hasMultiSources ? ' is-multi-source' : '') + '" data-resumo-source>' + sourcesLabel + '</span>';
+      rh += '<div class="resumo-actions-compact">';
+      if (compSlug) {
+        rh += '<a class="btn-compare-primary" href="/comparar/' + esc(compSlug) + '" data-spa-link>' +
+              '<span class="btn-compare-icon" aria-hidden="true">⚖️</span> Comparar (' + totalVeiculos + ' veículos)</a>';
+      } else {
+        rh += '<button type="button" class="btn-compare-primary" data-ver-noticias-assunto data-termo="' + esc(qBusca) + '" data-pais="' + esc(cCodeUp) + '" data-cont="' + esc(cContKey) + '" data-topico="' + esc(cTopicKey) + '">' +
+              '<span class="btn-compare-icon" aria-hidden="true">⚖️</span> Comparar perspectivas</button>';
+      }
+      rh += '<a class="link-original-secondary" href="' + esc(resLink.href) + '"' + resLink.attrs + ' target="_blank" rel="noopener noreferrer" data-resumo-link>Ler original ↗</a>';
       rh += '<div class="item-action-btns">' +
         renderNewsFavBtn({ url: resLink.href, title: item.titulo, source: item.fonte, countryCode: cCodeUp, publishedAt: item.publicadoEm || '' }) +
         renderShareBtn({ url: resLink.href, title: item.titulo, source: item.fonte, type: 'noticia' }) +
         '</div>';
       rh += '</div>';
-
-      // Título e resumo
-      rh += '<h3 class="resumo-item-title"><a href="' + esc(resLink.href) + '"' + resLink.attrs + ' target="_blank" rel="noopener noreferrer" data-resumo-link data-resumo-title>' + esc(item.titulo) + '</a></h3>';
-      rh += '<p class="resumo-item-summary" data-resumo-summary>' + esc(item.resumoCurto || item.resumo || '') + '</p>';
-
-      // Hierarquia estrita de 2 ações na base: Botão Primário em destaque + Link Secundário discreto
-      rh += '<div class="resumo-actions-hierarchy">';
-      if (compSlug) {
-        rh += '<a class="btn-compare-primary" href="/comparar/' + esc(compSlug) + '" data-spa-link>' +
-              '<span class="btn-compare-icon" aria-hidden="true">⚖️</span> Comparar cobertura (' + totalVeiculos + ' veículos) →</a>';
-      } else {
-        rh += '<button type="button" class="btn-compare-primary" data-ver-noticias-assunto data-termo="' + esc(qBusca) + '" data-pais="' + esc(cCodeUp) + '" data-cont="' + esc(cContKey) + '" data-topico="' + esc(cTopicKey) + '">' +
-              '<span class="btn-compare-icon" aria-hidden="true">⚖️</span> Comparar cobertura deste tema →</button>';
-      }
-      var origLabel = isVideoContent(urlOrig, item) ? 'Assistir vídeo em' : 'Ler original em';
-      rh += '<a class="link-original-secondary" href="' + esc(resLink.href) + '"' + resLink.attrs + ' target="_blank" rel="noopener noreferrer" data-resumo-link>' +
-            '<span>' + origLabel + '</span> ' +
-            (resFlag ? resFlag + ' ' : '') +
-            '<span class="link-original-source">' + esc(item.fonte) + '</span> ' +
-            ICON_ARROW + '</a>';
       rh += '</div>';
 
-      rh += '</div>';
       rh += '</li>';
     });
     rh += '</ol>';
@@ -12422,6 +12470,57 @@
     bindDynamicEditorialActions(resumoSec);
   }
 
+  var pendingResumoDeepLink = null;
+  function processarDeepLinkResumoDoDia(params) {
+    if (!params) return;
+    var itemNum = params.item ? parseInt(params.item, 10) : 0;
+    var wantCompare = (String(params.comparar || '') === '1');
+    var list = Array.isArray(EDITORIAL.resumoDoDia) ? EDITORIAL.resumoDoDia.slice().sort(function (a, b) {
+      return (a.relevancia || 99) - (b.relevancia || 99);
+    }) : [];
+
+    var matchedItem = null;
+    if (itemNum >= 1 && list.length) {
+      for (var i = 0; i < list.length; i++) {
+        if (Number(list[i].relevancia) === itemNum) {
+          matchedItem = list[i];
+          break;
+        }
+      }
+      if (!matchedItem && list[itemNum - 1]) {
+        matchedItem = list[itemNum - 1];
+      }
+    }
+
+    if (wantCompare) {
+      if (matchedItem && matchedItem.comparacaoSlug) {
+        showComparisonPage(matchedItem.comparacaoSlug, { fromPopState: false });
+        return;
+      }
+      var targetCont = params.cont || (matchedItem && matchedItem.continente) || 'sul';
+      var targetPais = params.pais || (matchedItem && matchedItem.codigoPais) || 'BR';
+      var targetTopico = params.topico || (matchedItem && matchedItem.tipoNoticia) || 'politica';
+      var targetQ = params.q || (matchedItem && (matchedItem.termoBusca || matchedItem.titulo)) || '';
+      navigateToPerspectiveCoverage(targetCont, targetPais, targetTopico, targetQ);
+      return;
+    }
+
+    if (itemNum >= 1) {
+      var targetIdx = itemNum - 1;
+      if (matchedItem && list.indexOf(matchedItem) !== -1) {
+        targetIdx = list.indexOf(matchedItem);
+      }
+      var cardEl = document.getElementById('resumo-item-' + targetIdx);
+      if (cardEl) {
+        cardEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        cardEl.classList.add('is-highlighted-card');
+        setTimeout(function () {
+          cardEl.classList.remove('is-highlighted-card');
+        }, 3500);
+      }
+    }
+  }
+
   var resumoAutoAtualizando = false;
   function atualizarResumoDoDiaAutomatico(forcar) {
     if (resumoAutoAtualizando) {
@@ -12430,6 +12529,13 @@
     }
     if (!forcar && resumoLastFetchAt > 0 && (Date.now() - resumoLastFetchAt < RESUMO_CACHE_TTL_MS)) {
       renderResumoDoDiaDOM();
+      if (pendingResumoDeepLink) {
+        var dlCached = pendingResumoDeepLink;
+        pendingResumoDeepLink = null;
+        setTimeout(function () {
+          processarDeepLinkResumoDoDia(dlCached);
+        }, 40);
+      }
       return;
     }
 
@@ -12443,6 +12549,7 @@
       try {
         localStorage.removeItem('rom_resumo_items');
         localStorage.removeItem('rom_resumo_ts');
+        localStorage.removeItem('rom_resumo_updated_at');
         localStorage.removeItem('rom_resumo_date');
       } catch (e) {}
     }
@@ -12465,6 +12572,13 @@
       .finally(function () {
         resumoAutoAtualizando = false;
         renderResumoDoDiaDOM();
+        if (pendingResumoDeepLink) {
+          var dlLive = pendingResumoDeepLink;
+          pendingResumoDeepLink = null;
+          setTimeout(function () {
+            processarDeepLinkResumoDoDia(dlLive);
+          }, 40);
+        }
         triggerHotNewsPulseCycle();
         if (resumoPendingForce) {
           resumoPendingForce = false;
@@ -14590,7 +14704,7 @@
       return;
     }
     if (parsed.type === 'editorial-section') {
-      var secOpts = { fromPopState: false, routePath: parsed.routePath };
+      var secOpts = { fromPopState: false, routePath: parsed.routePath, searchQuery: u.search || '' };
       if (parsed.sectionKey === 'radar') {
         var rHash = (u.hash || '').toLowerCase();
         secOpts.radarTab = (rHash === '#curadoria' ? 'curadoria' : (rHash === '#colunas' ? 'colunas' : 'radar'));

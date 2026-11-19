@@ -1,11 +1,18 @@
 name: Radar de Noticias & Briefing Editorial
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
+
 on:
   schedule:
-    # Minutos 5 e 35: escalonado em relação ao pipeline_v2 (minutos 0 e 30)
-    # para reduzir corrida de push nos mesmos arquivos de dados.
-    - cron: '5,35 * * * *'
+    # Minutos 8 e 38: escalonado em relação ao pulso (0/30), editorial (20) e curadoria (45)
+    # para evitar colisão de cota (429) e corrida nos arquivos/banco.
+    - cron: '8,38 * * * *'
   workflow_dispatch: # Permite disparo manual no painel do GitHub
+
+concurrency:
+  group: rom-ia-radar
+  cancel-in-progress: false
 
 jobs:
   radar:
@@ -29,7 +36,18 @@ jobs:
       - name: Executar Pipeline do Radar
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          XAI_API_KEY: ${{ secrets.XAI_API_KEY }}
+          GROK_API_KEY: ${{ secrets.GROK_API_KEY }}
+          XAI_MODEL: 'grok-2-mini'
+          GROQ_MODEL: 'openai/gpt-oss-20b'
           WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          DISCORD_WEBHOOK_RADAR: ${{ secrets.DISCORD_WEBHOOK_RADAR }}
+          DISCORD_WEBHOOK_CRITICO: ${{ secrets.DISCORD_WEBHOOK_CRITICO }}
+          DISCORD_WEBHOOK_MANUTENCAO: ${{ secrets.DISCORD_WEBHOOK_MANUTENCAO }}
+          DISCORD_PING_ON_CRITICAL: ${{ secrets.DISCORD_PING_ON_CRITICAL || 'true' }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           DATABASE_URL: ${{ secrets.CURADORIA_DATABASE_URL }}
           CURADORIA_DATABASE_URL: ${{ secrets.CURADORIA_DATABASE_URL }}
         run: |

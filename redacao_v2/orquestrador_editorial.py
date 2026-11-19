@@ -20,6 +20,7 @@ import asyncio
 import json
 import os
 import re
+import time
 import unicodedata
 from datetime import datetime, timezone
 from pathlib import Path
@@ -51,15 +52,17 @@ PROMPT_2_PATH = PROMPTS_DIR / "prompt_2_advogado_do_diabo.md"
 PROMPT_3_PATH = PROMPTS_DIR / "prompt_3_colunista_nerd.md"
 PROMPT_4_PATH = PROMPTS_DIR / "prompt_4_auditor_fact_checker.md"
 
+_RAW_MODELO_EDITORIAL = (
+    os.getenv("GEMINI_MODEL_EDITORIAL") or os.getenv("GEMINI_MODEL") or "gemini-2.5-pro"
+).strip()
 MODELO_EDITORIAL = (
-    os.getenv("GEMINI_MODEL_EDITORIAL") or os.getenv("GEMINI_MODEL") or "gemini-3.5-flash-lite"
-).strip() or "gemini-3.5-flash-lite"
+    "gemini-2.5-pro"
+    if (not _RAW_MODELO_EDITORIAL or _RAW_MODELO_EDITORIAL.startswith("gemini-3"))
+    else _RAW_MODELO_EDITORIAL
+)
 MODELOS_EDITORIAL_FALLBACK = [
-    "gemini-3.5-flash-lite",
-    "gemini-3.1-flash-lite",
-    "gemini-3.8-flash",
-    "gemini-3.7-flash",
-    "gemini-3.5-flash",
+    "gemini-2.5-pro",
+    "gemini-2.5-flash",
 ]
 NOTA_ISENCAO_MINIMA = 85
 MAX_TENTATIVAS_REESCRITA = 2
@@ -82,24 +85,32 @@ def _gerar_com_fallback(
     contents: str,
     config: types.GenerateContentConfig,
 ) -> Tuple[Any, str]:
-    """Executa generate_content com fallback automático entre modelos Gemini disponíveis."""
+    """Executa generate_content com backoff exponencial (429/503) e fallback automático entre modelos Gemini."""
     candidatos = list(dict.fromkeys([model] + [m for m in MODELOS_EDITORIAL_FALLBACK if m != model]))
     ultimo_erro: Optional[Exception] = None
-    for candidato in candidatos:
-        try:
-            resp = gemini_client.models.generate_content(
-                model=candidato,
-                contents=contents,
-                config=config,
-            )
-            return resp, candidato
-        except Exception as exc:  # noqa: BLE001
-            ultimo_erro = exc
-            msg = str(exc).upper()
-            if any(k in msg for k in ("404", "NOT_FOUND", "503", "UNAVAILABLE", "504", "DEADLINE_EXCEEDED", "TIMEOUT", "429", "RESOURCE_EXHAUSTED")):
-                print(f"[editorial_v2] Modelo {candidato} indisponível ({msg[:80]}), tentando fallback...")
-                continue
-            raise
+    for idx_cand, candidato in enumerate(candidatos):
+        for tentativa in range(1, 3):
+            try:
+                resp = gemini_client.models.generate_content(
+                    model=candidato,
+                    contents=contents,
+                    config=config,
+                )
+                return resp, candidato
+            except Exception as exc:  # noqa: BLE001
+                ultimo_erro = exc
+                msg = str(exc).upper()
+                eh_rate_limit = any(k in msg for k in ("429", "RESOURCE_EXHAUSTED", "503", "UNAVAILABLE", "504", "DEADLINE_EXCEEDED", "TIMEOUT"))
+                eh_not_found = any(k in msg for k in ("404", "NOT_FOUND"))
+                if eh_rate_limit:
+                    espera = min(4 * tentativa + idx_cand * 3, 15)
+                    print(f"[editorial_v2] Rate limit/instabilidade em {candidato} (tentativa {tentativa}): {msg[:80]}. Aguardando {espera}s...")
+                    time.sleep(espera)
+                    continue
+                if eh_not_found:
+                    print(f"[editorial_v2] Modelo {candidato} indisponível ({msg[:80]}), tentando fallback...")
+                    break
+                raise
     raise RuntimeError(f"Nenhum modelo Gemini disponível para editorial: {ultimo_erro}")
 
 

@@ -6,26 +6,30 @@ import {
   newsResponseHeaders,
   compareIsoDesc,
   parseFeedItems,
+  limparResumoEditorial,
+  extrairImagemRssItem,
 } from '../lib/rss.js';
 
 const RSS_FEEDS = [
   {
     relevancia: 1,
     categoria: 'Geopolítica & Global',
+    corEditoria: '#388bfd',
     url: 'https://feeds.bbci.co.uk/portuguese/rss.xml',
     fonte: 'BBC News Brasil',
     dominio: 'bbc.com',
-    pais: 'Estados Unidos',
-    codigoPais: 'US',
-    continente: 'norte',
+    pais: 'Global',
+    codigoPais: 'BR',
+    continente: 'europa',
     tipoNoticia: 'politica',
-    paginaTematica: '/politica/estados-unidos',
+    paginaTematica: '/geopolitica',
     labelTematica: 'Política & Diplomacia Global',
     explicacaoId: 'como-funcionam-as-eleicoes-nos-eua'
   },
   {
     relevancia: 2,
     categoria: 'Brasil · Política & Congresso',
+    corEditoria: '#2ea043',
     url: 'https://g1.globo.com/rss/g1/politica/',
     fonte: 'g1 Política',
     dominio: 'g1.globo.com',
@@ -40,6 +44,7 @@ const RSS_FEEDS = [
   {
     relevancia: 3,
     categoria: 'Economia & Mercados',
+    corEditoria: '#d29922',
     url: 'https://g1.globo.com/rss/g1/economia/',
     fonte: 'g1 Economia',
     dominio: 'g1.globo.com',
@@ -54,11 +59,12 @@ const RSS_FEEDS = [
   {
     relevancia: 4,
     categoria: 'Segurança Internacional',
+    corEditoria: '#f85149',
     url: 'https://g1.globo.com/rss/g1/mundo/',
     fonte: 'g1 Mundo',
     dominio: 'g1.globo.com',
-    pais: 'Ucrânia',
-    codigoPais: 'UA',
+    pais: 'Global',
+    codigoPais: 'BR',
     continente: 'europa',
     tipoNoticia: 'mundo',
     paginaTematica: '/radar',
@@ -68,6 +74,7 @@ const RSS_FEEDS = [
   {
     relevancia: 5,
     categoria: 'Clima & Tecnologia',
+    corEditoria: '#a371f7',
     url: 'https://g1.globo.com/rss/g1/tecnologia/',
     fonte: 'g1 Tecnologia & Ciência',
     dominio: 'g1.globo.com',
@@ -302,7 +309,8 @@ function inferirPaisDaManchete(titulo, resumo, feedDefault) {
       pais: feedDefault.pais,
       codigoPais: feedDefault.codigoPais,
       continente: feedDefault.continente,
-      paginaTematica: feedDefault.paginaTematica
+      paginaTematica: feedDefault.paginaTematica,
+      explicitCountry: false
     };
   }
 
@@ -327,7 +335,8 @@ function inferirPaisDaManchete(titulo, resumo, feedDefault) {
       pais: melhor.pais,
       codigoPais: melhor.codigoPais,
       continente: melhor.continente,
-      paginaTematica: melhor.paginaTematica || feedDefault.paginaTematica
+      paginaTematica: melhor.paginaTematica || feedDefault.paginaTematica,
+      explicitCountry: true
     };
   }
 
@@ -335,23 +344,51 @@ function inferirPaisDaManchete(titulo, resumo, feedDefault) {
     pais: feedDefault.pais,
     codigoPais: feedDefault.codigoPais,
     continente: feedDefault.continente,
-    paginaTematica: feedDefault.paginaTematica
+    paginaTematica: feedDefault.paginaTematica,
+    explicitCountry: false
   };
 }
 
-function cleanHtml(raw) {
-  if (!raw) return '';
-  return String(raw)
-    .replace(/<!\[CDATA\[(.*?)\]\]>/gs, '$1')
-    .replace(/<[^>]+>/g, ' ')
-    .replace(/&quot;/g, '"')
-    .replace(/&apos;/g, "'")
-    .replace(/&#39;/g, "'")
-    .replace(/&amp;/g, '&')
-    .replace(/&lt;/g, '<')
-    .replace(/&gt;/g, '>')
-    .replace(/\s+/g, ' ')
-    .trim();
+function codigoPaisParaBandeiraEmoji(codigoPais, pais, relevancia = 0, explicitCountry = true) {
+  if (!codigoPais || pais === 'Global' || pais === 'Internacional' || ((relevancia === 1 || relevancia === 4) && !explicitCountry)) {
+    return '🌍';
+  }
+  const code = String(codigoPais).trim().toUpperCase();
+  if (!/^[A-Z]{2}$/.test(code)) return '🌍';
+  return String.fromCodePoint(
+    0x1F1E6 + (code.charCodeAt(0) - 65),
+    0x1F1E6 + (code.charCodeAt(1) - 65)
+  );
+}
+
+const TERMOS_GEOPOLITICA_INTERNACIONAL = [
+  'guerra', 'onu', 'otan', 'eua', 'estados unidos', 'china', 'russia', 'ucrania',
+  'oriente medio', 'israel', 'gaza', 'europa', 'uniao europeia', 'tarifas',
+  'diplomacia', 'fronteira', 'tratado', 'cupula', 'g20', 'g7', 'brics',
+  'internacional', 'global', 'mundo', 'trump', 'putin', 'xi jinping',
+  'teera', 'iraniano', 'iraniana', 'khamenei'
+];
+
+function ehCandidatoGeopoliticaInternacional(cand, feedDefault) {
+  const infoPais = inferirPaisDaManchete(cand.titulo, cand.resumo, feedDefault);
+  if (infoPais.explicitCountry && infoPais.codigoPais !== 'BR') {
+    return true;
+  }
+
+  const textoBruto = `${cand.titulo || ''} ${cand.resumo || ''}`;
+  if (/\birã\b/i.test(textoBruto)) {
+    return true;
+  }
+
+  const textoNorm = normalizarTexto(textoBruto);
+  for (const termo of TERMOS_GEOPOLITICA_INTERNACIONAL) {
+    const rx = new RegExp(`(?:^|[^a-z0-9])${escapeRegex(termo)}(?:$|[^a-z0-9])`, 'i');
+    if (rx.test(textoNorm)) {
+      return true;
+    }
+  }
+
+  return false;
 }
 
 function parseRssItems(xml, maxItems = 15) {
@@ -362,18 +399,20 @@ function parseRssItems(xml, maxItems = 15) {
   for (const entry of parsed) {
     const title = entry.title || '';
     const link = entry.link || '';
-    let desc = entry.description || '';
+    const rawDesc = entry.rawDescription || entry.description || '';
+    const desc = limparResumoEditorial(rawDesc, 195);
+    const imagemUrl =
+      entry.imageUrl ||
+      extrairImagemRssItem(entry.rawBlock || '', entry.rawDescription || '', entry.rawContent || '') ||
+      null;
 
     if (!title || !link) continue;
-
-    if (desc.length > 220) {
-      desc = desc.slice(0, 215).replace(/[,.;:\s]+$/, '') + '…';
-    }
 
     results.push({
       titulo: title,
       url: link,
       resumo: desc,
+      imagemUrl,
       data: entry.pubDateIso || '',
     });
   }
@@ -404,6 +443,22 @@ const STOPWORDS_ASSUNTO = new Set([
 ]);
 
 const SIGLAS_VALIDAS = new Set(['ia', 'bc', 'pt', 'pl', 'pf', 'ue', 'onu', 'eua', 'stf', 'pib']);
+
+function extrairTituloBase(titulo) {
+  if (!titulo) return '';
+  let t = String(titulo).trim();
+  const idx = t.indexOf(':');
+  if (idx > -1) {
+    const antes = t.slice(0, idx).trim();
+    const depois = t.slice(idx + 1).trim();
+    if (antes.length >= 18) {
+      t = antes;
+    } else if (depois.length >= 18) {
+      t = depois;
+    }
+  }
+  return t.replace(/['"“”‘’][^'"“”‘’]{5,}['"“”‘’]\s*$/, '').trim();
+}
 
 function extrairTokensAssunto(texto) {
   const norm = normalizarTexto(texto);
@@ -457,6 +512,26 @@ function avaliarSimilaridadeAssunto(cand, sel) {
     return { mesmoAssunto: true, score: 1.0 };
   }
 
+  const baseA = normalizarTexto(extrairTituloBase(cand.titulo));
+  const baseB = normalizarTexto(extrairTituloBase(sel.titulo));
+  if (
+    baseA &&
+    baseB &&
+    (baseA === baseB ||
+      (baseA.length >= 20 && baseB.length >= 20 && (baseA.includes(baseB) || baseB.includes(baseA))))
+  ) {
+    return { mesmoAssunto: true, score: 1.0 };
+  }
+
+  const tokensBaseA = extrairTokensAssunto(baseA);
+  const tokensBaseB = extrairTokensAssunto(baseB);
+  const sharedBase = contarTokensEmComum(tokensBaseA, tokensBaseB);
+  const minBase = Math.min(tokensBaseA.length, tokensBaseB.length);
+  const overlapBase = minBase > 0 ? sharedBase / minBase : 0;
+  if (sharedBase >= 2 && overlapBase >= 0.75) {
+    return { mesmoAssunto: true, score: Math.max(overlapBase, 0.9) };
+  }
+
   const titA = extrairTokensAssunto(cand.titulo);
   const titB = extrairTokensAssunto(sel.titulo);
   const sharedTitle = contarTokensEmComum(titA, titB);
@@ -473,10 +548,38 @@ function avaliarSimilaridadeAssunto(cand, sel) {
 
   const mesmoAssunto =
     (sharedTitle >= 2 && (overlapTitle >= 0.3 || sharedTitle >= 3)) ||
-    (sharedComb >= 4 && (overlapComb >= 0.45 || jaccardComb >= 0.25));
+    (sharedTitle >= 1 && sharedComb >= 4 && (overlapComb >= 0.45 || jaccardComb >= 0.25));
 
-  const score = Math.max(overlapTitle, jaccardComb);
+  const score = Math.max(overlapBase, overlapTitle, jaccardComb);
   return { mesmoAssunto, score };
+}
+
+function construirUrlCompararSite({ relevancia, codigoPais, continente, tipoNoticia, termoBusca }) {
+  return (
+    `https://www.rodandoomundo.com.br/resumo-do-dia` +
+    `?item=${encodeURIComponent(relevancia)}` +
+    `&comparar=1` +
+    `&pais=${encodeURIComponent(codigoPais || 'BR')}` +
+    `&cont=${encodeURIComponent(continente || 'sul')}` +
+    `&topico=${encodeURIComponent(tipoNoticia || 'politica')}` +
+    `&q=${encodeURIComponent(termoBusca || '')}`
+  );
+}
+
+function verificarEAgruparDuplicata(cand, fonteAtual, selecionados) {
+  let colidiu = false;
+  for (const sel of selecionados) {
+    if (avaliarSimilaridadeAssunto(cand, sel).mesmoAssunto) {
+      colidiu = true;
+      if (fonteAtual && Array.isArray(sel.fontesAgrupadas) && !sel.fontesAgrupadas.includes(fonteAtual)) {
+        sel.fontesAgrupadas.push(fonteAtual);
+      }
+      if (!sel.imagemUrl && cand.imagemUrl) {
+        sel.imagemUrl = cand.imagemUrl;
+      }
+    }
+  }
+  return colidiu;
 }
 
 const RESUMO_MEMORY_TTL_MS = 5 * 60 * 1000;
@@ -551,12 +654,29 @@ export async function onRequestGet(context) {
     let escolhido = null;
 
     if (candidatos.length) {
-      // 1. Tenta o primeiro candidato mais recente que não repita nenhum assunto já escolhido
-      escolhido = candidatos.find(
-        (cand) => !selecionados.some((sel) => avaliarSimilaridadeAssunto(cand, sel).mesmoAssunto)
-      );
+      if (f.relevancia === 1) {
+        // 1ª passada (Slot #1 Geopolítica & Global): prioriza notícia internacional ou geopolítica
+        for (const cand of candidatos) {
+          const colidiu = verificarEAgruparDuplicata(cand, f.fonte, selecionados);
+          if (!colidiu && ehCandidatoGeopoliticaInternacional(cand, f)) {
+            escolhido = cand;
+            break;
+          }
+        }
+      }
 
-      // 2. Fallback: se todos tiverem alguma sobreposição, escolhe o de menor similaridade
+      // 2ª passada (ou seleção padrão para slots #2..#5): primeiro candidato inédito
+      if (!escolhido) {
+        for (const cand of candidatos) {
+          const colidiu = verificarEAgruparDuplicata(cand, f.fonte, selecionados);
+          if (!colidiu) {
+            escolhido = cand;
+            break;
+          }
+        }
+      }
+
+      // 3. Fallback: se todos tiverem alguma sobreposição, escolhe o de menor similaridade
       if (!escolhido) {
         let menorScore = Infinity;
         for (const cand of candidatos) {
@@ -574,56 +694,110 @@ export async function onRequestGet(context) {
 
     if (!escolhido) {
       usedFallback = true;
+      const bandeiraFallback = codigoPaisParaBandeiraEmoji(f.codigoPais, f.pais, f.relevancia, false);
       return {
         relevancia: f.relevancia,
         categoria: f.categoria,
+        corEditoria: f.corEditoria,
         titulo: `Principais desdobramentos em ${f.categoria}`,
         resumo: 'Acompanhe os acontecimentos e a cobertura comparada do dia.',
         resumoCurto: 'Acompanhe os acontecimentos e a cobertura comparada do dia.',
         fonte: f.fonte,
+        fontesAgrupadas: [f.fonte],
         dominio: f.dominio,
         termoBusca: f.categoria,
         url: `https://${f.dominio}`,
         urlMateriaOriginal: `https://${f.dominio}`,
+        imagemUrl: null,
         paginaTematica: f.paginaTematica,
         labelTematica: f.labelTematica,
         explicacaoId: f.explicacaoId,
         pais: f.pais,
         codigoPais: f.codigoPais,
+        bandeiraEmoji: bandeiraFallback,
         continente: f.continente,
         tipoNoticia: f.tipoNoticia,
-        publicadoEm: ''
+        publicadoEm: '',
+        urlCompararSite: construirUrlCompararSite({
+          relevancia: f.relevancia,
+          codigoPais: f.codigoPais,
+          continente: f.continente,
+          tipoNoticia: f.tipoNoticia,
+          termoBusca: f.categoria,
+        }),
       };
     }
 
-    selecionados.push(escolhido);
     const paisInferido = inferirPaisDaManchete(escolhido.titulo, escolhido.resumo, f);
+    const resumoLimpo =
+      limparResumoEditorial(escolhido.resumo, 195) ||
+      'Acompanhe a cobertura deste tema na matéria original.';
+    const termoBusca =
+      extrairTituloBase(escolhido.titulo).slice(0, 60).trim() ||
+      escolhido.titulo.slice(0, 50).trim();
+    const bandeiraEmoji = codigoPaisParaBandeiraEmoji(
+      paisInferido.codigoPais,
+      paisInferido.pais,
+      f.relevancia,
+      paisInferido.explicitCountry
+    );
 
-    return {
+    const itemObj = {
       relevancia: f.relevancia,
       categoria: f.categoria,
+      corEditoria: f.corEditoria,
       titulo: escolhido.titulo,
-      resumo: escolhido.resumo || 'Acompanhe a cobertura deste tema na matéria original.',
-      resumoCurto: escolhido.resumo || 'Acompanhe a cobertura deste tema na matéria original.',
+      resumo: resumoLimpo,
+      resumoCurto: resumoLimpo,
       fonte: f.fonte,
+      fontesAgrupadas: [f.fonte],
       dominio: f.dominio,
-      termoBusca: escolhido.titulo.slice(0, 50),
+      termoBusca,
       url: escolhido.url,
       urlMateriaOriginal: escolhido.url,
+      imagemUrl: escolhido.imagemUrl || null,
       paginaTematica: paisInferido.paginaTematica,
       labelTematica: f.labelTematica,
       explicacaoId: f.explicacaoId,
       pais: paisInferido.pais,
       codigoPais: paisInferido.codigoPais,
+      bandeiraEmoji,
       continente: paisInferido.continente,
       tipoNoticia: f.tipoNoticia,
-      publicadoEm: escolhido.data || ''
+      publicadoEm: escolhido.data || '',
+      urlCompararSite: construirUrlCompararSite({
+        relevancia: f.relevancia,
+        codigoPais: paisInferido.codigoPais,
+        continente: paisInferido.continente,
+        tipoNoticia: f.tipoNoticia,
+        termoBusca,
+      }),
     };
+
+    selecionados.push(itemObj);
+    return itemObj;
   });
+
+  // Passada cruzada para agrupar fontes e aproveitar imagem caso outra editoria também cubra o mesmo assunto
+  for (const { feed: f, candidatos } of feedsComCandidatos) {
+    for (const cand of candidatos) {
+      for (const sel of selecionados) {
+        if (avaliarSimilaridadeAssunto(cand, sel).mesmoAssunto) {
+          if (f.fonte && !sel.fontesAgrupadas.includes(f.fonte)) {
+            sel.fontesAgrupadas.push(f.fonte);
+          }
+          if (!sel.imagemUrl && cand.imagemUrl) {
+            sel.imagemUrl = cand.imagemUrl;
+          }
+        }
+      }
+    }
+  }
 
   const payload = {
     dataEdicao: hojeStr,
     atualizadoEm: now.toISOString(),
+    total: items.length,
     fallback: usedFallback,
     items: items
   };

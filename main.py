@@ -167,6 +167,16 @@ def run_pipeline():
         print("=" * 65)
     except Exception as exc:
         _registrar_falha_auditoria_ciclo(db_url, str(exc))
+        try:
+            from src.notifier import send_discord_system_alert
+
+            send_discord_system_alert(
+                "🚨 Falha Crítica no Pipeline do Radar",
+                f"O ciclo do Radar encontrou um erro inesperado:\n`{str(exc)[:800]}`",
+                nivel="critico",
+            )
+        except Exception:
+            pass
         raise
 
 

@@ -1,0 +1,48 @@
+name: Vigia Grok (Auditoria e Manutencao SRE)
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
+
+on:
+  schedule:
+    # Roda diariamente às 06:00 UTC (03:00 Brasília)
+    - cron: '0 6 * * *'
+  workflow_dispatch: # Permite disparo manual no painel do GitHub
+
+jobs:
+  vigia-manutencao:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do Repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Instalar Dependencias
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Executar Auditoria do Vigia Grok
+        env:
+          XAI_API_KEY: ${{ secrets.XAI_API_KEY }}
+          GROK_API_KEY: ${{ secrets.GROK_API_KEY }}
+          XAI_MODEL: 'grok-2-mini'
+          GROQ_MODEL: 'openai/gpt-oss-20b'
+          DATABASE_URL: ${{ secrets.CURADORIA_DATABASE_URL }}
+          CURADORIA_DATABASE_URL: ${{ secrets.CURADORIA_DATABASE_URL }}
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          DISCORD_WEBHOOK_MANUTENCAO: ${{ secrets.DISCORD_WEBHOOK_MANUTENCAO }}
+          DISCORD_WEBHOOK_CRITICO: ${{ secrets.DISCORD_WEBHOOK_CRITICO }}
+          DISCORD_WEBHOOK_RADAR: ${{ secrets.DISCORD_WEBHOOK_RADAR }}
+          DISCORD_WEBHOOK_EDITORIAL: ${{ secrets.DISCORD_WEBHOOK_EDITORIAL }}
+          DISCORD_PING_ON_CRITICAL: ${{ secrets.DISCORD_PING_ON_CRITICAL || 'true' }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          python scripts/vigia_grok.py --notificar

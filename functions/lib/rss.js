@@ -106,9 +106,152 @@ export function limparHtmlTexto(str, maxLen = 0) {
     .replace(/\s+/g, ' ')
     .trim();
   if (maxLen > 0 && semTags.length > maxLen) {
-    return semTags.slice(0, maxLen - 1).replace(/[,.;:\s]+$/, '') + '…';
+    const corte = semTags.slice(0, maxLen);
+    const espaco = corte.lastIndexOf(' ');
+    const base = espaco > Math.floor(maxLen * 0.6) ? corte.slice(0, espaco) : corte;
+    return base.replace(/[,.;:\-–—\s]+$/, '') + '…';
   }
   return semTags;
+}
+
+/**
+ * Verifica se um segmento curto extraído antes de <br /> corresponde a crédito ou legenda de foto.
+ */
+function ehSegmentoCreditoFotografico(seg) {
+  if (!seg) return false;
+  const s = String(seg).trim();
+  if (!s) return true;
+  if (s.length > 130) return false;
+
+  if (/^(?:foto|cr[eé]dito|imagem|legenda|reprodu[cç][aã]o|divulga[cç][aã]o|arquivo|arte|ilustra[cç][aã]o|montagem)\s*[:\/\-]/i.test(s)) {
+    return true;
+  }
+
+  if (
+    /^[A-ZÀ-Ú0-9][A-Za-zÀ-ÿ0-9\s.,'()-]{1,75}\/\s*(?:Ag[êe]ncia\s+[A-Za-zÀ-ÿ\s]+|Reuters|AFP|AP(?:\s+Photo)?|EFE|TV\s+Globo|GloboNews|Globo|G1|g1|Divulga[cç][aã]o|Reprodu[cç][aã]o|Arquivo(?:\s+Pessoal)?|Futurah|Estad[aã]o(?:\s+Conte[úu]do)?|Folhapress|Getty(?:\s+Images)?|Bloomberg|Frame|Fotoarena|Brazil\s+Photo\s+Press|C[âa]mara(?:\s+dos\s+Deputados)?|Senado|STF|Planalto|PR|Gov\.br|Instagram|Redes\s+Sociais|X|Twitter|YouTube)\b/i.test(
+      s
+    )
+  ) {
+    return true;
+  }
+
+  if (s.length <= 75 && !/[.!?]$/.test(s) && /\b[A-Za-zÀ-ÿ.]+\s*\/\s*[A-ZÀ-Úa-zà-ú]{2,}/.test(s)) {
+    return true;
+  }
+
+  return false;
+}
+
+/**
+ * Remove créditos fotográficos (ex: "Marcello Casal Jr/Agência Brasil" após <img><br /> no g1),
+ * tags HTML e trunca o resumo editorial na última palavra inteira.
+ */
+export function limparResumoEditorial(raw, maxLen = 195) {
+  if (!raw) return '';
+  let html = decodificarEntidades(String(raw))
+    .replace(/<figure\b[^>]*>[\s\S]*?<\/figure>/gi, ' ')
+    .replace(/<figcaption\b[^>]*>[\s\S]*?<\/figcaption>/gi, ' ')
+    .replace(/<img\b[^>]*>/gi, ' ');
+
+  const partesBr = html
+    .split(/<br\s*\/?>|<\/p>|<\/div>|\r?\n/i)
+    .map((p) => p.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim())
+    .filter(Boolean);
+
+  if (partesBr.length >= 3 && ehSegmentoCreditoFotografico(partesBr[1])) {
+    partesBr.splice(0, 2);
+  }
+  while (partesBr.length > 1 && ehSegmentoCreditoFotografico(partesBr[0])) {
+    partesBr.shift();
+  }
+
+  let texto = (partesBr.length ? partesBr.join(' ') : html.replace(/<[^>]+>/g, ' '))
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  // Regex de segurança para créditos colados no início do texto sem <br />
+  texto = texto
+    .replace(
+      /^([A-ZÀ-Ú][a-zà-ú]+(?:\s+[A-ZÀ-Úa-zà-ú.'-]+){0,4}\s*\/\s*(?:Ag[êe]ncia\s+Brasil|Ag[êe]ncia\s+Senado|Ag[êe]ncia\s+C[âa]mara|Reuters|AFP|AP(?:\s+Photo)?|EFE|TV\s+Globo|GloboNews|G1|g1|Divulga[cç][aã]o|Reprodu[cç][aã]o|Arquivo(?:\s+Pessoal)?|Futurah|Estad[aã]o(?:\s+Conte[úu]do)?|Folhapress|Getty(?:\s+Images)?|Bloomberg|Fotoarena)\s*)+/i,
+      ''
+    )
+    .replace(
+      /^(?:Foto|Cr[eé]dito|Imagem|Legenda|Reprodu[cç][aã]o|Divulga[cç][aã]o|Arquivo)\s*[:\/]\s*[^\n.]{2,60}?(?=\s+[A-ZÀ-Ú])/i,
+      ''
+    )
+    .replace(/^\((?:Foto|Cr[eé]dito|Imagem)\s*:[^)]+\)\s*/i, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  if (maxLen > 0 && texto.length > maxLen) {
+    const corte = texto.slice(0, maxLen);
+    const ultimoEspaco = corte.lastIndexOf(' ');
+    const base = ultimoEspaco > Math.floor(maxLen * 0.6) ? corte.slice(0, ultimoEspaco) : corte;
+    return base.replace(/[,.;:\-–—\s]+$/, '') + '…';
+  }
+
+  return texto;
+}
+
+/**
+ * Extrai a URL da imagem de um bloco <item> ou <entry> do RSS na ordem:
+ * 1. <media:thumbnail url="..." />
+ * 2. <media:content url="..." />
+ * 3. <enclosure type="image/..." url="..." />
+ * 4. Primeiro <img src="..."> em <description> ou <content:encoded>
+ */
+export function extrairImagemRssItem(bloco, rawDesc = '', rawContent = '') {
+  if (!bloco && !rawDesc && !rawContent) return null;
+  const srcBloco = String(bloco || '');
+
+  const candidatos = [];
+
+  const mThumb = srcBloco.match(/<media:thumbnail\b[^>]*\burl=["']([^"']+)["'][^>]*\/?>/i);
+  if (mThumb && mThumb[1]) candidatos.push(mThumb[1]);
+
+  const mMedia = srcBloco.match(/<media:content\b(?![^>]*\bmedium=["']video["'])[^>]*\burl=["']([^"']+)["'][^>]*\/?>/i);
+  if (mMedia && mMedia[1]) candidatos.push(mMedia[1]);
+
+  const mEncImg = srcBloco.match(
+    /<enclosure\b(?=[^>]*\btype=["']image\/[^"']*["'])[^>]*\burl=["']([^"']+)["'][^>]*\/?>/i
+  );
+  if (mEncImg && mEncImg[1]) candidatos.push(mEncImg[1]);
+
+  const mEncExt = srcBloco.match(
+    /<enclosure\b[^>]*\burl=["']([^"']+\.(?:jpe?g|png|webp|gif|avif)(?:\?[^"']*)?)["'][^>]*\/?>/i
+  );
+  if (mEncExt && mEncExt[1]) candidatos.push(mEncExt[1]);
+
+  const htmlFontes = [rawDesc, rawContent, srcBloco];
+  for (const fonteHtml of htmlFontes) {
+    if (!fonteHtml) continue;
+    const decodificado = decodificarEntidades(String(fonteHtml));
+    const mImg = decodificado.match(/<img\b[^>]*\bsrc=["']([^"']+)["'][^>]*>/i);
+    if (mImg && mImg[1]) {
+      candidatos.push(mImg[1]);
+      break;
+    }
+  }
+
+  for (const bruta of candidatos) {
+    let url = decodificarEntidades(String(bruta || '')).trim();
+    if (!url || /^data:|^javascript:/i.test(url)) continue;
+    if (/feedburner|doubleclick|1x1|pixel/i.test(url)) continue;
+    if (url.startsWith('//')) {
+      url = 'https:' + url;
+    } else if (/^http:\/\//i.test(url)) {
+      if (/(?:glbimg\.com|globo\.com|bbci\.co\.uk|bbc\.co\.uk|bbc\.com|akamaized\.net|wikimedia\.org|wp\.com)/i.test(url)) {
+        url = url.replace(/^http:\/\//i, 'https://');
+      } else {
+        url = url.replace(/^http:\/\//i, 'https://');
+      }
+    }
+    if (/^https:\/\//i.test(url)) {
+      return url;
+    }
+  }
+
+  return null;
 }
 
 /**
@@ -217,14 +360,16 @@ export function parseFeedItems(xmlText) {
       extrairTagBloco(bloco, 'content');
     const rawContent = extrairTagBloco(bloco, 'content:encoded') || extrairTagBloco(bloco, 'content');
     const source = limparHtmlTexto(extrairTagBloco(bloco, 'source'));
+    const imageUrl = extrairImagemRssItem(bloco, rawDesc, rawContent);
 
     items.push({
       title,
       link,
       pubDateIso,
-      description: limparHtmlTexto(rawDesc),
+      description: limparResumoEditorial(rawDesc, 0),
       rawDescription: rawDesc,
       rawContent,
+      imageUrl,
       source,
       rawBlock: bloco,
     });

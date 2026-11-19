@@ -1,18 +1,25 @@
 name: Agente de Curadoria IA
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
+
 permissions:
   contents: read
 
 on:
   schedule:
-    # A cada 3 horas (UTC), escalonado para não colidir com pulso (0/30) ou pipeline_v2 (10)
-    - cron: '15 */3 * * *'
+    # A cada 3 horas (UTC), minuto 45 — escalonado para não colidir com pulso (0/30), radar (8/38) ou editorial (20)
+    - cron: '45 */3 * * *'
   workflow_dispatch:
     inputs:
       dry_run:
         description: 'Apenas gerar JSON, sem enviar ao backend'
         type: boolean
         default: true
+
+concurrency:
+  group: rom-ia-curadoria
+  cancel-in-progress: false
 
 jobs:
   curadoria:
@@ -40,10 +47,21 @@ jobs:
       - name: Executar pipeline
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          XAI_API_KEY: ${{ secrets.XAI_API_KEY }}
+          GROK_API_KEY: ${{ secrets.GROK_API_KEY }}
+          XAI_MODEL: 'grok-2-mini'
+          GROQ_MODEL: 'openai/gpt-oss-20b'
           DATABASE_URL: ${{ secrets.CURADORIA_DATABASE_URL }}
           CURADORIA_DATABASE_URL: ${{ secrets.CURADORIA_DATABASE_URL }}
           CURADORIA_BACKEND_URL: ${{ secrets.CURADORIA_BACKEND_URL }}
           CURADORIA_SECRET_TOKEN: ${{ secrets.CURADORIA_SECRET_TOKEN }}
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          DISCORD_WEBHOOK_EDITORIAL: ${{ secrets.DISCORD_WEBHOOK_EDITORIAL }}
+          DISCORD_WEBHOOK_CRITICO: ${{ secrets.DISCORD_WEBHOOK_CRITICO }}
+          DISCORD_WEBHOOK_MANUTENCAO: ${{ secrets.DISCORD_WEBHOOK_MANUTENCAO }}
+          DISCORD_PING_ON_CRITICAL: ${{ secrets.DISCORD_PING_ON_CRITICAL || 'true' }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: |
           if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
             python -m curadoria.pipeline --dry-run

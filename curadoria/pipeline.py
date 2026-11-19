@@ -258,11 +258,12 @@ def salvar_snapshot_vitrine(payload: CuradoriaPayload) -> None:
 
 
 def notificar_gaps_criticos(backend_url: str, api_token: str) -> None:
-    """Se TELEGRAM_BOT_TOKEN ou DISCORD_WEBHOOK_URL estiverem configurados, alerta sobre GAP_CRITICO."""
-    if not (os.getenv("TELEGRAM_BOT_TOKEN") or os.getenv("DISCORD_WEBHOOK_URL")):
-        return
+    """Se TELEGRAM_BOT_TOKEN ou webhook Discord (editorial/geral) estiverem configurados, alerta sobre GAP_CRITICO."""
     try:
-        from src.notifier import send_discord_webhook, send_telegram_alert
+        from src.notifier import get_discord_webhook_url, send_discord_webhook, send_telegram_alert
+
+        if not (os.getenv("TELEGRAM_BOT_TOKEN") or get_discord_webhook_url("editorial")):
+            return
         resp = requests.get(
             f"{backend_url}/v1/gaps",
             headers={"Authorization": f"Bearer {api_token}"},
@@ -282,7 +283,7 @@ def notificar_gaps_criticos(backend_url: str, api_token: str) -> None:
                     "fonte_url": "https://www.rodandoomundo.com.br",
                 }
                 send_telegram_alert(card)
-                send_discord_webhook(card)
+                send_discord_webhook(card, canal="editorial")
     except Exception as e:  # noqa: BLE001
         print(f"[Aviso] Não foi possível notificar gaps críticos: {e}")
 

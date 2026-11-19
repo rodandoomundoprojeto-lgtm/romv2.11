@@ -2524,14 +2524,14 @@ Regras:
 
     modelo_env = (os.getenv("GEMINI_SUGESTAO_MODEL") or os.getenv("GEMINI_MODEL") or "").strip()
     modelos_tentar = [modelo_env] if modelo_env else []
-    modelos_tentar += ["gemini-3.1-flash-lite", "gemini-3.5-flash-lite", "gemini-3.8-flash"]
+    modelos_tentar += ["gemini-2.5-flash", "gemini-2.5-flash-lite", "gemini-2.5-pro"]
     # remove duplicatas mantendo ordem
     vistos_modelo = set()
     modelos_tentar = [m for m in modelos_tentar if not (m in vistos_modelo or vistos_modelo.add(m))]
 
     texto = ""
     ultimo_erro = None
-    for modelo in modelos_tentar:
+    for idx_m, modelo in enumerate(modelos_tentar):
         try:
             from google import genai
             from google.genai import types as genai_types
@@ -2544,6 +2544,9 @@ Regras:
         except Exception as exc:  # noqa: BLE001
             ultimo_erro = exc
             texto = ""
+            msg_err = str(exc).upper()
+            if any(k in msg_err for k in ("429", "RESOURCE_EXHAUSTED", "503", "UNAVAILABLE")):
+                time.sleep(min(2 * (idx_m + 1), 6))
             continue
     if not texto:
         raise HTTPException(status_code=502, detail=f"Falha ao consultar a IA: {ultimo_erro}") from ultimo_erro

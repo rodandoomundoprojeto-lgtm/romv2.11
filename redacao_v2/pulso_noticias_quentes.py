@@ -14,9 +14,12 @@ import argparse
 import asyncio
 import json
 import os
+import re
+import time
+import unicodedata
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any, Dict, List, Optional, Set, Tuple
 
 from google import genai
 from google.genai import types
@@ -39,15 +42,68 @@ from .schemas import (
 
 PROMPTS_DIR = Path(__file__).resolve().parent / "prompts"
 PROMPT_0_PATH = PROMPTS_DIR / "prompt_0_pulso_noticias_quentes.md"
+_RAW_MODELO_PULSO = (
+    os.getenv("GEMINI_MODEL_PULSO") or os.getenv("GEMINI_MODEL") or "gemini-2.5-flash"
+).strip()
 MODELO_PULSO = (
-    os.getenv("GEMINI_MODEL_PULSO") or os.getenv("GEMINI_MODEL") or "gemini-3.1-flash-lite"
-).strip() or "gemini-3.1-flash-lite"
+    "gemini-2.5-flash"
+    if (not _RAW_MODELO_PULSO or _RAW_MODELO_PULSO.startswith("gemini-3"))
+    else _RAW_MODELO_PULSO
+)
 MODELOS_PULSO_FALLBACK = [
-    "gemini-3.1-flash-lite",
-    "gemini-3.5-flash-lite",
-    "gemini-3.8-flash",
+    "gemini-2.5-flash",
+    "gemini-2.5-pro",
 ]
 LOCK_PULSO_KEY = "pipeline_pulso:noticias_quentes_30m"
+
+_STOPWORDS_DEDUP: Set[str] = {
+    "de", "da", "do", "das", "dos", "em", "no", "na", "nos", "nas",
+    "o", "a", "os", "as", "e", "ou", "para", "pra", "com", "por",
+    "que", "se", "um", "uma", "uns", "umas", "ao", "aos", "sobre",
+    "apos", "ante", "ate", "como", "mais", "menos", "entre", "pode",
+    "vai", "foi", "sao", "sera", "esta", "estao", "tem", "ter",
+}
+
+
+def _tokens_titulo_normalizados(titulo: str) -> Set[str]:
+    """Extrai tokens relevantes (sem acentos nem stopwords) para deduplicação semântica."""
+    if not titulo:
+        return set()
+    norm = unicodedata.normalize("NFKD", titulo.lower()).encode("ascii", "ignore").decode("ascii")
+    palavras = re.findall(r"[a-z0-9]{3,}", norm)
+    return {p for p in palavras if p not in _STOPWORDS_DEDUP}
+
+
+def _titulos_sao_similares(tit_a: str, tit_b: str, limiar: float = 0.58) -> bool:
+    """Detecta se dois títulos cobrem o mesmo fato mesmo com redação diferente entre modelos."""
+    if not tit_a or not tit_b:
+        return False
+    a_low = tit_a.lower().strip()
+    b_low = tit_b.lower().strip()
+    if a_low == b_low:
+        return True
+    tok_a = _tokens_titulo_normalizados(a_low)
+    tok_b = _tokens_titulo_normalizados(b_low)
+    if len(tok_a) < 2 or len(tok_b) < 2:
+        return False
+    inter = tok_a & tok_b
+    if len(inter) < 2:
+        return False
+    jaccard = len(inter) / max(1, len(tok_a | tok_b))
+    overlap = len(inter) / max(1, min(len(tok_a), len(tok_b)))
+    return jaccard >= limiar or (len(inter) >= 3 and overlap >= 0.72)
+
+
+def _eh_conteudo_editorial_rico(item: Optional[Dict[str, Any]]) -> bool:
+    """Retorna True se o item já possui enriquecimento editorial/Pro que o pulso não deve rebaixar."""
+    if not isinstance(item, dict):
+        return False
+    origem = str(item.get("origem_pipeline") or "").lower().strip()
+    if origem in ("editorial", "curadoria", "coluna", "pro"):
+        return True
+    if item.get("artigo_completo") or item.get("entenda_contexto"):
+        return True
+    return False
 
 
 def carregar_prompt_pulso(caminho: Path = PROMPT_0_PATH) -> str:
@@ -256,7 +312,19 @@ def _mesclar_snapshot_vitrine_pulso(
         ttl_horas = max(1, int(d.get("ttl_horas") or d.get("horas_em_destaque") or 6))
 
         tema_pre = mapa_temas_existentes.get(slug) or mapa_temas_existentes.get(titulo.lower())
+        if tema_pre is None:
+            for t_ex in temas_existentes:
+                tit_ex = str(t_ex.get("titulo_tema") or t_ex.get("titulo_curto") or t_ex.get("titulo") or "")
+                if _titulos_sao_similares(titulo, tit_ex):
+                    tema_pre = t_ex
+                    break
         nq_pre = mapa_nq_existentes.get(slug) or mapa_nq_existentes.get(titulo.lower())
+        if nq_pre is None:
+            for n_ex in nq_existentes:
+                tit_ex = str(n_ex.get("titulo_curto") or n_ex.get("titulo_tema") or n_ex.get("titulo") or "")
+                if _titulos_sao_similares(titulo, tit_ex):
+                    nq_pre = n_ex
+                    break
         pre = tema_pre or nq_pre
 
         if pre:
@@ -296,32 +364,47 @@ def _mesclar_snapshot_vitrine_pulso(
             )
             updated_at_str = d.get("updated_at") or agora_iso
 
-        novos_temas.append({
-            "slug": slug,
-            "titulo_tema": titulo,
-            "titulo_curto": titulo,
-            "status": "novo",
-            "origem_pipeline": "pulso",
-            "categoria_primaria": cat_primaria,
-            "categoria": cat_atlas,
-            "categorias_cruzadas": ["Economia", "Resumo_Ultimas"],
-            "rota_editoria": rota_ed,
-            "relevancia_score": int(d.get("relevancia_score") or 85),
-            "urgencia_score": int(d.get("urgencia_score") or 85),
-            "ttl_horas": ttl_horas,
-            "expires_at": expires_at_str,
-            "palavras_chave_busca": kws,
-            "palavras_chave": kws,
-            "gatilho_vitrine": resumo,
-            "resumo_pulso": resumo,
-            "sintese_nerd": impacto,
-            "impacto_pratico": impacto,
-            "paises_envolvidos": list(d.get("paises_envolvidos") or ["BR"]),
-            "veiculos_origem": list(d.get("veiculos_origem") or ["Síntese Rodando o Mundo · Pulso V2"]),
-            "fontes_urls": list(d.get("fontes_urls") or []),
-            "data_publicacao": data_pub_original,
-            "updated_at": updated_at_str,
-        })
+        # Blindagem de conteúdo rico: se o item já foi enriquecido pelo pipeline editorial/Pro,
+        # o pulso rápido (Flash) preserva o texto completo e apenas atualiza relevância/frescor.
+        if pre and _eh_conteudo_editorial_rico(pre):
+            item_preservado = dict(pre)
+            item_preservado["relevancia_score"] = max(
+                int(pre.get("relevancia_score") or 85), int(d.get("relevancia_score") or 85)
+            )
+            item_preservado["urgencia_score"] = max(
+                int(pre.get("urgencia_score") or 85), int(d.get("urgencia_score") or 85)
+            )
+            item_preservado["data_publicacao"] = data_pub_original
+            item_preservado["expires_at"] = expires_at_str
+            item_preservado["updated_at"] = pre.get("updated_at") or updated_at_str
+            novos_temas.append(item_preservado)
+        else:
+            novos_temas.append({
+                "slug": slug,
+                "titulo_tema": titulo,
+                "titulo_curto": titulo,
+                "status": "novo",
+                "origem_pipeline": "pulso",
+                "categoria_primaria": cat_primaria,
+                "categoria": cat_atlas,
+                "categorias_cruzadas": ["Economia", "Resumo_Ultimas"],
+                "rota_editoria": rota_ed,
+                "relevancia_score": int(d.get("relevancia_score") or 85),
+                "urgencia_score": int(d.get("urgencia_score") or 85),
+                "ttl_horas": ttl_horas,
+                "expires_at": expires_at_str,
+                "palavras_chave_busca": kws,
+                "palavras_chave": kws,
+                "gatilho_vitrine": resumo,
+                "resumo_pulso": resumo,
+                "sintese_nerd": impacto,
+                "impacto_pratico": impacto,
+                "paises_envolvidos": list(d.get("paises_envolvidos") or ["BR"]),
+                "veiculos_origem": list(d.get("veiculos_origem") or ["Síntese Rodando o Mundo · Pulso V2"]),
+                "fontes_urls": list(d.get("fontes_urls") or []),
+                "data_publicacao": data_pub_original,
+                "updated_at": updated_at_str,
+            })
         d_clone = dict(d)
         d_clone["data_publicacao"] = data_pub_original
         d_clone["ttl_horas"] = ttl_horas
@@ -330,7 +413,7 @@ def _mesclar_snapshot_vitrine_pulso(
         novas_nq.append(d_clone)
 
     vistos_slugs = set()
-    vistos_titulos = set()
+    vistos_titulos: List[str] = []
     temas_mesclados: List[Dict[str, Any]] = []
 
     for t in novos_temas:
@@ -338,14 +421,14 @@ def _mesclar_snapshot_vitrine_pulso(
         tit = (t.get("titulo_tema") or "").lower().strip()
         if s and s in vistos_slugs:
             continue
-        if tit and tit in vistos_titulos:
+        if tit and any(_titulos_sao_similares(tit, v) for v in vistos_titulos):
             continue
         if not _item_nao_expirado_pulso(t, agora):
             continue
         if s:
             vistos_slugs.add(s)
         if tit:
-            vistos_titulos.add(tit)
+            vistos_titulos.append(tit)
         temas_mesclados.append(t)
 
     for t in temas_existentes:
@@ -353,7 +436,7 @@ def _mesclar_snapshot_vitrine_pulso(
         tit = (t.get("titulo_tema") or t.get("titulo_curto") or "").lower().strip()
         if s and s in vistos_slugs:
             continue
-        if tit and tit in vistos_titulos:
+        if tit and any(_titulos_sao_similares(tit, v) for v in vistos_titulos):
             continue
         if not _item_nao_expirado_pulso(t, agora):
             continue
@@ -367,28 +450,28 @@ def _mesclar_snapshot_vitrine_pulso(
         if s:
             vistos_slugs.add(s)
         if tit:
-            vistos_titulos.add(tit)
+            vistos_titulos.append(tit)
         temas_mesclados.append(t)
 
     temas_mesclados.sort(key=_chave_ordenacao_vitrine, reverse=True)
     temas_mesclados = temas_mesclados[:20]
 
     vistos_nq_slugs = set()
-    vistos_nq_titulos = set()
+    vistos_nq_titulos: List[str] = []
     nq_mescladas: List[Dict[str, Any]] = []
     for item in novas_nq:
         s = item.get("slug")
         tit = (item.get("titulo_curto") or item.get("titulo_tema") or item.get("titulo") or "").lower().strip()
         if s and s in vistos_nq_slugs:
             continue
-        if tit and tit in vistos_nq_titulos:
+        if tit and any(_titulos_sao_similares(tit, v) for v in vistos_nq_titulos):
             continue
         if not _item_nao_expirado_pulso(item, agora):
             continue
         if s:
             vistos_nq_slugs.add(s)
         if tit:
-            vistos_nq_titulos.add(tit)
+            vistos_nq_titulos.append(tit)
         nq_mescladas.append(item)
 
     for item in nq_existentes:
@@ -396,7 +479,7 @@ def _mesclar_snapshot_vitrine_pulso(
         tit = (item.get("titulo_curto") or item.get("titulo_tema") or item.get("titulo") or "").lower().strip()
         if s and s in vistos_nq_slugs:
             continue
-        if tit and tit in vistos_nq_titulos:
+        if tit and any(_titulos_sao_similares(tit, v) for v in vistos_nq_titulos):
             continue
         if not _item_nao_expirado_pulso(item, agora):
             continue
@@ -410,7 +493,7 @@ def _mesclar_snapshot_vitrine_pulso(
         if s:
             vistos_nq_slugs.add(s)
         if tit:
-            vistos_nq_titulos.add(tit)
+            vistos_nq_titulos.append(tit)
         nq_mescladas.append(item)
 
     nq_mescladas.sort(key=_chave_ordenacao_vitrine, reverse=True)
@@ -643,27 +726,37 @@ Analise o lote, deduplique contra as notícias ativas no banco e retorne o JSON 
     modelo_usado = model
     ultimo_erro: Optional[Exception] = None
 
-    for candidato in candidatos_modelo:
-        try:
-            response = gemini_client.models.generate_content(
-                model=candidato,
-                contents=prompt_usuario,
-                config=types.GenerateContentConfig(
-                    system_instruction=system_prompt,
-                    response_mime_type="application/json",
-                    response_schema=PayloadNoticiasQuentes,
-                    temperature=0.2,
-                ),
-            )
-            modelo_usado = candidato
+    for idx_cand, candidato in enumerate(candidatos_modelo):
+        for tentativa in range(1, 3):
+            try:
+                response = gemini_client.models.generate_content(
+                    model=candidato,
+                    contents=prompt_usuario,
+                    config=types.GenerateContentConfig(
+                        system_instruction=system_prompt,
+                        response_mime_type="application/json",
+                        response_schema=PayloadNoticiasQuentes,
+                        temperature=0.2,
+                    ),
+                )
+                modelo_usado = candidato
+                break
+            except Exception as exc:  # noqa: BLE001
+                ultimo_erro = exc
+                msg = str(exc).upper()
+                eh_rate_limit = any(k in msg for k in ("429", "RESOURCE_EXHAUSTED", "503", "UNAVAILABLE", "504", "DEADLINE_EXCEEDED", "TIMEOUT"))
+                eh_not_found = any(k in msg for k in ("404", "NOT_FOUND"))
+                if eh_rate_limit:
+                    espera = min(3 * tentativa + idx_cand * 2, 12)
+                    print(f"[pulso_30m] Rate limit/instabilidade em {candidato} (tentativa {tentativa}): {msg[:80]}. Aguardando {espera}s...")
+                    time.sleep(espera)
+                    continue
+                if eh_not_found:
+                    print(f"[pulso_30m] Modelo {candidato} indisponível ({msg[:80]}), tentando próximo fallback...")
+                    break
+                raise
+        if response is not None:
             break
-        except Exception as exc:  # noqa: BLE001
-            ultimo_erro = exc
-            msg = str(exc).upper()
-            if any(k in msg for k in ("404", "NOT_FOUND", "503", "UNAVAILABLE", "504", "DEADLINE_EXCEEDED", "TIMEOUT", "429", "RESOURCE_EXHAUSTED")):
-                print(f"[pulso_30m] Modelo {candidato} indisponível ({msg[:80]}), tentando próximo fallback...")
-                continue
-            raise
 
     if response is None:
         raise RuntimeError(f"Nenhum modelo Gemini disponível para pulso: {ultimo_erro}")

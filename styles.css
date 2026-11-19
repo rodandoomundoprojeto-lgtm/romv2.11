@@ -5109,7 +5109,7 @@ dialog:not([open]) {
   max-width: 68ch;
 }
 
-/* Resumo do dia */
+/* Resumo do dia — Layout Editorial Clean (SUG-RESUMO-V2) */
 .resumo-dia-list {
   list-style: none;
   margin: 0;
@@ -5120,30 +5120,124 @@ dialog:not([open]) {
 }
 .resumo-dia-card {
   display: flex;
-  align-items: flex-start;
-  gap: var(--space-4);
+  flex-direction: column;
+  gap: 10px;
   padding: var(--space-4);
   border-radius: var(--radius-md);
   background: var(--surface-2);
   border: 1px solid var(--border);
-  transition: border-color var(--transition);
+  border-left: 3px solid var(--resumo-accent, #388bfd);
+  transition: border-color var(--transition), box-shadow 0.25s ease;
 }
 .resumo-dia-card:hover {
-  border-color: var(--primary);
+  border-color: var(--resumo-accent, var(--primary));
+}
+.resumo-dia-card.is-highlighted-card {
+  border-color: var(--resumo-accent, var(--primary));
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--resumo-accent, var(--primary)) 28%, transparent);
+}
+.resumo-card-header-line {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  min-width: 0;
+  flex-wrap: nowrap;
 }
 .resumo-rank-badge {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 2.2rem;
-  height: 2.2rem;
-  border-radius: 50%;
-  background: var(--primary);
-  color: #fff;
+  min-width: 1.8rem;
+  height: 1.5rem;
+  padding: 0 6px;
+  border-radius: 6px;
+  background: color-mix(in oklab, var(--resumo-accent, var(--primary)) 16%, transparent);
+  color: var(--resumo-accent, var(--primary));
+  border: 1px solid color-mix(in oklab, var(--resumo-accent, var(--primary)) 34%, transparent);
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: var(--text-sm);
+  font-size: 0.75rem;
   flex-shrink: 0;
+}
+.resumo-country-chip {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  background: rgba(127, 127, 127, 0.08);
+  border: 1px solid var(--border);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.resumo-country-chip .outlet-country-flag {
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+.resumo-card-main-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+  width: 100%;
+}
+.resumo-card-text-col {
+  flex: 1;
+  min-width: 0;
+}
+.resumo-thumb-wrap {
+  width: 64px;
+  height: 64px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: rgba(127, 127, 127, 0.08);
+}
+.resumo-thumb-64 {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  display: block;
+}
+.resumo-card-footer-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--divider);
+  flex-wrap: wrap;
+  width: 100%;
+}
+.resumo-sources-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.74rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  line-height: 1.3;
+}
+.resumo-sources-pill.is-multi-source {
+  color: var(--text);
+  font-weight: 600;
+  background: color-mix(in oklab, var(--resumo-accent, var(--primary)) 12%, transparent);
+  border: 1px solid color-mix(in oklab, var(--resumo-accent, var(--primary)) 32%, transparent);
+  padding: 2px 9px;
+  border-radius: var(--radius-full);
+}
+.resumo-actions-compact {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-left: auto;
 }
 .resumo-body-col {
   flex: 1;
@@ -5183,7 +5277,7 @@ dialog:not([open]) {
   text-decoration: underline;
 }
 .resumo-item-summary {
-  margin: 0 0 var(--space-3);
+  margin: 0;
   font-size: var(--text-sm);
   color: var(--text-muted);
   line-height: 1.5;
@@ -5736,7 +5830,46 @@ dialog:not([open]) {
   }
   .resumo-dia-card {
     flex-direction: column;
-    gap: var(--space-2);
+    gap: 10px;
+    padding: 12px 14px;
+  }
+  .resumo-card-header-line {
+    gap: 6px;
+    flex-wrap: nowrap;
+  }
+  .resumo-card-header-line .resumo-card-top-tag {
+    font-size: 0.7rem;
+    padding: 2px 7px;
+  }
+  .resumo-country-chip {
+    font-size: 0.7rem;
+    padding: 2px 7px;
+  }
+  .resumo-card-main-row {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .resumo-card-footer-line {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .resumo-actions-compact {
+    margin-left: 0;
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    gap: 6px;
+  }
+  .resumo-actions-compact .btn-compare-primary {
+    padding: 0.42rem 0.75rem;
+    font-size: 0.72rem;
+    white-space: nowrap;
+  }
+  .resumo-actions-compact .link-original-secondary {
+    font-size: 0.72rem;
+    white-space: nowrap;
   }
   .resumo-original-link,
   .link-original-secondary {
@@ -9564,19 +9697,23 @@ button.support-link.topbar-more-btn:hover {
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  font-size: 0.75rem;
+  font-size: 0.74rem;
   font-weight: 700;
-  color: var(--primary);
-  background: var(--primary-soft);
-  padding: 3px 9px;
+  color: var(--resumo-accent, var(--primary));
+  background: color-mix(in oklab, var(--resumo-accent, var(--primary)) 14%, transparent);
+  border: 1px solid color-mix(in oklab, var(--resumo-accent, var(--primary)) 32%, transparent);
+  padding: 2px 9px;
   border-radius: var(--radius-full);
   text-decoration: none;
   transition: all 0.18s;
   width: fit-content;
-  margin-bottom: 6px;
+  margin-bottom: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .resumo-card-top-tag:hover {
-  background: var(--primary);
+  background: var(--resumo-accent, var(--primary));
   color: #ffffff;
 }
 .resumo-actions-hierarchy {
@@ -9602,6 +9739,7 @@ button.support-link.topbar-more-btn:hover {
   font-size: var(--text-xs);
   cursor: pointer;
   text-decoration: none;
+  white-space: nowrap;
   box-shadow: 0 2px 8px color-mix(in oklab, var(--primary) 32%, transparent);
   transition: all 0.18s var(--ease);
 }

@@ -36,6 +36,16 @@ def _tem_chave_gemini() -> bool:
     return bool(chave and not chave.startswith("sua_chave"))
 
 
+def _tem_chave_zelador() -> bool:
+    chave = (
+        os.getenv("XAI_API_KEY")
+        or os.getenv("GROK_API_KEY")
+        or os.getenv("GROQ_API_KEY")
+        or ""
+    ).strip()
+    return bool(chave and not chave.startswith("sua_chave"))
+
+
 def _serializar_resultado_editorial(res: Dict[str, Any]) -> Dict[str, Any]:
     """Converte todos os modelos Pydantic do dicionário de saída do orquestrador editorial para dicts."""
     saida: Dict[str, Any] = {}
@@ -58,6 +68,7 @@ async def _executar_modo_pulso(dry_run: bool, limit: int = 10) -> Dict[str, Any]
     )
     from redacao_v2.pulso_noticias_quentes import (
         executar_pipeline_pulso_async,
+        salvar_snapshot_vitrine_pulso,
     )
     from redacao_v2.schemas import (
         LinkAcervoInterno,
@@ -66,14 +77,31 @@ async def _executar_modo_pulso(dry_run: bool, limit: int = 10) -> Dict[str, Any]
     )
 
     with contextlib.redirect_stdout(sys.stderr):
-        if _tem_chave_gemini() or not dry_run:
-            payload = await executar_pipeline_pulso_async(dry_run=dry_run)
-            if payload is not None:
-                if limit and len(payload.noticias_quentes) > limit:
-                    payload.noticias_quentes = payload.noticias_quentes[:limit]
-                return payload.model_dump()
+        if _tem_chave_gemini():
+            try:
+                payload = await executar_pipeline_pulso_async(dry_run=dry_run)
+                if payload is not None:
+                    if limit and len(payload.noticias_quentes) > limit:
+                        payload.noticias_quentes = payload.noticias_quentes[:limit]
+                    return payload.model_dump()
+            except Exception as exc:
+                print(
+                    f"[AVISO] Falha no pipeline de pulso via Gemini ({exc}); acionando contingência...",
+                    file=sys.stderr,
+                )
+                if not dry_run:
+                    try:
+                        from src.notifier import send_discord_system_alert
 
-        # Fallback determinístico em dry-run quando GEMINI_API_KEY não está definida no ambiente local
+                        send_discord_system_alert(
+                            "⚠️ Contingência Acionada no Pulso 30m",
+                            f"Falha ao gerar pulso principal via Gemini (`{str(exc)[:300]}`). Fallback de contingência ativado.",
+                            nivel="aviso",
+                        )
+                    except Exception:
+                        pass
+
+        # Fallback determinístico quando GEMINI_API_KEY não está definida ou falhou
         itens_coletados, acervo_rom = await asyncio.gather(
             coletar_noticias_quentes_30min_async(max_itens_por_fonte=4),
             buscar_artigos_publicados_rom_async(limite=20),
@@ -122,6 +150,12 @@ async def _executar_modo_pulso(dry_run: bool, limit: int = 10) -> Dict[str, Any]
         noticias_quentes=noticias_simuladas,
         eventos_comparados=[],
     )
+    if not dry_run and noticias_simuladas:
+        with contextlib.redirect_stdout(sys.stderr):
+            try:
+                salvar_snapshot_vitrine_pulso(payload_fallback)
+            except Exception as exc_snap:
+                print(f"[AVISO] Falha ao salvar snapshot de contingência: {exc_snap}", file=sys.stderr)
     return payload_fallback.model_dump()
 
 
@@ -225,15 +259,51 @@ async def _executar_modo_coluna(
     )
 
     with contextlib.redirect_stdout(sys.stderr):
-        if _tem_chave_gemini() or not dry_run:
-            resultado = await executar_orquestrador_editorial_async(
-                tema_foco=tema,
-                dry_run=dry_run,
-            )
-            if resultado is not None:
-                return _serializar_resultado_editorial(resultado)
+        if _tem_chave_gemini():
+            try:
+                resultado = await executar_orquestrador_editorial_async(
+                    tema_foco=tema,
+                    dry_run=dry_run,
+                )
+                if resultado is not None:
+                    serializado = _serializar_resultado_editorial(resultado)
+                    if not dry_run and serializado.get("aprovado") and isinstance(serializado.get("coluna"), dict):
+                        try:
+                            from src.notifier import send_discord_webhook
 
-        # Fallback determinístico em dry-run quando GEMINI_API_KEY não está definida no ambiente local
+                            col = serializado["coluna"]
+                            send_discord_webhook(
+                                {
+                                    "categoria": col.get("categoria", "Geopolitica"),
+                                    "titulo": f"[COLUNA AUDITADA V2] {col.get('titulo', '')}",
+                                    "resumo": col.get("subtitulo") or col.get("resumo_seo") or "",
+                                    "analise": col.get("tese_central") or "",
+                                    "fonte_nome": f"Motor Editorial V2 ({col.get('model_id', 'gemini-2.5-pro')})",
+                                    "fonte_url": f"https://www.rodandoomundo.com.br/entenda/{col.get('slug', '')}",
+                                },
+                                canal="editorial",
+                            )
+                        except Exception:
+                            pass
+                    return serializado
+            except Exception as exc:
+                print(
+                    f"[AVISO] Falha no orquestrador editorial via Gemini ({exc}); acionando contingência...",
+                    file=sys.stderr,
+                )
+                if not dry_run:
+                    try:
+                        from src.notifier import send_discord_system_alert
+
+                        send_discord_system_alert(
+                            "⚠️ Contingência Acionada no Pipeline Editorial (Coluna)",
+                            f"Falha no orquestrador editorial V2 (`{str(exc)[:300]}`). Fallback de contingência ativado.",
+                            nivel="aviso",
+                        )
+                    except Exception:
+                        pass
+
+        # Fallback determinístico quando GEMINI_API_KEY não está definida ou falhou
         documentos, acervo = await asyncio.gather(
             coletar_fontes_estudo_v2_async(max_itens_por_fonte=4),
             buscar_artigos_publicados_rom_async(limite=20),
@@ -408,12 +478,16 @@ def main(argv: Optional[List[str]] = None) -> int:
     args = parser.parse_args(argv)
 
     if not args.dry_run and not _tem_chave_gemini():
-        print(
-            "[ERRO] GEMINI_API_KEY ausente. Cadastre a secret GEMINI_API_KEY em "
-            "GitHub > Settings > Secrets and variables > Actions (ou no .env local).",
-            file=sys.stderr,
-        )
-        return 3
+        if _tem_chave_zelador():
+            print(
+                "[AVISO] GEMINI_API_KEY ausente — operando em modo de contingência com Zelador Grok (XAI_API_KEY).",
+                file=sys.stderr,
+            )
+        else:
+            print(
+                "[AVISO] GEMINI_API_KEY ausente — operando em modo de contingência determinístico.",
+                file=sys.stderr,
+            )
 
     if args.modo == "pulso":
         saida = asyncio.run(_executar_modo_pulso(dry_run=args.dry_run, limit=args.limit))
