@@ -395,8 +395,16 @@ function normalizarRadar(str) {
 
 function limparPrefixoGatilhoWorker(str) {
   return String(str || '')
+    .replace(/^Síntese automática de contingência\s*\([^)]*\):\s*/i, '')
+    .replace(/^Análise em dry-run baseada na fonte\s*[^:]*:\s*/i, '')
+    .replace(/^Contexto associado nas buscas:\s*/i, '')
     .replace(/^[A-Z0-9_]{3,30}:\s*/, '')
     .trim();
+}
+
+function ehInstrucaoOuDebugWorker(txt) {
+  if (!txt) return true;
+  return /^(Destacar cobertura|Focar em|Análise em dry-run|Placeholder|TODO|Instrução|Prompt|Síntese automática de contingência)\b/i.test(txt);
 }
 
 function formatarHoraCurtaWorker(isoDateStr) {
@@ -469,7 +477,7 @@ async function carregarEstadoWorker(chave, request, env, isRefresh = false) {
   }
 
   const ctrl = new AbortController();
-  const timer = setTimeout(() => ctrl.abort(), 9000);
+  const timer = setTimeout(() => ctrl.abort(), 14000);
   try {
     const sufixoRefresh = isRefresh ? `?_t=${Date.now()}&refresh=1` : '';
     const alvo = `${backendUrl}/v1/estado/${encodeURIComponent(chave)}${sufixoRefresh}`;
@@ -547,11 +555,40 @@ async function handleRadarHybrid(request, env) {
 
     const itensV2 = temasVitrine.map((t) => {
       const catRaw = t.categoria || t.categoria_primaria || 'Geopolitica_Radar';
-      const catNorm = MAPA_CATEGORIA_RADAR_WORKER[catRaw] || normalizarRadar(catRaw) || 'geopolitica';
+      let catNorm = MAPA_CATEGORIA_RADAR_WORKER[catRaw] || normalizarRadar(catRaw) || 'geopolitica';
       const slug = t.slug || normalizarRadar(t.titulo_tema || t.titulo_curto || '').replace(/[^a-z0-9]+/g, '-');
       const titulo = t.titulo_tema || t.titulo_curto || t.titulo || '';
-      const resumo = limparPrefixoGatilhoWorker(t.gatilho_vitrine || t.resumo_pulso || t.resumo || '');
-      const analise = t.sintese_nerd || t.impacto_pratico || t.analise || resumo;
+
+      const rawGatilho = limparPrefixoGatilhoWorker(t.gatilho_vitrine || t.resumo_pulso || t.resumo || '');
+      const rawSintese = limparPrefixoGatilhoWorker(t.sintese_nerd || t.impacto_pratico || t.analise || '');
+
+      let resumo = rawGatilho;
+      let analise = rawSintese;
+
+      if (ehInstrucaoOuDebugWorker(resumo)) {
+        if (analise && !ehInstrucaoOuDebugWorker(analise)) {
+          resumo = analise;
+          analise = 'Tendência com forte aceleração de interesse monitorada pela curadoria em tempo real.';
+        } else {
+          resumo = titulo ? `Monitoramento informativo e desdobramentos em tempo real sobre ${titulo}.` : '';
+          analise = 'Acompanhamento editorial e impactos práticos em avaliação pela equipe.';
+        }
+      }
+
+      if (!analise || ehInstrucaoOuDebugWorker(analise) || analise === resumo) {
+        analise = 'Tendência com forte aceleração de interesse monitorada pela curadoria em tempo real.';
+      }
+
+      if (catNorm === 'geopolitica') {
+        const tLower = (titulo + ' ' + resumo).toLowerCase();
+        if (/salário|décimo terceiro|economia|mercado|dólar|bolsa|imposto|inflação|selic/.test(tLower)) {
+          catNorm = 'economia';
+        } else if (/governo|stf|senado|câmara|eleições|presidente|ministro|prefeito|congresso/.test(tLower)) {
+          catNorm = 'politica';
+        } else if (/tempo|clima|chuva|show|cultura|turismo|viagem|música|filme|feriado|festival|caranguejo/.test(tLower)) {
+          catNorm = 'cultura';
+        }
+      }
       const kws = Array.isArray(t.palavras_chave_busca)
         ? t.palavras_chave_busca
         : (Array.isArray(t.palavras_chave) ? t.palavras_chave : []);
@@ -682,7 +719,7 @@ async function handleEntendaOAssunto(request, env, url) {
   if (backendUrl) {
     const proxyUrl = new URL(targetPath + url.search, backendUrl);
     const ctrl = new AbortController();
-    const timer = setTimeout(() => ctrl.abort(), 9000);
+    const timer = setTimeout(() => ctrl.abort(), 14000);
     try {
       const res = await fetch(proxyUrl.toString(), {
         signal: ctrl.signal,

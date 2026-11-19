@@ -10732,6 +10732,73 @@ button.support-link.topbar-more-btn:hover {
     padding: var(--space-3) !important;
   }
 
+  /* Enquadramento perfeito de Colunas V2 e Entenda no Mobile */
+  .entenda-v2-colunas-wrap {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    margin: var(--space-3) 0 !important;
+  }
+  .entenda-v2-block {
+    padding: 14px 12px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    border-radius: var(--radius-md) !important;
+    overflow: hidden !important;
+  }
+  .entenda-v2-head {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 8px !important;
+    margin-bottom: var(--space-3) !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  .entenda-v2-grid,
+  .entenda-cards-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  .entenda-v2-card,
+  .entenda-home-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+    padding: 12px 14px !important;
+    overflow-wrap: break-word !important;
+    word-break: break-word !important;
+  }
+  .entenda-v2-card h3,
+  .entenda-home-card h3 {
+    font-size: 0.96rem !important;
+    line-height: 1.35 !important;
+    overflow-wrap: break-word !important;
+    word-break: break-word !important;
+  }
+  .entenda-card-actions {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  .entenda-card-actions .btn {
+    flex: 1 1 130px !important;
+    white-space: normal !important;
+    text-align: center !important;
+    justify-content: center !important;
+    font-size: 0.78rem !important;
+    padding: 6px 10px !important;
+    min-height: 34px !important;
+    box-sizing: border-box !important;
+  }
+
   /* Modais no Mobile */
   dialog.modal,
   .modal-dialog,
@@ -11888,6 +11955,10 @@ button.support-link.topbar-more-btn:hover {
   background: var(--surface-2);
   border: 1px solid color-mix(in oklab, var(--primary) 30%, var(--border));
   border-radius: var(--radius-lg);
+  box-sizing: border-box;
+  max-width: 100%;
+  width: 100%;
+  overflow: hidden;
 }
 
 .entenda-v2-head {
@@ -11941,9 +12012,23 @@ button.support-link.topbar-more-btn:hover {
   flex-wrap: wrap;
 }
 
+.entenda-v2-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(320px, 100%), 1fr));
+  gap: var(--space-4);
+  width: 100%;
+  box-sizing: border-box;
+}
+
 .entenda-v2-card {
   background: var(--surface);
   border: 1px solid var(--border);
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .entenda-v2-cat {
@@ -13753,4 +13838,72 @@ body.dark .dossie-tl-item.tl-upcoming .dossie-tl-badge {
 .entenda-full-article > .hub-block {
   margin-bottom: var(--space-4);
 }
+
+/* ===== Grok / X Real-Time Badges (Resumo do Dia) ===== */
+.badge-grok-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: var(--space-2);
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+  font-size: var(--text-2xs);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.3;
+  vertical-align: middle;
+  white-space: nowrap;
+  text-transform: none;
+  color: #15803d;
+  background: rgba(22, 163, 74, 0.12);
+  border: 1px solid rgba(22, 163, 74, 0.28);
+}
+
+.resumo-x-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 2px 7px;
+  border-radius: var(--radius-pill);
+  font-size: var(--text-2xs);
+  font-weight: 600;
+  line-height: 1.25;
+  white-space: nowrap;
+  flex-shrink: 0;
+  color: #0e7490;
+  background: rgba(8, 145, 178, 0.10);
+  border: 1px solid rgba(8, 145, 178, 0.28);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) .badge-grok-live {
+    color: #4ade80;
+    background: rgba(34, 197, 94, 0.16);
+    border-color: rgba(74, 222, 128, 0.34);
+  }
+  :root:not([data-theme='light']) .resumo-x-tag {
+    color: #38bdf8;
+    background: rgba(56, 189, 248, 0.14);
+    border-color: rgba(56, 189, 248, 0.32);
+  }
+}
+
+[data-theme='dark'] .badge-grok-live {
+  color: #4ade80;
+  background: rgba(34, 197, 94, 0.16);
+  border-color: rgba(74, 222, 128, 0.34);
+}
+
+[data-theme='dark'] .resumo-x-tag {
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.14);
+  border-color: rgba(56, 189, 248, 0.32);
+}
+
+@media (max-width: 379px) {
+  .resumo-x-tag {
+    display: none;
+  }
+}
+
 

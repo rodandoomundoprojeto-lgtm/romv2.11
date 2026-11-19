@@ -4614,17 +4614,9 @@
       });
 
     if (isPeriodic) {
-      fetch('/api/resumo?_t=' + Date.now(), { cache: 'no-store', headers: { Accept: 'application/json' } })
-        .then(function (r) { return r && r.ok ? r.json() : null; })
-        .then(function (data) {
-          if (typeof aplicarDadosResumoDoDia === 'function' && aplicarDadosResumoDoDia(data)) {
-            renderResumoDoDiaDOM();
-          }
-        })
-        .catch(function () {})
-        .finally(function () {
-          triggerHotNewsPulseCycle();
-        });
+      if (typeof atualizarResumoDoDiaAutomatico === 'function') {
+        atualizarResumoDoDiaAutomatico(false);
+      }
     }
   }
 
@@ -11431,9 +11423,129 @@
   }
 
   var RESUMO_CACHE_TTL_MS = 5 * 60 * 1000;
+  var GROK_MAX_AGE_MS = 6 * 60 * 60 * 1000;
   var resumoLastFetchAt = 0;
   var resumoAtualizadoEm = '';
   var resumoPendingForce = false;
+  var resumoFonteGrok = false;
+  var resumoFonteMotor = '';
+
+  function grokTimestampFresco(data) {
+    if (!data || !data.atualizadoEm) return false;
+    var ts = Date.parse(data.atualizadoEm);
+    if (isNaN(ts)) return false;
+    return (Date.now() - ts) <= GROK_MAX_AGE_MS;
+  }
+
+  function grokDadosValidos(data) {
+    if (!data || data.mock === true) return false;
+    if (!Array.isArray(data.items) || data.items.length < 3) return false;
+    return grokTimestampFresco(data);
+  }
+
+  function aplicarTopicosGrok(data) {
+    if (!data || data.mock === true || !data.topicosEmAltaPorPais || typeof data.topicosEmAltaPorPais !== 'object') return;
+    if (typeof incorporarTopicosEmAlta !== 'function') return;
+    var keys = Object.keys(data.topicosEmAltaPorPais);
+    for (var i = 0; i < keys.length; i++) {
+      var k = keys[i];
+      var list = data.topicosEmAltaPorPais[k];
+      if (Array.isArray(list) && list.length) {
+        try {
+          incorporarTopicosEmAlta(String(k).toUpperCase(), list, false);
+        } catch (e) {}
+      }
+    }
+  }
+
+  function normalizarCategoriaRadarGrok(item) {
+    var validas = { geopolitica: true, politica: true, economia: true, cultura: true };
+    var direct = item && item.categoriaRadar ? String(item.categoriaRadar).toLowerCase().trim() : '';
+    if (validas[direct]) return direct;
+    var tipo = item && item.tipoNoticia ? String(item.tipoNoticia).toLowerCase().trim() : '';
+    var cc = item && item.codigoPais ? String(item.codigoPais).toUpperCase().trim() : '';
+    var catTxt = item && item.categoria ? String(item.categoria).toLowerCase() : '';
+    if (tipo === 'economia' || /econom|mercad|fiscal|juros|infla|bolsa|dólar|dolar|comércio|comercio/.test(catTxt)) {
+      return 'economia';
+    }
+    if (tipo === 'cultura' || tipo === 'esportes' || tipo === 'saude' || /cultura|esport|saúde|saude|viag|cinema|música|musica|arte/.test(catTxt)) {
+      return 'cultura';
+    }
+    if (tipo === 'mundo' || (cc && cc !== 'BR' && (tipo === 'politica' || tipo === 'tecnologia')) || /geopol|guerra|conflit|diplomac|internacional|onu|otan|oriente|ucrânia|ucrania|china|eua|rússia|russia/.test(catTxt)) {
+      return 'geopolitica';
+    }
+    return 'politica';
+  }
+
+  function converterGrokParaCardsRadar(grokData) {
+    if (!grokDadosValidos(grokData)) return [];
+    var out = [];
+    for (var i = 0; i < grokData.items.length; i++) {
+      var item = grokData.items[i];
+      if (!item || !item.titulo) continue;
+      out.push({
+        titulo: item.titulo,
+        resumo: item.resumo || item.resumoCurto || '',
+        analise: item.analise || '',
+        categoria: normalizarCategoriaRadarGrok(item),
+        fonte_nome: item.fonte || (item.handleX ? ('X ' + item.handleX) : 'Grok / X'),
+        fonte_url: item.urlMateriaOriginal || item.url || '',
+        data_publicacao: item.publicadoEm || grokData.atualizadoEm || '',
+        origem_grok_x: true,
+        handle_x: item.handleX || '',
+        pais: item.pais || '',
+        codigo_pais: item.codigoPais || ''
+      });
+    }
+    return out;
+  }
+
+  function normalizarUrlDedupRadar(u) {
+    if (!u) return '';
+    var s = String(u).trim().toLowerCase();
+    try {
+      var parsed = new URL(s);
+      var keysToDelete = [];
+      parsed.searchParams.forEach(function (_, k) {
+        if (k.indexOf('utm_') === 0) keysToDelete.push(k);
+      });
+      for (var i = 0; i < keysToDelete.length; i++) {
+        parsed.searchParams.delete(keysToDelete[i]);
+      }
+      s = parsed.toString().toLowerCase();
+    } catch (e) {
+      s = s.replace(/([?&])utm_[^&#]*(&|$)/g, function (m, sep, end) {
+        return end ? sep : '';
+      }).replace(/[?&]$/, '');
+    }
+    return s.replace(/\/+$/, '');
+  }
+
+  function mesclarCardsGrokNoRadar(baseItems, grokCards) {
+    var result = Array.isArray(baseItems) ? baseItems.slice() : [];
+    if (!Array.isArray(grokCards) || !grokCards.length) return result;
+    var seenUrls = {};
+    var seenTitles = {};
+    for (var i = 0; i < result.length; i++) {
+      var it = result[i];
+      if (!it) continue;
+      var nu = normalizarUrlDedupRadar(it.fonte_url || it.url || '');
+      if (nu) seenUrls[nu] = true;
+      var nt = String(it.titulo || '').trim().toLowerCase().replace(/\s+/g, ' ');
+      if (nt) seenTitles[nt] = true;
+    }
+    for (var j = 0; j < grokCards.length; j++) {
+      var gc = grokCards[j];
+      if (!gc || !gc.titulo) continue;
+      var gu = normalizarUrlDedupRadar(gc.fonte_url || '');
+      var gt = String(gc.titulo || '').trim().toLowerCase().replace(/\s+/g, ' ');
+      if ((gu && seenUrls[gu]) || (gt && seenTitles[gt])) continue;
+      if (gu) seenUrls[gu] = true;
+      if (gt) seenTitles[gt] = true;
+      result.push(gc);
+    }
+    return result;
+  }
 
   function carregarResumoCacheLocal() {
     try {
@@ -11444,6 +11556,8 @@
         if (Array.isArray(parsed) && parsed.length >= 3) {
           EDITORIAL.resumoDoDia = parsed;
           resumoAtualizadoEm = localStorage.getItem('rom_resumo_updated_at') || '';
+          resumoFonteGrok = !!(parsed[0] && parsed[0].origemGrokX);
+          if (!resumoFonteGrok) resumoFonteMotor = '';
           return true;
         }
       }
@@ -11700,7 +11814,7 @@
     html += '<section id="radar-panel-radar" class="radar-hub-panel" role="tabpanel" aria-labelledby="radar-tab-radar"' + radarHidden + '>';
     html += '<div class="editorial-section-head">';
     html += '<div>';
-    html += '<p class="editorial-eyebrow">Inteligência em Tempo Real · YouTube & RSS · Análise por IA</p>';
+    html += '<p class="editorial-eyebrow">Inteligência em Tempo Real · YouTube, RSS & X (Grok) · Análise por IA</p>';
     html += '<h2 id="radar-editorial-titulo">Radar Editorial</h2>';
     html += '<p class="editorial-section-sub">Monitoramento contínuo dos principais canais e analistas de geopolítica, política, economia e cultura com síntese factual e avaliação de impacto.</p>';
     html += '</div>';
@@ -11886,6 +12000,9 @@
     var apiUrl = forceRefresh
       ? ('/api/radar?refresh=1&_t=' + Date.now())
       : ('/api/radar?_t=' + Date.now());
+    var grokPromise = fetch('/data/noticias_x.json?_t=' + Date.now(), { cache: 'no-store', headers: { Accept: 'application/json' } })
+      .then(function (r) { return r && r.ok ? r.json().catch(function () { return null; }) : null; })
+      .catch(function () { return null; });
 
     fetch(apiUrl, { cache: 'no-store', headers: { Accept: 'application/json' } })
       .then(function (res) {
@@ -11895,30 +12012,37 @@
       .then(function (data) {
         if (seq !== radarFetchSeq) return;
         if (data && data.ok && Array.isArray(data.items) && data.items.length > 0) {
-          var incomingIsFallback = !!data.fallback;
-          if (incomingIsFallback && Array.isArray(prevCache) && prevCache.length > 0 && getRadarMaxTimestamp(prevCache) >= getRadarMaxTimestamp(data.items)) {
-            return;
-          }
-          radarFeedIsFallback = incomingIsFallback;
-          radarLastFetchAt = incomingIsFallback ? 0 : Date.now();
-          lastAutonomousFetchTimestamps.radar = Date.now();
-          var changed = hasRadarFeedChanged(prevCache, data.items);
-          radarFeedCache = data.items;
-          radarUpdatedLabel = formatarRotuloAtualizacaoRadar(data.items, data.atualizado_em);
-          updateRadarUpdatedBadge(radarUpdatedLabel);
-          if (!isAutoRefresh || changed || prevIsFallback !== incomingIsFallback) {
-            var listEl = document.getElementById('radar-cards-list');
-            if (isAutoRefresh && isUserReadingOrInteractingWith(listEl)) {
-              queueAutonomousUpdate('radar', function () {
-                renderRadarCardsList(true);
-                triggerHotNewsPulseCycle();
-              });
-            } else {
-              renderRadarCardsList(!!isAutoRefresh);
-              triggerHotNewsPulseCycle();
+          return grokPromise.then(function (grokData) {
+            if (seq !== radarFetchSeq) return;
+            if (grokData && grokData.mock !== true && grokTimestampFresco(grokData)) {
+              aplicarTopicosGrok(grokData);
             }
-          }
-          return;
+            var grokCards = converterGrokParaCardsRadar(grokData);
+            var mergedItems = mesclarCardsGrokNoRadar(data.items, grokCards);
+            var incomingIsFallback = !!data.fallback;
+            if (incomingIsFallback && Array.isArray(prevCache) && prevCache.length > 0 && getRadarMaxTimestamp(prevCache) >= getRadarMaxTimestamp(mergedItems)) {
+              return;
+            }
+            radarFeedIsFallback = incomingIsFallback;
+            radarLastFetchAt = incomingIsFallback ? 0 : Date.now();
+            lastAutonomousFetchTimestamps.radar = Date.now();
+            var changed = hasRadarFeedChanged(prevCache, mergedItems);
+            radarFeedCache = mergedItems;
+            radarUpdatedLabel = formatarRotuloAtualizacaoRadar(mergedItems, data.atualizado_em);
+            updateRadarUpdatedBadge(radarUpdatedLabel);
+            if (!isAutoRefresh || changed || prevIsFallback !== incomingIsFallback) {
+              var listEl = document.getElementById('radar-cards-list');
+              if (isAutoRefresh && isUserReadingOrInteractingWith(listEl)) {
+                queueAutonomousUpdate('radar', function () {
+                  renderRadarCardsList(true);
+                  triggerHotNewsPulseCycle();
+                });
+              } else {
+                renderRadarCardsList(!!isAutoRefresh);
+                triggerHotNewsPulseCycle();
+              }
+            }
+          });
         }
         throw new Error('Formato inesperado');
       })
@@ -11939,27 +12063,51 @@
           })
           .then(function (nextItems) {
             if (seq !== radarFetchSeq) return;
-            if (Array.isArray(radarFeedCache) && radarFeedCache.length > 0 && getRadarMaxTimestamp(radarFeedCache) > getRadarMaxTimestamp(nextItems)) {
-              return;
-            }
-            radarFeedIsFallback = true;
-            radarLastFetchAt = 0; // força revalidação em /api/radar na próxima navegação
-            lastAutonomousFetchTimestamps.radar = Date.now();
-            var changed = hasRadarFeedChanged(prevCache, nextItems);
-            radarFeedCache = nextItems;
-            radarUpdatedLabel = formatarRotuloAtualizacaoRadar(nextItems);
-            updateRadarUpdatedBadge(radarUpdatedLabel);
-            if (changed) {
-              renderRadarCardsList(false);
-              triggerHotNewsPulseCycle();
-            }
+            return grokPromise.then(function (grokData) {
+              if (seq !== radarFetchSeq) return;
+              if (grokData && grokData.mock !== true && grokTimestampFresco(grokData)) {
+                aplicarTopicosGrok(grokData);
+              }
+              var grokCards = converterGrokParaCardsRadar(grokData);
+              var mergedFallback = mesclarCardsGrokNoRadar(nextItems, grokCards);
+              if (Array.isArray(radarFeedCache) && radarFeedCache.length > 0 && getRadarMaxTimestamp(radarFeedCache) > getRadarMaxTimestamp(mergedFallback)) {
+                return;
+              }
+              radarFeedIsFallback = true;
+              radarLastFetchAt = 0; // força revalidação em /api/radar na próxima navegação
+              lastAutonomousFetchTimestamps.radar = Date.now();
+              var changed = hasRadarFeedChanged(prevCache, mergedFallback);
+              radarFeedCache = mergedFallback;
+              radarUpdatedLabel = formatarRotuloAtualizacaoRadar(mergedFallback);
+              updateRadarUpdatedBadge(radarUpdatedLabel);
+              if (changed) {
+                renderRadarCardsList(false);
+                triggerHotNewsPulseCycle();
+              }
+            });
           })
           .catch(function (err) {
             if (isAutoRefresh || (Array.isArray(prevCache) && prevCache.length > 0)) return;
-            var listEl = document.getElementById('radar-cards-list');
-            if (listEl) {
-              listEl.innerHTML = '<p class="radar-empty">Não foi possível carregar as novidades do radar neste momento (' + esc(err.message) + ').</p>';
-            }
+            return grokPromise.then(function (grokData) {
+              if (seq !== radarFetchSeq) return;
+              var grokCards = converterGrokParaCardsRadar(grokData);
+              if (grokCards.length > 0) {
+                aplicarTopicosGrok(grokData);
+                radarFeedCache = grokCards;
+                radarFeedIsFallback = true;
+                radarLastFetchAt = 0;
+                lastAutonomousFetchTimestamps.radar = Date.now();
+                radarUpdatedLabel = formatarRotuloAtualizacaoRadar(grokCards, grokData && grokData.atualizadoEm);
+                updateRadarUpdatedBadge(radarUpdatedLabel);
+                renderRadarCardsList(false);
+                triggerHotNewsPulseCycle();
+                return;
+              }
+              var listEl = document.getElementById('radar-cards-list');
+              if (listEl) {
+                listEl.innerHTML = '<p class="radar-empty">Não foi possível carregar as novidades do radar neste momento (' + esc(err.message) + ').</p>';
+              }
+            });
           });
       })
       .finally(function () {
@@ -12220,7 +12368,11 @@
       if (item.origem_v2) {
         card += '<span class="radar-v2-pill radar-badge-v2">⚡ Pulso V2</span>';
       }
-      card += '<span class="radar-source-name">📺 ' + esc(item.fonte_nome || 'Fonte') + '</span>';
+      if (item.origem_grok_x) {
+        card += '<span class="resumo-x-tag" title="Apurado em tempo real no X via Grok (xAI)">𝕏 Grok / X</span>';
+      }
+      var sourceIcon = item.origem_grok_x ? '𝕏 ' : '📺 ';
+      card += '<span class="radar-source-name">' + sourceIcon + esc(item.fonte_nome || 'Fonte') + '</span>';
       if (dataPubMeta.text) {
         card += '<time class="radar-pub-date" datetime="' + esc(dataPubMeta.iso) + '" title="' + esc(dataPubMeta.title) + '" aria-label="' + esc(dataPubMeta.title) + '">' + esc(dataPubMeta.text) + '</time>';
       }
@@ -12256,16 +12408,48 @@
 
       card += '<div class="radar-card-details" id="' + esc(detailsId) + '" hidden>';
       card += '<div class="radar-card-body">';
-      if (item.resumo) {
+      var cleanResumo = String(item.resumo || '')
+        .replace(/^Síntese automática de contingência\s*\([^)]*\):\s*/i, '')
+        .replace(/^Análise em dry-run baseada na fonte\s*[^:]*:\s*/i, '')
+        .replace(/^Contexto associado nas buscas:\s*/i, '')
+        .replace(/^[A-Z0-9_]{3,30}:\s*/, '')
+        .trim();
+      var cleanAnalise = String(item.analise || '')
+        .replace(/^Síntese automática de contingência\s*\([^)]*\):\s*/i, '')
+        .replace(/^Análise em dry-run baseada na fonte\s*[^:]*:\s*/i, '')
+        .replace(/^Contexto associado nas buscas:\s*/i, '')
+        .replace(/^[A-Z0-9_]{3,30}:\s*/, '')
+        .trim();
+
+      var ehPromptOuDebug = function(txt) {
+        if (!txt) return true;
+        return /^(Destacar cobertura|Focar em|Análise em dry-run|Placeholder|TODO|Instrução|Prompt|Síntese automática de contingência)\b/i.test(txt);
+      };
+
+      if (ehPromptOuDebug(cleanResumo)) {
+        if (cleanAnalise && !ehPromptOuDebug(cleanAnalise)) {
+          cleanResumo = cleanAnalise;
+          cleanAnalise = 'Tendência com forte aceleração de interesse monitorada pela curadoria em tempo real.';
+        } else {
+          cleanResumo = item.titulo ? ('Monitoramento e desdobramentos em tempo real sobre ' + item.titulo + '.') : '';
+          cleanAnalise = 'Acompanhamento editorial e impactos práticos em avaliação pela equipe.';
+        }
+      }
+
+      if (!cleanAnalise || ehPromptOuDebug(cleanAnalise) || cleanAnalise === cleanResumo) {
+        cleanAnalise = 'Tendência com forte aceleração de interesse monitorada pela curadoria em tempo real.';
+      }
+
+      if (cleanResumo) {
         card += '<div class="radar-block radar-block-fato">';
         card += '<strong>📌 O que aconteceu:</strong>';
-        card += '<p>' + esc(item.resumo) + '</p>';
+        card += '<p>' + esc(cleanResumo) + '</p>';
         card += '</div>';
       }
-      if (item.analise) {
+      if (cleanAnalise) {
         card += '<div class="radar-block radar-block-analise">';
         card += '<strong>💡 Por que importa:</strong>';
-        card += '<p>' + esc(item.analise) + '</p>';
+        card += '<p>' + esc(cleanAnalise) + '</p>';
         card += '</div>';
       }
       card += '</div>'; // .radar-card-body
@@ -12358,9 +12542,13 @@
         }
       } catch (e) {}
     }
+    var isGrokResumo = !!(resumoFonteGrok || (sortedResumo[0] && sortedResumo[0].origemGrokX));
+    var grokBadgeHtml = isGrokResumo
+      ? ' <span class="badge-grok-live" title="Apuração automatizada em tempo real no X via Grok (xAI)">⚡ Grok / X</span>'
+      : '';
     var rh = '<div class="editorial-section-head">';
     rh += '<div>';
-    rh += '<p class="editorial-eyebrow">Edição diária · Atualização automática' + esc(updatedSuffix) + ' · ' + esc(todayStr) + '</p>';
+    rh += '<p class="editorial-eyebrow">Edição diária · Atualização automática' + esc(updatedSuffix) + ' · ' + esc(todayStr) + grokBadgeHtml + '</p>';
     rh += '<h2 id="resumo-dia-titulo">Resumo do dia</h2>';
     rh += '<p class="editorial-section-sub">As 5 principais notícias do dia selecionadas por relevância editorial, com síntese de fatos e comparação direta de cobertura entre veículos.</p>';
     rh += '</div>';
@@ -12421,6 +12609,9 @@
         rh += '<span class="resumo-card-top-tag">' + esc(item.categoria) + '</span>';
       }
       rh += '<span class="resumo-country-chip">' + countryChipInner + '</span>';
+      if (item.origemGrokX) {
+        rh += '<span class="resumo-x-tag" title="Verificado via busca no X">𝕏 Tempo Real</span>';
+      }
       rh += '</div>';
 
       // Linha 2 — Corpo com Mini-Thumbnail 64x64 à direita (.resumo-card-main-row)
@@ -12554,19 +12745,44 @@
       } catch (e) {}
     }
 
+    var fetchOpts = { cache: 'no-store', headers: { Accept: 'application/json' } };
+    var grokUrl = '/data/noticias_x.json?_t=' + Date.now();
     var resumoUrl = '/api/resumo?_t=' + Date.now() + (forcar ? '&refresh=1' : '');
-    var resumoOpts = { cache: 'no-store', headers: { Accept: 'application/json' } };
 
-    fetch(resumoUrl, resumoOpts)
+    fetch(grokUrl, fetchOpts)
       .then(function (r) {
-        var ct = r.headers.get('content-type') || '';
-        if (r.ok && ct.indexOf('application/json') > -1) {
-          return r.json();
+        if (r && r.ok) {
+          return r.json().catch(function () { return null; });
         }
         return null;
       })
-      .then(function (data) {
-        aplicarDadosResumoDoDia(data);
+      .catch(function () { return null; })
+      .then(function (grokData) {
+        if (grokDadosValidos(grokData)) {
+          aplicarTopicosGrok(grokData);
+          if (aplicarDadosResumoDoDia(grokData)) {
+            resumoFonteGrok = true;
+            resumoFonteMotor = grokData.fonteMotor || 'Grok · X Search';
+          }
+          return;
+        }
+        if (grokData && grokData.mock !== true && grokData.topicosEmAltaPorPais && grokTimestampFresco(grokData)) {
+          aplicarTopicosGrok(grokData);
+        }
+        return fetch(resumoUrl, fetchOpts)
+          .then(function (r) {
+            var ct = r.headers.get('content-type') || '';
+            if (r.ok && ct.indexOf('application/json') > -1) {
+              return r.json();
+            }
+            return null;
+          })
+          .then(function (data) {
+            if (aplicarDadosResumoDoDia(data)) {
+              resumoFonteGrok = false;
+              resumoFonteMotor = '';
+            }
+          });
       })
       .catch(function () {})
       .finally(function () {

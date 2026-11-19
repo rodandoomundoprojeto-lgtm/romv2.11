@@ -1,0 +1,54 @@
+name: Atualizar Noticias via Grok (X Search)
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
+
+on:
+  schedule:
+    # Roda automaticamente a cada 3 horas (UTC)
+    - cron: '0 */3 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: rom-grok-x-feeder
+  cancel-in-progress: false
+
+jobs:
+  atualizar-noticias:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Baixar código do repositório
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Configurar Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Buscar notícias no X com a IA do Grok
+        env:
+          XAI_API_KEY: ${{ secrets.XAI_API_KEY }}
+          GROK_API_KEY: ${{ secrets.GROK_API_KEY }}
+          XAI_FEEDER_MODEL: ${{ vars.XAI_FEEDER_MODEL || '' }}
+        run: |
+          python3 scripts/grok_x_feeder.py
+
+      - name: Salvar e publicar data/noticias_x.json no site
+        if: success()
+        run: |
+          git config user.name "Rodando o Mundo - Grok Bot"
+          git config user.email "bot@rodandoomundo.com.br"
+          git add data/noticias_x.json
+          if git diff --staged --quiet; then
+            echo "Sem alteracoes em data/noticias_x.json; nada a commitar."
+            exit 0
+          fi
+          git commit -m "chore(noticias): atualizacao automatica via Grok X Search"
+          BRANCH="${GITHUB_REF_NAME:-main}"
+          git pull --rebase origin "$BRANCH"
+          git push origin "HEAD:$BRANCH"

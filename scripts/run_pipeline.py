@@ -206,6 +206,17 @@ def _executar_modo_curadoria(dry_run: bool, horas: int = 12, limit: int = 10) ->
     insights_fallback: List[InsightItem] = []
     for idx, item in enumerate((lote_total or [])[: max(1, min(limit, 3))], start=1):
         titulo_base = str(item.get("titulo") or f"Tendência Global {idx}")[:120]
+        resumo_base = str(item.get("resumo") or titulo_base).strip()
+        resumo_limpo = re.sub(
+            r"^(Contexto associado nas buscas:\s*|Notícia:\s*|Síntese automática de contingência[^:]*:\s*|Análise em dry-run[^:]*:\s*)",
+            "",
+            resumo_base,
+            flags=re.IGNORECASE,
+        ).strip()
+        if not resumo_limpo or resumo_limpo.lower() == titulo_base.lower():
+            resumo_limpo = f"Acompanhamento em tempo real das movimentações e repercussão sobre {titulo_base}."
+        fonte_item = str(item.get("fonte") or item.get("origem") or "Radar")
+
         insights_fallback.append(
             InsightItem(
                 slug=f"curadoria-dry-run-{idx}",
@@ -215,12 +226,9 @@ def _executar_modo_curadoria(dry_run: bool, horas: int = 12, limit: int = 10) ->
                 categorias_cruzadas=["Economia", "Cultura"],
                 relevancia_score=max(70, 95 - (idx * 5)),
                 ttl_horas=24,
-                palavras_chave_busca=["geopolítica", "economia", "viagens", "mundo"],
-                gatilho_vitrine="Destacar cobertura internacional e impactos para viajantes",
-                sintese_nerd=(
-                    f"Análise em dry-run baseada na fonte {item.get('fonte', 'RSS')}: "
-                    f"{item.get('resumo') or titulo_base}."
-                )[:300],
+                palavras_chave_busca=["radar", "atualidades", "mundo"],
+                gatilho_vitrine=resumo_limpo[:220],
+                sintese_nerd=f"Tendência monitorada com desdobramentos em análise pela equipe via {fonte_item}."[:300],
                 sugestao_pauta_gap=PautaSugerida(
                     titulo_seo=f"Entenda os impactos de: {titulo_base}"[:140],
                     angulo_editorial="Cruzamento entre cenário internacional, economia e mobilidade.",

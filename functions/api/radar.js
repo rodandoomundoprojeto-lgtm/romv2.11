@@ -167,8 +167,16 @@ export function sortirCardsRodizioAmplo(itens, maxV2Topo = 2) {
 
 function limparPrefixoGatilho(str) {
   return String(str || '')
+    .replace(/^Síntese automática de contingência\s*\([^)]*\):\s*/i, '')
+    .replace(/^Análise em dry-run baseada na fonte\s*[^:]*:\s*/i, '')
+    .replace(/^Contexto associado nas buscas:\s*/i, '')
     .replace(/^[A-Z0-9_]{3,30}:\s*/, '')
     .trim();
+}
+
+function ehInstrucaoOuDebugRadar(txt) {
+  if (!txt) return true;
+  return /^(Destacar cobertura|Focar em|Análise em dry-run|Placeholder|TODO|Instrução|Prompt|Síntese automática de contingência)\b/i.test(txt);
 }
 
 function formatarHoraCurta(isoDateStr) {
@@ -305,11 +313,41 @@ async function carregarEstadoOuAssetRadar(chave, relPath, request, env, isRefres
 
 function mapearItemV2ParaRadar(item) {
   const catRaw = item.categoria || item.categoria_primaria || 'Geopolitica_Radar';
-  const catNorm = MAPA_CATEGORIA_RADAR[catRaw] || normalizar(catRaw) || 'geopolitica';
+  let catNorm = MAPA_CATEGORIA_RADAR[catRaw] || normalizar(catRaw) || 'geopolitica';
   const slug = item.slug || normalizar(item.titulo_tema || item.titulo_curto || '').replace(/[^a-z0-9]+/g, '-');
   const titulo = item.titulo_tema || item.titulo_curto || item.titulo || '';
-  const resumo = limparPrefixoGatilho(item.gatilho_vitrine || item.resumo_pulso || item.resumo || '');
-  const analise = item.sintese_nerd || item.impacto_pratico || item.analise || resumo;
+
+  const rawGatilho = limparPrefixoGatilho(item.gatilho_vitrine || item.resumo_pulso || item.resumo || '');
+  const rawSintese = limparPrefixoGatilho(item.sintese_nerd || item.impacto_pratico || item.analise || '');
+
+  let resumo = rawGatilho;
+  let analise = rawSintese;
+
+  if (ehInstrucaoOuDebugRadar(resumo)) {
+    if (analise && !ehInstrucaoOuDebugRadar(analise)) {
+      resumo = analise;
+      analise = 'Tendência com forte aceleração de interesse monitorada pela curadoria em tempo real.';
+    } else {
+      resumo = titulo ? `Monitoramento informativo e desdobramentos em tempo real sobre ${titulo}.` : '';
+      analise = 'Acompanhamento editorial e impactos práticos em avaliação pela equipe.';
+    }
+  }
+
+  if (!analise || ehInstrucaoOuDebugRadar(analise) || analise === resumo) {
+    analise = 'Tendência com forte aceleração de interesse monitorada pela curadoria em tempo real.';
+  }
+
+  // Refina categorização para evitar que termos de clima, tempo ou trabalho fiquem como "geopolítica"
+  if (catNorm === 'geopolitica') {
+    const tLower = (titulo + ' ' + resumo).toLowerCase();
+    if (/salário|décimo terceiro|economia|mercado|dólar|bolsa|imposto|inflação|selic/.test(tLower)) {
+      catNorm = 'economia';
+    } else if (/governo|stf|senado|câmara|eleições|presidente|ministro|prefeito|congresso/.test(tLower)) {
+      catNorm = 'politica';
+    } else if (/tempo|clima|chuva|show|cultura|turismo|viagem|música|filme|feriado|festival|caranguejo/.test(tLower)) {
+      catNorm = 'cultura';
+    }
+  }
   const kws = Array.isArray(item.palavras_chave_busca)
     ? item.palavras_chave_busca
     : Array.isArray(item.palavras_chave)

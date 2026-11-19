@@ -1,0 +1,119 @@
+{
+  "model": "grok-4.7",
+  "fallback_models": ["grok-4", "grok-3"],
+  "temperature": 0.2,
+  "max_noticias_resumo": 10,
+  "max_noticias_por_continente": 4,
+  "continentes": [
+    {
+      "id": "sul",
+      "nome": "América do Sul & Brasil",
+      "pais_padrao": "BR",
+      "termos": ["Brasil política STF Congresso Planalto", "Economia Brasil Banco Central Selic dólar", "América do Sul Argentina Mercosul"],
+      "contas_referencia": ["@folha", "@g1", "@estadao", "@ValorEconomico", "@bbcbrasil", "@CNNBrasil", "@infobae"]
+    },
+    {
+      "id": "norte",
+      "nome": "América do Norte & EUA",
+      "pais_padrao": "US",
+      "termos": ["White House US tariffs economy Congress", "Federal Reserve Wall Street tech AI"],
+      "contas_referencia": ["@AP", "@Reuters", "@nytimes", "@WSJ", "@Bloomberg", "@washingtonpost"]
+    },
+    {
+      "id": "europa",
+      "nome": "Europa & Geopolítica",
+      "pais_padrao": "FR",
+      "termos": ["European Union NATO Ukraine diplomacy", "Europe economy ECB UK Germany France"],
+      "contas_referencia": ["@BBCWorld", "@el_pais", "@lemondefr", "@dwnews", "@TheEconomist", "@guardian"]
+    },
+    {
+      "id": "asia",
+      "nome": "Ásia & Oriente Médio",
+      "pais_padrao": "CN",
+      "termos": ["China economy trade semiconductors", "Middle East diplomacy ceasefire", "Japan South Korea India tech"],
+      "contas_referencia": ["@AJEnglish", "@SCMPNews", "@NikkeiAsia", "@timesofindia"]
+    },
+    {
+      "id": "africa",
+      "nome": "África",
+      "pais_padrao": "ZA",
+      "termos": ["Africa economy African Union diplomacy energy"],
+      "contas_referencia": ["@BBCAfrica", "@TheAfricaReport", "@News24"]
+    },
+    {
+      "id": "oceania",
+      "nome": "Oceania",
+      "pais_padrao": "AU",
+      "termos": ["Australia New Zealand Indo-Pacific economy climate"],
+      "contas_referencia": ["@abcnews", "@smh", "@RNZNews"]
+    }
+  ],
+  "mapeamento_tematico": {
+    "BR:politica": {
+      "paginaTematica": "/politica/brasil",
+      "labelTematica": "Política no Brasil",
+      "explicacaoId": "o-que-e-o-orcamento"
+    },
+    "BR:economia": {
+      "paginaTematica": "/economia/brasil",
+      "labelTematica": "Economia no Brasil",
+      "explicacaoId": "o-que-e-inflacao"
+    },
+    "US:politica": {
+      "paginaTematica": "/politica/estados-unidos",
+      "labelTematica": "Política nos EUA",
+      "explicacaoId": "como-funcionam-as-eleicoes-nos-eua"
+    },
+    "US:economia": {
+      "paginaTematica": "/politica/estados-unidos",
+      "labelTematica": "Política & Economia nos EUA",
+      "explicacaoId": "o-que-e-sancao-internacional"
+    },
+    "UA:politica": {
+      "paginaTematica": "/guerra-ucrania",
+      "labelTematica": "Guerra na Ucrânia",
+      "explicacaoId": "o-que-e-sancao-internacional"
+    },
+    "UA:mundo": {
+      "paginaTematica": "/guerra-ucrania",
+      "labelTematica": "Guerra na Ucrânia",
+      "explicacaoId": "o-que-e-sancao-internacional"
+    },
+    "RU:politica": {
+      "paginaTematica": "/guerra-ucrania",
+      "labelTematica": "Guerra na Ucrânia",
+      "explicacaoId": "o-que-e-sancao-internacional"
+    },
+    "RU:mundo": {
+      "paginaTematica": "/guerra-ucrania",
+      "labelTematica": "Guerra na Ucrânia",
+      "explicacaoId": "o-que-e-sancao-internacional"
+    },
+    "*:tecnologia": {
+      "paginaTematica": "/tecnologia",
+      "labelTematica": "Tecnologia",
+      "explicacaoId": null
+    },
+    "*:saude": {
+      "paginaTematica": "/saude",
+      "labelTematica": "Saúde",
+      "explicacaoId": null
+    },
+    "*:esportes": {
+      "paginaTematica": "/esportes",
+      "labelTematica": "Esportes",
+      "explicacaoId": null
+    },
+    "*:cultura": {
+      "paginaTematica": "/cultura",
+      "labelTematica": "Cultura",
+      "explicacaoId": null
+    },
+    "*:clima": {
+      "paginaTematica": "/clima",
+      "labelTematica": "Clima & Meio Ambiente",
+      "explicacaoId": "o-que-e-a-cop30"
+    }
+  },
+  "categorias_permitidas": ["politica", "economia", "tecnologia", "saude", "cultura", "esportes", "mundo"]
+}

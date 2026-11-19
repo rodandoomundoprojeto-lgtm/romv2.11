@@ -23,7 +23,7 @@
 # ---------------------------------------------------------------------------
 set -uo pipefail
 
-MENSAGEM="${1:-chore(pipeline): atualiza dados gerados [skip ci]}"
+MENSAGEM="${1:-chore(pipeline): atualiza dados gerados}"
 shift || true
 ARQUIVOS=("$@")
 if [ ${#ARQUIVOS[@]} -eq 0 ]; then

@@ -133,4 +133,4 @@ jobs:
         if: always()
         run: |
           python scripts/export_db_to_assets.py || true
-          bash scripts/sync_generated_data.sh "chore(pipeline): atualiza vitrine_ia e entenda_v2 [skip ci]" data/vitrine_ia.json data/entenda_v2.json data/feed_output.json
+          bash scripts/sync_generated_data.sh "chore(pipeline): atualiza vitrine_ia e entenda_v2" data/vitrine_ia.json data/entenda_v2.json data/feed_output.json

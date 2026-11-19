@@ -25,6 +25,17 @@ MODELOS_FALLBACK = [
 ]
 
 
+def _inferir_categoria_tema(texto: str) -> str:
+    txt = (texto or "").lower()
+    if any(k in txt for k in ["salário", "décimo terceiro", "economia", "mercado", "dólar", "bolsa", "imposto", "inflação", "selic", "tribut"]):
+        return "Economia"
+    if any(k in txt for k in ["governo", "stf", "senado", "câmara", "eleições", "presidente", "ministro", "prefeito", "congresso", "partido"]):
+        return "Politica"
+    if any(k in txt for k in ["tempo", "clima", "chuva", "show", "cultura", "turismo", "viagem", "música", "filme", "feriado", "festival", "migração", "caranguejo"]):
+        return "Cultura"
+    return "Geopolitica_Radar"
+
+
 def _construir_fallback_deterministico(batch_atual: str, lote_filtrado: List[dict]) -> CuradoriaPayload:
     """Fallback heurístico para manter o pipeline de curadoria resiliente quando chaves de IA falham."""
     insights_fb: List[InsightItem] = []
@@ -32,18 +43,31 @@ def _construir_fallback_deterministico(batch_atual: str, lote_filtrado: List[dic
         titulo_base = str(item.get("titulo") or f"Tendência Global {idx}").strip()[:120]
         fonte_nome = str(item.get("origem") or item.get("fonte") or "Radar Global").strip()
         resumo_base = str(item.get("resumo") or titulo_base).strip()
+
+        # Remove prefixos técnicos de busca ou depuração
+        resumo_limpo = re.sub(
+            r"^(Contexto associado nas buscas:\s*|Notícia:\s*|Síntese automática de contingência[^:]*:\s*)",
+            "",
+            resumo_base,
+            flags=re.IGNORECASE,
+        ).strip()
+        if not resumo_limpo or resumo_limpo.lower() == titulo_base.lower():
+            resumo_limpo = f"Acompanhamento em tempo real das movimentações e repercussão sobre {titulo_base}."
+
+        cat_inferida = _inferir_categoria_tema(f"{titulo_base} {resumo_limpo}")
+
         insights_fb.append(
             InsightItem(
                 slug=f"curadoria-auto-{idx}-{batch_atual.lower()}",
                 titulo_tema=titulo_base,
                 status="em_alta",
-                categoria_primaria="Geopolitica_Radar",
+                categoria_primaria=cat_inferida,
                 categorias_cruzadas=["Economia", "Cultura"],
                 relevancia_score=max(70, 95 - (idx * 5)),
                 ttl_horas=24,
-                palavras_chave_busca=["geopolítica", "economia", "viagens", "mundo"],
-                gatilho_vitrine="Destacar cobertura internacional e impactos práticos",
-                sintese_nerd=f"Síntese automática de contingência ({fonte_nome}): {resumo_base}."[:300],
+                palavras_chave_busca=["radar", "atualidades", "mundo"],
+                gatilho_vitrine=resumo_limpo[:220],
+                sintese_nerd=f"Tendência em alta monitorada em tempo real pela curadoria do Rodando o Mundo.",
                 sugestao_pauta_gap=PautaSugerida(
                     titulo_seo=f"Entenda os impactos de: {titulo_base}"[:140],
                     angulo_editorial="Cruzamento entre cenário internacional, economia e mobilidade.",

@@ -64,4 +64,4 @@ jobs:
         if: always()
         run: |
           python scripts/export_db_to_assets.py || true
-          bash scripts/sync_generated_data.sh "chore(radar): atualiza feed_output e vitrine_ia [skip ci]" data/feed_output.json data/history.json data/vitrine_ia.json
+          bash scripts/sync_generated_data.sh "chore(radar): atualiza feed_output e vitrine_ia" data/feed_output.json data/history.json data/vitrine_ia.json
