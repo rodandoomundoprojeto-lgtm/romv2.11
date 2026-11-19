@@ -131,6 +131,20 @@ CORRECOES_YOUTUBE = [
         "channel_id": "UCw_aZuP_zSwoc_hHfuffuWA",
         "canal_url": "https://www.youtube.com/@medoedelirioembrasilia",
     },
+    {
+        "id": None,
+        "nome": "Prof. JeanGrafia | GabaritaGeo",
+        "channel_id": "UCv-QXC04JCxklAUQQe9vCuQ",
+        "canal_url": "https://www.youtube.com/@gabaritageo",
+        "regiao": "Global",
+    },
+    {
+        "id": None,
+        "nome": "Canal Top 10",
+        "channel_id": "UC9A70zHWT__VE5oWmTg2-xA",
+        "canal_url": "https://www.youtube.com/@CanalTop10",
+        "regiao": "Global",
+    },
 ]
 
 
@@ -159,28 +173,71 @@ def main() -> None:
             )
             print(f"Backup salvo com {len(atuais)} registros em: {BACKUP_FILE}")
 
-            # 2. Aplicar atualizações em transação
+            # 2. Aplicar atualizações/inserções em transação
             atualizados = 0
             for item in CORRECOES_YOUTUBE:
                 feed_url = f"https://www.youtube.com/feeds/videos.xml?channel_id={item['channel_id']}"
-                cur.execute(
-                    """
-                    UPDATE ai_fontes_referencia
-                    SET url = %s,
-                        referencia_condicoes_uso = %s,
-                        revisado_por = 'Correção Bug YouTube 404 (RoM)',
-                        revisado_em = NOW()
-                    WHERE id = %s
-                    RETURNING id, nome, url, referencia_condicoes_uso;
-                    """,
-                    (feed_url, item["canal_url"], item["id"]),
-                )
-                row = cur.fetchone()
+                row = None
+                if item.get("id") is not None:
+                    cur.execute(
+                        """
+                        UPDATE ai_fontes_referencia
+                        SET url = %s,
+                            referencia_condicoes_uso = %s,
+                            ativo = TRUE,
+                            coleta_permitida = TRUE,
+                            politica_uso_status = 'aprovada',
+                            revisado_por = 'Correção Bug YouTube 404 (RoM)',
+                            revisado_em = NOW()
+                        WHERE id = %s
+                        RETURNING id, nome, url, referencia_condicoes_uso;
+                        """,
+                        (feed_url, item["canal_url"], item["id"]),
+                    )
+                    row = cur.fetchone()
+                else:
+                    cur.execute(
+                        """
+                        UPDATE ai_fontes_referencia
+                        SET nome = %s,
+                            referencia_condicoes_uso = %s,
+                            ativo = TRUE,
+                            coleta_permitida = TRUE,
+                            politica_uso_status = 'aprovada',
+                            revisado_por = 'Equilíbrio YouTube Radar (RoM)',
+                            revisado_em = NOW()
+                        WHERE url = %s
+                        RETURNING id, nome, url, referencia_condicoes_uso;
+                        """,
+                        (item["nome"], item["canal_url"], feed_url),
+                    )
+                    row = cur.fetchone()
+                    if not row:
+                        cur.execute(
+                            """
+                            INSERT INTO ai_fontes_referencia (
+                                nome, url, pais_iso, regiao, idioma, tipo_fonte, cadencia,
+                                peso_confianca, politica_uso_status, coleta_permitida, ativo,
+                                armazenamento_permitido, exibicao_permitida, referencia_condicoes_uso,
+                                revisado_por, revisado_em
+                            )
+                            VALUES (
+                                %s, %s, 'BR', %s, 'pt', 'youtube_rss', 'ciclo_3h',
+                                5, 'aprovada', TRUE, TRUE,
+                                'apenas_metadados', 'manchete_sintese_e_link', %s,
+                                'Equilíbrio YouTube Radar (RoM)', NOW()
+                            )
+                            RETURNING id, nome, url, referencia_condicoes_uso;
+                            """,
+                            (item["nome"], feed_url, item.get("regiao", "Global"), item["canal_url"]),
+                        )
+                        row = cur.fetchone()
+
                 if row:
                     atualizados += 1
                     print(f"[OK] ID={row['id']} | {row['nome']} -> {row['url']} | Canal={row['referencia_condicoes_uso']}")
                 else:
-                    print(f"[AVISO] ID={item['id']} ({item['nome']}) não encontrado no banco.")
+                    print(f"[AVISO] ID={item.get('id')} ({item['nome']}) não encontrado no banco.")
 
             conn.commit()
             print(f"\nConcluído! {atualizados} fontes do YouTube atualizadas no banco.")

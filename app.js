@@ -770,7 +770,7 @@
         country: a2,
         countryName: cObj ? cObj.n : a2,
         lang: inferSearchLangForCountry(a2),
-        periodo: '30d',
+        periodo: '7d',
         outlets: outlets
       })
     })
@@ -10545,11 +10545,9 @@
 
     runBuscaQuery(q, per).then(function (res) {
       if (res.flat.length > 0) return res;
-      if (!opts.explicitPeriod && per !== 'all') {
-        var nextPer = (per === '24h' || per === '7d') ? '30d' : 'all';
-        return runBuscaQuery(q, nextPer).then(function (resExp) {
+      if (!opts.explicitPeriod && per === '24h') {
+        return runBuscaQuery(q, '7d').then(function (resExp) {
           if (resExp.flat.length > 0) return resExp;
-          if (nextPer !== 'all') return runBuscaQuery(q, 'all');
           return resExp;
         });
       }
@@ -10558,7 +10556,7 @@
       if (res.flat.length > 0 || !kws.length) return res;
       var altKw = kws.find(function (k) { return norm(k) !== norm(q); });
       if (!altKw) return res;
-      return runBuscaQuery(altKw, '30d').then(function (altRes) {
+      return runBuscaQuery(altKw, '7d').then(function (altRes) {
         return altRes.flat.length > 0 ? { flat: altRes.flat, groupsCount: altRes.groupsCount, periodoEfetivo: altRes.periodoEfetivo, fallbackTerm: altKw } : res;
       });
     }).then(function (res) {
@@ -10829,7 +10827,7 @@
     h += renderDossieExecutiveSummaryHtml(d);
     h += renderDossieTimelineHtml(d);
 
-    var defaultPer = (status === 'arquivo') ? 'all' : '7d';
+    var defaultPer = '7d';
     var activePer = defaultPer;
 
     h += '<section class="hub-block hub-news-block" aria-labelledby="dossie-materias-heading">';
@@ -10845,10 +10843,8 @@
     h += '<button type="submit" class="btn topic-search-btn">Buscar ao vivo</button>';
     h += '</form>';
     h += '<div class="period-filters dossie-period-filters" id="dossie-period-filters" role="group" aria-label="Período da busca">';
-    h += '<button type="button" class="period-btn" data-period="24h" aria-pressed="' + (defaultPer === '24h') + '">24h</button>';
-    h += '<button type="button" class="period-btn" data-period="7d" aria-pressed="' + (defaultPer === '7d') + '">7 dias</button>';
-    h += '<button type="button" class="period-btn" data-period="30d" aria-pressed="' + (defaultPer === '30d') + '">30 dias</button>';
-    h += '<button type="button" class="period-btn" data-period="all" aria-pressed="' + (defaultPer === 'all') + '">Tudo</button>';
+    h += '<button type="button" class="period-btn" data-period="24h" aria-pressed="' + (defaultPer === '24h') + '">Últimas 24 horas</button>';
+    h += '<button type="button" class="period-btn" data-period="7d" aria-pressed="' + (defaultPer === '7d') + '">Últimos 7 dias</button>';
     h += '</div>';
     h += '<div id="dossie-materias-results" aria-live="polite">';
     if (Array.isArray(materias) && materias.length) {
@@ -11479,20 +11475,24 @@
 
   function converterGrokParaCardsRadar(grokData) {
     if (!grokDadosValidos(grokData)) return [];
+    var motorStr = String(grokData.fonteMotor || '');
+    var motorIsGroqWeb = /groq|duckduckgo|rss/i.test(motorStr);
     var out = [];
     for (var i = 0; i < grokData.items.length; i++) {
       var item = grokData.items[i];
       if (!item || !item.titulo) continue;
+      var isRealGrokX = !motorIsGroqWeb && Boolean(item.origemGrokX);
       out.push({
         titulo: item.titulo,
         resumo: item.resumo || item.resumoCurto || '',
         analise: item.analise || '',
         categoria: normalizarCategoriaRadarGrok(item),
-        fonte_nome: item.fonte || (item.handleX ? ('X ' + item.handleX) : 'Grok / X'),
+        fonte_nome: item.fonte || (isRealGrokX && item.handleX ? ('X ' + item.handleX) : (isRealGrokX ? 'Grok / X' : 'Imprensa Web')),
         fonte_url: item.urlMateriaOriginal || item.url || '',
         data_publicacao: item.publicadoEm || grokData.atualizadoEm || '',
-        origem_grok_x: true,
-        handle_x: item.handleX || '',
+        origem_grok_x: isRealGrokX,
+        origem_tempo_real_web: !isRealGrokX,
+        handle_x: isRealGrokX ? (item.handleX || '') : '',
         pais: item.pais || '',
         codigo_pais: item.codigoPais || ''
       });
@@ -11814,7 +11814,7 @@
     html += '<section id="radar-panel-radar" class="radar-hub-panel" role="tabpanel" aria-labelledby="radar-tab-radar"' + radarHidden + '>';
     html += '<div class="editorial-section-head">';
     html += '<div>';
-    html += '<p class="editorial-eyebrow">Inteligência em Tempo Real · YouTube, RSS & X (Grok) · Análise por IA</p>';
+    html += '<p class="editorial-eyebrow">Inteligência em Tempo Real · YouTube, RSS & Imprensa Web · Análise por IA</p>';
     html += '<h2 id="radar-editorial-titulo">Radar Editorial</h2>';
     html += '<p class="editorial-section-sub">Monitoramento contínuo dos principais canais e analistas de geopolítica, política, economia e cultura com síntese factual e avaliação de impacto.</p>';
     html += '</div>';
@@ -12370,8 +12370,10 @@
       }
       if (item.origem_grok_x) {
         card += '<span class="resumo-x-tag" title="Apurado em tempo real no X via Grok (xAI)">𝕏 Grok / X</span>';
+      } else if (item.origem_tempo_real_web) {
+        card += '<span class="resumo-x-tag" title="Apurado em tempo real na imprensa via IA (Groq)">⚡ Tempo Real</span>';
       }
-      var sourceIcon = item.origem_grok_x ? '𝕏 ' : '📺 ';
+      var sourceIcon = item.origem_grok_x ? '𝕏 ' : (item.origem_tempo_real_web ? '🌐 ' : '📺 ');
       card += '<span class="radar-source-name">' + sourceIcon + esc(item.fonte_nome || 'Fonte') + '</span>';
       if (dataPubMeta.text) {
         card += '<time class="radar-pub-date" datetime="' + esc(dataPubMeta.iso) + '" title="' + esc(dataPubMeta.title) + '" aria-label="' + esc(dataPubMeta.title) + '">' + esc(dataPubMeta.text) + '</time>';
@@ -12542,10 +12544,14 @@
         }
       } catch (e) {}
     }
-    var isGrokResumo = !!(resumoFonteGrok || (sortedResumo[0] && sortedResumo[0].origemGrokX));
-    var grokBadgeHtml = isGrokResumo
+    var motorEhGroqWeb = /groq|duckduckgo|rss/i.test(resumoFonteMotor || '');
+    var isRealGrokResumo = !motorEhGroqWeb && !!(resumoFonteGrok || (sortedResumo[0] && sortedResumo[0].origemGrokX));
+    var isTempoRealResumo = !!(resumoFonteGrok || (sortedResumo[0] && (sortedResumo[0].origemGrokX || sortedResumo[0].origemTempoRealWeb)));
+    var grokBadgeHtml = isRealGrokResumo
       ? ' <span class="badge-grok-live" title="Apuração automatizada em tempo real no X via Grok (xAI)">⚡ Grok / X</span>'
-      : '';
+      : (isTempoRealResumo
+        ? ' <span class="badge-grok-live" title="Apuração automatizada em tempo real na imprensa via IA (Groq)">⚡ Tempo Real</span>'
+        : '');
     var rh = '<div class="editorial-section-head">';
     rh += '<div>';
     rh += '<p class="editorial-eyebrow">Edição diária · Atualização automática' + esc(updatedSuffix) + ' · ' + esc(todayStr) + grokBadgeHtml + '</p>';
@@ -12609,8 +12615,10 @@
         rh += '<span class="resumo-card-top-tag">' + esc(item.categoria) + '</span>';
       }
       rh += '<span class="resumo-country-chip">' + countryChipInner + '</span>';
-      if (item.origemGrokX) {
+      if (item.origemGrokX && !motorEhGroqWeb) {
         rh += '<span class="resumo-x-tag" title="Verificado via busca no X">𝕏 Tempo Real</span>';
+      } else if (item.origemTempoRealWeb || item.origemGrokX) {
+        rh += '<span class="resumo-x-tag" title="Apurado em tempo real na imprensa via IA">🌐 Tempo Real</span>';
       }
       rh += '</div>';
 

@@ -35,7 +35,8 @@ const MAPA_ROTAS_EDITORIA = {
 };
 
 const MAX_V2_PROMOTE_LAG_MS = 2 * 60 * 60 * 1000;
-const MAX_ROTATION_LAG_MS = 2 * 60 * 60 * 1000;
+const MAX_ROTATION_LAG_MS = 12 * 60 * 60 * 1000;
+const MAX_ROTATION_LOOKAHEAD = 12;
 
 function normalizar(str) {
   return String(str == null ? '' : str)
@@ -125,7 +126,7 @@ export function sortirCardsRodizioAmplo(itens, maxV2Topo = 2) {
     let escolhidoIdx = -1;
 
     // 1ª passada: respeita teto consecutivo (<= 2), janela de rodízio e limite de recência
-    for (let i = 0; i < pool.length; i++) {
+    for (let i = 0; i < pool.length && i < MAX_ROTATION_LOOKAHEAD; i++) {
       if (!dentroJanelaRotacao(pool[i])) continue;
       const fk = normalizarFonteKey(pool[i].fonte_nome);
       if (consecCount >= 2 && fk === consecFonte) continue;
@@ -136,7 +137,7 @@ export function sortirCardsRodizioAmplo(itens, maxV2Topo = 2) {
 
     // 2ª passada: relaxa janela de rodízio, mantendo teto consecutivo e limite de recência
     if (escolhidoIdx === -1) {
-      for (let i = 0; i < pool.length; i++) {
+      for (let i = 0; i < pool.length && i < MAX_ROTATION_LOOKAHEAD; i++) {
         if (!dentroJanelaRotacao(pool[i])) continue;
         const fk = normalizarFonteKey(pool[i].fonte_nome);
         if (consecCount >= 2 && fk === consecFonte) continue;

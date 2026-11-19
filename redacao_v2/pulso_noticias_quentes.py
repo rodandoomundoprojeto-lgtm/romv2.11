@@ -693,6 +693,74 @@ def selecionar_coberturas_destaque_isoladas(
     return []
 
 
+def selecionar_lote_balanceado_pulso(
+    itens_coletados: List[Dict[str, Any]],
+    limite: int = 30,
+    max_por_fonte: int = 2,
+    cota_youtube: int = 5,
+) -> List[Dict[str, Any]]:
+    """Seleciona um lote equilibrado para o Pulso V2 evitando monopólio de portais RSS
+    e garantindo presença proporcional de canais do YouTube (`youtube_rss`) sem torná-los prioridade absoluta.
+    """
+    if not itens_coletados or limite <= 0:
+        return []
+
+    def _eh_youtube(it: Dict[str, Any]) -> bool:
+        tipo = str(it.get("tipo_fonte") or "").strip().lower()
+        url = str(it.get("url") or it.get("fonte_url") or "").strip().lower()
+        return tipo == "youtube_rss" or "youtube.com" in url or "youtu.be" in url
+
+    def _chave_fonte(it: Dict[str, Any]) -> str:
+        return str(it.get("fonte") or it.get("fonte_nome") or "desconhecida").strip().lower()
+
+    yt_itens = [it for it in itens_coletados if isinstance(it, dict) and _eh_youtube(it)]
+    outros_itens = [it for it in itens_coletados if isinstance(it, dict) and not _eh_youtube(it)]
+
+    selecionados: List[Dict[str, Any]] = []
+    urls_vistas: set[str] = set()
+    contagem_fonte: Dict[str, int] = {}
+
+    def _adicionar(it: Dict[str, Any]) -> bool:
+        url = str(it.get("canonical_url") or it.get("url") or it.get("titulo") or "").strip().lower()
+        if url and url in urls_vistas:
+            return False
+        if url:
+            urls_vistas.add(url)
+        fk = _chave_fonte(it)
+        contagem_fonte[fk] = contagem_fonte.get(fk, 0) + 1
+        selecionados.append(it)
+        return True
+
+    # 1. Reserva cota equilibrada para YouTube (máximo 1 vídeo por canal)
+    yt_adicionados = 0
+    for it in yt_itens:
+        if yt_adicionados >= cota_youtube or len(selecionados) >= limite:
+            break
+        fk = _chave_fonte(it)
+        if contagem_fonte.get(fk, 0) >= 1:
+            continue
+        if _adicionar(it):
+            yt_adicionados += 1
+
+    # 2. Preenche o restante com notícias RSS/primárias respeitando teto por fonte
+    for it in outros_itens:
+        if len(selecionados) >= limite:
+            break
+        fk = _chave_fonte(it)
+        if contagem_fonte.get(fk, 0) >= max_por_fonte:
+            continue
+        _adicionar(it)
+
+    # 3. Fallback caso ainda haja vagas abertas no lote
+    if len(selecionados) < limite:
+        for it in outros_itens + yt_itens:
+            if len(selecionados) >= limite:
+                break
+            _adicionar(it)
+
+    return selecionados
+
+
 def gerar_pulso_noticias_quentes(
     itens_coletados: List[Dict[str, Any]],
     noticias_ativas_banco: List[Dict[str, Any]],
@@ -705,6 +773,7 @@ def gerar_pulso_noticias_quentes(
     gemini_client = client or genai.Client(http_options=types.HttpOptions(timeout=35_000))
     batch_atual = datetime.now(timezone.utc).strftime("%Y%m%d-%H%M")
     acervo = acervo_publicado or []
+    lote_balanceado = selecionar_lote_balanceado_pulso(itens_coletados, limite=30, max_por_fonte=2, cota_youtube=5)
 
     prompt_usuario = f"""
 BATCH_ID ATUAL: {batch_atual}
@@ -716,9 +785,9 @@ ACERVO_REAL_DISPONIVEL (Use exclusivamente estas URLs em links_internos_relacion
 {json.dumps(acervo[:25], ensure_ascii=False, indent=2)}
 
 LOTE_DE_FEEDS_PULSO_30MIN:
-{json.dumps(itens_coletados[:25], ensure_ascii=False, indent=2)}
+{json.dumps(lote_balanceado, ensure_ascii=False, indent=2)}
 
-Analise o lote, deduplique contra as notícias ativas no banco e retorne o JSON seguindo estritamente PayloadNoticiasQuentes.
+Analise o lote (incluindo eventuais análises de canais do YouTube quando tratarem de assuntos do momento, mantendo equilíbrio com as notícias factuais urgentes), deduplique contra as notícias ativas no banco e retorne o JSON seguindo estritamente PayloadNoticiasQuentes.
 """.strip()
 
     candidatos_modelo = [model] + [m for m in MODELOS_PULSO_FALLBACK if m != model]
@@ -1139,14 +1208,27 @@ def _carregar_fontes_pulso_com_banco(database_url: str) -> List[Dict[str, Any]]:
             with conn.cursor() as cur:
                 cur.execute(
                     """
-                    SELECT nome, url, pais_iso, regiao, idioma, tipo_fonte, cadencia
-                    FROM ai_fontes_referencia
-                    WHERE ativo = TRUE
-                      AND politica_uso_status = 'aprovada'
-                      AND coleta_permitida = TRUE
-                      AND tipo_fonte IN ('rss_feed', 'fonte_primaria', 'youtube_rss')
-                    ORDER BY peso_confianca DESC, id DESC
-                    LIMIT 40;
+                    (
+                        SELECT nome, url, pais_iso, regiao, idioma, tipo_fonte, cadencia
+                        FROM ai_fontes_referencia
+                        WHERE ativo = TRUE
+                          AND politica_uso_status = 'aprovada'
+                          AND coleta_permitida = TRUE
+                          AND tipo_fonte IN ('rss_feed', 'fonte_primaria')
+                        ORDER BY peso_confianca DESC, id DESC
+                        LIMIT 40
+                    )
+                    UNION ALL
+                    (
+                        SELECT nome, url, pais_iso, regiao, idioma, tipo_fonte, cadencia
+                        FROM ai_fontes_referencia
+                        WHERE ativo = TRUE
+                          AND politica_uso_status = 'aprovada'
+                          AND coleta_permitida = TRUE
+                          AND tipo_fonte = 'youtube_rss'
+                        ORDER BY peso_confianca DESC, id DESC
+                        LIMIT 25
+                    );
                     """
                 )
                 for row in cur.fetchall():

@@ -614,7 +614,7 @@
         },
         {
           pergunta: 'Como comparar um tema específico dentro da política brasileira?',
-          resposta: 'Use o bloco "Comparar perspectivas" logo abaixo para pesquisar qualquer termo (como "STF", "reforma tributária" ou "anistia") e filtrar por período de 24 horas, 7 dias ou 30 dias.'
+          resposta: 'Use o bloco "Comparar perspectivas" logo abaixo para pesquisar qualquer termo (como "STF", "reforma tributária" ou "anistia") e filtrar por período de 24 horas ou últimos 7 dias.'
         }
       ],
       noticiasDestaque: [

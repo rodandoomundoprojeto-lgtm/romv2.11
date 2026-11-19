@@ -1725,17 +1725,35 @@
 
             <div id="colunas-banner" class="admin-banner"></div>
 
+            <div class="admin-tabs" id="colunas-tabs" role="tablist" aria-label="Filtrar colunas editoriais por status">
+              <button class="admin-tab active" type="button" role="tab" aria-selected="true" data-col-status="rascunho">
+                Rascunhos <span id="col-count-rascunho">0</span>
+              </button>
+              <button class="admin-tab" type="button" role="tab" aria-selected="false" data-col-status="aprovado">
+                Aprovados <span id="col-count-aprovado">0</span>
+              </button>
+              <button class="admin-tab" type="button" role="tab" aria-selected="false" data-col-status="publicado">
+                Publicados <span id="col-count-publicado">0</span>
+              </button>
+              <button class="admin-tab" type="button" role="tab" aria-selected="false" data-col-status="rejeitado">
+                Rejeitados <span id="col-count-rejeitado">0</span>
+              </button>
+              <button class="admin-tab" type="button" role="tab" aria-selected="false" data-col-status="all">
+                Todas <span id="col-count-all">0</span>
+              </button>
+            </div>
+
             <div class="admin-filterbar" role="search" aria-label="Filtrar colunas editoriais">
               <div class="admin-field admin-field-grow">
                 <label for="col-busca">Buscar</label>
                 <input id="col-busca" class="admin-input" type="search" placeholder="Título, slug, tese..." />
               </div>
-              <div class="admin-field">
+              <div class="admin-field" style="display:none;">
                 <label for="col-status">Status</label>
                 <select id="col-status" class="admin-select">
                   <option value="all">Todos</option>
                   <option value="pendentes">Pendentes (rascunho + aprovado)</option>
-                  <option value="rascunho">Rascunho</option>
+                  <option value="rascunho" selected>Rascunho</option>
                   <option value="aprovado">Aprovado</option>
                   <option value="publicado">Publicado</option>
                   <option value="rejeitado">Rejeitado</option>
@@ -1751,7 +1769,6 @@
                   <option value="all">Qualquer</option>
                   <option value="24">Últimas 24h</option>
                   <option value="168">Últimos 7 dias</option>
-                  <option value="720">Últimos 30 dias</option>
                 </select>
               </div>
               <div class="admin-filter-meta">
@@ -2643,6 +2660,7 @@
         eventosContagens: {},
         eventoFiltro: 'aguardando_revisao',
         colunas: [],
+        colunaFiltro: 'rascunho',
         editingColunaSlug: null,
         editingEventId: null,
         dossies: [],
@@ -3035,6 +3053,7 @@
         }
         tbody.innerHTML = lista.map((ev) => {
           const stClass = ev.status === 'publicado' ? 'badge-ok' : (ev.status === 'aguardando_revisao' ? 'badge-warn' : (ev.status === 'excluido' ? 'badge-warn' : ''));
+          const ddgTag = String(ev.slug || '').startsWith('ddg-') ? '<span class="badge badge-ddg" style="margin-left:0.35rem;">🦆 DDG</span>' : '';
           const errataTag = ev.aviso_correcao_material ? '<span class="badge badge-warn" style="margin-left:0.35rem;">Errata</span>' : '';
           const podePublicar = ev.status !== 'publicado' && ev.status !== 'excluido';
           const podeArquivar = ev.status !== 'arquivado' && ev.status !== 'excluido';
@@ -3043,7 +3062,7 @@
           return `
             <tr>
               <td>
-                <strong>${escapeHtml(ev.titulo_evento)}</strong>${errataTag}
+                <strong>${escapeHtml(ev.titulo_evento)}</strong>${ddgTag}${errataTag}
                 <div class="admin-sub"><code>/${escapeHtml(ev.slug)}</code></div>
               </td>
               <td>${escapeHtml(ev.categoria)}</td>
@@ -3967,13 +3986,24 @@
               method: 'POST',
               body: JSON.stringify({ query: query || null, dry_run: dryRun }),
             });
-            showBanner(
-              'eventos-banner',
-              `DuckDuckGo News concluído! ${res.total_itens || 0} notícias coletadas em ${((res.duracao_ms || 0) / 1000).toFixed(1)}s${dryRun ? ' (dry-run)' : ''}.`,
-              'ok'
-            );
-            showToast(`DuckDuckGo News: ${res.total_itens || 0} notícias coletadas.`, 'ok');
-            await Promise.all([carregarStatusBotDdg(), carregarRadar(), carregarExecucoes()]);
+            const coletados = Number(res.total_itens || 0);
+            const enfileirados = Number(res.eventos_enfileirados || 0);
+            const duracaoSeg = ((res.duracao_ms || 0) / 1000).toFixed(1);
+            const foiParaFila = !dryRun && (enfileirados > 0 || coletados > 0);
+            if (foiParaFila) {
+              state.eventoFiltro = 'aguardando_revisao';
+              document.querySelectorAll('#eventos-tabs .admin-tab').forEach((t) => {
+                const ativo = t.getAttribute('data-ev-status') === 'aguardando_revisao';
+                t.classList.toggle('active', ativo);
+                t.setAttribute('aria-selected', ativo ? 'true' : 'false');
+              });
+            }
+            const msgBanner = dryRun
+              ? `DuckDuckGo News concluído! ${coletados} notícias coletadas em ${duracaoSeg}s (dry-run).`
+              : `DuckDuckGo News concluído! ${coletados} notícias coletadas e ${enfileirados} enviadas para a fila Aguardando aprovação em ${duracaoSeg}s.`;
+            showBanner('eventos-banner', msgBanner, 'ok');
+            showToast(`DuckDuckGo News: ${coletados} notícias coletadas${!dryRun ? ` (${enfileirados} na fila)` : ''}.`, 'ok');
+            await Promise.all([carregarStatusBotDdg(), carregarEventos(), carregarRadar(), carregarExecucoes()]);
           } catch (err) {
             showBanner('eventos-banner', 'Erro ao executar DuckDuckGo News: ' + err.message, 'err');
             showToast('Erro no DuckDuckGo News: ' + err.message, 'err');
@@ -4449,14 +4479,45 @@
         }).join('');
       }
 
+      function ativarAbaColuna(status) {
+        const st = status || 'rascunho';
+        state.colunaFiltro = st;
+        if ($('col-status')) $('col-status').value = st;
+        const tabAlvo = st === 'pendentes' ? 'rascunho' : st;
+        document.querySelectorAll('#colunas-tabs .admin-tab').forEach((t) => {
+          const ativo = t.getAttribute('data-col-status') === tabAlvo;
+          t.classList.toggle('active', ativo);
+          t.setAttribute('aria-selected', ativo ? 'true' : 'false');
+        });
+        renderColunas();
+      }
+
+      document.querySelectorAll('#colunas-tabs .admin-tab').forEach((tab) => {
+        tab.addEventListener('click', () => {
+          ativarAbaColuna(tab.getAttribute('data-col-status'));
+        });
+      });
+
       function renderColunas() {
         agendarResumo();
         const tbody = $('tbody-colunas');
         const todas = state.colunas || [];
+        const counts = { rascunho: 0, aprovado: 0, publicado: 0, rejeitado: 0, all: todas.length };
+        todas.forEach((c) => {
+          const st = statusNormColuna(c);
+          if (counts[st] !== undefined) counts[st] += 1;
+        });
+        ['rascunho', 'aprovado', 'publicado', 'rejeitado', 'all'].forEach((k) => {
+          const el = $('col-count-' + k);
+          if (el) el.textContent = counts[k];
+        });
         renderEntendaArtigos(todas);
         preencherSelect('col-categoria', todas.map((c) => c.categoria), 'Todas');
         const q = $('col-busca') ? $('col-busca').value : '';
-        const fSt = valorFiltro('col-status');
+        const fSt = state.colunaFiltro || 'rascunho';
+        if ($('col-status') && $('col-status').value !== fSt) {
+          $('col-status').value = fSt;
+        }
         const fCat = valorFiltro('col-categoria');
         const fPer = valorFiltro('col-periodo');
         const lista = todas.filter((c) => {
@@ -4467,13 +4528,14 @@
           if (!dentroPeriodo(c, fPer, ['updated_at', 'created_at', 'published_at'])) return false;
           return combinaBusca(q, [c.titulo, c.subtitulo, c.slug, c.tese_central, c.categoria, c.tags, c.entenda_titulo]);
         });
-        atualizarResultadoFiltro('col', lista.length, todas.length);
+        const totalNaAba = fSt === 'all' ? todas.length : (fSt === 'pendentes' ? (counts.rascunho + counts.aprovado) : (counts[fSt] || 0));
+        atualizarResultadoFiltro('col', lista.length, totalNaAba);
         if (!todas.length) {
           tbody.innerHTML = '<tr><td colspan="6" class="admin-sub">Nenhuma coluna gerada.</td></tr>';
           return;
         }
         if (!lista.length) {
-          tbody.innerHTML = '<tr><td colspan="6" class="admin-sub">Nenhuma coluna corresponde aos filtros.</td></tr>';
+          tbody.innerHTML = `<tr><td colspan="6" class="admin-sub">${filtroAtivo('col') ? 'Nenhuma coluna corresponde aos filtros.' : 'Nenhuma coluna nesta aba.'}</td></tr>`;
           return;
         }
         tbody.innerHTML = lista.map((c) => `
@@ -4936,7 +4998,7 @@
       const FILTROS = {
         nq: { campos: ['nq-busca', 'nq-filtro-status', 'nq-filtro-categoria', 'nq-urgencia', 'nq-periodo'], render: () => renderNoticiasQuentes() },
         ev: { campos: ['ev-busca', 'ev-categoria', 'ev-confianca', 'ev-periodo'], render: () => renderEventos() },
-        col: { campos: ['col-busca', 'col-status', 'col-categoria', 'col-periodo'], render: () => renderColunas() },
+        col: { campos: ['col-busca', 'col-categoria', 'col-periodo'], render: () => renderColunas() },
         radar: { campos: ['radar-busca', 'radar-filtro', 'radar-urgencia', 'radar-periodo'], render: () => renderRadar() }
       };
 
@@ -5166,9 +5228,8 @@
           kpi.addEventListener('click', async () => {
             const evStatus = kpi.getAttribute('data-goto-ev-status');
             const colStatus = kpi.getAttribute('data-goto-col-status');
-            if (colStatus && $('col-status')) {
-              $('col-status').value = colStatus;
-              renderColunas();
+            if (colStatus) {
+              ativarAbaColuna(colStatus === 'pendentes' ? 'rascunho' : colStatus);
             }
             irPara(kpi.getAttribute('data-goto'));
             if (evStatus && state.eventoFiltro !== evStatus) {

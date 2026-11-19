@@ -7,11 +7,13 @@ Implementa as rotas oficiais definidas no plano arquitetural (`docs/arquitetura_
   - `GET  /v2/colunas`                   : Lista colunas analíticas geradas (mais recentes primeiro).
   - `GET  /v2/entenda-o-assunto/{slug}`  : Retorna o dossiê contextual completo e o Painel Único de Verificação (404 se ausente).
 """
+import hashlib
 import json
 import os
 import re
 import secrets
 import time
+import unicodedata
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any, Dict, List, Literal, Optional, Tuple
@@ -2333,13 +2335,126 @@ async def admin_status_bot_ddg(response: Response) -> Dict[str, Any]:
     }
 
 
+def _gerar_slug_ddg_deterministico(titulo: str, url: str) -> str:
+    """Gera slug determinístico `ddg-<slug_limpo>-<hash8_url>` (máx. 200 chars)."""
+    normalizado = unicodedata.normalize("NFKD", titulo or "").encode("ascii", "ignore").decode("ascii")
+    slug_limpo = re.sub(r"[^a-z0-9]+", "-", normalizado.lower()).strip("-") or "noticia"
+    hash8 = hashlib.sha256((url or "").encode("utf-8")).hexdigest()[:8]
+    # Prefixo "ddg-" (4) + "-" (1) + hash8 (8) = 13 chars -> máx. 187 chars para slug_limpo
+    return f"ddg-{slug_limpo[:187]}-{hash8}"
+
+
+def _enfileirar_itens_ddg_eventos(
+    conn: Any,
+    items: List[Dict[str, Any]],
+    ref_time: Optional[datetime] = None,
+) -> int:
+    """Faz upsert dos itens coletados pelo DDG em `ai_eventos` e `ai_conteudos_gerados`."""
+    if conn is None or not hasattr(conn, "cursor") or not items:
+        return 0
+
+    ref = ref_time or datetime.now(timezone.utc)
+    destaque_ate = ref + timedelta(hours=24)
+    enfileirados = 0
+
+    with conn.cursor() as cur:
+        for idx, item in enumerate(items, start=1):
+            if not isinstance(item, dict):
+                continue
+            titulo = str(item.get("titulo") or "").strip()[:220]
+            url = str(item.get("url") or "").strip()
+            if not titulo or not url:
+                continue
+
+            slug = _gerar_slug_ddg_deterministico(titulo, url)
+            resumo = str(item.get("resumo") or titulo).strip()
+            fonte = str(item.get("fonte") or "DuckDuckGo News").strip()[:80]
+            categoria = str(item.get("categoriaRadar") or item.get("categoria") or "geopolitica").strip()[:50]
+            codigo_pais = str(item.get("codigoPais") or "GL").strip().upper()[:10]
+            paises = [codigo_pais] if codigo_pais else ["GL"]
+
+            try:
+                pos = int(item.get("relevancia") or idx)
+            except (TypeError, ValueError):
+                pos = idx
+            relevancia_score = max(60, min(95, 96 - pos * 2))
+            urgencia_score = max(60, min(90, 88 - pos * 2))
+
+            cur.execute(
+                """
+                INSERT INTO ai_eventos (
+                    slug, titulo_evento, categoria, paises_envolvidos,
+                    urgencia_score, relevancia_score, nivel_confianca,
+                    destaque_ate, status, updated_at
+                ) VALUES (
+                    %s, %s, %s, %s,
+                    %s, %s, 'media',
+                    %s, 'aguardando_revisao', %s
+                )
+                ON CONFLICT (slug) DO UPDATE SET
+                    titulo_evento = EXCLUDED.titulo_evento,
+                    categoria = EXCLUDED.categoria,
+                    paises_envolvidos = EXCLUDED.paises_envolvidos,
+                    urgencia_score = EXCLUDED.urgencia_score,
+                    relevancia_score = EXCLUDED.relevancia_score,
+                    updated_at = EXCLUDED.updated_at
+                RETURNING id;
+                """,
+                (
+                    slug,
+                    titulo,
+                    categoria,
+                    paises,
+                    urgencia_score,
+                    relevancia_score,
+                    destaque_ate,
+                    ref,
+                ),
+            )
+            ev_row = cur.fetchone()
+            if not ev_row:
+                continue
+            ev_id = ev_row["id"] if isinstance(ev_row, dict) else ev_row[0]
+
+            cur.execute(
+                "SELECT 1 FROM ai_conteudos_gerados WHERE event_id = %s LIMIT 1;",
+                (ev_id,),
+            )
+            if cur.fetchone() is None:
+                sintese_texto = f"{resumo}\n\nFonte: {fonte} ({url})"
+                payload_conteudo = {
+                    "sintese_com_ressalvas": sintese_texto,
+                    "fonte_url": url,
+                    "fonte_nome": fonte,
+                    "origem": "ddg_news",
+                }
+                cur.execute(
+                    """
+                    INSERT INTO ai_conteudos_gerados (
+                        event_id, tipo_conteudo, versao, tipo_alteracao,
+                        payload_json, evidence_ids, model_id, prompt_version, review_status
+                    ) VALUES (
+                        %s, 'sintese_comparada', 1, 'criacao',
+                        %s, '{}', 'ddgs', 'ddg_news_v1', 'aguardando_revisao'
+                    );
+                    """,
+                    (ev_id, Jsonb(payload_conteudo)),
+                )
+
+            enfileirados += 1
+
+    if hasattr(conn, "commit"):
+        conn.commit()
+    return enfileirados
+
+
 @router.post("/v2/admin/bot/ddg/executar", dependencies=[Depends(verificar_admin_token)])
 async def admin_executar_bot_ddg(
     response: Response,
     payload_req: Optional[ExecutarDdgRequest] = Body(default=None),
     conn: Any = Depends(get_db),
 ) -> Dict[str, Any]:
-    """Dispara a coleta em tempo real via DuckDuckGo News (`ddgs`) e atualiza `data/noticias_ddg.json`."""
+    """Dispara a coleta em tempo real via DuckDuckGo News (`ddgs`), atualiza `data/noticias_ddg.json` e enfileira em `ai_eventos`."""
     import asyncio
     from scripts.ddg_news_feeder import ddgs_disponivel, executar_coleta_ddg
 
@@ -2379,7 +2494,19 @@ async def admin_executar_bot_ddg(
         raise HTTPException(status_code=500, detail=f"Falha ao executar DuckDuckGo News: {exc}")
 
     duracao_ms = int((time.time() - t0) * 1000)
-    total_itens = int(resultado.get("total") or len(resultado.get("items") or []))
+    itens_coletados = resultado.get("items") or []
+    total_itens = int(resultado.get("total") or len(itens_coletados))
+    eventos_enfileirados = 0
+
+    if not req.dry_run and conn is not None and hasattr(conn, "cursor") and itens_coletados:
+        try:
+            eventos_enfileirados = _enfileirar_itens_ddg_eventos(conn, itens_coletados)
+        except Exception:
+            if hasattr(conn, "rollback"):
+                try:
+                    conn.rollback()
+                except Exception:
+                    pass
 
     if conn is not None and hasattr(conn, "cursor"):
         try:
@@ -2389,7 +2516,7 @@ async def admin_executar_bot_ddg(
                 recurso_chave=77112244,
                 status="concluido",
                 documentos_novos=total_itens,
-                eventos_atualizados=total_itens,
+                eventos_atualizados=eventos_enfileirados if not req.dry_run else total_itens,
                 latencia_ms=duracao_ms,
             )
         except Exception:
@@ -2402,10 +2529,11 @@ async def admin_executar_bot_ddg(
         "duracao_ms": duracao_ms,
         "dry_run": req.dry_run,
         "total_itens": total_itens,
+        "eventos_enfileirados": eventos_enfileirados,
         "fonteMotor": resultado.get("fonteMotor", "DuckDuckGo News (ddgs)"),
         "atualizadoEm": resultado.get("atualizadoEm"),
         "ultimaQuery": resultado.get("ultimaQuery"),
-        "items": resultado.get("items") or [],
+        "items": itens_coletados,
     }
 
 

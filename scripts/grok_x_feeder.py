@@ -593,6 +593,7 @@ def enrich_and_validate_items(
     citations=None,
     allowed_routes=None,
     require_citations=True,
+    is_grok_x=True,
 ):
     """
     Normaliza, valida citações reais, valida rotas internas contra sitemap.xml (Regra 11)
@@ -716,8 +717,8 @@ def enrich_and_validate_items(
             "resumo": resumo_str,
             "resumoCurto": resumo_str,
             "analise": analise_str,
-            "fonte": str(item.get("fonte") or "Grok / X Search").strip(),
-            "handleX": str(item.get("handleX") or "").strip(),
+            "fonte": str(item.get("fonte") or ("Grok / X Search" if is_grok_x else "Imprensa Web")).strip(),
+            "handleX": str(item.get("handleX") or "").strip() if is_grok_x else "",
             "dominio": dominio,
             "termoBusca": str(item.get("termoBusca") or item.get("titulo")).strip(),
             "url": url,
@@ -730,7 +731,8 @@ def enrich_and_validate_items(
             "continente": continente,
             "tipoNoticia": tipo,
             "categoriaRadar": map_radar_category(tipo, cod_pais, categoria_str),
-            "origemGrokX": True,
+            "origemGrokX": bool(is_grok_x),
+            "origemTempoRealWeb": not bool(is_grok_x),
             "publicadoEm": item.get("publicadoEm")
             or datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         }
@@ -887,7 +889,7 @@ def get_seed_items():
     ]
 
 
-def persist_edition(items, topicos_por_pais, used_model, out_path, is_mock=False):
+def persist_edition(items, topicos_por_pais, used_model, out_path, is_mock=False, is_grok_x=True):
     """Valida mínimo de itens e grava o arquivo JSON atomicamente. Retorna True se gravou, False se abortou."""
     if len(items) < MIN_VALID_ITEMS:
         print(
@@ -898,10 +900,11 @@ def persist_edition(items, topicos_por_pais, used_model, out_path, is_mock=False
         return False
 
     now_utc = datetime.datetime.now(datetime.timezone.utc)
+    fonte_motor = f"Grok ({used_model}) · X Search" if is_grok_x else used_model
     payload_saida = {
         "atualizadoEm": now_utc.strftime("%Y-%m-%dT%H:%M:%SZ"),
         "dataEdicao": now_utc.strftime("%Y-%m-%d"),
-        "fonteMotor": f"Grok ({used_model}) · X Search",
+        "fonteMotor": fonte_motor,
         "mock": bool(is_mock),
         "total": len(items),
         "topicosEmAltaPorPais": topicos_por_pais,
@@ -957,6 +960,7 @@ def main(argv=None):
         raw_data = {"items": get_seed_items()}
         used_model = "grok-mock"
         require_citations = False
+        is_grok_x = True
     else:
         api_key = get_api_key()
         if not api_key:
@@ -973,9 +977,11 @@ def main(argv=None):
         if api_key.startswith("gsk_"):
             print("[INFO] Chave da Groq detectada. Conectando à Groq API + Varredura Web RSS em Tempo Real (100% Gratuito)...")
             raw_data, used_model, citations = call_groq_rss_api(api_key, config)
+            is_grok_x = False
         else:
             print("[INFO] Conectando à Responses API da xAI (Grok) com x_search + web_search...")
             raw_data, used_model, citations = call_grok_api(api_key, config)
+            is_grok_x = True
 
         if not citations:
             print(
@@ -991,9 +997,10 @@ def main(argv=None):
         citations=citations,
         allowed_routes=allowed_routes,
         require_citations=require_citations,
+        is_grok_x=is_grok_x,
     )
 
-    if not persist_edition(items, topicos_por_pais, used_model, out_path, is_mock=args.mock):
+    if not persist_edition(items, topicos_por_pais, used_model, out_path, is_mock=args.mock, is_grok_x=is_grok_x):
         sys.exit(2)
 
     print(f"[SUCESSO] {len(items)} notícias verificadas salvas em: {out_path}")

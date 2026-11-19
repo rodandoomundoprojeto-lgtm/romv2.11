@@ -123,8 +123,10 @@ def get_youtube_content(entry: Any, video_id: str) -> str:
     if transcript_text and len(transcript_text.strip()) >= 100:
         return f"Título: {title}\n\nTranscrição:\n{transcript_text[:4000]}"
 
-    # Fallback para descrição
-    return f"Título: {title}\n\nDescrição:\n{summary}".strip()
+    # Fallback para descrição (evita descarte quando transcrição está indisponível)
+    if summary:
+        return f"Título: {title}\n\nDescrição:\n{summary}".strip()
+    return f"Título: {title}\n\nVídeo de análise publicado no YouTube.".strip()
 
 
 def parse_entry_date(entry: Any) -> str:
@@ -227,8 +229,9 @@ def collect_new_items() -> List[Dict[str, Any]]:
                     summary = str(_get_field(entry, "summary") or _get_field(entry, "description") or "").strip()
                     raw_content = f"Título: {title}\n\nConteúdo:\n{summary}".strip()
 
-                # Regra de Economia: Ignora conteúdos menores que 100 caracteres
-                if len(raw_content) < 100:
+                # Regra de Economia: Ignora conteúdos vazios ou muito curtos
+                min_len = 25 if tipo == "youtube" else 100
+                if len(raw_content) < min_len:
                     continue
 
                 new_items.append({

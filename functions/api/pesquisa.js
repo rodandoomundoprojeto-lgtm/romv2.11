@@ -12,7 +12,7 @@ function hojeISO() { return new Date().toISOString().slice(0, 10); }
 function prompt(idioma, periodo, topico) {
   const instrucaoPeriodo = periodo === 'all'
     ? 'Abranja todo o período relevante (matérias recentes E histórico/contexto estrutural, trazendo ampla variedade de veículos).'
-    : 'Prefira matérias dos últimos 30 dias, priorizando fatos recentes e verificáveis.';
+    : 'Prefira matérias recentes das últimas 24 horas ou últimos 7 dias, priorizando fatos recentes e verificáveis.';
   const instrucaoTopico = topico
     ? `Priorize o recorte temático de "${topico}" ao selecionar notícias e sugestões de pesquisa.`
     : 'Traga variedade temática cobrindo política, economia, tecnologia, sociedade e geopolítica.';

@@ -55,8 +55,8 @@ def _timestamp_publicacao(item: Dict[str, Any]) -> float:
 def sortir_cards_rodizio_amplo(
     cards: List[Dict[str, Any]],
     max_v2_topo: int = 2,
-    max_age_delta_sec: float = 3600.0,
-    max_lookahead: int = 5,
+    max_age_delta_sec: float = 43200.0,
+    max_lookahead: int = 12,
     max_v2_age_delta_sec: float = 7200.0,
 ) -> List[Dict[str, Any]]:
     """
@@ -318,6 +318,39 @@ def _persistir_feed(feed: List[Dict[str, Any]]) -> None:
     _gravar_feed_arquivo(feed)
 
 
+def _selecionar_feed_diversificado(
+    itens_ordenados: List[Dict[str, Any]],
+    max_items: int = 50,
+    max_por_fonte: int = 4,
+) -> List[Dict[str, Any]]:
+    """Mantém até `max_items` cards com teto por veículo, evitando que portais de alto volume expulsem análises/YouTube."""
+    if not itens_ordenados or max_items <= 0:
+        return []
+    selecionados: List[Dict[str, Any]] = []
+    indices_usados: set[int] = set()
+    contagem_fonte: Dict[str, int] = {}
+
+    for idx, item in enumerate(itens_ordenados):
+        if len(selecionados) >= max_items:
+            break
+        fk = normalizar_fonte_key(item.get("fonte_nome"))
+        if contagem_fonte.get(fk, 0) >= max_por_fonte:
+            continue
+        contagem_fonte[fk] = contagem_fonte.get(fk, 0) + 1
+        selecionados.append(item)
+        indices_usados.add(idx)
+
+    if len(selecionados) < max_items:
+        for idx, item in enumerate(itens_ordenados):
+            if len(selecionados) >= max_items:
+                break
+            if idx in indices_usados:
+                continue
+            selecionados.append(item)
+
+    return selecionados
+
+
 def _mesclar_e_ordenar_feed(
     existing_raw: Any,
     cards: List[Dict[str, Any]],
@@ -374,7 +407,8 @@ def _mesclar_e_ordenar_feed(
         novos_itens.append(clean_card)
 
     existing_feed.sort(key=_timestamp_publicacao, reverse=True)
-    trimmed_feed = sortir_cards_rodizio_amplo(existing_feed[:max_items])
+    diversificados = _selecionar_feed_diversificado(existing_feed, max_items=max_items, max_por_fonte=4)
+    trimmed_feed = sortir_cards_rodizio_amplo(diversificados)
     return trimmed_feed, novos_itens
 
 
