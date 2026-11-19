@@ -12545,16 +12545,9 @@
       } catch (e) {}
     }
     var motorEhGroqWeb = /groq|duckduckgo|rss/i.test(resumoFonteMotor || '');
-    var isRealGrokResumo = !motorEhGroqWeb && !!(resumoFonteGrok || (sortedResumo[0] && sortedResumo[0].origemGrokX));
-    var isTempoRealResumo = !!(resumoFonteGrok || (sortedResumo[0] && (sortedResumo[0].origemGrokX || sortedResumo[0].origemTempoRealWeb)));
-    var grokBadgeHtml = isRealGrokResumo
-      ? ' <span class="badge-grok-live" title="Apuração automatizada em tempo real no X via Grok (xAI)">⚡ Grok / X</span>'
-      : (isTempoRealResumo
-        ? ' <span class="badge-grok-live" title="Apuração automatizada em tempo real na imprensa via IA (Groq)">⚡ Tempo Real</span>'
-        : '');
     var rh = '<div class="editorial-section-head">';
     rh += '<div>';
-    rh += '<p class="editorial-eyebrow">Edição diária · Atualização automática' + esc(updatedSuffix) + ' · ' + esc(todayStr) + grokBadgeHtml + '</p>';
+    rh += '<p class="editorial-eyebrow">Edição diária · Atualização automática' + esc(updatedSuffix) + ' · ' + esc(todayStr) + '</p>';
     rh += '<h2 id="resumo-dia-titulo">Resumo do dia</h2>';
     rh += '<p class="editorial-section-sub">As 5 principais notícias do dia selecionadas por relevância editorial, com síntese de fatos e comparação direta de cobertura entre veículos.</p>';
     rh += '</div>';
