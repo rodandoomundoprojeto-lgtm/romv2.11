@@ -415,10 +415,10 @@
       border-color: rgba(163, 113, 247, 0.4);
     }
 
-    .badge-grok {
-      background: rgba(255, 255, 255, 0.08);
-      color: #f0f6fc;
-      border-color: rgba(255, 255, 255, 0.3);
+    .badge-ddg {
+      background: rgba(222, 88, 51, 0.16);
+      color: #ff7b54;
+      border-color: rgba(222, 88, 51, 0.45);
       font-weight: 600;
     }
 
@@ -1562,7 +1562,7 @@
             </div>
 
             <details class="admin-details" id="curadoria-disparos">
-              <summary>Disparos dos Bots <span class="admin-sub">— Pulso V2 (Gemini) · Coluna Editorial · Bot Grok (xAI)</span></summary>
+              <summary>Disparos dos Bots <span class="admin-sub">— Pulso V2 (Gemini) · Coluna Editorial · DuckDuckGo News</span></summary>
               <div class="admin-details-body">
                 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:var(--space-3);align-items:start;">
 
@@ -1591,49 +1591,56 @@
                       </label>
                       <div class="admin-actions">
                         <button id="btn-rodar-pulso" class="admin-btn admin-btn-sm" type="button">Rodar Pulso Agora</button>
-                        <button id="btn-gerar-coluna" class="admin-btn admin-btn-sm admin-btn-primary" type="button">Gerar Coluna</button>
+                        <button id="btn-gerar-coluna" class="admin-btn admin-btn-sm admin-btn-primary" type="button">Gerar Coluna Editorial</button>
                       </div>
                     </div>
                   </div>
 
-                  <!-- BOT 3: NOVO BOT GROK (xAI · X & WEB SEARCH) -->
+                  <!-- BOT 3: DUCKDUCKGO NEWS (DDGS) -->
                   <div class="admin-bot-card" style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);padding:var(--space-3);">
                     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--space-2);">
                       <div style="font-weight:700;font-size:0.92rem;display:flex;align-items:center;gap:6px;">
-                        <span class="badge badge-grok">𝕏 Grok xAI</span>
-                        <span>Varredura X &amp; Web</span>
+                        <span class="badge badge-ddg">🦆 DDG News</span>
+                        <span>DuckDuckGo News (ddgs)</span>
                       </div>
-                      <span id="grok-status-badge" class="badge" style="font-size:0.75rem;">Verificando...</span>
+                      <span id="ddg-status-badge" class="badge" style="font-size:0.75rem;">Verificando...</span>
                     </div>
-                    <p class="admin-sub" style="font-size:0.8rem;margin-bottom:var(--space-2);" id="grok-status-desc">
-                      Alimentador em tempo real com citações verificadas e tópicos por país.
+                    <p class="admin-sub" style="font-size:0.8rem;margin-bottom:var(--space-2);" id="ddg-status-desc">
+                      Busca aberta de notícias recentes em tempo real via <code>ddgs</code> (sem chave de API).
                     </p>
-                    <div id="grok-meta-info" class="admin-sub" style="font-size:0.78rem;background:var(--surface-2);padding:6px 10px;border-radius:var(--radius-sm);margin-bottom:var(--space-2);line-height:1.4;">
-                      <span>Modelo: <strong id="grok-meta-modelo">grok-4.7</strong></span> · 
-                      <span>Notícias: <strong id="grok-meta-total">0</strong></span> · 
-                      <span>Última execução: <strong id="grok-meta-tempo">-</strong></span>
+                    <div id="ddg-meta-info" class="admin-sub" style="font-size:0.78rem;background:var(--surface-2);padding:6px 10px;border-radius:var(--radius-sm);margin-bottom:var(--space-2);line-height:1.4;">
+                      <span>Motor: <strong id="ddg-meta-motor">ddgs</strong></span> ·
+                      <span>Notícias: <strong id="ddg-meta-total">0</strong></span> ·
+                      <span>Última execução: <strong id="ddg-meta-tempo">-</strong></span>
+                    </div>
+                    <div class="admin-controls-row" style="margin-bottom:var(--space-2);">
+                      <div class="admin-field" style="flex:1 1 100%;">
+                        <label for="ddg-query">Consulta específica (opcional)</label>
+                        <input id="ddg-query" class="admin-input" type="text" maxlength="160"
+                          placeholder="Vazio = varredura global (ou ex: Brasil economia)" />
+                      </div>
                     </div>
                     <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">
-                      <label class="admin-check-label" for="grok-dry-run">
-                        <input id="grok-dry-run" type="checkbox" />
+                      <label class="admin-check-label" for="ddg-dry-run">
+                        <input id="ddg-dry-run" type="checkbox" />
                         <span style="font-size:0.82rem;"><strong>Dry-run</strong> (sem salvar)</span>
                       </label>
                       <div class="admin-actions">
-                        <button id="btn-ver-grok-payload" class="admin-btn admin-btn-sm" type="button" title="Ver tópicos e manchetes capturadas">Ver Dados</button>
-                        <button id="btn-rodar-grok" class="admin-btn admin-btn-sm admin-btn-primary" type="button">Disparar Grok Agora</button>
+                        <button id="btn-ver-ddg-payload" class="admin-btn admin-btn-sm" type="button" title="Ver notícias coletadas pelo DuckDuckGo">Ver Dados</button>
+                        <button id="btn-rodar-ddg" class="admin-btn admin-btn-sm admin-btn-primary" type="button">Disparar DuckDuckGo</button>
                       </div>
                     </div>
                   </div>
 
                 </div>
 
-                <!-- Painel expansível de dados do Grok -->
-                <div id="grok-payload-panel" style="display:none;margin-top:var(--space-3);padding:var(--space-3);background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);">
+                <!-- Painel expansível de dados do DuckDuckGo News -->
+                <div id="ddg-payload-panel" style="display:none;margin-top:var(--space-3);padding:var(--space-3);background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);">
                   <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
-                    <strong style="font-size:0.88rem;">Último Payload do Bot Grok (data/noticias_x.json)</strong>
-                    <button type="button" id="btn-fechar-grok-payload" class="admin-btn admin-btn-sm" style="padding:2px 8px;">✕ Fechar</button>
+                    <strong style="font-size:0.88rem;">Último Payload do Bot DuckDuckGo News (data/noticias_ddg.json)</strong>
+                    <button type="button" id="btn-fechar-ddg-payload" class="admin-btn admin-btn-sm" style="padding:2px 8px;">✕ Fechar</button>
                   </div>
-                  <div id="grok-payload-conteudo" style="max-height:260px;overflow-y:auto;font-size:0.8rem;line-height:1.4;"></div>
+                  <div id="ddg-payload-conteudo" style="max-height:260px;overflow-y:auto;font-size:0.8rem;line-height:1.4;"></div>
                 </div>
 
               </div>
@@ -1801,8 +1808,8 @@
               <button class="admin-tab" type="button" role="tab" aria-selected="false" data-radar-tab="pulso_v2">
                 Pulso V2 (IA) <span id="radar-count-tab-pulso">0</span>
               </button>
-              <button class="admin-tab" type="button" role="tab" aria-selected="false" data-radar-tab="grok_x">
-                𝕏 Grok (IA) <span id="radar-count-tab-grok">0</span>
+              <button class="admin-tab" type="button" role="tab" aria-selected="false" data-radar-tab="ddg_news">
+                🦆 DuckDuckGo <span id="radar-count-tab-ddg">0</span>
               </button>
             </div>
 
@@ -3059,7 +3066,7 @@
 
       $('btn-recarregar-eventos').addEventListener('click', () => {
         carregarEventos().catch((err) => showBanner('eventos-banner', err.message, 'err'));
-        carregarStatusBotGrok().catch(() => {});
+        carregarStatusBotDdg().catch(() => {});
       });
 
       $('tbody-eventos').addEventListener('click', async (e) => {
@@ -3898,20 +3905,20 @@
         }
       });
 
-      // ============================ BOT: GROK (xAI · X & WEB SEARCH) ============================
-      async function carregarStatusBotGrok() {
+      // ============================ BOT: DUCKDUCKGO NEWS (DDGS) ============================
+      async function carregarStatusBotDdg() {
         try {
-          const res = await apiFetch('/v2/admin/bot/grok/status');
+          const res = await apiFetch('/v2/admin/bot/ddg/status');
           if (!res || !res.ok) return;
 
           const arq = res.arquivo || {};
-          const badge = $('grok-status-badge');
-          const desc = $('grok-status-desc');
-          const modEl = $('grok-meta-modelo');
-          const totEl = $('grok-meta-total');
-          const tmpEl = $('grok-meta-tempo');
+          const badge = $('ddg-status-badge');
+          const desc = $('ddg-status-desc');
+          const modEl = $('ddg-meta-motor');
+          const totEl = $('ddg-meta-total');
+          const tmpEl = $('ddg-meta-tempo');
 
-          if (modEl) modEl.textContent = res.modelo_configurado || 'grok-4.7';
+          if (modEl) modEl.textContent = res.motor || 'ddgs';
           if (totEl) totEl.textContent = arq.total_itens || 0;
 
           if (tmpEl) {
@@ -3925,51 +3932,51 @@
           }
 
           if (badge) {
-            if (res.chave_configurada) {
-              badge.textContent = 'xAI API Conectada';
+            if (res.lib_disponivel) {
+              badge.textContent = arq.existe ? 'Ativo (ddgs)' : 'Pronto (ddgs)';
               badge.className = 'badge badge-manual';
             } else {
-              badge.textContent = 'Simulação (Mock)';
-              badge.className = 'badge badge-rss';
+              badge.textContent = 'Lib ausente';
+              badge.className = 'badge';
             }
           }
 
           if (desc) {
             if (arq.existe) {
-              desc.innerHTML = `Feed fresco ativo com <strong>${arq.total_itens} notícias</strong> (${escapeHtml(arq.fonteMotor || 'xAI Responses API')}).`;
+              desc.innerHTML = `Feed ativo com <strong>${arq.total_itens} notícias</strong> (${escapeHtml(arq.ultima_query || 'varredura global')}).`;
             } else {
-              desc.textContent = 'Nenhum payload gerado ainda. Dispare o bot abaixo para alimentar o portal.';
+              desc.innerHTML = 'Busca aberta de notícias recentes em tempo real via <code>ddgs</code> (sem chave de API).';
             }
           }
         } catch (err) {
-          console.warn('[Admin] Não foi possível obter status do Bot Grok:', err);
+          console.warn('[Admin] Não foi possível obter status do Bot DuckDuckGo:', err);
         }
       }
 
-      if ($('btn-rodar-grok')) {
-        $('btn-rodar-grok').addEventListener('click', async () => {
-          const btn = $('btn-rodar-grok');
+      if ($('btn-rodar-ddg')) {
+        $('btn-rodar-ddg').addEventListener('click', async () => {
+          const btn = $('btn-rodar-ddg');
           const prev = btn.textContent;
           btn.disabled = true;
-          btn.textContent = 'Executando Grok...';
-          const dryRun = Boolean($('grok-dry-run') && $('grok-dry-run').checked);
-          showBanner('eventos-banner', 'Disparando Bot Grok (xAI Responses API com x_search e web_search)...', 'warn');
+          btn.textContent = 'Buscando no DDG...';
+          const query = ($('ddg-query') ? $('ddg-query').value : '').trim();
+          const dryRun = Boolean($('ddg-dry-run') && $('ddg-dry-run').checked);
+          showBanner('eventos-banner', 'Executando Bot DuckDuckGo News (ddgs)...', 'warn');
           try {
-            const res = await apiFetch('/v2/admin/bot/grok/executar', {
+            const res = await apiFetch('/v2/admin/bot/ddg/executar', {
               method: 'POST',
-              body: JSON.stringify({ dry_run: dryRun }),
+              body: JSON.stringify({ query: query || null, dry_run: dryRun }),
             });
-            const statusTom = res.ok ? 'ok' : 'warn';
             showBanner(
               'eventos-banner',
-              `Bot Grok concluído! ${res.total_itens || 0} notícias verificadas em ${((res.duracao_ms || 0) / 1000).toFixed(1)}s (Motor: ${res.fonteMotor || 'xAI'}).`,
-              statusTom
+              `DuckDuckGo News concluído! ${res.total_itens || 0} notícias coletadas em ${((res.duracao_ms || 0) / 1000).toFixed(1)}s${dryRun ? ' (dry-run)' : ''}.`,
+              'ok'
             );
-            showToast(`Bot Grok executado com sucesso (${res.total_itens || 0} itens).`, 'ok');
-            await Promise.all([carregarStatusBotGrok(), carregarRadar(), carregarExecucoes()]);
+            showToast(`DuckDuckGo News: ${res.total_itens || 0} notícias coletadas.`, 'ok');
+            await Promise.all([carregarStatusBotDdg(), carregarRadar(), carregarExecucoes()]);
           } catch (err) {
-            showBanner('eventos-banner', 'Erro ao executar Bot Grok: ' + err.message, 'err');
-            showToast('Erro ao rodar Bot Grok: ' + err.message, 'err');
+            showBanner('eventos-banner', 'Erro ao executar DuckDuckGo News: ' + err.message, 'err');
+            showToast('Erro no DuckDuckGo News: ' + err.message, 'err');
           } finally {
             btn.disabled = false;
             btn.textContent = prev;
@@ -3977,10 +3984,10 @@
         });
       }
 
-      if ($('btn-ver-grok-payload')) {
-        $('btn-ver-grok-payload').addEventListener('click', async () => {
-          const painel = $('grok-payload-panel');
-          const conteudo = $('grok-payload-conteudo');
+      if ($('btn-ver-ddg-payload')) {
+        $('btn-ver-ddg-payload').addEventListener('click', async () => {
+          const painel = $('ddg-payload-panel');
+          const conteudo = $('ddg-payload-conteudo');
           if (!painel || !conteudo) return;
 
           if (painel.style.display !== 'none') {
@@ -3988,47 +3995,34 @@
             return;
           }
 
-          conteudo.innerHTML = '<div class="admin-sub">Carregando dados do Bot Grok...</div>';
+          conteudo.innerHTML = '<div class="admin-sub">Carregando dados do DuckDuckGo News...</div>';
           painel.style.display = 'block';
 
           try {
-            const res = await apiFetch('/v2/admin/bot/grok/status');
+            const res = await apiFetch('/v2/admin/bot/ddg/status');
             const arq = res.arquivo || {};
             const items = arq.amostra_itens || [];
-            const topicos = arq.topicosEmAltaPorPais || {};
 
-            let htmlTopicos = '';
-            const paises = Object.keys(topicos);
-            if (paises.length) {
-              htmlTopicos = '<div style="margin-bottom:10px;"><strong>Tópicos em alta capturados:</strong><br/>';
-              paises.forEach((p) => {
-                htmlTopicos += `<span style="display:inline-block;margin:2px 4px;padding:2px 6px;border-radius:4px;background:var(--surface-2);font-size:0.75rem;">🌍 ${escapeHtml(p)}: ${escapeHtml((topicos[p] || []).slice(0, 3).join(', '))}</span>`;
-              });
-              htmlTopicos += '</div>';
-            }
-
-            let htmlItems = '';
             if (items.length) {
-              htmlItems = '<div style="margin-bottom:6px;"><strong>Manchetes capturadas no X / Web:</strong></div><ul style="padding-left:18px;margin:0;">';
+              let htmlItems = '<div style="margin-bottom:6px;"><strong>Manchetes recentes coletadas via DuckDuckGo News:</strong></div><ul style="padding-left:18px;margin:0;">';
               items.forEach((it) => {
-                const link = it.url ? ` <a href="${escapeHtml(it.url)}" target="_blank" rel="noopener noreferrer" style="color:var(--primary);">[link]</a>` : '';
-                htmlItems += `<li style="margin-bottom:6px;"><strong>[${escapeHtml(it.codigoPais || 'GL')}]</strong> ${escapeHtml(it.titulo)} <span class="admin-sub">(${escapeHtml(it.fonte || 'xAI')}${it.handleX ? ' · ' + escapeHtml(it.handleX) : ''})</span>${link}</li>`;
+                const link = it.url ? ` <a href="${escapeHtml(it.url)}" target="_blank" rel="noopener noreferrer" style="color:var(--primary);">[abrir]</a>` : '';
+                htmlItems += `<li style="margin-bottom:6px;"><strong>[${escapeHtml(it.codigoPais || 'BR')}]</strong> ${escapeHtml(it.titulo)} <span class="admin-sub">(${escapeHtml(it.fonte || 'DDG News')})</span>${link}</li>`;
               });
               htmlItems += '</ul>';
+              conteudo.innerHTML = htmlItems;
             } else {
-              htmlItems = '<div class="admin-sub">Nenhum item gerado no arquivo local ainda.</div>';
+              conteudo.innerHTML = '<div class="admin-sub">Nenhum item gerado em <code>data/noticias_ddg.json</code> ainda. Clique em <strong>Disparar DuckDuckGo</strong> para coletar.</div>';
             }
-
-            conteudo.innerHTML = htmlTopicos + htmlItems;
           } catch (err) {
             conteudo.innerHTML = `<div class="admin-sub" style="color:var(--danger,#e63946);">Erro ao ler dados: ${escapeHtml(err.message)}</div>`;
           }
         });
       }
 
-      if ($('btn-fechar-grok-payload')) {
-        $('btn-fechar-grok-payload').addEventListener('click', () => {
-          if ($('grok-payload-panel')) $('grok-payload-panel').style.display = 'none';
+      if ($('btn-fechar-ddg-payload')) {
+        $('btn-fechar-ddg-payload').addEventListener('click', () => {
+          if ($('ddg-payload-panel')) $('ddg-payload-panel').style.display = 'none';
         });
       }
 
@@ -4047,7 +4041,7 @@
           manuais: state.radar.filter((c) => c.origem === 'manual').length,
           rss: state.radar.filter((c) => c.origem === 'rss').length,
           pulso_v2: state.radar.filter((c) => c.origem === 'pulso_v2').length,
-          grok_x: state.radar.filter((c) => c.origem === 'grok_x').length,
+          ddg_news: state.radar.filter((c) => c.origem === 'ddg_news').length,
         };
         atualizarTabsRadar();
         renderRadar();
@@ -4059,13 +4053,13 @@
         const man = c.manuais != null ? c.manuais : state.radar.filter((x) => x.origem === 'manual').length;
         const rss = c.rss != null ? c.rss : state.radar.filter((x) => x.origem === 'rss').length;
         const pul = c.pulso_v2 != null ? c.pulso_v2 : state.radar.filter((x) => x.origem === 'pulso_v2').length;
-        const grok = c.grok_x != null ? c.grok_x : state.radar.filter((x) => x.origem === 'grok_x').length;
+        const ddg = c.ddg_news != null ? c.ddg_news : state.radar.filter((x) => x.origem === 'ddg_news').length;
 
         if ($('radar-count-tab-all')) $('radar-count-tab-all').textContent = tot;
         if ($('radar-count-tab-manual')) $('radar-count-tab-manual').textContent = man;
         if ($('radar-count-tab-rss')) $('radar-count-tab-rss').textContent = rss;
         if ($('radar-count-tab-pulso')) $('radar-count-tab-pulso').textContent = pul;
-        if ($('radar-count-tab-grok')) $('radar-count-tab-grok').textContent = grok;
+        if ($('radar-count-tab-ddg')) $('radar-count-tab-ddg').textContent = ddg;
 
         if ($('nav-count-radar')) $('nav-count-radar').textContent = tot;
         if ($('kpi-radar-val')) $('kpi-radar-val').textContent = tot + ' no feed';
@@ -4083,10 +4077,10 @@
 
         let lista = state.radar;
 
-        // Filtro da aba de origem (todos, manual, rss, pulso_v2, grok_x)
+        // Filtro da aba de origem (todos, manual, rss, pulso_v2, ddg_news)
         if (tab !== 'all') {
           lista = lista.filter((c) => {
-            const o = c.origem || (c.origem_manual ? 'manual' : (c.origem_v2 ? 'pulso_v2' : (c.origem_grok_x ? 'grok_x' : 'rss')));
+            const o = c.origem || (c.origem_manual ? 'manual' : (c.origem_v2 ? 'pulso_v2' : (c.origem_ddg_news ? 'ddg_news' : 'rss')));
             return o === tab;
           });
         }
@@ -4114,14 +4108,14 @@
 
         tbody.innerHTML = lista.map((c) => {
           const isFixed = Boolean(c.fixado || (c.urgencia_score && c.urgencia_score >= 95));
-          const orig = c.origem || (c.origem_manual ? 'manual' : (c.origem_v2 ? 'pulso_v2' : (c.origem_grok_x ? 'grok_x' : 'rss')));
+          const orig = c.origem || (c.origem_manual ? 'manual' : (c.origem_v2 ? 'pulso_v2' : (c.origem_ddg_news ? 'ddg_news' : 'rss')));
           let badgeOrigem = '';
           if (orig === 'manual') {
             badgeOrigem = '<span class="badge badge-manual">Manual</span>';
           } else if (orig === 'pulso_v2') {
             badgeOrigem = '<span class="badge badge-ia" title="Síntese IA · Pulso V2">Pulso V2 · IA</span>';
-          } else if (orig === 'grok_x') {
-            badgeOrigem = '<span class="badge badge-grok" title="Coletado via Bot Grok (xAI · X & Web Search)">𝕏 Grok · IA</span>';
+          } else if (orig === 'ddg_news') {
+            badgeOrigem = '<span class="badge badge-ddg" title="Coletado via Bot DuckDuckGo News (ddgs)">🦆 DDG News</span>';
           } else {
             const fnome = escapeHtml(c.fonte_nome || 'RSS');
             badgeOrigem = `<span class="badge badge-rss" title="Coletado via RSS (${fnome})">RSS · ${fnome}</span>`;
@@ -5385,7 +5379,7 @@
       // ============================ AUTENTICAÇÃO ============================
       async function carregarTudo() {
         await carregarKillSwitch();
-        await Promise.all([carregarFontes(), carregarEventos(), carregarDossiesAdmin(), carregarExecucoes(), carregarRadar(), carregarNoticiasQuentes(), carregarColunas(), carregarStatusBotGrok()]);
+        await Promise.all([carregarFontes(), carregarEventos(), carregarDossiesAdmin(), carregarExecucoes(), carregarRadar(), carregarNoticiasQuentes(), carregarColunas(), carregarStatusBotDdg()]);
       }
 
       async function conectar() {

@@ -11,7 +11,6 @@ import json
 import os
 import re
 import secrets
-import sys
 import time
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
@@ -280,15 +279,19 @@ class ExecutarPulsoRequest(BaseModel):
     )
 
 
-class ExecutarGrokRequest(BaseModel):
-    """Parâmetros opcionais para disparo manual do Bot Grok (xAI · X & Web Search)."""
+class ExecutarDdgRequest(BaseModel):
+    """Parâmetros opcionais para disparo do Bot DuckDuckGo News (ddgs)."""
+    query: Optional[str] = Field(
+        default=None,
+        max_length=160,
+        description="Consulta específica (opcional; se vazio, roda varredura multi-editoria)",
+    )
+    region: str = Field(default="br-pt", max_length=12)
+    timelimit: str = Field(default="d", max_length=4)
+    max_results: int = Field(default=6, ge=1, le=25)
     dry_run: bool = Field(
         default=False,
-        description="Se True, gera em arquivo temporário sem sobrescrever data/noticias_x.json",
-    )
-    force_mock: bool = Field(
-        default=False,
-        description="Se True, executa usando dados de simulação mock sem consumir a API xAI",
+        description="Se True, retorna os resultados sem sobrescrever data/noticias_ddg.json",
     )
 
 
@@ -2268,48 +2271,35 @@ async def admin_executar_coleta_agora(
     )
 
 
-@router.get("/v2/admin/bot/grok/status", dependencies=[Depends(verificar_admin_token)])
-async def admin_status_bot_grok(response: Response) -> Dict[str, Any]:
-    """Retorna o status atual do Bot Grok (xAI): integridade de data/noticias_x.json e configuração de chave."""
+@router.get("/v2/admin/bot/ddg/status", dependencies=[Depends(verificar_admin_token)])
+async def admin_status_bot_ddg(response: Response) -> Dict[str, Any]:
+    """Retorna o status atual do Bot DuckDuckGo News (`ddgs`) e amostra de `data/noticias_ddg.json`."""
     aplicar_no_cache_headers(response)
+    from scripts.ddg_news_feeder import MOTOR_LIB, ddgs_disponivel
+
     raiz = Path(__file__).resolve().parents[1]
-    grok_file = raiz / "data" / "noticias_x.json"
-    config_file = raiz / "scripts" / "config_grok.json"
+    ddg_file = raiz / "data" / "noticias_ddg.json"
 
-    chave_configurada = bool(
-        (os.getenv("XAI_API_KEY") or os.getenv("GROK_API_KEY") or os.getenv("X_AI_API_KEY") or "").strip()
-    )
-    modelo_configurado = "grok-4.7"
-    if config_file.is_file():
-        try:
-            cfg = json.loads(config_file.read_text(encoding="utf-8"))
-            if isinstance(cfg, dict) and cfg.get("model"):
-                modelo_configurado = cfg["model"]
-        except Exception:
-            pass
-
-    status_arquivo = {
+    status_arquivo: Dict[str, Any] = {
         "existe": False,
         "atualizadoEm": None,
         "idade_minutos": None,
         "total_itens": 0,
-        "mock": False,
         "fonteMotor": None,
-        "topicosEmAltaPorPais": {},
+        "ultima_query": None,
         "amostra_itens": [],
     }
 
-    if grok_file.is_file():
+    if ddg_file.is_file():
         try:
-            dados = json.loads(grok_file.read_text(encoding="utf-8"))
+            dados = json.loads(ddg_file.read_text(encoding="utf-8"))
             if isinstance(dados, dict):
+                items = dados.get("items") or []
                 status_arquivo["existe"] = True
                 status_arquivo["atualizadoEm"] = dados.get("atualizadoEm")
-                status_arquivo["mock"] = bool(dados.get("mock", False))
-                status_arquivo["fonteMotor"] = dados.get("fonteMotor") or modelo_configurado
-                items = dados.get("items") or []
+                status_arquivo["fonteMotor"] = dados.get("fonteMotor") or f"DuckDuckGo News ({MOTOR_LIB or 'ddgs'})"
+                status_arquivo["ultima_query"] = dados.get("ultimaQuery")
                 status_arquivo["total_itens"] = len(items)
-                status_arquivo["topicosEmAltaPorPais"] = dados.get("topicosEmAltaPorPais") or {}
 
                 if dados.get("atualizadoEm"):
                     try:
@@ -2326,10 +2316,10 @@ async def admin_status_bot_grok(response: Response) -> Dict[str, Any]:
                         "categoria": it.get("categoria"),
                         "titulo": it.get("titulo"),
                         "fonte": it.get("fonte"),
-                        "handleX": it.get("handleX"),
                         "url": it.get("url"),
+                        "publicadoEm": it.get("publicadoEm"),
                     }
-                    for it in items[:6]
+                    for it in items[:8]
                     if isinstance(it, dict)
                 ]
         except Exception:
@@ -2337,81 +2327,48 @@ async def admin_status_bot_grok(response: Response) -> Dict[str, Any]:
 
     return {
         "ok": True,
-        "chave_configurada": chave_configurada,
-        "modelo_configurado": modelo_configurado,
+        "lib_disponivel": ddgs_disponivel(),
+        "motor": MOTOR_LIB or "ddgs",
         "arquivo": status_arquivo,
     }
 
 
-@router.post("/v2/admin/bot/grok/executar", dependencies=[Depends(verificar_admin_token)])
-async def admin_executar_bot_grok(
+@router.post("/v2/admin/bot/ddg/executar", dependencies=[Depends(verificar_admin_token)])
+async def admin_executar_bot_ddg(
     response: Response,
-    payload_req: Optional[ExecutarGrokRequest] = Body(default=None),
+    payload_req: Optional[ExecutarDdgRequest] = Body(default=None),
     conn: Any = Depends(get_db),
 ) -> Dict[str, Any]:
-    """Dispara a execução do Bot Grok (xAI · X & Web Search) em tempo real, gerando `data/noticias_x.json`."""
-    import subprocess
-    import tempfile
+    """Dispara a coleta em tempo real via DuckDuckGo News (`ddgs`) e atualiza `data/noticias_ddg.json`."""
+    import asyncio
+    from scripts.ddg_news_feeder import ddgs_disponivel, executar_coleta_ddg
 
     aplicar_no_cache_headers(response)
-    modo_dry_run = bool(payload_req and payload_req.dry_run)
-    force_mock = bool(payload_req and payload_req.force_mock)
+    if not ddgs_disponivel():
+        raise HTTPException(
+            status_code=503,
+            detail="Biblioteca 'ddgs' / 'duckduckgo-search' não instalada no servidor.",
+        )
 
-    raiz = Path(__file__).resolve().parents[1]
-    grok_script = raiz / "scripts" / "grok_x_feeder.py"
-    saida_oficial = raiz / "data" / "noticias_x.json"
-
-    chave_presente = bool(
-        (os.getenv("XAI_API_KEY") or os.getenv("GROK_API_KEY") or os.getenv("X_AI_API_KEY") or "").strip()
-    )
-    if not chave_presente and not force_mock:
-        force_mock = True
-
-    caminho_out = saida_oficial
-    temp_file = None
-    if modo_dry_run:
-        temp_file = tempfile.NamedTemporaryFile(suffix=".json", delete=False)
-        temp_file.close()
-        caminho_out = Path(temp_file.name)
-
-    cmd = [sys.executable, str(grok_script)]
-    if force_mock:
-        cmd.extend(["--mock", "--out", str(caminho_out)])
-    else:
-        cmd.extend(["--out", str(caminho_out)])
-
+    req = payload_req or ExecutarDdgRequest()
     t0 = time.time()
     try:
-        proc = subprocess.run(
-            cmd,
-            cwd=str(raiz),
-            capture_output=True,
-            text=True,
-            timeout=200,
+        resultado = await asyncio.to_thread(
+            executar_coleta_ddg,
+            query=req.query,
+            region=req.region,
+            timelimit=req.timelimit,
+            max_results=req.max_results,
+            dry_run=req.dry_run,
         )
-    except subprocess.TimeoutExpired:
-        if temp_file and os.path.exists(temp_file.name):
-            try:
-                os.unlink(temp_file.name)
-            except Exception:
-                pass
-        raise HTTPException(status_code=504, detail="Tempo limite de 200s esgotado ao executar o Bot Grok.")
-
-    duracao_ms = int((time.time() - t0) * 1000)
-
-    if proc.returncode != 0:
-        stdout_err = (proc.stdout or "") + "\n" + (proc.stderr or "")
-        if temp_file and os.path.exists(temp_file.name):
-            try:
-                os.unlink(temp_file.name)
-            except Exception:
-                pass
+    except Exception as exc:
+        duracao_ms = int((time.time() - t0) * 1000)
         if conn is not None and hasattr(conn, "cursor"):
             try:
                 registrar_auditoria_execucao(
                     conn,
-                    job_nome="bot_grok_x_feeder",
-                    recurso_chave=77112233,
+                    job_nome="bot_ddg_news_feeder",
+                    recurso_chave=77112244,
                     status="erro",
                     documentos_novos=0,
                     eventos_atualizados=0,
@@ -2419,31 +2376,17 @@ async def admin_executar_bot_grok(
                 )
             except Exception:
                 pass
-        raise HTTPException(
-            status_code=500,
-            detail=f"Falha na execução do Bot Grok (código {proc.returncode}): {stdout_err[:400]}",
-        )
+        raise HTTPException(status_code=500, detail=f"Falha ao executar DuckDuckGo News: {exc}")
 
-    dados_gerados = {}
-    if caminho_out.is_file():
-        try:
-            dados_gerados = json.loads(caminho_out.read_text(encoding="utf-8"))
-        except Exception:
-            pass
+    duracao_ms = int((time.time() - t0) * 1000)
+    total_itens = int(resultado.get("total") or len(resultado.get("items") or []))
 
-    if temp_file and os.path.exists(temp_file.name):
-        try:
-            os.unlink(temp_file.name)
-        except Exception:
-            pass
-
-    total_itens = len(dados_gerados.get("items") or [])
     if conn is not None and hasattr(conn, "cursor"):
         try:
             registrar_auditoria_execucao(
                 conn,
-                job_nome="bot_grok_x_feeder",
-                recurso_chave=77112233,
+                job_nome="bot_ddg_news_feeder",
+                recurso_chave=77112244,
                 status="concluido",
                 documentos_novos=total_itens,
                 eventos_atualizados=total_itens,
@@ -2455,15 +2398,14 @@ async def admin_executar_bot_grok(
     return {
         "ok": True,
         "status": "concluido",
-        "job_nome": "bot_grok_x_feeder",
+        "job_nome": "bot_ddg_news_feeder",
         "duracao_ms": duracao_ms,
-        "dry_run": modo_dry_run,
-        "mock_utilizado": force_mock,
+        "dry_run": req.dry_run,
         "total_itens": total_itens,
-        "fonteMotor": dados_gerados.get("fonteMotor", "Grok (xAI)"),
-        "atualizadoEm": dados_gerados.get("atualizadoEm"),
-        "topicos_paises": list((dados_gerados.get("topicosEmAltaPorPais") or {}).keys()),
-        "items": dados_gerados.get("items") or [],
+        "fonteMotor": resultado.get("fonteMotor", "DuckDuckGo News (ddgs)"),
+        "atualizadoEm": resultado.get("atualizadoEm"),
+        "ultimaQuery": resultado.get("ultimaQuery"),
+        "items": resultado.get("items") or [],
     }
 
 
@@ -3352,57 +3294,55 @@ def admin_listar_radar_feed(
                 "origem_v2": True,
             })
 
-    # Integração do Bot Grok (xAI · X & Web Search) no feed do Radar
-    itens_grok: List[Dict[str, Any]] = []
-    grok_path = raiz / "data" / "noticias_x.json"
-    if grok_path.is_file():
+    # Integração do Bot DuckDuckGo News (ddgs) no feed do Radar
+    itens_ddg: List[Dict[str, Any]] = []
+    ddg_path = raiz / "data" / "noticias_ddg.json"
+    if ddg_path.is_file():
         try:
-            grok_raw = json.loads(grok_path.read_text(encoding="utf-8"))
-            if isinstance(grok_raw, dict):
-                items_grok_list = grok_raw.get("items") or []
-                for idx_g, g in enumerate(items_grok_list, start=1):
-                    if not isinstance(g, dict):
+            ddg_raw = json.loads(ddg_path.read_text(encoding="utf-8"))
+            if isinstance(ddg_raw, dict):
+                for idx_d, d in enumerate(ddg_raw.get("items") or [], start=1):
+                    if not isinstance(d, dict):
                         continue
-                    titulo_g = str(g.get("titulo") or "").strip()
-                    if not titulo_g:
+                    titulo_d = str(d.get("titulo") or "").strip()
+                    if not titulo_d:
                         continue
-                    resumo_g = str(g.get("resumo") or "").strip()
-                    analise_g = str(g.get("analise") or resumo_g).strip()
-                    fonte_g = str(g.get("fonte") or "Grok (xAI / X)").strip()
-                    url_g = str(g.get("url") or g.get("urlMateriaOriginal") or "/radar").strip()
-                    pais_cod = str(g.get("codigoPais") or "BR").upper()
-                    cat_radar = str(g.get("categoriaRadar") or g.get("tipoNoticia") or "geopolitica").lower()
+                    resumo_d = str(d.get("resumo") or "").strip()
+                    fonte_d = str(d.get("fonte") or "DuckDuckGo News").strip()
+                    url_d = str(d.get("url") or "/radar").strip()
+                    pais_cod = str(d.get("codigoPais") or "BR").upper()
+                    cat_radar = str(d.get("categoriaRadar") or "geopolitica").lower()
                     if cat_radar not in ("geopolitica", "politica", "economia", "cultura"):
                         cat_radar = "geopolitica"
-                    data_pub_g = str(g.get("publicadoEm") or grok_raw.get("atualizadoEm") or "")
-                    relev_g = int(g.get("relevancia") or idx_g)
-                    urg_score_g = max(50, 96 - (relev_g * 4))
-                    itens_grok.append({
-                        "id": f"grok-{idx_g}-{relev_g}",
-                        "slug": f"grok-{idx_g}-{relev_g}",
-                        "titulo": titulo_g,
-                        "resumo": resumo_g,
-                        "analise": analise_g,
+                    data_pub_d = str(d.get("publicadoEm") or ddg_raw.get("atualizadoEm") or "")
+                    relev_d = int(d.get("relevancia") or idx_d)
+                    urg_score_d = max(50, 92 - (relev_d * 3))
+                    itens_ddg.append({
+                        "id": f"ddg-{idx_d}-{relev_d}",
+                        "slug": f"ddg-{idx_d}-{relev_d}",
+                        "titulo": titulo_d,
+                        "resumo": resumo_d,
+                        "analise": resumo_d,
                         "categoria": cat_radar,
-                        "fonte_nome": f"{fonte_g} (𝕏 Grok)",
-                        "fonte_url": url_g,
-                        "data_publicacao": data_pub_g,
-                        "urgencia_score": urg_score_g,
+                        "fonte_nome": f"{fonte_d} (DuckDuckGo)",
+                        "fonte_url": url_d,
+                        "data_publicacao": data_pub_d,
+                        "urgencia_score": urg_score_d,
                         "fixado": False,
                         "paises_envolvidos": [pais_cod],
-                        "palavras_chave": list(g.get("topicosEmAlta") or [g.get("categoria") or "grok"]),
-                        "origem": "grok_x",
+                        "palavras_chave": [str(d.get("categoria") or "ddg")],
+                        "origem": "ddg_news",
                         "origem_manual": False,
                         "origem_v2": False,
-                        "origem_grok_x": True,
+                        "origem_ddg_news": True,
                     })
         except Exception:
             pass
 
-    todos_candidatos = sorted(itens_grok + itens_v2 + cards_feed, key=_timestamp_publicacao, reverse=True)
+    todos_candidatos = sorted(itens_ddg + itens_v2 + cards_feed, key=_timestamp_publicacao, reverse=True)
     titulos_vistos = set()
     combinados: List[Dict[str, Any]] = []
-    contadores = {"total": 0, "manuais": 0, "rss": 0, "pulso_v2": 0, "grok_x": 0}
+    contadores = {"total": 0, "manuais": 0, "rss": 0, "pulso_v2": 0, "ddg_news": 0}
 
     for item in todos_candidatos:
         tit_norm = normalizar_fonte_key(item.get("titulo"))
@@ -3414,8 +3354,8 @@ def admin_listar_radar_feed(
             contadores["manuais"] += 1
         elif orig == "pulso_v2":
             contadores["pulso_v2"] += 1
-        elif orig == "grok_x":
-            contadores["grok_x"] += 1
+        elif orig == "ddg_news":
+            contadores["ddg_news"] += 1
         else:
             contadores["rss"] += 1
         combinados.append(item)

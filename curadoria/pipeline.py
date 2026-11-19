@@ -21,7 +21,7 @@ except ImportError:  # python-dotenv é opcional
     pass
 
 from .agente.analisador import enviar_para_backend, executar_agente_analisador
-from .agente.coletor import coletar_feeds_rss, coletar_google_trends, coletar_noticias_grok_x
+from .agente.coletor import coletar_feeds_rss, coletar_google_trends, coletar_noticias_ddg_news
 from .agente.schemas import MAPA_ROTAS_EDITORIA, CuradoriaPayload
 
 SAIDA_LOCAL = Path(__file__).resolve().parent / "output" / "ultimo_payload.json"
@@ -366,9 +366,9 @@ def rodar_pipeline_completo(dry_run: bool = False, horas_janela: int = 12) -> No
     backend_url = os.getenv("CURADORIA_BACKEND_URL", "https://api.rodandoomundo.com.br").rstrip("/")
     api_token = os.getenv("CURADORIA_SECRET_TOKEN", "")
 
-    itens_grok = coletar_noticias_grok_x()
-    lote_total = itens_grok + coletar_google_trends() + coletar_feeds_rss(horas_limite=horas_janela)
-    print(f"[curadoria] Itens coletados: {len(lote_total)} (incluindo {len(itens_grok)} do Bot Grok)")
+    itens_ddg = coletar_noticias_ddg_news()
+    lote_total = itens_ddg + coletar_google_trends() + coletar_feeds_rss(horas_limite=horas_janela)
+    print(f"[curadoria] Itens coletados: {len(lote_total)} (incluindo {len(itens_ddg)} do DuckDuckGo News)")
     if not lote_total:
         print("[curadoria] Nenhum dado novo nesta janela.")
         return

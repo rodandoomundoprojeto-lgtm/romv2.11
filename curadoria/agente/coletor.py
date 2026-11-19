@@ -173,41 +173,36 @@ def coletar_google_trends(limite: int = 15) -> List[Dict]:
     return tendencias
 
 
-NOTICIAS_X_JSON_PATH = Path(__file__).resolve().parents[2] / "data" / "noticias_x.json"
+NOTICIAS_DDG_JSON_PATH = Path(__file__).resolve().parents[2] / "data" / "noticias_ddg.json"
 
 
-def coletar_noticias_grok_x(limite: int = 15) -> List[Dict]:
-    """Coleta notícias quentes em tempo real geradas pelo Bot Grok (xAI · X & Web Search)."""
-    itens_grok: List[Dict] = []
-    if not NOTICIAS_X_JSON_PATH.exists():
-        return itens_grok
+def coletar_noticias_ddg_news(limite: int = 15) -> List[Dict]:
+    """Coleta notícias recentes geradas pelo Bot DuckDuckGo News (`ddgs`)."""
+    itens_ddg: List[Dict] = []
+    if not NOTICIAS_DDG_JSON_PATH.exists():
+        return itens_ddg
     try:
-        dados = json.loads(NOTICIAS_X_JSON_PATH.read_text(encoding="utf-8"))
+        dados = json.loads(NOTICIAS_DDG_JSON_PATH.read_text(encoding="utf-8"))
         if not isinstance(dados, dict):
-            return itens_grok
-        items = dados.get("items") or []
-        for it in items[:limite]:
+            return itens_ddg
+        for it in (dados.get("items") or [])[:limite]:
             if not isinstance(it, dict):
                 continue
             titulo = limpar_html(it.get("titulo", ""))
             if not titulo:
                 continue
             resumo = limpar_html(it.get("resumo", ""))
-            fonte = it.get("fonte") or "Grok (xAI / X)"
-            url = it.get("url") or it.get("urlMateriaOriginal") or ""
-            data_pub = it.get("publicadoEm") or dados.get("atualizadoEm")
-            itens_grok.append({
-                "origem": "Grok (xAI / X)",
-                "fonte": fonte,
+            itens_ddg.append({
+                "origem": "DuckDuckGo News (ddgs)",
+                "fonte": it.get("fonte") or "DuckDuckGo News",
                 "titulo": titulo,
                 "resumo": resumo,
-                "link": url,
-                "data_publicacao": data_pub,
-                "categoria_sugerida": it.get("categoria") or it.get("tipoNoticia") or "Geopolitica_Radar",
+                "link": it.get("url") or "",
+                "data_publicacao": it.get("publicadoEm") or dados.get("atualizadoEm"),
+                "categoria_sugerida": it.get("categoria") or it.get("categoriaRadar") or "Geopolitica_Radar",
                 "pais": it.get("codigoPais") or "BR",
             })
     except Exception as e:  # noqa: BLE001
-        print(f"[Aviso] Falha ao coletar notícias do Grok: {e}")
-    return itens_grok
-
+        print(f"[Aviso] Falha ao coletar notícias do DuckDuckGo News: {e}")
+    return itens_ddg
 

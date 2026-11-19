@@ -69,8 +69,8 @@ def _is_placeholder_key(val):
 
 
 def get_api_key():
-    """Obtém a chave da xAI/Grok a partir do ambiente (priorizando XAI_API_KEY e GROK_API_KEY)."""
-    for var_name in ("XAI_API_KEY", "GROK_API_KEY", "X_AI_API_KEY", "XAI_KEY", "GROK_KEY"):
+    """Obtém a chave da xAI/Grok/Groq a partir do ambiente (priorizando XAI_API_KEY, GROK_API_KEY e GROQ_API_KEY)."""
+    for var_name in ("XAI_API_KEY", "GROK_API_KEY", "GROQ_API_KEY", "X_AI_API_KEY", "XAI_KEY", "GROK_KEY"):
         val = os.environ.get(var_name, "").strip()
         if val and not _is_placeholder_key(val):
             return val
@@ -360,6 +360,176 @@ def call_grok_api(api_key, config):
     raise RuntimeError(f"Não foi possível obter resposta da API xAI. Último erro: {last_error}")
 
 
+def call_groq_rss_api(api_key, config):
+    """
+    Motor gratuito de alta velocidade usando Groq + DuckDuckGo News + Varredura Web RSS em tempo real:
+    1. Coleta notícias via DuckDuckGo News (DDGS) em tempo real.
+    2. Complementa com feeds RSS globais (Brasil, Mundo, Economia) para cobertura garantida.
+    3. Envia lista compactada para os modelos rápidos da Groq (qwen/qwen3.8-27b, openai/gpt-oss-120b).
+    4. Reassocia IDs com as URLs e fontes originais verificadas.
+    5. Retorna (parsed_data, used_model, citations).
+    """
+    noticias_brutas = {}
+    lista_compacta = []
+    citations = []
+    item_id = 1
+
+    # 1. Coleta via DuckDuckGo News (se disponível)
+    try:
+        try:
+            from ddgs import DDGS
+        except ImportError:
+            from duckduckgo_search import DDGS
+
+        ddg_queries = [
+            ("noticias brasil", "br-pt"),
+            ("geopolitica mundo", "br-pt"),
+            ("world news economy", "wt-wt"),
+        ]
+        with DDGS() as ddgs:
+            for q, reg in ddg_queries:
+                try:
+                    res = list(ddgs.news(q, max_results=3, region=reg, timelimit="d"))
+                    for r in res:
+                        t = (r.get("title") or "").strip()
+                        l = (r.get("url") or "").strip()
+                        s = (r.get("source") or "DuckDuckGo News").strip()
+                        if t and l and l not in citations:
+                            noticias_brutas[item_id] = {"id": item_id, "titulo": t, "url": l, "fonte": s, "cat": "DuckDuckGo News"}
+                            lista_compacta.append({"id": item_id, "t": t, "f": s, "c": "DDG News"})
+                            citations.append(l)
+                            item_id += 1
+                except Exception:
+                    pass
+    except Exception as e:
+        print(f"[INFO] DuckDuckGo News em fallback: {e}")
+
+    # 2. Coleta / Complemento via Feeds RSS de Tempo Real
+    rss_sources = [
+        ("Brasil", "https://news.google.com/rss?hl=pt-BR&gl=BR&ceid=BR:pt-419"),
+        ("Mundo", "https://news.google.com/rss/headlines/section/topic/WORLD?hl=pt-BR&gl=BR&ceid=BR:pt-419"),
+        ("Economia", "https://news.google.com/rss/headlines/section/topic/BUSINESS?hl=pt-BR&gl=BR&ceid=BR:pt-419"),
+    ]
+
+    for label, u in rss_sources:
+        try:
+            req = urllib.request.Request(u, headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"})
+            with urllib.request.urlopen(req, timeout=10) as resp:
+                root = ET.fromstring(resp.read())
+                for it in root.findall(".//item")[:4]:
+                    t = (it.find("title").text or "").strip()
+                    l = (it.find("link").text or "").strip()
+                    s = (it.find("source").text or "Imprensa").strip()
+                    if t and l and l not in citations:
+                        noticias_brutas[item_id] = {"id": item_id, "titulo": t, "url": l, "fonte": s, "cat": label}
+                        lista_compacta.append({"id": item_id, "t": t, "f": s, "c": label})
+                        citations.append(l)
+                        item_id += 1
+        except Exception as e:
+            print(f"[AVISO] Feed {label} indisponivel: {e}")
+
+    if not lista_compacta:
+        raise RuntimeError("Não foi possível coletar manchetes em tempo real.")
+
+    # Carrega títulos recentes do feed principal para evitar repetição cruzada
+    titulos_recentes = []
+    feed_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data", "feed_output.json")
+    if os.path.isfile(feed_path):
+        try:
+            with open(feed_path, "r", encoding="utf-8") as f:
+                feed_data = json.load(f)
+                if isinstance(feed_data, list):
+                    for it in feed_data[:12]:
+                        t = it.get("titulo")
+                        if t and isinstance(t, str) and t.strip():
+                            titulos_recentes.append(t.strip())
+        except Exception:
+            pass
+
+    prompt = (
+        "Abaixo estão notícias reais de hoje coletadas da web (id, título t, fonte f, categoria c):\n"
+        + json.dumps(lista_compacta, ensure_ascii=False)
+        + "\n\nSelecione entre 6 e 10 notícias mais importantes e retorne um JSON estrito com a chave 'items'. "
+        + "Para cada notícia, retorne:\n"
+        + "- ref_id (número do id correspondente)\n"
+        + "- relevancia (1 a 10)\n"
+        + "- categoria (ex: 'Brasil · Política', 'Economia Global', 'Geopolítica')\n"
+        + "- titulo (manchete informativa concisa)\n"
+        + "- resumo (contexto em 1-2 frases)\n"
+        + "- analise (por que esse fato importa no cenário atual)\n"
+        + "- handleX (@nome oficial do veículo ou autor)\n"
+        + "- pais (nome do país em português)\n"
+        + "- codigoPais (sigla ISO: BR, US, CN, FR, DE, etc)\n"
+        + "- continente (exatamente um: 'sul', 'norte', 'europa', 'asia', 'africa', 'oceania')\n"
+        + "- tipoNoticia (exatamente um: 'politica', 'economia', 'tecnologia', 'saude', 'cultura', 'esportes', 'mundo')\n"
+        + "- topicosEmAlta (lista de 3 palavras-chave curtas)\n"
+    )
+
+    if titulos_recentes:
+        prompt += (
+            "\n\nDIRETRIZ DE DEDUPLICAÇÃO OBRIGATÓRIA:\n"
+            "O portal já publicou recentemente os títulos abaixo. NÃO selecione matérias que tratem exatamente do mesmo fato central:\n"
+            + "\n".join(f"- {t}" for t in titulos_recentes)
+        )
+
+    models_to_try = [
+        os.getenv("GROQ_MODEL", "").strip(),
+        "qwen/qwen3.8-27b",
+        "openai/gpt-oss-120b",
+        "openai/gpt-oss-20b",
+    ]
+    models_to_try = [m for m in models_to_try if m]
+
+    last_error = None
+    for model_name in models_to_try:
+        try:
+            req = urllib.request.Request(
+                "https://api.groq.com/openai/v1/chat/completions",
+                data=json.dumps({
+                    "model": model_name,
+                    "messages": [
+                        {"role": "system", "content": "Você é um editor jornalístico sênior do portal Rodando o Mundo. Responda APENAS com JSON puro."},
+                        {"role": "user", "content": prompt}
+                    ],
+                    "temperature": config.get("temperature", 0.2),
+                    "response_format": {"type": "json_object"}
+                }).encode("utf-8"),
+                headers={
+                    "Authorization": f"Bearer {api_key}",
+                    "Content-Type": "application/json",
+                    "User-Agent": "RodandoOMundo/2.0"
+                },
+                method="POST"
+            )
+            with urllib.request.urlopen(req, timeout=30) as resp:
+                body = json.loads(resp.read().decode("utf-8"))
+                content = body["choices"][0]["message"]["content"]
+                parsed = extract_json_from_text(content)
+
+                items_enriquecidos = []
+                for it in parsed.get("items", []):
+                    ref = it.get("ref_id")
+                    orig = noticias_brutas.get(ref, {})
+                    it["url"] = orig.get("url") or (citations[0] if citations else "")
+                    it["fonte"] = orig.get("fonte") or it.get("fonte") or "Imprensa"
+                    items_enriquecidos.append(it)
+
+                return {"items": items_enriquecidos}, f"Groq ({model_name}) · DuckDuckGo News & Web", citations
+        except urllib.error.HTTPError as e:
+            err_body = ""
+            try:
+                err_body = e.read().decode("utf-8")
+            except Exception:
+                pass
+            last_error = f"HTTP {e.code} ({model_name}): {err_body[:200]}"
+            continue
+        except Exception as e:
+            last_error = f"{type(e).__name__} ({model_name}): {e}"
+            continue
+
+    raise RuntimeError(f"Não foi possível obter resposta da API Groq. Último erro: {last_error}")
+
+
 def _strip_accents(text):
     raw = unicodedata.normalize("NFD", str(text or ""))
     return "".join(ch for ch in raw if unicodedata.category(ch) != "Mn")
@@ -470,7 +640,7 @@ def enrich_and_validate_items(
         if not isinstance(item, dict) or not item.get("titulo"):
             continue
 
-        raw_url = str(item.get("url") or "").strip()
+        raw_url = str(item.get("url") or item.get("urlFonte") or "").strip()
         raw_dominio = str(item.get("dominio") or "").strip()
 
         if require_citations:
@@ -791,17 +961,22 @@ def main(argv=None):
         api_key = get_api_key()
         if not api_key:
             print(
-                "[ERRO] Nenhuma chave XAI_API_KEY ou GROK_API_KEY válida encontrada no ambiente ou no arquivo .env!",
+                "[ERRO] Nenhuma chave XAI_API_KEY, GROK_API_KEY ou GROQ_API_KEY válida encontrada no ambiente ou no arquivo .env!",
                 file=sys.stderr,
             )
             print(
-                "       Verifique se o seu arquivo .env na raiz do projeto contém: XAI_API_KEY=sua_chave_aqui",
+                "       Verifique se o seu arquivo .env contém: GROQ_API_KEY=gsk_... ou XAI_API_KEY=xai-...",
                 file=sys.stderr,
             )
             sys.exit(1)
 
-        print("[INFO] Conectando à Responses API da xAI (Grok) com x_search + web_search...")
-        raw_data, used_model, citations = call_grok_api(api_key, config)
+        if api_key.startswith("gsk_"):
+            print("[INFO] Chave da Groq detectada. Conectando à Groq API + Varredura Web RSS em Tempo Real (100% Gratuito)...")
+            raw_data, used_model, citations = call_groq_rss_api(api_key, config)
+        else:
+            print("[INFO] Conectando à Responses API da xAI (Grok) com x_search + web_search...")
+            raw_data, used_model, citations = call_grok_api(api_key, config)
+
         if not citations:
             print(
                 "[ERRO] A API não retornou nenhuma citação verificável (zero citations). Abortando sem sobrescrever.",
