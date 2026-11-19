@@ -4363,13 +4363,105 @@ def obter_atlas_pais_ao_vivo(
             except Exception:
                 pass
 
-    # 2. Coleta ao vivo via Google News RSS (local/regional)
+    # 2. Coleta ao vivo via Google News RSS (Edições Nativas Oficiais e Busca Inteligente 24h)
+    google_news_editions = {
+        "US": {"hl": "en-US", "gl": "US", "ceid": "US:en"},
+        "BR": {"hl": "pt-BR", "gl": "BR", "ceid": "BR:pt-419"},
+        "GB": {"hl": "en-GB", "gl": "GB", "ceid": "GB:en"},
+        "UK": {"hl": "en-GB", "gl": "GB", "ceid": "GB:en"},
+        "FR": {"hl": "fr", "gl": "FR", "ceid": "FR:fr"},
+        "DE": {"hl": "de", "gl": "DE", "ceid": "DE:de"},
+        "IT": {"hl": "it", "gl": "IT", "ceid": "IT:it"},
+        "ES": {"hl": "es", "gl": "ES", "ceid": "ES:es-419"},
+        "PT": {"hl": "pt-PT", "gl": "PT", "ceid": "PT:pt-150"},
+        "AR": {"hl": "es-419", "gl": "AR", "ceid": "AR:es-419"},
+        "MX": {"hl": "es-419", "gl": "MX", "ceid": "MX:es-419"},
+        "CO": {"hl": "es-419", "gl": "CO", "ceid": "CO:es-419"},
+        "CL": {"hl": "es-419", "gl": "CL", "ceid": "CL:es-419"},
+        "PE": {"hl": "es-419", "gl": "PE", "ceid": "PE:es-419"},
+        "VE": {"hl": "es-419", "gl": "VE", "ceid": "VE:es-419"},
+        "CA": {"hl": "en-CA", "gl": "CA", "ceid": "CA:en"},
+        "AU": {"hl": "en-AU", "gl": "AU", "ceid": "AU:en"},
+        "IN": {"hl": "en-IN", "gl": "IN", "ceid": "IN:en"},
+        "JP": {"hl": "ja", "gl": "JP", "ceid": "JP:ja"},
+        "RU": {"hl": "ru", "gl": "RU", "ceid": "RU:ru"},
+        "ZA": {"hl": "en-ZA", "gl": "ZA", "ceid": "ZA:en"},
+        "NL": {"hl": "nl", "gl": "NL", "ceid": "NL:nl"},
+        "BE": {"hl": "fr", "gl": "BE", "ceid": "BE:fr"},
+        "CH": {"hl": "de-CH", "gl": "CH", "ceid": "CH:de"},
+        "AT": {"hl": "de-AT", "gl": "AT", "ceid": "AT:de"},
+        "SE": {"hl": "sv", "gl": "SE", "ceid": "SE:sv"},
+        "NO": {"hl": "no", "gl": "NO", "ceid": "NO:no"},
+        "DK": {"hl": "da", "gl": "DK", "ceid": "DK:da"},
+        "FI": {"hl": "fi", "gl": "FI", "ceid": "FI:fi"},
+        "PL": {"hl": "pl", "gl": "PL", "ceid": "PL:pl"},
+        "TR": {"hl": "tr", "gl": "TR", "ceid": "TR:tr"},
+        "GR": {"hl": "el", "gl": "GR", "ceid": "GR:el"},
+        "IL": {"hl": "he", "gl": "IL", "ceid": "IL:he"},
+        "SA": {"hl": "ar", "gl": "SA", "ceid": "SA:ar"},
+        "EG": {"hl": "ar", "gl": "EG", "ceid": "EG:ar"},
+        "AE": {"hl": "ar", "gl": "AE", "ceid": "AE:ar"},
+        "NG": {"hl": "en-NG", "gl": "NG", "ceid": "NG:en"},
+        "KE": {"hl": "en-KE", "gl": "KE", "ceid": "KE:en"},
+        "ID": {"hl": "id", "gl": "ID", "ceid": "ID:id"},
+        "TH": {"hl": "th", "gl": "TH", "ceid": "TH:th"},
+        "VN": {"hl": "vi", "gl": "VN", "ceid": "VN:vi"},
+        "PH": {"hl": "en-PH", "gl": "PH", "ceid": "PH:en"},
+        "KR": {"hl": "ko", "gl": "KR", "ceid": "KR:ko"},
+        "TW": {"hl": "zh-TW", "gl": "TW", "ceid": "TW:zh-Hant"},
+        "HK": {"hl": "zh-HK", "gl": "HK", "ceid": "HK:zh-Hant"},
+        "SG": {"hl": "en-SG", "gl": "SG", "ceid": "SG:en"},
+        "NZ": {"hl": "en-NZ", "gl": "NZ", "ceid": "NZ:en"},
+        "IE": {"hl": "en-IE", "gl": "IE", "ceid": "IE:en"},
+        "UY": {"hl": "es-419", "gl": "UY", "ceid": "UY:es-419"},
+        "CU": {"hl": "es-419", "gl": "CU", "ceid": "CU:es-419"},
+        "CZ": {"hl": "cs", "gl": "CZ", "ceid": "CZ:cs"},
+        "HU": {"hl": "hu", "gl": "HU", "ceid": "HU:hu"},
+        "RO": {"hl": "ro", "gl": "RO", "ceid": "RO:ro"},
+        "BG": {"hl": "bg", "gl": "BG", "ceid": "BG:bg"},
+        "UA": {"hl": "uk", "gl": "UA", "ceid": "UA:uk"},
+        "PK": {"hl": "en-PK", "gl": "PK", "ceid": "PK:en"},
+        "MA": {"hl": "fr", "gl": "MA", "ceid": "MA:fr"},
+        "SN": {"hl": "fr", "gl": "SN", "ceid": "SN:fr"},
+        "EC": {"hl": "es-419", "gl": "EC", "ceid": "EC:es-419"},
+        "PY": {"hl": "es-419", "gl": "PY", "ceid": "PY:es-419"},
+        "BO": {"hl": "es-419", "gl": "BO", "ceid": "BO:es-419"},
+        "CR": {"hl": "es-419", "gl": "CR", "ceid": "CR:es-419"},
+        "PA": {"hl": "es-419", "gl": "PA", "ceid": "PA:es-419"},
+        "DO": {"hl": "es-419", "gl": "DO", "ceid": "DO:es-419"},
+        "GT": {"hl": "es-419", "gl": "GT", "ceid": "GT:es-419"},
+        "HN": {"hl": "es-419", "gl": "HN", "ceid": "HN:es-419"},
+        "SV": {"hl": "es-419", "gl": "SV", "ceid": "SV:es-419"},
+        "NI": {"hl": "es-419", "gl": "NI", "ceid": "NI:es-419"},
+    }
+    country_intl_names = {
+        "US": "United States", "GB": "United Kingdom", "DE": "Germany", "FR": "France",
+        "ES": "Spain", "IT": "Italy", "JP": "Japan", "RU": "Russia", "CN": "China",
+        "KR": "South Korea", "KP": "North Korea", "IS": "Iceland", "UY": "Uruguay",
+        "PY": "Paraguay", "BO": "Bolivia", "EC": "Ecuador", "AO": "Angola", "MZ": "Mozambique",
+        "CV": "Cabo Verde", "GW": "Guinea-Bissau", "ST": "Sao Tome and Principe", "TL": "Timor-Leste",
+        "AM": "Armenia", "GE": "Georgia", "AZ": "Azerbaijan", "KZ": "Kazakhstan", "UZ": "Uzbekistan",
+        "MN": "Mongolia", "IR": "Iran", "IQ": "Iraq", "SY": "Syria", "LB": "Lebanon",
+        "JO": "Jordan", "DZ": "Algeria", "TN": "Tunisia", "LY": "Libya", "SD": "Sudan",
+        "ET": "Ethiopia", "GH": "Ghana", "CI": "Ivory Coast", "CM": "Cameroon", "CD": "DR Congo",
+        "CG": "Republic of the Congo", "MG": "Madagascar", "ZW": "Zimbabwe", "ZM": "Zambia",
+        "NA": "Namibia", "BW": "Botswana",
+    }
+    lusophone_countries = {"BR", "PT", "AO", "MZ", "CV", "GW", "ST", "TL"}
+
+    ed = google_news_editions.get(c_code)
+    search_name = country_intl_names.get(c_code, c_name)
+
     if c_code == "BR":
         rss_url = "https://news.google.com/rss/headlines/section/geo/Brasil?hl=pt-BR&gl=BR&ceid=BR:pt-419"
+    elif ed:
+        rss_url = f"https://news.google.com/rss?hl={urllib.parse.quote(ed['hl'])}&gl={urllib.parse.quote(ed['gl'])}&ceid={urllib.parse.quote(ed['ceid'])}"
     else:
+        search_lang = "pt-BR" if c_code in lusophone_countries else "en"
+        lang_prefix = search_lang.split("-")[0]
         rss_url = (
-            f"https://news.google.com/rss/search?q={urllib.parse.quote(c_name + ' when:7d')}"
-            f"&hl=en&gl={urllib.parse.quote(c_code)}&ceid={urllib.parse.quote(c_code)}:en"
+            f"https://news.google.com/rss/search?q={urllib.parse.quote(search_name + ' when:24h')}"
+            f"&hl={search_lang}&gl={urllib.parse.quote(c_code)}&ceid={urllib.parse.quote(c_code)}:{lang_prefix}"
         )
 
     items: List[Dict[str, Any]] = []

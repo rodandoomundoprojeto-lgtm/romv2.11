@@ -905,22 +905,23 @@ svg *:focus-visible,
 }
 
 .mobile-chip {
-  position: fixed;
-  bottom: calc(2.25rem + env(safe-area-inset-bottom, 0px));
+  position: absolute;
+  bottom: 4.5rem;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 999999 !important;
+  z-index: 35;
   display: inline-flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--space-2);
-  width: min(calc(100vw - 2rem), 23rem);
-  min-height: 2.85rem;
-  padding: 0.3rem 0.6rem 0.3rem 0.8rem;
+  gap: 0.5rem;
+  width: max-content;
+  max-width: min(calc(100% - 4.75rem), 18rem);
+  min-height: 2.5rem;
+  padding: 0.22rem 0.28rem 0.22rem 0.6rem;
   background: var(--surface-2);
   border: 1.5px solid var(--border);
   border-radius: var(--radius-full);
-  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.32), 0 2px 8px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.34), 0 2px 8px rgba(0, 0, 0, 0.14);
   cursor: pointer;
   animation: chip-pop 0.22s var(--ease);
   transition: transform 0.18s var(--ease), box-shadow 0.18s var(--ease), opacity 0.2s var(--ease);
@@ -929,7 +930,7 @@ svg *:focus-visible,
 }
 .mobile-chip:hover {
   transform: translate(-50%, -2px);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.36);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.38);
 }
 .mobile-chip:active {
   transform: translate(-50%, 0) scale(0.98);
@@ -942,9 +943,9 @@ svg *:focus-visible,
 .mobile-chip-info {
   display: flex;
   align-items: center;
-  gap: var(--space-2);
+  gap: 0.45rem;
   min-width: 0;
-  flex: 1;
+  flex: 0 1 auto;
   overflow: hidden;
 }
 .mobile-chip-flag-box {
@@ -954,7 +955,7 @@ svg *:focus-visible,
   flex: none;
 }
 .mobile-chip-flag img {
-  width: 1.6rem;
+  width: 1.35rem;
   height: auto;
   border-radius: 2px;
   box-shadow: 0 0 0 1px var(--border);
@@ -964,14 +965,14 @@ svg *:focus-visible,
   display: flex;
   flex-direction: column;
   min-width: 0;
-  flex: 1;
+  flex: 0 1 auto;
   text-align: left;
   overflow: hidden;
 }
 .mobile-chip-name {
   color: var(--text);
   font-weight: 700;
-  font-size: var(--text-sm);
+  font-size: 0.8125rem;
   line-height: 1.2;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -979,7 +980,7 @@ svg *:focus-visible,
 }
 .mobile-chip-lang {
   color: var(--text-muted);
-  font-size: 0.6875rem;
+  font-size: 0.65rem;
   font-weight: 500;
   line-height: 1.2;
   margin-top: 1px;
@@ -990,13 +991,13 @@ svg *:focus-visible,
 .mobile-chip-action {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 4px;
   background: var(--primary);
   color: #fff;
   border: 0;
-  padding: 0.5rem 0.95rem;
+  padding: 0.42rem 0.72rem;
   border-radius: var(--radius-full);
-  font-size: 0.8125rem;
+  font-size: 0.75rem;
   font-weight: 700;
   flex: none;
   white-space: nowrap;
@@ -1005,6 +1006,8 @@ svg *:focus-visible,
 .mobile-chip-action svg {
   display: inline-block;
   flex: none;
+  width: 14px;
+  height: 14px;
 }
 @media (min-width: 769px) {
   .mobile-chip { display: none !important; }
@@ -9114,6 +9117,50 @@ button.support-link.topbar-more-btn:hover {
 }
 .country.hot-spot-pulsing:not(.active) {
   animation: hotCountryGlow 2.6s ease-in-out 5;
+}
+
+/* 4.1 Pulso de Farol (Beacon) para País-Alvo Clicado no Mapa */
+@keyframes targetCountryBeacon {
+  0%, 100% {
+    filter: brightness(1.06) drop-shadow(0 0 4px rgba(245, 158, 11, 0.75));
+    stroke: #f59e0b;
+    stroke-width: 2.2px;
+  }
+  50% {
+    filter: brightness(1.32) drop-shadow(0 0 12px rgba(245, 158, 11, 0.98)) drop-shadow(0 0 24px rgba(217, 119, 6, 0.85));
+    stroke: #ffffff;
+    stroke-width: 3.4px;
+  }
+}
+
+.country.target-pulsing,
+.island-marker.target-pulsing {
+  animation: targetCountryBeacon 1.8s ease-in-out infinite !important;
+  stroke: #f59e0b !important;
+  stroke-width: 2.8px !important;
+  vector-effect: non-scaling-stroke;
+}
+
+/* Destaque no item da lista de países quando for o alvo focado */
+.country-row-item.is-target-pulsing {
+  border-radius: var(--radius-sm);
+  background: color-mix(in oklab, var(--primary) 10%, var(--surface-2));
+  box-shadow: 0 0 0 1.5px rgba(245, 158, 11, 0.55), 0 2px 10px rgba(245, 158, 11, 0.2);
+}
+.country-row-item.is-target-pulsing .country-row-main {
+  font-weight: 700;
+}
+.target-pulse-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  color: #fff;
+  background: #f59e0b;
+  padding: 1px 6px;
+  border-radius: var(--radius-full);
+  margin-left: 6px;
+  letter-spacing: 0.02em;
 }
 .map-hot-news-pill {
   position: absolute;

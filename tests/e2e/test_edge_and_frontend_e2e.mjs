@@ -2722,7 +2722,7 @@ describe('Tier 1 — Edge & Frontend Feature Coverage (F1–F11)', () => {
     assert.ok((u2ByT.headers.get('cache-control') || '').includes('no-store'), 'ultimas-noticias ?_t= must return Cache-Control: no-store');
     assert.ok(u2Data.noticias.some((n) => n.titulo.includes('Cycle 2 Fresh Atom Headline')), 'ultimas-noticias ?_t= must bypass warm cacheMemoria');
 
-    // 1b. atlas-pais (non-BR includes when:7d, Atom <entry>, undated not stamped now(), ?_t= bypasses CACHE_LOCAL)
+    // 1b. atlas-pais (edicoes nativas oficiais ou busca com when, Atom <entry>, undated not stamped now(), ?_t= bypasses CACHE_LOCAL)
     rssCycle = 1;
     upstream.clearCalls();
     const a1 = await apiAtlasPais.onRequestGet({
@@ -2731,7 +2731,7 @@ describe('Tier 1 — Edge & Frontend Feature Coverage (F1–F11)', () => {
     });
     const a1Data = await a1.json();
     const deRssCall = upstream.upstreamCalls.find((c) => c.url.includes('news.google.com/rss'));
-    assert.ok(deRssCall && deRssCall.url.includes('when%3A7d') || (deRssCall && deRssCall.url.includes('when:7d')), 'Non-BR /api/atlas-pais RSS query must include when:7d');
+    assert.ok(deRssCall && (deRssCall.url.includes('gl=DE') || deRssCall.url.includes('when%3A') || deRssCall.url.includes('when:')), 'Non-BR /api/atlas-pais RSS query must target official country edition or recency query');
     assert.ok(a1Data.items.some((i) => i.titleOriginal.includes('Breaking Atom Entry C1')), 'atlas-pais must parse Atom <entry> and sort before slicing');
     const undatedAtlas = a1Data.items.find((i) => i.titleOriginal.includes('Undated RSS Mystery Item'));
     if (undatedAtlas) {

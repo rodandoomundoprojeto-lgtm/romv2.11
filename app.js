@@ -260,6 +260,7 @@
     focusCaribe: false,
     focusEastOceania: false,
     panelCollapsed: false,
+    targetPulseCountry: null,
     bias: 'all',
     topic: null,
     originRoute: null,
@@ -2635,6 +2636,7 @@
   /* ---------- Reset unificado: Voltar ao Mapa / X / Todos ---------- */
   function resetToWorld() {
     state.originRoute = null;
+    state.targetPulseCountry = null;
     state.sheetSnap = 'mid';
     setZoomedState(false);
     avisoGestoExibido = false;
@@ -3636,9 +3638,16 @@
       })
       .classed('hot-spot-pulsing', function (p) {
         return !!(hotPulseActive && getHotNewsForMapPart(p));
+      })
+      .classed('target-pulsing', function (p) {
+        if (!state.targetPulseCountry || !p.country) return false;
+        return p.country === state.targetPulseCountry ||
+               (state.targetPulseCountry.a2 && p.country.a2 === state.targetPulseCountry.a2) ||
+               (state.targetPulseCountry.id && p.country.id === state.targetPulseCountry.id);
       });
 
     countrySel.filter('.active').raise();
+    countrySel.filter('.target-pulsing').raise();
     if (islandMarkerSel) {
       islandMarkerSel
         .style('fill', function (p) {
@@ -3665,8 +3674,15 @@
           var matchCountry = p.country === state.country || (state.country.orig && p.country === state.country.orig) || (p.country && state.country.a2 && p.country.a2 === state.country.a2);
           return matchCountry && (state.islandName ? p.islandName === state.islandName : !p.islandName);
         })
+        .classed('target-pulsing', function (p) {
+          if (!state.targetPulseCountry || !p.country) return false;
+          return p.country === state.targetPulseCountry ||
+                 (state.targetPulseCountry.a2 && p.country.a2 === state.targetPulseCountry.a2) ||
+                 (state.targetPulseCountry.id && p.country.id === state.targetPulseCountry.id);
+        })
         .attr('aria-label', function (p) { return p.islandName || countryDisplayName(p.country, p.c); });
       islandMarkerSel.filter('.active').raise();
+      islandMarkerSel.filter('.target-pulsing').raise();
     }
     backBtn.hidden = !state.cont;
     updateFocusCaribeBtn();
@@ -4667,8 +4683,10 @@
   }
 
   function updateMobileChipVisibility() {
-    var outletsCount = getCountryOutletsCount(state.country, state.cont);
-    if (!mobileChip || !state.country || window.innerWidth > 768 || outletsCount <= 1) {
+    var activeCountry = state.country || state.targetPulseCountry;
+    var activeCont = state.cont || (activeCountry && activeCountry.c);
+    var outletsCount = getCountryOutletsCount(activeCountry, activeCont);
+    if (!mobileChip || !activeCountry || window.innerWidth > 768 || outletsCount <= 1) {
       if (mobileChip) {
         mobileChip.style.opacity = '0';
         mobileChip.style.pointerEvents = 'none';
@@ -4765,10 +4783,15 @@
     mobileChip.addEventListener('click', function (e) {
       e.preventDefault();
       e.stopPropagation();
-      var outletsCount = getCountryOutletsCount(state.country, state.cont);
+      var activeCountry = state.country || state.targetPulseCountry;
+      var activeCont = state.cont || (activeCountry && activeCountry.c);
+      var outletsCount = getCountryOutletsCount(activeCountry, activeCont);
       if (outletsCount <= 1) {
         hideMobileChip();
         return;
+      }
+      if (!state.country && state.targetPulseCountry) {
+        go(activeCont, state.targetPulseCountry);
       }
       if (state.panelCollapsed) {
         setPanelCollapsed(false);
@@ -4861,7 +4884,14 @@
         go(targetCont, p.country, { islandName: p.islandName, islandFlag: p.islandFlag });
         return;
       }
-      go(p.c, null);
+      var isMobClick = window.innerWidth <= 768;
+      go(p.c, null, {
+        targetPulseCountry: p.country,
+        keepPanelClosed: isMobClick
+      });
+      if (isMobClick && p.country) {
+        showMobileChip(p.country, p.c);
+      }
       return;
     }
 
@@ -4875,7 +4905,14 @@
         go(targetCont, p.country, { islandName: p.islandName, islandFlag: p.islandFlag });
         return;
       }
-      go(p.c, null);
+      var isMobClick2 = window.innerWidth <= 768;
+      go(p.c, null, {
+        targetPulseCountry: p.country,
+        keepPanelClosed: isMobClick2
+      });
+      if (isMobClick2 && p.country) {
+        showMobileChip(p.country, p.c);
+      }
       return;
     }
 
@@ -5018,8 +5055,12 @@
     var cName = c.islandName || countryDisplayName(c, state.cont);
     var dots = m ? '<em>' + m.outlets.length + ' veículos</em>' : '';
     var favOn = isCountryFavorited(c, state.cont);
-    return '<li class="country-row-item"><button type="button" class="country-row-main" data-id="' + esc(c.id) + '"' + (c.islandName ? ' data-island-name="' + esc(c.islandName) + '"' : '') + (c.islandFlag ? ' data-island-flag="' + esc(c.islandFlag) + '"' : '') + '>' + (countryFlag(c, 'flag-sm', state.cont) || '<span class="flag-sm"></span>') +
-      '<span class="' + (m ? '' : 'nod') + '">' + esc(cName) + '</span><span class="count" aria-label="' + (m ? m.outlets.length + ' veículos' : 'sem veículos') + '">' + dots + '</span></button>' +
+    var isTarget = !!(state.targetPulseCountry && (c === state.targetPulseCountry || (c.a2 && state.targetPulseCountry.a2 && c.a2 === state.targetPulseCountry.a2) || (c.id && state.targetPulseCountry.id && c.id === state.targetPulseCountry.id)));
+    var targetCls = isTarget ? ' is-target-pulsing' : '';
+    return '<li class="country-row-item' + targetCls + '"><button type="button" class="country-row-main' + (isTarget ? ' is-target-pulsing' : '') + '" data-id="' + esc(c.id) + '"' + (c.islandName ? ' data-island-name="' + esc(c.islandName) + '"' : '') + (c.islandFlag ? ' data-island-flag="' + esc(c.islandFlag) + '"' : '') + '>' + (countryFlag(c, 'flag-sm', state.cont) || '<span class="flag-sm"></span>') +
+      '<span class="' + (m ? '' : 'nod') + '">' + esc(cName) + '</span>' +
+      (isTarget ? '<span class="target-pulse-badge" title="País selecionado no mapa">🔥 Notícia</span>' : '') +
+      '<span class="count" aria-label="' + (m ? m.outlets.length + ' veículos' : 'sem veículos') + '">' + dots + '</span></button>' +
       '<button type="button" class="fav-star-btn fav-country-list-btn' + (favOn ? ' is-fav' : '') + '" data-fav-country-id="' + esc(c.id) + '" aria-pressed="' + favOn + '" title="' + (favOn ? 'Remover país dos favoritos' : 'Salvar país nos favoritos') + '" aria-label="' + (favOn ? 'Remover ' : 'Favoritar ') + esc(cName) + '">' + (favOn ? ICON_STAR_ON : ICON_STAR_OFF) + '</button></li>';
   }
   function renderContinent() {
@@ -5048,6 +5089,14 @@
       if (b.length) out += '<li class="list-sep">Outros países (sem veículos ainda)</li>' + b.map(countryRow).join('');
       if (!a.length && !b.length) out = '<li class="empty-state"><p>Nenhum país encontrado.</p></li>';
       list.innerHTML = out;
+      if (state.targetPulseCountry && !qNorm) {
+        var targetRow = list.querySelector('.country-row-item.is-target-pulsing');
+        if (targetRow) {
+          setTimeout(function () {
+            targetRow.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          }, 100);
+        }
+      }
       list.querySelectorAll('button[data-id]').forEach(function (btn) {
         btn.addEventListener('click', function () {
           var idVal = btn.getAttribute('data-id');
@@ -5504,9 +5553,45 @@
     }
 
     function fallbackRssBrowser() {
-      var rssTarget = cCode === 'BR'
-        ? 'https://news.google.com/rss/headlines/section/geo/Brasil?hl=pt-BR&gl=BR&ceid=BR:pt-419'
-        : 'https://news.google.com/rss/search?q=' + encodeURIComponent(cName) + '&hl=en&gl=' + encodeURIComponent(cCode) + '&ceid=' + encodeURIComponent(cCode) + ':en';
+      var EDITIONS = {
+        US: { hl: 'en-US', gl: 'US', ceid: 'US:en' },
+        BR: { hl: 'pt-BR', gl: 'BR', ceid: 'BR:pt-419' },
+        GB: { hl: 'en-GB', gl: 'GB', ceid: 'GB:en' },
+        UK: { hl: 'en-GB', gl: 'GB', ceid: 'GB:en' },
+        FR: { hl: 'fr', gl: 'FR', ceid: 'FR:fr' },
+        DE: { hl: 'de', gl: 'DE', ceid: 'DE:de' },
+        IT: { hl: 'it', gl: 'IT', ceid: 'IT:it' },
+        ES: { hl: 'es', gl: 'ES', ceid: 'ES:es-419' },
+        PT: { hl: 'pt-PT', gl: 'PT', ceid: 'PT:pt-150' },
+        AR: { hl: 'es-419', gl: 'AR', ceid: 'AR:es-419' },
+        MX: { hl: 'es-419', gl: 'MX', ceid: 'MX:es-419' },
+        CO: { hl: 'es-419', gl: 'CO', ceid: 'CO:es-419' },
+        CL: { hl: 'es-419', gl: 'CL', ceid: 'CL:es-419' },
+        PE: { hl: 'es-419', gl: 'PE', ceid: 'PE:es-419' },
+        CA: { hl: 'en-CA', gl: 'CA', ceid: 'CA:en' },
+        AU: { hl: 'en-AU', gl: 'AU', ceid: 'AU:en' },
+        IN: { hl: 'en-IN', gl: 'IN', ceid: 'IN:en' },
+        JP: { hl: 'ja', gl: 'JP', ceid: 'JP:ja' },
+        RU: { hl: 'ru', gl: 'RU', ceid: 'RU:ru' },
+        ZA: { hl: 'en-ZA', gl: 'ZA', ceid: 'ZA:en' },
+        NL: { hl: 'nl', gl: 'NL', ceid: 'NL:nl' },
+        UY: { hl: 'es-419', gl: 'UY', ceid: 'UY:es-419' }
+      };
+      var INTL_NAMES = {
+        US: 'United States', GB: 'United Kingdom', DE: 'Germany', FR: 'France',
+        ES: 'Spain', IT: 'Italy', JP: 'Japan', RU: 'Russia', CN: 'China',
+        IS: 'Iceland', UY: 'Uruguay', PY: 'Paraguay', BO: 'Bolivia', EC: 'Ecuador'
+      };
+      var ed = EDITIONS[cCode];
+      var searchName = INTL_NAMES[cCode] || cName;
+      var rssTarget = '';
+      if (cCode === 'BR') {
+        rssTarget = 'https://news.google.com/rss/headlines/section/geo/Brasil?hl=pt-BR&gl=BR&ceid=BR:pt-419';
+      } else if (ed) {
+        rssTarget = 'https://news.google.com/rss?hl=' + encodeURIComponent(ed.hl) + '&gl=' + encodeURIComponent(ed.gl) + '&ceid=' + encodeURIComponent(ed.ceid);
+      } else {
+        rssTarget = 'https://news.google.com/rss/search?q=' + encodeURIComponent(searchName + ' when:24h') + '&hl=en&gl=' + encodeURIComponent(cCode) + '&ceid=' + encodeURIComponent(cCode) + ':en';
+      }
       var proxyUrl = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(rssTarget);
       return fetch(proxyUrl, { cache: 'no-store' })
         .then(function (r) { return r.ok ? r.json() : null; })
@@ -11005,7 +11090,7 @@
     h += '<header class="hub-hero">';
     h += '<div class="hub-hero-badges">';
     h += '<span class="editorial-eyebrow">⚡ Entenda o assunto · Análise Editorial</span>';
-    h += '<span class="entenda-meta-pill">' + esc(categoriaLabel) + ' · ⏱️ ' + tempoMin + ' min · ' + esc(atualizadoStr) + '</span>';
+    h += '<span class="entenda-meta-pill">' + esc(categoriaLabel) + ' · ⏱️ ' + tempoMin + ' min</span>';
     h += '</div>';
     h += '<h1 class="hub-title">' + esc(titulo) + '</h1>';
     if (subtitulo && subtitulo !== titulo) {
@@ -13926,11 +14011,6 @@
     eh += '</div>';
     if (isFullPage) {
       eh += '<div style="display:flex;gap:var(--space-2);align-items:center;flex-wrap:wrap;">';
-      if (entendaV2State.atualizadoEm) {
-        eh += '<span id="entenda-last-updated" class="radar-updated-badge">' + esc(entendaV2State.atualizadoEm) + '</span>';
-      } else {
-        eh += '<span id="entenda-last-updated" class="radar-updated-badge" hidden></span>';
-      }
       eh += '<button type="button" class="btn btn-secondary' + (entendaV2State.loading ? ' is-loading' : '') + '" id="btn-refresh-entenda" title="Atualizar guias de Entenda o assunto"' + (entendaV2State.loading ? ' disabled' : '') + '>↻ ' + (entendaV2State.loading ? 'Atualizando…' : 'Atualizar') + '</button>';
       eh += '</div>';
     } else {
@@ -13947,13 +14027,11 @@
       var cObj = byA2[cCode] || byA2['BR'];
       var cCont = (cObj && cObj.c) || 'sul';
       var termo = (Array.isArray(art.tags) && art.tags[0]) || art.titulo || '';
-      var updLabel = art.atualizado_em || 'Recente';
 
       var card = '<article class="entenda-home-card entenda-card-compact entenda-v2-card" id="entenda-card-' + esc(slug) + '">';
       card += '<div class="entenda-card-meta">';
       card += '<span class="radar-v2-pill">⚡ Guia Editorial</span>';
       card += '<span class="entenda-reading-time">' + esc(catLabel) + ' · ⏱️ ' + readTimeMin + ' min</span>';
-      card += '<span class="entenda-update-date">' + esc(updLabel) + '</span>';
       card += '</div>';
       card += '<h3><a href="/entenda/' + esc(slug) + '" data-spa-link>' + esc(art.titulo || slug) + '</a></h3>';
       card += '<p class="entenda-summary-compact">' + esc(art.resumo || art.subtitulo || '') + '</p>';
@@ -13972,8 +14050,8 @@
       var readTimeMin = Math.max(2, Math.round(wordCount / 180));
       var card = '<article class="entenda-home-card entenda-card-compact" id="entenda-card-' + esc(ex.slug) + '">';
       card += '<div class="entenda-card-meta">';
+      card += '<span class="radar-v2-pill">⚡ Guia Essencial</span>';
       card += '<span class="entenda-reading-time">⏱️ ' + readTimeMin + ' min de leitura</span>';
-      card += '<span class="entenda-update-date">Guia essencial</span>';
       card += '</div>';
       card += '<h3><a href="/entenda/' + esc(ex.slug) + '" data-spa-link>' + esc(ex.titulo) + '</a></h3>';
       card += '<p class="entenda-summary-compact">' + esc(ex.resumoSimples) + '</p>';
@@ -14286,6 +14364,11 @@
     state.islandName = opts.islandName || (country && country.islandName) || null;
     state.islandFlag = opts.islandFlag || (country && country.islandFlag) || null;
     state.cont = cont; state.country = country;
+    if (opts.targetPulseCountry !== undefined) {
+      state.targetPulseCountry = opts.targetPulseCountry;
+    } else {
+      state.targetPulseCountry = null;
+    }
     if (country) {
       var cCodeNav = (cont === 'sul' && (country.a2 === 'FR' || country.id === '250')) ? 'GF' : (country.a2 || country.id);
       carregarTopicosDinamicosSalvos(cCodeNav);
@@ -14294,7 +14377,9 @@
       var outletsNav = (cMedNav && cMedNav.outlets) ? cMedNav.outlets : [];
       buscarTopicosEmAltaAoVivo(cCodeNav, langNav, outletsNav);
     }
-    hideMobileChip();
+    if (!opts.targetPulseCountry) {
+      hideMobileChip();
+    }
     paintMap();
     render();
     if (typeof renderDossiesRotativosHome === 'function') renderDossiesRotativosHome();
@@ -14322,8 +14407,8 @@
       setZoomedState(!!cont);
       applyZoom(true);
     }
-    if (country && window.innerWidth <= 768) {
-      showMobileChip(country, cont);
+    if ((country || state.targetPulseCountry) && window.innerWidth <= 768) {
+      showMobileChip(country || state.targetPulseCountry, cont);
     }
     var targetPath = buildPath(cont, country);
     updateNavActive(cont ? null : '/');
