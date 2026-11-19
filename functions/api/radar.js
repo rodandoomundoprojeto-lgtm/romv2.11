@@ -239,9 +239,19 @@ async function carregarAssetJson(relPath, request, env) {
   return null;
 }
 
+const WORKER_STATE_MEMO = new Map();
+const WORKER_STATE_MEMO_TTL_MS = 4 * 60 * 1000; // 4 minutos
+
 async function carregarEstadoBackend(chave, request, env, isRefresh = false) {
   const backendUrl = resolverBackendUrl(env, request);
   if (!backendUrl) return null;
+
+  if (!isRefresh && WORKER_STATE_MEMO.has(chave)) {
+    const entry = WORKER_STATE_MEMO.get(chave);
+    if (entry && (Date.now() - entry.ts < WORKER_STATE_MEMO_TTL_MS)) {
+      return entry.data;
+    }
+  }
 
   const ctrl = new AbortController();
   const timer = setTimeout(() => ctrl.abort(), 9000);
@@ -257,18 +267,29 @@ async function carregarEstadoBackend(chave, request, env, isRefresh = false) {
         'X-Rom-Edge-Hop': '1',
       },
     });
-    if (!resp || !resp.ok) return null;
+    if (!resp || !resp.ok) {
+      if (WORKER_STATE_MEMO.has(chave)) {
+        return WORKER_STATE_MEMO.get(chave).data;
+      }
+      return null;
+    }
     const data = await resp.json();
     const payload = data && Object.prototype.hasOwnProperty.call(data, 'payload') ? data.payload : data;
     if (!payload) return null;
-    if (Array.isArray(payload)) return payload.length > 0 ? payload : null;
-    if (typeof payload === 'object') {
-      if (Array.isArray(payload.temas_ativos) && payload.temas_ativos.length > 0) return payload;
-      if (Array.isArray(payload.noticias_quentes) && payload.noticias_quentes.length > 0) return payload;
-      return null;
+    let res = null;
+    if (Array.isArray(payload)) res = payload.length > 0 ? payload : null;
+    else if (typeof payload === 'object') {
+      if (Array.isArray(payload.temas_ativos) && payload.temas_ativos.length > 0) res = payload;
+      else if (Array.isArray(payload.noticias_quentes) && payload.noticias_quentes.length > 0) res = payload;
     }
-    return null;
+    if (res) {
+      WORKER_STATE_MEMO.set(chave, { ts: Date.now(), data: res });
+    }
+    return res;
   } catch {
+    if (WORKER_STATE_MEMO.has(chave)) {
+      return WORKER_STATE_MEMO.get(chave).data;
+    }
     return null;
   } finally {
     clearTimeout(timer);

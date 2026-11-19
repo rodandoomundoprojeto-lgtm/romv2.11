@@ -27,7 +27,7 @@ MENSAGEM="${1:-chore(pipeline): atualiza dados gerados [skip ci]}"
 shift || true
 ARQUIVOS=("$@")
 if [ ${#ARQUIVOS[@]} -eq 0 ]; then
-  ARQUIVOS=(data/vitrine_ia.json data/feed_output.json data/history.json)
+  ARQUIVOS=(data/vitrine_ia.json data/feed_output.json data/history.json data/entenda_v2.json)
 fi
 
 BRANCH="${SYNC_BRANCH:-${GITHUB_REF_NAME:-main}}"
@@ -146,7 +146,7 @@ resolver_conflitos() {
   while IFS= read -r arq; do
     [ -z "$arq" ] && continue
     case "$arq" in
-      data/vitrine_ia.json|data/feed_output.json)
+      data/vitrine_ia.json|data/feed_output.json|data/entenda_v2.json)
         # Durante o rebase, "theirs" é o commit recém-gerado sendo reaplicado.
         if git checkout --theirs -- "$arq"; then
           git add -- "$arq" || { restantes+=("$arq"); continue; }

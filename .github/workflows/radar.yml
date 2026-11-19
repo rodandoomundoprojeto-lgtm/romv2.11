@@ -3,6 +3,9 @@ name: Radar de Noticias & Briefing Editorial
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
 
+permissions:
+  contents: write
+
 on:
   schedule:
     # Minutos 8 e 38: escalonado em relação ao pulso (0/30), editorial (20) e curadoria (45)
@@ -33,6 +36,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Ping Keep-Alive Render Backend
+        run: |
+          curl -f -s -S --max-time 20 https://rom-backend-v2.onrender.com/health || echo "Render acordando..."
+
       - name: Executar Pipeline do Radar
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
@@ -52,3 +59,9 @@ jobs:
           CURADORIA_DATABASE_URL: ${{ secrets.CURADORIA_DATABASE_URL }}
         run: |
           python main.py
+
+      - name: Sincronizar dados gerados no Git
+        if: always()
+        run: |
+          python scripts/export_db_to_assets.py || true
+          bash scripts/sync_generated_data.sh "chore(radar): atualiza feed_output e vitrine_ia [skip ci]" data/feed_output.json data/history.json data/vitrine_ia.json

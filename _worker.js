@@ -454,9 +454,19 @@ async function carregarAssetWorker(path, request, env) {
   return null;
 }
 
+const WORKER_STATE_MEMO = new Map();
+const WORKER_STATE_MEMO_TTL_MS = 4 * 60 * 1000; // 4 minutos
+
 async function carregarEstadoWorker(chave, request, env, isRefresh = false) {
   const backendUrl = resolverBackendUrl(env, request);
   if (!backendUrl) return null;
+
+  if (!isRefresh && WORKER_STATE_MEMO.has(chave)) {
+    const entry = WORKER_STATE_MEMO.get(chave);
+    if (entry && (Date.now() - entry.ts < WORKER_STATE_MEMO_TTL_MS)) {
+      return entry.data;
+    }
+  }
 
   const ctrl = new AbortController();
   const timer = setTimeout(() => ctrl.abort(), 9000);
@@ -472,20 +482,31 @@ async function carregarEstadoWorker(chave, request, env, isRefresh = false) {
         'X-Rom-Edge-Hop': '1',
       },
     });
-    if (!resp || !resp.ok) return null;
+    if (!resp || !resp.ok) {
+      if (WORKER_STATE_MEMO.has(chave)) {
+        return WORKER_STATE_MEMO.get(chave).data;
+      }
+      return null;
+    }
     const data = await resp.json();
     const payload = data && Object.prototype.hasOwnProperty.call(data, 'payload') ? data.payload : data;
     if (!payload) return null;
-    if (Array.isArray(payload)) return payload.length > 0 ? payload : null;
-    if (typeof payload === 'object') {
+    let res = null;
+    if (Array.isArray(payload)) res = payload.length > 0 ? payload : null;
+    else if (typeof payload === 'object') {
       // Espelha a regra do backend (api/routes_v2.py): snapshot sem temas_ativos
       // e sem noticias_quentes é "sem conteúdo" — cai para o asset versionado.
-      if (Array.isArray(payload.temas_ativos) && payload.temas_ativos.length > 0) return payload;
-      if (Array.isArray(payload.noticias_quentes) && payload.noticias_quentes.length > 0) return payload;
-      return null;
+      if (Array.isArray(payload.temas_ativos) && payload.temas_ativos.length > 0) res = payload;
+      else if (Array.isArray(payload.noticias_quentes) && payload.noticias_quentes.length > 0) res = payload;
     }
-    return null;
+    if (res) {
+      WORKER_STATE_MEMO.set(chave, { ts: Date.now(), data: res });
+    }
+    return res;
   } catch {
+    if (WORKER_STATE_MEMO.has(chave)) {
+      return WORKER_STATE_MEMO.get(chave).data;
+    }
     return null;
   } finally {
     clearTimeout(timer);
@@ -683,6 +704,48 @@ async function handleEntendaOAssunto(request, env, url) {
       // fallback para resposta offline limpa
     } finally {
       clearTimeout(timer);
+    }
+  }
+
+  // Fallback resiliente: carregar snapshot do asset data/entenda_v2.json
+  const snapLocal = await carregarAssetWorker('data/entenda_v2.json', request, env);
+  if (snapLocal && Array.isArray(snapLocal.colunas || snapLocal.artigos)) {
+    const colunas = snapLocal.colunas || snapLocal.artigos;
+    if (colunas.length > 0) {
+      if (slug) {
+        const limpo = slug.trim().toLowerCase().replace(/^entenda-/, '');
+        const achado = colunas.find((c) => {
+          const s = String(c.slug || '').trim().toLowerCase().replace(/^entenda-/, '');
+          return s === limpo;
+        });
+        if (achado) {
+          return new Response(JSON.stringify({
+            ok: true,
+            fallback: true,
+            source: 'entenda_snapshot',
+            artigo: achado,
+            coluna: achado,
+            coluna_editorial: achado
+          }), {
+            status: 200,
+            headers: { ...CORS_HEADERS, 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store, no-cache, must-revalidate' }
+          });
+        }
+      } else {
+        return new Response(JSON.stringify({
+          ok: true,
+          fallback: true,
+          source: 'entenda_snapshot',
+          updatedAt: snapLocal.updatedAt || '',
+          atualizado_em: snapLocal.atualizado_em || '',
+          total: colunas.length,
+          colunas: colunas,
+          artigos: colunas
+        }), {
+          status: 200,
+          headers: { ...CORS_HEADERS, 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store, no-cache, must-revalidate' }
+        });
+      }
     }
   }
 

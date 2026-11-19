@@ -269,6 +269,17 @@ async def _executar_modo_coluna(
                     serializado = _serializar_resultado_editorial(resultado)
                     if not dry_run and serializado.get("aprovado") and isinstance(serializado.get("coluna"), dict):
                         try:
+                            from api.routes_v2 import _sincronizar_espelho_entenda_v2
+                            from src.estado_db import obter_database_url
+                            import psycopg
+                            db_url_sync = obter_database_url()
+                            if db_url_sync:
+                                with psycopg.connect(db_url_sync) as c_sync:
+                                    _sincronizar_espelho_entenda_v2(c_sync)
+                        except Exception as exc_sync:
+                            print(f"[Aviso] Falha ao sincronizar espelho entenda_v2: {exc_sync}", file=sys.stderr)
+
+                        try:
                             from src.notifier import send_discord_webhook
 
                             col = serializado["coluna"]

@@ -3,6 +3,9 @@ name: Pipeline Editorial V2 & Pulso 30m
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
 
+permissions:
+  contents: write
+
 on:
   schedule:
     # Pipeline de Pulso de Notícias Quentes (a cada 30 minutos — gemini-2.5-flash)
@@ -55,6 +58,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           pip install -r curadoria/requirements.txt
+
+      - name: Ping Keep-Alive Render Backend
+        run: |
+          curl -f -s -S --max-time 20 https://rom-backend-v2.onrender.com/health || echo "Render acordando..."
 
       - name: Executar Pulso 30m (Agendado */30 * * * *)
         if: github.event_name == 'schedule' && github.event.schedule == '*/30 * * * *'
@@ -121,3 +128,9 @@ jobs:
           else
             python scripts/run_pipeline.py --modo "${{ github.event.inputs.modo }}" $DRY_FLAG
           fi
+
+      - name: Sincronizar dados gerados no Git
+        if: always()
+        run: |
+          python scripts/export_db_to_assets.py || true
+          bash scripts/sync_generated_data.sh "chore(pipeline): atualiza vitrine_ia e entenda_v2 [skip ci]" data/vitrine_ia.json data/entenda_v2.json data/feed_output.json

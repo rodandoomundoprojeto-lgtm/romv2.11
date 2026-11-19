@@ -1,0 +1,26 @@
+name: Keep-Alive Render Backend V2
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
+
+on:
+  schedule:
+    # A cada 10 minutos para impedir o spin-down (hibernação do free tier do Render que ocorre aos 15m)
+    - cron: '*/10 * * * *'
+  workflow_dispatch:
+
+concurrency:
+  group: rom-keepalive-render
+  cancel-in-progress: true
+
+jobs:
+  keepalive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+
+    steps:
+      - name: Ping Render Backend
+        run: |
+          echo "Pinging Render backend to keep instance warm and prevent cold starts..."
+          curl -f -s -S --max-time 30 https://rom-backend-v2.onrender.com/health || echo "Render acordando..."
+          curl -f -s -S --max-time 30 https://rom-backend-v2.onrender.com/v1/estado/vitrine_ia > /dev/null || true

@@ -14402,9 +14402,11 @@
             renderColunasEntendaV2DOM(v2EntendaColunasCache, v2EntendaAtualizadoEm);
           }
         } else {
-          v2EntendaColunasCache = [];
-          v2EntendaColunasCacheTs = 0;
-          renderColunasEntendaV2DOM([], '');
+          if (!Array.isArray(v2EntendaColunasCache) || !v2EntendaColunasCache.length) {
+            v2EntendaColunasCache = [];
+            v2EntendaColunasCacheTs = 0;
+            renderColunasEntendaV2DOM([], '');
+          }
         }
       })
       .catch(function () {});

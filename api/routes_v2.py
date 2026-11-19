@@ -106,6 +106,27 @@ def get_db():
         yield conn
 
 
+def _obter_cursor(conn: Any):
+    """Obtém cursor com row_factory=dict_row com fallback seguro para conexões mock em testes."""
+    try:
+        return conn.cursor(row_factory=dict_row)
+    except (TypeError, ValueError):
+        return conn.cursor()
+
+
+def _row_to_dict(cur: Any, row: Any) -> Dict[str, Any]:
+    """Converte linha de cursor para dict de forma tolerante a tuplas e dicts."""
+    if isinstance(row, dict):
+        return row
+    if hasattr(cur, "description") and cur.description:
+        colnames = [d.name if hasattr(d, "name") else d[0] for d in cur.description]
+        return dict(zip(colnames, row))
+    try:
+        return dict(row)
+    except Exception:
+        return {}
+
+
 def aplicar_no_cache_headers(response: Response) -> None:
     """Aplica invalidação rigorosa de cache (Regra 7 do GEMINI.md)."""
     response.headers["Cache-Control"] = "no-store, no-cache, must-revalidate"
@@ -616,7 +637,7 @@ def listar_noticias_quentes(
     noticias: List[Dict[str, Any]] = []
     source_label = "database"
     try:
-        with conn.cursor() as cur:
+        with _obter_cursor(conn) as cur:
             filtros_ativos = ["expires_at > NOW()", "destaque_ate > NOW()"] + filtros_comuns
             cur.execute(_montar_query(filtros_ativos), tuple(params_comuns + [qtd_limite]))
             rows = cur.fetchall()
@@ -1292,7 +1313,7 @@ def listar_colunas_editoriais(
 
     colunas: List[Dict[str, Any]] = []
     try:
-        with conn.cursor() as cur:
+        with _obter_cursor(conn) as cur:
             cur.execute(query, tuple(params))
             rows = cur.fetchall()
 
@@ -1438,9 +1459,9 @@ def _coletar_entenda_publicados(
     if conn is None:
         return []
 
-    filtros_col = ["(c.status = 'publicado' OR c.review_status = 'publicado')"]
+    filtros_col = ["(c.status IN ('publicado', 'aprovado') OR c.review_status IN ('publicado', 'aprovado'))"]
     params_col: List[Any] = []
-    filtros_ea = ["status = 'publicado'"]
+    filtros_ea = ["status IN ('publicado', 'aprovado')"]
     params_ea: List[Any] = []
 
     if categoria and categoria.strip():
@@ -1459,7 +1480,7 @@ def _coletar_entenda_publicados(
     slugs_vistos: set[str] = set()
 
     try:
-        with conn.cursor() as cur:
+        with _obter_cursor(conn) as cur:
             cur.execute(
                 f"""
                 SELECT
@@ -1496,7 +1517,7 @@ def _coletar_entenda_publicados(
                 tuple(params_col),
             )
             for row in cur.fetchall():
-                r = dict(row)
+                r = _row_to_dict(cur, row)
                 col_dict = {
                     "slug": r.get("col_slug"),
                     "titulo": r.get("col_titulo"),
@@ -1558,7 +1579,7 @@ def _coletar_entenda_publicados(
                     tuple(params_ea),
                 )
                 for row_ea in cur.fetchall():
-                    e = dict(row_ea)
+                    e = _row_to_dict(cur, row_ea)
                     clean_ea = _normalizar_slug_entenda_limpo(e.get("ea_slug"))
                     if not clean_ea or clean_ea in slugs_vistos:
                         continue
@@ -1831,7 +1852,7 @@ def obter_entenda_o_assunto_por_slug(
     evento_associado: Optional[Dict[str, Any]] = None
 
     try:
-        with conn.cursor() as cur:
+        with _obter_cursor(conn) as cur:
             # 1. Busca em ai_entenda_o_assunto
             cur.execute(
                 """
@@ -3995,7 +4016,7 @@ def obter_sugestoes_contextuais(
     seen_norms: set = set()
 
     try:
-        with conn.cursor() as cur:
+        with _obter_cursor(conn) as cur:
             if pais_norm:
                 # Prioridade 1 (Direto): artigos publicados vinculados diretamente ao país
                 diretas = _consultar_sugestoes_por_escopo(
@@ -4079,7 +4100,7 @@ def listar_artigos_por_assunto(
 
     artigos: List[Dict[str, Any]] = []
     try:
-        with conn.cursor() as cur:
+        with _obter_cursor(conn) as cur:
             where_sql, params = _construir_where_artigos_assunto(
                 termo, pais_norm, escopo_efetivo, categoria, somente_ativos=True
             )
@@ -4148,7 +4169,7 @@ def atualizar_pulso_continental(
 
     continentes = payload.get("continentes") or {}
     try:
-        with conn.cursor() as cur:
+        with _obter_cursor(conn) as cur:
             for cont_key, data in continentes.items():
                 headlines = data.get("headlines") or []
                 active_paises = list({h.get("countryCode") for h in headlines if h.get("countryCode")})
@@ -4198,7 +4219,7 @@ def obter_pulso_continental(
         return {"ok": False, "continentes": {}}
 
     try:
-        with conn.cursor() as cur:
+        with _obter_cursor(conn) as cur:
             if continente:
                 cur.execute(
                     "SELECT continent_key, headlines_json, active_countries, updated_at FROM atlas_pulso_continental WHERE continent_key = %s;",
