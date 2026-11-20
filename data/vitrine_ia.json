@@ -2,33 +2,263 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-20T17:27:30Z",
-  "batch_id": "20261120-1727",
+  "updatedAt": "2026-11-20T18:27:01Z",
+  "batch_id": "20261120-1826",
   "temas_ativos": [
     {
-      "slug": "temporal-devastador-deixa-mortos-e-destruicao-no-rio-grande-do-sul",
-      "titulo_tema": "Temporal provocou mortes e destruição em cidades do Rio Grande do Sul",
-      "titulo_curto": "Temporal provocou mortes e destruição em cidades do Rio Grande do Sul",
+      "slug": "praga-de-mosca-da-bicheira-avanca-nos-eua-e-ameaca-rebanho-bovino",
+      "titulo_tema": "Surto de mosca-da-bicheira avança no sudoeste dos EUA e ameaça pecuária",
+      "titulo_curto": "Surto de mosca-da-bicheira avança no sudoeste dos EUA e ameaça pecuária",
+      "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Economia",
+      "categoria": "Economia_Comercio",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 82,
+      "urgencia_score": 84,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-21T18:27:01Z",
+      "palavras_chave_busca": [
+        "mosca-da-bicheira",
+        "eua",
+        "usda",
+        "pecuária",
+        "agronegócio"
+      ],
+      "palavras_chave": [
+        "mosca-da-bicheira",
+        "eua",
+        "usda",
+        "pecuária",
+        "agronegócio"
+      ],
+      "gatilho_vitrine": "Segundo apuração do G1 Economia com dados do Departamento de Agricultura dos EUA (USDA), surtos da praga mosca-da-bicheira aumentaram no sudoeste americano impulsionados pelo clima quente e úmido. Autoridades veterinárias iniciaram a liberação de moscas estéreis como estratégia de contenção do parasita.",
+      "resumo_pulso": "Segundo apuração do G1 Economia com dados do Departamento de Agricultura dos EUA (USDA), surtos da praga mosca-da-bicheira aumentaram no sudoeste americano impulsionados pelo clima quente e úmido. Autoridades veterinárias iniciaram a liberação de moscas estéreis como estratégia de contenção do parasita.",
+      "sintese_nerd": "Risco de prejuízos à produção pecuária norte-americana e potencial impacto nos custos das exportações de carne bovina.",
+      "impacto_pratico": "Risco de prejuízos à produção pecuária norte-americana e potencial impacto nos custos das exportações de carne bovina.",
+      "paises_envolvidos": [
+        "US"
+      ],
+      "veiculos_origem": [
+        "G1 Economia"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/economia/agronegocios/noticia/2026/11/20/praga-mortal-que-ameaca-gado-avanca-nos-eua-e-moscas-estereis-viram-aposta-contra-parasita.ghtml"
+      ],
+      "data_publicacao": "2026-11-20T18:14:28Z",
+      "updated_at": "2026-11-20T18:27:01Z"
+    },
+    {
+      "slug": "anthropic-enfrenta-queda-em-acoes-apos-ipo-e-anuncio-matematico",
+      "titulo_tema": "Ações da Anthropic recuam após IPO em meio a oscilações no setor de tecnologia",
+      "titulo_curto": "Ações da Anthropic recuam após IPO em meio a oscilações no setor de tecnologia",
+      "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Economia",
+      "categoria": "Economia_Comercio",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 84,
+      "urgencia_score": 81,
+      "ttl_horas": 18,
+      "expires_at": "2026-11-21T12:27:01Z",
+      "palavras_chave_busca": [
+        "anthropic",
+        "ipo",
+        "inteligência artificial",
+        "mercado financeiro",
+        "hipótese de riemann"
+      ],
+      "palavras_chave": [
+        "anthropic",
+        "ipo",
+        "inteligência artificial",
+        "mercado financeiro",
+        "hipótese de riemann"
+      ],
+      "gatilho_vitrine": "Conforme noticiado pela Al Jazeera English e InfoMoney, os papéis da startup de inteligência artificial Anthropic registraram queda no mercado acionário americano após sua oferta pública inicial. Paralelamente, um funcionário da empresa afirmou ter solucionado a Hipótese de Riemann, afirmação acadêmica que ainda requer validação de pares.",
+      "resumo_pulso": "Conforme noticiado pela Al Jazeera English e InfoMoney, os papéis da startup de inteligência artificial Anthropic registraram queda no mercado acionário americano após sua oferta pública inicial. Paralelamente, um funcionário da empresa afirmou ter solucionado a Hipótese de Riemann, afirmação acadêmica que ainda requer validação de pares.",
+      "sintese_nerd": "Volatilidade no setor de inteligência artificial em Nova York e cautela de investidores em relação a IPOs de tecnologia.",
+      "impacto_pratico": "Volatilidade no setor de inteligência artificial em Nova York e cautela de investidores em relação a IPOs de tecnologia.",
+      "paises_envolvidos": [
+        "US"
+      ],
+      "veiculos_origem": [
+        "Al Jazeera English",
+        "InfoMoney Mercados"
+      ],
+      "fontes_urls": [
+        "https://www.aljazeera.com/economy/2026/11/20/us-tech-sell-off-continues-as-anthropic-tumbles-after-mega-ipo?traffic_source=rss",
+        "https://www.infomoney.com.br/mundo/funcionario-da-anthropic-diz-que-solucionou-problema-mais-famoso-da-matematica/"
+      ],
+      "data_publicacao": "2026-11-20T18:12:36Z",
+      "updated_at": "2026-11-20T18:27:01Z"
+    },
+    {
+      "slug": "estilhacos-de-drones-russos-atingem-embaixada-do-brasil-na-ucrania",
+      "status": "novo",
+      "categoria": "Geopolitica_Relacoes",
+      "ttl_horas": 12,
+      "expires_at": "2026-11-21T06:10:42Z",
+      "updated_at": "2026-11-20T18:10:42Z",
+      "fontes_urls": [
+        "https://www.poder360.com.br/poder-internacional/estilhacos-de-drones-russos-atingem-embaixada-do-brasil-na-ucrania/"
+      ],
+      "titulo_tema": "Estilhaços de drones russos atingem Embaixada do Brasil na Ucrânia",
+      "resumo_pulso": "Segundo o Poder360, estilhaços de drones russos atingiram a Embaixada do Brasil em Kiev. O chanceler ucraniano informou que não houve feridos ou danos estruturais significativos, mas o incidente eleva a tensão diplomática na região.",
+      "sintese_nerd": "Alerta para diplomatas e cidadãos brasileiros em território ucraniano.",
+      "titulo_curto": "Estilhaços de drones russos atingem Embaixada do Brasil na Ucrânia",
+      "rota_editoria": "/radar",
+      "palavras_chave": [
+        "ucrânia",
+        "rússia",
+        "embaixada",
+        "brasil",
+        "drones"
+      ],
+      "urgencia_score": 95,
+      "data_publicacao": "2026-11-20T18:06:22Z",
+      "gatilho_vitrine": "Segundo o Poder360, estilhaços de drones russos atingiram a Embaixada do Brasil em Kiev. O chanceler ucraniano informou que não houve feridos ou danos estruturais significativos, mas o incidente eleva a tensão diplomática na região.",
+      "impacto_pratico": "Alerta para diplomatas e cidadãos brasileiros em território ucraniano.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "Poder360"
+      ],
+      "relevancia_score": 95,
+      "paises_envolvidos": [
+        "BR",
+        "UA",
+        "RU"
+      ],
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "ucrânia",
+        "rússia",
+        "embaixada",
+        "brasil",
+        "drones"
+      ]
+    },
+    {
+      "slug": "moldavia-registra-segunda-incursao-de-drone-em-espaco-aereo",
+      "titulo_tema": "Moldávia denuncia segunda violação de seu espaço aéreo por drones em 24 horas",
+      "titulo_curto": "Moldávia denuncia segunda violação de seu espaço aéreo por drones em 24 horas",
       "status": "novo",
       "origem_pipeline": "pulso",
       "categoria_primaria": "Geopolitica_Radar",
-      "categoria": "Ciencia_Clima",
+      "categoria": "Geopolitica_Relacoes",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
       ],
       "rota_editoria": "/radar",
-      "relevancia_score": 92,
-      "urgencia_score": 94,
+      "relevancia_score": 85,
+      "urgencia_score": 87,
+      "ttl_horas": 12,
+      "expires_at": "2026-11-21T06:27:01Z",
+      "palavras_chave_busca": [
+        "moldávia",
+        "drones",
+        "violação de espaço aéreo",
+        "ucrânia",
+        "rússia"
+      ],
+      "palavras_chave": [
+        "moldávia",
+        "drones",
+        "violação de espaço aéreo",
+        "ucrânia",
+        "rússia"
+      ],
+      "gatilho_vitrine": "Conforme reportado pela agência Ukrinform, autoridades de segurança da Moldávia registraram uma segunda incursionamento não autorizado de drone em seu espaço aéreo nesta sexta-feira. O incidente ocorre em meio à intensificação de ataques com misseis e drones russos na vizinha Ucrânia.",
+      "resumo_pulso": "Conforme reportado pela agência Ukrinform, autoridades de segurança da Moldávia registraram uma segunda incursionamento não autorizado de drone em seu espaço aéreo nesta sexta-feira. O incidente ocorre em meio à intensificação de ataques com misseis e drones russos na vizinha Ucrânia.",
+      "sintese_nerd": "Aumento do alerta militar na Europa Oriental e risco de interrupção de voos comerciais na região da Moldávia.",
+      "impacto_pratico": "Aumento do alerta militar na Europa Oriental e risco de interrupção de voos comerciais na região da Moldávia.",
+      "paises_envolvidos": [
+        "MD",
+        "UA",
+        "RU"
+      ],
+      "veiculos_origem": [
+        "Ukrinform"
+      ],
+      "fontes_urls": [
+        "https://www.ukrinform.net/rubric-ato/4186943-moldova-reports-second-drone-incursion-into-its-airspace-in-one-day.html"
+      ],
+      "data_publicacao": "2026-11-20T17:52:00Z",
+      "updated_at": "2026-11-20T18:27:01Z"
+    },
+    {
+      "slug": "trump-demite-diretor-de-seguranca-cibernetica-apos-falhas-tecnicas",
+      "status": "novo",
+      "categoria": "Economia_Comercio",
+      "ttl_horas": 12,
+      "expires_at": "2026-11-21T06:10:42Z",
+      "updated_at": "2026-11-20T18:10:42Z",
+      "fontes_urls": [
+        "https://g1.globo.com/tecnologia/noticia/2026/11/20/apos-falhas-que-afetaram-microsoft-e-suspenderam-voos-trump-demite-diretor-de-seguranca-cibernetica.ghtml"
+      ],
+      "titulo_tema": "Trump demite diretor de segurança cibernética após falhas em sistemas nacionais",
+      "resumo_pulso": "Conforme apuração do G1 Economia, o presidente Donald Trump demitiu Sean Cairncross, diretor nacional de segurança cibernética dos EUA. A decisão segue uma série de falhas técnicas que impactaram o transporte aéreo e o setor bancário americano.",
+      "sintese_nerd": "Possível instabilidade em sistemas de infraestrutura crítica nos EUA.",
+      "titulo_curto": "Trump demite diretor de segurança cibernética após falhas em sistemas nacionais",
+      "rota_editoria": "/economia",
+      "palavras_chave": [
+        "trump",
+        "cibersegurança",
+        "eua",
+        "demissão"
+      ],
+      "urgencia_score": 88,
+      "data_publicacao": "2026-11-20T17:36:52Z",
+      "gatilho_vitrine": "Conforme apuração do G1 Economia, o presidente Donald Trump demitiu Sean Cairncross, diretor nacional de segurança cibernética dos EUA. A decisão segue uma série de falhas técnicas que impactaram o transporte aéreo e o setor bancário americano.",
+      "impacto_pratico": "Possível instabilidade em sistemas de infraestrutura crítica nos EUA.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "G1 Economia"
+      ],
+      "relevancia_score": 85,
+      "paises_envolvidos": [
+        "US"
+      ],
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "trump",
+        "cibersegurança",
+        "eua",
+        "demissão"
+      ]
+    },
+    {
+      "slug": "temporal-devastador-deixa-mortos-e-destruicao-no-rio-grande-do-sul",
+      "status": "novo",
+      "categoria": "Ciencia_Clima",
       "ttl_horas": 24,
       "expires_at": "2026-11-21T17:27:30Z",
-      "palavras_chave_busca": [
-        "rio grande do sul",
-        "temporal",
-        "granizo",
-        "defesa civil",
-        "desastre natural"
+      "updated_at": "2026-11-20T17:27:30Z",
+      "fontes_urls": [
+        "https://www.bbc.com/portuguese/articles/cqdr1xmyg3kzo?at_medium=RSS&at_campaign=rss"
       ],
+      "titulo_tema": "Temporal provocou mortes e destruição em cidades do Rio Grande do Sul",
+      "resumo_pulso": "Segundo reportado pela BBC News Brasil, fortes temporais acompanhados de vendavais e queda de granizo causaram mortes e severa destruição de infraestruturas no Rio Grande do Sul. Moradores relatam destruição de prédios, postes e árvores derrubadas em diversas vias.",
+      "sintese_nerd": "Interrupções no fornecimento de energia elétrica, bloqueios de vias urbanas e rodovias e estado de alerta para novos temporais na região Sul.",
+      "titulo_curto": "Temporal provocou mortes e destruição em cidades do Rio Grande do Sul",
+      "rota_editoria": "/radar",
       "palavras_chave": [
         "rio grande do sul",
         "temporal",
@@ -36,21 +266,30 @@
         "defesa civil",
         "desastre natural"
       ],
+      "urgencia_score": 94,
+      "data_publicacao": "2026-11-20T17:03:23Z",
       "gatilho_vitrine": "Segundo reportado pela BBC News Brasil, fortes temporais acompanhados de vendavais e queda de granizo causaram mortes e severa destruição de infraestruturas no Rio Grande do Sul. Moradores relatam destruição de prédios, postes e árvores derrubadas em diversas vias.",
-      "resumo_pulso": "Segundo reportado pela BBC News Brasil, fortes temporais acompanhados de vendavais e queda de granizo causaram mortes e severa destruição de infraestruturas no Rio Grande do Sul. Moradores relatam destruição de prédios, postes e árvores derrubadas em diversas vias.",
-      "sintese_nerd": "Interrupções no fornecimento de energia elétrica, bloqueios de vias urbanas e rodovias e estado de alerta para novos temporais na região Sul.",
       "impacto_pratico": "Interrupções no fornecimento de energia elétrica, bloqueios de vias urbanas e rodovias e estado de alerta para novos temporais na região Sul.",
-      "paises_envolvidos": [
-        "BR"
-      ],
+      "origem_pipeline": "pulso",
       "veiculos_origem": [
         "BBC News Brasil"
       ],
-      "fontes_urls": [
-        "https://www.bbc.com/portuguese/articles/cqdr1xmyg3kzo?at_medium=RSS&at_campaign=rss"
+      "relevancia_score": 92,
+      "paises_envolvidos": [
+        "BR"
       ],
-      "data_publicacao": "2026-11-20T17:03:23Z",
-      "updated_at": "2026-11-20T17:27:30Z"
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "rio grande do sul",
+        "temporal",
+        "granizo",
+        "defesa civil",
+        "desastre natural"
+      ]
     },
     {
       "slug": "pulso-1-20261120-1627",
@@ -97,28 +336,19 @@
     },
     {
       "slug": "catar-anuncia-investimentos-de-16-bilhoes-de-dolares-na-alemanha",
-      "titulo_tema": "Catar confirma investimento de US$ 16,5 bilhões na Alemanha durante visita em Berlim",
-      "titulo_curto": "Catar confirma investimento de US$ 16,5 bilhões na Alemanha durante visita em Berlim",
       "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Economia",
       "categoria": "Economia_Comercio",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 86,
-      "urgencia_score": 85,
       "ttl_horas": 24,
       "expires_at": "2026-11-21T17:27:30Z",
-      "palavras_chave_busca": [
-        "catar",
-        "alemanha",
-        "investimentos",
-        "energia",
-        "tecnologia"
+      "updated_at": "2026-11-20T17:27:30Z",
+      "fontes_urls": [
+        "https://www.aljazeera.com/news/2026/11/20/qatar-and-germany-deepen-strategic-ties-during-emirs-berlin-visit?traffic_source=rss"
       ],
+      "titulo_tema": "Catar confirma investimento de US$ 16,5 bilhões na Alemanha durante visita em Berlim",
+      "resumo_pulso": "Segundo noticiado pela Al Jazeera English, o governo da Alemanha e o emir do Catar anunciaram o fortalecimento de parcerias estratégicas com o compromisso catariano de injetar US$ 16,5 bilhões na economia alemã. O montante será voltado a projetos de energia, defesa e tecnologia.",
+      "sintese_nerd": "Reforço no planejamento energético e financeiro alemão e ampliação de parcerias em tecnologia na Europa Central.",
+      "titulo_curto": "Catar confirma investimento de US$ 16,5 bilhões na Alemanha durante visita em Berlim",
+      "rota_editoria": "/economia",
       "palavras_chave": [
         "catar",
         "alemanha",
@@ -126,22 +356,31 @@
         "energia",
         "tecnologia"
       ],
+      "urgencia_score": 85,
+      "data_publicacao": "2026-11-20T16:13:57Z",
       "gatilho_vitrine": "Segundo noticiado pela Al Jazeera English, o governo da Alemanha e o emir do Catar anunciaram o fortalecimento de parcerias estratégicas com o compromisso catariano de injetar US$ 16,5 bilhões na economia alemã. O montante será voltado a projetos de energia, defesa e tecnologia.",
-      "resumo_pulso": "Segundo noticiado pela Al Jazeera English, o governo da Alemanha e o emir do Catar anunciaram o fortalecimento de parcerias estratégicas com o compromisso catariano de injetar US$ 16,5 bilhões na economia alemã. O montante será voltado a projetos de energia, defesa e tecnologia.",
-      "sintese_nerd": "Reforço no planejamento energético e financeiro alemão e ampliação de parcerias em tecnologia na Europa Central.",
       "impacto_pratico": "Reforço no planejamento energético e financeiro alemão e ampliação de parcerias em tecnologia na Europa Central.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "Al Jazeera English"
+      ],
+      "relevancia_score": 86,
       "paises_envolvidos": [
         "QA",
         "DE"
       ],
-      "veiculos_origem": [
-        "Al Jazeera English"
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
       ],
-      "fontes_urls": [
-        "https://www.aljazeera.com/news/2026/11/20/qatar-and-germany-deepen-strategic-ties-during-emirs-berlin-visit?traffic_source=rss"
-      ],
-      "data_publicacao": "2026-11-20T16:13:57Z",
-      "updated_at": "2026-11-20T17:27:30Z"
+      "palavras_chave_busca": [
+        "catar",
+        "alemanha",
+        "investimentos",
+        "energia",
+        "tecnologia"
+      ]
     },
     {
       "slug": "pulso-2-20261120-1627",
@@ -317,28 +556,19 @@
     },
     {
       "slug": "servico-secreto-dinamarques-impede-atentado-russo-contra-rapper-ucraniano",
-      "titulo_tema": "Serviço Secreto da Dinamarca afirma ter impedido atentado russo contra rapper ucraniano",
-      "titulo_curto": "Serviço Secreto da Dinamarca afirma ter impedido atentado russo contra rapper ucraniano",
       "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Geopolitica_Radar",
       "categoria": "Geopolitica_Relacoes",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 88,
-      "urgencia_score": 91,
       "ttl_horas": 18,
       "expires_at": "2026-11-21T11:27:30Z",
-      "palavras_chave_busca": [
-        "dinamarca",
-        "rússia",
-        "serviço secreto",
-        "espionagem",
-        "kyivstoner"
+      "updated_at": "2026-11-20T17:27:30Z",
+      "fontes_urls": [
+        "https://g1.globo.com/mundo/noticia/2026/11/20/russia-rapper-kyivstoner-dinamarca.ghtml"
       ],
+      "titulo_tema": "Serviço Secreto da Dinamarca afirma ter impedido atentado russo contra rapper ucraniano",
+      "resumo_pulso": "Conforme apuração do G1 Mundo com base em informações da emissora pública dinamarquesa DR, o serviço de inteligência da Dinamarca impediu uma tentativa de assassinato contra um rapper de cidadania americano-ucraniana. As autoridades investigam o recrutamento de intermediários locais por agentes a serviço de Moscou.",
+      "sintese_nerd": "Aumento do nível de vigilância policial e de contraespionagem contra operações encobertas em territórios da OTAN.",
+      "titulo_curto": "Serviço Secreto da Dinamarca afirma ter impedido atentado russo contra rapper ucraniano",
+      "rota_editoria": "/radar",
       "palavras_chave": [
         "dinamarca",
         "rússia",
@@ -346,25 +576,34 @@
         "espionagem",
         "kyivstoner"
       ],
+      "urgencia_score": 91,
+      "data_publicacao": "2026-11-20T15:34:30Z",
       "gatilho_vitrine": "Conforme apuração do G1 Mundo com base em informações da emissora pública dinamarquesa DR, o serviço de inteligência da Dinamarca impediu uma tentativa de assassinato contra um rapper de cidadania americano-ucraniana. As autoridades investigam o recrutamento de intermediários locais por agentes a serviço de Moscou.",
-      "resumo_pulso": "Conforme apuração do G1 Mundo com base em informações da emissora pública dinamarquesa DR, o serviço de inteligência da Dinamarca impediu uma tentativa de assassinato contra um rapper de cidadania americano-ucraniana. As autoridades investigam o recrutamento de intermediários locais por agentes a serviço de Moscou.",
-      "sintese_nerd": "Aumento do nível de vigilância policial e de contraespionagem contra operações encobertas em territórios da OTAN.",
       "impacto_pratico": "Aumento do nível de vigilância policial e de contraespionagem contra operações encobertas em territórios da OTAN.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "G1 Mundo",
+        "DR"
+      ],
+      "relevancia_score": 88,
       "paises_envolvidos": [
         "DK",
         "RU",
         "UA",
         "US"
       ],
-      "veiculos_origem": [
-        "G1 Mundo",
-        "DR"
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
       ],
-      "fontes_urls": [
-        "https://g1.globo.com/mundo/noticia/2026/11/20/russia-rapper-kyivstoner-dinamarca.ghtml"
-      ],
-      "data_publicacao": "2026-11-20T15:34:30Z",
-      "updated_at": "2026-11-20T17:27:30Z"
+      "palavras_chave_busca": [
+        "dinamarca",
+        "rússia",
+        "serviço secreto",
+        "espionagem",
+        "kyivstoner"
+      ]
     },
     {
       "slug": "pulso-1-20261120-1525",
@@ -677,204 +916,209 @@
         "paralisação",
         "congresso americano"
       ]
-    },
-    {
-      "slug": "colapso-acoes-globais-techs-ia-juros",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-22T13:28:59Z",
-      "updated_at": "2026-11-20T13:28:59Z",
-      "titulo_tema": "Colapso nas Ações Globais e Disputa Tecnológica de IA",
-      "sintese_nerd": "O encarecimento do crédito e o colapso nas ações de tecnologia — impulsionados por custos recordes de financiamento para chips de IA — provocaram a maior sequência de perdas nas bolsas globais desde 2023. Isso pressiona os mercados emergentes e reverbera na volatilidade de ativos de risco em todo o mundo.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-20T13:28:59Z",
-      "gatilho_vitrine": "Destacar o impacto do aperto financeiro e do colapso do setor de inteligência artificial nas bolsas globais e no bolso do investidor.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 95,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Geopolitica_Radar",
-        "Cultura"
-      ],
-      "palavras_chave_busca": [
-        "inteligência artificial",
-        "ações globais",
-        "bolsas de valores",
-        "crise tech",
-        "juros de 8%",
-        "mercados internacionais"
-      ]
-    },
-    {
-      "slug": "escalada-ucrania-russia-impacto-financeiro-europeu",
-      "status": "novo",
-      "ttl_horas": 72,
-      "expires_at": "2026-11-23T13:28:59Z",
-      "updated_at": "2026-11-20T13:28:59Z",
-      "titulo_tema": "Escalada Militar na Ucrânia e Estabilidade Financeira Europeia",
-      "sintese_nerd": "A intensificação dos confrontos na Ucrânia e os novos desembolsos bilionários da União Europeia para sustentar Kiev evidenciam o desgaste prolongado da segurança europeia. Essa instabilidade gera ondas de choque econômicas e comerciais que repercutem diretamente nos preços de commodities e nas cadeias de suprimentos globais.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-20T13:28:59Z",
-      "gatilho_vitrine": "Conectar os recentes ataques em Kiev e os pacotes multibilionários de ajuda financeira da UE à estabilidade macroeconômica global e geopolítica energética.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 90,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Politica"
-      ],
-      "palavras_chave_busca": [
-        "guerra na ucrânia",
-        "união europeia",
-        "rússia",
-        "segurança global",
-        "sanções e conflitos"
-      ]
-    },
-    {
-      "slug": "desinformacao-eleitoral-deepfakes-regulacao-global",
-      "status": "novo",
-      "ttl_horas": 72,
-      "expires_at": "2026-11-23T13:28:59Z",
-      "updated_at": "2026-11-20T13:28:59Z",
-      "titulo_tema": "Regulação de Deepfakes e Combate à Desinformação Eleitoral",
-      "sintese_nerd": "O uso de inteligência artificial em campanhas de manipulação e perfis falsos em plataformas digitais levou governos e gigantes tecnológicas a adotarem novas ferramentas de defesa contra deepfakes. Essa corrida regulatória e tecnológica é crucial para salvaguardar a integridade de processos democráticos em eleições futuras.",
-      "rota_editoria": "/politica",
-      "data_publicacao": "2026-11-20T13:28:59Z",
-      "gatilho_vitrine": "Exibir o avanço das ferramentas corporativas e estatais para conter campanhas de desinformação baseadas em inteligência artificial.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 88,
-      "categoria_primaria": "Politica",
-      "categorias_cruzadas": [
-        "Eleicoes",
-        "Cultura"
-      ],
-      "palavras_chave_busca": [
-        "deepfakes",
-        "desinformação",
-        "eleições 2027",
-        "tiktok",
-        "inteligência artificial na política",
-        "segurança digital"
-      ]
-    },
-    {
-      "slug": "tropas-europeias-realizam-exercicio-militar-na-polonia",
-      "status": "novo",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-21T14:18:46Z",
-      "updated_at": "2026-11-20T14:18:46Z",
-      "fontes_urls": [
-        "https://g1.globo.com/mundo/noticia/2026/11/20/tropas-europeias-de-11-paises-realizam-exercicio-militar-inedito-na-polonia-mirando-pos-guerra-na-ucrania.ghtml"
-      ],
-      "titulo_tema": "Tropas de 11 países europeus realizam exercício militar inédito na Polônia",
-      "resumo_pulso": "Segundo reportado pelo G1 Mundo, forças militares de 11 nações europeias iniciaram manobras sem precedentes no sudeste da Polônia. O treinamento estratégico visa preparar contingentes para uma eventual missão de estabilização e reconstrução militar na Ucrânia no pós-guerra.",
-      "sintese_nerd": "Sinaliza a prontidão de defesa do flanco oriental da Europa e o planejamento diplomático-militar para o cenário posterior a um cessar-fogo.",
-      "titulo_curto": "Tropas de 11 países europeus realizam exercício militar inédito na Polônia",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "polônia",
-        "ucrânia",
-        "otan",
-        "exercício militar",
-        "europa"
-      ],
-      "urgencia_score": 88,
-      "data_publicacao": "2026-11-20T12:58:17Z",
-      "gatilho_vitrine": "Segundo reportado pelo G1 Mundo, forças militares de 11 nações europeias iniciaram manobras sem precedentes no sudeste da Polônia. O treinamento estratégico visa preparar contingentes para uma eventual missão de estabilização e reconstrução militar na Ucrânia no pós-guerra.",
-      "impacto_pratico": "Sinaliza a prontidão de defesa do flanco oriental da Europa e o planejamento diplomático-militar para o cenário posterior a um cessar-fogo.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "G1 Mundo"
-      ],
-      "relevancia_score": 86,
-      "paises_envolvidos": [
-        "PL",
-        "UA",
-        "FR",
-        "GB"
-      ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "polônia",
-        "ucrânia",
-        "otan",
-        "exercício militar",
-        "europa"
-      ]
-    },
-    {
-      "slug": "ifood-sofre-novo-ataque-hacker-dados-expostos",
-      "status": "novo",
-      "categoria": "Economia_Comercio",
-      "ttl_horas": 12,
-      "expires_at": "2026-11-21T00:59:03Z",
-      "updated_at": "2026-11-20T12:59:03Z",
-      "fontes_urls": [
-        "https://www.infomoney.com.br/consumo/ifood-sofre-segundo-ataque-hacker-no-ano-e-informacoes-sao-expostas/"
-      ],
-      "titulo_tema": "iFood sofre segundo ataque hacker em 2026 e investiga exposição de dados",
-      "resumo_pulso": "Segundo reportado pelo InfoMoney com base em posicionamento da empresa, o aplicativo iFood registrou sua segunda invasão hacker do ano. A companhia informou que senhas, dados de cartão de crédito e dados bancários permaneceram protegidos, enquanto auditorias de segurança avaliam o alcance do incidente.",
-      "sintese_nerd": "Exige atenção reforçada de usuários quanto a tentativas de golpes de engenharia social e vazamento de cadastros.",
-      "titulo_curto": "iFood sofre segundo ataque hacker em 2026 e investiga exposição de dados",
-      "rota_editoria": "/economia",
-      "palavras_chave": [
-        "ifood",
-        "ataque hacker",
-        "cibersegurança",
-        "vazamento de dados"
-      ],
-      "urgencia_score": 86,
-      "data_publicacao": "2026-11-20T12:54:44Z",
-      "gatilho_vitrine": "Segundo reportado pelo InfoMoney com base em posicionamento da empresa, o aplicativo iFood registrou sua segunda invasão hacker do ano. A companhia informou que senhas, dados de cartão de crédito e dados bancários permaneceram protegidos, enquanto auditorias de segurança avaliam o alcance do incidente.",
-      "impacto_pratico": "Exige atenção reforçada de usuários quanto a tentativas de golpes de engenharia social e vazamento de cadastros.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "InfoMoney Mercados"
-      ],
-      "relevancia_score": 85,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "ifood",
-        "ataque hacker",
-        "cibersegurança",
-        "vazamento de dados"
-      ]
     }
   ],
   "noticias_quentes": [
     {
-      "slug": "temporal-devastador-deixa-mortos-e-destruicao-no-rio-grande-do-sul",
-      "titulo_curto": "Temporal provocou mortes e destruição em cidades do Rio Grande do Sul",
-      "resumo_pulso": "Segundo reportado pela BBC News Brasil, fortes temporais acompanhados de vendavais e queda de granizo causaram mortes e severa destruição de infraestruturas no Rio Grande do Sul. Moradores relatam destruição de prédios, postes e árvores derrubadas em diversas vias.",
-      "impacto_pratico": "Interrupções no fornecimento de energia elétrica, bloqueios de vias urbanas e rodovias e estado de alerta para novos temporais na região Sul.",
-      "categoria": "Ciencia_Clima",
+      "slug": "praga-de-mosca-da-bicheira-avanca-nos-eua-e-ameaca-rebanho-bovino",
+      "titulo_curto": "Surto de mosca-da-bicheira avança no sudoeste dos EUA e ameaça pecuária",
+      "resumo_pulso": "Segundo apuração do G1 Economia com dados do Departamento de Agricultura dos EUA (USDA), surtos da praga mosca-da-bicheira aumentaram no sudoeste americano impulsionados pelo clima quente e úmido. Autoridades veterinárias iniciaram a liberação de moscas estéreis como estratégia de contenção do parasita.",
+      "impacto_pratico": "Risco de prejuízos à produção pecuária norte-americana e potencial impacto nos custos das exportações de carne bovina.",
+      "categoria": "Economia_Comercio",
       "paises_envolvidos": [
-        "BR"
+        "US"
       ],
-      "urgencia_score": 94,
-      "relevancia_score": 92,
+      "urgencia_score": 84,
+      "relevancia_score": 82,
       "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 12,
+      "horas_em_destaque": 8,
       "veiculos_origem": [
-        "BBC News Brasil"
+        "G1 Economia"
       ],
+      "fontes_urls": [
+        "https://g1.globo.com/economia/agronegocios/noticia/2026/11/20/praga-mortal-que-ameaca-gado-avanca-nos-eua-e-moscas-estereis-viram-aposta-contra-parasita.ghtml"
+      ],
+      "palavras_chave": [
+        "mosca-da-bicheira",
+        "EUA",
+        "USDA",
+        "pecuária",
+        "agronegócio"
+      ],
+      "data_publicacao": "2026-11-20T18:14:28Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "Economia no Brasil",
+          "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
+          "motivo_conexao": "Confira análises sobre o agronegócio e a dinâmica das exportações no mercado internacional de commodities."
+        }
+      ],
+      "expires_at": "2026-11-21T18:27:01Z",
+      "updated_at": "2026-11-20T18:27:01Z"
+    },
+    {
+      "slug": "anthropic-enfrenta-queda-em-acoes-apos-ipo-e-anuncio-matematico",
+      "titulo_curto": "Ações da Anthropic recuam após IPO em meio a oscilações no setor de tecnologia",
+      "resumo_pulso": "Conforme noticiado pela Al Jazeera English e InfoMoney, os papéis da startup de inteligência artificial Anthropic registraram queda no mercado acionário americano após sua oferta pública inicial. Paralelamente, um funcionário da empresa afirmou ter solucionado a Hipótese de Riemann, afirmação acadêmica que ainda requer validação de pares.",
+      "impacto_pratico": "Volatilidade no setor de inteligência artificial em Nova York e cautela de investidores em relação a IPOs de tecnologia.",
+      "categoria": "Economia_Comercio",
+      "paises_envolvidos": [
+        "US"
+      ],
+      "urgencia_score": 81,
+      "relevancia_score": 84,
+      "nivel_confianca": "media",
+      "ttl_horas": 18,
+      "horas_em_destaque": 6,
+      "veiculos_origem": [
+        "Al Jazeera English",
+        "InfoMoney Mercados"
+      ],
+      "fontes_urls": [
+        "https://www.aljazeera.com/economy/2026/11/20/us-tech-sell-off-continues-as-anthropic-tumbles-after-mega-ipo?traffic_source=rss",
+        "https://www.infomoney.com.br/mundo/funcionario-da-anthropic-diz-que-solucionou-problema-mais-famoso-da-matematica/"
+      ],
+      "palavras_chave": [
+        "Anthropic",
+        "IPO",
+        "inteligência artificial",
+        "mercado financeiro",
+        "Hipótese de Riemann"
+      ],
+      "data_publicacao": "2026-11-20T18:12:36Z",
+      "links_internos_relacionados": [],
+      "expires_at": "2026-11-21T12:27:01Z",
+      "updated_at": "2026-11-20T18:27:01Z"
+    },
+    {
+      "slug": "estilhacos-de-drones-russos-atingem-embaixada-do-brasil-na-ucrania",
+      "categoria": "Geopolitica_Relacoes",
+      "ttl_horas": 12,
+      "expires_at": "2026-11-21T06:10:42Z",
+      "updated_at": "2026-11-20T18:10:42Z",
+      "fontes_urls": [
+        "https://www.poder360.com.br/poder-internacional/estilhacos-de-drones-russos-atingem-embaixada-do-brasil-na-ucrania/"
+      ],
+      "resumo_pulso": "Segundo o Poder360, estilhaços de drones russos atingiram a Embaixada do Brasil em Kiev. O chanceler ucraniano informou que não houve feridos ou danos estruturais significativos, mas o incidente eleva a tensão diplomática na região.",
+      "titulo_curto": "Estilhaços de drones russos atingem Embaixada do Brasil na Ucrânia",
+      "palavras_chave": [
+        "Ucrânia",
+        "Rússia",
+        "Embaixada",
+        "Brasil",
+        "Drones"
+      ],
+      "urgencia_score": 95,
+      "data_publicacao": "2026-11-20T18:06:22Z",
+      "impacto_pratico": "Alerta para diplomatas e cidadãos brasileiros em território ucraniano.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Poder360"
+      ],
+      "relevancia_score": 95,
+      "horas_em_destaque": 6,
+      "paises_envolvidos": [
+        "BR",
+        "UA",
+        "RU"
+      ],
+      "links_internos_relacionados": [
+        {
+          "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
+          "motivo_conexao": "Contexto sobre a posição diplomática brasileira em conflitos internacionais.",
+          "titulo_existente": "Política no Brasil"
+        }
+      ]
+    },
+    {
+      "slug": "moldavia-registra-segunda-incursao-de-drone-em-espaco-aereo",
+      "titulo_curto": "Moldávia denuncia segunda violação de seu espaço aéreo por drones em 24 horas",
+      "resumo_pulso": "Conforme reportado pela agência Ukrinform, autoridades de segurança da Moldávia registraram uma segunda incursionamento não autorizado de drone em seu espaço aéreo nesta sexta-feira. O incidente ocorre em meio à intensificação de ataques com misseis e drones russos na vizinha Ucrânia.",
+      "impacto_pratico": "Aumento do alerta militar na Europa Oriental e risco de interrupção de voos comerciais na região da Moldávia.",
+      "categoria": "Geopolitica_Relacoes",
+      "paises_envolvidos": [
+        "MD",
+        "UA",
+        "RU"
+      ],
+      "urgencia_score": 87,
+      "relevancia_score": 85,
+      "nivel_confianca": "alta",
+      "ttl_horas": 12,
+      "horas_em_destaque": 6,
+      "veiculos_origem": [
+        "Ukrinform"
+      ],
+      "fontes_urls": [
+        "https://www.ukrinform.net/rubric-ato/4186943-moldova-reports-second-drone-incursion-into-its-airspace-in-one-day.html"
+      ],
+      "palavras_chave": [
+        "Moldávia",
+        "drones",
+        "violação de espaço aéreo",
+        "Ucrânia",
+        "Rússia"
+      ],
+      "data_publicacao": "2026-11-20T17:52:00Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "O que é uma sanção internacional?",
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-sancao-internacional",
+          "motivo_conexao": "Entenda os mecanismos de resposta diplomática e restrições de segurança impostas no cenário do leste europeu."
+        }
+      ],
+      "expires_at": "2026-11-21T06:27:01Z",
+      "updated_at": "2026-11-20T18:27:01Z"
+    },
+    {
+      "slug": "trump-demite-diretor-de-seguranca-cibernetica-apos-falhas-tecnicas",
+      "categoria": "Economia_Comercio",
+      "ttl_horas": 12,
+      "expires_at": "2026-11-21T06:10:42Z",
+      "updated_at": "2026-11-20T18:10:42Z",
+      "fontes_urls": [
+        "https://g1.globo.com/tecnologia/noticia/2026/11/20/apos-falhas-que-afetaram-microsoft-e-suspenderam-voos-trump-demite-diretor-de-seguranca-cibernetica.ghtml"
+      ],
+      "resumo_pulso": "Conforme apuração do G1 Economia, o presidente Donald Trump demitiu Sean Cairncross, diretor nacional de segurança cibernética dos EUA. A decisão segue uma série de falhas técnicas que impactaram o transporte aéreo e o setor bancário americano.",
+      "titulo_curto": "Trump demite diretor de segurança cibernética após falhas em sistemas nacionais",
+      "palavras_chave": [
+        "Trump",
+        "Cibersegurança",
+        "EUA",
+        "Demissão"
+      ],
+      "urgencia_score": 88,
+      "data_publicacao": "2026-11-20T17:36:52Z",
+      "impacto_pratico": "Possível instabilidade em sistemas de infraestrutura crítica nos EUA.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "G1 Economia"
+      ],
+      "relevancia_score": 85,
+      "horas_em_destaque": 4,
+      "paises_envolvidos": [
+        "US"
+      ],
+      "links_internos_relacionados": [
+        {
+          "url_existente": "https://www.rodandoomundo.com.br/politica/estados-unidos",
+          "motivo_conexao": "Acompanhamento das mudanças no gabinete e prioridades do governo Trump.",
+          "titulo_existente": "Política nos Estados Unidos"
+        }
+      ]
+    },
+    {
+      "slug": "temporal-devastador-deixa-mortos-e-destruicao-no-rio-grande-do-sul",
+      "categoria": "Ciencia_Clima",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-21T17:27:30Z",
+      "updated_at": "2026-11-20T17:27:30Z",
       "fontes_urls": [
         "https://www.bbc.com/portuguese/articles/cqdr1xmyg3kzo?at_medium=RSS&at_campaign=rss"
       ],
+      "resumo_pulso": "Segundo reportado pela BBC News Brasil, fortes temporais acompanhados de vendavais e queda de granizo causaram mortes e severa destruição de infraestruturas no Rio Grande do Sul. Moradores relatam destruição de prédios, postes e árvores derrubadas em diversas vias.",
+      "titulo_curto": "Temporal provocou mortes e destruição em cidades do Rio Grande do Sul",
       "palavras_chave": [
         "Rio Grande do Sul",
         "temporal",
@@ -882,10 +1126,19 @@
         "defesa civil",
         "desastre natural"
       ],
+      "urgencia_score": 94,
       "data_publicacao": "2026-11-20T17:03:23Z",
-      "links_internos_relacionados": [],
-      "expires_at": "2026-11-21T17:27:30Z",
-      "updated_at": "2026-11-20T17:27:30Z"
+      "impacto_pratico": "Interrupções no fornecimento de energia elétrica, bloqueios de vias urbanas e rodovias e estado de alerta para novos temporais na região Sul.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "BBC News Brasil"
+      ],
+      "relevancia_score": 92,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "links_internos_relacionados": []
     },
     {
       "slug": "pulso-1-20261120-1627",
@@ -930,25 +1183,15 @@
     },
     {
       "slug": "catar-anuncia-investimentos-de-16-bilhoes-de-dolares-na-alemanha",
-      "titulo_curto": "Catar confirma investimento de US$ 16,5 bilhões na Alemanha durante visita em Berlim",
-      "resumo_pulso": "Segundo noticiado pela Al Jazeera English, o governo da Alemanha e o emir do Catar anunciaram o fortalecimento de parcerias estratégicas com o compromisso catariano de injetar US$ 16,5 bilhões na economia alemã. O montante será voltado a projetos de energia, defesa e tecnologia.",
-      "impacto_pratico": "Reforço no planejamento energético e financeiro alemão e ampliação de parcerias em tecnologia na Europa Central.",
       "categoria": "Economia_Comercio",
-      "paises_envolvidos": [
-        "QA",
-        "DE"
-      ],
-      "urgencia_score": 85,
-      "relevancia_score": 86,
-      "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 10,
-      "veiculos_origem": [
-        "Al Jazeera English"
-      ],
+      "expires_at": "2026-11-21T17:27:30Z",
+      "updated_at": "2026-11-20T17:27:30Z",
       "fontes_urls": [
         "https://www.aljazeera.com/news/2026/11/20/qatar-and-germany-deepen-strategic-ties-during-emirs-berlin-visit?traffic_source=rss"
       ],
+      "resumo_pulso": "Segundo noticiado pela Al Jazeera English, o governo da Alemanha e o emir do Catar anunciaram o fortalecimento de parcerias estratégicas com o compromisso catariano de injetar US$ 16,5 bilhões na economia alemã. O montante será voltado a projetos de energia, defesa e tecnologia.",
+      "titulo_curto": "Catar confirma investimento de US$ 16,5 bilhões na Alemanha durante visita em Berlim",
       "palavras_chave": [
         "Catar",
         "Alemanha",
@@ -956,10 +1199,20 @@
         "energia",
         "tecnologia"
       ],
+      "urgencia_score": 85,
       "data_publicacao": "2026-11-20T16:13:57Z",
-      "links_internos_relacionados": [],
-      "expires_at": "2026-11-21T17:27:30Z",
-      "updated_at": "2026-11-20T17:27:30Z"
+      "impacto_pratico": "Reforço no planejamento energético e financeiro alemão e ampliação de parcerias em tecnologia na Europa Central.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Al Jazeera English"
+      ],
+      "relevancia_score": 86,
+      "horas_em_destaque": 10,
+      "paises_envolvidos": [
+        "QA",
+        "DE"
+      ],
+      "links_internos_relacionados": []
     },
     {
       "slug": "pulso-2-20261120-1627",
@@ -1127,28 +1380,15 @@
     },
     {
       "slug": "servico-secreto-dinamarques-impede-atentado-russo-contra-rapper-ucraniano",
-      "titulo_curto": "Serviço Secreto da Dinamarca afirma ter impedido atentado russo contra rapper ucraniano",
-      "resumo_pulso": "Conforme apuração do G1 Mundo com base em informações da emissora pública dinamarquesa DR, o serviço de inteligência da Dinamarca impediu uma tentativa de assassinato contra um rapper de cidadania americano-ucraniana. As autoridades investigam o recrutamento de intermediários locais por agentes a serviço de Moscou.",
-      "impacto_pratico": "Aumento do nível de vigilância policial e de contraespionagem contra operações encobertas em territórios da OTAN.",
       "categoria": "Geopolitica_Relacoes",
-      "paises_envolvidos": [
-        "DK",
-        "RU",
-        "UA",
-        "US"
-      ],
-      "urgencia_score": 91,
-      "relevancia_score": 88,
-      "nivel_confianca": "alta",
       "ttl_horas": 18,
-      "horas_em_destaque": 8,
-      "veiculos_origem": [
-        "G1 Mundo",
-        "DR"
-      ],
+      "expires_at": "2026-11-21T11:27:30Z",
+      "updated_at": "2026-11-20T17:27:30Z",
       "fontes_urls": [
         "https://g1.globo.com/mundo/noticia/2026/11/20/russia-rapper-kyivstoner-dinamarca.ghtml"
       ],
+      "resumo_pulso": "Conforme apuração do G1 Mundo com base em informações da emissora pública dinamarquesa DR, o serviço de inteligência da Dinamarca impediu uma tentativa de assassinato contra um rapper de cidadania americano-ucraniana. As autoridades investigam o recrutamento de intermediários locais por agentes a serviço de Moscou.",
+      "titulo_curto": "Serviço Secreto da Dinamarca afirma ter impedido atentado russo contra rapper ucraniano",
       "palavras_chave": [
         "Dinamarca",
         "Rússia",
@@ -1156,16 +1396,29 @@
         "espionagem",
         "Kyivstoner"
       ],
+      "urgencia_score": 91,
       "data_publicacao": "2026-11-20T15:34:30Z",
+      "impacto_pratico": "Aumento do nível de vigilância policial e de contraespionagem contra operações encobertas em territórios da OTAN.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "G1 Mundo",
+        "DR"
+      ],
+      "relevancia_score": 88,
+      "horas_em_destaque": 8,
+      "paises_envolvidos": [
+        "DK",
+        "RU",
+        "UA",
+        "US"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "O que é uma sanção internacional?",
           "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-sancao-internacional",
-          "motivo_conexao": "Contextualiza a escalada de sanções e contramedidas diplomáticas e de inteligência entre a Europa e a Rússia."
+          "motivo_conexao": "Contextualiza a escalada de sanções e contramedidas diplomáticas e de inteligência entre a Europa e a Rússia.",
+          "titulo_existente": "O que é uma sanção internacional?"
         }
-      ],
-      "expires_at": "2026-11-21T11:27:30Z",
-      "updated_at": "2026-11-20T17:27:30Z"
+      ]
     },
     {
       "slug": "pulso-1-20261120-1525",
@@ -1448,201 +1701,6 @@
           "url_existente": "https://www.rodandoomundo.com.br/politica/estados-unidos",
           "motivo_conexao": "Aprofunda a análise sobre os embates legislativos e orçamentários em Washington.",
           "titulo_existente": "Política nos Estados Unidos"
-        }
-      ]
-    },
-    {
-      "slug": "tropas-europeias-realizam-exercicio-militar-na-polonia",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-21T14:18:46Z",
-      "updated_at": "2026-11-20T14:18:46Z",
-      "fontes_urls": [
-        "https://g1.globo.com/mundo/noticia/2026/11/20/tropas-europeias-de-11-paises-realizam-exercicio-militar-inedito-na-polonia-mirando-pos-guerra-na-ucrania.ghtml"
-      ],
-      "resumo_pulso": "Segundo reportado pelo G1 Mundo, forças militares de 11 nações europeias iniciaram manobras sem precedentes no sudeste da Polônia. O treinamento estratégico visa preparar contingentes para uma eventual missão de estabilização e reconstrução militar na Ucrânia no pós-guerra.",
-      "titulo_curto": "Tropas de 11 países europeus realizam exercício militar inédito na Polônia",
-      "palavras_chave": [
-        "Polônia",
-        "Ucrânia",
-        "OTAN",
-        "exercício militar",
-        "Europa"
-      ],
-      "urgencia_score": 88,
-      "data_publicacao": "2026-11-20T12:58:17Z",
-      "impacto_pratico": "Sinaliza a prontidão de defesa do flanco oriental da Europa e o planejamento diplomático-militar para o cenário posterior a um cessar-fogo.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "G1 Mundo"
-      ],
-      "relevancia_score": 86,
-      "horas_em_destaque": 12,
-      "paises_envolvidos": [
-        "PL",
-        "UA",
-        "FR",
-        "GB"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-sancao-internacional",
-          "motivo_conexao": "Ajuda a compreender o contexto de pressões geopolíticas e alianças de segurança na Europa.",
-          "titulo_existente": "O que é uma sanção internacional?"
-        }
-      ]
-    },
-    {
-      "slug": "ifood-sofre-novo-ataque-hacker-dados-expostos",
-      "categoria": "Economia_Comercio",
-      "ttl_horas": 12,
-      "expires_at": "2026-11-21T00:59:03Z",
-      "updated_at": "2026-11-20T12:59:03Z",
-      "fontes_urls": [
-        "https://www.infomoney.com.br/consumo/ifood-sofre-segundo-ataque-hacker-no-ano-e-informacoes-sao-expostas/"
-      ],
-      "resumo_pulso": "Segundo reportado pelo InfoMoney com base em posicionamento da empresa, o aplicativo iFood registrou sua segunda invasão hacker do ano. A companhia informou que senhas, dados de cartão de crédito e dados bancários permaneceram protegidos, enquanto auditorias de segurança avaliam o alcance do incidente.",
-      "titulo_curto": "iFood sofre segundo ataque hacker em 2026 e investiga exposição de dados",
-      "palavras_chave": [
-        "iFood",
-        "Ataque Hacker",
-        "Cibersegurança",
-        "Vazamento de Dados"
-      ],
-      "urgencia_score": 86,
-      "data_publicacao": "2026-11-20T12:54:44Z",
-      "impacto_pratico": "Exige atenção reforçada de usuários quanto a tentativas de golpes de engenharia social e vazamento de cadastros.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "InfoMoney Mercados"
-      ],
-      "relevancia_score": 85,
-      "horas_em_destaque": 8,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "links_internos_relacionados": []
-    },
-    {
-      "slug": "stf-derruba-sigilo-de-relatorio-da-pf-sobre-mendonca-e-master",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 18,
-      "expires_at": "2026-11-21T06:59:03Z",
-      "updated_at": "2026-11-20T14:18:46Z",
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/justica/noticia/2026-11/fachin-manda-quebrar-sigilo-de-relatorio-da-pf-com-mencoes-mendonca",
-        "https://www.jota.info/stf/caso-master-mendonca-abre-mao-do-sigilo-da-investigacao-da-pf-e-fachin-concorda"
-      ],
-      "resumo_pulso": "Segundo apuração da Agência Brasil e do JOTA Info, o presidente do STF, Edson Fachin, atendeu a pedido do próprio ministro André Mendonça e retirou o sigilo do relatório da Polícia Federal no âmbito da Operação Compliance Zero (Caso Master), enquanto manteve a prisão preventiva do ex-banqueiro Daniel Vorcaro.",
-      "titulo_curto": "STF retira sigilo de relatório da PF com menções ao ministro André Mendonça",
-      "palavras_chave": [
-        "STF",
-        "André Mendonça",
-        "Polícia Federal",
-        "Caso Master",
-        "Daniel Vorcaro",
-        "Edson Fachin"
-      ],
-      "urgencia_score": 93,
-      "data_publicacao": "2026-11-20T12:49:46Z",
-      "impacto_pratico": "Esclarece o teor das investigações envolvendo autoridades e mantém a custódia do principal investigado do caso.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Agência Brasil (EBC)",
-        "JOTA Info",
-        "InfoMoney Mercados",
-        "G1 Política"
-      ],
-      "relevancia_score": 91,
-      "horas_em_destaque": 12,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
-          "motivo_conexao": "Complementa a cobertura sobre decisões institucionais da mais alta Corte do país.",
-          "titulo_existente": "STF analisa regras de transparência e limites constitucionais entre os Poderes"
-        }
-      ]
-    },
-    {
-      "slug": "quase-90-por-cento-das-usinas-eolicas-tem-alertas-socioambientais",
-      "categoria": "Ciencia_Clima",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-21T14:18:46Z",
-      "updated_at": "2026-11-20T14:18:46Z",
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/meio-ambiente/noticia/2026-11/quase-90-das-usinas-eolicas-do-pais-tem-alertas-socioambientais"
-      ],
-      "resumo_pulso": "Conforme levantamento inédito divulgado pela Agência Brasil e elaborado pelo Instituto Internacional Arayara, 89,4% dos parques eólicos terrestres monitorados no país apresentam algum fator de sensibilidade socioambiental, concentrando-se principalmente na região Nordeste.",
-      "titulo_curto": "Quase 90% das usinas eólicas terrestres no Brasil acumulam alertas socioambientais",
-      "palavras_chave": [
-        "energia eólica",
-        "meio ambiente",
-        "Nordeste",
-        "sustentabilidade",
-        "Instituto Arayara"
-      ],
-      "urgencia_score": 85,
-      "data_publicacao": "2026-11-20T12:32:00Z",
-      "impacto_pratico": "Apunta desafios regulatórios e socioambientais para a expansão da matriz de energia limpa e renovável no território nacional.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Agência Brasil (EBC)"
-      ],
-      "relevancia_score": 87,
-      "horas_em_destaque": 12,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/radar",
-          "motivo_conexao": "Contextualiza os avanços e os desafios socioambientais da expansão de energias renováveis no Brasil.",
-          "titulo_existente": "Investimentos em energia solar, eólica e biocombustíveis aceleram transição energética no Brasil"
-        }
-      ]
-    },
-    {
-      "slug": "ucrania-ataca-estacao-de-petroleo-druzhba-em-tatarstao-russia",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 18,
-      "expires_at": "2026-11-21T06:59:03Z",
-      "updated_at": "2026-11-20T12:59:03Z",
-      "fontes_urls": [
-        "https://kyivindependent.com/ukraine-strikes-key-druzhba-oil-pipeline-station-in-russias-tatarstan-general-staff-confirms/",
-        "https://www.ukrinform.net/rubric-ato/4186809-general-staff-confirms-three-oil-tanks-hit-at-pumping-station-in-russias-tatarstan.html"
-      ],
-      "resumo_pulso": "Conforme confirmado pelo Estado-Maior da Ucrânia e reportado pelo The Kyiv Independent e Ukrinform, drones ucranianos atacaram a estação de Kaleykino, no Tatarstão, a mais de 1.000 km da fronteira. A ação atingiu três tanques de armazenamento de petróleo de um dos principais nós logísticos da rede Druzhba.",
-      "titulo_curto": "Ucrânia atinge estação de bombeamento do oleoduto Druzhba no Tatarstão",
-      "palavras_chave": [
-        "Ucrânia",
-        "Rússia",
-        "Oleoduto Druzhba",
-        "Tatarstão",
-        "Drones",
-        "Infraestrutura Energética"
-      ],
-      "urgencia_score": 89,
-      "data_publicacao": "2026-11-20T12:01:09Z",
-      "impacto_pratico": "Pode gerar instabilidade adicional nos fluxos de suprimento de petróleo e afetar cotações globais de energia.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "The Kyiv Independent",
-        "Ukrinform"
-      ],
-      "relevancia_score": 87,
-      "horas_em_destaque": 10,
-      "paises_envolvidos": [
-        "UA",
-        "RU"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-sancao-internacional",
-          "motivo_conexao": "Explica os instrumentos de pressão econômica e os impactos em infraestruturas estratégicas na guerra.",
-          "titulo_existente": "O que é uma sanção internacional?"
         }
       ]
     }
