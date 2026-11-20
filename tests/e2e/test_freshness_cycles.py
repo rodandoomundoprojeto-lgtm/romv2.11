@@ -866,11 +866,11 @@ def test_t1_f12_pulso_collector_snapshot_sorting_ttl_and_lock(isolated_env, monk
     res_locked = asyncio.run(pulso_nq.executar_pipeline_pulso_async(client=fake_ai))
     assert res_locked is None
 
-    # Advisory lock free -> executes with gemini-2.5-flash & persists
+    # Advisory lock free -> executes with gemini-3.5-flash & persists
     isolated_env.db.busy_locks.clear()
     res_ok = asyncio.run(pulso_nq.executar_pipeline_pulso_async(client=fake_ai))
     assert res_ok is not None
-    assert fake_ai.calls[0]["model"] == "gemini-2.5-flash"
+    assert fake_ai.calls[0]["model"] == "gemini-3.5-flash"
     assert "breaking-lower-score" in isolated_env.db.noticias_quentes
 
 
@@ -918,7 +918,7 @@ def test_t1_f13_curadoria_collector_preserves_pulso_and_workflow(isolated_env, m
     fake_ai = FakeGenaiClient(cur_payload)
     monkeypatch.setattr(cur_analisador.genai, "Client", lambda **kw: fake_ai)
     out_payload = cur_analisador.executar_agente_analisador(collected, [])
-    assert fake_ai.calls[0]["model"].startswith("gemini-2.5-")
+    assert fake_ai.calls[0]["model"].startswith("gemini-3.")
 
     # Run curadoria salvar_snapshot_vitrine -> MUST preserve pulso-theme-1
     cur_pipeline.salvar_snapshot_vitrine(out_payload)
@@ -1006,7 +1006,7 @@ def test_t1_f14_legacy_collector_analyst_publisher_and_manual_cards(isolated_env
         "item_id": "id-1", "fonte_nome": "Fonte", "fonte_url": "https://ex.com/1",
         "categoria": "geopolitica", "texto_conteudo": "Conteudo suficiente", "data_publicacao": t_db,
     })
-    assert analyzed is not None and fake_ai.calls[0]["model"] == "gemini-2.5-flash"
+    assert analyzed is not None and fake_ai.calls[0]["model"] == "gemini-3.5-flash"
 
     # src.publisher treats DB as authoritative (must NOT resurrect Stale Disk Card)
     t_pub_new = (now - timedelta(minutes=2)).strftime("%Y-%m-%dT%H:%M:%SZ")
@@ -1149,11 +1149,11 @@ def test_t1_f15_fastapi_ordering_fallback_cache_busting_and_models(isolated_env,
     assert len(r_vit_fb.json()["temas_ativos"]) >= 1
     assert "no-store" in r_vit_fb.headers.get("cache-control", "")
 
-    # 5. Gemini 2.5 model defaults compliance (GEMINI.md Rule 10)
-    assert pulso_nq.MODELO_PULSO == "gemini-2.5-flash"
-    assert orq_editorial.MODELO_EDITORIAL == "gemini-2.5-pro"
-    assert cur_analisador.MODELO_PADRAO.startswith("gemini-2.5-")
-    # Check admin_sugerir_fonte default model list uses gemini-2.5-*
+    # 5. Gemini 3.5 model defaults compliance
+    assert pulso_nq.MODELO_PULSO == "gemini-3.5-flash"
+    assert orq_editorial.MODELO_EDITORIAL == "gemini-3.5-flash"
+    assert cur_analisador.MODELO_PADRAO.startswith("gemini-3.")
+    # Check admin_sugerir_fonte default model list uses gemini-3.*
     isolated_env.db.fail_connect = False
     fake_ai = FakeGenaiClient(json.dumps({"sugestoes": [{"nome": "ONU", "url": "https://news.un.org/feed/subscribe/pt/news/all/rss.xml", "tipo_fonte": "rss_feed", "cadencia": "pulso_30m", "pais_iso": "UN", "justificativa": "Oficial"}]}))
     import google.genai as real_genai
@@ -1165,7 +1165,7 @@ def test_t1_f15_fastapi_ordering_fallback_cache_busting_and_models(isolated_env,
         headers={"Authorization": "Bearer test-secret-token"},
     )
     assert r_sug_fonte.status_code == 200
-    assert fake_ai.calls[0]["model"].startswith("gemini-2.5-")
+    assert fake_ai.calls[0]["model"].startswith("gemini-3.")
 
 
 # ============================================================================

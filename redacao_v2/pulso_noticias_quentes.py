@@ -43,16 +43,13 @@ from .schemas import (
 PROMPTS_DIR = Path(__file__).resolve().parent / "prompts"
 PROMPT_0_PATH = PROMPTS_DIR / "prompt_0_pulso_noticias_quentes.md"
 _RAW_MODELO_PULSO = (
-    os.getenv("GEMINI_MODEL_PULSO") or os.getenv("GEMINI_MODEL") or "gemini-2.5-flash"
+    os.getenv("GEMINI_MODEL_PULSO") or os.getenv("GEMINI_MODEL") or "gemini-3.5-flash"
 ).strip()
-MODELO_PULSO = (
-    "gemini-2.5-flash"
-    if (not _RAW_MODELO_PULSO or _RAW_MODELO_PULSO.startswith("gemini-3"))
-    else _RAW_MODELO_PULSO
-)
+MODELO_PULSO = _RAW_MODELO_PULSO or "gemini-3.5-flash"
 MODELOS_PULSO_FALLBACK = [
-    "gemini-2.5-flash",
-    "gemini-2.5-pro",
+    "gemini-3.5-flash",
+    "gemini-3.5-flash-lite",
+    "gemini-3.8-flash",
 ]
 LOCK_PULSO_KEY = "pipeline_pulso:noticias_quentes_30m"
 

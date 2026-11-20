@@ -2849,7 +2849,7 @@ Regras:
 
     modelo_env = (os.getenv("GEMINI_SUGESTAO_MODEL") or os.getenv("GEMINI_MODEL") or "").strip()
     modelos_tentar = [modelo_env] if modelo_env else []
-    modelos_tentar += ["gemini-2.5-flash", "gemini-2.5-flash-lite", "gemini-2.5-pro"]
+    modelos_tentar += ["gemini-3.5-flash", "gemini-3.5-flash-lite", "gemini-3.8-flash"]
     # remove duplicatas mantendo ordem
     vistos_modelo = set()
     modelos_tentar = [m for m in modelos_tentar if not (m in vistos_modelo or vistos_modelo.add(m))]

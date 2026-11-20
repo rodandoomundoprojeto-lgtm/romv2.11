@@ -53,16 +53,13 @@ PROMPT_3_PATH = PROMPTS_DIR / "prompt_3_colunista_nerd.md"
 PROMPT_4_PATH = PROMPTS_DIR / "prompt_4_auditor_fact_checker.md"
 
 _RAW_MODELO_EDITORIAL = (
-    os.getenv("GEMINI_MODEL_EDITORIAL") or os.getenv("GEMINI_MODEL") or "gemini-2.5-pro"
+    os.getenv("GEMINI_MODEL_EDITORIAL") or os.getenv("GEMINI_MODEL") or "gemini-3.5-flash"
 ).strip()
-MODELO_EDITORIAL = (
-    "gemini-2.5-pro"
-    if (not _RAW_MODELO_EDITORIAL or _RAW_MODELO_EDITORIAL.startswith("gemini-3"))
-    else _RAW_MODELO_EDITORIAL
-)
+MODELO_EDITORIAL = _RAW_MODELO_EDITORIAL or "gemini-3.5-flash"
 MODELOS_EDITORIAL_FALLBACK = [
-    "gemini-2.5-pro",
-    "gemini-2.5-flash",
+    "gemini-3.5-flash",
+    "gemini-3.5-flash-lite",
+    "gemini-3.8-flash",
 ]
 NOTA_ISENCAO_MINIMA = 85
 MAX_TENTATIVAS_REESCRITA = 2

@@ -720,13 +720,13 @@ class TestM1FreshnessCycles(unittest.TestCase):
             clear=False,
         ):
             # Reavalia defaults esperados quando env vars não sobrepõem
-            self.assertFalse(any("gemini-3" in m for m in pulso_noticias_quentes.MODELOS_PULSO_FALLBACK))
-            self.assertFalse(any("gemini-3" in m for m in orquestrador_editorial.MODELOS_EDITORIAL_FALLBACK))
-            self.assertFalse(any("gemini-3" in m for m in cur_analisador.MODELOS_FALLBACK))
+            self.assertIn("gemini-3.5-flash", pulso_noticias_quentes.MODELOS_PULSO_FALLBACK)
+            self.assertIn("gemini-3.5-flash", orquestrador_editorial.MODELOS_EDITORIAL_FALLBACK)
+            self.assertIn("gemini-3.5-flash", cur_analisador.MODELOS_FALLBACK)
 
-        self.assertIn("gemini-2.5-flash", pulso_noticias_quentes.MODELOS_PULSO_FALLBACK)
-        self.assertIn("gemini-2.5-pro", orquestrador_editorial.MODELOS_EDITORIAL_FALLBACK)
-        self.assertIn("gemini-2.5-flash", cur_analisador.MODELOS_FALLBACK)
+        self.assertIn("gemini-3.5-flash", pulso_noticias_quentes.MODELOS_PULSO_FALLBACK)
+        self.assertIn("gemini-3.5-flash", orquestrador_editorial.MODELOS_EDITORIAL_FALLBACK)
+        self.assertIn("gemini-3.5-flash", cur_analisador.MODELOS_FALLBACK)
 
         wf_text = (Path(__file__).resolve().parents[2] / ".github" / "workflows" / "curadoria.yml").read_text(encoding="utf-8")
         self.assertIn("CURADORIA_DATABASE_URL", wf_text)

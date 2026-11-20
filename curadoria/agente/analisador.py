@@ -13,15 +13,12 @@ from google.genai.errors import APIError
 from .prompt import SYSTEM_PROMPT
 from .schemas import CuradoriaPayload, InsightItem, PautaSugerida
 
-_RAW_CURADORIA_MODEL = os.getenv("CURADORIA_MODEL", "gemini-2.5-flash").strip()
-MODELO_PADRAO = (
-    "gemini-2.5-flash"
-    if (not _RAW_CURADORIA_MODEL or _RAW_CURADORIA_MODEL.startswith("gemini-3"))
-    else _RAW_CURADORIA_MODEL
-)
+_RAW_CURADORIA_MODEL = os.getenv("CURADORIA_MODEL", "gemini-3.5-flash").strip()
+MODELO_PADRAO = _RAW_CURADORIA_MODEL or "gemini-3.5-flash"
 MODELOS_FALLBACK = [
-    "gemini-2.5-flash",
-    "gemini-2.5-pro",
+    "gemini-3.5-flash",
+    "gemini-3.5-flash-lite",
+    "gemini-3.8-flash",
 ]
 
 

@@ -799,6 +799,22 @@ DIRETRIZES OBRIGATÓRIAS:
    - Classifique cada marco em "past" (antes de {today_iso}), "turning_point" (ponto de inflexão central) ou "upcoming" (próximos marcos previstos após {today_iso})."""
 
 
+def _gerar_com_fallback_gemini(client: Any, contents: str, config: Any, preferred_model: str = "") -> tuple[Any, str]:
+    """Executa generate_content tentando o modelo configurado e fallbacks ativos."""
+    candidatos = [m.strip() for m in [preferred_model, "gemini-3.5-flash", "gemini-3.5-flash-lite", "gemini-3.8-flash"] if m and m.strip()]
+    vistos: set[str] = set()
+    modelos = [m for m in candidatos if not (m in vistos or vistos.add(m))]
+    ultimo_erro: Optional[Exception] = None
+    for modelo in modelos:
+        try:
+            res = client.models.generate_content(model=modelo, contents=contents, config=config)
+            return res, modelo
+        except Exception as exc:  # noqa: BLE001
+            ultimo_erro = exc
+            continue
+    raise ultimo_erro or RuntimeError("Nenhum modelo Gemini disponível respondeu.")
+
+
 @router.post("/v2/admin/dossies/suggest-ai")
 def admin_sugerir_dossie_ia(
     response: Response,
@@ -838,17 +854,18 @@ def admin_sugerir_dossie_ia(
     today_iso = datetime.now(timezone.utc).date().isoformat()
     prompt = _montar_prompt_sugestao_dossie(trends, fontes_pesquisadas, today_iso, hint_clean)
 
-    model_name = os.getenv("GEMINI_DOSSIER_MODEL", "gemini-2.5-flash")
+    model_name = os.getenv("GEMINI_DOSSIER_MODEL", "gemini-3.5-flash")
     try:
         client = genai.Client(api_key=api_key, http_options=types.HttpOptions(timeout=90_000))
-        result = client.models.generate_content(
-            model=model_name,
-            contents=prompt,
-            config=types.GenerateContentConfig(
+        result, model_name = _gerar_com_fallback_gemini(
+            client,
+            prompt,
+            types.GenerateContentConfig(
                 response_mime_type="application/json",
                 response_schema=DossieSuggestModel,
                 temperature=0.4,
             ),
+            preferred_model=model_name,
         )
         generated: Optional[DossieSuggestModel] = getattr(result, "parsed", None)
         if generated is None:
@@ -1004,17 +1021,18 @@ def admin_gerar_dossie_ia(
     today_iso = datetime.now(timezone.utc).date().isoformat()
     prompt = _montar_prompt_geracao_dossie(dossie, materias, today_iso)
 
-    model_name = os.getenv("GEMINI_DOSSIER_MODEL", "gemini-2.5-flash")
+    model_name = os.getenv("GEMINI_DOSSIER_MODEL", "gemini-3.5-flash")
     try:
         client = genai.Client(api_key=api_key, http_options=types.HttpOptions(timeout=120_000))
-        result = client.models.generate_content(
-            model=model_name,
-            contents=prompt,
-            config=types.GenerateContentConfig(
+        result, model_name = _gerar_com_fallback_gemini(
+            client,
+            prompt,
+            types.GenerateContentConfig(
                 response_mime_type="application/json",
                 response_schema=DossierGenerationModel,
                 temperature=0.3,
             ),
+            preferred_model=model_name,
         )
         generated: Optional[DossierGenerationModel] = getattr(result, "parsed", None)
         if generated is None:
