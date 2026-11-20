@@ -2,78 +2,177 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-20T03:16:49Z",
-  "batch_id": "20261120-0316",
+  "updatedAt": "2026-11-20T04:09:04Z",
+  "batch_id": "20261120-0408",
   "temas_ativos": [
     {
-      "slug": "negros-representam-45-por-cento-novos-servidores-federais",
-      "titulo_tema": "Pessoas negras representam 45% dos novos servidores federais em 4 anos",
-      "titulo_curto": "Pessoas negras representam 45% dos novos servidores federais em 4 anos",
+      "slug": "reuniao-trilateral-xi-trump-putin-geopolitica-global",
+      "titulo_tema": "Inédita Reunião Trilateral entre EUA, China e Rússia",
       "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Cultura",
-      "categoria": "Sociedade_Cultura",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
       "categorias_cruzadas": [
         "Economia",
+        "Politica"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 98,
+      "ttl_horas": 72,
+      "expires_at": "2026-11-23T04:09:04Z",
+      "palavras_chave_busca": [
+        "xi jinping",
+        "donald trump",
+        "vladimir putin",
+        "reunião trilateral",
+        "shenzhen",
+        "guerra na ucrânia",
+        "geopolitica global"
+      ],
+      "gatilho_vitrine": "Destacar cúpula trilateral em Shenzhen e seus reflexos no comércio e segurança global.",
+      "sintese_nerd": "O encontro histórico entre Xi, Trump e Putin em Shenzhen reconfigura as alianças globais ao debater guerras e armas nucleares, impactando diretamente os mercados financeiros e as cadeias de suprimento globais seguidas pelo Brasil.",
+      "data_publicacao": "2026-11-20T04:09:04Z",
+      "updated_at": "2026-11-20T04:09:04Z"
+    },
+    {
+      "slug": "ajuste-fiscal-governo-lula-4-crise-esquerda",
+      "titulo_tema": "Ajuste Fiscal e Divergências na Esquerda para o Governo Lula 4",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Politica",
+      "categorias_cruzadas": [
+        "Economia",
+        "Eleicoes"
+      ],
+      "rota_editoria": "/politica",
+      "relevancia_score": 92,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-22T04:09:04Z",
+      "palavras_chave_busca": [
+        "governo lula 4",
+        "ajuste fiscal",
+        "esquerda",
+        "ministério da fazenda",
+        "economia brasileira",
+        "congresso"
+      ],
+      "gatilho_vitrine": "Expor os debates econômicos internos e o atrito na base aliada quanto ao novo pacote fiscal do governo.",
+      "sintese_nerd": "A apresentação do novo projeto de ajuste fiscal gerou divisões públicas entre aliados do presidente reeleito, redesenhando a articulação política para o quarto mandato e trazendo incertezas para as metas econômicas e juros no país.",
+      "data_publicacao": "2026-11-20T04:09:04Z",
+      "updated_at": "2026-11-20T04:09:04Z"
+    },
+    {
+      "slug": "relatorios-pf-ministros-stf-pgr",
+      "titulo_tema": "Fachin Envia Relatórios da PF sobre Ministros do STF à PGR",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Politica",
+      "categorias_cruzadas": [
         "Resumo_Ultimas"
       ],
-      "rota_editoria": "/cultura",
-      "relevancia_score": 82,
-      "urgencia_score": 75,
+      "rota_editoria": "/politica",
+      "relevancia_score": 89,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-22T04:09:04Z",
+      "palavras_chave_busca": [
+        "stf",
+        "pgr",
+        "polícia federal",
+        "daniel vorcaro",
+        "edson fachin",
+        "paulo gonet"
+      ],
+      "gatilho_vitrine": "Acompanhar o desdobramento institucional do envio de relatórios envolvendo ministros da Suprema Corte.",
+      "sintese_nerd": "O encaminhamento de relatórios da Polícia Federal pelo STF à Procuradoria-Geral da República eleva a tensão institucional nos Poderes da República, exigindo rigor na apuração de mensagens e condutas.",
+      "data_publicacao": "2026-11-20T04:09:04Z",
+      "updated_at": "2026-11-20T04:09:04Z"
+    },
+    {
+      "slug": "meta-metaverso-emissoes-ia-clima",
+      "titulo_tema": "Meta Reavalia Metas Climáticas devido ao Consumo Energético de IAs",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Cultura",
+        "Economia"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 86,
+      "ttl_horas": 72,
+      "expires_at": "2026-11-23T04:09:04Z",
+      "palavras_chave_busca": [
+        "meta",
+        "inteligência artificial",
+        "mudanças climáticas",
+        "data centers",
+        "emissões de carbono",
+        "tecnologia"
+      ],
+      "gatilho_vitrine": "Mostrar como o avanço desenfreado da inteligência artificial pressiona metas globais de sustentabilidade.",
+      "sintese_nerd": "A explosão na demanda energética dos data centers de inteligência artificial forçou empresas como a Meta a reverem seus compromissos ambientais para 2030, evidenciando o conflito direto entre inovação tecnológica e transição energética.",
+      "data_publicacao": "2026-11-20T04:09:04Z",
+      "updated_at": "2026-11-20T04:09:04Z"
+    },
+    {
+      "slug": "negros-representam-45-por-cento-novos-servidores-federais",
+      "status": "novo",
+      "categoria": "Sociedade_Cultura",
       "ttl_horas": 24,
       "expires_at": "2026-11-21T03:16:49Z",
-      "palavras_chave_busca": [
-        "concursos públicos",
-        "lei de cotas",
-        "servidores federais",
-        "igualdade racial"
-      ],
-      "palavras_chave": [
-        "concursos públicos",
-        "lei de cotas",
-        "servidores federais",
-        "igualdade racial"
-      ],
-      "gatilho_vitrine": "Conforme dados oficiais analisados pelo G1, a administração pública federal registrou a entrada de 11.543 novos servidores negros entre 2023 e outubro de 2026. O índice supera o percentual reserva da Lei de Cotas devido ao desempenho simultâneo de candidatos na ampla concorrência.",
-      "resumo_pulso": "Conforme dados oficiais analisados pelo G1, a administração pública federal registrou a entrada de 11.543 novos servidores negros entre 2023 e outubro de 2026. O índice supera o percentual reserva da Lei de Cotas devido ao desempenho simultâneo de candidatos na ampla concorrência.",
-      "sintese_nerd": "Reflete a expansão da representatividade racial nas carreiras do serviço público executivo federal.",
-      "impacto_pratico": "Reflete a expansão da representatividade racial nas carreiras do serviço público executivo federal.",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "veiculos_origem": [
-        "G1 Política"
-      ],
+      "updated_at": "2026-11-20T03:16:49Z",
       "fontes_urls": [
         "https://g1.globo.com/politica/noticia/2026/11/20/pessoas-negras-representaram-45percent-dos-novos-servidores-publicos-nos-ultimos-quatro-anos.ghtml"
       ],
+      "titulo_tema": "Pessoas negras representam 45% dos novos servidores federais em 4 anos",
+      "resumo_pulso": "Conforme dados oficiais analisados pelo G1, a administração pública federal registrou a entrada de 11.543 novos servidores negros entre 2023 e outubro de 2026. O índice supera o percentual reserva da Lei de Cotas devido ao desempenho simultâneo de candidatos na ampla concorrência.",
+      "sintese_nerd": "Reflete a expansão da representatividade racial nas carreiras do serviço público executivo federal.",
+      "titulo_curto": "Pessoas negras representam 45% dos novos servidores federais em 4 anos",
+      "rota_editoria": "/cultura",
+      "palavras_chave": [
+        "concursos públicos",
+        "lei de cotas",
+        "servidores federais",
+        "igualdade racial"
+      ],
+      "urgencia_score": 75,
       "data_publicacao": "2026-11-20T03:00:01Z",
-      "updated_at": "2026-11-20T03:16:49Z"
-    },
-    {
-      "slug": "mercados-asiaticos-despencam-temor-bolha-ia-anthropic",
-      "titulo_tema": "Bolsas na Ásia despencam com receios de bolha de inteligência artificial",
-      "titulo_curto": "Bolsas na Ásia despencam com receios de bolha de inteligência artificial",
-      "status": "novo",
+      "gatilho_vitrine": "Conforme dados oficiais analisados pelo G1, a administração pública federal registrou a entrada de 11.543 novos servidores negros entre 2023 e outubro de 2026. O índice supera o percentual reserva da Lei de Cotas devido ao desempenho simultâneo de candidatos na ampla concorrência.",
+      "impacto_pratico": "Reflete a expansão da representatividade racial nas carreiras do serviço público executivo federal.",
       "origem_pipeline": "pulso",
-      "categoria_primaria": "Economia",
-      "categoria": "Economia_Comercio",
+      "veiculos_origem": [
+        "G1 Política"
+      ],
+      "relevancia_score": 82,
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "categoria_primaria": "Cultura",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
       ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 88,
-      "urgencia_score": 85,
+      "palavras_chave_busca": [
+        "concursos públicos",
+        "lei de cotas",
+        "servidores federais",
+        "igualdade racial"
+      ]
+    },
+    {
+      "slug": "mercados-asiaticos-despencam-temor-bolha-ia-anthropic",
+      "status": "novo",
+      "categoria": "Economia_Comercio",
       "ttl_horas": 12,
       "expires_at": "2026-11-20T15:16:49Z",
-      "palavras_chave_busca": [
-        "ações tech",
-        "bolha de ia",
-        "mercados asiáticos",
-        "anthropic",
-        "bolsa de valores"
+      "updated_at": "2026-11-20T03:16:49Z",
+      "fontes_urls": [
+        "https://www.aljazeera.com/economy/2026/11/20/asias-stock-markets-dive-as-anthropic-debut-fails-to-allay-ai-bubble-fears?traffic_source=rss"
       ],
+      "titulo_tema": "Bolsas na Ásia despencam com receios de bolha de inteligência artificial",
+      "resumo_pulso": "Segundo reportado pela Al Jazeera, os principais índices acionários do Japão, Coreia do Sul, Taiwan e Hong Kong fecharam em forte queda. A liquidação no setor de tecnologia ocorreu após a estreia da Anthropic não conseguir dissipar os temores dos investidores sobre uma bolha especulativa em IA.",
+      "sintese_nerd": "A aversão ao risco em ações de tecnologia na Ásia pode se desdobrar em volatilidade no dólar e nos mercados futuros da Europa e das Américas.",
+      "titulo_curto": "Bolsas na Ásia despencam com receios de bolha de inteligência artificial",
+      "rota_editoria": "/economia",
       "palavras_chave": [
         "ações tech",
         "bolha de ia",
@@ -81,10 +180,15 @@
         "anthropic",
         "bolsa de valores"
       ],
+      "urgencia_score": 85,
+      "data_publicacao": "2026-11-20T02:54:22Z",
       "gatilho_vitrine": "Segundo reportado pela Al Jazeera, os principais índices acionários do Japão, Coreia do Sul, Taiwan e Hong Kong fecharam em forte queda. A liquidação no setor de tecnologia ocorreu após a estreia da Anthropic não conseguir dissipar os temores dos investidores sobre uma bolha especulativa em IA.",
-      "resumo_pulso": "Segundo reportado pela Al Jazeera, os principais índices acionários do Japão, Coreia do Sul, Taiwan e Hong Kong fecharam em forte queda. A liquidação no setor de tecnologia ocorreu após a estreia da Anthropic não conseguir dissipar os temores dos investidores sobre uma bolha especulativa em IA.",
-      "sintese_nerd": "A aversão ao risco em ações de tecnologia na Ásia pode se desdobrar em volatilidade no dólar e nos mercados futuros da Europa e das Américas.",
       "impacto_pratico": "A aversão ao risco em ações de tecnologia na Ásia pode se desdobrar em volatilidade no dólar e nos mercados futuros da Europa e das Américas.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "Al Jazeera English"
+      ],
+      "relevancia_score": 88,
       "paises_envolvidos": [
         "JP",
         "KR",
@@ -92,85 +196,79 @@
         "HK",
         "US"
       ],
-      "veiculos_origem": [
-        "Al Jazeera English"
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
       ],
-      "fontes_urls": [
-        "https://www.aljazeera.com/economy/2026/11/20/asias-stock-markets-dive-as-anthropic-debut-fails-to-allay-ai-bubble-fears?traffic_source=rss"
-      ],
-      "data_publicacao": "2026-11-20T02:54:22Z",
-      "updated_at": "2026-11-20T03:16:49Z"
+      "palavras_chave_busca": [
+        "ações tech",
+        "bolha de ia",
+        "mercados asiáticos",
+        "anthropic",
+        "bolsa de valores"
+      ]
     },
     {
       "slug": "bukele-anuncia-candidatura-terceiro-mandato-el-salvador",
-      "titulo_tema": "Nayib Bukele anuncia candidatura ao terceiro mandato em El Salvador",
-      "titulo_curto": "Nayib Bukele anuncia candidatura ao terceiro mandato em El Salvador",
       "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Geopolitica_Radar",
       "categoria": "Geopolitica_Relacoes",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 80,
-      "urgencia_score": 82,
       "ttl_horas": 24,
       "expires_at": "2026-11-21T03:16:49Z",
-      "palavras_chave_busca": [
-        "nayib bukele",
-        "el salvador",
-        "reeleição",
-        "américa latina"
-      ],
-      "palavras_chave": [
-        "nayib bukele",
-        "el salvador",
-        "reeleição",
-        "américa latina"
-      ],
-      "gatilho_vitrine": "De acordo com informações do Poder360, o presidente de El Salvador, Nayib Bukele, confirmou que disputará a reeleição para o seu terceiro mandato consecutivo em fevereiro de 2027. O anúncio ocorre respaldado por reforma constitucional recente que liberou reeleições ilimitadas no país.",
-      "resumo_pulso": "De acordo com informações do Poder360, o presidente de El Salvador, Nayib Bukele, confirmou que disputará a reeleição para o seu terceiro mandato consecutivo em fevereiro de 2027. O anúncio ocorre respaldado por reforma constitucional recente que liberou reeleições ilimitadas no país.",
-      "sintese_nerd": "A consolidação do modelo político salvadorenho é acompanhada de perto por governos da América Latina pelo impacto em políticas de segurança e direitos institucionais.",
-      "impacto_pratico": "A consolidação do modelo político salvadorenho é acompanhada de perto por governos da América Latina pelo impacto em políticas de segurança e direitos institucionais.",
-      "paises_envolvidos": [
-        "SV"
-      ],
-      "veiculos_origem": [
-        "Poder360"
-      ],
+      "updated_at": "2026-11-20T03:16:49Z",
       "fontes_urls": [
         "https://www.poder360.com.br/poder-internacional/bukele-anuncia-candidatura-ao-3o-mandato-em-el-salvador/"
       ],
+      "titulo_tema": "Nayib Bukele anuncia candidatura ao terceiro mandato em El Salvador",
+      "resumo_pulso": "De acordo com informações do Poder360, o presidente de El Salvador, Nayib Bukele, confirmou que disputará a reeleição para o seu terceiro mandato consecutivo em fevereiro de 2027. O anúncio ocorre respaldado por reforma constitucional recente que liberou reeleições ilimitadas no país.",
+      "sintese_nerd": "A consolidação do modelo político salvadorenho é acompanhada de perto por governos da América Latina pelo impacto em políticas de segurança e direitos institucionais.",
+      "titulo_curto": "Nayib Bukele anuncia candidatura ao terceiro mandato em El Salvador",
+      "rota_editoria": "/radar",
+      "palavras_chave": [
+        "nayib bukele",
+        "el salvador",
+        "reeleição",
+        "américa latina"
+      ],
+      "urgencia_score": 82,
       "data_publicacao": "2026-11-20T02:23:16Z",
-      "updated_at": "2026-11-20T03:16:49Z"
-    },
-    {
-      "slug": "reuniao-trilateral-inedita-trump-xi-putin-shenzhen",
-      "titulo_tema": "Líderes de EUA, China e Rússia realizam reunião trilateral inédita em Shenzhen",
-      "titulo_curto": "Líderes de EUA, China e Rússia realizam reunião trilateral inédita em Shenzhen",
-      "status": "novo",
+      "gatilho_vitrine": "De acordo com informações do Poder360, o presidente de El Salvador, Nayib Bukele, confirmou que disputará a reeleição para o seu terceiro mandato consecutivo em fevereiro de 2027. O anúncio ocorre respaldado por reforma constitucional recente que liberou reeleições ilimitadas no país.",
+      "impacto_pratico": "A consolidação do modelo político salvadorenho é acompanhada de perto por governos da América Latina pelo impacto em políticas de segurança e direitos institucionais.",
       "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "Poder360"
+      ],
+      "relevancia_score": 80,
+      "paises_envolvidos": [
+        "SV"
+      ],
       "categoria_primaria": "Geopolitica_Radar",
-      "categoria": "Geopolitica_Relacoes",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
       ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 95,
-      "urgencia_score": 96,
+      "palavras_chave_busca": [
+        "nayib bukele",
+        "el salvador",
+        "reeleição",
+        "américa latina"
+      ]
+    },
+    {
+      "slug": "reuniao-trilateral-inedita-trump-xi-putin-shenzhen",
+      "status": "novo",
+      "categoria": "Geopolitica_Relacoes",
       "ttl_horas": 24,
       "expires_at": "2026-11-21T03:16:49Z",
-      "palavras_chave_busca": [
-        "trump",
-        "xi jinping",
-        "putin",
-        "shenzhen",
-        "geopolítica",
-        "trilateral"
+      "updated_at": "2026-11-20T03:16:49Z",
+      "fontes_urls": [
+        "https://www.poder360.com.br/poder-internacional/assista-aos-discursos-de-xi-trump-e-putin-em-inedita-reuniao-trilateral/"
       ],
+      "titulo_tema": "Líderes de EUA, China e Rússia realizam reunião trilateral inédita em Shenzhen",
+      "resumo_pulso": "Conforme apuração do Poder360 e análises internacionais, Donald Trump, Xi Jinping e Vladimir Putin participaram de uma reunião trilateral inédita na China. As declarações centraram-se nas negociações sobre a guerra na Ucrânia, não proliferação nuclear e a estabilidade geopolítica no Oriente Médio.",
+      "sintese_nerd": "A reaproximação diplomática entre as três maiores potências globais pode reconfigurar sanções econômicas, rotas de comércio exterior e acordos de segurança mundial.",
+      "titulo_curto": "Líderes de EUA, China e Rússia realizam reunião trilateral inédita em Shenzhen",
+      "rota_editoria": "/radar",
       "palavras_chave": [
         "trump",
         "xi jinping",
@@ -179,130 +277,33 @@
         "geopolítica",
         "trilateral"
       ],
+      "urgencia_score": 96,
+      "data_publicacao": "2026-11-20T02:16:04Z",
       "gatilho_vitrine": "Conforme apuração do Poder360 e análises internacionais, Donald Trump, Xi Jinping e Vladimir Putin participaram de uma reunião trilateral inédita na China. As declarações centraram-se nas negociações sobre a guerra na Ucrânia, não proliferação nuclear e a estabilidade geopolítica no Oriente Médio.",
-      "resumo_pulso": "Conforme apuração do Poder360 e análises internacionais, Donald Trump, Xi Jinping e Vladimir Putin participaram de uma reunião trilateral inédita na China. As declarações centraram-se nas negociações sobre a guerra na Ucrânia, não proliferação nuclear e a estabilidade geopolítica no Oriente Médio.",
-      "sintese_nerd": "A reaproximação diplomática entre as três maiores potências globais pode reconfigurar sanções econômicas, rotas de comércio exterior e acordos de segurança mundial.",
       "impacto_pratico": "A reaproximação diplomática entre as três maiores potências globais pode reconfigurar sanções econômicas, rotas de comércio exterior e acordos de segurança mundial.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "Poder360",
+        "Petit Journal"
+      ],
+      "relevancia_score": 95,
       "paises_envolvidos": [
         "US",
         "CN",
         "RU"
       ],
-      "veiculos_origem": [
-        "Poder360",
-        "Petit Journal"
-      ],
-      "fontes_urls": [
-        "https://www.poder360.com.br/poder-internacional/assista-aos-discursos-de-xi-trump-e-putin-em-inedita-reuniao-trilateral/"
-      ],
-      "data_publicacao": "2026-11-20T02:16:04Z",
-      "updated_at": "2026-11-20T03:16:49Z"
-    },
-    {
-      "slug": "guerra-ira-impacto-petroleo-iea-mercado-financeiro",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-22T01:24:53Z",
-      "updated_at": "2026-11-20T01:24:53Z",
-      "titulo_tema": "Conflito no Irã e Ataques no Oriente Médio Ameaçam Abastecimento Global de Petróleo",
-      "sintese_nerd": "A escalada das hostilidades no Oriente Médio e os ataques na Arábia Saudita ameaçam o Estreito de Ormuz, levando a IEIA a prever reduções estruturais na demanda global e volatilidade no barril de petróleo. Para o Brasil, o movimento traz pressão sobre os preços dos combustíveis e reativa a volatilidade cambial via risco-país.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-20T01:24:53Z",
-      "gatilho_vitrine": "Destaque no topo do Radar Geopolítico para avaliar risco de choque inflacionário e impacto nas cotações de commodities.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 92,
       "categoria_primaria": "Geopolitica_Radar",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
       ],
       "palavras_chave_busca": [
-        "guerra no irã",
-        "preço do petróleo",
-        "estreito de ormuz",
-        "iea",
-        "ataques houthis",
-        "inflação de combustíveis"
-      ]
-    },
-    {
-      "slug": "stf-pf-relatorios-banco-master-pgr-fachin",
-      "status": "novo",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-21T01:24:53Z",
-      "updated_at": "2026-11-20T01:24:53Z",
-      "titulo_tema": "Fachin Encaminha à PGR Relatórios da PF com Citações a Ministros do STF",
-      "sintese_nerd": "O envio de relatórios da Polícia Federal à Procuradoria-Geral da República envolvendo menções a ministros do STF abre um novo capítulo de fricção institucional. O desfecho da avaliação da PGR impactará a estabilidade jurídica das decisões e a percepção de risco institucional pelo mercado financeiro.",
-      "rota_editoria": "/politica",
-      "data_publicacao": "2026-11-20T01:24:53Z",
-      "gatilho_vitrine": "Alerta de alta prioridade política no feed principal sobre os desdobramentos das investigações e a resposta institucional da PGR.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 89,
-      "categoria_primaria": "Politica",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "stf",
-        "edson fachin",
-        "polícia federal",
-        "pgr",
-        "daniel vorcaro",
-        "banco master"
-      ]
-    },
-    {
-      "slug": "russia-ataque-misseis-ucrania-escalada-geopolitica",
-      "status": "novo",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-21T01:24:53Z",
-      "updated_at": "2026-11-20T01:24:53Z",
-      "titulo_tema": "Rússia Lança Ataque Massivo de Mísseis Contra a Ucrânia Após Promessa de Retaliação",
-      "sintese_nerd": "A nova onda de bombardeios estratégicos sobre Kiev consolida o recrudescimento da ofensiva russa no Leste Europeu após declarações do Kremlin. O movimento tensiona ainda mais as relações entre a OTAN e a Rússia, influenciando o preço global do gás e de insumos agrícolas.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-20T01:24:53Z",
-      "gatilho_vitrine": "Inserir na faixa de Notícias Urgentes para monitoramento em tempo real dos impactos geopolíticos no Leste Europeu.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 84,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "guerra na ucrânia",
-        "ataque russo",
-        "kiev",
-        "vladimir putin",
-        "bombardeiros estratégicos",
-        "conflito no leste europeu"
-      ]
-    },
-    {
-      "slug": "vazamento-dados-ataque-cibernetico-ifood-visa-jpmorgan",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-22T01:24:53Z",
-      "updated_at": "2026-11-20T01:24:53Z",
-      "titulo_tema": "Ataques Cibernéticos e Vazamento de Dados Atingem Grandes Empresas Globais e Nacionais",
-      "sintese_nerd": "Incidentes consecutivos de segurança da informação em gigantes do setor financeiro e plataformas de entrega acendem o alerta para a vulnerabilidade de fornecedores terceirizados. O cenário pressiona por regulamentações de segurança cibersegurança mais rígidas e maior responsabilidade corporativa sobre dados pessoais.",
-      "rota_editoria": "/cultura",
-      "data_publicacao": "2026-11-20T01:24:53Z",
-      "gatilho_vitrine": "Publicar no hub de Tecnologia e Sociedade destacando dicas de segurança digital e regulação de dados.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 78,
-      "categoria_primaria": "Cultura",
-      "categorias_cruzadas": [
-        "Economia",
-        "Politica"
-      ],
-      "palavras_chave_busca": [
-        "vazamento de dados",
-        "ataque cibernético",
-        "ifood",
-        "jpmorgan",
-        "visa",
-        "segurança da informação"
+        "trump",
+        "xi jinping",
+        "putin",
+        "shenzhen",
+        "geopolítica",
+        "trilateral"
       ]
     },
     {
@@ -404,28 +405,20 @@
     },
     {
       "slug": "russia-desencadeia-ataque-massivo-de-misseis-contra-ucrania",
-      "titulo_tema": "Ucrânia retalia com drones após ataque massivo de mísseis russos contra Kiev",
-      "titulo_curto": "Ucrânia retalia com drones após ataque massivo de mísseis russos contra Kiev",
       "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Geopolitica_Radar",
       "categoria": "Geopolitica_Relacoes",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 90,
-      "urgencia_score": 94,
       "ttl_horas": 12,
       "expires_at": "2026-11-20T12:54:19Z",
-      "palavras_chave_busca": [
-        "ucrânia",
-        "rússia",
-        "ataque de mísseis",
-        "drones",
-        "kiev"
+      "updated_at": "2026-11-20T03:16:49Z",
+      "fontes_urls": [
+        "https://kyivindependent.com/ukrainian-drones-reportedly-strike-russian-chemical-plant/",
+        "https://kyivindependent.com/russia-launches-mass-missile-attack-against-ukraine-after-putin-vows-revenge/"
       ],
+      "titulo_tema": "Ucrânia retalia com drones após ataque massivo de mísseis russos contra Kiev",
+      "resumo_pulso": "Em desdobramento aos ataques de mísseis russos contra cidades ucranianas, forças de Kiev lançaram drones contra uma usina química na Rússia na madrugada desta sexta-feira, segundo o The Kyiv Independent. A Força Aérea da Ucrânia confirmou a destruição de alvos estratégicos em meio à escalada de retaliações.",
+      "sintese_nerd": "A intensificação dos combates aéreos eleva os riscos para infraestruturas de energia e preços de commodities energéticas na Europa.",
+      "titulo_curto": "Ucrânia retalia com drones após ataque massivo de mísseis russos contra Kiev",
+      "rota_editoria": "/radar",
       "palavras_chave": [
         "ucrânia",
         "rússia",
@@ -433,24 +426,32 @@
         "drones",
         "kiev"
       ],
+      "urgencia_score": 94,
+      "data_publicacao": "2026-11-19T23:41:36Z",
       "gatilho_vitrine": "Em desdobramento aos ataques de mísseis russos contra cidades ucranianas, forças de Kiev lançaram drones contra uma usina química na Rússia na madrugada desta sexta-feira, segundo o The Kyiv Independent. A Força Aérea da Ucrânia confirmou a destruição de alvos estratégicos em meio à escalada de retaliações.",
-      "resumo_pulso": "Em desdobramento aos ataques de mísseis russos contra cidades ucranianas, forças de Kiev lançaram drones contra uma usina química na Rússia na madrugada desta sexta-feira, segundo o The Kyiv Independent. A Força Aérea da Ucrânia confirmou a destruição de alvos estratégicos em meio à escalada de retaliações.",
-      "sintese_nerd": "A intensificação dos combates aéreos eleva os riscos para infraestruturas de energia e preços de commodities energéticas na Europa.",
       "impacto_pratico": "A intensificação dos combates aéreos eleva os riscos para infraestruturas de energia e preços de commodities energéticas na Europa.",
-      "paises_envolvidos": [
-        "UA",
-        "RU"
-      ],
+      "origem_pipeline": "pulso",
       "veiculos_origem": [
         "The Kyiv Independent",
         "Ukrinform"
       ],
-      "fontes_urls": [
-        "https://kyivindependent.com/ukrainian-drones-reportedly-strike-russian-chemical-plant/",
-        "https://kyivindependent.com/russia-launches-mass-missile-attack-against-ukraine-after-putin-vows-revenge/"
+      "relevancia_score": 90,
+      "paises_envolvidos": [
+        "UA",
+        "RU"
       ],
-      "data_publicacao": "2026-11-19T23:41:36Z",
-      "updated_at": "2026-11-20T03:16:49Z"
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "ucrânia",
+        "rússia",
+        "ataque de mísseis",
+        "drones",
+        "kiev"
+      ]
     },
     {
       "slug": "relator-na-camara-mantem-texto-do-senado-para-ajuste-fiscal",
@@ -763,49 +764,6 @@
       ]
     },
     {
-      "slug": "pulso-3-20261119-2243",
-      "status": "novo",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 6,
-      "expires_at": "2026-11-20T03:45:00Z",
-      "updated_at": "2026-11-19T22:43:51Z",
-      "fontes_urls": [
-        "https://g1.globo.com/mundo/noticia/2026/11/19/principe-harry-diz-estar-disposto-a-voltar-ao-exercito-para-lutar-contra-a-russia.ghtml"
-      ],
-      "titulo_tema": "Príncipe Harry diz estar disposto a voltar ao Exército para lutar contra a Rússia",
-      "resumo_pulso": "Segundo G1 Mundo, Príncipe Harry, esposa e filhos vão voltar a morar no Reino Unido após anos nos EUA O príncipe Harry afirmou estar disposto a voltar a servir no Exército britânico e lutar contra a Rússia, \"se fosse necessário\". A declaração foi feita em entrevista ao jornal The Telegraph, durante uma visita surpresa à Ucrânia, divulgada nesta quinta-feira (19). ✅ Siga o canal de notícias interna",
-      "sintese_nerd": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "titulo_curto": "Príncipe Harry diz estar disposto a voltar ao Exército para lutar contra a Rússia",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "radar",
-        "tempo real",
-        "br"
-      ],
-      "urgencia_score": 80,
-      "data_publicacao": "2026-11-19T21:42:02+00:00",
-      "gatilho_vitrine": "Segundo G1 Mundo, Príncipe Harry, esposa e filhos vão voltar a morar no Reino Unido após anos nos EUA O príncipe Harry afirmou estar disposto a voltar a servir no Exército britânico e lutar contra a Rússia, \"se fosse necessário\". A declaração foi feita em entrevista ao jornal The Telegraph, durante uma visita surpresa à Ucrânia, divulgada nesta quinta-feira (19). ✅ Siga o canal de notícias interna",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "G1 Mundo"
-      ],
-      "relevancia_score": 80,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "radar",
-        "tempo real",
-        "br"
-      ]
-    },
-    {
       "slug": "pulso-4-20261119-2243",
       "status": "novo",
       "categoria": "Geopolitica_Relacoes",
@@ -849,68 +807,165 @@
       ]
     }
   ],
+  "temas_curadoria": [
+    {
+      "slug": "reuniao-trilateral-xi-trump-putin-geopolitica-global",
+      "titulo_tema": "Inédita Reunião Trilateral entre EUA, China e Rússia",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Politica"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 98,
+      "ttl_horas": 72,
+      "expires_at": "2026-11-23T04:09:04Z",
+      "palavras_chave_busca": [
+        "xi jinping",
+        "donald trump",
+        "vladimir putin",
+        "reunião trilateral",
+        "shenzhen",
+        "guerra na ucrânia",
+        "geopolitica global"
+      ],
+      "gatilho_vitrine": "Destacar cúpula trilateral em Shenzhen e seus reflexos no comércio e segurança global.",
+      "sintese_nerd": "O encontro histórico entre Xi, Trump e Putin em Shenzhen reconfigura as alianças globais ao debater guerras e armas nucleares, impactando diretamente os mercados financeiros e as cadeias de suprimento globais seguidas pelo Brasil.",
+      "data_publicacao": "2026-11-20T04:09:04Z",
+      "updated_at": "2026-11-20T04:09:04Z"
+    },
+    {
+      "slug": "ajuste-fiscal-governo-lula-4-crise-esquerda",
+      "titulo_tema": "Ajuste Fiscal e Divergências na Esquerda para o Governo Lula 4",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Politica",
+      "categorias_cruzadas": [
+        "Economia",
+        "Eleicoes"
+      ],
+      "rota_editoria": "/politica",
+      "relevancia_score": 92,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-22T04:09:04Z",
+      "palavras_chave_busca": [
+        "governo lula 4",
+        "ajuste fiscal",
+        "esquerda",
+        "ministério da fazenda",
+        "economia brasileira",
+        "congresso"
+      ],
+      "gatilho_vitrine": "Expor os debates econômicos internos e o atrito na base aliada quanto ao novo pacote fiscal do governo.",
+      "sintese_nerd": "A apresentação do novo projeto de ajuste fiscal gerou divisões públicas entre aliados do presidente reeleito, redesenhando a articulação política para o quarto mandato e trazendo incertezas para as metas econômicas e juros no país.",
+      "data_publicacao": "2026-11-20T04:09:04Z",
+      "updated_at": "2026-11-20T04:09:04Z"
+    },
+    {
+      "slug": "relatorios-pf-ministros-stf-pgr",
+      "titulo_tema": "Fachin Envia Relatórios da PF sobre Ministros do STF à PGR",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Politica",
+      "categorias_cruzadas": [
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/politica",
+      "relevancia_score": 89,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-22T04:09:04Z",
+      "palavras_chave_busca": [
+        "stf",
+        "pgr",
+        "polícia federal",
+        "daniel vorcaro",
+        "edson fachin",
+        "paulo gonet"
+      ],
+      "gatilho_vitrine": "Acompanhar o desdobramento institucional do envio de relatórios envolvendo ministros da Suprema Corte.",
+      "sintese_nerd": "O encaminhamento de relatórios da Polícia Federal pelo STF à Procuradoria-Geral da República eleva a tensão institucional nos Poderes da República, exigindo rigor na apuração de mensagens e condutas.",
+      "data_publicacao": "2026-11-20T04:09:04Z",
+      "updated_at": "2026-11-20T04:09:04Z"
+    },
+    {
+      "slug": "meta-metaverso-emissoes-ia-clima",
+      "titulo_tema": "Meta Reavalia Metas Climáticas devido ao Consumo Energético de IAs",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Cultura",
+        "Economia"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 86,
+      "ttl_horas": 72,
+      "expires_at": "2026-11-23T04:09:04Z",
+      "palavras_chave_busca": [
+        "meta",
+        "inteligência artificial",
+        "mudanças climáticas",
+        "data centers",
+        "emissões de carbono",
+        "tecnologia"
+      ],
+      "gatilho_vitrine": "Mostrar como o avanço desenfreado da inteligência artificial pressiona metas globais de sustentabilidade.",
+      "sintese_nerd": "A explosão na demanda energética dos data centers de inteligência artificial forçou empresas como a Meta a reverem seus compromissos ambientais para 2030, evidenciando o conflito direto entre inovação tecnológica e transição energética.",
+      "data_publicacao": "2026-11-20T04:09:04Z",
+      "updated_at": "2026-11-20T04:09:04Z"
+    }
+  ],
   "noticias_quentes": [
     {
       "slug": "negros-representam-45-por-cento-novos-servidores-federais",
-      "titulo_curto": "Pessoas negras representam 45% dos novos servidores federais em 4 anos",
-      "resumo_pulso": "Conforme dados oficiais analisados pelo G1, a administração pública federal registrou a entrada de 11.543 novos servidores negros entre 2023 e outubro de 2026. O índice supera o percentual reserva da Lei de Cotas devido ao desempenho simultâneo de candidatos na ampla concorrência.",
-      "impacto_pratico": "Reflete a expansão da representatividade racial nas carreiras do serviço público executivo federal.",
       "categoria": "Sociedade_Cultura",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "urgencia_score": 75,
-      "relevancia_score": 82,
-      "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 6,
-      "veiculos_origem": [
-        "G1 Política"
-      ],
+      "expires_at": "2026-11-21T03:16:49Z",
+      "updated_at": "2026-11-20T03:16:49Z",
       "fontes_urls": [
         "https://g1.globo.com/politica/noticia/2026/11/20/pessoas-negras-representaram-45percent-dos-novos-servidores-publicos-nos-ultimos-quatro-anos.ghtml"
       ],
+      "resumo_pulso": "Conforme dados oficiais analisados pelo G1, a administração pública federal registrou a entrada de 11.543 novos servidores negros entre 2023 e outubro de 2026. O índice supera o percentual reserva da Lei de Cotas devido ao desempenho simultâneo de candidatos na ampla concorrência.",
+      "titulo_curto": "Pessoas negras representam 45% dos novos servidores federais em 4 anos",
       "palavras_chave": [
         "Concursos públicos",
         "Lei de Cotas",
         "Servidores federais",
         "Igualdade racial"
       ],
+      "urgencia_score": 75,
       "data_publicacao": "2026-11-20T03:00:01Z",
+      "impacto_pratico": "Reflete a expansão da representatividade racial nas carreiras do serviço público executivo federal.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "G1 Política"
+      ],
+      "relevancia_score": 82,
+      "horas_em_destaque": 6,
+      "paises_envolvidos": [
+        "BR"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "Política no Brasil",
           "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
-          "motivo_conexao": "Detalha as políticas públicas do Poder Executivo para diversidade e inclusão no serviço público."
+          "motivo_conexao": "Detalha as políticas públicas do Poder Executivo para diversidade e inclusão no serviço público.",
+          "titulo_existente": "Política no Brasil"
         }
-      ],
-      "expires_at": "2026-11-21T03:16:49Z",
-      "updated_at": "2026-11-20T03:16:49Z"
+      ]
     },
     {
       "slug": "mercados-asiaticos-despencam-temor-bolha-ia-anthropic",
-      "titulo_curto": "Bolsas na Ásia despencam com receios de bolha de inteligência artificial",
-      "resumo_pulso": "Segundo reportado pela Al Jazeera, os principais índices acionários do Japão, Coreia do Sul, Taiwan e Hong Kong fecharam em forte queda. A liquidação no setor de tecnologia ocorreu após a estreia da Anthropic não conseguir dissipar os temores dos investidores sobre uma bolha especulativa em IA.",
-      "impacto_pratico": "A aversão ao risco em ações de tecnologia na Ásia pode se desdobrar em volatilidade no dólar e nos mercados futuros da Europa e das Américas.",
       "categoria": "Economia_Comercio",
-      "paises_envolvidos": [
-        "JP",
-        "KR",
-        "TW",
-        "HK",
-        "US"
-      ],
-      "urgencia_score": 85,
-      "relevancia_score": 88,
-      "nivel_confianca": "alta",
       "ttl_horas": 12,
-      "horas_em_destaque": 8,
-      "veiculos_origem": [
-        "Al Jazeera English"
-      ],
+      "expires_at": "2026-11-20T15:16:49Z",
+      "updated_at": "2026-11-20T03:16:49Z",
       "fontes_urls": [
         "https://www.aljazeera.com/economy/2026/11/20/asias-stock-markets-dive-as-anthropic-debut-fails-to-allay-ai-bubble-fears?traffic_source=rss"
       ],
+      "resumo_pulso": "Segundo reportado pela Al Jazeera, os principais índices acionários do Japão, Coreia do Sul, Taiwan e Hong Kong fecharam em forte queda. A liquidação no setor de tecnologia ocorreu após a estreia da Anthropic não conseguir dissipar os temores dos investidores sobre uma bolha especulativa em IA.",
+      "titulo_curto": "Bolsas na Ásia despencam com receios de bolha de inteligência artificial",
       "palavras_chave": [
         "Ações tech",
         "Bolha de IA",
@@ -918,77 +973,78 @@
         "Anthropic",
         "Bolsa de Valores"
       ],
+      "urgencia_score": 85,
       "data_publicacao": "2026-11-20T02:54:22Z",
+      "impacto_pratico": "A aversão ao risco em ações de tecnologia na Ásia pode se desdobrar em volatilidade no dólar e nos mercados futuros da Europa e das Américas.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Al Jazeera English"
+      ],
+      "relevancia_score": 88,
+      "horas_em_destaque": 8,
+      "paises_envolvidos": [
+        "JP",
+        "KR",
+        "TW",
+        "HK",
+        "US"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "Economia no Brasil",
           "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
-          "motivo_conexao": "Acompanhe os desdobramentos do apetite de risco global sobre o mercado financeiro e câmbio doméstico."
+          "motivo_conexao": "Acompanhe os desdobramentos do apetite de risco global sobre o mercado financeiro e câmbio doméstico.",
+          "titulo_existente": "Economia no Brasil"
         }
-      ],
-      "expires_at": "2026-11-20T15:16:49Z",
-      "updated_at": "2026-11-20T03:16:49Z"
+      ]
     },
     {
       "slug": "bukele-anuncia-candidatura-terceiro-mandato-el-salvador",
-      "titulo_curto": "Nayib Bukele anuncia candidatura ao terceiro mandato em El Salvador",
-      "resumo_pulso": "De acordo com informações do Poder360, o presidente de El Salvador, Nayib Bukele, confirmou que disputará a reeleição para o seu terceiro mandato consecutivo em fevereiro de 2027. O anúncio ocorre respaldado por reforma constitucional recente que liberou reeleições ilimitadas no país.",
-      "impacto_pratico": "A consolidação do modelo político salvadorenho é acompanhada de perto por governos da América Latina pelo impacto em políticas de segurança e direitos institucionais.",
       "categoria": "Geopolitica_Relacoes",
-      "paises_envolvidos": [
-        "SV"
-      ],
-      "urgencia_score": 82,
-      "relevancia_score": 80,
-      "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 8,
-      "veiculos_origem": [
-        "Poder360"
-      ],
+      "expires_at": "2026-11-21T03:16:49Z",
+      "updated_at": "2026-11-20T03:16:49Z",
       "fontes_urls": [
         "https://www.poder360.com.br/poder-internacional/bukele-anuncia-candidatura-ao-3o-mandato-em-el-salvador/"
       ],
+      "resumo_pulso": "De acordo com informações do Poder360, o presidente de El Salvador, Nayib Bukele, confirmou que disputará a reeleição para o seu terceiro mandato consecutivo em fevereiro de 2027. O anúncio ocorre respaldado por reforma constitucional recente que liberou reeleições ilimitadas no país.",
+      "titulo_curto": "Nayib Bukele anuncia candidatura ao terceiro mandato em El Salvador",
       "palavras_chave": [
         "Nayib Bukele",
         "El Salvador",
         "Reeleição",
         "América Latina"
       ],
+      "urgencia_score": 82,
       "data_publicacao": "2026-11-20T02:23:16Z",
+      "impacto_pratico": "A consolidação do modelo político salvadorenho é acompanhada de perto por governos da América Latina pelo impacto em políticas de segurança e direitos institucionais.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Poder360"
+      ],
+      "relevancia_score": 80,
+      "horas_em_destaque": 8,
+      "paises_envolvidos": [
+        "SV"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "Eleições e Democracia no Mundo",
           "url_existente": "https://www.rodandoomundo.com.br/eleicoes",
-          "motivo_conexao": "Oferece panorama de disputas eleitorais e transformações nos sistemas de votação globais."
+          "motivo_conexao": "Oferece panorama de disputas eleitorais e transformações nos sistemas de votação globais.",
+          "titulo_existente": "Eleições e Democracia no Mundo"
         }
-      ],
-      "expires_at": "2026-11-21T03:16:49Z",
-      "updated_at": "2026-11-20T03:16:49Z"
+      ]
     },
     {
       "slug": "reuniao-trilateral-inedita-trump-xi-putin-shenzhen",
-      "titulo_curto": "Líderes de EUA, China e Rússia realizam reunião trilateral inédita em Shenzhen",
-      "resumo_pulso": "Conforme apuração do Poder360 e análises internacionais, Donald Trump, Xi Jinping e Vladimir Putin participaram de uma reunião trilateral inédita na China. As declarações centraram-se nas negociações sobre a guerra na Ucrânia, não proliferação nuclear e a estabilidade geopolítica no Oriente Médio.",
-      "impacto_pratico": "A reaproximação diplomática entre as três maiores potências globais pode reconfigurar sanções econômicas, rotas de comércio exterior e acordos de segurança mundial.",
       "categoria": "Geopolitica_Relacoes",
-      "paises_envolvidos": [
-        "US",
-        "CN",
-        "RU"
-      ],
-      "urgencia_score": 96,
-      "relevancia_score": 95,
-      "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 12,
-      "veiculos_origem": [
-        "Poder360",
-        "Petit Journal"
-      ],
+      "expires_at": "2026-11-21T03:16:49Z",
+      "updated_at": "2026-11-20T03:16:49Z",
       "fontes_urls": [
         "https://www.poder360.com.br/poder-internacional/assista-aos-discursos-de-xi-trump-e-putin-em-inedita-reuniao-trilateral/"
       ],
+      "resumo_pulso": "Conforme apuração do Poder360 e análises internacionais, Donald Trump, Xi Jinping e Vladimir Putin participaram de uma reunião trilateral inédita na China. As declarações centraram-se nas negociações sobre a guerra na Ucrânia, não proliferação nuclear e a estabilidade geopolítica no Oriente Médio.",
+      "titulo_curto": "Líderes de EUA, China e Rússia realizam reunião trilateral inédita em Shenzhen",
       "palavras_chave": [
         "Trump",
         "Xi Jinping",
@@ -997,21 +1053,33 @@
         "Geopolítica",
         "Trilateral"
       ],
+      "urgencia_score": 96,
       "data_publicacao": "2026-11-20T02:16:04Z",
+      "impacto_pratico": "A reaproximação diplomática entre as três maiores potências globais pode reconfigurar sanções econômicas, rotas de comércio exterior e acordos de segurança mundial.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Poder360",
+        "Petit Journal"
+      ],
+      "relevancia_score": 95,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "US",
+        "CN",
+        "RU"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "Política nos Estados Unidos",
           "url_existente": "https://www.rodandoomundo.com.br/politica/estados-unidos",
-          "motivo_conexao": "Contextualiza os rumos da política externa da Casa Branca e as negociações de Donald Trump com potências rivais."
+          "motivo_conexao": "Contextualiza os rumos da política externa da Casa Branca e as negociações de Donald Trump com potências rivais.",
+          "titulo_existente": "Política nos Estados Unidos"
         },
         {
-          "titulo_existente": "O que é uma sanção internacional?",
           "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-sancao-internacional",
-          "motivo_conexao": "Explica o impacto das sanções multilaterais atualmente debatidas entre Washington, Pequim e Moscou."
+          "motivo_conexao": "Explica o impacto das sanções multilaterais atualmente debatidas entre Washington, Pequim e Moscou.",
+          "titulo_existente": "O que é uma sanção internacional?"
         }
-      ],
-      "expires_at": "2026-11-21T03:16:49Z",
-      "updated_at": "2026-11-20T03:16:49Z"
+      ]
     },
     {
       "slug": "ataque-cibernetico-a-terceiros-expoe-dados-jpmorgan-visa-mastercard",
@@ -1094,27 +1162,16 @@
     },
     {
       "slug": "russia-desencadeia-ataque-massivo-de-misseis-contra-ucrania",
-      "titulo_curto": "Ucrânia retalia com drones após ataque massivo de mísseis russos contra Kiev",
-      "resumo_pulso": "Em desdobramento aos ataques de mísseis russos contra cidades ucranianas, forças de Kiev lançaram drones contra uma usina química na Rússia na madrugada desta sexta-feira, segundo o The Kyiv Independent. A Força Aérea da Ucrânia confirmou a destruição de alvos estratégicos em meio à escalada de retaliações.",
-      "impacto_pratico": "A intensificação dos combates aéreos eleva os riscos para infraestruturas de energia e preços de commodities energéticas na Europa.",
       "categoria": "Geopolitica_Relacoes",
-      "paises_envolvidos": [
-        "UA",
-        "RU"
-      ],
-      "urgencia_score": 94,
-      "relevancia_score": 90,
-      "nivel_confianca": "alta",
       "ttl_horas": 12,
-      "horas_em_destaque": 6,
-      "veiculos_origem": [
-        "The Kyiv Independent",
-        "Ukrinform"
-      ],
+      "expires_at": "2026-11-20T12:54:19Z",
+      "updated_at": "2026-11-20T03:16:49Z",
       "fontes_urls": [
         "https://kyivindependent.com/ukrainian-drones-reportedly-strike-russian-chemical-plant/",
         "https://kyivindependent.com/russia-launches-mass-missile-attack-against-ukraine-after-putin-vows-revenge/"
       ],
+      "resumo_pulso": "Em desdobramento aos ataques de mísseis russos contra cidades ucranianas, forças de Kiev lançaram drones contra uma usina química na Rússia na madrugada desta sexta-feira, segundo o The Kyiv Independent. A Força Aérea da Ucrânia confirmou a destruição de alvos estratégicos em meio à escalada de retaliações.",
+      "titulo_curto": "Ucrânia retalia com drones após ataque massivo de mísseis russos contra Kiev",
       "palavras_chave": [
         "Ucrânia",
         "Rússia",
@@ -1122,16 +1179,27 @@
         "Drones",
         "Kiev"
       ],
+      "urgencia_score": 94,
       "data_publicacao": "2026-11-19T23:41:36Z",
+      "impacto_pratico": "A intensificação dos combates aéreos eleva os riscos para infraestruturas de energia e preços de commodities energéticas na Europa.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "The Kyiv Independent",
+        "Ukrinform"
+      ],
+      "relevancia_score": 90,
+      "horas_em_destaque": 6,
+      "paises_envolvidos": [
+        "UA",
+        "RU"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "O que é uma sanção internacional?",
           "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-sancao-internacional",
-          "motivo_conexao": "Ajuda a compreender as restrições econômicas e tecnológicas aplicadas contra o complexo militar russo."
+          "motivo_conexao": "Ajuda a compreender as restrições econômicas e tecnológicas aplicadas contra o complexo militar russo.",
+          "titulo_existente": "O que é uma sanção internacional?"
         }
-      ],
-      "expires_at": "2026-11-20T12:54:19Z",
-      "updated_at": "2026-11-20T03:16:49Z"
+      ]
     },
     {
       "slug": "relator-na-camara-mantem-texto-do-senado-para-ajuste-fiscal",
@@ -1416,47 +1484,6 @@
       ]
     },
     {
-      "slug": "pulso-3-20261119-2243",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 6,
-      "expires_at": "2026-11-20T03:45:00Z",
-      "updated_at": "2026-11-19T22:43:51Z",
-      "fontes_urls": [
-        "https://g1.globo.com/mundo/noticia/2026/11/19/principe-harry-diz-estar-disposto-a-voltar-ao-exercito-para-lutar-contra-a-russia.ghtml"
-      ],
-      "resumo_pulso": "Segundo G1 Mundo, Príncipe Harry, esposa e filhos vão voltar a morar no Reino Unido após anos nos EUA O príncipe Harry afirmou estar disposto a voltar a servir no Exército britânico e lutar contra a Rússia, \"se fosse necessário\". A declaração foi feita em entrevista ao jornal The Telegraph, durante uma visita surpresa à Ucrânia, divulgada nesta quinta-feira (19). ✅ Siga o canal de notícias interna",
-      "titulo_curto": "Príncipe Harry diz estar disposto a voltar ao Exército para lutar contra a Rússia",
-      "palavras_chave": [
-        "radar",
-        "tempo real",
-        "br"
-      ],
-      "urgencia_score": 80,
-      "data_publicacao": "2026-11-19T21:42:02+00:00",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "G1 Mundo"
-      ],
-      "relevancia_score": 80,
-      "horas_em_destaque": 6,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
-          "motivo_conexao": "Compreenda por que os preços sobem de forma generalizada, como o IPCA é calculado e de que maneira os juros do Banco Central afetam o poder de compra.",
-          "titulo_existente": "O que é inflação?"
-        },
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/como-funcionam-as-eleicoes-nos-eua",
-          "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos.",
-          "titulo_existente": "Como funcionam as eleições nos EUA?"
-        }
-      ]
-    },
-    {
       "slug": "pulso-4-20261119-2243",
       "categoria": "Geopolitica_Relacoes",
       "ttl_horas": 6,
@@ -1495,305 +1522,6 @@
           "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos.",
           "titulo_existente": "Como funcionam as eleições nos EUA?"
         }
-      ]
-    },
-    {
-      "slug": "pulso-5-20261119-2243",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 6,
-      "expires_at": "2026-11-20T03:45:00Z",
-      "updated_at": "2026-11-19T21:45:00Z",
-      "fontes_urls": [
-        "https://g1.globo.com/mundo/noticia/2026/11/19/operacao-de-seguranca-no-haiti-deixa-34-membros-de-gangues-mortos-segundo-a-policia.ghtml"
-      ],
-      "resumo_pulso": "Segundo G1 Mundo, Pessoas se reúnem em apoio às tropas do Exército salvadorenho em sua missão de ajudar na luta contra gangues, em Porto Príncipe, Haiti, em 18 de novembro de 2026. CLARENS SIFFROY/AFP A Polícia Nacional do Haiti anunciou a morte de 34 integrantes de uma gangue durante uma operação realizada nesta quinta-feira (19) em um bairro de Porto Príncipe especialmente afetado pela violência",
-      "titulo_curto": "Operação de segurança no Haiti deixa 34 membros de gangues mortos, segundo a polícia",
-      "palavras_chave": [
-        "radar",
-        "tempo real",
-        "br"
-      ],
-      "urgencia_score": 70,
-      "data_publicacao": "2026-11-19T21:36:43+00:00",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "G1 Mundo"
-      ],
-      "relevancia_score": 72,
-      "horas_em_destaque": 6,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
-          "motivo_conexao": "Compreenda por que os preços sobem de forma generalizada, como o IPCA é calculado e de que maneira os juros do Banco Central afetam o poder de compra.",
-          "titulo_existente": "O que é inflação?"
-        },
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/como-funcionam-as-eleicoes-nos-eua",
-          "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos.",
-          "titulo_existente": "Como funcionam as eleições nos EUA?"
-        }
-      ]
-    },
-    {
-      "slug": "pulso-3-20261119-2145",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 6,
-      "expires_at": "2026-11-20T03:45:00Z",
-      "updated_at": "2026-11-19T21:45:00Z",
-      "fontes_urls": [
-        "https://www12.senado.leg.br/noticias/materias/2026/11/19/desenvolvimento-regional-cultura-e-cidadania-contam-com-novos-recursos"
-      ],
-      "resumo_pulso": "Segundo Agência Senado, Duas leis sancionadas pelo presidente Luiz Inácio Lula da Silva asseguram recursos complementares do Orçamento para ações de desenvolvimento regional, cultura e cidadania. As Leis 15.543 e 15.537 foram publicadas no Diário Oficial da União (DOU) nesta quinta-feira (19) e já estão em vigor. As duas normas tiveram origem em projetos do Executivo aprovados pelo Congresso Nacio",
-      "titulo_curto": "Desenvolvimento regional, cultura e cidadania contam com novos recursos",
-      "palavras_chave": [
-        "radar",
-        "tempo real",
-        "br"
-      ],
-      "urgencia_score": 80,
-      "data_publicacao": "2026-11-19T21:35:11+00:00",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Agência Senado"
-      ],
-      "relevancia_score": 80,
-      "horas_em_destaque": 6,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
-          "motivo_conexao": "Compreenda por que os preços sobem de forma generalizada, como o IPCA é calculado e de que maneira os juros do Banco Central afetam o poder de compra.",
-          "titulo_existente": "O que é inflação?"
-        },
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/como-funcionam-as-eleicoes-nos-eua",
-          "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos.",
-          "titulo_existente": "Como funcionam as eleições nos EUA?"
-        }
-      ]
-    },
-    {
-      "slug": "pulso-4-20261119-2145",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 6,
-      "expires_at": "2026-11-20T03:45:00Z",
-      "updated_at": "2026-11-19T21:45:00Z",
-      "fontes_urls": [
-        "https://www12.senado.leg.br/noticias/audios/2026/11/comissoes-aprovam-emendas-ao-orcamento-de-2027"
-      ],
-      "resumo_pulso": "Segundo Agência Senado, As comissões do Senado discutiram e votaram na última semana suas emendas ao projeto de Lei de Diretrizes Orçamentárias (PLDO) de 2027 (PLN 2/2026) e ao projeto de Lei Orçamentária Anual (PLOA) de 2027 (PLN 24/2026). As emendas de comissão, chamadas de RP8, entram no orçamento como emendas coletivas e devem ser apresentadas de acordo com a área de atuação de cada colegiado.",
-      "titulo_curto": "Áudio: Comissões aprovam emendas ao Orçamento de 2027",
-      "palavras_chave": [
-        "radar",
-        "tempo real",
-        "br"
-      ],
-      "urgencia_score": 75,
-      "data_publicacao": "2026-11-19T21:30:10+00:00",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Agência Senado"
-      ],
-      "relevancia_score": 76,
-      "horas_em_destaque": 6,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
-          "motivo_conexao": "Compreenda por que os preços sobem de forma generalizada, como o IPCA é calculado e de que maneira os juros do Banco Central afetam o poder de compra.",
-          "titulo_existente": "O que é inflação?"
-        },
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/como-funcionam-as-eleicoes-nos-eua",
-          "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos.",
-          "titulo_existente": "Como funcionam as eleições nos EUA?"
-        }
-      ]
-    },
-    {
-      "slug": "pulso-5-20261119-2145",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 6,
-      "expires_at": "2026-11-20T03:45:00Z",
-      "updated_at": "2026-11-19T21:45:00Z",
-      "fontes_urls": [
-        "https://www12.senado.leg.br/noticias/audios/2026/11/congresso-homenageia-embratur-pelos-60-anos-de-promocao-do-turismo-brasileiro"
-      ],
-      "resumo_pulso": "Segundo Agência Senado, Uma sessão solene do Congresso Nacional, com o lançamento de selo postal comemorativo, celebrou nesta quinta-feira (19) os 60 anos da Agência Brasileira de Promoção Internacional do Turismo (Embratur). Criada em 1966, a instituição promove os destinos brasileiros no exterior e trabalha para atrair turistas internacionais. Em 2025, o Brasil recebeu 9,3 milhões de visitantes ",
-      "titulo_curto": "Áudio: Congresso homenageia Embratur pelos 60 anos de promoção do turismo brasileiro",
-      "palavras_chave": [
-        "radar",
-        "tempo real",
-        "br"
-      ],
-      "urgencia_score": 70,
-      "data_publicacao": "2026-11-19T21:27:02+00:00",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Agência Senado"
-      ],
-      "relevancia_score": 72,
-      "horas_em_destaque": 6,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
-          "motivo_conexao": "Compreenda por que os preços sobem de forma generalizada, como o IPCA é calculado e de que maneira os juros do Banco Central afetam o poder de compra.",
-          "titulo_existente": "O que é inflação?"
-        },
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/como-funcionam-as-eleicoes-nos-eua",
-          "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos.",
-          "titulo_existente": "Como funcionam as eleições nos EUA?"
-        }
-      ]
-    }
-  ],
-  "temas_curadoria": [
-    {
-      "slug": "guerra-ira-impacto-petroleo-iea-mercado-financeiro",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-22T01:24:53Z",
-      "updated_at": "2026-11-20T01:24:53Z",
-      "titulo_tema": "Conflito no Irã e Ataques no Oriente Médio Ameaçam Abastecimento Global de Petróleo",
-      "sintese_nerd": "A escalada das hostilidades no Oriente Médio e os ataques na Arábia Saudita ameaçam o Estreito de Ormuz, levando a IEIA a prever reduções estruturais na demanda global e volatilidade no barril de petróleo. Para o Brasil, o movimento traz pressão sobre os preços dos combustíveis e reativa a volatilidade cambial via risco-país.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-20T01:24:53Z",
-      "gatilho_vitrine": "Destaque no topo do Radar Geopolítico para avaliar risco de choque inflacionário e impacto nas cotações de commodities.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 92,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "guerra no irã",
-        "preço do petróleo",
-        "estreito de ormuz",
-        "iea",
-        "ataques houthis",
-        "inflação de combustíveis"
-      ]
-    },
-    {
-      "slug": "stf-pf-relatorios-banco-master-pgr-fachin",
-      "status": "novo",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-21T01:24:53Z",
-      "updated_at": "2026-11-20T01:24:53Z",
-      "titulo_tema": "Fachin Encaminha à PGR Relatórios da PF com Citações a Ministros do STF",
-      "sintese_nerd": "O envio de relatórios da Polícia Federal à Procuradoria-Geral da República envolvendo menções a ministros do STF abre um novo capítulo de fricção institucional. O desfecho da avaliação da PGR impactará a estabilidade jurídica das decisões e a percepção de risco institucional pelo mercado financeiro.",
-      "rota_editoria": "/politica",
-      "data_publicacao": "2026-11-20T01:24:53Z",
-      "gatilho_vitrine": "Alerta de alta prioridade política no feed principal sobre os desdobramentos das investigações e a resposta institucional da PGR.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 89,
-      "categoria_primaria": "Politica",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "stf",
-        "edson fachin",
-        "polícia federal",
-        "pgr",
-        "daniel vorcaro",
-        "banco master"
-      ]
-    },
-    {
-      "slug": "pacote-fiscal-camara-votacao-relatorio-ajuste",
-      "status": "novo",
-      "ttl_horas": 36,
-      "expires_at": "2026-11-21T13:24:53Z",
-      "updated_at": "2026-11-20T01:24:53Z",
-      "titulo_tema": "Relator Mantém Texto do Senado para Acelerar Votação do Pacote Fiscal na Câmara",
-      "sintese_nerd": "A manutenção do texto do Senado pelo relator da Câmara busca evitar novas tramitações e garantir a aprovação célere das medidas de contenção de gastos públicos. A sinalização fiscal é crucial para acalmar a curva de juros futuros e conter a alta do dólar frente ao real.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-20T01:24:53Z",
-      "gatilho_vitrine": "Fixar no painel de Economia para acompanhar a contagem regressiva da votação fiscal e a reação dos mercados.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 88,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Politica"
-      ],
-      "palavras_chave_busca": [
-        "pacote fiscal",
-        "ajuste fiscal",
-        "câmara dos deputados",
-        "mauro benevides",
-        "meta fiscal",
-        "dólar e selic"
-      ]
-    },
-    {
-      "slug": "russia-ataque-misseis-ucrania-escalada-geopolitica",
-      "status": "novo",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-21T01:24:53Z",
-      "updated_at": "2026-11-20T01:24:53Z",
-      "titulo_tema": "Rússia Lança Ataque Massivo de Mísseis Contra a Ucrânia Após Promessa de Retaliação",
-      "sintese_nerd": "A nova onda de bombardeios estratégicos sobre Kiev consolida o recrudescimento da ofensiva russa no Leste Europeu após declarações do Kremlin. O movimento tensiona ainda mais as relações entre a OTAN e a Rússia, influenciando o preço global do gás e de insumos agrícolas.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-20T01:24:53Z",
-      "gatilho_vitrine": "Inserir na faixa de Notícias Urgentes para monitoramento em tempo real dos impactos geopolíticos no Leste Europeu.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 84,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "guerra na ucrânia",
-        "ataque russo",
-        "kiev",
-        "vladimir putin",
-        "bombardeiros estratégicos",
-        "conflito no leste europeu"
-      ]
-    },
-    {
-      "slug": "vazamento-dados-ataque-cibernetico-ifood-visa-jpmorgan",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-22T01:24:53Z",
-      "updated_at": "2026-11-20T01:24:53Z",
-      "titulo_tema": "Ataques Cibernéticos e Vazamento de Dados Atingem Grandes Empresas Globais e Nacionais",
-      "sintese_nerd": "Incidentes consecutivos de segurança da informação em gigantes do setor financeiro e plataformas de entrega acendem o alerta para a vulnerabilidade de fornecedores terceirizados. O cenário pressiona por regulamentações de segurança cibersegurança mais rígidas e maior responsabilidade corporativa sobre dados pessoais.",
-      "rota_editoria": "/cultura",
-      "data_publicacao": "2026-11-20T01:24:53Z",
-      "gatilho_vitrine": "Publicar no hub de Tecnologia e Sociedade destacando dicas de segurança digital e regulação de dados.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 78,
-      "categoria_primaria": "Cultura",
-      "categorias_cruzadas": [
-        "Economia",
-        "Politica"
-      ],
-      "palavras_chave_busca": [
-        "vazamento de dados",
-        "ataque cibernético",
-        "ifood",
-        "jpmorgan",
-        "visa",
-        "segurança da informação"
       ]
     }
   ]
