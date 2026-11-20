@@ -2,13 +2,323 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-20T16:27:28Z",
-  "batch_id": "20261120-1627",
+  "updatedAt": "2026-11-20T17:27:30Z",
+  "batch_id": "20261120-1727",
   "temas_ativos": [
     {
+      "slug": "temporal-devastador-deixa-mortos-e-destruicao-no-rio-grande-do-sul",
+      "titulo_tema": "Temporal provocou mortes e destruição em cidades do Rio Grande do Sul",
+      "titulo_curto": "Temporal provocou mortes e destruição em cidades do Rio Grande do Sul",
+      "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categoria": "Ciencia_Clima",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 92,
+      "urgencia_score": 94,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-21T17:27:30Z",
+      "palavras_chave_busca": [
+        "rio grande do sul",
+        "temporal",
+        "granizo",
+        "defesa civil",
+        "desastre natural"
+      ],
+      "palavras_chave": [
+        "rio grande do sul",
+        "temporal",
+        "granizo",
+        "defesa civil",
+        "desastre natural"
+      ],
+      "gatilho_vitrine": "Segundo reportado pela BBC News Brasil, fortes temporais acompanhados de vendavais e queda de granizo causaram mortes e severa destruição de infraestruturas no Rio Grande do Sul. Moradores relatam destruição de prédios, postes e árvores derrubadas em diversas vias.",
+      "resumo_pulso": "Segundo reportado pela BBC News Brasil, fortes temporais acompanhados de vendavais e queda de granizo causaram mortes e severa destruição de infraestruturas no Rio Grande do Sul. Moradores relatam destruição de prédios, postes e árvores derrubadas em diversas vias.",
+      "sintese_nerd": "Interrupções no fornecimento de energia elétrica, bloqueios de vias urbanas e rodovias e estado de alerta para novos temporais na região Sul.",
+      "impacto_pratico": "Interrupções no fornecimento de energia elétrica, bloqueios de vias urbanas e rodovias e estado de alerta para novos temporais na região Sul.",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "veiculos_origem": [
+        "BBC News Brasil"
+      ],
+      "fontes_urls": [
+        "https://www.bbc.com/portuguese/articles/cqdr1xmyg3kzo?at_medium=RSS&at_campaign=rss"
+      ],
+      "data_publicacao": "2026-11-20T17:03:23Z",
+      "updated_at": "2026-11-20T17:27:30Z"
+    },
+    {
       "slug": "pulso-1-20261120-1627",
+      "status": "novo",
+      "categoria": "Geopolitica_Relacoes",
+      "ttl_horas": 6,
+      "expires_at": "2026-11-20T22:27:28Z",
+      "updated_at": "2026-11-20T16:27:28Z",
+      "fontes_urls": [
+        "https://www.bbc.com/portuguese/articles/cqdr1xmyg3kzo?at_medium=RSS&at_campaign=rss"
+      ],
       "titulo_tema": "'A cidade acabou': a destruição causada por temporal que provocou mortes no RS",
+      "resumo_pulso": "Segundo BBC News Brasil, Fotos compartilhadas por moradores nas redes sociais mostram ruas cobertas de granizo e destroços de prédios, árvores e postes..",
+      "sintese_nerd": "Acompanhamento de impacto institucional, econômico e internacional.",
       "titulo_curto": "'A cidade acabou': a destruição causada por temporal que provocou mortes no RS",
+      "rota_editoria": "/radar",
+      "palavras_chave": [
+        "radar",
+        "tempo real",
+        "gb"
+      ],
+      "urgencia_score": 90,
+      "data_publicacao": "2026-11-20T16:26:07+00:00",
+      "gatilho_vitrine": "Segundo BBC News Brasil, Fotos compartilhadas por moradores nas redes sociais mostram ruas cobertas de granizo e destroços de prédios, árvores e postes..",
+      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "BBC News Brasil"
+      ],
+      "relevancia_score": 88,
+      "paises_envolvidos": [
+        "GB"
+      ],
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "radar",
+        "tempo real",
+        "gb"
+      ]
+    },
+    {
+      "slug": "catar-anuncia-investimentos-de-16-bilhoes-de-dolares-na-alemanha",
+      "titulo_tema": "Catar confirma investimento de US$ 16,5 bilhões na Alemanha durante visita em Berlim",
+      "titulo_curto": "Catar confirma investimento de US$ 16,5 bilhões na Alemanha durante visita em Berlim",
+      "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Economia",
+      "categoria": "Economia_Comercio",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 86,
+      "urgencia_score": 85,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-21T17:27:30Z",
+      "palavras_chave_busca": [
+        "catar",
+        "alemanha",
+        "investimentos",
+        "energia",
+        "tecnologia"
+      ],
+      "palavras_chave": [
+        "catar",
+        "alemanha",
+        "investimentos",
+        "energia",
+        "tecnologia"
+      ],
+      "gatilho_vitrine": "Segundo noticiado pela Al Jazeera English, o governo da Alemanha e o emir do Catar anunciaram o fortalecimento de parcerias estratégicas com o compromisso catariano de injetar US$ 16,5 bilhões na economia alemã. O montante será voltado a projetos de energia, defesa e tecnologia.",
+      "resumo_pulso": "Segundo noticiado pela Al Jazeera English, o governo da Alemanha e o emir do Catar anunciaram o fortalecimento de parcerias estratégicas com o compromisso catariano de injetar US$ 16,5 bilhões na economia alemã. O montante será voltado a projetos de energia, defesa e tecnologia.",
+      "sintese_nerd": "Reforço no planejamento energético e financeiro alemão e ampliação de parcerias em tecnologia na Europa Central.",
+      "impacto_pratico": "Reforço no planejamento energético e financeiro alemão e ampliação de parcerias em tecnologia na Europa Central.",
+      "paises_envolvidos": [
+        "QA",
+        "DE"
+      ],
+      "veiculos_origem": [
+        "Al Jazeera English"
+      ],
+      "fontes_urls": [
+        "https://www.aljazeera.com/news/2026/11/20/qatar-and-germany-deepen-strategic-ties-during-emirs-berlin-visit?traffic_source=rss"
+      ],
+      "data_publicacao": "2026-11-20T16:13:57Z",
+      "updated_at": "2026-11-20T17:27:30Z"
+    },
+    {
+      "slug": "pulso-2-20261120-1627",
+      "status": "novo",
+      "categoria": "Geopolitica_Relacoes",
+      "ttl_horas": 6,
+      "expires_at": "2026-11-20T22:27:28Z",
+      "updated_at": "2026-11-20T16:27:28Z",
+      "fontes_urls": [
+        "https://www.aljazeera.com/news/2026/11/20/qatar-and-germany-deepen-strategic-ties-during-emirs-berlin-visit?traffic_source=rss"
+      ],
+      "titulo_tema": "Qatar and Germany deepen strategic ties during emir’s Berlin visit",
+      "resumo_pulso": "Segundo Al Jazeera English, German chancellor says Qatar pledged $16.5bn in new investments as the two countries deepen defence and technology ties..",
+      "sintese_nerd": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "titulo_curto": "Qatar and Germany deepen strategic ties during emir’s Berlin visit",
+      "rota_editoria": "/radar",
+      "palavras_chave": [
+        "radar",
+        "tempo real",
+        "qa"
+      ],
+      "urgencia_score": 85,
+      "data_publicacao": "2026-11-20T16:13:57+00:00",
+      "gatilho_vitrine": "Segundo Al Jazeera English, German chancellor says Qatar pledged $16.5bn in new investments as the two countries deepen defence and technology ties..",
+      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "Al Jazeera English"
+      ],
+      "relevancia_score": 84,
+      "paises_envolvidos": [
+        "QA"
+      ],
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "radar",
+        "tempo real",
+        "qa"
+      ]
+    },
+    {
+      "slug": "pulso-3-20261120-1627",
+      "status": "novo",
+      "categoria": "Geopolitica_Relacoes",
+      "ttl_horas": 6,
+      "expires_at": "2026-11-20T22:27:28Z",
+      "updated_at": "2026-11-20T16:27:28Z",
+      "fontes_urls": [
+        "https://www.aljazeera.com/news/2026/11/20/us-senate-passes-bill-to-speed-up-energy-project-approvals?traffic_source=rss"
+      ],
+      "titulo_tema": "US Senate passes bill to speed up energy project approvals",
+      "resumo_pulso": "Segundo Al Jazeera English, The legislation aims to lower energy bills by making energy project approvals faster and limiting court challenges..",
+      "sintese_nerd": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "titulo_curto": "US Senate passes bill to speed up energy project approvals",
+      "rota_editoria": "/radar",
+      "palavras_chave": [
+        "radar",
+        "tempo real",
+        "qa"
+      ],
+      "urgencia_score": 80,
+      "data_publicacao": "2026-11-20T16:10:12+00:00",
+      "gatilho_vitrine": "Segundo Al Jazeera English, The legislation aims to lower energy bills by making energy project approvals faster and limiting court challenges..",
+      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "Al Jazeera English"
+      ],
+      "relevancia_score": 80,
+      "paises_envolvidos": [
+        "QA"
+      ],
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "radar",
+        "tempo real",
+        "qa"
+      ]
+    },
+    {
+      "slug": "pulso-4-20261120-1627",
+      "status": "novo",
+      "categoria": "Geopolitica_Relacoes",
+      "ttl_horas": 6,
+      "expires_at": "2026-11-20T22:27:28Z",
+      "updated_at": "2026-11-20T16:27:28Z",
+      "fontes_urls": [
+        "https://www.aljazeera.com/news/2026/11/20/what-is-vox-and-how-did-spains-far-right-party-rise-to-prominence?traffic_source=rss"
+      ],
+      "titulo_tema": "What is Vox, and how did Spain’s far-right party rise to prominence?",
+      "resumo_pulso": "Segundo Al Jazeera English, As Spain prepares to vote, Vox is campaigning on mass deportations and 'national priority'..",
+      "sintese_nerd": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "titulo_curto": "What is Vox, and how did Spain’s far-right party rise to prominence?",
+      "rota_editoria": "/radar",
+      "palavras_chave": [
+        "radar",
+        "tempo real",
+        "qa"
+      ],
+      "urgencia_score": 75,
+      "data_publicacao": "2026-11-20T16:05:31+00:00",
+      "gatilho_vitrine": "Segundo Al Jazeera English, As Spain prepares to vote, Vox is campaigning on mass deportations and 'national priority'..",
+      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "Al Jazeera English"
+      ],
+      "relevancia_score": 76,
+      "paises_envolvidos": [
+        "QA"
+      ],
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "radar",
+        "tempo real",
+        "qa"
+      ]
+    },
+    {
+      "slug": "pulso-5-20261120-1627",
+      "status": "novo",
+      "categoria": "Geopolitica_Relacoes",
+      "ttl_horas": 6,
+      "expires_at": "2026-11-20T22:27:28Z",
+      "updated_at": "2026-11-20T16:27:28Z",
+      "fontes_urls": [
+        "https://www.aljazeera.com/video/newsfeed/2026/11/20/one-third-of-attacks-on-children-worldwide-recorded-in-palestine?traffic_source=rss"
+      ],
+      "titulo_tema": "One third of attacks on children worldwide recorded in Palestine",
+      "resumo_pulso": "Segundo Al Jazeera English, Almost one in three reported violations against children worldwide occurred in Palestine in 2025..",
+      "sintese_nerd": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "titulo_curto": "One third of attacks on children worldwide recorded in Palestine",
+      "rota_editoria": "/radar",
+      "palavras_chave": [
+        "radar",
+        "tempo real",
+        "qa"
+      ],
+      "urgencia_score": 70,
+      "data_publicacao": "2026-11-20T15:50:28+00:00",
+      "gatilho_vitrine": "Segundo Al Jazeera English, Almost one in three reported violations against children worldwide occurred in Palestine in 2025..",
+      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "Al Jazeera English"
+      ],
+      "relevancia_score": 72,
+      "paises_envolvidos": [
+        "QA"
+      ],
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "radar",
+        "tempo real",
+        "qa"
+      ]
+    },
+    {
+      "slug": "servico-secreto-dinamarques-impede-atentado-russo-contra-rapper-ucraniano",
+      "titulo_tema": "Serviço Secreto da Dinamarca afirma ter impedido atentado russo contra rapper ucraniano",
+      "titulo_curto": "Serviço Secreto da Dinamarca afirma ter impedido atentado russo contra rapper ucraniano",
       "status": "novo",
       "origem_pipeline": "pulso",
       "categoria_primaria": "Geopolitica_Radar",
@@ -19,206 +329,42 @@
       ],
       "rota_editoria": "/radar",
       "relevancia_score": 88,
-      "urgencia_score": 90,
-      "ttl_horas": 6,
-      "expires_at": "2026-11-20T22:27:28Z",
+      "urgencia_score": 91,
+      "ttl_horas": 18,
+      "expires_at": "2026-11-21T11:27:30Z",
       "palavras_chave_busca": [
-        "radar",
-        "tempo real",
-        "gb"
+        "dinamarca",
+        "rússia",
+        "serviço secreto",
+        "espionagem",
+        "kyivstoner"
       ],
       "palavras_chave": [
-        "radar",
-        "tempo real",
-        "gb"
+        "dinamarca",
+        "rússia",
+        "serviço secreto",
+        "espionagem",
+        "kyivstoner"
       ],
-      "gatilho_vitrine": "Segundo BBC News Brasil, Fotos compartilhadas por moradores nas redes sociais mostram ruas cobertas de granizo e destroços de prédios, árvores e postes..",
-      "resumo_pulso": "Segundo BBC News Brasil, Fotos compartilhadas por moradores nas redes sociais mostram ruas cobertas de granizo e destroços de prédios, árvores e postes..",
-      "sintese_nerd": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "gatilho_vitrine": "Conforme apuração do G1 Mundo com base em informações da emissora pública dinamarquesa DR, o serviço de inteligência da Dinamarca impediu uma tentativa de assassinato contra um rapper de cidadania americano-ucraniana. As autoridades investigam o recrutamento de intermediários locais por agentes a serviço de Moscou.",
+      "resumo_pulso": "Conforme apuração do G1 Mundo com base em informações da emissora pública dinamarquesa DR, o serviço de inteligência da Dinamarca impediu uma tentativa de assassinato contra um rapper de cidadania americano-ucraniana. As autoridades investigam o recrutamento de intermediários locais por agentes a serviço de Moscou.",
+      "sintese_nerd": "Aumento do nível de vigilância policial e de contraespionagem contra operações encobertas em territórios da OTAN.",
+      "impacto_pratico": "Aumento do nível de vigilância policial e de contraespionagem contra operações encobertas em territórios da OTAN.",
       "paises_envolvidos": [
-        "GB"
+        "DK",
+        "RU",
+        "UA",
+        "US"
       ],
       "veiculos_origem": [
-        "BBC News Brasil"
+        "G1 Mundo",
+        "DR"
       ],
       "fontes_urls": [
-        "https://www.bbc.com/portuguese/articles/cqdr1xmyg3kzo?at_medium=RSS&at_campaign=rss"
+        "https://g1.globo.com/mundo/noticia/2026/11/20/russia-rapper-kyivstoner-dinamarca.ghtml"
       ],
-      "data_publicacao": "2026-11-20T16:26:07+00:00",
-      "updated_at": "2026-11-20T16:27:28Z"
-    },
-    {
-      "slug": "pulso-2-20261120-1627",
-      "titulo_tema": "Qatar and Germany deepen strategic ties during emir’s Berlin visit",
-      "titulo_curto": "Qatar and Germany deepen strategic ties during emir’s Berlin visit",
-      "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Geopolitica_Radar",
-      "categoria": "Geopolitica_Relacoes",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 84,
-      "urgencia_score": 85,
-      "ttl_horas": 6,
-      "expires_at": "2026-11-20T22:27:28Z",
-      "palavras_chave_busca": [
-        "radar",
-        "tempo real",
-        "qa"
-      ],
-      "palavras_chave": [
-        "radar",
-        "tempo real",
-        "qa"
-      ],
-      "gatilho_vitrine": "Segundo Al Jazeera English, German chancellor says Qatar pledged $16.5bn in new investments as the two countries deepen defence and technology ties..",
-      "resumo_pulso": "Segundo Al Jazeera English, German chancellor says Qatar pledged $16.5bn in new investments as the two countries deepen defence and technology ties..",
-      "sintese_nerd": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "paises_envolvidos": [
-        "QA"
-      ],
-      "veiculos_origem": [
-        "Al Jazeera English"
-      ],
-      "fontes_urls": [
-        "https://www.aljazeera.com/news/2026/11/20/qatar-and-germany-deepen-strategic-ties-during-emirs-berlin-visit?traffic_source=rss"
-      ],
-      "data_publicacao": "2026-11-20T16:13:57+00:00",
-      "updated_at": "2026-11-20T16:27:28Z"
-    },
-    {
-      "slug": "pulso-3-20261120-1627",
-      "titulo_tema": "US Senate passes bill to speed up energy project approvals",
-      "titulo_curto": "US Senate passes bill to speed up energy project approvals",
-      "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Geopolitica_Radar",
-      "categoria": "Geopolitica_Relacoes",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 80,
-      "urgencia_score": 80,
-      "ttl_horas": 6,
-      "expires_at": "2026-11-20T22:27:28Z",
-      "palavras_chave_busca": [
-        "radar",
-        "tempo real",
-        "qa"
-      ],
-      "palavras_chave": [
-        "radar",
-        "tempo real",
-        "qa"
-      ],
-      "gatilho_vitrine": "Segundo Al Jazeera English, The legislation aims to lower energy bills by making energy project approvals faster and limiting court challenges..",
-      "resumo_pulso": "Segundo Al Jazeera English, The legislation aims to lower energy bills by making energy project approvals faster and limiting court challenges..",
-      "sintese_nerd": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "paises_envolvidos": [
-        "QA"
-      ],
-      "veiculos_origem": [
-        "Al Jazeera English"
-      ],
-      "fontes_urls": [
-        "https://www.aljazeera.com/news/2026/11/20/us-senate-passes-bill-to-speed-up-energy-project-approvals?traffic_source=rss"
-      ],
-      "data_publicacao": "2026-11-20T16:10:12+00:00",
-      "updated_at": "2026-11-20T16:27:28Z"
-    },
-    {
-      "slug": "pulso-4-20261120-1627",
-      "titulo_tema": "What is Vox, and how did Spain’s far-right party rise to prominence?",
-      "titulo_curto": "What is Vox, and how did Spain’s far-right party rise to prominence?",
-      "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Geopolitica_Radar",
-      "categoria": "Geopolitica_Relacoes",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 76,
-      "urgencia_score": 75,
-      "ttl_horas": 6,
-      "expires_at": "2026-11-20T22:27:28Z",
-      "palavras_chave_busca": [
-        "radar",
-        "tempo real",
-        "qa"
-      ],
-      "palavras_chave": [
-        "radar",
-        "tempo real",
-        "qa"
-      ],
-      "gatilho_vitrine": "Segundo Al Jazeera English, As Spain prepares to vote, Vox is campaigning on mass deportations and 'national priority'..",
-      "resumo_pulso": "Segundo Al Jazeera English, As Spain prepares to vote, Vox is campaigning on mass deportations and 'national priority'..",
-      "sintese_nerd": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "paises_envolvidos": [
-        "QA"
-      ],
-      "veiculos_origem": [
-        "Al Jazeera English"
-      ],
-      "fontes_urls": [
-        "https://www.aljazeera.com/news/2026/11/20/what-is-vox-and-how-did-spains-far-right-party-rise-to-prominence?traffic_source=rss"
-      ],
-      "data_publicacao": "2026-11-20T16:05:31+00:00",
-      "updated_at": "2026-11-20T16:27:28Z"
-    },
-    {
-      "slug": "pulso-5-20261120-1627",
-      "titulo_tema": "One third of attacks on children worldwide recorded in Palestine",
-      "titulo_curto": "One third of attacks on children worldwide recorded in Palestine",
-      "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Geopolitica_Radar",
-      "categoria": "Geopolitica_Relacoes",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 72,
-      "urgencia_score": 70,
-      "ttl_horas": 6,
-      "expires_at": "2026-11-20T22:27:28Z",
-      "palavras_chave_busca": [
-        "radar",
-        "tempo real",
-        "qa"
-      ],
-      "palavras_chave": [
-        "radar",
-        "tempo real",
-        "qa"
-      ],
-      "gatilho_vitrine": "Segundo Al Jazeera English, Almost one in three reported violations against children worldwide occurred in Palestine in 2025..",
-      "resumo_pulso": "Segundo Al Jazeera English, Almost one in three reported violations against children worldwide occurred in Palestine in 2025..",
-      "sintese_nerd": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "paises_envolvidos": [
-        "QA"
-      ],
-      "veiculos_origem": [
-        "Al Jazeera English"
-      ],
-      "fontes_urls": [
-        "https://www.aljazeera.com/video/newsfeed/2026/11/20/one-third-of-attacks-on-children-worldwide-recorded-in-palestine?traffic_source=rss"
-      ],
-      "data_publicacao": "2026-11-20T15:50:28+00:00",
-      "updated_at": "2026-11-20T16:27:28Z"
+      "data_publicacao": "2026-11-20T15:34:30Z",
+      "updated_at": "2026-11-20T17:27:30Z"
     },
     {
       "slug": "pulso-1-20261120-1525",
@@ -706,175 +852,23 @@
         "cibersegurança",
         "vazamento de dados"
       ]
-    },
-    {
-      "slug": "stf-derruba-sigilo-de-relatorio-da-pf-sobre-mendonca-e-master",
-      "status": "novo",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 18,
-      "expires_at": "2026-11-21T06:59:03Z",
-      "updated_at": "2026-11-20T14:18:46Z",
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/justica/noticia/2026-11/fachin-manda-quebrar-sigilo-de-relatorio-da-pf-com-mencoes-mendonca",
-        "https://www.jota.info/stf/caso-master-mendonca-abre-mao-do-sigilo-da-investigacao-da-pf-e-fachin-concorda"
-      ],
-      "titulo_tema": "STF retira sigilo de relatório da PF com menções ao ministro André Mendonça",
-      "resumo_pulso": "Segundo apuração da Agência Brasil e do JOTA Info, o presidente do STF, Edson Fachin, atendeu a pedido do próprio ministro André Mendonça e retirou o sigilo do relatório da Polícia Federal no âmbito da Operação Compliance Zero (Caso Master), enquanto manteve a prisão preventiva do ex-banqueiro Daniel Vorcaro.",
-      "sintese_nerd": "Esclarece o teor das investigações envolvendo autoridades e mantém a custódia do principal investigado do caso.",
-      "titulo_curto": "STF retira sigilo de relatório da PF com menções ao ministro André Mendonça",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "stf",
-        "andré mendonça",
-        "polícia federal",
-        "caso master",
-        "daniel vorcaro",
-        "edson fachin"
-      ],
-      "urgencia_score": 93,
-      "data_publicacao": "2026-11-20T12:49:46Z",
-      "gatilho_vitrine": "Segundo apuração da Agência Brasil e do JOTA Info, o presidente do STF, Edson Fachin, atendeu a pedido do próprio ministro André Mendonça e retirou o sigilo do relatório da Polícia Federal no âmbito da Operação Compliance Zero (Caso Master), enquanto manteve a prisão preventiva do ex-banqueiro Daniel Vorcaro.",
-      "impacto_pratico": "Esclarece o teor das investigações envolvendo autoridades e mantém a custódia do principal investigado do caso.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "Agência Brasil (EBC)",
-        "JOTA Info",
-        "InfoMoney Mercados",
-        "G1 Política"
-      ],
-      "relevancia_score": 91,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "stf",
-        "andré mendonça",
-        "polícia federal",
-        "caso master",
-        "daniel vorcaro",
-        "edson fachin"
-      ]
-    },
-    {
-      "slug": "quase-90-por-cento-das-usinas-eolicas-tem-alertas-socioambientais",
-      "status": "novo",
-      "categoria": "Ciencia_Clima",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-21T14:18:46Z",
-      "updated_at": "2026-11-20T14:18:46Z",
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/meio-ambiente/noticia/2026-11/quase-90-das-usinas-eolicas-do-pais-tem-alertas-socioambientais"
-      ],
-      "titulo_tema": "Quase 90% das usinas eólicas terrestres no Brasil acumulam alertas socioambientais",
-      "resumo_pulso": "Conforme levantamento inédito divulgado pela Agência Brasil e elaborado pelo Instituto Internacional Arayara, 89,4% dos parques eólicos terrestres monitorados no país apresentam algum fator de sensibilidade socioambiental, concentrando-se principalmente na região Nordeste.",
-      "sintese_nerd": "Apunta desafios regulatórios e socioambientais para a expansão da matriz de energia limpa e renovável no território nacional.",
-      "titulo_curto": "Quase 90% das usinas eólicas terrestres no Brasil acumulam alertas socioambientais",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "energia eólica",
-        "meio ambiente",
-        "nordeste",
-        "sustentabilidade",
-        "instituto arayara"
-      ],
-      "urgencia_score": 85,
-      "data_publicacao": "2026-11-20T12:32:00Z",
-      "gatilho_vitrine": "Conforme levantamento inédito divulgado pela Agência Brasil e elaborado pelo Instituto Internacional Arayara, 89,4% dos parques eólicos terrestres monitorados no país apresentam algum fator de sensibilidade socioambiental, concentrando-se principalmente na região Nordeste.",
-      "impacto_pratico": "Apunta desafios regulatórios e socioambientais para a expansão da matriz de energia limpa e renovável no território nacional.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "Agência Brasil (EBC)"
-      ],
-      "relevancia_score": 87,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "energia eólica",
-        "meio ambiente",
-        "nordeste",
-        "sustentabilidade",
-        "instituto arayara"
-      ]
-    },
-    {
-      "slug": "ucrania-ataca-estacao-de-petroleo-druzhba-em-tatarstao-russia",
-      "status": "novo",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 18,
-      "expires_at": "2026-11-21T06:59:03Z",
-      "updated_at": "2026-11-20T12:59:03Z",
-      "fontes_urls": [
-        "https://kyivindependent.com/ukraine-strikes-key-druzhba-oil-pipeline-station-in-russias-tatarstan-general-staff-confirms/",
-        "https://www.ukrinform.net/rubric-ato/4186809-general-staff-confirms-three-oil-tanks-hit-at-pumping-station-in-russias-tatarstan.html"
-      ],
-      "titulo_tema": "Ucrânia atinge estação de bombeamento do oleoduto Druzhba no Tatarstão",
-      "resumo_pulso": "Conforme confirmado pelo Estado-Maior da Ucrânia e reportado pelo The Kyiv Independent e Ukrinform, drones ucranianos atacaram a estação de Kaleykino, no Tatarstão, a mais de 1.000 km da fronteira. A ação atingiu três tanques de armazenamento de petróleo de um dos principais nós logísticos da rede Druzhba.",
-      "sintese_nerd": "Pode gerar instabilidade adicional nos fluxos de suprimento de petróleo e afetar cotações globais de energia.",
-      "titulo_curto": "Ucrânia atinge estação de bombeamento do oleoduto Druzhba no Tatarstão",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "ucrânia",
-        "rússia",
-        "oleoduto druzhba",
-        "tatarstão",
-        "drones",
-        "infraestrutura energética"
-      ],
-      "urgencia_score": 89,
-      "data_publicacao": "2026-11-20T12:01:09Z",
-      "gatilho_vitrine": "Conforme confirmado pelo Estado-Maior da Ucrânia e reportado pelo The Kyiv Independent e Ukrinform, drones ucranianos atacaram a estação de Kaleykino, no Tatarstão, a mais de 1.000 km da fronteira. A ação atingiu três tanques de armazenamento de petróleo de um dos principais nós logísticos da rede Druzhba.",
-      "impacto_pratico": "Pode gerar instabilidade adicional nos fluxos de suprimento de petróleo e afetar cotações globais de energia.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "The Kyiv Independent",
-        "Ukrinform"
-      ],
-      "relevancia_score": 87,
-      "paises_envolvidos": [
-        "UA",
-        "RU"
-      ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "ucrânia",
-        "rússia",
-        "oleoduto druzhba",
-        "tatarstão",
-        "drones",
-        "infraestrutura energética"
-      ]
     }
   ],
   "noticias_quentes": [
     {
-      "slug": "pulso-1-20261120-1627",
-      "titulo_curto": "'A cidade acabou': a destruição causada por temporal que provocou mortes no RS",
-      "resumo_pulso": "Segundo BBC News Brasil, Fotos compartilhadas por moradores nas redes sociais mostram ruas cobertas de granizo e destroços de prédios, árvores e postes..",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "categoria": "Geopolitica_Relacoes",
+      "slug": "temporal-devastador-deixa-mortos-e-destruicao-no-rio-grande-do-sul",
+      "titulo_curto": "Temporal provocou mortes e destruição em cidades do Rio Grande do Sul",
+      "resumo_pulso": "Segundo reportado pela BBC News Brasil, fortes temporais acompanhados de vendavais e queda de granizo causaram mortes e severa destruição de infraestruturas no Rio Grande do Sul. Moradores relatam destruição de prédios, postes e árvores derrubadas em diversas vias.",
+      "impacto_pratico": "Interrupções no fornecimento de energia elétrica, bloqueios de vias urbanas e rodovias e estado de alerta para novos temporais na região Sul.",
+      "categoria": "Ciencia_Clima",
       "paises_envolvidos": [
-        "GB"
+        "BR"
       ],
-      "urgencia_score": 90,
-      "relevancia_score": 88,
+      "urgencia_score": 94,
+      "relevancia_score": 92,
       "nivel_confianca": "alta",
-      "ttl_horas": 6,
-      "horas_em_destaque": 6,
+      "ttl_horas": 24,
+      "horas_em_destaque": 12,
       "veiculos_origem": [
         "BBC News Brasil"
       ],
@@ -882,40 +876,73 @@
         "https://www.bbc.com/portuguese/articles/cqdr1xmyg3kzo?at_medium=RSS&at_campaign=rss"
       ],
       "palavras_chave": [
+        "Rio Grande do Sul",
+        "temporal",
+        "granizo",
+        "defesa civil",
+        "desastre natural"
+      ],
+      "data_publicacao": "2026-11-20T17:03:23Z",
+      "links_internos_relacionados": [],
+      "expires_at": "2026-11-21T17:27:30Z",
+      "updated_at": "2026-11-20T17:27:30Z"
+    },
+    {
+      "slug": "pulso-1-20261120-1627",
+      "categoria": "Geopolitica_Relacoes",
+      "ttl_horas": 6,
+      "expires_at": "2026-11-20T22:27:28Z",
+      "updated_at": "2026-11-20T16:27:28Z",
+      "fontes_urls": [
+        "https://www.bbc.com/portuguese/articles/cqdr1xmyg3kzo?at_medium=RSS&at_campaign=rss"
+      ],
+      "resumo_pulso": "Segundo BBC News Brasil, Fotos compartilhadas por moradores nas redes sociais mostram ruas cobertas de granizo e destroços de prédios, árvores e postes..",
+      "titulo_curto": "'A cidade acabou': a destruição causada por temporal que provocou mortes no RS",
+      "palavras_chave": [
         "radar",
         "tempo real",
         "gb"
       ],
+      "urgencia_score": 90,
       "data_publicacao": "2026-11-20T16:26:07+00:00",
+      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "BBC News Brasil"
+      ],
+      "relevancia_score": 88,
+      "horas_em_destaque": 6,
+      "paises_envolvidos": [
+        "GB"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "O que é inflação?",
           "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
-          "motivo_conexao": "Compreenda por que os preços sobem de forma generalizada, como o IPCA é calculado e de que maneira os juros do Banco Central afetam o poder de compra."
+          "motivo_conexao": "Compreenda por que os preços sobem de forma generalizada, como o IPCA é calculado e de que maneira os juros do Banco Central afetam o poder de compra.",
+          "titulo_existente": "O que é inflação?"
         },
         {
-          "titulo_existente": "Como funcionam as eleições nos EUA?",
           "url_existente": "https://www.rodandoomundo.com.br/entenda/como-funcionam-as-eleicoes-nos-eua",
-          "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos."
+          "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos.",
+          "titulo_existente": "Como funcionam as eleições nos EUA?"
         }
-      ],
-      "expires_at": "2026-11-20T22:27:28Z",
-      "updated_at": "2026-11-20T16:27:28Z"
+      ]
     },
     {
-      "slug": "pulso-2-20261120-1627",
-      "titulo_curto": "Qatar and Germany deepen strategic ties during emir’s Berlin visit",
-      "resumo_pulso": "Segundo Al Jazeera English, German chancellor says Qatar pledged $16.5bn in new investments as the two countries deepen defence and technology ties..",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "categoria": "Geopolitica_Relacoes",
+      "slug": "catar-anuncia-investimentos-de-16-bilhoes-de-dolares-na-alemanha",
+      "titulo_curto": "Catar confirma investimento de US$ 16,5 bilhões na Alemanha durante visita em Berlim",
+      "resumo_pulso": "Segundo noticiado pela Al Jazeera English, o governo da Alemanha e o emir do Catar anunciaram o fortalecimento de parcerias estratégicas com o compromisso catariano de injetar US$ 16,5 bilhões na economia alemã. O montante será voltado a projetos de energia, defesa e tecnologia.",
+      "impacto_pratico": "Reforço no planejamento energético e financeiro alemão e ampliação de parcerias em tecnologia na Europa Central.",
+      "categoria": "Economia_Comercio",
       "paises_envolvidos": [
-        "QA"
+        "QA",
+        "DE"
       ],
       "urgencia_score": 85,
-      "relevancia_score": 84,
+      "relevancia_score": 86,
       "nivel_confianca": "alta",
-      "ttl_horas": 6,
-      "horas_em_destaque": 6,
+      "ttl_horas": 24,
+      "horas_em_destaque": 10,
       "veiculos_origem": [
         "Al Jazeera English"
       ],
@@ -923,148 +950,222 @@
         "https://www.aljazeera.com/news/2026/11/20/qatar-and-germany-deepen-strategic-ties-during-emirs-berlin-visit?traffic_source=rss"
       ],
       "palavras_chave": [
+        "Catar",
+        "Alemanha",
+        "investimentos",
+        "energia",
+        "tecnologia"
+      ],
+      "data_publicacao": "2026-11-20T16:13:57Z",
+      "links_internos_relacionados": [],
+      "expires_at": "2026-11-21T17:27:30Z",
+      "updated_at": "2026-11-20T17:27:30Z"
+    },
+    {
+      "slug": "pulso-2-20261120-1627",
+      "categoria": "Geopolitica_Relacoes",
+      "ttl_horas": 6,
+      "expires_at": "2026-11-20T22:27:28Z",
+      "updated_at": "2026-11-20T16:27:28Z",
+      "fontes_urls": [
+        "https://www.aljazeera.com/news/2026/11/20/qatar-and-germany-deepen-strategic-ties-during-emirs-berlin-visit?traffic_source=rss"
+      ],
+      "resumo_pulso": "Segundo Al Jazeera English, German chancellor says Qatar pledged $16.5bn in new investments as the two countries deepen defence and technology ties..",
+      "titulo_curto": "Qatar and Germany deepen strategic ties during emir’s Berlin visit",
+      "palavras_chave": [
         "radar",
         "tempo real",
         "qa"
       ],
+      "urgencia_score": 85,
       "data_publicacao": "2026-11-20T16:13:57+00:00",
+      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Al Jazeera English"
+      ],
+      "relevancia_score": 84,
+      "horas_em_destaque": 6,
+      "paises_envolvidos": [
+        "QA"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "O que é inflação?",
           "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
-          "motivo_conexao": "Compreenda por que os preços sobem de forma generalizada, como o IPCA é calculado e de que maneira os juros do Banco Central afetam o poder de compra."
+          "motivo_conexao": "Compreenda por que os preços sobem de forma generalizada, como o IPCA é calculado e de que maneira os juros do Banco Central afetam o poder de compra.",
+          "titulo_existente": "O que é inflação?"
         },
         {
-          "titulo_existente": "Como funcionam as eleições nos EUA?",
           "url_existente": "https://www.rodandoomundo.com.br/entenda/como-funcionam-as-eleicoes-nos-eua",
-          "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos."
+          "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos.",
+          "titulo_existente": "Como funcionam as eleições nos EUA?"
         }
-      ],
-      "expires_at": "2026-11-20T22:27:28Z",
-      "updated_at": "2026-11-20T16:27:28Z"
+      ]
     },
     {
       "slug": "pulso-3-20261120-1627",
-      "titulo_curto": "US Senate passes bill to speed up energy project approvals",
-      "resumo_pulso": "Segundo Al Jazeera English, The legislation aims to lower energy bills by making energy project approvals faster and limiting court challenges..",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
       "categoria": "Geopolitica_Relacoes",
-      "paises_envolvidos": [
-        "QA"
-      ],
-      "urgencia_score": 80,
-      "relevancia_score": 80,
-      "nivel_confianca": "alta",
       "ttl_horas": 6,
-      "horas_em_destaque": 6,
-      "veiculos_origem": [
-        "Al Jazeera English"
-      ],
+      "expires_at": "2026-11-20T22:27:28Z",
+      "updated_at": "2026-11-20T16:27:28Z",
       "fontes_urls": [
         "https://www.aljazeera.com/news/2026/11/20/us-senate-passes-bill-to-speed-up-energy-project-approvals?traffic_source=rss"
       ],
+      "resumo_pulso": "Segundo Al Jazeera English, The legislation aims to lower energy bills by making energy project approvals faster and limiting court challenges..",
+      "titulo_curto": "US Senate passes bill to speed up energy project approvals",
       "palavras_chave": [
         "radar",
         "tempo real",
         "qa"
       ],
+      "urgencia_score": 80,
       "data_publicacao": "2026-11-20T16:10:12+00:00",
+      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Al Jazeera English"
+      ],
+      "relevancia_score": 80,
+      "horas_em_destaque": 6,
+      "paises_envolvidos": [
+        "QA"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "O que é inflação?",
           "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
-          "motivo_conexao": "Compreenda por que os preços sobem de forma generalizada, como o IPCA é calculado e de que maneira os juros do Banco Central afetam o poder de compra."
+          "motivo_conexao": "Compreenda por que os preços sobem de forma generalizada, como o IPCA é calculado e de que maneira os juros do Banco Central afetam o poder de compra.",
+          "titulo_existente": "O que é inflação?"
         },
         {
-          "titulo_existente": "Como funcionam as eleições nos EUA?",
           "url_existente": "https://www.rodandoomundo.com.br/entenda/como-funcionam-as-eleicoes-nos-eua",
-          "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos."
+          "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos.",
+          "titulo_existente": "Como funcionam as eleições nos EUA?"
         }
-      ],
-      "expires_at": "2026-11-20T22:27:28Z",
-      "updated_at": "2026-11-20T16:27:28Z"
+      ]
     },
     {
       "slug": "pulso-4-20261120-1627",
-      "titulo_curto": "What is Vox, and how did Spain’s far-right party rise to prominence?",
-      "resumo_pulso": "Segundo Al Jazeera English, As Spain prepares to vote, Vox is campaigning on mass deportations and 'national priority'..",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
       "categoria": "Geopolitica_Relacoes",
-      "paises_envolvidos": [
-        "QA"
-      ],
-      "urgencia_score": 75,
-      "relevancia_score": 76,
-      "nivel_confianca": "alta",
       "ttl_horas": 6,
-      "horas_em_destaque": 6,
-      "veiculos_origem": [
-        "Al Jazeera English"
-      ],
+      "expires_at": "2026-11-20T22:27:28Z",
+      "updated_at": "2026-11-20T16:27:28Z",
       "fontes_urls": [
         "https://www.aljazeera.com/news/2026/11/20/what-is-vox-and-how-did-spains-far-right-party-rise-to-prominence?traffic_source=rss"
       ],
+      "resumo_pulso": "Segundo Al Jazeera English, As Spain prepares to vote, Vox is campaigning on mass deportations and 'national priority'..",
+      "titulo_curto": "What is Vox, and how did Spain’s far-right party rise to prominence?",
       "palavras_chave": [
         "radar",
         "tempo real",
         "qa"
       ],
+      "urgencia_score": 75,
       "data_publicacao": "2026-11-20T16:05:31+00:00",
-      "links_internos_relacionados": [
-        {
-          "titulo_existente": "O que é inflação?",
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
-          "motivo_conexao": "Compreenda por que os preços sobem de forma generalizada, como o IPCA é calculado e de que maneira os juros do Banco Central afetam o poder de compra."
-        },
-        {
-          "titulo_existente": "Como funcionam as eleições nos EUA?",
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/como-funcionam-as-eleicoes-nos-eua",
-          "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos."
-        }
-      ],
-      "expires_at": "2026-11-20T22:27:28Z",
-      "updated_at": "2026-11-20T16:27:28Z"
-    },
-    {
-      "slug": "pulso-5-20261120-1627",
-      "titulo_curto": "One third of attacks on children worldwide recorded in Palestine",
-      "resumo_pulso": "Segundo Al Jazeera English, Almost one in three reported violations against children worldwide occurred in Palestine in 2025..",
       "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "categoria": "Geopolitica_Relacoes",
-      "paises_envolvidos": [
-        "QA"
-      ],
-      "urgencia_score": 70,
-      "relevancia_score": 72,
       "nivel_confianca": "alta",
-      "ttl_horas": 6,
-      "horas_em_destaque": 6,
       "veiculos_origem": [
         "Al Jazeera English"
       ],
+      "relevancia_score": 76,
+      "horas_em_destaque": 6,
+      "paises_envolvidos": [
+        "QA"
+      ],
+      "links_internos_relacionados": [
+        {
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
+          "motivo_conexao": "Compreenda por que os preços sobem de forma generalizada, como o IPCA é calculado e de que maneira os juros do Banco Central afetam o poder de compra.",
+          "titulo_existente": "O que é inflação?"
+        },
+        {
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/como-funcionam-as-eleicoes-nos-eua",
+          "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos.",
+          "titulo_existente": "Como funcionam as eleições nos EUA?"
+        }
+      ]
+    },
+    {
+      "slug": "pulso-5-20261120-1627",
+      "categoria": "Geopolitica_Relacoes",
+      "ttl_horas": 6,
+      "expires_at": "2026-11-20T22:27:28Z",
+      "updated_at": "2026-11-20T16:27:28Z",
       "fontes_urls": [
         "https://www.aljazeera.com/video/newsfeed/2026/11/20/one-third-of-attacks-on-children-worldwide-recorded-in-palestine?traffic_source=rss"
       ],
+      "resumo_pulso": "Segundo Al Jazeera English, Almost one in three reported violations against children worldwide occurred in Palestine in 2025..",
+      "titulo_curto": "One third of attacks on children worldwide recorded in Palestine",
       "palavras_chave": [
         "radar",
         "tempo real",
         "qa"
       ],
+      "urgencia_score": 70,
       "data_publicacao": "2026-11-20T15:50:28+00:00",
+      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Al Jazeera English"
+      ],
+      "relevancia_score": 72,
+      "horas_em_destaque": 6,
+      "paises_envolvidos": [
+        "QA"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "O que é inflação?",
           "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
-          "motivo_conexao": "Compreenda por que os preços sobem de forma generalizada, como o IPCA é calculado e de que maneira os juros do Banco Central afetam o poder de compra."
+          "motivo_conexao": "Compreenda por que os preços sobem de forma generalizada, como o IPCA é calculado e de que maneira os juros do Banco Central afetam o poder de compra.",
+          "titulo_existente": "O que é inflação?"
         },
         {
-          "titulo_existente": "Como funcionam as eleições nos EUA?",
           "url_existente": "https://www.rodandoomundo.com.br/entenda/como-funcionam-as-eleicoes-nos-eua",
-          "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos."
+          "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos.",
+          "titulo_existente": "Como funcionam as eleições nos EUA?"
+        }
+      ]
+    },
+    {
+      "slug": "servico-secreto-dinamarques-impede-atentado-russo-contra-rapper-ucraniano",
+      "titulo_curto": "Serviço Secreto da Dinamarca afirma ter impedido atentado russo contra rapper ucraniano",
+      "resumo_pulso": "Conforme apuração do G1 Mundo com base em informações da emissora pública dinamarquesa DR, o serviço de inteligência da Dinamarca impediu uma tentativa de assassinato contra um rapper de cidadania americano-ucraniana. As autoridades investigam o recrutamento de intermediários locais por agentes a serviço de Moscou.",
+      "impacto_pratico": "Aumento do nível de vigilância policial e de contraespionagem contra operações encobertas em territórios da OTAN.",
+      "categoria": "Geopolitica_Relacoes",
+      "paises_envolvidos": [
+        "DK",
+        "RU",
+        "UA",
+        "US"
+      ],
+      "urgencia_score": 91,
+      "relevancia_score": 88,
+      "nivel_confianca": "alta",
+      "ttl_horas": 18,
+      "horas_em_destaque": 8,
+      "veiculos_origem": [
+        "G1 Mundo",
+        "DR"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/mundo/noticia/2026/11/20/russia-rapper-kyivstoner-dinamarca.ghtml"
+      ],
+      "palavras_chave": [
+        "Dinamarca",
+        "Rússia",
+        "serviço secreto",
+        "espionagem",
+        "Kyivstoner"
+      ],
+      "data_publicacao": "2026-11-20T15:34:30Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "O que é uma sanção internacional?",
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-sancao-internacional",
+          "motivo_conexao": "Contextualiza a escalada de sanções e contramedidas diplomáticas e de inteligência entre a Europa e a Rússia."
         }
       ],
-      "expires_at": "2026-11-20T22:27:28Z",
-      "updated_at": "2026-11-20T16:27:28Z"
+      "expires_at": "2026-11-21T11:27:30Z",
+      "updated_at": "2026-11-20T17:27:30Z"
     },
     {
       "slug": "pulso-1-20261120-1525",
@@ -1542,119 +1643,6 @@
           "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-sancao-internacional",
           "motivo_conexao": "Explica os instrumentos de pressão econômica e os impactos em infraestruturas estratégicas na guerra.",
           "titulo_existente": "O que é uma sanção internacional?"
-        }
-      ]
-    },
-    {
-      "slug": "governo-regulamenta-fim-da-escala-6x1-trabalho",
-      "categoria": "Economia_Comercio",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-21T12:59:03Z",
-      "updated_at": "2026-11-20T12:59:03Z",
-      "fontes_urls": [
-        "https://www.jota.info/newsletters/jota-principal/governo-regulamenta-fim-escala-6x1"
-      ],
-      "resumo_pulso": "Conforme apuração divulgada pelo JOTA Info, o Ministério do Trabalho deve publicar portarias na próxima semana regulamentando a transição do modelo de trabalho na escala 6x1. O movimento segue diretrizes do Executivo para adequar jornadas em setores específicos da economia.",
-      "titulo_curto": "Governo prepara regulamentação para fim da escala 6x1 de trabalho",
-      "palavras_chave": [
-        "Escala 6x1",
-        "Ministério do Trabalho",
-        "Jornada de Trabalho",
-        "CLT"
-      ],
-      "urgencia_score": 85,
-      "data_publicacao": "2026-11-20T11:26:26Z",
-      "impacto_pratico": "Pode alterar jornadas de trabalho, escalas de folga e planejamento de custos operacionais do comércio e serviços.",
-      "nivel_confianca": "media",
-      "veiculos_origem": [
-        "JOTA Info"
-      ],
-      "relevancia_score": 88,
-      "horas_em_destaque": 12,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
-          "motivo_conexao": "Complementa a discussão sobre regulação trabalhista, custos das empresas e mercado de trabalho nacional.",
-          "titulo_existente": "Emprego, renda das famílias e financiamento industrial entram no centro do debate econômico"
-        }
-      ]
-    },
-    {
-      "slug": "eu-and-uk-seal-reset-deal",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-21T11:53:42Z",
-      "updated_at": "2026-11-20T11:53:42Z",
-      "fontes_urls": [
-        "https://www.aljazeera.com/news/2026/11/20/eu-and-uk-seal-reset-deal?traffic_source=rss"
-      ],
-      "resumo_pulso": "Conforme noticiado pela Al Jazeera, a União Europeia e o Reino Unido selaram um novo acordo abrangente de cooperação e reajuste institucional, marcando uma nova fase nas relações bilaterais após anos de distanciamento pós-Brexit. Detalhes completos do tratado começam a ser divulgados pelas lideranças em Bruxelas e Londres.",
-      "titulo_curto": "União Europeia e Reino Unido firmam acordo histórico de reaproximação",
-      "palavras_chave": [
-        "Reino Unido",
-        "União Europeia",
-        "Brexit",
-        "Acordo"
-      ],
-      "urgencia_score": 90,
-      "data_publicacao": "2026-11-20T11:20:19Z",
-      "impacto_pratico": "Afeta diretamente acordos comerciais, fluxo de mobilidade e diretrizes regulatórias entre o Reino Unido e o bloco europeu.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Al Jazeera English"
-      ],
-      "relevancia_score": 89,
-      "horas_em_destaque": 18,
-      "paises_envolvidos": [
-        "GB",
-        "EU"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
-          "motivo_conexao": "Contextualiza a dinâmica de acordos diplomáticos e blocos econômicos internacionais.",
-          "titulo_existente": "Mercados e aliados internacionais avaliam impacto da política comercial norte-americana"
-        }
-      ]
-    },
-    {
-      "slug": "oab-pede-que-stf-julgue-processo-contra-van-hattem-em-plenario-presencial",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 12,
-      "expires_at": "2026-11-20T22:56:16Z",
-      "updated_at": "2026-11-20T10:56:16Z",
-      "fontes_urls": [
-        "https://www.poder360.com.br/poder-justica/oab-discorda-de-dino-e-pede-que-stf-julgue-van-hattem-presencialmente/"
-      ],
-      "resumo_pulso": "Conforme reportado pelo Poder360, a Ordem dos Advogados do Brasil pediu ao ministro Flávio Dino, do STF, que o julgamento do deputado Marcel van Hattem ocorra no plenário presencial. A entidade argumenta que a análise em ambiente físico assegura a realização de sustentações orais em tempo real pela defesa.",
-      "titulo_curto": "OAB pede que STF julgue denúncia contra deputado Marcel van Hattem em plenário presencial",
-      "palavras_chave": [
-        "STF",
-        "OAB",
-        "Flávio Dino",
-        "Marcel van Hattem",
-        "Plenário Presencial"
-      ],
-      "urgencia_score": 79,
-      "data_publicacao": "2026-11-20T10:45:55Z",
-      "impacto_pratico": "Definição do rito processual no STF para parlamentares e discussão sobre prerrogativas da advocacia na Suprema Corte.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Poder360"
-      ],
-      "relevancia_score": 83,
-      "horas_em_destaque": 6,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
-          "motivo_conexao": "Acompanha os desdobramentos de embates jurídicos e institucionais envolvendo o STF e parlamentares.",
-          "titulo_existente": "Política no Brasil"
         }
       ]
     }
