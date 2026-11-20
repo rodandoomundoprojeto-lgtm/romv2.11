@@ -5205,10 +5205,6 @@
       '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>' +
       '<span>' + (atlasMinimized ? 'Expandir' : 'Minimizar') + '</span>' +
       '</button>' +
-      '<button type="button" class="btn-atlas-refresh" id="btn-atlas-refresh" title="Atualizar notícias agora (sem cache)" aria-label="Atualizar notícias agora">' +
-      '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>' +
-      '<span>Atualizar</span>' +
-      '</button>' +
       '</div>' +
       '</div>' +
       '<div class="atlas-live-list is-loading" id="atlas-live-news-list" aria-live="polite"' + (atlasMinimized ? ' hidden' : '') + '>' +
@@ -5402,7 +5398,7 @@
     }
 
     if (!Array.isArray(items) || !items.length) {
-      listEl.innerHTML = '<p class="atlas-live-empty">Nenhuma manchete recente encontrada no momento. Clique em Atualizar para tentar novamente.</p>';
+      listEl.innerHTML = '<p class="atlas-live-empty">Nenhuma manchete recente encontrada no momento.</p>';
       return;
     }
 
@@ -11781,7 +11777,6 @@
     html += '<h2 class="vitrine-ia-title">Curadoria em Tempo Real</h2>';
     html += '<p class="vitrine-ia-subtitle">Temas em alta, cruzamento editorial e sinais relevantes monitorados continuamente pela curadoria IA.</p>';
     html += '</div>';
-    html += '<div class="vitrine-ia-actions"><button type="button" class="btn btn-secondary" id="btn-refresh-vitrine-ia" data-action="refresh-vitrine" title="Atualizar curadoria em tempo real (sem cache)">🔄 Atualizar</button></div>';
     html += '</div>';
     html += '<div class="vitrine-ia-chips" id="vitrine-ia-chips" role="tablist" aria-label="Filtrar curadoria por categoria">';
     var curCats = [
@@ -11822,7 +11817,6 @@
     html += '</div>';
     html += '<div style="display:flex;gap:var(--space-2);align-items:center;flex-wrap:wrap;">';
     html += '<span class="radar-updated-badge' + (radarUpdatedLabel ? ' is-live' : '') + '" id="radar-last-updated" title="Sincronização automática no navegador a cada 5 a 8 minutos">' + esc(radarUpdatedLabel || '') + '</span>';
-    html += '<button type="button" class="btn btn-secondary" id="btn-atualizar-radar" title="Atualizar briefings do Radar agora (sem cache)">🔄 Atualizar Radar</button>';
     html += '<a href="/resumo-do-dia" class="btn btn-secondary" data-spa-link title="Ver o Resumo do Dia com as 5 principais notícias">📰 Resumo do Dia</a>';
     html += '</div>';
     html += '</div>';
@@ -12554,7 +12548,6 @@
     rh += '<p class="editorial-section-sub">As 5 principais notícias do dia selecionadas por relevância editorial, com síntese de fatos e comparação direta de cobertura entre veículos.</p>';
     rh += '</div>';
     rh += '<div style="display:flex;gap:var(--space-2);align-items:center;flex-wrap:wrap;">';
-    rh += '<button type="button" class="btn btn-secondary' + (resumoAutoAtualizando ? ' is-loading' : '') + '" id="btn-refresh-resumo-dia" title="Atualizar Resumo do Dia agora"' + (resumoAutoAtualizando ? ' disabled' : '') + '>↻ ' + (resumoAutoAtualizando ? 'Atualizando…' : 'Atualizar') + '</button>';
     rh += '<a href="/radar" class="btn btn-secondary" data-spa-link title="Ver todos os briefings em tempo real">📡 Radar ao Vivo</a>';
     rh += '<button type="button" class="btn resumo-email-btn" id="btn-resumo-email" data-open-newsletter="Resumo do dia">Receber por e-mail</button>';
     rh += '</div>';
@@ -13635,10 +13628,6 @@
     html += '<input type="search" class="ultimas-search-input" id="ultimas-search-input" placeholder="Buscar nas notícias por assunto ou veículo…" value="' + esc(ultimasNoticiasState.termoBusca || '') + '" aria-label="Buscar nas notícias">';
     html += '<button type="button" class="btn-ultimas-search-clear" id="btn-ultimas-clear-input" title="Limpar busca" aria-label="Limpar busca"' + (temTermo ? '' : ' hidden') + '>✕</button>';
     html += '</div>';
-    html += '<button type="button" class="btn-ultimas-refresh' + (ultimasNoticiasState.carregando ? ' is-loading' : '') + '" id="btn-ultimas-refresh" title="Recarregar últimas notícias"' + (ultimasNoticiasState.carregando ? ' disabled' : '') + '>';
-    html += '<svg viewBox="0 0 24 24" aria-hidden="true" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"' + (ultimasNoticiasState.carregando ? ' class="spin"' : '') + '><path d="M23 4v6h-6"/><path d="M1 20v-6h6"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>';
-    html += '<span>' + (ultimasNoticiasState.carregando ? 'Atualizando…' : 'Atualizar') + '</span>';
-    html += '</button>';
     html += '</div>';
     html += '</div>';
 
@@ -14342,11 +14331,7 @@
     eh += '<h2 id="entenda-titulo">Entenda o assunto</h2>';
     eh += '<p class="editorial-section-sub">Explicações diretas e acessíveis sobre conceitos fundamentais na política, na economia e nas relações internacionais.</p>';
     eh += '</div>';
-    if (isFullPage) {
-      eh += '<div style="display:flex;gap:var(--space-2);align-items:center;flex-wrap:wrap;">';
-      eh += '<button type="button" class="btn btn-secondary' + (entendaV2State.loading ? ' is-loading' : '') + '" id="btn-refresh-entenda" title="Atualizar guias de Entenda o assunto"' + (entendaV2State.loading ? ' disabled' : '') + '>↻ ' + (entendaV2State.loading ? 'Atualizando…' : 'Atualizar') + '</button>';
-      eh += '</div>';
-    } else {
+    if (!isFullPage) {
       eh += '<a href="/entenda" class="btn btn-secondary entenda-head-view-all" data-spa-link>Ver todos os ' + totalGuias + ' guias →</a>';
     }
     eh += '</div>';
