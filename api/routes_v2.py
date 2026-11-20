@@ -2118,7 +2118,7 @@ class AdminKillSwitchRequest(BaseModel):
 
 class AdminFonteCreateRequest(BaseModel):
     nome: str = Field(min_length=2, max_length=150)
-    url: str = Field(min_length=8, max_length=2000)
+    url: str = Field(min_length=3, max_length=2000)
     tipo_fonte: Literal["rss_feed", "artigo_avulso", "fonte_primaria", "youtube_rss"]
     cadencia: Literal["pulso_30m", "ciclo_3h"]
     peso_confianca: int = Field(default=3, ge=1, le=5)
@@ -2727,6 +2727,84 @@ def admin_sincronizar_fontes(
     return {"ok": True, "novas_inseridas": inseridas}
 
 
+def _resolver_url_youtube_feed(valor: str) -> Tuple[str, Optional[str]]:
+    """Converte ID (`UC...`), `@handle` ou URL de canal do YouTube para o feed XML oficial.
+
+    Retorna `(feed_url, referencia_canal_url)`.
+    """
+    bruto = (valor or "").strip()
+    if not bruto:
+        raise HTTPException(status_code=422, detail="Informe a URL ou ID do canal do YouTube.")
+
+    # 1. Já é feed XML oficial
+    m_feed = re.search(r"feeds/videos\.xml\?channel_id=(UC[A-Za-z0-9_-]{20,})", bruto)
+    if m_feed:
+        cid = m_feed.group(1)
+        return f"https://www.youtube.com/feeds/videos.xml?channel_id={cid}", f"https://www.youtube.com/channel/{cid}"
+
+    # 2. ID puro do canal (UC...)
+    if re.fullmatch(r"UC[A-Za-z0-9_-]{20,}", bruto):
+        return f"https://www.youtube.com/feeds/videos.xml?channel_id={bruto}", f"https://www.youtube.com/channel/{bruto}"
+
+    # 3. URL com /channel/UC...
+    m_ch = re.search(r"youtube\.com/channel/(UC[A-Za-z0-9_-]{20,})", bruto, re.IGNORECASE)
+    if m_ch:
+        cid = m_ch.group(1)
+        return f"https://www.youtube.com/feeds/videos.xml?channel_id={cid}", f"https://www.youtube.com/channel/{cid}"
+
+    # 4. @handle puro ou URL do YouTube (@canal, @canal/videos, /c/..., /user/...)
+    if bruto.startswith("@"):
+        alvo_url = f"https://www.youtube.com/{bruto.split('?')[0].rstrip('/')}"
+    elif re.match(r"^(www\.)?(m\.)?youtube\.com/", bruto, re.IGNORECASE):
+        alvo_url = f"https://{bruto}"
+    elif bruto.startswith("http://") or bruto.startswith("https://"):
+        alvo_url = bruto
+    else:
+        raise HTTPException(
+            status_code=422,
+            detail="Formato inválido para YouTube. Informe o ID (UC...), @canal ou URL do canal.",
+        )
+
+    alvo_limpo = re.sub(r"/(videos|shorts|streams|live|playlists|community|about)/?$", "", alvo_url.split("?")[0].rstrip("/"), flags=re.IGNORECASE)
+
+    import httpx
+
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
+        "Accept-Language": "pt-BR,pt;q=0.9,en;q=0.8",
+    }
+    try:
+        resp = httpx.get(alvo_limpo, headers=headers, follow_redirects=True, timeout=10.0)
+        if resp.status_code != 200:
+            raise HTTPException(
+                status_code=422,
+                detail=f"Não foi possível acessar o canal do YouTube (HTTP {resp.status_code}). Cole o ID UC... diretamente.",
+            )
+        html = resp.text
+        for pat in (
+            r'<meta\s+itemprop="channelId"\s+content="(UC[A-Za-z0-9_-]{20,})"',
+            r'"externalId"\s*:\s*"(UC[A-Za-z0-9_-]{20,})"',
+            r'"browseId"\s*:\s*"(UC[A-Za-z0-9_-]{20,})"',
+            r'https://www\.youtube\.com/channel/(UC[A-Za-z0-9_-]{20,})',
+        ):
+            m = re.search(pat, html)
+            if m:
+                cid = m.group(1)
+                return f"https://www.youtube.com/feeds/videos.xml?channel_id={cid}", alvo_limpo
+    except HTTPException:
+        raise
+    except Exception as exc:
+        raise HTTPException(
+            status_code=422,
+            detail=f"Falha ao resolver canal do YouTube ({exc}). Cole o ID UC... diretamente.",
+        ) from exc
+
+    raise HTTPException(
+        status_code=422,
+        detail="Não foi possível identificar o Channel ID (UC...) desse canal. Cole o ID UC... ou a URL do feed XML.",
+    )
+
+
 @router.post("/v2/admin/fontes", dependencies=[Depends(verificar_admin_token)])
 def admin_criar_fonte(
     payload: AdminFonteCreateRequest,
@@ -2737,7 +2815,11 @@ def admin_criar_fonte(
     aplicar_no_cache_headers(response)
     db = _require_db(conn)
     url_limpa = payload.url.strip()
-    if not (url_limpa.startswith("http://") or url_limpa.startswith("https://")):
+    referencia_canal: Optional[str] = None
+
+    if payload.tipo_fonte == "youtube_rss":
+        url_limpa, referencia_canal = _resolver_url_youtube_feed(url_limpa)
+    elif not (url_limpa.startswith("http://") or url_limpa.startswith("https://")):
         raise HTTPException(status_code=422, detail="URL deve começar com http:// ou https://")
 
     politica_status = "aprovada" if payload.aprovar_imediato else "pendente"
@@ -2752,11 +2834,11 @@ def admin_criar_fonte(
                 INSERT INTO ai_fontes_referencia (
                     nome, url, tipo_fonte, cadencia, peso_confianca,
                     politica_uso_status, coleta_permitida, armazenamento_permitido,
-                    exibicao_permitida, revisado_por, revisado_em, ativo
+                    exibicao_permitida, referencia_condicoes_uso, revisado_por, revisado_em, ativo
                 ) VALUES (
                     %s, %s, %s, %s, %s,
                     %s, %s, 'apenas_metadados',
-                    'sintese_e_link', %s, %s, TRUE
+                    'sintese_e_link', %s, %s, %s, TRUE
                 )
                 RETURNING id, nome, url, tipo_fonte, cadencia, peso_confianca,
                           politica_uso_status, coleta_permitida, ativo, revisado_por, created_at;
@@ -2769,6 +2851,7 @@ def admin_criar_fonte(
                     payload.peso_confianca,
                     politica_status,
                     coleta_permitida,
+                    referencia_canal,
                     revisado_por,
                     revisado_em,
                 ),

@@ -2203,8 +2203,8 @@
                   placeholder="Ex: Agência Brasil" />
               </div>
               <div class="admin-field" style="grid-column: span 2;">
-                <label for="f-url">URL do Feed / Fonte</label>
-                <input id="f-url" class="admin-input" type="url" required placeholder="https://..." />
+                <label id="f-url-label" for="f-url">URL do Feed / Fonte</label>
+                <input id="f-url" class="admin-input" type="text" required placeholder="https://..." />
               </div>
               <div class="admin-field">
                 <label for="f-tipo">Tipo</label>
@@ -3192,13 +3192,27 @@
         }
       });
 
+      function atualizarCamposFonteTipo() {
+        const ehYoutube = $('f-tipo').value === 'youtube_rss';
+        $('f-url-label').textContent = ehYoutube ? 'URL, @canal ou ID do Canal (UC...)' : 'URL do Feed / Fonte';
+        $('f-url').placeholder = ehYoutube ? 'https://youtube.com/@canal, UC... ou URL do feed XML' : 'https://...';
+      }
+      $('f-tipo').addEventListener('change', atualizarCamposFonteTipo);
+      atualizarCamposFonteTipo();
+
       $('form-nova-fonte').addEventListener('submit', async (e) => {
         e.preventDefault();
         hideBanner('fontes-banner');
+        const tipoFonte = $('f-tipo').value;
+        const urlVal = $('f-url').value.trim();
+        if (tipoFonte !== 'youtube_rss' && !/^https?:\/\//i.test(urlVal)) {
+          showBanner('fontes-banner', 'URL deve começar com http:// ou https://', 'err');
+          return;
+        }
         const payload = {
           nome: $('f-nome').value.trim(),
-          url: $('f-url').value.trim(),
-          tipo_fonte: $('f-tipo').value,
+          url: urlVal,
+          tipo_fonte: tipoFonte,
           cadencia: $('f-cadencia').value,
           peso_confianca: Number($('f-peso').value) || 3,
           aprovar_imediato: $('f-aprovar').checked
@@ -3207,6 +3221,7 @@
           await apiFetch('/v2/admin/fontes', { method: 'POST', body: JSON.stringify(payload) });
           e.target.reset();
           $('f-peso').value = 3;
+          atualizarCamposFonteTipo();
           showBanner('fontes-banner', 'Fonte cadastrada com sucesso.', 'ok');
           await carregarFontes();
         } catch (err) {
