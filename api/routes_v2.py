@@ -4019,10 +4019,14 @@ def admin_atualizar_noticia_quente(
         _add("status", updates["status"])
     if "ttl_horas" in updates:
         ttl_valido = max(1, int(updates["ttl_horas"] or 6))
-        _add("expires_at", agora + timedelta(hours=ttl_valido))
+        _add("ttl_horas", ttl_valido)
+        if "expires_at" not in updates:
+            _add("expires_at", agora + timedelta(hours=ttl_valido))
     if "horas_em_destaque" in updates:
         horas_validas = max(1, min(24, int(updates["horas_em_destaque"] or 6)))
-        _add("destaque_ate", agora + timedelta(hours=horas_validas))
+        _add("horas_em_destaque", horas_validas)
+        if "destaque_ate" not in updates:
+            _add("destaque_ate", agora + timedelta(hours=horas_validas))
     if "destaque_ate" in updates:
         dt_dest = _parse_iso_utc(updates["destaque_ate"])
         if dt_dest is not None:
