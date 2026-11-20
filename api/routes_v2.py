@@ -12,8 +12,10 @@ import json
 import os
 import re
 import secrets
+import threading
 import time
 import unicodedata
+from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any, Dict, List, Literal, Optional, Tuple
@@ -2202,6 +2204,26 @@ class AdminNoticiasQuentesUpdateRequest(BaseModel):
     fontes_urls: Optional[List[str]] = Field(default=None)
 
 
+class AdminEventosLoteRequest(BaseModel):
+    ids: List[int] = Field(default_factory=list)
+    acao: Literal["publicar", "arquivar", "restaurar", "excluir"]
+
+
+class AdminColunasLoteRequest(BaseModel):
+    slugs: List[str] = Field(default_factory=list)
+    acao: Literal["aprovar", "publicar", "rejeitar", "rascunho", "excluir"]
+
+
+class AdminNoticiasQuentesLoteRequest(BaseModel):
+    slugs: List[str] = Field(default_factory=list)
+    acao: Literal["ativar", "desativar", "arquivar", "excluir"]
+
+
+class AdminRadarLoteRequest(BaseModel):
+    slugs: List[str] = Field(default_factory=list)
+    acao: Literal["fixar", "desafixar", "excluir"]
+
+
 @router.get("/v2/admin/config/kill-switch", dependencies=[Depends(verificar_admin_token)])
 def admin_obter_kill_switch(
     response: Response,
@@ -3052,9 +3074,51 @@ def admin_listar_eventos(
         }
         for r in rows
     ]
+    _traduzir_campos_itens_pt(eventos, ("titulo_evento", "sintese_com_ressalvas"))
     contagens = {str(r["status"]): int(r["total"]) for r in contagens_rows}
     contagens["total"] = sum(contagens.values())
     return {"ok": True, "eventos": eventos, "contagens": contagens}
+
+
+@router.post("/v2/admin/eventos/lote", dependencies=[Depends(verificar_admin_token)])
+def admin_eventos_lote(
+    payload: AdminEventosLoteRequest,
+    response: Response,
+    conn: Any = Depends(get_db),
+) -> Dict[str, Any]:
+    """Executa ação em lote sobre eventos (`publicar`, `arquivar`, `restaurar`, `excluir`)."""
+    aplicar_no_cache_headers(response)
+    db = _require_db(conn)
+    ids_limpos = [int(i) for i in (payload.ids or []) if isinstance(i, int) or str(i).isdigit()]
+    if not ids_limpos:
+        return {"ok": True, "acao": payload.acao, "processados": 0, "ids": []}
+
+    mapa_status = {
+        "publicar": "publicado",
+        "arquivar": "arquivado",
+        "restaurar": "aguardando_revisao",
+        "excluir": "excluido",
+    }
+    status_alvo = mapa_status[payload.acao]
+    with db.cursor() as cur:
+        cur.execute(
+            """
+            UPDATE ai_eventos
+            SET status = %s, updated_at = NOW()
+            WHERE id = ANY(%s)
+            RETURNING id;
+            """,
+            (status_alvo, ids_limpos),
+        )
+        rows = cur.fetchall()
+    db.commit()
+    processados_ids = [int(r["id"]) for r in rows]
+    return {
+        "ok": True,
+        "acao": payload.acao,
+        "processados": len(processados_ids),
+        "ids": processados_ids,
+    }
 
 
 @router.patch("/v2/admin/eventos/{event_id}/status", dependencies=[Depends(verificar_admin_token)])
@@ -3518,11 +3582,87 @@ def admin_listar_radar_feed(
                 return any(t in texto for t in termos)
             resultado = [c for c in resultado if _combina(c)]
 
+    _traduzir_campos_itens_pt(resultado, ("titulo", "resumo", "analise"))
+
     return {
         "ok": True,
         "total": len(resultado),
         "contadores": contadores,
         "cards": resultado,
+    }
+
+
+@router.post("/v2/admin/radar/feed/lote", dependencies=[Depends(verificar_admin_token)])
+def admin_radar_feed_lote(
+    payload: AdminRadarLoteRequest,
+    response: Response,
+) -> Dict[str, Any]:
+    """Executa ação em lote no feed do Radar (`fixar`, `desafixar`, `excluir`)."""
+    aplicar_no_cache_headers(response)
+    slugs_limpos = [str(s).strip() for s in (payload.slugs or []) if str(s).strip()]
+    if not slugs_limpos:
+        return {"ok": True, "acao": payload.acao, "processados": 0, "slugs": []}
+
+    processados: List[str] = []
+    if payload.acao in ("fixar", "desafixar"):
+        fixar_flag = payload.acao == "fixar"
+        for slug in slugs_limpos:
+            try:
+                card = fixar_card_radar(slug, fixar=fixar_flag)
+                if card is not None:
+                    processados.append(slug)
+            except Exception:
+                continue
+        return {
+            "ok": True,
+            "acao": payload.acao,
+            "processados": len(processados),
+            "slugs": processados,
+        }
+
+    # Ação "excluir"
+    alvos_v2: List[str] = []
+    for slug in slugs_limpos:
+        if slug.startswith("ddg-"):
+            try:
+                remover_card_radar(slug)
+            except Exception:
+                pass
+            processados.append(slug)
+            continue
+
+        removidos = 0
+        try:
+            removidos = remover_card_radar(slug)
+        except Exception:
+            removidos = 0
+
+        if slug.startswith("v2-") or removidos == 0:
+            alvos_v2.append(slug.removeprefix("v2-"))
+        processados.append(slug)
+
+    if alvos_v2:
+        alvos_set = set(alvos_v2)
+        try:
+            from src.estado_db import atualizar_estado, banco_disponivel
+
+            def _remove_v2_lote(vit: Any) -> Any:
+                if not isinstance(vit, dict):
+                    return vit
+                temas = [t for t in vit.get("temas_ativos", []) if str(t.get("slug") or "") not in alvos_set]
+                vit["temas_ativos"] = temas
+                return vit
+
+            if banco_disponivel():
+                atualizar_estado("vitrine_ia", _remove_v2_lote)
+        except Exception:
+            pass
+
+    return {
+        "ok": True,
+        "acao": payload.acao,
+        "processados": len(processados),
+        "slugs": processados,
     }
 
 
@@ -3688,7 +3828,55 @@ def admin_listar_noticias_quentes(
             pass
         print(f"[Aviso] Erro ao consultar ai_noticias_quentes (admin): {e}")
 
+    _traduzir_campos_itens_pt(noticias, ("titulo_curto", "resumo_pulso", "impacto_pratico"))
+
     return {"ok": True, "noticias": noticias}
+
+
+@router.post("/v2/admin/noticias-quentes/lote", dependencies=[Depends(verificar_admin_token)])
+def admin_noticias_quentes_lote(
+    payload: AdminNoticiasQuentesLoteRequest,
+    response: Response,
+    conn: Any = Depends(get_db),
+) -> Dict[str, Any]:
+    """Executa ação em lote sobre notícias quentes (`ativar`, `desativar`, `arquivar`, `excluir`)."""
+    aplicar_no_cache_headers(response)
+    db = _require_db(conn)
+    slugs_limpos = [str(s).strip() for s in (payload.slugs or []) if str(s).strip()]
+    if not slugs_limpos:
+        return {"ok": True, "acao": payload.acao, "processados": 0, "slugs": []}
+
+    with db.cursor() as cur:
+        if payload.acao == "excluir":
+            cur.execute(
+                "DELETE FROM ai_noticias_quentes WHERE slug = ANY(%s) RETURNING slug;",
+                (slugs_limpos,),
+            )
+        else:
+            mapa_status = {
+                "ativar": "ativo",
+                "desativar": "aguardando_revisao",
+                "arquivar": "arquivado",
+            }
+            status_alvo = mapa_status[payload.acao]
+            cur.execute(
+                """
+                UPDATE ai_noticias_quentes
+                SET status = %s, updated_at = NOW()
+                WHERE slug = ANY(%s)
+                RETURNING slug;
+                """,
+                (status_alvo, slugs_limpos),
+            )
+        rows = cur.fetchall()
+    db.commit()
+    processados = [str(r["slug"]) for r in rows]
+    return {
+        "ok": True,
+        "acao": payload.acao,
+        "processados": len(processados),
+        "slugs": processados,
+    }
 
 
 @router.patch("/v2/admin/noticias-quentes/{slug}", dependencies=[Depends(verificar_admin_token)])
@@ -3874,9 +4062,97 @@ def admin_listar_colunas(
         }
         for r in rows
     ]
+    _traduzir_campos_itens_pt(colunas, ("titulo", "subtitulo"))
     contagens = {str(r["status"]): int(r["total"]) for r in contagens_rows}
     contagens["total"] = sum(contagens.values())
     return {"ok": True, "colunas": colunas, "contagens": contagens}
+
+
+@router.post("/v2/admin/colunas/lote", dependencies=[Depends(verificar_admin_token)])
+def admin_colunas_lote(
+    payload: AdminColunasLoteRequest,
+    response: Response,
+    conn: Any = Depends(get_db),
+) -> Dict[str, Any]:
+    """Executa ação em lote sobre colunas editoriais (`aprovar`, `publicar`, `rejeitar`, `rascunho`, `excluir`)."""
+    aplicar_no_cache_headers(response)
+    db = _require_db(conn)
+    slugs_limpos = [str(s).strip() for s in (payload.slugs or []) if str(s).strip()]
+    if not slugs_limpos:
+        return {"ok": True, "acao": payload.acao, "processados": 0, "slugs": []}
+
+    entenda_slugs = list({s for s in slugs_limpos} | {f"entenda-{s}" for s in slugs_limpos})
+
+    with db.cursor() as cur:
+        if payload.acao == "excluir":
+            cur.execute(
+                "DELETE FROM ai_entenda_o_assunto WHERE slug = ANY(%s);",
+                (entenda_slugs,),
+            )
+            cur.execute(
+                "DELETE FROM ai_colunas_editoriais WHERE slug = ANY(%s) RETURNING id, slug, created_at;",
+                (slugs_limpos,),
+            )
+            rows = cur.fetchall()
+            for row in rows:
+                if row.get("id") is not None and row.get("created_at") is not None:
+                    cur.execute(
+                        "DELETE FROM ai_entenda_o_assunto WHERE id = %s AND ABS(EXTRACT(EPOCH FROM (created_at - %s))) < 30;",
+                        (row["id"], row["created_at"]),
+                    )
+        else:
+            if payload.acao == "publicar":
+                set_sql = (
+                    "status = 'publicado', review_status = 'publicado', "
+                    "published_at = COALESCE(published_at, NOW()), updated_at = NOW()"
+                )
+                entenda_status = "publicado"
+            elif payload.acao == "aprovar":
+                set_sql = "status = 'aprovado', review_status = 'aprovado', updated_at = NOW()"
+                entenda_status = "aprovado"
+            elif payload.acao == "rejeitar":
+                set_sql = "status = 'rejeitado', review_status = 'rejeitado', updated_at = NOW()"
+                entenda_status = "rejeitado"
+            else:
+                set_sql = (
+                    "status = 'rascunho_auditado', review_status = 'rascunho_auditado', "
+                    "published_at = NULL, updated_at = NOW()"
+                )
+                entenda_status = "rascunho_auditado"
+
+            cur.execute(
+                f"UPDATE ai_colunas_editoriais SET {set_sql} WHERE slug = ANY(%s) "
+                "RETURNING id, slug, created_at;",
+                (slugs_limpos,),
+            )
+            rows = cur.fetchall()
+            if rows:
+                cur.execute(
+                    "UPDATE ai_entenda_o_assunto SET status = %s, updated_at = NOW() "
+                    "WHERE slug = ANY(%s);",
+                    (entenda_status, entenda_slugs),
+                )
+                for row in rows:
+                    if row.get("id") is not None and row.get("created_at") is not None:
+                        cur.execute(
+                            "UPDATE ai_entenda_o_assunto SET status = %s, updated_at = NOW() "
+                            "WHERE id = %s AND ABS(EXTRACT(EPOCH FROM (created_at - %s))) < 30 "
+                            "AND slug NOT IN (SELECT unnest(%s::text[]));",
+                            (entenda_status, row["id"], row["created_at"], entenda_slugs),
+                        )
+    db.commit()
+    try:
+        _sincronizar_espelho_entenda_v2(db)
+    except Exception as exc:  # noqa: BLE001
+        print(f"[Aviso] Falha ao sincronizar espelho entenda_v2 após POST /colunas/lote: {exc}")
+
+    processados = [str(r["slug"]) for r in rows]
+    return {
+        "ok": True,
+        "acao": payload.acao,
+        "processados": len(processados),
+        "slugs": processados,
+    }
 
 
 @router.patch("/v2/admin/colunas/{slug}/status", dependencies=[Depends(verificar_admin_token)])
@@ -4608,6 +4884,122 @@ def _traduzir_lote_rapido_pt(texto: str) -> str:
     except Exception:
         pass
     return clean
+
+
+_TRADUCAO_CACHE: Dict[str, str] = {}
+_TRADUCAO_CACHE_MAX = 2000
+_TRADUCAO_CACHE_LOCK = threading.Lock()
+_PT_CHARS_EXCLUSIVOS_RE = re.compile(r"[ãõçêôàÃÕÇÊÔÀ]")
+_PT_PALAVRAS_INEQUIVOCAS_RE = re.compile(
+    r"\b(não|são|está|estão|após|contra|sobre|entre|para|pelo|pela|dos|das|uma|mais|com|em|também|já|ainda|pode|novo|nova|país|países|governo|brasil|mundo|hoje|ontem|disse|afirmou|segundo|durante|através|foi|foram|será|estava|havia)\b",
+    re.IGNORECASE,
+)
+
+
+def _parece_portugues(texto: Optional[str]) -> bool:
+    """Detecta de forma rápida se o texto já está provavelmente em Português (PT-BR)."""
+    clean = (texto or "").strip()
+    if len(clean) < 3:
+        return True
+    if _PT_CHARS_EXCLUSIVOS_RE.search(clean):
+        return True
+    matches = _PT_PALAVRAS_INEQUIVOCAS_RE.findall(clean)
+    if len(matches) >= 2:
+        return True
+    if len(matches) == 1 and len(clean.split()) <= 6:
+        return True
+    return False
+
+
+def _fatiar_texto_traducao(texto: str, max_chars: int = 450) -> List[str]:
+    """Divide textos longos em blocos de até `max_chars` respeitando espaços."""
+    if len(texto) <= max_chars:
+        return [texto]
+    partes: List[str] = []
+    restante = texto
+    while restante and len(partes) < 6:
+        if len(restante) <= max_chars:
+            partes.append(restante)
+            break
+        corte = restante.rfind(" ", 0, max_chars)
+        if corte <= 0:
+            corte = max_chars
+        partes.append(restante[:corte].strip())
+        restante = restante[corte:].strip()
+    if restante and len(partes) >= 6:
+        partes.append(restante[:max_chars])
+    return [p for p in partes if p]
+
+
+def _garantir_texto_pt(texto: Optional[str]) -> str:
+    """Garante retorno em PT-BR com cache em memória e fallback seguro."""
+    if not isinstance(texto, str):
+        return "" if texto is None else str(texto)
+    clean = texto.strip()
+    if len(clean) < 3 or _parece_portugues(clean):
+        return texto
+
+    with _TRADUCAO_CACHE_LOCK:
+        cached = _TRADUCAO_CACHE.get(clean)
+    if cached is not None:
+        return cached
+
+    try:
+        blocos = _fatiar_texto_traducao(clean, max_chars=450)
+        traduzidos = [_traduzir_lote_rapido_pt(b) for b in blocos]
+        resultado = " ".join(t.strip() for t in traduzidos if t.strip()) or clean
+    except Exception:
+        resultado = clean
+
+    with _TRADUCAO_CACHE_LOCK:
+        if len(_TRADUCAO_CACHE) >= _TRADUCAO_CACHE_MAX:
+            _TRADUCAO_CACHE.pop(next(iter(_TRADUCAO_CACHE)), None)
+        _TRADUCAO_CACHE[clean] = resultado
+    return resultado
+
+
+def _traduzir_campos_itens_pt(
+    itens: List[Dict[str, Any]],
+    campos: Tuple[str, ...],
+) -> List[Dict[str, Any]]:
+    """Traduz em paralelo os campos textuais de uma lista de itens para PT-BR."""
+    if not itens or not campos:
+        return itens
+
+    pendentes: List[str] = []
+    vistos = set()
+    for item in itens:
+        if not isinstance(item, dict):
+            continue
+        for campo in campos:
+            val = item.get(campo)
+            if not isinstance(val, str):
+                continue
+            clean = val.strip()
+            if len(clean) < 3 or clean in vistos or _parece_portugues(clean):
+                continue
+            with _TRADUCAO_CACHE_LOCK:
+                if clean in _TRADUCAO_CACHE:
+                    continue
+            vistos.add(clean)
+            pendentes.append(clean)
+
+    if pendentes:
+        try:
+            with ThreadPoolExecutor(max_workers=8) as pool:
+                list(pool.map(_garantir_texto_pt, pendentes))
+        except Exception:
+            pass
+
+    for item in itens:
+        if not isinstance(item, dict):
+            continue
+        for campo in campos:
+            val = item.get(campo)
+            if isinstance(val, str) and val.strip():
+                item[campo] = _garantir_texto_pt(val)
+
+    return itens
 
 
 def _parse_atlas_pub_date(raw_pub: str) -> str:

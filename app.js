@@ -11802,7 +11802,7 @@
     html += '<div>';
     html += '<p class="editorial-eyebrow">Análises Aprofundadas · Motor V2</p>';
     html += '<h2>Colunas Editoriais</h2>';
-    html += '<p class="editorial-section-sub">Colunas editoriais geradas, revisadas e publicadas pela curadoria do Rodando o Mundo.</p>';
+    html += '<p class="editorial-section-sub">Colunas editoriais geradas, revisadas e publicadas pela curadoria do RoM.</p>';
     html += '</div>';
     html += '</div>';
     html += '<div id="radar-v2-colunas-wrap" class="entenda-v2-colunas-wrap" aria-live="polite"><p class="radar-loading">Carregando colunas editoriais...</p></div>';

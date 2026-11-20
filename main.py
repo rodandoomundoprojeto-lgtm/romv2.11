@@ -41,10 +41,12 @@ app.add_middleware(
         "http://localhost:8080",
         "http://127.0.0.1:5500",
         "http://127.0.0.1:8000",
+        "null",
     ],
     allow_credentials=True,
-    allow_methods=["GET", "POST", "PATCH", "DELETE", "OPTIONS"],
+    allow_methods=["*"],
     allow_headers=["*"],
+    allow_private_network=True,
 )
 
 app.include_router(router_v2)

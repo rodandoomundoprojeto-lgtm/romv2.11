@@ -9277,43 +9277,101 @@ button.support-link.topbar-more-btn:hover {
 /* 4. Pulso Visual Discreto e Temporário nos Países com Notícias Quentes */
 @keyframes hotCountryGlow {
   0%, 100% {
-    filter: brightness(1) drop-shadow(0 0 0px rgba(245, 158, 11, 0));
+    filter: drop-shadow(0 0 0px transparent);
     stroke-width: 0.9px;
   }
   50% {
-    filter: brightness(1.14) drop-shadow(0 0 5px rgba(245, 158, 11, 0.55));
-    stroke: #f59e0b;
-    stroke-width: 1.45px;
+    filter: drop-shadow(0 0 4px rgba(217, 119, 6, 0.45));
+    stroke: #d97706;
+    stroke-width: 1.35px;
   }
 }
+
+@keyframes hotCountryGlowDark {
+  0%, 100% {
+    filter: drop-shadow(0 0 0px transparent);
+    stroke-width: 0.9px;
+  }
+  50% {
+    filter: drop-shadow(0 0 6px rgba(245, 158, 11, 0.55));
+    stroke: #fbbf24;
+    stroke-width: 1.35px;
+  }
+}
+
 .country.hot-spot-marker:not(.active) {
-  stroke: rgba(245, 158, 11, 0.72);
+  stroke: rgba(217, 119, 6, 0.65);
   stroke-width: 1.05px;
 }
 .country.hot-spot-pulsing:not(.active) {
   animation: hotCountryGlow 2.6s ease-in-out 5;
 }
 
+[data-theme='dark'] .country.hot-spot-marker:not(.active) {
+  stroke: rgba(245, 158, 11, 0.72);
+}
+[data-theme='dark'] .country.hot-spot-pulsing:not(.active) {
+  animation: hotCountryGlowDark 2.6s ease-in-out 5;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) .country.hot-spot-marker:not(.active) {
+    stroke: rgba(245, 158, 11, 0.72);
+  }
+  :root:not([data-theme='light']) .country.hot-spot-pulsing:not(.active) {
+    animation: hotCountryGlowDark 2.6s ease-in-out 5;
+  }
+}
+
 /* 4.1 Pulso de Farol (Beacon) para País-Alvo Clicado no Mapa */
-@keyframes targetCountryBeacon {
+/* Tema Claro (Padrão): Âmbar nobre, sem flash branco, sem ofuscamento */
+@keyframes targetCountryBeaconLight {
   0%, 100% {
-    filter: brightness(1.06) drop-shadow(0 0 4px rgba(245, 158, 11, 0.75));
-    stroke: #f59e0b;
-    stroke-width: 2.2px;
+    filter: drop-shadow(0 0 2px rgba(217, 119, 6, 0.4));
+    stroke: #d97706;
+    stroke-width: 2px;
   }
   50% {
-    filter: brightness(1.32) drop-shadow(0 0 12px rgba(245, 158, 11, 0.98)) drop-shadow(0 0 24px rgba(217, 119, 6, 0.85));
-    stroke: #ffffff;
-    stroke-width: 3.4px;
+    filter: drop-shadow(0 0 6px rgba(217, 119, 6, 0.55)) drop-shadow(0 0 10px rgba(245, 158, 11, 0.25));
+    stroke: #f59e0b;
+    stroke-width: 2.8px;
+  }
+}
+
+/* Tema Escuro: Brilho neon dourado elegante, sem clarão estroboscópico branco */
+@keyframes targetCountryBeaconDark {
+  0%, 100% {
+    filter: drop-shadow(0 0 3px rgba(245, 158, 11, 0.5));
+    stroke: #f59e0b;
+    stroke-width: 2px;
+  }
+  50% {
+    filter: drop-shadow(0 0 9px rgba(245, 158, 11, 0.75)) drop-shadow(0 0 16px rgba(251, 191, 36, 0.35));
+    stroke: #fbbf24;
+    stroke-width: 2.8px;
   }
 }
 
 .country.target-pulsing,
 .island-marker.target-pulsing {
-  animation: targetCountryBeacon 1.8s ease-in-out infinite !important;
-  stroke: #f59e0b !important;
-  stroke-width: 2.8px !important;
+  animation: targetCountryBeaconLight 1.8s ease-in-out infinite !important;
+  stroke: #d97706 !important;
+  stroke-width: 2.2px !important;
   vector-effect: non-scaling-stroke;
+}
+
+[data-theme='dark'] .country.target-pulsing,
+[data-theme='dark'] .island-marker.target-pulsing {
+  animation: targetCountryBeaconDark 1.8s ease-in-out infinite !important;
+  stroke: #f59e0b !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) .country.target-pulsing,
+  :root:not([data-theme='light']) .island-marker.target-pulsing {
+    animation: targetCountryBeaconDark 1.8s ease-in-out infinite !important;
+    stroke: #f59e0b !important;
+  }
 }
 
 /* Destaque no item da lista de países quando for o alvo focado */

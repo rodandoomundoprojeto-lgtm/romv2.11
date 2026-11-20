@@ -1337,6 +1337,59 @@
         min-height: 44px;
       }
     }
+
+    .admin-table th.admin-col-check,
+    .admin-table td.admin-col-check {
+      width: 38px;
+      text-align: center;
+      padding-left: 0.65rem;
+      padding-right: 0.45rem;
+    }
+
+    .admin-bulk-check,
+    #check-all-nq,
+    #check-all-ev,
+    #check-all-col,
+    #check-all-radar {
+      width: 17px;
+      height: 17px;
+      cursor: pointer;
+      accent-color: var(--primary);
+      vertical-align: middle;
+    }
+
+    .admin-bulk-bar {
+      display: none;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      padding: 0.6rem 0.85rem;
+      margin-bottom: 0.65rem;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--primary);
+      background: var(--surface-offset);
+      background: color-mix(in srgb, var(--primary) 10%, var(--surface-2));
+    }
+
+    .admin-bulk-bar.show {
+      display: flex;
+    }
+
+    .admin-bulk-info {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      flex-wrap: wrap;
+      font-size: 0.84rem;
+    }
+
+    .admin-bulk-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      flex-wrap: wrap;
+    }
   </style>
 </head>
 
@@ -1527,10 +1580,24 @@
               </div>
             </div>
 
+            <div id="bulk-bar-nq" class="admin-bulk-bar" role="region" aria-label="Ações em lote — Notícias Quentes">
+              <div class="admin-bulk-info">
+                <span><strong id="bulk-count-nq">0</strong> selecionado(s)</span>
+                <button type="button" class="admin-btn admin-btn-sm" data-bulk-clear="nq">Limpar seleção</button>
+              </div>
+              <div class="admin-bulk-actions">
+                <button type="button" class="admin-btn admin-btn-sm admin-btn-primary" data-bulk-group="nq" data-bulk-action="ativar">Ativar</button>
+                <button type="button" class="admin-btn admin-btn-sm" data-bulk-group="nq" data-bulk-action="desativar">Desativar (Descartar)</button>
+                <button type="button" class="admin-btn admin-btn-sm" data-bulk-group="nq" data-bulk-action="arquivar">Arquivar</button>
+                <button type="button" class="admin-btn admin-btn-sm admin-btn-danger" data-bulk-group="nq" data-bulk-action="excluir">Excluir</button>
+              </div>
+            </div>
+
             <div class="admin-table-wrap admin-table-scroll">
               <table class="admin-table">
                 <thead>
                   <tr>
+                    <th class="admin-col-check"><input type="checkbox" id="check-all-nq" aria-label="Selecionar todas as notícias quentes visíveis" /></th>
                     <th>Notícia</th>
                     <th>Categoria</th>
                     <th>Urgência</th>
@@ -1541,7 +1608,7 @@
                 </thead>
                 <tbody id="tbody-noticias-quentes">
                   <tr>
-                    <td colspan="6" class="admin-sub">Nenhuma notícia quente carregada.</td>
+                    <td colspan="7" class="admin-sub">Nenhuma notícia quente carregada.</td>
                   </tr>
                 </tbody>
               </table>
@@ -1695,10 +1762,24 @@
               </div>
             </div>
 
+            <div id="bulk-bar-ev" class="admin-bulk-bar" role="region" aria-label="Ações em lote — Fila de Eventos">
+              <div class="admin-bulk-info">
+                <span><strong id="bulk-count-ev">0</strong> selecionado(s)</span>
+                <button type="button" class="admin-btn admin-btn-sm" data-bulk-clear="ev">Limpar seleção</button>
+              </div>
+              <div class="admin-bulk-actions">
+                <button type="button" class="admin-btn admin-btn-sm admin-btn-primary" data-bulk-group="ev" data-bulk-action="publicar">Publicar (Aprovar)</button>
+                <button type="button" class="admin-btn admin-btn-sm" data-bulk-group="ev" data-bulk-action="arquivar">Arquivar</button>
+                <button type="button" class="admin-btn admin-btn-sm" data-bulk-group="ev" data-bulk-action="restaurar">Restaurar</button>
+                <button type="button" class="admin-btn admin-btn-sm admin-btn-danger" data-bulk-group="ev" data-bulk-action="excluir">Excluir</button>
+              </div>
+            </div>
+
             <div class="admin-table-wrap admin-table-scroll">
               <table class="admin-table">
                 <thead>
                   <tr>
+                    <th class="admin-col-check"><input type="checkbox" id="check-all-ev" aria-label="Selecionar todos os eventos visíveis" /></th>
                     <th>Evento</th>
                     <th>Categoria</th>
                     <th>Confiança</th>
@@ -1709,7 +1790,7 @@
                 </thead>
                 <tbody id="tbody-eventos">
                   <tr>
-                    <td colspan="6" class="admin-sub">Nenhum evento na fila.</td>
+                    <td colspan="7" class="admin-sub">Nenhum evento na fila.</td>
                   </tr>
                 </tbody>
               </table>
@@ -1777,10 +1858,24 @@
               </div>
             </div>
 
+            <div id="bulk-bar-col" class="admin-bulk-bar" role="region" aria-label="Ações em lote — Colunas Editoriais">
+              <div class="admin-bulk-info">
+                <span><strong id="bulk-count-col">0</strong> selecionado(s)</span>
+                <button type="button" class="admin-btn admin-btn-sm" data-bulk-clear="col">Limpar seleção</button>
+              </div>
+              <div class="admin-bulk-actions">
+                <button type="button" class="admin-btn admin-btn-sm admin-btn-primary" data-bulk-group="col" data-bulk-action="aprovar">Aprovar</button>
+                <button type="button" class="admin-btn admin-btn-sm" style="background:#059669;border-color:#059669;color:#fff;" data-bulk-group="col" data-bulk-action="publicar">Publicar</button>
+                <button type="button" class="admin-btn admin-btn-sm admin-btn-danger" data-bulk-group="col" data-bulk-action="rejeitar">Rejeitar (Descartar)</button>
+                <button type="button" class="admin-btn admin-btn-sm admin-btn-danger" data-bulk-group="col" data-bulk-action="excluir">Excluir</button>
+              </div>
+            </div>
+
             <div class="admin-table-wrap admin-table-scroll">
               <table class="admin-table">
                 <thead>
                   <tr>
+                    <th class="admin-col-check"><input type="checkbox" id="check-all-col" aria-label="Selecionar todas as colunas visíveis" /></th>
                     <th>Título</th>
                     <th>Categoria</th>
                     <th>Nota IA</th>
@@ -1791,7 +1886,7 @@
                 </thead>
                 <tbody id="tbody-colunas">
                   <tr>
-                    <td colspan="6" class="admin-sub">Nenhuma coluna gerada.</td>
+                    <td colspan="7" class="admin-sub">Nenhuma coluna gerada.</td>
                   </tr>
                 </tbody>
               </table>
@@ -1870,10 +1965,23 @@
               </div>
             </div>
 
+            <div id="bulk-bar-radar" class="admin-bulk-bar" role="region" aria-label="Ações em lote — Radar Editorial">
+              <div class="admin-bulk-info">
+                <span><strong id="bulk-count-radar">0</strong> selecionado(s)</span>
+                <button type="button" class="admin-btn admin-btn-sm" data-bulk-clear="radar">Limpar seleção</button>
+              </div>
+              <div class="admin-bulk-actions">
+                <button type="button" class="admin-btn admin-btn-sm admin-btn-primary" data-bulk-group="radar" data-bulk-action="fixar">Fixar no topo</button>
+                <button type="button" class="admin-btn admin-btn-sm" data-bulk-group="radar" data-bulk-action="desafixar">Desafixar</button>
+                <button type="button" class="admin-btn admin-btn-sm admin-btn-danger" data-bulk-group="radar" data-bulk-action="excluir">Excluir</button>
+              </div>
+            </div>
+
             <div class="admin-table-wrap admin-table-scroll">
               <table class="admin-table">
                 <thead>
                   <tr>
+                    <th class="admin-col-check"><input type="checkbox" id="check-all-radar" aria-label="Selecionar todas as notícias do Radar visíveis" /></th>
                     <th>Notícia</th>
                     <th>Origem</th>
                     <th>Categoria</th>
@@ -1884,7 +1992,7 @@
                 </thead>
                 <tbody id="tbody-radar">
                   <tr>
-                    <td colspan="6" class="admin-sub">Nenhuma notícia do Radar carregada.</td>
+                    <td colspan="7" class="admin-sub">Nenhuma notícia do Radar carregada.</td>
                   </tr>
                 </tbody>
               </table>
@@ -2682,7 +2790,13 @@
         execucoes: [],
         autoPub: null,
         eventosAguardando: null,
-        carregadoEm: null
+        carregadoEm: null,
+        bulk: {
+          nq: new Set(),
+          ev: new Set(),
+          col: new Set(),
+          radar: new Set()
+        }
       };
 
       let toastTimer = null;
@@ -2710,6 +2824,198 @@
         el.className = 'admin-banner';
         el.textContent = '';
       }
+
+      const BULK_CONFIG = {
+        nq: {
+          tbodyId: 'tbody-noticias-quentes',
+          checkAllId: 'check-all-nq',
+          barId: 'bulk-bar-nq',
+          countId: 'bulk-count-nq',
+          bannerId: 'noticias-quentes-banner',
+          endpoint: '/v2/admin/noticias-quentes/lote',
+          payloadKey: 'slugs',
+          castKey: (v) => String(v),
+          reload: () => carregarNoticiasQuentes()
+        },
+        ev: {
+          tbodyId: 'tbody-eventos',
+          checkAllId: 'check-all-ev',
+          barId: 'bulk-bar-ev',
+          countId: 'bulk-count-ev',
+          bannerId: 'eventos-banner',
+          endpoint: '/v2/admin/eventos/lote',
+          payloadKey: 'ids',
+          castKey: (v) => Number(v),
+          reload: () => carregarEventos()
+        },
+        col: {
+          tbodyId: 'tbody-colunas',
+          checkAllId: 'check-all-col',
+          barId: 'bulk-bar-col',
+          countId: 'bulk-count-col',
+          bannerId: 'colunas-banner',
+          endpoint: '/v2/admin/colunas/lote',
+          payloadKey: 'slugs',
+          castKey: (v) => String(v),
+          reload: () => carregarColunas()
+        },
+        radar: {
+          tbodyId: 'tbody-radar',
+          checkAllId: 'check-all-radar',
+          barId: 'bulk-bar-radar',
+          countId: 'bulk-count-radar',
+          bannerId: 'radar-banner',
+          endpoint: '/v2/admin/radar/feed/lote',
+          payloadKey: 'slugs',
+          castKey: (v) => String(v),
+          reload: () => carregarRadar()
+        }
+      };
+
+      const BULK_DESTRUCTIVE_ACTIONS = new Set(['excluir', 'rejeitar', 'desativar']);
+
+      function sincronizarBulkUI(group, visibleKeys = null) {
+        const cfg = BULK_CONFIG[group];
+        if (!cfg || !state.bulk || !state.bulk[group]) return;
+        const sel = state.bulk[group];
+        if (visibleKeys !== null) {
+          const valid = new Set(visibleKeys.map((k) => String(k)));
+          Array.from(sel).forEach((k) => {
+            if (!valid.has(String(k))) sel.delete(k);
+          });
+        }
+
+        const countEl = $(cfg.countId);
+        if (countEl) countEl.textContent = String(sel.size);
+
+        const barEl = $(cfg.barId);
+        if (barEl) barEl.classList.toggle('show', sel.size > 0);
+
+        const tbody = $(cfg.tbodyId);
+        const checkAll = $(cfg.checkAllId);
+        if (!tbody || !checkAll) return;
+
+        const boxes = Array.from(tbody.querySelectorAll(`.admin-bulk-check[data-bulk-group="${group}"]`));
+        if (!boxes.length) {
+          checkAll.checked = false;
+          checkAll.indeterminate = false;
+          checkAll.disabled = true;
+          return;
+        }
+
+        let checkedCount = 0;
+        boxes.forEach((cb) => {
+          const isSel = sel.has(String(cb.value));
+          cb.checked = isSel;
+          if (isSel) checkedCount += 1;
+        });
+
+        checkAll.disabled = false;
+        checkAll.checked = checkedCount === boxes.length;
+        checkAll.indeterminate = checkedCount > 0 && checkedCount < boxes.length;
+      }
+
+      function limparSelecaoBulk(group) {
+        const cfg = BULK_CONFIG[group];
+        if (!cfg || !state.bulk[group]) return;
+        state.bulk[group].clear();
+        const tbody = $(cfg.tbodyId);
+        if (tbody) {
+          tbody.querySelectorAll(`.admin-bulk-check[data-bulk-group="${group}"]`).forEach((cb) => {
+            cb.checked = false;
+          });
+        }
+        sincronizarBulkUI(group);
+      }
+
+      async function executarAcaoBulk(group, acao) {
+        const cfg = BULK_CONFIG[group];
+        if (!cfg || !state.bulk[group]) return;
+        const keys = Array.from(state.bulk[group]).map((k) => cfg.castKey(k));
+        if (!keys.length) return;
+
+        if (BULK_DESTRUCTIVE_ACTIONS.has(acao)) {
+          const ok = window.confirm(`Confirma executar "${acao}" em ${keys.length} item(ns) selecionado(s)?`);
+          if (!ok) return;
+        }
+
+        const barEl = $(cfg.barId);
+        const buttons = barEl ? Array.from(barEl.querySelectorAll('button')) : [];
+        buttons.forEach((b) => { b.disabled = true; });
+        try {
+          const res = await apiFetch(cfg.endpoint, {
+            method: 'POST',
+            body: JSON.stringify({ [cfg.payloadKey]: keys, acao })
+          });
+          const totalProc = res && typeof res.processados === 'number' ? res.processados : keys.length;
+          state.bulk[group].clear();
+          await cfg.reload();
+          sincronizarBulkUI(group);
+          const msg = `Ação em lote "${acao}" concluída (${totalProc} item(ns) processado(s)).`;
+          showBanner(cfg.bannerId, msg, 'ok');
+          showToast(msg, 'ok');
+        } catch (err) {
+          const errMsg = 'Erro na ação em lote: ' + (err && err.message ? err.message : err);
+          showBanner(cfg.bannerId, errMsg, 'err');
+          showToast(errMsg, 'err');
+        } finally {
+          buttons.forEach((b) => { b.disabled = false; });
+        }
+      }
+
+      function inicializarBulkAcoes() {
+        Object.keys(BULK_CONFIG).forEach((group) => {
+          const cfg = BULK_CONFIG[group];
+          const checkAll = $(cfg.checkAllId);
+          const tbody = $(cfg.tbodyId);
+          const barEl = $(cfg.barId);
+
+          if (checkAll && tbody) {
+            checkAll.addEventListener('change', () => {
+              const boxes = tbody.querySelectorAll(`.admin-bulk-check[data-bulk-group="${group}"]`);
+              boxes.forEach((cb) => {
+                cb.checked = checkAll.checked;
+                if (checkAll.checked) {
+                  state.bulk[group].add(String(cb.value));
+                } else {
+                  state.bulk[group].delete(String(cb.value));
+                }
+              });
+              sincronizarBulkUI(group);
+            });
+          }
+
+          if (tbody) {
+            tbody.addEventListener('change', (e) => {
+              const target = e.target;
+              if (!target || !target.matches(`.admin-bulk-check[data-bulk-group="${group}"]`)) return;
+              if (target.checked) {
+                state.bulk[group].add(String(target.value));
+              } else {
+                state.bulk[group].delete(String(target.value));
+              }
+              sincronizarBulkUI(group);
+            });
+          }
+
+          if (barEl) {
+            barEl.addEventListener('click', (e) => {
+              const clearBtn = e.target.closest('[data-bulk-clear]');
+              if (clearBtn) {
+                limparSelecaoBulk(group);
+                return;
+              }
+              const actBtn = e.target.closest('[data-bulk-action]');
+              if (actBtn) {
+                executarAcaoBulk(group, actBtn.getAttribute('data-bulk-action'));
+              }
+            });
+          }
+
+          sincronizarBulkUI(group, []);
+        });
+      }
+      inicializarBulkAcoes();
 
       function escapeHtml(str) {
         return String(str ?? '')
@@ -3044,11 +3350,13 @@
         });
         atualizarResultadoFiltro('ev', lista.length, total);
         if (!total) {
-          tbody.innerHTML = '<tr><td colspan="6" class="admin-sub">Nenhum evento nesta categoria.</td></tr>';
+          tbody.innerHTML = '<tr><td colspan="7" class="admin-sub">Nenhum evento nesta categoria.</td></tr>';
+          sincronizarBulkUI('ev', []);
           return;
         }
         if (!lista.length) {
-          tbody.innerHTML = '<tr><td colspan="6" class="admin-sub">Nenhum evento corresponde aos filtros.</td></tr>';
+          tbody.innerHTML = '<tr><td colspan="7" class="admin-sub">Nenhum evento corresponde aos filtros.</td></tr>';
+          sincronizarBulkUI('ev', []);
           return;
         }
         tbody.innerHTML = lista.map((ev) => {
@@ -3059,8 +3367,11 @@
           const podeArquivar = ev.status !== 'arquivado' && ev.status !== 'excluido';
           const podeExcluir = ev.status !== 'excluido';
           const podeRestaurar = ev.status === 'excluido';
+          const evKey = String(ev.id);
+          const evChecked = state.bulk.ev.has(evKey) ? 'checked' : '';
           return `
             <tr>
+              <td class="admin-col-check"><input type="checkbox" class="admin-bulk-check" data-bulk-group="ev" data-bulk-key="${escapeHtml(evKey)}" value="${escapeHtml(evKey)}" ${evChecked} aria-label="Selecionar evento" /></td>
               <td>
                 <strong>${escapeHtml(ev.titulo_evento)}</strong>${ddgTag}${errataTag}
                 <div class="admin-sub"><code>/${escapeHtml(ev.slug)}</code></div>
@@ -3081,6 +3392,7 @@
             </tr>
           `;
         }).join('');
+        sincronizarBulkUI('ev', lista.map((ev) => String(ev.id)));
       }
 
       $('btn-recarregar-eventos').addEventListener('click', () => {
@@ -4132,7 +4444,8 @@
         atualizarResultadoFiltro('radar', lista.length, state.radar.length);
 
         if (!lista.length) {
-          tbody.innerHTML = `<tr><td colspan="6" class="admin-sub" style="text-align:center;padding:2rem;">${state.radar.length ? 'Nenhuma notícia corresponde aos filtros selecionados.' : 'Nenhuma notícia carregada no feed.'}</td></tr>`;
+          tbody.innerHTML = `<tr><td colspan="7" class="admin-sub" style="text-align:center;padding:2rem;">${state.radar.length ? 'Nenhuma notícia corresponde aos filtros selecionados.' : 'Nenhuma notícia carregada no feed.'}</td></tr>`;
+          sincronizarBulkUI('radar', []);
           return;
         }
 
@@ -4161,8 +4474,10 @@
 
           const resumoCurto = c.resumo ? `<div class="admin-sub" style="margin-top:3px;font-size:0.8rem;line-height:1.35;max-width:540px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;" title="${escapeHtml(c.resumo)}">${escapeHtml(c.resumo)}</div>` : '';
 
+          const radarChecked = state.bulk.radar.has(String(c.slug)) ? 'checked' : '';
           return `
             <tr>
+              <td class="admin-col-check"><input type="checkbox" class="admin-bulk-check" data-bulk-group="radar" data-bulk-key="${escapeHtml(c.slug)}" value="${escapeHtml(c.slug)}" ${radarChecked} aria-label="Selecionar notícia do Radar" /></td>
               <td>
                 <div style="font-weight:600;line-height:1.35;">${escapeHtml(c.titulo)}${linkExt}</div>
                 ${resumoCurto}
@@ -4188,6 +4503,7 @@
             </tr>
           `;
         }).join('');
+        sincronizarBulkUI('radar', lista.map((c) => String(c.slug)));
       }
 
       function abrirModalRadar() {
@@ -4388,15 +4704,18 @@
         });
         atualizarResultadoFiltro('nq', lista.length, todas.length);
         if (!todas.length) {
-          tbody.innerHTML = '<tr><td colspan="6" class="admin-sub">Nenhuma notícia quente encontrada.</td></tr>';
+          tbody.innerHTML = '<tr><td colspan="7" class="admin-sub">Nenhuma notícia quente encontrada.</td></tr>';
+          sincronizarBulkUI('nq', []);
           return;
         }
         if (!lista.length) {
-          tbody.innerHTML = '<tr><td colspan="6" class="admin-sub">Nenhuma notícia quente corresponde aos filtros.</td></tr>';
+          tbody.innerHTML = '<tr><td colspan="7" class="admin-sub">Nenhuma notícia quente corresponde aos filtros.</td></tr>';
+          sincronizarBulkUI('nq', []);
           return;
         }
         tbody.innerHTML = lista.map((n) => `
           <tr>
+            <td class="admin-col-check"><input type="checkbox" class="admin-bulk-check" data-bulk-group="nq" data-bulk-key="${escapeHtml(n.slug)}" value="${escapeHtml(n.slug)}" ${state.bulk.nq.has(String(n.slug)) ? 'checked' : ''} aria-label="Selecionar notícia quente" /></td>
             <td>
               <strong>${escapeHtml(n.titulo_curto)}</strong>
               <div class="admin-sub"><code>${escapeHtml(n.slug)}</code></div>
@@ -4414,6 +4733,7 @@
             </td>
           </tr>
         `).join('');
+        sincronizarBulkUI('nq', lista.map((n) => String(n.slug)));
       }
 
       async function carregarColunas() {
@@ -4531,15 +4851,18 @@
         const totalNaAba = fSt === 'all' ? todas.length : (fSt === 'pendentes' ? (counts.rascunho + counts.aprovado) : (counts[fSt] || 0));
         atualizarResultadoFiltro('col', lista.length, totalNaAba);
         if (!todas.length) {
-          tbody.innerHTML = '<tr><td colspan="6" class="admin-sub">Nenhuma coluna gerada.</td></tr>';
+          tbody.innerHTML = '<tr><td colspan="7" class="admin-sub">Nenhuma coluna gerada.</td></tr>';
+          sincronizarBulkUI('col', []);
           return;
         }
         if (!lista.length) {
-          tbody.innerHTML = `<tr><td colspan="6" class="admin-sub">${filtroAtivo('col') ? 'Nenhuma coluna corresponde aos filtros.' : 'Nenhuma coluna nesta aba.'}</td></tr>`;
+          tbody.innerHTML = `<tr><td colspan="7" class="admin-sub">${filtroAtivo('col') ? 'Nenhuma coluna corresponde aos filtros.' : 'Nenhuma coluna nesta aba.'}</td></tr>`;
+          sincronizarBulkUI('col', []);
           return;
         }
         tbody.innerHTML = lista.map((c) => `
           <tr>
+            <td class="admin-col-check"><input type="checkbox" class="admin-bulk-check" data-bulk-group="col" data-bulk-key="${escapeHtml(c.slug)}" value="${escapeHtml(c.slug)}" ${state.bulk.col.has(String(c.slug)) ? 'checked' : ''} aria-label="Selecionar coluna editorial" /></td>
             <td>
               <strong>${escapeHtml(c.titulo)}</strong>
               <div class="admin-sub"><code>/entenda/${escapeHtml(String(c.slug || '').replace(/^entenda-/, ''))}</code></div>
@@ -4559,6 +4882,7 @@
             </td>
           </tr>
         `).join('');
+        sincronizarBulkUI('col', lista.map((c) => String(c.slug)));
       }
 
       async function abrirModalColunaPreview(c) {
