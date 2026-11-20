@@ -1549,6 +1549,10 @@
                 <input id="nq-busca" class="admin-input" type="search" placeholder="Título, slug, país, palavra-chave..." />
               </div>
               <div class="admin-field">
+                <label for="nq-filtro-pais">País</label>
+                <select id="nq-filtro-pais" class="admin-select"><option value="all">Todos</option></select>
+              </div>
+              <div class="admin-field">
                 <label for="nq-filtro-status">Status</label>
                 <select id="nq-filtro-status" class="admin-select"><option value="all">Todos</option></select>
               </div>
@@ -1599,6 +1603,7 @@
                   <tr>
                     <th class="admin-col-check"><input type="checkbox" id="check-all-nq" aria-label="Selecionar todas as notícias quentes visíveis" /></th>
                     <th>Notícia</th>
+                    <th>País(es)</th>
                     <th>Categoria</th>
                     <th>Urgência</th>
                     <th>Status</th>
@@ -1608,7 +1613,7 @@
                 </thead>
                 <tbody id="tbody-noticias-quentes">
                   <tr>
-                    <td colspan="7" class="admin-sub">Nenhuma notícia quente carregada.</td>
+                    <td colspan="8" class="admin-sub">Nenhuma notícia quente carregada.</td>
                   </tr>
                 </tbody>
               </table>
@@ -2120,10 +2125,24 @@
               </div>
             </div>
 
+            <div id="bulk-bar-entenda" class="admin-bulk-bar" role="region" aria-label="Ações em lote — Entenda o assunto">
+              <div class="admin-bulk-info">
+                <span><strong id="bulk-count-entenda">0</strong> selecionado(s)</span>
+                <button type="button" class="admin-btn admin-btn-sm" data-bulk-clear="entenda">Limpar seleção</button>
+              </div>
+              <div class="admin-bulk-actions">
+                <button type="button" class="admin-btn admin-btn-sm" style="background:#059669;border-color:#059669;color:#fff;" data-bulk-group="entenda" data-bulk-action="publicar">Publicar em /entenda</button>
+                <button type="button" class="admin-btn admin-btn-sm" data-bulk-group="entenda" data-bulk-action="rascunho">Despublicar</button>
+                <button type="button" class="admin-btn admin-btn-sm admin-btn-danger" data-bulk-group="entenda" data-bulk-action="rejeitar">Rejeitar</button>
+                <button type="button" class="admin-btn admin-btn-sm admin-btn-danger" data-bulk-group="entenda" data-bulk-action="excluir">Excluir</button>
+              </div>
+            </div>
+
             <div class="admin-table-wrap admin-table-scroll">
               <table class="admin-table">
                 <thead>
                   <tr>
+                    <th class="admin-col-check"><input type="checkbox" id="check-all-entenda" aria-label="Selecionar todos os artigos visíveis de Entenda o assunto" /></th>
                     <th>Artigo / Rota</th>
                     <th>Categoria</th>
                     <th>Nota IA</th>
@@ -2134,7 +2153,7 @@
                 </thead>
                 <tbody id="tbody-entenda-artigos">
                   <tr>
-                    <td colspan="6" class="admin-sub">Nenhum artigo gerado.</td>
+                    <td colspan="7" class="admin-sub">Nenhum artigo gerado.</td>
                   </tr>
                 </tbody>
               </table>
@@ -2638,9 +2657,47 @@
           <input id="nq-destaque-ate" class="admin-input" type="datetime-local" />
         </div>
 
-        <div class="admin-field full-span">
-          <label for="nq-paises">Países (códigos ISO separados por vírgula)</label>
-          <input id="nq-paises" class="admin-input" type="text" placeholder="Ex: BR, US" />
+        <div class="admin-field full-span" style="background:var(--surface-2);padding:14px;border-radius:var(--radius-md);border:1px solid var(--border);">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+            <label style="font-weight:600;font-size:0.88rem;margin:0;">País(es) Envolvido(s)</label>
+            <span class="admin-sub" style="font-size:0.75rem;">Selecione 1 ou múltiplos países</span>
+          </div>
+
+          <!-- Tags dos países já selecionados -->
+          <div id="nq-paises-chips" style="display:flex;gap:6px;flex-wrap:wrap;min-height:36px;align-items:center;margin-bottom:10px;padding:6px;background:var(--surface);border-radius:var(--radius-sm);border:1px dashed var(--border);">
+            <!-- preenchido dinamicamente via JS -->
+          </div>
+
+          <!-- Controles de adição -->
+          <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+            <div style="flex:1;min-width:200px;">
+              <select id="nq-select-pais-catalogo" class="admin-select" style="width:100%;">
+                <option value="">+ Selecionar país da lista...</option>
+              </select>
+            </div>
+            <div style="display:flex;gap:4px;align-items:center;">
+              <input id="nq-input-pais-manual" class="admin-input" type="text" maxlength="2" placeholder="Sigla ISO (ex: DE)" style="width:130px;text-transform:uppercase;" />
+              <button id="btn-nq-adicionar-pais" class="admin-btn admin-btn-sm" type="button">+ Adicionar</button>
+            </div>
+          </div>
+
+          <!-- Sugestões rápidas de 1 clique -->
+          <div style="margin-top:10px;display:flex;gap:5px;flex-wrap:wrap;align-items:center;">
+            <span class="admin-sub" style="font-size:0.75rem;margin-right:2px;">Atalhos rápidos:</span>
+            <button type="button" class="admin-btn admin-btn-sm btn-pais-rapido" data-iso="BR" style="font-size:0.75rem;padding:2px 8px;">🇧🇷 Brasil</button>
+            <button type="button" class="admin-btn admin-btn-sm btn-pais-rapido" data-iso="US" style="font-size:0.75rem;padding:2px 8px;">🇺🇸 EUA</button>
+            <button type="button" class="admin-btn admin-btn-sm btn-pais-rapido" data-iso="UA" style="font-size:0.75rem;padding:2px 8px;">🇺🇦 Ucrânia</button>
+            <button type="button" class="admin-btn admin-btn-sm btn-pais-rapido" data-iso="RU" style="font-size:0.75rem;padding:2px 8px;">🇷🇺 Rússia</button>
+            <button type="button" class="admin-btn admin-btn-sm btn-pais-rapido" data-iso="CN" style="font-size:0.75rem;padding:2px 8px;">🇨🇳 China</button>
+            <button type="button" class="admin-btn admin-btn-sm btn-pais-rapido" data-iso="IL" style="font-size:0.75rem;padding:2px 8px;">🇮🇱 Israel</button>
+            <button type="button" class="admin-btn admin-btn-sm btn-pais-rapido" data-iso="IR" style="font-size:0.75rem;padding:2px 8px;">🇮🇷 Irã</button>
+            <button type="button" class="admin-btn admin-btn-sm btn-pais-rapido" data-iso="AR" style="font-size:0.75rem;padding:2px 8px;">🇦🇷 Argentina</button>
+            <button type="button" class="admin-btn admin-btn-sm btn-pais-rapido" data-iso="GB" style="font-size:0.75rem;padding:2px 8px;">🇬🇧 Reino Unido</button>
+            <button type="button" class="admin-btn admin-btn-sm btn-pais-rapido" data-iso="FR" style="font-size:0.75rem;padding:2px 8px;">🇫🇷 França</button>
+          </div>
+
+          <!-- Input oculto para manter sincronização -->
+          <input id="nq-paises" type="hidden" value="" />
         </div>
       </div>
 
@@ -2795,6 +2852,7 @@
           nq: new Set(),
           ev: new Set(),
           col: new Set(),
+          entenda: new Set(),
           radar: new Set()
         }
       };
@@ -2854,6 +2912,17 @@
           barId: 'bulk-bar-col',
           countId: 'bulk-count-col',
           bannerId: 'colunas-banner',
+          endpoint: '/v2/admin/colunas/lote',
+          payloadKey: 'slugs',
+          castKey: (v) => String(v),
+          reload: () => carregarColunas()
+        },
+        entenda: {
+          tbodyId: 'tbody-entenda-artigos',
+          checkAllId: 'check-all-entenda',
+          barId: 'bulk-bar-entenda',
+          countId: 'bulk-count-entenda',
+          bannerId: 'entenda-banner',
           endpoint: '/v2/admin/colunas/lote',
           payloadKey: 'slugs',
           castKey: (v) => String(v),
@@ -4691,6 +4760,146 @@
         }
       });
 
+      // ============================ CATÁLOGO E HELPERS DE PAÍSES ============================
+      const LISTA_PAISES_ROM = [
+        { a2: 'BR', nome: 'Brasil', flag: '🇧🇷' },
+        { a2: 'US', nome: 'Estados Unidos', flag: '🇺🇸' },
+        { a2: 'RU', nome: 'Rússia', flag: '🇷🇺' },
+        { a2: 'UA', nome: 'Ucrânia', flag: '🇺🇦' },
+        { a2: 'CN', nome: 'China', flag: '🇨🇳' },
+        { a2: 'IL', nome: 'Israel', flag: '🇮🇱' },
+        { a2: 'IR', nome: 'Irã', flag: '🇮🇷' },
+        { a2: 'PS', nome: 'Palestina', flag: '🇵🇸' },
+        { a2: 'AR', nome: 'Argentina', flag: '🇦🇷' },
+        { a2: 'GB', nome: 'Reino Unido', flag: '🇬🇧' },
+        { a2: 'FR', nome: 'França', flag: '🇫🇷' },
+        { a2: 'DE', nome: 'Alemanha', flag: '🇩🇪' },
+        { a2: 'PT', nome: 'Portugal', flag: '🇵🇹' },
+        { a2: 'ES', nome: 'Espanha', flag: '🇪🇸' },
+        { a2: 'IT', nome: 'Itália', flag: '🇮🇹' },
+        { a2: 'JP', nome: 'Japão', flag: '🇯🇵' },
+        { a2: 'IN', nome: 'Índia', flag: '🇮🇳' },
+        { a2: 'MX', nome: 'México', flag: '🇲🇽' },
+        { a2: 'CA', nome: 'Canadá', flag: '🇨🇦' },
+        { a2: 'ZA', nome: 'África do Sul', flag: '🇿🇦' },
+        { a2: 'CO', nome: 'Colômbia', flag: '🇨🇴' },
+        { a2: 'CL', nome: 'Chile', flag: '🇨🇱' },
+        { a2: 'VE', nome: 'Venezuela', flag: '🇻🇪' },
+        { a2: 'CU', nome: 'Cuba', flag: '🇨🇺' },
+        { a2: 'TR', nome: 'Turquia', flag: '🇹🇷' },
+        { a2: 'SY', nome: 'Síria', flag: '🇸🇾' },
+        { a2: 'LB', nome: 'Líbano', flag: '🇱🇧' },
+        { a2: 'SA', nome: 'Arábia Saudita', flag: '🇸🇦' },
+        { a2: 'EG', nome: 'Egito', flag: '🇪🇬' },
+        { a2: 'ID', nome: 'Indonésia', flag: '🇮🇩' },
+        { a2: 'SG', nome: 'Cingapura', flag: '🇸🇬' },
+        { a2: 'TH', nome: 'Tailândia', flag: '🇹🇭' },
+        { a2: 'KR', nome: 'Coreia do Sul', flag: '🇰🇷' },
+        { a2: 'KP', nome: 'Coreia do Norte', flag: '🇰🇵' },
+        { a2: 'AU', nome: 'Austrália', flag: '🇦🇺' },
+        { a2: 'NZ', nome: 'Nova Zelândia', flag: '🇳🇿' },
+        { a2: 'PL', nome: 'Polônia', flag: '🇵🇱' },
+        { a2: 'NL', nome: 'Holanda', flag: '🇳🇱' },
+        { a2: 'BE', nome: 'Bélgica', flag: '🇧🇪' },
+        { a2: 'CH', nome: 'Suíça', flag: '🇨🇭' },
+        { a2: 'SE', nome: 'Suécia', flag: '🇸🇪' },
+        { a2: 'NO', nome: 'Noruega', flag: '🇳🇴' },
+        { a2: 'FI', nome: 'Finlândia', flag: '🇫🇮' },
+        { a2: 'DK', nome: 'Dinamarca', flag: '🇩🇰' },
+        { a2: 'GR', nome: 'Grécia', flag: '🇬🇷' },
+        { a2: 'AT', nome: 'Áustria', flag: '🇦🇹' },
+        { a2: 'IE', nome: 'Irlanda', flag: '🇮🇪' },
+        { a2: 'UY', nome: 'Uruguai', flag: '🇺🇾' },
+        { a2: 'PY', nome: 'Paraguai', flag: '🇵🇾' },
+        { a2: 'PE', nome: 'Peru', flag: '🇵🇪' },
+        { a2: 'BO', nome: 'Bolívia', flag: '🇧🇴' },
+        { a2: 'EC', nome: 'Equador', flag: '🇪🇨' },
+        { a2: 'CV', nome: 'Cabo Verde', flag: '🇨🇻' }
+      ];
+
+      function obterBandeiraPais(code) {
+        if (!code) return '🌐';
+        const c = String(code).toUpperCase().trim();
+        const achado = LISTA_PAISES_ROM.find((p) => p.a2 === c);
+        if (achado && achado.flag) return achado.flag;
+        if (c.length === 2 && /^[A-Z]{2}$/.test(c)) {
+          return String.fromCodePoint(...c.split('').map((ch) => 127397 + ch.charCodeAt(0)));
+        }
+        return '🌐';
+      }
+
+      function obterNomePais(code) {
+        if (!code) return 'Global';
+        const c = String(code).toUpperCase().trim();
+        const achado = LISTA_PAISES_ROM.find((p) => p.a2 === c);
+        return achado ? achado.nome : c;
+      }
+
+      function renderBadgesPaises(paises) {
+        const arr = Array.isArray(paises) ? paises.filter(Boolean) : (paises ? [paises] : []);
+        if (!arr.length) {
+          return '<span class="badge" style="opacity:0.55;font-size:0.75rem;">Global</span>';
+        }
+        return `
+          <div style="display:flex;gap:4px;flex-wrap:wrap;align-items:center;">
+            ${arr.map((p) => {
+              const code = String(p).toUpperCase().trim();
+              const flag = obterBandeiraPais(code);
+              const nome = obterNomePais(code);
+              return `
+                <span class="badge" title="${escapeHtml(nome)} (${escapeHtml(code)})" style="display:inline-flex;align-items:center;gap:3px;font-size:0.75rem;padding:0.18rem 0.45rem;border:1px solid var(--border);">
+                  <span aria-hidden="true">${flag}</span>
+                  <strong>${escapeHtml(code)}</strong>
+                </span>
+              `;
+            }).join('')}
+          </div>
+        `;
+      }
+
+      let modalPaisesSelecionados = [];
+
+      function popularCatalogoPaisesModal() {
+        const sel = $('nq-select-pais-catalogo');
+        if (!sel || sel.children.length > 1) return;
+        const sorted = [...LISTA_PAISES_ROM].sort((a, b) => a.nome.localeCompare(b.nome, 'pt-BR'));
+        sel.innerHTML = '<option value="">+ Selecionar país da lista...</option>' +
+          sorted.map((p) => `<option value="${escapeHtml(p.a2)}">${p.flag} ${escapeHtml(p.nome)} (${escapeHtml(p.a2)})</option>`).join('');
+      }
+
+      function atualizarChipsPaisesModal() {
+        const container = $('nq-paises-chips');
+        const hiddenInput = $('nq-paises');
+        if (!container) return;
+        if (hiddenInput) hiddenInput.value = modalPaisesSelecionados.join(', ');
+        if (!modalPaisesSelecionados.length) {
+          container.innerHTML = '<span class="admin-sub" style="font-size:0.78rem;padding:3px 6px;font-style:italic;">Nenhum país selecionado (notícia sem vínculo nacional específico). Escolha na lista abaixo ou clique nos atalhos.</span>';
+          return;
+        }
+        container.innerHTML = modalPaisesSelecionados.map((p) => `
+          <span class="badge badge-ok" style="display:inline-flex;align-items:center;gap:6px;padding:3px 8px;font-size:0.8rem;font-weight:600;border:1px solid currentColor;">
+            <span aria-hidden="true">${obterBandeiraPais(p)}</span>
+            <span>${escapeHtml(obterNomePais(p))} (${escapeHtml(p)})</span>
+            <button type="button" data-remover-pais="${escapeHtml(p)}" style="background:none;border:none;color:inherit;cursor:pointer;font-weight:bold;padding:0 3px;line-height:1;font-size:0.95rem;" aria-label="Remover ${escapeHtml(p)}">×</button>
+          </span>
+        `).join('');
+      }
+
+      function adicionarPaisModal(code) {
+        const c = String(code || '').trim().toUpperCase();
+        if (!c || c.length !== 2) return;
+        if (!modalPaisesSelecionados.includes(c)) {
+          modalPaisesSelecionados.push(c);
+          atualizarChipsPaisesModal();
+        }
+      }
+
+      function removerPaisModal(code) {
+        const c = String(code || '').trim().toUpperCase();
+        modalPaisesSelecionados = modalPaisesSelecionados.filter((p) => p !== c);
+        atualizarChipsPaisesModal();
+      }
+
       // ============================ NOTÍCIAS QUENTES ============================
       async function carregarNoticiasQuentes() {
         const data = await apiFetch('/v2/admin/noticias-quentes?limit=50');
@@ -4702,15 +4911,40 @@
         agendarResumo();
         const tbody = $('tbody-noticias-quentes');
         const todas = state.noticiasQuentes || [];
+        popularCatalogoPaisesModal();
+
+        // Extrai países únicos presentes nas notícias quentes para o filtro
+        const todosPaises = [];
+        todas.forEach((n) => {
+          if (Array.isArray(n.paises_envolvidos)) {
+            n.paises_envolvidos.forEach((p) => {
+              const code = String(p || '').toUpperCase().trim();
+              if (code && !todosPaises.includes(code)) todosPaises.push(code);
+            });
+          }
+        });
+        const selPais = $('nq-filtro-pais');
+        if (selPais) {
+          const valAtual = selPais.value || 'all';
+          const ordenados = todosPaises.sort((a, b) => obterNomePais(a).localeCompare(obterNomePais(b), 'pt-BR'));
+          selPais.innerHTML = '<option value="all">Todos os Países</option>' +
+            ordenados.map((p) => `<option value="${escapeHtml(p)}">${obterBandeiraPais(p)} ${escapeHtml(obterNomePais(p))} (${escapeHtml(p)})</option>`).join('');
+          selPais.value = (ordenados.includes(valAtual) || valAtual === 'all') ? valAtual : 'all';
+        }
+
         preencherSelect('nq-filtro-status', todas.map((n) => n.status), 'Todos');
         preencherSelect('nq-filtro-categoria', todas.map((n) => n.categoria), 'Todas');
         const q = $('nq-busca') ? $('nq-busca').value : '';
+        const fPais = valorFiltro('nq-filtro-pais');
         const fSt = valorFiltro('nq-filtro-status');
         const fCat = valorFiltro('nq-filtro-categoria');
         const fUrg = valorFiltro('nq-urgencia');
         const fPer = valorFiltro('nq-periodo');
         const escala = escalaUrgencia(todas);
         const lista = todas.filter((n) => {
+          if (fPais !== 'all') {
+            if (!Array.isArray(n.paises_envolvidos) || !n.paises_envolvidos.includes(fPais)) return false;
+          }
           if (fSt !== 'all' && String(n.status || '') !== fSt) return false;
           if (fCat !== 'all' && String(n.categoria || '') !== fCat) return false;
           if (fUrg !== 'all' && nivelUrgencia(n.urgencia_score, escala) !== fUrg) return false;
@@ -4719,12 +4953,12 @@
         });
         atualizarResultadoFiltro('nq', lista.length, todas.length);
         if (!todas.length) {
-          tbody.innerHTML = '<tr><td colspan="7" class="admin-sub">Nenhuma notícia quente encontrada.</td></tr>';
+          tbody.innerHTML = '<tr><td colspan="8" class="admin-sub">Nenhuma notícia quente encontrada.</td></tr>';
           sincronizarBulkUI('nq', []);
           return;
         }
         if (!lista.length) {
-          tbody.innerHTML = '<tr><td colspan="7" class="admin-sub">Nenhuma notícia quente corresponde aos filtros.</td></tr>';
+          tbody.innerHTML = '<tr><td colspan="8" class="admin-sub">Nenhuma notícia quente corresponde aos filtros.</td></tr>';
           sincronizarBulkUI('nq', []);
           return;
         }
@@ -4735,6 +4969,7 @@
               <strong>${escapeHtml(n.titulo_curto)}</strong>
               <div class="admin-sub"><code>${escapeHtml(n.slug)}</code></div>
             </td>
+            <td>${renderBadgesPaises(n.paises_envolvidos)}</td>
             <td>${escapeHtml(n.categoria || '—')}</td>
             <td><span class="badge ${nivelUrgencia(n.urgencia_score, escala) === 'alta' ? 'badge-warn' : ''}">${escapeHtml(n.urgencia_score ?? 0)}</span></td>
             <td><span class="badge ${n.status === 'publicado' || n.status === 'ativo' ? 'badge-ok' : 'badge-warn'}">${escapeHtml(n.status || '—')}</span></td>
@@ -4780,7 +5015,8 @@
         if (!tbodyEnt) return;
         const lista = Array.isArray(todas) ? todas : [];
         if (!lista.length) {
-          tbodyEnt.innerHTML = '<tr><td colspan="6" class="admin-sub">Nenhum artigo gerado.</td></tr>';
+          tbodyEnt.innerHTML = '<tr><td colspan="7" class="admin-sub">Nenhum artigo gerado.</td></tr>';
+          sincronizarBulkUI('entenda', []);
           return;
         }
         tbodyEnt.innerHTML = lista.map((c) => {
@@ -4793,6 +5029,7 @@
           const tituloExibido = c.entenda_titulo || c.titulo || slugClean;
           return `
             <tr>
+              <td class="admin-col-check"><input type="checkbox" class="admin-bulk-check" data-bulk-group="entenda" data-bulk-key="${escapeHtml(c.slug)}" value="${escapeHtml(c.slug)}" aria-label="Selecionar artigo ${escapeHtml(tituloExibido)}" ${state.bulk && state.bulk.entenda && state.bulk.entenda.has(String(c.slug)) ? 'checked' : ''} /></td>
               <td>
                 <strong>${escapeHtml(tituloExibido)}</strong>
                 <div class="admin-sub">${linkPublico}</div>
@@ -4812,6 +5049,7 @@
             </tr>
           `;
         }).join('');
+        sincronizarBulkUI('entenda', lista.map((c) => String(c.slug)));
       }
 
       function ativarAbaColuna(status) {
@@ -5073,7 +5311,9 @@
         $('nq-status').value = 'aguardando_revisao';
         $('nq-slug').value = '';
         $('nq-destaque-ate').value = '';
-        $('nq-paises').value = '';
+        popularCatalogoPaisesModal();
+        modalPaisesSelecionados = ['BR'];
+        atualizarChipsPaisesModal();
         hideBanner('modal-noticias-quente-banner');
         $('modal-noticias-quente').classList.add('open');
       });
@@ -5103,7 +5343,9 @@
           $('nq-status').value = n.status || 'aguardando_revisao';
           $('nq-slug').value = n.slug || '';
           $('nq-destaque-ate').value = n.destaque_ate ? String(n.destaque_ate).slice(0, 16) : '';
-          $('nq-paises').value = Array.isArray(n.paises_envolvidos) ? n.paises_envolvidos.join(', ') : '';
+          popularCatalogoPaisesModal();
+          modalPaisesSelecionados = Array.isArray(n.paises_envolvidos) && n.paises_envolvidos.length ? [...n.paises_envolvidos] : [];
+          atualizarChipsPaisesModal();
           hideBanner('modal-noticias-quente-banner');
           $('modal-noticias-quente').classList.add('open');
           return;
@@ -5151,7 +5393,7 @@
         const horas = Number($('nq-horas-destaque').value) || 6;
         const status = $('nq-status').value;
         const destaqueAte = $('nq-destaque-ate').value;
-        const paises = ($('nq-paises').value || '').split(',').map((p) => p.trim().toUpperCase()).filter(Boolean);
+        const paises = [...modalPaisesSelecionados];
 
         if (tituloCurto) body.titulo_curto = tituloCurto;
         if (resumoPulso) body.resumo_pulso = resumoPulso;
@@ -5164,7 +5406,7 @@
         body.horas_em_destaque = horas;
         body.status = status;
         if (destaqueAte) body.destaque_ate = new Date(destaqueAte).toISOString();
-        if (paises.length) body.paises_envolvidos = paises;
+        body.paises_envolvidos = paises;
 
         try {
           await apiFetch(`/v2/admin/noticias-quentes/${encodeURIComponent(slug)}`, { method: 'PATCH', body: JSON.stringify(body) });
@@ -5194,6 +5436,53 @@
 
       $('btn-fechar-modal-noticia-quente').addEventListener('click', fecharModalNoticiaQuente);
       $('btn-cancelar-modal-noticia-quente').addEventListener('click', fecharModalNoticiaQuente);
+
+      // Eventos do seletor múltiplo de países do modal de notícias quentes
+      const nqPaisesChips = $('nq-paises-chips');
+      if (nqPaisesChips) {
+        nqPaisesChips.addEventListener('click', (e) => {
+          const btn = e.target.closest('button[data-remover-pais]');
+          if (btn) {
+            e.preventDefault();
+            removerPaisModal(btn.getAttribute('data-remover-pais'));
+          }
+        });
+      }
+
+      const nqSelPaisCat = $('nq-select-pais-catalogo');
+      if (nqSelPaisCat) {
+        nqSelPaisCat.addEventListener('change', () => {
+          if (nqSelPaisCat.value) {
+            adicionarPaisModal(nqSelPaisCat.value);
+            nqSelPaisCat.value = '';
+          }
+        });
+      }
+
+      const btnNqAddPais = $('btn-nq-adicionar-pais');
+      const inputNqManual = $('nq-input-pais-manual');
+      if (btnNqAddPais && inputNqManual) {
+        btnNqAddPais.addEventListener('click', () => {
+          const val = inputNqManual.value.trim().toUpperCase();
+          if (val) {
+            adicionarPaisModal(val);
+            inputNqManual.value = '';
+          }
+        });
+        inputNqManual.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter') {
+            e.preventDefault();
+            btnNqAddPais.click();
+          }
+        });
+      }
+
+      document.querySelectorAll('.btn-pais-rapido').forEach((b) => {
+        b.addEventListener('click', () => {
+          const iso = b.getAttribute('data-iso');
+          if (iso) adicionarPaisModal(iso);
+        });
+      });
 
       // ============================ COLLAPSIBLE ============================
       // Estado salvo em localStorage (rom_admin_acc_<sectionId>) tem prioridade.
@@ -5335,7 +5624,7 @@
       }
 
       const FILTROS = {
-        nq: { campos: ['nq-busca', 'nq-filtro-status', 'nq-filtro-categoria', 'nq-urgencia', 'nq-periodo'], render: () => renderNoticiasQuentes() },
+        nq: { campos: ['nq-busca', 'nq-filtro-pais', 'nq-filtro-status', 'nq-filtro-categoria', 'nq-urgencia', 'nq-periodo'], render: () => renderNoticiasQuentes() },
         ev: { campos: ['ev-busca', 'ev-categoria', 'ev-confianca', 'ev-periodo'], render: () => renderEventos() },
         col: { campos: ['col-busca', 'col-categoria', 'col-periodo'], render: () => renderColunas() },
         radar: { campos: ['radar-busca', 'radar-filtro', 'radar-urgencia', 'radar-periodo'], render: () => renderRadar() }

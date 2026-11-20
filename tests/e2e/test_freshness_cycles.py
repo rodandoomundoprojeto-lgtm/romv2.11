@@ -678,6 +678,17 @@ def isolated_env(tmp_path: Path, monkeypatch: pytest.MonkeyPatch):
     monkeypatch.setenv("GEMINI_API_KEY", "test-gemini-key")
     monkeypatch.setenv("CURADORIA_SECRET_TOKEN", "test-secret-token")
     monkeypatch.setenv("CURADORIA_BACKEND_URL", "https://api.rodandoomundo.com.br")
+    monkeypatch.setenv("ROM_DISABLE_NOTIFICATIONS", "1")
+    for env_notif in (
+        "DISCORD_WEBHOOK_URL",
+        "DISCORD_WEBHOOK_RADAR",
+        "DISCORD_WEBHOOK_EDITORIAL",
+        "DISCORD_WEBHOOK_CRITICO",
+        "DISCORD_WEBHOOK_MANUTENCAO",
+        "TELEGRAM_BOT_TOKEN",
+        "TELEGRAM_CHAT_ID",
+    ):
+        monkeypatch.delenv(env_notif, raising=False)
 
     def fake_connect(*args: Any, **kwargs: Any) -> FakePgConnection:
         if db.fail_connect:

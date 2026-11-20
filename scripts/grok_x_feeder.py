@@ -90,8 +90,8 @@ DIRETRIZES EDITORIAIS OBRIGATÓRIAS:
    - "relevancia": número inteiro de 1 a 10 (1 = manchete mais importante do dia)
    - "categoria": rótulo curto (ex: "Brasil · Política & Fiscal", "Geopolítica & EUA", "Economia Global", "Europa & Diplomacia", "Tecnologia & IA", "Oriente Médio")
    - "titulo": manchete jornalística informativa (60 a 120 caracteres)
-   - "resumo": contextualização completa em 1 ou 2 frases explicando o fato e seus impactos (140 a 260 caracteres)
-   - "analise": 1 frase concisa explicando o impacto editorial, geopolítico ou econômico ("Por que importa", 100 a 220 caracteres) para o card do Radar
+   - "resumo": síntese factual completa e explicativa em 2 a 3 frases (180 a 340 caracteres), detalhando exatamente o que aconteceu, quem está envolvido, onde e o contexto imediato
+   - "analise": análise explicativa em 2 frases densas (180 a 320 caracteres) detalhando por que o fato importa ("Por que importa"), seus impactos práticos, geopolíticos ou econômicos e possíveis desdobramentos
    - "fonte": nome do veículo ou perfil oficial no X (ex: "Reuters / @Reuters", "Folha de S.Paulo", "Associated Press", "g1 Economia")
    - "handleX": arroba da fonte no X (ex: "@Reuters", "@folha", "@AP")
    - "dominio": domínio principal do veículo (ex: "reuters.com", "folha.uol.com.br", "apnews.com", "g1.globo.com")
@@ -455,8 +455,8 @@ def call_groq_rss_api(api_key, config):
         + "- relevancia (1 a 10)\n"
         + "- categoria (ex: 'Brasil · Política', 'Economia Global', 'Geopolítica')\n"
         + "- titulo (manchete informativa concisa)\n"
-        + "- resumo (contexto em 1-2 frases)\n"
-        + "- analise (por que esse fato importa no cenário atual)\n"
+        + "- resumo (síntese factual completa em 2 a 3 frases, 180 a 340 caracteres, explicando quem, o quê, onde e o contexto do acontecimento)\n"
+        + "- analise (explicação densa em 2 frases, 180 a 320 caracteres, detalhando por que esse fato importa, suas consequências práticas/econômicas/geopolíticas e desdobramentos)\n"
         + "- handleX (@nome oficial do veículo ou autor)\n"
         + "- pais (nome do país em português)\n"
         + "- codigoPais (sigla ISO: BR, US, CN, FR, DE, etc)\n"

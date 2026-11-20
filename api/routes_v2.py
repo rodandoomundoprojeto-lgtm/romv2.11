@@ -393,7 +393,8 @@ def _carregar_eventos_ativos_comparados(
                         ) AS sintese_com_ressalvas,
                         EXISTS(
                             SELECT 1 FROM ai_entenda_o_assunto ea
-                            WHERE ea.slug = e.slug OR ea.slug = ('entenda-' || e.slug)
+                            WHERE (ea.slug = e.slug OR ea.slug = ('entenda-' || e.slug))
+                              AND ea.status IS DISTINCT FROM 'excluido'
                         ) AS tem_contexto_disponivel
                     FROM ai_eventos e
                     WHERE {where_sql}
@@ -1299,7 +1300,10 @@ def listar_colunas_editoriais(
             "colunas": [],
         }
 
-    filtros: List[str] = []
+    filtros: List[str] = [
+        "status IS DISTINCT FROM 'excluido'",
+        "review_status IS DISTINCT FROM 'excluido'",
+    ]
     params: List[Any] = []
 
     if status:
@@ -1518,9 +1522,10 @@ def _coletar_entenda_publicados(
                 LEFT JOIN LATERAL (
                     SELECT *
                     FROM ai_entenda_o_assunto e
-                    WHERE e.slug = c.slug
+                    WHERE (e.slug = c.slug
                        OR e.slug = ('entenda-' || c.slug)
-                       OR (e.id = c.id AND ABS(EXTRACT(EPOCH FROM (e.created_at - c.created_at))) < 30)
+                       OR (e.id = c.id AND ABS(EXTRACT(EPOCH FROM (e.created_at - c.created_at))) < 30))
+                      AND e.status IS DISTINCT FROM 'excluido'
                     ORDER BY
                         CASE
                             WHEN e.slug = ('entenda-' || c.slug) THEN 0
@@ -1883,6 +1888,7 @@ def obter_entenda_o_assunto_por_slug(
                     links_acervo_interno, relevancia_score, status, updated_at
                 FROM ai_entenda_o_assunto
                 WHERE slug = ANY(%s)
+                  AND status IS DISTINCT FROM 'excluido'
                 ORDER BY updated_at DESC
                 LIMIT 1;
                 """,
@@ -1921,6 +1927,8 @@ def obter_entenda_o_assunto_por_slug(
                     status, review_status, published_at, created_at, updated_at
                 FROM ai_colunas_editoriais
                 WHERE slug = ANY(%s)
+                  AND status IS DISTINCT FROM 'excluido'
+                  AND review_status IS DISTINCT FROM 'excluido'
                 ORDER BY updated_at DESC
                 LIMIT 1;
                 """,
@@ -1959,6 +1967,7 @@ def obter_entenda_o_assunto_por_slug(
                             links_acervo_interno, relevancia_score, status, updated_at
                         FROM ai_entenda_o_assunto
                         WHERE id = %s AND ABS(EXTRACT(EPOCH FROM (created_at - %s))) < 30
+                          AND status IS DISTINCT FROM 'excluido'
                         LIMIT 1;
                         """,
                         (c.get("id"), c.get("created_at")),
@@ -4036,7 +4045,62 @@ def admin_atualizar_noticia_quente(
     db.commit()
 
     if not row:
-        raise HTTPException(status_code=404, detail="Notícia quente não encontrada.")
+        # Permite criar ou realizar upsert caso a notícia ainda não exista no banco
+        ttl_padrao = max(1, int(updates.get("ttl_horas") or 6))
+        horas_padrao = max(1, min(24, int(updates.get("horas_em_destaque") or 6)))
+        dt_destaque = _parse_iso_utc(updates.get("destaque_ate")) or (agora + timedelta(hours=horas_padrao))
+        dt_expira = _parse_iso_utc(updates.get("expires_at")) or (agora + timedelta(hours=ttl_padrao))
+        paises_iniciais = list(updates.get("paises_envolvidos") or ["BR"])
+        with db.cursor() as cur:
+            cur.execute(
+                """
+                INSERT INTO ai_noticias_quentes (
+                    slug, batch_id, titulo_curto, resumo_pulso, impacto_pratico,
+                    categoria, paises_envolvidos, urgencia_score, relevancia_score,
+                    nivel_confianca, ttl_horas, horas_em_destaque,
+                    status, destaque_ate, expires_at, created_at, updated_at
+                ) VALUES (
+                    %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s
+                )
+                ON CONFLICT (slug) DO UPDATE SET
+                    titulo_curto = EXCLUDED.titulo_curto,
+                    resumo_pulso = EXCLUDED.resumo_pulso,
+                    impacto_pratico = EXCLUDED.impacto_pratico,
+                    categoria = EXCLUDED.categoria,
+                    paises_envolvidos = EXCLUDED.paises_envolvidos,
+                    urgencia_score = EXCLUDED.urgencia_score,
+                    relevancia_score = EXCLUDED.relevancia_score,
+                    nivel_confianca = EXCLUDED.nivel_confianca,
+                    ttl_horas = EXCLUDED.ttl_horas,
+                    horas_em_destaque = EXCLUDED.horas_em_destaque,
+                    status = EXCLUDED.status,
+                    destaque_ate = EXCLUDED.destaque_ate,
+                    expires_at = EXCLUDED.expires_at,
+                    updated_at = EXCLUDED.updated_at
+                RETURNING slug, status;
+                """,
+                (
+                    slug,
+                    f"admin-{os.urandom(3).hex()}",
+                    updates.get("titulo_curto") or slug,
+                    updates.get("resumo_pulso") or "",
+                    updates.get("impacto_pratico") or "",
+                    updates.get("categoria") or "Geopolitica_Relacoes",
+                    paises_iniciais,
+                    int(updates.get("urgencia_score") or 50),
+                    int(updates.get("relevancia_score") or 70),
+                    updates.get("nivel_confianca") or "alta",
+                    ttl_padrao,
+                    horas_padrao,
+                    updates.get("status") or "aguardando_revisao",
+                    dt_destaque,
+                    dt_expira,
+                    agora,
+                    agora,
+                ),
+            )
+            row = cur.fetchone()
+        db.commit()
 
     with db.cursor() as cur:
         cur.execute(
@@ -4094,8 +4158,15 @@ def admin_listar_colunas(
     db = _require_db(conn)
     status_norm = (status if isinstance(status, str) else "").strip().lower()
     limite_int = int(limite) if isinstance(limite, (int, str)) and str(limite).isdigit() else 50
-    filtro_sql = "WHERE (c.status = %s OR c.review_status = %s)" if status_norm else ""
-    params: List[Any] = [status_norm, status_norm] if status_norm else []
+    filtros_list = [
+        "c.status IS DISTINCT FROM 'excluido'",
+        "c.review_status IS DISTINCT FROM 'excluido'",
+    ]
+    params: List[Any] = []
+    if status_norm:
+        filtros_list.append("(c.status = %s OR c.review_status = %s)")
+        params.extend([status_norm, status_norm])
+    filtro_sql = f"WHERE {' AND '.join(filtros_list)}"
     params.append(limite_int)
     with db.cursor() as cur:
         cur.execute(
@@ -4112,9 +4183,10 @@ def admin_listar_colunas(
             LEFT JOIN LATERAL (
                 SELECT slug, titulo_assunto
                 FROM ai_entenda_o_assunto e
-                WHERE e.slug = c.slug
+                WHERE (e.slug = c.slug
                    OR e.slug = ('entenda-' || c.slug)
-                   OR (e.id = c.id AND ABS(EXTRACT(EPOCH FROM (e.created_at - c.created_at))) < 30)
+                   OR (e.id = c.id AND ABS(EXTRACT(EPOCH FROM (e.created_at - c.created_at))) < 30))
+                  AND e.status IS DISTINCT FROM 'excluido'
                 ORDER BY
                     CASE
                         WHEN e.slug = ('entenda-' || c.slug) THEN 0
@@ -4133,7 +4205,9 @@ def admin_listar_colunas(
         rows = cur.fetchall()
         cur.execute(
             "SELECT COALESCE(status, 'rascunho_auditado') AS status, COUNT(*) AS total "
-            "FROM ai_colunas_editoriais GROUP BY 1;"
+            "FROM ai_colunas_editoriais "
+            "WHERE status IS DISTINCT FROM 'excluido' AND review_status IS DISTINCT FROM 'excluido' "
+            "GROUP BY 1;"
         )
         contagens_rows = cur.fetchall()
     colunas = [
@@ -4169,20 +4243,28 @@ def admin_colunas_lote(
     with db.cursor() as cur:
         if payload.acao == "excluir":
             cur.execute(
-                "DELETE FROM ai_entenda_o_assunto WHERE slug = ANY(%s);",
-                (entenda_slugs,),
-            )
-            cur.execute(
-                "DELETE FROM ai_colunas_editoriais WHERE slug = ANY(%s) RETURNING id, slug, created_at;",
+                "UPDATE ai_colunas_editoriais "
+                "SET status = 'excluido', review_status = 'excluido', published_at = NULL, updated_at = NOW() "
+                "WHERE slug = ANY(%s) "
+                "RETURNING id, slug, created_at;",
                 (slugs_limpos,),
             )
             rows = cur.fetchall()
-            for row in rows:
-                if row.get("id") is not None and row.get("created_at") is not None:
-                    cur.execute(
-                        "DELETE FROM ai_entenda_o_assunto WHERE id = %s AND ABS(EXTRACT(EPOCH FROM (created_at - %s))) < 30;",
-                        (row["id"], row["created_at"]),
-                    )
+            if rows:
+                cur.execute(
+                    "UPDATE ai_entenda_o_assunto "
+                    "SET status = 'excluido', updated_at = NOW() "
+                    "WHERE slug = ANY(%s);",
+                    (entenda_slugs,),
+                )
+                for row in rows:
+                    if row.get("id") is not None and row.get("created_at") is not None:
+                        cur.execute(
+                            "UPDATE ai_entenda_o_assunto "
+                            "SET status = 'excluido', updated_at = NOW() "
+                            "WHERE id = %s AND ABS(EXTRACT(EPOCH FROM (created_at - %s))) < 30;",
+                            (row["id"], row["created_at"]),
+                        )
         else:
             if payload.acao == "publicar":
                 set_sql = (
@@ -4311,24 +4393,32 @@ def admin_excluir_coluna(
     response: Response,
     conn: Any = Depends(get_db),
 ) -> Dict[str, Any]:
-    """Remove permanentemente uma coluna editorial (e o bloco 'Entenda o Assunto' associado)."""
+    """Remove logicamente (soft-delete) uma coluna editorial (e o bloco 'Entenda o Assunto' associado)."""
     aplicar_no_cache_headers(response)
     db = _require_db(conn)
     with db.cursor() as cur:
         cur.execute(
-            "DELETE FROM ai_entenda_o_assunto WHERE slug = %s OR slug = %s;",
-            (f"entenda-{slug}", slug),
-        )
-        cur.execute(
-            "DELETE FROM ai_colunas_editoriais WHERE slug = %s RETURNING id, slug, created_at;",
+            "UPDATE ai_colunas_editoriais "
+            "SET status = 'excluido', review_status = 'excluido', published_at = NULL, updated_at = NOW() "
+            "WHERE slug = %s "
+            "RETURNING id, slug, created_at;",
             (slug,),
         )
         row = cur.fetchone()
-        if row and row.get("id") is not None and row.get("created_at") is not None:
+        if row:
             cur.execute(
-                "DELETE FROM ai_entenda_o_assunto WHERE id = %s AND ABS(EXTRACT(EPOCH FROM (created_at - %s))) < 30;",
-                (row["id"], row["created_at"]),
+                "UPDATE ai_entenda_o_assunto "
+                "SET status = 'excluido', updated_at = NOW() "
+                "WHERE slug = %s OR slug = %s;",
+                (f"entenda-{slug}", slug),
             )
+            if row.get("id") is not None and row.get("created_at") is not None:
+                cur.execute(
+                    "UPDATE ai_entenda_o_assunto "
+                    "SET status = 'excluido', updated_at = NOW() "
+                    "WHERE id = %s AND ABS(EXTRACT(EPOCH FROM (created_at - %s))) < 30;",
+                    (row["id"], row["created_at"]),
+                )
     if not row:
         db.rollback()
         raise HTTPException(status_code=404, detail="Coluna não encontrada.")

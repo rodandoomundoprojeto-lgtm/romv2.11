@@ -229,8 +229,8 @@ INSTRUÇÕES E REGRAS MANDATÓRIAS:
      * "cultura": histórias humanas, feitos individuais, curiosidades, viagens, expedições, sociedade, arte, patrimônio ou entretenimento.
      * "geral": apenas se não se encaixar em nenhuma das anteriores.
    - "titulo": Manchete direta, informativa e atraente (máximo de 80 caracteres).
-   - "resumo": Síntese factual objetiva do que aconteceu ou foi dito (2 a 3 frases).
-   - "analise": Análise curta de contexto e impacto ("Por que isso importa") coerente com a categoria real classificada acima, de 2 a 3 frases, tom analítico, isento e sóbrio (sem forçar viés geopolítico em histórias humanas, curiosidades ou temas culturais).
+   - "resumo": Síntese factual completa e explicativa do que aconteceu, quem está envolvido, onde e em que contexto (2 a 3 frases bem desenvolvidas, 180 a 340 caracteres).
+   - "analise": Análise explicativa de contexto, consequências práticas e impacto ("Por que isso importa") coerente com a categoria real classificada acima, de 2 a 3 frases densas (180 a 320 caracteres), detalhando desdobramentos econômicos, geopolíticos ou sociais em tom analítico, isento e sóbrio (sem forçar viés geopolítico em histórias humanas, curiosidades ou temas culturais).
 """
 
     last_err = None

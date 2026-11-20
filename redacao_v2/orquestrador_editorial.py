@@ -513,7 +513,9 @@ ON CONFLICT (slug) DO UPDATE SET
     model_id = EXCLUDED.model_id,
     status = EXCLUDED.status,
     review_status = EXCLUDED.review_status,
-    updated_at = EXCLUDED.updated_at;
+    updated_at = EXCLUDED.updated_at
+WHERE ai_colunas_editoriais.status IS DISTINCT FROM 'excluido'
+  AND ai_colunas_editoriais.review_status IS DISTINCT FROM 'excluido';
 """
 
 UPSERT_ENTENDA_O_ASSUNTO_SQL = """
@@ -541,7 +543,8 @@ ON CONFLICT (slug) DO UPDATE SET
     relevancia_score = EXCLUDED.relevancia_score,
     model_id = EXCLUDED.model_id,
     status = EXCLUDED.status,
-    updated_at = EXCLUDED.updated_at;
+    updated_at = EXCLUDED.updated_at
+WHERE ai_entenda_o_assunto.status IS DISTINCT FROM 'excluido';
 """
 
 
