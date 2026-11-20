@@ -4,12 +4,12 @@
   'use strict';
 
   var CONT = {
-    sul:     { n: 'América do Sul', short: 'América do Sul', box: [[-86, -56], [-33, 13]] },
+    sul: { n: 'América do Sul', short: 'América do Sul', box: [[-86, -56], [-33, 13]] },
     central: { n: 'América Central e Caribe', short: 'América Central', box: [[-93, 7], [-58, 28]] },
-    norte:   { n: 'América do Norte', short: 'América do Norte', box: [[-168, 24], [-52, 72]] },
-    europa:  { n: 'Europa', short: 'Europa', box: [[-25, 34], [60, 71]] },
-    africa:  { n: 'África', short: 'África', box: [[-19, -36], [53, 38]] },
-    asia:    { n: 'Ásia', short: 'Ásia', box: [[26, -11], [160, 72]] },
+    norte: { n: 'América do Norte', short: 'América do Norte', box: [[-168, 24], [-52, 72]] },
+    europa: { n: 'Europa', short: 'Europa', box: [[-25, 34], [60, 71]] },
+    africa: { n: 'África', short: 'África', box: [[-19, -36], [53, 38]] },
+    asia: { n: 'Ásia', short: 'Ásia', box: [[26, -11], [160, 72]] },
     oceania: { n: 'Oceania', short: 'Oceania', box: [[111, -48], [180, 16]] }
   };
   var ORDER = ['sul', 'central', 'norte', 'europa', 'africa', 'asia', 'oceania'];
@@ -200,13 +200,15 @@
 
   var DATA = window.RDM;
   var byId = {}, byA2 = {};
-  var PT_BR = { 'Arménia': 'Armênia', 'Azerbeijão': 'Azerbaijão', 'Eslovénia': 'Eslovênia', 'Estónia': 'Estônia', 'Gronelândia': 'Groenlândia',
+  var PT_BR = {
+    'Arménia': 'Armênia', 'Azerbeijão': 'Azerbaijão', 'Eslovénia': 'Eslovênia', 'Estónia': 'Estônia', 'Gronelândia': 'Groenlândia',
     'Holanda': 'Países Baixos', 'Ilha Formosa': 'Taiwan', 'Ilhas Caimão': 'Ilhas Cayman', 'Irão': 'Irã', 'Iémen': 'Iêmen', 'Letónia': 'Letônia',
     'Macedónia do Norte': 'Macedônia do Norte', 'Madagáscar': 'Madagascar', 'Mónaco': 'Mônaco', 'Nova Caledónia': 'Nova Caledônia', 'Perú': 'Peru',
     'Polónia': 'Polônia', 'Quénia': 'Quênia', 'Roménia': 'Romênia', 'Suazilândia': 'Essuatíni', 'Vietname': 'Vietnã', 'ilha da Curação': 'Curaçao',
     'Trinidade e Tobago': 'Trinidad e Tobago', 'São Vincente e Granadinas': 'São Vicente e Granadinas', 'Botswana': 'Botsuana', 'Zimbabwe': 'Zimbábue',
     'Malawi': 'Malaui', 'Djibouti': 'Djibuti', 'Ilhas Faroé': 'Ilhas Faroe', 'Chéquia': 'República Tcheca', 'Alândia': 'Ilhas Åland', 'Benin': 'Benim',
-    'Bahrein': 'Barein', 'Singapura': 'Singapura', 'Cidade do Vaticano': 'Vaticano' };
+    'Bahrein': 'Barein', 'Singapura': 'Singapura', 'Cidade do Vaticano': 'Vaticano'
+  };
 
   DATA.countries.forEach(function (c) {
     if (PT_BR[c.n]) c.n = PT_BR[c.n];
@@ -302,7 +304,7 @@
           return window.location.origin;
         }
       }
-    } catch (e) {}
+    } catch (e) { }
     return PRODUCTION_DOMAIN;
   }
 
@@ -345,7 +347,7 @@
           page_path: cleanP
         });
       }
-    } catch (e) {}
+    } catch (e) { }
   }
 
   /* ---------- helpers ---------- */
@@ -420,7 +422,7 @@
             try {
               var h = new URL(o.u).hostname.replace(/^www\./, '').toLowerCase();
               if (h && !m[h]) m[h] = a2;
-            } catch (e) {}
+            } catch (e) { }
           }
           if (o && o.n) {
             var nLow = o.n.toLowerCase();
@@ -671,7 +673,7 @@
       if (rawUrl && rawUrl !== '#') {
         dom = new URL(rawUrl).hostname.replace(/^www\./i, '');
       }
-    } catch (e) {}
+    } catch (e) { }
     var cleanTitle = extractSearchKeywords(title, 5);
     var cleanOutlet = String(outletName || '').replace(/\s+/g, ' ').trim();
     var terms = [];
@@ -696,7 +698,7 @@
     var resolved = resolveRelatedArticleUrl(u, effectiveTitle, outletName);
     if (!u || u === '#' || isGenericOutletUrl(u)) {
       var dom = '';
-      try { if (u && u !== '#') dom = new URL(u).hostname.replace(/^www\./i, ''); } catch (e) {}
+      try { if (u && u !== '#') dom = new URL(u).hostname.replace(/^www\./i, ''); } catch (e) { }
       var ptAttr = (title && effectiveTitle && title !== effectiveTitle)
         ? ' data-resolve-title-pt="' + esc(title) + '"'
         : '';
@@ -734,7 +736,7 @@
     function addOutletEntry(name, rawU, domHint, paisHint) {
       var dom = domHint || '';
       if (!dom && rawU) {
-        try { dom = new URL(rawU).hostname.replace(/^www\./i, ''); } catch (e) {}
+        try { dom = new URL(rawU).hostname.replace(/^www\./i, ''); } catch (e) { }
       }
       if (!dom || seenDom[dom]) return;
       seenDom[dom] = true;
@@ -795,11 +797,11 @@
             var g = groups[gi];
             var gDom = String(g.dominio || '').replace(/^www\./i, '').toLowerCase();
             if (!gDom && g.url) {
-              try { gDom = new URL(g.url).hostname.replace(/^www\./i, '').toLowerCase(); } catch (e) {}
+              try { gDom = new URL(g.url).hostname.replace(/^www\./i, '').toLowerCase(); } catch (e) { }
             }
             var gName = norm(g.veiculo || '');
             if ((targetDom && gDom && (gDom === targetDom || gDom.indexOf(targetDom) > -1 || targetDom.indexOf(gDom) > -1)) ||
-                (targetName && gName && (gName === targetName || gName.indexOf(targetName) > -1 || targetName.indexOf(gName) > -1))) {
+              (targetName && gName && (gName === targetName || gName.indexOf(targetName) > -1 || targetName.indexOf(gName) > -1))) {
               matchedGroup = g;
               break;
             }
@@ -828,7 +830,7 @@
           }
         });
       })
-      .catch(function () {});
+      .catch(function () { });
   }
   var ICON_TRANSLATE = '<svg viewBox="0 0 24 24" aria-hidden="true" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></svg>';
   var ICON_STAR_ON = '<svg viewBox="0 0 24 24" aria-hidden="true" width="16" height="16" fill="currentColor"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5-4.8-4.6 6.6-.9L12 2.5z"/></svg>';
@@ -849,13 +851,13 @@
           favState.noticias = Array.isArray(parsed.noticias) ? parsed.noticias : [];
         }
       }
-    } catch (e) {}
+    } catch (e) { }
   }
 
   function saveFavorites() {
     try {
       localStorage.setItem(FAV_STORAGE_KEY, JSON.stringify(favState));
-    } catch (e) {}
+    } catch (e) { }
     syncFavoritesTopCounter();
   }
 
@@ -942,7 +944,7 @@
       list.unshift(record);
       if (list.length > 60) list = list.slice(0, 60);
       localStorage.setItem(REG_OUTLETS_STORAGE_KEY, JSON.stringify(list));
-    } catch (e) {}
+    } catch (e) { }
   }
 
   function isOutletUserSuggested(o) {
@@ -963,13 +965,13 @@
             var itemHost = host(item.url || '').toLowerCase();
             var itemName = String(item.nome || '').trim().toLowerCase();
             if ((itemHost && oHost && (itemHost === oHost || oHost.indexOf(itemHost) !== -1 || itemHost.indexOf(oHost) !== -1)) ||
-                (itemName && oName && (itemName === oName || oName.indexOf(itemName) !== -1 || itemName.indexOf(oName) !== -1))) {
+              (itemName && oName && (itemName === oName || oName.indexOf(itemName) !== -1 || itemName.indexOf(oName) !== -1))) {
               return true;
             }
           }
         }
       }
-    } catch (e) {}
+    } catch (e) { }
     return false;
   }
 
@@ -991,7 +993,7 @@
             var itemHost = host(item.url || '').toLowerCase();
             var itemName = String(item.nome || '').trim().toLowerCase();
             if ((itemHost && oHost && (itemHost === oHost || oHost.indexOf(itemHost) !== -1 || itemHost.indexOf(oHost) !== -1)) ||
-                (itemName && oName && (itemName === oName || oName.indexOf(itemName) !== -1 || itemName.indexOf(oName) !== -1))) {
+              (itemName && oName && (itemName === oName || oName.indexOf(itemName) !== -1 || itemName.indexOf(oName) !== -1))) {
               if (item.solicitante) {
                 return 'Este veículo foi uma indicação cadastrada por ' + item.solicitante + ' através da aba "Cadastrar veículo".';
               }
@@ -1000,7 +1002,7 @@
           }
         }
       }
-    } catch (e) {}
+    } catch (e) { }
     return 'Este veículo foi uma indicação cadastrada por um usuário através da aba "Cadastrar veículo".';
   }
 
@@ -1092,7 +1094,7 @@
         otherBtn.setAttribute('aria-label', nowFav ? 'Remover notícia dos favoritos' : 'Favoritar notícia');
       }
     });
-    try { btn.blur(); } catch (err) {}
+    try { btn.blur(); } catch (err) { }
   }
 
   function renderShareBtn(item) {
@@ -1339,7 +1341,7 @@
           title: payload.title,
           text: payload.text,
           url: payload.url
-        }).catch(function () {});
+        }).catch(function () { });
       }
       closeSharePopover();
       return;
@@ -2017,7 +2019,7 @@
           }
         });
       }
-    } catch (e) {}
+    } catch (e) { }
     return titles;
   }
 
@@ -2059,7 +2061,7 @@
           });
         }
       });
-    } catch (e) {}
+    } catch (e) { }
   }
 
   var DINAMICOS_TTL_MS = 15 * 60 * 1000;
@@ -2078,7 +2080,7 @@
           localStorage.removeItem(key);
         }
       }
-    } catch (e) {}
+    } catch (e) { }
   }
 
   function incorporarTopicosEmAlta(cCode, novosTopicos, semSalvar) {
@@ -2106,7 +2108,7 @@
       try {
         var paraSalvar = pool.slice(0, 15);
         localStorage.setItem('rdm_dinamicos_' + a2, JSON.stringify({ ts: Date.now(), items: paraSalvar }));
-      } catch (e) {}
+      } catch (e) { }
     }
   }
 
@@ -2118,14 +2120,14 @@
     var ultimoFetch = 0;
     try {
       ultimoFetch = Number(sessionStorage.getItem(chaveCache) || 0);
-    } catch (e) {}
+    } catch (e) { }
 
     // Evita chamadas repetidas na mesma sessão se foi consultado nos últimos 3 minutos
     if (agora - ultimoFetch < 3 * 60 * 1000) return;
 
     try {
       sessionStorage.setItem(chaveCache, String(agora));
-    } catch (e) {}
+    } catch (e) { }
 
     var url = '/api/busca-assunto?mode=trending&country=' + encodeURIComponent(a2) + '&lang=' + encodeURIComponent(lang || 'pt');
     if (Array.isArray(outlets) && outlets.length) {
@@ -2152,7 +2154,7 @@
           refreshQuickSuggestionsUI();
         }
       })
-      .catch(function () {});
+      .catch(function () { });
   }
 
   function extrairTopicosEmAltaClient(grupos, termoAtual) {
@@ -2295,7 +2297,7 @@
     if (savedTheme === 'dark' || savedTheme === 'light') {
       root.setAttribute('data-theme', savedTheme);
     }
-  } catch (e) {}
+  } catch (e) { }
   function syncThemeLabel() {
     if (!themeBtn) return;
     var dark = root.getAttribute('data-theme') === 'dark';
@@ -2309,7 +2311,7 @@
     var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
     root.classList.add('theme-switching');
     root.setAttribute('data-theme', next);
-    try { localStorage.setItem('rom_theme', next); } catch (e) {}
+    try { localStorage.setItem('rom_theme', next); } catch (e) { }
     syncThemeLabel();
     void root.offsetHeight;
     requestAnimationFrame(function () {
@@ -2328,7 +2330,7 @@
           root.setAttribute('data-theme', ev.matches ? 'dark' : 'light');
           syncThemeLabel();
         }
-      } catch (e) {}
+      } catch (e) { }
     };
     if (darkMql.addEventListener) darkMql.addEventListener('change', onSchemeChange);
   }
@@ -2571,7 +2573,7 @@
         moved: false, offs: offs, start: offs[cur], y: offs[cur],
         tap: !!e.target.closest('.sheet-grabber')
       };
-      try { panel.setPointerCapture(e.pointerId); } catch (err) {}
+      try { panel.setPointerCapture(e.pointerId); } catch (err) { }
     });
     panel.addEventListener('pointermove', function (e) {
       if (!sheetDrag || e.pointerId !== sheetDrag.id) return;
@@ -2592,7 +2594,7 @@
       if (!sheetDrag || e.pointerId !== sheetDrag.id) return;
       var d = sheetDrag;
       sheetDrag = null;
-      try { panel.releasePointerCapture(e.pointerId); } catch (err) {}
+      try { panel.releasePointerCapture(e.pointerId); } catch (err) { }
       panel.classList.remove('is-dragging');
       panel.style.removeProperty('transform');
       if (!d.moved) {
@@ -3646,8 +3648,8 @@
       .classed('target-pulsing', function (p) {
         if (!state.targetPulseCountry || !p.country) return false;
         return p.country === state.targetPulseCountry ||
-               (state.targetPulseCountry.a2 && p.country.a2 === state.targetPulseCountry.a2) ||
-               (state.targetPulseCountry.id && p.country.id === state.targetPulseCountry.id);
+          (state.targetPulseCountry.a2 && p.country.a2 === state.targetPulseCountry.a2) ||
+          (state.targetPulseCountry.id && p.country.id === state.targetPulseCountry.id);
       });
 
     countrySel.filter('.active').raise();
@@ -3681,8 +3683,8 @@
         .classed('target-pulsing', function (p) {
           if (!state.targetPulseCountry || !p.country) return false;
           return p.country === state.targetPulseCountry ||
-                 (state.targetPulseCountry.a2 && p.country.a2 === state.targetPulseCountry.a2) ||
-                 (state.targetPulseCountry.id && p.country.id === state.targetPulseCountry.id);
+            (state.targetPulseCountry.a2 && p.country.a2 === state.targetPulseCountry.a2) ||
+            (state.targetPulseCountry.id && p.country.id === state.targetPulseCountry.id);
         })
         .attr('aria-label', function (p) { return p.islandName || countryDisplayName(p.country, p.c); });
       islandMarkerSel.filter('.active').raise();
@@ -4139,37 +4141,37 @@
 
         footerHtml =
           '<div class="pulsando-card-spectra" aria-label="Espectros disponíveis: ' + esc(item.espectrosDisponiveis.join(', ')) + '">' +
-            pillsHtml +
+          pillsHtml +
           '</div>' +
           '<span class="pulsando-card-cta is-compare">Comparar cobertura →</span>';
       } else {
         footerHtml =
           '<div class="pulsando-card-spectra is-single">' +
-            '<span class="pulsando-spec-single">Cobertura em tempo real</span>' +
+          '<span class="pulsando-spec-single">Cobertura em tempo real</span>' +
           '</div>' +
           '<span class="pulsando-card-cta is-map">Ver no mapa →</span>';
       }
 
       html +=
         '<article class="pulsando-card' + (isCurrent ? ' is-active' : '') + '" role="listitem" tabindex="0"' +
-          ' data-pulsando-idx="' + idx + '"' +
-          ' data-country-iso="' + esc(item.paisIso) + '"' +
-          ' data-tema-slug="' + esc(item.temaSlug || '') + '"' +
-          ' data-tem-comparacao="' + String(!!item.temComparacaoEspectro) + '"' +
-          ' aria-label="' + esc(item.paisNome + ' — ' + item.veiculosCount + ' veículos — ' + item.temaTitulo) + '">' +
-          '<div class="pulsando-card-top">' +
-            '<div class="pulsando-card-country">' +
-              flagHtml +
-              '<span class="pulsando-card-country-name">' + esc(item.paisNome) + '</span>' +
-            '</div>' +
-            '<span class="pulsando-card-badge">' + esc(item.veiculosCount) + ' veículos</span>' +
-          '</div>' +
-          '<div class="pulsando-card-body">' +
-            '<h3 class="pulsando-card-title">' + esc(item.temaTitulo) + '</h3>' +
-          '</div>' +
-          '<div class="pulsando-card-footer">' +
-            footerHtml +
-          '</div>' +
+        ' data-pulsando-idx="' + idx + '"' +
+        ' data-country-iso="' + esc(item.paisIso) + '"' +
+        ' data-tema-slug="' + esc(item.temaSlug || '') + '"' +
+        ' data-tem-comparacao="' + String(!!item.temComparacaoEspectro) + '"' +
+        ' aria-label="' + esc(item.paisNome + ' — ' + item.veiculosCount + ' veículos — ' + item.temaTitulo) + '">' +
+        '<div class="pulsando-card-top">' +
+        '<div class="pulsando-card-country">' +
+        flagHtml +
+        '<span class="pulsando-card-country-name">' + esc(item.paisNome) + '</span>' +
+        '</div>' +
+        '<span class="pulsando-card-badge">' + esc(item.veiculosCount) + ' veículos</span>' +
+        '</div>' +
+        '<div class="pulsando-card-body">' +
+        '<h3 class="pulsando-card-title">' + esc(item.temaTitulo) + '</h3>' +
+        '</div>' +
+        '<div class="pulsando-card-footer">' +
+        footerHtml +
+        '</div>' +
         '</article>';
     });
 
@@ -4291,7 +4293,7 @@
     try {
       if (el.matches && el.matches(':hover')) return true;
       if (el.querySelector && el.querySelector(':hover')) return true;
-    } catch (e) {}
+    } catch (e) { }
     try {
       if (el.contains && document.activeElement && document.activeElement !== document.body && el.contains(document.activeElement)) return true;
       if (window.getSelection) {
@@ -4300,7 +4302,7 @@
           return true;
         }
       }
-    } catch (e) {}
+    } catch (e) { }
     return false;
   }
 
@@ -4335,7 +4337,7 @@
           }
         }
       }
-    } catch (e) {}
+    } catch (e) { }
 
     // Visível, mas sem interação ativa: pode receber atualizações suaves sem atrapalhar a leitura.
     return false;
@@ -4628,9 +4630,9 @@
       var shortTitle = hotInfo.title.length > 95 ? hotInfo.title.slice(0, 94) + '…' : hotInfo.title;
       tip.innerHTML = '<div>' + esc(text) + '</div>' +
         '<div class="tooltip-hot-news">' +
-          '<strong>🔥 Notícia quente em ' + esc(hotInfo.countryName || '') + ' (' + esc(hotInfo.source || 'Imprensa') + ')</strong>' +
-          '<span>' + esc(shortTitle) + '</span>' +
-          '<small class="tooltip-hot-cta">Clique no país para ler a matéria completa</small>' +
+        '<strong>🔥 Notícia quente em ' + esc(hotInfo.countryName || '') + ' (' + esc(hotInfo.source || 'Imprensa') + ')</strong>' +
+        '<span>' + esc(shortTitle) + '</span>' +
+        '<small class="tooltip-hot-cta">Clique no país para ler a matéria completa</small>' +
         '</div>';
     } else {
       tip.textContent = text;
@@ -4963,26 +4965,26 @@
     if (state.originRoute) {
       h += '<button type="button" class="panel-collapse-btn btn-voltar-origem" data-action="go-back" data-fallback="' + esc(state.originRoute) + '" title="Voltar para a página anterior" aria-label="Voltar para onde estava">' +
         '<span>← Voltar para onde estava</span>' +
-      '</button>';
+        '</button>';
     } else if (state.topic) {
       var topicoObj = TOPICS.find(function (t) { return t.k === state.topic; });
       var topicoNome = topicoObj ? topicoObj.l : state.topic;
       h += '<button type="button" class="panel-collapse-btn btn-voltar-topico" data-action="clear-topic" title="Voltar para todos os temas de ' + esc(countryDisplayName(state.country, state.cont)) + '" aria-label="Voltar para todos os temas">' +
         '<span>← Voltar (Todos os temas)</span>' +
-      '</button>';
+        '</button>';
     } else if (state.cont || state.country) {
       h += '<button type="button" class="panel-collapse-btn" id="btn-collapse-panel" title="Recolher painel para ver o mapa" aria-label="Recolher painel para ver o mapa">' +
         '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>' +
         '<span>Recolher</span>' +
-      '</button>';
+        '</button>';
       h += '<button type="button" class="panel-collapse-btn" data-go="world" title="Voltar para a visão geral do mapa-múndi" aria-label="Voltar ao mapa-múndi">' +
         '<span>← Voltar ao Mapa</span>' +
-      '</button>';
+        '</button>';
     } else {
       h += '<button type="button" class="panel-collapse-btn" id="btn-collapse-panel" title="Recolher painel para ver o mapa" aria-label="Recolher painel para ver o mapa">' +
         '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>' +
         '<span>Recolher</span>' +
-      '</button>';
+        '</button>';
     }
     h += '<button type="button" class="panel-close" data-close aria-label="Fechar painel" title="Fechar / Recolher painel"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>';
     h += '</div>';
@@ -5132,23 +5134,23 @@
     h += '<p class="eyebrow">' + CONT[contKey].n + '</p>';
     h += '<div class="title-row">' +
       '<div class="country-flag-col">' +
-        countryFlag(c, '', state.cont) +
-        (langs ? '<span class="country-flag-lang" title="Idioma(s) predominante(s): ' + esc(langs) + '">' + esc(langs) + '</span>' : '') +
+      countryFlag(c, '', state.cont) +
+      (langs ? '<span class="country-flag-lang" title="Idioma(s) predominante(s): ' + esc(langs) + '">' + esc(langs) + '</span>' : '') +
       '</div>' +
       '<div class="country-title-box">' +
-        '<div class="country-title-head">' +
-          '<h2>' + esc(cName) + '</h2>' +
-          (terrNotice ?
-            '<button type="button" class="territory-notice-btn" id="btn-territory-notice" data-notice="' + esc(terrNotice) + '" aria-label="Aviso sobre cobertura jornalística territorial" title="' + esc(terrNotice) + '">' +
-              '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>' +
-            '</button>' : '') +
-          '<button type="button" class="fav-star-btn fav-country-btn' + (countryFav ? ' is-fav' : '') + '" id="btn-fav-country" aria-pressed="' + countryFav + '" title="' + (countryFav ? 'Remover país dos favoritos' : 'Salvar país nos favoritos') + '" aria-label="' + (countryFav ? 'Remover país dos favoritos' : 'Salvar país nos favoritos') + '">' +
-            (countryFav ? ICON_STAR_ON : ICON_STAR_OFF) +
-          '</button>' +
-        '</div>' +
-        (langs ? '<span class="country-langs-detail"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg> Idioma(s): ' + esc(langs) + '</span>' : '') +
+      '<div class="country-title-head">' +
+      '<h2>' + esc(cName) + '</h2>' +
+      (terrNotice ?
+        '<button type="button" class="territory-notice-btn" id="btn-territory-notice" data-notice="' + esc(terrNotice) + '" aria-label="Aviso sobre cobertura jornalística territorial" title="' + esc(terrNotice) + '">' +
+        '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>' +
+        '</button>' : '') +
+      '<button type="button" class="fav-star-btn fav-country-btn' + (countryFav ? ' is-fav' : '') + '" id="btn-fav-country" aria-pressed="' + countryFav + '" title="' + (countryFav ? 'Remover país dos favoritos' : 'Salvar país nos favoritos') + '" aria-label="' + (countryFav ? 'Remover país dos favoritos' : 'Salvar país nos favoritos') + '">' +
+      (countryFav ? ICON_STAR_ON : ICON_STAR_OFF) +
+      '</button>' +
       '</div>' +
-    '</div>';
+      (langs ? '<span class="country-langs-detail"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg> Idioma(s): ' + esc(langs) + '</span>' : '') +
+      '</div>' +
+      '</div>';
 
     var cCode = (state.cont === 'sul' && (c.a2 === 'FR' || c.id === '250')) ? 'GF' : (c.a2 || c.id || '');
     var cCodeUp = String(cCode).toUpperCase();
@@ -5173,46 +5175,46 @@
       var hotImgUrl = isValidNewsImageUrl(hotItem.imageUrl || hotItem.imagem || hotItem.image || hotItem.thumbnail || '');
       h += '<aside class="panel-hot-news-banner' + (hotImgUrl ? ' has-media' : ' no-media') + '" aria-label="Notícia quente em destaque">' +
         '<div class="panel-hot-news-header">' +
-          '<span class="panel-hot-badge"><span class="panel-hot-pulse-dot" aria-hidden="true"></span> Notícia quente agora</span>' +
-          '<span class="panel-hot-source">' + esc(hotItem.source) + (hotItem.category ? ' · ' + esc(hotItem.category) : '') + '</span>' +
+        '<span class="panel-hot-badge"><span class="panel-hot-pulse-dot" aria-hidden="true"></span> Notícia quente agora</span>' +
+        '<span class="panel-hot-source">' + esc(hotItem.source) + (hotItem.category ? ' · ' + esc(hotItem.category) : '') + '</span>' +
         '</div>' +
         (hotImgUrl ? '<figure class="panel-hot-media"><img src="' + esc(hotImgUrl) + '" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="var b=this.closest(\'.panel-hot-news-banner\');var m=this.closest(\'.panel-hot-media\');if(m)m.remove();if(b){b.classList.remove(\'has-media\');b.classList.add(\'no-media\');}" onload="if(this.naturalWidth<=2){var b=this.closest(\'.panel-hot-news-banner\');var m=this.closest(\'.panel-hot-media\');if(m)m.remove();if(b){b.classList.remove(\'has-media\');b.classList.add(\'no-media\');}}"></figure>' : '') +
         '<h4 class="panel-hot-title">' +
-          (hotUrl ? '<a href="' + esc(hotUrl) + '" target="_blank" rel="noopener noreferrer" title="' + (isVideoContent(hotUrl, hotItem) ? 'Assistir vídeo no canal original' : 'Abrir matéria completa no portal original') + '">' + esc(hotItem.title) + ' ' + ICON_ARROW + '</a>' : esc(hotItem.title)) +
+        (hotUrl ? '<a href="' + esc(hotUrl) + '" target="_blank" rel="noopener noreferrer" title="' + (isVideoContent(hotUrl, hotItem) ? 'Assistir vídeo no canal original' : 'Abrir matéria completa no portal original') + '">' + esc(hotItem.title) + ' ' + ICON_ARROW + '</a>' : esc(hotItem.title)) +
         '</h4>' +
         (hotItem.summary ? '<p class="panel-hot-summary">' + esc(hotItem.summary) + '</p>' : '') +
         '<div class="panel-hot-actions">' +
-          (hotUrl ? '<a href="' + esc(hotUrl) + '" target="_blank" rel="noopener noreferrer" class="btn btn-primary panel-hot-read-btn">' + (isVideoContent(hotUrl, hotItem) ? 'Assistir vídeo ' : 'Ler matéria na íntegra ') + ICON_ARROW + '</a>' : '') +
-          (hotItem.comparacaoSlug ? '<a href="/comparar/' + esc(hotItem.comparacaoSlug) + '" data-spa-link class="btn btn-secondary panel-hot-compare-btn">⚖️ Comparar perspectivas</a>' :
-            (canCompareHot ? '<button type="button" class="btn btn-secondary panel-hot-compare-btn" data-hot-compare-term="' + esc(hotTerm) + '">⚖️ Comparar cobertura</button>' : '')) +
+        (hotUrl ? '<a href="' + esc(hotUrl) + '" target="_blank" rel="noopener noreferrer" class="btn btn-primary panel-hot-read-btn">' + (isVideoContent(hotUrl, hotItem) ? 'Assistir vídeo ' : 'Ler matéria na íntegra ') + ICON_ARROW + '</a>' : '') +
+        (hotItem.comparacaoSlug ? '<a href="/comparar/' + esc(hotItem.comparacaoSlug) + '" data-spa-link class="btn btn-secondary panel-hot-compare-btn">⚖️ Comparar perspectivas</a>' :
+          (canCompareHot ? '<button type="button" class="btn btn-secondary panel-hot-compare-btn" data-hot-compare-term="' + esc(hotTerm) + '">⚖️ Comparar cobertura</button>' : '')) +
         '</div>' +
-      '</aside>';
+        '</aside>';
     }
 
     var atlasMinimized = false;
-    try { atlasMinimized = localStorage.getItem('rom_atlas_live_minimized') === '1'; } catch (e) {}
+    try { atlasMinimized = localStorage.getItem('rom_atlas_live_minimized') === '1'; } catch (e) { }
     var atlasSectionHtml = '<section class="atlas-live-section' + (atlasMinimized ? ' is-minimized' : '') + '" id="atlas-live-news-feed" data-country="' + esc(cCodeUp) + '" aria-labelledby="atlas-live-heading">' +
       '<div class="atlas-live-head">' +
-        '<div class="atlas-live-title-wrap">' +
-          '<span class="atlas-live-dot" aria-hidden="true"></span>' +
-          '<h3 class="atlas-live-title" id="atlas-live-heading">Últimas manchetes · ' + esc(cName) + '</h3>' +
-        '</div>' +
-        '<div class="atlas-live-controls">' +
-          '<span class="atlas-live-updated" id="atlas-live-updated-label">Sincronizando...</span>' +
-          '<button type="button" class="btn-atlas-toggle" id="btn-atlas-toggle" aria-expanded="' + (!atlasMinimized) + '" aria-controls="atlas-live-news-list" title="' + (atlasMinimized ? 'Expandir últimas manchetes' : 'Minimizar últimas manchetes') + '" aria-label="' + (atlasMinimized ? 'Expandir últimas manchetes' : 'Minimizar últimas manchetes') + '">' +
-            '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>' +
-            '<span>' + (atlasMinimized ? 'Expandir' : 'Minimizar') + '</span>' +
-          '</button>' +
-          '<button type="button" class="btn-atlas-refresh" id="btn-atlas-refresh" title="Atualizar notícias agora (sem cache)" aria-label="Atualizar notícias agora">' +
-            '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>' +
-            '<span>Atualizar</span>' +
-          '</button>' +
-        '</div>' +
+      '<div class="atlas-live-title-wrap">' +
+      '<span class="atlas-live-dot" aria-hidden="true"></span>' +
+      '<h3 class="atlas-live-title" id="atlas-live-heading">Últimas manchetes · ' + esc(cName) + '</h3>' +
+      '</div>' +
+      '<div class="atlas-live-controls">' +
+      '<span class="atlas-live-updated" id="atlas-live-updated-label">Sincronizando...</span>' +
+      '<button type="button" class="btn-atlas-toggle" id="btn-atlas-toggle" aria-expanded="' + (!atlasMinimized) + '" aria-controls="atlas-live-news-list" title="' + (atlasMinimized ? 'Expandir últimas manchetes' : 'Minimizar últimas manchetes') + '" aria-label="' + (atlasMinimized ? 'Expandir últimas manchetes' : 'Minimizar últimas manchetes') + '">' +
+      '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>' +
+      '<span>' + (atlasMinimized ? 'Expandir' : 'Minimizar') + '</span>' +
+      '</button>' +
+      '<button type="button" class="btn-atlas-refresh" id="btn-atlas-refresh" title="Atualizar notícias agora (sem cache)" aria-label="Atualizar notícias agora">' +
+      '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>' +
+      '<span>Atualizar</span>' +
+      '</button>' +
+      '</div>' +
       '</div>' +
       '<div class="atlas-live-list is-loading" id="atlas-live-news-list" aria-live="polite"' + (atlasMinimized ? ' hidden' : '') + '>' +
-        '<div class="atlas-live-skeleton"></div><div class="atlas-live-skeleton"></div><div class="atlas-live-skeleton"></div>' +
+      '<div class="atlas-live-skeleton"></div><div class="atlas-live-skeleton"></div><div class="atlas-live-skeleton"></div>' +
       '</div>' +
-    '</section>';
+      '</section>';
 
     if (!cMed || !cMed.outlets || !cMed.outlets.length) {
       var q = encodeURIComponent(cName);
@@ -5271,14 +5273,14 @@
     // Slot Comercial 3: Gaveta Contextual (Patrocínio Regional / B2B)
     h += '<div id="slot-sponsor-drawer" class="sponsor-slot sponsor-slot-drawer" hidden aria-label="Apoio Contextual">' +
       '<div class="sponsor-drawer-card">' +
-        '<div class="sponsor-drawer-head">' +
-          '<span class="sponsor-tag">Destaque de Mercado</span>' +
-          '<span class="mock-brand-logo sponsor-brand-target">Sua Marca</span>' +
-        '</div>' +
-        '<p class="sponsor-drawer-msg">Câmbio comercial, investimentos e soluções para suas conexões com <span id="sponsor-country-name">' + esc(cName) + '</span>.</p>' +
-        '<a class="btn btn-secondary sponsor-drawer-btn" href="/parcerias" data-spa-link>Conhecer soluções</a>' +
+      '<div class="sponsor-drawer-head">' +
+      '<span class="sponsor-tag">Destaque de Mercado</span>' +
+      '<span class="mock-brand-logo sponsor-brand-target">Sua Marca</span>' +
       '</div>' +
-    '</div>';
+      '<p class="sponsor-drawer-msg">Câmbio comercial, investimentos e soluções para suas conexões com <span id="sponsor-country-name">' + esc(cName) + '</span>.</p>' +
+      '<a class="btn btn-secondary sponsor-drawer-btn" href="/parcerias" data-spa-link>Conhecer soluções</a>' +
+      '</div>' +
+      '</div>';
 
     // E3: Nota de metodologia editorial no rodapé
     h += '<div class="methodology-note"><p><strong>Metodologia editorial:</strong> Todos os países contam com veículos de imprensa verificados e ao menos um veículo com independência editorial reconhecida (identificado pelo selo <span class="badge badge-ind badge-inline"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Independente</span>). Veículos indicados pela comunidade recebem o selo <span class="badge badge-sug badge-inline" title="Veículo indicado por usuário na aba Cadastrar Veículo"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/></svg> Indicação</span>. Dados e links verificados.</p></div>';
@@ -5366,7 +5368,7 @@
         if (span) span.textContent = label;
         var svg = toggleBtn.querySelector('svg');
         if (svg) svg.style.transform = minimized ? 'rotate(-90deg)' : '';
-        try { localStorage.setItem('rom_atlas_live_minimized', minimized ? '1' : '0'); } catch (e) {}
+        try { localStorage.setItem('rom_atlas_live_minimized', minimized ? '1' : '0'); } catch (e) { }
       });
       var initMin = section.classList.contains('is-minimized');
       var initSvg = toggleBtn.querySelector('svg');
@@ -5415,20 +5417,20 @@
       var timeStr = it.publishedAt ? formatSearchDate(it.publishedAt) : '';
       html += '<article class="atlas-live-card" data-atlas-idx="' + idx + '">' +
         '<div class="atlas-live-card-top">' +
-          '<span class="atlas-live-source">' + esc(it.source || 'Imprensa') + '</span>' +
-          (timeStr ? '<time class="atlas-live-time">' + esc(timeStr) + '</time>' : '') +
+        '<span class="atlas-live-source">' + esc(it.source || 'Imprensa') + '</span>' +
+        (timeStr ? '<time class="atlas-live-time">' + esc(timeStr) + '</time>' : '') +
         '</div>' +
         '<h4 class="atlas-live-card-title">' +
-          '<a href="' + esc(it.url) + '" target="_blank" rel="noopener noreferrer" data-atlas-title-link>' + esc(pt) + '</a>' +
+        '<a href="' + esc(it.url) + '" target="_blank" rel="noopener noreferrer" data-atlas-title-link>' + esc(pt) + '</a>' +
         '</h4>' +
         '<div class="atlas-live-card-actions">' +
-          (temTraducao ? '<button type="button" class="atlas-lang-toggle" title="Traduzir para o idioma original" data-pt="' + esc(pt) + '" data-orig="' + esc(orig) + '" data-showing="pt">Ver original</button>' : '') +
-          '<div class="item-action-btns">' +
-          renderNewsFavBtn({ url: it.url, title: pt, source: it.source || 'Atlas', countryCode: cCode, publishedAt: it.publishedAt || '' }) +
-          renderShareBtn({ url: it.url, title: pt, source: it.source || 'Atlas', type: 'noticia' }) +
-          '</div>' +
+        (temTraducao ? '<button type="button" class="atlas-lang-toggle" title="Traduzir para o idioma original" data-pt="' + esc(pt) + '" data-orig="' + esc(orig) + '" data-showing="pt">Ver original</button>' : '') +
+        '<div class="item-action-btns">' +
+        renderNewsFavBtn({ url: it.url, title: pt, source: it.source || 'Atlas', countryCode: cCode, publishedAt: it.publishedAt || '' }) +
+        renderShareBtn({ url: it.url, title: pt, source: it.source || 'Atlas', type: 'noticia' }) +
         '</div>' +
-      '</article>';
+        '</div>' +
+        '</article>';
     });
     listEl.innerHTML = html;
 
@@ -5487,7 +5489,7 @@
       if (changed && typeof onTranslated === 'function') {
         onTranslated(orderedItems);
       }
-    }).catch(function () {});
+    }).catch(function () { });
   }
 
   function carregarAtlasPaisAoVivo(cCode, cName, forceRefresh) {
@@ -5505,7 +5507,7 @@
 
     if (forceRefresh) {
       delete atlasSessionRevalidated[cCode];
-      try { localStorage.removeItem(cacheKey); } catch (e) {}
+      try { localStorage.removeItem(cacheKey); } catch (e) { }
       if (refreshBtn) refreshBtn.classList.add('is-refreshing');
       if (listEl) listEl.classList.add('is-loading');
     } else if (atlasSessionRevalidated[cCode] && (Date.now() - atlasSessionRevalidated[cCode] < ATLAS_PAIS_TTL_MS)) {
@@ -5518,7 +5520,7 @@
             ensureAtlasItemsTranslated(parsed.items, cCode, function (updatedItems) {
               try {
                 localStorage.setItem(cacheKey, JSON.stringify({ ts: parsed.ts || Date.now(), updatedAt: parsed.updatedAt, items: updatedItems }));
-              } catch (e) {}
+              } catch (e) { }
               var activeFeed = panel.querySelector('#atlas-live-news-feed');
               if (activeFeed && activeFeed.getAttribute('data-country') === String(cCode)) {
                 renderAtlasPaisItems(updatedItems, cCode, parsed.updatedAt);
@@ -5533,7 +5535,7 @@
             return;
           }
         }
-      } catch (e) {}
+      } catch (e) { }
     }
 
     var qs = '?pais=' + encodeURIComponent(cCode) + '&nome=' + encodeURIComponent(cName) + '&_t=' + Date.now() + (forceRefresh ? '&refresh=1' : '');
@@ -5643,14 +5645,14 @@
             atlasSessionRevalidated[cCode] = savedTs;
             try {
               localStorage.setItem(cacheKey, JSON.stringify({ ts: savedTs, updatedAt: data.updatedAt, items: sortedItems }));
-            } catch (e) {}
+            } catch (e) { }
           }
           renderAtlasPaisItems(sortedItems, cCode, data.updatedAt);
           ensureAtlasItemsTranslated(sortedItems, cCode, function (updatedItems) {
             if (fromLiveApi) {
               try {
                 localStorage.setItem(cacheKey, JSON.stringify({ ts: savedTs, updatedAt: data.updatedAt, items: updatedItems }));
-              } catch (e) {}
+              } catch (e) { }
             }
             var activeFeed = panel.querySelector('#atlas-live-news-feed');
             if (activeFeed && activeFeed.getAttribute('data-country') === String(cCode)) {
@@ -6050,8 +6052,8 @@
     };
 
     var tokens = t.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()?"'«»“”]/g, ' ')
-                  .split(/\s+/)
-                  .filter(Boolean);
+      .split(/\s+/)
+      .filter(Boolean);
 
     var significativos = [];
     tokens.forEach(function (w) {
@@ -6242,7 +6244,7 @@
         updatedAt: updatedAt || '',
         temas_ativos: lista
       }));
-    } catch (e) {}
+    } catch (e) { }
   }
 
   function obterTermosExpandidosIA(termoRaw) {
@@ -6452,7 +6454,7 @@
     state.searchData = null;
     state.searchError = '';
     if (activeSearchController) {
-      try { activeSearchController.abort(); } catch (e) {}
+      try { activeSearchController.abort(); } catch (e) { }
     }
     if (panel) {
       var inputEl = panel.querySelector('#topic-search-input');
@@ -6563,7 +6565,7 @@
     var escopo = sugestao.prioridade || (cCode ? 'direto' : 'global');
 
     if (activeSearchController) {
-      try { activeSearchController.abort(); } catch (e) {}
+      try { activeSearchController.abort(); } catch (e) { }
     }
     activeSearchController = window.AbortController ? new AbortController() : null;
 
@@ -6768,7 +6770,7 @@
 
     var periods = [
       { k: '24h', l: 'Últimas 24 horas' },
-      { k: '7d',  l: 'Últimos 7 dias' }
+      { k: '7d', l: 'Últimos 7 dias' }
     ];
 
     function bindPeriodButtons(rootNode) {
@@ -6804,12 +6806,12 @@
 
       dynBanner =
         '<div class="perspective-dynamic-banner">' +
-          '<h4 class="perspective-dynamic-title" id="perspective-dynamic-title">' + esc(termoEfetivo) + ': como os veículos estão cobrindo</h4>' +
-          fallbackLongNote +
-          (foiCorrigido && !fallbackLongNote ? '<p class="perspective-dynamic-correction">Exibindo resultados para <strong>“' + esc(termoEfetivo) + '”</strong> <span class="perspective-correction-orig">(em vez de “' + esc(state.searchQuery) + '”)</span></p>' : '') +
-          '<p class="perspective-dynamic-subtitle">Compare as últimas notícias e as diferentes perspectivas sobre o assunto.</p>' +
-          '<p class="perspective-dynamic-meta">Contexto: <strong>' + esc(ctxStr) + '</strong> · Período: <strong>' + esc(perLabel) + '</strong></p>' +
-          periodBtnsHTML +
+        '<h4 class="perspective-dynamic-title" id="perspective-dynamic-title">' + esc(termoEfetivo) + ': como os veículos estão cobrindo</h4>' +
+        fallbackLongNote +
+        (foiCorrigido && !fallbackLongNote ? '<p class="perspective-dynamic-correction">Exibindo resultados para <strong>“' + esc(termoEfetivo) + '”</strong> <span class="perspective-correction-orig">(em vez de “' + esc(state.searchQuery) + '”)</span></p>' : '') +
+        '<p class="perspective-dynamic-subtitle">Compare as últimas notícias e as diferentes perspectivas sobre o assunto.</p>' +
+        '<p class="perspective-dynamic-meta">Contexto: <strong>' + esc(ctxStr) + '</strong> · Período: <strong>' + esc(perLabel) + '</strong></p>' +
+        periodBtnsHTML +
         '</div>';
     }
 
@@ -6817,8 +6819,8 @@
       if (tlBox) tlBox.innerHTML = '';
       box.innerHTML = dynBanner +
         '<div class="topic-search-status loading" role="status">' +
-          '<span class="topic-search-spinner" aria-hidden="true"></span>' +
-          '<p>Buscando matérias sobre <strong>“' + esc(termoEfetivo) + '”</strong> em ' + esc(ctxStr) + '…</p>' +
+        '<span class="topic-search-spinner" aria-hidden="true"></span>' +
+        '<p>Buscando matérias sobre <strong>“' + esc(termoEfetivo) + '”</strong> em ' + esc(ctxStr) + '…</p>' +
         '</div>';
       bindPeriodButtons(box);
       return;
@@ -6830,9 +6832,9 @@
       var chipsErrHTML = renderEmptySuggestionsChipsHTML(emptySugListErr);
       box.innerHTML = dynBanner +
         '<div class="topic-search-status empty" role="status">' +
-          '<p class="topic-search-empty-title">Nenhum resultado encontrado</p>' +
-          '<p class="topic-search-empty-sub">' + esc(state.searchError) + '</p>' +
-          chipsErrHTML +
+        '<p class="topic-search-empty-title">Nenhum resultado encontrado</p>' +
+        '<p class="topic-search-empty-sub">' + esc(state.searchError) + '</p>' +
+        chipsErrHTML +
         '</div>';
       bindPeriodButtons(box);
       bindEmptySuggestionsClicks(box);
@@ -6846,11 +6848,11 @@
     if (data && data.isContextualDbResult && Array.isArray(data.artigos) && data.artigos.length > 0) {
       var ctxHtml = '<div class="contextual-results-head">' +
         '<div class="contextual-results-title-wrap">' +
-          '<h4 class="perspective-dynamic-title">' + esc(data.termo) + '</h4>' +
-          '<span class="contextual-results-count">' + data.artigos.length + (data.artigos.length === 1 ? ' matéria confirmada' : ' matérias confirmadas') + '</span>' +
+        '<h4 class="perspective-dynamic-title">' + esc(data.termo) + '</h4>' +
+        '<span class="contextual-results-count">' + data.artigos.length + (data.artigos.length === 1 ? ' matéria confirmada' : ' matérias confirmadas') + '</span>' +
         '</div>' +
         '<button type="button" class="btn btn-sm btn-ghost contextual-clear-btn" id="btn-ctx-clear">Limpar</button>' +
-      '</div>';
+        '</div>';
 
       ctxHtml += '<div class="contextual-articles-list">';
       data.artigos.forEach(function (art) {
@@ -6861,24 +6863,24 @@
               var nome = (Array.isArray(art.veiculos_origem) && art.veiculos_origem[idx]) ? art.veiculos_origem[idx] : 'Fonte original';
               return '<a class="contextual-source-link" href="' + esc(u) + '" target="_blank" rel="noopener noreferrer">' + esc(nome) + ' ↗</a>';
             }).join('') +
-          '</div>';
+            '</div>';
         }
         ctxHtml += '<article class="contextual-article-card">' +
           '<div class="contextual-article-meta">' +
-            '<span class="contextual-article-cat">' + esc((art.categoria || '').replace(/_/g, ' ')) + '</span>' +
-            (art.atualizado_em ? '<span class="contextual-article-time">' + esc(art.atualizado_em) + '</span>' : '') +
+          '<span class="contextual-article-cat">' + esc((art.categoria || '').replace(/_/g, ' ')) + '</span>' +
+          (art.atualizado_em ? '<span class="contextual-article-time">' + esc(art.atualizado_em) + '</span>' : '') +
           '</div>' +
           '<h5 class="contextual-article-title">' + esc(art.titulo) + '</h5>' +
           (art.resumo ? '<p class="contextual-article-summary">' + esc(art.resumo) + '</p>' : '') +
           (art.impacto_pratico ? '<p class="contextual-article-impact"><strong>Impacto:</strong> ' + esc(art.impacto_pratico) + '</p>' : '') +
           fontesHtml +
-        '</article>';
+          '</article>';
       });
       ctxHtml += '</div>';
 
       ctxHtml += '<div class="contextual-results-footer">' +
         '<button type="button" class="btn btn-sm btn-outline" id="btn-ctx-expand-live">Buscar também nos feeds ao vivo dos veículos</button>' +
-      '</div>';
+        '</div>';
 
       box.innerHTML = ctxHtml + relatedLinksHTML;
       var clearBtn = box.querySelector('#btn-ctx-clear');
@@ -6917,13 +6919,13 @@
       var chipsHTML = renderEmptySuggestionsChipsHTML(emptySugList);
       box.innerHTML = dynBanner +
         '<div class="topic-search-status empty" role="status">' +
-          '<p class="topic-search-empty-title">Nenhum resultado encontrado neste período</p>' +
-          '<p class="topic-search-empty-sub">Não encontramos matérias em <strong>' + esc(perLabel) + '</strong> sobre <strong>“' + esc(termoEfetivo) + '”</strong> nos veículos de ' + esc(ctxStr) + '.</p>' +
-          chipsHTML +
-          '<div class="topic-search-empty-actions" style="margin-top:14px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">' +
-            (state.searchPeriod !== '7d' ? '<button type="button" class="btn btn-sm btn-outline" id="btn-search-all-periods">Buscar nos últimos 7 dias</button>' : '') +
-            '<a class="btn btn-sm btn-secondary topic-search-gnews-btn" href="' + gNewsSearchUrl + '" target="_blank" rel="noopener noreferrer">Ver notícias sobre “' + esc(termoEfetivo) + '” no Google ' + ICON_ARROW.replace('<svg', '<svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2"') + '</a>' +
-          '</div>' +
+        '<p class="topic-search-empty-title">Nenhum resultado encontrado neste período</p>' +
+        '<p class="topic-search-empty-sub">Não encontramos matérias em <strong>' + esc(perLabel) + '</strong> sobre <strong>“' + esc(termoEfetivo) + '”</strong> nos veículos de ' + esc(ctxStr) + '.</p>' +
+        chipsHTML +
+        '<div class="topic-search-empty-actions" style="margin-top:14px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">' +
+        (state.searchPeriod !== '7d' ? '<button type="button" class="btn btn-sm btn-outline" id="btn-search-all-periods">Buscar nos últimos 7 dias</button>' : '') +
+        '<a class="btn btn-sm btn-secondary topic-search-gnews-btn" href="' + gNewsSearchUrl + '" target="_blank" rel="noopener noreferrer">Ver notícias sobre “' + esc(termoEfetivo) + '” no Google ' + ICON_ARROW.replace('<svg', '<svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2"') + '</a>' +
+        '</div>' +
         '</div>' +
         relatedLinksHTML;
       if (tlBox) {
@@ -7098,7 +7100,7 @@
     }
 
     if (activeSearchController) {
-      try { activeSearchController.abort(); } catch (e) {}
+      try { activeSearchController.abort(); } catch (e) { }
     }
     activeSearchController = window.AbortController ? new AbortController() : null;
 
@@ -7108,7 +7110,7 @@
     renderTopicSearchResults();
 
     // SUG-CURADORIA-IA: Pré-aquece termos expandidos da busca via /api/vitrine-em-alta?acao=expansao&q=...
-    consultarExpansaoBuscaIA(q, function () {});
+    consultarExpansaoBuscaIA(q, function () { });
 
     var termosExpandidosBusca = obterTermosExpandidosIA(q);
     var searchPayload = {
@@ -7128,7 +7130,7 @@
     if (activeSearchController) {
       searchTimer = setTimeout(function () {
         if (activeSearchController) {
-          try { activeSearchController.abort(); } catch (e) {}
+          try { activeSearchController.abort(); } catch (e) { }
         }
       }, 10000);
     }
@@ -7866,15 +7868,15 @@
       lines += '<li class="outlet-rotator-item">' +
         '<button type="button" class="outlet-rotator-tag" data-rotator-topic="' + esc(item.topicKey) + '" title="Filtrar painel pelo contexto ' + esc(item.topicLabel) + '">' + esc(item.topicLabel) + '</button>' +
         '<a class="outlet-rotator-link" href="' + esc(item.href) + '" target="_blank" rel="noopener noreferrer" title="' + esc(trInfo.displayTitle) + '">' +
-          '<span class="outlet-rotator-text' + (item.isLoading ? ' is-loading-title' : '') + '">' + esc(trInfo.displayTitle) + '</span>' +
-          ICON_ARROW +
+        '<span class="outlet-rotator-text' + (item.isLoading ? ' is-loading-title' : '') + '">' + esc(trInfo.displayTitle) + '</span>' +
+        ICON_ARROW +
         '</a>' +
         (!item.isLoading ? (
           '<button type="button" class="outlet-rotator-translate-btn is-compact' + (trInfo.isTranslated ? ' is-translated' : '') + '" data-rot-translate data-rot-key="' + esc(trInfo.key) + '" data-rot-orig="' + esc(trInfo.origTitle) + '" aria-pressed="' + trInfo.isTranslated + '" title="' + (trInfo.isTranslated ? 'Ver título original' : 'Traduzir título para português') + '" aria-label="' + (trInfo.isTranslated ? 'Ver título original' : 'Traduzir título para português') + '">' +
-            ICON_TRANSLATE +
+          ICON_TRANSLATE +
           '</button>'
         ) : '') +
-      '</li>';
+        '</li>';
     }
     return lines;
   }
@@ -7894,46 +7896,46 @@
       thumbHtml = '<a class="outlet-single-thumb-link" href="' + esc(item.href) + '" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-hidden="true" title="' + esc(trInfo.displayTitle) + '">' +
         '<img class="outlet-single-thumb-img" src="' + esc(item.image) + '" alt="" loading="lazy" onerror="this.style.display=\'none\';if(this.nextElementSibling)this.nextElementSibling.style.display=\'flex\';">' +
         '<div class="outlet-single-thumb-fallback" style="display:none;' + fallbackStyle + '">' +
-          theme.iconSvg +
-          '<span class="outlet-single-thumb-label">' + esc(theme.label) + '</span>' +
+        theme.iconSvg +
+        '<span class="outlet-single-thumb-label">' + esc(theme.label) + '</span>' +
         '</div>' +
-      '</a>';
+        '</a>';
     } else {
       thumbHtml = '<a class="outlet-single-thumb-link" href="' + esc(item.href) + '" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-hidden="true" title="' + esc(trInfo.displayTitle) + '">' +
         '<div class="outlet-single-thumb-fallback" style="display:flex;' + fallbackStyle + '">' +
-          theme.iconSvg +
-          '<span class="outlet-single-thumb-label">' + esc(theme.label) + '</span>' +
+        theme.iconSvg +
+        '<span class="outlet-single-thumb-label">' + esc(theme.label) + '</span>' +
         '</div>' +
-      '</a>';
+        '</a>';
     }
 
     return '<div class="outlet-single-headline">' +
       '<div class="outlet-single-meta">' +
-        '<button type="button" class="outlet-rotator-tag outlet-single-tag" data-rotator-topic="' + esc(item.topicKey) + '" title="Filtrar pelo contexto ' + esc(item.topicLabel) + '">' + esc(item.topicLabel) + '</button>' +
-        '<div class="outlet-single-nav" aria-label="Navegação de manchetes">' +
-          '<button type="button" class="rotator-nav-btn rotator-prev-btn" data-rot-dir="-1" title="Manchete anterior" aria-label="Manchete anterior"' + (total <= 1 || item.isLoading ? ' disabled' : '') + '>‹</button>' +
-          '<span class="rotator-counter" aria-live="polite">' + countText + '</span>' +
-          '<button type="button" class="rotator-nav-btn rotator-next-btn" data-rot-dir="1" title="Próxima manchete" aria-label="Próxima manchete"' + (total <= 1 || item.isLoading ? ' disabled' : '') + '>›</button>' +
-        '</div>' +
+      '<button type="button" class="outlet-rotator-tag outlet-single-tag" data-rotator-topic="' + esc(item.topicKey) + '" title="Filtrar pelo contexto ' + esc(item.topicLabel) + '">' + esc(item.topicLabel) + '</button>' +
+      '<div class="outlet-single-nav" aria-label="Navegação de manchetes">' +
+      '<button type="button" class="rotator-nav-btn rotator-prev-btn" data-rot-dir="-1" title="Manchete anterior" aria-label="Manchete anterior"' + (total <= 1 || item.isLoading ? ' disabled' : '') + '>‹</button>' +
+      '<span class="rotator-counter" aria-live="polite">' + countText + '</span>' +
+      '<button type="button" class="rotator-nav-btn rotator-next-btn" data-rot-dir="1" title="Próxima manchete" aria-label="Próxima manchete"' + (total <= 1 || item.isLoading ? ' disabled' : '') + '>›</button>' +
+      '</div>' +
       '</div>' +
       '<div class="outlet-single-content">' +
-        thumbHtml +
-        '<div class="outlet-single-body">' +
-          '<div class="outlet-single-headline-wrap">' +
-            '<a class="outlet-single-title-link" href="' + esc(item.href) + '" target="_blank" rel="noopener noreferrer" title="' + esc(trInfo.displayTitle) + '">' +
-              '<span class="outlet-single-title' + (item.isLoading ? ' is-loading-title' : '') + '">' + esc(trInfo.displayTitle) + '</span>' +
-              '<span class="outlet-single-arrow-wrap">' + ICON_ARROW + '</span>' +
-            '</a>' +
-            (!item.isLoading ? (
-              '<button type="button" class="outlet-rotator-translate-btn' + (trInfo.isTranslated ? ' is-translated' : '') + '" data-rot-translate data-rot-key="' + esc(trInfo.key) + '" data-rot-orig="' + esc(trInfo.origTitle) + '" aria-pressed="' + trInfo.isTranslated + '" title="' + (trInfo.isTranslated ? 'Ver título original' : 'Traduzir título para português') + '">' +
-                ICON_TRANSLATE +
-                '<span>' + (trInfo.isTranslated ? 'Original' : 'Traduzir') + '</span>' +
-              '</button>'
-            ) : '') +
-          '</div>' +
-        '</div>' +
+      thumbHtml +
+      '<div class="outlet-single-body">' +
+      '<div class="outlet-single-headline-wrap">' +
+      '<a class="outlet-single-title-link" href="' + esc(item.href) + '" target="_blank" rel="noopener noreferrer" title="' + esc(trInfo.displayTitle) + '">' +
+      '<span class="outlet-single-title' + (item.isLoading ? ' is-loading-title' : '') + '">' + esc(trInfo.displayTitle) + '</span>' +
+      '<span class="outlet-single-arrow-wrap">' + ICON_ARROW + '</span>' +
+      '</a>' +
+      (!item.isLoading ? (
+        '<button type="button" class="outlet-rotator-translate-btn' + (trInfo.isTranslated ? ' is-translated' : '') + '" data-rot-translate data-rot-key="' + esc(trInfo.key) + '" data-rot-orig="' + esc(trInfo.origTitle) + '" aria-pressed="' + trInfo.isTranslated + '" title="' + (trInfo.isTranslated ? 'Ver título original' : 'Traduzir título para português') + '">' +
+        ICON_TRANSLATE +
+        '<span>' + (trInfo.isTranslated ? 'Original' : 'Traduzir') + '</span>' +
+        '</button>'
+      ) : '') +
       '</div>' +
-    '</div>';
+      '</div>' +
+      '</div>' +
+      '</div>';
   }
 
   function renderOutletRotatorContentHTML(pool, offset, isSingleTopic) {
@@ -7967,7 +7969,7 @@
         starBtn.setAttribute('data-news-source', oItem.n || '');
         starBtn.setAttribute('data-news-country', cCode || 'BR');
         if (!newsFav && document.activeElement === starBtn) {
-          try { starBtn.blur(); } catch (err) {}
+          try { starBtn.blur(); } catch (err) { }
         }
         return;
       }
@@ -7980,7 +7982,7 @@
     starBtn.setAttribute('aria-label', (outFav ? 'Remover dos favoritos: ' : 'Favoritar veículo: ') + oItem.n);
     starBtn.setAttribute('data-fav-mode', 'outlet');
     if (!outFav && document.activeElement === starBtn) {
-      try { starBtn.blur(); } catch (err) {}
+      try { starBtn.blur(); } catch (err) { }
     }
   }
 
@@ -8114,7 +8116,7 @@
             return r.ok ? r.json() : null;
           })
           .then(processApiResponse)
-          .catch(function () {})
+          .catch(function () { })
           .finally(maybeReorderAfterBatches);
       })(missing.slice(b, b + batchSize));
     }
@@ -8139,7 +8141,7 @@
       box.innerHTML = '<div class="empty-state" role="status">' +
         '<p>Nenhum veículo com linha editorial de <strong>' + esc(biasName) + '</strong> cadastrado para este país.</p>' +
         '<button type="button" class="btn btn-sm btn-secondary" id="btn-reset-bias-empty" style="margin-top:var(--space-3)">Exibir todos os veículos</button>' +
-      '</div>';
+        '</div>';
       var resetBtn = box.querySelector('#btn-reset-bias-empty');
       if (resetBtn) {
         resetBtn.addEventListener('click', function () {
@@ -8197,20 +8199,20 @@
 
       return '<article class="outlet' + (isPinned ? ' is-pinned' : '') + '" data-b="' + (pol ? o.b : 'N') + '" data-outlet-name="' + esc(o.n) + '" style="animation-delay:' + (idx * 30) + 'ms">' +
         '<div class="outlet-body-grid' + (isSingle ? ' is-single-topic' : '') + '">' +
-          '<div class="outlet-col-left">' +
-            '<div class="outlet-head"><img src="https://www.google.com/s2/favicons?domain=' + encodeURIComponent(host(o.u)) + '&sz=64" alt="" loading="lazy" width="24" height="24">' +
-            '<a href="' + esc(o.u) + '" target="_blank" rel="noopener"><h3>' + oFlag + ' ' + esc(o.n) + '</h3><span class="domain">' + esc(host(o.u)) + '</span></a></div>' +
-            '<div class="topics">' + topics + '</div>' +
-          '</div>' +
-          '<div class="outlet-col-rotator' + (isSingle ? ' is-single-topic' : '') + '" aria-label="Destaques e contextos de ' + esc(o.n) + '">' +
-            rotContainerHtml +
-          '</div>' +
-          '<div class="outlet-col-badges">' +
-            '<div class="badges">' + biasBadge + stBadge + indBadge + sugBadge + paywallBadge + '</div>' +
-            '<button type="button" class="fav-star-btn fav-outlet-btn' + (outFav ? ' is-fav' : '') + '" data-fav-outlet-idx="' + idx + '" aria-pressed="' + outFav + '" title="' + (outFav ? 'Remover veículo dos favoritos' : 'Salvar veículo nos favoritos') + '" aria-label="' + (outFav ? 'Remover dos favoritos: ' : 'Favoritar veículo: ') + esc(o.n) + '">' + (outFav ? ICON_STAR_ON : ICON_STAR_OFF) + '</button>' +
-          '</div>' +
+        '<div class="outlet-col-left">' +
+        '<div class="outlet-head"><img src="https://www.google.com/s2/favicons?domain=' + encodeURIComponent(host(o.u)) + '&sz=64" alt="" loading="lazy" width="24" height="24">' +
+        '<a href="' + esc(o.u) + '" target="_blank" rel="noopener"><h3>' + oFlag + ' ' + esc(o.n) + '</h3><span class="domain">' + esc(host(o.u)) + '</span></a></div>' +
+        '<div class="topics">' + topics + '</div>' +
         '</div>' +
-      '</article>';
+        '<div class="outlet-col-rotator' + (isSingle ? ' is-single-topic' : '') + '" aria-label="Destaques e contextos de ' + esc(o.n) + '">' +
+        rotContainerHtml +
+        '</div>' +
+        '<div class="outlet-col-badges">' +
+        '<div class="badges">' + biasBadge + stBadge + indBadge + sugBadge + paywallBadge + '</div>' +
+        '<button type="button" class="fav-star-btn fav-outlet-btn' + (outFav ? ' is-fav' : '') + '" data-fav-outlet-idx="' + idx + '" aria-pressed="' + outFav + '" title="' + (outFav ? 'Remover veículo dos favoritos' : 'Salvar veículo nos favoritos') + '" aria-label="' + (outFav ? 'Remover dos favoritos: ' : 'Favoritar veículo: ') + esc(o.n) + '">' + (outFav ? ICON_STAR_ON : ICON_STAR_OFF) + '</button>' +
+        '</div>' +
+        '</div>' +
+        '</article>';
     }).join('');
 
     var ROTATOR_MS = 7000;
@@ -8448,7 +8450,7 @@
               publishedAt: ''
             });
             syncOutletCardFavBtn(cardEl, itemObj, cCode, poolNow, stepNow);
-            try { starBtn.blur(); } catch (err) {}
+            try { starBtn.blur(); } catch (err) { }
             return;
           }
         }
@@ -8457,7 +8459,7 @@
         starBtn.setAttribute('aria-pressed', String(nowFav));
         starBtn.innerHTML = nowFav ? ICON_STAR_ON : ICON_STAR_OFF;
         starBtn.title = nowFav ? 'Remover veículo dos favoritos' : 'Salvar veículo nos favoritos';
-        try { starBtn.blur(); } catch (err) {}
+        try { starBtn.blur(); } catch (err) { }
       });
     });
 
@@ -8596,7 +8598,7 @@
           var saved = JSON.parse(localStorage.getItem('rom_newsletter_subs') || '[]');
           saved.push({ email: emailVal, nome: nomeVal, topico: topicStr, data: new Date().toISOString() });
           localStorage.setItem('rom_newsletter_subs', JSON.stringify(saved));
-        } catch (err) {}
+        } catch (err) { }
         if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Inscrevendo…'; }
         var saudacao = nomeVal ? 'Olá, ' + nomeVal + '!' : 'Olá!';
         var autoMsg = saudacao + '\n\n' +
@@ -8626,15 +8628,15 @@
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email: emailVal, nome: nomeVal, topico: topicStr })
-          }).catch(function () {});
-        } catch (eSub) {}
+          }).catch(function () { });
+        } catch (eSub) { }
 
         fetch('https://formsubmit.co/ajax/rodandoomundoprojeto@gmail.com', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
           body: JSON.stringify(nlPayload)
         })
-          .catch(function () {})
+          .catch(function () { })
           .then(function () {
             if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Inscrever-se'; }
             if (statusEl) {
@@ -8742,7 +8744,7 @@
       } else if (metaRobots) {
         metaRobots.setAttribute('content', 'index, follow');
       }
-    } catch (e) {}
+    } catch (e) { }
   }
 
   function syncMobileEditorialToggle(sectionKey) {
@@ -8999,7 +9001,7 @@
             opts.fromPopState = false;
           }
         }
-      } catch (eDl) {}
+      } catch (eDl) { }
     }
     if (sectionKey === 'radar') {
       var requestedTab = opts.radarTab || getRadarHubSubtabFromLocation();
@@ -9145,7 +9147,7 @@
       try {
         if (opts.replaceUrl) history.replaceState({ editorialSection: sectionKey, radarTab: (sectionKey === 'radar' ? radarHubSubtab : undefined) }, '', targetUrl);
         else if ((location.pathname + location.hash) !== targetUrl) history.pushState({ editorialSection: sectionKey, radarTab: (sectionKey === 'radar' ? radarHubSubtab : undefined) }, '', targetUrl);
-      } catch (e) {}
+      } catch (e) { }
     } else if (sectionKey === 'radar') {
       applyRadarHubTabUI();
       updateNavActive('/radar');
@@ -9192,10 +9194,10 @@
         '<h1 id="not-found-title">Página não encontrada</h1>' +
         '<p id="not-found-copy">A rota "' + esc(badPath || location.pathname) + '" não foi encontrada. Verifique o endereço ou volte para explorar o mapa-múndi.</p>' +
         '<div class="not-found-actions">' +
-          '<a href="/" class="btn-primary" id="not-found-home">Voltar ao mapa</a>' +
-          '<a href="/resumo-do-dia" class="btn-secondary" data-spa-link>Ver resumo do dia</a>' +
+        '<a href="/" class="btn-primary" id="not-found-home">Voltar ao mapa</a>' +
+        '<a href="/resumo-do-dia" class="btn-secondary" data-spa-link>Ver resumo do dia</a>' +
         '</div>' +
-      '</article>';
+        '</article>';
       notFoundView.hidden = false;
       var btnHome = notFoundView.querySelector('#not-found-home');
       if (btnHome) {
@@ -9206,7 +9208,7 @@
           avisoGestoExibido = false;
           go(null, null);
           fitAspect();
-          try { history.pushState({}, '', '/'); } catch (err) {}
+          try { history.pushState({}, '', '/'); } catch (err) { }
         });
       }
       var btnRes = notFoundView.querySelector('a[data-spa-link]');
@@ -9331,8 +9333,8 @@
       if (quickCountryView) quickCountryView.hidden = true;
       var vitrineIaSec = document.getElementById('vitrine-ia');
       if (vitrineIaSec) vitrineIaSec.hidden = true;
-    var dossiesRotSec = document.getElementById('dossies-rotativos');
-    if (dossiesRotSec) dossiesRotSec.hidden = true;
+      var dossiesRotSec = document.getElementById('dossies-rotativos');
+      if (dossiesRotSec) dossiesRotSec.hidden = true;
       if (thematicHubView) {
         thematicHubView.hidden = true;
         thematicHubView.innerHTML = '';
@@ -9429,9 +9431,9 @@
     h += '<span class="consenso-sub-badge">Fatos confirmados por todas as fontes</span>';
     h += '</div>';
     h += '<button type="button" class="consenso-toggle-btn" aria-expanded="false" aria-controls="consenso-content-body">' +
-         '<span class="consenso-toggle-label">Ver fatos confirmados</span>' +
-         '<span class="consenso-toggle-arrow" aria-hidden="true">▼</span>' +
-         '</button>';
+      '<span class="consenso-toggle-label">Ver fatos confirmados</span>' +
+      '<span class="consenso-toggle-arrow" aria-hidden="true">▼</span>' +
+      '</button>';
     h += '</div>';
     h += '<div class="consenso-body" id="consenso-content-body" hidden>';
     h += '<p class="consenso-intro">Antes de observar os diferentes enquadramentos editoriais, veja os fatos objetivos confirmados universalmente por agências internacionais e correspondentes:</p>';
@@ -9523,7 +9525,7 @@
       var pLink = buildArticleLinkAttrs(p.urlMateria, p.tituloPT, p.veiculo, p.tituloOriginal || p.tituloPT);
       h += '<div class="comparison-card-foot">';
       h += '<a class="comparison-outlet-link" href="' + esc(pLink.href) + '"' + pLink.attrs + ' target="_blank" rel="noopener noreferrer">' +
-           (isVideoContent(p.urlMateria, p) ? 'Assistir vídeo original em ' : 'Ler matéria original em ') + esc(p.veiculo) + ' ' + ICON_ARROW + '</a>';
+        (isVideoContent(p.urlMateria, p) ? 'Assistir vídeo original em ' : 'Ler matéria original em ') + esc(p.veiculo) + ' ' + ICON_ARROW + '</a>';
       h += '</div>';
       h += '</article>';
     });
@@ -9575,7 +9577,7 @@
       var pLink = buildArticleLinkAttrs(p.urlMateria, p.tituloPT, p.veiculo, p.tituloOriginal || p.tituloPT);
       h += '<div class="comparison-card-foot">';
       h += '<a class="comparison-outlet-link" href="' + esc(pLink.href) + '"' + pLink.attrs + ' target="_blank" rel="noopener noreferrer">' +
-           (isVideoContent(p.urlMateria, p) ? 'Assistir vídeo original em ' : 'Ler matéria original em ') + esc(p.veiculo) + ' ' + ICON_ARROW + '</a>';
+        (isVideoContent(p.urlMateria, p) ? 'Assistir vídeo original em ' : 'Ler matéria original em ') + esc(p.veiculo) + ' ' + ICON_ARROW + '</a>';
       h += '</div>';
       h += '</article>';
     });
@@ -9673,7 +9675,7 @@
         var targetUrl = '/comparar/' + compData.slug;
         if (opts.replaceUrl) history.replaceState({ compareSlug: compData.slug }, '', targetUrl);
         else if (location.pathname !== targetUrl || location.hash) history.pushState({ compareSlug: compData.slug }, '', targetUrl);
-      } catch (e) {}
+      } catch (e) { }
     }
 
     var closeInlineBtn = compView.querySelector('[data-close-inline-comparison]');
@@ -9851,16 +9853,16 @@
 
     var banner =
       '<div class="perspective-dynamic-banner">' +
-        '<h3 class="perspective-dynamic-title">' + esc(queryStr) + ': como os veículos estão cobrindo</h3>' +
-        '<p class="perspective-dynamic-subtitle">Compare as últimas notícias e as diferentes perspectivas sobre o assunto.</p>' +
-        '<p class="perspective-dynamic-meta">Página temática: <strong>' + esc(hub.titulo) + '</strong> · Período: <strong>' + esc(perLabel) + '</strong></p>' +
+      '<h3 class="perspective-dynamic-title">' + esc(queryStr) + ': como os veículos estão cobrindo</h3>' +
+      '<p class="perspective-dynamic-subtitle">Compare as últimas notícias e as diferentes perspectivas sobre o assunto.</p>' +
+      '<p class="perspective-dynamic-meta">Página temática: <strong>' + esc(hub.titulo) + '</strong> · Período: <strong>' + esc(perLabel) + '</strong></p>' +
       '</div>';
 
     if (isLoading) {
       box.innerHTML = banner +
         '<div class="topic-search-status loading" role="status">' +
-          '<span class="topic-search-spinner" aria-hidden="true"></span>' +
-          '<p>Buscando matérias sobre <strong>“' + esc(queryStr) + '”</strong> nos veículos cadastrados…</p>' +
+        '<span class="topic-search-spinner" aria-hidden="true"></span>' +
+        '<p>Buscando matérias sobre <strong>“' + esc(queryStr) + '”</strong> nos veículos cadastrados…</p>' +
         '</div>';
       return;
     }
@@ -9868,8 +9870,8 @@
     if (!grupos || !grupos.length) {
       box.innerHTML = banner +
         '<div class="topic-search-status empty" role="status">' +
-          '<p class="topic-search-empty-title">Nenhum resultado encontrado</p>' +
-          '<p class="topic-search-empty-sub">Não encontramos matérias para <strong>“' + esc(queryStr) + '”</strong> no período selecionado.</p>' +
+        '<p class="topic-search-empty-title">Nenhum resultado encontrado</p>' +
+        '<p class="topic-search-empty-sub">Não encontramos matérias para <strong>“' + esc(queryStr) + '”</strong> no período selecionado.</p>' +
         '</div>';
       return;
     }
@@ -10182,7 +10184,7 @@
     var tl = EDITORIAL.linhasDoTempo[hub.linhaDoTempoId];
     var periods = [
       { k: '24h', l: 'Últimas 24 horas' },
-      { k: '7d',  l: 'Últimos 7 dias' }
+      { k: '7d', l: 'Últimos 7 dias' }
     ];
 
     var h = '<div class="hub-container">';
@@ -10355,7 +10357,7 @@
       try {
         if (opts.replaceUrl) history.replaceState({ hubRoute: hubRoute }, '', hubRoute);
         else if (location.pathname !== hubRoute || location.hash) history.pushState({ hubRoute: hubRoute }, '', hubRoute);
-      } catch (e) {}
+      } catch (e) { }
     }
   }
 
@@ -10390,7 +10392,7 @@
         var dom = '';
         try {
           dom = o.d || new URL(o.u).hostname.replace(/^www\./i, '');
-        } catch (e) {}
+        } catch (e) { }
         if (!dom || seenDomains[dom]) return;
         seenDomains[dom] = true;
         outlets.push({
@@ -10430,12 +10432,12 @@
     var loadFeed = window._romFeedOutputCache
       ? Promise.resolve(window._romFeedOutputCache)
       : fetch('/data/feed_output.json?_t=' + Date.now(), { cache: 'no-store' })
-          .then(function (r) { return r.ok ? r.json() : []; })
-          .then(function (arr) {
-            window._romFeedOutputCache = Array.isArray(arr) ? arr : [];
-            return window._romFeedOutputCache;
-          })
-          .catch(function () { return []; });
+        .then(function (r) { return r.ok ? r.json() : []; })
+        .then(function (arr) {
+          window._romFeedOutputCache = Array.isArray(arr) ? arr : [];
+          return window._romFeedOutputCache;
+        })
+        .catch(function () { return []; });
 
     return loadFeed.then(function (items) {
       var scored = [];
@@ -10584,16 +10586,16 @@
     }).then(function (res) {
       var extraPromise = Promise.resolve(null);
       if (dossie && dossie.slug === 'conflitos-medio-oriente' && /gaza/i.test(q || '')) {
-        extraPromise = runBuscaQuery('Gaza Palestine', (res && res.periodoEfetivo) || per).catch(function(){ return null; });
+        extraPromise = runBuscaQuery('Gaza Palestine', (res && res.periodoEfetivo) || per).catch(function () { return null; });
       }
-      return extraPromise.then(function(extra){
-        if (extra && extra.flat && extra.flat.length && res && res.flat){
+      return extraPromise.then(function (extra) {
+        if (extra && extra.flat && extra.flat.length && res && res.flat) {
           var seen = {};
-          res.flat.forEach(function(it){ if(it && it.materia_url) seen[it.materia_url]=1; });
-          extra.flat.forEach(function(it){
-            if(it && it.materia_url && !seen[it.materia_url]){ res.flat.push(it); seen[it.materia_url]=1; }
+          res.flat.forEach(function (it) { if (it && it.materia_url) seen[it.materia_url] = 1; });
+          extra.flat.forEach(function (it) {
+            if (it && it.materia_url && !seen[it.materia_url]) { res.flat.push(it); seen[it.materia_url] = 1; }
           });
-          res.flat.sort(function(a,b){
+          res.flat.sort(function (a, b) {
             var da = a.publicado_em ? Date.parse(a.publicado_em) || 0 : 0;
             var db = b.publicado_em ? Date.parse(b.publicado_em) || 0 : 0;
             return db - da;
@@ -10941,7 +10943,7 @@
       try {
         if (opts.replaceUrl) history.replaceState({ dossieSlug: normalizedSlug }, '', targetPath);
         else if (location.pathname !== targetPath || location.hash) history.pushState({ dossieSlug: normalizedSlug }, '', targetPath);
-      } catch (e) {}
+      } catch (e) { }
     }
 
     var apiPromise = fetch('/v2/dossies/' + encodeURIComponent(normalizedSlug) + '?_t=' + Date.now(), { cache: 'no-store' })
@@ -11260,7 +11262,7 @@
         try {
           if (opts.replaceUrl) history.replaceState({ entendaSlug: cleanSlug }, '', routePathDyn);
           else if (location.pathname !== routePathDyn || location.hash) history.pushState({ entendaSlug: cleanSlug }, '', routePathDyn);
-        } catch (e) {}
+        } catch (e) { }
       }
 
       var cachedArt = entendaV2State.bySlug[cleanSlug] || entendaV2State.bySlug[String(slug || '').toLowerCase()];
@@ -11406,7 +11408,7 @@
       try {
         if (opts.replaceUrl) history.replaceState({ entendaSlug: slug }, '', routePath);
         else if (location.pathname !== routePath || location.hash) history.pushState({ entendaSlug: slug }, '', routePath);
-      } catch (e) {}
+      } catch (e) { }
     }
   }
 
@@ -11449,7 +11451,7 @@
       if (Array.isArray(list) && list.length) {
         try {
           incorporarTopicosEmAlta(String(k).toUpperCase(), list, false);
-        } catch (e) {}
+        } catch (e) { }
       }
     }
   }
@@ -11561,7 +11563,7 @@
           return true;
         }
       }
-    } catch (e) {}
+    } catch (e) { }
     return false;
   }
 
@@ -11581,7 +11583,7 @@
         } else {
           localStorage.removeItem('rom_resumo_date');
         }
-      } catch (e) {}
+      } catch (e) { }
     }
     return true;
   }
@@ -11607,7 +11609,7 @@
       if (h === 'curadoria') return 'curadoria';
       if (h === 'colunas') return 'colunas';
       if (h === 'radar') return 'radar';
-    } catch (e) {}
+    } catch (e) { }
     return 'radar';
   }
 
@@ -11621,7 +11623,7 @@
         try {
           if (opts.replaceUrl) history.replaceState({ editorialSection: 'radar', radarTab: radarHubSubtab }, '', targetPath);
           else if ((location.pathname + location.hash) !== targetPath) history.pushState({ editorialSection: 'radar', radarTab: radarHubSubtab }, '', targetPath);
-        } catch (e) {}
+        } catch (e) { }
       }
       updateNavActive('/radar');
       applyRadarHubTabUI();
@@ -11777,7 +11779,7 @@
     html += '<div class="vitrine-ia-title-group">';
     html += '<div class="vitrine-ia-badge-row"><span class="vitrine-ia-badge"><span class="vitrine-ia-pulse" aria-hidden="true"></span> Análise em Tempo Real</span></div>';
     html += '<h2 class="vitrine-ia-title">Curadoria em Tempo Real</h2>';
-    html += '<p class="vitrine-ia-subtitle">Temas em alta, cruzamento editorial e sinais relevantes monitorados continuamente pela curadoria IA — a análise em tempo real que antes aparecia na página inicial.</p>';
+    html += '<p class="vitrine-ia-subtitle">Temas em alta, cruzamento editorial e sinais relevantes monitorados continuamente pela curadoria IA.</p>';
     html += '</div>';
     html += '<div class="vitrine-ia-actions"><button type="button" class="btn btn-secondary" id="btn-refresh-vitrine-ia" data-action="refresh-vitrine" title="Atualizar curadoria em tempo real (sem cache)">🔄 Atualizar</button></div>';
     html += '</div>';
@@ -11890,7 +11892,7 @@
     if (prevItems.length === 0) return false;
     for (var i = 0; i < prevItems.length; i++) {
       if (getRadarItemKey(prevItems[i]) !== getRadarItemKey(nextItems[i]) ||
-          getRadarPubTimestamp(prevItems[i]) !== getRadarPubTimestamp(nextItems[i])) {
+        getRadarPubTimestamp(prevItems[i]) !== getRadarPubTimestamp(nextItems[i])) {
         return true;
       }
     }
@@ -11921,8 +11923,8 @@
     }
 
     var isMesmoDia = d.getDate() === agora.getDate() &&
-                     d.getMonth() === agora.getMonth() &&
-                     d.getFullYear() === agora.getFullYear();
+      d.getMonth() === agora.getMonth() &&
+      d.getFullYear() === agora.getFullYear();
 
     var texto = '';
     if (diffMin >= 0 && diffMin < 5) {
@@ -11979,7 +11981,7 @@
 
     if (forceRefresh) {
       radarVisibleCount = RADAR_PAGE_SIZE;
-      try { localStorage.removeItem('rom_radar_cache'); } catch (e) {}
+      try { localStorage.removeItem('rom_radar_cache'); } catch (e) { }
       if (!prevCache || !prevCache.length) {
         var listLoading = document.getElementById('radar-cards-list');
         if (listLoading) {
@@ -12423,7 +12425,7 @@
         .replace(/^[A-Z0-9_]{3,30}:\s*/, '')
         .trim();
 
-      var ehPromptOuDebug = function(txt) {
+      var ehPromptOuDebug = function (txt) {
         if (!txt) return true;
         return /^(Destacar cobertura|Focar em|Análise em dry-run|Placeholder|TODO|Instrução|Prompt|Síntese automática de contingência)\b/i.test(txt);
       };
@@ -12497,7 +12499,7 @@
     if (radarVisibleCount < totalCards) {
       var remaining = totalCards - radarVisibleCount;
       var nextBatch = Math.min(RADAR_PAGE_SIZE, remaining);
-      loadMoreWrap.innerHTML = 
+      loadMoreWrap.innerHTML =
         '<button type="button" class="btn btn-secondary radar-btn-load-more" id="radar-btn-load-more" title="Carregar mais novidades em ordem cronológica">' +
         '<span>Ver + (' + nextBatch + ' notícias)</span> <span aria-hidden="true">▾</span>' +
         '</button>' +
@@ -12542,7 +12544,7 @@
           var mm = ('0' + updDt.getMinutes()).slice(-2);
           updatedSuffix = ' · Atualizado às ' + hh + 'h' + mm;
         }
-      } catch (e) {}
+      } catch (e) { }
     }
     var motorEhGroqWeb = /groq|duckduckgo|rss/i.test(resumoFonteMotor || '');
     var rh = '<div class="editorial-section-head">';
@@ -12561,12 +12563,12 @@
     // Slot Comercial 2: Resumo do Dia (Web + E-mail)
     rh += '<div id="slot-sponsor-resumo" class="sponsor-slot sponsor-slot-resumo" hidden aria-label="Oferecimento do Resumo do Dia">' +
       '<div class="sponsor-resumo-badge">' +
-        '<span class="sponsor-tag">Oferecimento</span>' +
-        '<span class="mock-brand-logo sponsor-brand-target">Sua Marca Aqui</span>' +
-        '<span class="sponsor-resumo-desc">— Conectando você às principais movimentações e análises do planeta.</span>' +
+      '<span class="sponsor-tag">Oferecimento</span>' +
+      '<span class="mock-brand-logo sponsor-brand-target">Sua Marca Aqui</span>' +
+      '<span class="sponsor-resumo-desc">— Conectando você às principais movimentações e análises do planeta.</span>' +
       '</div>' +
       '<a class="sponsor-cta-pill" href="/parcerias" data-spa-link>Saiba mais</a>' +
-    '</div>';
+      '</div>';
 
     var defaultEditoriaColors = ['#388bfd', '#2ea043', '#d29922', '#f85149', '#a371f7'];
     rh += '<ol class="resumo-dia-list">';
@@ -12634,10 +12636,10 @@
       rh += '<div class="resumo-actions-compact">';
       if (compSlug) {
         rh += '<a class="btn-compare-primary" href="/comparar/' + esc(compSlug) + '" data-spa-link>' +
-              '<span class="btn-compare-icon" aria-hidden="true">⚖️</span> Comparar (' + totalVeiculos + ' veículos)</a>';
+          '<span class="btn-compare-icon" aria-hidden="true">⚖️</span> Comparar (' + totalVeiculos + ' veículos)</a>';
       } else {
         rh += '<button type="button" class="btn-compare-primary" data-ver-noticias-assunto data-termo="' + esc(qBusca) + '" data-pais="' + esc(cCodeUp) + '" data-cont="' + esc(cContKey) + '" data-topico="' + esc(cTopicKey) + '">' +
-              '<span class="btn-compare-icon" aria-hidden="true">⚖️</span> Comparar perspectivas</button>';
+          '<span class="btn-compare-icon" aria-hidden="true">⚖️</span> Comparar perspectivas</button>';
       }
       rh += '<a class="link-original-secondary" href="' + esc(resLink.href) + '"' + resLink.attrs + ' target="_blank" rel="noopener noreferrer" data-resumo-link>Ler original ↗</a>';
       rh += '<div class="item-action-btns">' +
@@ -12743,7 +12745,7 @@
         localStorage.removeItem('rom_resumo_ts');
         localStorage.removeItem('rom_resumo_updated_at');
         localStorage.removeItem('rom_resumo_date');
-      } catch (e) {}
+      } catch (e) { }
     }
 
     var fetchOpts = { cache: 'no-store', headers: { Accept: 'application/json' } };
@@ -12785,7 +12787,7 @@
             }
           });
       })
-      .catch(function () {})
+      .catch(function () { })
       .finally(function () {
         resumoAutoAtualizando = false;
         renderResumoDoDiaDOM();
@@ -12993,7 +12995,7 @@
         return parsed;
       }
       localStorage.removeItem('rom_ultimas_noticias');
-    } catch (e) {}
+    } catch (e) { }
     return null;
   }
 
@@ -13101,7 +13103,7 @@
                 noticias: mapped,
                 atualizadoEm: ultimasNoticiasState.atualizadoEm
               }));
-            } catch (e) {}
+            } catch (e) { }
             renderUltimasNoticiasView();
             return;
           }
@@ -13127,7 +13129,7 @@
     if (forcar) {
       try {
         localStorage.removeItem('rom_ultimas_noticias');
-      } catch (e) {}
+      } catch (e) { }
     }
     renderUltimasNoticiasView();
 
@@ -13172,7 +13174,7 @@
                 noticias: sortedNoticias,
                 atualizadoEm: ultimasNoticiasState.atualizadoEm
               }));
-            } catch (e) {}
+            } catch (e) { }
           }
           renderUltimasNoticiasView();
         } else {
@@ -13451,7 +13453,7 @@
         var horaFormatada = '';
         try {
           horaFormatada = new Date(ultimasNoticiasState.atualizadoEm).toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
-        } catch (e) {}
+        } catch (e) { }
         if (horaFormatada) html += '<span class="ultimas-updated-at">· Atualizado às ' + esc(horaFormatada) + '</span>';
       }
       html += '</div>';
@@ -13617,8 +13619,8 @@
       var countRg = rg.id === 'todas'
         ? lista.length
         : lista.filter(function (x) {
-            return rg.id === 'sudeste' ? (x.regiao === 'sudeste' || x.regiao === 'nacional') : x.regiao === rg.id;
-          }).length;
+          return rg.id === 'sudeste' ? (x.regiao === 'sudeste' || x.regiao === 'nacional') : x.regiao === rg.id;
+        }).length;
       var isActive = regiaoAtiva === rg.id;
       html += '<button type="button" class="ultimas-pill' + (isActive ? ' is-active' : '') + '" data-regiao="' + esc(rg.id) + '" role="tab" aria-selected="' + isActive + '">';
       html += esc(rg.label) + ' <span class="pill-count">(' + countRg + ')</span>';
@@ -13893,7 +13895,7 @@
             try {
               if (typeof renderTemasHubsSection === 'function') renderTemasHubsSection();
               if (typeof renderDossiesRotativosHome === 'function') renderDossiesRotativosHome();
-            } catch (e) {}
+            } catch (e) { }
             return dossiesState;
           });
       });
@@ -14132,17 +14134,17 @@
       : '<span class="hub-home-meta-badge">Permanente · ' + metaText + '</span>';
     return '<article class="hub-home-card dossie-rotativo-card">' +
       '<div class="hub-home-card-top">' +
-        renderDossieIconHtml(d) +
-        statusHtml +
-        renderShareBtn({ url: href, title: d.titulo, source: 'Dossiê RoM', type: 'dossie', summary: d.subtitulo || '' }) +
+      renderDossieIconHtml(d) +
+      statusHtml +
+      renderShareBtn({ url: href, title: d.titulo, source: 'Dossiê RoM', type: 'dossie', summary: d.subtitulo || '' }) +
       '</div>' +
       '<h3><a href="' + esc(href) + '" data-spa-link>' + esc(d.titulo) + '</a></h3>' +
       (d.meta_info && d.tipo === 'especial' ? '<div class="dossie-meta-period">' + esc(d.meta_info) + '</div>' : '') +
       '<p>' + esc(d.subtitulo || '') + '</p>' +
       '<div class="hub-home-card-foot">' +
-        '<a class="hub-home-open" href="' + esc(href) + '" data-spa-link>Acessar dossiê →</a>' +
+      '<a class="hub-home-open" href="' + esc(href) + '" data-spa-link>Acessar dossiê →</a>' +
       '</div>' +
-    '</article>';
+      '</article>';
   }
 
   function stopDossieRotativoTimer() {
@@ -14626,7 +14628,7 @@
           }
         }
       })
-      .catch(function () {});
+      .catch(function () { });
   }
 
   function buildPath(cont, country) {
@@ -14634,9 +14636,9 @@
     var cSlug = CONT_SLUGS[cont] || cont;
     if (!country) return '/' + cSlug;
     if (cont === 'sul' && (country.a2 === 'FR' || country.id === '250')) return '/' + cSlug + '/GF';
-    if (cont === 'sul' && (country.id === '218-galapagos' || (country.a2 === 'EC' && (country.islandName || (state && state.islandName)))) ) return '/' + cSlug + '/218-galapagos';
-    if (cont === 'oceania' && (country.id === '152-easter' || (country.a2 === 'CL' && (country.islandName || (state && state.islandName)))) ) return '/' + cSlug + '/152-easter';
-    if (cont === 'oceania' && (country.id === '840-hawaii' || (country.a2 === 'US' && (country.islandName || (state && state.islandName)))) ) return '/' + cSlug + '/840-hawaii';
+    if (cont === 'sul' && (country.id === '218-galapagos' || (country.a2 === 'EC' && (country.islandName || (state && state.islandName))))) return '/' + cSlug + '/218-galapagos';
+    if (cont === 'oceania' && (country.id === '152-easter' || (country.a2 === 'CL' && (country.islandName || (state && state.islandName))))) return '/' + cSlug + '/152-easter';
+    if (cont === 'oceania' && (country.id === '840-hawaii' || (country.a2 === 'US' && (country.islandName || (state && state.islandName))))) return '/' + cSlug + '/840-hawaii';
     var code = (country.a2 || country.id);
     return '/' + cSlug + '/' + code;
   }
@@ -14681,7 +14683,7 @@
       state.searchData = null;
       state.searchError = '';
       if (activeSearchController) {
-        try { activeSearchController.abort(); } catch (e) {}
+        try { activeSearchController.abort(); } catch (e) { }
       }
     } else if (opts.pinnedOutlet) {
       state.pinnedOutlet = opts.pinnedOutlet;
@@ -14760,7 +14762,7 @@
         } else if (location.pathname !== targetPath || location.hash) {
           history.pushState({ cont: cont, country: country ? (country.a2 || country.id) : null }, '', targetPath);
         }
-      } catch (e) {}
+      } catch (e) { }
     }
   }
 
@@ -15184,7 +15186,7 @@
           seenOutlets[key] = true;
           var oHost = '';
           if (o.u) {
-            try { oHost = new URL(o.u).hostname.replace(/^www\./, '').toLowerCase(); } catch (e) {}
+            try { oHost = new URL(o.u).hostname.replace(/^www\./, '').toLowerCase(); } catch (e) { }
           }
           items.push({
             type: 'outlet',
@@ -15474,7 +15476,7 @@
     if (tabPriv) {
       tabPriv.addEventListener('click', function () {
         setComplianceTab('privacidade');
-        try { history.pushState({ editorialSection: 'privacidade' }, '', '/privacidade'); } catch (e) {}
+        try { history.pushState({ editorialSection: 'privacidade' }, '', '/privacidade'); } catch (e) { }
         updateSeoMeta('Política de Privacidade (LGPD) | Rodando o Mundo', 'Conheça nossa política de conformidade com a LGPD e uso de dados no Rodando o Mundo.', '/privacidade');
         updateNavActive('/privacidade');
       });
@@ -15482,7 +15484,7 @@
     if (tabTerm) {
       tabTerm.addEventListener('click', function () {
         setComplianceTab('termos');
-        try { history.pushState({ editorialSection: 'termos' }, '', '/termos'); } catch (e) {}
+        try { history.pushState({ editorialSection: 'termos' }, '', '/termos'); } catch (e) { }
         updateSeoMeta('Termos de Uso do Atlas | Rodando o Mundo', 'Termos e diretrizes de uso, direitos autorais e isenção de responsabilidade do Rodando o Mundo.', '/termos');
         updateNavActive('/termos');
       });
@@ -15499,29 +15501,29 @@
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
       body: JSON.stringify(payload)
     })
-    .then(function (r) {
-      if (r.ok) {
-        return r.json().catch(function () { return { ok: true }; }).then(function (j) {
-          if (j && j.ok !== false) return { ok: true, via: 'api' };
-          throw new Error('Retorno inválido de /api/contato');
-        });
-      }
-      throw new Error('HTTP ' + r.status);
-    })
-    .catch(function () {
-      // 2º Se a API interna falhar, tenta FormSubmit via AJAX direto
-      return fetch(FB_ENDPOINT, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify(payload)
-      })
       .then(function (r) {
-        return r.json().catch(function () { return {}; }).then(function (j) {
-          if (r.ok && String(j.success) !== 'false') return { ok: true, via: 'formsubmit' };
-          throw new Error('Falha FormSubmit');
-        });
+        if (r.ok) {
+          return r.json().catch(function () { return { ok: true }; }).then(function (j) {
+            if (j && j.ok !== false) return { ok: true, via: 'api' };
+            throw new Error('Retorno inválido de /api/contato');
+          });
+        }
+        throw new Error('HTTP ' + r.status);
+      })
+      .catch(function () {
+        // 2º Se a API interna falhar, tenta FormSubmit via AJAX direto
+        return fetch(FB_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(payload)
+        })
+          .then(function (r) {
+            return r.json().catch(function () { return {}; }).then(function (j) {
+              if (r.ok && String(j.success) !== 'false') return { ok: true, via: 'formsubmit' };
+              throw new Error('Falha FormSubmit');
+            });
+          });
       });
-    });
   }
 
   var form = document.getElementById('fb-form');
@@ -15785,30 +15787,30 @@
       saveLocalRegisteredOutlet(regRecord);
 
       enviarDadosFormulario(payload)
-      .then(function () {
-        cadForm.reset();
-        if (counterEl) counterEl.textContent = '0 / 2500 caracteres';
-        if (relacaoReq) relacaoReq.hidden = true;
-        setCadStatus(
-          '🎉 <strong>Inscrição enviada com sucesso!</strong> Recebemos o cadastro do veículo <strong>' +
-          esc(veiculoNome) + '</strong>. Nossa curadoria editorial analisará as informações e entraremos em contato pelo e-mail <strong>' +
-          esc(email) + '</strong> assim que a integração for validada no mapa.',
-          'ok'
-        );
-      })
-      .catch(function () {
-        cadForm.reset();
-        setCadStatus(
-          '✓ <strong>Cadastro salvo com sucesso!</strong> Recebemos as informações e analisaremos em breve. Se desejar, confirme em <a href="mailto:rodandoomundoprojeto@gmail.com">rodandoomundoprojeto@gmail.com</a>.',
-          'ok'
-        );
-      })
-      .then(function () {
-        if (cadSubmit) {
-          cadSubmit.disabled = false;
-          cadSubmit.innerHTML = '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg> <span>Enviar cadastro do veículo</span>';
-        }
-      });
+        .then(function () {
+          cadForm.reset();
+          if (counterEl) counterEl.textContent = '0 / 2500 caracteres';
+          if (relacaoReq) relacaoReq.hidden = true;
+          setCadStatus(
+            '🎉 <strong>Inscrição enviada com sucesso!</strong> Recebemos o cadastro do veículo <strong>' +
+            esc(veiculoNome) + '</strong>. Nossa curadoria editorial analisará as informações e entraremos em contato pelo e-mail <strong>' +
+            esc(email) + '</strong> assim que a integração for validada no mapa.',
+            'ok'
+          );
+        })
+        .catch(function () {
+          cadForm.reset();
+          setCadStatus(
+            '✓ <strong>Cadastro salvo com sucesso!</strong> Recebemos as informações e analisaremos em breve. Se desejar, confirme em <a href="mailto:rodandoomundoprojeto@gmail.com">rodandoomundoprojeto@gmail.com</a>.',
+            'ok'
+          );
+        })
+        .then(function () {
+          if (cadSubmit) {
+            cadSubmit.disabled = false;
+            cadSubmit.innerHTML = '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg> <span>Enviar cadastro do veículo</span>';
+          }
+        });
     });
   }
 
@@ -15922,7 +15924,7 @@
       }
       if (nomeInput) {
         setTimeout(function () {
-          try { nomeInput.focus(); } catch (e) {}
+          try { nomeInput.focus(); } catch (e) { }
         }, 60);
       }
     }
@@ -16140,28 +16142,28 @@
       setParcStatus('');
 
       enviarDadosFormulario(payload)
-      .then(function () {
-        parcForm.reset();
-        setParcStatus(
-          '🎉 <strong>Solicitação enviada com sucesso!</strong> Agradecemos o interesse da <strong>' +
-          esc(empresa) + '</strong>. Nossa equipe entrará em contato em até 24 horas úteis no e-mail <strong>' +
-          esc(email) + '</strong> com nosso mídia kit detalhado e proposta de patrocínio.',
-          'ok'
-        );
-      })
-      .catch(function () {
-        parcForm.reset();
-        setParcStatus(
-          '✓ <strong>Proposta registrada!</strong> Entraremos em contato em breve pelo e-mail informado.',
-          'ok'
-        );
-      })
-      .then(function () {
-        if (parcSubmit) {
-          parcSubmit.disabled = false;
-          parcSubmit.textContent = 'Solicitar Mídia Kit & Proposta';
-        }
-      });
+        .then(function () {
+          parcForm.reset();
+          setParcStatus(
+            '🎉 <strong>Solicitação enviada com sucesso!</strong> Agradecemos o interesse da <strong>' +
+            esc(empresa) + '</strong>. Nossa equipe entrará em contato em até 24 horas úteis no e-mail <strong>' +
+            esc(email) + '</strong> com nosso mídia kit detalhado e proposta de patrocínio.',
+            'ok'
+          );
+        })
+        .catch(function () {
+          parcForm.reset();
+          setParcStatus(
+            '✓ <strong>Proposta registrada!</strong> Entraremos em contato em breve pelo e-mail informado.',
+            'ok'
+          );
+        })
+        .then(function () {
+          if (parcSubmit) {
+            parcSubmit.disabled = false;
+            parcSubmit.textContent = 'Solicitar Mídia Kit & Proposta';
+          }
+        });
     });
   }
 
@@ -16240,7 +16242,7 @@
         var nameInput = document.getElementById('clube-nome');
         if (nameInput) {
           setTimeout(function () {
-            try { nameInput.focus(); } catch (e) {}
+            try { nameInput.focus(); } catch (e) { }
           }, 350);
         }
       });
@@ -16371,31 +16373,31 @@
         try {
           localStorage.setItem('rom_member_tier', plano);
           localStorage.setItem('rom_member_name', nome);
-        } catch (e) {}
+        } catch (e) { }
 
         enviarDadosFormulario(payload)
-        .then(function () {
-          clubeForm.reset();
-          setClubeStatus(
-            '🎉 <strong>Inscrição registrada com sucesso, ' + esc(nome) + '!</strong> Você está na Lista de Espera VIP do plano <strong>' +
-            esc(plano === 'correspondente' ? 'Correspondente' : 'Explorador') + '</strong>. Assim que as vagas oficiais forem abertas, você receberá no e-mail <strong>' +
-            esc(email) + '</strong> o link com condições especiais de membro pioneiro.',
-            'ok'
-          );
-        })
-        .catch(function (err) {
-          console.error('Falha ao registrar formulário do Clube:', err);
-          setClubeStatus(
-            '⚠️ <strong>Não foi possível registrar seu e-mail automaticamente no momento.</strong><br>Por favor, envie seus dados diretamente para <a href="mailto:rodandoomundoprojeto@gmail.com" style="color:var(--c-accent-blue);text-decoration:underline;font-weight:600;">rodandoomundoprojeto@gmail.com</a> para garantirmos sua vaga na Lista de Espera VIP.',
-            'err'
-          );
-        })
-        .then(function () {
-          if (clubeSubmit) {
-            clubeSubmit.disabled = false;
-            clubeSubmit.textContent = 'Entrar na Lista de Espera VIP';
-          }
-        });
+          .then(function () {
+            clubeForm.reset();
+            setClubeStatus(
+              '🎉 <strong>Inscrição registrada com sucesso, ' + esc(nome) + '!</strong> Você está na Lista de Espera VIP do plano <strong>' +
+              esc(plano === 'correspondente' ? 'Correspondente' : 'Explorador') + '</strong>. Assim que as vagas oficiais forem abertas, você receberá no e-mail <strong>' +
+              esc(email) + '</strong> o link com condições especiais de membro pioneiro.',
+              'ok'
+            );
+          })
+          .catch(function (err) {
+            console.error('Falha ao registrar formulário do Clube:', err);
+            setClubeStatus(
+              '⚠️ <strong>Não foi possível registrar seu e-mail automaticamente no momento.</strong><br>Por favor, envie seus dados diretamente para <a href="mailto:rodandoomundoprojeto@gmail.com" style="color:var(--c-accent-blue);text-decoration:underline;font-weight:600;">rodandoomundoprojeto@gmail.com</a> para garantirmos sua vaga na Lista de Espera VIP.',
+              'err'
+            );
+          })
+          .then(function () {
+            if (clubeSubmit) {
+              clubeSubmit.disabled = false;
+              clubeSubmit.textContent = 'Entrar na Lista de Espera VIP';
+            }
+          });
       });
     }
   }
@@ -16538,7 +16540,7 @@
             var logs = JSON.parse(localStorage.getItem('rom_bug_reports') || '[]');
             logs.push(bugPayload);
             localStorage.setItem('rom_bug_reports', JSON.stringify(logs.slice(-25)));
-          } catch (err) {}
+          } catch (err) { }
           bugStatus.textContent = 'Relato enviado com sucesso! Muito obrigado pelo aviso.';
           bugStatus.className = 'bug-status ok';
           if (bugForm) bugForm.reset();
@@ -16548,15 +16550,15 @@
         if (bugSubmit) { bugSubmit.disabled = true; bugSubmit.textContent = 'Enviando…'; }
 
         enviarDadosFormulario(bugPayload)
-        .then(function () {
-          marcarSucessoBug();
-        })
-        .catch(function () {
-          marcarSucessoBug();
-        })
-        .then(function () {
-          if (bugSubmit) { bugSubmit.disabled = false; bugSubmit.textContent = 'Enviar relato'; }
-        });
+          .then(function () {
+            marcarSucessoBug();
+          })
+          .catch(function () {
+            marcarSucessoBug();
+          })
+          .then(function () {
+            if (bugSubmit) { bugSubmit.disabled = false; bugSubmit.textContent = 'Enviar relato'; }
+          });
       });
     }
   })();
@@ -16604,7 +16606,7 @@
       verEls.forEach(function (el) {
         el.textContent = ROM_CURRENT_VERSION;
       });
-    } catch (e) {}
+    } catch (e) { }
   }
   initSiteVersion();
   window.addEventListener('DOMContentLoaded', initSiteVersion);
@@ -16653,12 +16655,12 @@
             var contLabel = (CONT[p.cont] && CONT[p.cont].short) || p.cont;
             return '<li class="fav-item-row">' +
               '<button type="button" class="fav-item-main" data-open-fav-country="' + idx + '">' +
-                (fUrl ? '<img class="outlet-country-flag" src="' + fUrl + '" alt="" width="20" height="14">' : '') +
-                '<span class="fav-item-title">' + esc(p.name) + '</span>' +
-                '<span class="fav-item-meta">' + esc(contLabel) + '</span>' +
+              (fUrl ? '<img class="outlet-country-flag" src="' + fUrl + '" alt="" width="20" height="14">' : '') +
+              '<span class="fav-item-title">' + esc(p.name) + '</span>' +
+              '<span class="fav-item-meta">' + esc(contLabel) + '</span>' +
               '</button>' +
               '<button type="button" class="fav-remove-btn" data-remove-fav-country="' + idx + '" title="Remover dos favoritos" aria-label="Remover ' + esc(p.name) + '">✕</button>' +
-            '</li>';
+              '</li>';
           }).join('') + '</ul>';
 
           pPaises.querySelectorAll('[data-open-fav-country]').forEach(function (btn) {
@@ -16692,17 +16694,17 @@
             var flagHtml = outletFlagImg(v.name, v.countryCode, v.domain || v.url);
             return '<li class="fav-item-row fav-item-outlet">' +
               '<div class="fav-outlet-info">' +
-                '<img class="fav-outlet-fav" src="https://www.google.com/s2/favicons?domain=' + encodeURIComponent(v.domain || host(v.url)) + '&sz=64" alt="" width="20" height="20" loading="lazy">' +
-                '<div class="fav-outlet-text">' +
-                  '<a href="' + esc(v.url) + '" target="_blank" rel="noopener" class="fav-outlet-name">' + flagHtml + ' ' + esc(v.name) + '</a>' +
-                  '<span class="fav-item-meta">' + esc(v.countryName || v.countryCode) + ' · ' + esc(v.domain || host(v.url)) + '</span>' +
-                '</div>' +
+              '<img class="fav-outlet-fav" src="https://www.google.com/s2/favicons?domain=' + encodeURIComponent(v.domain || host(v.url)) + '&sz=64" alt="" width="20" height="20" loading="lazy">' +
+              '<div class="fav-outlet-text">' +
+              '<a href="' + esc(v.url) + '" target="_blank" rel="noopener" class="fav-outlet-name">' + flagHtml + ' ' + esc(v.name) + '</a>' +
+              '<span class="fav-item-meta">' + esc(v.countryName || v.countryCode) + ' · ' + esc(v.domain || host(v.url)) + '</span>' +
+              '</div>' +
               '</div>' +
               '<div class="fav-outlet-actions">' +
-                '<a class="btn btn-sm fav-visit-btn" href="' + esc(v.url) + '" target="_blank" rel="noopener" title="Alguns sites podem exigir assinatura">Visitar site ' + ICON_SEARCH + '</a>' +
-                '<button type="button" class="fav-remove-btn" data-remove-fav-outlet="' + idx + '" title="Remover dos favoritos" aria-label="Remover ' + esc(v.name) + '">✕</button>' +
+              '<a class="btn btn-sm fav-visit-btn" href="' + esc(v.url) + '" target="_blank" rel="noopener" title="Alguns sites podem exigir assinatura">Visitar site ' + ICON_SEARCH + '</a>' +
+              '<button type="button" class="fav-remove-btn" data-remove-fav-outlet="' + idx + '" title="Remover dos favoritos" aria-label="Remover ' + esc(v.name) + '">✕</button>' +
               '</div>' +
-            '</li>';
+              '</li>';
           }).join('') + '</ul>';
 
           pVeiculos.querySelectorAll('[data-remove-fav-outlet]').forEach(function (btn) {
@@ -16726,17 +16728,17 @@
             var dtStr = formatSearchDate(n.publishedAt);
             return '<li class="fav-item-row fav-item-outlet">' +
               '<div class="fav-outlet-info">' +
-                '<div class="fav-outlet-text">' +
-                  '<a href="' + esc(n.url) + '" target="_blank" rel="noopener noreferrer" class="fav-outlet-name" data-fav-news-title="' + idx + '">' + esc(n.title) + '</a>' +
-                  '<span class="fav-item-meta">' + flagHtml + ' ' + esc(n.source || host(n.url)) + (dtStr ? ' · ' + esc(dtStr) : '') + '</span>' +
-                '</div>' +
+              '<div class="fav-outlet-text">' +
+              '<a href="' + esc(n.url) + '" target="_blank" rel="noopener noreferrer" class="fav-outlet-name" data-fav-news-title="' + idx + '">' + esc(n.title) + '</a>' +
+              '<span class="fav-item-meta">' + flagHtml + ' ' + esc(n.source || host(n.url)) + (dtStr ? ' · ' + esc(dtStr) : '') + '</span>' +
+              '</div>' +
               '</div>' +
               '<div class="fav-outlet-actions">' +
-                '<a class="btn btn-sm fav-visit-btn" href="' + esc(n.url) + '" target="_blank" rel="noopener noreferrer" title="Alguns sites podem exigir assinatura">Abrir ' + ICON_ARROW + '</a>' +
-                (isFavNewsForeign(n) ? '<button type="button" class="btn btn-sm fav-translate-btn" data-fav-translate="' + idx + '" aria-pressed="false" title="Traduzir título para português">' + ICON_TRANSLATE + '<span>Traduzir</span></button>' : '') +
-                '<button type="button" class="fav-remove-btn" data-remove-fav-news="' + idx + '" title="Remover dos favoritos" aria-label="Remover notícia">✕</button>' +
+              '<a class="btn btn-sm fav-visit-btn" href="' + esc(n.url) + '" target="_blank" rel="noopener noreferrer" title="Alguns sites podem exigir assinatura">Abrir ' + ICON_ARROW + '</a>' +
+              (isFavNewsForeign(n) ? '<button type="button" class="btn btn-sm fav-translate-btn" data-fav-translate="' + idx + '" aria-pressed="false" title="Traduzir título para português">' + ICON_TRANSLATE + '<span>Traduzir</span></button>' : '') +
+              '<button type="button" class="fav-remove-btn" data-remove-fav-news="' + idx + '" title="Remover dos favoritos" aria-label="Remover notícia">✕</button>' +
               '</div>' +
-            '</li>';
+              '</li>';
           }).join('') + '</ul>';
 
           pNoticias.querySelectorAll('[data-fav-translate]').forEach(function (btn) {
@@ -17055,7 +17057,7 @@
         if (!opts.fromPopState) {
           try {
             history.pushState({ viewMode: 'list', cont: state.cont, country: state.country ? (state.country.a2 || state.country.id) : null }, '', location.pathname + location.search);
-          } catch (e) {}
+          } catch (e) { }
         }
         window.scrollTo({ top: 0, behavior: 'smooth' });
       } else {
@@ -17065,7 +17067,7 @@
         if (!opts.fromPopState && history.state && history.state.viewMode === 'list') {
           try {
             history.replaceState({ viewMode: 'map', cont: state.cont, country: state.country ? (state.country.a2 || state.country.id) : null }, '', location.pathname + location.search);
-          } catch (e) {}
+          } catch (e) { }
         }
       }
     }
@@ -17133,14 +17135,14 @@
           : '';
         return '<button type="button" class="quick-country-card' + hotClasses + '" data-country-a2="' + esc(c.a2 || '') + '" data-country-id="' + esc(c.id || '') + '" data-cont="' + esc(c.c || '') + '"' + hotTitle + '>' +
           '<div class="quick-country-card-main">' +
-            '<span class="quick-country-flag" aria-hidden="true">' + flagHtml + '</span>' +
-            '<div class="quick-country-info">' +
-              '<div class="quick-country-name">' + esc(c.n) + (hasHot ? ' <span class="quick-country-hot-badge" title="Notícia quente no país" aria-label="Notícia quente">🔥</span>' : '') + '</div>' +
-              '<div class="quick-country-meta">' + esc(contLabel) + '</div>' +
-            '</div>' +
+          '<span class="quick-country-flag" aria-hidden="true">' + flagHtml + '</span>' +
+          '<div class="quick-country-info">' +
+          '<div class="quick-country-name">' + esc(c.n) + (hasHot ? ' <span class="quick-country-hot-badge" title="Notícia quente no país" aria-label="Notícia quente">🔥</span>' : '') + '</div>' +
+          '<div class="quick-country-meta">' + esc(contLabel) + '</div>' +
+          '</div>' +
           '</div>' +
           '<span class="quick-country-badge">' + totalOutlets + ' ' + (totalOutlets === 1 ? 'veículo' : 'veículos') + '</span>' +
-        '</button>';
+          '</button>';
       }).join('');
 
       gridEl.querySelectorAll('.quick-country-card').forEach(function (card) {
@@ -17427,21 +17429,21 @@
 
       return '<article class="vitrine-ia-card" data-slug="' + esc(tm.slug || '') + '" data-cat="' + esc(catKey) + '">' +
         '<div class="vitrine-ia-card-top">' +
-          '<div class="vitrine-ia-card-badges">' +
-            '<span class="vitrine-status-badge ' + esc(stMeta.cls) + '">' + esc(stMeta.label) + '</span>' +
-            '<span class="vitrine-cat-pill">' + esc(catMeta.label) + '</span>' +
-          '</div>' +
-          '<span class="vitrine-score-pill" title="Score de relevância editorial IA">' + scoreVal + '% rel.</span>' +
+        '<div class="vitrine-ia-card-badges">' +
+        '<span class="vitrine-status-badge ' + esc(stMeta.cls) + '">' + esc(stMeta.label) + '</span>' +
+        '<span class="vitrine-cat-pill">' + esc(catMeta.label) + '</span>' +
+        '</div>' +
+        '<span class="vitrine-score-pill" title="Score de relevância editorial IA">' + scoreVal + '% rel.</span>' +
         '</div>' +
         '<h3 class="vitrine-card-title">' + esc(tm.titulo_tema || '') + '</h3>' +
         (tm.sintese_nerd ? '<p class="vitrine-sintese-nerd">' + esc(tm.sintese_nerd) + '</p>' : '') +
         (tm.gatilho_vitrine ? '<p class="vitrine-gatilho-text">' + esc(tm.gatilho_vitrine) + '</p>' : '') +
         tagsHtml +
         '<div class="vitrine-card-footer">' +
-          crossHtml +
-          '<a href="' + esc(rotaHref) + '" class="vitrine-editoria-link" data-spa-link>Ir para ' + esc(catMeta.label) + ' →</a>' +
+        crossHtml +
+        '<a href="' + esc(rotaHref) + '" class="vitrine-editoria-link" data-spa-link>Ir para ' + esc(catMeta.label) + ' →</a>' +
         '</div>' +
-      '</article>';
+        '</article>';
     }).join('');
 
     gridEl.innerHTML = html;
@@ -17477,7 +17479,7 @@
       vitrineIaMemoryTemas = [];
       vitrineIaMemoryTs = 0;
       vitrineIaSourceIsFallback = false;
-      try { localStorage.removeItem(VITRINE_IA_CACHE_KEY); } catch (e) {}
+      try { localStorage.removeItem(VITRINE_IA_CACHE_KEY); } catch (e) { }
     } else if (!isAutoRefresh && vitrineIaFetchedInSession && !vitrineIaSourceIsFallback) {
       var cached = lerCacheVitrineIA(false);
       if (cached && cached.length) {
@@ -17530,7 +17532,7 @@
           vitrineIaSourceIsFallback = incomingFallback;
           vitrineIaMemoryTemas = [];
           vitrineIaMemoryTs = 0;
-          try { localStorage.removeItem(VITRINE_IA_CACHE_KEY); } catch (e) {}
+          try { localStorage.removeItem(VITRINE_IA_CACHE_KEY); } catch (e) { }
           if (hasGrid) {
             renderVitrineIACards([], vitrineIaSelectedCategory);
           }
