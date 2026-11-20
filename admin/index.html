@@ -5054,11 +5054,19 @@
       let modalPaisesSelecionados = [];
 
       function popularCatalogoPaisesModal() {
-        const sel = $('nq-select-pais-catalogo');
-        if (!sel || sel.children.length > 1) return;
         const sorted = [...LISTA_PAISES_ROM].sort((a, b) => a.nome.localeCompare(b.nome, 'pt-BR'));
-        sel.innerHTML = '<option value="">+ Selecionar país da lista...</option>' +
-          sorted.map((p) => `<option value="${escapeHtml(p.a2)}">${p.flag} ${escapeHtml(p.nome)} (${escapeHtml(p.a2)})</option>`).join('');
+        const sel = $('nq-select-pais-catalogo');
+        if (sel && sel.children.length <= 1) {
+          sel.innerHTML = '<option value="">+ Selecionar país da lista...</option>' +
+            sorted.map((p) => `<option value="${escapeHtml(p.a2)}">${p.flag} ${escapeHtml(p.nome)} (${escapeHtml(p.a2)})</option>`).join('');
+        }
+        const selPrincipal = $('nq-pais-principal');
+        if (selPrincipal && selPrincipal.children.length <= 8) {
+          const valAtual = selPrincipal.value;
+          selPrincipal.innerHTML = '<option value="">Nenhum (rotacionar automaticamente)</option>' +
+            sorted.map((p) => `<option value="${escapeHtml(p.a2)}">${p.flag} ${escapeHtml(p.nome)} (${escapeHtml(p.a2)})</option>`).join('');
+          if (valAtual) selPrincipal.value = valAtual;
+        }
       }
 
       function atualizarChipsPaisesModal() {
@@ -5766,7 +5774,7 @@
               const nextIndex = (paisesComPrincipal.indexOf(comPrincipal[0].pais_principal) + 1) % paisesComPrincipal.length;
               const novoPrincipal = paisesComPrincipal[nextIndex] || '';
               for (const n of comPrincipal) {
-                await apiFetch(`/v2/admin/noticias-quentes/${encodeURIComponent(n.slug)}', {
+                await apiFetch(`/v2/admin/noticias-quentes/${encodeURIComponent(n.slug)}`, {
                   method: 'PATCH',
                   body: JSON.stringify({ pais_principal: novoPrincipal })
                 });
@@ -5776,7 +5784,7 @@
           } else if (semPrincipal.length > 0) {
             // Se nenhuma tem pais_principal, definir o primeiro como principal
             const primeiro = semPrincipal[0];
-            await apiFetch(`/v2/admin/noticias-quentes/${encodeURIComponent(primeiro.slug)}', {
+            await apiFetch(`/v2/admin/noticias-quentes/${encodeURIComponent(primeiro.slug)}`, {
               method: 'PATCH',
               body: JSON.stringify({ pais_principal: primeiro.paises_envolvidos?.[0] || 'BR' })
             });
@@ -5813,6 +5821,7 @@
         $('nq-destaque-ate').value = '';
         popularCatalogoPaisesModal();
         modalPaisesSelecionados = ['BR'];
+        if ($('nq-pais-principal')) $('nq-pais-principal').value = '';
         atualizarChipsPaisesModal();
         hideBanner('modal-noticias-quente-banner');
         $('modal-noticias-quente').classList.add('open');
@@ -5843,12 +5852,12 @@
           $('nq-status').value = n.status || 'aguardando_revisao';
           $('nq-slug').value = n.slug || '';
           $('nq-destaque-ate').value = n.destaque_ate ? String(n.destaque_ate).slice(0, 16) : '';
+          popularCatalogoPaisesModal();
           // Popular o seletor de país principal
           const paisPrincipalInput = $('nq-pais-principal');
           if (paisPrincipalInput) {
             paisPrincipalInput.value = n.pais_principal || '';
           }
-          popularCatalogoPaisesModal();
           modalPaisesSelecionados = Array.isArray(n.paises_envolvidos) && n.paises_envolvidos.length ? [...n.paises_envolvidos] : [];
           atualizarChipsPaisesModal();
           hideBanner('modal-noticias-quente-banner');
@@ -5899,7 +5908,7 @@
         const status = $('nq-status').value;
         const destaqueAte = $('nq-destaque-ate').value;
         const paises = [...modalPaisesSelecionados];
-        const paisPrincipal = $('nq-pais-principal').value || null;
+        const paisPrincipal = ($('nq-pais-principal')?.value || '').trim().toUpperCase() || null;
 
         if (tituloCurto) body.titulo_curto = tituloCurto;
         if (resumoPulso) body.resumo_pulso = resumoPulso;

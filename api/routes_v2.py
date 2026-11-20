@@ -648,7 +648,8 @@ def listar_noticias_quentes(
                 categoria, paises_envolvidos, urgencia_score, relevancia_score,
                 nivel_confianca, ttl_horas, horas_em_destaque, veiculos_origem,
                 fontes_urls, palavras_chave, links_internos_relacionados,
-                status, destaque_ate, expires_at, created_at, updated_at
+                status, destaque_ate, expires_at, created_at, updated_at,
+                pais_principal
             FROM ai_noticias_quentes
             WHERE {where_clause}
             ORDER BY updated_at DESC, urgencia_score DESC, relevancia_score DESC
@@ -696,6 +697,7 @@ def listar_noticias_quentes(
                 "destaque_ate": _serializar_valor_temporal(row_dict.get("destaque_ate")),
                 "expires_at": _serializar_valor_temporal(row_dict.get("expires_at")),
                 "updated_at": _serializar_valor_temporal(row_dict.get("updated_at")),
+                "pais_principal": row_dict.get("pais_principal") or None,
             })
     except Exception as e:  # noqa: BLE001
         try:
@@ -3438,6 +3440,7 @@ def _serializar_noticia_quente(row: Dict[str, Any]) -> Dict[str, Any]:
         "expires_at": _serializar_valor_temporal(row.get("expires_at")),
         "updated_at": _serializar_valor_temporal(row.get("updated_at")),
         "status": row.get("status"),
+        "pais_principal": row.get("pais_principal") or None,
     }
 
 
@@ -3910,7 +3913,8 @@ def admin_listar_noticias_quentes(
             categoria, paises_envolvidos, urgencia_score, relevancia_score,
             nivel_confianca, ttl_horas, horas_em_destaque, veiculos_origem,
             fontes_urls, palavras_chave, links_internos_relacionados,
-            status, destaque_ate, expires_at, created_at, updated_at
+            status, destaque_ate, expires_at, created_at, updated_at,
+            pais_principal
         FROM ai_noticias_quentes
         {where_sql}
         ORDER BY updated_at DESC, urgencia_score DESC, relevancia_score DESC
@@ -3992,7 +3996,7 @@ def admin_atualizar_noticia_quente(
     """Atualiza campos parciais de uma notícia quente em `ai_noticias_quentes`."""
     aplicar_no_cache_headers(response)
     db = _require_db(conn)
-    updates = payload.model_dump(exclude_none=True)
+    updates = payload.model_dump(exclude_unset=True)
     if not updates:
         raise HTTPException(status_code=422, detail="Nenhum campo alterável informado para atualização.")
 
@@ -4021,7 +4025,9 @@ def admin_atualizar_noticia_quente(
     if "paises_envolvidos" in updates:
         _add("paises_envolvidos", list(updates["paises_envolvidos"] or []))
     if "pais_principal" in updates:
-        _add("pais_principal", str(updates["pais_principal"]).upper().strip() or None)
+        raw_pp = updates.get("pais_principal")
+        val_pp = str(raw_pp).upper().strip() if raw_pp else None
+        _add("pais_principal", val_pp if val_pp else None)
     if "palavras_chave" in updates:
         _add("palavras_chave", [str(k).lower().strip() for k in (updates["palavras_chave"] or []) if str(k).strip()])
     if "veiculos_origem" in updates:
@@ -4129,7 +4135,7 @@ def admin_atualizar_noticia_quente(
                 categoria, paises_envolvidos, urgencia_score, relevancia_score,
                 nivel_confianca, ttl_horas, horas_em_destaque, veiculos_origem,
                 fontes_urls, palavras_chave, links_internos_relacionados,
-                status, destaque_ate, expires_at, updated_at
+                status, destaque_ate, expires_at, updated_at, pais_principal
             FROM ai_noticias_quentes
             WHERE slug = %s;
             """,
