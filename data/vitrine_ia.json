@@ -2,23 +2,173 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-20T07:33:35Z",
-  "batch_id": "20261120-0733",
+  "updatedAt": "2026-11-20T08:38:53Z",
+  "batch_id": "20261120-0838",
   "temas_ativos": [
     {
-      "slug": "anthropic-openai-ipo-corrida-ia-mercado",
-      "titulo_tema": "Abertura de capital da Anthropic acirra rivalidade com a OpenAI e redefine o mercado global de IA",
+      "slug": "mianmar-rejeita-decisao-da-cij-sobre-genocidio-de-rohingyas",
+      "titulo_tema": "Mianmar classifica como 'injusta' decisão da Corte Internacional de Justiça sobre genocídio rohingya",
+      "titulo_curto": "Mianmar classifica como 'injusta' decisão da Corte Internacional de Justiça sobre genocídio rohingya",
       "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categoria": "Geopolitica_Relacoes",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 85,
+      "urgencia_score": 88,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-21T08:38:53Z",
+      "palavras_chave_busca": [
+        "mianmar",
+        "cij",
+        "onu",
+        "rohingya",
+        "genocídio"
+      ],
+      "palavras_chave": [
+        "mianmar",
+        "cij",
+        "onu",
+        "rohingya",
+        "genocídio"
+      ],
+      "gatilho_vitrine": "Segundo reportado pelo G1 Mundo, o governo de Mianmar classificou como injusta a decisão da Corte Internacional de Justiça (CIJ) que responsabilizou o país por genocídio contra a minoria muçulmana rohingya. O pronunciamento ocorre após o tribunal das Nações Unidas rejeitar as objeções preliminares apresentadas pela junta militar de Mianmar.",
+      "resumo_pulso": "Segundo reportado pelo G1 Mundo, o governo de Mianmar classificou como injusta a decisão da Corte Internacional de Justiça (CIJ) que responsabilizou o país por genocídio contra a minoria muçulmana rohingya. O pronunciamento ocorre após o tribunal das Nações Unidas rejeitar as objeções preliminares apresentadas pela junta militar de Mianmar.",
+      "sintese_nerd": "Aumenta a pressão diplomática e potenciais sanções internacionais contra a junta militar de Mianmar, impactando refugiados rohingya em Bangladesh.",
+      "impacto_pratico": "Aumenta a pressão diplomática e potenciais sanções internacionais contra a junta militar de Mianmar, impactando refugiados rohingya em Bangladesh.",
+      "paises_envolvidos": [
+        "MM",
+        "BD"
+      ],
+      "veiculos_origem": [
+        "G1 Mundo",
+        "Associated Press"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/mundo/noticia/2026/11/20/mianmar-chama-de-injusta-decisao-da-corte-da-onu-sobre-genocidio-de-rohingyas.ghtml"
+      ],
+      "data_publicacao": "2026-11-20T08:29:36Z",
+      "updated_at": "2026-11-20T08:38:53Z"
+    },
+    {
+      "slug": "drones-ucranianos-atingem-fabrica-de-explosivos-em-smolensk-na-russia",
+      "titulo_tema": "Ataque de drones ucranianos atinge fábrica de componentes para explosivos na Rússia",
+      "titulo_curto": "Ataque de drones ucranianos atinge fábrica de componentes para explosivos na Rússia",
+      "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categoria": "Geopolitica_Relacoes",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 86,
+      "urgencia_score": 87,
+      "ttl_horas": 12,
+      "expires_at": "2026-11-20T20:38:53Z",
+      "palavras_chave_busca": [
+        "ucrânia",
+        "rússia",
+        "smolensk",
+        "drones",
+        "guerra na ucrânia"
+      ],
+      "palavras_chave": [
+        "ucrânia",
+        "rússia",
+        "smolensk",
+        "drones",
+        "guerra na ucrânia"
+      ],
+      "gatilho_vitrine": "Conforme informado pelo Ukrinform e pelo The Kyiv Independent, drones ucranianos atacaram a fábrica química de Dorogobuzh, na região russa de Smolensk. Relatórios de monitoramento apontam que a instalação produz insumos essenciais para explosivos utilizados pelas forças armadas russas.",
+      "resumo_pulso": "Conforme informado pelo Ukrinform e pelo The Kyiv Independent, drones ucranianos atacaram a fábrica química de Dorogobuzh, na região russa de Smolensk. Relatórios de monitoramento apontam que a instalação produz insumos essenciais para explosivos utilizados pelas forças armadas russas.",
+      "sintese_nerd": "Interrupção na cadeia de suprimentos de munições e explosivos da Rússia, elevando a tensão em áreas industriais distantes da fronteira.",
+      "impacto_pratico": "Interrupção na cadeia de suprimentos de munições e explosivos da Rússia, elevando a tensão em áreas industriais distantes da fronteira.",
+      "paises_envolvidos": [
+        "UA",
+        "RU"
+      ],
+      "veiculos_origem": [
+        "Ukrinform",
+        "The Kyiv Independent"
+      ],
+      "fontes_urls": [
+        "https://www.ukrinform.net/rubric-ato/4186683-drones-attack-chemical-plant-producing-components-for-explosives-in-russias-smolensk-region-media.html",
+        "https://kyivindependent.com/ukrainian-drones-reportedly-strike-russian-chemical-plant/"
+      ],
+      "data_publicacao": "2026-11-20T08:15:00Z",
+      "updated_at": "2026-11-20T08:38:53Z"
+    },
+    {
+      "slug": "cop31-entra-na-reta-final-sem-consenso-sobre-combustiveis-fosseis",
+      "titulo_tema": "COP31 entra na reta final sem consenso sobre eliminação de combustíveis fósseis",
+      "titulo_curto": "COP31 entra na reta final sem consenso sobre eliminação de combustíveis fósseis",
+      "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categoria": "Ciencia_Clima",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 89,
+      "urgencia_score": 85,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-21T08:38:53Z",
+      "palavras_chave_busca": [
+        "cop31",
+        "clima",
+        "combustíveis fósseis",
+        "financiamento climático",
+        "onu"
+      ],
+      "palavras_chave": [
+        "cop31",
+        "clima",
+        "combustíveis fósseis",
+        "financiamento climático",
+        "onu"
+      ],
+      "gatilho_vitrine": "Segundo apuração divulgada pelo InfoMoney, o novo rascunho do texto final da COP31 retirou referências explícitas ao abandono progressivo dos combustíveis fósseis. Impasses persistentes sobre financiamento e adaptação climática ameaçam prorrogar o encerramento da cúpula do clima.",
+      "resumo_pulso": "Segundo apuração divulgada pelo InfoMoney, o novo rascunho do texto final da COP31 retirou referências explícitas ao abandono progressivo dos combustíveis fósseis. Impasses persistentes sobre financiamento e adaptação climática ameaçam prorrogar o encerramento da cúpula do clima.",
+      "sintese_nerd": "A ausência de metas rígidas pode desacelerar fluxos de financiamento internacional para transição energética e projetos de adaptação climática.",
+      "impacto_pratico": "A ausência de metas rígidas pode desacelerar fluxos de financiamento internacional para transição energética e projetos de adaptação climática.",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "veiculos_origem": [
+        "InfoMoney Mercados"
+      ],
+      "fontes_urls": [
+        "https://www.infomoney.com.br/mundo/cop31-entra-na-reta-final-sem-consenso-sobre-combustiveis-fosseis-e-financiamento/"
+      ],
+      "data_publicacao": "2026-11-20T08:00:00Z",
+      "updated_at": "2026-11-20T08:38:53Z"
+    },
+    {
+      "slug": "anthropic-openai-ipo-corrida-ia-mercado",
+      "status": "novo",
+      "ttl_horas": 72,
+      "expires_at": "2026-11-23T07:33:35Z",
+      "updated_at": "2026-11-20T07:33:35Z",
+      "titulo_tema": "Abertura de capital da Anthropic acirra rivalidade com a OpenAI e redefine o mercado global de IA",
+      "sintese_nerd": "A estreia da Anthropic na bolsa de valores intensifica a corrida corporativa pelo domínio global da inteligência artificial contra a OpenAI, redefinindo avaliações de mercado em Wall Street. Para o Brasil, o avanço acirrado dessas tecnologias acelera debates sobre regulação digital, custos de computação em nuvem e a produtividade industrial.",
+      "rota_editoria": "/economia",
+      "data_publicacao": "2026-11-20T07:33:35Z",
+      "gatilho_vitrine": "Conecte a disputa bilionária entre as gigantes de IA aos impactos regulatórios globais e de investimentos no Brasil.",
       "origem_pipeline": "curadoria",
+      "relevancia_score": 92,
       "categoria_primaria": "Economia",
       "categorias_cruzadas": [
         "Geopolitica_Radar",
         "Cultura"
       ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 92,
-      "ttl_horas": 72,
-      "expires_at": "2026-11-23T07:33:35Z",
       "palavras_chave_busca": [
         "anthropic",
         "openai",
@@ -27,26 +177,26 @@
         "sam altman",
         "dario amodei",
         "wall street"
-      ],
-      "gatilho_vitrine": "Conecte a disputa bilionária entre as gigantes de IA aos impactos regulatórios globais e de investimentos no Brasil.",
-      "sintese_nerd": "A estreia da Anthropic na bolsa de valores intensifica a corrida corporativa pelo domínio global da inteligência artificial contra a OpenAI, redefinindo avaliações de mercado em Wall Street. Para o Brasil, o avanço acirrado dessas tecnologias acelera debates sobre regulação digital, custos de computação em nuvem e a produtividade industrial.",
-      "data_publicacao": "2026-11-20T07:33:35Z",
-      "updated_at": "2026-11-20T07:33:35Z"
+      ]
     },
     {
       "slug": "ataque-russo-ucrania-infraestrutura-crise-energia",
-      "titulo_tema": "Escalada de bombardeios russos atinge infraestrutura em Kiev e pressiona aliados ocidentais",
       "status": "atualizacao",
+      "ttl_horas": 48,
+      "expires_at": "2026-11-22T07:33:35Z",
+      "updated_at": "2026-11-20T07:33:35Z",
+      "titulo_tema": "Escalada de bombardeios russos atinge infraestrutura em Kiev e pressiona aliados ocidentais",
+      "sintese_nerd": "Novos ataques maciços de mísseis balísticos russos contra pontes e centros industriais na Ucrânia elevam o custo humano do conflito e testam a resiliência energética europeia. O recrudescimento da guerra alimenta volatilidade nos mercados internacionais de grãos e energia, afetando indiretamente os custos logísticos globais.",
+      "rota_editoria": "/radar",
+      "data_publicacao": "2026-11-20T07:33:35Z",
+      "gatilho_vitrine": "Destaque o impacto humanitário e os reflexos imediatos na segurança energética e nos preços globais de commodities agrícolas.",
       "origem_pipeline": "curadoria",
+      "relevancia_score": 88,
       "categoria_primaria": "Geopolitica_Radar",
       "categorias_cruzadas": [
         "Economia",
         "Politica"
       ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 88,
-      "ttl_horas": 48,
-      "expires_at": "2026-11-22T07:33:35Z",
       "palavras_chave_busca": [
         "rússia",
         "ucrânia",
@@ -54,26 +204,26 @@
         "kiev",
         "mísseis balísticos",
         "geopolítica global"
-      ],
-      "gatilho_vitrine": "Destaque o impacto humanitário e os reflexos imediatos na segurança energética e nos preços globais de commodities agrícolas.",
-      "sintese_nerd": "Novos ataques maciços de mísseis balísticos russos contra pontes e centros industriais na Ucrânia elevam o custo humano do conflito e testam a resiliência energética europeia. O recrudescimento da guerra alimenta volatilidade nos mercados internacionais de grãos e energia, afetando indiretamente os custos logísticos globais.",
-      "data_publicacao": "2026-11-20T07:33:35Z",
-      "updated_at": "2026-11-20T07:33:35Z"
+      ]
     },
     {
       "slug": "inflacao-carne-poder-compra-salario-minimo-brasil",
-      "titulo_tema": "Perda histórica de poder de compra do salário mínimo frente ao preço da carne no Brasil",
       "status": "novo",
+      "ttl_horas": 96,
+      "expires_at": "2026-11-24T07:33:35Z",
+      "updated_at": "2026-11-20T07:33:35Z",
+      "titulo_tema": "Perda histórica de poder de compra do salário mínimo frente ao preço da carne no Brasil",
+      "sintese_nerd": "Embora o Brasil registre recordes históricos na produção de carne bovina, a valorização das exportações e a inflação comprimiram o poder de compra do trabalhador, que hoje adquire quase um terço a menos de proteína do que em 2007. Esse descompasso entre macroeconomia e consumo interno pressiona o debate fiscal e o custo de vida nas grandes cidades.",
+      "rota_editoria": "/economia",
+      "data_publicacao": "2026-11-20T07:33:35Z",
+      "gatilho_vitrine": "Explique a divergência entre o boom de exportação do agronegócio e a carestia alimentar sentida pelas famílias brasileiras.",
       "origem_pipeline": "curadoria",
+      "relevancia_score": 85,
       "categoria_primaria": "Economia",
       "categorias_cruzadas": [
         "Politica",
         "Resumo_Ultimas"
       ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 85,
-      "ttl_horas": 96,
-      "expires_at": "2026-11-24T07:33:35Z",
       "palavras_chave_busca": [
         "salário mínimo",
         "preço da carne",
@@ -81,11 +231,7 @@
         "poder de compra",
         "agronegócio",
         "economia brasileira"
-      ],
-      "gatilho_vitrine": "Explique a divergência entre o boom de exportação do agronegócio e a carestia alimentar sentida pelas famílias brasileiras.",
-      "sintese_nerd": "Embora o Brasil registre recordes históricos na produção de carne bovina, a valorização das exportações e a inflação comprimiram o poder de compra do trabalhador, que hoje adquire quase um terço a menos de proteína do que em 2007. Esse descompasso entre macroeconomia e consumo interno pressiona o debate fiscal e o custo de vida nas grandes cidades.",
-      "data_publicacao": "2026-11-20T07:33:35Z",
-      "updated_at": "2026-11-20T07:33:35Z"
+      ]
     },
     {
       "slug": "democratas-ampliam-maioria-no-senado-dos-eua-com-vitoria-no-alasca",
@@ -133,6 +279,56 @@
         "donald trump",
         "democratas"
       ]
+    },
+    {
+      "slug": "producao-mundial-de-vinho-deve-cair-ao-menor-nivel-em-65-anos",
+      "titulo_tema": "Produção mundial de vinho em 2026 deve se aproximar do menor nível em 65 anos",
+      "titulo_curto": "Produção mundial de vinho em 2026 deve se aproximar do menor nível em 65 anos",
+      "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Economia",
+      "categoria": "Economia_Comercio",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 78,
+      "urgencia_score": 75,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-21T08:38:53Z",
+      "palavras_chave_busca": [
+        "vinho",
+        "agronegócio",
+        "oiv",
+        "mudanças climáticas",
+        "europa"
+      ],
+      "palavras_chave": [
+        "vinho",
+        "agronegócio",
+        "oiv",
+        "mudanças climáticas",
+        "europa"
+      ],
+      "gatilho_vitrine": "Conforme estimativas da Organização Internacional da Vinha e do Vinho (OIV) divulgadas pelo G1 Economia, a safra global de vinho sofreu severas perdas em 2026. Secas prolongadas e ondas de calor na Europa prejudicaram significativamente a colheita em grandes produtores como França e Itália.",
+      "resumo_pulso": "Conforme estimativas da Organização Internacional da Vinha e do Vinho (OIV) divulgadas pelo G1 Economia, a safra global de vinho sofreu severas perdas em 2026. Secas prolongadas e ondas de calor na Europa prejudicaram significativamente a colheita em grandes produtores como França e Itália.",
+      "sintese_nerd": "Expectativa de alta nos preços e redução na oferta internacional de vinhos europeus nas prateleiras globais nos próximos meses.",
+      "impacto_pratico": "Expectativa de alta nos preços e redução na oferta internacional de vinhos europeus nas prateleiras globais nos próximos meses.",
+      "paises_envolvidos": [
+        "FR",
+        "IT"
+      ],
+      "veiculos_origem": [
+        "G1 Economia",
+        "OIV",
+        "AFP"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/economia/agronegocios/noticia/2026/11/20/producao-mundial-de-vinho-deve-ficar-perto-do-menor-nivel-em-65-anos-com-seca-e-calor-na-europa.ghtml"
+      ],
+      "data_publicacao": "2026-11-20T07:00:01Z",
+      "updated_at": "2026-11-20T08:38:53Z"
     },
     {
       "slug": "divergencias-na-esquerda-expoem-tensoes-sobre-ajuste-fiscal-do-governo",
@@ -658,91 +854,123 @@
       ]
     }
   ],
-  "temas_curadoria": [
-    {
-      "slug": "anthropic-openai-ipo-corrida-ia-mercado",
-      "titulo_tema": "Abertura de capital da Anthropic acirra rivalidade com a OpenAI e redefine o mercado global de IA",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Geopolitica_Radar",
-        "Cultura"
-      ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 92,
-      "ttl_horas": 72,
-      "expires_at": "2026-11-23T07:33:35Z",
-      "palavras_chave_busca": [
-        "anthropic",
-        "openai",
-        "ipo",
-        "inteligencia artificial",
-        "sam altman",
-        "dario amodei",
-        "wall street"
-      ],
-      "gatilho_vitrine": "Conecte a disputa bilionária entre as gigantes de IA aos impactos regulatórios globais e de investimentos no Brasil.",
-      "sintese_nerd": "A estreia da Anthropic na bolsa de valores intensifica a corrida corporativa pelo domínio global da inteligência artificial contra a OpenAI, redefinindo avaliações de mercado em Wall Street. Para o Brasil, o avanço acirrado dessas tecnologias acelera debates sobre regulação digital, custos de computação em nuvem e a produtividade industrial.",
-      "data_publicacao": "2026-11-20T07:33:35Z",
-      "updated_at": "2026-11-20T07:33:35Z"
-    },
-    {
-      "slug": "ataque-russo-ucrania-infraestrutura-crise-energia",
-      "titulo_tema": "Escalada de bombardeios russos atinge infraestrutura em Kiev e pressiona aliados ocidentais",
-      "status": "atualizacao",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Politica"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 88,
-      "ttl_horas": 48,
-      "expires_at": "2026-11-22T07:33:35Z",
-      "palavras_chave_busca": [
-        "rússia",
-        "ucrânia",
-        "guerra na europa",
-        "kiev",
-        "mísseis balísticos",
-        "geopolítica global"
-      ],
-      "gatilho_vitrine": "Destaque o impacto humanitário e os reflexos imediatos na segurança energética e nos preços globais de commodities agrícolas.",
-      "sintese_nerd": "Novos ataques maciços de mísseis balísticos russos contra pontes e centros industriais na Ucrânia elevam o custo humano do conflito e testam a resiliência energética europeia. O recrudescimento da guerra alimenta volatilidade nos mercados internacionais de grãos e energia, afetando indiretamente os custos logísticos globais.",
-      "data_publicacao": "2026-11-20T07:33:35Z",
-      "updated_at": "2026-11-20T07:33:35Z"
-    },
-    {
-      "slug": "inflacao-carne-poder-compra-salario-minimo-brasil",
-      "titulo_tema": "Perda histórica de poder de compra do salário mínimo frente ao preço da carne no Brasil",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Politica",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 85,
-      "ttl_horas": 96,
-      "expires_at": "2026-11-24T07:33:35Z",
-      "palavras_chave_busca": [
-        "salário mínimo",
-        "preço da carne",
-        "inflação",
-        "poder de compra",
-        "agronegócio",
-        "economia brasileira"
-      ],
-      "gatilho_vitrine": "Explique a divergência entre o boom de exportação do agronegócio e a carestia alimentar sentida pelas famílias brasileiras.",
-      "sintese_nerd": "Embora o Brasil registre recordes históricos na produção de carne bovina, a valorização das exportações e a inflação comprimiram o poder de compra do trabalhador, que hoje adquire quase um terço a menos de proteína do que em 2007. Esse descompasso entre macroeconomia e consumo interno pressiona o debate fiscal e o custo de vida nas grandes cidades.",
-      "data_publicacao": "2026-11-20T07:33:35Z",
-      "updated_at": "2026-11-20T07:33:35Z"
-    }
-  ],
   "noticias_quentes": [
+    {
+      "slug": "mianmar-rejeita-decisao-da-cij-sobre-genocidio-de-rohingyas",
+      "titulo_curto": "Mianmar classifica como 'injusta' decisão da Corte Internacional de Justiça sobre genocídio rohingya",
+      "resumo_pulso": "Segundo reportado pelo G1 Mundo, o governo de Mianmar classificou como injusta a decisão da Corte Internacional de Justiça (CIJ) que responsabilizou o país por genocídio contra a minoria muçulmana rohingya. O pronunciamento ocorre após o tribunal das Nações Unidas rejeitar as objeções preliminares apresentadas pela junta militar de Mianmar.",
+      "impacto_pratico": "Aumenta a pressão diplomática e potenciais sanções internacionais contra a junta militar de Mianmar, impactando refugiados rohingya em Bangladesh.",
+      "categoria": "Geopolitica_Relacoes",
+      "paises_envolvidos": [
+        "MM",
+        "BD"
+      ],
+      "urgencia_score": 88,
+      "relevancia_score": 85,
+      "nivel_confianca": "alta",
+      "ttl_horas": 24,
+      "horas_em_destaque": 12,
+      "veiculos_origem": [
+        "G1 Mundo",
+        "Associated Press"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/mundo/noticia/2026/11/20/mianmar-chama-de-injusta-decisao-da-corte-da-onu-sobre-genocidio-de-rohingyas.ghtml"
+      ],
+      "palavras_chave": [
+        "Mianmar",
+        "CIJ",
+        "ONU",
+        "Rohingya",
+        "Genocídio"
+      ],
+      "data_publicacao": "2026-11-20T08:29:36Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "O que é uma sanção internacional?",
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-sancao-internacional",
+          "motivo_conexao": "Compreenda como decisões de cortes da ONU podem desencadear sanções econômicas e diplomáticas globais."
+        }
+      ],
+      "expires_at": "2026-11-21T08:38:53Z",
+      "updated_at": "2026-11-20T08:38:53Z"
+    },
+    {
+      "slug": "drones-ucranianos-atingem-fabrica-de-explosivos-em-smolensk-na-russia",
+      "titulo_curto": "Ataque de drones ucranianos atinge fábrica de componentes para explosivos na Rússia",
+      "resumo_pulso": "Conforme informado pelo Ukrinform e pelo The Kyiv Independent, drones ucranianos atacaram a fábrica química de Dorogobuzh, na região russa de Smolensk. Relatórios de monitoramento apontam que a instalação produz insumos essenciais para explosivos utilizados pelas forças armadas russas.",
+      "impacto_pratico": "Interrupção na cadeia de suprimentos de munições e explosivos da Rússia, elevando a tensão em áreas industriais distantes da fronteira.",
+      "categoria": "Geopolitica_Relacoes",
+      "paises_envolvidos": [
+        "UA",
+        "RU"
+      ],
+      "urgencia_score": 87,
+      "relevancia_score": 86,
+      "nivel_confianca": "media",
+      "ttl_horas": 12,
+      "horas_em_destaque": 8,
+      "veiculos_origem": [
+        "Ukrinform",
+        "The Kyiv Independent"
+      ],
+      "fontes_urls": [
+        "https://www.ukrinform.net/rubric-ato/4186683-drones-attack-chemical-plant-producing-components-for-explosives-in-russias-smolensk-region-media.html",
+        "https://kyivindependent.com/ukrainian-drones-reportedly-strike-russian-chemical-plant/"
+      ],
+      "palavras_chave": [
+        "Ucrânia",
+        "Rússia",
+        "Smolensk",
+        "Drones",
+        "Guerra na Ucrânia"
+      ],
+      "data_publicacao": "2026-11-20T08:15:00Z",
+      "links_internos_relacionados": [],
+      "expires_at": "2026-11-20T20:38:53Z",
+      "updated_at": "2026-11-20T08:38:53Z"
+    },
+    {
+      "slug": "cop31-entra-na-reta-final-sem-consenso-sobre-combustiveis-fosseis",
+      "titulo_curto": "COP31 entra na reta final sem consenso sobre eliminação de combustíveis fósseis",
+      "resumo_pulso": "Segundo apuração divulgada pelo InfoMoney, o novo rascunho do texto final da COP31 retirou referências explícitas ao abandono progressivo dos combustíveis fósseis. Impasses persistentes sobre financiamento e adaptação climática ameaçam prorrogar o encerramento da cúpula do clima.",
+      "impacto_pratico": "A ausência de metas rígidas pode desacelerar fluxos de financiamento internacional para transição energética e projetos de adaptação climática.",
+      "categoria": "Ciencia_Clima",
+      "paises_envolvidos": [],
+      "urgencia_score": 85,
+      "relevancia_score": 89,
+      "nivel_confianca": "alta",
+      "ttl_horas": 24,
+      "horas_em_destaque": 12,
+      "veiculos_origem": [
+        "InfoMoney Mercados"
+      ],
+      "fontes_urls": [
+        "https://www.infomoney.com.br/mundo/cop31-entra-na-reta-final-sem-consenso-sobre-combustiveis-fosseis-e-financiamento/"
+      ],
+      "palavras_chave": [
+        "COP31",
+        "Clima",
+        "Combustíveis Fósseis",
+        "Financiamento Climático",
+        "ONU"
+      ],
+      "data_publicacao": "2026-11-20T08:00:00Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "O que é a COP30?",
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-a-cop30",
+          "motivo_conexao": "Entenda os mecanismos de negociação e financiamento climático que pautam os acordos internacionais do clima."
+        },
+        {
+          "titulo_existente": "Clima, Amazônia e Transição Energética",
+          "url_existente": "https://www.rodandoomundo.com.br/clima",
+          "motivo_conexao": "Veja o histórico de metas de descarbonização e transição energética nos acordos multilaterais."
+        }
+      ],
+      "expires_at": "2026-11-21T08:38:53Z",
+      "updated_at": "2026-11-20T08:38:53Z"
+    },
     {
       "slug": "democratas-ampliam-maioria-no-senado-dos-eua-com-vitoria-no-alasca",
       "categoria": "Geopolitica_Relacoes",
@@ -785,6 +1013,47 @@
           "titulo_existente": "Como funcionam as eleições nos EUA?"
         }
       ]
+    },
+    {
+      "slug": "producao-mundial-de-vinho-deve-cair-ao-menor-nivel-em-65-anos",
+      "titulo_curto": "Produção mundial de vinho em 2026 deve se aproximar do menor nível em 65 anos",
+      "resumo_pulso": "Conforme estimativas da Organização Internacional da Vinha e do Vinho (OIV) divulgadas pelo G1 Economia, a safra global de vinho sofreu severas perdas em 2026. Secas prolongadas e ondas de calor na Europa prejudicaram significativamente a colheita em grandes produtores como França e Itália.",
+      "impacto_pratico": "Expectativa de alta nos preços e redução na oferta internacional de vinhos europeus nas prateleiras globais nos próximos meses.",
+      "categoria": "Economia_Comercio",
+      "paises_envolvidos": [
+        "FR",
+        "IT"
+      ],
+      "urgencia_score": 75,
+      "relevancia_score": 78,
+      "nivel_confianca": "alta",
+      "ttl_horas": 24,
+      "horas_em_destaque": 12,
+      "veiculos_origem": [
+        "G1 Economia",
+        "OIV",
+        "AFP"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/economia/agronegocios/noticia/2026/11/20/producao-mundial-de-vinho-deve-ficar-perto-do-menor-nivel-em-65-anos-com-seca-e-calor-na-europa.ghtml"
+      ],
+      "palavras_chave": [
+        "Vinho",
+        "Agronegócio",
+        "OIV",
+        "Mudanças Climáticas",
+        "Europa"
+      ],
+      "data_publicacao": "2026-11-20T07:00:01Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "Clima, Amazônia e Transição Energética",
+          "url_existente": "https://www.rodandoomundo.com.br/clima",
+          "motivo_conexao": "Análise de como o clima extremo afeta as cadeias globais de suprimentos e o agronegócio."
+        }
+      ],
+      "expires_at": "2026-11-21T08:38:53Z",
+      "updated_at": "2026-11-20T08:38:53Z"
     },
     {
       "slug": "divergencias-na-esquerda-expoem-tensoes-sobre-ajuste-fiscal-do-governo",
@@ -1256,6 +1525,90 @@
           "motivo_conexao": "Entenda como funcionam os créditos orçamentários suplementares sancionados pelo Executivo.",
           "titulo_existente": "O que é o Orçamento?"
         }
+      ]
+    }
+  ],
+  "temas_curadoria": [
+    {
+      "slug": "anthropic-openai-ipo-corrida-ia-mercado",
+      "status": "novo",
+      "ttl_horas": 72,
+      "expires_at": "2026-11-23T07:33:35Z",
+      "updated_at": "2026-11-20T07:33:35Z",
+      "titulo_tema": "Abertura de capital da Anthropic acirra rivalidade com a OpenAI e redefine o mercado global de IA",
+      "sintese_nerd": "A estreia da Anthropic na bolsa de valores intensifica a corrida corporativa pelo domínio global da inteligência artificial contra a OpenAI, redefinindo avaliações de mercado em Wall Street. Para o Brasil, o avanço acirrado dessas tecnologias acelera debates sobre regulação digital, custos de computação em nuvem e a produtividade industrial.",
+      "rota_editoria": "/economia",
+      "data_publicacao": "2026-11-20T07:33:35Z",
+      "gatilho_vitrine": "Conecte a disputa bilionária entre as gigantes de IA aos impactos regulatórios globais e de investimentos no Brasil.",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 92,
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Geopolitica_Radar",
+        "Cultura"
+      ],
+      "palavras_chave_busca": [
+        "anthropic",
+        "openai",
+        "ipo",
+        "inteligencia artificial",
+        "sam altman",
+        "dario amodei",
+        "wall street"
+      ]
+    },
+    {
+      "slug": "ataque-russo-ucrania-infraestrutura-crise-energia",
+      "status": "atualizacao",
+      "ttl_horas": 48,
+      "expires_at": "2026-11-22T07:33:35Z",
+      "updated_at": "2026-11-20T07:33:35Z",
+      "titulo_tema": "Escalada de bombardeios russos atinge infraestrutura em Kiev e pressiona aliados ocidentais",
+      "sintese_nerd": "Novos ataques maciços de mísseis balísticos russos contra pontes e centros industriais na Ucrânia elevam o custo humano do conflito e testam a resiliência energética europeia. O recrudescimento da guerra alimenta volatilidade nos mercados internacionais de grãos e energia, afetando indiretamente os custos logísticos globais.",
+      "rota_editoria": "/radar",
+      "data_publicacao": "2026-11-20T07:33:35Z",
+      "gatilho_vitrine": "Destaque o impacto humanitário e os reflexos imediatos na segurança energética e nos preços globais de commodities agrícolas.",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 88,
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Politica"
+      ],
+      "palavras_chave_busca": [
+        "rússia",
+        "ucrânia",
+        "guerra na europa",
+        "kiev",
+        "mísseis balísticos",
+        "geopolítica global"
+      ]
+    },
+    {
+      "slug": "inflacao-carne-poder-compra-salario-minimo-brasil",
+      "status": "novo",
+      "ttl_horas": 96,
+      "expires_at": "2026-11-24T07:33:35Z",
+      "updated_at": "2026-11-20T07:33:35Z",
+      "titulo_tema": "Perda histórica de poder de compra do salário mínimo frente ao preço da carne no Brasil",
+      "sintese_nerd": "Embora o Brasil registre recordes históricos na produção de carne bovina, a valorização das exportações e a inflação comprimiram o poder de compra do trabalhador, que hoje adquire quase um terço a menos de proteína do que em 2007. Esse descompasso entre macroeconomia e consumo interno pressiona o debate fiscal e o custo de vida nas grandes cidades.",
+      "rota_editoria": "/economia",
+      "data_publicacao": "2026-11-20T07:33:35Z",
+      "gatilho_vitrine": "Explique a divergência entre o boom de exportação do agronegócio e a carestia alimentar sentida pelas famílias brasileiras.",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 85,
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Politica",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "salário mínimo",
+        "preço da carne",
+        "inflação",
+        "poder de compra",
+        "agronegócio",
+        "economia brasileira"
       ]
     }
   ]
