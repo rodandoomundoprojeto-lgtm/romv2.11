@@ -2,23 +2,124 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-20T13:28:59Z",
-  "batch_id": "20261120-1328",
+  "updatedAt": "2026-11-20T14:18:46Z",
+  "batch_id": "20261120-1418",
   "temas_ativos": [
     {
-      "slug": "colapso-acoes-globais-techs-ia-juros",
-      "titulo_tema": "Colapso nas Ações Globais e Disputa Tecnológica de IA",
+      "slug": "greve-internacional-da-juventude-protesta-na-europa",
+      "titulo_tema": "Jovens da geração Z protestam em cidades europeias por custo de vida e educação",
+      "titulo_curto": "Jovens da geração Z protestam em cidades europeias por custo de vida e educação",
       "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Cultura",
+      "categoria": "Sociedade_Cultura",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/cultura",
+      "relevancia_score": 81,
+      "urgencia_score": 82,
+      "ttl_horas": 12,
+      "expires_at": "2026-11-21T02:18:46Z",
+      "palavras_chave_busca": [
+        "europa",
+        "protestos",
+        "geração z",
+        "custo de vida",
+        "educação"
+      ],
+      "palavras_chave": [
+        "europa",
+        "protestos",
+        "geração z",
+        "custo de vida",
+        "educação"
+      ],
+      "gatilho_vitrine": "Conforme cobertura do G1 Mundo, manifestações estudantis mobilizam jovens em centenas de cidades europeias sob o lema da 'Greve Internacional da Juventude'. Os atos cobram ações governamentais contra a inflação e a alta do custo de vida no continente.",
+      "resumo_pulso": "Conforme cobertura do G1 Mundo, manifestações estudantis mobilizam jovens em centenas de cidades europeias sob o lema da 'Greve Internacional da Juventude'. Os atos cobram ações governamentais contra a inflação e a alta do custo de vida no continente.",
+      "sintese_nerd": "Causa interrupções pontuais em serviços e rotinas urbanas em diversos países da Europa.",
+      "impacto_pratico": "Causa interrupções pontuais em serviços e rotinas urbanas em diversos países da Europa.",
+      "paises_envolvidos": [
+        "FR",
+        "IT",
+        "DE",
+        "ES"
+      ],
+      "veiculos_origem": [
+        "G1 Mundo"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/mundo/noticia/2026/11/20/protestos-jovens-europa.ghtml"
+      ],
+      "data_publicacao": "2026-11-20T13:42:02Z",
+      "updated_at": "2026-11-20T14:18:46Z"
+    },
+    {
+      "slug": "impasse-sobre-gastos-militares-ameaca-paralisar-governo-dos-eua",
+      "titulo_tema": "Divergências sobre orçamento militar colocam governo dos EUA sob risco de paralisação",
+      "titulo_curto": "Divergências sobre orçamento militar colocam governo dos EUA sob risco de paralisação",
+      "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Economia",
+      "categoria": "Economia_Comercio",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 89,
+      "urgencia_score": 87,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-21T14:18:46Z",
+      "palavras_chave_busca": [
+        "estados unidos",
+        "orçamento",
+        "donald trump",
+        "paralisação",
+        "congresso americano"
+      ],
+      "palavras_chave": [
+        "estados unidos",
+        "orçamento",
+        "donald trump",
+        "paralisação",
+        "congresso americano"
+      ],
+      "gatilho_vitrine": "Segundo apuração do G1 Economia, republicanos e democratas enfrentam um impasse crítico em Washington sobre o financiamento de órgãos federais antes do recesso de Natal. A disputa gira em torno de pedidos da administração de Donald Trump por verbas adicionais expressivas para a área militar.",
+      "resumo_pulso": "Segundo apuração do G1 Economia, republicanos e democratas enfrentam um impasse crítico em Washington sobre o financiamento de órgãos federais antes do recesso de Natal. A disputa gira em torno de pedidos da administração de Donald Trump por verbas adicionais expressivas para a área militar.",
+      "sintese_nerd": "Gera incertezas sobre a continuidade de serviços públicos federais nos Estados Unidos e repercussões nos mercados globais.",
+      "impacto_pratico": "Gera incertezas sobre a continuidade de serviços públicos federais nos Estados Unidos e repercussões nos mercados globais.",
+      "paises_envolvidos": [
+        "US"
+      ],
+      "veiculos_origem": [
+        "G1 Economia"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/mundo/noticia/2026/11/20/impasse-sobre-guerra-e-gastos-militares-ameaca-paralisar-governo-dos-eua.ghtml"
+      ],
+      "data_publicacao": "2026-11-20T13:34:36Z",
+      "updated_at": "2026-11-20T14:18:46Z"
+    },
+    {
+      "slug": "colapso-acoes-globais-techs-ia-juros",
+      "status": "novo",
+      "ttl_horas": 48,
+      "expires_at": "2026-11-22T13:28:59Z",
+      "updated_at": "2026-11-20T13:28:59Z",
+      "titulo_tema": "Colapso nas Ações Globais e Disputa Tecnológica de IA",
+      "sintese_nerd": "O encarecimento do crédito e o colapso nas ações de tecnologia — impulsionados por custos recordes de financiamento para chips de IA — provocaram a maior sequência de perdas nas bolsas globais desde 2023. Isso pressiona os mercados emergentes e reverbera na volatilidade de ativos de risco em todo o mundo.",
+      "rota_editoria": "/economia",
+      "data_publicacao": "2026-11-20T13:28:59Z",
+      "gatilho_vitrine": "Destacar o impacto do aperto financeiro e do colapso do setor de inteligência artificial nas bolsas globais e no bolso do investidor.",
       "origem_pipeline": "curadoria",
+      "relevancia_score": 95,
       "categoria_primaria": "Economia",
       "categorias_cruzadas": [
         "Geopolitica_Radar",
         "Cultura"
       ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 95,
-      "ttl_horas": 48,
-      "expires_at": "2026-11-22T13:28:59Z",
       "palavras_chave_busca": [
         "inteligência artificial",
         "ações globais",
@@ -26,52 +127,52 @@
         "crise tech",
         "juros de 8%",
         "mercados internacionais"
-      ],
-      "gatilho_vitrine": "Destacar o impacto do aperto financeiro e do colapso do setor de inteligência artificial nas bolsas globais e no bolso do investidor.",
-      "sintese_nerd": "O encarecimento do crédito e o colapso nas ações de tecnologia — impulsionados por custos recordes de financiamento para chips de IA — provocaram a maior sequência de perdas nas bolsas globais desde 2023. Isso pressiona os mercados emergentes e reverbera na volatilidade de ativos de risco em todo o mundo.",
-      "data_publicacao": "2026-11-20T13:28:59Z",
-      "updated_at": "2026-11-20T13:28:59Z"
+      ]
     },
     {
       "slug": "escalada-ucrania-russia-impacto-financeiro-europeu",
-      "titulo_tema": "Escalada Militar na Ucrânia e Estabilidade Financeira Europeia",
       "status": "novo",
+      "ttl_horas": 72,
+      "expires_at": "2026-11-23T13:28:59Z",
+      "updated_at": "2026-11-20T13:28:59Z",
+      "titulo_tema": "Escalada Militar na Ucrânia e Estabilidade Financeira Europeia",
+      "sintese_nerd": "A intensificação dos confrontos na Ucrânia e os novos desembolsos bilionários da União Europeia para sustentar Kiev evidenciam o desgaste prolongado da segurança europeia. Essa instabilidade gera ondas de choque econômicas e comerciais que repercutem diretamente nos preços de commodities e nas cadeias de suprimentos globais.",
+      "rota_editoria": "/radar",
+      "data_publicacao": "2026-11-20T13:28:59Z",
+      "gatilho_vitrine": "Conectar os recentes ataques em Kiev e os pacotes multibilionários de ajuda financeira da UE à estabilidade macroeconômica global e geopolítica energética.",
       "origem_pipeline": "curadoria",
+      "relevancia_score": 90,
       "categoria_primaria": "Geopolitica_Radar",
       "categorias_cruzadas": [
         "Economia",
         "Politica"
       ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 90,
-      "ttl_horas": 72,
-      "expires_at": "2026-11-23T13:28:59Z",
       "palavras_chave_busca": [
         "guerra na ucrânia",
         "união europeia",
         "rússia",
         "segurança global",
         "sanções e conflitos"
-      ],
-      "gatilho_vitrine": "Conectar os recentes ataques em Kiev e os pacotes multibilionários de ajuda financeira da UE à estabilidade macroeconômica global e geopolítica energética.",
-      "sintese_nerd": "A intensificação dos confrontos na Ucrânia e os novos desembolsos bilionários da União Europeia para sustentar Kiev evidenciam o desgaste prolongado da segurança europeia. Essa instabilidade gera ondas de choque econômicas e comerciais que repercutem diretamente nos preços de commodities e nas cadeias de suprimentos globais.",
-      "data_publicacao": "2026-11-20T13:28:59Z",
-      "updated_at": "2026-11-20T13:28:59Z"
+      ]
     },
     {
       "slug": "desinformacao-eleitoral-deepfakes-regulacao-global",
-      "titulo_tema": "Regulação de Deepfakes e Combate à Desinformação Eleitoral",
       "status": "novo",
+      "ttl_horas": 72,
+      "expires_at": "2026-11-23T13:28:59Z",
+      "updated_at": "2026-11-20T13:28:59Z",
+      "titulo_tema": "Regulação de Deepfakes e Combate à Desinformação Eleitoral",
+      "sintese_nerd": "O uso de inteligência artificial em campanhas de manipulação e perfis falsos em plataformas digitais levou governos e gigantes tecnológicas a adotarem novas ferramentas de defesa contra deepfakes. Essa corrida regulatória e tecnológica é crucial para salvaguardar a integridade de processos democráticos em eleições futuras.",
+      "rota_editoria": "/politica",
+      "data_publicacao": "2026-11-20T13:28:59Z",
+      "gatilho_vitrine": "Exibir o avanço das ferramentas corporativas e estatais para conter campanhas de desinformação baseadas em inteligência artificial.",
       "origem_pipeline": "curadoria",
+      "relevancia_score": 88,
       "categoria_primaria": "Politica",
       "categorias_cruzadas": [
         "Eleicoes",
         "Cultura"
       ],
-      "rota_editoria": "/politica",
-      "relevancia_score": 88,
-      "ttl_horas": 72,
-      "expires_at": "2026-11-23T13:28:59Z",
       "palavras_chave_busca": [
         "deepfakes",
         "desinformação",
@@ -79,11 +180,57 @@
         "tiktok",
         "inteligência artificial na política",
         "segurança digital"
+      ]
+    },
+    {
+      "slug": "tropas-europeias-realizam-exercicio-militar-na-polonia",
+      "titulo_tema": "Tropas de 11 países europeus realizam exercício militar inédito na Polônia",
+      "titulo_curto": "Tropas de 11 países europeus realizam exercício militar inédito na Polônia",
+      "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categoria": "Geopolitica_Relacoes",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
       ],
-      "gatilho_vitrine": "Exibir o avanço das ferramentas corporativas e estatais para conter campanhas de desinformação baseadas em inteligência artificial.",
-      "sintese_nerd": "O uso de inteligência artificial em campanhas de manipulação e perfis falsos em plataformas digitais levou governos e gigantes tecnológicas a adotarem novas ferramentas de defesa contra deepfakes. Essa corrida regulatória e tecnológica é crucial para salvaguardar a integridade de processos democráticos em eleições futuras.",
-      "data_publicacao": "2026-11-20T13:28:59Z",
-      "updated_at": "2026-11-20T13:28:59Z"
+      "rota_editoria": "/radar",
+      "relevancia_score": 86,
+      "urgencia_score": 88,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-21T14:18:46Z",
+      "palavras_chave_busca": [
+        "polônia",
+        "ucrânia",
+        "otan",
+        "exercício militar",
+        "europa"
+      ],
+      "palavras_chave": [
+        "polônia",
+        "ucrânia",
+        "otan",
+        "exercício militar",
+        "europa"
+      ],
+      "gatilho_vitrine": "Segundo reportado pelo G1 Mundo, forças militares de 11 nações europeias iniciaram manobras sem precedentes no sudeste da Polônia. O treinamento estratégico visa preparar contingentes para uma eventual missão de estabilização e reconstrução militar na Ucrânia no pós-guerra.",
+      "resumo_pulso": "Segundo reportado pelo G1 Mundo, forças militares de 11 nações europeias iniciaram manobras sem precedentes no sudeste da Polônia. O treinamento estratégico visa preparar contingentes para uma eventual missão de estabilização e reconstrução militar na Ucrânia no pós-guerra.",
+      "sintese_nerd": "Sinaliza a prontidão de defesa do flanco oriental da Europa e o planejamento diplomático-militar para o cenário posterior a um cessar-fogo.",
+      "impacto_pratico": "Sinaliza a prontidão de defesa do flanco oriental da Europa e o planejamento diplomático-militar para o cenário posterior a um cessar-fogo.",
+      "paises_envolvidos": [
+        "PL",
+        "UA",
+        "FR",
+        "GB"
+      ],
+      "veiculos_origem": [
+        "G1 Mundo"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/mundo/noticia/2026/11/20/tropas-europeias-de-11-paises-realizam-exercicio-militar-inedito-na-polonia-mirando-pos-guerra-na-ucrania.ghtml"
+      ],
+      "data_publicacao": "2026-11-20T12:58:17Z",
+      "updated_at": "2026-11-20T14:18:46Z"
     },
     {
       "slug": "ifood-sofre-novo-ataque-hacker-dados-expostos",
@@ -132,54 +279,103 @@
     },
     {
       "slug": "stf-derruba-sigilo-de-relatorio-da-pf-sobre-mendonca-e-master",
-      "status": "novo",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 18,
-      "expires_at": "2026-11-21T06:59:03Z",
-      "updated_at": "2026-11-20T12:59:03Z",
-      "fontes_urls": [
-        "https://g1.globo.com/economia/blog/ana-flor/post/2026/11/20/master-relatorio-da-pf-sobre-mendonca-cita-tentativas-de-aproximacao-de-vorcaro-ao-ministro-do-stf.ghtml",
-        "https://www.poder360.com.br/poder-justica/fachin-derruba-sigilo-de-relatorio-da-pf-sobre-mendonca/"
-      ],
       "titulo_tema": "STF retira sigilo de relatório da PF com menções ao ministro André Mendonça",
-      "resumo_pulso": "Segundo apurações do G1 Política e do Poder360, o presidente do STF, Edson Fachin, atendeu ao pedido do ministro André Mendonça e derrubou o sigilo de relatório da Polícia Federal. O documento detalha apurações e menções ao magistrado no âmbito da Operação Compliance Zero, envolvendo o ex-banqueiro Daniel Vorcaro.",
-      "sintese_nerd": "Aumenta o escrutínio sobre o Judiciário e desdobramentos de investigações financeiras na alta corte.",
       "titulo_curto": "STF retira sigilo de relatório da PF com menções ao ministro André Mendonça",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "stf",
-        "edson fachin",
-        "andré mendonça",
-        "daniel vorcaro",
-        "caso master",
-        "polícia federal"
-      ],
-      "urgencia_score": 92,
-      "data_publicacao": "2026-11-20T12:49:46Z",
-      "gatilho_vitrine": "Segundo apurações do G1 Política e do Poder360, o presidente do STF, Edson Fachin, atendeu ao pedido do ministro André Mendonça e derrubou o sigilo de relatório da Polícia Federal. O documento detalha apurações e menções ao magistrado no âmbito da Operação Compliance Zero, envolvendo o ex-banqueiro Daniel Vorcaro.",
-      "impacto_pratico": "Aumenta o escrutínio sobre o Judiciário e desdobramentos de investigações financeiras na alta corte.",
+      "status": "novo",
       "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "G1 Política",
-        "Poder360"
-      ],
-      "relevancia_score": 90,
-      "paises_envolvidos": [
-        "BR"
-      ],
       "categoria_primaria": "Geopolitica_Radar",
+      "categoria": "Geopolitica_Relacoes",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
       ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 91,
+      "urgencia_score": 93,
+      "ttl_horas": 18,
+      "expires_at": "2026-11-21T06:59:03Z",
       "palavras_chave_busca": [
         "stf",
-        "edson fachin",
         "andré mendonça",
-        "daniel vorcaro",
+        "polícia federal",
         "caso master",
-        "polícia federal"
-      ]
+        "daniel vorcaro",
+        "edson fachin"
+      ],
+      "palavras_chave": [
+        "stf",
+        "andré mendonça",
+        "polícia federal",
+        "caso master",
+        "daniel vorcaro",
+        "edson fachin"
+      ],
+      "gatilho_vitrine": "Segundo apuração da Agência Brasil e do JOTA Info, o presidente do STF, Edson Fachin, atendeu a pedido do próprio ministro André Mendonça e retirou o sigilo do relatório da Polícia Federal no âmbito da Operação Compliance Zero (Caso Master), enquanto manteve a prisão preventiva do ex-banqueiro Daniel Vorcaro.",
+      "resumo_pulso": "Segundo apuração da Agência Brasil e do JOTA Info, o presidente do STF, Edson Fachin, atendeu a pedido do próprio ministro André Mendonça e retirou o sigilo do relatório da Polícia Federal no âmbito da Operação Compliance Zero (Caso Master), enquanto manteve a prisão preventiva do ex-banqueiro Daniel Vorcaro.",
+      "sintese_nerd": "Esclarece o teor das investigações envolvendo autoridades e mantém a custódia do principal investigado do caso.",
+      "impacto_pratico": "Esclarece o teor das investigações envolvendo autoridades e mantém a custódia do principal investigado do caso.",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "veiculos_origem": [
+        "Agência Brasil (EBC)",
+        "JOTA Info",
+        "InfoMoney Mercados",
+        "G1 Política"
+      ],
+      "fontes_urls": [
+        "https://agenciabrasil.ebc.com.br/justica/noticia/2026-11/fachin-manda-quebrar-sigilo-de-relatorio-da-pf-com-mencoes-mendonca",
+        "https://www.jota.info/stf/caso-master-mendonca-abre-mao-do-sigilo-da-investigacao-da-pf-e-fachin-concorda"
+      ],
+      "data_publicacao": "2026-11-20T12:49:46Z",
+      "updated_at": "2026-11-20T14:18:46Z"
+    },
+    {
+      "slug": "quase-90-por-cento-das-usinas-eolicas-tem-alertas-socioambientais",
+      "titulo_tema": "Quase 90% das usinas eólicas terrestres no Brasil acumulam alertas socioambientais",
+      "titulo_curto": "Quase 90% das usinas eólicas terrestres no Brasil acumulam alertas socioambientais",
+      "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categoria": "Ciencia_Clima",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 87,
+      "urgencia_score": 85,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-21T14:18:46Z",
+      "palavras_chave_busca": [
+        "energia eólica",
+        "meio ambiente",
+        "nordeste",
+        "sustentabilidade",
+        "instituto arayara"
+      ],
+      "palavras_chave": [
+        "energia eólica",
+        "meio ambiente",
+        "nordeste",
+        "sustentabilidade",
+        "instituto arayara"
+      ],
+      "gatilho_vitrine": "Conforme levantamento inédito divulgado pela Agência Brasil e elaborado pelo Instituto Internacional Arayara, 89,4% dos parques eólicos terrestres monitorados no país apresentam algum fator de sensibilidade socioambiental, concentrando-se principalmente na região Nordeste.",
+      "resumo_pulso": "Conforme levantamento inédito divulgado pela Agência Brasil e elaborado pelo Instituto Internacional Arayara, 89,4% dos parques eólicos terrestres monitorados no país apresentam algum fator de sensibilidade socioambiental, concentrando-se principalmente na região Nordeste.",
+      "sintese_nerd": "Apunta desafios regulatórios e socioambientais para a expansão da matriz de energia limpa e renovável no território nacional.",
+      "impacto_pratico": "Apunta desafios regulatórios e socioambientais para a expansão da matriz de energia limpa e renovável no território nacional.",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "veiculos_origem": [
+        "Agência Brasil (EBC)"
+      ],
+      "fontes_urls": [
+        "https://agenciabrasil.ebc.com.br/meio-ambiente/noticia/2026-11/quase-90-das-usinas-eolicas-do-pais-tem-alertas-socioambientais"
+      ],
+      "data_publicacao": "2026-11-20T12:32:00Z",
+      "updated_at": "2026-11-20T14:18:46Z"
     },
     {
       "slug": "ucrania-ataca-estacao-de-petroleo-druzhba-em-tatarstao-russia",
@@ -712,280 +908,129 @@
         "drones",
         "guerra na ucrânia"
       ]
-    },
-    {
-      "slug": "cop31-entra-na-reta-final-sem-consenso-sobre-combustiveis-fosseis",
-      "status": "novo",
-      "categoria": "Ciencia_Clima",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-21T08:38:53Z",
-      "updated_at": "2026-11-20T08:38:53Z",
-      "fontes_urls": [
-        "https://www.infomoney.com.br/mundo/cop31-entra-na-reta-final-sem-consenso-sobre-combustiveis-fosseis-e-financiamento/"
-      ],
-      "titulo_tema": "COP31 entra na reta final sem consenso sobre eliminação de combustíveis fósseis",
-      "resumo_pulso": "Segundo apuração divulgada pelo InfoMoney, o novo rascunho do texto final da COP31 retirou referências explícitas ao abandono progressivo dos combustíveis fósseis. Impasses persistentes sobre financiamento e adaptação climática ameaçam prorrogar o encerramento da cúpula do clima.",
-      "sintese_nerd": "A ausência de metas rígidas pode desacelerar fluxos de financiamento internacional para transição energética e projetos de adaptação climática.",
-      "titulo_curto": "COP31 entra na reta final sem consenso sobre eliminação de combustíveis fósseis",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "cop31",
-        "clima",
-        "combustíveis fósseis",
-        "financiamento climático",
-        "onu"
-      ],
-      "urgencia_score": 85,
-      "data_publicacao": "2026-11-20T08:00:00Z",
-      "gatilho_vitrine": "Segundo apuração divulgada pelo InfoMoney, o novo rascunho do texto final da COP31 retirou referências explícitas ao abandono progressivo dos combustíveis fósseis. Impasses persistentes sobre financiamento e adaptação climática ameaçam prorrogar o encerramento da cúpula do clima.",
-      "impacto_pratico": "A ausência de metas rígidas pode desacelerar fluxos de financiamento internacional para transição energética e projetos de adaptação climática.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "InfoMoney Mercados"
-      ],
-      "relevancia_score": 89,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "cop31",
-        "clima",
-        "combustíveis fósseis",
-        "financiamento climático",
-        "onu"
-      ]
-    },
-    {
-      "slug": "democratas-ampliam-maioria-no-senado-dos-eua-com-vitoria-no-alasca",
-      "status": "novo",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-21T07:04:32Z",
-      "updated_at": "2026-11-20T07:04:32Z",
-      "fontes_urls": [
-        "https://g1.globo.com/mundo/noticia/2026/11/20/trump-derrotado-como-a-onda-azul-chegou-a-redutos-republicanos-e-mudou-o-mapa-politico-dos-eua.ghtml"
-      ],
-      "titulo_tema": "Democratas ampliam maioria no Senado dos EUA para 56 cadeiras após vitória no Alasca",
-      "resumo_pulso": "Conforme apuração divulgada pelo G1 Mundo, a eleição de Mary Peltola no Alasca garantiu aos democratas mais uma cadeira, consolidando a maioria de 56 a 44 no Senado americano. O resultado em redutos republicanos representa uma derrocada para a base de Donald Trump nas eleições de meio de mandato.",
-      "sintese_nerd": "A ampliação da maioria democrata dificulta a aprovação de nomeações e propostas conservadoras no Congresso dos EUA.",
-      "titulo_curto": "Democratas ampliam maioria no Senado dos EUA para 56 cadeiras após vitória no Alasca",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "eleições eua",
-        "senado americano",
-        "mary peltola",
-        "donald trump",
-        "democratas"
-      ],
-      "urgencia_score": 90,
-      "data_publicacao": "2026-11-20T07:01:00Z",
-      "gatilho_vitrine": "Conforme apuração divulgada pelo G1 Mundo, a eleição de Mary Peltola no Alasca garantiu aos democratas mais uma cadeira, consolidando a maioria de 56 a 44 no Senado americano. O resultado em redutos republicanos representa uma derrocada para a base de Donald Trump nas eleições de meio de mandato.",
-      "impacto_pratico": "A ampliação da maioria democrata dificulta a aprovação de nomeações e propostas conservadoras no Congresso dos EUA.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "G1 Mundo"
-      ],
-      "relevancia_score": 92,
-      "paises_envolvidos": [
-        "US"
-      ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "eleições eua",
-        "senado americano",
-        "mary peltola",
-        "donald trump",
-        "democratas"
-      ]
-    },
-    {
-      "slug": "producao-mundial-de-vinho-deve-cair-ao-menor-nivel-em-65-anos",
-      "status": "novo",
-      "categoria": "Economia_Comercio",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-21T08:38:53Z",
-      "updated_at": "2026-11-20T08:38:53Z",
-      "fontes_urls": [
-        "https://g1.globo.com/economia/agronegocios/noticia/2026/11/20/producao-mundial-de-vinho-deve-ficar-perto-do-menor-nivel-em-65-anos-com-seca-e-calor-na-europa.ghtml"
-      ],
-      "titulo_tema": "Produção mundial de vinho em 2026 deve se aproximar do menor nível em 65 anos",
-      "resumo_pulso": "Conforme estimativas da Organização Internacional da Vinha e do Vinho (OIV) divulgadas pelo G1 Economia, a safra global de vinho sofreu severas perdas em 2026. Secas prolongadas e ondas de calor na Europa prejudicaram significativamente a colheita em grandes produtores como França e Itália.",
-      "sintese_nerd": "Expectativa de alta nos preços e redução na oferta internacional de vinhos europeus nas prateleiras globais nos próximos meses.",
-      "titulo_curto": "Produção mundial de vinho em 2026 deve se aproximar do menor nível em 65 anos",
-      "rota_editoria": "/economia",
-      "palavras_chave": [
-        "vinho",
-        "agronegócio",
-        "oiv",
-        "mudanças climáticas",
-        "europa"
-      ],
-      "urgencia_score": 75,
-      "data_publicacao": "2026-11-20T07:00:01Z",
-      "gatilho_vitrine": "Conforme estimativas da Organização Internacional da Vinha e do Vinho (OIV) divulgadas pelo G1 Economia, a safra global de vinho sofreu severas perdas em 2026. Secas prolongadas e ondas de calor na Europa prejudicaram significativamente a colheita em grandes produtores como França e Itália.",
-      "impacto_pratico": "Expectativa de alta nos preços e redução na oferta internacional de vinhos europeus nas prateleiras globais nos próximos meses.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "G1 Economia",
-        "OIV",
-        "AFP"
-      ],
-      "relevancia_score": 78,
-      "paises_envolvidos": [
-        "FR",
-        "IT"
-      ],
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "vinho",
-        "agronegócio",
-        "oiv",
-        "mudanças climáticas",
-        "europa"
-      ]
-    },
-    {
-      "slug": "divergencias-na-esquerda-expoem-tensoes-sobre-ajuste-fiscal-do-governo",
-      "status": "novo",
-      "categoria": "Economia_Comercio",
-      "ttl_horas": 12,
-      "expires_at": "2026-11-20T19:04:32Z",
-      "updated_at": "2026-11-20T07:04:32Z",
-      "fontes_urls": [
-        "https://g1.globo.com/politica/noticia/2026/11/20/briga-na-esquerda-e-governo-lula-4.ghtml"
-      ],
-      "titulo_tema": "Divergências na base aliada expõem tensões sobre proposta de ajuste fiscal do governo",
-      "resumo_pulso": "Segundo reportado pelo G1 Política, disputas públicas entre interlocutores e aliados da base governista evidenciaram atritos sobre os rumos econômicos. O ponto central de discórdia envolve os cortes de gastos do pacote fiscal em tramitação na Câmara.",
-      "sintese_nerd": "A falta de alinhamento político pode alterar pontos do texto final do ajuste fiscal antes da votação na Câmara.",
-      "titulo_curto": "Divergências na base aliada expõem tensões sobre proposta de ajuste fiscal do governo",
-      "rota_editoria": "/economia",
-      "palavras_chave": [
-        "ajuste fiscal",
-        "política econômica",
-        "governo federal",
-        "congresso nacional"
-      ],
-      "urgencia_score": 88,
-      "data_publicacao": "2026-11-20T03:00:01Z",
-      "gatilho_vitrine": "Segundo reportado pelo G1 Política, disputas públicas entre interlocutores e aliados da base governista evidenciaram atritos sobre os rumos econômicos. O ponto central de discórdia envolve os cortes de gastos do pacote fiscal em tramitação na Câmara.",
-      "impacto_pratico": "A falta de alinhamento político pode alterar pontos do texto final do ajuste fiscal antes da votação na Câmara.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "G1 Política"
-      ],
-      "relevancia_score": 90,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "ajuste fiscal",
-        "política econômica",
-        "governo federal",
-        "congresso nacional"
-      ]
-    }
-  ],
-  "temas_curadoria": [
-    {
-      "slug": "colapso-acoes-globais-techs-ia-juros",
-      "titulo_tema": "Colapso nas Ações Globais e Disputa Tecnológica de IA",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Geopolitica_Radar",
-        "Cultura"
-      ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 95,
-      "ttl_horas": 48,
-      "expires_at": "2026-11-22T13:28:59Z",
-      "palavras_chave_busca": [
-        "inteligência artificial",
-        "ações globais",
-        "bolsas de valores",
-        "crise tech",
-        "juros de 8%",
-        "mercados internacionais"
-      ],
-      "gatilho_vitrine": "Destacar o impacto do aperto financeiro e do colapso do setor de inteligência artificial nas bolsas globais e no bolso do investidor.",
-      "sintese_nerd": "O encarecimento do crédito e o colapso nas ações de tecnologia — impulsionados por custos recordes de financiamento para chips de IA — provocaram a maior sequência de perdas nas bolsas globais desde 2023. Isso pressiona os mercados emergentes e reverbera na volatilidade de ativos de risco em todo o mundo.",
-      "data_publicacao": "2026-11-20T13:28:59Z",
-      "updated_at": "2026-11-20T13:28:59Z"
-    },
-    {
-      "slug": "escalada-ucrania-russia-impacto-financeiro-europeu",
-      "titulo_tema": "Escalada Militar na Ucrânia e Estabilidade Financeira Europeia",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Politica"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 90,
-      "ttl_horas": 72,
-      "expires_at": "2026-11-23T13:28:59Z",
-      "palavras_chave_busca": [
-        "guerra na ucrânia",
-        "união europeia",
-        "rússia",
-        "segurança global",
-        "sanções e conflitos"
-      ],
-      "gatilho_vitrine": "Conectar os recentes ataques em Kiev e os pacotes multibilionários de ajuda financeira da UE à estabilidade macroeconômica global e geopolítica energética.",
-      "sintese_nerd": "A intensificação dos confrontos na Ucrânia e os novos desembolsos bilionários da União Europeia para sustentar Kiev evidenciam o desgaste prolongado da segurança europeia. Essa instabilidade gera ondas de choque econômicas e comerciais que repercutem diretamente nos preços de commodities e nas cadeias de suprimentos globais.",
-      "data_publicacao": "2026-11-20T13:28:59Z",
-      "updated_at": "2026-11-20T13:28:59Z"
-    },
-    {
-      "slug": "desinformacao-eleitoral-deepfakes-regulacao-global",
-      "titulo_tema": "Regulação de Deepfakes e Combate à Desinformação Eleitoral",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Politica",
-      "categorias_cruzadas": [
-        "Eleicoes",
-        "Cultura"
-      ],
-      "rota_editoria": "/politica",
-      "relevancia_score": 88,
-      "ttl_horas": 72,
-      "expires_at": "2026-11-23T13:28:59Z",
-      "palavras_chave_busca": [
-        "deepfakes",
-        "desinformação",
-        "eleições 2027",
-        "tiktok",
-        "inteligência artificial na política",
-        "segurança digital"
-      ],
-      "gatilho_vitrine": "Exibir o avanço das ferramentas corporativas e estatais para conter campanhas de desinformação baseadas em inteligência artificial.",
-      "sintese_nerd": "O uso de inteligência artificial em campanhas de manipulação e perfis falsos em plataformas digitais levou governos e gigantes tecnológicas a adotarem novas ferramentas de defesa contra deepfakes. Essa corrida regulatória e tecnológica é crucial para salvaguardar a integridade de processos democráticos em eleições futuras.",
-      "data_publicacao": "2026-11-20T13:28:59Z",
-      "updated_at": "2026-11-20T13:28:59Z"
     }
   ],
   "noticias_quentes": [
+    {
+      "slug": "greve-internacional-da-juventude-protesta-na-europa",
+      "titulo_curto": "Jovens da geração Z protestam em cidades europeias por custo de vida e educação",
+      "resumo_pulso": "Conforme cobertura do G1 Mundo, manifestações estudantis mobilizam jovens em centenas de cidades europeias sob o lema da 'Greve Internacional da Juventude'. Os atos cobram ações governamentais contra a inflação e a alta do custo de vida no continente.",
+      "impacto_pratico": "Causa interrupções pontuais em serviços e rotinas urbanas em diversos países da Europa.",
+      "categoria": "Sociedade_Cultura",
+      "paises_envolvidos": [
+        "FR",
+        "IT",
+        "DE",
+        "ES"
+      ],
+      "urgencia_score": 82,
+      "relevancia_score": 81,
+      "nivel_confianca": "alta",
+      "ttl_horas": 12,
+      "horas_em_destaque": 8,
+      "veiculos_origem": [
+        "G1 Mundo"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/mundo/noticia/2026/11/20/protestos-jovens-europa.ghtml"
+      ],
+      "palavras_chave": [
+        "Europa",
+        "protestos",
+        "geração Z",
+        "custo de vida",
+        "educação"
+      ],
+      "data_publicacao": "2026-11-20T13:42:02Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "O que é inflação?",
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
+          "motivo_conexao": "Contextualiza o impacto do aumento generalizado de preços que motiva os protestos juvenis na Europa."
+        }
+      ],
+      "expires_at": "2026-11-21T02:18:46Z",
+      "updated_at": "2026-11-20T14:18:46Z"
+    },
+    {
+      "slug": "impasse-sobre-gastos-militares-ameaca-paralisar-governo-dos-eua",
+      "titulo_curto": "Divergências sobre orçamento militar colocam governo dos EUA sob risco de paralisação",
+      "resumo_pulso": "Segundo apuração do G1 Economia, republicanos e democratas enfrentam um impasse crítico em Washington sobre o financiamento de órgãos federais antes do recesso de Natal. A disputa gira em torno de pedidos da administração de Donald Trump por verbas adicionais expressivas para a área militar.",
+      "impacto_pratico": "Gera incertezas sobre a continuidade de serviços públicos federais nos Estados Unidos e repercussões nos mercados globais.",
+      "categoria": "Economia_Comercio",
+      "paises_envolvidos": [
+        "US"
+      ],
+      "urgencia_score": 87,
+      "relevancia_score": 89,
+      "nivel_confianca": "alta",
+      "ttl_horas": 24,
+      "horas_em_destaque": 12,
+      "veiculos_origem": [
+        "G1 Economia"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/mundo/noticia/2026/11/20/impasse-sobre-guerra-e-gastos-militares-ameaca-paralisar-governo-dos-eua.ghtml"
+      ],
+      "palavras_chave": [
+        "Estados Unidos",
+        "Orçamento",
+        "Donald Trump",
+        "paralisação",
+        "Congresso americano"
+      ],
+      "data_publicacao": "2026-11-20T13:34:36Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "Política nos Estados Unidos",
+          "url_existente": "https://www.rodandoomundo.com.br/politica/estados-unidos",
+          "motivo_conexao": "Aprofunda a análise sobre os embates legislativos e orçamentários em Washington."
+        }
+      ],
+      "expires_at": "2026-11-21T14:18:46Z",
+      "updated_at": "2026-11-20T14:18:46Z"
+    },
+    {
+      "slug": "tropas-europeias-realizam-exercicio-militar-na-polonia",
+      "titulo_curto": "Tropas de 11 países europeus realizam exercício militar inédito na Polônia",
+      "resumo_pulso": "Segundo reportado pelo G1 Mundo, forças militares de 11 nações europeias iniciaram manobras sem precedentes no sudeste da Polônia. O treinamento estratégico visa preparar contingentes para uma eventual missão de estabilização e reconstrução militar na Ucrânia no pós-guerra.",
+      "impacto_pratico": "Sinaliza a prontidão de defesa do flanco oriental da Europa e o planejamento diplomático-militar para o cenário posterior a um cessar-fogo.",
+      "categoria": "Geopolitica_Relacoes",
+      "paises_envolvidos": [
+        "PL",
+        "UA",
+        "FR",
+        "GB"
+      ],
+      "urgencia_score": 88,
+      "relevancia_score": 86,
+      "nivel_confianca": "alta",
+      "ttl_horas": 24,
+      "horas_em_destaque": 12,
+      "veiculos_origem": [
+        "G1 Mundo"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/mundo/noticia/2026/11/20/tropas-europeias-de-11-paises-realizam-exercicio-militar-inedito-na-polonia-mirando-pos-guerra-na-ucrania.ghtml"
+      ],
+      "palavras_chave": [
+        "Polônia",
+        "Ucrânia",
+        "OTAN",
+        "exercício militar",
+        "Europa"
+      ],
+      "data_publicacao": "2026-11-20T12:58:17Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "O que é uma sanção internacional?",
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-sancao-internacional",
+          "motivo_conexao": "Ajuda a compreender o contexto de pressões geopolíticas e alianças de segurança na Europa."
+        }
+      ],
+      "expires_at": "2026-11-21T14:18:46Z",
+      "updated_at": "2026-11-20T14:18:46Z"
+    },
     {
       "slug": "ifood-sofre-novo-ataque-hacker-dados-expostos",
       "categoria": "Economia_Comercio",
@@ -1019,44 +1064,84 @@
     },
     {
       "slug": "stf-derruba-sigilo-de-relatorio-da-pf-sobre-mendonca-e-master",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 18,
-      "expires_at": "2026-11-21T06:59:03Z",
-      "updated_at": "2026-11-20T12:59:03Z",
-      "fontes_urls": [
-        "https://g1.globo.com/economia/blog/ana-flor/post/2026/11/20/master-relatorio-da-pf-sobre-mendonca-cita-tentativas-de-aproximacao-de-vorcaro-ao-ministro-do-stf.ghtml",
-        "https://www.poder360.com.br/poder-justica/fachin-derruba-sigilo-de-relatorio-da-pf-sobre-mendonca/"
-      ],
-      "resumo_pulso": "Segundo apurações do G1 Política e do Poder360, o presidente do STF, Edson Fachin, atendeu ao pedido do ministro André Mendonça e derrubou o sigilo de relatório da Polícia Federal. O documento detalha apurações e menções ao magistrado no âmbito da Operação Compliance Zero, envolvendo o ex-banqueiro Daniel Vorcaro.",
       "titulo_curto": "STF retira sigilo de relatório da PF com menções ao ministro André Mendonça",
-      "palavras_chave": [
-        "STF",
-        "Edson Fachin",
-        "André Mendonça",
-        "Daniel Vorcaro",
-        "Caso Master",
-        "Polícia Federal"
-      ],
-      "urgencia_score": 92,
-      "data_publicacao": "2026-11-20T12:49:46Z",
-      "impacto_pratico": "Aumenta o escrutínio sobre o Judiciário e desdobramentos de investigações financeiras na alta corte.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "G1 Política",
-        "Poder360"
-      ],
-      "relevancia_score": 90,
-      "horas_em_destaque": 12,
+      "resumo_pulso": "Segundo apuração da Agência Brasil e do JOTA Info, o presidente do STF, Edson Fachin, atendeu a pedido do próprio ministro André Mendonça e retirou o sigilo do relatório da Polícia Federal no âmbito da Operação Compliance Zero (Caso Master), enquanto manteve a prisão preventiva do ex-banqueiro Daniel Vorcaro.",
+      "impacto_pratico": "Esclarece o teor das investigações envolvendo autoridades e mantém a custódia do principal investigado do caso.",
+      "categoria": "Geopolitica_Relacoes",
       "paises_envolvidos": [
         "BR"
       ],
+      "urgencia_score": 93,
+      "relevancia_score": 91,
+      "nivel_confianca": "alta",
+      "ttl_horas": 18,
+      "horas_em_destaque": 12,
+      "veiculos_origem": [
+        "Agência Brasil (EBC)",
+        "JOTA Info",
+        "InfoMoney Mercados",
+        "G1 Política"
+      ],
+      "fontes_urls": [
+        "https://agenciabrasil.ebc.com.br/justica/noticia/2026-11/fachin-manda-quebrar-sigilo-de-relatorio-da-pf-com-mencoes-mendonca",
+        "https://www.jota.info/stf/caso-master-mendonca-abre-mao-do-sigilo-da-investigacao-da-pf-e-fachin-concorda"
+      ],
+      "palavras_chave": [
+        "STF",
+        "André Mendonça",
+        "Polícia Federal",
+        "Caso Master",
+        "Daniel Vorcaro",
+        "Edson Fachin"
+      ],
+      "data_publicacao": "2026-11-20T12:49:46Z",
       "links_internos_relacionados": [
         {
+          "titulo_existente": "STF analisa regras de transparência e limites constitucionais entre os Poderes",
           "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
-          "motivo_conexao": "Contextualiza a atuação do STF e os mecanismos de controle institucional no Judiciário.",
-          "titulo_existente": "STF analisa regras de transparência e limites constitucionais entre os Poderes"
+          "motivo_conexao": "Complementa a cobertura sobre decisões institucionais da mais alta Corte do país."
         }
-      ]
+      ],
+      "expires_at": "2026-11-21T06:59:03Z",
+      "updated_at": "2026-11-20T14:18:46Z"
+    },
+    {
+      "slug": "quase-90-por-cento-das-usinas-eolicas-tem-alertas-socioambientais",
+      "titulo_curto": "Quase 90% das usinas eólicas terrestres no Brasil acumulam alertas socioambientais",
+      "resumo_pulso": "Conforme levantamento inédito divulgado pela Agência Brasil e elaborado pelo Instituto Internacional Arayara, 89,4% dos parques eólicos terrestres monitorados no país apresentam algum fator de sensibilidade socioambiental, concentrando-se principalmente na região Nordeste.",
+      "impacto_pratico": "Apunta desafios regulatórios e socioambientais para a expansão da matriz de energia limpa e renovável no território nacional.",
+      "categoria": "Ciencia_Clima",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "urgencia_score": 85,
+      "relevancia_score": 87,
+      "nivel_confianca": "alta",
+      "ttl_horas": 24,
+      "horas_em_destaque": 12,
+      "veiculos_origem": [
+        "Agência Brasil (EBC)"
+      ],
+      "fontes_urls": [
+        "https://agenciabrasil.ebc.com.br/meio-ambiente/noticia/2026-11/quase-90-das-usinas-eolicas-do-pais-tem-alertas-socioambientais"
+      ],
+      "palavras_chave": [
+        "energia eólica",
+        "meio ambiente",
+        "Nordeste",
+        "sustentabilidade",
+        "Instituto Arayara"
+      ],
+      "data_publicacao": "2026-11-20T12:32:00Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "Investimentos em energia solar, eólica e biocombustíveis aceleram transição energética no Brasil",
+          "url_existente": "https://www.rodandoomundo.com.br/radar",
+          "motivo_conexao": "Contextualiza os avanços e os desafios socioambientais da expansão de energias renováveis no Brasil."
+        }
+      ],
+      "expires_at": "2026-11-21T14:18:46Z",
+      "updated_at": "2026-11-20T14:18:46Z"
     },
     {
       "slug": "ucrania-ataca-estacao-de-petroleo-druzhba-em-tatarstao-russia",
@@ -1597,164 +1682,87 @@
           "titulo_existente": "Clima, Amazônia e Transição Energética"
         }
       ]
+    }
+  ],
+  "temas_curadoria": [
+    {
+      "slug": "colapso-acoes-globais-techs-ia-juros",
+      "status": "novo",
+      "ttl_horas": 48,
+      "expires_at": "2026-11-22T13:28:59Z",
+      "updated_at": "2026-11-20T13:28:59Z",
+      "titulo_tema": "Colapso nas Ações Globais e Disputa Tecnológica de IA",
+      "sintese_nerd": "O encarecimento do crédito e o colapso nas ações de tecnologia — impulsionados por custos recordes de financiamento para chips de IA — provocaram a maior sequência de perdas nas bolsas globais desde 2023. Isso pressiona os mercados emergentes e reverbera na volatilidade de ativos de risco em todo o mundo.",
+      "rota_editoria": "/economia",
+      "data_publicacao": "2026-11-20T13:28:59Z",
+      "gatilho_vitrine": "Destacar o impacto do aperto financeiro e do colapso do setor de inteligência artificial nas bolsas globais e no bolso do investidor.",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 95,
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Geopolitica_Radar",
+        "Cultura"
+      ],
+      "palavras_chave_busca": [
+        "inteligência artificial",
+        "ações globais",
+        "bolsas de valores",
+        "crise tech",
+        "juros de 8%",
+        "mercados internacionais"
+      ]
     },
     {
-      "slug": "divergencias-na-esquerda-expoem-tensoes-sobre-ajuste-fiscal-do-governo",
-      "categoria": "Economia_Comercio",
-      "ttl_horas": 12,
-      "expires_at": "2026-11-20T19:04:32Z",
-      "updated_at": "2026-11-20T07:04:32Z",
-      "fontes_urls": [
-        "https://g1.globo.com/politica/noticia/2026/11/20/briga-na-esquerda-e-governo-lula-4.ghtml"
-      ],
-      "resumo_pulso": "Segundo reportado pelo G1 Política, disputas públicas entre interlocutores e aliados da base governista evidenciaram atritos sobre os rumos econômicos. O ponto central de discórdia envolve os cortes de gastos do pacote fiscal em tramitação na Câmara.",
-      "titulo_curto": "Divergências na base aliada expõem tensões sobre proposta de ajuste fiscal do governo",
-      "palavras_chave": [
-        "Ajuste Fiscal",
-        "Política Econômica",
-        "Governo Federal",
-        "Congresso Nacional"
-      ],
-      "urgencia_score": 88,
-      "data_publicacao": "2026-11-20T03:00:01Z",
-      "impacto_pratico": "A falta de alinhamento político pode alterar pontos do texto final do ajuste fiscal antes da votação na Câmara.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "G1 Política"
-      ],
+      "slug": "escalada-ucrania-russia-impacto-financeiro-europeu",
+      "status": "novo",
+      "ttl_horas": 72,
+      "expires_at": "2026-11-23T13:28:59Z",
+      "updated_at": "2026-11-20T13:28:59Z",
+      "titulo_tema": "Escalada Militar na Ucrânia e Estabilidade Financeira Europeia",
+      "sintese_nerd": "A intensificação dos confrontos na Ucrânia e os novos desembolsos bilionários da União Europeia para sustentar Kiev evidenciam o desgaste prolongado da segurança europeia. Essa instabilidade gera ondas de choque econômicas e comerciais que repercutem diretamente nos preços de commodities e nas cadeias de suprimentos globais.",
+      "rota_editoria": "/radar",
+      "data_publicacao": "2026-11-20T13:28:59Z",
+      "gatilho_vitrine": "Conectar os recentes ataques em Kiev e os pacotes multibilionários de ajuda financeira da UE à estabilidade macroeconômica global e geopolítica energética.",
+      "origem_pipeline": "curadoria",
       "relevancia_score": 90,
-      "horas_em_destaque": 8,
-      "paises_envolvidos": [
-        "BR"
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Politica"
       ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
-          "motivo_conexao": "Acompanhe a análise sobre o impacto das medidas fiscais e de metas de arrecadação nas contas públicas.",
-          "titulo_existente": "Economia no Brasil"
-        },
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-o-orcamento",
-          "motivo_conexao": "Compreenda as regras de revisão de gastos, pisos constitucionais e limites do Orçamento da União.",
-          "titulo_existente": "O que é o Orçamento?"
-        }
+      "palavras_chave_busca": [
+        "guerra na ucrânia",
+        "união europeia",
+        "rússia",
+        "segurança global",
+        "sanções e conflitos"
       ]
     },
     {
-      "slug": "pessoas-negras-representam-45-por-cento-dos-novos-servidores-federais",
-      "categoria": "Sociedade_Cultura",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-21T03:16:49Z",
-      "updated_at": "2026-11-20T07:04:32Z",
-      "fontes_urls": [
-        "https://g1.globo.com/politica/noticia/2026/11/20/pessoas-negras-representaram-45percent-dos-novos-servidores-publicos-nos-ultimos-quatro-anos.ghtml"
-      ],
-      "resumo_pulso": "Conforme apurado pelo G1 Política com dados oficiais da administração federal, foram registrados 11,5 mil vínculos adicionais de pessoas negras entre 2023 e outubro de 2026. O índice supera o percentual mínimo fixado pela Lei de Cotas devido ao desempenho direto na ampla concorrência.",
-      "titulo_curto": "Pessoas negras representam 45% dos novos servidores públicos federais nos últimos 4 anos",
-      "palavras_chave": [
-        "Serviço Público",
-        "Lei de Cotas",
-        "Concursos Públicos",
-        "Igualdade Racial"
-      ],
-      "urgencia_score": 78,
-      "data_publicacao": "2026-11-20T03:00:01Z",
-      "impacto_pratico": "Mede o alcance e a efetividade das políticas de ação afirmativa e inclusão no funcionalismo público federal.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "G1 Política"
-      ],
-      "relevancia_score": 82,
-      "horas_em_destaque": 12,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
-          "motivo_conexao": "Veja reportagens sobre políticas públicas e iniciativas sociais no âmbito federal.",
-          "titulo_existente": "Política no Brasil"
-        }
-      ]
-    },
-    {
-      "slug": "mercados-asiaticos-despencam-temor-bolha-ia-anthropic",
-      "categoria": "Economia_Comercio",
-      "ttl_horas": 12,
-      "expires_at": "2026-11-20T15:16:49Z",
-      "updated_at": "2026-11-20T03:16:49Z",
-      "fontes_urls": [
-        "https://www.aljazeera.com/economy/2026/11/20/asias-stock-markets-dive-as-anthropic-debut-fails-to-allay-ai-bubble-fears?traffic_source=rss"
-      ],
-      "resumo_pulso": "Segundo reportado pela Al Jazeera, os principais índices acionários do Japão, Coreia do Sul, Taiwan e Hong Kong fecharam em forte queda. A liquidação no setor de tecnologia ocorreu após a estreia da Anthropic não conseguir dissipar os temores dos investidores sobre uma bolha especulativa em IA.",
-      "titulo_curto": "Bolsas na Ásia despencam com receios de bolha de inteligência artificial",
-      "palavras_chave": [
-        "Ações tech",
-        "Bolha de IA",
-        "Mercados Asiáticos",
-        "Anthropic",
-        "Bolsa de Valores"
-      ],
-      "urgencia_score": 85,
-      "data_publicacao": "2026-11-20T02:54:22Z",
-      "impacto_pratico": "A aversão ao risco em ações de tecnologia na Ásia pode se desdobrar em volatilidade no dólar e nos mercados futuros da Europa e das Américas.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Al Jazeera English"
-      ],
+      "slug": "desinformacao-eleitoral-deepfakes-regulacao-global",
+      "status": "novo",
+      "ttl_horas": 72,
+      "expires_at": "2026-11-23T13:28:59Z",
+      "updated_at": "2026-11-20T13:28:59Z",
+      "titulo_tema": "Regulação de Deepfakes e Combate à Desinformação Eleitoral",
+      "sintese_nerd": "O uso de inteligência artificial em campanhas de manipulação e perfis falsos em plataformas digitais levou governos e gigantes tecnológicas a adotarem novas ferramentas de defesa contra deepfakes. Essa corrida regulatória e tecnológica é crucial para salvaguardar a integridade de processos democráticos em eleições futuras.",
+      "rota_editoria": "/politica",
+      "data_publicacao": "2026-11-20T13:28:59Z",
+      "gatilho_vitrine": "Exibir o avanço das ferramentas corporativas e estatais para conter campanhas de desinformação baseadas em inteligência artificial.",
+      "origem_pipeline": "curadoria",
       "relevancia_score": 88,
-      "horas_em_destaque": 8,
-      "paises_envolvidos": [
-        "JP",
-        "KR",
-        "TW",
-        "HK",
-        "US"
+      "categoria_primaria": "Politica",
+      "categorias_cruzadas": [
+        "Eleicoes",
+        "Cultura"
       ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
-          "motivo_conexao": "Acompanhe os desdobramentos do apetite de risco global sobre o mercado financeiro e câmbio doméstico.",
-          "titulo_existente": "Economia no Brasil"
-        }
-      ]
-    },
-    {
-      "slug": "bukele-anuncia-candidatura-terceiro-mandato-el-salvador",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-21T03:16:49Z",
-      "updated_at": "2026-11-20T05:35:20Z",
-      "fontes_urls": [
-        "https://g1.globo.com/mundo/noticia/2026/11/20/bukele-registra-candidatura-para-tentar-3o-mandato-em-el-salvador.ghtml"
-      ],
-      "resumo_pulso": "Segundo apuração do G1 e do Poder360, o presidente salvadorenho Nayib Bukele formalizou perante o Tribunal Supremo Eleitoral sua candidatura para as eleições de fevereiro de 2027. O movimento consolida sua intenção de buscar um terceiro mandato consecutivo amparado por ampla popularidade, apesar das contestações de opositores sobre a legalidade institucional da medida.",
-      "titulo_curto": "Nayib Bukele formaliza registro para disputar terceiro mandato em El Salvador",
-      "palavras_chave": [
-        "Nayib Bukele",
-        "El Salvador",
-        "eleições",
-        "reeleição"
-      ],
-      "urgencia_score": 85,
-      "data_publicacao": "2026-11-20T02:23:16Z",
-      "impacto_pratico": "Redesenha o panorama político centro-americano e desperta debates sobre os limites constitucionais da reeleição.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "G1 Mundo",
-        "Poder360"
-      ],
-      "relevancia_score": 83,
-      "horas_em_destaque": 12,
-      "paises_envolvidos": [
-        "SV"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/eleicoes",
-          "motivo_conexao": "Amplia o debate sobre sistemas de votação e disputas eleitorais nas Américas.",
-          "titulo_existente": "Eleições e Democracia no Mundo"
-        }
+      "palavras_chave_busca": [
+        "deepfakes",
+        "desinformação",
+        "eleições 2027",
+        "tiktok",
+        "inteligência artificial na política",
+        "segurança digital"
       ]
     }
   ]
