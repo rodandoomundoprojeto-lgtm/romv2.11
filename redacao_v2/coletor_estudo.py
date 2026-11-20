@@ -310,7 +310,7 @@ FONTES_ESTUDO_V2: List[Dict[str, Any]] = [
     },
     {
         "nome": "Petit Journal (YouTube)",
-        "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UC-g5Ls_uobMiRatAWzhSTqA",
+        "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCnPW1aOwBnB7IO2wznXh62A",
         "pais_iso": "BR",
         "regiao": "Global",
         "idioma": "pt",

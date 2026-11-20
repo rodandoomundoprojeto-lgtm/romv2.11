@@ -1549,7 +1549,7 @@
                 🔥 Notícias Quentes (Vitrine) <span class="badge" id="tab-count-cur-quentes">0</span>
               </button>
               <button class="admin-tab" type="button" role="tab" id="tab-btn-cur-colunas" data-cur-modo="colunas" aria-selected="false">
-                ✍️ Colunas Editoriais (/entenda) <span class="badge" id="tab-count-cur-colunas">0</span>
+                ✍️ Colunas / Entenda o assunto (/entenda) <span class="badge" id="tab-count-cur-colunas">0</span>
               </button>
             </div>
 
@@ -4422,6 +4422,7 @@
               <span class="admin-sub">docs: ${e.documentos_novos ?? 0} · eventos: ${e.eventos_atualizados ?? 0}</span>
               <span class="admin-sub" title="Entrada / Início: ${escapeHtml(e.started_at || '')}">📅 Entrada: ${formatarRelativo(e.started_at)} (${formatarDataHora(e.started_at)})</span>
             </div>
+            ${e.job_nome === 'orquestrador_editorial_v2' && e.status === 'em_execucao' ? '<div class="admin-sub" style="color:var(--accent-warn,#f59e0b);font-size:0.75rem;margin-top:3px;">⏳ Pipeline de 4 agentes Gemini em andamento (~2 a 3 min). O artigo aparecerá na aba Curadoria > Colunas / Entenda o assunto assim que finalizar.</div>' : ''}
             ${e.erro_detalhe ? `<div class="admin-sub">Erro: ${escapeHtml(e.erro_detalhe)}</div>` : ''}
           </div>
         `).join('');
@@ -6562,12 +6563,14 @@
                   }
                   if (execMatch && execMatch.status === 'concluido') {
                     clearInterval(poll);
-                    showBanner('entenda-banner', 'Artigo gerado com sucesso! Ele já está listado na tabela logo abaixo, pronto para revisão e clique em "Publicar em /entenda".', 'ok');
+                    const det = $('entenda-detalhes-tabela');
+                    if (det) det.open = true;
+                    showBanner('entenda-banner', 'Artigo gerado com sucesso! Ele já está pronto para revisão na tabela logo abaixo ou na aba "Colunas / Entenda o assunto" da Curadoria.', 'ok');
                     showToast('Artigo gerado! Pronto para publicar em /entenda.', 'ok');
                     return;
                   }
                 } catch (_) {}
-                if (tentativas >= 20) clearInterval(poll);
+                if (tentativas >= 40) clearInterval(poll);
               }, 8000);
             } else if (dryRun) {
               const tituloDry = (res && res.coluna && res.coluna.titulo) ? ` ("${res.coluna.titulo}")` : '';

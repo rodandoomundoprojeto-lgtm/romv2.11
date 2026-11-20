@@ -801,7 +801,7 @@ DIRETRIZES OBRIGATÓRIAS:
 
 def _gerar_com_fallback_gemini(client: Any, contents: str, config: Any, preferred_model: str = "") -> tuple[Any, str]:
     """Executa generate_content tentando o modelo configurado e fallbacks ativos."""
-    candidatos = [m.strip() for m in [preferred_model, "gemini-3.5-flash", "gemini-3.5-flash-lite", "gemini-3.8-flash"] if m and m.strip()]
+    candidatos = [m.strip() for m in [preferred_model, "gemini-3.5-flash", "gemini-3.5-flash-lite", "gemini-3.1-flash-lite", "gemini-3.8-flash"] if m and m.strip()]
     vistos: set[str] = set()
     modelos = [m for m in candidatos if not (m in vistos or vistos.add(m))]
     ultimo_erro: Optional[Exception] = None
@@ -918,7 +918,8 @@ def admin_sugerir_dossie_ia(
     }
 
 
-# Dossiês 2.0 — Geração editorial por IA (Gemini) + revisão
+# Dossiês 2.0 — Geração editorial por IA (Gemini) + revisão
+
 
 
 class DossierGenerationModel(BaseModel):

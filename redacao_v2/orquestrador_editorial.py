@@ -59,6 +59,7 @@ MODELO_EDITORIAL = _RAW_MODELO_EDITORIAL or "gemini-3.5-flash"
 MODELOS_EDITORIAL_FALLBACK = [
     "gemini-3.5-flash",
     "gemini-3.5-flash-lite",
+    "gemini-3.1-flash-lite",
     "gemini-3.8-flash",
 ]
 NOTA_ISENCAO_MINIMA = 85

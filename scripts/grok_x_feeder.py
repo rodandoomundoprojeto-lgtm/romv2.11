@@ -1001,7 +1001,18 @@ def main(argv=None):
     )
 
     if not persist_edition(items, topicos_por_pais, used_model, out_path, is_mock=args.mock, is_grok_x=is_grok_x):
+        try:
+            from notificador import alerta_erro
+            alerta_erro("Falha ao salvar edição no grok_x_feeder")
+        except Exception:
+            pass
         sys.exit(2)
+
+    try:
+        from notificador import alerta_nova_materia
+        alerta_nova_materia()
+    except Exception:
+        pass
 
     print(f"[SUCESSO] {len(items)} notícias verificadas salvas em: {out_path}")
     for it in items[:5]:

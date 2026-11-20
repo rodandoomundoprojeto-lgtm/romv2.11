@@ -783,8 +783,10 @@ async def executar_noticias_quentes_manual(
             dry_run=modo_dry_run,
         )
     except Exception as exc:  # noqa: BLE001
+        msg_err = str(exc)
+        eh_indisponivel = any(k in msg_err.upper() for k in ("503", "UNAVAILABLE", "429", "RESOURCE_EXHAUSTED"))
         raise HTTPException(
-            status_code=500,
+            status_code=503 if eh_indisponivel else 500,
             detail=f"Falha ao executar pipeline de coleta: {exc}",
         ) from exc
 

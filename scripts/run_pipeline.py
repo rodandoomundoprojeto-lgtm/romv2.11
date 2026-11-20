@@ -508,15 +508,30 @@ def main(argv: Optional[List[str]] = None) -> int:
                 file=sys.stderr,
             )
 
-    if args.modo == "pulso":
-        saida = asyncio.run(_executar_modo_pulso(dry_run=args.dry_run, limit=args.limit))
-    elif args.modo == "curadoria":
-        saida = _executar_modo_curadoria(dry_run=args.dry_run, horas=args.horas, limit=args.limit)
-    elif args.modo == "coluna":
-        saida = asyncio.run(_executar_modo_coluna(dry_run=args.dry_run, tema=args.tema, slug=args.slug))
-    else:
-        parser.error(f"Modo desconhecido: {args.modo}")
-        return 2
+    try:
+        if args.modo == "pulso":
+            saida = asyncio.run(_executar_modo_pulso(dry_run=args.dry_run, limit=args.limit))
+        elif args.modo == "curadoria":
+            saida = _executar_modo_curadoria(dry_run=args.dry_run, horas=args.horas, limit=args.limit)
+        elif args.modo == "coluna":
+            saida = asyncio.run(_executar_modo_coluna(dry_run=args.dry_run, tema=args.tema, slug=args.slug))
+        else:
+            parser.error(f"Modo desconhecido: {args.modo}")
+            return 2
+
+        if not args.dry_run:
+            try:
+                from notificador import alerta_nova_materia
+                alerta_nova_materia()
+            except Exception:
+                pass
+    except Exception as exc:
+        try:
+            from notificador import alerta_erro
+            alerta_erro(f"Erro no pipeline ({args.modo}): {exc}")
+        except Exception:
+            pass
+        raise
 
     # Imprime apenas o JSON formatado em stdout
     print(json.dumps(saida, ensure_ascii=False, indent=2))

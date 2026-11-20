@@ -40,6 +40,19 @@ def _eh_destaque_pulso_v2(item: Dict[str, Any]) -> bool:
     return "pulso v2" in normalizar_fonte_key(item.get("fonte_nome"))
 
 
+def _eh_video_card(item: Dict[str, Any]) -> bool:
+    """Identifica se o card é de formato vídeo (YouTube, canais analíticos ou atributo formato)."""
+    if not isinstance(item, dict):
+        return False
+    if str(item.get("formato") or "").lower() == "video":
+        return True
+    url = str(item.get("fonte_url") or "").lower()
+    if any(k in url for k in ("youtube.com", "youtu.be", "vimeo.com", "dailymotion.com", "twitch.tv", "rumble.com", "odysee.com")):
+        return True
+    fonte = str(item.get("fonte_nome") or "").lower()
+    return "youtube" in fonte
+
+
 def _timestamp_publicacao(item: Dict[str, Any]) -> float:
     """Extrai timestamp numérico de data_publicacao ISO-8601 para ordenação decrescente."""
     raw = str(item.get("data_publicacao") or "").strip()
@@ -320,8 +333,9 @@ def _persistir_feed(feed: List[Dict[str, Any]]) -> None:
 
 def _selecionar_feed_diversificado(
     itens_ordenados: List[Dict[str, Any]],
-    max_items: int = 50,
+    max_items: int = 60,
     max_por_fonte: int = 4,
+    min_videos_cota: int = 12,
 ) -> List[Dict[str, Any]]:
     """Mantém até `max_items` cards com teto por veículo, evitando que portais de alto volume expulsem análises/YouTube."""
     if not itens_ordenados or max_items <= 0:
@@ -330,9 +344,25 @@ def _selecionar_feed_diversificado(
     indices_usados: set[int] = set()
     contagem_fonte: Dict[str, int] = {}
 
+    # 1. Cota reservada de vídeos: garante até min_videos_cota vídeos de canais analíticos
+    videos_adicionados = 0
+    for idx, item in enumerate(itens_ordenados):
+        if videos_adicionados >= min_videos_cota:
+            break
+        if _eh_video_card(item):
+            fk = normalizar_fonte_key(item.get("fonte_nome"))
+            if contagem_fonte.get(fk, 0) < max_por_fonte:
+                contagem_fonte[fk] = contagem_fonte.get(fk, 0) + 1
+                selecionados.append(item)
+                indices_usados.add(idx)
+                videos_adicionados += 1
+
+    # 2. Preenchimento regular cronológico respeitando o teto por fonte
     for idx, item in enumerate(itens_ordenados):
         if len(selecionados) >= max_items:
             break
+        if idx in indices_usados:
+            continue
         fk = normalizar_fonte_key(item.get("fonte_nome"))
         if contagem_fonte.get(fk, 0) >= max_por_fonte:
             continue
@@ -348,6 +378,7 @@ def _selecionar_feed_diversificado(
                 continue
             selecionados.append(item)
 
+    selecionados.sort(key=_timestamp_publicacao, reverse=True)
     return selecionados
 
 

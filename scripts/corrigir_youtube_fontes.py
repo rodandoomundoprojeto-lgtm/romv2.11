@@ -56,7 +56,7 @@ CORRECOES_YOUTUBE = [
     {
         "id": 48,
         "nome": "Petit Journal (YouTube)",
-        "channel_id": "UC-g5Ls_uobMiRatAWzhSTqA",
+        "channel_id": "UCnPW1aOwBnB7IO2wznXh62A",
         "canal_url": "https://www.youtube.com/@PetitJournal",
     },
     {

@@ -49,6 +49,7 @@ MODELO_PULSO = _RAW_MODELO_PULSO or "gemini-3.5-flash"
 MODELOS_PULSO_FALLBACK = [
     "gemini-3.5-flash",
     "gemini-3.5-flash-lite",
+    "gemini-3.1-flash-lite",
     "gemini-3.8-flash",
 ]
 LOCK_PULSO_KEY = "pipeline_pulso:noticias_quentes_30m"
@@ -767,7 +768,7 @@ def gerar_pulso_noticias_quentes(
 ) -> PayloadNoticiasQuentes:
     """Chama `gemini-2.5-flash` com `response_schema=PayloadNoticiasQuentes` e deduplicação de ativos."""
     system_prompt = carregar_prompt_pulso()
-    gemini_client = client or genai.Client(http_options=types.HttpOptions(timeout=35_000))
+    gemini_client = client or genai.Client(http_options=types.HttpOptions(timeout=60_000))
     batch_atual = datetime.now(timezone.utc).strftime("%Y%m%d-%H%M")
     acervo = acervo_publicado or []
     lote_balanceado = selecionar_lote_balanceado_pulso(itens_coletados, limite=30, max_por_fonte=2, cota_youtube=5)
@@ -1192,61 +1193,101 @@ def verificar_kill_switch_publicacao(conn: Any, default_status: str = "ativo") -
     return default_status
 
 
+def _carregar_fontes_radar_tradicional() -> List[Dict[str, Any]]:
+    """Converte as fontes de `config/sources.json` (Radar tradicional) para o formato do Pulso V2."""
+    sources_path = ROOT_DIR / "config" / "sources.json"
+    if not sources_path.exists():
+        return []
+    try:
+        raw = json.loads(sources_path.read_text(encoding="utf-8"))
+        if not isinstance(raw, list):
+            return []
+    except Exception as exc:  # noqa: BLE001
+        print(f"[Aviso] Falha ao ler config/sources.json: {exc}")
+        return []
+
+    fontes: List[Dict[str, Any]] = []
+    for item in raw:
+        if not isinstance(item, dict):
+            continue
+        tipo = str(item.get("tipo") or "").strip().lower()
+        val = str(item.get("id_ou_url") or "").strip()
+        if not val:
+            continue
+        if tipo == "youtube":
+            url = f"https://www.youtube.com/feeds/videos.xml?channel_id={val}"
+            tipo_fonte = "youtube_rss"
+        else:
+            url = val
+            tipo_fonte = "rss_feed"
+        fontes.append(
+            {
+                "nome": str(item.get("nome") or url).strip(),
+                "url": url,
+                "pais_iso": "BR",
+                "regiao": "Global",
+                "idioma": "pt",
+                "tipo_fonte": tipo_fonte,
+                "cadencia": "pulso_30m",
+                "peso_confianca": 4,
+                "politica_uso_status": "aprovada",
+                "coleta_permitida": True,
+                "armazenamento_permitido": "apenas_metadados",
+                "exibicao_permitida": "manchete_sintese_e_link" if tipo_fonte == "youtube_rss" else "sintese_e_link",
+            }
+        )
+    return fontes
+
+
 def _carregar_fontes_pulso_com_banco(database_url: str) -> List[Dict[str, Any]]:
-    """Combina FONTES_NOTICIAS_QUENTES_30MIN com fontes aprovadas em `ai_fontes_referencia`."""
+    """Combina FONTES_NOTICIAS_QUENTES_30MIN, fontes aprovadas em `ai_fontes_referencia` e `config/sources.json`."""
     fontes: List[Dict[str, Any]] = list(FONTES_NOTICIAS_QUENTES_30MIN)
     urls_vistas = {str(f.get("url") or "").strip() for f in fontes}
-    if not database_url:
-        return fontes
-    try:
-        import psycopg
+    if database_url:
+        try:
+            import psycopg
 
-        with psycopg.connect(database_url, connect_timeout=5, prepare_threshold=None) as conn:
-            with conn.cursor() as cur:
-                cur.execute(
-                    """
-                    (
+            with psycopg.connect(database_url, connect_timeout=5, prepare_threshold=None) as conn:
+                with conn.cursor() as cur:
+                    cur.execute(
+                        """
                         SELECT nome, url, pais_iso, regiao, idioma, tipo_fonte, cadencia
                         FROM ai_fontes_referencia
                         WHERE ativo = TRUE
                           AND politica_uso_status = 'aprovada'
                           AND coleta_permitida = TRUE
-                          AND tipo_fonte IN ('rss_feed', 'fonte_primaria')
-                        ORDER BY peso_confianca DESC, id DESC
-                        LIMIT 40
+                          AND tipo_fonte IN ('rss_feed', 'fonte_primaria', 'youtube_rss')
+                        ORDER BY peso_confianca DESC, id DESC;
+                        """
                     )
-                    UNION ALL
-                    (
-                        SELECT nome, url, pais_iso, regiao, idioma, tipo_fonte, cadencia
-                        FROM ai_fontes_referencia
-                        WHERE ativo = TRUE
-                          AND politica_uso_status = 'aprovada'
-                          AND coleta_permitida = TRUE
-                          AND tipo_fonte = 'youtube_rss'
-                        ORDER BY peso_confianca DESC, id DESC
-                        LIMIT 25
-                    );
-                    """
-                )
-                for row in cur.fetchall():
-                    nome, url, pais_iso, regiao, idioma, tipo_fonte, cadencia = row
-                    url_limpa = str(url or "").strip()
-                    if not url_limpa or url_limpa in urls_vistas:
-                        continue
-                    urls_vistas.add(url_limpa)
-                    fontes.append(
-                        {
-                            "nome": nome,
-                            "url": url_limpa,
-                            "pais_iso": pais_iso or "BR",
-                            "regiao": regiao or "Global",
-                            "idioma": idioma or "pt",
-                            "tipo_fonte": tipo_fonte or "rss_feed",
-                            "cadencia": cadencia or "pulso_30m",
-                        }
-                    )
-    except Exception as exc:  # noqa: BLE001
-        print(f"[Aviso] Falha ao carregar fontes extras de ai_fontes_referencia: {exc}")
+                    for row in cur.fetchall():
+                        nome, url, pais_iso, regiao, idioma, tipo_fonte, cadencia = row
+                        url_limpa = str(url or "").strip()
+                        if not url_limpa or url_limpa in urls_vistas:
+                            continue
+                        urls_vistas.add(url_limpa)
+                        fontes.append(
+                            {
+                                "nome": nome,
+                                "url": url_limpa,
+                                "pais_iso": pais_iso or "BR",
+                                "regiao": regiao or "Global",
+                                "idioma": idioma or "pt",
+                                "tipo_fonte": tipo_fonte or "rss_feed",
+                                "cadencia": cadencia or "pulso_30m",
+                            }
+                        )
+        except Exception as exc:  # noqa: BLE001
+            print(f"[Aviso] Falha ao carregar fontes extras de ai_fontes_referencia: {exc}")
+
+    # Garante que todas as fontes do Radar tradicional (config/sources.json) também entrem no Pulso V2
+    for f in _carregar_fontes_radar_tradicional():
+        url_limpa = str(f.get("url") or "").strip()
+        if not url_limpa or url_limpa in urls_vistas:
+            continue
+        urls_vistas.add(url_limpa)
+        fontes.append(f)
+
     return fontes
 
 
