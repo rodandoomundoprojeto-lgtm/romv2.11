@@ -2,13 +2,347 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-20T20:45:51Z",
-  "batch_id": "20261120-2045",
+  "updatedAt": "2026-11-20T21:42:32Z",
+  "batch_id": "20261120-2141",
   "temas_ativos": [
     {
+      "slug": "desigualdade-racial-pre-natal-bebes-pretos-sus",
+      "titulo_tema": "Dados do SUS apontam maior prematuridade e menor acompanhamento pré-natal entre mães negras",
+      "titulo_curto": "Dados do SUS apontam maior prematuridade e menor acompanhamento pré-natal entre mães negras",
+      "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Cultura",
+      "categoria": "Sociedade_Cultura",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/cultura",
+      "relevancia_score": 86,
+      "urgencia_score": 82,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-21T21:42:32Z",
+      "palavras_chave_busca": [
+        "sus",
+        "saúde pública",
+        "mães negras",
+        "pré-natal",
+        "desigualdade racial"
+      ],
+      "palavras_chave": [
+        "sus",
+        "saúde pública",
+        "mães negras",
+        "pré-natal",
+        "desigualdade racial"
+      ],
+      "gatilho_vitrine": "Conforme levantamento do G1 Política baseado em dados do Datasus referentes a 2026, gestantes pretas passam por menos consultas de pré-natal em comparação com gestantes brancas. O estudo indica ainda que bebês de mães negras apresentam taxas mais elevadas de prematuridade e baixo peso no nascimento.",
+      "resumo_pulso": "Conforme levantamento do G1 Política baseado em dados do Datasus referentes a 2026, gestantes pretas passam por menos consultas de pré-natal em comparação com gestantes brancas. O estudo indica ainda que bebês de mães negras apresentam taxas mais elevadas de prematuridade e baixo peso no nascimento.",
+      "sintese_nerd": "Sinaliza a urgência de direcionamento de políticas públicas de saúde e assistência pré-natal para gestantes negras no SUS.",
+      "impacto_pratico": "Sinaliza a urgência de direcionamento de políticas públicas de saúde e assistência pré-natal para gestantes negras no SUS.",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "veiculos_origem": [
+        "G1 Política"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/politica/noticia/2026/11/20/maes-pretas-fazem-menos-consultas-de-pre-natal-e-seus-bebes-tem-mais-chance-de-nascer-com-baixo-peso-mostram-dados-do-sus.ghtml"
+      ],
+      "data_publicacao": "2026-11-20T21:28:06Z",
+      "updated_at": "2026-11-20T21:42:32Z"
+    },
+    {
+      "slug": "senado-frances-aprova-lei-presuncao-legalidade-disparos-policiais",
+      "titulo_tema": "Senado da França aprova lei que presume legalidade em disparos efetuados por policiais",
+      "titulo_curto": "Senado da França aprova lei que presume legalidade em disparos efetuados por policiais",
+      "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categoria": "Geopolitica_Relacoes",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 82,
+      "urgencia_score": 84,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-21T21:42:32Z",
+      "palavras_chave_busca": [
+        "frança",
+        "senado",
+        "segurança pública",
+        "polícia",
+        "legislação"
+      ],
+      "palavras_chave": [
+        "frança",
+        "senado",
+        "segurança pública",
+        "polícia",
+        "legislação"
+      ],
+      "gatilho_vitrine": "Segundo reportado pelo G1 Mundo, o Senado francês aprovou em definitivo o projeto de lei que estabelece a presunção legal de legítima defesa em disparos efetuados por agentes de segurança. A proposta é contestada pela oposição e partidos de esquerda, que pretendem recorrer ao Conselho Constitucional.",
+      "resumo_pulso": "Segundo reportado pelo G1 Mundo, o Senado francês aprovou em definitivo o projeto de lei que estabelece a presunção legal de legítima defesa em disparos efetuados por agentes de segurança. A proposta é contestada pela oposição e partidos de esquerda, que pretendem recorrer ao Conselho Constitucional.",
+      "sintese_nerd": "Alteração direta na legislação de segurança pública e nas regras de engajamento policial na França.",
+      "impacto_pratico": "Alteração direta na legislação de segurança pública e nas regras de engajamento policial na França.",
+      "paises_envolvidos": [
+        "FR"
+      ],
+      "veiculos_origem": [
+        "G1 Mundo"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/mundo/noticia/2026/11/20/senado-frances-lei-disparos-policiais.ghtml"
+      ],
+      "data_publicacao": "2026-11-20T21:25:43Z",
+      "updated_at": "2026-11-20T21:42:32Z"
+    },
+    {
+      "slug": "brasil-cobra-revisao-bancos-itaipu-crise-ueno-bank-paraguai",
+      "titulo_tema": "Brasil exige revisão de custódia bancária de Itaipu após liquidação do Ueno Bank no Paraguai",
+      "titulo_curto": "Brasil exige revisão de custódia bancária de Itaipu após liquidação do Ueno Bank no Paraguai",
+      "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Economia",
+      "categoria": "Economia_Comercio",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 84,
+      "urgencia_score": 83,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-21T21:42:32Z",
+      "palavras_chave_busca": [
+        "itaipu",
+        "ueno bank",
+        "paraguai",
+        "brasil",
+        "energia"
+      ],
+      "palavras_chave": [
+        "itaipu",
+        "ueno bank",
+        "paraguai",
+        "brasil",
+        "energia"
+      ],
+      "gatilho_vitrine": "Segundo apuração do Poder360, o governo brasileiro solicitou formalmente a revisão das regras para custódia de fundos da usina de Itaipu Binacional. A medida ocorre após a falência do Ueno Bank no Paraguai, instituição que retinha aproximadamente R$ 1 bilhão em recursos da entidade.",
+      "resumo_pulso": "Segundo apuração do Poder360, o governo brasileiro solicitou formalmente a revisão das regras para custódia de fundos da usina de Itaipu Binacional. A medida ocorre após a falência do Ueno Bank no Paraguai, instituição que retinha aproximadamente R$ 1 bilhão em recursos da entidade.",
+      "sintese_nerd": "Garantia de segurança financeira para os aportes estatais e para a negociação da tarifa de energia entre Brasil e Paraguai.",
+      "impacto_pratico": "Garantia de segurança financeira para os aportes estatais e para a negociação da tarifa de energia entre Brasil e Paraguai.",
+      "paises_envolvidos": [
+        "BR",
+        "PY"
+      ],
+      "veiculos_origem": [
+        "Poder360"
+      ],
+      "fontes_urls": [
+        "https://www.poder360.com.br/poder-infra/brasil-cobra-revisao-de-bancos-da-itaipu-apos-crise-no-paraguai/"
+      ],
+      "data_publicacao": "2026-11-20T21:11:02Z",
+      "updated_at": "2026-11-20T21:42:32Z"
+    },
+    {
+      "slug": "trump-ameaca-taxar-empresas-eua-centros-dados-ia-exterior",
+      "titulo_tema": "Trump ameaça aplicar impostos sobre empresas de IA dos EUA que construírem data centers no exterior",
+      "titulo_curto": "Trump ameaça aplicar impostos sobre empresas de IA dos EUA que construírem data centers no exterior",
+      "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Economia",
+      "categoria": "Economia_Comercio",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 85,
+      "urgencia_score": 86,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-21T21:42:32Z",
+      "palavras_chave_busca": [
+        "donald trump",
+        "inteligência artificial",
+        "data centers",
+        "eua",
+        "tarifas"
+      ],
+      "palavras_chave": [
+        "donald trump",
+        "inteligência artificial",
+        "data centers",
+        "eua",
+        "tarifas"
+      ],
+      "gatilho_vitrine": "Segundo a Al Jazeera English, o presidente dos EUA, Donald Trump, afirmou que aplicará elevadas tarifas contra empresas americanas de tecnologia que instalarem centros de dados de inteligência artificial fora do país. A medida visa forçar o investimento e a infraestrutura do setor dentro do território americano.",
+      "resumo_pulso": "Segundo a Al Jazeera English, o presidente dos EUA, Donald Trump, afirmou que aplicará elevadas tarifas contra empresas americanas de tecnologia que instalarem centros de dados de inteligência artificial fora do país. A medida visa forçar o investimento e a infraestrutura do setor dentro do território americano.",
+      "sintese_nerd": "Possível encarecimento de serviços de IA e revisão de planos de expansão internacional de grandes empresas tecnológicas.",
+      "impacto_pratico": "Possível encarecimento de serviços de IA e revisão de planos de expansão internacional de grandes empresas tecnológicas.",
+      "paises_envolvidos": [
+        "US"
+      ],
+      "veiculos_origem": [
+        "Al Jazeera English"
+      ],
+      "fontes_urls": [
+        "https://www.aljazeera.com/video/newsfeed/2026/11/20/aje-onl-nf_trump-tax-us-tech-firms-ai-data-centres-abroad-201126?traffic_source=rss"
+      ],
+      "data_publicacao": "2026-11-20T21:10:53Z",
+      "updated_at": "2026-11-20T21:42:32Z"
+    },
+    {
+      "slug": "moraes-vota-manter-apreensao-passaporte-flavio-bolsonaro",
+      "titulo_tema": "Moraes vota no STF para manter apreensão de passaportes de Flávio Bolsonaro",
+      "titulo_curto": "Moraes vota no STF para manter apreensão de passaportes de Flávio Bolsonaro",
+      "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categoria": "Geopolitica_Relacoes",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 87,
+      "urgencia_score": 88,
+      "ttl_horas": 18,
+      "expires_at": "2026-11-21T15:42:32Z",
+      "palavras_chave_busca": [
+        "alexandre de moraes",
+        "flávio bolsonaro",
+        "stf",
+        "passaportes",
+        "justiça"
+      ],
+      "palavras_chave": [
+        "alexandre de moraes",
+        "flávio bolsonaro",
+        "stf",
+        "passaportes",
+        "justiça"
+      ],
+      "gatilho_vitrine": "Conforme divulgado pela Agência Brasil, o ministro Alexandre de Moraes votou no plenário virtual do STF pela manutenção da decisão que apreendeu os passaportes e proibiu o senador Flávio Bolsonaro de deixar o país. O voto ocorreu na análise do recurso apresentado pela defesa do parlamentar.",
+      "resumo_pulso": "Conforme divulgado pela Agência Brasil, o ministro Alexandre de Moraes votou no plenário virtual do STF pela manutenção da decisão que apreendeu os passaportes e proibiu o senador Flávio Bolsonaro de deixar o país. O voto ocorreu na análise do recurso apresentado pela defesa do parlamentar.",
+      "sintese_nerd": "Manutenção das restrições de viagem internacionais impostas ao senador pela Justiça Federal.",
+      "impacto_pratico": "Manutenção das restrições de viagem internacionais impostas ao senador pela Justiça Federal.",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "veiculos_origem": [
+        "Agência Brasil (EBC)"
+      ],
+      "fontes_urls": [
+        "https://agenciabrasil.ebc.com.br/justica/noticia/2026-11/moraes-vota-para-manter-apreensao-de-passaportes-de-flavio-bolsonaro"
+      ],
+      "data_publicacao": "2026-11-20T20:55:00Z",
+      "updated_at": "2026-11-20T21:42:32Z"
+    },
+    {
       "slug": "trump-afirma-que-ha-boa-chance-de-acordo-de-paz-na-ucrania",
+      "status": "novo",
+      "categoria": "Geopolitica_Relacoes",
+      "ttl_horas": 18,
+      "expires_at": "2026-11-21T14:45:51Z",
+      "updated_at": "2026-11-20T20:45:51Z",
+      "fontes_urls": [
+        "https://g1.globo.com/mundo/noticia/2026/11/20/trump-putin-guerra-na-ucrania.ghtml",
+        "https://www.ukrinform.net/rubric-polytics/4186985-white-house-wants-ukrainerussia-peace-deal-by-january-ft-reports.html"
+      ],
       "titulo_tema": "Trump relata conversas 'muito boas' com Putin e prevê possibilidade de acordo na Ucrânia",
+      "resumo_pulso": "Conforme reportado pelo G1 Mundo e pela agência Ukrinform, o presidente dos EUA, Donald Trump, afirmou em coletiva na Casa Branca que mantém diálogo com o presidente russo Vladimir Putin com foco em encerrar a guerra na Ucrânia. Reportagens apontam a intenção da administração americana em formalizar diretrizes de negociação nas próximas semanas.",
+      "sintese_nerd": "Pode alterar a dinâmica de apoio militar ocidental e reformatar a mesa de negociações diplomáticas entre Kiev e Moscou.",
       "titulo_curto": "Trump relata conversas 'muito boas' com Putin e prevê possibilidade de acordo na Ucrânia",
+      "rota_editoria": "/radar",
+      "palavras_chave": [
+        "donald trump",
+        "vladimir putin",
+        "ucrânia",
+        "acordo de paz",
+        "geopolítica"
+      ],
+      "urgencia_score": 87,
+      "data_publicacao": "2026-11-20T20:31:09Z",
+      "gatilho_vitrine": "Conforme reportado pelo G1 Mundo e pela agência Ukrinform, o presidente dos EUA, Donald Trump, afirmou em coletiva na Casa Branca que mantém diálogo com o presidente russo Vladimir Putin com foco em encerrar a guerra na Ucrânia. Reportagens apontam a intenção da administração americana em formalizar diretrizes de negociação nas próximas semanas.",
+      "impacto_pratico": "Pode alterar a dinâmica de apoio militar ocidental e reformatar a mesa de negociações diplomáticas entre Kiev e Moscou.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "G1 Mundo",
+        "Ukrinform"
+      ],
+      "relevancia_score": 91,
+      "paises_envolvidos": [
+        "US",
+        "RU",
+        "UA"
+      ],
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "donald trump",
+        "vladimir putin",
+        "ucrânia",
+        "acordo de paz",
+        "geopolítica"
+      ]
+    },
+    {
+      "slug": "onu-minuta-de-acordo-descarta-regras-vinculantes-para-robos-assassinos",
+      "status": "novo",
+      "categoria": "Geopolitica_Relacoes",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-21T20:45:51Z",
+      "updated_at": "2026-11-20T20:45:51Z",
+      "fontes_urls": [
+        "https://g1.globo.com/mundo/noticia/2026/11/20/onu-regras-robos-assassinos.ghtml"
+      ],
+      "titulo_tema": "ONU elabora minuta de acordo sem regras vinculantes para uso de armas autônomas",
+      "resumo_pulso": "Segundo apuração da Reuters divulgada pelo G1 Mundo, a minuta de um acordo debatido no âmbito das Nações Unidas em Genebra não deve impor proibições obrigatórias para os chamados 'robôs assassinos'. Apesar da pressão de cerca de 100 países, o texto sugere apenas recomendações voluntárias para sistemas de armas autônomas.",
+      "sintese_nerd": "Mantém o vácuo regulatório internacional sobre o uso de inteligência artificial em armamentos letais de combate.",
+      "titulo_curto": "ONU elabora minuta de acordo sem regras vinculantes para uso de armas autônomas",
+      "rota_editoria": "/radar",
+      "palavras_chave": [
+        "onu",
+        "armas autônomas",
+        "inteligência artificial",
+        "robôs assassinos",
+        "diplomacia"
+      ],
+      "urgencia_score": 82,
+      "data_publicacao": "2026-11-20T20:28:12Z",
+      "gatilho_vitrine": "Segundo apuração da Reuters divulgada pelo G1 Mundo, a minuta de um acordo debatido no âmbito das Nações Unidas em Genebra não deve impor proibições obrigatórias para os chamados 'robôs assassinos'. Apesar da pressão de cerca de 100 países, o texto sugere apenas recomendações voluntárias para sistemas de armas autônomas.",
+      "impacto_pratico": "Mantém o vácuo regulatório internacional sobre o uso de inteligência artificial em armamentos letais de combate.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "G1 Mundo"
+      ],
+      "relevancia_score": 84,
+      "paises_envolvidos": [
+        "UN"
+      ],
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "onu",
+        "armas autônomas",
+        "inteligência artificial",
+        "robôs assassinos",
+        "diplomacia"
+      ]
+    },
+    {
+      "slug": "bolsonaro-vai-a-hospital-apos-sentir-dores-abdominais",
+      "titulo_tema": "Bolsonaro é internado no Hospital DF Star em Brasília com quadro de dor abdominal",
+      "titulo_curto": "Bolsonaro é internado no Hospital DF Star em Brasília com quadro de dor abdominal",
       "status": "novo",
       "origem_pipeline": "pulso",
       "categoria_primaria": "Geopolitica_Radar",
@@ -19,159 +353,57 @@
       ],
       "rota_editoria": "/radar",
       "relevancia_score": 91,
-      "urgencia_score": 87,
-      "ttl_horas": 18,
-      "expires_at": "2026-11-21T14:45:51Z",
-      "palavras_chave_busca": [
-        "donald trump",
-        "vladimir putin",
-        "ucrânia",
-        "acordo de paz",
-        "geopolítica"
-      ],
-      "palavras_chave": [
-        "donald trump",
-        "vladimir putin",
-        "ucrânia",
-        "acordo de paz",
-        "geopolítica"
-      ],
-      "gatilho_vitrine": "Conforme reportado pelo G1 Mundo e pela agência Ukrinform, o presidente dos EUA, Donald Trump, afirmou em coletiva na Casa Branca que mantém diálogo com o presidente russo Vladimir Putin com foco em encerrar a guerra na Ucrânia. Reportagens apontam a intenção da administração americana em formalizar diretrizes de negociação nas próximas semanas.",
-      "resumo_pulso": "Conforme reportado pelo G1 Mundo e pela agência Ukrinform, o presidente dos EUA, Donald Trump, afirmou em coletiva na Casa Branca que mantém diálogo com o presidente russo Vladimir Putin com foco em encerrar a guerra na Ucrânia. Reportagens apontam a intenção da administração americana em formalizar diretrizes de negociação nas próximas semanas.",
-      "sintese_nerd": "Pode alterar a dinâmica de apoio militar ocidental e reformatar a mesa de negociações diplomáticas entre Kiev e Moscou.",
-      "impacto_pratico": "Pode alterar a dinâmica de apoio militar ocidental e reformatar a mesa de negociações diplomáticas entre Kiev e Moscou.",
-      "paises_envolvidos": [
-        "US",
-        "RU",
-        "UA"
-      ],
-      "veiculos_origem": [
-        "G1 Mundo",
-        "Ukrinform"
-      ],
-      "fontes_urls": [
-        "https://g1.globo.com/mundo/noticia/2026/11/20/trump-putin-guerra-na-ucrania.ghtml",
-        "https://www.ukrinform.net/rubric-polytics/4186985-white-house-wants-ukrainerussia-peace-deal-by-january-ft-reports.html"
-      ],
-      "data_publicacao": "2026-11-20T20:31:09Z",
-      "updated_at": "2026-11-20T20:45:51Z"
-    },
-    {
-      "slug": "onu-minuta-de-acordo-descarta-regras-vinculantes-para-robos-assassinos",
-      "titulo_tema": "ONU elabora minuta de acordo sem regras vinculantes para uso de armas autônomas",
-      "titulo_curto": "ONU elabora minuta de acordo sem regras vinculantes para uso de armas autônomas",
-      "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Geopolitica_Radar",
-      "categoria": "Geopolitica_Relacoes",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 84,
-      "urgencia_score": 82,
-      "ttl_horas": 24,
-      "expires_at": "2026-11-21T20:45:51Z",
-      "palavras_chave_busca": [
-        "onu",
-        "armas autônomas",
-        "inteligência artificial",
-        "robôs assassinos",
-        "diplomacia"
-      ],
-      "palavras_chave": [
-        "onu",
-        "armas autônomas",
-        "inteligência artificial",
-        "robôs assassinos",
-        "diplomacia"
-      ],
-      "gatilho_vitrine": "Segundo apuração da Reuters divulgada pelo G1 Mundo, a minuta de um acordo debatido no âmbito das Nações Unidas em Genebra não deve impor proibições obrigatórias para os chamados 'robôs assassinos'. Apesar da pressão de cerca de 100 países, o texto sugere apenas recomendações voluntárias para sistemas de armas autônomas.",
-      "resumo_pulso": "Segundo apuração da Reuters divulgada pelo G1 Mundo, a minuta de um acordo debatido no âmbito das Nações Unidas em Genebra não deve impor proibições obrigatórias para os chamados 'robôs assassinos'. Apesar da pressão de cerca de 100 países, o texto sugere apenas recomendações voluntárias para sistemas de armas autônomas.",
-      "sintese_nerd": "Mantém o vácuo regulatório internacional sobre o uso de inteligência artificial em armamentos letais de combate.",
-      "impacto_pratico": "Mantém o vácuo regulatório internacional sobre o uso de inteligência artificial em armamentos letais de combate.",
-      "paises_envolvidos": [
-        "UN"
-      ],
-      "veiculos_origem": [
-        "G1 Mundo"
-      ],
-      "fontes_urls": [
-        "https://g1.globo.com/mundo/noticia/2026/11/20/onu-regras-robos-assassinos.ghtml"
-      ],
-      "data_publicacao": "2026-11-20T20:28:12Z",
-      "updated_at": "2026-11-20T20:45:51Z"
-    },
-    {
-      "slug": "bolsonaro-vai-a-hospital-apos-sentir-dores-abdominais",
-      "status": "novo",
-      "categoria": "Geopolitica_Relacoes",
+      "urgencia_score": 93,
       "ttl_horas": 12,
       "expires_at": "2026-11-21T08:21:55Z",
-      "updated_at": "2026-11-20T20:21:55Z",
-      "fontes_urls": [
-        "https://g1.globo.com/politica/noticia/2026/11/20/bolsonaro-hospital-apos-sentir-dores-abdominais.ghtml"
+      "palavras_chave_busca": [
+        "jair bolsonaro",
+        "hospital df star",
+        "internação",
+        "stf",
+        "saúde"
       ],
-      "titulo_tema": "Ex-presidente Jair Bolsonaro é levado a hospital após sentir dores abdominais",
-      "resumo_pulso": "Segundo apuração da G1 Política, o ex-presidente Jair Bolsonaro foi encaminhado a um hospital na tarde desta quinta-feira para a realização de exames médicos após relatar dores abdominais. Bolsonaro cumpre atualmente prisão domiciliar humanitária autorizada pelo STF.",
-      "sintese_nerd": "Gera repercussão imediata nos cenários político e jurídico nacional devido à sua situação de cumprimento de pena.",
-      "titulo_curto": "Ex-presidente Jair Bolsonaro é levado a hospital após sentir dores abdominais",
-      "rota_editoria": "/radar",
       "palavras_chave": [
         "jair bolsonaro",
-        "saúde",
-        "prisão domiciliar",
-        "brasília"
+        "hospital df star",
+        "internação",
+        "stf",
+        "saúde"
       ],
-      "urgencia_score": 91,
-      "data_publicacao": "2026-11-20T20:15:13Z",
-      "gatilho_vitrine": "Segundo apuração da G1 Política, o ex-presidente Jair Bolsonaro foi encaminhado a um hospital na tarde desta quinta-feira para a realização de exames médicos após relatar dores abdominais. Bolsonaro cumpre atualmente prisão domiciliar humanitária autorizada pelo STF.",
-      "impacto_pratico": "Gera repercussão imediata nos cenários político e jurídico nacional devido à sua situação de cumprimento de pena.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "G1 Política"
-      ],
-      "relevancia_score": 90,
+      "gatilho_vitrine": "Segundo comunicado médico oficial da Agência Gov e apurações do G1 e JOTA, o ex-presidente Jair Bolsonaro foi internado no Hospital DF Star com quadro de dor e distensão abdominal. Ele passa por exames e avaliação diagnóstica enquanto cumpre prisão domiciliar sob autorização do STF.",
+      "resumo_pulso": "Segundo comunicado médico oficial da Agência Gov e apurações do G1 e JOTA, o ex-presidente Jair Bolsonaro foi internado no Hospital DF Star com quadro de dor e distensão abdominal. Ele passa por exames e avaliação diagnóstica enquanto cumpre prisão domiciliar sob autorização do STF.",
+      "sintese_nerd": "Acompanhamento do estado de saúde e da situação de custódia do ex-presidente em Brasília.",
+      "impacto_pratico": "Acompanhamento do estado de saúde e da situação de custódia do ex-presidente em Brasília.",
       "paises_envolvidos": [
         "BR"
       ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
+      "veiculos_origem": [
+        "Agência Gov (Planalto)",
+        "G1 Política",
+        "JOTA Info"
       ],
-      "palavras_chave_busca": [
-        "jair bolsonaro",
-        "saúde",
-        "prisão domiciliar",
-        "brasília"
-      ]
+      "fontes_urls": [
+        "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/bolsonaro-e-internado-com-quadro-de-dor-e-distens%C3%A3o-abdominal",
+        "https://g1.globo.com/politica/noticia/2026/11/20/bolsonaro-hospital-apos-sentir-dores-abdominais.ghtml"
+      ],
+      "data_publicacao": "2026-11-20T20:15:13Z",
+      "updated_at": "2026-11-20T21:42:32Z"
     },
     {
       "slug": "denuncias-de-racismo-no-brasil-atingem-recorde-historico",
-      "titulo_tema": "Denúncias de racismo chegam a 3,2 mil no Disque 100 e batem recorde histórico no Brasil",
-      "titulo_curto": "Denúncias de racismo chegam a 3,2 mil no Disque 100 e batem recorde histórico no Brasil",
       "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Cultura",
       "categoria": "Sociedade_Cultura",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/cultura",
-      "relevancia_score": 93,
-      "urgencia_score": 90,
       "ttl_horas": 24,
       "expires_at": "2026-11-21T20:45:51Z",
-      "palavras_chave_busca": [
-        "disque 100",
-        "racismo",
-        "direitos humanos",
-        "ministério dos direitos humanos",
-        "recorde histórico"
+      "updated_at": "2026-11-20T20:45:51Z",
+      "fontes_urls": [
+        "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-11/denuncias-de-racismo-chegam-ao-maior-numero-da-serie-historica"
       ],
+      "titulo_tema": "Denúncias de racismo chegam a 3,2 mil no Disque 100 e batem recorde histórico no Brasil",
+      "resumo_pulso": "Segundo dados oficiais divulgados pelo Ministério dos Direitos Humanos e da Cidadania via Agência Brasil, o canal Disque 100 registrou 3.270 denúncias de racismo em 2026. O volume representa o maior patamar da série histórica iniciada em 2015, superando a marca total do ano anterior.",
+      "sintese_nerd": "Reforça a visibilidade de canais públicos de denúncia e pressiona por novas políticas públicas de combate à discriminação racial.",
+      "titulo_curto": "Denúncias de racismo chegam a 3,2 mil no Disque 100 e batem recorde histórico no Brasil",
+      "rota_editoria": "/cultura",
       "palavras_chave": [
         "disque 100",
         "racismo",
@@ -179,21 +411,30 @@
         "ministério dos direitos humanos",
         "recorde histórico"
       ],
+      "urgencia_score": 90,
+      "data_publicacao": "2026-11-20T20:06:00Z",
       "gatilho_vitrine": "Segundo dados oficiais divulgados pelo Ministério dos Direitos Humanos e da Cidadania via Agência Brasil, o canal Disque 100 registrou 3.270 denúncias de racismo em 2026. O volume representa o maior patamar da série histórica iniciada em 2015, superando a marca total do ano anterior.",
-      "resumo_pulso": "Segundo dados oficiais divulgados pelo Ministério dos Direitos Humanos e da Cidadania via Agência Brasil, o canal Disque 100 registrou 3.270 denúncias de racismo em 2026. O volume representa o maior patamar da série histórica iniciada em 2015, superando a marca total do ano anterior.",
-      "sintese_nerd": "Reforça a visibilidade de canais públicos de denúncia e pressiona por novas políticas públicas de combate à discriminação racial.",
       "impacto_pratico": "Reforça a visibilidade de canais públicos de denúncia e pressiona por novas políticas públicas de combate à discriminação racial.",
-      "paises_envolvidos": [
-        "BR"
-      ],
+      "origem_pipeline": "pulso",
       "veiculos_origem": [
         "Agência Brasil (EBC)"
       ],
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-11/denuncias-de-racismo-chegam-ao-maior-numero-da-serie-historica"
+      "relevancia_score": 93,
+      "paises_envolvidos": [
+        "BR"
       ],
-      "data_publicacao": "2026-11-20T20:06:00Z",
-      "updated_at": "2026-11-20T20:45:51Z"
+      "categoria_primaria": "Cultura",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "disque 100",
+        "racismo",
+        "direitos humanos",
+        "ministério dos direitos humanos",
+        "recorde histórico"
+      ]
     },
     {
       "slug": "surto-de-sarampo-nos-eua-supera-5-mil-casos-e-perde-status-de-eliminacao",
@@ -339,28 +580,20 @@
     },
     {
       "slug": "temporal-no-rio-grande-do-sul-provoca-mortes-e-destruicao",
-      "titulo_tema": "Forte temporal com granizo causa mortes no RS e mobiliza Defesa Civil Nacional",
-      "titulo_curto": "Forte temporal com granizo causa mortes no RS e mobiliza Defesa Civil Nacional",
       "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Geopolitica_Radar",
       "categoria": "Ciencia_Clima",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 87,
-      "urgencia_score": 88,
       "ttl_horas": 18,
       "expires_at": "2026-11-21T14:45:51Z",
-      "palavras_chave_busca": [
-        "rio grande do sul",
-        "tupanciretã",
-        "temporal",
-        "defesa civil",
-        "evento climático extremo"
+      "updated_at": "2026-11-20T20:45:51Z",
+      "fontes_urls": [
+        "https://agenciabrasil.ebc.com.br/meio-ambiente/noticia/2026-11/temporal-no-rs-governo-envia-equipes-da-defesa-civil-para-tupancireta",
+        "https://www.bbc.com/portuguese/articles/cqdr1xmyg3kzo"
       ],
+      "titulo_tema": "Forte temporal com granizo causa mortes no RS e mobiliza Defesa Civil Nacional",
+      "resumo_pulso": "Segundo a Agência Brasil e a BBC News Brasil, uma tempestade severa acompanhada de granizo atingiu a cidade de Tupanciretã (RS), deixando ao menos três mortos e estragos em infraestruturas. O governo federal enviou equipes do Grupo de Apoio a Desastres da Defesa Civil para auxiliar no atendimento emergencial.",
+      "sintese_nerd": "Acelera os decretos de emergência municipal e a liberação de verbas federais de socorro para reconstrução e assistência às famílias afetadas.",
+      "titulo_curto": "Forte temporal com granizo causa mortes no RS e mobiliza Defesa Civil Nacional",
+      "rota_editoria": "/radar",
       "palavras_chave": [
         "rio grande do sul",
         "tupanciretã",
@@ -368,23 +601,31 @@
         "defesa civil",
         "evento climático extremo"
       ],
+      "urgencia_score": 88,
+      "data_publicacao": "2026-11-20T19:28:00Z",
       "gatilho_vitrine": "Segundo a Agência Brasil e a BBC News Brasil, uma tempestade severa acompanhada de granizo atingiu a cidade de Tupanciretã (RS), deixando ao menos três mortos e estragos em infraestruturas. O governo federal enviou equipes do Grupo de Apoio a Desastres da Defesa Civil para auxiliar no atendimento emergencial.",
-      "resumo_pulso": "Segundo a Agência Brasil e a BBC News Brasil, uma tempestade severa acompanhada de granizo atingiu a cidade de Tupanciretã (RS), deixando ao menos três mortos e estragos em infraestruturas. O governo federal enviou equipes do Grupo de Apoio a Desastres da Defesa Civil para auxiliar no atendimento emergencial.",
-      "sintese_nerd": "Acelera os decretos de emergência municipal e a liberação de verbas federais de socorro para reconstrução e assistência às famílias afetadas.",
       "impacto_pratico": "Acelera os decretos de emergência municipal e a liberação de verbas federais de socorro para reconstrução e assistência às famílias afetadas.",
-      "paises_envolvidos": [
-        "BR"
-      ],
+      "origem_pipeline": "pulso",
       "veiculos_origem": [
         "Agência Brasil (EBC)",
         "BBC News Brasil"
       ],
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/meio-ambiente/noticia/2026-11/temporal-no-rs-governo-envia-equipes-da-defesa-civil-para-tupancireta",
-        "https://www.bbc.com/portuguese/articles/cqdr1xmyg3kzo"
+      "relevancia_score": 87,
+      "paises_envolvidos": [
+        "BR"
       ],
-      "data_publicacao": "2026-11-20T19:28:00Z",
-      "updated_at": "2026-11-20T20:45:51Z"
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "rio grande do sul",
+        "tupanciretã",
+        "temporal",
+        "defesa civil",
+        "evento climático extremo"
+      ]
     },
     {
       "slug": "russia-intensifica-ataques-aereos-contra-infraestrutura-e-pontes-em-kiev",
@@ -620,270 +861,200 @@
         "federal reserve",
         "economia global"
       ]
-    },
-    {
-      "slug": "trump-diz-que-convenceu-filipinas-a-substituir-produtos-agricolas-do-brasil",
-      "status": "novo",
-      "categoria": "Economia_Comercio",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-21T13:33:26Z",
-      "updated_at": "2026-11-20T20:21:55Z",
-      "fontes_urls": [
-        "https://www.poder360.com.br/poder-internacional/governo-dos-eua-nomeia-nova-diretora-de-seguranca-cibernetica/"
-      ],
-      "titulo_tema": "EUA nomeiam nova diretora de segurança cibernética após falhas técnicas",
-      "resumo_pulso": "Segundo apuração do Poder360, o governo dos Estados Unidos oficializou a nomeação de Kirsten Davies, vinda do Pentágono, para o cargo de diretora nacional de segurança cibernética. A troca ocorre em substituição a Sean Cairncross, demitido após episódios recentes de instabilidade em sistemas de transporte e bancos.",
-      "sintese_nerd": "Reorganiza a cúpula de defesa digital norte-americana em meio a vulnerabilidades críticas de infraestrutura.",
-      "titulo_curto": "EUA nomeiam nova diretora de segurança cibernética após falhas técnicas",
-      "rota_editoria": "/economia",
-      "palavras_chave": [
-        "estados unidos",
-        "segurança cibernética",
-        "casa branca",
-        "pentágono"
-      ],
-      "urgencia_score": 85,
-      "data_publicacao": "2026-11-20T19:16:23Z",
-      "gatilho_vitrine": "Segundo apuração do Poder360, o governo dos Estados Unidos oficializou a nomeação de Kirsten Davies, vinda do Pentágono, para o cargo de diretora nacional de segurança cibernética. A troca ocorre em substituição a Sean Cairncross, demitido após episódios recentes de instabilidade em sistemas de transporte e bancos.",
-      "impacto_pratico": "Reorganiza a cúpula de defesa digital norte-americana em meio a vulnerabilidades críticas de infraestrutura.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "Poder360"
-      ],
-      "relevancia_score": 84,
-      "paises_envolvidos": [
-        "US"
-      ],
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "estados unidos",
-        "segurança cibernética",
-        "casa branca",
-        "pentágono"
-      ]
-    },
-    {
-      "slug": "acoes-da-nvidia-enfrentam-pior-sequencia-de-quedas-desde-2008",
-      "titulo_tema": "Ações da Nvidia despencam 13% em Nova York após notícia de investigação da SEC",
-      "titulo_curto": "Ações da Nvidia despencam 13% em Nova York após notícia de investigação da SEC",
-      "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Economia",
-      "categoria": "Economia_Comercio",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 90,
-      "urgencia_score": 89,
-      "ttl_horas": 12,
-      "expires_at": "2026-11-21T07:33:26Z",
-      "palavras_chave_busca": [
-        "nvidia",
-        "sec",
-        "investigação",
-        "mercado financeiro",
-        "ações"
-      ],
-      "palavras_chave": [
-        "nvidia",
-        "sec",
-        "investigação",
-        "mercado financeiro",
-        "ações"
-      ],
-      "gatilho_vitrine": "Conforme apuração divulgada pelo InfoMoney Mercados, os papéis da gigante de tecnologia Nvidia sofreram queda de 13% após relatos de uma nova investigação conduzida pela Securities and Exchange Commission (SEC). O desdobramento aprofunda a recente sequência negativa da empresa nos mercados acionários.",
-      "resumo_pulso": "Conforme apuração divulgada pelo InfoMoney Mercados, os papéis da gigante de tecnologia Nvidia sofreram queda de 13% após relatos de uma nova investigação conduzida pela Securities and Exchange Commission (SEC). O desdobramento aprofunda a recente sequência negativa da empresa nos mercados acionários.",
-      "sintese_nerd": "Gera forte oscilação nos índices de tecnologia globais e afeta fundos de investimento expostos ao setor de semicondutores.",
-      "impacto_pratico": "Gera forte oscilação nos índices de tecnologia globais e afeta fundos de investimento expostos ao setor de semicondutores.",
-      "paises_envolvidos": [
-        "US"
-      ],
-      "veiculos_origem": [
-        "InfoMoney Mercados"
-      ],
-      "fontes_urls": [
-        "https://www.infomoney.com.br/mercados/acoes-da-nvidia-desabam-noticia-sobre-investigacao-da-sec-sobre-companhia/"
-      ],
-      "data_publicacao": "2026-11-20T18:47:51Z",
-      "updated_at": "2026-11-20T20:45:51Z"
-    },
-    {
-      "slug": "praga-de-mosca-da-bicheira-avanca-nos-eua-e-ameaca-rebanho-bovino",
-      "status": "novo",
-      "categoria": "Economia_Comercio",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-21T18:27:01Z",
-      "updated_at": "2026-11-20T18:27:01Z",
-      "fontes_urls": [
-        "https://g1.globo.com/economia/agronegocios/noticia/2026/11/20/praga-mortal-que-ameaca-gado-avanca-nos-eua-e-moscas-estereis-viram-aposta-contra-parasita.ghtml"
-      ],
-      "titulo_tema": "Surto de mosca-da-bicheira avança no sudoeste dos EUA e ameaça pecuária",
-      "resumo_pulso": "Segundo apuração do G1 Economia com dados do Departamento de Agricultura dos EUA (USDA), surtos da praga mosca-da-bicheira aumentaram no sudoeste americano impulsionados pelo clima quente e úmido. Autoridades veterinárias iniciaram a liberação de moscas estéreis como estratégia de contenção do parasita.",
-      "sintese_nerd": "Risco de prejuízos à produção pecuária norte-americana e potencial impacto nos custos das exportações de carne bovina.",
-      "titulo_curto": "Surto de mosca-da-bicheira avança no sudoeste dos EUA e ameaça pecuária",
-      "rota_editoria": "/economia",
-      "palavras_chave": [
-        "mosca-da-bicheira",
-        "eua",
-        "usda",
-        "pecuária",
-        "agronegócio"
-      ],
-      "urgencia_score": 84,
-      "data_publicacao": "2026-11-20T18:14:28Z",
-      "gatilho_vitrine": "Segundo apuração do G1 Economia com dados do Departamento de Agricultura dos EUA (USDA), surtos da praga mosca-da-bicheira aumentaram no sudoeste americano impulsionados pelo clima quente e úmido. Autoridades veterinárias iniciaram a liberação de moscas estéreis como estratégia de contenção do parasita.",
-      "impacto_pratico": "Risco de prejuízos à produção pecuária norte-americana e potencial impacto nos custos das exportações de carne bovina.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "G1 Economia"
-      ],
-      "relevancia_score": 82,
-      "paises_envolvidos": [
-        "US"
-      ],
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "mosca-da-bicheira",
-        "eua",
-        "usda",
-        "pecuária",
-        "agronegócio"
-      ]
-    },
-    {
-      "slug": "anthropic-enfrenta-queda-em-acoes-apos-ipo-e-anuncio-matematico",
-      "status": "novo",
-      "categoria": "Economia_Comercio",
-      "ttl_horas": 18,
-      "expires_at": "2026-11-21T12:27:01Z",
-      "updated_at": "2026-11-20T18:27:01Z",
-      "fontes_urls": [
-        "https://www.aljazeera.com/economy/2026/11/20/us-tech-sell-off-continues-as-anthropic-tumbles-after-mega-ipo?traffic_source=rss",
-        "https://www.infomoney.com.br/mundo/funcionario-da-anthropic-diz-que-solucionou-problema-mais-famoso-da-matematica/"
-      ],
-      "titulo_tema": "Ações da Anthropic recuam após IPO em meio a oscilações no setor de tecnologia",
-      "resumo_pulso": "Conforme noticiado pela Al Jazeera English e InfoMoney, os papéis da startup de inteligência artificial Anthropic registraram queda no mercado acionário americano após sua oferta pública inicial. Paralelamente, um funcionário da empresa afirmou ter solucionado a Hipótese de Riemann, afirmação acadêmica que ainda requer validação de pares.",
-      "sintese_nerd": "Volatilidade no setor de inteligência artificial em Nova York e cautela de investidores em relação a IPOs de tecnologia.",
-      "titulo_curto": "Ações da Anthropic recuam após IPO em meio a oscilações no setor de tecnologia",
-      "rota_editoria": "/economia",
-      "palavras_chave": [
-        "anthropic",
-        "ipo",
-        "inteligência artificial",
-        "mercado financeiro",
-        "hipótese de riemann"
-      ],
-      "urgencia_score": 81,
-      "data_publicacao": "2026-11-20T18:12:36Z",
-      "gatilho_vitrine": "Conforme noticiado pela Al Jazeera English e InfoMoney, os papéis da startup de inteligência artificial Anthropic registraram queda no mercado acionário americano após sua oferta pública inicial. Paralelamente, um funcionário da empresa afirmou ter solucionado a Hipótese de Riemann, afirmação acadêmica que ainda requer validação de pares.",
-      "impacto_pratico": "Volatilidade no setor de inteligência artificial em Nova York e cautela de investidores em relação a IPOs de tecnologia.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "Al Jazeera English",
-        "InfoMoney Mercados"
-      ],
-      "relevancia_score": 84,
-      "paises_envolvidos": [
-        "US"
-      ],
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "anthropic",
-        "ipo",
-        "inteligência artificial",
-        "mercado financeiro",
-        "hipótese de riemann"
-      ]
-    },
-    {
-      "slug": "estilhacos-de-drones-russos-atingem-embaixada-do-brasil-na-ucrania",
-      "status": "novo",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 12,
-      "expires_at": "2026-11-21T06:10:42Z",
-      "updated_at": "2026-11-20T18:10:42Z",
-      "fontes_urls": [
-        "https://www.poder360.com.br/poder-internacional/estilhacos-de-drones-russos-atingem-embaixada-do-brasil-na-ucrania/"
-      ],
-      "titulo_tema": "Estilhaços de drones russos atingem Embaixada do Brasil na Ucrânia",
-      "resumo_pulso": "Segundo o Poder360, estilhaços de drones russos atingiram a Embaixada do Brasil em Kiev. O chanceler ucraniano informou que não houve feridos ou danos estruturais significativos, mas o incidente eleva a tensão diplomática na região.",
-      "sintese_nerd": "Alerta para diplomatas e cidadãos brasileiros em território ucraniano.",
-      "titulo_curto": "Estilhaços de drones russos atingem Embaixada do Brasil na Ucrânia",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "ucrânia",
-        "rússia",
-        "embaixada",
-        "brasil",
-        "drones"
-      ],
-      "urgencia_score": 95,
-      "data_publicacao": "2026-11-20T18:06:22Z",
-      "gatilho_vitrine": "Segundo o Poder360, estilhaços de drones russos atingiram a Embaixada do Brasil em Kiev. O chanceler ucraniano informou que não houve feridos ou danos estruturais significativos, mas o incidente eleva a tensão diplomática na região.",
-      "impacto_pratico": "Alerta para diplomatas e cidadãos brasileiros em território ucraniano.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "Poder360"
-      ],
-      "relevancia_score": 95,
-      "paises_envolvidos": [
-        "BR",
-        "UA",
-        "RU"
-      ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "ucrânia",
-        "rússia",
-        "embaixada",
-        "brasil",
-        "drones"
-      ]
     }
   ],
   "noticias_quentes": [
     {
-      "slug": "trump-afirma-que-ha-boa-chance-de-acordo-de-paz-na-ucrania",
-      "titulo_curto": "Trump relata conversas 'muito boas' com Putin e prevê possibilidade de acordo na Ucrânia",
-      "resumo_pulso": "Conforme reportado pelo G1 Mundo e pela agência Ukrinform, o presidente dos EUA, Donald Trump, afirmou em coletiva na Casa Branca que mantém diálogo com o presidente russo Vladimir Putin com foco em encerrar a guerra na Ucrânia. Reportagens apontam a intenção da administração americana em formalizar diretrizes de negociação nas próximas semanas.",
-      "impacto_pratico": "Pode alterar a dinâmica de apoio militar ocidental e reformatar a mesa de negociações diplomáticas entre Kiev e Moscou.",
-      "categoria": "Geopolitica_Relacoes",
+      "slug": "desigualdade-racial-pre-natal-bebes-pretos-sus",
+      "titulo_curto": "Dados do SUS apontam maior prematuridade e menor acompanhamento pré-natal entre mães negras",
+      "resumo_pulso": "Conforme levantamento do G1 Política baseado em dados do Datasus referentes a 2026, gestantes pretas passam por menos consultas de pré-natal em comparação com gestantes brancas. O estudo indica ainda que bebês de mães negras apresentam taxas mais elevadas de prematuridade e baixo peso no nascimento.",
+      "impacto_pratico": "Sinaliza a urgência de direcionamento de políticas públicas de saúde e assistência pré-natal para gestantes negras no SUS.",
+      "categoria": "Sociedade_Cultura",
       "paises_envolvidos": [
-        "US",
-        "RU",
-        "UA"
+        "BR"
       ],
-      "urgencia_score": 87,
-      "relevancia_score": 91,
+      "urgencia_score": 82,
+      "relevancia_score": 86,
       "nivel_confianca": "alta",
-      "ttl_horas": 18,
+      "ttl_horas": 24,
       "horas_em_destaque": 12,
       "veiculos_origem": [
-        "G1 Mundo",
-        "Ukrinform"
+        "G1 Política"
       ],
+      "fontes_urls": [
+        "https://g1.globo.com/politica/noticia/2026/11/20/maes-pretas-fazem-menos-consultas-de-pre-natal-e-seus-bebes-tem-mais-chance-de-nascer-com-baixo-peso-mostram-dados-do-sus.ghtml"
+      ],
+      "palavras_chave": [
+        "SUS",
+        "Saúde Pública",
+        "Mães Negras",
+        "Pré-natal",
+        "Desigualdade Racial"
+      ],
+      "data_publicacao": "2026-11-20T21:28:06Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "Movimentos sociais e parlamentares debatem investimentos em saúde, educação e transição ecológica",
+          "url_existente": "https://www.rodandoomundo.com.br/saude",
+          "motivo_conexao": "Artigo contextualiza o debate sobre execução orçamentária e melhorias de acesso no Sistema Único de Saúde."
+        }
+      ],
+      "expires_at": "2026-11-21T21:42:32Z",
+      "updated_at": "2026-11-20T21:42:32Z"
+    },
+    {
+      "slug": "senado-frances-aprova-lei-presuncao-legalidade-disparos-policiais",
+      "titulo_curto": "Senado da França aprova lei que presume legalidade em disparos efetuados por policiais",
+      "resumo_pulso": "Segundo reportado pelo G1 Mundo, o Senado francês aprovou em definitivo o projeto de lei que estabelece a presunção legal de legítima defesa em disparos efetuados por agentes de segurança. A proposta é contestada pela oposição e partidos de esquerda, que pretendem recorrer ao Conselho Constitucional.",
+      "impacto_pratico": "Alteração direta na legislação de segurança pública e nas regras de engajamento policial na França.",
+      "categoria": "Geopolitica_Relacoes",
+      "paises_envolvidos": [
+        "FR"
+      ],
+      "urgencia_score": 84,
+      "relevancia_score": 82,
+      "nivel_confianca": "alta",
+      "ttl_horas": 24,
+      "horas_em_destaque": 10,
+      "veiculos_origem": [
+        "G1 Mundo"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/mundo/noticia/2026/11/20/senado-frances-lei-disparos-policiais.ghtml"
+      ],
+      "palavras_chave": [
+        "França",
+        "Senado",
+        "Segurança Pública",
+        "Polícia",
+        "Legislação"
+      ],
+      "data_publicacao": "2026-11-20T21:25:43Z",
+      "links_internos_relacionados": [],
+      "expires_at": "2026-11-21T21:42:32Z",
+      "updated_at": "2026-11-20T21:42:32Z"
+    },
+    {
+      "slug": "brasil-cobra-revisao-bancos-itaipu-crise-ueno-bank-paraguai",
+      "titulo_curto": "Brasil exige revisão de custódia bancária de Itaipu após liquidação do Ueno Bank no Paraguai",
+      "resumo_pulso": "Segundo apuração do Poder360, o governo brasileiro solicitou formalmente a revisão das regras para custódia de fundos da usina de Itaipu Binacional. A medida ocorre após a falência do Ueno Bank no Paraguai, instituição que retinha aproximadamente R$ 1 bilhão em recursos da entidade.",
+      "impacto_pratico": "Garantia de segurança financeira para os aportes estatais e para a negociação da tarifa de energia entre Brasil e Paraguai.",
+      "categoria": "Economia_Comercio",
+      "paises_envolvidos": [
+        "BR",
+        "PY"
+      ],
+      "urgencia_score": 83,
+      "relevancia_score": 84,
+      "nivel_confianca": "alta",
+      "ttl_horas": 24,
+      "horas_em_destaque": 10,
+      "veiculos_origem": [
+        "Poder360"
+      ],
+      "fontes_urls": [
+        "https://www.poder360.com.br/poder-infra/brasil-cobra-revisao-de-bancos-da-itaipu-apos-crise-no-paraguai/"
+      ],
+      "palavras_chave": [
+        "Itaipu",
+        "Ueno Bank",
+        "Paraguai",
+        "Brasil",
+        "Energia"
+      ],
+      "data_publicacao": "2026-11-20T21:11:02Z",
+      "links_internos_relacionados": [],
+      "expires_at": "2026-11-21T21:42:32Z",
+      "updated_at": "2026-11-20T21:42:32Z"
+    },
+    {
+      "slug": "trump-ameaca-taxar-empresas-eua-centros-dados-ia-exterior",
+      "titulo_curto": "Trump ameaça aplicar impostos sobre empresas de IA dos EUA que construírem data centers no exterior",
+      "resumo_pulso": "Segundo a Al Jazeera English, o presidente dos EUA, Donald Trump, afirmou que aplicará elevadas tarifas contra empresas americanas de tecnologia que instalarem centros de dados de inteligência artificial fora do país. A medida visa forçar o investimento e a infraestrutura do setor dentro do território americano.",
+      "impacto_pratico": "Possível encarecimento de serviços de IA e revisão de planos de expansão internacional de grandes empresas tecnológicas.",
+      "categoria": "Economia_Comercio",
+      "paises_envolvidos": [
+        "US"
+      ],
+      "urgencia_score": 86,
+      "relevancia_score": 85,
+      "nivel_confianca": "alta",
+      "ttl_horas": 24,
+      "horas_em_destaque": 12,
+      "veiculos_origem": [
+        "Al Jazeera English"
+      ],
+      "fontes_urls": [
+        "https://www.aljazeera.com/video/newsfeed/2026/11/20/aje-onl-nf_trump-tax-us-tech-firms-ai-data-centres-abroad-201126?traffic_source=rss"
+      ],
+      "palavras_chave": [
+        "Donald Trump",
+        "Inteligência Artificial",
+        "Data Centers",
+        "EUA",
+        "Tarifas"
+      ],
+      "data_publicacao": "2026-11-20T21:10:53Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "Política nos Estados Unidos",
+          "url_existente": "https://www.rodandoomundo.com.br/politica/estados-unidos",
+          "motivo_conexao": "Saiba mais sobre as políticas comerciais e protecionistas adotadas pela Casa Branca."
+        }
+      ],
+      "expires_at": "2026-11-21T21:42:32Z",
+      "updated_at": "2026-11-20T21:42:32Z"
+    },
+    {
+      "slug": "moraes-vota-manter-apreensao-passaporte-flavio-bolsonaro",
+      "titulo_curto": "Moraes vota no STF para manter apreensão de passaportes de Flávio Bolsonaro",
+      "resumo_pulso": "Conforme divulgado pela Agência Brasil, o ministro Alexandre de Moraes votou no plenário virtual do STF pela manutenção da decisão que apreendeu os passaportes e proibiu o senador Flávio Bolsonaro de deixar o país. O voto ocorreu na análise do recurso apresentado pela defesa do parlamentar.",
+      "impacto_pratico": "Manutenção das restrições de viagem internacionais impostas ao senador pela Justiça Federal.",
+      "categoria": "Geopolitica_Relacoes",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "urgencia_score": 88,
+      "relevancia_score": 87,
+      "nivel_confianca": "alta",
+      "ttl_horas": 18,
+      "horas_em_destaque": 8,
+      "veiculos_origem": [
+        "Agência Brasil (EBC)"
+      ],
+      "fontes_urls": [
+        "https://agenciabrasil.ebc.com.br/justica/noticia/2026-11/moraes-vota-para-manter-apreensao-de-passaportes-de-flavio-bolsonaro"
+      ],
+      "palavras_chave": [
+        "Alexandre de Moraes",
+        "Flávio Bolsonaro",
+        "STF",
+        "Passaportes",
+        "Justiça"
+      ],
+      "data_publicacao": "2026-11-20T20:55:00Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "STF analisa regras de transparência e limites constitucionais entre os Poderes",
+          "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
+          "motivo_conexao": "Análise sobre as decisões e o alcance jurisprudencial das medidas impostas pelo STF."
+        }
+      ],
+      "expires_at": "2026-11-21T15:42:32Z",
+      "updated_at": "2026-11-20T21:42:32Z"
+    },
+    {
+      "slug": "trump-afirma-que-ha-boa-chance-de-acordo-de-paz-na-ucrania",
+      "categoria": "Geopolitica_Relacoes",
+      "ttl_horas": 18,
+      "expires_at": "2026-11-21T14:45:51Z",
+      "updated_at": "2026-11-20T20:45:51Z",
       "fontes_urls": [
         "https://g1.globo.com/mundo/noticia/2026/11/20/trump-putin-guerra-na-ucrania.ghtml",
         "https://www.ukrinform.net/rubric-polytics/4186985-white-house-wants-ukrainerussia-peace-deal-by-january-ft-reports.html"
       ],
+      "resumo_pulso": "Conforme reportado pelo G1 Mundo e pela agência Ukrinform, o presidente dos EUA, Donald Trump, afirmou em coletiva na Casa Branca que mantém diálogo com o presidente russo Vladimir Putin com foco em encerrar a guerra na Ucrânia. Reportagens apontam a intenção da administração americana em formalizar diretrizes de negociação nas próximas semanas.",
+      "titulo_curto": "Trump relata conversas 'muito boas' com Putin e prevê possibilidade de acordo na Ucrânia",
       "palavras_chave": [
         "Donald Trump",
         "Vladimir Putin",
@@ -891,37 +1062,40 @@
         "acordo de paz",
         "geopolítica"
       ],
+      "urgencia_score": 87,
       "data_publicacao": "2026-11-20T20:31:09Z",
+      "impacto_pratico": "Pode alterar a dinâmica de apoio militar ocidental e reformatar a mesa de negociações diplomáticas entre Kiev e Moscou.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "G1 Mundo",
+        "Ukrinform"
+      ],
+      "relevancia_score": 91,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "US",
+        "RU",
+        "UA"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "Política nos Estados Unidos",
           "url_existente": "https://www.rodandoomundo.com.br/politica/estados-unidos",
-          "motivo_conexao": "Acompanhe as decisões da Casa Branca e o impacto internacional das diretrizes diplomáticas de Washington."
+          "motivo_conexao": "Acompanhe as decisões da Casa Branca e o impacto internacional das diretrizes diplomáticas de Washington.",
+          "titulo_existente": "Política nos Estados Unidos"
         }
-      ],
-      "expires_at": "2026-11-21T14:45:51Z",
-      "updated_at": "2026-11-20T20:45:51Z"
+      ]
     },
     {
       "slug": "onu-minuta-de-acordo-descarta-regras-vinculantes-para-robos-assassinos",
-      "titulo_curto": "ONU elabora minuta de acordo sem regras vinculantes para uso de armas autônomas",
-      "resumo_pulso": "Segundo apuração da Reuters divulgada pelo G1 Mundo, a minuta de um acordo debatido no âmbito das Nações Unidas em Genebra não deve impor proibições obrigatórias para os chamados 'robôs assassinos'. Apesar da pressão de cerca de 100 países, o texto sugere apenas recomendações voluntárias para sistemas de armas autônomas.",
-      "impacto_pratico": "Mantém o vácuo regulatório internacional sobre o uso de inteligência artificial em armamentos letais de combate.",
       "categoria": "Geopolitica_Relacoes",
-      "paises_envolvidos": [
-        "UN"
-      ],
-      "urgencia_score": 82,
-      "relevancia_score": 84,
-      "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 6,
-      "veiculos_origem": [
-        "G1 Mundo"
-      ],
+      "expires_at": "2026-11-21T20:45:51Z",
+      "updated_at": "2026-11-20T20:45:51Z",
       "fontes_urls": [
         "https://g1.globo.com/mundo/noticia/2026/11/20/onu-regras-robos-assassinos.ghtml"
       ],
+      "resumo_pulso": "Segundo apuração da Reuters divulgada pelo G1 Mundo, a minuta de um acordo debatido no âmbito das Nações Unidas em Genebra não deve impor proibições obrigatórias para os chamados 'robôs assassinos'. Apesar da pressão de cerca de 100 países, o texto sugere apenas recomendações voluntárias para sistemas de armas autônomas.",
+      "titulo_curto": "ONU elabora minuta de acordo sem regras vinculantes para uso de armas autônomas",
       "palavras_chave": [
         "ONU",
         "armas autônomas",
@@ -929,74 +1103,78 @@
         "robôs assassinos",
         "diplomacia"
       ],
+      "urgencia_score": 82,
       "data_publicacao": "2026-11-20T20:28:12Z",
-      "links_internos_relacionados": [
-        {
-          "titulo_existente": "O que é uma sanção internacional?",
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-sancao-internacional",
-          "motivo_conexao": "Compreenda como organismos multilaterais utilizam tratados e restrições para tentar regular tecnologias defensivas e militares."
-        }
-      ],
-      "expires_at": "2026-11-21T20:45:51Z",
-      "updated_at": "2026-11-20T20:45:51Z"
-    },
-    {
-      "slug": "bolsonaro-vai-a-hospital-apos-sentir-dores-abdominais",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 12,
-      "expires_at": "2026-11-21T08:21:55Z",
-      "updated_at": "2026-11-20T20:21:55Z",
-      "fontes_urls": [
-        "https://g1.globo.com/politica/noticia/2026/11/20/bolsonaro-hospital-apos-sentir-dores-abdominais.ghtml"
-      ],
-      "resumo_pulso": "Segundo apuração da G1 Política, o ex-presidente Jair Bolsonaro foi encaminhado a um hospital na tarde desta quinta-feira para a realização de exames médicos após relatar dores abdominais. Bolsonaro cumpre atualmente prisão domiciliar humanitária autorizada pelo STF.",
-      "titulo_curto": "Ex-presidente Jair Bolsonaro é levado a hospital após sentir dores abdominais",
-      "palavras_chave": [
-        "Jair Bolsonaro",
-        "saúde",
-        "prisão domiciliar",
-        "Brasília"
-      ],
-      "urgencia_score": 91,
-      "data_publicacao": "2026-11-20T20:15:13Z",
-      "impacto_pratico": "Gera repercussão imediata nos cenários político e jurídico nacional devido à sua situação de cumprimento de pena.",
+      "impacto_pratico": "Mantém o vácuo regulatório internacional sobre o uso de inteligência artificial em armamentos letais de combate.",
       "nivel_confianca": "alta",
       "veiculos_origem": [
-        "G1 Política"
+        "G1 Mundo"
       ],
-      "relevancia_score": 90,
-      "horas_em_destaque": 12,
+      "relevancia_score": 84,
+      "horas_em_destaque": 6,
       "paises_envolvidos": [
-        "BR"
+        "UN"
       ],
       "links_internos_relacionados": [
         {
-          "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
-          "motivo_conexao": "Acompanha os desdobramentos de figuras centrais da política nacional e decisões do Poder Judiciário.",
-          "titulo_existente": "Política no Brasil"
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-sancao-internacional",
+          "motivo_conexao": "Compreenda como organismos multilaterais utilizam tratados e restrições para tentar regular tecnologias defensivas e militares.",
+          "titulo_existente": "O que é uma sanção internacional?"
         }
       ]
     },
     {
-      "slug": "denuncias-de-racismo-no-brasil-atingem-recorde-historico",
-      "titulo_curto": "Denúncias de racismo chegam a 3,2 mil no Disque 100 e batem recorde histórico no Brasil",
-      "resumo_pulso": "Segundo dados oficiais divulgados pelo Ministério dos Direitos Humanos e da Cidadania via Agência Brasil, o canal Disque 100 registrou 3.270 denúncias de racismo em 2026. O volume representa o maior patamar da série histórica iniciada em 2015, superando a marca total do ano anterior.",
-      "impacto_pratico": "Reforça a visibilidade de canais públicos de denúncia e pressiona por novas políticas públicas de combate à discriminação racial.",
-      "categoria": "Sociedade_Cultura",
+      "slug": "bolsonaro-vai-a-hospital-apos-sentir-dores-abdominais",
+      "titulo_curto": "Bolsonaro é internado no Hospital DF Star em Brasília com quadro de dor abdominal",
+      "resumo_pulso": "Segundo comunicado médico oficial da Agência Gov e apurações do G1 e JOTA, o ex-presidente Jair Bolsonaro foi internado no Hospital DF Star com quadro de dor e distensão abdominal. Ele passa por exames e avaliação diagnóstica enquanto cumpre prisão domiciliar sob autorização do STF.",
+      "impacto_pratico": "Acompanhamento do estado de saúde e da situação de custódia do ex-presidente em Brasília.",
+      "categoria": "Geopolitica_Relacoes",
       "paises_envolvidos": [
         "BR"
       ],
-      "urgencia_score": 90,
-      "relevancia_score": 93,
+      "urgencia_score": 93,
+      "relevancia_score": 91,
       "nivel_confianca": "alta",
-      "ttl_horas": 24,
-      "horas_em_destaque": 12,
+      "ttl_horas": 12,
+      "horas_em_destaque": 6,
       "veiculos_origem": [
-        "Agência Brasil (EBC)"
+        "Agência Gov (Planalto)",
+        "G1 Política",
+        "JOTA Info"
       ],
+      "fontes_urls": [
+        "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/bolsonaro-e-internado-com-quadro-de-dor-e-distens%C3%A3o-abdominal",
+        "https://g1.globo.com/politica/noticia/2026/11/20/bolsonaro-hospital-apos-sentir-dores-abdominais.ghtml"
+      ],
+      "palavras_chave": [
+        "Jair Bolsonaro",
+        "Hospital DF Star",
+        "Internação",
+        "STF",
+        "Saúde"
+      ],
+      "data_publicacao": "2026-11-20T20:15:13Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "Política no Brasil",
+          "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
+          "motivo_conexao": "Acompanhe os desenvolvimentos políticos e jurídicos nacionais em tempo real."
+        }
+      ],
+      "expires_at": "2026-11-21T08:21:55Z",
+      "updated_at": "2026-11-20T21:42:32Z"
+    },
+    {
+      "slug": "denuncias-de-racismo-no-brasil-atingem-recorde-historico",
+      "categoria": "Sociedade_Cultura",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-21T20:45:51Z",
+      "updated_at": "2026-11-20T20:45:51Z",
       "fontes_urls": [
         "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-11/denuncias-de-racismo-chegam-ao-maior-numero-da-serie-historica"
       ],
+      "resumo_pulso": "Segundo dados oficiais divulgados pelo Ministério dos Direitos Humanos e da Cidadania via Agência Brasil, o canal Disque 100 registrou 3.270 denúncias de racismo em 2026. O volume representa o maior patamar da série histórica iniciada em 2015, superando a marca total do ano anterior.",
+      "titulo_curto": "Denúncias de racismo chegam a 3,2 mil no Disque 100 e batem recorde histórico no Brasil",
       "palavras_chave": [
         "Disque 100",
         "racismo",
@@ -1004,16 +1182,25 @@
         "Ministério dos Direitos Humanos",
         "recorde histórico"
       ],
+      "urgencia_score": 90,
       "data_publicacao": "2026-11-20T20:06:00Z",
+      "impacto_pratico": "Reforça a visibilidade de canais públicos de denúncia e pressiona por novas políticas públicas de combate à discriminação racial.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Agência Brasil (EBC)"
+      ],
+      "relevancia_score": 93,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "BR"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "Política no Brasil",
           "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
-          "motivo_conexao": "Acompanhe as políticas públicas e debates institucionais sobre direitos sociais e cidadania no Brasil."
+          "motivo_conexao": "Acompanhe as políticas públicas e debates institucionais sobre direitos sociais e cidadania no Brasil.",
+          "titulo_existente": "Política no Brasil"
         }
-      ],
-      "expires_at": "2026-11-21T20:45:51Z",
-      "updated_at": "2026-11-20T20:45:51Z"
+      ]
     },
     {
       "slug": "surto-de-sarampo-nos-eua-supera-5-mil-casos-e-perde-status-de-eliminacao",
@@ -1132,26 +1319,16 @@
     },
     {
       "slug": "temporal-no-rio-grande-do-sul-provoca-mortes-e-destruicao",
-      "titulo_curto": "Forte temporal com granizo causa mortes no RS e mobiliza Defesa Civil Nacional",
-      "resumo_pulso": "Segundo a Agência Brasil e a BBC News Brasil, uma tempestade severa acompanhada de granizo atingiu a cidade de Tupanciretã (RS), deixando ao menos três mortos e estragos em infraestruturas. O governo federal enviou equipes do Grupo de Apoio a Desastres da Defesa Civil para auxiliar no atendimento emergencial.",
-      "impacto_pratico": "Acelera os decretos de emergência municipal e a liberação de verbas federais de socorro para reconstrução e assistência às famílias afetadas.",
       "categoria": "Ciencia_Clima",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "urgencia_score": 88,
-      "relevancia_score": 87,
-      "nivel_confianca": "alta",
       "ttl_horas": 18,
-      "horas_em_destaque": 8,
-      "veiculos_origem": [
-        "Agência Brasil (EBC)",
-        "BBC News Brasil"
-      ],
+      "expires_at": "2026-11-21T14:45:51Z",
+      "updated_at": "2026-11-20T20:45:51Z",
       "fontes_urls": [
         "https://agenciabrasil.ebc.com.br/meio-ambiente/noticia/2026-11/temporal-no-rs-governo-envia-equipes-da-defesa-civil-para-tupancireta",
         "https://www.bbc.com/portuguese/articles/cqdr1xmyg3kzo"
       ],
+      "resumo_pulso": "Segundo a Agência Brasil e a BBC News Brasil, uma tempestade severa acompanhada de granizo atingiu a cidade de Tupanciretã (RS), deixando ao menos três mortos e estragos em infraestruturas. O governo federal enviou equipes do Grupo de Apoio a Desastres da Defesa Civil para auxiliar no atendimento emergencial.",
+      "titulo_curto": "Forte temporal com granizo causa mortes no RS e mobiliza Defesa Civil Nacional",
       "palavras_chave": [
         "Rio Grande do Sul",
         "Tupanciretã",
@@ -1159,16 +1336,26 @@
         "Defesa Civil",
         "evento climático extremo"
       ],
+      "urgencia_score": 88,
       "data_publicacao": "2026-11-20T19:28:00Z",
+      "impacto_pratico": "Acelera os decretos de emergência municipal e a liberação de verbas federais de socorro para reconstrução e assistência às famílias afetadas.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Agência Brasil (EBC)",
+        "BBC News Brasil"
+      ],
+      "relevancia_score": 87,
+      "horas_em_destaque": 8,
+      "paises_envolvidos": [
+        "BR"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "Clima, Amazônia e Transição Energética",
           "url_existente": "https://www.rodandoomundo.com.br/clima",
-          "motivo_conexao": "Saiba mais sobre a frequência e o impacto de eventos climáticos extremos no Brasil."
+          "motivo_conexao": "Saiba mais sobre a frequência e o impacto de eventos climáticos extremos no Brasil.",
+          "titulo_existente": "Clima, Amazônia e Transição Energética"
         }
-      ],
-      "expires_at": "2026-11-21T14:45:51Z",
-      "updated_at": "2026-11-20T20:45:51Z"
+      ]
     },
     {
       "slug": "russia-intensifica-ataques-aereos-contra-infraestrutura-e-pontes-em-kiev",
@@ -1291,24 +1478,15 @@
     },
     {
       "slug": "acoes-da-nvidia-enfrentam-pior-sequencia-de-quedas-desde-2008",
-      "titulo_curto": "Ações da Nvidia despencam 13% em Nova York após notícia de investigação da SEC",
-      "resumo_pulso": "Conforme apuração divulgada pelo InfoMoney Mercados, os papéis da gigante de tecnologia Nvidia sofreram queda de 13% após relatos de uma nova investigação conduzida pela Securities and Exchange Commission (SEC). O desdobramento aprofunda a recente sequência negativa da empresa nos mercados acionários.",
-      "impacto_pratico": "Gera forte oscilação nos índices de tecnologia globais e afeta fundos de investimento expostos ao setor de semicondutores.",
       "categoria": "Economia_Comercio",
-      "paises_envolvidos": [
-        "US"
-      ],
-      "urgencia_score": 89,
-      "relevancia_score": 90,
-      "nivel_confianca": "alta",
       "ttl_horas": 12,
-      "horas_em_destaque": 8,
-      "veiculos_origem": [
-        "InfoMoney Mercados"
-      ],
+      "expires_at": "2026-11-21T07:33:26Z",
+      "updated_at": "2026-11-20T20:45:51Z",
       "fontes_urls": [
         "https://www.infomoney.com.br/mercados/acoes-da-nvidia-desabam-noticia-sobre-investigacao-da-sec-sobre-companhia/"
       ],
+      "resumo_pulso": "Conforme apuração divulgada pelo InfoMoney Mercados, os papéis da gigante de tecnologia Nvidia sofreram queda de 13% após relatos de uma nova investigação conduzida pela Securities and Exchange Commission (SEC). O desdobramento aprofunda a recente sequência negativa da empresa nos mercados acionários.",
+      "titulo_curto": "Ações da Nvidia despencam 13% em Nova York após notícia de investigação da SEC",
       "palavras_chave": [
         "Nvidia",
         "SEC",
@@ -1316,16 +1494,25 @@
         "mercado financeiro",
         "ações"
       ],
+      "urgencia_score": 89,
       "data_publicacao": "2026-11-20T18:47:51Z",
+      "impacto_pratico": "Gera forte oscilação nos índices de tecnologia globais e afeta fundos de investimento expostos ao setor de semicondutores.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "InfoMoney Mercados"
+      ],
+      "relevancia_score": 90,
+      "horas_em_destaque": 8,
+      "paises_envolvidos": [
+        "US"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "Economia no Brasil",
           "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
-          "motivo_conexao": "Entenda como a volatilidade nos mercados internacionais de tecnologia afeta o mercado financeiro global."
+          "motivo_conexao": "Entenda como a volatilidade nos mercados internacionais de tecnologia afeta o mercado financeiro global.",
+          "titulo_existente": "Economia no Brasil"
         }
-      ],
-      "expires_at": "2026-11-21T07:33:26Z",
-      "updated_at": "2026-11-20T20:45:51Z"
+      ]
     },
     {
       "slug": "praga-de-mosca-da-bicheira-avanca-nos-eua-e-ameaca-rebanho-bovino",
@@ -1438,196 +1625,6 @@
           "titulo_existente": "Política no Brasil"
         }
       ]
-    },
-    {
-      "slug": "moldavia-registra-segunda-incursao-de-drone-em-espaco-aereo",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 12,
-      "expires_at": "2026-11-21T06:27:01Z",
-      "updated_at": "2026-11-20T18:27:01Z",
-      "fontes_urls": [
-        "https://www.ukrinform.net/rubric-ato/4186943-moldova-reports-second-drone-incursion-into-its-airspace-in-one-day.html"
-      ],
-      "resumo_pulso": "Conforme reportado pela agência Ukrinform, autoridades de segurança da Moldávia registraram uma segunda incursionamento não autorizado de drone em seu espaço aéreo nesta sexta-feira. O incidente ocorre em meio à intensificação de ataques com misseis e drones russos na vizinha Ucrânia.",
-      "titulo_curto": "Moldávia denuncia segunda violação de seu espaço aéreo por drones em 24 horas",
-      "palavras_chave": [
-        "Moldávia",
-        "drones",
-        "violação de espaço aéreo",
-        "Ucrânia",
-        "Rússia"
-      ],
-      "urgencia_score": 87,
-      "data_publicacao": "2026-11-20T17:52:00Z",
-      "impacto_pratico": "Aumento do alerta militar na Europa Oriental e risco de interrupção de voos comerciais na região da Moldávia.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Ukrinform"
-      ],
-      "relevancia_score": 85,
-      "horas_em_destaque": 6,
-      "paises_envolvidos": [
-        "MD",
-        "UA",
-        "RU"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-sancao-internacional",
-          "motivo_conexao": "Entenda os mecanismos de resposta diplomática e restrições de segurança impostas no cenário do leste europeu.",
-          "titulo_existente": "O que é uma sanção internacional?"
-        }
-      ]
-    },
-    {
-      "slug": "trump-demite-diretor-de-seguranca-cibernetica-apos-falhas-tecnicas",
-      "categoria": "Economia_Comercio",
-      "ttl_horas": 12,
-      "expires_at": "2026-11-21T06:10:42Z",
-      "updated_at": "2026-11-20T18:10:42Z",
-      "fontes_urls": [
-        "https://g1.globo.com/tecnologia/noticia/2026/11/20/apos-falhas-que-afetaram-microsoft-e-suspenderam-voos-trump-demite-diretor-de-seguranca-cibernetica.ghtml"
-      ],
-      "resumo_pulso": "Conforme apuração do G1 Economia, o presidente Donald Trump demitiu Sean Cairncross, diretor nacional de segurança cibernética dos EUA. A decisão segue uma série de falhas técnicas que impactaram o transporte aéreo e o setor bancário americano.",
-      "titulo_curto": "Trump demite diretor de segurança cibernética após falhas em sistemas nacionais",
-      "palavras_chave": [
-        "Trump",
-        "Cibersegurança",
-        "EUA",
-        "Demissão"
-      ],
-      "urgencia_score": 88,
-      "data_publicacao": "2026-11-20T17:36:52Z",
-      "impacto_pratico": "Possível instabilidade em sistemas de infraestrutura crítica nos EUA.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "G1 Economia"
-      ],
-      "relevancia_score": 85,
-      "horas_em_destaque": 4,
-      "paises_envolvidos": [
-        "US"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/politica/estados-unidos",
-          "motivo_conexao": "Acompanhamento das mudanças no gabinete e prioridades do governo Trump.",
-          "titulo_existente": "Política nos Estados Unidos"
-        }
-      ]
-    },
-    {
-      "slug": "temporal-devastador-deixa-mortos-e-destruicao-no-rio-grande-do-sul",
-      "categoria": "Ciencia_Clima",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-21T17:27:30Z",
-      "updated_at": "2026-11-20T20:21:55Z",
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/meio-ambiente/noticia/2026-11/temporal-no-rs-governo-envia-equipes-da-defesa-civil-para-tupancireta"
-      ],
-      "resumo_pulso": "Conforme comunicado da Agência Brasil e da BBC News Brasil, o governo federal determinou o deslocamento de equipes de apoio a desastres para o município gaúcho de Tupanciretã. A cidade foi duramente atingida por tempestades severas na madrugada, somando-se ao balanço estadual que já registra mortos e milhares de afetados.",
-      "titulo_curto": "Governo federal envia equipe da Defesa Civil para Tupanciretã (RS) após temporais",
-      "palavras_chave": [
-        "Rio Grande do Sul",
-        "Defesa Civil",
-        "temporal",
-        "Tupanciretã",
-        "clima"
-      ],
-      "urgencia_score": 96,
-      "data_publicacao": "2026-11-20T17:03:23Z",
-      "impacto_pratico": "Mobiliza ajuda humanitária emergencial e decretação de situação de emergência em dezenas de cidades no Sul do país.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Agência Brasil (EBC)",
-        "BBC News Brasil"
-      ],
-      "relevancia_score": 94,
-      "horas_em_destaque": 18,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/clima",
-          "motivo_conexao": "Contextorna a frequência de eventos climáticos extremos e a resposta institucional no Brasil.",
-          "titulo_existente": "Clima, Amazônia e Transição Energética"
-        }
-      ]
-    },
-    {
-      "slug": "pulso-1-20261120-1627",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 6,
-      "expires_at": "2026-11-20T22:27:28Z",
-      "updated_at": "2026-11-20T16:27:28Z",
-      "fontes_urls": [
-        "https://www.bbc.com/portuguese/articles/cqdr1xmyg3kzo?at_medium=RSS&at_campaign=rss"
-      ],
-      "resumo_pulso": "Segundo BBC News Brasil, Fotos compartilhadas por moradores nas redes sociais mostram ruas cobertas de granizo e destroços de prédios, árvores e postes..",
-      "titulo_curto": "'A cidade acabou': a destruição causada por temporal que provocou mortes no RS",
-      "palavras_chave": [
-        "radar",
-        "tempo real",
-        "gb"
-      ],
-      "urgencia_score": 90,
-      "data_publicacao": "2026-11-20T16:26:07+00:00",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "BBC News Brasil"
-      ],
-      "relevancia_score": 88,
-      "horas_em_destaque": 6,
-      "paises_envolvidos": [
-        "GB"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
-          "motivo_conexao": "Compreenda por que os preços sobem de forma generalizada, como o IPCA é calculado e de que maneira os juros do Banco Central afetam o poder de compra.",
-          "titulo_existente": "O que é inflação?"
-        },
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/como-funcionam-as-eleicoes-nos-eua",
-          "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos.",
-          "titulo_existente": "Como funcionam as eleições nos EUA?"
-        }
-      ]
-    },
-    {
-      "slug": "catar-anuncia-investimentos-de-16-bilhoes-de-dolares-na-alemanha",
-      "categoria": "Economia_Comercio",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-21T17:27:30Z",
-      "updated_at": "2026-11-20T17:27:30Z",
-      "fontes_urls": [
-        "https://www.aljazeera.com/news/2026/11/20/qatar-and-germany-deepen-strategic-ties-during-emirs-berlin-visit?traffic_source=rss"
-      ],
-      "resumo_pulso": "Segundo noticiado pela Al Jazeera English, o governo da Alemanha e o emir do Catar anunciaram o fortalecimento de parcerias estratégicas com o compromisso catariano de injetar US$ 16,5 bilhões na economia alemã. O montante será voltado a projetos de energia, defesa e tecnologia.",
-      "titulo_curto": "Catar confirma investimento de US$ 16,5 bilhões na Alemanha durante visita em Berlim",
-      "palavras_chave": [
-        "Catar",
-        "Alemanha",
-        "investimentos",
-        "energia",
-        "tecnologia"
-      ],
-      "urgencia_score": 85,
-      "data_publicacao": "2026-11-20T16:13:57Z",
-      "impacto_pratico": "Reforço no planejamento energético e financeiro alemão e ampliação de parcerias em tecnologia na Europa Central.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Al Jazeera English"
-      ],
-      "relevancia_score": 86,
-      "horas_em_destaque": 10,
-      "paises_envolvidos": [
-        "QA",
-        "DE"
-      ],
-      "links_internos_relacionados": []
     }
   ],
   "temas_curadoria": [
