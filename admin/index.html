@@ -1736,6 +1736,7 @@
                 </div>
                 <div class="admin-head-actions">
                   <button id="btn-recarregar-noticias-quentes" class="admin-btn admin-btn-sm" type="button">Atualizar</button>
+                  <button id="btn-rotacionar-pais-principal" class="admin-btn admin-btn-sm admin-btn-primary" type="button">Rotacionar País Principal</button>
                   <button id="btn-nova-noticia-quente" class="admin-btn admin-btn-primary admin-btn-sm" type="button">+ Nova Notícia Quente</button>
                 </div>
               </div>
@@ -2759,8 +2760,25 @@
             <button type="button" class="admin-btn admin-btn-sm btn-pais-rapido" data-iso="FR" style="font-size:0.75rem;padding:2px 8px;">🇫🇷 França</button>
           </div>
 
+          <!-- NOVO: País Principal -->
+          <div style="margin-top:10px;padding-top:10px;border-top:1px solid var(--border);">
+            <label style="font-weight:600;font-size:0.88rem;margin-bottom:4px;">País Principal *</label>
+            <select id="nq-pais-principal" class="admin-select">
+              <option value="">Nenhum (rotacionar automaticamente)</option>
+              <option value="BR" selected>🇧🇷 Brasil</option>
+              <option value="US" >🇺🇸 EUA</option>
+              <option value="FR" >🇫🇷 França</option>
+              <option value="DE" >🇩🇪 Alemanha</option>
+              <option value="JP" >🇯🇵 Japão</option>
+              <option value="GB" >🇬🇧 Reino Unido</option>
+              <option value="CA" >🇨🇦 Canadá</option>
+            </select>
+            <span class="admin-sub" style="font-size:0.75rem;margin-left:8px;">Selecionar país que ficará fixo no ticker. Deixe em "Nenhum" para rotação automática.</span>
+          </div>
+
           <!-- Input oculto para manter sincronização -->
           <input id="nq-paises" type="hidden" value="" />
+          <input id="nq-pais-principal-oculto" type="hidden" value="" />
         </div>
       </div>
 
@@ -5147,7 +5165,10 @@
               <strong>${escapeHtml(n.titulo_curto)}</strong>
               <div class="admin-sub"><code>${escapeHtml(n.slug)}</code></div>
             </td>
-            <td>${renderBadgesPaises(n.paises_envolvidos)}</td>
+            <td>
+              ${renderBadgesPaises(n.paises_envolvidos)}
+              ${n.pais_principal ? '<span class="badge badge-primary" title="País Principal">PRINCIPAL</span>' : ''}
+            </td>
             <td>${escapeHtml(n.categoria || '—')}</td>
             <td><span class="badge ${nivelUrgencia(n.urgencia_score, escala) === 'alta' ? 'badge-warn' : ''}">${escapeHtml(n.urgencia_score ?? 0)}</span></td>
             <td><span class="badge ${n.status === 'publicado' || n.status === 'ativo' ? 'badge-ok' : 'badge-warn'}">${escapeHtml(n.status || '—')}</span></td>
@@ -5722,6 +5743,58 @@
           });
       });
 
+      // Rotação de País Principal
+      $('btn-rotacionar-pais-principal').addEventListener('click', async () => {
+        const btn = $('btn-rotacionar-pais-principal');
+        const originalText = btn.textContent;
+        btn.disabled = true;
+        btn.textContent = 'Rotacionando...';
+        
+        try {
+          // Carrega todas as notícias quentes para encontrar as do mesmo país
+          await carregarNoticiasQuentes();
+          const todas = state.noticiasQuentes || [];
+          
+          // Agrupa por país principal já definido
+          const comPrincipal = todas.filter(n => n.pais_principal);
+          const semPrincipal = todas.filter(n => !n.pais_principal);
+          
+          if (comPrincipal.length > 0) {
+            // Se já tem país principal definido, rota entre os que têm o mesmo país
+            const paisesComPrincipal = [...new Set(comPrincipal.map(n => n.pais_principal))];
+            if (paisesComPrincipal.length > 0) {
+              const nextIndex = (paisesComPrincipal.indexOf(comPrincipal[0].pais_principal) + 1) % paisesComPrincipal.length;
+              const novoPrincipal = paisesComPrincipal[nextIndex] || '';
+              for (const n of comPrincipal) {
+                await apiFetch(`/v2/admin/noticias-quentes/${encodeURIComponent(n.slug)}', {
+                  method: 'PATCH',
+                  body: JSON.stringify({ pais_principal: novoPrincipal })
+                });
+              }
+              showBanner('noticias-quentes-banner', `País principal rotacionado de ${comPrincipal[0].pais_principal} para ${novoPrincipal}`, 'ok');
+            }
+          } else if (semPrincipal.length > 0) {
+            // Se nenhuma tem pais_principal, definir o primeiro como principal
+            const primeiro = semPrincipal[0];
+            await apiFetch(`/v2/admin/noticias-quentes/${encodeURIComponent(primeiro.slug)}', {
+              method: 'PATCH',
+              body: JSON.stringify({ pais_principal: primeiro.paises_envolvidos?.[0] || 'BR' })
+            });
+            showBanner('noticias-quentes-banner', `País principal definido como ${primeiro.paises_envolvidos?.[0] || 'BR'}`, 'ok');
+          } else {
+            showBanner('noticias-quentes-banner', 'Nenhuma notícia quente encontrada.', 'warn');
+          }
+          
+          await carregarNoticiasQuentes();
+          showToast('Rotação de país principal concluída.', 'ok');
+        } catch (err) {
+          showBanner('noticias-quentes-banner', 'Erro ao rotacionar país principal: ' + err.message, 'err');
+        } finally {
+          btn.disabled = false;
+          btn.textContent = originalText;
+        }
+      });
+
       $('btn-nova-noticia-quente').addEventListener('click', () => {
         state.editingNoticiaSlug = null;
         $('modal-noticias-quente_title').textContent = 'Nova Notícia Quente';
@@ -5770,6 +5843,11 @@
           $('nq-status').value = n.status || 'aguardando_revisao';
           $('nq-slug').value = n.slug || '';
           $('nq-destaque-ate').value = n.destaque_ate ? String(n.destaque_ate).slice(0, 16) : '';
+          // Popular o seletor de país principal
+          const paisPrincipalInput = $('nq-pais-principal');
+          if (paisPrincipalInput) {
+            paisPrincipalInput.value = n.pais_principal || '';
+          }
           popularCatalogoPaisesModal();
           modalPaisesSelecionados = Array.isArray(n.paises_envolvidos) && n.paises_envolvidos.length ? [...n.paises_envolvidos] : [];
           atualizarChipsPaisesModal();
@@ -5821,6 +5899,7 @@
         const status = $('nq-status').value;
         const destaqueAte = $('nq-destaque-ate').value;
         const paises = [...modalPaisesSelecionados];
+        const paisPrincipal = $('nq-pais-principal').value || null;
 
         if (tituloCurto) body.titulo_curto = tituloCurto;
         if (resumoPulso) body.resumo_pulso = resumoPulso;
@@ -5834,6 +5913,7 @@
         body.status = status;
         if (destaqueAte) body.destaque_ate = new Date(destaqueAte).toISOString();
         body.paises_envolvidos = paises;
+        body.pais_principal = paisPrincipal;
 
         try {
           await apiFetch(`/v2/admin/noticias-quentes/${encodeURIComponent(slug)}`, { method: 'PATCH', body: JSON.stringify(body) });

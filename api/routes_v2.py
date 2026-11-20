@@ -2217,6 +2217,7 @@ class AdminNoticiasQuentesUpdateRequest(BaseModel):
     status: Optional[str] = Field(default=None, max_length=30)
     destaque_ate: Optional[str] = Field(default=None, max_length=40)
     expires_at: Optional[str] = Field(default=None, max_length=40)
+    pais_principal: Optional[str] = Field(default=None, max_length=2, description="Código ISO-2 do país principal para rotação (ex: BR, US)")
     paises_envolvidos: Optional[List[str]] = Field(default=None)
     palavras_chave: Optional[List[str]] = Field(default=None)
     veiculos_origem: Optional[List[str]] = Field(default=None)
@@ -4019,6 +4020,8 @@ def admin_atualizar_noticia_quente(
         _add("nivel_confianca", updates["nivel_confianca"])
     if "paises_envolvidos" in updates:
         _add("paises_envolvidos", list(updates["paises_envolvidos"] or []))
+    if "pais_principal" in updates:
+        _add("pais_principal", str(updates["pais_principal"]).upper().strip() or None)
     if "palavras_chave" in updates:
         _add("palavras_chave", [str(k).lower().strip() for k in (updates["palavras_chave"] or []) if str(k).strip()])
     if "veiculos_origem" in updates:
@@ -4072,9 +4075,9 @@ def admin_atualizar_noticia_quente(
                     slug, batch_id, titulo_curto, resumo_pulso, impacto_pratico,
                     categoria, paises_envolvidos, urgencia_score, relevancia_score,
                     nivel_confianca, ttl_horas, horas_em_destaque,
-                    status, destaque_ate, expires_at, created_at, updated_at
+                    status, destaque_ate, expires_at, created_at, updated_at, pais_principal
                 ) VALUES (
-                    %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s
+                    %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s
                 )
                 ON CONFLICT (slug) DO UPDATE SET
                     titulo_curto = EXCLUDED.titulo_curto,
@@ -4090,7 +4093,8 @@ def admin_atualizar_noticia_quente(
                     status = EXCLUDED.status,
                     destaque_ate = EXCLUDED.destaque_ate,
                     expires_at = EXCLUDED.expires_at,
-                    updated_at = EXCLUDED.updated_at
+                    updated_at = EXCLUDED.updated_at,
+                    pais_principal = EXCLUDED.pais_principal
                 RETURNING slug, status;
                 """,
                 (
@@ -4111,6 +4115,7 @@ def admin_atualizar_noticia_quente(
                     dt_expira,
                     agora,
                     agora,
+                    updates.get("pais_principal") or None,
                 ),
             )
             row = cur.fetchone()
@@ -4326,59 +4331,63 @@ def admin_colunas_lote(
 
     rows_col: List[Any] = []
     rows_ea: List[Any] = []
-    with db.cursor() as cur:
-        if payload.acao == "excluir":
-            cur.execute(
-                "UPDATE ai_colunas_editoriais "
-                "SET status = 'excluido', review_status = 'excluido', published_at = NULL, updated_at = NOW() "
-                "WHERE slug = ANY(%s) "
-                "RETURNING id, slug, created_at;",
-                (lista_candidatos,),
-            )
-            rows_col = cur.fetchall()
-            cur.execute(
-                "UPDATE ai_entenda_o_assunto "
-                "SET status = 'excluido', updated_at = NOW() "
-                "WHERE slug = ANY(%s) "
-                "RETURNING id, slug;",
-                (lista_candidatos,),
-            )
-            rows_ea = cur.fetchall()
-        else:
-            if payload.acao == "publicar":
-                set_sql = (
-                    "status = 'publicado', review_status = 'publicado', "
-                    "published_at = COALESCE(published_at, NOW()), updated_at = NOW()"
+    try:
+        with db.cursor() as cur:
+            if payload.acao == "excluir":
+                cur.execute(
+                    "UPDATE ai_colunas_editoriais "
+                    "SET status = 'excluido', review_status = 'excluido', published_at = NULL, updated_at = NOW() "
+                    "WHERE slug = ANY(%s) "
+                    "RETURNING id, slug, created_at;",
+                    (lista_candidatos,),
                 )
-                entenda_status = "publicado"
-            elif payload.acao == "aprovar":
-                set_sql = "status = 'aprovado', review_status = 'aprovado', updated_at = NOW()"
-                entenda_status = "aprovado"
-            elif payload.acao == "rejeitar":
-                set_sql = "status = 'rejeitado', review_status = 'rejeitado', updated_at = NOW()"
-                entenda_status = "rejeitado"
+                rows_col = cur.fetchall()
+                cur.execute(
+                    "UPDATE ai_entenda_o_assunto "
+                    "SET status = 'excluido', updated_at = NOW() "
+                    "WHERE slug = ANY(%s) "
+                    "RETURNING id, slug;",
+                    (lista_candidatos,),
+                )
+                rows_ea = cur.fetchall()
             else:
-                set_sql = (
-                    "status = 'rascunho_auditado', review_status = 'rascunho_auditado', "
-                    "published_at = NULL, updated_at = NOW()"
+                if payload.acao == "publicar":
+                    set_sql = (
+                        "status = 'publicado', review_status = 'publicado', "
+                        "published_at = COALESCE(published_at, NOW()), updated_at = NOW()"
+                    )
+                    entenda_status = "publicado"
+                elif payload.acao == "aprovar":
+                    set_sql = "status = 'aprovado', review_status = 'aprovado', updated_at = NOW()"
+                    entenda_status = "aprovado"
+                elif payload.acao == "rejeitar":
+                    set_sql = "status = 'rejeitado', review_status = 'rejeitado', updated_at = NOW()"
+                    entenda_status = "rejeitado"
+                else:
+                    set_sql = (
+                        "status = 'rascunho_auditado', review_status = 'rascunho_auditado', "
+                        "published_at = NULL, updated_at = NOW()"
+                    )
+                    entenda_status = "rascunho_auditado"
+
+                cur.execute(
+                    f"UPDATE ai_colunas_editoriais SET {set_sql} WHERE slug = ANY(%s) "
+                    "RETURNING id, slug, created_at;",
+                    (lista_candidatos,),
                 )
-                entenda_status = "rascunho_auditado"
+                rows_col = cur.fetchall()
+                cur.execute(
+                    f"UPDATE ai_entenda_o_assunto SET status = %s, updated_at = NOW() "
+                    "WHERE slug = ANY(%s) "
+                    "RETURNING id, slug;",
+                    (entenda_status, lista_candidatos),
+                )
+                rows_ea = cur.fetchall()
 
-            cur.execute(
-                f"UPDATE ai_colunas_editoriais SET {set_sql} WHERE slug = ANY(%s) "
-                "RETURNING id, slug, created_at;",
-                (lista_candidatos,),
-            )
-            rows_col = cur.fetchall()
-            cur.execute(
-                f"UPDATE ai_entenda_o_assunto SET status = %s, updated_at = NOW() "
-                "WHERE slug = ANY(%s) "
-                "RETURNING id, slug;",
-                (entenda_status, lista_candidatos),
-            )
-            rows_ea = cur.fetchall()
-
-    db.commit()
+        db.commit()
+    except Exception as exc:
+        db.rollback()
+        raise HTTPException(status_code=500, detail=f"Erro ao processar lote de colunas no banco: {exc}")
     try:
         _sincronizar_espelho_entenda_v2(db)
     except Exception as exc:  # noqa: BLE001
@@ -4598,30 +4607,45 @@ def admin_excluir_coluna(
     slug_sem_prefixo = re.sub(r"^entenda-", "", slug_limpo)
     candidatos = list(dict.fromkeys([slug_limpo, slug_sem_prefixo, f"entenda-{slug_sem_prefixo}"]))
 
-    with db.cursor() as cur:
-        cur.execute(
-            "UPDATE ai_colunas_editoriais "
-            "SET status = 'excluido', review_status = 'excluido', published_at = NULL, updated_at = NOW() "
-            "WHERE slug = ANY(%s) "
-            "RETURNING id, slug, created_at;",
-            (candidatos,),
-        )
-        row_col = cur.fetchone()
+    try:
+        with db.cursor() as cur:
+            cur.execute(
+                "UPDATE ai_colunas_editoriais "
+                "SET status = 'excluido', review_status = 'excluido', published_at = NULL, updated_at = NOW() "
+                "WHERE slug = ANY(%s) "
+                "RETURNING id, slug, created_at;",
+                (candidatos,),
+            )
+            row_col = cur.fetchone()
 
-        cur.execute(
-            "UPDATE ai_entenda_o_assunto "
-            "SET status = 'excluido', updated_at = NOW() "
-            "WHERE slug = ANY(%s) "
-            "RETURNING id, slug;",
-            (candidatos,),
-        )
-        row_ea = cur.fetchone()
+            cur.execute(
+                "UPDATE ai_entenda_o_assunto "
+                "SET status = 'excluido', updated_at = NOW() "
+                "WHERE slug = ANY(%s) "
+                "RETURNING id, slug;",
+                (candidatos,),
+            )
+            row_ea = cur.fetchone()
 
-    if not row_col and not row_ea:
+            if row_col and not row_ea and row_col.get("id") is not None and row_col.get("created_at") is not None:
+                cur.execute(
+                    "UPDATE ai_entenda_o_assunto SET status = 'excluido', updated_at = NOW() "
+                    "WHERE id = %s AND ABS(EXTRACT(EPOCH FROM (created_at - %s))) < 30 "
+                    "RETURNING id, slug;",
+                    (row_col["id"], row_col["created_at"]),
+                )
+                row_ea = cur.fetchone()
+
+        if not row_col and not row_ea:
+            db.rollback()
+            raise HTTPException(status_code=404, detail="Artigo / Coluna não encontrada.")
+
+        db.commit()
+    except HTTPException:
+        raise
+    except Exception as exc:
         db.rollback()
-        raise HTTPException(status_code=404, detail="Artigo / Coluna não encontrada.")
-
-    db.commit()
+        raise HTTPException(status_code=500, detail=f"Erro ao excluir coluna no banco: {exc}")
     try:
         _sincronizar_espelho_entenda_v2(db)
     except Exception as exc:  # noqa: BLE001
