@@ -2152,6 +2152,16 @@ class AdminColunaStatusRequest(BaseModel):
     status: Literal["publicado", "aprovado", "rejeitado", "rascunho_auditado"]
 
 
+class AdminColunaUpdateRequest(BaseModel):
+    titulo: Optional[str] = None
+    subtitulo: Optional[str] = None
+    categoria: Optional[str] = None
+    paises_envolvidos: Optional[List[str]] = None
+    corpo_markdown: Optional[str] = None
+    tese_central: Optional[str] = None
+    status: Optional[Literal["publicado", "aprovado", "rejeitado", "rascunho_auditado"]] = None
+
+
 class AdminEventoStatusRequest(BaseModel):
     status: Literal["aguardando_revisao", "publicado", "arquivado", "excluido"]
 
@@ -4157,7 +4167,7 @@ def admin_listar_colunas(
     limite: int = Query(50, ge=1, le=200),
     conn: Any = Depends(get_db),
 ) -> Dict[str, Any]:
-    """Lista colunas editoriais para revisão humana (rascunhos auditados, aprovadas e publicadas)."""
+    """Lista colunas editoriais e artigos de Entenda o assunto para revisão humana."""
     aplicar_no_cache_headers(response)
     db = _require_db(conn)
     status_norm = (status if isinstance(status, str) else "").strip().lower()
@@ -4179,13 +4189,15 @@ def admin_listar_colunas(
                 c.slug, c.titulo, c.subtitulo, c.tese_central, c.corpo_markdown, c.resumo_seo,
                 c.categoria, c.tempo_leitura_min, c.auditoria_aprovada, c.model_id,
                 c.status, c.review_status, c.reviewed_by, c.published_at, c.created_at, c.updated_at,
+                c.paises_abordados,
                 COALESCE(c.auditoria_resultado->>'nota_isencao', '') AS nota_isencao,
                 COALESCE(c.auditoria_resultado->>'score_qualidade', '') AS score_qualidade,
                 ea.slug AS entenda_slug,
-                ea.titulo_assunto AS entenda_titulo
+                ea.titulo_assunto AS entenda_titulo,
+                ea.paises_relacionados
             FROM ai_colunas_editoriais c
             LEFT JOIN LATERAL (
-                SELECT slug, titulo_assunto
+                SELECT slug, titulo_assunto, paises_relacionados
                 FROM ai_entenda_o_assunto e
                 WHERE (e.slug = c.slug
                    OR e.slug = ('entenda-' || c.slug)
@@ -4207,6 +4219,25 @@ def admin_listar_colunas(
             tuple(params),
         )
         rows = cur.fetchall()
+
+        # Também coletar artigos de ai_entenda_o_assunto
+        cur.execute(
+            """
+            SELECT
+                e.slug, e.titulo_assunto AS titulo, e.resumo_executivo AS subtitulo,
+                e.resumo_executivo AS corpo_markdown, e.contexto_historico AS tese_central,
+                e.categoria, e.status, e.status AS review_status, e.reviewed_by,
+                e.paises_relacionados, e.created_at, e.updated_at,
+                e.slug AS entenda_slug, e.titulo_assunto AS entenda_titulo,
+                e.relevancia_score::text AS score_qualidade
+            FROM ai_entenda_o_assunto e
+            WHERE e.status IS DISTINCT FROM 'excluido'
+            ORDER BY e.updated_at DESC
+            LIMIT 50;
+            """
+        )
+        entenda_orphans = cur.fetchall()
+
         cur.execute(
             "SELECT COALESCE(status, 'rascunho_auditado') AS status, COUNT(*) AS total "
             "FROM ai_colunas_editoriais "
@@ -4214,15 +4245,58 @@ def admin_listar_colunas(
             "GROUP BY 1;"
         )
         contagens_rows = cur.fetchall()
-    colunas = [
-        {
-            **dict(r),
-            "published_at": _serializar_valor_temporal(r.get("published_at")),
-            "created_at": _serializar_valor_temporal(r.get("created_at")),
-            "updated_at": _serializar_valor_temporal(r.get("updated_at")),
+
+    slugs_vistos = set()
+    colunas: List[Dict[str, Any]] = []
+    for r in rows:
+        d = dict(r)
+        paises = list(d.get("paises_abordados") or d.get("paises_relacionados") or [])
+        col_item = {
+            **d,
+            "paises_envolvidos": paises,
+            "paises_abordados": paises,
+            "published_at": _serializar_valor_temporal(d.get("published_at")),
+            "created_at": _serializar_valor_temporal(d.get("created_at")),
+            "updated_at": _serializar_valor_temporal(d.get("updated_at")),
         }
-        for r in rows
-    ]
+        slug_base = re.sub(r"^entenda-", "", str(d.get("slug") or "")).strip()
+        slugs_vistos.add(slug_base)
+        if d.get("entenda_slug"):
+            slugs_vistos.add(re.sub(r"^entenda-", "", str(d.get("entenda_slug"))).strip())
+        colunas.append(col_item)
+
+    for eo in entenda_orphans:
+        eo_dict = dict(eo)
+        clean_slug = re.sub(r"^entenda-", "", str(eo_dict.get("slug") or "")).strip()
+        if clean_slug in slugs_vistos or str(eo_dict.get("slug")) in slugs_vistos:
+            continue
+        slugs_vistos.add(clean_slug)
+        paises_eo = list(eo_dict.get("paises_relacionados") or [])
+        colunas.append({
+            "slug": eo_dict.get("slug"),
+            "titulo": eo_dict.get("titulo") or clean_slug,
+            "subtitulo": eo_dict.get("subtitulo") or "",
+            "tese_central": eo_dict.get("tese_central") or "",
+            "corpo_markdown": eo_dict.get("corpo_markdown") or "",
+            "resumo_seo": "",
+            "categoria": eo_dict.get("categoria") or "Geral",
+            "tempo_leitura_min": 5,
+            "auditoria_aprovada": True,
+            "model_id": "gemini-2.5-pro",
+            "status": eo_dict.get("status") or "rascunho_auditado",
+            "review_status": eo_dict.get("review_status") or "rascunho_auditado",
+            "reviewed_by": eo_dict.get("reviewed_by") or "Equipe RoM",
+            "published_at": _serializar_valor_temporal(eo_dict.get("updated_at")),
+            "created_at": _serializar_valor_temporal(eo_dict.get("created_at")),
+            "updated_at": _serializar_valor_temporal(eo_dict.get("updated_at")),
+            "paises_envolvidos": paises_eo,
+            "paises_abordados": paises_eo,
+            "nota_isencao": "",
+            "score_qualidade": str(eo_dict.get("score_qualidade") or "85"),
+            "entenda_slug": eo_dict.get("slug"),
+            "entenda_titulo": eo_dict.get("titulo") or clean_slug,
+        })
+
     _traduzir_campos_itens_pt(colunas, ("titulo", "subtitulo"))
     contagens = {str(r["status"]): int(r["total"]) for r in contagens_rows}
     contagens["total"] = sum(contagens.values())
@@ -4235,15 +4309,23 @@ def admin_colunas_lote(
     response: Response,
     conn: Any = Depends(get_db),
 ) -> Dict[str, Any]:
-    """Executa ação em lote sobre colunas editoriais (`aprovar`, `publicar`, `rejeitar`, `rascunho`, `excluir`)."""
+    """Executa ação em lote sobre colunas editoriais e artigos de Entenda (`aprovar`, `publicar`, `rejeitar`, `rascunho`, `excluir`)."""
     aplicar_no_cache_headers(response)
     db = _require_db(conn)
     slugs_limpos = [str(s).strip() for s in (payload.slugs or []) if str(s).strip()]
     if not slugs_limpos:
         return {"ok": True, "acao": payload.acao, "processados": 0, "slugs": []}
 
-    entenda_slugs = list({s for s in slugs_limpos} | {f"entenda-{s}" for s in slugs_limpos})
+    todos_candidatos = set()
+    for s in slugs_limpos:
+        s_clean = re.sub(r"^entenda-", "", s)
+        todos_candidatos.add(s)
+        todos_candidatos.add(s_clean)
+        todos_candidatos.add(f"entenda-{s_clean}")
+    lista_candidatos = list(todos_candidatos)
 
+    rows_col: List[Any] = []
+    rows_ea: List[Any] = []
     with db.cursor() as cur:
         if payload.acao == "excluir":
             cur.execute(
@@ -4251,24 +4333,17 @@ def admin_colunas_lote(
                 "SET status = 'excluido', review_status = 'excluido', published_at = NULL, updated_at = NOW() "
                 "WHERE slug = ANY(%s) "
                 "RETURNING id, slug, created_at;",
-                (slugs_limpos,),
+                (lista_candidatos,),
             )
-            rows = cur.fetchall()
-            if rows:
-                cur.execute(
-                    "UPDATE ai_entenda_o_assunto "
-                    "SET status = 'excluido', updated_at = NOW() "
-                    "WHERE slug = ANY(%s);",
-                    (entenda_slugs,),
-                )
-                for row in rows:
-                    if row.get("id") is not None and row.get("created_at") is not None:
-                        cur.execute(
-                            "UPDATE ai_entenda_o_assunto "
-                            "SET status = 'excluido', updated_at = NOW() "
-                            "WHERE id = %s AND ABS(EXTRACT(EPOCH FROM (created_at - %s))) < 30;",
-                            (row["id"], row["created_at"]),
-                        )
+            rows_col = cur.fetchall()
+            cur.execute(
+                "UPDATE ai_entenda_o_assunto "
+                "SET status = 'excluido', updated_at = NOW() "
+                "WHERE slug = ANY(%s) "
+                "RETURNING id, slug;",
+                (lista_candidatos,),
+            )
+            rows_ea = cur.fetchall()
         else:
             if payload.acao == "publicar":
                 set_sql = (
@@ -4292,30 +4367,28 @@ def admin_colunas_lote(
             cur.execute(
                 f"UPDATE ai_colunas_editoriais SET {set_sql} WHERE slug = ANY(%s) "
                 "RETURNING id, slug, created_at;",
-                (slugs_limpos,),
+                (lista_candidatos,),
             )
-            rows = cur.fetchall()
-            if rows:
-                cur.execute(
-                    "UPDATE ai_entenda_o_assunto SET status = %s, updated_at = NOW() "
-                    "WHERE slug = ANY(%s);",
-                    (entenda_status, entenda_slugs),
-                )
-                for row in rows:
-                    if row.get("id") is not None and row.get("created_at") is not None:
-                        cur.execute(
-                            "UPDATE ai_entenda_o_assunto SET status = %s, updated_at = NOW() "
-                            "WHERE id = %s AND ABS(EXTRACT(EPOCH FROM (created_at - %s))) < 30 "
-                            "AND slug NOT IN (SELECT unnest(%s::text[]));",
-                            (entenda_status, row["id"], row["created_at"], entenda_slugs),
-                        )
+            rows_col = cur.fetchall()
+            cur.execute(
+                f"UPDATE ai_entenda_o_assunto SET status = %s, updated_at = NOW() "
+                "WHERE slug = ANY(%s) "
+                "RETURNING id, slug;",
+                (entenda_status, lista_candidatos),
+            )
+            rows_ea = cur.fetchall()
+
     db.commit()
     try:
         _sincronizar_espelho_entenda_v2(db)
     except Exception as exc:  # noqa: BLE001
         print(f"[Aviso] Falha ao sincronizar espelho entenda_v2 após POST /colunas/lote: {exc}")
 
-    processados = [str(r["slug"]) for r in rows]
+    processados_set = {str(r["slug"]) for r in (rows_col + rows_ea)}
+    processados = [s for s in slugs_limpos if (s in processados_set or re.sub(r"^entenda-", "", s) in processados_set or f"entenda-{s}" in processados_set)]
+    if not processados and processados_set:
+        processados = list(processados_set)
+
     return {
         "ok": True,
         "acao": payload.acao,
@@ -4331,7 +4404,7 @@ def admin_atualizar_status_coluna(
     response: Response,
     conn: Any = Depends(get_db),
 ) -> Dict[str, Any]:
-    """Aprova, publica, rejeita ou devolve uma coluna para rascunho (sincronizando `ai_entenda_o_assunto`)."""
+    """Aprova, publica, rejeita ou devolve uma coluna / artigo para rascunho (sincronizando `ai_entenda_o_assunto`)."""
     aplicar_no_cache_headers(response)
     db = _require_db(conn)
     status_novo = payload.status
@@ -4355,40 +4428,161 @@ def admin_atualizar_status_coluna(
         )
         entenda_status = "rascunho_auditado"
 
+    slug_limpo = slug.strip()
+    slug_sem_prefixo = re.sub(r"^entenda-", "", slug_limpo)
+    slug_com_prefixo = f"entenda-{slug_sem_prefixo}"
+    candidatos = list(dict.fromkeys([slug_limpo, slug_sem_prefixo, slug_com_prefixo]))
+
     with db.cursor() as cur:
         cur.execute(
-            f"UPDATE ai_colunas_editoriais SET {set_sql} WHERE slug = %s "
+            f"UPDATE ai_colunas_editoriais SET {set_sql} WHERE slug = ANY(%s) "
             "RETURNING id, slug, status, review_status, published_at, created_at, updated_at;",
-            (slug,),
+            (candidatos,),
         )
         row = cur.fetchone()
-        if row:
+
+        cur.execute(
+            f"UPDATE ai_entenda_o_assunto SET status = %s, updated_at = NOW() WHERE slug = ANY(%s) "
+            "RETURNING id, slug, status, updated_at;",
+            (entenda_status, candidatos),
+        )
+        row_ea = cur.fetchone()
+
+        if row and not row_ea and row.get("id") is not None and row.get("created_at") is not None:
             cur.execute(
                 "UPDATE ai_entenda_o_assunto SET status = %s, updated_at = NOW() "
-                "WHERE slug = %s OR slug = %s;",
-                (entenda_status, f"entenda-{slug}", slug),
+                "WHERE id = %s AND ABS(EXTRACT(EPOCH FROM (created_at - %s))) < 30 "
+                "RETURNING id, slug, status, updated_at;",
+                (entenda_status, row["id"], row["created_at"]),
             )
-            if cur.rowcount == 0 and row.get("id") is not None and row.get("created_at") is not None:
-                cur.execute(
-                    "UPDATE ai_entenda_o_assunto SET status = %s, updated_at = NOW() "
-                    "WHERE id = %s AND ABS(EXTRACT(EPOCH FROM (created_at - %s))) < 30;",
-                    (entenda_status, row["id"], row["created_at"]),
-                )
-    if not row:
-        raise HTTPException(status_code=404, detail="Coluna não encontrada.")
+            row_ea = cur.fetchone()
+
+    if not row and not row_ea:
+        db.rollback()
+        raise HTTPException(status_code=404, detail="Artigo / Coluna não encontrada.")
+
     db.commit()
     try:
         _sincronizar_espelho_entenda_v2(db)
     except Exception as exc:  # noqa: BLE001
         print(f"[Aviso] Falha ao sincronizar espelho entenda_v2 após PATCH status: {exc}")
+
+    ret_row = row or row_ea or {}
     return {
         "ok": True,
-        "slug": row["slug"],
-        "status": row["status"],
-        "review_status": row["review_status"],
-        "published_at": _serializar_valor_temporal(row.get("published_at")),
-        "updated_at": _serializar_valor_temporal(row.get("updated_at")),
+        "slug": ret_row.get("slug") or slug,
+        "status": ret_row.get("status") or status_novo,
+        "review_status": ret_row.get("review_status") or status_novo,
+        "published_at": _serializar_valor_temporal(ret_row.get("published_at") if row else ret_row.get("updated_at")),
+        "updated_at": _serializar_valor_temporal(ret_row.get("updated_at")),
     }
+
+
+@router.patch("/v2/admin/colunas/{slug}", dependencies=[Depends(verificar_admin_token)])
+def admin_atualizar_coluna(
+    slug: str,
+    payload: AdminColunaUpdateRequest,
+    response: Response,
+    conn: Any = Depends(get_db),
+) -> Dict[str, Any]:
+    """Atualiza campos de uma coluna / artigo de Entenda (título, subtítulo, categoria, países envolvidos, etc.)."""
+    aplicar_no_cache_headers(response)
+    db = _require_db(conn)
+
+    slug_limpo = slug.strip()
+    slug_sem_prefixo = re.sub(r"^entenda-", "", slug_limpo)
+    candidatos = list(dict.fromkeys([slug_limpo, slug_sem_prefixo, f"entenda-{slug_sem_prefixo}"]))
+
+    paises_clean: Optional[List[str]] = None
+    if payload.paises_envolvidos is not None:
+        paises_clean = [
+            re.sub(r"[^A-Za-z0-9_-]", "", str(p)).strip().upper()[:10]
+            for p in payload.paises_envolvidos
+            if str(p).strip()
+        ]
+
+    col_sets: List[str] = []
+    col_params: List[Any] = []
+    ea_sets: List[str] = []
+    ea_params: List[Any] = []
+
+    if payload.titulo is not None:
+        col_sets.append("titulo = %s")
+        col_params.append(payload.titulo.strip())
+        ea_sets.append("titulo_assunto = %s")
+        ea_params.append(payload.titulo.strip())
+
+    if payload.subtitulo is not None:
+        col_sets.append("subtitulo = %s")
+        col_params.append(payload.subtitulo.strip())
+        ea_sets.append("resumo_executivo = %s")
+        ea_params.append(payload.subtitulo.strip())
+
+    if payload.categoria is not None:
+        col_sets.append("categoria = %s")
+        col_params.append(payload.categoria.strip())
+        ea_sets.append("categoria = %s")
+        ea_params.append(payload.categoria.strip())
+
+    if paises_clean is not None:
+        col_sets.append("paises_abordados = %s")
+        col_params.append(paises_clean)
+        ea_sets.append("paises_relacionados = %s")
+        ea_params.append(paises_clean)
+
+    if payload.tese_central is not None:
+        col_sets.append("tese_central = %s")
+        col_params.append(payload.tese_central.strip())
+        ea_sets.append("contexto_historico = %s")
+        ea_params.append(payload.tese_central.strip())
+
+    if payload.corpo_markdown is not None:
+        col_sets.append("corpo_markdown = %s")
+        col_params.append(payload.corpo_markdown.strip())
+
+    if payload.status is not None:
+        col_sets.append("status = %s, review_status = %s")
+        col_params.extend([payload.status, payload.status])
+        ea_sets.append("status = %s")
+        ea_params.append(payload.status)
+
+    if not col_sets and not ea_sets:
+        raise HTTPException(status_code=422, detail="Nenhum campo informado para atualização.")
+
+    col_sets.append("updated_at = NOW()")
+    ea_sets.append("updated_at = NOW()")
+
+    with db.cursor() as cur:
+        cur.execute(
+            f"UPDATE ai_colunas_editoriais SET {', '.join(col_sets)} WHERE slug = ANY(%s) "
+            "RETURNING id, slug, titulo, subtitulo, categoria, paises_abordados, status, updated_at;",
+            (*col_params, candidatos),
+        )
+        row_col = cur.fetchone()
+
+        cur.execute(
+            f"UPDATE ai_entenda_o_assunto SET {', '.join(ea_sets)} WHERE slug = ANY(%s) "
+            "RETURNING id, slug, titulo_assunto, categoria, paises_relacionados, status, updated_at;",
+            (*ea_params, candidatos),
+        )
+        row_ea = cur.fetchone()
+
+    if not row_col and not row_ea:
+        db.rollback()
+        raise HTTPException(status_code=404, detail="Artigo / Coluna não encontrada.")
+
+    db.commit()
+    try:
+        _sincronizar_espelho_entenda_v2(db)
+    except Exception as exc:  # noqa: BLE001
+        print(f"[Aviso] Falha ao sincronizar espelho entenda_v2 após PATCH coluna: {exc}")
+
+    ret_item = dict(row_col or row_ea)
+    ret_paises = list(ret_item.get("paises_abordados") or ret_item.get("paises_relacionados") or [])
+    ret_item["paises_envolvidos"] = ret_paises
+    ret_item["updated_at"] = _serializar_valor_temporal(ret_item.get("updated_at"))
+
+    return {"ok": True, "coluna": ret_item}
 
 
 @router.delete("/v2/admin/colunas/{slug}", dependencies=[Depends(verificar_admin_token)])
@@ -4397,41 +4591,42 @@ def admin_excluir_coluna(
     response: Response,
     conn: Any = Depends(get_db),
 ) -> Dict[str, Any]:
-    """Remove logicamente (soft-delete) uma coluna editorial (e o bloco 'Entenda o Assunto' associado)."""
+    """Remove logicamente (soft-delete) uma coluna editorial e o bloco 'Entenda o Assunto' associado."""
     aplicar_no_cache_headers(response)
     db = _require_db(conn)
+    slug_limpo = slug.strip()
+    slug_sem_prefixo = re.sub(r"^entenda-", "", slug_limpo)
+    candidatos = list(dict.fromkeys([slug_limpo, slug_sem_prefixo, f"entenda-{slug_sem_prefixo}"]))
+
     with db.cursor() as cur:
         cur.execute(
             "UPDATE ai_colunas_editoriais "
             "SET status = 'excluido', review_status = 'excluido', published_at = NULL, updated_at = NOW() "
-            "WHERE slug = %s "
+            "WHERE slug = ANY(%s) "
             "RETURNING id, slug, created_at;",
-            (slug,),
+            (candidatos,),
         )
-        row = cur.fetchone()
-        if row:
-            cur.execute(
-                "UPDATE ai_entenda_o_assunto "
-                "SET status = 'excluido', updated_at = NOW() "
-                "WHERE slug = %s OR slug = %s;",
-                (f"entenda-{slug}", slug),
-            )
-            if row.get("id") is not None and row.get("created_at") is not None:
-                cur.execute(
-                    "UPDATE ai_entenda_o_assunto "
-                    "SET status = 'excluido', updated_at = NOW() "
-                    "WHERE id = %s AND ABS(EXTRACT(EPOCH FROM (created_at - %s))) < 30;",
-                    (row["id"], row["created_at"]),
-                )
-    if not row:
+        row_col = cur.fetchone()
+
+        cur.execute(
+            "UPDATE ai_entenda_o_assunto "
+            "SET status = 'excluido', updated_at = NOW() "
+            "WHERE slug = ANY(%s) "
+            "RETURNING id, slug;",
+            (candidatos,),
+        )
+        row_ea = cur.fetchone()
+
+    if not row_col and not row_ea:
         db.rollback()
-        raise HTTPException(status_code=404, detail="Coluna não encontrada.")
+        raise HTTPException(status_code=404, detail="Artigo / Coluna não encontrada.")
+
     db.commit()
     try:
         _sincronizar_espelho_entenda_v2(db)
     except Exception as exc:  # noqa: BLE001
         print(f"[Aviso] Falha ao sincronizar espelho entenda_v2 após DELETE coluna: {exc}")
-    return {"ok": True, "slug": row["slug"]}
+    return {"ok": True, "slug": (row_col or row_ea)["slug"]}
 
 
 @router.get("/v2/admin/entenda/tendencias", dependencies=[Depends(verificar_admin_token)])
