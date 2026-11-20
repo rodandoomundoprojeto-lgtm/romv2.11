@@ -2,9 +2,102 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-20T22:42:09Z",
-  "batch_id": "20261120-2241",
+  "updatedAt": "2026-11-20T23:42:30Z",
+  "batch_id": "20261120-2342",
   "temas_ativos": [
+    {
+      "slug": "austria-denuncia-ataque-hacker-contra-site-do-ministerio-das-relacoes-exteriores",
+      "status": "novo",
+      "categoria": "Geopolitica_Relacoes",
+      "ttl_horas": 18,
+      "expires_at": "2026-11-21T17:02:11Z",
+      "updated_at": "2026-11-20T23:02:11Z",
+      "fontes_urls": [
+        "https://g1.globo.com/mundo/noticia/2026/11/20/austria-site-de-ministerio-ataque-hacker.ghtml"
+      ],
+      "titulo_tema": "Áustria denuncia ataque hacker contra site do Ministério das Relações Exteriores",
+      "resumo_pulso": "Segundo reportado pelo G1 Mundo com informações oficiais do governo austríaco, o site do Ministério das Relações Exteriores da Áustria foi alvo de um ataque hacker que comprometeu dados de contato de servidores. Autoridades investigam a origem do ciberatarde sem confirmação de autoria.",
+      "sintese_nerd": "Aumento de alertas de cibersegurança em órgãos governamentais diplomáticos na Europa.",
+      "titulo_curto": "Áustria denuncia ataque hacker contra site do Ministério das Relações Exteriores",
+      "rota_editoria": "/radar",
+      "palavras_chave": [
+        "áustria",
+        "ataque hacker",
+        "cibersegurança",
+        "ministério das relações exteriores"
+      ],
+      "urgencia_score": 85,
+      "data_publicacao": "2026-11-20T22:33:30Z",
+      "gatilho_vitrine": "Segundo reportado pelo G1 Mundo com informações oficiais do governo austríaco, o site do Ministério das Relações Exteriores da Áustria foi alvo de um ataque hacker que comprometeu dados de contato de servidores. Autoridades investigam a origem do ciberatarde sem confirmação de autoria.",
+      "impacto_pratico": "Aumento de alertas de cibersegurança em órgãos governamentais diplomáticos na Europa.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "G1 Mundo"
+      ],
+      "relevancia_score": 83,
+      "paises_envolvidos": [
+        "AT"
+      ],
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "áustria",
+        "ataque hacker",
+        "cibersegurança",
+        "ministério das relações exteriores"
+      ]
+    },
+    {
+      "slug": "parlamentares-eua-pressionam-por-regras-mais-rigidas-exportacao-chips-ia",
+      "status": "novo",
+      "categoria": "Economia_Comercio",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-21T23:02:11Z",
+      "updated_at": "2026-11-20T23:02:11Z",
+      "fontes_urls": [
+        "https://www.aljazeera.com/economy/2026/11/20/us-lawmakers-push-for-tougher-ai-chip-rules-amid-china-export-crackdown?traffic_source=rss"
+      ],
+      "titulo_tema": "Congressistas nos EUA pressionam por restrições severas ao acesso chinês a chips de IA",
+      "resumo_pulso": "Segundo noticiado pela Al Jazeera English, parlamentares dos Estados Unidos pressionam o governo a endurecer regras sobre o acesso remoto a processadores avançados de inteligência artificial por entidades chinesas. A medida visa fechar brechas na política de controle de exportação tecnológica.",
+      "sintese_nerd": "Possíveis novos atritos comerciais entre EUA e China e novos limites para cadeias globais de suprimento de semicondutores.",
+      "titulo_curto": "Congressistas nos EUA pressionam por restrições severas ao acesso chinês a chips de IA",
+      "rota_editoria": "/economia",
+      "palavras_chave": [
+        "chips de ia",
+        "eua",
+        "china",
+        "exportação",
+        "tecnologia"
+      ],
+      "urgencia_score": 86,
+      "data_publicacao": "2026-11-20T22:15:07Z",
+      "gatilho_vitrine": "Segundo noticiado pela Al Jazeera English, parlamentares dos Estados Unidos pressionam o governo a endurecer regras sobre o acesso remoto a processadores avançados de inteligência artificial por entidades chinesas. A medida visa fechar brechas na política de controle de exportação tecnológica.",
+      "impacto_pratico": "Possíveis novos atritos comerciais entre EUA e China e novos limites para cadeias globais de suprimento de semicondutores.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "Al Jazeera English"
+      ],
+      "relevancia_score": 88,
+      "paises_envolvidos": [
+        "US",
+        "CN"
+      ],
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "chips de ia",
+        "eua",
+        "china",
+        "exportação",
+        "tecnologia"
+      ]
+    },
     {
       "slug": "bolha-ia-nasdaq-desaba-acoes-anthropic-nvidia",
       "status": "novo",
@@ -156,51 +249,97 @@
       ]
     },
     {
-      "slug": "desigualdade-racial-pre-natal-bebes-pretos-sus",
-      "titulo_tema": "Vulnerabilidade em casos de violência e dados do SUS evidenciam desigualdades raciais",
-      "titulo_curto": "Vulnerabilidade em casos de violência e dados do SUS evidenciam desigualdades raciais",
+      "slug": "tiktok-lanca-ferramentas-para-rotular-conteudo-ia-e-deepfakes",
       "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Cultura",
       "categoria": "Sociedade_Cultura",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-21T23:02:11Z",
+      "updated_at": "2026-11-20T23:02:11Z",
+      "fontes_urls": [
+        "https://g1.globo.com/tecnologia/noticia/2026/11/20/tiktok-ferramentas-para-identificar-ia-e-deepfakes.ghtml"
+      ],
+      "titulo_tema": "TikTok lança ferramentas automáticas para identificar e rotular deepfakes e conteúdo de IA",
+      "resumo_pulso": "Conforme noticiado pelo G1 tecnologia, a rede social TikTok colocou em funcionamento duas ferramentas destinadas a identificar vídeos e imagens gerados por inteligência artificial. A iniciativa responde a exigências por transparência e combate à desinformação visual.",
+      "sintese_nerd": "Mudança no consumo de mídias e nova sinalização obrigatória para criadores digitais.",
+      "titulo_curto": "TikTok lança ferramentas automáticas para identificar e rotular deepfakes e conteúdo de IA",
+      "rota_editoria": "/cultura",
+      "palavras_chave": [
+        "tiktok",
+        "deepfakes",
+        "inteligência artificial",
+        "redes sociais"
+      ],
+      "urgencia_score": 81,
+      "data_publicacao": "2026-11-20T21:30:05Z",
+      "gatilho_vitrine": "Conforme noticiado pelo G1 tecnologia, a rede social TikTok colocou em funcionamento duas ferramentas destinadas a identificar vídeos e imagens gerados por inteligência artificial. A iniciativa responde a exigências por transparência e combate à desinformação visual.",
+      "impacto_pratico": "Mudança no consumo de mídias e nova sinalização obrigatória para criadores digitais.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "G1 Mundo"
+      ],
+      "relevancia_score": 83,
+      "paises_envolvidos": [
+        "US",
+        "BR"
+      ],
+      "categoria_primaria": "Cultura",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
       ],
-      "rota_editoria": "/cultura",
-      "relevancia_score": 88,
-      "urgencia_score": 85,
+      "palavras_chave_busca": [
+        "tiktok",
+        "deepfakes",
+        "inteligência artificial",
+        "redes sociais"
+      ]
+    },
+    {
+      "slug": "desigualdade-racial-pre-natal-bebes-pretos-sus",
+      "status": "novo",
+      "categoria": "Sociedade_Cultura",
       "ttl_horas": 24,
       "expires_at": "2026-11-21T21:42:32Z",
-      "palavras_chave_busca": [
-        "saúde",
-        "desigualdade racial",
-        "sus",
-        "direitos humanos"
+      "updated_at": "2026-11-20T22:42:09Z",
+      "fontes_urls": [
+        "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-11/renda-de-73-de-negras-vitimas-de-violencia-e-de-ate-2-salarios-minimo",
+        "https://g1.globo.com/politica/noticia/2026/11/20/maes-pretas-fazem-menos-consultas-de-pre-natal-e-seus-bebes-tem-mais-chance-de-nascer-com-baixo-peso-mostram-dados-do-sus.ghtml"
       ],
+      "titulo_tema": "Vulnerabilidade em casos de violência e dados do SUS evidenciam desigualdades raciais",
+      "resumo_pulso": "Segundo dados divulgados pela Agência Brasil e pelo G1 Política, 73% das mulheres negras vítimas de violência doméstica vivem com renda familiar de até dois salários mínimos, índice superior ao verificado entre mulheres brancas. Estudos complementares do Datasus apontam ainda menores taxas de pré-natal e maior incidência de prematuridade entre recém-nascidos negros.",
+      "sintese_nerd": "Direciona o foco de políticas públicas para a mitigação de disparidades socioeconômicas e de saúde.",
+      "titulo_curto": "Vulnerabilidade em casos de violência e dados do SUS evidenciam desigualdades raciais",
+      "rota_editoria": "/cultura",
       "palavras_chave": [
         "saúde",
         "desigualdade racial",
         "sus",
         "direitos humanos"
       ],
+      "urgencia_score": 85,
+      "data_publicacao": "2026-11-20T21:28:06Z",
       "gatilho_vitrine": "Segundo dados divulgados pela Agência Brasil e pelo G1 Política, 73% das mulheres negras vítimas de violência doméstica vivem com renda familiar de até dois salários mínimos, índice superior ao verificado entre mulheres brancas. Estudos complementares do Datasus apontam ainda menores taxas de pré-natal e maior incidência de prematuridade entre recém-nascidos negros.",
-      "resumo_pulso": "Segundo dados divulgados pela Agência Brasil e pelo G1 Política, 73% das mulheres negras vítimas de violência doméstica vivem com renda familiar de até dois salários mínimos, índice superior ao verificado entre mulheres brancas. Estudos complementares do Datasus apontam ainda menores taxas de pré-natal e maior incidência de prematuridade entre recém-nascidos negros.",
-      "sintese_nerd": "Direciona o foco de políticas públicas para a mitigação de disparidades socioeconômicas e de saúde.",
       "impacto_pratico": "Direciona o foco de políticas públicas para a mitigação de disparidades socioeconômicas e de saúde.",
-      "paises_envolvidos": [
-        "BR"
-      ],
+      "origem_pipeline": "pulso",
       "veiculos_origem": [
         "Agência Brasil (EBC)",
         "G1 Política"
       ],
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-11/renda-de-73-de-negras-vitimas-de-violencia-e-de-ate-2-salarios-minimo",
-        "https://g1.globo.com/politica/noticia/2026/11/20/maes-pretas-fazem-menos-consultas-de-pre-natal-e-seus-bebes-tem-mais-chance-de-nascer-com-baixo-peso-mostram-dados-do-sus.ghtml"
+      "relevancia_score": 88,
+      "paises_envolvidos": [
+        "BR"
       ],
-      "data_publicacao": "2026-11-20T21:28:06Z",
-      "updated_at": "2026-11-20T22:42:09Z"
+      "categoria_primaria": "Cultura",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "saúde",
+        "desigualdade racial",
+        "sus",
+        "direitos humanos"
+      ]
     },
     {
       "slug": "senado-frances-aprova-lei-presuncao-legalidade-disparos-policiais",
@@ -251,51 +390,52 @@
     },
     {
       "slug": "brasil-cobra-revisao-bancos-itaipu-crise-ueno-bank-paraguai",
+      "titulo_tema": "Conmebol e Brasil cobram revisão após quebra de banco paraguaio",
+      "titulo_curto": "Conmebol e Brasil cobram revisão após quebra de banco paraguaio",
       "status": "novo",
-      "categoria": "Economia_Comercio",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-21T21:42:32Z",
-      "updated_at": "2026-11-20T21:42:32Z",
-      "fontes_urls": [
-        "https://www.poder360.com.br/poder-infra/brasil-cobra-revisao-de-bancos-da-itaipu-apos-crise-no-paraguai/"
-      ],
-      "titulo_tema": "Brasil exige revisão de custódia bancária de Itaipu após liquidação do Ueno Bank no Paraguai",
-      "resumo_pulso": "Segundo apuração do Poder360, o governo brasileiro solicitou formalmente a revisão das regras para custódia de fundos da usina de Itaipu Binacional. A medida ocorre após a falência do Ueno Bank no Paraguai, instituição que retinha aproximadamente R$ 1 bilhão em recursos da entidade.",
-      "sintese_nerd": "Garantia de segurança financeira para os aportes estatais e para a negociação da tarifa de energia entre Brasil e Paraguai.",
-      "titulo_curto": "Brasil exige revisão de custódia bancária de Itaipu após liquidação do Ueno Bank no Paraguai",
-      "rota_editoria": "/economia",
-      "palavras_chave": [
-        "itaipu",
-        "ueno bank",
-        "paraguai",
-        "brasil",
-        "energia"
-      ],
-      "urgencia_score": 83,
-      "data_publicacao": "2026-11-20T21:11:02Z",
-      "gatilho_vitrine": "Segundo apuração do Poder360, o governo brasileiro solicitou formalmente a revisão das regras para custódia de fundos da usina de Itaipu Binacional. A medida ocorre após a falência do Ueno Bank no Paraguai, instituição que retinha aproximadamente R$ 1 bilhão em recursos da entidade.",
-      "impacto_pratico": "Garantia de segurança financeira para os aportes estatais e para a negociação da tarifa de energia entre Brasil e Paraguai.",
       "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "Poder360"
-      ],
-      "relevancia_score": 84,
-      "paises_envolvidos": [
-        "BR",
-        "PY"
-      ],
       "categoria_primaria": "Economia",
+      "categoria": "Economia_Comercio",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
       ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 86,
+      "urgencia_score": 87,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-21T21:42:32Z",
       "palavras_chave_busca": [
-        "itaipu",
         "ueno bank",
         "paraguai",
-        "brasil",
-        "energia"
-      ]
+        "conmebol",
+        "itaipu",
+        "crise financeira"
+      ],
+      "palavras_chave": [
+        "ueno bank",
+        "paraguai",
+        "conmebol",
+        "itaipu",
+        "crise financeira"
+      ],
+      "gatilho_vitrine": "Segundo apuração do G1 Economia e dados da Conmebol, recursos milionários da entidade esportiva e de Itaipu estavam aplicados no Ueno Bank, instituição liquidada pelo Banco Central do Paraguai após severa crise financeira. O episódio intensifica o debate sobre custódia de fundos internacionais na região.",
+      "resumo_pulso": "Segundo apuração do G1 Economia e dados da Conmebol, recursos milionários da entidade esportiva e de Itaipu estavam aplicados no Ueno Bank, instituição liquidada pelo Banco Central do Paraguai após severa crise financeira. O episódio intensifica o debate sobre custódia de fundos internacionais na região.",
+      "sintese_nerd": "Afeta a segurança financeira de fundos binacionais e entidades internacionais com exposições no sistema financeiro paraguaio.",
+      "impacto_pratico": "Afeta a segurança financeira de fundos binacionais e entidades internacionais com exposições no sistema financeiro paraguaio.",
+      "paises_envolvidos": [
+        "BR",
+        "PY"
+      ],
+      "veiculos_origem": [
+        "G1 Economia",
+        "Poder360"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/economia/noticia/2026/11/20/conmebol-recursos-banco-ueno.ghtml"
+      ],
+      "data_publicacao": "2026-11-20T21:11:02Z",
+      "updated_at": "2026-11-20T23:42:30Z"
     },
     {
       "slug": "trump-ameaca-taxar-empresas-eua-centros-dados-ia-exterior",
@@ -491,50 +631,49 @@
     },
     {
       "slug": "bolsonaro-vai-a-hospital-apos-sentir-dores-abdominais",
-      "titulo_tema": "Bolsonaro apresenta obstrução intestinal quase total e segue em observação médica",
-      "titulo_curto": "Bolsonaro apresenta obstrução intestinal quase total e segue em observação médica",
       "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Geopolitica_Radar",
       "categoria": "Geopolitica_Relacoes",
+      "ttl_horas": 12,
+      "expires_at": "2026-11-21T08:21:55Z",
+      "updated_at": "2026-11-20T23:02:11Z",
+      "fontes_urls": [
+        "https://www.poder360.com.br/poder-justica/bolsonaro-tem-obstrucao-quase-total-do-intestino-delgado-diz-medico/",
+        "https://www.poder360.com.br/poder-brasil/carlos-relata-impressao-horrivel-ao-ver-bolsonaro-internado/"
+      ],
+      "titulo_tema": "Boletim médico confirma obstrução intestinal quase total em Bolsonaro no DF Star",
+      "resumo_pulso": "Conforme boletins médicos divulgados pelo Poder360, o ex-presidente Jair Bolsonaro segue internado em Brasília com quadro de obstrução quase total no intestino delgado. A equipe médica informou que o estado é estável, mas permanece sob avaliação para eventual intervenção cirúrgica.",
+      "sintese_nerd": "Acompanhamento direto do estado de saúde do ex-mandatário e eventuais impactos em sua agenda e desdobramentos políticos.",
+      "titulo_curto": "Boletim médico confirma obstrução intestinal quase total em Bolsonaro no DF Star",
+      "rota_editoria": "/radar",
+      "palavras_chave": [
+        "jair bolsonaro",
+        "hospital df star",
+        "obstrução intestinal",
+        "boletim médico"
+      ],
+      "urgencia_score": 94,
+      "data_publicacao": "2026-11-20T20:15:13Z",
+      "gatilho_vitrine": "Conforme boletins médicos divulgados pelo Poder360, o ex-presidente Jair Bolsonaro segue internado em Brasília com quadro de obstrução quase total no intestino delgado. A equipe médica informou que o estado é estável, mas permanece sob avaliação para eventual intervenção cirúrgica.",
+      "impacto_pratico": "Acompanhamento direto do estado de saúde do ex-mandatário e eventuais impactos em sua agenda e desdobramentos políticos.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "Poder360"
+      ],
+      "relevancia_score": 92,
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "categoria_primaria": "Geopolitica_Radar",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
       ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 92,
-      "urgencia_score": 94,
-      "ttl_horas": 12,
-      "expires_at": "2026-11-21T08:21:55Z",
       "palavras_chave_busca": [
         "jair bolsonaro",
-        "saúde",
-        "brasília",
-        "política no brasil"
-      ],
-      "palavras_chave": [
-        "jair bolsonaro",
-        "saúde",
-        "brasília",
-        "política no brasil"
-      ],
-      "gatilho_vitrine": "Conforme boletins divulgados pelo Poder360 e pelo G1, o ex-presidente Jair Bolsonaro foi internado após apresentar dores abdominais decorrentes de uma obstrução quase total no intestino delgado. A equipe médica informou que ele está estável, mas permanece sem previsão de alta e sob avaliação sobre a necessidade de procedimento cirúrgico.",
-      "resumo_pulso": "Conforme boletins divulgados pelo Poder360 e pelo G1, o ex-presidente Jair Bolsonaro foi internado após apresentar dores abdominais decorrentes de uma obstrução quase total no intestino delgado. A equipe médica informou que ele está estável, mas permanece sem previsão de alta e sob avaliação sobre a necessidade de procedimento cirúrgico.",
-      "sintese_nerd": "Movimenta o cenário político nacional e atrai atenção para a agenda de apoiadores e oposição em Brasília.",
-      "impacto_pratico": "Movimenta o cenário político nacional e atrai atenção para a agenda de apoiadores e oposição em Brasília.",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "veiculos_origem": [
-        "Poder360",
-        "G1 Política"
-      ],
-      "fontes_urls": [
-        "https://www.poder360.com.br/poder-justica/bolsonaro-tem-obstrucao-quase-total-do-intestino-delgado-diz-medico/",
-        "https://g1.globo.com/politica/noticia/2026/11/20/bolsonaro-hospital-apos-sentir-dores-abdominais.ghtml"
-      ],
-      "data_publicacao": "2026-11-20T20:15:13Z",
-      "updated_at": "2026-11-20T22:42:09Z"
+        "hospital df star",
+        "obstrução intestinal",
+        "boletim médico"
+      ]
     },
     {
       "slug": "denuncias-de-racismo-no-brasil-atingem-recorde-historico",
@@ -724,158 +863,84 @@
         "nikhil gupta",
         "extradição"
       ]
-    },
-    {
-      "slug": "temporal-no-rio-grande-do-sul-provoca-mortes-e-destruicao",
-      "titulo_tema": "Tempestades severas deixam rastro de destruição no Rio Grande do Sul e litoral de SP",
-      "titulo_curto": "Tempestades severas deixam rastro de destruição no Rio Grande do Sul e litoral de SP",
-      "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Geopolitica_Radar",
-      "categoria": "Ciencia_Clima",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 87,
-      "urgencia_score": 88,
-      "ttl_horas": 18,
-      "expires_at": "2026-11-21T14:45:51Z",
-      "palavras_chave_busca": [
-        "temporal",
-        "rio grande do sul",
-        "são paulo",
-        "defesa civil",
-        "clima"
-      ],
-      "palavras_chave": [
-        "temporal",
-        "rio grande do sul",
-        "são paulo",
-        "defesa civil",
-        "clima"
-      ],
-      "gatilho_vitrine": "Conforme apuração da BBC News Brasil e do InfoMoney, temporais acompanhados de granizo causaram estragos severos e mortes no Rio Grande do Sul, enquanto o litoral norte de São Paulo registra alertas de chuvas fortes. A Defesa Civil atua no atendimento a comunidades afetadas pelas intempéries.",
-      "resumo_pulso": "Conforme apuração da BBC News Brasil e do InfoMoney, temporais acompanhados de granizo causaram estragos severos e mortes no Rio Grande do Sul, enquanto o litoral norte de São Paulo registra alertas de chuvas fortes. A Defesa Civil atua no atendimento a comunidades afetadas pelas intempéries.",
-      "sintese_nerd": "Riscos logísticos, interrupções no fornecimento de energia e danos a infraestruturas locais.",
-      "impacto_pratico": "Riscos logísticos, interrupções no fornecimento de energia e danos a infraestruturas locais.",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "veiculos_origem": [
-        "BBC News Brasil",
-        "InfoMoney"
-      ],
-      "fontes_urls": [
-        "https://www.bbc.com/portuguese/articles/cqdr1xmyg3kzo?at_medium=RSS&at_campaign=rss",
-        "https://www.infomoney.com.br/brasil/chuvas-fortes-atingem-litoral-norte-e-cidades-do-interior-de-sp-veja-previsao/"
-      ],
-      "data_publicacao": "2026-11-20T19:28:00Z",
-      "updated_at": "2026-11-20T22:42:09Z"
-    },
-    {
-      "slug": "russia-intensifica-ataques-aereos-contra-infraestrutura-e-pontes-em-kiev",
-      "titulo_tema": "Ataques russos deixam mortos e feridos em Kryvyi Rih e elevam tensão com queda de mísseis na Polônia",
-      "titulo_curto": "Ataques russos deixam mortos e feridos em Kryvyi Rih e elevam tensão com queda de mísseis na Polônia",
-      "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Geopolitica_Radar",
-      "categoria": "Geopolitica_Relacoes",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 95,
-      "urgencia_score": 97,
-      "ttl_horas": 12,
-      "expires_at": "2026-11-21T07:58:05Z",
-      "palavras_chave_busca": [
-        "ucrânia",
-        "rússia",
-        "kryvyi rih",
-        "polônia",
-        "otan"
-      ],
-      "palavras_chave": [
-        "ucrânia",
-        "rússia",
-        "kryvyi rih",
-        "polônia",
-        "otan"
-      ],
-      "gatilho_vitrine": "Segundo apuração da Ukrinform e do The Kyiv Independent, novos ataques balísticos russos atingiram a cidade de Kryvyi Rih, resultando em mortes, incluindo crianças, e dezenas de feridos. Paralelamente, analistas e canais independentes repercutem a queda recente de fragmentos em território polonês, mantendo o alerta nas fronteiras da Otan.",
-      "resumo_pulso": "Segundo apuração da Ukrinform e do The Kyiv Independent, novos ataques balísticos russos atingiram a cidade de Kryvyi Rih, resultando em mortes, incluindo crianças, e dezenas de feridos. Paralelamente, analistas e canais independentes repercutem a queda recente de fragmentos em território polonês, mantendo o alerta nas fronteiras da Otan.",
-      "sintese_nerd": "Aumento do risco de escalada militar no Leste Europeu e maior volatilidade nos mercados globais de energia.",
-      "impacto_pratico": "Aumento do risco de escalada militar no Leste Europeu e maior volatilidade nos mercados globais de energia.",
-      "paises_envolvidos": [
-        "UA",
-        "RU",
-        "PL"
-      ],
-      "veiculos_origem": [
-        "Ukrinform",
-        "The Kyiv Independent",
-        "GabaritaGeo"
-      ],
-      "fontes_urls": [
-        "https://www.ukrinform.net/rubric-ato/4187003-two-killed-including-child-in-russian-strike-on-kryvyi-rih-injury-toll-rises-to-42.html",
-        "https://kyivindependent.com/russian-ballistic-missile-strikes-on-kryvyi-rih-kill-7-year-old-paramedic-injure-42-others-in-double-tap-attack/"
-      ],
-      "data_publicacao": "2026-11-20T19:20:00Z",
-      "updated_at": "2026-11-20T22:42:09Z"
-    },
-    {
-      "slug": "soldados-salvadorenhos-morrem-em-explosao-durante-missao-no-haiti",
-      "status": "novo",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 12,
-      "expires_at": "2026-11-21T07:58:05Z",
-      "updated_at": "2026-11-20T19:58:05Z",
-      "fontes_urls": [
-        "https://g1.globo.com/mundo/noticia/2026/11/20/salvadorenhos-morte-haiti.ghtml"
-      ],
-      "titulo_tema": "Dois militares salvadorenhos morrem em explosão durante missão no Haiti",
-      "resumo_pulso": "Conforme anunciado pelo Exército de El Salvador e reportado pelo G1 Mundo, dois soldados do país faleceram e outros dois sofreram ferimentos após uma explosão com artefatos de demolição no Haiti. A equipe atuava no suporte à segurança e estabilização de infraestruturas locais.",
-      "sintese_nerd": "A ocorrência pode reavaliar os protocolos operacionais da missão multinacional instalada no Haiti.",
-      "titulo_curto": "Dois militares salvadorenhos morrem em explosão durante missão no Haiti",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "haiti",
-        "el salvador",
-        "exército",
-        "missão de paz",
-        "explosão"
-      ],
-      "urgencia_score": 81,
-      "data_publicacao": "2026-11-20T19:18:39Z",
-      "gatilho_vitrine": "Conforme anunciado pelo Exército de El Salvador e reportado pelo G1 Mundo, dois soldados do país faleceram e outros dois sofreram ferimentos após uma explosão com artefatos de demolição no Haiti. A equipe atuava no suporte à segurança e estabilização de infraestruturas locais.",
-      "impacto_pratico": "A ocorrência pode reavaliar os protocolos operacionais da missão multinacional instalada no Haiti.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "G1 Mundo"
-      ],
-      "relevancia_score": 79,
-      "paises_envolvidos": [
-        "SV",
-        "HT"
-      ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "haiti",
-        "el salvador",
-        "exército",
-        "missão de paz",
-        "explosão"
-      ]
     }
   ],
   "noticias_quentes": [
+    {
+      "slug": "austria-denuncia-ataque-hacker-contra-site-do-ministerio-das-relacoes-exteriores",
+      "categoria": "Geopolitica_Relacoes",
+      "ttl_horas": 18,
+      "expires_at": "2026-11-21T17:02:11Z",
+      "updated_at": "2026-11-20T23:02:11Z",
+      "fontes_urls": [
+        "https://g1.globo.com/mundo/noticia/2026/11/20/austria-site-de-ministerio-ataque-hacker.ghtml"
+      ],
+      "resumo_pulso": "Segundo reportado pelo G1 Mundo com informações oficiais do governo austríaco, o site do Ministério das Relações Exteriores da Áustria foi alvo de um ataque hacker que comprometeu dados de contato de servidores. Autoridades investigam a origem do ciberatarde sem confirmação de autoria.",
+      "titulo_curto": "Áustria denuncia ataque hacker contra site do Ministério das Relações Exteriores",
+      "palavras_chave": [
+        "Áustria",
+        "ataque hacker",
+        "cibersegurança",
+        "Ministério das Relações Exteriores"
+      ],
+      "urgencia_score": 85,
+      "data_publicacao": "2026-11-20T22:33:30Z",
+      "impacto_pratico": "Aumento de alertas de cibersegurança em órgãos governamentais diplomáticos na Europa.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "G1 Mundo"
+      ],
+      "relevancia_score": 83,
+      "horas_em_destaque": 8,
+      "paises_envolvidos": [
+        "AT"
+      ],
+      "links_internos_relacionados": []
+    },
+    {
+      "slug": "parlamentares-eua-pressionam-por-regras-mais-rigidas-exportacao-chips-ia",
+      "categoria": "Economia_Comercio",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-21T23:02:11Z",
+      "updated_at": "2026-11-20T23:02:11Z",
+      "fontes_urls": [
+        "https://www.aljazeera.com/economy/2026/11/20/us-lawmakers-push-for-tougher-ai-chip-rules-amid-china-export-crackdown?traffic_source=rss"
+      ],
+      "resumo_pulso": "Segundo noticiado pela Al Jazeera English, parlamentares dos Estados Unidos pressionam o governo a endurecer regras sobre o acesso remoto a processadores avançados de inteligência artificial por entidades chinesas. A medida visa fechar brechas na política de controle de exportação tecnológica.",
+      "titulo_curto": "Congressistas nos EUA pressionam por restrições severas ao acesso chinês a chips de IA",
+      "palavras_chave": [
+        "chips de IA",
+        "EUA",
+        "China",
+        "exportação",
+        "tecnologia"
+      ],
+      "urgencia_score": 86,
+      "data_publicacao": "2026-11-20T22:15:07Z",
+      "impacto_pratico": "Possíveis novos atritos comerciais entre EUA e China e novos limites para cadeias globais de suprimento de semicondutores.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Al Jazeera English"
+      ],
+      "relevancia_score": 88,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "US",
+        "CN"
+      ],
+      "links_internos_relacionados": [
+        {
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-sancao-internacional",
+          "motivo_conexao": "Entendimento sobre restrições tecnológicas e comerciais usadas no cenário internacional.",
+          "titulo_existente": "O que é uma sanção internacional?"
+        },
+        {
+          "url_existente": "https://www.rodandoomundo.com.br/politica/estados-unidos",
+          "motivo_conexao": "Acompanhamento das decisões legislativas e comerciais em Washington.",
+          "titulo_existente": "Política nos Estados Unidos"
+        }
+      ]
+    },
     {
       "slug": "gta-6-movimenta-3-bilhoes-de-dolares-no-primeiro-dia-de-vendas",
       "categoria": "Economia_Comercio",
@@ -908,43 +973,75 @@
       "links_internos_relacionados": []
     },
     {
-      "slug": "desigualdade-racial-pre-natal-bebes-pretos-sus",
-      "titulo_curto": "Vulnerabilidade em casos de violência e dados do SUS evidenciam desigualdades raciais",
-      "resumo_pulso": "Segundo dados divulgados pela Agência Brasil e pelo G1 Política, 73% das mulheres negras vítimas de violência doméstica vivem com renda familiar de até dois salários mínimos, índice superior ao verificado entre mulheres brancas. Estudos complementares do Datasus apontam ainda menores taxas de pré-natal e maior incidência de prematuridade entre recém-nascidos negros.",
-      "impacto_pratico": "Direciona o foco de políticas públicas para a mitigação de disparidades socioeconômicas e de saúde.",
+      "slug": "tiktok-lanca-ferramentas-para-rotular-conteudo-ia-e-deepfakes",
       "categoria": "Sociedade_Cultura",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-21T23:02:11Z",
+      "updated_at": "2026-11-20T23:02:11Z",
+      "fontes_urls": [
+        "https://g1.globo.com/tecnologia/noticia/2026/11/20/tiktok-ferramentas-para-identificar-ia-e-deepfakes.ghtml"
+      ],
+      "resumo_pulso": "Conforme noticiado pelo G1 tecnologia, a rede social TikTok colocou em funcionamento duas ferramentas destinadas a identificar vídeos e imagens gerados por inteligência artificial. A iniciativa responde a exigências por transparência e combate à desinformação visual.",
+      "titulo_curto": "TikTok lança ferramentas automáticas para identificar e rotular deepfakes e conteúdo de IA",
+      "palavras_chave": [
+        "TikTok",
+        "deepfakes",
+        "inteligência artificial",
+        "redes sociais"
+      ],
+      "urgencia_score": 81,
+      "data_publicacao": "2026-11-20T21:30:05Z",
+      "impacto_pratico": "Mudança no consumo de mídias e nova sinalização obrigatória para criadores digitais.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "G1 Mundo"
+      ],
+      "relevancia_score": 83,
+      "horas_em_destaque": 10,
       "paises_envolvidos": [
+        "US",
         "BR"
       ],
-      "urgencia_score": 85,
-      "relevancia_score": 88,
-      "nivel_confianca": "alta",
+      "links_internos_relacionados": []
+    },
+    {
+      "slug": "desigualdade-racial-pre-natal-bebes-pretos-sus",
+      "categoria": "Sociedade_Cultura",
       "ttl_horas": 24,
-      "horas_em_destaque": 12,
-      "veiculos_origem": [
-        "Agência Brasil (EBC)",
-        "G1 Política"
-      ],
+      "expires_at": "2026-11-21T21:42:32Z",
+      "updated_at": "2026-11-20T22:42:09Z",
       "fontes_urls": [
         "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-11/renda-de-73-de-negras-vitimas-de-violencia-e-de-ate-2-salarios-minimo",
         "https://g1.globo.com/politica/noticia/2026/11/20/maes-pretas-fazem-menos-consultas-de-pre-natal-e-seus-bebes-tem-mais-chance-de-nascer-com-baixo-peso-mostram-dados-do-sus.ghtml"
       ],
+      "resumo_pulso": "Segundo dados divulgados pela Agência Brasil e pelo G1 Política, 73% das mulheres negras vítimas de violência doméstica vivem com renda familiar de até dois salários mínimos, índice superior ao verificado entre mulheres brancas. Estudos complementares do Datasus apontam ainda menores taxas de pré-natal e maior incidência de prematuridade entre recém-nascidos negros.",
+      "titulo_curto": "Vulnerabilidade em casos de violência e dados do SUS evidenciam desigualdades raciais",
       "palavras_chave": [
         "Saúde",
         "Desigualdade Racial",
         "SUS",
         "Direitos Humanos"
       ],
+      "urgencia_score": 85,
       "data_publicacao": "2026-11-20T21:28:06Z",
+      "impacto_pratico": "Direciona o foco de políticas públicas para a mitigação de disparidades socioeconômicas e de saúde.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Agência Brasil (EBC)",
+        "G1 Política"
+      ],
+      "relevancia_score": 88,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "BR"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "Movimentos sociais e parlamentares debatem investimentos em saúde, educação e transição ecológica",
           "url_existente": "https://www.rodandoomundo.com.br/saude",
-          "motivo_conexao": "Complementa a leitura sobre políticas públicas de saúde e atendimento à população vulnerável."
+          "motivo_conexao": "Complementa a leitura sobre políticas públicas de saúde e atendimento à população vulnerável.",
+          "titulo_existente": "Movimentos sociais e parlamentares debatem investimentos em saúde, educação e transição ecológica"
         }
-      ],
-      "expires_at": "2026-11-21T21:42:32Z",
-      "updated_at": "2026-11-20T22:42:09Z"
+      ]
     },
     {
       "slug": "senado-frances-aprova-lei-presuncao-legalidade-disparos-policiais",
@@ -980,36 +1077,43 @@
     },
     {
       "slug": "brasil-cobra-revisao-bancos-itaipu-crise-ueno-bank-paraguai",
+      "titulo_curto": "Conmebol e Brasil cobram revisão após quebra de banco paraguaio",
+      "resumo_pulso": "Segundo apuração do G1 Economia e dados da Conmebol, recursos milionários da entidade esportiva e de Itaipu estavam aplicados no Ueno Bank, instituição liquidada pelo Banco Central do Paraguai após severa crise financeira. O episódio intensifica o debate sobre custódia de fundos internacionais na região.",
+      "impacto_pratico": "Afeta a segurança financeira de fundos binacionais e entidades internacionais com exposições no sistema financeiro paraguaio.",
       "categoria": "Economia_Comercio",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-21T21:42:32Z",
-      "updated_at": "2026-11-20T21:42:32Z",
-      "fontes_urls": [
-        "https://www.poder360.com.br/poder-infra/brasil-cobra-revisao-de-bancos-da-itaipu-apos-crise-no-paraguai/"
-      ],
-      "resumo_pulso": "Segundo apuração do Poder360, o governo brasileiro solicitou formalmente a revisão das regras para custódia de fundos da usina de Itaipu Binacional. A medida ocorre após a falência do Ueno Bank no Paraguai, instituição que retinha aproximadamente R$ 1 bilhão em recursos da entidade.",
-      "titulo_curto": "Brasil exige revisão de custódia bancária de Itaipu após liquidação do Ueno Bank no Paraguai",
-      "palavras_chave": [
-        "Itaipu",
-        "Ueno Bank",
-        "Paraguai",
-        "Brasil",
-        "Energia"
-      ],
-      "urgencia_score": 83,
-      "data_publicacao": "2026-11-20T21:11:02Z",
-      "impacto_pratico": "Garantia de segurança financeira para os aportes estatais e para a negociação da tarifa de energia entre Brasil e Paraguai.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Poder360"
-      ],
-      "relevancia_score": 84,
-      "horas_em_destaque": 10,
       "paises_envolvidos": [
         "BR",
         "PY"
       ],
-      "links_internos_relacionados": []
+      "urgencia_score": 87,
+      "relevancia_score": 86,
+      "nivel_confianca": "alta",
+      "ttl_horas": 24,
+      "horas_em_destaque": 12,
+      "veiculos_origem": [
+        "G1 Economia",
+        "Poder360"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/economia/noticia/2026/11/20/conmebol-recursos-banco-ueno.ghtml"
+      ],
+      "palavras_chave": [
+        "Ueno Bank",
+        "Paraguai",
+        "Conmebol",
+        "Itaipu",
+        "crise financeira"
+      ],
+      "data_publicacao": "2026-11-20T21:11:02Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "Economia no Brasil",
+          "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
+          "motivo_conexao": "Complementa a análise sobre impactos financeiros internacionais na economia brasileira."
+        }
+      ],
+      "expires_at": "2026-11-21T21:42:32Z",
+      "updated_at": "2026-11-20T23:42:30Z"
     },
     {
       "slug": "trump-ameaca-taxar-empresas-eua-centros-dados-ia-exterior",
@@ -1169,42 +1273,41 @@
     },
     {
       "slug": "bolsonaro-vai-a-hospital-apos-sentir-dores-abdominais",
-      "titulo_curto": "Bolsonaro apresenta obstrução intestinal quase total e segue em observação médica",
-      "resumo_pulso": "Conforme boletins divulgados pelo Poder360 e pelo G1, o ex-presidente Jair Bolsonaro foi internado após apresentar dores abdominais decorrentes de uma obstrução quase total no intestino delgado. A equipe médica informou que ele está estável, mas permanece sem previsão de alta e sob avaliação sobre a necessidade de procedimento cirúrgico.",
-      "impacto_pratico": "Movimenta o cenário político nacional e atrai atenção para a agenda de apoiadores e oposição em Brasília.",
       "categoria": "Geopolitica_Relacoes",
+      "ttl_horas": 12,
+      "expires_at": "2026-11-21T08:21:55Z",
+      "updated_at": "2026-11-20T23:02:11Z",
+      "fontes_urls": [
+        "https://www.poder360.com.br/poder-justica/bolsonaro-tem-obstrucao-quase-total-do-intestino-delgado-diz-medico/",
+        "https://www.poder360.com.br/poder-brasil/carlos-relata-impressao-horrivel-ao-ver-bolsonaro-internado/"
+      ],
+      "resumo_pulso": "Conforme boletins médicos divulgados pelo Poder360, o ex-presidente Jair Bolsonaro segue internado em Brasília com quadro de obstrução quase total no intestino delgado. A equipe médica informou que o estado é estável, mas permanece sob avaliação para eventual intervenção cirúrgica.",
+      "titulo_curto": "Boletim médico confirma obstrução intestinal quase total em Bolsonaro no DF Star",
+      "palavras_chave": [
+        "Jair Bolsonaro",
+        "hospital DF Star",
+        "obstrução intestinal",
+        "boletim médico"
+      ],
+      "urgencia_score": 94,
+      "data_publicacao": "2026-11-20T20:15:13Z",
+      "impacto_pratico": "Acompanhamento direto do estado de saúde do ex-mandatário e eventuais impactos em sua agenda e desdobramentos políticos.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Poder360"
+      ],
+      "relevancia_score": 92,
+      "horas_em_destaque": 8,
       "paises_envolvidos": [
         "BR"
       ],
-      "urgencia_score": 94,
-      "relevancia_score": 92,
-      "nivel_confianca": "alta",
-      "ttl_horas": 12,
-      "horas_em_destaque": 12,
-      "veiculos_origem": [
-        "Poder360",
-        "G1 Política"
-      ],
-      "fontes_urls": [
-        "https://www.poder360.com.br/poder-justica/bolsonaro-tem-obstrucao-quase-total-do-intestino-delgado-diz-medico/",
-        "https://g1.globo.com/politica/noticia/2026/11/20/bolsonaro-hospital-apos-sentir-dores-abdominais.ghtml"
-      ],
-      "palavras_chave": [
-        "Jair Bolsonaro",
-        "Saúde",
-        "Brasília",
-        "Política no Brasil"
-      ],
-      "data_publicacao": "2026-11-20T20:15:13Z",
       "links_internos_relacionados": [
         {
-          "titulo_existente": "Política no Brasil",
           "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
-          "motivo_conexao": "Acompanha os desdobramentos políticos e a repercussão da internação no cenário nacional."
+          "motivo_conexao": "Acompanhamento dos desdobramentos políticos do cenário nacional.",
+          "titulo_existente": "Política no Brasil"
         }
-      ],
-      "expires_at": "2026-11-21T08:21:55Z",
-      "updated_at": "2026-11-20T22:42:09Z"
+      ]
     },
     {
       "slug": "denuncias-de-racismo-no-brasil-atingem-recorde-historico",
@@ -1361,86 +1464,78 @@
     },
     {
       "slug": "temporal-no-rio-grande-do-sul-provoca-mortes-e-destruicao",
-      "titulo_curto": "Tempestades severas deixam rastro de destruição no Rio Grande do Sul e litoral de SP",
-      "resumo_pulso": "Conforme apuração da BBC News Brasil e do InfoMoney, temporais acompanhados de granizo causaram estragos severos e mortes no Rio Grande do Sul, enquanto o litoral norte de São Paulo registra alertas de chuvas fortes. A Defesa Civil atua no atendimento a comunidades afetadas pelas intempéries.",
-      "impacto_pratico": "Riscos logísticos, interrupções no fornecimento de energia e danos a infraestruturas locais.",
+      "titulo_curto": "Sobe para 3 o número de mortes após temporais severos no Rio Grande do Sul",
+      "resumo_pulso": "Conforme novos boletins da Agência Brasil e do Poder360, tempestades com rajadas de vento de até 114 km/h em Tupanciretã deixaram três mortos — incluindo um ex-vereador — e dezenas de feridos. Cerca de 90% das residências da cidade sofreram danos estruturais.",
+      "impacto_pratico": "Atenção para deslocamentos na região sul e impactos em infraestruturas locais.",
       "categoria": "Ciencia_Clima",
       "paises_envolvidos": [
         "BR"
       ],
-      "urgencia_score": 88,
-      "relevancia_score": 87,
+      "urgencia_score": 92,
+      "relevancia_score": 90,
       "nivel_confianca": "alta",
       "ttl_horas": 18,
-      "horas_em_destaque": 12,
+      "horas_em_destaque": 18,
       "veiculos_origem": [
-        "BBC News Brasil",
-        "InfoMoney"
+        "Agência Brasil (EBC)",
+        "Poder360",
+        "InfoMoney Mercados"
       ],
       "fontes_urls": [
-        "https://www.bbc.com/portuguese/articles/cqdr1xmyg3kzo?at_medium=RSS&at_campaign=rss",
-        "https://www.infomoney.com.br/brasil/chuvas-fortes-atingem-litoral-norte-e-cidades-do-interior-de-sp-veja-previsao/"
+        "https://www.poder360.com.br/poder-sustentavel/temporais-no-rs-deixam-3-mortos-60-feridos-e-atingem-8-cidades/",
+        "https://agenciabrasil.ebc.com.br/meio-ambiente/noticia/2026-11/rs-ex-vereador-esta-entre-vitimas-da-tempestade-em-tupancireta"
       ],
       "palavras_chave": [
-        "Temporal",
         "Rio Grande do Sul",
-        "São Paulo",
+        "Tupanciretã",
+        "tempestade",
         "Defesa Civil",
-        "Clima"
+        "clima"
       ],
       "data_publicacao": "2026-11-20T19:28:00Z",
       "links_internos_relacionados": [
         {
           "titulo_existente": "Clima, Amazônia e Transição Energética",
           "url_existente": "https://www.rodandoomundo.com.br/clima",
-          "motivo_conexao": "Relaciona eventos climáticos extremos com a agenda de monitoramento ambiental e meteorológico."
+          "motivo_conexao": "Contextualiza eventos climáticos extremos e seus impactos sociais."
         }
       ],
       "expires_at": "2026-11-21T14:45:51Z",
-      "updated_at": "2026-11-20T22:42:09Z"
+      "updated_at": "2026-11-20T23:42:30Z"
     },
     {
       "slug": "russia-intensifica-ataques-aereos-contra-infraestrutura-e-pontes-em-kiev",
-      "titulo_curto": "Ataques russos deixam mortos e feridos em Kryvyi Rih e elevam tensão com queda de mísseis na Polônia",
-      "resumo_pulso": "Segundo apuração da Ukrinform e do The Kyiv Independent, novos ataques balísticos russos atingiram a cidade de Kryvyi Rih, resultando em mortes, incluindo crianças, e dezenas de feridos. Paralelamente, analistas e canais independentes repercutem a queda recente de fragmentos em território polonês, mantendo o alerta nas fronteiras da Otan.",
-      "impacto_pratico": "Aumento do risco de escalada militar no Leste Europeu e maior volatilidade nos mercados globais de energia.",
       "categoria": "Geopolitica_Relacoes",
-      "paises_envolvidos": [
-        "UA",
-        "RU",
-        "PL"
-      ],
-      "urgencia_score": 97,
-      "relevancia_score": 95,
-      "nivel_confianca": "alta",
       "ttl_horas": 12,
-      "horas_em_destaque": 12,
-      "veiculos_origem": [
-        "Ukrinform",
-        "The Kyiv Independent",
-        "GabaritaGeo"
-      ],
+      "expires_at": "2026-11-21T07:58:05Z",
+      "updated_at": "2026-11-20T23:02:11Z",
       "fontes_urls": [
         "https://www.ukrinform.net/rubric-ato/4187003-two-killed-including-child-in-russian-strike-on-kryvyi-rih-injury-toll-rises-to-42.html",
         "https://kyivindependent.com/russian-ballistic-missile-strikes-on-kryvyi-rih-kill-7-year-old-paramedic-injure-42-others-in-double-tap-attack/"
       ],
+      "resumo_pulso": "Conforme reportado pela agência Ukrinform e pelo The Kyiv Independent, um ataque com mísseis balísticos russos atingiu o centro comercial de Kryvyi Rih, matando duas pessoas, incluindo uma criança, e ferindo ao menos 42. O Ministério do Interior da Ucrânia denunciou a tática de ataque duplo contra equipes de emergência.",
+      "titulo_curto": "Ataque balístico russo em Kryvyi Rih deixa mortos e 42 feridos no centro urbano",
       "palavras_chave": [
-        "Ucrânia",
-        "Rússia",
         "Kryvyi Rih",
-        "Polônia",
-        "Otan"
+        "Ucrânia",
+        "mísseis russos",
+        "ataque balístico"
       ],
+      "urgencia_score": 96,
       "data_publicacao": "2026-11-20T19:20:00Z",
-      "links_internos_relacionados": [
-        {
-          "titulo_existente": "O que é uma sanção internacional?",
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-sancao-internacional",
-          "motivo_conexao": "Contextualiza as medidas de pressão geopolítica e sanções aplicadas em decorrência do conflito."
-        }
+      "impacto_pratico": "Intensificação de alertas aéreos na Ucrânia e maior risco para civis e infraestruturas essenciais em centros urbanos.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Ukrinform",
+        "The Kyiv Independent"
       ],
-      "expires_at": "2026-11-21T07:58:05Z",
-      "updated_at": "2026-11-20T22:42:09Z"
+      "relevancia_score": 94,
+      "horas_em_destaque": 6,
+      "paises_envolvidos": [
+        "UA",
+        "RU"
+      ],
+      "links_internos_relacionados": []
     },
     {
       "slug": "soldados-salvadorenhos-morrem-em-explosao-durante-missao-no-haiti",
@@ -1517,116 +1612,6 @@
           "titulo_existente": "Política nos Estados Unidos"
         }
       ]
-    },
-    {
-      "slug": "acoes-da-nvidia-enfrentam-pior-sequencia-de-quedas-desde-2008",
-      "titulo_curto": "Ações da Anthropic registram queda de 8,5% após estreia histórica na bolsa americana",
-      "resumo_pulso": "Segundo dados do G1 Economia, os papéis da startup de inteligência artificial Anthropic fecharam em baixa de 8,5% em Nova York, refletindo ajustes de mercado um dia após sua oferta pública inicial. A volatilidade acompanha um cenário de cautela dos investidores em relação ao setor de tecnologia e inteligência artificial.",
-      "impacto_pratico": "Influencia o sentimento de investidores no mercado global de tecnologia e venture capital.",
-      "categoria": "Economia_Comercio",
-      "paises_envolvidos": [
-        "US"
-      ],
-      "urgencia_score": 86,
-      "relevancia_score": 87,
-      "nivel_confianca": "alta",
-      "ttl_horas": 18,
-      "horas_em_destaque": 12,
-      "veiculos_origem": [
-        "G1 Economia",
-        "InfoMoney"
-      ],
-      "fontes_urls": [
-        "https://g1.globo.com/economia/noticia/2026/11/20/acoes-anthropic.ghtml"
-      ],
-      "palavras_chave": [
-        "Anthropic",
-        "IPO",
-        "Inteligência Artificial",
-        "Mercados"
-      ],
-      "data_publicacao": "2026-11-20T18:47:51Z",
-      "links_internos_relacionados": [
-        {
-          "titulo_existente": "Economia no Brasil",
-          "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
-          "motivo_conexao": "Conecta as tendências dos mercados globais com reflexos na economia e câmbio."
-        }
-      ],
-      "expires_at": "2026-11-21T07:33:26Z",
-      "updated_at": "2026-11-20T22:42:09Z"
-    },
-    {
-      "slug": "praga-de-mosca-da-bicheira-avanca-nos-eua-e-ameaca-rebanho-bovino",
-      "categoria": "Economia_Comercio",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-21T18:27:01Z",
-      "updated_at": "2026-11-20T18:27:01Z",
-      "fontes_urls": [
-        "https://g1.globo.com/economia/agronegocios/noticia/2026/11/20/praga-mortal-que-ameaca-gado-avanca-nos-eua-e-moscas-estereis-viram-aposta-contra-parasita.ghtml"
-      ],
-      "resumo_pulso": "Segundo apuração do G1 Economia com dados do Departamento de Agricultura dos EUA (USDA), surtos da praga mosca-da-bicheira aumentaram no sudoeste americano impulsionados pelo clima quente e úmido. Autoridades veterinárias iniciaram a liberação de moscas estéreis como estratégia de contenção do parasita.",
-      "titulo_curto": "Surto de mosca-da-bicheira avança no sudoeste dos EUA e ameaça pecuária",
-      "palavras_chave": [
-        "mosca-da-bicheira",
-        "EUA",
-        "USDA",
-        "pecuária",
-        "agronegócio"
-      ],
-      "urgencia_score": 84,
-      "data_publicacao": "2026-11-20T18:14:28Z",
-      "impacto_pratico": "Risco de prejuízos à produção pecuária norte-americana e potencial impacto nos custos das exportações de carne bovina.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "G1 Economia"
-      ],
-      "relevancia_score": 82,
-      "horas_em_destaque": 8,
-      "paises_envolvidos": [
-        "US"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
-          "motivo_conexao": "Confira análises sobre o agronegócio e a dinâmica das exportações no mercado internacional de commodities.",
-          "titulo_existente": "Economia no Brasil"
-        }
-      ]
-    },
-    {
-      "slug": "anthropic-enfrenta-queda-em-acoes-apos-ipo-e-anuncio-matematico",
-      "categoria": "Economia_Comercio",
-      "ttl_horas": 18,
-      "expires_at": "2026-11-21T12:27:01Z",
-      "updated_at": "2026-11-20T18:27:01Z",
-      "fontes_urls": [
-        "https://www.aljazeera.com/economy/2026/11/20/us-tech-sell-off-continues-as-anthropic-tumbles-after-mega-ipo?traffic_source=rss",
-        "https://www.infomoney.com.br/mundo/funcionario-da-anthropic-diz-que-solucionou-problema-mais-famoso-da-matematica/"
-      ],
-      "resumo_pulso": "Conforme noticiado pela Al Jazeera English e InfoMoney, os papéis da startup de inteligência artificial Anthropic registraram queda no mercado acionário americano após sua oferta pública inicial. Paralelamente, um funcionário da empresa afirmou ter solucionado a Hipótese de Riemann, afirmação acadêmica que ainda requer validação de pares.",
-      "titulo_curto": "Ações da Anthropic recuam após IPO em meio a oscilações no setor de tecnologia",
-      "palavras_chave": [
-        "Anthropic",
-        "IPO",
-        "inteligência artificial",
-        "mercado financeiro",
-        "Hipótese de Riemann"
-      ],
-      "urgencia_score": 81,
-      "data_publicacao": "2026-11-20T18:12:36Z",
-      "impacto_pratico": "Volatilidade no setor de inteligência artificial em Nova York e cautela de investidores em relação a IPOs de tecnologia.",
-      "nivel_confianca": "media",
-      "veiculos_origem": [
-        "Al Jazeera English",
-        "InfoMoney Mercados"
-      ],
-      "relevancia_score": 84,
-      "horas_em_destaque": 6,
-      "paises_envolvidos": [
-        "US"
-      ],
-      "links_internos_relacionados": []
     }
   ],
   "temas_curadoria": [
