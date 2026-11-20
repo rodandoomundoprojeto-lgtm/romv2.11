@@ -11592,8 +11592,11 @@
   var radarFetchSeq = 0;
   var radarUpdatedLabel = '';
   var radarCategoryFilter = 'todos';
+  var radarFormatFilter = 'todos'; // 'todos' | 'video' | 'materia'
   var RADAR_PAGE_SIZE = 15; // 5 linhas de 3 colunas = 15 briefings por lote
+  var RADAR_VIDEOS_INITIAL_SIZE = 6; // 2 linhas de 3 colunas no bloco de vídeos
   var radarVisibleCount = RADAR_PAGE_SIZE;
+  var radarVideosVisibleCount = RADAR_VIDEOS_INITIAL_SIZE;
   var radarAutoRefreshTimer = null;
   var radarLastFetchAt = 0;
   var radarVisibilityBound = false;
@@ -11734,16 +11737,15 @@
     return maxTs;
   }
 
+  function isRadarVideoItem(item) {
+    if (!item || typeof item !== 'object') return false;
+    if (String(item.formato || '').toLowerCase() === 'video') return true;
+    return isVideoContent(item.fonte_url, item);
+  }
+
   function updateRadarUpdatedBadge(label) {
-    var updatedEl = document.getElementById('radar-last-updated');
-    if (!updatedEl) return;
-    updatedEl.textContent = label || '';
-    if (label) {
-      updatedEl.classList.add('is-live');
-      updatedEl.setAttribute('title', 'Sincronização automática no navegador a cada 5 minutos');
-    } else {
-      updatedEl.classList.remove('is-live');
-    }
+    // Horários visuais removidos do Radar Editorial; mantém sincronização automática em segundo plano.
+    radarUpdatedLabel = label || '';
   }
 
   function renderRadarEditorialView() {
@@ -11816,10 +11818,15 @@
     html += '<p class="editorial-section-sub">Monitoramento contínuo dos principais canais e analistas de geopolítica, política, economia e cultura com síntese factual e avaliação de impacto.</p>';
     html += '</div>';
     html += '<div style="display:flex;gap:var(--space-2);align-items:center;flex-wrap:wrap;">';
-    html += '<span class="radar-updated-badge' + (radarUpdatedLabel ? ' is-live' : '') + '" id="radar-last-updated" title="Sincronização automática no navegador a cada 5 a 8 minutos">' + esc(radarUpdatedLabel || '') + '</span>';
     html += '<a href="/resumo-do-dia" class="btn btn-secondary" data-spa-link title="Ver o Resumo do Dia com as 5 principais notícias">📰 Resumo do Dia</a>';
     html += '</div>';
     html += '</div>';
+
+    var formatFiltersHtml = '<div class="radar-format-filters" role="group" aria-label="Filtrar por formato">';
+    formatFiltersHtml += '<button type="button" class="chip-btn radar-format-btn' + (radarFormatFilter === 'todos' ? ' is-active' : '') + '" data-radar-format="todos">Todos</button>';
+    formatFiltersHtml += '<button type="button" class="chip-btn radar-format-btn' + (radarFormatFilter === 'video' ? ' is-active' : '') + '" data-radar-format="video">🎬 Vídeos</button>';
+    formatFiltersHtml += '<button type="button" class="chip-btn radar-format-btn' + (radarFormatFilter === 'materia' ? ' is-active' : '') + '" data-radar-format="materia">📰 Matérias</button>';
+    formatFiltersHtml += '</div>';
 
     var filtersHtml = '<div class="radar-filters-bar">';
     filtersHtml += '<button type="button" class="chip-btn radar-filter-btn' + (radarCategoryFilter === 'todos' ? ' is-active' : '') + '" data-radar-cat="todos">Todos</button>';
@@ -11829,7 +11836,8 @@
     filtersHtml += '<button type="button" class="chip-btn radar-filter-btn' + (radarCategoryFilter === 'cultura' ? ' is-active' : '') + '" data-radar-cat="cultura">Cultura & Viagens</button>';
     filtersHtml += '</div>';
 
-    html += filtersHtml + '<div class="radar-cards-grid" id="radar-cards-list"><p class="radar-loading">Carregando briefings do radar...</p></div>';
+    html += '<div class="radar-controls-stack">' + formatFiltersHtml + filtersHtml + '</div>';
+    html += '<div class="radar-cards-container" id="radar-cards-list"><p class="radar-loading">Carregando briefings do radar...</p></div>';
     html += '</section>';
 
     container.innerHTML = html;
@@ -11842,6 +11850,18 @@
       });
     });
 
+    var formatBtns = container.querySelectorAll('.radar-format-btn');
+    formatBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        formatBtns.forEach(function (b) { b.classList.remove('is-active'); });
+        btn.classList.add('is-active');
+        radarFormatFilter = btn.getAttribute('data-radar-format') || 'todos';
+        radarVisibleCount = RADAR_PAGE_SIZE;
+        radarVideosVisibleCount = RADAR_VIDEOS_INITIAL_SIZE;
+        renderRadarCardsList(false);
+      });
+    });
+
     var filterBtns = container.querySelectorAll('.radar-filter-btn');
     filterBtns.forEach(function (btn) {
       btn.addEventListener('click', function () {
@@ -11849,6 +11869,7 @@
         btn.classList.add('is-active');
         radarCategoryFilter = btn.getAttribute('data-radar-cat') || 'todos';
         radarVisibleCount = RADAR_PAGE_SIZE;
+        radarVideosVisibleCount = RADAR_VIDEOS_INITIAL_SIZE;
         renderRadarCardsList(false);
       });
     });
@@ -12297,6 +12318,131 @@
     return result;
   }
 
+  var RADAR_CAT_LABELS = {
+    'geopolitica': 'Geopolítica',
+    'politica': 'Política',
+    'economia': 'Economia',
+    'cultura': 'Cultura & Viagens'
+  };
+
+  function renderRadarCardHtml(item, detailsId) {
+    var catKey = (item.categoria || 'geral').toLowerCase();
+    var catLabel = RADAR_CAT_LABELS[catKey] || catKey.toUpperCase();
+    var itemKey = getRadarItemKey(item);
+    var pubRaw = item.data_publicacao || item.updated_at || item.publicado_em || item.created_at || '';
+    var isVideo = isRadarVideoItem(item);
+
+    var card = '<article class="radar-card radar-cat-' + esc(catKey) + (item.origem_v2 ? ' is-v2-card' : '') + (isVideo ? ' is-video-card' : ' is-materia-card') + '" data-radar-key="' + esc(itemKey) + '" data-radar-formato="' + (isVideo ? 'video' : 'materia') + '">';
+    card += '<div class="radar-card-header">';
+    card += '<div class="radar-card-meta">';
+    card += '<span class="radar-badge-cat">' + esc(catLabel) + '</span>';
+    card += '<span class="radar-badge-format ' + (isVideo ? 'is-video' : 'is-materia') + '">' + (isVideo ? '🎬 Vídeo' : '📰 Matéria') + '</span>';
+    if (item.origem_v2) {
+      card += '<span class="radar-v2-pill radar-badge-v2">⚡ Pulso V2</span>';
+    }
+    if (item.origem_grok_x) {
+      card += '<span class="resumo-x-tag" title="Apurado em tempo real no X via Grok (xAI)">𝕏 Grok / X</span>';
+    } else if (item.origem_tempo_real_web) {
+      card += '<span class="resumo-x-tag" title="Apurado em tempo real na imprensa via IA (Groq)">⚡ Tempo Real</span>';
+    }
+    var sourceIcon = isVideo ? '🎬 ' : (item.origem_grok_x ? '𝕏 ' : (item.origem_tempo_real_web ? '🌐 ' : '📰 '));
+    card += '<span class="radar-source-name">' + sourceIcon + esc(item.fonte_nome || 'Fonte') + '</span>';
+    var rSummary = (item.resumo || '') + (item.analise ? ' | ' + item.analise : '');
+    card += '<div class="item-action-btns">';
+    if (item.fonte_url) {
+      card += renderNewsFavBtn({
+        url: item.fonte_url,
+        title: item.titulo,
+        source: item.fonte_nome,
+        countryCode: 'BR',
+        publishedAt: pubRaw
+      });
+    }
+    card += renderShareBtn({
+      url: item.fonte_url || '/radar',
+      title: item.titulo,
+      source: item.fonte_nome || 'Radar ao Vivo',
+      type: 'radar',
+      summary: rSummary
+    });
+    card += '</div>';
+    card += '</div>';
+
+    card += '<h3 class="radar-card-title" role="button" tabindex="0" title="Clique para expandir ou recolher os detalhes">' + esc(item.titulo || '') + '</h3>';
+
+    card += '<div class="radar-card-actions">';
+    card += '<button type="button" class="radar-toggle-btn" aria-expanded="false" aria-controls="' + esc(detailsId) + '" title="Expandir briefing">';
+    card += '<span class="radar-toggle-text">Veja +</span> <span class="radar-toggle-icon" aria-hidden="true">▾</span>';
+    card += '</button>';
+    card += '</div>';
+    card += '</div>'; // .radar-card-header
+
+    card += '<div class="radar-card-details" id="' + esc(detailsId) + '" hidden>';
+    card += '<div class="radar-card-body">';
+    var cleanResumo = String(item.resumo || '')
+      .replace(/^Síntese automática de contingência\s*\([^)]*\):\s*/i, '')
+      .replace(/^Análise em dry-run baseada na fonte\s*[^:]*:\s*/i, '')
+      .replace(/^Contexto associado nas buscas:\s*/i, '')
+      .replace(/^[A-Z0-9_]{3,30}:\s*/, '')
+      .trim();
+    var cleanAnalise = String(item.analise || '')
+      .replace(/^Síntese automática de contingência\s*\([^)]*\):\s*/i, '')
+      .replace(/^Análise em dry-run baseada na fonte\s*[^:]*:\s*/i, '')
+      .replace(/^Contexto associado nas buscas:\s*/i, '')
+      .replace(/^[A-Z0-9_]{3,30}:\s*/, '')
+      .trim();
+
+    var ehPromptOuDebug = function (txt) {
+      if (!txt) return true;
+      return /^(Destacar cobertura|Focar em|Análise em dry-run|Placeholder|TODO|Instrução|Prompt|Síntese automática de contingência)\b/i.test(txt);
+    };
+
+    if (ehPromptOuDebug(cleanResumo)) {
+      if (cleanAnalise && !ehPromptOuDebug(cleanAnalise)) {
+        cleanResumo = cleanAnalise;
+        cleanAnalise = 'Tendência com forte aceleração de interesse monitorada pela curadoria em tempo real.';
+      } else {
+        cleanResumo = item.titulo ? ('Monitoramento e desdobramentos em tempo real sobre ' + item.titulo + '.') : '';
+        cleanAnalise = 'Acompanhamento editorial e impactos práticos em avaliação pela equipe.';
+      }
+    }
+
+    if (!cleanAnalise || ehPromptOuDebug(cleanAnalise) || cleanAnalise === cleanResumo) {
+      cleanAnalise = 'Tendência com forte aceleração de interesse monitorada pela curadoria em tempo real.';
+    }
+
+    if (cleanResumo) {
+      card += '<div class="radar-block radar-block-fato">';
+      card += '<strong>📌 O que aconteceu:</strong>';
+      card += '<p>' + esc(cleanResumo) + '</p>';
+      card += '</div>';
+    }
+    if (cleanAnalise) {
+      card += '<div class="radar-block radar-block-analise">';
+      card += '<strong>💡 Por que importa:</strong>';
+      card += '<p>' + esc(cleanAnalise) + '</p>';
+      card += '</div>';
+    }
+    card += '</div>'; // .radar-card-body
+
+    card += '<div class="radar-card-footer">';
+    if (item.fonte_url) {
+      card += '<a href="' + esc(item.fonte_url) + '" target="_blank" rel="noopener noreferrer" class="radar-source-link">' + (isVideo ? 'Assistir vídeo original ↗' : 'Acessar conteúdo original ↗') + '</a>';
+    }
+    card += renderShareBtn({
+      url: item.fonte_url || '/radar',
+      title: item.titulo,
+      source: item.fonte_nome || 'Radar ao Vivo',
+      type: 'radar',
+      summary: rSummary
+    });
+    card += '</div>';
+    card += '</div>'; // .radar-card-details
+
+    card += '</article>';
+    return card;
+  }
+
   function renderRadarCardsList(preserveExpanded) {
     var listEl = document.getElementById('radar-cards-list');
     if (!listEl) return;
@@ -12317,12 +12463,16 @@
     }
 
     var filtered = radarFeedCache.filter(function (item) {
-      if (radarCategoryFilter === 'todos') return true;
-      return (item.categoria || '').toLowerCase() === radarCategoryFilter;
+      if (radarCategoryFilter !== 'todos' && (item.categoria || '').toLowerCase() !== radarCategoryFilter) {
+        return false;
+      }
+      if (radarFormatFilter === 'video') return isRadarVideoItem(item);
+      if (radarFormatFilter === 'materia') return !isRadarVideoItem(item);
+      return true;
     });
 
     if (filtered.length === 0) {
-      listEl.innerHTML = '<p class="radar-empty">Nenhum briefing encontrado para a categoria selecionada.</p>';
+      listEl.innerHTML = '<p class="radar-empty">Nenhum briefing encontrado para os filtros selecionados.</p>';
       var wrapEmptyCat = document.getElementById('radar-load-more-wrap');
       if (wrapEmptyCat) wrapEmptyCat.style.display = 'none';
       return;
@@ -12339,138 +12489,81 @@
       return Number(b.urgencia_score || 0) - Number(a.urgencia_score || 0);
     });
 
-    var totalCards = filtered.length;
-    var visibleCards = filtered.slice(0, radarVisibleCount);
+    var loadMoreWrap = document.getElementById('radar-load-more-wrap');
+    if (!loadMoreWrap) {
+      loadMoreWrap = document.createElement('div');
+      loadMoreWrap.id = 'radar-load-more-wrap';
+      loadMoreWrap.className = 'radar-load-more-wrap';
+      listEl.parentNode.insertBefore(loadMoreWrap, listEl.nextSibling);
+    }
 
-    var catLabels = {
-      'geopolitica': 'Geopolítica',
-      'politica': 'Política',
-      'economia': 'Economia',
-      'cultura': 'Cultura & Viagens'
-    };
+    var totalForMainPagination = 0;
+    var visibleMainCount = 0;
 
-    var html = visibleCards.map(function (item, idx) {
-      var catKey = (item.categoria || 'geral').toLowerCase();
-      var catLabel = catLabels[catKey] || catKey.toUpperCase();
-      var detailsId = 'radar-details-' + idx;
-      var itemKey = getRadarItemKey(item);
-      var pubRaw = item.data_publicacao || item.updated_at || item.publicado_em || item.created_at || '';
-      var dataPubMeta = formatarDataPublicacaoCardRadar(pubRaw);
+    if (radarFormatFilter === 'todos') {
+      var videoItems = filtered.filter(isRadarVideoItem);
+      var articleItems = filtered.filter(function (it) { return !isRadarVideoItem(it); });
+      var htmlParts = [];
 
-      var card = '<article class="radar-card radar-cat-' + esc(catKey) + (item.origem_v2 ? ' is-v2-card' : '') + '" data-radar-key="' + esc(itemKey) + '">';
-      card += '<div class="radar-card-header">';
-      card += '<div class="radar-card-meta">';
-      card += '<span class="radar-badge-cat">' + esc(catLabel) + '</span>';
-      if (item.origem_v2) {
-        card += '<span class="radar-v2-pill radar-badge-v2">⚡ Pulso V2</span>';
-      }
-      if (item.origem_grok_x) {
-        card += '<span class="resumo-x-tag" title="Apurado em tempo real no X via Grok (xAI)">𝕏 Grok / X</span>';
-      } else if (item.origem_tempo_real_web) {
-        card += '<span class="resumo-x-tag" title="Apurado em tempo real na imprensa via IA (Groq)">⚡ Tempo Real</span>';
-      }
-      var sourceIcon = item.origem_grok_x ? '𝕏 ' : (item.origem_tempo_real_web ? '🌐 ' : '📺 ');
-      card += '<span class="radar-source-name">' + sourceIcon + esc(item.fonte_nome || 'Fonte') + '</span>';
-      if (dataPubMeta.text) {
-        card += '<time class="radar-pub-date" datetime="' + esc(dataPubMeta.iso) + '" title="' + esc(dataPubMeta.title) + '" aria-label="' + esc(dataPubMeta.title) + '">' + esc(dataPubMeta.text) + '</time>';
-      }
-      var rSummary = (item.resumo || '') + (item.analise ? ' | ' + item.analise : '');
-      card += '<div class="item-action-btns">';
-      if (item.fonte_url) {
-        card += renderNewsFavBtn({
-          url: item.fonte_url,
-          title: item.titulo,
-          source: item.fonte_nome,
-          countryCode: 'BR',
-          publishedAt: pubRaw
-        });
-      }
-      card += renderShareBtn({
-        url: item.fonte_url || '/radar',
-        title: item.titulo,
-        source: item.fonte_nome || 'Radar ao Vivo',
-        type: 'radar',
-        summary: rSummary
-      });
-      card += '</div>';
-      card += '</div>';
+      if (videoItems.length > 0) {
+        var visibleVideos = videoItems.slice(0, radarVideosVisibleCount);
+        var videosGridHtml = visibleVideos.map(function (item, idx) {
+          return renderRadarCardHtml(item, 'radar-details-v-' + idx);
+        }).join('');
 
-      card += '<h3 class="radar-card-title" role="button" tabindex="0" title="Clique para expandir ou recolher os detalhes">' + esc(item.titulo || '') + '</h3>';
-
-      card += '<div class="radar-card-actions">';
-      card += '<button type="button" class="radar-toggle-btn" aria-expanded="false" aria-controls="' + esc(detailsId) + '" title="Expandir briefing">';
-      card += '<span class="radar-toggle-text">Veja +</span> <span class="radar-toggle-icon" aria-hidden="true">▾</span>';
-      card += '</button>';
-      card += '</div>';
-      card += '</div>'; // .radar-card-header
-
-      card += '<div class="radar-card-details" id="' + esc(detailsId) + '" hidden>';
-      card += '<div class="radar-card-body">';
-      var cleanResumo = String(item.resumo || '')
-        .replace(/^Síntese automática de contingência\s*\([^)]*\):\s*/i, '')
-        .replace(/^Análise em dry-run baseada na fonte\s*[^:]*:\s*/i, '')
-        .replace(/^Contexto associado nas buscas:\s*/i, '')
-        .replace(/^[A-Z0-9_]{3,30}:\s*/, '')
-        .trim();
-      var cleanAnalise = String(item.analise || '')
-        .replace(/^Síntese automática de contingência\s*\([^)]*\):\s*/i, '')
-        .replace(/^Análise em dry-run baseada na fonte\s*[^:]*:\s*/i, '')
-        .replace(/^Contexto associado nas buscas:\s*/i, '')
-        .replace(/^[A-Z0-9_]{3,30}:\s*/, '')
-        .trim();
-
-      var ehPromptOuDebug = function (txt) {
-        if (!txt) return true;
-        return /^(Destacar cobertura|Focar em|Análise em dry-run|Placeholder|TODO|Instrução|Prompt|Síntese automática de contingência)\b/i.test(txt);
-      };
-
-      if (ehPromptOuDebug(cleanResumo)) {
-        if (cleanAnalise && !ehPromptOuDebug(cleanAnalise)) {
-          cleanResumo = cleanAnalise;
-          cleanAnalise = 'Tendência com forte aceleração de interesse monitorada pela curadoria em tempo real.';
-        } else {
-          cleanResumo = item.titulo ? ('Monitoramento e desdobramentos em tempo real sobre ' + item.titulo + '.') : '';
-          cleanAnalise = 'Acompanhamento editorial e impactos práticos em avaliação pela equipe.';
+        var videoSectionHtml = '<section class="radar-section-block radar-section-videos" id="radar-videos-section" aria-labelledby="radar-videos-heading">';
+        videoSectionHtml += '<div class="radar-section-header">';
+        videoSectionHtml += '<h3 class="radar-section-title" id="radar-videos-heading">🎬 Resumo de Vídeos</h3>';
+        videoSectionHtml += '<span class="radar-section-count">' + videoItems.length + (videoItems.length === 1 ? ' vídeo' : ' vídeos') + '</span>';
+        videoSectionHtml += '</div>';
+        videoSectionHtml += '<div class="radar-cards-grid">' + videosGridHtml + '</div>';
+        if (videoItems.length > radarVideosVisibleCount) {
+          var remainingVideos = videoItems.length - radarVideosVisibleCount;
+          videoSectionHtml += '<div class="radar-section-more">';
+          videoSectionHtml += '<button type="button" class="btn btn-secondary radar-btn-load-more" id="radar-btn-load-more-videos">Ver + (' + remainingVideos + ' vídeos) ▾</button>';
+          videoSectionHtml += '</div>';
         }
+        videoSectionHtml += '</section>';
+        htmlParts.push(videoSectionHtml);
       }
 
-      if (!cleanAnalise || ehPromptOuDebug(cleanAnalise) || cleanAnalise === cleanResumo) {
-        cleanAnalise = 'Tendência com forte aceleração de interesse monitorada pela curadoria em tempo real.';
+      if (articleItems.length > 0) {
+        totalForMainPagination = articleItems.length;
+        var visibleArticles = articleItems.slice(0, radarVisibleCount);
+        visibleMainCount = visibleArticles.length;
+        var articlesGridHtml = visibleArticles.map(function (item, idx) {
+          return renderRadarCardHtml(item, 'radar-details-m-' + idx);
+        }).join('');
+
+        var articleSectionHtml = '<section class="radar-section-block radar-section-materias" id="radar-materias-section" aria-labelledby="radar-materias-heading">';
+        articleSectionHtml += '<div class="radar-section-header">';
+        articleSectionHtml += '<h3 class="radar-section-title" id="radar-materias-heading">📰 Matérias & Sínteses</h3>';
+        articleSectionHtml += '<span class="radar-section-count">' + articleItems.length + (articleItems.length === 1 ? ' matéria' : ' matérias') + '</span>';
+        articleSectionHtml += '</div>';
+        articleSectionHtml += '<div class="radar-cards-grid">' + articlesGridHtml + '</div>';
+        articleSectionHtml += '</section>';
+        htmlParts.push(articleSectionHtml);
       }
 
-      if (cleanResumo) {
-        card += '<div class="radar-block radar-block-fato">';
-        card += '<strong>📌 O que aconteceu:</strong>';
-        card += '<p>' + esc(cleanResumo) + '</p>';
-        card += '</div>';
+      listEl.innerHTML = htmlParts.join('');
+      var btnMoreVideos = listEl.querySelector('#radar-btn-load-more-videos');
+      if (btnMoreVideos) {
+        btnMoreVideos.onclick = function () {
+          radarVideosVisibleCount += RADAR_VIDEOS_INITIAL_SIZE;
+          renderRadarCardsList(true);
+        };
       }
-      if (cleanAnalise) {
-        card += '<div class="radar-block radar-block-analise">';
-        card += '<strong>💡 Por que importa:</strong>';
-        card += '<p>' + esc(cleanAnalise) + '</p>';
-        card += '</div>';
-      }
-      card += '</div>'; // .radar-card-body
+    } else {
+      totalForMainPagination = filtered.length;
+      var visibleCards = filtered.slice(0, radarVisibleCount);
+      visibleMainCount = visibleCards.length;
+      var prefix = radarFormatFilter === 'video' ? 'v' : 'm';
+      var singleGridHtml = visibleCards.map(function (item, idx) {
+        return renderRadarCardHtml(item, 'radar-details-' + prefix + '-' + idx);
+      }).join('');
+      listEl.innerHTML = '<div class="radar-cards-grid">' + singleGridHtml + '</div>';
+    }
 
-      card += '<div class="radar-card-footer">';
-      if (item.fonte_url) {
-        card += '<a href="' + esc(item.fonte_url) + '" target="_blank" rel="noopener noreferrer" class="radar-source-link">' + (isVideoContent(item.fonte_url, item) ? 'Assistir vídeo original ↗' : 'Acessar conteúdo original ↗') + '</a>';
-      }
-      card += renderShareBtn({
-        url: item.fonte_url || '/radar',
-        title: item.titulo,
-        source: item.fonte_nome || 'Radar ao Vivo',
-        type: 'radar',
-        summary: rSummary
-      });
-      card += '</div>';
-      card += '</div>'; // .radar-card-details
-
-      card += '</article>';
-      return card;
-    }).join('');
-
-    listEl.innerHTML = html;
     bindNewsFavButtons(listEl);
     bindRadarCardAccordions(listEl);
     if (expandedKeys.length > 0) {
@@ -12482,22 +12575,14 @@
       });
     }
 
-    var loadMoreWrap = document.getElementById('radar-load-more-wrap');
-    if (!loadMoreWrap) {
-      loadMoreWrap = document.createElement('div');
-      loadMoreWrap.id = 'radar-load-more-wrap';
-      loadMoreWrap.className = 'radar-load-more-wrap';
-      listEl.parentNode.insertBefore(loadMoreWrap, listEl.nextSibling);
-    }
-
-    if (radarVisibleCount < totalCards) {
-      var remaining = totalCards - radarVisibleCount;
+    if (radarVisibleCount < totalForMainPagination) {
+      var remaining = totalForMainPagination - radarVisibleCount;
       var nextBatch = Math.min(RADAR_PAGE_SIZE, remaining);
       loadMoreWrap.innerHTML =
         '<button type="button" class="btn btn-secondary radar-btn-load-more" id="radar-btn-load-more" title="Carregar mais novidades em ordem cronológica">' +
         '<span>Ver + (' + nextBatch + ' notícias)</span> <span aria-hidden="true">▾</span>' +
         '</button>' +
-        '<p class="radar-load-more-hint">Exibindo ' + visibleCards.length + ' de ' + totalCards + ' novidades (mais recentes primeiro)</p>';
+        '<p class="radar-load-more-hint">Exibindo ' + visibleMainCount + ' de ' + totalForMainPagination + ' itens</p>';
       loadMoreWrap.style.display = 'flex';
       var btnLoadMore = loadMoreWrap.querySelector('#radar-btn-load-more');
       if (btnLoadMore) {
@@ -12507,8 +12592,8 @@
         };
       }
     } else {
-      if (totalCards > RADAR_PAGE_SIZE) {
-        loadMoreWrap.innerHTML = '<p class="radar-load-more-hint">✅ Todos os ' + totalCards + ' briefings exibidos em ordem cronológica.</p>';
+      if (totalForMainPagination > RADAR_PAGE_SIZE) {
+        loadMoreWrap.innerHTML = '<p class="radar-load-more-hint">✅ Todos os ' + totalForMainPagination + ' itens exibidos.</p>';
         loadMoreWrap.style.display = 'flex';
       } else {
         loadMoreWrap.style.display = 'none';

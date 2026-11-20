@@ -2605,7 +2605,7 @@ def _coletar_fontes_codigo() -> List[Dict[str, Any]]:
                     continue
                 nome = str(s.get("nome") or "Fonte").strip()
                 categoria = str(s.get("categoria") or "geral").strip().lower()
-                regiao = "Global" if categoria == "geopolitica" else "America_do_Sul"
+                regiao = "Global" if categoria in ("geopolitica", "dinamica", "misto") else "America_do_Sul"
                 combinadas[url] = {
                     "nome": nome,
                     "url": url,

@@ -126,11 +126,13 @@ assert.ok(
 );
 console.log('  [OK] _worker.js preserva data_publicacao e não sobrescreve com updatedAtIso.');
 
-// 4. Validar que app.js possui formatarDataPublicacaoCardRadar e renderiza o datetime no DOM
+// 4. Validar que app.js preserva ordenação/atualização por timestamp, mas não exibe horários visuais no Radar
 const appJsCode = fs.readFileSync('app.js', 'utf-8');
-assert.ok(appJsCode.includes('formatarDataPublicacaoCardRadar'), 'app.js deve conter a função formatarDataPublicacaoCardRadar');
-assert.ok(appJsCode.includes('class="radar-pub-date" datetime='), 'app.js deve renderizar <time class="radar-pub-date" datetime=...>');
-console.log('  [OK] app.js renderiza <time class="radar-pub-date" datetime=...> com acessibilidade.');
+assert.ok(appJsCode.includes('getRadarPubTimestamp'), 'app.js deve conter getRadarPubTimestamp para ordenação cronológica');
+assert.ok(appJsCode.includes('startRadarAutoRefresh'), 'app.js deve manter startRadarAutoRefresh ativo');
+assert.ok(!appJsCode.includes('class="radar-pub-date"'), 'app.js não deve renderizar <time class="radar-pub-date"> no Radar');
+assert.ok(!appJsCode.includes('id="radar-last-updated"'), 'app.js não deve renderizar #radar-last-updated no Radar');
+console.log('  [OK] app.js preserva ordenação/auto-refresh sem exibir horários visuais no Radar.');
 
 // 5. Validar lógica de hasRadarFeedChanged em múltiplos itens
 function getRadarItemKey(item) {

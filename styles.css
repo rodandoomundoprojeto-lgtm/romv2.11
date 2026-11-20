@@ -10974,11 +10974,96 @@ button.support-link.topbar-more-btn:hover {
 /* ==========================================================================
    Radar Editorial (ROM V2.12)
    ========================================================================== */
+.radar-controls-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-bottom: var(--space-5);
+}
+.radar-format-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  align-items: center;
+}
+.radar-format-btn {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  padding: 0.45rem 1rem;
+  border-radius: var(--radius-full);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all var(--transition);
+}
+.radar-format-btn:hover {
+  color: var(--text);
+  border-color: var(--primary);
+}
+.radar-format-btn.is-active {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+}
 .radar-filters-bar {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-2);
-  margin-bottom: var(--space-5);
+  margin-bottom: 0;
+}
+.radar-section-block {
+  margin-bottom: var(--space-6);
+}
+.radar-section-block:last-child {
+  margin-bottom: 0;
+}
+.radar-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+  padding-bottom: var(--space-2);
+  border-bottom: 1px solid var(--border);
+}
+.radar-section-title {
+  margin: 0;
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--text);
+}
+.radar-section-count {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--text-muted);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  padding: 0.2rem 0.65rem;
+  border-radius: var(--radius-full);
+}
+.radar-section-more {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--space-4);
+}
+.radar-badge-format {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 0.02em;
+}
+.radar-badge-format.is-video {
+  background: rgba(239, 68, 68, 0.14);
+  color: #f87171;
+}
+.radar-badge-format.is-materia {
+  background: rgba(148, 163, 184, 0.16);
+  color: var(--text-muted);
 }
 .radar-filter-btn {
   font-size: var(--text-sm);

@@ -57,6 +57,18 @@ function ehDestaquePulsoV2(item) {
   return normalizarFonteKey(item.fonte_nome).includes('pulso v2');
 }
 
+function detectarFormatoRadar(fonteUrl, fonteNome) {
+  const u = String(fonteUrl || '').toLowerCase();
+  if (/youtube\.com|youtu\.be|vimeo\.com|dailymotion\.com|twitch\.tv|rumble\.com|odysee\.com/.test(u)) {
+    return 'video';
+  }
+  const f = normalizar(fonteNome);
+  if (f.includes('youtube')) {
+    return 'video';
+  }
+  return 'materia';
+}
+
 function timestampPublicacao(item) {
   const t = Date.parse((item && item.data_publicacao) || '');
   return Number.isNaN(t) ? 0 : t;
@@ -380,6 +392,7 @@ function mapearItemV2ParaRadar(item) {
     categoria: ['geopolitica', 'politica', 'economia', 'cultura'].includes(catNorm) ? catNorm : 'geopolitica',
     fonte_nome: 'Síntese Rodando o Mundo · Pulso V2',
     fonte_url: fonteUrl,
+    formato: detectarFormatoRadar(fonteUrl, 'Síntese Rodando o Mundo · Pulso V2'),
     data_publicacao: dataPubOrig,
     origem_v2: true,
     urgencia_score: score,
@@ -434,6 +447,7 @@ export async function onRequestGet(context) {
               categoria: normalizar(card.categoria || 'geopolitica') || 'geopolitica',
               fonte_nome: card.fonte_nome || 'Radar Editorial',
               fonte_url: card.fonte_url || '/radar',
+              formato: detectarFormatoRadar(card.fonte_url, card.fonte_nome),
               data_publicacao: dataPub,
               origem_v2: false,
               urgencia_score: Number(card.urgencia_score || 70),

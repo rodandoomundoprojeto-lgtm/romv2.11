@@ -1805,9 +1805,10 @@ describe('Tier 1 — Edge & Frontend Feature Coverage (F1–F11)', () => {
       assert.ok(cards.length >= 2, 'Radar cards must be rendered');
       assert.equal(cards[0].querySelector('.radar-card-title').textContent.trim(), 'RADAR FRESH ITEM 1');
 
-      // 3. Items with only updated_at or publicado_em render <time class="radar-pub-date">
+      // 3. Visual timestamps are intentionally omitted from Radar cards and header
       const times = app.document.querySelectorAll('#radar-cards-list time.radar-pub-date');
-      assert.equal(times.length, cards.length, 'Every radar card with data_publicacao, updated_at, or publicado_em must render <time class="radar-pub-date">');
+      assert.equal(times.length, 0, 'Radar cards must not render <time class="radar-pub-date">');
+      assert.equal(app.document.getElementById('radar-last-updated'), null, '#radar-last-updated must not be rendered');
 
       // 4. Click #btn-atualizar-radar -> calls /api/radar?refresh=1&_t= with cache: 'no-store'
       app.fetchCalls.length = 0;
@@ -2955,8 +2956,94 @@ describe('Tier 2 — Boundary & Corner Cases (EC-01..EC-13)', () => {
       assert.equal(app.pageErrors.length, 0);
       const cards = app.document.querySelectorAll('#radar-cards-list .radar-card');
       assert.equal(cards[0].querySelector('.radar-card-title').textContent.trim(), 'FUTURE SKEW +2M CARD');
-      assert.equal(cards[0].querySelector('time.radar-pub-date').textContent.trim(), 'Publicada agora');
+      assert.equal(cards[0].querySelector('time.radar-pub-date'), null, 'Radar card must not render time.radar-pub-date');
       assert.equal(cards[1].querySelector('.radar-card-title').textContent.trim(), 'LEGACY NON-ISO DATE CARD');
+    } finally {
+      app.cleanup();
+    }
+  });
+
+  test('T2-14: Radar Editorial divides Vídeos and Matérias in Todos view, hides timestamps, and filters by format', async () => {
+    const now = Date.now();
+    const upstream = createMockUpstream({
+      vitrineIa: {
+        updatedAt: new Date(now).toISOString(),
+        temas_ativos: [
+          {
+            slug: 'pulso-materia-1',
+            titulo_tema: 'MATERIA PULSO V2 TOPO',
+            categoria_primaria: 'Geopolitica_Radar',
+            gatilho_vitrine: 'Síntese recente',
+            data_publicacao: isoMinutesAgo(2, now),
+            urgencia_score: 95,
+          },
+        ],
+      },
+      feedOutput: [
+        {
+          titulo: 'VIDEO YOUTUBE ANALISE 1',
+          resumo: 'Resumo do vídeo do canal',
+          analise: 'Análise geopolítica em vídeo',
+          categoria: 'geopolitica',
+          fonte_nome: 'Professor HOC',
+          fonte_url: 'https://www.youtube.com/watch?v=abc12345678',
+          data_publicacao: isoMinutesAgo(120, now),
+        },
+        {
+          titulo: 'MATERIA RSS IMPRENSA 1',
+          resumo: 'Resumo de matéria jornalística',
+          analise: 'Impacto econômico',
+          categoria: 'economia',
+          fonte_nome: 'Poder360',
+          fonte_url: 'https://www.poder360.com.br/economia/teste-12345',
+          data_publicacao: isoMinutesAgo(10, now),
+        },
+      ],
+    });
+    const app = await bootFrontendApp({
+      url: 'https://www.rodandoomundo.com.br/radar',
+      fetchHandler: async (resolvedUrl, init) => {
+        const u = new URL(resolvedUrl);
+        if (u.pathname === '/api/radar') {
+          upstream.activate();
+          return apiRadar.onRequestGet({ request: new Request(resolvedUrl, init), env: upstream.env });
+        }
+        if (u.pathname === '/data/noticias_x.json') {
+          return createJsonResponse({ mock: true, atualizadoEm: new Date(now).toISOString(), topicos: [] });
+        }
+        upstream.activate();
+        return worker.fetch(new Request(resolvedUrl, init), upstream.env);
+      },
+    });
+    try {
+      assert.equal(app.pageErrors.length, 0);
+      assert.equal(app.document.getElementById('radar-last-updated'), null);
+      assert.equal(app.document.querySelectorAll('#radar-cards-list time.radar-pub-date').length, 0);
+
+      // In Todos view, videos section appears first followed by materias section
+      const videoSection = app.document.getElementById('radar-videos-section');
+      const materiaSection = app.document.getElementById('radar-materias-section');
+      assert.ok(videoSection, '#radar-videos-section must be rendered in Todos view');
+      assert.ok(materiaSection, '#radar-materias-section must be rendered in Todos view');
+      assert.equal(videoSection.querySelectorAll('.radar-card').length, 1);
+      assert.equal(videoSection.querySelector('.radar-card-title').textContent.trim(), 'VIDEO YOUTUBE ANALISE 1');
+      assert.equal(materiaSection.querySelectorAll('.radar-card').length, 2);
+
+      // Filter by Vídeos
+      const btnVideos = app.document.querySelector('.radar-format-btn[data-radar-format="video"]');
+      assert.ok(btnVideos, 'Vídeos format button must exist');
+      btnVideos.click();
+      const videoOnlyCards = app.document.querySelectorAll('#radar-cards-list .radar-card');
+      assert.equal(videoOnlyCards.length, 1);
+      assert.equal(videoOnlyCards[0].getAttribute('data-radar-formato'), 'video');
+
+      // Filter by Matérias
+      const btnMaterias = app.document.querySelector('.radar-format-btn[data-radar-format="materia"]');
+      assert.ok(btnMaterias, 'Matérias format button must exist');
+      btnMaterias.click();
+      const materiaOnlyCards = app.document.querySelectorAll('#radar-cards-list .radar-card');
+      assert.equal(materiaOnlyCards.length, 2);
+      assert.equal(materiaOnlyCards[0].getAttribute('data-radar-formato'), 'materia');
     } finally {
       app.cleanup();
     }
