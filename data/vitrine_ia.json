@@ -2,222 +2,318 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-20T21:42:32Z",
-  "batch_id": "20261120-2141",
+  "updatedAt": "2026-11-20T22:01:12Z",
+  "batch_id": "20261120-2200",
   "temas_ativos": [
     {
-      "slug": "desigualdade-racial-pre-natal-bebes-pretos-sus",
-      "titulo_tema": "Dados do SUS apontam maior prematuridade e menor acompanhamento pré-natal entre mães negras",
-      "titulo_curto": "Dados do SUS apontam maior prematuridade e menor acompanhamento pré-natal entre mães negras",
+      "slug": "bolha-ia-nasdaq-desaba-acoes-anthropic-nvidia",
+      "titulo_tema": "Despencar das ações de IA nos EUA atinge Wall Street e gera temor de bolha tecnológica",
       "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Cultura",
-      "categoria": "Sociedade_Cultura",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/cultura",
-      "relevancia_score": 86,
-      "urgencia_score": 82,
-      "ttl_horas": 24,
-      "expires_at": "2026-11-21T21:42:32Z",
-      "palavras_chave_busca": [
-        "sus",
-        "saúde pública",
-        "mães negras",
-        "pré-natal",
-        "desigualdade racial"
-      ],
-      "palavras_chave": [
-        "sus",
-        "saúde pública",
-        "mães negras",
-        "pré-natal",
-        "desigualdade racial"
-      ],
-      "gatilho_vitrine": "Conforme levantamento do G1 Política baseado em dados do Datasus referentes a 2026, gestantes pretas passam por menos consultas de pré-natal em comparação com gestantes brancas. O estudo indica ainda que bebês de mães negras apresentam taxas mais elevadas de prematuridade e baixo peso no nascimento.",
-      "resumo_pulso": "Conforme levantamento do G1 Política baseado em dados do Datasus referentes a 2026, gestantes pretas passam por menos consultas de pré-natal em comparação com gestantes brancas. O estudo indica ainda que bebês de mães negras apresentam taxas mais elevadas de prematuridade e baixo peso no nascimento.",
-      "sintese_nerd": "Sinaliza a urgência de direcionamento de políticas públicas de saúde e assistência pré-natal para gestantes negras no SUS.",
-      "impacto_pratico": "Sinaliza a urgência de direcionamento de políticas públicas de saúde e assistência pré-natal para gestantes negras no SUS.",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "veiculos_origem": [
-        "G1 Política"
-      ],
-      "fontes_urls": [
-        "https://g1.globo.com/politica/noticia/2026/11/20/maes-pretas-fazem-menos-consultas-de-pre-natal-e-seus-bebes-tem-mais-chance-de-nascer-com-baixo-peso-mostram-dados-do-sus.ghtml"
-      ],
-      "data_publicacao": "2026-11-20T21:28:06Z",
-      "updated_at": "2026-11-20T21:42:32Z"
-    },
-    {
-      "slug": "senado-frances-aprova-lei-presuncao-legalidade-disparos-policiais",
-      "titulo_tema": "Senado da França aprova lei que presume legalidade em disparos efetuados por policiais",
-      "titulo_curto": "Senado da França aprova lei que presume legalidade em disparos efetuados por policiais",
-      "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Geopolitica_Radar",
-      "categoria": "Geopolitica_Relacoes",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 82,
-      "urgencia_score": 84,
-      "ttl_horas": 24,
-      "expires_at": "2026-11-21T21:42:32Z",
-      "palavras_chave_busca": [
-        "frança",
-        "senado",
-        "segurança pública",
-        "polícia",
-        "legislação"
-      ],
-      "palavras_chave": [
-        "frança",
-        "senado",
-        "segurança pública",
-        "polícia",
-        "legislação"
-      ],
-      "gatilho_vitrine": "Segundo reportado pelo G1 Mundo, o Senado francês aprovou em definitivo o projeto de lei que estabelece a presunção legal de legítima defesa em disparos efetuados por agentes de segurança. A proposta é contestada pela oposição e partidos de esquerda, que pretendem recorrer ao Conselho Constitucional.",
-      "resumo_pulso": "Segundo reportado pelo G1 Mundo, o Senado francês aprovou em definitivo o projeto de lei que estabelece a presunção legal de legítima defesa em disparos efetuados por agentes de segurança. A proposta é contestada pela oposição e partidos de esquerda, que pretendem recorrer ao Conselho Constitucional.",
-      "sintese_nerd": "Alteração direta na legislação de segurança pública e nas regras de engajamento policial na França.",
-      "impacto_pratico": "Alteração direta na legislação de segurança pública e nas regras de engajamento policial na França.",
-      "paises_envolvidos": [
-        "FR"
-      ],
-      "veiculos_origem": [
-        "G1 Mundo"
-      ],
-      "fontes_urls": [
-        "https://g1.globo.com/mundo/noticia/2026/11/20/senado-frances-lei-disparos-policiais.ghtml"
-      ],
-      "data_publicacao": "2026-11-20T21:25:43Z",
-      "updated_at": "2026-11-20T21:42:32Z"
-    },
-    {
-      "slug": "brasil-cobra-revisao-bancos-itaipu-crise-ueno-bank-paraguai",
-      "titulo_tema": "Brasil exige revisão de custódia bancária de Itaipu após liquidação do Ueno Bank no Paraguai",
-      "titulo_curto": "Brasil exige revisão de custódia bancária de Itaipu após liquidação do Ueno Bank no Paraguai",
-      "status": "novo",
-      "origem_pipeline": "pulso",
+      "origem_pipeline": "curadoria",
       "categoria_primaria": "Economia",
-      "categoria": "Economia_Comercio",
       "categorias_cruzadas": [
-        "Economia",
+        "Geopolitica_Radar",
         "Resumo_Ultimas"
       ],
       "rota_editoria": "/economia",
-      "relevancia_score": 84,
-      "urgencia_score": 83,
-      "ttl_horas": 24,
-      "expires_at": "2026-11-21T21:42:32Z",
+      "relevancia_score": 96,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-22T22:01:12Z",
       "palavras_chave_busca": [
-        "itaipu",
-        "ueno bank",
-        "paraguai",
-        "brasil",
-        "energia"
+        "inteligência artificial",
+        "nasdaq",
+        "anthropic",
+        "nvidia",
+        "bolha de ia",
+        "mercado financeiro",
+        "ipo"
       ],
-      "palavras_chave": [
-        "itaipu",
-        "ueno bank",
-        "paraguai",
-        "brasil",
-        "energia"
-      ],
-      "gatilho_vitrine": "Segundo apuração do Poder360, o governo brasileiro solicitou formalmente a revisão das regras para custódia de fundos da usina de Itaipu Binacional. A medida ocorre após a falência do Ueno Bank no Paraguai, instituição que retinha aproximadamente R$ 1 bilhão em recursos da entidade.",
-      "resumo_pulso": "Segundo apuração do Poder360, o governo brasileiro solicitou formalmente a revisão das regras para custódia de fundos da usina de Itaipu Binacional. A medida ocorre após a falência do Ueno Bank no Paraguai, instituição que retinha aproximadamente R$ 1 bilhão em recursos da entidade.",
-      "sintese_nerd": "Garantia de segurança financeira para os aportes estatais e para a negociação da tarifa de energia entre Brasil e Paraguai.",
-      "impacto_pratico": "Garantia de segurança financeira para os aportes estatais e para a negociação da tarifa de energia entre Brasil e Paraguai.",
-      "paises_envolvidos": [
-        "BR",
-        "PY"
-      ],
-      "veiculos_origem": [
-        "Poder360"
-      ],
-      "fontes_urls": [
-        "https://www.poder360.com.br/poder-infra/brasil-cobra-revisao-de-bancos-da-itaipu-apos-crise-no-paraguai/"
-      ],
-      "data_publicacao": "2026-11-20T21:11:02Z",
-      "updated_at": "2026-11-20T21:42:32Z"
+      "gatilho_vitrine": "Destaque na editoria de Economia e no Radar Global cruzando o impacto do tombo das techs americanas nos ADRs e mercados globais.",
+      "sintese_nerd": "O tombo acentuado nas ações de gigantes de tecnologia como Nvidia e o recuo pós-IPO da Anthropic acendem alertas globais sobre uma possível bolha especulativa no setor de inteligência artificial. Esse choque de realidade em Wall Street repercute imediatamente nos mercados emergentes e pressiona os ativos brasileiros negociados no exterior.",
+      "data_publicacao": "2026-11-20T22:01:12Z",
+      "updated_at": "2026-11-20T22:01:12Z"
     },
     {
-      "slug": "trump-ameaca-taxar-empresas-eua-centros-dados-ia-exterior",
-      "titulo_tema": "Trump ameaça aplicar impostos sobre empresas de IA dos EUA que construírem data centers no exterior",
-      "titulo_curto": "Trump ameaça aplicar impostos sobre empresas de IA dos EUA que construírem data centers no exterior",
+      "slug": "acordo-trump-filipinas-impacto-agro-brasil",
+      "titulo_tema": "Ameaça de Trump de desviar comércio agrícola das Filipinas afeta o agronegócio brasileiro",
       "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Economia",
-      "categoria": "Economia_Comercio",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
       "categorias_cruzadas": [
-        "Economia",
+        "Economia"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 92,
+      "ttl_horas": 72,
+      "expires_at": "2026-11-23T22:01:12Z",
+      "palavras_chave_busca": [
+        "donald trump",
+        "filipinas",
+        "agronegócio",
+        "carne suína",
+        "comércio exterior",
+        "exportações do brasil"
+      ],
+      "gatilho_vitrine": "Posicionar no Radar Geopolítico e em Economia avaliando os riscos das pressões protecionistas norte-asiáticas sobre as exportações de carne suína do Brasil.",
+      "sintese_nerd": "As declarações do presidente dos EUA, Donald Trump, sobre um acordo para priorizar produtos agrícolas americanos nas Filipinas ameaçam diretamente o principal mercado comprador da carne suína brasileira. A investida geopolítica força o Brasil a reavaliar suas estratégias de exportação e diplomacia comercial na Ásia.",
+      "data_publicacao": "2026-11-20T22:01:12Z",
+      "updated_at": "2026-11-20T22:01:12Z"
+    },
+    {
+      "slug": "internacao-ex-presidente-bolsonaro-brasilia",
+      "titulo_tema": "Ex-presidente Jair Bolsonaro é internado em Brasília com quadro de distensão abdominal",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Politica",
+      "categorias_cruzadas": [
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/politica",
+      "relevancia_score": 88,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-21T22:01:12Z",
+      "palavras_chave_busca": [
+        "jair bolsonaro",
+        "hospital df star",
+        "política nacional",
+        "prisão domiciliar",
+        "saúde"
+      ],
+      "gatilho_vitrine": "Manter no topo da editoria de Política com foco estritamente factual e institucional sobre a internação hospitalar e os desdobramentos de segurança.",
+      "sintese_nerd": "O ex-presidente Jair Bolsonaro foi hospitalizado em Brasília após apresentar fortes dores e distensão abdominal, interrompendo temporariamente o regime de prisão domiciliar. O fato mobiliza a cobertura da política nacional e gera repercussões institucionais imediatas entre seus aliados e o poder judiciário.",
+      "data_publicacao": "2026-11-20T22:01:12Z",
+      "updated_at": "2026-11-20T22:01:12Z"
+    },
+    {
+      "slug": "bitcoin-minima-dolar-forte-fed",
+      "titulo_tema": "Bitcoin cai abaixo de US$ 57 mil pressionado por dólar forte e temor de juros nos EUA",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
         "Resumo_Ultimas"
       ],
       "rota_editoria": "/economia",
       "relevancia_score": 85,
-      "urgencia_score": 86,
-      "ttl_horas": 24,
-      "expires_at": "2026-11-21T21:42:32Z",
+      "ttl_horas": 36,
+      "expires_at": "2026-11-22T10:01:12Z",
       "palavras_chave_busca": [
-        "donald trump",
-        "inteligência artificial",
-        "data centers",
-        "eua",
-        "tarifas"
+        "bitcoin",
+        "criptomoedas",
+        "federal reserve",
+        "taxa de juros",
+        "dólar forte",
+        "mercados"
       ],
-      "palavras_chave": [
-        "donald trump",
-        "inteligência artificial",
-        "data centers",
-        "eua",
-        "tarifas"
-      ],
-      "gatilho_vitrine": "Segundo a Al Jazeera English, o presidente dos EUA, Donald Trump, afirmou que aplicará elevadas tarifas contra empresas americanas de tecnologia que instalarem centros de dados de inteligência artificial fora do país. A medida visa forçar o investimento e a infraestrutura do setor dentro do território americano.",
-      "resumo_pulso": "Segundo a Al Jazeera English, o presidente dos EUA, Donald Trump, afirmou que aplicará elevadas tarifas contra empresas americanas de tecnologia que instalarem centros de dados de inteligência artificial fora do país. A medida visa forçar o investimento e a infraestrutura do setor dentro do território americano.",
-      "sintese_nerd": "Possível encarecimento de serviços de IA e revisão de planos de expansão internacional de grandes empresas tecnológicas.",
-      "impacto_pratico": "Possível encarecimento de serviços de IA e revisão de planos de expansão internacional de grandes empresas tecnológicas.",
-      "paises_envolvidos": [
-        "US"
-      ],
-      "veiculos_origem": [
-        "Al Jazeera English"
-      ],
-      "fontes_urls": [
-        "https://www.aljazeera.com/video/newsfeed/2026/11/20/aje-onl-nf_trump-tax-us-tech-firms-ai-data-centres-abroad-201126?traffic_source=rss"
-      ],
-      "data_publicacao": "2026-11-20T21:10:53Z",
-      "updated_at": "2026-11-20T21:42:32Z"
+      "gatilho_vitrine": "Fixar na editoria de Economia conectando a retração das criptomoedas com as perspectivas macroeconômicas globais do Fed.",
+      "sintese_nerd": "A forte valorização global do dólar e as incertezas em torno da política monetária do Federal Reserve empurraram o Bitcoin para a mínima de dois anos, cotado a US$ 57 mil. Esse movimento reflete a fuga de investidores de ativos de risco diante de um cenário de juros globais mais altos por mais tempo.",
+      "data_publicacao": "2026-11-20T22:01:12Z",
+      "updated_at": "2026-11-20T22:01:12Z"
     },
     {
-      "slug": "moraes-vota-manter-apreensao-passaporte-flavio-bolsonaro",
-      "titulo_tema": "Moraes vota no STF para manter apreensão de passaportes de Flávio Bolsonaro",
-      "titulo_curto": "Moraes vota no STF para manter apreensão de passaportes de Flávio Bolsonaro",
+      "slug": "desigualdade-racial-pre-natal-bebes-pretos-sus",
       "status": "novo",
+      "categoria": "Sociedade_Cultura",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-21T21:42:32Z",
+      "updated_at": "2026-11-20T21:42:32Z",
+      "fontes_urls": [
+        "https://g1.globo.com/politica/noticia/2026/11/20/maes-pretas-fazem-menos-consultas-de-pre-natal-e-seus-bebes-tem-mais-chance-de-nascer-com-baixo-peso-mostram-dados-do-sus.ghtml"
+      ],
+      "titulo_tema": "Dados do SUS apontam maior prematuridade e menor acompanhamento pré-natal entre mães negras",
+      "resumo_pulso": "Conforme levantamento do G1 Política baseado em dados do Datasus referentes a 2026, gestantes pretas passam por menos consultas de pré-natal em comparação com gestantes brancas. O estudo indica ainda que bebês de mães negras apresentam taxas mais elevadas de prematuridade e baixo peso no nascimento.",
+      "sintese_nerd": "Sinaliza a urgência de direcionamento de políticas públicas de saúde e assistência pré-natal para gestantes negras no SUS.",
+      "titulo_curto": "Dados do SUS apontam maior prematuridade e menor acompanhamento pré-natal entre mães negras",
+      "rota_editoria": "/cultura",
+      "palavras_chave": [
+        "sus",
+        "saúde pública",
+        "mães negras",
+        "pré-natal",
+        "desigualdade racial"
+      ],
+      "urgencia_score": 82,
+      "data_publicacao": "2026-11-20T21:28:06Z",
+      "gatilho_vitrine": "Conforme levantamento do G1 Política baseado em dados do Datasus referentes a 2026, gestantes pretas passam por menos consultas de pré-natal em comparação com gestantes brancas. O estudo indica ainda que bebês de mães negras apresentam taxas mais elevadas de prematuridade e baixo peso no nascimento.",
+      "impacto_pratico": "Sinaliza a urgência de direcionamento de políticas públicas de saúde e assistência pré-natal para gestantes negras no SUS.",
       "origem_pipeline": "pulso",
-      "categoria_primaria": "Geopolitica_Radar",
-      "categoria": "Geopolitica_Relacoes",
+      "veiculos_origem": [
+        "G1 Política"
+      ],
+      "relevancia_score": 86,
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "categoria_primaria": "Cultura",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
       ],
+      "palavras_chave_busca": [
+        "sus",
+        "saúde pública",
+        "mães negras",
+        "pré-natal",
+        "desigualdade racial"
+      ]
+    },
+    {
+      "slug": "senado-frances-aprova-lei-presuncao-legalidade-disparos-policiais",
+      "status": "novo",
+      "categoria": "Geopolitica_Relacoes",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-21T21:42:32Z",
+      "updated_at": "2026-11-20T21:42:32Z",
+      "fontes_urls": [
+        "https://g1.globo.com/mundo/noticia/2026/11/20/senado-frances-lei-disparos-policiais.ghtml"
+      ],
+      "titulo_tema": "Senado da França aprova lei que presume legalidade em disparos efetuados por policiais",
+      "resumo_pulso": "Segundo reportado pelo G1 Mundo, o Senado francês aprovou em definitivo o projeto de lei que estabelece a presunção legal de legítima defesa em disparos efetuados por agentes de segurança. A proposta é contestada pela oposição e partidos de esquerda, que pretendem recorrer ao Conselho Constitucional.",
+      "sintese_nerd": "Alteração direta na legislação de segurança pública e nas regras de engajamento policial na França.",
+      "titulo_curto": "Senado da França aprova lei que presume legalidade em disparos efetuados por policiais",
       "rota_editoria": "/radar",
-      "relevancia_score": 87,
-      "urgencia_score": 88,
+      "palavras_chave": [
+        "frança",
+        "senado",
+        "segurança pública",
+        "polícia",
+        "legislação"
+      ],
+      "urgencia_score": 84,
+      "data_publicacao": "2026-11-20T21:25:43Z",
+      "gatilho_vitrine": "Segundo reportado pelo G1 Mundo, o Senado francês aprovou em definitivo o projeto de lei que estabelece a presunção legal de legítima defesa em disparos efetuados por agentes de segurança. A proposta é contestada pela oposição e partidos de esquerda, que pretendem recorrer ao Conselho Constitucional.",
+      "impacto_pratico": "Alteração direta na legislação de segurança pública e nas regras de engajamento policial na França.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "G1 Mundo"
+      ],
+      "relevancia_score": 82,
+      "paises_envolvidos": [
+        "FR"
+      ],
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "frança",
+        "senado",
+        "segurança pública",
+        "polícia",
+        "legislação"
+      ]
+    },
+    {
+      "slug": "brasil-cobra-revisao-bancos-itaipu-crise-ueno-bank-paraguai",
+      "status": "novo",
+      "categoria": "Economia_Comercio",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-21T21:42:32Z",
+      "updated_at": "2026-11-20T21:42:32Z",
+      "fontes_urls": [
+        "https://www.poder360.com.br/poder-infra/brasil-cobra-revisao-de-bancos-da-itaipu-apos-crise-no-paraguai/"
+      ],
+      "titulo_tema": "Brasil exige revisão de custódia bancária de Itaipu após liquidação do Ueno Bank no Paraguai",
+      "resumo_pulso": "Segundo apuração do Poder360, o governo brasileiro solicitou formalmente a revisão das regras para custódia de fundos da usina de Itaipu Binacional. A medida ocorre após a falência do Ueno Bank no Paraguai, instituição que retinha aproximadamente R$ 1 bilhão em recursos da entidade.",
+      "sintese_nerd": "Garantia de segurança financeira para os aportes estatais e para a negociação da tarifa de energia entre Brasil e Paraguai.",
+      "titulo_curto": "Brasil exige revisão de custódia bancária de Itaipu após liquidação do Ueno Bank no Paraguai",
+      "rota_editoria": "/economia",
+      "palavras_chave": [
+        "itaipu",
+        "ueno bank",
+        "paraguai",
+        "brasil",
+        "energia"
+      ],
+      "urgencia_score": 83,
+      "data_publicacao": "2026-11-20T21:11:02Z",
+      "gatilho_vitrine": "Segundo apuração do Poder360, o governo brasileiro solicitou formalmente a revisão das regras para custódia de fundos da usina de Itaipu Binacional. A medida ocorre após a falência do Ueno Bank no Paraguai, instituição que retinha aproximadamente R$ 1 bilhão em recursos da entidade.",
+      "impacto_pratico": "Garantia de segurança financeira para os aportes estatais e para a negociação da tarifa de energia entre Brasil e Paraguai.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "Poder360"
+      ],
+      "relevancia_score": 84,
+      "paises_envolvidos": [
+        "BR",
+        "PY"
+      ],
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "itaipu",
+        "ueno bank",
+        "paraguai",
+        "brasil",
+        "energia"
+      ]
+    },
+    {
+      "slug": "trump-ameaca-taxar-empresas-eua-centros-dados-ia-exterior",
+      "status": "novo",
+      "categoria": "Economia_Comercio",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-21T21:42:32Z",
+      "updated_at": "2026-11-20T21:42:32Z",
+      "fontes_urls": [
+        "https://www.aljazeera.com/video/newsfeed/2026/11/20/aje-onl-nf_trump-tax-us-tech-firms-ai-data-centres-abroad-201126?traffic_source=rss"
+      ],
+      "titulo_tema": "Trump ameaça aplicar impostos sobre empresas de IA dos EUA que construírem data centers no exterior",
+      "resumo_pulso": "Segundo a Al Jazeera English, o presidente dos EUA, Donald Trump, afirmou que aplicará elevadas tarifas contra empresas americanas de tecnologia que instalarem centros de dados de inteligência artificial fora do país. A medida visa forçar o investimento e a infraestrutura do setor dentro do território americano.",
+      "sintese_nerd": "Possível encarecimento de serviços de IA e revisão de planos de expansão internacional de grandes empresas tecnológicas.",
+      "titulo_curto": "Trump ameaça aplicar impostos sobre empresas de IA dos EUA que construírem data centers no exterior",
+      "rota_editoria": "/economia",
+      "palavras_chave": [
+        "donald trump",
+        "inteligência artificial",
+        "data centers",
+        "eua",
+        "tarifas"
+      ],
+      "urgencia_score": 86,
+      "data_publicacao": "2026-11-20T21:10:53Z",
+      "gatilho_vitrine": "Segundo a Al Jazeera English, o presidente dos EUA, Donald Trump, afirmou que aplicará elevadas tarifas contra empresas americanas de tecnologia que instalarem centros de dados de inteligência artificial fora do país. A medida visa forçar o investimento e a infraestrutura do setor dentro do território americano.",
+      "impacto_pratico": "Possível encarecimento de serviços de IA e revisão de planos de expansão internacional de grandes empresas tecnológicas.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "Al Jazeera English"
+      ],
+      "relevancia_score": 85,
+      "paises_envolvidos": [
+        "US"
+      ],
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "donald trump",
+        "inteligência artificial",
+        "data centers",
+        "eua",
+        "tarifas"
+      ]
+    },
+    {
+      "slug": "moraes-vota-manter-apreensao-passaporte-flavio-bolsonaro",
+      "status": "novo",
+      "categoria": "Geopolitica_Relacoes",
       "ttl_horas": 18,
       "expires_at": "2026-11-21T15:42:32Z",
-      "palavras_chave_busca": [
-        "alexandre de moraes",
-        "flávio bolsonaro",
-        "stf",
-        "passaportes",
-        "justiça"
+      "updated_at": "2026-11-20T21:42:32Z",
+      "fontes_urls": [
+        "https://agenciabrasil.ebc.com.br/justica/noticia/2026-11/moraes-vota-para-manter-apreensao-de-passaportes-de-flavio-bolsonaro"
       ],
+      "titulo_tema": "Moraes vota no STF para manter apreensão de passaportes de Flávio Bolsonaro",
+      "resumo_pulso": "Conforme divulgado pela Agência Brasil, o ministro Alexandre de Moraes votou no plenário virtual do STF pela manutenção da decisão que apreendeu os passaportes e proibiu o senador Flávio Bolsonaro de deixar o país. O voto ocorreu na análise do recurso apresentado pela defesa do parlamentar.",
+      "sintese_nerd": "Manutenção das restrições de viagem internacionais impostas ao senador pela Justiça Federal.",
+      "titulo_curto": "Moraes vota no STF para manter apreensão de passaportes de Flávio Bolsonaro",
+      "rota_editoria": "/radar",
       "palavras_chave": [
         "alexandre de moraes",
         "flávio bolsonaro",
@@ -225,21 +321,30 @@
         "passaportes",
         "justiça"
       ],
+      "urgencia_score": 88,
+      "data_publicacao": "2026-11-20T20:55:00Z",
       "gatilho_vitrine": "Conforme divulgado pela Agência Brasil, o ministro Alexandre de Moraes votou no plenário virtual do STF pela manutenção da decisão que apreendeu os passaportes e proibiu o senador Flávio Bolsonaro de deixar o país. O voto ocorreu na análise do recurso apresentado pela defesa do parlamentar.",
-      "resumo_pulso": "Conforme divulgado pela Agência Brasil, o ministro Alexandre de Moraes votou no plenário virtual do STF pela manutenção da decisão que apreendeu os passaportes e proibiu o senador Flávio Bolsonaro de deixar o país. O voto ocorreu na análise do recurso apresentado pela defesa do parlamentar.",
-      "sintese_nerd": "Manutenção das restrições de viagem internacionais impostas ao senador pela Justiça Federal.",
       "impacto_pratico": "Manutenção das restrições de viagem internacionais impostas ao senador pela Justiça Federal.",
-      "paises_envolvidos": [
-        "BR"
-      ],
+      "origem_pipeline": "pulso",
       "veiculos_origem": [
         "Agência Brasil (EBC)"
       ],
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/justica/noticia/2026-11/moraes-vota-para-manter-apreensao-de-passaportes-de-flavio-bolsonaro"
+      "relevancia_score": 87,
+      "paises_envolvidos": [
+        "BR"
       ],
-      "data_publicacao": "2026-11-20T20:55:00Z",
-      "updated_at": "2026-11-20T21:42:32Z"
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "alexandre de moraes",
+        "flávio bolsonaro",
+        "stf",
+        "passaportes",
+        "justiça"
+      ]
     },
     {
       "slug": "trump-afirma-que-ha-boa-chance-de-acordo-de-paz-na-ucrania",
@@ -341,28 +446,20 @@
     },
     {
       "slug": "bolsonaro-vai-a-hospital-apos-sentir-dores-abdominais",
-      "titulo_tema": "Bolsonaro é internado no Hospital DF Star em Brasília com quadro de dor abdominal",
-      "titulo_curto": "Bolsonaro é internado no Hospital DF Star em Brasília com quadro de dor abdominal",
       "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Geopolitica_Radar",
       "categoria": "Geopolitica_Relacoes",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 91,
-      "urgencia_score": 93,
       "ttl_horas": 12,
       "expires_at": "2026-11-21T08:21:55Z",
-      "palavras_chave_busca": [
-        "jair bolsonaro",
-        "hospital df star",
-        "internação",
-        "stf",
-        "saúde"
+      "updated_at": "2026-11-20T21:42:32Z",
+      "fontes_urls": [
+        "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/bolsonaro-e-internado-com-quadro-de-dor-e-distens%C3%A3o-abdominal",
+        "https://g1.globo.com/politica/noticia/2026/11/20/bolsonaro-hospital-apos-sentir-dores-abdominais.ghtml"
       ],
+      "titulo_tema": "Bolsonaro é internado no Hospital DF Star em Brasília com quadro de dor abdominal",
+      "resumo_pulso": "Segundo comunicado médico oficial da Agência Gov e apurações do G1 e JOTA, o ex-presidente Jair Bolsonaro foi internado no Hospital DF Star com quadro de dor e distensão abdominal. Ele passa por exames e avaliação diagnóstica enquanto cumpre prisão domiciliar sob autorização do STF.",
+      "sintese_nerd": "Acompanhamento do estado de saúde e da situação de custódia do ex-presidente em Brasília.",
+      "titulo_curto": "Bolsonaro é internado no Hospital DF Star em Brasília com quadro de dor abdominal",
+      "rota_editoria": "/radar",
       "palavras_chave": [
         "jair bolsonaro",
         "hospital df star",
@@ -370,24 +467,32 @@
         "stf",
         "saúde"
       ],
+      "urgencia_score": 93,
+      "data_publicacao": "2026-11-20T20:15:13Z",
       "gatilho_vitrine": "Segundo comunicado médico oficial da Agência Gov e apurações do G1 e JOTA, o ex-presidente Jair Bolsonaro foi internado no Hospital DF Star com quadro de dor e distensão abdominal. Ele passa por exames e avaliação diagnóstica enquanto cumpre prisão domiciliar sob autorização do STF.",
-      "resumo_pulso": "Segundo comunicado médico oficial da Agência Gov e apurações do G1 e JOTA, o ex-presidente Jair Bolsonaro foi internado no Hospital DF Star com quadro de dor e distensão abdominal. Ele passa por exames e avaliação diagnóstica enquanto cumpre prisão domiciliar sob autorização do STF.",
-      "sintese_nerd": "Acompanhamento do estado de saúde e da situação de custódia do ex-presidente em Brasília.",
       "impacto_pratico": "Acompanhamento do estado de saúde e da situação de custódia do ex-presidente em Brasília.",
-      "paises_envolvidos": [
-        "BR"
-      ],
+      "origem_pipeline": "pulso",
       "veiculos_origem": [
         "Agência Gov (Planalto)",
         "G1 Política",
         "JOTA Info"
       ],
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/bolsonaro-e-internado-com-quadro-de-dor-e-distens%C3%A3o-abdominal",
-        "https://g1.globo.com/politica/noticia/2026/11/20/bolsonaro-hospital-apos-sentir-dores-abdominais.ghtml"
+      "relevancia_score": 91,
+      "paises_envolvidos": [
+        "BR"
       ],
-      "data_publicacao": "2026-11-20T20:15:13Z",
-      "updated_at": "2026-11-20T21:42:32Z"
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "jair bolsonaro",
+        "hospital df star",
+        "internação",
+        "stf",
+        "saúde"
+      ]
     },
     {
       "slug": "denuncias-de-racismo-no-brasil-atingem-recorde-historico",
@@ -727,163 +832,127 @@
         "missão de paz",
         "explosão"
       ]
-    },
+    }
+  ],
+  "temas_curadoria": [
     {
-      "slug": "trump-critica-fed-juros-altos",
+      "slug": "bolha-ia-nasdaq-desaba-acoes-anthropic-nvidia",
+      "titulo_tema": "Despencar das ações de IA nos EUA atinge Wall Street e gera temor de bolha tecnológica",
       "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-22T19:17:25Z",
-      "updated_at": "2026-11-20T19:17:25Z",
-      "titulo_tema": "Trump critica Fed por juros altos e acusa banco central de politização",
-      "sintese_nerd": "A pressão pública de Donald Trump sobre o Federal Reserve por cortes nas taxas de juros acirra o debate sobre a independência dos bancos centrais globais. Para o Brasil, a instabilidade na política monetária norte-americana afeta diretamente a fuga de capitais, a inflação importada e a cotação do dólar.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-20T19:17:25Z",
-      "gatilho_vitrine": "Destacar na Home como a pressão política sobre autoridades monetárias globais reverbera nos mercados internacionais e impacta o câmbio.",
       "origem_pipeline": "curadoria",
-      "relevancia_score": 92,
       "categoria_primaria": "Economia",
       "categorias_cruzadas": [
-        "Politica",
-        "Geopolitica_Radar"
+        "Geopolitica_Radar",
+        "Resumo_Ultimas"
       ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 96,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-22T22:01:12Z",
+      "palavras_chave_busca": [
+        "inteligência artificial",
+        "nasdaq",
+        "anthropic",
+        "nvidia",
+        "bolha de ia",
+        "mercado financeiro",
+        "ipo"
+      ],
+      "gatilho_vitrine": "Destaque na editoria de Economia e no Radar Global cruzando o impacto do tombo das techs americanas nos ADRs e mercados globais.",
+      "sintese_nerd": "O tombo acentuado nas ações de gigantes de tecnologia como Nvidia e o recuo pós-IPO da Anthropic acendem alertas globais sobre uma possível bolha especulativa no setor de inteligência artificial. Esse choque de realidade em Wall Street repercute imediatamente nos mercados emergentes e pressiona os ativos brasileiros negociados no exterior.",
+      "data_publicacao": "2026-11-20T22:01:12Z",
+      "updated_at": "2026-11-20T22:01:12Z"
+    },
+    {
+      "slug": "acordo-trump-filipinas-impacto-agro-brasil",
+      "titulo_tema": "Ameaça de Trump de desviar comércio agrícola das Filipinas afeta o agronegócio brasileiro",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 92,
+      "ttl_horas": 72,
+      "expires_at": "2026-11-23T22:01:12Z",
       "palavras_chave_busca": [
         "donald trump",
-        "fed",
-        "taxa de juros",
-        "eua",
-        "banco central",
-        "economia americana"
-      ]
-    },
-    {
-      "slug": "acoes-nvidia-pior-sequencia-desde-2008",
-      "status": "novo",
-      "ttl_horas": 72,
-      "expires_at": "2026-11-23T19:17:25Z",
-      "updated_at": "2026-11-20T19:17:25Z",
-      "titulo_tema": "Ações da Nvidia enfrentam pior sequência de quedas na bolsa desde 2008",
-      "sintese_nerd": "A retração histórica nas ações da Nvidia na Nasdaq revela um ajuste severo nas expectativas de valorização do setor de inteligência artificial e semicondutores. Essa desvalorização em cadeia afeta portfólios globais e demonstra os riscos sistêmicos concentrados na cadeia de suprimentos tecnológica.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-20T19:17:25Z",
-      "gatilho_vitrine": "Posicionar na seção de Economia e Tecnologia para explicar o momento crítico do setor de semicondutores e o impacto nas big techs.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 90,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Cultura",
-        "Geopolitica_Radar"
+        "filipinas",
+        "agronegócio",
+        "carne suína",
+        "comércio exterior",
+        "exportações do brasil"
       ],
-      "palavras_chave_busca": [
-        "nvidia",
-        "nasdaq",
-        "ações de tecnologia",
-        "inteligência artificial",
-        "bolsa de valores",
-        "crise tech"
-      ]
+      "gatilho_vitrine": "Posicionar no Radar Geopolítico e em Economia avaliando os riscos das pressões protecionistas norte-asiáticas sobre as exportações de carne suína do Brasil.",
+      "sintese_nerd": "As declarações do presidente dos EUA, Donald Trump, sobre um acordo para priorizar produtos agrícolas americanos nas Filipinas ameaçam diretamente o principal mercado comprador da carne suína brasileira. A investida geopolítica força o Brasil a reavaliar suas estratégias de exportação e diplomacia comercial na Ásia.",
+      "data_publicacao": "2026-11-20T22:01:12Z",
+      "updated_at": "2026-11-20T22:01:12Z"
     },
     {
-      "slug": "tempestades-severas-rio-grande-do-sul",
+      "slug": "internacao-ex-presidente-bolsonaro-brasilia",
+      "titulo_tema": "Ex-presidente Jair Bolsonaro é internado em Brasília com quadro de distensão abdominal",
       "status": "novo",
-      "ttl_horas": 36,
-      "expires_at": "2026-11-22T07:17:25Z",
-      "updated_at": "2026-11-20T19:17:25Z",
-      "titulo_tema": "Tempestades severas deixam mortos e destroços no Rio Grande do Sul",
-      "sintese_nerd": "Eventos climáticos extremos recorrentes no Sul do Brasil impõem custos bilionários de reconstrução e evidenciam a vulnerabilidade da infraestrutura urbana e agrícola local. O impacto fiscal exige repasses emergenciais e coloca a pauta climática no centro do planejamento econômico estadual e federal.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-20T19:17:25Z",
-      "gatilho_vitrine": "Colocar no Radar de Impacto para monitorar os custos econômicos e sociais de eventos climáticos extremos na infraestrutura regional.",
       "origem_pipeline": "curadoria",
+      "categoria_primaria": "Politica",
+      "categorias_cruzadas": [
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/politica",
       "relevancia_score": 88,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Politica"
-      ],
+      "ttl_horas": 24,
+      "expires_at": "2026-11-21T22:01:12Z",
       "palavras_chave_busca": [
-        "rio grande do sul",
-        "defesa civil",
-        "tempestades",
-        "mudanças climáticas",
-        "eduardo leite",
-        "desastres naturais"
-      ]
+        "jair bolsonaro",
+        "hospital df star",
+        "política nacional",
+        "prisão domiciliar",
+        "saúde"
+      ],
+      "gatilho_vitrine": "Manter no topo da editoria de Política com foco estritamente factual e institucional sobre a internação hospitalar e os desdobramentos de segurança.",
+      "sintese_nerd": "O ex-presidente Jair Bolsonaro foi hospitalizado em Brasília após apresentar fortes dores e distensão abdominal, interrompendo temporariamente o regime de prisão domiciliar. O fato mobiliza a cobertura da política nacional e gera repercussões institucionais imediatas entre seus aliados e o poder judiciário.",
+      "data_publicacao": "2026-11-20T22:01:12Z",
+      "updated_at": "2026-11-20T22:01:12Z"
     },
     {
-      "slug": "escalada-guerra-ucrania-ataques-pontes",
+      "slug": "bitcoin-minima-dolar-forte-fed",
+      "titulo_tema": "Bitcoin cai abaixo de US$ 57 mil pressionado por dólar forte e temor de juros nos EUA",
       "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-22T19:17:25Z",
-      "updated_at": "2026-11-20T19:17:25Z",
-      "titulo_tema": "Escalada na Guerra da Ucrânia com ataques a pontes e infraestrutura crítica",
-      "sintese_nerd": "A intensificação dos ataques russos contra pontes e centros logísticos na Ucrânia, combinada com novas sanções europeias, aprofunda a fragmentação comercial do continente. Essa dinâmica prolonga a inflação de insumos estratégicos e grãos no mercado internacional, impactando a cadeia de suprimentos global.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-20T19:17:25Z",
-      "gatilho_vitrine": "Fixar na editoria de Geopolitica Radar para cobrir o acirramento das hostilidades e as repercussões diplomáticas na Europa.",
       "origem_pipeline": "curadoria",
-      "relevancia_score": 86,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Politica"
-      ],
-      "palavras_chave_busca": [
-        "guerra na ucrânia",
-        "rússia",
-        "kyiv",
-        "sanções internacionais",
-        "geopolitica global",
-        "otan"
-      ]
-    },
-    {
-      "slug": "bitcoin-abaixo-de-sessenta-mil-dolares",
-      "status": "novo",
-      "ttl_horas": 36,
-      "expires_at": "2026-11-22T07:17:25Z",
-      "updated_at": "2026-11-20T19:17:25Z",
-      "titulo_tema": "Bitcoin despenca abaixo de US$ 60 mil pressionado por saques em ETFs e juros",
-      "sintese_nerd": "A queda do Bitcoin abaixo do patamar de US$ 60 mil reflete a retirada de capital institucional via ETFs diante da perspectiva de juros elevados por mais tempo nos Estados Unidos. A alta correlação com ativos de risco demonstra a sensibilidade do mercado cripto aos rumos da liquidez global.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-20T19:17:25Z",
-      "gatilho_vitrine": "Destacar na editoria de Economia para alertar investidores sobre a correlação entre política monetária restritiva e o mercado cripto.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 85,
       "categoria_primaria": "Economia",
       "categorias_cruzadas": [
-        "Geopolitica_Radar"
+        "Resumo_Ultimas"
       ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 85,
+      "ttl_horas": 36,
+      "expires_at": "2026-11-22T10:01:12Z",
       "palavras_chave_busca": [
         "bitcoin",
         "criptomoedas",
-        "etfs de bitcoin",
-        "mercado financeiro",
         "federal reserve",
-        "economia global"
-      ]
+        "taxa de juros",
+        "dólar forte",
+        "mercados"
+      ],
+      "gatilho_vitrine": "Fixar na editoria de Economia conectando a retração das criptomoedas com as perspectivas macroeconômicas globais do Fed.",
+      "sintese_nerd": "A forte valorização global do dólar e as incertezas em torno da política monetária do Federal Reserve empurraram o Bitcoin para a mínima de dois anos, cotado a US$ 57 mil. Esse movimento reflete a fuga de investidores de ativos de risco diante de um cenário de juros globais mais altos por mais tempo.",
+      "data_publicacao": "2026-11-20T22:01:12Z",
+      "updated_at": "2026-11-20T22:01:12Z"
     }
   ],
   "noticias_quentes": [
     {
       "slug": "desigualdade-racial-pre-natal-bebes-pretos-sus",
-      "titulo_curto": "Dados do SUS apontam maior prematuridade e menor acompanhamento pré-natal entre mães negras",
-      "resumo_pulso": "Conforme levantamento do G1 Política baseado em dados do Datasus referentes a 2026, gestantes pretas passam por menos consultas de pré-natal em comparação com gestantes brancas. O estudo indica ainda que bebês de mães negras apresentam taxas mais elevadas de prematuridade e baixo peso no nascimento.",
-      "impacto_pratico": "Sinaliza a urgência de direcionamento de políticas públicas de saúde e assistência pré-natal para gestantes negras no SUS.",
       "categoria": "Sociedade_Cultura",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "urgencia_score": 82,
-      "relevancia_score": 86,
-      "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 12,
-      "veiculos_origem": [
-        "G1 Política"
-      ],
+      "expires_at": "2026-11-21T21:42:32Z",
+      "updated_at": "2026-11-20T21:42:32Z",
       "fontes_urls": [
         "https://g1.globo.com/politica/noticia/2026/11/20/maes-pretas-fazem-menos-consultas-de-pre-natal-e-seus-bebes-tem-mais-chance-de-nascer-com-baixo-peso-mostram-dados-do-sus.ghtml"
       ],
+      "resumo_pulso": "Conforme levantamento do G1 Política baseado em dados do Datasus referentes a 2026, gestantes pretas passam por menos consultas de pré-natal em comparação com gestantes brancas. O estudo indica ainda que bebês de mães negras apresentam taxas mais elevadas de prematuridade e baixo peso no nascimento.",
+      "titulo_curto": "Dados do SUS apontam maior prematuridade e menor acompanhamento pré-natal entre mães negras",
       "palavras_chave": [
         "SUS",
         "Saúde Pública",
@@ -891,37 +960,37 @@
         "Pré-natal",
         "Desigualdade Racial"
       ],
+      "urgencia_score": 82,
       "data_publicacao": "2026-11-20T21:28:06Z",
+      "impacto_pratico": "Sinaliza a urgência de direcionamento de políticas públicas de saúde e assistência pré-natal para gestantes negras no SUS.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "G1 Política"
+      ],
+      "relevancia_score": 86,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "BR"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "Movimentos sociais e parlamentares debatem investimentos em saúde, educação e transição ecológica",
           "url_existente": "https://www.rodandoomundo.com.br/saude",
-          "motivo_conexao": "Artigo contextualiza o debate sobre execução orçamentária e melhorias de acesso no Sistema Único de Saúde."
+          "motivo_conexao": "Artigo contextualiza o debate sobre execução orçamentária e melhorias de acesso no Sistema Único de Saúde.",
+          "titulo_existente": "Movimentos sociais e parlamentares debatem investimentos em saúde, educação e transição ecológica"
         }
-      ],
-      "expires_at": "2026-11-21T21:42:32Z",
-      "updated_at": "2026-11-20T21:42:32Z"
+      ]
     },
     {
       "slug": "senado-frances-aprova-lei-presuncao-legalidade-disparos-policiais",
-      "titulo_curto": "Senado da França aprova lei que presume legalidade em disparos efetuados por policiais",
-      "resumo_pulso": "Segundo reportado pelo G1 Mundo, o Senado francês aprovou em definitivo o projeto de lei que estabelece a presunção legal de legítima defesa em disparos efetuados por agentes de segurança. A proposta é contestada pela oposição e partidos de esquerda, que pretendem recorrer ao Conselho Constitucional.",
-      "impacto_pratico": "Alteração direta na legislação de segurança pública e nas regras de engajamento policial na França.",
       "categoria": "Geopolitica_Relacoes",
-      "paises_envolvidos": [
-        "FR"
-      ],
-      "urgencia_score": 84,
-      "relevancia_score": 82,
-      "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 10,
-      "veiculos_origem": [
-        "G1 Mundo"
-      ],
+      "expires_at": "2026-11-21T21:42:32Z",
+      "updated_at": "2026-11-20T21:42:32Z",
       "fontes_urls": [
         "https://g1.globo.com/mundo/noticia/2026/11/20/senado-frances-lei-disparos-policiais.ghtml"
       ],
+      "resumo_pulso": "Segundo reportado pelo G1 Mundo, o Senado francês aprovou em definitivo o projeto de lei que estabelece a presunção legal de legítima defesa em disparos efetuados por agentes de segurança. A proposta é contestada pela oposição e partidos de esquerda, que pretendem recorrer ao Conselho Constitucional.",
+      "titulo_curto": "Senado da França aprova lei que presume legalidade em disparos efetuados por policiais",
       "palavras_chave": [
         "França",
         "Senado",
@@ -929,32 +998,31 @@
         "Polícia",
         "Legislação"
       ],
+      "urgencia_score": 84,
       "data_publicacao": "2026-11-20T21:25:43Z",
-      "links_internos_relacionados": [],
-      "expires_at": "2026-11-21T21:42:32Z",
-      "updated_at": "2026-11-20T21:42:32Z"
+      "impacto_pratico": "Alteração direta na legislação de segurança pública e nas regras de engajamento policial na França.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "G1 Mundo"
+      ],
+      "relevancia_score": 82,
+      "horas_em_destaque": 10,
+      "paises_envolvidos": [
+        "FR"
+      ],
+      "links_internos_relacionados": []
     },
     {
       "slug": "brasil-cobra-revisao-bancos-itaipu-crise-ueno-bank-paraguai",
-      "titulo_curto": "Brasil exige revisão de custódia bancária de Itaipu após liquidação do Ueno Bank no Paraguai",
-      "resumo_pulso": "Segundo apuração do Poder360, o governo brasileiro solicitou formalmente a revisão das regras para custódia de fundos da usina de Itaipu Binacional. A medida ocorre após a falência do Ueno Bank no Paraguai, instituição que retinha aproximadamente R$ 1 bilhão em recursos da entidade.",
-      "impacto_pratico": "Garantia de segurança financeira para os aportes estatais e para a negociação da tarifa de energia entre Brasil e Paraguai.",
       "categoria": "Economia_Comercio",
-      "paises_envolvidos": [
-        "BR",
-        "PY"
-      ],
-      "urgencia_score": 83,
-      "relevancia_score": 84,
-      "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 10,
-      "veiculos_origem": [
-        "Poder360"
-      ],
+      "expires_at": "2026-11-21T21:42:32Z",
+      "updated_at": "2026-11-20T21:42:32Z",
       "fontes_urls": [
         "https://www.poder360.com.br/poder-infra/brasil-cobra-revisao-de-bancos-da-itaipu-apos-crise-no-paraguai/"
       ],
+      "resumo_pulso": "Segundo apuração do Poder360, o governo brasileiro solicitou formalmente a revisão das regras para custódia de fundos da usina de Itaipu Binacional. A medida ocorre após a falência do Ueno Bank no Paraguai, instituição que retinha aproximadamente R$ 1 bilhão em recursos da entidade.",
+      "titulo_curto": "Brasil exige revisão de custódia bancária de Itaipu após liquidação do Ueno Bank no Paraguai",
       "palavras_chave": [
         "Itaipu",
         "Ueno Bank",
@@ -962,31 +1030,32 @@
         "Brasil",
         "Energia"
       ],
+      "urgencia_score": 83,
       "data_publicacao": "2026-11-20T21:11:02Z",
-      "links_internos_relacionados": [],
-      "expires_at": "2026-11-21T21:42:32Z",
-      "updated_at": "2026-11-20T21:42:32Z"
+      "impacto_pratico": "Garantia de segurança financeira para os aportes estatais e para a negociação da tarifa de energia entre Brasil e Paraguai.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Poder360"
+      ],
+      "relevancia_score": 84,
+      "horas_em_destaque": 10,
+      "paises_envolvidos": [
+        "BR",
+        "PY"
+      ],
+      "links_internos_relacionados": []
     },
     {
       "slug": "trump-ameaca-taxar-empresas-eua-centros-dados-ia-exterior",
-      "titulo_curto": "Trump ameaça aplicar impostos sobre empresas de IA dos EUA que construírem data centers no exterior",
-      "resumo_pulso": "Segundo a Al Jazeera English, o presidente dos EUA, Donald Trump, afirmou que aplicará elevadas tarifas contra empresas americanas de tecnologia que instalarem centros de dados de inteligência artificial fora do país. A medida visa forçar o investimento e a infraestrutura do setor dentro do território americano.",
-      "impacto_pratico": "Possível encarecimento de serviços de IA e revisão de planos de expansão internacional de grandes empresas tecnológicas.",
       "categoria": "Economia_Comercio",
-      "paises_envolvidos": [
-        "US"
-      ],
-      "urgencia_score": 86,
-      "relevancia_score": 85,
-      "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 12,
-      "veiculos_origem": [
-        "Al Jazeera English"
-      ],
+      "expires_at": "2026-11-21T21:42:32Z",
+      "updated_at": "2026-11-20T21:42:32Z",
       "fontes_urls": [
         "https://www.aljazeera.com/video/newsfeed/2026/11/20/aje-onl-nf_trump-tax-us-tech-firms-ai-data-centres-abroad-201126?traffic_source=rss"
       ],
+      "resumo_pulso": "Segundo a Al Jazeera English, o presidente dos EUA, Donald Trump, afirmou que aplicará elevadas tarifas contra empresas americanas de tecnologia que instalarem centros de dados de inteligência artificial fora do país. A medida visa forçar o investimento e a infraestrutura do setor dentro do território americano.",
+      "titulo_curto": "Trump ameaça aplicar impostos sobre empresas de IA dos EUA que construírem data centers no exterior",
       "palavras_chave": [
         "Donald Trump",
         "Inteligência Artificial",
@@ -994,37 +1063,37 @@
         "EUA",
         "Tarifas"
       ],
+      "urgencia_score": 86,
       "data_publicacao": "2026-11-20T21:10:53Z",
+      "impacto_pratico": "Possível encarecimento de serviços de IA e revisão de planos de expansão internacional de grandes empresas tecnológicas.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Al Jazeera English"
+      ],
+      "relevancia_score": 85,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "US"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "Política nos Estados Unidos",
           "url_existente": "https://www.rodandoomundo.com.br/politica/estados-unidos",
-          "motivo_conexao": "Saiba mais sobre as políticas comerciais e protecionistas adotadas pela Casa Branca."
+          "motivo_conexao": "Saiba mais sobre as políticas comerciais e protecionistas adotadas pela Casa Branca.",
+          "titulo_existente": "Política nos Estados Unidos"
         }
-      ],
-      "expires_at": "2026-11-21T21:42:32Z",
-      "updated_at": "2026-11-20T21:42:32Z"
+      ]
     },
     {
       "slug": "moraes-vota-manter-apreensao-passaporte-flavio-bolsonaro",
-      "titulo_curto": "Moraes vota no STF para manter apreensão de passaportes de Flávio Bolsonaro",
-      "resumo_pulso": "Conforme divulgado pela Agência Brasil, o ministro Alexandre de Moraes votou no plenário virtual do STF pela manutenção da decisão que apreendeu os passaportes e proibiu o senador Flávio Bolsonaro de deixar o país. O voto ocorreu na análise do recurso apresentado pela defesa do parlamentar.",
-      "impacto_pratico": "Manutenção das restrições de viagem internacionais impostas ao senador pela Justiça Federal.",
       "categoria": "Geopolitica_Relacoes",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "urgencia_score": 88,
-      "relevancia_score": 87,
-      "nivel_confianca": "alta",
       "ttl_horas": 18,
-      "horas_em_destaque": 8,
-      "veiculos_origem": [
-        "Agência Brasil (EBC)"
-      ],
+      "expires_at": "2026-11-21T15:42:32Z",
+      "updated_at": "2026-11-20T21:42:32Z",
       "fontes_urls": [
         "https://agenciabrasil.ebc.com.br/justica/noticia/2026-11/moraes-vota-para-manter-apreensao-de-passaportes-de-flavio-bolsonaro"
       ],
+      "resumo_pulso": "Conforme divulgado pela Agência Brasil, o ministro Alexandre de Moraes votou no plenário virtual do STF pela manutenção da decisão que apreendeu os passaportes e proibiu o senador Flávio Bolsonaro de deixar o país. O voto ocorreu na análise do recurso apresentado pela defesa do parlamentar.",
+      "titulo_curto": "Moraes vota no STF para manter apreensão de passaportes de Flávio Bolsonaro",
       "palavras_chave": [
         "Alexandre de Moraes",
         "Flávio Bolsonaro",
@@ -1032,16 +1101,25 @@
         "Passaportes",
         "Justiça"
       ],
+      "urgencia_score": 88,
       "data_publicacao": "2026-11-20T20:55:00Z",
+      "impacto_pratico": "Manutenção das restrições de viagem internacionais impostas ao senador pela Justiça Federal.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Agência Brasil (EBC)"
+      ],
+      "relevancia_score": 87,
+      "horas_em_destaque": 8,
+      "paises_envolvidos": [
+        "BR"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "STF analisa regras de transparência e limites constitucionais entre os Poderes",
           "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
-          "motivo_conexao": "Análise sobre as decisões e o alcance jurisprudencial das medidas impostas pelo STF."
+          "motivo_conexao": "Análise sobre as decisões e o alcance jurisprudencial das medidas impostas pelo STF.",
+          "titulo_existente": "STF analisa regras de transparência e limites constitucionais entre os Poderes"
         }
-      ],
-      "expires_at": "2026-11-21T15:42:32Z",
-      "updated_at": "2026-11-20T21:42:32Z"
+      ]
     },
     {
       "slug": "trump-afirma-que-ha-boa-chance-de-acordo-de-paz-na-ucrania",
@@ -1125,27 +1203,16 @@
     },
     {
       "slug": "bolsonaro-vai-a-hospital-apos-sentir-dores-abdominais",
-      "titulo_curto": "Bolsonaro é internado no Hospital DF Star em Brasília com quadro de dor abdominal",
-      "resumo_pulso": "Segundo comunicado médico oficial da Agência Gov e apurações do G1 e JOTA, o ex-presidente Jair Bolsonaro foi internado no Hospital DF Star com quadro de dor e distensão abdominal. Ele passa por exames e avaliação diagnóstica enquanto cumpre prisão domiciliar sob autorização do STF.",
-      "impacto_pratico": "Acompanhamento do estado de saúde e da situação de custódia do ex-presidente em Brasília.",
       "categoria": "Geopolitica_Relacoes",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "urgencia_score": 93,
-      "relevancia_score": 91,
-      "nivel_confianca": "alta",
       "ttl_horas": 12,
-      "horas_em_destaque": 6,
-      "veiculos_origem": [
-        "Agência Gov (Planalto)",
-        "G1 Política",
-        "JOTA Info"
-      ],
+      "expires_at": "2026-11-21T08:21:55Z",
+      "updated_at": "2026-11-20T21:42:32Z",
       "fontes_urls": [
         "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/bolsonaro-e-internado-com-quadro-de-dor-e-distens%C3%A3o-abdominal",
         "https://g1.globo.com/politica/noticia/2026/11/20/bolsonaro-hospital-apos-sentir-dores-abdominais.ghtml"
       ],
+      "resumo_pulso": "Segundo comunicado médico oficial da Agência Gov e apurações do G1 e JOTA, o ex-presidente Jair Bolsonaro foi internado no Hospital DF Star com quadro de dor e distensão abdominal. Ele passa por exames e avaliação diagnóstica enquanto cumpre prisão domiciliar sob autorização do STF.",
+      "titulo_curto": "Bolsonaro é internado no Hospital DF Star em Brasília com quadro de dor abdominal",
       "palavras_chave": [
         "Jair Bolsonaro",
         "Hospital DF Star",
@@ -1153,16 +1220,27 @@
         "STF",
         "Saúde"
       ],
+      "urgencia_score": 93,
       "data_publicacao": "2026-11-20T20:15:13Z",
+      "impacto_pratico": "Acompanhamento do estado de saúde e da situação de custódia do ex-presidente em Brasília.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Agência Gov (Planalto)",
+        "G1 Política",
+        "JOTA Info"
+      ],
+      "relevancia_score": 91,
+      "horas_em_destaque": 6,
+      "paises_envolvidos": [
+        "BR"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "Política no Brasil",
           "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
-          "motivo_conexao": "Acompanhe os desenvolvimentos políticos e jurídicos nacionais em tempo real."
+          "motivo_conexao": "Acompanhe os desenvolvimentos políticos e jurídicos nacionais em tempo real.",
+          "titulo_existente": "Política no Brasil"
         }
-      ],
-      "expires_at": "2026-11-21T08:21:55Z",
-      "updated_at": "2026-11-20T21:42:32Z"
+      ]
     },
     {
       "slug": "denuncias-de-racismo-no-brasil-atingem-recorde-historico",
@@ -1624,142 +1702,6 @@
           "motivo_conexao": "Contexto sobre a posição diplomática brasileira em conflitos internacionais.",
           "titulo_existente": "Política no Brasil"
         }
-      ]
-    }
-  ],
-  "temas_curadoria": [
-    {
-      "slug": "trump-critica-fed-juros-altos",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-22T19:17:25Z",
-      "updated_at": "2026-11-20T19:17:25Z",
-      "titulo_tema": "Trump critica Fed por juros altos e acusa banco central de politização",
-      "sintese_nerd": "A pressão pública de Donald Trump sobre o Federal Reserve por cortes nas taxas de juros acirra o debate sobre a independência dos bancos centrais globais. Para o Brasil, a instabilidade na política monetária norte-americana afeta diretamente a fuga de capitais, a inflação importada e a cotação do dólar.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-20T19:17:25Z",
-      "gatilho_vitrine": "Destacar na Home como a pressão política sobre autoridades monetárias globais reverbera nos mercados internacionais e impacta o câmbio.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 92,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Politica",
-        "Geopolitica_Radar"
-      ],
-      "palavras_chave_busca": [
-        "donald trump",
-        "fed",
-        "taxa de juros",
-        "eua",
-        "banco central",
-        "economia americana"
-      ]
-    },
-    {
-      "slug": "acoes-nvidia-pior-sequencia-desde-2008",
-      "status": "novo",
-      "ttl_horas": 72,
-      "expires_at": "2026-11-23T19:17:25Z",
-      "updated_at": "2026-11-20T19:17:25Z",
-      "titulo_tema": "Ações da Nvidia enfrentam pior sequência de quedas na bolsa desde 2008",
-      "sintese_nerd": "A retração histórica nas ações da Nvidia na Nasdaq revela um ajuste severo nas expectativas de valorização do setor de inteligência artificial e semicondutores. Essa desvalorização em cadeia afeta portfólios globais e demonstra os riscos sistêmicos concentrados na cadeia de suprimentos tecnológica.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-20T19:17:25Z",
-      "gatilho_vitrine": "Posicionar na seção de Economia e Tecnologia para explicar o momento crítico do setor de semicondutores e o impacto nas big techs.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 90,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Cultura",
-        "Geopolitica_Radar"
-      ],
-      "palavras_chave_busca": [
-        "nvidia",
-        "nasdaq",
-        "ações de tecnologia",
-        "inteligência artificial",
-        "bolsa de valores",
-        "crise tech"
-      ]
-    },
-    {
-      "slug": "tempestades-severas-rio-grande-do-sul",
-      "status": "novo",
-      "ttl_horas": 36,
-      "expires_at": "2026-11-22T07:17:25Z",
-      "updated_at": "2026-11-20T19:17:25Z",
-      "titulo_tema": "Tempestades severas deixam mortos e destroços no Rio Grande do Sul",
-      "sintese_nerd": "Eventos climáticos extremos recorrentes no Sul do Brasil impõem custos bilionários de reconstrução e evidenciam a vulnerabilidade da infraestrutura urbana e agrícola local. O impacto fiscal exige repasses emergenciais e coloca a pauta climática no centro do planejamento econômico estadual e federal.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-20T19:17:25Z",
-      "gatilho_vitrine": "Colocar no Radar de Impacto para monitorar os custos econômicos e sociais de eventos climáticos extremos na infraestrutura regional.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 88,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Politica"
-      ],
-      "palavras_chave_busca": [
-        "rio grande do sul",
-        "defesa civil",
-        "tempestades",
-        "mudanças climáticas",
-        "eduardo leite",
-        "desastres naturais"
-      ]
-    },
-    {
-      "slug": "escalada-guerra-ucrania-ataques-pontes",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-22T19:17:25Z",
-      "updated_at": "2026-11-20T19:17:25Z",
-      "titulo_tema": "Escalada na Guerra da Ucrânia com ataques a pontes e infraestrutura crítica",
-      "sintese_nerd": "A intensificação dos ataques russos contra pontes e centros logísticos na Ucrânia, combinada com novas sanções europeias, aprofunda a fragmentação comercial do continente. Essa dinâmica prolonga a inflação de insumos estratégicos e grãos no mercado internacional, impactando a cadeia de suprimentos global.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-20T19:17:25Z",
-      "gatilho_vitrine": "Fixar na editoria de Geopolitica Radar para cobrir o acirramento das hostilidades e as repercussões diplomáticas na Europa.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 86,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Politica"
-      ],
-      "palavras_chave_busca": [
-        "guerra na ucrânia",
-        "rússia",
-        "kyiv",
-        "sanções internacionais",
-        "geopolitica global",
-        "otan"
-      ]
-    },
-    {
-      "slug": "bitcoin-abaixo-de-sessenta-mil-dolares",
-      "status": "novo",
-      "ttl_horas": 36,
-      "expires_at": "2026-11-22T07:17:25Z",
-      "updated_at": "2026-11-20T19:17:25Z",
-      "titulo_tema": "Bitcoin despenca abaixo de US$ 60 mil pressionado por saques em ETFs e juros",
-      "sintese_nerd": "A queda do Bitcoin abaixo do patamar de US$ 60 mil reflete a retirada de capital institucional via ETFs diante da perspectiva de juros elevados por mais tempo nos Estados Unidos. A alta correlação com ativos de risco demonstra a sensibilidade do mercado cripto aos rumos da liquidez global.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-20T19:17:25Z",
-      "gatilho_vitrine": "Destacar na editoria de Economia para alertar investidores sobre a correlação entre política monetária restritiva e o mercado cripto.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 85,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Geopolitica_Radar"
-      ],
-      "palavras_chave_busca": [
-        "bitcoin",
-        "criptomoedas",
-        "etfs de bitcoin",
-        "mercado financeiro",
-        "federal reserve",
-        "economia global"
       ]
     }
   ]
