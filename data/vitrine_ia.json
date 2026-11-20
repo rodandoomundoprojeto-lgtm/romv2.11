@@ -2,13 +2,13 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-20T10:56:16Z",
-  "batch_id": "20261120-1055",
+  "updatedAt": "2026-11-20T11:53:42Z",
+  "batch_id": "20261120-1152",
   "temas_ativos": [
     {
-      "slug": "oab-pede-que-stf-julgue-processo-contra-van-hattem-em-plenario-presencial",
-      "titulo_tema": "OAB pede que STF julgue denúncia contra deputado Marcel van Hattem em plenário presencial",
-      "titulo_curto": "OAB pede que STF julgue denúncia contra deputado Marcel van Hattem em plenário presencial",
+      "slug": "eu-and-uk-seal-reset-deal",
+      "titulo_tema": "União Europeia e Reino Unido firmam acordo histórico de reaproximação",
+      "titulo_curto": "União Europeia e Reino Unido firmam acordo histórico de reaproximação",
       "status": "novo",
       "origem_pipeline": "pulso",
       "categoria_primaria": "Geopolitica_Radar",
@@ -18,17 +18,54 @@
         "Resumo_Ultimas"
       ],
       "rota_editoria": "/radar",
-      "relevancia_score": 83,
-      "urgencia_score": 79,
+      "relevancia_score": 89,
+      "urgencia_score": 90,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-21T11:53:42Z",
+      "palavras_chave_busca": [
+        "reino unido",
+        "união europeia",
+        "brexit",
+        "acordo"
+      ],
+      "palavras_chave": [
+        "reino unido",
+        "união europeia",
+        "brexit",
+        "acordo"
+      ],
+      "gatilho_vitrine": "Conforme noticiado pela Al Jazeera, a União Europeia e o Reino Unido selaram um novo acordo abrangente de cooperação e reajuste institucional, marcando uma nova fase nas relações bilaterais após anos de distanciamento pós-Brexit. Detalhes completos do tratado começam a ser divulgados pelas lideranças em Bruxelas e Londres.",
+      "resumo_pulso": "Conforme noticiado pela Al Jazeera, a União Europeia e o Reino Unido selaram um novo acordo abrangente de cooperação e reajuste institucional, marcando uma nova fase nas relações bilaterais após anos de distanciamento pós-Brexit. Detalhes completos do tratado começam a ser divulgados pelas lideranças em Bruxelas e Londres.",
+      "sintese_nerd": "Afeta diretamente acordos comerciais, fluxo de mobilidade e diretrizes regulatórias entre o Reino Unido e o bloco europeu.",
+      "impacto_pratico": "Afeta diretamente acordos comerciais, fluxo de mobilidade e diretrizes regulatórias entre o Reino Unido e o bloco europeu.",
+      "paises_envolvidos": [
+        "GB",
+        "EU"
+      ],
+      "veiculos_origem": [
+        "Al Jazeera English"
+      ],
+      "fontes_urls": [
+        "https://www.aljazeera.com/news/2026/11/20/eu-and-uk-seal-reset-deal?traffic_source=rss"
+      ],
+      "data_publicacao": "2026-11-20T11:20:19Z",
+      "updated_at": "2026-11-20T11:53:42Z"
+    },
+    {
+      "slug": "oab-pede-que-stf-julgue-processo-contra-van-hattem-em-plenario-presencial",
+      "status": "novo",
+      "categoria": "Geopolitica_Relacoes",
       "ttl_horas": 12,
       "expires_at": "2026-11-20T22:56:16Z",
-      "palavras_chave_busca": [
-        "stf",
-        "oab",
-        "flávio dino",
-        "marcel van hattem",
-        "plenário presencial"
+      "updated_at": "2026-11-20T10:56:16Z",
+      "fontes_urls": [
+        "https://www.poder360.com.br/poder-justica/oab-discorda-de-dino-e-pede-que-stf-julgue-van-hattem-presencialmente/"
       ],
+      "titulo_tema": "OAB pede que STF julgue denúncia contra deputado Marcel van Hattem em plenário presencial",
+      "resumo_pulso": "Conforme reportado pelo Poder360, a Ordem dos Advogados do Brasil pediu ao ministro Flávio Dino, do STF, que o julgamento do deputado Marcel van Hattem ocorra no plenário presencial. A entidade argumenta que a análise em ambiente físico assegura a realização de sustentações orais em tempo real pela defesa.",
+      "sintese_nerd": "Definição do rito processual no STF para parlamentares e discussão sobre prerrogativas da advocacia na Suprema Corte.",
+      "titulo_curto": "OAB pede que STF julgue denúncia contra deputado Marcel van Hattem em plenário presencial",
+      "rota_editoria": "/radar",
       "palavras_chave": [
         "stf",
         "oab",
@@ -36,26 +73,35 @@
         "marcel van hattem",
         "plenário presencial"
       ],
+      "urgencia_score": 79,
+      "data_publicacao": "2026-11-20T10:45:55Z",
       "gatilho_vitrine": "Conforme reportado pelo Poder360, a Ordem dos Advogados do Brasil pediu ao ministro Flávio Dino, do STF, que o julgamento do deputado Marcel van Hattem ocorra no plenário presencial. A entidade argumenta que a análise em ambiente físico assegura a realização de sustentações orais em tempo real pela defesa.",
-      "resumo_pulso": "Conforme reportado pelo Poder360, a Ordem dos Advogados do Brasil pediu ao ministro Flávio Dino, do STF, que o julgamento do deputado Marcel van Hattem ocorra no plenário presencial. A entidade argumenta que a análise em ambiente físico assegura a realização de sustentações orais em tempo real pela defesa.",
-      "sintese_nerd": "Definição do rito processual no STF para parlamentares e discussão sobre prerrogativas da advocacia na Suprema Corte.",
       "impacto_pratico": "Definição do rito processual no STF para parlamentares e discussão sobre prerrogativas da advocacia na Suprema Corte.",
-      "paises_envolvidos": [
-        "BR"
-      ],
+      "origem_pipeline": "pulso",
       "veiculos_origem": [
         "Poder360"
       ],
-      "fontes_urls": [
-        "https://www.poder360.com.br/poder-justica/oab-discorda-de-dino-e-pede-que-stf-julgue-van-hattem-presencialmente/"
+      "relevancia_score": 83,
+      "paises_envolvidos": [
+        "BR"
       ],
-      "data_publicacao": "2026-11-20T10:45:55Z",
-      "updated_at": "2026-11-20T10:56:16Z"
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "stf",
+        "oab",
+        "flávio dino",
+        "marcel van hattem",
+        "plenário presencial"
+      ]
     },
     {
       "slug": "greve-geral-na-italia-mobiliza-milhares-contra-custo-de-vida-e-gastos-militares",
-      "titulo_tema": "Greve geral reúne milhares na Itália contra aumento do custo de vida e gastos militares",
-      "titulo_curto": "Greve geral reúne milhares na Itália contra aumento do custo de vida e gastos militares",
+      "titulo_tema": "Greve geral na Itália paralisa serviços e reúne milhares contra inflação e gastos militares",
+      "titulo_curto": "Greve geral na Itália paralisa serviços e reúne milhares contra inflação e gastos militares",
       "status": "novo",
       "origem_pipeline": "pulso",
       "categoria_primaria": "Cultura",
@@ -65,88 +111,85 @@
         "Resumo_Ultimas"
       ],
       "rota_editoria": "/cultura",
-      "relevancia_score": 80,
-      "urgencia_score": 82,
+      "relevancia_score": 82,
+      "urgencia_score": 84,
       "ttl_horas": 18,
       "expires_at": "2026-11-21T04:56:16Z",
       "palavras_chave_busca": [
         "itália",
         "greve geral",
         "cgil",
-        "custo de vida",
-        "roma"
+        "custo de vida"
       ],
       "palavras_chave": [
         "itália",
         "greve geral",
         "cgil",
-        "custo de vida",
-        "roma"
+        "custo de vida"
       ],
-      "gatilho_vitrine": "Conforme reportado pelo G1 Mundo e pela agência Reuters, uma greve geral convocada pela central sindical CGIL mobilizou milhares de trabalhadores e estudantes em Roma e diversas cidades italianas. Os manifestantes protestam contra a perda do poder de compra, arrocho salarial e o redirecionamento de verbas públicas para despesas de defesa.",
-      "resumo_pulso": "Conforme reportado pelo G1 Mundo e pela agência Reuters, uma greve geral convocada pela central sindical CGIL mobilizou milhares de trabalhadores e estudantes em Roma e diversas cidades italianas. Os manifestantes protestam contra a perda do poder de compra, arrocho salarial e o redirecionamento de verbas públicas para despesas de defesa.",
-      "sintese_nerd": "Interrupções nos serviços de transporte público, paralisação de serviços essenciais na Itália e pressão política sobre a coalizão de governo.",
-      "impacto_pratico": "Interrupções nos serviços de transporte público, paralisação de serviços essenciais na Itália e pressão política sobre a coalizão de governo.",
+      "gatilho_vitrine": "Conforme atualizações da cobertura do G1 Mundo e da Reuters, a greve geral convocada pela central sindical CGIL segue mobilizando milhares de manifestantes em Roma e outras grandes cidades italianas. Os atos protestam contra o encarecimento do custo de vida e o redirecionamento de fundos estatais para a defesa.",
+      "resumo_pulso": "Conforme atualizações da cobertura do G1 Mundo e da Reuters, a greve geral convocada pela central sindical CGIL segue mobilizando milhares de manifestantes em Roma e outras grandes cidades italianas. Os atos protestam contra o encarecimento do custo de vida e o redirecionamento de fundos estatais para a defesa.",
+      "sintese_nerd": "Gera interrupções em transportes públicos e serviços essenciais em diversas regiões da Itália.",
+      "impacto_pratico": "Gera interrupções em transportes públicos e serviços essenciais em diversas regiões da Itália.",
       "paises_envolvidos": [
         "IT"
       ],
       "veiculos_origem": [
-        "G1 Mundo",
-        "Reuters"
+        "G1 Mundo"
       ],
       "fontes_urls": [
         "https://g1.globo.com/mundo/noticia/2026/11/20/greve-geral-italia.ghtml"
       ],
       "data_publicacao": "2026-11-20T10:25:46Z",
-      "updated_at": "2026-11-20T10:56:16Z"
+      "updated_at": "2026-11-20T11:53:42Z"
     },
     {
       "slug": "iraque-inicia-retomada-de-jurf-al-sakhar-apos-decada-sob-controle-de-milicia-pro-ira",
-      "titulo_tema": "Iraque envia forças armadas para retomar cidade sob controle de milícia pró-Irã há 10 anos",
-      "titulo_curto": "Iraque envia forças armadas para retomar cidade sob controle de milícia pró-Irã há 10 anos",
       "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Geopolitica_Radar",
       "categoria": "Geopolitica_Relacoes",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-21T10:56:16Z",
+      "updated_at": "2026-11-20T10:56:16Z",
+      "fontes_urls": [
+        "https://www.iranintl.com/en/202611200850"
+      ],
+      "titulo_tema": "Iraque envia forças armadas para retomar cidade sob controle de milícia pró-Irã há 10 anos",
+      "resumo_pulso": "Segundo apuração do Iran International, forças de segurança do Iraque iniciaram mobilização na cidade estratégica de Jurf al-Sakhar, ao sul de Bagdá, controlada há mais de uma década pelo grupo armado Kataib Hezbollah. O movimento resulta de um acordo político entre lideranças xiitas após negociações na capital iraquiana.",
+      "sintese_nerd": "Reconfiguração do controle territorial no Iraque e possível redução da influência direta de milícias apoiadas por Teerã na região central iraquiana.",
+      "titulo_curto": "Iraque envia forças armadas para retomar cidade sob controle de milícia pró-Irã há 10 anos",
+      "rota_editoria": "/radar",
+      "palavras_chave": [
+        "iraque",
+        "irã",
+        "jurf al-sakhar",
+        "milícias",
+        "oriente médio"
+      ],
+      "urgencia_score": 84,
+      "data_publicacao": "2026-11-20T10:24:25Z",
+      "gatilho_vitrine": "Segundo apuração do Iran International, forças de segurança do Iraque iniciaram mobilização na cidade estratégica de Jurf al-Sakhar, ao sul de Bagdá, controlada há mais de uma década pelo grupo armado Kataib Hezbollah. O movimento resulta de um acordo político entre lideranças xiitas após negociações na capital iraquiana.",
+      "impacto_pratico": "Reconfiguração do controle territorial no Iraque e possível redução da influência direta de milícias apoiadas por Teerã na região central iraquiana.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "Iran International"
+      ],
+      "relevancia_score": 81,
+      "paises_envolvidos": [
+        "IQ",
+        "IR"
+      ],
+      "categoria_primaria": "Geopolitica_Radar",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
       ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 81,
-      "urgencia_score": 84,
-      "ttl_horas": 24,
-      "expires_at": "2026-11-21T10:56:16Z",
       "palavras_chave_busca": [
         "iraque",
         "irã",
         "jurf al-sakhar",
         "milícias",
         "oriente médio"
-      ],
-      "palavras_chave": [
-        "iraque",
-        "irã",
-        "jurf al-sakhar",
-        "milícias",
-        "oriente médio"
-      ],
-      "gatilho_vitrine": "Segundo apuração do Iran International, forças de segurança do Iraque iniciaram mobilização na cidade estratégica de Jurf al-Sakhar, ao sul de Bagdá, controlada há mais de uma década pelo grupo armado Kataib Hezbollah. O movimento resulta de um acordo político entre lideranças xiitas após negociações na capital iraquiana.",
-      "resumo_pulso": "Segundo apuração do Iran International, forças de segurança do Iraque iniciaram mobilização na cidade estratégica de Jurf al-Sakhar, ao sul de Bagdá, controlada há mais de uma década pelo grupo armado Kataib Hezbollah. O movimento resulta de um acordo político entre lideranças xiitas após negociações na capital iraquiana.",
-      "sintese_nerd": "Reconfiguração do controle territorial no Iraque e possível redução da influência direta de milícias apoiadas por Teerã na região central iraquiana.",
-      "impacto_pratico": "Reconfiguração do controle territorial no Iraque e possível redução da influência direta de milícias apoiadas por Teerã na região central iraquiana.",
-      "paises_envolvidos": [
-        "IQ",
-        "IR"
-      ],
-      "veiculos_origem": [
-        "Iran International"
-      ],
-      "fontes_urls": [
-        "https://www.iranintl.com/en/202611200850"
-      ],
-      "data_publicacao": "2026-11-20T10:24:25Z",
-      "updated_at": "2026-11-20T10:56:16Z"
+      ]
     },
     {
       "slug": "escalada-russia-ucrania-ataque-polonia-espaco-aereo",
@@ -861,75 +904,58 @@
         "rússia",
         "china"
       ]
-    },
-    {
-      "slug": "mega-sena-acumula-e-premio-vai-para-r-45-milhoes",
-      "status": "novo",
-      "categoria": "Sociedade_Cultura",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-21T05:35:20Z",
-      "updated_at": "2026-11-20T05:35:20Z",
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/mega-sena-acumula-e-premio-vai-para-r-45-milhoes"
-      ],
-      "titulo_tema": "Mega-Sena acumula e próximo sorteio pagará R$ 45 milhões",
-      "resumo_pulso": "Conforme dados divulgados pela Agência Brasil (EBC) e pelo G1 Economia, o Concurso 3.088 da Mega-Sena realizado na última quinta-feira não teve acertadores na faixa principal. Com a acumulação, o prêmio estimado para o próximo sorteio subiu para R$ 45 milhões.",
-      "sintese_nerd": "Movimenta apostas e o setor de loterias em todo o país.",
-      "titulo_curto": "Mega-Sena acumula e próximo sorteio pagará R$ 45 milhões",
-      "rota_editoria": "/cultura",
-      "palavras_chave": [
-        "mega-sena",
-        "loteria",
-        "prêmio",
-        "economia"
-      ],
-      "urgencia_score": 75,
-      "data_publicacao": "2026-11-20T01:20:00Z",
-      "gatilho_vitrine": "Conforme dados divulgados pela Agência Brasil (EBC) e pelo G1 Economia, o Concurso 3.088 da Mega-Sena realizado na última quinta-feira não teve acertadores na faixa principal. Com a acumulação, o prêmio estimado para o próximo sorteio subiu para R$ 45 milhões.",
-      "impacto_pratico": "Movimenta apostas e o setor de loterias em todo o país.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "Agência Brasil (EBC)",
-        "G1 Economia"
-      ],
-      "relevancia_score": 70,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "categoria_primaria": "Cultura",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "mega-sena",
-        "loteria",
-        "prêmio",
-        "economia"
-      ]
     }
   ],
   "noticias_quentes": [
     {
-      "slug": "oab-pede-que-stf-julgue-processo-contra-van-hattem-em-plenario-presencial",
-      "titulo_curto": "OAB pede que STF julgue denúncia contra deputado Marcel van Hattem em plenário presencial",
-      "resumo_pulso": "Conforme reportado pelo Poder360, a Ordem dos Advogados do Brasil pediu ao ministro Flávio Dino, do STF, que o julgamento do deputado Marcel van Hattem ocorra no plenário presencial. A entidade argumenta que a análise em ambiente físico assegura a realização de sustentações orais em tempo real pela defesa.",
-      "impacto_pratico": "Definição do rito processual no STF para parlamentares e discussão sobre prerrogativas da advocacia na Suprema Corte.",
+      "slug": "eu-and-uk-seal-reset-deal",
+      "titulo_curto": "União Europeia e Reino Unido firmam acordo histórico de reaproximação",
+      "resumo_pulso": "Conforme noticiado pela Al Jazeera, a União Europeia e o Reino Unido selaram um novo acordo abrangente de cooperação e reajuste institucional, marcando uma nova fase nas relações bilaterais após anos de distanciamento pós-Brexit. Detalhes completos do tratado começam a ser divulgados pelas lideranças em Bruxelas e Londres.",
+      "impacto_pratico": "Afeta diretamente acordos comerciais, fluxo de mobilidade e diretrizes regulatórias entre o Reino Unido e o bloco europeu.",
       "categoria": "Geopolitica_Relacoes",
       "paises_envolvidos": [
-        "BR"
+        "GB",
+        "EU"
       ],
-      "urgencia_score": 79,
-      "relevancia_score": 83,
+      "urgencia_score": 90,
+      "relevancia_score": 89,
       "nivel_confianca": "alta",
-      "ttl_horas": 12,
-      "horas_em_destaque": 6,
+      "ttl_horas": 24,
+      "horas_em_destaque": 18,
       "veiculos_origem": [
-        "Poder360"
+        "Al Jazeera English"
       ],
+      "fontes_urls": [
+        "https://www.aljazeera.com/news/2026/11/20/eu-and-uk-seal-reset-deal?traffic_source=rss"
+      ],
+      "palavras_chave": [
+        "Reino Unido",
+        "União Europeia",
+        "Brexit",
+        "Acordo"
+      ],
+      "data_publicacao": "2026-11-20T11:20:19Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "Mercados e aliados internacionais avaliam impacto da política comercial norte-americana",
+          "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
+          "motivo_conexao": "Contextualiza a dinâmica de acordos diplomáticos e blocos econômicos internacionais."
+        }
+      ],
+      "expires_at": "2026-11-21T11:53:42Z",
+      "updated_at": "2026-11-20T11:53:42Z"
+    },
+    {
+      "slug": "oab-pede-que-stf-julgue-processo-contra-van-hattem-em-plenario-presencial",
+      "categoria": "Geopolitica_Relacoes",
+      "ttl_horas": 12,
+      "expires_at": "2026-11-20T22:56:16Z",
+      "updated_at": "2026-11-20T10:56:16Z",
       "fontes_urls": [
         "https://www.poder360.com.br/poder-justica/oab-discorda-de-dino-e-pede-que-stf-julgue-van-hattem-presencialmente/"
       ],
+      "resumo_pulso": "Conforme reportado pelo Poder360, a Ordem dos Advogados do Brasil pediu ao ministro Flávio Dino, do STF, que o julgamento do deputado Marcel van Hattem ocorra no plenário presencial. A entidade argumenta que a análise em ambiente físico assegura a realização de sustentações orais em tempo real pela defesa.",
+      "titulo_curto": "OAB pede que STF julgue denúncia contra deputado Marcel van Hattem em plenário presencial",
       "palavras_chave": [
         "STF",
         "OAB",
@@ -937,34 +963,42 @@
         "Marcel van Hattem",
         "Plenário Presencial"
       ],
+      "urgencia_score": 79,
       "data_publicacao": "2026-11-20T10:45:55Z",
+      "impacto_pratico": "Definição do rito processual no STF para parlamentares e discussão sobre prerrogativas da advocacia na Suprema Corte.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Poder360"
+      ],
+      "relevancia_score": 83,
+      "horas_em_destaque": 6,
+      "paises_envolvidos": [
+        "BR"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "Política no Brasil",
           "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
-          "motivo_conexao": "Acompanha os desdobramentos de embates jurídicos e institucionais envolvendo o STF e parlamentares."
+          "motivo_conexao": "Acompanha os desdobramentos de embates jurídicos e institucionais envolvendo o STF e parlamentares.",
+          "titulo_existente": "Política no Brasil"
         }
-      ],
-      "expires_at": "2026-11-20T22:56:16Z",
-      "updated_at": "2026-11-20T10:56:16Z"
+      ]
     },
     {
       "slug": "greve-geral-na-italia-mobiliza-milhares-contra-custo-de-vida-e-gastos-militares",
-      "titulo_curto": "Greve geral reúne milhares na Itália contra aumento do custo de vida e gastos militares",
-      "resumo_pulso": "Conforme reportado pelo G1 Mundo e pela agência Reuters, uma greve geral convocada pela central sindical CGIL mobilizou milhares de trabalhadores e estudantes em Roma e diversas cidades italianas. Os manifestantes protestam contra a perda do poder de compra, arrocho salarial e o redirecionamento de verbas públicas para despesas de defesa.",
-      "impacto_pratico": "Interrupções nos serviços de transporte público, paralisação de serviços essenciais na Itália e pressão política sobre a coalizão de governo.",
+      "titulo_curto": "Greve geral na Itália paralisa serviços e reúne milhares contra inflação e gastos militares",
+      "resumo_pulso": "Conforme atualizações da cobertura do G1 Mundo e da Reuters, a greve geral convocada pela central sindical CGIL segue mobilizando milhares de manifestantes em Roma e outras grandes cidades italianas. Os atos protestam contra o encarecimento do custo de vida e o redirecionamento de fundos estatais para a defesa.",
+      "impacto_pratico": "Gera interrupções em transportes públicos e serviços essenciais em diversas regiões da Itália.",
       "categoria": "Sociedade_Cultura",
       "paises_envolvidos": [
         "IT"
       ],
-      "urgencia_score": 82,
-      "relevancia_score": 80,
+      "urgencia_score": 84,
+      "relevancia_score": 82,
       "nivel_confianca": "alta",
       "ttl_horas": 18,
-      "horas_em_destaque": 8,
+      "horas_em_destaque": 12,
       "veiculos_origem": [
-        "G1 Mundo",
-        "Reuters"
+        "G1 Mundo"
       ],
       "fontes_urls": [
         "https://g1.globo.com/mundo/noticia/2026/11/20/greve-geral-italia.ghtml"
@@ -973,41 +1007,30 @@
         "Itália",
         "Greve Geral",
         "CGIL",
-        "Custo de Vida",
-        "Roma"
+        "Custo de vida"
       ],
       "data_publicacao": "2026-11-20T10:25:46Z",
       "links_internos_relacionados": [
         {
           "titulo_existente": "O que é inflação?",
           "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
-          "motivo_conexao": "Ajuda a compreender como o encarecimento do custo de vida mobiliza paralisações sindicais na Europa."
+          "motivo_conexao": "Ajuda a compreender o impacto do custo de vida e da inflação sobre o poder de compra dos trabalhadores."
         }
       ],
       "expires_at": "2026-11-21T04:56:16Z",
-      "updated_at": "2026-11-20T10:56:16Z"
+      "updated_at": "2026-11-20T11:53:42Z"
     },
     {
       "slug": "iraque-inicia-retomada-de-jurf-al-sakhar-apos-decada-sob-controle-de-milicia-pro-ira",
-      "titulo_curto": "Iraque envia forças armadas para retomar cidade sob controle de milícia pró-Irã há 10 anos",
-      "resumo_pulso": "Segundo apuração do Iran International, forças de segurança do Iraque iniciaram mobilização na cidade estratégica de Jurf al-Sakhar, ao sul de Bagdá, controlada há mais de uma década pelo grupo armado Kataib Hezbollah. O movimento resulta de um acordo político entre lideranças xiitas após negociações na capital iraquiana.",
-      "impacto_pratico": "Reconfiguração do controle territorial no Iraque e possível redução da influência direta de milícias apoiadas por Teerã na região central iraquiana.",
       "categoria": "Geopolitica_Relacoes",
-      "paises_envolvidos": [
-        "IQ",
-        "IR"
-      ],
-      "urgencia_score": 84,
-      "relevancia_score": 81,
-      "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 10,
-      "veiculos_origem": [
-        "Iran International"
-      ],
+      "expires_at": "2026-11-21T10:56:16Z",
+      "updated_at": "2026-11-20T10:56:16Z",
       "fontes_urls": [
         "https://www.iranintl.com/en/202611200850"
       ],
+      "resumo_pulso": "Segundo apuração do Iran International, forças de segurança do Iraque iniciaram mobilização na cidade estratégica de Jurf al-Sakhar, ao sul de Bagdá, controlada há mais de uma década pelo grupo armado Kataib Hezbollah. O movimento resulta de um acordo político entre lideranças xiitas após negociações na capital iraquiana.",
+      "titulo_curto": "Iraque envia forças armadas para retomar cidade sob controle de milícia pró-Irã há 10 anos",
       "palavras_chave": [
         "Iraque",
         "Irã",
@@ -1015,10 +1038,20 @@
         "Milícias",
         "Oriente Médio"
       ],
+      "urgencia_score": 84,
       "data_publicacao": "2026-11-20T10:24:25Z",
-      "links_internos_relacionados": [],
-      "expires_at": "2026-11-21T10:56:16Z",
-      "updated_at": "2026-11-20T10:56:16Z"
+      "impacto_pratico": "Reconfiguração do controle territorial no Iraque e possível redução da influência direta de milícias apoiadas por Teerã na região central iraquiana.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Iran International"
+      ],
+      "relevancia_score": 81,
+      "horas_em_destaque": 10,
+      "paises_envolvidos": [
+        "IQ",
+        "IR"
+      ],
+      "links_internos_relacionados": []
     },
     {
       "slug": "paquistao-envia-ministro-a-india-em-visita-inedita-desde-conflito",
@@ -1610,89 +1643,42 @@
     },
     {
       "slug": "fachin-encaminha-pgr-citacoes-de-ministros-do-stf-caso-master",
+      "titulo_curto": "Caso Master: Mendonça pede ao STF publicidade de relatório da PF com menções a ele",
+      "resumo_pulso": "Segundo apuração da Agência Brasil e do G1, o ministro André Mendonça solicitou à presidência do Supremo Tribunal Federal a retirada do sigilo de relatório da Polícia Federal que o menciona no âmbito do caso Master. O documento faz parte de um conjunto de relatórios remetidos pela corporação que gerou forte repercussão institucional na Corte.",
+      "impacto_pratico": "Aprofunda o debate institucional e a transparência em investigações envolvendo autoridades do judiciário.",
       "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 12,
-      "expires_at": "2026-11-20T12:54:19Z",
-      "updated_at": "2026-11-20T02:03:15Z",
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/justica/noticia/2026-11/caso-master-fachin-encaminha-pgr-citacoes-quatro-ministros-do-stf"
-      ],
-      "resumo_pulso": "Conforme relatórios da Agência Brasil e do Poder360, o presidente do STF, Edson Fachin, enviou à Procuradoria-Geral da República quatro relatórios da Polícia Federal que citam ministros da Corte em conversas do ex-dono do Banco Master, Daniel Vorcaro. O material possui caráter preliminar e não constitui acusação formal.",
-      "titulo_curto": "Fachin envia à PGR relatórios da PF com menções a ministros do STF",
-      "palavras_chave": [
-        "STF",
-        "PGR",
-        "Polícia Federal",
-        "Caso Master",
-        "Edson Fachin"
-      ],
-      "urgencia_score": 92,
-      "data_publicacao": "2026-11-20T00:06:16Z",
-      "impacto_pratico": "Repercussão institucional sobre a relação entre os Poderes e o sistema de justiça brasileiro.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Agência Brasil (EBC)",
-        "Poder360",
-        "G1 Política"
-      ],
-      "relevancia_score": 95,
-      "horas_em_destaque": 12,
       "paises_envolvidos": [
         "BR"
       ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
-          "motivo_conexao": "Acompanha o monitoramento da Suprema Corte em temas de relevância institucional.",
-          "titulo_existente": "STF analisa regras de transparência e limites constitucionais entre os Poderes"
-        }
-      ]
-    },
-    {
-      "slug": "russia-desencadeia-ataque-massivo-de-misseis-contra-ucrania",
-      "titulo_curto": "Ucrânia e Polônia investigam violação do espaço aéreo após queda de mísseis russos na fronteira",
-      "resumo_pulso": "Segundo informações da Ukrinform, do The Kyiv Independent e do G1, o chanceler ucraniano Andrii Sybiha confirmou cooperação com a Polônia para apurar a queda de mísseis Kh-101 e drones em território polonês. O incidente ocorreu durante uma nova onda de ataques massivos da Rússia contra pontes na capital Kiev e a maior subestação elétrica no oeste da Ucrânia.",
-      "impacto_pratico": "Aumento do risco de escalada na fronteira da OTAN e risco grave de desabastecimento elétrico na Ucrânia com a chegada do inverno.",
-      "categoria": "Geopolitica_Relacoes",
-      "paises_envolvidos": [
-        "UA",
-        "RU",
-        "PL"
-      ],
-      "urgencia_score": 97,
-      "relevancia_score": 95,
+      "urgencia_score": 93,
+      "relevancia_score": 96,
       "nivel_confianca": "alta",
       "ttl_horas": 12,
       "horas_em_destaque": 12,
       "veiculos_origem": [
-        "Ukrinform",
-        "G1 Mundo",
-        "The Kyiv Independent",
-        "Al Jazeera English"
+        "G1 Política",
+        "Poder360",
+        "Agência Brasil (EBC)"
       ],
       "fontes_urls": [
-        "https://www.ukrinform.net/rubric-polytics/4186768-ukraine-cooperating-with-poland-in-probe-into-airspace-violation-fm-sybiha.html",
-        "https://g1.globo.com/mundo/noticia/2026/11/20/russia-ataca-kiev-apos-putin-prometer-retaliacao.ghtml",
-        "https://kyivindependent.com/poland-reports-airspace-violation-during-russian-attack-on-ukraine-investigates-debris-crash/"
+        "https://g1.globo.com/politica/blog/camila-bomfim/post/2026/11/20/caso-master-mendonca-pede-a-presidencia-do-stf-que-torne-publico-relatorio-da-pf-com-mencoes-a-ele.ghtml"
       ],
       "palavras_chave": [
-        "Ucrânia",
-        "Polônia",
-        "Rússia",
-        "Espaço Aéreo",
-        "Mísseis",
-        "OTAN"
+        "STF",
+        "André Mendonça",
+        "Polícia Federal",
+        "Caso Master"
       ],
-      "data_publicacao": "2026-11-19T23:41:36Z",
+      "data_publicacao": "2026-11-20T00:06:16Z",
       "links_internos_relacionados": [
         {
-          "titulo_existente": "O que é uma sanção internacional?",
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-sancao-internacional",
-          "motivo_conexao": "Explica os instrumentos diplomáticos e econômicos utilizados contra a Rússia no contexto da guerra."
+          "titulo_existente": "STF analisa regras de transparência e limites constitucionais entre os Poderes",
+          "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
+          "motivo_conexao": "Complementa a análise sobre as decisões institucionais e repercussões no Supremo Tribunal Federal."
         }
       ],
       "expires_at": "2026-11-20T12:54:19Z",
-      "updated_at": "2026-11-20T10:56:16Z"
+      "updated_at": "2026-11-20T11:53:42Z"
     }
   ],
   "temas_curadoria": [
