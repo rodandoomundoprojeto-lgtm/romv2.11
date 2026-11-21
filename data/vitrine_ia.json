@@ -2,79 +2,75 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-21T01:28:48Z",
-  "batch_id": "20261121-0128",
+  "updatedAt": "2026-11-21T02:08:13Z",
+  "batch_id": "20261121-0207",
   "temas_ativos": [
     {
-      "slug": "juros-eua-ajuste-fiscal-disparada-dolar",
-      "titulo_tema": "Juros nos EUA e ajuste fiscal pressionam o câmbio e elevam o dólar",
+      "slug": "stf-derruba-sigilo-de-relatorio-da-pf-sobre-mendonca-e-master",
+      "titulo_tema": "PF informa ausência de diálogos entre André Mendonça e Daniel Vorcaro no caso Master",
+      "titulo_curto": "PF informa ausência de diálogos entre André Mendonça e Daniel Vorcaro no caso Master",
       "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Geopolitica_Radar",
-        "Politica"
-      ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 95,
-      "ttl_horas": 48,
-      "expires_at": "2026-11-23T01:28:48Z",
-      "palavras_chave_busca": [
-        "dólar",
-        "juros nos eua",
-        "fed",
-        "ajuste fiscal",
-        "câmbio",
-        "inflação",
-        "economia brasileira"
-      ],
-      "gatilho_vitrine": "Explicar a dinâmica macroeconômica por trás da alta da moeda americana e seus efeitos diretos no custo de vida no Brasil",
-      "sintese_nerd": "A combinação de taxas de juros elevadas mantidas pelo Federal Reserve nos Estados Unidos com incertezas sobre o ajuste fiscal doméstico drena capital de economias emergentes, provocando a forte desvalorização do real. Isso encarece produtos importados e pressiona a inflação interna, exigindo atenção redobrada da política monetária nacional.",
-      "data_publicacao": "2026-11-21T01:28:48Z",
-      "updated_at": "2026-11-21T01:28:48Z"
-    },
-    {
-      "slug": "ipo-anthropic-mercado-ia-esandalo-nvidia",
-      "titulo_tema": "IPO bilionário da Anthropic agita mercado de IA em meio a escândalos na Nvidia",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Cultura",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categoria": "Geopolitica_Relacoes",
       "categorias_cruzadas": [
         "Economia",
-        "Geopolitica_Radar"
+        "Resumo_Ultimas"
       ],
-      "rota_editoria": "/cultura",
-      "relevancia_score": 90,
-      "ttl_horas": 72,
-      "expires_at": "2026-11-24T01:28:48Z",
+      "rota_editoria": "/radar",
+      "relevancia_score": 95,
+      "urgencia_score": 94,
+      "ttl_horas": 18,
+      "expires_at": "2026-11-22T13:28:48Z",
       "palavras_chave_busca": [
-        "anthropic",
-        "ipo",
-        "inteligência artificial",
-        "nvidia",
-        "claude",
-        "mercado financeiro",
-        "tecnologia"
+        "stf",
+        "polícia federal",
+        "andré mendonça",
+        "daniel vorcaro",
+        "caso master"
       ],
-      "gatilho_vitrine": "Destacar as turbulências e transformações no setor global de tecnologia e o impacto das investigações sobre chips e semicondutores",
-      "sintese_nerd": "A oferta pública recorde da Anthropic redefinindo a captação de recursos para inteligência artificial contrasta com as investigações regulatórias e quedas históricas nas ações da Nvidia. Essa dualidade expõe a volatilidade do setor tecnológico em meio a reconfigurações geopolíticas e eleitorais nas potências ocidentais.",
+      "palavras_chave": [
+        "stf",
+        "polícia federal",
+        "andré mendonça",
+        "daniel vorcaro",
+        "caso master"
+      ],
+      "gatilho_vitrine": "Segundo apuração da Agência Brasil, a Polícia Federal informou ao Supremo Tribunal Federal (STF) a inexistência de registros de conversas entre o ministro André Mendonça e o ex-banqueiro Daniel Vorcaro. O relatório teve o sigilo retirado pelo presidente da Corte, Edson Fachin, a pedido do próprio magistrado.",
+      "resumo_pulso": "Segundo apuração da Agência Brasil, a Polícia Federal informou ao Supremo Tribunal Federal (STF) a inexistência de registros de conversas entre o ministro André Mendonça e o ex-banqueiro Daniel Vorcaro. O relatório teve o sigilo retirado pelo presidente da Corte, Edson Fachin, a pedido do próprio magistrado.",
+      "sintese_nerd": "Esclarecimento de apurações em andamento no STF relacionadas ao caso Master.",
+      "impacto_pratico": "Esclarecimento de apurações em andamento no STF relacionadas ao caso Master.",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "veiculos_origem": [
+        "Agência Brasil"
+      ],
+      "fontes_urls": [
+        "https://agenciabrasil.ebc.com.br/justica/noticia/2026-11/pf-diz-que-nao-ha-conversas-de-mendonca-com-vorcaro"
+      ],
       "data_publicacao": "2026-11-21T01:28:48Z",
-      "updated_at": "2026-11-21T01:28:48Z"
+      "updated_at": "2026-11-21T02:08:13Z"
     },
     {
       "slug": "decisao-fachin-sigilo-caso-master-stf",
-      "titulo_tema": "STF retira sigilo de relatório da PF citando ministros no Caso Master",
       "status": "novo",
+      "ttl_horas": 36,
+      "expires_at": "2026-11-22T13:28:48Z",
+      "updated_at": "2026-11-21T01:28:48Z",
+      "titulo_tema": "STF retira sigilo de relatório da PF citando ministros no Caso Master",
+      "sintese_nerd": "A decisão do presidente do STF, Edson Fachin, de retirar o sigilo do relatório da PF sobre conversas envolvendo o ministro André Mendonça no Caso Master recoloca o debate sobre transparência e integridade no centro dos Poderes. A medida gera repercussão imediata entre magistrados e classes políticas, acirrando o escrutínio sobre o sistema de justiça brasileiro.",
+      "rota_editoria": "/politica",
+      "urgencia_score": 93,
+      "data_publicacao": "2026-11-21T01:28:48Z",
+      "gatilho_vitrine": "Cobrir os desdobramentos institucionais das investigações da Polícia Federal envolvendo menções a ministros do Supremo Tribunal Federal",
       "origem_pipeline": "curadoria",
+      "relevancia_score": 94,
       "categoria_primaria": "Politica",
       "categorias_cruzadas": [
         "Resumo_Ultimas",
         "Eleicoes"
       ],
-      "rota_editoria": "/politica",
-      "relevancia_score": 88,
-      "ttl_horas": 36,
-      "expires_at": "2026-11-22T13:28:48Z",
       "palavras_chave_busca": [
         "stf",
         "caso master",
@@ -83,26 +79,82 @@
         "polícia federal",
         "gilmar mendes",
         "crise institucional"
-      ],
-      "gatilho_vitrine": "Cobrir os desdobramentos institucionais das investigações da Polícia Federal envolvendo menções a ministros do Supremo Tribunal Federal",
-      "sintese_nerd": "A decisão do presidente do STF, Edson Fachin, de retirar o sigilo do relatório da PF sobre conversas envolvendo o ministro André Mendonça no Caso Master recoloca o debate sobre transparência e integridade no centro dos Poderes. A medida gera repercussão imediata entre magistrados e classes políticas, acirrando o escrutínio sobre o sistema de justiça brasileiro.",
+      ]
+    },
+    {
+      "slug": "juros-eua-ajuste-fiscal-disparada-dolar",
+      "status": "novo",
+      "ttl_horas": 48,
+      "expires_at": "2026-11-23T01:28:48Z",
+      "updated_at": "2026-11-21T01:28:48Z",
+      "titulo_tema": "Juros nos EUA e ajuste fiscal pressionam o câmbio e elevam o dólar",
+      "sintese_nerd": "A combinação de taxas de juros elevadas mantidas pelo Federal Reserve nos Estados Unidos com incertezas sobre o ajuste fiscal doméstico drena capital de economias emergentes, provocando a forte desvalorização do real. Isso encarece produtos importados e pressiona a inflação interna, exigindo atenção redobrada da política monetária nacional.",
+      "rota_editoria": "/economia",
       "data_publicacao": "2026-11-21T01:28:48Z",
-      "updated_at": "2026-11-21T01:28:48Z"
+      "gatilho_vitrine": "Explicar a dinâmica macroeconômica por trás da alta da moeda americana e seus efeitos diretos no custo de vida no Brasil",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 95,
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Geopolitica_Radar",
+        "Politica"
+      ],
+      "palavras_chave_busca": [
+        "dólar",
+        "juros nos eua",
+        "fed",
+        "ajuste fiscal",
+        "câmbio",
+        "inflação",
+        "economia brasileira"
+      ]
+    },
+    {
+      "slug": "ipo-anthropic-mercado-ia-esandalo-nvidia",
+      "status": "novo",
+      "ttl_horas": 72,
+      "expires_at": "2026-11-24T01:28:48Z",
+      "updated_at": "2026-11-21T01:28:48Z",
+      "titulo_tema": "IPO bilionário da Anthropic agita mercado de IA em meio a escândalos na Nvidia",
+      "sintese_nerd": "A oferta pública recorde da Anthropic redefinindo a captação de recursos para inteligência artificial contrasta com as investigações regulatórias e quedas históricas nas ações da Nvidia. Essa dualidade expõe a volatilidade do setor tecnológico em meio a reconfigurações geopolíticas e eleitorais nas potências ocidentais.",
+      "rota_editoria": "/cultura",
+      "data_publicacao": "2026-11-21T01:28:48Z",
+      "gatilho_vitrine": "Destacar as turbulências e transformações no setor global de tecnologia e o impacto das investigações sobre chips e semicondutores",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 90,
+      "categoria_primaria": "Cultura",
+      "categorias_cruzadas": [
+        "Economia",
+        "Geopolitica_Radar"
+      ],
+      "palavras_chave_busca": [
+        "anthropic",
+        "ipo",
+        "inteligência artificial",
+        "nvidia",
+        "claude",
+        "mercado financeiro",
+        "tecnologia"
+      ]
     },
     {
       "slug": "temporal-destruicao-rio-grande-do-sul-defesa-civil",
-      "titulo_tema": "Temporal catastrófico deixa mortos e feridos no Rio Grande do Sul",
       "status": "novo",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-22T01:28:48Z",
+      "updated_at": "2026-11-21T01:28:48Z",
+      "titulo_tema": "Temporal catastrófico deixa mortos e feridos no Rio Grande do Sul",
+      "sintese_nerd": "Eventos climáticos extremos severos atingiram dezenas de municípios gaúchos, causando dezenas de feridos e óbitos e escancarando a urgência de investimentos em infraestrutura resiliente. A recorrência desses temporais reforça o debate global sobre mitigação de riscos climáticos locais.",
+      "rota_editoria": "/radar",
+      "data_publicacao": "2026-11-21T01:28:48Z",
+      "gatilho_vitrine": "Monitorar os impactos humanos, estruturais e econômicos dos eventos climáticos extremos na região sul do país",
       "origem_pipeline": "curadoria",
+      "relevancia_score": 86,
       "categoria_primaria": "Geopolitica_Radar",
       "categorias_cruzadas": [
         "Resumo_Ultimas",
         "Cultura"
       ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 86,
-      "ttl_horas": 24,
-      "expires_at": "2026-11-22T01:28:48Z",
       "palavras_chave_busca": [
         "rio grande do sul",
         "temporal",
@@ -110,107 +162,103 @@
         "mudanças climáticas",
         "tupanciretã",
         "chuvas extremas"
-      ],
-      "gatilho_vitrine": "Monitorar os impactos humanos, estruturais e econômicos dos eventos climáticos extremos na região sul do país",
-      "sintese_nerd": "Eventos climáticos extremos severos atingiram dezenas de municípios gaúchos, causando dezenas de feridos e óbitos e escancarando a urgência de investimentos em infraestrutura resiliente. A recorrência desses temporais reforça o debate global sobre mitigação de riscos climáticos locais.",
-      "data_publicacao": "2026-11-21T01:28:48Z",
-      "updated_at": "2026-11-21T01:28:48Z"
+      ]
     },
     {
       "slug": "disparada-do-dolar-pressao-fiscal-brasil-juros-eua",
+      "titulo_tema": "Juros elevados nos EUA e incerteza fiscal no Brasil impulsionam disparada do dólar",
+      "titulo_curto": "Juros elevados nos EUA e incerteza fiscal no Brasil impulsionam disparada do dólar",
       "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Economia",
       "categoria": "Economia_Comercio",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 90,
+      "urgencia_score": 89,
       "ttl_horas": 24,
       "expires_at": "2026-11-22T01:19:08Z",
-      "updated_at": "2026-11-21T01:19:08Z",
-      "fontes_urls": [
-        "https://g1.globo.com/jornal-nacional/noticia/2026/11/20/juros-nos-eua-e-ajuste-fiscal-no-brasil-o-que-esta-por-tras-da-disparada-do-dolar.ghtml"
+      "palavras_chave_busca": [
+        "dólar",
+        "câmbio",
+        "inflação",
+        "federal reserve",
+        "economia"
       ],
-      "titulo_tema": "Juros elevados nos EUA e incerteza fiscal no Brasil impulsionam disparada do dólar",
-      "resumo_pulso": "Segundo reportagem do G1 Economia, a valorização contínua do dólar no mercado global tem pressionado fortemente o real. O movimento reflete a expectativa de manutenção de juros altos pelo Federal Reserve nos EUA combinada às incertezas sobre o pacote de corte de gastos federais em Brasília.",
-      "sintese_nerd": "Encarecimento de viagens ao exterior, insumos importados e maior pressão sobre a inflação doméstica.",
-      "titulo_curto": "Juros elevados nos EUA e incerteza fiscal no Brasil impulsionam disparada do dólar",
-      "rota_editoria": "/economia",
       "palavras_chave": [
         "dólar",
         "câmbio",
-        "taxa selic",
+        "inflação",
         "federal reserve",
-        "ajuste fiscal"
+        "economia"
       ],
-      "urgencia_score": 89,
-      "data_publicacao": "2026-11-21T01:01:51Z",
-      "gatilho_vitrine": "Segundo reportagem do G1 Economia, a valorização contínua do dólar no mercado global tem pressionado fortemente o real. O movimento reflete a expectativa de manutenção de juros altos pelo Federal Reserve nos EUA combinada às incertezas sobre o pacote de corte de gastos federais em Brasília.",
-      "impacto_pratico": "Encarecimento de viagens ao exterior, insumos importados e maior pressão sobre a inflação doméstica.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "G1 Economia"
-      ],
-      "relevancia_score": 90,
+      "gatilho_vitrine": "Segundo reportagem do G1 Economia, a valorização contínua do dólar no mercado global continua exercendo forte pressão sobre o real. O movimento reflete a expectativa de manutenção de taxas de juros elevadas pelo Federal Reserve aliada às incertezas fiscais internas.",
+      "resumo_pulso": "Segundo reportagem do G1 Economia, a valorização contínua do dólar no mercado global continua exercendo forte pressão sobre o real. O movimento reflete a expectativa de manutenção de taxas de juros elevadas pelo Federal Reserve aliada às incertezas fiscais internas.",
+      "sintese_nerd": "Impacto direto no custo de importações, inflação interna e cotação de moedas estrangeiras.",
+      "impacto_pratico": "Impacto direto no custo de importações, inflação interna e cotação de moedas estrangeiras.",
       "paises_envolvidos": [
         "BR",
         "US"
       ],
+      "veiculos_origem": [
+        "G1 Economia"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/jornal-nacional/noticia/2026/11/20/juros-nos-eua-e-ajuste-fiscal-no-brasil-o-que-esta-por-tras-da-disparada-do-dolar.ghtml"
+      ],
+      "data_publicacao": "2026-11-21T01:01:51Z",
+      "updated_at": "2026-11-21T02:08:13Z"
+    },
+    {
+      "slug": "bayer-pagara-bilhoes-em-acordo-judicial-com-pacientes-com-cancer",
+      "titulo_tema": "Justiça nos EUA aprova acordo de até US$ 7,25 bilhões da Bayer sobre herbicida Roundup",
+      "titulo_curto": "Justiça nos EUA aprova acordo de até US$ 7,25 bilhões da Bayer sobre herbicida Roundup",
+      "status": "novo",
+      "origem_pipeline": "pulso",
       "categoria_primaria": "Economia",
+      "categoria": "Economia_Comercio",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
       ],
-      "palavras_chave_busca": [
-        "dólar",
-        "câmbio",
-        "taxa selic",
-        "federal reserve",
-        "ajuste fiscal"
-      ]
-    },
-    {
-      "slug": "bayer-pagara-bilhoes-em-acordo-judicial-com-pacientes-com-cancer",
-      "status": "novo",
-      "categoria": "Economia_Comercio",
+      "rota_editoria": "/economia",
+      "relevancia_score": 87,
+      "urgencia_score": 88,
       "ttl_horas": 24,
       "expires_at": "2026-11-22T00:48:20Z",
-      "updated_at": "2026-11-21T01:27:35Z",
-      "fontes_urls": [
-        "https://g1.globo.com/mundo/noticia/2026/11/20/bayer-pagara-ate-us-725-bilhoes-em-acordo-judicial-com-pacientes-que-alegam-ter-desenvolvido-cancer-apos-uso-de-herbicida.ghtml"
+      "palavras_chave_busca": [
+        "bayer",
+        "roundup",
+        "eua",
+        "processo judicial",
+        "saúde"
       ],
-      "titulo_tema": "Juiz nos EUA aprova acordo de até US$ 7,25 bilhões da Bayer sobre herbicida Roundup",
-      "resumo_pulso": "Conforme apuração do G1 Mundo, um juiz do estado de Missouri aprovou o acordo de até US$ 7,25 bilhões firmado pela Bayer para encerrar milhares de processos nos EUA. A indenização abrange alegações de que o herbicida Roundup causou linfoma em usuários.",
-      "sintese_nerd": "Impacto financeiro de longo prazo para a fabricante e precedentes para litígios corporativos globais.",
-      "titulo_curto": "Juiz nos EUA aprova acordo de até US$ 7,25 bilhões da Bayer sobre herbicida Roundup",
-      "rota_editoria": "/economia",
       "palavras_chave": [
         "bayer",
         "roundup",
         "eua",
-        "processos judiciais",
-        "câncer"
+        "processo judicial",
+        "saúde"
       ],
-      "urgencia_score": 88,
-      "data_publicacao": "2026-11-21T00:38:30Z",
-      "gatilho_vitrine": "Conforme apuração do G1 Mundo, um juiz do estado de Missouri aprovou o acordo de até US$ 7,25 bilhões firmado pela Bayer para encerrar milhares de processos nos EUA. A indenização abrange alegações de que o herbicida Roundup causou linfoma em usuários.",
-      "impacto_pratico": "Impacto financeiro de longo prazo para a fabricante e precedentes para litígios corporativos globais.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "G1 Mundo"
-      ],
-      "relevancia_score": 87,
+      "gatilho_vitrine": "Segundo apuração do G1 Mundo, um tribunal estadunidense no Missouri aprovou o acordo de até US$ 7,25 bilhões proposto pela Bayer para encerrar milhares de processos movidos por pacientes que alegam ter desenvolvido linfoma após o uso do herbicida Roundup.",
+      "resumo_pulso": "Segundo apuração do G1 Mundo, um tribunal estadunidense no Missouri aprovou o acordo de até US$ 7,25 bilhões proposto pela Bayer para encerrar milhares de processos movidos por pacientes que alegam ter desenvolvido linfoma após o uso do herbicida Roundup.",
+      "sintese_nerd": "Encerramento de litígios históricos e impactos financeiros de longo prazo para a multinacional farmacêutica e agrícola.",
+      "impacto_pratico": "Encerramento de litígios históricos e impactos financeiros de longo prazo para a multinacional farmacêutica e agrícola.",
       "paises_envolvidos": [
         "US",
         "DE"
       ],
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
+      "veiculos_origem": [
+        "G1 Mundo"
       ],
-      "palavras_chave_busca": [
-        "bayer",
-        "roundup",
-        "eua",
-        "processos judiciais",
-        "câncer"
-      ]
+      "fontes_urls": [
+        "https://g1.globo.com/mundo/noticia/2026/11/20/bayer-pagara-ate-us-725-bilhoes-em-acordo-judicial-com-pacientes-que-alegam-ter-desenvolvido-cancer-apos-uso-de-herbicida.ghtml"
+      ],
+      "data_publicacao": "2026-11-21T00:38:30Z",
+      "updated_at": "2026-11-21T02:08:13Z"
     },
     {
       "slug": "peru-registra-terremoto-de-magnitude-6-7-sentido-em-lima",
@@ -307,51 +355,51 @@
     },
     {
       "slug": "nova-caravana-migrantes-mexico-eua-ameaca-tarifas-trump",
+      "titulo_tema": "Caravana com cerca de 300 migrantes avança no sul do México rumo aos EUA",
+      "titulo_curto": "Caravana com cerca de 300 migrantes avança no sul do México rumo aos EUA",
       "status": "novo",
-      "categoria": "Mobilidade_Fronteiras",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-22T01:19:08Z",
-      "updated_at": "2026-11-21T01:19:08Z",
-      "fontes_urls": [
-        "https://www.infomoney.com.br/mundo/nova-caravana-com-cerca-de-300-migrantes-entra-no-sul-do-mexico-rumo-aos-eua/"
-      ],
-      "titulo_tema": "Caravana com centenas de migrantes avança no México sob ameaça de tarifas de Trump",
-      "resumo_pulso": "Conforme noticiado pela InfoMoney, um grupo com cerca de 300 migrantes ingressou no sul do México com intenção de se deslocar rumo à fronteira norte-americana. A mobilização ocorre uma semana após Donald Trump ameaçar aplicar sanções tarifárias ao governo mexicano se as rotas migratórias não forem bloqueadas.",
-      "sintese_nerd": "Risco de endurecimento na fiscalização de fronteiras e retaliações comerciais entre Estados Unidos e México.",
-      "titulo_curto": "Caravana com centenas de migrantes avança no México sob ameaça de tarifas de Trump",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "migrantes",
-        "méxico",
-        "fronteira eua",
-        "donald trump",
-        "tarifas"
-      ],
-      "urgencia_score": 86,
-      "data_publicacao": "2026-11-20T23:03:00Z",
-      "gatilho_vitrine": "Conforme noticiado pela InfoMoney, um grupo com cerca de 300 migrantes ingressou no sul do México com intenção de se deslocar rumo à fronteira norte-americana. A mobilização ocorre uma semana após Donald Trump ameaçar aplicar sanções tarifárias ao governo mexicano se as rotas migratórias não forem bloqueadas.",
-      "impacto_pratico": "Risco de endurecimento na fiscalização de fronteiras e retaliações comerciais entre Estados Unidos e México.",
       "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "InfoMoney Mercados"
-      ],
-      "relevancia_score": 87,
-      "paises_envolvidos": [
-        "MX",
-        "US"
-      ],
       "categoria_primaria": "Geopolitica_Radar",
+      "categoria": "Mobilidade_Fronteiras",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
       ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 87,
+      "urgencia_score": 86,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-22T01:19:08Z",
       "palavras_chave_busca": [
-        "migrantes",
+        "migração",
         "méxico",
-        "fronteira eua",
-        "donald trump",
+        "eua",
+        "fronteira",
         "tarifas"
-      ]
+      ],
+      "palavras_chave": [
+        "migração",
+        "méxico",
+        "eua",
+        "fronteira",
+        "tarifas"
+      ],
+      "gatilho_vitrine": "Conforme noticiado pela InfoMoney, um grupo com cerca de 300 migrantes ingressou no território sul-mexicano com destino à fronteira norte-americana. O deslocamento ocorre em meio a alertas e ameaças de taxação comercial por parte do governo de Donald Trump.",
+      "resumo_pulso": "Conforme noticiado pela InfoMoney, um grupo com cerca de 300 migrantes ingressou no território sul-mexicano com destino à fronteira norte-americana. O deslocamento ocorre em meio a alertas e ameaças de taxação comercial por parte do governo de Donald Trump.",
+      "sintese_nerd": "Pressão sobre as políticas de controle migratório na fronteira entre México e Estados Unidos.",
+      "impacto_pratico": "Pressão sobre as políticas de controle migratório na fronteira entre México e Estados Unidos.",
+      "paises_envolvidos": [
+        "MX",
+        "US"
+      ],
+      "veiculos_origem": [
+        "InfoMoney"
+      ],
+      "fontes_urls": [
+        "https://www.infomoney.com.br/mundo/nova-caravana-com-cerca-de-300-migrantes-entra-no-sul-do-mexico-rumo-aos-eua/"
+      ],
+      "data_publicacao": "2026-11-20T23:03:00Z",
+      "updated_at": "2026-11-21T02:08:13Z"
     },
     {
       "slug": "acoes-da-anthropic-enfrentam-queda-em-bolsa-americana",
@@ -815,252 +863,124 @@
         "passaportes",
         "justiça"
       ]
-    },
-    {
-      "slug": "temporal-no-rio-grande-do-sul-provoca-mortes-e-destruicao",
-      "status": "novo",
-      "categoria": "Ciencia_Clima",
-      "ttl_horas": 18,
-      "expires_at": "2026-11-21T19:21:44Z",
-      "updated_at": "2026-11-21T01:27:35Z",
-      "fontes_urls": [
-        "https://www.bbc.com/portuguese/articles/cqdr1xmyg3kzo?at_medium=RSS&at_campaign=rss"
-      ],
-      "titulo_tema": "Temporal no Rio Grande do Sul deixa dezenas de cidades danificadas e três mortos em Tupanciretã",
-      "resumo_pulso": "Conforme novas atualizações da BBC News Brasil, cerca de 30 municípios do Rio Grande do Sul registraram danos humanos e materiais severos decorrentes de fortes temporais. A cidade de Tupanciretã contabilizou três óbitos e dezenas de feridos, mobilizando equipes de defesa civil.",
-      "sintese_nerd": "Interrupção de serviços básicos e alertas para deslocamentos na região Sul.",
-      "titulo_curto": "Temporal no Rio Grande do Sul deixa dezenas de cidades danificadas e três mortos em Tupanciretã",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "rio grande do sul",
-        "temporal",
-        "tupanciretã",
-        "defesa civil",
-        "clima"
-      ],
-      "urgencia_score": 97,
-      "data_publicacao": "2026-11-20T20:45:51.380135+00:00",
-      "gatilho_vitrine": "Conforme novas atualizações da BBC News Brasil, cerca de 30 municípios do Rio Grande do Sul registraram danos humanos e materiais severos decorrentes de fortes temporais. A cidade de Tupanciretã contabilizou três óbitos e dezenas de feridos, mobilizando equipes de defesa civil.",
-      "impacto_pratico": "Interrupção de serviços básicos e alertas para deslocamentos na região Sul.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "BBC News Brasil",
-        "InfoMoney Mercados"
-      ],
-      "relevancia_score": 95,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "rio grande do sul",
-        "temporal",
-        "tupanciretã",
-        "defesa civil",
-        "clima"
-      ]
-    }
-  ],
-  "temas_curadoria": [
-    {
-      "slug": "juros-eua-ajuste-fiscal-disparada-dolar",
-      "titulo_tema": "Juros nos EUA e ajuste fiscal pressionam o câmbio e elevam o dólar",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Geopolitica_Radar",
-        "Politica"
-      ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 95,
-      "ttl_horas": 48,
-      "expires_at": "2026-11-23T01:28:48Z",
-      "palavras_chave_busca": [
-        "dólar",
-        "juros nos eua",
-        "fed",
-        "ajuste fiscal",
-        "câmbio",
-        "inflação",
-        "economia brasileira"
-      ],
-      "gatilho_vitrine": "Explicar a dinâmica macroeconômica por trás da alta da moeda americana e seus efeitos diretos no custo de vida no Brasil",
-      "sintese_nerd": "A combinação de taxas de juros elevadas mantidas pelo Federal Reserve nos Estados Unidos com incertezas sobre o ajuste fiscal doméstico drena capital de economias emergentes, provocando a forte desvalorização do real. Isso encarece produtos importados e pressiona a inflação interna, exigindo atenção redobrada da política monetária nacional.",
-      "data_publicacao": "2026-11-21T01:28:48Z",
-      "updated_at": "2026-11-21T01:28:48Z"
-    },
-    {
-      "slug": "ipo-anthropic-mercado-ia-esandalo-nvidia",
-      "titulo_tema": "IPO bilionário da Anthropic agita mercado de IA em meio a escândalos na Nvidia",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Cultura",
-      "categorias_cruzadas": [
-        "Economia",
-        "Geopolitica_Radar"
-      ],
-      "rota_editoria": "/cultura",
-      "relevancia_score": 90,
-      "ttl_horas": 72,
-      "expires_at": "2026-11-24T01:28:48Z",
-      "palavras_chave_busca": [
-        "anthropic",
-        "ipo",
-        "inteligência artificial",
-        "nvidia",
-        "claude",
-        "mercado financeiro",
-        "tecnologia"
-      ],
-      "gatilho_vitrine": "Destacar as turbulências e transformações no setor global de tecnologia e o impacto das investigações sobre chips e semicondutores",
-      "sintese_nerd": "A oferta pública recorde da Anthropic redefinindo a captação de recursos para inteligência artificial contrasta com as investigações regulatórias e quedas históricas nas ações da Nvidia. Essa dualidade expõe a volatilidade do setor tecnológico em meio a reconfigurações geopolíticas e eleitorais nas potências ocidentais.",
-      "data_publicacao": "2026-11-21T01:28:48Z",
-      "updated_at": "2026-11-21T01:28:48Z"
-    },
-    {
-      "slug": "decisao-fachin-sigilo-caso-master-stf",
-      "titulo_tema": "STF retira sigilo de relatório da PF citando ministros no Caso Master",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Politica",
-      "categorias_cruzadas": [
-        "Resumo_Ultimas",
-        "Eleicoes"
-      ],
-      "rota_editoria": "/politica",
-      "relevancia_score": 88,
-      "ttl_horas": 36,
-      "expires_at": "2026-11-22T13:28:48Z",
-      "palavras_chave_busca": [
-        "stf",
-        "caso master",
-        "andré mendonça",
-        "edson fachin",
-        "polícia federal",
-        "gilmar mendes",
-        "crise institucional"
-      ],
-      "gatilho_vitrine": "Cobrir os desdobramentos institucionais das investigações da Polícia Federal envolvendo menções a ministros do Supremo Tribunal Federal",
-      "sintese_nerd": "A decisão do presidente do STF, Edson Fachin, de retirar o sigilo do relatório da PF sobre conversas envolvendo o ministro André Mendonça no Caso Master recoloca o debate sobre transparência e integridade no centro dos Poderes. A medida gera repercussão imediata entre magistrados e classes políticas, acirrando o escrutínio sobre o sistema de justiça brasileiro.",
-      "data_publicacao": "2026-11-21T01:28:48Z",
-      "updated_at": "2026-11-21T01:28:48Z"
-    },
-    {
-      "slug": "temporal-destruicao-rio-grande-do-sul-defesa-civil",
-      "titulo_tema": "Temporal catastrófico deixa mortos e feridos no Rio Grande do Sul",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Resumo_Ultimas",
-        "Cultura"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 86,
-      "ttl_horas": 24,
-      "expires_at": "2026-11-22T01:28:48Z",
-      "palavras_chave_busca": [
-        "rio grande do sul",
-        "temporal",
-        "defesa civil",
-        "mudanças climáticas",
-        "tupanciretã",
-        "chuvas extremas"
-      ],
-      "gatilho_vitrine": "Monitorar os impactos humanos, estruturais e econômicos dos eventos climáticos extremos na região sul do país",
-      "sintese_nerd": "Eventos climáticos extremos severos atingiram dezenas de municípios gaúchos, causando dezenas de feridos e óbitos e escancarando a urgência de investimentos em infraestrutura resiliente. A recorrência desses temporais reforça o debate global sobre mitigação de riscos climáticos locais.",
-      "data_publicacao": "2026-11-21T01:28:48Z",
-      "updated_at": "2026-11-21T01:28:48Z"
     }
   ],
   "noticias_quentes": [
     {
-      "slug": "disparada-do-dolar-pressao-fiscal-brasil-juros-eua",
-      "categoria": "Economia_Comercio",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-22T01:19:08Z",
-      "updated_at": "2026-11-21T01:19:08Z",
-      "fontes_urls": [
-        "https://g1.globo.com/jornal-nacional/noticia/2026/11/20/juros-nos-eua-e-ajuste-fiscal-no-brasil-o-que-esta-por-tras-da-disparada-do-dolar.ghtml"
+      "slug": "stf-derruba-sigilo-de-relatorio-da-pf-sobre-mendonca-e-master",
+      "titulo_curto": "PF informa ausência de diálogos entre André Mendonça e Daniel Vorcaro no caso Master",
+      "resumo_pulso": "Segundo apuração da Agência Brasil, a Polícia Federal informou ao Supremo Tribunal Federal (STF) a inexistência de registros de conversas entre o ministro André Mendonça e o ex-banqueiro Daniel Vorcaro. O relatório teve o sigilo retirado pelo presidente da Corte, Edson Fachin, a pedido do próprio magistrado.",
+      "impacto_pratico": "Esclarecimento de apurações em andamento no STF relacionadas ao caso Master.",
+      "categoria": "Geopolitica_Relacoes",
+      "paises_envolvidos": [
+        "BR"
       ],
-      "resumo_pulso": "Segundo reportagem do G1 Economia, a valorização contínua do dólar no mercado global tem pressionado fortemente o real. O movimento reflete a expectativa de manutenção de juros altos pelo Federal Reserve nos EUA combinada às incertezas sobre o pacote de corte de gastos federais em Brasília.",
-      "titulo_curto": "Juros elevados nos EUA e incerteza fiscal no Brasil impulsionam disparada do dólar",
-      "palavras_chave": [
-        "Dólar",
-        "Câmbio",
-        "Taxa Selic",
-        "Federal Reserve",
-        "Ajuste Fiscal"
-      ],
-      "urgencia_score": 89,
-      "data_publicacao": "2026-11-21T01:01:51Z",
-      "impacto_pratico": "Encarecimento de viagens ao exterior, insumos importados e maior pressão sobre a inflação doméstica.",
+      "urgencia_score": 94,
+      "relevancia_score": 95,
       "nivel_confianca": "alta",
+      "ttl_horas": 18,
+      "horas_em_destaque": 18,
       "veiculos_origem": [
-        "G1 Economia"
+        "Agência Brasil"
       ],
-      "relevancia_score": 90,
-      "horas_em_destaque": 12,
+      "fontes_urls": [
+        "https://agenciabrasil.ebc.com.br/justica/noticia/2026-11/pf-diz-que-nao-ha-conversas-de-mendonca-com-vorcaro"
+      ],
+      "palavras_chave": [
+        "STF",
+        "Polícia Federal",
+        "André Mendonça",
+        "Daniel Vorcaro",
+        "caso Master"
+      ],
+      "data_publicacao": "2026-11-21T01:28:48Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "STF analisa regras de transparência e limites constitucionais entre os Poderes",
+          "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
+          "motivo_conexao": "Contextualiza a atuação e decisões recentes do Supremo Tribunal Federal no cenário político nacional."
+        }
+      ],
+      "expires_at": "2026-11-22T13:28:48Z",
+      "updated_at": "2026-11-21T02:08:13Z"
+    },
+    {
+      "slug": "disparada-do-dolar-pressao-fiscal-brasil-juros-eua",
+      "titulo_curto": "Juros elevados nos EUA e incerteza fiscal no Brasil impulsionam disparada do dólar",
+      "resumo_pulso": "Segundo reportagem do G1 Economia, a valorização contínua do dólar no mercado global continua exercendo forte pressão sobre o real. O movimento reflete a expectativa de manutenção de taxas de juros elevadas pelo Federal Reserve aliada às incertezas fiscais internas.",
+      "impacto_pratico": "Impacto direto no custo de importações, inflação interna e cotação de moedas estrangeiras.",
+      "categoria": "Economia_Comercio",
       "paises_envolvidos": [
         "BR",
         "US"
       ],
+      "urgencia_score": 89,
+      "relevancia_score": 90,
+      "nivel_confianca": "alta",
+      "ttl_horas": 24,
+      "horas_em_destaque": 24,
+      "veiculos_origem": [
+        "G1 Economia"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/jornal-nacional/noticia/2026/11/20/juros-nos-eua-e-ajuste-fiscal-no-brasil-o-que-esta-por-tras-da-disparada-do-dolar.ghtml"
+      ],
+      "palavras_chave": [
+        "dólar",
+        "câmbio",
+        "inflação",
+        "Federal Reserve",
+        "economia"
+      ],
+      "data_publicacao": "2026-11-21T01:01:51Z",
       "links_internos_relacionados": [
         {
-          "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
-          "motivo_conexao": "Veja análises completas sobre câmbio, juros e metas fiscais brasileiras.",
-          "titulo_existente": "Economia no Brasil"
-        },
-        {
+          "titulo_existente": "O que é inflação?",
           "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
-          "motivo_conexao": "Entenda o impacto da cotação do dólar sobre os preços e o IPCA.",
-          "titulo_existente": "O que é inflação?"
+          "motivo_conexao": "Ajuda a compreender a relação entre câmbio, alta de preços e política monetária."
         }
-      ]
+      ],
+      "expires_at": "2026-11-22T01:19:08Z",
+      "updated_at": "2026-11-21T02:08:13Z"
     },
     {
       "slug": "bayer-pagara-bilhoes-em-acordo-judicial-com-pacientes-com-cancer",
+      "titulo_curto": "Justiça nos EUA aprova acordo de até US$ 7,25 bilhões da Bayer sobre herbicida Roundup",
+      "resumo_pulso": "Segundo apuração do G1 Mundo, um tribunal estadunidense no Missouri aprovou o acordo de até US$ 7,25 bilhões proposto pela Bayer para encerrar milhares de processos movidos por pacientes que alegam ter desenvolvido linfoma após o uso do herbicida Roundup.",
+      "impacto_pratico": "Encerramento de litígios históricos e impactos financeiros de longo prazo para a multinacional farmacêutica e agrícola.",
       "categoria": "Economia_Comercio",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-22T00:48:20Z",
-      "updated_at": "2026-11-21T01:27:35Z",
-      "fontes_urls": [
-        "https://g1.globo.com/mundo/noticia/2026/11/20/bayer-pagara-ate-us-725-bilhoes-em-acordo-judicial-com-pacientes-que-alegam-ter-desenvolvido-cancer-apos-uso-de-herbicida.ghtml"
-      ],
-      "resumo_pulso": "Conforme apuração do G1 Mundo, um juiz do estado de Missouri aprovou o acordo de até US$ 7,25 bilhões firmado pela Bayer para encerrar milhares de processos nos EUA. A indenização abrange alegações de que o herbicida Roundup causou linfoma em usuários.",
-      "titulo_curto": "Juiz nos EUA aprova acordo de até US$ 7,25 bilhões da Bayer sobre herbicida Roundup",
-      "palavras_chave": [
-        "Bayer",
-        "Roundup",
-        "EUA",
-        "processos judiciais",
-        "câncer"
-      ],
-      "urgencia_score": 88,
-      "data_publicacao": "2026-11-21T00:38:30Z",
-      "impacto_pratico": "Impacto financeiro de longo prazo para a fabricante e precedentes para litígios corporativos globais.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "G1 Mundo"
-      ],
-      "relevancia_score": 87,
-      "horas_em_destaque": 12,
       "paises_envolvidos": [
         "US",
         "DE"
       ],
+      "urgencia_score": 88,
+      "relevancia_score": 87,
+      "nivel_confianca": "alta",
+      "ttl_horas": 24,
+      "horas_em_destaque": 24,
+      "veiculos_origem": [
+        "G1 Mundo"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/mundo/noticia/2026/11/20/bayer-pagara-ate-us-725-bilhoes-em-acordo-judicial-com-pacientes-que-alegam-ter-desenvolvido-cancer-apos-uso-de-herbicida.ghtml"
+      ],
+      "palavras_chave": [
+        "Bayer",
+        "Roundup",
+        "EUA",
+        "processo judicial",
+        "saúde"
+      ],
+      "data_publicacao": "2026-11-21T00:38:30Z",
       "links_internos_relacionados": [
         {
-          "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
-          "motivo_conexao": "Conecta grandes movimentações financeiras corporativas ao panorama econômico internacional.",
-          "titulo_existente": "Economia no Brasil"
+          "titulo_existente": "Mercados e aliados internacionais avaliam impacto da política comercial norte-americana",
+          "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
+          "motivo_conexao": "Analisa o ambiente regulatório e jurídico corporativo envolvendo grandes empresas nos Estados Unidos."
         }
-      ]
+      ],
+      "expires_at": "2026-11-22T00:48:20Z",
+      "updated_at": "2026-11-21T02:08:13Z"
     },
     {
       "slug": "peru-registra-terremoto-de-magnitude-6-7-sentido-em-lima",
@@ -1134,42 +1054,42 @@
     },
     {
       "slug": "nova-caravana-migrantes-mexico-eua-ameaca-tarifas-trump",
+      "titulo_curto": "Caravana com cerca de 300 migrantes avança no sul do México rumo aos EUA",
+      "resumo_pulso": "Conforme noticiado pela InfoMoney, um grupo com cerca de 300 migrantes ingressou no território sul-mexicano com destino à fronteira norte-americana. O deslocamento ocorre em meio a alertas e ameaças de taxação comercial por parte do governo de Donald Trump.",
+      "impacto_pratico": "Pressão sobre as políticas de controle migratório na fronteira entre México e Estados Unidos.",
       "categoria": "Mobilidade_Fronteiras",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-22T01:19:08Z",
-      "updated_at": "2026-11-21T01:19:08Z",
-      "fontes_urls": [
-        "https://www.infomoney.com.br/mundo/nova-caravana-com-cerca-de-300-migrantes-entra-no-sul-do-mexico-rumo-aos-eua/"
-      ],
-      "resumo_pulso": "Conforme noticiado pela InfoMoney, um grupo com cerca de 300 migrantes ingressou no sul do México com intenção de se deslocar rumo à fronteira norte-americana. A mobilização ocorre uma semana após Donald Trump ameaçar aplicar sanções tarifárias ao governo mexicano se as rotas migratórias não forem bloqueadas.",
-      "titulo_curto": "Caravana com centenas de migrantes avança no México sob ameaça de tarifas de Trump",
-      "palavras_chave": [
-        "Migrantes",
-        "México",
-        "Fronteira EUA",
-        "Donald Trump",
-        "Tarifas"
-      ],
-      "urgencia_score": 86,
-      "data_publicacao": "2026-11-20T23:03:00Z",
-      "impacto_pratico": "Risco de endurecimento na fiscalização de fronteiras e retaliações comerciais entre Estados Unidos e México.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "InfoMoney Mercados"
-      ],
-      "relevancia_score": 87,
-      "horas_em_destaque": 12,
       "paises_envolvidos": [
         "MX",
         "US"
       ],
+      "urgencia_score": 86,
+      "relevancia_score": 87,
+      "nivel_confianca": "alta",
+      "ttl_horas": 24,
+      "horas_em_destaque": 24,
+      "veiculos_origem": [
+        "InfoMoney"
+      ],
+      "fontes_urls": [
+        "https://www.infomoney.com.br/mundo/nova-caravana-com-cerca-de-300-migrantes-entra-no-sul-do-mexico-rumo-aos-eua/"
+      ],
+      "palavras_chave": [
+        "migração",
+        "México",
+        "EUA",
+        "fronteira",
+        "tarifas"
+      ],
+      "data_publicacao": "2026-11-20T23:03:00Z",
       "links_internos_relacionados": [
         {
+          "titulo_existente": "Casa Branca anuncia novos nomes para o gabinete e detalha prioridades em imigração e comércio",
           "url_existente": "https://www.rodandoomundo.com.br/politica/estados-unidos",
-          "motivo_conexao": "Acompanhe as políticas fronteiriças e comerciais da administração Trump.",
-          "titulo_existente": "Política nos Estados Unidos"
+          "motivo_conexao": "Conecta as decisões da administração americana sobre imigração e segurança de fronteiras."
         }
-      ]
+      ],
+      "expires_at": "2026-11-22T01:19:08Z",
+      "updated_at": "2026-11-21T02:08:13Z"
     },
     {
       "slug": "acoes-da-anthropic-enfrentam-queda-em-bolsa-americana",
@@ -1539,42 +1459,44 @@
     },
     {
       "slug": "temporal-no-rio-grande-do-sul-provoca-mortes-e-destruicao",
+      "titulo_curto": "Tempestades severas no Rio Grande do Sul deixam mortos e destroem Tupanciretã",
+      "resumo_pulso": "Conforme atualizações da Defesa Civil e reportagem da BBC News Brasil e do Poder360, os temporais que atingiram cerca de 30 municípios do Rio Grande do Sul resultaram em mortes e destruição generalizada. Na cidade de Tupanciretã, a prefeitura estima danos severos em quase todas as moradias locais e confirma vítimas fatais.",
+      "impacto_pratico": "Interrupção de serviços essenciais, danos estruturais severos na região central do estado e mobilização de equipes de resgate.",
       "categoria": "Ciencia_Clima",
-      "ttl_horas": 18,
-      "expires_at": "2026-11-21T19:21:44Z",
-      "updated_at": "2026-11-21T01:27:35Z",
-      "fontes_urls": [
-        "https://www.bbc.com/portuguese/articles/cqdr1xmyg3kzo?at_medium=RSS&at_campaign=rss"
+      "paises_envolvidos": [
+        "BR"
       ],
-      "resumo_pulso": "Conforme novas atualizações da BBC News Brasil, cerca de 30 municípios do Rio Grande do Sul registraram danos humanos e materiais severos decorrentes de fortes temporais. A cidade de Tupanciretã contabilizou três óbitos e dezenas de feridos, mobilizando equipes de defesa civil.",
-      "titulo_curto": "Temporal no Rio Grande do Sul deixa dezenas de cidades danificadas e três mortos em Tupanciretã",
+      "urgencia_score": 98,
+      "relevancia_score": 96,
+      "nivel_confianca": "alta",
+      "ttl_horas": 18,
+      "horas_em_destaque": 24,
+      "veiculos_origem": [
+        "BBC News Brasil",
+        "Poder360",
+        "Defesa Civil"
+      ],
+      "fontes_urls": [
+        "https://www.bbc.com/portuguese/articles/cqdr1xmyg3kzo?at_medium=RSS&at_campaign=rss",
+        "https://www.poder360.com.br/poder-brasil/ex-vereador-esta-entre-os-mortos-da-tempestade-em-tupancireta-rs/"
+      ],
       "palavras_chave": [
+        "tempestade",
         "Rio Grande do Sul",
-        "temporal",
         "Tupanciretã",
         "Defesa Civil",
         "clima"
       ],
-      "urgencia_score": 97,
       "data_publicacao": "2026-11-20T20:45:51.380135+00:00",
-      "impacto_pratico": "Interrupção de serviços básicos e alertas para deslocamentos na região Sul.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "BBC News Brasil",
-        "InfoMoney Mercados"
-      ],
-      "relevancia_score": 95,
-      "horas_em_destaque": 12,
-      "paises_envolvidos": [
-        "BR"
-      ],
       "links_internos_relacionados": [
         {
+          "titulo_existente": "Clima, Amazônia e Transição Energética",
           "url_existente": "https://www.rodandoomundo.com.br/clima",
-          "motivo_conexao": "Relaciona eventos climáticos extremos e monitoramento de impactos ambientais.",
-          "titulo_existente": "Clima, Amazônia e Transição Energética"
+          "motivo_conexao": "Acompanhamento de eventos climáticos extremos e alertas meteorológicos no Brasil."
         }
-      ]
+      ],
+      "expires_at": "2026-11-21T19:21:44Z",
+      "updated_at": "2026-11-21T02:08:13Z"
     },
     {
       "slug": "trump-afirma-que-ha-boa-chance-de-acordo-de-paz-na-ucrania",
@@ -1693,43 +1615,118 @@
           "titulo_existente": "Política no Brasil"
         }
       ]
+    }
+  ],
+  "temas_curadoria": [
+    {
+      "slug": "juros-eua-ajuste-fiscal-disparada-dolar",
+      "status": "novo",
+      "ttl_horas": 48,
+      "expires_at": "2026-11-23T01:28:48Z",
+      "updated_at": "2026-11-21T01:28:48Z",
+      "titulo_tema": "Juros nos EUA e ajuste fiscal pressionam o câmbio e elevam o dólar",
+      "sintese_nerd": "A combinação de taxas de juros elevadas mantidas pelo Federal Reserve nos Estados Unidos com incertezas sobre o ajuste fiscal doméstico drena capital de economias emergentes, provocando a forte desvalorização do real. Isso encarece produtos importados e pressiona a inflação interna, exigindo atenção redobrada da política monetária nacional.",
+      "rota_editoria": "/economia",
+      "data_publicacao": "2026-11-21T01:28:48Z",
+      "gatilho_vitrine": "Explicar a dinâmica macroeconômica por trás da alta da moeda americana e seus efeitos diretos no custo de vida no Brasil",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 95,
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Geopolitica_Radar",
+        "Politica"
+      ],
+      "palavras_chave_busca": [
+        "dólar",
+        "juros nos eua",
+        "fed",
+        "ajuste fiscal",
+        "câmbio",
+        "inflação",
+        "economia brasileira"
+      ]
     },
     {
-      "slug": "denuncias-de-racismo-no-brasil-atingem-recorde-historico",
-      "categoria": "Sociedade_Cultura",
+      "slug": "ipo-anthropic-mercado-ia-esandalo-nvidia",
+      "status": "novo",
+      "ttl_horas": 72,
+      "expires_at": "2026-11-24T01:28:48Z",
+      "updated_at": "2026-11-21T01:28:48Z",
+      "titulo_tema": "IPO bilionário da Anthropic agita mercado de IA em meio a escândalos na Nvidia",
+      "sintese_nerd": "A oferta pública recorde da Anthropic redefinindo a captação de recursos para inteligência artificial contrasta com as investigações regulatórias e quedas históricas nas ações da Nvidia. Essa dualidade expõe a volatilidade do setor tecnológico em meio a reconfigurações geopolíticas e eleitorais nas potências ocidentais.",
+      "rota_editoria": "/cultura",
+      "data_publicacao": "2026-11-21T01:28:48Z",
+      "gatilho_vitrine": "Destacar as turbulências e transformações no setor global de tecnologia e o impacto das investigações sobre chips e semicondutores",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 90,
+      "categoria_primaria": "Cultura",
+      "categorias_cruzadas": [
+        "Economia",
+        "Geopolitica_Radar"
+      ],
+      "palavras_chave_busca": [
+        "anthropic",
+        "ipo",
+        "inteligência artificial",
+        "nvidia",
+        "claude",
+        "mercado financeiro",
+        "tecnologia"
+      ]
+    },
+    {
+      "slug": "decisao-fachin-sigilo-caso-master-stf",
+      "status": "novo",
+      "ttl_horas": 36,
+      "expires_at": "2026-11-22T13:28:48Z",
+      "updated_at": "2026-11-21T01:28:48Z",
+      "titulo_tema": "STF retira sigilo de relatório da PF citando ministros no Caso Master",
+      "sintese_nerd": "A decisão do presidente do STF, Edson Fachin, de retirar o sigilo do relatório da PF sobre conversas envolvendo o ministro André Mendonça no Caso Master recoloca o debate sobre transparência e integridade no centro dos Poderes. A medida gera repercussão imediata entre magistrados e classes políticas, acirrando o escrutínio sobre o sistema de justiça brasileiro.",
+      "rota_editoria": "/politica",
+      "data_publicacao": "2026-11-21T01:28:48Z",
+      "gatilho_vitrine": "Cobrir os desdobramentos institucionais das investigações da Polícia Federal envolvendo menções a ministros do Supremo Tribunal Federal",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 88,
+      "categoria_primaria": "Politica",
+      "categorias_cruzadas": [
+        "Resumo_Ultimas",
+        "Eleicoes"
+      ],
+      "palavras_chave_busca": [
+        "stf",
+        "caso master",
+        "andré mendonça",
+        "edson fachin",
+        "polícia federal",
+        "gilmar mendes",
+        "crise institucional"
+      ]
+    },
+    {
+      "slug": "temporal-destruicao-rio-grande-do-sul-defesa-civil",
+      "status": "novo",
       "ttl_horas": 24,
-      "expires_at": "2026-11-21T20:45:51Z",
-      "updated_at": "2026-11-20T20:45:51Z",
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-11/denuncias-de-racismo-chegam-ao-maior-numero-da-serie-historica"
+      "expires_at": "2026-11-22T01:28:48Z",
+      "updated_at": "2026-11-21T01:28:48Z",
+      "titulo_tema": "Temporal catastrófico deixa mortos e feridos no Rio Grande do Sul",
+      "sintese_nerd": "Eventos climáticos extremos severos atingiram dezenas de municípios gaúchos, causando dezenas de feridos e óbitos e escancarando a urgência de investimentos em infraestrutura resiliente. A recorrência desses temporais reforça o debate global sobre mitigação de riscos climáticos locais.",
+      "rota_editoria": "/radar",
+      "data_publicacao": "2026-11-21T01:28:48Z",
+      "gatilho_vitrine": "Monitorar os impactos humanos, estruturais e econômicos dos eventos climáticos extremos na região sul do país",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 86,
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Resumo_Ultimas",
+        "Cultura"
       ],
-      "resumo_pulso": "Segundo dados oficiais divulgados pelo Ministério dos Direitos Humanos e da Cidadania via Agência Brasil, o canal Disque 100 registrou 3.270 denúncias de racismo em 2026. O volume representa o maior patamar da série histórica iniciada em 2015, superando a marca total do ano anterior.",
-      "titulo_curto": "Denúncias de racismo chegam a 3,2 mil no Disque 100 e batem recorde histórico no Brasil",
-      "palavras_chave": [
-        "Disque 100",
-        "racismo",
-        "direitos humanos",
-        "Ministério dos Direitos Humanos",
-        "recorde histórico"
-      ],
-      "urgencia_score": 90,
-      "data_publicacao": "2026-11-20T20:06:00Z",
-      "impacto_pratico": "Reforça a visibilidade de canais públicos de denúncia e pressiona por novas políticas públicas de combate à discriminação racial.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Agência Brasil (EBC)"
-      ],
-      "relevancia_score": 93,
-      "horas_em_destaque": 12,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
-          "motivo_conexao": "Acompanhe as políticas públicas e debates institucionais sobre direitos sociais e cidadania no Brasil.",
-          "titulo_existente": "Política no Brasil"
-        }
+      "palavras_chave_busca": [
+        "rio grande do sul",
+        "temporal",
+        "defesa civil",
+        "mudanças climáticas",
+        "tupanciretã",
+        "chuvas extremas"
       ]
     }
   ]
