@@ -14245,28 +14245,39 @@
   }
 
   // --- SUG-182: Vitrine rotativa de dossiês da Home ---
-  // Mistura cobertura em tempo real (especiais/ao vivo) com permanentes e gira o cardápio.
-  // No celular: 1 dossiê por vez, trocando sozinho, com setas para voltar/avançar.
+  // Mistura cobertura em tempo real (especiais/ao vivo) com permanentes em rotação contínua.
+  // Responsivo: carrossel automático com suporte a setas e swipe no desktop, tablet e celular.
   var dossieRotativo = {
     index: 0,
     slug: '',
     total: 0,
     timer: null,
-    mobile: false,
+    paused: false,
     bound: false,
     touchStartX: null,
     touchStartY: null
   };
   var DOSSIE_ROTATIVO_BUCKET_MS = 3 * 60 * 1000; // cardápio novo a cada 3 min
-  var DOSSIE_ROTATIVO_AUTO_MS = 6000;            // troca automática do card no celular
+  var DOSSIE_ROTATIVO_AUTO_MS = 5500;            // rotação automática contínua
 
   function dossiesRotativosIsHome() {
     return !(state.cont || state.country || state.editorialSection || state.hubRoute ||
       state.entendaSlug || state.notFound || state.compareSlug);
   }
 
-  function isDossieRotativosMobile() {
-    return typeof window.matchMedia === 'function' && window.matchMedia('(max-width: 768px)').matches;
+  function getDossieCardsVisible() {
+    var gridEl = document.getElementById('dossies-rotativos-grid');
+    if (gridEl && typeof window.getComputedStyle === 'function') {
+      var val = parseInt(window.getComputedStyle(gridEl).getPropertyValue('--dossie-cards-visible'), 10);
+      if (!isNaN(val) && val > 0) return val;
+    }
+    var w = window.innerWidth || 1200;
+    if (w <= 520) return 1;
+    if (w <= 768) return 2;
+    if (w <= 1024) return 3;
+    if (w <= 1360) return 4;
+    if (w <= 1600) return 5;
+    return 6;
   }
 
   function rotateDossieList(list, offset) {
@@ -14357,19 +14368,23 @@
   function applyDossieRotativoIndex() {
     var gridEl = document.getElementById('dossies-rotativos-grid');
     if (!gridEl || !dossieRotativo.total) return;
-    if (dossieRotativo.index >= dossieRotativo.total) dossieRotativo.index = 0;
-    if (dossieRotativo.index < 0) dossieRotativo.index = dossieRotativo.total - 1;
+    var visible = getDossieCardsVisible();
+    var maxIndex = Math.max(0, dossieRotativo.total - visible);
+    if (dossieRotativo.index > maxIndex) dossieRotativo.index = 0;
+    if (dossieRotativo.index < 0) dossieRotativo.index = maxIndex;
 
     gridEl.style.setProperty('--dossie-slide-index', String(dossieRotativo.index));
     var slides = gridEl.querySelectorAll('.dossie-rotativo-slide');
     var activeSlug = '';
     slides.forEach(function (s, i) {
-      var isActive = (i === dossieRotativo.index);
-      s.classList.toggle('is-active', isActive);
-      s.setAttribute('aria-hidden', isActive ? 'false' : 'true');
-      if (isActive) {
+      var isVisible = (i >= dossieRotativo.index && i < dossieRotativo.index + visible);
+      var isPrimary = (i === dossieRotativo.index);
+      s.classList.toggle('is-active', isPrimary);
+      s.classList.toggle('is-visible', isVisible);
+      s.setAttribute('aria-hidden', isVisible ? 'false' : 'true');
+      if (isVisible) {
         s.removeAttribute('inert');
-        activeSlug = s.getAttribute('data-slug') || '';
+        if (isPrimary) activeSlug = s.getAttribute('data-slug') || '';
       } else {
         s.setAttribute('inert', '');
       }
@@ -14382,21 +14397,39 @@
 
   function restartDossieRotativoTimer() {
     stopDossieRotativoTimer();
-    if (!dossieRotativo.mobile || dossieRotativo.total < 2) return;
+    var visible = getDossieCardsVisible();
+    if (dossieRotativo.total <= visible) return;
     dossieRotativo.timer = setInterval(function () {
       if (document.hidden) return;
       var secEl = document.getElementById('dossies-rotativos');
-      if (!secEl || secEl.hidden || !dossieRotativo.mobile || dossieRotativo.total < 2) return;
-      dossieRotativo.index = (dossieRotativo.index + 1) % dossieRotativo.total;
-      applyDossieRotativoIndex();
+      if (!secEl || secEl.hidden || dossieRotativo.paused || dossieRotativo.total <= getDossieCardsVisible()) return;
+      stepDossieRotativo(1, true);
     }, DOSSIE_ROTATIVO_AUTO_MS);
   }
 
-  function stepDossieRotativo(delta) {
+  function stepDossieRotativo(delta, isAuto) {
     if (dossieRotativo.total < 2) return;
-    dossieRotativo.index = (dossieRotativo.index + delta + dossieRotativo.total) % dossieRotativo.total;
+    var visible = getDossieCardsVisible();
+    var maxIndex = Math.max(0, dossieRotativo.total - visible);
+    if (maxIndex <= 0) return;
+
+    if (delta > 0) {
+      if (dossieRotativo.index >= maxIndex) {
+        dossieRotativo.index = 0;
+      } else {
+        dossieRotativo.index = Math.min(maxIndex, dossieRotativo.index + delta);
+      }
+    } else if (delta < 0) {
+      if (dossieRotativo.index <= 0) {
+        dossieRotativo.index = maxIndex;
+      } else {
+        dossieRotativo.index = Math.max(0, dossieRotativo.index + delta);
+      }
+    }
     applyDossieRotativoIndex();
-    restartDossieRotativoTimer(); // reseta a troca automática após navegação manual
+    if (!isAuto) {
+      restartDossieRotativoTimer();
+    }
   }
 
   function bindDossieRotativoNav() {
@@ -14404,27 +14437,38 @@
     var prev = document.getElementById('dossie-rot-prev');
     var next = document.getElementById('dossie-rot-next');
     var gridEl = document.getElementById('dossies-rotativos-grid');
+    var secEl = document.getElementById('dossies-rotativos');
     if (!prev || !next || !gridEl) return;
 
-    prev.addEventListener('click', function () { stepDossieRotativo(-1); });
-    next.addEventListener('click', function () { stepDossieRotativo(1); });
+    prev.addEventListener('click', function () { stepDossieRotativo(-1, false); });
+    next.addEventListener('click', function () { stepDossieRotativo(1, false); });
 
-    // Swipe horizontal (opcional nas setas) sem atraplar o scroll vertical
+    // Pausa a rotação ao passar o cursor ou focar nos cards para leitura confortável
+    if (secEl) {
+      secEl.addEventListener('mouseenter', function () { dossieRotativo.paused = true; });
+      secEl.addEventListener('mouseleave', function () { dossieRotativo.paused = false; });
+      secEl.addEventListener('focusin', function () { dossieRotativo.paused = true; });
+      secEl.addEventListener('focusout', function () { dossieRotativo.paused = false; });
+    }
+
+    // Swipe horizontal em telas touch
     gridEl.addEventListener('touchstart', function (e) {
-      if (!dossieRotativo.mobile || !e.touches || e.touches.length !== 1) return;
+      if (!e.touches || e.touches.length !== 1) return;
       dossieRotativo.touchStartX = e.touches[0].clientX;
       dossieRotativo.touchStartY = e.touches[0].clientY;
+      dossieRotativo.paused = true;
     }, { passive: true });
     gridEl.addEventListener('touchend', function (e) {
-      if (!dossieRotativo.mobile || dossieRotativo.touchStartX === null) return;
+      dossieRotativo.paused = false;
+      if (dossieRotativo.touchStartX === null) return;
       var t = e.changedTouches && e.changedTouches[0];
       if (!t) return;
       var dx = t.clientX - dossieRotativo.touchStartX;
       var dy = t.clientY - dossieRotativo.touchStartY;
       dossieRotativo.touchStartX = null;
       dossieRotativo.touchStartY = null;
-      if (Math.abs(dx) < 50 || Math.abs(dx) < Math.abs(dy) * 1.5) return;
-      stepDossieRotativo(dx < 0 ? 1 : -1);
+      if (Math.abs(dx) < 40 || Math.abs(dx) < Math.abs(dy) * 1.5) return;
+      stepDossieRotativo(dx < 0 ? 1 : -1, false);
     }, { passive: true });
 
     dossieRotativo.bound = true;
@@ -14457,51 +14501,41 @@
       return;
     }
 
-    var isMobile = isDossieRotativosMobile();
     var bucket = Math.floor(Date.now() / DOSSIE_ROTATIVO_BUCKET_MS);
-    // Celular: 12 cards navegáveis (1 por vez). Demais telas: grade de 6.
-    var picks = buildDossieMixedPicks(especiais, permanentes, isMobile ? 12 : 6, bucket);
+    var totalDisponivel = especiais.length + permanentes.length;
+    var pickLimit = Math.max(totalDisponivel, 18);
+    var picks = buildDossieMixedPicks(especiais, permanentes, pickLimit, bucket);
 
-    dossieRotativo.mobile = isMobile;
-    dossieRotativo.total = isMobile ? picks.length : 0;
+    dossieRotativo.total = picks.length;
 
     secEl.hidden = false;
-    gridEl.classList.toggle('is-carousel', isMobile);
-    gridEl.setAttribute('aria-live', isMobile ? 'off' : 'polite');
+    gridEl.classList.add('is-carousel');
+    gridEl.setAttribute('aria-live', 'off');
+
+    var visible = getDossieCardsVisible();
+    var maxIndex = Math.max(0, picks.length - visible);
 
     // Resolve o índice antes de injetar o HTML para o slide já nascer na posição certa (sem "pulo")
-    var idx = 0;
-    if (isMobile && dossieRotativo.slug) {
+    var idx = dossieRotativo.index || 0;
+    if (dossieRotativo.slug) {
       for (var i = 0; i < picks.length; i++) {
         if (String(picks[i].slug) === dossieRotativo.slug) { idx = i; break; }
       }
     }
-    dossieRotativo.index = (idx >= 0 && idx < picks.length) ? idx : 0;
-    if (isMobile) {
-      gridEl.style.setProperty('--dossie-slide-index', String(dossieRotativo.index));
-    } else {
-      dossieRotativo.index = 0;
-      dossieRotativo.slug = '';
-      gridEl.style.removeProperty('--dossie-slide-index');
-    }
+    dossieRotativo.index = Math.min(maxIndex, Math.max(0, idx));
+    gridEl.style.setProperty('--dossie-slide-index', String(dossieRotativo.index));
 
     gridEl.innerHTML = picks.map(function (d) {
       var card = buildDossieRotativoCardHtml(d);
-      return isMobile
-        ? '<div class="dossie-rotativo-slide" data-slug="' + esc(d.slug) + '">' + card + '</div>'
-        : card;
+      return '<div class="dossie-rotativo-slide" data-slug="' + esc(d.slug) + '">' + card + '</div>';
     }).join('');
 
     bindDynamicEditorialActions(gridEl);
     bindDossieRotativoNav();
-    if (navEl) navEl.hidden = !isMobile || picks.length < 2;
+    if (navEl) navEl.hidden = (picks.length <= visible);
 
-    if (isMobile) {
-      applyDossieRotativoIndex(); // sincroniza aria/inert/contador com o índice
-      if (!dossieRotativo.timer) restartDossieRotativoTimer();
-    } else {
-      stopDossieRotativoTimer();
-    }
+    applyDossieRotativoIndex();
+    restartDossieRotativoTimer();
   }
 
   var entendaV2State = {
@@ -18004,13 +18038,23 @@
   carregarDossiesV2(false);
   carregarArtigosEntendaV2(false);
   renderDossiesRotativosHome();
-  // Vitrine de dossiês: re-render ao trocar de breakpoint (grade x carrossel de 1 card)
-  if (typeof window.matchMedia === 'function') {
-    var dossieRotativoMq = window.matchMedia('(max-width: 768px)');
-    var onDossieRotativoMq = function () { renderDossiesRotativosHome(); };
-    if (typeof dossieRotativoMq.addEventListener === 'function') dossieRotativoMq.addEventListener('change', onDossieRotativoMq);
-    else if (typeof dossieRotativoMq.addListener === 'function') dossieRotativoMq.addListener(onDossieRotativoMq);
-  }
+  // Vitrine de dossiês: reajuste de posicionamento e visibilidade ao redimensionar a tela
+  var dossieResizeTimeout = null;
+  window.addEventListener('resize', function () {
+    if (dossieResizeTimeout) clearTimeout(dossieResizeTimeout);
+    dossieResizeTimeout = setTimeout(function () {
+      if (!dossiesRotativosIsHome()) return;
+      var secEl = document.getElementById('dossies-rotativos');
+      if (!secEl || secEl.hidden || !dossieRotativo.total) return;
+      var visible = getDossieCardsVisible();
+      var maxIndex = Math.max(0, dossieRotativo.total - visible);
+      if (dossieRotativo.index > maxIndex) dossieRotativo.index = maxIndex;
+      var navEl = document.getElementById('dossies-rotativos-nav');
+      if (navEl) navEl.hidden = (dossieRotativo.total <= visible);
+      applyDossieRotativoIndex();
+      restartDossieRotativoTimer();
+    }, 150);
+  });
   // Rotação autônoma do cardápio (mistura tempo real + permanente) a cada 3 min
   setInterval(function () {
     if (document.hidden) return;

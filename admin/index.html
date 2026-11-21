@@ -1401,6 +1401,107 @@
       gap: 0.45rem;
       flex-wrap: wrap;
     }
+
+    /* Curadoria de Vídeos por Canal do YouTube */
+    .radar-video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 12px;
+    }
+    .radar-video-card {
+      display: flex;
+      gap: 12px;
+      background: var(--bg-surface, #18181b);
+      border: 1px solid var(--border-color, #27272a);
+      border-radius: 8px;
+      padding: 10px;
+      align-items: flex-start;
+      transition: border-color 0.15s ease, background-color 0.15s ease;
+    }
+    .radar-video-card:hover {
+      border-color: var(--border-focus, #3b82f6);
+    }
+    .radar-video-thumb-wrap {
+      position: relative;
+      width: 110px;
+      min-width: 110px;
+      height: 68px;
+      border-radius: 6px;
+      overflow: hidden;
+      background: #000;
+      flex-shrink: 0;
+    }
+    .radar-video-thumb {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .radar-video-play-icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(0, 0, 0, 0.65);
+      color: #ff0000;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+    }
+    .radar-video-info {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .radar-video-title {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-bright, #fff);
+      line-height: 1.3;
+      margin: 0;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .radar-video-title a {
+      color: inherit;
+      text-decoration: none;
+    }
+    .radar-video-title a:hover {
+      text-decoration: underline;
+      color: #60a5fa;
+    }
+    .radar-video-meta {
+      font-size: 0.75rem;
+      color: var(--text-muted, #9ca3af);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .radar-video-desc {
+      font-size: 0.75rem;
+      color: var(--text-secondary, #d1d5db);
+      line-height: 1.25;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      margin-top: 2px;
+    }
+    .radar-video-action-bar {
+      margin-top: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
   </style>
 </head>
 
@@ -1993,6 +2094,7 @@
               </div>
               <div class="admin-head-actions">
                 <button id="btn-recarregar-radar" class="admin-btn admin-btn-sm" type="button">Atualizar Feed</button>
+                <button id="btn-toggle-video-lookup" class="admin-btn admin-btn-sm" type="button" title="Consultar vídeos recentes de um canal do YouTube para aprovação">🎬 Buscar por Canal</button>
                 <button id="btn-adicionar-radar" class="admin-btn admin-btn-primary admin-btn-sm" type="button">+ Adicionar Notícia Manual</button>
                 <button id="btn-salvar-niveis-radar" class="admin-btn admin-btn-sm" type="button" disabled>Salvar Níveis</button>
                 <button class="admin-collapse-btn" type="button" aria-label="Minimizar seção Radar" aria-expanded="true">−</button>
@@ -2018,6 +2120,54 @@
               <button class="admin-tab" type="button" role="tab" aria-selected="false" data-radar-tab="video">
                 🎬 Vídeos <span id="radar-count-tab-video">0</span>
               </button>
+            </div>
+
+            <!-- CURADORIA MANUAL DE VÍDEOS POR CANAL CADASTRADO (YOUTUBE RSS EM TEMPO REAL) -->
+            <div id="radar-video-lookup-box" class="admin-video-lookup-container" style="display: none; margin-bottom: var(--space-3); padding: var(--space-3); border-radius: 8px; border: 1px solid var(--border-color, #333); background: var(--bg-card-subtle, #1e1e24);">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-2); flex-wrap: wrap; gap: 8px;">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <span style="font-size: 1.15rem;">🎬</span>
+                  <strong style="font-size: 0.95rem; color: var(--text-bright, #fff);">Curadoria Rápida por Canal (YouTube RSS)</strong>
+                  <span class="badge badge-video" style="font-size: 0.75rem;">Feed em Tempo Real</span>
+                </div>
+                <span class="admin-sub" style="font-size: 0.8rem;">Busque os vídeos mais recentes de qualquer canal cadastrado para aprovar e publicar no site agora mesmo.</span>
+              </div>
+
+              <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: flex-end;">
+                <div class="admin-field admin-field-grow" style="min-width: 260px;">
+                  <label for="radar-video-canal-input" style="font-size: 0.8rem; font-weight: 600;">Canal do YouTube Cadastrado</label>
+                  <input id="radar-video-canal-input" class="admin-input" list="radar-video-canais-lista" type="text" placeholder="Digite ou selecione o canal (ex: Prof Ricardo Marcílio, Petit Journal...)" autocomplete="off" />
+                  <datalist id="radar-video-canais-lista">
+                    <!-- Preenchido dinamicamente via API -->
+                  </datalist>
+                </div>
+
+                <div class="admin-field" style="width: 140px;">
+                  <label for="radar-video-qtd-input" style="font-size: 0.8rem; font-weight: 600;">Quantidade</label>
+                  <select id="radar-video-qtd-input" class="admin-select">
+                    <option value="5" selected>5 vídeos</option>
+                    <option value="8">8 vídeos</option>
+                    <option value="12">12 vídeos</option>
+                  </select>
+                </div>
+
+                <div style="display: flex; gap: 6px;">
+                  <button id="btn-buscar-canal-video" class="admin-btn admin-btn-primary admin-btn-sm" type="button" style="height: 36px; padding: 0 14px; font-weight: 600;">
+                    🔍 Buscar Vídeos do Canal
+                  </button>
+                  <button id="btn-fechar-canal-video" class="admin-btn admin-btn-sm" type="button" style="height: 36px; display: none;">
+                    Fechar Resultados
+                  </button>
+                </div>
+              </div>
+
+              <!-- BANNER DE STATUS DA BUSCA -->
+              <div id="radar-video-lookup-status" style="margin-top: var(--space-2); display: none;"></div>
+
+              <!-- CONTAINER DE RESULTADOS DA BUSCA -->
+              <div id="radar-video-lookup-results" style="margin-top: var(--space-3); display: none;">
+                <!-- Cards renderizados com status e botão de aprovação -->
+              </div>
             </div>
 
             <div class="admin-filterbar" role="search" aria-label="Filtrar notícias do radar">
@@ -3090,6 +3240,9 @@
         radarContadores: { total: 0, manuais: 0, rss: 0, pulso_v2: 0 },
         radarNiveis: {},
         editingRadarSlug: null,
+        canaisYoutubeCadastrados: [],
+        videoLookupResultados: [],
+        videoLookupAbertoManualmente: false,
         noticiasQuentes: [],
         editingNoticiaSlug: null,
         iaSugestoes: [],
@@ -5074,6 +5227,247 @@
           });
       });
 
+      // ============================ CURADORIA DE VÍDEOS POR CANAL (YOUTUBE RSS) ============================
+      async function carregarCanaisYoutubeParaDatalist() {
+        try {
+          const res = await apiFetch('/v2/admin/bot/youtube/canais');
+          const canais = res.canais || [];
+          state.canaisYoutubeCadastrados = canais;
+          const datalist = $('radar-video-canais-lista');
+          if (datalist) {
+            datalist.innerHTML = canais
+              .map((c) => `<option value="${escapeHtml(c.nome)}">${escapeHtml(c.nome)} · (${escapeHtml(c.categoria || 'Geral')})</option>`)
+              .join('');
+          }
+        } catch (err) {
+          console.warn('[Admin] Não foi possível carregar canais do YouTube para datalist:', err);
+        }
+      }
+
+      function toggleRadarVideoLookupBox(forcarAberto = null) {
+        const box = $('radar-video-lookup-box');
+        if (!box) return;
+        const abrir = forcarAberto !== null ? forcarAberto : box.style.display === 'none';
+        box.style.display = abrir ? 'block' : 'none';
+        state.videoLookupAbertoManualmente = abrir;
+        if (abrir) {
+          if (!state.canaisYoutubeCadastrados || !state.canaisYoutubeCadastrados.length) {
+            carregarCanaisYoutubeParaDatalist();
+          }
+          const inp = $('radar-video-canal-input');
+          if (inp) {
+            setTimeout(() => inp.focus(), 50);
+          }
+        }
+      }
+
+      function renderResultadosVideoLookup(videos, canalInfo) {
+        const cont = $('radar-video-lookup-results');
+        const st = $('radar-video-lookup-status');
+        const btnFechar = $('btn-fechar-canal-video');
+        if (!cont || !st) return;
+
+        state.videoLookupResultados = videos || [];
+        if (btnFechar) btnFechar.style.display = 'inline-flex';
+
+        if (!videos || !videos.length) {
+          st.style.display = 'block';
+          st.innerHTML = `<div class="admin-banner admin-banner-warn">Nenhum vídeo recente encontrado no feed RSS do canal <strong>${escapeHtml(canalInfo.nome || '')}</strong>.</div>`;
+          cont.style.display = 'none';
+          cont.innerHTML = '';
+          return;
+        }
+
+        const novosQtd = videos.filter((v) => !v.ja_publicado).length;
+        st.style.display = 'block';
+        st.innerHTML = `
+          <div class="admin-banner admin-banner-ok" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+            <span>Encontrados <strong>${videos.length} vídeos recentes</strong> do canal <strong>${escapeHtml(canalInfo.nome || '')}</strong> (${novosQtd} novos para aprovação).</span>
+            <span class="admin-sub" style="font-size:0.75rem;">Feed RSS oficial consultado em tempo real</span>
+          </div>
+        `;
+
+        cont.style.display = 'block';
+        cont.innerHTML = `
+          <div class="radar-video-grid">
+            ${videos.map((v, idx) => {
+              const thumbUrl = v.thumbnail || (v.video_id ? `https://i.ytimg.com/vi/${escapeHtml(v.video_id)}/hqdefault.jpg` : '');
+              const urlYt = v.url || v.fonte_url || (v.video_id ? `https://www.youtube.com/watch?v=${v.video_id}` : '#');
+              const pubRelativa = renderBadgeDataEntrada(v.data_publicacao);
+              const jaPub = Boolean(v.ja_publicado);
+
+              const btnAcao = jaPub
+                ? `<span class="badge badge-ok" style="padding:5px 9px; font-size:0.75rem;">✓ Já no Feed do Site</span>`
+                : `<button class="admin-btn admin-btn-sm admin-btn-primary btn-aprovar-video-yt" type="button" data-video-lookup-idx="${idx}" style="background:#2563eb; color:#fff; font-weight:600; padding:5px 11px;">+ Aprovar e Publicar no Site</button>`;
+
+              return `
+                <div class="radar-video-card" id="radar-video-card-${idx}">
+                  <div class="radar-video-thumb-wrap">
+                    ${thumbUrl ? `<img src="${escapeHtml(thumbUrl)}" class="radar-video-thumb" alt="Thumbnail" loading="lazy" />` : '<div style="width:100%;height:100%;background:#222;"></div>'}
+                    <span class="radar-video-play-icon">▶</span>
+                  </div>
+                  <div class="radar-video-info">
+                    <h4 class="radar-video-title">
+                      <a href="${escapeHtml(urlYt)}" target="_blank" rel="noopener noreferrer" title="Abrir vídeo no YouTube">${escapeHtml(v.titulo || 'Vídeo sem título')} ↗</a>
+                    </h4>
+                    <div class="radar-video-meta">
+                      <span style="font-weight:600; color:var(--text-bright);">${escapeHtml(v.canal || canalInfo.nome || 'YouTube')}</span>
+                      <span>•</span>
+                      <span>${pubRelativa}</span>
+                      <span class="badge" style="font-size:0.7rem;">${escapeHtml(v.categoria || canalInfo.categoria || 'geopolitica')}</span>
+                    </div>
+                    <p class="radar-video-desc">${escapeHtml(v.resumo || 'Análise em vídeo.')}</p>
+                    <div class="radar-video-action-bar" id="radar-video-action-${idx}">
+                      ${btnAcao}
+                      <a href="${escapeHtml(urlYt)}" target="_blank" rel="noopener noreferrer" class="admin-btn admin-btn-sm" style="text-decoration:none; font-size:0.75rem; padding:4px 8px;">Assistir ↗</a>
+                    </div>
+                  </div>
+                </div>
+              `;
+            }).join('')}
+          </div>
+        `;
+      }
+
+      async function executarBuscaCanalVideo() {
+        const canalInp = $('radar-video-canal-input');
+        const canal = (canalInp ? canalInp.value : '').trim();
+        const st = $('radar-video-lookup-status');
+        const cont = $('radar-video-lookup-results');
+        const btn = $('btn-buscar-canal-video');
+
+        if (!canal) {
+          if (st) {
+            st.style.display = 'block';
+            st.innerHTML = '<div class="admin-banner admin-banner-warn">Por favor, digite ou selecione o nome de um canal cadastrado.</div>';
+          }
+          return;
+        }
+
+        const limite = Number($('radar-video-qtd-input') ? $('radar-video-qtd-input').value : 5) || 5;
+        const prevText = btn.textContent;
+        btn.disabled = true;
+        btn.textContent = 'Buscando vídeos no YouTube...';
+        if (st) {
+          st.style.display = 'block';
+          st.innerHTML = `<div class="admin-banner admin-banner-warn">Consultando feed RSS oficial de <strong>${escapeHtml(canal)}</strong> no YouTube em tempo real...</div>`;
+        }
+        if (cont) cont.style.display = 'none';
+
+        try {
+          const res = await apiFetch(`/v2/admin/bot/youtube/buscar-canal?canal=${encodeURIComponent(canal)}&limite=${limite}`);
+          renderResultadosVideoLookup(res.videos || [], res.canal || { nome: canal });
+          showToast(`Vídeos de "${canal}" consultados com sucesso.`, 'ok');
+        } catch (err) {
+          if (st) {
+            st.style.display = 'block';
+            st.innerHTML = `<div class="admin-banner admin-banner-err">Erro ao buscar canal: ${escapeHtml(err.message || 'Falha na conexão com YouTube')}</div>`;
+          }
+          showToast('Erro ao buscar canal: ' + (err.message || err), 'err');
+        } finally {
+          btn.disabled = false;
+          btn.textContent = prevText;
+        }
+      }
+
+      async function aprovarVideoLookup(idx) {
+        const video = (state.videoLookupResultados || [])[idx];
+        if (!video) return;
+
+        const actionDiv = $(`radar-video-action-${idx}`);
+        const btnAprovar = actionDiv ? actionDiv.querySelector('.btn-aprovar-video-yt') : null;
+        if (btnAprovar) {
+          btnAprovar.disabled = true;
+          btnAprovar.textContent = 'Publicando...';
+        }
+
+        try {
+          const payload = {
+            video_id: video.video_id,
+            titulo: video.titulo,
+            resumo: video.resumo || video.analise || '',
+            analise: video.analise || video.resumo || '',
+            canal: video.canal || video.fonte_nome || 'YouTube',
+            fonte_nome: video.fonte_nome || video.canal || 'YouTube',
+            url: video.url || video.fonte_url,
+            fonte_url: video.fonte_url || video.url,
+            thumbnail: video.thumbnail || video.imagem_url,
+            data_publicacao: video.data_publicacao,
+            categoria: video.categoria || 'geopolitica',
+            paises_envolvidos: video.paises_envolvidos || ['BR'],
+          };
+
+          const res = await apiFetch('/v2/admin/bot/youtube/aprovar', {
+            method: 'POST',
+            body: JSON.stringify(payload),
+          });
+
+          video.ja_publicado = true;
+          if (actionDiv) {
+            actionDiv.innerHTML = `
+              <span class="badge badge-ok" style="padding:5px 9px; font-size:0.75rem;">✓ Aprovado e Publicado no Site!</span>
+              <a href="${escapeHtml(video.url || video.fonte_url)}" target="_blank" rel="noopener noreferrer" class="admin-btn admin-btn-sm" style="text-decoration:none; font-size:0.75rem; padding:4px 8px;">Assistir ↗</a>
+            `;
+          }
+          showToast(`Vídeo "${video.titulo.slice(0, 45)}..." aprovado e publicado no feed!`, 'ok');
+          await carregarRadar();
+        } catch (err) {
+          showToast('Erro ao aprovar vídeo: ' + (err.message || err), 'err');
+          if (btnAprovar) {
+            btnAprovar.disabled = false;
+            btnAprovar.textContent = '+ Aprovar e Publicar no Site';
+          }
+        }
+      }
+
+      if ($('btn-toggle-video-lookup')) {
+        $('btn-toggle-video-lookup').addEventListener('click', () => {
+          toggleRadarVideoLookupBox();
+        });
+      }
+
+      if ($('btn-buscar-canal-video')) {
+        $('btn-buscar-canal-video').addEventListener('click', executarBuscaCanalVideo);
+      }
+
+      if ($('radar-video-canal-input')) {
+        $('radar-video-canal-input').addEventListener('keydown', (e) => {
+          if (e.key === 'Enter') {
+            e.preventDefault();
+            executarBuscaCanalVideo();
+          }
+        });
+      }
+
+      if ($('btn-fechar-canal-video')) {
+        $('btn-fechar-canal-video').addEventListener('click', () => {
+          const cont = $('radar-video-lookup-results');
+          const st = $('radar-video-lookup-status');
+          const btnFechar = $('btn-fechar-canal-video');
+          if (cont) {
+            cont.style.display = 'none';
+            cont.innerHTML = '';
+          }
+          if (st) {
+            st.style.display = 'none';
+            st.innerHTML = '';
+          }
+          if (btnFechar) btnFechar.style.display = 'none';
+          state.videoLookupResultados = [];
+        });
+      }
+
+      if ($('radar-video-lookup-results')) {
+        $('radar-video-lookup-results').addEventListener('click', (e) => {
+          const btn = e.target.closest('.btn-aprovar-video-yt');
+          if (!btn) return;
+          const idx = Number(btn.getAttribute('data-video-lookup-idx'));
+          if (Number.isInteger(idx)) {
+            aprovarVideoLookup(idx);
+          }
+        });
+      }
+
       if ($('radar-tabs')) {
         $('radar-tabs').addEventListener('click', (e) => {
           const tabBtn = e.target.closest('button[data-radar-tab]');
@@ -5085,6 +5479,11 @@
           tabBtn.classList.add('active');
           tabBtn.setAttribute('aria-selected', 'true');
           state.radarTab = tabBtn.getAttribute('data-radar-tab') || 'all';
+          if (state.radarTab === 'video') {
+            toggleRadarVideoLookupBox(true);
+          } else if (!state.videoLookupAbertoManualmente) {
+            toggleRadarVideoLookupBox(false);
+          }
           renderRadar();
         });
       }
@@ -6944,7 +7343,19 @@
       // ============================ AUTENTICAÇÃO ============================
       async function carregarTudo() {
         await carregarKillSwitch();
-        await Promise.all([carregarFontes(), carregarEventos(), carregarDossiesAdmin(), carregarExecucoes(), carregarRadar(), carregarNoticiasQuentes(), carregarColunas(), carregarStatusBotDdg(), carregarStatusBotYouTube(), carregarPatrocinadores()]);
+        await Promise.all([
+          carregarFontes(),
+          carregarEventos(),
+          carregarDossiesAdmin(),
+          carregarExecucoes(),
+          carregarRadar(),
+          carregarNoticiasQuentes(),
+          carregarColunas(),
+          carregarStatusBotDdg(),
+          carregarStatusBotYouTube(),
+          carregarPatrocinadores(),
+          carregarCanaisYoutubeParaDatalist(),
+        ]);
       }
 
       async function conectar() {
@@ -7092,10 +7503,10 @@
 
       function criarDefaultsCotas() {
         return {
-          cota_master: { ativo: false, nome: '', nome_imagem_url: '', logo_url: '', frase: 'Apresentado com exclusividade global por', cta_texto: 'Conheça as soluções →', link_url: '', data_inicio: '', data_fim: '', exibir_no_sobre: true },
-          dossie_tematico: { ativo: false, nome: '', nome_imagem_url: '', logo_url: '', frase: 'Apoio institucional à cobertura setorial aprofundada.', cta_texto: 'Saiba mais', link_url: '', data_inicio: '', data_fim: '', hub_alvo: 'todos' },
-          resumo_dia: { ativo: false, nome: '', nome_imagem_url: '', logo_url: '', frase: 'Conectando você às principais movimentações e análises do planeta.', cta_texto: 'Saiba mais', link_url: '', data_inicio: '', data_fim: '' },
-          gaveta_contextual: { ativo: false, nome: '', nome_imagem_url: '', logo_url: '', frase: 'Soluções globais para suas conexões com {pais}.', cta_texto: 'Conhecer soluções', link_url: '', data_inicio: '', data_fim: '', paises_alvo: 'todos' }
+          cota_master: { ativo: false, nome: '', logo_url: '', frase: 'Apresentado com exclusividade global por', cta_texto: 'Conheça as soluções →', link_url: '', data_inicio: '', data_fim: '', exibir_no_sobre: true },
+          dossie_tematico: { ativo: false, nome: '', logo_url: '', frase: 'Apoio institucional à cobertura setorial aprofundada.', cta_texto: 'Saiba mais', link_url: '', data_inicio: '', data_fim: '', hub_alvo: 'todos' },
+          resumo_dia: { ativo: false, nome: '', logo_url: '', frase: 'Conectando você às principais movimentações e análises do planeta.', cta_texto: 'Saiba mais', link_url: '', data_inicio: '', data_fim: '' },
+          gaveta_contextual: { ativo: false, nome: '', logo_url: '', frase: 'Soluções globais para suas conexões com {pais}.', cta_texto: 'Conhecer soluções', link_url: '', data_inicio: '', data_fim: '', paises_alvo: 'todos' }
         };
       }
 
@@ -7175,27 +7586,18 @@
           ? `Vigência: ${item.data_inicio ? formatarDataBr(item.data_inicio) : 'imediato'} até ${item.data_fim ? formatarDataBr(item.data_fim) : 'indeterminado'}`
           : 'Vigência: sem data limite';
 
-        const hasLogo = item.logo_url && /^(https?:\/\/|\/|data:image\/)/i.test(item.logo_url);
-        const hasNomeImg = item.nome_imagem_url && /^(https?:\/\/|\/|data:image\/)/i.test(item.nome_imagem_url);
+        const logoVal = item.logo_url || item.nome_imagem_url || '';
+        const hasLogo = logoVal && /^(https?:\/\/|\/|data:image\/)/i.test(logoVal);
 
         const logoHtml = hasLogo
-          ? `<img src="${escAttr(item.logo_url)}" alt="Logo" style="max-height:28px;max-width:140px;object-fit:contain;border-radius:4px;vertical-align:middle;" />`
+          ? `<img src="${escAttr(logoVal)}" alt="${escAttr(nome || 'Logo')}" style="max-height:28px;max-width:160px;object-fit:contain;border-radius:4px;vertical-align:middle;" />`
           : '';
 
-        let nomeHtml = '';
-        if (hasNomeImg) {
-          nomeHtml = `<img src="${escAttr(item.nome_imagem_url)}" alt="${escAttr(nome || 'Nome')}" style="max-height:26px;max-width:160px;object-fit:contain;vertical-align:middle;" />`;
-        } else if (nome) {
-          nomeHtml = `<strong style="font-weight:700;color:var(--text, #ffffff);font-size:0.92rem;vertical-align:middle;">${escAttr(nome)}</strong>`;
-        }
-
         let brandHtml = '';
-        if (hasLogo && (hasNomeImg || nome)) {
-          brandHtml = `<span style="display:inline-flex;align-items:center;gap:8px;vertical-align:middle;flex-wrap:wrap;">${logoHtml}${nomeHtml}</span>`;
+        if (hasLogo && nome) {
+          brandHtml = `<span style="display:inline-flex;align-items:center;gap:8px;vertical-align:middle;flex-wrap:wrap;">${logoHtml}<strong style="font-weight:700;color:var(--text, #ffffff);font-size:0.92rem;vertical-align:middle;">${escAttr(nome)}</strong></span>`;
         } else if (hasLogo) {
           brandHtml = logoHtml;
-        } else if (hasNomeImg) {
-          brandHtml = nomeHtml;
         } else if (nome) {
           brandHtml = `<span style="font-weight:700;padding:2px 8px;border-radius:4px;background:rgba(56,189,248,0.14);color:#38bdf8;border:1px solid rgba(56,189,248,0.3);">${escAttr(nome)}</span>`;
         } else {
@@ -7237,27 +7639,18 @@
         itens.forEach(({ meta, item }) => {
           const st = obterStatusContrato(item);
           const nome = (item.nome || '').trim();
-          const hasLogo = item.logo_url && /^(https?:\/\/|\/|data:image\/)/i.test(item.logo_url);
-          const hasNomeImg = item.nome_imagem_url && /^(https?:\/\/|\/|data:image\/)/i.test(item.nome_imagem_url);
+          const logoVal = item.logo_url || item.nome_imagem_url || '';
+          const hasLogo = logoVal && /^(https?:\/\/|\/|data:image\/)/i.test(logoVal);
 
           const logoPart = hasLogo
-            ? `<img src="${escAttr(item.logo_url)}" alt="Logo" style="max-height:34px;max-width:140px;object-fit:contain;border-radius:4px;background:rgba(255,255,255,0.03);padding:2px;" />`
+            ? `<img src="${escAttr(logoVal)}" alt="${escAttr(nome || 'Logo')}" style="max-height:34px;max-width:160px;object-fit:contain;border-radius:4px;background:rgba(255,255,255,0.03);padding:2px;" />`
             : '';
 
-          let nomePart = '';
-          if (hasNomeImg) {
-            nomePart = `<img src="${escAttr(item.nome_imagem_url)}" alt="${escAttr(nome || 'Nome')}" style="max-height:28px;max-width:150px;object-fit:contain;border-radius:4px;background:rgba(255,255,255,0.03);padding:2px;" />`;
-          } else if (nome) {
-            nomePart = `<span style="font-weight:600;">${escAttr(nome)}</span>`;
-          }
-
           let brandInline = '';
-          if (hasLogo && (hasNomeImg || nome)) {
-            brandInline = `<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">${logoPart}${nomePart}</div>`;
+          if (hasLogo && nome) {
+            brandInline = `<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">${logoPart}<span style="font-weight:600;">${escAttr(nome)}</span></div>`;
           } else if (hasLogo) {
             brandInline = logoPart;
-          } else if (hasNomeImg) {
-            brandInline = nomePart;
           } else if (nome) {
             brandInline = `<span style="font-weight:700;padding:3px 9px;border-radius:4px;background:rgba(56,189,248,0.14);color:#38bdf8;">${escAttr(nome)}</span>`;
           } else {
@@ -7426,37 +7819,22 @@
               </label>
             </div>
 
-            <!-- Nome do Patrocinador / Apoiador (Texto escrito ou Arquivo de Imagem Upado) -->
-            <div style="border:1px solid var(--border);border-radius:var(--radius-sm, 6px);padding:10px 12px;background:rgba(255,255,255,0.015);display:flex;flex-direction:column;gap:8px;">
-              <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:4px;">
-                <label style="font-weight:600;font-size:0.88rem;margin:0;">Nome do Patrocinador / Apoiador</label>
-                <span class="admin-sub" style="font-size:0.75rem;">(Exibido no card junto ao logo)</span>
-              </div>
-
-              <div class="admin-field" style="margin-bottom:0;">
-                <label style="font-size:0.8rem;color:var(--text-muted);display:block;margin-bottom:3px;">Opção 1: Nome escrito por extenso</label>
-                <input class="admin-input" type="text" data-cota-field="${meta.key}:nome" value="${escAttr(item.nome)}" placeholder="Ex: Instituto Global de IA" maxlength="120" />
-              </div>
-
-              <div class="admin-field" style="margin-bottom:0;">
-                <label style="font-size:0.8rem;color:var(--text-muted);display:block;margin-bottom:3px;">Opção 2: Imagem do Nome / Tipografia da Marca (arquivo upado ou URL)</label>
-                <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
-                  <input type="file" accept="image/png,image/jpeg,image/webp,image/svg+xml" data-cota-upload-nome="${meta.key}" style="font-size:0.8rem;max-width:220px;" />
-                  <button type="button" class="admin-btn admin-btn-sm" data-cota-clear-nome-img="${meta.key}">Limpar imagem do nome</button>
-                </div>
-                <input class="admin-input" type="text" data-cota-field="${meta.key}:nome_imagem_url" value="${escAttr(item.nome_imagem_url || '')}" placeholder="https://... ou preenchido automaticamente pelo upload do nome" style="margin-top:6px;" />
-                <span class="admin-sub" style="font-size:0.73rem;margin-top:3px;display:block;">Se enviar um arquivo para o nome, a imagem tipográfica será exibida. Se deixar vazio, exibirá o nome escrito digitado acima.</span>
-              </div>
+            <!-- Nome da Marca / Patrocinador -->
+            <div class="admin-field">
+              <label>Nome da Marca / Patrocinador</label>
+              <input class="admin-input" type="text" data-cota-field="${meta.key}:nome" value="${escAttr(item.nome)}" placeholder="Ex: Instituto Global de IA" maxlength="120" />
+              <span class="admin-sub" style="font-size:0.73rem;margin-top:3px;display:block;">Nome por extenso da marca (exibido no card, alt text e identificação).</span>
             </div>
 
-            <!-- Ícone / Símbolo / Foto do Logo -->
+            <!-- Logo ou Logo Name da Marca (Upload Único) -->
             <div class="admin-field">
-              <label>Ícone / Símbolo / Foto do Logo (Upload PNG/JPG/WebP/SVG ou URL externa)</label>
+              <label>Logo / Imagem da Marca (Upload PNG/JPG/WebP/SVG ou URL)</label>
               <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
                 <input type="file" accept="image/png,image/jpeg,image/webp,image/svg+xml" data-cota-upload="${meta.key}" style="font-size:0.8rem;max-width:220px;" />
                 <button type="button" class="admin-btn admin-btn-sm" data-cota-clear-logo="${meta.key}">Limpar logo</button>
               </div>
-              <input class="admin-input" type="text" data-cota-field="${meta.key}:logo_url" value="${escAttr(item.logo_url)}" placeholder="https://... ou preenchido automaticamente pelo upload" style="margin-top:6px;" />
+              <input class="admin-input" type="text" data-cota-field="${meta.key}:logo_url" value="${escAttr(item.logo_url || item.nome_imagem_url || '')}" placeholder="https://... ou preenchido automaticamente pelo upload" style="margin-top:6px;" />
+              <span class="admin-sub" style="font-size:0.73rem;margin-top:3px;display:block;">Upload do logo, símbolo ou imagem do nome (tipografia) da marca. Se não enviar imagem, exibirá o nome em texto digitado acima.</span>
             </div>
 
             <div class="admin-field">
@@ -7512,36 +7890,6 @@
           });
         });
 
-        grid.querySelectorAll('[data-cota-upload-nome]').forEach(fileInp => {
-          fileInp.addEventListener('change', async () => {
-            const k = fileInp.getAttribute('data-cota-upload-nome');
-            const f = fileInp.files && fileInp.files[0];
-            if (!f) return;
-            try {
-              const dataUri = await otimizarImagemUpload(f);
-              patrociniosState[k].nome_imagem_url = dataUri;
-              const urlInput = grid.querySelector(`[data-cota-field="${k}:nome_imagem_url"]`);
-              if (urlInput) urlInput.value = dataUri;
-              renderPreviewCota(k);
-              showBanner('patrocinios-banner', `Imagem do nome carregada para ${k}. Clique em "Salvar e Publicar" para aplicar no site.`, 'ok');
-            } catch (err) {
-              showBanner('patrocinios-banner', 'Erro na imagem do nome: ' + err.message, 'err');
-            }
-          });
-        });
-
-        grid.querySelectorAll('[data-cota-clear-nome-img]').forEach(btn => {
-          btn.addEventListener('click', () => {
-            const k = btn.getAttribute('data-cota-clear-nome-img');
-            patrociniosState[k].nome_imagem_url = '';
-            const urlInput = grid.querySelector(`[data-cota-field="${k}:nome_imagem_url"]`);
-            if (urlInput) urlInput.value = '';
-            const fileInp = grid.querySelector(`[data-cota-upload-nome="${k}"]`);
-            if (fileInp) fileInp.value = '';
-            renderPreviewCota(k);
-          });
-        });
-
         grid.querySelectorAll('[data-cota-upload]').forEach(fileInp => {
           fileInp.addEventListener('change', async () => {
             const k = fileInp.getAttribute('data-cota-upload');
@@ -7553,7 +7901,7 @@
               const urlInput = grid.querySelector(`[data-cota-field="${k}:logo_url"]`);
               if (urlInput) urlInput.value = dataUri;
               renderPreviewCota(k);
-              showBanner('patrocinios-banner', `Logo carregada para ${k}. Clique em "Salvar e Publicar" para aplicar no site.`, 'ok');
+              showBanner('patrocinios-banner', `Logo / marca carregada para ${k}. Clique em "Salvar e Publicar" para aplicar no site.`, 'ok');
             } catch (err) {
               showBanner('patrocinios-banner', 'Erro na imagem: ' + err.message, 'err');
             }
@@ -7564,6 +7912,7 @@
           btn.addEventListener('click', () => {
             const k = btn.getAttribute('data-cota-clear-logo');
             patrociniosState[k].logo_url = '';
+            patrociniosState[k].nome_imagem_url = '';
             const urlInput = grid.querySelector(`[data-cota-field="${k}:logo_url"]`);
             if (urlInput) urlInput.value = '';
             const fileInp = grid.querySelector(`[data-cota-upload="${k}"]`);
@@ -7582,7 +7931,11 @@
           if (data && data.cotas) {
             COTAS_META.forEach(m => {
               if (data.cotas[m.key]) {
-                patrociniosState[m.key] = Object.assign({}, patrociniosState[m.key], data.cotas[m.key]);
+                const loaded = data.cotas[m.key];
+                if (!loaded.logo_url && loaded.nome_imagem_url) {
+                  loaded.logo_url = loaded.nome_imagem_url;
+                }
+                patrociniosState[m.key] = Object.assign({}, patrociniosState[m.key], loaded);
               }
             });
           }

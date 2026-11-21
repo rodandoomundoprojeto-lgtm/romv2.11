@@ -13232,32 +13232,70 @@ button, [role="button"], .quick-region-pill { touch-action: manipulation; }
   font-variant-numeric: tabular-nums;
 }
 
-/* Celular: 1 dossiê por vez, trocando sozinho, com setas de navegação */
+/* Vitrine de Dossiês Rotativos: carrossel responsivo para todas as telas (desktop, tablet e celular) */
+#dossies-rotativos-grid {
+  --dossie-gap: 16px;
+  --dossie-cards-visible: 6;
+}
+
+@media (max-width: 1600px) {
+  #dossies-rotativos-grid {
+    --dossie-cards-visible: 5;
+  }
+}
+
+@media (max-width: 1360px) {
+  #dossies-rotativos-grid {
+    --dossie-cards-visible: 4;
+  }
+}
+
+@media (max-width: 1024px) {
+  #dossies-rotativos-grid {
+    --dossie-cards-visible: 3;
+  }
+}
+
 @media (max-width: 768px) {
-  .dossie-rotativo-nav:not([hidden]) {
-    display: flex;
+  #dossies-rotativos-grid {
+    --dossie-cards-visible: 2;
+    --dossie-gap: 12px;
   }
+}
 
-  #dossies-rotativos-grid.is-carousel {
-    display: flex;
-    flex-wrap: nowrap;
-    gap: 0;
-    overflow: hidden;
+@media (max-width: 520px) {
+  #dossies-rotativos-grid {
+    --dossie-cards-visible: 1;
+    --dossie-gap: 0px;
   }
+}
 
-  #dossies-rotativos-grid.is-carousel .dossie-rotativo-slide {
-    display: flex;
-    flex: 0 0 100%;
-    min-width: 100%;
-    max-width: 100%;
-    transform: translateX(calc(var(--dossie-slide-index, 0) * -100%));
-    transition: transform 0.45s ease;
-  }
+.dossie-rotativo-nav:not([hidden]) {
+  display: flex;
+}
 
-  #dossies-rotativos-grid.is-carousel .dossie-rotativo-slide .hub-home-card {
-    flex: 1;
-    min-width: 0;
-  }
+#dossies-rotativos-grid.is-carousel {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: var(--dossie-gap, 16px);
+  overflow: hidden;
+  padding: 4px 2px 14px;
+}
+
+#dossies-rotativos-grid.is-carousel .dossie-rotativo-slide {
+  display: flex;
+  flex: 0 0 calc((100% - (var(--dossie-cards-visible, 1) - 1) * var(--dossie-gap, 16px)) / var(--dossie-cards-visible, 1));
+  min-width: calc((100% - (var(--dossie-cards-visible, 1) - 1) * var(--dossie-gap, 16px)) / var(--dossie-cards-visible, 1));
+  max-width: calc((100% - (var(--dossie-cards-visible, 1) - 1) * var(--dossie-gap, 16px)) / var(--dossie-cards-visible, 1));
+  transform: translateX(calc(var(--dossie-slide-index, 0) * (-100% - var(--dossie-gap, 16px))));
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.25, 1);
+  box-sizing: border-box;
+}
+
+#dossies-rotativos-grid.is-carousel .dossie-rotativo-slide .hub-home-card {
+  flex: 1;
+  min-width: 0;
+  width: 100%;
 }
 
 @media (prefers-reduced-motion: reduce) {

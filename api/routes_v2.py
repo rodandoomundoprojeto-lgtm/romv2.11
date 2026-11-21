@@ -310,6 +310,25 @@ class ExecutarYoutubeBotRequest(BaseModel):
     )
 
 
+class AprovarVideoYoutubeRequest(BaseModel):
+    """Parâmetros para aprovação e publicação manual de vídeo do YouTube no Radar/Feed."""
+    video_id: Optional[str] = Field(default=None, description="ID do vídeo no YouTube (11 chars)")
+    titulo: str = Field(..., description="Título do vídeo")
+    resumo: Optional[str] = Field(default="", description="Resumo ou descrição do vídeo")
+    analise: Optional[str] = Field(default="", description="Análise editorial ou descrição")
+    canal: Optional[str] = Field(default="YouTube", description="Nome do canal")
+    fonte_nome: Optional[str] = Field(default=None, description="Nome da fonte")
+    url: Optional[str] = Field(default=None, description="URL do vídeo")
+    fonte_url: Optional[str] = Field(default=None, description="URL da fonte")
+    thumbnail: Optional[str] = Field(default=None, description="URL da thumbnail")
+    data_publicacao: Optional[str] = Field(default=None, description="Data em formato ISO")
+    categoria: Optional[str] = Field(default="geopolitica", description="Categoria temática")
+    pais: Optional[str] = Field(default="BR", description="País de contexto (ISO 2 letras)")
+    paises_envolvidos: Optional[List[str]] = Field(default_factory=lambda: ["BR"], description="Países envolvidos")
+    urgencia_score: Optional[int] = Field(default=82, ge=1, le=100)
+    nivel_relevancia: Optional[int] = Field(default=3, ge=1, le=5)
+
+
 class GerarColunaRequest(BaseModel):
     """Parâmetros de entrada para geração de coluna analítica (4 agentes — gemini-2.5-pro)."""
     tema: Optional[str] = Field(
@@ -2701,6 +2720,55 @@ async def admin_executar_bot_youtube(
         return resultado
     except Exception as exc:
         raise HTTPException(status_code=500, detail=f"Falha ao executar Bot de Vídeos do YouTube: {exc}")
+
+
+@router.get("/v2/admin/bot/youtube/canais", dependencies=[Depends(verificar_admin_token)])
+async def admin_listar_canais_youtube(response: Response) -> Dict[str, Any]:
+    """Retorna os canais de YouTube cadastrados no sistema para alimentação do autocomplete/curadoria."""
+    aplicar_no_cache_headers(response)
+    from scripts.youtube_feeder import listar_canais_cadastrados_youtube
+
+    canais = listar_canais_cadastrados_youtube()
+    return {"ok": True, "total": len(canais), "canais": canais}
+
+
+@router.get("/v2/admin/bot/youtube/buscar-canal", dependencies=[Depends(verificar_admin_token)])
+async def admin_buscar_canal_youtube(
+    response: Response,
+    canal: str = Query(..., description="Nome ou ID do canal cadastrado"),
+    limite: int = Query(6, ge=1, le=15, description="Quantidade máxima de vídeos recentes a consultar"),
+) -> Dict[str, Any]:
+    """Consulta em tempo real os vídeos mais recentes de um canal de YouTube cadastrado e checa status no feed."""
+    import asyncio
+    from scripts.youtube_feeder import buscar_videos_canal_especifico
+
+    aplicar_no_cache_headers(response)
+    try:
+        resultado = await asyncio.to_thread(buscar_videos_canal_especifico, canal, limite)
+        return resultado
+    except ValueError as val_err:
+        raise HTTPException(status_code=400, detail=str(val_err))
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=f"Erro ao buscar vídeos do canal: {exc}")
+
+
+@router.post("/v2/admin/bot/youtube/aprovar", dependencies=[Depends(verificar_admin_token)])
+async def admin_aprovar_video_youtube(
+    response: Response,
+    payload: AprovarVideoYoutubeRequest,
+) -> Dict[str, Any]:
+    """Aprova e publica imediatamente um vídeo recente do YouTube no feed do site (data/noticias_youtube.json)."""
+    import asyncio
+    from scripts.youtube_feeder import aprovar_video_manual_youtube
+
+    aplicar_no_cache_headers(response)
+    try:
+        resultado = await asyncio.to_thread(aprovar_video_manual_youtube, payload.model_dump())
+        return resultado
+    except ValueError as val_err:
+        raise HTTPException(status_code=400, detail=str(val_err))
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=f"Erro ao aprovar vídeo: {exc}")
 
 
 def _coletar_fontes_codigo() -> List[Dict[str, Any]]:
