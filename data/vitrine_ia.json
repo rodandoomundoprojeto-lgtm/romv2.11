@@ -2,33 +2,131 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-21T09:44:23Z",
-  "batch_id": "20261121-0943",
+  "updatedAt": "2026-11-21T10:00:34Z",
+  "batch_id": "20261121-1000",
   "temas_ativos": [
     {
-      "slug": "comissao-europeia-condena-complot-russo-atentado-dinamarca",
-      "titulo_tema": "União Europeia condena plano de assassinato orquestrado pela Rússia na Dinamarca",
-      "titulo_curto": "União Europeia condena plano de assassinato orquestrado pela Rússia na Dinamarca",
+      "slug": "escalada-estreito-hormuz-eua-ira-petroleo",
+      "titulo_tema": "Escalada militar no Estreito de Ormuz e impactos na cotação do petróleo",
       "status": "novo",
-      "origem_pipeline": "pulso",
+      "origem_pipeline": "curadoria",
       "categoria_primaria": "Geopolitica_Radar",
-      "categoria": "Geopolitica_Relacoes",
       "categorias_cruzadas": [
         "Economia",
-        "Resumo_Ultimas"
+        "Politica"
       ],
       "rota_editoria": "/radar",
+      "relevancia_score": 95,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-23T10:00:34Z",
+      "palavras_chave_busca": [
+        "estreito de ormuz",
+        "eua e irã",
+        "drone abatido",
+        "preço do petróleo",
+        "sanções americanas",
+        "crise de energia"
+      ],
+      "gatilho_vitrine": "Destacar no topo do Radar Geopolítico o risco de desabastecimento energético global e a repassagem de preços no Brasil.",
+      "sintese_nerd": "O abate de um drone norte-americano e o bloqueio parcial no Estreito de Ormuz elevam a tensão geopolítica na rota por onde passa um quinto do petróleo mundial. Esse gargalo logístico pressiona o valor do barril no mercado global com risco iminente de repasse para os combustíveis no Brasil.",
+      "data_publicacao": "2026-11-21T10:00:34Z",
+      "updated_at": "2026-11-21T10:00:34Z"
+    },
+    {
+      "slug": "vistos-diplomaticos-brasil-eua-lula-trump",
+      "titulo_tema": "Impasse diplomático de vistos entre governos Lula e Trump",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Politica",
+      "categorias_cruzadas": [
+        "Geopolitica_Radar"
+      ],
+      "rota_editoria": "/politica",
       "relevancia_score": 89,
-      "urgencia_score": 91,
+      "ttl_horas": 72,
+      "expires_at": "2026-11-24T10:00:34Z",
+      "palavras_chave_busca": [
+        "vistos diplomáticos",
+        "governo lula",
+        "governo trump",
+        "embaixada americana",
+        "itamaraty",
+        "relações bilaterais"
+      ],
+      "gatilho_vitrine": "Exibir na editoria de Política para detalhar as negociações diretas de bastidor entre Brasília e Washington.",
+      "sintese_nerd": "A retaliação velada na concessão de credenciais diplomáticas entre Brasil e Estados Unidos ilustra o esfriamento das relações formais no início da gestão Trump. O impasse expõe os limites da diplomacia pragmática em equilibrar soberania institucional e interlocução com potências globais.",
+      "data_publicacao": "2026-11-21T10:00:34Z",
+      "updated_at": "2026-11-21T10:00:34Z"
+    },
+    {
+      "slug": "venda-acoes-tecnologia-queda-bolsas-mercados",
+      "titulo_tema": "Onda de vendas em tecnologia gera forte retração nas bolsas mundiais",
+      "status": "em_alta",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Cultura",
+        "Geopolitica_Radar"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 85,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-22T10:00:34Z",
+      "palavras_chave_busca": [
+        "bolsa de valores",
+        "ações de tecnologia",
+        "mercado europeu",
+        "queda nas bolsas",
+        "inteligência artificial",
+        "big techs"
+      ],
+      "gatilho_vitrine": "Posicionar na Home de Economia com foco na aversão ao risco global e contaminação do Ibovespa.",
+      "sintese_nerd": "Incertezas sobre os retornos financeiros maciços no setor de Inteligência Artificial deflagraram uma realização de lucros generalizada na Europa e nos EUA. Essa correção técnica aumenta a volatilidade nos mercados emergentes e afeta diretamente a atratividade do mercado de capital brasileiro.",
+      "data_publicacao": "2026-11-21T10:00:34Z",
+      "updated_at": "2026-11-21T10:00:34Z"
+    },
+    {
+      "slug": "novo-desenrola-relatorio-compra-dividas-uniao",
+      "titulo_tema": "Projeto do Novo Desenrola prevê compra de R$ 15 bilhões em dívidas pela União",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Politica"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 81,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-23T10:00:34Z",
+      "palavras_chave_busca": [
+        "novo desenrola",
+        "cid gomes",
+        "renegociação de dívidas",
+        "inadimplência",
+        "crédito consignado",
+        "união compra dívidas"
+      ],
+      "gatilho_vitrine": "Destacar no hub de Economia com guia explicativo sobre as regras de elegibilidade para pessoas físicas.",
+      "sintese_nerd": "O avanço da proposta que permite à União comprar R$ 15 bilhões em passivos de inadimplentes busca recuperar o poder de consumo da população endividada. A medida contrabalança a necessidade de socorro econômico popular com os questionamentos do mercado financeiro quanto ao risco de responsabilidade fiscal.",
+      "data_publicacao": "2026-11-21T10:00:34Z",
+      "updated_at": "2026-11-21T10:00:34Z"
+    },
+    {
+      "slug": "comissao-europeia-condena-complot-russo-atentado-dinamarca",
+      "status": "novo",
+      "categoria": "Geopolitica_Relacoes",
       "ttl_horas": 18,
       "expires_at": "2026-11-22T03:44:23Z",
-      "palavras_chave_busca": [
-        "união europeia",
-        "rússia",
-        "dinamarca",
-        "segurança",
-        "espionagem"
+      "updated_at": "2026-11-21T09:44:23Z",
+      "fontes_urls": [
+        "https://ec.europa.eu/commission/presscorner/detail/en/statement_26_2556",
+        "https://www.themoscowtimes.com/2026/11/21/von-der-leyen-condemns-russian-plot-to-assassinate-us-ukrainian-in-denmark-a94339"
       ],
+      "titulo_tema": "União Europeia condena plano de assassinato orquestrado pela Rússia na Dinamarca",
+      "resumo_pulso": "Conforme comunicado oficial da Comissão Europeia e reportagens do The Moscow Times, a presidente Ursula von der Leyen condenou fortemente uma tentativa de assassinato contra um cidadão norte-americano-ucraniano em solo dinamarquês. O ato foi apontado pelas autoridades europeias como uma agressão direta coordenada pelos serviços de inteligência russos.",
+      "sintese_nerd": "Elevação das tensões diplomáticas entre a União Europeia e Moscou, com potenciais desdobramentos sobre a segurança interna do bloco.",
+      "titulo_curto": "União Europeia condena plano de assassinato orquestrado pela Rússia na Dinamarca",
+      "rota_editoria": "/radar",
       "palavras_chave": [
         "união europeia",
         "rússia",
@@ -36,10 +134,16 @@
         "segurança",
         "espionagem"
       ],
+      "urgencia_score": 91,
+      "data_publicacao": "2026-11-21T09:15:19Z",
       "gatilho_vitrine": "Conforme comunicado oficial da Comissão Europeia e reportagens do The Moscow Times, a presidente Ursula von der Leyen condenou fortemente uma tentativa de assassinato contra um cidadão norte-americano-ucraniano em solo dinamarquês. O ato foi apontado pelas autoridades europeias como uma agressão direta coordenada pelos serviços de inteligência russos.",
-      "resumo_pulso": "Conforme comunicado oficial da Comissão Europeia e reportagens do The Moscow Times, a presidente Ursula von der Leyen condenou fortemente uma tentativa de assassinato contra um cidadão norte-americano-ucraniano em solo dinamarquês. O ato foi apontado pelas autoridades europeias como uma agressão direta coordenada pelos serviços de inteligência russos.",
-      "sintese_nerd": "Elevação das tensões diplomáticas entre a União Europeia e Moscou, com potenciais desdobramentos sobre a segurança interna do bloco.",
       "impacto_pratico": "Elevação das tensões diplomáticas entre a União Europeia e Moscou, com potenciais desdobramentos sobre a segurança interna do bloco.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "Comissão Europeia (Press Corner)",
+        "The Moscow Times"
+      ],
+      "relevancia_score": 89,
       "paises_envolvidos": [
         "EU",
         "RU",
@@ -47,42 +151,34 @@
         "US",
         "UA"
       ],
-      "veiculos_origem": [
-        "Comissão Europeia (Press Corner)",
-        "The Moscow Times"
-      ],
-      "fontes_urls": [
-        "https://ec.europa.eu/commission/presscorner/detail/en/statement_26_2556",
-        "https://www.themoscowtimes.com/2026/11/21/von-der-leyen-condemns-russian-plot-to-assassinate-us-ukrainian-in-denmark-a94339"
-      ],
-      "data_publicacao": "2026-11-21T09:15:19Z",
-      "updated_at": "2026-11-21T09:44:23Z"
-    },
-    {
-      "slug": "brasil-eua-diplomacia-vistos-lula-trump",
-      "titulo_tema": "Governos de Brasil e EUA buscam superar impasse na emissão de vistos diplomáticos",
-      "titulo_curto": "Governos de Brasil e EUA buscam superar impasse na emissão de vistos diplomáticos",
-      "status": "novo",
-      "origem_pipeline": "pulso",
       "categoria_primaria": "Geopolitica_Radar",
-      "categoria": "Geopolitica_Relacoes",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
       ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 90,
-      "urgencia_score": 88,
+      "palavras_chave_busca": [
+        "união europeia",
+        "rússia",
+        "dinamarca",
+        "segurança",
+        "espionagem"
+      ]
+    },
+    {
+      "slug": "brasil-eua-diplomacia-vistos-lula-trump",
+      "status": "novo",
+      "categoria": "Geopolitica_Relacoes",
       "ttl_horas": 24,
       "expires_at": "2026-11-22T09:44:23Z",
-      "palavras_chave_busca": [
-        "brasil",
-        "estados unidos",
-        "diplomacia",
-        "vistos",
-        "lula",
-        "trump"
+      "updated_at": "2026-11-21T09:44:23Z",
+      "fontes_urls": [
+        "https://www.bbc.com/portuguese/articles/cwz0k3r4npexo?at_medium=RSS&at_campaign=rss"
       ],
+      "titulo_tema": "Governos de Brasil e EUA buscam superar impasse na emissão de vistos diplomáticos",
+      "resumo_pulso": "Segundo apuração da BBC News Brasil, as administrações de Lula e Donald Trump articulam entendimentos para encerrar o atrito em torno da liberação de vistos para diplomatas. De um lado, Washington busca aval para seu indicado à embaixada no Brasil; do outro, Brasília cobra a normalização da situação de sua embaixadora em solo americano.",
+      "sintese_nerd": "Possibilidade de normalização do canal de diálogo direto em nível de embaixadas entre o Brasil e os Estados Unidos.",
+      "titulo_curto": "Governos de Brasil e EUA buscam superar impasse na emissão de vistos diplomáticos",
+      "rota_editoria": "/radar",
       "palavras_chave": [
         "brasil",
         "estados unidos",
@@ -91,47 +187,48 @@
         "lula",
         "trump"
       ],
+      "urgencia_score": 88,
+      "data_publicacao": "2026-11-21T09:01:48Z",
       "gatilho_vitrine": "Segundo apuração da BBC News Brasil, as administrações de Lula e Donald Trump articulam entendimentos para encerrar o atrito em torno da liberação de vistos para diplomatas. De um lado, Washington busca aval para seu indicado à embaixada no Brasil; do outro, Brasília cobra a normalização da situação de sua embaixadora em solo americano.",
-      "resumo_pulso": "Segundo apuração da BBC News Brasil, as administrações de Lula e Donald Trump articulam entendimentos para encerrar o atrito em torno da liberação de vistos para diplomatas. De um lado, Washington busca aval para seu indicado à embaixada no Brasil; do outro, Brasília cobra a normalização da situação de sua embaixadora em solo americano.",
-      "sintese_nerd": "Possibilidade de normalização do canal de diálogo direto em nível de embaixadas entre o Brasil e os Estados Unidos.",
       "impacto_pratico": "Possibilidade de normalização do canal de diálogo direto em nível de embaixadas entre o Brasil e os Estados Unidos.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "BBC News Brasil"
+      ],
+      "relevancia_score": 90,
       "paises_envolvidos": [
         "BR",
         "US"
       ],
-      "veiculos_origem": [
-        "BBC News Brasil"
-      ],
-      "fontes_urls": [
-        "https://www.bbc.com/portuguese/articles/cwz0k3r4npexo?at_medium=RSS&at_campaign=rss"
-      ],
-      "data_publicacao": "2026-11-21T09:01:48Z",
-      "updated_at": "2026-11-21T09:44:23Z"
-    },
-    {
-      "slug": "intoxicacao-por-alcool-adulterado-mata-11-na-india",
-      "titulo_tema": "Consumo de álcool adulterado causa dezenas de intoxicações e mortes na Índia",
-      "titulo_curto": "Consumo de álcool adulterado causa dezenas de intoxicações e mortes na Índia",
-      "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Cultura",
-      "categoria": "Sociedade_Cultura",
+      "categoria_primaria": "Geopolitica_Radar",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
       ],
-      "rota_editoria": "/cultura",
-      "relevancia_score": 80,
-      "urgencia_score": 84,
+      "palavras_chave_busca": [
+        "brasil",
+        "estados unidos",
+        "diplomacia",
+        "vistos",
+        "lula",
+        "trump"
+      ]
+    },
+    {
+      "slug": "intoxicacao-por-alcool-adulterado-mata-11-na-india",
+      "status": "novo",
+      "categoria": "Sociedade_Cultura",
       "ttl_horas": 12,
       "expires_at": "2026-11-21T21:44:23Z",
-      "palavras_chave_busca": [
-        "índia",
-        "manipur",
-        "intoxicação",
-        "saúde pública",
-        "segurança"
+      "updated_at": "2026-11-21T09:44:23Z",
+      "fontes_urls": [
+        "https://www.aljazeera.com/news/2026/11/21/suspected-toxic-alcohol-kills-at-least-11-people-in-northeast-india?traffic_source=rss"
       ],
+      "titulo_tema": "Consumo de álcool adulterado causa dezenas de intoxicações e mortes na Índia",
+      "resumo_pulso": "Conforme noticiado pela Al Jazeera English, pelo menos 11 pessoas morreram e cerca de 180 foram hospitalizadas após consumirem bebidas alcoólicas adulteradas no estado de Manipur, no nordeste da Índia. O governo local determinou a abertura imediata de investigação criminal para responsabilizar os envolvidos na fabricação e distribuição.",
+      "sintese_nerd": "Alerta de saúde pública regional sobre a comercialização de produtos clandestinos e endurecimento da fiscalização sanitária.",
+      "titulo_curto": "Consumo de álcool adulterado causa dezenas de intoxicações e mortes na Índia",
+      "rota_editoria": "/cultura",
       "palavras_chave": [
         "índia",
         "manipur",
@@ -139,21 +236,30 @@
         "saúde pública",
         "segurança"
       ],
+      "urgencia_score": 84,
+      "data_publicacao": "2026-11-21T08:48:54Z",
       "gatilho_vitrine": "Conforme noticiado pela Al Jazeera English, pelo menos 11 pessoas morreram e cerca de 180 foram hospitalizadas após consumirem bebidas alcoólicas adulteradas no estado de Manipur, no nordeste da Índia. O governo local determinou a abertura imediata de investigação criminal para responsabilizar os envolvidos na fabricação e distribuição.",
-      "resumo_pulso": "Conforme noticiado pela Al Jazeera English, pelo menos 11 pessoas morreram e cerca de 180 foram hospitalizadas após consumirem bebidas alcoólicas adulteradas no estado de Manipur, no nordeste da Índia. O governo local determinou a abertura imediata de investigação criminal para responsabilizar os envolvidos na fabricação e distribuição.",
-      "sintese_nerd": "Alerta de saúde pública regional sobre a comercialização de produtos clandestinos e endurecimento da fiscalização sanitária.",
       "impacto_pratico": "Alerta de saúde pública regional sobre a comercialização de produtos clandestinos e endurecimento da fiscalização sanitária.",
-      "paises_envolvidos": [
-        "IN"
-      ],
+      "origem_pipeline": "pulso",
       "veiculos_origem": [
         "Al Jazeera English"
       ],
-      "fontes_urls": [
-        "https://www.aljazeera.com/news/2026/11/21/suspected-toxic-alcohol-kills-at-least-11-people-in-northeast-india?traffic_source=rss"
+      "relevancia_score": 80,
+      "paises_envolvidos": [
+        "IN"
       ],
-      "data_publicacao": "2026-11-21T08:48:54Z",
-      "updated_at": "2026-11-21T09:44:23Z"
+      "categoria_primaria": "Cultura",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "índia",
+        "manipur",
+        "intoxicação",
+        "saúde pública",
+        "segurança"
+      ]
     },
     {
       "slug": "morre-phumzile-mlambo-ngcuka-1a-mulher-vice-da-africa-do-sul",
@@ -249,109 +355,6 @@
       ]
     },
     {
-      "slug": "guerra-ucrania-ataques-massivos-drones-infraestrutura",
-      "status": "novo",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-22T07:27:19Z",
-      "updated_at": "2026-11-21T07:27:19Z",
-      "titulo_tema": "Escalada de ataques com drones e mísseis contra infraestrutura na Ucrânia",
-      "sintese_nerd": "A intensificação dos bombardeios noturnos russos contra redes elétricas e regiões ucranianas pressiona a resiliência energética do país e eleva o risco geopolítico na Europa. O encarecimento de commodities e o temor de choques de oferta afetam indiretamente as cadeias de suprimentos e os mercados financeiros globais.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-21T07:27:19Z",
-      "gatilho_vitrine": "Monitore os desdobramentos dos ataques massivos russos na Ucrânia e seus impactos nos mercados globais de energia.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 92,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "guerra na ucrânia",
-        "ataques de drones russos",
-        "infraestrutura energética ucrânia",
-        "geopolítica europa",
-        "conflito rússia ucrânia",
-        "sanções e energia"
-      ]
-    },
-    {
-      "slug": "regulamentacao-fim-escala-6x1-brasil",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-23T07:27:19Z",
-      "updated_at": "2026-11-21T07:27:19Z",
-      "titulo_tema": "Regulamentação oficial do fim da escala 6x1 e impactos trabalhistas",
-      "sintese_nerd": "A assinatura do decreto presidencial que regulamenta a transição do fim da escala 6x1 altera profundamente as relações de trabalho e os custos operacionais das empresas no Brasil. A medida exige adaptação imediata do setor produtivo e reconfigura o debate sobre produtividade versus direitos sociais.",
-      "rota_editoria": "/politica",
-      "data_publicacao": "2026-11-21T07:27:19Z",
-      "gatilho_vitrine": "Destaque as novas regras de transição assinadas pelo Executivo após aval do STF e do Congresso sobre a jornada de trabalho.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 89,
-      "categoria_primaria": "Politica",
-      "categorias_cruzadas": [
-        "Economia",
-        "Eleicoes"
-      ],
-      "palavras_chave_busca": [
-        "fim da escala 6x1",
-        "decreto trabalhista lula",
-        "jornada de trabalho stf",
-        "impacto folgas horas extras",
-        "reforma trabalhista brasil"
-      ]
-    },
-    {
-      "slug": "saida-jensen-huang-nvidia-futuro-ia",
-      "status": "novo",
-      "ttl_horas": 72,
-      "expires_at": "2026-11-24T07:27:19Z",
-      "updated_at": "2026-11-21T07:27:19Z",
-      "titulo_tema": "Desdobramentos da saída de Jensen Huang da liderança da Nvidia",
-      "sintese_nerd": "A renúncia de Jensen Huang do comando da Nvidia remove uma figura central na arquitetura do boom atual de inteligência artificial. Isso gera incertezas sobre a governança da empresa mais valiosa do setor e a dinâmica da corrida tecnológica global por semicondutores.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-21T07:27:19Z",
-      "gatilho_vitrine": "Explore como a saída do cofundador da Nvidia impacta o ecossistema global de inteligência artificial e o mercado de chips.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 87,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Geopolitica_Radar",
-        "Cultura"
-      ],
-      "palavras_chave_busca": [
-        "jensen huang nvidia",
-        "futuro da inteligência artificial",
-        "mercado de semicondutores",
-        "ações nvidia ia",
-        "corrida tecnológica eua china"
-      ]
-    },
-    {
-      "slug": "terremoto-magnitude-6-7-peru",
-      "status": "novo",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-22T07:27:19Z",
-      "updated_at": "2026-11-21T07:27:19Z",
-      "titulo_tema": "Terremoto de magnitude 6.7 atinge o Peru e gera alerta regional",
-      "sintese_nerd": "Um forte terremoto de magnitude 6,7 atingiu o Peru, ativando os sistemas de monitoramento de riscos geológicos na cordilheira dos Andes. O evento lembra a vulnerabilidade estrutural da região andina e mobiliza agências de defesa civil locais.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-21T07:27:19Z",
-      "gatilho_vitrine": "Acompanhe os boletins de danos e os protocolos de segurança acionados pelas autoridades peruanas após forte abalo sísmico.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 85,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "terremoto no peru hoje",
-        "sismo magnitude 6.7 peru",
-        "defesa civil peru tremor",
-        "atividade sísmica américa do sul"
-      ]
-    },
-    {
       "slug": "incendio-em-usina-eletrica-em-basra-iraque",
       "status": "novo",
       "categoria": "Sociedade_Cultura",
@@ -400,28 +403,20 @@
     },
     {
       "slug": "ataque-russo-com-drones-e-incendio-em-dnipropetrovsk",
-      "titulo_tema": "Ataque massivo russo na Ucrânia eleva número de feridos para 60 em Kryvyi Rih",
-      "titulo_curto": "Ataque massivo russo na Ucrânia eleva número de feridos para 60 em Kryvyi Rih",
       "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Geopolitica_Radar",
       "categoria": "Geopolitica_Relacoes",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 92,
-      "urgencia_score": 95,
       "ttl_horas": 12,
       "expires_at": "2026-11-21T19:45:41Z",
-      "palavras_chave_busca": [
-        "ucrânia",
-        "rússia",
-        "kryvyi rih",
-        "ataque aéreo",
-        "guerra"
+      "updated_at": "2026-11-21T09:44:23Z",
+      "fontes_urls": [
+        "https://www.ukrinform.net/rubric-ato/4187086-injury-toll-in-russian-attacks-on-kryvyi-rih-rises-to-60.html",
+        "https://kyivindependent.com/russian-attacks-kill-at-least-2-injure-83-across-ukraine-as-strikes-devastate-kryvyi-rih/"
       ],
+      "titulo_tema": "Ataque massivo russo na Ucrânia eleva número de feridos para 60 em Kryvyi Rih",
+      "resumo_pulso": "Segundo relatórios atualizados da Ukrinform e da Kyiv Independent, o número de feridos nos ataques russos recentes contra Kryvyi Rih subiu para 60, com dezenas de pessoas hospitalizadas. As ofensivas atingiram infraestruturas civis e energéticas em meio a disparos de mísseis balísticos e drones.",
+      "sintese_nerd": "Aprofundamento da crise humanitária na Ucrânia e sobrecarga contínua dos serviços de emergência e hospitais locais.",
+      "titulo_curto": "Ataque massivo russo na Ucrânia eleva número de feridos para 60 em Kryvyi Rih",
+      "rota_editoria": "/radar",
       "palavras_chave": [
         "ucrânia",
         "rússia",
@@ -429,24 +424,32 @@
         "ataque aéreo",
         "guerra"
       ],
+      "urgencia_score": 95,
+      "data_publicacao": "2026-11-21T07:17:00Z",
       "gatilho_vitrine": "Segundo relatórios atualizados da Ukrinform e da Kyiv Independent, o número de feridos nos ataques russos recentes contra Kryvyi Rih subiu para 60, com dezenas de pessoas hospitalizadas. As ofensivas atingiram infraestruturas civis e energéticas em meio a disparos de mísseis balísticos e drones.",
-      "resumo_pulso": "Segundo relatórios atualizados da Ukrinform e da Kyiv Independent, o número de feridos nos ataques russos recentes contra Kryvyi Rih subiu para 60, com dezenas de pessoas hospitalizadas. As ofensivas atingiram infraestruturas civis e energéticas em meio a disparos de mísseis balísticos e drones.",
-      "sintese_nerd": "Aprofundamento da crise humanitária na Ucrânia e sobrecarga contínua dos serviços de emergência e hospitais locais.",
       "impacto_pratico": "Aprofundamento da crise humanitária na Ucrânia e sobrecarga contínua dos serviços de emergência e hospitais locais.",
-      "paises_envolvidos": [
-        "UA",
-        "RU"
-      ],
+      "origem_pipeline": "pulso",
       "veiculos_origem": [
         "Ukrinform",
         "Kyiv Independent"
       ],
-      "fontes_urls": [
-        "https://www.ukrinform.net/rubric-ato/4187086-injury-toll-in-russian-attacks-on-kryvyi-rih-rises-to-60.html",
-        "https://kyivindependent.com/russian-attacks-kill-at-least-2-injure-83-across-ukraine-as-strikes-devastate-kryvyi-rih/"
+      "relevancia_score": 92,
+      "paises_envolvidos": [
+        "UA",
+        "RU"
       ],
-      "data_publicacao": "2026-11-21T07:17:00Z",
-      "updated_at": "2026-11-21T09:44:23Z"
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "ucrânia",
+        "rússia",
+        "kryvyi rih",
+        "ataque aéreo",
+        "guerra"
+      ]
     },
     {
       "slug": "ira-envia-convoy-petroleiros-desafiar-bloqueio-eua",
@@ -883,33 +886,127 @@
       ]
     }
   ],
+  "temas_curadoria": [
+    {
+      "slug": "escalada-estreito-hormuz-eua-ira-petroleo",
+      "titulo_tema": "Escalada militar no Estreito de Ormuz e impactos na cotação do petróleo",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Politica"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 95,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-23T10:00:34Z",
+      "palavras_chave_busca": [
+        "estreito de ormuz",
+        "eua e irã",
+        "drone abatido",
+        "preço do petróleo",
+        "sanções americanas",
+        "crise de energia"
+      ],
+      "gatilho_vitrine": "Destacar no topo do Radar Geopolítico o risco de desabastecimento energético global e a repassagem de preços no Brasil.",
+      "sintese_nerd": "O abate de um drone norte-americano e o bloqueio parcial no Estreito de Ormuz elevam a tensão geopolítica na rota por onde passa um quinto do petróleo mundial. Esse gargalo logístico pressiona o valor do barril no mercado global com risco iminente de repasse para os combustíveis no Brasil.",
+      "data_publicacao": "2026-11-21T10:00:34Z",
+      "updated_at": "2026-11-21T10:00:34Z"
+    },
+    {
+      "slug": "vistos-diplomaticos-brasil-eua-lula-trump",
+      "titulo_tema": "Impasse diplomático de vistos entre governos Lula e Trump",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Politica",
+      "categorias_cruzadas": [
+        "Geopolitica_Radar"
+      ],
+      "rota_editoria": "/politica",
+      "relevancia_score": 89,
+      "ttl_horas": 72,
+      "expires_at": "2026-11-24T10:00:34Z",
+      "palavras_chave_busca": [
+        "vistos diplomáticos",
+        "governo lula",
+        "governo trump",
+        "embaixada americana",
+        "itamaraty",
+        "relações bilaterais"
+      ],
+      "gatilho_vitrine": "Exibir na editoria de Política para detalhar as negociações diretas de bastidor entre Brasília e Washington.",
+      "sintese_nerd": "A retaliação velada na concessão de credenciais diplomáticas entre Brasil e Estados Unidos ilustra o esfriamento das relações formais no início da gestão Trump. O impasse expõe os limites da diplomacia pragmática em equilibrar soberania institucional e interlocução com potências globais.",
+      "data_publicacao": "2026-11-21T10:00:34Z",
+      "updated_at": "2026-11-21T10:00:34Z"
+    },
+    {
+      "slug": "venda-acoes-tecnologia-queda-bolsas-mercados",
+      "titulo_tema": "Onda de vendas em tecnologia gera forte retração nas bolsas mundiais",
+      "status": "em_alta",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Cultura",
+        "Geopolitica_Radar"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 85,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-22T10:00:34Z",
+      "palavras_chave_busca": [
+        "bolsa de valores",
+        "ações de tecnologia",
+        "mercado europeu",
+        "queda nas bolsas",
+        "inteligência artificial",
+        "big techs"
+      ],
+      "gatilho_vitrine": "Posicionar na Home de Economia com foco na aversão ao risco global e contaminação do Ibovespa.",
+      "sintese_nerd": "Incertezas sobre os retornos financeiros maciços no setor de Inteligência Artificial deflagraram uma realização de lucros generalizada na Europa e nos EUA. Essa correção técnica aumenta a volatilidade nos mercados emergentes e afeta diretamente a atratividade do mercado de capital brasileiro.",
+      "data_publicacao": "2026-11-21T10:00:34Z",
+      "updated_at": "2026-11-21T10:00:34Z"
+    },
+    {
+      "slug": "novo-desenrola-relatorio-compra-dividas-uniao",
+      "titulo_tema": "Projeto do Novo Desenrola prevê compra de R$ 15 bilhões em dívidas pela União",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Politica"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 81,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-23T10:00:34Z",
+      "palavras_chave_busca": [
+        "novo desenrola",
+        "cid gomes",
+        "renegociação de dívidas",
+        "inadimplência",
+        "crédito consignado",
+        "união compra dívidas"
+      ],
+      "gatilho_vitrine": "Destacar no hub de Economia com guia explicativo sobre as regras de elegibilidade para pessoas físicas.",
+      "sintese_nerd": "O avanço da proposta que permite à União comprar R$ 15 bilhões em passivos de inadimplentes busca recuperar o poder de consumo da população endividada. A medida contrabalança a necessidade de socorro econômico popular com os questionamentos do mercado financeiro quanto ao risco de responsabilidade fiscal.",
+      "data_publicacao": "2026-11-21T10:00:34Z",
+      "updated_at": "2026-11-21T10:00:34Z"
+    }
+  ],
   "noticias_quentes": [
     {
       "slug": "comissao-europeia-condena-complot-russo-atentado-dinamarca",
-      "titulo_curto": "União Europeia condena plano de assassinato orquestrado pela Rússia na Dinamarca",
-      "resumo_pulso": "Conforme comunicado oficial da Comissão Europeia e reportagens do The Moscow Times, a presidente Ursula von der Leyen condenou fortemente uma tentativa de assassinato contra um cidadão norte-americano-ucraniano em solo dinamarquês. O ato foi apontado pelas autoridades europeias como uma agressão direta coordenada pelos serviços de inteligência russos.",
-      "impacto_pratico": "Elevação das tensões diplomáticas entre a União Europeia e Moscou, com potenciais desdobramentos sobre a segurança interna do bloco.",
       "categoria": "Geopolitica_Relacoes",
-      "paises_envolvidos": [
-        "EU",
-        "RU",
-        "DK",
-        "US",
-        "UA"
-      ],
-      "urgencia_score": 91,
-      "relevancia_score": 89,
-      "nivel_confianca": "alta",
       "ttl_horas": 18,
-      "horas_em_destaque": 12,
-      "veiculos_origem": [
-        "Comissão Europeia (Press Corner)",
-        "The Moscow Times"
-      ],
+      "expires_at": "2026-11-22T03:44:23Z",
+      "updated_at": "2026-11-21T09:44:23Z",
       "fontes_urls": [
         "https://ec.europa.eu/commission/presscorner/detail/en/statement_26_2556",
         "https://www.themoscowtimes.com/2026/11/21/von-der-leyen-condemns-russian-plot-to-assassinate-us-ukrainian-in-denmark-a94339"
       ],
+      "resumo_pulso": "Conforme comunicado oficial da Comissão Europeia e reportagens do The Moscow Times, a presidente Ursula von der Leyen condenou fortemente uma tentativa de assassinato contra um cidadão norte-americano-ucraniano em solo dinamarquês. O ato foi apontado pelas autoridades europeias como uma agressão direta coordenada pelos serviços de inteligência russos.",
+      "titulo_curto": "União Europeia condena plano de assassinato orquestrado pela Rússia na Dinamarca",
       "palavras_chave": [
         "União Europeia",
         "Rússia",
@@ -917,38 +1014,42 @@
         "Segurança",
         "Espionagem"
       ],
+      "urgencia_score": 91,
       "data_publicacao": "2026-11-21T09:15:19Z",
+      "impacto_pratico": "Elevação das tensões diplomáticas entre a União Europeia e Moscou, com potenciais desdobramentos sobre a segurança interna do bloco.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Comissão Europeia (Press Corner)",
+        "The Moscow Times"
+      ],
+      "relevancia_score": 89,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "EU",
+        "RU",
+        "DK",
+        "US",
+        "UA"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "Repercussão internacional das eleições americanas redesenha alianças diplomáticas",
           "url_existente": "https://www.rodandoomundo.com.br/eleicoes",
-          "motivo_conexao": "Analisa o impacto de crises internacionais nas alianças estratégicas globais."
+          "motivo_conexao": "Analisa o impacto de crises internacionais nas alianças estratégicas globais.",
+          "titulo_existente": "Repercussão internacional das eleições americanas redesenha alianças diplomáticas"
         }
-      ],
-      "expires_at": "2026-11-22T03:44:23Z",
-      "updated_at": "2026-11-21T09:44:23Z"
+      ]
     },
     {
       "slug": "brasil-eua-diplomacia-vistos-lula-trump",
-      "titulo_curto": "Governos de Brasil e EUA buscam superar impasse na emissão de vistos diplomáticos",
-      "resumo_pulso": "Segundo apuração da BBC News Brasil, as administrações de Lula e Donald Trump articulam entendimentos para encerrar o atrito em torno da liberação de vistos para diplomatas. De um lado, Washington busca aval para seu indicado à embaixada no Brasil; do outro, Brasília cobra a normalização da situação de sua embaixadora em solo americano.",
-      "impacto_pratico": "Possibilidade de normalização do canal de diálogo direto em nível de embaixadas entre o Brasil e os Estados Unidos.",
       "categoria": "Geopolitica_Relacoes",
-      "paises_envolvidos": [
-        "BR",
-        "US"
-      ],
-      "urgencia_score": 88,
-      "relevancia_score": 90,
-      "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 12,
-      "veiculos_origem": [
-        "BBC News Brasil"
-      ],
+      "expires_at": "2026-11-22T09:44:23Z",
+      "updated_at": "2026-11-21T09:44:23Z",
       "fontes_urls": [
         "https://www.bbc.com/portuguese/articles/cwz0k3r4npexo?at_medium=RSS&at_campaign=rss"
       ],
+      "resumo_pulso": "Segundo apuração da BBC News Brasil, as administrações de Lula e Donald Trump articulam entendimentos para encerrar o atrito em torno da liberação de vistos para diplomatas. De um lado, Washington busca aval para seu indicado à embaixada no Brasil; do outro, Brasília cobra a normalização da situação de sua embaixadora em solo americano.",
+      "titulo_curto": "Governos de Brasil e EUA buscam superar impasse na emissão de vistos diplomáticos",
       "palavras_chave": [
         "Brasil",
         "Estados Unidos",
@@ -957,37 +1058,38 @@
         "Lula",
         "Trump"
       ],
+      "urgencia_score": 88,
       "data_publicacao": "2026-11-21T09:01:48Z",
+      "impacto_pratico": "Possibilidade de normalização do canal de diálogo direto em nível de embaixadas entre o Brasil e os Estados Unidos.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "BBC News Brasil"
+      ],
+      "relevancia_score": 90,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "BR",
+        "US"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "Casa Branca anuncia novos nomes para o gabinete e detalha prioridades em imigração e comércio",
           "url_existente": "https://www.rodandoomundo.com.br/politica/estados-unidos",
-          "motivo_conexao": "Acompanha as diretrizes e articulações da administração norte-americana com parceiros internacionais."
+          "motivo_conexao": "Acompanha as diretrizes e articulações da administração norte-americana com parceiros internacionais.",
+          "titulo_existente": "Casa Branca anuncia novos nomes para o gabinete e detalha prioridades em imigração e comércio"
         }
-      ],
-      "expires_at": "2026-11-22T09:44:23Z",
-      "updated_at": "2026-11-21T09:44:23Z"
+      ]
     },
     {
       "slug": "intoxicacao-por-alcool-adulterado-mata-11-na-india",
-      "titulo_curto": "Consumo de álcool adulterado causa dezenas de intoxicações e mortes na Índia",
-      "resumo_pulso": "Conforme noticiado pela Al Jazeera English, pelo menos 11 pessoas morreram e cerca de 180 foram hospitalizadas após consumirem bebidas alcoólicas adulteradas no estado de Manipur, no nordeste da Índia. O governo local determinou a abertura imediata de investigação criminal para responsabilizar os envolvidos na fabricação e distribuição.",
-      "impacto_pratico": "Alerta de saúde pública regional sobre a comercialização de produtos clandestinos e endurecimento da fiscalização sanitária.",
       "categoria": "Sociedade_Cultura",
-      "paises_envolvidos": [
-        "IN"
-      ],
-      "urgencia_score": 84,
-      "relevancia_score": 80,
-      "nivel_confianca": "alta",
       "ttl_horas": 12,
-      "horas_em_destaque": 6,
-      "veiculos_origem": [
-        "Al Jazeera English"
-      ],
+      "expires_at": "2026-11-21T21:44:23Z",
+      "updated_at": "2026-11-21T09:44:23Z",
       "fontes_urls": [
         "https://www.aljazeera.com/news/2026/11/21/suspected-toxic-alcohol-kills-at-least-11-people-in-northeast-india?traffic_source=rss"
       ],
+      "resumo_pulso": "Conforme noticiado pela Al Jazeera English, pelo menos 11 pessoas morreram e cerca de 180 foram hospitalizadas após consumirem bebidas alcoólicas adulteradas no estado de Manipur, no nordeste da Índia. O governo local determinou a abertura imediata de investigação criminal para responsabilizar os envolvidos na fabricação e distribuição.",
+      "titulo_curto": "Consumo de álcool adulterado causa dezenas de intoxicações e mortes na Índia",
       "palavras_chave": [
         "Índia",
         "Manipur",
@@ -995,10 +1097,19 @@
         "Saúde Pública",
         "Segurança"
       ],
+      "urgencia_score": 84,
       "data_publicacao": "2026-11-21T08:48:54Z",
-      "links_internos_relacionados": [],
-      "expires_at": "2026-11-21T21:44:23Z",
-      "updated_at": "2026-11-21T09:44:23Z"
+      "impacto_pratico": "Alerta de saúde pública regional sobre a comercialização de produtos clandestinos e endurecimento da fiscalização sanitária.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Al Jazeera English"
+      ],
+      "relevancia_score": 80,
+      "horas_em_destaque": 6,
+      "paises_envolvidos": [
+        "IN"
+      ],
+      "links_internos_relacionados": []
     },
     {
       "slug": "morre-phumzile-mlambo-ngcuka-1a-mulher-vice-da-africa-do-sul",
@@ -1104,27 +1215,16 @@
     },
     {
       "slug": "ataque-russo-com-drones-e-incendio-em-dnipropetrovsk",
-      "titulo_curto": "Ataque massivo russo na Ucrânia eleva número de feridos para 60 em Kryvyi Rih",
-      "resumo_pulso": "Segundo relatórios atualizados da Ukrinform e da Kyiv Independent, o número de feridos nos ataques russos recentes contra Kryvyi Rih subiu para 60, com dezenas de pessoas hospitalizadas. As ofensivas atingiram infraestruturas civis e energéticas em meio a disparos de mísseis balísticos e drones.",
-      "impacto_pratico": "Aprofundamento da crise humanitária na Ucrânia e sobrecarga contínua dos serviços de emergência e hospitais locais.",
       "categoria": "Geopolitica_Relacoes",
-      "paises_envolvidos": [
-        "UA",
-        "RU"
-      ],
-      "urgencia_score": 95,
-      "relevancia_score": 92,
-      "nivel_confianca": "alta",
       "ttl_horas": 12,
-      "horas_em_destaque": 6,
-      "veiculos_origem": [
-        "Ukrinform",
-        "Kyiv Independent"
-      ],
+      "expires_at": "2026-11-21T19:45:41Z",
+      "updated_at": "2026-11-21T09:44:23Z",
       "fontes_urls": [
         "https://www.ukrinform.net/rubric-ato/4187086-injury-toll-in-russian-attacks-on-kryvyi-rih-rises-to-60.html",
         "https://kyivindependent.com/russian-attacks-kill-at-least-2-injure-83-across-ukraine-as-strikes-devastate-kryvyi-rih/"
       ],
+      "resumo_pulso": "Segundo relatórios atualizados da Ukrinform e da Kyiv Independent, o número de feridos nos ataques russos recentes contra Kryvyi Rih subiu para 60, com dezenas de pessoas hospitalizadas. As ofensivas atingiram infraestruturas civis e energéticas em meio a disparos de mísseis balísticos e drones.",
+      "titulo_curto": "Ataque massivo russo na Ucrânia eleva número de feridos para 60 em Kryvyi Rih",
       "palavras_chave": [
         "Ucrânia",
         "Rússia",
@@ -1132,16 +1232,27 @@
         "Ataque aéreo",
         "Guerra"
       ],
+      "urgencia_score": 95,
       "data_publicacao": "2026-11-21T07:17:00Z",
+      "impacto_pratico": "Aprofundamento da crise humanitária na Ucrânia e sobrecarga contínua dos serviços de emergência e hospitais locais.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Ukrinform",
+        "Kyiv Independent"
+      ],
+      "relevancia_score": 92,
+      "horas_em_destaque": 6,
+      "paises_envolvidos": [
+        "UA",
+        "RU"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "O que é uma sanção internacional?",
           "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-sancao-internacional",
-          "motivo_conexao": "Contextualiza as medidas econômicas e diplomáticas adotadas por aliados em resposta ao conflito na Ucrânia."
+          "motivo_conexao": "Contextualiza as medidas econômicas e diplomáticas adotadas por aliados em resposta ao conflito na Ucrânia.",
+          "titulo_existente": "O que é uma sanção internacional?"
         }
-      ],
-      "expires_at": "2026-11-21T19:45:41Z",
-      "updated_at": "2026-11-21T09:44:23Z"
+      ]
     },
     {
       "slug": "ira-envia-convoy-petroleiros-desafiar-bloqueio-eua",
@@ -1620,111 +1731,6 @@
           "motivo_conexao": "Conecta as decisões da administração americana sobre imigração e segurança de fronteiras.",
           "titulo_existente": "Casa Branca anuncia novos nomes para o gabinete e detalha prioridades em imigração e comércio"
         }
-      ]
-    }
-  ],
-  "temas_curadoria": [
-    {
-      "slug": "guerra-ucrania-ataques-massivos-drones-infraestrutura",
-      "status": "novo",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-22T07:27:19Z",
-      "updated_at": "2026-11-21T07:27:19Z",
-      "titulo_tema": "Escalada de ataques com drones e mísseis contra infraestrutura na Ucrânia",
-      "sintese_nerd": "A intensificação dos bombardeios noturnos russos contra redes elétricas e regiões ucranianas pressiona a resiliência energética do país e eleva o risco geopolítico na Europa. O encarecimento de commodities e o temor de choques de oferta afetam indiretamente as cadeias de suprimentos e os mercados financeiros globais.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-21T07:27:19Z",
-      "gatilho_vitrine": "Monitore os desdobramentos dos ataques massivos russos na Ucrânia e seus impactos nos mercados globais de energia.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 92,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "guerra na ucrânia",
-        "ataques de drones russos",
-        "infraestrutura energética ucrânia",
-        "geopolítica europa",
-        "conflito rússia ucrânia",
-        "sanções e energia"
-      ]
-    },
-    {
-      "slug": "regulamentacao-fim-escala-6x1-brasil",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-23T07:27:19Z",
-      "updated_at": "2026-11-21T07:27:19Z",
-      "titulo_tema": "Regulamentação oficial do fim da escala 6x1 e impactos trabalhistas",
-      "sintese_nerd": "A assinatura do decreto presidencial que regulamenta a transição do fim da escala 6x1 altera profundamente as relações de trabalho e os custos operacionais das empresas no Brasil. A medida exige adaptação imediata do setor produtivo e reconfigura o debate sobre produtividade versus direitos sociais.",
-      "rota_editoria": "/politica",
-      "data_publicacao": "2026-11-21T07:27:19Z",
-      "gatilho_vitrine": "Destaque as novas regras de transição assinadas pelo Executivo após aval do STF e do Congresso sobre a jornada de trabalho.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 89,
-      "categoria_primaria": "Politica",
-      "categorias_cruzadas": [
-        "Economia",
-        "Eleicoes"
-      ],
-      "palavras_chave_busca": [
-        "fim da escala 6x1",
-        "decreto trabalhista lula",
-        "jornada de trabalho stf",
-        "impacto folgas horas extras",
-        "reforma trabalhista brasil"
-      ]
-    },
-    {
-      "slug": "saida-jensen-huang-nvidia-futuro-ia",
-      "status": "novo",
-      "ttl_horas": 72,
-      "expires_at": "2026-11-24T07:27:19Z",
-      "updated_at": "2026-11-21T07:27:19Z",
-      "titulo_tema": "Desdobramentos da saída de Jensen Huang da liderança da Nvidia",
-      "sintese_nerd": "A renúncia de Jensen Huang do comando da Nvidia remove uma figura central na arquitetura do boom atual de inteligência artificial. Isso gera incertezas sobre a governança da empresa mais valiosa do setor e a dinâmica da corrida tecnológica global por semicondutores.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-21T07:27:19Z",
-      "gatilho_vitrine": "Explore como a saída do cofundador da Nvidia impacta o ecossistema global de inteligência artificial e o mercado de chips.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 87,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Geopolitica_Radar",
-        "Cultura"
-      ],
-      "palavras_chave_busca": [
-        "jensen huang nvidia",
-        "futuro da inteligência artificial",
-        "mercado de semicondutores",
-        "ações nvidia ia",
-        "corrida tecnológica eua china"
-      ]
-    },
-    {
-      "slug": "terremoto-magnitude-6-7-peru",
-      "status": "novo",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-22T07:27:19Z",
-      "updated_at": "2026-11-21T07:27:19Z",
-      "titulo_tema": "Terremoto de magnitude 6.7 atinge o Peru e gera alerta regional",
-      "sintese_nerd": "Um forte terremoto de magnitude 6,7 atingiu o Peru, ativando os sistemas de monitoramento de riscos geológicos na cordilheira dos Andes. O evento lembra a vulnerabilidade estrutural da região andina e mobiliza agências de defesa civil locais.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-21T07:27:19Z",
-      "gatilho_vitrine": "Acompanhe os boletins de danos e os protocolos de segurança acionados pelas autoridades peruanas após forte abalo sísmico.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 85,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "terremoto no peru hoje",
-        "sismo magnitude 6.7 peru",
-        "defesa civil peru tremor",
-        "atividade sísmica américa do sul"
       ]
     }
   ]
