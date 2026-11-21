@@ -39,6 +39,7 @@ from .schemas import (
     NoticiaQuenteItem,
     PayloadNoticiasQuentes,
 )
+from src.notifier import notificar_aprovacao_admin_discord
 
 PROMPTS_DIR = Path(__file__).resolve().parent / "prompts"
 PROMPT_0_PATH = PROMPTS_DIR / "prompt_0_pulso_noticias_quentes.md"
@@ -953,7 +954,8 @@ ON CONFLICT (slug) DO UPDATE SET
           OR ai_noticias_quentes.resumo_pulso IS DISTINCT FROM EXCLUDED.resumo_pulso
         THEN EXCLUDED.updated_at
         ELSE ai_noticias_quentes.updated_at
-    END;
+    END
+RETURNING (xmax = 0) AS inserido, created_at;
 """
 
 
@@ -972,6 +974,7 @@ def executar_upsert_noticias_quentes(
     """Executa UPSERT de cada `NoticiaQuenteItem` em `ai_noticias_quentes` calculando `expires_at` via `ttl_horas`."""
     ref_time = agora or datetime.now(timezone.utc)
     salvos = 0
+    notificacoes: List[Dict[str, Any]] = []
 
     with conn.cursor() as cur:
         # Garante compatibilidade caso a tabela já exista sem as colunas ttl_horas ou data_publicacao
@@ -1021,6 +1024,16 @@ def executar_upsert_noticias_quentes(
                 "updated_at": ref_time,
             }
             cur.execute(UPSERT_NOTICIA_QUENTE_SQL, params)
+            upsert_row = cur.fetchone()
+            if isinstance(upsert_row, dict):
+                noticia_nova = bool(upsert_row.get("inserido"))
+                chegou_em_banco = upsert_row.get("created_at")
+            elif upsert_row:
+                noticia_nova = bool(upsert_row[0])
+                chegou_em_banco = upsert_row[1] if len(upsert_row) > 1 else None
+            else:
+                noticia_nova = False
+                chegou_em_banco = None
 
             # Alimenta também ai_eventos + ai_conteudos_gerados para a Fila de Eventos e Atlas V2
             status_evento = "publicado" if status_inicial == "ativo" else "aguardando_revisao"
@@ -1100,7 +1113,40 @@ def executar_upsert_noticias_quentes(
 
             salvos += 1
 
+            if noticia_nova and status_inicial != "ativo":
+                detalhes = " · ".join(
+                    parte
+                    for parte in (
+                        f"urgência: {item.urgencia_score}/100",
+                        f"relevância: {item.relevancia_score}/100",
+                        f"confiança: {item.nivel_confianca}",
+                        f"impacto: {item.impacto_pratico}" if item.impacto_pratico else "",
+                    )
+                    if parte
+                )
+                notificacoes.append(
+                    {
+                        "titulo": item.titulo_curto,
+                        "breve": item.resumo_pulso,
+                        "destino": "Notícias Quentes + Radar · Eventos (ambos)",
+                        "detalhes": detalhes or None,
+                        "origem_pesquisa": (
+                            f"Gemini ({payload.model_id or MODELO_PULSO}) · "
+                            "coleta de feeds de pulso (30 min)"
+                        ),
+                        "categoria": item.categoria,
+                        "fontes": list(item.veiculos_origem) or None,
+                        "url_fonte": (list(item.fontes_urls)[0] if item.fontes_urls else None),
+                        "chegou_em": chegou_em_banco or ref_time,
+                        "publicado_em": item.data_publicacao,
+                    }
+                )
+
     conn.commit()
+
+    for dados in notificacoes:
+        notificar_aprovacao_admin_discord(**dados)
+
     return salvos
 
 

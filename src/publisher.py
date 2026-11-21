@@ -529,6 +529,15 @@ def gerar_slug_card(card: Dict[str, Any]) -> str:
     return f"card-{os.urandom(4).hex()}"
 
 
+def _nivel_relevancia_do_card(card: Dict[str, Any]) -> int:
+    """Nível de relevância do Radar (1–5). Cards sem nível definido usam o padrão 3 (neutro)."""
+    try:
+        nivel = int(card.get("nivel_relevancia") or 3)
+    except (TypeError, ValueError):
+        nivel = 3
+    return max(1, min(5, nivel))
+
+
 def normalizar_card_manual(card: Dict[str, Any]) -> Dict[str, Any]:
     """Normaliza um card manual (origem administrativa) para o contrato do Radar.
 
@@ -552,6 +561,7 @@ def normalizar_card_manual(card: Dict[str, Any]) -> Dict[str, Any]:
         "fonte_url": str(card.get("fonte_url") or "/radar").strip(),
         "data_publicacao": str(card.get("data_publicacao") or card.get("publicado_em") or card.get("created_at") or agora_iso),
         "urgencia_score": int(card.get("urgencia_score") or 80),
+        "nivel_relevancia": _nivel_relevancia_do_card(card),
         "fixado": bool(card.get("fixado") or int(card.get("urgencia_score") or 0) >= 95),
         "paises_envolvidos": [
             str(p).strip().upper()
@@ -592,7 +602,10 @@ def listar_todos_cards_radar(max_items: int = 100) -> List[Dict[str, Any]]:
             or ""
         )
         eh_manual = _eh_card_manual(c)
+        eh_video = _eh_video_card(c)
         urgencia = int(c.get("urgencia_score") or (80 if eh_manual else 70))
+        origem_nome = "manual" if eh_manual else ("video" if eh_video else "rss")
+        formato_val = "video" if eh_video else str(c.get("formato") or "materia").lower()
         cards_norm.append({
             "id": str(c.get("id") or f"feed-{slug}"),
             "slug": slug,
@@ -602,13 +615,16 @@ def listar_todos_cards_radar(max_items: int = 100) -> List[Dict[str, Any]]:
             "categoria": str(c.get("categoria") or "geral").strip().lower(),
             "fonte_nome": str(c.get("fonte_nome") or ("Síntese Manual" if eh_manual else "Radar Editorial")).strip(),
             "fonte_url": str(c.get("fonte_url") or "/radar").strip(),
+            "formato": formato_val,
             "data_publicacao": data_pub,
             "urgencia_score": urgencia,
+            "nivel_relevancia": _nivel_relevancia_do_card(c),
             "fixado": bool(c.get("fixado") or urgencia >= 95),
             "paises_envolvidos": list(c.get("paises_envolvidos") or ([c.get("pais_regiao")] if c.get("pais_regiao") else [])),
             "palavras_chave": list(c.get("palavras_chave") or []),
-            "origem": "manual" if eh_manual else "rss",
+            "origem": origem_nome,
             "origem_manual": eh_manual,
+            "origem_video": eh_video,
             "origem_v2": False,
         })
     cards_norm.sort(key=_timestamp_publicacao, reverse=True)
@@ -691,6 +707,13 @@ def atualizar_card_radar(slug_or_id: str, updates: Dict[str, Any], max_items: in
             mudancas["categoria"] = str(updates.get("categoria")).strip().lower()
         if updates.get("urgencia_score") is not None:
             mudancas["urgencia_score"] = int(updates.get("urgencia_score"))
+        if updates.get("nivel_relevancia") is not None:
+            try:
+                nivel_relevancia = int(updates.get("nivel_relevancia"))
+            except (TypeError, ValueError):
+                nivel_relevancia = None
+            if nivel_relevancia is not None:
+                mudancas["nivel_relevancia"] = max(1, min(5, nivel_relevancia))
         if updates.get("fonte_nome") is not None:
             mudancas["fonte_nome"] = str(updates.get("fonte_nome")).strip()
         if updates.get("fonte_url") is not None:

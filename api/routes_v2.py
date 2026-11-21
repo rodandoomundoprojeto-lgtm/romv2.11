@@ -45,7 +45,9 @@ from redacao_v2.schemas import (
     EvidenciaResolvidaPublica,
     PainelVerificacaoEvento,
 )
+from src.notifier import notificar_aprovacao_admin_discord
 from src.publisher import (
+    _eh_video_card,
     _ler_feed_existente,
     _timestamp_publicacao,
     atualizar_card_manual,
@@ -296,6 +298,15 @@ class ExecutarDdgRequest(BaseModel):
     dry_run: bool = Field(
         default=False,
         description="Se True, retorna os resultados sem sobrescrever data/noticias_ddg.json",
+    )
+
+
+class ExecutarYoutubeBotRequest(BaseModel):
+    """Parâmetros opcionais para disparo do Bot de Vídeos do YouTube RSS."""
+    max_por_canal: int = Field(default=3, ge=1, le=10, description="Máximo de vídeos por canal")
+    dry_run: bool = Field(
+        default=False,
+        description="Se True, executa a varredura sem salvar em data/noticias_youtube.json",
     )
 
 
@@ -2190,6 +2201,10 @@ class AdminRadarManualCreateRequest(BaseModel):
     coordenadas_geojson: Optional[Dict[str, Any]] = None
     data_publicacao: Optional[str] = Field(default=None, max_length=40)
     origem_manual: Optional[bool] = Field(default=True)
+    nivel_relevancia: Optional[int] = Field(
+        default=None, ge=1, le=5,
+        description="Nível de relevância do Radar (1–5); omitido = padrão 3 (neutro)",
+    )
 
 
 class AdminRadarManualUpdateRequest(BaseModel):
@@ -2205,6 +2220,10 @@ class AdminRadarManualUpdateRequest(BaseModel):
     palavras_chave: Optional[List[str]] = Field(default=None, max_length=20)
     data_publicacao: Optional[str] = Field(default=None, max_length=40)
     fixado: Optional[bool] = None
+    nivel_relevancia: Optional[int] = Field(
+        default=None, ge=1, le=5,
+        description="Nível de relevância do Radar (1–5); 1 = mais fraco, 5 = mais relevante",
+    )
 
 
 class AdminNoticiasQuentesUpdateRequest(BaseModel):
@@ -2381,6 +2400,62 @@ async def admin_status_bot_ddg(response: Response) -> Dict[str, Any]:
     }
 
 
+@router.get("/v2/admin/bot/youtube/status", dependencies=[Depends(verificar_admin_token)])
+async def admin_status_bot_youtube(response: Response) -> Dict[str, Any]:
+    """Retorna o status atual do Bot de Vídeos do YouTube RSS e amostra de `data/noticias_youtube.json`."""
+    aplicar_no_cache_headers(response)
+    from scripts.youtube_feeder import carregar_canais_youtube
+
+    raiz = Path(__file__).resolve().parents[1]
+    yt_file = raiz / "data" / "noticias_youtube.json"
+
+    canais = carregar_canais_youtube()
+    status_arquivo: Dict[str, Any] = {
+        "existe": False,
+        "atualizadoEm": None,
+        "idade_minutos": None,
+        "total_itens": 0,
+        "canais_configurados": len(canais),
+        "amostra_itens": [],
+    }
+
+    if yt_file.is_file():
+        try:
+            dados = json.loads(yt_file.read_text(encoding="utf-8"))
+            if isinstance(dados, dict):
+                items = dados.get("items") or []
+                status_arquivo["existe"] = True
+                status_arquivo["atualizadoEm"] = dados.get("atualizadoEm")
+                status_arquivo["total_itens"] = len(items)
+
+                if dados.get("atualizadoEm"):
+                    try:
+                        dt = datetime.fromisoformat(dados["atualizadoEm"].replace("Z", "+00:00"))
+                        idade = int((datetime.now(timezone.utc) - dt).total_seconds() / 60)
+                        status_arquivo["idade_minutos"] = max(0, idade)
+                    except Exception:
+                        pass
+
+                status_arquivo["amostra_itens"] = [
+                    {
+                        "titulo": str(it.get("titulo") or "")[:90],
+                        "canal": it.get("canal") or it.get("fonte_nome") or "YouTube",
+                        "url": it.get("fonte_url") or it.get("url") or "",
+                        "data_publicacao": it.get("data_publicacao"),
+                    }
+                    for it in items[:6]
+                    if isinstance(it, dict)
+                ]
+        except Exception:
+            pass
+
+    return {
+        "ok": True,
+        "canais_configurados": len(canais),
+        "arquivo": status_arquivo,
+    }
+
+
 def _gerar_slug_ddg_deterministico(titulo: str, url: str) -> str:
     """Gera slug determinístico `ddg-<slug_limpo>-<hash8_url>` (máx. 200 chars)."""
     normalizado = unicodedata.normalize("NFKD", titulo or "").encode("ascii", "ignore").decode("ascii")
@@ -2413,6 +2488,8 @@ def _enfileirar_itens_ddg_eventos(
                 continue
 
             slug = _gerar_slug_ddg_deterministico(titulo, url)
+            cur.execute("SELECT 1 FROM ai_eventos WHERE slug = %s", (slug,))
+            evento_novo = cur.fetchone() is None
             resumo = str(item.get("resumo") or titulo).strip()
             fonte = str(item.get("fonte") or "DuckDuckGo News").strip()[:80]
             categoria = str(item.get("categoriaRadar") or item.get("categoria") or "geopolitica").strip()[:50]
@@ -2444,7 +2521,7 @@ def _enfileirar_itens_ddg_eventos(
                     urgencia_score = EXCLUDED.urgencia_score,
                     relevancia_score = EXCLUDED.relevancia_score,
                     updated_at = EXCLUDED.updated_at
-                RETURNING id;
+                RETURNING id, created_at;
                 """,
                 (
                     slug,
@@ -2461,6 +2538,11 @@ def _enfileirar_itens_ddg_eventos(
             if not ev_row:
                 continue
             ev_id = ev_row["id"] if isinstance(ev_row, dict) else ev_row[0]
+            ev_created_at = (
+                ev_row.get("created_at")
+                if isinstance(ev_row, dict)
+                else (ev_row[1] if len(ev_row) > 1 else None)
+            )
 
             cur.execute(
                 "SELECT 1 FROM ai_conteudos_gerados WHERE event_id = %s LIMIT 1;",
@@ -2488,6 +2570,22 @@ def _enfileirar_itens_ddg_eventos(
                 )
 
             enfileirados += 1
+            if evento_novo:
+                notificar_aprovacao_admin_discord(
+                    titulo,
+                    resumo,
+                    destino="Radar · Eventos (fila de revisão do Admin)",
+                    origem_pesquisa=f"{fonte} · coleta automatizada DuckDuckGo News",
+                    categoria=categoria,
+                    fontes=[fonte] if fonte else None,
+                    url_fonte=url,
+                    chegou_em=ev_created_at or ref,
+                    publicado_em=(
+                        item.get("publicadoEm")
+                        or item.get("data_publicacao")
+                        or item.get("published_at")
+                    ),
+                )
 
     if hasattr(conn, "commit"):
         conn.commit()
@@ -2581,6 +2679,28 @@ async def admin_executar_bot_ddg(
         "ultimaQuery": resultado.get("ultimaQuery"),
         "items": itens_coletados,
     }
+
+
+@router.post("/v2/admin/bot/youtube/executar", dependencies=[Depends(verificar_admin_token)])
+async def admin_executar_bot_youtube(
+    response: Response,
+    payload_req: Optional[ExecutarYoutubeBotRequest] = Body(default=None),
+) -> Dict[str, Any]:
+    """Dispara a varredura rápida de canais de vídeo do YouTube RSS e atualiza data/noticias_youtube.json."""
+    import asyncio
+    from scripts.youtube_feeder import executar_bot_youtube
+
+    aplicar_no_cache_headers(response)
+    req = payload_req or ExecutarYoutubeBotRequest()
+    try:
+        resultado = await asyncio.to_thread(
+            executar_bot_youtube,
+            max_por_canal=req.max_por_canal,
+            dry_run=req.dry_run,
+        )
+        return resultado
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=f"Falha ao executar Bot de Vídeos do YouTube: {exc}")
 
 
 def _coletar_fontes_codigo() -> List[Dict[str, Any]]:
@@ -2889,6 +3009,31 @@ def admin_criar_fonte(
     fonte = dict(row) if row else {}
     if "created_at" in fonte:
         fonte["created_at"] = _serializar_valor_temporal(fonte["created_at"])
+    if fonte.get("politica_uso_status") != "aprovada":
+        tipo_fonte = str(fonte.get("tipo_fonte") or "").strip()
+        cadencia = str(fonte.get("cadencia") or "").strip()
+        peso = fonte.get("peso_confianca")
+        detalhes = " · ".join(
+            parte
+            for parte in (
+                f"tipo: {tipo_fonte}" if tipo_fonte else "",
+                f"cadência: {cadencia}" if cadencia else "",
+                f"confiança: {peso}/5" if peso else "",
+            )
+            if parte
+        )
+        notificar_aprovacao_admin_discord(
+            str(fonte.get("nome") or "").strip(),
+            "Nova fonte cadastrada e aguardando aprovação da política de uso "
+            "antes de ser liberada para coleta.",
+            destino="Curadoria · Fontes de referência",
+            detalhes=detalhes or None,
+            origem_pesquisa="Cadastro no painel Admin (manual ou sugestão de IA)",
+            categoria=tipo_fonte or None,
+            fontes=[str(fonte.get("nome") or "").strip()] if fonte.get("nome") else None,
+            url_fonte=str(fonte.get("url") or "").strip() or None,
+            chegou_em=fonte.get("created_at"),
+        )
     return {"ok": True, "fonte": fonte}
 
 
@@ -3639,10 +3784,55 @@ def admin_listar_radar_feed(
         except Exception:
             pass
 
-    todos_candidatos = sorted(itens_ddg + itens_v2 + cards_feed, key=_timestamp_publicacao, reverse=True)
+    # Integração do Bot de Vídeos do YouTube RSS (noticias_youtube.json)
+    itens_youtube: List[Dict[str, Any]] = []
+    yt_path = raiz / "data" / "noticias_youtube.json"
+    if yt_path.is_file():
+        try:
+            yt_raw = json.loads(yt_path.read_text(encoding="utf-8"))
+            if isinstance(yt_raw, dict):
+                for idx_y, y in enumerate(yt_raw.get("items") or [], start=1):
+                    if not isinstance(y, dict):
+                        continue
+                    titulo_y = str(y.get("titulo") or "").strip()
+                    if not titulo_y:
+                        continue
+                    resumo_y = str(y.get("resumo") or "").strip()
+                    canal_y = str(y.get("canal") or y.get("fonte_nome") or "YouTube").strip()
+                    url_y = str(y.get("fonte_url") or y.get("url") or "/radar").strip()
+                    paises_y = list(y.get("paises_envolvidos") or ["BR"])
+                    cat_radar = str(y.get("categoria") or "geopolitica").lower()
+                    data_pub_y = str(y.get("data_publicacao") or y.get("published_at") or yt_raw.get("atualizadoEm") or "")
+                    vid_slug = str(y.get("slug") or y.get("video_id") or f"yt-{idx_y}")
+                    thumb_y = str(y.get("thumbnail") or y.get("imagem_url") or "")
+                    itens_youtube.append({
+                        "id": f"yt-{vid_slug}",
+                        "slug": vid_slug,
+                        "titulo": titulo_y,
+                        "resumo": resumo_y,
+                        "analise": resumo_y,
+                        "categoria": cat_radar,
+                        "fonte_nome": canal_y,
+                        "fonte_url": url_y,
+                        "thumbnail": thumb_y,
+                        "formato": "video",
+                        "data_publicacao": data_pub_y,
+                        "urgencia_score": int(y.get("urgencia_score") or 78),
+                        "fixado": False,
+                        "paises_envolvidos": paises_y,
+                        "palavras_chave": [canal_y, "youtube", "video"],
+                        "origem": "video",
+                        "origem_video": True,
+                        "origem_manual": False,
+                        "origem_v2": False,
+                    })
+        except Exception:
+            pass
+
+    todos_candidatos = sorted(itens_youtube + itens_ddg + itens_v2 + cards_feed, key=_timestamp_publicacao, reverse=True)
     titulos_vistos = set()
     combinados: List[Dict[str, Any]] = []
-    contadores = {"total": 0, "manuais": 0, "rss": 0, "pulso_v2": 0, "ddg_news": 0}
+    contadores = {"total": 0, "manuais": 0, "rss": 0, "pulso_v2": 0, "ddg_news": 0, "video": 0}
 
     for item in todos_candidatos:
         tit_norm = normalizar_fonte_key(item.get("titulo"))
@@ -3650,12 +3840,23 @@ def admin_listar_radar_feed(
             continue
         titulos_vistos.add(tit_norm)
         orig = item.get("origem") or ("manual" if item.get("origem_manual") else "rss")
+        eh_vid = (
+            orig == "video"
+            or str(item.get("formato") or "").lower() == "video"
+            or bool(item.get("origem_video"))
+            or _eh_video_card(item)
+        )
         if orig == "manual":
             contadores["manuais"] += 1
         elif orig == "pulso_v2":
             contadores["pulso_v2"] += 1
         elif orig == "ddg_news":
             contadores["ddg_news"] += 1
+        elif eh_vid:
+            item["origem"] = "video"
+            item["origem_video"] = True
+            item["formato"] = "video"
+            contadores["video"] += 1
         else:
             contadores["rss"] += 1
         combinados.append(item)
@@ -3670,7 +3871,13 @@ def admin_listar_radar_feed(
 
     if origem_str and origem_str.lower() not in ("todos", "all"):
         orig_alvo = origem_str.lower().strip()
-        resultado = [c for c in resultado if c.get("origem") == orig_alvo]
+        if orig_alvo in ("video", "videos", "youtube"):
+            resultado = [
+                c for c in resultado
+                if c.get("origem") == "video" or str(c.get("formato") or "").lower() == "video" or c.get("origem_video")
+            ]
+        else:
+            resultado = [c for c in resultado if c.get("origem") == orig_alvo]
     if categoria_str and categoria_str.lower() not in ("todas", "all"):
         cat_alvo = categoria_str.lower().strip()
         resultado = [c for c in resultado if str(c.get("categoria") or "").lower() == cat_alvo]
@@ -3853,6 +4060,7 @@ def admin_criar_radar_manual(
         "coordenadas_geojson": payload.coordenadas_geojson,
         "data_publicacao": payload.data_publicacao,
         "origem_manual": payload.origem_manual,
+        "nivel_relevancia": payload.nivel_relevancia,
     }
     card = publicar_card_manual(card_in)
     feed = _ler_feed_existente()

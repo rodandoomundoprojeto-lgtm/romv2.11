@@ -74,6 +74,20 @@ function timestampPublicacao(item) {
   return Number.isNaN(t) ? 0 : t;
 }
 
+function nivelRelevanciaValido(item) {
+  const nivel = Number(item && item.nivel_relevancia);
+  if (Number.isFinite(nivel)) {
+    return Math.min(5, Math.max(1, nivel));
+  }
+  return 3;
+}
+
+function prioridadeParaOrdenacao(item) {
+  const urgencia = Number(item && item.urgencia_score) || 0;
+  const nivel = nivelRelevanciaValido(item);
+  return urgencia * (nivel / 3);
+}
+
 export function sortirCardsRodizioAmplo(itens, maxV2Topo = 2) {
   const validItens = (itens || []).filter((it) => it && typeof it === 'object');
   if (validItens.length === 0) return [];
@@ -83,10 +97,10 @@ export function sortirCardsRodizioAmplo(itens, maxV2Topo = 2) {
     const tb = timestampPublicacao(b);
     if (ta > 0 && tb > 0) {
       if (tb !== ta) return tb - ta;
-      return Number(b.urgencia_score || 0) - Number(a.urgencia_score || 0);
+      return prioridadeParaOrdenacao(b) - prioridadeParaOrdenacao(a);
     }
     if (ta !== tb) return ta > 0 ? -1 : 1;
-    return Number(b.urgencia_score || 0) - Number(a.urgencia_score || 0);
+    return prioridadeParaOrdenacao(b) - prioridadeParaOrdenacao(a);
   });
 
   const newestTs = timestampPublicacao(ordenados[0]);
@@ -396,6 +410,7 @@ function mapearItemV2ParaRadar(item) {
     data_publicacao: dataPubOrig,
     origem_v2: true,
     urgencia_score: score,
+    nivel_relevancia: nivelRelevanciaValido(item),
     paises_envolvidos: paises,
     palavras_chave: kws,
   };
@@ -408,9 +423,10 @@ export async function onRequestGet(context) {
   const categoriaFiltro = normalizar(url.searchParams.get('categoria') || 'todos');
 
   try {
-    const [vitrineRes, feedRes] = await Promise.all([
+    const [vitrineRes, feedRes, ytData] = await Promise.all([
       carregarEstadoOuAssetRadar('vitrine_ia', 'data/vitrine_ia.json', request, env, isRefresh),
       carregarEstadoOuAssetRadar('feed_output', 'data/feed_output.json', request, env, isRefresh),
+      carregarAssetJson('data/noticias_youtube.json', request, env),
     ]);
 
     const vitrineSnap = vitrineRes.data;
@@ -447,10 +463,11 @@ export async function onRequestGet(context) {
               categoria: normalizar(card.categoria || 'geopolitica') || 'geopolitica',
               fonte_nome: card.fonte_nome || 'Radar Editorial',
               fonte_url: card.fonte_url || '/radar',
-              formato: detectarFormatoRadar(card.fonte_url, card.fonte_nome),
+              formato: card.formato === 'video' ? 'video' : detectarFormatoRadar(card.fonte_url, card.fonte_nome),
               data_publicacao: dataPub,
               origem_v2: false,
               urgencia_score: Number(card.urgencia_score || 70),
+              nivel_relevancia: nivelRelevanciaValido(card),
               paises_envolvidos: Array.isArray(card.paises_envolvidos)
                 ? card.paises_envolvidos
                 : detectarPaisesNoTexto(textoCard, []),
@@ -459,10 +476,41 @@ export async function onRequestGet(context) {
           })
       : [];
 
+    const cardsYt =
+      ytData && Array.isArray(ytData.items)
+        ? ytData.items
+            .filter((item) => item && typeof item === 'object')
+            .map((item, idx) => {
+              const textoCard = `${item.titulo || ''} ${item.resumo || ''}`;
+              const dataPub = parseTimestampIso(
+                item.data_publicacao || item.published_at || item.publicado_em || ''
+              );
+              return {
+                id: item.id || `yt-${idx + 1}`,
+                slug: item.slug || `yt-${idx + 1}`,
+                titulo: item.titulo || '',
+                resumo: item.resumo || '',
+                analise: item.analise || item.resumo || '',
+                categoria: normalizar(item.categoria || 'geopolitica') || 'geopolitica',
+                fonte_nome: item.fonte_nome || item.canal || 'YouTube',
+                fonte_url: item.fonte_url || item.url || '/radar',
+                formato: 'video',
+                data_publicacao: dataPub,
+                origem_v2: false,
+                urgencia_score: Number(item.urgencia_score || 78),
+                nivel_relevancia: nivelRelevanciaValido(item),
+                paises_envolvidos: Array.isArray(item.paises_envolvidos)
+                  ? item.paises_envolvidos
+                  : detectarPaisesNoTexto(textoCard, []),
+                palavras_chave: Array.isArray(item.palavras_chave) ? item.palavras_chave : ['video', 'youtube'],
+              };
+            })
+        : [];
+
     const titulosVistos = new Set();
     const combinados = [];
 
-    for (const item of [...itensV2, ...cardsFeed]) {
+    for (const item of [...cardsYt, ...itensV2, ...cardsFeed]) {
       const chaveTitulo = normalizar(item.titulo);
       if (!chaveTitulo || titulosVistos.has(chaveTitulo)) continue;
       titulosVistos.add(chaveTitulo);

@@ -422,6 +422,13 @@
       font-weight: 600;
     }
 
+    .badge-video {
+      background: rgba(255, 68, 68, 0.16);
+      color: #ff5555;
+      border-color: rgba(255, 68, 68, 0.45);
+      font-weight: 600;
+    }
+
     .badge-pinned {
       background: rgba(210, 153, 34, 0.18);
       color: #e3b341;
@@ -1358,6 +1365,10 @@
       vertical-align: middle;
     }
 
+    .radar-nivel-select {
+      min-width: 90px;
+    }
+
     .admin-bulk-bar {
       display: none;
       align-items: center;
@@ -1624,6 +1635,50 @@
                     </div>
                   </div>
 
+                  <!-- BOT 4: VÍDEOS DO YOUTUBE RSS -->
+                  <div class="admin-bot-card" style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);padding:var(--space-3);">
+                    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--space-2);">
+                      <div style="font-weight:700;font-size:0.92rem;display:flex;align-items:center;gap:6px;">
+                        <span class="badge badge-video">🎬 YouTube RSS</span>
+                        <span>Bot de Vídeos (YouTube)</span>
+                      </div>
+                      <span id="youtube-status-badge" class="badge" style="font-size:0.75rem;">Verificando...</span>
+                    </div>
+                    <p class="admin-sub" style="font-size:0.8rem;margin-bottom:var(--space-2);" id="youtube-status-desc">
+                      Varredura rápida dos canais analíticos cadastrados via feeds XML oficiais (sem consumo de cota de API).
+                    </p>
+                    <div id="youtube-meta-info" class="admin-sub" style="font-size:0.78rem;background:var(--surface-2);padding:6px 10px;border-radius:var(--radius-sm);margin-bottom:var(--space-2);line-height:1.4;">
+                      <span>Canais: <strong id="youtube-meta-canais">19</strong></span> ·
+                      <span>Vídeos: <strong id="youtube-meta-total">0</strong></span> ·
+                      <span>Última execução: <strong id="youtube-meta-tempo">-</strong></span>
+                    </div>
+                    <div class="admin-controls-row" style="margin-bottom:var(--space-2);">
+                      <div class="admin-field" style="flex:1 1 100%;">
+                        <label for="youtube-max-canal">Vídeos por canal (1 a 5)</label>
+                        <input id="youtube-max-canal" class="admin-input" type="number" min="1" max="5" value="3" />
+                      </div>
+                    </div>
+                    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">
+                      <label class="admin-check-label" for="youtube-dry-run">
+                        <input id="youtube-dry-run" type="checkbox" />
+                        <span style="font-size:0.82rem;"><strong>Dry-run</strong> (sem salvar)</span>
+                      </label>
+                      <div class="admin-actions">
+                        <button id="btn-ver-youtube-payload" class="admin-btn admin-btn-sm" type="button" title="Ver vídeos coletados do YouTube">Ver Dados</button>
+                        <button id="btn-rodar-youtube" class="admin-btn admin-btn-sm admin-btn-primary" type="button">Disparar Varredura de Vídeos</button>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+
+                <!-- Painel expansível de dados do YouTube Feeder -->
+                <div id="youtube-payload-panel" style="display:none;margin-top:var(--space-3);padding:var(--space-3);background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);">
+                  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+                    <strong style="font-size:0.88rem;">Último Payload do Bot de Vídeos (data/noticias_youtube.json)</strong>
+                    <button type="button" id="btn-fechar-youtube-payload" class="admin-btn admin-btn-sm" style="padding:2px 8px;">✕ Fechar</button>
+                  </div>
+                  <div id="youtube-payload-conteudo" style="max-height:260px;overflow-y:auto;font-size:0.8rem;line-height:1.4;"></div>
                 </div>
 
                 <!-- Painel expansível de dados do DuckDuckGo News -->
@@ -1935,6 +1990,7 @@
               <div class="admin-head-actions">
                 <button id="btn-recarregar-radar" class="admin-btn admin-btn-sm" type="button">Atualizar Feed</button>
                 <button id="btn-adicionar-radar" class="admin-btn admin-btn-primary admin-btn-sm" type="button">+ Adicionar Notícia Manual</button>
+                <button id="btn-salvar-niveis-radar" class="admin-btn admin-btn-sm" type="button" disabled>Salvar Níveis</button>
                 <button class="admin-collapse-btn" type="button" aria-label="Minimizar seção Radar" aria-expanded="true">−</button>
               </div>
             </div>
@@ -1954,6 +2010,9 @@
               </button>
               <button class="admin-tab" type="button" role="tab" aria-selected="false" data-radar-tab="ddg_news">
                 🦆 DuckDuckGo <span id="radar-count-tab-ddg">0</span>
+              </button>
+              <button class="admin-tab" type="button" role="tab" aria-selected="false" data-radar-tab="video">
+                🎬 Vídeos <span id="radar-count-tab-video">0</span>
               </button>
             </div>
 
@@ -2018,13 +2077,14 @@
                     <th>Origem</th>
                     <th>Categoria</th>
                     <th>Urgência</th>
+                    <th>Nível de Relevância</th>
                     <th>Data de Entrada</th>
                     <th>Ações</th>
                   </tr>
                 </thead>
                 <tbody id="tbody-radar">
                   <tr>
-                    <td colspan="7" class="admin-sub">Nenhuma notícia do Radar carregada.</td>
+                    <td colspan="8" class="admin-sub">Nenhuma notícia do Radar carregada.</td>
                   </tr>
                 </tbody>
               </table>
@@ -2985,6 +3045,7 @@
         radar: [],
         radarTab: 'all',
         radarContadores: { total: 0, manuais: 0, rss: 0, pulso_v2: 0 },
+        radarNiveis: {},
         editingRadarSlug: null,
         noticiasQuentes: [],
         editingNoticiaSlug: null,
@@ -3668,7 +3729,8 @@
         btn.textContent = 'Atualizando...';
         Promise.all([
           carregarEventos(),
-          carregarStatusBotDdg().catch(() => {})
+          carregarStatusBotDdg().catch(() => {}),
+          carregarStatusBotYouTube().catch(() => {})
         ])
           .then(() => showToast('Fila de eventos atualizada.', 'ok'))
           .catch((err) => showBanner('eventos-banner', err.message, 'err'))
@@ -4647,6 +4709,116 @@
         });
       }
 
+      // ============================ BOT YOUTUBE FEEDER ============================
+      async function carregarStatusBotYouTube() {
+        try {
+          const res = await apiFetch('/v2/admin/bot/youtube/status');
+          const arq = res.arquivo || {};
+          const badge = $('youtube-status-badge');
+          const desc = $('youtube-status-desc');
+          const canaisEl = $('youtube-meta-canais');
+          const totEl = $('youtube-meta-total');
+          const tmpEl = $('youtube-meta-tempo');
+
+          if (canaisEl) canaisEl.textContent = res.canais_configurados || 19;
+          if (totEl) totEl.textContent = arq.total_itens || 0;
+
+          if (tmpEl) {
+            if (arq.idade_minutos != null) {
+              tmpEl.textContent = arq.idade_minutos < 60 ? `há ${arq.idade_minutos} min` : `há ${Math.floor(arq.idade_minutos / 60)}h ${arq.idade_minutos % 60}m`;
+            } else if (arq.atualizadoEm) {
+              tmpEl.textContent = new Date(arq.atualizadoEm).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            } else {
+              tmpEl.textContent = 'Nunca';
+            }
+          }
+
+          if (badge) {
+            badge.textContent = arq.existe ? `${arq.total_itens} vídeos ativos` : 'Pronto (XML RSS)';
+            badge.className = 'badge badge-video';
+          }
+
+          if (desc && arq.existe) {
+            desc.innerHTML = `Feed ativo com <strong>${arq.total_itens} vídeos</strong> de <strong>${res.canais_configurados || 19} canais</strong>.`;
+          }
+        } catch (err) {
+          console.warn('[Admin] Não foi possível obter status do Bot YouTube:', err);
+        }
+      }
+
+      if ($('btn-rodar-youtube')) {
+        $('btn-rodar-youtube').addEventListener('click', async () => {
+          const btn = $('btn-rodar-youtube');
+          const prev = btn.textContent;
+          btn.disabled = true;
+          btn.textContent = 'Varrendo canais...';
+          const maxPorCanal = Number($('youtube-max-canal') ? $('youtube-max-canal').value : 3) || 3;
+          const dryRun = Boolean($('youtube-dry-run') && $('youtube-dry-run').checked);
+          showBanner('eventos-banner', 'Executando Varredura de Vídeos do YouTube RSS...', 'warn');
+          try {
+            const res = await apiFetch('/v2/admin/bot/youtube/executar', {
+              method: 'POST',
+              body: JSON.stringify({ max_por_canal: maxPorCanal, dry_run: dryRun }),
+            });
+            const coletados = Number(res.total_itens || 0);
+            const canais = Number(res.canais_varridos || 0);
+            const duracaoSeg = ((res.duracao_ms || 0) / 1000).toFixed(1);
+            const msgBanner = `Varredura concluída! ${coletados} vídeos recentes coletados de ${canais} canais em ${duracaoSeg}s.`;
+            showBanner('eventos-banner', msgBanner, 'ok');
+            showToast(`YouTube: ${coletados} vídeos coletados em ${duracaoSeg}s.`, 'ok');
+            await Promise.all([carregarStatusBotYouTube(), carregarRadar(), carregarExecucoes()]);
+          } catch (err) {
+            showBanner('eventos-banner', 'Erro ao executar varredura do YouTube: ' + err.message, 'err');
+            showToast('Erro no Bot de Vídeos: ' + err.message, 'err');
+          } finally {
+            btn.disabled = false;
+            btn.textContent = prev;
+          }
+        });
+      }
+
+      if ($('btn-ver-youtube-payload')) {
+        $('btn-ver-youtube-payload').addEventListener('click', async () => {
+          const painel = $('youtube-payload-panel');
+          const conteudo = $('youtube-payload-conteudo');
+          if (!painel || !conteudo) return;
+
+          if (painel.style.display !== 'none') {
+            painel.style.display = 'none';
+            return;
+          }
+
+          conteudo.innerHTML = '<div class="admin-sub">Carregando dados dos vídeos do YouTube...</div>';
+          painel.style.display = 'block';
+
+          try {
+            const res = await apiFetch('/v2/admin/bot/youtube/status');
+            const arq = res.arquivo || {};
+            const items = arq.amostra_itens || [];
+
+            if (items.length) {
+              let htmlItems = '<div style="margin-bottom:6px;"><strong>Vídeos analíticos recentes coletados:</strong></div><ul style="padding-left:18px;margin:0;">';
+              items.forEach((it) => {
+                const link = it.url ? ` <a href="${escapeHtml(it.url)}" target="_blank" rel="noopener noreferrer" style="color:var(--primary);">[assistir]</a>` : '';
+                htmlItems += `<li style="margin-bottom:6px;"><strong>[${escapeHtml(it.canal || 'YouTube')}]</strong> ${escapeHtml(it.titulo)}${link}</li>`;
+              });
+              htmlItems += '</ul>';
+              conteudo.innerHTML = htmlItems;
+            } else {
+              conteudo.innerHTML = '<div class="admin-sub">Nenhum vídeo em <code>data/noticias_youtube.json</code> ainda. Clique em <strong>Disparar Varredura de Vídeos</strong> para coletar.</div>';
+            }
+          } catch (err) {
+            conteudo.innerHTML = `<div class="admin-sub" style="color:var(--danger,#e63946);">Erro ao ler dados: ${escapeHtml(err.message)}</div>`;
+          }
+        });
+      }
+
+      if ($('btn-fechar-youtube-payload')) {
+        $('btn-fechar-youtube-payload').addEventListener('click', () => {
+          if ($('youtube-payload-panel')) $('youtube-payload-panel').style.display = 'none';
+        });
+      }
+
       // ============================ RADAR ============================
       async function carregarRadar() {
         let data;
@@ -4660,30 +4832,42 @@
         state.radarContadores = data.contadores || {
           total: state.radar.length,
           manuais: state.radar.filter((c) => c.origem === 'manual').length,
-          rss: state.radar.filter((c) => c.origem === 'rss').length,
+          rss: state.radar.filter((c) => c.origem === 'rss' && String(c.formato || '').toLowerCase() !== 'video' && !c.origem_video).length,
           pulso_v2: state.radar.filter((c) => c.origem === 'pulso_v2').length,
           ddg_news: state.radar.filter((c) => c.origem === 'ddg_news').length,
+          video: state.radar.filter((c) => c.origem === 'video' || String(c.formato || '').toLowerCase() === 'video' || c.origem_video).length,
         };
         atualizarTabsRadar();
         renderRadar();
+        syncBtnNiveisRadar();
       }
 
       function atualizarTabsRadar() {
         const c = state.radarContadores || {};
         const tot = c.total != null ? c.total : state.radar.length;
         const man = c.manuais != null ? c.manuais : state.radar.filter((x) => x.origem === 'manual').length;
-        const rss = c.rss != null ? c.rss : state.radar.filter((x) => x.origem === 'rss').length;
+        const rss = c.rss != null ? c.rss : state.radar.filter((x) => x.origem === 'rss' && String(x.formato || '').toLowerCase() !== 'video' && !x.origem_video).length;
         const pul = c.pulso_v2 != null ? c.pulso_v2 : state.radar.filter((x) => x.origem === 'pulso_v2').length;
         const ddg = c.ddg_news != null ? c.ddg_news : state.radar.filter((x) => x.origem === 'ddg_news').length;
+        const vid = c.video != null ? c.video : state.radar.filter((x) => x.origem === 'video' || String(x.formato || '').toLowerCase() === 'video' || x.origem_video).length;
 
         if ($('radar-count-tab-all')) $('radar-count-tab-all').textContent = tot;
         if ($('radar-count-tab-manual')) $('radar-count-tab-manual').textContent = man;
         if ($('radar-count-tab-rss')) $('radar-count-tab-rss').textContent = rss;
         if ($('radar-count-tab-pulso')) $('radar-count-tab-pulso').textContent = pul;
         if ($('radar-count-tab-ddg')) $('radar-count-tab-ddg').textContent = ddg;
+        if ($('radar-count-tab-video')) $('radar-count-tab-video').textContent = vid;
 
         if ($('nav-count-radar')) $('nav-count-radar').textContent = tot;
         if ($('kpi-radar-val')) $('kpi-radar-val').textContent = tot + ' no feed';
+      }
+
+      function nivelRelevanciaRadar(c) {
+        const pendente = state.radarNiveis && state.radarNiveis[String(c.slug)];
+        if (pendente !== null && pendente !== undefined && Number(pendente) >= 1 && Number(pendente) <= 5) {
+          return Number(pendente);
+        }
+        return Number(c.nivel_relevancia) || 3;
       }
 
       function renderRadar() {
@@ -4698,9 +4882,12 @@
 
         let lista = state.radar;
 
-        // Filtro da aba de origem (todos, manual, rss, pulso_v2, ddg_news)
+        // Filtro da aba de origem (todos, manual, rss, pulso_v2, ddg_news, video)
         if (tab !== 'all') {
           lista = lista.filter((c) => {
+            const ehVid = c.origem === 'video' || String(c.formato || '').toLowerCase() === 'video' || c.origem_video;
+            if (tab === 'video') return ehVid;
+            if (ehVid) return false;
             const o = c.origem || (c.origem_manual ? 'manual' : (c.origem_v2 ? 'pulso_v2' : (c.origem_ddg_news ? 'ddg_news' : 'rss')));
             return o === tab;
           });
@@ -4723,7 +4910,7 @@
         atualizarResultadoFiltro('radar', lista.length, state.radar.length);
 
         if (!lista.length) {
-          tbody.innerHTML = `<tr><td colspan="7" class="admin-sub" style="text-align:center;padding:2rem;">${state.radar.length ? 'Nenhuma notícia corresponde aos filtros selecionados.' : 'Nenhuma notícia carregada no feed.'}</td></tr>`;
+          tbody.innerHTML = `<tr><td colspan="8" class="admin-sub" style="text-align:center;padding:2rem;">${state.radar.length ? 'Nenhuma notícia corresponde aos filtros selecionados.' : 'Nenhuma notícia carregada no feed.'}</td></tr>`;
           sincronizarBulkUI('radar', []);
           return;
         }
@@ -4731,6 +4918,7 @@
         tbody.innerHTML = lista.map((c) => {
           const isFixed = Boolean(c.fixado || (c.urgencia_score && c.urgencia_score >= 95));
           const orig = c.origem || (c.origem_manual ? 'manual' : (c.origem_v2 ? 'pulso_v2' : (c.origem_ddg_news ? 'ddg_news' : 'rss')));
+          const ehVid = orig === 'video' || String(c.formato || '').toLowerCase() === 'video' || c.origem_video;
           let badgeOrigem = '';
           if (orig === 'manual') {
             badgeOrigem = '<span class="badge badge-manual">Manual</span>';
@@ -4738,6 +4926,9 @@
             badgeOrigem = '<span class="badge badge-ia" title="Síntese IA · Pulso V2">Pulso V2 · IA</span>';
           } else if (orig === 'ddg_news') {
             badgeOrigem = '<span class="badge badge-ddg" title="Coletado via Bot DuckDuckGo News (ddgs)">🦆 DDG News</span>';
+          } else if (ehVid) {
+            const fnome = escapeHtml(c.fonte_nome || c.canal || 'YouTube');
+            badgeOrigem = `<span class="badge badge-video" title="Vídeo de análise do YouTube (Canal ${fnome})">🎬 YouTube · ${fnome}</span>`;
           } else {
             const fnome = escapeHtml(c.fonte_nome || 'RSS');
             badgeOrigem = `<span class="badge badge-rss" title="Coletado via RSS (${fnome})">RSS · ${fnome}</span>`;
@@ -4754,6 +4945,11 @@
           const resumoCurto = c.resumo ? `<div class="admin-sub" style="margin-top:3px;font-size:0.8rem;line-height:1.35;max-width:540px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;" title="${escapeHtml(c.resumo)}">${escapeHtml(c.resumo)}</div>` : '';
 
           const radarChecked = state.bulk.radar.has(String(c.slug)) ? 'checked' : '';
+          const nivelSelVal = nivelRelevanciaRadar(c);
+          const nivelOpts = [1, 2, 3, 4, 5]
+            .map((n) => `<option value="${n}"${n === nivelSelVal ? ' selected' : ''}>${n}</option>`)
+            .join('');
+          const nivelSel = `<select class="admin-select radar-nivel-select" data-radar-nivel-slug="${escapeHtml(String(c.slug))}" aria-label="Nível de relevância do Radar">${nivelOpts}</select>`;
           return `
             <tr>
               <td class="admin-col-check"><input type="checkbox" class="admin-bulk-check" data-bulk-group="radar" data-bulk-key="${escapeHtml(c.slug)}" value="${escapeHtml(c.slug)}" ${radarChecked} aria-label="Selecionar notícia do Radar" /></td>
@@ -4769,6 +4965,7 @@
               <td>
                 ${pinBadge}<span style="${urgTom}">${urgScore}</span>
               </td>
+              <td>${nivelSel}</td>
               <td>${renderBadgeDataEntrada(c.data_publicacao || c.created_at)}</td>
               <td>
                 <div class="admin-actions">
@@ -4889,6 +5086,66 @@
           return;
         }
       });
+
+      $('tbody-radar').addEventListener('change', (e) => {
+        const sel = e.target.closest('select[data-radar-nivel-slug]');
+        if (!sel) return;
+        const slug = sel.getAttribute('data-radar-nivel-slug');
+        const lvl = Number(sel.value);
+        if (!Number.isInteger(lvl) || lvl < 1 || lvl > 5) return;
+        if (!state.radarNiveis) state.radarNiveis = {};
+        state.radarNiveis[slug] = lvl;
+        syncBtnNiveisRadar();
+      });
+
+      function syncBtnNiveisRadar() {
+        const btn = $('btn-salvar-niveis-radar');
+        if (!btn) return;
+        btn.disabled = !(state.radarNiveis && Object.keys(state.radarNiveis).length > 0);
+      }
+
+      async function salvarNiveisRadar() {
+        const pendentes = Object.entries(state.radarNiveis || {}).filter(([slug, lvl]) => {
+          const card = (state.radar || []).find((c) => String(c.slug) === slug);
+          return card && Number(card.nivel_relevancia || 3) !== Number(lvl);
+        });
+        if (!pendentes.length) {
+          showToast('Nenhum nível alterado.', 'ok');
+          syncBtnNiveisRadar();
+          return;
+        }
+        const btn = $('btn-salvar-niveis-radar');
+        if (btn) {
+          btn.disabled = true;
+          btn.textContent = 'Salvando...';
+        }
+        let falhas = 0;
+        for (const [slug, lvl] of pendentes) {
+          try {
+            await apiFetch('/v2/admin/radar/feed/' + encodeURIComponent(slug), {
+              method: 'PATCH',
+              body: JSON.stringify({ nivel_relevancia: Number(lvl) }),
+            });
+            const card = (state.radar || []).find((c) => String(c.slug) === slug);
+            if (card) card.nivel_relevancia = Number(lvl);
+            if (state.radarNiveis) delete state.radarNiveis[slug];
+          } catch (err) {
+            falhas += 1;
+            showBanner('radar-banner', 'Erro ao salvar nível do Radar: ' + err.message, 'err');
+          }
+        }
+        if (btn) btn.textContent = 'Salvar Níveis';
+        if (!falhas) {
+          showToast(pendentes.length + (pendentes.length === 1 ? ' nível de relevância salvo.' : ' níveis de relevância salvos.'), 'ok');
+        }
+        syncBtnNiveisRadar();
+      }
+
+      if ($('btn-salvar-niveis-radar')) {
+        $('btn-salvar-niveis-radar').addEventListener('click', () => {
+          salvarNiveisRadar().catch((err) => showBanner('radar-banner', 'Erro ao salvar níveis: ' + err.message, 'err'));
+        });
+      }
 
       $('btn-salvar-radar').addEventListener('click', async () => {
         const titulo = $('r-titulo').value.trim();
@@ -6643,7 +6900,7 @@
       // ============================ AUTENTICAÇÃO ============================
       async function carregarTudo() {
         await carregarKillSwitch();
-        await Promise.all([carregarFontes(), carregarEventos(), carregarDossiesAdmin(), carregarExecucoes(), carregarRadar(), carregarNoticiasQuentes(), carregarColunas(), carregarStatusBotDdg()]);
+        await Promise.all([carregarFontes(), carregarEventos(), carregarDossiesAdmin(), carregarExecucoes(), carregarRadar(), carregarNoticiasQuentes(), carregarColunas(), carregarStatusBotDdg(), carregarStatusBotYouTube()]);
       }
 
       async function conectar() {
