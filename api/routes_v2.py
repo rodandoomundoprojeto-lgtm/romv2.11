@@ -24,7 +24,7 @@ import psycopg
 from fastapi import APIRouter, BackgroundTasks, Body, Depends, Header, HTTPException, Query, Response
 from psycopg.rows import dict_row
 from psycopg.types.json import Jsonb
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_validator, model_validator
 
 from redacao_v2.coletor_estudo import advisory_lock
 from redacao_v2.orquestrador_editorial import (
@@ -828,7 +828,7 @@ async def executar_noticias_quentes_manual(
 # 5.0. ESTADO DO PIPELINE: GET/PUT /v1/estado/{chave} (Nível 2B)
 # ============================================================================
 
-CHAVES_ESTADO_PUBLICAS = {"vitrine_ia", "feed_output", "entenda_v2"}
+CHAVES_ESTADO_PUBLICAS = {"vitrine_ia", "feed_output", "entenda_v2", "patrocinadores"}
 CHAVES_ESTADO_PROTEGIDAS = {"history"}
 CHAVES_ESTADO_VALIDAS = CHAVES_ESTADO_PUBLICAS | CHAVES_ESTADO_PROTEGIDAS
 
@@ -5911,4 +5911,201 @@ def obter_atlas_pais_ao_vivo(
         "total": len(items),
         "items": items,
     }
+
+
+# ============================================================================
+# 10. PATROCÍNIOS & COTAS COMERCIAIS (4 COTAS)
+# ============================================================================
+_DATA_IMAGE_RE = re.compile(
+    r"^data:image/(png|jpeg|jpg|webp|svg\+xml);base64,[A-Za-z0-9+/=\s]+$",
+    re.IGNORECASE,
+)
+
+
+def _validar_logo_url(valor: str) -> str:
+    v = (valor or "").strip()
+    if not v:
+        return ""
+    if len(v) > 300_000:
+        raise ValueError("Logo excede o tamanho máximo permitido (~220 KB).")
+    if v.startswith(("https://", "http://", "/")):
+        return v
+    if _DATA_IMAGE_RE.match(v):
+        if "svg+xml" in v[:40].lower():
+            try:
+                import base64
+                raw_b64 = v.split(",", 1)[1]
+                decoded = base64.b64decode(raw_b64, validate=False).decode("utf-8", errors="ignore").lower()
+                if "<script" in decoded or "onerror=" in decoded or "onload=" in decoded or "javascript:" in decoded:
+                    raise ValueError("SVG contém conteúdo não permitido.")
+            except ValueError:
+                raise
+            except Exception:
+                raise ValueError("SVG em base64 inválido.")
+        return v
+    raise ValueError("Logo deve ser uma URL (https://, http://, /) ou imagem em Data URI (PNG/JPG/WebP/SVG).")
+
+
+def _validar_link_url(valor: str) -> str:
+    v = (valor or "").strip()
+    if not v:
+        return ""
+    if v.startswith(("https://", "http://", "/")):
+        return v
+    raise ValueError("Link de destino deve começar com https://, http:// ou /.")
+
+
+_DATE_YMD_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
+
+
+class CotaPatrocinioItem(BaseModel):
+    ativo: bool = False
+    nome: str = Field(default="", max_length=120)
+    logo_url: str = Field(default="")
+    frase: str = Field(default="", max_length=280)
+    cta_texto: str = Field(default="Saiba mais", max_length=60)
+    link_url: str = Field(default="", max_length=500)
+    data_inicio: str = Field(default="", max_length=20)
+    data_fim: str = Field(default="", max_length=20)
+    exibir_no_sobre: bool = True
+    hub_alvo: str = Field(default="todos", max_length=40)
+    paises_alvo: str = Field(default="todos", max_length=200)
+
+    @field_validator("logo_url")
+    @classmethod
+    def check_logo_url(cls, v: str) -> str:
+        return _validar_logo_url(v)
+
+    @field_validator("link_url")
+    @classmethod
+    def check_link_url(cls, v: str) -> str:
+        return _validar_link_url(v)
+
+    @field_validator("data_inicio", "data_fim")
+    @classmethod
+    def check_data_ymd(cls, v: str) -> str:
+        val = (v or "").strip()
+        if not val:
+            return ""
+        if not _DATE_YMD_RE.match(val):
+            raise ValueError("Data deve estar no formato AAAA-MM-DD.")
+        try:
+            datetime.strptime(val, "%Y-%m-%d")
+        except ValueError as exc:
+            raise ValueError("Data inválida.") from exc
+        return val
+
+    @model_validator(mode="after")
+    def check_periodo_contrato(self) -> "CotaPatrocinioItem":
+        if self.data_inicio and self.data_fim and self.data_fim < self.data_inicio:
+            raise ValueError("A data de término do contrato não pode ser anterior à data de início.")
+        return self
+
+
+class CotasPatrocinioMap(BaseModel):
+    cota_master: CotaPatrocinioItem = Field(default_factory=lambda: CotaPatrocinioItem(
+        frase="Apresentado com exclusividade global por",
+        cta_texto="Conheça as soluções →",
+    ))
+    dossie_tematico: CotaPatrocinioItem = Field(default_factory=lambda: CotaPatrocinioItem(
+        frase="Apoio institucional à cobertura setorial aprofundada.",
+        cta_texto="Saiba mais",
+        hub_alvo="todos",
+    ))
+    resumo_dia: CotaPatrocinioItem = Field(default_factory=lambda: CotaPatrocinioItem(
+        frase="Conectando você às principais movimentações e análises do planeta.",
+        cta_texto="Saiba mais",
+    ))
+    gaveta_contextual: CotaPatrocinioItem = Field(default_factory=lambda: CotaPatrocinioItem(
+        frase="Soluções globais para suas conexões com {pais}.",
+        cta_texto="Conhecer soluções",
+        paises_alvo="todos",
+    ))
+
+
+class PatrocinadoresPayload(BaseModel):
+    atualizado_em: Optional[str] = None
+    cotas: CotasPatrocinioMap = Field(default_factory=CotasPatrocinioMap)
+
+
+def _ler_patrocinadores_arquivo() -> Optional[Dict[str, Any]]:
+    arq = Path(__file__).resolve().parent.parent / "data" / "patrocinadores.json"
+    if not arq.exists():
+        return None
+    try:
+        return json.loads(arq.read_text(encoding="utf-8"))
+    except Exception:
+        return None
+
+
+@router.get("/v2/patrocinadores")
+def obter_patrocinadores(
+    response: Response,
+    conn: Any = Depends(get_db),
+) -> Dict[str, Any]:
+    """Retorna a configuração pública das 4 cotas de patrocínio/apoio."""
+    aplicar_no_cache_headers(response)
+    payload: Optional[Dict[str, Any]] = None
+    origem = "default"
+
+    if conn is not None:
+        try:
+            from src.estado_db import ler_estado
+            raw = ler_estado("patrocinadores", conn=conn)
+            if isinstance(raw, dict) and isinstance(raw.get("cotas"), dict):
+                payload = raw
+                origem = "db"
+        except Exception:
+            payload = None
+
+    if payload is None:
+        arq_data = _ler_patrocinadores_arquivo()
+        if isinstance(arq_data, dict) and isinstance(arq_data.get("cotas"), dict):
+            payload = arq_data
+            origem = "arquivo"
+
+    if payload is None:
+        validado = PatrocinadoresPayload()
+    else:
+        validado = PatrocinadoresPayload.model_validate(payload)
+
+    dumped = validado.model_dump()
+    return {
+        "ok": True,
+        "origem": origem,
+        "atualizado_em": dumped.get("atualizado_em"),
+        "cotas": dumped.get("cotas", {}),
+    }
+
+
+@router.put("/v2/admin/patrocinadores", dependencies=[Depends(verificar_admin_token)])
+def salvar_patrocinadores(
+    body: PatrocinadoresPayload,
+    response: Response,
+    conn: Any = Depends(get_db),
+) -> Dict[str, Any]:
+    """Valida e persiste a configuração das 4 cotas de patrocínio no banco."""
+    aplicar_no_cache_headers(response)
+    _require_db(conn)
+
+    now_iso = datetime.now(timezone.utc).isoformat()
+    dados = body.model_dump()
+    dados["atualizado_em"] = now_iso
+
+    try:
+        from src.estado_db import gravar_estado
+        ok = gravar_estado("patrocinadores", dados, conn=conn)
+    except Exception as exc:  # noqa: BLE001
+        raise HTTPException(status_code=500, detail=f"Falha ao gravar patrocínios: {exc}") from exc
+
+    if not ok:
+        raise HTTPException(status_code=500, detail="Não foi possível persistir os patrocínios.")
+
+    return {
+        "ok": True,
+        "origem": "db",
+        "atualizado_em": now_iso,
+        "cotas": dados["cotas"],
+    }
+
 

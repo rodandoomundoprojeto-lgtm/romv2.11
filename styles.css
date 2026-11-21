@@ -11619,6 +11619,59 @@ button.support-link.topbar-more-btn:hover {
   padding: 0.3rem 0.75rem;
 }
 
+/* Logo em imagem nos slots comerciais (Cotas 01-04) */
+.sponsor-logo-img {
+  display: inline-block;
+  max-height: 28px;
+  max-width: 160px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  vertical-align: middle;
+  border-radius: 4px;
+}
+
+.sponsor-slot-resumo .sponsor-logo-img {
+  max-height: 32px;
+  max-width: 180px;
+}
+
+.sponsor-slot-drawer .sponsor-logo-img {
+  max-height: 26px;
+  max-width: 140px;
+}
+
+/* 4. Slot Cota 02 — Inteligência Setorial (Dossiês / Hubs Temáticos) */
+.sponsor-slot-dossie {
+  margin: var(--space-4) 0;
+  padding: 0.9rem 1.2rem;
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.08) 0%, rgba(15, 23, 42, 0.45) 100%);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  border-radius: var(--radius-md, 8px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+[data-theme="light"] .sponsor-slot-dossie {
+  background: linear-gradient(135deg, rgba(2, 132, 199, 0.06) 0%, rgba(248, 250, 252, 0.95) 100%);
+  border-color: rgba(2, 132, 199, 0.22);
+}
+
+.sponsor-dossie-info {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+  font-size: var(--text-sm);
+}
+
+.sponsor-dossie-desc {
+  color: var(--text-muted);
+}
+
 /* Setas Numeradas para Mídia Kit & Apresentações Comerciais */
 .commercial-pointer {
   position: absolute;

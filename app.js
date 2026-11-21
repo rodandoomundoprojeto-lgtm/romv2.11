@@ -5072,6 +5072,7 @@
     h += '<ul class="country-list" id="lista-paises"></ul>';
     panel.innerHTML = h;
     bindCrumbs();
+    if (typeof applyLiveSponsors === 'function') applyLiveSponsors();
     var list = panel.querySelector('#lista-paises');
     function fill(q) {
       var qNorm = norm((q || '').trim());
@@ -5282,6 +5283,7 @@
     h += '<div class="methodology-note"><p><strong>Metodologia editorial:</strong> Todos os países contam com veículos de imprensa verificados e ao menos um veículo com independência editorial reconhecida (identificado pelo selo <span class="badge badge-ind badge-inline"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Independente</span>). Veículos indicados pela comunidade recebem o selo <span class="badge badge-sug badge-inline" title="Veículo indicado por usuário na aba Cadastrar Veículo"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/></svg> Indicação</span>. Dados e links verificados.</p></div>';
     panel.innerHTML = h;
     bindCrumbs();
+    if (typeof applyLiveSponsors === 'function') applyLiveSponsors();
     var favCountryBtn = panel.querySelector('#btn-fav-country');
     if (favCountryBtn) {
       favCountryBtn.addEventListener('click', function () {
@@ -10335,6 +10337,7 @@
     thematicHubView.innerHTML = h;
     resolverLinksGenericosNaView(thematicHubView, hub.termoBuscaPadrao || hub.titulo, hub.pais || 'BR');
     bindNewsFavButtons(thematicHubView);
+    if (typeof applyLiveSponsors === 'function') applyLiveSponsors();
     window.scrollTo({ top: 0, behavior: 'auto' });
 
     var hubForm = thematicHubView.querySelector('#hub-search-form');
@@ -10880,6 +10883,7 @@
     thematicHubView.innerHTML = h;
     window.scrollTo({ top: 0, behavior: 'auto' });
     bindDynamicEditorialActions(thematicHubView);
+    if (typeof applyLiveSponsors === 'function') applyLiveSponsors();
 
     thematicHubView.querySelectorAll('.dossie-tl-item').forEach(function (btn) {
       btn.addEventListener('click', function () {
@@ -11243,6 +11247,7 @@
     thematicHubView.innerHTML = h;
     window.scrollTo({ top: 0, behavior: 'auto' });
     bindDynamicEditorialActions(thematicHubView);
+    if (typeof applyLiveSponsors === 'function') applyLiveSponsors();
   }
 
   function showExplanationPage(slug, opts) {
@@ -12846,6 +12851,7 @@
     });
     rh += '</ol>';
     resumoSec.innerHTML = rh;
+    if (typeof applyLiveSponsors === 'function') applyLiveSponsors();
     var btnRefreshResumo = resumoSec.querySelector('#btn-refresh-resumo-dia');
     if (btnRefreshResumo) {
       btnRefreshResumo.addEventListener('click', function () {
@@ -17526,7 +17532,212 @@
           window.toggleCommercialPointers(true);
         }, 500);
       }
+    } else {
+      loadLiveSponsors();
     }
+  }
+
+  /* ---------- PATROCÍNIOS & COTAS AO VIVO (/v2/patrocinadores) ---------- */
+  var liveSponsorsCache = null;
+  var isCommercialDemoMode = false;
+
+  function renderSponsorBrandEl(cota) {
+    var nome = (cota && cota.nome) ? String(cota.nome).trim() : 'Apoiador';
+    var logo = (cota && cota.logo_url) ? String(cota.logo_url).trim() : '';
+    if (logo && /^(https?:\/\/|\/|data:image\/)/i.test(logo)) {
+      return '<img class="sponsor-logo-img" src="' + esc(logo) + '" alt="' + esc(nome) + '" loading="lazy" />';
+    }
+    return '<span class="mock-brand-logo sponsor-brand-target">' + esc(nome || 'Sua Marca Aqui') + '</span>';
+  }
+
+  function applySponsorLinkAttrs(anchorEl, linkUrl, defaultText) {
+    if (!anchorEl) return;
+    var url = (linkUrl || '').trim();
+    if (url && /^(https?:\/\/|\/)/i.test(url)) {
+      anchorEl.setAttribute('href', url);
+      if (/^https?:\/\//i.test(url)) {
+        anchorEl.setAttribute('target', '_blank');
+        anchorEl.setAttribute('rel', 'noopener sponsored');
+        anchorEl.removeAttribute('data-spa-link');
+      } else {
+        anchorEl.removeAttribute('target');
+        anchorEl.removeAttribute('rel');
+        anchorEl.setAttribute('data-spa-link', '');
+      }
+    } else {
+      anchorEl.setAttribute('href', '/parcerias');
+      anchorEl.removeAttribute('target');
+      anchorEl.removeAttribute('rel');
+      anchorEl.setAttribute('data-spa-link', '');
+    }
+    if (defaultText) anchorEl.textContent = defaultText;
+  }
+
+  function matchesHubTarget(hubAlvo, currentPath) {
+    var alvo = String(hubAlvo || 'todos').trim().toLowerCase();
+    if (!alvo || alvo === 'todos') return true;
+    var p = String(currentPath || window.location.pathname || '').toLowerCase();
+    if (alvo.indexOf('dossie:') === 0) {
+      var slug = alvo.slice(7).trim();
+      return slug ? (p.indexOf('/dossies/' + slug) !== -1 || p.indexOf('/' + slug) !== -1) : false;
+    }
+    if (alvo === 'economia') return p.indexOf('economia') !== -1;
+    if (alvo === 'clima') return p.indexOf('clima') !== -1 || p.indexOf('cop30') !== -1;
+    if (alvo === 'tecnologia') return p.indexOf('tecnologia') !== -1;
+    if (alvo === 'eleicoes') return p.indexOf('eleicoes') !== -1;
+    return p.indexOf(alvo) !== -1;
+  }
+
+  function matchesCountryTarget(paisesAlvo, countryCode) {
+    var alvo = String(paisesAlvo || 'todos').trim().toLowerCase();
+    if (!alvo || alvo === 'todos') return true;
+    var code = String(countryCode || '').trim().toLowerCase();
+    if (!code) return false;
+    var lista = alvo.split(',').map(function (s) { return s.trim(); }).filter(Boolean);
+    return lista.indexOf(code) !== -1;
+  }
+
+  function getTodayYmdLocal() {
+    var now = new Date();
+    var y = now.getFullYear();
+    var m = String(now.getMonth() + 1).padStart(2, '0');
+    var d = String(now.getDate()).padStart(2, '0');
+    return y + '-' + m + '-' + d;
+  }
+
+  function isCotaEmVigencia(cota) {
+    if (!cota || !cota.ativo) return false;
+    if (!(cota.nome || cota.logo_url)) return false;
+    var hoje = getTodayYmdLocal();
+    var ini = String(cota.data_inicio || '').trim();
+    var fim = String(cota.data_fim || '').trim();
+    if (ini && hoje < ini) return false;
+    if (fim && hoje > fim) return false;
+    return true;
+  }
+
+  function applyLiveSponsors(cotas) {
+    if (isCommercialDemoMode) return;
+    var c = cotas || liveSponsorsCache;
+    if (!c) return;
+
+    // Cota 01 — Founding Partner (Master Global)
+    var sMaster = document.getElementById('slot-cota-master');
+    var cMaster = c.cota_master;
+    if (sMaster) {
+      if (isCotaEmVigencia(cMaster)) {
+        var innerM = sMaster.querySelector('.sponsor-inner');
+        if (innerM) {
+          innerM.innerHTML =
+            '<span class="sponsor-eyebrow">' + esc(cMaster.frase || 'Apresentado com exclusividade global por') + '</span>' +
+            renderSponsorBrandEl(cMaster) +
+            '<a class="sponsor-cta-link" href="/parcerias" data-spa-link>' + esc(cMaster.cta_texto || 'Conheça as soluções →') + '</a>';
+          applySponsorLinkAttrs(innerM.querySelector('.sponsor-cta-link'), cMaster.link_url);
+        }
+        sMaster.hidden = false;
+      } else {
+        sMaster.hidden = true;
+      }
+    }
+
+    // Cota 03 — Briefing Matinal (Resumo do Dia)
+    var sResumo = document.getElementById('slot-sponsor-resumo');
+    var cResumo = c.resumo_dia;
+    if (sResumo) {
+      if (isCotaEmVigencia(cResumo)) {
+        var badgeR = sResumo.querySelector('.sponsor-resumo-badge');
+        if (badgeR) {
+          badgeR.innerHTML =
+            '<span class="sponsor-tag">Oferecimento</span>' +
+            renderSponsorBrandEl(cResumo) +
+            '<span class="sponsor-resumo-desc">— ' + esc(cResumo.frase || '') + '</span>';
+        }
+        var ctaR = sResumo.querySelector('.sponsor-cta-pill');
+        applySponsorLinkAttrs(ctaR, cResumo.link_url, cResumo.cta_texto || 'Saiba mais');
+        sResumo.hidden = false;
+      } else {
+        sResumo.hidden = true;
+      }
+    }
+
+    // Cota 04 — Território & Contexto (Gaveta do País)
+    var sDrawer = document.getElementById('slot-sponsor-drawer');
+    var cDrawer = c.gaveta_contextual;
+    if (sDrawer) {
+      var curCountryCode = (state && state.country && state.country.a2) ? state.country.a2 : '';
+      var curCountryName = (document.getElementById('sponsor-country-name') || {}).textContent || (state && state.country && state.country.n) || 'o exterior';
+      if (isCotaEmVigencia(cDrawer) && matchesCountryTarget(cDrawer.paises_alvo, curCountryCode)) {
+        var headD = sDrawer.querySelector('.sponsor-drawer-head');
+        if (headD) {
+          headD.innerHTML =
+            '<span class="sponsor-tag">Apoio Contextual</span>' +
+            renderSponsorBrandEl(cDrawer);
+        }
+        var msgD = sDrawer.querySelector('.sponsor-drawer-msg');
+        if (msgD) {
+          var rawMsg = (cDrawer.frase || 'Soluções globais para suas conexões com {pais}.');
+          msgD.innerHTML = esc(rawMsg).replace(/\{pais\}/g, '<span id="sponsor-country-name">' + esc(curCountryName) + '</span>');
+        }
+        var btnD = sDrawer.querySelector('.sponsor-drawer-btn');
+        applySponsorLinkAttrs(btnD, cDrawer.link_url, cDrawer.cta_texto || 'Conhecer soluções');
+        sDrawer.hidden = false;
+      } else {
+        sDrawer.hidden = true;
+      }
+    }
+
+    // Cota 02 — Inteligência Setorial (Dossiês / Hubs Temáticos)
+    var dossieHost = document.getElementById('thematic-hub-view');
+    var cDossie = c.dossie_tematico;
+    if (dossieHost && !dossieHost.hidden) {
+      var existingDossieSlot = document.getElementById('slot-cota-dossie');
+      if (isCotaEmVigencia(cDossie) && matchesHubTarget(cDossie.hub_alvo, window.location.pathname)) {
+        if (!existingDossieSlot) {
+          existingDossieSlot = document.createElement('aside');
+          existingDossieSlot.id = 'slot-cota-dossie';
+          existingDossieSlot.className = 'sponsor-slot sponsor-slot-dossie';
+          existingDossieSlot.setAttribute('aria-label', 'Apoio Setorial');
+          var container = dossieHost.querySelector('.hub-container') || dossieHost;
+          var heroEl = container.querySelector('.hub-hero, .dossie-hero');
+          if (heroEl && heroEl.nextSibling) {
+            container.insertBefore(existingDossieSlot, heroEl.nextSibling);
+          } else {
+            container.insertBefore(existingDossieSlot, container.firstChild);
+          }
+        }
+        existingDossieSlot.innerHTML =
+          '<div class="sponsor-dossie-info">' +
+          '<span class="sponsor-tag">Apoio Setorial</span>' +
+          renderSponsorBrandEl(cDossie) +
+          '<span class="sponsor-dossie-desc">' + esc(cDossie.frase || '') + '</span>' +
+          '</div>' +
+          '<a class="sponsor-cta-pill" href="/parcerias" data-spa-link>' + esc(cDossie.cta_texto || 'Saiba mais') + '</a>';
+        applySponsorLinkAttrs(existingDossieSlot.querySelector('.sponsor-cta-pill'), cDossie.link_url);
+        existingDossieSlot.hidden = false;
+      } else if (existingDossieSlot) {
+        existingDossieSlot.hidden = true;
+      }
+    }
+  }
+
+  function loadLiveSponsors() {
+    try {
+      var params = new URLSearchParams(window.location.search || '');
+      if (params.get('demo') === '1' || params.get('simulador') === '1' || params.get('marca') || params.get('brand')) {
+        isCommercialDemoMode = true;
+        return;
+      }
+    } catch (e) { }
+
+    fetch('/v2/patrocinadores?_t=' + Date.now(), { cache: 'no-store' })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (data) {
+        if (data && data.cotas) {
+          liveSponsorsCache = data.cotas;
+          applyLiveSponsors(liveSponsorsCache);
+        }
+      })
+      .catch(function () { /* silêncio se API offline */ });
   }
 
   /* ====================================================================

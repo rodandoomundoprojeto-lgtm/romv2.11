@@ -2,6 +2,7 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
+<<<<<<< HEAD
   "updatedAt": "2026-11-21T13:15:04Z",
   "batch_id": "20261121-1314",
   "temas_ativos": [
@@ -226,6 +227,186 @@
     },
     {
       "slug": "fbi-investiga-invasao-banco-dados-nacional-criminais-eua",
+=======
+  "updatedAt": "2026-11-21T13:02:47Z",
+  "batch_id": "20261121-1302",
+  "temas_ativos": [
+    {
+      "slug": "novos-temporais-sul-do-pais-supercelula-rs",
+      "titulo_tema": "Defesa Civil e Climatempo mantêm alertas de novos temporais e chuvas intensas no Sul do país",
+      "titulo_curto": "Defesa Civil e Climatempo mantêm alertas de novos temporais e chuvas intensas no Sul do país",
+>>>>>>> 63f261d (att rOm)
+      "status": "novo",
+      "categoria": "Geopolitica_Relacoes",
+      "ttl_horas": 12,
+      "expires_at": "2026-11-22T10:43:32Z",
+      "updated_at": "2026-11-21T12:32:02Z",
+      "fontes_urls": [
+        "https://g1.globo.com/mundo/noticia/2026/11/21/fbi-investiga-invasao-a-banco-dados-nacional-de-informacoes-criminais-diz-tv.ghtml"
+      ],
+      "titulo_tema": "FBI investiga invasão a banco de dados nacional de informações criminais nos EUA",
+      "resumo_pulso": "Segundo apuração da CNN e do G1 Mundo, o FBI abriu investigação sobre uma possível invasão a um banco de dados de segurança pública usado por agências federais e locais nos Estados Unidos. A ocorrência se soma a uma série recente de falhas sistêmicas e cibernéticas no país.",
+      "sintese_nerd": "Possíveis riscos de vazamento de dados sensíveis e instabilidade em serviços de segurança pública nos Estados Unidos.",
+      "titulo_curto": "FBI investiga invasão a banco de dados nacional de informações criminais nos EUA",
+      "rota_editoria": "/radar",
+      "palavras_chave": [
+        "fbi",
+        "eua",
+        "cibersegurança",
+        "segurança pública"
+      ],
+      "urgencia_score": 96,
+      "data_publicacao": "2026-11-21T10:27:04Z",
+      "gatilho_vitrine": "Segundo apuração da CNN e do G1 Mundo, o FBI abriu investigação sobre uma possível invasão a um banco de dados de segurança pública usado por agências federais e locais nos Estados Unidos. A ocorrência se soma a uma série recente de falhas sistêmicas e cibernéticas no país.",
+      "impacto_pratico": "Possíveis riscos de vazamento de dados sensíveis e instabilidade em serviços de segurança pública nos Estados Unidos.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "G1 Mundo",
+        "CNN"
+      ],
+      "relevancia_score": 94,
+      "paises_envolvidos": [
+        "US"
+      ],
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+<<<<<<< HEAD
+      "palavras_chave_busca": [
+=======
+      "rota_editoria": "/radar",
+      "relevancia_score": 93,
+      "urgencia_score": 96,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-22T12:48:01Z",
+      "palavras_chave_busca": [
+        "temporais",
+        "sul do país",
+        "rio grande do sul",
+        "defesa civil",
+        "supercélula"
+      ],
+      "palavras_chave": [
+        "temporais",
+        "sul do país",
+        "rio grande do sul",
+        "defesa civil",
+        "supercélula"
+      ],
+      "gatilho_vitrine": "Conforme apuração do InfoMoney, novas chuvas intensas e temporais devem atingir o Rio Grande do Sul, Santa Catarina e Paraná após os severos estragos causados por uma supercélula. As Defesas Civis estaduais reforçaram os alertas preventivos devido à chegada de uma nova frente fria.",
+      "resumo_pulso": "Conforme apuração do InfoMoney, novas chuvas intensas e temporais devem atingir o Rio Grande do Sul, Santa Catarina e Paraná após os severos estragos causados por uma supercélula. As Defesas Civis estaduais reforçaram os alertas preventivos devido à chegada de uma nova frente fria.",
+      "sintese_nerd": "População em áreas de risco no Sul deve redobrar cuidados com alagamentos e deslizamentos de terra.",
+      "impacto_pratico": "População em áreas de risco no Sul deve redobrar cuidados com alagamentos e deslizamentos de terra.",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "veiculos_origem": [
+        "InfoMoney"
+      ],
+      "fontes_urls": [
+        "https://www.infomoney.com.br/brasil/novos-temporais-devem-atingir-sul-do-pais-apos-supercelula-arrasar-cidade-do-rs/"
+      ],
+      "data_publicacao": "2026-11-21T12:40:28Z",
+      "updated_at": "2026-11-21T13:02:47Z"
+    },
+    {
+      "slug": "jair-bolsonaro-internado-dfstar-procedimento-com-sonda",
+      "titulo_tema": "Defesa de Jair Bolsonaro pede ao STF autorização para visitas diárias de filhos em hospital",
+      "titulo_curto": "Defesa de Jair Bolsonaro pede ao STF autorização para visitas diárias de filhos em hospital",
+      "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Cultura",
+      "categoria": "Sociedade_Cultura",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/cultura",
+      "relevancia_score": 90,
+      "urgencia_score": 89,
+      "ttl_horas": 12,
+      "expires_at": "2026-11-21T23:41:11Z",
+      "palavras_chave_busca": [
+        "jair bolsonaro",
+        "stf",
+        "alexandre de moraes",
+        "hospital df star",
+        "brasília"
+      ],
+      "palavras_chave": [
+        "jair bolsonaro",
+        "stf",
+        "alexandre de moraes",
+        "hospital df star",
+        "brasília"
+      ],
+      "gatilho_vitrine": "Segundo apuração do G1 Política, a defesa de Jair Bolsonaro protocolou pedido de urgência ao ministro Alexandre de Moraes para permitir visitas diárias de seus filhos no Hospital DF Star, em Brasília. O ex-presidente permanece internado após apresentar quadro de dor e distensão abdominal.",
+      "resumo_pulso": "Segundo apuração do G1 Política, a defesa de Jair Bolsonaro protocolou pedido de urgência ao ministro Alexandre de Moraes para permitir visitas diárias de seus filhos no Hospital DF Star, em Brasília. O ex-presidente permanece internado após apresentar quadro de dor e distensão abdominal.",
+      "sintese_nerd": "Acompanhamento médico e restrições judiciais de circulação e visitas a figuras públicas sob cautelar.",
+      "impacto_pratico": "Acompanhamento médico e restrições judiciais de circulação e visitas a figuras públicas sob cautelar.",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "veiculos_origem": [
+        "G1 Política"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/politica/noticia/2026/11/21/defesa-de-bolsonaro-pede-a-moraes-autorizacao-para-visitas-diarias-de-filhos-durante-internacao.ghtml"
+      ],
+      "data_publicacao": "2026-11-21T11:31:47Z",
+      "updated_at": "2026-11-21T13:02:47Z"
+    },
+    {
+      "slug": "uniao-europeia-propoe-taxar-big-techs-orcamento-2034",
+      "titulo_tema": "União Europeia detalha proposta de orçamento de longo prazo com taxação de big techs até 2034",
+      "titulo_curto": "União Europeia detalha proposta de orçamento de longo prazo com taxação de big techs até 2034",
+      "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Economia",
+      "categoria": "Economia_Comercio",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 92,
+      "urgencia_score": 91,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-22T11:41:11Z",
+      "palavras_chave_busca": [
+        "união europeia",
+        "orçamento",
+        "big techs",
+        "taxação",
+        "economia digital"
+      ],
+      "palavras_chave": [
+        "união europeia",
+        "orçamento",
+        "big techs",
+        "taxação",
+        "economia digital"
+      ],
+      "gatilho_vitrine": "Conforme apuração do G1 Economia, a União Europeia apresentou oficialmente sua proposta orçamentária para o período de 2028 a 2034, introduzindo cobranças anuais sobre receitas de grandes empresas de tecnologia. A medida busca diversificar as fontes de financiamento do bloco europeu para a próxima década.",
+      "resumo_pulso": "Conforme apuração do G1 Economia, a União Europeia apresentou oficialmente sua proposta orçamentária para o período de 2028 a 2034, introduzindo cobranças anuais sobre receitas de grandes empresas de tecnologia. A medida busca diversificar as fontes de financiamento do bloco europeu para a próxima década.",
+      "sintese_nerd": "Potencial impacto financeiro e regulatório sobre grandes corporações de tecnologia com atuação global.",
+      "impacto_pratico": "Potencial impacto financeiro e regulatório sobre grandes corporações de tecnologia com atuação global.",
+      "paises_envolvidos": [
+        "EU"
+      ],
+      "veiculos_origem": [
+        "G1 Economia"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/tecnologia/noticia/2026/11/21/uniao-europeia-propoe-taxar-big-techs-para-financiar-orcamento-ate-2034.ghtml"
+      ],
+      "data_publicacao": "2026-11-21T11:26:05Z",
+      "updated_at": "2026-11-21T13:02:47Z"
+    },
+    {
+      "slug": "fbi-investiga-invasao-banco-dados-nacional-criminais-eua",
       "status": "novo",
       "categoria": "Geopolitica_Relacoes",
       "ttl_horas": 12,
@@ -264,11 +445,60 @@
         "Resumo_Ultimas"
       ],
       "palavras_chave_busca": [
+>>>>>>> 63f261d (att rOm)
         "fbi",
         "eua",
         "cibersegurança",
         "segurança pública"
       ]
+<<<<<<< HEAD
+=======
+    },
+    {
+      "slug": "feira-orgulho-nerd-sp-programacao-gratuita",
+      "status": "novo",
+      "categoria": "Sociedade_Cultura",
+      "ttl_horas": 12,
+      "expires_at": "2026-11-22T00:17:26Z",
+      "updated_at": "2026-11-21T12:17:26Z",
+      "fontes_urls": [
+        "https://agenciabrasil.ebc.com.br/cultura/noticia/2026-11/feira-orgulho-nerd-em-sp-tem-cinema-oficinas-e-games"
+      ],
+      "titulo_tema": "Feira Orgulho Nerd SP inicia programação gratuita com foco em cultura geek",
+      "resumo_pulso": "A segunda edição da feira Orgulho Nerd SP começou hoje na Mercado Livre Arena Pacaembu. O evento oferece atividades gratuitas como cinema, campeonatos de games e painéis com criadores de conteúdo.",
+      "sintese_nerd": "Opção de lazer cultural gratuita para o público em São Paulo.",
+      "titulo_curto": "Feira Orgulho Nerd SP inicia programação gratuita com foco em cultura geek",
+      "rota_editoria": "/cultura",
+      "palavras_chave": [
+        "orgulho nerd",
+        "são paulo",
+        "cultura geek",
+        "eventos"
+      ],
+      "urgencia_score": 60,
+      "data_publicacao": "2026-11-21T10:12:00Z",
+      "gatilho_vitrine": "A segunda edição da feira Orgulho Nerd SP começou hoje na Mercado Livre Arena Pacaembu. O evento oferece atividades gratuitas como cinema, campeonatos de games e painéis com criadores de conteúdo.",
+      "impacto_pratico": "Opção de lazer cultural gratuita para o público em São Paulo.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "Agência Brasil"
+      ],
+      "relevancia_score": 70,
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "categoria_primaria": "Cultura",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "orgulho nerd",
+        "são paulo",
+        "cultura geek",
+        "eventos"
+      ]
+>>>>>>> 63f261d (att rOm)
     },
     {
       "slug": "feira-orgulho-nerd-sp-programacao-gratuita",
@@ -847,6 +1077,7 @@
         "reforma da justica",
         "codigo de etica"
       ]
+<<<<<<< HEAD
     }
   ],
   "temas_curadoria": [
@@ -927,11 +1158,14 @@
       "sintese_nerd": "A pressão por um plano consistente de ajuste de despesas obrigatórias para conter a dívida pública gera atritos políticos na base do governo e volatilidade nos mercados. A percepção de risco fiscal afeta diretamente a confiança dos investidores locais e estrangeiros, pressionando o câmbio e a curva de juros.",
       "data_publicacao": "2026-11-21T13:15:04Z",
       "updated_at": "2026-11-21T13:15:04Z"
+=======
+>>>>>>> 63f261d (att rOm)
     }
   ],
   "noticias_quentes": [
     {
       "slug": "novos-temporais-sul-do-pais-supercelula-rs",
+<<<<<<< HEAD
       "categoria": "Ciencia_Clima",
       "ttl_horas": 24,
       "expires_at": "2026-11-22T12:48:01Z",
@@ -941,6 +1175,26 @@
       ],
       "resumo_pulso": "Conforme apuração do InfoMoney, novas chuvas intensas e temporais devem atingir o Rio Grande do Sul, Santa Catarina e Paraná após os severos estragos causados por uma supercélula. As Defesas Civis estaduais reforçaram os alertas preventivos devido à chegada de uma nova frente fria.",
       "titulo_curto": "Defesa Civil e Climatempo mantêm alertas de novos temporais e chuvas intensas no Sul do país",
+=======
+      "titulo_curto": "Defesa Civil e Climatempo mantêm alertas de novos temporais e chuvas intensas no Sul do país",
+      "resumo_pulso": "Conforme apuração do InfoMoney, novas chuvas intensas e temporais devem atingir o Rio Grande do Sul, Santa Catarina e Paraná após os severos estragos causados por uma supercélula. As Defesas Civis estaduais reforçaram os alertas preventivos devido à chegada de uma nova frente fria.",
+      "impacto_pratico": "População em áreas de risco no Sul deve redobrar cuidados com alagamentos e deslizamentos de terra.",
+      "categoria": "Ciencia_Clima",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "urgencia_score": 96,
+      "relevancia_score": 93,
+      "nivel_confianca": "alta",
+      "ttl_horas": 24,
+      "horas_em_destaque": 12,
+      "veiculos_origem": [
+        "InfoMoney"
+      ],
+      "fontes_urls": [
+        "https://www.infomoney.com.br/brasil/novos-temporais-devem-atingir-sul-do-pais-apos-supercelula-arrasar-cidade-do-rs/"
+      ],
+>>>>>>> 63f261d (att rOm)
       "palavras_chave": [
         "temporais",
         "Sul do país",
@@ -948,6 +1202,7 @@
         "Defesa Civil",
         "supercélula"
       ],
+<<<<<<< HEAD
       "urgencia_score": 96,
       "data_publicacao": "2026-11-21T12:40:28Z",
       "impacto_pratico": "População em áreas de risco no Sul deve redobrar cuidados com alagamentos e deslizamentos de terra.",
@@ -967,11 +1222,33 @@
           "titulo_existente": "Clima, Amazônia e Transição Energética"
         }
       ]
+=======
+      "data_publicacao": "2026-11-21T12:40:28Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "Clima, Amazônia e Transição Energética",
+          "url_existente": "https://www.rodandoomundo.com.br/clima",
+          "motivo_conexao": "Contextualiza eventos climáticos extremos e alertas meteorológicos no Brasil."
+        }
+      ],
+      "expires_at": "2026-11-22T12:48:01Z",
+      "updated_at": "2026-11-21T13:02:47Z"
+>>>>>>> 63f261d (att rOm)
     },
     {
       "slug": "jair-bolsonaro-internado-dfstar-procedimento-com-sonda",
+      "titulo_curto": "Defesa de Jair Bolsonaro pede ao STF autorização para visitas diárias de filhos em hospital",
+      "resumo_pulso": "Segundo apuração do G1 Política, a defesa de Jair Bolsonaro protocolou pedido de urgência ao ministro Alexandre de Moraes para permitir visitas diárias de seus filhos no Hospital DF Star, em Brasília. O ex-presidente permanece internado após apresentar quadro de dor e distensão abdominal.",
+      "impacto_pratico": "Acompanhamento médico e restrições judiciais de circulação e visitas a figuras públicas sob cautelar.",
       "categoria": "Sociedade_Cultura",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "urgencia_score": 89,
+      "relevancia_score": 90,
+      "nivel_confianca": "alta",
       "ttl_horas": 12,
+<<<<<<< HEAD
       "expires_at": "2026-11-21T23:41:11Z",
       "updated_at": "2026-11-21T13:02:47Z",
       "fontes_urls": [
@@ -979,6 +1256,15 @@
       ],
       "resumo_pulso": "Segundo apuração do G1 Política, a defesa de Jair Bolsonaro protocolou pedido de urgência ao ministro Alexandre de Moraes para permitir visitas diárias de seus filhos no Hospital DF Star, em Brasília. O ex-presidente permanece internado após apresentar quadro de dor e distensão abdominal.",
       "titulo_curto": "Defesa de Jair Bolsonaro pede ao STF autorização para visitas diárias de filhos em hospital",
+=======
+      "horas_em_destaque": 6,
+      "veiculos_origem": [
+        "G1 Política"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/politica/noticia/2026/11/21/defesa-de-bolsonaro-pede-a-moraes-autorizacao-para-visitas-diarias-de-filhos-durante-internacao.ghtml"
+      ],
+>>>>>>> 63f261d (att rOm)
       "palavras_chave": [
         "Jair Bolsonaro",
         "STF",
@@ -986,6 +1272,7 @@
         "Hospital DF Star",
         "Brasília"
       ],
+<<<<<<< HEAD
       "urgencia_score": 89,
       "data_publicacao": "2026-11-21T11:31:47Z",
       "impacto_pratico": "Acompanhamento médico e restrições judiciais de circulação e visitas a figuras públicas sob cautelar.",
@@ -994,10 +1281,125 @@
         "G1 Política"
       ],
       "relevancia_score": 90,
+=======
+      "data_publicacao": "2026-11-21T11:31:47Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "STF analisa regras de transparência e limites constitucionais entre os Poderes",
+          "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
+          "motivo_conexao": "Relaciona decisões e petições direcionadas ao Supremo Tribunal Federal."
+        }
+      ],
+      "expires_at": "2026-11-21T23:41:11Z",
+      "updated_at": "2026-11-21T13:02:47Z"
+    },
+    {
+      "slug": "uniao-europeia-propoe-taxar-big-techs-orcamento-2034",
+      "titulo_curto": "União Europeia detalha proposta de orçamento de longo prazo com taxação de big techs até 2034",
+      "resumo_pulso": "Conforme apuração do G1 Economia, a União Europeia apresentou oficialmente sua proposta orçamentária para o período de 2028 a 2034, introduzindo cobranças anuais sobre receitas de grandes empresas de tecnologia. A medida busca diversificar as fontes de financiamento do bloco europeu para a próxima década.",
+      "impacto_pratico": "Potencial impacto financeiro e regulatório sobre grandes corporações de tecnologia com atuação global.",
+      "categoria": "Economia_Comercio",
+      "paises_envolvidos": [
+        "EU"
+      ],
+      "urgencia_score": 91,
+      "relevancia_score": 92,
+      "nivel_confianca": "alta",
+      "ttl_horas": 24,
+      "horas_em_destaque": 12,
+      "veiculos_origem": [
+        "G1 Economia"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/tecnologia/noticia/2026/11/21/uniao-europeia-propoe-taxar-big-techs-para-financiar-orcamento-ate-2034.ghtml"
+      ],
+      "palavras_chave": [
+        "União Europeia",
+        "orçamento",
+        "big techs",
+        "taxação",
+        "economia digital"
+      ],
+      "data_publicacao": "2026-11-21T11:26:05Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "O que é uma sanção internacional?",
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-sancao-internacional",
+          "motivo_conexao": "Explica o uso de instrumentos econômicos e regulatórios por organismos multilaterais."
+        }
+      ],
+      "expires_at": "2026-11-22T11:41:11Z",
+      "updated_at": "2026-11-21T13:02:47Z"
+    },
+    {
+      "slug": "fbi-investiga-invasao-banco-dados-nacional-criminais-eua",
+      "categoria": "Geopolitica_Relacoes",
+      "ttl_horas": 12,
+      "expires_at": "2026-11-22T10:43:32Z",
+      "updated_at": "2026-11-21T12:32:02Z",
+      "fontes_urls": [
+        "https://g1.globo.com/mundo/noticia/2026/11/21/fbi-investiga-invasao-a-banco-dados-nacional-de-informacoes-criminais-diz-tv.ghtml"
+      ],
+      "resumo_pulso": "Segundo apuração da CNN e do G1 Mundo, o FBI abriu investigação sobre uma possível invasão a um banco de dados de segurança pública usado por agências federais e locais nos Estados Unidos. A ocorrência se soma a uma série recente de falhas sistêmicas e cibernéticas no país.",
+      "titulo_curto": "FBI investiga invasão a banco de dados nacional de informações criminais nos EUA",
+      "palavras_chave": [
+        "FBI",
+        "EUA",
+        "Cibersegurança",
+        "Segurança Pública"
+      ],
+      "urgencia_score": 96,
+      "data_publicacao": "2026-11-21T10:27:04Z",
+      "impacto_pratico": "Possíveis riscos de vazamento de dados sensíveis e instabilidade em serviços de segurança pública nos Estados Unidos.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "G1 Mundo",
+        "CNN"
+      ],
+      "relevancia_score": 94,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "US"
+      ],
+      "links_internos_relacionados": [
+        {
+          "url_existente": "https://www.rodandoomundo.com.br/politica/estados-unidos",
+          "motivo_conexao": "Contextualiza o cenário institucional e de segurança em Washington.",
+          "titulo_existente": "Política nos Estados Unidos"
+        }
+      ]
+    },
+    {
+      "slug": "feira-orgulho-nerd-sp-programacao-gratuita",
+      "categoria": "Sociedade_Cultura",
+      "ttl_horas": 12,
+      "expires_at": "2026-11-22T00:17:26Z",
+      "updated_at": "2026-11-21T12:17:26Z",
+      "fontes_urls": [
+        "https://agenciabrasil.ebc.com.br/cultura/noticia/2026-11/feira-orgulho-nerd-em-sp-tem-cinema-oficinas-e-games"
+      ],
+      "resumo_pulso": "A segunda edição da feira Orgulho Nerd SP começou hoje na Mercado Livre Arena Pacaembu. O evento oferece atividades gratuitas como cinema, campeonatos de games e painéis com criadores de conteúdo.",
+      "titulo_curto": "Feira Orgulho Nerd SP inicia programação gratuita com foco em cultura geek",
+      "palavras_chave": [
+        "Orgulho Nerd",
+        "São Paulo",
+        "Cultura Geek",
+        "Eventos"
+      ],
+      "urgencia_score": 60,
+      "data_publicacao": "2026-11-21T10:12:00Z",
+      "impacto_pratico": "Opção de lazer cultural gratuita para o público em São Paulo.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Agência Brasil"
+      ],
+      "relevancia_score": 70,
+>>>>>>> 63f261d (att rOm)
       "horas_em_destaque": 6,
       "paises_envolvidos": [
         "BR"
       ],
+<<<<<<< HEAD
       "links_internos_relacionados": [
         {
           "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
@@ -1111,6 +1513,8 @@
       "paises_envolvidos": [
         "BR"
       ],
+=======
+>>>>>>> 63f261d (att rOm)
       "links_internos_relacionados": []
     },
     {
@@ -1660,6 +2064,117 @@
         "UY"
       ],
       "links_internos_relacionados": []
+<<<<<<< HEAD
+=======
+    }
+  ],
+  "temas_curadoria": [
+    {
+      "slug": "escalada-estreito-hormuz-eua-ira-petroleo",
+      "status": "novo",
+      "ttl_horas": 48,
+      "expires_at": "2026-11-23T10:00:34Z",
+      "updated_at": "2026-11-21T10:00:34Z",
+      "titulo_tema": "Escalada militar no Estreito de Ormuz e impactos na cotação do petróleo",
+      "sintese_nerd": "O abate de um drone norte-americano e o bloqueio parcial no Estreito de Ormuz elevam a tensão geopolítica na rota por onde passa um quinto do petróleo mundial. Esse gargalo logístico pressiona o valor do barril no mercado global com risco iminente de repasse para os combustíveis no Brasil.",
+      "rota_editoria": "/radar",
+      "data_publicacao": "2026-11-21T10:00:34Z",
+      "gatilho_vitrine": "Destacar no topo do Radar Geopolítico o risco de desabastecimento energético global e a repassagem de preços no Brasil.",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 95,
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Politica"
+      ],
+      "palavras_chave_busca": [
+        "estreito de ormuz",
+        "eua e irã",
+        "drone abatido",
+        "preço do petróleo",
+        "sanções americanas",
+        "crise de energia"
+      ]
+    },
+    {
+      "slug": "vistos-diplomaticos-brasil-eua-lula-trump",
+      "status": "novo",
+      "ttl_horas": 72,
+      "expires_at": "2026-11-24T10:00:34Z",
+      "updated_at": "2026-11-21T10:00:34Z",
+      "titulo_tema": "Impasse diplomático de vistos entre governos Lula e Trump",
+      "sintese_nerd": "A retaliação velada na concessão de credenciais diplomáticas entre Brasil e Estados Unidos ilustra o esfriamento das relações formais no início da gestão Trump. O impasse expõe os limites da diplomacia pragmática em equilibrar soberania institucional e interlocução com potências globais.",
+      "rota_editoria": "/politica",
+      "data_publicacao": "2026-11-21T10:00:34Z",
+      "gatilho_vitrine": "Exibir na editoria de Política para detalhar as negociações diretas de bastidor entre Brasília e Washington.",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 89,
+      "categoria_primaria": "Politica",
+      "categorias_cruzadas": [
+        "Geopolitica_Radar"
+      ],
+      "palavras_chave_busca": [
+        "vistos diplomáticos",
+        "governo lula",
+        "governo trump",
+        "embaixada americana",
+        "itamaraty",
+        "relações bilaterais"
+      ]
+    },
+    {
+      "slug": "venda-acoes-tecnologia-queda-bolsas-mercados",
+      "status": "em_alta",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-22T10:00:34Z",
+      "updated_at": "2026-11-21T10:00:34Z",
+      "titulo_tema": "Onda de vendas em tecnologia gera forte retração nas bolsas mundiais",
+      "sintese_nerd": "Incertezas sobre os retornos financeiros maciços no setor de Inteligência Artificial deflagraram uma realização de lucros generalizada na Europa e nos EUA. Essa correção técnica aumenta a volatilidade nos mercados emergentes e afeta diretamente a atratividade do mercado de capital brasileiro.",
+      "rota_editoria": "/economia",
+      "data_publicacao": "2026-11-21T10:00:34Z",
+      "gatilho_vitrine": "Posicionar na Home de Economia com foco na aversão ao risco global e contaminação do Ibovespa.",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 85,
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Cultura",
+        "Geopolitica_Radar"
+      ],
+      "palavras_chave_busca": [
+        "bolsa de valores",
+        "ações de tecnologia",
+        "mercado europeu",
+        "queda nas bolsas",
+        "inteligência artificial",
+        "big techs"
+      ]
+    },
+    {
+      "slug": "novo-desenrola-relatorio-compra-dividas-uniao",
+      "status": "novo",
+      "ttl_horas": 48,
+      "expires_at": "2026-11-23T10:00:34Z",
+      "updated_at": "2026-11-21T10:00:34Z",
+      "titulo_tema": "Projeto do Novo Desenrola prevê compra de R$ 15 bilhões em dívidas pela União",
+      "sintese_nerd": "O avanço da proposta que permite à União comprar R$ 15 bilhões em passivos de inadimplentes busca recuperar o poder de consumo da população endividada. A medida contrabalança a necessidade de socorro econômico popular com os questionamentos do mercado financeiro quanto ao risco de responsabilidade fiscal.",
+      "rota_editoria": "/economia",
+      "data_publicacao": "2026-11-21T10:00:34Z",
+      "gatilho_vitrine": "Destacar no hub de Economia com guia explicativo sobre as regras de elegibilidade para pessoas físicas.",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 81,
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Politica"
+      ],
+      "palavras_chave_busca": [
+        "novo desenrola",
+        "cid gomes",
+        "renegociação de dívidas",
+        "inadimplência",
+        "crédito consignado",
+        "união compra dívidas"
+      ]
+>>>>>>> 63f261d (att rOm)
     }
   ]
 }

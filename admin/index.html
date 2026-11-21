@@ -1493,6 +1493,10 @@
           <a class="admin-nav-link" href="#admin-section-fontes" data-nav-target="admin-section-fontes">
             <span>Fontes</span><span class="admin-nav-count" id="nav-count-fontes" title="Fontes ativas">0</span>
           </a>
+          <div class="admin-nav-group">Comercial</div>
+          <a class="admin-nav-link" href="#admin-section-patrocinios" data-nav-target="admin-section-patrocinios">
+            <span>Patrocínios / Cotas</span><span class="admin-nav-count" id="nav-count-patrocinios" title="Cotas ativas">0/4</span>
+          </a>
           <div class="admin-nav-foot">
             <button id="btn-recolher-demais" class="admin-btn admin-btn-sm" type="button" title="Expande Análise e recolhe as demais seções">Focar na análise</button>
             <button id="btn-nav-sair" class="admin-btn admin-btn-sm admin-btn-danger" type="button">Sair</button>
@@ -2399,6 +2403,45 @@
                   </tr>
                 </tbody>
               </table>
+            </div>
+          </section>
+
+          <!-- Seção Comercial: Patrocínios & Cotas (4 Cotas) -->
+          <section class="admin-card" id="admin-section-patrocinios" data-admin-section="patrocinios"
+            data-default-collapsed="1" aria-labelledby="admin-section-patrocinios_title">
+            <div class="admin-card-head">
+              <div>
+                <h2 id="admin-section-patrocinios_title" class="admin-card-title">Patrocínios &amp; Cotas (4 Cotas)</h2>
+                <p class="admin-sub">Configure logo/foto, frase, link e ative ao vivo no site público quando fechar um patrocinador ou apoiador.</p>
+              </div>
+              <div class="admin-head-actions">
+                <button id="btn-patrocinios-recarregar" class="admin-btn admin-btn-sm" type="button">Recarregar</button>
+                <button id="btn-patrocinios-salvar" class="admin-btn admin-btn-primary admin-btn-sm" type="button">Salvar e Publicar</button>
+              </div>
+            </div>
+
+            <div id="patrocinios-banner" class="admin-banner"></div>
+
+            <div class="admin-tabs" id="patrocinios-subtabs" role="tablist" aria-label="Abas de patrocínios" style="margin: var(--space-3) 0; border-bottom: 2px solid var(--border); padding-bottom: 4px;">
+              <button class="admin-tab active" type="button" role="tab" id="tab-btn-pat-config" data-pat-tab="config" aria-selected="true">
+                <span>Cadastrar / Editar Cotas</span>
+              </button>
+              <button class="admin-tab" type="button" role="tab" id="tab-btn-pat-ativos" data-pat-tab="ativos" aria-selected="false">
+                <span>Ativos &amp; Contratos</span>
+                <span class="admin-nav-count" id="tab-count-pat-ativos" style="margin-left:6px;">0</span>
+              </button>
+            </div>
+
+            <div id="pat-panel-config">
+              <div id="patrocinios-cotas-grid" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: var(--space-4); margin-top: var(--space-3);">
+                <!-- Renderizado via JS para as 4 cotas -->
+              </div>
+            </div>
+
+            <div id="pat-panel-ativos" class="hidden">
+              <div id="patrocinios-ativos-list" style="display:flex; flex-direction:column; gap: var(--space-3); margin-top: var(--space-3);">
+                <!-- Renderizado via JS -->
+              </div>
             </div>
           </section>
           </div>
@@ -3997,6 +4040,7 @@
         };
         renderDossiesContagens();
         renderDossies();
+        if (typeof renderPatrociniosGrid === 'function') renderPatrociniosGrid();
       }
 
       function setDossieAiSectionVisible(visible) {
@@ -6900,7 +6944,7 @@
       // ============================ AUTENTICAÇÃO ============================
       async function carregarTudo() {
         await carregarKillSwitch();
-        await Promise.all([carregarFontes(), carregarEventos(), carregarDossiesAdmin(), carregarExecucoes(), carregarRadar(), carregarNoticiasQuentes(), carregarColunas(), carregarStatusBotDdg(), carregarStatusBotYouTube()]);
+        await Promise.all([carregarFontes(), carregarEventos(), carregarDossiesAdmin(), carregarExecucoes(), carregarRadar(), carregarNoticiasQuentes(), carregarColunas(), carregarStatusBotDdg(), carregarStatusBotYouTube(), carregarPatrocinadores()]);
       }
 
       async function conectar() {
@@ -7017,6 +7061,474 @@
           await Promise.all([carregarEventos(), carregarColunas(), carregarFontes()]);
         } catch (_) {}
       }, 30000);
+
+      // ===================== PATROCÍNIOS & COTAS (4 COTAS) =====================
+      const COTAS_META = [
+        {
+          key: 'cota_master',
+          titulo: 'Cota 01 — Founding Partner (Master)',
+          desc: 'Banner fixo global no topo do atlas em todos os continentes.',
+          extra: 'sobre'
+        },
+        {
+          key: 'dossie_tematico',
+          titulo: 'Cota 02 — Inteligência Setorial (Dossiês)',
+          desc: 'Card nativo no topo do hub temático/dossiê escolhido.',
+          extra: 'hub'
+        },
+        {
+          key: 'resumo_dia',
+          titulo: 'Cota 03 — Briefing Matinal (Resumo do Dia)',
+          desc: 'Oferecimento exclusivo no topo do Resumo do Dia.',
+          extra: 'none'
+        },
+        {
+          key: 'gaveta_contextual',
+          titulo: 'Cota 04 — Território & Contexto (Geo)',
+          desc: 'Card no rodapé da gaveta de veículos do país. Use {pais} na frase.',
+          extra: 'paises'
+        }
+      ];
+
+      function criarDefaultsCotas() {
+        return {
+          cota_master: { ativo: false, nome: '', logo_url: '', frase: 'Apresentado com exclusividade global por', cta_texto: 'Conheça as soluções →', link_url: '', data_inicio: '', data_fim: '', exibir_no_sobre: true },
+          dossie_tematico: { ativo: false, nome: '', logo_url: '', frase: 'Apoio institucional à cobertura setorial aprofundada.', cta_texto: 'Saiba mais', link_url: '', data_inicio: '', data_fim: '', hub_alvo: 'todos' },
+          resumo_dia: { ativo: false, nome: '', logo_url: '', frase: 'Conectando você às principais movimentações e análises do planeta.', cta_texto: 'Saiba mais', link_url: '', data_inicio: '', data_fim: '' },
+          gaveta_contextual: { ativo: false, nome: '', logo_url: '', frase: 'Soluções globais para suas conexões com {pais}.', cta_texto: 'Conhecer soluções', link_url: '', data_inicio: '', data_fim: '', paises_alvo: 'todos' }
+        };
+      }
+
+      let patrociniosState = criarDefaultsCotas();
+      let patrociniosActiveTab = 'config';
+
+      function getHojeYmd() {
+        const d = new Date();
+        return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+      }
+
+      function formatarDataBr(ymd) {
+        if (!ymd || !/^\d{4}-\d{2}-\d{2}$/.test(ymd)) return '—';
+        const [y, m, d] = ymd.split('-');
+        return `${d}/${m}/${y}`;
+      }
+
+      function obterStatusContrato(item) {
+        if (!item || !item.ativo) {
+          return { code: 'pausado', label: '○ PAUSADO / RASCUNHO', color: 'var(--text-muted)' };
+        }
+        const hoje = getHojeYmd();
+        const ini = (item.data_inicio || '').trim();
+        const fim = (item.data_fim || '').trim();
+        if (ini && hoje < ini) {
+          return { code: 'agendado', label: `◷ AGENDADO (inicia ${formatarDataBr(ini)})`, color: '#d29922' };
+        }
+        if (fim && hoje > fim) {
+          return { code: 'expirado', label: `✕ EXPIRADO (em ${formatarDataBr(fim)})`, color: '#f85149' };
+        }
+        return { code: 'vigente', label: '● ATIVO / EM VIGÊNCIA', color: '#2ea043' };
+      }
+
+      function setPatrociniosTab(tabName) {
+        patrociniosActiveTab = tabName === 'ativos' ? 'ativos' : 'config';
+        const btnCfg = $('tab-btn-pat-config');
+        const btnAtv = $('tab-btn-pat-ativos');
+        const panCfg = $('pat-panel-config');
+        const panAtv = $('pat-panel-ativos');
+        if (btnCfg) {
+          btnCfg.classList.toggle('active', patrociniosActiveTab === 'config');
+          btnCfg.setAttribute('aria-selected', String(patrociniosActiveTab === 'config'));
+        }
+        if (btnAtv) {
+          btnAtv.classList.toggle('active', patrociniosActiveTab === 'ativos');
+          btnAtv.setAttribute('aria-selected', String(patrociniosActiveTab === 'ativos'));
+        }
+        if (panCfg) panCfg.classList.toggle('hidden', patrociniosActiveTab !== 'config');
+        if (panAtv) panAtv.classList.toggle('hidden', patrociniosActiveTab !== 'ativos');
+      }
+
+      function atualizarContadorPatrocinios() {
+        const configuradas = COTAS_META.filter(m => {
+          const it = patrociniosState[m.key];
+          return it && (it.ativo || (it.nome || '').trim() || (it.logo_url || '').trim());
+        }).length;
+        const vigentes = COTAS_META.filter(m => obterStatusContrato(patrociniosState[m.key]).code === 'vigente').length;
+        const badge = $('nav-count-patrocinios');
+        if (badge) badge.textContent = `${vigentes}/4`;
+        const tabBadge = $('tab-count-pat-ativos');
+        if (tabBadge) tabBadge.textContent = String(configuradas);
+      }
+
+      function escAttr(s) {
+        return String(s || '').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      }
+
+      function renderPreviewCota(key) {
+        const item = patrociniosState[key] || {};
+        const prevEl = document.getElementById(`prev-cota-${key}`);
+        if (!prevEl) return;
+        const nome = (item.nome || '').trim() || 'Sua Marca Aqui';
+        const frase = (item.frase || '').trim().replace(/\{pais\}/g, 'Brasil');
+        const cta = (item.cta_texto || '').trim() || 'Saiba mais';
+        const logoHtml = item.logo_url
+          ? `<img src="${escAttr(item.logo_url)}" alt="${escAttr(nome)}" style="max-height:28px;max-width:140px;object-fit:contain;border-radius:4px;vertical-align:middle;" />`
+          : `<span style="font-weight:700;padding:2px 8px;border-radius:4px;background:rgba(56,189,248,0.14);color:#38bdf8;border:1px solid rgba(56,189,248,0.3);">${escAttr(nome)}</span>`;
+        const st = obterStatusContrato(item);
+        const periodoTxt = (item.data_inicio || item.data_fim)
+          ? `Vigência: ${item.data_inicio ? formatarDataBr(item.data_inicio) : 'imediato'} até ${item.data_fim ? formatarDataBr(item.data_fim) : 'indeterminado'}`
+          : 'Vigência: sem data limite';
+
+        prevEl.innerHTML = `
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;gap:8px;flex-wrap:wrap;">
+            <span style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);">Pré-visualização · ${periodoTxt}</span>
+            <span style="font-size:0.7rem;font-weight:700;color:${st.color};">${st.label}</span>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;padding:10px 12px;border-radius:8px;border:1px solid var(--border);background:var(--bg);">
+            <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:0.85rem;">
+              ${logoHtml}
+              <span style="color:var(--text-muted);">${escAttr(frase)}</span>
+            </div>
+            <span style="font-size:0.78rem;font-weight:600;padding:4px 10px;border-radius:16px;background:var(--primary);color:#0b1120;">${escAttr(cta)}</span>
+          </div>
+        `;
+      }
+
+      function renderPatrociniosAtivos() {
+        const listEl = $('patrocinios-ativos-list');
+        if (!listEl) return;
+
+        const itens = COTAS_META.map(meta => ({ meta, item: patrociniosState[meta.key] || {} }))
+          .filter(({ item }) => item.ativo || (item.nome || '').trim() || (item.logo_url || '').trim());
+
+        if (!itens.length) {
+          listEl.innerHTML = `
+            <div style="padding:var(--space-5);text-align:center;border:1px dashed var(--border);border-radius:var(--radius-md);color:var(--text-muted);">
+              Nenhum patrocinador ou contrato cadastrado ainda. Preencha uma cota na aba <strong>Cadastrar / Editar Cotas</strong> e clique em <strong>Salvar e Publicar</strong>.
+            </div>
+          `;
+          return;
+        }
+
+        listEl.innerHTML = '';
+        itens.forEach(({ meta, item }) => {
+          const st = obterStatusContrato(item);
+          const nome = (item.nome || '').trim() || 'Sem nome';
+          const logoHtml = item.logo_url
+            ? `<img src="${escAttr(item.logo_url)}" alt="${escAttr(nome)}" style="max-height:34px;max-width:140px;object-fit:contain;border-radius:4px;background:rgba(255,255,255,0.03);padding:2px;" />`
+            : `<span style="font-weight:700;padding:3px 9px;border-radius:4px;background:rgba(56,189,248,0.14);color:#38bdf8;">${escAttr(nome)}</span>`;
+          const iniStr = item.data_inicio ? formatarDataBr(item.data_inicio) : 'Imediato';
+          const fimStr = item.data_fim ? formatarDataBr(item.data_fim) : 'Indeterminado';
+
+          const row = document.createElement('div');
+          row.style.cssText = 'border:1px solid var(--border);border-radius:var(--radius-md);padding:var(--space-4);background:var(--surface-hover, rgba(255,255,255,0.02));display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;';
+          row.innerHTML = `
+            <div style="display:flex;flex-direction:column;gap:6px;flex:1 1 320px;">
+              <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+                <strong style="font-size:0.95rem;">${meta.titulo}</strong>
+                <span style="font-size:0.72rem;font-weight:700;color:${st.color};">${st.label}</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:2px;">
+                ${logoHtml}
+                <span style="font-weight:600;">${escAttr(nome)}</span>
+                <span class="admin-sub">— ${escAttr(item.frase || '')}</span>
+              </div>
+              <div class="admin-sub" style="display:flex;gap:14px;flex-wrap:wrap;margin-top:2px;">
+                <span><strong>Contrato:</strong> ${iniStr} até ${fimStr}</span>
+                ${item.link_url ? `<span><strong>Link:</strong> <a href="${escAttr(item.link_url)}" target="_blank" rel="noopener" style="color:var(--primary);text-decoration:underline;">${escAttr(item.link_url)}</a></span>` : ''}
+              </div>
+            </div>
+            <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+              <button type="button" class="admin-btn admin-btn-sm" data-pat-acao="editar" data-pat-key="${meta.key}">✏️ Modificar</button>
+              <button type="button" class="admin-btn admin-btn-sm" data-pat-acao="toggle" data-pat-key="${meta.key}">${item.ativo ? '⏸️ Pausar' : '▶️ Ativar'}</button>
+              <button type="button" class="admin-btn admin-btn-sm admin-btn-danger" data-pat-acao="excluir" data-pat-key="${meta.key}">🗑️ Excluir</button>
+            </div>
+          `;
+          listEl.appendChild(row);
+        });
+
+        listEl.querySelectorAll('[data-pat-acao]').forEach(btn => {
+          btn.addEventListener('click', async () => {
+            const acao = btn.getAttribute('data-pat-acao');
+            const k = btn.getAttribute('data-pat-key');
+            if (acao === 'editar') {
+              setPatrociniosTab('config');
+              const cardEl = document.getElementById(`card-cota-${k}`);
+              if (cardEl) {
+                cardEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                const inp = cardEl.querySelector('input[type="text"]');
+                if (inp) inp.focus();
+              }
+            } else if (acao === 'toggle') {
+              patrociniosState[k].ativo = !patrociniosState[k].ativo;
+              await salvarPatrocinadores({ irParaAtivos: true });
+            } else if (acao === 'excluir') {
+              if (!confirm(`Excluir e limpar o contrato da ${k}? Isso removerá imediatamente do site.`)) return;
+              const defaults = criarDefaultsCotas();
+              patrociniosState[k] = defaults[k];
+              await salvarPatrocinadores({ irParaAtivos: true });
+            }
+          });
+        });
+      }
+
+      function otimizarImagemUpload(file) {
+        return new Promise((resolve, reject) => {
+          if (!file) return reject(new Error('Nenhum arquivo selecionado.'));
+          const isSvg = file.type === 'image/svg+xml' || /\.svg$/i.test(file.name || '');
+          if (isSvg) {
+            if (file.size > 150 * 1024) return reject(new Error('SVG deve ter no máximo 150 KB.'));
+            const reader = new FileReader();
+            reader.onload = () => resolve(String(reader.result || ''));
+            reader.onerror = () => reject(new Error('Falha ao ler SVG.'));
+            reader.readAsDataURL(file);
+            return;
+          }
+          const img = new Image();
+          const objUrl = URL.createObjectURL(file);
+          img.onload = () => {
+            try {
+              const maxH = 160;
+              const maxW = 480;
+              let w = img.naturalWidth || img.width || 160;
+              let h = img.naturalHeight || img.height || 80;
+              const ratio = Math.min(maxW / w, maxH / h, 1);
+              w = Math.max(1, Math.round(w * ratio));
+              h = Math.max(1, Math.round(h * ratio));
+              const canvas = document.createElement('canvas');
+              canvas.width = w;
+              canvas.height = h;
+              const ctx = canvas.getContext('2d');
+              ctx.clearRect(0, 0, w, h);
+              ctx.drawImage(img, 0, 0, w, h);
+              let dataUri = canvas.toDataURL('image/webp', 0.88);
+              if (!dataUri.startsWith('data:image/webp')) {
+                dataUri = canvas.toDataURL('image/png');
+              }
+              URL.revokeObjectURL(objUrl);
+              resolve(dataUri);
+            } catch (e) {
+              URL.revokeObjectURL(objUrl);
+              reject(e);
+            }
+          };
+          img.onerror = () => {
+            URL.revokeObjectURL(objUrl);
+            reject(new Error('Arquivo de imagem inválido.'));
+          };
+          img.src = objUrl;
+        });
+      }
+
+      function renderPatrociniosGrid() {
+        const grid = $('patrocinios-cotas-grid');
+        if (!grid) return;
+        grid.innerHTML = '';
+
+        COTAS_META.forEach(meta => {
+          const item = patrociniosState[meta.key] || {};
+          const card = document.createElement('div');
+          card.id = `card-cota-${meta.key}`;
+          card.style.cssText = 'border:1px solid var(--border);border-radius:var(--radius-md);padding:var(--space-4);background:var(--surface-hover, rgba(255,255,255,0.02));display:flex;flex-direction:column;gap:10px;';
+
+          let extraHtml = '';
+          if (meta.extra === 'hub') {
+            const hubsFixos = [
+              ['todos', 'Todos os Dossiês & Hubs'],
+              ['economia', 'Hub: Economia Global'],
+              ['clima', 'Hub: Clima & COP30'],
+              ['tecnologia', 'Hub: IA & Tecnologia'],
+              ['eleicoes', 'Hub: Eleições']
+            ];
+            const dossiesAtivos = (state.dossies || []).filter(d => d && d.slug && d.status !== 'arquivo');
+            const curVal = item.hub_alvo || 'todos';
+            const dossiesOpts = dossiesAtivos.map(d => {
+              const v = `dossie:${d.slug}`;
+              const statusTxt = d.status === 'em_breve' ? ' (Em breve)' : '';
+              return `<option value="${escAttr(v)}" ${curVal === v ? 'selected' : ''}>Dossiê: ${escAttr(d.titulo || d.slug)}${statusTxt}</option>`;
+            }).join('');
+
+            extraHtml = `
+              <div class="admin-field">
+                <label>Dossiê ou Hub Alvo <span class="admin-sub">(sincronizado apenas com dossiês ativos)</span></label>
+                <select class="admin-input" data-cota-field="${meta.key}:hub_alvo">
+                  <optgroup label="Geral e Hubs Temáticos">
+                    ${hubsFixos.map(([v, lbl]) => `<option value="${v}" ${curVal === v ? 'selected' : ''}>${lbl}</option>`).join('')}
+                  </optgroup>
+                  ${dossiesAtivos.length ? `<optgroup label="Dossiês Ativos (${dossiesAtivos.length})">${dossiesOpts}</optgroup>` : ''}
+                </select>
+              </div>
+            `;
+          } else if (meta.extra === 'paises') {
+            extraHtml = `
+              <div class="admin-field">
+                <label>Países Alvo (use <code>todos</code> ou códigos ISO ex: <code>BR,US,PT</code>)</label>
+                <input class="admin-input" type="text" data-cota-field="${meta.key}:paises_alvo" value="${escAttr(item.paises_alvo || 'todos')}" placeholder="todos" />
+              </div>
+            `;
+          }
+
+          card.innerHTML = `
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;">
+              <div>
+                <strong style="font-size:0.98rem;">${meta.titulo}</strong>
+                <p class="admin-sub" style="margin-top:2px;">${meta.desc}</p>
+              </div>
+              <label style="display:inline-flex;align-items:center;gap:6px;cursor:pointer;font-size:0.82rem;font-weight:600;white-space:nowrap;">
+                <input type="checkbox" data-cota-ativo="${meta.key}" ${item.ativo ? 'checked' : ''} />
+                Ativo
+              </label>
+            </div>
+
+            <div class="admin-field">
+              <label>Nome do Patrocinador / Apoiador</label>
+              <input class="admin-input" type="text" data-cota-field="${meta.key}:nome" value="${escAttr(item.nome)}" placeholder="Ex: Banco Global S.A." maxlength="120" />
+            </div>
+
+            <div class="admin-field">
+              <label>Logo ou Foto (Upload PNG/JPG/WebP/SVG ou URL externa)</label>
+              <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+                <input type="file" accept="image/png,image/jpeg,image/webp,image/svg+xml" data-cota-upload="${meta.key}" style="font-size:0.8rem;max-width:220px;" />
+                <button type="button" class="admin-btn admin-btn-sm" data-cota-clear-logo="${meta.key}">Limpar logo</button>
+              </div>
+              <input class="admin-input" type="text" data-cota-field="${meta.key}:logo_url" value="${escAttr(item.logo_url)}" placeholder="https://... ou preenchido automaticamente pelo upload" style="margin-top:6px;" />
+            </div>
+
+            <div class="admin-field">
+              <label>Frase / Mensagem de Apoio</label>
+              <input class="admin-input" type="text" data-cota-field="${meta.key}:frase" value="${escAttr(item.frase)}" placeholder="Frase curta exibida junto à marca" maxlength="280" />
+            </div>
+
+            <div style="display:grid;grid-template-columns:1fr 1.4fr;gap:8px;">
+              <div class="admin-field">
+                <label>Texto do Botão (CTA)</label>
+                <input class="admin-input" type="text" data-cota-field="${meta.key}:cta_texto" value="${escAttr(item.cta_texto)}" placeholder="Saiba mais" maxlength="60" />
+              </div>
+              <div class="admin-field">
+                <label>Link de Destino (URL / UTM)</label>
+                <input class="admin-input" type="url" data-cota-field="${meta.key}:link_url" value="${escAttr(item.link_url)}" placeholder="https://site.com/?utm_source=rom" maxlength="500" />
+              </div>
+            </div>
+
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+              <div class="admin-field">
+                <label>Início do Contrato (opcional)</label>
+                <input class="admin-input" type="date" data-cota-field="${meta.key}:data_inicio" value="${escAttr(item.data_inicio || '')}" />
+              </div>
+              <div class="admin-field">
+                <label>Término do Contrato (opcional)</label>
+                <input class="admin-input" type="date" data-cota-field="${meta.key}:data_fim" value="${escAttr(item.data_fim || '')}" />
+              </div>
+            </div>
+
+            ${extraHtml}
+
+            <div id="prev-cota-${meta.key}" style="margin-top:4px;"></div>
+          `;
+
+          grid.appendChild(card);
+          renderPreviewCota(meta.key);
+        });
+
+        grid.querySelectorAll('[data-cota-ativo]').forEach(cb => {
+          cb.addEventListener('change', () => {
+            const k = cb.getAttribute('data-cota-ativo');
+            patrociniosState[k].ativo = Boolean(cb.checked);
+            atualizarContadorPatrocinios();
+            renderPreviewCota(k);
+          });
+        });
+
+        grid.querySelectorAll('[data-cota-field]').forEach(inp => {
+          inp.addEventListener('input', () => {
+            const [k, field] = inp.getAttribute('data-cota-field').split(':');
+            patrociniosState[k][field] = inp.value;
+            renderPreviewCota(k);
+          });
+        });
+
+        grid.querySelectorAll('[data-cota-upload]').forEach(fileInp => {
+          fileInp.addEventListener('change', async () => {
+            const k = fileInp.getAttribute('data-cota-upload');
+            const f = fileInp.files && fileInp.files[0];
+            if (!f) return;
+            try {
+              const dataUri = await otimizarImagemUpload(f);
+              patrociniosState[k].logo_url = dataUri;
+              const urlInput = grid.querySelector(`[data-cota-field="${k}:logo_url"]`);
+              if (urlInput) urlInput.value = dataUri;
+              renderPreviewCota(k);
+              showBanner('patrocinios-banner', `Logo carregada para ${k}. Clique em "Salvar e Publicar" para aplicar no site.`, 'ok');
+            } catch (err) {
+              showBanner('patrocinios-banner', 'Erro na imagem: ' + err.message, 'err');
+            }
+          });
+        });
+
+        grid.querySelectorAll('[data-cota-clear-logo]').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const k = btn.getAttribute('data-cota-clear-logo');
+            patrociniosState[k].logo_url = '';
+            const urlInput = grid.querySelector(`[data-cota-field="${k}:logo_url"]`);
+            if (urlInput) urlInput.value = '';
+            const fileInp = grid.querySelector(`[data-cota-upload="${k}"]`);
+            if (fileInp) fileInp.value = '';
+            renderPreviewCota(k);
+          });
+        });
+
+        atualizarContadorPatrocinios();
+        renderPatrociniosAtivos();
+      }
+
+      async function carregarPatrocinadores() {
+        try {
+          const data = await apiFetch('/v2/patrocinadores?_t=' + Date.now());
+          if (data && data.cotas) {
+            COTAS_META.forEach(m => {
+              if (data.cotas[m.key]) {
+                patrociniosState[m.key] = Object.assign({}, patrociniosState[m.key], data.cotas[m.key]);
+              }
+            });
+          }
+          renderPatrociniosGrid();
+        } catch (err) {
+          showBanner('patrocinios-banner', 'Não foi possível carregar cotas: ' + err.message, 'err');
+        }
+      }
+
+      async function salvarPatrocinadores(opts) {
+        opts = opts || {};
+        for (const m of COTAS_META) {
+          const it = patrociniosState[m.key] || {};
+          if (it.data_inicio && it.data_fim && it.data_fim < it.data_inicio) {
+            showBanner('patrocinios-banner', `Erro em ${m.titulo}: a data de término não pode ser anterior à data de início.`, 'err');
+            return;
+          }
+        }
+        const btn = $('btn-patrocinios-salvar');
+        if (btn) { btn.disabled = true; btn.textContent = 'Salvando...'; }
+        try {
+          const res = await apiFetch('/v2/admin/patrocinadores', {
+            method: 'PUT',
+            body: JSON.stringify({ cotas: patrociniosState })
+          });
+          if (res && res.cotas) {
+            patrociniosState = res.cotas;
+          }
+          renderPatrociniosGrid();
+          setPatrociniosTab('ativos');
+          showBanner('patrocinios-banner', 'Patrocínios atualizados com sucesso! Conferindo na aba Ativos & Contratos.', 'ok');
+        } catch (err) {
+          showBanner('patrocinios-banner', 'Erro ao salvar patrocínios: ' + err.message, 'err');
+        } finally {
+          if (btn) { btn.disabled = false; btn.textContent = 'Salvar e Publicar'; }
+        }
+      }
+
+      if ($('tab-btn-pat-config')) $('tab-btn-pat-config').addEventListener('click', () => setPatrociniosTab('config'));
+      if ($('tab-btn-pat-ativos')) $('tab-btn-pat-ativos').addEventListener('click', () => setPatrociniosTab('ativos'));
+      if ($('btn-patrocinios-salvar')) $('btn-patrocinios-salvar').addEventListener('click', () => salvarPatrocinadores({ irParaAtivos: true }));
+      if ($('btn-patrocinios-recarregar')) $('btn-patrocinios-recarregar').addEventListener('click', carregarPatrocinadores);
     })();
   </script>
 </body>
