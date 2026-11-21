@@ -11613,9 +11613,13 @@
   var radarCategoryFilter = 'todos';
   var radarFormatFilter = 'todos'; // 'todos' | 'video' | 'materia'
   var RADAR_PAGE_SIZE = 15; // 5 linhas de 3 colunas = 15 briefings por lote
-  var RADAR_VIDEOS_INITIAL_SIZE = 6; // 2 linhas de 3 colunas no bloco de vídeos
+  var RADAR_VIDEO_CAROUSEL_SIZE = 3; // 1 linha com 3 vídeos em rotação
+  var RADAR_VIDEO_ROTATE_MS = 5000; // rotação automática a cada 5 segundos
   var radarVisibleCount = RADAR_PAGE_SIZE;
-  var radarVideosVisibleCount = RADAR_VIDEOS_INITIAL_SIZE;
+  var radarVideoCarouselPage = 0;
+  var radarVideoCarouselTimer = null;
+  var radarVideoCarouselHover = false;
+  var radarVideoCarouselItems = [];
   var radarAutoRefreshTimer = null;
   var radarLastFetchAt = 0;
   var radarVisibilityBound = false;
@@ -11702,11 +11706,19 @@
     }
   }
 
+  function stopRadarVideoCarouselTimer() {
+    if (radarVideoCarouselTimer) {
+      clearInterval(radarVideoCarouselTimer);
+      radarVideoCarouselTimer = null;
+    }
+  }
+
   function stopRadarAutoRefresh() {
     if (radarAutoRefreshTimer) {
       clearInterval(radarAutoRefreshTimer);
       radarAutoRefreshTimer = null;
     }
+    stopRadarVideoCarouselTimer();
   }
 
   function startRadarAutoRefresh() {
@@ -11877,7 +11889,7 @@
         btn.classList.add('is-active');
         radarFormatFilter = btn.getAttribute('data-radar-format') || 'todos';
         radarVisibleCount = RADAR_PAGE_SIZE;
-        radarVideosVisibleCount = RADAR_VIDEOS_INITIAL_SIZE;
+        radarVideoCarouselPage = 0;
         renderRadarCardsList(false);
       });
     });
@@ -11889,7 +11901,7 @@
         btn.classList.add('is-active');
         radarCategoryFilter = btn.getAttribute('data-radar-cat') || 'todos';
         radarVisibleCount = RADAR_PAGE_SIZE;
-        radarVideosVisibleCount = RADAR_VIDEOS_INITIAL_SIZE;
+        radarVideoCarouselPage = 0;
         renderRadarCardsList(false);
       });
     });
@@ -12525,29 +12537,51 @@
     var totalForMainPagination = 0;
     var visibleMainCount = 0;
 
+    stopRadarVideoCarouselTimer();
+
     if (radarFormatFilter === 'todos') {
       var videoItems = filtered.filter(isRadarVideoItem);
       var articleItems = filtered.filter(function (it) { return !isRadarVideoItem(it); });
       var htmlParts = [];
+      radarVideoCarouselItems = videoItems;
+      radarVideoCarouselHover = false;
+
+      function getVideoCarouselSlice(items, page) {
+        var total = items.length;
+        if (total <= RADAR_VIDEO_CAROUSEL_SIZE) return items.slice();
+        var start = (page * RADAR_VIDEO_CAROUSEL_SIZE) % total;
+        var out = [];
+        for (var i = 0; i < RADAR_VIDEO_CAROUSEL_SIZE; i++) {
+          out.push(items[(start + i) % total]);
+        }
+        return out;
+      }
 
       if (videoItems.length > 0) {
-        var visibleVideos = videoItems.slice(0, radarVideosVisibleCount);
+        var totalVideoPages = Math.max(1, Math.ceil(videoItems.length / RADAR_VIDEO_CAROUSEL_SIZE));
+        radarVideoCarouselPage = ((radarVideoCarouselPage % totalVideoPages) + totalVideoPages) % totalVideoPages;
+        var visibleVideos = getVideoCarouselSlice(videoItems, radarVideoCarouselPage);
         var videosGridHtml = visibleVideos.map(function (item, idx) {
-          return renderRadarCardHtml(item, 'radar-details-v-' + idx);
+          return renderRadarCardHtml(item, 'radar-details-v-' + radarVideoCarouselPage + '-' + idx);
         }).join('');
+        var hasCarouselControls = videoItems.length > RADAR_VIDEO_CAROUSEL_SIZE;
+        var videoCountLabel = (hasCarouselControls ? (radarVideoCarouselPage + 1) + '/' + totalVideoPages + ' · ' : '') +
+          videoItems.length + (videoItems.length === 1 ? ' vídeo' : ' vídeos');
 
         var videoSectionHtml = '<section class="radar-section-block radar-section-videos" id="radar-videos-section" aria-labelledby="radar-videos-heading">';
         videoSectionHtml += '<div class="radar-section-header">';
         videoSectionHtml += '<h3 class="radar-section-title" id="radar-videos-heading">🎬 Resumo de Vídeos</h3>';
-        videoSectionHtml += '<span class="radar-section-count">' + videoItems.length + (videoItems.length === 1 ? ' vídeo' : ' vídeos') + '</span>';
+        videoSectionHtml += '<span class="radar-section-count" id="radar-videos-count">' + videoCountLabel + '</span>';
         videoSectionHtml += '</div>';
-        videoSectionHtml += '<div class="radar-cards-grid">' + videosGridHtml + '</div>';
-        if (videoItems.length > radarVideosVisibleCount) {
-          var remainingVideos = videoItems.length - radarVideosVisibleCount;
-          videoSectionHtml += '<div class="radar-section-more">';
-          videoSectionHtml += '<button type="button" class="btn btn-secondary radar-btn-load-more" id="radar-btn-load-more-videos">Ver + (' + remainingVideos + ' vídeos) ▾</button>';
-          videoSectionHtml += '</div>';
+        videoSectionHtml += '<div class="radar-videos-carousel">';
+        if (hasCarouselControls) {
+          videoSectionHtml += '<button type="button" class="radar-carousel-btn radar-carousel-prev" id="radar-video-prev" aria-label="Vídeos anteriores" title="Voltar 3 vídeos">&#8249;</button>';
         }
+        videoSectionHtml += '<div class="radar-cards-grid radar-videos-carousel-grid" id="radar-videos-grid">' + videosGridHtml + '</div>';
+        if (hasCarouselControls) {
+          videoSectionHtml += '<button type="button" class="radar-carousel-btn radar-carousel-next" id="radar-video-next" aria-label="Próximos vídeos" title="Avançar 3 vídeos">&#8250;</button>';
+        }
+        videoSectionHtml += '</div>';
         videoSectionHtml += '</section>';
         htmlParts.push(videoSectionHtml);
       }
@@ -12571,12 +12605,68 @@
       }
 
       listEl.innerHTML = htmlParts.join('');
-      var btnMoreVideos = listEl.querySelector('#radar-btn-load-more-videos');
-      if (btnMoreVideos) {
-        btnMoreVideos.onclick = function () {
-          radarVideosVisibleCount += RADAR_VIDEOS_INITIAL_SIZE;
-          renderRadarCardsList(true);
-        };
+
+      if (videoItems.length > RADAR_VIDEO_CAROUSEL_SIZE) {
+        var totalPages = Math.ceil(videoItems.length / RADAR_VIDEO_CAROUSEL_SIZE);
+        var videosSectionEl = listEl.querySelector('#radar-videos-section');
+        var btnPrevVideo = listEl.querySelector('#radar-video-prev');
+        var btnNextVideo = listEl.querySelector('#radar-video-next');
+
+        function updateVideoCarouselSlide(delta) {
+          var gridEl = listEl.querySelector('#radar-videos-grid');
+          var countEl = listEl.querySelector('#radar-videos-count');
+          if (!gridEl || !radarVideoCarouselItems.length) return;
+          radarVideoCarouselPage = ((radarVideoCarouselPage + delta) % totalPages + totalPages) % totalPages;
+          var slice = getVideoCarouselSlice(radarVideoCarouselItems, radarVideoCarouselPage);
+          gridEl.innerHTML = slice.map(function (item, idx) {
+            return renderRadarCardHtml(item, 'radar-details-v-' + radarVideoCarouselPage + '-' + idx);
+          }).join('');
+          gridEl.classList.remove('is-rotating');
+          void gridEl.offsetWidth;
+          gridEl.classList.add('is-rotating');
+          if (countEl) {
+            countEl.textContent = (radarVideoCarouselPage + 1) + '/' + totalPages + ' · ' +
+              radarVideoCarouselItems.length + ' vídeos';
+          }
+          bindNewsFavButtons(gridEl);
+          bindRadarCardAccordions(gridEl);
+        }
+
+        function resetVideoCarouselTimer() {
+          stopRadarVideoCarouselTimer();
+          radarVideoCarouselTimer = setInterval(function () {
+            if (state.editorialSection !== 'radar' || radarFormatFilter !== 'todos') {
+              stopRadarVideoCarouselTimer();
+              return;
+            }
+            if (document.visibilityState === 'hidden' || radarVideoCarouselHover) return;
+            var gridEl = listEl.querySelector('#radar-videos-grid');
+            if (!gridEl || gridEl.querySelector('.radar-card.is-expanded')) return;
+            updateVideoCarouselSlide(1);
+          }, RADAR_VIDEO_ROTATE_MS);
+        }
+
+        if (btnPrevVideo) {
+          btnPrevVideo.onclick = function () {
+            updateVideoCarouselSlide(-1);
+            resetVideoCarouselTimer();
+          };
+        }
+        if (btnNextVideo) {
+          btnNextVideo.onclick = function () {
+            updateVideoCarouselSlide(1);
+            resetVideoCarouselTimer();
+          };
+        }
+        if (videosSectionEl) {
+          videosSectionEl.addEventListener('mouseenter', function () {
+            radarVideoCarouselHover = true;
+          });
+          videosSectionEl.addEventListener('mouseleave', function () {
+            radarVideoCarouselHover = false;
+          });
+        }
+        resetVideoCarouselTimer();
       }
     } else {
       totalForMainPagination = filtered.length;

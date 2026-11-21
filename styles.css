@@ -11069,6 +11069,67 @@ button.support-link.topbar-more-btn:hover {
   justify-content: center;
   margin-top: var(--space-4);
 }
+.radar-videos-carousel {
+  position: relative;
+}
+.radar-carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: rgba(15, 23, 42, 0.88);
+  color: var(--text);
+  font-size: 1.5rem;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+  transition: background var(--transition), border-color var(--transition), transform var(--transition), color var(--transition);
+  backdrop-filter: blur(6px);
+}
+.radar-carousel-btn:hover {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+  transform: translateY(-50%) scale(1.06);
+}
+.radar-carousel-btn:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+.radar-carousel-prev {
+  left: -19px;
+}
+.radar-carousel-next {
+  right: -19px;
+}
+@media (max-width: 1200px) {
+  .radar-carousel-prev {
+    left: 6px;
+  }
+  .radar-carousel-next {
+    right: 6px;
+  }
+}
+@keyframes radarVideoCarouselFadeIn {
+  from {
+    opacity: 0.35;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.radar-videos-carousel-grid.is-rotating {
+  animation: radarVideoCarouselFadeIn 0.32s ease-out;
+}
 .radar-badge-format {
   display: inline-flex;
   align-items: center;

@@ -602,7 +602,10 @@ def listar_todos_cards_radar(max_items: int = 100) -> List[Dict[str, Any]]:
             or ""
         )
         eh_manual = _eh_card_manual(c)
+        eh_video = _eh_video_card(c)
         urgencia = int(c.get("urgencia_score") or (80 if eh_manual else 70))
+        origem_nome = "manual" if eh_manual else ("video" if eh_video else "rss")
+        formato_val = "video" if eh_video else str(c.get("formato") or "materia").lower()
         cards_norm.append({
             "id": str(c.get("id") or f"feed-{slug}"),
             "slug": slug,
@@ -612,14 +615,16 @@ def listar_todos_cards_radar(max_items: int = 100) -> List[Dict[str, Any]]:
             "categoria": str(c.get("categoria") or "geral").strip().lower(),
             "fonte_nome": str(c.get("fonte_nome") or ("Síntese Manual" if eh_manual else "Radar Editorial")).strip(),
             "fonte_url": str(c.get("fonte_url") or "/radar").strip(),
+            "formato": formato_val,
             "data_publicacao": data_pub,
             "urgencia_score": urgencia,
             "nivel_relevancia": _nivel_relevancia_do_card(c),
             "fixado": bool(c.get("fixado") or urgencia >= 95),
             "paises_envolvidos": list(c.get("paises_envolvidos") or ([c.get("pais_regiao")] if c.get("pais_regiao") else [])),
             "palavras_chave": list(c.get("palavras_chave") or []),
-            "origem": "manual" if eh_manual else "rss",
+            "origem": origem_nome,
             "origem_manual": eh_manual,
+            "origem_video": eh_video,
             "origem_v2": False,
         })
     cards_norm.sort(key=_timestamp_publicacao, reverse=True)

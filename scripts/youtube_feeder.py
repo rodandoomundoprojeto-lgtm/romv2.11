@@ -1,0 +1,262 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Bot Alimentador de Vídeos do YouTube RSS — Rodando o Mundo.
+
+Varre os feeds XML oficiais dos canais de YouTube cadastrados em config/sources.json
+sem necessidade de chave de API externa ou consumo de cota do Google Cloud.
+Deduplica por video_id e link, extrai metadados essenciais (título, canal, link, data ISO, thumbnail)
+e grava atomicamente em data/noticias_youtube.json, além de sincronizar com data/feed_output.json.
+"""
+import argparse
+import concurrent.futures
+import datetime
+import json
+import os
+import re
+import sys
+import tempfile
+from pathlib import Path
+from typing import Any, Dict, List, Optional
+
+try:
+    import feedparser  # type: ignore
+except ImportError:
+    feedparser = None  # type: ignore
+
+ROOT_DIR = Path(__file__).resolve().parents[1]
+CONFIG_SOURCES = ROOT_DIR / "config" / "sources.json"
+DEFAULT_OUT_PATH = ROOT_DIR / "data" / "noticias_youtube.json"
+FEED_OUTPUT_PATH = ROOT_DIR / "data" / "feed_output.json"
+
+
+def carregar_canais_youtube(config_path: Optional[Path] = None) -> List[Dict[str, Any]]:
+    """Carrega apenas as fontes com tipo 'youtube' de config/sources.json."""
+    c_path = config_path or CONFIG_SOURCES
+    if not c_path.is_file():
+        return []
+    try:
+        dados = json.loads(c_path.read_text(encoding="utf-8"))
+        if not isinstance(dados, list):
+            return []
+        canais = [s for s in dados if isinstance(s, dict) and str(s.get("tipo", "")).lower() == "youtube"]
+        return canais
+    except Exception as e:
+        print(f"[!] Erro ao carregar fontes do YouTube: {e}", file=sys.stderr)
+        return []
+
+
+def resolver_url_feed_canal(id_ou_url: str) -> str:
+    """Garante que o canal esteja no formato de feed XML oficial do YouTube."""
+    bruto = str(id_ou_url or "").strip()
+    if bruto.startswith("http://") or bruto.startswith("https://"):
+        return bruto
+    return f"https://www.youtube.com/feeds/videos.xml?channel_id={bruto}"
+
+
+def extrair_video_id(entry: Any) -> str:
+    """Extrai o ID do vídeo a partir de yt_videoid, id ou link."""
+    yt_vid = getattr(entry, "yt_videoid", None)
+    if isinstance(yt_vid, str) and re.fullmatch(r"[A-Za-z0-9_-]{11}", yt_vid.strip()):
+        return yt_vid.strip()
+
+    item_id = getattr(entry, "id", None)
+    if isinstance(item_id, str) and item_id.startswith("yt:video:"):
+        vid = item_id.removeprefix("yt:video:").strip()
+        if re.fullmatch(r"[A-Za-z0-9_-]{11}", vid):
+            return vid
+
+    link = getattr(entry, "link", "") or ""
+    m = re.search(r"(?:v=|\/embed\/|\/watch\?v=|\/v\/|youtu\.be\/|\/shorts\/|\/live\/)([A-Za-z0-9_-]{11})", link)
+    if m:
+        return m.group(1)
+    return ""
+
+
+def parsear_data_publicacao_iso(entry: Any) -> str:
+    """Retorna data de publicação em ISO 8601 UTC ou momento atual como fallback."""
+    for attr in ("published", "updated"):
+        val = getattr(entry, attr, None)
+        if isinstance(val, str) and val.strip():
+            try:
+                dt = datetime.datetime.fromisoformat(val.replace("Z", "+00:00"))
+                if dt.tzinfo is None:
+                    dt = dt.replace(tzinfo=datetime.timezone.utc)
+                return dt.astimezone(datetime.timezone.utc).isoformat()
+            except Exception:
+                pass
+    return datetime.datetime.now(datetime.timezone.utc).isoformat()
+
+
+def coletar_canal(source: Dict[str, Any], max_por_canal: int = 3) -> List[Dict[str, Any]]:
+    """Lê o feed RSS de um canal do YouTube e retorna os vídeos mais recentes normalizados."""
+    if not feedparser:
+        return []
+
+    nome_canal = str(source.get("nome") or "Canal YouTube").strip()
+    id_ou_url = str(source.get("id_ou_url") or "").strip()
+    categoria = str(source.get("categoria") or "geopolitica").strip().lower()
+    pais = str(source.get("pais_iso") or source.get("pais") or "BR").strip().upper()
+
+    feed_url = resolver_url_feed_canal(id_ou_url)
+    itens: List[Dict[str, Any]] = []
+
+    try:
+        parsed = feedparser.parse(feed_url)
+        if not getattr(parsed, "entries", None):
+            return []
+
+        entries = list(parsed.entries)
+        for entry in entries[:max_por_canal]:
+            titulo = str(getattr(entry, "title", "") or "").strip()
+            if not titulo:
+                continue
+
+            video_id = extrair_video_id(entry)
+            link = str(getattr(entry, "link", "") or "").strip()
+            if not link and video_id:
+                link = f"https://www.youtube.com/watch?v={video_id}"
+
+            if not link:
+                continue
+
+            data_pub = parsear_data_publicacao_iso(entry)
+
+            # Resumo do vídeo via descrição da mídia
+            summary = getattr(entry, "summary", "") or getattr(entry, "description", "") or ""
+            media_desc = getattr(entry, "media_description", "") or summary
+            desc_limpa = re.sub(r"https?://\S+", "", str(media_desc)).strip()
+            resumo = desc_limpa[:320].strip() if desc_limpa else f"Análise publicada pelo canal {nome_canal} no YouTube."
+
+            thumb = f"https://i.ytimg.com/vi/{video_id}/hqdefault.jpg" if video_id else ""
+
+            itens.append({
+                "id": f"yt-{video_id}" if video_id else f"yt-{len(itens)}",
+                "video_id": video_id,
+                "slug": f"yt-{video_id}" if video_id else f"yt-{len(itens)}",
+                "titulo": titulo,
+                "resumo": resumo,
+                "analise": resumo,
+                "canal": nome_canal,
+                "fonte_nome": nome_canal,
+                "fonte_url": link,
+                "url": link,
+                "thumbnail": thumb,
+                "imagem_url": thumb,
+                "data_publicacao": data_pub,
+                "publicado_em": data_pub,
+                "published_at": data_pub,
+                "formato": "video",
+                "categoria": categoria,
+                "origem": "video",
+                "origem_video": True,
+                "origem_manual": False,
+                "origem_v2": False,
+                "urgencia_score": 78,
+                "nivel_relevancia": 3,
+                "paises_envolvidos": [pais] if pais else ["BR"],
+            })
+    except Exception as e:
+        print(f"[!] Falha ao processar canal '{nome_canal}': {e}", file=sys.stderr)
+
+    return itens
+
+
+def varrer_todos_canais(max_por_canal: int = 3, max_workers: int = 8) -> List[Dict[str, Any]]:
+    """Varre em paralelo todos os canais de YouTube cadastrados e retorna lista ordenada por data."""
+    canais = carregar_canais_youtube()
+    if not canais:
+        return []
+
+    todos_videos: List[Dict[str, Any]] = []
+    with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
+        futuros = {executor.submit(coletar_canal, c, max_por_canal): c for c in canais}
+        for fut in concurrent.futures.as_completed(futuros):
+            try:
+                vids = fut.result()
+                if vids:
+                    todos_videos.extend(vids)
+            except Exception as e:
+                c_info = futuros[fut]
+                print(f"[!] Erro no worker para {c_info.get('nome')}: {e}", file=sys.stderr)
+
+    # Ordenação por data decrescente
+    def _ts(x: Dict[str, Any]) -> float:
+        raw = x.get("data_publicacao") or ""
+        try:
+            return datetime.datetime.fromisoformat(raw.replace("Z", "+00:00")).timestamp()
+        except Exception:
+            return 0.0
+
+    todos_videos.sort(key=_ts, reverse=True)
+
+    # Deduplicação por video_id ou link
+    vistos = set()
+    unicos: List[Dict[str, Any]] = []
+    for v in todos_videos:
+        chave = v.get("video_id") or v.get("fonte_url") or v.get("titulo")
+        if not chave or chave in vistos:
+            continue
+        vistos.add(chave)
+        unicos.append(v)
+
+    return unicos
+
+
+def gravar_payload_atomicamente(dados: Dict[str, Any], destino: Path) -> None:
+    """Grava o dicionário JSON atomicamente no destino."""
+    destino.parent.mkdir(parents=True, exist_ok=True)
+    temp_fd, temp_name = tempfile.mkstemp(dir=str(destino.parent), prefix="tmp_yt_", suffix=".json")
+    try:
+        with open(temp_fd, "w", encoding="utf-8") as f:
+            json.dump(dados, f, ensure_ascii=False, indent=2)
+        os.replace(temp_name, str(destino))
+    except Exception:
+        if os.path.exists(temp_name):
+            try:
+                os.unlink(temp_name)
+            except Exception:
+                pass
+        raise
+
+
+def executar_bot_youtube(
+    max_por_canal: int = 3,
+    dry_run: bool = False,
+    out_path: Optional[Path] = None,
+) -> Dict[str, Any]:
+    """Executa a varredura completa do bot de vídeos do YouTube e grava data/noticias_youtube.json."""
+    t0 = datetime.datetime.now(datetime.timezone.utc)
+    target_path = out_path or DEFAULT_OUT_PATH
+
+    canais = carregar_canais_youtube()
+    videos = varrer_todos_canais(max_por_canal=max_por_canal)
+    t1 = datetime.datetime.now(datetime.timezone.utc)
+    duracao_ms = int((t1 - t0).total_seconds() * 1000)
+
+    resultado = {
+        "ok": True,
+        "status": "concluido",
+        "job_nome": "bot_youtube_feeder",
+        "duracao_ms": duracao_ms,
+        "dry_run": dry_run,
+        "canais_varridos": len(canais),
+        "total_itens": len(videos),
+        "atualizadoEm": t1.isoformat(),
+        "items": videos,
+    }
+
+    if not dry_run and videos:
+        gravar_payload_atomicamente(resultado, target_path)
+
+    return resultado
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Bot Alimentador de Vídeos do YouTube RSS.")
+    parser.add_argument("--max-por-canal", type=int, default=3, help="Máximo de vídeos recentes por canal (padrão: 3)")
+    parser.add_argument("--dry-run", action="store_true", help="Executa sem salvar no disco")
+    args = parser.parse_args()
+
+    res = executar_bot_youtube(max_por_canal=args.max_por_canal, dry_run=args.dry_run)
+    print(f"[OK] Varredura concluída: {res['total_itens']} vídeos de {res['canais_varridos']} canais em {res['duracao_ms']}ms.")
