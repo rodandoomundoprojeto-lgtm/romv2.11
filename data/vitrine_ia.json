@@ -2,145 +2,227 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-21T12:48:01Z",
-  "batch_id": "20261121-1246",
+  "updatedAt": "2026-11-21T13:15:04Z",
+  "batch_id": "20261121-1314",
   "temas_ativos": [
     {
-      "slug": "novos-temporais-sul-do-pais-supercelula-rs",
-      "titulo_tema": "Defesa Civil e meteorologia alertam para novos temporais no Sul do país",
-      "titulo_curto": "Defesa Civil e meteorologia alertam para novos temporais no Sul do país",
+      "slug": "orcamento-ue-cortes-resistencias-frugais",
+      "titulo_tema": "Proposta de cortes no orçamento de longo prazo da União Europeia",
       "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Geopolitica_Radar",
-      "categoria": "Ciencia_Clima",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Economia",
       "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
+        "Geopolitica_Radar"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 88,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-23T13:15:04Z",
+      "palavras_chave_busca": [
+        "uniao europeia",
+        "orcamento ue",
+        "paises frugais",
+        "economia europeia",
+        "alemanha",
+        "cortes fiscais"
+      ],
+      "gatilho_vitrine": "Destaque na editoria de Economia conectando a rigidez fiscal europeia ao cenário global de juros e ajuste de contas públicas.",
+      "sintese_nerd": "A pressão de países frugais da União Europeia por cortes drásticos no orçamento de longo prazo evidencia o esgotamento de subsídios e a necessidade de reajustes fiscais na região. Para o mercado global, a contração de gastos europeus impacta a liquidez internacional e a percepção de risco para economias emergentes.",
+      "data_publicacao": "2026-11-21T13:15:04Z",
+      "updated_at": "2026-11-21T13:15:04Z"
+    },
+    {
+      "slug": "ataque-drone-navio-golfo-finlandia-russia",
+      "titulo_tema": "Navio com destino a Kaliningrado é atingido por drones no Golfo da Finlândia",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia"
       ],
       "rota_editoria": "/radar",
-      "relevancia_score": 90,
-      "urgencia_score": 92,
+      "relevancia_score": 86,
+      "ttl_horas": 36,
+      "expires_at": "2026-11-23T01:15:04Z",
+      "palavras_chave_busca": [
+        "golfo da finlandia",
+        "kaliningrado",
+        "guerra na ucrania",
+        "drones",
+        "seguranca maritima",
+        "russia"
+      ],
+      "gatilho_vitrine": "Fixar no Radar Geopolítico para monitorar escalada de conflitos marítimos na Europa e impacto no frete internacional.",
+      "sintese_nerd": "O ataque por drones a uma embarcação comercial com destino a Kaliningrado no Golfo da Finlândia eleva o risco de instabilidade nas rotas do Mar Báltico. A escalada de incidentes marítimos pressiona o setor de seguros de cargas e ameaça o fornecimento de commodities e suprimentos na Europa.",
+      "data_publicacao": "2026-11-21T13:15:04Z",
+      "updated_at": "2026-11-21T13:15:04Z"
+    },
+    {
+      "slug": "ajuste-fiscal-lula-divida-publica-brasil",
+      "titulo_tema": "Debate sobre pacote de ajuste fiscal e controle da dívida no governo Lula",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Politica",
+      "categorias_cruzadas": [
+        "Economia"
+      ],
+      "rota_editoria": "/politica",
+      "relevancia_score": 85,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-22T13:15:04Z",
+      "palavras_chave_busca": [
+        "ajuste fiscal",
+        "divida publica",
+        "governo lula",
+        "economia brasil",
+        "pacote fiscal",
+        "mercado financeiro"
+      ],
+      "gatilho_vitrine": "Posicionar no topo da home na editoria de Política e Economia, conectando o debate de gastos públicos à queda de ETFs e câmbio.",
+      "sintese_nerd": "A pressão por um plano consistente de ajuste de despesas obrigatórias para conter a dívida pública gera atritos políticos na base do governo e volatilidade nos mercados. A percepção de risco fiscal afeta diretamente a confiança dos investidores locais e estrangeiros, pressionando o câmbio e a curva de juros.",
+      "data_publicacao": "2026-11-21T13:15:04Z",
+      "updated_at": "2026-11-21T13:15:04Z"
+    },
+    {
+      "slug": "novos-temporais-sul-do-pais-supercelula-rs",
+      "status": "novo",
+      "categoria": "Ciencia_Clima",
       "ttl_horas": 24,
       "expires_at": "2026-11-22T12:48:01Z",
-      "palavras_chave_busca": [
-        "temporais",
-        "rio grande do sul",
-        "defesa civil",
-        "clima"
-      ],
-      "palavras_chave": [
-        "temporais",
-        "rio grande do sul",
-        "defesa civil",
-        "clima"
-      ],
-      "gatilho_vitrine": "Conforme apuração do InfoMoney, novas chuvas intensas e tempestades devem atingir o Rio Grande do Sul, Santa Catarina e Paraná após os estragos causados por uma supercélula. Defesas Civis locais mantêm alertas preventivos para o fim de semana devido ao avanço de uma frente fria.",
-      "resumo_pulso": "Conforme apuração do InfoMoney, novas chuvas intensas e tempestades devem atingir o Rio Grande do Sul, Santa Catarina e Paraná após os estragos causados por uma supercélula. Defesas Civis locais mantêm alertas preventivos para o fim de semana devido ao avanço de uma frente fria.",
-      "sintese_nerd": "Risco de novos transtornos logísticos, interrupções de serviços e danos materiais em municípios já afetados.",
-      "impacto_pratico": "Risco de novos transtornos logísticos, interrupções de serviços e danos materiais em municípios já afetados.",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "veiculos_origem": [
-        "InfoMoney Mercados"
-      ],
+      "updated_at": "2026-11-21T13:02:47Z",
       "fontes_urls": [
         "https://www.infomoney.com.br/brasil/novos-temporais-devem-atingir-sul-do-pais-apos-supercelula-arrasar-cidade-do-rs/"
       ],
-      "data_publicacao": "2026-11-21T12:40:28Z",
-      "updated_at": "2026-11-21T12:48:01Z"
-    },
-    {
-      "slug": "jair-bolsonaro-internado-dfstar-procedimento-com-sonda",
-      "titulo_tema": "Defesa de Bolsonaro pede a Moraes autorização para visitas diárias de filhos durante internação",
-      "titulo_curto": "Defesa de Bolsonaro pede a Moraes autorização para visitas diárias de filhos durante internação",
-      "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Cultura",
-      "categoria": "Sociedade_Cultura",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/cultura",
-      "relevancia_score": 89,
-      "urgencia_score": 88,
-      "ttl_horas": 12,
-      "expires_at": "2026-11-21T23:41:11Z",
-      "palavras_chave_busca": [
-        "jair bolsonaro",
-        "alexandre de moraes",
-        "stf",
-        "brasília"
-      ],
+      "titulo_tema": "Defesa Civil e Climatempo mantêm alertas de novos temporais e chuvas intensas no Sul do país",
+      "resumo_pulso": "Conforme apuração do InfoMoney, novas chuvas intensas e temporais devem atingir o Rio Grande do Sul, Santa Catarina e Paraná após os severos estragos causados por uma supercélula. As Defesas Civis estaduais reforçaram os alertas preventivos devido à chegada de uma nova frente fria.",
+      "sintese_nerd": "População em áreas de risco no Sul deve redobrar cuidados com alagamentos e deslizamentos de terra.",
+      "titulo_curto": "Defesa Civil e Climatempo mantêm alertas de novos temporais e chuvas intensas no Sul do país",
+      "rota_editoria": "/radar",
       "palavras_chave": [
-        "jair bolsonaro",
-        "alexandre de moraes",
-        "stf",
-        "brasília"
+        "temporais",
+        "sul do país",
+        "rio grande do sul",
+        "defesa civil",
+        "supercélula"
       ],
-      "gatilho_vitrine": "Segundo apuração do G1 Política, a defesa do ex-presidente Jair Bolsonaro protocolou pedido de urgência ao ministro Alexandre de Moraes para permitir visitas diárias de seus filhos no Hospital DF Star, em Brasília, onde permanece internado.",
-      "resumo_pulso": "Segundo apuração do G1 Política, a defesa do ex-presidente Jair Bolsonaro protocolou pedido de urgência ao ministro Alexandre de Moraes para permitir visitas diárias de seus filhos no Hospital DF Star, em Brasília, onde permanece internado.",
-      "sintese_nerd": "Movimenta a pauta jurídica e política em torno das medidas cautelares aplicadas a figuras públicas.",
-      "impacto_pratico": "Movimenta a pauta jurídica e política em torno das medidas cautelares aplicadas a figuras públicas.",
+      "urgencia_score": 96,
+      "data_publicacao": "2026-11-21T12:40:28Z",
+      "gatilho_vitrine": "Conforme apuração do InfoMoney, novas chuvas intensas e temporais devem atingir o Rio Grande do Sul, Santa Catarina e Paraná após os severos estragos causados por uma supercélula. As Defesas Civis estaduais reforçaram os alertas preventivos devido à chegada de uma nova frente fria.",
+      "impacto_pratico": "População em áreas de risco no Sul deve redobrar cuidados com alagamentos e deslizamentos de terra.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "InfoMoney"
+      ],
+      "relevancia_score": 93,
       "paises_envolvidos": [
         "BR"
       ],
-      "veiculos_origem": [
-        "G1 Política"
-      ],
-      "fontes_urls": [
-        "https://g1.globo.com/politica/noticia/2026/11/21/defesa-de-bolsonaro-pede-a-moraes-autorizacao-para-visitas-diarias-de-filhos-durante-internacao.ghtml"
-      ],
-      "data_publicacao": "2026-11-21T11:31:47Z",
-      "updated_at": "2026-11-21T12:48:01Z"
-    },
-    {
-      "slug": "uniao-europeia-propoe-taxar-big-techs-orcamento-2034",
-      "titulo_tema": "União Europeia propõe taxar big techs para financiar orçamento até 2034",
-      "titulo_curto": "União Europeia propõe taxar big techs para financiar orçamento até 2034",
-      "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Economia",
-      "categoria": "Economia_Comercio",
+      "categoria_primaria": "Geopolitica_Radar",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
       ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 91,
-      "urgencia_score": 90,
+      "palavras_chave_busca": [
+        "temporais",
+        "sul do país",
+        "rio grande do sul",
+        "defesa civil",
+        "supercélula"
+      ]
+    },
+    {
+      "slug": "jair-bolsonaro-internado-dfstar-procedimento-com-sonda",
+      "status": "novo",
+      "categoria": "Sociedade_Cultura",
+      "ttl_horas": 12,
+      "expires_at": "2026-11-21T23:41:11Z",
+      "updated_at": "2026-11-21T13:02:47Z",
+      "fontes_urls": [
+        "https://g1.globo.com/politica/noticia/2026/11/21/defesa-de-bolsonaro-pede-a-moraes-autorizacao-para-visitas-diarias-de-filhos-durante-internacao.ghtml"
+      ],
+      "titulo_tema": "Defesa de Jair Bolsonaro pede ao STF autorização para visitas diárias de filhos em hospital",
+      "resumo_pulso": "Segundo apuração do G1 Política, a defesa de Jair Bolsonaro protocolou pedido de urgência ao ministro Alexandre de Moraes para permitir visitas diárias de seus filhos no Hospital DF Star, em Brasília. O ex-presidente permanece internado após apresentar quadro de dor e distensão abdominal.",
+      "sintese_nerd": "Acompanhamento médico e restrições judiciais de circulação e visitas a figuras públicas sob cautelar.",
+      "titulo_curto": "Defesa de Jair Bolsonaro pede ao STF autorização para visitas diárias de filhos em hospital",
+      "rota_editoria": "/cultura",
+      "palavras_chave": [
+        "jair bolsonaro",
+        "stf",
+        "alexandre de moraes",
+        "hospital df star",
+        "brasília"
+      ],
+      "urgencia_score": 89,
+      "data_publicacao": "2026-11-21T11:31:47Z",
+      "gatilho_vitrine": "Segundo apuração do G1 Política, a defesa de Jair Bolsonaro protocolou pedido de urgência ao ministro Alexandre de Moraes para permitir visitas diárias de seus filhos no Hospital DF Star, em Brasília. O ex-presidente permanece internado após apresentar quadro de dor e distensão abdominal.",
+      "impacto_pratico": "Acompanhamento médico e restrições judiciais de circulação e visitas a figuras públicas sob cautelar.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "G1 Política"
+      ],
+      "relevancia_score": 90,
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "categoria_primaria": "Cultura",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "jair bolsonaro",
+        "stf",
+        "alexandre de moraes",
+        "hospital df star",
+        "brasília"
+      ]
+    },
+    {
+      "slug": "uniao-europeia-propoe-taxar-big-techs-orcamento-2034",
+      "status": "novo",
+      "categoria": "Economia_Comercio",
       "ttl_horas": 24,
       "expires_at": "2026-11-22T11:41:11Z",
-      "palavras_chave_busca": [
-        "união europeia",
-        "big techs",
-        "orçamento",
-        "impostos"
+      "updated_at": "2026-11-21T13:02:47Z",
+      "fontes_urls": [
+        "https://g1.globo.com/tecnologia/noticia/2026/11/21/uniao-europeia-propoe-taxar-big-techs-para-financiar-orcamento-ate-2034.ghtml"
       ],
+      "titulo_tema": "União Europeia detalha proposta de orçamento de longo prazo com taxação de big techs até 2034",
+      "resumo_pulso": "Conforme apuração do G1 Economia, a União Europeia apresentou oficialmente sua proposta orçamentária para o período de 2028 a 2034, introduzindo cobranças anuais sobre receitas de grandes empresas de tecnologia. A medida busca diversificar as fontes de financiamento do bloco europeu para a próxima década.",
+      "sintese_nerd": "Potencial impacto financeiro e regulatório sobre grandes corporações de tecnologia com atuação global.",
+      "titulo_curto": "União Europeia detalha proposta de orçamento de longo prazo com taxação de big techs até 2034",
+      "rota_editoria": "/economia",
       "palavras_chave": [
         "união europeia",
-        "big techs",
         "orçamento",
-        "impostos"
+        "big techs",
+        "taxação",
+        "economia digital"
       ],
-      "gatilho_vitrine": "Conforme comunicado da União Europeia e apuração do G1 Economia, o bloco apresentou sua proposta orçamentária de longo prazo para o período de 2028 a 2034. O texto prevê a criação de taxas sobre receitas de grandes empresas de tecnologia, incluindo ganhos com publicidade digital e uso de dados.",
-      "resumo_pulso": "Conforme comunicado da União Europeia e apuração do G1 Economia, o bloco apresentou sua proposta orçamentária de longo prazo para o período de 2028 a 2034. O texto prevê a criação de taxas sobre receitas de grandes empresas de tecnologia, incluindo ganhos com publicidade digital e uso de dados.",
-      "sintese_nerd": "Pode alterar o modelo de negócios de empresas de tecnologia globais e impactar o ambiente regulatório digital na Europa.",
-      "impacto_pratico": "Pode alterar o modelo de negócios de empresas de tecnologia globais e impactar o ambiente regulatório digital na Europa.",
+      "urgencia_score": 91,
+      "data_publicacao": "2026-11-21T11:26:05Z",
+      "gatilho_vitrine": "Conforme apuração do G1 Economia, a União Europeia apresentou oficialmente sua proposta orçamentária para o período de 2028 a 2034, introduzindo cobranças anuais sobre receitas de grandes empresas de tecnologia. A medida busca diversificar as fontes de financiamento do bloco europeu para a próxima década.",
+      "impacto_pratico": "Potencial impacto financeiro e regulatório sobre grandes corporações de tecnologia com atuação global.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "G1 Economia"
+      ],
+      "relevancia_score": 92,
       "paises_envolvidos": [
         "EU"
       ],
-      "veiculos_origem": [
-        "G1 Economia",
-        "Comissão Europeia (Press Corner)"
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
       ],
-      "fontes_urls": [
-        "https://g1.globo.com/tecnologia/noticia/2026/11/21/uniao-europeia-propoe-taxar-big-techs-para-financiar-orcamento-ate-2034.ghtml",
-        "https://ec.europa.eu/commission/presscorner/detail/en/statement_26_2557"
-      ],
-      "data_publicacao": "2026-11-21T11:26:05Z",
-      "updated_at": "2026-11-21T12:48:01Z"
+      "palavras_chave_busca": [
+        "união europeia",
+        "orçamento",
+        "big techs",
+        "taxação",
+        "economia digital"
+      ]
     },
     {
       "slug": "fbi-investiga-invasao-banco-dados-nacional-criminais-eua",
@@ -231,112 +313,6 @@
         "são paulo",
         "cultura geek",
         "eventos"
-      ]
-    },
-    {
-      "slug": "escalada-estreito-hormuz-eua-ira-petroleo",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-23T10:00:34Z",
-      "updated_at": "2026-11-21T10:00:34Z",
-      "titulo_tema": "Escalada militar no Estreito de Ormuz e impactos na cotação do petróleo",
-      "sintese_nerd": "O abate de um drone norte-americano e o bloqueio parcial no Estreito de Ormuz elevam a tensão geopolítica na rota por onde passa um quinto do petróleo mundial. Esse gargalo logístico pressiona o valor do barril no mercado global com risco iminente de repasse para os combustíveis no Brasil.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-21T10:00:34Z",
-      "gatilho_vitrine": "Destacar no topo do Radar Geopolítico o risco de desabastecimento energético global e a repassagem de preços no Brasil.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 95,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Politica"
-      ],
-      "palavras_chave_busca": [
-        "estreito de ormuz",
-        "eua e irã",
-        "drone abatido",
-        "preço do petróleo",
-        "sanções americanas",
-        "crise de energia"
-      ]
-    },
-    {
-      "slug": "vistos-diplomaticos-brasil-eua-lula-trump",
-      "status": "novo",
-      "ttl_horas": 72,
-      "expires_at": "2026-11-24T10:00:34Z",
-      "updated_at": "2026-11-21T10:00:34Z",
-      "titulo_tema": "Impasse diplomático de vistos entre governos Lula e Trump",
-      "sintese_nerd": "A retaliação velada na concessão de credenciais diplomáticas entre Brasil e Estados Unidos ilustra o esfriamento das relações formais no início da gestão Trump. O impasse expõe os limites da diplomacia pragmática em equilibrar soberania institucional e interlocução com potências globais.",
-      "rota_editoria": "/politica",
-      "data_publicacao": "2026-11-21T10:00:34Z",
-      "gatilho_vitrine": "Exibir na editoria de Política para detalhar as negociações diretas de bastidor entre Brasília e Washington.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 89,
-      "categoria_primaria": "Politica",
-      "categorias_cruzadas": [
-        "Geopolitica_Radar"
-      ],
-      "palavras_chave_busca": [
-        "vistos diplomáticos",
-        "governo lula",
-        "governo trump",
-        "embaixada americana",
-        "itamaraty",
-        "relações bilaterais"
-      ]
-    },
-    {
-      "slug": "venda-acoes-tecnologia-queda-bolsas-mercados",
-      "status": "em_alta",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-22T10:00:34Z",
-      "updated_at": "2026-11-21T10:00:34Z",
-      "titulo_tema": "Onda de vendas em tecnologia gera forte retração nas bolsas mundiais",
-      "sintese_nerd": "Incertezas sobre os retornos financeiros maciços no setor de Inteligência Artificial deflagraram uma realização de lucros generalizada na Europa e nos EUA. Essa correção técnica aumenta a volatilidade nos mercados emergentes e afeta diretamente a atratividade do mercado de capital brasileiro.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-21T10:00:34Z",
-      "gatilho_vitrine": "Posicionar na Home de Economia com foco na aversão ao risco global e contaminação do Ibovespa.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 85,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Cultura",
-        "Geopolitica_Radar"
-      ],
-      "palavras_chave_busca": [
-        "bolsa de valores",
-        "ações de tecnologia",
-        "mercado europeu",
-        "queda nas bolsas",
-        "inteligência artificial",
-        "big techs"
-      ]
-    },
-    {
-      "slug": "novo-desenrola-relatorio-compra-dividas-uniao",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-23T10:00:34Z",
-      "updated_at": "2026-11-21T10:00:34Z",
-      "titulo_tema": "Projeto do Novo Desenrola prevê compra de R$ 15 bilhões em dívidas pela União",
-      "sintese_nerd": "O avanço da proposta que permite à União comprar R$ 15 bilhões em passivos de inadimplentes busca recuperar o poder de consumo da população endividada. A medida contrabalança a necessidade de socorro econômico popular com os questionamentos do mercado financeiro quanto ao risco de responsabilidade fiscal.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-21T10:00:34Z",
-      "gatilho_vitrine": "Destacar no hub de Economia com guia explicativo sobre as regras de elegibilidade para pessoas físicas.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 81,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Politica"
-      ],
-      "palavras_chave_busca": [
-        "novo desenrola",
-        "cid gomes",
-        "renegociação de dívidas",
-        "inadimplência",
-        "crédito consignado",
-        "união compra dívidas"
       ]
     },
     {
@@ -873,119 +849,200 @@
       ]
     }
   ],
+  "temas_curadoria": [
+    {
+      "slug": "orcamento-ue-cortes-resistencias-frugais",
+      "titulo_tema": "Proposta de cortes no orçamento de longo prazo da União Europeia",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Geopolitica_Radar"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 88,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-23T13:15:04Z",
+      "palavras_chave_busca": [
+        "uniao europeia",
+        "orcamento ue",
+        "paises frugais",
+        "economia europeia",
+        "alemanha",
+        "cortes fiscais"
+      ],
+      "gatilho_vitrine": "Destaque na editoria de Economia conectando a rigidez fiscal europeia ao cenário global de juros e ajuste de contas públicas.",
+      "sintese_nerd": "A pressão de países frugais da União Europeia por cortes drásticos no orçamento de longo prazo evidencia o esgotamento de subsídios e a necessidade de reajustes fiscais na região. Para o mercado global, a contração de gastos europeus impacta a liquidez internacional e a percepção de risco para economias emergentes.",
+      "data_publicacao": "2026-11-21T13:15:04Z",
+      "updated_at": "2026-11-21T13:15:04Z"
+    },
+    {
+      "slug": "ataque-drone-navio-golfo-finlandia-russia",
+      "titulo_tema": "Navio com destino a Kaliningrado é atingido por drones no Golfo da Finlândia",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 86,
+      "ttl_horas": 36,
+      "expires_at": "2026-11-23T01:15:04Z",
+      "palavras_chave_busca": [
+        "golfo da finlandia",
+        "kaliningrado",
+        "guerra na ucrania",
+        "drones",
+        "seguranca maritima",
+        "russia"
+      ],
+      "gatilho_vitrine": "Fixar no Radar Geopolítico para monitorar escalada de conflitos marítimos na Europa e impacto no frete internacional.",
+      "sintese_nerd": "O ataque por drones a uma embarcação comercial com destino a Kaliningrado no Golfo da Finlândia eleva o risco de instabilidade nas rotas do Mar Báltico. A escalada de incidentes marítimos pressiona o setor de seguros de cargas e ameaça o fornecimento de commodities e suprimentos na Europa.",
+      "data_publicacao": "2026-11-21T13:15:04Z",
+      "updated_at": "2026-11-21T13:15:04Z"
+    },
+    {
+      "slug": "ajuste-fiscal-lula-divida-publica-brasil",
+      "titulo_tema": "Debate sobre pacote de ajuste fiscal e controle da dívida no governo Lula",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Politica",
+      "categorias_cruzadas": [
+        "Economia"
+      ],
+      "rota_editoria": "/politica",
+      "relevancia_score": 85,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-22T13:15:04Z",
+      "palavras_chave_busca": [
+        "ajuste fiscal",
+        "divida publica",
+        "governo lula",
+        "economia brasil",
+        "pacote fiscal",
+        "mercado financeiro"
+      ],
+      "gatilho_vitrine": "Posicionar no topo da home na editoria de Política e Economia, conectando o debate de gastos públicos à queda de ETFs e câmbio.",
+      "sintese_nerd": "A pressão por um plano consistente de ajuste de despesas obrigatórias para conter a dívida pública gera atritos políticos na base do governo e volatilidade nos mercados. A percepção de risco fiscal afeta diretamente a confiança dos investidores locais e estrangeiros, pressionando o câmbio e a curva de juros.",
+      "data_publicacao": "2026-11-21T13:15:04Z",
+      "updated_at": "2026-11-21T13:15:04Z"
+    }
+  ],
   "noticias_quentes": [
     {
       "slug": "novos-temporais-sul-do-pais-supercelula-rs",
-      "titulo_curto": "Defesa Civil e meteorologia alertam para novos temporais no Sul do país",
-      "resumo_pulso": "Conforme apuração do InfoMoney, novas chuvas intensas e tempestades devem atingir o Rio Grande do Sul, Santa Catarina e Paraná após os estragos causados por uma supercélula. Defesas Civis locais mantêm alertas preventivos para o fim de semana devido ao avanço de uma frente fria.",
-      "impacto_pratico": "Risco de novos transtornos logísticos, interrupções de serviços e danos materiais em municípios já afetados.",
       "categoria": "Ciencia_Clima",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "urgencia_score": 92,
-      "relevancia_score": 90,
-      "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 12,
-      "veiculos_origem": [
-        "InfoMoney Mercados"
-      ],
+      "expires_at": "2026-11-22T12:48:01Z",
+      "updated_at": "2026-11-21T13:02:47Z",
       "fontes_urls": [
         "https://www.infomoney.com.br/brasil/novos-temporais-devem-atingir-sul-do-pais-apos-supercelula-arrasar-cidade-do-rs/"
       ],
+      "resumo_pulso": "Conforme apuração do InfoMoney, novas chuvas intensas e temporais devem atingir o Rio Grande do Sul, Santa Catarina e Paraná após os severos estragos causados por uma supercélula. As Defesas Civis estaduais reforçaram os alertas preventivos devido à chegada de uma nova frente fria.",
+      "titulo_curto": "Defesa Civil e Climatempo mantêm alertas de novos temporais e chuvas intensas no Sul do país",
       "palavras_chave": [
-        "Temporais",
+        "temporais",
+        "Sul do país",
         "Rio Grande do Sul",
         "Defesa Civil",
-        "Clima"
+        "supercélula"
       ],
+      "urgencia_score": 96,
       "data_publicacao": "2026-11-21T12:40:28Z",
-      "links_internos_relacionados": [
-        {
-          "titulo_existente": "Clima, Amazônia e Transição Energética",
-          "url_existente": "https://www.rodandoomundo.com.br/clima",
-          "motivo_conexao": "Analisa eventos climáticos extremos e seus impactos sobre as regiões afetadas."
-        }
+      "impacto_pratico": "População em áreas de risco no Sul deve redobrar cuidados com alagamentos e deslizamentos de terra.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "InfoMoney"
       ],
-      "expires_at": "2026-11-22T12:48:01Z",
-      "updated_at": "2026-11-21T12:48:01Z"
-    },
-    {
-      "slug": "jair-bolsonaro-internado-dfstar-procedimento-com-sonda",
-      "titulo_curto": "Defesa de Bolsonaro pede a Moraes autorização para visitas diárias de filhos durante internação",
-      "resumo_pulso": "Segundo apuração do G1 Política, a defesa do ex-presidente Jair Bolsonaro protocolou pedido de urgência ao ministro Alexandre de Moraes para permitir visitas diárias de seus filhos no Hospital DF Star, em Brasília, onde permanece internado.",
-      "impacto_pratico": "Movimenta a pauta jurídica e política em torno das medidas cautelares aplicadas a figuras públicas.",
-      "categoria": "Sociedade_Cultura",
+      "relevancia_score": 93,
+      "horas_em_destaque": 12,
       "paises_envolvidos": [
         "BR"
       ],
-      "urgencia_score": 88,
-      "relevancia_score": 89,
-      "nivel_confianca": "alta",
+      "links_internos_relacionados": [
+        {
+          "url_existente": "https://www.rodandoomundo.com.br/clima",
+          "motivo_conexao": "Contextualiza eventos climáticos extremos e alertas meteorológicos no Brasil.",
+          "titulo_existente": "Clima, Amazônia e Transição Energética"
+        }
+      ]
+    },
+    {
+      "slug": "jair-bolsonaro-internado-dfstar-procedimento-com-sonda",
+      "categoria": "Sociedade_Cultura",
       "ttl_horas": 12,
-      "horas_em_destaque": 6,
-      "veiculos_origem": [
-        "G1 Política"
-      ],
+      "expires_at": "2026-11-21T23:41:11Z",
+      "updated_at": "2026-11-21T13:02:47Z",
       "fontes_urls": [
         "https://g1.globo.com/politica/noticia/2026/11/21/defesa-de-bolsonaro-pede-a-moraes-autorizacao-para-visitas-diarias-de-filhos-durante-internacao.ghtml"
       ],
+      "resumo_pulso": "Segundo apuração do G1 Política, a defesa de Jair Bolsonaro protocolou pedido de urgência ao ministro Alexandre de Moraes para permitir visitas diárias de seus filhos no Hospital DF Star, em Brasília. O ex-presidente permanece internado após apresentar quadro de dor e distensão abdominal.",
+      "titulo_curto": "Defesa de Jair Bolsonaro pede ao STF autorização para visitas diárias de filhos em hospital",
       "palavras_chave": [
         "Jair Bolsonaro",
-        "Alexandre de Moraes",
         "STF",
+        "Alexandre de Moraes",
+        "Hospital DF Star",
         "Brasília"
       ],
+      "urgencia_score": 89,
       "data_publicacao": "2026-11-21T11:31:47Z",
+      "impacto_pratico": "Acompanhamento médico e restrições judiciais de circulação e visitas a figuras públicas sob cautelar.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "G1 Política"
+      ],
+      "relevancia_score": 90,
+      "horas_em_destaque": 6,
+      "paises_envolvidos": [
+        "BR"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "Política no Brasil",
           "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
-          "motivo_conexao": "Acompanha as principais decisões do STF e desdobramentos políticos no cenário nacional."
+          "motivo_conexao": "Relaciona decisões e petições direcionadas ao Supremo Tribunal Federal.",
+          "titulo_existente": "STF analisa regras de transparência e limites constitucionais entre os Poderes"
         }
-      ],
-      "expires_at": "2026-11-21T23:41:11Z",
-      "updated_at": "2026-11-21T12:48:01Z"
+      ]
     },
     {
       "slug": "uniao-europeia-propoe-taxar-big-techs-orcamento-2034",
-      "titulo_curto": "União Europeia propõe taxar big techs para financiar orçamento até 2034",
-      "resumo_pulso": "Conforme comunicado da União Europeia e apuração do G1 Economia, o bloco apresentou sua proposta orçamentária de longo prazo para o período de 2028 a 2034. O texto prevê a criação de taxas sobre receitas de grandes empresas de tecnologia, incluindo ganhos com publicidade digital e uso de dados.",
-      "impacto_pratico": "Pode alterar o modelo de negócios de empresas de tecnologia globais e impactar o ambiente regulatório digital na Europa.",
       "categoria": "Economia_Comercio",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-22T11:41:11Z",
+      "updated_at": "2026-11-21T13:02:47Z",
+      "fontes_urls": [
+        "https://g1.globo.com/tecnologia/noticia/2026/11/21/uniao-europeia-propoe-taxar-big-techs-para-financiar-orcamento-ate-2034.ghtml"
+      ],
+      "resumo_pulso": "Conforme apuração do G1 Economia, a União Europeia apresentou oficialmente sua proposta orçamentária para o período de 2028 a 2034, introduzindo cobranças anuais sobre receitas de grandes empresas de tecnologia. A medida busca diversificar as fontes de financiamento do bloco europeu para a próxima década.",
+      "titulo_curto": "União Europeia detalha proposta de orçamento de longo prazo com taxação de big techs até 2034",
+      "palavras_chave": [
+        "União Europeia",
+        "orçamento",
+        "big techs",
+        "taxação",
+        "economia digital"
+      ],
+      "urgencia_score": 91,
+      "data_publicacao": "2026-11-21T11:26:05Z",
+      "impacto_pratico": "Potencial impacto financeiro e regulatório sobre grandes corporações de tecnologia com atuação global.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "G1 Economia"
+      ],
+      "relevancia_score": 92,
+      "horas_em_destaque": 12,
       "paises_envolvidos": [
         "EU"
       ],
-      "urgencia_score": 90,
-      "relevancia_score": 91,
-      "nivel_confianca": "alta",
-      "ttl_horas": 24,
-      "horas_em_destaque": 12,
-      "veiculos_origem": [
-        "G1 Economia",
-        "Comissão Europeia (Press Corner)"
-      ],
-      "fontes_urls": [
-        "https://g1.globo.com/tecnologia/noticia/2026/11/21/uniao-europeia-propoe-taxar-big-techs-para-financiar-orcamento-ate-2034.ghtml",
-        "https://ec.europa.eu/commission/presscorner/detail/en/statement_26_2557"
-      ],
-      "palavras_chave": [
-        "União Europeia",
-        "Big Techs",
-        "Orçamento",
-        "Impostos"
-      ],
-      "data_publicacao": "2026-11-21T11:26:05Z",
       "links_internos_relacionados": [
         {
-          "titulo_existente": "O que é uma sanção internacional?",
           "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-sancao-internacional",
-          "motivo_conexao": "Explica como organismos multilaterais utilizam restrições regulatórias e comerciais como instrumentos de política."
+          "motivo_conexao": "Explica o uso de instrumentos econômicos e regulatórios por organismos multilaterais.",
+          "titulo_existente": "O que é uma sanção internacional?"
         }
-      ],
-      "expires_at": "2026-11-22T11:41:11Z",
-      "updated_at": "2026-11-21T12:48:01Z"
+      ]
     },
     {
       "slug": "fbi-investiga-invasao-banco-dados-nacional-criminais-eua",
@@ -1603,114 +1660,6 @@
         "UY"
       ],
       "links_internos_relacionados": []
-    }
-  ],
-  "temas_curadoria": [
-    {
-      "slug": "escalada-estreito-hormuz-eua-ira-petroleo",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-23T10:00:34Z",
-      "updated_at": "2026-11-21T10:00:34Z",
-      "titulo_tema": "Escalada militar no Estreito de Ormuz e impactos na cotação do petróleo",
-      "sintese_nerd": "O abate de um drone norte-americano e o bloqueio parcial no Estreito de Ormuz elevam a tensão geopolítica na rota por onde passa um quinto do petróleo mundial. Esse gargalo logístico pressiona o valor do barril no mercado global com risco iminente de repasse para os combustíveis no Brasil.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-21T10:00:34Z",
-      "gatilho_vitrine": "Destacar no topo do Radar Geopolítico o risco de desabastecimento energético global e a repassagem de preços no Brasil.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 95,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Politica"
-      ],
-      "palavras_chave_busca": [
-        "estreito de ormuz",
-        "eua e irã",
-        "drone abatido",
-        "preço do petróleo",
-        "sanções americanas",
-        "crise de energia"
-      ]
-    },
-    {
-      "slug": "vistos-diplomaticos-brasil-eua-lula-trump",
-      "status": "novo",
-      "ttl_horas": 72,
-      "expires_at": "2026-11-24T10:00:34Z",
-      "updated_at": "2026-11-21T10:00:34Z",
-      "titulo_tema": "Impasse diplomático de vistos entre governos Lula e Trump",
-      "sintese_nerd": "A retaliação velada na concessão de credenciais diplomáticas entre Brasil e Estados Unidos ilustra o esfriamento das relações formais no início da gestão Trump. O impasse expõe os limites da diplomacia pragmática em equilibrar soberania institucional e interlocução com potências globais.",
-      "rota_editoria": "/politica",
-      "data_publicacao": "2026-11-21T10:00:34Z",
-      "gatilho_vitrine": "Exibir na editoria de Política para detalhar as negociações diretas de bastidor entre Brasília e Washington.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 89,
-      "categoria_primaria": "Politica",
-      "categorias_cruzadas": [
-        "Geopolitica_Radar"
-      ],
-      "palavras_chave_busca": [
-        "vistos diplomáticos",
-        "governo lula",
-        "governo trump",
-        "embaixada americana",
-        "itamaraty",
-        "relações bilaterais"
-      ]
-    },
-    {
-      "slug": "venda-acoes-tecnologia-queda-bolsas-mercados",
-      "status": "em_alta",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-22T10:00:34Z",
-      "updated_at": "2026-11-21T10:00:34Z",
-      "titulo_tema": "Onda de vendas em tecnologia gera forte retração nas bolsas mundiais",
-      "sintese_nerd": "Incertezas sobre os retornos financeiros maciços no setor de Inteligência Artificial deflagraram uma realização de lucros generalizada na Europa e nos EUA. Essa correção técnica aumenta a volatilidade nos mercados emergentes e afeta diretamente a atratividade do mercado de capital brasileiro.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-21T10:00:34Z",
-      "gatilho_vitrine": "Posicionar na Home de Economia com foco na aversão ao risco global e contaminação do Ibovespa.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 85,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Cultura",
-        "Geopolitica_Radar"
-      ],
-      "palavras_chave_busca": [
-        "bolsa de valores",
-        "ações de tecnologia",
-        "mercado europeu",
-        "queda nas bolsas",
-        "inteligência artificial",
-        "big techs"
-      ]
-    },
-    {
-      "slug": "novo-desenrola-relatorio-compra-dividas-uniao",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-23T10:00:34Z",
-      "updated_at": "2026-11-21T10:00:34Z",
-      "titulo_tema": "Projeto do Novo Desenrola prevê compra de R$ 15 bilhões em dívidas pela União",
-      "sintese_nerd": "O avanço da proposta que permite à União comprar R$ 15 bilhões em passivos de inadimplentes busca recuperar o poder de consumo da população endividada. A medida contrabalança a necessidade de socorro econômico popular com os questionamentos do mercado financeiro quanto ao risco de responsabilidade fiscal.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-21T10:00:34Z",
-      "gatilho_vitrine": "Destacar no hub de Economia com guia explicativo sobre as regras de elegibilidade para pessoas físicas.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 81,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Politica"
-      ],
-      "palavras_chave_busca": [
-        "novo desenrola",
-        "cid gomes",
-        "renegociação de dívidas",
-        "inadimplência",
-        "crédito consignado",
-        "união compra dívidas"
-      ]
     }
   ]
 }
