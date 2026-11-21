@@ -50,6 +50,7 @@ from .schemas import (
     PerguntaFrequenteItem,
     ResultadoAuditoria,
 )
+from src.notifier import notificar_aprovacao_admin_discord
 
 PROMPTS_DIR = Path(__file__).resolve().parent / "prompts"
 PROMPT_1_PATH = PROMPTS_DIR / "prompt_1_pesquisador_factual.md"
@@ -521,7 +522,8 @@ ON CONFLICT (slug) DO UPDATE SET
     review_status = EXCLUDED.review_status,
     updated_at = EXCLUDED.updated_at
 WHERE ai_colunas_editoriais.status IS DISTINCT FROM 'excluido'
-  AND ai_colunas_editoriais.review_status IS DISTINCT FROM 'excluido';
+  AND ai_colunas_editoriais.review_status IS DISTINCT FROM 'excluido'
+RETURNING created_at;
 """
 
 UPSERT_ENTENDA_O_ASSUNTO_SQL = """
@@ -550,7 +552,8 @@ ON CONFLICT (slug) DO UPDATE SET
     model_id = EXCLUDED.model_id,
     status = EXCLUDED.status,
     updated_at = EXCLUDED.updated_at
-WHERE ai_entenda_o_assunto.status IS DISTINCT FROM 'excluido';
+WHERE ai_entenda_o_assunto.status IS DISTINCT FROM 'excluido'
+RETURNING created_at;
 """
 
 
@@ -663,10 +666,71 @@ def salvar_resultado_editorial_aprovado(
         except Exception:  # noqa: BLE001
             pass
 
+        cur.execute("SELECT 1 FROM ai_colunas_editoriais WHERE slug = %s", (base_slug,))
+        coluna_nova = cur.fetchone() is None
+        cur.execute("SELECT 1 FROM ai_entenda_o_assunto WHERE slug = %s", (bloco_entenda.slug,))
+        entendo_novo = cur.fetchone() is None
+
         cur.execute(UPSERT_COLUNA_EDITORIAL_SQL, params_coluna)
+        row_coluna = cur.fetchone()
         cur.execute(UPSERT_ENTENDA_O_ASSUNTO_SQL, params_entenda)
+        row_entenda = cur.fetchone()
 
     conn.commit()
+
+    def _created_at(row: Any) -> Any:
+        if isinstance(row, dict):
+            return row.get("created_at")
+        if row:
+            return row[0]
+        return None
+
+    chegou_coluna = _created_at(row_coluna) or agora
+    chegou_entenda = _created_at(row_entenda) or agora
+
+    fontes_coluna = (
+        list(coluna.fontes_citadas)
+        or (list(dossie.fontes_primarias_identificadas) if dossie is not None else [])
+    )
+    fontes_entenda = list(bloco_entenda.fontes_referencia)
+    modelo_editorial = coluna.model_id or MODELO_EDITORIAL
+    origem_pesquisa = (
+        f"Gemini ({modelo_editorial}) · auditoria automática "
+        f"(nota de isenção {auditoria.nota_isencao}/100)"
+    )
+
+    if coluna_nova and entendo_novo:
+        notificar_aprovacao_admin_discord(
+            coluna.titulo,
+            coluna.subtitulo,
+            destino="Colunas Editoriais + Entenda o Assunto (ambos)",
+            detalhes=f"Entenda o Assunto: {bloco_entenda.titulo_assunto}",
+            origem_pesquisa=origem_pesquisa,
+            categoria=coluna.categoria,
+            fontes=fontes_coluna,
+            chegou_em=chegou_coluna,
+        )
+    elif coluna_nova:
+        notificar_aprovacao_admin_discord(
+            coluna.titulo,
+            coluna.subtitulo,
+            destino="Colunas Editoriais",
+            origem_pesquisa=origem_pesquisa,
+            categoria=coluna.categoria,
+            fontes=fontes_coluna,
+            chegou_em=chegou_coluna,
+        )
+    elif entendo_novo:
+        notificar_aprovacao_admin_discord(
+            bloco_entenda.titulo_assunto,
+            bloco_entenda.resumo_executivo,
+            destino="Entenda o Assunto",
+            origem_pesquisa=origem_pesquisa,
+            categoria=bloco_entenda.categoria,
+            fontes=fontes_entenda,
+            chegou_em=chegou_entenda,
+        )
+
     return {
         "coluna_slug": params_coluna["slug"],
         "entenda_slug": params_entenda["slug"],

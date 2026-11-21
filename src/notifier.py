@@ -1,7 +1,8 @@
 import os
 import json
 from datetime import datetime, timezone
-from typing import Optional
+from email.utils import parsedate_to_datetime
+from typing import Any, Iterable, Optional
 import requests
 from dotenv import load_dotenv
 
@@ -354,4 +355,144 @@ def send_discord_system_alert(
         return r.status_code in [200, 204]
     except Exception as e:
         print(f"[!] Erro ao enviar alerta para Discord ({canal}): {e}")
+        return False
+
+
+DISCORD_WEBHOOK_URL_APROVACAO_PADRAO = (
+    "https://discord.com/api/webhooks/1573513826257731674/"
+    "YCIYkjviZTI1vxIyo-_6Dim6AcBlEx2DVs_2NszBxujbeQlFbGjt809olx_qgPg_EYUY"
+)
+
+
+def _formatar_timestamp_discord(valor: Any) -> str:
+    """Converte datetime/ISO/RFC em timestamp nativo do Discord (`<t:...>`).
+
+    O Discord renderiza o horário no fuso de quem lê o canal, com versão
+    completa (`F`) e relativa (`R`). Retorna "" quando o valor é inválido.
+    """
+    if valor is None or valor == "":
+        return ""
+
+    dt: Optional[datetime] = None
+    if isinstance(valor, datetime):
+        dt = valor
+    elif isinstance(valor, (int, float)):
+        try:
+            dt = datetime.fromtimestamp(float(valor), tz=timezone.utc)
+        except (OverflowError, OSError, ValueError):
+            return ""
+    elif isinstance(valor, str):
+        s = valor.strip()
+        if not s:
+            return ""
+        try:
+            dt = datetime.fromisoformat(s.replace("Z", "+00:00"))
+        except ValueError:
+            try:
+                dt = parsedate_to_datetime(s)
+            except (TypeError, ValueError):
+                return ""
+
+    if dt is None:
+        return ""
+    if dt.tzinfo is None:
+        dt = dt.replace(tzinfo=timezone.utc)
+    ts = int(dt.astimezone(timezone.utc).timestamp())
+    return f"<t:{ts}:F> (<t:{ts}:R>)"
+
+
+def _resumir_lista(valores: Optional[Iterable[Any]], max_itens: int = 5, limite: int = 140) -> str:
+    """Concatena itens únicos em uma linha curta (para fontes/veículos)."""
+    if not valores:
+        return ""
+    if isinstance(valores, str):
+        valores = [valores]
+
+    vistos: list[str] = []
+    for item in valores:
+        texto = str(item or "").strip()
+        if not texto or texto in vistos:
+            continue
+        vistos.append(texto[:limite])
+        if len(vistos) >= max_itens:
+            break
+    return " · ".join(vistos)
+
+
+def notificar_aprovacao_admin_discord(
+    titulo: str,
+    breve: str,
+    *,
+    destino: Optional[str] = None,
+    detalhes: Optional[str] = None,
+    origem_pesquisa: Optional[str] = None,
+    categoria: Optional[str] = None,
+    fontes: Optional[Iterable[Any]] = None,
+    url_fonte: Optional[str] = None,
+    chegou_em: Any = None,
+    publicado_em: Any = None,
+) -> bool:
+    """
+    Envia alerta no canal do Discord quando um assunto/tópico/notícia chega aguardando
+    aprovação no Admin (/admin).
+
+    A mensagem informa nome, breve descrição, tipo/destino da aprovação (radar, coluna,
+    notícias quentes, curadoria, ambos...), quem pesquisou/apurou, horário de chegada no
+    banco e, quando disponível, a data de publicação informada pelas fontes.
+    """
+    if _is_test_environment():
+        return False
+
+    webhook_url = (
+        _limpar_webhook_url(os.getenv("DISCORD_WEBHOOK_URL_APROVACAO"))
+        or DISCORD_WEBHOOK_URL_APROVACAO_PADRAO
+    )
+    if not webhook_url:
+        return False
+
+    titulo_txt = (titulo or "Assunto aguardando aprovação no Admin").strip()[:200]
+    breve_txt = (breve or "").strip()[:800]
+
+    linhas = [
+        "📬 **Novo item aguardando aprovação no Admin — Rodando o Mundo**",
+        "",
+        f"**{titulo_txt}**",
+        breve_txt,
+    ]
+
+    if destino:
+        linhas.append(f"\n🗂️ **Tipo / destino:** {str(destino).strip()[:300]}")
+    if detalhes:
+        linhas.append(f"📝 **Detalhes:** {str(detalhes).strip()[:400]}")
+    if categoria:
+        linhas.append(f"🏷️ **Categoria:** {str(categoria).strip()[:120]}")
+    if origem_pesquisa:
+        linhas.append(f"🧠 **Pesquisa & apuração:** {str(origem_pesquisa).strip()[:400]}")
+
+    chegou_txt = _formatar_timestamp_discord(chegou_em)
+    if chegou_txt:
+        linhas.append(f"🕒 **Chegou ao banco:** {chegou_txt}")
+
+    publicado_txt = _formatar_timestamp_discord(publicado_em)
+    if publicado_txt:
+        linhas.append(f"📅 **Publicado pela fonte:** {publicado_txt}")
+
+    fontes_txt = _resumir_lista(fontes)
+    if fontes_txt:
+        linhas.append(f"📰 **Fontes consultadas:** {fontes_txt[:500]}")
+
+    if url_fonte:
+        linhas.append(f"🔗 **Fonte:** {str(url_fonte).strip()[:400]}")
+
+    corpo = "\n".join(linhas)
+    rodape = "\n\n🔗 https://www.rodandoomundo.com.br"
+    if len(corpo) + len(rodape) > 1990:
+        corpo = corpo[: 1990 - len(rodape) - 1].rstrip() + "…"
+    texto = corpo + rodape
+
+    try:
+        r = requests.post(webhook_url, json={"content": texto}, timeout=8)
+        return r.status_code in [200, 204]
+    except Exception as e:
+        print(f"[!] Erro ao enviar alerta de aprovação para o Discord: {e}")
         return False

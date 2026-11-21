@@ -103,16 +103,19 @@
   "pais_regiao": "BR",
   "coordenadas_geojson": {"type":"Point","coordinates":[...]} ,
   "data_publicacao": "ISO-8601",
-  "origem_manual": true
+  "origem_manual": true,
+  "nivel_relevancia": 3
 }
 ```
 → `{ok: true, card: {...}, total_feed: int}`
+
+> `nivel_relevancia` (1–5, padrão 3) e editável via `PATCH /v2/admin/radar/feed/{slug}` (`AdminRadarManualUpdateRequest.nivel_relevancia`, ge=1/le=5); 1 = mais fraco, 5 = mais relevante no radar público (`urgência × nível/3`).
 
 - `DELETE /v2/admin/radar/manual/{slug}` → `{ok: true, slug, removidos: int}`
 - `PATCH /v2/admin/radar/manual/{slug}` body parcial → `{ok: true, card: {...}}`
 - `GET /v2/admin/radar/manual` → `{ok: true, cards: [card...]}`
 
-Card retornado deve conter: `id, slug, titulo, resumo, analise, categoria, fonte_nome, fonte_url, data_publicacao, urgencia_score, paises_envolvidos, palavras_chave, origem_v2:false`.
+Card retornado deve conter: `id, slug, titulo, resumo, analise, categoria, fonte_nome, fonte_url, data_publicacao, urgencia_score, nivel_relevancia (1–5, padrão 3), paises_envolvidos, palavras_chave, origem_v2:false`.
 
 ### 4.8 Notícias Quentes — CRUD Admin (NOVO)
 - `GET /v2/admin/noticias-quentes?limit=50&status=` → `{ok, noticias: [{slug,batch_id,titulo_curto,resumo_pulso,impacto_pratico,categoria,paises_envolvidos,urgencia_score,relevancia_score,nivel_confianca,ttl_horas,horas_em_destaque,veiculos_origem,fontes_urls,palavras_chave,links_internos_relacionados,identificacao_editorial,atualizado_em,destaque_ate,expires_at,updated_at,status}]}`

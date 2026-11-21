@@ -2,34 +2,477 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-20T23:42:30Z",
-  "batch_id": "20261120-2342",
+  "updatedAt": "2026-11-21T01:51:59Z",
+  "batch_id": "20261121-0151",
   "temas_ativos": [
+    {
+      "slug": "stf-derruba-sigilo-de-relatorio-da-pf-sobre-mendonca-e-master",
+      "titulo_tema": "PF informa ausência de conversas entre André Mendonça e Daniel Vorcaro no caso Master",
+      "titulo_curto": "PF informa ausência de conversas entre André Mendonça e Daniel Vorcaro no caso Master",
+      "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categoria": "Geopolitica_Relacoes",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 95,
+      "urgencia_score": 94,
+      "ttl_horas": 18,
+      "expires_at": "2026-11-22T13:28:48Z",
+      "palavras_chave_busca": [
+        "stf",
+        "polícia federal",
+        "andré mendonça",
+        "caso master",
+        "edson fachin"
+      ],
+      "palavras_chave": [
+        "stf",
+        "polícia federal",
+        "andré mendonça",
+        "caso master",
+        "edson fachin"
+      ],
+      "gatilho_vitrine": "Conforme apuração da Agência Brasil e do G1 Política, a Polícia Federal informou ao STF que não localizou registros de diálogos entre o ministro André Mendonça e o ex-banqueiro Daniel Vorcaro. O relatório teve o sigilo retirado pelo presidente da Corte, Edson Fachin, a pedido do próprio magistrado.",
+      "resumo_pulso": "Conforme apuração da Agência Brasil e do G1 Política, a Polícia Federal informou ao STF que não localizou registros de diálogos entre o ministro André Mendonça e o ex-banqueiro Daniel Vorcaro. O relatório teve o sigilo retirado pelo presidente da Corte, Edson Fachin, a pedido do próprio magistrado.",
+      "sintese_nerd": "Esclarecimento de apurações em curso no âmbito do Supremo Tribunal Federal sobre o caso Master.",
+      "impacto_pratico": "Esclarecimento de apurações em curso no âmbito do Supremo Tribunal Federal sobre o caso Master.",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "veiculos_origem": [
+        "Agência Brasil (EBC)",
+        "G1 Política"
+      ],
+      "fontes_urls": [
+        "https://agenciabrasil.ebc.com.br/justica/noticia/2026-11/pf-diz-que-nao-ha-conversas-de-mendonca-com-vorcaro",
+        "https://g1.globo.com/jornal-nacional/noticia/2026/11/20/fachin-retira-sigilo-de-relatorio-da-pf-com-11-conversas-que-citam-andre-mendonca-no-caso-master.ghtml"
+      ],
+      "data_publicacao": "2026-11-21T01:28:48Z",
+      "updated_at": "2026-11-21T01:51:59Z"
+    },
+    {
+      "slug": "decisao-fachin-sigilo-caso-master-stf",
+      "status": "novo",
+      "ttl_horas": 36,
+      "expires_at": "2026-11-22T13:28:48Z",
+      "updated_at": "2026-11-21T01:28:48Z",
+      "titulo_tema": "STF retira sigilo de relatório da PF citando ministros no Caso Master",
+      "sintese_nerd": "A decisão do presidente do STF, Edson Fachin, de retirar o sigilo do relatório da PF sobre conversas envolvendo o ministro André Mendonça no Caso Master recoloca o debate sobre transparência e integridade no centro dos Poderes. A medida gera repercussão imediata entre magistrados e classes políticas, acirrando o escrutínio sobre o sistema de justiça brasileiro.",
+      "rota_editoria": "/politica",
+      "urgencia_score": 93,
+      "data_publicacao": "2026-11-21T01:28:48Z",
+      "gatilho_vitrine": "Cobrir os desdobramentos institucionais das investigações da Polícia Federal envolvendo menções a ministros do Supremo Tribunal Federal",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 94,
+      "categoria_primaria": "Politica",
+      "categorias_cruzadas": [
+        "Resumo_Ultimas",
+        "Eleicoes"
+      ],
+      "palavras_chave_busca": [
+        "stf",
+        "caso master",
+        "andré mendonça",
+        "edson fachin",
+        "polícia federal",
+        "gilmar mendes",
+        "crise institucional"
+      ]
+    },
+    {
+      "slug": "juros-eua-ajuste-fiscal-disparada-dolar",
+      "status": "novo",
+      "ttl_horas": 48,
+      "expires_at": "2026-11-23T01:28:48Z",
+      "updated_at": "2026-11-21T01:28:48Z",
+      "titulo_tema": "Juros nos EUA e ajuste fiscal pressionam o câmbio e elevam o dólar",
+      "sintese_nerd": "A combinação de taxas de juros elevadas mantidas pelo Federal Reserve nos Estados Unidos com incertezas sobre o ajuste fiscal doméstico drena capital de economias emergentes, provocando a forte desvalorização do real. Isso encarece produtos importados e pressiona a inflação interna, exigindo atenção redobrada da política monetária nacional.",
+      "rota_editoria": "/economia",
+      "data_publicacao": "2026-11-21T01:28:48Z",
+      "gatilho_vitrine": "Explicar a dinâmica macroeconômica por trás da alta da moeda americana e seus efeitos diretos no custo de vida no Brasil",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 95,
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Geopolitica_Radar",
+        "Politica"
+      ],
+      "palavras_chave_busca": [
+        "dólar",
+        "juros nos eua",
+        "fed",
+        "ajuste fiscal",
+        "câmbio",
+        "inflação",
+        "economia brasileira"
+      ]
+    },
+    {
+      "slug": "ipo-anthropic-mercado-ia-esandalo-nvidia",
+      "status": "novo",
+      "ttl_horas": 72,
+      "expires_at": "2026-11-24T01:28:48Z",
+      "updated_at": "2026-11-21T01:28:48Z",
+      "titulo_tema": "IPO bilionário da Anthropic agita mercado de IA em meio a escândalos na Nvidia",
+      "sintese_nerd": "A oferta pública recorde da Anthropic redefinindo a captação de recursos para inteligência artificial contrasta com as investigações regulatórias e quedas históricas nas ações da Nvidia. Essa dualidade expõe a volatilidade do setor tecnológico em meio a reconfigurações geopolíticas e eleitorais nas potências ocidentais.",
+      "rota_editoria": "/cultura",
+      "data_publicacao": "2026-11-21T01:28:48Z",
+      "gatilho_vitrine": "Destacar as turbulências e transformações no setor global de tecnologia e o impacto das investigações sobre chips e semicondutores",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 90,
+      "categoria_primaria": "Cultura",
+      "categorias_cruzadas": [
+        "Economia",
+        "Geopolitica_Radar"
+      ],
+      "palavras_chave_busca": [
+        "anthropic",
+        "ipo",
+        "inteligência artificial",
+        "nvidia",
+        "claude",
+        "mercado financeiro",
+        "tecnologia"
+      ]
+    },
+    {
+      "slug": "temporal-destruicao-rio-grande-do-sul-defesa-civil",
+      "status": "novo",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-22T01:28:48Z",
+      "updated_at": "2026-11-21T01:28:48Z",
+      "titulo_tema": "Temporal catastrófico deixa mortos e feridos no Rio Grande do Sul",
+      "sintese_nerd": "Eventos climáticos extremos severos atingiram dezenas de municípios gaúchos, causando dezenas de feridos e óbitos e escancarando a urgência de investimentos em infraestrutura resiliente. A recorrência desses temporais reforça o debate global sobre mitigação de riscos climáticos locais.",
+      "rota_editoria": "/radar",
+      "data_publicacao": "2026-11-21T01:28:48Z",
+      "gatilho_vitrine": "Monitorar os impactos humanos, estruturais e econômicos dos eventos climáticos extremos na região sul do país",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 86,
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Resumo_Ultimas",
+        "Cultura"
+      ],
+      "palavras_chave_busca": [
+        "rio grande do sul",
+        "temporal",
+        "defesa civil",
+        "mudanças climáticas",
+        "tupanciretã",
+        "chuvas extremas"
+      ]
+    },
+    {
+      "slug": "disparada-do-dolar-pressao-fiscal-brasil-juros-eua",
+      "titulo_tema": "Juros elevados nos EUA e incerteza fiscal no Brasil impulsionam disparada do dólar",
+      "titulo_curto": "Juros elevados nos EUA e incerteza fiscal no Brasil impulsionam disparada do dólar",
+      "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Economia",
+      "categoria": "Economia_Comercio",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 90,
+      "urgencia_score": 89,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-22T01:19:08Z",
+      "palavras_chave_busca": [
+        "dólar",
+        "câmbio",
+        "federal reserve",
+        "ajuste fiscal",
+        "inflação"
+      ],
+      "palavras_chave": [
+        "dólar",
+        "câmbio",
+        "federal reserve",
+        "ajuste fiscal",
+        "inflação"
+      ],
+      "gatilho_vitrine": "Segundo reportagem do G1 Economia, a valorização contínua do dólar no mercado global tem pressionado fortemente o real. O movimento reflete a expectativa de manutenção de juros altos pelo Federal Reserve nos EUA combinada às incertezas sobre o pacote de corte de gastos federais em Brasília.",
+      "resumo_pulso": "Segundo reportagem do G1 Economia, a valorização contínua do dólar no mercado global tem pressionado fortemente o real. O movimento reflete a expectativa de manutenção de juros altos pelo Federal Reserve nos EUA combinada às incertezas sobre o pacote de corte de gastos federais em Brasília.",
+      "sintese_nerd": "Aumento nos custos de importação, pressão inflacionária doméstica e reflexos diretos na formação de preços e na cotação do câmbio.",
+      "impacto_pratico": "Aumento nos custos de importação, pressão inflacionária doméstica e reflexos diretos na formação de preços e na cotação do câmbio.",
+      "paises_envolvidos": [
+        "BR",
+        "US"
+      ],
+      "veiculos_origem": [
+        "G1 Economia"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/jornal-nacional/noticia/2026/11/20/juros-nos-eua-e-ajuste-fiscal-no-brasil-o-que-esta-por-tras-da-disparada-do-dolar.ghtml"
+      ],
+      "data_publicacao": "2026-11-21T01:01:51Z",
+      "updated_at": "2026-11-21T01:51:59Z"
+    },
+    {
+      "slug": "bayer-pagara-bilhoes-em-acordo-judicial-com-pacientes-com-cancer",
+      "titulo_tema": "Justiça nos EUA aprova acordo de até US$ 7,25 bilhões da Bayer sobre herbicida Roundup",
+      "titulo_curto": "Justiça nos EUA aprova acordo de até US$ 7,25 bilhões da Bayer sobre herbicida Roundup",
+      "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Economia",
+      "categoria": "Economia_Comercio",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 87,
+      "urgencia_score": 88,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-22T00:48:20Z",
+      "palavras_chave_busca": [
+        "bayer",
+        "roundup",
+        "herbicida",
+        "eua",
+        "justiça"
+      ],
+      "palavras_chave": [
+        "bayer",
+        "roundup",
+        "herbicida",
+        "eua",
+        "justiça"
+      ],
+      "gatilho_vitrine": "Segundo apuração do G1 Mundo, um juiz do estado do Missouri aprovou o acordo de até US$ 7,25 bilhões firmado pela Bayer para encerrar milhares de processos nos EUA. A indenização abrange alegações de que o herbicida Roundup causou linfoma em usuários.",
+      "resumo_pulso": "Segundo apuração do G1 Mundo, um juiz do estado do Missouri aprovou o acordo de até US$ 7,25 bilhões firmado pela Bayer para encerrar milhares de processos nos EUA. A indenização abrange alegações de que o herbicida Roundup causou linfoma em usuários.",
+      "sintese_nerd": "Impacto financeiro de longo prazo sobre a fabricante de agroquímicos e precedentes para litígios corporativos globais.",
+      "impacto_pratico": "Impacto financeiro de longo prazo sobre a fabricante de agroquímicos e precedentes para litígios corporativos globais.",
+      "paises_envolvidos": [
+        "US",
+        "DE"
+      ],
+      "veiculos_origem": [
+        "G1 Mundo"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/mundo/noticia/2026/11/20/bayer-pagara-ate-us-725-bilhoes-em-acordo-judicial-com-pacientes-que-alegam-ter-desenvolvido-cancer-apos-uso-de-herbicida.ghtml"
+      ],
+      "data_publicacao": "2026-11-21T00:38:30Z",
+      "updated_at": "2026-11-21T01:51:59Z"
+    },
+    {
+      "slug": "peru-registra-terremoto-de-magnitude-6-7-sentido-em-lima",
+      "status": "novo",
+      "categoria": "Ciencia_Clima",
+      "ttl_horas": 12,
+      "expires_at": "2026-11-21T12:44:38Z",
+      "updated_at": "2026-11-21T01:12:45Z",
+      "fontes_urls": [
+        "https://g1.globo.com/mundo/noticia/2026/11/20/peru-registra-terremoto-de-magnitude-67-tremor-foi-sentido-em-lima.ghtml"
+      ],
+      "titulo_tema": "Terremoto de magnitude 6,7 atinge a região central do Peru com reflexos em Lima",
+      "resumo_pulso": "Segundo noticiado pelo G1 Mundo com base em serviços de monitoramento geológico, um forte terremoto de magnitude 6,7 sacudiu a região central peruana. O tremor foi perceptível na capital Lima, gerando alertas preventivos entre os moradores locais.",
+      "sintese_nerd": "Possíveis alertas para serviços de infraestrutura e tráfego na região central do Peru.",
+      "titulo_curto": "Terremoto de magnitude 6,7 atinge a região central do Peru com reflexos em Lima",
+      "rota_editoria": "/radar",
+      "palavras_chave": [
+        "peru",
+        "terremoto",
+        "lima",
+        "usgs"
+      ],
+      "urgencia_score": 88,
+      "data_publicacao": "2026-11-21T00:32:20Z",
+      "gatilho_vitrine": "Segundo noticiado pelo G1 Mundo com base em serviços de monitoramento geológico, um forte terremoto de magnitude 6,7 sacudiu a região central peruana. O tremor foi perceptível na capital Lima, gerando alertas preventivos entre os moradores locais.",
+      "impacto_pratico": "Possíveis alertas para serviços de infraestrutura e tráfego na região central do Peru.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "G1 Mundo"
+      ],
+      "relevancia_score": 85,
+      "paises_envolvidos": [
+        "PE"
+      ],
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "peru",
+        "terremoto",
+        "lima",
+        "usgs"
+      ]
+    },
+    {
+      "slug": "saudi-arabia-intercepta-misseis-houthi-sobre-riad",
+      "status": "novo",
+      "categoria": "Geopolitica_Relacoes",
+      "ttl_horas": 12,
+      "expires_at": "2026-11-21T13:19:08Z",
+      "updated_at": "2026-11-21T01:27:35Z",
+      "fontes_urls": [
+        "https://www.aljazeera.com/news/liveblog/2026/11/21/iran-war-live-saudi-led-coalition-repels-houthi-missiles?traffic_source=rss"
+      ],
+      "titulo_tema": "Coalizão liderada pela Arábia Saudita intercepta novos mísseis sobre Riad",
+      "resumo_pulso": "Conforme alertas e cobertura da Al Jazeera English, forças de defesa da coalizão liderada pela Arábia Saudita interceptaram novos mísseis disparados por rebeldes Houthi em direção à capital Riad. O episódio agrava o cenário de conflito no Oriente Médio e mantém ativos os protocolos de emergência local.",
+      "sintese_nerd": "Aumento dos riscos geopolíticos e volatilidade nos mercados internacionais de energia.",
+      "titulo_curto": "Coalizão liderada pela Arábia Saudita intercepta novos mísseis sobre Riad",
+      "rota_editoria": "/radar",
+      "palavras_chave": [
+        "arábia saudita",
+        "riad",
+        "houthi",
+        "mísseis",
+        "oriente médio"
+      ],
+      "urgencia_score": 96,
+      "data_publicacao": "2026-11-21T00:00:06Z",
+      "gatilho_vitrine": "Conforme alertas e cobertura da Al Jazeera English, forças de defesa da coalizão liderada pela Arábia Saudita interceptaram novos mísseis disparados por rebeldes Houthi em direção à capital Riad. O episódio agrava o cenário de conflito no Oriente Médio e mantém ativos os protocolos de emergência local.",
+      "impacto_pratico": "Aumento dos riscos geopolíticos e volatilidade nos mercados internacionais de energia.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "Al Jazeera English"
+      ],
+      "relevancia_score": 92,
+      "paises_envolvidos": [
+        "SA",
+        "YE"
+      ],
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "arábia saudita",
+        "riad",
+        "houthi",
+        "mísseis",
+        "oriente médio"
+      ]
+    },
+    {
+      "slug": "nova-caravana-migrantes-mexico-eua-ameaca-tarifas-trump",
+      "titulo_tema": "Caravana com centenas de migrantes avança no México sob ameaça tarifária de Trump",
+      "titulo_curto": "Caravana com centenas de migrantes avança no México sob ameaça tarifária de Trump",
+      "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categoria": "Mobilidade_Fronteiras",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 87,
+      "urgencia_score": 86,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-22T01:19:08Z",
+      "palavras_chave_busca": [
+        "migrantes",
+        "méxico",
+        "estados unidos",
+        "donald trump",
+        "tarifas"
+      ],
+      "palavras_chave": [
+        "migrantes",
+        "méxico",
+        "estados unidos",
+        "donald trump",
+        "tarifas"
+      ],
+      "gatilho_vitrine": "Conforme noticiado pela InfoMoney, um grupo com cerca de 300 migrantes ingressou no sul do México rumo à fronteira norte-americana. A movimentação ocorre uma semana após Donald Trump ameaçar aplicar tarifas punitivas ao governo mexicano caso as rotas não sejam contidas.",
+      "resumo_pulso": "Conforme noticiado pela InfoMoney, um grupo com cerca de 300 migrantes ingressou no sul do México rumo à fronteira norte-americana. A movimentação ocorre uma semana após Donald Trump ameaçar aplicar tarifas punitivas ao governo mexicano caso as rotas não sejam contidas.",
+      "sintese_nerd": "Riscos de atrito comercial bilateral e endurecimento de controles nas rotas migratórias entre México e Estados Unidos.",
+      "impacto_pratico": "Riscos de atrito comercial bilateral e endurecimento de controles nas rotas migratórias entre México e Estados Unidos.",
+      "paises_envolvidos": [
+        "MX",
+        "US"
+      ],
+      "veiculos_origem": [
+        "InfoMoney Mercados"
+      ],
+      "fontes_urls": [
+        "https://www.infomoney.com.br/mundo/nova-caravana-com-cerca-de-300-migrantes-entra-no-sul-do-mexico-rumo-aos-eua/"
+      ],
+      "data_publicacao": "2026-11-20T23:03:00Z",
+      "updated_at": "2026-11-21T01:51:59Z"
+    },
+    {
+      "slug": "acoes-da-anthropic-enfrentam-queda-em-bolsa-americana",
+      "status": "novo",
+      "categoria": "Economia_Comercio",
+      "ttl_horas": 18,
+      "expires_at": "2026-11-21T18:44:38Z",
+      "updated_at": "2026-11-21T01:06:43Z",
+      "fontes_urls": [
+        "https://g1.globo.com/economia/noticia/2026/11/20/acoes-anthropic.ghtml"
+      ],
+      "titulo_tema": "Ações da Anthropic registram recuo de 8,5% após estreia histórica em Wall Street",
+      "resumo_pulso": "Segundo dados do G1 Economia, os papéis da startup de inteligência artificial Anthropic fecharam em baixa de 8,5%, cotados a US$ 88,91 em Nova York. O recuo reflete ajustes naturais do mercado financeiro após o recente processo de oferta pública inicial (IPO).",
+      "sintese_nerd": "Indica volatilidade em papéis de empresas de tecnologia recém-abertas na bolsa americana.",
+      "titulo_curto": "Ações da Anthropic registram recuo de 8,5% após estreia histórica em Wall Street",
+      "rota_editoria": "/economia",
+      "palavras_chave": [
+        "anthropic",
+        "ipo",
+        "nasdaq",
+        "ações"
+      ],
+      "urgencia_score": 84,
+      "data_publicacao": "2026-11-20T22:34:15Z",
+      "gatilho_vitrine": "Segundo dados do G1 Economia, os papéis da startup de inteligência artificial Anthropic fecharam em baixa de 8,5%, cotados a US$ 88,91 em Nova York. O recuo reflete ajustes naturais do mercado financeiro após o recente processo de oferta pública inicial (IPO).",
+      "impacto_pratico": "Indica volatilidade em papéis de empresas de tecnologia recém-abertas na bolsa americana.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "G1 Economia"
+      ],
+      "relevancia_score": 86,
+      "paises_envolvidos": [
+        "US"
+      ],
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "anthropic",
+        "ipo",
+        "nasdaq",
+        "ações"
+      ]
+    },
     {
       "slug": "austria-denuncia-ataque-hacker-contra-site-do-ministerio-das-relacoes-exteriores",
       "status": "novo",
       "categoria": "Geopolitica_Relacoes",
       "ttl_horas": 18,
       "expires_at": "2026-11-21T17:02:11Z",
-      "updated_at": "2026-11-20T23:02:11Z",
+      "updated_at": "2026-11-21T00:35:03Z",
       "fontes_urls": [
         "https://g1.globo.com/mundo/noticia/2026/11/20/austria-site-de-ministerio-ataque-hacker.ghtml"
       ],
-      "titulo_tema": "Áustria denuncia ataque hacker contra site do Ministério das Relações Exteriores",
-      "resumo_pulso": "Segundo reportado pelo G1 Mundo com informações oficiais do governo austríaco, o site do Ministério das Relações Exteriores da Áustria foi alvo de um ataque hacker que comprometeu dados de contato de servidores. Autoridades investigam a origem do ciberatarde sem confirmação de autoria.",
-      "sintese_nerd": "Aumento de alertas de cibersegurança em órgãos governamentais diplomáticos na Europa.",
-      "titulo_curto": "Áustria denuncia ataque hacker contra site do Ministério das Relações Exteriores",
+      "titulo_tema": "Áustria confirma ataque cibernético a site do Ministério das Relações Exteriores",
+      "resumo_pulso": "Conforme noticiado pelo G1 Mundo, o Ministério das Relações Exteriores da Áustria confirmou que seu portal oficial foi alvo de um ataque hacker entre os dias 12 e 13 de novembro, resultando no acesso a dados de contato de funcionários. Autoridades locais investigam o incidente sem apontar autoria preliminar.",
+      "sintese_nerd": "Riscos potenciais de vazamento de metadados e reforço em protocolos de segurança digital governamental na Europa.",
+      "titulo_curto": "Áustria confirma ataque cibernético a site do Ministério das Relações Exteriores",
       "rota_editoria": "/radar",
       "palavras_chave": [
         "áustria",
-        "ataque hacker",
         "cibersegurança",
-        "ministério das relações exteriores"
+        "ataque hacker",
+        "relações exteriores"
       ],
-      "urgencia_score": 85,
+      "urgencia_score": 82,
       "data_publicacao": "2026-11-20T22:33:30Z",
-      "gatilho_vitrine": "Segundo reportado pelo G1 Mundo com informações oficiais do governo austríaco, o site do Ministério das Relações Exteriores da Áustria foi alvo de um ataque hacker que comprometeu dados de contato de servidores. Autoridades investigam a origem do ciberatarde sem confirmação de autoria.",
-      "impacto_pratico": "Aumento de alertas de cibersegurança em órgãos governamentais diplomáticos na Europa.",
+      "gatilho_vitrine": "Conforme noticiado pelo G1 Mundo, o Ministério das Relações Exteriores da Áustria confirmou que seu portal oficial foi alvo de um ataque hacker entre os dias 12 e 13 de novembro, resultando no acesso a dados de contato de funcionários. Autoridades locais investigam o incidente sem apontar autoria preliminar.",
+      "impacto_pratico": "Riscos potenciais de vazamento de metadados e reforço em protocolos de segurança digital governamental na Europa.",
       "origem_pipeline": "pulso",
       "veiculos_origem": [
         "G1 Mundo"
@@ -45,9 +488,9 @@
       ],
       "palavras_chave_busca": [
         "áustria",
-        "ataque hacker",
         "cibersegurança",
-        "ministério das relações exteriores"
+        "ataque hacker",
+        "relações exteriores"
       ]
     },
     {
@@ -96,111 +539,6 @@
         "china",
         "exportação",
         "tecnologia"
-      ]
-    },
-    {
-      "slug": "bolha-ia-nasdaq-desaba-acoes-anthropic-nvidia",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-22T22:01:12Z",
-      "updated_at": "2026-11-20T22:01:12Z",
-      "titulo_tema": "Despencar das ações de IA nos EUA atinge Wall Street e gera temor de bolha tecnológica",
-      "sintese_nerd": "O tombo acentuado nas ações de gigantes de tecnologia como Nvidia e o recuo pós-IPO da Anthropic acendem alertas globais sobre uma possível bolha especulativa no setor de inteligência artificial. Esse choque de realidade em Wall Street repercute imediatamente nos mercados emergentes e pressiona os ativos brasileiros negociados no exterior.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-20T22:01:12Z",
-      "gatilho_vitrine": "Destaque na editoria de Economia e no Radar Global cruzando o impacto do tombo das techs americanas nos ADRs e mercados globais.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 96,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Geopolitica_Radar",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "inteligência artificial",
-        "nasdaq",
-        "anthropic",
-        "nvidia",
-        "bolha de ia",
-        "mercado financeiro",
-        "ipo"
-      ]
-    },
-    {
-      "slug": "acordo-trump-filipinas-impacto-agro-brasil",
-      "status": "novo",
-      "ttl_horas": 72,
-      "expires_at": "2026-11-23T22:01:12Z",
-      "updated_at": "2026-11-20T22:01:12Z",
-      "titulo_tema": "Ameaça de Trump de desviar comércio agrícola das Filipinas afeta o agronegócio brasileiro",
-      "sintese_nerd": "As declarações do presidente dos EUA, Donald Trump, sobre um acordo para priorizar produtos agrícolas americanos nas Filipinas ameaçam diretamente o principal mercado comprador da carne suína brasileira. A investida geopolítica força o Brasil a reavaliar suas estratégias de exportação e diplomacia comercial na Ásia.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-20T22:01:12Z",
-      "gatilho_vitrine": "Posicionar no Radar Geopolítico e em Economia avaliando os riscos das pressões protecionistas norte-asiáticas sobre as exportações de carne suína do Brasil.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 92,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia"
-      ],
-      "palavras_chave_busca": [
-        "donald trump",
-        "filipinas",
-        "agronegócio",
-        "carne suína",
-        "comércio exterior",
-        "exportações do brasil"
-      ]
-    },
-    {
-      "slug": "internacao-ex-presidente-bolsonaro-brasilia",
-      "status": "novo",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-21T22:01:12Z",
-      "updated_at": "2026-11-20T22:01:12Z",
-      "titulo_tema": "Ex-presidente Jair Bolsonaro é internado em Brasília com quadro de distensão abdominal",
-      "sintese_nerd": "O ex-presidente Jair Bolsonaro foi hospitalizado em Brasília após apresentar fortes dores e distensão abdominal, interrompendo temporariamente o regime de prisão domiciliar. O fato mobiliza a cobertura da política nacional e gera repercussões institucionais imediatas entre seus aliados e o poder judiciário.",
-      "rota_editoria": "/politica",
-      "data_publicacao": "2026-11-20T22:01:12Z",
-      "gatilho_vitrine": "Manter no topo da editoria de Política com foco estritamente factual e institucional sobre a internação hospitalar e os desdobramentos de segurança.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 88,
-      "categoria_primaria": "Politica",
-      "categorias_cruzadas": [
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "jair bolsonaro",
-        "hospital df star",
-        "política nacional",
-        "prisão domiciliar",
-        "saúde"
-      ]
-    },
-    {
-      "slug": "bitcoin-minima-dolar-forte-fed",
-      "status": "novo",
-      "ttl_horas": 36,
-      "expires_at": "2026-11-22T10:01:12Z",
-      "updated_at": "2026-11-20T22:01:12Z",
-      "titulo_tema": "Bitcoin cai abaixo de US$ 57 mil pressionado por dólar forte e temor de juros nos EUA",
-      "sintese_nerd": "A forte valorização global do dólar e as incertezas em torno da política monetária do Federal Reserve empurraram o Bitcoin para a mínima de dois anos, cotado a US$ 57 mil. Esse movimento reflete a fuga de investidores de ativos de risco diante de um cenário de juros globais mais altos por mais tempo.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-20T22:01:12Z",
-      "gatilho_vitrine": "Fixar na editoria de Economia conectando a retração das criptomoedas com as perspectivas macroeconômicas globais do Fed.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 85,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "bitcoin",
-        "criptomoedas",
-        "federal reserve",
-        "taxa de juros",
-        "dólar forte",
-        "mercados"
       ]
     },
     {
@@ -390,52 +728,49 @@
     },
     {
       "slug": "brasil-cobra-revisao-bancos-itaipu-crise-ueno-bank-paraguai",
-      "titulo_tema": "Conmebol e Brasil cobram revisão após quebra de banco paraguaio",
-      "titulo_curto": "Conmebol e Brasil cobram revisão após quebra de banco paraguaio",
       "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Economia",
       "categoria": "Economia_Comercio",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-21T21:42:32Z",
+      "updated_at": "2026-11-21T01:12:45Z",
+      "fontes_urls": [
+        "https://g1.globo.com/economia/noticia/2026/11/20/conmebol-recursos-banco-ueno.ghtml"
+      ],
+      "titulo_tema": "Conmebol confirma US$ 15 milhões investidos no Ueno Bank, instituição liquidada no Paraguai",
+      "resumo_pulso": "Conforme apuração do G1 Economia, a Conmebol admitiu possuir o equivalente a R$ 88 milhões aplicados no Ueno Bank, instituição financeira paraguaia alvo de liquidação pelo Banco Central do país. A quebra do banco gera repercussões financeiras e políticas regionais.",
+      "sintese_nerd": "Possíveis impactos nas finanças de entidades esportivas sul-americanas e credibilidade do sistema financeiro paraguaio.",
+      "titulo_curto": "Conmebol confirma US$ 15 milhões investidos no Ueno Bank, instituição liquidada no Paraguai",
+      "rota_editoria": "/economia",
+      "palavras_chave": [
+        "conmebol",
+        "ueno bank",
+        "paraguai",
+        "banco central"
+      ],
+      "urgencia_score": 86,
+      "data_publicacao": "2026-11-20T21:11:02Z",
+      "gatilho_vitrine": "Conforme apuração do G1 Economia, a Conmebol admitiu possuir o equivalente a R$ 88 milhões aplicados no Ueno Bank, instituição financeira paraguaia alvo de liquidação pelo Banco Central do país. A quebra do banco gera repercussões financeiras e políticas regionais.",
+      "impacto_pratico": "Possíveis impactos nas finanças de entidades esportivas sul-americanas e credibilidade do sistema financeiro paraguaio.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "G1 Economia"
+      ],
+      "relevancia_score": 87,
+      "paises_envolvidos": [
+        "PY",
+        "BR"
+      ],
+      "categoria_primaria": "Economia",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
       ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 86,
-      "urgencia_score": 87,
-      "ttl_horas": 24,
-      "expires_at": "2026-11-21T21:42:32Z",
       "palavras_chave_busca": [
+        "conmebol",
         "ueno bank",
         "paraguai",
-        "conmebol",
-        "itaipu",
-        "crise financeira"
-      ],
-      "palavras_chave": [
-        "ueno bank",
-        "paraguai",
-        "conmebol",
-        "itaipu",
-        "crise financeira"
-      ],
-      "gatilho_vitrine": "Segundo apuração do G1 Economia e dados da Conmebol, recursos milionários da entidade esportiva e de Itaipu estavam aplicados no Ueno Bank, instituição liquidada pelo Banco Central do Paraguai após severa crise financeira. O episódio intensifica o debate sobre custódia de fundos internacionais na região.",
-      "resumo_pulso": "Segundo apuração do G1 Economia e dados da Conmebol, recursos milionários da entidade esportiva e de Itaipu estavam aplicados no Ueno Bank, instituição liquidada pelo Banco Central do Paraguai após severa crise financeira. O episódio intensifica o debate sobre custódia de fundos internacionais na região.",
-      "sintese_nerd": "Afeta a segurança financeira de fundos binacionais e entidades internacionais com exposições no sistema financeiro paraguaio.",
-      "impacto_pratico": "Afeta a segurança financeira de fundos binacionais e entidades internacionais com exposições no sistema financeiro paraguaio.",
-      "paises_envolvidos": [
-        "BR",
-        "PY"
-      ],
-      "veiculos_origem": [
-        "G1 Economia",
-        "Poder360"
-      ],
-      "fontes_urls": [
-        "https://g1.globo.com/economia/noticia/2026/11/20/conmebol-recursos-banco-ueno.ghtml"
-      ],
-      "data_publicacao": "2026-11-20T21:11:02Z",
-      "updated_at": "2026-11-20T23:42:30Z"
+        "banco central"
+      ]
     },
     {
       "slug": "trump-ameaca-taxar-empresas-eua-centros-dados-ia-exterior",
@@ -530,372 +865,309 @@
         "passaportes",
         "justiça"
       ]
-    },
-    {
-      "slug": "trump-afirma-que-ha-boa-chance-de-acordo-de-paz-na-ucrania",
-      "status": "novo",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 18,
-      "expires_at": "2026-11-21T14:45:51Z",
-      "updated_at": "2026-11-20T20:45:51Z",
-      "fontes_urls": [
-        "https://g1.globo.com/mundo/noticia/2026/11/20/trump-putin-guerra-na-ucrania.ghtml",
-        "https://www.ukrinform.net/rubric-polytics/4186985-white-house-wants-ukrainerussia-peace-deal-by-january-ft-reports.html"
-      ],
-      "titulo_tema": "Trump relata conversas 'muito boas' com Putin e prevê possibilidade de acordo na Ucrânia",
-      "resumo_pulso": "Conforme reportado pelo G1 Mundo e pela agência Ukrinform, o presidente dos EUA, Donald Trump, afirmou em coletiva na Casa Branca que mantém diálogo com o presidente russo Vladimir Putin com foco em encerrar a guerra na Ucrânia. Reportagens apontam a intenção da administração americana em formalizar diretrizes de negociação nas próximas semanas.",
-      "sintese_nerd": "Pode alterar a dinâmica de apoio militar ocidental e reformatar a mesa de negociações diplomáticas entre Kiev e Moscou.",
-      "titulo_curto": "Trump relata conversas 'muito boas' com Putin e prevê possibilidade de acordo na Ucrânia",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "donald trump",
-        "vladimir putin",
-        "ucrânia",
-        "acordo de paz",
-        "geopolítica"
-      ],
-      "urgencia_score": 87,
-      "data_publicacao": "2026-11-20T20:31:09Z",
-      "gatilho_vitrine": "Conforme reportado pelo G1 Mundo e pela agência Ukrinform, o presidente dos EUA, Donald Trump, afirmou em coletiva na Casa Branca que mantém diálogo com o presidente russo Vladimir Putin com foco em encerrar a guerra na Ucrânia. Reportagens apontam a intenção da administração americana em formalizar diretrizes de negociação nas próximas semanas.",
-      "impacto_pratico": "Pode alterar a dinâmica de apoio militar ocidental e reformatar a mesa de negociações diplomáticas entre Kiev e Moscou.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "G1 Mundo",
-        "Ukrinform"
-      ],
-      "relevancia_score": 91,
-      "paises_envolvidos": [
-        "US",
-        "RU",
-        "UA"
-      ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "donald trump",
-        "vladimir putin",
-        "ucrânia",
-        "acordo de paz",
-        "geopolítica"
-      ]
-    },
-    {
-      "slug": "onu-minuta-de-acordo-descarta-regras-vinculantes-para-robos-assassinos",
-      "status": "novo",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-21T20:45:51Z",
-      "updated_at": "2026-11-20T20:45:51Z",
-      "fontes_urls": [
-        "https://g1.globo.com/mundo/noticia/2026/11/20/onu-regras-robos-assassinos.ghtml"
-      ],
-      "titulo_tema": "ONU elabora minuta de acordo sem regras vinculantes para uso de armas autônomas",
-      "resumo_pulso": "Segundo apuração da Reuters divulgada pelo G1 Mundo, a minuta de um acordo debatido no âmbito das Nações Unidas em Genebra não deve impor proibições obrigatórias para os chamados 'robôs assassinos'. Apesar da pressão de cerca de 100 países, o texto sugere apenas recomendações voluntárias para sistemas de armas autônomas.",
-      "sintese_nerd": "Mantém o vácuo regulatório internacional sobre o uso de inteligência artificial em armamentos letais de combate.",
-      "titulo_curto": "ONU elabora minuta de acordo sem regras vinculantes para uso de armas autônomas",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "onu",
-        "armas autônomas",
-        "inteligência artificial",
-        "robôs assassinos",
-        "diplomacia"
-      ],
-      "urgencia_score": 82,
-      "data_publicacao": "2026-11-20T20:28:12Z",
-      "gatilho_vitrine": "Segundo apuração da Reuters divulgada pelo G1 Mundo, a minuta de um acordo debatido no âmbito das Nações Unidas em Genebra não deve impor proibições obrigatórias para os chamados 'robôs assassinos'. Apesar da pressão de cerca de 100 países, o texto sugere apenas recomendações voluntárias para sistemas de armas autônomas.",
-      "impacto_pratico": "Mantém o vácuo regulatório internacional sobre o uso de inteligência artificial em armamentos letais de combate.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "G1 Mundo"
-      ],
-      "relevancia_score": 84,
-      "paises_envolvidos": [
-        "UN"
-      ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "onu",
-        "armas autônomas",
-        "inteligência artificial",
-        "robôs assassinos",
-        "diplomacia"
-      ]
-    },
-    {
-      "slug": "bolsonaro-vai-a-hospital-apos-sentir-dores-abdominais",
-      "status": "novo",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 12,
-      "expires_at": "2026-11-21T08:21:55Z",
-      "updated_at": "2026-11-20T23:02:11Z",
-      "fontes_urls": [
-        "https://www.poder360.com.br/poder-justica/bolsonaro-tem-obstrucao-quase-total-do-intestino-delgado-diz-medico/",
-        "https://www.poder360.com.br/poder-brasil/carlos-relata-impressao-horrivel-ao-ver-bolsonaro-internado/"
-      ],
-      "titulo_tema": "Boletim médico confirma obstrução intestinal quase total em Bolsonaro no DF Star",
-      "resumo_pulso": "Conforme boletins médicos divulgados pelo Poder360, o ex-presidente Jair Bolsonaro segue internado em Brasília com quadro de obstrução quase total no intestino delgado. A equipe médica informou que o estado é estável, mas permanece sob avaliação para eventual intervenção cirúrgica.",
-      "sintese_nerd": "Acompanhamento direto do estado de saúde do ex-mandatário e eventuais impactos em sua agenda e desdobramentos políticos.",
-      "titulo_curto": "Boletim médico confirma obstrução intestinal quase total em Bolsonaro no DF Star",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "jair bolsonaro",
-        "hospital df star",
-        "obstrução intestinal",
-        "boletim médico"
-      ],
-      "urgencia_score": 94,
-      "data_publicacao": "2026-11-20T20:15:13Z",
-      "gatilho_vitrine": "Conforme boletins médicos divulgados pelo Poder360, o ex-presidente Jair Bolsonaro segue internado em Brasília com quadro de obstrução quase total no intestino delgado. A equipe médica informou que o estado é estável, mas permanece sob avaliação para eventual intervenção cirúrgica.",
-      "impacto_pratico": "Acompanhamento direto do estado de saúde do ex-mandatário e eventuais impactos em sua agenda e desdobramentos políticos.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "Poder360"
-      ],
-      "relevancia_score": 92,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "jair bolsonaro",
-        "hospital df star",
-        "obstrução intestinal",
-        "boletim médico"
-      ]
-    },
-    {
-      "slug": "denuncias-de-racismo-no-brasil-atingem-recorde-historico",
-      "status": "novo",
-      "categoria": "Sociedade_Cultura",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-21T20:45:51Z",
-      "updated_at": "2026-11-20T20:45:51Z",
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-11/denuncias-de-racismo-chegam-ao-maior-numero-da-serie-historica"
-      ],
-      "titulo_tema": "Denúncias de racismo chegam a 3,2 mil no Disque 100 e batem recorde histórico no Brasil",
-      "resumo_pulso": "Segundo dados oficiais divulgados pelo Ministério dos Direitos Humanos e da Cidadania via Agência Brasil, o canal Disque 100 registrou 3.270 denúncias de racismo em 2026. O volume representa o maior patamar da série histórica iniciada em 2015, superando a marca total do ano anterior.",
-      "sintese_nerd": "Reforça a visibilidade de canais públicos de denúncia e pressiona por novas políticas públicas de combate à discriminação racial.",
-      "titulo_curto": "Denúncias de racismo chegam a 3,2 mil no Disque 100 e batem recorde histórico no Brasil",
-      "rota_editoria": "/cultura",
-      "palavras_chave": [
-        "disque 100",
-        "racismo",
-        "direitos humanos",
-        "ministério dos direitos humanos",
-        "recorde histórico"
-      ],
-      "urgencia_score": 90,
-      "data_publicacao": "2026-11-20T20:06:00Z",
-      "gatilho_vitrine": "Segundo dados oficiais divulgados pelo Ministério dos Direitos Humanos e da Cidadania via Agência Brasil, o canal Disque 100 registrou 3.270 denúncias de racismo em 2026. O volume representa o maior patamar da série histórica iniciada em 2015, superando a marca total do ano anterior.",
-      "impacto_pratico": "Reforça a visibilidade de canais públicos de denúncia e pressiona por novas políticas públicas de combate à discriminação racial.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "Agência Brasil (EBC)"
-      ],
-      "relevancia_score": 93,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "categoria_primaria": "Cultura",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "disque 100",
-        "racismo",
-        "direitos humanos",
-        "ministério dos direitos humanos",
-        "recorde histórico"
-      ]
-    },
-    {
-      "slug": "surto-de-sarampo-nos-eua-supera-5-mil-casos-e-perde-status-de-eliminacao",
-      "status": "novo",
-      "categoria": "Sociedade_Cultura",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-21T19:58:05Z",
-      "updated_at": "2026-11-20T19:58:05Z",
-      "fontes_urls": [
-        "https://www.infomoney.com.br/saude/casos-de-sarampo-nos-eua-se-aproximam-da-marca-de-6-mil-a-medida-que-surto-se-agrava/"
-      ],
-      "titulo_tema": "EUA perdem status de eliminação do sarampo após 26 anos com surto de quase 6 mil casos",
-      "resumo_pulso": "Conforme noticiado pela InfoMoney com base em relatórios sanitários dos EUA, o país perdeu o status de erradicação do sarampo mantido por 26 anos. O surto nacional registrou aproximação da marca de 6 mil casos confirmados em decorrência da queda de índices vacinais.",
-      "sintese_nerd": "Viajantes com destino aos Estados Unidos devem revisar esquemas vacinais diante do aumento da circulação viral no país.",
-      "titulo_curto": "EUA perdem status de eliminação do sarampo após 26 anos com surto de quase 6 mil casos",
-      "rota_editoria": "/cultura",
-      "palavras_chave": [
-        "sarampo",
-        "eua",
-        "saúde pública",
-        "vacinação",
-        "epidemia"
-      ],
-      "urgencia_score": 89,
-      "data_publicacao": "2026-11-20T19:51:19Z",
-      "gatilho_vitrine": "Conforme noticiado pela InfoMoney com base em relatórios sanitários dos EUA, o país perdeu o status de erradicação do sarampo mantido por 26 anos. O surto nacional registrou aproximação da marca de 6 mil casos confirmados em decorrência da queda de índices vacinais.",
-      "impacto_pratico": "Viajantes com destino aos Estados Unidos devem revisar esquemas vacinais diante do aumento da circulação viral no país.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "InfoMoney Mercados"
-      ],
-      "relevancia_score": 88,
-      "paises_envolvidos": [
-        "US"
-      ],
-      "categoria_primaria": "Cultura",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "sarampo",
-        "eua",
-        "saúde pública",
-        "vacinação",
-        "epidemia"
-      ]
-    },
-    {
-      "slug": "eua-sancionam-lei-que-encerra-producao-da-moeda-de-um-centavo",
-      "status": "novo",
-      "categoria": "Economia_Comercio",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-21T19:58:05Z",
-      "updated_at": "2026-11-20T19:58:05Z",
-      "fontes_urls": [
-        "https://www.whitehouse.gov/briefings-statements/2026/11/h-r-10167-common-cents-act/"
-      ],
-      "titulo_tema": "Casa Branca sanciona lei que encerra produção de moedas de um centavo nos EUA",
-      "resumo_pulso": "Conforme comunicado oficial publicado pela Casa Branca, foi sancionada a legislação 'Common Cents Act' (H.R. 10167), que proíbe o Departamento do Tesouro de cunhar novas moedas de um centavo (penny) para circulação geral. O texto autoriza o uso de metais mais econômicos para outras moedas e define regras de arredondamento comercial.",
-      "sintese_nerd": "Consumidores e estabelecimentos comerciais nos EUA deverão adaptar transações em espécie para o arredondamento em múltiplos de cinco centavos.",
-      "titulo_curto": "Casa Branca sanciona lei que encerra produção de moedas de um centavo nos EUA",
-      "rota_editoria": "/economia",
-      "palavras_chave": [
-        "casa branca",
-        "common cents act",
-        "tesouro dos eua",
-        "dólar",
-        "moeda"
-      ],
-      "urgencia_score": 83,
-      "data_publicacao": "2026-11-20T19:41:38Z",
-      "gatilho_vitrine": "Conforme comunicado oficial publicado pela Casa Branca, foi sancionada a legislação 'Common Cents Act' (H.R. 10167), que proíbe o Departamento do Tesouro de cunhar novas moedas de um centavo (penny) para circulação geral. O texto autoriza o uso de metais mais econômicos para outras moedas e define regras de arredondamento comercial.",
-      "impacto_pratico": "Consumidores e estabelecimentos comerciais nos EUA deverão adaptar transações em espécie para o arredondamento em múltiplos de cinco centavos.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "White House Briefing Room"
-      ],
-      "relevancia_score": 86,
-      "paises_envolvidos": [
-        "US"
-      ],
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "casa branca",
-        "common cents act",
-        "tesouro dos eua",
-        "dólar",
-        "moeda"
-      ]
-    },
-    {
-      "slug": "condenacao-nos-eua-por-plano-de-assassinato-de-lider-sikh",
-      "status": "novo",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 18,
-      "expires_at": "2026-11-21T13:58:05Z",
-      "updated_at": "2026-11-20T19:58:05Z",
-      "fontes_urls": [
-        "https://www.aljazeera.com/news/2026/11/20/indian-man-sentenced-to-19-years-in-us-sikh-separatist-assassination-plot?traffic_source=rss"
-      ],
-      "titulo_tema": "Justiça dos EUA condena indiano a 19 anos de prisão por conspiração contra líder Sikh",
-      "resumo_pulso": "Segundo a Al Jazeera English, a Justiça federal dos Estados Unidos condenou o cidadão indiano Nikhil Gupta a 19 anos de prisão por planejar o assassinato de Gurpatwant Singh Pannun em Nova York. A acusação apontou a contratação de um agente disfarçado para executar o homicídio a pedido de um oficial de inteligência de Nova Déli.",
-      "sintese_nerd": "A sentença consolida o atrito diplomático entre Washington e Nova Déli sobre operações extracontinentais de inteligência.",
-      "titulo_curto": "Justiça dos EUA condena indiano a 19 anos de prisão por conspiração contra líder Sikh",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "eua",
-        "índia",
-        "sikh",
-        "nikhil gupta",
-        "extradição"
-      ],
-      "urgencia_score": 88,
-      "data_publicacao": "2026-11-20T19:40:07Z",
-      "gatilho_vitrine": "Segundo a Al Jazeera English, a Justiça federal dos Estados Unidos condenou o cidadão indiano Nikhil Gupta a 19 anos de prisão por planejar o assassinato de Gurpatwant Singh Pannun em Nova York. A acusação apontou a contratação de um agente disfarçado para executar o homicídio a pedido de um oficial de inteligência de Nova Déli.",
-      "impacto_pratico": "A sentença consolida o atrito diplomático entre Washington e Nova Déli sobre operações extracontinentais de inteligência.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "Al Jazeera English"
-      ],
-      "relevancia_score": 85,
-      "paises_envolvidos": [
-        "US",
-        "IN"
-      ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "eua",
-        "índia",
-        "sikh",
-        "nikhil gupta",
-        "extradição"
-      ]
     }
   ],
   "noticias_quentes": [
+    {
+      "slug": "stf-derruba-sigilo-de-relatorio-da-pf-sobre-mendonca-e-master",
+      "titulo_curto": "PF informa ausência de conversas entre André Mendonça e Daniel Vorcaro no caso Master",
+      "resumo_pulso": "Conforme apuração da Agência Brasil e do G1 Política, a Polícia Federal informou ao STF que não localizou registros de diálogos entre o ministro André Mendonça e o ex-banqueiro Daniel Vorcaro. O relatório teve o sigilo retirado pelo presidente da Corte, Edson Fachin, a pedido do próprio magistrado.",
+      "impacto_pratico": "Esclarecimento de apurações em curso no âmbito do Supremo Tribunal Federal sobre o caso Master.",
+      "categoria": "Geopolitica_Relacoes",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "urgencia_score": 94,
+      "relevancia_score": 95,
+      "nivel_confianca": "alta",
+      "ttl_horas": 18,
+      "horas_em_destaque": 12,
+      "veiculos_origem": [
+        "Agência Brasil (EBC)",
+        "G1 Política"
+      ],
+      "fontes_urls": [
+        "https://agenciabrasil.ebc.com.br/justica/noticia/2026-11/pf-diz-que-nao-ha-conversas-de-mendonca-com-vorcaro",
+        "https://g1.globo.com/jornal-nacional/noticia/2026/11/20/fachin-retira-sigilo-de-relatorio-da-pf-com-11-conversas-que-citam-andre-mendonca-no-caso-master.ghtml"
+      ],
+      "palavras_chave": [
+        "STF",
+        "Polícia Federal",
+        "André Mendonça",
+        "caso Master",
+        "Edson Fachin"
+      ],
+      "data_publicacao": "2026-11-21T01:28:48Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "STF analisa regras de transparência e limites constitucionais entre os Poderes",
+          "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
+          "motivo_conexao": "Aborda a atuação e o acompanhamento de decisões do Supremo Tribunal Federal sobre investigações de repercussão nacional."
+        }
+      ],
+      "expires_at": "2026-11-22T13:28:48Z",
+      "updated_at": "2026-11-21T01:51:59Z"
+    },
+    {
+      "slug": "disparada-do-dolar-pressao-fiscal-brasil-juros-eua",
+      "titulo_curto": "Juros elevados nos EUA e incerteza fiscal no Brasil impulsionam disparada do dólar",
+      "resumo_pulso": "Segundo reportagem do G1 Economia, a valorização contínua do dólar no mercado global tem pressionado fortemente o real. O movimento reflete a expectativa de manutenção de juros altos pelo Federal Reserve nos EUA combinada às incertezas sobre o pacote de corte de gastos federais em Brasília.",
+      "impacto_pratico": "Aumento nos custos de importação, pressão inflacionária doméstica e reflexos diretos na formação de preços e na cotação do câmbio.",
+      "categoria": "Economia_Comercio",
+      "paises_envolvidos": [
+        "BR",
+        "US"
+      ],
+      "urgencia_score": 89,
+      "relevancia_score": 90,
+      "nivel_confianca": "alta",
+      "ttl_horas": 24,
+      "horas_em_destaque": 18,
+      "veiculos_origem": [
+        "G1 Economia"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/jornal-nacional/noticia/2026/11/20/juros-nos-eua-e-ajuste-fiscal-no-brasil-o-que-esta-por-tras-da-disparada-do-dolar.ghtml"
+      ],
+      "palavras_chave": [
+        "dólar",
+        "câmbio",
+        "Federal Reserve",
+        "ajuste fiscal",
+        "inflação"
+      ],
+      "data_publicacao": "2026-11-21T01:01:51Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "O que é inflação?",
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
+          "motivo_conexao": "Explica de que maneira o câmbio e a política monetária afetam diretamente o poder de compra e o custo de vida."
+        }
+      ],
+      "expires_at": "2026-11-22T01:19:08Z",
+      "updated_at": "2026-11-21T01:51:59Z"
+    },
+    {
+      "slug": "bayer-pagara-bilhoes-em-acordo-judicial-com-pacientes-com-cancer",
+      "titulo_curto": "Justiça nos EUA aprova acordo de até US$ 7,25 bilhões da Bayer sobre herbicida Roundup",
+      "resumo_pulso": "Segundo apuração do G1 Mundo, um juiz do estado do Missouri aprovou o acordo de até US$ 7,25 bilhões firmado pela Bayer para encerrar milhares de processos nos EUA. A indenização abrange alegações de que o herbicida Roundup causou linfoma em usuários.",
+      "impacto_pratico": "Impacto financeiro de longo prazo sobre a fabricante de agroquímicos e precedentes para litígios corporativos globais.",
+      "categoria": "Economia_Comercio",
+      "paises_envolvidos": [
+        "US",
+        "DE"
+      ],
+      "urgencia_score": 88,
+      "relevancia_score": 87,
+      "nivel_confianca": "alta",
+      "ttl_horas": 24,
+      "horas_em_destaque": 18,
+      "veiculos_origem": [
+        "G1 Mundo"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/mundo/noticia/2026/11/20/bayer-pagara-ate-us-725-bilhoes-em-acordo-judicial-com-pacientes-que-alegam-ter-desenvolvido-cancer-apos-uso-de-herbicida.ghtml"
+      ],
+      "palavras_chave": [
+        "Bayer",
+        "Roundup",
+        "herbicida",
+        "EUA",
+        "justiça"
+      ],
+      "data_publicacao": "2026-11-21T00:38:30Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "Economia no Brasil",
+          "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
+          "motivo_conexao": "Contextualiza grandes movimentações financeiras, corporativas e impactos de acordos judiciais internacionais."
+        }
+      ],
+      "expires_at": "2026-11-22T00:48:20Z",
+      "updated_at": "2026-11-21T01:51:59Z"
+    },
+    {
+      "slug": "peru-registra-terremoto-de-magnitude-6-7-sentido-em-lima",
+      "categoria": "Ciencia_Clima",
+      "ttl_horas": 12,
+      "expires_at": "2026-11-21T12:44:38Z",
+      "updated_at": "2026-11-21T01:12:45Z",
+      "fontes_urls": [
+        "https://g1.globo.com/mundo/noticia/2026/11/20/peru-registra-terremoto-de-magnitude-67-tremor-foi-sentido-em-lima.ghtml"
+      ],
+      "resumo_pulso": "Segundo noticiado pelo G1 Mundo com base em serviços de monitoramento geológico, um forte terremoto de magnitude 6,7 sacudiu a região central peruana. O tremor foi perceptível na capital Lima, gerando alertas preventivos entre os moradores locais.",
+      "titulo_curto": "Terremoto de magnitude 6,7 atinge a região central do Peru com reflexos em Lima",
+      "palavras_chave": [
+        "Peru",
+        "Terremoto",
+        "Lima",
+        "USGS"
+      ],
+      "urgencia_score": 88,
+      "data_publicacao": "2026-11-21T00:32:20Z",
+      "impacto_pratico": "Possíveis alertas para serviços de infraestrutura e tráfego na região central do Peru.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "G1 Mundo"
+      ],
+      "relevancia_score": 85,
+      "horas_em_destaque": 6,
+      "paises_envolvidos": [
+        "PE"
+      ],
+      "links_internos_relacionados": []
+    },
+    {
+      "slug": "saudi-arabia-intercepta-misseis-houthi-sobre-riad",
+      "categoria": "Geopolitica_Relacoes",
+      "ttl_horas": 12,
+      "expires_at": "2026-11-21T13:19:08Z",
+      "updated_at": "2026-11-21T01:27:35Z",
+      "fontes_urls": [
+        "https://www.aljazeera.com/news/liveblog/2026/11/21/iran-war-live-saudi-led-coalition-repels-houthi-missiles?traffic_source=rss"
+      ],
+      "resumo_pulso": "Conforme alertas e cobertura da Al Jazeera English, forças de defesa da coalizão liderada pela Arábia Saudita interceptaram novos mísseis disparados por rebeldes Houthi em direção à capital Riad. O episódio agrava o cenário de conflito no Oriente Médio e mantém ativos os protocolos de emergência local.",
+      "titulo_curto": "Coalizão liderada pela Arábia Saudita intercepta novos mísseis sobre Riad",
+      "palavras_chave": [
+        "Arábia Saudita",
+        "Riad",
+        "Houthi",
+        "mísseis",
+        "Oriente Médio"
+      ],
+      "urgencia_score": 96,
+      "data_publicacao": "2026-11-21T00:00:06Z",
+      "impacto_pratico": "Aumento dos riscos geopolíticos e volatilidade nos mercados internacionais de energia.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Al Jazeera English"
+      ],
+      "relevancia_score": 92,
+      "horas_em_destaque": 6,
+      "paises_envolvidos": [
+        "SA",
+        "YE"
+      ],
+      "links_internos_relacionados": [
+        {
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-sancao-internacional",
+          "motivo_conexao": "Contextualiza a dinâmica de pressões geopolíticas e conflitos regionais no Oriente Médio.",
+          "titulo_existente": "O que é uma sanção internacional?"
+        }
+      ]
+    },
+    {
+      "slug": "nova-caravana-migrantes-mexico-eua-ameaca-tarifas-trump",
+      "titulo_curto": "Caravana com centenas de migrantes avança no México sob ameaça tarifária de Trump",
+      "resumo_pulso": "Conforme noticiado pela InfoMoney, um grupo com cerca de 300 migrantes ingressou no sul do México rumo à fronteira norte-americana. A movimentação ocorre uma semana após Donald Trump ameaçar aplicar tarifas punitivas ao governo mexicano caso as rotas não sejam contidas.",
+      "impacto_pratico": "Riscos de atrito comercial bilateral e endurecimento de controles nas rotas migratórias entre México e Estados Unidos.",
+      "categoria": "Mobilidade_Fronteiras",
+      "paises_envolvidos": [
+        "MX",
+        "US"
+      ],
+      "urgencia_score": 86,
+      "relevancia_score": 87,
+      "nivel_confianca": "alta",
+      "ttl_horas": 24,
+      "horas_em_destaque": 18,
+      "veiculos_origem": [
+        "InfoMoney Mercados"
+      ],
+      "fontes_urls": [
+        "https://www.infomoney.com.br/mundo/nova-caravana-com-cerca-de-300-migrantes-entra-no-sul-do-mexico-rumo-aos-eua/"
+      ],
+      "palavras_chave": [
+        "migrantes",
+        "México",
+        "Estados Unidos",
+        "Donald Trump",
+        "tarifas"
+      ],
+      "data_publicacao": "2026-11-20T23:03:00Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "Casa Branca anuncia novos nomes para o gabinete e detalha prioridades em imigração e comércio",
+          "url_existente": "https://www.rodandoomundo.com.br/politica/estados-unidos",
+          "motivo_conexao": "Analisa as prioridades da administração norte-americana em relação à política de imigração e barreiras comerciais."
+        }
+      ],
+      "expires_at": "2026-11-22T01:19:08Z",
+      "updated_at": "2026-11-21T01:51:59Z"
+    },
+    {
+      "slug": "acoes-da-anthropic-enfrentam-queda-em-bolsa-americana",
+      "categoria": "Economia_Comercio",
+      "ttl_horas": 18,
+      "expires_at": "2026-11-21T18:44:38Z",
+      "updated_at": "2026-11-21T01:06:43Z",
+      "fontes_urls": [
+        "https://g1.globo.com/economia/noticia/2026/11/20/acoes-anthropic.ghtml"
+      ],
+      "resumo_pulso": "Segundo dados do G1 Economia, os papéis da startup de inteligência artificial Anthropic fecharam em baixa de 8,5%, cotados a US$ 88,91 em Nova York. O recuo reflete ajustes naturais do mercado financeiro após o recente processo de oferta pública inicial (IPO).",
+      "titulo_curto": "Ações da Anthropic registram recuo de 8,5% após estreia histórica em Wall Street",
+      "palavras_chave": [
+        "Anthropic",
+        "IPO",
+        "NASDAQ",
+        "ações"
+      ],
+      "urgencia_score": 84,
+      "data_publicacao": "2026-11-20T22:34:15Z",
+      "impacto_pratico": "Indica volatilidade em papéis de empresas de tecnologia recém-abertas na bolsa americana.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "G1 Economia"
+      ],
+      "relevancia_score": 86,
+      "horas_em_destaque": 10,
+      "paises_envolvidos": [
+        "US"
+      ],
+      "links_internos_relacionados": [
+        {
+          "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
+          "motivo_conexao": "Permite contextualizar a volatilidade dos mercados globais de tecnologia e capitais.",
+          "titulo_existente": "Economia no Brasil"
+        }
+      ]
+    },
     {
       "slug": "austria-denuncia-ataque-hacker-contra-site-do-ministerio-das-relacoes-exteriores",
       "categoria": "Geopolitica_Relacoes",
       "ttl_horas": 18,
       "expires_at": "2026-11-21T17:02:11Z",
-      "updated_at": "2026-11-20T23:02:11Z",
+      "updated_at": "2026-11-21T00:35:03Z",
       "fontes_urls": [
         "https://g1.globo.com/mundo/noticia/2026/11/20/austria-site-de-ministerio-ataque-hacker.ghtml"
       ],
-      "resumo_pulso": "Segundo reportado pelo G1 Mundo com informações oficiais do governo austríaco, o site do Ministério das Relações Exteriores da Áustria foi alvo de um ataque hacker que comprometeu dados de contato de servidores. Autoridades investigam a origem do ciberatarde sem confirmação de autoria.",
-      "titulo_curto": "Áustria denuncia ataque hacker contra site do Ministério das Relações Exteriores",
+      "resumo_pulso": "Conforme noticiado pelo G1 Mundo, o Ministério das Relações Exteriores da Áustria confirmou que seu portal oficial foi alvo de um ataque hacker entre os dias 12 e 13 de novembro, resultando no acesso a dados de contato de funcionários. Autoridades locais investigam o incidente sem apontar autoria preliminar.",
+      "titulo_curto": "Áustria confirma ataque cibernético a site do Ministério das Relações Exteriores",
       "palavras_chave": [
         "Áustria",
-        "ataque hacker",
         "cibersegurança",
-        "Ministério das Relações Exteriores"
+        "ataque hacker",
+        "Relações Exteriores"
       ],
-      "urgencia_score": 85,
+      "urgencia_score": 82,
       "data_publicacao": "2026-11-20T22:33:30Z",
-      "impacto_pratico": "Aumento de alertas de cibersegurança em órgãos governamentais diplomáticos na Europa.",
+      "impacto_pratico": "Riscos potenciais de vazamento de metadados e reforço em protocolos de segurança digital governamental na Europa.",
       "nivel_confianca": "alta",
       "veiculos_origem": [
         "G1 Mundo"
       ],
       "relevancia_score": 83,
-      "horas_em_destaque": 8,
+      "horas_em_destaque": 12,
       "paises_envolvidos": [
         "AT"
       ],
-      "links_internos_relacionados": []
+      "links_internos_relacionados": [
+        {
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-sancao-internacional",
+          "motivo_conexao": "Contextualiza tensões cibernéticas e geopolíticas envolvendo infraestruturas estatais.",
+          "titulo_existente": "O que é uma sanção internacional?"
+        }
+      ]
     },
     {
       "slug": "parlamentares-eua-pressionam-por-regras-mais-rigidas-exportacao-chips-ia",
@@ -1077,43 +1349,41 @@
     },
     {
       "slug": "brasil-cobra-revisao-bancos-itaipu-crise-ueno-bank-paraguai",
-      "titulo_curto": "Conmebol e Brasil cobram revisão após quebra de banco paraguaio",
-      "resumo_pulso": "Segundo apuração do G1 Economia e dados da Conmebol, recursos milionários da entidade esportiva e de Itaipu estavam aplicados no Ueno Bank, instituição liquidada pelo Banco Central do Paraguai após severa crise financeira. O episódio intensifica o debate sobre custódia de fundos internacionais na região.",
-      "impacto_pratico": "Afeta a segurança financeira de fundos binacionais e entidades internacionais com exposições no sistema financeiro paraguaio.",
       "categoria": "Economia_Comercio",
-      "paises_envolvidos": [
-        "BR",
-        "PY"
-      ],
-      "urgencia_score": 87,
-      "relevancia_score": 86,
-      "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 12,
-      "veiculos_origem": [
-        "G1 Economia",
-        "Poder360"
-      ],
+      "expires_at": "2026-11-21T21:42:32Z",
+      "updated_at": "2026-11-21T01:12:45Z",
       "fontes_urls": [
         "https://g1.globo.com/economia/noticia/2026/11/20/conmebol-recursos-banco-ueno.ghtml"
       ],
+      "resumo_pulso": "Conforme apuração do G1 Economia, a Conmebol admitiu possuir o equivalente a R$ 88 milhões aplicados no Ueno Bank, instituição financeira paraguaia alvo de liquidação pelo Banco Central do país. A quebra do banco gera repercussões financeiras e políticas regionais.",
+      "titulo_curto": "Conmebol confirma US$ 15 milhões investidos no Ueno Bank, instituição liquidada no Paraguai",
       "palavras_chave": [
+        "Conmebol",
         "Ueno Bank",
         "Paraguai",
-        "Conmebol",
-        "Itaipu",
-        "crise financeira"
+        "Banco Central"
       ],
+      "urgencia_score": 86,
       "data_publicacao": "2026-11-20T21:11:02Z",
+      "impacto_pratico": "Possíveis impactos nas finanças de entidades esportivas sul-americanas e credibilidade do sistema financeiro paraguaio.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "G1 Economia"
+      ],
+      "relevancia_score": 87,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "PY",
+        "BR"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "Economia no Brasil",
           "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
-          "motivo_conexao": "Complementa a análise sobre impactos financeiros internacionais na economia brasileira."
+          "motivo_conexao": "Analisa riscos de liquidez e investimentos na América do Sul.",
+          "titulo_existente": "Economia no Brasil"
         }
-      ],
-      "expires_at": "2026-11-21T21:42:32Z",
-      "updated_at": "2026-11-20T23:42:30Z"
+      ]
     },
     {
       "slug": "trump-ameaca-taxar-empresas-eua-centros-dados-ia-exterior",
@@ -1190,6 +1460,48 @@
           "titulo_existente": "STF analisa regras de transparência e limites constitucionais entre os Poderes"
         }
       ]
+    },
+    {
+      "slug": "temporal-no-rio-grande-do-sul-provoca-mortes-e-destruicao",
+      "titulo_curto": "Ex-vereador e vítimas fatais confirmados após temporais devastadores no RS",
+      "resumo_pulso": "Conforme atualizações da Defesa Civil e reportagem da BBC News Brasil e Poder360, os temporais que atingiram cerca de 30 municípios do Rio Grande do Sul resultaram em quatro mortes e dezenas de feridos, com destaque para a cidade de Tupanciretã, onde a prefeitura estima destruição quase total das moradias locais.",
+      "impacto_pratico": "Interrupção de serviços essenciais, danos estruturais severos a moradias e riscos de propagação de temporais para estados vizinhos como São Paulo.",
+      "categoria": "Ciencia_Clima",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "urgencia_score": 98,
+      "relevancia_score": 96,
+      "nivel_confianca": "alta",
+      "ttl_horas": 18,
+      "horas_em_destaque": 24,
+      "veiculos_origem": [
+        "Poder360",
+        "BBC News Brasil",
+        "InfoMoney Mercados"
+      ],
+      "fontes_urls": [
+        "https://www.poder360.com.br/poder-brasil/ex-vereador-esta-entre-os-mortos-da-tempestade-em-tupancireta-rs/",
+        "https://www.bbc.com/portuguese/articles/cqdr1xmyg3kzo?at_medium=RSS&at_campaign=rss",
+        "https://www.infomoney.com.br/brasil/tempestades-que-causaram-estragos-no-rs-podem-chegar-ate-sao-paulo-veja-previsao/"
+      ],
+      "palavras_chave": [
+        "temporal",
+        "Rio Grande do Sul",
+        "Tupanciretã",
+        "Defesa Civil",
+        "chuvas"
+      ],
+      "data_publicacao": "2026-11-20T20:45:51.380135+00:00",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "Clima, Amazônia e Transição Energética",
+          "url_existente": "https://www.rodandoomundo.com.br/clima",
+          "motivo_conexao": "Contextualiza a frequência e o impacto de eventos climáticos extremos no Brasil."
+        }
+      ],
+      "expires_at": "2026-11-21T19:21:44Z",
+      "updated_at": "2026-11-21T01:51:59Z"
     },
     {
       "slug": "trump-afirma-que-ha-boa-chance-de-acordo-de-paz-na-ucrania",
@@ -1308,416 +1620,118 @@
           "titulo_existente": "Política no Brasil"
         }
       ]
-    },
-    {
-      "slug": "denuncias-de-racismo-no-brasil-atingem-recorde-historico",
-      "categoria": "Sociedade_Cultura",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-21T20:45:51Z",
-      "updated_at": "2026-11-20T20:45:51Z",
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-11/denuncias-de-racismo-chegam-ao-maior-numero-da-serie-historica"
-      ],
-      "resumo_pulso": "Segundo dados oficiais divulgados pelo Ministério dos Direitos Humanos e da Cidadania via Agência Brasil, o canal Disque 100 registrou 3.270 denúncias de racismo em 2026. O volume representa o maior patamar da série histórica iniciada em 2015, superando a marca total do ano anterior.",
-      "titulo_curto": "Denúncias de racismo chegam a 3,2 mil no Disque 100 e batem recorde histórico no Brasil",
-      "palavras_chave": [
-        "Disque 100",
-        "racismo",
-        "direitos humanos",
-        "Ministério dos Direitos Humanos",
-        "recorde histórico"
-      ],
-      "urgencia_score": 90,
-      "data_publicacao": "2026-11-20T20:06:00Z",
-      "impacto_pratico": "Reforça a visibilidade de canais públicos de denúncia e pressiona por novas políticas públicas de combate à discriminação racial.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Agência Brasil (EBC)"
-      ],
-      "relevancia_score": 93,
-      "horas_em_destaque": 12,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
-          "motivo_conexao": "Acompanhe as políticas públicas e debates institucionais sobre direitos sociais e cidadania no Brasil.",
-          "titulo_existente": "Política no Brasil"
-        }
-      ]
-    },
-    {
-      "slug": "surto-de-sarampo-nos-eua-supera-5-mil-casos-e-perde-status-de-eliminacao",
-      "categoria": "Sociedade_Cultura",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-21T19:58:05Z",
-      "updated_at": "2026-11-20T19:58:05Z",
-      "fontes_urls": [
-        "https://www.infomoney.com.br/saude/casos-de-sarampo-nos-eua-se-aproximam-da-marca-de-6-mil-a-medida-que-surto-se-agrava/"
-      ],
-      "resumo_pulso": "Conforme noticiado pela InfoMoney com base em relatórios sanitários dos EUA, o país perdeu o status de erradicação do sarampo mantido por 26 anos. O surto nacional registrou aproximação da marca de 6 mil casos confirmados em decorrência da queda de índices vacinais.",
-      "titulo_curto": "EUA perdem status de eliminação do sarampo após 26 anos com surto de quase 6 mil casos",
-      "palavras_chave": [
-        "sarampo",
-        "EUA",
-        "saúde pública",
-        "vacinação",
-        "epidemia"
-      ],
-      "urgencia_score": 89,
-      "data_publicacao": "2026-11-20T19:51:19Z",
-      "impacto_pratico": "Viajantes com destino aos Estados Unidos devem revisar esquemas vacinais diante do aumento da circulação viral no país.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "InfoMoney Mercados"
-      ],
-      "relevancia_score": 88,
-      "horas_em_destaque": 12,
-      "paises_envolvidos": [
-        "US"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/saude",
-          "motivo_conexao": "Aborda os desafios de políticas públicas e financiamento em saúde no cenário global.",
-          "titulo_existente": "Movimentos sociais e parlamentares debatem investimentos em saúde, educação e transição ecológica"
-        }
-      ]
-    },
-    {
-      "slug": "eua-sancionam-lei-que-encerra-producao-da-moeda-de-um-centavo",
-      "categoria": "Economia_Comercio",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-21T19:58:05Z",
-      "updated_at": "2026-11-20T19:58:05Z",
-      "fontes_urls": [
-        "https://www.whitehouse.gov/briefings-statements/2026/11/h-r-10167-common-cents-act/"
-      ],
-      "resumo_pulso": "Conforme comunicado oficial publicado pela Casa Branca, foi sancionada a legislação 'Common Cents Act' (H.R. 10167), que proíbe o Departamento do Tesouro de cunhar novas moedas de um centavo (penny) para circulação geral. O texto autoriza o uso de metais mais econômicos para outras moedas e define regras de arredondamento comercial.",
-      "titulo_curto": "Casa Branca sanciona lei que encerra produção de moedas de um centavo nos EUA",
-      "palavras_chave": [
-        "Casa Branca",
-        "Common Cents Act",
-        "Tesouro dos EUA",
-        "dólar",
-        "moeda"
-      ],
-      "urgencia_score": 83,
-      "data_publicacao": "2026-11-20T19:41:38Z",
-      "impacto_pratico": "Consumidores e estabelecimentos comerciais nos EUA deverão adaptar transações em espécie para o arredondamento em múltiplos de cinco centavos.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "White House Briefing Room"
-      ],
-      "relevancia_score": 86,
-      "horas_em_destaque": 8,
-      "paises_envolvidos": [
-        "US"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/politica/estados-unidos",
-          "motivo_conexao": "Acompanhe as novas leis econômicas e sancionamentos promulgados pelo Executivo americano.",
-          "titulo_existente": "Política nos Estados Unidos"
-        }
-      ]
-    },
-    {
-      "slug": "condenacao-nos-eua-por-plano-de-assassinato-de-lider-sikh",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 18,
-      "expires_at": "2026-11-21T13:58:05Z",
-      "updated_at": "2026-11-20T19:58:05Z",
-      "fontes_urls": [
-        "https://www.aljazeera.com/news/2026/11/20/indian-man-sentenced-to-19-years-in-us-sikh-separatist-assassination-plot?traffic_source=rss"
-      ],
-      "resumo_pulso": "Segundo a Al Jazeera English, a Justiça federal dos Estados Unidos condenou o cidadão indiano Nikhil Gupta a 19 anos de prisão por planejar o assassinato de Gurpatwant Singh Pannun em Nova York. A acusação apontou a contratação de um agente disfarçado para executar o homicídio a pedido de um oficial de inteligência de Nova Déli.",
-      "titulo_curto": "Justiça dos EUA condena indiano a 19 anos de prisão por conspiração contra líder Sikh",
-      "palavras_chave": [
-        "EUA",
-        "Índia",
-        "Sikh",
-        "Nikhil Gupta",
-        "extradição"
-      ],
-      "urgencia_score": 88,
-      "data_publicacao": "2026-11-20T19:40:07Z",
-      "impacto_pratico": "A sentença consolida o atrito diplomático entre Washington e Nova Déli sobre operações extracontinentais de inteligência.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Al Jazeera English"
-      ],
-      "relevancia_score": 85,
-      "horas_em_destaque": 6,
-      "paises_envolvidos": [
-        "US",
-        "IN"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/politica/estados-unidos",
-          "motivo_conexao": "Permite acompanhar as repercussões judiciais e de política externa promovidas por Washington.",
-          "titulo_existente": "Política nos Estados Unidos"
-        }
-      ]
-    },
-    {
-      "slug": "temporal-no-rio-grande-do-sul-provoca-mortes-e-destruicao",
-      "titulo_curto": "Sobe para 3 o número de mortes após temporais severos no Rio Grande do Sul",
-      "resumo_pulso": "Conforme novos boletins da Agência Brasil e do Poder360, tempestades com rajadas de vento de até 114 km/h em Tupanciretã deixaram três mortos — incluindo um ex-vereador — e dezenas de feridos. Cerca de 90% das residências da cidade sofreram danos estruturais.",
-      "impacto_pratico": "Atenção para deslocamentos na região sul e impactos em infraestruturas locais.",
-      "categoria": "Ciencia_Clima",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "urgencia_score": 92,
-      "relevancia_score": 90,
-      "nivel_confianca": "alta",
-      "ttl_horas": 18,
-      "horas_em_destaque": 18,
-      "veiculos_origem": [
-        "Agência Brasil (EBC)",
-        "Poder360",
-        "InfoMoney Mercados"
-      ],
-      "fontes_urls": [
-        "https://www.poder360.com.br/poder-sustentavel/temporais-no-rs-deixam-3-mortos-60-feridos-e-atingem-8-cidades/",
-        "https://agenciabrasil.ebc.com.br/meio-ambiente/noticia/2026-11/rs-ex-vereador-esta-entre-vitimas-da-tempestade-em-tupancireta"
-      ],
-      "palavras_chave": [
-        "Rio Grande do Sul",
-        "Tupanciretã",
-        "tempestade",
-        "Defesa Civil",
-        "clima"
-      ],
-      "data_publicacao": "2026-11-20T19:28:00Z",
-      "links_internos_relacionados": [
-        {
-          "titulo_existente": "Clima, Amazônia e Transição Energética",
-          "url_existente": "https://www.rodandoomundo.com.br/clima",
-          "motivo_conexao": "Contextualiza eventos climáticos extremos e seus impactos sociais."
-        }
-      ],
-      "expires_at": "2026-11-21T14:45:51Z",
-      "updated_at": "2026-11-20T23:42:30Z"
-    },
-    {
-      "slug": "russia-intensifica-ataques-aereos-contra-infraestrutura-e-pontes-em-kiev",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 12,
-      "expires_at": "2026-11-21T07:58:05Z",
-      "updated_at": "2026-11-20T23:02:11Z",
-      "fontes_urls": [
-        "https://www.ukrinform.net/rubric-ato/4187003-two-killed-including-child-in-russian-strike-on-kryvyi-rih-injury-toll-rises-to-42.html",
-        "https://kyivindependent.com/russian-ballistic-missile-strikes-on-kryvyi-rih-kill-7-year-old-paramedic-injure-42-others-in-double-tap-attack/"
-      ],
-      "resumo_pulso": "Conforme reportado pela agência Ukrinform e pelo The Kyiv Independent, um ataque com mísseis balísticos russos atingiu o centro comercial de Kryvyi Rih, matando duas pessoas, incluindo uma criança, e ferindo ao menos 42. O Ministério do Interior da Ucrânia denunciou a tática de ataque duplo contra equipes de emergência.",
-      "titulo_curto": "Ataque balístico russo em Kryvyi Rih deixa mortos e 42 feridos no centro urbano",
-      "palavras_chave": [
-        "Kryvyi Rih",
-        "Ucrânia",
-        "mísseis russos",
-        "ataque balístico"
-      ],
-      "urgencia_score": 96,
-      "data_publicacao": "2026-11-20T19:20:00Z",
-      "impacto_pratico": "Intensificação de alertas aéreos na Ucrânia e maior risco para civis e infraestruturas essenciais em centros urbanos.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Ukrinform",
-        "The Kyiv Independent"
-      ],
-      "relevancia_score": 94,
-      "horas_em_destaque": 6,
-      "paises_envolvidos": [
-        "UA",
-        "RU"
-      ],
-      "links_internos_relacionados": []
-    },
-    {
-      "slug": "soldados-salvadorenhos-morrem-em-explosao-durante-missao-no-haiti",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 12,
-      "expires_at": "2026-11-21T07:58:05Z",
-      "updated_at": "2026-11-20T19:58:05Z",
-      "fontes_urls": [
-        "https://g1.globo.com/mundo/noticia/2026/11/20/salvadorenhos-morte-haiti.ghtml"
-      ],
-      "resumo_pulso": "Conforme anunciado pelo Exército de El Salvador e reportado pelo G1 Mundo, dois soldados do país faleceram e outros dois sofreram ferimentos após uma explosão com artefatos de demolição no Haiti. A equipe atuava no suporte à segurança e estabilização de infraestruturas locais.",
-      "titulo_curto": "Dois militares salvadorenhos morrem em explosão durante missão no Haiti",
-      "palavras_chave": [
-        "Haiti",
-        "El Salvador",
-        "Exército",
-        "missão de paz",
-        "explosão"
-      ],
-      "urgencia_score": 81,
-      "data_publicacao": "2026-11-20T19:18:39Z",
-      "impacto_pratico": "A ocorrência pode reavaliar os protocolos operacionais da missão multinacional instalada no Haiti.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "G1 Mundo"
-      ],
-      "relevancia_score": 79,
-      "horas_em_destaque": 6,
-      "paises_envolvidos": [
-        "SV",
-        "HT"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/eleicoes",
-          "motivo_conexao": "Contextualiza a estabilidade política e missões de governança na América Latina e Caribe.",
-          "titulo_existente": "Eleições e Democracia no Mundo"
-        }
-      ]
-    },
-    {
-      "slug": "trump-diz-que-convenceu-filipinas-a-substituir-produtos-agricolas-do-brasil",
-      "categoria": "Economia_Comercio",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-21T13:33:26Z",
-      "updated_at": "2026-11-20T20:21:55Z",
-      "fontes_urls": [
-        "https://www.poder360.com.br/poder-internacional/governo-dos-eua-nomeia-nova-diretora-de-seguranca-cibernetica/"
-      ],
-      "resumo_pulso": "Segundo apuração do Poder360, o governo dos Estados Unidos oficializou a nomeação de Kirsten Davies, vinda do Pentágono, para o cargo de diretora nacional de segurança cibernética. A troca ocorre em substituição a Sean Cairncross, demitido após episódios recentes de instabilidade em sistemas de transporte e bancos.",
-      "titulo_curto": "EUA nomeiam nova diretora de segurança cibernética após falhas técnicas",
-      "palavras_chave": [
-        "Estados Unidos",
-        "segurança cibernética",
-        "Casa Branca",
-        "Pentágono"
-      ],
-      "urgencia_score": 85,
-      "data_publicacao": "2026-11-20T19:16:23Z",
-      "impacto_pratico": "Reorganiza a cúpula de defesa digital norte-americana em meio a vulnerabilidades críticas de infraestrutura.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Poder360"
-      ],
-      "relevancia_score": 84,
-      "horas_em_destaque": 12,
-      "paises_envolvidos": [
-        "US"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/politica/estados-unidos",
-          "motivo_conexao": "Analisa as mudanças estruturais e administrativas na equipe de governo em Washington.",
-          "titulo_existente": "Política nos Estados Unidos"
-        }
-      ]
     }
   ],
   "temas_curadoria": [
     {
-      "slug": "bolha-ia-nasdaq-desaba-acoes-anthropic-nvidia",
+      "slug": "juros-eua-ajuste-fiscal-disparada-dolar",
       "status": "novo",
       "ttl_horas": 48,
-      "expires_at": "2026-11-22T22:01:12Z",
-      "updated_at": "2026-11-20T22:01:12Z",
-      "titulo_tema": "Despencar das ações de IA nos EUA atinge Wall Street e gera temor de bolha tecnológica",
-      "sintese_nerd": "O tombo acentuado nas ações de gigantes de tecnologia como Nvidia e o recuo pós-IPO da Anthropic acendem alertas globais sobre uma possível bolha especulativa no setor de inteligência artificial. Esse choque de realidade em Wall Street repercute imediatamente nos mercados emergentes e pressiona os ativos brasileiros negociados no exterior.",
+      "expires_at": "2026-11-23T01:28:48Z",
+      "updated_at": "2026-11-21T01:28:48Z",
+      "titulo_tema": "Juros nos EUA e ajuste fiscal pressionam o câmbio e elevam o dólar",
+      "sintese_nerd": "A combinação de taxas de juros elevadas mantidas pelo Federal Reserve nos Estados Unidos com incertezas sobre o ajuste fiscal doméstico drena capital de economias emergentes, provocando a forte desvalorização do real. Isso encarece produtos importados e pressiona a inflação interna, exigindo atenção redobrada da política monetária nacional.",
       "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-20T22:01:12Z",
-      "gatilho_vitrine": "Destaque na editoria de Economia e no Radar Global cruzando o impacto do tombo das techs americanas nos ADRs e mercados globais.",
+      "data_publicacao": "2026-11-21T01:28:48Z",
+      "gatilho_vitrine": "Explicar a dinâmica macroeconômica por trás da alta da moeda americana e seus efeitos diretos no custo de vida no Brasil",
       "origem_pipeline": "curadoria",
-      "relevancia_score": 96,
+      "relevancia_score": 95,
       "categoria_primaria": "Economia",
       "categorias_cruzadas": [
         "Geopolitica_Radar",
-        "Resumo_Ultimas"
+        "Politica"
       ],
       "palavras_chave_busca": [
-        "inteligência artificial",
-        "nasdaq",
-        "anthropic",
-        "nvidia",
-        "bolha de ia",
-        "mercado financeiro",
-        "ipo"
+        "dólar",
+        "juros nos eua",
+        "fed",
+        "ajuste fiscal",
+        "câmbio",
+        "inflação",
+        "economia brasileira"
       ]
     },
     {
-      "slug": "acordo-trump-filipinas-impacto-agro-brasil",
+      "slug": "ipo-anthropic-mercado-ia-esandalo-nvidia",
       "status": "novo",
       "ttl_horas": 72,
-      "expires_at": "2026-11-23T22:01:12Z",
-      "updated_at": "2026-11-20T22:01:12Z",
-      "titulo_tema": "Ameaça de Trump de desviar comércio agrícola das Filipinas afeta o agronegócio brasileiro",
-      "sintese_nerd": "As declarações do presidente dos EUA, Donald Trump, sobre um acordo para priorizar produtos agrícolas americanos nas Filipinas ameaçam diretamente o principal mercado comprador da carne suína brasileira. A investida geopolítica força o Brasil a reavaliar suas estratégias de exportação e diplomacia comercial na Ásia.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-20T22:01:12Z",
-      "gatilho_vitrine": "Posicionar no Radar Geopolítico e em Economia avaliando os riscos das pressões protecionistas norte-asiáticas sobre as exportações de carne suína do Brasil.",
+      "expires_at": "2026-11-24T01:28:48Z",
+      "updated_at": "2026-11-21T01:28:48Z",
+      "titulo_tema": "IPO bilionário da Anthropic agita mercado de IA em meio a escândalos na Nvidia",
+      "sintese_nerd": "A oferta pública recorde da Anthropic redefinindo a captação de recursos para inteligência artificial contrasta com as investigações regulatórias e quedas históricas nas ações da Nvidia. Essa dualidade expõe a volatilidade do setor tecnológico em meio a reconfigurações geopolíticas e eleitorais nas potências ocidentais.",
+      "rota_editoria": "/cultura",
+      "data_publicacao": "2026-11-21T01:28:48Z",
+      "gatilho_vitrine": "Destacar as turbulências e transformações no setor global de tecnologia e o impacto das investigações sobre chips e semicondutores",
       "origem_pipeline": "curadoria",
-      "relevancia_score": 92,
-      "categoria_primaria": "Geopolitica_Radar",
+      "relevancia_score": 90,
+      "categoria_primaria": "Cultura",
       "categorias_cruzadas": [
-        "Economia"
+        "Economia",
+        "Geopolitica_Radar"
       ],
       "palavras_chave_busca": [
-        "donald trump",
-        "filipinas",
-        "agronegócio",
-        "carne suína",
-        "comércio exterior",
-        "exportações do brasil"
+        "anthropic",
+        "ipo",
+        "inteligência artificial",
+        "nvidia",
+        "claude",
+        "mercado financeiro",
+        "tecnologia"
       ]
     },
     {
-      "slug": "internacao-ex-presidente-bolsonaro-brasilia",
+      "slug": "decisao-fachin-sigilo-caso-master-stf",
       "status": "novo",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-21T22:01:12Z",
-      "updated_at": "2026-11-20T22:01:12Z",
-      "titulo_tema": "Ex-presidente Jair Bolsonaro é internado em Brasília com quadro de distensão abdominal",
-      "sintese_nerd": "O ex-presidente Jair Bolsonaro foi hospitalizado em Brasília após apresentar fortes dores e distensão abdominal, interrompendo temporariamente o regime de prisão domiciliar. O fato mobiliza a cobertura da política nacional e gera repercussões institucionais imediatas entre seus aliados e o poder judiciário.",
+      "ttl_horas": 36,
+      "expires_at": "2026-11-22T13:28:48Z",
+      "updated_at": "2026-11-21T01:28:48Z",
+      "titulo_tema": "STF retira sigilo de relatório da PF citando ministros no Caso Master",
+      "sintese_nerd": "A decisão do presidente do STF, Edson Fachin, de retirar o sigilo do relatório da PF sobre conversas envolvendo o ministro André Mendonça no Caso Master recoloca o debate sobre transparência e integridade no centro dos Poderes. A medida gera repercussão imediata entre magistrados e classes políticas, acirrando o escrutínio sobre o sistema de justiça brasileiro.",
       "rota_editoria": "/politica",
-      "data_publicacao": "2026-11-20T22:01:12Z",
-      "gatilho_vitrine": "Manter no topo da editoria de Política com foco estritamente factual e institucional sobre a internação hospitalar e os desdobramentos de segurança.",
+      "data_publicacao": "2026-11-21T01:28:48Z",
+      "gatilho_vitrine": "Cobrir os desdobramentos institucionais das investigações da Polícia Federal envolvendo menções a ministros do Supremo Tribunal Federal",
       "origem_pipeline": "curadoria",
       "relevancia_score": 88,
       "categoria_primaria": "Politica",
       "categorias_cruzadas": [
-        "Resumo_Ultimas"
+        "Resumo_Ultimas",
+        "Eleicoes"
       ],
       "palavras_chave_busca": [
-        "jair bolsonaro",
-        "hospital df star",
-        "política nacional",
-        "prisão domiciliar",
-        "saúde"
+        "stf",
+        "caso master",
+        "andré mendonça",
+        "edson fachin",
+        "polícia federal",
+        "gilmar mendes",
+        "crise institucional"
       ]
     },
     {
-      "slug": "bitcoin-minima-dolar-forte-fed",
+      "slug": "temporal-destruicao-rio-grande-do-sul-defesa-civil",
       "status": "novo",
-      "ttl_horas": 36,
-      "expires_at": "2026-11-22T10:01:12Z",
-      "updated_at": "2026-11-20T22:01:12Z",
-      "titulo_tema": "Bitcoin cai abaixo de US$ 57 mil pressionado por dólar forte e temor de juros nos EUA",
-      "sintese_nerd": "A forte valorização global do dólar e as incertezas em torno da política monetária do Federal Reserve empurraram o Bitcoin para a mínima de dois anos, cotado a US$ 57 mil. Esse movimento reflete a fuga de investidores de ativos de risco diante de um cenário de juros globais mais altos por mais tempo.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-20T22:01:12Z",
-      "gatilho_vitrine": "Fixar na editoria de Economia conectando a retração das criptomoedas com as perspectivas macroeconômicas globais do Fed.",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-22T01:28:48Z",
+      "updated_at": "2026-11-21T01:28:48Z",
+      "titulo_tema": "Temporal catastrófico deixa mortos e feridos no Rio Grande do Sul",
+      "sintese_nerd": "Eventos climáticos extremos severos atingiram dezenas de municípios gaúchos, causando dezenas de feridos e óbitos e escancarando a urgência de investimentos em infraestrutura resiliente. A recorrência desses temporais reforça o debate global sobre mitigação de riscos climáticos locais.",
+      "rota_editoria": "/radar",
+      "data_publicacao": "2026-11-21T01:28:48Z",
+      "gatilho_vitrine": "Monitorar os impactos humanos, estruturais e econômicos dos eventos climáticos extremos na região sul do país",
       "origem_pipeline": "curadoria",
-      "relevancia_score": 85,
-      "categoria_primaria": "Economia",
+      "relevancia_score": 86,
+      "categoria_primaria": "Geopolitica_Radar",
       "categorias_cruzadas": [
-        "Resumo_Ultimas"
+        "Resumo_Ultimas",
+        "Cultura"
       ],
       "palavras_chave_busca": [
-        "bitcoin",
-        "criptomoedas",
-        "federal reserve",
-        "taxa de juros",
-        "dólar forte",
-        "mercados"
+        "rio grande do sul",
+        "temporal",
+        "defesa civil",
+        "mudanças climáticas",
+        "tupanciretã",
+        "chuvas extremas"
       ]
     }
   ]

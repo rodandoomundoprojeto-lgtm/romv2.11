@@ -74,6 +74,20 @@ function timestampPublicacao(item) {
   return Number.isNaN(t) ? 0 : t;
 }
 
+function nivelRelevanciaValido(item) {
+  const nivel = Number(item && item.nivel_relevancia);
+  if (Number.isFinite(nivel)) {
+    return Math.min(5, Math.max(1, nivel));
+  }
+  return 3;
+}
+
+function prioridadeParaOrdenacao(item) {
+  const urgencia = Number(item && item.urgencia_score) || 0;
+  const nivel = nivelRelevanciaValido(item);
+  return urgencia * (nivel / 3);
+}
+
 export function sortirCardsRodizioAmplo(itens, maxV2Topo = 2) {
   const validItens = (itens || []).filter((it) => it && typeof it === 'object');
   if (validItens.length === 0) return [];
@@ -83,10 +97,10 @@ export function sortirCardsRodizioAmplo(itens, maxV2Topo = 2) {
     const tb = timestampPublicacao(b);
     if (ta > 0 && tb > 0) {
       if (tb !== ta) return tb - ta;
-      return Number(b.urgencia_score || 0) - Number(a.urgencia_score || 0);
+      return prioridadeParaOrdenacao(b) - prioridadeParaOrdenacao(a);
     }
     if (ta !== tb) return ta > 0 ? -1 : 1;
-    return Number(b.urgencia_score || 0) - Number(a.urgencia_score || 0);
+    return prioridadeParaOrdenacao(b) - prioridadeParaOrdenacao(a);
   });
 
   const newestTs = timestampPublicacao(ordenados[0]);
@@ -396,6 +410,7 @@ function mapearItemV2ParaRadar(item) {
     data_publicacao: dataPubOrig,
     origem_v2: true,
     urgencia_score: score,
+    nivel_relevancia: nivelRelevanciaValido(item),
     paises_envolvidos: paises,
     palavras_chave: kws,
   };
@@ -451,6 +466,7 @@ export async function onRequestGet(context) {
               data_publicacao: dataPub,
               origem_v2: false,
               urgencia_score: Number(card.urgencia_score || 70),
+              nivel_relevancia: nivelRelevanciaValido(card),
               paises_envolvidos: Array.isArray(card.paises_envolvidos)
                 ? card.paises_envolvidos
                 : detectarPaisesNoTexto(textoCard, []),

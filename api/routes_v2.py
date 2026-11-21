@@ -45,6 +45,7 @@ from redacao_v2.schemas import (
     EvidenciaResolvidaPublica,
     PainelVerificacaoEvento,
 )
+from src.notifier import notificar_aprovacao_admin_discord
 from src.publisher import (
     _ler_feed_existente,
     _timestamp_publicacao,
@@ -2190,6 +2191,10 @@ class AdminRadarManualCreateRequest(BaseModel):
     coordenadas_geojson: Optional[Dict[str, Any]] = None
     data_publicacao: Optional[str] = Field(default=None, max_length=40)
     origem_manual: Optional[bool] = Field(default=True)
+    nivel_relevancia: Optional[int] = Field(
+        default=None, ge=1, le=5,
+        description="Nível de relevância do Radar (1–5); omitido = padrão 3 (neutro)",
+    )
 
 
 class AdminRadarManualUpdateRequest(BaseModel):
@@ -2205,6 +2210,10 @@ class AdminRadarManualUpdateRequest(BaseModel):
     palavras_chave: Optional[List[str]] = Field(default=None, max_length=20)
     data_publicacao: Optional[str] = Field(default=None, max_length=40)
     fixado: Optional[bool] = None
+    nivel_relevancia: Optional[int] = Field(
+        default=None, ge=1, le=5,
+        description="Nível de relevância do Radar (1–5); 1 = mais fraco, 5 = mais relevante",
+    )
 
 
 class AdminNoticiasQuentesUpdateRequest(BaseModel):
@@ -2413,6 +2422,8 @@ def _enfileirar_itens_ddg_eventos(
                 continue
 
             slug = _gerar_slug_ddg_deterministico(titulo, url)
+            cur.execute("SELECT 1 FROM ai_eventos WHERE slug = %s", (slug,))
+            evento_novo = cur.fetchone() is None
             resumo = str(item.get("resumo") or titulo).strip()
             fonte = str(item.get("fonte") or "DuckDuckGo News").strip()[:80]
             categoria = str(item.get("categoriaRadar") or item.get("categoria") or "geopolitica").strip()[:50]
@@ -2444,7 +2455,7 @@ def _enfileirar_itens_ddg_eventos(
                     urgencia_score = EXCLUDED.urgencia_score,
                     relevancia_score = EXCLUDED.relevancia_score,
                     updated_at = EXCLUDED.updated_at
-                RETURNING id;
+                RETURNING id, created_at;
                 """,
                 (
                     slug,
@@ -2461,6 +2472,11 @@ def _enfileirar_itens_ddg_eventos(
             if not ev_row:
                 continue
             ev_id = ev_row["id"] if isinstance(ev_row, dict) else ev_row[0]
+            ev_created_at = (
+                ev_row.get("created_at")
+                if isinstance(ev_row, dict)
+                else (ev_row[1] if len(ev_row) > 1 else None)
+            )
 
             cur.execute(
                 "SELECT 1 FROM ai_conteudos_gerados WHERE event_id = %s LIMIT 1;",
@@ -2488,6 +2504,22 @@ def _enfileirar_itens_ddg_eventos(
                 )
 
             enfileirados += 1
+            if evento_novo:
+                notificar_aprovacao_admin_discord(
+                    titulo,
+                    resumo,
+                    destino="Radar · Eventos (fila de revisão do Admin)",
+                    origem_pesquisa=f"{fonte} · coleta automatizada DuckDuckGo News",
+                    categoria=categoria,
+                    fontes=[fonte] if fonte else None,
+                    url_fonte=url,
+                    chegou_em=ev_created_at or ref,
+                    publicado_em=(
+                        item.get("publicadoEm")
+                        or item.get("data_publicacao")
+                        or item.get("published_at")
+                    ),
+                )
 
     if hasattr(conn, "commit"):
         conn.commit()
@@ -2889,6 +2921,31 @@ def admin_criar_fonte(
     fonte = dict(row) if row else {}
     if "created_at" in fonte:
         fonte["created_at"] = _serializar_valor_temporal(fonte["created_at"])
+    if fonte.get("politica_uso_status") != "aprovada":
+        tipo_fonte = str(fonte.get("tipo_fonte") or "").strip()
+        cadencia = str(fonte.get("cadencia") or "").strip()
+        peso = fonte.get("peso_confianca")
+        detalhes = " · ".join(
+            parte
+            for parte in (
+                f"tipo: {tipo_fonte}" if tipo_fonte else "",
+                f"cadência: {cadencia}" if cadencia else "",
+                f"confiança: {peso}/5" if peso else "",
+            )
+            if parte
+        )
+        notificar_aprovacao_admin_discord(
+            str(fonte.get("nome") or "").strip(),
+            "Nova fonte cadastrada e aguardando aprovação da política de uso "
+            "antes de ser liberada para coleta.",
+            destino="Curadoria · Fontes de referência",
+            detalhes=detalhes or None,
+            origem_pesquisa="Cadastro no painel Admin (manual ou sugestão de IA)",
+            categoria=tipo_fonte or None,
+            fontes=[str(fonte.get("nome") or "").strip()] if fonte.get("nome") else None,
+            url_fonte=str(fonte.get("url") or "").strip() or None,
+            chegou_em=fonte.get("created_at"),
+        )
     return {"ok": True, "fonte": fonte}
 
 
@@ -3853,6 +3910,7 @@ def admin_criar_radar_manual(
         "coordenadas_geojson": payload.coordenadas_geojson,
         "data_publicacao": payload.data_publicacao,
         "origem_manual": payload.origem_manual,
+        "nivel_relevancia": payload.nivel_relevancia,
     }
     card = publicar_card_manual(card_in)
     feed = _ler_feed_existente()
