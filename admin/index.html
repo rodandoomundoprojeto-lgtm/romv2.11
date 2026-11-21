@@ -7092,10 +7092,10 @@
 
       function criarDefaultsCotas() {
         return {
-          cota_master: { ativo: false, nome: '', logo_url: '', frase: 'Apresentado com exclusividade global por', cta_texto: 'Conheça as soluções →', link_url: '', data_inicio: '', data_fim: '', exibir_no_sobre: true },
-          dossie_tematico: { ativo: false, nome: '', logo_url: '', frase: 'Apoio institucional à cobertura setorial aprofundada.', cta_texto: 'Saiba mais', link_url: '', data_inicio: '', data_fim: '', hub_alvo: 'todos' },
-          resumo_dia: { ativo: false, nome: '', logo_url: '', frase: 'Conectando você às principais movimentações e análises do planeta.', cta_texto: 'Saiba mais', link_url: '', data_inicio: '', data_fim: '' },
-          gaveta_contextual: { ativo: false, nome: '', logo_url: '', frase: 'Soluções globais para suas conexões com {pais}.', cta_texto: 'Conhecer soluções', link_url: '', data_inicio: '', data_fim: '', paises_alvo: 'todos' }
+          cota_master: { ativo: false, nome: '', nome_imagem_url: '', logo_url: '', frase: 'Apresentado com exclusividade global por', cta_texto: 'Conheça as soluções →', link_url: '', data_inicio: '', data_fim: '', exibir_no_sobre: true },
+          dossie_tematico: { ativo: false, nome: '', nome_imagem_url: '', logo_url: '', frase: 'Apoio institucional à cobertura setorial aprofundada.', cta_texto: 'Saiba mais', link_url: '', data_inicio: '', data_fim: '', hub_alvo: 'todos' },
+          resumo_dia: { ativo: false, nome: '', nome_imagem_url: '', logo_url: '', frase: 'Conectando você às principais movimentações e análises do planeta.', cta_texto: 'Saiba mais', link_url: '', data_inicio: '', data_fim: '' },
+          gaveta_contextual: { ativo: false, nome: '', nome_imagem_url: '', logo_url: '', frase: 'Soluções globais para suas conexões com {pais}.', cta_texto: 'Conhecer soluções', link_url: '', data_inicio: '', data_fim: '', paises_alvo: 'todos' }
         };
       }
 
@@ -7150,7 +7150,7 @@
       function atualizarContadorPatrocinios() {
         const configuradas = COTAS_META.filter(m => {
           const it = patrociniosState[m.key];
-          return it && (it.ativo || (it.nome || '').trim() || (it.logo_url || '').trim());
+          return it && (it.ativo || (it.nome || '').trim() || (it.logo_url || '').trim() || (it.nome_imagem_url || '').trim());
         }).length;
         const vigentes = COTAS_META.filter(m => obterStatusContrato(patrociniosState[m.key]).code === 'vigente').length;
         const badge = $('nav-count-patrocinios');
@@ -7167,16 +7167,40 @@
         const item = patrociniosState[key] || {};
         const prevEl = document.getElementById(`prev-cota-${key}`);
         if (!prevEl) return;
-        const nome = (item.nome || '').trim() || 'Sua Marca Aqui';
+        const nome = (item.nome || '').trim();
         const frase = (item.frase || '').trim().replace(/\{pais\}/g, 'Brasil');
         const cta = (item.cta_texto || '').trim() || 'Saiba mais';
-        const logoHtml = item.logo_url
-          ? `<img src="${escAttr(item.logo_url)}" alt="${escAttr(nome)}" style="max-height:28px;max-width:140px;object-fit:contain;border-radius:4px;vertical-align:middle;" />`
-          : `<span style="font-weight:700;padding:2px 8px;border-radius:4px;background:rgba(56,189,248,0.14);color:#38bdf8;border:1px solid rgba(56,189,248,0.3);">${escAttr(nome)}</span>`;
         const st = obterStatusContrato(item);
         const periodoTxt = (item.data_inicio || item.data_fim)
           ? `Vigência: ${item.data_inicio ? formatarDataBr(item.data_inicio) : 'imediato'} até ${item.data_fim ? formatarDataBr(item.data_fim) : 'indeterminado'}`
           : 'Vigência: sem data limite';
+
+        const hasLogo = item.logo_url && /^(https?:\/\/|\/|data:image\/)/i.test(item.logo_url);
+        const hasNomeImg = item.nome_imagem_url && /^(https?:\/\/|\/|data:image\/)/i.test(item.nome_imagem_url);
+
+        const logoHtml = hasLogo
+          ? `<img src="${escAttr(item.logo_url)}" alt="Logo" style="max-height:28px;max-width:140px;object-fit:contain;border-radius:4px;vertical-align:middle;" />`
+          : '';
+
+        let nomeHtml = '';
+        if (hasNomeImg) {
+          nomeHtml = `<img src="${escAttr(item.nome_imagem_url)}" alt="${escAttr(nome || 'Nome')}" style="max-height:26px;max-width:160px;object-fit:contain;vertical-align:middle;" />`;
+        } else if (nome) {
+          nomeHtml = `<strong style="font-weight:700;color:var(--text, #ffffff);font-size:0.92rem;vertical-align:middle;">${escAttr(nome)}</strong>`;
+        }
+
+        let brandHtml = '';
+        if (hasLogo && (hasNomeImg || nome)) {
+          brandHtml = `<span style="display:inline-flex;align-items:center;gap:8px;vertical-align:middle;flex-wrap:wrap;">${logoHtml}${nomeHtml}</span>`;
+        } else if (hasLogo) {
+          brandHtml = logoHtml;
+        } else if (hasNomeImg) {
+          brandHtml = nomeHtml;
+        } else if (nome) {
+          brandHtml = `<span style="font-weight:700;padding:2px 8px;border-radius:4px;background:rgba(56,189,248,0.14);color:#38bdf8;border:1px solid rgba(56,189,248,0.3);">${escAttr(nome)}</span>`;
+        } else {
+          brandHtml = `<span style="font-weight:700;padding:2px 8px;border-radius:4px;background:rgba(56,189,248,0.14);color:#38bdf8;border:1px solid rgba(56,189,248,0.3);">Sua Marca Aqui</span>`;
+        }
 
         prevEl.innerHTML = `
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;gap:8px;flex-wrap:wrap;">
@@ -7185,7 +7209,7 @@
           </div>
           <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;padding:10px 12px;border-radius:8px;border:1px solid var(--border);background:var(--bg);">
             <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:0.85rem;">
-              ${logoHtml}
+              ${brandHtml}
               <span style="color:var(--text-muted);">${escAttr(frase)}</span>
             </div>
             <span style="font-size:0.78rem;font-weight:600;padding:4px 10px;border-radius:16px;background:var(--primary);color:#0b1120;">${escAttr(cta)}</span>
@@ -7198,7 +7222,7 @@
         if (!listEl) return;
 
         const itens = COTAS_META.map(meta => ({ meta, item: patrociniosState[meta.key] || {} }))
-          .filter(({ item }) => item.ativo || (item.nome || '').trim() || (item.logo_url || '').trim());
+          .filter(({ item }) => item.ativo || (item.nome || '').trim() || (item.logo_url || '').trim() || (item.nome_imagem_url || '').trim());
 
         if (!itens.length) {
           listEl.innerHTML = `
@@ -7212,10 +7236,34 @@
         listEl.innerHTML = '';
         itens.forEach(({ meta, item }) => {
           const st = obterStatusContrato(item);
-          const nome = (item.nome || '').trim() || 'Sem nome';
-          const logoHtml = item.logo_url
-            ? `<img src="${escAttr(item.logo_url)}" alt="${escAttr(nome)}" style="max-height:34px;max-width:140px;object-fit:contain;border-radius:4px;background:rgba(255,255,255,0.03);padding:2px;" />`
-            : `<span style="font-weight:700;padding:3px 9px;border-radius:4px;background:rgba(56,189,248,0.14);color:#38bdf8;">${escAttr(nome)}</span>`;
+          const nome = (item.nome || '').trim();
+          const hasLogo = item.logo_url && /^(https?:\/\/|\/|data:image\/)/i.test(item.logo_url);
+          const hasNomeImg = item.nome_imagem_url && /^(https?:\/\/|\/|data:image\/)/i.test(item.nome_imagem_url);
+
+          const logoPart = hasLogo
+            ? `<img src="${escAttr(item.logo_url)}" alt="Logo" style="max-height:34px;max-width:140px;object-fit:contain;border-radius:4px;background:rgba(255,255,255,0.03);padding:2px;" />`
+            : '';
+
+          let nomePart = '';
+          if (hasNomeImg) {
+            nomePart = `<img src="${escAttr(item.nome_imagem_url)}" alt="${escAttr(nome || 'Nome')}" style="max-height:28px;max-width:150px;object-fit:contain;border-radius:4px;background:rgba(255,255,255,0.03);padding:2px;" />`;
+          } else if (nome) {
+            nomePart = `<span style="font-weight:600;">${escAttr(nome)}</span>`;
+          }
+
+          let brandInline = '';
+          if (hasLogo && (hasNomeImg || nome)) {
+            brandInline = `<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">${logoPart}${nomePart}</div>`;
+          } else if (hasLogo) {
+            brandInline = logoPart;
+          } else if (hasNomeImg) {
+            brandInline = nomePart;
+          } else if (nome) {
+            brandInline = `<span style="font-weight:700;padding:3px 9px;border-radius:4px;background:rgba(56,189,248,0.14);color:#38bdf8;">${escAttr(nome)}</span>`;
+          } else {
+            brandInline = `<span style="font-weight:600;color:var(--text-muted);">Sem marca</span>`;
+          }
+
           const iniStr = item.data_inicio ? formatarDataBr(item.data_inicio) : 'Imediato';
           const fimStr = item.data_fim ? formatarDataBr(item.data_fim) : 'Indeterminado';
 
@@ -7228,8 +7276,7 @@
                 <span style="font-size:0.72rem;font-weight:700;color:${st.color};">${st.label}</span>
               </div>
               <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:2px;">
-                ${logoHtml}
-                <span style="font-weight:600;">${escAttr(nome)}</span>
+                ${brandInline}
                 <span class="admin-sub">— ${escAttr(item.frase || '')}</span>
               </div>
               <div class="admin-sub" style="display:flex;gap:14px;flex-wrap:wrap;margin-top:2px;">
@@ -7379,13 +7426,32 @@
               </label>
             </div>
 
-            <div class="admin-field">
-              <label>Nome do Patrocinador / Apoiador</label>
-              <input class="admin-input" type="text" data-cota-field="${meta.key}:nome" value="${escAttr(item.nome)}" placeholder="Ex: Banco Global S.A." maxlength="120" />
+            <!-- Nome do Patrocinador / Apoiador (Texto escrito ou Arquivo de Imagem Upado) -->
+            <div style="border:1px solid var(--border);border-radius:var(--radius-sm, 6px);padding:10px 12px;background:rgba(255,255,255,0.015);display:flex;flex-direction:column;gap:8px;">
+              <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:4px;">
+                <label style="font-weight:600;font-size:0.88rem;margin:0;">Nome do Patrocinador / Apoiador</label>
+                <span class="admin-sub" style="font-size:0.75rem;">(Exibido no card junto ao logo)</span>
+              </div>
+
+              <div class="admin-field" style="margin-bottom:0;">
+                <label style="font-size:0.8rem;color:var(--text-muted);display:block;margin-bottom:3px;">Opção 1: Nome escrito por extenso</label>
+                <input class="admin-input" type="text" data-cota-field="${meta.key}:nome" value="${escAttr(item.nome)}" placeholder="Ex: Instituto Global de IA" maxlength="120" />
+              </div>
+
+              <div class="admin-field" style="margin-bottom:0;">
+                <label style="font-size:0.8rem;color:var(--text-muted);display:block;margin-bottom:3px;">Opção 2: Imagem do Nome / Tipografia da Marca (arquivo upado ou URL)</label>
+                <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+                  <input type="file" accept="image/png,image/jpeg,image/webp,image/svg+xml" data-cota-upload-nome="${meta.key}" style="font-size:0.8rem;max-width:220px;" />
+                  <button type="button" class="admin-btn admin-btn-sm" data-cota-clear-nome-img="${meta.key}">Limpar imagem do nome</button>
+                </div>
+                <input class="admin-input" type="text" data-cota-field="${meta.key}:nome_imagem_url" value="${escAttr(item.nome_imagem_url || '')}" placeholder="https://... ou preenchido automaticamente pelo upload do nome" style="margin-top:6px;" />
+                <span class="admin-sub" style="font-size:0.73rem;margin-top:3px;display:block;">Se enviar um arquivo para o nome, a imagem tipográfica será exibida. Se deixar vazio, exibirá o nome escrito digitado acima.</span>
+              </div>
             </div>
 
+            <!-- Ícone / Símbolo / Foto do Logo -->
             <div class="admin-field">
-              <label>Logo ou Foto (Upload PNG/JPG/WebP/SVG ou URL externa)</label>
+              <label>Ícone / Símbolo / Foto do Logo (Upload PNG/JPG/WebP/SVG ou URL externa)</label>
               <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
                 <input type="file" accept="image/png,image/jpeg,image/webp,image/svg+xml" data-cota-upload="${meta.key}" style="font-size:0.8rem;max-width:220px;" />
                 <button type="button" class="admin-btn admin-btn-sm" data-cota-clear-logo="${meta.key}">Limpar logo</button>
@@ -7442,6 +7508,36 @@
           inp.addEventListener('input', () => {
             const [k, field] = inp.getAttribute('data-cota-field').split(':');
             patrociniosState[k][field] = inp.value;
+            renderPreviewCota(k);
+          });
+        });
+
+        grid.querySelectorAll('[data-cota-upload-nome]').forEach(fileInp => {
+          fileInp.addEventListener('change', async () => {
+            const k = fileInp.getAttribute('data-cota-upload-nome');
+            const f = fileInp.files && fileInp.files[0];
+            if (!f) return;
+            try {
+              const dataUri = await otimizarImagemUpload(f);
+              patrociniosState[k].nome_imagem_url = dataUri;
+              const urlInput = grid.querySelector(`[data-cota-field="${k}:nome_imagem_url"]`);
+              if (urlInput) urlInput.value = dataUri;
+              renderPreviewCota(k);
+              showBanner('patrocinios-banner', `Imagem do nome carregada para ${k}. Clique em "Salvar e Publicar" para aplicar no site.`, 'ok');
+            } catch (err) {
+              showBanner('patrocinios-banner', 'Erro na imagem do nome: ' + err.message, 'err');
+            }
+          });
+        });
+
+        grid.querySelectorAll('[data-cota-clear-nome-img]').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const k = btn.getAttribute('data-cota-clear-nome-img');
+            patrociniosState[k].nome_imagem_url = '';
+            const urlInput = grid.querySelector(`[data-cota-field="${k}:nome_imagem_url"]`);
+            if (urlInput) urlInput.value = '';
+            const fileInp = grid.querySelector(`[data-cota-upload-nome="${k}"]`);
+            if (fileInp) fileInp.value = '';
             renderPreviewCota(k);
           });
         });

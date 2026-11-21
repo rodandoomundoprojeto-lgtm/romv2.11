@@ -5961,6 +5961,7 @@ _DATE_YMD_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 class CotaPatrocinioItem(BaseModel):
     ativo: bool = False
     nome: str = Field(default="", max_length=120)
+    nome_imagem_url: str = Field(default="")
     logo_url: str = Field(default="")
     frase: str = Field(default="", max_length=280)
     cta_texto: str = Field(default="Saiba mais", max_length=60)
@@ -5971,7 +5972,7 @@ class CotaPatrocinioItem(BaseModel):
     hub_alvo: str = Field(default="todos", max_length=40)
     paises_alvo: str = Field(default="todos", max_length=200)
 
-    @field_validator("logo_url")
+    @field_validator("logo_url", "nome_imagem_url")
     @classmethod
     def check_logo_url(cls, v: str) -> str:
         return _validar_logo_url(v)

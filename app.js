@@ -17556,12 +17556,38 @@
   var isCommercialDemoMode = false;
 
   function renderSponsorBrandEl(cota) {
-    var nome = (cota && cota.nome) ? String(cota.nome).trim() : 'Apoiador';
+    var rawNome = (cota && cota.nome) ? String(cota.nome).trim() : '';
     var logo = (cota && cota.logo_url) ? String(cota.logo_url).trim() : '';
-    if (logo && /^(https?:\/\/|\/|data:image\/)/i.test(logo)) {
-      return '<img class="sponsor-logo-img" src="' + esc(logo) + '" alt="' + esc(nome) + '" loading="lazy" />';
+    var nomeImg = (cota && cota.nome_imagem_url) ? String(cota.nome_imagem_url).trim() : '';
+
+    var hasLogo = logo && /^(https?:\/\/|\/|data:image\/)/i.test(logo);
+    var hasNomeImg = nomeImg && /^(https?:\/\/|\/|data:image\/)/i.test(nomeImg);
+    var nome = rawNome;
+
+    var logoHtml = hasLogo
+      ? '<img class="sponsor-logo-img" src="' + esc(logo) + '" alt="' + esc(nome || 'Logo') + '" loading="lazy" />'
+      : '';
+
+    var nomeHtml = '';
+    if (hasNomeImg) {
+      nomeHtml = '<img class="sponsor-name-img" src="' + esc(nomeImg) + '" alt="' + esc(nome || 'Nome') + '" loading="lazy" />';
+    } else if (nome) {
+      nomeHtml = '<strong class="sponsor-brand-name sponsor-brand-target">' + esc(nome) + '</strong>';
     }
-    return '<span class="mock-brand-logo sponsor-brand-target">' + esc(nome || 'Sua Marca Aqui') + '</span>';
+
+    if (hasLogo && (hasNomeImg || nome)) {
+      return '<span class="sponsor-brand-combo">' + logoHtml + nomeHtml + '</span>';
+    }
+    if (hasLogo) {
+      return '<span class="sponsor-brand-combo">' + logoHtml + '</span>';
+    }
+    if (hasNomeImg) {
+      return '<span class="sponsor-brand-combo">' + nomeHtml + '</span>';
+    }
+    if (nome) {
+      return '<span class="mock-brand-logo sponsor-brand-target">' + esc(nome) + '</span>';
+    }
+    return '<span class="mock-brand-logo sponsor-brand-target">Sua Marca Aqui</span>';
   }
 
   function applySponsorLinkAttrs(anchorEl, linkUrl, defaultText) {

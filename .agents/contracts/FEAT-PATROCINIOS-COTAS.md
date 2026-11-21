@@ -10,8 +10,9 @@
 
 ## Schema de Cota (`CotaPatrocinioItem`)
 - `ativo`: `bool` (default `false`)
-- `nome`: `str` (max 120 chars)
-- `logo_url`: `str` (`https://`, `http://`, `/`, ou `data:image/(png|jpeg|webp|svg+xml);base64,...` sem scripts)
+- `nome`: `str` (max 120 chars) — Nome escrito do patrocinador/apoiador
+- `nome_imagem_url`: `str` (`https://`, `http://`, `/`, ou `data:image/(png|jpeg|webp|svg+xml);base64,...` sem scripts) — Arquivo/imagem tipográfica do nome do apoiador (opcional, substitui a exibição textual do nome mantendo `nome` como acessibilidade)
+- `logo_url`: `str` (`https://`, `http://`, `/`, ou `data:image/(png|jpeg|webp|svg+xml);base64,...` sem scripts) — Ícone, foto ou símbolo da marca
 - `frase`: `str` (max 280 chars; na `gaveta_contextual` aceita `{pais}`)
 - `cta_texto`: `str` (max 60 chars)
 - `link_url`: `str` (`https://`, `http://`, `/` ou vazio)
