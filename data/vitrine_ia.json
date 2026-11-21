@@ -2,33 +2,185 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-21T21:35:55Z",
-  "batch_id": "20261121-2134",
+  "updatedAt": "2026-11-21T21:55:28Z",
+  "batch_id": "20261121-2155",
   "temas_ativos": [
     {
-      "slug": "ft-amazon-negocia-compra-startup-ia-decart-7-5-bilhoes",
-      "titulo_tema": "Amazon negocia aquisição de startup de IA Decart por US$ 7,5 bilhões, aponta FT",
-      "titulo_curto": "Amazon negocia aquisição de startup de IA Decart por US$ 7,5 bilhões, aponta FT",
-      "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Economia",
-      "categoria": "Economia_Comercio",
+      "slug": "impasse-cop31-financiamento-climatico-fossil",
+      "titulo_tema": "Impasse na COP31 ameaça acordo global sobre transição energética e financiamento",
+      "status": "em_alta",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
       "categorias_cruzadas": [
         "Economia",
-        "Resumo_Ultimas"
+        "Politica"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 94,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-23T21:55:28Z",
+      "palavras_chave_busca": [
+        "cop31",
+        "financiamento climático",
+        "combustíveis fósseis",
+        "transição energética",
+        "crise climática",
+        "acordo de paris"
+      ],
+      "gatilho_vitrine": "Destacar paralisação nas negociações de financiamento ambiental e impacto para países emergentes.",
+      "sintese_nerd": "Divergências profundas entre potências globais e países em desenvolvimento travam a assinatura do acordo final da COP31 sobre o fundo de transição ecológica. Para o Brasil, o impasse pressiona compromissos de preservação ambiental e afeta a atração de capital externo para projetos sustentáveis.",
+      "data_publicacao": "2026-11-21T21:55:28Z",
+      "updated_at": "2026-11-21T21:55:28Z"
+    },
+    {
+      "slug": "crise-golfo-persico-ataque-bahrein-estreito-ormuz",
+      "titulo_tema": "Escalação no Golfo Pérsico: ataques no Bahrein e impasse no Estreito de Ormuz",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Politica"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 91,
+      "ttl_horas": 36,
+      "expires_at": "2026-11-23T09:55:28Z",
+      "palavras_chave_busca": [
+        "golfo pérsico",
+        "bahrein",
+        "irã",
+        "estreito de ormuz",
+        "preço do petróleo",
+        "eua irã"
+      ],
+      "gatilho_vitrine": "Acionar alerta geopolítico de segurança energética e risco sobre cotações internacionais de petróleo.",
+      "sintese_nerd": "O aumento das tensões militares no Golfo Pérsico com ataques a instalações industriais no Bahrein coloca em risco a rota global de navegação e suprimento de petróleo. O eventual bloqueio do Estreito de Ormuz tende a encarecer os combustíveis e pressionar a inflação global e brasileira.",
+      "data_publicacao": "2026-11-21T21:55:28Z",
+      "updated_at": "2026-11-21T21:55:28Z"
+    },
+    {
+      "slug": "amazon-compra-startup-decart-corrida-ia-chips",
+      "titulo_tema": "Amazon negocia startup Decart por US$ 7,5 bi para rivalizar com Nvidia em IA",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Geopolitica_Radar",
+        "Cultura"
       ],
       "rota_editoria": "/economia",
-      "relevancia_score": 91,
-      "urgencia_score": 92,
-      "ttl_horas": 24,
-      "expires_at": "2026-11-22T21:35:55Z",
+      "relevancia_score": 88,
+      "ttl_horas": 72,
+      "expires_at": "2026-11-24T21:55:28Z",
       "palavras_chave_busca": [
         "amazon",
         "decart",
-        "inteligência artificial",
         "nvidia",
-        "financial times"
+        "chips de ia",
+        "inteligência artificial",
+        "big tech",
+        "mercado de tecnologia"
       ],
+      "gatilho_vitrine": "Impulsionar cobertura sobre a guerra de hardware e semicondutores entre gigantes da tecnologia.",
+      "sintese_nerd": "A negociação bilionária da Amazon para adquirir a startup Decart busca reduzir a dependência dos dispendiosos chips da Nvidia na infraestrutura de nuvem. A cartada reflete a corrida geopolítica e corporativa pelo domínio da eficiência computacional na era da IA generativa.",
+      "data_publicacao": "2026-11-21T21:55:28Z",
+      "updated_at": "2026-11-21T21:55:28Z"
+    },
+    {
+      "slug": "haddad-taxacao-super-ricos-cupula-paris",
+      "titulo_tema": "Proposta de alíquota global sobre super-ricos avança em discussões em Paris",
+      "status": "em_alta",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Politica",
+        "Geopolitica_Radar"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 85,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-23T21:55:28Z",
+      "palavras_chave_busca": [
+        "taxação de super-ricos",
+        "fernando haddad",
+        "cúpula de paris",
+        "imposto sobre fortunas",
+        "diplomacia fiscal",
+        "g20"
+      ],
+      "gatilho_vitrine": "Conectar agenda fiscal do Brasil no exterior com o debate sobre desigualdade e arrecadação.",
+      "sintese_nerd": "A defesa de uma alíquota global de 2% sobre bilionários apresentada em cúpula internacional busca criar consensos multilaterais contra a evasão de divisas. Se adotada, a medida poderia redistribuir receitas globais e balizar reformas tributárias estruturais em países emergentes.",
+      "data_publicacao": "2026-11-21T21:55:28Z",
+      "updated_at": "2026-11-21T21:55:28Z"
+    },
+    {
+      "slug": "regulacao-internacional-robos-assassinos-onu",
+      "titulo_tema": "ONU estabelece prazo até 2028 para regras globais sobre armas autônomas",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Politica",
+        "Cultura"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 84,
+      "ttl_horas": 120,
+      "expires_at": "2026-11-26T21:55:28Z",
+      "palavras_chave_busca": [
+        "robôs assassinos",
+        "armas autônomas",
+        "diplomacia genebra",
+        "regulacao ia militar",
+        "onu defesa"
+      ],
+      "gatilho_vitrine": "Exibir dilemas éticos e jurídicos da automação militar no ecossistema de defesa internacional.",
+      "sintese_nerd": "Mais de uma centena de nações acordaram em Genebra um cronograma para balizar o uso de sistemas de armas autônomas geridos por inteligência artificial. A resistência de grandes potências militares evidencia a tensão entre avanço tecnológico bélico e o direito internacional humanitário.",
+      "data_publicacao": "2026-11-21T21:55:28Z",
+      "updated_at": "2026-11-21T21:55:28Z"
+    },
+    {
+      "slug": "protestos-europa-crise-habitacao-custo-vida",
+      "titulo_tema": "Onda de protestos na Europa reflete crise no custo de vida e moradia",
+      "status": "em_alta",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Cultura"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 81,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-23T21:55:28Z",
+      "palavras_chave_busca": [
+        "protestos europa",
+        "crise de moradia",
+        "custo de vida europeu",
+        "inflacao europa",
+        "crise habitacional"
+      ],
+      "gatilho_vitrine": "Destacar insatisfação popular com inflação e moradia nas principais capitais europeias.",
+      "sintese_nerd": "Manifestações massivas na França e em Portugal escancaram o descontentamento social com o encarecimento dos aluguéis e a perda de poder de compra do euro. O cenário de estagnação com custo de vida elevado tensiona os governos europeus e fortalece o debate sobre políticas urbanas.",
+      "data_publicacao": "2026-11-21T21:55:28Z",
+      "updated_at": "2026-11-21T21:55:28Z"
+    },
+    {
+      "slug": "ft-amazon-negocia-compra-startup-ia-decart-7-5-bilhoes",
+      "status": "novo",
+      "categoria": "Economia_Comercio",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-22T21:35:55Z",
+      "updated_at": "2026-11-21T21:35:55Z",
+      "fontes_urls": [
+        "https://www.infomoney.com.br/business/ft-amazon-negocia-compra-de-startup-de-ia-por-us-75-bilhoes-para-enfrentar-nvidia/"
+      ],
+      "titulo_tema": "Amazon negocia aquisição de startup de IA Decart por US$ 7,5 bilhões, aponta FT",
+      "resumo_pulso": "Conforme apuração do Financial Times repercutida pelo InfoMoney Mercados, a Amazon está próxima de adquirir a startup Decart, especializada na otimização de processamento de inteligência artificial. A movimentação estratégica visa reduzir a dependência de chips da Nvidia e fortalecer a posição da gigante tecnológica no setor.",
+      "sintese_nerd": "Modificações competitivas no mercado global de inteligência artificial e na cadeia de suprimentos de semicondutores.",
+      "titulo_curto": "Amazon negocia aquisição de startup de IA Decart por US$ 7,5 bilhões, aponta FT",
+      "rota_editoria": "/economia",
       "palavras_chave": [
         "amazon",
         "decart",
@@ -36,48 +188,48 @@
         "nvidia",
         "financial times"
       ],
+      "urgencia_score": 92,
+      "data_publicacao": "2026-11-21T21:15:07Z",
       "gatilho_vitrine": "Conforme apuração do Financial Times repercutida pelo InfoMoney Mercados, a Amazon está próxima de adquirir a startup Decart, especializada na otimização de processamento de inteligência artificial. A movimentação estratégica visa reduzir a dependência de chips da Nvidia e fortalecer a posição da gigante tecnológica no setor.",
-      "resumo_pulso": "Conforme apuração do Financial Times repercutida pelo InfoMoney Mercados, a Amazon está próxima de adquirir a startup Decart, especializada na otimização de processamento de inteligência artificial. A movimentação estratégica visa reduzir a dependência de chips da Nvidia e fortalecer a posição da gigante tecnológica no setor.",
-      "sintese_nerd": "Modificações competitivas no mercado global de inteligência artificial e na cadeia de suprimentos de semicondutores.",
       "impacto_pratico": "Modificações competitivas no mercado global de inteligência artificial e na cadeia de suprimentos de semicondutores.",
-      "paises_envolvidos": [
-        "US",
-        "BR"
-      ],
+      "origem_pipeline": "pulso",
       "veiculos_origem": [
         "InfoMoney Mercados",
         "Financial Times"
       ],
-      "fontes_urls": [
-        "https://www.infomoney.com.br/business/ft-amazon-negocia-compra-de-startup-de-ia-por-us-75-bilhoes-para-enfrentar-nvidia/"
+      "relevancia_score": 91,
+      "paises_envolvidos": [
+        "US",
+        "BR"
       ],
-      "data_publicacao": "2026-11-21T21:15:07Z",
-      "updated_at": "2026-11-21T21:35:55Z"
-    },
-    {
-      "slug": "tornados-atingem-foz-do-iguacu-e-manoel-ribas-parana",
-      "titulo_tema": "Tempestades extremas e tornados atingem cidades do Paraná e deixam rastros de destruição",
-      "titulo_curto": "Tempestades extremas e tornados atingem cidades do Paraná e deixam rastros de destruição",
-      "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Geopolitica_Radar",
-      "categoria": "Ciencia_Clima",
+      "categoria_primaria": "Economia",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
       ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 92,
-      "urgencia_score": 95,
+      "palavras_chave_busca": [
+        "amazon",
+        "decart",
+        "inteligência artificial",
+        "nvidia",
+        "financial times"
+      ]
+    },
+    {
+      "slug": "tornados-atingem-foz-do-iguacu-e-manoel-ribas-parana",
+      "status": "novo",
+      "categoria": "Ciencia_Clima",
       "ttl_horas": 24,
       "expires_at": "2026-11-22T21:35:55Z",
-      "palavras_chave_busca": [
-        "paraná",
-        "tornados",
-        "foz do iguaçu",
-        "manoel ribas",
-        "defesa civil"
+      "updated_at": "2026-11-21T21:35:55Z",
+      "fontes_urls": [
+        "https://www.poder360.com.br/poder-brasil/tornados-atingem-foz-do-iguacu-e-manoel-ribas-no-parana/"
       ],
+      "titulo_tema": "Tempestades extremas e tornados atingem cidades do Paraná e deixam rastros de destruição",
+      "resumo_pulso": "Segundo relatórios do Poder360, novas tempestades severas e tornados atingiram os municípios de Foz do Iguaçu e Manoel Ribas, no Paraná, destelhando residências e interrompendo o fornecimento de energia elétrica. O evento eleva para 15 o número total de ocorrências de tornados registradas no estado ao longo de 2026.",
+      "sintese_nerd": "Riscos diretos a moradores e infraestrutura urbana local, exigindo ações das Defesas Civis estaduais e municipais.",
+      "titulo_curto": "Tempestades extremas e tornados atingem cidades do Paraná e deixam rastros de destruição",
+      "rota_editoria": "/radar",
       "palavras_chave": [
         "paraná",
         "tornados",
@@ -85,21 +237,30 @@
         "manoel ribas",
         "defesa civil"
       ],
+      "urgencia_score": 95,
+      "data_publicacao": "2026-11-21T21:13:23Z",
       "gatilho_vitrine": "Segundo relatórios do Poder360, novas tempestades severas e tornados atingiram os municípios de Foz do Iguaçu e Manoel Ribas, no Paraná, destelhando residências e interrompendo o fornecimento de energia elétrica. O evento eleva para 15 o número total de ocorrências de tornados registradas no estado ao longo de 2026.",
-      "resumo_pulso": "Segundo relatórios do Poder360, novas tempestades severas e tornados atingiram os municípios de Foz do Iguaçu e Manoel Ribas, no Paraná, destelhando residências e interrompendo o fornecimento de energia elétrica. O evento eleva para 15 o número total de ocorrências de tornados registradas no estado ao longo de 2026.",
-      "sintese_nerd": "Riscos diretos a moradores e infraestrutura urbana local, exigindo ações das Defesas Civis estaduais e municipais.",
       "impacto_pratico": "Riscos diretos a moradores e infraestrutura urbana local, exigindo ações das Defesas Civis estaduais e municipais.",
-      "paises_envolvidos": [
-        "BR"
-      ],
+      "origem_pipeline": "pulso",
       "veiculos_origem": [
         "Poder360"
       ],
-      "fontes_urls": [
-        "https://www.poder360.com.br/poder-brasil/tornados-atingem-foz-do-iguacu-e-manoel-ribas-no-parana/"
+      "relevancia_score": 92,
+      "paises_envolvidos": [
+        "BR"
       ],
-      "data_publicacao": "2026-11-21T21:13:23Z",
-      "updated_at": "2026-11-21T21:35:55Z"
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "paraná",
+        "tornados",
+        "foz do iguaçu",
+        "manoel ribas",
+        "defesa civil"
+      ]
     },
     {
       "slug": "nicaragua-governo-ortega-impede-retorno-de-cidadaos-ao-pais",
@@ -349,85 +510,6 @@
       ]
     },
     {
-      "slug": "pacote-estimulo-economia-china",
-      "status": "novo",
-      "ttl_horas": 96,
-      "expires_at": "2026-11-25T19:02:37Z",
-      "updated_at": "2026-11-21T19:02:37Z",
-      "titulo_tema": "Economistas defendem pacote de US$ 450 bi para estimular China",
-      "sintese_nerd": "O enfraquecimento da demanda interna na China levou economistas a defenderem um megapacote de estímulos de US$ 450 bilhões para reativar o crescimento do país. A medida possui forte repercussão sobre o volume de importações de commodities do Brasil e o equilíbrio do comércio exterior.",
-      "rota_editoria": "/economia",
-      "urgencia_score": 87,
-      "data_publicacao": "2026-11-21T19:02:37Z",
-      "gatilho_vitrine": "Explicar como a desaceleração da economia chinesa e propostas de grandes estímulos fiscais afetam diretamente as exportações e commodities brasileiras.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 89,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Geopolitica_Radar"
-      ],
-      "palavras_chave_busca": [
-        "china",
-        "pacote de estímulo",
-        "demanda interna",
-        "pib global",
-        "comércio exterior",
-        "commodities"
-      ]
-    },
-    {
-      "slug": "internacao-bolsonaro-uti-brasilia",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-23T19:02:37Z",
-      "updated_at": "2026-11-21T19:02:37Z",
-      "titulo_tema": "Ex-presidente Jair Bolsonaro internado em UTI no Distrito Federal",
-      "sintese_nerd": "O ex-presidente Jair Bolsonaro foi internado na UTI do Hospital DF Star em Brasília com diagnóstico de abdome agudo obstrutivo, passando por procedimentos clínicos e suporte nutricional. O fato movimenta o cenário político nacional e atrai atenção imediata para os desdobramentos de sua saúde.",
-      "rota_editoria": "/politica",
-      "data_publicacao": "2026-11-21T19:02:37Z",
-      "gatilho_vitrine": "Destacar boletim médico atualizado e repercussão institucional da internação do ex-presidente.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 95,
-      "categoria_primaria": "Politica",
-      "categorias_cruzadas": [
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "jair bolsonaro",
-        "uti",
-        "hospital df star",
-        "abdome agudo obstrutivo",
-        "brasília",
-        "saúde política"
-      ]
-    },
-    {
-      "slug": "ataque-petroleiros-estreito-ormuz",
-      "status": "novo",
-      "ttl_horas": 72,
-      "expires_at": "2026-11-24T19:02:37Z",
-      "updated_at": "2026-11-21T19:02:37Z",
-      "titulo_tema": "Três petroleiros atingidos perto do Estreito de Ormuz",
-      "sintese_nerd": "Operações militares intensificadas pelo Irã no Estreito de Ormuz resultaram em ataques a três petroleiros, elevando drasticamente os riscos às rotas de suprimento energético global. A escalada pressiona os preços do petróleo e afeta a inflação e os custos de transporte internacionais.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-21T19:02:37Z",
-      "gatilho_vitrine": "Conectar o aumento das tensões no Oriente Médio com o impacto direto na cotação internacional do petróleo e nos mercados globais.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 92,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia"
-      ],
-      "palavras_chave_busca": [
-        "estreito de ormuz",
-        "petroleiros",
-        "irã",
-        "petróleo",
-        "crise energética",
-        "geopolítica global"
-      ]
-    },
-    {
       "slug": "russia-dispara-400-drones-e-110-misseis-contra-ucrania-e-deixa-mortos-em-kyiv",
       "status": "novo",
       "categoria": "Geopolitica_Relacoes",
@@ -527,28 +609,19 @@
     },
     {
       "slug": "bolsonaro-internado-uti-brasilia-abdome-obstrutivo",
-      "titulo_tema": "Bolsonaro segue em UTI com abdômen agudo obstrutivo e sem previsão de alta, diz hospital",
-      "titulo_curto": "Bolsonaro segue em UTI com abdômen agudo obstrutivo e sem previsão de alta, diz hospital",
       "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Geopolitica_Radar",
       "categoria": "Geopolitica_Relacoes",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 95,
-      "urgencia_score": 97,
       "ttl_horas": 12,
       "expires_at": "2026-11-22T06:40:12Z",
-      "palavras_chave_busca": [
-        "jair bolsonaro",
-        "uti",
-        "hospital df star",
-        "abdômen agudo obstrutivo",
-        "saúde"
+      "updated_at": "2026-11-21T21:35:55Z",
+      "fontes_urls": [
+        "https://g1.globo.com/politica/noticia/2026/11/21/bolsonaro-tem-obstrucao-intestinal-quadro-estavel-e-segue-sem-previsao-de-alta-diz-boletim-medico.ghtml"
       ],
+      "titulo_tema": "Bolsonaro segue em UTI com abdômen agudo obstrutivo e sem previsão de alta, diz hospital",
+      "resumo_pulso": "Segundo novo boletim médico do hospital DF Star repercutido pelo G1 Política, o ex-presidente Jair Bolsonaro permanece internado em unidade de terapia intensiva devido a um quadro de abdômen agudo obstrutivo. O paciente encontra-se clinicamente estável, sob jejum oral com suporte nutricional, sem previsão de alta hospitalar.",
+      "sintese_nerd": "Acompanhamento da estabilidade de saúde de figura pública central e desdobramentos na articulação política do grupo.",
+      "titulo_curto": "Bolsonaro segue em UTI com abdômen agudo obstrutivo e sem previsão de alta, diz hospital",
+      "rota_editoria": "/radar",
       "palavras_chave": [
         "jair bolsonaro",
         "uti",
@@ -556,52 +629,16 @@
         "abdômen agudo obstrutivo",
         "saúde"
       ],
+      "urgencia_score": 97,
+      "data_publicacao": "2026-11-21T17:55:00Z",
       "gatilho_vitrine": "Segundo novo boletim médico do hospital DF Star repercutido pelo G1 Política, o ex-presidente Jair Bolsonaro permanece internado em unidade de terapia intensiva devido a um quadro de abdômen agudo obstrutivo. O paciente encontra-se clinicamente estável, sob jejum oral com suporte nutricional, sem previsão de alta hospitalar.",
-      "resumo_pulso": "Segundo novo boletim médico do hospital DF Star repercutido pelo G1 Política, o ex-presidente Jair Bolsonaro permanece internado em unidade de terapia intensiva devido a um quadro de abdômen agudo obstrutivo. O paciente encontra-se clinicamente estável, sob jejum oral com suporte nutricional, sem previsão de alta hospitalar.",
-      "sintese_nerd": "Acompanhamento da estabilidade de saúde de figura pública central e desdobramentos na articulação política do grupo.",
       "impacto_pratico": "Acompanhamento da estabilidade de saúde de figura pública central e desdobramentos na articulação política do grupo.",
-      "paises_envolvidos": [
-        "BR"
-      ],
+      "origem_pipeline": "pulso",
       "veiculos_origem": [
         "G1 Política",
         "Hospital DF Star"
       ],
-      "fontes_urls": [
-        "https://g1.globo.com/politica/noticia/2026/11/21/bolsonaro-tem-obstrucao-intestinal-quadro-estavel-e-segue-sem-previsao-de-alta-diz-boletim-medico.ghtml"
-      ],
-      "data_publicacao": "2026-11-21T17:55:00Z",
-      "updated_at": "2026-11-21T21:35:55Z"
-    },
-    {
-      "slug": "pulso-1-20261121-1540",
-      "status": "novo",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 6,
-      "expires_at": "2026-11-21T21:40:51Z",
-      "updated_at": "2026-11-21T15:40:51Z",
-      "fontes_urls": [
-        "https://g1.globo.com/meio-ambiente/noticia/2026/11/21/ainda-nao-ha-compromisso-na-cop31-do-clima-para-um-acordo-afirma-uniao-europeia.ghtml"
-      ],
-      "titulo_tema": "'Ainda não há compromisso' na COP31 do clima para um acordo, afirma União Europeia",
-      "resumo_pulso": "Segundo G1 Mundo, Voluntário passa em frente ao logotipo da COP31, conferência do clima da ONU, em Antalya, na Turquia, em 8 de novembro de 2026. Murad Sezer/Reuters O comissário europeu para o Clima afirmou neste sábado (21) que ainda não foi alcançado um compromisso para incluir a eliminação gradual dos combustíveis fósseis na declaração política da COP31, realizada na Turquia. \"Ainda não há com",
-      "sintese_nerd": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "titulo_curto": "'Ainda não há compromisso' na COP31 do clima para um acordo, afirma União Europeia",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "radar",
-        "tempo real",
-        "br"
-      ],
-      "urgencia_score": 90,
-      "data_publicacao": "2026-11-21T15:31:31+00:00",
-      "gatilho_vitrine": "Segundo G1 Mundo, Voluntário passa em frente ao logotipo da COP31, conferência do clima da ONU, em Antalya, na Turquia, em 8 de novembro de 2026. Murad Sezer/Reuters O comissário europeu para o Clima afirmou neste sábado (21) que ainda não foi alcançado um compromisso para incluir a eliminação gradual dos combustíveis fósseis na declaração política da COP31, realizada na Turquia. \"Ainda não há com",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "G1 Mundo"
-      ],
-      "relevancia_score": 88,
+      "relevancia_score": 95,
       "paises_envolvidos": [
         "BR"
       ],
@@ -611,181 +648,11 @@
         "Resumo_Ultimas"
       ],
       "palavras_chave_busca": [
-        "radar",
-        "tempo real",
-        "br"
-      ]
-    },
-    {
-      "slug": "pulso-2-20261121-1540",
-      "status": "novo",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 6,
-      "expires_at": "2026-11-21T21:40:51Z",
-      "updated_at": "2026-11-21T15:40:51Z",
-      "fontes_urls": [
-        "https://www.bbc.com/portuguese/articles/cr3wgxxzw81xo?at_medium=RSS&at_campaign=rss"
-      ],
-      "titulo_tema": "'O câncer muda você': princesa Catherine fala sobre doença em documentário da BBC",
-      "resumo_pulso": "Segundo BBC News Brasil, “Há um aspecto muito, muito mais profundo no que um diagnóstico de câncer provoca em você”, diz Catherine no documentário..",
-      "sintese_nerd": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "titulo_curto": "'O câncer muda você': princesa Catherine fala sobre doença em documentário da BBC",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "radar",
-        "tempo real",
-        "gb"
-      ],
-      "urgencia_score": 85,
-      "data_publicacao": "2026-11-21T15:24:06+00:00",
-      "gatilho_vitrine": "Segundo BBC News Brasil, “Há um aspecto muito, muito mais profundo no que um diagnóstico de câncer provoca em você”, diz Catherine no documentário..",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "BBC News Brasil"
-      ],
-      "relevancia_score": 84,
-      "paises_envolvidos": [
-        "GB"
-      ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "radar",
-        "tempo real",
-        "gb"
-      ]
-    },
-    {
-      "slug": "pulso-3-20261121-1540",
-      "status": "novo",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 6,
-      "expires_at": "2026-11-21T21:40:51Z",
-      "updated_at": "2026-11-21T15:40:51Z",
-      "fontes_urls": [
-        "https://www.aljazeera.com/news/2026/11/21/tankers-hit-in-strait-of-hormuz-as-iran-tightens-grip-on-shipping?traffic_source=rss"
-      ],
-      "titulo_tema": "Tankers hit in Strait of Hormuz as Iran tightens grip on shipping",
-      "resumo_pulso": "Segundo Al Jazeera English, British maritime agency reports two incidents near Oman, while Iran says a tanker caught fire due to naval mine..",
-      "sintese_nerd": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "titulo_curto": "Tankers hit in Strait of Hormuz as Iran tightens grip on shipping",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "radar",
-        "tempo real",
-        "qa"
-      ],
-      "urgencia_score": 80,
-      "data_publicacao": "2026-11-21T15:01:18+00:00",
-      "gatilho_vitrine": "Segundo Al Jazeera English, British maritime agency reports two incidents near Oman, while Iran says a tanker caught fire due to naval mine..",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "Al Jazeera English"
-      ],
-      "relevancia_score": 80,
-      "paises_envolvidos": [
-        "QA"
-      ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "radar",
-        "tempo real",
-        "qa"
-      ]
-    },
-    {
-      "slug": "pulso-4-20261121-1540",
-      "status": "novo",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 6,
-      "expires_at": "2026-11-21T21:40:51Z",
-      "updated_at": "2026-11-21T15:40:51Z",
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/meio-ambiente/noticia/2026-11/temporais-provocam-alagamentos-e-danos-em-imoveis-no-estado-de-sp"
-      ],
-      "titulo_tema": "Temporais provocam alagamentos e danos em imóveis no estado de SP",
-      "resumo_pulso": "Segundo Agência Brasil (EBC), Fortes chuvas atingiram o município de Aparecida (SP), nesta sexta-feira (20), provocando alagamentos em diversas vias e residências, quedas de árvores e danos em estruturas. Uma família ficou desalojada após a interdição preventiva de um imóvel, e cinco hóspedes foram atingidos pelo desabamento parcial do teto de um restaurante de hotel. Segundo informações da Defesa",
-      "sintese_nerd": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "titulo_curto": "Temporais provocam alagamentos e danos em imóveis no estado de SP",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "radar",
-        "tempo real",
-        "br"
-      ],
-      "urgencia_score": 75,
-      "data_publicacao": "2026-11-21T14:50:00+00:00",
-      "gatilho_vitrine": "Segundo Agência Brasil (EBC), Fortes chuvas atingiram o município de Aparecida (SP), nesta sexta-feira (20), provocando alagamentos em diversas vias e residências, quedas de árvores e danos em estruturas. Uma família ficou desalojada após a interdição preventiva de um imóvel, e cinco hóspedes foram atingidos pelo desabamento parcial do teto de um restaurante de hotel. Segundo informações da Defesa",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "Agência Brasil (EBC)"
-      ],
-      "relevancia_score": 76,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "radar",
-        "tempo real",
-        "br"
-      ]
-    },
-    {
-      "slug": "pulso-5-20261121-1540",
-      "status": "novo",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 6,
-      "expires_at": "2026-11-21T21:40:51Z",
-      "updated_at": "2026-11-21T15:40:51Z",
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/cultura/noticia/2026-11/sem-censura-da-tv-brasil-conquista-novamente-premio-melhores-do-ano"
-      ],
-      "titulo_tema": "Sem Censura, da TV Brasil, conquista novamente Prêmio Melhores do Ano",
-      "resumo_pulso": "Segundo Agência Brasil (EBC), O programa Sem Censura , apresentado por Cissa Guimarães na TV Brasil, venceu pelo terceiro ano consecutivo o Prêmio Melhores do Ano NaTelinha. A tradicional roda de conversa vespertina da televisão brasileira conquistou a premiação nas categorias de Melhor Programa de Entrevista - láurea já obtida em 2024 e 2025 - e Melhor Programa Diário. Já a anfitriã foi eleita co",
-      "sintese_nerd": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "titulo_curto": "Sem Censura, da TV Brasil, conquista novamente Prêmio Melhores do Ano",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "radar",
-        "tempo real",
-        "br"
-      ],
-      "urgencia_score": 70,
-      "data_publicacao": "2026-11-21T14:43:00+00:00",
-      "gatilho_vitrine": "Segundo Agência Brasil (EBC), O programa Sem Censura , apresentado por Cissa Guimarães na TV Brasil, venceu pelo terceiro ano consecutivo o Prêmio Melhores do Ano NaTelinha. A tradicional roda de conversa vespertina da televisão brasileira conquistou a premiação nas categorias de Melhor Programa de Entrevista - láurea já obtida em 2024 e 2025 - e Melhor Programa Diário. Já a anfitriã foi eleita co",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "Agência Brasil (EBC)"
-      ],
-      "relevancia_score": 72,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "radar",
-        "tempo real",
-        "br"
+        "jair bolsonaro",
+        "uti",
+        "hospital df star",
+        "abdômen agudo obstrutivo",
+        "saúde"
       ]
     },
     {
@@ -881,29 +748,181 @@
       ]
     }
   ],
+  "temas_curadoria": [
+    {
+      "slug": "impasse-cop31-financiamento-climatico-fossil",
+      "titulo_tema": "Impasse na COP31 ameaça acordo global sobre transição energética e financiamento",
+      "status": "em_alta",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Politica"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 94,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-23T21:55:28Z",
+      "palavras_chave_busca": [
+        "cop31",
+        "financiamento climático",
+        "combustíveis fósseis",
+        "transição energética",
+        "crise climática",
+        "acordo de paris"
+      ],
+      "gatilho_vitrine": "Destacar paralisação nas negociações de financiamento ambiental e impacto para países emergentes.",
+      "sintese_nerd": "Divergências profundas entre potências globais e países em desenvolvimento travam a assinatura do acordo final da COP31 sobre o fundo de transição ecológica. Para o Brasil, o impasse pressiona compromissos de preservação ambiental e afeta a atração de capital externo para projetos sustentáveis.",
+      "data_publicacao": "2026-11-21T21:55:28Z",
+      "updated_at": "2026-11-21T21:55:28Z"
+    },
+    {
+      "slug": "crise-golfo-persico-ataque-bahrein-estreito-ormuz",
+      "titulo_tema": "Escalação no Golfo Pérsico: ataques no Bahrein e impasse no Estreito de Ormuz",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Politica"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 91,
+      "ttl_horas": 36,
+      "expires_at": "2026-11-23T09:55:28Z",
+      "palavras_chave_busca": [
+        "golfo pérsico",
+        "bahrein",
+        "irã",
+        "estreito de ormuz",
+        "preço do petróleo",
+        "eua irã"
+      ],
+      "gatilho_vitrine": "Acionar alerta geopolítico de segurança energética e risco sobre cotações internacionais de petróleo.",
+      "sintese_nerd": "O aumento das tensões militares no Golfo Pérsico com ataques a instalações industriais no Bahrein coloca em risco a rota global de navegação e suprimento de petróleo. O eventual bloqueio do Estreito de Ormuz tende a encarecer os combustíveis e pressionar a inflação global e brasileira.",
+      "data_publicacao": "2026-11-21T21:55:28Z",
+      "updated_at": "2026-11-21T21:55:28Z"
+    },
+    {
+      "slug": "amazon-compra-startup-decart-corrida-ia-chips",
+      "titulo_tema": "Amazon negocia startup Decart por US$ 7,5 bi para rivalizar com Nvidia em IA",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Geopolitica_Radar",
+        "Cultura"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 88,
+      "ttl_horas": 72,
+      "expires_at": "2026-11-24T21:55:28Z",
+      "palavras_chave_busca": [
+        "amazon",
+        "decart",
+        "nvidia",
+        "chips de ia",
+        "inteligência artificial",
+        "big tech",
+        "mercado de tecnologia"
+      ],
+      "gatilho_vitrine": "Impulsionar cobertura sobre a guerra de hardware e semicondutores entre gigantes da tecnologia.",
+      "sintese_nerd": "A negociação bilionária da Amazon para adquirir a startup Decart busca reduzir a dependência dos dispendiosos chips da Nvidia na infraestrutura de nuvem. A cartada reflete a corrida geopolítica e corporativa pelo domínio da eficiência computacional na era da IA generativa.",
+      "data_publicacao": "2026-11-21T21:55:28Z",
+      "updated_at": "2026-11-21T21:55:28Z"
+    },
+    {
+      "slug": "haddad-taxacao-super-ricos-cupula-paris",
+      "titulo_tema": "Proposta de alíquota global sobre super-ricos avança em discussões em Paris",
+      "status": "em_alta",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Politica",
+        "Geopolitica_Radar"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 85,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-23T21:55:28Z",
+      "palavras_chave_busca": [
+        "taxação de super-ricos",
+        "fernando haddad",
+        "cúpula de paris",
+        "imposto sobre fortunas",
+        "diplomacia fiscal",
+        "g20"
+      ],
+      "gatilho_vitrine": "Conectar agenda fiscal do Brasil no exterior com o debate sobre desigualdade e arrecadação.",
+      "sintese_nerd": "A defesa de uma alíquota global de 2% sobre bilionários apresentada em cúpula internacional busca criar consensos multilaterais contra a evasão de divisas. Se adotada, a medida poderia redistribuir receitas globais e balizar reformas tributárias estruturais em países emergentes.",
+      "data_publicacao": "2026-11-21T21:55:28Z",
+      "updated_at": "2026-11-21T21:55:28Z"
+    },
+    {
+      "slug": "regulacao-internacional-robos-assassinos-onu",
+      "titulo_tema": "ONU estabelece prazo até 2028 para regras globais sobre armas autônomas",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Politica",
+        "Cultura"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 84,
+      "ttl_horas": 120,
+      "expires_at": "2026-11-26T21:55:28Z",
+      "palavras_chave_busca": [
+        "robôs assassinos",
+        "armas autônomas",
+        "diplomacia genebra",
+        "regulacao ia militar",
+        "onu defesa"
+      ],
+      "gatilho_vitrine": "Exibir dilemas éticos e jurídicos da automação militar no ecossistema de defesa internacional.",
+      "sintese_nerd": "Mais de uma centena de nações acordaram em Genebra um cronograma para balizar o uso de sistemas de armas autônomas geridos por inteligência artificial. A resistência de grandes potências militares evidencia a tensão entre avanço tecnológico bélico e o direito internacional humanitário.",
+      "data_publicacao": "2026-11-21T21:55:28Z",
+      "updated_at": "2026-11-21T21:55:28Z"
+    },
+    {
+      "slug": "protestos-europa-crise-habitacao-custo-vida",
+      "titulo_tema": "Onda de protestos na Europa reflete crise no custo de vida e moradia",
+      "status": "em_alta",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Cultura"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 81,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-23T21:55:28Z",
+      "palavras_chave_busca": [
+        "protestos europa",
+        "crise de moradia",
+        "custo de vida europeu",
+        "inflacao europa",
+        "crise habitacional"
+      ],
+      "gatilho_vitrine": "Destacar insatisfação popular com inflação e moradia nas principais capitais europeias.",
+      "sintese_nerd": "Manifestações massivas na França e em Portugal escancaram o descontentamento social com o encarecimento dos aluguéis e a perda de poder de compra do euro. O cenário de estagnação com custo de vida elevado tensiona os governos europeus e fortalece o debate sobre políticas urbanas.",
+      "data_publicacao": "2026-11-21T21:55:28Z",
+      "updated_at": "2026-11-21T21:55:28Z"
+    }
+  ],
   "noticias_quentes": [
     {
       "slug": "ft-amazon-negocia-compra-startup-ia-decart-7-5-bilhoes",
-      "titulo_curto": "Amazon negocia aquisição de startup de IA Decart por US$ 7,5 bilhões, aponta FT",
-      "resumo_pulso": "Conforme apuração do Financial Times repercutida pelo InfoMoney Mercados, a Amazon está próxima de adquirir a startup Decart, especializada na otimização de processamento de inteligência artificial. A movimentação estratégica visa reduzir a dependência de chips da Nvidia e fortalecer a posição da gigante tecnológica no setor.",
-      "impacto_pratico": "Modificações competitivas no mercado global de inteligência artificial e na cadeia de suprimentos de semicondutores.",
       "categoria": "Economia_Comercio",
-      "paises_envolvidos": [
-        "US",
-        "BR"
-      ],
-      "urgencia_score": 92,
-      "relevancia_score": 91,
-      "nivel_confianca": "media",
       "ttl_horas": 24,
-      "horas_em_destaque": 18,
-      "veiculos_origem": [
-        "InfoMoney Mercados",
-        "Financial Times"
-      ],
+      "expires_at": "2026-11-22T21:35:55Z",
+      "updated_at": "2026-11-21T21:35:55Z",
       "fontes_urls": [
         "https://www.infomoney.com.br/business/ft-amazon-negocia-compra-de-startup-de-ia-por-us-75-bilhoes-para-enfrentar-nvidia/"
       ],
+      "resumo_pulso": "Conforme apuração do Financial Times repercutida pelo InfoMoney Mercados, a Amazon está próxima de adquirir a startup Decart, especializada na otimização de processamento de inteligência artificial. A movimentação estratégica visa reduzir a dependência de chips da Nvidia e fortalecer a posição da gigante tecnológica no setor.",
+      "titulo_curto": "Amazon negocia aquisição de startup de IA Decart por US$ 7,5 bilhões, aponta FT",
       "palavras_chave": [
         "Amazon",
         "Decart",
@@ -911,31 +930,33 @@
         "Nvidia",
         "Financial Times"
       ],
+      "urgencia_score": 92,
       "data_publicacao": "2026-11-21T21:15:07Z",
-      "links_internos_relacionados": [],
-      "expires_at": "2026-11-22T21:35:55Z",
-      "updated_at": "2026-11-21T21:35:55Z"
+      "impacto_pratico": "Modificações competitivas no mercado global de inteligência artificial e na cadeia de suprimentos de semicondutores.",
+      "nivel_confianca": "media",
+      "veiculos_origem": [
+        "InfoMoney Mercados",
+        "Financial Times"
+      ],
+      "relevancia_score": 91,
+      "horas_em_destaque": 18,
+      "paises_envolvidos": [
+        "US",
+        "BR"
+      ],
+      "links_internos_relacionados": []
     },
     {
       "slug": "tornados-atingem-foz-do-iguacu-e-manoel-ribas-parana",
-      "titulo_curto": "Tempestades extremas e tornados atingem cidades do Paraná e deixam rastros de destruição",
-      "resumo_pulso": "Segundo relatórios do Poder360, novas tempestades severas e tornados atingiram os municípios de Foz do Iguaçu e Manoel Ribas, no Paraná, destelhando residências e interrompendo o fornecimento de energia elétrica. O evento eleva para 15 o número total de ocorrências de tornados registradas no estado ao longo de 2026.",
-      "impacto_pratico": "Riscos diretos a moradores e infraestrutura urbana local, exigindo ações das Defesas Civis estaduais e municipais.",
       "categoria": "Ciencia_Clima",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "urgencia_score": 95,
-      "relevancia_score": 92,
-      "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 18,
-      "veiculos_origem": [
-        "Poder360"
-      ],
+      "expires_at": "2026-11-22T21:35:55Z",
+      "updated_at": "2026-11-21T21:35:55Z",
       "fontes_urls": [
         "https://www.poder360.com.br/poder-brasil/tornados-atingem-foz-do-iguacu-e-manoel-ribas-no-parana/"
       ],
+      "resumo_pulso": "Segundo relatórios do Poder360, novas tempestades severas e tornados atingiram os municípios de Foz do Iguaçu e Manoel Ribas, no Paraná, destelhando residências e interrompendo o fornecimento de energia elétrica. O evento eleva para 15 o número total de ocorrências de tornados registradas no estado ao longo de 2026.",
+      "titulo_curto": "Tempestades extremas e tornados atingem cidades do Paraná e deixam rastros de destruição",
       "palavras_chave": [
         "Paraná",
         "Tornados",
@@ -943,16 +964,25 @@
         "Manoel Ribas",
         "Defesa Civil"
       ],
+      "urgencia_score": 95,
       "data_publicacao": "2026-11-21T21:13:23Z",
+      "impacto_pratico": "Riscos diretos a moradores e infraestrutura urbana local, exigindo ações das Defesas Civis estaduais e municipais.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Poder360"
+      ],
+      "relevancia_score": 92,
+      "horas_em_destaque": 18,
+      "paises_envolvidos": [
+        "BR"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "Clima, Amazônia e Transição Energética",
           "url_existente": "https://www.rodandoomundo.com.br/clima",
-          "motivo_conexao": "Relaciona eventos climáticos extremos e monitoramento ambiental no território brasileiro."
+          "motivo_conexao": "Relaciona eventos climáticos extremos e monitoramento ambiental no território brasileiro.",
+          "titulo_existente": "Clima, Amazônia e Transição Energética"
         }
-      ],
-      "expires_at": "2026-11-22T21:35:55Z",
-      "updated_at": "2026-11-21T21:35:55Z"
+      ]
     },
     {
       "slug": "nicaragua-governo-ortega-impede-retorno-de-cidadaos-ao-pais",
@@ -1250,25 +1280,15 @@
     },
     {
       "slug": "bolsonaro-internado-uti-brasilia-abdome-obstrutivo",
-      "titulo_curto": "Bolsonaro segue em UTI com abdômen agudo obstrutivo e sem previsão de alta, diz hospital",
-      "resumo_pulso": "Segundo novo boletim médico do hospital DF Star repercutido pelo G1 Política, o ex-presidente Jair Bolsonaro permanece internado em unidade de terapia intensiva devido a um quadro de abdômen agudo obstrutivo. O paciente encontra-se clinicamente estável, sob jejum oral com suporte nutricional, sem previsão de alta hospitalar.",
-      "impacto_pratico": "Acompanhamento da estabilidade de saúde de figura pública central e desdobramentos na articulação política do grupo.",
       "categoria": "Geopolitica_Relacoes",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "urgencia_score": 97,
-      "relevancia_score": 95,
-      "nivel_confianca": "alta",
       "ttl_horas": 12,
-      "horas_em_destaque": 12,
-      "veiculos_origem": [
-        "G1 Política",
-        "Hospital DF Star"
-      ],
+      "expires_at": "2026-11-22T06:40:12Z",
+      "updated_at": "2026-11-21T21:35:55Z",
       "fontes_urls": [
         "https://g1.globo.com/politica/noticia/2026/11/21/bolsonaro-tem-obstrucao-intestinal-quadro-estavel-e-segue-sem-previsao-de-alta-diz-boletim-medico.ghtml"
       ],
+      "resumo_pulso": "Segundo novo boletim médico do hospital DF Star repercutido pelo G1 Política, o ex-presidente Jair Bolsonaro permanece internado em unidade de terapia intensiva devido a um quadro de abdômen agudo obstrutivo. O paciente encontra-se clinicamente estável, sob jejum oral com suporte nutricional, sem previsão de alta hospitalar.",
+      "titulo_curto": "Bolsonaro segue em UTI com abdômen agudo obstrutivo e sem previsão de alta, diz hospital",
       "palavras_chave": [
         "Jair Bolsonaro",
         "UTI",
@@ -1276,219 +1296,24 @@
         "abdômen agudo obstrutivo",
         "saúde"
       ],
+      "urgencia_score": 97,
       "data_publicacao": "2026-11-21T17:55:00Z",
+      "impacto_pratico": "Acompanhamento da estabilidade de saúde de figura pública central e desdobramentos na articulação política do grupo.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "G1 Política",
+        "Hospital DF Star"
+      ],
+      "relevancia_score": 95,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "BR"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "Política no Brasil",
           "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
-          "motivo_conexao": "Contextualiza a repercussão do fato na política nacional e no cenário de Brasília."
-        }
-      ],
-      "expires_at": "2026-11-22T06:40:12Z",
-      "updated_at": "2026-11-21T21:35:55Z"
-    },
-    {
-      "slug": "pulso-1-20261121-1540",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 6,
-      "expires_at": "2026-11-21T21:40:51Z",
-      "updated_at": "2026-11-21T15:40:51Z",
-      "fontes_urls": [
-        "https://g1.globo.com/meio-ambiente/noticia/2026/11/21/ainda-nao-ha-compromisso-na-cop31-do-clima-para-um-acordo-afirma-uniao-europeia.ghtml"
-      ],
-      "resumo_pulso": "Segundo G1 Mundo, Voluntário passa em frente ao logotipo da COP31, conferência do clima da ONU, em Antalya, na Turquia, em 8 de novembro de 2026. Murad Sezer/Reuters O comissário europeu para o Clima afirmou neste sábado (21) que ainda não foi alcançado um compromisso para incluir a eliminação gradual dos combustíveis fósseis na declaração política da COP31, realizada na Turquia. \"Ainda não há com",
-      "titulo_curto": "'Ainda não há compromisso' na COP31 do clima para um acordo, afirma União Europeia",
-      "palavras_chave": [
-        "radar",
-        "tempo real",
-        "br"
-      ],
-      "urgencia_score": 90,
-      "data_publicacao": "2026-11-21T15:31:31+00:00",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "G1 Mundo"
-      ],
-      "relevancia_score": 88,
-      "horas_em_destaque": 6,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
-          "motivo_conexao": "Compreenda por que os preços sobem de forma generalizada, como o IPCA é calculado e de que maneira os juros do Banco Central afetam o poder de compra.",
-          "titulo_existente": "O que é inflação?"
-        },
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/como-funcionam-as-eleicoes-nos-eua",
-          "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos.",
-          "titulo_existente": "Como funcionam as eleições nos EUA?"
-        }
-      ]
-    },
-    {
-      "slug": "pulso-2-20261121-1540",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 6,
-      "expires_at": "2026-11-21T21:40:51Z",
-      "updated_at": "2026-11-21T15:40:51Z",
-      "fontes_urls": [
-        "https://www.bbc.com/portuguese/articles/cr3wgxxzw81xo?at_medium=RSS&at_campaign=rss"
-      ],
-      "resumo_pulso": "Segundo BBC News Brasil, “Há um aspecto muito, muito mais profundo no que um diagnóstico de câncer provoca em você”, diz Catherine no documentário..",
-      "titulo_curto": "'O câncer muda você': princesa Catherine fala sobre doença em documentário da BBC",
-      "palavras_chave": [
-        "radar",
-        "tempo real",
-        "gb"
-      ],
-      "urgencia_score": 85,
-      "data_publicacao": "2026-11-21T15:24:06+00:00",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "BBC News Brasil"
-      ],
-      "relevancia_score": 84,
-      "horas_em_destaque": 6,
-      "paises_envolvidos": [
-        "GB"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
-          "motivo_conexao": "Compreenda por que os preços sobem de forma generalizada, como o IPCA é calculado e de que maneira os juros do Banco Central afetam o poder de compra.",
-          "titulo_existente": "O que é inflação?"
-        },
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/como-funcionam-as-eleicoes-nos-eua",
-          "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos.",
-          "titulo_existente": "Como funcionam as eleições nos EUA?"
-        }
-      ]
-    },
-    {
-      "slug": "pulso-3-20261121-1540",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 6,
-      "expires_at": "2026-11-21T21:40:51Z",
-      "updated_at": "2026-11-21T15:40:51Z",
-      "fontes_urls": [
-        "https://www.aljazeera.com/news/2026/11/21/tankers-hit-in-strait-of-hormuz-as-iran-tightens-grip-on-shipping?traffic_source=rss"
-      ],
-      "resumo_pulso": "Segundo Al Jazeera English, British maritime agency reports two incidents near Oman, while Iran says a tanker caught fire due to naval mine..",
-      "titulo_curto": "Tankers hit in Strait of Hormuz as Iran tightens grip on shipping",
-      "palavras_chave": [
-        "radar",
-        "tempo real",
-        "qa"
-      ],
-      "urgencia_score": 80,
-      "data_publicacao": "2026-11-21T15:01:18+00:00",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Al Jazeera English"
-      ],
-      "relevancia_score": 80,
-      "horas_em_destaque": 6,
-      "paises_envolvidos": [
-        "QA"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
-          "motivo_conexao": "Compreenda por que os preços sobem de forma generalizada, como o IPCA é calculado e de que maneira os juros do Banco Central afetam o poder de compra.",
-          "titulo_existente": "O que é inflação?"
-        },
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/como-funcionam-as-eleicoes-nos-eua",
-          "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos.",
-          "titulo_existente": "Como funcionam as eleições nos EUA?"
-        }
-      ]
-    },
-    {
-      "slug": "pulso-4-20261121-1540",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 6,
-      "expires_at": "2026-11-21T21:40:51Z",
-      "updated_at": "2026-11-21T15:40:51Z",
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/meio-ambiente/noticia/2026-11/temporais-provocam-alagamentos-e-danos-em-imoveis-no-estado-de-sp"
-      ],
-      "resumo_pulso": "Segundo Agência Brasil (EBC), Fortes chuvas atingiram o município de Aparecida (SP), nesta sexta-feira (20), provocando alagamentos em diversas vias e residências, quedas de árvores e danos em estruturas. Uma família ficou desalojada após a interdição preventiva de um imóvel, e cinco hóspedes foram atingidos pelo desabamento parcial do teto de um restaurante de hotel. Segundo informações da Defesa",
-      "titulo_curto": "Temporais provocam alagamentos e danos em imóveis no estado de SP",
-      "palavras_chave": [
-        "radar",
-        "tempo real",
-        "br"
-      ],
-      "urgencia_score": 75,
-      "data_publicacao": "2026-11-21T14:50:00+00:00",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Agência Brasil (EBC)"
-      ],
-      "relevancia_score": 76,
-      "horas_em_destaque": 6,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
-          "motivo_conexao": "Compreenda por que os preços sobem de forma generalizada, como o IPCA é calculado e de que maneira os juros do Banco Central afetam o poder de compra.",
-          "titulo_existente": "O que é inflação?"
-        },
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/como-funcionam-as-eleicoes-nos-eua",
-          "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos.",
-          "titulo_existente": "Como funcionam as eleições nos EUA?"
-        }
-      ]
-    },
-    {
-      "slug": "pulso-5-20261121-1540",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 6,
-      "expires_at": "2026-11-21T21:40:51Z",
-      "updated_at": "2026-11-21T15:40:51Z",
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/cultura/noticia/2026-11/sem-censura-da-tv-brasil-conquista-novamente-premio-melhores-do-ano"
-      ],
-      "resumo_pulso": "Segundo Agência Brasil (EBC), O programa Sem Censura , apresentado por Cissa Guimarães na TV Brasil, venceu pelo terceiro ano consecutivo o Prêmio Melhores do Ano NaTelinha. A tradicional roda de conversa vespertina da televisão brasileira conquistou a premiação nas categorias de Melhor Programa de Entrevista - láurea já obtida em 2024 e 2025 - e Melhor Programa Diário. Já a anfitriã foi eleita co",
-      "titulo_curto": "Sem Censura, da TV Brasil, conquista novamente Prêmio Melhores do Ano",
-      "palavras_chave": [
-        "radar",
-        "tempo real",
-        "br"
-      ],
-      "urgencia_score": 70,
-      "data_publicacao": "2026-11-21T14:43:00+00:00",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Agência Brasil (EBC)"
-      ],
-      "relevancia_score": 72,
-      "horas_em_destaque": 6,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
-          "motivo_conexao": "Compreenda por que os preços sobem de forma generalizada, como o IPCA é calculado e de que maneira os juros do Banco Central afetam o poder de compra.",
-          "titulo_existente": "O que é inflação?"
-        },
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/como-funcionam-as-eleicoes-nos-eua",
-          "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos.",
-          "titulo_existente": "Como funcionam as eleições nos EUA?"
+          "motivo_conexao": "Contextualiza a repercussão do fato na política nacional e no cenário de Brasília.",
+          "titulo_existente": "Política no Brasil"
         }
       ]
     },
@@ -1625,112 +1450,6 @@
         "UA"
       ],
       "links_internos_relacionados": []
-    }
-  ],
-  "temas_curadoria": [
-    {
-      "slug": "internacao-bolsonaro-uti-brasilia",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-23T19:02:37Z",
-      "updated_at": "2026-11-21T19:02:37Z",
-      "titulo_tema": "Ex-presidente Jair Bolsonaro internado em UTI no Distrito Federal",
-      "sintese_nerd": "O ex-presidente Jair Bolsonaro foi internado na UTI do Hospital DF Star em Brasília com diagnóstico de abdome agudo obstrutivo, passando por procedimentos clínicos e suporte nutricional. O fato movimenta o cenário político nacional e atrai atenção imediata para os desdobramentos de sua saúde.",
-      "rota_editoria": "/politica",
-      "data_publicacao": "2026-11-21T19:02:37Z",
-      "gatilho_vitrine": "Destacar boletim médico atualizado e repercussão institucional da internação do ex-presidente.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 95,
-      "categoria_primaria": "Politica",
-      "categorias_cruzadas": [
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "jair bolsonaro",
-        "uti",
-        "hospital df star",
-        "abdome agudo obstrutivo",
-        "brasília",
-        "saúde política"
-      ]
-    },
-    {
-      "slug": "ataque-petroleiros-estreito-ormuz",
-      "status": "novo",
-      "ttl_horas": 72,
-      "expires_at": "2026-11-24T19:02:37Z",
-      "updated_at": "2026-11-21T19:02:37Z",
-      "titulo_tema": "Três petroleiros atingidos perto do Estreito de Ormuz",
-      "sintese_nerd": "Operações militares intensificadas pelo Irã no Estreito de Ormuz resultaram em ataques a três petroleiros, elevando drasticamente os riscos às rotas de suprimento energético global. A escalada pressiona os preços do petróleo e afeta a inflação e os custos de transporte internacionais.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-21T19:02:37Z",
-      "gatilho_vitrine": "Conectar o aumento das tensões no Oriente Médio com o impacto direto na cotação internacional do petróleo e nos mercados globais.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 92,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia"
-      ],
-      "palavras_chave_busca": [
-        "estreito de ormuz",
-        "petroleiros",
-        "irã",
-        "petróleo",
-        "crise energética",
-        "geopolítica global"
-      ]
-    },
-    {
-      "slug": "pacote-estimulo-economia-china",
-      "status": "novo",
-      "ttl_horas": 96,
-      "expires_at": "2026-11-25T19:02:37Z",
-      "updated_at": "2026-11-21T19:02:37Z",
-      "titulo_tema": "Economistas defendem pacote de US$ 450 bi para estimular China",
-      "sintese_nerd": "O enfraquecimento da demanda interna na China levou economistas a defenderem um megapacote de estímulos de US$ 450 bilhões para reativar o crescimento do país. A medida possui forte repercussão sobre o volume de importações de commodities do Brasil e o equilíbrio do comércio exterior.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-21T19:02:37Z",
-      "gatilho_vitrine": "Explicar como a desaceleração da economia chinesa e propostas de grandes estímulos fiscais afetam diretamente as exportações e commodities brasileiras.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 88,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Geopolitica_Radar"
-      ],
-      "palavras_chave_busca": [
-        "china",
-        "pacote de estímulo",
-        "demanda interna",
-        "pib global",
-        "comércio exterior",
-        "commodities"
-      ]
-    },
-    {
-      "slug": "fbi-investiga-ataque-banco-dados-criminais",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-23T19:02:37Z",
-      "updated_at": "2026-11-21T19:02:37Z",
-      "titulo_tema": "FBI investiga possível ataque hacker a banco de dados criminais dos EUA",
-      "sintese_nerd": "O FBI investiga uma suposta invasão ao sistema do NCIC, banco de dados que centraliza registros de procurados e antecedentes nos EUA, escancarando falhas de cibersegurança em órgãos federais. O episódio reforça debates contemporâneos sobre a resiliência de redes governamentais contra ataques digitais.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-21T19:02:37Z",
-      "gatilho_vitrine": "Relatar a vulnerabilidade de infraestruturas governamentais críticas frente a ataques cibernéticos de grande escala.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 85,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Cultura"
-      ],
-      "palavras_chave_busca": [
-        "fbi",
-        "ncic",
-        "cibersegurança",
-        "ataque hacker",
-        "governo dos eua",
-        "segurança pública"
-      ]
     }
   ]
 }
