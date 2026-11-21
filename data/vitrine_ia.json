@@ -2,33 +2,133 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-21T03:19:26Z",
-  "batch_id": "20261121-0317",
+  "updatedAt": "2026-11-21T04:06:10Z",
+  "batch_id": "20261121-0405",
   "temas_ativos": [
     {
-      "slug": "paraguai-ex-procurador-geral-denuncia-perseguicao-onu-escandalo-ueno-bank",
-      "titulo_tema": "Ex-procurador-geral do Paraguai denuncia à ONU perseguição política após crise no Ueno Bank",
-      "titulo_curto": "Ex-procurador-geral do Paraguai denuncia à ONU perseguição política após crise no Ueno Bank",
+      "slug": "crise-nvidia-investigacao-eua-mercado-global-chips",
+      "titulo_tema": "EUA investigam contabilidade da Nvidia após saída dramática de Jensen Huang",
       "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Geopolitica_Radar",
-      "categoria": "Geopolitica_Relacoes",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Economia",
       "categorias_cruzadas": [
-        "Economia",
+        "Geopolitica_Radar",
+        "Politica"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 95,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-23T04:06:10Z",
+      "palavras_chave_busca": [
+        "nvidia",
+        "jensen huang",
+        "sec",
+        "cripto",
+        "semicondutores",
+        "donald trump",
+        "xi jinping"
+      ],
+      "gatilho_vitrine": "Monitorar desdobramentos da regulação tecnológica americana e o impacto nas cadeias globais de suprimento de semicondutores.",
+      "sintese_nerd": "A investigação da SEC sobre a contabilidade da Nvidia e a forte queda nas ações acentuam a volatilidade no setor de inteligência artificial global. O envolvimento político e de líderes internacionais expõe a vulnerabilidade geopolítica das cadeias de chips.",
+      "data_publicacao": "2026-11-21T04:06:10Z",
+      "updated_at": "2026-11-21T04:06:10Z"
+    },
+    {
+      "slug": "juros-nos-eua-ajuste-fiscal-brasil-disparada-dolar",
+      "titulo_tema": "Juros nos EUA e ajuste fiscal pressionam o câmbio e impulsionam a alta do dólar",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Politica",
         "Resumo_Ultimas"
       ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 90,
-      "urgencia_score": 91,
+      "rota_editoria": "/economia",
+      "relevancia_score": 92,
+      "ttl_horas": 72,
+      "expires_at": "2026-11-24T04:06:10Z",
+      "palavras_chave_busca": [
+        "dólar",
+        "federal reserve",
+        "ajuste fiscal",
+        "inflação",
+        "câmbio",
+        "real",
+        "copom"
+      ],
+      "gatilho_vitrine": "Conectar as decisões macroeconômicas internacionais e domésticas ao impacto direto no poder de compra do brasileiro e na cotação das moedas.",
+      "sintese_nerd": "A combinação de juros persistentemente elevados nos Estados Unidos com incertezas sobre o pacote de ajuste fiscal brasileiro atrai capitais para o exterior e desvaloriza o real. Essa dinâmica externa e interna corrói o poder de compra e pressiona a inflação no curto prazo.",
+      "data_publicacao": "2026-11-21T04:06:10Z",
+      "updated_at": "2026-11-21T04:06:10Z"
+    },
+    {
+      "slug": "impacto-13-salario-economia-brasileira-fim-de-ano",
+      "titulo_tema": "Início do pagamento do 13º salário movimenta R$ 400 bilhões na economia brasileira",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Cultura",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 88,
+      "ttl_horas": 168,
+      "expires_at": "2026-11-28T04:06:10Z",
+      "palavras_chave_busca": [
+        "13º salário",
+        "comércio",
+        "endividamento",
+        "economia brasileira",
+        "renda",
+        "consumo"
+      ],
+      "gatilho_vitrine": "Acompanhar o comportamento do consumidor brasileiro no final de ano, focando no alívio de dívidas e na injeção de liquidez no varejo.",
+      "sintese_nerd": "A injeção de cerca de R$ 400 bilhões via décimo terceiro salário para quase 100 milhões de trabalhadores funciona como um forte alívio para o endividamento das famílias e um catalisador para o varejo. O saldo final depende de como os cidadãos equilibram o pagamento de atrasos com o consumo de fim de ano.",
+      "data_publicacao": "2026-11-21T04:06:10Z",
+      "updated_at": "2026-11-21T04:06:10Z"
+    },
+    {
+      "slug": "stf-fachin-agenda-reformas-recesso",
+      "titulo_tema": "Fachin tenta avançar com reformas institucionais no STF antes do recesso",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Politica",
+      "categorias_cruzadas": [
+        "Eleicoes"
+      ],
+      "rota_editoria": "/politica",
+      "relevancia_score": 85,
+      "ttl_horas": 72,
+      "expires_at": "2026-11-24T04:06:10Z",
+      "palavras_chave_busca": [
+        "stf",
+        "edson fachin",
+        "supremo tribunal federal",
+        "reforma do judiciário",
+        "código de ética",
+        "congresso"
+      ],
+      "gatilho_vitrine": "Expor os bastidores das discussões institucionais na cúpula do Judiciário brasileiro a poucas semanas do recesso forense.",
+      "sintese_nerd": "O presidente do STF, Edson Fachin, tenta superar resistências internas para consolidar pautas como o código de ética e a reforma do sistema de justiça antes de dezembro. A resistência de alas da corte indica que as discussões estruturais devem se arrastar para o próximo ano.",
+      "data_publicacao": "2026-11-21T04:06:10Z",
+      "updated_at": "2026-11-21T04:06:10Z"
+    },
+    {
+      "slug": "paraguai-ex-procurador-geral-denuncia-perseguicao-onu-escandalo-ueno-bank",
+      "status": "novo",
+      "categoria": "Geopolitica_Relacoes",
       "ttl_horas": 24,
       "expires_at": "2026-11-22T03:19:26Z",
-      "palavras_chave_busca": [
-        "paraguai",
-        "ueno bank",
-        "emiliano rolón",
-        "santiago peña",
-        "onu"
+      "updated_at": "2026-11-21T03:19:26Z",
+      "fontes_urls": [
+        "https://g1.globo.com/mundo/noticia/2026/11/21/ex-procurador-geral-do-paraguai-denuncia-perseguicao-politica-a-onu-apos-escandalo-bancario.ghtml"
       ],
+      "titulo_tema": "Ex-procurador-geral do Paraguai denuncia à ONU perseguição política após crise no Ueno Bank",
+      "resumo_pulso": "Segundo apuração do G1 Mundo com base em documentos da AFP, o ex-procurador-geral do Paraguai Emiliano Rolón denunciou à ONU ter sofrido perseguição política. A renúncia e denúncia ocorrem no contexto do escândalo envolvendo o Ueno Bank, que resultou na destituição e prisão do ex-presidente Santiago Peña.",
+      "sintese_nerd": "Gera instabilidade política institucional na tríplice fronteira e acende alertas de risco para investimentos estrangeiros na região.",
+      "titulo_curto": "Ex-procurador-geral do Paraguai denuncia à ONU perseguição política após crise no Ueno Bank",
+      "rota_editoria": "/radar",
       "palavras_chave": [
         "paraguai",
         "ueno bank",
@@ -36,141 +136,141 @@
         "santiago peña",
         "onu"
       ],
+      "urgencia_score": 91,
+      "data_publicacao": "2026-11-21T03:06:51Z",
       "gatilho_vitrine": "Segundo apuração do G1 Mundo com base em documentos da AFP, o ex-procurador-geral do Paraguai Emiliano Rolón denunciou à ONU ter sofrido perseguição política. A renúncia e denúncia ocorrem no contexto do escândalo envolvendo o Ueno Bank, que resultou na destituição e prisão do ex-presidente Santiago Peña.",
-      "resumo_pulso": "Segundo apuração do G1 Mundo com base em documentos da AFP, o ex-procurador-geral do Paraguai Emiliano Rolón denunciou à ONU ter sofrido perseguição política. A renúncia e denúncia ocorrem no contexto do escândalo envolvendo o Ueno Bank, que resultou na destituição e prisão do ex-presidente Santiago Peña.",
-      "sintese_nerd": "Gera instabilidade política institucional na tríplice fronteira e acende alertas de risco para investimentos estrangeiros na região.",
       "impacto_pratico": "Gera instabilidade política institucional na tríplice fronteira e acende alertas de risco para investimentos estrangeiros na região.",
-      "paises_envolvidos": [
-        "PY"
-      ],
+      "origem_pipeline": "pulso",
       "veiculos_origem": [
         "G1 Mundo",
         "AFP"
       ],
-      "fontes_urls": [
-        "https://g1.globo.com/mundo/noticia/2026/11/21/ex-procurador-geral-do-paraguai-denuncia-perseguicao-politica-a-onu-apos-escandalo-bancario.ghtml"
+      "relevancia_score": 90,
+      "paises_envolvidos": [
+        "PY"
       ],
-      "data_publicacao": "2026-11-21T03:06:51Z",
-      "updated_at": "2026-11-21T03:19:26Z"
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "paraguai",
+        "ueno bank",
+        "emiliano rolón",
+        "santiago peña",
+        "onu"
+      ]
     },
     {
       "slug": "tribunal-frances-condena-policiais-por-agressao-racista",
-      "titulo_tema": "Justiça de Paris condena três policiais em caso de agressão racista contra produtor",
-      "titulo_curto": "Justiça de Paris condena três policiais em caso de agressão racista contra produtor",
       "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Cultura",
       "categoria": "Sociedade_Cultura",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/cultura",
-      "relevancia_score": 84,
-      "urgencia_score": 85,
       "ttl_horas": 18,
       "expires_at": "2026-11-21T21:19:26Z",
-      "palavras_chave_busca": [
-        "frança",
-        "paris",
-        "racismo",
-        "polícia",
-        "michel zecler"
-      ],
-      "palavras_chave": [
-        "frança",
-        "paris",
-        "racismo",
-        "polícia",
-        "michel zecler"
-      ],
-      "gatilho_vitrine": "Conforme reportado pela Al Jazeera English, a corte criminal de Paris determinou a condenação de três policiais franceses, reconhecendo o racismo como fator agravante na agressão sofrida em 2020 pelo produtor musical negro Michel Zecler.",
-      "resumo_pulso": "Conforme reportado pela Al Jazeera English, a corte criminal de Paris determinou a condenação de três policiais franceses, reconhecendo o racismo como fator agravante na agressão sofrida em 2020 pelo produtor musical negro Michel Zecler.",
-      "sintese_nerd": "Reforça o debate sobre abusos de força e critérios de responsabilidade penal de agentes estatais na Europa.",
-      "impacto_pratico": "Reforça o debate sobre abusos de força e critérios de responsabilidade penal de agentes estatais na Europa.",
-      "paises_envolvidos": [
-        "FR"
-      ],
-      "veiculos_origem": [
-        "Al Jazeera English"
-      ],
+      "updated_at": "2026-11-21T03:19:26Z",
       "fontes_urls": [
         "https://www.aljazeera.com/news/2026/11/21/three-french-police-officers-sentenced-over-racist-assault-on-black-man?traffic_source=rss"
       ],
+      "titulo_tema": "Justiça de Paris condena três policiais em caso de agressão racista contra produtor",
+      "resumo_pulso": "Conforme reportado pela Al Jazeera English, a corte criminal de Paris determinou a condenação de três policiais franceses, reconhecendo o racismo como fator agravante na agressão sofrida em 2020 pelo produtor musical negro Michel Zecler.",
+      "sintese_nerd": "Reforça o debate sobre abusos de força e critérios de responsabilidade penal de agentes estatais na Europa.",
+      "titulo_curto": "Justiça de Paris condena três policiais em caso de agressão racista contra produtor",
+      "rota_editoria": "/cultura",
+      "palavras_chave": [
+        "frança",
+        "paris",
+        "racismo",
+        "polícia",
+        "michel zecler"
+      ],
+      "urgencia_score": 85,
       "data_publicacao": "2026-11-21T03:01:24Z",
-      "updated_at": "2026-11-21T03:19:26Z"
+      "gatilho_vitrine": "Conforme reportado pela Al Jazeera English, a corte criminal de Paris determinou a condenação de três policiais franceses, reconhecendo o racismo como fator agravante na agressão sofrida em 2020 pelo produtor musical negro Michel Zecler.",
+      "impacto_pratico": "Reforça o debate sobre abusos de força e critérios de responsabilidade penal de agentes estatais na Europa.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "Al Jazeera English"
+      ],
+      "relevancia_score": 84,
+      "paises_envolvidos": [
+        "FR"
+      ],
+      "categoria_primaria": "Cultura",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "frança",
+        "paris",
+        "racismo",
+        "polícia",
+        "michel zecler"
+      ]
     },
     {
       "slug": "fachin-tenta-avancar-reformas-stf-antes-recesso",
-      "titulo_tema": "A um mês do recesso, STF enfrenta resistências em pautas de reforma interna",
-      "titulo_curto": "A um mês do recesso, STF enfrenta resistências em pautas de reforma interna",
       "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Geopolitica_Radar",
       "categoria": "Geopolitica_Relacoes",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 89,
-      "urgencia_score": 88,
       "ttl_horas": 24,
       "expires_at": "2026-11-22T03:19:26Z",
-      "palavras_chave_busca": [
-        "stf",
-        "edson fachin",
-        "reforma do judiciário",
-        "congresso",
-        "política"
-      ],
-      "palavras_chave": [
-        "stf",
-        "edson fachin",
-        "reforma do judiciário",
-        "congresso",
-        "política"
-      ],
-      "gatilho_vitrine": "Segundo levantamento do G1 Política, o presidente do STF, ministro Edson Fachin, tenta avançar com pautas sensíveis antes do recesso do Judiciário em 20 de dezembro. Entre os pontos de atrito estão a reforma do sistema de justiça, o código de ética para tribunais superiores e relatórios da Polícia Federal.",
-      "resumo_pulso": "Segundo levantamento do G1 Política, o presidente do STF, ministro Edson Fachin, tenta avançar com pautas sensíveis antes do recesso do Judiciário em 20 de dezembro. Entre os pontos de atrito estão a reforma do sistema de justiça, o código de ética para tribunais superiores e relatórios da Polícia Federal.",
-      "sintese_nerd": "Movimentações no Supremo influenciam diretamente a governabilidade e o equilíbrio institucional entre os Poderes no Brasil.",
-      "impacto_pratico": "Movimentações no Supremo influenciam diretamente a governabilidade e o equilíbrio institucional entre os Poderes no Brasil.",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "veiculos_origem": [
-        "G1 Política"
-      ],
+      "updated_at": "2026-11-21T03:19:26Z",
       "fontes_urls": [
         "https://g1.globo.com/politica/noticia/2026/11/21/a-um-mes-do-recesso-fachin-tenta-avancar-com-agenda-de-reformas-no-stf-mas-enfrenta-resistencias.ghtml"
       ],
+      "titulo_tema": "A um mês do recesso, STF enfrenta resistências em pautas de reforma interna",
+      "resumo_pulso": "Segundo levantamento do G1 Política, o presidente do STF, ministro Edson Fachin, tenta avançar com pautas sensíveis antes do recesso do Judiciário em 20 de dezembro. Entre os pontos de atrito estão a reforma do sistema de justiça, o código de ética para tribunais superiores e relatórios da Polícia Federal.",
+      "sintese_nerd": "Movimentações no Supremo influenciam diretamente a governabilidade e o equilíbrio institucional entre os Poderes no Brasil.",
+      "titulo_curto": "A um mês do recesso, STF enfrenta resistências em pautas de reforma interna",
+      "rota_editoria": "/radar",
+      "palavras_chave": [
+        "stf",
+        "edson fachin",
+        "reforma do judiciário",
+        "congresso",
+        "política"
+      ],
+      "urgencia_score": 88,
       "data_publicacao": "2026-11-21T03:00:00Z",
-      "updated_at": "2026-11-21T03:19:26Z"
-    },
-    {
-      "slug": "protestos-geracao-z-europa-custos-guerras-clima",
-      "titulo_tema": "Protestos da Geração Z mobilizam dezenas de países na Europa contra custos e guerras",
-      "titulo_curto": "Protestos da Geração Z mobilizam dezenas de países na Europa contra custos e guerras",
-      "status": "novo",
+      "gatilho_vitrine": "Segundo levantamento do G1 Política, o presidente do STF, ministro Edson Fachin, tenta avançar com pautas sensíveis antes do recesso do Judiciário em 20 de dezembro. Entre os pontos de atrito estão a reforma do sistema de justiça, o código de ética para tribunais superiores e relatórios da Polícia Federal.",
+      "impacto_pratico": "Movimentações no Supremo influenciam diretamente a governabilidade e o equilíbrio institucional entre os Poderes no Brasil.",
       "origem_pipeline": "pulso",
-      "categoria_primaria": "Cultura",
-      "categoria": "Sociedade_Cultura",
+      "veiculos_origem": [
+        "G1 Política"
+      ],
+      "relevancia_score": 89,
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "categoria_primaria": "Geopolitica_Radar",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
       ],
-      "rota_editoria": "/cultura",
-      "relevancia_score": 86,
-      "urgencia_score": 87,
+      "palavras_chave_busca": [
+        "stf",
+        "edson fachin",
+        "reforma do judiciário",
+        "congresso",
+        "política"
+      ]
+    },
+    {
+      "slug": "protestos-geracao-z-europa-custos-guerras-clima",
+      "status": "novo",
+      "categoria": "Sociedade_Cultura",
       "ttl_horas": 18,
       "expires_at": "2026-11-21T21:19:26Z",
-      "palavras_chave_busca": [
-        "europa",
-        "geração z",
-        "protestos",
-        "custo de vida",
-        "gastos militares"
+      "updated_at": "2026-11-21T03:19:26Z",
+      "fontes_urls": [
+        "https://www.aljazeera.com/video/newsfeed/2026/11/21/gen-z-protests-sweep-europe-over-wars-rising-costs-and-climate?traffic_source=rss"
       ],
+      "titulo_tema": "Protestos da Geração Z mobilizam dezenas de países na Europa contra custos e guerras",
+      "resumo_pulso": "Conforme cobertura da Al Jazeera English, milhares de jovens manifestantes da Geração Z realizaram protestos em cerca de 25 países europeus. As mobilizações cobram respostas governamentais sobre o alto custo de vida, o aumento de gastos militares e a crise climática.",
+      "sintese_nerd": "Pressupõe pressões sociais sobre governos do continente para redimensionar orçamentos públicos e políticas ambientais.",
+      "titulo_curto": "Protestos da Geração Z mobilizam dezenas de países na Europa contra custos e guerras",
+      "rota_editoria": "/cultura",
       "palavras_chave": [
         "europa",
         "geração z",
@@ -178,49 +278,49 @@
         "custo de vida",
         "gastos militares"
       ],
+      "urgencia_score": 87,
+      "data_publicacao": "2026-11-21T02:49:16Z",
       "gatilho_vitrine": "Conforme cobertura da Al Jazeera English, milhares de jovens manifestantes da Geração Z realizaram protestos em cerca de 25 países europeus. As mobilizações cobram respostas governamentais sobre o alto custo de vida, o aumento de gastos militares e a crise climática.",
-      "resumo_pulso": "Conforme cobertura da Al Jazeera English, milhares de jovens manifestantes da Geração Z realizaram protestos em cerca de 25 países europeus. As mobilizações cobram respostas governamentais sobre o alto custo de vida, o aumento de gastos militares e a crise climática.",
-      "sintese_nerd": "Pressupõe pressões sociais sobre governos do continente para redimensionar orçamentos públicos e políticas ambientais.",
       "impacto_pratico": "Pressupõe pressões sociais sobre governos do continente para redimensionar orçamentos públicos e políticas ambientais.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "Al Jazeera English"
+      ],
+      "relevancia_score": 86,
       "paises_envolvidos": [
         "GB",
         "FR",
         "DE",
         "IT"
       ],
-      "veiculos_origem": [
-        "Al Jazeera English"
-      ],
-      "fontes_urls": [
-        "https://www.aljazeera.com/video/newsfeed/2026/11/21/gen-z-protests-sweep-europe-over-wars-rising-costs-and-climate?traffic_source=rss"
-      ],
-      "data_publicacao": "2026-11-21T02:49:16Z",
-      "updated_at": "2026-11-21T03:19:26Z"
-    },
-    {
-      "slug": "pf-prende-suspeita-esquema-golpes-financeiros-piaui",
-      "titulo_tema": "Polícia Federal prende no DF suspeita de esquema de falsas operações financeiras",
-      "titulo_curto": "Polícia Federal prende no DF suspeita de esquema de falsas operações financeiras",
-      "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Economia",
-      "categoria": "Economia_Comercio",
+      "categoria_primaria": "Cultura",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
       ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 82,
-      "urgencia_score": 83,
+      "palavras_chave_busca": [
+        "europa",
+        "geração z",
+        "protestos",
+        "custo de vida",
+        "gastos militares"
+      ]
+    },
+    {
+      "slug": "pf-prende-suspeita-esquema-golpes-financeiros-piaui",
+      "status": "novo",
+      "categoria": "Economia_Comercio",
       "ttl_horas": 24,
       "expires_at": "2026-11-22T03:19:26Z",
-      "palavras_chave_busca": [
-        "polícia federal",
-        "piauí",
-        "golpe financeiro",
-        "investimentos",
-        "fraude"
+      "updated_at": "2026-11-21T03:19:26Z",
+      "fontes_urls": [
+        "https://g1.globo.com/politica/noticia/2026/11/20/pf-prende-suspeita-de-integrar-esquema-de-falsos-investimentos-que-movimentou-mais-de-r-600-milhoes-no-pi.ghtml"
       ],
+      "titulo_tema": "Polícia Federal prende no DF suspeita de esquema de falsas operações financeiras",
+      "resumo_pulso": "Segundo apuração do G1 Política, a Polícia Federal prendeu no Distrito Federal Kayra Cardoso Guimarães, suspeita de integrar grupo investigado por movimentar mais de R$ 600 milhões em fraudes de investimentos no Piauí. A investigação aponta vínculos com esquemas de falsas operações na bolsa.",
+      "sintese_nerd": "Alerta investidores contra redes criminosas de promessas de ganhos financeiros irreais e fraudes digitais.",
+      "titulo_curto": "Polícia Federal prende no DF suspeita de esquema de falsas operações financeiras",
+      "rota_editoria": "/economia",
       "palavras_chave": [
         "polícia federal",
         "piauí",
@@ -228,22 +328,31 @@
         "investimentos",
         "fraude"
       ],
+      "urgencia_score": 83,
+      "data_publicacao": "2026-11-21T01:50:53Z",
       "gatilho_vitrine": "Segundo apuração do G1 Política, a Polícia Federal prendeu no Distrito Federal Kayra Cardoso Guimarães, suspeita de integrar grupo investigado por movimentar mais de R$ 600 milhões em fraudes de investimentos no Piauí. A investigação aponta vínculos com esquemas de falsas operações na bolsa.",
-      "resumo_pulso": "Segundo apuração do G1 Política, a Polícia Federal prendeu no Distrito Federal Kayra Cardoso Guimarães, suspeita de integrar grupo investigado por movimentar mais de R$ 600 milhões em fraudes de investimentos no Piauí. A investigação aponta vínculos com esquemas de falsas operações na bolsa.",
-      "sintese_nerd": "Alerta investidores contra redes criminosas de promessas de ganhos financeiros irreais e fraudes digitais.",
       "impacto_pratico": "Alerta investidores contra redes criminosas de promessas de ganhos financeiros irreais e fraudes digitais.",
-      "paises_envolvidos": [
-        "BR"
-      ],
+      "origem_pipeline": "pulso",
       "veiculos_origem": [
         "G1 Política",
         "Polícia Federal"
       ],
-      "fontes_urls": [
-        "https://g1.globo.com/politica/noticia/2026/11/20/pf-prende-suspeita-de-integrar-esquema-de-falsos-investimentos-que-movimentou-mais-de-r-600-milhoes-no-pi.ghtml"
+      "relevancia_score": 82,
+      "paises_envolvidos": [
+        "BR"
       ],
-      "data_publicacao": "2026-11-21T01:50:53Z",
-      "updated_at": "2026-11-21T03:19:26Z"
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "polícia federal",
+        "piauí",
+        "golpe financeiro",
+        "investimentos",
+        "fraude"
+      ]
     },
     {
       "slug": "stf-derruba-sigilo-de-relatorio-da-pf-sobre-mendonca-e-master",
@@ -290,118 +399,6 @@
         "andré mendonça",
         "daniel vorcaro",
         "caso master"
-      ]
-    },
-    {
-      "slug": "decisao-fachin-sigilo-caso-master-stf",
-      "status": "novo",
-      "ttl_horas": 36,
-      "expires_at": "2026-11-22T13:28:48Z",
-      "updated_at": "2026-11-21T01:28:48Z",
-      "titulo_tema": "STF retira sigilo de relatório da PF citando ministros no Caso Master",
-      "sintese_nerd": "A decisão do presidente do STF, Edson Fachin, de retirar o sigilo do relatório da PF sobre conversas envolvendo o ministro André Mendonça no Caso Master recoloca o debate sobre transparência e integridade no centro dos Poderes. A medida gera repercussão imediata entre magistrados e classes políticas, acirrando o escrutínio sobre o sistema de justiça brasileiro.",
-      "rota_editoria": "/politica",
-      "urgencia_score": 93,
-      "data_publicacao": "2026-11-21T01:28:48Z",
-      "gatilho_vitrine": "Cobrir os desdobramentos institucionais das investigações da Polícia Federal envolvendo menções a ministros do Supremo Tribunal Federal",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 94,
-      "categoria_primaria": "Politica",
-      "categorias_cruzadas": [
-        "Resumo_Ultimas",
-        "Eleicoes"
-      ],
-      "palavras_chave_busca": [
-        "stf",
-        "caso master",
-        "andré mendonça",
-        "edson fachin",
-        "polícia federal",
-        "gilmar mendes",
-        "crise institucional"
-      ]
-    },
-    {
-      "slug": "juros-eua-ajuste-fiscal-disparada-dolar",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-23T01:28:48Z",
-      "updated_at": "2026-11-21T01:28:48Z",
-      "titulo_tema": "Juros nos EUA e ajuste fiscal pressionam o câmbio e elevam o dólar",
-      "sintese_nerd": "A combinação de taxas de juros elevadas mantidas pelo Federal Reserve nos Estados Unidos com incertezas sobre o ajuste fiscal doméstico drena capital de economias emergentes, provocando a forte desvalorização do real. Isso encarece produtos importados e pressiona a inflação interna, exigindo atenção redobrada da política monetária nacional.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-21T01:28:48Z",
-      "gatilho_vitrine": "Explicar a dinâmica macroeconômica por trás da alta da moeda americana e seus efeitos diretos no custo de vida no Brasil",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 95,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Geopolitica_Radar",
-        "Politica"
-      ],
-      "palavras_chave_busca": [
-        "dólar",
-        "juros nos eua",
-        "fed",
-        "ajuste fiscal",
-        "câmbio",
-        "inflação",
-        "economia brasileira"
-      ]
-    },
-    {
-      "slug": "ipo-anthropic-mercado-ia-esandalo-nvidia",
-      "status": "novo",
-      "ttl_horas": 72,
-      "expires_at": "2026-11-24T01:28:48Z",
-      "updated_at": "2026-11-21T01:28:48Z",
-      "titulo_tema": "IPO bilionário da Anthropic agita mercado de IA em meio a escândalos na Nvidia",
-      "sintese_nerd": "A oferta pública recorde da Anthropic redefinindo a captação de recursos para inteligência artificial contrasta com as investigações regulatórias e quedas históricas nas ações da Nvidia. Essa dualidade expõe a volatilidade do setor tecnológico em meio a reconfigurações geopolíticas e eleitorais nas potências ocidentais.",
-      "rota_editoria": "/cultura",
-      "data_publicacao": "2026-11-21T01:28:48Z",
-      "gatilho_vitrine": "Destacar as turbulências e transformações no setor global de tecnologia e o impacto das investigações sobre chips e semicondutores",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 90,
-      "categoria_primaria": "Cultura",
-      "categorias_cruzadas": [
-        "Economia",
-        "Geopolitica_Radar"
-      ],
-      "palavras_chave_busca": [
-        "anthropic",
-        "ipo",
-        "inteligência artificial",
-        "nvidia",
-        "claude",
-        "mercado financeiro",
-        "tecnologia"
-      ]
-    },
-    {
-      "slug": "temporal-destruicao-rio-grande-do-sul-defesa-civil",
-      "status": "novo",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-22T01:28:48Z",
-      "updated_at": "2026-11-21T01:28:48Z",
-      "titulo_tema": "Temporal catastrófico deixa mortos e feridos no Rio Grande do Sul",
-      "sintese_nerd": "Eventos climáticos extremos severos atingiram dezenas de municípios gaúchos, causando dezenas de feridos e óbitos e escancarando a urgência de investimentos em infraestrutura resiliente. A recorrência desses temporais reforça o debate global sobre mitigação de riscos climáticos locais.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-21T01:28:48Z",
-      "gatilho_vitrine": "Monitorar os impactos humanos, estruturais e econômicos dos eventos climáticos extremos na região sul do país",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 86,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Resumo_Ultimas",
-        "Cultura"
-      ],
-      "palavras_chave_busca": [
-        "rio grande do sul",
-        "temporal",
-        "defesa civil",
-        "mudanças climáticas",
-        "tupanciretã",
-        "chuvas extremas"
       ]
     },
     {
@@ -871,28 +868,129 @@
       ]
     }
   ],
+  "temas_curadoria": [
+    {
+      "slug": "crise-nvidia-investigacao-eua-mercado-global-chips",
+      "titulo_tema": "EUA investigam contabilidade da Nvidia após saída dramática de Jensen Huang",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Geopolitica_Radar",
+        "Politica"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 95,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-23T04:06:10Z",
+      "palavras_chave_busca": [
+        "nvidia",
+        "jensen huang",
+        "sec",
+        "cripto",
+        "semicondutores",
+        "donald trump",
+        "xi jinping"
+      ],
+      "gatilho_vitrine": "Monitorar desdobramentos da regulação tecnológica americana e o impacto nas cadeias globais de suprimento de semicondutores.",
+      "sintese_nerd": "A investigação da SEC sobre a contabilidade da Nvidia e a forte queda nas ações acentuam a volatilidade no setor de inteligência artificial global. O envolvimento político e de líderes internacionais expõe a vulnerabilidade geopolítica das cadeias de chips.",
+      "data_publicacao": "2026-11-21T04:06:10Z",
+      "updated_at": "2026-11-21T04:06:10Z"
+    },
+    {
+      "slug": "juros-nos-eua-ajuste-fiscal-brasil-disparada-dolar",
+      "titulo_tema": "Juros nos EUA e ajuste fiscal pressionam o câmbio e impulsionam a alta do dólar",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Politica",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 92,
+      "ttl_horas": 72,
+      "expires_at": "2026-11-24T04:06:10Z",
+      "palavras_chave_busca": [
+        "dólar",
+        "federal reserve",
+        "ajuste fiscal",
+        "inflação",
+        "câmbio",
+        "real",
+        "copom"
+      ],
+      "gatilho_vitrine": "Conectar as decisões macroeconômicas internacionais e domésticas ao impacto direto no poder de compra do brasileiro e na cotação das moedas.",
+      "sintese_nerd": "A combinação de juros persistentemente elevados nos Estados Unidos com incertezas sobre o pacote de ajuste fiscal brasileiro atrai capitais para o exterior e desvaloriza o real. Essa dinâmica externa e interna corrói o poder de compra e pressiona a inflação no curto prazo.",
+      "data_publicacao": "2026-11-21T04:06:10Z",
+      "updated_at": "2026-11-21T04:06:10Z"
+    },
+    {
+      "slug": "impacto-13-salario-economia-brasileira-fim-de-ano",
+      "titulo_tema": "Início do pagamento do 13º salário movimenta R$ 400 bilhões na economia brasileira",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Cultura",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 88,
+      "ttl_horas": 168,
+      "expires_at": "2026-11-28T04:06:10Z",
+      "palavras_chave_busca": [
+        "13º salário",
+        "comércio",
+        "endividamento",
+        "economia brasileira",
+        "renda",
+        "consumo"
+      ],
+      "gatilho_vitrine": "Acompanhar o comportamento do consumidor brasileiro no final de ano, focando no alívio de dívidas e na injeção de liquidez no varejo.",
+      "sintese_nerd": "A injeção de cerca de R$ 400 bilhões via décimo terceiro salário para quase 100 milhões de trabalhadores funciona como um forte alívio para o endividamento das famílias e um catalisador para o varejo. O saldo final depende de como os cidadãos equilibram o pagamento de atrasos com o consumo de fim de ano.",
+      "data_publicacao": "2026-11-21T04:06:10Z",
+      "updated_at": "2026-11-21T04:06:10Z"
+    },
+    {
+      "slug": "stf-fachin-agenda-reformas-recesso",
+      "titulo_tema": "Fachin tenta avançar com reformas institucionais no STF antes do recesso",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Politica",
+      "categorias_cruzadas": [
+        "Eleicoes"
+      ],
+      "rota_editoria": "/politica",
+      "relevancia_score": 85,
+      "ttl_horas": 72,
+      "expires_at": "2026-11-24T04:06:10Z",
+      "palavras_chave_busca": [
+        "stf",
+        "edson fachin",
+        "supremo tribunal federal",
+        "reforma do judiciário",
+        "código de ética",
+        "congresso"
+      ],
+      "gatilho_vitrine": "Expor os bastidores das discussões institucionais na cúpula do Judiciário brasileiro a poucas semanas do recesso forense.",
+      "sintese_nerd": "O presidente do STF, Edson Fachin, tenta superar resistências internas para consolidar pautas como o código de ética e a reforma do sistema de justiça antes de dezembro. A resistência de alas da corte indica que as discussões estruturais devem se arrastar para o próximo ano.",
+      "data_publicacao": "2026-11-21T04:06:10Z",
+      "updated_at": "2026-11-21T04:06:10Z"
+    }
+  ],
   "noticias_quentes": [
     {
       "slug": "paraguai-ex-procurador-geral-denuncia-perseguicao-onu-escandalo-ueno-bank",
-      "titulo_curto": "Ex-procurador-geral do Paraguai denuncia à ONU perseguição política após crise no Ueno Bank",
-      "resumo_pulso": "Segundo apuração do G1 Mundo com base em documentos da AFP, o ex-procurador-geral do Paraguai Emiliano Rolón denunciou à ONU ter sofrido perseguição política. A renúncia e denúncia ocorrem no contexto do escândalo envolvendo o Ueno Bank, que resultou na destituição e prisão do ex-presidente Santiago Peña.",
-      "impacto_pratico": "Gera instabilidade política institucional na tríplice fronteira e acende alertas de risco para investimentos estrangeiros na região.",
       "categoria": "Geopolitica_Relacoes",
-      "paises_envolvidos": [
-        "PY"
-      ],
-      "urgencia_score": 91,
-      "relevancia_score": 90,
-      "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 12,
-      "veiculos_origem": [
-        "G1 Mundo",
-        "AFP"
-      ],
+      "expires_at": "2026-11-22T03:19:26Z",
+      "updated_at": "2026-11-21T03:19:26Z",
       "fontes_urls": [
         "https://g1.globo.com/mundo/noticia/2026/11/21/ex-procurador-geral-do-paraguai-denuncia-perseguicao-politica-a-onu-apos-escandalo-bancario.ghtml"
       ],
+      "resumo_pulso": "Segundo apuração do G1 Mundo com base em documentos da AFP, o ex-procurador-geral do Paraguai Emiliano Rolón denunciou à ONU ter sofrido perseguição política. A renúncia e denúncia ocorrem no contexto do escândalo envolvendo o Ueno Bank, que resultou na destituição e prisão do ex-presidente Santiago Peña.",
+      "titulo_curto": "Ex-procurador-geral do Paraguai denuncia à ONU perseguição política após crise no Ueno Bank",
       "palavras_chave": [
         "Paraguai",
         "Ueno Bank",
@@ -900,37 +998,38 @@
         "Santiago Peña",
         "ONU"
       ],
+      "urgencia_score": 91,
       "data_publicacao": "2026-11-21T03:06:51Z",
+      "impacto_pratico": "Gera instabilidade política institucional na tríplice fronteira e acende alertas de risco para investimentos estrangeiros na região.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "G1 Mundo",
+        "AFP"
+      ],
+      "relevancia_score": 90,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "PY"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "Economia no Brasil",
           "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
-          "motivo_conexao": "O escândalo do Ueno Bank e suas repercussões econômicas regionais afetam a dinâmica comercial e bancária com vizinhos sul-americanos."
+          "motivo_conexao": "O escândalo do Ueno Bank e suas repercussões econômicas regionais afetam a dinâmica comercial e bancária com vizinhos sul-americanos.",
+          "titulo_existente": "Economia no Brasil"
         }
-      ],
-      "expires_at": "2026-11-22T03:19:26Z",
-      "updated_at": "2026-11-21T03:19:26Z"
+      ]
     },
     {
       "slug": "tribunal-frances-condena-policiais-por-agressao-racista",
-      "titulo_curto": "Justiça de Paris condena três policiais em caso de agressão racista contra produtor",
-      "resumo_pulso": "Conforme reportado pela Al Jazeera English, a corte criminal de Paris determinou a condenação de três policiais franceses, reconhecendo o racismo como fator agravante na agressão sofrida em 2020 pelo produtor musical negro Michel Zecler.",
-      "impacto_pratico": "Reforça o debate sobre abusos de força e critérios de responsabilidade penal de agentes estatais na Europa.",
       "categoria": "Sociedade_Cultura",
-      "paises_envolvidos": [
-        "FR"
-      ],
-      "urgencia_score": 85,
-      "relevancia_score": 84,
-      "nivel_confianca": "alta",
       "ttl_horas": 18,
-      "horas_em_destaque": 8,
-      "veiculos_origem": [
-        "Al Jazeera English"
-      ],
+      "expires_at": "2026-11-21T21:19:26Z",
+      "updated_at": "2026-11-21T03:19:26Z",
       "fontes_urls": [
         "https://www.aljazeera.com/news/2026/11/21/three-french-police-officers-sentenced-over-racist-assault-on-black-man?traffic_source=rss"
       ],
+      "resumo_pulso": "Conforme reportado pela Al Jazeera English, a corte criminal de Paris determinou a condenação de três policiais franceses, reconhecendo o racismo como fator agravante na agressão sofrida em 2020 pelo produtor musical negro Michel Zecler.",
+      "titulo_curto": "Justiça de Paris condena três policiais em caso de agressão racista contra produtor",
       "palavras_chave": [
         "França",
         "Paris",
@@ -938,31 +1037,31 @@
         "Polícia",
         "Michel Zecler"
       ],
+      "urgencia_score": 85,
       "data_publicacao": "2026-11-21T03:01:24Z",
-      "links_internos_relacionados": [],
-      "expires_at": "2026-11-21T21:19:26Z",
-      "updated_at": "2026-11-21T03:19:26Z"
+      "impacto_pratico": "Reforça o debate sobre abusos de força e critérios de responsabilidade penal de agentes estatais na Europa.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Al Jazeera English"
+      ],
+      "relevancia_score": 84,
+      "horas_em_destaque": 8,
+      "paises_envolvidos": [
+        "FR"
+      ],
+      "links_internos_relacionados": []
     },
     {
       "slug": "fachin-tenta-avancar-reformas-stf-antes-recesso",
-      "titulo_curto": "A um mês do recesso, STF enfrenta resistências em pautas de reforma interna",
-      "resumo_pulso": "Segundo levantamento do G1 Política, o presidente do STF, ministro Edson Fachin, tenta avançar com pautas sensíveis antes do recesso do Judiciário em 20 de dezembro. Entre os pontos de atrito estão a reforma do sistema de justiça, o código de ética para tribunais superiores e relatórios da Polícia Federal.",
-      "impacto_pratico": "Movimentações no Supremo influenciam diretamente a governabilidade e o equilíbrio institucional entre os Poderes no Brasil.",
       "categoria": "Geopolitica_Relacoes",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "urgencia_score": 88,
-      "relevancia_score": 89,
-      "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 12,
-      "veiculos_origem": [
-        "G1 Política"
-      ],
+      "expires_at": "2026-11-22T03:19:26Z",
+      "updated_at": "2026-11-21T03:19:26Z",
       "fontes_urls": [
         "https://g1.globo.com/politica/noticia/2026/11/21/a-um-mes-do-recesso-fachin-tenta-avancar-com-agenda-de-reformas-no-stf-mas-enfrenta-resistencias.ghtml"
       ],
+      "resumo_pulso": "Segundo levantamento do G1 Política, o presidente do STF, ministro Edson Fachin, tenta avançar com pautas sensíveis antes do recesso do Judiciário em 20 de dezembro. Entre os pontos de atrito estão a reforma do sistema de justiça, o código de ética para tribunais superiores e relatórios da Polícia Federal.",
+      "titulo_curto": "A um mês do recesso, STF enfrenta resistências em pautas de reforma interna",
       "palavras_chave": [
         "STF",
         "Edson Fachin",
@@ -970,40 +1069,37 @@
         "Congresso",
         "Política"
       ],
+      "urgencia_score": 88,
       "data_publicacao": "2026-11-21T03:00:00Z",
+      "impacto_pratico": "Movimentações no Supremo influenciam diretamente a governabilidade e o equilíbrio institucional entre os Poderes no Brasil.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "G1 Política"
+      ],
+      "relevancia_score": 89,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "BR"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "STF analisa regras de transparência e limites constitucionais entre os Poderes",
           "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
-          "motivo_conexao": "Complementa a análise sobre as prerrogativas institucionais e os embates de governança acompanhados pelo STF."
+          "motivo_conexao": "Complementa a análise sobre as prerrogativas institucionais e os embates de governança acompanhados pelo STF.",
+          "titulo_existente": "STF analisa regras de transparência e limites constitucionais entre os Poderes"
         }
-      ],
-      "expires_at": "2026-11-22T03:19:26Z",
-      "updated_at": "2026-11-21T03:19:26Z"
+      ]
     },
     {
       "slug": "protestos-geracao-z-europa-custos-guerras-clima",
-      "titulo_curto": "Protestos da Geração Z mobilizam dezenas de países na Europa contra custos e guerras",
-      "resumo_pulso": "Conforme cobertura da Al Jazeera English, milhares de jovens manifestantes da Geração Z realizaram protestos em cerca de 25 países europeus. As mobilizações cobram respostas governamentais sobre o alto custo de vida, o aumento de gastos militares e a crise climática.",
-      "impacto_pratico": "Pressupõe pressões sociais sobre governos do continente para redimensionar orçamentos públicos e políticas ambientais.",
       "categoria": "Sociedade_Cultura",
-      "paises_envolvidos": [
-        "GB",
-        "FR",
-        "DE",
-        "IT"
-      ],
-      "urgencia_score": 87,
-      "relevancia_score": 86,
-      "nivel_confianca": "alta",
       "ttl_horas": 18,
-      "horas_em_destaque": 8,
-      "veiculos_origem": [
-        "Al Jazeera English"
-      ],
+      "expires_at": "2026-11-21T21:19:26Z",
+      "updated_at": "2026-11-21T03:19:26Z",
       "fontes_urls": [
         "https://www.aljazeera.com/video/newsfeed/2026/11/21/gen-z-protests-sweep-europe-over-wars-rising-costs-and-climate?traffic_source=rss"
       ],
+      "resumo_pulso": "Conforme cobertura da Al Jazeera English, milhares de jovens manifestantes da Geração Z realizaram protestos em cerca de 25 países europeus. As mobilizações cobram respostas governamentais sobre o alto custo de vida, o aumento de gastos militares e a crise climática.",
+      "titulo_curto": "Protestos da Geração Z mobilizam dezenas de países na Europa contra custos e guerras",
       "palavras_chave": [
         "Europa",
         "Geração Z",
@@ -1011,32 +1107,34 @@
         "Custo de vida",
         "Gastos militares"
       ],
+      "urgencia_score": 87,
       "data_publicacao": "2026-11-21T02:49:16Z",
-      "links_internos_relacionados": [],
-      "expires_at": "2026-11-21T21:19:26Z",
-      "updated_at": "2026-11-21T03:19:26Z"
+      "impacto_pratico": "Pressupõe pressões sociais sobre governos do continente para redimensionar orçamentos públicos e políticas ambientais.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Al Jazeera English"
+      ],
+      "relevancia_score": 86,
+      "horas_em_destaque": 8,
+      "paises_envolvidos": [
+        "GB",
+        "FR",
+        "DE",
+        "IT"
+      ],
+      "links_internos_relacionados": []
     },
     {
       "slug": "pf-prende-suspeita-esquema-golpes-financeiros-piaui",
-      "titulo_curto": "Polícia Federal prende no DF suspeita de esquema de falsas operações financeiras",
-      "resumo_pulso": "Segundo apuração do G1 Política, a Polícia Federal prendeu no Distrito Federal Kayra Cardoso Guimarães, suspeita de integrar grupo investigado por movimentar mais de R$ 600 milhões em fraudes de investimentos no Piauí. A investigação aponta vínculos com esquemas de falsas operações na bolsa.",
-      "impacto_pratico": "Alerta investidores contra redes criminosas de promessas de ganhos financeiros irreais e fraudes digitais.",
       "categoria": "Economia_Comercio",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "urgencia_score": 83,
-      "relevancia_score": 82,
-      "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 8,
-      "veiculos_origem": [
-        "G1 Política",
-        "Polícia Federal"
-      ],
+      "expires_at": "2026-11-22T03:19:26Z",
+      "updated_at": "2026-11-21T03:19:26Z",
       "fontes_urls": [
         "https://g1.globo.com/politica/noticia/2026/11/20/pf-prende-suspeita-de-integrar-esquema-de-falsos-investimentos-que-movimentou-mais-de-r-600-milhoes-no-pi.ghtml"
       ],
+      "resumo_pulso": "Segundo apuração do G1 Política, a Polícia Federal prendeu no Distrito Federal Kayra Cardoso Guimarães, suspeita de integrar grupo investigado por movimentar mais de R$ 600 milhões em fraudes de investimentos no Piauí. A investigação aponta vínculos com esquemas de falsas operações na bolsa.",
+      "titulo_curto": "Polícia Federal prende no DF suspeita de esquema de falsas operações financeiras",
       "palavras_chave": [
         "Polícia Federal",
         "Piauí",
@@ -1044,10 +1142,20 @@
         "Investimentos",
         "Fraude"
       ],
+      "urgencia_score": 83,
       "data_publicacao": "2026-11-21T01:50:53Z",
-      "links_internos_relacionados": [],
-      "expires_at": "2026-11-22T03:19:26Z",
-      "updated_at": "2026-11-21T03:19:26Z"
+      "impacto_pratico": "Alerta investidores contra redes criminosas de promessas de ganhos financeiros irreais e fraudes digitais.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "G1 Política",
+        "Polícia Federal"
+      ],
+      "relevancia_score": 82,
+      "horas_em_destaque": 8,
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "links_internos_relacionados": []
     },
     {
       "slug": "stf-derruba-sigilo-de-relatorio-da-pf-sobre-mendonca-e-master",
@@ -1600,119 +1708,6 @@
           "motivo_conexao": "Saiba mais sobre as políticas comerciais e protecionistas adotadas pela Casa Branca.",
           "titulo_existente": "Política nos Estados Unidos"
         }
-      ]
-    }
-  ],
-  "temas_curadoria": [
-    {
-      "slug": "juros-eua-ajuste-fiscal-disparada-dolar",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-23T01:28:48Z",
-      "updated_at": "2026-11-21T01:28:48Z",
-      "titulo_tema": "Juros nos EUA e ajuste fiscal pressionam o câmbio e elevam o dólar",
-      "sintese_nerd": "A combinação de taxas de juros elevadas mantidas pelo Federal Reserve nos Estados Unidos com incertezas sobre o ajuste fiscal doméstico drena capital de economias emergentes, provocando a forte desvalorização do real. Isso encarece produtos importados e pressiona a inflação interna, exigindo atenção redobrada da política monetária nacional.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-21T01:28:48Z",
-      "gatilho_vitrine": "Explicar a dinâmica macroeconômica por trás da alta da moeda americana e seus efeitos diretos no custo de vida no Brasil",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 95,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Geopolitica_Radar",
-        "Politica"
-      ],
-      "palavras_chave_busca": [
-        "dólar",
-        "juros nos eua",
-        "fed",
-        "ajuste fiscal",
-        "câmbio",
-        "inflação",
-        "economia brasileira"
-      ]
-    },
-    {
-      "slug": "ipo-anthropic-mercado-ia-esandalo-nvidia",
-      "status": "novo",
-      "ttl_horas": 72,
-      "expires_at": "2026-11-24T01:28:48Z",
-      "updated_at": "2026-11-21T01:28:48Z",
-      "titulo_tema": "IPO bilionário da Anthropic agita mercado de IA em meio a escândalos na Nvidia",
-      "sintese_nerd": "A oferta pública recorde da Anthropic redefinindo a captação de recursos para inteligência artificial contrasta com as investigações regulatórias e quedas históricas nas ações da Nvidia. Essa dualidade expõe a volatilidade do setor tecnológico em meio a reconfigurações geopolíticas e eleitorais nas potências ocidentais.",
-      "rota_editoria": "/cultura",
-      "data_publicacao": "2026-11-21T01:28:48Z",
-      "gatilho_vitrine": "Destacar as turbulências e transformações no setor global de tecnologia e o impacto das investigações sobre chips e semicondutores",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 90,
-      "categoria_primaria": "Cultura",
-      "categorias_cruzadas": [
-        "Economia",
-        "Geopolitica_Radar"
-      ],
-      "palavras_chave_busca": [
-        "anthropic",
-        "ipo",
-        "inteligência artificial",
-        "nvidia",
-        "claude",
-        "mercado financeiro",
-        "tecnologia"
-      ]
-    },
-    {
-      "slug": "decisao-fachin-sigilo-caso-master-stf",
-      "status": "novo",
-      "ttl_horas": 36,
-      "expires_at": "2026-11-22T13:28:48Z",
-      "updated_at": "2026-11-21T01:28:48Z",
-      "titulo_tema": "STF retira sigilo de relatório da PF citando ministros no Caso Master",
-      "sintese_nerd": "A decisão do presidente do STF, Edson Fachin, de retirar o sigilo do relatório da PF sobre conversas envolvendo o ministro André Mendonça no Caso Master recoloca o debate sobre transparência e integridade no centro dos Poderes. A medida gera repercussão imediata entre magistrados e classes políticas, acirrando o escrutínio sobre o sistema de justiça brasileiro.",
-      "rota_editoria": "/politica",
-      "data_publicacao": "2026-11-21T01:28:48Z",
-      "gatilho_vitrine": "Cobrir os desdobramentos institucionais das investigações da Polícia Federal envolvendo menções a ministros do Supremo Tribunal Federal",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 88,
-      "categoria_primaria": "Politica",
-      "categorias_cruzadas": [
-        "Resumo_Ultimas",
-        "Eleicoes"
-      ],
-      "palavras_chave_busca": [
-        "stf",
-        "caso master",
-        "andré mendonça",
-        "edson fachin",
-        "polícia federal",
-        "gilmar mendes",
-        "crise institucional"
-      ]
-    },
-    {
-      "slug": "temporal-destruicao-rio-grande-do-sul-defesa-civil",
-      "status": "novo",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-22T01:28:48Z",
-      "updated_at": "2026-11-21T01:28:48Z",
-      "titulo_tema": "Temporal catastrófico deixa mortos e feridos no Rio Grande do Sul",
-      "sintese_nerd": "Eventos climáticos extremos severos atingiram dezenas de municípios gaúchos, causando dezenas de feridos e óbitos e escancarando a urgência de investimentos em infraestrutura resiliente. A recorrência desses temporais reforça o debate global sobre mitigação de riscos climáticos locais.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-21T01:28:48Z",
-      "gatilho_vitrine": "Monitorar os impactos humanos, estruturais e econômicos dos eventos climáticos extremos na região sul do país",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 86,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Resumo_Ultimas",
-        "Cultura"
-      ],
-      "palavras_chave_busca": [
-        "rio grande do sul",
-        "temporal",
-        "defesa civil",
-        "mudanças climáticas",
-        "tupanciretã",
-        "chuvas extremas"
       ]
     }
   ]
