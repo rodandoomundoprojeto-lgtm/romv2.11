@@ -2,23 +2,78 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-21T10:00:34Z",
-  "batch_id": "20261121-1000",
+  "updatedAt": "2026-11-21T10:43:32Z",
+  "batch_id": "20261121-1043",
   "temas_ativos": [
     {
-      "slug": "escalada-estreito-hormuz-eua-ira-petroleo",
-      "titulo_tema": "Escalada militar no Estreito de Ormuz e impactos na cotação do petróleo",
+      "slug": "onda-de-apagoes-e-falhas-tecnologicas-globais",
+      "titulo_tema": "Especialistas investigam causas por trás de onda recente de apagões e falhas tecnológicas globais",
+      "titulo_curto": "Especialistas investigam causas por trás de onda recente de apagões e falhas tecnológicas globais",
       "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categoria": "Ciencia_Clima",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 89,
+      "urgencia_score": 88,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-22T10:43:32Z",
+      "palavras_chave_busca": [
+        "cibersegurança",
+        "apagão",
+        "tecnologia",
+        "microsoft",
+        "aviação"
+      ],
+      "palavras_chave": [
+        "cibersegurança",
+        "apagão",
+        "tecnologia",
+        "microsoft",
+        "aviação"
+      ],
+      "gatilho_vitrine": "Segundo levantamento da BBC News Brasil e do G1 Economia, falhas sistêmicas recentes em serviços da Microsoft, aviação e órgãos de segurança americana geram preocupações internacionais. Embora autoridades apontem que os episódios não possuem vínculo confirmado entre si, o volume de ocorrências acende alertas de cibersegurança.",
+      "resumo_pulso": "Segundo levantamento da BBC News Brasil e do G1 Economia, falhas sistêmicas recentes em serviços da Microsoft, aviação e órgãos de segurança americana geram preocupações internacionais. Embora autoridades apontem que os episódios não possuem vínculo confirmado entre si, o volume de ocorrências acende alertas de cibersegurança.",
+      "sintese_nerd": "Possíveis atrasos operacionais e necessidade de reforço em protocolos de infraestrutura digital.",
+      "impacto_pratico": "Possíveis atrasos operacionais e necessidade de reforço em protocolos de infraestrutura digital.",
+      "paises_envolvidos": [
+        "US",
+        "GB",
+        "BR"
+      ],
+      "veiculos_origem": [
+        "BBC News Brasil",
+        "G1 Economia"
+      ],
+      "fontes_urls": [
+        "https://www.bbc.com/portuguese/articles/c3grendp775qo?at_medium=RSS&at_campaign=rss",
+        "https://g1.globo.com/tecnologia/ciberseguranca/noticia/2026/11/21/ataques-ciberneticos-ia-ou-atualizacoes-pendentes-o-que-ha-por-tras-da-onda-de-apagoes-dos-ultimos-dias.ghtml"
+      ],
+      "data_publicacao": "2026-11-21T10:27:04Z",
+      "updated_at": "2026-11-21T10:43:32Z"
+    },
+    {
+      "slug": "escalada-estreito-hormuz-eua-ira-petroleo",
+      "status": "novo",
+      "ttl_horas": 48,
+      "expires_at": "2026-11-23T10:00:34Z",
+      "updated_at": "2026-11-21T10:00:34Z",
+      "titulo_tema": "Escalada militar no Estreito de Ormuz e impactos na cotação do petróleo",
+      "sintese_nerd": "O abate de um drone norte-americano e o bloqueio parcial no Estreito de Ormuz elevam a tensão geopolítica na rota por onde passa um quinto do petróleo mundial. Esse gargalo logístico pressiona o valor do barril no mercado global com risco iminente de repasse para os combustíveis no Brasil.",
+      "rota_editoria": "/radar",
+      "data_publicacao": "2026-11-21T10:00:34Z",
+      "gatilho_vitrine": "Destacar no topo do Radar Geopolítico o risco de desabastecimento energético global e a repassagem de preços no Brasil.",
       "origem_pipeline": "curadoria",
+      "relevancia_score": 95,
       "categoria_primaria": "Geopolitica_Radar",
       "categorias_cruzadas": [
         "Economia",
         "Politica"
       ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 95,
-      "ttl_horas": 48,
-      "expires_at": "2026-11-23T10:00:34Z",
       "palavras_chave_busca": [
         "estreito de ormuz",
         "eua e irã",
@@ -26,25 +81,25 @@
         "preço do petróleo",
         "sanções americanas",
         "crise de energia"
-      ],
-      "gatilho_vitrine": "Destacar no topo do Radar Geopolítico o risco de desabastecimento energético global e a repassagem de preços no Brasil.",
-      "sintese_nerd": "O abate de um drone norte-americano e o bloqueio parcial no Estreito de Ormuz elevam a tensão geopolítica na rota por onde passa um quinto do petróleo mundial. Esse gargalo logístico pressiona o valor do barril no mercado global com risco iminente de repasse para os combustíveis no Brasil.",
-      "data_publicacao": "2026-11-21T10:00:34Z",
-      "updated_at": "2026-11-21T10:00:34Z"
+      ]
     },
     {
       "slug": "vistos-diplomaticos-brasil-eua-lula-trump",
-      "titulo_tema": "Impasse diplomático de vistos entre governos Lula e Trump",
       "status": "novo",
+      "ttl_horas": 72,
+      "expires_at": "2026-11-24T10:00:34Z",
+      "updated_at": "2026-11-21T10:00:34Z",
+      "titulo_tema": "Impasse diplomático de vistos entre governos Lula e Trump",
+      "sintese_nerd": "A retaliação velada na concessão de credenciais diplomáticas entre Brasil e Estados Unidos ilustra o esfriamento das relações formais no início da gestão Trump. O impasse expõe os limites da diplomacia pragmática em equilibrar soberania institucional e interlocução com potências globais.",
+      "rota_editoria": "/politica",
+      "data_publicacao": "2026-11-21T10:00:34Z",
+      "gatilho_vitrine": "Exibir na editoria de Política para detalhar as negociações diretas de bastidor entre Brasília e Washington.",
       "origem_pipeline": "curadoria",
+      "relevancia_score": 89,
       "categoria_primaria": "Politica",
       "categorias_cruzadas": [
         "Geopolitica_Radar"
       ],
-      "rota_editoria": "/politica",
-      "relevancia_score": 89,
-      "ttl_horas": 72,
-      "expires_at": "2026-11-24T10:00:34Z",
       "palavras_chave_busca": [
         "vistos diplomáticos",
         "governo lula",
@@ -52,26 +107,26 @@
         "embaixada americana",
         "itamaraty",
         "relações bilaterais"
-      ],
-      "gatilho_vitrine": "Exibir na editoria de Política para detalhar as negociações diretas de bastidor entre Brasília e Washington.",
-      "sintese_nerd": "A retaliação velada na concessão de credenciais diplomáticas entre Brasil e Estados Unidos ilustra o esfriamento das relações formais no início da gestão Trump. O impasse expõe os limites da diplomacia pragmática em equilibrar soberania institucional e interlocução com potências globais.",
-      "data_publicacao": "2026-11-21T10:00:34Z",
-      "updated_at": "2026-11-21T10:00:34Z"
+      ]
     },
     {
       "slug": "venda-acoes-tecnologia-queda-bolsas-mercados",
-      "titulo_tema": "Onda de vendas em tecnologia gera forte retração nas bolsas mundiais",
       "status": "em_alta",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-22T10:00:34Z",
+      "updated_at": "2026-11-21T10:00:34Z",
+      "titulo_tema": "Onda de vendas em tecnologia gera forte retração nas bolsas mundiais",
+      "sintese_nerd": "Incertezas sobre os retornos financeiros maciços no setor de Inteligência Artificial deflagraram uma realização de lucros generalizada na Europa e nos EUA. Essa correção técnica aumenta a volatilidade nos mercados emergentes e afeta diretamente a atratividade do mercado de capital brasileiro.",
+      "rota_editoria": "/economia",
+      "data_publicacao": "2026-11-21T10:00:34Z",
+      "gatilho_vitrine": "Posicionar na Home de Economia com foco na aversão ao risco global e contaminação do Ibovespa.",
       "origem_pipeline": "curadoria",
+      "relevancia_score": 85,
       "categoria_primaria": "Economia",
       "categorias_cruzadas": [
         "Cultura",
         "Geopolitica_Radar"
       ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 85,
-      "ttl_horas": 24,
-      "expires_at": "2026-11-22T10:00:34Z",
       "palavras_chave_busca": [
         "bolsa de valores",
         "ações de tecnologia",
@@ -79,25 +134,25 @@
         "queda nas bolsas",
         "inteligência artificial",
         "big techs"
-      ],
-      "gatilho_vitrine": "Posicionar na Home de Economia com foco na aversão ao risco global e contaminação do Ibovespa.",
-      "sintese_nerd": "Incertezas sobre os retornos financeiros maciços no setor de Inteligência Artificial deflagraram uma realização de lucros generalizada na Europa e nos EUA. Essa correção técnica aumenta a volatilidade nos mercados emergentes e afeta diretamente a atratividade do mercado de capital brasileiro.",
-      "data_publicacao": "2026-11-21T10:00:34Z",
-      "updated_at": "2026-11-21T10:00:34Z"
+      ]
     },
     {
       "slug": "novo-desenrola-relatorio-compra-dividas-uniao",
-      "titulo_tema": "Projeto do Novo Desenrola prevê compra de R$ 15 bilhões em dívidas pela União",
       "status": "novo",
+      "ttl_horas": 48,
+      "expires_at": "2026-11-23T10:00:34Z",
+      "updated_at": "2026-11-21T10:00:34Z",
+      "titulo_tema": "Projeto do Novo Desenrola prevê compra de R$ 15 bilhões em dívidas pela União",
+      "sintese_nerd": "O avanço da proposta que permite à União comprar R$ 15 bilhões em passivos de inadimplentes busca recuperar o poder de consumo da população endividada. A medida contrabalança a necessidade de socorro econômico popular com os questionamentos do mercado financeiro quanto ao risco de responsabilidade fiscal.",
+      "rota_editoria": "/economia",
+      "data_publicacao": "2026-11-21T10:00:34Z",
+      "gatilho_vitrine": "Destacar no hub de Economia com guia explicativo sobre as regras de elegibilidade para pessoas físicas.",
       "origem_pipeline": "curadoria",
+      "relevancia_score": 81,
       "categoria_primaria": "Economia",
       "categorias_cruzadas": [
         "Politica"
       ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 81,
-      "ttl_horas": 48,
-      "expires_at": "2026-11-23T10:00:34Z",
       "palavras_chave_busca": [
         "novo desenrola",
         "cid gomes",
@@ -105,45 +160,43 @@
         "inadimplência",
         "crédito consignado",
         "união compra dívidas"
-      ],
-      "gatilho_vitrine": "Destacar no hub de Economia com guia explicativo sobre as regras de elegibilidade para pessoas físicas.",
-      "sintese_nerd": "O avanço da proposta que permite à União comprar R$ 15 bilhões em passivos de inadimplentes busca recuperar o poder de consumo da população endividada. A medida contrabalança a necessidade de socorro econômico popular com os questionamentos do mercado financeiro quanto ao risco de responsabilidade fiscal.",
-      "data_publicacao": "2026-11-21T10:00:34Z",
-      "updated_at": "2026-11-21T10:00:34Z"
+      ]
     },
     {
       "slug": "comissao-europeia-condena-complot-russo-atentado-dinamarca",
+      "titulo_tema": "União Europeia reforça condenação a plano de assassinato atribuído à Rússia na Dinamarca",
+      "titulo_curto": "União Europeia reforça condenação a plano de assassinato atribuído à Rússia na Dinamarca",
       "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Geopolitica_Radar",
       "categoria": "Geopolitica_Relacoes",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 90,
+      "urgencia_score": 92,
       "ttl_horas": 18,
       "expires_at": "2026-11-22T03:44:23Z",
-      "updated_at": "2026-11-21T09:44:23Z",
-      "fontes_urls": [
-        "https://ec.europa.eu/commission/presscorner/detail/en/statement_26_2556",
-        "https://www.themoscowtimes.com/2026/11/21/von-der-leyen-condemns-russian-plot-to-assassinate-us-ukrainian-in-denmark-a94339"
+      "palavras_chave_busca": [
+        "união europeia",
+        "rússia",
+        "dinamarca",
+        "segurança",
+        "inteligência"
       ],
-      "titulo_tema": "União Europeia condena plano de assassinato orquestrado pela Rússia na Dinamarca",
-      "resumo_pulso": "Conforme comunicado oficial da Comissão Europeia e reportagens do The Moscow Times, a presidente Ursula von der Leyen condenou fortemente uma tentativa de assassinato contra um cidadão norte-americano-ucraniano em solo dinamarquês. O ato foi apontado pelas autoridades europeias como uma agressão direta coordenada pelos serviços de inteligência russos.",
-      "sintese_nerd": "Elevação das tensões diplomáticas entre a União Europeia e Moscou, com potenciais desdobramentos sobre a segurança interna do bloco.",
-      "titulo_curto": "União Europeia condena plano de assassinato orquestrado pela Rússia na Dinamarca",
-      "rota_editoria": "/radar",
       "palavras_chave": [
         "união europeia",
         "rússia",
         "dinamarca",
         "segurança",
-        "espionagem"
+        "inteligência"
       ],
-      "urgencia_score": 91,
-      "data_publicacao": "2026-11-21T09:15:19Z",
-      "gatilho_vitrine": "Conforme comunicado oficial da Comissão Europeia e reportagens do The Moscow Times, a presidente Ursula von der Leyen condenou fortemente uma tentativa de assassinato contra um cidadão norte-americano-ucraniano em solo dinamarquês. O ato foi apontado pelas autoridades europeias como uma agressão direta coordenada pelos serviços de inteligência russos.",
-      "impacto_pratico": "Elevação das tensões diplomáticas entre a União Europeia e Moscou, com potenciais desdobramentos sobre a segurança interna do bloco.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "Comissão Europeia (Press Corner)",
-        "The Moscow Times"
-      ],
-      "relevancia_score": 89,
+      "gatilho_vitrine": "Conforme desdobramentos de comunicado oficial da Comissão Europeia, a presidente Ursula von der Leyen reiterou condenação firme à tentativa de atentado contra cidadão norte-americano-ucraniano em solo dinamarquês. O episódio segue sendo investigado como uma ação direta coordenada por agentes de inteligência russos.",
+      "resumo_pulso": "Conforme desdobramentos de comunicado oficial da Comissão Europeia, a presidente Ursula von der Leyen reiterou condenação firme à tentativa de atentado contra cidadão norte-americano-ucraniano em solo dinamarquês. O episódio segue sendo investigado como uma ação direta coordenada por agentes de inteligência russos.",
+      "sintese_nerd": "Elevação das tensões diplomáticas entre o bloco europeu e Moscou.",
+      "impacto_pratico": "Elevação das tensões diplomáticas entre o bloco europeu e Moscou.",
       "paises_envolvidos": [
         "EU",
         "RU",
@@ -151,68 +204,64 @@
         "US",
         "UA"
       ],
+      "veiculos_origem": [
+        "Comissão Europeia (Press Corner)"
+      ],
+      "fontes_urls": [
+        "https://ec.europa.eu/commission/presscorner/detail/en/statement_26_2556"
+      ],
+      "data_publicacao": "2026-11-21T09:15:19Z",
+      "updated_at": "2026-11-21T10:43:32Z"
+    },
+    {
+      "slug": "brasil-eua-diplomacia-vistos-lula-trump",
+      "titulo_tema": "Governos de Brasil e EUA buscam entendimentos para superar impasse de vistos diplomáticos",
+      "titulo_curto": "Governos de Brasil e EUA buscam entendimentos para superar impasse de vistos diplomáticos",
+      "status": "novo",
+      "origem_pipeline": "pulso",
       "categoria_primaria": "Geopolitica_Radar",
+      "categoria": "Geopolitica_Relacoes",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
       ],
-      "palavras_chave_busca": [
-        "união europeia",
-        "rússia",
-        "dinamarca",
-        "segurança",
-        "espionagem"
-      ]
-    },
-    {
-      "slug": "brasil-eua-diplomacia-vistos-lula-trump",
-      "status": "novo",
-      "categoria": "Geopolitica_Relacoes",
+      "rota_editoria": "/radar",
+      "relevancia_score": 91,
+      "urgencia_score": 89,
       "ttl_horas": 24,
       "expires_at": "2026-11-22T09:44:23Z",
-      "updated_at": "2026-11-21T09:44:23Z",
-      "fontes_urls": [
-        "https://www.bbc.com/portuguese/articles/cwz0k3r4npexo?at_medium=RSS&at_campaign=rss"
-      ],
-      "titulo_tema": "Governos de Brasil e EUA buscam superar impasse na emissão de vistos diplomáticos",
-      "resumo_pulso": "Segundo apuração da BBC News Brasil, as administrações de Lula e Donald Trump articulam entendimentos para encerrar o atrito em torno da liberação de vistos para diplomatas. De um lado, Washington busca aval para seu indicado à embaixada no Brasil; do outro, Brasília cobra a normalização da situação de sua embaixadora em solo americano.",
-      "sintese_nerd": "Possibilidade de normalização do canal de diálogo direto em nível de embaixadas entre o Brasil e os Estados Unidos.",
-      "titulo_curto": "Governos de Brasil e EUA buscam superar impasse na emissão de vistos diplomáticos",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
+      "palavras_chave_busca": [
         "brasil",
-        "estados unidos",
+        "eua",
         "diplomacia",
         "vistos",
         "lula",
         "trump"
       ],
-      "urgencia_score": 88,
-      "data_publicacao": "2026-11-21T09:01:48Z",
-      "gatilho_vitrine": "Segundo apuração da BBC News Brasil, as administrações de Lula e Donald Trump articulam entendimentos para encerrar o atrito em torno da liberação de vistos para diplomatas. De um lado, Washington busca aval para seu indicado à embaixada no Brasil; do outro, Brasília cobra a normalização da situação de sua embaixadora em solo americano.",
-      "impacto_pratico": "Possibilidade de normalização do canal de diálogo direto em nível de embaixadas entre o Brasil e os Estados Unidos.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "BBC News Brasil"
+      "palavras_chave": [
+        "brasil",
+        "eua",
+        "diplomacia",
+        "vistos",
+        "lula",
+        "trump"
       ],
-      "relevancia_score": 90,
+      "gatilho_vitrine": "Segundo apuração da BBC News Brasil, as administrações de Lula e Donald Trump articulam entendimentos diplomáticos para solucionar o impasse na emissão de vistos. Washington busca a liberação para seu indicado assumir a embaixada, enquanto Brasília cobra a regularização da embaixadora brasileira.",
+      "resumo_pulso": "Segundo apuração da BBC News Brasil, as administrações de Lula e Donald Trump articulam entendimentos diplomáticos para solucionar o impasse na emissão de vistos. Washington busca a liberação para seu indicado assumir a embaixada, enquanto Brasília cobra a regularização da embaixadora brasileira.",
+      "sintese_nerd": "Possibilidade de normalização do canal de diálogo direto entre os gabinetes de Brasília e Washington.",
+      "impacto_pratico": "Possibilidade de normalização do canal de diálogo direto entre os gabinetes de Brasília e Washington.",
       "paises_envolvidos": [
         "BR",
         "US"
       ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
+      "veiculos_origem": [
+        "BBC News Brasil"
       ],
-      "palavras_chave_busca": [
-        "brasil",
-        "estados unidos",
-        "diplomacia",
-        "vistos",
-        "lula",
-        "trump"
-      ]
+      "fontes_urls": [
+        "https://www.bbc.com/portuguese/articles/cwz0k3r4npexo?at_medium=RSS&at_campaign=rss"
+      ],
+      "data_publicacao": "2026-11-21T09:01:48Z",
+      "updated_at": "2026-11-21T10:43:32Z"
     },
     {
       "slug": "intoxicacao-por-alcool-adulterado-mata-11-na-india",
@@ -263,48 +312,48 @@
     },
     {
       "slug": "morre-phumzile-mlambo-ngcuka-1a-mulher-vice-da-africa-do-sul",
+      "titulo_tema": "Governo sul-africano confirma falecimento de Phumzile Mlambo-Ngcuka aos 71 anos",
+      "titulo_curto": "Governo sul-africano confirma falecimento de Phumzile Mlambo-Ngcuka aos 71 anos",
       "status": "novo",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-22T08:47:46Z",
-      "updated_at": "2026-11-21T08:47:46Z",
-      "fontes_urls": [
-        "https://g1.globo.com/mundo/noticia/2026/11/21/morre-phumzile-mlambo-ngcuka-1a-mulher-vice-da-africa-do-sul-e-ex-chefe-da-onu-mulheres.ghtml"
-      ],
-      "titulo_tema": "Morre Phumzile Mlambo-Ngcuka, primeira mulher vice da África do Sul e ex-ONU Mulheres",
-      "resumo_pulso": "Segundo anúncio oficial do governo sul-africano reportado pelo G1 Mundo, Phumzile Mlambo-Ngcuka faleceu aos 71 anos. Ex-ativista contra o apartheid, ela marcou a história política do país ao ser a primeira mulher vice-presidente e também exerceu o cargo de diretora-executiva da ONU Mulheres.",
-      "sintese_nerd": "Luto oficial e repercussão diplomática na África do Sul e em organismos multilaterais de direitos humanos.",
-      "titulo_curto": "Morre Phumzile Mlambo-Ngcuka, primeira mulher vice da África do Sul e ex-ONU Mulheres",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "phumzile mlambo-ngcuka",
-        "áfrica do sul",
-        "onu mulheres",
-        "apartheid"
-      ],
-      "urgencia_score": 88,
-      "data_publicacao": "2026-11-21T08:14:21Z",
-      "gatilho_vitrine": "Segundo anúncio oficial do governo sul-africano reportado pelo G1 Mundo, Phumzile Mlambo-Ngcuka faleceu aos 71 anos. Ex-ativista contra o apartheid, ela marcou a história política do país ao ser a primeira mulher vice-presidente e também exerceu o cargo de diretora-executiva da ONU Mulheres.",
-      "impacto_pratico": "Luto oficial e repercussão diplomática na África do Sul e em organismos multilaterais de direitos humanos.",
       "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "G1 Mundo"
-      ],
-      "relevancia_score": 87,
-      "paises_envolvidos": [
-        "ZA"
-      ],
       "categoria_primaria": "Geopolitica_Radar",
+      "categoria": "Geopolitica_Relacoes",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
       ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 88,
+      "urgencia_score": 87,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-22T08:47:46Z",
       "palavras_chave_busca": [
-        "phumzile mlambo-ngcuka",
         "áfrica do sul",
+        "phumzile mlambo-ngcuka",
         "onu mulheres",
-        "apartheid"
-      ]
+        "política"
+      ],
+      "palavras_chave": [
+        "áfrica do sul",
+        "phumzile mlambo-ngcuka",
+        "onu mulheres",
+        "política"
+      ],
+      "gatilho_vitrine": "Segundo comunicado oficial repercutido pelo G1 Mundo, faleceu Phumzile Mlambo-Ngcuka, primeira mulher a ocupar a vice-presidência da África do Sul e ex-diretora executiva da ONU Mulheres. Ela foi uma figura central na luta contra o apartheid e na defesa dos direitos humanos globais.",
+      "resumo_pulso": "Segundo comunicado oficial repercutido pelo G1 Mundo, faleceu Phumzile Mlambo-Ngcuka, primeira mulher a ocupar a vice-presidência da África do Sul e ex-diretora executiva da ONU Mulheres. Ela foi uma figura central na luta contra o apartheid e na defesa dos direitos humanos globais.",
+      "sintese_nerd": "Luto oficial e repercussão internacional no meio político e em organismos multilaterais.",
+      "impacto_pratico": "Luto oficial e repercussão internacional no meio político e em organismos multilaterais.",
+      "paises_envolvidos": [
+        "ZA"
+      ],
+      "veiculos_origem": [
+        "G1 Mundo"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/mundo/noticia/2026/11/21/morre-phumzile-mlambo-ngcuka-1a-mulher-vice-da-africa-do-sul-e-ex-chefe-da-onu-mulheres.ghtml"
+      ],
+      "data_publicacao": "2026-11-21T08:14:21Z",
+      "updated_at": "2026-11-21T10:43:32Z"
     },
     {
       "slug": "mercados-globais-desabam-feriado-b3-goldman-alerta-quedas",
@@ -403,53 +452,52 @@
     },
     {
       "slug": "ataque-russo-com-drones-e-incendio-em-dnipropetrovsk",
+      "titulo_tema": "Ataques russos intensificados deixam mortos e dezenas de feridos na Ucrânia",
+      "titulo_curto": "Ataques russos intensificados deixam mortos e dezenas de feridos na Ucrânia",
       "status": "novo",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 12,
-      "expires_at": "2026-11-21T19:45:41Z",
-      "updated_at": "2026-11-21T09:44:23Z",
-      "fontes_urls": [
-        "https://www.ukrinform.net/rubric-ato/4187086-injury-toll-in-russian-attacks-on-kryvyi-rih-rises-to-60.html",
-        "https://kyivindependent.com/russian-attacks-kill-at-least-2-injure-83-across-ukraine-as-strikes-devastate-kryvyi-rih/"
-      ],
-      "titulo_tema": "Ataque massivo russo na Ucrânia eleva número de feridos para 60 em Kryvyi Rih",
-      "resumo_pulso": "Segundo relatórios atualizados da Ukrinform e da Kyiv Independent, o número de feridos nos ataques russos recentes contra Kryvyi Rih subiu para 60, com dezenas de pessoas hospitalizadas. As ofensivas atingiram infraestruturas civis e energéticas em meio a disparos de mísseis balísticos e drones.",
-      "sintese_nerd": "Aprofundamento da crise humanitária na Ucrânia e sobrecarga contínua dos serviços de emergência e hospitais locais.",
-      "titulo_curto": "Ataque massivo russo na Ucrânia eleva número de feridos para 60 em Kryvyi Rih",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "ucrânia",
-        "rússia",
-        "kryvyi rih",
-        "ataque aéreo",
-        "guerra"
-      ],
-      "urgencia_score": 95,
-      "data_publicacao": "2026-11-21T07:17:00Z",
-      "gatilho_vitrine": "Segundo relatórios atualizados da Ukrinform e da Kyiv Independent, o número de feridos nos ataques russos recentes contra Kryvyi Rih subiu para 60, com dezenas de pessoas hospitalizadas. As ofensivas atingiram infraestruturas civis e energéticas em meio a disparos de mísseis balísticos e drones.",
-      "impacto_pratico": "Aprofundamento da crise humanitária na Ucrânia e sobrecarga contínua dos serviços de emergência e hospitais locais.",
       "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "Ukrinform",
-        "Kyiv Independent"
-      ],
-      "relevancia_score": 92,
-      "paises_envolvidos": [
-        "UA",
-        "RU"
-      ],
       "categoria_primaria": "Geopolitica_Radar",
+      "categoria": "Geopolitica_Relacoes",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
       ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 93,
+      "urgencia_score": 96,
+      "ttl_horas": 12,
+      "expires_at": "2026-11-21T19:45:41Z",
       "palavras_chave_busca": [
         "ucrânia",
         "rússia",
-        "kryvyi rih",
-        "ataque aéreo",
+        "ataques",
+        "mísseis",
         "guerra"
-      ]
+      ],
+      "palavras_chave": [
+        "ucrânia",
+        "rússia",
+        "ataques",
+        "mísseis",
+        "guerra"
+      ],
+      "gatilho_vitrine": "Segundo relatórios atualizados da Ukrinform e da Kyiv Independent, novos ataques russos com mísseis balísticos e drones atingiram instalações industriais e civis em regiões como Kryvyi Rih e Rivne, elevando o total de feridos para mais de 80. As ofensivas ocorrem em meio a trocas intensas de ataques a infraestruturas estratégicas.",
+      "resumo_pulso": "Segundo relatórios atualizados da Ukrinform e da Kyiv Independent, novos ataques russos com mísseis balísticos e drones atingiram instalações industriais e civis em regiões como Kryvyi Rih e Rivne, elevando o total de feridos para mais de 80. As ofensivas ocorrem em meio a trocas intensas de ataques a infraestruturas estratégicas.",
+      "sintese_nerd": "Aumento do risco humanitário e de instabilidade nas redes energéticas e de transporte na Ucrânia.",
+      "impacto_pratico": "Aumento do risco humanitário e de instabilidade nas redes energéticas e de transporte na Ucrânia.",
+      "paises_envolvidos": [
+        "UA",
+        "RU"
+      ],
+      "veiculos_origem": [
+        "Ukrinform",
+        "The Kyiv Independent"
+      ],
+      "fontes_urls": [
+        "https://kyivindependent.com/russian-attacks-kill-at-least-2-injure-83-across-ukraine-as-strikes-devastate-kryvyi-rih/"
+      ],
+      "data_publicacao": "2026-11-21T07:17:00Z",
+      "updated_at": "2026-11-21T10:43:32Z"
     },
     {
       "slug": "ira-envia-convoy-petroleiros-desafiar-bloqueio-eua",
@@ -836,194 +884,51 @@
         "baía de guanabara",
         "portugal"
       ]
-    },
-    {
-      "slug": "disparada-do-dolar-pressao-fiscal-brasil-juros-eua",
-      "status": "novo",
-      "categoria": "Economia_Comercio",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-22T01:19:08Z",
-      "updated_at": "2026-11-21T04:27:42Z",
-      "fontes_urls": [
-        "https://g1.globo.com/jornal-nacional/noticia/2026/11/20/juros-nos-eua-e-ajuste-fiscal-no-brasil-o-que-esta-por-tras-da-disparada-do-dolar.ghtml"
-      ],
-      "titulo_tema": "Juros externos e cautela fiscal impulsionam pressão cambial sobre o real",
-      "resumo_pulso": "Segundo reportagem do G1 Economia, a escalada recente do dólar reflete tanto o ambiente global de juros prolongados nos EUA quanto as incertezas em torno da consolidação fiscal brasileira.",
-      "sintese_nerd": "Aumenta custos de importação, tarifas de passagens internacionais e pressão inflacionária em produtos cotados em moeda estrangeira.",
-      "titulo_curto": "Juros externos e cautela fiscal impulsionam pressão cambial sobre o real",
-      "rota_editoria": "/economia",
-      "palavras_chave": [
-        "dólar",
-        "câmbio",
-        "banco central",
-        "federal reserve",
-        "fiscal"
-      ],
-      "urgencia_score": 90,
-      "data_publicacao": "2026-11-21T01:01:51Z",
-      "gatilho_vitrine": "Segundo reportagem do G1 Economia, a escalada recente do dólar reflete tanto o ambiente global de juros prolongados nos EUA quanto as incertezas em torno da consolidação fiscal brasileira.",
-      "impacto_pratico": "Aumenta custos de importação, tarifas de passagens internacionais e pressão inflacionária em produtos cotados em moeda estrangeira.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "G1 Economia"
-      ],
-      "relevancia_score": 92,
-      "paises_envolvidos": [
-        "BR",
-        "US"
-      ],
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "dólar",
-        "câmbio",
-        "banco central",
-        "federal reserve",
-        "fiscal"
-      ]
-    }
-  ],
-  "temas_curadoria": [
-    {
-      "slug": "escalada-estreito-hormuz-eua-ira-petroleo",
-      "titulo_tema": "Escalada militar no Estreito de Ormuz e impactos na cotação do petróleo",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Politica"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 95,
-      "ttl_horas": 48,
-      "expires_at": "2026-11-23T10:00:34Z",
-      "palavras_chave_busca": [
-        "estreito de ormuz",
-        "eua e irã",
-        "drone abatido",
-        "preço do petróleo",
-        "sanções americanas",
-        "crise de energia"
-      ],
-      "gatilho_vitrine": "Destacar no topo do Radar Geopolítico o risco de desabastecimento energético global e a repassagem de preços no Brasil.",
-      "sintese_nerd": "O abate de um drone norte-americano e o bloqueio parcial no Estreito de Ormuz elevam a tensão geopolítica na rota por onde passa um quinto do petróleo mundial. Esse gargalo logístico pressiona o valor do barril no mercado global com risco iminente de repasse para os combustíveis no Brasil.",
-      "data_publicacao": "2026-11-21T10:00:34Z",
-      "updated_at": "2026-11-21T10:00:34Z"
-    },
-    {
-      "slug": "vistos-diplomaticos-brasil-eua-lula-trump",
-      "titulo_tema": "Impasse diplomático de vistos entre governos Lula e Trump",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Politica",
-      "categorias_cruzadas": [
-        "Geopolitica_Radar"
-      ],
-      "rota_editoria": "/politica",
-      "relevancia_score": 89,
-      "ttl_horas": 72,
-      "expires_at": "2026-11-24T10:00:34Z",
-      "palavras_chave_busca": [
-        "vistos diplomáticos",
-        "governo lula",
-        "governo trump",
-        "embaixada americana",
-        "itamaraty",
-        "relações bilaterais"
-      ],
-      "gatilho_vitrine": "Exibir na editoria de Política para detalhar as negociações diretas de bastidor entre Brasília e Washington.",
-      "sintese_nerd": "A retaliação velada na concessão de credenciais diplomáticas entre Brasil e Estados Unidos ilustra o esfriamento das relações formais no início da gestão Trump. O impasse expõe os limites da diplomacia pragmática em equilibrar soberania institucional e interlocução com potências globais.",
-      "data_publicacao": "2026-11-21T10:00:34Z",
-      "updated_at": "2026-11-21T10:00:34Z"
-    },
-    {
-      "slug": "venda-acoes-tecnologia-queda-bolsas-mercados",
-      "titulo_tema": "Onda de vendas em tecnologia gera forte retração nas bolsas mundiais",
-      "status": "em_alta",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Cultura",
-        "Geopolitica_Radar"
-      ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 85,
-      "ttl_horas": 24,
-      "expires_at": "2026-11-22T10:00:34Z",
-      "palavras_chave_busca": [
-        "bolsa de valores",
-        "ações de tecnologia",
-        "mercado europeu",
-        "queda nas bolsas",
-        "inteligência artificial",
-        "big techs"
-      ],
-      "gatilho_vitrine": "Posicionar na Home de Economia com foco na aversão ao risco global e contaminação do Ibovespa.",
-      "sintese_nerd": "Incertezas sobre os retornos financeiros maciços no setor de Inteligência Artificial deflagraram uma realização de lucros generalizada na Europa e nos EUA. Essa correção técnica aumenta a volatilidade nos mercados emergentes e afeta diretamente a atratividade do mercado de capital brasileiro.",
-      "data_publicacao": "2026-11-21T10:00:34Z",
-      "updated_at": "2026-11-21T10:00:34Z"
-    },
-    {
-      "slug": "novo-desenrola-relatorio-compra-dividas-uniao",
-      "titulo_tema": "Projeto do Novo Desenrola prevê compra de R$ 15 bilhões em dívidas pela União",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Politica"
-      ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 81,
-      "ttl_horas": 48,
-      "expires_at": "2026-11-23T10:00:34Z",
-      "palavras_chave_busca": [
-        "novo desenrola",
-        "cid gomes",
-        "renegociação de dívidas",
-        "inadimplência",
-        "crédito consignado",
-        "união compra dívidas"
-      ],
-      "gatilho_vitrine": "Destacar no hub de Economia com guia explicativo sobre as regras de elegibilidade para pessoas físicas.",
-      "sintese_nerd": "O avanço da proposta que permite à União comprar R$ 15 bilhões em passivos de inadimplentes busca recuperar o poder de consumo da população endividada. A medida contrabalança a necessidade de socorro econômico popular com os questionamentos do mercado financeiro quanto ao risco de responsabilidade fiscal.",
-      "data_publicacao": "2026-11-21T10:00:34Z",
-      "updated_at": "2026-11-21T10:00:34Z"
     }
   ],
   "noticias_quentes": [
     {
-      "slug": "comissao-europeia-condena-complot-russo-atentado-dinamarca",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 18,
-      "expires_at": "2026-11-22T03:44:23Z",
-      "updated_at": "2026-11-21T09:44:23Z",
-      "fontes_urls": [
-        "https://ec.europa.eu/commission/presscorner/detail/en/statement_26_2556",
-        "https://www.themoscowtimes.com/2026/11/21/von-der-leyen-condemns-russian-plot-to-assassinate-us-ukrainian-in-denmark-a94339"
+      "slug": "onda-de-apagoes-e-falhas-tecnologicas-globais",
+      "titulo_curto": "Especialistas investigam causas por trás de onda recente de apagões e falhas tecnológicas globais",
+      "resumo_pulso": "Segundo levantamento da BBC News Brasil e do G1 Economia, falhas sistêmicas recentes em serviços da Microsoft, aviação e órgãos de segurança americana geram preocupações internacionais. Embora autoridades apontem que os episódios não possuem vínculo confirmado entre si, o volume de ocorrências acende alertas de cibersegurança.",
+      "impacto_pratico": "Possíveis atrasos operacionais e necessidade de reforço em protocolos de infraestrutura digital.",
+      "categoria": "Ciencia_Clima",
+      "paises_envolvidos": [
+        "US",
+        "GB",
+        "BR"
       ],
-      "resumo_pulso": "Conforme comunicado oficial da Comissão Europeia e reportagens do The Moscow Times, a presidente Ursula von der Leyen condenou fortemente uma tentativa de assassinato contra um cidadão norte-americano-ucraniano em solo dinamarquês. O ato foi apontado pelas autoridades europeias como uma agressão direta coordenada pelos serviços de inteligência russos.",
-      "titulo_curto": "União Europeia condena plano de assassinato orquestrado pela Rússia na Dinamarca",
-      "palavras_chave": [
-        "União Europeia",
-        "Rússia",
-        "Dinamarca",
-        "Segurança",
-        "Espionagem"
-      ],
-      "urgencia_score": 91,
-      "data_publicacao": "2026-11-21T09:15:19Z",
-      "impacto_pratico": "Elevação das tensões diplomáticas entre a União Europeia e Moscou, com potenciais desdobramentos sobre a segurança interna do bloco.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Comissão Europeia (Press Corner)",
-        "The Moscow Times"
-      ],
+      "urgencia_score": 88,
       "relevancia_score": 89,
-      "horas_em_destaque": 12,
+      "nivel_confianca": "media",
+      "ttl_horas": 24,
+      "horas_em_destaque": 8,
+      "veiculos_origem": [
+        "BBC News Brasil",
+        "G1 Economia"
+      ],
+      "fontes_urls": [
+        "https://www.bbc.com/portuguese/articles/c3grendp775qo?at_medium=RSS&at_campaign=rss",
+        "https://g1.globo.com/tecnologia/ciberseguranca/noticia/2026/11/21/ataques-ciberneticos-ia-ou-atualizacoes-pendentes-o-que-ha-por-tras-da-onda-de-apagoes-dos-ultimos-dias.ghtml"
+      ],
+      "palavras_chave": [
+        "Cibersegurança",
+        "Apagão",
+        "Tecnologia",
+        "Microsoft",
+        "Aviação"
+      ],
+      "data_publicacao": "2026-11-21T10:27:04Z",
+      "links_internos_relacionados": [],
+      "expires_at": "2026-11-22T10:43:32Z",
+      "updated_at": "2026-11-21T10:43:32Z"
+    },
+    {
+      "slug": "comissao-europeia-condena-complot-russo-atentado-dinamarca",
+      "titulo_curto": "União Europeia reforça condenação a plano de assassinato atribuído à Rússia na Dinamarca",
+      "resumo_pulso": "Conforme desdobramentos de comunicado oficial da Comissão Europeia, a presidente Ursula von der Leyen reiterou condenação firme à tentativa de atentado contra cidadão norte-americano-ucraniano em solo dinamarquês. O episódio segue sendo investigado como uma ação direta coordenada por agentes de inteligência russos.",
+      "impacto_pratico": "Elevação das tensões diplomáticas entre o bloco europeu e Moscou.",
+      "categoria": "Geopolitica_Relacoes",
       "paises_envolvidos": [
         "EU",
         "RU",
@@ -1031,53 +936,74 @@
         "US",
         "UA"
       ],
+      "urgencia_score": 92,
+      "relevancia_score": 90,
+      "nivel_confianca": "alta",
+      "ttl_horas": 18,
+      "horas_em_destaque": 8,
+      "veiculos_origem": [
+        "Comissão Europeia (Press Corner)"
+      ],
+      "fontes_urls": [
+        "https://ec.europa.eu/commission/presscorner/detail/en/statement_26_2556"
+      ],
+      "palavras_chave": [
+        "União Europeia",
+        "Rússia",
+        "Dinamarca",
+        "Segurança",
+        "Inteligência"
+      ],
+      "data_publicacao": "2026-11-21T09:15:19Z",
       "links_internos_relacionados": [
         {
-          "url_existente": "https://www.rodandoomundo.com.br/eleicoes",
-          "motivo_conexao": "Analisa o impacto de crises internacionais nas alianças estratégicas globais.",
-          "titulo_existente": "Repercussão internacional das eleições americanas redesenha alianças diplomáticas"
+          "titulo_existente": "O que é uma sanção internacional?",
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-sancao-internacional",
+          "motivo_conexao": "Explica os instrumentos diplomáticos e restritivos utilizados pela UE em respostas a crises de segurança."
         }
-      ]
+      ],
+      "expires_at": "2026-11-22T03:44:23Z",
+      "updated_at": "2026-11-21T10:43:32Z"
     },
     {
       "slug": "brasil-eua-diplomacia-vistos-lula-trump",
+      "titulo_curto": "Governos de Brasil e EUA buscam entendimentos para superar impasse de vistos diplomáticos",
+      "resumo_pulso": "Segundo apuração da BBC News Brasil, as administrações de Lula e Donald Trump articulam entendimentos diplomáticos para solucionar o impasse na emissão de vistos. Washington busca a liberação para seu indicado assumir a embaixada, enquanto Brasília cobra a regularização da embaixadora brasileira.",
+      "impacto_pratico": "Possibilidade de normalização do canal de diálogo direto entre os gabinetes de Brasília e Washington.",
       "categoria": "Geopolitica_Relacoes",
+      "paises_envolvidos": [
+        "BR",
+        "US"
+      ],
+      "urgencia_score": 89,
+      "relevancia_score": 91,
+      "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "expires_at": "2026-11-22T09:44:23Z",
-      "updated_at": "2026-11-21T09:44:23Z",
+      "horas_em_destaque": 12,
+      "veiculos_origem": [
+        "BBC News Brasil"
+      ],
       "fontes_urls": [
         "https://www.bbc.com/portuguese/articles/cwz0k3r4npexo?at_medium=RSS&at_campaign=rss"
       ],
-      "resumo_pulso": "Segundo apuração da BBC News Brasil, as administrações de Lula e Donald Trump articulam entendimentos para encerrar o atrito em torno da liberação de vistos para diplomatas. De um lado, Washington busca aval para seu indicado à embaixada no Brasil; do outro, Brasília cobra a normalização da situação de sua embaixadora em solo americano.",
-      "titulo_curto": "Governos de Brasil e EUA buscam superar impasse na emissão de vistos diplomáticos",
       "palavras_chave": [
         "Brasil",
-        "Estados Unidos",
+        "EUA",
         "Diplomacia",
         "Vistos",
         "Lula",
         "Trump"
       ],
-      "urgencia_score": 88,
       "data_publicacao": "2026-11-21T09:01:48Z",
-      "impacto_pratico": "Possibilidade de normalização do canal de diálogo direto em nível de embaixadas entre o Brasil e os Estados Unidos.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "BBC News Brasil"
-      ],
-      "relevancia_score": 90,
-      "horas_em_destaque": 12,
-      "paises_envolvidos": [
-        "BR",
-        "US"
-      ],
       "links_internos_relacionados": [
         {
+          "titulo_existente": "Política nos Estados Unidos",
           "url_existente": "https://www.rodandoomundo.com.br/politica/estados-unidos",
-          "motivo_conexao": "Acompanha as diretrizes e articulações da administração norte-americana com parceiros internacionais.",
-          "titulo_existente": "Casa Branca anuncia novos nomes para o gabinete e detalha prioridades em imigração e comércio"
+          "motivo_conexao": "Analisa as diretrizes da administração americana e sua influência nas relações bilaterais."
         }
-      ]
+      ],
+      "expires_at": "2026-11-22T09:44:23Z",
+      "updated_at": "2026-11-21T10:43:32Z"
     },
     {
       "slug": "intoxicacao-por-alcool-adulterado-mata-11-na-india",
@@ -1113,34 +1039,34 @@
     },
     {
       "slug": "morre-phumzile-mlambo-ngcuka-1a-mulher-vice-da-africa-do-sul",
+      "titulo_curto": "Governo sul-africano confirma falecimento de Phumzile Mlambo-Ngcuka aos 71 anos",
+      "resumo_pulso": "Segundo comunicado oficial repercutido pelo G1 Mundo, faleceu Phumzile Mlambo-Ngcuka, primeira mulher a ocupar a vice-presidência da África do Sul e ex-diretora executiva da ONU Mulheres. Ela foi uma figura central na luta contra o apartheid e na defesa dos direitos humanos globais.",
+      "impacto_pratico": "Luto oficial e repercussão internacional no meio político e em organismos multilaterais.",
       "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-22T08:47:46Z",
-      "updated_at": "2026-11-21T08:47:46Z",
-      "fontes_urls": [
-        "https://g1.globo.com/mundo/noticia/2026/11/21/morre-phumzile-mlambo-ngcuka-1a-mulher-vice-da-africa-do-sul-e-ex-chefe-da-onu-mulheres.ghtml"
-      ],
-      "resumo_pulso": "Segundo anúncio oficial do governo sul-africano reportado pelo G1 Mundo, Phumzile Mlambo-Ngcuka faleceu aos 71 anos. Ex-ativista contra o apartheid, ela marcou a história política do país ao ser a primeira mulher vice-presidente e também exerceu o cargo de diretora-executiva da ONU Mulheres.",
-      "titulo_curto": "Morre Phumzile Mlambo-Ngcuka, primeira mulher vice da África do Sul e ex-ONU Mulheres",
-      "palavras_chave": [
-        "Phumzile Mlambo-Ngcuka",
-        "África do Sul",
-        "ONU Mulheres",
-        "Apartheid"
-      ],
-      "urgencia_score": 88,
-      "data_publicacao": "2026-11-21T08:14:21Z",
-      "impacto_pratico": "Luto oficial e repercussão diplomática na África do Sul e em organismos multilaterais de direitos humanos.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "G1 Mundo"
-      ],
-      "relevancia_score": 87,
-      "horas_em_destaque": 12,
       "paises_envolvidos": [
         "ZA"
       ],
-      "links_internos_relacionados": []
+      "urgencia_score": 87,
+      "relevancia_score": 88,
+      "nivel_confianca": "alta",
+      "ttl_horas": 24,
+      "horas_em_destaque": 12,
+      "veiculos_origem": [
+        "G1 Mundo"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/mundo/noticia/2026/11/21/morre-phumzile-mlambo-ngcuka-1a-mulher-vice-da-africa-do-sul-e-ex-chefe-da-onu-mulheres.ghtml"
+      ],
+      "palavras_chave": [
+        "África do Sul",
+        "Phumzile Mlambo-Ngcuka",
+        "ONU Mulheres",
+        "Política"
+      ],
+      "data_publicacao": "2026-11-21T08:14:21Z",
+      "links_internos_relacionados": [],
+      "expires_at": "2026-11-22T08:47:46Z",
+      "updated_at": "2026-11-21T10:43:32Z"
     },
     {
       "slug": "mercados-globais-desabam-feriado-b3-goldman-alerta-quedas",
@@ -1215,44 +1141,43 @@
     },
     {
       "slug": "ataque-russo-com-drones-e-incendio-em-dnipropetrovsk",
+      "titulo_curto": "Ataques russos intensificados deixam mortos e dezenas de feridos na Ucrânia",
+      "resumo_pulso": "Segundo relatórios atualizados da Ukrinform e da Kyiv Independent, novos ataques russos com mísseis balísticos e drones atingiram instalações industriais e civis em regiões como Kryvyi Rih e Rivne, elevando o total de feridos para mais de 80. As ofensivas ocorrem em meio a trocas intensas de ataques a infraestruturas estratégicas.",
+      "impacto_pratico": "Aumento do risco humanitário e de instabilidade nas redes energéticas e de transporte na Ucrânia.",
       "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 12,
-      "expires_at": "2026-11-21T19:45:41Z",
-      "updated_at": "2026-11-21T09:44:23Z",
-      "fontes_urls": [
-        "https://www.ukrinform.net/rubric-ato/4187086-injury-toll-in-russian-attacks-on-kryvyi-rih-rises-to-60.html",
-        "https://kyivindependent.com/russian-attacks-kill-at-least-2-injure-83-across-ukraine-as-strikes-devastate-kryvyi-rih/"
-      ],
-      "resumo_pulso": "Segundo relatórios atualizados da Ukrinform e da Kyiv Independent, o número de feridos nos ataques russos recentes contra Kryvyi Rih subiu para 60, com dezenas de pessoas hospitalizadas. As ofensivas atingiram infraestruturas civis e energéticas em meio a disparos de mísseis balísticos e drones.",
-      "titulo_curto": "Ataque massivo russo na Ucrânia eleva número de feridos para 60 em Kryvyi Rih",
-      "palavras_chave": [
-        "Ucrânia",
-        "Rússia",
-        "Kryvyi Rih",
-        "Ataque aéreo",
-        "Guerra"
-      ],
-      "urgencia_score": 95,
-      "data_publicacao": "2026-11-21T07:17:00Z",
-      "impacto_pratico": "Aprofundamento da crise humanitária na Ucrânia e sobrecarga contínua dos serviços de emergência e hospitais locais.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Ukrinform",
-        "Kyiv Independent"
-      ],
-      "relevancia_score": 92,
-      "horas_em_destaque": 6,
       "paises_envolvidos": [
         "UA",
         "RU"
       ],
+      "urgencia_score": 96,
+      "relevancia_score": 93,
+      "nivel_confianca": "alta",
+      "ttl_horas": 12,
+      "horas_em_destaque": 6,
+      "veiculos_origem": [
+        "Ukrinform",
+        "The Kyiv Independent"
+      ],
+      "fontes_urls": [
+        "https://kyivindependent.com/russian-attacks-kill-at-least-2-injure-83-across-ukraine-as-strikes-devastate-kryvyi-rih/"
+      ],
+      "palavras_chave": [
+        "Ucrânia",
+        "Rússia",
+        "Ataques",
+        "Mísseis",
+        "Guerra"
+      ],
+      "data_publicacao": "2026-11-21T07:17:00Z",
       "links_internos_relacionados": [
         {
+          "titulo_existente": "O que é uma sanção internacional?",
           "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-sancao-internacional",
-          "motivo_conexao": "Contextualiza as medidas econômicas e diplomáticas adotadas por aliados em resposta ao conflito na Ucrânia.",
-          "titulo_existente": "O que é uma sanção internacional?"
+          "motivo_conexao": "Contextualiza as medidas de pressão e retaliação geopolítica decorrentes do conflito."
         }
-      ]
+      ],
+      "expires_at": "2026-11-21T19:45:41Z",
+      "updated_at": "2026-11-21T10:43:32Z"
     },
     {
       "slug": "ira-envia-convoy-petroleiros-desafiar-bloqueio-eua",
@@ -1693,44 +1618,113 @@
           "titulo_existente": "O que é uma sanção internacional?"
         }
       ]
+    }
+  ],
+  "temas_curadoria": [
+    {
+      "slug": "escalada-estreito-hormuz-eua-ira-petroleo",
+      "status": "novo",
+      "ttl_horas": 48,
+      "expires_at": "2026-11-23T10:00:34Z",
+      "updated_at": "2026-11-21T10:00:34Z",
+      "titulo_tema": "Escalada militar no Estreito de Ormuz e impactos na cotação do petróleo",
+      "sintese_nerd": "O abate de um drone norte-americano e o bloqueio parcial no Estreito de Ormuz elevam a tensão geopolítica na rota por onde passa um quinto do petróleo mundial. Esse gargalo logístico pressiona o valor do barril no mercado global com risco iminente de repasse para os combustíveis no Brasil.",
+      "rota_editoria": "/radar",
+      "data_publicacao": "2026-11-21T10:00:34Z",
+      "gatilho_vitrine": "Destacar no topo do Radar Geopolítico o risco de desabastecimento energético global e a repassagem de preços no Brasil.",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 95,
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Politica"
+      ],
+      "palavras_chave_busca": [
+        "estreito de ormuz",
+        "eua e irã",
+        "drone abatido",
+        "preço do petróleo",
+        "sanções americanas",
+        "crise de energia"
+      ]
     },
     {
-      "slug": "nova-caravana-migrantes-mexico-eua-ameaca-tarifas-trump",
-      "categoria": "Mobilidade_Fronteiras",
+      "slug": "vistos-diplomaticos-brasil-eua-lula-trump",
+      "status": "novo",
+      "ttl_horas": 72,
+      "expires_at": "2026-11-24T10:00:34Z",
+      "updated_at": "2026-11-21T10:00:34Z",
+      "titulo_tema": "Impasse diplomático de vistos entre governos Lula e Trump",
+      "sintese_nerd": "A retaliação velada na concessão de credenciais diplomáticas entre Brasil e Estados Unidos ilustra o esfriamento das relações formais no início da gestão Trump. O impasse expõe os limites da diplomacia pragmática em equilibrar soberania institucional e interlocução com potências globais.",
+      "rota_editoria": "/politica",
+      "data_publicacao": "2026-11-21T10:00:34Z",
+      "gatilho_vitrine": "Exibir na editoria de Política para detalhar as negociações diretas de bastidor entre Brasília e Washington.",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 89,
+      "categoria_primaria": "Politica",
+      "categorias_cruzadas": [
+        "Geopolitica_Radar"
+      ],
+      "palavras_chave_busca": [
+        "vistos diplomáticos",
+        "governo lula",
+        "governo trump",
+        "embaixada americana",
+        "itamaraty",
+        "relações bilaterais"
+      ]
+    },
+    {
+      "slug": "venda-acoes-tecnologia-queda-bolsas-mercados",
+      "status": "em_alta",
       "ttl_horas": 24,
-      "expires_at": "2026-11-22T01:19:08Z",
-      "updated_at": "2026-11-21T02:08:13Z",
-      "fontes_urls": [
-        "https://www.infomoney.com.br/mundo/nova-caravana-com-cerca-de-300-migrantes-entra-no-sul-do-mexico-rumo-aos-eua/"
+      "expires_at": "2026-11-22T10:00:34Z",
+      "updated_at": "2026-11-21T10:00:34Z",
+      "titulo_tema": "Onda de vendas em tecnologia gera forte retração nas bolsas mundiais",
+      "sintese_nerd": "Incertezas sobre os retornos financeiros maciços no setor de Inteligência Artificial deflagraram uma realização de lucros generalizada na Europa e nos EUA. Essa correção técnica aumenta a volatilidade nos mercados emergentes e afeta diretamente a atratividade do mercado de capital brasileiro.",
+      "rota_editoria": "/economia",
+      "data_publicacao": "2026-11-21T10:00:34Z",
+      "gatilho_vitrine": "Posicionar na Home de Economia com foco na aversão ao risco global e contaminação do Ibovespa.",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 85,
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Cultura",
+        "Geopolitica_Radar"
       ],
-      "resumo_pulso": "Conforme noticiado pela InfoMoney, um grupo com cerca de 300 migrantes ingressou no território sul-mexicano com destino à fronteira norte-americana. O deslocamento ocorre em meio a alertas e ameaças de taxação comercial por parte do governo de Donald Trump.",
-      "titulo_curto": "Caravana com cerca de 300 migrantes avança no sul do México rumo aos EUA",
-      "palavras_chave": [
-        "migração",
-        "México",
-        "EUA",
-        "fronteira",
-        "tarifas"
+      "palavras_chave_busca": [
+        "bolsa de valores",
+        "ações de tecnologia",
+        "mercado europeu",
+        "queda nas bolsas",
+        "inteligência artificial",
+        "big techs"
+      ]
+    },
+    {
+      "slug": "novo-desenrola-relatorio-compra-dividas-uniao",
+      "status": "novo",
+      "ttl_horas": 48,
+      "expires_at": "2026-11-23T10:00:34Z",
+      "updated_at": "2026-11-21T10:00:34Z",
+      "titulo_tema": "Projeto do Novo Desenrola prevê compra de R$ 15 bilhões em dívidas pela União",
+      "sintese_nerd": "O avanço da proposta que permite à União comprar R$ 15 bilhões em passivos de inadimplentes busca recuperar o poder de consumo da população endividada. A medida contrabalança a necessidade de socorro econômico popular com os questionamentos do mercado financeiro quanto ao risco de responsabilidade fiscal.",
+      "rota_editoria": "/economia",
+      "data_publicacao": "2026-11-21T10:00:34Z",
+      "gatilho_vitrine": "Destacar no hub de Economia com guia explicativo sobre as regras de elegibilidade para pessoas físicas.",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 81,
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Politica"
       ],
-      "urgencia_score": 86,
-      "data_publicacao": "2026-11-20T23:03:00Z",
-      "impacto_pratico": "Pressão sobre as políticas de controle migratório na fronteira entre México e Estados Unidos.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "InfoMoney"
-      ],
-      "relevancia_score": 87,
-      "horas_em_destaque": 24,
-      "paises_envolvidos": [
-        "MX",
-        "US"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/politica/estados-unidos",
-          "motivo_conexao": "Conecta as decisões da administração americana sobre imigração e segurança de fronteiras.",
-          "titulo_existente": "Casa Branca anuncia novos nomes para o gabinete e detalha prioridades em imigração e comércio"
-        }
+      "palavras_chave_busca": [
+        "novo desenrola",
+        "cid gomes",
+        "renegociação de dívidas",
+        "inadimplência",
+        "crédito consignado",
+        "união compra dívidas"
       ]
     }
   ]
