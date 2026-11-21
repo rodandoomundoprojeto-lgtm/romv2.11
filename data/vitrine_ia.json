@@ -2,13 +2,13 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-21T02:08:13Z",
-  "batch_id": "20261121-0207",
+  "updatedAt": "2026-11-21T03:19:26Z",
+  "batch_id": "20261121-0317",
   "temas_ativos": [
     {
-      "slug": "stf-derruba-sigilo-de-relatorio-da-pf-sobre-mendonca-e-master",
-      "titulo_tema": "PF informa ausência de diálogos entre André Mendonça e Daniel Vorcaro no caso Master",
-      "titulo_curto": "PF informa ausência de diálogos entre André Mendonça e Daniel Vorcaro no caso Master",
+      "slug": "paraguai-ex-procurador-geral-denuncia-perseguicao-onu-escandalo-ueno-bank",
+      "titulo_tema": "Ex-procurador-geral do Paraguai denuncia à ONU perseguição política após crise no Ueno Bank",
+      "titulo_curto": "Ex-procurador-geral do Paraguai denuncia à ONU perseguição política após crise no Ueno Bank",
       "status": "novo",
       "origem_pipeline": "pulso",
       "categoria_primaria": "Geopolitica_Radar",
@@ -18,17 +18,248 @@
         "Resumo_Ultimas"
       ],
       "rota_editoria": "/radar",
-      "relevancia_score": 95,
-      "urgencia_score": 94,
+      "relevancia_score": 90,
+      "urgencia_score": 91,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-22T03:19:26Z",
+      "palavras_chave_busca": [
+        "paraguai",
+        "ueno bank",
+        "emiliano rolón",
+        "santiago peña",
+        "onu"
+      ],
+      "palavras_chave": [
+        "paraguai",
+        "ueno bank",
+        "emiliano rolón",
+        "santiago peña",
+        "onu"
+      ],
+      "gatilho_vitrine": "Segundo apuração do G1 Mundo com base em documentos da AFP, o ex-procurador-geral do Paraguai Emiliano Rolón denunciou à ONU ter sofrido perseguição política. A renúncia e denúncia ocorrem no contexto do escândalo envolvendo o Ueno Bank, que resultou na destituição e prisão do ex-presidente Santiago Peña.",
+      "resumo_pulso": "Segundo apuração do G1 Mundo com base em documentos da AFP, o ex-procurador-geral do Paraguai Emiliano Rolón denunciou à ONU ter sofrido perseguição política. A renúncia e denúncia ocorrem no contexto do escândalo envolvendo o Ueno Bank, que resultou na destituição e prisão do ex-presidente Santiago Peña.",
+      "sintese_nerd": "Gera instabilidade política institucional na tríplice fronteira e acende alertas de risco para investimentos estrangeiros na região.",
+      "impacto_pratico": "Gera instabilidade política institucional na tríplice fronteira e acende alertas de risco para investimentos estrangeiros na região.",
+      "paises_envolvidos": [
+        "PY"
+      ],
+      "veiculos_origem": [
+        "G1 Mundo",
+        "AFP"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/mundo/noticia/2026/11/21/ex-procurador-geral-do-paraguai-denuncia-perseguicao-politica-a-onu-apos-escandalo-bancario.ghtml"
+      ],
+      "data_publicacao": "2026-11-21T03:06:51Z",
+      "updated_at": "2026-11-21T03:19:26Z"
+    },
+    {
+      "slug": "tribunal-frances-condena-policiais-por-agressao-racista",
+      "titulo_tema": "Justiça de Paris condena três policiais em caso de agressão racista contra produtor",
+      "titulo_curto": "Justiça de Paris condena três policiais em caso de agressão racista contra produtor",
+      "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Cultura",
+      "categoria": "Sociedade_Cultura",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/cultura",
+      "relevancia_score": 84,
+      "urgencia_score": 85,
       "ttl_horas": 18,
-      "expires_at": "2026-11-22T13:28:48Z",
+      "expires_at": "2026-11-21T21:19:26Z",
+      "palavras_chave_busca": [
+        "frança",
+        "paris",
+        "racismo",
+        "polícia",
+        "michel zecler"
+      ],
+      "palavras_chave": [
+        "frança",
+        "paris",
+        "racismo",
+        "polícia",
+        "michel zecler"
+      ],
+      "gatilho_vitrine": "Conforme reportado pela Al Jazeera English, a corte criminal de Paris determinou a condenação de três policiais franceses, reconhecendo o racismo como fator agravante na agressão sofrida em 2020 pelo produtor musical negro Michel Zecler.",
+      "resumo_pulso": "Conforme reportado pela Al Jazeera English, a corte criminal de Paris determinou a condenação de três policiais franceses, reconhecendo o racismo como fator agravante na agressão sofrida em 2020 pelo produtor musical negro Michel Zecler.",
+      "sintese_nerd": "Reforça o debate sobre abusos de força e critérios de responsabilidade penal de agentes estatais na Europa.",
+      "impacto_pratico": "Reforça o debate sobre abusos de força e critérios de responsabilidade penal de agentes estatais na Europa.",
+      "paises_envolvidos": [
+        "FR"
+      ],
+      "veiculos_origem": [
+        "Al Jazeera English"
+      ],
+      "fontes_urls": [
+        "https://www.aljazeera.com/news/2026/11/21/three-french-police-officers-sentenced-over-racist-assault-on-black-man?traffic_source=rss"
+      ],
+      "data_publicacao": "2026-11-21T03:01:24Z",
+      "updated_at": "2026-11-21T03:19:26Z"
+    },
+    {
+      "slug": "fachin-tenta-avancar-reformas-stf-antes-recesso",
+      "titulo_tema": "A um mês do recesso, STF enfrenta resistências em pautas de reforma interna",
+      "titulo_curto": "A um mês do recesso, STF enfrenta resistências em pautas de reforma interna",
+      "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categoria": "Geopolitica_Relacoes",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 89,
+      "urgencia_score": 88,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-22T03:19:26Z",
       "palavras_chave_busca": [
         "stf",
-        "polícia federal",
-        "andré mendonça",
-        "daniel vorcaro",
-        "caso master"
+        "edson fachin",
+        "reforma do judiciário",
+        "congresso",
+        "política"
       ],
+      "palavras_chave": [
+        "stf",
+        "edson fachin",
+        "reforma do judiciário",
+        "congresso",
+        "política"
+      ],
+      "gatilho_vitrine": "Segundo levantamento do G1 Política, o presidente do STF, ministro Edson Fachin, tenta avançar com pautas sensíveis antes do recesso do Judiciário em 20 de dezembro. Entre os pontos de atrito estão a reforma do sistema de justiça, o código de ética para tribunais superiores e relatórios da Polícia Federal.",
+      "resumo_pulso": "Segundo levantamento do G1 Política, o presidente do STF, ministro Edson Fachin, tenta avançar com pautas sensíveis antes do recesso do Judiciário em 20 de dezembro. Entre os pontos de atrito estão a reforma do sistema de justiça, o código de ética para tribunais superiores e relatórios da Polícia Federal.",
+      "sintese_nerd": "Movimentações no Supremo influenciam diretamente a governabilidade e o equilíbrio institucional entre os Poderes no Brasil.",
+      "impacto_pratico": "Movimentações no Supremo influenciam diretamente a governabilidade e o equilíbrio institucional entre os Poderes no Brasil.",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "veiculos_origem": [
+        "G1 Política"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/politica/noticia/2026/11/21/a-um-mes-do-recesso-fachin-tenta-avancar-com-agenda-de-reformas-no-stf-mas-enfrenta-resistencias.ghtml"
+      ],
+      "data_publicacao": "2026-11-21T03:00:00Z",
+      "updated_at": "2026-11-21T03:19:26Z"
+    },
+    {
+      "slug": "protestos-geracao-z-europa-custos-guerras-clima",
+      "titulo_tema": "Protestos da Geração Z mobilizam dezenas de países na Europa contra custos e guerras",
+      "titulo_curto": "Protestos da Geração Z mobilizam dezenas de países na Europa contra custos e guerras",
+      "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Cultura",
+      "categoria": "Sociedade_Cultura",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/cultura",
+      "relevancia_score": 86,
+      "urgencia_score": 87,
+      "ttl_horas": 18,
+      "expires_at": "2026-11-21T21:19:26Z",
+      "palavras_chave_busca": [
+        "europa",
+        "geração z",
+        "protestos",
+        "custo de vida",
+        "gastos militares"
+      ],
+      "palavras_chave": [
+        "europa",
+        "geração z",
+        "protestos",
+        "custo de vida",
+        "gastos militares"
+      ],
+      "gatilho_vitrine": "Conforme cobertura da Al Jazeera English, milhares de jovens manifestantes da Geração Z realizaram protestos em cerca de 25 países europeus. As mobilizações cobram respostas governamentais sobre o alto custo de vida, o aumento de gastos militares e a crise climática.",
+      "resumo_pulso": "Conforme cobertura da Al Jazeera English, milhares de jovens manifestantes da Geração Z realizaram protestos em cerca de 25 países europeus. As mobilizações cobram respostas governamentais sobre o alto custo de vida, o aumento de gastos militares e a crise climática.",
+      "sintese_nerd": "Pressupõe pressões sociais sobre governos do continente para redimensionar orçamentos públicos e políticas ambientais.",
+      "impacto_pratico": "Pressupõe pressões sociais sobre governos do continente para redimensionar orçamentos públicos e políticas ambientais.",
+      "paises_envolvidos": [
+        "GB",
+        "FR",
+        "DE",
+        "IT"
+      ],
+      "veiculos_origem": [
+        "Al Jazeera English"
+      ],
+      "fontes_urls": [
+        "https://www.aljazeera.com/video/newsfeed/2026/11/21/gen-z-protests-sweep-europe-over-wars-rising-costs-and-climate?traffic_source=rss"
+      ],
+      "data_publicacao": "2026-11-21T02:49:16Z",
+      "updated_at": "2026-11-21T03:19:26Z"
+    },
+    {
+      "slug": "pf-prende-suspeita-esquema-golpes-financeiros-piaui",
+      "titulo_tema": "Polícia Federal prende no DF suspeita de esquema de falsas operações financeiras",
+      "titulo_curto": "Polícia Federal prende no DF suspeita de esquema de falsas operações financeiras",
+      "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Economia",
+      "categoria": "Economia_Comercio",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 82,
+      "urgencia_score": 83,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-22T03:19:26Z",
+      "palavras_chave_busca": [
+        "polícia federal",
+        "piauí",
+        "golpe financeiro",
+        "investimentos",
+        "fraude"
+      ],
+      "palavras_chave": [
+        "polícia federal",
+        "piauí",
+        "golpe financeiro",
+        "investimentos",
+        "fraude"
+      ],
+      "gatilho_vitrine": "Segundo apuração do G1 Política, a Polícia Federal prendeu no Distrito Federal Kayra Cardoso Guimarães, suspeita de integrar grupo investigado por movimentar mais de R$ 600 milhões em fraudes de investimentos no Piauí. A investigação aponta vínculos com esquemas de falsas operações na bolsa.",
+      "resumo_pulso": "Segundo apuração do G1 Política, a Polícia Federal prendeu no Distrito Federal Kayra Cardoso Guimarães, suspeita de integrar grupo investigado por movimentar mais de R$ 600 milhões em fraudes de investimentos no Piauí. A investigação aponta vínculos com esquemas de falsas operações na bolsa.",
+      "sintese_nerd": "Alerta investidores contra redes criminosas de promessas de ganhos financeiros irreais e fraudes digitais.",
+      "impacto_pratico": "Alerta investidores contra redes criminosas de promessas de ganhos financeiros irreais e fraudes digitais.",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "veiculos_origem": [
+        "G1 Política",
+        "Polícia Federal"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/politica/noticia/2026/11/20/pf-prende-suspeita-de-integrar-esquema-de-falsos-investimentos-que-movimentou-mais-de-r-600-milhoes-no-pi.ghtml"
+      ],
+      "data_publicacao": "2026-11-21T01:50:53Z",
+      "updated_at": "2026-11-21T03:19:26Z"
+    },
+    {
+      "slug": "stf-derruba-sigilo-de-relatorio-da-pf-sobre-mendonca-e-master",
+      "status": "novo",
+      "categoria": "Geopolitica_Relacoes",
+      "ttl_horas": 18,
+      "expires_at": "2026-11-22T13:28:48Z",
+      "updated_at": "2026-11-21T02:08:13Z",
+      "fontes_urls": [
+        "https://agenciabrasil.ebc.com.br/justica/noticia/2026-11/pf-diz-que-nao-ha-conversas-de-mendonca-com-vorcaro"
+      ],
+      "titulo_tema": "PF informa ausência de diálogos entre André Mendonça e Daniel Vorcaro no caso Master",
+      "resumo_pulso": "Segundo apuração da Agência Brasil, a Polícia Federal informou ao Supremo Tribunal Federal (STF) a inexistência de registros de conversas entre o ministro André Mendonça e o ex-banqueiro Daniel Vorcaro. O relatório teve o sigilo retirado pelo presidente da Corte, Edson Fachin, a pedido do próprio magistrado.",
+      "sintese_nerd": "Esclarecimento de apurações em andamento no STF relacionadas ao caso Master.",
+      "titulo_curto": "PF informa ausência de diálogos entre André Mendonça e Daniel Vorcaro no caso Master",
+      "rota_editoria": "/radar",
       "palavras_chave": [
         "stf",
         "polícia federal",
@@ -36,21 +267,30 @@
         "daniel vorcaro",
         "caso master"
       ],
+      "urgencia_score": 94,
+      "data_publicacao": "2026-11-21T01:28:48Z",
       "gatilho_vitrine": "Segundo apuração da Agência Brasil, a Polícia Federal informou ao Supremo Tribunal Federal (STF) a inexistência de registros de conversas entre o ministro André Mendonça e o ex-banqueiro Daniel Vorcaro. O relatório teve o sigilo retirado pelo presidente da Corte, Edson Fachin, a pedido do próprio magistrado.",
-      "resumo_pulso": "Segundo apuração da Agência Brasil, a Polícia Federal informou ao Supremo Tribunal Federal (STF) a inexistência de registros de conversas entre o ministro André Mendonça e o ex-banqueiro Daniel Vorcaro. O relatório teve o sigilo retirado pelo presidente da Corte, Edson Fachin, a pedido do próprio magistrado.",
-      "sintese_nerd": "Esclarecimento de apurações em andamento no STF relacionadas ao caso Master.",
       "impacto_pratico": "Esclarecimento de apurações em andamento no STF relacionadas ao caso Master.",
-      "paises_envolvidos": [
-        "BR"
-      ],
+      "origem_pipeline": "pulso",
       "veiculos_origem": [
         "Agência Brasil"
       ],
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/justica/noticia/2026-11/pf-diz-que-nao-ha-conversas-de-mendonca-com-vorcaro"
+      "relevancia_score": 95,
+      "paises_envolvidos": [
+        "BR"
       ],
-      "data_publicacao": "2026-11-21T01:28:48Z",
-      "updated_at": "2026-11-21T02:08:13Z"
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "stf",
+        "polícia federal",
+        "andré mendonça",
+        "daniel vorcaro",
+        "caso master"
+      ]
     },
     {
       "slug": "decisao-fachin-sigilo-caso-master-stf",
@@ -166,28 +406,19 @@
     },
     {
       "slug": "disparada-do-dolar-pressao-fiscal-brasil-juros-eua",
-      "titulo_tema": "Juros elevados nos EUA e incerteza fiscal no Brasil impulsionam disparada do dólar",
-      "titulo_curto": "Juros elevados nos EUA e incerteza fiscal no Brasil impulsionam disparada do dólar",
       "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Economia",
       "categoria": "Economia_Comercio",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 90,
-      "urgencia_score": 89,
       "ttl_horas": 24,
       "expires_at": "2026-11-22T01:19:08Z",
-      "palavras_chave_busca": [
-        "dólar",
-        "câmbio",
-        "inflação",
-        "federal reserve",
-        "economia"
+      "updated_at": "2026-11-21T02:08:13Z",
+      "fontes_urls": [
+        "https://g1.globo.com/jornal-nacional/noticia/2026/11/20/juros-nos-eua-e-ajuste-fiscal-no-brasil-o-que-esta-por-tras-da-disparada-do-dolar.ghtml"
       ],
+      "titulo_tema": "Juros elevados nos EUA e incerteza fiscal no Brasil impulsionam disparada do dólar",
+      "resumo_pulso": "Segundo reportagem do G1 Economia, a valorização contínua do dólar no mercado global continua exercendo forte pressão sobre o real. O movimento reflete a expectativa de manutenção de taxas de juros elevadas pelo Federal Reserve aliada às incertezas fiscais internas.",
+      "sintese_nerd": "Impacto direto no custo de importações, inflação interna e cotação de moedas estrangeiras.",
+      "titulo_curto": "Juros elevados nos EUA e incerteza fiscal no Brasil impulsionam disparada do dólar",
+      "rota_editoria": "/economia",
       "palavras_chave": [
         "dólar",
         "câmbio",
@@ -195,47 +426,47 @@
         "federal reserve",
         "economia"
       ],
+      "urgencia_score": 89,
+      "data_publicacao": "2026-11-21T01:01:51Z",
       "gatilho_vitrine": "Segundo reportagem do G1 Economia, a valorização contínua do dólar no mercado global continua exercendo forte pressão sobre o real. O movimento reflete a expectativa de manutenção de taxas de juros elevadas pelo Federal Reserve aliada às incertezas fiscais internas.",
-      "resumo_pulso": "Segundo reportagem do G1 Economia, a valorização contínua do dólar no mercado global continua exercendo forte pressão sobre o real. O movimento reflete a expectativa de manutenção de taxas de juros elevadas pelo Federal Reserve aliada às incertezas fiscais internas.",
-      "sintese_nerd": "Impacto direto no custo de importações, inflação interna e cotação de moedas estrangeiras.",
       "impacto_pratico": "Impacto direto no custo de importações, inflação interna e cotação de moedas estrangeiras.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "G1 Economia"
+      ],
+      "relevancia_score": 90,
       "paises_envolvidos": [
         "BR",
         "US"
       ],
-      "veiculos_origem": [
-        "G1 Economia"
-      ],
-      "fontes_urls": [
-        "https://g1.globo.com/jornal-nacional/noticia/2026/11/20/juros-nos-eua-e-ajuste-fiscal-no-brasil-o-que-esta-por-tras-da-disparada-do-dolar.ghtml"
-      ],
-      "data_publicacao": "2026-11-21T01:01:51Z",
-      "updated_at": "2026-11-21T02:08:13Z"
-    },
-    {
-      "slug": "bayer-pagara-bilhoes-em-acordo-judicial-com-pacientes-com-cancer",
-      "titulo_tema": "Justiça nos EUA aprova acordo de até US$ 7,25 bilhões da Bayer sobre herbicida Roundup",
-      "titulo_curto": "Justiça nos EUA aprova acordo de até US$ 7,25 bilhões da Bayer sobre herbicida Roundup",
-      "status": "novo",
-      "origem_pipeline": "pulso",
       "categoria_primaria": "Economia",
-      "categoria": "Economia_Comercio",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
       ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 87,
-      "urgencia_score": 88,
+      "palavras_chave_busca": [
+        "dólar",
+        "câmbio",
+        "inflação",
+        "federal reserve",
+        "economia"
+      ]
+    },
+    {
+      "slug": "bayer-pagara-bilhoes-em-acordo-judicial-com-pacientes-com-cancer",
+      "status": "novo",
+      "categoria": "Economia_Comercio",
       "ttl_horas": 24,
       "expires_at": "2026-11-22T00:48:20Z",
-      "palavras_chave_busca": [
-        "bayer",
-        "roundup",
-        "eua",
-        "processo judicial",
-        "saúde"
+      "updated_at": "2026-11-21T02:08:13Z",
+      "fontes_urls": [
+        "https://g1.globo.com/mundo/noticia/2026/11/20/bayer-pagara-ate-us-725-bilhoes-em-acordo-judicial-com-pacientes-que-alegam-ter-desenvolvido-cancer-apos-uso-de-herbicida.ghtml"
       ],
+      "titulo_tema": "Justiça nos EUA aprova acordo de até US$ 7,25 bilhões da Bayer sobre herbicida Roundup",
+      "resumo_pulso": "Segundo apuração do G1 Mundo, um tribunal estadunidense no Missouri aprovou o acordo de até US$ 7,25 bilhões proposto pela Bayer para encerrar milhares de processos movidos por pacientes que alegam ter desenvolvido linfoma após o uso do herbicida Roundup.",
+      "sintese_nerd": "Encerramento de litígios históricos e impactos financeiros de longo prazo para a multinacional farmacêutica e agrícola.",
+      "titulo_curto": "Justiça nos EUA aprova acordo de até US$ 7,25 bilhões da Bayer sobre herbicida Roundup",
+      "rota_editoria": "/economia",
       "palavras_chave": [
         "bayer",
         "roundup",
@@ -243,22 +474,31 @@
         "processo judicial",
         "saúde"
       ],
+      "urgencia_score": 88,
+      "data_publicacao": "2026-11-21T00:38:30Z",
       "gatilho_vitrine": "Segundo apuração do G1 Mundo, um tribunal estadunidense no Missouri aprovou o acordo de até US$ 7,25 bilhões proposto pela Bayer para encerrar milhares de processos movidos por pacientes que alegam ter desenvolvido linfoma após o uso do herbicida Roundup.",
-      "resumo_pulso": "Segundo apuração do G1 Mundo, um tribunal estadunidense no Missouri aprovou o acordo de até US$ 7,25 bilhões proposto pela Bayer para encerrar milhares de processos movidos por pacientes que alegam ter desenvolvido linfoma após o uso do herbicida Roundup.",
-      "sintese_nerd": "Encerramento de litígios históricos e impactos financeiros de longo prazo para a multinacional farmacêutica e agrícola.",
       "impacto_pratico": "Encerramento de litígios históricos e impactos financeiros de longo prazo para a multinacional farmacêutica e agrícola.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "G1 Mundo"
+      ],
+      "relevancia_score": 87,
       "paises_envolvidos": [
         "US",
         "DE"
       ],
-      "veiculos_origem": [
-        "G1 Mundo"
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
       ],
-      "fontes_urls": [
-        "https://g1.globo.com/mundo/noticia/2026/11/20/bayer-pagara-ate-us-725-bilhoes-em-acordo-judicial-com-pacientes-que-alegam-ter-desenvolvido-cancer-apos-uso-de-herbicida.ghtml"
-      ],
-      "data_publicacao": "2026-11-21T00:38:30Z",
-      "updated_at": "2026-11-21T02:08:13Z"
+      "palavras_chave_busca": [
+        "bayer",
+        "roundup",
+        "eua",
+        "processo judicial",
+        "saúde"
+      ]
     },
     {
       "slug": "peru-registra-terremoto-de-magnitude-6-7-sentido-em-lima",
@@ -355,28 +595,19 @@
     },
     {
       "slug": "nova-caravana-migrantes-mexico-eua-ameaca-tarifas-trump",
-      "titulo_tema": "Caravana com cerca de 300 migrantes avança no sul do México rumo aos EUA",
-      "titulo_curto": "Caravana com cerca de 300 migrantes avança no sul do México rumo aos EUA",
       "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Geopolitica_Radar",
       "categoria": "Mobilidade_Fronteiras",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 87,
-      "urgencia_score": 86,
       "ttl_horas": 24,
       "expires_at": "2026-11-22T01:19:08Z",
-      "palavras_chave_busca": [
-        "migração",
-        "méxico",
-        "eua",
-        "fronteira",
-        "tarifas"
+      "updated_at": "2026-11-21T02:08:13Z",
+      "fontes_urls": [
+        "https://www.infomoney.com.br/mundo/nova-caravana-com-cerca-de-300-migrantes-entra-no-sul-do-mexico-rumo-aos-eua/"
       ],
+      "titulo_tema": "Caravana com cerca de 300 migrantes avança no sul do México rumo aos EUA",
+      "resumo_pulso": "Conforme noticiado pela InfoMoney, um grupo com cerca de 300 migrantes ingressou no território sul-mexicano com destino à fronteira norte-americana. O deslocamento ocorre em meio a alertas e ameaças de taxação comercial por parte do governo de Donald Trump.",
+      "sintese_nerd": "Pressão sobre as políticas de controle migratório na fronteira entre México e Estados Unidos.",
+      "titulo_curto": "Caravana com cerca de 300 migrantes avança no sul do México rumo aos EUA",
+      "rota_editoria": "/radar",
       "palavras_chave": [
         "migração",
         "méxico",
@@ -384,22 +615,31 @@
         "fronteira",
         "tarifas"
       ],
+      "urgencia_score": 86,
+      "data_publicacao": "2026-11-20T23:03:00Z",
       "gatilho_vitrine": "Conforme noticiado pela InfoMoney, um grupo com cerca de 300 migrantes ingressou no território sul-mexicano com destino à fronteira norte-americana. O deslocamento ocorre em meio a alertas e ameaças de taxação comercial por parte do governo de Donald Trump.",
-      "resumo_pulso": "Conforme noticiado pela InfoMoney, um grupo com cerca de 300 migrantes ingressou no território sul-mexicano com destino à fronteira norte-americana. O deslocamento ocorre em meio a alertas e ameaças de taxação comercial por parte do governo de Donald Trump.",
-      "sintese_nerd": "Pressão sobre as políticas de controle migratório na fronteira entre México e Estados Unidos.",
       "impacto_pratico": "Pressão sobre as políticas de controle migratório na fronteira entre México e Estados Unidos.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "InfoMoney"
+      ],
+      "relevancia_score": 87,
       "paises_envolvidos": [
         "MX",
         "US"
       ],
-      "veiculos_origem": [
-        "InfoMoney"
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
       ],
-      "fontes_urls": [
-        "https://www.infomoney.com.br/mundo/nova-caravana-com-cerca-de-300-migrantes-entra-no-sul-do-mexico-rumo-aos-eua/"
-      ],
-      "data_publicacao": "2026-11-20T23:03:00Z",
-      "updated_at": "2026-11-21T02:08:13Z"
+      "palavras_chave_busca": [
+        "migração",
+        "méxico",
+        "eua",
+        "fronteira",
+        "tarifas"
+      ]
     },
     {
       "slug": "acoes-da-anthropic-enfrentam-queda-em-bolsa-americana",
@@ -629,263 +869,197 @@
         "inteligência artificial",
         "redes sociais"
       ]
-    },
-    {
-      "slug": "desigualdade-racial-pre-natal-bebes-pretos-sus",
-      "status": "novo",
-      "categoria": "Sociedade_Cultura",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-21T21:42:32Z",
-      "updated_at": "2026-11-20T22:42:09Z",
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-11/renda-de-73-de-negras-vitimas-de-violencia-e-de-ate-2-salarios-minimo",
-        "https://g1.globo.com/politica/noticia/2026/11/20/maes-pretas-fazem-menos-consultas-de-pre-natal-e-seus-bebes-tem-mais-chance-de-nascer-com-baixo-peso-mostram-dados-do-sus.ghtml"
-      ],
-      "titulo_tema": "Vulnerabilidade em casos de violência e dados do SUS evidenciam desigualdades raciais",
-      "resumo_pulso": "Segundo dados divulgados pela Agência Brasil e pelo G1 Política, 73% das mulheres negras vítimas de violência doméstica vivem com renda familiar de até dois salários mínimos, índice superior ao verificado entre mulheres brancas. Estudos complementares do Datasus apontam ainda menores taxas de pré-natal e maior incidência de prematuridade entre recém-nascidos negros.",
-      "sintese_nerd": "Direciona o foco de políticas públicas para a mitigação de disparidades socioeconômicas e de saúde.",
-      "titulo_curto": "Vulnerabilidade em casos de violência e dados do SUS evidenciam desigualdades raciais",
-      "rota_editoria": "/cultura",
-      "palavras_chave": [
-        "saúde",
-        "desigualdade racial",
-        "sus",
-        "direitos humanos"
-      ],
-      "urgencia_score": 85,
-      "data_publicacao": "2026-11-20T21:28:06Z",
-      "gatilho_vitrine": "Segundo dados divulgados pela Agência Brasil e pelo G1 Política, 73% das mulheres negras vítimas de violência doméstica vivem com renda familiar de até dois salários mínimos, índice superior ao verificado entre mulheres brancas. Estudos complementares do Datasus apontam ainda menores taxas de pré-natal e maior incidência de prematuridade entre recém-nascidos negros.",
-      "impacto_pratico": "Direciona o foco de políticas públicas para a mitigação de disparidades socioeconômicas e de saúde.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "Agência Brasil (EBC)",
-        "G1 Política"
-      ],
-      "relevancia_score": 88,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "categoria_primaria": "Cultura",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "saúde",
-        "desigualdade racial",
-        "sus",
-        "direitos humanos"
-      ]
-    },
-    {
-      "slug": "senado-frances-aprova-lei-presuncao-legalidade-disparos-policiais",
-      "status": "novo",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-21T21:42:32Z",
-      "updated_at": "2026-11-20T21:42:32Z",
-      "fontes_urls": [
-        "https://g1.globo.com/mundo/noticia/2026/11/20/senado-frances-lei-disparos-policiais.ghtml"
-      ],
-      "titulo_tema": "Senado da França aprova lei que presume legalidade em disparos efetuados por policiais",
-      "resumo_pulso": "Segundo reportado pelo G1 Mundo, o Senado francês aprovou em definitivo o projeto de lei que estabelece a presunção legal de legítima defesa em disparos efetuados por agentes de segurança. A proposta é contestada pela oposição e partidos de esquerda, que pretendem recorrer ao Conselho Constitucional.",
-      "sintese_nerd": "Alteração direta na legislação de segurança pública e nas regras de engajamento policial na França.",
-      "titulo_curto": "Senado da França aprova lei que presume legalidade em disparos efetuados por policiais",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "frança",
-        "senado",
-        "segurança pública",
-        "polícia",
-        "legislação"
-      ],
-      "urgencia_score": 84,
-      "data_publicacao": "2026-11-20T21:25:43Z",
-      "gatilho_vitrine": "Segundo reportado pelo G1 Mundo, o Senado francês aprovou em definitivo o projeto de lei que estabelece a presunção legal de legítima defesa em disparos efetuados por agentes de segurança. A proposta é contestada pela oposição e partidos de esquerda, que pretendem recorrer ao Conselho Constitucional.",
-      "impacto_pratico": "Alteração direta na legislação de segurança pública e nas regras de engajamento policial na França.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "G1 Mundo"
-      ],
-      "relevancia_score": 82,
-      "paises_envolvidos": [
-        "FR"
-      ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "frança",
-        "senado",
-        "segurança pública",
-        "polícia",
-        "legislação"
-      ]
-    },
-    {
-      "slug": "brasil-cobra-revisao-bancos-itaipu-crise-ueno-bank-paraguai",
-      "status": "novo",
-      "categoria": "Economia_Comercio",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-21T21:42:32Z",
-      "updated_at": "2026-11-21T01:12:45Z",
-      "fontes_urls": [
-        "https://g1.globo.com/economia/noticia/2026/11/20/conmebol-recursos-banco-ueno.ghtml"
-      ],
-      "titulo_tema": "Conmebol confirma US$ 15 milhões investidos no Ueno Bank, instituição liquidada no Paraguai",
-      "resumo_pulso": "Conforme apuração do G1 Economia, a Conmebol admitiu possuir o equivalente a R$ 88 milhões aplicados no Ueno Bank, instituição financeira paraguaia alvo de liquidação pelo Banco Central do país. A quebra do banco gera repercussões financeiras e políticas regionais.",
-      "sintese_nerd": "Possíveis impactos nas finanças de entidades esportivas sul-americanas e credibilidade do sistema financeiro paraguaio.",
-      "titulo_curto": "Conmebol confirma US$ 15 milhões investidos no Ueno Bank, instituição liquidada no Paraguai",
-      "rota_editoria": "/economia",
-      "palavras_chave": [
-        "conmebol",
-        "ueno bank",
-        "paraguai",
-        "banco central"
-      ],
-      "urgencia_score": 86,
-      "data_publicacao": "2026-11-20T21:11:02Z",
-      "gatilho_vitrine": "Conforme apuração do G1 Economia, a Conmebol admitiu possuir o equivalente a R$ 88 milhões aplicados no Ueno Bank, instituição financeira paraguaia alvo de liquidação pelo Banco Central do país. A quebra do banco gera repercussões financeiras e políticas regionais.",
-      "impacto_pratico": "Possíveis impactos nas finanças de entidades esportivas sul-americanas e credibilidade do sistema financeiro paraguaio.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "G1 Economia"
-      ],
-      "relevancia_score": 87,
-      "paises_envolvidos": [
-        "PY",
-        "BR"
-      ],
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "conmebol",
-        "ueno bank",
-        "paraguai",
-        "banco central"
-      ]
-    },
-    {
-      "slug": "trump-ameaca-taxar-empresas-eua-centros-dados-ia-exterior",
-      "status": "novo",
-      "categoria": "Economia_Comercio",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-21T21:42:32Z",
-      "updated_at": "2026-11-20T21:42:32Z",
-      "fontes_urls": [
-        "https://www.aljazeera.com/video/newsfeed/2026/11/20/aje-onl-nf_trump-tax-us-tech-firms-ai-data-centres-abroad-201126?traffic_source=rss"
-      ],
-      "titulo_tema": "Trump ameaça aplicar impostos sobre empresas de IA dos EUA que construírem data centers no exterior",
-      "resumo_pulso": "Segundo a Al Jazeera English, o presidente dos EUA, Donald Trump, afirmou que aplicará elevadas tarifas contra empresas americanas de tecnologia que instalarem centros de dados de inteligência artificial fora do país. A medida visa forçar o investimento e a infraestrutura do setor dentro do território americano.",
-      "sintese_nerd": "Possível encarecimento de serviços de IA e revisão de planos de expansão internacional de grandes empresas tecnológicas.",
-      "titulo_curto": "Trump ameaça aplicar impostos sobre empresas de IA dos EUA que construírem data centers no exterior",
-      "rota_editoria": "/economia",
-      "palavras_chave": [
-        "donald trump",
-        "inteligência artificial",
-        "data centers",
-        "eua",
-        "tarifas"
-      ],
-      "urgencia_score": 86,
-      "data_publicacao": "2026-11-20T21:10:53Z",
-      "gatilho_vitrine": "Segundo a Al Jazeera English, o presidente dos EUA, Donald Trump, afirmou que aplicará elevadas tarifas contra empresas americanas de tecnologia que instalarem centros de dados de inteligência artificial fora do país. A medida visa forçar o investimento e a infraestrutura do setor dentro do território americano.",
-      "impacto_pratico": "Possível encarecimento de serviços de IA e revisão de planos de expansão internacional de grandes empresas tecnológicas.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "Al Jazeera English"
-      ],
-      "relevancia_score": 85,
-      "paises_envolvidos": [
-        "US"
-      ],
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "donald trump",
-        "inteligência artificial",
-        "data centers",
-        "eua",
-        "tarifas"
-      ]
-    },
-    {
-      "slug": "moraes-vota-manter-apreensao-passaporte-flavio-bolsonaro",
-      "status": "novo",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 18,
-      "expires_at": "2026-11-21T15:42:32Z",
-      "updated_at": "2026-11-20T21:42:32Z",
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/justica/noticia/2026-11/moraes-vota-para-manter-apreensao-de-passaportes-de-flavio-bolsonaro"
-      ],
-      "titulo_tema": "Moraes vota no STF para manter apreensão de passaportes de Flávio Bolsonaro",
-      "resumo_pulso": "Conforme divulgado pela Agência Brasil, o ministro Alexandre de Moraes votou no plenário virtual do STF pela manutenção da decisão que apreendeu os passaportes e proibiu o senador Flávio Bolsonaro de deixar o país. O voto ocorreu na análise do recurso apresentado pela defesa do parlamentar.",
-      "sintese_nerd": "Manutenção das restrições de viagem internacionais impostas ao senador pela Justiça Federal.",
-      "titulo_curto": "Moraes vota no STF para manter apreensão de passaportes de Flávio Bolsonaro",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "alexandre de moraes",
-        "flávio bolsonaro",
-        "stf",
-        "passaportes",
-        "justiça"
-      ],
-      "urgencia_score": 88,
-      "data_publicacao": "2026-11-20T20:55:00Z",
-      "gatilho_vitrine": "Conforme divulgado pela Agência Brasil, o ministro Alexandre de Moraes votou no plenário virtual do STF pela manutenção da decisão que apreendeu os passaportes e proibiu o senador Flávio Bolsonaro de deixar o país. O voto ocorreu na análise do recurso apresentado pela defesa do parlamentar.",
-      "impacto_pratico": "Manutenção das restrições de viagem internacionais impostas ao senador pela Justiça Federal.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "Agência Brasil (EBC)"
-      ],
-      "relevancia_score": 87,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "alexandre de moraes",
-        "flávio bolsonaro",
-        "stf",
-        "passaportes",
-        "justiça"
-      ]
     }
   ],
   "noticias_quentes": [
     {
-      "slug": "stf-derruba-sigilo-de-relatorio-da-pf-sobre-mendonca-e-master",
-      "titulo_curto": "PF informa ausência de diálogos entre André Mendonça e Daniel Vorcaro no caso Master",
-      "resumo_pulso": "Segundo apuração da Agência Brasil, a Polícia Federal informou ao Supremo Tribunal Federal (STF) a inexistência de registros de conversas entre o ministro André Mendonça e o ex-banqueiro Daniel Vorcaro. O relatório teve o sigilo retirado pelo presidente da Corte, Edson Fachin, a pedido do próprio magistrado.",
-      "impacto_pratico": "Esclarecimento de apurações em andamento no STF relacionadas ao caso Master.",
+      "slug": "paraguai-ex-procurador-geral-denuncia-perseguicao-onu-escandalo-ueno-bank",
+      "titulo_curto": "Ex-procurador-geral do Paraguai denuncia à ONU perseguição política após crise no Ueno Bank",
+      "resumo_pulso": "Segundo apuração do G1 Mundo com base em documentos da AFP, o ex-procurador-geral do Paraguai Emiliano Rolón denunciou à ONU ter sofrido perseguição política. A renúncia e denúncia ocorrem no contexto do escândalo envolvendo o Ueno Bank, que resultou na destituição e prisão do ex-presidente Santiago Peña.",
+      "impacto_pratico": "Gera instabilidade política institucional na tríplice fronteira e acende alertas de risco para investimentos estrangeiros na região.",
+      "categoria": "Geopolitica_Relacoes",
+      "paises_envolvidos": [
+        "PY"
+      ],
+      "urgencia_score": 91,
+      "relevancia_score": 90,
+      "nivel_confianca": "alta",
+      "ttl_horas": 24,
+      "horas_em_destaque": 12,
+      "veiculos_origem": [
+        "G1 Mundo",
+        "AFP"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/mundo/noticia/2026/11/21/ex-procurador-geral-do-paraguai-denuncia-perseguicao-politica-a-onu-apos-escandalo-bancario.ghtml"
+      ],
+      "palavras_chave": [
+        "Paraguai",
+        "Ueno Bank",
+        "Emiliano Rolón",
+        "Santiago Peña",
+        "ONU"
+      ],
+      "data_publicacao": "2026-11-21T03:06:51Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "Economia no Brasil",
+          "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
+          "motivo_conexao": "O escândalo do Ueno Bank e suas repercussões econômicas regionais afetam a dinâmica comercial e bancária com vizinhos sul-americanos."
+        }
+      ],
+      "expires_at": "2026-11-22T03:19:26Z",
+      "updated_at": "2026-11-21T03:19:26Z"
+    },
+    {
+      "slug": "tribunal-frances-condena-policiais-por-agressao-racista",
+      "titulo_curto": "Justiça de Paris condena três policiais em caso de agressão racista contra produtor",
+      "resumo_pulso": "Conforme reportado pela Al Jazeera English, a corte criminal de Paris determinou a condenação de três policiais franceses, reconhecendo o racismo como fator agravante na agressão sofrida em 2020 pelo produtor musical negro Michel Zecler.",
+      "impacto_pratico": "Reforça o debate sobre abusos de força e critérios de responsabilidade penal de agentes estatais na Europa.",
+      "categoria": "Sociedade_Cultura",
+      "paises_envolvidos": [
+        "FR"
+      ],
+      "urgencia_score": 85,
+      "relevancia_score": 84,
+      "nivel_confianca": "alta",
+      "ttl_horas": 18,
+      "horas_em_destaque": 8,
+      "veiculos_origem": [
+        "Al Jazeera English"
+      ],
+      "fontes_urls": [
+        "https://www.aljazeera.com/news/2026/11/21/three-french-police-officers-sentenced-over-racist-assault-on-black-man?traffic_source=rss"
+      ],
+      "palavras_chave": [
+        "França",
+        "Paris",
+        "Racismo",
+        "Polícia",
+        "Michel Zecler"
+      ],
+      "data_publicacao": "2026-11-21T03:01:24Z",
+      "links_internos_relacionados": [],
+      "expires_at": "2026-11-21T21:19:26Z",
+      "updated_at": "2026-11-21T03:19:26Z"
+    },
+    {
+      "slug": "fachin-tenta-avancar-reformas-stf-antes-recesso",
+      "titulo_curto": "A um mês do recesso, STF enfrenta resistências em pautas de reforma interna",
+      "resumo_pulso": "Segundo levantamento do G1 Política, o presidente do STF, ministro Edson Fachin, tenta avançar com pautas sensíveis antes do recesso do Judiciário em 20 de dezembro. Entre os pontos de atrito estão a reforma do sistema de justiça, o código de ética para tribunais superiores e relatórios da Polícia Federal.",
+      "impacto_pratico": "Movimentações no Supremo influenciam diretamente a governabilidade e o equilíbrio institucional entre os Poderes no Brasil.",
       "categoria": "Geopolitica_Relacoes",
       "paises_envolvidos": [
         "BR"
       ],
-      "urgencia_score": 94,
-      "relevancia_score": 95,
+      "urgencia_score": 88,
+      "relevancia_score": 89,
+      "nivel_confianca": "alta",
+      "ttl_horas": 24,
+      "horas_em_destaque": 12,
+      "veiculos_origem": [
+        "G1 Política"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/politica/noticia/2026/11/21/a-um-mes-do-recesso-fachin-tenta-avancar-com-agenda-de-reformas-no-stf-mas-enfrenta-resistencias.ghtml"
+      ],
+      "palavras_chave": [
+        "STF",
+        "Edson Fachin",
+        "Reforma do Judiciário",
+        "Congresso",
+        "Política"
+      ],
+      "data_publicacao": "2026-11-21T03:00:00Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "STF analisa regras de transparência e limites constitucionais entre os Poderes",
+          "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
+          "motivo_conexao": "Complementa a análise sobre as prerrogativas institucionais e os embates de governança acompanhados pelo STF."
+        }
+      ],
+      "expires_at": "2026-11-22T03:19:26Z",
+      "updated_at": "2026-11-21T03:19:26Z"
+    },
+    {
+      "slug": "protestos-geracao-z-europa-custos-guerras-clima",
+      "titulo_curto": "Protestos da Geração Z mobilizam dezenas de países na Europa contra custos e guerras",
+      "resumo_pulso": "Conforme cobertura da Al Jazeera English, milhares de jovens manifestantes da Geração Z realizaram protestos em cerca de 25 países europeus. As mobilizações cobram respostas governamentais sobre o alto custo de vida, o aumento de gastos militares e a crise climática.",
+      "impacto_pratico": "Pressupõe pressões sociais sobre governos do continente para redimensionar orçamentos públicos e políticas ambientais.",
+      "categoria": "Sociedade_Cultura",
+      "paises_envolvidos": [
+        "GB",
+        "FR",
+        "DE",
+        "IT"
+      ],
+      "urgencia_score": 87,
+      "relevancia_score": 86,
       "nivel_confianca": "alta",
       "ttl_horas": 18,
-      "horas_em_destaque": 18,
+      "horas_em_destaque": 8,
       "veiculos_origem": [
-        "Agência Brasil"
+        "Al Jazeera English"
       ],
+      "fontes_urls": [
+        "https://www.aljazeera.com/video/newsfeed/2026/11/21/gen-z-protests-sweep-europe-over-wars-rising-costs-and-climate?traffic_source=rss"
+      ],
+      "palavras_chave": [
+        "Europa",
+        "Geração Z",
+        "Protestos",
+        "Custo de vida",
+        "Gastos militares"
+      ],
+      "data_publicacao": "2026-11-21T02:49:16Z",
+      "links_internos_relacionados": [],
+      "expires_at": "2026-11-21T21:19:26Z",
+      "updated_at": "2026-11-21T03:19:26Z"
+    },
+    {
+      "slug": "pf-prende-suspeita-esquema-golpes-financeiros-piaui",
+      "titulo_curto": "Polícia Federal prende no DF suspeita de esquema de falsas operações financeiras",
+      "resumo_pulso": "Segundo apuração do G1 Política, a Polícia Federal prendeu no Distrito Federal Kayra Cardoso Guimarães, suspeita de integrar grupo investigado por movimentar mais de R$ 600 milhões em fraudes de investimentos no Piauí. A investigação aponta vínculos com esquemas de falsas operações na bolsa.",
+      "impacto_pratico": "Alerta investidores contra redes criminosas de promessas de ganhos financeiros irreais e fraudes digitais.",
+      "categoria": "Economia_Comercio",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "urgencia_score": 83,
+      "relevancia_score": 82,
+      "nivel_confianca": "alta",
+      "ttl_horas": 24,
+      "horas_em_destaque": 8,
+      "veiculos_origem": [
+        "G1 Política",
+        "Polícia Federal"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/politica/noticia/2026/11/20/pf-prende-suspeita-de-integrar-esquema-de-falsos-investimentos-que-movimentou-mais-de-r-600-milhoes-no-pi.ghtml"
+      ],
+      "palavras_chave": [
+        "Polícia Federal",
+        "Piauí",
+        "Golpe financeiro",
+        "Investimentos",
+        "Fraude"
+      ],
+      "data_publicacao": "2026-11-21T01:50:53Z",
+      "links_internos_relacionados": [],
+      "expires_at": "2026-11-22T03:19:26Z",
+      "updated_at": "2026-11-21T03:19:26Z"
+    },
+    {
+      "slug": "stf-derruba-sigilo-de-relatorio-da-pf-sobre-mendonca-e-master",
+      "categoria": "Geopolitica_Relacoes",
+      "ttl_horas": 18,
+      "expires_at": "2026-11-22T13:28:48Z",
+      "updated_at": "2026-11-21T02:08:13Z",
       "fontes_urls": [
         "https://agenciabrasil.ebc.com.br/justica/noticia/2026-11/pf-diz-que-nao-ha-conversas-de-mendonca-com-vorcaro"
       ],
+      "resumo_pulso": "Segundo apuração da Agência Brasil, a Polícia Federal informou ao Supremo Tribunal Federal (STF) a inexistência de registros de conversas entre o ministro André Mendonça e o ex-banqueiro Daniel Vorcaro. O relatório teve o sigilo retirado pelo presidente da Corte, Edson Fachin, a pedido do próprio magistrado.",
+      "titulo_curto": "PF informa ausência de diálogos entre André Mendonça e Daniel Vorcaro no caso Master",
       "palavras_chave": [
         "STF",
         "Polícia Federal",
@@ -893,38 +1067,37 @@
         "Daniel Vorcaro",
         "caso Master"
       ],
+      "urgencia_score": 94,
       "data_publicacao": "2026-11-21T01:28:48Z",
+      "impacto_pratico": "Esclarecimento de apurações em andamento no STF relacionadas ao caso Master.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Agência Brasil"
+      ],
+      "relevancia_score": 95,
+      "horas_em_destaque": 18,
+      "paises_envolvidos": [
+        "BR"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "STF analisa regras de transparência e limites constitucionais entre os Poderes",
           "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
-          "motivo_conexao": "Contextualiza a atuação e decisões recentes do Supremo Tribunal Federal no cenário político nacional."
+          "motivo_conexao": "Contextualiza a atuação e decisões recentes do Supremo Tribunal Federal no cenário político nacional.",
+          "titulo_existente": "STF analisa regras de transparência e limites constitucionais entre os Poderes"
         }
-      ],
-      "expires_at": "2026-11-22T13:28:48Z",
-      "updated_at": "2026-11-21T02:08:13Z"
+      ]
     },
     {
       "slug": "disparada-do-dolar-pressao-fiscal-brasil-juros-eua",
-      "titulo_curto": "Juros elevados nos EUA e incerteza fiscal no Brasil impulsionam disparada do dólar",
-      "resumo_pulso": "Segundo reportagem do G1 Economia, a valorização contínua do dólar no mercado global continua exercendo forte pressão sobre o real. O movimento reflete a expectativa de manutenção de taxas de juros elevadas pelo Federal Reserve aliada às incertezas fiscais internas.",
-      "impacto_pratico": "Impacto direto no custo de importações, inflação interna e cotação de moedas estrangeiras.",
       "categoria": "Economia_Comercio",
-      "paises_envolvidos": [
-        "BR",
-        "US"
-      ],
-      "urgencia_score": 89,
-      "relevancia_score": 90,
-      "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 24,
-      "veiculos_origem": [
-        "G1 Economia"
-      ],
+      "expires_at": "2026-11-22T01:19:08Z",
+      "updated_at": "2026-11-21T02:08:13Z",
       "fontes_urls": [
         "https://g1.globo.com/jornal-nacional/noticia/2026/11/20/juros-nos-eua-e-ajuste-fiscal-no-brasil-o-que-esta-por-tras-da-disparada-do-dolar.ghtml"
       ],
+      "resumo_pulso": "Segundo reportagem do G1 Economia, a valorização contínua do dólar no mercado global continua exercendo forte pressão sobre o real. O movimento reflete a expectativa de manutenção de taxas de juros elevadas pelo Federal Reserve aliada às incertezas fiscais internas.",
+      "titulo_curto": "Juros elevados nos EUA e incerteza fiscal no Brasil impulsionam disparada do dólar",
       "palavras_chave": [
         "dólar",
         "câmbio",
@@ -932,38 +1105,38 @@
         "Federal Reserve",
         "economia"
       ],
+      "urgencia_score": 89,
       "data_publicacao": "2026-11-21T01:01:51Z",
+      "impacto_pratico": "Impacto direto no custo de importações, inflação interna e cotação de moedas estrangeiras.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "G1 Economia"
+      ],
+      "relevancia_score": 90,
+      "horas_em_destaque": 24,
+      "paises_envolvidos": [
+        "BR",
+        "US"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "O que é inflação?",
           "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
-          "motivo_conexao": "Ajuda a compreender a relação entre câmbio, alta de preços e política monetária."
+          "motivo_conexao": "Ajuda a compreender a relação entre câmbio, alta de preços e política monetária.",
+          "titulo_existente": "O que é inflação?"
         }
-      ],
-      "expires_at": "2026-11-22T01:19:08Z",
-      "updated_at": "2026-11-21T02:08:13Z"
+      ]
     },
     {
       "slug": "bayer-pagara-bilhoes-em-acordo-judicial-com-pacientes-com-cancer",
-      "titulo_curto": "Justiça nos EUA aprova acordo de até US$ 7,25 bilhões da Bayer sobre herbicida Roundup",
-      "resumo_pulso": "Segundo apuração do G1 Mundo, um tribunal estadunidense no Missouri aprovou o acordo de até US$ 7,25 bilhões proposto pela Bayer para encerrar milhares de processos movidos por pacientes que alegam ter desenvolvido linfoma após o uso do herbicida Roundup.",
-      "impacto_pratico": "Encerramento de litígios históricos e impactos financeiros de longo prazo para a multinacional farmacêutica e agrícola.",
       "categoria": "Economia_Comercio",
-      "paises_envolvidos": [
-        "US",
-        "DE"
-      ],
-      "urgencia_score": 88,
-      "relevancia_score": 87,
-      "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 24,
-      "veiculos_origem": [
-        "G1 Mundo"
-      ],
+      "expires_at": "2026-11-22T00:48:20Z",
+      "updated_at": "2026-11-21T02:08:13Z",
       "fontes_urls": [
         "https://g1.globo.com/mundo/noticia/2026/11/20/bayer-pagara-ate-us-725-bilhoes-em-acordo-judicial-com-pacientes-que-alegam-ter-desenvolvido-cancer-apos-uso-de-herbicida.ghtml"
       ],
+      "resumo_pulso": "Segundo apuração do G1 Mundo, um tribunal estadunidense no Missouri aprovou o acordo de até US$ 7,25 bilhões proposto pela Bayer para encerrar milhares de processos movidos por pacientes que alegam ter desenvolvido linfoma após o uso do herbicida Roundup.",
+      "titulo_curto": "Justiça nos EUA aprova acordo de até US$ 7,25 bilhões da Bayer sobre herbicida Roundup",
       "palavras_chave": [
         "Bayer",
         "Roundup",
@@ -971,16 +1144,26 @@
         "processo judicial",
         "saúde"
       ],
+      "urgencia_score": 88,
       "data_publicacao": "2026-11-21T00:38:30Z",
+      "impacto_pratico": "Encerramento de litígios históricos e impactos financeiros de longo prazo para a multinacional farmacêutica e agrícola.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "G1 Mundo"
+      ],
+      "relevancia_score": 87,
+      "horas_em_destaque": 24,
+      "paises_envolvidos": [
+        "US",
+        "DE"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "Mercados e aliados internacionais avaliam impacto da política comercial norte-americana",
           "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
-          "motivo_conexao": "Analisa o ambiente regulatório e jurídico corporativo envolvendo grandes empresas nos Estados Unidos."
+          "motivo_conexao": "Analisa o ambiente regulatório e jurídico corporativo envolvendo grandes empresas nos Estados Unidos.",
+          "titulo_existente": "Mercados e aliados internacionais avaliam impacto da política comercial norte-americana"
         }
-      ],
-      "expires_at": "2026-11-22T00:48:20Z",
-      "updated_at": "2026-11-21T02:08:13Z"
+      ]
     },
     {
       "slug": "peru-registra-terremoto-de-magnitude-6-7-sentido-em-lima",
@@ -1054,25 +1237,15 @@
     },
     {
       "slug": "nova-caravana-migrantes-mexico-eua-ameaca-tarifas-trump",
-      "titulo_curto": "Caravana com cerca de 300 migrantes avança no sul do México rumo aos EUA",
-      "resumo_pulso": "Conforme noticiado pela InfoMoney, um grupo com cerca de 300 migrantes ingressou no território sul-mexicano com destino à fronteira norte-americana. O deslocamento ocorre em meio a alertas e ameaças de taxação comercial por parte do governo de Donald Trump.",
-      "impacto_pratico": "Pressão sobre as políticas de controle migratório na fronteira entre México e Estados Unidos.",
       "categoria": "Mobilidade_Fronteiras",
-      "paises_envolvidos": [
-        "MX",
-        "US"
-      ],
-      "urgencia_score": 86,
-      "relevancia_score": 87,
-      "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 24,
-      "veiculos_origem": [
-        "InfoMoney"
-      ],
+      "expires_at": "2026-11-22T01:19:08Z",
+      "updated_at": "2026-11-21T02:08:13Z",
       "fontes_urls": [
         "https://www.infomoney.com.br/mundo/nova-caravana-com-cerca-de-300-migrantes-entra-no-sul-do-mexico-rumo-aos-eua/"
       ],
+      "resumo_pulso": "Conforme noticiado pela InfoMoney, um grupo com cerca de 300 migrantes ingressou no território sul-mexicano com destino à fronteira norte-americana. O deslocamento ocorre em meio a alertas e ameaças de taxação comercial por parte do governo de Donald Trump.",
+      "titulo_curto": "Caravana com cerca de 300 migrantes avança no sul do México rumo aos EUA",
       "palavras_chave": [
         "migração",
         "México",
@@ -1080,16 +1253,26 @@
         "fronteira",
         "tarifas"
       ],
+      "urgencia_score": 86,
       "data_publicacao": "2026-11-20T23:03:00Z",
+      "impacto_pratico": "Pressão sobre as políticas de controle migratório na fronteira entre México e Estados Unidos.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "InfoMoney"
+      ],
+      "relevancia_score": 87,
+      "horas_em_destaque": 24,
+      "paises_envolvidos": [
+        "MX",
+        "US"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "Casa Branca anuncia novos nomes para o gabinete e detalha prioridades em imigração e comércio",
           "url_existente": "https://www.rodandoomundo.com.br/politica/estados-unidos",
-          "motivo_conexao": "Conecta as decisões da administração americana sobre imigração e segurança de fronteiras."
+          "motivo_conexao": "Conecta as decisões da administração americana sobre imigração e segurança de fronteiras.",
+          "titulo_existente": "Casa Branca anuncia novos nomes para o gabinete e detalha prioridades em imigração e comércio"
         }
-      ],
-      "expires_at": "2026-11-22T01:19:08Z",
-      "updated_at": "2026-11-21T02:08:13Z"
+      ]
     },
     {
       "slug": "acoes-da-anthropic-enfrentam-queda-em-bolsa-americana",
@@ -1416,203 +1599,6 @@
           "url_existente": "https://www.rodandoomundo.com.br/politica/estados-unidos",
           "motivo_conexao": "Saiba mais sobre as políticas comerciais e protecionistas adotadas pela Casa Branca.",
           "titulo_existente": "Política nos Estados Unidos"
-        }
-      ]
-    },
-    {
-      "slug": "moraes-vota-manter-apreensao-passaporte-flavio-bolsonaro",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 18,
-      "expires_at": "2026-11-21T15:42:32Z",
-      "updated_at": "2026-11-20T21:42:32Z",
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/justica/noticia/2026-11/moraes-vota-para-manter-apreensao-de-passaportes-de-flavio-bolsonaro"
-      ],
-      "resumo_pulso": "Conforme divulgado pela Agência Brasil, o ministro Alexandre de Moraes votou no plenário virtual do STF pela manutenção da decisão que apreendeu os passaportes e proibiu o senador Flávio Bolsonaro de deixar o país. O voto ocorreu na análise do recurso apresentado pela defesa do parlamentar.",
-      "titulo_curto": "Moraes vota no STF para manter apreensão de passaportes de Flávio Bolsonaro",
-      "palavras_chave": [
-        "Alexandre de Moraes",
-        "Flávio Bolsonaro",
-        "STF",
-        "Passaportes",
-        "Justiça"
-      ],
-      "urgencia_score": 88,
-      "data_publicacao": "2026-11-20T20:55:00Z",
-      "impacto_pratico": "Manutenção das restrições de viagem internacionais impostas ao senador pela Justiça Federal.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Agência Brasil (EBC)"
-      ],
-      "relevancia_score": 87,
-      "horas_em_destaque": 8,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
-          "motivo_conexao": "Análise sobre as decisões e o alcance jurisprudencial das medidas impostas pelo STF.",
-          "titulo_existente": "STF analisa regras de transparência e limites constitucionais entre os Poderes"
-        }
-      ]
-    },
-    {
-      "slug": "temporal-no-rio-grande-do-sul-provoca-mortes-e-destruicao",
-      "titulo_curto": "Tempestades severas no Rio Grande do Sul deixam mortos e destroem Tupanciretã",
-      "resumo_pulso": "Conforme atualizações da Defesa Civil e reportagem da BBC News Brasil e do Poder360, os temporais que atingiram cerca de 30 municípios do Rio Grande do Sul resultaram em mortes e destruição generalizada. Na cidade de Tupanciretã, a prefeitura estima danos severos em quase todas as moradias locais e confirma vítimas fatais.",
-      "impacto_pratico": "Interrupção de serviços essenciais, danos estruturais severos na região central do estado e mobilização de equipes de resgate.",
-      "categoria": "Ciencia_Clima",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "urgencia_score": 98,
-      "relevancia_score": 96,
-      "nivel_confianca": "alta",
-      "ttl_horas": 18,
-      "horas_em_destaque": 24,
-      "veiculos_origem": [
-        "BBC News Brasil",
-        "Poder360",
-        "Defesa Civil"
-      ],
-      "fontes_urls": [
-        "https://www.bbc.com/portuguese/articles/cqdr1xmyg3kzo?at_medium=RSS&at_campaign=rss",
-        "https://www.poder360.com.br/poder-brasil/ex-vereador-esta-entre-os-mortos-da-tempestade-em-tupancireta-rs/"
-      ],
-      "palavras_chave": [
-        "tempestade",
-        "Rio Grande do Sul",
-        "Tupanciretã",
-        "Defesa Civil",
-        "clima"
-      ],
-      "data_publicacao": "2026-11-20T20:45:51.380135+00:00",
-      "links_internos_relacionados": [
-        {
-          "titulo_existente": "Clima, Amazônia e Transição Energética",
-          "url_existente": "https://www.rodandoomundo.com.br/clima",
-          "motivo_conexao": "Acompanhamento de eventos climáticos extremos e alertas meteorológicos no Brasil."
-        }
-      ],
-      "expires_at": "2026-11-21T19:21:44Z",
-      "updated_at": "2026-11-21T02:08:13Z"
-    },
-    {
-      "slug": "trump-afirma-que-ha-boa-chance-de-acordo-de-paz-na-ucrania",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 18,
-      "expires_at": "2026-11-21T14:45:51Z",
-      "updated_at": "2026-11-20T20:45:51Z",
-      "fontes_urls": [
-        "https://g1.globo.com/mundo/noticia/2026/11/20/trump-putin-guerra-na-ucrania.ghtml",
-        "https://www.ukrinform.net/rubric-polytics/4186985-white-house-wants-ukrainerussia-peace-deal-by-january-ft-reports.html"
-      ],
-      "resumo_pulso": "Conforme reportado pelo G1 Mundo e pela agência Ukrinform, o presidente dos EUA, Donald Trump, afirmou em coletiva na Casa Branca que mantém diálogo com o presidente russo Vladimir Putin com foco em encerrar a guerra na Ucrânia. Reportagens apontam a intenção da administração americana em formalizar diretrizes de negociação nas próximas semanas.",
-      "titulo_curto": "Trump relata conversas 'muito boas' com Putin e prevê possibilidade de acordo na Ucrânia",
-      "palavras_chave": [
-        "Donald Trump",
-        "Vladimir Putin",
-        "Ucrânia",
-        "acordo de paz",
-        "geopolítica"
-      ],
-      "urgencia_score": 87,
-      "data_publicacao": "2026-11-20T20:31:09Z",
-      "impacto_pratico": "Pode alterar a dinâmica de apoio militar ocidental e reformatar a mesa de negociações diplomáticas entre Kiev e Moscou.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "G1 Mundo",
-        "Ukrinform"
-      ],
-      "relevancia_score": 91,
-      "horas_em_destaque": 12,
-      "paises_envolvidos": [
-        "US",
-        "RU",
-        "UA"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/politica/estados-unidos",
-          "motivo_conexao": "Acompanhe as decisões da Casa Branca e o impacto internacional das diretrizes diplomáticas de Washington.",
-          "titulo_existente": "Política nos Estados Unidos"
-        }
-      ]
-    },
-    {
-      "slug": "onu-minuta-de-acordo-descarta-regras-vinculantes-para-robos-assassinos",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-21T20:45:51Z",
-      "updated_at": "2026-11-20T20:45:51Z",
-      "fontes_urls": [
-        "https://g1.globo.com/mundo/noticia/2026/11/20/onu-regras-robos-assassinos.ghtml"
-      ],
-      "resumo_pulso": "Segundo apuração da Reuters divulgada pelo G1 Mundo, a minuta de um acordo debatido no âmbito das Nações Unidas em Genebra não deve impor proibições obrigatórias para os chamados 'robôs assassinos'. Apesar da pressão de cerca de 100 países, o texto sugere apenas recomendações voluntárias para sistemas de armas autônomas.",
-      "titulo_curto": "ONU elabora minuta de acordo sem regras vinculantes para uso de armas autônomas",
-      "palavras_chave": [
-        "ONU",
-        "armas autônomas",
-        "inteligência artificial",
-        "robôs assassinos",
-        "diplomacia"
-      ],
-      "urgencia_score": 82,
-      "data_publicacao": "2026-11-20T20:28:12Z",
-      "impacto_pratico": "Mantém o vácuo regulatório internacional sobre o uso de inteligência artificial em armamentos letais de combate.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "G1 Mundo"
-      ],
-      "relevancia_score": 84,
-      "horas_em_destaque": 6,
-      "paises_envolvidos": [
-        "UN"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-sancao-internacional",
-          "motivo_conexao": "Compreenda como organismos multilaterais utilizam tratados e restrições para tentar regular tecnologias defensivas e militares.",
-          "titulo_existente": "O que é uma sanção internacional?"
-        }
-      ]
-    },
-    {
-      "slug": "bolsonaro-vai-a-hospital-apos-sentir-dores-abdominais",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 12,
-      "expires_at": "2026-11-21T08:21:55Z",
-      "updated_at": "2026-11-20T23:02:11Z",
-      "fontes_urls": [
-        "https://www.poder360.com.br/poder-justica/bolsonaro-tem-obstrucao-quase-total-do-intestino-delgado-diz-medico/",
-        "https://www.poder360.com.br/poder-brasil/carlos-relata-impressao-horrivel-ao-ver-bolsonaro-internado/"
-      ],
-      "resumo_pulso": "Conforme boletins médicos divulgados pelo Poder360, o ex-presidente Jair Bolsonaro segue internado em Brasília com quadro de obstrução quase total no intestino delgado. A equipe médica informou que o estado é estável, mas permanece sob avaliação para eventual intervenção cirúrgica.",
-      "titulo_curto": "Boletim médico confirma obstrução intestinal quase total em Bolsonaro no DF Star",
-      "palavras_chave": [
-        "Jair Bolsonaro",
-        "hospital DF Star",
-        "obstrução intestinal",
-        "boletim médico"
-      ],
-      "urgencia_score": 94,
-      "data_publicacao": "2026-11-20T20:15:13Z",
-      "impacto_pratico": "Acompanhamento direto do estado de saúde do ex-mandatário e eventuais impactos em sua agenda e desdobramentos políticos.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Poder360"
-      ],
-      "relevancia_score": 92,
-      "horas_em_destaque": 8,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
-          "motivo_conexao": "Acompanhamento dos desdobramentos políticos do cenário nacional.",
-          "titulo_existente": "Política no Brasil"
         }
       ]
     }
