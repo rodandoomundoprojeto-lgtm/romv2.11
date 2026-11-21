@@ -2,217 +2,209 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-21T18:40:12Z",
-  "batch_id": "20261121-1839",
+  "updatedAt": "2026-11-21T19:02:37Z",
+  "batch_id": "20261121-1901",
   "temas_ativos": [
     {
-      "slug": "fbi-investiga-suposta-invasao-banco-dados-criminais-eua",
-      "titulo_tema": "FBI investiga possível ataque cibernético a banco de dados nacional de crimes nos EUA",
-      "titulo_curto": "FBI investiga possível ataque cibernético a banco de dados nacional de crimes nos EUA",
+      "slug": "internacao-bolsonaro-uti-brasilia",
+      "titulo_tema": "Ex-presidente Jair Bolsonaro internado em UTI no Distrito Federal",
       "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Geopolitica_Radar",
-      "categoria": "Geopolitica_Relacoes",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 90,
-      "urgencia_score": 92,
-      "ttl_horas": 18,
-      "expires_at": "2026-11-22T12:40:12Z",
-      "palavras_chave_busca": [
-        "fbi",
-        "ciberseguranca",
-        "eua",
-        "ncic",
-        "hackers"
-      ],
-      "palavras_chave": [
-        "fbi",
-        "ciberseguranca",
-        "eua",
-        "ncic",
-        "hackers"
-      ],
-      "gatilho_vitrine": "Segundo reportagens da InfoMoney e da Al Jazeera, o FBI abriu investigação sobre uma suposta invasão ao sistema do NCIC, banco de dados que centraliza registros de pessoas procuradas, mandados e antecedentes nos Estados Unidos. O incidente amplia preocupações com falhas em infraestruturas governamentais.",
-      "resumo_pulso": "Segundo reportagens da InfoMoney e da Al Jazeera, o FBI abriu investigação sobre uma suposta invasão ao sistema do NCIC, banco de dados que centraliza registros de pessoas procuradas, mandados e antecedentes nos Estados Unidos. O incidente amplia preocupações com falhas em infraestruturas governamentais.",
-      "sintese_nerd": "Possíveis riscos de segurança cibernética e sobrecarga em sistemas de inteligência e segurança pública norte-americanos.",
-      "impacto_pratico": "Possíveis riscos de segurança cibernética e sobrecarga em sistemas de inteligência e segurança pública norte-americanos.",
-      "paises_envolvidos": [
-        "US"
-      ],
-      "veiculos_origem": [
-        "InfoMoney Mercados",
-        "Al Jazeera English"
-      ],
-      "fontes_urls": [
-        "https://www.infomoney.com.br/mundo/fbi-investiga-possivel-ataque-hacker-a-banco-de-dados-criminais-dos-eua/",
-        "https://www.aljazeera.com/news/2026/11/21/fbi-national-crime-database-suffers-suspected-breach-reports?traffic_source=rss"
-      ],
-      "data_publicacao": "2026-11-21T18:34:56Z",
-      "updated_at": "2026-11-21T18:40:12Z"
-    },
-    {
-      "slug": "bolsonaro-internado-uti-brasilia-abdome-obstrutivo",
-      "titulo_tema": "Ex-presidente Jair Bolsonaro é internado em UTI em Brasília com diagnóstico de abdômen agudo obstrutivo",
-      "titulo_curto": "Ex-presidente Jair Bolsonaro é internado em UTI em Brasília com diagnóstico de abdômen agudo obstrutivo",
-      "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Geopolitica_Radar",
-      "categoria": "Geopolitica_Relacoes",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 93,
-      "urgencia_score": 95,
-      "ttl_horas": 12,
-      "expires_at": "2026-11-22T06:40:12Z",
-      "palavras_chave_busca": [
-        "jair bolsonaro",
-        "uti",
-        "brasilia",
-        "saude",
-        "stf"
-      ],
-      "palavras_chave": [
-        "jair bolsonaro",
-        "uti",
-        "brasilia",
-        "saude",
-        "stf"
-      ],
-      "gatilho_vitrine": "Conforme boletim médico do hospital DF Star e apuração da Agência Brasil e G1, o ex-presidente Jair Bolsonaro foi internado em unidade de terapia intensiva devido a uma obstrução intestinal. A defesa obteve autorização do STF para visitas diárias de familiares enquanto o quadro é mantido clinicamente estável sob suporte nutricional e jejum.",
-      "resumo_pulso": "Conforme boletim médico do hospital DF Star e apuração da Agência Brasil e G1, o ex-presidente Jair Bolsonaro foi internado em unidade de terapia intensiva devido a uma obstrução intestinal. A defesa obteve autorização do STF para visitas diárias de familiares enquanto o quadro é mantido clinicamente estável sob suporte nutricional e jejum.",
-      "sintese_nerd": "Acompanhamento político nacional e restrições de deslocamento e agenda do ex-presidente em Brasília.",
-      "impacto_pratico": "Acompanhamento político nacional e restrições de deslocamento e agenda do ex-presidente em Brasília.",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "veiculos_origem": [
-        "Agência Brasil (EBC)",
-        "G1 Política"
-      ],
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/ex-presidente-jair-bolsonaro-esta-internado-em-uti-no-distrito-federal",
-        "https://g1.globo.com/politica/noticia/2026/11/21/bolsonaro-tem-obstrucao-intestinal-quadro-estavel-e-segue-sem-previsao-de-alta-diz-boletim-medico.ghtml"
-      ],
-      "data_publicacao": "2026-11-21T17:55:00Z",
-      "updated_at": "2026-11-21T18:40:12Z"
-    },
-    {
-      "slug": "ataque-petroleiros-estreito-hormuz-petroleo-inflacao",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-23T15:58:46Z",
-      "updated_at": "2026-11-21T15:58:46Z",
-      "titulo_tema": "Tensaos no Estreito de Hormuz e o Impacto Global no Preco do Petroleo",
-      "sintese_nerd": "O aumento da tensão militar e os ataques a navios petroleiros no Estreito de Hormuz ameaçam o fluxo de 20% do petróleo mundial, elevando os preços da commodity nos mercados internacionais. Para o leitor brasileiro, o encarecimento do barril pressiona a política de preços de combustíveis e reacende riscos inflacionários no mercado interno.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-21T15:58:46Z",
-      "gatilho_vitrine": "Exibir analise de impacto no Brent e reflexos na inflacao e combustiveis no Brasil",
       "origem_pipeline": "curadoria",
-      "relevancia_score": 94,
+      "categoria_primaria": "Politica",
+      "categorias_cruzadas": [
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/politica",
+      "relevancia_score": 95,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-23T19:02:37Z",
+      "palavras_chave_busca": [
+        "jair bolsonaro",
+        "uti",
+        "hospital df star",
+        "abdome agudo obstrutivo",
+        "brasília",
+        "saúde política"
+      ],
+      "gatilho_vitrine": "Destacar boletim médico atualizado e repercussão institucional da internação do ex-presidente.",
+      "sintese_nerd": "O ex-presidente Jair Bolsonaro foi internado na UTI do Hospital DF Star em Brasília com diagnóstico de abdome agudo obstrutivo, passando por procedimentos clínicos e suporte nutricional. O fato movimenta o cenário político nacional e atrai atenção imediata para os desdobramentos de sua saúde.",
+      "data_publicacao": "2026-11-21T19:02:37Z",
+      "updated_at": "2026-11-21T19:02:37Z"
+    },
+    {
+      "slug": "ataque-petroleiros-estreito-ormuz",
+      "titulo_tema": "Três petroleiros atingidos perto do Estreito de Ormuz",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
       "categoria_primaria": "Geopolitica_Radar",
       "categorias_cruzadas": [
         "Economia"
       ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 92,
+      "ttl_horas": 72,
+      "expires_at": "2026-11-24T19:02:37Z",
       "palavras_chave_busca": [
-        "estreito de hormuz",
+        "estreito de ormuz",
         "petroleiros",
-        "irão",
-        "preço do petróleo",
-        "inflação global",
-        "oriente médio",
-        "combustíveis",
-        "petrobras"
-      ]
+        "irã",
+        "petróleo",
+        "crise energética",
+        "geopolítica global"
+      ],
+      "gatilho_vitrine": "Conectar o aumento das tensões no Oriente Médio com o impacto direto na cotação internacional do petróleo e nos mercados globais.",
+      "sintese_nerd": "Operações militares intensificadas pelo Irã no Estreito de Ormuz resultaram em ataques a três petroleiros, elevando drasticamente os riscos às rotas de suprimento energético global. A escalada pressiona os preços do petróleo e afeta a inflação e os custos de transporte internacionais.",
+      "data_publicacao": "2026-11-21T19:02:37Z",
+      "updated_at": "2026-11-21T19:02:37Z"
     },
     {
-      "slug": "lula-pacote-fiscal-sistema-financeiro-meta-fiscal",
-      "status": "em_alta",
-      "ttl_horas": 72,
-      "expires_at": "2026-11-24T15:58:46Z",
-      "updated_at": "2026-11-21T15:58:46Z",
-      "titulo_tema": "Embate de Lula com o Mercado Financeiro sobre o Pacote Fiscal",
-      "sintese_nerd": "O presidente Lula endureceu o discurso contra as pressões do setor financeiro por maiores cortes de gastos, defendendo o equilíbrio entre rigor fiscal e proteção social. A reação do mercado reflete na volatilidade do dólar e na expectativa para os próximos passos da taxa Selic no Brasil.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-21T15:58:46Z",
-      "gatilho_vitrine": "Priorizar artigos sobre arcabouco fiscal, reacao dos mercados e previsao da taxa Selic",
+      "slug": "pacote-estimulo-economia-china",
+      "titulo_tema": "Economistas defendem pacote de US$ 450 bi para estimular China",
+      "status": "novo",
       "origem_pipeline": "curadoria",
-      "relevancia_score": 91,
       "categoria_primaria": "Economia",
       "categorias_cruzadas": [
-        "Politica"
+        "Geopolitica_Radar"
       ],
-      "palavras_chave_busca": [
-        "pacote fiscal",
-        "lula",
-        "mercado financeiro",
-        "corte de gastos",
-        "dólar",
-        "selic",
-        "responsabilidade fiscal",
-        "governo federal"
-      ]
-    },
-    {
-      "slug": "europa-e5-negociacoes-paz-ucrania-russia-otan",
-      "status": "novo",
+      "rota_editoria": "/economia",
+      "relevancia_score": 88,
       "ttl_horas": 96,
-      "expires_at": "2026-11-25T15:58:46Z",
-      "updated_at": "2026-11-21T15:58:46Z",
-      "titulo_tema": "Aliança Europeia E5 Assume Papel Central em Negociações entre Ucrânia e Rússia",
-      "sintese_nerd": "Os principais países da Europa (E5) pactuaram uma posição unificada ao lado dos EUA e da OTAN para mediar eventuais termos de negociação entre Ucrânia e Rússia. A movimentação marca uma mudança na diplomacia do continente e sinaliza novos rearranjos no comércio e na segurança energética internacional.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-21T15:58:46Z",
-      "gatilho_vitrine": "Destacar geopolitica europeia, coalizao de Berlim e novo tabuleiro de paz global",
+      "expires_at": "2026-11-25T19:02:37Z",
+      "palavras_chave_busca": [
+        "china",
+        "pacote de estímulo",
+        "demanda interna",
+        "pib global",
+        "comércio exterior",
+        "commodities"
+      ],
+      "gatilho_vitrine": "Explicar como a desaceleração da economia chinesa e propostas de grandes estímulos fiscais afetam diretamente as exportações e commodities brasileiras.",
+      "sintese_nerd": "O enfraquecimento da demanda interna na China levou economistas a defenderem um megapacote de estímulos de US$ 450 bilhões para reativar o crescimento do país. A medida possui forte repercussão sobre o volume de importações de commodities do Brasil e o equilíbrio do comércio exterior.",
+      "data_publicacao": "2026-11-21T19:02:37Z",
+      "updated_at": "2026-11-21T19:02:37Z"
+    },
+    {
+      "slug": "fbi-investiga-ataque-banco-dados-criminais",
+      "titulo_tema": "FBI investiga possível ataque hacker a banco de dados criminais dos EUA",
+      "status": "novo",
       "origem_pipeline": "curadoria",
-      "relevancia_score": 87,
       "categoria_primaria": "Geopolitica_Radar",
       "categorias_cruzadas": [
-        "Politica"
+        "Cultura"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 85,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-23T19:02:37Z",
+      "palavras_chave_busca": [
+        "fbi",
+        "ncic",
+        "cibersegurança",
+        "ataque hacker",
+        "governo dos eua",
+        "segurança pública"
+      ],
+      "gatilho_vitrine": "Relatar a vulnerabilidade de infraestruturas governamentais críticas frente a ataques cibernéticos de grande escala.",
+      "sintese_nerd": "O FBI investiga uma suposta invasão ao sistema do NCIC, banco de dados que centraliza registros de procurados e antecedentes nos EUA, escancarando falhas de cibersegurança em órgãos federais. O episódio reforça debates contemporâneos sobre a resiliência de redes governamentais contra ataques digitais.",
+      "data_publicacao": "2026-11-21T19:02:37Z",
+      "updated_at": "2026-11-21T19:02:37Z"
+    },
+    {
+      "slug": "fbi-investiga-suposta-invasao-banco-dados-criminais-eua",
+      "status": "novo",
+      "categoria": "Geopolitica_Relacoes",
+      "ttl_horas": 18,
+      "expires_at": "2026-11-22T12:40:12Z",
+      "updated_at": "2026-11-21T18:40:12Z",
+      "fontes_urls": [
+        "https://www.infomoney.com.br/mundo/fbi-investiga-possivel-ataque-hacker-a-banco-de-dados-criminais-dos-eua/",
+        "https://www.aljazeera.com/news/2026/11/21/fbi-national-crime-database-suffers-suspected-breach-reports?traffic_source=rss"
+      ],
+      "titulo_tema": "FBI investiga possível ataque cibernético a banco de dados nacional de crimes nos EUA",
+      "resumo_pulso": "Segundo reportagens da InfoMoney e da Al Jazeera, o FBI abriu investigação sobre uma suposta invasão ao sistema do NCIC, banco de dados que centraliza registros de pessoas procuradas, mandados e antecedentes nos Estados Unidos. O incidente amplia preocupações com falhas em infraestruturas governamentais.",
+      "sintese_nerd": "Possíveis riscos de segurança cibernética e sobrecarga em sistemas de inteligência e segurança pública norte-americanos.",
+      "titulo_curto": "FBI investiga possível ataque cibernético a banco de dados nacional de crimes nos EUA",
+      "rota_editoria": "/radar",
+      "palavras_chave": [
+        "fbi",
+        "ciberseguranca",
+        "eua",
+        "ncic",
+        "hackers"
+      ],
+      "urgencia_score": 92,
+      "data_publicacao": "2026-11-21T18:34:56Z",
+      "gatilho_vitrine": "Segundo reportagens da InfoMoney e da Al Jazeera, o FBI abriu investigação sobre uma suposta invasão ao sistema do NCIC, banco de dados que centraliza registros de pessoas procuradas, mandados e antecedentes nos Estados Unidos. O incidente amplia preocupações com falhas em infraestruturas governamentais.",
+      "impacto_pratico": "Possíveis riscos de segurança cibernética e sobrecarga em sistemas de inteligência e segurança pública norte-americanos.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "InfoMoney Mercados",
+        "Al Jazeera English"
+      ],
+      "relevancia_score": 90,
+      "paises_envolvidos": [
+        "US"
+      ],
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
       ],
       "palavras_chave_busca": [
-        "e5 europa",
-        "ucrânia",
-        "rússia",
-        "otan",
-        "negociações de paz",
-        "alemanha frança",
-        "conflito leste europeu",
-        "segurança global"
+        "fbi",
+        "ciberseguranca",
+        "eua",
+        "ncic",
+        "hackers"
       ]
     },
     {
-      "slug": "mexico-prisao-el-chapo-isidro-fbi-cartel",
+      "slug": "bolsonaro-internado-uti-brasilia-abdome-obstrutivo",
       "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-23T15:58:46Z",
-      "updated_at": "2026-11-21T15:58:46Z",
-      "titulo_tema": "Prisão de Líder do Cartel no México e Impacto na Segurança Regional",
-      "sintese_nerd": "A captura de um dos criminosos mais procurados pelo FBI em Sinaloa gerou confrontos e bloqueios no México, escancarando os desafios do narcotráfico transnacional. A operação tem forte apelo nas relações bilaterais entre México e EUA em meio às disputas sobre segurança de fronteiras e controle de drogas.",
+      "categoria": "Geopolitica_Relacoes",
+      "ttl_horas": 12,
+      "expires_at": "2026-11-22T06:40:12Z",
+      "updated_at": "2026-11-21T18:40:12Z",
+      "fontes_urls": [
+        "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/ex-presidente-jair-bolsonaro-esta-internado-em-uti-no-distrito-federal",
+        "https://g1.globo.com/politica/noticia/2026/11/21/bolsonaro-tem-obstrucao-intestinal-quadro-estavel-e-segue-sem-previsao-de-alta-diz-boletim-medico.ghtml"
+      ],
+      "titulo_tema": "Ex-presidente Jair Bolsonaro é internado em UTI em Brasília com diagnóstico de abdômen agudo obstrutivo",
+      "resumo_pulso": "Conforme boletim médico do hospital DF Star e apuração da Agência Brasil e G1, o ex-presidente Jair Bolsonaro foi internado em unidade de terapia intensiva devido a uma obstrução intestinal. A defesa obteve autorização do STF para visitas diárias de familiares enquanto o quadro é mantido clinicamente estável sob suporte nutricional e jejum.",
+      "sintese_nerd": "Acompanhamento político nacional e restrições de deslocamento e agenda do ex-presidente em Brasília.",
+      "titulo_curto": "Ex-presidente Jair Bolsonaro é internado em UTI em Brasília com diagnóstico de abdômen agudo obstrutivo",
       "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-21T15:58:46Z",
-      "gatilho_vitrine": "Exibir cobertura de narcopolitica, relacoes EUA-Mexico e operacoes internacionais",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 79,
+      "palavras_chave": [
+        "jair bolsonaro",
+        "uti",
+        "brasilia",
+        "saude",
+        "stf"
+      ],
+      "urgencia_score": 95,
+      "data_publicacao": "2026-11-21T17:55:00Z",
+      "gatilho_vitrine": "Conforme boletim médico do hospital DF Star e apuração da Agência Brasil e G1, o ex-presidente Jair Bolsonaro foi internado em unidade de terapia intensiva devido a uma obstrução intestinal. A defesa obteve autorização do STF para visitas diárias de familiares enquanto o quadro é mantido clinicamente estável sob suporte nutricional e jejum.",
+      "impacto_pratico": "Acompanhamento político nacional e restrições de deslocamento e agenda do ex-presidente em Brasília.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "Agência Brasil (EBC)",
+        "G1 Política"
+      ],
+      "relevancia_score": 93,
+      "paises_envolvidos": [
+        "BR"
+      ],
       "categoria_primaria": "Geopolitica_Radar",
       "categorias_cruzadas": [
-        "Politica"
+        "Economia",
+        "Resumo_Ultimas"
       ],
       "palavras_chave_busca": [
-        "el chapo isidro",
-        "méxico",
-        "fbi",
-        "sinaloa",
-        "narcotráfico",
-        "segurança internacional",
-        "cartel beltrán leyva",
-        "américa latina"
+        "jair bolsonaro",
+        "uti",
+        "brasilia",
+        "saude",
+        "stf"
       ]
     },
     {
@@ -432,75 +424,66 @@
     },
     {
       "slug": "lula-critica-faria-lima-ajuste-orcamento-2027",
-      "titulo_tema": "Lula defende ajuste fiscal e reforça críticas ao mercado financeiro em transmissão ao vivo",
-      "titulo_curto": "Lula defende ajuste fiscal e reforça críticas ao mercado financeiro em transmissão ao vivo",
       "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Economia",
       "categoria": "Economia_Comercio",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 92,
-      "urgencia_score": 91,
       "ttl_horas": 12,
       "expires_at": "2026-11-22T02:37:15Z",
-      "palavras_chave_busca": [
-        "lula",
-        "ajuste fiscal",
-        "economia",
-        "mercado financeiro",
-        "orcamento"
-      ],
-      "palavras_chave": [
-        "lula",
-        "ajuste fiscal",
-        "economia",
-        "mercado financeiro",
-        "orcamento"
-      ],
-      "gatilho_vitrine": "Em atualização aos debates econômicos, o presidente Luiz Inácio Lula da Silva defendeu o projeto de ajuste fiscal aprovado pelo Senado e criticou os questionamentos do mercado financeiro. Segundo apuração da Agência Brasil, a pauta econômica segue para análise na Câmara dos Deputados.",
-      "resumo_pulso": "Em atualização aos debates econômicos, o presidente Luiz Inácio Lula da Silva defendeu o projeto de ajuste fiscal aprovado pelo Senado e criticou os questionamentos do mercado financeiro. Segundo apuração da Agência Brasil, a pauta econômica segue para análise na Câmara dos Deputados.",
-      "sintese_nerd": "Expectativa de volatilidade nos mercados financeiros e repercussão direta sobre as contas públicas e regras orçamentárias de 2027.",
-      "impacto_pratico": "Expectativa de volatilidade nos mercados financeiros e repercussão direta sobre as contas públicas e regras orçamentárias de 2027.",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "veiculos_origem": [
-        "Agência Brasil (EBC)"
-      ],
+      "updated_at": "2026-11-21T18:40:12Z",
       "fontes_urls": [
         "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/o-sistema-financeiro-nao-vai-me-ensinar-dirigir-o-brasil-diz-lula"
       ],
+      "titulo_tema": "Lula defende ajuste fiscal e reforça críticas ao mercado financeiro em transmissão ao vivo",
+      "resumo_pulso": "Em atualização aos debates econômicos, o presidente Luiz Inácio Lula da Silva defendeu o projeto de ajuste fiscal aprovado pelo Senado e criticou os questionamentos do mercado financeiro. Segundo apuração da Agência Brasil, a pauta econômica segue para análise na Câmara dos Deputados.",
+      "sintese_nerd": "Expectativa de volatilidade nos mercados financeiros e repercussão direta sobre as contas públicas e regras orçamentárias de 2027.",
+      "titulo_curto": "Lula defende ajuste fiscal e reforça críticas ao mercado financeiro em transmissão ao vivo",
+      "rota_editoria": "/economia",
+      "palavras_chave": [
+        "lula",
+        "ajuste fiscal",
+        "economia",
+        "mercado financeiro",
+        "orcamento"
+      ],
+      "urgencia_score": 91,
       "data_publicacao": "2026-11-21T14:27:51Z",
-      "updated_at": "2026-11-21T18:40:12Z"
-    },
-    {
-      "slug": "terremoto-magnitude-6-8-peru",
-      "titulo_tema": "Balanço oficial aponta 15 feridos e dezenas de casas danificadas após terremoto de magnitude 6,8 no Peru",
-      "titulo_curto": "Balanço oficial aponta 15 feridos e dezenas de casas danificadas após terremoto de magnitude 6,8 no Peru",
-      "status": "novo",
+      "gatilho_vitrine": "Em atualização aos debates econômicos, o presidente Luiz Inácio Lula da Silva defendeu o projeto de ajuste fiscal aprovado pelo Senado e criticou os questionamentos do mercado financeiro. Segundo apuração da Agência Brasil, a pauta econômica segue para análise na Câmara dos Deputados.",
+      "impacto_pratico": "Expectativa de volatilidade nos mercados financeiros e repercussão direta sobre as contas públicas e regras orçamentárias de 2027.",
       "origem_pipeline": "pulso",
-      "categoria_primaria": "Geopolitica_Radar",
-      "categoria": "Geopolitica_Relacoes",
+      "veiculos_origem": [
+        "Agência Brasil (EBC)"
+      ],
+      "relevancia_score": 92,
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "categoria_primaria": "Economia",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
       ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 88,
-      "urgencia_score": 96,
+      "palavras_chave_busca": [
+        "lula",
+        "ajuste fiscal",
+        "economia",
+        "mercado financeiro",
+        "orcamento"
+      ]
+    },
+    {
+      "slug": "terremoto-magnitude-6-8-peru",
+      "status": "novo",
+      "categoria": "Geopolitica_Relacoes",
       "ttl_horas": 8,
       "expires_at": "2026-11-21T20:58:15Z",
-      "palavras_chave_busca": [
-        "terremoto",
-        "peru",
-        "indeci",
-        "junin",
-        "tremor"
+      "updated_at": "2026-11-21T18:40:12Z",
+      "fontes_urls": [
+        "https://g1.globo.com/mundo/noticia/2026/11/21/terremoto-de-magnitude-67-deixou-15-feridos-no-peru-e-danificou-127-casas.ghtml"
       ],
+      "titulo_tema": "Balanço oficial aponta 15 feridos e dezenas de casas danificadas após terremoto de magnitude 6,8 no Peru",
+      "resumo_pulso": "Segundo boletim do Instituto Nacional de Defesa Civil do Peru (Indeci) e apuração do G1 Mundo, o terremoto de magnitude 6,7 a 6,8 registrado na região de Junín deixou pelo menos 15 feridos e danificou mais de 120 residências. O tremor foi fortemente sentido na capital Lima e em áreas do Amazonas brasileiro, sem registros iniciais de mortes.",
+      "sintese_nerd": "Possíveis interrupções em rodovias andinas e alertas de réplicas para moradores de áreas vulneráveis na fronteira e no Peru.",
+      "titulo_curto": "Balanço oficial aponta 15 feridos e dezenas de casas danificadas após terremoto de magnitude 6,8 no Peru",
+      "rota_editoria": "/radar",
       "palavras_chave": [
         "terremoto",
         "peru",
@@ -508,23 +491,32 @@
         "junin",
         "tremor"
       ],
+      "urgencia_score": 96,
+      "data_publicacao": "2026-11-21T14:17:00Z",
       "gatilho_vitrine": "Segundo boletim do Instituto Nacional de Defesa Civil do Peru (Indeci) e apuração do G1 Mundo, o terremoto de magnitude 6,7 a 6,8 registrado na região de Junín deixou pelo menos 15 feridos e danificou mais de 120 residências. O tremor foi fortemente sentido na capital Lima e em áreas do Amazonas brasileiro, sem registros iniciais de mortes.",
-      "resumo_pulso": "Segundo boletim do Instituto Nacional de Defesa Civil do Peru (Indeci) e apuração do G1 Mundo, o terremoto de magnitude 6,7 a 6,8 registrado na região de Junín deixou pelo menos 15 feridos e danificou mais de 120 residências. O tremor foi fortemente sentido na capital Lima e em áreas do Amazonas brasileiro, sem registros iniciais de mortes.",
-      "sintese_nerd": "Possíveis interrupções em rodovias andinas e alertas de réplicas para moradores de áreas vulneráveis na fronteira e no Peru.",
       "impacto_pratico": "Possíveis interrupções em rodovias andinas e alertas de réplicas para moradores de áreas vulneráveis na fronteira e no Peru.",
-      "paises_envolvidos": [
-        "PE",
-        "BR"
-      ],
+      "origem_pipeline": "pulso",
       "veiculos_origem": [
         "G1 Mundo",
         "Poder360"
       ],
-      "fontes_urls": [
-        "https://g1.globo.com/mundo/noticia/2026/11/21/terremoto-de-magnitude-67-deixou-15-feridos-no-peru-e-danificou-127-casas.ghtml"
+      "relevancia_score": 88,
+      "paises_envolvidos": [
+        "PE",
+        "BR"
       ],
-      "data_publicacao": "2026-11-21T14:17:00Z",
-      "updated_at": "2026-11-21T18:40:12Z"
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "terremoto",
+        "peru",
+        "indeci",
+        "junin",
+        "tremor"
+      ]
     },
     {
       "slug": "tempestade-rs-defesa-civil-atualiza-dados",
@@ -849,29 +841,125 @@
       ]
     }
   ],
+  "temas_curadoria": [
+    {
+      "slug": "internacao-bolsonaro-uti-brasilia",
+      "titulo_tema": "Ex-presidente Jair Bolsonaro internado em UTI no Distrito Federal",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Politica",
+      "categorias_cruzadas": [
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/politica",
+      "relevancia_score": 95,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-23T19:02:37Z",
+      "palavras_chave_busca": [
+        "jair bolsonaro",
+        "uti",
+        "hospital df star",
+        "abdome agudo obstrutivo",
+        "brasília",
+        "saúde política"
+      ],
+      "gatilho_vitrine": "Destacar boletim médico atualizado e repercussão institucional da internação do ex-presidente.",
+      "sintese_nerd": "O ex-presidente Jair Bolsonaro foi internado na UTI do Hospital DF Star em Brasília com diagnóstico de abdome agudo obstrutivo, passando por procedimentos clínicos e suporte nutricional. O fato movimenta o cenário político nacional e atrai atenção imediata para os desdobramentos de sua saúde.",
+      "data_publicacao": "2026-11-21T19:02:37Z",
+      "updated_at": "2026-11-21T19:02:37Z"
+    },
+    {
+      "slug": "ataque-petroleiros-estreito-ormuz",
+      "titulo_tema": "Três petroleiros atingidos perto do Estreito de Ormuz",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 92,
+      "ttl_horas": 72,
+      "expires_at": "2026-11-24T19:02:37Z",
+      "palavras_chave_busca": [
+        "estreito de ormuz",
+        "petroleiros",
+        "irã",
+        "petróleo",
+        "crise energética",
+        "geopolítica global"
+      ],
+      "gatilho_vitrine": "Conectar o aumento das tensões no Oriente Médio com o impacto direto na cotação internacional do petróleo e nos mercados globais.",
+      "sintese_nerd": "Operações militares intensificadas pelo Irã no Estreito de Ormuz resultaram em ataques a três petroleiros, elevando drasticamente os riscos às rotas de suprimento energético global. A escalada pressiona os preços do petróleo e afeta a inflação e os custos de transporte internacionais.",
+      "data_publicacao": "2026-11-21T19:02:37Z",
+      "updated_at": "2026-11-21T19:02:37Z"
+    },
+    {
+      "slug": "pacote-estimulo-economia-china",
+      "titulo_tema": "Economistas defendem pacote de US$ 450 bi para estimular China",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Geopolitica_Radar"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 88,
+      "ttl_horas": 96,
+      "expires_at": "2026-11-25T19:02:37Z",
+      "palavras_chave_busca": [
+        "china",
+        "pacote de estímulo",
+        "demanda interna",
+        "pib global",
+        "comércio exterior",
+        "commodities"
+      ],
+      "gatilho_vitrine": "Explicar como a desaceleração da economia chinesa e propostas de grandes estímulos fiscais afetam diretamente as exportações e commodities brasileiras.",
+      "sintese_nerd": "O enfraquecimento da demanda interna na China levou economistas a defenderem um megapacote de estímulos de US$ 450 bilhões para reativar o crescimento do país. A medida possui forte repercussão sobre o volume de importações de commodities do Brasil e o equilíbrio do comércio exterior.",
+      "data_publicacao": "2026-11-21T19:02:37Z",
+      "updated_at": "2026-11-21T19:02:37Z"
+    },
+    {
+      "slug": "fbi-investiga-ataque-banco-dados-criminais",
+      "titulo_tema": "FBI investiga possível ataque hacker a banco de dados criminais dos EUA",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Cultura"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 85,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-23T19:02:37Z",
+      "palavras_chave_busca": [
+        "fbi",
+        "ncic",
+        "cibersegurança",
+        "ataque hacker",
+        "governo dos eua",
+        "segurança pública"
+      ],
+      "gatilho_vitrine": "Relatar a vulnerabilidade de infraestruturas governamentais críticas frente a ataques cibernéticos de grande escala.",
+      "sintese_nerd": "O FBI investiga uma suposta invasão ao sistema do NCIC, banco de dados que centraliza registros de procurados e antecedentes nos EUA, escancarando falhas de cibersegurança em órgãos federais. O episódio reforça debates contemporâneos sobre a resiliência de redes governamentais contra ataques digitais.",
+      "data_publicacao": "2026-11-21T19:02:37Z",
+      "updated_at": "2026-11-21T19:02:37Z"
+    }
+  ],
   "noticias_quentes": [
     {
       "slug": "fbi-investiga-suposta-invasao-banco-dados-criminais-eua",
-      "titulo_curto": "FBI investiga possível ataque cibernético a banco de dados nacional de crimes nos EUA",
-      "resumo_pulso": "Segundo reportagens da InfoMoney e da Al Jazeera, o FBI abriu investigação sobre uma suposta invasão ao sistema do NCIC, banco de dados que centraliza registros de pessoas procuradas, mandados e antecedentes nos Estados Unidos. O incidente amplia preocupações com falhas em infraestruturas governamentais.",
-      "impacto_pratico": "Possíveis riscos de segurança cibernética e sobrecarga em sistemas de inteligência e segurança pública norte-americanos.",
       "categoria": "Geopolitica_Relacoes",
-      "paises_envolvidos": [
-        "US"
-      ],
-      "urgencia_score": 92,
-      "relevancia_score": 90,
-      "nivel_confianca": "media",
       "ttl_horas": 18,
-      "horas_em_destaque": 10,
-      "veiculos_origem": [
-        "InfoMoney Mercados",
-        "Al Jazeera English"
-      ],
+      "expires_at": "2026-11-22T12:40:12Z",
+      "updated_at": "2026-11-21T18:40:12Z",
       "fontes_urls": [
         "https://www.infomoney.com.br/mundo/fbi-investiga-possivel-ataque-hacker-a-banco-de-dados-criminais-dos-eua/",
         "https://www.aljazeera.com/news/2026/11/21/fbi-national-crime-database-suffers-suspected-breach-reports?traffic_source=rss"
       ],
+      "resumo_pulso": "Segundo reportagens da InfoMoney e da Al Jazeera, o FBI abriu investigação sobre uma suposta invasão ao sistema do NCIC, banco de dados que centraliza registros de pessoas procuradas, mandados e antecedentes nos Estados Unidos. O incidente amplia preocupações com falhas em infraestruturas governamentais.",
+      "titulo_curto": "FBI investiga possível ataque cibernético a banco de dados nacional de crimes nos EUA",
       "palavras_chave": [
         "FBI",
         "ciberseguranca",
@@ -879,39 +967,39 @@
         "NCIC",
         "hackers"
       ],
+      "urgencia_score": 92,
       "data_publicacao": "2026-11-21T18:34:56Z",
+      "impacto_pratico": "Possíveis riscos de segurança cibernética e sobrecarga em sistemas de inteligência e segurança pública norte-americanos.",
+      "nivel_confianca": "media",
+      "veiculos_origem": [
+        "InfoMoney Mercados",
+        "Al Jazeera English"
+      ],
+      "relevancia_score": 90,
+      "horas_em_destaque": 10,
+      "paises_envolvidos": [
+        "US"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "Política nos Estados Unidos",
           "url_existente": "https://www.rodandoomundo.com.br/politica/estados-unidos",
-          "motivo_conexao": "Analisa os impactos de crises institucionais e de segurança cibernética no governo dos Estados Unidos."
+          "motivo_conexao": "Analisa os impactos de crises institucionais e de segurança cibernética no governo dos Estados Unidos.",
+          "titulo_existente": "Política nos Estados Unidos"
         }
-      ],
-      "expires_at": "2026-11-22T12:40:12Z",
-      "updated_at": "2026-11-21T18:40:12Z"
+      ]
     },
     {
       "slug": "bolsonaro-internado-uti-brasilia-abdome-obstrutivo",
-      "titulo_curto": "Ex-presidente Jair Bolsonaro é internado em UTI em Brasília com diagnóstico de abdômen agudo obstrutivo",
-      "resumo_pulso": "Conforme boletim médico do hospital DF Star e apuração da Agência Brasil e G1, o ex-presidente Jair Bolsonaro foi internado em unidade de terapia intensiva devido a uma obstrução intestinal. A defesa obteve autorização do STF para visitas diárias de familiares enquanto o quadro é mantido clinicamente estável sob suporte nutricional e jejum.",
-      "impacto_pratico": "Acompanhamento político nacional e restrições de deslocamento e agenda do ex-presidente em Brasília.",
       "categoria": "Geopolitica_Relacoes",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "urgencia_score": 95,
-      "relevancia_score": 93,
-      "nivel_confianca": "alta",
       "ttl_horas": 12,
-      "horas_em_destaque": 12,
-      "veiculos_origem": [
-        "Agência Brasil (EBC)",
-        "G1 Política"
-      ],
+      "expires_at": "2026-11-22T06:40:12Z",
+      "updated_at": "2026-11-21T18:40:12Z",
       "fontes_urls": [
         "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/ex-presidente-jair-bolsonaro-esta-internado-em-uti-no-distrito-federal",
         "https://g1.globo.com/politica/noticia/2026/11/21/bolsonaro-tem-obstrucao-intestinal-quadro-estavel-e-segue-sem-previsao-de-alta-diz-boletim-medico.ghtml"
       ],
+      "resumo_pulso": "Conforme boletim médico do hospital DF Star e apuração da Agência Brasil e G1, o ex-presidente Jair Bolsonaro foi internado em unidade de terapia intensiva devido a uma obstrução intestinal. A defesa obteve autorização do STF para visitas diárias de familiares enquanto o quadro é mantido clinicamente estável sob suporte nutricional e jejum.",
+      "titulo_curto": "Ex-presidente Jair Bolsonaro é internado em UTI em Brasília com diagnóstico de abdômen agudo obstrutivo",
       "palavras_chave": [
         "Jair Bolsonaro",
         "UTI",
@@ -919,16 +1007,26 @@
         "saude",
         "STF"
       ],
+      "urgencia_score": 95,
       "data_publicacao": "2026-11-21T17:55:00Z",
+      "impacto_pratico": "Acompanhamento político nacional e restrições de deslocamento e agenda do ex-presidente em Brasília.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Agência Brasil (EBC)",
+        "G1 Política"
+      ],
+      "relevancia_score": 93,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "BR"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "Política no Brasil",
           "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
-          "motivo_conexao": "Acompanha os desdobramentos políticos e institucionais envolvendo lideranças nacionais no Brasil."
+          "motivo_conexao": "Acompanha os desdobramentos políticos e institucionais envolvendo lideranças nacionais no Brasil.",
+          "titulo_existente": "Política no Brasil"
         }
-      ],
-      "expires_at": "2026-11-22T06:40:12Z",
-      "updated_at": "2026-11-21T18:40:12Z"
+      ]
     },
     {
       "slug": "pulso-1-20261121-1540",
@@ -1137,24 +1235,15 @@
     },
     {
       "slug": "lula-critica-faria-lima-ajuste-orcamento-2027",
-      "titulo_curto": "Lula defende ajuste fiscal e reforça críticas ao mercado financeiro em transmissão ao vivo",
-      "resumo_pulso": "Em atualização aos debates econômicos, o presidente Luiz Inácio Lula da Silva defendeu o projeto de ajuste fiscal aprovado pelo Senado e criticou os questionamentos do mercado financeiro. Segundo apuração da Agência Brasil, a pauta econômica segue para análise na Câmara dos Deputados.",
-      "impacto_pratico": "Expectativa de volatilidade nos mercados financeiros e repercussão direta sobre as contas públicas e regras orçamentárias de 2027.",
       "categoria": "Economia_Comercio",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "urgencia_score": 91,
-      "relevancia_score": 92,
-      "nivel_confianca": "alta",
       "ttl_horas": 12,
-      "horas_em_destaque": 8,
-      "veiculos_origem": [
-        "Agência Brasil (EBC)"
-      ],
+      "expires_at": "2026-11-22T02:37:15Z",
+      "updated_at": "2026-11-21T18:40:12Z",
       "fontes_urls": [
         "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/o-sistema-financeiro-nao-vai-me-ensinar-dirigir-o-brasil-diz-lula"
       ],
+      "resumo_pulso": "Em atualização aos debates econômicos, o presidente Luiz Inácio Lula da Silva defendeu o projeto de ajuste fiscal aprovado pelo Senado e criticou os questionamentos do mercado financeiro. Segundo apuração da Agência Brasil, a pauta econômica segue para análise na Câmara dos Deputados.",
+      "titulo_curto": "Lula defende ajuste fiscal e reforça críticas ao mercado financeiro em transmissão ao vivo",
       "palavras_chave": [
         "Lula",
         "ajuste fiscal",
@@ -1162,39 +1251,37 @@
         "mercado financeiro",
         "Orcamento"
       ],
+      "urgencia_score": 91,
       "data_publicacao": "2026-11-21T14:27:51Z",
+      "impacto_pratico": "Expectativa de volatilidade nos mercados financeiros e repercussão direta sobre as contas públicas e regras orçamentárias de 2027.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Agência Brasil (EBC)"
+      ],
+      "relevancia_score": 92,
+      "horas_em_destaque": 8,
+      "paises_envolvidos": [
+        "BR"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "O que é o Orçamento?",
           "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-o-orcamento",
-          "motivo_conexao": "Explica a dinâmica de elaboração e controle das contas públicas e os impactos do ajuste fiscal."
+          "motivo_conexao": "Explica a dinâmica de elaboração e controle das contas públicas e os impactos do ajuste fiscal.",
+          "titulo_existente": "O que é o Orçamento?"
         }
-      ],
-      "expires_at": "2026-11-22T02:37:15Z",
-      "updated_at": "2026-11-21T18:40:12Z"
+      ]
     },
     {
       "slug": "terremoto-magnitude-6-8-peru",
-      "titulo_curto": "Balanço oficial aponta 15 feridos e dezenas de casas danificadas após terremoto de magnitude 6,8 no Peru",
-      "resumo_pulso": "Segundo boletim do Instituto Nacional de Defesa Civil do Peru (Indeci) e apuração do G1 Mundo, o terremoto de magnitude 6,7 a 6,8 registrado na região de Junín deixou pelo menos 15 feridos e danificou mais de 120 residências. O tremor foi fortemente sentido na capital Lima e em áreas do Amazonas brasileiro, sem registros iniciais de mortes.",
-      "impacto_pratico": "Possíveis interrupções em rodovias andinas e alertas de réplicas para moradores de áreas vulneráveis na fronteira e no Peru.",
       "categoria": "Geopolitica_Relacoes",
-      "paises_envolvidos": [
-        "PE",
-        "BR"
-      ],
-      "urgencia_score": 96,
-      "relevancia_score": 88,
-      "nivel_confianca": "alta",
       "ttl_horas": 8,
-      "horas_em_destaque": 6,
-      "veiculos_origem": [
-        "G1 Mundo",
-        "Poder360"
-      ],
+      "expires_at": "2026-11-21T20:58:15Z",
+      "updated_at": "2026-11-21T18:40:12Z",
       "fontes_urls": [
         "https://g1.globo.com/mundo/noticia/2026/11/21/terremoto-de-magnitude-67-deixou-15-feridos-no-peru-e-danificou-127-casas.ghtml"
       ],
+      "resumo_pulso": "Segundo boletim do Instituto Nacional de Defesa Civil do Peru (Indeci) e apuração do G1 Mundo, o terremoto de magnitude 6,7 a 6,8 registrado na região de Junín deixou pelo menos 15 feridos e danificou mais de 120 residências. O tremor foi fortemente sentido na capital Lima e em áreas do Amazonas brasileiro, sem registros iniciais de mortes.",
+      "titulo_curto": "Balanço oficial aponta 15 feridos e dezenas de casas danificadas após terremoto de magnitude 6,8 no Peru",
       "palavras_chave": [
         "terremoto",
         "Peru",
@@ -1202,16 +1289,27 @@
         "Junin",
         "tremor"
       ],
+      "urgencia_score": 96,
       "data_publicacao": "2026-11-21T14:17:00Z",
+      "impacto_pratico": "Possíveis interrupções em rodovias andinas e alertas de réplicas para moradores de áreas vulneráveis na fronteira e no Peru.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "G1 Mundo",
+        "Poder360"
+      ],
+      "relevancia_score": 88,
+      "horas_em_destaque": 6,
+      "paises_envolvidos": [
+        "PE",
+        "BR"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "Clima, Amazônia e Transição Energética",
           "url_existente": "https://www.rodandoomundo.com.br/clima",
-          "motivo_conexao": "Contextualiza monitoramento de eventos naturais e impactos na região andina e fronteiriça."
+          "motivo_conexao": "Contextualiza monitoramento de eventos naturais e impactos na região andina e fronteiriça.",
+          "titulo_existente": "Clima, Amazônia e Transição Energética"
         }
-      ],
-      "expires_at": "2026-11-21T20:58:15Z",
-      "updated_at": "2026-11-21T18:40:12Z"
+      ]
     },
     {
       "slug": "tempestade-rs-defesa-civil-atualiza-dados",
@@ -1606,120 +1704,6 @@
           "motivo_conexao": "Contextualiza o cenário institucional e de segurança em Washington.",
           "titulo_existente": "Política nos Estados Unidos"
         }
-      ]
-    }
-  ],
-  "temas_curadoria": [
-    {
-      "slug": "ataque-petroleiros-estreito-hormuz-petroleo-inflacao",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-23T15:58:46Z",
-      "updated_at": "2026-11-21T15:58:46Z",
-      "titulo_tema": "Tensaos no Estreito de Hormuz e o Impacto Global no Preco do Petroleo",
-      "sintese_nerd": "O aumento da tensão militar e os ataques a navios petroleiros no Estreito de Hormuz ameaçam o fluxo de 20% do petróleo mundial, elevando os preços da commodity nos mercados internacionais. Para o leitor brasileiro, o encarecimento do barril pressiona a política de preços de combustíveis e reacende riscos inflacionários no mercado interno.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-21T15:58:46Z",
-      "gatilho_vitrine": "Exibir analise de impacto no Brent e reflexos na inflacao e combustiveis no Brasil",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 94,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia"
-      ],
-      "palavras_chave_busca": [
-        "estreito de hormuz",
-        "petroleiros",
-        "irão",
-        "preço do petróleo",
-        "inflação global",
-        "oriente médio",
-        "combustíveis",
-        "petrobras"
-      ]
-    },
-    {
-      "slug": "lula-pacote-fiscal-sistema-financeiro-meta-fiscal",
-      "status": "em_alta",
-      "ttl_horas": 72,
-      "expires_at": "2026-11-24T15:58:46Z",
-      "updated_at": "2026-11-21T15:58:46Z",
-      "titulo_tema": "Embate de Lula com o Mercado Financeiro sobre o Pacote Fiscal",
-      "sintese_nerd": "O presidente Lula endureceu o discurso contra as pressões do setor financeiro por maiores cortes de gastos, defendendo o equilíbrio entre rigor fiscal e proteção social. A reação do mercado reflete na volatilidade do dólar e na expectativa para os próximos passos da taxa Selic no Brasil.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-21T15:58:46Z",
-      "gatilho_vitrine": "Priorizar artigos sobre arcabouco fiscal, reacao dos mercados e previsao da taxa Selic",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 91,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Politica"
-      ],
-      "palavras_chave_busca": [
-        "pacote fiscal",
-        "lula",
-        "mercado financeiro",
-        "corte de gastos",
-        "dólar",
-        "selic",
-        "responsabilidade fiscal",
-        "governo federal"
-      ]
-    },
-    {
-      "slug": "europa-e5-negociacoes-paz-ucrania-russia-otan",
-      "status": "novo",
-      "ttl_horas": 96,
-      "expires_at": "2026-11-25T15:58:46Z",
-      "updated_at": "2026-11-21T15:58:46Z",
-      "titulo_tema": "Aliança Europeia E5 Assume Papel Central em Negociações entre Ucrânia e Rússia",
-      "sintese_nerd": "Os principais países da Europa (E5) pactuaram uma posição unificada ao lado dos EUA e da OTAN para mediar eventuais termos de negociação entre Ucrânia e Rússia. A movimentação marca uma mudança na diplomacia do continente e sinaliza novos rearranjos no comércio e na segurança energética internacional.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-21T15:58:46Z",
-      "gatilho_vitrine": "Destacar geopolitica europeia, coalizao de Berlim e novo tabuleiro de paz global",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 87,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Politica"
-      ],
-      "palavras_chave_busca": [
-        "e5 europa",
-        "ucrânia",
-        "rússia",
-        "otan",
-        "negociações de paz",
-        "alemanha frança",
-        "conflito leste europeu",
-        "segurança global"
-      ]
-    },
-    {
-      "slug": "mexico-prisao-el-chapo-isidro-fbi-cartel",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-23T15:58:46Z",
-      "updated_at": "2026-11-21T15:58:46Z",
-      "titulo_tema": "Prisão de Líder do Cartel no México e Impacto na Segurança Regional",
-      "sintese_nerd": "A captura de um dos criminosos mais procurados pelo FBI em Sinaloa gerou confrontos e bloqueios no México, escancarando os desafios do narcotráfico transnacional. A operação tem forte apelo nas relações bilaterais entre México e EUA em meio às disputas sobre segurança de fronteiras e controle de drogas.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-21T15:58:46Z",
-      "gatilho_vitrine": "Exibir cobertura de narcopolitica, relacoes EUA-Mexico e operacoes internacionais",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 79,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Politica"
-      ],
-      "palavras_chave_busca": [
-        "el chapo isidro",
-        "méxico",
-        "fbi",
-        "sinaloa",
-        "narcotráfico",
-        "segurança internacional",
-        "cartel beltrán leyva",
-        "américa latina"
       ]
     }
   ]
