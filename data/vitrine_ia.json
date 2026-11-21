@@ -2,49 +2,72 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-<<<<<<< HEAD
-  "updatedAt": "2026-11-21T13:15:04Z",
-  "batch_id": "20261121-1314",
+  "updatedAt": "2026-11-21T13:54:51Z",
+  "batch_id": "20261121-1354",
   "temas_ativos": [
     {
-      "slug": "orcamento-ue-cortes-resistencias-frugais",
-      "titulo_tema": "Proposta de cortes no orçamento de longo prazo da União Europeia",
+      "slug": "mexico-captura-narcotraficante-chapo-isidro-fbi",
+      "titulo_tema": "México captura narcotraficante 'Chapo Isidro', um dos mais procurados pelo FBI",
+      "titulo_curto": "México captura narcotraficante 'Chapo Isidro', um dos mais procurados pelo FBI",
       "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Economia",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categoria": "Geopolitica_Relacoes",
       "categorias_cruzadas": [
-        "Geopolitica_Radar"
+        "Economia",
+        "Resumo_Ultimas"
       ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 88,
-      "ttl_horas": 48,
-      "expires_at": "2026-11-23T13:15:04Z",
+      "rota_editoria": "/radar",
+      "relevancia_score": 90,
+      "urgencia_score": 92,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-22T13:54:51Z",
       "palavras_chave_busca": [
-        "uniao europeia",
-        "orcamento ue",
-        "paises frugais",
-        "economia europeia",
-        "alemanha",
-        "cortes fiscais"
+        "chapo isidro",
+        "fbi",
+        "mexico",
+        "narcotrafico"
       ],
-      "gatilho_vitrine": "Destaque na editoria de Economia conectando a rigidez fiscal europeia ao cenário global de juros e ajuste de contas públicas.",
-      "sintese_nerd": "A pressão de países frugais da União Europeia por cortes drásticos no orçamento de longo prazo evidencia o esgotamento de subsídios e a necessidade de reajustes fiscais na região. Para o mercado global, a contração de gastos europeus impacta a liquidez internacional e a percepção de risco para economias emergentes.",
-      "data_publicacao": "2026-11-21T13:15:04Z",
-      "updated_at": "2026-11-21T13:15:04Z"
+      "palavras_chave": [
+        "chapo isidro",
+        "fbi",
+        "mexico",
+        "narcotrafico"
+      ],
+      "gatilho_vitrine": "Segundo apuração do G1 Mundo, forças de segurança do México capturaram Fausto Isidro Meza, o 'Chapo Isidro', apontado como um dos dez fugitivos mais procurados pelo FBI. A prisão ocorreu no estado de Sinaloa e envolveu outros líderes de seu grupo criminoso.",
+      "resumo_pulso": "Segundo apuração do G1 Mundo, forças de segurança do México capturaram Fausto Isidro Meza, o 'Chapo Isidro', apontado como um dos dez fugitivos mais procurados pelo FBI. A prisão ocorreu no estado de Sinaloa e envolveu outros líderes de seu grupo criminoso.",
+      "sintese_nerd": "Reforço na cooperação bilateral de segurança e combate ao narcotráfico entre México e Estados Unidos.",
+      "impacto_pratico": "Reforço na cooperação bilateral de segurança e combate ao narcotráfico entre México e Estados Unidos.",
+      "paises_envolvidos": [
+        "MX",
+        "US"
+      ],
+      "veiculos_origem": [
+        "G1 Mundo"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/mundo/noticia/2026/11/21/mexico-captura-narcotraficante-que-esta-entre-os-dez-mais-procurados-pelo-fbi.ghtml"
+      ],
+      "data_publicacao": "2026-11-21T13:41:26Z",
+      "updated_at": "2026-11-21T13:54:51Z"
     },
     {
       "slug": "ataque-drone-navio-golfo-finlandia-russia",
-      "titulo_tema": "Navio com destino a Kaliningrado é atingido por drones no Golfo da Finlândia",
       "status": "novo",
+      "ttl_horas": 36,
+      "expires_at": "2026-11-23T01:15:04Z",
+      "updated_at": "2026-11-21T13:15:04Z",
+      "titulo_tema": "Navio com destino a Kaliningrado é atingido por drones no Golfo da Finlândia",
+      "sintese_nerd": "O ataque por drones a uma embarcação comercial com destino a Kaliningrado no Golfo da Finlândia eleva o risco de instabilidade nas rotas do Mar Báltico. A escalada de incidentes marítimos pressiona o setor de seguros de cargas e ameaça o fornecimento de commodities e suprimentos na Europa.",
+      "rota_editoria": "/radar",
+      "data_publicacao": "2026-11-21T13:15:04Z",
+      "gatilho_vitrine": "Fixar no Radar Geopolítico para monitorar escalada de conflitos marítimos na Europa e impacto no frete internacional.",
       "origem_pipeline": "curadoria",
+      "relevancia_score": 86,
       "categoria_primaria": "Geopolitica_Radar",
       "categorias_cruzadas": [
         "Economia"
       ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 86,
-      "ttl_horas": 36,
-      "expires_at": "2026-11-23T01:15:04Z",
       "palavras_chave_busca": [
         "golfo da finlandia",
         "kaliningrado",
@@ -52,25 +75,25 @@
         "drones",
         "seguranca maritima",
         "russia"
-      ],
-      "gatilho_vitrine": "Fixar no Radar Geopolítico para monitorar escalada de conflitos marítimos na Europa e impacto no frete internacional.",
-      "sintese_nerd": "O ataque por drones a uma embarcação comercial com destino a Kaliningrado no Golfo da Finlândia eleva o risco de instabilidade nas rotas do Mar Báltico. A escalada de incidentes marítimos pressiona o setor de seguros de cargas e ameaça o fornecimento de commodities e suprimentos na Europa.",
-      "data_publicacao": "2026-11-21T13:15:04Z",
-      "updated_at": "2026-11-21T13:15:04Z"
+      ]
     },
     {
       "slug": "ajuste-fiscal-lula-divida-publica-brasil",
-      "titulo_tema": "Debate sobre pacote de ajuste fiscal e controle da dívida no governo Lula",
       "status": "novo",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-22T13:15:04Z",
+      "updated_at": "2026-11-21T13:15:04Z",
+      "titulo_tema": "Debate sobre pacote de ajuste fiscal e controle da dívida no governo Lula",
+      "sintese_nerd": "A pressão por um plano consistente de ajuste de despesas obrigatórias para conter a dívida pública gera atritos políticos na base do governo e volatilidade nos mercados. A percepção de risco fiscal afeta diretamente a confiança dos investidores locais e estrangeiros, pressionando o câmbio e a curva de juros.",
+      "rota_editoria": "/politica",
+      "data_publicacao": "2026-11-21T13:15:04Z",
+      "gatilho_vitrine": "Posicionar no topo da home na editoria de Política e Economia, conectando o debate de gastos públicos à queda de ETFs e câmbio.",
       "origem_pipeline": "curadoria",
+      "relevancia_score": 85,
       "categoria_primaria": "Politica",
       "categorias_cruzadas": [
         "Economia"
       ],
-      "rota_editoria": "/politica",
-      "relevancia_score": 85,
-      "ttl_horas": 24,
-      "expires_at": "2026-11-22T13:15:04Z",
       "palavras_chave_busca": [
         "ajuste fiscal",
         "divida publica",
@@ -78,11 +101,144 @@
         "economia brasil",
         "pacote fiscal",
         "mercado financeiro"
+      ]
+    },
+    {
+      "slug": "zelensky-classifica-cupula-na-china-como-fracasso-para-putin",
+      "titulo_tema": "Zelensky afirma que Ucrânia ainda aguarda garantias de segurança formais equivalentes à OTAN",
+      "titulo_curto": "Zelensky afirma que Ucrânia ainda aguarda garantias de segurança formais equivalentes à OTAN",
+      "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categoria": "Geopolitica_Relacoes",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
       ],
-      "gatilho_vitrine": "Posicionar no topo da home na editoria de Política e Economia, conectando o debate de gastos públicos à queda de ETFs e câmbio.",
-      "sintese_nerd": "A pressão por um plano consistente de ajuste de despesas obrigatórias para conter a dívida pública gera atritos políticos na base do governo e volatilidade nos mercados. A percepção de risco fiscal afeta diretamente a confiança dos investidores locais e estrangeiros, pressionando o câmbio e a curva de juros.",
-      "data_publicacao": "2026-11-21T13:15:04Z",
-      "updated_at": "2026-11-21T13:15:04Z"
+      "rota_editoria": "/radar",
+      "relevancia_score": 91,
+      "urgencia_score": 90,
+      "ttl_horas": 18,
+      "expires_at": "2026-11-22T07:28:59Z",
+      "palavras_chave_busca": [
+        "zelensky",
+        "ucrânia",
+        "otan",
+        "segurança"
+      ],
+      "palavras_chave": [
+        "zelensky",
+        "ucrânia",
+        "otan",
+        "segurança"
+      ],
+      "gatilho_vitrine": "Conforme apuração do The Kyiv Independent e da Ukrinform, o presidente ucraniano Volodymyr Zelensky declarou que o país ainda precisa de clareza e de compromissos por escrito sobre garantias de segurança semelhantes ao Artigo 5º da OTAN.",
+      "resumo_pulso": "Conforme apuração do The Kyiv Independent e da Ukrinform, o presidente ucraniano Volodymyr Zelensky declarou que o país ainda precisa de clareza e de compromissos por escrito sobre garantias de segurança semelhantes ao Artigo 5º da OTAN.",
+      "sintese_nerd": "Orienta as negociações diplomáticas de longo prazo para a estabilização do leste europeu.",
+      "impacto_pratico": "Orienta as negociações diplomáticas de longo prazo para a estabilização do leste europeu.",
+      "paises_envolvidos": [
+        "UA"
+      ],
+      "veiculos_origem": [
+        "The Kyiv Independent",
+        "Ukrinform"
+      ],
+      "fontes_urls": [
+        "https://kyivindependent.com/zelensky-says-ukraine-has-yet-to-see-written-commitments-on-nato-style-security-guarantees/",
+        "https://www.ukrinform.net/rubric-polytics/4187167-zelensky-says-ukraine-not-yet-received-official-security-guarantees-equivalent-to-nato-article-5.html"
+      ],
+      "data_publicacao": "2026-11-21T13:14:18Z",
+      "updated_at": "2026-11-21T13:54:51Z"
+    },
+    {
+      "slug": "cursos-pedagogia-carga-horaria-matematica",
+      "titulo_tema": "Levantamento aponta que maioria dos cursos de pedagogia dedica fração mínima da grade à matemática",
+      "titulo_curto": "Levantamento aponta que maioria dos cursos de pedagogia dedica fração mínima da grade à matemática",
+      "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Cultura",
+      "categoria": "Sociedade_Cultura",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/cultura",
+      "relevancia_score": 88,
+      "urgencia_score": 85,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-22T13:54:51Z",
+      "palavras_chave_busca": [
+        "pedagogia",
+        "matematica",
+        "educacao",
+        "agencia brasil"
+      ],
+      "palavras_chave": [
+        "pedagogia",
+        "matematica",
+        "educacao",
+        "agencia brasil"
+      ],
+      "gatilho_vitrine": "Segundo dados oficiais da Agência Brasil, cerca de 70,6% dos cursos presenciais de pedagogia destinam apenas entre 2,5% e 5% de sua carga horária total para a formação matemática dos futuros professores da educação infantil e anos iniciais.",
+      "resumo_pulso": "Segundo dados oficiais da Agência Brasil, cerca de 70,6% dos cursos presenciais de pedagogia destinam apenas entre 2,5% e 5% de sua carga horária total para a formação matemática dos futuros professores da educação infantil e anos iniciais.",
+      "sintese_nerd": "Abre debate educacional sobre a qualificação de docentes para o ensino básico de matemática.",
+      "impacto_pratico": "Abre debate educacional sobre a qualificação de docentes para o ensino básico de matemática.",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "veiculos_origem": [
+        "Agência Brasil (EBC)"
+      ],
+      "fontes_urls": [
+        "https://agenciabrasil.ebc.com.br/educacao/noticia/2026-11/70-dos-cursos-de-pedagogia-dedicam-apenas-25-da-grade-horaria"
+      ],
+      "data_publicacao": "2026-11-21T13:03:00Z",
+      "updated_at": "2026-11-21T13:54:51Z"
+    },
+    {
+      "slug": "matematicos-anunciam-possivel-solucao-da-hipotese-de-riemann-com-ia-claude",
+      "status": "novo",
+      "categoria": "Ciencia_Clima",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-22T13:28:59Z",
+      "updated_at": "2026-11-21T13:38:05Z",
+      "fontes_urls": [
+        "https://www.aljazeera.com/news/2026/11/21/riemann-hypothesis-has-the-worlds-most-famous-maths-problem-been-cracked?traffic_source=rss"
+      ],
+      "titulo_tema": "Pesquisadores apontam suposta demonstração da Hipótese de Riemann com auxílio da IA Claude",
+      "resumo_pulso": "Conforme reportado pela Al Jazeera, cientistas anunciaram uma suposta prova para a Hipótese de Riemann utilizando o modelo de inteligência artificial Claude. Especialistas ressaltam que o feito precisará de semanas de validação rigorosa pela comunidade matemática.",
+      "sintese_nerd": "Avanço potencial na matemática teórica e na aplicação de inteligência artificial em problemas complexos.",
+      "titulo_curto": "Pesquisadores apontam suposta demonstração da Hipótese de Riemann com auxílio da IA Claude",
+      "rota_editoria": "/radar",
+      "palavras_chave": [
+        "hipótese de riemann",
+        "inteligência artificial",
+        "claude",
+        "matemática"
+      ],
+      "urgencia_score": 86,
+      "data_publicacao": "2026-11-21T12:49:20Z",
+      "gatilho_vitrine": "Conforme reportado pela Al Jazeera, cientistas anunciaram uma suposta prova para a Hipótese de Riemann utilizando o modelo de inteligência artificial Claude. Especialistas ressaltam que o feito precisará de semanas de validação rigorosa pela comunidade matemática.",
+      "impacto_pratico": "Avanço potencial na matemática teórica e na aplicação de inteligência artificial em problemas complexos.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "Al Jazeera English"
+      ],
+      "relevancia_score": 85,
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "hipótese de riemann",
+        "inteligência artificial",
+        "claude",
+        "matemática"
+      ]
     },
     {
       "slug": "novos-temporais-sul-do-pais-supercelula-rs",
@@ -132,36 +288,128 @@
       ]
     },
     {
+      "slug": "julgamento-caso-kathlen-romeu-tribunal-juri-rj",
+      "titulo_tema": "Tribunal do Júri no Rio de Janeiro julgará policiais envolvidos na morte de Kathlen Romeu",
+      "titulo_curto": "Tribunal do Júri no Rio de Janeiro julgará policiais envolvidos na morte de Kathlen Romeu",
+      "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Cultura",
+      "categoria": "Sociedade_Cultura",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/cultura",
+      "relevancia_score": 87,
+      "urgencia_score": 86,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-22T13:54:51Z",
+      "palavras_chave_busca": [
+        "kathlen romeu",
+        "tribunal do juri",
+        "rio de janeiro",
+        "seguranca publica"
+      ],
+      "palavras_chave": [
+        "kathlen romeu",
+        "tribunal do juri",
+        "rio de janeiro",
+        "seguranca publica"
+      ],
+      "gatilho_vitrine": "Segundo apuração da Agência Brasil, dois policiais militares serão julgados pelo Tribunal do Júri no Rio de Janeiro pelo assassinato da designer de interiores Kathlen Romeu e do bebê que esperava, ocorrido há cinco anos.",
+      "resumo_pulso": "Segundo apuração da Agência Brasil, dois policiais militares serão julgados pelo Tribunal do Júri no Rio de Janeiro pelo assassinato da designer de interiores Kathlen Romeu e do bebê que esperava, ocorrido há cinco anos.",
+      "sintese_nerd": "Repercussão jurídica e social sobre a atuação e responsabilização de agentes de segurança pública.",
+      "impacto_pratico": "Repercussão jurídica e social sobre a atuação e responsabilização de agentes de segurança pública.",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "veiculos_origem": [
+        "Agência Brasil (EBC)"
+      ],
+      "fontes_urls": [
+        "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-11/policiais-queriam-vinganca-diz-advogado-da-familia-de-kathlen-romeu"
+      ],
+      "data_publicacao": "2026-11-21T12:32:00Z",
+      "updated_at": "2026-11-21T13:54:51Z"
+    },
+    {
+      "slug": "navio-de-carga-russo-e-atingido-por-drones-no-golfo-da-finlandia",
+      "titulo_tema": "Navio de carga russo é atingido por drones e pega fogo no Golfo da Finlândia",
+      "titulo_curto": "Navio de carga russo é atingido por drones e pega fogo no Golfo da Finlândia",
+      "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categoria": "Geopolitica_Relacoes",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 94,
+      "urgencia_score": 96,
+      "ttl_horas": 18,
+      "expires_at": "2026-11-22T07:28:59Z",
+      "palavras_chave_busca": [
+        "navio russo",
+        "drones",
+        "golfo da finlandia",
+        "seguranca maritima"
+      ],
+      "palavras_chave": [
+        "navio russo",
+        "drones",
+        "golfo da finlandia",
+        "seguranca maritima"
+      ],
+      "gatilho_vitrine": "Segundo relatórios do The Moscow Times e do G1 Mundo, autoridades finlandesas confirmaram que um navio comercial russo que seguia para Kaliningrado foi atingido por drones em águas internacionais, resultando em incêndio e na deriva da embarcação para águas territoriais da Finlândia.",
+      "resumo_pulso": "Segundo relatórios do The Moscow Times e do G1 Mundo, autoridades finlandesas confirmaram que um navio comercial russo que seguia para Kaliningrado foi atingido por drones em águas internacionais, resultando em incêndio e na deriva da embarcação para águas territoriais da Finlândia.",
+      "sintese_nerd": "Aumento das tensões geopolíticas e reforço na segurança de rotas marítimas no Mar Báltico.",
+      "impacto_pratico": "Aumento das tensões geopolíticas e reforço na segurança de rotas marítimas no Mar Báltico.",
+      "paises_envolvidos": [
+        "RU",
+        "FI"
+      ],
+      "veiculos_origem": [
+        "G1 Mundo",
+        "The Moscow Times"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/mundo/noticia/2026/11/21/drones-atingem-navio-de-carga-russo-no-golfo-da-finlandia-pais-reforca-seguranca.ghtml",
+        "https://www.themoscowtimes.com/2026/11/21/russia-says-cargo-vessel-struck-by-drones-in-gulf-of-finland-a94342"
+      ],
+      "data_publicacao": "2026-11-21T11:50:07Z",
+      "updated_at": "2026-11-21T13:54:51Z"
+    },
+    {
       "slug": "jair-bolsonaro-internado-dfstar-procedimento-com-sonda",
       "status": "novo",
       "categoria": "Sociedade_Cultura",
       "ttl_horas": 12,
       "expires_at": "2026-11-21T23:41:11Z",
-      "updated_at": "2026-11-21T13:02:47Z",
+      "updated_at": "2026-11-21T13:38:05Z",
       "fontes_urls": [
         "https://g1.globo.com/politica/noticia/2026/11/21/defesa-de-bolsonaro-pede-a-moraes-autorizacao-para-visitas-diarias-de-filhos-durante-internacao.ghtml"
       ],
-      "titulo_tema": "Defesa de Jair Bolsonaro pede ao STF autorização para visitas diárias de filhos em hospital",
-      "resumo_pulso": "Segundo apuração do G1 Política, a defesa de Jair Bolsonaro protocolou pedido de urgência ao ministro Alexandre de Moraes para permitir visitas diárias de seus filhos no Hospital DF Star, em Brasília. O ex-presidente permanece internado após apresentar quadro de dor e distensão abdominal.",
-      "sintese_nerd": "Acompanhamento médico e restrições judiciais de circulação e visitas a figuras públicas sob cautelar.",
-      "titulo_curto": "Defesa de Jair Bolsonaro pede ao STF autorização para visitas diárias de filhos em hospital",
+      "titulo_tema": "Defesa de Jair Bolsonaro solicita ao STF autorização para visitas diárias durante internação",
+      "resumo_pulso": "Segundo o G1 Política, os advogados do ex-presidente Jair Bolsonaro protocolaram pedido ao ministro Alexandre de Moraes para permitir visitas diárias de familiares no Hospital DF Star, em Brasília. Bolsonaro está internado desde sexta-feira devido a um quadro de dor abdominal.",
+      "sintese_nerd": "Movimentação jurídica em torno das medidas cautelares e restrições de circulação do ex-presidente.",
+      "titulo_curto": "Defesa de Jair Bolsonaro solicita ao STF autorização para visitas diárias durante internação",
       "rota_editoria": "/cultura",
       "palavras_chave": [
         "jair bolsonaro",
         "stf",
         "alexandre de moraes",
-        "hospital df star",
-        "brasília"
+        "internação"
       ],
-      "urgencia_score": 89,
+      "urgencia_score": 88,
       "data_publicacao": "2026-11-21T11:31:47Z",
-      "gatilho_vitrine": "Segundo apuração do G1 Política, a defesa de Jair Bolsonaro protocolou pedido de urgência ao ministro Alexandre de Moraes para permitir visitas diárias de seus filhos no Hospital DF Star, em Brasília. O ex-presidente permanece internado após apresentar quadro de dor e distensão abdominal.",
-      "impacto_pratico": "Acompanhamento médico e restrições judiciais de circulação e visitas a figuras públicas sob cautelar.",
+      "gatilho_vitrine": "Segundo o G1 Política, os advogados do ex-presidente Jair Bolsonaro protocolaram pedido ao ministro Alexandre de Moraes para permitir visitas diárias de familiares no Hospital DF Star, em Brasília. Bolsonaro está internado desde sexta-feira devido a um quadro de dor abdominal.",
+      "impacto_pratico": "Movimentação jurídica em torno das medidas cautelares e restrições de circulação do ex-presidente.",
       "origem_pipeline": "pulso",
       "veiculos_origem": [
         "G1 Política"
       ],
-      "relevancia_score": 90,
+      "relevancia_score": 89,
       "paises_envolvidos": [
         "BR"
       ],
@@ -174,8 +422,7 @@
         "jair bolsonaro",
         "stf",
         "alexandre de moraes",
-        "hospital df star",
-        "brasília"
+        "internação"
       ]
     },
     {
@@ -184,226 +431,48 @@
       "categoria": "Economia_Comercio",
       "ttl_horas": 24,
       "expires_at": "2026-11-22T11:41:11Z",
-      "updated_at": "2026-11-21T13:02:47Z",
+      "updated_at": "2026-11-21T13:38:05Z",
       "fontes_urls": [
-        "https://g1.globo.com/tecnologia/noticia/2026/11/21/uniao-europeia-propoe-taxar-big-techs-para-financiar-orcamento-ate-2034.ghtml"
+        "https://g1.globo.com/tecnologia/noticia/2026/11/21/uniao-europeia-propoe-taxar-big-techs-para-financiar-orcamento-ate-2034.ghtml",
+        "https://www.infomoney.com.br/economia/proposta-de-cortes-no-orcamento-de-longo-prazo-da-ue-enfrenta-resistencias/"
       ],
-      "titulo_tema": "União Europeia detalha proposta de orçamento de longo prazo com taxação de big techs até 2034",
-      "resumo_pulso": "Conforme apuração do G1 Economia, a União Europeia apresentou oficialmente sua proposta orçamentária para o período de 2028 a 2034, introduzindo cobranças anuais sobre receitas de grandes empresas de tecnologia. A medida busca diversificar as fontes de financiamento do bloco europeu para a próxima década.",
-      "sintese_nerd": "Potencial impacto financeiro e regulatório sobre grandes corporações de tecnologia com atuação global.",
-      "titulo_curto": "União Europeia detalha proposta de orçamento de longo prazo com taxação de big techs até 2034",
+      "titulo_tema": "União Europeia avança com proposta de orçamento de longo prazo que prevê taxação de big techs",
+      "resumo_pulso": "Segundo o G1 Economia e a InfoMoney, a União Europeia apresentou o plano orçamentário para o período de 2028 a 2034, introduzindo uma cobrança anual sobre as receitas de grandes empresas tecnológicas. A medida busca financiar o bloco, mas enfrenta resistências de países fiscais mais rígidos.",
+      "sintese_nerd": "Potencial alteração nos custos operacionais de gigantes digitais e nas regras de tributação transfronteiriça na Europa.",
+      "titulo_curto": "União Europeia avança com proposta de orçamento de longo prazo que prevê taxação de big techs",
       "rota_editoria": "/economia",
       "palavras_chave": [
         "união europeia",
-        "orçamento",
-        "big techs",
         "taxação",
-        "economia digital"
+        "big techs",
+        "orçamento"
       ],
-      "urgencia_score": 91,
+      "urgencia_score": 92,
       "data_publicacao": "2026-11-21T11:26:05Z",
-      "gatilho_vitrine": "Conforme apuração do G1 Economia, a União Europeia apresentou oficialmente sua proposta orçamentária para o período de 2028 a 2034, introduzindo cobranças anuais sobre receitas de grandes empresas de tecnologia. A medida busca diversificar as fontes de financiamento do bloco europeu para a próxima década.",
-      "impacto_pratico": "Potencial impacto financeiro e regulatório sobre grandes corporações de tecnologia com atuação global.",
+      "gatilho_vitrine": "Segundo o G1 Economia e a InfoMoney, a União Europeia apresentou o plano orçamentário para o período de 2028 a 2034, introduzindo uma cobrança anual sobre as receitas de grandes empresas tecnológicas. A medida busca financiar o bloco, mas enfrenta resistências de países fiscais mais rígidos.",
+      "impacto_pratico": "Potencial alteração nos custos operacionais de gigantes digitais e nas regras de tributação transfronteiriça na Europa.",
       "origem_pipeline": "pulso",
       "veiculos_origem": [
-        "G1 Economia"
+        "G1 Economia",
+        "InfoMoney Mercados"
       ],
-      "relevancia_score": 92,
-      "paises_envolvidos": [
-        "EU"
-      ],
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "união europeia",
-        "orçamento",
-        "big techs",
-        "taxação",
-        "economia digital"
-      ]
-    },
-    {
-      "slug": "fbi-investiga-invasao-banco-dados-nacional-criminais-eua",
-=======
-  "updatedAt": "2026-11-21T13:02:47Z",
-  "batch_id": "20261121-1302",
-  "temas_ativos": [
-    {
-      "slug": "novos-temporais-sul-do-pais-supercelula-rs",
-      "titulo_tema": "Defesa Civil e Climatempo mantêm alertas de novos temporais e chuvas intensas no Sul do país",
-      "titulo_curto": "Defesa Civil e Climatempo mantêm alertas de novos temporais e chuvas intensas no Sul do país",
->>>>>>> 63f261d (att rOm)
-      "status": "novo",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 12,
-      "expires_at": "2026-11-22T10:43:32Z",
-      "updated_at": "2026-11-21T12:32:02Z",
-      "fontes_urls": [
-        "https://g1.globo.com/mundo/noticia/2026/11/21/fbi-investiga-invasao-a-banco-dados-nacional-de-informacoes-criminais-diz-tv.ghtml"
-      ],
-      "titulo_tema": "FBI investiga invasão a banco de dados nacional de informações criminais nos EUA",
-      "resumo_pulso": "Segundo apuração da CNN e do G1 Mundo, o FBI abriu investigação sobre uma possível invasão a um banco de dados de segurança pública usado por agências federais e locais nos Estados Unidos. A ocorrência se soma a uma série recente de falhas sistêmicas e cibernéticas no país.",
-      "sintese_nerd": "Possíveis riscos de vazamento de dados sensíveis e instabilidade em serviços de segurança pública nos Estados Unidos.",
-      "titulo_curto": "FBI investiga invasão a banco de dados nacional de informações criminais nos EUA",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "fbi",
-        "eua",
-        "cibersegurança",
-        "segurança pública"
-      ],
-      "urgencia_score": 96,
-      "data_publicacao": "2026-11-21T10:27:04Z",
-      "gatilho_vitrine": "Segundo apuração da CNN e do G1 Mundo, o FBI abriu investigação sobre uma possível invasão a um banco de dados de segurança pública usado por agências federais e locais nos Estados Unidos. A ocorrência se soma a uma série recente de falhas sistêmicas e cibernéticas no país.",
-      "impacto_pratico": "Possíveis riscos de vazamento de dados sensíveis e instabilidade em serviços de segurança pública nos Estados Unidos.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "G1 Mundo",
-        "CNN"
-      ],
-      "relevancia_score": 94,
-      "paises_envolvidos": [
-        "US"
-      ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-<<<<<<< HEAD
-      "palavras_chave_busca": [
-=======
-      "rota_editoria": "/radar",
       "relevancia_score": 93,
-      "urgencia_score": 96,
-      "ttl_horas": 24,
-      "expires_at": "2026-11-22T12:48:01Z",
-      "palavras_chave_busca": [
-        "temporais",
-        "sul do país",
-        "rio grande do sul",
-        "defesa civil",
-        "supercélula"
-      ],
-      "palavras_chave": [
-        "temporais",
-        "sul do país",
-        "rio grande do sul",
-        "defesa civil",
-        "supercélula"
-      ],
-      "gatilho_vitrine": "Conforme apuração do InfoMoney, novas chuvas intensas e temporais devem atingir o Rio Grande do Sul, Santa Catarina e Paraná após os severos estragos causados por uma supercélula. As Defesas Civis estaduais reforçaram os alertas preventivos devido à chegada de uma nova frente fria.",
-      "resumo_pulso": "Conforme apuração do InfoMoney, novas chuvas intensas e temporais devem atingir o Rio Grande do Sul, Santa Catarina e Paraná após os severos estragos causados por uma supercélula. As Defesas Civis estaduais reforçaram os alertas preventivos devido à chegada de uma nova frente fria.",
-      "sintese_nerd": "População em áreas de risco no Sul deve redobrar cuidados com alagamentos e deslizamentos de terra.",
-      "impacto_pratico": "População em áreas de risco no Sul deve redobrar cuidados com alagamentos e deslizamentos de terra.",
       "paises_envolvidos": [
-        "BR"
+        "EU",
+        "DE",
+        "FR"
       ],
-      "veiculos_origem": [
-        "InfoMoney"
-      ],
-      "fontes_urls": [
-        "https://www.infomoney.com.br/brasil/novos-temporais-devem-atingir-sul-do-pais-apos-supercelula-arrasar-cidade-do-rs/"
-      ],
-      "data_publicacao": "2026-11-21T12:40:28Z",
-      "updated_at": "2026-11-21T13:02:47Z"
-    },
-    {
-      "slug": "jair-bolsonaro-internado-dfstar-procedimento-com-sonda",
-      "titulo_tema": "Defesa de Jair Bolsonaro pede ao STF autorização para visitas diárias de filhos em hospital",
-      "titulo_curto": "Defesa de Jair Bolsonaro pede ao STF autorização para visitas diárias de filhos em hospital",
-      "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Cultura",
-      "categoria": "Sociedade_Cultura",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/cultura",
-      "relevancia_score": 90,
-      "urgencia_score": 89,
-      "ttl_horas": 12,
-      "expires_at": "2026-11-21T23:41:11Z",
-      "palavras_chave_busca": [
-        "jair bolsonaro",
-        "stf",
-        "alexandre de moraes",
-        "hospital df star",
-        "brasília"
-      ],
-      "palavras_chave": [
-        "jair bolsonaro",
-        "stf",
-        "alexandre de moraes",
-        "hospital df star",
-        "brasília"
-      ],
-      "gatilho_vitrine": "Segundo apuração do G1 Política, a defesa de Jair Bolsonaro protocolou pedido de urgência ao ministro Alexandre de Moraes para permitir visitas diárias de seus filhos no Hospital DF Star, em Brasília. O ex-presidente permanece internado após apresentar quadro de dor e distensão abdominal.",
-      "resumo_pulso": "Segundo apuração do G1 Política, a defesa de Jair Bolsonaro protocolou pedido de urgência ao ministro Alexandre de Moraes para permitir visitas diárias de seus filhos no Hospital DF Star, em Brasília. O ex-presidente permanece internado após apresentar quadro de dor e distensão abdominal.",
-      "sintese_nerd": "Acompanhamento médico e restrições judiciais de circulação e visitas a figuras públicas sob cautelar.",
-      "impacto_pratico": "Acompanhamento médico e restrições judiciais de circulação e visitas a figuras públicas sob cautelar.",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "veiculos_origem": [
-        "G1 Política"
-      ],
-      "fontes_urls": [
-        "https://g1.globo.com/politica/noticia/2026/11/21/defesa-de-bolsonaro-pede-a-moraes-autorizacao-para-visitas-diarias-de-filhos-durante-internacao.ghtml"
-      ],
-      "data_publicacao": "2026-11-21T11:31:47Z",
-      "updated_at": "2026-11-21T13:02:47Z"
-    },
-    {
-      "slug": "uniao-europeia-propoe-taxar-big-techs-orcamento-2034",
-      "titulo_tema": "União Europeia detalha proposta de orçamento de longo prazo com taxação de big techs até 2034",
-      "titulo_curto": "União Europeia detalha proposta de orçamento de longo prazo com taxação de big techs até 2034",
-      "status": "novo",
-      "origem_pipeline": "pulso",
       "categoria_primaria": "Economia",
-      "categoria": "Economia_Comercio",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
       ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 92,
-      "urgencia_score": 91,
-      "ttl_horas": 24,
-      "expires_at": "2026-11-22T11:41:11Z",
       "palavras_chave_busca": [
         "união europeia",
-        "orçamento",
-        "big techs",
         "taxação",
-        "economia digital"
-      ],
-      "palavras_chave": [
-        "união europeia",
-        "orçamento",
         "big techs",
-        "taxação",
-        "economia digital"
-      ],
-      "gatilho_vitrine": "Conforme apuração do G1 Economia, a União Europeia apresentou oficialmente sua proposta orçamentária para o período de 2028 a 2034, introduzindo cobranças anuais sobre receitas de grandes empresas de tecnologia. A medida busca diversificar as fontes de financiamento do bloco europeu para a próxima década.",
-      "resumo_pulso": "Conforme apuração do G1 Economia, a União Europeia apresentou oficialmente sua proposta orçamentária para o período de 2028 a 2034, introduzindo cobranças anuais sobre receitas de grandes empresas de tecnologia. A medida busca diversificar as fontes de financiamento do bloco europeu para a próxima década.",
-      "sintese_nerd": "Potencial impacto financeiro e regulatório sobre grandes corporações de tecnologia com atuação global.",
-      "impacto_pratico": "Potencial impacto financeiro e regulatório sobre grandes corporações de tecnologia com atuação global.",
-      "paises_envolvidos": [
-        "EU"
-      ],
-      "veiculos_origem": [
-        "G1 Economia"
-      ],
-      "fontes_urls": [
-        "https://g1.globo.com/tecnologia/noticia/2026/11/21/uniao-europeia-propoe-taxar-big-techs-para-financiar-orcamento-ate-2034.ghtml"
-      ],
-      "data_publicacao": "2026-11-21T11:26:05Z",
-      "updated_at": "2026-11-21T13:02:47Z"
+        "orçamento"
+      ]
     },
     {
       "slug": "fbi-investiga-invasao-banco-dados-nacional-criminais-eua",
@@ -445,60 +514,11 @@
         "Resumo_Ultimas"
       ],
       "palavras_chave_busca": [
->>>>>>> 63f261d (att rOm)
         "fbi",
         "eua",
         "cibersegurança",
         "segurança pública"
       ]
-<<<<<<< HEAD
-=======
-    },
-    {
-      "slug": "feira-orgulho-nerd-sp-programacao-gratuita",
-      "status": "novo",
-      "categoria": "Sociedade_Cultura",
-      "ttl_horas": 12,
-      "expires_at": "2026-11-22T00:17:26Z",
-      "updated_at": "2026-11-21T12:17:26Z",
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/cultura/noticia/2026-11/feira-orgulho-nerd-em-sp-tem-cinema-oficinas-e-games"
-      ],
-      "titulo_tema": "Feira Orgulho Nerd SP inicia programação gratuita com foco em cultura geek",
-      "resumo_pulso": "A segunda edição da feira Orgulho Nerd SP começou hoje na Mercado Livre Arena Pacaembu. O evento oferece atividades gratuitas como cinema, campeonatos de games e painéis com criadores de conteúdo.",
-      "sintese_nerd": "Opção de lazer cultural gratuita para o público em São Paulo.",
-      "titulo_curto": "Feira Orgulho Nerd SP inicia programação gratuita com foco em cultura geek",
-      "rota_editoria": "/cultura",
-      "palavras_chave": [
-        "orgulho nerd",
-        "são paulo",
-        "cultura geek",
-        "eventos"
-      ],
-      "urgencia_score": 60,
-      "data_publicacao": "2026-11-21T10:12:00Z",
-      "gatilho_vitrine": "A segunda edição da feira Orgulho Nerd SP começou hoje na Mercado Livre Arena Pacaembu. O evento oferece atividades gratuitas como cinema, campeonatos de games e painéis com criadores de conteúdo.",
-      "impacto_pratico": "Opção de lazer cultural gratuita para o público em São Paulo.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "Agência Brasil"
-      ],
-      "relevancia_score": 70,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "categoria_primaria": "Cultura",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "orgulho nerd",
-        "são paulo",
-        "cultura geek",
-        "eventos"
-      ]
->>>>>>> 63f261d (att rOm)
     },
     {
       "slug": "feira-orgulho-nerd-sp-programacao-gratuita",
@@ -881,291 +901,142 @@
         "mísseis",
         "guerra"
       ]
-    },
-    {
-      "slug": "ira-envia-convoy-petroleiros-desafiar-bloqueio-eua",
-      "status": "novo",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-22T06:28:02Z",
-      "updated_at": "2026-11-21T07:45:41Z",
-      "fontes_urls": [
-        "https://g1.globo.com/mundo/noticia/2026/11/21/ate-onde-estrategia-de-trump-contra-o-ira-depende-de-china-e-russia.ghtml",
-        "https://www.iranintl.com/en/202611204994"
-      ],
-      "titulo_tema": "Estratégia de bloqueio dos EUA contra o Irã expõe dependência de acordos com China e Rússia",
-      "resumo_pulso": "Conforme análises veiculadas pelo G1 Mundo e pela Iran International, a eficácia da estratégia dos Estados Unidos para isolar economicamente Teerã depende da adesão de Pequim e Moscou. O cenário se tensiona com a mobilização de um comboio de 14 petroleiros iranianos para desafiar o cerco naval norte-americano.",
-      "sintese_nerd": "A escalada de tensões no Estreito de Ormuz pode impactar os preços globais do barril de petróleo e provocar volatilidade nos mercados de combustíveis e câmbio.",
-      "titulo_curto": "Estratégia de bloqueio dos EUA contra o Irã expõe dependência de acordos com China e Rússia",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "irã",
-        "eua",
-        "petróleo",
-        "bloqueio naval",
-        "china",
-        "rússia"
-      ],
-      "urgencia_score": 94,
-      "data_publicacao": "2026-11-21T06:01:08Z",
-      "gatilho_vitrine": "Conforme análises veiculadas pelo G1 Mundo e pela Iran International, a eficácia da estratégia dos Estados Unidos para isolar economicamente Teerã depende da adesão de Pequim e Moscou. O cenário se tensiona com a mobilização de um comboio de 14 petroleiros iranianos para desafiar o cerco naval norte-americano.",
-      "impacto_pratico": "A escalada de tensões no Estreito de Ormuz pode impactar os preços globais do barril de petróleo e provocar volatilidade nos mercados de combustíveis e câmbio.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "G1 Mundo",
-        "Iran International"
-      ],
-      "relevancia_score": 92,
-      "paises_envolvidos": [
-        "IR",
-        "US",
-        "CN",
-        "RU"
-      ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "irã",
-        "eua",
-        "petróleo",
-        "bloqueio naval",
-        "china",
-        "rússia"
-      ]
-    },
-    {
-      "slug": "paraguai-ex-procurador-geral-denuncia-perseguicao-onu-escandalo-ueno-bank",
-      "status": "novo",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-22T03:19:26Z",
-      "updated_at": "2026-11-21T05:28:35Z",
-      "fontes_urls": [
-        "https://g1.globo.com/mundo/noticia/2026/11/21/ex-procurador-geral-do-paraguai-denuncia-perseguicao-politica-a-onu-apos-escandalo-bancario.ghtml"
-      ],
-      "titulo_tema": "Ex-procurador-geral do Paraguai reforça denúncia à ONU sobre crise e Ueno Bank",
-      "resumo_pulso": "Segundo apuração da AFP e do G1 Mundo, o ex-procurador-geral do Paraguai Emiliano Rolón reiterou denúncias à ONU sobre perseguição política, em desdobramento das investigações sobre a liquidação do Ueno Bank e a queda do ex-presidente Santiago Peña.",
-      "sintese_nerd": "Aprofundamento da crise institucional no Paraguai com repercussões nos fluxos financeiros regionais e na estabilidade política fronteiriça.",
-      "titulo_curto": "Ex-procurador-geral do Paraguai reforça denúncia à ONU sobre crise e Ueno Bank",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "paraguai",
-        "ueno bank",
-        "onu",
-        "emiliano rolón",
-        "santiago peña"
-      ],
-      "urgencia_score": 93,
-      "data_publicacao": "2026-11-21T03:06:51Z",
-      "gatilho_vitrine": "Segundo apuração da AFP e do G1 Mundo, o ex-procurador-geral do Paraguai Emiliano Rolón reiterou denúncias à ONU sobre perseguição política, em desdobramento das investigações sobre a liquidação do Ueno Bank e a queda do ex-presidente Santiago Peña.",
-      "impacto_pratico": "Aprofundamento da crise institucional no Paraguai com repercussões nos fluxos financeiros regionais e na estabilidade política fronteiriça.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "G1 Mundo",
-        "AFP",
-        "Market Makers"
-      ],
-      "relevancia_score": 91,
-      "paises_envolvidos": [
-        "PY",
-        "BR"
-      ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "paraguai",
-        "ueno bank",
-        "onu",
-        "emiliano rolón",
-        "santiago peña"
-      ]
-    },
-    {
-      "slug": "tribunal-frances-condena-policiais-por-agressao-racista",
-      "status": "novo",
-      "categoria": "Sociedade_Cultura",
-      "ttl_horas": 18,
-      "expires_at": "2026-11-21T21:19:26Z",
-      "updated_at": "2026-11-21T04:27:42Z",
-      "fontes_urls": [
-        "https://www.aljazeera.com/news/2026/11/21/three-french-police-officers-sentenced-over-racist-assault-on-black-man?traffic_source=rss"
-      ],
-      "titulo_tema": "Justiça de Paris condena policiais franceses em caso de agressão de 2020",
-      "resumo_pulso": "Conforme reportado pela Al Jazeera English, a corte criminal de Paris sentenciou três policiais, reconhecendo formalmente o racismo como fator agravante na violência cometida contra o produtor musical Michel Zecler.",
-      "sintese_nerd": "Reabre o debate sobre protocolos de segurança pública e contestações legais a abusos policiais na França.",
-      "titulo_curto": "Justiça de Paris condena policiais franceses em caso de agressão de 2020",
-      "rota_editoria": "/cultura",
-      "palavras_chave": [
-        "frança",
-        "paris",
-        "racismo",
-        "polícia",
-        "michel zecler"
-      ],
-      "urgencia_score": 86,
-      "data_publicacao": "2026-11-21T03:01:24Z",
-      "gatilho_vitrine": "Conforme reportado pela Al Jazeera English, a corte criminal de Paris sentenciou três policiais, reconhecendo formalmente o racismo como fator agravante na violência cometida contra o produtor musical Michel Zecler.",
-      "impacto_pratico": "Reabre o debate sobre protocolos de segurança pública e contestações legais a abusos policiais na França.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "Al Jazeera English"
-      ],
-      "relevancia_score": 85,
-      "paises_envolvidos": [
-        "FR"
-      ],
-      "categoria_primaria": "Cultura",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "frança",
-        "paris",
-        "racismo",
-        "polícia",
-        "michel zecler"
-      ]
-    },
-    {
-      "slug": "fachin-tenta-avancar-reformas-stf-antes-recesso",
-      "status": "novo",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-22T03:19:26Z",
-      "updated_at": "2026-11-21T06:28:02Z",
-      "fontes_urls": [
-        "https://g1.globo.com/politica/noticia/2026/11/21/a-um-mes-do-recesso-fachin-tenta-avancar-com-agenda-de-reformas-no-stf-mas-enfrenta-resistencias.ghtml"
-      ],
-      "titulo_tema": "STF busca destravar pautas de reforma interna e codigo de etica antes do recesso",
-      "resumo_pulso": "Segundo levantamento do G1 Politica, o presidente do STF, ministro Edson Fachin, intensifica esforcos para deliberar sobre a reforma do sistema de justica e o codigo de etica de tribunais superiores a um mes da paralisacao de fim de ano, enfrentando resistencias internas na Corte.",
-      "sintese_nerd": "Definicao de regras de conduta para magistrados e mudancas na tramitacao de processos judiciais de grande impacto.",
-      "titulo_curto": "STF busca destravar pautas de reforma interna e codigo de etica antes do recesso",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "stf",
-        "edson fachin",
-        "reforma da justica",
-        "codigo de etica"
-      ],
-      "urgencia_score": 89,
-      "data_publicacao": "2026-11-21T03:00:00Z",
-      "gatilho_vitrine": "Segundo levantamento do G1 Politica, o presidente do STF, ministro Edson Fachin, intensifica esforcos para deliberar sobre a reforma do sistema de justica e o codigo de etica de tribunais superiores a um mes da paralisacao de fim de ano, enfrentando resistencias internas na Corte.",
-      "impacto_pratico": "Definicao de regras de conduta para magistrados e mudancas na tramitacao de processos judiciais de grande impacto.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "G1 Politica"
-      ],
-      "relevancia_score": 90,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "stf",
-        "edson fachin",
-        "reforma da justica",
-        "codigo de etica"
-      ]
-<<<<<<< HEAD
-    }
-  ],
-  "temas_curadoria": [
-    {
-      "slug": "orcamento-ue-cortes-resistencias-frugais",
-      "titulo_tema": "Proposta de cortes no orçamento de longo prazo da União Europeia",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Geopolitica_Radar"
-      ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 88,
-      "ttl_horas": 48,
-      "expires_at": "2026-11-23T13:15:04Z",
-      "palavras_chave_busca": [
-        "uniao europeia",
-        "orcamento ue",
-        "paises frugais",
-        "economia europeia",
-        "alemanha",
-        "cortes fiscais"
-      ],
-      "gatilho_vitrine": "Destaque na editoria de Economia conectando a rigidez fiscal europeia ao cenário global de juros e ajuste de contas públicas.",
-      "sintese_nerd": "A pressão de países frugais da União Europeia por cortes drásticos no orçamento de longo prazo evidencia o esgotamento de subsídios e a necessidade de reajustes fiscais na região. Para o mercado global, a contração de gastos europeus impacta a liquidez internacional e a percepção de risco para economias emergentes.",
-      "data_publicacao": "2026-11-21T13:15:04Z",
-      "updated_at": "2026-11-21T13:15:04Z"
-    },
-    {
-      "slug": "ataque-drone-navio-golfo-finlandia-russia",
-      "titulo_tema": "Navio com destino a Kaliningrado é atingido por drones no Golfo da Finlândia",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 86,
-      "ttl_horas": 36,
-      "expires_at": "2026-11-23T01:15:04Z",
-      "palavras_chave_busca": [
-        "golfo da finlandia",
-        "kaliningrado",
-        "guerra na ucrania",
-        "drones",
-        "seguranca maritima",
-        "russia"
-      ],
-      "gatilho_vitrine": "Fixar no Radar Geopolítico para monitorar escalada de conflitos marítimos na Europa e impacto no frete internacional.",
-      "sintese_nerd": "O ataque por drones a uma embarcação comercial com destino a Kaliningrado no Golfo da Finlândia eleva o risco de instabilidade nas rotas do Mar Báltico. A escalada de incidentes marítimos pressiona o setor de seguros de cargas e ameaça o fornecimento de commodities e suprimentos na Europa.",
-      "data_publicacao": "2026-11-21T13:15:04Z",
-      "updated_at": "2026-11-21T13:15:04Z"
-    },
-    {
-      "slug": "ajuste-fiscal-lula-divida-publica-brasil",
-      "titulo_tema": "Debate sobre pacote de ajuste fiscal e controle da dívida no governo Lula",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Politica",
-      "categorias_cruzadas": [
-        "Economia"
-      ],
-      "rota_editoria": "/politica",
-      "relevancia_score": 85,
-      "ttl_horas": 24,
-      "expires_at": "2026-11-22T13:15:04Z",
-      "palavras_chave_busca": [
-        "ajuste fiscal",
-        "divida publica",
-        "governo lula",
-        "economia brasil",
-        "pacote fiscal",
-        "mercado financeiro"
-      ],
-      "gatilho_vitrine": "Posicionar no topo da home na editoria de Política e Economia, conectando o debate de gastos públicos à queda de ETFs e câmbio.",
-      "sintese_nerd": "A pressão por um plano consistente de ajuste de despesas obrigatórias para conter a dívida pública gera atritos políticos na base do governo e volatilidade nos mercados. A percepção de risco fiscal afeta diretamente a confiança dos investidores locais e estrangeiros, pressionando o câmbio e a curva de juros.",
-      "data_publicacao": "2026-11-21T13:15:04Z",
-      "updated_at": "2026-11-21T13:15:04Z"
-=======
->>>>>>> 63f261d (att rOm)
     }
   ],
   "noticias_quentes": [
     {
+      "slug": "mexico-captura-narcotraficante-chapo-isidro-fbi",
+      "titulo_curto": "México captura narcotraficante 'Chapo Isidro', um dos mais procurados pelo FBI",
+      "resumo_pulso": "Segundo apuração do G1 Mundo, forças de segurança do México capturaram Fausto Isidro Meza, o 'Chapo Isidro', apontado como um dos dez fugitivos mais procurados pelo FBI. A prisão ocorreu no estado de Sinaloa e envolveu outros líderes de seu grupo criminoso.",
+      "impacto_pratico": "Reforço na cooperação bilateral de segurança e combate ao narcotráfico entre México e Estados Unidos.",
+      "categoria": "Geopolitica_Relacoes",
+      "paises_envolvidos": [
+        "MX",
+        "US"
+      ],
+      "urgencia_score": 92,
+      "relevancia_score": 90,
+      "nivel_confianca": "alta",
+      "ttl_horas": 24,
+      "horas_em_destaque": 12,
+      "veiculos_origem": [
+        "G1 Mundo"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/mundo/noticia/2026/11/21/mexico-captura-narcotraficante-que-esta-entre-os-dez-mais-procurados-pelo-fbi.ghtml"
+      ],
+      "palavras_chave": [
+        "Chapo Isidro",
+        "FBI",
+        "Mexico",
+        "narcotrafico"
+      ],
+      "data_publicacao": "2026-11-21T13:41:26Z",
+      "links_internos_relacionados": [],
+      "expires_at": "2026-11-22T13:54:51Z",
+      "updated_at": "2026-11-21T13:54:51Z"
+    },
+    {
+      "slug": "zelensky-classifica-cupula-na-china-como-fracasso-para-putin",
+      "titulo_curto": "Zelensky afirma que Ucrânia ainda aguarda garantias de segurança formais equivalentes à OTAN",
+      "resumo_pulso": "Conforme apuração do The Kyiv Independent e da Ukrinform, o presidente ucraniano Volodymyr Zelensky declarou que o país ainda precisa de clareza e de compromissos por escrito sobre garantias de segurança semelhantes ao Artigo 5º da OTAN.",
+      "impacto_pratico": "Orienta as negociações diplomáticas de longo prazo para a estabilização do leste europeu.",
+      "categoria": "Geopolitica_Relacoes",
+      "paises_envolvidos": [
+        "UA"
+      ],
+      "urgencia_score": 90,
+      "relevancia_score": 91,
+      "nivel_confianca": "alta",
+      "ttl_horas": 18,
+      "horas_em_destaque": 10,
+      "veiculos_origem": [
+        "The Kyiv Independent",
+        "Ukrinform"
+      ],
+      "fontes_urls": [
+        "https://kyivindependent.com/zelensky-says-ukraine-has-yet-to-see-written-commitments-on-nato-style-security-guarantees/",
+        "https://www.ukrinform.net/rubric-polytics/4187167-zelensky-says-ukraine-not-yet-received-official-security-guarantees-equivalent-to-nato-article-5.html"
+      ],
+      "palavras_chave": [
+        "Zelensky",
+        "Ucrânia",
+        "OTAN",
+        "segurança"
+      ],
+      "data_publicacao": "2026-11-21T13:14:18Z",
+      "links_internos_relacionados": [],
+      "expires_at": "2026-11-22T07:28:59Z",
+      "updated_at": "2026-11-21T13:54:51Z"
+    },
+    {
+      "slug": "cursos-pedagogia-carga-horaria-matematica",
+      "titulo_curto": "Levantamento aponta que maioria dos cursos de pedagogia dedica fração mínima da grade à matemática",
+      "resumo_pulso": "Segundo dados oficiais da Agência Brasil, cerca de 70,6% dos cursos presenciais de pedagogia destinam apenas entre 2,5% e 5% de sua carga horária total para a formação matemática dos futuros professores da educação infantil e anos iniciais.",
+      "impacto_pratico": "Abre debate educacional sobre a qualificação de docentes para o ensino básico de matemática.",
+      "categoria": "Sociedade_Cultura",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "urgencia_score": 85,
+      "relevancia_score": 88,
+      "nivel_confianca": "alta",
+      "ttl_horas": 24,
+      "horas_em_destaque": 12,
+      "veiculos_origem": [
+        "Agência Brasil (EBC)"
+      ],
+      "fontes_urls": [
+        "https://agenciabrasil.ebc.com.br/educacao/noticia/2026-11/70-dos-cursos-de-pedagogia-dedicam-apenas-25-da-grade-horaria"
+      ],
+      "palavras_chave": [
+        "pedagogia",
+        "matematica",
+        "educacao",
+        "Agencia Brasil"
+      ],
+      "data_publicacao": "2026-11-21T13:03:00Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "Movimentos sociais e parlamentares debatem investimentos em saúde, educação e transição ecológica",
+          "url_existente": "https://www.rodandoomundo.com.br/saude",
+          "motivo_conexao": "Relaciona debates sobre diretrizes e investimentos nas políticas sociais e educacionais do país."
+        }
+      ],
+      "expires_at": "2026-11-22T13:54:51Z",
+      "updated_at": "2026-11-21T13:54:51Z"
+    },
+    {
+      "slug": "matematicos-anunciam-possivel-solucao-da-hipotese-de-riemann-com-ia-claude",
+      "categoria": "Ciencia_Clima",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-22T13:28:59Z",
+      "updated_at": "2026-11-21T13:38:05Z",
+      "fontes_urls": [
+        "https://www.aljazeera.com/news/2026/11/21/riemann-hypothesis-has-the-worlds-most-famous-maths-problem-been-cracked?traffic_source=rss"
+      ],
+      "resumo_pulso": "Conforme reportado pela Al Jazeera, cientistas anunciaram uma suposta prova para a Hipótese de Riemann utilizando o modelo de inteligência artificial Claude. Especialistas ressaltam que o feito precisará de semanas de validação rigorosa pela comunidade matemática.",
+      "titulo_curto": "Pesquisadores apontam suposta demonstração da Hipótese de Riemann com auxílio da IA Claude",
+      "palavras_chave": [
+        "Hipótese de Riemann",
+        "inteligência artificial",
+        "Claude",
+        "matemática"
+      ],
+      "urgencia_score": 86,
+      "data_publicacao": "2026-11-21T12:49:20Z",
+      "impacto_pratico": "Avanço potencial na matemática teórica e na aplicação de inteligência artificial em problemas complexos.",
+      "nivel_confianca": "preliminar",
+      "veiculos_origem": [
+        "Al Jazeera English"
+      ],
+      "relevancia_score": 85,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [],
+      "links_internos_relacionados": []
+    },
+    {
       "slug": "novos-temporais-sul-do-pais-supercelula-rs",
-<<<<<<< HEAD
       "categoria": "Ciencia_Clima",
       "ttl_horas": 24,
       "expires_at": "2026-11-22T12:48:01Z",
@@ -1175,26 +1046,6 @@
       ],
       "resumo_pulso": "Conforme apuração do InfoMoney, novas chuvas intensas e temporais devem atingir o Rio Grande do Sul, Santa Catarina e Paraná após os severos estragos causados por uma supercélula. As Defesas Civis estaduais reforçaram os alertas preventivos devido à chegada de uma nova frente fria.",
       "titulo_curto": "Defesa Civil e Climatempo mantêm alertas de novos temporais e chuvas intensas no Sul do país",
-=======
-      "titulo_curto": "Defesa Civil e Climatempo mantêm alertas de novos temporais e chuvas intensas no Sul do país",
-      "resumo_pulso": "Conforme apuração do InfoMoney, novas chuvas intensas e temporais devem atingir o Rio Grande do Sul, Santa Catarina e Paraná após os severos estragos causados por uma supercélula. As Defesas Civis estaduais reforçaram os alertas preventivos devido à chegada de uma nova frente fria.",
-      "impacto_pratico": "População em áreas de risco no Sul deve redobrar cuidados com alagamentos e deslizamentos de terra.",
-      "categoria": "Ciencia_Clima",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "urgencia_score": 96,
-      "relevancia_score": 93,
-      "nivel_confianca": "alta",
-      "ttl_horas": 24,
-      "horas_em_destaque": 12,
-      "veiculos_origem": [
-        "InfoMoney"
-      ],
-      "fontes_urls": [
-        "https://www.infomoney.com.br/brasil/novos-temporais-devem-atingir-sul-do-pais-apos-supercelula-arrasar-cidade-do-rs/"
-      ],
->>>>>>> 63f261d (att rOm)
       "palavras_chave": [
         "temporais",
         "Sul do país",
@@ -1202,7 +1053,6 @@
         "Defesa Civil",
         "supercélula"
       ],
-<<<<<<< HEAD
       "urgencia_score": 96,
       "data_publicacao": "2026-11-21T12:40:28Z",
       "impacto_pratico": "População em áreas de risco no Sul deve redobrar cuidados com alagamentos e deslizamentos de terra.",
@@ -1222,189 +1072,118 @@
           "titulo_existente": "Clima, Amazônia e Transição Energética"
         }
       ]
-=======
-      "data_publicacao": "2026-11-21T12:40:28Z",
-      "links_internos_relacionados": [
-        {
-          "titulo_existente": "Clima, Amazônia e Transição Energética",
-          "url_existente": "https://www.rodandoomundo.com.br/clima",
-          "motivo_conexao": "Contextualiza eventos climáticos extremos e alertas meteorológicos no Brasil."
-        }
-      ],
-      "expires_at": "2026-11-22T12:48:01Z",
-      "updated_at": "2026-11-21T13:02:47Z"
->>>>>>> 63f261d (att rOm)
     },
     {
-      "slug": "jair-bolsonaro-internado-dfstar-procedimento-com-sonda",
-      "titulo_curto": "Defesa de Jair Bolsonaro pede ao STF autorização para visitas diárias de filhos em hospital",
-      "resumo_pulso": "Segundo apuração do G1 Política, a defesa de Jair Bolsonaro protocolou pedido de urgência ao ministro Alexandre de Moraes para permitir visitas diárias de seus filhos no Hospital DF Star, em Brasília. O ex-presidente permanece internado após apresentar quadro de dor e distensão abdominal.",
-      "impacto_pratico": "Acompanhamento médico e restrições judiciais de circulação e visitas a figuras públicas sob cautelar.",
+      "slug": "julgamento-caso-kathlen-romeu-tribunal-juri-rj",
+      "titulo_curto": "Tribunal do Júri no Rio de Janeiro julgará policiais envolvidos na morte de Kathlen Romeu",
+      "resumo_pulso": "Segundo apuração da Agência Brasil, dois policiais militares serão julgados pelo Tribunal do Júri no Rio de Janeiro pelo assassinato da designer de interiores Kathlen Romeu e do bebê que esperava, ocorrido há cinco anos.",
+      "impacto_pratico": "Repercussão jurídica e social sobre a atuação e responsabilização de agentes de segurança pública.",
       "categoria": "Sociedade_Cultura",
       "paises_envolvidos": [
         "BR"
       ],
-      "urgencia_score": 89,
-      "relevancia_score": 90,
-      "nivel_confianca": "alta",
-      "ttl_horas": 12,
-<<<<<<< HEAD
-      "expires_at": "2026-11-21T23:41:11Z",
-      "updated_at": "2026-11-21T13:02:47Z",
-      "fontes_urls": [
-        "https://g1.globo.com/politica/noticia/2026/11/21/defesa-de-bolsonaro-pede-a-moraes-autorizacao-para-visitas-diarias-de-filhos-durante-internacao.ghtml"
-      ],
-      "resumo_pulso": "Segundo apuração do G1 Política, a defesa de Jair Bolsonaro protocolou pedido de urgência ao ministro Alexandre de Moraes para permitir visitas diárias de seus filhos no Hospital DF Star, em Brasília. O ex-presidente permanece internado após apresentar quadro de dor e distensão abdominal.",
-      "titulo_curto": "Defesa de Jair Bolsonaro pede ao STF autorização para visitas diárias de filhos em hospital",
-=======
-      "horas_em_destaque": 6,
-      "veiculos_origem": [
-        "G1 Política"
-      ],
-      "fontes_urls": [
-        "https://g1.globo.com/politica/noticia/2026/11/21/defesa-de-bolsonaro-pede-a-moraes-autorizacao-para-visitas-diarias-de-filhos-durante-internacao.ghtml"
-      ],
->>>>>>> 63f261d (att rOm)
-      "palavras_chave": [
-        "Jair Bolsonaro",
-        "STF",
-        "Alexandre de Moraes",
-        "Hospital DF Star",
-        "Brasília"
-      ],
-<<<<<<< HEAD
-      "urgencia_score": 89,
-      "data_publicacao": "2026-11-21T11:31:47Z",
-      "impacto_pratico": "Acompanhamento médico e restrições judiciais de circulação e visitas a figuras públicas sob cautelar.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "G1 Política"
-      ],
-      "relevancia_score": 90,
-=======
-      "data_publicacao": "2026-11-21T11:31:47Z",
-      "links_internos_relacionados": [
-        {
-          "titulo_existente": "STF analisa regras de transparência e limites constitucionais entre os Poderes",
-          "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
-          "motivo_conexao": "Relaciona decisões e petições direcionadas ao Supremo Tribunal Federal."
-        }
-      ],
-      "expires_at": "2026-11-21T23:41:11Z",
-      "updated_at": "2026-11-21T13:02:47Z"
-    },
-    {
-      "slug": "uniao-europeia-propoe-taxar-big-techs-orcamento-2034",
-      "titulo_curto": "União Europeia detalha proposta de orçamento de longo prazo com taxação de big techs até 2034",
-      "resumo_pulso": "Conforme apuração do G1 Economia, a União Europeia apresentou oficialmente sua proposta orçamentária para o período de 2028 a 2034, introduzindo cobranças anuais sobre receitas de grandes empresas de tecnologia. A medida busca diversificar as fontes de financiamento do bloco europeu para a próxima década.",
-      "impacto_pratico": "Potencial impacto financeiro e regulatório sobre grandes corporações de tecnologia com atuação global.",
-      "categoria": "Economia_Comercio",
-      "paises_envolvidos": [
-        "EU"
-      ],
-      "urgencia_score": 91,
-      "relevancia_score": 92,
+      "urgencia_score": 86,
+      "relevancia_score": 87,
       "nivel_confianca": "alta",
       "ttl_horas": 24,
       "horas_em_destaque": 12,
       "veiculos_origem": [
-        "G1 Economia"
+        "Agência Brasil (EBC)"
       ],
       "fontes_urls": [
-        "https://g1.globo.com/tecnologia/noticia/2026/11/21/uniao-europeia-propoe-taxar-big-techs-para-financiar-orcamento-ate-2034.ghtml"
+        "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-11/policiais-queriam-vinganca-diz-advogado-da-familia-de-kathlen-romeu"
       ],
       "palavras_chave": [
-        "União Europeia",
-        "orçamento",
-        "big techs",
-        "taxação",
-        "economia digital"
+        "Kathlen Romeu",
+        "Tribunal do Juri",
+        "Rio de Janeiro",
+        "seguranca publica"
       ],
-      "data_publicacao": "2026-11-21T11:26:05Z",
+      "data_publicacao": "2026-11-21T12:32:00Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "Política no Brasil",
+          "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
+          "motivo_conexao": "Permite acompanhar desdobramentos de segurança pública e pautas judiciais no país."
+        }
+      ],
+      "expires_at": "2026-11-22T13:54:51Z",
+      "updated_at": "2026-11-21T13:54:51Z"
+    },
+    {
+      "slug": "navio-de-carga-russo-e-atingido-por-drones-no-golfo-da-finlandia",
+      "titulo_curto": "Navio de carga russo é atingido por drones e pega fogo no Golfo da Finlândia",
+      "resumo_pulso": "Segundo relatórios do The Moscow Times e do G1 Mundo, autoridades finlandesas confirmaram que um navio comercial russo que seguia para Kaliningrado foi atingido por drones em águas internacionais, resultando em incêndio e na deriva da embarcação para águas territoriais da Finlândia.",
+      "impacto_pratico": "Aumento das tensões geopolíticas e reforço na segurança de rotas marítimas no Mar Báltico.",
+      "categoria": "Geopolitica_Relacoes",
+      "paises_envolvidos": [
+        "RU",
+        "FI"
+      ],
+      "urgencia_score": 96,
+      "relevancia_score": 94,
+      "nivel_confianca": "alta",
+      "ttl_horas": 18,
+      "horas_em_destaque": 12,
+      "veiculos_origem": [
+        "G1 Mundo",
+        "The Moscow Times"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/mundo/noticia/2026/11/21/drones-atingem-navio-de-carga-russo-no-golfo-da-finlandia-pais-reforca-seguranca.ghtml",
+        "https://www.themoscowtimes.com/2026/11/21/russia-says-cargo-vessel-struck-by-drones-in-gulf-of-finland-a94342"
+      ],
+      "palavras_chave": [
+        "navio russo",
+        "drones",
+        "Golfo da Finlandia",
+        "seguranca maritima"
+      ],
+      "data_publicacao": "2026-11-21T11:50:07Z",
       "links_internos_relacionados": [
         {
           "titulo_existente": "O que é uma sanção internacional?",
           "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-sancao-internacional",
-          "motivo_conexao": "Explica o uso de instrumentos econômicos e regulatórios por organismos multilaterais."
+          "motivo_conexao": "Contextualiza as pressões geopolíticas e o impacto de conflitos sobre o tráfego comercial marítimo."
         }
       ],
-      "expires_at": "2026-11-22T11:41:11Z",
-      "updated_at": "2026-11-21T13:02:47Z"
+      "expires_at": "2026-11-22T07:28:59Z",
+      "updated_at": "2026-11-21T13:54:51Z"
     },
     {
-      "slug": "fbi-investiga-invasao-banco-dados-nacional-criminais-eua",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 12,
-      "expires_at": "2026-11-22T10:43:32Z",
-      "updated_at": "2026-11-21T12:32:02Z",
-      "fontes_urls": [
-        "https://g1.globo.com/mundo/noticia/2026/11/21/fbi-investiga-invasao-a-banco-dados-nacional-de-informacoes-criminais-diz-tv.ghtml"
-      ],
-      "resumo_pulso": "Segundo apuração da CNN e do G1 Mundo, o FBI abriu investigação sobre uma possível invasão a um banco de dados de segurança pública usado por agências federais e locais nos Estados Unidos. A ocorrência se soma a uma série recente de falhas sistêmicas e cibernéticas no país.",
-      "titulo_curto": "FBI investiga invasão a banco de dados nacional de informações criminais nos EUA",
-      "palavras_chave": [
-        "FBI",
-        "EUA",
-        "Cibersegurança",
-        "Segurança Pública"
-      ],
-      "urgencia_score": 96,
-      "data_publicacao": "2026-11-21T10:27:04Z",
-      "impacto_pratico": "Possíveis riscos de vazamento de dados sensíveis e instabilidade em serviços de segurança pública nos Estados Unidos.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "G1 Mundo",
-        "CNN"
-      ],
-      "relevancia_score": 94,
-      "horas_em_destaque": 12,
-      "paises_envolvidos": [
-        "US"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/politica/estados-unidos",
-          "motivo_conexao": "Contextualiza o cenário institucional e de segurança em Washington.",
-          "titulo_existente": "Política nos Estados Unidos"
-        }
-      ]
-    },
-    {
-      "slug": "feira-orgulho-nerd-sp-programacao-gratuita",
+      "slug": "jair-bolsonaro-internado-dfstar-procedimento-com-sonda",
       "categoria": "Sociedade_Cultura",
       "ttl_horas": 12,
-      "expires_at": "2026-11-22T00:17:26Z",
-      "updated_at": "2026-11-21T12:17:26Z",
+      "expires_at": "2026-11-21T23:41:11Z",
+      "updated_at": "2026-11-21T13:38:05Z",
       "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/cultura/noticia/2026-11/feira-orgulho-nerd-em-sp-tem-cinema-oficinas-e-games"
+        "https://g1.globo.com/politica/noticia/2026/11/21/defesa-de-bolsonaro-pede-a-moraes-autorizacao-para-visitas-diarias-de-filhos-durante-internacao.ghtml"
       ],
-      "resumo_pulso": "A segunda edição da feira Orgulho Nerd SP começou hoje na Mercado Livre Arena Pacaembu. O evento oferece atividades gratuitas como cinema, campeonatos de games e painéis com criadores de conteúdo.",
-      "titulo_curto": "Feira Orgulho Nerd SP inicia programação gratuita com foco em cultura geek",
+      "resumo_pulso": "Segundo o G1 Política, os advogados do ex-presidente Jair Bolsonaro protocolaram pedido ao ministro Alexandre de Moraes para permitir visitas diárias de familiares no Hospital DF Star, em Brasília. Bolsonaro está internado desde sexta-feira devido a um quadro de dor abdominal.",
+      "titulo_curto": "Defesa de Jair Bolsonaro solicita ao STF autorização para visitas diárias durante internação",
       "palavras_chave": [
-        "Orgulho Nerd",
-        "São Paulo",
-        "Cultura Geek",
-        "Eventos"
+        "Jair Bolsonaro",
+        "STF",
+        "Alexandre de Moraes",
+        "internação"
       ],
-      "urgencia_score": 60,
-      "data_publicacao": "2026-11-21T10:12:00Z",
-      "impacto_pratico": "Opção de lazer cultural gratuita para o público em São Paulo.",
+      "urgencia_score": 88,
+      "data_publicacao": "2026-11-21T11:31:47Z",
+      "impacto_pratico": "Movimentação jurídica em torno das medidas cautelares e restrições de circulação do ex-presidente.",
       "nivel_confianca": "alta",
       "veiculos_origem": [
-        "Agência Brasil"
+        "G1 Política"
       ],
-      "relevancia_score": 70,
->>>>>>> 63f261d (att rOm)
-      "horas_em_destaque": 6,
+      "relevancia_score": 89,
+      "horas_em_destaque": 8,
       "paises_envolvidos": [
         "BR"
       ],
-<<<<<<< HEAD
       "links_internos_relacionados": [
         {
           "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
-          "motivo_conexao": "Relaciona decisões e petições direcionadas ao Supremo Tribunal Federal.",
-          "titulo_existente": "STF analisa regras de transparência e limites constitucionais entre os Poderes"
+          "motivo_conexao": "Acompanha os desdobramentos judiciais e políticos envolvendo figuras centrais em Brasília.",
+          "titulo_existente": "Política no Brasil"
         }
       ]
     },
@@ -1413,36 +1192,39 @@
       "categoria": "Economia_Comercio",
       "ttl_horas": 24,
       "expires_at": "2026-11-22T11:41:11Z",
-      "updated_at": "2026-11-21T13:02:47Z",
+      "updated_at": "2026-11-21T13:38:05Z",
       "fontes_urls": [
-        "https://g1.globo.com/tecnologia/noticia/2026/11/21/uniao-europeia-propoe-taxar-big-techs-para-financiar-orcamento-ate-2034.ghtml"
+        "https://g1.globo.com/tecnologia/noticia/2026/11/21/uniao-europeia-propoe-taxar-big-techs-para-financiar-orcamento-ate-2034.ghtml",
+        "https://www.infomoney.com.br/economia/proposta-de-cortes-no-orcamento-de-longo-prazo-da-ue-enfrenta-resistencias/"
       ],
-      "resumo_pulso": "Conforme apuração do G1 Economia, a União Europeia apresentou oficialmente sua proposta orçamentária para o período de 2028 a 2034, introduzindo cobranças anuais sobre receitas de grandes empresas de tecnologia. A medida busca diversificar as fontes de financiamento do bloco europeu para a próxima década.",
-      "titulo_curto": "União Europeia detalha proposta de orçamento de longo prazo com taxação de big techs até 2034",
+      "resumo_pulso": "Segundo o G1 Economia e a InfoMoney, a União Europeia apresentou o plano orçamentário para o período de 2028 a 2034, introduzindo uma cobrança anual sobre as receitas de grandes empresas tecnológicas. A medida busca financiar o bloco, mas enfrenta resistências de países fiscais mais rígidos.",
+      "titulo_curto": "União Europeia avança com proposta de orçamento de longo prazo que prevê taxação de big techs",
       "palavras_chave": [
         "União Europeia",
-        "orçamento",
-        "big techs",
         "taxação",
-        "economia digital"
+        "big techs",
+        "orçamento"
       ],
-      "urgencia_score": 91,
+      "urgencia_score": 92,
       "data_publicacao": "2026-11-21T11:26:05Z",
-      "impacto_pratico": "Potencial impacto financeiro e regulatório sobre grandes corporações de tecnologia com atuação global.",
+      "impacto_pratico": "Potencial alteração nos custos operacionais de gigantes digitais e nas regras de tributação transfronteiriça na Europa.",
       "nivel_confianca": "alta",
       "veiculos_origem": [
-        "G1 Economia"
+        "G1 Economia",
+        "InfoMoney Mercados"
       ],
-      "relevancia_score": 92,
+      "relevancia_score": 93,
       "horas_em_destaque": 12,
       "paises_envolvidos": [
-        "EU"
+        "EU",
+        "DE",
+        "FR"
       ],
       "links_internos_relacionados": [
         {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-sancao-internacional",
-          "motivo_conexao": "Explica o uso de instrumentos econômicos e regulatórios por organismos multilaterais.",
-          "titulo_existente": "O que é uma sanção internacional?"
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-o-orcamento",
+          "motivo_conexao": "Explica a dinâmica de planejamento e distribuição de recursos em grandes estruturas estatais.",
+          "titulo_existente": "O que é o Orçamento?"
         }
       ]
     },
@@ -1513,8 +1295,6 @@
       "paises_envolvidos": [
         "BR"
       ],
-=======
->>>>>>> 63f261d (att rOm)
       "links_internos_relacionados": []
     },
     {
@@ -1857,324 +1637,86 @@
           "titulo_existente": "O que é uma sanção internacional?"
         }
       ]
-    },
-    {
-      "slug": "tribunal-frances-condena-policiais-por-agressao-racista",
-      "categoria": "Sociedade_Cultura",
-      "ttl_horas": 18,
-      "expires_at": "2026-11-21T21:19:26Z",
-      "updated_at": "2026-11-21T04:27:42Z",
-      "fontes_urls": [
-        "https://www.aljazeera.com/news/2026/11/21/three-french-police-officers-sentenced-over-racist-assault-on-black-man?traffic_source=rss"
-      ],
-      "resumo_pulso": "Conforme reportado pela Al Jazeera English, a corte criminal de Paris sentenciou três policiais, reconhecendo formalmente o racismo como fator agravante na violência cometida contra o produtor musical Michel Zecler.",
-      "titulo_curto": "Justiça de Paris condena policiais franceses em caso de agressão de 2020",
-      "palavras_chave": [
-        "França",
-        "Paris",
-        "Racismo",
-        "Polícia",
-        "Michel Zecler"
-      ],
-      "urgencia_score": 86,
-      "data_publicacao": "2026-11-21T03:01:24Z",
-      "impacto_pratico": "Reabre o debate sobre protocolos de segurança pública e contestações legais a abusos policiais na França.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Al Jazeera English"
-      ],
-      "relevancia_score": 85,
-      "horas_em_destaque": 8,
-      "paises_envolvidos": [
-        "FR"
-      ],
-      "links_internos_relacionados": []
-    },
-    {
-      "slug": "fachin-tenta-avancar-reformas-stf-antes-recesso",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-22T03:19:26Z",
-      "updated_at": "2026-11-21T06:28:02Z",
-      "fontes_urls": [
-        "https://g1.globo.com/politica/noticia/2026/11/21/a-um-mes-do-recesso-fachin-tenta-avancar-com-agenda-de-reformas-no-stf-mas-enfrenta-resistencias.ghtml"
-      ],
-      "resumo_pulso": "Segundo levantamento do G1 Politica, o presidente do STF, ministro Edson Fachin, intensifica esforcos para deliberar sobre a reforma do sistema de justica e o codigo de etica de tribunais superiores a um mes da paralisacao de fim de ano, enfrentando resistencias internas na Corte.",
-      "titulo_curto": "STF busca destravar pautas de reforma interna e codigo de etica antes do recesso",
-      "palavras_chave": [
-        "STF",
-        "Edson Fachin",
-        "reforma da justica",
-        "codigo de etica"
-      ],
-      "urgencia_score": 89,
-      "data_publicacao": "2026-11-21T03:00:00Z",
-      "impacto_pratico": "Definicao de regras de conduta para magistrados e mudancas na tramitacao de processos judiciais de grande impacto.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "G1 Politica"
-      ],
-      "relevancia_score": 90,
-      "horas_em_destaque": 12,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
-          "motivo_conexao": "Analise sobre a tramitacao de pautas no Judiciario e articulacoes entre os Poderes.",
-          "titulo_existente": "Politica no Brasil"
-        }
-      ]
-    },
-    {
-      "slug": "protestos-geracao-z-europa-custos-guerras-clima",
-      "categoria": "Sociedade_Cultura",
-      "ttl_horas": 18,
-      "expires_at": "2026-11-21T21:19:26Z",
-      "updated_at": "2026-11-21T04:27:42Z",
-      "fontes_urls": [
-        "https://www.aljazeera.com/video/newsfeed/2026/11/21/gen-z-protests-sweep-europe-over-wars-rising-costs-and-climate?traffic_source=rss"
-      ],
-      "resumo_pulso": "Conforme cobertura da Al Jazeera English, manifestantes da Geração Z continuam protestando em cerca de 25 nações europeias, exigindo ações concretas contra o alto custo de vida, a expansão de orçamentos militares e a inércia climática.",
-      "titulo_curto": "Protestos da Geração Z mobilizam 25 países europeus por custos e clima",
-      "palavras_chave": [
-        "Geração Z",
-        "Europa",
-        "Protestos",
-        "Custo de vida",
-        "Clima"
-      ],
-      "urgencia_score": 88,
-      "data_publicacao": "2026-11-21T02:49:16Z",
-      "impacto_pratico": "Sinaliza instabilidade social em centros urbanos europeus com reflexos potenciais em rotas de tráfego e cadeias de suprimento.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Al Jazeera English"
-      ],
-      "relevancia_score": 87,
-      "horas_em_destaque": 10,
-      "paises_envolvidos": [
-        "FR",
-        "DE",
-        "GB"
-      ],
-      "links_internos_relacionados": []
-    },
-    {
-      "slug": "pf-prende-suspeita-esquema-golpes-financeiros-piaui",
-      "categoria": "Economia_Comercio",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-22T03:19:26Z",
-      "updated_at": "2026-11-21T06:28:02Z",
-      "fontes_urls": [
-        "https://g1.globo.com/politica/noticia/2026/11/20/pf-prende-suspeita-de-integrar-esquema-de-falsos-investimentos-que-movimentou-mais-de-r-600-milhoes-no-pi.ghtml"
-      ],
-      "resumo_pulso": "Segundo apuracao do G1 Politica, a Policia Federal efetuou a prisao no Distrito Federal de Kayra Cardoso Guimaraes, investigada por integrar esquema de falsos investimentos na bolsa com movimentacoes milionarias associadas ao Piaui.",
-      "titulo_curto": "PF prende no DF suspeita de fraudes financeiras com desvios de R$ 600 milhoes",
-      "palavras_chave": [
-        "Policia Federal",
-        "fraude financeira",
-        "Chico Trader",
-        "Piaui"
-      ],
-      "urgencia_score": 84,
-      "data_publicacao": "2026-11-21T01:50:53Z",
-      "impacto_pratico": "Alerta para investidores e intensificacao de operacoes contra esquemas de piramides e falsas corretoras.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "G1 Politica"
-      ],
-      "relevancia_score": 83,
-      "horas_em_destaque": 12,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "links_internos_relacionados": []
-    },
-    {
-      "slug": "stf-derruba-sigilo-de-relatorio-da-pf-sobre-mendonca-e-master",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 18,
-      "expires_at": "2026-11-22T13:28:48Z",
-      "updated_at": "2026-11-21T02:08:13Z",
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/justica/noticia/2026-11/pf-diz-que-nao-ha-conversas-de-mendonca-com-vorcaro"
-      ],
-      "resumo_pulso": "Segundo apuração da Agência Brasil, a Polícia Federal informou ao Supremo Tribunal Federal (STF) a inexistência de registros de conversas entre o ministro André Mendonça e o ex-banqueiro Daniel Vorcaro. O relatório teve o sigilo retirado pelo presidente da Corte, Edson Fachin, a pedido do próprio magistrado.",
-      "titulo_curto": "PF informa ausência de diálogos entre André Mendonça e Daniel Vorcaro no caso Master",
-      "palavras_chave": [
-        "STF",
-        "Polícia Federal",
-        "André Mendonça",
-        "Daniel Vorcaro",
-        "caso Master"
-      ],
-      "urgencia_score": 94,
-      "data_publicacao": "2026-11-21T01:28:48Z",
-      "impacto_pratico": "Esclarecimento de apurações em andamento no STF relacionadas ao caso Master.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Agência Brasil"
-      ],
-      "relevancia_score": 95,
-      "horas_em_destaque": 18,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
-          "motivo_conexao": "Contextualiza a atuação e decisões recentes do Supremo Tribunal Federal no cenário político nacional.",
-          "titulo_existente": "STF analisa regras de transparência e limites constitucionais entre os Poderes"
-        }
-      ]
-    },
-    {
-      "slug": "portugal-estreia-com-vitoria-copa-mundo-vela-rj",
-      "categoria": "Sociedade_Cultura",
-      "ttl_horas": 12,
-      "expires_at": "2026-11-21T20:47:46Z",
-      "updated_at": "2026-11-21T08:47:46Z",
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/esportes/noticia/2026-11/portugal-estreia-com-vitoria-de-virada-na-copa-do-mundo-de-vela-no-rj"
-      ],
-      "resumo_pulso": "Segundo boletim da Agência Brasil (EBC), Portugal, Estônia, Lituânia e Uruguai estrearam com vitória de virada na primeira fase da SSL Gold Cup, competição mundial de vela realizada na Baía de Guanabara, no Rio de Janeiro. O evento internacional reúne equipes de 40 países, com a seleção brasileira estreando diretamente nas oitavas de final.",
-      "titulo_curto": "Portugal, Estônia, Lituânia e Uruguai vencem na estreia da Copa do Mundo de Vela no RJ",
-      "palavras_chave": [
-        "Copa do Mundo de Vela",
-        "Rio de Janeiro",
-        "Baía de Guanabara",
-        "Portugal"
-      ],
-      "urgencia_score": 80,
-      "data_publicacao": "2026-11-21T01:02:00Z",
-      "impacto_pratico": "Movimentação turística e esportiva na cidade do Rio de Janeiro devido à competição náutica internacional.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Agência Brasil (EBC)"
-      ],
-      "relevancia_score": 78,
-      "horas_em_destaque": 6,
-      "paises_envolvidos": [
-        "BR",
-        "PT",
-        "EE",
-        "LT",
-        "UY"
-      ],
-      "links_internos_relacionados": []
-<<<<<<< HEAD
-=======
     }
   ],
   "temas_curadoria": [
     {
-      "slug": "escalada-estreito-hormuz-eua-ira-petroleo",
+      "slug": "orcamento-ue-cortes-resistencias-frugais",
       "status": "novo",
       "ttl_horas": 48,
-      "expires_at": "2026-11-23T10:00:34Z",
-      "updated_at": "2026-11-21T10:00:34Z",
-      "titulo_tema": "Escalada militar no Estreito de Ormuz e impactos na cotação do petróleo",
-      "sintese_nerd": "O abate de um drone norte-americano e o bloqueio parcial no Estreito de Ormuz elevam a tensão geopolítica na rota por onde passa um quinto do petróleo mundial. Esse gargalo logístico pressiona o valor do barril no mercado global com risco iminente de repasse para os combustíveis no Brasil.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-21T10:00:34Z",
-      "gatilho_vitrine": "Destacar no topo do Radar Geopolítico o risco de desabastecimento energético global e a repassagem de preços no Brasil.",
+      "expires_at": "2026-11-23T13:15:04Z",
+      "updated_at": "2026-11-21T13:15:04Z",
+      "titulo_tema": "Proposta de cortes no orçamento de longo prazo da União Europeia",
+      "sintese_nerd": "A pressão de países frugais da União Europeia por cortes drásticos no orçamento de longo prazo evidencia o esgotamento de subsídios e a necessidade de reajustes fiscais na região. Para o mercado global, a contração de gastos europeus impacta a liquidez internacional e a percepção de risco para economias emergentes.",
+      "rota_editoria": "/economia",
+      "data_publicacao": "2026-11-21T13:15:04Z",
+      "gatilho_vitrine": "Destaque na editoria de Economia conectando a rigidez fiscal europeia ao cenário global de juros e ajuste de contas públicas.",
       "origem_pipeline": "curadoria",
-      "relevancia_score": 95,
+      "relevancia_score": 88,
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Geopolitica_Radar"
+      ],
+      "palavras_chave_busca": [
+        "uniao europeia",
+        "orcamento ue",
+        "paises frugais",
+        "economia europeia",
+        "alemanha",
+        "cortes fiscais"
+      ]
+    },
+    {
+      "slug": "ataque-drone-navio-golfo-finlandia-russia",
+      "status": "novo",
+      "ttl_horas": 36,
+      "expires_at": "2026-11-23T01:15:04Z",
+      "updated_at": "2026-11-21T13:15:04Z",
+      "titulo_tema": "Navio com destino a Kaliningrado é atingido por drones no Golfo da Finlândia",
+      "sintese_nerd": "O ataque por drones a uma embarcação comercial com destino a Kaliningrado no Golfo da Finlândia eleva o risco de instabilidade nas rotas do Mar Báltico. A escalada de incidentes marítimos pressiona o setor de seguros de cargas e ameaça o fornecimento de commodities e suprimentos na Europa.",
+      "rota_editoria": "/radar",
+      "data_publicacao": "2026-11-21T13:15:04Z",
+      "gatilho_vitrine": "Fixar no Radar Geopolítico para monitorar escalada de conflitos marítimos na Europa e impacto no frete internacional.",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 86,
       "categoria_primaria": "Geopolitica_Radar",
       "categorias_cruzadas": [
-        "Economia",
-        "Politica"
+        "Economia"
       ],
       "palavras_chave_busca": [
-        "estreito de ormuz",
-        "eua e irã",
-        "drone abatido",
-        "preço do petróleo",
-        "sanções americanas",
-        "crise de energia"
+        "golfo da finlandia",
+        "kaliningrado",
+        "guerra na ucrania",
+        "drones",
+        "seguranca maritima",
+        "russia"
       ]
     },
     {
-      "slug": "vistos-diplomaticos-brasil-eua-lula-trump",
+      "slug": "ajuste-fiscal-lula-divida-publica-brasil",
       "status": "novo",
-      "ttl_horas": 72,
-      "expires_at": "2026-11-24T10:00:34Z",
-      "updated_at": "2026-11-21T10:00:34Z",
-      "titulo_tema": "Impasse diplomático de vistos entre governos Lula e Trump",
-      "sintese_nerd": "A retaliação velada na concessão de credenciais diplomáticas entre Brasil e Estados Unidos ilustra o esfriamento das relações formais no início da gestão Trump. O impasse expõe os limites da diplomacia pragmática em equilibrar soberania institucional e interlocução com potências globais.",
-      "rota_editoria": "/politica",
-      "data_publicacao": "2026-11-21T10:00:34Z",
-      "gatilho_vitrine": "Exibir na editoria de Política para detalhar as negociações diretas de bastidor entre Brasília e Washington.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 89,
-      "categoria_primaria": "Politica",
-      "categorias_cruzadas": [
-        "Geopolitica_Radar"
-      ],
-      "palavras_chave_busca": [
-        "vistos diplomáticos",
-        "governo lula",
-        "governo trump",
-        "embaixada americana",
-        "itamaraty",
-        "relações bilaterais"
-      ]
-    },
-    {
-      "slug": "venda-acoes-tecnologia-queda-bolsas-mercados",
-      "status": "em_alta",
       "ttl_horas": 24,
-      "expires_at": "2026-11-22T10:00:34Z",
-      "updated_at": "2026-11-21T10:00:34Z",
-      "titulo_tema": "Onda de vendas em tecnologia gera forte retração nas bolsas mundiais",
-      "sintese_nerd": "Incertezas sobre os retornos financeiros maciços no setor de Inteligência Artificial deflagraram uma realização de lucros generalizada na Europa e nos EUA. Essa correção técnica aumenta a volatilidade nos mercados emergentes e afeta diretamente a atratividade do mercado de capital brasileiro.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-21T10:00:34Z",
-      "gatilho_vitrine": "Posicionar na Home de Economia com foco na aversão ao risco global e contaminação do Ibovespa.",
+      "expires_at": "2026-11-22T13:15:04Z",
+      "updated_at": "2026-11-21T13:15:04Z",
+      "titulo_tema": "Debate sobre pacote de ajuste fiscal e controle da dívida no governo Lula",
+      "sintese_nerd": "A pressão por um plano consistente de ajuste de despesas obrigatórias para conter a dívida pública gera atritos políticos na base do governo e volatilidade nos mercados. A percepção de risco fiscal afeta diretamente a confiança dos investidores locais e estrangeiros, pressionando o câmbio e a curva de juros.",
+      "rota_editoria": "/politica",
+      "data_publicacao": "2026-11-21T13:15:04Z",
+      "gatilho_vitrine": "Posicionar no topo da home na editoria de Política e Economia, conectando o debate de gastos públicos à queda de ETFs e câmbio.",
       "origem_pipeline": "curadoria",
       "relevancia_score": 85,
-      "categoria_primaria": "Economia",
+      "categoria_primaria": "Politica",
       "categorias_cruzadas": [
-        "Cultura",
-        "Geopolitica_Radar"
+        "Economia"
       ],
       "palavras_chave_busca": [
-        "bolsa de valores",
-        "ações de tecnologia",
-        "mercado europeu",
-        "queda nas bolsas",
-        "inteligência artificial",
-        "big techs"
+        "ajuste fiscal",
+        "divida publica",
+        "governo lula",
+        "economia brasil",
+        "pacote fiscal",
+        "mercado financeiro"
       ]
-    },
-    {
-      "slug": "novo-desenrola-relatorio-compra-dividas-uniao",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-23T10:00:34Z",
-      "updated_at": "2026-11-21T10:00:34Z",
-      "titulo_tema": "Projeto do Novo Desenrola prevê compra de R$ 15 bilhões em dívidas pela União",
-      "sintese_nerd": "O avanço da proposta que permite à União comprar R$ 15 bilhões em passivos de inadimplentes busca recuperar o poder de consumo da população endividada. A medida contrabalança a necessidade de socorro econômico popular com os questionamentos do mercado financeiro quanto ao risco de responsabilidade fiscal.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-21T10:00:34Z",
-      "gatilho_vitrine": "Destacar no hub de Economia com guia explicativo sobre as regras de elegibilidade para pessoas físicas.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 81,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Politica"
-      ],
-      "palavras_chave_busca": [
-        "novo desenrola",
-        "cid gomes",
-        "renegociação de dívidas",
-        "inadimplência",
-        "crédito consignado",
-        "união compra dívidas"
-      ]
->>>>>>> 63f261d (att rOm)
     }
   ]
 }
