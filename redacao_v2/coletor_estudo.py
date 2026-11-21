@@ -663,9 +663,13 @@ CATALOGO_ROTAS_SITEMAP: Dict[str, Tuple[str, str]] = {
         "Últimas Notícias em Tempo Real — Rodando o Mundo",
         "Fluxo contínuo de notícias atualizadas de veículos nacionais e internacionais verificados.",
     ),
+    "/dossies": (
+        "Dossiês — Cobertura Permanente e Eventos Especiais",
+        "Hub central de dossiês sobre geopolítica, economia, eleições, clima, tecnologia e sociedade.",
+    ),
     "/temas": (
-        "Temas e Editorias Globais — Rodando o Mundo",
-        "Hub central de páginas temáticas sobre geopolítica, economia, eleições, clima, tecnologia e sociedade.",
+        "Dossiês — Cobertura Permanente e Eventos Especiais",
+        "Redirecionamento para o hub central de dossiês do Rodando o Mundo.",
     ),
     "/entenda": (
         "Entenda o Assunto — Guias Explicativos e Contexto",

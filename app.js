@@ -8973,7 +8973,7 @@
         if (l.id === 'nav-curadoria' || l.id === 'mobile-nav-curadoria') isActive = (radarHubSubtab === 'curadoria');
         else if (l.id === 'nav-radar' || l.id === 'mobile-nav-radar') isActive = (radarHubSubtab !== 'curadoria');
         else if (hrefPath === '/radar' && l.id.indexOf('curadoria') === -1) isActive = (radarHubSubtab !== 'curadoria');
-      } else if (path && (hrefPath === path || ((path === '/dossies' || path.indexOf('/dossies/') === 0) && hrefPath === '/temas'))) {
+      } else if (path && (hrefPath === path || ((path === '/dossies' || path.indexOf('/dossies/') === 0 || path === '/temas' || path === '/temas-hubs') && (hrefPath === '/dossies' || hrefPath === '/temas')))) {
         isActive = true;
       }
       if (isActive) {
@@ -9105,7 +9105,12 @@
       'temas': {
         title: 'Dossiês — Cobertura Permanente e Eventos Especiais | Rodando o Mundo',
         desc: 'Explore os dossiês permanentes e especiais do Rodando o Mundo com acompanhamento em tempo real, múltiplas perspectivas e histórico editorial.',
-        path: (opts.routePath === '/dossies') ? '/dossies' : '/temas'
+        path: '/dossies'
+      },
+      'dossies': {
+        title: 'Dossiês — Cobertura Permanente e Eventos Especiais | Rodando o Mundo',
+        desc: 'Explore os dossiês permanentes e especiais do Rodando o Mundo com acompanhamento em tempo real, múltiplas perspectivas e histórico editorial.',
+        path: '/dossies'
       },
       'entenda': {
         title: 'Entenda o assunto — Guia explicativo | Rodando o Mundo',
@@ -10206,13 +10211,13 @@
 
     var h = '<div class="hub-container">';
     h += '<div class="hub-nav-header-row">';
-    h += '<button type="button" class="btn-back-topic" data-action="go-back" data-fallback="/temas" aria-label="Voltar para onde estava" title="Voltar para onde estava">';
+    h += '<button type="button" class="btn-back-topic" data-action="go-back" data-fallback="/dossies" aria-label="Voltar para dossiês" title="Voltar para dossiês">';
     h += '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>';
     h += '<span>Voltar</span>';
     h += '</button>';
     h += '<nav class="hub-breadcrumbs" aria-label="Navegação estrutural">';
     h += '<a href="/" data-spa-link>Início</a> <span aria-hidden="true">/</span> ';
-    h += '<a href="/temas" data-spa-link>Páginas temáticas</a> <span aria-hidden="true">/</span> ';
+    h += '<a href="/dossies" data-spa-link>Dossiês</a> <span aria-hidden="true">/</span> ';
     h += '<span>' + esc(hub.titulo) + '</span>';
     h += '</nav>';
     h += '</div>';
@@ -15000,13 +15005,22 @@
     if (normalizedRoute === '/resumo-do-dia' || normalizedRoute === '/resumo') {
       return { valid: true, type: 'editorial-section', sectionKey: 'resumo-do-dia', replaceUrl: legacyHash };
     }
-    if (normalizedRoute === '/temas' || normalizedRoute === '/temas-hubs' || normalizedRoute === '/dossies') {
+    if (normalizedRoute === '/dossies') {
       return {
         valid: true,
         type: 'editorial-section',
         sectionKey: 'temas',
-        routePath: (normalizedRoute === '/dossies') ? '/dossies' : '/temas',
+        routePath: '/dossies',
         replaceUrl: legacyHash
+      };
+    }
+    if (normalizedRoute === '/temas' || normalizedRoute === '/temas-hubs') {
+      return {
+        valid: true,
+        type: 'editorial-section',
+        sectionKey: 'temas',
+        routePath: '/dossies',
+        replaceUrl: true
       };
     }
     if (normalizedRoute === '/entenda' || normalizedRoute === '/entenda-o-assunto') {
