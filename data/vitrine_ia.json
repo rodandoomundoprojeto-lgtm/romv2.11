@@ -2,22 +2,174 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-21T19:02:37Z",
-  "batch_id": "20261121-1901",
+  "updatedAt": "2026-11-21T19:42:42Z",
+  "batch_id": "20261121-1942",
   "temas_ativos": [
     {
-      "slug": "internacao-bolsonaro-uti-brasilia",
-      "titulo_tema": "Ex-presidente Jair Bolsonaro internado em UTI no Distrito Federal",
+      "slug": "ue-e-indonesia-assinam-acordo-tarifario",
+      "titulo_tema": "UE e Indonésia fecham acordo comercial que elimina 98,5% das tarifas de exportação",
+      "titulo_curto": "UE e Indonésia fecham acordo comercial que elimina 98,5% das tarifas de exportação",
       "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Economia",
+      "categoria": "Economia_Comercio",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 91,
+      "urgencia_score": 93,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-22T19:42:42Z",
+      "palavras_chave_busca": [
+        "união europeia",
+        "indonésia",
+        "tarifas",
+        "comércio exterior",
+        "acordo comercial"
+      ],
+      "palavras_chave": [
+        "união europeia",
+        "indonésia",
+        "tarifas",
+        "comércio exterior",
+        "acordo comercial"
+      ],
+      "gatilho_vitrine": "Conforme comunicado da Comissão Europeia e apuração do InfoMoney, União Europeia e Indonésia assinaram um amplo tratado comercial que reduz em 98,5% as tarifas de importação e exportação. A medida deve economizar centenas de milhões de euros anualmente para os exportadores europeus e fortalecer laços comerciais bilaterais.",
+      "resumo_pulso": "Conforme comunicado da Comissão Europeia e apuração do InfoMoney, União Europeia e Indonésia assinaram um amplo tratado comercial que reduz em 98,5% as tarifas de importação e exportação. A medida deve economizar centenas de milhões de euros anualmente para os exportadores europeus e fortalecer laços comerciais bilaterais.",
+      "sintese_nerd": "Redução de barreiras alfandegárias e impacto direto sobre cadeias globais de suprimentos entre Europa e Sudeste Asiático.",
+      "impacto_pratico": "Redução de barreiras alfandegárias e impacto direto sobre cadeias globais de suprimentos entre Europa e Sudeste Asiático.",
+      "paises_envolvidos": [
+        "ID",
+        "UE"
+      ],
+      "veiculos_origem": [
+        "InfoMoney Mercados"
+      ],
+      "fontes_urls": [
+        "https://www.infomoney.com.br/mercados/ue-e-indonesia-assinam-acordo-que-elimina-985-das-tarifas-comerciais/"
+      ],
+      "data_publicacao": "2026-11-21T19:35:34Z",
+      "updated_at": "2026-11-21T19:42:42Z"
+    },
+    {
+      "slug": "ataques-russia-ucrania-zaporizhzhia-e-kaliningrad",
+      "titulo_tema": "Explosões em Zaporizhzhia e alerta de drones geram fechamento de aeroporto em Kaliningrad",
+      "titulo_curto": "Explosões em Zaporizhzhia e alerta de drones geram fechamento de aeroporto em Kaliningrad",
+      "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categoria": "Geopolitica_Relacoes",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 92,
+      "urgencia_score": 96,
+      "ttl_horas": 12,
+      "expires_at": "2026-11-22T07:42:42Z",
+      "palavras_chave_busca": [
+        "ucrânia",
+        "rússia",
+        "zaporizhzhia",
+        "kaliningrad",
+        "drones"
+      ],
+      "palavras_chave": [
+        "ucrânia",
+        "rússia",
+        "zaporizhzhia",
+        "kaliningrad",
+        "drones"
+      ],
+      "gatilho_vitrine": "Conforme apuração da Ukrinform e do The Kyiv Independent, fortes explosões foram registradas em Zaporizhzhia com interrupção total de tráfego em pontes e na represa de DniproHES. Paralelamente, relatos de ataques de drones na região russa de Kaliningrad motivaram o fechamento temporário do aeroporto de Khrabrovo.",
+      "resumo_pulso": "Conforme apuração da Ukrinform e do The Kyiv Independent, fortes explosões foram registradas em Zaporizhzhia com interrupção total de tráfego em pontes e na represa de DniproHES. Paralelamente, relatos de ataques de drones na região russa de Kaliningrad motivaram o fechamento temporário do aeroporto de Khrabrovo.",
+      "sintese_nerd": "Interrupção de rotas logísticas locais e riscos ampliados para viagens aéreas e terrestres na região de conflito.",
+      "impacto_pratico": "Interrupção de rotas logísticas locais e riscos ampliados para viagens aéreas e terrestres na região de conflito.",
+      "paises_envolvidos": [
+        "UA",
+        "RU"
+      ],
+      "veiculos_origem": [
+        "Ukrinform",
+        "The Kyiv Independent",
+        "Al Jazeera English"
+      ],
+      "fontes_urls": [
+        "https://www.ukrinform.net/rubric-ato/4187242-explosions-heard-in-zaporizhzhia-traffic-completely-halted-on-bridges-and-dniprohes-dam.html"
+      ],
+      "data_publicacao": "2026-11-21T19:35:00Z",
+      "updated_at": "2026-11-21T19:42:42Z"
+    },
+    {
+      "slug": "protestos-custo-de-vida-europa",
+      "titulo_tema": "Milhares vão às ruas em países europeus contra o alto custo de vida e orçamentos militares",
+      "titulo_curto": "Milhares vão às ruas em países europeus contra o alto custo de vida e orçamentos militares",
+      "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Cultura",
+      "categoria": "Sociedade_Cultura",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/cultura",
+      "relevancia_score": 89,
+      "urgencia_score": 90,
+      "ttl_horas": 18,
+      "expires_at": "2026-11-22T13:42:42Z",
+      "palavras_chave_busca": [
+        "protestos",
+        "europa",
+        "custo de vida",
+        "inflação",
+        "sindicalismo"
+      ],
+      "palavras_chave": [
+        "protestos",
+        "europa",
+        "custo de vida",
+        "inflação",
+        "sindicalismo"
+      ],
+      "gatilho_vitrine": "Segundo reportagens do G1 Mundo e do InfoMoney, milhares de manifestantes e sindicalistas realizaram marchas neste sábado em capitais europeias como Lisboa, Paris e Madri. Os atos contestam o aumento generalizado no custo de vida, a inflação persistente e a expansão dos gastos militares no continente.",
+      "resumo_pulso": "Segundo reportagens do G1 Mundo e do InfoMoney, milhares de manifestantes e sindicalistas realizaram marchas neste sábado em capitais europeias como Lisboa, Paris e Madri. Os atos contestam o aumento generalizado no custo de vida, a inflação persistente e a expansão dos gastos militares no continente.",
+      "sintese_nerd": "Possíveis perturbações no transporte urbano e mobilizações sindicais em centros europeus.",
+      "impacto_pratico": "Possíveis perturbações no transporte urbano e mobilizações sindicais em centros europeus.",
+      "paises_envolvidos": [
+        "PT",
+        "FR",
+        "ES"
+      ],
+      "veiculos_origem": [
+        "G1 Mundo",
+        "InfoMoney Mercados"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/mundo/noticia/2026/11/21/protestos-levam-milhares-de-pessoas-as-ruas-em-diferentes-paises-da-europa-neste-sabado-video.ghtml"
+      ],
+      "data_publicacao": "2026-11-21T19:30:17Z",
+      "updated_at": "2026-11-21T19:42:42Z"
+    },
+    {
+      "slug": "internacao-bolsonaro-uti-brasilia",
+      "status": "novo",
+      "ttl_horas": 48,
+      "expires_at": "2026-11-23T19:02:37Z",
+      "updated_at": "2026-11-21T19:02:37Z",
+      "titulo_tema": "Ex-presidente Jair Bolsonaro internado em UTI no Distrito Federal",
+      "sintese_nerd": "O ex-presidente Jair Bolsonaro foi internado na UTI do Hospital DF Star em Brasília com diagnóstico de abdome agudo obstrutivo, passando por procedimentos clínicos e suporte nutricional. O fato movimenta o cenário político nacional e atrai atenção imediata para os desdobramentos de sua saúde.",
+      "rota_editoria": "/politica",
+      "data_publicacao": "2026-11-21T19:02:37Z",
+      "gatilho_vitrine": "Destacar boletim médico atualizado e repercussão institucional da internação do ex-presidente.",
       "origem_pipeline": "curadoria",
+      "relevancia_score": 95,
       "categoria_primaria": "Politica",
       "categorias_cruzadas": [
         "Resumo_Ultimas"
       ],
-      "rota_editoria": "/politica",
-      "relevancia_score": 95,
-      "ttl_horas": 48,
-      "expires_at": "2026-11-23T19:02:37Z",
       "palavras_chave_busca": [
         "jair bolsonaro",
         "uti",
@@ -25,25 +177,25 @@
         "abdome agudo obstrutivo",
         "brasília",
         "saúde política"
-      ],
-      "gatilho_vitrine": "Destacar boletim médico atualizado e repercussão institucional da internação do ex-presidente.",
-      "sintese_nerd": "O ex-presidente Jair Bolsonaro foi internado na UTI do Hospital DF Star em Brasília com diagnóstico de abdome agudo obstrutivo, passando por procedimentos clínicos e suporte nutricional. O fato movimenta o cenário político nacional e atrai atenção imediata para os desdobramentos de sua saúde.",
-      "data_publicacao": "2026-11-21T19:02:37Z",
-      "updated_at": "2026-11-21T19:02:37Z"
+      ]
     },
     {
       "slug": "ataque-petroleiros-estreito-ormuz",
-      "titulo_tema": "Três petroleiros atingidos perto do Estreito de Ormuz",
       "status": "novo",
+      "ttl_horas": 72,
+      "expires_at": "2026-11-24T19:02:37Z",
+      "updated_at": "2026-11-21T19:02:37Z",
+      "titulo_tema": "Três petroleiros atingidos perto do Estreito de Ormuz",
+      "sintese_nerd": "Operações militares intensificadas pelo Irã no Estreito de Ormuz resultaram em ataques a três petroleiros, elevando drasticamente os riscos às rotas de suprimento energético global. A escalada pressiona os preços do petróleo e afeta a inflação e os custos de transporte internacionais.",
+      "rota_editoria": "/radar",
+      "data_publicacao": "2026-11-21T19:02:37Z",
+      "gatilho_vitrine": "Conectar o aumento das tensões no Oriente Médio com o impacto direto na cotação internacional do petróleo e nos mercados globais.",
       "origem_pipeline": "curadoria",
+      "relevancia_score": 92,
       "categoria_primaria": "Geopolitica_Radar",
       "categorias_cruzadas": [
         "Economia"
       ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 92,
-      "ttl_horas": 72,
-      "expires_at": "2026-11-24T19:02:37Z",
       "palavras_chave_busca": [
         "estreito de ormuz",
         "petroleiros",
@@ -51,25 +203,25 @@
         "petróleo",
         "crise energética",
         "geopolítica global"
-      ],
-      "gatilho_vitrine": "Conectar o aumento das tensões no Oriente Médio com o impacto direto na cotação internacional do petróleo e nos mercados globais.",
-      "sintese_nerd": "Operações militares intensificadas pelo Irã no Estreito de Ormuz resultaram em ataques a três petroleiros, elevando drasticamente os riscos às rotas de suprimento energético global. A escalada pressiona os preços do petróleo e afeta a inflação e os custos de transporte internacionais.",
-      "data_publicacao": "2026-11-21T19:02:37Z",
-      "updated_at": "2026-11-21T19:02:37Z"
+      ]
     },
     {
       "slug": "pacote-estimulo-economia-china",
-      "titulo_tema": "Economistas defendem pacote de US$ 450 bi para estimular China",
       "status": "novo",
+      "ttl_horas": 96,
+      "expires_at": "2026-11-25T19:02:37Z",
+      "updated_at": "2026-11-21T19:02:37Z",
+      "titulo_tema": "Economistas defendem pacote de US$ 450 bi para estimular China",
+      "sintese_nerd": "O enfraquecimento da demanda interna na China levou economistas a defenderem um megapacote de estímulos de US$ 450 bilhões para reativar o crescimento do país. A medida possui forte repercussão sobre o volume de importações de commodities do Brasil e o equilíbrio do comércio exterior.",
+      "rota_editoria": "/economia",
+      "data_publicacao": "2026-11-21T19:02:37Z",
+      "gatilho_vitrine": "Explicar como a desaceleração da economia chinesa e propostas de grandes estímulos fiscais afetam diretamente as exportações e commodities brasileiras.",
       "origem_pipeline": "curadoria",
+      "relevancia_score": 88,
       "categoria_primaria": "Economia",
       "categorias_cruzadas": [
         "Geopolitica_Radar"
       ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 88,
-      "ttl_horas": 96,
-      "expires_at": "2026-11-25T19:02:37Z",
       "palavras_chave_busca": [
         "china",
         "pacote de estímulo",
@@ -77,37 +229,7 @@
         "pib global",
         "comércio exterior",
         "commodities"
-      ],
-      "gatilho_vitrine": "Explicar como a desaceleração da economia chinesa e propostas de grandes estímulos fiscais afetam diretamente as exportações e commodities brasileiras.",
-      "sintese_nerd": "O enfraquecimento da demanda interna na China levou economistas a defenderem um megapacote de estímulos de US$ 450 bilhões para reativar o crescimento do país. A medida possui forte repercussão sobre o volume de importações de commodities do Brasil e o equilíbrio do comércio exterior.",
-      "data_publicacao": "2026-11-21T19:02:37Z",
-      "updated_at": "2026-11-21T19:02:37Z"
-    },
-    {
-      "slug": "fbi-investiga-ataque-banco-dados-criminais",
-      "titulo_tema": "FBI investiga possível ataque hacker a banco de dados criminais dos EUA",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Cultura"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 85,
-      "ttl_horas": 48,
-      "expires_at": "2026-11-23T19:02:37Z",
-      "palavras_chave_busca": [
-        "fbi",
-        "ncic",
-        "cibersegurança",
-        "ataque hacker",
-        "governo dos eua",
-        "segurança pública"
-      ],
-      "gatilho_vitrine": "Relatar a vulnerabilidade de infraestruturas governamentais críticas frente a ataques cibernéticos de grande escala.",
-      "sintese_nerd": "O FBI investiga uma suposta invasão ao sistema do NCIC, banco de dados que centraliza registros de procurados e antecedentes nos EUA, escancarando falhas de cibersegurança em órgãos federais. O episódio reforça debates contemporâneos sobre a resiliência de redes governamentais contra ataques digitais.",
-      "data_publicacao": "2026-11-21T19:02:37Z",
-      "updated_at": "2026-11-21T19:02:37Z"
+      ]
     },
     {
       "slug": "fbi-investiga-suposta-invasao-banco-dados-criminais-eua",
@@ -115,33 +237,31 @@
       "categoria": "Geopolitica_Relacoes",
       "ttl_horas": 18,
       "expires_at": "2026-11-22T12:40:12Z",
-      "updated_at": "2026-11-21T18:40:12Z",
+      "updated_at": "2026-11-21T19:29:53Z",
       "fontes_urls": [
-        "https://www.infomoney.com.br/mundo/fbi-investiga-possivel-ataque-hacker-a-banco-de-dados-criminais-dos-eua/",
         "https://www.aljazeera.com/news/2026/11/21/fbi-national-crime-database-suffers-suspected-breach-reports?traffic_source=rss"
       ],
-      "titulo_tema": "FBI investiga possível ataque cibernético a banco de dados nacional de crimes nos EUA",
-      "resumo_pulso": "Segundo reportagens da InfoMoney e da Al Jazeera, o FBI abriu investigação sobre uma suposta invasão ao sistema do NCIC, banco de dados que centraliza registros de pessoas procuradas, mandados e antecedentes nos Estados Unidos. O incidente amplia preocupações com falhas em infraestruturas governamentais.",
-      "sintese_nerd": "Possíveis riscos de segurança cibernética e sobrecarga em sistemas de inteligência e segurança pública norte-americanos.",
-      "titulo_curto": "FBI investiga possível ataque cibernético a banco de dados nacional de crimes nos EUA",
+      "titulo_tema": "FBI apura suposta invasão cibernética em banco de dados nacional de crimes dos EUA",
+      "resumo_pulso": "Conforme relatórios da Al Jazeera English e apurações internacionais, o FBI abriu investigação oficial sobre uma possível violação de segurança em banco de dados de registros criminais dos Estados Unidos. O incidente amplia as preocupações em torno da vulnerabilidade de infraestruturas governamentais e de segurança pública.",
+      "sintese_nerd": "Alerta sobre falhas de cibersegurança em sistemas oficiais norte-americanos e possíveis reflexos em redes de cooperação internacional.",
+      "titulo_curto": "FBI apura suposta invasão cibernética em banco de dados nacional de crimes dos EUA",
       "rota_editoria": "/radar",
       "palavras_chave": [
         "fbi",
-        "ciberseguranca",
-        "eua",
-        "ncic",
-        "hackers"
+        "estados unidos",
+        "cibersegurança",
+        "invasão",
+        "banco de dados"
       ],
-      "urgencia_score": 92,
+      "urgencia_score": 94,
       "data_publicacao": "2026-11-21T18:34:56Z",
-      "gatilho_vitrine": "Segundo reportagens da InfoMoney e da Al Jazeera, o FBI abriu investigação sobre uma suposta invasão ao sistema do NCIC, banco de dados que centraliza registros de pessoas procuradas, mandados e antecedentes nos Estados Unidos. O incidente amplia preocupações com falhas em infraestruturas governamentais.",
-      "impacto_pratico": "Possíveis riscos de segurança cibernética e sobrecarga em sistemas de inteligência e segurança pública norte-americanos.",
+      "gatilho_vitrine": "Conforme relatórios da Al Jazeera English e apurações internacionais, o FBI abriu investigação oficial sobre uma possível violação de segurança em banco de dados de registros criminais dos Estados Unidos. O incidente amplia as preocupações em torno da vulnerabilidade de infraestruturas governamentais e de segurança pública.",
+      "impacto_pratico": "Alerta sobre falhas de cibersegurança em sistemas oficiais norte-americanos e possíveis reflexos em redes de cooperação internacional.",
       "origem_pipeline": "pulso",
       "veiculos_origem": [
-        "InfoMoney Mercados",
         "Al Jazeera English"
       ],
-      "relevancia_score": 90,
+      "relevancia_score": 92,
       "paises_envolvidos": [
         "US"
       ],
@@ -152,60 +272,59 @@
       ],
       "palavras_chave_busca": [
         "fbi",
-        "ciberseguranca",
-        "eua",
-        "ncic",
-        "hackers"
+        "estados unidos",
+        "cibersegurança",
+        "invasão",
+        "banco de dados"
       ]
     },
     {
       "slug": "bolsonaro-internado-uti-brasilia-abdome-obstrutivo",
+      "titulo_tema": "Alexandre de Moraes autoriza visitas diárias de filhos a Bolsonaro, internado em UTI no DF",
+      "titulo_curto": "Alexandre de Moraes autoriza visitas diárias de filhos a Bolsonaro, internado em UTI no DF",
       "status": "novo",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 12,
-      "expires_at": "2026-11-22T06:40:12Z",
-      "updated_at": "2026-11-21T18:40:12Z",
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/ex-presidente-jair-bolsonaro-esta-internado-em-uti-no-distrito-federal",
-        "https://g1.globo.com/politica/noticia/2026/11/21/bolsonaro-tem-obstrucao-intestinal-quadro-estavel-e-segue-sem-previsao-de-alta-diz-boletim-medico.ghtml"
-      ],
-      "titulo_tema": "Ex-presidente Jair Bolsonaro é internado em UTI em Brasília com diagnóstico de abdômen agudo obstrutivo",
-      "resumo_pulso": "Conforme boletim médico do hospital DF Star e apuração da Agência Brasil e G1, o ex-presidente Jair Bolsonaro foi internado em unidade de terapia intensiva devido a uma obstrução intestinal. A defesa obteve autorização do STF para visitas diárias de familiares enquanto o quadro é mantido clinicamente estável sob suporte nutricional e jejum.",
-      "sintese_nerd": "Acompanhamento político nacional e restrições de deslocamento e agenda do ex-presidente em Brasília.",
-      "titulo_curto": "Ex-presidente Jair Bolsonaro é internado em UTI em Brasília com diagnóstico de abdômen agudo obstrutivo",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "jair bolsonaro",
-        "uti",
-        "brasilia",
-        "saude",
-        "stf"
-      ],
-      "urgencia_score": 95,
-      "data_publicacao": "2026-11-21T17:55:00Z",
-      "gatilho_vitrine": "Conforme boletim médico do hospital DF Star e apuração da Agência Brasil e G1, o ex-presidente Jair Bolsonaro foi internado em unidade de terapia intensiva devido a uma obstrução intestinal. A defesa obteve autorização do STF para visitas diárias de familiares enquanto o quadro é mantido clinicamente estável sob suporte nutricional e jejum.",
-      "impacto_pratico": "Acompanhamento político nacional e restrições de deslocamento e agenda do ex-presidente em Brasília.",
       "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "Agência Brasil (EBC)",
-        "G1 Política"
-      ],
-      "relevancia_score": 93,
-      "paises_envolvidos": [
-        "BR"
-      ],
       "categoria_primaria": "Geopolitica_Radar",
+      "categoria": "Geopolitica_Relacoes",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
       ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 95,
+      "urgencia_score": 97,
+      "ttl_horas": 12,
+      "expires_at": "2026-11-22T06:40:12Z",
       "palavras_chave_busca": [
         "jair bolsonaro",
         "uti",
-        "brasilia",
-        "saude",
+        "hospital df star",
+        "alexandre de moraes",
         "stf"
-      ]
+      ],
+      "palavras_chave": [
+        "jair bolsonaro",
+        "uti",
+        "hospital df star",
+        "alexandre de moraes",
+        "stf"
+      ],
+      "gatilho_vitrine": "Segundo novos boletins médicos do Hospital DF Star e apuração do G1, o ex-presidente Jair Bolsonaro segue internado em UTI com quadro de abdômen agudo obstrutivo. O ministro Alexandre de Moraes, do STF, atendeu a pedido da defesa e autorizou visitas diárias de familiares enquanto o paciente permanece clinicamente estável sob suporte nutricional.",
+      "resumo_pulso": "Segundo novos boletins médicos do Hospital DF Star e apuração do G1, o ex-presidente Jair Bolsonaro segue internado em UTI com quadro de abdômen agudo obstrutivo. O ministro Alexandre de Moraes, do STF, atendeu a pedido da defesa e autorizou visitas diárias de familiares enquanto o paciente permanece clinicamente estável sob suporte nutricional.",
+      "sintese_nerd": "Acompanhamento da estabilidade de saúde de figura política de destaque e desdobramentos nas autorizações judiciais para visitas hospitalares.",
+      "impacto_pratico": "Acompanhamento da estabilidade de saúde de figura política de destaque e desdobramentos nas autorizações judiciais para visitas hospitalares.",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "veiculos_origem": [
+        "G1 Política",
+        "Agência Brasil (EBC)"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/politica/noticia/2026/11/21/moraes-atende-a-pedido-e-autoriza-visitas-diarias-de-filhos-a-bolsonaro-durante-a-internacao.ghtml"
+      ],
+      "data_publicacao": "2026-11-21T17:55:00Z",
+      "updated_at": "2026-11-21T19:42:42Z"
     },
     {
       "slug": "pulso-1-20261121-1540",
@@ -473,37 +592,35 @@
       "slug": "terremoto-magnitude-6-8-peru",
       "status": "novo",
       "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 8,
+      "ttl_horas": 12,
       "expires_at": "2026-11-21T20:58:15Z",
-      "updated_at": "2026-11-21T18:40:12Z",
+      "updated_at": "2026-11-21T19:29:53Z",
       "fontes_urls": [
         "https://g1.globo.com/mundo/noticia/2026/11/21/terremoto-de-magnitude-67-deixou-15-feridos-no-peru-e-danificou-127-casas.ghtml"
       ],
-      "titulo_tema": "Balanço oficial aponta 15 feridos e dezenas de casas danificadas após terremoto de magnitude 6,8 no Peru",
-      "resumo_pulso": "Segundo boletim do Instituto Nacional de Defesa Civil do Peru (Indeci) e apuração do G1 Mundo, o terremoto de magnitude 6,7 a 6,8 registrado na região de Junín deixou pelo menos 15 feridos e danificou mais de 120 residências. O tremor foi fortemente sentido na capital Lima e em áreas do Amazonas brasileiro, sem registros iniciais de mortes.",
-      "sintese_nerd": "Possíveis interrupções em rodovias andinas e alertas de réplicas para moradores de áreas vulneráveis na fronteira e no Peru.",
-      "titulo_curto": "Balanço oficial aponta 15 feridos e dezenas de casas danificadas após terremoto de magnitude 6,8 no Peru",
+      "titulo_tema": "Indeci confirma 15 feridos e dezenas de imóveis danificados após terremoto no Peru",
+      "resumo_pulso": "Conforme boletim oficial do Instituto Nacional de Defesa Civil do Peru (Indeci) repercutido pelo G1 Mundo, o terremoto de magnitude 6,7 a 6,8 deixou 15 feridos e danificou mais de 120 residências na região central do país. O tremor foi amplamente sentido em Lima, sem registros de vítimas fatais.",
+      "sintese_nerd": "Possíveis interrupções em infraestruturas locais e necessidade de atendimento humanitário nas províncias afetadas.",
+      "titulo_curto": "Indeci confirma 15 feridos e dezenas de imóveis danificados após terremoto no Peru",
       "rota_editoria": "/radar",
       "palavras_chave": [
-        "terremoto",
         "peru",
+        "terremoto",
         "indeci",
-        "junin",
-        "tremor"
+        "lima",
+        "junín"
       ],
-      "urgencia_score": 96,
+      "urgencia_score": 92,
       "data_publicacao": "2026-11-21T14:17:00Z",
-      "gatilho_vitrine": "Segundo boletim do Instituto Nacional de Defesa Civil do Peru (Indeci) e apuração do G1 Mundo, o terremoto de magnitude 6,7 a 6,8 registrado na região de Junín deixou pelo menos 15 feridos e danificou mais de 120 residências. O tremor foi fortemente sentido na capital Lima e em áreas do Amazonas brasileiro, sem registros iniciais de mortes.",
-      "impacto_pratico": "Possíveis interrupções em rodovias andinas e alertas de réplicas para moradores de áreas vulneráveis na fronteira e no Peru.",
+      "gatilho_vitrine": "Conforme boletim oficial do Instituto Nacional de Defesa Civil do Peru (Indeci) repercutido pelo G1 Mundo, o terremoto de magnitude 6,7 a 6,8 deixou 15 feridos e danificou mais de 120 residências na região central do país. O tremor foi amplamente sentido em Lima, sem registros de vítimas fatais.",
+      "impacto_pratico": "Possíveis interrupções em infraestruturas locais e necessidade de atendimento humanitário nas províncias afetadas.",
       "origem_pipeline": "pulso",
       "veiculos_origem": [
-        "G1 Mundo",
-        "Poder360"
+        "G1 Mundo"
       ],
       "relevancia_score": 88,
       "paises_envolvidos": [
-        "PE",
-        "BR"
+        "PE"
       ],
       "categoria_primaria": "Geopolitica_Radar",
       "categorias_cruzadas": [
@@ -511,11 +628,11 @@
         "Resumo_Ultimas"
       ],
       "palavras_chave_busca": [
-        "terremoto",
         "peru",
+        "terremoto",
         "indeci",
-        "junin",
-        "tremor"
+        "lima",
+        "junín"
       ]
     },
     {
@@ -747,286 +864,194 @@
         "claude",
         "matemática"
       ]
-    },
-    {
-      "slug": "novos-temporais-sul-do-pais-supercelula-rs",
-      "status": "novo",
-      "categoria": "Ciencia_Clima",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-22T12:48:01Z",
-      "updated_at": "2026-11-21T13:02:47Z",
-      "fontes_urls": [
-        "https://www.infomoney.com.br/brasil/novos-temporais-devem-atingir-sul-do-pais-apos-supercelula-arrasar-cidade-do-rs/"
-      ],
-      "titulo_tema": "Defesa Civil e Climatempo mantêm alertas de novos temporais e chuvas intensas no Sul do país",
-      "resumo_pulso": "Conforme apuração do InfoMoney, novas chuvas intensas e temporais devem atingir o Rio Grande do Sul, Santa Catarina e Paraná após os severos estragos causados por uma supercélula. As Defesas Civis estaduais reforçaram os alertas preventivos devido à chegada de uma nova frente fria.",
-      "sintese_nerd": "População em áreas de risco no Sul deve redobrar cuidados com alagamentos e deslizamentos de terra.",
-      "titulo_curto": "Defesa Civil e Climatempo mantêm alertas de novos temporais e chuvas intensas no Sul do país",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "temporais",
-        "sul do país",
-        "rio grande do sul",
-        "defesa civil",
-        "supercélula"
-      ],
-      "urgencia_score": 96,
-      "data_publicacao": "2026-11-21T12:40:28Z",
-      "gatilho_vitrine": "Conforme apuração do InfoMoney, novas chuvas intensas e temporais devem atingir o Rio Grande do Sul, Santa Catarina e Paraná após os severos estragos causados por uma supercélula. As Defesas Civis estaduais reforçaram os alertas preventivos devido à chegada de uma nova frente fria.",
-      "impacto_pratico": "População em áreas de risco no Sul deve redobrar cuidados com alagamentos e deslizamentos de terra.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "InfoMoney"
-      ],
-      "relevancia_score": 93,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "temporais",
-        "sul do país",
-        "rio grande do sul",
-        "defesa civil",
-        "supercélula"
-      ]
-    },
-    {
-      "slug": "julgamento-caso-kathlen-romeu-tribunal-juri-rj",
-      "status": "novo",
-      "categoria": "Sociedade_Cultura",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-22T13:54:51Z",
-      "updated_at": "2026-11-21T13:54:51Z",
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-11/policiais-queriam-vinganca-diz-advogado-da-familia-de-kathlen-romeu"
-      ],
-      "titulo_tema": "Tribunal do Júri no Rio de Janeiro julgará policiais envolvidos na morte de Kathlen Romeu",
-      "resumo_pulso": "Segundo apuração da Agência Brasil, dois policiais militares serão julgados pelo Tribunal do Júri no Rio de Janeiro pelo assassinato da designer de interiores Kathlen Romeu e do bebê que esperava, ocorrido há cinco anos.",
-      "sintese_nerd": "Repercussão jurídica e social sobre a atuação e responsabilização de agentes de segurança pública.",
-      "titulo_curto": "Tribunal do Júri no Rio de Janeiro julgará policiais envolvidos na morte de Kathlen Romeu",
-      "rota_editoria": "/cultura",
-      "palavras_chave": [
-        "kathlen romeu",
-        "tribunal do juri",
-        "rio de janeiro",
-        "seguranca publica"
-      ],
-      "urgencia_score": 86,
-      "data_publicacao": "2026-11-21T12:32:00Z",
-      "gatilho_vitrine": "Segundo apuração da Agência Brasil, dois policiais militares serão julgados pelo Tribunal do Júri no Rio de Janeiro pelo assassinato da designer de interiores Kathlen Romeu e do bebê que esperava, ocorrido há cinco anos.",
-      "impacto_pratico": "Repercussão jurídica e social sobre a atuação e responsabilização de agentes de segurança pública.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "Agência Brasil (EBC)"
-      ],
-      "relevancia_score": 87,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "categoria_primaria": "Cultura",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "kathlen romeu",
-        "tribunal do juri",
-        "rio de janeiro",
-        "seguranca publica"
-      ]
-    }
-  ],
-  "temas_curadoria": [
-    {
-      "slug": "internacao-bolsonaro-uti-brasilia",
-      "titulo_tema": "Ex-presidente Jair Bolsonaro internado em UTI no Distrito Federal",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Politica",
-      "categorias_cruzadas": [
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/politica",
-      "relevancia_score": 95,
-      "ttl_horas": 48,
-      "expires_at": "2026-11-23T19:02:37Z",
-      "palavras_chave_busca": [
-        "jair bolsonaro",
-        "uti",
-        "hospital df star",
-        "abdome agudo obstrutivo",
-        "brasília",
-        "saúde política"
-      ],
-      "gatilho_vitrine": "Destacar boletim médico atualizado e repercussão institucional da internação do ex-presidente.",
-      "sintese_nerd": "O ex-presidente Jair Bolsonaro foi internado na UTI do Hospital DF Star em Brasília com diagnóstico de abdome agudo obstrutivo, passando por procedimentos clínicos e suporte nutricional. O fato movimenta o cenário político nacional e atrai atenção imediata para os desdobramentos de sua saúde.",
-      "data_publicacao": "2026-11-21T19:02:37Z",
-      "updated_at": "2026-11-21T19:02:37Z"
-    },
-    {
-      "slug": "ataque-petroleiros-estreito-ormuz",
-      "titulo_tema": "Três petroleiros atingidos perto do Estreito de Ormuz",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 92,
-      "ttl_horas": 72,
-      "expires_at": "2026-11-24T19:02:37Z",
-      "palavras_chave_busca": [
-        "estreito de ormuz",
-        "petroleiros",
-        "irã",
-        "petróleo",
-        "crise energética",
-        "geopolítica global"
-      ],
-      "gatilho_vitrine": "Conectar o aumento das tensões no Oriente Médio com o impacto direto na cotação internacional do petróleo e nos mercados globais.",
-      "sintese_nerd": "Operações militares intensificadas pelo Irã no Estreito de Ormuz resultaram em ataques a três petroleiros, elevando drasticamente os riscos às rotas de suprimento energético global. A escalada pressiona os preços do petróleo e afeta a inflação e os custos de transporte internacionais.",
-      "data_publicacao": "2026-11-21T19:02:37Z",
-      "updated_at": "2026-11-21T19:02:37Z"
-    },
-    {
-      "slug": "pacote-estimulo-economia-china",
-      "titulo_tema": "Economistas defendem pacote de US$ 450 bi para estimular China",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Geopolitica_Radar"
-      ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 88,
-      "ttl_horas": 96,
-      "expires_at": "2026-11-25T19:02:37Z",
-      "palavras_chave_busca": [
-        "china",
-        "pacote de estímulo",
-        "demanda interna",
-        "pib global",
-        "comércio exterior",
-        "commodities"
-      ],
-      "gatilho_vitrine": "Explicar como a desaceleração da economia chinesa e propostas de grandes estímulos fiscais afetam diretamente as exportações e commodities brasileiras.",
-      "sintese_nerd": "O enfraquecimento da demanda interna na China levou economistas a defenderem um megapacote de estímulos de US$ 450 bilhões para reativar o crescimento do país. A medida possui forte repercussão sobre o volume de importações de commodities do Brasil e o equilíbrio do comércio exterior.",
-      "data_publicacao": "2026-11-21T19:02:37Z",
-      "updated_at": "2026-11-21T19:02:37Z"
-    },
-    {
-      "slug": "fbi-investiga-ataque-banco-dados-criminais",
-      "titulo_tema": "FBI investiga possível ataque hacker a banco de dados criminais dos EUA",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Cultura"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 85,
-      "ttl_horas": 48,
-      "expires_at": "2026-11-23T19:02:37Z",
-      "palavras_chave_busca": [
-        "fbi",
-        "ncic",
-        "cibersegurança",
-        "ataque hacker",
-        "governo dos eua",
-        "segurança pública"
-      ],
-      "gatilho_vitrine": "Relatar a vulnerabilidade de infraestruturas governamentais críticas frente a ataques cibernéticos de grande escala.",
-      "sintese_nerd": "O FBI investiga uma suposta invasão ao sistema do NCIC, banco de dados que centraliza registros de procurados e antecedentes nos EUA, escancarando falhas de cibersegurança em órgãos federais. O episódio reforça debates contemporâneos sobre a resiliência de redes governamentais contra ataques digitais.",
-      "data_publicacao": "2026-11-21T19:02:37Z",
-      "updated_at": "2026-11-21T19:02:37Z"
     }
   ],
   "noticias_quentes": [
+    {
+      "slug": "ue-e-indonesia-assinam-acordo-tarifario",
+      "titulo_curto": "UE e Indonésia fecham acordo comercial que elimina 98,5% das tarifas de exportação",
+      "resumo_pulso": "Conforme comunicado da Comissão Europeia e apuração do InfoMoney, União Europeia e Indonésia assinaram um amplo tratado comercial que reduz em 98,5% as tarifas de importação e exportação. A medida deve economizar centenas de milhões de euros anualmente para os exportadores europeus e fortalecer laços comerciais bilaterais.",
+      "impacto_pratico": "Redução de barreiras alfandegárias e impacto direto sobre cadeias globais de suprimentos entre Europa e Sudeste Asiático.",
+      "categoria": "Economia_Comercio",
+      "paises_envolvidos": [
+        "ID",
+        "UE"
+      ],
+      "urgencia_score": 93,
+      "relevancia_score": 91,
+      "nivel_confianca": "alta",
+      "ttl_horas": 24,
+      "horas_em_destaque": 12,
+      "veiculos_origem": [
+        "InfoMoney Mercados"
+      ],
+      "fontes_urls": [
+        "https://www.infomoney.com.br/mercados/ue-e-indonesia-assinam-acordo-que-elimina-985-das-tarifas-comerciais/"
+      ],
+      "palavras_chave": [
+        "União Europeia",
+        "Indonésia",
+        "Tarifas",
+        "Comércio Exterior",
+        "Acordo Comercial"
+      ],
+      "data_publicacao": "2026-11-21T19:35:34Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "O que é uma sanção internacional?",
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-sancao-internacional",
+          "motivo_conexao": "Compreenda como acordos e restrições comerciais moldam as relações econômicas globais."
+        }
+      ],
+      "expires_at": "2026-11-22T19:42:42Z",
+      "updated_at": "2026-11-21T19:42:42Z"
+    },
+    {
+      "slug": "ataques-russia-ucrania-zaporizhzhia-e-kaliningrad",
+      "titulo_curto": "Explosões em Zaporizhzhia e alerta de drones geram fechamento de aeroporto em Kaliningrad",
+      "resumo_pulso": "Conforme apuração da Ukrinform e do The Kyiv Independent, fortes explosões foram registradas em Zaporizhzhia com interrupção total de tráfego em pontes e na represa de DniproHES. Paralelamente, relatos de ataques de drones na região russa de Kaliningrad motivaram o fechamento temporário do aeroporto de Khrabrovo.",
+      "impacto_pratico": "Interrupção de rotas logísticas locais e riscos ampliados para viagens aéreas e terrestres na região de conflito.",
+      "categoria": "Geopolitica_Relacoes",
+      "paises_envolvidos": [
+        "UA",
+        "RU"
+      ],
+      "urgencia_score": 96,
+      "relevancia_score": 92,
+      "nivel_confianca": "alta",
+      "ttl_horas": 12,
+      "horas_em_destaque": 12,
+      "veiculos_origem": [
+        "Ukrinform",
+        "The Kyiv Independent",
+        "Al Jazeera English"
+      ],
+      "fontes_urls": [
+        "https://www.ukrinform.net/rubric-ato/4187242-explosions-heard-in-zaporizhzhia-traffic-completely-halted-on-bridges-and-dniprohes-dam.html"
+      ],
+      "palavras_chave": [
+        "Ucrânia",
+        "Rússia",
+        "Zaporizhzhia",
+        "Kaliningrad",
+        "Drones"
+      ],
+      "data_publicacao": "2026-11-21T19:35:00Z",
+      "links_internos_relacionados": [],
+      "expires_at": "2026-11-22T07:42:42Z",
+      "updated_at": "2026-11-21T19:42:42Z"
+    },
+    {
+      "slug": "protestos-custo-de-vida-europa",
+      "titulo_curto": "Milhares vão às ruas em países europeus contra o alto custo de vida e orçamentos militares",
+      "resumo_pulso": "Segundo reportagens do G1 Mundo e do InfoMoney, milhares de manifestantes e sindicalistas realizaram marchas neste sábado em capitais europeias como Lisboa, Paris e Madri. Os atos contestam o aumento generalizado no custo de vida, a inflação persistente e a expansão dos gastos militares no continente.",
+      "impacto_pratico": "Possíveis perturbações no transporte urbano e mobilizações sindicais em centros europeus.",
+      "categoria": "Sociedade_Cultura",
+      "paises_envolvidos": [
+        "PT",
+        "FR",
+        "ES"
+      ],
+      "urgencia_score": 90,
+      "relevancia_score": 89,
+      "nivel_confianca": "alta",
+      "ttl_horas": 18,
+      "horas_em_destaque": 12,
+      "veiculos_origem": [
+        "G1 Mundo",
+        "InfoMoney Mercados"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/mundo/noticia/2026/11/21/protestos-levam-milhares-de-pessoas-as-ruas-em-diferentes-paises-da-europa-neste-sabado-video.ghtml"
+      ],
+      "palavras_chave": [
+        "Protestos",
+        "Europa",
+        "Custo de Vida",
+        "Inflação",
+        "Sindicalismo"
+      ],
+      "data_publicacao": "2026-11-21T19:30:17Z",
+      "links_internos_relacionados": [],
+      "expires_at": "2026-11-22T13:42:42Z",
+      "updated_at": "2026-11-21T19:42:42Z"
+    },
     {
       "slug": "fbi-investiga-suposta-invasao-banco-dados-criminais-eua",
       "categoria": "Geopolitica_Relacoes",
       "ttl_horas": 18,
       "expires_at": "2026-11-22T12:40:12Z",
-      "updated_at": "2026-11-21T18:40:12Z",
+      "updated_at": "2026-11-21T19:29:53Z",
       "fontes_urls": [
-        "https://www.infomoney.com.br/mundo/fbi-investiga-possivel-ataque-hacker-a-banco-de-dados-criminais-dos-eua/",
         "https://www.aljazeera.com/news/2026/11/21/fbi-national-crime-database-suffers-suspected-breach-reports?traffic_source=rss"
       ],
-      "resumo_pulso": "Segundo reportagens da InfoMoney e da Al Jazeera, o FBI abriu investigação sobre uma suposta invasão ao sistema do NCIC, banco de dados que centraliza registros de pessoas procuradas, mandados e antecedentes nos Estados Unidos. O incidente amplia preocupações com falhas em infraestruturas governamentais.",
-      "titulo_curto": "FBI investiga possível ataque cibernético a banco de dados nacional de crimes nos EUA",
+      "resumo_pulso": "Conforme relatórios da Al Jazeera English e apurações internacionais, o FBI abriu investigação oficial sobre uma possível violação de segurança em banco de dados de registros criminais dos Estados Unidos. O incidente amplia as preocupações em torno da vulnerabilidade de infraestruturas governamentais e de segurança pública.",
+      "titulo_curto": "FBI apura suposta invasão cibernética em banco de dados nacional de crimes dos EUA",
       "palavras_chave": [
         "FBI",
-        "ciberseguranca",
-        "EUA",
-        "NCIC",
-        "hackers"
+        "Estados Unidos",
+        "Cibersegurança",
+        "Invasão",
+        "Banco de Dados"
       ],
-      "urgencia_score": 92,
+      "urgencia_score": 94,
       "data_publicacao": "2026-11-21T18:34:56Z",
-      "impacto_pratico": "Possíveis riscos de segurança cibernética e sobrecarga em sistemas de inteligência e segurança pública norte-americanos.",
+      "impacto_pratico": "Alerta sobre falhas de cibersegurança em sistemas oficiais norte-americanos e possíveis reflexos em redes de cooperação internacional.",
       "nivel_confianca": "media",
       "veiculos_origem": [
-        "InfoMoney Mercados",
         "Al Jazeera English"
       ],
-      "relevancia_score": 90,
-      "horas_em_destaque": 10,
+      "relevancia_score": 92,
+      "horas_em_destaque": 12,
       "paises_envolvidos": [
         "US"
       ],
       "links_internos_relacionados": [
         {
           "url_existente": "https://www.rodandoomundo.com.br/politica/estados-unidos",
-          "motivo_conexao": "Analisa os impactos de crises institucionais e de segurança cibernética no governo dos Estados Unidos.",
+          "motivo_conexao": "Acompanha os desdobramentos institucionais e governamentais em Washington.",
           "titulo_existente": "Política nos Estados Unidos"
         }
       ]
     },
     {
       "slug": "bolsonaro-internado-uti-brasilia-abdome-obstrutivo",
+      "titulo_curto": "Alexandre de Moraes autoriza visitas diárias de filhos a Bolsonaro, internado em UTI no DF",
+      "resumo_pulso": "Segundo novos boletins médicos do Hospital DF Star e apuração do G1, o ex-presidente Jair Bolsonaro segue internado em UTI com quadro de abdômen agudo obstrutivo. O ministro Alexandre de Moraes, do STF, atendeu a pedido da defesa e autorizou visitas diárias de familiares enquanto o paciente permanece clinicamente estável sob suporte nutricional.",
+      "impacto_pratico": "Acompanhamento da estabilidade de saúde de figura política de destaque e desdobramentos nas autorizações judiciais para visitas hospitalares.",
       "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 12,
-      "expires_at": "2026-11-22T06:40:12Z",
-      "updated_at": "2026-11-21T18:40:12Z",
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/ex-presidente-jair-bolsonaro-esta-internado-em-uti-no-distrito-federal",
-        "https://g1.globo.com/politica/noticia/2026/11/21/bolsonaro-tem-obstrucao-intestinal-quadro-estavel-e-segue-sem-previsao-de-alta-diz-boletim-medico.ghtml"
-      ],
-      "resumo_pulso": "Conforme boletim médico do hospital DF Star e apuração da Agência Brasil e G1, o ex-presidente Jair Bolsonaro foi internado em unidade de terapia intensiva devido a uma obstrução intestinal. A defesa obteve autorização do STF para visitas diárias de familiares enquanto o quadro é mantido clinicamente estável sob suporte nutricional e jejum.",
-      "titulo_curto": "Ex-presidente Jair Bolsonaro é internado em UTI em Brasília com diagnóstico de abdômen agudo obstrutivo",
-      "palavras_chave": [
-        "Jair Bolsonaro",
-        "UTI",
-        "Brasilia",
-        "saude",
-        "STF"
-      ],
-      "urgencia_score": 95,
-      "data_publicacao": "2026-11-21T17:55:00Z",
-      "impacto_pratico": "Acompanhamento político nacional e restrições de deslocamento e agenda do ex-presidente em Brasília.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Agência Brasil (EBC)",
-        "G1 Política"
-      ],
-      "relevancia_score": 93,
-      "horas_em_destaque": 12,
       "paises_envolvidos": [
         "BR"
       ],
+      "urgencia_score": 97,
+      "relevancia_score": 95,
+      "nivel_confianca": "alta",
+      "ttl_horas": 12,
+      "horas_em_destaque": 12,
+      "veiculos_origem": [
+        "G1 Política",
+        "Agência Brasil (EBC)"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/politica/noticia/2026/11/21/moraes-atende-a-pedido-e-autoriza-visitas-diarias-de-filhos-a-bolsonaro-durante-a-internacao.ghtml"
+      ],
+      "palavras_chave": [
+        "Jair Bolsonaro",
+        "UTI",
+        "Hospital DF Star",
+        "Alexandre de Moraes",
+        "STF"
+      ],
+      "data_publicacao": "2026-11-21T17:55:00Z",
       "links_internos_relacionados": [
         {
+          "titulo_existente": "Política no Brasil",
           "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
-          "motivo_conexao": "Acompanha os desdobramentos políticos e institucionais envolvendo lideranças nacionais no Brasil.",
-          "titulo_existente": "Política no Brasil"
+          "motivo_conexao": "Acompanhe as repercussões e decisões do STF e do cenário político nacional."
         }
-      ]
+      ],
+      "expires_at": "2026-11-22T06:40:12Z",
+      "updated_at": "2026-11-21T19:42:42Z"
     },
     {
       "slug": "pulso-1-20261121-1540",
@@ -1274,42 +1299,34 @@
     {
       "slug": "terremoto-magnitude-6-8-peru",
       "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 8,
+      "ttl_horas": 12,
       "expires_at": "2026-11-21T20:58:15Z",
-      "updated_at": "2026-11-21T18:40:12Z",
+      "updated_at": "2026-11-21T19:29:53Z",
       "fontes_urls": [
         "https://g1.globo.com/mundo/noticia/2026/11/21/terremoto-de-magnitude-67-deixou-15-feridos-no-peru-e-danificou-127-casas.ghtml"
       ],
-      "resumo_pulso": "Segundo boletim do Instituto Nacional de Defesa Civil do Peru (Indeci) e apuração do G1 Mundo, o terremoto de magnitude 6,7 a 6,8 registrado na região de Junín deixou pelo menos 15 feridos e danificou mais de 120 residências. O tremor foi fortemente sentido na capital Lima e em áreas do Amazonas brasileiro, sem registros iniciais de mortes.",
-      "titulo_curto": "Balanço oficial aponta 15 feridos e dezenas de casas danificadas após terremoto de magnitude 6,8 no Peru",
+      "resumo_pulso": "Conforme boletim oficial do Instituto Nacional de Defesa Civil do Peru (Indeci) repercutido pelo G1 Mundo, o terremoto de magnitude 6,7 a 6,8 deixou 15 feridos e danificou mais de 120 residências na região central do país. O tremor foi amplamente sentido em Lima, sem registros de vítimas fatais.",
+      "titulo_curto": "Indeci confirma 15 feridos e dezenas de imóveis danificados após terremoto no Peru",
       "palavras_chave": [
-        "terremoto",
         "Peru",
+        "Terremoto",
         "Indeci",
-        "Junin",
-        "tremor"
+        "Lima",
+        "Junín"
       ],
-      "urgencia_score": 96,
+      "urgencia_score": 92,
       "data_publicacao": "2026-11-21T14:17:00Z",
-      "impacto_pratico": "Possíveis interrupções em rodovias andinas e alertas de réplicas para moradores de áreas vulneráveis na fronteira e no Peru.",
+      "impacto_pratico": "Possíveis interrupções em infraestruturas locais e necessidade de atendimento humanitário nas províncias afetadas.",
       "nivel_confianca": "alta",
       "veiculos_origem": [
-        "G1 Mundo",
-        "Poder360"
+        "G1 Mundo"
       ],
       "relevancia_score": 88,
-      "horas_em_destaque": 6,
+      "horas_em_destaque": 8,
       "paises_envolvidos": [
-        "PE",
-        "BR"
+        "PE"
       ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/clima",
-          "motivo_conexao": "Contextualiza monitoramento de eventos naturais e impactos na região andina e fronteiriça.",
-          "titulo_existente": "Clima, Amazônia e Transição Energética"
-        }
-      ]
+      "links_internos_relacionados": []
     },
     {
       "slug": "tempestade-rs-defesa-civil-atualiza-dados",
@@ -1554,156 +1571,147 @@
       "categoria": "Geopolitica_Relacoes",
       "ttl_horas": 18,
       "expires_at": "2026-11-22T07:28:59Z",
-      "updated_at": "2026-11-21T13:54:51Z",
+      "updated_at": "2026-11-21T19:29:53Z",
       "fontes_urls": [
-        "https://g1.globo.com/mundo/noticia/2026/11/21/drones-atingem-navio-de-carga-russo-no-golfo-da-finlandia-pais-reforca-seguranca.ghtml",
-        "https://www.themoscowtimes.com/2026/11/21/russia-says-cargo-vessel-struck-by-drones-in-gulf-of-finland-a94342"
+        "https://kyivindependent.com/russian-military-linked-cargo-ship-catches-fire-after-reported-drone-strike-in-gulf-of-finland/",
+        "https://www.ukrinform.net/rubric-ato/4187239-airport-in-russias-kaliningrad-region-temporarily-closed-amid-drone-threat-social-media.html"
       ],
-      "resumo_pulso": "Segundo relatórios do The Moscow Times e do G1 Mundo, autoridades finlandesas confirmaram que um navio comercial russo que seguia para Kaliningrado foi atingido por drones em águas internacionais, resultando em incêndio e na deriva da embarcação para águas territoriais da Finlândia.",
-      "titulo_curto": "Navio de carga russo é atingido por drones e pega fogo no Golfo da Finlândia",
+      "resumo_pulso": "Segundo relatórios do The Kyiv Independent e da Ukrinform, um navio comercial ligado ao complexo militar da Rússia foi atingido por drones e sofreu incêndio no Golfo da Finlândia. Paralelamente, autoridades fecharam temporariamente o aeroporto de Kaliningrad em meio a alertas de segurança.",
+      "titulo_curto": "Incêndio atinge navio comercial russo após suposto ataque de drones no Golfo da Finlândia",
       "palavras_chave": [
-        "navio russo",
-        "drones",
-        "Golfo da Finlandia",
-        "seguranca maritima"
+        "Rússia",
+        "Ucrânia",
+        "Golfo da Finlândia",
+        "Kaliningrad",
+        "Drones"
       ],
-      "urgencia_score": 96,
+      "urgencia_score": 95,
       "data_publicacao": "2026-11-21T11:50:07Z",
-      "impacto_pratico": "Aumento das tensões geopolíticas e reforço na segurança de rotas marítimas no Mar Báltico.",
+      "impacto_pratico": "Elevação das tensões geopolíticas no Mar Báltico e riscos potenciais para a rota de navegação comercial na região.",
       "nivel_confianca": "alta",
       "veiculos_origem": [
-        "G1 Mundo",
-        "The Moscow Times"
+        "The Kyiv Independent",
+        "Ukrinform"
       ],
-      "relevancia_score": 94,
+      "relevancia_score": 93,
       "horas_em_destaque": 12,
       "paises_envolvidos": [
         "RU",
+        "UA",
         "FI"
       ],
       "links_internos_relacionados": [
         {
           "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-sancao-internacional",
-          "motivo_conexao": "Contextualiza as pressões geopolíticas e o impacto de conflitos sobre o tráfego comercial marítimo.",
+          "motivo_conexao": "Explica o contexto de restrições comerciais e militares aplicadas a frotas ligadas a conflitos geopolíticos.",
           "titulo_existente": "O que é uma sanção internacional?"
         }
       ]
-    },
+    }
+  ],
+  "temas_curadoria": [
     {
-      "slug": "jair-bolsonaro-internado-dfstar-procedimento-com-sonda",
-      "categoria": "Sociedade_Cultura",
-      "ttl_horas": 6,
-      "expires_at": "2026-11-21T23:41:11Z",
-      "updated_at": "2026-11-21T17:39:19Z",
-      "fontes_urls": [
-        "https://g1.globo.com/politica/noticia/2026/11/21/bolsonaro-tem-obstrucao-intestinal-quadro-estavel-e-segue-sem-previsao-de-alta-diz-boletim-medico.ghtml",
-        "https://www.poder360.com.br/poder-justica/jair-bolsonaro-trata-obstrucao-intestinal-na-uti-em-brasilia/"
-      ],
-      "resumo_pulso": "O ex-presidente Jair Bolsonaro permanece internado em unidade de terapia intensiva no Hospital DF Star, em Brasília, com diagnóstico de abdômen agudo obstrutivo. O ministro Alexandre de Moraes, do STF, autorizou visitas diárias de três filhos do ex-presidente durante o período de internação.",
-      "titulo_curto": "Bolsonaro segue internado em UTI com obstrução intestinal; Moraes autoriza visitas",
-      "palavras_chave": [
-        "Bolsonaro",
-        "Saúde",
-        "STF",
-        "UTI"
-      ],
-      "urgencia_score": 95,
-      "data_publicacao": "2026-11-21T11:31:47Z",
-      "impacto_pratico": "Acompanhamento da saúde de figura pública central na política brasileira.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "G1 Política",
-        "Poder360"
-      ],
+      "slug": "internacao-bolsonaro-uti-brasilia",
+      "status": "novo",
+      "ttl_horas": 48,
+      "expires_at": "2026-11-23T19:02:37Z",
+      "updated_at": "2026-11-21T19:02:37Z",
+      "titulo_tema": "Ex-presidente Jair Bolsonaro internado em UTI no Distrito Federal",
+      "sintese_nerd": "O ex-presidente Jair Bolsonaro foi internado na UTI do Hospital DF Star em Brasília com diagnóstico de abdome agudo obstrutivo, passando por procedimentos clínicos e suporte nutricional. O fato movimenta o cenário político nacional e atrai atenção imediata para os desdobramentos de sua saúde.",
+      "rota_editoria": "/politica",
+      "data_publicacao": "2026-11-21T19:02:37Z",
+      "gatilho_vitrine": "Destacar boletim médico atualizado e repercussão institucional da internação do ex-presidente.",
+      "origem_pipeline": "curadoria",
       "relevancia_score": 95,
-      "horas_em_destaque": 6,
-      "paises_envolvidos": [
-        "BR"
+      "categoria_primaria": "Politica",
+      "categorias_cruzadas": [
+        "Resumo_Ultimas"
       ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
-          "motivo_conexao": "Contexto sobre a atual conjuntura política brasileira.",
-          "titulo_existente": "Política no Brasil"
-        }
+      "palavras_chave_busca": [
+        "jair bolsonaro",
+        "uti",
+        "hospital df star",
+        "abdome agudo obstrutivo",
+        "brasília",
+        "saúde política"
       ]
     },
     {
-      "slug": "uniao-europeia-propoe-taxar-big-techs-orcamento-2034",
-      "categoria": "Economia_Comercio",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-22T11:41:11Z",
-      "updated_at": "2026-11-21T14:17:54Z",
-      "fontes_urls": [
-        "https://g1.globo.com/tecnologia/noticia/2026/11/21/uniao-europeia-propoe-taxar-big-techs-para-financiar-orcamento-ate-2034.ghtml",
-        "https://www.infomoney.com.br/mundo/uniao-europeia-quer-taxar-big-techs-para-financiar-orcamento/"
+      "slug": "ataque-petroleiros-estreito-ormuz",
+      "status": "novo",
+      "ttl_horas": 72,
+      "expires_at": "2026-11-24T19:02:37Z",
+      "updated_at": "2026-11-21T19:02:37Z",
+      "titulo_tema": "Três petroleiros atingidos perto do Estreito de Ormuz",
+      "sintese_nerd": "Operações militares intensificadas pelo Irã no Estreito de Ormuz resultaram em ataques a três petroleiros, elevando drasticamente os riscos às rotas de suprimento energético global. A escalada pressiona os preços do petróleo e afeta a inflação e os custos de transporte internacionais.",
+      "rota_editoria": "/radar",
+      "data_publicacao": "2026-11-21T19:02:37Z",
+      "gatilho_vitrine": "Conectar o aumento das tensões no Oriente Médio com o impacto direto na cotação internacional do petróleo e nos mercados globais.",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 92,
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia"
       ],
-      "resumo_pulso": "Conforme apuração do G1 Economia e InfoMoney, a União Europeia apresentou plano orçamentário para 2028-2034, introduzindo cobrança de 3% sobre receitas de publicidade e serviços digitais de big techs. A medida visa financiar o bloco, embora enfrente resistência de membros com políticas fiscais mais conservadoras.",
-      "titulo_curto": "União Europeia avança com proposta de orçamento de longo prazo que prevê taxação de big techs",
-      "palavras_chave": [
-        "União Europeia",
-        "Big Techs",
-        "Orçamento",
-        "Tecnologia",
-        "Taxação"
-      ],
-      "urgencia_score": 92,
-      "data_publicacao": "2026-11-21T11:26:05Z",
-      "impacto_pratico": "Possível alteração nos custos de serviços digitais e publicidade online na Europa, com reflexos globais nas estratégias de precificação das gigantes de tecnologia.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "G1 Economia",
-        "InfoMoney"
-      ],
-      "relevancia_score": 93,
-      "horas_em_destaque": 12,
-      "paises_envolvidos": [
-        "EU"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-o-orcamento",
-          "motivo_conexao": "Explica a estrutura de planejamento orçamentário mencionada na notícia.",
-          "titulo_existente": "O que é o Orçamento?"
-        }
+      "palavras_chave_busca": [
+        "estreito de ormuz",
+        "petroleiros",
+        "irã",
+        "petróleo",
+        "crise energética",
+        "geopolítica global"
       ]
     },
     {
-      "slug": "fbi-investiga-invasao-banco-dados-nacional-criminais-eua",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 12,
-      "expires_at": "2026-11-22T10:43:32Z",
-      "updated_at": "2026-11-21T12:32:02Z",
-      "fontes_urls": [
-        "https://g1.globo.com/mundo/noticia/2026/11/21/fbi-investiga-invasao-a-banco-dados-nacional-de-informacoes-criminais-diz-tv.ghtml"
+      "slug": "pacote-estimulo-economia-china",
+      "status": "novo",
+      "ttl_horas": 96,
+      "expires_at": "2026-11-25T19:02:37Z",
+      "updated_at": "2026-11-21T19:02:37Z",
+      "titulo_tema": "Economistas defendem pacote de US$ 450 bi para estimular China",
+      "sintese_nerd": "O enfraquecimento da demanda interna na China levou economistas a defenderem um megapacote de estímulos de US$ 450 bilhões para reativar o crescimento do país. A medida possui forte repercussão sobre o volume de importações de commodities do Brasil e o equilíbrio do comércio exterior.",
+      "rota_editoria": "/economia",
+      "data_publicacao": "2026-11-21T19:02:37Z",
+      "gatilho_vitrine": "Explicar como a desaceleração da economia chinesa e propostas de grandes estímulos fiscais afetam diretamente as exportações e commodities brasileiras.",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 88,
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Geopolitica_Radar"
       ],
-      "resumo_pulso": "Segundo apuração da CNN e do G1 Mundo, o FBI abriu investigação sobre uma possível invasão a um banco de dados de segurança pública usado por agências federais e locais nos Estados Unidos. A ocorrência se soma a uma série recente de falhas sistêmicas e cibernéticas no país.",
-      "titulo_curto": "FBI investiga invasão a banco de dados nacional de informações criminais nos EUA",
-      "palavras_chave": [
-        "FBI",
-        "EUA",
-        "Cibersegurança",
-        "Segurança Pública"
+      "palavras_chave_busca": [
+        "china",
+        "pacote de estímulo",
+        "demanda interna",
+        "pib global",
+        "comércio exterior",
+        "commodities"
+      ]
+    },
+    {
+      "slug": "fbi-investiga-ataque-banco-dados-criminais",
+      "status": "novo",
+      "ttl_horas": 48,
+      "expires_at": "2026-11-23T19:02:37Z",
+      "updated_at": "2026-11-21T19:02:37Z",
+      "titulo_tema": "FBI investiga possível ataque hacker a banco de dados criminais dos EUA",
+      "sintese_nerd": "O FBI investiga uma suposta invasão ao sistema do NCIC, banco de dados que centraliza registros de procurados e antecedentes nos EUA, escancarando falhas de cibersegurança em órgãos federais. O episódio reforça debates contemporâneos sobre a resiliência de redes governamentais contra ataques digitais.",
+      "rota_editoria": "/radar",
+      "data_publicacao": "2026-11-21T19:02:37Z",
+      "gatilho_vitrine": "Relatar a vulnerabilidade de infraestruturas governamentais críticas frente a ataques cibernéticos de grande escala.",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 85,
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Cultura"
       ],
-      "urgencia_score": 96,
-      "data_publicacao": "2026-11-21T10:27:04Z",
-      "impacto_pratico": "Possíveis riscos de vazamento de dados sensíveis e instabilidade em serviços de segurança pública nos Estados Unidos.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "G1 Mundo",
-        "CNN"
-      ],
-      "relevancia_score": 94,
-      "horas_em_destaque": 12,
-      "paises_envolvidos": [
-        "US"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/politica/estados-unidos",
-          "motivo_conexao": "Contextualiza o cenário institucional e de segurança em Washington.",
-          "titulo_existente": "Política nos Estados Unidos"
-        }
+      "palavras_chave_busca": [
+        "fbi",
+        "ncic",
+        "cibersegurança",
+        "ataque hacker",
+        "governo dos eua",
+        "segurança pública"
       ]
     }
   ]
