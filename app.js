@@ -5506,12 +5506,26 @@
       try { localStorage.removeItem(cacheKey); } catch (e) { }
       if (refreshBtn) refreshBtn.classList.add('is-refreshing');
       if (listEl) listEl.classList.add('is-loading');
-    } else if (atlasSessionRevalidated[cCode] && (Date.now() - atlasSessionRevalidated[cCode] < ATLAS_PAIS_TTL_MS)) {
+    } else {
       try {
         var raw = localStorage.getItem(cacheKey);
         if (raw) {
           var parsed = JSON.parse(raw);
-          if (parsed && Array.isArray(parsed.items) && parsed.items.length && Number(parsed.ts) > 0 && (Date.now() - Number(parsed.ts) < ATLAS_PAIS_TTL_MS)) {
+          var cacheValid = false;
+          if (parsed && Array.isArray(parsed.items) && parsed.items.length && Number(parsed.ts) > 0) {
+            var cacheAge = Date.now() - Number(parsed.ts);
+            if (cacheAge < ATLAS_PAIS_TTL_MS) {
+              var sortedCached = sortAtlasPaisItems(parsed.items);
+              var newestItem = sortedCached[0];
+              var newestTime = newestItem && newestItem.publishedAt ? new Date(newestItem.publishedAt).getTime() : 0;
+              var isStale = !newestTime || isNaN(newestTime) || (Date.now() - newestTime > 24 * 3600 * 1000);
+              if (!isStale) {
+                cacheValid = true;
+              }
+            }
+          }
+          if (cacheValid) {
+            atlasSessionRevalidated[cCode] = Number(parsed.ts);
             renderAtlasPaisItems(parsed.items, cCode, parsed.updatedAt);
             ensureAtlasItemsTranslated(parsed.items, cCode, function (updatedItems) {
               try {
@@ -5529,6 +5543,9 @@
               }
             }, 240000);
             return;
+          } else {
+            try { localStorage.removeItem(cacheKey); } catch (e) { }
+            delete atlasSessionRevalidated[cCode];
           }
         }
       } catch (e) { }
@@ -5586,7 +5603,8 @@
       } else {
         rssTarget = 'https://news.google.com/rss/search?q=' + encodeURIComponent(searchName + ' when:24h') + '&hl=en&gl=' + encodeURIComponent(cCode) + '&ceid=' + encodeURIComponent(cCode) + ':en';
       }
-      var proxyUrl = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(rssTarget);
+      rssTarget += (rssTarget.indexOf('?') === -1 ? '?' : '&') + '_t=' + Date.now();
+      var proxyUrl = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(rssTarget) + '&_t=' + Date.now();
       return fetch(proxyUrl, { cache: 'no-store' })
         .then(function (r) { return r.ok ? r.json() : null; })
         .then(function (j) {
@@ -5607,7 +5625,7 @@
             };
           }).filter(function (it) { return it.titleOriginal && it.url; });
           var sortedFallback = sortAtlasPaisItems(mapped).slice(0, 8);
-          return { ok: true, updatedAt: '', items: sortedFallback, fallback: true };
+          return { ok: true, updatedAt: new Date().toISOString(), items: sortedFallback, fallback: true };
         })
         .catch(function () { return null; });
     }
@@ -5637,25 +5655,24 @@
         if (data && data.ok && Array.isArray(data.items) && data.items.length) {
           var sortedItems = sortAtlasPaisItems(data.items);
           var savedTs = Date.now();
-          if (fromLiveApi) {
-            atlasSessionRevalidated[cCode] = savedTs;
-            try {
-              localStorage.setItem(cacheKey, JSON.stringify({ ts: savedTs, updatedAt: data.updatedAt, items: sortedItems }));
-            } catch (e) { }
-          }
-          renderAtlasPaisItems(sortedItems, cCode, data.updatedAt);
+          var updateIso = data.updatedAt || new Date().toISOString();
+          atlasSessionRevalidated[cCode] = savedTs;
+          try {
+            localStorage.setItem(cacheKey, JSON.stringify({ ts: savedTs, updatedAt: updateIso, items: sortedItems }));
+          } catch (e) { }
+          renderAtlasPaisItems(sortedItems, cCode, updateIso);
           ensureAtlasItemsTranslated(sortedItems, cCode, function (updatedItems) {
-            if (fromLiveApi) {
-              try {
-                localStorage.setItem(cacheKey, JSON.stringify({ ts: savedTs, updatedAt: data.updatedAt, items: updatedItems }));
-              } catch (e) { }
-            }
+            try {
+              localStorage.setItem(cacheKey, JSON.stringify({ ts: savedTs, updatedAt: updateIso, items: updatedItems }));
+            } catch (e) { }
             var activeFeed = panel.querySelector('#atlas-live-news-feed');
             if (activeFeed && activeFeed.getAttribute('data-country') === String(cCode)) {
-              renderAtlasPaisItems(updatedItems, cCode, data.updatedAt);
+              renderAtlasPaisItems(updatedItems, cCode, updateIso);
             }
           });
         } else {
+          try { localStorage.removeItem(cacheKey); } catch (e) { }
+          delete atlasSessionRevalidated[cCode];
           renderAtlasPaisItems([], cCode, '');
         }
 
@@ -5668,6 +5685,8 @@
       })
       .catch(function () {
         if (refreshBtn) refreshBtn.classList.remove('is-refreshing');
+        try { localStorage.removeItem(cacheKey); } catch (e) { }
+        delete atlasSessionRevalidated[cCode];
         renderAtlasPaisItems([], cCode, '');
       });
   }
@@ -15861,6 +15880,11 @@
         timestamp: Date.now()
       };
       saveLocalRegisteredOutlet(regRecord);
+
+      // Notifica o Radar Arduino que um novo veículo se cadastrou (Amarelo)
+      try {
+        fetch('http://127.0.0.1:5050/alerta/A', { mode: 'no-cors' }).catch(function () {});
+      } catch (e) {}
 
       enviarDadosFormulario(payload)
         .then(function () {

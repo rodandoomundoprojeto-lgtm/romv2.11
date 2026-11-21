@@ -6736,6 +6736,27 @@ dialog:not([open]) {
   text-decoration: underline;
 }
 
+.footer-contact {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+}
+
+.footer-contact a {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.footer-contact a:hover {
+  color: var(--primary);
+  text-decoration: underline;
+}
+
 .footer-bug-trigger-text {
   background: none;
   border: none;
@@ -10784,6 +10805,7 @@ button.support-link.topbar-more-btn:hover {
   .footer-notice,
   .footer-social-row,
   .footer-legal-links,
+  .footer-contact,
   .footer-credit {
     width: 100% !important;
     max-width: 100% !important;

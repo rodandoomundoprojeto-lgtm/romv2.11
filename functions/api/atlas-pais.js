@@ -143,6 +143,9 @@ const COUNTRY_INTL_NAMES = {
   BW: 'Botswana',
 };
 
+const BROWSER_UA =
+  'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36';
+
 function cleanHtml(raw) {
   if (!raw) return '';
   return String(raw)
@@ -258,24 +261,77 @@ function parseRssXml(xmlText, countryCode) {
 
 async function fetchRssAtlas(rssUrl, countryCode, isRefresh) {
   const ctrl = new AbortController();
-  const tid = setTimeout(() => ctrl.abort(), 6000);
+  const tid = setTimeout(() => ctrl.abort(), 7500);
   try {
     const resp = await fetch(rssUrl, {
       cache: 'no-store',
       signal: ctrl.signal,
       headers: {
-        'User-Agent': 'Mozilla/5.0 (compatible; RodandoOMundoAtlas/2.1)',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36',
+        'Accept': 'application/rss+xml, application/xml, text/xml;q=0.9, */*;q=0.8',
+        'Accept-Language': 'de,en-US;q=0.9,en;q=0.8,pt-BR;q=0.7,pt;q=0.6',
         ...(isRefresh ? { 'Cache-Control': 'no-cache', Pragma: 'no-cache' } : {}),
       },
     });
-    if (!resp.ok) return { ok: false, items: [] };
-    const xml = await resp.text();
-    return { ok: true, items: parseRssXml(xml, countryCode) };
+    if (resp.ok) {
+      const xml = await resp.text();
+      const parsed = parseRssXml(xml, countryCode);
+      if (parsed.length > 0) return { ok: true, items: parsed };
+    }
   } catch {
-    return { ok: false, items: [] };
+    // Segue para contingência estruturada
   } finally {
     clearTimeout(tid);
   }
+
+  // Contingência no Edge: coletor estruturado via rss2json com cache-busting dinâmico
+  try {
+    const ctrlFb = new AbortController();
+    const tidFb = setTimeout(() => ctrlFb.abort(), 6000);
+    const cbUrl = rssUrl + (rssUrl.includes('?') ? '&' : '?') + '_t=' + Date.now();
+    const proxyUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(cbUrl)}`;
+    const respFb = await fetch(proxyUrl, {
+      cache: 'no-store',
+      signal: ctrlFb.signal,
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36',
+      },
+    });
+    clearTimeout(tidFb);
+    if (respFb.ok) {
+      const data = await respFb.json();
+      if (data && data.status === 'ok' && Array.isArray(data.items) && data.items.length > 0) {
+        const items = data.items.map((it) => {
+          const rawT = String(it.title || '').trim();
+          const dash = rawT.lastIndexOf(' - ');
+          const cleanT = dash > 15 ? rawT.slice(0, dash).trim() : rawT;
+          const src = dash > 15 ? rawT.slice(dash + 3).trim() : (it.author || 'Imprensa Internacional');
+          let isoPub = '';
+          if (it.pubDate) {
+            const dt = new Date(String(it.pubDate).replace(' ', 'T') + 'Z');
+            if (!isNaN(dt.getTime())) isoPub = dt.toISOString();
+          }
+          return {
+            id: hashString(it.link || cleanT),
+            titleOriginal: cleanT,
+            titlePt: cleanT,
+            url: it.link || '',
+            source: src,
+            publishedAt: isoPub,
+            score: 85,
+            country: countryCode,
+          };
+        }).filter((it) => it.titleOriginal && it.url);
+
+        items.sort((a, b) => compareIsoDesc(a.publishedAt, b.publishedAt));
+        if (items.length > 0) return { ok: true, items: items.slice(0, 15) };
+      }
+    }
+  } catch {
+    // Ambos falharam
+  }
+
+  return { ok: false, items: [] };
 }
 
 export async function handleAtlasPais(request, env = {}) {

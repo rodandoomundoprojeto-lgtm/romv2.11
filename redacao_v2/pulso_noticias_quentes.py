@@ -768,7 +768,7 @@ def gerar_pulso_noticias_quentes(
 ) -> PayloadNoticiasQuentes:
     """Chama `gemini-2.5-flash` com `response_schema=PayloadNoticiasQuentes` e deduplicação de ativos."""
     system_prompt = carregar_prompt_pulso()
-    gemini_client = client or genai.Client(http_options=types.HttpOptions(timeout=60_000))
+    gemini_client = client or genai.Client(http_options=types.HttpOptions(timeout=35_000))
     batch_atual = datetime.now(timezone.utc).strftime("%Y%m%d-%H%M")
     acervo = acervo_publicado or []
     lote_balanceado = selecionar_lote_balanceado_pulso(itens_coletados, limite=30, max_por_fonte=2, cota_youtube=5)

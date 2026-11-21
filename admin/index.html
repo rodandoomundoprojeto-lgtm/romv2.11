@@ -5012,6 +5012,10 @@
         { a2: 'CV', nome: 'Cabo Verde', flag: '🇨🇻' }
       ];
 
+      // Catálogo padrão para o seletor de países do modal de prévia/edição de
+      // Colunas / Artigos Entunda (usado em inicializarSelectPaisesColuna).
+      const PAISES_DISPONIVEIS = LISTA_PAISES_ROM.map((p) => ({ code: p.a2, flag: p.flag, name: p.nome }));
+
       function obterBandeiraPais(code) {
         if (!code) return '🌐';
         const c = String(code).toUpperCase().trim();
@@ -6219,6 +6223,36 @@
         }
       }
 
+      // Integração com Arduino Uno: Sinaliza no LED Amarelo + Bipe quando há itens para aprovar
+      let totalPendentesAnterior = null;
+      let ultimoAlertaArduinoTs = 0;
+
+      function checarAlertaArduinoPendentes(totalAtual) {
+        if (totalPendentesAnterior === null) {
+          totalPendentesAnterior = totalAtual;
+          if (totalAtual > 0) {
+            dispararAlertaArduinoTriagem(totalAtual);
+          }
+          return;
+        }
+
+        if (totalAtual > totalPendentesAnterior) {
+          const agora = Date.now();
+          if (agora - ultimoAlertaArduinoTs > 4000) {
+            ultimoAlertaArduinoTs = agora;
+            dispararAlertaArduinoTriagem(totalAtual);
+          }
+        }
+        totalPendentesAnterior = totalAtual;
+      }
+
+      function dispararAlertaArduinoTriagem(total) {
+        try {
+          fetch('http://127.0.0.1:5050/alerta/A', { mode: 'no-cors' }).catch(() => {});
+          showToast(`🟡 ${total} item(ns) aguardando aprovação! (Arduino notificado)`, 'ok');
+        } catch (_) {}
+      }
+
       let resumoTimer = null;
       function agendarResumo() {
         clearTimeout(resumoTimer);
@@ -6226,16 +6260,20 @@
       }
 
       function atualizarResumo() {
-        // Curadoria: eventos aguardando + colunas pendentes
+        // Curadoria: eventos aguardando + colunas pendentes + fontes pendentes
         const evAg = state.eventosAguardando;
         const colPend = (state.colunas || []).filter((c) => {
           const st = statusNormColuna(c);
           return st === 'rascunho' || st === 'aprovado';
         }).length;
+        const fontesPend = (state.fontes || []).filter((f) => f && f.politica_uso_status !== 'aprovada').length;
+        const pendCur = (Number(evAg) || 0) + colPend + fontesPend;
         setKpi('kpi-eventos', evAg == null ? '—' : String(evAg), evAg > 0 ? 'warn' : 'ok');
         setKpi('kpi-colunas', String(colPend), colPend > 0 ? 'warn' : 'ok');
-        const pendCur = (Number(evAg) || 0) + colPend;
         setNavCount('nav-count-curadoria', String(pendCur), pendCur > 0 ? 'warn' : 'ok');
+
+        // Notifica o Arduino Uno local (LED amarelo + bipe) se houver novos itens para aprovar
+        checarAlertaArduinoPendentes(pendCur);
 
         // Quentes
         const nq = state.noticiasQuentes || [];
@@ -6714,6 +6752,14 @@
       if (state.token) {
         conectar();
       }
+
+      // Polling leve a cada 30 segundos enquanto estiver conectado para checar novidades
+      setInterval(async () => {
+        if (!state.token) return;
+        try {
+          await Promise.all([carregarEventos(), carregarColunas(), carregarFontes()]);
+        } catch (_) {}
+      }, 30000);
     })();
   </script>
 </body>

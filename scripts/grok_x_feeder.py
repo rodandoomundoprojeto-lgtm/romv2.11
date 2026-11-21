@@ -1002,15 +1002,22 @@ def main(argv=None):
 
     if not persist_edition(items, topicos_por_pais, used_model, out_path, is_mock=args.mock, is_grok_x=is_grok_x):
         try:
-            from notificador import alerta_erro
-            alerta_erro("Falha ao salvar edição no grok_x_feeder")
+            from notificador import alerta_plantao
+            alerta_plantao("Falha crítica ao persistir edição no grok_x_feeder")
         except Exception:
             pass
         sys.exit(2)
 
     try:
-        from notificador import alerta_nova_materia
-        alerta_nova_materia()
+        from notificador import alerta_plantao, alerta_amarelo, alerta_verde
+        # Verifica se alguma notícia tem urgência ou relevância extrema (Plantão)
+        tem_plantao = any(int(it.get("relevancia", 0)) >= 90 for it in items)
+        if tem_plantao:
+            alerta_plantao("Plantão Geopolítico: notícia urgente de máxima relevância detectada!")
+        elif len(items) > 0:
+            alerta_amarelo(f"{len(items)} notícias na fila de triagem do radar.")
+        else:
+            alerta_verde()
     except Exception:
         pass
 

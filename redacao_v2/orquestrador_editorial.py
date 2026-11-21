@@ -29,6 +29,11 @@ from typing import Any, Dict, List, Optional, Tuple
 from google import genai
 from google.genai import types
 
+try:
+    from sinal_agente import agente_ativo
+except ImportError:
+    from contextlib import nullcontext as agente_ativo
+
 from .coletor_estudo import (
     advisory_lock,
     buscar_artigos_publicados_rom_async,
@@ -823,6 +828,23 @@ async def executar_orquestrador_editorial_async(
     """Coleta as fontes de estudo V2 e o acervo publicado, executa o pipeline sequencial
     e grava o resultado aprovado em `ai_colunas_editoriais` e `ai_entenda_o_assunto`.
     """
+    with agente_ativo("editorial_v2"):
+        return await _executar_orquestrador_editorial_impl(
+            tema_foco=tema_foco,
+            db_url=db_url,
+            dry_run=dry_run,
+            client=client,
+            slug_alvo=slug_alvo,
+        )
+
+
+async def _executar_orquestrador_editorial_impl(
+    tema_foco: Optional[str] = None,
+    db_url: Optional[str] = None,
+    dry_run: bool = False,
+    client: Optional[Any] = None,
+    slug_alvo: Optional[str] = None,
+) -> Optional[Dict[str, Any]]:
     database_url = _obter_db_url(db_url)
     tema_limpo = (tema_foco or "").strip() or None
 

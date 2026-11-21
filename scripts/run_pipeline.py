@@ -521,14 +521,17 @@ def main(argv: Optional[List[str]] = None) -> int:
 
         if not args.dry_run:
             try:
-                from notificador import alerta_nova_materia
-                alerta_nova_materia()
+                from notificador import alerta_amarelo, alerta_verde
+                if args.modo == "curadoria":
+                    alerta_amarelo("Fila de triagem atualizada pelo modo curadoria.")
+                else:
+                    alerta_verde()
             except Exception:
                 pass
     except Exception as exc:
         try:
-            from notificador import alerta_erro
-            alerta_erro(f"Erro no pipeline ({args.modo}): {exc}")
+            from notificador import alerta_plantao
+            alerta_plantao(f"Falha crítica no pipeline ({args.modo}): {exc}")
         except Exception:
             pass
         raise
