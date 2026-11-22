@@ -68,8 +68,8 @@ def _timestamp_publicacao(item: Dict[str, Any]) -> float:
 def sortir_cards_rodizio_amplo(
     cards: List[Dict[str, Any]],
     max_v2_topo: int = 2,
-    max_age_delta_sec: float = 43200.0,
-    max_lookahead: int = 12,
+    max_age_delta_sec: float = 3600.0,
+    max_lookahead: int = 5,
     max_v2_age_delta_sec: float = 7200.0,
 ) -> List[Dict[str, Any]]:
     """

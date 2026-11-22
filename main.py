@@ -53,7 +53,7 @@ app.include_router(router_v2)
 app.include_router(router_dossies)
 
 
-@app.get("/health")
+@app.api_route("/health", methods=["GET", "HEAD"])
 def health():
     return {"ok": True, "motor": "v2.2"}
 
