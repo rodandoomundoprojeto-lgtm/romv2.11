@@ -14,6 +14,7 @@ import * as apiResumo from './functions/api/resumo.js';
 import * as apiTraduzir from './functions/api/traduzir.js';
 import * as apiUltimasNoticias from './functions/api/ultimas-noticias.js';
 import * as apiVitrineEmAlta from './functions/api/vitrine-em-alta.js';
+import * as apiPatrocinadores from './functions/api/patrocinadores.js';
 import { sortirCardsRodizioAmplo } from './functions/api/radar.js';
 import {
   isRefreshRequest,
@@ -34,6 +35,7 @@ const API_FUNCTION_ROUTES = {
   '/api/traduzir': apiTraduzir,
   '/api/ultimas-noticias': apiUltimasNoticias,
   '/api/vitrine-em-alta': apiVitrineEmAlta,
+  '/api/patrocinadores': apiPatrocinadores,
 };
 
 function escapeHtml(str) {
@@ -739,6 +741,32 @@ async function handleRadarHybrid(request, env) {
           })
       : [];
 
+    // Preserva e sincroniza traduções e análises editoriais em português de feedOutput para cardsYt
+    const feedPorUrl = new Map();
+    const feedPorVid = new Map();
+    for (const f of cardsFeed) {
+      const u = String(f.fonte_url || '').trim();
+      if (u && u !== '/radar') feedPorUrl.set(u, f);
+      const vid = String(f.video_id || '').trim();
+      if (vid) feedPorVid.set(vid, f);
+    }
+    for (const y of cardsYt) {
+      const u = String(y.fonte_url || '').trim();
+      const vid = String(y.video_id || '').trim();
+      const parFeed = (u && feedPorUrl.get(u)) || (vid && feedPorVid.get(vid));
+      if (parFeed) {
+        if (parFeed.titulo && parFeed.titulo !== y.titulo) {
+          y.titulo = parFeed.titulo;
+        }
+        if (parFeed.resumo && parFeed.resumo !== y.resumo) {
+          y.resumo = parFeed.resumo;
+        }
+        if (parFeed.analise && !y.analise) {
+          y.analise = parFeed.analise;
+        }
+      }
+    }
+
     const titulosVistos = new Set();
     const urlsVideosVistos = new Set();
     const combinados = [];
@@ -889,6 +917,44 @@ async function handleEntendaOAssunto(request, env, url) {
   });
 }
 
+async function handlePatrocinadoresPublico(request, env, url) {
+  // 1. Se houver backend FastAPI configurado, tenta obter dados atualizados dele
+  const backendUrl = resolverBackendUrl(env, request);
+  if (backendUrl) {
+    try {
+      const resp = await handleBackendProxy(request, env, url);
+      if (resp && resp.status === 200) {
+        return resp;
+      }
+    } catch {
+      // Falha no backend: cai imediatamente no snapshot estático
+    }
+  }
+
+  // 2. Fallback resiliente: carregar snapshot do asset data/patrocinadores.json
+  const snapLocal = await carregarAssetWorker('data/patrocinadores.json', request, env);
+  if (snapLocal && snapLocal.cotas) {
+    return new Response(JSON.stringify(snapLocal), {
+      status: 200,
+      headers: { ...CORS_HEADERS, 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store, no-cache, must-revalidate' }
+    });
+  }
+
+  return new Response(JSON.stringify({
+    ok: true,
+    fallback: true,
+    cotas: {
+      cota_master: [],
+      dossie_tematico: [],
+      resumo_dia: [],
+      gaveta_contextual: []
+    }
+  }), {
+    status: 200,
+    headers: { ...CORS_HEADERS, 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store, no-cache, must-revalidate' }
+  });
+}
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
@@ -896,6 +962,11 @@ export default {
     // Redirecionamento canônico 301 do domínio raiz (sem www) para www.rodandoomundo.com.br
     if (url.hostname === 'rodandoomundo.com.br') {
       return Response.redirect('https://www.rodandoomundo.com.br' + url.pathname + url.search, 301);
+    }
+
+    // Rota pública de patrocinadores: backend com fallback resiliente para snapshot estático
+    if (url.pathname === '/v2/patrocinadores' && request.method === 'GET') {
+      return handlePatrocinadoresPublico(request, env, url);
     }
 
     // Rota da API de Contato / Formulários

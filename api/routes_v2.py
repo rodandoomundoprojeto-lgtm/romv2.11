@@ -1208,6 +1208,21 @@ def obter_feed_radar(
         except Exception:
             pass
 
+    # Preserva e sincroniza traduções e análises editoriais em português de cards_feed para cards_yt
+    feed_por_url = {str(f.get("fonte_url") or "").strip(): f for f in cards_feed if str(f.get("fonte_url") or "").strip() not in ("", "/radar")}
+    feed_por_vid = {str(f.get("video_id") or "").strip(): f for f in cards_feed if str(f.get("video_id") or "").strip()}
+    for y in cards_yt:
+        u = str(y.get("fonte_url") or "").strip()
+        vid = str(y.get("video_id") or "").strip()
+        par_feed = (feed_por_url.get(u) if u else None) or (feed_por_vid.get(vid) if vid else None)
+        if par_feed:
+            if par_feed.get("titulo") and par_feed.get("titulo") != y.get("titulo"):
+                y["titulo"] = par_feed["titulo"]
+            if par_feed.get("resumo") and par_feed.get("resumo") != y.get("resumo"):
+                y["resumo"] = par_feed["resumo"]
+            if par_feed.get("analise") and not y.get("analise"):
+                y["analise"] = par_feed["analise"]
+
     # Ordena cronologicamente (mais recentes primeiro) antes de deduplicar,
     # priorizando cards de canais específicos do YouTube para que seus títulos/fonte_nome sejam preservados.
     todos_candidatos = sorted(cards_yt + itens_v2 + cards_feed, key=_timestamp_publicacao, reverse=True)
@@ -2912,18 +2927,208 @@ async def admin_aprovar_video_youtube(
         raise HTTPException(status_code=500, detail=f"Erro ao aprovar vídeo: {exc}")
 
 
+CONFIG_DIR = Path(__file__).resolve().parents[1] / "config"
+FONTES_REMOVIDAS_PATH = CONFIG_DIR / "fontes_removidas.json"
+SOURCES_JSON_PATH = CONFIG_DIR / "sources.json"
+DATA_DIR = Path(__file__).resolve().parents[1] / "data"
+NOTICIAS_YOUTUBE_JSON_PATH = DATA_DIR / "noticias_youtube.json"
+FEED_OUTPUT_JSON_PATH = DATA_DIR / "feed_output.json"
+
+
+def _obter_fontes_removidas_set() -> Tuple[set, set]:
+    """Retorna (conjunto_urls, conjunto_nomes) de fontes removidas explicitamente pelo admin."""
+    urls_removidas = set()
+    nomes_removidos = set()
+    if FONTES_REMOVIDAS_PATH.is_file():
+        try:
+            dados = json.loads(FONTES_REMOVIDAS_PATH.read_text(encoding="utf-8"))
+            if isinstance(dados, list):
+                for item in dados:
+                    if isinstance(item, dict):
+                        u = str(item.get("url") or "").strip().lower()
+                        n = str(item.get("nome") or "").strip().lower()
+                        cid = str(item.get("channel_id") or "").strip().lower()
+                        if u:
+                            urls_removidas.add(u)
+                        if n:
+                            nomes_removidos.add(n)
+                        if cid:
+                            urls_removidas.add(cid)
+        except Exception:
+            pass
+    return urls_removidas, nomes_removidos
+
+
+def _registrar_fonte_removida(nome: str, url: str) -> None:
+    """Registra uma fonte removida em config/fontes_removidas.json para evitar que auto-sync a re-importe."""
+    try:
+        dados = []
+        if FONTES_REMOVIDAS_PATH.is_file():
+            try:
+                dados = json.loads(FONTES_REMOVIDAS_PATH.read_text(encoding="utf-8"))
+                if not isinstance(dados, list):
+                    dados = []
+            except Exception:
+                dados = []
+
+        cid = ""
+        m_cid = re.search(r"channel_id=([A-Za-z0-9_-]+)", url or "")
+        if m_cid:
+            cid = m_cid.group(1)
+
+        nome_limpo = (nome or "").strip()
+        url_limpa = (url or "").strip()
+
+        existe = False
+        for item in dados:
+            if isinstance(item, dict):
+                if (url_limpa and item.get("url") == url_limpa) or (nome_limpo and item.get("nome", "").lower() == nome_limpo.lower()):
+                    existe = True
+                    break
+
+        if not existe and (nome_limpo or url_limpa):
+            dados.append({
+                "nome": nome_limpo,
+                "url": url_limpa,
+                "channel_id": cid,
+                "removido_em": datetime.now(timezone.utc).isoformat(),
+            })
+            FONTES_REMOVIDAS_PATH.write_text(
+                json.dumps(dados, indent=2, ensure_ascii=False) + "\n",
+                encoding="utf-8",
+            )
+    except Exception:
+        pass
+
+
+def _desmarcar_fonte_removida(nome: str, url: str) -> None:
+    """Remove uma fonte da lista de removidas caso o admin resolva re-adicioná-la intencionalmente."""
+    if not FONTES_REMOVIDAS_PATH.is_file():
+        return
+    try:
+        dados = json.loads(FONTES_REMOVIDAS_PATH.read_text(encoding="utf-8"))
+        if not isinstance(dados, list):
+            return
+        nome_limpo = (nome or "").strip().lower()
+        url_limpa = (url or "").strip().lower()
+        novos = [
+            it for it in dados
+            if isinstance(it, dict)
+            and it.get("url", "").lower() != url_limpa
+            and it.get("nome", "").lower() != nome_limpo
+        ]
+        if len(novos) != len(dados):
+            FONTES_REMOVIDAS_PATH.write_text(
+                json.dumps(novos, indent=2, ensure_ascii=False) + "\n",
+                encoding="utf-8",
+            )
+    except Exception:
+        pass
+
+
+def _remover_fonte_config_sources(nome: str, url: str) -> bool:
+    """Remove a fonte correspondente de config/sources.json."""
+    if not SOURCES_JSON_PATH.is_file():
+        return False
+    try:
+        raw_sources = json.loads(SOURCES_JSON_PATH.read_text(encoding="utf-8"))
+        if not isinstance(raw_sources, list):
+            return False
+
+        cid_alvo = None
+        m_cid = re.search(r"channel_id=([A-Za-z0-9_-]+)", url or "")
+        if m_cid:
+            cid_alvo = m_cid.group(1).lower()
+
+        nome_norm = (nome or "").strip().lower()
+        url_norm = (url or "").strip().lower()
+
+        novos = []
+        removido = False
+        for s in raw_sources:
+            if not isinstance(s, dict):
+                novos.append(s)
+                continue
+            s_nome = str(s.get("nome") or "").strip().lower()
+            s_id = str(s.get("id_ou_url") or "").strip().lower()
+
+            match_nome = bool(nome_norm and s_nome == nome_norm)
+            match_id = bool(cid_alvo and cid_alvo == s_id)
+            match_url = bool(url_norm and (s_id == url_norm or url_norm.endswith(s_id)))
+
+            if match_nome or match_id or match_url:
+                removido = True
+                continue
+            novos.append(s)
+
+        if removido:
+            SOURCES_JSON_PATH.write_text(
+                json.dumps(novos, indent=2, ensure_ascii=False) + "\n",
+                encoding="utf-8",
+            )
+            return True
+    except Exception:
+        pass
+    return False
+
+
+def _remover_conteudo_canal_excluido(nome: str) -> None:
+    """Remove vídeos e manchetes vinculadas ao canal/fonte excluído nos arquivos de dados."""
+    if not nome:
+        return
+    nome_norm = nome.strip().lower()
+
+    # 1. data/noticias_youtube.json
+    if NOTICIAS_YOUTUBE_JSON_PATH.is_file():
+        try:
+            dados = json.loads(NOTICIAS_YOUTUBE_JSON_PATH.read_text(encoding="utf-8"))
+            if isinstance(dados, dict) and "items" in dados:
+                items = dados.get("items") or []
+                filtrados = [
+                    v for v in items
+                    if isinstance(v, dict)
+                    and str(v.get("canal") or v.get("fonte_nome") or "").strip().lower() != nome_norm
+                ]
+                if len(filtrados) != len(items):
+                    dados["items"] = filtrados
+                    dados["total_itens"] = len(filtrados)
+                    NOTICIAS_YOUTUBE_JSON_PATH.write_text(json.dumps(dados, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+        except Exception:
+            pass
+
+    # 2. data/feed_output.json
+    if FEED_OUTPUT_JSON_PATH.is_file():
+        try:
+            dados_feed = json.loads(FEED_OUTPUT_JSON_PATH.read_text(encoding="utf-8"))
+            if isinstance(dados_feed, list):
+                filtrados_feed = [
+                    it for it in dados_feed
+                    if isinstance(it, dict)
+                    and str(it.get("canal") or it.get("fonte_nome") or "").strip().lower() != nome_norm
+                ]
+                if len(filtrados_feed) != len(dados_feed):
+                    FEED_OUTPUT_JSON_PATH.write_text(json.dumps(filtrados_feed, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+        except Exception:
+            pass
+
+
 def _coletar_fontes_codigo() -> List[Dict[str, Any]]:
     """Reúne todas as fontes configuradas em `coletor_estudo.py` e `config/sources.json`."""
     from pathlib import Path
     from redacao_v2.coletor_estudo import FONTES_ESTUDO_V2, FONTES_NOTICIAS_QUENTES_30MIN
 
+    urls_removidas, nomes_removidos = _obter_fontes_removidas_set()
+
     combinadas: Dict[str, Dict[str, Any]] = {}
     for item in list(FONTES_NOTICIAS_QUENTES_30MIN) + list(FONTES_ESTUDO_V2):
         url = str(item.get("url") or "").strip()
+        nome = str(item.get("nome") or "Fonte").strip()
         if not url or url in combinadas:
             continue
+        if url.lower() in urls_removidas or nome.lower() in nomes_removidos:
+            continue
         combinadas[url] = {
-            "nome": str(item.get("nome") or "Fonte").strip(),
+            "nome": nome,
             "url": url,
             "pais_iso": str(item.get("pais_iso") or "BR").strip()[:2].upper(),
             "regiao": str(item.get("regiao") or "Global").strip(),
@@ -2946,6 +3151,7 @@ def _coletar_fontes_codigo() -> List[Dict[str, Any]]:
             for s in raw_sources:
                 tipo = str(s.get("tipo") or "rss").strip().lower()
                 id_ou_url = str(s.get("id_ou_url") or "").strip()
+                nome = str(s.get("nome") or "Fonte").strip()
                 if not id_ou_url:
                     continue
                 if tipo == "youtube":
@@ -2956,7 +3162,8 @@ def _coletar_fontes_codigo() -> List[Dict[str, Any]]:
                     tipo_fonte = "rss_feed"
                 if url in combinadas:
                     continue
-                nome = str(s.get("nome") or "Fonte").strip()
+                if url.lower() in urls_removidas or id_ou_url.lower() in urls_removidas or nome.lower() in nomes_removidos:
+                    continue
                 categoria = str(s.get("categoria") or "geral").strip().lower()
                 regiao = "Global" if categoria in ("geopolitica", "dinamica", "misto") else "America_do_Sul"
                 combinadas[url] = {
@@ -3180,6 +3387,9 @@ def admin_criar_fonte(
     coleta_permitida = bool(payload.aprovar_imediato)
     revisado_por = "Revisado por Equipe RoM" if payload.aprovar_imediato else None
     revisado_em = datetime.now(timezone.utc) if payload.aprovar_imediato else None
+
+    # Se a fonte havia sido removida antes, reabilita caso o admin a cadastre novamente
+    _desmarcar_fonte_removida(payload.nome.strip(), url_limpa)
 
     try:
         with db.cursor() as cur:
@@ -3516,26 +3726,48 @@ def admin_excluir_fonte(
     response: Response,
     conn: Any = Depends(get_db),
 ) -> Dict[str, Any]:
-    """Exclui uma fonte de `ai_fontes_referencia`."""
+    """Exclui uma fonte de `ai_fontes_referencia`, desvincula documentos coletados e remove de config/sources.json."""
     aplicar_no_cache_headers(response)
     db = _require_db(conn)
-    try:
-        with db.cursor() as cur:
-            cur.execute(
-                "DELETE FROM ai_fontes_referencia WHERE id = %s RETURNING id;",
-                (fonte_id,),
-            )
-            row = cur.fetchone()
-        if not row:
+    with db.cursor() as cur:
+        cur.execute(
+            "SELECT id, nome, url, tipo_fonte FROM ai_fontes_referencia WHERE id = %s;",
+            (fonte_id,),
+        )
+        fonte = cur.fetchone()
+        if not fonte:
             raise HTTPException(status_code=404, detail="Fonte não encontrada.")
-        db.commit()
-    except psycopg.errors.ForeignKeyViolation as exc:
-        db.rollback()
-        raise HTTPException(
-            status_code=409,
-            detail="Fonte possui documentos coletados vinculados; desative-a em vez de excluir.",
-        ) from exc
-    return {"ok": True, "id": fonte_id}
+
+        # Desvincula documentos coletados previamente para evitar falha de integridade referencial
+        cur.execute(
+            "UPDATE ai_documentos_coletados SET source_id = NULL WHERE source_id = %s;",
+            (fonte_id,),
+        )
+        cur.execute(
+            "DELETE FROM ai_fontes_referencia WHERE id = %s RETURNING id;",
+            (fonte_id,),
+        )
+        cur.fetchone()
+    db.commit()
+
+    nome_fonte = str(fonte.get("nome") or "").strip()
+    url_fonte = str(fonte.get("url") or "").strip()
+
+    # 1. Remove de config/sources.json caso tenha sido originada de lá ou do cadastro de YouTube
+    _remover_fonte_config_sources(nome_fonte, url_fonte)
+
+    # 2. Registra na lista de exclusões explícitas do admin para impedir ressuscitação pelo auto_sync
+    _registrar_fonte_removida(nome_fonte, url_fonte)
+
+    # 3. Limpa do cache e arquivos de dados quaisquer vídeos ou manchetes desse canal
+    _remover_conteudo_canal_excluido(nome_fonte)
+
+    return {
+        "ok": True,
+        "id": fonte_id,
+        "nome": nome_fonte,
+        "mensagem": f"Fonte '{nome_fonte}' excluída com sucesso.",
+    }
 
 
 @router.get("/v2/admin/eventos", dependencies=[Depends(verificar_admin_token)])
@@ -6231,7 +6463,13 @@ def _validar_link_url(valor: str) -> str:
 _DATE_YMD_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 
 
+def _gerar_patrocinio_id() -> str:
+    import uuid
+    return f"pat_{uuid.uuid4().hex[:12]}"
+
+
 class CotaPatrocinioItem(BaseModel):
+    id: str = Field(default_factory=_gerar_patrocinio_id, max_length=64)
     ativo: bool = False
     nome: str = Field(default="", max_length=120)
     nome_imagem_url: str = Field(default="")
@@ -6244,6 +6482,12 @@ class CotaPatrocinioItem(BaseModel):
     exibir_no_sobre: bool = True
     hub_alvo: str = Field(default="todos", max_length=40)
     paises_alvo: str = Field(default="todos", max_length=200)
+
+    @field_validator("id", mode="before")
+    @classmethod
+    def check_id(cls, v: Any) -> str:
+        s = str(v or "").strip()
+        return s if s else _gerar_patrocinio_id()
 
     @field_validator("logo_url", "nome_imagem_url")
     @classmethod
@@ -6277,24 +6521,35 @@ class CotaPatrocinioItem(BaseModel):
 
 
 class CotasPatrocinioMap(BaseModel):
-    cota_master: CotaPatrocinioItem = Field(default_factory=lambda: CotaPatrocinioItem(
+    cota_master: List[CotaPatrocinioItem] = Field(default_factory=lambda: [CotaPatrocinioItem(
         frase="Apresentado com exclusividade global por",
         cta_texto="Conheça as soluções →",
-    ))
-    dossie_tematico: CotaPatrocinioItem = Field(default_factory=lambda: CotaPatrocinioItem(
+    )])
+    dossie_tematico: List[CotaPatrocinioItem] = Field(default_factory=lambda: [CotaPatrocinioItem(
         frase="Apoio institucional à cobertura setorial aprofundada.",
         cta_texto="Saiba mais",
         hub_alvo="todos",
-    ))
-    resumo_dia: CotaPatrocinioItem = Field(default_factory=lambda: CotaPatrocinioItem(
+    )])
+    resumo_dia: List[CotaPatrocinioItem] = Field(default_factory=lambda: [CotaPatrocinioItem(
         frase="Conectando você às principais movimentações e análises do planeta.",
         cta_texto="Saiba mais",
-    ))
-    gaveta_contextual: CotaPatrocinioItem = Field(default_factory=lambda: CotaPatrocinioItem(
+    )])
+    gaveta_contextual: List[CotaPatrocinioItem] = Field(default_factory=lambda: [CotaPatrocinioItem(
         frase="Soluções globais para suas conexões com {pais}.",
         cta_texto="Conhecer soluções",
         paises_alvo="todos",
-    ))
+    )])
+
+    @field_validator("cota_master", "dossie_tematico", "resumo_dia", "gaveta_contextual", mode="before")
+    @classmethod
+    def normalizar_para_lista(cls, v: Any) -> List[Any]:
+        if v is None:
+            return []
+        if isinstance(v, list):
+            return v
+        if isinstance(v, dict):
+            return [v]
+        return []
 
 
 class PatrocinadoresPayload(BaseModel):
@@ -6310,6 +6565,22 @@ def _ler_patrocinadores_arquivo() -> Optional[Dict[str, Any]]:
         return json.loads(arq.read_text(encoding="utf-8"))
     except Exception:
         return None
+
+
+def _gravar_patrocinadores_arquivo(dados: Dict[str, Any]) -> None:
+    """Espelha a configuração dos patrocinadores em data/patrocinadores.json para resiliência estática e edge."""
+    arq = Path(__file__).resolve().parent.parent / "data" / "patrocinadores.json"
+    try:
+        payload = {
+            "ok": True,
+            "origem": "espelho",
+            "atualizado_em": dados.get("atualizado_em"),
+            "cotas": dados.get("cotas", {}),
+        }
+        arq.parent.mkdir(parents=True, exist_ok=True)
+        arq.write_text(json.dumps(payload, indent=2, ensure_ascii=False), encoding="utf-8")
+    except Exception as exc:
+        print(f"[Aviso] Falha ao gravar espelho data/patrocinadores.json: {exc}")
 
 
 @router.get("/v2/patrocinadores")
@@ -6358,7 +6629,7 @@ def salvar_patrocinadores(
     response: Response,
     conn: Any = Depends(get_db),
 ) -> Dict[str, Any]:
-    """Valida e persiste a configuração das 4 cotas de patrocínio no banco."""
+    """Valida e persiste a configuração das 4 cotas de patrocínio no banco e no espelho estático."""
     aplicar_no_cache_headers(response)
     _require_db(conn)
 
@@ -6369,6 +6640,7 @@ def salvar_patrocinadores(
     try:
         from src.estado_db import gravar_estado
         ok = gravar_estado("patrocinadores", dados, conn=conn)
+        _gravar_patrocinadores_arquivo(dados)
     except Exception as exc:  # noqa: BLE001
         raise HTTPException(status_code=500, detail=f"Falha ao gravar patrocínios: {exc}") from exc
 

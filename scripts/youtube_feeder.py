@@ -584,7 +584,9 @@ def _sincronizar_videos_com_feed_output(
                 existente["origem_video"] = True
                 if not existente.get("origem") or existente.get("origem") == "rss":
                     existente["origem"] = "video"
-                if cv.get("resumo"):
+                res_existente = str(existente.get("resumo") or "").strip()
+                res_eh_generico = not res_existente or res_existente.startswith("Análise publicada pelo canal") or res_existente.startswith("Análise e cobertura em vídeo")
+                if cv.get("resumo") and res_eh_generico:
                     existente["resumo"] = cv["resumo"]
                 existente["analise"] = _limpar_analise_youtube(
                     existente.get("analise"),
@@ -736,6 +738,37 @@ def _executar_bot_youtube_impl(
                 protegidos_por_url[vurl] = old_it
             lista_protegidos.append(old_it)
 
+    # Mapeia traduções e análises editoriais existentes em feed_output.json ou itens anteriores
+    traducoes_por_id: Dict[str, Dict[str, Any]] = {}
+    traducoes_por_url: Dict[str, Dict[str, Any]] = {}
+    if FEED_OUTPUT_PATH.is_file():
+        try:
+            feed_raw = json.loads(FEED_OUTPUT_PATH.read_text(encoding="utf-8"))
+            if isinstance(feed_raw, list):
+                for f in feed_raw:
+                    if isinstance(f, dict):
+                        f_url = str(f.get("fonte_url") or f.get("url") or "").strip()
+                        f_vid = str(f.get("video_id") or "").strip()
+                        if not f_vid and f_url:
+                            m_v = re.search(r"(?:v=|/shorts/|youtu\.be/)([A-Za-z0-9_-]{11})", f_url)
+                            if m_v:
+                                f_vid = m_v.group(1)
+                        if f_url and f_url != "/radar":
+                            traducoes_por_url[f_url] = f
+                        if f_vid:
+                            traducoes_por_id[f_vid] = f
+        except Exception:
+            pass
+
+    for old_it in itens_existentes:
+        old_vid = str(old_it.get("video_id") or "").strip()
+        old_url = str(old_it.get("url") or old_it.get("fonte_url") or "").strip()
+        if old_it.get("analise") or (old_it.get("titulo") and any(c in old_it.get("titulo") for c in "áéíóúâêîôûãõçÁÉÍÓÚÂÊÎÔÛÃÕÇ")):
+            if old_vid and old_vid not in traducoes_por_id:
+                traducoes_por_id[old_vid] = old_it
+            if old_url and old_url not in traducoes_por_url:
+                traducoes_por_url[old_url] = old_it
+
     qtd_preservados = 0
     novos_enriquecidos: List[Dict[str, Any]] = []
     protegidos_ja_incluidos_ids = set()
@@ -745,8 +778,8 @@ def _executar_bot_youtube_impl(
         vid = str(v.get("video_id") or "").strip()
         vurl = str(v.get("url") or v.get("fonte_url") or "").strip()
         prot = (protegidos_por_id.get(vid) if vid else None) or (protegidos_por_url.get(vurl) if vurl else None)
+        v_merged = dict(v)
         if prot is not None:
-            v_merged = dict(v)
             for flag in ("aprovado_manualmente", "origem_manual", "captura_tempo_real", "recem_lancado", "tempo_relativo_youtube"):
                 if flag in prot:
                     v_merged[flag] = prot[flag]
@@ -764,9 +797,18 @@ def _executar_bot_youtube_impl(
             if vurl:
                 protegidos_ja_incluidos_urls.add(vurl)
             qtd_preservados += 1
-            novos_enriquecidos.append(v_merged)
-        else:
-            novos_enriquecidos.append(v)
+
+        # Enriquecimento com traduções em português se houver
+        trad = (traducoes_por_id.get(vid) if vid else None) or (traducoes_por_url.get(vurl) if vurl else None)
+        if trad is not None:
+            if trad.get("titulo") and trad["titulo"] != v_merged.get("titulo"):
+                v_merged["titulo"] = trad["titulo"]
+            if trad.get("resumo") and trad["resumo"] != v_merged.get("resumo"):
+                v_merged["resumo"] = trad["resumo"]
+            if trad.get("analise") and not v_merged.get("analise"):
+                v_merged["analise"] = trad["analise"]
+
+        novos_enriquecidos.append(v_merged)
 
     # Itens protegidos que ainda não apareceram no RSS (ex: captura HTML em tempo real ou link direto avulso)
     protegidos_ausentes_no_rss: List[Dict[str, Any]] = []

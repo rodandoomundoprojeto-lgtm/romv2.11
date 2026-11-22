@@ -552,6 +552,32 @@ export async function onRequestGet(context) {
           })
       : [];
 
+    // Preserva e sincroniza traduções e análises editoriais em português de feedOutput para cardsYt
+    const feedPorUrl = new Map();
+    const feedPorVid = new Map();
+    for (const f of cardsFeed) {
+      const u = String(f.fonte_url || '').trim();
+      if (u && u !== '/radar') feedPorUrl.set(u, f);
+      const vid = String(f.video_id || '').trim();
+      if (vid) feedPorVid.set(vid, f);
+    }
+    for (const y of cardsYt) {
+      const u = String(y.fonte_url || '').trim();
+      const vid = String(y.video_id || '').trim();
+      const parFeed = (u && feedPorUrl.get(u)) || (vid && feedPorVid.get(vid));
+      if (parFeed) {
+        if (parFeed.titulo && parFeed.titulo !== y.titulo) {
+          y.titulo = parFeed.titulo;
+        }
+        if (parFeed.resumo && parFeed.resumo !== y.resumo) {
+          y.resumo = parFeed.resumo;
+        }
+        if (parFeed.analise && !y.analise) {
+          y.analise = parFeed.analise;
+        }
+      }
+    }
+
     const titulosVistos = new Set();
     const urlsVideosVistos = new Set();
     const combinados = [];

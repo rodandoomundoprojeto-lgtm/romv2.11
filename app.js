@@ -12066,7 +12066,7 @@
   var radarFormatFilter = 'todos'; // 'todos' | 'video' | 'materia'
   var RADAR_PAGE_SIZE = 15; // 5 linhas de 3 colunas = 15 briefings por lote
   var RADAR_VIDEO_CAROUSEL_SIZE = 3; // 1 linha com 3 vídeos em rotação
-  var RADAR_VIDEO_ROTATE_MS = 5000; // rotação automática a cada 5 segundos
+  var RADAR_VIDEO_ROTATE_MS = 9000; // rotação automática a cada 9 segundos (+4s prolongados)
   var radarVisibleCount = RADAR_PAGE_SIZE;
   var radarVideoCarouselPage = 0;
   var radarVideoCarouselTimer = null;
@@ -18322,6 +18322,14 @@
     return true;
   }
 
+  function toSponsorList(cotaData) {
+    if (!cotaData) return [];
+    var arr = Array.isArray(cotaData) ? cotaData : [cotaData];
+    return arr.filter(function (item) {
+      return item && isCotaEmVigencia(item);
+    });
+  }
+
   function applyLiveSponsors(cotas) {
     if (isCommercialDemoMode) return;
     var c = cotas || liveSponsorsCache;
@@ -18329,9 +18337,10 @@
 
     // Cota 01 — Founding Partner (Master Global)
     var sMaster = document.getElementById('slot-cota-master');
-    var cMaster = c.cota_master;
+    var listMaster = toSponsorList(c.cota_master);
     if (sMaster) {
-      if (isCotaEmVigencia(cMaster)) {
+      if (listMaster.length > 0) {
+        var cMaster = listMaster[0];
         var innerM = sMaster.querySelector('.sponsor-inner');
         if (innerM) {
           innerM.innerHTML =
@@ -18348,9 +18357,10 @@
 
     // Cota 03 — Briefing Matinal (Resumo do Dia)
     var sResumo = document.getElementById('slot-sponsor-resumo');
-    var cResumo = c.resumo_dia;
+    var listResumo = toSponsorList(c.resumo_dia);
     if (sResumo) {
-      if (isCotaEmVigencia(cResumo)) {
+      if (listResumo.length > 0) {
+        var cResumo = listResumo[0];
         var badgeR = sResumo.querySelector('.sponsor-resumo-badge');
         if (badgeR) {
           badgeR.innerHTML =
@@ -18368,11 +18378,23 @@
 
     // Cota 04 — Território & Contexto (Gaveta do País)
     var sDrawer = document.getElementById('slot-sponsor-drawer');
-    var cDrawer = c.gaveta_contextual;
+    var listDrawer = toSponsorList(c.gaveta_contextual);
     if (sDrawer) {
       var curCountryCode = (state && state.country && state.country.a2) ? state.country.a2 : '';
       var curCountryName = (document.getElementById('sponsor-country-name') || {}).textContent || (state && state.country && state.country.n) || 'o exterior';
-      if (isCotaEmVigencia(cDrawer) && matchesCountryTarget(cDrawer.paises_alvo, curCountryCode)) {
+      var cDrawer = null;
+      for (var i = 0; i < listDrawer.length; i++) {
+        var dCandidate = listDrawer[i];
+        if (matchesCountryTarget(dCandidate.paises_alvo, curCountryCode)) {
+          if (dCandidate.paises_alvo && dCandidate.paises_alvo !== 'todos') {
+            cDrawer = dCandidate;
+            break;
+          }
+          if (!cDrawer) cDrawer = dCandidate;
+        }
+      }
+
+      if (cDrawer) {
         var headD = sDrawer.querySelector('.sponsor-drawer-head');
         if (headD) {
           headD.innerHTML =
@@ -18394,10 +18416,23 @@
 
     // Cota 02 — Inteligência Setorial (Dossiês / Hubs Temáticos)
     var dossieHost = document.getElementById('thematic-hub-view');
-    var cDossie = c.dossie_tematico;
+    var listDossie = toSponsorList(c.dossie_tematico);
     if (dossieHost && !dossieHost.hidden) {
       var existingDossieSlot = document.getElementById('slot-cota-dossie');
-      if (isCotaEmVigencia(cDossie) && matchesHubTarget(cDossie.hub_alvo, window.location.pathname)) {
+      var curPath = window.location.pathname;
+      var cDossie = null;
+      for (var j = 0; j < listDossie.length; j++) {
+        var cand = listDossie[j];
+        if (matchesHubTarget(cand.hub_alvo, curPath)) {
+          if (cand.hub_alvo && cand.hub_alvo !== 'todos') {
+            cDossie = cand;
+            break;
+          }
+          if (!cDossie) cDossie = cand;
+        }
+      }
+
+      if (cDossie) {
         if (!existingDossieSlot) {
           existingDossieSlot = document.createElement('aside');
           existingDossieSlot.id = 'slot-cota-dossie';
@@ -18435,15 +18470,34 @@
       }
     } catch (e) { }
 
+    function aplicarDados(data) {
+      if (data && data.cotas) {
+        liveSponsorsCache = data.cotas;
+        applyLiveSponsors(liveSponsorsCache);
+      }
+    }
+
     fetch('/v2/patrocinadores?_t=' + Date.now(), { cache: 'no-store' })
-      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (r) {
+        if (!r.ok) throw new Error('API v2 offline');
+        return r.json();
+      })
       .then(function (data) {
         if (data && data.cotas) {
-          liveSponsorsCache = data.cotas;
-          applyLiveSponsors(liveSponsorsCache);
+          aplicarDados(data);
+        } else {
+          throw new Error('Payload sem cotas');
         }
       })
-      .catch(function () { /* silêncio se API offline */ });
+      .catch(function () {
+        // Fallback resiliente direto para o espelho estático data/patrocinadores.json
+        fetch('/data/patrocinadores.json?_t=' + Date.now(), { cache: 'no-store' })
+          .then(function (r) { return r.ok ? r.json() : null; })
+          .then(function (data) {
+            aplicarDados(data);
+          })
+          .catch(function () { /* silêncio se offline */ });
+      });
   }
 
   /* ====================================================================
