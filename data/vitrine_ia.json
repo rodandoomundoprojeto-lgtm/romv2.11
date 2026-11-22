@@ -2,78 +2,179 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-22T00:50:43Z",
-  "batch_id": "20261122-0050",
+  "updatedAt": "2026-11-22T01:26:00Z",
+  "batch_id": "20261122-0125",
   "temas_ativos": [
     {
-      "slug": "bolsonaro-tem-tornozeleira-retirada-durante-internacao-na-uti",
-      "titulo_tema": "Alexandre de Moraes determina retirada temporária de tornozeleira de Bolsonaro em UTI",
-      "titulo_curto": "Alexandre de Moraes determina retirada temporária de tornozeleira de Bolsonaro em UTI",
+      "slug": "escalada-conflito-oriente-medio-iran-eua-bahrein",
+      "titulo_tema": "Iran targets US bases in Bahrain as regional conflict escalates",
       "status": "novo",
-      "origem_pipeline": "pulso",
+      "origem_pipeline": "curadoria",
       "categoria_primaria": "Geopolitica_Radar",
-      "categoria": "Geopolitica_Relacoes",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
       ],
       "rota_editoria": "/radar",
-      "relevancia_score": 94,
-      "urgencia_score": 95,
-      "ttl_horas": 12,
-      "expires_at": "2026-11-22T12:50:43Z",
+      "relevancia_score": 95,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-24T01:26:00Z",
+      "palavras_chave_busca": [
+        "iran",
+        "bahrein",
+        "eua",
+        "bases militares",
+        "oriente medio",
+        "houtis",
+        "guerra regional"
+      ],
+      "gatilho_vitrine": "Destacar riscos logísticos e energéticos no Golfo Pérsico com foco no impacto para o mercado global de petróleo e câmbio.",
+      "sintese_nerd": "A ofensiva iraniana contra ativos militares dos EUA no Bahrein amplia as hostilidades no Golfo Pérsico, ameaçando rotas globais de energia e gerando volatilidade imediata no mercado de petróleo e moedas emergentes. A instabilidade força governos globais a reavaliarem riscos geopolíticos nas cadeias de suprimento.",
+      "data_publicacao": "2026-11-22T01:26:00Z",
+      "updated_at": "2026-11-22T01:26:00Z"
+    },
+    {
+      "slug": "pacote-fiscal-travas-compensacoes-tributarias-brasil",
+      "titulo_tema": "O Pacote Fiscal e a trava nas compensações tributárias",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Politica",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 90,
+      "ttl_horas": 72,
+      "expires_at": "2026-11-25T01:26:00Z",
+      "palavras_chave_busca": [
+        "pacote fiscal",
+        "compensacoes tributarias",
+        "plp 299",
+        "governo federal",
+        "seguranca juridica",
+        "credito tributario"
+      ],
+      "gatilho_vitrine": "Conectar as novas regras fiscais e o controle de créditos tributários pelo Executivo às expectativas do mercado financeiro e inflação.",
+      "sintese_nerd": "A tramitação de travas em compensações tributárias via pacotes fiscais busca a recomposição imediata do caixa do governo, mas sacrifica a previsibilidade e a segurança jurídica exigidas pelos contribuintes. Essa dinâmica afeta a confiança dos investidores na política fiscal de longo prazo do país.",
+      "data_publicacao": "2026-11-22T01:26:00Z",
+      "updated_at": "2026-11-22T01:26:00Z"
+    },
+    {
+      "slug": "violacoes-espaco-aereo-europa-russia-ucrania",
+      "titulo_tema": "Moldova, Finland e Polônia reportam violações de espaço aéreo por drones e mísseis russos",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 88,
+      "ttl_horas": 36,
+      "expires_at": "2026-11-23T13:26:00Z",
+      "palavras_chave_busca": [
+        "russia",
+        "finlandia",
+        "moldova",
+        "polonia",
+        "espaco aereo",
+        "guerra na ucrania",
+        "otan"
+      ],
+      "gatilho_vitrine": "Atualizar os leitores sobre o risco de alastramento do conflito na Europa Oriental e os reflexos nas sanções econômicas e comerciais.",
+      "sintese_nerd": "O aumento de incidentes e violações de espaço aéreo em países vizinhos à Rússia eleva a tensão com a OTAN e impulsiona pedidos de reparações bilionárias na Europa. O cenário intensifica a pressão econômica sobre o bloco ocidental e os custos de defesa globais.",
+      "data_publicacao": "2026-11-22T01:26:00Z",
+      "updated_at": "2026-11-22T01:26:00Z"
+    },
+    {
+      "slug": "internacao-bolsonaro-uti-desdobramentos-politicos",
+      "titulo_tema": "Bolsonaro internado na UTI em Brasília e decisões judiciais do STF",
+      "status": "em_alta",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Politica",
+      "categorias_cruzadas": [
+        "Eleicoes",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/politica",
+      "relevancia_score": 85,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-23T01:26:00Z",
       "palavras_chave_busca": [
         "jair bolsonaro",
         "stf",
         "alexandre de moraes",
-        "internacao"
+        "internacao uti",
+        "politica nacional",
+        "brasilia"
       ],
-      "palavras_chave": [
-        "jair bolsonaro",
-        "stf",
-        "alexandre de moraes",
-        "internacao"
-      ],
-      "gatilho_vitrine": "Conforme apuração do Poder360, o ministro do STF Alexandre de Moraes determinou a retirada temporária da tornozeleira eletrônica do ex-presidente Jair Bolsonaro, internado em unidade de terapia intensiva em Brasília. A decisão estipula que o equipamento seja recolocado imediatamente após a alta hospitalar.",
-      "resumo_pulso": "Conforme apuração do Poder360, o ministro do STF Alexandre de Moraes determinou a retirada temporária da tornozeleira eletrônica do ex-presidente Jair Bolsonaro, internado em unidade de terapia intensiva em Brasília. A decisão estipula que o equipamento seja recolocado imediatamente após a alta hospitalar.",
-      "sintese_nerd": "Monitoramento judicial ajustado às condições médicas de urgência do investigado.",
-      "impacto_pratico": "Monitoramento judicial ajustado às condições médicas de urgência do investigado.",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "veiculos_origem": [
-        "Poder360"
-      ],
+      "gatilho_vitrine": "Informar com rigor jornalístico sobre o quadro clínico do ex-presidente e as implicações de medidas cautelares pelo Supremo.",
+      "sintese_nerd": "A internação hospitalar de Jair Bolsonaro motivou decisões temporárias do STF sobre medidas cautelares e movimentou o cenário político nacional. O episódio repercute fortemente entre lideranças partidárias e eleitores, mobilizando o debate institucional no país.",
+      "data_publicacao": "2026-11-22T01:26:00Z",
+      "updated_at": "2026-11-22T01:26:00Z"
+    },
+    {
+      "slug": "bolsonaro-tem-tornozeleira-retirada-durante-internacao-na-uti",
+      "status": "novo",
+      "categoria": "Geopolitica_Relacoes",
+      "ttl_horas": 12,
+      "expires_at": "2026-11-22T12:50:43Z",
+      "updated_at": "2026-11-22T00:50:43Z",
       "fontes_urls": [
         "https://www.poder360.com.br/poder-justica/bolsonaro-tem-tornozeleira-retirada-durante-internacao-na-uti/"
       ],
+      "titulo_tema": "Alexandre de Moraes determina retirada temporária de tornozeleira de Bolsonaro em UTI",
+      "resumo_pulso": "Conforme apuração do Poder360, o ministro do STF Alexandre de Moraes determinou a retirada temporária da tornozeleira eletrônica do ex-presidente Jair Bolsonaro, internado em unidade de terapia intensiva em Brasília. A decisão estipula que o equipamento seja recolocado imediatamente após a alta hospitalar.",
+      "sintese_nerd": "Monitoramento judicial ajustado às condições médicas de urgência do investigado.",
+      "titulo_curto": "Alexandre de Moraes determina retirada temporária de tornozeleira de Bolsonaro em UTI",
+      "rota_editoria": "/radar",
+      "palavras_chave": [
+        "jair bolsonaro",
+        "stf",
+        "alexandre de moraes",
+        "internacao"
+      ],
+      "urgencia_score": 95,
       "data_publicacao": "2026-11-21T23:42:13Z",
-      "updated_at": "2026-11-22T00:50:43Z"
-    },
-    {
-      "slug": "moldova-finland-report-russian-airspace-violations",
-      "titulo_tema": "Moldova e Finlândia relatam violações de espaço aéreo por aeronaves russas",
-      "titulo_curto": "Moldova e Finlândia relatam violações de espaço aéreo por aeronaves russas",
-      "status": "novo",
+      "gatilho_vitrine": "Conforme apuração do Poder360, o ministro do STF Alexandre de Moraes determinou a retirada temporária da tornozeleira eletrônica do ex-presidente Jair Bolsonaro, internado em unidade de terapia intensiva em Brasília. A decisão estipula que o equipamento seja recolocado imediatamente após a alta hospitalar.",
+      "impacto_pratico": "Monitoramento judicial ajustado às condições médicas de urgência do investigado.",
       "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "Poder360"
+      ],
+      "relevancia_score": 94,
+      "paises_envolvidos": [
+        "BR"
+      ],
       "categoria_primaria": "Geopolitica_Radar",
-      "categoria": "Geopolitica_Relacoes",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
       ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 91,
-      "urgencia_score": 93,
+      "palavras_chave_busca": [
+        "jair bolsonaro",
+        "stf",
+        "alexandre de moraes",
+        "internacao"
+      ]
+    },
+    {
+      "slug": "moldova-finland-report-russian-airspace-violations",
+      "status": "novo",
+      "categoria": "Geopolitica_Relacoes",
       "ttl_horas": 24,
       "expires_at": "2026-11-23T00:50:43Z",
-      "palavras_chave_busca": [
-        "russia",
-        "finlandia",
-        "moldova",
-        "espaco aereo",
-        "otan"
+      "updated_at": "2026-11-22T00:50:43Z",
+      "fontes_urls": [
+        "https://kyivindependent.com/moldova-finland-report-russian-airspace-violations-day-after-suspected-russian-missiles-flew-into-poland/"
       ],
+      "titulo_tema": "Moldova e Finlândia relatam violações de espaço aéreo por aeronaves russas",
+      "resumo_pulso": "Segundo reportagem do The Kyiv Independent, autoridades da Moldova e da Finlândia registraram incidentes separados de invasão de seus espaços aéreos pela Rússia. O episódio ocorre na sequência de alertas emitidos pela Polônia sobre a queda de mísseis e drones em seu território.",
+      "sintese_nerd": "Elevação do nível de alerta nas defesas aéreas de nações europeias fronteiriças.",
+      "titulo_curto": "Moldova e Finlândia relatam violações de espaço aéreo por aeronaves russas",
+      "rota_editoria": "/radar",
       "palavras_chave": [
         "russia",
         "finlandia",
@@ -81,24 +182,33 @@
         "espaco aereo",
         "otan"
       ],
+      "urgencia_score": 93,
+      "data_publicacao": "2026-11-21T23:35:21Z",
       "gatilho_vitrine": "Segundo reportagem do The Kyiv Independent, autoridades da Moldova e da Finlândia registraram incidentes separados de invasão de seus espaços aéreos pela Rússia. O episódio ocorre na sequência de alertas emitidos pela Polônia sobre a queda de mísseis e drones em seu território.",
-      "resumo_pulso": "Segundo reportagem do The Kyiv Independent, autoridades da Moldova e da Finlândia registraram incidentes separados de invasão de seus espaços aéreos pela Rússia. O episódio ocorre na sequência de alertas emitidos pela Polônia sobre a queda de mísseis e drones em seu território.",
-      "sintese_nerd": "Elevação do nível de alerta nas defesas aéreas de nações europeias fronteiriças.",
       "impacto_pratico": "Elevação do nível de alerta nas defesas aéreas de nações europeias fronteiriças.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "The Kyiv Independent"
+      ],
+      "relevancia_score": 91,
       "paises_envolvidos": [
         "RU",
         "MD",
         "FI",
         "PL"
       ],
-      "veiculos_origem": [
-        "The Kyiv Independent"
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
       ],
-      "fontes_urls": [
-        "https://kyivindependent.com/moldova-finland-report-russian-airspace-violations-day-after-suspected-russian-missiles-flew-into-poland/"
-      ],
-      "data_publicacao": "2026-11-21T23:35:21Z",
-      "updated_at": "2026-11-22T00:50:43Z"
+      "palavras_chave_busca": [
+        "russia",
+        "finlandia",
+        "moldova",
+        "espaco aereo",
+        "otan"
+      ]
     },
     {
       "slug": "canada-adere-ao-fundo-de-inovacao-da-otan-em-meio-a-tensoes-com-eua",
@@ -241,235 +351,66 @@
       ]
     },
     {
-      "slug": "impasse-cop31-financiamento-climatico-fossil",
-      "status": "em_alta",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-23T21:55:28Z",
-      "updated_at": "2026-11-21T21:55:28Z",
-      "titulo_tema": "Impasse na COP31 ameaça acordo global sobre transição energética e financiamento",
-      "sintese_nerd": "Divergências profundas entre potências globais e países em desenvolvimento travam a assinatura do acordo final da COP31 sobre o fundo de transição ecológica. Para o Brasil, o impasse pressiona compromissos de preservação ambiental e afeta a atração de capital externo para projetos sustentáveis.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-21T21:55:28Z",
-      "gatilho_vitrine": "Destacar paralisação nas negociações de financiamento ambiental e impacto para países emergentes.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 94,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Politica"
-      ],
-      "palavras_chave_busca": [
-        "cop31",
-        "financiamento climático",
-        "combustíveis fósseis",
-        "transição energética",
-        "crise climática",
-        "acordo de paris"
-      ]
-    },
-    {
-      "slug": "crise-golfo-persico-ataque-bahrein-estreito-ormuz",
-      "status": "novo",
-      "ttl_horas": 36,
-      "expires_at": "2026-11-23T09:55:28Z",
-      "updated_at": "2026-11-21T21:55:28Z",
-      "titulo_tema": "Escalação no Golfo Pérsico: ataques no Bahrein e impasse no Estreito de Ormuz",
-      "sintese_nerd": "O aumento das tensões militares no Golfo Pérsico com ataques a instalações industriais no Bahrein coloca em risco a rota global de navegação e suprimento de petróleo. O eventual bloqueio do Estreito de Ormuz tende a encarecer os combustíveis e pressionar a inflação global e brasileira.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-21T21:55:28Z",
-      "gatilho_vitrine": "Acionar alerta geopolítico de segurança energética e risco sobre cotações internacionais de petróleo.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 91,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Politica"
-      ],
-      "palavras_chave_busca": [
-        "golfo pérsico",
-        "bahrein",
-        "irã",
-        "estreito de ormuz",
-        "preço do petróleo",
-        "eua irã"
-      ]
-    },
-    {
-      "slug": "amazon-compra-startup-decart-corrida-ia-chips",
-      "status": "novo",
-      "ttl_horas": 72,
-      "expires_at": "2026-11-24T21:55:28Z",
-      "updated_at": "2026-11-21T21:55:28Z",
-      "titulo_tema": "Amazon negocia startup Decart por US$ 7,5 bi para rivalizar com Nvidia em IA",
-      "sintese_nerd": "A negociação bilionária da Amazon para adquirir a startup Decart busca reduzir a dependência dos dispendiosos chips da Nvidia na infraestrutura de nuvem. A cartada reflete a corrida geopolítica e corporativa pelo domínio da eficiência computacional na era da IA generativa.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-21T21:55:28Z",
-      "gatilho_vitrine": "Impulsionar cobertura sobre a guerra de hardware e semicondutores entre gigantes da tecnologia.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 88,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Geopolitica_Radar",
-        "Cultura"
-      ],
-      "palavras_chave_busca": [
-        "amazon",
-        "decart",
-        "nvidia",
-        "chips de ia",
-        "inteligência artificial",
-        "big tech",
-        "mercado de tecnologia"
-      ]
-    },
-    {
-      "slug": "haddad-taxacao-super-ricos-cupula-paris",
-      "status": "em_alta",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-23T21:55:28Z",
-      "updated_at": "2026-11-21T21:55:28Z",
-      "titulo_tema": "Proposta de alíquota global sobre super-ricos avança em discussões em Paris",
-      "sintese_nerd": "A defesa de uma alíquota global de 2% sobre bilionários apresentada em cúpula internacional busca criar consensos multilaterais contra a evasão de divisas. Se adotada, a medida poderia redistribuir receitas globais e balizar reformas tributárias estruturais em países emergentes.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-21T21:55:28Z",
-      "gatilho_vitrine": "Conectar agenda fiscal do Brasil no exterior com o debate sobre desigualdade e arrecadação.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 85,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Politica",
-        "Geopolitica_Radar"
-      ],
-      "palavras_chave_busca": [
-        "taxação de super-ricos",
-        "fernando haddad",
-        "cúpula de paris",
-        "imposto sobre fortunas",
-        "diplomacia fiscal",
-        "g20"
-      ]
-    },
-    {
-      "slug": "regulacao-internacional-robos-assassinos-onu",
-      "status": "novo",
-      "ttl_horas": 120,
-      "expires_at": "2026-11-26T21:55:28Z",
-      "updated_at": "2026-11-21T21:55:28Z",
-      "titulo_tema": "ONU estabelece prazo até 2028 para regras globais sobre armas autônomas",
-      "sintese_nerd": "Mais de uma centena de nações acordaram em Genebra um cronograma para balizar o uso de sistemas de armas autônomas geridos por inteligência artificial. A resistência de grandes potências militares evidencia a tensão entre avanço tecnológico bélico e o direito internacional humanitário.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-21T21:55:28Z",
-      "gatilho_vitrine": "Exibir dilemas éticos e jurídicos da automação militar no ecossistema de defesa internacional.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 84,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Politica",
-        "Cultura"
-      ],
-      "palavras_chave_busca": [
-        "robôs assassinos",
-        "armas autônomas",
-        "diplomacia genebra",
-        "regulacao ia militar",
-        "onu defesa"
-      ]
-    },
-    {
-      "slug": "protestos-europa-crise-habitacao-custo-vida",
-      "status": "em_alta",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-23T21:55:28Z",
-      "updated_at": "2026-11-21T21:55:28Z",
-      "titulo_tema": "Onda de protestos na Europa reflete crise no custo de vida e moradia",
-      "sintese_nerd": "Manifestações massivas na França e em Portugal escancaram o descontentamento social com o encarecimento dos aluguéis e a perda de poder de compra do euro. O cenário de estagnação com custo de vida elevado tensiona os governos europeus e fortalece o debate sobre políticas urbanas.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-21T21:55:28Z",
-      "gatilho_vitrine": "Destacar insatisfação popular com inflação e moradia nas principais capitais europeias.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 81,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Cultura"
-      ],
-      "palavras_chave_busca": [
-        "protestos europa",
-        "crise de moradia",
-        "custo de vida europeu",
-        "inflacao europa",
-        "crise habitacional"
-      ]
-    },
-    {
       "slug": "flamengo-empata-com-palmeiras-e-e-campeao-brasileiro-de-2026",
-      "titulo_tema": "Flamengo empata com o Palmeiras e conquista o título do Campeonato Brasileiro de 2026",
-      "titulo_curto": "Flamengo empata com o Palmeiras e conquista o título do Campeonato Brasileiro de 2026",
       "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Cultura",
       "categoria": "Sociedade_Cultura",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/cultura",
-      "relevancia_score": 88,
-      "urgencia_score": 91,
       "ttl_horas": 24,
       "expires_at": "2026-11-23T00:50:43Z",
-      "palavras_chave_busca": [
-        "flamengo",
-        "palmeiras",
-        "campeonato brasileiro",
-        "futebol"
-      ],
-      "palavras_chave": [
-        "flamengo",
-        "palmeiras",
-        "campeonato brasileiro",
-        "futebol"
-      ],
-      "gatilho_vitrine": "Segundo apuração da Agência Brasil, o Flamengo garantiu o título do Campeonato Brasileiro de 2026 após empatar em 1 a 1 com o Palmeiras na 36ª rodada, disputada em São Paulo. O resultado assegurou a taça ao Rubro-negro com duas rodadas de antecedência.",
-      "resumo_pulso": "Segundo apuração da Agência Brasil, o Flamengo garantiu o título do Campeonato Brasileiro de 2026 após empatar em 1 a 1 com o Palmeiras na 36ª rodada, disputada em São Paulo. O resultado assegurou a taça ao Rubro-negro com duas rodadas de antecedência.",
-      "sintese_nerd": "Movimentação intensa de torcedores e alterações no trânsito em grandes capitais devido às comemorações.",
-      "impacto_pratico": "Movimentação intensa de torcedores e alterações no trânsito em grandes capitais devido às comemorações.",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "veiculos_origem": [
-        "Agência Brasil (EBC)"
-      ],
+      "updated_at": "2026-11-22T00:50:43Z",
       "fontes_urls": [
         "https://agenciabrasil.ebc.com.br/esportes/noticia/2026-11/flamengo-empata-com-palmeiras-e-e-campeao-brasileiro-de-2026"
       ],
+      "titulo_tema": "Flamengo empata com o Palmeiras e conquista o título do Campeonato Brasileiro de 2026",
+      "resumo_pulso": "Segundo apuração da Agência Brasil, o Flamengo garantiu o título do Campeonato Brasileiro de 2026 após empatar em 1 a 1 com o Palmeiras na 36ª rodada, disputada em São Paulo. O resultado assegurou a taça ao Rubro-negro com duas rodadas de antecedência.",
+      "sintese_nerd": "Movimentação intensa de torcedores e alterações no trânsito em grandes capitais devido às comemorações.",
+      "titulo_curto": "Flamengo empata com o Palmeiras e conquista o título do Campeonato Brasileiro de 2026",
+      "rota_editoria": "/cultura",
+      "palavras_chave": [
+        "flamengo",
+        "palmeiras",
+        "campeonato brasileiro",
+        "futebol"
+      ],
+      "urgencia_score": 91,
       "data_publicacao": "2026-11-21T21:39:00Z",
-      "updated_at": "2026-11-22T00:50:43Z"
-    },
-    {
-      "slug": "iran-ataca-base-eua-instalacao-industrial-bahrein",
-      "titulo_tema": "Bahrein condena ataques iranianos a ativos militares e industriais no Golfo",
-      "titulo_curto": "Bahrein condena ataques iranianos a ativos militares e industriais no Golfo",
-      "status": "novo",
+      "gatilho_vitrine": "Segundo apuração da Agência Brasil, o Flamengo garantiu o título do Campeonato Brasileiro de 2026 após empatar em 1 a 1 com o Palmeiras na 36ª rodada, disputada em São Paulo. O resultado assegurou a taça ao Rubro-negro com duas rodadas de antecedência.",
+      "impacto_pratico": "Movimentação intensa de torcedores e alterações no trânsito em grandes capitais devido às comemorações.",
       "origem_pipeline": "pulso",
-      "categoria_primaria": "Geopolitica_Radar",
-      "categoria": "Geopolitica_Relacoes",
+      "veiculos_origem": [
+        "Agência Brasil (EBC)"
+      ],
+      "relevancia_score": 88,
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "categoria_primaria": "Cultura",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
       ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 96,
-      "urgencia_score": 98,
+      "palavras_chave_busca": [
+        "flamengo",
+        "palmeiras",
+        "campeonato brasileiro",
+        "futebol"
+      ]
+    },
+    {
+      "slug": "iran-ataca-base-eua-instalacao-industrial-bahrein",
+      "status": "novo",
+      "categoria": "Geopolitica_Relacoes",
       "ttl_horas": 18,
       "expires_at": "2026-11-22T16:34:42Z",
-      "palavras_chave_busca": [
-        "bahrein",
-        "iran",
-        "eua",
-        "golfo persico",
-        "bloqueio naval"
+      "updated_at": "2026-11-22T00:50:43Z",
+      "fontes_urls": [
+        "https://www.aljazeera.com/news/liveblog/2026/11/21/iran-war-live-iran-targets-us-military-in-bahrain-houthi-strikes-continue?traffic_source=rss",
+        "https://www.iranintl.com/en/202611216643"
       ],
+      "titulo_tema": "Bahrein condena ataques iranianos a ativos militares e industriais no Golfo",
+      "resumo_pulso": "Conforme atualizações da Al Jazeera English, o governo do Bahrein condenou veementemente ataques iranianos direcionados a ativos militares e industriais em seu território. Paralelamente, Teerã sinalizou prontidão para enfrentar o bloqueio naval americano, elevando as tensões geopolíticas na região.",
+      "sintese_nerd": "Aumento dos riscos de instabilidade no Oriente Médio com potenciais reflexos nos preços globais de petróleo e rotas de navegação comercial.",
+      "titulo_curto": "Bahrein condena ataques iranianos a ativos militares e industriais no Golfo",
+      "rota_editoria": "/radar",
       "palavras_chave": [
         "bahrein",
         "iran",
@@ -477,26 +418,34 @@
         "golfo persico",
         "bloqueio naval"
       ],
+      "urgencia_score": 98,
+      "data_publicacao": "2026-11-21T21:31:03Z",
       "gatilho_vitrine": "Conforme atualizações da Al Jazeera English, o governo do Bahrein condenou veementemente ataques iranianos direcionados a ativos militares e industriais em seu território. Paralelamente, Teerã sinalizou prontidão para enfrentar o bloqueio naval americano, elevando as tensões geopolíticas na região.",
-      "resumo_pulso": "Conforme atualizações da Al Jazeera English, o governo do Bahrein condenou veementemente ataques iranianos direcionados a ativos militares e industriais em seu território. Paralelamente, Teerã sinalizou prontidão para enfrentar o bloqueio naval americano, elevando as tensões geopolíticas na região.",
-      "sintese_nerd": "Aumento dos riscos de instabilidade no Oriente Médio com potenciais reflexos nos preços globais de petróleo e rotas de navegação comercial.",
       "impacto_pratico": "Aumento dos riscos de instabilidade no Oriente Médio com potenciais reflexos nos preços globais de petróleo e rotas de navegação comercial.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "Al Jazeera English",
+        "Iran International"
+      ],
+      "relevancia_score": 96,
       "paises_envolvidos": [
         "BH",
         "IR",
         "US",
         "SA"
       ],
-      "veiculos_origem": [
-        "Al Jazeera English",
-        "Iran International"
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
       ],
-      "fontes_urls": [
-        "https://www.aljazeera.com/news/liveblog/2026/11/21/iran-war-live-iran-targets-us-military-in-bahrain-houthi-strikes-continue?traffic_source=rss",
-        "https://www.iranintl.com/en/202611216643"
-      ],
-      "data_publicacao": "2026-11-21T21:31:03Z",
-      "updated_at": "2026-11-22T00:50:43Z"
+      "palavras_chave_busca": [
+        "bahrein",
+        "iran",
+        "eua",
+        "golfo persico",
+        "bloqueio naval"
+      ]
     },
     {
       "slug": "ft-amazon-negocia-compra-startup-ia-decart-7-5-bilhoes",
@@ -839,67 +788,167 @@
       ]
     }
   ],
+  "temas_curadoria": [
+    {
+      "slug": "escalada-conflito-oriente-medio-iran-eua-bahrein",
+      "titulo_tema": "Iran targets US bases in Bahrain as regional conflict escalates",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 95,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-24T01:26:00Z",
+      "palavras_chave_busca": [
+        "iran",
+        "bahrein",
+        "eua",
+        "bases militares",
+        "oriente medio",
+        "houtis",
+        "guerra regional"
+      ],
+      "gatilho_vitrine": "Destacar riscos logísticos e energéticos no Golfo Pérsico com foco no impacto para o mercado global de petróleo e câmbio.",
+      "sintese_nerd": "A ofensiva iraniana contra ativos militares dos EUA no Bahrein amplia as hostilidades no Golfo Pérsico, ameaçando rotas globais de energia e gerando volatilidade imediata no mercado de petróleo e moedas emergentes. A instabilidade força governos globais a reavaliarem riscos geopolíticos nas cadeias de suprimento.",
+      "data_publicacao": "2026-11-22T01:26:00Z",
+      "updated_at": "2026-11-22T01:26:00Z"
+    },
+    {
+      "slug": "pacote-fiscal-travas-compensacoes-tributarias-brasil",
+      "titulo_tema": "O Pacote Fiscal e a trava nas compensações tributárias",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Politica",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 90,
+      "ttl_horas": 72,
+      "expires_at": "2026-11-25T01:26:00Z",
+      "palavras_chave_busca": [
+        "pacote fiscal",
+        "compensacoes tributarias",
+        "plp 299",
+        "governo federal",
+        "seguranca juridica",
+        "credito tributario"
+      ],
+      "gatilho_vitrine": "Conectar as novas regras fiscais e o controle de créditos tributários pelo Executivo às expectativas do mercado financeiro e inflação.",
+      "sintese_nerd": "A tramitação de travas em compensações tributárias via pacotes fiscais busca a recomposição imediata do caixa do governo, mas sacrifica a previsibilidade e a segurança jurídica exigidas pelos contribuintes. Essa dinâmica afeta a confiança dos investidores na política fiscal de longo prazo do país.",
+      "data_publicacao": "2026-11-22T01:26:00Z",
+      "updated_at": "2026-11-22T01:26:00Z"
+    },
+    {
+      "slug": "violacoes-espaco-aereo-europa-russia-ucrania",
+      "titulo_tema": "Moldova, Finland e Polônia reportam violações de espaço aéreo por drones e mísseis russos",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 88,
+      "ttl_horas": 36,
+      "expires_at": "2026-11-23T13:26:00Z",
+      "palavras_chave_busca": [
+        "russia",
+        "finlandia",
+        "moldova",
+        "polonia",
+        "espaco aereo",
+        "guerra na ucrania",
+        "otan"
+      ],
+      "gatilho_vitrine": "Atualizar os leitores sobre o risco de alastramento do conflito na Europa Oriental e os reflexos nas sanções econômicas e comerciais.",
+      "sintese_nerd": "O aumento de incidentes e violações de espaço aéreo em países vizinhos à Rússia eleva a tensão com a OTAN e impulsiona pedidos de reparações bilionárias na Europa. O cenário intensifica a pressão econômica sobre o bloco ocidental e os custos de defesa globais.",
+      "data_publicacao": "2026-11-22T01:26:00Z",
+      "updated_at": "2026-11-22T01:26:00Z"
+    },
+    {
+      "slug": "internacao-bolsonaro-uti-desdobramentos-politicos",
+      "titulo_tema": "Bolsonaro internado na UTI em Brasília e decisões judiciais do STF",
+      "status": "em_alta",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Politica",
+      "categorias_cruzadas": [
+        "Eleicoes",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/politica",
+      "relevancia_score": 85,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-23T01:26:00Z",
+      "palavras_chave_busca": [
+        "jair bolsonaro",
+        "stf",
+        "alexandre de moraes",
+        "internacao uti",
+        "politica nacional",
+        "brasilia"
+      ],
+      "gatilho_vitrine": "Informar com rigor jornalístico sobre o quadro clínico do ex-presidente e as implicações de medidas cautelares pelo Supremo.",
+      "sintese_nerd": "A internação hospitalar de Jair Bolsonaro motivou decisões temporárias do STF sobre medidas cautelares e movimentou o cenário político nacional. O episódio repercute fortemente entre lideranças partidárias e eleitores, mobilizando o debate institucional no país.",
+      "data_publicacao": "2026-11-22T01:26:00Z",
+      "updated_at": "2026-11-22T01:26:00Z"
+    }
+  ],
   "noticias_quentes": [
     {
       "slug": "bolsonaro-tem-tornozeleira-retirada-durante-internacao-na-uti",
-      "titulo_curto": "Alexandre de Moraes determina retirada temporária de tornozeleira de Bolsonaro em UTI",
-      "resumo_pulso": "Conforme apuração do Poder360, o ministro do STF Alexandre de Moraes determinou a retirada temporária da tornozeleira eletrônica do ex-presidente Jair Bolsonaro, internado em unidade de terapia intensiva em Brasília. A decisão estipula que o equipamento seja recolocado imediatamente após a alta hospitalar.",
-      "impacto_pratico": "Monitoramento judicial ajustado às condições médicas de urgência do investigado.",
       "categoria": "Geopolitica_Relacoes",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "urgencia_score": 95,
-      "relevancia_score": 94,
-      "nivel_confianca": "alta",
       "ttl_horas": 12,
-      "horas_em_destaque": 12,
-      "veiculos_origem": [
-        "Poder360"
-      ],
+      "expires_at": "2026-11-22T12:50:43Z",
+      "updated_at": "2026-11-22T00:50:43Z",
       "fontes_urls": [
         "https://www.poder360.com.br/poder-justica/bolsonaro-tem-tornozeleira-retirada-durante-internacao-na-uti/"
       ],
+      "resumo_pulso": "Conforme apuração do Poder360, o ministro do STF Alexandre de Moraes determinou a retirada temporária da tornozeleira eletrônica do ex-presidente Jair Bolsonaro, internado em unidade de terapia intensiva em Brasília. A decisão estipula que o equipamento seja recolocado imediatamente após a alta hospitalar.",
+      "titulo_curto": "Alexandre de Moraes determina retirada temporária de tornozeleira de Bolsonaro em UTI",
       "palavras_chave": [
         "Jair Bolsonaro",
         "STF",
         "Alexandre de Moraes",
         "Internacao"
       ],
+      "urgencia_score": 95,
       "data_publicacao": "2026-11-21T23:42:13Z",
+      "impacto_pratico": "Monitoramento judicial ajustado às condições médicas de urgência do investigado.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Poder360"
+      ],
+      "relevancia_score": 94,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "BR"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "STF analisa regras de transparência e limites constitucionais entre os Poderes",
           "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
-          "motivo_conexao": "Acompanha as decisões e medidas cautelares aplicadas pelo Supremo Tribunal Federal."
+          "motivo_conexao": "Acompanha as decisões e medidas cautelares aplicadas pelo Supremo Tribunal Federal.",
+          "titulo_existente": "STF analisa regras de transparência e limites constitucionais entre os Poderes"
         }
-      ],
-      "expires_at": "2026-11-22T12:50:43Z",
-      "updated_at": "2026-11-22T00:50:43Z"
+      ]
     },
     {
       "slug": "moldova-finland-report-russian-airspace-violations",
-      "titulo_curto": "Moldova e Finlândia relatam violações de espaço aéreo por aeronaves russas",
-      "resumo_pulso": "Segundo reportagem do The Kyiv Independent, autoridades da Moldova e da Finlândia registraram incidentes separados de invasão de seus espaços aéreos pela Rússia. O episódio ocorre na sequência de alertas emitidos pela Polônia sobre a queda de mísseis e drones em seu território.",
-      "impacto_pratico": "Elevação do nível de alerta nas defesas aéreas de nações europeias fronteiriças.",
       "categoria": "Geopolitica_Relacoes",
-      "paises_envolvidos": [
-        "RU",
-        "MD",
-        "FI",
-        "PL"
-      ],
-      "urgencia_score": 93,
-      "relevancia_score": 91,
-      "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 18,
-      "veiculos_origem": [
-        "The Kyiv Independent"
-      ],
+      "expires_at": "2026-11-23T00:50:43Z",
+      "updated_at": "2026-11-22T00:50:43Z",
       "fontes_urls": [
         "https://kyivindependent.com/moldova-finland-report-russian-airspace-violations-day-after-suspected-russian-missiles-flew-into-poland/"
       ],
+      "resumo_pulso": "Segundo reportagem do The Kyiv Independent, autoridades da Moldova e da Finlândia registraram incidentes separados de invasão de seus espaços aéreos pela Rússia. O episódio ocorre na sequência de alertas emitidos pela Polônia sobre a queda de mísseis e drones em seu território.",
+      "titulo_curto": "Moldova e Finlândia relatam violações de espaço aéreo por aeronaves russas",
       "palavras_chave": [
         "Russia",
         "Finlandia",
@@ -907,10 +956,22 @@
         "espaco aereo",
         "OTAN"
       ],
+      "urgencia_score": 93,
       "data_publicacao": "2026-11-21T23:35:21Z",
-      "links_internos_relacionados": [],
-      "expires_at": "2026-11-23T00:50:43Z",
-      "updated_at": "2026-11-22T00:50:43Z"
+      "impacto_pratico": "Elevação do nível de alerta nas defesas aéreas de nações europeias fronteiriças.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "The Kyiv Independent"
+      ],
+      "relevancia_score": 91,
+      "horas_em_destaque": 18,
+      "paises_envolvidos": [
+        "RU",
+        "MD",
+        "FI",
+        "PL"
+      ],
+      "links_internos_relacionados": []
     },
     {
       "slug": "canada-adere-ao-fundo-de-inovacao-da-otan-em-meio-a-tensoes-com-eua",
@@ -1022,60 +1083,47 @@
     },
     {
       "slug": "flamengo-empata-com-palmeiras-e-e-campeao-brasileiro-de-2026",
-      "titulo_curto": "Flamengo empata com o Palmeiras e conquista o título do Campeonato Brasileiro de 2026",
-      "resumo_pulso": "Segundo apuração da Agência Brasil, o Flamengo garantiu o título do Campeonato Brasileiro de 2026 após empatar em 1 a 1 com o Palmeiras na 36ª rodada, disputada em São Paulo. O resultado assegurou a taça ao Rubro-negro com duas rodadas de antecedência.",
-      "impacto_pratico": "Movimentação intensa de torcedores e alterações no trânsito em grandes capitais devido às comemorações.",
       "categoria": "Sociedade_Cultura",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "urgencia_score": 91,
-      "relevancia_score": 88,
-      "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 12,
-      "veiculos_origem": [
-        "Agência Brasil (EBC)"
-      ],
+      "expires_at": "2026-11-23T00:50:43Z",
+      "updated_at": "2026-11-22T00:50:43Z",
       "fontes_urls": [
         "https://agenciabrasil.ebc.com.br/esportes/noticia/2026-11/flamengo-empata-com-palmeiras-e-e-campeao-brasileiro-de-2026"
       ],
+      "resumo_pulso": "Segundo apuração da Agência Brasil, o Flamengo garantiu o título do Campeonato Brasileiro de 2026 após empatar em 1 a 1 com o Palmeiras na 36ª rodada, disputada em São Paulo. O resultado assegurou a taça ao Rubro-negro com duas rodadas de antecedência.",
+      "titulo_curto": "Flamengo empata com o Palmeiras e conquista o título do Campeonato Brasileiro de 2026",
       "palavras_chave": [
         "Flamengo",
         "Palmeiras",
         "Campeonato Brasileiro",
         "Futebol"
       ],
+      "urgencia_score": 91,
       "data_publicacao": "2026-11-21T21:39:00Z",
-      "links_internos_relacionados": [],
-      "expires_at": "2026-11-23T00:50:43Z",
-      "updated_at": "2026-11-22T00:50:43Z"
+      "impacto_pratico": "Movimentação intensa de torcedores e alterações no trânsito em grandes capitais devido às comemorações.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Agência Brasil (EBC)"
+      ],
+      "relevancia_score": 88,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "links_internos_relacionados": []
     },
     {
       "slug": "iran-ataca-base-eua-instalacao-industrial-bahrein",
-      "titulo_curto": "Bahrein condena ataques iranianos a ativos militares e industriais no Golfo",
-      "resumo_pulso": "Conforme atualizações da Al Jazeera English, o governo do Bahrein condenou veementemente ataques iranianos direcionados a ativos militares e industriais em seu território. Paralelamente, Teerã sinalizou prontidão para enfrentar o bloqueio naval americano, elevando as tensões geopolíticas na região.",
-      "impacto_pratico": "Aumento dos riscos de instabilidade no Oriente Médio com potenciais reflexos nos preços globais de petróleo e rotas de navegação comercial.",
       "categoria": "Geopolitica_Relacoes",
-      "paises_envolvidos": [
-        "BH",
-        "IR",
-        "US",
-        "SA"
-      ],
-      "urgencia_score": 98,
-      "relevancia_score": 96,
-      "nivel_confianca": "alta",
       "ttl_horas": 18,
-      "horas_em_destaque": 24,
-      "veiculos_origem": [
-        "Al Jazeera English",
-        "Iran International"
-      ],
+      "expires_at": "2026-11-22T16:34:42Z",
+      "updated_at": "2026-11-22T00:50:43Z",
       "fontes_urls": [
         "https://www.aljazeera.com/news/liveblog/2026/11/21/iran-war-live-iran-targets-us-military-in-bahrain-houthi-strikes-continue?traffic_source=rss",
         "https://www.iranintl.com/en/202611216643"
       ],
+      "resumo_pulso": "Conforme atualizações da Al Jazeera English, o governo do Bahrein condenou veementemente ataques iranianos direcionados a ativos militares e industriais em seu território. Paralelamente, Teerã sinalizou prontidão para enfrentar o bloqueio naval americano, elevando as tensões geopolíticas na região.",
+      "titulo_curto": "Bahrein condena ataques iranianos a ativos militares e industriais no Golfo",
       "palavras_chave": [
         "Bahrein",
         "Iran",
@@ -1083,16 +1131,29 @@
         "Golfo Persico",
         "bloqueio naval"
       ],
+      "urgencia_score": 98,
       "data_publicacao": "2026-11-21T21:31:03Z",
+      "impacto_pratico": "Aumento dos riscos de instabilidade no Oriente Médio com potenciais reflexos nos preços globais de petróleo e rotas de navegação comercial.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Al Jazeera English",
+        "Iran International"
+      ],
+      "relevancia_score": 96,
+      "horas_em_destaque": 24,
+      "paises_envolvidos": [
+        "BH",
+        "IR",
+        "US",
+        "SA"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "O que é uma sanção internacional?",
           "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-sancao-internacional",
-          "motivo_conexao": "Explica o contexto de sanções e pressões geopolíticas no Oriente Médio."
+          "motivo_conexao": "Explica o contexto de sanções e pressões geopolíticas no Oriente Médio.",
+          "titulo_existente": "O que é uma sanção internacional?"
         }
-      ],
-      "expires_at": "2026-11-22T16:34:42Z",
-      "updated_at": "2026-11-22T00:50:43Z"
+      ]
     },
     {
       "slug": "ft-amazon-negocia-compra-startup-ia-decart-7-5-bilhoes",
@@ -1576,169 +1637,6 @@
           "motivo_conexao": "Explica a dinâmica de elaboração e controle das contas públicas e os impactos do ajuste fiscal.",
           "titulo_existente": "O que é o Orçamento?"
         }
-      ]
-    }
-  ],
-  "temas_curadoria": [
-    {
-      "slug": "impasse-cop31-financiamento-climatico-fossil",
-      "status": "em_alta",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-23T21:55:28Z",
-      "updated_at": "2026-11-21T21:55:28Z",
-      "titulo_tema": "Impasse na COP31 ameaça acordo global sobre transição energética e financiamento",
-      "sintese_nerd": "Divergências profundas entre potências globais e países em desenvolvimento travam a assinatura do acordo final da COP31 sobre o fundo de transição ecológica. Para o Brasil, o impasse pressiona compromissos de preservação ambiental e afeta a atração de capital externo para projetos sustentáveis.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-21T21:55:28Z",
-      "gatilho_vitrine": "Destacar paralisação nas negociações de financiamento ambiental e impacto para países emergentes.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 94,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Politica"
-      ],
-      "palavras_chave_busca": [
-        "cop31",
-        "financiamento climático",
-        "combustíveis fósseis",
-        "transição energética",
-        "crise climática",
-        "acordo de paris"
-      ]
-    },
-    {
-      "slug": "crise-golfo-persico-ataque-bahrein-estreito-ormuz",
-      "status": "novo",
-      "ttl_horas": 36,
-      "expires_at": "2026-11-23T09:55:28Z",
-      "updated_at": "2026-11-21T21:55:28Z",
-      "titulo_tema": "Escalação no Golfo Pérsico: ataques no Bahrein e impasse no Estreito de Ormuz",
-      "sintese_nerd": "O aumento das tensões militares no Golfo Pérsico com ataques a instalações industriais no Bahrein coloca em risco a rota global de navegação e suprimento de petróleo. O eventual bloqueio do Estreito de Ormuz tende a encarecer os combustíveis e pressionar a inflação global e brasileira.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-21T21:55:28Z",
-      "gatilho_vitrine": "Acionar alerta geopolítico de segurança energética e risco sobre cotações internacionais de petróleo.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 91,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Politica"
-      ],
-      "palavras_chave_busca": [
-        "golfo pérsico",
-        "bahrein",
-        "irã",
-        "estreito de ormuz",
-        "preço do petróleo",
-        "eua irã"
-      ]
-    },
-    {
-      "slug": "amazon-compra-startup-decart-corrida-ia-chips",
-      "status": "novo",
-      "ttl_horas": 72,
-      "expires_at": "2026-11-24T21:55:28Z",
-      "updated_at": "2026-11-21T21:55:28Z",
-      "titulo_tema": "Amazon negocia startup Decart por US$ 7,5 bi para rivalizar com Nvidia em IA",
-      "sintese_nerd": "A negociação bilionária da Amazon para adquirir a startup Decart busca reduzir a dependência dos dispendiosos chips da Nvidia na infraestrutura de nuvem. A cartada reflete a corrida geopolítica e corporativa pelo domínio da eficiência computacional na era da IA generativa.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-21T21:55:28Z",
-      "gatilho_vitrine": "Impulsionar cobertura sobre a guerra de hardware e semicondutores entre gigantes da tecnologia.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 88,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Geopolitica_Radar",
-        "Cultura"
-      ],
-      "palavras_chave_busca": [
-        "amazon",
-        "decart",
-        "nvidia",
-        "chips de ia",
-        "inteligência artificial",
-        "big tech",
-        "mercado de tecnologia"
-      ]
-    },
-    {
-      "slug": "haddad-taxacao-super-ricos-cupula-paris",
-      "status": "em_alta",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-23T21:55:28Z",
-      "updated_at": "2026-11-21T21:55:28Z",
-      "titulo_tema": "Proposta de alíquota global sobre super-ricos avança em discussões em Paris",
-      "sintese_nerd": "A defesa de uma alíquota global de 2% sobre bilionários apresentada em cúpula internacional busca criar consensos multilaterais contra a evasão de divisas. Se adotada, a medida poderia redistribuir receitas globais e balizar reformas tributárias estruturais em países emergentes.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-21T21:55:28Z",
-      "gatilho_vitrine": "Conectar agenda fiscal do Brasil no exterior com o debate sobre desigualdade e arrecadação.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 85,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Politica",
-        "Geopolitica_Radar"
-      ],
-      "palavras_chave_busca": [
-        "taxação de super-ricos",
-        "fernando haddad",
-        "cúpula de paris",
-        "imposto sobre fortunas",
-        "diplomacia fiscal",
-        "g20"
-      ]
-    },
-    {
-      "slug": "regulacao-internacional-robos-assassinos-onu",
-      "status": "novo",
-      "ttl_horas": 120,
-      "expires_at": "2026-11-26T21:55:28Z",
-      "updated_at": "2026-11-21T21:55:28Z",
-      "titulo_tema": "ONU estabelece prazo até 2028 para regras globais sobre armas autônomas",
-      "sintese_nerd": "Mais de uma centena de nações acordaram em Genebra um cronograma para balizar o uso de sistemas de armas autônomas geridos por inteligência artificial. A resistência de grandes potências militares evidencia a tensão entre avanço tecnológico bélico e o direito internacional humanitário.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-21T21:55:28Z",
-      "gatilho_vitrine": "Exibir dilemas éticos e jurídicos da automação militar no ecossistema de defesa internacional.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 84,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Politica",
-        "Cultura"
-      ],
-      "palavras_chave_busca": [
-        "robôs assassinos",
-        "armas autônomas",
-        "diplomacia genebra",
-        "regulacao ia militar",
-        "onu defesa"
-      ]
-    },
-    {
-      "slug": "protestos-europa-crise-habitacao-custo-vida",
-      "status": "em_alta",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-23T21:55:28Z",
-      "updated_at": "2026-11-21T21:55:28Z",
-      "titulo_tema": "Onda de protestos na Europa reflete crise no custo de vida e moradia",
-      "sintese_nerd": "Manifestações massivas na França e em Portugal escancaram o descontentamento social com o encarecimento dos aluguéis e a perda de poder de compra do euro. O cenário de estagnação com custo de vida elevado tensiona os governos europeus e fortalece o debate sobre políticas urbanas.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-21T21:55:28Z",
-      "gatilho_vitrine": "Destacar insatisfação popular com inflação e moradia nas principais capitais europeias.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 81,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Cultura"
-      ],
-      "palavras_chave_busca": [
-        "protestos europa",
-        "crise de moradia",
-        "custo de vida europeu",
-        "inflacao europa",
-        "crise habitacional"
       ]
     }
   ]
