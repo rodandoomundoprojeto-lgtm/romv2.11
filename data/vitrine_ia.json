@@ -2,55 +2,104 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-22T07:46:01Z",
-  "batch_id": "20261122-0745",
+  "updatedAt": "2026-11-22T08:48:14Z",
+  "batch_id": "20261122-0846",
   "temas_ativos": [
     {
-      "slug": "ataque-russo-infraestrutura-chernihiv-dnipropetrovsk",
-      "titulo_tema": "Ataques russos atingem infraestrutura crítica nas regiões de Chernihiv e Dnipropetrovsk",
-      "titulo_curto": "Ataques russos atingem infraestrutura crítica nas regiões de Chernihiv e Dnipropetrovsk",
+      "slug": "mexico-ganha-espaco-entre-emergentes-enquanto-brasil-perde-preferencia",
+      "titulo_tema": "México ganha espaço entre investidores estrangeiros enquanto Brasil perde preferência",
+      "titulo_curto": "México ganha espaço entre investidores estrangeiros enquanto Brasil perde preferência",
       "status": "novo",
       "origem_pipeline": "pulso",
-      "categoria_primaria": "Geopolitica_Radar",
-      "categoria": "Geopolitica_Relacoes",
+      "categoria_primaria": "Economia",
+      "categoria": "Economia_Comercio",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
       ],
-      "rota_editoria": "/radar",
+      "rota_editoria": "/economia",
       "relevancia_score": 90,
-      "urgencia_score": 92,
+      "urgencia_score": 88,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-23T08:48:14Z",
+      "palavras_chave_busca": [
+        "mercados",
+        "méxico",
+        "brasil",
+        "investimentos",
+        "emergentes"
+      ],
+      "palavras_chave": [
+        "mercados",
+        "méxico",
+        "brasil",
+        "investimentos",
+        "emergentes"
+      ],
+      "gatilho_vitrine": "Segundo análise do InfoMoney com base em relatórios de grandes instituições financeiras globais como UBS, Morgan Stanley e Goldman Sachs, o México desponta como alternativa favorita entre mercados emergentes. O movimento reflete preocupações internacionais com o cenário fiscal e o ritmo de crescimento brasileiro.",
+      "resumo_pulso": "Segundo análise do InfoMoney com base em relatórios de grandes instituições financeiras globais como UBS, Morgan Stanley e Goldman Sachs, o México desponta como alternativa favorita entre mercados emergentes. O movimento reflete preocupações internacionais com o cenário fiscal e o ritmo de crescimento brasileiro.",
+      "sintese_nerd": "Possível realocação de fluxos de capital estrangeiro e volatilidade nas expectativas cambiais.",
+      "impacto_pratico": "Possível realocação de fluxos de capital estrangeiro e volatilidade nas expectativas cambiais.",
+      "paises_envolvidos": [
+        "BR",
+        "MX",
+        "US"
+      ],
+      "veiculos_origem": [
+        "InfoMoney Mercados"
+      ],
+      "fontes_urls": [
+        "https://www.infomoney.com.br/mercados/mexico-ganha-espaco-entre-emergentes-enquanto-brasil-perde-preferencia-dos-bancoes/"
+      ],
+      "data_publicacao": "2026-11-22T08:00:00Z",
+      "updated_at": "2026-11-22T08:48:14Z"
+    },
+    {
+      "slug": "ataque-russo-infraestrutura-chernihiv-dnipropetrovsk",
+      "status": "novo",
+      "categoria": "Geopolitica_Relacoes",
       "ttl_horas": 12,
       "expires_at": "2026-11-22T19:46:01Z",
-      "palavras_chave_busca": [
-        "ucrânia",
-        "rússia",
-        "guerra",
-        "infraestrutura"
+      "updated_at": "2026-11-22T07:46:01Z",
+      "fontes_urls": [
+        "https://www.ukrinform.net/rubric-ato/4187296-russian-strike-on-enterprise-in-chernihiv-region-sparks-fire.html",
+        "https://www.ukrinform.net/rubric-ato/4187291-russian-forces-attack-infrastructure-facilities-in-dnipropetrovsk-region.html"
       ],
+      "titulo_tema": "Ataques russos atingem infraestrutura crítica nas regiões de Chernihiv e Dnipropetrovsk",
+      "resumo_pulso": "Conforme reportado pela agência Ukrinform, forças russas realizaram novos ataques contra instalações de infraestrutura nas regiões de Chernihiv e Dnipropetrovsk, resultando em incêndios e danos materiais. As autoridades locais seguem avaliando o impacto operacional dos bombardeios na rede de serviços essenciais.",
+      "sintese_nerd": "Possíveis interrupções no fornecimento de energia e serviços básicos nas regiões afetadas.",
+      "titulo_curto": "Ataques russos atingem infraestrutura crítica nas regiões de Chernihiv e Dnipropetrovsk",
+      "rota_editoria": "/radar",
       "palavras_chave": [
         "ucrânia",
         "rússia",
         "guerra",
         "infraestrutura"
       ],
+      "urgencia_score": 92,
+      "data_publicacao": "2026-11-22T07:29:00Z",
       "gatilho_vitrine": "Conforme reportado pela agência Ukrinform, forças russas realizaram novos ataques contra instalações de infraestrutura nas regiões de Chernihiv e Dnipropetrovsk, resultando em incêndios e danos materiais. As autoridades locais seguem avaliando o impacto operacional dos bombardeios na rede de serviços essenciais.",
-      "resumo_pulso": "Conforme reportado pela agência Ukrinform, forças russas realizaram novos ataques contra instalações de infraestrutura nas regiões de Chernihiv e Dnipropetrovsk, resultando em incêndios e danos materiais. As autoridades locais seguem avaliando o impacto operacional dos bombardeios na rede de serviços essenciais.",
-      "sintese_nerd": "Possíveis interrupções no fornecimento de energia e serviços básicos nas regiões afetadas.",
       "impacto_pratico": "Possíveis interrupções no fornecimento de energia e serviços básicos nas regiões afetadas.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "Ukrinform"
+      ],
+      "relevancia_score": 90,
       "paises_envolvidos": [
         "UA",
         "RU"
       ],
-      "veiculos_origem": [
-        "Ukrinform"
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
       ],
-      "fontes_urls": [
-        "https://www.ukrinform.net/rubric-ato/4187296-russian-strike-on-enterprise-in-chernihiv-region-sparks-fire.html",
-        "https://www.ukrinform.net/rubric-ato/4187291-russian-forces-attack-infrastructure-facilities-in-dnipropetrovsk-region.html"
-      ],
-      "data_publicacao": "2026-11-22T07:29:00Z",
-      "updated_at": "2026-11-22T07:46:01Z"
+      "palavras_chave_busca": [
+        "ucrânia",
+        "rússia",
+        "guerra",
+        "infraestrutura"
+      ]
     },
     {
       "slug": "impasse-fossil-cop31-transicao-energetica-impactos",
@@ -518,51 +567,53 @@
     },
     {
       "slug": "ataque-drone-russo-destroi-predio-residencial-em-kyiv",
+      "titulo_tema": "Ataques de drones russos atingem edifício em Kyiv e deixam desalojados",
+      "titulo_curto": "Ataques de drones russos atingem edifício em Kyiv e deixam desalojados",
       "status": "novo",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 18,
-      "expires_at": "2026-11-22T23:29:57Z",
-      "updated_at": "2026-11-22T05:29:57Z",
-      "fontes_urls": [
-        "https://kyivindependent.com/apartment-building-destroyed-in-kyiv-oblast-following-russian-drone-attack/"
-      ],
-      "titulo_tema": "Ataque de drone russo destrói edifício residencial na região de Kyiv",
-      "resumo_pulso": "Conforme apuração do The Kyiv Independent com base em informações de autoridades militares locais, um prédio residencial de cinco andares foi destruído no distrito de Vyshhorod após ataque de drones russos. Equipes de socorro atuam no local enquanto o governo regional avalia a extensão dos danos e o número de afetados.",
-      "sintese_nerd": "Agressão intensifica alerta de segurança na região metropolitana de Kyiv e pode provocar novos deslocamentos de civis.",
-      "titulo_curto": "Ataque de drone russo destrói edifício residencial na região de Kyiv",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "ucrânia",
-        "rússia",
-        "kyiv",
-        "vyshhorod",
-        "drones"
-      ],
-      "urgencia_score": 93,
-      "data_publicacao": "2026-11-22T04:49:11Z",
-      "gatilho_vitrine": "Conforme apuração do The Kyiv Independent com base em informações de autoridades militares locais, um prédio residencial de cinco andares foi destruído no distrito de Vyshhorod após ataque de drones russos. Equipes de socorro atuam no local enquanto o governo regional avalia a extensão dos danos e o número de afetados.",
-      "impacto_pratico": "Agressão intensifica alerta de segurança na região metropolitana de Kyiv e pode provocar novos deslocamentos de civis.",
       "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "The Kyiv Independent"
-      ],
-      "relevancia_score": 91,
-      "paises_envolvidos": [
-        "UA",
-        "RU"
-      ],
       "categoria_primaria": "Geopolitica_Radar",
+      "categoria": "Geopolitica_Relacoes",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
       ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 93,
+      "urgencia_score": 96,
+      "ttl_horas": 18,
+      "expires_at": "2026-11-22T23:29:57Z",
       "palavras_chave_busca": [
         "ucrânia",
         "rússia",
         "kyiv",
-        "vyshhorod",
-        "drones"
-      ]
+        "drones",
+        "guerra"
+      ],
+      "palavras_chave": [
+        "ucrânia",
+        "rússia",
+        "kyiv",
+        "drones",
+        "guerra"
+      ],
+      "gatilho_vitrine": "Segundo apuração da Ukrinform e do The Kyiv Independent, um novo ataque de drones russos atingiu um prédio residencial de cinco andares no distrito de Vyshhorod, na região de Kyiv, causando incêndio e destruição. Equipes de emergência trabalham no local e autoridades alertam que civis podem estar soterrados sob os escombros.",
+      "resumo_pulso": "Segundo apuração da Ukrinform e do The Kyiv Independent, um novo ataque de drones russos atingiu um prédio residencial de cinco andares no distrito de Vyshhorod, na região de Kyiv, causando incêndio e destruição. Equipes de emergência trabalham no local e autoridades alertam que civis podem estar soterrados sob os escombros.",
+      "sintese_nerd": "Elevação do risco de segurança e paralisações parciais em serviços urbanos na região metropolitana de Kyiv.",
+      "impacto_pratico": "Elevação do risco de segurança e paralisações parciais em serviços urbanos na região metropolitana de Kyiv.",
+      "paises_envolvidos": [
+        "UA",
+        "RU"
+      ],
+      "veiculos_origem": [
+        "Ukrinform",
+        "The Kyiv Independent",
+        "Al Jazeera English"
+      ],
+      "fontes_urls": [
+        "https://www.ukrinform.net/rubric-ato/4187306-drone-attack-damages-apartment-block-in-kyiv-region-people-may-be-trapped-under-rubble.html"
+      ],
+      "data_publicacao": "2026-11-22T04:49:11Z",
+      "updated_at": "2026-11-22T08:48:14Z"
     },
     {
       "slug": "eleven-killed-in-mexican-cartel-leader-capture",
@@ -657,6 +708,51 @@
       ]
     },
     {
+      "slug": "camara-vota-projeto-de-ajuste-fiscal",
+      "titulo_tema": "Câmara dos Deputados pauta votação de pacote de ajuste fiscal nesta segunda-feira",
+      "titulo_curto": "Câmara dos Deputados pauta votação de pacote de ajuste fiscal nesta segunda-feira",
+      "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Economia",
+      "categoria": "Economia_Comercio",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 93,
+      "urgencia_score": 92,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-23T03:19:08Z",
+      "palavras_chave_busca": [
+        "ajuste fiscal",
+        "câmara dos deputados",
+        "economia",
+        "brasil"
+      ],
+      "palavras_chave": [
+        "ajuste fiscal",
+        "câmara dos deputados",
+        "economia",
+        "brasil"
+      ],
+      "gatilho_vitrine": "Conforme apuração do G1 Política, a Câmara dos Deputados agendou para esta segunda-feira (23) a votação do projeto de ajuste fiscal enviado pelo Executivo. O relator manteve o texto aprovado anteriormente pelo Senado com o objetivo de acelerar a tramitação legislativa.",
+      "resumo_pulso": "Conforme apuração do G1 Política, a Câmara dos Deputados agendou para esta segunda-feira (23) a votação do projeto de ajuste fiscal enviado pelo Executivo. O relator manteve o texto aprovado anteriormente pelo Senado com o objetivo de acelerar a tramitação legislativa.",
+      "sintese_nerd": "Impacto direto na dinâmica fiscal do país, contas públicas e expectativas do mercado financeiro brasileiro.",
+      "impacto_pratico": "Impacto direto na dinâmica fiscal do país, contas públicas e expectativas do mercado financeiro brasileiro.",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "veiculos_origem": [
+        "G1 Política"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/politica/noticia/2026/11/22/camara-deve-votar-projeto-de-ajuste-fiscal-nesta-segunda.ghtml"
+      ],
+      "data_publicacao": "2026-11-22T03:00:00Z",
+      "updated_at": "2026-11-22T08:48:14Z"
+    },
+    {
       "slug": "pec-da-seguranca-guardas-municipais-viram-policia",
       "status": "novo",
       "categoria": "Sociedade_Cultura",
@@ -749,131 +845,81 @@
         "tesouro norte-americano",
         "seguranca nacional"
       ]
-    },
-    {
-      "slug": "sul-tera-temporais-com-rajadas-de-vento-acima-de-80-km-h-no-domingo",
-      "status": "novo",
-      "categoria": "Ciencia_Clima",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-23T04:29:31Z",
-      "updated_at": "2026-11-22T04:29:31Z",
-      "fontes_urls": [
-        "https://www.poder360.com.br/poder-brasil/sul-tera-temporais-com-rajadas-de-vento-acima-de-80-km-h-no-domingo/"
-      ],
-      "titulo_tema": "Nova frente fria mantém região Sul em alerta para temporais e ventos acima de 80 km/h",
-      "resumo_pulso": "Conforme alertas do Poder360 e da Defesa Civil, o avanço de uma nova frente fria eleva o risco de vendavais, granizo e volumes expressivos de chuva no Rio Grande do Sul e demais estados sulistas. O cenário agrava os impactos provocados por tempestades recentes na região.",
-      "sintese_nerd": "Risco de interrupção no fornecimento de energia, quedas de árvores e transtornos para o tráfego rodoviário e a aviação regional.",
-      "titulo_curto": "Nova frente fria mantém região Sul em alerta para temporais e ventos acima de 80 km/h",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "sul",
-        "temporais",
-        "clima",
-        "defesa civil"
-      ],
-      "urgencia_score": 95,
-      "data_publicacao": "2026-11-22T02:04:02Z",
-      "gatilho_vitrine": "Conforme alertas do Poder360 e da Defesa Civil, o avanço de uma nova frente fria eleva o risco de vendavais, granizo e volumes expressivos de chuva no Rio Grande do Sul e demais estados sulistas. O cenário agrava os impactos provocados por tempestades recentes na região.",
-      "impacto_pratico": "Risco de interrupção no fornecimento de energia, quedas de árvores e transtornos para o tráfego rodoviário e a aviação regional.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "Poder360"
-      ],
-      "relevancia_score": 92,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "sul",
-        "temporais",
-        "clima",
-        "defesa civil"
-      ]
-    },
-    {
-      "slug": "brasil-bate-recorde-turistas-estrangeiros-supera-meta-2026",
-      "status": "novo",
-      "categoria": "Mobilidade_Fronteiras",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-23T03:19:08Z",
-      "updated_at": "2026-11-22T03:19:08Z",
-      "fontes_urls": [
-        "https://g1.globo.com/jornal-nacional/noticia/2026/11/21/brasil-recebe-75-milhoes-de-turistas-estrangeiros-e-supera-meta-do-ano-com-dois-meses-de-antecedencia.ghtml"
-      ],
-      "titulo_tema": "Brasil atinge 7,5 milhoes de turistas internacionais e supera meta do ano com antecedencia",
-      "resumo_pulso": "Segundo relatorio do Ministerio do Turismo divulgado pelo G1, o Brasil recebeu 7,5 milhoes de visitantes estrangeiros, batendo a meta anual dois meses antes do previsto. A receita gerada por turistas internacionais atingiu o patamar recorde de R$ 45,6 bilhoes.",
-      "sintese_nerd": "Impulso no setor do comercio, hotelaria e servicos com forte entrada de divisas estrangeiras.",
-      "titulo_curto": "Brasil atinge 7,5 milhoes de turistas internacionais e supera meta do ano com antecedencia",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "turismo",
-        "viagens internacionais",
-        "ministerio do turismo",
-        "receita cambial"
-      ],
-      "urgencia_score": 88,
-      "data_publicacao": "2026-11-22T01:29:23Z",
-      "gatilho_vitrine": "Segundo relatorio do Ministerio do Turismo divulgado pelo G1, o Brasil recebeu 7,5 milhoes de visitantes estrangeiros, batendo a meta anual dois meses antes do previsto. A receita gerada por turistas internacionais atingiu o patamar recorde de R$ 45,6 bilhoes.",
-      "impacto_pratico": "Impulso no setor do comercio, hotelaria e servicos com forte entrada de divisas estrangeiras.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "G1 Economia"
-      ],
-      "relevancia_score": 90,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "turismo",
-        "viagens internacionais",
-        "ministerio do turismo",
-        "receita cambial"
-      ]
     }
   ],
   "noticias_quentes": [
     {
-      "slug": "ataque-russo-infraestrutura-chernihiv-dnipropetrovsk",
-      "titulo_curto": "Ataques russos atingem infraestrutura crítica nas regiões de Chernihiv e Dnipropetrovsk",
-      "resumo_pulso": "Conforme reportado pela agência Ukrinform, forças russas realizaram novos ataques contra instalações de infraestrutura nas regiões de Chernihiv e Dnipropetrovsk, resultando em incêndios e danos materiais. As autoridades locais seguem avaliando o impacto operacional dos bombardeios na rede de serviços essenciais.",
-      "impacto_pratico": "Possíveis interrupções no fornecimento de energia e serviços básicos nas regiões afetadas.",
-      "categoria": "Geopolitica_Relacoes",
+      "slug": "mexico-ganha-espaco-entre-emergentes-enquanto-brasil-perde-preferencia",
+      "titulo_curto": "México ganha espaço entre investidores estrangeiros enquanto Brasil perde preferência",
+      "resumo_pulso": "Segundo análise do InfoMoney com base em relatórios de grandes instituições financeiras globais como UBS, Morgan Stanley e Goldman Sachs, o México desponta como alternativa favorita entre mercados emergentes. O movimento reflete preocupações internacionais com o cenário fiscal e o ritmo de crescimento brasileiro.",
+      "impacto_pratico": "Possível realocação de fluxos de capital estrangeiro e volatilidade nas expectativas cambiais.",
+      "categoria": "Economia_Comercio",
       "paises_envolvidos": [
-        "UA",
-        "RU"
+        "BR",
+        "MX",
+        "US"
       ],
-      "urgencia_score": 92,
+      "urgencia_score": 88,
       "relevancia_score": 90,
       "nivel_confianca": "alta",
-      "ttl_horas": 12,
-      "horas_em_destaque": 6,
+      "ttl_horas": 24,
+      "horas_em_destaque": 12,
       "veiculos_origem": [
-        "Ukrinform"
+        "InfoMoney Mercados"
       ],
+      "fontes_urls": [
+        "https://www.infomoney.com.br/mercados/mexico-ganha-espaco-entre-emergentes-enquanto-brasil-perde-preferencia-dos-bancoes/"
+      ],
+      "palavras_chave": [
+        "Mercados",
+        "México",
+        "Brasil",
+        "Investimentos",
+        "Emergentes"
+      ],
+      "data_publicacao": "2026-11-22T08:00:00Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "Economia no Brasil",
+          "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
+          "motivo_conexao": "Contextualiza os indicadores de atividade e o apetite de investidores em relação ao Brasil."
+        }
+      ],
+      "expires_at": "2026-11-23T08:48:14Z",
+      "updated_at": "2026-11-22T08:48:14Z"
+    },
+    {
+      "slug": "ataque-russo-infraestrutura-chernihiv-dnipropetrovsk",
+      "categoria": "Geopolitica_Relacoes",
+      "ttl_horas": 12,
+      "expires_at": "2026-11-22T19:46:01Z",
+      "updated_at": "2026-11-22T07:46:01Z",
       "fontes_urls": [
         "https://www.ukrinform.net/rubric-ato/4187296-russian-strike-on-enterprise-in-chernihiv-region-sparks-fire.html",
         "https://www.ukrinform.net/rubric-ato/4187291-russian-forces-attack-infrastructure-facilities-in-dnipropetrovsk-region.html"
       ],
+      "resumo_pulso": "Conforme reportado pela agência Ukrinform, forças russas realizaram novos ataques contra instalações de infraestrutura nas regiões de Chernihiv e Dnipropetrovsk, resultando em incêndios e danos materiais. As autoridades locais seguem avaliando o impacto operacional dos bombardeios na rede de serviços essenciais.",
+      "titulo_curto": "Ataques russos atingem infraestrutura crítica nas regiões de Chernihiv e Dnipropetrovsk",
       "palavras_chave": [
         "Ucrânia",
         "Rússia",
         "Guerra",
         "Infraestrutura"
       ],
+      "urgencia_score": 92,
       "data_publicacao": "2026-11-22T07:29:00Z",
-      "links_internos_relacionados": [],
-      "expires_at": "2026-11-22T19:46:01Z",
-      "updated_at": "2026-11-22T07:46:01Z"
+      "impacto_pratico": "Possíveis interrupções no fornecimento de energia e serviços básicos nas regiões afetadas.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Ukrinform"
+      ],
+      "relevancia_score": 90,
+      "horas_em_destaque": 6,
+      "paises_envolvidos": [
+        "UA",
+        "RU"
+      ],
+      "links_internos_relacionados": []
     },
     {
       "slug": "ucrania-prepara-reativacao-bancada-congresso-eua",
@@ -1133,36 +1179,38 @@
     },
     {
       "slug": "ataque-drone-russo-destroi-predio-residencial-em-kyiv",
+      "titulo_curto": "Ataques de drones russos atingem edifício em Kyiv e deixam desalojados",
+      "resumo_pulso": "Segundo apuração da Ukrinform e do The Kyiv Independent, um novo ataque de drones russos atingiu um prédio residencial de cinco andares no distrito de Vyshhorod, na região de Kyiv, causando incêndio e destruição. Equipes de emergência trabalham no local e autoridades alertam que civis podem estar soterrados sob os escombros.",
+      "impacto_pratico": "Elevação do risco de segurança e paralisações parciais em serviços urbanos na região metropolitana de Kyiv.",
       "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 18,
-      "expires_at": "2026-11-22T23:29:57Z",
-      "updated_at": "2026-11-22T05:29:57Z",
-      "fontes_urls": [
-        "https://kyivindependent.com/apartment-building-destroyed-in-kyiv-oblast-following-russian-drone-attack/"
-      ],
-      "resumo_pulso": "Conforme apuração do The Kyiv Independent com base em informações de autoridades militares locais, um prédio residencial de cinco andares foi destruído no distrito de Vyshhorod após ataque de drones russos. Equipes de socorro atuam no local enquanto o governo regional avalia a extensão dos danos e o número de afetados.",
-      "titulo_curto": "Ataque de drone russo destrói edifício residencial na região de Kyiv",
-      "palavras_chave": [
-        "Ucrânia",
-        "Rússia",
-        "Kyiv",
-        "Vyshhorod",
-        "drones"
-      ],
-      "urgencia_score": 93,
-      "data_publicacao": "2026-11-22T04:49:11Z",
-      "impacto_pratico": "Agressão intensifica alerta de segurança na região metropolitana de Kyiv e pode provocar novos deslocamentos de civis.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "The Kyiv Independent"
-      ],
-      "relevancia_score": 91,
-      "horas_em_destaque": 10,
       "paises_envolvidos": [
         "UA",
         "RU"
       ],
-      "links_internos_relacionados": []
+      "urgencia_score": 96,
+      "relevancia_score": 93,
+      "nivel_confianca": "alta",
+      "ttl_horas": 18,
+      "horas_em_destaque": 12,
+      "veiculos_origem": [
+        "Ukrinform",
+        "The Kyiv Independent",
+        "Al Jazeera English"
+      ],
+      "fontes_urls": [
+        "https://www.ukrinform.net/rubric-ato/4187306-drone-attack-damages-apartment-block-in-kyiv-region-people-may-be-trapped-under-rubble.html"
+      ],
+      "palavras_chave": [
+        "Ucrânia",
+        "Rússia",
+        "Kyiv",
+        "Drones",
+        "Guerra"
+      ],
+      "data_publicacao": "2026-11-22T04:49:11Z",
+      "links_internos_relacionados": [],
+      "expires_at": "2026-11-22T23:29:57Z",
+      "updated_at": "2026-11-22T08:48:14Z"
     },
     {
       "slug": "eleven-killed-in-mexican-cartel-leader-capture",
@@ -1242,48 +1290,40 @@
     },
     {
       "slug": "camara-vota-projeto-de-ajuste-fiscal",
+      "titulo_curto": "Câmara dos Deputados pauta votação de pacote de ajuste fiscal nesta segunda-feira",
+      "resumo_pulso": "Conforme apuração do G1 Política, a Câmara dos Deputados agendou para esta segunda-feira (23) a votação do projeto de ajuste fiscal enviado pelo Executivo. O relator manteve o texto aprovado anteriormente pelo Senado com o objetivo de acelerar a tramitação legislativa.",
+      "impacto_pratico": "Impacto direto na dinâmica fiscal do país, contas públicas e expectativas do mercado financeiro brasileiro.",
       "categoria": "Economia_Comercio",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-23T03:19:08Z",
-      "updated_at": "2026-11-22T03:19:08Z",
-      "fontes_urls": [
-        "https://g1.globo.com/politica/noticia/2026/11/22/camara-deve-votar-projeto-de-ajuste-fiscal-nesta-segunda.ghtml",
-        "https://www.jota.info/opiniao-e-analise/artigos/ganhou-mas-nao-levou-o-pacote-fiscal-e-a-trava-nas-compensacoes-tributarias"
-      ],
-      "resumo_pulso": "Conforme apuracao do G1 Politica, a Camara dos Deputados pautou a votacao da proposta de ajuste fiscal enviada pelo governo. O relator manteve o texto integral aprovado pelo Senado com o intuito de acelerar a promulgacao da materia sem necessidade de nova analise senatorial.",
-      "titulo_curto": "Camara dos Deputados acelera tramitacao e pauta votacao do pacote de ajuste fiscal",
-      "palavras_chave": [
-        "ajuste fiscal",
-        "Camara dos Deputados",
-        "Hugo Motta",
-        "orcamento",
-        "tributos"
-      ],
-      "urgencia_score": 92,
-      "data_publicacao": "2026-11-22T03:00:00Z",
-      "impacto_pratico": "A medida afeta a gestao do orcamento publico, limites de gastos e regras de compensacao tributaria.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "G1 Politica",
-        "JOTA Info"
-      ],
-      "relevancia_score": 93,
-      "horas_em_destaque": 12,
       "paises_envolvidos": [
         "BR"
       ],
+      "urgencia_score": 92,
+      "relevancia_score": 93,
+      "nivel_confianca": "alta",
+      "ttl_horas": 24,
+      "horas_em_destaque": 12,
+      "veiculos_origem": [
+        "G1 Política"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/politica/noticia/2026/11/22/camara-deve-votar-projeto-de-ajuste-fiscal-nesta-segunda.ghtml"
+      ],
+      "palavras_chave": [
+        "Ajuste Fiscal",
+        "Câmara dos Deputados",
+        "Economia",
+        "Brasil"
+      ],
+      "data_publicacao": "2026-11-22T03:00:00Z",
       "links_internos_relacionados": [
         {
+          "titulo_existente": "O que é o Orçamento?",
           "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-o-orcamento",
-          "motivo_conexao": "Entenda como funciona o planejamento de receitas e despesas publicas do governo.",
-          "titulo_existente": "O que e o Orcamento?"
-        },
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
-          "motivo_conexao": "Acompanhe os desdobramentos das politicas fiscais no mercado e nas contas publicas.",
-          "titulo_existente": "Economia no Brasil"
+          "motivo_conexao": "Explica a dinâmica de planejamento e distribuição de recursos públicos no orçamento federal."
         }
-      ]
+      ],
+      "expires_at": "2026-11-23T03:19:08Z",
+      "updated_at": "2026-11-22T08:48:14Z"
     },
     {
       "slug": "pec-da-seguranca-guardas-municipais-viram-policia",
@@ -1475,6 +1515,37 @@
       ]
     },
     {
+      "slug": "flamengo-empata-com-palmeiras-e-e-campeao-brasileiro-de-2026",
+      "titulo_curto": "Flamengo conquista o Campeonato Brasileiro de 2026 após empate com o Palmeiras",
+      "resumo_pulso": "Segundo reportagem da Agência Brasil, o Flamengo garantiu o seu décimo título do Campeonato Brasileiro de 2026 ao empatar em 1 a 1 com o Palmeiras no estádio adversário. O resultado assegurou a taça ao clube rubro-negro com duas rodadas de antecedência.",
+      "impacto_pratico": "Movimentação logística e festividades de torcedores em várias capitais do país.",
+      "categoria": "Sociedade_Cultura",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "urgencia_score": 91,
+      "relevancia_score": 88,
+      "nivel_confianca": "alta",
+      "ttl_horas": 24,
+      "horas_em_destaque": 12,
+      "veiculos_origem": [
+        "Agência Brasil (EBC)"
+      ],
+      "fontes_urls": [
+        "https://agenciabrasil.ebc.com.br/esportes/noticia/2026-11/dez-vezes-flamengo"
+      ],
+      "palavras_chave": [
+        "Flamengo",
+        "Palmeiras",
+        "Campeonato Brasileiro",
+        "Futebol"
+      ],
+      "data_publicacao": "2026-11-22T00:50:40.779765+00:00",
+      "links_internos_relacionados": [],
+      "expires_at": "2026-11-23T08:48:14Z",
+      "updated_at": "2026-11-22T08:48:14Z"
+    },
+    {
       "slug": "federacao-psb-pdt-reorganizacao-partidaria-brasil",
       "categoria": "Sociedade_Cultura",
       "ttl_horas": 24,
@@ -1514,86 +1585,6 @@
           "url_existente": "https://www.rodandoomundo.com.br/eleicoes",
           "motivo_conexao": "Detalha como os partidos calibram alianças para garantir sobrevivência política e espaço no Legislativo.",
           "titulo_existente": "Cenário eleitoral e articulações partidárias movimentam disputas políticas no Brasil e nas Américas"
-        }
-      ]
-    },
-    {
-      "slug": "bolsonaro-tem-tornozeleira-retirada-durante-internacao-na-uti",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 12,
-      "expires_at": "2026-11-22T12:50:43Z",
-      "updated_at": "2026-11-22T00:50:43Z",
-      "fontes_urls": [
-        "https://www.poder360.com.br/poder-justica/bolsonaro-tem-tornozeleira-retirada-durante-internacao-na-uti/"
-      ],
-      "resumo_pulso": "Conforme apuração do Poder360, o ministro do STF Alexandre de Moraes determinou a retirada temporária da tornozeleira eletrônica do ex-presidente Jair Bolsonaro, internado em unidade de terapia intensiva em Brasília. A decisão estipula que o equipamento seja recolocado imediatamente após a alta hospitalar.",
-      "titulo_curto": "Alexandre de Moraes determina retirada temporária de tornozeleira de Bolsonaro em UTI",
-      "palavras_chave": [
-        "Jair Bolsonaro",
-        "STF",
-        "Alexandre de Moraes",
-        "Internacao"
-      ],
-      "urgencia_score": 95,
-      "data_publicacao": "2026-11-21T23:42:13Z",
-      "impacto_pratico": "Monitoramento judicial ajustado às condições médicas de urgência do investigado.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Poder360"
-      ],
-      "relevancia_score": 94,
-      "horas_em_destaque": 12,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
-          "motivo_conexao": "Acompanha as decisões e medidas cautelares aplicadas pelo Supremo Tribunal Federal.",
-          "titulo_existente": "STF analisa regras de transparência e limites constitucionais entre os Poderes"
-        }
-      ]
-    },
-    {
-      "slug": "moldova-finland-report-russian-airspace-violations",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-23T00:50:43Z",
-      "updated_at": "2026-11-22T02:01:17Z",
-      "fontes_urls": [
-        "https://kyivindependent.com/moldova-finland-report-russian-airspace-violations-day-after-suspected-russian-missiles-flew-into-poland/"
-      ],
-      "resumo_pulso": "Segundo apuração do The Kyiv Independent, autoridades da Moldova e da Finlândia registraram novos incidentes de invasão de seus espaços aéreos pela Rússia. O episódio ocorre em meio à escalada de tensões na Europa após alertas recentes emitidos pela Polônia sobre a queda de mísseis e drones.",
-      "titulo_curto": "Moldova e Finlândia denunciam novas violações de espaço aéreo por aeronaves russas",
-      "palavras_chave": [
-        "Moldova",
-        "Finlândia",
-        "Rússia",
-        "Espaço Aéreo",
-        "Guerra na Ucrânia"
-      ],
-      "urgencia_score": 95,
-      "data_publicacao": "2026-11-21T23:35:21Z",
-      "impacto_pratico": "Aumento do alerta de segurança e defesa em fronteiras do Leste Europeu.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "The Kyiv Independent",
-        "Ukrinform",
-        "G1 Mundo"
-      ],
-      "relevancia_score": 92,
-      "horas_em_destaque": 12,
-      "paises_envolvidos": [
-        "MD",
-        "FI",
-        "RU",
-        "PL"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-sancao-internacional",
-          "motivo_conexao": "Contextualiza as medidas de pressão geopolítica e respostas a violações de soberania.",
-          "titulo_existente": "O que é uma sanção internacional?"
         }
       ]
     }
