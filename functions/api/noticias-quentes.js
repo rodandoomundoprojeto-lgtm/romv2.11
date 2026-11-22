@@ -544,6 +544,212 @@ async function consultarBackendExterno(backendUrl, caminho, searchParams, timeou
   }
 }
 
+const STOPWORDS_HOTNEWS_TERMO = new Set([
+  'de', 'da', 'do', 'das', 'dos', 'e', 'em', 'no', 'na', 'nos', 'nas', 'o', 'a', 'os', 'as',
+  'para', 'pra', 'com', 'por', 'pelo', 'pela', 'pelos', 'pelas', 'que', 'se', 'um', 'uma',
+  'sobre', 'sob', 'ao', 'aos', 'como', 'mais', 'menos', 'mas', 'ou', 'seus', 'suas', 'seu', 'sua',
+  'antes', 'apos', 'entre', 'contra', 'desde', 'durante', 'ate', 'sem', 'maior', 'menor', 'melhor', 'pior',
+  'novo', 'nova', 'novos', 'novas', 'hoje', 'ontem', 'agora', 'lenta', 'rapida', 'alta', 'baixa',
+  'registra', 'registrou', 'registram', 'aponta', 'apontam', 'apontou', 'recua', 'recuou',
+  'cai', 'caiu', 'caem', 'sobe', 'subiu', 'sobem', 'atinge', 'atingiu', 'marca', 'marcou',
+  'destaca', 'destacou', 'alerta', 'alertou', 'adverte', 'advertiu', 'anuncia', 'anunciou',
+  'diz', 'disse', 'afirma', 'afirmou', 'aprova', 'aprovou', 'decide', 'decidiu', 'enfrenta', 'enfrentou',
+  'mostra', 'mostrou', 'revela', 'revelou', 'indica', 'indicou', 'pede', 'pediu', 'mantem', 'manteve',
+  'segue', 'seguiu', 'passa', 'passou', 'eleva', 'elevou', 'reduz', 'reduziu', 'aumenta', 'aumentou',
+  'the', 'of', 'and', 'in', 'on', 'at', 'to', 'for', 'with', 'by', 'el', 'la', 'los', 'las', 'del', 'en',
+]);
+
+const REGIOES_GENERICAS_TERMO = new Set([
+  'america latina', 'america do sul', 'america do norte', 'america central',
+  'europa', 'asia', 'africa', 'oceania', 'mundo', 'internacional', 'global', 'oriente medio',
+]);
+
+const ALIASES_PAIS_FILTRO = {
+  US: ['estados unidos', 'eua', 'usa', 'united states', 'americano', 'americana', 'americanos', 'americanas'],
+  GB: ['reino unido', 'inglaterra', 'britanico', 'britanica', 'britanicos', 'britanicas', 'escocia', 'gales'],
+  NL: ['paises baixos', 'holanda', 'holandes', 'holandesa', 'holandeses', 'holandesas'],
+  DE: ['alemanha', 'alemao', 'alema', 'alemaes', 'alemas'],
+  FR: ['franca', 'frances', 'francesa', 'franceses', 'francesas'],
+  JP: ['japao', 'japones', 'japonesa', 'japoneses', 'japonesas'],
+  CN: ['china', 'chines', 'chinesa', 'chineses', 'chinesas'],
+  CL: ['chile', 'chileno', 'chilena', 'chilenos', 'chilenas'],
+  AR: ['argentina', 'argentino', 'argentinos', 'argentinas'],
+  BR: ['brasil', 'brasileiro', 'brasileira', 'brasileiros', 'brasileiras'],
+  RU: ['russia', 'russo', 'russa', 'russos', 'russas'],
+  UA: ['ucrania', 'ucraniano', 'ucraniana', 'ucranianos', 'ucranianas'],
+  ES: ['espanha', 'espanhol', 'espanhola', 'espanhois', 'espanholas'],
+  IT: ['italia', 'italiano', 'italiana', 'italianos', 'italianas'],
+  PT: ['portugal', 'portugues', 'portuguesa', 'portugueses', 'portuguesas'],
+  MX: ['mexico', 'mexicano', 'mexicana', 'mexicanos', 'mexicanas'],
+  IL: ['israel', 'israelense', 'israelenses'],
+  IR: ['ira', 'iraniano', 'iraniana', 'iranianos', 'iranianas'],
+  IN: ['india', 'indiano', 'indiana', 'indianos', 'indianas'],
+  KR: ['coreia do sul', 'sul-coreano', 'sul-coreana', 'coreano', 'coreana'],
+  KP: ['coreia do norte', 'norte-coreano', 'norte-coreana'],
+  ZA: ['africa do sul', 'sul-africano', 'sul-africana'],
+  AU: ['australia', 'australiano', 'australiana'],
+  CA: ['canada', 'canadense', 'canadenses'],
+  CO: ['colombia', 'colombiano', 'colombiana'],
+  VE: ['venezuela', 'venezuelano', 'venezuelana'],
+  PE: ['peru', 'peruano', 'peruana'],
+  UY: ['uruguai', 'uruguaio', 'uruguaia'],
+  PY: ['paraguai', 'paraguaio', 'paraguaia'],
+  EC: ['equador', 'equatoriano', 'equatoriana'],
+  BO: ['bolivia', 'boliviano', 'boliviana'],
+  TR: ['turquia', 'turco', 'turca'],
+  EG: ['egito', 'egipcio', 'egipcia'],
+  SA: ['arabia saudita', 'saudita'],
+  PL: ['polonia', 'polones', 'polonesa'],
+  CH: ['suica', 'suico'],
+  SE: ['suecia', 'sueco', 'sueca'],
+  NO: ['noruega', 'noruegues', 'norueguesa'],
+};
+
+function construirConjuntoTermosPais(nomePais, a2) {
+  const set = new Set(REGIOES_GENERICAS_TERMO);
+  const up = String(a2 || '').toUpperCase().trim();
+  const nomeNorm = normalizar(nomePais || '');
+  if (nomeNorm) set.add(nomeNorm);
+  if (up) set.add(normalizar(up));
+
+  const cat = MAPA_PAIS_POR_A2[up];
+  if (cat && cat.countryName) {
+    set.add(normalizar(cat.countryName));
+  }
+
+  const extras = ALIASES_PAIS_FILTRO[up];
+  if (Array.isArray(extras)) {
+    for (const ex of extras) {
+      const en = normalizar(ex);
+      if (en) set.add(en);
+    }
+  }
+  return set;
+}
+
+function removerPaisDeExpressao(texto, termosPaisSet) {
+  const limpo = String(texto || '')
+    .replace(/[«»""''„”]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+  if (!limpo) return '';
+  const palavras = limpo.split(/\s+/).filter(Boolean);
+  const preposicoes = new Set(['do', 'da', 'dos', 'das', 'de', 'no', 'na', 'nos', 'nas', 'em', 'sobre', 'para', 'del', 'en', 'of', 'in']);
+  const filtradas = [];
+
+  for (let i = 0; i < palavras.length; i++) {
+    const p = palavras[i];
+    const pNorm = normalizar(p.replace(/[.,;:!?()\-–—]/g, ''));
+    if (!pNorm) continue;
+
+    // Checa expressão de 2 ou 3 palavras (ex: "Estados Unidos", "Coreia do Sul")
+    let pulouMulti = false;
+    for (const span of [3, 2]) {
+      if (i + span <= palavras.length) {
+        const cand = normalizar(palavras.slice(i, i + span).join(' ').replace(/[.,;:!?()\-–—]/g, ''));
+        if (termosPaisSet.has(cand)) {
+          if (filtradas.length > 0 && preposicoes.has(normalizar(filtradas[filtradas.length - 1]))) {
+            filtradas.pop();
+          }
+          i += span - 1;
+          pulouMulti = true;
+          break;
+        }
+      }
+    }
+    if (pulouMulti) continue;
+
+    if (termosPaisSet.has(pNorm)) {
+      if (filtradas.length > 0 && preposicoes.has(normalizar(filtradas[filtradas.length - 1]))) {
+        filtradas.pop();
+      }
+      continue;
+    }
+    filtradas.push(p);
+  }
+
+  while (filtradas.length && preposicoes.has(normalizar(filtradas[0]))) filtradas.shift();
+  while (filtradas.length && preposicoes.has(normalizar(filtradas[filtradas.length - 1]))) filtradas.pop();
+
+  return filtradas.join(' ').trim();
+}
+
+function selecionarTermoBuscaPais(kws, titulo, nomePais, a2) {
+  const termosPaisSet = construirConjuntoTermosPais(nomePais, a2);
+  const listaKws = Array.isArray(kws) ? kws : [];
+  const partesEscolhidas = [];
+  const tokensVistos = new Set();
+  let totalPalavras = 0;
+
+  for (const kwRaw of listaKws) {
+    const semPais = removerPaisDeExpressao(kwRaw, termosPaisSet);
+    const limpo = semPais.replace(/^[.,;:!?()\-–—\s]+|[.,;:!?()\-–—\s]+$/g, '').trim();
+    if (!limpo || limpo.length < 2) continue;
+    const limpoNorm = normalizar(limpo);
+    if (!limpoNorm || termosPaisSet.has(limpoNorm) || STOPWORDS_HOTNEWS_TERMO.has(limpoNorm)) continue;
+    if (/^\d{4}$/.test(limpo)) continue;
+
+    const palavras = limpo.split(/\s+/).filter(Boolean);
+    if (!palavras.length || palavras.length > 3) continue;
+    if (totalPalavras + palavras.length > 3) continue;
+
+    const novosTokens = palavras.filter((w) => !tokensVistos.has(normalizar(w)));
+    if (!novosTokens.length) continue;
+
+    const candidatoTexto = [...partesEscolhidas, limpo].join(' ');
+    if (candidatoTexto.length > 40) continue;
+
+    partesEscolhidas.push(limpo);
+    palavras.forEach((w) => tokensVistos.add(normalizar(w)));
+    totalPalavras += palavras.length;
+    if (totalPalavras >= 3) break;
+  }
+
+  if (partesEscolhidas.length > 0) {
+    return partesEscolhidas.join(' ');
+  }
+
+  // Fallback: extrai núcleo factual enxuto diretamente do título (máx 3 palavras, sem país/verbos/anos)
+  const tituloSemPais = removerPaisDeExpressao(titulo || '', termosPaisSet)
+    .replace(/[:|–—]/g, ' ')
+    .replace(/[.,;!?()\[\]"'«»“”]/g, ' ')
+    .trim();
+
+  if (tituloSemPais) {
+    const tokensTit = tituloSemPais.split(/\s+/).filter(Boolean);
+    const candidatas = [];
+    tokensTit.forEach((w, idx) => {
+      const wn = normalizar(w);
+      if (!wn || wn.length < 2) return;
+      if (STOPWORDS_HOTNEWS_TERMO.has(wn) || termosPaisSet.has(wn)) return;
+      if (/^\d+$/.test(wn)) return;
+      let peso = 0;
+      if (/^[A-Z0-9]{2,5}$/.test(w)) peso += 10;
+      if (/^[A-ZÀ-Ý]/.test(w)) peso += 5;
+      if (wn.length >= 6) peso += 2;
+      if (idx < 4) peso += 2;
+      candidatas.push({ w, wn, peso, idx });
+    });
+
+    if (candidatas.length > 0) {
+      const porScore = candidatas.slice().sort((a, b) => (b.peso - a.peso) || (a.idx - b.idx));
+      const top = [];
+      const usados = new Set();
+      for (const c of porScore) {
+        if (usados.has(c.wn)) continue;
+        usados.add(c.wn);
+        top.push(c);
+        if (top.length >= 3) break;
+      }
+      top.sort((a, b) => a.idx - b.idx);
+      const res = top.map((c) => c.w).join(' ').trim();
+      if (res && res.length <= 45) return res;
+    }
+  }
+
+  return nomePais || a2 || '';
+}
+
 function construirPaisesEmAlta(noticiasQuentes) {
   const mapaPaises = new Map();
 
@@ -555,15 +761,28 @@ function construirPaisesEmAlta(noticiasQuentes) {
       const metaPais = MAPA_PAIS_POR_A2[a2];
       const nomePais = metaPais ? metaPais.countryName : a2;
       const kws = Array.isArray(item.palavras_chave) ? item.palavras_chave : [];
+      const fontesUrls = Array.isArray(item.fontes_urls) ? item.fontes_urls : [];
+
+      let urlExterna = '';
+      if (fontesUrls.length > 0 && /^https?:\/\//i.test(fontesUrls[0])) {
+        urlExterna = fontesUrls[0];
+      } else if (item.url && /^https?:\/\//i.test(item.url)) {
+        urlExterna = item.url;
+      }
+
       mapaPaises.set(a2, {
         a2,
         countryName: nomePais,
         title: item.titulo_curto || '',
         source: 'Síntese Rodando o Mundo · V2',
         category: item._label_editoria || 'Radar',
-        url: item._rota_editoria || '/radar',
+        url: urlExterna,
+        fontes_urls: fontesUrls,
+        palavras_chave: kws,
+        slug: item.slug || '',
+        comparacaoSlug: item.comparacaoSlug || item.comparacao_slug || null,
         summary: item.resumo_pulso || '',
-        termoBusca: kws[0] || item.titulo_curto || nomePais,
+        termoBusca: selecionarTermoBuscaPais(kws, item.titulo_curto || '', nomePais, a2),
         urgencia_score: Number(item.urgencia_score || item.relevancia_score || 80),
         data_publicacao: item.data_publicacao || '',
         updated_at: item.updated_at || '',
@@ -651,6 +870,7 @@ function converterTemasParaNoticiasQuentes(temasAtivos, updatedAtIso, carimboHor
 
     return {
       slug: tema.slug || '',
+      comparacaoSlug: tema.comparacaoSlug || tema.comparacao_slug || null,
       titulo_curto: titulo,
       resumo_pulso: resumo,
       impacto_pratico: impacto,
@@ -714,7 +934,10 @@ function mesclarPulsoContinental(paisesEmAlta, extPulso) {
         title: `Cobertura ativa em ${meta ? meta.countryName : a2}`,
         source: 'Pulso Continental · RoM',
         category: 'Mundo',
-        url: '/radar',
+        url: '',
+        fontes_urls: [],
+        slug: '',
+        comparacaoSlug: null,
         summary: 'Novas manchetes registradas na região.',
         termoBusca: meta ? meta.countryName : a2,
         urgencia_score: 75,

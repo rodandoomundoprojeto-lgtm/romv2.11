@@ -272,6 +272,172 @@ const PALAVRAS_COMUNS_INTACTAS = new Set([
   'fala', 'veja', 'novo', 'nova', 'hoje', 'ontem', 'agora', 'como', 'onde', 'quando', 'porque', 'isso', 'aquilo'
 ].map((x) => normalizar(x)));
 
+function ehTokenCJK(str) {
+  return /[\u3040-\u30ff\u3400-\u9fff\uac00-\ud7af]/u.test(String(str || ''));
+}
+
+const ALIASES_PAIS_BUSCA = {
+  CL: ['chile', 'chileno', 'chilena', 'chilenos', 'chilenas'],
+  BR: ['brasil', 'brazil', 'brasileiro', 'brasileira', 'brasileiros', 'brasileiras', 'brazilian'],
+  US: ['estados unidos', 'eua', 'usa', 'united states', 'americano', 'americana', 'americanos', 'americanas', 'american', 'norte americano', 'norte americana'],
+  AR: ['argentina', 'argentino', 'argentinos', 'argentinas', 'argentine'],
+  DE: ['alemanha', 'germany', 'deutschland', 'alemao', 'alema', 'alemaes', 'alemas', 'german'],
+  FR: ['franca', 'france', 'frances', 'francesa', 'franceses', 'francesas', 'french'],
+  GB: ['reino unido', 'united kingdom', 'uk', 'inglaterra', 'england', 'britanico', 'britanica', 'britanicos', 'britanicas', 'british'],
+  ES: ['espanha', 'spain', 'espana', 'espanhol', 'espanhola', 'espanhois', 'espanholas', 'spanish'],
+  IT: ['italia', 'italy', 'italiano', 'italiana', 'italianos', 'italianas', 'italian'],
+  PT: ['portugal', 'portugues', 'portuguesa', 'portugueses', 'portuguesas', 'portuguese'],
+  JP: ['japao', 'japan', 'japones', 'japonesa', 'japoneses', 'japonesas', 'japanese'],
+  CN: ['china', 'chines', 'chinesa', 'chineses', 'chinesas', 'chinese'],
+  KR: ['coreia do sul', 'south korea', 'sul coreano', 'sul coreana', 'coreano', 'coreana', 'korean'],
+  RU: ['russia', 'russo', 'russa', 'russos', 'russas', 'russian'],
+  UA: ['ucrania', 'ukraine', 'ucraniano', 'ucraniana', 'ucranianos', 'ucranianas', 'ukrainian'],
+  IL: ['israel', 'israelense', 'israelenses', 'israeli'],
+  IR: ['ira', 'iran', 'iraniano', 'iraniana', 'iranianos', 'iranianas', 'iranian'],
+  MX: ['mexico', 'mexicano', 'mexicana', 'mexicanos', 'mexicanas', 'mexican'],
+  CO: ['colombia', 'colombiano', 'colombiana', 'colombianos', 'colombianas', 'colombian'],
+  VE: ['venezuela', 'venezuelano', 'venezuelana', 'venezuelanos', 'venezuelanas', 'venezuelan'],
+  PE: ['peru', 'peruano', 'peruana', 'peruanos', 'peruanas', 'peruvian'],
+  UY: ['uruguai', 'uruguay', 'uruguaio', 'uruguaia', 'uruguaios', 'uruguaias', 'uruguayan'],
+  PY: ['paraguai', 'paraguay', 'paraguaio', 'paraguaia', 'paraguaios', 'paraguaias'],
+  EC: ['equador', 'ecuador', 'equatoriano', 'equatoriana', 'equatorianos', 'equatorianas'],
+  BO: ['bolivia', 'boliviano', 'boliviana', 'bolivianos', 'bolivianas', 'bolivian'],
+  CA: ['canada', 'canadense', 'canadenses', 'canadian'],
+  AU: ['australia', 'australiano', 'australiana', 'australianos', 'australianas', 'australian'],
+  IN: ['india', 'indiano', 'indiana', 'indianos', 'indianas', 'indian'],
+  ZA: ['africa do sul', 'south africa', 'sul africano', 'sul africana', 'south african'],
+  TR: ['turquia', 'turkey', 'turkiye', 'turco', 'turca', 'turcos', 'turcas', 'turkish'],
+  SA: ['arabia saudita', 'saudi arabia', 'saudita', 'sauditas', 'saudi'],
+  EG: ['egito', 'egypt', 'egipcio', 'egipcia', 'egipcios', 'egipcias', 'egyptian'],
+  PL: ['polonia', 'poland', 'polska', 'polones', 'polonesa', 'poloneses', 'polonesas', 'polish'],
+  NL: ['paises baixos', 'holanda', 'netherlands', 'holland', 'holandes', 'holandesa', 'dutch'],
+  BE: ['belgica', 'belgium', 'belga', 'belgas', 'belgian'],
+  CH: ['suica', 'switzerland', 'suico', 'suica', 'suicos', 'swiss'],
+  SE: ['suecia', 'sweden', 'sueco', 'sueca', 'suecos', 'swedish'],
+  NO: ['noruega', 'norway', 'noruegues', 'norueguesa', 'noruegueses', 'norwegian'],
+  DK: ['dinamarca', 'denmark', 'dinamarques', 'dinamarquesa', 'danish'],
+  FI: ['finlandia', 'finland', 'finlandes', 'finlandesa', 'finnish'],
+  GR: ['grecia', 'greece', 'grego', 'grega', 'gregos', 'greek'],
+  CZ: ['republica tcheca', 'tchequia', 'czechia', 'czech republic', 'tcheco', 'tcheca'],
+  HU: ['hungria', 'hungary', 'hungaro', 'hungara', 'hungarian'],
+  RO: ['romenia', 'romania', 'romeno', 'romena', 'romanian'],
+  AT: ['austria', 'austriaco', 'austriaca', 'austrian'],
+  IE: ['irlanda', 'ireland', 'irlandes', 'irlandesa', 'irish'],
+  NZ: ['nova zelandia', 'new zealand', 'neozelandes', 'neozelandesa'],
+  ID: ['indonesia', 'indonesio', 'indonesia', 'indonesian'],
+  TH: ['tailandia', 'thailand', 'tailandes', 'tailandesa', 'thai'],
+  VN: ['vietna', 'vietnam', 'vietnamita', 'vietnamese'],
+  PH: ['filipinas', 'philippines', 'filipino', 'filipina', 'filipinos'],
+  TW: ['taiwan', 'taiwanes', 'taiwanesa', 'taiwanese'],
+  HK: ['hong kong'],
+  PK: ['paquistao', 'pakistan', 'paquistanes', 'paquistanesa', 'pakistani'],
+  NG: ['nigeria', 'nigeriano', 'nigeriana', 'nigerianos', 'nigerian'],
+  KE: ['quenia', 'kenya', 'queniano', 'queniana', 'kenyan'],
+  MA: ['marrocos', 'morocco', 'marroquino', 'marroquina', 'moroccan'],
+};
+
+function desacoplarPaisDaConsulta(termo, countryCode, countryName) {
+  const raw = String(termo || '').trim();
+  const emptyResult = { termoLocal: raw, countryTokensSet: new Set() };
+  if (!raw) return emptyResult;
+
+  const up = String(countryCode || '').toUpperCase().trim();
+  const cNameNorm = normalizar(countryName || '');
+  const frasesPais = new Set();
+
+  if (cNameNorm) frasesPais.add(cNameNorm);
+  const aliases = ALIASES_PAIS_BUSCA[up];
+  if (Array.isArray(aliases)) {
+    for (const al of aliases) {
+      const n = normalizar(al);
+      if (n) frasesPais.add(n);
+    }
+  }
+  if (!frasesPais.size && !up) return emptyResult;
+
+  const countryTokensSet = new Set();
+  for (const fp of frasesPais) {
+    countryTokensSet.add(fp);
+    fp.split(/\s+/).forEach((part) => {
+      if (part.length >= 3 && !STOPWORDS_BUSCA.has(part)) {
+        countryTokensSet.add(part);
+      }
+    });
+  }
+
+  const preposicoes = new Set([
+    'do', 'da', 'dos', 'das', 'de', 'no', 'na', 'nos', 'nas', 'em', 'sobre', 'para',
+    'in', 'of', 'on', 'en', 'del', 'du', 'des', 'im', 'la', 'los', 'las', 'der',
+  ]);
+  const palavras = raw.replace(/\s+/g, ' ').trim().split(/\s+/).filter(Boolean);
+  const restantes = [];
+
+  for (let i = 0; i < palavras.length; i++) {
+    const p = palavras[i];
+    const pClean = normalizar(p.replace(/[^\p{L}\p{N}-]/gu, '').replace(/-/g, ' '));
+    if (!pClean) continue;
+
+    let pulouMulti = false;
+    for (const span of [3, 2]) {
+      if (i + span <= palavras.length) {
+        const cand = normalizar(
+          palavras
+            .slice(i, i + span)
+            .join(' ')
+            .replace(/[^\p{L}\p{N}\s-]/gu, ' ')
+            .replace(/-/g, ' ')
+            .replace(/\s+/g, ' ')
+        );
+        if (frasesPais.has(cand)) {
+          while (restantes.length > 0 && preposicoes.has(normalizar(restantes[restantes.length - 1]))) {
+            restantes.pop();
+          }
+          i += span - 1;
+          pulouMulti = true;
+          break;
+        }
+      }
+    }
+    if (pulouMulti) continue;
+
+    const ehPreposicaoAntesCodigo =
+      up.length >= 2 &&
+      pClean === normalizar(up) &&
+      restantes.length > 0 &&
+      preposicoes.has(normalizar(restantes[restantes.length - 1]));
+
+    if (frasesPais.has(pClean) || ehPreposicaoAntesCodigo) {
+      while (restantes.length > 0 && preposicoes.has(normalizar(restantes[restantes.length - 1]))) {
+        restantes.pop();
+      }
+      continue;
+    }
+
+    restantes.push(p);
+  }
+
+  while (restantes.length > 0 && preposicoes.has(normalizar(restantes[0]))) {
+    restantes.shift();
+  }
+  while (restantes.length > 0 && preposicoes.has(normalizar(restantes[restantes.length - 1]))) {
+    restantes.pop();
+  }
+
+  const significativosRestantes = restantes.filter((w) => {
+    const wn = normalizar(w).replace(/[^\p{L}\p{N}]/gu, '');
+    return wn.length >= 2 && !STOPWORDS_BUSCA.has(wn);
+  });
+
+  if (significativosRestantes.length === 0) {
+    return { termoLocal: raw, countryTokensSet: new Set() };
+  }
+
+  return {
+    termoLocal: restantes.join(' ').trim(),
+    countryTokensSet,
+  };
+}
+
 function tokenJaEhConhecidoOuIntacto(tok) {
   const n = normalizar(tok);
   if (!n || n.length < 3) return true;
@@ -293,7 +459,9 @@ function extrairTermoResilienteConsulta(termo) {
 
   const significativas = palavras.filter((p) => {
     const n = normalizar(p);
-    return n.length >= 3 && !STOPWORDS_BUSCA.has(n);
+    if (!n || STOPWORDS_BUSCA.has(n)) return false;
+    if (/^[A-Z0-9]{2,5}$/.test(p) || ehTokenCJK(p)) return n.length >= 2;
+    return n.length >= 3;
   });
 
   if (significativas.length <= 3 && significativas.length > 0) {
@@ -630,14 +798,17 @@ function parseRssItems(xml, nomeVeiculo) {
   const parsed = parseFeedItems(xml);
   const items = [];
   for (const entry of parsed) {
-    const titulo = limparTitulo(entry.title, nomeVeiculo);
+    const bloco = entry.rawBlock || '';
+    const sourceNome = nomeVeiculo || entry.source || '';
+    const sourceUrl = extrairAtributo(bloco, 'source', 'url') || '';
+
+    const titulo = limparTitulo(entry.title, sourceNome);
     if (!titulo) continue;
 
     const url = extrairUrlReal(entry.link);
     if (!url) continue;
 
     const pubDate = entry.pubDateIso || '';
-    const bloco = entry.rawBlock || '';
     const rawDesc = entry.rawDescription || '';
     const rawContent = entry.rawContent || '';
 
@@ -661,7 +832,8 @@ function parseRssItems(xml, nomeVeiculo) {
       resumo,
       imagem,
       url,
-      veiculo: nomeVeiculo,
+      veiculo: sourceNome,
+      sourceUrl,
       publicadoEm: pubDate,
     });
   }
@@ -684,11 +856,19 @@ function tokenCombinaNoTexto(tk, alvo, palavrasAlvo) {
   return false;
 }
 
-function calcularRelevanciaArtigo(item, termoNorm, tokens, tokensOrig = [], topicKey = '') {
-  const tituloNorm = normalizar(item.titulo || '');
-  const resumoNorm = normalizar(item.resumo || '');
-  let score = 0;
+function tokenCasaComLimite(tk, alvo, palavrasAlvo) {
+  if (!tk) return false;
+  if (ehTokenCJK(tk)) {
+    return alvo.includes(tk);
+  }
+  if (tk.length <= 3) {
+    return palavrasAlvo.includes(tk);
+  }
+  return alvo.includes(tk) || tokenCombinaNoTexto(tk, alvo, palavrasAlvo);
+}
 
+function pontuarConjuntoLexical(tituloNorm, resumoNorm, palavrasTit, palavrasRes, termoNorm, tokens) {
+  let score = 0;
   if (termoNorm && tituloNorm.includes(termoNorm)) {
     score += 140;
   } else if (termoNorm && resumoNorm.includes(termoNorm)) {
@@ -700,8 +880,8 @@ function calcularRelevanciaArtigo(item, termoNorm, tokens, tokensOrig = [], topi
   if (baseTokens.length > 0) {
     let tTit = 0, tRes = 0;
     for (const tk of baseTokens) {
-      if (tituloNorm.includes(tk)) tTit++;
-      else if (resumoNorm.includes(tk)) tRes++;
+      if (tokenCasaComLimite(tk, tituloNorm, palavrasTit)) tTit++;
+      else if (tokenCasaComLimite(tk, resumoNorm, palavrasRes)) tRes++;
     }
     const fracTit = tTit / baseTokens.length;
     const fracRes = tRes / baseTokens.length;
@@ -712,11 +892,29 @@ function calcularRelevanciaArtigo(item, termoNorm, tokens, tokensOrig = [], topi
     if (tRes === baseTokens.length) score += 30;
     else score += Math.round(fracRes * 20);
   }
+  return score;
+}
+
+function calcularRelevanciaArtigo(item, termoNorm, tokens, tokensOrig = [], topicKey = '', termosExtras = []) {
+  const tituloNorm = normalizar(item.titulo || '');
+  const resumoNorm = normalizar(item.resumo || '');
+  const palavrasTit = tituloNorm.replace(/[^\p{L}\p{N}\s]/gu, ' ').split(/\s+/).filter(Boolean);
+  const palavrasRes = resumoNorm.replace(/[^\p{L}\p{N}\s]/gu, ' ').split(/\s+/).filter(Boolean);
+
+  let score = pontuarConjuntoLexical(tituloNorm, resumoNorm, palavrasTit, palavrasRes, termoNorm, tokens);
+
+  if (Array.isArray(termosExtras) && termosExtras.length > 0) {
+    for (const extra of termosExtras) {
+      if (!extra || !extra.termoNorm) continue;
+      const sExtra = pontuarConjuntoLexical(tituloNorm, resumoNorm, palavrasTit, palavrasRes, extra.termoNorm, extra.tokens || []);
+      if (sExtra > score) score = sExtra;
+    }
+  }
 
   if (tokensOrig && tokensOrig.length > 0) {
     let tOrig = 0;
     for (const tk of tokensOrig) {
-      if (tituloNorm.includes(tk)) tOrig++;
+      if (tokenCasaComLimite(tk, tituloNorm, palavrasTit)) tOrig++;
     }
     score += Math.round((tOrig / tokensOrig.length) * 20);
   }
@@ -749,42 +947,48 @@ function calcularRelevanciaArtigo(item, termoNorm, tokens, tokensOrig = [], topi
   return score;
 }
 
-function combinaComTermo(item, termoNorm, tokens) {
+function combinaComTermo(item, termoNorm, tokens, countryTokensSet = null) {
   if (!termoNorm) return true;
   const alvo = normalizar((item.titulo || '') + ' ' + (item.resumo || ''));
   if (!alvo) return false;
 
+  if (ehTokenCJK(termoNorm) && alvo.includes(termoNorm)) return true;
+
+  const palavrasAlvo = alvo.replace(/[^\p{L}\p{N}\s]/gu, ' ').split(/\s+/).filter(Boolean);
+
+  if (!ehTokenCJK(termoNorm) && termoNorm.length <= 3 && !termoNorm.includes(' ')) {
+    return palavrasAlvo.includes(termoNorm);
+  }
   if (alvo.includes(termoNorm)) return true;
 
   const tokensRelevantes = (tokens || []).filter((tk) => tk.length >= 2 && !STOPWORDS_BUSCA.has(tk));
   const listaTokens = tokensRelevantes.length > 0 ? tokensRelevantes : (tokens || []);
   if (listaTokens.length === 0) return true;
 
-  if (listaTokens.length === 1 && listaTokens[0].length <= 4) {
-    return alvo.includes(listaTokens[0]);
+  if (listaTokens.length === 1) {
+    return tokenCasaComLimite(listaTokens[0], alvo, palavrasAlvo);
   }
-
-  const palavrasAlvo = alvo.replace(/[^a-z0-9\s]/g, ' ').split(/\s+/).filter(Boolean);
 
   let casados = 0;
   for (const tk of listaTokens) {
-    if (alvo.includes(tk) || tokenCombinaNoTexto(tk, alvo, palavrasAlvo)) {
+    if (tokenCasaComLimite(tk, alvo, palavrasAlvo)) {
       casados++;
     }
   }
 
   if (casados === listaTokens.length) return true;
 
-  if (listaTokens.length === 2) {
-    return casados >= 1 && listaTokens.some((tk) => tk.length >= 4 && (alvo.includes(tk) || tokenCombinaNoTexto(tk, alvo, palavrasAlvo)));
-  }
+  // Para consultas multi-palavra, aceita quando ao menos 1 token substantivo (preferencialmente não-país) casa com precisão
+  const temCountrySet = countryTokensSet && countryTokensSet.size > 0;
+  const naoPaisTokens = temCountrySet
+    ? listaTokens.filter((tk) => !countryTokensSet.has(tk))
+    : listaTokens;
+  const tokensRef = naoPaisTokens.length > 0 ? naoPaisTokens : listaTokens;
 
-  if (listaTokens.length >= 4) {
-    return casados >= 2 || (casados >= 1 && listaTokens.some((tk) => tk.length >= 5 && (alvo.includes(tk) || tokenCombinaNoTexto(tk, alvo, palavrasAlvo))));
-  }
-
-  if (listaTokens.length === 3) {
-    return casados >= 1;
+  for (const tk of tokensRef) {
+    if (tokenCasaComLimite(tk, alvo, palavrasAlvo)) {
+      return true;
+    }
   }
 
   return false;
@@ -890,9 +1094,110 @@ function localeParams(lang, countryCode) {
   return { hl: 'en', gl, ceid: `${gl}:en`, mkt: 'en-US' };
 }
 
+const DICIONARIO_SIGLAS_TERMOS = {
+  pib: {
+    en: 'GDP', de: 'BIP', nl: 'bbp', it: 'PIL', pl: 'PKB', tr: 'GSYH',
+    ru: 'ВВП', uk: 'ВВП', ja: 'GDP', zh: 'GDP', ko: 'GDP', ar: 'الناتج المحلي الإجمالي',
+    es: 'PIB', fr: 'PIB', pt: 'PIB',
+  },
+  ia: {
+    en: 'AI', de: 'KI', ja: 'AI', zh: 'AI', ko: 'AI', ru: 'ИИ', es: 'IA', fr: 'IA',
+  },
+  onu: {
+    en: 'UN', de: 'UN', ru: 'ООН', ar: 'الأمم المتحدة', ja: '国連', es: 'ONU', fr: 'ONU',
+  },
+  otan: {
+    en: 'NATO', de: 'NATO', ru: 'НАТО', ar: 'الناتو', ja: 'NATO', es: 'OTAN', fr: 'OTAN',
+  },
+  fmi: {
+    en: 'IMF', de: 'IWF', ru: 'МВФ', ar: 'صندوق النقد الدولي', ja: 'IMF', es: 'FMI', fr: 'FMI',
+  },
+  bce: {
+    en: 'ECB', de: 'EZB', ru: 'ЕЦБ', es: 'BCE', fr: 'BCE',
+  },
+  'banco central': {
+    en: 'central bank', es: 'Banco Central', fr: 'banque centrale', de: 'Zentralbank',
+    it: 'banca centrale', ja: '中央銀行', zh: '央行', ko: '중앙은행',
+    ar: 'البنك المركزي', ru: 'центральный банк',
+  },
+  inflacao: {
+    en: 'inflation', es: 'inflación', fr: 'inflation', de: 'Inflation',
+    it: 'inflazione', ja: 'インフレ', zh: '通胀', ko: '인플레이션',
+    ar: 'التضخم', ru: 'инфляция',
+  },
+  eleicoes: {
+    en: 'elections', es: 'elecciones', fr: 'élections', de: 'Wahlen',
+    it: 'elezioni', ja: '選挙', zh: '选举', ko: '선거',
+    ar: 'انتخابات', ru: 'выборы',
+  },
+  eleicao: {
+    en: 'election', es: 'elección', fr: 'élection', de: 'Wahl',
+    it: 'elezione', ja: '選挙', zh: '选举', ko: '선거',
+    ar: 'انتخابات', ru: 'выборы',
+  },
+  juros: {
+    en: 'interest rates', es: 'tasas de interés', fr: "taux d'intérêt", de: 'Zinsen',
+    it: 'tassi di interesse', ja: '金利', zh: '利率', ko: '금리',
+    ar: 'أسعار الفائدة', ru: 'ключевая ставка',
+  },
+  'taxa de juros': {
+    en: 'interest rate', es: 'tasa de interés', fr: "taux d'intérêt", de: 'Leitzins',
+    it: 'tasso di interesse', ja: '政策金利', zh: '利率', ko: '기준금리',
+    ar: 'سعر الفائدة', ru: 'ключевая ставка',
+  },
+};
+
+function aplicarDicionarioNaFrase(texto, langCode) {
+  let out = String(texto || '').trim();
+  if (!out || !langCode) return out;
+  const exato = DICIONARIO_SIGLAS_TERMOS[normalizar(out)];
+  if (exato && exato[langCode]) return exato[langCode];
+
+  // Substitui expressões compostas conhecidas e siglas na frase quando o tradutor não alterou
+  const chavesOrdenadas = Object.keys(DICIONARIO_SIGLAS_TERMOS).sort((a, b) => b.length - a.length);
+  for (const chave of chavesOrdenadas) {
+    const mapa = DICIONARIO_SIGLAS_TERMOS[chave];
+    const dest = mapa && mapa[langCode];
+    if (!dest) continue;
+    const rx = new RegExp(`(?:^|\\s)${chave.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}(?=$|\\s)`, 'i');
+    const outNorm = normalizar(out);
+    if (rx.test(outNorm)) {
+      // Substitui preservando espaços ao redor
+      const tokens = out.split(/\s+/);
+      const chaveParts = chave.split(/\s+/);
+      if (chaveParts.length === 1) {
+        out = tokens.map((tk) => (normalizar(tk) === chave ? dest : tk)).join(' ');
+      } else {
+        const resTokens = [];
+        for (let i = 0; i < tokens.length; i++) {
+          if (i + chaveParts.length <= tokens.length) {
+            const sliceNorm = normalizar(tokens.slice(i, i + chaveParts.length).join(' '));
+            if (sliceNorm === chave) {
+              resTokens.push(dest);
+              i += chaveParts.length - 1;
+              continue;
+            }
+          }
+          resTokens.push(tokens[i]);
+        }
+        out = resTokens.join(' ');
+      }
+    }
+  }
+  return out;
+}
+
 async function traduzirTermoParaIdioma(q, lang) {
   const l = String(lang || 'pt').toLowerCase();
   if (!q || l === 'pt') return q;
+
+  const qNorm = normalizar(q);
+  const direto = DICIONARIO_SIGLAS_TERMOS[qNorm];
+  if (direto && direto[l]) {
+    return direto[l];
+  }
+
+  let traduzido = '';
   try {
     const url =
       'https://clients5.google.com/translate_a/t?client=dict-chrome-ex&sl=auto&tl=' +
@@ -906,35 +1211,40 @@ async function traduzirTermoParaIdioma(q, lang) {
     if (r.ok) {
       const j = await r.json();
       const trad = (Array.isArray(j) && ((Array.isArray(j[0]) && j[0][0]) || (typeof j[0] === 'string' && j[0]))) || '';
-      if (trad && typeof trad === 'string') return trad.trim() || q;
+      if (trad && typeof trad === 'string' && trad.trim()) traduzido = trad.trim();
     }
   } catch { }
-  try {
-    const urlMm =
-      'https://api.mymemory.translated.net/get?q=' +
-      encodeURIComponent(q) +
-      '&langpair=pt|' +
-      encodeURIComponent(l);
-    const ctrl2 = new AbortController();
-    const t2 = setTimeout(() => ctrl2.abort(), 2500);
-    const r2 = await fetch(urlMm, { signal: ctrl2.signal });
-    clearTimeout(t2);
-    if (r2.ok) {
-      const j2 = await r2.json();
-      if (j2 && j2.responseData && j2.responseData.translatedText) {
-        return j2.responseData.translatedText.trim() || q;
+
+  if (!traduzido) {
+    try {
+      const urlMm =
+        'https://api.mymemory.translated.net/get?q=' +
+        encodeURIComponent(q) +
+        '&langpair=pt|' +
+        encodeURIComponent(l);
+      const ctrl2 = new AbortController();
+      const t2 = setTimeout(() => ctrl2.abort(), 2500);
+      const r2 = await fetch(urlMm, { signal: ctrl2.signal });
+      clearTimeout(t2);
+      if (r2.ok) {
+        const j2 = await r2.json();
+        if (j2 && j2.responseData && j2.responseData.translatedText) {
+          traduzido = j2.responseData.translatedText.trim();
+        }
       }
-    }
-  } catch { }
-  return q;
+    } catch { }
+  }
+
+  const baseFallback = traduzido || q;
+  return aplicarDicionarioNaFrase(baseFallback, l);
 }
 
-function deduplicarEOrdenar(lista, termoNorm, tokens, maxItens = MAX_POR_VEICULO_PADRAO, topicKey = '') {
+function deduplicarEOrdenar(lista, termoNorm, tokens, maxItens = MAX_POR_VEICULO_PADRAO, topicKey = '', termosExtras = []) {
   const mapa = new Map();
   for (const item of lista) {
-    const chave = normalizar(item.titulo).replace(/[^a-z0-9]/g, '').slice(0, 58);
+    const chave = normalizar(item.titulo).replace(/[^\p{L}\p{N}]/gu, '').slice(0, 58);
     if (!chave) continue;
-    const rel = calcularRelevanciaArtigo(item, termoNorm, tokens, [], topicKey);
+    const rel = calcularRelevanciaArtigo(item, termoNorm, tokens, [], topicKey, termosExtras);
     const existente = mapa.get(chave);
     if (!existente) {
       mapa.set(chave, { ...item, relevancia: rel });
@@ -1020,7 +1330,7 @@ function ehVeiculoEmIngles(veiculo) {
   return false;
 }
 
-function extrairTermoCentralRelaxado(termo) {
+function extrairTermoCentralRelaxado(termo, countryTokensSet = null) {
   if (!termo) return '';
   const limpo = String(termo || '')
     .replace(/[«»""''„”]/g, '')
@@ -1029,11 +1339,26 @@ function extrairTermoCentralRelaxado(termo) {
   const palavras = limpo.split(/\s+/).filter(Boolean);
   if (palavras.length <= 1) return limpo;
 
-  const significativas = palavras.filter((p) => {
+  const filtradas = palavras.filter((p) => {
     const n = normalizar(p);
-    return n.length >= 3 && !STOPWORDS_BUSCA.has(n);
+    if (!n || STOPWORDS_BUSCA.has(n)) return false;
+    if (countryTokensSet && countryTokensSet.has(n)) return false;
+    if (/^[A-Z0-9]{2,5}$/.test(p) || ehTokenCJK(p)) return n.length >= 2;
+    return n.length >= 3;
   });
+
+  const significativas = filtradas.length > 0
+    ? filtradas
+    : palavras.filter((p) => {
+        const n = normalizar(p);
+        if (!n || STOPWORDS_BUSCA.has(n)) return false;
+        return /^[A-Z0-9]{2,5}$/.test(p) || ehTokenCJK(p) ? n.length >= 2 : n.length >= 3;
+      });
+
   if (significativas.length === 0) return palavras[0];
+
+  const sigla = significativas.find((p) => /^[A-Z0-9]{2,5}$/.test(p));
+  if (sigla) return sigla;
 
   const maiuscula = significativas.find((p) => /^[A-ZÀ-Ý]/.test(p));
   if (maiuscula) return maiuscula;
@@ -1042,7 +1367,22 @@ function extrairTermoCentralRelaxado(termo) {
   return significativas[0];
 }
 
-async function buscarPorVeiculo(veiculo, q, topicTerm, loc, periodo = '24h', qTrad = '', topicTrad = '', qCorrigido = '', isEnrich = false, topicKey = '', isRefresh = false, qEn = '') {
+async function buscarPorVeiculo(
+  veiculo,
+  q,
+  topicTerm,
+  loc,
+  periodo = '24h',
+  qTrad = '',
+  topicTrad = '',
+  qCorrigido = '',
+  isEnrich = false,
+  topicKey = '',
+  isRefresh = false,
+  qEn = '',
+  countryTokensSet = null,
+  qOrig = ''
+) {
   const dom = String(veiculo.d || '').trim().toLowerCase();
   if (!dom) return [];
   const maxArtigos = limiteArtigosPorPeriodo(periodo);
@@ -1083,39 +1423,39 @@ async function buscarPorVeiculo(veiculo, q, topicTerm, loc, periodo = '24h', qTr
   const whenTag = periodo === '24h' ? ' when:1d' : (periodo === '7d' ? ' when:7d' : (periodo === '30d' ? ' when:30d' : ''));
   const bingInterval = periodo === '24h' ? '&qft=interval%3d%227%22' : (periodo === '7d' ? '&qft=interval%3d%228%22' : (periodo === '30d' ? '&qft=interval%3d%229%22' : ''));
 
+  const splitToks = (txt) => normalizar(txt).replace(/[^\p{L}\p{N}\s]/gu, ' ').split(/\s+/).filter((t) => t.length >= 2);
   const termoNorm = normalizar(qBase);
-  const tokens = termoNorm.split(/\s+/).filter((t) => t.length >= 2);
-  const termoOrigNorm = normalizar(q);
-  const tokensOrig = termoOrigNorm.split(/\s+/).filter((t) => t.length >= 2);
+  const tokens = splitToks(qBase);
+  const termoOrigNorm = normalizar(qOrig || q);
+  const tokensOrig = splitToks(qOrig || q);
   const termoTradNorm = normalizar(qEfetivo);
-  const tokensTrad = termoTradNorm.split(/\s+/).filter((t) => t.length >= 2);
+  const tokensTrad = splitToks(qEfetivo);
   const termoEnNorm = qEn ? normalizar(qEn) : '';
-  const tokensEn = termoEnNorm ? termoEnNorm.split(/\s+/).filter((t) => t.length >= 2) : [];
+  const tokensEn = qEn ? splitToks(qEn) : [];
 
   const qConsulta = extrairTermoResilienteConsulta(qEfetivo);
   const qBaseConsulta = extrairTermoResilienteConsulta(qBase);
   const qEnConsulta = qEn ? extrairTermoResilienteConsulta(qEn) : '';
 
   const requisicoes = [
-    fetchXml(`https://www.bing.com/news/search?q=${encodeURIComponent(`${qConsulta} site:${dom}`)}&format=rss&mkt=${encodeURIComponent(locEfetivo.mkt)}${bingInterval}`, 4200, isRefresh),
-    fetchXml(`https://news.google.com/rss/search?q=${encodeURIComponent(`${qConsulta} site:${dom}` + whenTag)}&hl=${encodeURIComponent(locEfetivo.hl)}&gl=${encodeURIComponent(locEfetivo.gl)}&ceid=${encodeURIComponent(locEfetivo.ceid)}`, 4200, isRefresh),
+    fetchXml(`https://www.bing.com/news/search?q=${encodeURIComponent(`${qConsulta} site:${dom}`)}&format=rss&mkt=${encodeURIComponent(locEfetivo.mkt)}${bingInterval}`, 3800, isRefresh),
+    fetchXml(`https://news.google.com/rss/search?q=${encodeURIComponent(`${qConsulta} site:${dom}` + whenTag)}&hl=${encodeURIComponent(locEfetivo.hl)}&gl=${encodeURIComponent(locEfetivo.gl)}&ceid=${encodeURIComponent(locEfetivo.ceid)}`, 3800, isRefresh),
   ];
 
-  // Em "Todo o período" (ou quando há tópico ativo), executa queries adicionais de profundidade
   if (periodo === 'all') {
     if (tEfetivo && normalizar(tEfetivo) !== normalizar(qConsulta)) {
       requisicoes.push(
-        fetchXml(`https://news.google.com/rss/search?q=${encodeURIComponent(`${qConsulta} ${tEfetivo} site:${dom}`)}&hl=${encodeURIComponent(locEfetivo.hl)}&gl=${encodeURIComponent(locEfetivo.gl)}&ceid=${encodeURIComponent(locEfetivo.ceid)}`, 3800, isRefresh)
+        fetchXml(`https://news.google.com/rss/search?q=${encodeURIComponent(`${qConsulta} ${tEfetivo} site:${dom}`)}&hl=${encodeURIComponent(locEfetivo.hl)}&gl=${encodeURIComponent(locEfetivo.gl)}&ceid=${encodeURIComponent(locEfetivo.ceid)}`, 3500, isRefresh)
       );
     }
     if (normalizar(qBaseConsulta) !== normalizar(qConsulta)) {
       requisicoes.push(
-        fetchXml(`https://news.google.com/rss/search?q=${encodeURIComponent(`${qBaseConsulta} site:${dom}`)}&hl=${encodeURIComponent(locEfetivo.hl)}&gl=${encodeURIComponent(locEfetivo.gl)}&ceid=${encodeURIComponent(locEfetivo.ceid)}`, 3600, isRefresh)
+        fetchXml(`https://news.google.com/rss/search?q=${encodeURIComponent(`${qBaseConsulta} site:${dom}`)}&hl=${encodeURIComponent(locEfetivo.hl)}&gl=${encodeURIComponent(locEfetivo.gl)}&ceid=${encodeURIComponent(locEfetivo.ceid)}`, 3400, isRefresh)
       );
     }
   } else if (tEfetivo && normalizar(tEfetivo) !== normalizar(qConsulta)) {
     requisicoes.push(
-      fetchXml(`https://news.google.com/rss/search?q=${encodeURIComponent(`${qConsulta} ${tEfetivo} site:${dom}` + whenTag)}&hl=${encodeURIComponent(locEfetivo.hl)}&gl=${encodeURIComponent(locEfetivo.gl)}&ceid=${encodeURIComponent(locEfetivo.ceid)}`, 3500, isRefresh)
+      fetchXml(`https://news.google.com/rss/search?q=${encodeURIComponent(`${qConsulta} ${tEfetivo} site:${dom}` + whenTag)}&hl=${encodeURIComponent(locEfetivo.hl)}&gl=${encodeURIComponent(locEfetivo.gl)}&ceid=${encodeURIComponent(locEfetivo.ceid)}`, 3400, isRefresh)
     );
   }
 
@@ -1125,54 +1465,42 @@ async function buscarPorVeiculo(veiculo, q, topicTerm, loc, periodo = '24h', qTr
     if (xml) todosBrutos.push(...parseRssItems(xml, veiculo.n));
   }
 
-  // Fallback 1: se for veículo em inglês e a busca não retornou nada, ou se for veículo local e tiver versão em inglês
+  // Fallback 1: versão em inglês quando a consulta local vier vazia
   if (todosBrutos.length === 0 && qEnConsulta && normalizar(qEnConsulta) !== normalizar(qConsulta)) {
     const fallbackEnXml = await fetchXml(
       `https://news.google.com/rss/search?q=${encodeURIComponent(`${qEnConsulta} site:${dom}` + whenTag)}&hl=en&gl=${encodeURIComponent((loc && loc.gl) || 'US')}&ceid=${encodeURIComponent((loc && loc.gl) || 'US')}:en`,
-      3800,
+      3000,
       isRefresh
     );
     if (fallbackEnXml) todosBrutos.push(...parseRssItems(fallbackEnXml, veiculo.n));
   }
 
-  // Fallback 2: relaxamento para entidade central se a query original for composta (mais de 1 palavra)
+  // Fallback 2: relaxamento para entidade/sigla central sem o nome do país
   if (todosBrutos.length === 0) {
-    const termoRelaxado = extrairTermoCentralRelaxado(qEfetivo) || extrairTermoCentralRelaxado(qBase);
+    const termoRelaxado = extrairTermoCentralRelaxado(qEfetivo, countryTokensSet) || extrairTermoCentralRelaxado(qBase, countryTokensSet);
     if (termoRelaxado && normalizar(termoRelaxado) !== normalizar(qConsulta)) {
       const fallbackRelaxadoXml = await fetchXml(
         `https://news.google.com/rss/search?q=${encodeURIComponent(`${termoRelaxado} site:${dom}` + whenTag)}&hl=${encodeURIComponent(locEfetivo.hl)}&gl=${encodeURIComponent(locEfetivo.gl)}&ceid=${encodeURIComponent(locEfetivo.ceid)}`,
-        3600,
+        3000,
         isRefresh
       );
       if (fallbackRelaxadoXml) todosBrutos.push(...parseRssItems(fallbackRelaxadoXml, veiculo.n));
     }
   }
 
-  // Fallback 3: remove a restrição estrita de data 'whenTag' se ainda estiver vazio
+  // Fallback 3: remove restrição de data 'whenTag' mantendo o termo central (apenas se ainda vazio)
   if (todosBrutos.length === 0 && (periodo === '24h' || periodo === '7d')) {
-    const termoParaFallback = extrairTermoCentralRelaxado(qEfetivo) || qConsulta;
+    const termoParaFallback = extrairTermoCentralRelaxado(qEfetivo, countryTokensSet) || qConsulta;
     const googleSemWhenUrl = `https://news.google.com/rss/search?q=${encodeURIComponent(`${termoParaFallback} site:${dom}`)}&hl=${encodeURIComponent(locEfetivo.hl)}&gl=${encodeURIComponent(locEfetivo.gl)}&ceid=${encodeURIComponent(locEfetivo.ceid)}`;
-    const fallbackXml = await fetchXml(googleSemWhenUrl, 4200, isRefresh);
+    const fallbackXml = await fetchXml(googleSemWhenUrl, 3000, isRefresh);
     if (fallbackXml) todosBrutos.push(...parseRssItems(fallbackXml, veiculo.n));
   }
 
-  // Fallback 4 de segurança: se mesmo assim o veículo específico não tem resultados para a palavra restrita, traz as manchetes recentes do veículo
-  if (todosBrutos.length === 0) {
-    const feedVeiculoUrl = `https://news.google.com/rss/search?q=${encodeURIComponent(`site:${dom}` + whenTag)}&hl=${encodeURIComponent(locEfetivo.hl)}&gl=${encodeURIComponent(locEfetivo.gl)}&ceid=${encodeURIComponent(locEfetivo.ceid)}`;
-    const feedVeiculoXml = await fetchXml(feedVeiculoUrl, 3500, isRefresh);
-    if (feedVeiculoXml) {
-      const itensGerais = parseRssItems(feedVeiculoXml, veiculo.n);
-      if (itensGerais.length > 0) {
-        todosBrutos.push(...itensGerais.slice(0, 4));
-      }
-    }
-  }
-
   const combinaQualquer = (it) =>
-    combinaComTermo(it, termoNorm, tokens) ||
-    combinaComTermo(it, termoTradNorm, tokensTrad) ||
-    (termoEnNorm && combinaComTermo(it, termoEnNorm, tokensEn)) ||
-    combinaComTermo(it, termoOrigNorm, tokensOrig);
+    combinaComTermo(it, termoNorm, tokens, countryTokensSet) ||
+    combinaComTermo(it, termoTradNorm, tokensTrad, countryTokensSet) ||
+    (termoEnNorm && combinaComTermo(it, termoEnNorm, tokensEn, countryTokensSet)) ||
+    combinaComTermo(it, termoOrigNorm, tokensOrig, countryTokensSet);
 
   let combinados = todosBrutos
     .filter((it) => combinaQualquer(it) && dentroDoPeriodo(it.publicadoEm, periodo));
@@ -1184,7 +1512,13 @@ async function buscarPorVeiculo(veiculo, q, topicTerm, loc, periodo = '24h', qTr
     combinados = todosBrutos;
   }
 
-  return deduplicarEOrdenar(combinados, termoNorm, tokens, maxArtigos, topicKey);
+  const termosExtras = [
+    { termoNorm: termoTradNorm, tokens: tokensTrad },
+    { termoNorm: termoEnNorm, tokens: tokensEn },
+    { termoNorm: termoOrigNorm, tokens: tokensOrig },
+  ];
+
+  return deduplicarEOrdenar(combinados, termoNorm, tokens, maxArtigos, topicKey, termosExtras);
 }
 
 function limparCacheExpirado() {
@@ -1198,8 +1532,8 @@ function limparCacheExpirado() {
   }
 }
 
-// Busca agregada em lotes de domínios para capturar muito mais matérias em "Todo o período"
-async function buscarArtigosAgregadosPais(dominios, qBusca, loc, per, topicTrad = '', isRefresh = false) {
+// Busca agregada em lotes de domínios para capturar muito mais matérias
+async function buscarArtigosAgregadosPais(dominios, qBusca, loc, per, topicTrad = '', isRefresh = false, countryTokensSet = null, qEn = '') {
   if (!dominios || !dominios.length || !qBusca) return [];
   const whenTag = per === '24h' ? ' when:1d' : (per === '7d' ? ' when:7d' : (per === '30d' ? ' when:30d' : ''));
   const qConsulta = extrairTermoResilienteConsulta(qBusca);
@@ -1213,18 +1547,18 @@ async function buscarArtigosAgregadosPais(dominios, qBusca, loc, per, topicTrad 
   const consultas = [];
   const bingInterval = per === '24h' ? '&qft=interval%3d%227%22' : (per === '7d' ? '&qft=interval%3d%228%22' : (per === '30d' ? '&qft=interval%3d%229%22' : ''));
   consultas.push(
-    fetchXml(`https://www.bing.com/news/search?q=${encodeURIComponent(qConsulta)}&format=rss&mkt=${encodeURIComponent(loc.mkt)}${bingInterval}`, 3800, isRefresh)
+    fetchXml(`https://www.bing.com/news/search?q=${encodeURIComponent(qConsulta)}&format=rss&mkt=${encodeURIComponent(loc.mkt)}${bingInterval}`, 3600, isRefresh)
   );
   for (const lote of lotes) {
     const orClause = lote.map((d) => `site:${d}`).join(' OR ');
     const qPrincipal = `${qConsulta} (${orClause})${whenTag}`;
     consultas.push(
-      fetchXml(`https://news.google.com/rss/search?q=${encodeURIComponent(qPrincipal)}&hl=${encodeURIComponent(loc.hl)}&gl=${encodeURIComponent(loc.gl)}&ceid=${encodeURIComponent(loc.ceid)}`, 4200, isRefresh)
+      fetchXml(`https://news.google.com/rss/search?q=${encodeURIComponent(qPrincipal)}&hl=${encodeURIComponent(loc.hl)}&gl=${encodeURIComponent(loc.gl)}&ceid=${encodeURIComponent(loc.ceid)}`, 3800, isRefresh)
     );
     if (per === 'all' && topicTrad && normalizar(topicTrad) !== normalizar(qConsulta)) {
       const qTematica = `${qConsulta} ${topicTrad} (${orClause})`;
       consultas.push(
-        fetchXml(`https://news.google.com/rss/search?q=${encodeURIComponent(qTematica)}&hl=${encodeURIComponent(loc.hl)}&gl=${encodeURIComponent(loc.gl)}&ceid=${encodeURIComponent(loc.ceid)}`, 4000, isRefresh)
+        fetchXml(`https://news.google.com/rss/search?q=${encodeURIComponent(qTematica)}&hl=${encodeURIComponent(loc.hl)}&gl=${encodeURIComponent(loc.gl)}&ceid=${encodeURIComponent(loc.ceid)}`, 3600, isRefresh)
       );
     }
   }
@@ -1234,6 +1568,35 @@ async function buscarArtigosAgregadosPais(dominios, qBusca, loc, per, topicTrad 
   for (const xml of xmls) {
     if (xml) todos.push(...parseRssItems(xml, ''));
   }
+
+  if (todos.length === 0) {
+    const termoRelaxado = extrairTermoCentralRelaxado(qBusca, countryTokensSet);
+    const consultasFallback = [];
+    if (termoRelaxado && normalizar(termoRelaxado) !== normalizar(qConsulta)) {
+      const whenRelax = per === '24h' ? whenTag : '';
+      for (const lote of lotes.slice(0, 2)) {
+        const orClause = lote.map((d) => `site:${d}`).join(' OR ');
+        consultasFallback.push(
+          fetchXml(`https://news.google.com/rss/search?q=${encodeURIComponent(`${termoRelaxado} (${orClause})${whenRelax}`)}&hl=${encodeURIComponent(loc.hl)}&gl=${encodeURIComponent(loc.gl)}&ceid=${encodeURIComponent(loc.ceid)}`, 3000, isRefresh)
+        );
+      }
+    }
+    if (qEn && normalizar(qEn) !== normalizar(qConsulta)) {
+      const orClauseEn = lotes[0] ? lotes[0].map((d) => `site:${d}`).join(' OR ') : '';
+      if (orClauseEn) {
+        consultasFallback.push(
+          fetchXml(`https://news.google.com/rss/search?q=${encodeURIComponent(`${extrairTermoResilienteConsulta(qEn)} (${orClauseEn})${whenTag}`)}&hl=en&gl=${encodeURIComponent(loc.gl || 'US')}&ceid=${encodeURIComponent((loc.gl || 'US') + ':en')}`, 3000, isRefresh)
+        );
+      }
+    }
+    if (consultasFallback.length > 0) {
+      const xmlsFb = await Promise.all(consultasFallback);
+      for (const xml of xmlsFb) {
+        if (xml) todos.push(...parseRssItems(xml, ''));
+      }
+    }
+  }
+
   return todos.filter((it) => dentroDoPeriodo(it.publicadoEm, per));
 }
 
@@ -1473,15 +1836,21 @@ async function handleBuscaAssunto(req) {
 
   let qCorrigido = isEnrich ? q : corrigirTermoEstatico(q);
   const jaCorrigiuEstatico = !isEnrich && normalizar(qCorrigido) !== normalizar(q);
+  const qBaseInicial = jaCorrigiuEstatico ? qCorrigido : q;
+  const desacopladoInicial = isEnrich
+    ? { termoLocal: qBaseInicial, countryTokensSet: new Set() }
+    : desacoplarPaisDaConsulta(qBaseInicial, country, countryName);
+  const countryTokensSet = desacopladoInicial.countryTokensSet;
 
   let qTrad = '', topicTrad = '', qDescoberto = '', qEn = '';
   if (!isEnrich) {
+    const termoParaTraduzir = desacopladoInicial.termoLocal || qBaseInicial;
     const precisaTraducaoEn = lang !== 'en' && lang !== 'pt';
     const promisesTraducao = [
-      traduzirTermoParaIdioma(jaCorrigiuEstatico ? qCorrigido : q, lang),
+      traduzirTermoParaIdioma(termoParaTraduzir, lang),
       topicTerm ? traduzirTermoParaIdioma(topicTerm, lang) : Promise.resolve(''),
-      jaCorrigiuEstatico ? Promise.resolve('') : descobrirTermoViaGoogleNews(q, loc, isRefresh),
-      precisaTraducaoEn ? traduzirTermoParaIdioma(jaCorrigiuEstatico ? qCorrigido : q, 'en') : Promise.resolve(''),
+      jaCorrigiuEstatico ? Promise.resolve('') : descobrirTermoViaGoogleNews(termoParaTraduzir, loc, isRefresh),
+      precisaTraducaoEn ? traduzirTermoParaIdioma(termoParaTraduzir, 'en') : Promise.resolve(''),
     ];
     const res = await Promise.all(promisesTraducao);
     qTrad = res[0] || '';
@@ -1490,21 +1859,24 @@ async function handleBuscaAssunto(req) {
     qEn = precisaTraducaoEn ? (res[3] || '') : (lang === 'en' ? qTrad : '');
   }
 
-  if (!jaCorrigiuEstatico && qDescoberto && normalizar(qDescoberto) !== normalizar(q)) {
+  if (!jaCorrigiuEstatico && qDescoberto && normalizar(qDescoberto) !== normalizar(desacopladoInicial.termoLocal || q)) {
     qCorrigido = qDescoberto;
   }
 
-  const termoCorrigidoFinal = normalizar(qCorrigido) !== normalizar(q) ? qCorrigido : '';
+  const termoCorrigidoFinal = normalizar(qCorrigido) !== normalizar(q) && normalizar(qCorrigido) !== normalizar(desacopladoInicial.termoLocal)
+    ? qCorrigido
+    : '';
+  const qLocalEfetivo = desacopladoInicial.termoLocal || (jaCorrigiuEstatico ? qCorrigido : q);
   const codigoBandeiraPadrao = String(country || '').toLowerCase();
 
   async function coletarPorPeriodo(per) {
     const maxArtigos = limiteArtigosPorPeriodo(per);
     const dominiosPais = listaVeiculos.map((v) => v.d).filter(Boolean);
-    const qBaseEfetiva = jaCorrigiuEstatico ? qCorrigido : q;
+    const qBaseEfetiva = qLocalEfetivo;
     const qFinalBusca = qTrad && normalizar(qTrad) !== normalizar(qBaseEfetiva) ? qTrad : qBaseEfetiva;
 
     const agregadosRawPromise = (!isEnrich && dominiosPais.length > 0)
-      ? buscarArtigosAgregadosPais(dominiosPais, qFinalBusca, loc, per, topicTrad || topicTerm, isRefresh)
+      ? buscarArtigosAgregadosPais(dominiosPais, qFinalBusca, loc, per, topicTrad || topicTerm, isRefresh, countryTokensSet, qEn)
       : Promise.resolve([]);
 
     const [agregadosRaw, resultadosIndividuais] = await Promise.all([
@@ -1514,7 +1886,22 @@ async function handleBuscaAssunto(req) {
           const codigoPaisVeic = String(veic.pais || country || '').toUpperCase();
           const flagCode = codigoPaisVeic ? codigoPaisVeic.toLowerCase() : codigoBandeiraPadrao;
           const bandeiraUrl = flagCode ? `https://flagcdn.com/w80/${flagCode}.png` : '';
-          const artigosRaw = await buscarPorVeiculo(veic, q, topicTerm, loc, per, qTrad, topicTrad, termoCorrigidoFinal, isEnrich, topic, isRefresh, qEn);
+          const artigosRaw = await buscarPorVeiculo(
+            veic,
+            qBaseEfetiva,
+            topicTerm,
+            loc,
+            per,
+            qTrad,
+            topicTrad,
+            '',
+            isEnrich,
+            topic,
+            isRefresh,
+            qEn,
+            countryTokensSet,
+            q
+          );
           return { veic, artigosRaw, codigoPaisVeic, bandeiraUrl };
         })
       )
@@ -1523,7 +1910,7 @@ async function handleBuscaAssunto(req) {
     const imagensPorTitulo = new Map();
     for (const art of agregadosRaw) {
       if (art && art.imagem && art.titulo) {
-        const tk = normalizar(art.titulo).replace(/[^a-z0-9]/g, '').slice(0, 42);
+        const tk = normalizar(art.titulo).replace(/[^\p{L}\p{N}]/gu, '').slice(0, 42);
         if (tk && !imagensPorTitulo.has(tk)) imagensPorTitulo.set(tk, art.imagem);
       }
     }
@@ -1532,13 +1919,30 @@ async function handleBuscaAssunto(req) {
       if (!art || !art.url) continue;
       let veicAlvo = null;
       let hostArt = '';
+      let hostSource = '';
       try {
         hostArt = new URL(art.url).hostname.replace(/^www\./i, '').toLowerCase();
       } catch { }
+      if (art.sourceUrl) {
+        try {
+          hostSource = new URL(art.sourceUrl).hostname.replace(/^www\./i, '').toLowerCase();
+        } catch { }
+      }
+      const artVeicNorm = normalizar(art.veiculo || '');
 
       for (const v of listaVeiculos) {
         const vd = v.d.toLowerCase();
-        if ((hostArt && (hostArt === vd || hostArt.endsWith('.' + vd))) || (art.veiculo && normalizar(art.veiculo).includes(normalizar(v.n)))) {
+        const matchHostArt = Boolean(hostArt && (hostArt === vd || hostArt.endsWith('.' + vd)));
+        const matchHostSrc = Boolean(hostSource && (hostSource === vd || hostSource.endsWith('.' + vd)));
+        const vNomeNorm = normalizar(v.n || '');
+        const matchNome = Boolean(
+          artVeicNorm &&
+          vNomeNorm &&
+          vNomeNorm.length >= 3 &&
+          artVeicNorm.length >= 3 &&
+          (artVeicNorm.includes(vNomeNorm) || vNomeNorm.includes(artVeicNorm))
+        );
+        if (matchHostArt || matchHostSrc || matchNome) {
           veicAlvo = v;
           break;
         }
@@ -1551,15 +1955,37 @@ async function handleBuscaAssunto(req) {
       }
     }
 
-    const termoNormTokens = normalizar(qBaseEfetiva).split(/\s+/).filter((t) => t.length >= 2);
+    const splitTokens = (txt) => normalizar(txt).replace(/[^\p{L}\p{N}\s]/gu, ' ').split(/\s+/).filter((t) => t.length >= 2);
+    const qBaseNorm = normalizar(qBaseEfetiva);
+    const termoNormTokens = splitTokens(qBaseEfetiva);
+    const qFinalNorm = normalizar(qFinalBusca);
+    const qFinalTokens = splitTokens(qFinalBusca);
+    const qEnNorm = qEn ? normalizar(qEn) : '';
+    const qEnTokens = qEn ? splitTokens(qEn) : [];
+    const qOrigNorm = normalizar(q);
+    const qOrigTokens = splitTokens(q);
+    const termosExtras = [
+      { termoNorm: qFinalNorm, tokens: qFinalTokens },
+      ...(qEn ? [{ termoNorm: qEnNorm, tokens: qEnTokens }] : []),
+      ...(qOrigNorm !== qBaseNorm ? [{ termoNorm: qOrigNorm, tokens: qOrigTokens }] : []),
+    ];
+
+    const combinaQualquerColeta = (it) =>
+      combinaComTermo(it, qBaseNorm, termoNormTokens, countryTokensSet) ||
+      combinaComTermo(it, qFinalNorm, qFinalTokens, countryTokensSet) ||
+      (qEnNorm && combinaComTermo(it, qEnNorm, qEnTokens, countryTokensSet)) ||
+      combinaComTermo(it, qOrigNorm, qOrigTokens, countryTokensSet);
+
     const res = resultadosIndividuais.map(({ veic, artigosRaw, codigoPaisVeic, bandeiraUrl }) => {
       const extras = artigosPorDominio.get(veic.d) || [];
-      const todos = [...artigosRaw, ...extras];
-      const combinados = deduplicarEOrdenar(todos, normalizar(qBaseEfetiva), termoNormTokens, maxArtigos, topic);
+      const extrasFiltrados = extras.filter((it) => combinaQualquerColeta(it));
+      const poolPreferencial = [...artigosRaw, ...extrasFiltrados];
+      const todos = poolPreferencial.length > 0 ? poolPreferencial : extras;
+      const combinados = deduplicarEOrdenar(todos, qBaseNorm, termoNormTokens, maxArtigos, topic, termosExtras);
       const artigos = combinados.map((art) => {
         let img = art.imagem || '';
         if (!img && art.titulo) {
-          const tk = normalizar(art.titulo).replace(/[^a-z0-9]/g, '').slice(0, 42);
+          const tk = normalizar(art.titulo).replace(/[^\p{L}\p{N}]/gu, '').slice(0, 42);
           if (tk && imagensPorTitulo.has(tk)) img = imagensPorTitulo.get(tk);
         }
         return {

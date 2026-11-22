@@ -272,6 +272,8 @@
     entendaSlug: null,
     searchQuery: '',
     searchPeriod: '24h',
+    searchFromContextualChip: false,
+    searchFromHotCompare: false,
     searchLoading: false,
     searchData: null,
     searchError: ''
@@ -848,7 +850,30 @@
         if (parsed && typeof parsed === 'object') {
           favState.paises = Array.isArray(parsed.paises) ? parsed.paises : [];
           favState.veiculos = Array.isArray(parsed.veiculos) ? parsed.veiculos : [];
-          favState.noticias = Array.isArray(parsed.noticias) ? parsed.noticias : [];
+          var rawNoticias = Array.isArray(parsed.noticias) ? parsed.noticias : [];
+          var seenNewsKeys = {};
+          var normalizedNoticias = [];
+          var needsMigrationSave = false;
+          for (var ni = 0; ni < rawNoticias.length; ni++) {
+            var nItem = rawNoticias[ni];
+            if (!nItem || typeof nItem !== 'object') continue;
+            var newKey = getNewsFavKey(nItem.url, nItem.title);
+            if (!newKey) newKey = String(nItem.key || '').trim();
+            if (!newKey || seenNewsKeys[newKey]) {
+              needsMigrationSave = true;
+              continue;
+            }
+            seenNewsKeys[newKey] = true;
+            if (nItem.key !== newKey) {
+              nItem = Object.assign({}, nItem, { key: newKey });
+              needsMigrationSave = true;
+            }
+            normalizedNoticias.push(nItem);
+          }
+          favState.noticias = normalizedNoticias;
+          if (needsMigrationSave) {
+            try { localStorage.setItem(FAV_STORAGE_KEY, JSON.stringify(favState)); } catch (e2) { }
+          }
         }
       }
     } catch (e) { }
@@ -1006,10 +1031,50 @@
     return 'Este veículo foi uma indicação cadastrada por um usuário através da aba "Cadastrar veículo".';
   }
 
+  function normalizeNewsFavTitle(title) {
+    var t = String(title || '');
+    if (typeof t.normalize === 'function') {
+      t = t.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    }
+    return t.toLowerCase().replace(/\s+/g, ' ').trim();
+  }
+
+  function isNonUniqueNewsUrl(rawUrl) {
+    var u = String(rawUrl || '').trim();
+    if (!u || u === '#' || u.charAt(0) === '/') return true;
+    if (isGenericOutletUrl(u)) return true;
+    try {
+      var parsed = new URL(u);
+      var h = String(parsed.hostname || '').toLowerCase().replace(/^www\./, '');
+      var curHost = (typeof location !== 'undefined' && location && location.hostname)
+        ? String(location.hostname).toLowerCase().replace(/^www\./, '')
+        : '';
+      var isSelfHost = (curHost && h === curHost) ||
+        /(^|\.)rodandoomundo(\.com(\.br)?|\.pages\.dev|\.netlify\.app)$/.test(h);
+      if (isSelfHost) {
+        var p = String(parsed.pathname || '/').replace(/\/+$/, '') || '/';
+        if (/^\/(radar|economia|politica|cultura|eleicoes|ultimas-noticias|resumo-do-dia|temas|dossies|entenda|clima|saude|tecnologia|esportes|guerra-ucrania)?$/i.test(p)) {
+          return true;
+        }
+      }
+      if (/\/(ao-vivo|live-?updates?|liveblog|cobertura-ao-vivo)(\/|$)/i.test(parsed.pathname || '')) {
+        return true;
+      }
+    } catch (e) {
+      return true;
+    }
+    return false;
+  }
+
   function getNewsFavKey(url, title) {
     var u = String(url || '').trim();
-    var t = String(title || '').trim().toLowerCase();
-    return u || t;
+    var t = normalizeNewsFavTitle(title);
+    if (!u || isNonUniqueNewsUrl(u)) {
+      return t ? ('title:' + t) : u;
+    }
+    // Combinar URL específica + título normalizado impede colisões mesmo se
+    // dois cards distintos apontarem para a mesma matéria-base ou cobertura.
+    return t ? (u + '|' + t) : u;
   }
 
   function isNewsFavorited(url, title) {
@@ -3827,7 +3892,10 @@
             title: src.title || '',
             source: src.source || 'Síntese Rodando o Mundo · V2',
             category: src.category || 'Radar',
-            url: src.url || '/radar',
+            url: src.url || '',
+            fontes_urls: src.fontes_urls || [],
+            palavras_chave: src.palavras_chave || [],
+            slug: src.slug || '',
             summary: src.summary || '',
             termoBusca: src.termoBusca || '',
             comparacaoSlug: src.comparacaoSlug || null,
@@ -4532,16 +4600,35 @@
             var cObj = byA2[a2];
             var paTitle = pa.title || pa.titulo || '';
             if (a2 && paTitle && !nextV2Map[a2]) {
+              var rawPaUrl = '';
+              if (pa.url && /^https?:\/\//i.test(pa.url)) {
+                rawPaUrl = pa.url;
+              } else if (Array.isArray(pa.fontes_urls) && pa.fontes_urls.length) {
+                for (var pi = 0; pi < pa.fontes_urls.length; pi++) {
+                  if (pa.fontes_urls[pi] && /^https?:\/\//i.test(pa.fontes_urls[pi])) {
+                    rawPaUrl = pa.fontes_urls[pi];
+                    break;
+                  }
+                }
+              }
+              var paFontes = Array.isArray(pa.fontes_urls) ? pa.fontes_urls : (rawPaUrl ? [rawPaUrl] : []);
+              var paKws = Array.isArray(pa.palavras_chave) ? pa.palavras_chave : [];
+              var paSlug = pa.slug || pa.id || '';
+              var paCompSlug = pa.comparacaoSlug || pa.comparacao_slug || null;
+              var paCountryName = pa.countryName || (cObj && cObj.n) || a2;
               nextV2Map[a2] = {
                 a2: a2,
-                countryName: pa.countryName || (cObj && cObj.n) || a2,
+                countryName: paCountryName,
                 title: paTitle,
                 source: pa.source || data.identificacao_editorial || 'Síntese Rodando o Mundo · V2',
                 category: pa.category || 'Radar',
-                url: pa.url || '/radar',
+                url: rawPaUrl,
+                fontes_urls: paFontes,
+                palavras_chave: paKws,
+                slug: paSlug,
                 summary: pa.summary || '',
-                termoBusca: extrairTermoAssuntoBusca(pa.termoBusca || paTitle, pa.category || 'Radar'),
-                comparacaoSlug: pa.comparacaoSlug || pa.comparacao_slug || null,
+                termoBusca: extrairTermoHotParaPais({ termoBusca: pa.termoBusca || '', palavras_chave: paKws, title: paTitle, category: pa.category || 'Radar' }, paCountryName, a2),
+                comparacaoSlug: paCompSlug,
                 publishedAt: pa.data_publicacao || pa.updated_at || '',
                 isLive: true
               };
@@ -4577,18 +4664,36 @@
               if (a2 && !nextV2Map[a2]) {
                 var cObj = byA2[a2];
                 var srcName = (Array.isArray(nq.veiculos_origem) && nq.veiculos_origem[0]) || data.identificacao_editorial || 'Síntese Rodando o Mundo · V2';
-                var fUrl = (Array.isArray(nq.fontes_urls) && nq.fontes_urls[0]) || '/radar';
-                var kw = (Array.isArray(nq.palavras_chave) && nq.palavras_chave[0]) || nqTitle;
+                var rawNqUrl = '';
+                if (Array.isArray(nq.fontes_urls) && nq.fontes_urls.length) {
+                  for (var fi = 0; fi < nq.fontes_urls.length; fi++) {
+                    if (nq.fontes_urls[fi] && /^https?:\/\//i.test(nq.fontes_urls[fi])) {
+                      rawNqUrl = nq.fontes_urls[fi];
+                      break;
+                    }
+                  }
+                }
+                if (!rawNqUrl && nq.url && /^https?:\/\//i.test(nq.url)) {
+                  rawNqUrl = nq.url;
+                }
+                var nqFontes = Array.isArray(nq.fontes_urls) ? nq.fontes_urls : (rawNqUrl ? [rawNqUrl] : []);
+                var nqKws = Array.isArray(nq.palavras_chave) ? nq.palavras_chave : [];
+                var nqSlug = nq.slug || nq.id || '';
+                var nqCompSlug = nq.comparacaoSlug || nq.comparacao_slug || null;
+                var nqCountryName = (cObj && cObj.n) || a2;
                 nextV2Map[a2] = {
                   a2: a2,
-                  countryName: (cObj && cObj.n) || a2,
+                  countryName: nqCountryName,
                   title: nqTitle,
                   source: srcName,
                   category: nq.categoria || 'Radar',
-                  url: fUrl,
+                  url: rawNqUrl,
+                  fontes_urls: nqFontes,
+                  palavras_chave: nqKws,
+                  slug: nqSlug,
                   summary: nq.resumo_pulso || nq.impacto_pratico || '',
-                  termoBusca: extrairTermoAssuntoBusca(kw, nq.categoria || 'Radar'),
-                  comparacaoSlug: nq.comparacaoSlug || nq.comparacao_slug || null,
+                  termoBusca: extrairTermoHotParaPais({ termoBusca: nq.termoBusca || '', palavras_chave: nqKws, title: nqTitle, category: nq.categoria || 'Radar' }, nqCountryName, a2),
+                  comparacaoSlug: nqCompSlug,
                   publishedAt: nq.data_publicacao || nq.updated_at || '',
                   isLive: true
                 };
@@ -5123,6 +5228,90 @@
     panel.querySelector('.filter-input').addEventListener('input', function (e) { fill(e.target.value); });
   }
 
+  function verificarTemaExisteNaCuradoria(hotItem) {
+    if (!hotItem || typeof hotItem !== 'object') return false;
+    var vitrineTemas = (typeof lerCacheVitrineIA === 'function') ? lerCacheVitrineIA(false) : [];
+    if (!Array.isArray(vitrineTemas) || !vitrineTemas.length) return false;
+
+    var hotSlug = String(hotItem.slug || '').trim().toLowerCase();
+    var hotCompSlug = String(hotItem.comparacaoSlug || hotItem.comparacao_slug || '').trim().toLowerCase();
+    var hotA2 = String(hotItem.a2 || '').trim().toUpperCase();
+    var hotTermoRaw = String(hotItem.termoBusca || hotItem.title || '').trim();
+    var hotTermoNorm = (typeof norm === 'function') ? norm(hotTermoRaw) : hotTermoRaw.toLowerCase();
+
+    var stopWords = /^(sobre|para|pelo|pela|com|sem|dos|das|uma|uns|que|nos|nas|por|aos|the|and|for)$/i;
+    var hotTokens = hotTermoNorm.split(/\s+/).filter(function (t) {
+      return t.length >= 3 && !stopWords.test(t);
+    });
+
+    for (var i = 0; i < vitrineTemas.length; i++) {
+      var tm = vitrineTemas[i];
+      if (!tm) continue;
+
+      var tmSlug = String(tm.slug || tm.id || '').trim().toLowerCase();
+      var tmCompSlug = String(tm.comparacaoSlug || tm.comparacao_slug || '').trim().toLowerCase();
+
+      // Se comparacaoSlug ou slug bater com tema ativo
+      if (hotSlug && (hotSlug === tmSlug || (tmCompSlug && hotSlug === tmCompSlug))) return true;
+      if (hotCompSlug && (hotCompSlug === tmSlug || (tmCompSlug && hotCompSlug === tmCompSlug))) return true;
+
+      // Se o país (hotItem.a2) e alguma palavra-chave / termo bater com algum tema ativo do mesmo país
+      var tmMatchesCountry = false;
+      if (hotA2) {
+        if (tm.pais_a2 && String(tm.pais_a2).trim().toUpperCase() === hotA2) {
+          tmMatchesCountry = true;
+        } else if (Array.isArray(tm.paises_envolvidos)) {
+          for (var p = 0; p < tm.paises_envolvidos.length; p++) {
+            if (String(tm.paises_envolvidos[p] || '').trim().toUpperCase() === hotA2) {
+              tmMatchesCountry = true;
+              break;
+            }
+          }
+        } else if (typeof inferirPaisesDeTextoClient === 'function') {
+          var tmKwsStr = Array.isArray(tm.palavras_chave_busca) ? tm.palavras_chave_busca.join(' ') : '';
+          var tmScan = [tm.titulo_tema || '', tm.gatilho_vitrine || '', tm.sintese_nerd || '', tmKwsStr].join(' ');
+          var tmCodes = inferirPaisesDeTextoClient(tmScan);
+          if (!tmCodes.length && (tm.categoria_primaria === 'Politica' || tm.categoria_primaria === 'Economia')) {
+            tmCodes = ['BR'];
+          }
+          if (tmCodes.indexOf(hotA2) > -1) {
+            tmMatchesCountry = true;
+          }
+        }
+      }
+
+      if (tmMatchesCountry) {
+        var tmTitleNorm = (typeof norm === 'function') ? norm(String(tm.titulo_tema || '')) : String(tm.titulo_tema || '').toLowerCase();
+        var tmKws = Array.isArray(tm.palavras_chave_busca) ? tm.palavras_chave_busca : [];
+        var tmKwsNorm = tmKws.map(function (k) {
+          return (typeof norm === 'function') ? norm(String(k || '')) : String(k || '').toLowerCase();
+        });
+
+        if (hotTermoNorm && tmTitleNorm && (tmTitleNorm.indexOf(hotTermoNorm) > -1 || (hotTermoNorm.length > 5 && tmTitleNorm.indexOf(hotTermoNorm.slice(0, 5)) > -1))) {
+          return true;
+        }
+
+        if (hotTokens.length) {
+          for (var k = 0; k < hotTokens.length; k++) {
+            var tok = hotTokens[k];
+            if (tmTitleNorm.indexOf(tok) > -1) return true;
+            for (var m = 0; m < tmKwsNorm.length; m++) {
+              if (tmKwsNorm[m].indexOf(tok) > -1) return true;
+            }
+          }
+        }
+      }
+    }
+
+    return false;
+  }
+
+  function goSection(sectionKey, opts) {
+    if (typeof showEditorialSectionPage === 'function') {
+      return showEditorialSectionPage(sectionKey, opts);
+    }
+  }
+
   function renderCountry() {
     var c = state.country;
     var cName = countryDisplayName(c, state.cont);
@@ -5171,9 +5360,30 @@
     }
     if (hotItem && hotItem.title) {
       var hotUrl = hotItem.url || '';
-      var hotTerm = extrairTermoAssuntoBusca(hotItem.termoBusca || hotItem.title, '');
-      var canCompareHot = !!(hotItem.comparacaoSlug || (hotTerm && hotTerm.replace(/[^a-zA-Z0-9À-ÿ]/g, '').length >= 3));
+      var isExternalUrl = /^https?:\/\//i.test(hotUrl);
+      var hotTerm = extrairTermoHotParaPais(hotItem, cName, cCodeUp);
+      var canCompareHot = !!(hotItem.comparacaoSlug || (hotTerm && hotTerm.replace(/[^\p{L}\p{N}]/gu, '').length >= 2));
       var hotImgUrl = isValidNewsImageUrl(hotItem.imageUrl || hotItem.imagem || hotItem.image || hotItem.thumbnail || '');
+
+      var hotTitleHtml = isExternalUrl
+        ? '<a href="' + esc(hotUrl) + '" target="_blank" rel="noopener noreferrer" title="' + (isVideoContent(hotUrl, hotItem) ? 'Assistir vídeo no canal original' : 'Abrir matéria completa no portal original') + '">' + esc(hotItem.title) + ' ' + ICON_ARROW + '</a>'
+        : esc(hotItem.title);
+
+      var primaryActionBtn = '';
+      if (isExternalUrl) {
+        primaryActionBtn = '<a href="' + esc(hotUrl) + '" target="_blank" rel="noopener noreferrer" class="btn btn-primary panel-hot-read-btn">' + (isVideoContent(hotUrl, hotItem) ? 'Assistir vídeo ' : 'Ler matéria na íntegra ') + ICON_ARROW + '</a>';
+      } else if (verificarTemaExisteNaCuradoria(hotItem)) {
+        primaryActionBtn = '<a href="/radar#curadoria" class="btn btn-primary panel-hot-read-btn panel-hot-radar-spa-btn" data-spa-link title="Ver análise completa no Radar">Ver no Radar ' + ICON_ARROW + '</a>';
+      }
+
+      var compareActionBtn = hotItem.comparacaoSlug
+        ? '<a href="/comparar/' + esc(hotItem.comparacaoSlug) + '" data-spa-link class="btn btn-secondary panel-hot-compare-btn">⚖️ Comparar perspectivas</a>'
+        : (canCompareHot ? '<button type="button" class="btn btn-secondary panel-hot-compare-btn" data-hot-compare-term="' + esc(hotTerm) + '">⚖️ Comparar cobertura</button>' : '');
+
+      var actionsHtml = (primaryActionBtn || compareActionBtn)
+        ? '<div class="panel-hot-actions">' + primaryActionBtn + compareActionBtn + '</div>'
+        : '';
+
       h += '<aside class="panel-hot-news-banner' + (hotImgUrl ? ' has-media' : ' no-media') + '" aria-label="Notícia quente em destaque">' +
         '<div class="panel-hot-news-header">' +
         '<span class="panel-hot-badge"><span class="panel-hot-pulse-dot" aria-hidden="true"></span> Notícia quente agora</span>' +
@@ -5181,14 +5391,10 @@
         '</div>' +
         (hotImgUrl ? '<figure class="panel-hot-media"><img src="' + esc(hotImgUrl) + '" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="var b=this.closest(\'.panel-hot-news-banner\');var m=this.closest(\'.panel-hot-media\');if(m)m.remove();if(b){b.classList.remove(\'has-media\');b.classList.add(\'no-media\');}" onload="if(this.naturalWidth<=2){var b=this.closest(\'.panel-hot-news-banner\');var m=this.closest(\'.panel-hot-media\');if(m)m.remove();if(b){b.classList.remove(\'has-media\');b.classList.add(\'no-media\');}}"></figure>' : '') +
         '<h4 class="panel-hot-title">' +
-        (hotUrl ? '<a href="' + esc(hotUrl) + '" target="_blank" rel="noopener noreferrer" title="' + (isVideoContent(hotUrl, hotItem) ? 'Assistir vídeo no canal original' : 'Abrir matéria completa no portal original') + '">' + esc(hotItem.title) + ' ' + ICON_ARROW + '</a>' : esc(hotItem.title)) +
+        hotTitleHtml +
         '</h4>' +
         (hotItem.summary ? '<p class="panel-hot-summary">' + esc(hotItem.summary) + '</p>' : '') +
-        '<div class="panel-hot-actions">' +
-        (hotUrl ? '<a href="' + esc(hotUrl) + '" target="_blank" rel="noopener noreferrer" class="btn btn-primary panel-hot-read-btn">' + (isVideoContent(hotUrl, hotItem) ? 'Assistir vídeo ' : 'Ler matéria na íntegra ') + ICON_ARROW + '</a>' : '') +
-        (hotItem.comparacaoSlug ? '<a href="/comparar/' + esc(hotItem.comparacaoSlug) + '" data-spa-link class="btn btn-secondary panel-hot-compare-btn">⚖️ Comparar perspectivas</a>' :
-          (canCompareHot ? '<button type="button" class="btn btn-secondary panel-hot-compare-btn" data-hot-compare-term="' + esc(hotTerm) + '">⚖️ Comparar cobertura</button>' : '')) +
-        '</div>' +
+        actionsHtml +
         '</aside>';
     }
 
@@ -5231,7 +5437,7 @@
     // Busca Contextual por País: [Sugestão 1] [Sugestão 2] [Sugestão 3] 🔍
     var cCodeCtx = (state.cont === 'sul' && (c.a2 === 'FR' || c.id === '250')) ? 'GF' : (c.a2 || c.id || '');
     var cachedCtx = getContextualSuggestionsCached(cCodeCtx);
-    var showFallbackOpen = !!(state.searchQuery && !state.searchFromContextualChip);
+    var showFallbackOpen = !!(state.searchQuery && !state.searchFromContextualChip && !state.searchFromHotCompare);
 
     h += '<section class="topic-search-section perspective-compare-section" id="busca-assunto-wrap" aria-labelledby="comparar-perspectivas-heading">';
     h += '<div class="perspective-section-head">';
@@ -5302,6 +5508,8 @@
       hotCompareBtn.addEventListener('click', function () {
         var term = hotCompareBtn.getAttribute('data-hot-compare-term') || '';
         if (term) {
+          state.searchFromContextualChip = false;
+          state.searchFromHotCompare = true;
           var inputEl = panel.querySelector('#topic-search-input');
           var clearEl = panel.querySelector('#topic-search-clear');
           if (inputEl) inputEl.value = term;
@@ -5312,6 +5520,13 @@
             searchWrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
           }
         }
+      });
+    }
+    var hotRadarBtn = panel.querySelector('.panel-hot-radar-spa-btn');
+    if (hotRadarBtn) {
+      hotRadarBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        goSection('radar', { radarTab: 'curadoria' });
       });
     }
     panel.querySelectorAll('#f-topic button').forEach(function (b) {
@@ -6010,6 +6225,109 @@
     return corrigidas.join(' ');
   }
 
+  var CLIENT_COUNTRY_ALIASES = {
+    CL: ['chile', 'chileno', 'chilena', 'chilenos', 'chilenas'],
+    BR: ['brasil', 'brazil', 'brasileiro', 'brasileira', 'brasileiros', 'brasileiras', 'brazilian'],
+    US: ['estados unidos', 'eua', 'usa', 'united states', 'americano', 'americana', 'americanos', 'americanas', 'american'],
+    AR: ['argentina', 'argentino', 'argentinos', 'argentinas', 'argentine'],
+    DE: ['alemanha', 'germany', 'deutschland', 'alemao', 'alema', 'alemaes', 'alemas', 'german'],
+    FR: ['franca', 'france', 'frances', 'francesa', 'franceses', 'francesas', 'french'],
+    GB: ['reino unido', 'united kingdom', 'uk', 'inglaterra', 'england', 'britanico', 'britanica', 'britanicos', 'british'],
+    ES: ['espanha', 'spain', 'espana', 'espanhol', 'espanhola', 'espanhois', 'spanish'],
+    IT: ['italia', 'italy', 'italiano', 'italiana', 'italianos', 'italian'],
+    PT: ['portugal', 'portugues', 'portuguesa', 'portugueses', 'portuguese'],
+    JP: ['japao', 'japan', 'japones', 'japonesa', 'japoneses', 'japonesas', 'japanese'],
+    CN: ['china', 'chines', 'chinesa', 'chineses', 'chinesas', 'chinese'],
+    KR: ['coreia do sul', 'south korea', 'sul coreano', 'sul coreana', 'coreano', 'coreana', 'korean'],
+    RU: ['russia', 'russo', 'russa', 'russos', 'russas', 'russian'],
+    UA: ['ucrania', 'ukraine', 'ucraniano', 'ucraniana', 'ucranianos', 'ukrainian'],
+    IL: ['israel', 'israelense', 'israelenses', 'israeli'],
+    IR: ['ira', 'iran', 'iraniano', 'iraniana', 'iranianos', 'iranian'],
+    MX: ['mexico', 'mexicano', 'mexicana', 'mexicanos', 'mexican'],
+    CO: ['colombia', 'colombiano', 'colombiana', 'colombian'],
+    VE: ['venezuela', 'venezuelano', 'venezuelana', 'venezuelan'],
+    PE: ['peru', 'peruano', 'peruana', 'peruvian'],
+    UY: ['uruguai', 'uruguay', 'uruguaio', 'uruguaia', 'uruguayan'],
+    PY: ['paraguai', 'paraguay', 'paraguaio', 'paraguaia'],
+    EC: ['equador', 'ecuador', 'equatoriano', 'equatoriana'],
+    BO: ['bolivia', 'boliviano', 'boliviana', 'bolivian'],
+    CA: ['canada', 'canadense', 'canadenses', 'canadian'],
+    AU: ['australia', 'australiano', 'australiana', 'australian'],
+    IN: ['india', 'indiano', 'indiana', 'indianos', 'indian'],
+    ZA: ['africa do sul', 'south africa', 'sul africano', 'sul africana', 'south african'],
+    TR: ['turquia', 'turkey', 'turkiye', 'turco', 'turca', 'turkish'],
+    SA: ['arabia saudita', 'saudi arabia', 'saudita', 'saudi'],
+    EG: ['egito', 'egypt', 'egipcio', 'egipcia', 'egyptian'],
+    PL: ['polonia', 'poland', 'polska', 'polones', 'polonesa', 'polish'],
+    NL: ['paises baixos', 'holanda', 'netherlands', 'holland', 'holandes', 'holandesa', 'dutch'],
+    CH: ['suica', 'switzerland', 'suico', 'swiss'],
+    SE: ['suecia', 'sweden', 'sueco', 'sueca', 'swedish'],
+    NO: ['noruega', 'norway', 'noruegues', 'norueguesa', 'norwegian']
+  };
+
+  var CLIENT_REGIOES_GENERICAS = {
+    'america latina': 1, 'america do sul': 1, 'america do norte': 1, 'america central': 1,
+    'europa': 1, 'asia': 1, 'africa': 1, 'oceania': 1, 'mundo': 1, 'internacional': 1, 'global': 1, 'oriente medio': 1
+  };
+
+  function desacoplarPaisTextoClient(texto, countryName, a2, strictEmpty) {
+    var raw = String(texto || '').trim();
+    if (!raw) return '';
+    var up = String(a2 || '').toUpperCase().trim();
+    var cNorm = norm(countryName || '');
+    var frases = {};
+    if (cNorm) frases[cNorm] = 1;
+    var aliases = CLIENT_COUNTRY_ALIASES[up];
+    if (Array.isArray(aliases)) {
+      aliases.forEach(function (al) {
+        var an = norm(al);
+        if (an) frases[an] = 1;
+      });
+    }
+    if (strictEmpty) {
+      Object.keys(CLIENT_REGIOES_GENERICAS).forEach(function (rg) { frases[rg] = 1; });
+    }
+    var prepos = {
+      'do': 1, 'da': 1, 'dos': 1, 'das': 1, 'de': 1, 'no': 1, 'na': 1, 'nos': 1, 'nas': 1,
+      'em': 1, 'sobre': 1, 'para': 1, 'in': 1, 'of': 1, 'on': 1, 'en': 1, 'del': 1, 'du': 1, 'des': 1
+    };
+    var words = raw.replace(/\s+/g, ' ').trim().split(/\s+/).filter(Boolean);
+    var out = [];
+    for (var i = 0; i < words.length; i++) {
+      var w = words[i];
+      var wClean = norm(w.replace(/[^\p{L}\p{N}-]/gu, '').replace(/-/g, ' '));
+      if (!wClean) continue;
+      var skipped = false;
+      for (var span = 3; span >= 2; span--) {
+        if (i + span <= words.length) {
+          var cand = norm(words.slice(i, i + span).join(' ').replace(/[^\p{L}\p{N}\s-]/gu, ' ').replace(/-/g, ' ').replace(/\s+/g, ' '));
+          if (frases[cand]) {
+            while (out.length && prepos[norm(out[out.length - 1])]) out.pop();
+            i += span - 1;
+            skipped = true;
+            break;
+          }
+        }
+      }
+      if (skipped) continue;
+      var isCodeWithPrepo = up.length >= 2 && wClean === norm(up) && out.length > 0 && prepos[norm(out[out.length - 1])];
+      if (frases[wClean] || isCodeWithPrepo || (strictEmpty && wClean === norm(up))) {
+        while (out.length && prepos[norm(out[out.length - 1])]) out.pop();
+        continue;
+      }
+      out.push(w);
+    }
+    while (out.length && prepos[norm(out[0])]) out.shift();
+    while (out.length && prepos[norm(out[out.length - 1])]) out.pop();
+
+    var sig = out.filter(function (tk) {
+      var tn = norm(tk).replace(/[^\p{L}\p{N}]/gu, '');
+      return tn.length >= 2 && (!STOPWORDS_BUSCA || !STOPWORDS_BUSCA[tn]);
+    });
+    if (!sig.length) return strictEmpty ? '' : raw;
+    return out.join(' ').trim();
+  }
+
   function extrairTermoAssuntoBusca(titulo, categoria) {
     var raw = String(titulo || '').trim();
     if (!raw) return String(categoria || '').trim();
@@ -6058,6 +6376,16 @@
       preve: 1, prevem: 1, previu: 1, tem: 1, tera: 1, teve: 1, vai: 1, vao: 1,
       fala: 1, falou: 1, falam: 1, veja: 1, saiba: 1, entenda: 1, confira: 1,
       pode: 1, podem: 1, podia: 1, deve: 1, devem: 1, deveria: 1,
+      registra: 1, registrou: 1, registram: 1, cai: 1, caiu: 1, caem: 1,
+      sobe: 1, subiu: 1, sobem: 1, recua: 1, recuou: 1, atinge: 1, atingiu: 1,
+      marca: 1, marcou: 1, destaca: 1, destacou: 1, alerta: 1, alertou: 1,
+      adverte: 1, advertiu: 1, mostra: 1, mostrou: 1, revela: 1, revelou: 1,
+      indica: 1, indicou: 1, critica: 1, criticou: 1, rejeita: 1, rejeitou: 1,
+      aprova: 1, aprovou: 1, decide: 1, decidiu: 1, enfrenta: 1, enfrentou: 1,
+      busca: 1, buscou: 1, pede: 1, pediu: 1, envia: 1, enviou: 1,
+      mantem: 1, manteve: 1, segue: 1, seguiu: 1, passa: 1, passou: 1,
+      eleva: 1, elevou: 1, reduz: 1, reduziu: 1, aumenta: 1, aumentou: 1,
+      diminui: 1, diminuiu: 1, maior: 1, menor: 1, melhor: 1, pior: 1, lenta: 1, rapida: 1,
       apos: 1, antes: 1, sobre: 1, contra: 1, entre: 1, durante: 1, desde: 1, ate: 1,
       para: 1, com: 1, por: 1, sob: 1, sem: 1, como: 1, onde: 1, quando: 1, porque: 1,
       isso: 1, aquilo: 1, esse: 1, essa: 1, este: 1, esta: 1, estes: 1, estas: 1,
@@ -6076,21 +6404,43 @@
     tokens.forEach(function (w) {
       var wNorm = norm(w);
       if (wNorm.length < 2) return;
+      if (/^\d{4}$/.test(wNorm) || /^\d+$/.test(wNorm)) return;
       if (ignorar[wNorm] || (typeof STOPWORDS_BUSCA !== 'undefined' && STOPWORDS_BUSCA[wNorm])) return;
       significativos.push(w);
     });
 
     var finalTerms = [];
     if (matchedEnt) {
-      finalTerms.push(matchedEnt);
-      var entTokens = norm(matchedEnt).split(/\s+/);
-      significativos.forEach(function (w) {
-        if (entTokens.indexOf(norm(w)) === -1 && finalTerms.length < 3) {
-          finalTerms.push(w);
+      var entTokens = norm(matchedEnt).split(/\s+/).filter(Boolean);
+      var wordBudget = Math.max(0, 3 - entTokens.length);
+      var extras = [];
+      if (wordBudget > 0) {
+        var siglas = significativos.filter(function (w) {
+          return /^[A-Z0-9]{2,5}$/.test(w) && entTokens.indexOf(norm(w)) === -1;
+        });
+        siglas.forEach(function (w) {
+          if (extras.length < wordBudget) extras.push(w);
+        });
+        if (extras.length < wordBudget) {
+          significativos.forEach(function (w) {
+            if (extras.length < wordBudget && entTokens.indexOf(norm(w)) === -1 && extras.indexOf(w) === -1) {
+              extras.push(w);
+            }
+          });
         }
-      });
+      }
+      if (extras.length) {
+        finalTerms = extras.concat([matchedEnt]);
+      } else {
+        finalTerms = [matchedEnt];
+      }
     } else {
-      finalTerms = significativos.slice(0, 3);
+      var siglasSemEnt = significativos.filter(function (w) { return /^[A-Z0-9]{2,5}$/.test(w); });
+      if (siglasSemEnt.length && significativos.indexOf(siglasSemEnt[0]) > 2) {
+        finalTerms = [siglasSemEnt[0]].concat(significativos.filter(function (w) { return w !== siglasSemEnt[0]; })).slice(0, 3);
+      } else {
+        finalTerms = significativos.slice(0, 3);
+      }
     }
 
     if (finalTerms.length >= 2) {
@@ -6100,6 +6450,54 @@
       return finalTerms[0];
     }
     return t.split(/\s+/).slice(0, 3).join(' ') || raw.slice(0, 40);
+  }
+
+  function extrairTermoHotParaPais(hotItem, countryName, a2) {
+    if (!hotItem || typeof hotItem !== 'object') return '';
+    var kws = Array.isArray(hotItem.palavras_chave) ? hotItem.palavras_chave : [];
+    var escolhidas = [];
+    var seen = {};
+    var wordCount = 0;
+
+    for (var i = 0; i < kws.length; i++) {
+      var kwLimpa = desacoplarPaisTextoClient(kws[i], countryName, a2, true)
+        .replace(/^[.,;:!?()\-–—\s]+|[.,;:!?()\-–—\s]+$/g, '')
+        .trim();
+      var kn = norm(kwLimpa);
+      if (!kwLimpa || kn.length < 2 || /^\d{4}$/.test(kn)) continue;
+      if (STOPWORDS_BUSCA && STOPWORDS_BUSCA[kn]) continue;
+      var parts = kwLimpa.split(/\s+/).filter(Boolean);
+      if (!parts.length || parts.length > 3 || wordCount + parts.length > 3) continue;
+      var nov = parts.filter(function (p) { return !seen[norm(p)]; });
+      if (!nov.length) continue;
+      if (escolhidas.concat([kwLimpa]).join(' ').length > 40) continue;
+      escolhidas.push(kwLimpa);
+      parts.forEach(function (p) { seen[norm(p)] = 1; });
+      wordCount += parts.length;
+      if (wordCount >= 3) break;
+    }
+
+    if (escolhidas.length) {
+      return escolhidas.join(' ');
+    }
+
+    if (hotItem.termoBusca) {
+      var tbLimpo = desacoplarPaisTextoClient(hotItem.termoBusca, countryName, a2, true);
+      if (tbLimpo) {
+        var tbWords = tbLimpo.split(/\s+/).filter(Boolean);
+        return tbWords.length > 3 ? extrairTermoAssuntoBusca(tbLimpo, hotItem.category || '') : tbLimpo;
+      }
+    }
+
+    if (hotItem.title) {
+      var titSemPais = desacoplarPaisTextoClient(hotItem.title, countryName, a2, true);
+      if (titSemPais) {
+        return extrairTermoAssuntoBusca(titSemPais, hotItem.category || '');
+      }
+      return extrairTermoAssuntoBusca(hotItem.title, hotItem.category || '');
+    }
+
+    return String(countryName || a2 || '').trim();
   }
 
   function getSuggestionsForEmptyState(country, cont, topic, maxCount) {
@@ -6419,54 +6817,73 @@
     return score;
   }
 
+  function ehCJKClient(str) {
+    return /[\u3040-\u30ff\u3400-\u9fff\uac00-\ud7af]/u.test(String(str || ''));
+  }
+
+  function tokenCasaComLimiteClient(tk, alvo, palavrasAlvo) {
+    if (!tk) return false;
+    if (ehCJKClient(tk)) return alvo.indexOf(tk) > -1;
+    if (tk.length <= 3) return palavrasAlvo.indexOf(tk) > -1;
+    return alvo.indexOf(tk) > -1 || tokenCombinaFuzzy(tk, alvo, palavrasAlvo);
+  }
+
   function combinaTextoFuzzy(alvoTexto, termoNorm, tokens, expandedTerms) {
     if (!termoNorm) return true;
     var alvo = norm(String(alvoTexto || ''));
     if (!alvo) return false;
-    if (alvo.indexOf(termoNorm) > -1) return true;
+    var palavrasAlvo = alvo.replace(/[^\p{L}\p{N}\s]/gu, ' ').split(/\s+/).filter(Boolean);
+
+    if (ehCJKClient(termoNorm) && alvo.indexOf(termoNorm) > -1) return true;
+    if (!ehCJKClient(termoNorm) && termoNorm.length <= 3 && termoNorm.indexOf(' ') === -1) {
+      if (palavrasAlvo.indexOf(termoNorm) > -1) return true;
+    } else if (alvo.indexOf(termoNorm) > -1) {
+      return true;
+    }
+
     var relTokens = (tokens || []).filter(function (tk) { return tk.length >= 2 && !STOPWORDS_BUSCA[tk]; });
     var list = relTokens.length ? relTokens : (tokens || []);
     if (list.length === 0) return true;
 
-    // Para buscas com 1 palavra curta (ex: "lula", "stf", "pib", "moro"), não aceitar aproximações
     if (list.length === 1 && list[0].length <= 4) {
-      if (alvo.indexOf(list[0]) > -1) return true;
+      if (tokenCasaComLimiteClient(list[0], alvo, palavrasAlvo)) return true;
       var expShort = Array.isArray(expandedTerms) && expandedTerms.length ? expandedTerms : obterTermosExpandidosIA(termoNorm);
       for (var s = 0; s < expShort.length; s++) {
         var es = norm(expShort[s]);
-        if (es && es.length >= 3 && alvo.indexOf(es) > -1) return true;
+        if (es && es.length >= 2 && tokenCasaComLimiteClient(es, alvo, palavrasAlvo)) return true;
       }
       return false;
     }
 
-    var palavrasAlvo = alvo.replace(/[^a-z0-9\s]/g, ' ').split(/\s+/).filter(Boolean);
     var casados = 0;
     for (var i = 0; i < list.length; i++) {
       var tk = list[i];
-      if (alvo.indexOf(tk) > -1 || tokenCombinaFuzzy(tk, alvo, palavrasAlvo)) {
+      if (tokenCasaComLimiteClient(tk, alvo, palavrasAlvo)) {
         casados++;
       }
     }
 
     if (casados === list.length) return true;
     if (list.length === 2) {
-      if (casados >= 1 && list.some(function (tk) { return tk.length >= 4 && (alvo.indexOf(tk) > -1 || tokenCombinaFuzzy(tk, alvo, palavrasAlvo)); })) return true;
+      if (casados >= 1) return true;
     }
     if (list.length >= 3) {
-      if (casados >= Math.max(2, Math.ceil(list.length * 0.4))) return true;
+      if (casados >= Math.max(1, Math.ceil(list.length * 0.4))) return true;
     }
 
     // Se o artigo contiver algum dos termos expandidos pela Curadoria IA, aceita para pontuação ponderada
     var expList = Array.isArray(expandedTerms) && expandedTerms.length ? expandedTerms : obterTermosExpandidosIA(termoNorm);
     for (var k = 0; k < expList.length; k++) {
       var expItem = norm(expList[k]);
-      if (expItem && expItem.length >= 3 && alvo.indexOf(expItem) > -1) return true;
+      if (expItem && expItem.length >= 2 && tokenCasaComLimiteClient(expItem, alvo, palavrasAlvo)) return true;
     }
     return false;
   }
 
   function clearTopicSearch() {
     state.searchQuery = '';
+    state.searchFromContextualChip = false;
+    state.searchFromHotCompare = false;
     state.searchLoading = false;
     state.searchData = null;
     state.searchError = '';
@@ -6587,6 +7004,7 @@
     activeSearchController = window.AbortController ? new AbortController() : null;
 
     state.searchFromContextualChip = true;
+    state.searchFromHotCompare = false;
     state.searchQuery = label;
     state.searchLoading = true;
     state.searchError = '';
@@ -6688,6 +7106,7 @@
     formEl.addEventListener('submit', function (e) {
       e.preventDefault();
       state.searchFromContextualChip = false;
+      state.searchFromHotCompare = false;
       var q = (inputEl.value || '').trim();
       if (!q) {
         state.searchQuery = '';
@@ -6782,7 +7201,7 @@
     var cName = countryDisplayName(state.country, state.cont);
     var tLabel = currentTopicLabel();
     var ctxStr = cName + (tLabel ? ' · ' + tLabel : '');
-    var perLabelMap = { '24h': 'Últimas 24 horas', '7d': 'Últimos 7 dias' };
+    var perLabelMap = { '24h': 'Últimas 24 horas', '7d': 'Últimos 7 dias', '30d': 'Últimos 30 dias', 'all': 'Todo o período' };
     var perLabel = perLabelMap[state.searchPeriod] || 'Últimas 24 horas';
 
     var periods = [
@@ -6798,10 +7217,20 @@
           state.searchPeriod = per;
           state.periodManual = true;
           if (state.searchQuery) {
-            executeTopicSearch(state.searchQuery, { manualPeriod: true });
+            executeTopicSearch(state.searchQuery, { manualPeriod: true, fromHotCompareBtn: state.searchFromHotCompare });
           }
         });
       });
+    }
+
+    if (state.searchLoading) {
+      if (tlBox) tlBox.innerHTML = '';
+      box.innerHTML =
+        '<div class="topic-search-status loading" role="status">' +
+        '<span class="topic-search-spinner" aria-hidden="true"></span>' +
+        '<p>Comparando cobertura…</p>' +
+        '</div>';
+      return;
     }
 
     var data = state.searchData;
@@ -6817,7 +7246,7 @@
       });
       periodBtnsHTML += '</div>';
 
-      var fallbackLongNote = (data && data.fallbackDeFraseLonga)
+      var fallbackLongNote = (!state.searchFromHotCompare && data && data.fallbackDeFraseLonga)
         ? '<p class="perspective-dynamic-correction">Buscando termos centrais <strong>“' + esc(termoEfetivo) + '”</strong> <span class="perspective-correction-orig">(extraídos da busca ampla: “' + esc(data.fallbackDeFraseLonga) + '”)</span></p>'
         : '';
 
@@ -6830,17 +7259,6 @@
         '<p class="perspective-dynamic-meta">Contexto: <strong>' + esc(ctxStr) + '</strong> · Período: <strong>' + esc(perLabel) + '</strong></p>' +
         periodBtnsHTML +
         '</div>';
-    }
-
-    if (state.searchLoading) {
-      if (tlBox) tlBox.innerHTML = '';
-      box.innerHTML = dynBanner +
-        '<div class="topic-search-status loading" role="status">' +
-        '<span class="topic-search-spinner" aria-hidden="true"></span>' +
-        '<p>Buscando matérias sobre <strong>“' + esc(termoEfetivo) + '”</strong> em ' + esc(ctxStr) + '…</p>' +
-        '</div>';
-      bindPeriodButtons(box);
-      return;
     }
 
     if (state.searchError) {
@@ -6904,6 +7322,7 @@
       if (clearBtn) {
         clearBtn.addEventListener('click', function () {
           state.searchFromContextualChip = false;
+          state.searchFromHotCompare = false;
           state.searchQuery = '';
           state.searchData = null;
           state.searchError = '';
@@ -7076,6 +7495,9 @@
     if (!opts.manualPeriod && !opts.keepPeriod) {
       state.searchPeriod = opts.initialPeriod || '24h';
       state.periodManual = false;
+      state.searchFromHotCompare = !!opts.fromHotCompareBtn;
+    } else if (opts.fromHotCompareBtn) {
+      state.searchFromHotCompare = true;
     }
     if (q.length < 2) {
       state.searchQuery = q;
@@ -7102,7 +7524,7 @@
       var cachedData = clientSearchCache[cacheKey].data;
       if (periodo === '24h' && (!cachedData.grupos || !cachedData.grupos.length) && !state.periodManual) {
         state.searchPeriod = 'all';
-        executeTopicSearch(q, { keepPeriod: true });
+        executeTopicSearch(q, { keepPeriod: true, fromHotCompareBtn: opts.fromHotCompareBtn });
         return;
       }
       if (cachedData && cachedData.periodo && !state.periodManual) {
@@ -7149,7 +7571,7 @@
         if (activeSearchController) {
           try { activeSearchController.abort(); } catch (e) { }
         }
-      }, 10000);
+      }, 14000);
     }
 
     var doSearchFetch = function (url) {
@@ -7183,29 +7605,30 @@
         if (!data || !Array.isArray(data.grupos)) throw new Error('Invalid payload');
         if (periodo === '24h' && data.grupos.length === 0 && data.periodo !== '7d' && !state.periodManual) {
           state.searchPeriod = '7d';
-          executeTopicSearch(q, { keepPeriod: true, ignoreTopic: opts.ignoreTopic, fromHotCompareBtn: opts.fromHotCompareBtn, hasFallbackShortTerm: opts.hasFallbackShortTerm, hasHotCountryFallback: opts.hasHotCountryFallback, originalLongQuery: opts.originalLongQuery });
+          executeTopicSearch(q, { keepPeriod: true, ignoreTopic: opts.ignoreTopic, fromHotCompareBtn: opts.fromHotCompareBtn, hasFallbackShortTerm: opts.hasFallbackShortTerm, originalLongQuery: opts.originalLongQuery });
           return;
         }
         if (periodo === '7d' && data.grupos.length === 0 && data.periodo !== 'all' && !state.periodManual) {
           state.searchPeriod = 'all';
-          executeTopicSearch(q, { keepPeriod: true, ignoreTopic: true, fromHotCompareBtn: opts.fromHotCompareBtn, hasFallbackShortTerm: opts.hasFallbackShortTerm, hasHotCountryFallback: opts.hasHotCountryFallback, originalLongQuery: opts.originalLongQuery });
+          executeTopicSearch(q, { keepPeriod: true, ignoreTopic: true, fromHotCompareBtn: opts.fromHotCompareBtn, hasFallbackShortTerm: opts.hasFallbackShortTerm, originalLongQuery: opts.originalLongQuery });
           return;
         }
         if (data.grupos.length === 0 && !opts.hasFallbackShortTerm) {
-          var rawWords = q.trim().split(/\s+/).filter(Boolean);
+          var qSemPais = desacoplarPaisTextoClient(q, cName, cCode, true) || q;
+          var rawWords = qSemPais.trim().split(/\s+/).filter(Boolean);
           if (rawWords.length > 1) {
-            var centralTerm = extrairTermoAssuntoBusca(q);
+            var centralTerm = extrairTermoAssuntoBusca(qSemPais);
             if (!centralTerm || norm(centralTerm) === norm(q)) {
+              var siglaWord = rawWords.find(function (w) { return /^[A-Z0-9]{2,5}$/.test(w); });
               var capWord = rawWords.find(function (w) { return /^[A-ZÀ-Ý]/.test(w) && w.length >= 3; });
-              centralTerm = capWord || rawWords.slice().sort(function (a, b) { return b.length - a.length; })[0];
+              centralTerm = siglaWord || capWord || rawWords.slice().sort(function (a, b) { return b.length - a.length; })[0];
             }
-            if (centralTerm && norm(centralTerm) !== norm(q)) {
+            if (centralTerm && norm(centralTerm) !== norm(q) && (!cName || norm(centralTerm) !== norm(cName))) {
               var inpFallback = panel ? panel.querySelector('#topic-search-input') : null;
               if (inpFallback) inpFallback.value = centralTerm;
               executeTopicSearch(centralTerm, {
                 hasFallbackShortTerm: true,
-                hasHotCountryFallback: opts.hasHotCountryFallback,
-                originalLongQuery: q,
+                originalLongQuery: opts.fromHotCompareBtn ? '' : q,
                 keepPeriod: true,
                 ignoreTopic: opts.ignoreTopic,
                 fromHotCompareBtn: opts.fromHotCompareBtn
@@ -7214,23 +7637,7 @@
             }
           }
         }
-        if (data.grupos.length === 0 && opts.fromHotCompareBtn && !opts.hasHotCountryFallback && cName && norm(q) !== norm(cName)) {
-          var fallbackCountryTerm = (Array.isArray(liveTrendingByCountry[cCode]) && liveTrendingByCountry[cCode][0]) || cName;
-          if (fallbackCountryTerm && norm(fallbackCountryTerm) !== norm(q)) {
-            var inpCountryFb = panel ? panel.querySelector('#topic-search-input') : null;
-            if (inpCountryFb) inpCountryFb.value = fallbackCountryTerm;
-            executeTopicSearch(fallbackCountryTerm, {
-              hasFallbackShortTerm: true,
-              hasHotCountryFallback: true,
-              originalLongQuery: opts.originalLongQuery || q,
-              keepPeriod: true,
-              ignoreTopic: true,
-              fromHotCompareBtn: true
-            });
-            return;
-          }
-        }
-        if (opts.originalLongQuery) {
+        if (opts.originalLongQuery && !opts.fromHotCompareBtn) {
           data.fallbackDeFraseLonga = opts.originalLongQuery;
         }
         if (data.periodo && !state.periodManual) {
@@ -7300,20 +7707,27 @@
   }
 
   function clientSideRssFallback(q, outlets, tTerm, lang, cacheKey, periodo, isRetry, originalLongQuery) {
+    var cCur = state.country;
+    var cCode = cCur ? ((state.cont === 'sul' && (cCur.a2 === 'FR' || cCur.id === '250')) ? 'GF' : (cCur.a2 || cCur.id || '')) : '';
+    var cName = cCur ? countryDisplayName(cCur, state.cont) : '';
     var qCorrigido = corrigirTermoBusca(q);
     var qBase = (qCorrigido && norm(qCorrigido) !== norm(q)) ? qCorrigido : q;
-    var translatePromise = (lang && lang !== 'pt') ? translateSingleTextGoogle(qBase, lang) : Promise.resolve(qBase);
+    var qLocalFb = desacoplarPaisTextoClient(qBase, cName, cCode, false) || qBase;
+    var translatePromise = (lang && lang !== 'pt') ? translateSingleTextGoogle(qLocalFb, lang) : Promise.resolve(qLocalFb);
     var translateTopicPromise = (tTerm && lang && lang !== 'pt') ? translateSingleTextGoogle(tTerm, lang) : Promise.resolve(tTerm || '');
     Promise.all([translatePromise, translateTopicPromise]).then(function (trArr) {
       var qTranslated = trArr[0];
       var tTranslated = trArr[1] || tTerm || '';
-      var qEffective = (qTranslated && norm(qTranslated) !== norm(qBase)) ? qTranslated : qBase;
-      var termoNorm = norm(qBase);
-      var tokens = termoNorm.split(/\s+/).filter(function (tk) { return tk.length >= 2; });
+      var qEffective = (qTranslated && norm(qTranslated) !== norm(qLocalFb)) ? qTranslated : qLocalFb;
+      var splitClientToks = function (txt) {
+        return norm(txt).replace(/[^\p{L}\p{N}\s]/gu, ' ').split(/\s+/).filter(function (tk) { return tk.length >= 2; });
+      };
+      var termoNorm = norm(qLocalFb);
+      var tokens = splitClientToks(qLocalFb);
       var termoOrigNorm = norm(q);
-      var tokensOrig = termoOrigNorm.split(/\s+/).filter(function (tk) { return tk.length >= 2; });
+      var tokensOrig = splitClientToks(q);
       var termoTradNorm = norm(qEffective);
-      var tokensTrad = termoTradNorm.split(/\s+/).filter(function (tk) { return tk.length >= 2; });
+      var tokensTrad = splitClientToks(qEffective);
       var mkt = lang === 'pt' ? 'pt-BR' : (lang === 'es' ? 'es-ES' : (lang === 'fr' ? 'fr-FR' : 'en-US'));
       var intervalQft = periodo === '24h' ? '&qft=interval%3d%227%22' : '&qft=interval%3d%228%22';
       var maxFallbackOutlets = 5;
@@ -7354,7 +7768,10 @@
                 combinaTextoFuzzy(textoAlvo, termoTradNorm, tokensTrad) ||
                 combinaTextoFuzzy(textoAlvo, termoOrigNorm, tokensOrig);
             }).map(function (art) {
-              art.rel = calcularRelevanciaClient(art, termoNorm, tokens);
+              art.rel = Math.max(
+                calcularRelevanciaClient(art, termoNorm, tokens),
+                calcularRelevanciaClient(art, termoTradNorm, tokensTrad)
+              );
               return art;
             }).sort(function (a, b) {
               var diffRel = (b.rel || 0) - (a.rel || 0);
@@ -7384,12 +7801,12 @@
           return;
         }
         if (grupos.length === 0 && !originalLongQuery) {
-          var rawWords = q.trim().split(/\s+/).filter(Boolean);
+          var rawWords = qLocalFb.trim().split(/\s+/).filter(Boolean);
           if (rawWords.length > 4) {
-            var centralTerm = extrairTermoAssuntoBusca(q);
-            if (centralTerm && norm(centralTerm) !== norm(q)) {
+            var centralTerm = extrairTermoAssuntoBusca(qLocalFb);
+            if (centralTerm && norm(centralTerm) !== norm(q) && (!cName || norm(centralTerm) !== norm(cName))) {
               var shortKey = [norm(centralTerm), state.cont, cCode, state.topic || 'all', state.bias || 'all', periodo].join('|');
-              clientSideRssFallback(centralTerm, outlets, tTerm, lang, shortKey, periodo, true, q);
+              clientSideRssFallback(centralTerm, outlets, tTerm, lang, shortKey, periodo, true, state.searchFromHotCompare ? '' : q);
               return;
             }
           }
@@ -7398,7 +7815,7 @@
         var data = {
           termo: q,
           termoCorrigido: (qCorrigido && norm(qCorrigido) !== norm(q)) ? qCorrigido : '',
-          fallbackDeFraseLonga: originalLongQuery || '',
+          fallbackDeFraseLonga: state.searchFromHotCompare ? '' : (originalLongQuery || ''),
           periodo: periodo || '24h',
           grupos: grupos,
           totalArtigos: grupos.reduce(function (acc, g) { return acc + g.artigos.length; }, 0)
@@ -11757,7 +12174,12 @@
 
   function getRadarItemKey(item) {
     if (!item) return '';
-    return String(item.fonte_url || item.titulo || '');
+    var id = String(item.id || item.slug || '').trim();
+    var u = String(item.fonte_url || '').trim();
+    var t = normalizeNewsFavTitle(item.titulo || '');
+    if (id) return id + (t ? '|' + t : '');
+    if (u && !isNonUniqueNewsUrl(u)) return t ? (u + '|' + t) : u;
+    return t || u;
   }
 
   function getRadarPubTimestamp(item) {
@@ -12396,9 +12818,9 @@
     }
     var rSummary = (item.resumo || '') + (item.analise ? ' | ' + item.analise : '');
     card += '<div class="item-action-btns">';
-    if (item.fonte_url) {
+    if (item.fonte_url || item.titulo) {
       card += renderNewsFavBtn({
-        url: item.fonte_url,
+        url: item.fonte_url || '/radar',
         title: item.titulo,
         source: item.fonte_nome,
         countryCode: 'BR',
@@ -14933,6 +15355,8 @@
       state.pinnedOutlet = opts.pinnedOutlet || null;
       state.searchQuery = '';
       state.searchPeriod = '24h';
+      state.searchFromContextualChip = false;
+      state.searchFromHotCompare = false;
       state.searchLoading = false;
       state.searchData = null;
       state.searchError = '';
@@ -17048,9 +17472,26 @@
           pNoticias.querySelectorAll('[data-remove-fav-news]').forEach(function (btn) {
             btn.addEventListener('click', function () {
               var i = Number(btn.getAttribute('data-remove-fav-news'));
+              var removed = favState.noticias[i];
               favState.noticias.splice(i, 1);
               saveFavorites();
               renderFavoritesDialogContent();
+              if (removed) {
+                var removedKey = removed.key || getNewsFavKey(removed.url, removed.title);
+                if (removedKey) {
+                  document.querySelectorAll('button[data-fav-news]').forEach(function (starBtn) {
+                    var bUrl = starBtn.getAttribute('data-news-url') || '';
+                    var bTitle = starBtn.getAttribute('data-news-title') || '';
+                    if (getNewsFavKey(bUrl, bTitle) === removedKey) {
+                      starBtn.classList.remove('is-fav');
+                      starBtn.setAttribute('aria-pressed', 'false');
+                      starBtn.innerHTML = ICON_STAR_OFF;
+                      starBtn.title = 'Salvar notícia nos favoritos';
+                      starBtn.setAttribute('aria-label', 'Favoritar notícia');
+                    }
+                  });
+                }
+              }
               if (state.country && state.searchData) renderTopicSearchResults();
             });
           });
