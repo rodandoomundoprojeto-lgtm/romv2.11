@@ -11048,12 +11048,19 @@ button.support-link.topbar-more-btn:hover {
   margin-bottom: var(--space-3);
   padding-bottom: var(--space-2);
   border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
 }
 .radar-section-title {
   margin: 0;
   font-size: var(--text-lg);
   font-weight: 700;
   color: var(--text);
+}
+.radar-section-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-shrink: 0;
 }
 .radar-section-count {
   font-size: var(--text-xs);
@@ -11072,50 +11079,38 @@ button.support-link.topbar-more-btn:hover {
 .radar-videos-carousel {
   position: relative;
 }
+.radar-carousel-controls {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
 .radar-carousel-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 3;
-  width: 38px;
-  height: 38px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   border: 1px solid var(--border);
-  background: rgba(15, 23, 42, 0.88);
+  background: var(--surface-2);
   color: var(--text);
-  font-size: 1.5rem;
+  font-size: 1.25rem;
+  font-weight: 700;
   line-height: 1;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
   transition: background var(--transition), border-color var(--transition), transform var(--transition), color var(--transition);
-  backdrop-filter: blur(6px);
+  padding: 0;
 }
 .radar-carousel-btn:hover {
   background: var(--primary);
   border-color: var(--primary);
   color: #fff;
-  transform: translateY(-50%) scale(1.06);
+  transform: scale(1.08);
 }
 .radar-carousel-btn:focus-visible {
   outline: 2px solid var(--primary);
   outline-offset: 2px;
-}
-.radar-carousel-prev {
-  left: -19px;
-}
-.radar-carousel-next {
-  right: -19px;
-}
-@media (max-width: 1200px) {
-  .radar-carousel-prev {
-    left: 6px;
-  }
-  .radar-carousel-next {
-    right: 6px;
-  }
 }
 @keyframes radarVideoCarouselFadeIn {
   from {

@@ -12581,16 +12581,18 @@
         var videoSectionHtml = '<section class="radar-section-block radar-section-videos" id="radar-videos-section" aria-labelledby="radar-videos-heading">';
         videoSectionHtml += '<div class="radar-section-header">';
         videoSectionHtml += '<h3 class="radar-section-title" id="radar-videos-heading">🎬 Resumo de Vídeos</h3>';
+        videoSectionHtml += '<div class="radar-section-actions">';
         videoSectionHtml += '<span class="radar-section-count" id="radar-videos-count">' + videoCountLabel + '</span>';
+        if (hasCarouselControls) {
+          videoSectionHtml += '<div class="radar-carousel-controls">';
+          videoSectionHtml += '<button type="button" class="radar-carousel-btn radar-carousel-prev" id="radar-video-prev" aria-label="Vídeos anteriores" title="Voltar vídeos">&#8249;</button>';
+          videoSectionHtml += '<button type="button" class="radar-carousel-btn radar-carousel-next" id="radar-video-next" aria-label="Próximos vídeos" title="Avançar vídeos">&#8250;</button>';
+          videoSectionHtml += '</div>';
+        }
+        videoSectionHtml += '</div>';
         videoSectionHtml += '</div>';
         videoSectionHtml += '<div class="radar-videos-carousel">';
-        if (hasCarouselControls) {
-          videoSectionHtml += '<button type="button" class="radar-carousel-btn radar-carousel-prev" id="radar-video-prev" aria-label="Vídeos anteriores" title="Voltar 3 vídeos">&#8249;</button>';
-        }
         videoSectionHtml += '<div class="radar-cards-grid radar-videos-carousel-grid" id="radar-videos-grid">' + videosGridHtml + '</div>';
-        if (hasCarouselControls) {
-          videoSectionHtml += '<button type="button" class="radar-carousel-btn radar-carousel-next" id="radar-video-next" aria-label="Próximos vídeos" title="Avançar 3 vídeos">&#8250;</button>';
-        }
         videoSectionHtml += '</div>';
         videoSectionHtml += '</section>';
         htmlParts.push(videoSectionHtml);
@@ -12675,6 +12677,28 @@
           videosSectionEl.addEventListener('mouseleave', function () {
             radarVideoCarouselHover = false;
           });
+          var touchStartX = 0;
+          var touchStartY = 0;
+          videosSectionEl.addEventListener('touchstart', function (e) {
+            if (e.changedTouches && e.changedTouches.length > 0) {
+              touchStartX = e.changedTouches[0].clientX;
+              touchStartY = e.changedTouches[0].clientY;
+            }
+          }, { passive: true });
+          videosSectionEl.addEventListener('touchend', function (e) {
+            if (e.changedTouches && e.changedTouches.length > 0) {
+              var diffX = e.changedTouches[0].clientX - touchStartX;
+              var diffY = e.changedTouches[0].clientY - touchStartY;
+              if (Math.abs(diffX) > 40 && Math.abs(diffX) > Math.abs(diffY) * 1.4) {
+                if (diffX < 0) {
+                  updateVideoCarouselSlide(1);
+                } else {
+                  updateVideoCarouselSlide(-1);
+                }
+                resetVideoCarouselTimer();
+              }
+            }
+          }, { passive: true });
         }
         resetVideoCarouselTimer();
       }
