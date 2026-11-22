@@ -2,145 +2,278 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-22T09:43:42Z",
-  "batch_id": "20261122-0943",
+  "updatedAt": "2026-11-22T09:59:50Z",
+  "batch_id": "20261122-0959",
   "temas_ativos": [
     {
-      "slug": "ucrania-combate-subterraneo-gasoduto-kharkiv",
-      "titulo_tema": "Forças ucranianas e russas travam combates subterrâneos em antigo gasoduto em Kharkiv",
-      "titulo_curto": "Forças ucranianas e russas travam combates subterrâneos em antigo gasoduto em Kharkiv",
+      "slug": "bancos-rebaixam-brasil-fuga-capital-mexico-fiscal",
+      "titulo_tema": "Bancos Globais Rebaixam Brasil e Preferem México Diante de Incerteza Fiscal e Juros",
       "status": "novo",
-      "origem_pipeline": "pulso",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Politica",
+        "Geopolitica_Radar"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 92,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-24T09:59:50Z",
+      "palavras_chave_busca": [
+        "investimento estrangeiro",
+        "mercados emergentes",
+        "rebaixamento brasil",
+        "mexico economia",
+        "risco fiscal",
+        "taxa selic"
+      ],
+      "gatilho_vitrine": "EXIBIR_DESTAQUE_HOME_ECONOMIA",
+      "sintese_nerd": "A deterioração do cenário fiscal brasileiro e os juros elevados levaram bancões globais a rebaixar ativos do país, transferindo fluxo de capital emergente para o México. Essa realocação pressiona o câmbio do real e reduz a margem para cortes na taxa Selic no curto prazo.",
+      "data_publicacao": "2026-11-22T09:59:50Z",
+      "updated_at": "2026-11-22T09:59:50Z"
+    },
+    {
+      "slug": "eua-china-corrida-tecnologica-chips-inteligencia-artificial",
+      "titulo_tema": "Guerra Fria da IA: Modelos Chineses Usam Nuvem Americana para Burlar Sanções de Chips",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
       "categoria_primaria": "Geopolitica_Radar",
-      "categoria": "Geopolitica_Relacoes",
       "categorias_cruzadas": [
         "Economia",
-        "Resumo_Ultimas"
+        "Cultura"
       ],
       "rota_editoria": "/radar",
-      "relevancia_score": 89,
-      "urgencia_score": 90,
+      "relevancia_score": 88,
+      "ttl_horas": 72,
+      "expires_at": "2026-11-25T09:59:50Z",
+      "palavras_chave_busca": [
+        "inteligencia artificial",
+        "eua china ia",
+        "chips de ia",
+        "nvidia data centers",
+        "sancoes tecnologicas",
+        "regulacao digital"
+      ],
+      "gatilho_vitrine": "BOOST_BUSCA_TECNOLOGIA_GEOPOLITICA",
+      "sintese_nerd": "Provedores chineses de IA aproveitam o aluguel de data centers em solo americano equipados com chips avançados para treinar e distribuir seus modelos globalmente. A brecha expõe a dificuldade dos EUA em aplicar sanções tecnológicas eficazes sem estrangular o próprio mercado de computação em nuvem.",
+      "data_publicacao": "2026-11-22T09:59:50Z",
+      "updated_at": "2026-11-22T09:59:50Z"
+    },
+    {
+      "slug": "stf-concentracao-processos-moraes-imunidade-parlamentar",
+      "titulo_tema": "Concentração de Processos Criminais no STF Tenciona Relação com o Congresso",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Politica",
+      "categorias_cruzadas": [
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/politica",
+      "relevancia_score": 85,
+      "ttl_horas": 36,
+      "expires_at": "2026-11-23T21:59:50Z",
+      "palavras_chave_busca": [
+        "supremo tribunal federal",
+        "alexandre de moraes",
+        "imunidade parlamentar",
+        "processos criminais",
+        "congresso nacional",
+        "flavio dino"
+      ],
+      "gatilho_vitrine": "EXIBIR_RADAR_POLITICA",
+      "sintese_nerd": "Com 44% dos casos criminais sob relatoria de um único ministro e novos votos sobre os limites da imunidade parlamentar, o STF reacende o embate institucional com o Poder Legislativo. O cenário mantém elevada a temperatura política em Brasília e pressiona a pauta de reformas no Congresso.",
+      "data_publicacao": "2026-11-22T09:59:50Z",
+      "updated_at": "2026-11-22T09:59:50Z"
+    },
+    {
+      "slug": "protestos-franca-custo-de-vida-servicos-publicos",
+      "titulo_tema": "França Enfrenta Sexto Fim de Semana de Manifestações Contra Custo de Vida",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Cultura"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 82,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-23T09:59:50Z",
+      "palavras_chave_busca": [
+        "protestos franca",
+        "custo de vida europa",
+        "inflacao uniao europeia",
+        "servicos publicos",
+        "emmanuel macron",
+        "crise europeia"
+      ],
+      "gatilho_vitrine": "EXIBIR_CARROSSEL_INTERNACIONAL",
+      "sintese_nerd": "Milhares de pessoas saíram às ruas em várias cidades francesas contestando a perda do poder de compra e o sucateamento dos serviços públicos. O descontentamento social na segunda maior economia da Zona do Euro reflete a persistência da inflação e pressiona o orçamento do governo francês.",
+      "data_publicacao": "2026-11-22T09:59:50Z",
+      "updated_at": "2026-11-22T09:59:50Z"
+    },
+    {
+      "slug": "terremoto-magnitude-peru-lima-alerta",
+      "titulo_tema": "Terremoto de Magnitude 6,9 Atinge o Peru e Causa Apreensão na América do Sul",
+      "status": "em_alta",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Resumo_Ultimas",
+      "categorias_cruzadas": [
+        "Geopolitica_Radar"
+      ],
+      "rota_editoria": "/ultimas-noticias",
+      "relevancia_score": 80,
+      "ttl_horas": 12,
+      "expires_at": "2026-11-22T21:59:50Z",
+      "palavras_chave_busca": [
+        "terremoto peru",
+        "tremor lima",
+        "sismo peru 6.9",
+        "defesa civil peru",
+        "alerta tsunami",
+        "abalo sismico"
+      ],
+      "gatilho_vitrine": "ALERT_Urgente",
+      "sintese_nerd": "Um forte abalo sísmico de magnitude 6,9 sacudiu o Peru e foi sentido na capital Lima, acionando protocolos de emergência na região andina. Eventos sísmicos nessa escala na Costa do Pacífico exigem monitoramento contínuo de danos à infraestrutura e alertas marítimos na América do Sul.",
+      "data_publicacao": "2026-11-22T09:59:50Z",
+      "updated_at": "2026-11-22T09:59:50Z"
+    },
+    {
+      "slug": "ucrania-combate-subterraneo-gasoduto-kharkiv",
+      "status": "novo",
+      "categoria": "Geopolitica_Relacoes",
       "ttl_horas": 24,
       "expires_at": "2026-11-23T09:43:42Z",
-      "palavras_chave_busca": [
-        "ucrânia",
-        "kharkiv",
-        "combate subterrâneo",
-        "gasoduto"
+      "updated_at": "2026-11-22T09:43:42Z",
+      "fontes_urls": [
+        "https://www.bbc.com/portuguese/articles/cm2d94xr6l1eo?at_medium=RSS&at_campaign=rss"
       ],
+      "titulo_tema": "Forças ucranianas e russas travam combates subterrâneos em antigo gasoduto em Kharkiv",
+      "resumo_pulso": "Conforme reportado pela BBC News Brasil, tropas ucranianas e russas disputam o controle de um antigo gasoduto desativado da era soviética na região de Kharkiv. A tubulação subterrânea tornou-se um corredor tático decisivo para incursões de curta distância no leste da Ucrânia.",
+      "sintese_nerd": "Intensificação dos combates táticos e riscos acrescidos na região de Kharkiv.",
+      "titulo_curto": "Forças ucranianas e russas travam combates subterrâneos em antigo gasoduto em Kharkiv",
+      "rota_editoria": "/radar",
       "palavras_chave": [
         "ucrânia",
         "kharkiv",
         "combate subterrâneo",
         "gasoduto"
       ],
+      "urgencia_score": 90,
+      "data_publicacao": "2026-11-22T09:40:48Z",
       "gatilho_vitrine": "Conforme reportado pela BBC News Brasil, tropas ucranianas e russas disputam o controle de um antigo gasoduto desativado da era soviética na região de Kharkiv. A tubulação subterrânea tornou-se um corredor tático decisivo para incursões de curta distância no leste da Ucrânia.",
-      "resumo_pulso": "Conforme reportado pela BBC News Brasil, tropas ucranianas e russas disputam o controle de um antigo gasoduto desativado da era soviética na região de Kharkiv. A tubulação subterrânea tornou-se um corredor tático decisivo para incursões de curta distância no leste da Ucrânia.",
-      "sintese_nerd": "Intensificação dos combates táticos e riscos acrescidos na região de Kharkiv.",
       "impacto_pratico": "Intensificação dos combates táticos e riscos acrescidos na região de Kharkiv.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "BBC News Brasil"
+      ],
+      "relevancia_score": 89,
       "paises_envolvidos": [
         "UA",
         "RU"
       ],
-      "veiculos_origem": [
-        "BBC News Brasil"
-      ],
-      "fontes_urls": [
-        "https://www.bbc.com/portuguese/articles/cm2d94xr6l1eo?at_medium=RSS&at_campaign=rss"
-      ],
-      "data_publicacao": "2026-11-22T09:40:48Z",
-      "updated_at": "2026-11-22T09:43:42Z"
-    },
-    {
-      "slug": "navio-de-carga-russo-em-chamas-apos-ataque-de-drones-na-finlandia",
-      "titulo_tema": "Navio de carga russo pega fogo no Mar Báltico após suposto ataque de drones",
-      "titulo_curto": "Navio de carga russo pega fogo no Mar Báltico após suposto ataque de drones",
-      "status": "novo",
-      "origem_pipeline": "pulso",
       "categoria_primaria": "Geopolitica_Radar",
-      "categoria": "Geopolitica_Relacoes",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
       ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 91,
-      "urgencia_score": 93,
+      "palavras_chave_busca": [
+        "ucrânia",
+        "kharkiv",
+        "combate subterrâneo",
+        "gasoduto"
+      ]
+    },
+    {
+      "slug": "navio-de-carga-russo-em-chamas-apos-ataque-de-drones-na-finlandia",
+      "status": "novo",
+      "categoria": "Geopolitica_Relacoes",
       "ttl_horas": 18,
       "expires_at": "2026-11-23T03:43:42Z",
-      "palavras_chave_busca": [
-        "navio russo",
-        "mar báltico",
-        "finlândia",
-        "drones"
+      "updated_at": "2026-11-22T09:43:42Z",
+      "fontes_urls": [
+        "https://www.themoscowtimes.com/2026/11/22/russian-cargo-ship-still-on-fire-off-finland-after-attack-a94343"
       ],
+      "titulo_tema": "Navio de carga russo pega fogo no Mar Báltico após suposto ataque de drones",
+      "resumo_pulso": "Segundo reportagem do The Moscow Times, uma embarcação de carga russa permanece em chamas perto da costa da Finlândia após ser atingida por drones. Equipes marítimas trabalham no combate ao incêndio enquanto autoridades europeias monitoram os riscos ambientais e de navegação no Mar Báltico.",
+      "sintese_nerd": "Alerta para navegação comercial e risco de poluição marinha no Mar Báltico.",
+      "titulo_curto": "Navio de carga russo pega fogo no Mar Báltico após suposto ataque de drones",
+      "rota_editoria": "/radar",
       "palavras_chave": [
         "navio russo",
         "mar báltico",
         "finlândia",
         "drones"
       ],
+      "urgencia_score": 93,
+      "data_publicacao": "2026-11-22T09:23:25Z",
       "gatilho_vitrine": "Segundo reportagem do The Moscow Times, uma embarcação de carga russa permanece em chamas perto da costa da Finlândia após ser atingida por drones. Equipes marítimas trabalham no combate ao incêndio enquanto autoridades europeias monitoram os riscos ambientais e de navegação no Mar Báltico.",
-      "resumo_pulso": "Segundo reportagem do The Moscow Times, uma embarcação de carga russa permanece em chamas perto da costa da Finlândia após ser atingida por drones. Equipes marítimas trabalham no combate ao incêndio enquanto autoridades europeias monitoram os riscos ambientais e de navegação no Mar Báltico.",
-      "sintese_nerd": "Alerta para navegação comercial e risco de poluição marinha no Mar Báltico.",
       "impacto_pratico": "Alerta para navegação comercial e risco de poluição marinha no Mar Báltico.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "The Moscow Times"
+      ],
+      "relevancia_score": 91,
       "paises_envolvidos": [
         "RU",
         "FI"
       ],
-      "veiculos_origem": [
-        "The Moscow Times"
-      ],
-      "fontes_urls": [
-        "https://www.themoscowtimes.com/2026/11/22/russian-cargo-ship-still-on-fire-off-finland-after-attack-a94343"
-      ],
-      "data_publicacao": "2026-11-22T09:23:25Z",
-      "updated_at": "2026-11-22T09:43:42Z"
-    },
-    {
-      "slug": "senado-aprova-cordao-girassol-tulipa-vermelha-parkinson",
-      "titulo_tema": "Comissão do Senado aprova cordão com tulipa vermelha para identificação de pessoas com Parkinson",
-      "titulo_curto": "Comissão do Senado aprova cordão com tulipa vermelha para identificação de pessoas com Parkinson",
-      "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Cultura",
-      "categoria": "Sociedade_Cultura",
+      "categoria_primaria": "Geopolitica_Radar",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
       ],
-      "rota_editoria": "/cultura",
-      "relevancia_score": 87,
-      "urgencia_score": 85,
+      "palavras_chave_busca": [
+        "navio russo",
+        "mar báltico",
+        "finlândia",
+        "drones"
+      ]
+    },
+    {
+      "slug": "senado-aprova-cordao-girassol-tulipa-vermelha-parkinson",
+      "status": "novo",
+      "categoria": "Sociedade_Cultura",
       "ttl_horas": 24,
       "expires_at": "2026-11-23T09:43:42Z",
-      "palavras_chave_busca": [
-        "parkinson",
-        "senado",
-        "tulipa vermelha",
-        "prioridade"
+      "updated_at": "2026-11-22T09:43:42Z",
+      "fontes_urls": [
+        "https://www.poder360.com.br/poder-congresso/cas-aprova-cordao-de-identificacao-para-pessoas-com-parkinson/"
       ],
+      "titulo_tema": "Comissão do Senado aprova cordão com tulipa vermelha para identificação de pessoas com Parkinson",
+      "resumo_pulso": "Conforme divulgado pelo Poder360, a Comissão de Assuntos Sociais do Senado aprovou projeto de lei que institui a tulipa vermelha como símbolo nacional de identificação para pessoas com doença de Parkinson. O acessório opcional visa assegurar atendimento prioritário e humanizado em serviços públicos e privados.",
+      "sintese_nerd": "Garante maior facilidade na identificação e prioridade para pacientes com Parkinson no Brasil.",
+      "titulo_curto": "Comissão do Senado aprova cordão com tulipa vermelha para identificação de pessoas com Parkinson",
+      "rota_editoria": "/cultura",
       "palavras_chave": [
         "parkinson",
         "senado",
         "tulipa vermelha",
         "prioridade"
       ],
+      "urgencia_score": 85,
+      "data_publicacao": "2026-11-22T09:20:58Z",
       "gatilho_vitrine": "Conforme divulgado pelo Poder360, a Comissão de Assuntos Sociais do Senado aprovou projeto de lei que institui a tulipa vermelha como símbolo nacional de identificação para pessoas com doença de Parkinson. O acessório opcional visa assegurar atendimento prioritário e humanizado em serviços públicos e privados.",
-      "resumo_pulso": "Conforme divulgado pelo Poder360, a Comissão de Assuntos Sociais do Senado aprovou projeto de lei que institui a tulipa vermelha como símbolo nacional de identificação para pessoas com doença de Parkinson. O acessório opcional visa assegurar atendimento prioritário e humanizado em serviços públicos e privados.",
-      "sintese_nerd": "Garante maior facilidade na identificação e prioridade para pacientes com Parkinson no Brasil.",
       "impacto_pratico": "Garante maior facilidade na identificação e prioridade para pacientes com Parkinson no Brasil.",
-      "paises_envolvidos": [
-        "BR"
-      ],
+      "origem_pipeline": "pulso",
       "veiculos_origem": [
         "Poder360"
       ],
-      "fontes_urls": [
-        "https://www.poder360.com.br/poder-congresso/cas-aprova-cordao-de-identificacao-para-pessoas-com-parkinson/"
+      "relevancia_score": 87,
+      "paises_envolvidos": [
+        "BR"
       ],
-      "data_publicacao": "2026-11-22T09:20:58Z",
-      "updated_at": "2026-11-22T09:43:42Z"
+      "categoria_primaria": "Cultura",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "parkinson",
+        "senado",
+        "tulipa vermelha",
+        "prioridade"
+      ]
     },
     {
       "slug": "mexico-ganha-espaco-entre-emergentes-enquanto-brasil-perde-preferencia",
@@ -236,138 +369,6 @@
         "rússia",
         "guerra",
         "infraestrutura"
-      ]
-    },
-    {
-      "slug": "impasse-fossil-cop31-transicao-energetica-impactos",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-24T07:27:20Z",
-      "updated_at": "2026-11-22T07:27:20Z",
-      "titulo_tema": "Impasse sobre combustiveis fosseis prorroga COP31 em meio a disputa geopolitica",
-      "sintese_nerd": "O bloqueio nas negociacoes da COP31 reflete o choque entre paises dependentes da exportacao de hidrocarbonetos e blocos que exigem metas de descarbonizacao mais severas. Para o Brasil e o Sul Global, o desfecho impacta diretamente o financiamento climático internacional e os custos da transicao energetica matriz.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-22T07:27:20Z",
-      "gatilho_vitrine": "Exibir no topo do Radar Geopolitico e destacar analise de impacto no mercado de commodities energéticas.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 92,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Politica"
-      ],
-      "palavras_chave_busca": [
-        "cop31",
-        "combustiveis fosseis",
-        "transicao energetica",
-        "cupula do clima",
-        "mercado de carbono",
-        "petroleo global"
-      ]
-    },
-    {
-      "slug": "parceria-estrategica-brasil-uniao-europeia-comercio-geopolitica",
-      "status": "novo",
-      "ttl_horas": 72,
-      "expires_at": "2026-11-25T07:27:20Z",
-      "updated_at": "2026-11-22T07:27:20Z",
-      "titulo_tema": "Reconfiguracao das relacoes comerciais entre Brasil e Uniao Europeia",
-      "sintese_nerd": "A busca europeia por diversificacao de suprimentos e minerais criticos reabre espaco para consolidar acordos bilaterais e multilaterais com o Brasil. Esse movimento exige ajustes regulatorios nas exportacoes agroambientais brasileiras diante das exigencias de sustentabilidade do bloco europeu.",
-      "rota_editoria": "/politica",
-      "data_publicacao": "2026-11-22T07:27:20Z",
-      "gatilho_vitrine": "Agrupar artigos sobre diplomacia de negocios, exportacoes brasileiras e regulamentacao ambiental europeia.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 88,
-      "categoria_primaria": "Politica",
-      "categorias_cruzadas": [
-        "Economia",
-        "Geopolitica_Radar"
-      ],
-      "palavras_chave_busca": [
-        "uniao europeia e brasil",
-        "acordo mercosul ue",
-        "cadeia de suprimentos",
-        "diplomacia comercial",
-        "comercio exterior brasil"
-      ]
-    },
-    {
-      "slug": "novo-congresso-eua-ajuda-ucrania-fator-trump",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-24T07:27:20Z",
-      "updated_at": "2026-11-22T07:27:20Z",
-      "titulo_tema": "Articulacao diplomatica da Ucrania perante o novo Congresso dos EUA e o fator Donald Trump",
-      "sintese_nerd": "Com a nova composicao legislativa em Washington e a influencia da agenda de Donald Trump, Kiev acelera a reorganizacao das bancadas de apoio bilateral para garantir verbas militares e financeiras. Uma eventual reducao do auxilio norte-americano forçara a Uniao Europeia a assumir custos maiores na seguranca regional.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-22T07:27:20Z",
-      "gatilho_vitrine": "Destacar na aba Geopolitica e vincular aos dashboards de conflitos no Leste Europeu e Orcamento dos EUA.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 86,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Politica",
-        "Economia"
-      ],
-      "palavras_chave_busca": [
-        "congresso dos eua",
-        "ajuda a ucrania",
-        "donald trump",
-        "otan",
-        "guerra na ucrania",
-        "diplomacia americana"
-      ]
-    },
-    {
-      "slug": "reforma-tributaria-regulamentacao-cbs-ibs-reidi-contratos",
-      "status": "novo",
-      "ttl_horas": 120,
-      "expires_at": "2026-11-27T07:27:20Z",
-      "updated_at": "2026-11-22T07:27:20Z",
-      "titulo_tema": "Regulamentacao da Reforma Tributaria e impactos nos contratos de infraestrutura",
-      "sintese_nerd": "A definicao das regras de compensacao da CBS/IBS e a manutencao do REIDI reorganizam a matriz de risco e os calculos de equilibrio economico-financeiro em grandes concessoes. A transicao do sistema tributario exige previsibilidade juridica do STF para nao desestimular investimentos privados de longo prazo.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-22T07:27:20Z",
-      "gatilho_vitrine": "Impulsionar no hub de Economia e Politica Fiscal para leitores interessados em negocios e regulamentacao.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 82,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Politica"
-      ],
-      "palavras_chave_busca": [
-        "reforma tributaria",
-        "cbs e ibs",
-        "reidi",
-        "repeticao de indebito",
-        "seguranca juridica",
-        "infraestrutura brasil"
-      ]
-    },
-    {
-      "slug": "vulnerabilidade-critica-java-ciberseguranca-global-ia",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-24T07:27:20Z",
-      "updated_at": "2026-11-22T07:27:20Z",
-      "titulo_tema": "Descoberta de falha critica no Java acende alerta global de ciberseguranca",
-      "sintese_nerd": "A identificacao por IA de uma brecha estrutural no Java expoe infraestruturas criticas do sistema financeiro e corporativo mundial. O caso acelera o debate sobre auditoria automatizada e conformidade digital em empresas brasileiras de grande porte.",
-      "rota_editoria": "/cultura",
-      "data_publicacao": "2026-11-22T07:27:20Z",
-      "gatilho_vitrine": "Exibir na secao de Tecnologia e Sociedade destacando o papel da IA na auditoria de codigos corporativos.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 75,
-      "categoria_primaria": "Cultura",
-      "categorias_cruzadas": [
-        "Economia",
-        "Geopolitica_Radar"
-      ],
-      "palavras_chave_busca": [
-        "vulnerabilidade java",
-        "ciberseguranca",
-        "seguranca digital",
-        "inteligencia artificial hacking",
-        "sistemas corporativos"
       ]
     },
     {
@@ -845,107 +846,242 @@
       ]
     }
   ],
+  "temas_curadoria": [
+    {
+      "slug": "bancos-rebaixam-brasil-fuga-capital-mexico-fiscal",
+      "titulo_tema": "Bancos Globais Rebaixam Brasil e Preferem México Diante de Incerteza Fiscal e Juros",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Politica",
+        "Geopolitica_Radar"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 92,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-24T09:59:50Z",
+      "palavras_chave_busca": [
+        "investimento estrangeiro",
+        "mercados emergentes",
+        "rebaixamento brasil",
+        "mexico economia",
+        "risco fiscal",
+        "taxa selic"
+      ],
+      "gatilho_vitrine": "EXIBIR_DESTAQUE_HOME_ECONOMIA",
+      "sintese_nerd": "A deterioração do cenário fiscal brasileiro e os juros elevados levaram bancões globais a rebaixar ativos do país, transferindo fluxo de capital emergente para o México. Essa realocação pressiona o câmbio do real e reduz a margem para cortes na taxa Selic no curto prazo.",
+      "data_publicacao": "2026-11-22T09:59:50Z",
+      "updated_at": "2026-11-22T09:59:50Z"
+    },
+    {
+      "slug": "eua-china-corrida-tecnologica-chips-inteligencia-artificial",
+      "titulo_tema": "Guerra Fria da IA: Modelos Chineses Usam Nuvem Americana para Burlar Sanções de Chips",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Cultura"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 88,
+      "ttl_horas": 72,
+      "expires_at": "2026-11-25T09:59:50Z",
+      "palavras_chave_busca": [
+        "inteligencia artificial",
+        "eua china ia",
+        "chips de ia",
+        "nvidia data centers",
+        "sancoes tecnologicas",
+        "regulacao digital"
+      ],
+      "gatilho_vitrine": "BOOST_BUSCA_TECNOLOGIA_GEOPOLITICA",
+      "sintese_nerd": "Provedores chineses de IA aproveitam o aluguel de data centers em solo americano equipados com chips avançados para treinar e distribuir seus modelos globalmente. A brecha expõe a dificuldade dos EUA em aplicar sanções tecnológicas eficazes sem estrangular o próprio mercado de computação em nuvem.",
+      "data_publicacao": "2026-11-22T09:59:50Z",
+      "updated_at": "2026-11-22T09:59:50Z"
+    },
+    {
+      "slug": "stf-concentracao-processos-moraes-imunidade-parlamentar",
+      "titulo_tema": "Concentração de Processos Criminais no STF Tenciona Relação com o Congresso",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Politica",
+      "categorias_cruzadas": [
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/politica",
+      "relevancia_score": 85,
+      "ttl_horas": 36,
+      "expires_at": "2026-11-23T21:59:50Z",
+      "palavras_chave_busca": [
+        "supremo tribunal federal",
+        "alexandre de moraes",
+        "imunidade parlamentar",
+        "processos criminais",
+        "congresso nacional",
+        "flavio dino"
+      ],
+      "gatilho_vitrine": "EXIBIR_RADAR_POLITICA",
+      "sintese_nerd": "Com 44% dos casos criminais sob relatoria de um único ministro e novos votos sobre os limites da imunidade parlamentar, o STF reacende o embate institucional com o Poder Legislativo. O cenário mantém elevada a temperatura política em Brasília e pressiona a pauta de reformas no Congresso.",
+      "data_publicacao": "2026-11-22T09:59:50Z",
+      "updated_at": "2026-11-22T09:59:50Z"
+    },
+    {
+      "slug": "protestos-franca-custo-de-vida-servicos-publicos",
+      "titulo_tema": "França Enfrenta Sexto Fim de Semana de Manifestações Contra Custo de Vida",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Cultura"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 82,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-23T09:59:50Z",
+      "palavras_chave_busca": [
+        "protestos franca",
+        "custo de vida europa",
+        "inflacao uniao europeia",
+        "servicos publicos",
+        "emmanuel macron",
+        "crise europeia"
+      ],
+      "gatilho_vitrine": "EXIBIR_CARROSSEL_INTERNACIONAL",
+      "sintese_nerd": "Milhares de pessoas saíram às ruas em várias cidades francesas contestando a perda do poder de compra e o sucateamento dos serviços públicos. O descontentamento social na segunda maior economia da Zona do Euro reflete a persistência da inflação e pressiona o orçamento do governo francês.",
+      "data_publicacao": "2026-11-22T09:59:50Z",
+      "updated_at": "2026-11-22T09:59:50Z"
+    },
+    {
+      "slug": "terremoto-magnitude-peru-lima-alerta",
+      "titulo_tema": "Terremoto de Magnitude 6,9 Atinge o Peru e Causa Apreensão na América do Sul",
+      "status": "em_alta",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Resumo_Ultimas",
+      "categorias_cruzadas": [
+        "Geopolitica_Radar"
+      ],
+      "rota_editoria": "/ultimas-noticias",
+      "relevancia_score": 80,
+      "ttl_horas": 12,
+      "expires_at": "2026-11-22T21:59:50Z",
+      "palavras_chave_busca": [
+        "terremoto peru",
+        "tremor lima",
+        "sismo peru 6.9",
+        "defesa civil peru",
+        "alerta tsunami",
+        "abalo sismico"
+      ],
+      "gatilho_vitrine": "ALERT_Urgente",
+      "sintese_nerd": "Um forte abalo sísmico de magnitude 6,9 sacudiu o Peru e foi sentido na capital Lima, acionando protocolos de emergência na região andina. Eventos sísmicos nessa escala na Costa do Pacífico exigem monitoramento contínuo de danos à infraestrutura e alertas marítimos na América do Sul.",
+      "data_publicacao": "2026-11-22T09:59:50Z",
+      "updated_at": "2026-11-22T09:59:50Z"
+    }
+  ],
   "noticias_quentes": [
     {
       "slug": "ucrania-combate-subterraneo-gasoduto-kharkiv",
-      "titulo_curto": "Forças ucranianas e russas travam combates subterrâneos em antigo gasoduto em Kharkiv",
-      "resumo_pulso": "Conforme reportado pela BBC News Brasil, tropas ucranianas e russas disputam o controle de um antigo gasoduto desativado da era soviética na região de Kharkiv. A tubulação subterrânea tornou-se um corredor tático decisivo para incursões de curta distância no leste da Ucrânia.",
-      "impacto_pratico": "Intensificação dos combates táticos e riscos acrescidos na região de Kharkiv.",
       "categoria": "Geopolitica_Relacoes",
-      "paises_envolvidos": [
-        "UA",
-        "RU"
-      ],
-      "urgencia_score": 90,
-      "relevancia_score": 89,
-      "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 12,
-      "veiculos_origem": [
-        "BBC News Brasil"
-      ],
+      "expires_at": "2026-11-23T09:43:42Z",
+      "updated_at": "2026-11-22T09:43:42Z",
       "fontes_urls": [
         "https://www.bbc.com/portuguese/articles/cm2d94xr6l1eo?at_medium=RSS&at_campaign=rss"
       ],
+      "resumo_pulso": "Conforme reportado pela BBC News Brasil, tropas ucranianas e russas disputam o controle de um antigo gasoduto desativado da era soviética na região de Kharkiv. A tubulação subterrânea tornou-se um corredor tático decisivo para incursões de curta distância no leste da Ucrânia.",
+      "titulo_curto": "Forças ucranianas e russas travam combates subterrâneos em antigo gasoduto em Kharkiv",
       "palavras_chave": [
         "Ucrânia",
         "Kharkiv",
         "Combate subterrâneo",
         "Gasoduto"
       ],
+      "urgencia_score": 90,
       "data_publicacao": "2026-11-22T09:40:48Z",
-      "links_internos_relacionados": [],
-      "expires_at": "2026-11-23T09:43:42Z",
-      "updated_at": "2026-11-22T09:43:42Z"
+      "impacto_pratico": "Intensificação dos combates táticos e riscos acrescidos na região de Kharkiv.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "BBC News Brasil"
+      ],
+      "relevancia_score": 89,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "UA",
+        "RU"
+      ],
+      "links_internos_relacionados": []
     },
     {
       "slug": "navio-de-carga-russo-em-chamas-apos-ataque-de-drones-na-finlandia",
-      "titulo_curto": "Navio de carga russo pega fogo no Mar Báltico após suposto ataque de drones",
-      "resumo_pulso": "Segundo reportagem do The Moscow Times, uma embarcação de carga russa permanece em chamas perto da costa da Finlândia após ser atingida por drones. Equipes marítimas trabalham no combate ao incêndio enquanto autoridades europeias monitoram os riscos ambientais e de navegação no Mar Báltico.",
-      "impacto_pratico": "Alerta para navegação comercial e risco de poluição marinha no Mar Báltico.",
       "categoria": "Geopolitica_Relacoes",
-      "paises_envolvidos": [
-        "RU",
-        "FI"
-      ],
-      "urgencia_score": 93,
-      "relevancia_score": 91,
-      "nivel_confianca": "alta",
       "ttl_horas": 18,
-      "horas_em_destaque": 12,
-      "veiculos_origem": [
-        "The Moscow Times"
-      ],
+      "expires_at": "2026-11-23T03:43:42Z",
+      "updated_at": "2026-11-22T09:43:42Z",
       "fontes_urls": [
         "https://www.themoscowtimes.com/2026/11/22/russian-cargo-ship-still-on-fire-off-finland-after-attack-a94343"
       ],
+      "resumo_pulso": "Segundo reportagem do The Moscow Times, uma embarcação de carga russa permanece em chamas perto da costa da Finlândia após ser atingida por drones. Equipes marítimas trabalham no combate ao incêndio enquanto autoridades europeias monitoram os riscos ambientais e de navegação no Mar Báltico.",
+      "titulo_curto": "Navio de carga russo pega fogo no Mar Báltico após suposto ataque de drones",
       "palavras_chave": [
         "Navio russo",
         "Mar Báltico",
         "Finlândia",
         "Drones"
       ],
+      "urgencia_score": 93,
       "data_publicacao": "2026-11-22T09:23:25Z",
-      "links_internos_relacionados": [],
-      "expires_at": "2026-11-23T03:43:42Z",
-      "updated_at": "2026-11-22T09:43:42Z"
+      "impacto_pratico": "Alerta para navegação comercial e risco de poluição marinha no Mar Báltico.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "The Moscow Times"
+      ],
+      "relevancia_score": 91,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "RU",
+        "FI"
+      ],
+      "links_internos_relacionados": []
     },
     {
       "slug": "senado-aprova-cordao-girassol-tulipa-vermelha-parkinson",
-      "titulo_curto": "Comissão do Senado aprova cordão com tulipa vermelha para identificação de pessoas com Parkinson",
-      "resumo_pulso": "Conforme divulgado pelo Poder360, a Comissão de Assuntos Sociais do Senado aprovou projeto de lei que institui a tulipa vermelha como símbolo nacional de identificação para pessoas com doença de Parkinson. O acessório opcional visa assegurar atendimento prioritário e humanizado em serviços públicos e privados.",
-      "impacto_pratico": "Garante maior facilidade na identificação e prioridade para pacientes com Parkinson no Brasil.",
       "categoria": "Sociedade_Cultura",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "urgencia_score": 85,
-      "relevancia_score": 87,
-      "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 12,
-      "veiculos_origem": [
-        "Poder360"
-      ],
+      "expires_at": "2026-11-23T09:43:42Z",
+      "updated_at": "2026-11-22T09:43:42Z",
       "fontes_urls": [
         "https://www.poder360.com.br/poder-congresso/cas-aprova-cordao-de-identificacao-para-pessoas-com-parkinson/"
       ],
+      "resumo_pulso": "Conforme divulgado pelo Poder360, a Comissão de Assuntos Sociais do Senado aprovou projeto de lei que institui a tulipa vermelha como símbolo nacional de identificação para pessoas com doença de Parkinson. O acessório opcional visa assegurar atendimento prioritário e humanizado em serviços públicos e privados.",
+      "titulo_curto": "Comissão do Senado aprova cordão com tulipa vermelha para identificação de pessoas com Parkinson",
       "palavras_chave": [
         "Parkinson",
         "Senado",
         "Tulipa vermelha",
         "Prioridade"
       ],
+      "urgencia_score": 85,
       "data_publicacao": "2026-11-22T09:20:58Z",
+      "impacto_pratico": "Garante maior facilidade na identificação e prioridade para pacientes com Parkinson no Brasil.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Poder360"
+      ],
+      "relevancia_score": 87,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "BR"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "Movimentos sociais e parlamentares debatem investimentos em saúde, educação e transição ecológica",
           "url_existente": "https://www.rodandoomundo.com.br/saude",
-          "motivo_conexao": "Complementa a discussão sobre avanços em direitos de saúde e acessibilidade no Brasil."
+          "motivo_conexao": "Complementa a discussão sobre avanços em direitos de saúde e acessibilidade no Brasil.",
+          "titulo_existente": "Movimentos sociais e parlamentares debatem investimentos em saúde, educação e transição ecológica"
         }
-      ],
-      "expires_at": "2026-11-23T09:43:42Z",
-      "updated_at": "2026-11-22T09:43:42Z"
+      ]
     },
     {
       "slug": "mexico-ganha-espaco-entre-emergentes-enquanto-brasil-perde-preferencia",
@@ -1573,140 +1709,6 @@
           "motivo_conexao": "Confira dados sobre crescimento do setor de servicos e entrada de capital externo no pais.",
           "titulo_existente": "Economia no Brasil"
         }
-      ]
-    }
-  ],
-  "temas_curadoria": [
-    {
-      "slug": "impasse-fossil-cop31-transicao-energetica-impactos",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-24T07:27:20Z",
-      "updated_at": "2026-11-22T07:27:20Z",
-      "titulo_tema": "Impasse sobre combustiveis fosseis prorroga COP31 em meio a disputa geopolitica",
-      "sintese_nerd": "O bloqueio nas negociacoes da COP31 reflete o choque entre paises dependentes da exportacao de hidrocarbonetos e blocos que exigem metas de descarbonizacao mais severas. Para o Brasil e o Sul Global, o desfecho impacta diretamente o financiamento climático internacional e os custos da transicao energetica matriz.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-22T07:27:20Z",
-      "gatilho_vitrine": "Exibir no topo do Radar Geopolitico e destacar analise de impacto no mercado de commodities energéticas.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 92,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Politica"
-      ],
-      "palavras_chave_busca": [
-        "cop31",
-        "combustiveis fosseis",
-        "transicao energetica",
-        "cupula do clima",
-        "mercado de carbono",
-        "petroleo global"
-      ]
-    },
-    {
-      "slug": "parceria-estrategica-brasil-uniao-europeia-comercio-geopolitica",
-      "status": "novo",
-      "ttl_horas": 72,
-      "expires_at": "2026-11-25T07:27:20Z",
-      "updated_at": "2026-11-22T07:27:20Z",
-      "titulo_tema": "Reconfiguracao das relacoes comerciais entre Brasil e Uniao Europeia",
-      "sintese_nerd": "A busca europeia por diversificacao de suprimentos e minerais criticos reabre espaco para consolidar acordos bilaterais e multilaterais com o Brasil. Esse movimento exige ajustes regulatorios nas exportacoes agroambientais brasileiras diante das exigencias de sustentabilidade do bloco europeu.",
-      "rota_editoria": "/politica",
-      "data_publicacao": "2026-11-22T07:27:20Z",
-      "gatilho_vitrine": "Agrupar artigos sobre diplomacia de negocios, exportacoes brasileiras e regulamentacao ambiental europeia.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 88,
-      "categoria_primaria": "Politica",
-      "categorias_cruzadas": [
-        "Economia",
-        "Geopolitica_Radar"
-      ],
-      "palavras_chave_busca": [
-        "uniao europeia e brasil",
-        "acordo mercosul ue",
-        "cadeia de suprimentos",
-        "diplomacia comercial",
-        "comercio exterior brasil"
-      ]
-    },
-    {
-      "slug": "novo-congresso-eua-ajuda-ucrania-fator-trump",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-24T07:27:20Z",
-      "updated_at": "2026-11-22T07:27:20Z",
-      "titulo_tema": "Articulacao diplomatica da Ucrania perante o novo Congresso dos EUA e o fator Donald Trump",
-      "sintese_nerd": "Com a nova composicao legislativa em Washington e a influencia da agenda de Donald Trump, Kiev acelera a reorganizacao das bancadas de apoio bilateral para garantir verbas militares e financeiras. Uma eventual reducao do auxilio norte-americano forçara a Uniao Europeia a assumir custos maiores na seguranca regional.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-22T07:27:20Z",
-      "gatilho_vitrine": "Destacar na aba Geopolitica e vincular aos dashboards de conflitos no Leste Europeu e Orcamento dos EUA.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 86,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Politica",
-        "Economia"
-      ],
-      "palavras_chave_busca": [
-        "congresso dos eua",
-        "ajuda a ucrania",
-        "donald trump",
-        "otan",
-        "guerra na ucrania",
-        "diplomacia americana"
-      ]
-    },
-    {
-      "slug": "reforma-tributaria-regulamentacao-cbs-ibs-reidi-contratos",
-      "status": "novo",
-      "ttl_horas": 120,
-      "expires_at": "2026-11-27T07:27:20Z",
-      "updated_at": "2026-11-22T07:27:20Z",
-      "titulo_tema": "Regulamentacao da Reforma Tributaria e impactos nos contratos de infraestrutura",
-      "sintese_nerd": "A definicao das regras de compensacao da CBS/IBS e a manutencao do REIDI reorganizam a matriz de risco e os calculos de equilibrio economico-financeiro em grandes concessoes. A transicao do sistema tributario exige previsibilidade juridica do STF para nao desestimular investimentos privados de longo prazo.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-22T07:27:20Z",
-      "gatilho_vitrine": "Impulsionar no hub de Economia e Politica Fiscal para leitores interessados em negocios e regulamentacao.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 82,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Politica"
-      ],
-      "palavras_chave_busca": [
-        "reforma tributaria",
-        "cbs e ibs",
-        "reidi",
-        "repeticao de indebito",
-        "seguranca juridica",
-        "infraestrutura brasil"
-      ]
-    },
-    {
-      "slug": "vulnerabilidade-critica-java-ciberseguranca-global-ia",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-24T07:27:20Z",
-      "updated_at": "2026-11-22T07:27:20Z",
-      "titulo_tema": "Descoberta de falha critica no Java acende alerta global de ciberseguranca",
-      "sintese_nerd": "A identificacao por IA de uma brecha estrutural no Java expoe infraestruturas criticas do sistema financeiro e corporativo mundial. O caso acelera o debate sobre auditoria automatizada e conformidade digital em empresas brasileiras de grande porte.",
-      "rota_editoria": "/cultura",
-      "data_publicacao": "2026-11-22T07:27:20Z",
-      "gatilho_vitrine": "Exibir na secao de Tecnologia e Sociedade destacando o papel da IA na auditoria de codigos corporativos.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 75,
-      "categoria_primaria": "Cultura",
-      "categorias_cruzadas": [
-        "Economia",
-        "Geopolitica_Radar"
-      ],
-      "palavras_chave_busca": [
-        "vulnerabilidade java",
-        "ciberseguranca",
-        "seguranca digital",
-        "inteligencia artificial hacking",
-        "sistemas corporativos"
       ]
     }
   ]
