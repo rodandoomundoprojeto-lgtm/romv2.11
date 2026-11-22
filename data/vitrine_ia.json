@@ -2,145 +2,240 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-22T21:57:19Z",
-  "batch_id": "20261122-2156",
+  "updatedAt": "2026-11-22T22:39:18Z",
+  "batch_id": "20261122-2238",
   "temas_ativos": [
     {
-      "slug": "cop31-impasse-combustiveis-fosseis-frustracao-diplomatica",
-      "titulo_tema": "Impasse na COP31: O Fracasso de um Acordo sobre Combustíveis Fósseis e as Pressões Globais",
+      "slug": "ministro-educacao-coreia-do-sul-renuncia-fraudes-exames",
+      "titulo_tema": "Ministro da Educação da Coreia do Sul renuncia após falhas e transtornos em exames nacionais",
+      "titulo_curto": "Ministro da Educação da Coreia do Sul renuncia após falhas e transtornos em exames nacionais",
       "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Geopolitica_Radar",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Cultura",
+      "categoria": "Sociedade_Cultura",
       "categorias_cruzadas": [
         "Economia",
-        "Politica"
+        "Resumo_Ultimas"
       ],
-      "rota_editoria": "/radar",
+      "rota_editoria": "/cultura",
+      "relevancia_score": 83,
+      "urgencia_score": 85,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-23T22:39:18Z",
+      "palavras_chave_busca": [
+        "coreia do sul",
+        "educação",
+        "renúncia",
+        "vestibular",
+        "choi kyo-jin"
+      ],
+      "palavras_chave": [
+        "coreia do sul",
+        "educação",
+        "renúncia",
+        "vestibular",
+        "choi kyo-jin"
+      ],
+      "gatilho_vitrine": "Segundo apuração do Poder360 com base em agências internacionais, Choi Kyo-jin renunciou ao cargo de ministro da Educação da Coreia do Sul após mudanças de última hora nas regras do vestibular nacional provocarem forte instabilidade e protestos entre estudantes e famílias.",
+      "resumo_pulso": "Segundo apuração do Poder360 com base em agências internacionais, Choi Kyo-jin renunciou ao cargo de ministro da Educação da Coreia do Sul após mudanças de última hora nas regras do vestibular nacional provocarem forte instabilidade e protestos entre estudantes e famílias.",
+      "sintese_nerd": "Gera instabilidade política temporária no gabinete sul-coreano e atencão redobrada sobre processos de avaliação educacional.",
+      "impacto_pratico": "Gera instabilidade política temporária no gabinete sul-coreano e atencão redobrada sobre processos de avaliação educacional.",
+      "paises_envolvidos": [
+        "KR"
+      ],
+      "veiculos_origem": [
+        "Poder360"
+      ],
+      "fontes_urls": [
+        "https://www.poder360.com.br/poder-internacional/ministro-da-educacao-da-coreia-do-sul-renuncia-apos-fraudes-em-exames/"
+      ],
+      "data_publicacao": "2026-11-22T22:35:23Z",
+      "updated_at": "2026-11-22T22:39:18Z"
+    },
+    {
+      "slug": "dolar-digital-usdt-alta-pressao-cambial-real",
+      "status": "novo",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-23T22:25:43Z",
+      "updated_at": "2026-11-22T22:25:43Z",
+      "titulo_tema": "Pressão no câmbio: Dólar digital atinge R$ 6,15 no fim de semana e sinaliza abertura estressada",
+      "sintese_nerd": "A disparada do Tether (USDT) para R$ 6,15 durante o final de semana reflete a busca por proteção cambial pelo mercado cripto antes da abertura das bolsas. Essa divergência em relação ao dólar comercial sinaliza forte apreensão dos investidores com o cenário fiscal doméstico e o cenário de juros internacionais.",
+      "rota_editoria": "/economia",
+      "data_publicacao": "2026-11-22T22:25:43Z",
+      "gatilho_vitrine": "Destacar impacto do USDT no apetite ao risco e projecoes para o mercado cambial brasileiro.",
+      "origem_pipeline": "curadoria",
       "relevancia_score": 92,
-      "ttl_horas": 48,
-      "expires_at": "2026-11-24T21:57:19Z",
-      "palavras_chave_busca": [
-        "cop31",
-        "mudancas climaticas",
-        "combustiveis fosseis",
-        "transicao energetica",
-        "diplomacia ambiental",
-        "acordo do clima"
-      ],
-      "gatilho_vitrine": "Destacar o impasse diplomático na Turquia e as divergências sobre metas de descarbonização global",
-      "sintese_nerd": "A falta de consenso sobre a redução gradual de combustíveis fósseis travou as negociações da COP31, escancarando a divisão geopolítica entre países produtores e nações vulneráveis. Para o Brasil, o impasse pressiona a diplomacia ambiental e desafia planos de atração de capital estrangeiro para a transição verde.",
-      "data_publicacao": "2026-11-22T21:57:19Z",
-      "updated_at": "2026-11-22T21:57:19Z"
-    },
-    {
-      "slug": "trump-ameaca-ataques-ira-bloqueio-naval",
-      "titulo_tema": "Escalada no Oriente Médio: Trump Ameaça Novos Ataques ao Irã e Bloqueio Naval",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Politica"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 90,
-      "ttl_horas": 36,
-      "expires_at": "2026-11-24T09:57:19Z",
-      "palavras_chave_busca": [
-        "donald trump",
-        "ira",
-        "bloqueio naval",
-        "oriente medio",
-        "preco do petroleo",
-        "iaea",
-        "conflito geopolitico"
-      ],
-      "gatilho_vitrine": "Exibir análise de risco sobre a retomada de ofensivas militares dos EUA no Oriente Médio",
-      "sintese_nerd": "A declaração de Donald Trump sobre afundar embarcações iranianas que furem o bloqueio naval renova as tensões militares no Golfo Pérsico e eleva a instabilidade no setor energético. O aumento do risco geopolítico tende a pressionar os preços internacionais do petróleo, impactando o câmbio e a inflação de combustíveis no Brasil.",
-      "data_publicacao": "2026-11-22T21:57:19Z",
-      "updated_at": "2026-11-22T21:57:19Z"
-    },
-    {
-      "slug": "ue-proposta-taxacao-big-techs-orcamento-europeu",
-      "titulo_tema": "Regulação Digital: União Europeia Propõe Taxa Global sobre Big Techs",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
       "categoria_primaria": "Economia",
       "categorias_cruzadas": [
         "Politica",
         "Geopolitica_Radar"
       ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 86,
+      "palavras_chave_busca": [
+        "dolar digital",
+        "usdt",
+        "cotacao dolar",
+        "cambio",
+        "banco central",
+        "mercado financeiro",
+        "real desvalorizacao"
+      ]
+    },
+    {
+      "slug": "cop31-impasse-combustiveis-fosseis-transicao-energetica",
+      "status": "novo",
+      "ttl_horas": 72,
+      "expires_at": "2026-11-25T22:25:43Z",
+      "updated_at": "2026-11-22T22:25:43Z",
+      "titulo_tema": "COP31 encerra sem acordo global sobre eliminação gradual de combustíveis fósseis",
+      "sintese_nerd": "A COP31 consagrou-se como a mais longa e inconclusiva da história devido às divergências intransponíveis sobre o financiamento climático e a transição dos combustíveis fósseis. O fracasso diplomático amplia a incerteza regulatória para mercados emergentes exportadores de commodities e expõe os limites da diplomacia multilateral ambiental.",
+      "rota_editoria": "/radar",
+      "data_publicacao": "2026-11-22T22:25:43Z",
+      "gatilho_vitrine": "Exibir materias sobre o impasse diplomatico entre paises produtores de petroleo e blocos por metas de descarbonizacao.",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 88,
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Politica",
+        "Cultura"
+      ],
+      "palavras_chave_busca": [
+        "cop31",
+        "mudancas climaticas",
+        "combustiveis fosseis",
+        "transicao energetica",
+        "acordo do clima",
+        "diplomacia ambiental"
+      ]
+    },
+    {
+      "slug": "juros-altos-selic-custo-brasil-investimentos",
+      "status": "novo",
       "ttl_horas": 48,
-      "expires_at": "2026-11-24T21:57:19Z",
+      "expires_at": "2026-11-24T22:25:43Z",
+      "updated_at": "2026-11-22T22:25:43Z",
+      "titulo_tema": "Debate sobre permanência de juros elevados ressalta gargalos estruturais do Custo Brasil",
+      "sintese_nerd": "Economistas apontam que a manutenção dos juros em patamares elevados no Brasil deriva da incerteza fiscal sustentada e dos custos sistêmicos que reduzem a produtividade do setor privado. O binômio entre juros altos e entraves tributários continua a afastar o investimento direto estrangeiro e a estrangular a expansão produtiva.",
+      "rota_editoria": "/economia",
+      "data_publicacao": "2026-11-22T22:25:43Z",
+      "gatilho_vitrine": "Selecionar analises macroeconomicas detalhadas sobre a relacao entre divida publica e juros reais.",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 86,
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Politica"
+      ],
+      "palavras_chave_busca": [
+        "taxa selic",
+        "juros altos",
+        "custo brasil",
+        "banco central",
+        "politica monetaria",
+        "investimento estrangeiro",
+        "reforma tributaria"
+      ]
+    },
+    {
+      "slug": "uniao-europeia-taxacao-big-techs-orcamento-comunitario",
+      "status": "novo",
+      "ttl_horas": 48,
+      "expires_at": "2026-11-24T22:25:43Z",
+      "updated_at": "2026-11-22T22:25:43Z",
+      "titulo_tema": "União Europeia propõe tributação de multinacionais de tecnologia para reforçar orçamento",
+      "sintese_nerd": "A proposta da UE de impor uma taxa sobre a receita de multinacionais de tecnologia com faturamento global superior a 750 milhões de euros marca uma nova etapa na soberania fiscal digital. Caso aprovada, a medida deve redefinir padrões globais de tributação sobre plataformas de dados e inteligência artificial, influenciando legislações na América Latina.",
+      "rota_editoria": "/politica",
+      "data_publicacao": "2026-11-22T22:25:43Z",
+      "gatilho_vitrine": "Posicionar artigos sobre regulacao e tributacao de gigantes digitais no topo de Politica e Economia.",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 85,
+      "categoria_primaria": "Politica",
+      "categorias_cruzadas": [
+        "Economia",
+        "Cultura"
+      ],
       "palavras_chave_busca": [
         "uniao europeia",
         "taxacao big techs",
-        "imposto digital",
-        "regulacao de tecnologia",
-        "openai",
-        "economia digital"
-      ],
-      "gatilho_vitrine": "Mapear o avanço regulatório europeu contra gigantismo de tecnologia e tributação transfronteiriça",
-      "sintese_nerd": "A proposta da UE de tributar a receita líquida global de gigantes de tecnologia com faturamento acima de 750 milhões de euros visa financiar o orçamento europeu e frear a concentração de poder. A medida serve de precedente para discussões fiscais semelhantes no Brasil e na América Latina sobre a economia digital.",
-      "data_publicacao": "2026-11-22T21:57:19Z",
-      "updated_at": "2026-11-22T21:57:19Z"
+        "regulacao digital",
+        "imposto sobre gigantes de tecnologia",
+        "economia digital",
+        "receita liquida"
+      ]
     },
     {
-      "slug": "russia-intensifica-ataques-infraestrutura-energia-ucrania",
-      "titulo_tema": "Conflito Leste Europeu: Rússia Intensifica Ofensiva contra Rede de Energia na Ucrânia",
+      "slug": "dolar-digital-usdt-bate-r-615-em-negociacao-dominical",
+      "titulo_tema": "Cotação do dólar digital (USDT) atinge R$ 6,15 em negociações antecipadas no fim de semana",
+      "titulo_curto": "Cotação do dólar digital (USDT) atinge R$ 6,15 em negociações antecipadas no fim de semana",
       "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Economia",
+      "categoria": "Economia_Comercio",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 90,
+      "urgencia_score": 89,
+      "ttl_horas": 12,
+      "expires_at": "2026-11-23T10:39:18Z",
+      "palavras_chave_busca": [
+        "dólar digital",
+        "usdt",
+        "câmbio",
+        "mercado financeiro",
+        "economia"
+      ],
+      "palavras_chave": [
+        "dólar digital",
+        "usdt",
+        "câmbio",
+        "mercado financeiro",
+        "economia"
+      ],
+      "gatilho_vitrine": "Conforme dados do Poder360, a cotação do token USDT na corretora OKX distanciou-se do câmbio comercial tradicional e alcançou R$ 6,15 em transações realizadas neste domingo, sinalizando cautela e potencial pressão sobre o real para a abertura dos mercados.",
+      "resumo_pulso": "Conforme dados do Poder360, a cotação do token USDT na corretora OKX distanciou-se do câmbio comercial tradicional e alcançou R$ 6,15 em transações realizadas neste domingo, sinalizando cautela e potencial pressão sobre o real para a abertura dos mercados.",
+      "sintese_nerd": "Possível volatilidade cambial e maior busca por proteção em ativos digitais atrelados ao dólar na abertura do mercado financeiro nacional.",
+      "impacto_pratico": "Possível volatilidade cambial e maior busca por proteção em ativos digitais atrelados ao dólar na abertura do mercado financeiro nacional.",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "veiculos_origem": [
+        "Poder360"
+      ],
+      "fontes_urls": [
+        "https://www.poder360.com.br/poder-economia/dolar-digital-chega-a-r-615-em-negociacao-neste-domingo/"
+      ],
+      "data_publicacao": "2026-11-22T22:23:52Z",
+      "updated_at": "2026-11-22T22:39:18Z"
+    },
+    {
+      "slug": "trump-ameaca-ataques-ira-bloqueio-naval",
+      "status": "novo",
+      "ttl_horas": 48,
+      "expires_at": "2026-11-24T22:25:43Z",
+      "updated_at": "2026-11-22T22:25:43Z",
+      "titulo_tema": "Donald Trump ameaça retomar ataques ao Irã e afundar navios em furo a bloqueio naval",
+      "sintese_nerd": "A retórica agressiva de Donald Trump sobre restabelecer ataques e afundar embarcações iranianas eleva o risco geopolítico na rota do Estreito de Ormuz. O endurecimento das sanções navais ameaça restringir a oferta global de petróleo, gerando repasses inflacionários diretos nas cadeias produtivas globais.",
+      "rota_editoria": "/radar",
+      "data_publicacao": "2026-11-22T21:57:19Z",
+      "gatilho_vitrine": "Priorizar analise do impacto do cerco militar no preco do petroleo global e inflacao de combustiveis.",
       "origem_pipeline": "curadoria",
+      "relevancia_score": 94,
       "categoria_primaria": "Geopolitica_Radar",
       "categorias_cruzadas": [
-        "Resumo_Ultimas",
-        "Economia"
+        "Economia",
+        "Politica"
       ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 84,
-      "ttl_horas": 24,
-      "expires_at": "2026-11-23T21:57:19Z",
       "palavras_chave_busca": [
-        "guerra na ucrania",
-        "russia",
-        "infraestrutura energetica",
-        "zelensky",
-        "kharkiv",
-        "odesa",
-        "crise de energia"
-      ],
-      "gatilho_vitrine": "Monitorar o impacto tático dos ataques aéreos russos no suprimento de energia do inverno ucraniano",
-      "sintese_nerd": "Ofensivas com drones e mísseis contra regiões estratégicas como Odesa e Dnipropetrovsk buscam desestabilizar a infraestrutura energética ucraniana antes do pico do inverno. O prolongamento das hostilidades mantém a volatilidade em mercados de commodities e grãos, afetando a logística de comércio global.",
-      "data_publicacao": "2026-11-22T21:57:19Z",
-      "updated_at": "2026-11-22T21:57:19Z"
-    },
-    {
-      "slug": "temporais-alerta-nacional-24-estados-df",
-      "titulo_tema": "Emergência Climática: Alerta de Temporais Atinge 24 Estados e o DF",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Resumo_Ultimas",
-      "categorias_cruzadas": [
-        "Cultura",
-        "Economia"
-      ],
-      "rota_editoria": "/ultimas-noticias",
-      "relevancia_score": 78,
-      "ttl_horas": 12,
-      "expires_at": "2026-11-23T09:57:19Z",
-      "palavras_chave_busca": [
-        "tempestades brasil",
-        "alerta meteorologico",
-        "defesa civil",
-        "chuvas intensas",
-        "clima extremo",
-        "infraestrutura urbana"
-      ],
-      "gatilho_vitrine": "Alerta urgente sobre eventos meteorológicos severos cobrindo quase todo o território nacional",
-      "sintese_nerd": "A coordenação de alertas meteorológicos em quase todas as unidades federativas destaca a frequência de eventos climáticos extremos e a vulnerabilidade da infraestrutura urbana brasileira. Alagamentos e tempestades geram gargalos na logística de transportes, distribuição de energia e perdas operacionais no comércio local.",
-      "data_publicacao": "2026-11-22T21:57:19Z",
-      "updated_at": "2026-11-22T21:57:19Z"
+        "donald trump",
+        "ira",
+        "bloqueio naval",
+        "petroleo",
+        "tensao geopolitica",
+        "oriente medio",
+        "politica externa eua"
+      ]
     },
     {
       "slug": "russia-tenta-desconectar-fontes-energia-odesa-dnipropetrovsk-zelensky",
@@ -581,32 +676,30 @@
       "categoria": "Geopolitica_Relacoes",
       "ttl_horas": 24,
       "expires_at": "2026-11-23T19:26:46Z",
-      "updated_at": "2026-11-22T19:29:16Z",
+      "updated_at": "2026-11-22T22:33:39Z",
       "fontes_urls": [
-        "https://www.infomoney.com.br/mundo/democratas-atingem-258-cadeiras-na-camara-dos-eua-recorde-desde-1992/",
-        "https://g1.globo.com/mundo/noticia/2026/11/22/bancada-democrata-na-camara-dos-eua-atinge-marca-historica.ghtml"
+        "https://www.aljazeera.com/news/2026/11/22/democrats-win-largest-house-majority-since-1992-with-north-carolina-seat?traffic_source=rss"
       ],
-      "titulo_tema": "Partido Democrata conquista 258 cadeiras e atinge maior bancada na Câmara dos EUA em 34 anos",
-      "resumo_pulso": "Conforme apuração do InfoMoney e do G1 Mundo, o Partido Democrata garantiu um resultado histórico nas eleições para a Câmara dos Representantes dos Estados Unidos, alcançando pelo menos 258 assentos. A nova composição amplia o peso da oposição e eleva as cobranças por medidas contra o custo de vida.",
-      "sintese_nerd": "Redesenha o equilíbrio político em Washington, dificultando a aprovação unilateral da agenda da Casa Branca e ampliando a fiscalização sobre o governo.",
-      "titulo_curto": "Partido Democrata conquista 258 cadeiras e atinge maior bancada na Câmara dos EUA em 34 anos",
+      "titulo_tema": "Partido Democrata consolida 258 assentos na Câmara dos EUA após apuração na Carolina do Norte",
+      "resumo_pulso": "Conforme apuração da Al Jazeera English, o Partido Democrata garantiu pelo menos 258 cadeiras na Câmara dos Representantes dos Estados Unidos, alcançando sua maior bancada desde 1992, com quatro disputas de meio de mandato ainda em aberto.",
+      "sintese_nerd": "Fortalecimento da oposição legislativa em Washington e maior capacidade de barganha frente à agenda da Casa Branca.",
+      "titulo_curto": "Partido Democrata consolida 258 assentos na Câmara dos EUA após apuração na Carolina do Norte",
       "rota_editoria": "/radar",
       "palavras_chave": [
-        "eua",
-        "partido democrata",
+        "estados unidos",
         "câmara dos representantes",
-        "congresso americano"
+        "partido democrata",
+        "eleições"
       ],
-      "urgencia_score": 90,
+      "urgencia_score": 91,
       "data_publicacao": "2026-11-22T19:19:45Z",
-      "gatilho_vitrine": "Conforme apuração do InfoMoney e do G1 Mundo, o Partido Democrata garantiu um resultado histórico nas eleições para a Câmara dos Representantes dos Estados Unidos, alcançando pelo menos 258 assentos. A nova composição amplia o peso da oposição e eleva as cobranças por medidas contra o custo de vida.",
-      "impacto_pratico": "Redesenha o equilíbrio político em Washington, dificultando a aprovação unilateral da agenda da Casa Branca e ampliando a fiscalização sobre o governo.",
+      "gatilho_vitrine": "Conforme apuração da Al Jazeera English, o Partido Democrata garantiu pelo menos 258 cadeiras na Câmara dos Representantes dos Estados Unidos, alcançando sua maior bancada desde 1992, com quatro disputas de meio de mandato ainda em aberto.",
+      "impacto_pratico": "Fortalecimento da oposição legislativa em Washington e maior capacidade de barganha frente à agenda da Casa Branca.",
       "origem_pipeline": "pulso",
       "veiculos_origem": [
-        "InfoMoney Mercados",
-        "G1 Mundo"
+        "Al Jazeera English"
       ],
-      "relevancia_score": 91,
+      "relevancia_score": 92,
       "paises_envolvidos": [
         "US"
       ],
@@ -616,10 +709,10 @@
         "Resumo_Ultimas"
       ],
       "palavras_chave_busca": [
-        "eua",
-        "partido democrata",
+        "estados unidos",
         "câmara dos representantes",
-        "congresso americano"
+        "partido democrata",
+        "eleições"
       ]
     },
     {
@@ -756,191 +849,79 @@
         "tempo real",
         "qa"
       ]
-    },
-    {
-      "slug": "pulso-3-20261122-1840",
-      "status": "novo",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 6,
-      "expires_at": "2026-11-23T00:40:42Z",
-      "updated_at": "2026-11-22T18:40:42Z",
-      "fontes_urls": [
-        "https://www.aljazeera.com/video/newsfeed/2026/11/22/un-climate-talks-collapse-without-a-deal?traffic_source=rss"
-      ],
-      "titulo_tema": "UN climate talks collapse without a deal",
-      "resumo_pulso": "Segundo Al Jazeera English, The longest UN climate summit in history ended without a deal in Turkiye, the first such failure since 2009..",
-      "sintese_nerd": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "titulo_curto": "UN climate talks collapse without a deal",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "radar",
-        "tempo real",
-        "qa"
-      ],
-      "urgencia_score": 80,
-      "data_publicacao": "2026-11-22T18:04:25+00:00",
-      "gatilho_vitrine": "Segundo Al Jazeera English, The longest UN climate summit in history ended without a deal in Turkiye, the first such failure since 2009..",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "Al Jazeera English"
-      ],
-      "relevancia_score": 80,
-      "paises_envolvidos": [
-        "QA"
-      ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "radar",
-        "tempo real",
-        "qa"
-      ]
-    }
-  ],
-  "temas_curadoria": [
-    {
-      "slug": "cop31-impasse-combustiveis-fosseis-frustracao-diplomatica",
-      "titulo_tema": "Impasse na COP31: O Fracasso de um Acordo sobre Combustíveis Fósseis e as Pressões Globais",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Politica"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 92,
-      "ttl_horas": 48,
-      "expires_at": "2026-11-24T21:57:19Z",
-      "palavras_chave_busca": [
-        "cop31",
-        "mudancas climaticas",
-        "combustiveis fosseis",
-        "transicao energetica",
-        "diplomacia ambiental",
-        "acordo do clima"
-      ],
-      "gatilho_vitrine": "Destacar o impasse diplomático na Turquia e as divergências sobre metas de descarbonização global",
-      "sintese_nerd": "A falta de consenso sobre a redução gradual de combustíveis fósseis travou as negociações da COP31, escancarando a divisão geopolítica entre países produtores e nações vulneráveis. Para o Brasil, o impasse pressiona a diplomacia ambiental e desafia planos de atração de capital estrangeiro para a transição verde.",
-      "data_publicacao": "2026-11-22T21:57:19Z",
-      "updated_at": "2026-11-22T21:57:19Z"
-    },
-    {
-      "slug": "trump-ameaca-ataques-ira-bloqueio-naval",
-      "titulo_tema": "Escalada no Oriente Médio: Trump Ameaça Novos Ataques ao Irã e Bloqueio Naval",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Politica"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 90,
-      "ttl_horas": 36,
-      "expires_at": "2026-11-24T09:57:19Z",
-      "palavras_chave_busca": [
-        "donald trump",
-        "ira",
-        "bloqueio naval",
-        "oriente medio",
-        "preco do petroleo",
-        "iaea",
-        "conflito geopolitico"
-      ],
-      "gatilho_vitrine": "Exibir análise de risco sobre a retomada de ofensivas militares dos EUA no Oriente Médio",
-      "sintese_nerd": "A declaração de Donald Trump sobre afundar embarcações iranianas que furem o bloqueio naval renova as tensões militares no Golfo Pérsico e eleva a instabilidade no setor energético. O aumento do risco geopolítico tende a pressionar os preços internacionais do petróleo, impactando o câmbio e a inflação de combustíveis no Brasil.",
-      "data_publicacao": "2026-11-22T21:57:19Z",
-      "updated_at": "2026-11-22T21:57:19Z"
-    },
-    {
-      "slug": "ue-proposta-taxacao-big-techs-orcamento-europeu",
-      "titulo_tema": "Regulação Digital: União Europeia Propõe Taxa Global sobre Big Techs",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Politica",
-        "Geopolitica_Radar"
-      ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 86,
-      "ttl_horas": 48,
-      "expires_at": "2026-11-24T21:57:19Z",
-      "palavras_chave_busca": [
-        "uniao europeia",
-        "taxacao big techs",
-        "imposto digital",
-        "regulacao de tecnologia",
-        "openai",
-        "economia digital"
-      ],
-      "gatilho_vitrine": "Mapear o avanço regulatório europeu contra gigantismo de tecnologia e tributação transfronteiriça",
-      "sintese_nerd": "A proposta da UE de tributar a receita líquida global de gigantes de tecnologia com faturamento acima de 750 milhões de euros visa financiar o orçamento europeu e frear a concentração de poder. A medida serve de precedente para discussões fiscais semelhantes no Brasil e na América Latina sobre a economia digital.",
-      "data_publicacao": "2026-11-22T21:57:19Z",
-      "updated_at": "2026-11-22T21:57:19Z"
-    },
-    {
-      "slug": "russia-intensifica-ataques-infraestrutura-energia-ucrania",
-      "titulo_tema": "Conflito Leste Europeu: Rússia Intensifica Ofensiva contra Rede de Energia na Ucrânia",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Resumo_Ultimas",
-        "Economia"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 84,
-      "ttl_horas": 24,
-      "expires_at": "2026-11-23T21:57:19Z",
-      "palavras_chave_busca": [
-        "guerra na ucrania",
-        "russia",
-        "infraestrutura energetica",
-        "zelensky",
-        "kharkiv",
-        "odesa",
-        "crise de energia"
-      ],
-      "gatilho_vitrine": "Monitorar o impacto tático dos ataques aéreos russos no suprimento de energia do inverno ucraniano",
-      "sintese_nerd": "Ofensivas com drones e mísseis contra regiões estratégicas como Odesa e Dnipropetrovsk buscam desestabilizar a infraestrutura energética ucraniana antes do pico do inverno. O prolongamento das hostilidades mantém a volatilidade em mercados de commodities e grãos, afetando a logística de comércio global.",
-      "data_publicacao": "2026-11-22T21:57:19Z",
-      "updated_at": "2026-11-22T21:57:19Z"
-    },
-    {
-      "slug": "temporais-alerta-nacional-24-estados-df",
-      "titulo_tema": "Emergência Climática: Alerta de Temporais Atinge 24 Estados e o DF",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Resumo_Ultimas",
-      "categorias_cruzadas": [
-        "Cultura",
-        "Economia"
-      ],
-      "rota_editoria": "/ultimas-noticias",
-      "relevancia_score": 78,
-      "ttl_horas": 12,
-      "expires_at": "2026-11-23T09:57:19Z",
-      "palavras_chave_busca": [
-        "tempestades brasil",
-        "alerta meteorologico",
-        "defesa civil",
-        "chuvas intensas",
-        "clima extremo",
-        "infraestrutura urbana"
-      ],
-      "gatilho_vitrine": "Alerta urgente sobre eventos meteorológicos severos cobrindo quase todo o território nacional",
-      "sintese_nerd": "A coordenação de alertas meteorológicos em quase todas as unidades federativas destaca a frequência de eventos climáticos extremos e a vulnerabilidade da infraestrutura urbana brasileira. Alagamentos e tempestades geram gargalos na logística de transportes, distribuição de energia e perdas operacionais no comércio local.",
-      "data_publicacao": "2026-11-22T21:57:19Z",
-      "updated_at": "2026-11-22T21:57:19Z"
     }
   ],
   "noticias_quentes": [
+    {
+      "slug": "ministro-educacao-coreia-do-sul-renuncia-fraudes-exames",
+      "titulo_curto": "Ministro da Educação da Coreia do Sul renuncia após falhas e transtornos em exames nacionais",
+      "resumo_pulso": "Segundo apuração do Poder360 com base em agências internacionais, Choi Kyo-jin renunciou ao cargo de ministro da Educação da Coreia do Sul após mudanças de última hora nas regras do vestibular nacional provocarem forte instabilidade e protestos entre estudantes e famílias.",
+      "impacto_pratico": "Gera instabilidade política temporária no gabinete sul-coreano e atencão redobrada sobre processos de avaliação educacional.",
+      "categoria": "Sociedade_Cultura",
+      "paises_envolvidos": [
+        "KR"
+      ],
+      "urgencia_score": 85,
+      "relevancia_score": 83,
+      "nivel_confianca": "alta",
+      "ttl_horas": 24,
+      "horas_em_destaque": 12,
+      "veiculos_origem": [
+        "Poder360"
+      ],
+      "fontes_urls": [
+        "https://www.poder360.com.br/poder-internacional/ministro-da-educacao-da-coreia-do-sul-renuncia-apos-fraudes-em-exames/"
+      ],
+      "palavras_chave": [
+        "Coreia do Sul",
+        "Educação",
+        "renúncia",
+        "vestibular",
+        "Choi Kyo-jin"
+      ],
+      "data_publicacao": "2026-11-22T22:35:23Z",
+      "links_internos_relacionados": [],
+      "expires_at": "2026-11-23T22:39:18Z",
+      "updated_at": "2026-11-22T22:39:18Z"
+    },
+    {
+      "slug": "dolar-digital-usdt-bate-r-615-em-negociacao-dominical",
+      "titulo_curto": "Cotação do dólar digital (USDT) atinge R$ 6,15 em negociações antecipadas no fim de semana",
+      "resumo_pulso": "Conforme dados do Poder360, a cotação do token USDT na corretora OKX distanciou-se do câmbio comercial tradicional e alcançou R$ 6,15 em transações realizadas neste domingo, sinalizando cautela e potencial pressão sobre o real para a abertura dos mercados.",
+      "impacto_pratico": "Possível volatilidade cambial e maior busca por proteção em ativos digitais atrelados ao dólar na abertura do mercado financeiro nacional.",
+      "categoria": "Economia_Comercio",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "urgencia_score": 89,
+      "relevancia_score": 90,
+      "nivel_confianca": "media",
+      "ttl_horas": 12,
+      "horas_em_destaque": 8,
+      "veiculos_origem": [
+        "Poder360"
+      ],
+      "fontes_urls": [
+        "https://www.poder360.com.br/poder-economia/dolar-digital-chega-a-r-615-em-negociacao-neste-domingo/"
+      ],
+      "palavras_chave": [
+        "dólar digital",
+        "USDT",
+        "câmbio",
+        "mercado financeiro",
+        "economia"
+      ],
+      "data_publicacao": "2026-11-22T22:23:52Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "Economia no Brasil",
+          "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
+          "motivo_conexao": "Analisa o comportamento do câmbio, volatilidade de ativos e impactos na economia nacional."
+        }
+      ],
+      "expires_at": "2026-11-23T10:39:18Z",
+      "updated_at": "2026-11-22T22:39:18Z"
+    },
     {
       "slug": "russia-tenta-desconectar-fontes-energia-odesa-dnipropetrovsk-zelensky",
       "categoria": "Geopolitica_Relacoes",
@@ -1285,36 +1266,34 @@
       "categoria": "Geopolitica_Relacoes",
       "ttl_horas": 24,
       "expires_at": "2026-11-23T19:26:46Z",
-      "updated_at": "2026-11-22T19:29:16Z",
+      "updated_at": "2026-11-22T22:33:39Z",
       "fontes_urls": [
-        "https://www.infomoney.com.br/mundo/democratas-atingem-258-cadeiras-na-camara-dos-eua-recorde-desde-1992/",
-        "https://g1.globo.com/mundo/noticia/2026/11/22/bancada-democrata-na-camara-dos-eua-atinge-marca-historica.ghtml"
+        "https://www.aljazeera.com/news/2026/11/22/democrats-win-largest-house-majority-since-1992-with-north-carolina-seat?traffic_source=rss"
       ],
-      "resumo_pulso": "Conforme apuração do InfoMoney e do G1 Mundo, o Partido Democrata garantiu um resultado histórico nas eleições para a Câmara dos Representantes dos Estados Unidos, alcançando pelo menos 258 assentos. A nova composição amplia o peso da oposição e eleva as cobranças por medidas contra o custo de vida.",
-      "titulo_curto": "Partido Democrata conquista 258 cadeiras e atinge maior bancada na Câmara dos EUA em 34 anos",
+      "resumo_pulso": "Conforme apuração da Al Jazeera English, o Partido Democrata garantiu pelo menos 258 cadeiras na Câmara dos Representantes dos Estados Unidos, alcançando sua maior bancada desde 1992, com quatro disputas de meio de mandato ainda em aberto.",
+      "titulo_curto": "Partido Democrata consolida 258 assentos na Câmara dos EUA após apuração na Carolina do Norte",
       "palavras_chave": [
-        "EUA",
-        "Partido Democrata",
+        "Estados Unidos",
         "Câmara dos Representantes",
-        "Congresso Americano"
+        "Partido Democrata",
+        "eleições"
       ],
-      "urgencia_score": 90,
+      "urgencia_score": 91,
       "data_publicacao": "2026-11-22T19:19:45Z",
-      "impacto_pratico": "Redesenha o equilíbrio político em Washington, dificultando a aprovação unilateral da agenda da Casa Branca e ampliando a fiscalização sobre o governo.",
+      "impacto_pratico": "Fortalecimento da oposição legislativa em Washington e maior capacidade de barganha frente à agenda da Casa Branca.",
       "nivel_confianca": "alta",
       "veiculos_origem": [
-        "InfoMoney Mercados",
-        "G1 Mundo"
+        "Al Jazeera English"
       ],
-      "relevancia_score": 91,
-      "horas_em_destaque": 20,
+      "relevancia_score": 92,
+      "horas_em_destaque": 12,
       "paises_envolvidos": [
         "US"
       ],
       "links_internos_relacionados": [
         {
           "url_existente": "https://www.rodandoomundo.com.br/politica/estados-unidos",
-          "motivo_conexao": "Aprofunda a análise sobre a dinâmica institucional e o impacto da nova maioria na Câmara dos EUA.",
+          "motivo_conexao": "Aprofunda a análise sobre a dinâmica de poder entre o Congresso americano e o Executivo.",
           "titulo_existente": "Política nos Estados Unidos"
         }
       ]
@@ -1528,42 +1507,37 @@
       "categoria": "Ciencia_Clima",
       "ttl_horas": 24,
       "expires_at": "2026-11-23T21:45:26Z",
-      "updated_at": "2026-11-22T21:45:26Z",
+      "updated_at": "2026-11-22T22:33:39Z",
       "fontes_urls": [
-        "https://www.bbc.com/portuguese/articles/cq742zpk1ln4o?at_medium=RSS&at_campaign=rss"
+        "https://www.nexojornal.com.br/entrevista/2026/11/22/cop-31-fracasso-impasse-sem-acordo-por-que-clima"
       ],
-      "resumo_pulso": "Conforme atualização divulgada pela BBC News Brasil, a 31ª Conferência da ONU sobre Mudança do Clima (COP31), realizada em Antália, encerrou-se sem a adoção de um documento final consensual. As negociações estenderam-se além do prazo previsto devido a divergências profundas sobre o financiamento climático e a transição energética para eliminação de fósseis.",
-      "titulo_curto": "COP31 encerra-se sem acordo na Turquia após prolongado impasse sobre combustíveis fósseis",
+      "resumo_pulso": "Conforme balanço publicado pelo Nexo Jornal, a edição mais longa da história da conferência da ONU sobre o clima encerrou-se sem um documento consensual devido a divergências profundas entre os países sobre a eliminação de combustíveis fósseis.",
+      "titulo_curto": "Nexo Jornal detalha bastidores e impasses que levaram COP31 ao fracasso na Turquia",
       "palavras_chave": [
         "COP31",
-        "Clima",
-        "Combustíveis Fósseis",
-        "ONU",
-        "Transição Energética"
+        "mudanças climáticas",
+        "combustíveis fósseis",
+        "Turquia",
+        "ONU"
       ],
-      "urgencia_score": 98,
+      "urgencia_score": 90,
       "data_publicacao": "2026-11-22T17:55:10.993874+00:00",
-      "impacto_pratico": "Atraso nas metas globais de descarbonização e incertezas sobre novos aportes financeiros para países em desenvolvimento.",
+      "impacto_pratico": "Atraso em metas globais de transição energética e maior incerteza sobre o financiamento climático para nações em desenvolvimento.",
       "nivel_confianca": "alta",
       "veiculos_origem": [
-        "BBC News Brasil",
-        "Poder360"
+        "Nexo Jornal"
       ],
-      "relevancia_score": 98,
-      "horas_em_destaque": 24,
+      "relevancia_score": 94,
+      "horas_em_destaque": 12,
       "paises_envolvidos": [
-        "TR"
+        "TR",
+        "AU"
       ],
       "links_internos_relacionados": [
         {
           "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-a-cop30",
-          "motivo_conexao": "Explica o funcionamento das conferências climáticas globais e os desafios dos acordos multilaterais.",
+          "motivo_conexao": "Relaciona os objetivos das conferências do clima da ONU com os desafios de financiamento e acordos globais.",
           "titulo_existente": "O que é a COP30?"
-        },
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/radar",
-          "motivo_conexao": "Contextualiza os impasses entre países industrializados e em desenvolvimento nas cúpulas ambientais.",
-          "titulo_existente": "Financiamento climático e metas de redução de desmatamento concentram negociações internacionais"
         }
       ]
     },
@@ -1645,71 +1619,146 @@
           "titulo_existente": "Política nos Estados Unidos"
         }
       ]
+    }
+  ],
+  "temas_curadoria": [
+    {
+      "slug": "dolar-digital-usdt-alta-pressao-cambial-real",
+      "status": "novo",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-23T22:25:43Z",
+      "updated_at": "2026-11-22T22:25:43Z",
+      "titulo_tema": "Pressão no câmbio: Dólar digital atinge R$ 6,15 no fim de semana e sinaliza abertura estressada",
+      "sintese_nerd": "A disparada do Tether (USDT) para R$ 6,15 durante o final de semana reflete a busca por proteção cambial pelo mercado cripto antes da abertura das bolsas. Essa divergência em relação ao dólar comercial sinaliza forte apreensão dos investidores com o cenário fiscal doméstico e o cenário de juros internacionais.",
+      "rota_editoria": "/economia",
+      "data_publicacao": "2026-11-22T22:25:43Z",
+      "gatilho_vitrine": "Destacar impacto do USDT no apetite ao risco e projecoes para o mercado cambial brasileiro.",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 92,
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Politica",
+        "Geopolitica_Radar"
+      ],
+      "palavras_chave_busca": [
+        "dolar digital",
+        "usdt",
+        "cotacao dolar",
+        "cambio",
+        "banco central",
+        "mercado financeiro",
+        "real desvalorizacao"
+      ]
     },
     {
-      "slug": "ataque-com-drone-atinge-navio-russo-em-bengasi-na-libia",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 18,
-      "expires_at": "2026-11-23T11:38:45Z",
-      "updated_at": "2026-11-22T19:29:16Z",
-      "fontes_urls": [
-        "https://kyivindependent.com/russian-warship-docked-in-benghazi-hit-by-suspected-drone-attack-libyan-officials-say/"
+      "slug": "cop31-impasse-combustiveis-fosseis-transicao-energetica",
+      "status": "novo",
+      "ttl_horas": 72,
+      "expires_at": "2026-11-25T22:25:43Z",
+      "updated_at": "2026-11-22T22:25:43Z",
+      "titulo_tema": "COP31 encerra sem acordo global sobre eliminação gradual de combustíveis fósseis",
+      "sintese_nerd": "A COP31 consagrou-se como a mais longa e inconclusiva da história devido às divergências intransponíveis sobre o financiamento climático e a transição dos combustíveis fósseis. O fracasso diplomático amplia a incerteza regulatória para mercados emergentes exportadores de commodities e expõe os limites da diplomacia multilateral ambiental.",
+      "rota_editoria": "/radar",
+      "data_publicacao": "2026-11-22T22:25:43Z",
+      "gatilho_vitrine": "Exibir materias sobre o impasse diplomatico entre paises produtores de petroleo e blocos por metas de descarbonizacao.",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 88,
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Politica",
+        "Cultura"
       ],
-      "resumo_pulso": "Segundo relatórios de autoridades líbias e reportagem do The Kyiv Independent, a corveta Merkury da Marinha Russa sofreu danos significativos após ser atingida por drones navais no porto de Bengasi. Kiev ainda não assumiu oficialmente a autoria da investida no Mediterrâneo.",
-      "titulo_curto": "Autoridades líbias confirmam danos severos a corveta russa Merkury após ataque de drones em Bengasi",
-      "palavras_chave": [
-        "Marinha Russa",
-        "Bengasi",
-        "Líbia",
-        "Drones Navais"
-      ],
-      "urgencia_score": 96,
-      "data_publicacao": "2026-11-22T17:12:48Z",
-      "impacto_pratico": "Demonstra a ampliação do alcance operacional de ataques assimétricos contra ativos navais russos fora do teatro de operações tradicional do Mar Negro.",
-      "nivel_confianca": "media",
-      "veiculos_origem": [
-        "The Kyiv Independent"
-      ],
-      "relevancia_score": 93,
-      "horas_em_destaque": 12,
-      "paises_envolvidos": [
-        "RU",
-        "LY",
-        "UA"
-      ],
-      "links_internos_relacionados": []
+      "palavras_chave_busca": [
+        "cop31",
+        "mudancas climaticas",
+        "combustiveis fosseis",
+        "transicao energetica",
+        "acordo do clima",
+        "diplomacia ambiental"
+      ]
     },
     {
-      "slug": "incendio-fabrica-doces-indonesia-mortos-desaparecidos",
-      "categoria": "Sociedade_Cultura",
-      "ttl_horas": 18,
-      "expires_at": "2026-11-23T11:12:49Z",
-      "updated_at": "2026-11-22T18:37:33Z",
-      "fontes_urls": [
-        "https://g1.globo.com/mundo/noticia/2026/11/22/incendio-em-fabrica-de-doces-deixa-mortos-e-dezenas-de-desaparecidos-na-indonesia.ghtml"
+      "slug": "juros-altos-selic-custo-brasil-investimentos",
+      "status": "novo",
+      "ttl_horas": 48,
+      "expires_at": "2026-11-24T22:25:43Z",
+      "updated_at": "2026-11-22T22:25:43Z",
+      "titulo_tema": "Debate sobre permanência de juros elevados ressalta gargalos estruturais do Custo Brasil",
+      "sintese_nerd": "Economistas apontam que a manutenção dos juros em patamares elevados no Brasil deriva da incerteza fiscal sustentada e dos custos sistêmicos que reduzem a produtividade do setor privado. O binômio entre juros altos e entraves tributários continua a afastar o investimento direto estrangeiro e a estrangular a expansão produtiva.",
+      "rota_editoria": "/economia",
+      "data_publicacao": "2026-11-22T22:25:43Z",
+      "gatilho_vitrine": "Selecionar analises macroeconomicas detalhadas sobre a relacao entre divida publica e juros reais.",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 86,
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Politica"
       ],
-      "resumo_pulso": "Segundo informações da Reuters e do G1 Mundo, um incêndio de grandes proporções atingiu a fábrica PT Fonusa Agung Mulia em Cikande, na ilha de Java. O sinistro resultou em várias mortes confirmadas e deixou pelo menos 50 pessoas desaparecidas.",
-      "titulo_curto": "Incêndio em fábrica de doces na Indonésia deixa mortos e dezenas de desaparecidos",
-      "palavras_chave": [
-        "Indonésia",
-        "incêndio",
-        "fábrica",
-        "Java",
-        "desaparecidos"
+      "palavras_chave_busca": [
+        "taxa selic",
+        "juros altos",
+        "custo brasil",
+        "banco central",
+        "politica monetaria",
+        "investimento estrangeiro",
+        "reforma tributaria"
+      ]
+    },
+    {
+      "slug": "uniao-europeia-taxacao-big-techs-orcamento-comunitario",
+      "status": "novo",
+      "ttl_horas": 48,
+      "expires_at": "2026-11-24T22:25:43Z",
+      "updated_at": "2026-11-22T22:25:43Z",
+      "titulo_tema": "União Europeia propõe tributação de multinacionais de tecnologia para reforçar orçamento",
+      "sintese_nerd": "A proposta da UE de impor uma taxa sobre a receita de multinacionais de tecnologia com faturamento global superior a 750 milhões de euros marca uma nova etapa na soberania fiscal digital. Caso aprovada, a medida deve redefinir padrões globais de tributação sobre plataformas de dados e inteligência artificial, influenciando legislações na América Latina.",
+      "rota_editoria": "/politica",
+      "data_publicacao": "2026-11-22T22:25:43Z",
+      "gatilho_vitrine": "Posicionar artigos sobre regulacao e tributacao de gigantes digitais no topo de Politica e Economia.",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 85,
+      "categoria_primaria": "Politica",
+      "categorias_cruzadas": [
+        "Economia",
+        "Cultura"
       ],
-      "urgencia_score": 93,
-      "data_publicacao": "2026-11-22T17:08:52Z",
-      "impacto_pratico": "Gera alertas sobre segurança industrial em complexos fabris na Ásia e mobiliza operações extensivas de resgate.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "G1 Mundo"
+      "palavras_chave_busca": [
+        "uniao europeia",
+        "taxacao big techs",
+        "regulacao digital",
+        "imposto sobre gigantes de tecnologia",
+        "economia digital",
+        "receita liquida"
+      ]
+    },
+    {
+      "slug": "trump-ameaca-ataques-ira-bloqueio-naval",
+      "status": "novo",
+      "ttl_horas": 48,
+      "expires_at": "2026-11-24T22:25:43Z",
+      "updated_at": "2026-11-22T22:25:43Z",
+      "titulo_tema": "Donald Trump ameaça retomar ataques ao Irã e afundar navios em furo a bloqueio naval",
+      "sintese_nerd": "A retórica agressiva de Donald Trump sobre restabelecer ataques e afundar embarcações iranianas eleva o risco geopolítico na rota do Estreito de Ormuz. O endurecimento das sanções navais ameaça restringir a oferta global de petróleo, gerando repasses inflacionários diretos nas cadeias produtivas globais.",
+      "rota_editoria": "/radar",
+      "data_publicacao": "2026-11-22T21:57:19Z",
+      "gatilho_vitrine": "Priorizar analise do impacto do cerco militar no preco do petroleo global e inflacao de combustiveis.",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 94,
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Politica"
       ],
-      "relevancia_score": 89,
-      "horas_em_destaque": 12,
-      "paises_envolvidos": [
-        "ID"
-      ],
-      "links_internos_relacionados": []
+      "palavras_chave_busca": [
+        "donald trump",
+        "ira",
+        "bloqueio naval",
+        "petroleo",
+        "tensao geopolitica",
+        "oriente medio",
+        "politica externa eua"
+      ]
     }
   ]
 }
