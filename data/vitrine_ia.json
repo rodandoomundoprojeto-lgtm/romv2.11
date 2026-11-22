@@ -2,568 +2,175 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-21T19:29:53Z",
-  "batch_id": "20261121-1929",
+  "updatedAt": "2026-11-22T15:58:13Z",
+  "batch_id": "20261122-1557",
   "temas_ativos": [
     {
-      "slug": "internacao-bolsonaro-uti-brasilia",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-23T19:02:37Z",
-      "updated_at": "2026-11-21T19:02:37Z",
-      "titulo_tema": "Ex-presidente Jair Bolsonaro internado em UTI no Distrito Federal",
-      "sintese_nerd": "O ex-presidente Jair Bolsonaro foi internado na UTI do Hospital DF Star em Brasília com diagnóstico de abdome agudo obstrutivo, passando por procedimentos clínicos e suporte nutricional. O fato movimenta o cenário político nacional e atrai atenção imediata para os desdobramentos de sua saúde.",
-      "rota_editoria": "/politica",
-      "data_publicacao": "2026-11-21T19:02:37Z",
-      "gatilho_vitrine": "Destacar boletim médico atualizado e repercussão institucional da internação do ex-presidente.",
+      "slug": "china-espionagem-chips-nvidia-sancoes-eua",
+      "titulo_tema": "Guerra dos Chips: China intensifica ações secretas para contornar sanções dos EUA e obter semicondutores da Nvidia",
+      "status": "em_alta",
       "origem_pipeline": "curadoria",
-      "relevancia_score": 95,
-      "categoria_primaria": "Politica",
+      "categoria_primaria": "Geopolitica_Radar",
       "categorias_cruzadas": [
-        "Resumo_Ultimas"
+        "Economia",
+        "Cultura"
       ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 92,
+      "ttl_horas": 72,
+      "expires_at": "2026-11-25T15:58:13Z",
       "palavras_chave_busca": [
-        "jair bolsonaro",
-        "uti",
-        "hospital df star",
-        "abdome agudo obstrutivo",
-        "brasília",
-        "saúde política"
-      ]
+        "chips nvidia",
+        "sanções eua china",
+        "espionagem tecnológica",
+        "semicondutores",
+        "inteligência artificial",
+        "guerra comercial"
+      ],
+      "gatilho_vitrine": "Exibir na home em destaques de tecnologia geopolítica e disputas de mercado.",
+      "sintese_nerd": "A ofensiva velada de Pequim para obter chips de inteligência artificial da Nvidia evidencia o acirramento da guerra fria tecnológica entre as duas superpotências. Para o leitor brasileiro, esse travamento global afeta a cadeia de suprimentos de hardware e encarece o avanço da infraestrutura digital local.",
+      "data_publicacao": "2026-11-22T15:58:13Z",
+      "updated_at": "2026-11-22T15:58:13Z"
     },
     {
-      "slug": "ataque-petroleiros-estreito-ormuz",
+      "slug": "cop-termina-sem-acordo-impasse-combustiveis-fosseis",
+      "titulo_tema": "Fracasso na Cúpula do Clima: COP termina sem acordo sobre transição energética e financiamento",
       "status": "novo",
-      "ttl_horas": 72,
-      "expires_at": "2026-11-24T19:02:37Z",
-      "updated_at": "2026-11-21T19:02:37Z",
-      "titulo_tema": "Três petroleiros atingidos perto do Estreito de Ormuz",
-      "sintese_nerd": "Operações militares intensificadas pelo Irã no Estreito de Ormuz resultaram em ataques a três petroleiros, elevando drasticamente os riscos às rotas de suprimento energético global. A escalada pressiona os preços do petróleo e afeta a inflação e os custos de transporte internacionais.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-21T19:02:37Z",
-      "gatilho_vitrine": "Conectar o aumento das tensões no Oriente Médio com o impacto direto na cotação internacional do petróleo e nos mercados globais.",
       "origem_pipeline": "curadoria",
-      "relevancia_score": 92,
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Politica"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 90,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-24T15:58:13Z",
+      "palavras_chave_busca": [
+        "cop clima",
+        "combustíveis fósseis",
+        "transição energética",
+        "financiamento climático",
+        "acordo do clima",
+        "união europeia"
+      ],
+      "gatilho_vitrine": "Destacar no topo do Radar Geopolítico e no canal de Meio Ambiente e Economia.",
+      "sintese_nerd": "O encerramento sem consenso da COP reflete o racha diplomático entre países desenvolvidos e produtores de petróleo sobre a eliminação de fósseis e fundos de adaptação. A falta de diretrizes globais compromete metas ambientais e gera incerteza para a atração de investimentos verdes no Brasil.",
+      "data_publicacao": "2026-11-22T15:58:13Z",
+      "updated_at": "2026-11-22T15:58:13Z"
+    },
+    {
+      "slug": "ataques-mar-baltico-escoamento-petroleo-russia",
+      "titulo_tema": "Escalação no Báltico: Ataques a embarcações ameaçam rota estratégica do petróleo e grãos russos",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
       "categoria_primaria": "Geopolitica_Radar",
       "categorias_cruzadas": [
         "Economia"
       ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 88,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-24T15:58:13Z",
       "palavras_chave_busca": [
-        "estreito de ormuz",
-        "petroleiros",
-        "irã",
-        "petróleo",
-        "crise energética",
-        "geopolítica global"
-      ]
+        "mar báltico",
+        "petróleo russo",
+        "exportação de grãos",
+        "guerra ucrânia rússia",
+        "preço do barril",
+        "segurança marítima"
+      ],
+      "gatilho_vitrine": "Acionar alertas de volatilidade no preço do petróleo e rotas marítimas de commodities.",
+      "sintese_nerd": "As investidas contra navios no Mar Báltico colocam em risco o escoamento de commodities fundamentais da Rússia e acendem o alerta na Europa. Um gargalo nessa rota pressiona os fretes internacionais e pode causar repasses nos preços dos combustíveis no Brasil.",
+      "data_publicacao": "2026-11-22T15:58:13Z",
+      "updated_at": "2026-11-22T15:58:13Z"
     },
     {
-      "slug": "pacote-estimulo-economia-china",
+      "slug": "chile-queda-pib-recuperacao-lenta-america-latina",
+      "titulo_tema": "Sinal de Alerta Sul-Americano: Chile registra maior tombo do PIB desde 2020",
       "status": "novo",
-      "ttl_horas": 96,
-      "expires_at": "2026-11-25T19:02:37Z",
-      "updated_at": "2026-11-21T19:02:37Z",
-      "titulo_tema": "Economistas defendem pacote de US$ 450 bi para estimular China",
-      "sintese_nerd": "O enfraquecimento da demanda interna na China levou economistas a defenderem um megapacote de estímulos de US$ 450 bilhões para reativar o crescimento do país. A medida possui forte repercussão sobre o volume de importações de commodities do Brasil e o equilíbrio do comércio exterior.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-21T19:02:37Z",
-      "gatilho_vitrine": "Explicar como a desaceleração da economia chinesa e propostas de grandes estímulos fiscais afetam diretamente as exportações e commodities brasileiras.",
       "origem_pipeline": "curadoria",
-      "relevancia_score": 88,
       "categoria_primaria": "Economia",
       "categorias_cruzadas": [
-        "Geopolitica_Radar"
+        "Politica"
       ],
-      "palavras_chave_busca": [
-        "china",
-        "pacote de estímulo",
-        "demanda interna",
-        "pib global",
-        "comércio exterior",
-        "commodities"
-      ]
-    },
-    {
-      "slug": "fbi-investiga-suposta-invasao-banco-dados-criminais-eua",
-      "titulo_tema": "FBI apura suposta invasão cibernética em banco de dados nacional de crimes dos EUA",
-      "titulo_curto": "FBI apura suposta invasão cibernética em banco de dados nacional de crimes dos EUA",
-      "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Geopolitica_Radar",
-      "categoria": "Geopolitica_Relacoes",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 92,
-      "urgencia_score": 94,
-      "ttl_horas": 18,
-      "expires_at": "2026-11-22T12:40:12Z",
-      "palavras_chave_busca": [
-        "fbi",
-        "estados unidos",
-        "cibersegurança",
-        "invasão",
-        "banco de dados"
-      ],
-      "palavras_chave": [
-        "fbi",
-        "estados unidos",
-        "cibersegurança",
-        "invasão",
-        "banco de dados"
-      ],
-      "gatilho_vitrine": "Conforme relatórios da Al Jazeera English e apurações internacionais, o FBI abriu investigação oficial sobre uma possível violação de segurança em banco de dados de registros criminais dos Estados Unidos. O incidente amplia as preocupações em torno da vulnerabilidade de infraestruturas governamentais e de segurança pública.",
-      "resumo_pulso": "Conforme relatórios da Al Jazeera English e apurações internacionais, o FBI abriu investigação oficial sobre uma possível violação de segurança em banco de dados de registros criminais dos Estados Unidos. O incidente amplia as preocupações em torno da vulnerabilidade de infraestruturas governamentais e de segurança pública.",
-      "sintese_nerd": "Alerta sobre falhas de cibersegurança em sistemas oficiais norte-americanos e possíveis reflexos em redes de cooperação internacional.",
-      "impacto_pratico": "Alerta sobre falhas de cibersegurança em sistemas oficiais norte-americanos e possíveis reflexos em redes de cooperação internacional.",
-      "paises_envolvidos": [
-        "US"
-      ],
-      "veiculos_origem": [
-        "Al Jazeera English"
-      ],
-      "fontes_urls": [
-        "https://www.aljazeera.com/news/2026/11/21/fbi-national-crime-database-suffers-suspected-breach-reports?traffic_source=rss"
-      ],
-      "data_publicacao": "2026-11-21T18:34:56Z",
-      "updated_at": "2026-11-21T19:29:53Z"
-    },
-    {
-      "slug": "bolsonaro-internado-uti-brasilia-abdome-obstrutivo",
-      "titulo_tema": "Alexandre de Moraes autoriza visitas diárias de filhos a Bolsonaro, internado em UTI no DF",
-      "titulo_curto": "Alexandre de Moraes autoriza visitas diárias de filhos a Bolsonaro, internado em UTI no DF",
-      "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Geopolitica_Radar",
-      "categoria": "Geopolitica_Relacoes",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 95,
-      "urgencia_score": 97,
-      "ttl_horas": 12,
-      "expires_at": "2026-11-22T06:40:12Z",
-      "palavras_chave_busca": [
-        "jair bolsonaro",
-        "uti",
-        "hospital df star",
-        "alexandre de moraes",
-        "stf"
-      ],
-      "palavras_chave": [
-        "jair bolsonaro",
-        "uti",
-        "hospital df star",
-        "alexandre de moraes",
-        "stf"
-      ],
-      "gatilho_vitrine": "Segundo novos boletins médicos do Hospital DF Star e apuração do G1, o ex-presidente Jair Bolsonaro segue internado em UTI com quadro de abdômen agudo obstrutivo. O ministro Alexandre de Moraes, do STF, atendeu a pedido da defesa e autorizou visitas diárias de familiares enquanto o paciente permanece clinicamente estável sob suporte nutricional.",
-      "resumo_pulso": "Segundo novos boletins médicos do Hospital DF Star e apuração do G1, o ex-presidente Jair Bolsonaro segue internado em UTI com quadro de abdômen agudo obstrutivo. O ministro Alexandre de Moraes, do STF, atendeu a pedido da defesa e autorizou visitas diárias de familiares enquanto o paciente permanece clinicamente estável sob suporte nutricional.",
-      "sintese_nerd": "Acompanhamento do estado de saúde de figura pública e desdobramentos de autorizações judiciais para visitas hospitalares.",
-      "impacto_pratico": "Acompanhamento do estado de saúde de figura pública e desdobramentos de autorizações judiciais para visitas hospitalares.",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "veiculos_origem": [
-        "G1 Política",
-        "Agência Brasil (EBC)"
-      ],
-      "fontes_urls": [
-        "https://g1.globo.com/politica/noticia/2026/11/21/moraes-atende-a-pedido-e-autoriza-visitas-diarias-de-filhos-a-bolsonaro-durante-a-internacao.ghtml"
-      ],
-      "data_publicacao": "2026-11-21T17:55:00Z",
-      "updated_at": "2026-11-21T19:29:53Z"
-    },
-    {
-      "slug": "pulso-1-20261121-1540",
-      "status": "novo",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 6,
-      "expires_at": "2026-11-21T21:40:51Z",
-      "updated_at": "2026-11-21T15:40:51Z",
-      "fontes_urls": [
-        "https://g1.globo.com/meio-ambiente/noticia/2026/11/21/ainda-nao-ha-compromisso-na-cop31-do-clima-para-um-acordo-afirma-uniao-europeia.ghtml"
-      ],
-      "titulo_tema": "'Ainda não há compromisso' na COP31 do clima para um acordo, afirma União Europeia",
-      "resumo_pulso": "Segundo G1 Mundo, Voluntário passa em frente ao logotipo da COP31, conferência do clima da ONU, em Antalya, na Turquia, em 8 de novembro de 2026. Murad Sezer/Reuters O comissário europeu para o Clima afirmou neste sábado (21) que ainda não foi alcançado um compromisso para incluir a eliminação gradual dos combustíveis fósseis na declaração política da COP31, realizada na Turquia. \"Ainda não há com",
-      "sintese_nerd": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "titulo_curto": "'Ainda não há compromisso' na COP31 do clima para um acordo, afirma União Europeia",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "radar",
-        "tempo real",
-        "br"
-      ],
-      "urgencia_score": 90,
-      "data_publicacao": "2026-11-21T15:31:31+00:00",
-      "gatilho_vitrine": "Segundo G1 Mundo, Voluntário passa em frente ao logotipo da COP31, conferência do clima da ONU, em Antalya, na Turquia, em 8 de novembro de 2026. Murad Sezer/Reuters O comissário europeu para o Clima afirmou neste sábado (21) que ainda não foi alcançado um compromisso para incluir a eliminação gradual dos combustíveis fósseis na declaração política da COP31, realizada na Turquia. \"Ainda não há com",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "G1 Mundo"
-      ],
-      "relevancia_score": 88,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "radar",
-        "tempo real",
-        "br"
-      ]
-    },
-    {
-      "slug": "pulso-2-20261121-1540",
-      "status": "novo",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 6,
-      "expires_at": "2026-11-21T21:40:51Z",
-      "updated_at": "2026-11-21T15:40:51Z",
-      "fontes_urls": [
-        "https://www.bbc.com/portuguese/articles/cr3wgxxzw81xo?at_medium=RSS&at_campaign=rss"
-      ],
-      "titulo_tema": "'O câncer muda você': princesa Catherine fala sobre doença em documentário da BBC",
-      "resumo_pulso": "Segundo BBC News Brasil, “Há um aspecto muito, muito mais profundo no que um diagnóstico de câncer provoca em você”, diz Catherine no documentário..",
-      "sintese_nerd": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "titulo_curto": "'O câncer muda você': princesa Catherine fala sobre doença em documentário da BBC",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "radar",
-        "tempo real",
-        "gb"
-      ],
-      "urgencia_score": 85,
-      "data_publicacao": "2026-11-21T15:24:06+00:00",
-      "gatilho_vitrine": "Segundo BBC News Brasil, “Há um aspecto muito, muito mais profundo no que um diagnóstico de câncer provoca em você”, diz Catherine no documentário..",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "BBC News Brasil"
-      ],
-      "relevancia_score": 84,
-      "paises_envolvidos": [
-        "GB"
-      ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "radar",
-        "tempo real",
-        "gb"
-      ]
-    },
-    {
-      "slug": "pulso-3-20261121-1540",
-      "status": "novo",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 6,
-      "expires_at": "2026-11-21T21:40:51Z",
-      "updated_at": "2026-11-21T15:40:51Z",
-      "fontes_urls": [
-        "https://www.aljazeera.com/news/2026/11/21/tankers-hit-in-strait-of-hormuz-as-iran-tightens-grip-on-shipping?traffic_source=rss"
-      ],
-      "titulo_tema": "Tankers hit in Strait of Hormuz as Iran tightens grip on shipping",
-      "resumo_pulso": "Segundo Al Jazeera English, British maritime agency reports two incidents near Oman, while Iran says a tanker caught fire due to naval mine..",
-      "sintese_nerd": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "titulo_curto": "Tankers hit in Strait of Hormuz as Iran tightens grip on shipping",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "radar",
-        "tempo real",
-        "qa"
-      ],
-      "urgencia_score": 80,
-      "data_publicacao": "2026-11-21T15:01:18+00:00",
-      "gatilho_vitrine": "Segundo Al Jazeera English, British maritime agency reports two incidents near Oman, while Iran says a tanker caught fire due to naval mine..",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "Al Jazeera English"
-      ],
-      "relevancia_score": 80,
-      "paises_envolvidos": [
-        "QA"
-      ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "radar",
-        "tempo real",
-        "qa"
-      ]
-    },
-    {
-      "slug": "pulso-4-20261121-1540",
-      "status": "novo",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 6,
-      "expires_at": "2026-11-21T21:40:51Z",
-      "updated_at": "2026-11-21T15:40:51Z",
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/meio-ambiente/noticia/2026-11/temporais-provocam-alagamentos-e-danos-em-imoveis-no-estado-de-sp"
-      ],
-      "titulo_tema": "Temporais provocam alagamentos e danos em imóveis no estado de SP",
-      "resumo_pulso": "Segundo Agência Brasil (EBC), Fortes chuvas atingiram o município de Aparecida (SP), nesta sexta-feira (20), provocando alagamentos em diversas vias e residências, quedas de árvores e danos em estruturas. Uma família ficou desalojada após a interdição preventiva de um imóvel, e cinco hóspedes foram atingidos pelo desabamento parcial do teto de um restaurante de hotel. Segundo informações da Defesa",
-      "sintese_nerd": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "titulo_curto": "Temporais provocam alagamentos e danos em imóveis no estado de SP",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "radar",
-        "tempo real",
-        "br"
-      ],
-      "urgencia_score": 75,
-      "data_publicacao": "2026-11-21T14:50:00+00:00",
-      "gatilho_vitrine": "Segundo Agência Brasil (EBC), Fortes chuvas atingiram o município de Aparecida (SP), nesta sexta-feira (20), provocando alagamentos em diversas vias e residências, quedas de árvores e danos em estruturas. Uma família ficou desalojada após a interdição preventiva de um imóvel, e cinco hóspedes foram atingidos pelo desabamento parcial do teto de um restaurante de hotel. Segundo informações da Defesa",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "Agência Brasil (EBC)"
-      ],
-      "relevancia_score": 76,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "radar",
-        "tempo real",
-        "br"
-      ]
-    },
-    {
-      "slug": "pulso-5-20261121-1540",
-      "status": "novo",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 6,
-      "expires_at": "2026-11-21T21:40:51Z",
-      "updated_at": "2026-11-21T15:40:51Z",
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/cultura/noticia/2026-11/sem-censura-da-tv-brasil-conquista-novamente-premio-melhores-do-ano"
-      ],
-      "titulo_tema": "Sem Censura, da TV Brasil, conquista novamente Prêmio Melhores do Ano",
-      "resumo_pulso": "Segundo Agência Brasil (EBC), O programa Sem Censura , apresentado por Cissa Guimarães na TV Brasil, venceu pelo terceiro ano consecutivo o Prêmio Melhores do Ano NaTelinha. A tradicional roda de conversa vespertina da televisão brasileira conquistou a premiação nas categorias de Melhor Programa de Entrevista - láurea já obtida em 2024 e 2025 - e Melhor Programa Diário. Já a anfitriã foi eleita co",
-      "sintese_nerd": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "titulo_curto": "Sem Censura, da TV Brasil, conquista novamente Prêmio Melhores do Ano",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "radar",
-        "tempo real",
-        "br"
-      ],
-      "urgencia_score": 70,
-      "data_publicacao": "2026-11-21T14:43:00+00:00",
-      "gatilho_vitrine": "Segundo Agência Brasil (EBC), O programa Sem Censura , apresentado por Cissa Guimarães na TV Brasil, venceu pelo terceiro ano consecutivo o Prêmio Melhores do Ano NaTelinha. A tradicional roda de conversa vespertina da televisão brasileira conquistou a premiação nas categorias de Melhor Programa de Entrevista - láurea já obtida em 2024 e 2025 - e Melhor Programa Diário. Já a anfitriã foi eleita co",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "Agência Brasil (EBC)"
-      ],
-      "relevancia_score": 72,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "radar",
-        "tempo real",
-        "br"
-      ]
-    },
-    {
-      "slug": "lula-critica-faria-lima-ajuste-orcamento-2027",
-      "status": "novo",
-      "categoria": "Economia_Comercio",
-      "ttl_horas": 12,
-      "expires_at": "2026-11-22T02:37:15Z",
-      "updated_at": "2026-11-21T18:40:12Z",
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/o-sistema-financeiro-nao-vai-me-ensinar-dirigir-o-brasil-diz-lula"
-      ],
-      "titulo_tema": "Lula defende ajuste fiscal e reforça críticas ao mercado financeiro em transmissão ao vivo",
-      "resumo_pulso": "Em atualização aos debates econômicos, o presidente Luiz Inácio Lula da Silva defendeu o projeto de ajuste fiscal aprovado pelo Senado e criticou os questionamentos do mercado financeiro. Segundo apuração da Agência Brasil, a pauta econômica segue para análise na Câmara dos Deputados.",
-      "sintese_nerd": "Expectativa de volatilidade nos mercados financeiros e repercussão direta sobre as contas públicas e regras orçamentárias de 2027.",
-      "titulo_curto": "Lula defende ajuste fiscal e reforça críticas ao mercado financeiro em transmissão ao vivo",
       "rota_editoria": "/economia",
-      "palavras_chave": [
-        "lula",
-        "ajuste fiscal",
-        "economia",
-        "mercado financeiro",
-        "orcamento"
+      "relevancia_score": 82,
+      "ttl_horas": 36,
+      "expires_at": "2026-11-24T03:58:13Z",
+      "palavras_chave_busca": [
+        "pib chile",
+        "recessão américa latina",
+        "banco central chile",
+        "investimentos privados",
+        "desaceleração econômica",
+        "comércio regional"
       ],
-      "urgencia_score": 91,
-      "data_publicacao": "2026-11-21T14:27:51Z",
-      "gatilho_vitrine": "Em atualização aos debates econômicos, o presidente Luiz Inácio Lula da Silva defendeu o projeto de ajuste fiscal aprovado pelo Senado e criticou os questionamentos do mercado financeiro. Segundo apuração da Agência Brasil, a pauta econômica segue para análise na Câmara dos Deputados.",
-      "impacto_pratico": "Expectativa de volatilidade nos mercados financeiros e repercussão direta sobre as contas públicas e regras orçamentárias de 2027.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "Agência Brasil (EBC)"
-      ],
-      "relevancia_score": 92,
-      "paises_envolvidos": [
-        "BR"
-      ],
+      "gatilho_vitrine": "Inserir em painel de Economia Sul-Americana e análises comparativas da região.",
+      "sintese_nerd": "A retração de 1,8% no PIB chileno no terceiro trimestre expõe a retração dos investimentos e a lentidão da retomada econômica regional. O resultado evidencia os desafios fiscais do país vizinho e acende um sinal de alerta para a dinâmica do comércio na América Latina.",
+      "data_publicacao": "2026-11-22T15:58:13Z",
+      "updated_at": "2026-11-22T15:58:13Z"
+    },
+    {
+      "slug": "banco-do-brasil-bbas3-avaliacoes-mercado-crise",
+      "titulo_tema": "Mercado em Foco: Ações do Banco do Brasil (BBAS3) concentram atenções após volatilidade",
+      "status": "em_alta",
+      "origem_pipeline": "curadoria",
       "categoria_primaria": "Economia",
       "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
+        "Politica"
       ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 80,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-23T15:58:13Z",
       "palavras_chave_busca": [
-        "lula",
-        "ajuste fiscal",
-        "economia",
-        "mercado financeiro",
-        "orcamento"
-      ]
+        "banco do brasil",
+        "bbas3",
+        "ações bbas3",
+        "xp investimentos",
+        "setor financeiro",
+        "ações estatais"
+      ],
+      "gatilho_vitrine": "Exibir na seção de Finanças e Mercados impulsionado por buscas em alta sobre ações brasileiras.",
+      "sintese_nerd": "O aumento nas buscas pelas ações do Banco do Brasil reflete a incerteza dos investidores divididos entre relatórios de analistas e o risco fiscal de estatais. A precificação do ativo serve como termômetro da confiança do mercado privado na governança de corporações públicas.",
+      "data_publicacao": "2026-11-22T15:58:13Z",
+      "updated_at": "2026-11-22T15:58:13Z"
     },
     {
-      "slug": "terremoto-magnitude-6-8-peru",
-      "titulo_tema": "Indeci confirma 15 feridos e dezenas de imóveis danificados após terremoto no Peru",
-      "titulo_curto": "Indeci confirma 15 feridos e dezenas de imóveis danificados após terremoto no Peru",
-      "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Geopolitica_Radar",
-      "categoria": "Geopolitica_Relacoes",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 88,
-      "urgencia_score": 92,
-      "ttl_horas": 12,
-      "expires_at": "2026-11-21T20:58:15Z",
-      "palavras_chave_busca": [
-        "peru",
-        "terremoto",
-        "indeci",
-        "lima",
-        "junín"
-      ],
-      "palavras_chave": [
-        "peru",
-        "terremoto",
-        "indeci",
-        "lima",
-        "junín"
-      ],
-      "gatilho_vitrine": "Conforme boletim oficial do Instituto Nacional de Defesa Civil do Peru (Indeci) repercutido pelo G1 Mundo, o terremoto de magnitude 6,7 a 6,8 deixou 15 feridos e danificou mais de 120 residências na região central do país. O tremor foi amplamente sentido em Lima, sem registros de vítimas fatais.",
-      "resumo_pulso": "Conforme boletim oficial do Instituto Nacional de Defesa Civil do Peru (Indeci) repercutido pelo G1 Mundo, o terremoto de magnitude 6,7 a 6,8 deixou 15 feridos e danificou mais de 120 residências na região central do país. O tremor foi amplamente sentido em Lima, sem registros de vítimas fatais.",
-      "sintese_nerd": "Possíveis interrupções em infraestruturas locais e necessidade de atendimento humanitário nas províncias afetadas.",
-      "impacto_pratico": "Possíveis interrupções em infraestruturas locais e necessidade de atendimento humanitário nas províncias afetadas.",
-      "paises_envolvidos": [
-        "PE"
-      ],
-      "veiculos_origem": [
-        "G1 Mundo"
-      ],
-      "fontes_urls": [
-        "https://g1.globo.com/mundo/noticia/2026/11/21/terremoto-de-magnitude-67-deixou-15-feridos-no-peru-e-danificou-127-casas.ghtml"
-      ],
-      "data_publicacao": "2026-11-21T14:17:00Z",
-      "updated_at": "2026-11-21T19:29:53Z"
-    },
-    {
-      "slug": "tempestade-rs-defesa-civil-atualiza-dados",
-      "status": "novo",
-      "categoria": "Ciencia_Clima",
-      "ttl_horas": 12,
-      "expires_at": "2026-11-22T02:58:15Z",
-      "updated_at": "2026-11-21T17:39:19Z",
-      "fontes_urls": [
-        "https://www.infomoney.com.br/brasil/governador-do-rs-amplia-ajuda-a-cidade-de-tupancireta-atingida-por-tempestade/"
-      ],
-      "titulo_tema": "Governo do RS amplia auxílio a Tupanciretã após tempestades",
-      "resumo_pulso": "O governador Eduardo Leite anunciou um aporte adicional de R$ 5 milhões para a cidade de Tupanciretã, severamente atingida por tempestades. O recurso complementa a ajuda emergencial anterior para custear maquinário e equipamentos essenciais.",
-      "sintese_nerd": "Apoio direto às áreas afetadas por desastres climáticos no Rio Grande do Sul.",
-      "titulo_curto": "Governo do RS amplia auxílio a Tupanciretã após tempestades",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "rio grande do sul",
-        "tempestade",
-        "defesa civil",
-        "ajuda humanitária"
-      ],
-      "urgencia_score": 94,
-      "data_publicacao": "2026-11-21T14:13:00Z",
-      "gatilho_vitrine": "O governador Eduardo Leite anunciou um aporte adicional de R$ 5 milhões para a cidade de Tupanciretã, severamente atingida por tempestades. O recurso complementa a ajuda emergencial anterior para custear maquinário e equipamentos essenciais.",
-      "impacto_pratico": "Apoio direto às áreas afetadas por desastres climáticos no Rio Grande do Sul.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "InfoMoney"
-      ],
-      "relevancia_score": 90,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "rio grande do sul",
-        "tempestade",
-        "defesa civil",
-        "ajuda humanitária"
-      ]
-    },
-    {
-      "slug": "mexico-captura-narcotraficante-chapo-isidro-fbi",
+      "slug": "espioes-chips-e-a-nvidia-campanha-secreta-china-driblar-eua",
       "status": "novo",
       "categoria": "Geopolitica_Relacoes",
       "ttl_horas": 24,
-      "expires_at": "2026-11-22T13:54:51Z",
-      "updated_at": "2026-11-21T13:54:51Z",
+      "expires_at": "2026-11-23T15:40:21Z",
+      "updated_at": "2026-11-22T15:40:21Z",
       "fontes_urls": [
-        "https://g1.globo.com/mundo/noticia/2026/11/21/mexico-captura-narcotraficante-que-esta-entre-os-dez-mais-procurados-pelo-fbi.ghtml"
+        "https://www.infomoney.com.br/business/global/espioes-chips-e-a-nvidia-a-campanha-secreta-da-china-para-driblar-os-eua/"
       ],
-      "titulo_tema": "México captura narcotraficante 'Chapo Isidro', um dos mais procurados pelo FBI",
-      "resumo_pulso": "Segundo apuração do G1 Mundo, forças de segurança do México capturaram Fausto Isidro Meza, o 'Chapo Isidro', apontado como um dos dez fugitivos mais procurados pelo FBI. A prisão ocorreu no estado de Sinaloa e envolveu outros líderes de seu grupo criminoso.",
-      "sintese_nerd": "Reforço na cooperação bilateral de segurança e combate ao narcotráfico entre México e Estados Unidos.",
-      "titulo_curto": "México captura narcotraficante 'Chapo Isidro', um dos mais procurados pelo FBI",
+      "titulo_tema": "Agência de espionagem da China mantém campanha secreta para obter chips de IA e burlar barreiras dos EUA",
+      "resumo_pulso": "Segundo apuração do InfoMoney, autoridades de inteligência apontam que a China opera uma campanha clandestina para garantir acesso a chips avançados de inteligência artificial e informações estratégicas do setor, contornando restrições impostas por Washington.",
+      "sintese_nerd": "Acentua a disputa tecnológica global e as salvaguardas de segurança em semicondutores.",
+      "titulo_curto": "Agência de espionagem da China mantém campanha secreta para obter chips de IA e burlar barreiras dos EUA",
       "rota_editoria": "/radar",
       "palavras_chave": [
-        "chapo isidro",
-        "fbi",
-        "mexico",
-        "narcotrafico"
+        "china",
+        "eua",
+        "chips",
+        "nvidia",
+        "inteligência artificial",
+        "espionagem"
       ],
-      "urgencia_score": 92,
-      "data_publicacao": "2026-11-21T13:41:26Z",
-      "gatilho_vitrine": "Segundo apuração do G1 Mundo, forças de segurança do México capturaram Fausto Isidro Meza, o 'Chapo Isidro', apontado como um dos dez fugitivos mais procurados pelo FBI. A prisão ocorreu no estado de Sinaloa e envolveu outros líderes de seu grupo criminoso.",
-      "impacto_pratico": "Reforço na cooperação bilateral de segurança e combate ao narcotráfico entre México e Estados Unidos.",
+      "urgencia_score": 91,
+      "data_publicacao": "2026-11-22T15:38:47Z",
+      "gatilho_vitrine": "Segundo apuração do InfoMoney, autoridades de inteligência apontam que a China opera uma campanha clandestina para garantir acesso a chips avançados de inteligência artificial e informações estratégicas do setor, contornando restrições impostas por Washington.",
+      "impacto_pratico": "Acentua a disputa tecnológica global e as salvaguardas de segurança em semicondutores.",
       "origem_pipeline": "pulso",
       "veiculos_origem": [
-        "G1 Mundo"
+        "InfoMoney Mercados"
       ],
-      "relevancia_score": 90,
+      "relevancia_score": 92,
       "paises_envolvidos": [
-        "MX",
+        "CN",
         "US"
       ],
       "categoria_primaria": "Geopolitica_Radar",
@@ -572,46 +179,95 @@
         "Resumo_Ultimas"
       ],
       "palavras_chave_busca": [
-        "chapo isidro",
-        "fbi",
-        "mexico",
-        "narcotrafico"
+        "china",
+        "eua",
+        "chips",
+        "nvidia",
+        "inteligência artificial",
+        "espionagem"
       ]
     },
     {
-      "slug": "zelensky-classifica-cupula-na-china-como-fracasso-para-putin",
+      "slug": "chile-tem-maior-tombo-do-pib-desde-2020-e-bc-ve-recuperacao-mais-lenta",
+      "status": "novo",
+      "categoria": "Economia_Comercio",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-23T15:40:07Z",
+      "updated_at": "2026-11-22T15:40:21Z",
+      "fontes_urls": [
+        "https://www.infomoney.com.br/economia/chile-tem-maior-tombo-do-pib-desde-2020-e-bc-ve-recuperacao-mais-lenta/"
+      ],
+      "titulo_tema": "PIB do Chile registra maior queda desde 2020 e Banco Central aponta recuperação lenta",
+      "resumo_pulso": "Segundo reportagem do InfoMoney Mercados com base em declarações de Rosanna Costa, o Produto Interno Bruto (PIB) do Chile caiu 1,8% no terceiro trimestre, marcando o maior recuo desde 2020. A autoridade monetária destacou a ausência de sinais claros de retomada imediata dos investimentos.",
+      "sintese_nerd": "Reflete cautela nos mercados latino-americanos e possíveis reflexos no comércio regional.",
+      "titulo_curto": "PIB do Chile registra maior queda desde 2020 e Banco Central aponta recuperação lenta",
+      "rota_editoria": "/economia",
+      "palavras_chave": [
+        "chile",
+        "pib",
+        "banco central",
+        "economia",
+        "américa latina"
+      ],
+      "urgencia_score": 88,
+      "data_publicacao": "2026-11-22T15:30:55Z",
+      "gatilho_vitrine": "Segundo reportagem do InfoMoney Mercados com base em declarações de Rosanna Costa, o Produto Interno Bruto (PIB) do Chile caiu 1,8% no terceiro trimestre, marcando o maior recuo desde 2020. A autoridade monetária destacou a ausência de sinais claros de retomada imediata dos investimentos.",
+      "impacto_pratico": "Reflete cautela nos mercados latino-americanos e possíveis reflexos no comércio regional.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "InfoMoney Mercados"
+      ],
+      "relevancia_score": 89,
+      "paises_envolvidos": [
+        "CL"
+      ],
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "chile",
+        "pib",
+        "banco central",
+        "economia",
+        "américa latina"
+      ]
+    },
+    {
+      "slug": "russia-strikes-gas-service-facility-in-dnipropetrovsk-region-with-guided-bomb",
       "status": "novo",
       "categoria": "Geopolitica_Relacoes",
       "ttl_horas": 18,
-      "expires_at": "2026-11-22T07:28:59Z",
-      "updated_at": "2026-11-21T13:54:51Z",
+      "expires_at": "2026-11-23T09:40:07Z",
+      "updated_at": "2026-11-22T15:40:07Z",
       "fontes_urls": [
-        "https://kyivindependent.com/zelensky-says-ukraine-has-yet-to-see-written-commitments-on-nato-style-security-guarantees/",
-        "https://www.ukrinform.net/rubric-polytics/4187167-zelensky-says-ukraine-not-yet-received-official-security-guarantees-equivalent-to-nato-article-5.html"
+        "https://www.ukrinform.net/rubric-ato/4187418-russia-strikes-gas-service-facility-in-dnipropetrovsk-region-with-guided-bomb.html"
       ],
-      "titulo_tema": "Zelensky afirma que Ucrânia ainda aguarda garantias de segurança formais equivalentes à OTAN",
-      "resumo_pulso": "Conforme apuração do The Kyiv Independent e da Ukrinform, o presidente ucraniano Volodymyr Zelensky declarou que o país ainda precisa de clareza e de compromissos por escrito sobre garantias de segurança semelhantes ao Artigo 5º da OTAN.",
-      "sintese_nerd": "Orienta as negociações diplomáticas de longo prazo para a estabilização do leste europeu.",
-      "titulo_curto": "Zelensky afirma que Ucrânia ainda aguarda garantias de segurança formais equivalentes à OTAN",
+      "titulo_tema": "Ataque russo com bomba guiada atinge instalação de gás em Dnipropetrovsk e deixa feridos",
+      "resumo_pulso": "Segundo apuração da Ukrinform, forças russas realizaram um ataque com bomba guiada contra uma instalação de serviços de gás na região de Dnipropetrovsk, resultando em feridos e agravando os danos à infraestrutura civil ucraniana.",
+      "sintese_nerd": "Interrupção de serviços essenciais e riscos de desabastecimento de gás na região afetada.",
+      "titulo_curto": "Ataque russo com bomba guiada atinge instalação de gás em Dnipropetrovsk e deixa feridos",
       "rota_editoria": "/radar",
       "palavras_chave": [
-        "zelensky",
         "ucrânia",
-        "otan",
-        "segurança"
+        "rússia",
+        "dnipropetrovsk",
+        "infraestrutura",
+        "guerra"
       ],
-      "urgencia_score": 90,
-      "data_publicacao": "2026-11-21T13:14:18Z",
-      "gatilho_vitrine": "Conforme apuração do The Kyiv Independent e da Ukrinform, o presidente ucraniano Volodymyr Zelensky declarou que o país ainda precisa de clareza e de compromissos por escrito sobre garantias de segurança semelhantes ao Artigo 5º da OTAN.",
-      "impacto_pratico": "Orienta as negociações diplomáticas de longo prazo para a estabilização do leste europeu.",
+      "urgencia_score": 94,
+      "data_publicacao": "2026-11-22T15:20:00Z",
+      "gatilho_vitrine": "Segundo apuração da Ukrinform, forças russas realizaram um ataque com bomba guiada contra uma instalação de serviços de gás na região de Dnipropetrovsk, resultando em feridos e agravando os danos à infraestrutura civil ucraniana.",
+      "impacto_pratico": "Interrupção de serviços essenciais e riscos de desabastecimento de gás na região afetada.",
       "origem_pipeline": "pulso",
       "veiculos_origem": [
-        "The Kyiv Independent",
         "Ukrinform"
       ],
       "relevancia_score": 91,
       "paises_envolvidos": [
-        "UA"
+        "UA",
+        "RU"
       ],
       "categoria_primaria": "Geopolitica_Radar",
       "categorias_cruzadas": [
@@ -619,45 +275,142 @@
         "Resumo_Ultimas"
       ],
       "palavras_chave_busca": [
-        "zelensky",
         "ucrânia",
-        "otan",
-        "segurança"
+        "rússia",
+        "dnipropetrovsk",
+        "infraestrutura",
+        "guerra"
       ]
     },
     {
-      "slug": "cursos-pedagogia-carga-horaria-matematica",
+      "slug": "apos-temporal-governo-reconhece-calamidade-publica-em-tupancireta",
+      "status": "novo",
+      "categoria": "Ciencia_Clima",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-23T15:40:07Z",
+      "updated_at": "2026-11-22T15:40:21Z",
+      "fontes_urls": [
+        "https://agenciabrasil.ebc.com.br/meio-ambiente/noticia/2026-11/apos-temporal-governo-reconhece-calamidade-publica-em-tupancireta"
+      ],
+      "titulo_tema": "Governo federal reconhece calamidade pública em Tupanciretã (RS) após temporal",
+      "resumo_pulso": "Segundo portaria publicada em edição extra do Diário Oficial da União divulgada pela Agência Brasil (EBC), o governo federal reconheceu o estado de calamidade pública em Tupanciretã (RS). A medida visa agilizar a liberação de recursos e o suporte à população afetada pelas fortes tempestades.",
+      "sintese_nerd": "Facilita o envio de verbas emergenciais e apoio direto aos moradores desalojados ou prejudicados pelas enchentes.",
+      "titulo_curto": "Governo federal reconhece calamidade pública em Tupanciretã (RS) após temporal",
+      "rota_editoria": "/radar",
+      "palavras_chave": [
+        "tupanciretã",
+        "rio grande do sul",
+        "calamidade pública",
+        "temporais",
+        "defesa civil"
+      ],
+      "urgencia_score": 94,
+      "data_publicacao": "2026-11-22T14:53:00Z",
+      "gatilho_vitrine": "Segundo portaria publicada em edição extra do Diário Oficial da União divulgada pela Agência Brasil (EBC), o governo federal reconheceu o estado de calamidade pública em Tupanciretã (RS). A medida visa agilizar a liberação de recursos e o suporte à população afetada pelas fortes tempestades.",
+      "impacto_pratico": "Facilita o envio de verbas emergenciais e apoio direto aos moradores desalojados ou prejudicados pelas enchentes.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "Agência Brasil (EBC)"
+      ],
+      "relevancia_score": 91,
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "tupanciretã",
+        "rio grande do sul",
+        "calamidade pública",
+        "temporais",
+        "defesa civil"
+      ]
+    },
+    {
+      "slug": "oab-sp-estima-perda-de-r-200-bilhoes-por-ano-com-pejotizacao",
+      "status": "novo",
+      "categoria": "Economia_Comercio",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-23T14:45:18Z",
+      "updated_at": "2026-11-22T14:45:18Z",
+      "fontes_urls": [
+        "https://www.poder360.com.br/poder-justica/oab-sp-estima-perda-de-r-200-bilhoes-por-ano-com-pejotizacao/"
+      ],
+      "titulo_tema": "OAB-SP aponta perda de R$ 200 bi anuais com pejotização e entrega estudo ao STF",
+      "resumo_pulso": "Conforme reportado pelo Poder360, a OAB de São Paulo protocolou no Supremo Tribunal Federal um estudo calculando que a migração de trabalhadores para o modelo PJ gera perdas bilionárias em tributos e na Previdência Social.",
+      "sintese_nerd": "Potenciais mudanças na jurisprudência trabalhista brasileira e impacto nas contas da Previdência.",
+      "titulo_curto": "OAB-SP aponta perda de R$ 200 bi anuais com pejotização e entrega estudo ao STF",
+      "rota_editoria": "/economia",
+      "palavras_chave": [
+        "pejotização",
+        "oab-sp",
+        "stf",
+        "previdência",
+        "trabalho"
+      ],
+      "urgencia_score": 89,
+      "data_publicacao": "2026-11-22T14:33:55Z",
+      "gatilho_vitrine": "Conforme reportado pelo Poder360, a OAB de São Paulo protocolou no Supremo Tribunal Federal um estudo calculando que a migração de trabalhadores para o modelo PJ gera perdas bilionárias em tributos e na Previdência Social.",
+      "impacto_pratico": "Potenciais mudanças na jurisprudência trabalhista brasileira e impacto nas contas da Previdência.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "Poder360"
+      ],
+      "relevancia_score": 90,
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "pejotização",
+        "oab-sp",
+        "stf",
+        "previdência",
+        "trabalho"
+      ]
+    },
+    {
+      "slug": "boca-juniors-vence-sul-americana-sobre-o-atletico-mg",
       "status": "novo",
       "categoria": "Sociedade_Cultura",
       "ttl_horas": 24,
-      "expires_at": "2026-11-22T13:54:51Z",
-      "updated_at": "2026-11-21T14:46:12Z",
+      "expires_at": "2026-11-23T15:40:21Z",
+      "updated_at": "2026-11-22T15:40:21Z",
       "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/educacao/noticia/2026-11/dossie-mapeia-desafios-do-ensino-de-matematica-e-sugere-solucoes"
+        "https://agenciabrasil.ebc.com.br/esportes/noticia/2026-11/boca-juniors-vence-sul-americana-sobre-o-atletico-mg"
       ],
-      "titulo_tema": "Dossiê aponta que 70% dos cursos de pedagogia dedicam fração mínima à matemática",
-      "resumo_pulso": "Segundo dados oficiais da Agência Brasil, cerca de 70,6% dos cursos presenciais de pedagogia destinam apenas entre 2,5% e 5% de sua carga horária para a formação matemática. O mapeamento técnico foi lançado durante o 9º Simpósio Nacional da Formação do Professor de Matemática.",
-      "sintese_nerd": "Levanta alertas sobre a qualificação inicial de docentes para o ensino básico de matemática no país.",
-      "titulo_curto": "Dossiê aponta que 70% dos cursos de pedagogia dedicam fração mínima à matemática",
+      "titulo_tema": "Boca Juniors derrota o Atlético-MG por 2 a 0 e conquista a Copa Sul-Americana de 2026",
+      "resumo_pulso": "Conforme noticiado pela Agência Brasil (EBC), o Boca Juniors venceu o Atlético-MG por 2 a 0 em partida realizada em Barranquilla, na Colômbia. Com gols de Ascacíbar e Merentiel, o clube argentino garantiu o título da Copa Sul-Americana, ampliando o histórico de vices do time mineiro.",
+      "sintese_nerd": "Movimentação intensa de torcedores e impacto no cenário do futebol sul-americano.",
+      "titulo_curto": "Boca Juniors derrota o Atlético-MG por 2 a 0 e conquista a Copa Sul-Americana de 2026",
       "rota_editoria": "/cultura",
       "palavras_chave": [
-        "pedagogia",
-        "matemática",
-        "educação",
-        "agência brasil",
-        "formação de professores"
+        "boca juniors",
+        "atlético-mg",
+        "copa sul-americana",
+        "futebol",
+        "colômbia"
       ],
-      "urgencia_score": 86,
-      "data_publicacao": "2026-11-21T13:03:00Z",
-      "gatilho_vitrine": "Segundo dados oficiais da Agência Brasil, cerca de 70,6% dos cursos presenciais de pedagogia destinam apenas entre 2,5% e 5% de sua carga horária para a formação matemática. O mapeamento técnico foi lançado durante o 9º Simpósio Nacional da Formação do Professor de Matemática.",
-      "impacto_pratico": "Levanta alertas sobre a qualificação inicial de docentes para o ensino básico de matemática no país.",
+      "urgencia_score": 85,
+      "data_publicacao": "2026-11-22T14:28:00Z",
+      "gatilho_vitrine": "Conforme noticiado pela Agência Brasil (EBC), o Boca Juniors venceu o Atlético-MG por 2 a 0 em partida realizada em Barranquilla, na Colômbia. Com gols de Ascacíbar e Merentiel, o clube argentino garantiu o título da Copa Sul-Americana, ampliando o histórico de vices do time mineiro.",
+      "impacto_pratico": "Movimentação intensa de torcedores e impacto no cenário do futebol sul-americano.",
       "origem_pipeline": "pulso",
       "veiculos_origem": [
         "Agência Brasil (EBC)"
       ],
       "relevancia_score": 88,
       "paises_envolvidos": [
-        "BR"
+        "AR",
+        "BR",
+        "CO"
       ],
       "categoria_primaria": "Cultura",
       "categorias_cruzadas": [
@@ -665,135 +418,323 @@
         "Resumo_Ultimas"
       ],
       "palavras_chave_busca": [
-        "pedagogia",
-        "matemática",
-        "educação",
-        "agência brasil",
-        "formação de professores"
+        "boca juniors",
+        "atlético-mg",
+        "copa sul-americana",
+        "futebol",
+        "colômbia"
       ]
     },
     {
-      "slug": "matematicos-anunciam-possivel-solucao-da-hipotese-de-riemann-com-ia-claude",
+      "slug": "iran-unveils-dual-missile-launcher-new-missile-city-what-to-know",
       "status": "novo",
-      "categoria": "Ciencia_Clima",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-22T13:28:59Z",
-      "updated_at": "2026-11-21T13:38:05Z",
+      "categoria": "Geopolitica_Relacoes",
+      "ttl_horas": 18,
+      "expires_at": "2026-11-23T08:45:18Z",
+      "updated_at": "2026-11-22T14:45:18Z",
       "fontes_urls": [
-        "https://www.aljazeera.com/news/2026/11/21/riemann-hypothesis-has-the-worlds-most-famous-maths-problem-been-cracked?traffic_source=rss"
+        "https://www.aljazeera.com/news/2026/11/22/iran-unveils-dual-missile-launcher-new-missile-city-what-to-know?traffic_source=rss"
       ],
-      "titulo_tema": "Pesquisadores apontam suposta demonstração da Hipótese de Riemann com auxílio da IA Claude",
-      "resumo_pulso": "Conforme reportado pela Al Jazeera, cientistas anunciaram uma suposta prova para a Hipótese de Riemann utilizando o modelo de inteligência artificial Claude. Especialistas ressaltam que o feito precisará de semanas de validação rigorosa pela comunidade matemática.",
-      "sintese_nerd": "Avanço potencial na matemática teórica e na aplicação de inteligência artificial em problemas complexos.",
-      "titulo_curto": "Pesquisadores apontam suposta demonstração da Hipótese de Riemann com auxílio da IA Claude",
+      "titulo_tema": "Irã exibe novo lançador duplo de mísseis e complexo subterrâneo em meio a tensões com EUA",
+      "resumo_pulso": "Segundo apuração da Al Jazeera English, autoridades militares iranianas inauguraram uma nova instalação subterrânea apelidada de 'cidade de mísseis' e revelaram um lançador duplo de artefatos balísticos, em demonstração de capacidade bélica apesar de ataques recentes.",
+      "sintese_nerd": "Aumento da tensão no Golfo Pérsico e riscos geopolíticos para rotas de energia e tráfego marítimo internacional.",
+      "titulo_curto": "Irã exibe novo lançador duplo de mísseis e complexo subterrâneo em meio a tensões com EUA",
       "rota_editoria": "/radar",
       "palavras_chave": [
-        "hipótese de riemann",
-        "inteligência artificial",
-        "claude",
-        "matemática"
+        "irã",
+        "mísseis",
+        "golfo pérsico",
+        "defesa",
+        "eua"
       ],
-      "urgencia_score": 86,
-      "data_publicacao": "2026-11-21T12:49:20Z",
-      "gatilho_vitrine": "Conforme reportado pela Al Jazeera, cientistas anunciaram uma suposta prova para a Hipótese de Riemann utilizando o modelo de inteligência artificial Claude. Especialistas ressaltam que o feito precisará de semanas de validação rigorosa pela comunidade matemática.",
-      "impacto_pratico": "Avanço potencial na matemática teórica e na aplicação de inteligência artificial em problemas complexos.",
+      "urgencia_score": 96,
+      "data_publicacao": "2026-11-22T14:20:41Z",
+      "gatilho_vitrine": "Segundo apuração da Al Jazeera English, autoridades militares iranianas inauguraram uma nova instalação subterrânea apelidada de 'cidade de mísseis' e revelaram um lançador duplo de artefatos balísticos, em demonstração de capacidade bélica apesar de ataques recentes.",
+      "impacto_pratico": "Aumento da tensão no Golfo Pérsico e riscos geopolíticos para rotas de energia e tráfego marítimo internacional.",
       "origem_pipeline": "pulso",
       "veiculos_origem": [
         "Al Jazeera English"
+      ],
+      "relevancia_score": 93,
+      "paises_envolvidos": [
+        "IR",
+        "US",
+        "BH"
+      ],
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "irã",
+        "mísseis",
+        "golfo pérsico",
+        "defesa",
+        "eua"
+      ]
+    },
+    {
+      "slug": "russian-attacks-cause-serious-damage-to-odesa-power-grid",
+      "status": "novo",
+      "categoria": "Geopolitica_Relacoes",
+      "ttl_horas": 18,
+      "expires_at": "2026-11-23T08:45:18Z",
+      "updated_at": "2026-11-22T15:40:21Z",
+      "fontes_urls": [
+        "https://kyivindependent.com/russian-attacks-cause-serious-damage-to-odesa-power-grid-as-outages-disrupt-city/"
+      ],
+      "titulo_tema": "Ataques russos intensificam danos à rede elétrica de Odesa e geram novas interrupções",
+      "resumo_pulso": "Segundo apuração da Ukrenergo e do The Kyiv Independent, equipes de emergência enfrentam dificuldades contínuas e alertas de ataque aéreo para restabelecer o fornecimento de energia em Odesa após novos bombardeios russos danificarem criticamente a infraestrutura local.",
+      "sintese_nerd": "Apagões recorrentes afetam serviços essenciais e o cotidiano de moradores na região sul da Ucrânia.",
+      "titulo_curto": "Ataques russos intensificam danos à rede elétrica de Odesa e geram novas interrupções",
+      "rota_editoria": "/radar",
+      "palavras_chave": [
+        "odesa",
+        "ucrânia",
+        "energia",
+        "ataques russos",
+        "infraestrutura"
+      ],
+      "urgencia_score": 96,
+      "data_publicacao": "2026-11-22T14:12:00Z",
+      "gatilho_vitrine": "Segundo apuração da Ukrenergo e do The Kyiv Independent, equipes de emergência enfrentam dificuldades contínuas e alertas de ataque aéreo para restabelecer o fornecimento de energia em Odesa após novos bombardeios russos danificarem criticamente a infraestrutura local.",
+      "impacto_pratico": "Apagões recorrentes afetam serviços essenciais e o cotidiano de moradores na região sul da Ucrânia.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "The Kyiv Independent",
+        "Ukrenergo"
+      ],
+      "relevancia_score": 93,
+      "paises_envolvidos": [
+        "UA",
+        "RU"
+      ],
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "odesa",
+        "ucrânia",
+        "energia",
+        "ataques russos",
+        "infraestrutura"
+      ]
+    },
+    {
+      "slug": "el-nino-galapagos-chuvas",
+      "status": "novo",
+      "categoria": "Ciencia_Clima",
+      "ttl_horas": 18,
+      "expires_at": "2026-11-23T07:53:12Z",
+      "updated_at": "2026-11-22T13:53:12Z",
+      "fontes_urls": [
+        "https://g1.globo.com/mundo/noticia/2026/11/22/el-nino-galapagos-chuvas.ghtml"
+      ],
+      "titulo_tema": "Fortes chuvas provocadas pelo El Niño afetam mais de 7 mil pessoas em Galápagos",
+      "resumo_pulso": "Conforme reportado pelo G1 Mundo, temporais intensos associados ao fenômeno El Niño atingiram o arquipélago equatoriano de Galápagos, deixando milhares de desalojados e causando inundações severas.",
+      "sintese_nerd": "Aumenta riscos para o turismo e infraestrutura local em ilhas preservadas do Equador.",
+      "titulo_curto": "Fortes chuvas provocadas pelo El Niño afetam mais de 7 mil pessoas em Galápagos",
+      "rota_editoria": "/radar",
+      "palavras_chave": [
+        "el niño",
+        "galápagos",
+        "equador",
+        "inundações"
+      ],
+      "urgencia_score": 90,
+      "data_publicacao": "2026-11-22T13:34:11Z",
+      "gatilho_vitrine": "Conforme reportado pelo G1 Mundo, temporais intensos associados ao fenômeno El Niño atingiram o arquipélago equatoriano de Galápagos, deixando milhares de desalojados e causando inundações severas.",
+      "impacto_pratico": "Aumenta riscos para o turismo e infraestrutura local em ilhas preservadas do Equador.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "G1 Mundo"
+      ],
+      "relevancia_score": 88,
+      "paises_envolvidos": [
+        "EC"
+      ],
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "el niño",
+        "galápagos",
+        "equador",
+        "inundações"
+      ]
+    },
+    {
+      "slug": "por-que-o-cobre-queridinho-da-era-da-ia-despencou-9-em-uma-semana",
+      "status": "novo",
+      "categoria": "Economia_Comercio",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-23T12:45:54Z",
+      "updated_at": "2026-11-22T12:45:54Z",
+      "fontes_urls": [
+        "https://www.infomoney.com.br/mercados/por-que-o-cobre-queridinho-da-era-da-ia-despencou-9-em-uma-semana/"
+      ],
+      "titulo_tema": "Cobre despenca 9% em uma semana pressionado por oferta em Xangai e demanda fraca na China",
+      "resumo_pulso": "Segundo reportagem do InfoMoney Mercados, o cobre registrou sua maior queda em Londres desde abril de 2025. O movimento foi impulsionado por um aperto de oferta na bolsa de Xangai seguido por desaquecimento da demanda industrial chinesa e incertezas sobre futuras tarifas comerciais anunciadas pelos EUA.",
+      "sintese_nerd": "Impacta diretamente o mercado de commodities metálicas, custos de insumos para a infraestrutura de inteligência artificial e o balanço comercial de países exportadores.",
+      "titulo_curto": "Cobre despenca 9% em uma semana pressionado por oferta em Xangai e demanda fraca na China",
+      "rota_editoria": "/economia",
+      "palavras_chave": [
+        "cobre",
+        "mercados",
+        "china",
+        "inteligência artificial",
+        "commodities"
+      ],
+      "urgencia_score": 89,
+      "data_publicacao": "2026-11-22T12:40:05Z",
+      "gatilho_vitrine": "Segundo reportagem do InfoMoney Mercados, o cobre registrou sua maior queda em Londres desde abril de 2025. O movimento foi impulsionado por um aperto de oferta na bolsa de Xangai seguido por desaquecimento da demanda industrial chinesa e incertezas sobre futuras tarifas comerciais anunciadas pelos EUA.",
+      "impacto_pratico": "Impacta diretamente o mercado de commodities metálicas, custos de insumos para a infraestrutura de inteligência artificial e o balanço comercial de países exportadores.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "InfoMoney Mercados"
+      ],
+      "relevancia_score": 90,
+      "paises_envolvidos": [
+        "CN",
+        "GB",
+        "US"
+      ],
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "cobre",
+        "mercados",
+        "china",
+        "inteligência artificial",
+        "commodities"
+      ]
+    },
+    {
+      "slug": "servico-geologico-do-brasil-traz-retorno-de-r-14-por-real-investido",
+      "status": "novo",
+      "categoria": "Economia_Comercio",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-23T13:53:12Z",
+      "updated_at": "2026-11-22T13:53:12Z",
+      "fontes_urls": [
+        "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/servico-geologico-do-brasil-traz-retorno-de-r-14-por-real-investido"
+      ],
+      "titulo_tema": "Balanço social do Serviço Geológico do Brasil aponta retorno de R$ 14 por real investido",
+      "resumo_pulso": "Segundo a quinta edição do Balanço Social divulgada pela Agência Brasil (EBC), cada real investido no Serviço Geológico do Brasil gerou R$ 14,47 em benefícios socioeconômicos e ambientais para a sociedade em 2025.",
+      "sintese_nerd": "Destaca a eficiência econômica e o valor estratégico de pesquisas geológicas para o país.",
+      "titulo_curto": "Balanço social do Serviço Geológico do Brasil aponta retorno de R$ 14 por real investido",
+      "rota_editoria": "/economia",
+      "palavras_chave": [
+        "serviço geológico do brasil",
+        "economia",
+        "balanço social"
+      ],
+      "urgencia_score": 82,
+      "data_publicacao": "2026-11-22T12:21:00Z",
+      "gatilho_vitrine": "Segundo a quinta edição do Balanço Social divulgada pela Agência Brasil (EBC), cada real investido no Serviço Geológico do Brasil gerou R$ 14,47 em benefícios socioeconômicos e ambientais para a sociedade em 2025.",
+      "impacto_pratico": "Destaca a eficiência econômica e o valor estratégico de pesquisas geológicas para o país.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "Agência Brasil (EBC)"
       ],
       "relevancia_score": 85,
       "paises_envolvidos": [
         "BR"
       ],
-      "categoria_primaria": "Geopolitica_Radar",
+      "categoria_primaria": "Economia",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
       ],
       "palavras_chave_busca": [
-        "hipótese de riemann",
-        "inteligência artificial",
-        "claude",
-        "matemática"
+        "serviço geológico do brasil",
+        "economia",
+        "balanço social"
       ]
     },
     {
-      "slug": "novos-temporais-sul-do-pais-supercelula-rs",
+      "slug": "agro-sao-paulo-superavit-recorde-2026",
       "status": "novo",
-      "categoria": "Ciencia_Clima",
+      "categoria": "Economia_Comercio",
       "ttl_horas": 24,
-      "expires_at": "2026-11-22T12:48:01Z",
-      "updated_at": "2026-11-21T13:02:47Z",
+      "expires_at": "2026-11-23T11:40:14Z",
+      "updated_at": "2026-11-22T11:40:14Z",
       "fontes_urls": [
-        "https://www.infomoney.com.br/brasil/novos-temporais-devem-atingir-sul-do-pais-apos-supercelula-arrasar-cidade-do-rs/"
+        "https://www.poder360.com.br/poder-agro/agro-de-sp-tem-superavit-de-us-176-bilhoes-ate-outubro-de-2026/"
       ],
-      "titulo_tema": "Defesa Civil e Climatempo mantêm alertas de novos temporais e chuvas intensas no Sul do país",
-      "resumo_pulso": "Conforme apuração do InfoMoney, novas chuvas intensas e temporais devem atingir o Rio Grande do Sul, Santa Catarina e Paraná após os severos estragos causados por uma supercélula. As Defesas Civis estaduais reforçaram os alertas preventivos devido à chegada de uma nova frente fria.",
-      "sintese_nerd": "População em áreas de risco no Sul deve redobrar cuidados com alagamentos e deslizamentos de terra.",
-      "titulo_curto": "Defesa Civil e Climatempo mantêm alertas de novos temporais e chuvas intensas no Sul do país",
-      "rota_editoria": "/radar",
+      "titulo_tema": "Agronegócio de São Paulo registra superávit de US$ 17,6 bilhões até outubro",
+      "resumo_pulso": "Segundo dados consolidados e divulgados pelo Poder360, o setor agropecuário do estado de São Paulo atingiu saldo positivo de US$ 17,6 bilhões nos dez primeiros meses de 2026. As exportações totais alcancaram US$ 22,59 bilhões, impulsionadas pelo complexo sucroenergético e carnes.",
+      "sintese_nerd": "O resultado fortalece a balança comercial paulista e sustenta a balança de pagamentos do setor externo brasileiro.",
+      "titulo_curto": "Agronegócio de São Paulo registra superávit de US$ 17,6 bilhões até outubro",
+      "rota_editoria": "/economia",
       "palavras_chave": [
-        "temporais",
-        "sul do país",
-        "rio grande do sul",
-        "defesa civil",
-        "supercélula"
+        "agronegócio",
+        "são paulo",
+        "exportações",
+        "superávit"
       ],
-      "urgencia_score": 96,
-      "data_publicacao": "2026-11-21T12:40:28Z",
-      "gatilho_vitrine": "Conforme apuração do InfoMoney, novas chuvas intensas e temporais devem atingir o Rio Grande do Sul, Santa Catarina e Paraná após os severos estragos causados por uma supercélula. As Defesas Civis estaduais reforçaram os alertas preventivos devido à chegada de uma nova frente fria.",
-      "impacto_pratico": "População em áreas de risco no Sul deve redobrar cuidados com alagamentos e deslizamentos de terra.",
+      "urgencia_score": 84,
+      "data_publicacao": "2026-11-22T11:36:15Z",
+      "gatilho_vitrine": "Segundo dados consolidados e divulgados pelo Poder360, o setor agropecuário do estado de São Paulo atingiu saldo positivo de US$ 17,6 bilhões nos dez primeiros meses de 2026. As exportações totais alcancaram US$ 22,59 bilhões, impulsionadas pelo complexo sucroenergético e carnes.",
+      "impacto_pratico": "O resultado fortalece a balança comercial paulista e sustenta a balança de pagamentos do setor externo brasileiro.",
       "origem_pipeline": "pulso",
       "veiculos_origem": [
-        "InfoMoney"
+        "Poder360"
       ],
-      "relevancia_score": 93,
+      "relevancia_score": 87,
       "paises_envolvidos": [
         "BR"
       ],
-      "categoria_primaria": "Geopolitica_Radar",
+      "categoria_primaria": "Economia",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
       ],
       "palavras_chave_busca": [
-        "temporais",
-        "sul do país",
-        "rio grande do sul",
-        "defesa civil",
-        "supercélula"
+        "agronegócio",
+        "são paulo",
+        "exportações",
+        "superávit"
       ]
     },
     {
-      "slug": "julgamento-caso-kathlen-romeu-tribunal-juri-rj",
+      "slug": "cnj-cria-regra-para-corrigir-registros-por-mortes-em-acoes-policiais",
       "status": "novo",
       "categoria": "Sociedade_Cultura",
       "ttl_horas": 24,
-      "expires_at": "2026-11-22T13:54:51Z",
-      "updated_at": "2026-11-21T13:54:51Z",
+      "expires_at": "2026-11-23T12:45:54Z",
+      "updated_at": "2026-11-22T12:45:54Z",
       "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-11/policiais-queriam-vinganca-diz-advogado-da-familia-de-kathlen-romeu"
+        "https://agenciabrasil.ebc.com.br/justica/noticia/2026-11/cnj-cria-regra-para-corrigir-registros-por-mortes-em-acoes-policiais"
       ],
-      "titulo_tema": "Tribunal do Júri no Rio de Janeiro julgará policiais envolvidos na morte de Kathlen Romeu",
-      "resumo_pulso": "Segundo apuração da Agência Brasil, dois policiais militares serão julgados pelo Tribunal do Júri no Rio de Janeiro pelo assassinato da designer de interiores Kathlen Romeu e do bebê que esperava, ocorrido há cinco anos.",
-      "sintese_nerd": "Repercussão jurídica e social sobre a atuação e responsabilização de agentes de segurança pública.",
-      "titulo_curto": "Tribunal do Júri no Rio de Janeiro julgará policiais envolvidos na morte de Kathlen Romeu",
+      "titulo_tema": "CNJ estabelece nova diretriz para incluir intervenção policial em certidões de óbito",
+      "resumo_pulso": "Segundo comunicado da Agência Brasil (EBC), o Conselho Nacional de Justiça (CNJ) editou resolução determinando a inclusão explícita de que óbitos decorreram de intervenção policial nas certidões de óbito. Especialistas em segurança pública apontam que a medida aprimora a transparência e a precisão estatística sobre mortalidade violenta no país.",
+      "sintese_nerd": "Modifica formalmente registros oficiais de óbitos em todo o território nacional, impactando estatísticas de segurança pública e direitos humanos.",
+      "titulo_curto": "CNJ estabelece nova diretriz para incluir intervenção policial em certidões de óbito",
       "rota_editoria": "/cultura",
       "palavras_chave": [
-        "kathlen romeu",
-        "tribunal do juri",
-        "rio de janeiro",
-        "seguranca publica"
+        "cnj",
+        "segurança pública",
+        "certidão de óbito",
+        "justiça"
       ],
-      "urgencia_score": 86,
-      "data_publicacao": "2026-11-21T12:32:00Z",
-      "gatilho_vitrine": "Segundo apuração da Agência Brasil, dois policiais militares serão julgados pelo Tribunal do Júri no Rio de Janeiro pelo assassinato da designer de interiores Kathlen Romeu e do bebê que esperava, ocorrido há cinco anos.",
-      "impacto_pratico": "Repercussão jurídica e social sobre a atuação e responsabilização de agentes de segurança pública.",
+      "urgencia_score": 88,
+      "data_publicacao": "2026-11-22T11:36:00Z",
+      "gatilho_vitrine": "Segundo comunicado da Agência Brasil (EBC), o Conselho Nacional de Justiça (CNJ) editou resolução determinando a inclusão explícita de que óbitos decorreram de intervenção policial nas certidões de óbito. Especialistas em segurança pública apontam que a medida aprimora a transparência e a precisão estatística sobre mortalidade violenta no país.",
+      "impacto_pratico": "Modifica formalmente registros oficiais de óbitos em todo o território nacional, impactando estatísticas de segurança pública e direitos humanos.",
       "origem_pipeline": "pulso",
       "veiculos_origem": [
         "Agência Brasil (EBC)"
       ],
-      "relevancia_score": 87,
+      "relevancia_score": 89,
       "paises_envolvidos": [
         "BR"
       ],
@@ -803,373 +744,791 @@
         "Resumo_Ultimas"
       ],
       "palavras_chave_busca": [
-        "kathlen romeu",
-        "tribunal do juri",
-        "rio de janeiro",
-        "seguranca publica"
+        "cnj",
+        "segurança pública",
+        "certidão de óbito",
+        "justiça"
       ]
     },
     {
-      "slug": "navio-de-carga-russo-e-atingido-por-drones-no-golfo-da-finlandia",
-      "titulo_tema": "Incêndio atinge navio comercial russo após suposto ataque de drones no Golfo da Finlândia",
-      "titulo_curto": "Incêndio atinge navio comercial russo após suposto ataque de drones no Golfo da Finlândia",
+      "slug": "investidores-globais-buscam-ampliar-investimentos-na-china",
       "status": "novo",
+      "categoria": "Economia_Comercio",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-23T11:40:14Z",
+      "updated_at": "2026-11-22T11:40:14Z",
+      "fontes_urls": [
+        "https://www.poder360.com.br/poder-china/investidores-globais-querem-aumentar-aplicacoes-na-china/"
+      ],
+      "titulo_tema": "Investidores globais projetam expansão de aportes na China diante da estabilidade do yuan",
+      "resumo_pulso": "Conforme apuração do Poder360, gestores e fundos internacionais sinalizam intenção de elevar posições no mercado chinês. A avaliação de valuations atrativos e a resiliência da moeda local impulsionam o interesse por ativos corporativos no país.",
+      "sintese_nerd": "A atração de capital externo pode influenciar o fluxo financeiro para emergentes e fortalecer a liquidez em mercados asiáticos.",
+      "titulo_curto": "Investidores globais projetam expansão de aportes na China diante da estabilidade do yuan",
+      "rota_editoria": "/economia",
+      "palavras_chave": [
+        "china",
+        "investimentos",
+        "yuan",
+        "mercados emergentes"
+      ],
+      "urgencia_score": 86,
+      "data_publicacao": "2026-11-22T11:15:23Z",
+      "gatilho_vitrine": "Conforme apuração do Poder360, gestores e fundos internacionais sinalizam intenção de elevar posições no mercado chinês. A avaliação de valuations atrativos e a resiliência da moeda local impulsionam o interesse por ativos corporativos no país.",
+      "impacto_pratico": "A atração de capital externo pode influenciar o fluxo financeiro para emergentes e fortalecer a liquidez em mercados asiáticos.",
       "origem_pipeline": "pulso",
-      "categoria_primaria": "Geopolitica_Radar",
-      "categoria": "Geopolitica_Relacoes",
+      "veiculos_origem": [
+        "Poder360"
+      ],
+      "relevancia_score": 88,
+      "paises_envolvidos": [
+        "CN"
+      ],
+      "categoria_primaria": "Economia",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
       ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 93,
-      "urgencia_score": 95,
-      "ttl_horas": 18,
-      "expires_at": "2026-11-22T07:28:59Z",
       "palavras_chave_busca": [
-        "rússia",
-        "ucrânia",
-        "golfo da finlândia",
-        "kaliningrad",
-        "drones"
-      ],
-      "palavras_chave": [
-        "rússia",
-        "ucrânia",
-        "golfo da finlândia",
-        "kaliningrad",
-        "drones"
-      ],
-      "gatilho_vitrine": "Segundo relatórios do The Kyiv Independent e da Ukrinform, um navio comercial ligado ao complexo militar da Rússia foi atingido por drones e sofreu incêndio no Golfo da Finlândia. Paralelamente, autoridades fecharam temporariamente o aeroporto de Kaliningrad em meio a alertas de segurança.",
-      "resumo_pulso": "Segundo relatórios do The Kyiv Independent e da Ukrinform, um navio comercial ligado ao complexo militar da Rússia foi atingido por drones e sofreu incêndio no Golfo da Finlândia. Paralelamente, autoridades fecharam temporariamente o aeroporto de Kaliningrad em meio a alertas de segurança.",
-      "sintese_nerd": "Elevação das tensões geopolíticas no Mar Báltico e riscos potenciais para a rota de navegação comercial na região.",
-      "impacto_pratico": "Elevação das tensões geopolíticas no Mar Báltico e riscos potenciais para a rota de navegação comercial na região.",
-      "paises_envolvidos": [
-        "RU",
-        "UA",
-        "FI"
-      ],
-      "veiculos_origem": [
-        "The Kyiv Independent",
-        "Ukrinform"
-      ],
+        "china",
+        "investimentos",
+        "yuan",
+        "mercados emergentes"
+      ]
+    },
+    {
+      "slug": "camara-aprova-credito-300-mi-combater-incendios",
+      "status": "novo",
+      "categoria": "Ciencia_Clima",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-23T10:43:20Z",
+      "updated_at": "2026-11-22T10:43:20Z",
       "fontes_urls": [
-        "https://kyivindependent.com/russian-military-linked-cargo-ship-catches-fire-after-reported-drone-strike-in-gulf-of-finland/",
-        "https://www.ukrinform.net/rubric-ato/4187239-airport-in-russias-kaliningrad-region-temporarily-closed-amid-drone-threat-social-media.html"
+        "https://www.poder360.com.br/poder-congresso/camara-aprova-credito-de-r-300-mi-para-combater-incendios/"
       ],
-      "data_publicacao": "2026-11-21T11:50:07Z",
-      "updated_at": "2026-11-21T19:29:53Z"
+      "titulo_tema": "Câmara aprova crédito extraordinário de R$ 300 milhões para combate a incêndios e desastres",
+      "resumo_pulso": "Conforme divulgado pelo Poder360, a Câmara dos Deputados aprovou medida provisória que libera R$ 300 milhões em créditos extraordinários para a defesa civil. A verba será direcionada ao combate a incêndios florestais e à mitigação de estragos causados por eventos climáticos extremos.",
+      "sintese_nerd": "Aporte direto de recursos federais para municípios atingidos por emergências ambientais e aceleração das ações de resposta da Defesa Civil.",
+      "titulo_curto": "Câmara aprova crédito extraordinário de R$ 300 milhões para combate a incêndios e desastres",
+      "rota_editoria": "/radar",
+      "palavras_chave": [
+        "câmara dos deputados",
+        "crédito extraordinário",
+        "incêndios florestais",
+        "defesa civil",
+        "orçamento"
+      ],
+      "urgencia_score": 90,
+      "data_publicacao": "2026-11-22T10:00:10Z",
+      "gatilho_vitrine": "Conforme divulgado pelo Poder360, a Câmara dos Deputados aprovou medida provisória que libera R$ 300 milhões em créditos extraordinários para a defesa civil. A verba será direcionada ao combate a incêndios florestais e à mitigação de estragos causados por eventos climáticos extremos.",
+      "impacto_pratico": "Aporte direto de recursos federais para municípios atingidos por emergências ambientais e aceleração das ações de resposta da Defesa Civil.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "Poder360"
+      ],
+      "relevancia_score": 91,
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "câmara dos deputados",
+        "crédito extraordinário",
+        "incêndios florestais",
+        "defesa civil",
+        "orçamento"
+      ]
+    }
+  ],
+  "temas_curadoria": [
+    {
+      "slug": "china-espionagem-chips-nvidia-sancoes-eua",
+      "titulo_tema": "Guerra dos Chips: China intensifica ações secretas para contornar sanções dos EUA e obter semicondutores da Nvidia",
+      "status": "em_alta",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Cultura"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 92,
+      "ttl_horas": 72,
+      "expires_at": "2026-11-25T15:58:13Z",
+      "palavras_chave_busca": [
+        "chips nvidia",
+        "sanções eua china",
+        "espionagem tecnológica",
+        "semicondutores",
+        "inteligência artificial",
+        "guerra comercial"
+      ],
+      "gatilho_vitrine": "Exibir na home em destaques de tecnologia geopolítica e disputas de mercado.",
+      "sintese_nerd": "A ofensiva velada de Pequim para obter chips de inteligência artificial da Nvidia evidencia o acirramento da guerra fria tecnológica entre as duas superpotências. Para o leitor brasileiro, esse travamento global afeta a cadeia de suprimentos de hardware e encarece o avanço da infraestrutura digital local.",
+      "data_publicacao": "2026-11-22T15:58:13Z",
+      "updated_at": "2026-11-22T15:58:13Z"
+    },
+    {
+      "slug": "cop-termina-sem-acordo-impasse-combustiveis-fosseis",
+      "titulo_tema": "Fracasso na Cúpula do Clima: COP termina sem acordo sobre transição energética e financiamento",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Politica"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 90,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-24T15:58:13Z",
+      "palavras_chave_busca": [
+        "cop clima",
+        "combustíveis fósseis",
+        "transição energética",
+        "financiamento climático",
+        "acordo do clima",
+        "união europeia"
+      ],
+      "gatilho_vitrine": "Destacar no topo do Radar Geopolítico e no canal de Meio Ambiente e Economia.",
+      "sintese_nerd": "O encerramento sem consenso da COP reflete o racha diplomático entre países desenvolvidos e produtores de petróleo sobre a eliminação de fósseis e fundos de adaptação. A falta de diretrizes globais compromete metas ambientais e gera incerteza para a atração de investimentos verdes no Brasil.",
+      "data_publicacao": "2026-11-22T15:58:13Z",
+      "updated_at": "2026-11-22T15:58:13Z"
+    },
+    {
+      "slug": "ataques-mar-baltico-escoamento-petroleo-russia",
+      "titulo_tema": "Escalação no Báltico: Ataques a embarcações ameaçam rota estratégica do petróleo e grãos russos",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 88,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-24T15:58:13Z",
+      "palavras_chave_busca": [
+        "mar báltico",
+        "petróleo russo",
+        "exportação de grãos",
+        "guerra ucrânia rússia",
+        "preço do barril",
+        "segurança marítima"
+      ],
+      "gatilho_vitrine": "Acionar alertas de volatilidade no preço do petróleo e rotas marítimas de commodities.",
+      "sintese_nerd": "As investidas contra navios no Mar Báltico colocam em risco o escoamento de commodities fundamentais da Rússia e acendem o alerta na Europa. Um gargalo nessa rota pressiona os fretes internacionais e pode causar repasses nos preços dos combustíveis no Brasil.",
+      "data_publicacao": "2026-11-22T15:58:13Z",
+      "updated_at": "2026-11-22T15:58:13Z"
+    },
+    {
+      "slug": "chile-queda-pib-recuperacao-lenta-america-latina",
+      "titulo_tema": "Sinal de Alerta Sul-Americano: Chile registra maior tombo do PIB desde 2020",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Politica"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 82,
+      "ttl_horas": 36,
+      "expires_at": "2026-11-24T03:58:13Z",
+      "palavras_chave_busca": [
+        "pib chile",
+        "recessão américa latina",
+        "banco central chile",
+        "investimentos privados",
+        "desaceleração econômica",
+        "comércio regional"
+      ],
+      "gatilho_vitrine": "Inserir em painel de Economia Sul-Americana e análises comparativas da região.",
+      "sintese_nerd": "A retração de 1,8% no PIB chileno no terceiro trimestre expõe a retração dos investimentos e a lentidão da retomada econômica regional. O resultado evidencia os desafios fiscais do país vizinho e acende um sinal de alerta para a dinâmica do comércio na América Latina.",
+      "data_publicacao": "2026-11-22T15:58:13Z",
+      "updated_at": "2026-11-22T15:58:13Z"
+    },
+    {
+      "slug": "banco-do-brasil-bbas3-avaliacoes-mercado-crise",
+      "titulo_tema": "Mercado em Foco: Ações do Banco do Brasil (BBAS3) concentram atenções após volatilidade",
+      "status": "em_alta",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Politica"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 80,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-23T15:58:13Z",
+      "palavras_chave_busca": [
+        "banco do brasil",
+        "bbas3",
+        "ações bbas3",
+        "xp investimentos",
+        "setor financeiro",
+        "ações estatais"
+      ],
+      "gatilho_vitrine": "Exibir na seção de Finanças e Mercados impulsionado por buscas em alta sobre ações brasileiras.",
+      "sintese_nerd": "O aumento nas buscas pelas ações do Banco do Brasil reflete a incerteza dos investidores divididos entre relatórios de analistas e o risco fiscal de estatais. A precificação do ativo serve como termômetro da confiança do mercado privado na governança de corporações públicas.",
+      "data_publicacao": "2026-11-22T15:58:13Z",
+      "updated_at": "2026-11-22T15:58:13Z"
     }
   ],
   "noticias_quentes": [
     {
-      "slug": "fbi-investiga-suposta-invasao-banco-dados-criminais-eua",
-      "titulo_curto": "FBI apura suposta invasão cibernética em banco de dados nacional de crimes dos EUA",
-      "resumo_pulso": "Conforme relatórios da Al Jazeera English e apurações internacionais, o FBI abriu investigação oficial sobre uma possível violação de segurança em banco de dados de registros criminais dos Estados Unidos. O incidente amplia as preocupações em torno da vulnerabilidade de infraestruturas governamentais e de segurança pública.",
-      "impacto_pratico": "Alerta sobre falhas de cibersegurança em sistemas oficiais norte-americanos e possíveis reflexos em redes de cooperação internacional.",
+      "slug": "espioes-chips-e-a-nvidia-campanha-secreta-china-driblar-eua",
       "categoria": "Geopolitica_Relacoes",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-23T15:40:21Z",
+      "updated_at": "2026-11-22T15:40:21Z",
+      "fontes_urls": [
+        "https://www.infomoney.com.br/business/global/espioes-chips-e-a-nvidia-a-campanha-secreta-da-china-para-driblar-os-eua/"
+      ],
+      "resumo_pulso": "Segundo apuração do InfoMoney, autoridades de inteligência apontam que a China opera uma campanha clandestina para garantir acesso a chips avançados de inteligência artificial e informações estratégicas do setor, contornando restrições impostas por Washington.",
+      "titulo_curto": "Agência de espionagem da China mantém campanha secreta para obter chips de IA e burlar barreiras dos EUA",
+      "palavras_chave": [
+        "China",
+        "EUA",
+        "chips",
+        "Nvidia",
+        "inteligência artificial",
+        "espionagem"
+      ],
+      "urgencia_score": 91,
+      "data_publicacao": "2026-11-22T15:38:47Z",
+      "impacto_pratico": "Acentua a disputa tecnológica global e as salvaguardas de segurança em semicondutores.",
+      "nivel_confianca": "media",
+      "veiculos_origem": [
+        "InfoMoney Mercados"
+      ],
+      "relevancia_score": 92,
+      "horas_em_destaque": 16,
       "paises_envolvidos": [
+        "CN",
         "US"
       ],
+      "links_internos_relacionados": [
+        {
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-sancao-internacional",
+          "motivo_conexao": "Ajuda a compreender o uso de restrições tecnológicas e comerciais na geopolítica atual.",
+          "titulo_existente": "O que é uma sanção internacional?"
+        }
+      ]
+    },
+    {
+      "slug": "chile-tem-maior-tombo-do-pib-desde-2020-e-bc-ve-recuperacao-mais-lenta",
+      "categoria": "Economia_Comercio",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-23T15:40:07Z",
+      "updated_at": "2026-11-22T15:40:21Z",
+      "fontes_urls": [
+        "https://www.infomoney.com.br/economia/chile-tem-maior-tombo-do-pib-desde-2020-e-bc-ve-recuperacao-mais-lenta/"
+      ],
+      "resumo_pulso": "Segundo reportagem do InfoMoney Mercados com base em declarações de Rosanna Costa, o Produto Interno Bruto (PIB) do Chile caiu 1,8% no terceiro trimestre, marcando o maior recuo desde 2020. A autoridade monetária destacou a ausência de sinais claros de retomada imediata dos investimentos.",
+      "titulo_curto": "PIB do Chile registra maior queda desde 2020 e Banco Central aponta recuperação lenta",
+      "palavras_chave": [
+        "Chile",
+        "PIB",
+        "Banco Central",
+        "economia",
+        "América Latina"
+      ],
+      "urgencia_score": 88,
+      "data_publicacao": "2026-11-22T15:30:55Z",
+      "impacto_pratico": "Reflete cautela nos mercados latino-americanos e possíveis reflexos no comércio regional.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "InfoMoney Mercados"
+      ],
+      "relevancia_score": 89,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "CL"
+      ],
+      "links_internos_relacionados": [
+        {
+          "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
+          "motivo_conexao": "Permite contextualizar tendências econômicas regionais e indicadores de atividade na América do Sul.",
+          "titulo_existente": "Economia no Brasil"
+        }
+      ]
+    },
+    {
+      "slug": "russia-strikes-gas-service-facility-in-dnipropetrovsk-region-with-guided-bomb",
+      "categoria": "Geopolitica_Relacoes",
+      "ttl_horas": 18,
+      "expires_at": "2026-11-23T09:40:07Z",
+      "updated_at": "2026-11-22T15:40:07Z",
+      "fontes_urls": [
+        "https://www.ukrinform.net/rubric-ato/4187418-russia-strikes-gas-service-facility-in-dnipropetrovsk-region-with-guided-bomb.html"
+      ],
+      "resumo_pulso": "Segundo apuração da Ukrinform, forças russas realizaram um ataque com bomba guiada contra uma instalação de serviços de gás na região de Dnipropetrovsk, resultando em feridos e agravando os danos à infraestrutura civil ucraniana.",
+      "titulo_curto": "Ataque russo com bomba guiada atinge instalação de gás em Dnipropetrovsk e deixa feridos",
+      "palavras_chave": [
+        "Ucrânia",
+        "Rússia",
+        "Dnipropetrovsk",
+        "infraestrutura",
+        "guerra"
+      ],
       "urgencia_score": 94,
-      "relevancia_score": 92,
-      "nivel_confianca": "media",
+      "data_publicacao": "2026-11-22T15:20:00Z",
+      "impacto_pratico": "Interrupção de serviços essenciais e riscos de desabastecimento de gás na região afetada.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Ukrinform"
+      ],
+      "relevancia_score": 91,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "UA",
+        "RU"
+      ],
+      "links_internos_relacionados": [
+        {
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-sancao-internacional",
+          "motivo_conexao": "Contextualiza as restrições geopolíticas e o impacto de conflitos armados sobre a estabilidade internacional.",
+          "titulo_existente": "O que é uma sanção internacional?"
+        }
+      ]
+    },
+    {
+      "slug": "apos-temporal-governo-reconhece-calamidade-publica-em-tupancireta",
+      "categoria": "Ciencia_Clima",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-23T15:40:07Z",
+      "updated_at": "2026-11-22T15:40:21Z",
+      "fontes_urls": [
+        "https://agenciabrasil.ebc.com.br/meio-ambiente/noticia/2026-11/apos-temporal-governo-reconhece-calamidade-publica-em-tupancireta"
+      ],
+      "resumo_pulso": "Segundo portaria publicada em edição extra do Diário Oficial da União divulgada pela Agência Brasil (EBC), o governo federal reconheceu o estado de calamidade pública em Tupanciretã (RS). A medida visa agilizar a liberação de recursos e o suporte à população afetada pelas fortes tempestades.",
+      "titulo_curto": "Governo federal reconhece calamidade pública em Tupanciretã (RS) após temporal",
+      "palavras_chave": [
+        "Tupanciretã",
+        "Rio Grande do Sul",
+        "calamidade pública",
+        "temporais",
+        "defesa civil"
+      ],
+      "urgencia_score": 94,
+      "data_publicacao": "2026-11-22T14:53:00Z",
+      "impacto_pratico": "Facilita o envio de verbas emergenciais e apoio direto aos moradores desalojados ou prejudicados pelas enchentes.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Agência Brasil (EBC)"
+      ],
+      "relevancia_score": 91,
+      "horas_em_destaque": 18,
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "links_internos_relacionados": [
+        {
+          "url_existente": "https://www.rodandoomundo.com.br/clima",
+          "motivo_conexao": "Relaciona eventos climáticos extremos e políticas de adaptação e mitigação de desastres no Brasil.",
+          "titulo_existente": "Clima, Amazônia e Transição Energética"
+        }
+      ]
+    },
+    {
+      "slug": "oab-sp-estima-perda-de-r-200-bilhoes-por-ano-com-pejotizacao",
+      "categoria": "Economia_Comercio",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-23T14:45:18Z",
+      "updated_at": "2026-11-22T14:45:18Z",
+      "fontes_urls": [
+        "https://www.poder360.com.br/poder-justica/oab-sp-estima-perda-de-r-200-bilhoes-por-ano-com-pejotizacao/"
+      ],
+      "resumo_pulso": "Conforme reportado pelo Poder360, a OAB de São Paulo protocolou no Supremo Tribunal Federal um estudo calculando que a migração de trabalhadores para o modelo PJ gera perdas bilionárias em tributos e na Previdência Social.",
+      "titulo_curto": "OAB-SP aponta perda de R$ 200 bi anuais com pejotização e entrega estudo ao STF",
+      "palavras_chave": [
+        "pejotização",
+        "OAB-SP",
+        "STF",
+        "Previdência",
+        "trabalho"
+      ],
+      "urgencia_score": 89,
+      "data_publicacao": "2026-11-22T14:33:55Z",
+      "impacto_pratico": "Potenciais mudanças na jurisprudência trabalhista brasileira e impacto nas contas da Previdência.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Poder360"
+      ],
+      "relevancia_score": 90,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "links_internos_relacionados": [
+        {
+          "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
+          "motivo_conexao": "Aprofunda as discussões sobre mercado de trabalho e impacto fiscal no país.",
+          "titulo_existente": "Economia no Brasil"
+        }
+      ]
+    },
+    {
+      "slug": "boca-juniors-vence-sul-americana-sobre-o-atletico-mg",
+      "categoria": "Sociedade_Cultura",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-23T15:40:21Z",
+      "updated_at": "2026-11-22T15:40:21Z",
+      "fontes_urls": [
+        "https://agenciabrasil.ebc.com.br/esportes/noticia/2026-11/boca-juniors-vence-sul-americana-sobre-o-atletico-mg"
+      ],
+      "resumo_pulso": "Conforme noticiado pela Agência Brasil (EBC), o Boca Juniors venceu o Atlético-MG por 2 a 0 em partida realizada em Barranquilla, na Colômbia. Com gols de Ascacíbar e Merentiel, o clube argentino garantiu o título da Copa Sul-Americana, ampliando o histórico de vices do time mineiro.",
+      "titulo_curto": "Boca Juniors derrota o Atlético-MG por 2 a 0 e conquista a Copa Sul-Americana de 2026",
+      "palavras_chave": [
+        "Boca Juniors",
+        "Atlético-MG",
+        "Copa Sul-Americana",
+        "futebol",
+        "Colômbia"
+      ],
+      "urgencia_score": 85,
+      "data_publicacao": "2026-11-22T14:28:00Z",
+      "impacto_pratico": "Movimentação intensa de torcedores e impacto no cenário do futebol sul-americano.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Agência Brasil (EBC)"
+      ],
+      "relevancia_score": 88,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "AR",
+        "BR",
+        "CO"
+      ],
+      "links_internos_relacionados": []
+    },
+    {
+      "slug": "iran-unveils-dual-missile-launcher-new-missile-city-what-to-know",
+      "categoria": "Geopolitica_Relacoes",
       "ttl_horas": 18,
       "expires_at": "2026-11-23T08:45:18Z",
       "updated_at": "2026-11-22T14:45:18Z",
       "fontes_urls": [
-        "https://www.aljazeera.com/news/2026/11/21/fbi-national-crime-database-suffers-suspected-breach-reports?traffic_source=rss"
+        "https://www.aljazeera.com/news/2026/11/22/iran-unveils-dual-missile-launcher-new-missile-city-what-to-know?traffic_source=rss"
       ],
       "resumo_pulso": "Segundo apuração da Al Jazeera English, autoridades militares iranianas inauguraram uma nova instalação subterrânea apelidada de 'cidade de mísseis' e revelaram um lançador duplo de artefatos balísticos, em demonstração de capacidade bélica apesar de ataques recentes.",
       "titulo_curto": "Irã exibe novo lançador duplo de mísseis e complexo subterrâneo em meio a tensões com EUA",
       "palavras_chave": [
-        "FBI",
-        "Estados Unidos",
-        "Cibersegurança",
-        "Invasão",
-        "Banco de Dados"
+        "Irã",
+        "mísseis",
+        "Golfo Pérsico",
+        "defesa",
+        "EUA"
       ],
-      "data_publicacao": "2026-11-21T18:34:56Z",
-      "links_internos_relacionados": [
-        {
-          "titulo_existente": "Política nos Estados Unidos",
-          "url_existente": "https://www.rodandoomundo.com.br/politica/estados-unidos",
-          "motivo_conexao": "Acompanha os desdobramentos institucionais e governamentais em Washington."
-        }
-      ],
-      "expires_at": "2026-11-22T12:40:12Z",
-      "updated_at": "2026-11-21T19:29:53Z"
-    },
-    {
-      "slug": "bolsonaro-internado-uti-brasilia-abdome-obstrutivo",
-      "titulo_curto": "Alexandre de Moraes autoriza visitas diárias de filhos a Bolsonaro, internado em UTI no DF",
-      "resumo_pulso": "Segundo novos boletins médicos do Hospital DF Star e apuração do G1, o ex-presidente Jair Bolsonaro segue internado em UTI com quadro de abdômen agudo obstrutivo. O ministro Alexandre de Moraes, do STF, atendeu a pedido da defesa e autorizou visitas diárias de familiares enquanto o paciente permanece clinicamente estável sob suporte nutricional.",
-      "impacto_pratico": "Acompanhamento do estado de saúde de figura pública e desdobramentos de autorizações judiciais para visitas hospitalares.",
-      "categoria": "Geopolitica_Relacoes",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "urgencia_score": 97,
-      "relevancia_score": 95,
+      "urgencia_score": 96,
+      "data_publicacao": "2026-11-22T14:20:41Z",
+      "impacto_pratico": "Aumento da tensão no Golfo Pérsico e riscos geopolíticos para rotas de energia e tráfego marítimo internacional.",
       "nivel_confianca": "alta",
-      "ttl_horas": 12,
-      "horas_em_destaque": 12,
       "veiculos_origem": [
-        "G1 Política",
-        "Agência Brasil (EBC)"
+        "Al Jazeera English"
       ],
-      "fontes_urls": [
-        "https://g1.globo.com/politica/noticia/2026/11/21/moraes-atende-a-pedido-e-autoriza-visitas-diarias-de-filhos-a-bolsonaro-durante-a-internacao.ghtml"
+      "relevancia_score": 93,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "IR",
+        "US",
+        "BH"
       ],
-      "palavras_chave": [
-        "Jair Bolsonaro",
-        "UTI",
-        "Hospital DF Star",
-        "Alexandre de Moraes",
-        "STF"
-      ],
-      "data_publicacao": "2026-11-21T17:55:00Z",
       "links_internos_relacionados": [
         {
-          "titulo_existente": "Política no Brasil",
-          "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
-          "motivo_conexao": "Contextualiza a cobertura de decisões do STF e do cenário político nacional."
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-sancao-internacional",
+          "motivo_conexao": "Contextualiza o uso de pressões e restrições no cenário geopolítico do Oriente Médio.",
+          "titulo_existente": "O que é uma sanção internacional?"
         }
-      ],
-      "expires_at": "2026-11-22T06:40:12Z",
-      "updated_at": "2026-11-21T19:29:53Z"
+      ]
     },
     {
-      "slug": "pulso-1-20261121-1540",
+      "slug": "russian-attacks-cause-serious-damage-to-odesa-power-grid",
       "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 6,
-      "expires_at": "2026-11-21T21:40:51Z",
-      "updated_at": "2026-11-21T15:40:51Z",
+      "ttl_horas": 18,
+      "expires_at": "2026-11-23T08:45:18Z",
+      "updated_at": "2026-11-22T15:40:21Z",
       "fontes_urls": [
-        "https://g1.globo.com/meio-ambiente/noticia/2026/11/21/ainda-nao-ha-compromisso-na-cop31-do-clima-para-um-acordo-afirma-uniao-europeia.ghtml"
+        "https://kyivindependent.com/russian-attacks-cause-serious-damage-to-odesa-power-grid-as-outages-disrupt-city/"
       ],
-      "resumo_pulso": "Segundo G1 Mundo, Voluntário passa em frente ao logotipo da COP31, conferência do clima da ONU, em Antalya, na Turquia, em 8 de novembro de 2026. Murad Sezer/Reuters O comissário europeu para o Clima afirmou neste sábado (21) que ainda não foi alcançado um compromisso para incluir a eliminação gradual dos combustíveis fósseis na declaração política da COP31, realizada na Turquia. \"Ainda não há com",
-      "titulo_curto": "'Ainda não há compromisso' na COP31 do clima para um acordo, afirma União Europeia",
+      "resumo_pulso": "Segundo apuração da Ukrenergo e do The Kyiv Independent, equipes de emergência enfrentam dificuldades contínuas e alertas de ataque aéreo para restabelecer o fornecimento de energia em Odesa após novos bombardeios russos danificarem criticamente a infraestrutura local.",
+      "titulo_curto": "Ataques russos intensificam danos à rede elétrica de Odesa e geram novas interrupções",
       "palavras_chave": [
-        "radar",
-        "tempo real",
-        "br"
+        "Odesa",
+        "Ucrânia",
+        "energia",
+        "ataques russos",
+        "infraestrutura"
+      ],
+      "urgencia_score": 96,
+      "data_publicacao": "2026-11-22T14:12:00Z",
+      "impacto_pratico": "Apagões recorrentes afetam serviços essenciais e o cotidiano de moradores na região sul da Ucrânia.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "The Kyiv Independent",
+        "Ukrenergo"
+      ],
+      "relevancia_score": 93,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "UA",
+        "RU"
+      ],
+      "links_internos_relacionados": [
+        {
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-sancao-internacional",
+          "motivo_conexao": "Contextualiza o impacto de conflitos geopolíticos e sanções sobre a infraestrutura energética.",
+          "titulo_existente": "O que é uma sanção internacional?"
+        }
+      ]
+    },
+    {
+      "slug": "el-nino-galapagos-chuvas",
+      "categoria": "Ciencia_Clima",
+      "ttl_horas": 18,
+      "expires_at": "2026-11-23T07:53:12Z",
+      "updated_at": "2026-11-22T13:53:12Z",
+      "fontes_urls": [
+        "https://g1.globo.com/mundo/noticia/2026/11/22/el-nino-galapagos-chuvas.ghtml"
+      ],
+      "resumo_pulso": "Conforme reportado pelo G1 Mundo, temporais intensos associados ao fenômeno El Niño atingiram o arquipélago equatoriano de Galápagos, deixando milhares de desalojados e causando inundações severas.",
+      "titulo_curto": "Fortes chuvas provocadas pelo El Niño afetam mais de 7 mil pessoas em Galápagos",
+      "palavras_chave": [
+        "El Niño",
+        "Galápagos",
+        "Equador",
+        "Inundações"
       ],
       "urgencia_score": 90,
-      "data_publicacao": "2026-11-21T15:31:31+00:00",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "data_publicacao": "2026-11-22T13:34:11Z",
+      "impacto_pratico": "Aumenta riscos para o turismo e infraestrutura local em ilhas preservadas do Equador.",
       "nivel_confianca": "alta",
       "veiculos_origem": [
         "G1 Mundo"
       ],
       "relevancia_score": 88,
-      "horas_em_destaque": 6,
+      "horas_em_destaque": 12,
       "paises_envolvidos": [
-        "BR"
+        "EC"
       ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
-          "motivo_conexao": "Compreenda por que os preços sobem de forma generalizada, como o IPCA é calculado e de que maneira os juros do Banco Central afetam o poder de compra.",
-          "titulo_existente": "O que é inflação?"
-        },
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/como-funcionam-as-eleicoes-nos-eua",
-          "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos.",
-          "titulo_existente": "Como funcionam as eleições nos EUA?"
-        }
-      ]
+      "links_internos_relacionados": []
     },
     {
-      "slug": "pulso-2-20261121-1540",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 6,
-      "expires_at": "2026-11-21T21:40:51Z",
-      "updated_at": "2026-11-21T15:40:51Z",
-      "fontes_urls": [
-        "https://www.bbc.com/portuguese/articles/cr3wgxxzw81xo?at_medium=RSS&at_campaign=rss"
-      ],
-      "resumo_pulso": "Segundo BBC News Brasil, “Há um aspecto muito, muito mais profundo no que um diagnóstico de câncer provoca em você”, diz Catherine no documentário..",
-      "titulo_curto": "'O câncer muda você': princesa Catherine fala sobre doença em documentário da BBC",
-      "palavras_chave": [
-        "radar",
-        "tempo real",
-        "gb"
-      ],
-      "urgencia_score": 85,
-      "data_publicacao": "2026-11-21T15:24:06+00:00",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "BBC News Brasil"
-      ],
-      "relevancia_score": 84,
-      "horas_em_destaque": 6,
-      "paises_envolvidos": [
-        "GB"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
-          "motivo_conexao": "Compreenda por que os preços sobem de forma generalizada, como o IPCA é calculado e de que maneira os juros do Banco Central afetam o poder de compra.",
-          "titulo_existente": "O que é inflação?"
-        },
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/como-funcionam-as-eleicoes-nos-eua",
-          "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos.",
-          "titulo_existente": "Como funcionam as eleições nos EUA?"
-        }
-      ]
-    },
-    {
-      "slug": "pulso-3-20261121-1540",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 6,
-      "expires_at": "2026-11-21T21:40:51Z",
-      "updated_at": "2026-11-21T15:40:51Z",
-      "fontes_urls": [
-        "https://www.aljazeera.com/news/2026/11/21/tankers-hit-in-strait-of-hormuz-as-iran-tightens-grip-on-shipping?traffic_source=rss"
-      ],
-      "resumo_pulso": "Segundo Al Jazeera English, British maritime agency reports two incidents near Oman, while Iran says a tanker caught fire due to naval mine..",
-      "titulo_curto": "Tankers hit in Strait of Hormuz as Iran tightens grip on shipping",
-      "palavras_chave": [
-        "radar",
-        "tempo real",
-        "qa"
-      ],
-      "urgencia_score": 80,
-      "data_publicacao": "2026-11-21T15:01:18+00:00",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Al Jazeera English"
-      ],
-      "relevancia_score": 80,
-      "horas_em_destaque": 6,
-      "paises_envolvidos": [
-        "QA"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
-          "motivo_conexao": "Compreenda por que os preços sobem de forma generalizada, como o IPCA é calculado e de que maneira os juros do Banco Central afetam o poder de compra.",
-          "titulo_existente": "O que é inflação?"
-        },
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/como-funcionam-as-eleicoes-nos-eua",
-          "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos.",
-          "titulo_existente": "Como funcionam as eleições nos EUA?"
-        }
-      ]
-    },
-    {
-      "slug": "pulso-4-20261121-1540",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 6,
-      "expires_at": "2026-11-21T21:40:51Z",
-      "updated_at": "2026-11-21T15:40:51Z",
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/meio-ambiente/noticia/2026-11/temporais-provocam-alagamentos-e-danos-em-imoveis-no-estado-de-sp"
-      ],
-      "resumo_pulso": "Segundo Agência Brasil (EBC), Fortes chuvas atingiram o município de Aparecida (SP), nesta sexta-feira (20), provocando alagamentos em diversas vias e residências, quedas de árvores e danos em estruturas. Uma família ficou desalojada após a interdição preventiva de um imóvel, e cinco hóspedes foram atingidos pelo desabamento parcial do teto de um restaurante de hotel. Segundo informações da Defesa",
-      "titulo_curto": "Temporais provocam alagamentos e danos em imóveis no estado de SP",
-      "palavras_chave": [
-        "radar",
-        "tempo real",
-        "br"
-      ],
-      "urgencia_score": 75,
-      "data_publicacao": "2026-11-21T14:50:00+00:00",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Agência Brasil (EBC)"
-      ],
-      "relevancia_score": 76,
-      "horas_em_destaque": 6,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
-          "motivo_conexao": "Compreenda por que os preços sobem de forma generalizada, como o IPCA é calculado e de que maneira os juros do Banco Central afetam o poder de compra.",
-          "titulo_existente": "O que é inflação?"
-        },
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/como-funcionam-as-eleicoes-nos-eua",
-          "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos.",
-          "titulo_existente": "Como funcionam as eleições nos EUA?"
-        }
-      ]
-    },
-    {
-      "slug": "pulso-5-20261121-1540",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 6,
-      "expires_at": "2026-11-21T21:40:51Z",
-      "updated_at": "2026-11-21T15:40:51Z",
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/cultura/noticia/2026-11/sem-censura-da-tv-brasil-conquista-novamente-premio-melhores-do-ano"
-      ],
-      "resumo_pulso": "Segundo Agência Brasil (EBC), O programa Sem Censura , apresentado por Cissa Guimarães na TV Brasil, venceu pelo terceiro ano consecutivo o Prêmio Melhores do Ano NaTelinha. A tradicional roda de conversa vespertina da televisão brasileira conquistou a premiação nas categorias de Melhor Programa de Entrevista - láurea já obtida em 2024 e 2025 - e Melhor Programa Diário. Já a anfitriã foi eleita co",
-      "titulo_curto": "Sem Censura, da TV Brasil, conquista novamente Prêmio Melhores do Ano",
-      "palavras_chave": [
-        "radar",
-        "tempo real",
-        "br"
-      ],
-      "urgencia_score": 70,
-      "data_publicacao": "2026-11-21T14:43:00+00:00",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Agência Brasil (EBC)"
-      ],
-      "relevancia_score": 72,
-      "horas_em_destaque": 6,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
-          "motivo_conexao": "Compreenda por que os preços sobem de forma generalizada, como o IPCA é calculado e de que maneira os juros do Banco Central afetam o poder de compra.",
-          "titulo_existente": "O que é inflação?"
-        },
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/como-funcionam-as-eleicoes-nos-eua",
-          "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos.",
-          "titulo_existente": "Como funcionam as eleições nos EUA?"
-        }
-      ]
-    },
-    {
-      "slug": "lula-critica-faria-lima-ajuste-orcamento-2027",
+      "slug": "por-que-o-cobre-queridinho-da-era-da-ia-despencou-9-em-uma-semana",
       "categoria": "Economia_Comercio",
-      "ttl_horas": 12,
-      "expires_at": "2026-11-22T02:37:15Z",
-      "updated_at": "2026-11-21T18:40:12Z",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-23T12:45:54Z",
+      "updated_at": "2026-11-22T12:45:54Z",
       "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/o-sistema-financeiro-nao-vai-me-ensinar-dirigir-o-brasil-diz-lula"
+        "https://www.infomoney.com.br/mercados/por-que-o-cobre-queridinho-da-era-da-ia-despencou-9-em-uma-semana/"
       ],
-      "resumo_pulso": "Em atualização aos debates econômicos, o presidente Luiz Inácio Lula da Silva defendeu o projeto de ajuste fiscal aprovado pelo Senado e criticou os questionamentos do mercado financeiro. Segundo apuração da Agência Brasil, a pauta econômica segue para análise na Câmara dos Deputados.",
-      "titulo_curto": "Lula defende ajuste fiscal e reforça críticas ao mercado financeiro em transmissão ao vivo",
+      "resumo_pulso": "Segundo reportagem do InfoMoney Mercados, o cobre registrou sua maior queda em Londres desde abril de 2025. O movimento foi impulsionado por um aperto de oferta na bolsa de Xangai seguido por desaquecimento da demanda industrial chinesa e incertezas sobre futuras tarifas comerciais anunciadas pelos EUA.",
+      "titulo_curto": "Cobre despenca 9% em uma semana pressionado por oferta em Xangai e demanda fraca na China",
       "palavras_chave": [
-        "Lula",
-        "ajuste fiscal",
-        "economia",
-        "mercado financeiro",
-        "Orcamento"
+        "Cobre",
+        "Mercados",
+        "China",
+        "Inteligência Artificial",
+        "Commodities"
       ],
-      "urgencia_score": 91,
-      "data_publicacao": "2026-11-21T14:27:51Z",
-      "impacto_pratico": "Expectativa de volatilidade nos mercados financeiros e repercussão direta sobre as contas públicas e regras orçamentárias de 2027.",
+      "urgencia_score": 89,
+      "data_publicacao": "2026-11-22T12:40:05Z",
+      "impacto_pratico": "Impacta diretamente o mercado de commodities metálicas, custos de insumos para a infraestrutura de inteligência artificial e o balanço comercial de países exportadores.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "InfoMoney Mercados"
+      ],
+      "relevancia_score": 90,
+      "horas_em_destaque": 18,
+      "paises_envolvidos": [
+        "CN",
+        "GB",
+        "US"
+      ],
+      "links_internos_relacionados": [
+        {
+          "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
+          "motivo_conexao": "Permite analisar reflexos da flutuação de commodities globais sobre a economia e comércio exterior.",
+          "titulo_existente": "Economia no Brasil"
+        }
+      ]
+    },
+    {
+      "slug": "servico-geologico-do-brasil-traz-retorno-de-r-14-por-real-investido",
+      "categoria": "Economia_Comercio",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-23T13:53:12Z",
+      "updated_at": "2026-11-22T13:53:12Z",
+      "fontes_urls": [
+        "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/servico-geologico-do-brasil-traz-retorno-de-r-14-por-real-investido"
+      ],
+      "resumo_pulso": "Segundo a quinta edição do Balanço Social divulgada pela Agência Brasil (EBC), cada real investido no Serviço Geológico do Brasil gerou R$ 14,47 em benefícios socioeconômicos e ambientais para a sociedade em 2025.",
+      "titulo_curto": "Balanço social do Serviço Geológico do Brasil aponta retorno de R$ 14 por real investido",
+      "palavras_chave": [
+        "Serviço Geológico do Brasil",
+        "Economia",
+        "Balanço Social"
+      ],
+      "urgencia_score": 82,
+      "data_publicacao": "2026-11-22T12:21:00Z",
+      "impacto_pratico": "Destaca a eficiência econômica e o valor estratégico de pesquisas geológicas para o país.",
       "nivel_confianca": "alta",
       "veiculos_origem": [
         "Agência Brasil (EBC)"
       ],
-      "relevancia_score": 92,
+      "relevancia_score": 85,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "links_internos_relacionados": [
+        {
+          "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
+          "motivo_conexao": "Complementa a análise sobre contas públicas, investimentos e desempenho institucional no Brasil.",
+          "titulo_existente": "Economia no Brasil"
+        }
+      ]
+    },
+    {
+      "slug": "agro-sao-paulo-superavit-recorde-2026",
+      "categoria": "Economia_Comercio",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-23T11:40:14Z",
+      "updated_at": "2026-11-22T11:40:14Z",
+      "fontes_urls": [
+        "https://www.poder360.com.br/poder-agro/agro-de-sp-tem-superavit-de-us-176-bilhoes-ate-outubro-de-2026/"
+      ],
+      "resumo_pulso": "Segundo dados consolidados e divulgados pelo Poder360, o setor agropecuário do estado de São Paulo atingiu saldo positivo de US$ 17,6 bilhões nos dez primeiros meses de 2026. As exportações totais alcancaram US$ 22,59 bilhões, impulsionadas pelo complexo sucroenergético e carnes.",
+      "titulo_curto": "Agronegócio de São Paulo registra superávit de US$ 17,6 bilhões até outubro",
+      "palavras_chave": [
+        "Agronegócio",
+        "São Paulo",
+        "Exportações",
+        "Superávit"
+      ],
+      "urgencia_score": 84,
+      "data_publicacao": "2026-11-22T11:36:15Z",
+      "impacto_pratico": "O resultado fortalece a balança comercial paulista e sustenta a balança de pagamentos do setor externo brasileiro.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Poder360"
+      ],
+      "relevancia_score": 87,
+      "horas_em_destaque": 8,
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "links_internos_relacionados": [
+        {
+          "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
+          "motivo_conexao": "Apresenta o contexto amplo do agronegócio no desempenho do PIB e do comércio exterior brasileiro.",
+          "titulo_existente": "Economia no Brasil"
+        }
+      ]
+    },
+    {
+      "slug": "cnj-cria-regra-para-corrigir-registros-por-mortes-em-acoes-policiais",
+      "categoria": "Sociedade_Cultura",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-23T12:45:54Z",
+      "updated_at": "2026-11-22T12:45:54Z",
+      "fontes_urls": [
+        "https://agenciabrasil.ebc.com.br/justica/noticia/2026-11/cnj-cria-regra-para-corrigir-registros-por-mortes-em-acoes-policiais"
+      ],
+      "resumo_pulso": "Segundo comunicado da Agência Brasil (EBC), o Conselho Nacional de Justiça (CNJ) editou resolução determinando a inclusão explícita de que óbitos decorreram de intervenção policial nas certidões de óbito. Especialistas em segurança pública apontam que a medida aprimora a transparência e a precisão estatística sobre mortalidade violenta no país.",
+      "titulo_curto": "CNJ estabelece nova diretriz para incluir intervenção policial em certidões de óbito",
+      "palavras_chave": [
+        "CNJ",
+        "Segurança Pública",
+        "Certidão de Óbito",
+        "Justiça"
+      ],
+      "urgencia_score": 88,
+      "data_publicacao": "2026-11-22T11:36:00Z",
+      "impacto_pratico": "Modifica formalmente registros oficiais de óbitos em todo o território nacional, impactando estatísticas de segurança pública e direitos humanos.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Agência Brasil (EBC)"
+      ],
+      "relevancia_score": 89,
+      "horas_em_destaque": 18,
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "links_internos_relacionados": [
+        {
+          "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
+          "motivo_conexao": "Aborda diretrizes de órgãos de cúpula do Judiciário relativas à transparência de atos públicos.",
+          "titulo_existente": "STF analisa regras de transparência e limites constitucionais entre os Poderes"
+        }
+      ]
+    },
+    {
+      "slug": "investidores-globais-buscam-ampliar-investimentos-na-china",
+      "categoria": "Economia_Comercio",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-23T11:40:14Z",
+      "updated_at": "2026-11-22T11:40:14Z",
+      "fontes_urls": [
+        "https://www.poder360.com.br/poder-china/investidores-globais-querem-aumentar-aplicacoes-na-china/"
+      ],
+      "resumo_pulso": "Conforme apuração do Poder360, gestores e fundos internacionais sinalizam intenção de elevar posições no mercado chinês. A avaliação de valuations atrativos e a resiliência da moeda local impulsionam o interesse por ativos corporativos no país.",
+      "titulo_curto": "Investidores globais projetam expansão de aportes na China diante da estabilidade do yuan",
+      "palavras_chave": [
+        "China",
+        "Investimentos",
+        "Yuan",
+        "Mercados emergentes"
+      ],
+      "urgencia_score": 86,
+      "data_publicacao": "2026-11-22T11:15:23Z",
+      "impacto_pratico": "A atração de capital externo pode influenciar o fluxo financeiro para emergentes e fortalecer a liquidez em mercados asiáticos.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Poder360"
+      ],
+      "relevancia_score": 88,
+      "horas_em_destaque": 8,
+      "paises_envolvidos": [
+        "CN"
+      ],
+      "links_internos_relacionados": [
+        {
+          "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
+          "motivo_conexao": "Permite comparar o fluxo de capital para a China com o apetite dos investidores por mercados da América Latina.",
+          "titulo_existente": "Economia no Brasil"
+        }
+      ]
+    },
+    {
+      "slug": "camara-aprova-credito-300-mi-combater-incendios",
+      "categoria": "Ciencia_Clima",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-23T10:43:20Z",
+      "updated_at": "2026-11-22T10:43:20Z",
+      "fontes_urls": [
+        "https://www.poder360.com.br/poder-congresso/camara-aprova-credito-de-r-300-mi-para-combater-incendios/"
+      ],
+      "resumo_pulso": "Conforme divulgado pelo Poder360, a Câmara dos Deputados aprovou medida provisória que libera R$ 300 milhões em créditos extraordinários para a defesa civil. A verba será direcionada ao combate a incêndios florestais e à mitigação de estragos causados por eventos climáticos extremos.",
+      "titulo_curto": "Câmara aprova crédito extraordinário de R$ 300 milhões para combate a incêndios e desastres",
+      "palavras_chave": [
+        "Câmara dos Deputados",
+        "crédito extraordinário",
+        "incêndios florestais",
+        "defesa civil",
+        "orçamento"
+      ],
+      "urgencia_score": 90,
+      "data_publicacao": "2026-11-22T10:00:10Z",
+      "impacto_pratico": "Aporte direto de recursos federais para municípios atingidos por emergências ambientais e aceleração das ações de resposta da Defesa Civil.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Poder360"
+      ],
+      "relevancia_score": 91,
       "horas_em_destaque": 8,
       "paises_envolvidos": [
         "BR"
@@ -1177,165 +1536,145 @@
       "links_internos_relacionados": [
         {
           "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-o-orcamento",
-          "motivo_conexao": "Explica a dinâmica de elaboração e controle das contas públicas e os impactos do ajuste fiscal.",
+          "motivo_conexao": "Explica como funcionam a aprovação de créditos extraordinários e a execução de verbas emergenciais no orçamento federal.",
           "titulo_existente": "O que é o Orçamento?"
         }
       ]
     },
     {
-      "slug": "terremoto-magnitude-6-8-peru",
-      "titulo_curto": "Indeci confirma 15 feridos e dezenas de imóveis danificados após terremoto no Peru",
-      "resumo_pulso": "Conforme boletim oficial do Instituto Nacional de Defesa Civil do Peru (Indeci) repercutido pelo G1 Mundo, o terremoto de magnitude 6,7 a 6,8 deixou 15 feridos e danificou mais de 120 residências na região central do país. O tremor foi amplamente sentido em Lima, sem registros de vítimas fatais.",
-      "impacto_pratico": "Possíveis interrupções em infraestruturas locais e necessidade de atendimento humanitário nas províncias afetadas.",
-      "categoria": "Geopolitica_Relacoes",
-      "paises_envolvidos": [
-        "PE"
-      ],
-      "urgencia_score": 92,
-      "relevancia_score": 88,
-      "nivel_confianca": "alta",
-      "ttl_horas": 12,
-      "horas_em_destaque": 8,
-      "veiculos_origem": [
-        "G1 Mundo"
-      ],
-      "fontes_urls": [
-        "https://g1.globo.com/mundo/noticia/2026/11/21/terremoto-de-magnitude-67-deixou-15-feridos-no-peru-e-danificou-127-casas.ghtml"
-      ],
-      "palavras_chave": [
-        "Peru",
-        "Terremoto",
-        "Indeci",
-        "Lima",
-        "Junín"
-      ],
-      "data_publicacao": "2026-11-21T14:17:00Z",
-      "links_internos_relacionados": [],
-      "expires_at": "2026-11-21T20:58:15Z",
-      "updated_at": "2026-11-21T19:29:53Z"
-    },
-    {
-      "slug": "tempestade-rs-defesa-civil-atualiza-dados",
-      "categoria": "Ciencia_Clima",
-      "ttl_horas": 12,
-      "expires_at": "2026-11-22T02:58:15Z",
-      "updated_at": "2026-11-21T17:39:19Z",
-      "fontes_urls": [
-        "https://www.infomoney.com.br/brasil/governador-do-rs-amplia-ajuda-a-cidade-de-tupancireta-atingida-por-tempestade/"
-      ],
-      "resumo_pulso": "O governador Eduardo Leite anunciou um aporte adicional de R$ 5 milhões para a cidade de Tupanciretã, severamente atingida por tempestades. O recurso complementa a ajuda emergencial anterior para custear maquinário e equipamentos essenciais.",
-      "titulo_curto": "Governo do RS amplia auxílio a Tupanciretã após tempestades",
-      "palavras_chave": [
-        "Rio Grande do Sul",
-        "Tempestade",
-        "Defesa Civil",
-        "Ajuda Humanitária"
-      ],
-      "urgencia_score": 94,
-      "data_publicacao": "2026-11-21T14:13:00Z",
-      "impacto_pratico": "Apoio direto às áreas afetadas por desastres climáticos no Rio Grande do Sul.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "InfoMoney"
-      ],
-      "relevancia_score": 90,
-      "horas_em_destaque": 6,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "links_internos_relacionados": []
-    },
-    {
-      "slug": "mexico-captura-narcotraficante-chapo-isidro-fbi",
+      "slug": "zelensky-russia-disparou-2700-drones-uma-semana",
       "categoria": "Geopolitica_Relacoes",
       "ttl_horas": 24,
-      "expires_at": "2026-11-22T13:54:51Z",
-      "updated_at": "2026-11-21T13:54:51Z",
+      "expires_at": "2026-11-23T10:43:20Z",
+      "updated_at": "2026-11-22T11:40:14Z",
       "fontes_urls": [
-        "https://g1.globo.com/mundo/noticia/2026/11/21/mexico-captura-narcotraficante-que-esta-entre-os-dez-mais-procurados-pelo-fbi.ghtml"
+        "https://kyivindependent.com/zelensky-says-us-delays-on-patriot-missiles-are-difficult-to-understand-as-russia-fires-165-missiles-in-a-week/"
       ],
-      "resumo_pulso": "Segundo apuração do G1 Mundo, forças de segurança do México capturaram Fausto Isidro Meza, o 'Chapo Isidro', apontado como um dos dez fugitivos mais procurados pelo FBI. A prisão ocorreu no estado de Sinaloa e envolveu outros líderes de seu grupo criminoso.",
-      "titulo_curto": "México captura narcotraficante 'Chapo Isidro', um dos mais procurados pelo FBI",
-      "palavras_chave": [
-        "Chapo Isidro",
-        "FBI",
-        "Mexico",
-        "narcotrafico"
-      ],
-      "urgencia_score": 92,
-      "data_publicacao": "2026-11-21T13:41:26Z",
-      "impacto_pratico": "Reforço na cooperação bilateral de segurança e combate ao narcotráfico entre México e Estados Unidos.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "G1 Mundo"
-      ],
-      "relevancia_score": 90,
-      "horas_em_destaque": 12,
-      "paises_envolvidos": [
-        "MX",
-        "US"
-      ],
-      "links_internos_relacionados": []
-    },
-    {
-      "slug": "zelensky-classifica-cupula-na-china-como-fracasso-para-putin",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 18,
-      "expires_at": "2026-11-22T07:28:59Z",
-      "updated_at": "2026-11-21T13:54:51Z",
-      "fontes_urls": [
-        "https://kyivindependent.com/zelensky-says-ukraine-has-yet-to-see-written-commitments-on-nato-style-security-guarantees/",
-        "https://www.ukrinform.net/rubric-polytics/4187167-zelensky-says-ukraine-not-yet-received-official-security-guarantees-equivalent-to-nato-article-5.html"
-      ],
-      "resumo_pulso": "Conforme apuração do The Kyiv Independent e da Ukrinform, o presidente ucraniano Volodymyr Zelensky declarou que o país ainda precisa de clareza e de compromissos por escrito sobre garantias de segurança semelhantes ao Artigo 5º da OTAN.",
-      "titulo_curto": "Zelensky afirma que Ucrânia ainda aguarda garantias de segurança formais equivalentes à OTAN",
+      "resumo_pulso": "Segundo o The Kyiv Independent, o presidente Volodymyr Zelensky qualificou como incompreensíveis os atrasos dos EUA na entrega de sistemas de defesa aérea Patriot já pagos por aliados. O mandatário destacou que a Ucrânia enfrentou 165 mísseis e 2.700 drones em sete dias.",
+      "titulo_curto": "Zelensky cobra envio de sistemas Patriot e aponta disparo de 165 mísseis russos na semana",
       "palavras_chave": [
         "Zelensky",
+        "Patriot",
+        "Estados Unidos",
         "Ucrânia",
-        "OTAN",
-        "segurança"
+        "Mísseis"
       ],
-      "urgencia_score": 90,
-      "data_publicacao": "2026-11-21T13:14:18Z",
-      "impacto_pratico": "Orienta as negociações diplomáticas de longo prazo para a estabilização do leste europeu.",
+      "urgencia_score": 95,
+      "data_publicacao": "2026-11-22T09:52:00Z",
+      "impacto_pratico": "A demora nos suprimentos de defesa aérea expõe a infraestrutura civil e energética ucraniana a novos bombardeios massivos.",
       "nivel_confianca": "alta",
       "veiculos_origem": [
         "The Kyiv Independent",
         "Ukrinform"
       ],
-      "relevancia_score": 91,
-      "horas_em_destaque": 10,
+      "relevancia_score": 93,
+      "horas_em_destaque": 12,
       "paises_envolvidos": [
-        "UA"
+        "UA",
+        "US",
+        "RU"
+      ],
+      "links_internos_relacionados": [
+        {
+          "url_existente": "https://www.rodandoomundo.com.br/politica/estados-unidos",
+          "motivo_conexao": "Detalha os debates e decisões do Congresso norte-americano quanto à liberação de ajuda militar.",
+          "titulo_existente": "Política nos Estados Unidos"
+        }
+      ]
+    },
+    {
+      "slug": "ucrania-combate-subterraneo-gasoduto-kharkiv",
+      "categoria": "Geopolitica_Relacoes",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-23T09:43:42Z",
+      "updated_at": "2026-11-22T09:43:42Z",
+      "fontes_urls": [
+        "https://www.bbc.com/portuguese/articles/cm2d94xr6l1eo?at_medium=RSS&at_campaign=rss"
+      ],
+      "resumo_pulso": "Conforme reportado pela BBC News Brasil, tropas ucranianas e russas disputam o controle de um antigo gasoduto desativado da era soviética na região de Kharkiv. A tubulação subterrânea tornou-se um corredor tático decisivo para incursões de curta distância no leste da Ucrânia.",
+      "titulo_curto": "Forças ucranianas e russas travam combates subterrâneos em antigo gasoduto em Kharkiv",
+      "palavras_chave": [
+        "Ucrânia",
+        "Kharkiv",
+        "Combate subterrâneo",
+        "Gasoduto"
+      ],
+      "urgencia_score": 90,
+      "data_publicacao": "2026-11-22T09:40:48Z",
+      "impacto_pratico": "Intensificação dos combates táticos e riscos acrescidos na região de Kharkiv.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "BBC News Brasil"
+      ],
+      "relevancia_score": 89,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "UA",
+        "RU"
       ],
       "links_internos_relacionados": []
     },
     {
-      "slug": "cursos-pedagogia-carga-horaria-matematica",
-      "categoria": "Sociedade_Cultura",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-22T13:54:51Z",
-      "updated_at": "2026-11-21T14:46:12Z",
+      "slug": "navio-de-carga-russo-em-chamas-apos-ataque-de-drones-na-finlandia",
+      "categoria": "Geopolitica_Relacoes",
+      "ttl_horas": 18,
+      "expires_at": "2026-11-23T03:43:42Z",
+      "updated_at": "2026-11-22T11:40:14Z",
       "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/educacao/noticia/2026-11/dossie-mapeia-desafios-do-ensino-de-matematica-e-sugere-solucoes"
+        "https://www.aljazeera.com/video/newsfeed/2026/11/22/russian-ship-attacked-by-drone-in-baltic-sea-off-finland?traffic_source=rss",
+        "https://www.ukrinform.net/rubric-emergencies/4187353-fire-on-russian-cargo-ship-off-finland-remains-unextinguished-after-attack.html"
       ],
-      "resumo_pulso": "Segundo dados oficiais da Agência Brasil, cerca de 70,6% dos cursos presenciais de pedagogia destinam apenas entre 2,5% e 5% de sua carga horária para a formação matemática. O mapeamento técnico foi lançado durante o 9º Simpósio Nacional da Formação do Professor de Matemática.",
-      "titulo_curto": "Dossiê aponta que 70% dos cursos de pedagogia dedicam fração mínima à matemática",
+      "resumo_pulso": "Segundo informações da Guarda Fronteiriça Finlandesa reportadas pela Al Jazeera e Ukrinform, o navio de carga russo Sparta II continua em chamas no Mar Báltico perto da Finlândia. Equipes de emergência trabalham para conter o fogo iniciado após suposto ataque por drones.",
+      "titulo_curto": "Incêndio em navio de carga russo atinge segunda noite no Mar Báltico após ataque",
       "palavras_chave": [
-        "Pedagogia",
-        "Matemática",
-        "Educação",
-        "Agência Brasil",
-        "Formação de Professores"
+        "Mar Báltico",
+        "Finlândia",
+        "Rússia",
+        "Sparta II",
+        "Incêndio"
       ],
-      "urgencia_score": 86,
-      "data_publicacao": "2026-11-21T13:03:00Z",
-      "impacto_pratico": "Levanta alertas sobre a qualificação inicial de docentes para o ensino básico de matemática no país.",
+      "urgencia_score": 94,
+      "data_publicacao": "2026-11-22T09:23:25Z",
+      "impacto_pratico": "O incidente amplia a tensão de navegação e traz alertas ambientais nas águas territoriais do Mar Báltico.",
       "nivel_confianca": "alta",
       "veiculos_origem": [
-        "Agência Brasil (EBC)"
+        "Al Jazeera English",
+        "Ukrinform",
+        "The Moscow Times"
       ],
-      "relevancia_score": 88,
+      "relevancia_score": 91,
+      "horas_em_destaque": 10,
+      "paises_envolvidos": [
+        "RU",
+        "FI"
+      ],
+      "links_internos_relacionados": []
+    },
+    {
+      "slug": "senado-aprova-cordao-girassol-tulipa-vermelha-parkinson",
+      "categoria": "Sociedade_Cultura",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-23T09:43:42Z",
+      "updated_at": "2026-11-22T09:43:42Z",
+      "fontes_urls": [
+        "https://www.poder360.com.br/poder-congresso/cas-aprova-cordao-de-identificacao-para-pessoas-com-parkinson/"
+      ],
+      "resumo_pulso": "Conforme divulgado pelo Poder360, a Comissão de Assuntos Sociais do Senado aprovou projeto de lei que institui a tulipa vermelha como símbolo nacional de identificação para pessoas com doença de Parkinson. O acessório opcional visa assegurar atendimento prioritário e humanizado em serviços públicos e privados.",
+      "titulo_curto": "Comissão do Senado aprova cordão com tulipa vermelha para identificação de pessoas com Parkinson",
+      "palavras_chave": [
+        "Parkinson",
+        "Senado",
+        "Tulipa vermelha",
+        "Prioridade"
+      ],
+      "urgencia_score": 85,
+      "data_publicacao": "2026-11-22T09:20:58Z",
+      "impacto_pratico": "Garante maior facilidade na identificação e prioridade para pacientes com Parkinson no Brasil.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Poder360"
+      ],
+      "relevancia_score": 87,
       "horas_em_destaque": 12,
       "paises_envolvidos": [
         "BR"
@@ -1343,379 +1682,44 @@
       "links_internos_relacionados": [
         {
           "url_existente": "https://www.rodandoomundo.com.br/saude",
-          "motivo_conexao": "Conecta debates sobre políticas públicas educacionais e investimentos estruturais no setor.",
+          "motivo_conexao": "Complementa a discussão sobre avanços em direitos de saúde e acessibilidade no Brasil.",
           "titulo_existente": "Movimentos sociais e parlamentares debatem investimentos em saúde, educação e transição ecológica"
         }
       ]
     },
     {
-      "slug": "matematicos-anunciam-possivel-solucao-da-hipotese-de-riemann-com-ia-claude",
-      "categoria": "Ciencia_Clima",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-22T13:28:59Z",
-      "updated_at": "2026-11-21T13:38:05Z",
-      "fontes_urls": [
-        "https://www.aljazeera.com/news/2026/11/21/riemann-hypothesis-has-the-worlds-most-famous-maths-problem-been-cracked?traffic_source=rss"
-      ],
-      "resumo_pulso": "Conforme reportado pela Al Jazeera, cientistas anunciaram uma suposta prova para a Hipótese de Riemann utilizando o modelo de inteligência artificial Claude. Especialistas ressaltam que o feito precisará de semanas de validação rigorosa pela comunidade matemática.",
-      "titulo_curto": "Pesquisadores apontam suposta demonstração da Hipótese de Riemann com auxílio da IA Claude",
-      "palavras_chave": [
-        "Hipótese de Riemann",
-        "inteligência artificial",
-        "Claude",
-        "matemática"
-      ],
-      "urgencia_score": 86,
-      "data_publicacao": "2026-11-21T12:49:20Z",
-      "impacto_pratico": "Avanço potencial na matemática teórica e na aplicação de inteligência artificial em problemas complexos.",
-      "nivel_confianca": "preliminar",
-      "veiculos_origem": [
-        "Al Jazeera English"
-      ],
-      "relevancia_score": 85,
-      "horas_em_destaque": 12,
-      "paises_envolvidos": [],
-      "links_internos_relacionados": []
-    },
-    {
-      "slug": "novos-temporais-sul-do-pais-supercelula-rs",
-      "categoria": "Ciencia_Clima",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-22T12:48:01Z",
-      "updated_at": "2026-11-21T13:02:47Z",
-      "fontes_urls": [
-        "https://www.infomoney.com.br/brasil/novos-temporais-devem-atingir-sul-do-pais-apos-supercelula-arrasar-cidade-do-rs/"
-      ],
-      "resumo_pulso": "Conforme apuração do InfoMoney, novas chuvas intensas e temporais devem atingir o Rio Grande do Sul, Santa Catarina e Paraná após os severos estragos causados por uma supercélula. As Defesas Civis estaduais reforçaram os alertas preventivos devido à chegada de uma nova frente fria.",
-      "titulo_curto": "Defesa Civil e Climatempo mantêm alertas de novos temporais e chuvas intensas no Sul do país",
-      "palavras_chave": [
-        "temporais",
-        "Sul do país",
-        "Rio Grande do Sul",
-        "Defesa Civil",
-        "supercélula"
-      ],
-      "urgencia_score": 96,
-      "data_publicacao": "2026-11-21T12:40:28Z",
-      "impacto_pratico": "População em áreas de risco no Sul deve redobrar cuidados com alagamentos e deslizamentos de terra.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "InfoMoney"
-      ],
-      "relevancia_score": 93,
-      "horas_em_destaque": 12,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/clima",
-          "motivo_conexao": "Contextualiza eventos climáticos extremos e alertas meteorológicos no Brasil.",
-          "titulo_existente": "Clima, Amazônia e Transição Energética"
-        }
-      ]
-    },
-    {
-      "slug": "julgamento-caso-kathlen-romeu-tribunal-juri-rj",
-      "categoria": "Sociedade_Cultura",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-22T13:54:51Z",
-      "updated_at": "2026-11-21T13:54:51Z",
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-11/policiais-queriam-vinganca-diz-advogado-da-familia-de-kathlen-romeu"
-      ],
-      "resumo_pulso": "Segundo apuração da Agência Brasil, dois policiais militares serão julgados pelo Tribunal do Júri no Rio de Janeiro pelo assassinato da designer de interiores Kathlen Romeu e do bebê que esperava, ocorrido há cinco anos.",
-      "titulo_curto": "Tribunal do Júri no Rio de Janeiro julgará policiais envolvidos na morte de Kathlen Romeu",
-      "palavras_chave": [
-        "Kathlen Romeu",
-        "Tribunal do Juri",
-        "Rio de Janeiro",
-        "seguranca publica"
-      ],
-      "urgencia_score": 86,
-      "data_publicacao": "2026-11-21T12:32:00Z",
-      "impacto_pratico": "Repercussão jurídica e social sobre a atuação e responsabilização de agentes de segurança pública.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Agência Brasil (EBC)"
-      ],
-      "relevancia_score": 87,
-      "horas_em_destaque": 12,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
-          "motivo_conexao": "Permite acompanhar desdobramentos de segurança pública e pautas judiciais no país.",
-          "titulo_existente": "Política no Brasil"
-        }
-      ]
-    },
-    {
-      "slug": "navio-de-carga-russo-e-atingido-por-drones-no-golfo-da-finlandia",
-      "titulo_curto": "Incêndio atinge navio comercial russo após suposto ataque de drones no Golfo da Finlândia",
-      "resumo_pulso": "Segundo relatórios do The Kyiv Independent e da Ukrinform, um navio comercial ligado ao complexo militar da Rússia foi atingido por drones e sofreu incêndio no Golfo da Finlândia. Paralelamente, autoridades fecharam temporariamente o aeroporto de Kaliningrad em meio a alertas de segurança.",
-      "impacto_pratico": "Elevação das tensões geopolíticas no Mar Báltico e riscos potenciais para a rota de navegação comercial na região.",
-      "categoria": "Geopolitica_Relacoes",
-      "paises_envolvidos": [
-        "RU",
-        "UA",
-        "FI"
-      ],
-      "urgencia_score": 95,
-      "relevancia_score": 93,
-      "nivel_confianca": "alta",
-      "ttl_horas": 18,
-      "horas_em_destaque": 12,
-      "veiculos_origem": [
-        "The Kyiv Independent",
-        "Ukrinform"
-      ],
-      "fontes_urls": [
-        "https://kyivindependent.com/russian-military-linked-cargo-ship-catches-fire-after-reported-drone-strike-in-gulf-of-finland/",
-        "https://www.ukrinform.net/rubric-ato/4187239-airport-in-russias-kaliningrad-region-temporarily-closed-amid-drone-threat-social-media.html"
-      ],
-      "palavras_chave": [
-        "Rússia",
-        "Ucrânia",
-        "Golfo da Finlândia",
-        "Kaliningrad",
-        "Drones"
-      ],
-      "data_publicacao": "2026-11-21T11:50:07Z",
-      "links_internos_relacionados": [
-        {
-          "titulo_existente": "O que é uma sanção internacional?",
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-sancao-internacional",
-          "motivo_conexao": "Explica o contexto de restrições comerciais e militares aplicadas a frotas ligadas a conflitos geopolíticos."
-        }
-      ],
-      "expires_at": "2026-11-22T07:28:59Z",
-      "updated_at": "2026-11-21T19:29:53Z"
-    },
-    {
-      "slug": "jair-bolsonaro-internado-dfstar-procedimento-com-sonda",
-      "categoria": "Sociedade_Cultura",
-      "ttl_horas": 6,
-      "expires_at": "2026-11-21T23:41:11Z",
-      "updated_at": "2026-11-21T17:39:19Z",
-      "fontes_urls": [
-        "https://g1.globo.com/politica/noticia/2026/11/21/bolsonaro-tem-obstrucao-intestinal-quadro-estavel-e-segue-sem-previsao-de-alta-diz-boletim-medico.ghtml",
-        "https://www.poder360.com.br/poder-justica/jair-bolsonaro-trata-obstrucao-intestinal-na-uti-em-brasilia/"
-      ],
-      "resumo_pulso": "O ex-presidente Jair Bolsonaro permanece internado em unidade de terapia intensiva no Hospital DF Star, em Brasília, com diagnóstico de abdômen agudo obstrutivo. O ministro Alexandre de Moraes, do STF, autorizou visitas diárias de três filhos do ex-presidente durante o período de internação.",
-      "titulo_curto": "Bolsonaro segue internado em UTI com obstrução intestinal; Moraes autoriza visitas",
-      "palavras_chave": [
-        "Bolsonaro",
-        "Saúde",
-        "STF",
-        "UTI"
-      ],
-      "urgencia_score": 95,
-      "data_publicacao": "2026-11-21T11:31:47Z",
-      "impacto_pratico": "Acompanhamento da saúde de figura pública central na política brasileira.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "G1 Política",
-        "Poder360"
-      ],
-      "relevancia_score": 95,
-      "horas_em_destaque": 6,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
-          "motivo_conexao": "Contexto sobre a atual conjuntura política brasileira.",
-          "titulo_existente": "Política no Brasil"
-        }
-      ]
-    },
-    {
-      "slug": "uniao-europeia-propoe-taxar-big-techs-orcamento-2034",
+      "slug": "eua-dominam-infraestrutura-ia-alugada-por-modelos-chineses",
       "categoria": "Economia_Comercio",
       "ttl_horas": 24,
-      "expires_at": "2026-11-22T11:41:11Z",
-      "updated_at": "2026-11-21T14:17:54Z",
+      "expires_at": "2026-11-23T10:43:20Z",
+      "updated_at": "2026-11-22T10:43:20Z",
       "fontes_urls": [
-        "https://g1.globo.com/tecnologia/noticia/2026/11/21/uniao-europeia-propoe-taxar-big-techs-para-financiar-orcamento-ate-2034.ghtml",
-        "https://www.infomoney.com.br/mundo/uniao-europeia-quer-taxar-big-techs-para-financiar-orcamento/"
+        "https://www.infomoney.com.br/business/global/eua-dominam-infraestrutura-de-ia-mas-isso-tem-ajudado-os-modelos-chineses/"
       ],
-      "resumo_pulso": "Conforme apuração do G1 Economia e InfoMoney, a União Europeia apresentou plano orçamentário para 2028-2034, introduzindo cobrança de 3% sobre receitas de publicidade e serviços digitais de big techs. A medida visa financiar o bloco, embora enfrente resistência de membros com políticas fiscais mais conservadoras.",
-      "titulo_curto": "União Europeia avança com proposta de orçamento de longo prazo que prevê taxação de big techs",
+      "resumo_pulso": "Segundo análise do InfoMoney, provedores de tecnologia na China têm alugado capacidade de processamento em data centers norte-americanos equipados com chips de alta performance. A prática permite que desenvolvedores chineses ofereçam grandes modelos de linguagem globalmente, contornando gargalos de infraestrutura local.",
+      "titulo_curto": "Modelos chineses de inteligência artificial utilizam infraestrutura de data centers nos EUA",
       "palavras_chave": [
-        "União Europeia",
-        "Big Techs",
-        "Orçamento",
-        "Tecnologia",
-        "Taxação"
-      ],
-      "urgencia_score": 92,
-      "data_publicacao": "2026-11-21T11:26:05Z",
-      "impacto_pratico": "Possível alteração nos custos de serviços digitais e publicidade online na Europa, com reflexos globais nas estratégias de precificação das gigantes de tecnologia.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "G1 Economia",
-        "InfoMoney"
-      ],
-      "relevancia_score": 93,
-      "horas_em_destaque": 12,
-      "paises_envolvidos": [
-        "EU"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-o-orcamento",
-          "motivo_conexao": "Explica a estrutura de planejamento orçamentário mencionada na notícia.",
-          "titulo_existente": "O que é o Orçamento?"
-        }
-      ]
-    },
-    {
-      "slug": "fbi-investiga-invasao-banco-dados-nacional-criminais-eua",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 12,
-      "expires_at": "2026-11-22T10:43:32Z",
-      "updated_at": "2026-11-21T12:32:02Z",
-      "fontes_urls": [
-        "https://g1.globo.com/mundo/noticia/2026/11/21/fbi-investiga-invasao-a-banco-dados-nacional-de-informacoes-criminais-diz-tv.ghtml"
-      ],
-      "resumo_pulso": "Segundo apuração da CNN e do G1 Mundo, o FBI abriu investigação sobre uma possível invasão a um banco de dados de segurança pública usado por agências federais e locais nos Estados Unidos. A ocorrência se soma a uma série recente de falhas sistêmicas e cibernéticas no país.",
-      "titulo_curto": "FBI investiga invasão a banco de dados nacional de informações criminais nos EUA",
-      "palavras_chave": [
-        "FBI",
+        "Inteligência Artificial",
         "EUA",
-        "Cibersegurança",
-        "Segurança Pública"
+        "China",
+        "data centers",
+        "chips",
+        "semicondutores"
       ],
-      "urgencia_score": 96,
-      "data_publicacao": "2026-11-21T10:27:04Z",
-      "impacto_pratico": "Possíveis riscos de vazamento de dados sensíveis e instabilidade em serviços de segurança pública nos Estados Unidos.",
+      "urgencia_score": 87,
+      "data_publicacao": "2026-11-22T08:00:00Z",
+      "impacto_pratico": "Reflexos diretos na disputa geopolítica e regulatória sobre semicondutores, capacidade computacional e normas globais de cibersegurança.",
       "nivel_confianca": "alta",
       "veiculos_origem": [
-        "G1 Mundo",
-        "CNN"
+        "InfoMoney Mercados"
       ],
-      "relevancia_score": 94,
+      "relevancia_score": 89,
       "horas_em_destaque": 12,
       "paises_envolvidos": [
-        "US"
+        "US",
+        "CN"
       ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/politica/estados-unidos",
-          "motivo_conexao": "Contextualiza o cenário institucional e de segurança em Washington.",
-          "titulo_existente": "Política nos Estados Unidos"
-        }
-      ]
-    }
-  ],
-  "temas_curadoria": [
-    {
-      "slug": "internacao-bolsonaro-uti-brasilia",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-23T19:02:37Z",
-      "updated_at": "2026-11-21T19:02:37Z",
-      "titulo_tema": "Ex-presidente Jair Bolsonaro internado em UTI no Distrito Federal",
-      "sintese_nerd": "O ex-presidente Jair Bolsonaro foi internado na UTI do Hospital DF Star em Brasília com diagnóstico de abdome agudo obstrutivo, passando por procedimentos clínicos e suporte nutricional. O fato movimenta o cenário político nacional e atrai atenção imediata para os desdobramentos de sua saúde.",
-      "rota_editoria": "/politica",
-      "data_publicacao": "2026-11-21T19:02:37Z",
-      "gatilho_vitrine": "Destacar boletim médico atualizado e repercussão institucional da internação do ex-presidente.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 95,
-      "categoria_primaria": "Politica",
-      "categorias_cruzadas": [
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "jair bolsonaro",
-        "uti",
-        "hospital df star",
-        "abdome agudo obstrutivo",
-        "brasília",
-        "saúde política"
-      ]
-    },
-    {
-      "slug": "ataque-petroleiros-estreito-ormuz",
-      "status": "novo",
-      "ttl_horas": 72,
-      "expires_at": "2026-11-24T19:02:37Z",
-      "updated_at": "2026-11-21T19:02:37Z",
-      "titulo_tema": "Três petroleiros atingidos perto do Estreito de Ormuz",
-      "sintese_nerd": "Operações militares intensificadas pelo Irã no Estreito de Ormuz resultaram em ataques a três petroleiros, elevando drasticamente os riscos às rotas de suprimento energético global. A escalada pressiona os preços do petróleo e afeta a inflação e os custos de transporte internacionais.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-21T19:02:37Z",
-      "gatilho_vitrine": "Conectar o aumento das tensões no Oriente Médio com o impacto direto na cotação internacional do petróleo e nos mercados globais.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 92,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia"
-      ],
-      "palavras_chave_busca": [
-        "estreito de ormuz",
-        "petroleiros",
-        "irã",
-        "petróleo",
-        "crise energética",
-        "geopolítica global"
-      ]
-    },
-    {
-      "slug": "pacote-estimulo-economia-china",
-      "status": "novo",
-      "ttl_horas": 96,
-      "expires_at": "2026-11-25T19:02:37Z",
-      "updated_at": "2026-11-21T19:02:37Z",
-      "titulo_tema": "Economistas defendem pacote de US$ 450 bi para estimular China",
-      "sintese_nerd": "O enfraquecimento da demanda interna na China levou economistas a defenderem um megapacote de estímulos de US$ 450 bilhões para reativar o crescimento do país. A medida possui forte repercussão sobre o volume de importações de commodities do Brasil e o equilíbrio do comércio exterior.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-21T19:02:37Z",
-      "gatilho_vitrine": "Explicar como a desaceleração da economia chinesa e propostas de grandes estímulos fiscais afetam diretamente as exportações e commodities brasileiras.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 88,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Geopolitica_Radar"
-      ],
-      "palavras_chave_busca": [
-        "china",
-        "pacote de estímulo",
-        "demanda interna",
-        "pib global",
-        "comércio exterior",
-        "commodities"
-      ]
-    },
-    {
-      "slug": "fbi-investiga-ataque-banco-dados-criminais",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-23T19:02:37Z",
-      "updated_at": "2026-11-21T19:02:37Z",
-      "titulo_tema": "FBI investiga possível ataque hacker a banco de dados criminais dos EUA",
-      "sintese_nerd": "O FBI investiga uma suposta invasão ao sistema do NCIC, banco de dados que centraliza registros de procurados e antecedentes nos EUA, escancarando falhas de cibersegurança em órgãos federais. O episódio reforça debates contemporâneos sobre a resiliência de redes governamentais contra ataques digitais.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-21T19:02:37Z",
-      "gatilho_vitrine": "Relatar a vulnerabilidade de infraestruturas governamentais críticas frente a ataques cibernéticos de grande escala.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 85,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Cultura"
-      ],
-      "palavras_chave_busca": [
-        "fbi",
-        "ncic",
-        "cibersegurança",
-        "ataque hacker",
-        "governo dos eua",
-        "segurança pública"
-      ]
+      "links_internos_relacionados": []
     }
   ]
 }
