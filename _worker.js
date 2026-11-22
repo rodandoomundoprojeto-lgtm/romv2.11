@@ -528,6 +528,18 @@ async function carregarEstadoOuAssetWorker(chave, path, request, env, isRefresh 
   return { data: assetData, fallback: true };
 }
 
+function detectarFormatoRadarWorker(fonteUrl, fonteNome) {
+  const u = String(fonteUrl || '').toLowerCase();
+  if (/youtube\.com|youtu\.be|vimeo\.com|dailymotion\.com|twitch\.tv|rumble\.com|odysee\.com/.test(u)) {
+    return 'video';
+  }
+  const f = normalizarRadar(fonteNome);
+  if (f.includes('youtube')) {
+    return 'video';
+  }
+  return 'materia';
+}
+
 async function handleRadarHybrid(request, env) {
   if (request.method === 'OPTIONS') {
     return new Response(null, { status: 204, headers: CORS_HEADERS });
@@ -538,9 +550,10 @@ async function handleRadarHybrid(request, env) {
   const categoriaFiltro = normalizarRadar(url.searchParams.get('categoria') || 'todos');
 
   try {
-    const [vitrineRes, feedRes] = await Promise.all([
+    const [vitrineRes, feedRes, ytData] = await Promise.all([
       carregarEstadoOuAssetWorker('vitrine_ia', 'data/vitrine_ia.json', request, env, isRefresh),
       carregarEstadoOuAssetWorker('feed_output', 'data/feed_output.json', request, env, isRefresh),
+      carregarAssetWorker('data/noticias_youtube.json', request, env),
     ]);
 
     const vitrineSnap = vitrineRes.data;
@@ -552,6 +565,64 @@ async function handleRadarHybrid(request, env) {
       vitrineSnap && Array.isArray(vitrineSnap.temas_ativos) && vitrineSnap.temas_ativos.length > 0
         ? vitrineSnap.temas_ativos.filter((t) => t && typeof t === 'object')
         : [];
+
+    const limparAnaliseRadarWorker = (analiseBruta, resumo) => {
+      const analise = String(analiseBruta || '').trim();
+      if (
+        !analise ||
+        ehInstrucaoOuDebugWorker(analise) ||
+        analise === String(resumo || '').trim() ||
+        /^Tendência com forte aceleração de interesse/i.test(analise)
+      ) {
+        return '';
+      }
+      return analise;
+    };
+
+    const cardsYt =
+      ytData && Array.isArray(ytData.items)
+        ? ytData.items
+            .filter((item) => item && typeof item === 'object')
+            .map((item, idx) => {
+              const dataPub = parseTimestampIso(
+                item.data_publicacao || item.published_at || item.publicado_em || ''
+              );
+              const canalNome = item.fonte_nome || item.canal || 'YouTube';
+              const linkVideo = item.fonte_url || item.url || '/radar';
+              const resumoYt = String(item.resumo || '').trim();
+              const analiseYt = limparAnaliseRadarWorker(item.analise, resumoYt);
+              return {
+                id: item.id || `yt-${idx + 1}`,
+                video_id: item.video_id || '',
+                slug: item.slug || `yt-${idx + 1}`,
+                titulo: item.titulo || '',
+                resumo: resumoYt,
+                analise: analiseYt,
+                categoria: normalizarRadar(item.categoria || 'geopolitica') || 'geopolitica',
+                fonte_nome: canalNome,
+                canal: canalNome,
+                fonte_url: linkVideo,
+                url: linkVideo,
+                thumbnail: item.thumbnail || item.imagem_url || '',
+                imagem_url: item.imagem_url || item.thumbnail || '',
+                formato: 'video',
+                origem: 'video',
+                origem_video: true,
+                origem_manual: Boolean(item.origem_manual || item.aprovado_manualmente),
+                aprovado_manualmente: Boolean(item.aprovado_manualmente),
+                data_publicacao: dataPub,
+                origem_v2: false,
+                urgencia_score: Number(item.urgencia_score || (item.aprovado_manualmente ? 82 : 78)),
+                nivel_relevancia: Number(item.nivel_relevancia || 3),
+                paises_envolvidos: Array.isArray(item.paises_envolvidos) ? item.paises_envolvidos : ['BR'],
+                palavras_chave: Array.isArray(item.palavras_chave) ? item.palavras_chave : [canalNome, 'video', 'youtube'],
+              };
+            })
+        : [];
+
+    const urlsVideosCanais = new Set(
+      cardsYt.map((v) => String(v.fonte_url || '').trim()).filter((u) => u && u !== '/radar')
+    );
 
     const itensV2 = temasVitrine.map((t) => {
       const catRaw = t.categoria || t.categoria_primaria || 'Geopolitica_Radar';
@@ -568,16 +639,14 @@ async function handleRadarHybrid(request, env) {
       if (ehInstrucaoOuDebugWorker(resumo)) {
         if (analise && !ehInstrucaoOuDebugWorker(analise)) {
           resumo = analise;
-          analise = 'Tendência com forte aceleração de interesse monitorada pela curadoria em tempo real.';
+          analise = '';
         } else {
           resumo = titulo ? `Monitoramento informativo e desdobramentos em tempo real sobre ${titulo}.` : '';
-          analise = 'Acompanhamento editorial e impactos práticos em avaliação pela equipe.';
+          analise = '';
         }
       }
 
-      if (!analise || ehInstrucaoOuDebugWorker(analise) || analise === resumo) {
-        analise = 'Tendência com forte aceleração de interesse monitorada pela curadoria em tempo real.';
-      }
+      analise = limparAnaliseRadarWorker(analise, resumo);
 
       if (catNorm === 'geopolitica') {
         const tLower = (titulo + ' ' + resumo).toLowerCase();
@@ -596,8 +665,12 @@ async function handleRadarHybrid(request, env) {
         ? t.paises_envolvidos
         : ['BR'];
       const score = Number(t.urgencia_score || t.relevancia_score || 85);
-      const urlsFontes = Array.isArray(t.fontes_urls) ? t.fontes_urls : [];
-      const fonteUrl = urlsFontes[0] || t.fonte_url || t.rota_editoria || '/radar';
+      const urlsFontes = Array.isArray(t.fontes_urls) ? t.fontes_urls.filter(Boolean) : [];
+      const urlsNaoVideo = urlsFontes.filter(
+        (u) => !urlsVideosCanais.has(String(u).trim()) && detectarFormatoRadarWorker(u, '') !== 'video'
+      );
+      const fonteUrl = urlsNaoVideo[0] || urlsFontes[0] || t.fonte_url || t.rota_editoria || '/radar';
+      const fmtV2 = urlsNaoVideo.length > 0 ? 'materia' : detectarFormatoRadarWorker(fonteUrl, 'Síntese Rodando o Mundo · Pulso V2');
       const dataPub = parseTimestampIso(
         t.data_publicacao ||
         t.created_at ||
@@ -615,6 +688,8 @@ async function handleRadarHybrid(request, env) {
         categoria: ['geopolitica', 'politica', 'economia', 'cultura'].includes(catNorm) ? catNorm : 'geopolitica',
         fonte_nome: 'Síntese Rodando o Mundo · Pulso V2',
         fonte_url: fonteUrl,
+        formato: fmtV2,
+        origem_video: fmtV2 === 'video',
         data_publicacao: dataPub,
         origem_v2: true,
         urgencia_score: score,
@@ -626,36 +701,58 @@ async function handleRadarHybrid(request, env) {
     const cardsFeed = Array.isArray(feedOutput)
       ? feedOutput
           .filter((card) => card && typeof card === 'object')
-          .map((card, idx) => ({
-            id: card.id || `feed-${idx + 1}`,
-            slug: card.slug || '',
-            titulo: card.titulo || '',
-            resumo: card.resumo || '',
-            analise: card.analise || '',
-            categoria: normalizarRadar(card.categoria || 'geopolitica') || 'geopolitica',
-            fonte_nome: card.fonte_nome || 'Radar Editorial',
-            fonte_url: card.fonte_url || '/radar',
-            data_publicacao: parseTimestampIso(
-              card.data_publicacao ||
-              card.created_at ||
-              card.publicado_em ||
-              card.updated_at ||
-              ''
-            ),
-            origem_v2: false,
-            urgencia_score: Number(card.urgencia_score || 70),
-            paises_envolvidos: Array.isArray(card.paises_envolvidos) ? card.paises_envolvidos : [],
-            palavras_chave: Array.isArray(card.palavras_chave) ? card.palavras_chave : [],
-          }))
+          .map((card, idx) => {
+            const fUrl = card.fonte_url || card.url || '/radar';
+            const fNome = card.fonte_nome || card.canal || 'Radar Editorial';
+            const fmt = card.formato === 'video' || card.origem_video ? 'video' : detectarFormatoRadarWorker(fUrl, fNome);
+            const resumoCard = String(card.resumo || '').trim();
+            const analiseCard = limparAnaliseRadarWorker(card.analise, resumoCard);
+            return {
+              id: card.id || `feed-${idx + 1}`,
+              video_id: card.video_id || '',
+              slug: card.slug || '',
+              titulo: card.titulo || '',
+              resumo: resumoCard,
+              analise: analiseCard,
+              categoria: normalizarRadar(card.categoria || 'geopolitica') || 'geopolitica',
+              fonte_nome: fNome,
+              fonte_url: fUrl,
+              thumbnail: card.thumbnail || card.imagem_url || '',
+              imagem_url: card.imagem_url || card.thumbnail || '',
+              formato: fmt,
+              origem: fmt === 'video' ? 'video' : (card.origem || 'rss'),
+              origem_video: fmt === 'video',
+              origem_manual: Boolean(card.origem_manual || card.aprovado_manualmente),
+              aprovado_manualmente: Boolean(card.aprovado_manualmente),
+              data_publicacao: parseTimestampIso(
+                card.data_publicacao ||
+                card.created_at ||
+                card.publicado_em ||
+                card.updated_at ||
+                ''
+              ),
+              origem_v2: false,
+              urgencia_score: Number(card.urgencia_score || (fmt === 'video' ? 78 : 70)),
+              paises_envolvidos: Array.isArray(card.paises_envolvidos) ? card.paises_envolvidos : [],
+              palavras_chave: Array.isArray(card.palavras_chave) ? card.palavras_chave : [],
+            };
+          })
       : [];
 
     const titulosVistos = new Set();
+    const urlsVideosVistos = new Set();
     const combinados = [];
 
-    for (const item of [...itensV2, ...cardsFeed]) {
+    for (const item of [...cardsYt, ...itensV2, ...cardsFeed]) {
       if (!item || typeof item !== 'object') continue;
       const chave = normalizarRadar(item.titulo);
       if (!chave || titulosVistos.has(chave)) continue;
+      const ehVideoCanal = (item.formato === 'video' || item.origem_video) && !item.origem_v2;
+      const urlItem = String(item.fonte_url || '').trim();
+      if (ehVideoCanal && urlItem && urlItem !== '/radar') {
+        if (urlsVideosVistos.has(urlItem)) continue;
+        urlsVideosVistos.add(urlItem);
+      }
       titulosVistos.add(chave);
       combinados.push(item);
     }

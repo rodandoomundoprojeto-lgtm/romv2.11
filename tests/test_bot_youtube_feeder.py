@@ -107,6 +107,62 @@ class TestBotYouTubeFeederIntegracao(unittest.TestCase):
             eh_vid = card.get("origem") == "video" or card.get("formato") == "video" or card.get("origem_video")
             self.assertTrue(eh_vid)
 
+    def test_limpar_descricao_youtube_e_analise(self):
+        """Valida higienização de descrições promocionais/hashtags/CTAs e omissão de análise repetida."""
+        res_kobori = yt_feeder.limpar_descricao_youtube(
+            "O Novo Ciclo Brasil - 26/11 às 20h - Inscreva-se gratuitamente: "
+            "Cortar gastos pode gerar uma recessão? Entrevista completa no canal @podcast3irmaos no YouTube! "
+            "#ajustefiscal #lula #economia ---- -------- Envie sua pergunta e",
+            titulo="Cortar gastos pode gerar uma recessão?",
+            nome_canal="José Kobori",
+        )
+        self.assertEqual(
+            res_kobori,
+            "Análise e cobertura em vídeo publicada pelo canal José Kobori no YouTube.",
+        )
+
+        res_abordo = yt_feeder.limpar_descricao_youtube(
+            "O PLANO PARA DESTRUIR MENDONÇA DEU ERRADO! JOGADA NO STF E PF! TUDO FOI REVELADO! PEGANDO FOGO HOJE!\n\n\n"
+            "Seja membro deste canal e ganhe benefícios:\n\n\n"
+            "Bem-vindo ao A Bordo Notícias, sua fonte diária de informações rápidas, precisas e análises "
+            "aprofundadas sobre os principais acontecimentos do Brasil e do mundo. Aqui você",
+            titulo="O PLANO PARA DESTRUIR MENDONÇA DEU ERRADO! JOGADA NO STF E PF! TUDO FOI REVELADO! PEGANDO FOGO HOJE!",
+            nome_canal="A Bordo Notícias",
+        )
+        self.assertEqual(
+            res_abordo,
+            "Análise e cobertura em vídeo publicada pelo canal A Bordo Notícias no YouTube.",
+        )
+
+        res_ndbh = yt_feeder.limpar_descricao_youtube(
+            "#Noticias",
+            titulo="ACORDAMOS COM A BOMBA!! FBI PEGOU NO AEROPORTO!",
+            nome_canal="Notícias Do Brasil Hoje",
+        )
+        self.assertEqual(
+            res_ndbh,
+            "Análise e cobertura em vídeo publicada pelo canal Notícias Do Brasil Hoje no YouTube.",
+        )
+
+        res_misto = yt_feeder.limpar_descricao_youtube(
+            "Tenha acesso a NOMAD na YELLOW FRIDAY e ganhe até 5,5% de cashback!\n\nLink: https://nomad.com\n\n"
+            "Guerra Rússia e Ucrânia se expande para além da fronteira entre os dois países e atinge o Báltico.",
+            titulo="Guerra se expande",
+            nome_canal="Prof Ricardo Marcílio",
+        )
+        self.assertIn("Guerra Rússia e Ucrânia se expande", res_misto)
+        self.assertNotIn("NOMAD", res_misto)
+
+        item_norm = yt_feeder._normalizar_item_video(
+            video_id="TEST1234567",
+            titulo="Teste Limpeza",
+            resumo=res_misto,
+            nome_canal="Prof Ricardo Marcílio",
+            link="https://www.youtube.com/watch?v=TEST1234567",
+            data_pub="2026-11-22T12:00:00+00:00",
+        )
+        self.assertEqual(item_norm["analise"], "")
+
 
 if __name__ == "__main__":
     unittest.main()

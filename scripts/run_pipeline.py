@@ -30,6 +30,14 @@ try:
 except ImportError:
     pass
 
+try:
+    from sinal_agente import agente_ativo
+except ImportError:
+    try:
+        from scripts.sinal_agente import agente_ativo
+    except ImportError:
+        from contextlib import nullcontext as agente_ativo
+
 
 def _tem_chave_gemini() -> bool:
     chave = (os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY") or "").strip()
@@ -120,23 +128,42 @@ async def _executar_modo_pulso(dry_run: bool, limit: int = 10) -> Dict[str, Any]
     noticias_simuladas: List[NoticiaQuenteItem] = []
     for idx, item in enumerate((itens_coletados or [])[: max(1, min(limit, 5))], start=1):
         slug_item = f"pulso-{idx}-{batch_atual.lower()}"
+        tit_bruto = str(item.get("titulo") or "Atualização em tempo real").strip()
+        res_bruto = str(item.get("resumo") or item.get("titulo") or "fato em acompanhamento").strip()
+
+        # Garantia universal de tradução para Português (PT-BR) em contingência
+        try:
+            from api.routes_v2 import _garantir_texto_pt
+            tit_pt = _garantir_texto_pt(tit_bruto)[:155]
+            res_pt = _garantir_texto_pt(res_bruto)[:350]
+        except Exception:
+            tit_pt = tit_bruto[:155]
+            res_pt = res_bruto[:350]
+
+        fonte_nome = str(item.get("fonte") or "Fonte Oficial")
+        paises_detectados = [str(item.get("pais_iso") or "BR")[:2].upper()]
+        txt_completo = f"{tit_pt} {res_pt}".lower()
+        if "canad" in txt_completo and "CA" not in paises_detectados:
+            paises_detectados.append("CA")
+        if any(k in txt_completo for k in ("estados unidos", "eua", "trump", "biden", "washington")) and "US" not in paises_detectados:
+            paises_detectados.append("US")
+
         noticias_simuladas.append(
             NoticiaQuenteItem(
                 slug=slug_item,
-                titulo_curto=str(item.get("titulo") or "Atualização em tempo real")[:155],
+                titulo_curto=tit_pt,
                 resumo_pulso=(
-                    f"Segundo {item.get('fonte', 'Fonte Oficial')}, "
-                    f"{item.get('resumo') or item.get('titulo') or 'fato em acompanhamento'}."
+                    f"Segundo {fonte_nome}, {res_pt}."
                 )[:400],
                 impacto_pratico="Acompanhamento de impacto institucional, econômico e internacional.",
                 categoria="Geopolitica_Relacoes",
-                paises_envolvidos=[str(item.get("pais_iso") or "BR")[:2]],
+                paises_envolvidos=paises_detectados,
                 urgencia_score=max(60, 95 - (idx * 5)),
                 relevancia_score=max(65, 92 - (idx * 4)),
                 nivel_confianca="alta",
                 ttl_horas=6,
                 horas_em_destaque=6,
-                veiculos_origem=[str(item.get("fonte") or "Fonte Verificada")],
+                veiculos_origem=[fonte_nome],
                 fontes_urls=[str(item.get("canonical_url") or item.get("url") or "")],
                 palavras_chave=["radar", "tempo real", str(item.get("pais_iso") or "br").lower()],
                 data_publicacao=item.get("published_at"),
@@ -509,15 +536,16 @@ def main(argv: Optional[List[str]] = None) -> int:
             )
 
     try:
-        if args.modo == "pulso":
-            saida = asyncio.run(_executar_modo_pulso(dry_run=args.dry_run, limit=args.limit))
-        elif args.modo == "curadoria":
-            saida = _executar_modo_curadoria(dry_run=args.dry_run, horas=args.horas, limit=args.limit)
-        elif args.modo == "coluna":
-            saida = asyncio.run(_executar_modo_coluna(dry_run=args.dry_run, tema=args.tema, slug=args.slug))
-        else:
-            parser.error(f"Modo desconhecido: {args.modo}")
-            return 2
+        with agente_ativo(f"pipeline_{args.modo}"):
+            if args.modo == "pulso":
+                saida = asyncio.run(_executar_modo_pulso(dry_run=args.dry_run, limit=args.limit))
+            elif args.modo == "curadoria":
+                saida = _executar_modo_curadoria(dry_run=args.dry_run, horas=args.horas, limit=args.limit)
+            elif args.modo == "coluna":
+                saida = asyncio.run(_executar_modo_coluna(dry_run=args.dry_run, tema=args.tema, slug=args.slug))
+            else:
+                parser.error(f"Modo desconhecido: {args.modo}")
+                return 2
 
         if not args.dry_run:
             try:

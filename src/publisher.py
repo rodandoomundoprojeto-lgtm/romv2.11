@@ -603,10 +603,11 @@ def listar_todos_cards_radar(max_items: int = 100) -> List[Dict[str, Any]]:
         )
         eh_manual = _eh_card_manual(c)
         eh_video = _eh_video_card(c)
-        urgencia = int(c.get("urgencia_score") or (80 if eh_manual else 70))
-        origem_nome = "manual" if eh_manual else ("video" if eh_video else "rss")
+        urgencia = int(c.get("urgencia_score") or (82 if (eh_video and eh_manual) else (80 if eh_manual else (78 if eh_video else 70))))
+        origem_nome = "video" if eh_video else ("manual" if eh_manual else "rss")
         formato_val = "video" if eh_video else str(c.get("formato") or "materia").lower()
-        cards_norm.append({
+        thumb_val = str(c.get("thumbnail") or c.get("imagem_url") or "").strip()
+        card_item: Dict[str, Any] = {
             "id": str(c.get("id") or f"feed-{slug}"),
             "slug": slug,
             "titulo": str(c.get("titulo") or "").strip(),
@@ -626,7 +627,15 @@ def listar_todos_cards_radar(max_items: int = 100) -> List[Dict[str, Any]]:
             "origem_manual": eh_manual,
             "origem_video": eh_video,
             "origem_v2": False,
-        })
+        }
+        if thumb_val:
+            card_item["thumbnail"] = thumb_val
+            card_item["imagem_url"] = thumb_val
+        if c.get("video_id"):
+            card_item["video_id"] = str(c.get("video_id")).strip()
+        if c.get("aprovado_manualmente"):
+            card_item["aprovado_manualmente"] = True
+        cards_norm.append(card_item)
     cards_norm.sort(key=_timestamp_publicacao, reverse=True)
     return cards_norm[:max_items]
 

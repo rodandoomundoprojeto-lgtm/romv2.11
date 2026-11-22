@@ -29,6 +29,14 @@ except ImportError:
         DDGS = None  # type: ignore
         MOTOR_LIB = ""
 
+try:
+    from sinal_agente import agente_ativo
+except ImportError:
+    try:
+        from scripts.sinal_agente import agente_ativo
+    except ImportError:
+        from contextlib import nullcontext as agente_ativo
+
 ROOT_DIR = Path(__file__).resolve().parents[1]
 DEFAULT_OUT_PATH = ROOT_DIR / "data" / "noticias_ddg.json"
 
@@ -122,6 +130,25 @@ def executar_coleta_ddg(
     out_path: Optional[Path] = None,
 ) -> Dict[str, Any]:
     """Executa busca de notícias no DuckDuckGo News (`ddgs`) e retorna o payload estruturado."""
+    with agente_ativo("feeder_ddg"):
+        return _executar_coleta_ddg_impl(
+            query=query,
+            region=region,
+            timelimit=timelimit,
+            max_results=max_results,
+            dry_run=dry_run,
+            out_path=out_path,
+        )
+
+
+def _executar_coleta_ddg_impl(
+    query: Optional[str] = None,
+    region: str = "br-pt",
+    timelimit: str = "d",
+    max_results: int = 8,
+    dry_run: bool = False,
+    out_path: Optional[Path] = None,
+) -> Dict[str, Any]:
     if not ddgs_disponivel():
         raise RuntimeError("Biblioteca 'ddgs' / 'duckduckgo-search' não está instalada no ambiente Python.")
 

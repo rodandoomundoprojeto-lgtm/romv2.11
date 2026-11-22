@@ -29,3 +29,6 @@ Sua missão é ingerir o lote bruto de feeds RSS de imprensa e fontes primárias
 5. **Validação Estrita de Links Internos (`links_internos_relacionados`):**
    - Preencha `links_internos_relacionados` selecionando **exclusivamente** URLs presentes na lista `ACERVO_REAL_DISPONIVEL` fornecida no prompt do usuário.
    - **PROIBIDO** inventar, deduzir ou modificar qualquer `url_existente`. Se nenhuma URL do acervo tiver relação direta, retorne lista vazia `[]`.
+6. **Idioma Mandatório: Português do Brasil (pt-BR):**
+   - Todo e qualquer texto gerado (`titulo_curto`, `resumo_pulso`, `impacto_pratico`, `titulo_evento`, `sintese_com_ressalvas`) DEVE ser redigido rigorosamente em **Português do Brasil (pt-BR)**.
+   - É estritamente **PROIBIDO** emitir títulos, resumos ou análises em inglês, francês, espanhol ou qualquer outro idioma estrangeiro, mesmo quando a fonte original for internacional (ex.: Al Jazeera, BBC Internacional, Reuters, AP, fontes governamentais estrangeiras). Traduza e adapte jornalisticamente todas as informações para o leitor brasileiro.

@@ -24,6 +24,14 @@ from .agente.analisador import enviar_para_backend, executar_agente_analisador
 from .agente.coletor import coletar_feeds_rss, coletar_google_trends, coletar_noticias_ddg_news
 from .agente.schemas import MAPA_ROTAS_EDITORIA, CuradoriaPayload
 
+try:
+    from sinal_agente import agente_ativo
+except ImportError:
+    try:
+        from scripts.sinal_agente import agente_ativo
+    except ImportError:
+        from contextlib import nullcontext as agente_ativo
+
 SAIDA_LOCAL = Path(__file__).resolve().parent / "output" / "ultimo_payload.json"
 SNAPSHOT_VITRINE_PADRAO = Path(__file__).resolve().parents[1] / "data" / "vitrine_ia.json"
 SNAPSHOT_VITRINE = SNAPSHOT_VITRINE_PADRAO
@@ -363,6 +371,11 @@ def gravar_direto_banco_se_disponivel(payload: CuradoriaPayload) -> bool:
 
 
 def rodar_pipeline_completo(dry_run: bool = False, horas_janela: int = 12) -> None:
+    with agente_ativo("pipeline_curadoria"):
+        _rodar_pipeline_completo_impl(dry_run=dry_run, horas_janela=horas_janela)
+
+
+def _rodar_pipeline_completo_impl(dry_run: bool = False, horas_janela: int = 12) -> None:
     backend_url = os.getenv("CURADORIA_BACKEND_URL", "https://api.rodandoomundo.com.br").rstrip("/")
     api_token = os.getenv("CURADORIA_SECRET_TOKEN", "")
 

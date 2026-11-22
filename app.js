@@ -3845,7 +3845,7 @@
     { a2: 'FR', rx: /\b(fran[cç]a|paris|macron|franc[eê]s|francesa)\b/i },
     { a2: 'DE', rx: /\b(alemanha|berlim|scholz|merz|alem[aã]o|alem[aã]|bundestag)\b/i },
     { a2: 'GB', rx: /\b(reino unido|londres|inglaterra|brit[aâ]nico|brit[aâ]nica|starmer|downing street)\b/i },
-    { a2: 'PT', rx: /\b(portugal|lisboa|porto|portugu[eê]s|portuguesa|montenegro)\b/i },
+    { a2: 'PT', rx: /\b(portugal|lisboa|cidade do porto|distrito do porto|grande porto|portugu[eê]s|portuguesa|montenegro)\b/i },
     { a2: 'UA', rx: /\b(ucr[aâ]nia|kiev|kyiv|zelensky|ucraniano|ucraniana|donbas)\b/i },
     { a2: 'RU', rx: /\b(r[uú]ssia|moscou|kremlin|putin|russo|russa)\b/i },
     { a2: 'IL', rx: /\b(israel|gaza|tel aviv|jerusal[eé]m|netanyahu|israelense|oriente m[eé]dio)\b/i },
@@ -3917,9 +3917,18 @@
       });
       sortedVitrine.forEach(function (tm) {
         if (!tm || !tm.titulo_tema) return;
-        var kwsStr = Array.isArray(tm.palavras_chave_busca) ? tm.palavras_chave_busca.join(' ') : '';
-        var scanText = [tm.titulo_tema || '', tm.gatilho_vitrine || '', tm.sintese_nerd || '', kwsStr].join(' ');
-        var codes = inferirPaisesDeTextoClient(scanText);
+        var codes = [];
+        if (Array.isArray(tm.paises_envolvidos) && tm.paises_envolvidos.length) {
+          tm.paises_envolvidos.forEach(function (c) {
+            var up = String(c || '').toUpperCase().trim();
+            if (up && codes.indexOf(up) === -1) codes.push(up);
+          });
+        }
+        if (!codes.length) {
+          var kwsStr = Array.isArray(tm.palavras_chave_busca) ? tm.palavras_chave_busca.join(' ') : '';
+          var scanText = [tm.titulo_tema || '', tm.gatilho_vitrine || '', tm.sintese_nerd || '', kwsStr].join(' ');
+          codes = inferirPaisesDeTextoClient(scanText);
+        }
         if (!codes.length && (tm.categoria_primaria === 'Politica' || tm.categoria_primaria === 'Economia')) {
           codes = ['BR'];
         }
@@ -3959,10 +3968,12 @@
             if (up && rCodes.indexOf(up) === -1) rCodes.push(up);
           });
         }
-        var textToScan = (rItem.titulo || '') + ' ' + (rItem.resumo || '') + ' ' + (rItem.analise || '');
-        inferirPaisesDeTextoClient(textToScan).forEach(function (c) {
-          if (rCodes.indexOf(c) === -1) rCodes.push(c);
-        });
+        if (!rCodes.length) {
+          var textToScan = (rItem.titulo || '') + ' ' + (rItem.resumo || '') + ' ' + (rItem.analise || '');
+          inferirPaisesDeTextoClient(textToScan).forEach(function (c) {
+            if (rCodes.indexOf(c) === -1) rCodes.push(c);
+          });
+        }
         rCodes.forEach(function (a2) {
           if (!map[a2]) {
             var cObj = byA2[a2];
@@ -5512,8 +5523,8 @@
           state.searchFromHotCompare = true;
           var inputEl = panel.querySelector('#topic-search-input');
           var clearEl = panel.querySelector('#topic-search-clear');
-          if (inputEl) inputEl.value = term;
-          if (clearEl) clearEl.hidden = false;
+          if (inputEl) inputEl.value = '';
+          if (clearEl) clearEl.hidden = true;
           executeTopicSearch(term, { initialPeriod: '7d', ignoreTopic: true, fromHotCompareBtn: true });
           var searchWrap = panel.querySelector('#busca-assunto-wrap');
           if (searchWrap) {
@@ -7187,7 +7198,7 @@
     var box = panel.querySelector('#topic-search-results');
     var tlBox = panel.querySelector('#panel-timeline-slot');
     var clearEl = panel.querySelector('#topic-search-clear');
-    if (clearEl) clearEl.hidden = !state.searchQuery;
+    if (clearEl) clearEl.hidden = !state.searchQuery || !!state.searchFromHotCompare;
     if (!box) return;
 
     if (!state.searchQuery && !state.searchLoading) {
@@ -7250,11 +7261,15 @@
         ? '<p class="perspective-dynamic-correction">Buscando termos centrais <strong>“' + esc(termoEfetivo) + '”</strong> <span class="perspective-correction-orig">(extraídos da busca ampla: “' + esc(data.fallbackDeFraseLonga) + '”)</span></p>'
         : '';
 
+      var titleText = state.searchFromHotCompare
+        ? 'Como os veículos estão cobrindo'
+        : esc(termoEfetivo) + ': como os veículos estão cobrindo';
+
       dynBanner =
         '<div class="perspective-dynamic-banner">' +
-        '<h4 class="perspective-dynamic-title" id="perspective-dynamic-title">' + esc(termoEfetivo) + ': como os veículos estão cobrindo</h4>' +
+        '<h4 class="perspective-dynamic-title" id="perspective-dynamic-title">' + titleText + '</h4>' +
         fallbackLongNote +
-        (foiCorrigido && !fallbackLongNote ? '<p class="perspective-dynamic-correction">Exibindo resultados para <strong>“' + esc(termoEfetivo) + '”</strong> <span class="perspective-correction-orig">(em vez de “' + esc(state.searchQuery) + '”)</span></p>' : '') +
+        (!state.searchFromHotCompare && foiCorrigido && !fallbackLongNote ? '<p class="perspective-dynamic-correction">Exibindo resultados para <strong>“' + esc(termoEfetivo) + '”</strong> <span class="perspective-correction-orig">(em vez de “' + esc(state.searchQuery) + '”)</span></p>' : '') +
         '<p class="perspective-dynamic-subtitle">Compare as últimas notícias e as diferentes perspectivas sobre o assunto.</p>' +
         '<p class="perspective-dynamic-meta">Contexto: <strong>' + esc(ctxStr) + '</strong> · Período: <strong>' + esc(perLabel) + '</strong></p>' +
         periodBtnsHTML +
@@ -7353,14 +7368,21 @@
       var gNewsSearchUrl = 'https://news.google.com/search?q=' + encodeURIComponent(termoEfetivo + (cCode === 'BR' ? ' brasil' : '')) + '&hl=pt-BR&gl=BR&ceid=BR:pt-419';
       var emptySugList = getSuggestionsForEmptyState(c, state.cont, state.topic, 4);
       var chipsHTML = renderEmptySuggestionsChipsHTML(emptySugList);
+      var emptySubText = state.searchFromHotCompare
+        ? 'Não encontramos matérias em <strong>' + esc(perLabel) + '</strong> nos veículos de ' + esc(ctxStr) + '.'
+        : 'Não encontramos matérias em <strong>' + esc(perLabel) + '</strong> sobre <strong>“' + esc(termoEfetivo) + '”</strong> nos veículos de ' + esc(ctxStr) + '.';
+      var gNewsBtnLabel = state.searchFromHotCompare
+        ? 'Ver notícias no Google '
+        : 'Ver notícias sobre “' + esc(termoEfetivo) + '” no Google ';
+
       box.innerHTML = dynBanner +
         '<div class="topic-search-status empty" role="status">' +
         '<p class="topic-search-empty-title">Nenhum resultado encontrado neste período</p>' +
-        '<p class="topic-search-empty-sub">Não encontramos matérias em <strong>' + esc(perLabel) + '</strong> sobre <strong>“' + esc(termoEfetivo) + '”</strong> nos veículos de ' + esc(ctxStr) + '.</p>' +
+        '<p class="topic-search-empty-sub">' + emptySubText + '</p>' +
         chipsHTML +
         '<div class="topic-search-empty-actions" style="margin-top:14px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">' +
         (state.searchPeriod !== '7d' ? '<button type="button" class="btn btn-sm btn-outline" id="btn-search-all-periods">Buscar nos últimos 7 dias</button>' : '') +
-        '<a class="btn btn-sm btn-secondary topic-search-gnews-btn" href="' + gNewsSearchUrl + '" target="_blank" rel="noopener noreferrer">Ver notícias sobre “' + esc(termoEfetivo) + '” no Google ' + ICON_ARROW.replace('<svg', '<svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2"') + '</a>' +
+        '<a class="btn btn-sm btn-secondary topic-search-gnews-btn" href="' + gNewsSearchUrl + '" target="_blank" rel="noopener noreferrer">' + gNewsBtnLabel + ICON_ARROW.replace('<svg', '<svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2"') + '</a>' +
         '</div>' +
         '</div>' +
         relatedLinksHTML;
@@ -7386,7 +7408,10 @@
     var pol = state.topic === 'politica';
     var h = dynBanner;
     h += '<div class="topic-search-header">';
-    h += '<p class="topic-search-summary">Resultados para <strong>“' + esc(termoEfetivo) + '”</strong>' + (foiCorrigido ? ' <span class="topic-search-corrected-note">(corrigido de “' + esc(state.searchQuery) + '”)</span>' : '') + ' em <span>' + esc(ctxStr) + '</span> (' + grupos.length + (grupos.length === 1 ? ' veículo' : ' veículos') + ')</p>';
+    var summaryText = state.searchFromHotCompare
+      ? 'Resultados em <span>' + esc(ctxStr) + '</span> (' + grupos.length + (grupos.length === 1 ? ' veículo' : ' veículos') + ')'
+      : 'Resultados para <strong>“' + esc(termoEfetivo) + '”</strong>' + (foiCorrigido ? ' <span class="topic-search-corrected-note">(corrigido de “' + esc(state.searchQuery) + '”)</span>' : '') + ' em <span>' + esc(ctxStr) + '</span> (' + grupos.length + (grupos.length === 1 ? ' veículo' : ' veículos') + ')';
+    h += '<p class="topic-search-summary">' + summaryText + '</p>';
     h += '<button type="button" class="topic-translate-all-btn" data-translate-all aria-pressed="false" title="Traduzir todos os títulos e resumos para português">' + ICON_TRANSLATE + ' <span>Traduzir todas</span></button>';
     h += '</div>';
     h += relatedLinksHTML;
@@ -7625,7 +7650,7 @@
             }
             if (centralTerm && norm(centralTerm) !== norm(q) && (!cName || norm(centralTerm) !== norm(cName))) {
               var inpFallback = panel ? panel.querySelector('#topic-search-input') : null;
-              if (inpFallback) inpFallback.value = centralTerm;
+              if (inpFallback && !opts.fromHotCompareBtn) inpFallback.value = centralTerm;
               executeTopicSearch(centralTerm, {
                 hasFallbackShortTerm: true,
                 originalLongQuery: opts.fromHotCompareBtn ? '' : q,
@@ -12129,6 +12154,8 @@
     } else if (activeTab === 'colunas') {
       if (typeof carregarColunasEntendaV2 === 'function') carregarColunasEntendaV2(false);
     } else {
+      radarLastFetchAt = 0;
+      if (typeof loadRadarCards === 'function') loadRadarCards(true, false);
       if (typeof startRadarAutoRefresh === 'function') startRadarAutoRefresh();
     }
   }
@@ -12160,14 +12187,41 @@
     }, RADAR_AUTO_REFRESH_MS);
   }
 
+  var radarLastInvalidateCheckTs = 0;
+
+  function checkRadarInvalidationSignal() {
+    try {
+      var invTs = Number(localStorage.getItem('rom_radar_invalidate_ts') || 0);
+      if (invTs > 0 && invTs > radarLastFetchAt && invTs > radarLastInvalidateCheckTs) {
+        radarLastInvalidateCheckTs = invTs;
+        radarLastFetchAt = 0;
+        return true;
+      }
+    } catch (e) { }
+    return false;
+  }
+
   function bindRadarVisibilityListener() {
-    if (radarVisibilityBound || unifiedVisibilityBound) return;
+    if (radarVisibilityBound) return;
     radarVisibilityBound = true;
+    window.addEventListener('storage', function (e) {
+      if (!e || (e.key !== 'rom_radar_invalidate_ts' && e.key !== 'rom_radar_cache')) return;
+      radarLastFetchAt = 0;
+      if (state.editorialSection === 'radar') {
+        loadRadarCards(true, false);
+      }
+    });
+    window.addEventListener('focus', function () {
+      if (state.editorialSection !== 'radar') return;
+      if (checkRadarInvalidationSignal() || (Date.now() - radarLastFetchAt >= RADAR_AUTO_REFRESH_MS)) {
+        loadRadarCards(true, false);
+      }
+    });
     document.addEventListener('visibilitychange', function () {
       if (document.visibilityState !== 'visible') return;
       if (state.editorialSection !== 'radar') return;
-      if (Date.now() - radarLastFetchAt >= RADAR_AUTO_REFRESH_MS) {
-        loadRadarCards(false, true);
+      if (checkRadarInvalidationSignal() || (Date.now() - radarLastFetchAt >= RADAR_AUTO_REFRESH_MS)) {
+        loadRadarCards(true, false);
       }
     });
   }
@@ -12175,7 +12229,7 @@
   function getRadarItemKey(item) {
     if (!item) return '';
     var id = String(item.id || item.slug || '').trim();
-    var u = String(item.fonte_url || '').trim();
+    var u = String(item.fonte_url || item.url || '').trim();
     var t = normalizeNewsFavTitle(item.titulo || '');
     if (id) return id + (t ? '|' + t : '');
     if (u && !isNonUniqueNewsUrl(u)) return t ? (u + '|' + t) : u;
@@ -12202,8 +12256,10 @@
 
   function isRadarVideoItem(item) {
     if (!item || typeof item !== 'object') return false;
+    if (item.origem_video === true) return true;
     if (String(item.formato || '').toLowerCase() === 'video') return true;
-    return isVideoContent(item.fonte_url, item);
+    if (String(item.origem || '').toLowerCase() === 'video') return true;
+    return isVideoContent(item.fonte_url || item.url, item);
   }
 
   function updateRadarUpdatedBadge(label) {
@@ -12457,6 +12513,10 @@
     var prevCache = Array.isArray(radarFeedCache) ? radarFeedCache.slice() : null;
     var prevIsFallback = radarFeedIsFallback;
     var refreshBtn = document.getElementById('btn-atualizar-radar');
+
+    if (checkRadarInvalidationSignal()) {
+      forceRefresh = true;
+    }
 
     if (forceRefresh) {
       radarVisibleCount = RADAR_PAGE_SIZE;
@@ -12789,71 +12849,119 @@
     'cultura': 'Cultura & Viagens'
   };
 
+  function humanizarTituloRadar(titulo) {
+    var raw = String(titulo || '').trim();
+    if (!raw) return '';
+    // Remove hashtags soltas ao final do título e separadores pendentes
+    raw = raw.replace(/(?:\s*\|?\s*#[A-Za-z0-9_À-ÿ]+)+\s*$/g, '').replace(/\s*\|\s*$/, '').trim();
+    raw = raw.replace(/!{2,}/g, '!').replace(/\?{2,}/g, '?');
+
+    var letras = raw.match(/[A-Za-zÀ-ÿ]/g) || [];
+    var maiusculas = raw.match(/[A-ZÁÉÍÓÚÂÊÔÃÕÇ]/g) || [];
+    if (letras.length < 8 || (maiusculas.length / letras.length) <= 0.7) {
+      return raw;
+    }
+
+    var texto = raw.toLowerCase();
+    // Capitaliza início de frase e após pontuação forte
+    texto = texto.replace(/(^|[.!?]\s+|—\s*|–\s*|:\s+)([a-záéíóúâêôãõç])/g, function (_, pref, ch) {
+      return pref + ch.toUpperCase();
+    });
+
+    var siglas = [
+      'STF', 'PF', 'FBI', 'ONU', 'COP31', 'COP30', 'EUA', 'INMETRO', 'PROCEL',
+      'OTAN', 'PIB', 'PIX', 'G20', 'PEC', 'CPI', 'CPMI', 'TSE', 'PGR', 'IBGE',
+      'IPCA', 'SELIC', 'BC', 'JK', 'BR', 'IA', 'DF', 'RJ', 'SP', 'MG', 'TV',
+      'PT', 'PL', 'PSOL', 'MDB', 'PSD', 'INSS', 'SUS', 'UE', 'FMI', 'OEA',
+      'OMC', 'G7', 'BRICS', 'NATO', 'CIA'
+    ];
+    siglas.forEach(function (sigla) {
+      var re = new RegExp('(^|[^A-Za-zÀ-ÿ0-9])(' + sigla.toLowerCase() + ')(?=$|[^A-Za-zÀ-ÿ0-9])', 'g');
+      texto = texto.replace(re, function (_, pref) {
+        return pref + sigla;
+      });
+    });
+
+    var nomesProprios = [
+      'Brasil', 'Brasília', 'Mendonça', 'Moraes', 'Alexandre', 'Fachin',
+      'Bolsonaro', 'Jair', 'Lula', 'Janones', 'Kobori', 'José', 'Ricardo',
+      'Marcílio', 'Trump', 'Biden', 'Putin', 'Zelensky', 'China', 'Rússia',
+      'Ucrânia', 'Israel', 'Irã', 'Gaza', 'Europa', 'América', 'Nordeste',
+      'Star', 'Rio'
+    ];
+    nomesProprios.forEach(function (nome) {
+      var re = new RegExp('(^|[^A-Za-zÀ-ÿ0-9])(' + nome.toLowerCase() + ')(?=$|[^A-Za-zÀ-ÿ0-9])', 'g');
+      texto = texto.replace(re, function (_, pref) {
+        return pref + nome;
+      });
+    });
+
+    return texto;
+  }
+
+  function limparResumoRadar(resumo, titulo, fonteNome, isVideo) {
+    var txt = String(resumo || '')
+      .replace(/\ufffc/g, ' ')
+      .replace(/^Síntese automática de contingência\s*\([^)]*\):\s*/i, '')
+      .replace(/^Análise em dry-run baseada na fonte\s*[^:]*:\s*/i, '')
+      .replace(/^Contexto associado nas buscas:\s*/i, '')
+      .replace(/^[A-Z0-9_]{3,30}:\s*/, '')
+      .trim();
+
+    if (!txt) {
+      return isVideo ? ('Análise e cobertura em vídeo publicada pelo canal ' + (fonteNome || 'YouTube') + ' no YouTube.') : '';
+    }
+
+    if (isVideo) {
+      txt = txt
+        .replace(/https?:\/\/\S+|www\.\S+/gi, '')
+        .replace(/#{2,}[0-9A-Za-z_À-ÿ]*/g, ' ')
+        .replace(/(?:^|\s)#[A-Za-z0-9_À-ÿ]+/g, ' ')
+        .replace(/[-=_*~•·]{3,}/g, '\n');
+
+      var linhas = txt.split(/\n+/).map(function (l) {
+        var limpa = l
+          .replace(/^(?:aula ao vivo:\s*)?o novo ciclo brasil\b[^:\n]{0,90}?(?:inscreva-se gratuitamente\s*:|:\s*)/i, '')
+          .replace(/^inscreva-se\s+(?:gratuitamente|no canal|aqui|j[áa])\s*[:!.-]*\s*/i, '')
+          .replace(/^participe da confraria[^:\n]{0,60}:\s*/i, '')
+          .replace(/^seja membro\s+(?:deste|do)\s+canal(?:\s+e ganhe benef[íi]cios)?\s*[:!.-]*\s*/i, '')
+          .replace(/entrevista completa no canal\s+@\S+\s+no youtube!?/gi, '')
+          .replace(/cupom de desconto\s*:\s*\S+/gi, '')
+          .replace(/siga-nos tamb[ée]m.*$/i, '')
+          .replace(/^[\s\-:|–—]+|[\s\-:|–—]+$/g, '')
+          .trim();
+        return limpa;
+      }).filter(function (l) {
+        if (!l) return false;
+        if (/^(?:link(?:\s+do\s+v[íi]deo)?|instagram|twitter(?:\s*\/\s*x)?|facebook|tiktok|telegram|whatsapp|sobre|redes sociais|epis[óo]dio completo)\s*:?\s*$/i.test(l)) return false;
+        if (/(?:\binscreva-se\b|\bseja membro\b|\bapoie o canal\b|\bajude o canal\b|\bchave pix\b|\bcontribui[çc][õo]es pelo pix\b|\bcupom de desconto\b|\benvie sua pergunta\b|\bbem[-\s]?vindo ao\b.*\bsua fonte di[áa]ria\b|\bsomos o canal\b.*\bcom o intuito\b|\btemos o prop[óo]sito de manter\b|\bparticipe da confraria\b|\bcompre meu livro\b|\bemail comercial\b)/i.test(l)) return false;
+        if (titulo && l.toLowerCase().replace(/[^a-z0-9]/g, '') === String(titulo).toLowerCase().replace(/[^a-z0-9]/g, '')) return false;
+        return true;
+      });
+
+      txt = linhas.join(' ').replace(/\s+/g, ' ').trim();
+      var fallbackVid = 'Análise e cobertura em vídeo publicada pelo canal ' + (fonteNome || 'YouTube') + ' no YouTube.';
+      if (!txt || txt.length < 25) return fallbackVid;
+      if (titulo && txt.toLowerCase().replace(/[^a-z0-9]/g, '') === String(titulo).toLowerCase().replace(/[^a-z0-9]/g, '')) {
+        return fallbackVid;
+      }
+    }
+
+    return txt;
+  }
+
   function renderRadarCardHtml(item, detailsId) {
     var catKey = (item.categoria || 'geral').toLowerCase();
     var catLabel = RADAR_CAT_LABELS[catKey] || catKey.toUpperCase();
     var itemKey = getRadarItemKey(item);
     var pubRaw = item.data_publicacao || item.updated_at || item.publicado_em || item.created_at || '';
     var isVideo = isRadarVideoItem(item);
+    var displayTitle = humanizarTituloRadar(item.titulo || '');
 
-    var card = '<article class="radar-card radar-cat-' + esc(catKey) + (item.origem_v2 ? ' is-v2-card' : '') + (isVideo ? ' is-video-card' : ' is-materia-card') + '" data-radar-key="' + esc(itemKey) + '" data-radar-formato="' + (isVideo ? 'video' : 'materia') + '">';
-    card += '<div class="radar-card-header">';
-    card += '<div class="radar-card-meta">';
-    card += '<span class="radar-badge-cat">' + esc(catLabel) + '</span>';
-    card += '<span class="radar-badge-format ' + (isVideo ? 'is-video' : 'is-materia') + '">' + (isVideo ? '🎬 Vídeo' : '📰 Matéria') + '</span>';
-    if (item.origem_v2) {
-      card += '<span class="radar-v2-pill radar-badge-v2">⚡ Pulso V2</span>';
-    }
-    if (item.origem_grok_x) {
-      card += '<span class="resumo-x-tag" title="Apurado em tempo real no X via Grok (xAI)">𝕏 Grok / X</span>';
-    } else if (item.origem_tempo_real_web) {
-      card += '<span class="resumo-x-tag" title="Apurado em tempo real na imprensa via IA (Groq)">⚡ Tempo Real</span>';
-    }
-    var sourceIcon = isVideo ? '🎬 ' : (item.origem_grok_x ? '𝕏 ' : (item.origem_tempo_real_web ? '🌐 ' : '📰 '));
-    card += '<span class="radar-source-name">' + sourceIcon + esc(item.fonte_nome || 'Fonte') + '</span>';
-    var timeInfo = formatarDataPublicacaoCardRadar(pubRaw);
-    var timeLabel = timeInfo && timeInfo.text ? (isVideo ? timeInfo.text.replace(/^Publicada\b/, 'Publicado') : timeInfo.text) : '';
-    if (timeLabel) {
-      card += '<time class="radar-pub-date" datetime="' + esc(timeInfo.iso || '') + '" title="' + esc(timeInfo.title || '') + '">' + esc(timeLabel) + '</time>';
-    }
-    var rSummary = (item.resumo || '') + (item.analise ? ' | ' + item.analise : '');
-    card += '<div class="item-action-btns">';
-    if (item.fonte_url || item.titulo) {
-      card += renderNewsFavBtn({
-        url: item.fonte_url || '/radar',
-        title: item.titulo,
-        source: item.fonte_nome,
-        countryCode: 'BR',
-        publishedAt: pubRaw
-      });
-    }
-    card += renderShareBtn({
-      url: item.fonte_url || '/radar',
-      title: item.titulo,
-      source: item.fonte_nome || 'Radar ao Vivo',
-      type: 'radar',
-      summary: rSummary
-    });
-    card += '</div>';
-    card += '</div>';
+    var sourceNameLabel = item.fonte_nome || item.canal || 'Fonte';
+    var sourceUrlVal = item.fonte_url || item.url || '';
 
-    card += '<h3 class="radar-card-title" role="button" tabindex="0" title="Clique para expandir ou recolher os detalhes">' + esc(item.titulo || '') + '</h3>';
-
-    card += '<div class="radar-card-actions">';
-    card += '<button type="button" class="radar-toggle-btn" aria-expanded="false" aria-controls="' + esc(detailsId) + '" title="Expandir briefing">';
-    card += '<span class="radar-toggle-text">Veja +</span> <span class="radar-toggle-icon" aria-hidden="true">▾</span>';
-    card += '</button>';
-    card += '</div>';
-    card += '</div>'; // .radar-card-header
-
-    card += '<div class="radar-card-details" id="' + esc(detailsId) + '" hidden>';
-    card += '<div class="radar-card-body">';
-    var cleanResumo = String(item.resumo || '')
-      .replace(/^Síntese automática de contingência\s*\([^)]*\):\s*/i, '')
-      .replace(/^Análise em dry-run baseada na fonte\s*[^:]*:\s*/i, '')
-      .replace(/^Contexto associado nas buscas:\s*/i, '')
-      .replace(/^[A-Z0-9_]{3,30}:\s*/, '')
-      .trim();
+    var cleanResumo = limparResumoRadar(item.resumo || '', item.titulo || '', sourceNameLabel, isVideo);
     var cleanAnalise = String(item.analise || '')
       .replace(/^Síntese automática de contingência\s*\([^)]*\):\s*/i, '')
       .replace(/^Análise em dry-run baseada na fonte\s*[^:]*:\s*/i, '')
@@ -12869,16 +12977,75 @@
     if (ehPromptOuDebug(cleanResumo)) {
       if (cleanAnalise && !ehPromptOuDebug(cleanAnalise)) {
         cleanResumo = cleanAnalise;
-        cleanAnalise = 'Tendência com forte aceleração de interesse monitorada pela curadoria em tempo real.';
+        cleanAnalise = '';
       } else {
-        cleanResumo = item.titulo ? ('Monitoramento e desdobramentos em tempo real sobre ' + item.titulo + '.') : '';
-        cleanAnalise = 'Acompanhamento editorial e impactos práticos em avaliação pela equipe.';
+        cleanResumo = displayTitle ? ('Monitoramento e desdobramentos em tempo real sobre ' + displayTitle + '.') : '';
+        cleanAnalise = '';
       }
     }
 
-    if (!cleanAnalise || ehPromptOuDebug(cleanAnalise) || cleanAnalise === cleanResumo) {
-      cleanAnalise = 'Tendência com forte aceleração de interesse monitorada pela curadoria em tempo real.';
+    if (
+      !cleanAnalise ||
+      ehPromptOuDebug(cleanAnalise) ||
+      cleanAnalise === cleanResumo ||
+      cleanAnalise === String(item.resumo || '').trim() ||
+      /^Tendência com forte aceleração de interesse/i.test(cleanAnalise)
+    ) {
+      cleanAnalise = '';
     }
+
+    var card = '<article class="radar-card radar-cat-' + esc(catKey) + (item.origem_v2 ? ' is-v2-card' : '') + (isVideo ? ' is-video-card' : ' is-materia-card') + '" data-radar-key="' + esc(itemKey) + '" data-radar-formato="' + (isVideo ? 'video' : 'materia') + '">';
+    card += '<div class="radar-card-header">';
+    card += '<div class="radar-card-meta">';
+    card += '<span class="radar-badge-cat">' + esc(catLabel) + '</span>';
+    card += '<span class="radar-badge-format ' + (isVideo ? 'is-video' : 'is-materia') + '">' + (isVideo ? '🎬 Vídeo' : '📰 Matéria') + '</span>';
+    if (item.origem_v2) {
+      card += '<span class="radar-v2-pill radar-badge-v2">⚡ Pulso V2</span>';
+    }
+    if (item.origem_grok_x) {
+      card += '<span class="resumo-x-tag" title="Apurado em tempo real no X via Grok (xAI)">𝕏 Grok / X</span>';
+    } else if (item.origem_tempo_real_web) {
+      card += '<span class="resumo-x-tag" title="Apurado em tempo real na imprensa via IA (Groq)">⚡ Tempo Real</span>';
+    }
+    var sourceIcon = isVideo ? '🎬 ' : (item.origem_grok_x ? '𝕏 ' : (item.origem_tempo_real_web ? '🌐 ' : '📰 '));
+    card += '<span class="radar-source-name">' + sourceIcon + esc(sourceNameLabel) + '</span>';
+    var timeInfo = formatarDataPublicacaoCardRadar(pubRaw);
+    var timeLabel = timeInfo && timeInfo.text ? (isVideo ? timeInfo.text.replace(/^Publicada\b/, 'Publicado') : timeInfo.text) : '';
+    if (timeLabel) {
+      card += '<time class="radar-pub-date" datetime="' + esc(timeInfo.iso || '') + '" title="' + esc(timeInfo.title || '') + '">' + esc(timeLabel) + '</time>';
+    }
+    var rSummary = cleanResumo + (cleanAnalise ? ' | ' + cleanAnalise : '');
+    card += '<div class="item-action-btns">';
+    if (sourceUrlVal || displayTitle) {
+      card += renderNewsFavBtn({
+        url: sourceUrlVal || '/radar',
+        title: displayTitle,
+        source: sourceNameLabel,
+        countryCode: 'BR',
+        publishedAt: pubRaw
+      });
+    }
+    card += renderShareBtn({
+      url: sourceUrlVal || '/radar',
+      title: displayTitle,
+      source: sourceNameLabel || 'Radar ao Vivo',
+      type: 'radar',
+      summary: rSummary
+    });
+    card += '</div>';
+    card += '</div>';
+
+    card += '<h3 class="radar-card-title" role="button" tabindex="0" title="Clique para expandir ou recolher os detalhes">' + esc(displayTitle) + '</h3>';
+
+    card += '<div class="radar-card-actions">';
+    card += '<button type="button" class="radar-toggle-btn" aria-expanded="false" aria-controls="' + esc(detailsId) + '" title="Expandir briefing">';
+    card += '<span class="radar-toggle-text">Veja +</span> <span class="radar-toggle-icon" aria-hidden="true">▾</span>';
+    card += '</button>';
+    card += '</div>';
+    card += '</div>'; // .radar-card-header
+
+    card += '<div class="radar-card-details" id="' + esc(detailsId) + '" hidden>';
+    card += '<div class="radar-card-body">';
 
     if (cleanResumo) {
       card += '<div class="radar-block radar-block-fato">';
@@ -12895,13 +13062,13 @@
     card += '</div>'; // .radar-card-body
 
     card += '<div class="radar-card-footer">';
-    if (item.fonte_url) {
-      card += '<a href="' + esc(item.fonte_url) + '" target="_blank" rel="noopener noreferrer" class="radar-source-link">' + (isVideo ? 'Assistir vídeo original ↗' : 'Acessar conteúdo original ↗') + '</a>';
+    if (sourceUrlVal) {
+      card += '<a href="' + esc(sourceUrlVal) + '" target="_blank" rel="noopener noreferrer" class="radar-source-link">' + (isVideo ? 'Assistir vídeo original ↗' : 'Acessar conteúdo original ↗') + '</a>';
     }
     card += renderShareBtn({
-      url: item.fonte_url || '/radar',
-      title: item.titulo,
-      source: item.fonte_nome || 'Radar ao Vivo',
+      url: sourceUrlVal || '/radar',
+      title: displayTitle,
+      source: sourceNameLabel || 'Radar ao Vivo',
       type: 'radar',
       summary: rSummary
     });

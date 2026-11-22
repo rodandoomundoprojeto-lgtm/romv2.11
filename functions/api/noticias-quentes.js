@@ -90,7 +90,7 @@ const CATALOGO_PAISES = [
   {
     a2: 'PT',
     countryName: 'Portugal',
-    termos: ['portugal', 'portugues', 'portuguesa', 'lisboa', 'porto'],
+    termos: ['portugal', 'portugues', 'portuguesa', 'lisboa', 'cidade do porto'],
   },
   {
     a2: 'UA',
@@ -949,6 +949,122 @@ function mesclarPulsoContinental(paisesEmAlta, extPulso) {
   return paisesEmAlta.sort((a, b) => compararRecenciaDesc(a, b, 'urgencia_score'));
 }
 
+const PT_CHARS_EXCLUSIVOS_RE = /[ãõçêôàÃÕÇÊÔÀ]/;
+const PT_PALAVRAS_INEQUIVOCAS_RE = /\b(não|são|está|estão|após|contra|sobre|entre|para|pelo|pela|dos|das|uma|mais|com|em|também|já|ainda|pode|novo|nova|país|países|governo|brasil|mundo|hoje|ontem|disse|afirmou|segundo|durante|através|foi|foram|será|estava|havia)\b/i;
+
+function parecePortugues(texto) {
+  const clean = String(texto || '').trim();
+  if (clean.length < 3) return true;
+  if (PT_CHARS_EXCLUSIVOS_RE.test(clean)) return true;
+  const matches = clean.match(PT_PALAVRAS_INEQUIVOCAS_RE);
+  if (matches && matches.length >= 2) return true;
+  if (matches && matches.length === 1 && clean.split(/\s+/).length <= 6) return true;
+  return false;
+}
+
+async function traduzirTextoRapido(texto, targetLang = 'pt') {
+  const clean = String(texto || '').trim();
+  if (!clean || clean.length < 3 || parecePortugues(clean)) return clean;
+
+  const tl = encodeURIComponent(targetLang);
+  const q = encodeURIComponent(clean);
+
+  // 1. Tentativa primária: clients5.google.com
+  const primaryUrl = `https://clients5.google.com/translate_a/t?client=dict-chrome-ex&sl=auto&tl=${tl}&q=${q}`;
+  try {
+    const ctrl = new AbortController();
+    const tid = setTimeout(() => ctrl.abort(), 3500);
+    const resp = await fetch(primaryUrl, { signal: ctrl.signal });
+    clearTimeout(tid);
+    if (resp.ok) {
+      const data = await resp.json();
+      let translated = '';
+      if (Array.isArray(data)) {
+        if (typeof data[0] === 'string') translated = data[0];
+        else if (Array.isArray(data[0]) && typeof data[0][0] === 'string') translated = data[0][0];
+      }
+      if (translated && translated.trim() && translated.trim() !== clean) {
+        return translated.trim();
+      }
+    }
+  } catch {}
+
+  // 2. Fallback: translate.googleapis.com (client=gtx)
+  const fallbackUrl = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=${tl}&dt=t&q=${q}`;
+  try {
+    const ctrl = new AbortController();
+    const tid = setTimeout(() => ctrl.abort(), 3500);
+    const resp = await fetch(fallbackUrl, { signal: ctrl.signal });
+    clearTimeout(tid);
+    if (resp.ok) {
+      const data = await resp.json();
+      if (Array.isArray(data) && Array.isArray(data[0])) {
+        const translated = data[0]
+          .map((seg) => (Array.isArray(seg) && typeof seg[0] === 'string' ? seg[0] : ''))
+          .join('')
+          .trim();
+        if (translated) return translated;
+      }
+    }
+  } catch {}
+
+  return clean;
+}
+
+async function traduzirNoticiasParaPt(noticias) {
+  if (!Array.isArray(noticias) || !noticias.length) return noticias;
+  const promessas = noticias.map(async (n) => {
+    if (!n || typeof n !== 'object') return n;
+    const tit = n.titulo_curto || n.titulo_tema || n.titulo || '';
+    const res = n.resumo_pulso || n.gatilho_vitrine || n.resumo || '';
+    let titPt = tit;
+    let resPt = res;
+    if (tit && !parecePortugues(tit)) {
+      titPt = await traduzirTextoRapido(tit, 'pt');
+    }
+    if (res && !parecePortugues(res)) {
+      resPt = await traduzirTextoRapido(res, 'pt');
+    }
+    if (titPt !== tit || resPt !== res) {
+      return {
+        ...n,
+        titulo_curto: titPt,
+        titulo_tema: titPt,
+        resumo_pulso: resPt,
+        gatilho_vitrine: resPt,
+      };
+    }
+    return n;
+  });
+  return Promise.all(promessas);
+}
+
+async function traduzirPaisesEmAltaParaPt(paises) {
+  if (!Array.isArray(paises) || !paises.length) return paises;
+  const promessas = paises.map(async (p) => {
+    if (!p || typeof p !== 'object') return p;
+    const tit = p.title || '';
+    const sum = p.summary || '';
+    let titPt = tit;
+    let sumPt = sum;
+    if (tit && !parecePortugues(tit)) {
+      titPt = await traduzirTextoRapido(tit, 'pt');
+    }
+    if (sum && !parecePortugues(sum)) {
+      sumPt = await traduzirTextoRapido(sum, 'pt');
+    }
+    if (titPt !== tit || sumPt !== sum) {
+      return {
+        ...p,
+        title: titPt,
+        summary: sumPt,
+      };
+    }
+    return p;
+  });
+  return Promise.all(promessas);
+}
+
 export async function handleNoticiasQuentes(request, env = {}) {
   if (request.method === 'OPTIONS') {
     return new Response(null, { status: 204, headers: CORS_HEADERS });
@@ -989,7 +1105,7 @@ export async function handleNoticiasQuentes(request, env = {}) {
         let noticiasEnriquecidas = filtrarExpiradosComResguardo(
           ext.noticias_quentes.map((n) => normalizarNoticiaQuenteBruta(n, carimbo))
         );
-
+        noticiasEnriquecidas = await traduzirNoticiasParaPt(noticiasEnriquecidas);
         noticiasEnriquecidas.sort((a, b) => compararRecenciaDesc(a, b, 'urgencia_score'));
 
         let paisesEmAlta =
@@ -1003,7 +1119,9 @@ export async function handleNoticiasQuentes(request, env = {}) {
                 .sort((a, b) => compararRecenciaDesc(a, b, 'urgencia_score'))
             : construirPaisesEmAlta(noticiasEnriquecidas);
 
-        paisesEmAlta = mesclarPulsoContinental(paisesEmAlta, extPulso);
+        paisesEmAlta = await traduzirPaisesEmAltaParaPt(
+          mesclarPulsoContinental(paisesEmAlta, extPulso)
+        );
 
         const limpas = noticiasEnriquecidas
           .slice(0, limite)
@@ -1053,6 +1171,7 @@ export async function handleNoticiasQuentes(request, env = {}) {
         let noticiasEstado = filtrarExpiradosComResguardo(
           mesclarNoticiasSnapshot(estadoPayload, carimbo)
         );
+        noticiasEstado = await traduzirNoticiasParaPt(noticiasEstado);
         if (categoriaFiltro && categoriaFiltro !== 'todos') {
           noticiasEstado = noticiasEstado.filter(
             (n) => normalizar(n.categoria) === categoriaFiltro
@@ -1064,9 +1183,11 @@ export async function handleNoticiasQuentes(request, env = {}) {
           );
         }
         noticiasEstado.sort((a, b) => compararRecenciaDesc(a, b, 'urgencia_score'));
-        const paisesEmAlta = mesclarPulsoContinental(
-          construirPaisesEmAlta(noticiasEstado),
-          extPulso
+        const paisesEmAlta = await traduzirPaisesEmAltaParaPt(
+          mesclarPulsoContinental(
+            construirPaisesEmAlta(noticiasEstado),
+            extPulso
+          )
         );
         const limpas = noticiasEstado
           .slice(0, limite)
@@ -1099,6 +1220,7 @@ export async function handleNoticiasQuentes(request, env = {}) {
     let noticiasInternas = filtrarExpiradosComResguardo(
       mesclarNoticiasSnapshot(snap, carimboHora)
     );
+    noticiasInternas = await traduzirNoticiasParaPt(noticiasInternas);
 
     if (categoriaFiltro && categoriaFiltro !== 'todos') {
       noticiasInternas = noticiasInternas.filter((n) => normalizar(n.categoria) === categoriaFiltro);
@@ -1110,7 +1232,7 @@ export async function handleNoticiasQuentes(request, env = {}) {
     }
 
     noticiasInternas.sort((a, b) => compararRecenciaDesc(a, b, 'urgencia_score'));
-    const paisesEmAlta = construirPaisesEmAlta(noticiasInternas);
+    const paisesEmAlta = await traduzirPaisesEmAltaParaPt(construirPaisesEmAlta(noticiasInternas));
     const noticiasFinais = noticiasInternas
       .slice(0, limite)
       .map(({ _rota_editoria, _label_editoria, ...rest }) => rest);

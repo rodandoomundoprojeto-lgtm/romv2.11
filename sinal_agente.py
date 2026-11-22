@@ -1,4 +1,4 @@
-"""Sinaliza a ponte Arduino que um agente esta em execucao (LED branco pulsando).
+"""Sinaliza a ponte Arduino que um agente esta em execucao (LED azul pulsando).
 
 Uso programatico:
 
@@ -66,7 +66,7 @@ def agente_ativo(
     url_ponte: str = URL_PONTE,
     intervalo: float = HEARTBEAT_SEGUNDOS,
 ):
-    """Mantem o LED branco pulsando enquanto o bloco estiver em execucao."""
+    """Mantem o LED azul pulsando enquanto o bloco estiver em execucao."""
     iniciar(nome, url_ponte)
     stop = threading.Event()
 

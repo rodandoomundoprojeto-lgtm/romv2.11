@@ -143,7 +143,7 @@ const CATALOGO_PAISES_RESUMO = [
     pais: 'Portugal',
     continente: 'europa',
     paginaTematica: '/ultimas-noticias',
-    termos: ['portugal', 'portugues', 'portuguesa', 'lisboa', 'porto']
+    termos: ['portugal', 'portugues', 'portuguesa', 'lisboa', 'cidade do porto']
   },
   {
     codigoPais: 'UA',

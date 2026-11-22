@@ -22,6 +22,14 @@ from dotenv import load_dotenv
 # Carrega configurações locais do .env
 load_dotenv()
 
+try:
+    from sinal_agente import agente_ativo
+except ImportError:
+    try:
+        from scripts.sinal_agente import agente_ativo
+    except ImportError:
+        from contextlib import nullcontext as agente_ativo
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 DATA_DIR = BASE_DIR / "data"
 FEED_OUTPUT = DATA_DIR / "feed_output.json"
@@ -417,4 +425,5 @@ def main() -> int:
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    with agente_ativo("vigia_sre"):
+        sys.exit(main())

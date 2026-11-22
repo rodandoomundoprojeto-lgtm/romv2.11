@@ -62,7 +62,9 @@ class TestYouTubeCuradoriaManual(unittest.TestCase):
             _gerar_fake_entry("VID22222222", "Vídeo de Teste 2", "Prof Ricardo Marcílio"),
         ]
 
-        with patch("feedparser.parse", return_value=_FakeFeedResult(fake_entries)):
+        with patch("feedparser.parse", return_value=_FakeFeedResult(fake_entries)), patch(
+            "scripts.youtube_feeder.coletar_canal_tempo_real_html", return_value=[]
+        ):
             # Teste com termo sem acento e em minúsculas
             resultado = yt_feeder.buscar_videos_canal_especifico("ricardo marcilio", limite=2)
             self.assertTrue(resultado["ok"])
@@ -139,6 +141,37 @@ class TestYouTubeCuradoriaManual(unittest.TestCase):
                 data = resp.json()
                 self.assertTrue(data["ok"])
                 self.assertIn("Vídeo 'Vídeo Teste API Aprovar' aprovado", data["mensagem"])
+        finally:
+            if temp_path.exists():
+                temp_path.unlink()
+
+    def test_adicionar_fonte_e_coletar_para_radar(self):
+        """Testa adição de fonte do YouTube com envio imediato dos vídeos para o Radar."""
+        fake_entries = [
+            _gerar_fake_entry("NOVO1111111", "Vídeo Novo do Canal", "Canal Novo YouTube"),
+            _gerar_fake_entry("NOVO2222222", "Vídeo Novo 2 do Canal", "Canal Novo YouTube"),
+        ]
+
+        with tempfile.NamedTemporaryFile(suffix=".json", delete=False) as tf:
+            temp_path = Path(tf.name)
+
+        try:
+            temp_path.write_text(json.dumps({"items": []}), encoding="utf-8")
+            with patch("feedparser.parse", return_value=_FakeFeedResult(fake_entries)):
+                res = yt_feeder.adicionar_fonte_e_coletar_para_radar(
+                    nome="Canal Novo YouTube",
+                    id_ou_url="UCnovocanal1234567890123",
+                    categoria="geopolitica",
+                    max_videos=2,
+                    out_path=temp_path,
+                )
+                self.assertTrue(res["ok"])
+                self.assertEqual(res["canal"], "Canal Novo YouTube")
+                self.assertEqual(res["videos_adicionados"], 2)
+
+                conteudo = json.loads(temp_path.read_text(encoding="utf-8"))
+                self.assertEqual(len(conteudo["items"]), 2)
+                self.assertEqual(conteudo["items"][0]["video_id"], "NOVO1111111")
         finally:
             if temp_path.exists():
                 temp_path.unlink()

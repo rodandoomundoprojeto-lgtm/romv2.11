@@ -301,12 +301,22 @@ def _mesclar_snapshot_vitrine_pulso(
         if not titulo:
             continue
 
+        resumo = str(d.get("resumo_pulso") or d.get("gatilho_vitrine") or d.get("resumo") or "").strip()
+        impacto = str(d.get("impacto_pratico") or d.get("sintese_nerd") or resumo).strip()
+
+        # Garantia universal de tradução para Português (PT-BR) ao consolidar no snapshot da Vitrine
+        try:
+            from api.routes_v2 import _garantir_texto_pt
+            titulo = _garantir_texto_pt(titulo)
+            resumo = _garantir_texto_pt(resumo)
+            impacto = _garantir_texto_pt(impacto)
+        except Exception:
+            pass
+
         cat_atlas = str(d.get("categoria") or "Geopolitica_Relacoes")
         cat_primaria = MAPA_CATEGORIA_PARA_PRIMARIA.get(cat_atlas, "Geopolitica_Radar")
         rota_ed = MAPA_ROTAS_EDITORIA_PULSO.get(cat_primaria, "/radar")
 
-        resumo = str(d.get("resumo_pulso") or d.get("gatilho_vitrine") or d.get("resumo") or "").strip()
-        impacto = str(d.get("impacto_pratico") or d.get("sintese_nerd") or resumo).strip()
         kws = [str(k).lower().strip() for k in (d.get("palavras_chave") or d.get("palavras_chave_busca") or [])]
         ttl_horas = max(1, int(d.get("ttl_horas") or d.get("horas_em_destaque") or 6))
 

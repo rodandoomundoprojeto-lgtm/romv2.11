@@ -2135,8 +2135,8 @@
 
               <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: flex-end;">
                 <div class="admin-field admin-field-grow" style="min-width: 260px;">
-                  <label for="radar-video-canal-input" style="font-size: 0.8rem; font-weight: 600;">Canal do YouTube Cadastrado</label>
-                  <input id="radar-video-canal-input" class="admin-input" list="radar-video-canais-lista" type="text" placeholder="Digite ou selecione o canal (ex: Prof Ricardo Marcílio, Petit Journal...)" autocomplete="off" />
+                  <label for="radar-video-canal-input" style="font-size: 0.8rem; font-weight: 600;">Canal Cadastrado ou Link Direto do Vídeo</label>
+                  <input id="radar-video-canal-input" class="admin-input" list="radar-video-canais-lista" type="text" placeholder="Digite/selecione o canal (ex: Parabólica) ou cole o link/ID do vídeo no YouTube..." autocomplete="off" />
                   <datalist id="radar-video-canais-lista">
                     <!-- Preenchido dinamicamente via API -->
                   </datalist>
@@ -2151,9 +2151,12 @@
                   </select>
                 </div>
 
-                <div style="display: flex; gap: 6px;">
+                <div style="display: flex; gap: 6px; flex-wrap: wrap;">
                   <button id="btn-buscar-canal-video" class="admin-btn admin-btn-primary admin-btn-sm" type="button" style="height: 36px; padding: 0 14px; font-weight: 600;">
                     🔍 Buscar Vídeos do Canal
+                  </button>
+                  <button id="btn-radar-varrer-todos-videos" class="admin-btn admin-btn-sm" type="button" style="height: 36px; padding: 0 14px; font-weight: 600; border-color: var(--primary, #3b82f6); color: var(--text-bright, #fff);" title="Executar varredura completa de todos os canais cadastrados do YouTube e atualizar o feed do Radar">
+                    🎬 Varredura Geral (Todos os Canais)
                   </button>
                   <button id="btn-fechar-canal-video" class="admin-btn admin-btn-sm" type="button" style="height: 36px; display: none;">
                     Fechar Resultados
@@ -2168,6 +2171,34 @@
               <div id="radar-video-lookup-results" style="margin-top: var(--space-3); display: none;">
                 <!-- Cards renderizados com status e botão de aprovação -->
               </div>
+            </div>
+
+            <!-- COLETA RÁPIDA DUCKDUCKGO NEWS (DDGS EM TEMPO REAL) -->
+            <div id="radar-ddg-lookup-box" class="admin-video-lookup-container" style="display: none; margin-bottom: var(--space-3); padding: var(--space-3); border-radius: 8px; border: 1px solid var(--border-color, #333); background: var(--bg-card-subtle, #1e1e24);">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-2); flex-wrap: wrap; gap: 8px;">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <span style="font-size: 1.15rem;">🦆</span>
+                  <strong style="font-size: 0.95rem; color: var(--text-bright, #fff);">Coleta Rápida DuckDuckGo News (ddgs)</strong>
+                  <span class="badge" style="font-size: 0.75rem; background: rgba(245, 158, 11, 0.18); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.35);">Busca Aberta em Tempo Real</span>
+                </div>
+                <span class="admin-sub" style="font-size: 0.8rem;">Dispare uma coleta global ou por tema específico no DuckDuckGo News para abastecer o Radar imediatamente.</span>
+              </div>
+
+              <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: flex-end;">
+                <div class="admin-field admin-field-grow" style="min-width: 260px;">
+                  <label for="radar-ddg-query-input" style="font-size: 0.8rem; font-weight: 600;">Tema ou Query de Busca (Opcional)</label>
+                  <input id="radar-ddg-query-input" class="admin-input" type="text" placeholder="Vazio = varredura global (ou digite tema específico, ex: Brasil economia)..." autocomplete="off" />
+                </div>
+
+                <div style="display: flex; gap: 6px;">
+                  <button id="btn-radar-disparar-ddg" class="admin-btn admin-btn-primary admin-btn-sm" type="button" style="height: 36px; padding: 0 14px; font-weight: 600;">
+                    🦆 Disparar Coleta DuckDuckGo
+                  </button>
+                </div>
+              </div>
+
+              <!-- BANNER DE STATUS DA COLETA DDG -->
+              <div id="radar-ddg-lookup-status" style="margin-top: var(--space-2); display: none;"></div>
             </div>
 
             <div class="admin-filterbar" role="search" aria-label="Filtrar notícias do radar">
@@ -3633,13 +3664,21 @@
             aprovarBtn.textContent = 'Aprovando...';
           }
           try {
-            await apiFetch(`/v2/admin/fontes/${encodeURIComponent(aprovarId)}/aprovar`, {
+            const resAprov = await apiFetch(`/v2/admin/fontes/${encodeURIComponent(aprovarId)}/aprovar`, {
               method: 'PATCH',
               body: JSON.stringify({ aprovar: true })
             });
-            showBanner('fontes-banner', 'Fonte aprovada para coleta.', 'ok');
-            showToast('Fonte aprovada para coleta.', 'ok');
+            const msgAprov = resAprov && resAprov.mensagem ? resAprov.mensagem : 'Fonte aprovada para coleta.';
+            showBanner('fontes-banner', msgAprov, 'ok');
+            showToast(msgAprov, 'ok');
+            sinalizarInvalidacaoRadarPublico();
             await carregarFontes();
+            if (typeof carregarCanaisYoutubeParaDatalist === 'function') {
+              carregarCanaisYoutubeParaDatalist();
+            }
+            if (typeof carregarRadar === 'function') {
+              carregarRadar();
+            }
           } catch (err) {
             showBanner('fontes-banner', 'Erro ao aprovar fonte: ' + (err && err.message ? err.message : err), 'err');
             if (aprovarBtn) {
@@ -3690,12 +3729,25 @@
           aprovar_imediato: $('f-aprovar').checked
         };
         try {
-          await apiFetch('/v2/admin/fontes', { method: 'POST', body: JSON.stringify(payload) });
+          const res = await apiFetch('/v2/admin/fontes', { method: 'POST', body: JSON.stringify(payload) });
           e.target.reset();
           $('f-peso').value = 3;
           atualizarCamposFonteTipo();
-          showBanner('fontes-banner', 'Fonte cadastrada com sucesso.', 'ok');
+          const msgOk = res && res.mensagem
+            ? res.mensagem
+            : (res && res.videos_adicionados
+                ? `Fonte cadastrada! ${res.videos_adicionados} vídeos desse canal foram enviados diretamente para o Radar.`
+                : 'Fonte cadastrada com sucesso.');
+          showBanner('fontes-banner', msgOk, 'ok');
+          showToast(msgOk, 'ok');
+          sinalizarInvalidacaoRadarPublico();
           await carregarFontes();
+          if (typeof carregarCanaisYoutubeParaDatalist === 'function') {
+            carregarCanaisYoutubeParaDatalist();
+          }
+          if (typeof carregarRadar === 'function') {
+            carregarRadar();
+          }
         } catch (err) {
           showBanner('fontes-banner', 'Erro ao cadastrar fonte: ' + err.message, 'err');
         }
@@ -3779,7 +3831,7 @@
               b.disabled = true;
               b.textContent = 'Cadastrando...';
               try {
-                await apiFetch('/v2/admin/fontes', {
+                const resIa = await apiFetch('/v2/admin/fontes', {
                   method: 'POST',
                   body: JSON.stringify({
                     nome: s.nome,
@@ -3790,10 +3842,19 @@
                     aprovar_imediato: false,
                   }),
                 });
-                showBanner('fontes-banner', `Fonte "${s.nome}" cadastrada por IA. Ela ficou pendente: clique em "Aprovar" na lista para liberar a coleta.`, 'ok');
-                showToast('Fonte cadastrada. Aprove na lista de fontes.', 'ok');
+                const msgIa = resIa && resIa.videos_adicionados
+                  ? `Fonte "${s.nome}" cadastrada por IA e ${resIa.videos_adicionados} vídeos enviados diretamente ao Radar!`
+                  : `Fonte "${s.nome}" cadastrada por IA. Ela ficou pendente: clique em "Aprovar" na lista para liberar a coleta.`;
+                showBanner('fontes-banner', msgIa, 'ok');
+                showToast(msgIa, 'ok');
                 fecharModalFonteIa();
                 await carregarFontes();
+                if (typeof carregarCanaisYoutubeParaDatalist === 'function') {
+                  carregarCanaisYoutubeParaDatalist();
+                }
+                if (typeof carregarRadar === 'function') {
+                  carregarRadar();
+                }
               } catch (err) {
                 showBanner('fonte-ia-banner', 'Erro ao cadastrar: ' + (err && err.message ? err.message : err), 'err');
                 b.disabled = false;
@@ -4963,6 +5024,7 @@
             const msgBanner = `Varredura concluída! ${coletados} vídeos recentes coletados de ${canais} canais em ${duracaoSeg}s.`;
             showBanner('eventos-banner', msgBanner, 'ok');
             showToast(`YouTube: ${coletados} vídeos coletados em ${duracaoSeg}s.`, 'ok');
+            sinalizarInvalidacaoRadarPublico();
             await Promise.all([carregarStatusBotYouTube(), carregarRadar(), carregarExecucoes()]);
           } catch (err) {
             showBanner('eventos-banner', 'Erro ao executar varredura do YouTube: ' + err.message, 'err');
@@ -5017,6 +5079,22 @@
       }
 
       // ============================ RADAR ============================
+      function isCardVideoRadar(c) {
+        if (!c || typeof c !== 'object') return false;
+        if (c.origem === 'video' || c.origem_video === true) return true;
+        if (String(c.formato || '').toLowerCase() === 'video') return true;
+        const u = String(c.fonte_url || c.url || '').toLowerCase();
+        if (/youtube\.com|youtu\.be|vimeo\.com|dailymotion\.com|twitch\.tv|rumble\.com|odysee\.com/.test(u)) return true;
+        return Boolean(c.video_id);
+      }
+
+      function sinalizarInvalidacaoRadarPublico() {
+        try {
+          localStorage.setItem('rom_radar_invalidate_ts', String(Date.now()));
+          localStorage.removeItem('rom_radar_cache');
+        } catch (_) {}
+      }
+
       async function carregarRadar() {
         let data;
         try {
@@ -5026,13 +5104,17 @@
           data = await apiFetch('/v2/admin/radar/manual');
         }
         state.radar = data.cards || [];
-        state.radarContadores = data.contadores || {
-          total: state.radar.length,
-          manuais: state.radar.filter((c) => c.origem === 'manual').length,
-          rss: state.radar.filter((c) => c.origem === 'rss' && String(c.formato || '').toLowerCase() !== 'video' && !c.origem_video).length,
-          pulso_v2: state.radar.filter((c) => c.origem === 'pulso_v2').length,
-          ddg_news: state.radar.filter((c) => c.origem === 'ddg_news').length,
-          video: state.radar.filter((c) => c.origem === 'video' || String(c.formato || '').toLowerCase() === 'video' || c.origem_video).length,
+        const vidCount = state.radar.filter((c) => isCardVideoRadar(c)).length;
+        const manCount = state.radar.filter((c) => (c.origem === 'manual' || c.origem_manual) && !isCardVideoRadar(c)).length;
+        const rssCount = state.radar.filter((c) => c.origem === 'rss' && !isCardVideoRadar(c)).length;
+        const bc = data.contadores || {};
+        state.radarContadores = {
+          total: bc.total != null ? bc.total : state.radar.length,
+          manuais: bc.manuais != null ? bc.manuais : manCount,
+          rss: bc.rss != null ? bc.rss : rssCount,
+          pulso_v2: bc.pulso_v2 != null ? bc.pulso_v2 : state.radar.filter((c) => c.origem === 'pulso_v2').length,
+          ddg_news: bc.ddg_news != null ? bc.ddg_news : state.radar.filter((c) => c.origem === 'ddg_news').length,
+          video: Math.max(Number(bc.video || 0), vidCount),
         };
         atualizarTabsRadar();
         renderRadar();
@@ -5042,11 +5124,12 @@
       function atualizarTabsRadar() {
         const c = state.radarContadores || {};
         const tot = c.total != null ? c.total : state.radar.length;
-        const man = c.manuais != null ? c.manuais : state.radar.filter((x) => x.origem === 'manual').length;
-        const rss = c.rss != null ? c.rss : state.radar.filter((x) => x.origem === 'rss' && String(x.formato || '').toLowerCase() !== 'video' && !x.origem_video).length;
+        const vidCalc = state.radar.filter((x) => isCardVideoRadar(x)).length;
+        const man = c.manuais != null ? c.manuais : state.radar.filter((x) => (x.origem === 'manual' || x.origem_manual) && !isCardVideoRadar(x)).length;
+        const rss = c.rss != null ? c.rss : state.radar.filter((x) => x.origem === 'rss' && !isCardVideoRadar(x)).length;
         const pul = c.pulso_v2 != null ? c.pulso_v2 : state.radar.filter((x) => x.origem === 'pulso_v2').length;
         const ddg = c.ddg_news != null ? c.ddg_news : state.radar.filter((x) => x.origem === 'ddg_news').length;
-        const vid = c.video != null ? c.video : state.radar.filter((x) => x.origem === 'video' || String(x.formato || '').toLowerCase() === 'video' || x.origem_video).length;
+        const vid = Math.max(Number(c.video || 0), vidCalc);
 
         if ($('radar-count-tab-all')) $('radar-count-tab-all').textContent = tot;
         if ($('radar-count-tab-manual')) $('radar-count-tab-manual').textContent = man;
@@ -5082,7 +5165,7 @@
         // Filtro da aba de origem (todos, manual, rss, pulso_v2, ddg_news, video)
         if (tab !== 'all') {
           lista = lista.filter((c) => {
-            const ehVid = c.origem === 'video' || String(c.formato || '').toLowerCase() === 'video' || c.origem_video;
+            const ehVid = isCardVideoRadar(c);
             if (tab === 'video') return ehVid;
             if (ehVid) return false;
             const o = c.origem || (c.origem_manual ? 'manual' : (c.origem_v2 ? 'pulso_v2' : (c.origem_ddg_news ? 'ddg_news' : 'rss')));
@@ -5115,17 +5198,17 @@
         tbody.innerHTML = lista.map((c) => {
           const isFixed = Boolean(c.fixado || (c.urgencia_score && c.urgencia_score >= 95));
           const orig = c.origem || (c.origem_manual ? 'manual' : (c.origem_v2 ? 'pulso_v2' : (c.origem_ddg_news ? 'ddg_news' : 'rss')));
-          const ehVid = orig === 'video' || String(c.formato || '').toLowerCase() === 'video' || c.origem_video;
+          const ehVid = isCardVideoRadar(c);
           let badgeOrigem = '';
-          if (orig === 'manual') {
+          if (ehVid) {
+            const fnome = escapeHtml(c.fonte_nome || c.canal || 'YouTube');
+            badgeOrigem = `<span class="badge badge-video" title="Vídeo de análise do YouTube (Canal ${fnome})">🎬 YouTube · ${fnome}</span>`;
+          } else if (orig === 'manual') {
             badgeOrigem = '<span class="badge badge-manual">Manual</span>';
           } else if (orig === 'pulso_v2') {
             badgeOrigem = '<span class="badge badge-ia" title="Síntese IA · Pulso V2">Pulso V2 · IA</span>';
           } else if (orig === 'ddg_news') {
             badgeOrigem = '<span class="badge badge-ddg" title="Coletado via Bot DuckDuckGo News (ddgs)">🦆 DDG News</span>';
-          } else if (ehVid) {
-            const fnome = escapeHtml(c.fonte_nome || c.canal || 'YouTube');
-            badgeOrigem = `<span class="badge badge-video" title="Vídeo de análise do YouTube (Canal ${fnome})">🎬 YouTube · ${fnome}</span>`;
           } else {
             const fnome = escapeHtml(c.fonte_nome || 'RSS');
             badgeOrigem = `<span class="badge badge-rss" title="Coletado via RSS (${fnome})">RSS · ${fnome}</span>`;
@@ -5283,7 +5366,7 @@
         st.innerHTML = `
           <div class="admin-banner admin-banner-ok" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
             <span>Encontrados <strong>${videos.length} vídeos recentes</strong> do canal <strong>${escapeHtml(canalInfo.nome || '')}</strong> (${novosQtd} novos para aprovação).</span>
-            <span class="admin-sub" style="font-size:0.75rem;">Feed RSS oficial consultado em tempo real</span>
+            <span class="admin-sub" style="font-size:0.75rem;">⚡ Varredura Híbrida em Tempo Real (HTML + RSS sem cache)</span>
           </div>
         `;
 
@@ -5295,6 +5378,11 @@
               const urlYt = v.url || v.fonte_url || (v.video_id ? `https://www.youtube.com/watch?v=${v.video_id}` : '#');
               const pubRelativa = renderBadgeDataEntrada(v.data_publicacao);
               const jaPub = Boolean(v.ja_publicado);
+              const tempoYt = String(v.tempo_relativo_youtube || '');
+              const ehMuitoRecente = Boolean(v.recem_lancado) || /\b(min|minuto|minutos|seg|segundo|segundos|agora|momentos|minute|minutes|second|seconds|just now)\b/i.test(tempoYt);
+              const badgeRecem = ehMuitoRecente
+                ? `<span class="badge badge-video" style="font-size:0.7rem; background:#ef4444; color:#fff;">⚡ Novo (${escapeHtml(tempoYt || 'Recém-lançado')})</span>`
+                : '';
 
               const btnAcao = jaPub
                 ? `<span class="badge badge-ok" style="padding:5px 9px; font-size:0.75rem;">✓ Já no Feed do Site</span>`
@@ -5314,6 +5402,7 @@
                       <span style="font-weight:600; color:var(--text-bright);">${escapeHtml(v.canal || canalInfo.nome || 'YouTube')}</span>
                       <span>•</span>
                       <span>${pubRelativa}</span>
+                      ${badgeRecem}
                       <span class="badge" style="font-size:0.7rem;">${escapeHtml(v.categoria || canalInfo.categoria || 'geopolitica')}</span>
                     </div>
                     <p class="radar-video-desc">${escapeHtml(v.resumo || 'Análise em vídeo.')}</p>
@@ -5339,7 +5428,7 @@
         if (!canal) {
           if (st) {
             st.style.display = 'block';
-            st.innerHTML = '<div class="admin-banner admin-banner-warn">Por favor, digite ou selecione o nome de um canal cadastrado.</div>';
+            st.innerHTML = '<div class="admin-banner admin-banner-warn">Por favor, digite ou selecione o nome de um canal cadastrado ou cole o link do vídeo.</div>';
           }
           return;
         }
@@ -5347,15 +5436,15 @@
         const limite = Number($('radar-video-qtd-input') ? $('radar-video-qtd-input').value : 5) || 5;
         const prevText = btn.textContent;
         btn.disabled = true;
-        btn.textContent = 'Buscando vídeos no YouTube...';
+        btn.textContent = 'Varrendo YouTube...';
         if (st) {
           st.style.display = 'block';
-          st.innerHTML = `<div class="admin-banner admin-banner-warn">Consultando feed RSS oficial de <strong>${escapeHtml(canal)}</strong> no YouTube em tempo real...</div>`;
+          st.innerHTML = `<div class="admin-banner admin-banner-warn">Varrendo YouTube em tempo real para <strong>${escapeHtml(canal)}</strong> (capturando inclusive vídeos lançados há poucos minutos)...</div>`;
         }
         if (cont) cont.style.display = 'none';
 
         try {
-          const res = await apiFetch(`/v2/admin/bot/youtube/buscar-canal?canal=${encodeURIComponent(canal)}&limite=${limite}`);
+          const res = await apiFetch(`/v2/admin/bot/youtube/buscar-canal?canal=${encodeURIComponent(canal)}&limite=${limite}&_t=${Date.now()}`);
           renderResultadosVideoLookup(res.videos || [], res.canal || { nome: canal });
           showToast(`Vídeos de "${canal}" consultados com sucesso.`, 'ok');
         } catch (err) {
@@ -5410,6 +5499,7 @@
             `;
           }
           showToast(`Vídeo "${video.titulo.slice(0, 45)}..." aprovado e publicado no feed!`, 'ok');
+          sinalizarInvalidacaoRadarPublico();
           await carregarRadar();
         } catch (err) {
           showToast('Erro ao aprovar vídeo: ' + (err.message || err), 'err');
@@ -5417,6 +5507,135 @@
             btnAprovar.disabled = false;
             btnAprovar.textContent = '+ Aprovar e Publicar no Site';
           }
+        }
+      }
+
+      async function executarVarreduraGeralVideosRadar() {
+        const btn = $('btn-radar-varrer-todos-videos');
+        const st = $('radar-video-lookup-status');
+        if (!btn) return;
+
+        const prevText = btn.textContent;
+        btn.disabled = true;
+        btn.textContent = 'Varrendo 19 canais...';
+
+        if (st) {
+          st.style.display = 'block';
+          st.innerHTML = `<div class="admin-banner admin-banner-warn">Executando varredura geral em todos os canais cadastrados do YouTube (preservando vídeos aprovados em tempo real)...</div>`;
+        }
+
+        try {
+          const res = await apiFetch('/v2/admin/bot/youtube/executar', {
+            method: 'POST',
+            body: JSON.stringify({ max_por_canal: 3, dry_run: false }),
+          });
+
+          const total = res.total_itens ?? 0;
+          const canais = res.canais_varridos ?? 19;
+          const duracao = res.duracao_ms ?? 0;
+          const msg = `Varredura concluída: <strong>${total} vídeos</strong> atualizados de <strong>${canais} canais</strong> em ${duracao}ms.`;
+
+          if (st) {
+            st.style.display = 'block';
+            st.innerHTML = `
+              <div class="admin-banner admin-banner-ok" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+                <span>🎬 ${msg}</span>
+                <span class="admin-sub" style="font-size:0.75rem;">✓ Vídeos aprovados manualmente preservados</span>
+              </div>
+            `;
+          }
+          showToast(`YouTube atualizado: ${total} vídeos (${canais} canais).`, 'ok');
+          sinalizarInvalidacaoRadarPublico();
+
+          await carregarRadar();
+          if (typeof carregarStatusYoutube === 'function') {
+            carregarStatusYoutube();
+          }
+
+          if (state.videoLookupResultados && state.videoLookupResultados.length > 0) {
+            const radarUrls = new Set(
+              (state.radar || []).map((r) => String(r.fonte_url || r.url || '').trim()).filter(Boolean)
+            );
+            const radarIds = new Set(
+              (state.radar || []).map((r) => String(r.video_id || '').trim()).filter(Boolean)
+            );
+            state.videoLookupResultados.forEach((v) => {
+              const vUrl = String(v.url || v.fonte_url || '').trim();
+              const vId = String(v.video_id || '').trim();
+              if ((vId && radarIds.has(vId)) || (vUrl && radarUrls.has(vUrl))) {
+                v.ja_publicado = true;
+              }
+            });
+            const canalInp = $('radar-video-canal-input');
+            const nomeCanal = (canalInp && canalInp.value.trim()) || (state.videoLookupResultados[0] && state.videoLookupResultados[0].canal) || 'YouTube';
+            renderResultadosVideoLookup(state.videoLookupResultados, { nome: nomeCanal });
+          }
+        } catch (err) {
+          if (st) {
+            st.style.display = 'block';
+            st.innerHTML = `<div class="admin-banner admin-banner-err">Erro na varredura geral de vídeos: ${escapeHtml(err.message || String(err))}</div>`;
+          }
+          showToast('Erro na varredura de vídeos: ' + (err.message || err), 'err');
+        } finally {
+          btn.disabled = false;
+          btn.textContent = prevText;
+        }
+      }
+
+      async function executarColetaDdgRadar() {
+        const btn = $('btn-radar-disparar-ddg');
+        const inp = $('radar-ddg-query-input');
+        const st = $('radar-ddg-lookup-status');
+        if (!btn) return;
+
+        const queryVal = (inp ? inp.value : '').trim();
+        const prevText = btn.textContent;
+        btn.disabled = true;
+        btn.textContent = 'Coletando DDG...';
+
+        if (st) {
+          st.style.display = 'block';
+          const escopoTxt = queryVal ? `para o tema <strong>"${escapeHtml(queryVal)}"</strong>` : 'em modo de <strong>varredura global</strong>';
+          st.innerHTML = `<div class="admin-banner admin-banner-warn">Consultando DuckDuckGo News em tempo real ${escopoTxt}...</div>`;
+        }
+
+        try {
+          const res = await apiFetch('/v2/admin/bot/ddg/executar', {
+            method: 'POST',
+            body: JSON.stringify({ query: queryVal || null, dry_run: false }),
+          });
+
+          const total = res.total_itens ?? 0;
+          const enfileirados = res.enfileirados_banco ?? 0;
+          const duracao = res.duracao_ms ?? 0;
+
+          if (st) {
+            st.style.display = 'block';
+            st.innerHTML = `
+              <div class="admin-banner admin-banner-ok" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+                <span>🦆 Coleta DuckDuckGo concluída: <strong>${total} notícias</strong> capturadas (${enfileirados} enviadas para fila IA) em ${duracao}ms.</span>
+                <span class="admin-sub" style="font-size:0.75rem;">⚡ Feed do Radar atualizado</span>
+              </div>
+            `;
+          }
+          showToast(`DuckDuckGo concluído: ${total} notícias coletadas!`, 'ok');
+
+          await carregarRadar();
+          if (typeof carregarStatusDdg === 'function') {
+            carregarStatusDdg();
+          }
+          if (typeof carregarEventos === 'function') {
+            carregarEventos();
+          }
+        } catch (err) {
+          if (st) {
+            st.style.display = 'block';
+            st.innerHTML = `<div class="admin-banner admin-banner-err">Erro na coleta DuckDuckGo: ${escapeHtml(err.message || String(err))}</div>`;
+          }
+          showToast('Erro ao coletar DuckDuckGo: ' + (err.message || err), 'err');
+        } finally {
+          btn.disabled = false;
+          btn.textContent = prevText;
         }
       }
 
@@ -5428,6 +5647,23 @@
 
       if ($('btn-buscar-canal-video')) {
         $('btn-buscar-canal-video').addEventListener('click', executarBuscaCanalVideo);
+      }
+
+      if ($('btn-radar-varrer-todos-videos')) {
+        $('btn-radar-varrer-todos-videos').addEventListener('click', executarVarreduraGeralVideosRadar);
+      }
+
+      if ($('btn-radar-disparar-ddg')) {
+        $('btn-radar-disparar-ddg').addEventListener('click', executarColetaDdgRadar);
+      }
+
+      if ($('radar-ddg-query-input')) {
+        $('radar-ddg-query-input').addEventListener('keydown', (e) => {
+          if (e.key === 'Enter') {
+            e.preventDefault();
+            executarColetaDdgRadar();
+          }
+        });
       }
 
       if ($('radar-video-canal-input')) {
@@ -5479,10 +5715,20 @@
           tabBtn.classList.add('active');
           tabBtn.setAttribute('aria-selected', 'true');
           state.radarTab = tabBtn.getAttribute('data-radar-tab') || 'all';
+          const ddgBox = $('radar-ddg-lookup-box');
           if (state.radarTab === 'video') {
             toggleRadarVideoLookupBox(true);
-          } else if (!state.videoLookupAbertoManualmente) {
-            toggleRadarVideoLookupBox(false);
+            if (ddgBox) ddgBox.style.display = 'none';
+          } else if (state.radarTab === 'ddg_news') {
+            if (ddgBox) ddgBox.style.display = 'block';
+            if (!state.videoLookupAbertoManualmente) {
+              toggleRadarVideoLookupBox(false);
+            }
+          } else {
+            if (ddgBox) ddgBox.style.display = 'none';
+            if (!state.videoLookupAbertoManualmente) {
+              toggleRadarVideoLookupBox(false);
+            }
           }
           renderRadar();
         });

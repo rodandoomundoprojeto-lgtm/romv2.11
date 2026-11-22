@@ -916,6 +916,11 @@ def persist_edition(items, topicos_por_pais, used_model, out_path, is_mock=False
 
 
 def main(argv=None):
+    try:
+        from sinal_agente import agente_ativo
+    except ImportError:
+        from contextlib import nullcontext as agente_ativo
+
     parser = argparse.ArgumentParser(
         description="Alimentador de notícias do Rodando o Mundo via Grok / X Search"
     )
@@ -949,81 +954,82 @@ def main(argv=None):
         )
         sys.exit(1)
 
-    with open(config_path, "r", encoding="utf-8") as f:
-        config = json.load(f)
+    with agente_ativo("feeder_grok_x"):
+        with open(config_path, "r", encoding="utf-8") as f:
+            config = json.load(f)
 
-    allowed_routes = load_allowed_routes_from_sitemap(sitemap_path)
-    citations = []
+        allowed_routes = load_allowed_routes_from_sitemap(sitemap_path)
+        citations = []
 
-    if args.mock:
-        print("[INFO] Executando em modo --mock (simulação)...")
-        raw_data = {"items": get_seed_items()}
-        used_model = "grok-mock"
-        require_citations = False
-        is_grok_x = True
-    else:
-        api_key = get_api_key()
-        if not api_key:
-            print(
-                "[ERRO] Nenhuma chave XAI_API_KEY, GROK_API_KEY ou GROQ_API_KEY válida encontrada no ambiente ou no arquivo .env!",
-                file=sys.stderr,
-            )
-            print(
-                "       Verifique se o seu arquivo .env contém: GROQ_API_KEY=gsk_... ou XAI_API_KEY=xai-...",
-                file=sys.stderr,
-            )
-            sys.exit(1)
-
-        if api_key.startswith("gsk_"):
-            print("[INFO] Chave da Groq detectada. Conectando à Groq API + Varredura Web RSS em Tempo Real (100% Gratuito)...")
-            raw_data, used_model, citations = call_groq_rss_api(api_key, config)
-            is_grok_x = False
-        else:
-            print("[INFO] Conectando à Responses API da xAI (Grok) com x_search + web_search...")
-            raw_data, used_model, citations = call_grok_api(api_key, config)
+        if args.mock:
+            print("[INFO] Executando em modo --mock (simulação)...")
+            raw_data = {"items": get_seed_items()}
+            used_model = "grok-mock"
+            require_citations = False
             is_grok_x = True
+        else:
+            api_key = get_api_key()
+            if not api_key:
+                print(
+                    "[ERRO] Nenhuma chave XAI_API_KEY, GROK_API_KEY ou GROQ_API_KEY válida encontrada no ambiente ou no arquivo .env!",
+                    file=sys.stderr,
+                )
+                print(
+                    "       Verifique se o seu arquivo .env contém: GROQ_API_KEY=gsk_... ou XAI_API_KEY=xai-...",
+                    file=sys.stderr,
+                )
+                sys.exit(1)
 
-        if not citations:
-            print(
-                "[ERRO] A API não retornou nenhuma citação verificável (zero citations). Abortando sem sobrescrever.",
-                file=sys.stderr,
-            )
+            if api_key.startswith("gsk_"):
+                print("[INFO] Chave da Groq detectada. Conectando à Groq API + Varredura Web RSS em Tempo Real (100% Gratuito)...")
+                raw_data, used_model, citations = call_groq_rss_api(api_key, config)
+                is_grok_x = False
+            else:
+                print("[INFO] Conectando à Responses API da xAI (Grok) com x_search + web_search...")
+                raw_data, used_model, citations = call_grok_api(api_key, config)
+                is_grok_x = True
+
+            if not citations:
+                print(
+                    "[ERRO] A API não retornou nenhuma citação verificável (zero citations). Abortando sem sobrescrever.",
+                    file=sys.stderr,
+                )
+                sys.exit(2)
+            require_citations = True
+
+        items, topicos_por_pais = enrich_and_validate_items(
+            raw_data,
+            config,
+            citations=citations,
+            allowed_routes=allowed_routes,
+            require_citations=require_citations,
+            is_grok_x=is_grok_x,
+        )
+
+        if not persist_edition(items, topicos_por_pais, used_model, out_path, is_mock=args.mock, is_grok_x=is_grok_x):
+            try:
+                from notificador import alerta_plantao
+                alerta_plantao("Falha crítica ao persistir edição no grok_x_feeder")
+            except Exception:
+                pass
             sys.exit(2)
-        require_citations = True
 
-    items, topicos_por_pais = enrich_and_validate_items(
-        raw_data,
-        config,
-        citations=citations,
-        allowed_routes=allowed_routes,
-        require_citations=require_citations,
-        is_grok_x=is_grok_x,
-    )
-
-    if not persist_edition(items, topicos_por_pais, used_model, out_path, is_mock=args.mock, is_grok_x=is_grok_x):
         try:
-            from notificador import alerta_plantao
-            alerta_plantao("Falha crítica ao persistir edição no grok_x_feeder")
+            from notificador import alerta_plantao, alerta_amarelo, alerta_verde
+            # Verifica se alguma notícia tem urgência ou relevância extrema (Plantão)
+            tem_plantao = any(int(it.get("relevancia", 0)) >= 90 for it in items)
+            if tem_plantao:
+                alerta_plantao("Plantão Geopolítico: notícia urgente de máxima relevância detectada!")
+            elif len(items) > 0:
+                alerta_amarelo(f"{len(items)} notícias na fila de triagem do radar.")
+            else:
+                alerta_verde()
         except Exception:
             pass
-        sys.exit(2)
 
-    try:
-        from notificador import alerta_plantao, alerta_amarelo, alerta_verde
-        # Verifica se alguma notícia tem urgência ou relevância extrema (Plantão)
-        tem_plantao = any(int(it.get("relevancia", 0)) >= 90 for it in items)
-        if tem_plantao:
-            alerta_plantao("Plantão Geopolítico: notícia urgente de máxima relevância detectada!")
-        elif len(items) > 0:
-            alerta_amarelo(f"{len(items)} notícias na fila de triagem do radar.")
-        else:
-            alerta_verde()
-    except Exception:
-        pass
-
-    print(f"[SUCESSO] {len(items)} notícias verificadas salvas em: {out_path}")
-    for it in items[:5]:
-        print(f"  #{it['relevancia']} [{it['codigoPais']}] {it['titulo']} ({it['fonte']})")
+        print(f"[SUCESSO] {len(items)} notícias verificadas salvas em: {out_path}")
+        for it in items[:5]:
+            print(f"  #{it['relevancia']} [{it['codigoPais']}] {it['titulo']} ({it['fonte']})")
 
 
 if __name__ == "__main__":

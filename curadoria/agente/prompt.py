@@ -27,6 +27,7 @@ Para cada tendência ou notícia, aplique o filtro de relevância jornalística 
 - `relevancia_score` acima de 85 indica prioridade máxima (topo da Vitrine IA na Home e boost semântico na busca).
 - Ordene a lista `insights` de forma decrescente pelo `relevancia_score`.
 - `slug` sempre em minúsculas, sem acentos, separado por hífens.
+- **Idioma Mandatório:** Todo o conteúdo (`titulo_tema`, `gatilho_vitrine`, `sintese_nerd`, `angulo_editorial`, `palavras_chave_busca`) DEVE ser redigido em **Português do Brasil (pt-BR)**. Traduza obrigatoriamente qualquer fonte ou tendência internacional.
 - Em `palavras_chave_busca`, inclua de 4 a 8 termos estratégicos (nomes próprios, siglas, sinônimos e termos compostos) que ajudem a busca contextual a encontrar notícias e páginas explicativas correlatas.
 - Preencha sempre `sugestao_pauta_gap` com uma sugestão de cobertura/explicação SEO pronta (`Analise Geopolitica`, `Guia Explicativo`, `Comparativo Internacional` ou `Radar de Impacto`) caso o acervo do site ainda não cubra o assunto.
 """

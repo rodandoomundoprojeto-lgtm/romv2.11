@@ -46,6 +46,10 @@ from redacao_v2.schemas import (
     PainelVerificacaoEvento,
 )
 from src.notifier import notificar_aprovacao_admin_discord
+try:
+    from sinal_agente import agente_ativo
+except ImportError:
+    from contextlib import nullcontext as agente_ativo
 from src.publisher import (
     _eh_video_card,
     _ler_feed_existente,
@@ -622,6 +626,8 @@ def _carregar_noticias_quentes_fallback_snapshot(
         ),
         reverse=True,
     )
+    if itens:
+        _traduzir_campos_itens_pt(itens, ("titulo_curto", "resumo_pulso", "impacto_pratico"))
     return itens[:limite]
 
 
@@ -752,6 +758,9 @@ def listar_noticias_quentes(
         limite=qtd_limite,
     )
 
+    if noticias:
+        _traduzir_campos_itens_pt(noticias, ("titulo_curto", "resumo_pulso", "impacto_pratico"))
+
     return {
         "ok": True,
         "cached": False,
@@ -808,10 +817,11 @@ async def executar_noticias_quentes_manual(
                 }
 
     try:
-        resultado = await executar_pipeline_pulso_async(
-            db_url=db_url,
-            dry_run=modo_dry_run,
-        )
+        with agente_ativo("coleta_manual_pulso"):
+            resultado = await executar_pipeline_pulso_async(
+                db_url=db_url,
+                dry_run=modo_dry_run,
+            )
     except Exception as exc:  # noqa: BLE001
         msg_err = str(exc)
         eh_indisponivel = any(k in msg_err.upper() for k in ("503", "UNAVAILABLE", "429", "RESOURCE_EXHAUSTED"))
@@ -908,6 +918,18 @@ def obter_estado_pipeline(
     if payload is None:
         raise HTTPException(status_code=404, detail="Estado ainda não gerado.")
 
+    if chave_norm == "vitrine_ia" and isinstance(payload, dict):
+        if isinstance(payload.get("temas_ativos"), list):
+            _traduzir_campos_itens_pt(
+                payload["temas_ativos"],
+                ("titulo_tema", "titulo_curto", "gatilho_vitrine", "sintese_nerd", "impacto_pratico", "resumo_pulso"),
+            )
+        if isinstance(payload.get("noticias_quentes"), list):
+            _traduzir_campos_itens_pt(
+                payload["noticias_quentes"],
+                ("titulo_curto", "resumo_pulso", "impacto_pratico"),
+            )
+
     return {
         "ok": True,
         "chave": chave_norm,
@@ -966,22 +988,88 @@ def obter_feed_radar(
     raiz = Path(__file__).resolve().parents[1]
     feed_path = raiz / "data" / "feed_output.json"
     vitrine_path = raiz / "data" / "vitrine_ia.json"
+    yt_path = raiz / "data" / "noticias_youtube.json"
 
     # Banco primeiro; arquivo local como fallback durante a migração (Nível 2B).
     vitrine_raw: Optional[Any] = None
     feed_raw: Optional[Any] = None
+    yt_raw: Optional[Any] = None
     if conn is not None and hasattr(conn, "cursor"):
         try:
             from src.estado_db import ler_estado
 
             vitrine_raw = ler_estado("vitrine_ia", conn=conn)
             feed_raw = ler_estado("feed_output", conn=conn)
+            yt_raw = ler_estado("noticias_youtube", conn=conn)
         except Exception:
             vitrine_raw = None
             feed_raw = None
+            yt_raw = None
 
     base_snapshot_iso = "2026-11-15T00:00:00Z"
     itens_v2: List[Dict[str, Any]] = []
+    cards_yt: List[Dict[str, Any]] = []
+
+    if not isinstance(yt_raw, dict) or not isinstance(yt_raw.get("items"), list):
+        if yt_path.is_file():
+            try:
+                yt_raw = json.loads(yt_path.read_text(encoding="utf-8"))
+            except Exception:
+                yt_raw = None
+
+    urls_youtube_canais: Dict[str, str] = {}
+    if isinstance(yt_raw, dict) and isinstance(yt_raw.get("items"), list):
+        from scripts.youtube_feeder import _limpar_analise_youtube, limpar_descricao_youtube
+
+        for idx_y, y in enumerate(yt_raw["items"], start=1):
+            if not isinstance(y, dict):
+                continue
+            titulo_y = str(y.get("titulo") or "").strip()
+            if not titulo_y:
+                continue
+            canal_y = str(y.get("canal") or y.get("fonte_nome") or "YouTube").strip()
+            url_y = str(y.get("fonte_url") or y.get("url") or "/radar").strip()
+            resumo_bruto_y = str(y.get("resumo") or y.get("analise") or "").strip()
+            resumo_y = limpar_descricao_youtube(resumo_bruto_y, titulo=titulo_y, nome_canal=canal_y)
+            analise_y = _limpar_analise_youtube(y.get("analise"), resumo_y, resumo_bruto_y)
+            data_pub_y = str(
+                y.get("data_publicacao")
+                or y.get("published_at")
+                or y.get("publicado_em")
+                or yt_raw.get("atualizadoEm")
+                or ""
+            )
+            vid_id = str(y.get("video_id") or "").strip()
+            slug_y = str(y.get("slug") or (f"yt-{vid_id}" if vid_id else f"yt-{idx_y}"))
+            thumb_y = str(y.get("thumbnail") or y.get("imagem_url") or (f"https://i.ytimg.com/vi/{vid_id}/hqdefault.jpg" if vid_id else ""))
+            if url_y and url_y != "/radar":
+                urls_youtube_canais[url_y] = canal_y
+            cards_yt.append({
+                "id": str(y.get("id") or slug_y),
+                "video_id": vid_id,
+                "slug": slug_y,
+                "titulo": titulo_y,
+                "resumo": resumo_y,
+                "analise": analise_y,
+                "categoria": str(y.get("categoria") or "geopolitica").lower(),
+                "fonte_nome": canal_y,
+                "canal": canal_y,
+                "fonte_url": url_y,
+                "url": url_y,
+                "thumbnail": thumb_y,
+                "imagem_url": thumb_y,
+                "formato": "video",
+                "origem": "video",
+                "origem_video": True,
+                "origem_manual": bool(y.get("origem_manual") or y.get("aprovado_manualmente")),
+                "aprovado_manualmente": bool(y.get("aprovado_manualmente")),
+                "data_publicacao": data_pub_y,
+                "origem_v2": False,
+                "urgencia_score": int(y.get("urgencia_score") or (82 if y.get("aprovado_manualmente") else 78)),
+                "nivel_relevancia": int(y.get("nivel_relevancia") or 3),
+                "paises_envolvidos": list(y.get("paises_envolvidos") or ["BR"]),
+                "palavras_chave": list(y.get("palavras_chave") or [canal_y, "youtube", "video"]),
+            })
 
     mapa_cat_radar = {
         "Geopolitica_Radar": "geopolitica",
@@ -1019,10 +1107,17 @@ def obter_feed_radar(
                         slug = str(t.get("slug") or "")
                         titulo = str(t.get("titulo_tema") or t.get("titulo_curto") or t.get("titulo") or "").strip()
                         resumo = str(t.get("gatilho_vitrine") or t.get("resumo_pulso") or t.get("resumo") or "").strip()
-                        analise = str(t.get("sintese_nerd") or t.get("impacto_pratico") or t.get("analise") or resumo).strip()
+                        analise_raw = str(t.get("sintese_nerd") or t.get("impacto_pratico") or t.get("analise") or "").strip()
+                        analise = "" if (not analise_raw or analise_raw == resumo or analise_raw.startswith("Tendência com forte aceleração de interesse")) else analise_raw
                         kws = t.get("palavras_chave_busca") or t.get("palavras_chave") or []
-                        urls = t.get("fontes_urls") or []
-                        fonte_url = urls[0] if urls else (t.get("fonte_url") or t.get("rota_editoria") or "/radar")
+                        urls = [str(u).strip() for u in (t.get("fontes_urls") or []) if str(u).strip()]
+                        urls_nao_yt = [u for u in urls if u not in urls_youtube_canais and not _eh_video_card({"fonte_url": u})]
+                        fonte_url = (
+                            urls_nao_yt[0]
+                            if urls_nao_yt
+                            else (urls[0] if urls else (t.get("fonte_url") or t.get("rota_editoria") or "/radar"))
+                        )
+                        eh_vid_v2 = _eh_video_card({"fonte_url": fonte_url, "formato": t.get("formato")}) and len(urls_nao_yt) == 0
 
                         # Preservação mandatória do horário de inclusão (sem carimbar com updatedAt do snapshot)
                         data_pub = (
@@ -1042,6 +1137,8 @@ def obter_feed_radar(
                             "categoria": cat_norm,
                             "fonte_nome": "Síntese Rodando o Mundo · Pulso V2",
                             "fonte_url": fonte_url,
+                            "formato": "video" if eh_vid_v2 else "materia",
+                            "origem_video": bool(eh_vid_v2),
                             "data_publicacao": data_pub,
                             "origem_v2": True,
                             "urgencia_score": int(t.get("urgencia_score") or t.get("relevancia_score") or 85),
@@ -1058,6 +1155,8 @@ def obter_feed_radar(
                 if feed_path.is_file():
                     feed_raw = json.loads(feed_path.read_text(encoding="utf-8"))
             if isinstance(feed_raw, list):
+                from scripts.youtube_feeder import _limpar_analise_youtube, limpar_descricao_youtube
+
                 for idx, card in enumerate(feed_raw):
                     if not isinstance(card, dict):
                         continue
@@ -1068,31 +1167,70 @@ def obter_feed_radar(
                         or card.get("publicado_em")
                         or ""
                     )
-                    cards_feed.append({
+                    eh_vid_card = _eh_video_card(card)
+                    f_url = card.get("fonte_url") or card.get("url") or "/radar"
+                    f_nome = card.get("fonte_nome") or card.get("canal") or "Radar Editorial"
+                    titulo_card = str(card.get("titulo") or "").strip()
+                    resumo_bruto_card = str(card.get("resumo") or "").strip()
+                    resumo_card = (
+                        limpar_descricao_youtube(resumo_bruto_card, titulo=titulo_card, nome_canal=f_nome)
+                        if eh_vid_card
+                        else resumo_bruto_card
+                    )
+                    analise_card = _limpar_analise_youtube(card.get("analise"), resumo_card, resumo_bruto_card)
+                    card_out: Dict[str, Any] = {
                         "id": card.get("id") or f"feed-{idx + 1}",
                         "slug": card.get("slug") or "",
-                        "titulo": card.get("titulo") or "",
-                        "resumo": card.get("resumo") or "",
-                        "analise": card.get("analise") or "",
+                        "titulo": titulo_card,
+                        "resumo": resumo_card,
+                        "analise": analise_card,
                         "categoria": str(card.get("categoria") or "geopolitica").lower(),
-                        "fonte_nome": card.get("fonte_nome") or "Radar Editorial",
-                        "fonte_url": card.get("fonte_url") or "/radar",
+                        "fonte_nome": f_nome,
+                        "fonte_url": f_url,
+                        "formato": "video" if eh_vid_card else str(card.get("formato") or "materia").lower(),
+                        "origem_video": bool(eh_vid_card),
+                        "origem": "video" if eh_vid_card else str(card.get("origem") or "rss"),
                         "data_publicacao": data_pub,
                         "origem_v2": False,
-                        "urgencia_score": int(card.get("urgencia_score") or 70),
+                        "urgencia_score": int(card.get("urgencia_score") or (78 if eh_vid_card else 70)),
                         "paises_envolvidos": list(card.get("paises_envolvidos") or []),
                         "palavras_chave": list(card.get("palavras_chave") or []),
-                    })
+                    }
+                    if card.get("video_id"):
+                        card_out["video_id"] = card.get("video_id")
+                    if card.get("thumbnail") or card.get("imagem_url"):
+                        card_out["thumbnail"] = card.get("thumbnail") or card.get("imagem_url")
+                        card_out["imagem_url"] = card_out["thumbnail"]
+                    if card.get("aprovado_manualmente"):
+                        card_out["aprovado_manualmente"] = True
+                        card_out["origem_manual"] = True
+                    cards_feed.append(card_out)
         except Exception:
             pass
 
-    # Ordena cronologicamente (mais recentes primeiro) antes de deduplicar por título
-    todos_candidatos = sorted(itens_v2 + cards_feed, key=_timestamp_publicacao, reverse=True)
+    # Ordena cronologicamente (mais recentes primeiro) antes de deduplicar,
+    # priorizando cards de canais específicos do YouTube para que seus títulos/fonte_nome sejam preservados.
+    todos_candidatos = sorted(cards_yt + itens_v2 + cards_feed, key=_timestamp_publicacao, reverse=True)
     titulos_vistos = set()
+    videos_canais_vistos = set()
     combinados: List[Dict[str, Any]] = []
     for item in todos_candidatos:
         tit_norm = normalizar_fonte_key(item.get("titulo"))
-        if not tit_norm or tit_norm in titulos_vistos:
+        if not tit_norm:
+            continue
+        eh_v2_sintese = bool(item.get("origem_v2")) or "pulso v2" in normalizar_fonte_key(item.get("fonte_nome"))
+        eh_vid_item = bool(item.get("origem_video")) or str(item.get("formato") or "") == "video"
+        f_url_norm = str(item.get("fonte_url") or "").strip()
+
+        if eh_vid_item and not eh_v2_sintese and f_url_norm and f_url_norm != "/radar":
+            if f_url_norm in videos_canais_vistos or tit_norm in titulos_vistos:
+                continue
+            videos_canais_vistos.add(f_url_norm)
+            titulos_vistos.add(tit_norm)
+            combinados.append(item)
+            continue
+
+        if tit_norm in titulos_vistos:
             continue
         titulos_vistos.add(tit_norm)
         combinados.append(item)
@@ -2631,14 +2769,15 @@ async def admin_executar_bot_ddg(
     req = payload_req or ExecutarDdgRequest()
     t0 = time.time()
     try:
-        resultado = await asyncio.to_thread(
-            executar_coleta_ddg,
-            query=req.query,
-            region=req.region,
-            timelimit=req.timelimit,
-            max_results=req.max_results,
-            dry_run=req.dry_run,
-        )
+        with agente_ativo("coleta_ddg"):
+            resultado = await asyncio.to_thread(
+                executar_coleta_ddg,
+                query=req.query,
+                region=req.region,
+                timelimit=req.timelimit,
+                max_results=req.max_results,
+                dry_run=req.dry_run,
+            )
     except Exception as exc:
         duracao_ms = int((time.time() - t0) * 1000)
         if conn is not None and hasattr(conn, "cursor"):
@@ -2712,11 +2851,12 @@ async def admin_executar_bot_youtube(
     aplicar_no_cache_headers(response)
     req = payload_req or ExecutarYoutubeBotRequest()
     try:
-        resultado = await asyncio.to_thread(
-            executar_bot_youtube,
-            max_por_canal=req.max_por_canal,
-            dry_run=req.dry_run,
-        )
+        with agente_ativo("coleta_youtube"):
+            resultado = await asyncio.to_thread(
+                executar_bot_youtube,
+                max_por_canal=req.max_por_canal,
+                dry_run=req.dry_run,
+            )
         return resultado
     except Exception as exc:
         raise HTTPException(status_code=500, detail=f"Falha ao executar Bot de Vídeos do YouTube: {exc}")
@@ -2735,10 +2875,11 @@ async def admin_listar_canais_youtube(response: Response) -> Dict[str, Any]:
 @router.get("/v2/admin/bot/youtube/buscar-canal", dependencies=[Depends(verificar_admin_token)])
 async def admin_buscar_canal_youtube(
     response: Response,
-    canal: str = Query(..., description="Nome ou ID do canal cadastrado"),
+    canal: str = Query(..., description="Nome ou ID do canal cadastrado ou URL direta do vídeo"),
     limite: int = Query(6, ge=1, le=15, description="Quantidade máxima de vídeos recentes a consultar"),
+    _t: Optional[str] = Query(None, description="Timestamp para cache-busting"),
 ) -> Dict[str, Any]:
-    """Consulta em tempo real os vídeos mais recentes de um canal de YouTube cadastrado e checa status no feed."""
+    """Consulta em tempo real (varredura híbrida HTML + RSS) os vídeos mais recentes de um canal ou link direto."""
     import asyncio
     from scripts.youtube_feeder import buscar_videos_canal_especifico
 
@@ -2935,7 +3076,8 @@ def admin_sincronizar_fontes(
     """Sincroniza manualmente as fontes de `coletor_estudo.py` e `config/sources.json` com `ai_fontes_referencia`."""
     aplicar_no_cache_headers(response)
     db = _require_db(conn)
-    inseridas = sincronizar_fontes_sistema(db)
+    with agente_ativo("sincronizar_fontes"):
+        inseridas = sincronizar_fontes_sistema(db)
     return {"ok": True, "novas_inseridas": inseridas}
 
 
@@ -3102,7 +3244,39 @@ def admin_criar_fonte(
             url_fonte=str(fonte.get("url") or "").strip() or None,
             chegou_em=fonte.get("created_at"),
         )
-    return {"ok": True, "fonte": fonte}
+
+    # Se for fonte de vídeo/YouTube, coleta imediatamente os vídeos e envia para o Radar
+    resposta_payload: Dict[str, Any] = {"ok": True, "fonte": fonte}
+    eh_youtube = (
+        payload.tipo_fonte in ("youtube_rss", "youtube")
+        or "youtube.com" in url_limpa
+        or "youtu.be" in url_limpa
+        or (referencia_canal and "youtube.com" in referencia_canal)
+    )
+    if eh_youtube:
+        try:
+            from scripts.youtube_feeder import adicionar_fonte_e_coletar_para_radar
+            yt_res = adicionar_fonte_e_coletar_para_radar(
+                nome=payload.nome.strip(),
+                id_ou_url=url_limpa,
+                categoria="geopolitica",
+                pais="BR",
+                max_videos=5,
+            )
+            if yt_res and yt_res.get("ok"):
+                qtd_novos = yt_res.get("videos_adicionados", 0)
+                fonte["videos_radar_adicionados"] = qtd_novos
+                fonte["radar_atualizado"] = True
+                resposta_payload["radar_videos"] = yt_res.get("videos", [])
+                resposta_payload["videos_adicionados"] = qtd_novos
+                resposta_payload["mensagem"] = (
+                    f"Fonte cadastrada com sucesso! {qtd_novos} vídeos recentes desse canal "
+                    "foram coletados e enviados diretamente para o Radar."
+                )
+        except Exception as exc_yt:
+            print(f"[!] Erro ao alimentar Radar com novo canal do YouTube: {exc_yt}", file=sys.stderr)
+
+    return resposta_payload
 
 
 def _normalizar_url_fonte(url: str) -> str:
@@ -3303,7 +3477,7 @@ def admin_aprovar_fonte(
                 revisado_por = %s,
                 revisado_em = %s
             WHERE id = %s
-            RETURNING id, politica_uso_status, coleta_permitida, revisado_por, revisado_em, ativo;
+            RETURNING id, nome, url, tipo_fonte, politica_uso_status, coleta_permitida, revisado_por, revisado_em, ativo;
             """,
             (politica_status, coleta_permitida, revisado_por, revisado_em, fonte_id),
         )
@@ -3314,7 +3488,26 @@ def admin_aprovar_fonte(
     fonte = dict(row)
     if "revisado_em" in fonte:
         fonte["revisado_em"] = _serializar_valor_temporal(fonte["revisado_em"])
-    return {"ok": True, "fonte": fonte}
+
+    resp_aprov: Dict[str, Any] = {"ok": True, "fonte": fonte}
+    if aprovar and (str(fonte.get("tipo_fonte") or "").strip() in ("youtube_rss", "youtube") or "youtube.com" in str(fonte.get("url") or "")):
+        try:
+            from scripts.youtube_feeder import adicionar_fonte_e_coletar_para_radar
+            yt_res = adicionar_fonte_e_coletar_para_radar(
+                nome=str(fonte.get("nome") or "Canal YouTube"),
+                id_ou_url=str(fonte.get("url") or ""),
+                categoria="geopolitica",
+                pais="BR",
+                max_videos=5,
+            )
+            if yt_res and yt_res.get("ok"):
+                qtd = yt_res.get("videos_adicionados", 0)
+                resp_aprov["videos_adicionados"] = qtd
+                resp_aprov["mensagem"] = f"Fonte aprovada! {qtd} vídeos coletados e disponibilizados no Radar."
+        except Exception as exc_aprov_yt:
+            print(f"[!] Erro ao alimentar Radar na aprovação de fonte YouTube: {exc_aprov_yt}", file=sys.stderr)
+
+    return resp_aprov
 
 
 @router.delete("/v2/admin/fontes/{fonte_id}", dependencies=[Depends(verificar_admin_token)])
@@ -3859,14 +4052,18 @@ def admin_listar_radar_feed(
         try:
             yt_raw = json.loads(yt_path.read_text(encoding="utf-8"))
             if isinstance(yt_raw, dict):
+                from scripts.youtube_feeder import _limpar_analise_youtube, limpar_descricao_youtube
+
                 for idx_y, y in enumerate(yt_raw.get("items") or [], start=1):
                     if not isinstance(y, dict):
                         continue
                     titulo_y = str(y.get("titulo") or "").strip()
                     if not titulo_y:
                         continue
-                    resumo_y = str(y.get("resumo") or "").strip()
                     canal_y = str(y.get("canal") or y.get("fonte_nome") or "YouTube").strip()
+                    resumo_bruto_y = str(y.get("resumo") or y.get("analise") or "").strip()
+                    resumo_y = limpar_descricao_youtube(resumo_bruto_y, titulo=titulo_y, nome_canal=canal_y)
+                    analise_y = _limpar_analise_youtube(y.get("analise"), resumo_y, resumo_bruto_y)
                     url_y = str(y.get("fonte_url") or y.get("url") or "/radar").strip()
                     paises_y = list(y.get("paises_envolvidos") or ["BR"])
                     cat_radar = str(y.get("categoria") or "geopolitica").lower()
@@ -3878,7 +4075,7 @@ def admin_listar_radar_feed(
                         "slug": vid_slug,
                         "titulo": titulo_y,
                         "resumo": resumo_y,
-                        "analise": resumo_y,
+                        "analise": analise_y,
                         "categoria": cat_radar,
                         "fonte_nome": canal_y,
                         "fonte_url": url_y,
@@ -3891,7 +4088,8 @@ def admin_listar_radar_feed(
                         "palavras_chave": [canal_y, "youtube", "video"],
                         "origem": "video",
                         "origem_video": True,
-                        "origem_manual": False,
+                        "origem_manual": bool(y.get("origem_manual") or y.get("aprovado_manualmente")),
+                        "aprovado_manualmente": bool(y.get("aprovado_manualmente")),
                         "origem_v2": False,
                     })
         except Exception:
@@ -3914,9 +4112,9 @@ def admin_listar_radar_feed(
             or bool(item.get("origem_video"))
             or _eh_video_card(item)
         )
-        if orig == "manual":
-            contadores["manuais"] += 1
-        elif orig == "pulso_v2":
+        if orig == "pulso_v2":
+            if eh_vid and not item.get("formato"):
+                item["formato"] = "video"
             contadores["pulso_v2"] += 1
         elif orig == "ddg_news":
             contadores["ddg_news"] += 1
@@ -3925,6 +4123,10 @@ def admin_listar_radar_feed(
             item["origem_video"] = True
             item["formato"] = "video"
             contadores["video"] += 1
+            if item.get("origem_manual") or orig == "manual":
+                contadores["manuais"] += 1
+        elif orig == "manual" or item.get("origem_manual"):
+            contadores["manuais"] += 1
         else:
             contadores["rss"] += 1
         combinados.append(item)
@@ -3944,6 +4146,8 @@ def admin_listar_radar_feed(
                 c for c in resultado
                 if c.get("origem") == "video" or str(c.get("formato") or "").lower() == "video" or c.get("origem_video")
             ]
+        elif orig_alvo in ("manual", "manuais"):
+            resultado = [c for c in resultado if c.get("origem") == "manual" or bool(c.get("origem_manual"))]
         else:
             resultado = [c for c in resultado if c.get("origem") == orig_alvo]
     if categoria_str and categoria_str.lower() not in ("todas", "all"):
@@ -5454,21 +5658,22 @@ def atualizar_pulso_continental(
 
     continentes = payload.get("continentes") or {}
     try:
-        with _obter_cursor(conn) as cur:
-            for cont_key, data in continentes.items():
-                headlines = data.get("headlines") or []
-                active_paises = list({h.get("countryCode") for h in headlines if h.get("countryCode")})
-                cur.execute(
-                    """
-                    INSERT INTO atlas_pulso_continental (continent_key, headlines_json, active_countries, updated_at)
-                    VALUES (%s, %s, %s, NOW())
-                    ON CONFLICT (continent_key) DO UPDATE
-                    SET headlines_json = EXCLUDED.headlines_json,
-                        active_countries = EXCLUDED.active_countries,
-                        updated_at = NOW();
-                    """,
-                    (cont_key, Jsonb(headlines), Jsonb(active_paises)),
-                )
+        with agente_ativo("atlas_pulso"):
+            with _obter_cursor(conn) as cur:
+                for cont_key, data in continentes.items():
+                    headlines = data.get("headlines") or []
+                    active_paises = list({h.get("countryCode") for h in headlines if h.get("countryCode")})
+                    cur.execute(
+                        """
+                        INSERT INTO atlas_pulso_continental (continent_key, headlines_json, active_countries, updated_at)
+                        VALUES (%s, %s, %s, NOW())
+                        ON CONFLICT (continent_key) DO UPDATE
+                        SET headlines_json = EXCLUDED.headlines_json,
+                            active_countries = EXCLUDED.active_countries,
+                            updated_at = NOW();
+                        """,
+                        (cont_key, Jsonb(headlines), Jsonb(active_paises)),
+                    )
         return {"ok": True, "continentes_atualizados": list(continentes.keys())}
     except Exception as e:
         try:

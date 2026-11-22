@@ -24,6 +24,10 @@ from src.analyst import analyze_item
 from src.estado_db import obter_database_url
 from src.publisher import publish_cards, update_history
 import psycopg
+try:
+    from sinal_agente import agente_ativo
+except ImportError:
+    from contextlib import nullcontext as agente_ativo
 
 app = FastAPI(
     title="API Rodando o Mundo — Motor Editorial V2 & Pulso 30m",
@@ -108,6 +112,11 @@ def _registrar_falha_auditoria_ciclo(db_url: str, erro: str) -> None:
 
 
 def run_pipeline():
+    with agente_ativo("pipeline_principal"):
+        _run_pipeline_impl()
+
+
+def _run_pipeline_impl():
     print("=" * 65)
     print("🚀 INICIANDO RADAR DE NOTÍCIAS & BRIEFING EDITORIAL")
     print("=" * 65)

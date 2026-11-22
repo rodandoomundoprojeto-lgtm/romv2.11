@@ -1153,6 +1153,108 @@ describe('BUG-COMPARE-COBERTURA — Comparar cobertura & Busca Universal', () =>
         resultsBox.textContent.includes('Todo o período'),
         `Quando finalizar em periodo=all, o banner deve exibir "Todo o período", obtido: ${resultsBox.textContent}`
       );
+
+      const dynTitle = app.document.getElementById('perspective-dynamic-title');
+      assert.ok(dynTitle, '#perspective-dynamic-title deve existir');
+      assert.equal(dynTitle.textContent.trim(), 'Como os veículos estão cobrindo', 'Título do banner dinâmico NÃO deve vazar o termo buscado internamente');
+      assert.ok(!resultsBox.textContent.includes('sobre “PIB”'), 'Estado vazio não deve vazar termo interno');
+
+      const topicInput = app.document.getElementById('topic-search-input');
+      assert.equal(topicInput ? topicInput.value : '', '', 'Input de pesquisa deve permanecer limpo/interno');
+
+      assert.equal(app.pageErrors.length, 0, `Sem erros de runtime na VM: ${app.pageErrors.map(String).join('; ')}`);
+    } finally {
+      app.cleanup();
+    }
+  });
+
+  test('6. Frontend (app.js) — Quando há matérias encontradas via "Comparar cobertura", oculta o termo do título e do resumo', async () => {
+    const nowIso = new Date().toISOString();
+
+    const app = await bootAppInVm((resolvedUrl, _init, parsedBody) => {
+      const u = new URL(resolvedUrl);
+
+      if (u.pathname === '/api/noticias-quentes') {
+        return createJsonResponse({
+          ok: true,
+          identificacao_editorial: 'Síntese Rodando o Mundo · V2',
+          atualizado_em: 'Atualizado agora',
+          updatedAt: nowIso,
+          paises_em_alta: [
+            {
+              a2: 'CL',
+              countryName: 'Chile',
+              title: 'PIB do Chile registra maior queda desde 2020 e Banco Central aponta recuperação lenta',
+              termoBusca: 'PIB',
+              summary: 'Segundo reportagem, o PIB caiu.',
+              urgencia_score: 90,
+              data_publicacao: nowIso,
+              updated_at: nowIso,
+            },
+          ],
+          noticias_quentes: [],
+        });
+      }
+      if (u.pathname === '/api/vitrine-em-alta') {
+        return createJsonResponse({ ok: true, temas_ativos: [], updatedAt: nowIso });
+      }
+      if (u.pathname === '/api/radar') {
+        return createJsonResponse({ ok: true, items: [], atualizado_em: 'Agora' });
+      }
+      if (u.pathname === '/api/resumo') {
+        return createJsonResponse({ ok: true, items: [], atualizadoEm: nowIso });
+      }
+      if (u.pathname === '/api/atlas-pais') {
+        return createJsonResponse({ ok: true, items: [], country: 'CL' });
+      }
+      if (u.pathname === '/v2/sugestoes-contextuais') {
+        return createJsonResponse({ ok: true, sugestoes: [] });
+      }
+      if (u.pathname === '/api/busca-assunto') {
+        return createJsonResponse({
+          ok: true,
+          termo: 'PIB',
+          periodo: '7d',
+          grupos: [
+            {
+              veiculo: 'Radio Cooperativa',
+              urlVeiculo: 'https://cooperativa.cl',
+              dominio: 'cooperativa.cl',
+              artigos: [
+                {
+                  titulo: 'Economía: PIB cae 1,8% en tercer trimestre',
+                  link: 'https://cooperativa.cl/noticia-1',
+                  pubDate: nowIso,
+                  score: 10,
+                },
+              ],
+            },
+          ],
+          resultados: [],
+          totalArtigos: 1,
+        });
+      }
+      return createJsonResponse({ ok: true });
+    });
+
+    try {
+      app.window.selecionarPais('CL');
+      await app.settle();
+
+      const compareBtn = app.document.querySelector('[data-hot-compare-term]');
+      assert.ok(compareBtn, 'Botão Comparar cobertura deve existir');
+      compareBtn.click();
+      await app.settle();
+
+      const dynTitle = app.document.getElementById('perspective-dynamic-title');
+      assert.ok(dynTitle, '#perspective-dynamic-title deve existir');
+      assert.equal(dynTitle.textContent.trim(), 'Como os veículos estão cobrindo', 'Título do banner deve ser "Como os veículos estão cobrindo" sem expor o termo interno');
+
+      const summaryEl = app.document.querySelector('.topic-search-summary');
+      assert.ok(summaryEl, '.topic-search-summary deve existir');
+      assert.ok(summaryEl.textContent.includes('Resultados em Chile'), `Resumo deve conter "Resultados em Chile", recebido: ${summaryEl.textContent}`);
+      assert.ok(!summaryEl.textContent.includes('para “PIB”') && !summaryEl.textContent.includes('para "PIB"'), `Resumo NÃO deve expor termo interno "para PIB", recebido: ${summaryEl.textContent}`);
+
       assert.equal(app.pageErrors.length, 0, `Sem erros de runtime na VM: ${app.pageErrors.map(String).join('; ')}`);
     } finally {
       app.cleanup();
