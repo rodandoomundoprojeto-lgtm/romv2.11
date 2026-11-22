@@ -2,113 +2,266 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-22T19:04:08Z",
-  "batch_id": "20261122-1903",
+  "updatedAt": "2026-11-22T19:45:49Z",
+  "batch_id": "20261122-1945",
   "temas_ativos": [
     {
-      "slug": "colapso-cop31-uniao-europeia-combustiveis-fosseis",
-      "titulo_tema": "Colapso histórico da COP31 sem acordo sobre o clima e a posição da União Europeia",
+      "slug": "ataque-houthis-refinaria-saudita-preco-petroleo",
       "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 95,
-      "ttl_horas": 72,
-      "expires_at": "2026-11-25T19:04:08Z",
-      "palavras_chave_busca": [
-        "cop31",
-        "uniao europeia",
-        "wopke hoekstra",
-        "combustiveis fosseis",
-        "mudancas climaticas",
-        "onu"
-      ],
-      "gatilho_vitrine": "Destacar o impasse diplomático global nas negociações climáticas e seus reflexos nos mercados energéticos internacionais.",
-      "sintese_nerd": "A recusa da União Europeia em apoiar um texto considerado fraco sobre o abandono de combustíveis fósseis implodiu a COP31, marcando o primeiro fracasso de uma cúpula da ONU desde 2009. Esse racha geopolítico afeta diretamente as diretrizes de investimentos verdes globais e a segurança energética de países emergentes.",
-      "data_publicacao": "2026-11-22T19:04:08Z",
-      "updated_at": "2026-11-22T19:04:08Z"
-    },
-    {
-      "slug": "ataque-refinaria-arabia-saudita-iemen",
-      "titulo_tema": "Rebeldes do Iêmen atacam refinaria gigante da Arábia Saudita",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 90,
       "ttl_horas": 48,
-      "expires_at": "2026-11-24T19:04:08Z",
+      "expires_at": "2026-11-24T19:33:35Z",
+      "updated_at": "2026-11-22T19:33:35Z",
+      "titulo_tema": "Escalação de Ataques Houthis a Infraestrutura Petrolífera Saudita",
+      "sintese_nerd": "Ataques de drones reivindicados por rebeldes do Iêmen contra a refinaria de Rabigh na Arábia Saudita ampliam a instabilidade no Oriente Médio. O risco de disrupção na oferta global de energia pressiona os preços do petróleo brent, refletindo-se na inflação de combustíveis e no câmbio no Brasil.",
+      "rota_editoria": "/radar",
+      "data_publicacao": "2026-11-22T19:33:35Z",
+      "gatilho_vitrine": "Destacar riscos de desabastecimento e impacto imediato nas cotações internacionais do barril de petróleo",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 92,
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia"
+      ],
       "palavras_chave_busca": [
+        "houthis",
         "iemen",
         "arabia saudita",
         "aramco",
-        "refinaria",
         "petroleo",
-        "geopolitica do oriente medio"
-      ],
-      "gatilho_vitrine": "Monitorar a escalada de conflitos no Oriente Médio e o impacto potencial nos preços globais do petróleo e derivativos.",
-      "sintese_nerd": "A intensificação dos ataques de grupos apoiados pelo Irã contra a infraestrutura energética saudita ameaça a estabilidade do fluxo global de petróleo e pressiona as cotações internacionais da commodity. O risco geopolítico imediato recoloca a volatilidade cambial e inflacionária no radar dos bancos centrais.",
-      "data_publicacao": "2026-11-22T19:04:08Z",
-      "updated_at": "2026-11-22T19:04:08Z"
+        "drones",
+        "mediterraneo",
+        "commodities"
+      ]
     },
     {
-      "slug": "falhas-sistemas-eua-voos-bancos",
-      "titulo_tema": "Apagões tecnológicos nos EUA afetam voos, bancos e sistemas de comunicação",
+      "slug": "trump-teto-juros-cartao-credito-eua-bancos",
       "status": "novo",
+      "ttl_horas": 72,
+      "expires_at": "2026-11-25T19:33:35Z",
+      "updated_at": "2026-11-22T19:33:35Z",
+      "titulo_tema": "Proposta de Teto de 10% para Juros de Cartão nos EUA Promovida por Trump",
+      "sintese_nerd": "A defesa do presidente eleito Donald Trump por um limite de 10% nos juros do cartão de crédito nos EUA alinha setores populistas e da oposição, mas assusta o sistema financeiro. A medida gera incerteza nos mercados bancários globais e acende o debate sobre controle de juros em economias centrais.",
+      "rota_editoria": "/economia",
+      "data_publicacao": "2026-11-22T19:33:35Z",
+      "gatilho_vitrine": "Exibir debate sobre intervenção no crédito bancário e divergências no Congresso americano",
       "origem_pipeline": "curadoria",
+      "relevancia_score": 89,
       "categoria_primaria": "Economia",
       "categorias_cruzadas": [
-        "Geopolitica_Radar",
-        "Cultura"
+        "Politica"
       ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 88,
-      "ttl_horas": 36,
-      "expires_at": "2026-11-24T07:04:08Z",
       "palavras_chave_busca": [
-        "eua",
-        "pane sistemica",
-        "aviacao",
-        "delta",
-        "infraestrutura",
-        "tecnologia"
-      ],
-      "gatilho_vitrine": "Explicar a vulnerabilidade da infraestrutura digital americana e os riscos sistêmicos globais associados a falhas operacionais e legadas.",
-      "sintese_nerd": "A sucessão de panes em setores críticos dos EUA, como aviação e serviços financeiros, foi atribuída à modernização de sistemas obsoletos e não a ataques cibernéticos patrocinados. O episódio escancara a fragilidade da infraestrutura digital de grandes potências, servindo de alerta para a resiliência tecnológica corporativa global.",
-      "data_publicacao": "2026-11-22T19:04:08Z",
-      "updated_at": "2026-11-22T19:04:08Z"
+        "donald trump",
+        "cartao de credito",
+        "teto de juros",
+        "bancos americanos",
+        "fed",
+        "credito de consumo",
+        "economia eua"
+      ]
     },
     {
-      "slug": "bolsonaro-internado-uti-brasilia",
-      "titulo_tema": "Ex-presidente Jair Bolsonaro segue internado em UTI de Brasília sem previsão de alta",
+      "slug": "ue-rejeita-acordo-cop31-transicao-energetica",
       "status": "novo",
+      "ttl_horas": 96,
+      "expires_at": "2026-11-26T19:33:35Z",
+      "updated_at": "2026-11-22T19:33:35Z",
+      "titulo_tema": "Rejeição do Acordo Global da COP31 pela União Europeia",
+      "sintese_nerd": "A União Europeia travou o texto final da COP31 por considerar que ele flexibilizou o compromisso de eliminação gradual de combustíveis fósseis. O impasse enfraquece o sistema da ONU para o clima e abre espaço para acordos bilaterais e novas tarifas de carbono sobre exportações emergentes.",
+      "rota_editoria": "/radar",
+      "data_publicacao": "2026-11-22T19:33:35Z",
+      "gatilho_vitrine": "Mobilizar cobertura sobre o colapso do consenso climático multilateral e seus efeitos no agronegócio e energia",
       "origem_pipeline": "curadoria",
+      "relevancia_score": 87,
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia"
+      ],
+      "palavras_chave_busca": [
+        "cop31",
+        "uniao europeia",
+        "combustiveis fosseis",
+        "acordo do clima",
+        "transicao energetica",
+        "wopke hoekstra",
+        "mudancas climaticas"
+      ]
+    },
+    {
+      "slug": "base-governo-lula-desafio-ajuste-fiscal-congresso",
+      "status": "novo",
+      "ttl_horas": 48,
+      "expires_at": "2026-11-24T19:33:35Z",
+      "updated_at": "2026-11-22T19:33:35Z",
+      "titulo_tema": "Resistência de Partidos Aliados ao Pacote de Corte de Gastos no Brasil",
+      "sintese_nerd": "Parlamentares da própria base aliada do governo pressionam contra recortes em benefícios e vinculações orçamentárias do pacote fiscal. Essa fragmentação interna aumenta o risco de desidratação das medidas fiscais no Congresso, gerando volatilidade nos juros futuros e no dólar.",
+      "rota_editoria": "/politica",
+      "data_publicacao": "2026-11-22T19:33:35Z",
+      "gatilho_vitrine": "Destacar entraves políticos na aprovação das medidas fiscais essenciais para o controle da dívida",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 86,
       "categoria_primaria": "Politica",
       "categorias_cruzadas": [
+        "Economia"
+      ],
+      "palavras_chave_busca": [
+        "ajuste fiscal",
+        "governo lula",
+        "congresso nacional",
+        "corte de gastos",
+        "base aliada",
+        "fazenda",
+        "meta fiscal"
+      ]
+    },
+    {
+      "slug": "democratas-recorde-cadeiras-camara-eua-trump",
+      "status": "novo",
+      "ttl_horas": 120,
+      "expires_at": "2026-11-27T19:33:35Z",
+      "updated_at": "2026-11-22T19:33:35Z",
+      "titulo_tema": "Avanço Democrata na Câmara dos EUA e Pressão Institucional",
+      "sintese_nerd": "O Partido Democrata alcançou 258 cadeiras na Câmara dos Deputados dos EUA, consolidando a maior bancada desde 1992 e ampliando o poder de veto. O novo cenário força a administração republicana a negociar pautas econômicas e fiscais em meio à ameaça de investigações rigorosas.",
+      "rota_editoria": "/eleicoes",
+      "data_publicacao": "2026-11-22T19:33:35Z",
+      "gatilho_vitrine": "Analisar o equilíbrio de forças legislativas em Washington e as barreiras à agenda da Casa Branca",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 84,
+      "categoria_primaria": "Eleicoes",
+      "categorias_cruzadas": [
+        "Politica",
+        "Economia"
+      ],
+      "palavras_chave_busca": [
+        "democratas",
+        "camara dos eua",
+        "eleicoes eua",
+        "hakeem jeffries",
+        "donald trump",
+        "congresso americano",
+        "balanco de poder"
+      ]
+    },
+    {
+      "slug": "eua-investigacao-nvidia-chips-china-sancoes",
+      "status": "novo",
+      "ttl_horas": 72,
+      "expires_at": "2026-11-25T19:33:35Z",
+      "updated_at": "2026-11-22T19:33:35Z",
+      "titulo_tema": "Escrutínio do Governo Americano sobre Vendas de Chips da Nvidia",
+      "sintese_nerd": "O Tesouro dos EUA intensificou cobranças sobre os controles de compliance da Nvidia referentes ao envio de processadores avançados para o mercado chinês. A disputa reflete a ampliação da guerra tecnológica e pode impactar as cadeias globais de suprimento de hardware de Inteligência Artificial.",
+      "rota_editoria": "/economia",
+      "data_publicacao": "2026-11-22T19:33:35Z",
+      "gatilho_vitrine": "Focar na guerra fria da inteligência artificial e restrições de exportação de tecnologia de ponta",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 82,
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Geopolitica_Radar"
+      ],
+      "palavras_chave_busca": [
+        "nvidia",
+        "chips ia",
+        "tesouro eua",
+        "scott bessent",
+        "china",
+        "semicondutores",
+        "sancoes tecnologicas"
+      ]
+    },
+    {
+      "slug": "democratas-atingem-258-cadeiras-camara-eua",
+      "status": "novo",
+      "categoria": "Geopolitica_Relacoes",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-23T19:26:46Z",
+      "updated_at": "2026-11-22T19:29:16Z",
+      "fontes_urls": [
+        "https://www.infomoney.com.br/mundo/democratas-atingem-258-cadeiras-na-camara-dos-eua-recorde-desde-1992/",
+        "https://g1.globo.com/mundo/noticia/2026/11/22/bancada-democrata-na-camara-dos-eua-atinge-marca-historica.ghtml"
+      ],
+      "titulo_tema": "Partido Democrata conquista 258 cadeiras e atinge maior bancada na Câmara dos EUA em 34 anos",
+      "resumo_pulso": "Conforme apuração do InfoMoney e do G1 Mundo, o Partido Democrata garantiu um resultado histórico nas eleições para a Câmara dos Representantes dos Estados Unidos, alcançando pelo menos 258 assentos. A nova composição amplia o peso da oposição e eleva as cobranças por medidas contra o custo de vida.",
+      "sintese_nerd": "Redesenha o equilíbrio político em Washington, dificultando a aprovação unilateral da agenda da Casa Branca e ampliando a fiscalização sobre o governo.",
+      "titulo_curto": "Partido Democrata conquista 258 cadeiras e atinge maior bancada na Câmara dos EUA em 34 anos",
+      "rota_editoria": "/radar",
+      "palavras_chave": [
+        "eua",
+        "partido democrata",
+        "câmara dos representantes",
+        "congresso americano"
+      ],
+      "urgencia_score": 90,
+      "data_publicacao": "2026-11-22T19:19:45Z",
+      "gatilho_vitrine": "Conforme apuração do InfoMoney e do G1 Mundo, o Partido Democrata garantiu um resultado histórico nas eleições para a Câmara dos Representantes dos Estados Unidos, alcançando pelo menos 258 assentos. A nova composição amplia o peso da oposição e eleva as cobranças por medidas contra o custo de vida.",
+      "impacto_pratico": "Redesenha o equilíbrio político em Washington, dificultando a aprovação unilateral da agenda da Casa Branca e ampliando a fiscalização sobre o governo.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "InfoMoney Mercados",
+        "G1 Mundo"
+      ],
+      "relevancia_score": 91,
+      "paises_envolvidos": [
+        "US"
+      ],
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
         "Resumo_Ultimas"
       ],
-      "rota_editoria": "/politica",
-      "relevancia_score": 85,
-      "ttl_horas": 24,
-      "expires_at": "2026-11-23T19:04:08Z",
       "palavras_chave_busca": [
-        "jair bolsonaro",
-        "uti",
-        "hospital df star",
-        "politica nacional",
-        "saude",
-        "brasilia"
+        "eua",
+        "partido democrata",
+        "câmara dos representantes",
+        "congresso americano"
+      ]
+    },
+    {
+      "slug": "ataque-russo-supermercado-kyiv-vyshneve",
+      "status": "novo",
+      "categoria": "Geopolitica_Relacoes",
+      "ttl_horas": 18,
+      "expires_at": "2026-11-23T13:26:46Z",
+      "updated_at": "2026-11-22T19:29:16Z",
+      "fontes_urls": [
+        "https://www.ukrinform.net/rubric-ato/4187456-death-toll-from-russian-attack-on-supermarket-in-vyshneve-rises-to-two.html"
       ],
-      "gatilho_vitrine": "Atualizar o cenário político nacional diante do boletim médico divulgado pelo hospital em Brasília.",
-      "sintese_nerd": "O ex-presidente Jair Bolsonaro permanece em unidade de terapia intensiva devido a um quadro de abdômen agudo obstrutivo, sem previsão de alta hospitalar. O fato movimenta os bastidores da política nacional e o cenário institucional brasileiro.",
-      "data_publicacao": "2026-11-22T19:04:08Z",
-      "updated_at": "2026-11-22T19:04:08Z"
+      "titulo_tema": "Balanço de ataque russo contra supermercado na região de Kyiv sobe para dois mortos",
+      "resumo_pulso": "Segundo atualização da Ukrinform e do The Kyiv Independent, subiu para dois o número de mortos confirmados no bombardeio russo que atingiu um supermercado em horário comercial na cidade de Vyshneve, na região de Kyiv. A ofensiva deixou ainda pelo menos oito feridos e foi classificada por autoridades locais como terrorismo contra civis.",
+      "sintese_nerd": "Acentua os riscos à segurança de áreas civis na Ucrânia e pressiona por reforços urgentes em defesas antiaéreas.",
+      "titulo_curto": "Balanço de ataque russo contra supermercado na região de Kyiv sobe para dois mortos",
+      "rota_editoria": "/radar",
+      "palavras_chave": [
+        "ucrânia",
+        "kyiv",
+        "vyshneve",
+        "ataque russo"
+      ],
+      "urgencia_score": 95,
+      "data_publicacao": "2026-11-22T18:43:47Z",
+      "gatilho_vitrine": "Segundo atualização da Ukrinform e do The Kyiv Independent, subiu para dois o número de mortos confirmados no bombardeio russo que atingiu um supermercado em horário comercial na cidade de Vyshneve, na região de Kyiv. A ofensiva deixou ainda pelo menos oito feridos e foi classificada por autoridades locais como terrorismo contra civis.",
+      "impacto_pratico": "Acentua os riscos à segurança de áreas civis na Ucrânia e pressiona por reforços urgentes em defesas antiaéreas.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "Ukrinform",
+        "The Kyiv Independent"
+      ],
+      "relevancia_score": 92,
+      "paises_envolvidos": [
+        "UA",
+        "RU"
+      ],
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "ucrânia",
+        "kyiv",
+        "vyshneve",
+        "ataque russo"
+      ]
     },
     {
       "slug": "pulso-1-20261122-1840",
@@ -283,94 +436,52 @@
       ]
     },
     {
-      "slug": "pulso-5-20261122-1840",
+      "slug": "pane-sistema-trava-voos-delta-atlanta-eua",
+      "titulo_tema": "Agência de aviação dos EUA suspende temporariamente voos da Delta em Atlanta após falha sistêmica",
+      "titulo_curto": "Agência de aviação dos EUA suspende temporariamente voos da Delta em Atlanta após falha sistêmica",
       "status": "novo",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 6,
-      "expires_at": "2026-11-23T00:40:42Z",
-      "updated_at": "2026-11-22T18:40:42Z",
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/bolsonaro-segue-internado-na-uti-sem-previsao-de-alta"
-      ],
-      "titulo_tema": "Bolsonaro segue internado na UTI sem previsão de alta",
-      "resumo_pulso": "Segundo Agência Brasil (EBC), O ex-presidente da República Jair Messias Bolsonaro segue internado em uma unidade de terapia intensiva (UTI), sem previsão de alta, no Hospital DF Star, em Brasília, com diagnóstico de abdômen agudo obstrutivo. A informação consta do boletim médico divulgado pelo hospital neste domingo (22). “Paciente apresenta-se clinicamente estável, mantendo tratamento clínico, je",
-      "sintese_nerd": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "titulo_curto": "Bolsonaro segue internado na UTI sem previsão de alta",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "radar",
-        "tempo real",
-        "br"
-      ],
-      "urgencia_score": 70,
-      "data_publicacao": "2026-11-22T17:55:00+00:00",
-      "gatilho_vitrine": "Segundo Agência Brasil (EBC), O ex-presidente da República Jair Messias Bolsonaro segue internado em uma unidade de terapia intensiva (UTI), sem previsão de alta, no Hospital DF Star, em Brasília, com diagnóstico de abdômen agudo obstrutivo. A informação consta do boletim médico divulgado pelo hospital neste domingo (22). “Paciente apresenta-se clinicamente estável, mantendo tratamento clínico, je",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
       "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "Agência Brasil (EBC)"
-      ],
-      "relevancia_score": 72,
-      "paises_envolvidos": [
-        "BR"
-      ],
       "categoria_primaria": "Geopolitica_Radar",
+      "categoria": "Mobilidade_Fronteiras",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
       ],
-      "palavras_chave_busca": [
-        "radar",
-        "tempo real",
-        "br"
-      ]
-    },
-    {
-      "slug": "pane-sistema-trava-voos-delta-atlanta-eua",
-      "status": "novo",
-      "categoria": "Mobilidade_Fronteiras",
+      "rota_editoria": "/radar",
+      "relevancia_score": 88,
+      "urgencia_score": 90,
       "ttl_horas": 12,
       "expires_at": "2026-11-23T05:55:16Z",
-      "updated_at": "2026-11-22T18:07:00Z",
-      "fontes_urls": [
-        "https://www.infomoney.com.br/business/global/pane-trava-voos-da-delta-em-atlanta-e-a-3a-falha-no-setor-aereo-dos-eua/"
+      "palavras_chave_busca": [
+        "delta air lines",
+        "atlanta",
+        "faa",
+        "aviação",
+        "eua"
       ],
-      "titulo_tema": "Falha em sistema de peso e equilíbrio provoca cancelamentos e atrasos em voos da Delta em Atlanta",
-      "resumo_pulso": "Segundo apuração do InfoMoney Mercados, uma pane no sistema responsável por calcular o peso e o equilíbrio das aeronaves paralisou as operações da Delta Air Lines no aeroporto de Atlanta. A falha resultou no cancelamento de cerca de um quarto dos voos e em atrasos superiores a 40% na operação do hub estadunidense.",
-      "sintese_nerd": "Transtornos severos para passageiros com conexões internacionais e voos domésticos nos Estados Unidos.",
-      "titulo_curto": "Falha em sistema de peso e equilíbrio provoca cancelamentos e atrasos em voos da Delta em Atlanta",
-      "rota_editoria": "/radar",
       "palavras_chave": [
         "delta air lines",
         "atlanta",
+        "faa",
         "aviação",
-        "estados unidos",
-        "voos"
+        "eua"
       ],
-      "urgencia_score": 90,
-      "data_publicacao": "2026-11-22T17:42:40Z",
-      "gatilho_vitrine": "Segundo apuração do InfoMoney Mercados, uma pane no sistema responsável por calcular o peso e o equilíbrio das aeronaves paralisou as operações da Delta Air Lines no aeroporto de Atlanta. A falha resultou no cancelamento de cerca de um quarto dos voos e em atrasos superiores a 40% na operação do hub estadunidense.",
-      "impacto_pratico": "Transtornos severos para passageiros com conexões internacionais e voos domésticos nos Estados Unidos.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "InfoMoney Mercados"
-      ],
-      "relevancia_score": 88,
+      "gatilho_vitrine": "Segundo apuração do G1 Mundo e da Reuters, a Administração Federal de Aviação dos Estados Unidos (FAA) determinou a suspensão temporária das decolagens da Delta Air Lines no Aeroporto Internacional Hartsfield-Jackson, em Atlanta. A medida decorre de uma pane em um sistema automatizado da companhia.",
+      "resumo_pulso": "Segundo apuração do G1 Mundo e da Reuters, a Administração Federal de Aviação dos Estados Unidos (FAA) determinou a suspensão temporária das decolagens da Delta Air Lines no Aeroporto Internacional Hartsfield-Jackson, em Atlanta. A medida decorre de uma pane em um sistema automatizado da companhia.",
+      "sintese_nerd": "Passageiros enfrentam cancelamentos e atrasos significativos em um dos hubs aeroportuários mais movimentados do mundo, exigindo atenção para conexões e itinerários.",
+      "impacto_pratico": "Passageiros enfrentam cancelamentos e atrasos significativos em um dos hubs aeroportuários mais movimentados do mundo, exigindo atenção para conexões e itinerários.",
       "paises_envolvidos": [
         "US"
       ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
+      "veiculos_origem": [
+        "G1 Mundo",
+        "Reuters"
       ],
-      "palavras_chave_busca": [
-        "delta air lines",
-        "atlanta",
-        "aviação",
-        "estados unidos",
-        "voos"
-      ]
+      "fontes_urls": [
+        "https://g1.globo.com/mundo/noticia/2026/11/22/suspensao-temporaria-voos-companhia-aerea-eua-falha-em-sistema.ghtml"
+      ],
+      "data_publicacao": "2026-11-22T17:42:40Z",
+      "updated_at": "2026-11-22T19:45:49Z"
     },
     {
       "slug": "ataque-com-drone-atinge-navio-russo-em-bengasi-na-libia",
@@ -378,30 +489,27 @@
       "categoria": "Geopolitica_Relacoes",
       "ttl_horas": 18,
       "expires_at": "2026-11-23T11:38:45Z",
-      "updated_at": "2026-11-22T18:37:33Z",
+      "updated_at": "2026-11-22T19:29:16Z",
       "fontes_urls": [
-        "https://www.aljazeera.com/video/newsfeed/2026/11/22/suspected-drone-attack-causes-explosion-on-russian-ship-in-libya?traffic_source=rss",
         "https://kyivindependent.com/russian-warship-docked-in-benghazi-hit-by-suspected-drone-attack-libyan-officials-say/"
       ],
-      "titulo_tema": "Corveta russa sofre danos após suposto ataque de drones em base naval na Líbia",
-      "resumo_pulso": "Segundo autoridades líbias e reportagem da Al Jazeera e do The Kyiv Independent, a corveta Merkury da Marinha Russa foi atingida por drones no porto de Bengasi. Kiev ainda não comentou oficialmente o incidente no Mediterrâneo.",
-      "sintese_nerd": "Eleva as tensões geopolíticas no Mediterrâneo e sinaliza a ampliação de operações de ataque assimétrico contra frotas navais russas fora do Mar Negro.",
-      "titulo_curto": "Corveta russa sofre danos após suposto ataque de drones em base naval na Líbia",
+      "titulo_tema": "Autoridades líbias confirmam danos severos a corveta russa Merkury após ataque de drones em Bengasi",
+      "resumo_pulso": "Segundo relatórios de autoridades líbias e reportagem do The Kyiv Independent, a corveta Merkury da Marinha Russa sofreu danos significativos após ser atingida por drones navais no porto de Bengasi. Kiev ainda não assumiu oficialmente a autoria da investida no Mediterrâneo.",
+      "sintese_nerd": "Demonstra a ampliação do alcance operacional de ataques assimétricos contra ativos navais russos fora do teatro de operações tradicional do Mar Negro.",
+      "titulo_curto": "Autoridades líbias confirmam danos severos a corveta russa Merkury após ataque de drones em Bengasi",
       "rota_editoria": "/radar",
       "palavras_chave": [
         "marinha russa",
-        "líbia",
         "bengasi",
-        "drones",
-        "mediterrâneo"
+        "líbia",
+        "drones navais"
       ],
       "urgencia_score": 96,
       "data_publicacao": "2026-11-22T17:12:48Z",
-      "gatilho_vitrine": "Segundo autoridades líbias e reportagem da Al Jazeera e do The Kyiv Independent, a corveta Merkury da Marinha Russa foi atingida por drones no porto de Bengasi. Kiev ainda não comentou oficialmente o incidente no Mediterrâneo.",
-      "impacto_pratico": "Eleva as tensões geopolíticas no Mediterrâneo e sinaliza a ampliação de operações de ataque assimétrico contra frotas navais russas fora do Mar Negro.",
+      "gatilho_vitrine": "Segundo relatórios de autoridades líbias e reportagem do The Kyiv Independent, a corveta Merkury da Marinha Russa sofreu danos significativos após ser atingida por drones navais no porto de Bengasi. Kiev ainda não assumiu oficialmente a autoria da investida no Mediterrâneo.",
+      "impacto_pratico": "Demonstra a ampliação do alcance operacional de ataques assimétricos contra ativos navais russos fora do teatro de operações tradicional do Mar Negro.",
       "origem_pipeline": "pulso",
       "veiculos_origem": [
-        "Al Jazeera English",
         "The Kyiv Independent"
       ],
       "relevancia_score": 93,
@@ -417,10 +525,9 @@
       ],
       "palavras_chave_busca": [
         "marinha russa",
-        "líbia",
         "bengasi",
-        "drones",
-        "mediterrâneo"
+        "líbia",
+        "drones navais"
       ]
     },
     {
@@ -472,54 +579,49 @@
     },
     {
       "slug": "bolsonaro-clinicamente-estavel-uti-df-star",
+      "titulo_tema": "Boletim médico confirma ex-presidente Bolsonaro estável em UTI de Brasília sem previsão de alta",
+      "titulo_curto": "Boletim médico confirma ex-presidente Bolsonaro estável em UTI de Brasília sem previsão de alta",
       "status": "novo",
-      "categoria": "Sociedade_Cultura",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-23T17:12:49Z",
-      "updated_at": "2026-11-22T18:37:33Z",
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/bolsonaro-segue-internado-na-uti-sem-previsao-de-alta",
-        "https://www.poder360.com.br/poder-brasil/bolsonaro-esta-estavel-na-uti-e-segue-sem-previsao-de-alta-diz-boletim/",
-        "https://g1.globo.com/politica/politico/noticia/2026/11/22/bolsonaro-esta-estavel-diz-hospital.ghtml"
-      ],
-      "titulo_tema": "Boletim médico aponta Bolsonaro estável em UTI de Brasília sem previsão de alta",
-      "resumo_pulso": "Conforme boletim oficial divulgado pelo Hospital DF Star e reportado pela Agência Brasil e pelo Poder360, o ex-presidente Jair Bolsonaro segue internado em UTI com quadro de abdômen agudo obstrutivo, mantendo jejum e suporte nutricional.",
-      "sintese_nerd": "Mantém o monitoramento político e de segurança em Brasília em torno da evolução do quadro de saúde do ex-presidente.",
-      "titulo_curto": "Boletim médico aponta Bolsonaro estável em UTI de Brasília sem previsão de alta",
-      "rota_editoria": "/cultura",
-      "palavras_chave": [
-        "jair bolsonaro",
-        "hospital df star",
-        "uti",
-        "saúde",
-        "brasília"
-      ],
-      "urgencia_score": 92,
-      "data_publicacao": "2026-11-22T16:54:30Z",
-      "gatilho_vitrine": "Conforme boletim oficial divulgado pelo Hospital DF Star e reportado pela Agência Brasil e pelo Poder360, o ex-presidente Jair Bolsonaro segue internado em UTI com quadro de abdômen agudo obstrutivo, mantendo jejum e suporte nutricional.",
-      "impacto_pratico": "Mantém o monitoramento político e de segurança em Brasília em torno da evolução do quadro de saúde do ex-presidente.",
       "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "Agência Brasil (EBC)",
-        "Poder360",
-        "G1 Política"
-      ],
-      "relevancia_score": 94,
-      "paises_envolvidos": [
-        "BR"
-      ],
       "categoria_primaria": "Cultura",
+      "categoria": "Sociedade_Cultura",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
       ],
+      "rota_editoria": "/cultura",
+      "relevancia_score": 94,
+      "urgencia_score": 92,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-23T17:12:49Z",
       "palavras_chave_busca": [
         "jair bolsonaro",
-        "hospital df star",
-        "uti",
         "saúde",
+        "hospital df star",
         "brasília"
-      ]
+      ],
+      "palavras_chave": [
+        "jair bolsonaro",
+        "saúde",
+        "hospital df star",
+        "brasília"
+      ],
+      "gatilho_vitrine": "Conforme boletim oficial divulgado pelo Hospital DF Star e reportado pela Agência Brasil e pelo G1, o ex-presidente Jair Bolsonaro segue internado em unidade de terapia intensiva com diagnóstico de abdômen agudo obstrutivo. O paciente mantém tratamento clínico, jejum e suporte nutricional.",
+      "resumo_pulso": "Conforme boletim oficial divulgado pelo Hospital DF Star e reportado pela Agência Brasil e pelo G1, o ex-presidente Jair Bolsonaro segue internado em unidade de terapia intensiva com diagnóstico de abdômen agudo obstrutivo. O paciente mantém tratamento clínico, jejum e suporte nutricional.",
+      "sintese_nerd": "A internação prolongada altera a agenda pública do ex-presidente e movimenta o cenário político nacional com repercussões entre aliados.",
+      "impacto_pratico": "A internação prolongada altera a agenda pública do ex-presidente e movimenta o cenário político nacional com repercussões entre aliados.",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "veiculos_origem": [
+        "Agência Brasil (EBC)",
+        "G1 Política"
+      ],
+      "fontes_urls": [
+        "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/bolsonaro-segue-internado-na-uti-sem-previsao-de-alta"
+      ],
+      "data_publicacao": "2026-11-22T16:54:30Z",
+      "updated_at": "2026-11-22T19:45:49Z"
     },
     {
       "slug": "colonos-israelenses-atacam-vilas-palestinas-na-cisjordania",
@@ -618,56 +720,53 @@
     },
     {
       "slug": "cop31-termina-sem-acordo-impasse-fosseis",
+      "titulo_tema": "COP31 encerra-se sem acordo climático na Turquia após impasse histórico sobre fósseis",
+      "titulo_curto": "COP31 encerra-se sem acordo climático na Turquia após impasse histórico sobre fósseis",
       "status": "novo",
-      "categoria": "Ciencia_Clima",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-24T16:26:50Z",
-      "updated_at": "2026-11-22T18:37:33Z",
-      "fontes_urls": [
-        "https://www.youtube.com/watch?v=mU5deDu9FXU",
-        "https://www.bbc.com/portuguese/articles/cq742zpk1ln4o",
-        "https://g1.globo.com/meio-ambiente/noticia/2026/11/22/cop31-fracasso-brasil-turquia.ghtml"
-      ],
-      "titulo_tema": "Delegação do Brasil e ONU lamentam fracasso histórico da COP31 na Turquia",
-      "resumo_pulso": "Segundo apuração da BBC News Brasil e da delegação brasileira, a COP31 encerrou-se sem consenso após rejeição de metas para eliminar combustíveis fósseis. O impasse frustrou expectativas internacionais de ambição climática na Turquia.",
-      "sintese_nerd": "Afeta diretamente as diretrizes globais de transição energética, investimentos em fontes renováveis e o cronograma de financiamento para países em desenvolvimento.",
-      "titulo_curto": "Delegação do Brasil e ONU lamentam fracasso histórico da COP31 na Turquia",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "cop31",
-        "mudanças climáticas",
-        "combustíveis fósseis",
-        "onu",
-        "turquia"
-      ],
-      "urgencia_score": 98,
-      "data_publicacao": "2026-11-22T16:26:50Z",
-      "gatilho_vitrine": "Segundo apuração da BBC News Brasil e da delegação brasileira, a COP31 encerrou-se sem consenso após rejeição de metas para eliminar combustíveis fósseis. O impasse frustrou expectativas internacionais de ambição climática na Turquia.",
-      "impacto_pratico": "Afeta diretamente as diretrizes globais de transição energética, investimentos em fontes renováveis e o cronograma de financiamento para países em desenvolvimento.",
       "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "Parabólica",
-        "BBC News Brasil",
-        "G1 Mundo"
-      ],
-      "relevancia_score": 98,
-      "paises_envolvidos": [
-        "TR",
-        "BR",
-        "AU"
-      ],
       "categoria_primaria": "Geopolitica_Radar",
+      "categoria": "Ciencia_Clima",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
       ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 98,
+      "urgencia_score": 98,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-24T16:26:50Z",
       "palavras_chave_busca": [
         "cop31",
-        "mudanças climáticas",
+        "clima",
+        "turquia",
         "combustíveis fósseis",
-        "onu",
-        "turquia"
-      ]
+        "onu"
+      ],
+      "palavras_chave": [
+        "cop31",
+        "clima",
+        "turquia",
+        "combustíveis fósseis",
+        "onu"
+      ],
+      "gatilho_vitrine": "Segundo apuração da Agência Brasil e da cobertura internacional da COP31 em Antália, a conferência encerrou-se sem a adoção de um documento final, algo inédito desde 2009. A ausência de consenso reflete divergências profundas sobre financiamento climático e a transição para eliminação de combustíveis fósseis.",
+      "resumo_pulso": "Segundo apuração da Agência Brasil e da cobertura internacional da COP31 em Antália, a conferência encerrou-se sem a adoção de um documento final, algo inédito desde 2009. A ausência de consenso reflete divergências profundas sobre financiamento climático e a transição para eliminação de combustíveis fósseis.",
+      "sintese_nerd": "A paralisação nas negociações globais afeta diretamente as metas de financiamento para adaptação climática em países em desenvolvimento e a previsibilidade de investimentos em transição energética.",
+      "impacto_pratico": "A paralisação nas negociações globais afeta diretamente as metas de financiamento para adaptação climática em países em desenvolvimento e a previsibilidade de investimentos em transição energética.",
+      "paises_envolvidos": [
+        "TR",
+        "BR"
+      ],
+      "veiculos_origem": [
+        "Agência Brasil (EBC)",
+        "Parabólica",
+        "Reuters"
+      ],
+      "fontes_urls": [
+        "https://agenciabrasil.ebc.com.br/internacional/noticia/2026-11/cop-nao-terminava-sem-acordo-desde-2009"
+      ],
+      "data_publicacao": "2026-11-22T16:26:50Z",
+      "updated_at": "2026-11-22T19:45:49Z"
     },
     {
       "slug": "mega-sena-acumula-e-premio-vai-a-65-milhoes",
@@ -715,253 +814,81 @@
         "caixa",
         "economia"
       ]
-    },
-    {
-      "slug": "pulso-1-20261122-1640",
-      "status": "novo",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 6,
-      "expires_at": "2026-11-22T22:40:02Z",
-      "updated_at": "2026-11-22T16:40:02Z",
-      "fontes_urls": [
-        "https://www.aljazeera.com/video/newsfeed/2026/11/22/canadas-pm-appears-next-to-trump-impersonator-at-press-dinner?traffic_source=rss"
-      ],
-      "titulo_tema": "Primeiro-ministro do Canadá aparece ao lado do imitador de Trump em jantar para a imprensa",
-      "resumo_pulso": "Segundo Al Jazeera English, um imitador de Donald Trump subiu ao palco ao lado de Mark Carney na Galeria de Imprensa Parlamentar anual do Canadá.",
-      "sintese_nerd": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "titulo_curto": "Primeiro-ministro do Canadá aparece ao lado do imitador de Trump em jantar para a imprensa",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "radar",
-        "tempo real",
-        "qa"
-      ],
-      "urgencia_score": 90,
-      "data_publicacao": "2026-11-22T16:06:46+00:00",
-      "gatilho_vitrine": "Segundo Al Jazeera English, um imitador de Donald Trump subiu ao palco ao lado de Mark Carney na Galeria de Imprensa Parlamentar anual do Canadá.",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "Al Jazeera English"
-      ],
-      "relevancia_score": 88,
-      "paises_envolvidos": [
-        "QA",
-        "CA"
-      ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "radar",
-        "tempo real",
-        "qa"
-      ]
-    },
-    {
-      "slug": "espioes-chips-e-a-nvidia-campanha-secreta-china-driblar-eua",
-      "status": "novo",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-23T15:40:21Z",
-      "updated_at": "2026-11-22T15:40:21Z",
-      "fontes_urls": [
-        "https://www.infomoney.com.br/business/global/espioes-chips-e-a-nvidia-a-campanha-secreta-da-china-para-driblar-os-eua/"
-      ],
-      "titulo_tema": "Agência de espionagem da China mantém campanha secreta para obter chips de IA e burlar barreiras dos EUA",
-      "resumo_pulso": "Segundo apuração do InfoMoney, autoridades de inteligência apontam que a China opera uma campanha clandestina para garantir acesso a chips avançados de inteligência artificial e informações estratégicas do setor, contornando restrições impostas por Washington.",
-      "sintese_nerd": "Acentua a disputa tecnológica global e as salvaguardas de segurança em semicondutores.",
-      "titulo_curto": "Agência de espionagem da China mantém campanha secreta para obter chips de IA e burlar barreiras dos EUA",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "china",
-        "eua",
-        "chips",
-        "nvidia",
-        "inteligência artificial",
-        "espionagem"
-      ],
-      "urgencia_score": 91,
-      "data_publicacao": "2026-11-22T15:38:47Z",
-      "gatilho_vitrine": "Segundo apuração do InfoMoney, autoridades de inteligência apontam que a China opera uma campanha clandestina para garantir acesso a chips avançados de inteligência artificial e informações estratégicas do setor, contornando restrições impostas por Washington.",
-      "impacto_pratico": "Acentua a disputa tecnológica global e as salvaguardas de segurança em semicondutores.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "InfoMoney Mercados"
-      ],
-      "relevancia_score": 92,
-      "paises_envolvidos": [
-        "CN",
-        "US"
-      ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "china",
-        "eua",
-        "chips",
-        "nvidia",
-        "inteligência artificial",
-        "espionagem"
-      ]
-    },
-    {
-      "slug": "pulso-4-20261122-1640",
-      "status": "novo",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 6,
-      "expires_at": "2026-11-23T16:26:11Z",
-      "updated_at": "2026-11-22T16:40:02Z",
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/meio-ambiente/noticia/2026-11/chuvas-no-rs-afetam-mais-de-25-mil-pessoas-em-42-cidades"
-      ],
-      "titulo_tema": "Chuvas no RS afetam mais de 25 mil pessoas em 42 cidades",
-      "resumo_pulso": "Segundo Agência Brasil (EBC), As chuvas que atingem Rio Grande do Sul desde a sexta-feira (20) afetaram mais de 25 mil pessoas, segundo informou a Defesa Civil do estado neste domingo (22). Foram registradas 47 ocorrências em 42 municípios gaúchos. Houve registro de danos humanos ou materiais em 39 municípios. Predominaram vendavais, queda de granizo, chuvas intensas e enxurradas. No total, 25.123",
-      "sintese_nerd": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "titulo_curto": "Chuvas no RS afetam mais de 25 mil pessoas em 42 cidades",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "radar",
-        "tempo real",
-        "br"
-      ],
-      "urgencia_score": 75,
-      "data_publicacao": "2026-11-22T15:35:00Z",
-      "gatilho_vitrine": "Segundo Agência Brasil (EBC), As chuvas que atingem Rio Grande do Sul desde a sexta-feira (20) afetaram mais de 25 mil pessoas, segundo informou a Defesa Civil do estado neste domingo (22). Foram registradas 47 ocorrências em 42 municípios gaúchos. Houve registro de danos humanos ou materiais em 39 municípios. Predominaram vendavais, queda de granizo, chuvas intensas e enxurradas. No total, 25.123",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "Agência Brasil (EBC)"
-      ],
-      "relevancia_score": 76,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "radar",
-        "tempo real",
-        "br"
-      ]
-    }
-  ],
-  "temas_curadoria": [
-    {
-      "slug": "colapso-cop31-uniao-europeia-combustiveis-fosseis",
-      "titulo_tema": "Colapso histórico da COP31 sem acordo sobre o clima e a posição da União Europeia",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 95,
-      "ttl_horas": 72,
-      "expires_at": "2026-11-25T19:04:08Z",
-      "palavras_chave_busca": [
-        "cop31",
-        "uniao europeia",
-        "wopke hoekstra",
-        "combustiveis fosseis",
-        "mudancas climaticas",
-        "onu"
-      ],
-      "gatilho_vitrine": "Destacar o impasse diplomático global nas negociações climáticas e seus reflexos nos mercados energéticos internacionais.",
-      "sintese_nerd": "A recusa da União Europeia em apoiar um texto considerado fraco sobre o abandono de combustíveis fósseis implodiu a COP31, marcando o primeiro fracasso de uma cúpula da ONU desde 2009. Esse racha geopolítico afeta diretamente as diretrizes de investimentos verdes globais e a segurança energética de países emergentes.",
-      "data_publicacao": "2026-11-22T19:04:08Z",
-      "updated_at": "2026-11-22T19:04:08Z"
-    },
-    {
-      "slug": "ataque-refinaria-arabia-saudita-iemen",
-      "titulo_tema": "Rebeldes do Iêmen atacam refinaria gigante da Arábia Saudita",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 90,
-      "ttl_horas": 48,
-      "expires_at": "2026-11-24T19:04:08Z",
-      "palavras_chave_busca": [
-        "iemen",
-        "arabia saudita",
-        "aramco",
-        "refinaria",
-        "petroleo",
-        "geopolitica do oriente medio"
-      ],
-      "gatilho_vitrine": "Monitorar a escalada de conflitos no Oriente Médio e o impacto potencial nos preços globais do petróleo e derivativos.",
-      "sintese_nerd": "A intensificação dos ataques de grupos apoiados pelo Irã contra a infraestrutura energética saudita ameaça a estabilidade do fluxo global de petróleo e pressiona as cotações internacionais da commodity. O risco geopolítico imediato recoloca a volatilidade cambial e inflacionária no radar dos bancos centrais.",
-      "data_publicacao": "2026-11-22T19:04:08Z",
-      "updated_at": "2026-11-22T19:04:08Z"
-    },
-    {
-      "slug": "falhas-sistemas-eua-voos-bancos",
-      "titulo_tema": "Apagões tecnológicos nos EUA afetam voos, bancos e sistemas de comunicação",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Geopolitica_Radar",
-        "Cultura"
-      ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 88,
-      "ttl_horas": 36,
-      "expires_at": "2026-11-24T07:04:08Z",
-      "palavras_chave_busca": [
-        "eua",
-        "pane sistemica",
-        "aviacao",
-        "delta",
-        "infraestrutura",
-        "tecnologia"
-      ],
-      "gatilho_vitrine": "Explicar a vulnerabilidade da infraestrutura digital americana e os riscos sistêmicos globais associados a falhas operacionais e legadas.",
-      "sintese_nerd": "A sucessão de panes em setores críticos dos EUA, como aviação e serviços financeiros, foi atribuída à modernização de sistemas obsoletos e não a ataques cibernéticos patrocinados. O episódio escancara a fragilidade da infraestrutura digital de grandes potências, servindo de alerta para a resiliência tecnológica corporativa global.",
-      "data_publicacao": "2026-11-22T19:04:08Z",
-      "updated_at": "2026-11-22T19:04:08Z"
-    },
-    {
-      "slug": "bolsonaro-internado-uti-brasilia",
-      "titulo_tema": "Ex-presidente Jair Bolsonaro segue internado em UTI de Brasília sem previsão de alta",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Politica",
-      "categorias_cruzadas": [
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/politica",
-      "relevancia_score": 85,
-      "ttl_horas": 24,
-      "expires_at": "2026-11-23T19:04:08Z",
-      "palavras_chave_busca": [
-        "jair bolsonaro",
-        "uti",
-        "hospital df star",
-        "politica nacional",
-        "saude",
-        "brasilia"
-      ],
-      "gatilho_vitrine": "Atualizar o cenário político nacional diante do boletim médico divulgado pelo hospital em Brasília.",
-      "sintese_nerd": "O ex-presidente Jair Bolsonaro permanece em unidade de terapia intensiva devido a um quadro de abdômen agudo obstrutivo, sem previsão de alta hospitalar. O fato movimenta os bastidores da política nacional e o cenário institucional brasileiro.",
-      "data_publicacao": "2026-11-22T19:04:08Z",
-      "updated_at": "2026-11-22T19:04:08Z"
     }
   ],
   "noticias_quentes": [
+    {
+      "slug": "democratas-atingem-258-cadeiras-camara-eua",
+      "categoria": "Geopolitica_Relacoes",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-23T19:26:46Z",
+      "updated_at": "2026-11-22T19:29:16Z",
+      "fontes_urls": [
+        "https://www.infomoney.com.br/mundo/democratas-atingem-258-cadeiras-na-camara-dos-eua-recorde-desde-1992/",
+        "https://g1.globo.com/mundo/noticia/2026/11/22/bancada-democrata-na-camara-dos-eua-atinge-marca-historica.ghtml"
+      ],
+      "resumo_pulso": "Conforme apuração do InfoMoney e do G1 Mundo, o Partido Democrata garantiu um resultado histórico nas eleições para a Câmara dos Representantes dos Estados Unidos, alcançando pelo menos 258 assentos. A nova composição amplia o peso da oposição e eleva as cobranças por medidas contra o custo de vida.",
+      "titulo_curto": "Partido Democrata conquista 258 cadeiras e atinge maior bancada na Câmara dos EUA em 34 anos",
+      "palavras_chave": [
+        "EUA",
+        "Partido Democrata",
+        "Câmara dos Representantes",
+        "Congresso Americano"
+      ],
+      "urgencia_score": 90,
+      "data_publicacao": "2026-11-22T19:19:45Z",
+      "impacto_pratico": "Redesenha o equilíbrio político em Washington, dificultando a aprovação unilateral da agenda da Casa Branca e ampliando a fiscalização sobre o governo.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "InfoMoney Mercados",
+        "G1 Mundo"
+      ],
+      "relevancia_score": 91,
+      "horas_em_destaque": 20,
+      "paises_envolvidos": [
+        "US"
+      ],
+      "links_internos_relacionados": [
+        {
+          "url_existente": "https://www.rodandoomundo.com.br/politica/estados-unidos",
+          "motivo_conexao": "Aprofunda a análise sobre a dinâmica institucional e o impacto da nova maioria na Câmara dos EUA.",
+          "titulo_existente": "Política nos Estados Unidos"
+        }
+      ]
+    },
+    {
+      "slug": "ataque-russo-supermercado-kyiv-vyshneve",
+      "categoria": "Geopolitica_Relacoes",
+      "ttl_horas": 18,
+      "expires_at": "2026-11-23T13:26:46Z",
+      "updated_at": "2026-11-22T19:29:16Z",
+      "fontes_urls": [
+        "https://www.ukrinform.net/rubric-ato/4187456-death-toll-from-russian-attack-on-supermarket-in-vyshneve-rises-to-two.html"
+      ],
+      "resumo_pulso": "Segundo atualização da Ukrinform e do The Kyiv Independent, subiu para dois o número de mortos confirmados no bombardeio russo que atingiu um supermercado em horário comercial na cidade de Vyshneve, na região de Kyiv. A ofensiva deixou ainda pelo menos oito feridos e foi classificada por autoridades locais como terrorismo contra civis.",
+      "titulo_curto": "Balanço de ataque russo contra supermercado na região de Kyiv sobe para dois mortos",
+      "palavras_chave": [
+        "Ucrânia",
+        "Kyiv",
+        "Vyshneve",
+        "Ataque Russo"
+      ],
+      "urgencia_score": 95,
+      "data_publicacao": "2026-11-22T18:43:47Z",
+      "impacto_pratico": "Acentua os riscos à segurança de áreas civis na Ucrânia e pressiona por reforços urgentes em defesas antiaéreas.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Ukrinform",
+        "The Kyiv Independent"
+      ],
+      "relevancia_score": 92,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "UA",
+        "RU"
+      ],
+      "links_internos_relacionados": []
+    },
     {
       "slug": "pulso-1-20261122-1840",
       "categoria": "Geopolitica_Relacoes",
@@ -1169,77 +1096,69 @@
     },
     {
       "slug": "pane-sistema-trava-voos-delta-atlanta-eua",
+      "titulo_curto": "Agência de aviação dos EUA suspende temporariamente voos da Delta em Atlanta após falha sistêmica",
+      "resumo_pulso": "Segundo apuração do G1 Mundo e da Reuters, a Administração Federal de Aviação dos Estados Unidos (FAA) determinou a suspensão temporária das decolagens da Delta Air Lines no Aeroporto Internacional Hartsfield-Jackson, em Atlanta. A medida decorre de uma pane em um sistema automatizado da companhia.",
+      "impacto_pratico": "Passageiros enfrentam cancelamentos e atrasos significativos em um dos hubs aeroportuários mais movimentados do mundo, exigindo atenção para conexões e itinerários.",
       "categoria": "Mobilidade_Fronteiras",
-      "ttl_horas": 12,
-      "expires_at": "2026-11-23T05:55:16Z",
-      "updated_at": "2026-11-22T18:07:00Z",
-      "fontes_urls": [
-        "https://www.infomoney.com.br/business/global/pane-trava-voos-da-delta-em-atlanta-e-a-3a-falha-no-setor-aereo-dos-eua/"
-      ],
-      "resumo_pulso": "Segundo apuração do InfoMoney Mercados, uma pane no sistema responsável por calcular o peso e o equilíbrio das aeronaves paralisou as operações da Delta Air Lines no aeroporto de Atlanta. A falha resultou no cancelamento de cerca de um quarto dos voos e em atrasos superiores a 40% na operação do hub estadunidense.",
-      "titulo_curto": "Falha em sistema de peso e equilíbrio provoca cancelamentos e atrasos em voos da Delta em Atlanta",
-      "palavras_chave": [
-        "Delta Air Lines",
-        "Atlanta",
-        "Aviação",
-        "Estados Unidos",
-        "Voos"
-      ],
-      "urgencia_score": 90,
-      "data_publicacao": "2026-11-22T17:42:40Z",
-      "impacto_pratico": "Transtornos severos para passageiros com conexões internacionais e voos domésticos nos Estados Unidos.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "InfoMoney Mercados"
-      ],
-      "relevancia_score": 88,
-      "horas_em_destaque": 6,
       "paises_envolvidos": [
         "US"
       ],
-      "links_internos_relacionados": []
+      "urgencia_score": 90,
+      "relevancia_score": 88,
+      "nivel_confianca": "alta",
+      "ttl_horas": 12,
+      "horas_em_destaque": 12,
+      "veiculos_origem": [
+        "G1 Mundo",
+        "Reuters"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/mundo/noticia/2026/11/22/suspensao-temporaria-voos-companhia-aerea-eua-falha-em-sistema.ghtml"
+      ],
+      "palavras_chave": [
+        "Delta Air Lines",
+        "Atlanta",
+        "FAA",
+        "Aviação",
+        "EUA"
+      ],
+      "data_publicacao": "2026-11-22T17:42:40Z",
+      "links_internos_relacionados": [],
+      "expires_at": "2026-11-23T05:55:16Z",
+      "updated_at": "2026-11-22T19:45:49Z"
     },
     {
       "slug": "ataque-com-drone-atinge-navio-russo-em-bengasi-na-libia",
       "categoria": "Geopolitica_Relacoes",
       "ttl_horas": 18,
       "expires_at": "2026-11-23T11:38:45Z",
-      "updated_at": "2026-11-22T18:37:33Z",
+      "updated_at": "2026-11-22T19:29:16Z",
       "fontes_urls": [
-        "https://www.aljazeera.com/video/newsfeed/2026/11/22/suspected-drone-attack-causes-explosion-on-russian-ship-in-libya?traffic_source=rss",
         "https://kyivindependent.com/russian-warship-docked-in-benghazi-hit-by-suspected-drone-attack-libyan-officials-say/"
       ],
-      "resumo_pulso": "Segundo autoridades líbias e reportagem da Al Jazeera e do The Kyiv Independent, a corveta Merkury da Marinha Russa foi atingida por drones no porto de Bengasi. Kiev ainda não comentou oficialmente o incidente no Mediterrâneo.",
-      "titulo_curto": "Corveta russa sofre danos após suposto ataque de drones em base naval na Líbia",
+      "resumo_pulso": "Segundo relatórios de autoridades líbias e reportagem do The Kyiv Independent, a corveta Merkury da Marinha Russa sofreu danos significativos após ser atingida por drones navais no porto de Bengasi. Kiev ainda não assumiu oficialmente a autoria da investida no Mediterrâneo.",
+      "titulo_curto": "Autoridades líbias confirmam danos severos a corveta russa Merkury após ataque de drones em Bengasi",
       "palavras_chave": [
         "Marinha Russa",
-        "Líbia",
         "Bengasi",
-        "drones",
-        "Mediterrâneo"
+        "Líbia",
+        "Drones Navais"
       ],
       "urgencia_score": 96,
       "data_publicacao": "2026-11-22T17:12:48Z",
-      "impacto_pratico": "Eleva as tensões geopolíticas no Mediterrâneo e sinaliza a ampliação de operações de ataque assimétrico contra frotas navais russas fora do Mar Negro.",
+      "impacto_pratico": "Demonstra a ampliação do alcance operacional de ataques assimétricos contra ativos navais russos fora do teatro de operações tradicional do Mar Negro.",
       "nivel_confianca": "media",
       "veiculos_origem": [
-        "Al Jazeera English",
         "The Kyiv Independent"
       ],
       "relevancia_score": 93,
-      "horas_em_destaque": 18,
+      "horas_em_destaque": 12,
       "paises_envolvidos": [
         "RU",
         "LY",
         "UA"
       ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-sancao-internacional",
-          "motivo_conexao": "Ajuda a compreender o contexto de pressões e conflitos geopolíticos envolvendo a Rússia.",
-          "titulo_existente": "O que é uma sanção internacional?"
-        }
-      ]
+      "links_internos_relacionados": []
     },
     {
       "slug": "incendio-fabrica-doces-indonesia-mortos-desaparecidos",
@@ -1275,45 +1194,41 @@
     },
     {
       "slug": "bolsonaro-clinicamente-estavel-uti-df-star",
+      "titulo_curto": "Boletim médico confirma ex-presidente Bolsonaro estável em UTI de Brasília sem previsão de alta",
+      "resumo_pulso": "Conforme boletim oficial divulgado pelo Hospital DF Star e reportado pela Agência Brasil e pelo G1, o ex-presidente Jair Bolsonaro segue internado em unidade de terapia intensiva com diagnóstico de abdômen agudo obstrutivo. O paciente mantém tratamento clínico, jejum e suporte nutricional.",
+      "impacto_pratico": "A internação prolongada altera a agenda pública do ex-presidente e movimenta o cenário político nacional com repercussões entre aliados.",
       "categoria": "Sociedade_Cultura",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-23T17:12:49Z",
-      "updated_at": "2026-11-22T18:37:33Z",
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/bolsonaro-segue-internado-na-uti-sem-previsao-de-alta",
-        "https://www.poder360.com.br/poder-brasil/bolsonaro-esta-estavel-na-uti-e-segue-sem-previsao-de-alta-diz-boletim/",
-        "https://g1.globo.com/politica/politico/noticia/2026/11/22/bolsonaro-esta-estavel-diz-hospital.ghtml"
-      ],
-      "resumo_pulso": "Conforme boletim oficial divulgado pelo Hospital DF Star e reportado pela Agência Brasil e pelo Poder360, o ex-presidente Jair Bolsonaro segue internado em UTI com quadro de abdômen agudo obstrutivo, mantendo jejum e suporte nutricional.",
-      "titulo_curto": "Boletim médico aponta Bolsonaro estável em UTI de Brasília sem previsão de alta",
-      "palavras_chave": [
-        "Jair Bolsonaro",
-        "Hospital DF Star",
-        "UTI",
-        "saúde",
-        "Brasília"
-      ],
-      "urgencia_score": 92,
-      "data_publicacao": "2026-11-22T16:54:30Z",
-      "impacto_pratico": "Mantém o monitoramento político e de segurança em Brasília em torno da evolução do quadro de saúde do ex-presidente.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Agência Brasil (EBC)",
-        "Poder360",
-        "G1 Política"
-      ],
-      "relevancia_score": 94,
-      "horas_em_destaque": 24,
       "paises_envolvidos": [
         "BR"
       ],
+      "urgencia_score": 92,
+      "relevancia_score": 94,
+      "nivel_confianca": "alta",
+      "ttl_horas": 24,
+      "horas_em_destaque": 24,
+      "veiculos_origem": [
+        "Agência Brasil (EBC)",
+        "G1 Política"
+      ],
+      "fontes_urls": [
+        "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/bolsonaro-segue-internado-na-uti-sem-previsao-de-alta"
+      ],
+      "palavras_chave": [
+        "Jair Bolsonaro",
+        "Saúde",
+        "Hospital DF Star",
+        "Brasília"
+      ],
+      "data_publicacao": "2026-11-22T16:54:30Z",
       "links_internos_relacionados": [
         {
+          "titulo_existente": "Política no Brasil",
           "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
-          "motivo_conexao": "Acompanha os desdobramentos políticos e institucionais no cenário nacional.",
-          "titulo_existente": "Política no Brasil"
+          "motivo_conexao": "Acompanha os desdobramentos políticos das principais figuras públicas do país sob múltiplas fontes."
         }
-      ]
+      ],
+      "expires_at": "2026-11-23T17:12:49Z",
+      "updated_at": "2026-11-22T19:45:49Z"
     },
     {
       "slug": "colonos-israelenses-atacam-vilas-palestinas-na-cisjordania",
@@ -1383,52 +1298,49 @@
     },
     {
       "slug": "cop31-termina-sem-acordo-impasse-fosseis",
+      "titulo_curto": "COP31 encerra-se sem acordo climático na Turquia após impasse histórico sobre fósseis",
+      "resumo_pulso": "Segundo apuração da Agência Brasil e da cobertura internacional da COP31 em Antália, a conferência encerrou-se sem a adoção de um documento final, algo inédito desde 2009. A ausência de consenso reflete divergências profundas sobre financiamento climático e a transição para eliminação de combustíveis fósseis.",
+      "impacto_pratico": "A paralisação nas negociações globais afeta diretamente as metas de financiamento para adaptação climática em países em desenvolvimento e a previsibilidade de investimentos em transição energética.",
       "categoria": "Ciencia_Clima",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-24T16:26:50Z",
-      "updated_at": "2026-11-22T18:37:33Z",
-      "fontes_urls": [
-        "https://www.youtube.com/watch?v=mU5deDu9FXU",
-        "https://www.bbc.com/portuguese/articles/cq742zpk1ln4o",
-        "https://g1.globo.com/meio-ambiente/noticia/2026/11/22/cop31-fracasso-brasil-turquia.ghtml"
-      ],
-      "resumo_pulso": "Segundo apuração da BBC News Brasil e da delegação brasileira, a COP31 encerrou-se sem consenso após rejeição de metas para eliminar combustíveis fósseis. O impasse frustrou expectativas internacionais de ambição climática na Turquia.",
-      "titulo_curto": "Delegação do Brasil e ONU lamentam fracasso histórico da COP31 na Turquia",
-      "palavras_chave": [
-        "COP31",
-        "mudanças climáticas",
-        "combustíveis fósseis",
-        "ONU",
-        "Turquia"
-      ],
-      "urgencia_score": 98,
-      "data_publicacao": "2026-11-22T16:26:50Z",
-      "impacto_pratico": "Afeta diretamente as diretrizes globais de transição energética, investimentos em fontes renováveis e o cronograma de financiamento para países em desenvolvimento.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Parabólica",
-        "BBC News Brasil",
-        "G1 Mundo"
-      ],
-      "relevancia_score": 98,
-      "horas_em_destaque": 24,
       "paises_envolvidos": [
         "TR",
-        "BR",
-        "AU"
+        "BR"
       ],
+      "urgencia_score": 98,
+      "relevancia_score": 98,
+      "nivel_confianca": "alta",
+      "ttl_horas": 24,
+      "horas_em_destaque": 24,
+      "veiculos_origem": [
+        "Agência Brasil (EBC)",
+        "Parabólica",
+        "Reuters"
+      ],
+      "fontes_urls": [
+        "https://agenciabrasil.ebc.com.br/internacional/noticia/2026-11/cop-nao-terminava-sem-acordo-desde-2009"
+      ],
+      "palavras_chave": [
+        "COP31",
+        "Clima",
+        "Turquia",
+        "Combustíveis Fósseis",
+        "ONU"
+      ],
+      "data_publicacao": "2026-11-22T16:26:50Z",
       "links_internos_relacionados": [
         {
+          "titulo_existente": "O que é a COP30?",
           "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-a-cop30",
-          "motivo_conexao": "Contextualiza a evolução das negociações globais do clima e acordos multilaterais da ONU.",
-          "titulo_existente": "O que é a COP30?"
+          "motivo_conexao": "Complementa a compreensão sobre o histórico e os desafios estruturais das Conferências do Clima da ONU."
         },
         {
+          "titulo_existente": "Clima, Amazônia e Transição Energética",
           "url_existente": "https://www.rodandoomundo.com.br/clima",
-          "motivo_conexao": "Relaciona os impactos das negociações internacionais com a agenda de descarbonização.",
-          "titulo_existente": "Clima, Amazônia e Transição Energética"
+          "motivo_conexao": "Contextualiza as negociações globais de descarbonização e os compromissos de transição energética."
         }
-      ]
+      ],
+      "expires_at": "2026-11-24T16:26:50Z",
+      "updated_at": "2026-11-22T19:45:49Z"
     },
     {
       "slug": "mega-sena-acumula-e-premio-vai-a-65-milhoes",
@@ -1663,82 +1575,171 @@
           "titulo_existente": "Como funcionam as eleições nos EUA?"
         }
       ]
-    },
+    }
+  ],
+  "temas_curadoria": [
     {
-      "slug": "russia-strikes-gas-service-facility-in-dnipropetrovsk-region-with-guided-bomb",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 18,
-      "expires_at": "2026-11-23T09:40:07Z",
-      "updated_at": "2026-11-22T15:40:07Z",
-      "fontes_urls": [
-        "https://www.ukrinform.net/rubric-ato/4187418-russia-strikes-gas-service-facility-in-dnipropetrovsk-region-with-guided-bomb.html"
+      "slug": "ataque-houthis-refinaria-saudita-preco-petroleo",
+      "status": "novo",
+      "ttl_horas": 48,
+      "expires_at": "2026-11-24T19:33:35Z",
+      "updated_at": "2026-11-22T19:33:35Z",
+      "titulo_tema": "Escalação de Ataques Houthis a Infraestrutura Petrolífera Saudita",
+      "sintese_nerd": "Ataques de drones reivindicados por rebeldes do Iêmen contra a refinaria de Rabigh na Arábia Saudita ampliam a instabilidade no Oriente Médio. O risco de disrupção na oferta global de energia pressiona os preços do petróleo brent, refletindo-se na inflação de combustíveis e no câmbio no Brasil.",
+      "rota_editoria": "/radar",
+      "data_publicacao": "2026-11-22T19:33:35Z",
+      "gatilho_vitrine": "Destacar riscos de desabastecimento e impacto imediato nas cotações internacionais do barril de petróleo",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 92,
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia"
       ],
-      "resumo_pulso": "Segundo apuração da Ukrinform, forças russas realizaram um ataque com bomba guiada contra uma instalação de serviços de gás na região de Dnipropetrovsk, resultando em feridos e agravando os danos à infraestrutura civil ucraniana.",
-      "titulo_curto": "Ataque russo com bomba guiada atinge instalação de gás em Dnipropetrovsk e deixa feridos",
-      "palavras_chave": [
-        "Ucrânia",
-        "Rússia",
-        "Dnipropetrovsk",
-        "infraestrutura",
-        "guerra"
-      ],
-      "urgencia_score": 94,
-      "data_publicacao": "2026-11-22T15:20:00Z",
-      "impacto_pratico": "Interrupção de serviços essenciais e riscos de desabastecimento de gás na região afetada.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Ukrinform"
-      ],
-      "relevancia_score": 91,
-      "horas_em_destaque": 12,
-      "paises_envolvidos": [
-        "UA",
-        "RU"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-sancao-internacional",
-          "motivo_conexao": "Contextualiza as restrições geopolíticas e o impacto de conflitos armados sobre a estabilidade internacional.",
-          "titulo_existente": "O que é uma sanção internacional?"
-        }
+      "palavras_chave_busca": [
+        "houthis",
+        "iemen",
+        "arabia saudita",
+        "aramco",
+        "petroleo",
+        "drones",
+        "mediterraneo",
+        "commodities"
       ]
     },
     {
-      "slug": "apos-temporal-governo-reconhece-calamidade-publica-em-tupancireta",
-      "categoria": "Ciencia_Clima",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-23T15:40:07Z",
-      "updated_at": "2026-11-22T15:40:21Z",
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/meio-ambiente/noticia/2026-11/apos-temporal-governo-reconhece-calamidade-publica-em-tupancireta"
+      "slug": "trump-teto-juros-cartao-credito-eua-bancos",
+      "status": "novo",
+      "ttl_horas": 72,
+      "expires_at": "2026-11-25T19:33:35Z",
+      "updated_at": "2026-11-22T19:33:35Z",
+      "titulo_tema": "Proposta de Teto de 10% para Juros de Cartão nos EUA Promovida por Trump",
+      "sintese_nerd": "A defesa do presidente eleito Donald Trump por um limite de 10% nos juros do cartão de crédito nos EUA alinha setores populistas e da oposição, mas assusta o sistema financeiro. A medida gera incerteza nos mercados bancários globais e acende o debate sobre controle de juros em economias centrais.",
+      "rota_editoria": "/economia",
+      "data_publicacao": "2026-11-22T19:33:35Z",
+      "gatilho_vitrine": "Exibir debate sobre intervenção no crédito bancário e divergências no Congresso americano",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 89,
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Politica"
       ],
-      "resumo_pulso": "Segundo portaria publicada em edição extra do Diário Oficial da União divulgada pela Agência Brasil (EBC), o governo federal reconheceu o estado de calamidade pública em Tupanciretã (RS). A medida visa agilizar a liberação de recursos e o suporte à população afetada pelas fortes tempestades.",
-      "titulo_curto": "Governo federal reconhece calamidade pública em Tupanciretã (RS) após temporal",
-      "palavras_chave": [
-        "Tupanciretã",
-        "Rio Grande do Sul",
-        "calamidade pública",
-        "temporais",
-        "defesa civil"
+      "palavras_chave_busca": [
+        "donald trump",
+        "cartao de credito",
+        "teto de juros",
+        "bancos americanos",
+        "fed",
+        "credito de consumo",
+        "economia eua"
+      ]
+    },
+    {
+      "slug": "ue-rejeita-acordo-cop31-transicao-energetica",
+      "status": "novo",
+      "ttl_horas": 96,
+      "expires_at": "2026-11-26T19:33:35Z",
+      "updated_at": "2026-11-22T19:33:35Z",
+      "titulo_tema": "Rejeição do Acordo Global da COP31 pela União Europeia",
+      "sintese_nerd": "A União Europeia travou o texto final da COP31 por considerar que ele flexibilizou o compromisso de eliminação gradual de combustíveis fósseis. O impasse enfraquece o sistema da ONU para o clima e abre espaço para acordos bilaterais e novas tarifas de carbono sobre exportações emergentes.",
+      "rota_editoria": "/radar",
+      "data_publicacao": "2026-11-22T19:33:35Z",
+      "gatilho_vitrine": "Mobilizar cobertura sobre o colapso do consenso climático multilateral e seus efeitos no agronegócio e energia",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 87,
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia"
       ],
-      "urgencia_score": 94,
-      "data_publicacao": "2026-11-22T14:53:00Z",
-      "impacto_pratico": "Facilita o envio de verbas emergenciais e apoio direto aos moradores desalojados ou prejudicados pelas enchentes.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Agência Brasil (EBC)"
+      "palavras_chave_busca": [
+        "cop31",
+        "uniao europeia",
+        "combustiveis fosseis",
+        "acordo do clima",
+        "transicao energetica",
+        "wopke hoekstra",
+        "mudancas climaticas"
+      ]
+    },
+    {
+      "slug": "base-governo-lula-desafio-ajuste-fiscal-congresso",
+      "status": "novo",
+      "ttl_horas": 48,
+      "expires_at": "2026-11-24T19:33:35Z",
+      "updated_at": "2026-11-22T19:33:35Z",
+      "titulo_tema": "Resistência de Partidos Aliados ao Pacote de Corte de Gastos no Brasil",
+      "sintese_nerd": "Parlamentares da própria base aliada do governo pressionam contra recortes em benefícios e vinculações orçamentárias do pacote fiscal. Essa fragmentação interna aumenta o risco de desidratação das medidas fiscais no Congresso, gerando volatilidade nos juros futuros e no dólar.",
+      "rota_editoria": "/politica",
+      "data_publicacao": "2026-11-22T19:33:35Z",
+      "gatilho_vitrine": "Destacar entraves políticos na aprovação das medidas fiscais essenciais para o controle da dívida",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 86,
+      "categoria_primaria": "Politica",
+      "categorias_cruzadas": [
+        "Economia"
       ],
-      "relevancia_score": 91,
-      "horas_em_destaque": 18,
-      "paises_envolvidos": [
-        "BR"
+      "palavras_chave_busca": [
+        "ajuste fiscal",
+        "governo lula",
+        "congresso nacional",
+        "corte de gastos",
+        "base aliada",
+        "fazenda",
+        "meta fiscal"
+      ]
+    },
+    {
+      "slug": "democratas-recorde-cadeiras-camara-eua-trump",
+      "status": "novo",
+      "ttl_horas": 120,
+      "expires_at": "2026-11-27T19:33:35Z",
+      "updated_at": "2026-11-22T19:33:35Z",
+      "titulo_tema": "Avanço Democrata na Câmara dos EUA e Pressão Institucional",
+      "sintese_nerd": "O Partido Democrata alcançou 258 cadeiras na Câmara dos Deputados dos EUA, consolidando a maior bancada desde 1992 e ampliando o poder de veto. O novo cenário força a administração republicana a negociar pautas econômicas e fiscais em meio à ameaça de investigações rigorosas.",
+      "rota_editoria": "/eleicoes",
+      "data_publicacao": "2026-11-22T19:33:35Z",
+      "gatilho_vitrine": "Analisar o equilíbrio de forças legislativas em Washington e as barreiras à agenda da Casa Branca",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 84,
+      "categoria_primaria": "Eleicoes",
+      "categorias_cruzadas": [
+        "Politica",
+        "Economia"
       ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/clima",
-          "motivo_conexao": "Relaciona eventos climáticos extremos e políticas de adaptação e mitigação de desastres no Brasil.",
-          "titulo_existente": "Clima, Amazônia e Transição Energética"
-        }
+      "palavras_chave_busca": [
+        "democratas",
+        "camara dos eua",
+        "eleicoes eua",
+        "hakeem jeffries",
+        "donald trump",
+        "congresso americano",
+        "balanco de poder"
+      ]
+    },
+    {
+      "slug": "eua-investigacao-nvidia-chips-china-sancoes",
+      "status": "novo",
+      "ttl_horas": 72,
+      "expires_at": "2026-11-25T19:33:35Z",
+      "updated_at": "2026-11-22T19:33:35Z",
+      "titulo_tema": "Escrutínio do Governo Americano sobre Vendas de Chips da Nvidia",
+      "sintese_nerd": "O Tesouro dos EUA intensificou cobranças sobre os controles de compliance da Nvidia referentes ao envio de processadores avançados para o mercado chinês. A disputa reflete a ampliação da guerra tecnológica e pode impactar as cadeias globais de suprimento de hardware de Inteligência Artificial.",
+      "rota_editoria": "/economia",
+      "data_publicacao": "2026-11-22T19:33:35Z",
+      "gatilho_vitrine": "Focar na guerra fria da inteligência artificial e restrições de exportação de tecnologia de ponta",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 82,
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Geopolitica_Radar"
+      ],
+      "palavras_chave_busca": [
+        "nvidia",
+        "chips ia",
+        "tesouro eua",
+        "scott bessent",
+        "china",
+        "semicondutores",
+        "sancoes tecnologicas"
       ]
     }
   ]
