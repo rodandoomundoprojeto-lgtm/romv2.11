@@ -2,33 +2,107 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-22T12:45:54Z",
-  "batch_id": "20261122-1245",
+  "updatedAt": "2026-11-22T13:12:58Z",
+  "batch_id": "20261122-1312",
   "temas_ativos": [
     {
-      "slug": "por-que-o-cobre-queridinho-da-era-da-ia-despencou-9-em-uma-semana",
-      "titulo_tema": "Cobre despenca 9% em uma semana pressionado por oferta em Xangai e demanda fraca na China",
-      "titulo_curto": "Cobre despenca 9% em uma semana pressionado por oferta em Xangai e demanda fraca na China",
+      "slug": "cobre-despenca-demanda-china-ia",
+      "titulo_tema": "Queda abrupta de 9% no preço do cobre reacende alertas na cadeia de insumos da Inteligência Artificial",
       "status": "novo",
-      "origem_pipeline": "pulso",
+      "origem_pipeline": "curadoria",
       "categoria_primaria": "Economia",
-      "categoria": "Economia_Comercio",
       "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
+        "Geopolitica_Radar",
+        "Cultura"
       ],
       "rota_editoria": "/economia",
-      "relevancia_score": 90,
-      "urgencia_score": 89,
-      "ttl_horas": 24,
-      "expires_at": "2026-11-23T12:45:54Z",
+      "relevancia_score": 92,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-24T13:12:58Z",
       "palavras_chave_busca": [
         "cobre",
-        "mercados",
+        "inteligencia artificial",
         "china",
-        "inteligência artificial",
-        "commodities"
+        "comercio global",
+        "mercados",
+        "inflacao",
+        "bolsa de londres"
       ],
+      "gatilho_vitrine": "Conecte a desvalorização do cobre na Bolsa de Xangai e Londres às incertezas macroeconômicas globais, tarifas comerciais e os impactos nos custos da transição tecnológica.",
+      "sintese_nerd": "O recuo histórico nos preços do cobre decorre de um aperto de oferta seguido por demanda fraca na China e temores sobre barreiras alfandegárias de Trump, abalando as perspectivas para a infraestrutura global da era da IA. Para o Brasil, o movimento sinaliza volatilidade nos preços de commodities metálicas e reflete o ritmo de desaquecimento da economia chinesa.",
+      "data_publicacao": "2026-11-22T13:12:58Z",
+      "updated_at": "2026-11-22T13:12:58Z"
+    },
+    {
+      "slug": "cupula-clima-onu-impasse-petroleo",
+      "titulo_tema": "Impasse na Cúpula do Clima da ONU ameaça encerramento sem acordo oficial",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Cultura"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 89,
+      "ttl_horas": 72,
+      "expires_at": "2026-11-25T13:12:58Z",
+      "palavras_chave_busca": [
+        "cop",
+        "onu",
+        "mudancas climaticas",
+        "transicao energetica",
+        "petroleo",
+        "diplomacia global",
+        "acordo climatico"
+      ],
+      "gatilho_vitrine": "Destaque os choques diplomáticos entre nações europeias e blocos produtores de petróleo na COP, mapeando os riscos regulatórios para investimentos em energias limpas.",
+      "sintese_nerd": "A resistência em definir termos rígidos sobre captura de carbono e o lobby da indústria fóssil travam as negociações da ONU, evidenciando o cabo de guerra entre metas de descarbonização e segurança energética. Isso impacta diretrizes de investimentos ESG globais e altera a pressão sobre países emergentes exportadores de commodities.",
+      "data_publicacao": "2026-11-22T13:12:58Z",
+      "updated_at": "2026-11-22T13:12:58Z"
+    },
+    {
+      "slug": "clausula-desempenho-reduz-partidos-brasil",
+      "titulo_tema": "Cláusula de desempenho reduz número de partidos políticos no Brasil para 24",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Politica",
+      "categorias_cruzadas": [
+        "Eleicoes",
+        "Cultura"
+      ],
+      "rota_editoria": "/politica",
+      "relevancia_score": 86,
+      "ttl_horas": 72,
+      "expires_at": "2026-11-25T13:12:58Z",
+      "palavras_chave_busca": [
+        "clausula de desempenho",
+        "tse",
+        "partidos politicos",
+        "congresso nacional",
+        "eleicoes",
+        "reforma politica"
+      ],
+      "gatilho_vitrine": "Analise a consolidação partidária institucional decorrente da cláusula de barreira e como isso impacta a governabilidade no Congresso e futuras disputas eleitorais.",
+      "sintese_nerd": "Dados do TSE mostram que a exigência de desempenho eleitoral mínimo enxugou o espectro partidário brasileiro de 35 para 24 siglas desde 2018. Essa centralização altera o cálculo de alianças no Legislativo e fortalece as legendas com maior capilaridade nacional.",
+      "data_publicacao": "2026-11-22T13:12:58Z",
+      "updated_at": "2026-11-22T13:12:58Z"
+    },
+    {
+      "slug": "por-que-o-cobre-queridinho-da-era-da-ia-despencou-9-em-uma-semana",
+      "status": "novo",
+      "categoria": "Economia_Comercio",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-23T12:45:54Z",
+      "updated_at": "2026-11-22T12:45:54Z",
+      "fontes_urls": [
+        "https://www.infomoney.com.br/mercados/por-que-o-cobre-queridinho-da-era-da-ia-despencou-9-em-uma-semana/"
+      ],
+      "titulo_tema": "Cobre despenca 9% em uma semana pressionado por oferta em Xangai e demanda fraca na China",
+      "resumo_pulso": "Segundo reportagem do InfoMoney Mercados, o cobre registrou sua maior queda em Londres desde abril de 2025. O movimento foi impulsionado por um aperto de oferta na bolsa de Xangai seguido por desaquecimento da demanda industrial chinesa e incertezas sobre futuras tarifas comerciais anunciadas pelos EUA.",
+      "sintese_nerd": "Impacta diretamente o mercado de commodities metálicas, custos de insumos para a infraestrutura de inteligência artificial e o balanço comercial de países exportadores.",
+      "titulo_curto": "Cobre despenca 9% em uma semana pressionado por oferta em Xangai e demanda fraca na China",
+      "rota_editoria": "/economia",
       "palavras_chave": [
         "cobre",
         "mercados",
@@ -36,23 +110,32 @@
         "inteligência artificial",
         "commodities"
       ],
+      "urgencia_score": 89,
+      "data_publicacao": "2026-11-22T12:40:05Z",
       "gatilho_vitrine": "Segundo reportagem do InfoMoney Mercados, o cobre registrou sua maior queda em Londres desde abril de 2025. O movimento foi impulsionado por um aperto de oferta na bolsa de Xangai seguido por desaquecimento da demanda industrial chinesa e incertezas sobre futuras tarifas comerciais anunciadas pelos EUA.",
-      "resumo_pulso": "Segundo reportagem do InfoMoney Mercados, o cobre registrou sua maior queda em Londres desde abril de 2025. O movimento foi impulsionado por um aperto de oferta na bolsa de Xangai seguido por desaquecimento da demanda industrial chinesa e incertezas sobre futuras tarifas comerciais anunciadas pelos EUA.",
-      "sintese_nerd": "Impacta diretamente o mercado de commodities metálicas, custos de insumos para a infraestrutura de inteligência artificial e o balanço comercial de países exportadores.",
       "impacto_pratico": "Impacta diretamente o mercado de commodities metálicas, custos de insumos para a infraestrutura de inteligência artificial e o balanço comercial de países exportadores.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "InfoMoney Mercados"
+      ],
+      "relevancia_score": 90,
       "paises_envolvidos": [
         "CN",
         "GB",
         "US"
       ],
-      "veiculos_origem": [
-        "InfoMoney Mercados"
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
       ],
-      "fontes_urls": [
-        "https://www.infomoney.com.br/mercados/por-que-o-cobre-queridinho-da-era-da-ia-despencou-9-em-uma-semana/"
-      ],
-      "data_publicacao": "2026-11-22T12:40:05Z",
-      "updated_at": "2026-11-22T12:45:54Z"
+      "palavras_chave_busca": [
+        "cobre",
+        "mercados",
+        "china",
+        "inteligência artificial",
+        "commodities"
+      ]
     },
     {
       "slug": "agro-sao-paulo-superavit-recorde-2026",
@@ -101,48 +184,48 @@
     },
     {
       "slug": "cnj-cria-regra-para-corrigir-registros-por-mortes-em-acoes-policiais",
-      "titulo_tema": "CNJ estabelece nova diretriz para incluir intervenção policial em certidões de óbito",
-      "titulo_curto": "CNJ estabelece nova diretriz para incluir intervenção policial em certidões de óbito",
       "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Cultura",
       "categoria": "Sociedade_Cultura",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/cultura",
-      "relevancia_score": 89,
-      "urgencia_score": 88,
       "ttl_horas": 24,
       "expires_at": "2026-11-23T12:45:54Z",
-      "palavras_chave_busca": [
-        "cnj",
-        "segurança pública",
-        "certidão de óbito",
-        "justiça"
+      "updated_at": "2026-11-22T12:45:54Z",
+      "fontes_urls": [
+        "https://agenciabrasil.ebc.com.br/justica/noticia/2026-11/cnj-cria-regra-para-corrigir-registros-por-mortes-em-acoes-policiais"
       ],
+      "titulo_tema": "CNJ estabelece nova diretriz para incluir intervenção policial em certidões de óbito",
+      "resumo_pulso": "Segundo comunicado da Agência Brasil (EBC), o Conselho Nacional de Justiça (CNJ) editou resolução determinando a inclusão explícita de que óbitos decorreram de intervenção policial nas certidões de óbito. Especialistas em segurança pública apontam que a medida aprimora a transparência e a precisão estatística sobre mortalidade violenta no país.",
+      "sintese_nerd": "Modifica formalmente registros oficiais de óbitos em todo o território nacional, impactando estatísticas de segurança pública e direitos humanos.",
+      "titulo_curto": "CNJ estabelece nova diretriz para incluir intervenção policial em certidões de óbito",
+      "rota_editoria": "/cultura",
       "palavras_chave": [
         "cnj",
         "segurança pública",
         "certidão de óbito",
         "justiça"
       ],
+      "urgencia_score": 88,
+      "data_publicacao": "2026-11-22T11:36:00Z",
       "gatilho_vitrine": "Segundo comunicado da Agência Brasil (EBC), o Conselho Nacional de Justiça (CNJ) editou resolução determinando a inclusão explícita de que óbitos decorreram de intervenção policial nas certidões de óbito. Especialistas em segurança pública apontam que a medida aprimora a transparência e a precisão estatística sobre mortalidade violenta no país.",
-      "resumo_pulso": "Segundo comunicado da Agência Brasil (EBC), o Conselho Nacional de Justiça (CNJ) editou resolução determinando a inclusão explícita de que óbitos decorreram de intervenção policial nas certidões de óbito. Especialistas em segurança pública apontam que a medida aprimora a transparência e a precisão estatística sobre mortalidade violenta no país.",
-      "sintese_nerd": "Modifica formalmente registros oficiais de óbitos em todo o território nacional, impactando estatísticas de segurança pública e direitos humanos.",
       "impacto_pratico": "Modifica formalmente registros oficiais de óbitos em todo o território nacional, impactando estatísticas de segurança pública e direitos humanos.",
-      "paises_envolvidos": [
-        "BR"
-      ],
+      "origem_pipeline": "pulso",
       "veiculos_origem": [
         "Agência Brasil (EBC)"
       ],
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/justica/noticia/2026-11/cnj-cria-regra-para-corrigir-registros-por-mortes-em-acoes-policiais"
+      "relevancia_score": 89,
+      "paises_envolvidos": [
+        "BR"
       ],
-      "data_publicacao": "2026-11-22T11:36:00Z",
-      "updated_at": "2026-11-22T12:45:54Z"
+      "categoria_primaria": "Cultura",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "cnj",
+        "segurança pública",
+        "certidão de óbito",
+        "justiça"
+      ]
     },
     {
       "slug": "investidores-globais-buscam-ampliar-investimentos-na-china",
@@ -234,139 +317,6 @@
         "incêndios florestais",
         "defesa civil",
         "orçamento"
-      ]
-    },
-    {
-      "slug": "bancos-rebaixam-brasil-fuga-capital-mexico-fiscal",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-24T09:59:50Z",
-      "updated_at": "2026-11-22T09:59:50Z",
-      "titulo_tema": "Bancos Globais Rebaixam Brasil e Preferem México Diante de Incerteza Fiscal e Juros",
-      "sintese_nerd": "A deterioração do cenário fiscal brasileiro e os juros elevados levaram bancões globais a rebaixar ativos do país, transferindo fluxo de capital emergente para o México. Essa realocação pressiona o câmbio do real e reduz a margem para cortes na taxa Selic no curto prazo.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-22T09:59:50Z",
-      "gatilho_vitrine": "EXIBIR_DESTAQUE_HOME_ECONOMIA",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 92,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Politica",
-        "Geopolitica_Radar"
-      ],
-      "palavras_chave_busca": [
-        "investimento estrangeiro",
-        "mercados emergentes",
-        "rebaixamento brasil",
-        "mexico economia",
-        "risco fiscal",
-        "taxa selic"
-      ]
-    },
-    {
-      "slug": "eua-china-corrida-tecnologica-chips-inteligencia-artificial",
-      "status": "novo",
-      "ttl_horas": 72,
-      "expires_at": "2026-11-25T09:59:50Z",
-      "updated_at": "2026-11-22T09:59:50Z",
-      "titulo_tema": "Guerra Fria da IA: Modelos Chineses Usam Nuvem Americana para Burlar Sanções de Chips",
-      "sintese_nerd": "Provedores chineses de IA aproveitam o aluguel de data centers em solo americano equipados com chips avançados para treinar e distribuir seus modelos globalmente. A brecha expõe a dificuldade dos EUA em aplicar sanções tecnológicas eficazes sem estrangular o próprio mercado de computação em nuvem.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-22T09:59:50Z",
-      "gatilho_vitrine": "BOOST_BUSCA_TECNOLOGIA_GEOPOLITICA",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 88,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Cultura"
-      ],
-      "palavras_chave_busca": [
-        "inteligencia artificial",
-        "eua china ia",
-        "chips de ia",
-        "nvidia data centers",
-        "sancoes tecnologicas",
-        "regulacao digital"
-      ]
-    },
-    {
-      "slug": "stf-concentracao-processos-moraes-imunidade-parlamentar",
-      "status": "novo",
-      "ttl_horas": 36,
-      "expires_at": "2026-11-23T21:59:50Z",
-      "updated_at": "2026-11-22T09:59:50Z",
-      "titulo_tema": "Concentração de Processos Criminais no STF Tenciona Relação com o Congresso",
-      "sintese_nerd": "Com 44% dos casos criminais sob relatoria de um único ministro e novos votos sobre os limites da imunidade parlamentar, o STF reacende o embate institucional com o Poder Legislativo. O cenário mantém elevada a temperatura política em Brasília e pressiona a pauta de reformas no Congresso.",
-      "rota_editoria": "/politica",
-      "data_publicacao": "2026-11-22T09:59:50Z",
-      "gatilho_vitrine": "EXIBIR_RADAR_POLITICA",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 85,
-      "categoria_primaria": "Politica",
-      "categorias_cruzadas": [
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "supremo tribunal federal",
-        "alexandre de moraes",
-        "imunidade parlamentar",
-        "processos criminais",
-        "congresso nacional",
-        "flavio dino"
-      ]
-    },
-    {
-      "slug": "protestos-franca-custo-de-vida-servicos-publicos",
-      "status": "novo",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-23T09:59:50Z",
-      "updated_at": "2026-11-22T09:59:50Z",
-      "titulo_tema": "França Enfrenta Sexto Fim de Semana de Manifestações Contra Custo de Vida",
-      "sintese_nerd": "Milhares de pessoas saíram às ruas em várias cidades francesas contestando a perda do poder de compra e o sucateamento dos serviços públicos. O descontentamento social na segunda maior economia da Zona do Euro reflete a persistência da inflação e pressiona o orçamento do governo francês.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-22T09:59:50Z",
-      "gatilho_vitrine": "EXIBIR_CARROSSEL_INTERNACIONAL",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 82,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Cultura"
-      ],
-      "palavras_chave_busca": [
-        "protestos franca",
-        "custo de vida europa",
-        "inflacao uniao europeia",
-        "servicos publicos",
-        "emmanuel macron",
-        "crise europeia"
-      ]
-    },
-    {
-      "slug": "terremoto-magnitude-peru-lima-alerta",
-      "status": "em_alta",
-      "ttl_horas": 12,
-      "expires_at": "2026-11-22T21:59:50Z",
-      "updated_at": "2026-11-22T09:59:50Z",
-      "titulo_tema": "Terremoto de Magnitude 6,9 Atinge o Peru e Causa Apreensão na América do Sul",
-      "sintese_nerd": "Um forte abalo sísmico de magnitude 6,9 sacudiu o Peru e foi sentido na capital Lima, acionando protocolos de emergência na região andina. Eventos sísmicos nessa escala na Costa do Pacífico exigem monitoramento contínuo de danos à infraestrutura e alertas marítimos na América do Sul.",
-      "rota_editoria": "/ultimas-noticias",
-      "data_publicacao": "2026-11-22T09:59:50Z",
-      "gatilho_vitrine": "ALERT_Urgente",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 80,
-      "categoria_primaria": "Resumo_Ultimas",
-      "categorias_cruzadas": [
-        "Geopolitica_Radar"
-      ],
-      "palavras_chave_busca": [
-        "terremoto peru",
-        "tremor lima",
-        "sismo peru 6.9",
-        "defesa civil peru",
-        "alerta tsunami",
-        "abalo sismico"
       ]
     },
     {
@@ -852,29 +802,103 @@
       ]
     }
   ],
+  "temas_curadoria": [
+    {
+      "slug": "cobre-despenca-demanda-china-ia",
+      "titulo_tema": "Queda abrupta de 9% no preço do cobre reacende alertas na cadeia de insumos da Inteligência Artificial",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Geopolitica_Radar",
+        "Cultura"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 92,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-24T13:12:58Z",
+      "palavras_chave_busca": [
+        "cobre",
+        "inteligencia artificial",
+        "china",
+        "comercio global",
+        "mercados",
+        "inflacao",
+        "bolsa de londres"
+      ],
+      "gatilho_vitrine": "Conecte a desvalorização do cobre na Bolsa de Xangai e Londres às incertezas macroeconômicas globais, tarifas comerciais e os impactos nos custos da transição tecnológica.",
+      "sintese_nerd": "O recuo histórico nos preços do cobre decorre de um aperto de oferta seguido por demanda fraca na China e temores sobre barreiras alfandegárias de Trump, abalando as perspectivas para a infraestrutura global da era da IA. Para o Brasil, o movimento sinaliza volatilidade nos preços de commodities metálicas e reflete o ritmo de desaquecimento da economia chinesa.",
+      "data_publicacao": "2026-11-22T13:12:58Z",
+      "updated_at": "2026-11-22T13:12:58Z"
+    },
+    {
+      "slug": "cupula-clima-onu-impasse-petroleo",
+      "titulo_tema": "Impasse na Cúpula do Clima da ONU ameaça encerramento sem acordo oficial",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Cultura"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 89,
+      "ttl_horas": 72,
+      "expires_at": "2026-11-25T13:12:58Z",
+      "palavras_chave_busca": [
+        "cop",
+        "onu",
+        "mudancas climaticas",
+        "transicao energetica",
+        "petroleo",
+        "diplomacia global",
+        "acordo climatico"
+      ],
+      "gatilho_vitrine": "Destaque os choques diplomáticos entre nações europeias e blocos produtores de petróleo na COP, mapeando os riscos regulatórios para investimentos em energias limpas.",
+      "sintese_nerd": "A resistência em definir termos rígidos sobre captura de carbono e o lobby da indústria fóssil travam as negociações da ONU, evidenciando o cabo de guerra entre metas de descarbonização e segurança energética. Isso impacta diretrizes de investimentos ESG globais e altera a pressão sobre países emergentes exportadores de commodities.",
+      "data_publicacao": "2026-11-22T13:12:58Z",
+      "updated_at": "2026-11-22T13:12:58Z"
+    },
+    {
+      "slug": "clausula-desempenho-reduz-partidos-brasil",
+      "titulo_tema": "Cláusula de desempenho reduz número de partidos políticos no Brasil para 24",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Politica",
+      "categorias_cruzadas": [
+        "Eleicoes",
+        "Cultura"
+      ],
+      "rota_editoria": "/politica",
+      "relevancia_score": 86,
+      "ttl_horas": 72,
+      "expires_at": "2026-11-25T13:12:58Z",
+      "palavras_chave_busca": [
+        "clausula de desempenho",
+        "tse",
+        "partidos politicos",
+        "congresso nacional",
+        "eleicoes",
+        "reforma politica"
+      ],
+      "gatilho_vitrine": "Analise a consolidação partidária institucional decorrente da cláusula de barreira e como isso impacta a governabilidade no Congresso e futuras disputas eleitorais.",
+      "sintese_nerd": "Dados do TSE mostram que a exigência de desempenho eleitoral mínimo enxugou o espectro partidário brasileiro de 35 para 24 siglas desde 2018. Essa centralização altera o cálculo de alianças no Legislativo e fortalece as legendas com maior capilaridade nacional.",
+      "data_publicacao": "2026-11-22T13:12:58Z",
+      "updated_at": "2026-11-22T13:12:58Z"
+    }
+  ],
   "noticias_quentes": [
     {
       "slug": "por-que-o-cobre-queridinho-da-era-da-ia-despencou-9-em-uma-semana",
-      "titulo_curto": "Cobre despenca 9% em uma semana pressionado por oferta em Xangai e demanda fraca na China",
-      "resumo_pulso": "Segundo reportagem do InfoMoney Mercados, o cobre registrou sua maior queda em Londres desde abril de 2025. O movimento foi impulsionado por um aperto de oferta na bolsa de Xangai seguido por desaquecimento da demanda industrial chinesa e incertezas sobre futuras tarifas comerciais anunciadas pelos EUA.",
-      "impacto_pratico": "Impacta diretamente o mercado de commodities metálicas, custos de insumos para a infraestrutura de inteligência artificial e o balanço comercial de países exportadores.",
       "categoria": "Economia_Comercio",
-      "paises_envolvidos": [
-        "CN",
-        "GB",
-        "US"
-      ],
-      "urgencia_score": 89,
-      "relevancia_score": 90,
-      "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 18,
-      "veiculos_origem": [
-        "InfoMoney Mercados"
-      ],
+      "expires_at": "2026-11-23T12:45:54Z",
+      "updated_at": "2026-11-22T12:45:54Z",
       "fontes_urls": [
         "https://www.infomoney.com.br/mercados/por-que-o-cobre-queridinho-da-era-da-ia-despencou-9-em-uma-semana/"
       ],
+      "resumo_pulso": "Segundo reportagem do InfoMoney Mercados, o cobre registrou sua maior queda em Londres desde abril de 2025. O movimento foi impulsionado por um aperto de oferta na bolsa de Xangai seguido por desaquecimento da demanda industrial chinesa e incertezas sobre futuras tarifas comerciais anunciadas pelos EUA.",
+      "titulo_curto": "Cobre despenca 9% em uma semana pressionado por oferta em Xangai e demanda fraca na China",
       "palavras_chave": [
         "Cobre",
         "Mercados",
@@ -882,16 +906,27 @@
         "Inteligência Artificial",
         "Commodities"
       ],
+      "urgencia_score": 89,
       "data_publicacao": "2026-11-22T12:40:05Z",
+      "impacto_pratico": "Impacta diretamente o mercado de commodities metálicas, custos de insumos para a infraestrutura de inteligência artificial e o balanço comercial de países exportadores.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "InfoMoney Mercados"
+      ],
+      "relevancia_score": 90,
+      "horas_em_destaque": 18,
+      "paises_envolvidos": [
+        "CN",
+        "GB",
+        "US"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "Economia no Brasil",
           "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
-          "motivo_conexao": "Permite analisar reflexos da flutuação de commodities globais sobre a economia e comércio exterior."
+          "motivo_conexao": "Permite analisar reflexos da flutuação de commodities globais sobre a economia e comércio exterior.",
+          "titulo_existente": "Economia no Brasil"
         }
-      ],
-      "expires_at": "2026-11-23T12:45:54Z",
-      "updated_at": "2026-11-22T12:45:54Z"
+      ]
     },
     {
       "slug": "agro-sao-paulo-superavit-recorde-2026",
@@ -932,40 +967,40 @@
     },
     {
       "slug": "cnj-cria-regra-para-corrigir-registros-por-mortes-em-acoes-policiais",
-      "titulo_curto": "CNJ estabelece nova diretriz para incluir intervenção policial em certidões de óbito",
-      "resumo_pulso": "Segundo comunicado da Agência Brasil (EBC), o Conselho Nacional de Justiça (CNJ) editou resolução determinando a inclusão explícita de que óbitos decorreram de intervenção policial nas certidões de óbito. Especialistas em segurança pública apontam que a medida aprimora a transparência e a precisão estatística sobre mortalidade violenta no país.",
-      "impacto_pratico": "Modifica formalmente registros oficiais de óbitos em todo o território nacional, impactando estatísticas de segurança pública e direitos humanos.",
       "categoria": "Sociedade_Cultura",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "urgencia_score": 88,
-      "relevancia_score": 89,
-      "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 18,
-      "veiculos_origem": [
-        "Agência Brasil (EBC)"
-      ],
+      "expires_at": "2026-11-23T12:45:54Z",
+      "updated_at": "2026-11-22T12:45:54Z",
       "fontes_urls": [
         "https://agenciabrasil.ebc.com.br/justica/noticia/2026-11/cnj-cria-regra-para-corrigir-registros-por-mortes-em-acoes-policiais"
       ],
+      "resumo_pulso": "Segundo comunicado da Agência Brasil (EBC), o Conselho Nacional de Justiça (CNJ) editou resolução determinando a inclusão explícita de que óbitos decorreram de intervenção policial nas certidões de óbito. Especialistas em segurança pública apontam que a medida aprimora a transparência e a precisão estatística sobre mortalidade violenta no país.",
+      "titulo_curto": "CNJ estabelece nova diretriz para incluir intervenção policial em certidões de óbito",
       "palavras_chave": [
         "CNJ",
         "Segurança Pública",
         "Certidão de Óbito",
         "Justiça"
       ],
+      "urgencia_score": 88,
       "data_publicacao": "2026-11-22T11:36:00Z",
+      "impacto_pratico": "Modifica formalmente registros oficiais de óbitos em todo o território nacional, impactando estatísticas de segurança pública e direitos humanos.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Agência Brasil (EBC)"
+      ],
+      "relevancia_score": 89,
+      "horas_em_destaque": 18,
+      "paises_envolvidos": [
+        "BR"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "STF analisa regras de transparência e limites constitucionais entre os Poderes",
           "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
-          "motivo_conexao": "Aborda diretrizes de órgãos de cúpula do Judiciário relativas à transparência de atos públicos."
+          "motivo_conexao": "Aborda diretrizes de órgãos de cúpula do Judiciário relativas à transparência de atos públicos.",
+          "titulo_existente": "STF analisa regras de transparência e limites constitucionais entre os Poderes"
         }
-      ],
-      "expires_at": "2026-11-23T12:45:54Z",
-      "updated_at": "2026-11-22T12:45:54Z"
+      ]
     },
     {
       "slug": "investidores-globais-buscam-ampliar-investimentos-na-china",
@@ -1576,141 +1611,6 @@
           "motivo_conexao": "Permite entender o impacto do custo de vida e dos juros no orçamento doméstico.",
           "titulo_existente": "O que é inflação?"
         }
-      ]
-    }
-  ],
-  "temas_curadoria": [
-    {
-      "slug": "bancos-rebaixam-brasil-fuga-capital-mexico-fiscal",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-24T09:59:50Z",
-      "updated_at": "2026-11-22T09:59:50Z",
-      "titulo_tema": "Bancos Globais Rebaixam Brasil e Preferem México Diante de Incerteza Fiscal e Juros",
-      "sintese_nerd": "A deterioração do cenário fiscal brasileiro e os juros elevados levaram bancões globais a rebaixar ativos do país, transferindo fluxo de capital emergente para o México. Essa realocação pressiona o câmbio do real e reduz a margem para cortes na taxa Selic no curto prazo.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-22T09:59:50Z",
-      "gatilho_vitrine": "EXIBIR_DESTAQUE_HOME_ECONOMIA",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 92,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Politica",
-        "Geopolitica_Radar"
-      ],
-      "palavras_chave_busca": [
-        "investimento estrangeiro",
-        "mercados emergentes",
-        "rebaixamento brasil",
-        "mexico economia",
-        "risco fiscal",
-        "taxa selic"
-      ]
-    },
-    {
-      "slug": "eua-china-corrida-tecnologica-chips-inteligencia-artificial",
-      "status": "novo",
-      "ttl_horas": 72,
-      "expires_at": "2026-11-25T09:59:50Z",
-      "updated_at": "2026-11-22T09:59:50Z",
-      "titulo_tema": "Guerra Fria da IA: Modelos Chineses Usam Nuvem Americana para Burlar Sanções de Chips",
-      "sintese_nerd": "Provedores chineses de IA aproveitam o aluguel de data centers em solo americano equipados com chips avançados para treinar e distribuir seus modelos globalmente. A brecha expõe a dificuldade dos EUA em aplicar sanções tecnológicas eficazes sem estrangular o próprio mercado de computação em nuvem.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-22T09:59:50Z",
-      "gatilho_vitrine": "BOOST_BUSCA_TECNOLOGIA_GEOPOLITICA",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 88,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Cultura"
-      ],
-      "palavras_chave_busca": [
-        "inteligencia artificial",
-        "eua china ia",
-        "chips de ia",
-        "nvidia data centers",
-        "sancoes tecnologicas",
-        "regulacao digital"
-      ]
-    },
-    {
-      "slug": "stf-concentracao-processos-moraes-imunidade-parlamentar",
-      "status": "novo",
-      "ttl_horas": 36,
-      "expires_at": "2026-11-23T21:59:50Z",
-      "updated_at": "2026-11-22T09:59:50Z",
-      "titulo_tema": "Concentração de Processos Criminais no STF Tenciona Relação com o Congresso",
-      "sintese_nerd": "Com 44% dos casos criminais sob relatoria de um único ministro e novos votos sobre os limites da imunidade parlamentar, o STF reacende o embate institucional com o Poder Legislativo. O cenário mantém elevada a temperatura política em Brasília e pressiona a pauta de reformas no Congresso.",
-      "rota_editoria": "/politica",
-      "data_publicacao": "2026-11-22T09:59:50Z",
-      "gatilho_vitrine": "EXIBIR_RADAR_POLITICA",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 85,
-      "categoria_primaria": "Politica",
-      "categorias_cruzadas": [
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "supremo tribunal federal",
-        "alexandre de moraes",
-        "imunidade parlamentar",
-        "processos criminais",
-        "congresso nacional",
-        "flavio dino"
-      ]
-    },
-    {
-      "slug": "protestos-franca-custo-de-vida-servicos-publicos",
-      "status": "novo",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-23T09:59:50Z",
-      "updated_at": "2026-11-22T09:59:50Z",
-      "titulo_tema": "França Enfrenta Sexto Fim de Semana de Manifestações Contra Custo de Vida",
-      "sintese_nerd": "Milhares de pessoas saíram às ruas em várias cidades francesas contestando a perda do poder de compra e o sucateamento dos serviços públicos. O descontentamento social na segunda maior economia da Zona do Euro reflete a persistência da inflação e pressiona o orçamento do governo francês.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-22T09:59:50Z",
-      "gatilho_vitrine": "EXIBIR_CARROSSEL_INTERNACIONAL",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 82,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Cultura"
-      ],
-      "palavras_chave_busca": [
-        "protestos franca",
-        "custo de vida europa",
-        "inflacao uniao europeia",
-        "servicos publicos",
-        "emmanuel macron",
-        "crise europeia"
-      ]
-    },
-    {
-      "slug": "terremoto-magnitude-peru-lima-alerta",
-      "status": "em_alta",
-      "ttl_horas": 12,
-      "expires_at": "2026-11-22T21:59:50Z",
-      "updated_at": "2026-11-22T09:59:50Z",
-      "titulo_tema": "Terremoto de Magnitude 6,9 Atinge o Peru e Causa Apreensão na América do Sul",
-      "sintese_nerd": "Um forte abalo sísmico de magnitude 6,9 sacudiu o Peru e foi sentido na capital Lima, acionando protocolos de emergência na região andina. Eventos sísmicos nessa escala na Costa do Pacífico exigem monitoramento contínuo de danos à infraestrutura e alertas marítimos na América do Sul.",
-      "rota_editoria": "/ultimas-noticias",
-      "data_publicacao": "2026-11-22T09:59:50Z",
-      "gatilho_vitrine": "ALERT_Urgente",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 80,
-      "categoria_primaria": "Resumo_Ultimas",
-      "categorias_cruzadas": [
-        "Geopolitica_Radar"
-      ],
-      "palavras_chave_busca": [
-        "terremoto peru",
-        "tremor lima",
-        "sismo peru 6.9",
-        "defesa civil peru",
-        "alerta tsunami",
-        "abalo sismico"
       ]
     }
   ]
