@@ -2,23 +2,74 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-22T09:59:50Z",
-  "batch_id": "20261122-0959",
+  "updatedAt": "2026-11-22T10:43:20Z",
+  "batch_id": "20261122-1042",
   "temas_ativos": [
     {
-      "slug": "bancos-rebaixam-brasil-fuga-capital-mexico-fiscal",
-      "titulo_tema": "Bancos Globais Rebaixam Brasil e Preferem México Diante de Incerteza Fiscal e Juros",
+      "slug": "camara-aprova-credito-300-mi-combater-incendios",
+      "titulo_tema": "Câmara aprova crédito extraordinário de R$ 300 milhões para combate a incêndios e desastres",
+      "titulo_curto": "Câmara aprova crédito extraordinário de R$ 300 milhões para combate a incêndios e desastres",
       "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categoria": "Ciencia_Clima",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 91,
+      "urgencia_score": 90,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-23T10:43:20Z",
+      "palavras_chave_busca": [
+        "câmara dos deputados",
+        "crédito extraordinário",
+        "incêndios florestais",
+        "defesa civil",
+        "orçamento"
+      ],
+      "palavras_chave": [
+        "câmara dos deputados",
+        "crédito extraordinário",
+        "incêndios florestais",
+        "defesa civil",
+        "orçamento"
+      ],
+      "gatilho_vitrine": "Conforme divulgado pelo Poder360, a Câmara dos Deputados aprovou medida provisória que libera R$ 300 milhões em créditos extraordinários para a defesa civil. A verba será direcionada ao combate a incêndios florestais e à mitigação de estragos causados por eventos climáticos extremos.",
+      "resumo_pulso": "Conforme divulgado pelo Poder360, a Câmara dos Deputados aprovou medida provisória que libera R$ 300 milhões em créditos extraordinários para a defesa civil. A verba será direcionada ao combate a incêndios florestais e à mitigação de estragos causados por eventos climáticos extremos.",
+      "sintese_nerd": "Aporte direto de recursos federais para municípios atingidos por emergências ambientais e aceleração das ações de resposta da Defesa Civil.",
+      "impacto_pratico": "Aporte direto de recursos federais para municípios atingidos por emergências ambientais e aceleração das ações de resposta da Defesa Civil.",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "veiculos_origem": [
+        "Poder360"
+      ],
+      "fontes_urls": [
+        "https://www.poder360.com.br/poder-congresso/camara-aprova-credito-de-r-300-mi-para-combater-incendios/"
+      ],
+      "data_publicacao": "2026-11-22T10:00:10Z",
+      "updated_at": "2026-11-22T10:43:20Z"
+    },
+    {
+      "slug": "bancos-rebaixam-brasil-fuga-capital-mexico-fiscal",
+      "status": "novo",
+      "ttl_horas": 48,
+      "expires_at": "2026-11-24T09:59:50Z",
+      "updated_at": "2026-11-22T09:59:50Z",
+      "titulo_tema": "Bancos Globais Rebaixam Brasil e Preferem México Diante de Incerteza Fiscal e Juros",
+      "sintese_nerd": "A deterioração do cenário fiscal brasileiro e os juros elevados levaram bancões globais a rebaixar ativos do país, transferindo fluxo de capital emergente para o México. Essa realocação pressiona o câmbio do real e reduz a margem para cortes na taxa Selic no curto prazo.",
+      "rota_editoria": "/economia",
+      "data_publicacao": "2026-11-22T09:59:50Z",
+      "gatilho_vitrine": "EXIBIR_DESTAQUE_HOME_ECONOMIA",
       "origem_pipeline": "curadoria",
+      "relevancia_score": 92,
       "categoria_primaria": "Economia",
       "categorias_cruzadas": [
         "Politica",
         "Geopolitica_Radar"
       ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 92,
-      "ttl_horas": 48,
-      "expires_at": "2026-11-24T09:59:50Z",
       "palavras_chave_busca": [
         "investimento estrangeiro",
         "mercados emergentes",
@@ -26,26 +77,26 @@
         "mexico economia",
         "risco fiscal",
         "taxa selic"
-      ],
-      "gatilho_vitrine": "EXIBIR_DESTAQUE_HOME_ECONOMIA",
-      "sintese_nerd": "A deterioração do cenário fiscal brasileiro e os juros elevados levaram bancões globais a rebaixar ativos do país, transferindo fluxo de capital emergente para o México. Essa realocação pressiona o câmbio do real e reduz a margem para cortes na taxa Selic no curto prazo.",
-      "data_publicacao": "2026-11-22T09:59:50Z",
-      "updated_at": "2026-11-22T09:59:50Z"
+      ]
     },
     {
       "slug": "eua-china-corrida-tecnologica-chips-inteligencia-artificial",
-      "titulo_tema": "Guerra Fria da IA: Modelos Chineses Usam Nuvem Americana para Burlar Sanções de Chips",
       "status": "novo",
+      "ttl_horas": 72,
+      "expires_at": "2026-11-25T09:59:50Z",
+      "updated_at": "2026-11-22T09:59:50Z",
+      "titulo_tema": "Guerra Fria da IA: Modelos Chineses Usam Nuvem Americana para Burlar Sanções de Chips",
+      "sintese_nerd": "Provedores chineses de IA aproveitam o aluguel de data centers em solo americano equipados com chips avançados para treinar e distribuir seus modelos globalmente. A brecha expõe a dificuldade dos EUA em aplicar sanções tecnológicas eficazes sem estrangular o próprio mercado de computação em nuvem.",
+      "rota_editoria": "/radar",
+      "data_publicacao": "2026-11-22T09:59:50Z",
+      "gatilho_vitrine": "BOOST_BUSCA_TECNOLOGIA_GEOPOLITICA",
       "origem_pipeline": "curadoria",
+      "relevancia_score": 88,
       "categoria_primaria": "Geopolitica_Radar",
       "categorias_cruzadas": [
         "Economia",
         "Cultura"
       ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 88,
-      "ttl_horas": 72,
-      "expires_at": "2026-11-25T09:59:50Z",
       "palavras_chave_busca": [
         "inteligencia artificial",
         "eua china ia",
@@ -53,25 +104,25 @@
         "nvidia data centers",
         "sancoes tecnologicas",
         "regulacao digital"
-      ],
-      "gatilho_vitrine": "BOOST_BUSCA_TECNOLOGIA_GEOPOLITICA",
-      "sintese_nerd": "Provedores chineses de IA aproveitam o aluguel de data centers em solo americano equipados com chips avançados para treinar e distribuir seus modelos globalmente. A brecha expõe a dificuldade dos EUA em aplicar sanções tecnológicas eficazes sem estrangular o próprio mercado de computação em nuvem.",
-      "data_publicacao": "2026-11-22T09:59:50Z",
-      "updated_at": "2026-11-22T09:59:50Z"
+      ]
     },
     {
       "slug": "stf-concentracao-processos-moraes-imunidade-parlamentar",
-      "titulo_tema": "Concentração de Processos Criminais no STF Tenciona Relação com o Congresso",
       "status": "novo",
+      "ttl_horas": 36,
+      "expires_at": "2026-11-23T21:59:50Z",
+      "updated_at": "2026-11-22T09:59:50Z",
+      "titulo_tema": "Concentração de Processos Criminais no STF Tenciona Relação com o Congresso",
+      "sintese_nerd": "Com 44% dos casos criminais sob relatoria de um único ministro e novos votos sobre os limites da imunidade parlamentar, o STF reacende o embate institucional com o Poder Legislativo. O cenário mantém elevada a temperatura política em Brasília e pressiona a pauta de reformas no Congresso.",
+      "rota_editoria": "/politica",
+      "data_publicacao": "2026-11-22T09:59:50Z",
+      "gatilho_vitrine": "EXIBIR_RADAR_POLITICA",
       "origem_pipeline": "curadoria",
+      "relevancia_score": 85,
       "categoria_primaria": "Politica",
       "categorias_cruzadas": [
         "Resumo_Ultimas"
       ],
-      "rota_editoria": "/politica",
-      "relevancia_score": 85,
-      "ttl_horas": 36,
-      "expires_at": "2026-11-23T21:59:50Z",
       "palavras_chave_busca": [
         "supremo tribunal federal",
         "alexandre de moraes",
@@ -79,26 +130,26 @@
         "processos criminais",
         "congresso nacional",
         "flavio dino"
-      ],
-      "gatilho_vitrine": "EXIBIR_RADAR_POLITICA",
-      "sintese_nerd": "Com 44% dos casos criminais sob relatoria de um único ministro e novos votos sobre os limites da imunidade parlamentar, o STF reacende o embate institucional com o Poder Legislativo. O cenário mantém elevada a temperatura política em Brasília e pressiona a pauta de reformas no Congresso.",
-      "data_publicacao": "2026-11-22T09:59:50Z",
-      "updated_at": "2026-11-22T09:59:50Z"
+      ]
     },
     {
       "slug": "protestos-franca-custo-de-vida-servicos-publicos",
-      "titulo_tema": "França Enfrenta Sexto Fim de Semana de Manifestações Contra Custo de Vida",
       "status": "novo",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-23T09:59:50Z",
+      "updated_at": "2026-11-22T09:59:50Z",
+      "titulo_tema": "França Enfrenta Sexto Fim de Semana de Manifestações Contra Custo de Vida",
+      "sintese_nerd": "Milhares de pessoas saíram às ruas em várias cidades francesas contestando a perda do poder de compra e o sucateamento dos serviços públicos. O descontentamento social na segunda maior economia da Zona do Euro reflete a persistência da inflação e pressiona o orçamento do governo francês.",
+      "rota_editoria": "/radar",
+      "data_publicacao": "2026-11-22T09:59:50Z",
+      "gatilho_vitrine": "EXIBIR_CARROSSEL_INTERNACIONAL",
       "origem_pipeline": "curadoria",
+      "relevancia_score": 82,
       "categoria_primaria": "Geopolitica_Radar",
       "categorias_cruzadas": [
         "Economia",
         "Cultura"
       ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 82,
-      "ttl_horas": 24,
-      "expires_at": "2026-11-23T09:59:50Z",
       "palavras_chave_busca": [
         "protestos franca",
         "custo de vida europa",
@@ -106,25 +157,25 @@
         "servicos publicos",
         "emmanuel macron",
         "crise europeia"
-      ],
-      "gatilho_vitrine": "EXIBIR_CARROSSEL_INTERNACIONAL",
-      "sintese_nerd": "Milhares de pessoas saíram às ruas em várias cidades francesas contestando a perda do poder de compra e o sucateamento dos serviços públicos. O descontentamento social na segunda maior economia da Zona do Euro reflete a persistência da inflação e pressiona o orçamento do governo francês.",
-      "data_publicacao": "2026-11-22T09:59:50Z",
-      "updated_at": "2026-11-22T09:59:50Z"
+      ]
     },
     {
       "slug": "terremoto-magnitude-peru-lima-alerta",
-      "titulo_tema": "Terremoto de Magnitude 6,9 Atinge o Peru e Causa Apreensão na América do Sul",
       "status": "em_alta",
+      "ttl_horas": 12,
+      "expires_at": "2026-11-22T21:59:50Z",
+      "updated_at": "2026-11-22T09:59:50Z",
+      "titulo_tema": "Terremoto de Magnitude 6,9 Atinge o Peru e Causa Apreensão na América do Sul",
+      "sintese_nerd": "Um forte abalo sísmico de magnitude 6,9 sacudiu o Peru e foi sentido na capital Lima, acionando protocolos de emergência na região andina. Eventos sísmicos nessa escala na Costa do Pacífico exigem monitoramento contínuo de danos à infraestrutura e alertas marítimos na América do Sul.",
+      "rota_editoria": "/ultimas-noticias",
+      "data_publicacao": "2026-11-22T09:59:50Z",
+      "gatilho_vitrine": "ALERT_Urgente",
       "origem_pipeline": "curadoria",
+      "relevancia_score": 80,
       "categoria_primaria": "Resumo_Ultimas",
       "categorias_cruzadas": [
         "Geopolitica_Radar"
       ],
-      "rota_editoria": "/ultimas-noticias",
-      "relevancia_score": 80,
-      "ttl_horas": 12,
-      "expires_at": "2026-11-22T21:59:50Z",
       "palavras_chave_busca": [
         "terremoto peru",
         "tremor lima",
@@ -132,11 +183,55 @@
         "defesa civil peru",
         "alerta tsunami",
         "abalo sismico"
+      ]
+    },
+    {
+      "slug": "zelensky-russia-disparou-2700-drones-uma-semana",
+      "titulo_tema": "Rússia lançou 2,7 mil drones e 165 mísseis contra a Ucrânia em uma semana, diz Zelensky",
+      "titulo_curto": "Rússia lançou 2,7 mil drones e 165 mísseis contra a Ucrânia em uma semana, diz Zelensky",
+      "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categoria": "Geopolitica_Relacoes",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
       ],
-      "gatilho_vitrine": "ALERT_Urgente",
-      "sintese_nerd": "Um forte abalo sísmico de magnitude 6,9 sacudiu o Peru e foi sentido na capital Lima, acionando protocolos de emergência na região andina. Eventos sísmicos nessa escala na Costa do Pacífico exigem monitoramento contínuo de danos à infraestrutura e alertas marítimos na América do Sul.",
-      "data_publicacao": "2026-11-22T09:59:50Z",
-      "updated_at": "2026-11-22T09:59:50Z"
+      "rota_editoria": "/radar",
+      "relevancia_score": 92,
+      "urgencia_score": 94,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-23T10:43:20Z",
+      "palavras_chave_busca": [
+        "zelensky",
+        "ucrânia",
+        "ataques aéreos",
+        "drones",
+        "bombas guiadas"
+      ],
+      "palavras_chave": [
+        "zelensky",
+        "ucrânia",
+        "ataques aéreos",
+        "drones",
+        "bombas guiadas"
+      ],
+      "gatilho_vitrine": "Segundo declarações do presidente Volodymyr Zelensky divulgadas pela Ukrinform, as forças russas intensificaram a ofensiva aérea atingindo 20 regiões ucranianas nos últimos sete dias. O balanço oficial aponta o disparo de aproximadamente 2.700 drones de ataque, 1.460 bombas guiadas e 165 mísseis de variados tipos.",
+      "resumo_pulso": "Segundo declarações do presidente Volodymyr Zelensky divulgadas pela Ukrinform, as forças russas intensificaram a ofensiva aérea atingindo 20 regiões ucranianas nos últimos sete dias. O balanço oficial aponta o disparo de aproximadamente 2.700 drones de ataque, 1.460 bombas guiadas e 165 mísseis de variados tipos.",
+      "sintese_nerd": "Aumento da pressão sobre os sistemas de defesa antiaérea e agravamento dos danos à infraestrutura de energia e serviços essenciais na Ucrânia.",
+      "impacto_pratico": "Aumento da pressão sobre os sistemas de defesa antiaérea e agravamento dos danos à infraestrutura de energia e serviços essenciais na Ucrânia.",
+      "paises_envolvidos": [
+        "UA",
+        "RU"
+      ],
+      "veiculos_origem": [
+        "Ukrinform"
+      ],
+      "fontes_urls": [
+        "https://www.ukrinform.net/rubric-ato/4187329-russia-launches-approximately-2700-drones-nearly-1460-glide-bombs-and-165-missiles-at-ukraine-in-one-week-zelensky.html"
+      ],
+      "data_publicacao": "2026-11-22T09:52:00Z",
+      "updated_at": "2026-11-22T10:43:20Z"
     },
     {
       "slug": "ucrania-combate-subterraneo-gasoduto-kharkiv",
@@ -276,6 +371,56 @@
       ]
     },
     {
+      "slug": "eua-dominam-infraestrutura-ia-alugada-por-modelos-chineses",
+      "titulo_tema": "Modelos chineses de inteligência artificial utilizam infraestrutura de data centers nos EUA",
+      "titulo_curto": "Modelos chineses de inteligência artificial utilizam infraestrutura de data centers nos EUA",
+      "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Economia",
+      "categoria": "Economia_Comercio",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 89,
+      "urgencia_score": 87,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-23T10:43:20Z",
+      "palavras_chave_busca": [
+        "inteligência artificial",
+        "eua",
+        "china",
+        "data centers",
+        "chips",
+        "semicondutores"
+      ],
+      "palavras_chave": [
+        "inteligência artificial",
+        "eua",
+        "china",
+        "data centers",
+        "chips",
+        "semicondutores"
+      ],
+      "gatilho_vitrine": "Segundo análise do InfoMoney, provedores de tecnologia na China têm alugado capacidade de processamento em data centers norte-americanos equipados com chips de alta performance. A prática permite que desenvolvedores chineses ofereçam grandes modelos de linguagem globalmente, contornando gargalos de infraestrutura local.",
+      "resumo_pulso": "Segundo análise do InfoMoney, provedores de tecnologia na China têm alugado capacidade de processamento em data centers norte-americanos equipados com chips de alta performance. A prática permite que desenvolvedores chineses ofereçam grandes modelos de linguagem globalmente, contornando gargalos de infraestrutura local.",
+      "sintese_nerd": "Reflexos diretos na disputa geopolítica e regulatória sobre semicondutores, capacidade computacional e normas globais de cibersegurança.",
+      "impacto_pratico": "Reflexos diretos na disputa geopolítica e regulatória sobre semicondutores, capacidade computacional e normas globais de cibersegurança.",
+      "paises_envolvidos": [
+        "US",
+        "CN"
+      ],
+      "veiculos_origem": [
+        "InfoMoney Mercados"
+      ],
+      "fontes_urls": [
+        "https://www.infomoney.com.br/business/global/eua-dominam-infraestrutura-de-ia-mas-isso-tem-ajudado-os-modelos-chineses/"
+      ],
+      "data_publicacao": "2026-11-22T08:00:00Z",
+      "updated_at": "2026-11-22T10:43:20Z"
+    },
+    {
       "slug": "mexico-ganha-espaco-entre-emergentes-enquanto-brasil-perde-preferencia",
       "status": "novo",
       "categoria": "Economia_Comercio",
@@ -370,6 +515,102 @@
         "guerra",
         "infraestrutura"
       ]
+    },
+    {
+      "slug": "agrovoltaica-cresce-com-criacao-de-ovelhas-em-usinas-solares",
+      "titulo_tema": "Uso de ovelhas para manejo de vegetação em fazendas solares avança nos EUA e na China",
+      "titulo_curto": "Uso de ovelhas para manejo de vegetação em fazendas solares avança nos EUA e na China",
+      "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categoria": "Ciencia_Clima",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 85,
+      "urgencia_score": 82,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-23T10:43:20Z",
+      "palavras_chave_busca": [
+        "agrovoltaica",
+        "energia solar",
+        "sustentabilidade",
+        "agronegócio",
+        "painéis fotovoltaicos"
+      ],
+      "palavras_chave": [
+        "agrovoltaica",
+        "energia solar",
+        "sustentabilidade",
+        "agronegócio",
+        "painéis fotovoltaicos"
+      ],
+      "gatilho_vitrine": "Segundo reportagem do G1 Economia, a agrovoltaica — integração entre criação de animais e geração fotovoltaica — já é adotada em 10% das usinas solares dos EUA e avança em províncias chinesas. A presença de ovelhas nos parques solares substitui a roçagem mecânica, reduzindo custos operacionais e promovendo o uso sustentável do solo.",
+      "resumo_pulso": "Segundo reportagem do G1 Economia, a agrovoltaica — integração entre criação de animais e geração fotovoltaica — já é adotada em 10% das usinas solares dos EUA e avança em províncias chinesas. A presença de ovelhas nos parques solares substitui a roçagem mecânica, reduzindo custos operacionais e promovendo o uso sustentável do solo.",
+      "sintese_nerd": "Inovação no setor agropecuário e de energias renováveis com redução de custos de manutenção e otimização do uso da terra.",
+      "impacto_pratico": "Inovação no setor agropecuário e de energias renováveis com redução de custos de manutenção e otimização do uso da terra.",
+      "paises_envolvidos": [
+        "US",
+        "CN",
+        "BR"
+      ],
+      "veiculos_origem": [
+        "G1 Economia"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/economia/agronegocios/noticia/2026/11/22/ovelhas-entre-paineis-solares-entenda-a-tendencia-que-une-geracao-de-energia-e-criacao-de-animais.ghtml"
+      ],
+      "data_publicacao": "2026-11-22T07:00:01Z",
+      "updated_at": "2026-11-22T10:43:20Z"
+    },
+    {
+      "slug": "nova-especie-perereca-descoberta-minas-gerais",
+      "titulo_tema": "Cientistas identificam nova espécie de perereca na Mata Atlântica em Minas Gerais",
+      "titulo_curto": "Cientistas identificam nova espécie de perereca na Mata Atlântica em Minas Gerais",
+      "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categoria": "Ciencia_Clima",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 82,
+      "urgencia_score": 80,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-23T10:43:20Z",
+      "palavras_chave_busca": [
+        "biodiversidade",
+        "mata atlântica",
+        "minas gerais",
+        "ciência",
+        "ololygon cataguas"
+      ],
+      "palavras_chave": [
+        "biodiversidade",
+        "mata atlântica",
+        "minas gerais",
+        "ciência",
+        "ololygon cataguas"
+      ],
+      "gatilho_vitrine": "Conforme reportado pelo G1 Economia, pesquisadores descreveram formalmente a Ololygon cataguas, uma nova espécie de anfíbio descoberta na Zona da Mata mineira. A identificação ocorreu após mais de dez anos de investigação científica iniciada pela percepção de um canto vocal diferenciado em área preservada.",
+      "resumo_pulso": "Conforme reportado pelo G1 Economia, pesquisadores descreveram formalmente a Ololygon cataguas, uma nova espécie de anfíbio descoberta na Zona da Mata mineira. A identificação ocorreu após mais de dez anos de investigação científica iniciada pela percepção de um canto vocal diferenciado em área preservada.",
+      "sintese_nerd": "Reforça a importância da conservação da biodiversidade na Mata Atlântica e impulsiona estudos sobre bioacústica e patrimônio biológico.",
+      "impacto_pratico": "Reforça a importância da conservação da biodiversidade na Mata Atlântica e impulsiona estudos sobre bioacústica e patrimônio biológico.",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "veiculos_origem": [
+        "G1 Economia"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/economia/agronegocios/globo-rural/noticia/2026/11/22/nova-especie-de-perereca-e-descoberta-em-minas-gerais-apos-cientista-ouvir-canto-incomum.ghtml"
+      ],
+      "data_publicacao": "2026-11-22T07:00:00Z",
+      "updated_at": "2026-11-22T10:43:20Z"
     },
     {
       "slug": "ucrania-prepara-reativacao-bancada-congresso-eua",
@@ -607,381 +848,80 @@
         "estados unidos",
         "aeroporto"
       ]
-    },
-    {
-      "slug": "pagamento-13-salario-orientacao-financeira-dividas",
-      "status": "novo",
-      "categoria": "Economia_Comercio",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-23T05:29:57Z",
-      "updated_at": "2026-11-22T05:29:57Z",
-      "fontes_urls": [
-        "https://g1.globo.com/g1-explica/noticia/2026/11/22/13o-salario-na-conta-como-decidir-entre-pagar-dividas-investir-ou-aproveitar-as-compras.ghtml"
-      ],
-      "titulo_tema": "Início do pagamento do 13º salário mobiliza planejamento financeiro no Brasil",
-      "resumo_pulso": "Segundo orientação divulgada pelo G1 Economia, a liberação das parcelas do 13º salário leva economistas a recomendar a priorização de dívidas com juros elevados antes dos compromissos fiscais de início de ano. A injeção financeira busca equilibrar as contas das famílias frente ao orçamento de 2027.",
-      "sintese_nerd": "Orienta cidadãos sobre a gestão de juros do cartão e planejamento de impostos como IPVA e IPTU.",
-      "titulo_curto": "Início do pagamento do 13º salário mobiliza planejamento financeiro no Brasil",
-      "rota_editoria": "/economia",
-      "palavras_chave": [
-        "13º salário",
-        "dívidas",
-        "economia",
-        "finanças pessoais",
-        "brasil"
-      ],
-      "urgencia_score": 85,
-      "data_publicacao": "2026-11-22T05:00:00Z",
-      "gatilho_vitrine": "Segundo orientação divulgada pelo G1 Economia, a liberação das parcelas do 13º salário leva economistas a recomendar a priorização de dívidas com juros elevados antes dos compromissos fiscais de início de ano. A injeção financeira busca equilibrar as contas das famílias frente ao orçamento de 2027.",
-      "impacto_pratico": "Orienta cidadãos sobre a gestão de juros do cartão e planejamento de impostos como IPVA e IPTU.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "G1 Economia"
-      ],
-      "relevancia_score": 88,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "13º salário",
-        "dívidas",
-        "economia",
-        "finanças pessoais",
-        "brasil"
-      ]
-    },
-    {
-      "slug": "cop31-impasse-combustiveis-fosseis-prorroga-cupula",
-      "status": "novo",
-      "categoria": "Ciencia_Clima",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-23T05:29:57Z",
-      "updated_at": "2026-11-22T05:29:57Z",
-      "fontes_urls": [
-        "https://www.aljazeera.com/news/2026/11/22/fossil-fuel-impasse-pushes-cop31-climate-talks-into-second-day-of-overtime?traffic_source=rss"
-      ],
-      "titulo_tema": "Impasse sobre combustíveis fósseis prorroga negociações da COP31 pelo segundo dia",
-      "resumo_pulso": "Segundo apuração da Al Jazeera English, a cúpula do clima COP31 entrou no segundo dia de prorrogação devido à falta de consenso sobre a eliminação gradual de combustíveis fósseis. O presidente da conferência, Murat Kurum, submeteu uma proposta de última hora para tentar destravar o acordo global entre as delegações.",
-      "sintese_nerd": "A indefinição sobre o texto final pode impactar metas globais de emissões de carbono e diretrizes de investimentos em transição energética.",
-      "titulo_curto": "Impasse sobre combustíveis fósseis prorroga negociações da COP31 pelo segundo dia",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "cop31",
-        "combustíveis fósseis",
-        "mudanças climáticas",
-        "murat kurum",
-        "onu"
-      ],
-      "urgencia_score": 94,
-      "data_publicacao": "2026-11-22T04:51:35Z",
-      "gatilho_vitrine": "Segundo apuração da Al Jazeera English, a cúpula do clima COP31 entrou no segundo dia de prorrogação devido à falta de consenso sobre a eliminação gradual de combustíveis fósseis. O presidente da conferência, Murat Kurum, submeteu uma proposta de última hora para tentar destravar o acordo global entre as delegações.",
-      "impacto_pratico": "A indefinição sobre o texto final pode impactar metas globais de emissões de carbono e diretrizes de investimentos em transição energética.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "Al Jazeera English"
-      ],
-      "relevancia_score": 93,
-      "paises_envolvidos": [
-        "TR",
-        "UN"
-      ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "cop31",
-        "combustíveis fósseis",
-        "mudanças climáticas",
-        "murat kurum",
-        "onu"
-      ]
-    },
-    {
-      "slug": "ataque-drone-russo-destroi-predio-residencial-em-kyiv",
-      "status": "novo",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 18,
-      "expires_at": "2026-11-22T23:29:57Z",
-      "updated_at": "2026-11-22T08:48:14Z",
-      "fontes_urls": [
-        "https://www.ukrinform.net/rubric-ato/4187306-drone-attack-damages-apartment-block-in-kyiv-region-people-may-be-trapped-under-rubble.html"
-      ],
-      "titulo_tema": "Ataques de drones russos atingem edifício em Kyiv e deixam desalojados",
-      "resumo_pulso": "Segundo apuração da Ukrinform e do The Kyiv Independent, um novo ataque de drones russos atingiu um prédio residencial de cinco andares no distrito de Vyshhorod, na região de Kyiv, causando incêndio e destruição. Equipes de emergência trabalham no local e autoridades alertam que civis podem estar soterrados sob os escombros.",
-      "sintese_nerd": "Elevação do risco de segurança e paralisações parciais em serviços urbanos na região metropolitana de Kyiv.",
-      "titulo_curto": "Ataques de drones russos atingem edifício em Kyiv e deixam desalojados",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "ucrânia",
-        "rússia",
-        "kyiv",
-        "drones",
-        "guerra"
-      ],
-      "urgencia_score": 96,
-      "data_publicacao": "2026-11-22T04:49:11Z",
-      "gatilho_vitrine": "Segundo apuração da Ukrinform e do The Kyiv Independent, um novo ataque de drones russos atingiu um prédio residencial de cinco andares no distrito de Vyshhorod, na região de Kyiv, causando incêndio e destruição. Equipes de emergência trabalham no local e autoridades alertam que civis podem estar soterrados sob os escombros.",
-      "impacto_pratico": "Elevação do risco de segurança e paralisações parciais em serviços urbanos na região metropolitana de Kyiv.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "Ukrinform",
-        "The Kyiv Independent",
-        "Al Jazeera English"
-      ],
-      "relevancia_score": 93,
-      "paises_envolvidos": [
-        "UA",
-        "RU"
-      ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "ucrânia",
-        "rússia",
-        "kyiv",
-        "drones",
-        "guerra"
-      ]
-    },
-    {
-      "slug": "eleven-killed-in-mexican-cartel-leader-capture",
-      "status": "novo",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-23T04:29:31Z",
-      "updated_at": "2026-11-22T04:29:31Z",
-      "fontes_urls": [
-        "https://www.aljazeera.com/news/2026/11/22/eleven-killed-in-burst-of-violence-during-mexican-cartel-leaders-capture?traffic_source=rss"
-      ],
-      "titulo_tema": "Operação de captura de narcotraficante mexicano deixa 11 mortos, aponta Al Jazeera",
-      "resumo_pulso": "Segundo apuração da Al Jazeera English, uma operação de segurança para prender o chefe de cartel Fausto Isidro Meza Flores resultou em um intenso confronto no México, deixando sete supostos pistoleiros e quatro soldados mortos. A ação eleva a tensão na segurança pública da região.",
-      "sintese_nerd": "Aumenta o risco de instabilidade na segurança local e nas rotas de trânsito ligadas aos estados afetados pela violência dos cartéis.",
-      "titulo_curto": "Operação de captura de narcotraficante mexicano deixa 11 mortos, aponta Al Jazeera",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "mexico",
-        "cartel",
-        "seguranca publica",
-        "fronteiras"
-      ],
-      "urgencia_score": 93,
-      "data_publicacao": "2026-11-22T03:34:02Z",
-      "gatilho_vitrine": "Segundo apuração da Al Jazeera English, uma operação de segurança para prender o chefe de cartel Fausto Isidro Meza Flores resultou em um intenso confronto no México, deixando sete supostos pistoleiros e quatro soldados mortos. A ação eleva a tensão na segurança pública da região.",
-      "impacto_pratico": "Aumenta o risco de instabilidade na segurança local e nas rotas de trânsito ligadas aos estados afetados pela violência dos cartéis.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "Al Jazeera English"
-      ],
-      "relevancia_score": 90,
-      "paises_envolvidos": [
-        "MX",
-        "US"
-      ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "mexico",
-        "cartel",
-        "seguranca publica",
-        "fronteiras"
-      ]
-    },
-    {
-      "slug": "ukrainian-drones-reportedly-strike-russian-national-guard-facility-in-krasnodar",
-      "status": "novo",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 18,
-      "expires_at": "2026-11-22T22:29:31Z",
-      "updated_at": "2026-11-22T04:29:31Z",
-      "fontes_urls": [
-        "https://kyivindependent.com/ukrainian-drones-reportedly-strike-russian-national-guard-facility-in-krasnodar/"
-      ],
-      "titulo_tema": "Drones ucranianos atingem instalação da Guarda Nacional Russa em Krasnodar",
-      "resumo_pulso": "Segundo reportagem do The Kyiv Independent, ataques com drones atingiram uma base da Guarda Nacional Russa na região de Krasnodar. O incidente forçou a imposição temporária de restrições de pouso e decolagem no aeroporto local em meio à escalada de ofensivas aéreas.",
-      "sintese_nerd": "Aumento do risco operacional para a aviação civil e militar nas imediações do território russo afetado.",
-      "titulo_curto": "Drones ucranianos atingem instalação da Guarda Nacional Russa em Krasnodar",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "ucrania",
-        "russia",
-        "drones",
-        "krasnodar"
-      ],
-      "urgencia_score": 94,
-      "data_publicacao": "2026-11-22T03:18:23Z",
-      "gatilho_vitrine": "Segundo reportagem do The Kyiv Independent, ataques com drones atingiram uma base da Guarda Nacional Russa na região de Krasnodar. O incidente forçou a imposição temporária de restrições de pouso e decolagem no aeroporto local em meio à escalada de ofensivas aéreas.",
-      "impacto_pratico": "Aumento do risco operacional para a aviação civil e militar nas imediações do território russo afetado.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "The Kyiv Independent"
-      ],
-      "relevancia_score": 91,
-      "paises_envolvidos": [
-        "UA",
-        "RU"
-      ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "ucrania",
-        "russia",
-        "drones",
-        "krasnodar"
-      ]
-    }
-  ],
-  "temas_curadoria": [
-    {
-      "slug": "bancos-rebaixam-brasil-fuga-capital-mexico-fiscal",
-      "titulo_tema": "Bancos Globais Rebaixam Brasil e Preferem México Diante de Incerteza Fiscal e Juros",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Politica",
-        "Geopolitica_Radar"
-      ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 92,
-      "ttl_horas": 48,
-      "expires_at": "2026-11-24T09:59:50Z",
-      "palavras_chave_busca": [
-        "investimento estrangeiro",
-        "mercados emergentes",
-        "rebaixamento brasil",
-        "mexico economia",
-        "risco fiscal",
-        "taxa selic"
-      ],
-      "gatilho_vitrine": "EXIBIR_DESTAQUE_HOME_ECONOMIA",
-      "sintese_nerd": "A deterioração do cenário fiscal brasileiro e os juros elevados levaram bancões globais a rebaixar ativos do país, transferindo fluxo de capital emergente para o México. Essa realocação pressiona o câmbio do real e reduz a margem para cortes na taxa Selic no curto prazo.",
-      "data_publicacao": "2026-11-22T09:59:50Z",
-      "updated_at": "2026-11-22T09:59:50Z"
-    },
-    {
-      "slug": "eua-china-corrida-tecnologica-chips-inteligencia-artificial",
-      "titulo_tema": "Guerra Fria da IA: Modelos Chineses Usam Nuvem Americana para Burlar Sanções de Chips",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Cultura"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 88,
-      "ttl_horas": 72,
-      "expires_at": "2026-11-25T09:59:50Z",
-      "palavras_chave_busca": [
-        "inteligencia artificial",
-        "eua china ia",
-        "chips de ia",
-        "nvidia data centers",
-        "sancoes tecnologicas",
-        "regulacao digital"
-      ],
-      "gatilho_vitrine": "BOOST_BUSCA_TECNOLOGIA_GEOPOLITICA",
-      "sintese_nerd": "Provedores chineses de IA aproveitam o aluguel de data centers em solo americano equipados com chips avançados para treinar e distribuir seus modelos globalmente. A brecha expõe a dificuldade dos EUA em aplicar sanções tecnológicas eficazes sem estrangular o próprio mercado de computação em nuvem.",
-      "data_publicacao": "2026-11-22T09:59:50Z",
-      "updated_at": "2026-11-22T09:59:50Z"
-    },
-    {
-      "slug": "stf-concentracao-processos-moraes-imunidade-parlamentar",
-      "titulo_tema": "Concentração de Processos Criminais no STF Tenciona Relação com o Congresso",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Politica",
-      "categorias_cruzadas": [
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/politica",
-      "relevancia_score": 85,
-      "ttl_horas": 36,
-      "expires_at": "2026-11-23T21:59:50Z",
-      "palavras_chave_busca": [
-        "supremo tribunal federal",
-        "alexandre de moraes",
-        "imunidade parlamentar",
-        "processos criminais",
-        "congresso nacional",
-        "flavio dino"
-      ],
-      "gatilho_vitrine": "EXIBIR_RADAR_POLITICA",
-      "sintese_nerd": "Com 44% dos casos criminais sob relatoria de um único ministro e novos votos sobre os limites da imunidade parlamentar, o STF reacende o embate institucional com o Poder Legislativo. O cenário mantém elevada a temperatura política em Brasília e pressiona a pauta de reformas no Congresso.",
-      "data_publicacao": "2026-11-22T09:59:50Z",
-      "updated_at": "2026-11-22T09:59:50Z"
-    },
-    {
-      "slug": "protestos-franca-custo-de-vida-servicos-publicos",
-      "titulo_tema": "França Enfrenta Sexto Fim de Semana de Manifestações Contra Custo de Vida",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Cultura"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 82,
-      "ttl_horas": 24,
-      "expires_at": "2026-11-23T09:59:50Z",
-      "palavras_chave_busca": [
-        "protestos franca",
-        "custo de vida europa",
-        "inflacao uniao europeia",
-        "servicos publicos",
-        "emmanuel macron",
-        "crise europeia"
-      ],
-      "gatilho_vitrine": "EXIBIR_CARROSSEL_INTERNACIONAL",
-      "sintese_nerd": "Milhares de pessoas saíram às ruas em várias cidades francesas contestando a perda do poder de compra e o sucateamento dos serviços públicos. O descontentamento social na segunda maior economia da Zona do Euro reflete a persistência da inflação e pressiona o orçamento do governo francês.",
-      "data_publicacao": "2026-11-22T09:59:50Z",
-      "updated_at": "2026-11-22T09:59:50Z"
-    },
-    {
-      "slug": "terremoto-magnitude-peru-lima-alerta",
-      "titulo_tema": "Terremoto de Magnitude 6,9 Atinge o Peru e Causa Apreensão na América do Sul",
-      "status": "em_alta",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Resumo_Ultimas",
-      "categorias_cruzadas": [
-        "Geopolitica_Radar"
-      ],
-      "rota_editoria": "/ultimas-noticias",
-      "relevancia_score": 80,
-      "ttl_horas": 12,
-      "expires_at": "2026-11-22T21:59:50Z",
-      "palavras_chave_busca": [
-        "terremoto peru",
-        "tremor lima",
-        "sismo peru 6.9",
-        "defesa civil peru",
-        "alerta tsunami",
-        "abalo sismico"
-      ],
-      "gatilho_vitrine": "ALERT_Urgente",
-      "sintese_nerd": "Um forte abalo sísmico de magnitude 6,9 sacudiu o Peru e foi sentido na capital Lima, acionando protocolos de emergência na região andina. Eventos sísmicos nessa escala na Costa do Pacífico exigem monitoramento contínuo de danos à infraestrutura e alertas marítimos na América do Sul.",
-      "data_publicacao": "2026-11-22T09:59:50Z",
-      "updated_at": "2026-11-22T09:59:50Z"
     }
   ],
   "noticias_quentes": [
+    {
+      "slug": "camara-aprova-credito-300-mi-combater-incendios",
+      "titulo_curto": "Câmara aprova crédito extraordinário de R$ 300 milhões para combate a incêndios e desastres",
+      "resumo_pulso": "Conforme divulgado pelo Poder360, a Câmara dos Deputados aprovou medida provisória que libera R$ 300 milhões em créditos extraordinários para a defesa civil. A verba será direcionada ao combate a incêndios florestais e à mitigação de estragos causados por eventos climáticos extremos.",
+      "impacto_pratico": "Aporte direto de recursos federais para municípios atingidos por emergências ambientais e aceleração das ações de resposta da Defesa Civil.",
+      "categoria": "Ciencia_Clima",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "urgencia_score": 90,
+      "relevancia_score": 91,
+      "nivel_confianca": "alta",
+      "ttl_horas": 24,
+      "horas_em_destaque": 8,
+      "veiculos_origem": [
+        "Poder360"
+      ],
+      "fontes_urls": [
+        "https://www.poder360.com.br/poder-congresso/camara-aprova-credito-de-r-300-mi-para-combater-incendios/"
+      ],
+      "palavras_chave": [
+        "Câmara dos Deputados",
+        "crédito extraordinário",
+        "incêndios florestais",
+        "defesa civil",
+        "orçamento"
+      ],
+      "data_publicacao": "2026-11-22T10:00:10Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "O que é o Orçamento?",
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-o-orcamento",
+          "motivo_conexao": "Explica como funcionam a aprovação de créditos extraordinários e a execução de verbas emergenciais no orçamento federal."
+        }
+      ],
+      "expires_at": "2026-11-23T10:43:20Z",
+      "updated_at": "2026-11-22T10:43:20Z"
+    },
+    {
+      "slug": "zelensky-russia-disparou-2700-drones-uma-semana",
+      "titulo_curto": "Rússia lançou 2,7 mil drones e 165 mísseis contra a Ucrânia em uma semana, diz Zelensky",
+      "resumo_pulso": "Segundo declarações do presidente Volodymyr Zelensky divulgadas pela Ukrinform, as forças russas intensificaram a ofensiva aérea atingindo 20 regiões ucranianas nos últimos sete dias. O balanço oficial aponta o disparo de aproximadamente 2.700 drones de ataque, 1.460 bombas guiadas e 165 mísseis de variados tipos.",
+      "impacto_pratico": "Aumento da pressão sobre os sistemas de defesa antiaérea e agravamento dos danos à infraestrutura de energia e serviços essenciais na Ucrânia.",
+      "categoria": "Geopolitica_Relacoes",
+      "paises_envolvidos": [
+        "UA",
+        "RU"
+      ],
+      "urgencia_score": 94,
+      "relevancia_score": 92,
+      "nivel_confianca": "alta",
+      "ttl_horas": 24,
+      "horas_em_destaque": 12,
+      "veiculos_origem": [
+        "Ukrinform"
+      ],
+      "fontes_urls": [
+        "https://www.ukrinform.net/rubric-ato/4187329-russia-launches-approximately-2700-drones-nearly-1460-glide-bombs-and-165-missiles-at-ukraine-in-one-week-zelensky.html"
+      ],
+      "palavras_chave": [
+        "Zelensky",
+        "Ucrânia",
+        "ataques aéreos",
+        "drones",
+        "bombas guiadas"
+      ],
+      "data_publicacao": "2026-11-22T09:52:00Z",
+      "links_internos_relacionados": [],
+      "expires_at": "2026-11-23T10:43:20Z",
+      "updated_at": "2026-11-22T10:43:20Z"
+    },
     {
       "slug": "ucrania-combate-subterraneo-gasoduto-kharkiv",
       "categoria": "Geopolitica_Relacoes",
@@ -1084,6 +1024,40 @@
       ]
     },
     {
+      "slug": "eua-dominam-infraestrutura-ia-alugada-por-modelos-chineses",
+      "titulo_curto": "Modelos chineses de inteligência artificial utilizam infraestrutura de data centers nos EUA",
+      "resumo_pulso": "Segundo análise do InfoMoney, provedores de tecnologia na China têm alugado capacidade de processamento em data centers norte-americanos equipados com chips de alta performance. A prática permite que desenvolvedores chineses ofereçam grandes modelos de linguagem globalmente, contornando gargalos de infraestrutura local.",
+      "impacto_pratico": "Reflexos diretos na disputa geopolítica e regulatória sobre semicondutores, capacidade computacional e normas globais de cibersegurança.",
+      "categoria": "Economia_Comercio",
+      "paises_envolvidos": [
+        "US",
+        "CN"
+      ],
+      "urgencia_score": 87,
+      "relevancia_score": 89,
+      "nivel_confianca": "alta",
+      "ttl_horas": 24,
+      "horas_em_destaque": 12,
+      "veiculos_origem": [
+        "InfoMoney Mercados"
+      ],
+      "fontes_urls": [
+        "https://www.infomoney.com.br/business/global/eua-dominam-infraestrutura-de-ia-mas-isso-tem-ajudado-os-modelos-chineses/"
+      ],
+      "palavras_chave": [
+        "Inteligência Artificial",
+        "EUA",
+        "China",
+        "data centers",
+        "chips",
+        "semicondutores"
+      ],
+      "data_publicacao": "2026-11-22T08:00:00Z",
+      "links_internos_relacionados": [],
+      "expires_at": "2026-11-23T10:43:20Z",
+      "updated_at": "2026-11-22T10:43:20Z"
+    },
+    {
       "slug": "mexico-ganha-espaco-entre-emergentes-enquanto-brasil-perde-preferencia",
       "categoria": "Economia_Comercio",
       "ttl_horas": 24,
@@ -1155,6 +1129,72 @@
         "RU"
       ],
       "links_internos_relacionados": []
+    },
+    {
+      "slug": "agrovoltaica-cresce-com-criacao-de-ovelhas-em-usinas-solares",
+      "titulo_curto": "Uso de ovelhas para manejo de vegetação em fazendas solares avança nos EUA e na China",
+      "resumo_pulso": "Segundo reportagem do G1 Economia, a agrovoltaica — integração entre criação de animais e geração fotovoltaica — já é adotada em 10% das usinas solares dos EUA e avança em províncias chinesas. A presença de ovelhas nos parques solares substitui a roçagem mecânica, reduzindo custos operacionais e promovendo o uso sustentável do solo.",
+      "impacto_pratico": "Inovação no setor agropecuário e de energias renováveis com redução de custos de manutenção e otimização do uso da terra.",
+      "categoria": "Ciencia_Clima",
+      "paises_envolvidos": [
+        "US",
+        "CN",
+        "BR"
+      ],
+      "urgencia_score": 82,
+      "relevancia_score": 85,
+      "nivel_confianca": "alta",
+      "ttl_horas": 24,
+      "horas_em_destaque": 8,
+      "veiculos_origem": [
+        "G1 Economia"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/economia/agronegocios/noticia/2026/11/22/ovelhas-entre-paineis-solares-entenda-a-tendencia-que-une-geracao-de-energia-e-criacao-de-animais.ghtml"
+      ],
+      "palavras_chave": [
+        "Agrovoltaica",
+        "energia solar",
+        "sustentabilidade",
+        "agronegócio",
+        "painéis fotovoltaicos"
+      ],
+      "data_publicacao": "2026-11-22T07:00:01Z",
+      "links_internos_relacionados": [],
+      "expires_at": "2026-11-23T10:43:20Z",
+      "updated_at": "2026-11-22T10:43:20Z"
+    },
+    {
+      "slug": "nova-especie-perereca-descoberta-minas-gerais",
+      "titulo_curto": "Cientistas identificam nova espécie de perereca na Mata Atlântica em Minas Gerais",
+      "resumo_pulso": "Conforme reportado pelo G1 Economia, pesquisadores descreveram formalmente a Ololygon cataguas, uma nova espécie de anfíbio descoberta na Zona da Mata mineira. A identificação ocorreu após mais de dez anos de investigação científica iniciada pela percepção de um canto vocal diferenciado em área preservada.",
+      "impacto_pratico": "Reforça a importância da conservação da biodiversidade na Mata Atlântica e impulsiona estudos sobre bioacústica e patrimônio biológico.",
+      "categoria": "Ciencia_Clima",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "urgencia_score": 80,
+      "relevancia_score": 82,
+      "nivel_confianca": "alta",
+      "ttl_horas": 24,
+      "horas_em_destaque": 6,
+      "veiculos_origem": [
+        "G1 Economia"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/economia/agronegocios/globo-rural/noticia/2026/11/22/nova-especie-de-perereca-e-descoberta-em-minas-gerais-apos-cientista-ouvir-canto-incomum.ghtml"
+      ],
+      "palavras_chave": [
+        "Biodiversidade",
+        "Mata Atlântica",
+        "Minas Gerais",
+        "ciência",
+        "Ololygon cataguas"
+      ],
+      "data_publicacao": "2026-11-22T07:00:00Z",
+      "links_internos_relacionados": [],
+      "expires_at": "2026-11-23T10:43:20Z",
+      "updated_at": "2026-11-22T10:43:20Z"
     },
     {
       "slug": "ucrania-prepara-reativacao-bancada-congresso-eua",
@@ -1414,38 +1454,39 @@
     },
     {
       "slug": "ataque-drone-russo-destroi-predio-residencial-em-kyiv",
+      "titulo_curto": "Ataque de drones russos em Vyshhorod pode ter deixado oito pessoas sob escombros",
+      "resumo_pulso": "Conforme atualizações da Ukrinform e do The Kyiv Independent, equipes de resgate operam no distrito de Vyshhorod, na região de Kyiv, após um ataque de drones russos destruir um edifício residencial. Autoridades locais alertam que até oito pessoas podem estar soterradas sob os destroços enquanto os trabalhos de busca continuam.",
+      "impacto_pratico": "Escalada das operações de emergência e riscos severos à infraestrutura habitacional e de segurança civil na região metropolitana de Kyiv.",
       "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 18,
-      "expires_at": "2026-11-22T23:29:57Z",
-      "updated_at": "2026-11-22T08:48:14Z",
-      "fontes_urls": [
-        "https://www.ukrinform.net/rubric-ato/4187306-drone-attack-damages-apartment-block-in-kyiv-region-people-may-be-trapped-under-rubble.html"
-      ],
-      "resumo_pulso": "Segundo apuração da Ukrinform e do The Kyiv Independent, um novo ataque de drones russos atingiu um prédio residencial de cinco andares no distrito de Vyshhorod, na região de Kyiv, causando incêndio e destruição. Equipes de emergência trabalham no local e autoridades alertam que civis podem estar soterrados sob os escombros.",
-      "titulo_curto": "Ataques de drones russos atingem edifício em Kyiv e deixam desalojados",
-      "palavras_chave": [
-        "Ucrânia",
-        "Rússia",
-        "Kyiv",
-        "Drones",
-        "Guerra"
-      ],
-      "urgencia_score": 96,
-      "data_publicacao": "2026-11-22T04:49:11Z",
-      "impacto_pratico": "Elevação do risco de segurança e paralisações parciais em serviços urbanos na região metropolitana de Kyiv.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Ukrinform",
-        "The Kyiv Independent",
-        "Al Jazeera English"
-      ],
-      "relevancia_score": 93,
-      "horas_em_destaque": 12,
       "paises_envolvidos": [
         "UA",
         "RU"
       ],
-      "links_internos_relacionados": []
+      "urgencia_score": 96,
+      "relevancia_score": 94,
+      "nivel_confianca": "alta",
+      "ttl_horas": 18,
+      "horas_em_destaque": 12,
+      "veiculos_origem": [
+        "Ukrinform",
+        "The Kyiv Independent"
+      ],
+      "fontes_urls": [
+        "https://www.ukrinform.net/rubric-ato/4187332-attack-on-vyshhorod-district-eight-people-may-be-trapped-under-rubble-of-apartment-building.html",
+        "https://kyivindependent.com/russian-attacks-across-ukraine-injure-30-over-past-day-as-rescue-operation-continues-near-kyiv-after-drone-strike/"
+      ],
+      "palavras_chave": [
+        "Ucrânia",
+        "Kyiv",
+        "Vyshhorod",
+        "drones",
+        "resgate",
+        "Rússia"
+      ],
+      "data_publicacao": "2026-11-22T04:49:11Z",
+      "links_internos_relacionados": [],
+      "expires_at": "2026-11-22T23:29:57Z",
+      "updated_at": "2026-11-22T10:43:20Z"
     },
     {
       "slug": "eleven-killed-in-mexican-cartel-leader-capture",
@@ -1522,193 +1563,140 @@
           "titulo_existente": "O que é uma sanção internacional?"
         }
       ]
-    },
+    }
+  ],
+  "temas_curadoria": [
     {
-      "slug": "camara-vota-projeto-de-ajuste-fiscal",
-      "categoria": "Economia_Comercio",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-23T03:19:08Z",
-      "updated_at": "2026-11-22T08:48:14Z",
-      "fontes_urls": [
-        "https://g1.globo.com/politica/noticia/2026/11/22/camara-deve-votar-projeto-de-ajuste-fiscal-nesta-segunda.ghtml"
-      ],
-      "resumo_pulso": "Conforme apuração do G1 Política, a Câmara dos Deputados agendou para esta segunda-feira (23) a votação do projeto de ajuste fiscal enviado pelo Executivo. O relator manteve o texto aprovado anteriormente pelo Senado com o objetivo de acelerar a tramitação legislativa.",
-      "titulo_curto": "Câmara dos Deputados pauta votação de pacote de ajuste fiscal nesta segunda-feira",
-      "palavras_chave": [
-        "Ajuste Fiscal",
-        "Câmara dos Deputados",
-        "Economia",
-        "Brasil"
-      ],
-      "urgencia_score": 92,
-      "data_publicacao": "2026-11-22T03:00:00Z",
-      "impacto_pratico": "Impacto direto na dinâmica fiscal do país, contas públicas e expectativas do mercado financeiro brasileiro.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "G1 Política"
-      ],
-      "relevancia_score": 93,
-      "horas_em_destaque": 12,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-o-orcamento",
-          "motivo_conexao": "Explica a dinâmica de planejamento e distribuição de recursos públicos no orçamento federal.",
-          "titulo_existente": "O que é o Orçamento?"
-        }
-      ]
-    },
-    {
-      "slug": "pec-da-seguranca-guardas-municipais-viram-policia",
-      "categoria": "Sociedade_Cultura",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-23T03:19:08Z",
-      "updated_at": "2026-11-22T03:19:08Z",
-      "fontes_urls": [
-        "https://g1.globo.com/politica/noticia/2026/11/22/pec-da-seguranca-como-uma-guarda-civil-municipal-pode-virar-policia.ghtml"
-      ],
-      "resumo_pulso": "Conforme analise do G1 Politica sobre a PEC da Seguranca Publica promulgada pelo Congresso, prefeituras estao autorizadas a criar policias municipais a partir do efetivo existente de guardas civis. A mudanca exige adequacoes juridicas locais e nao sera automatica para todas as cidades.",
-      "titulo_curto": "PEC da Seguranca permite conversao de guardas civis municipais em policias municipais",
-      "palavras_chave": [
-        "PEC da Seguranca",
-        "Guarda Municipal",
-        "Policia Municipal",
-        "seguranca publica"
-      ],
-      "urgencia_score": 90,
-      "data_publicacao": "2026-11-22T03:00:00Z",
-      "impacto_pratico": "Possivel ampliacao do poder de policia e do patrulhamento armado ostensivo em municipios brasileiros.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "G1 Politica"
-      ],
-      "relevancia_score": 91,
-      "horas_em_destaque": 12,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
-          "motivo_conexao": "Acompanhe o impacto das alteracoes constitucionais na seguranca publica e nos municipios.",
-          "titulo_existente": "Politica no Brasil"
-        }
-      ]
-    },
-    {
-      "slug": "scott-bessent-mora-em-base-militar-eua-ameaca-ira",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 18,
-      "expires_at": "2026-11-22T21:19:08Z",
-      "updated_at": "2026-11-22T03:19:08Z",
-      "fontes_urls": [
-        "https://www.aljazeera.com/video/newsfeed/2026/11/22/bessent-confirms-hes-living-on-us-military-base-over-iran-fears?traffic_source=rss"
-      ],
-      "resumo_pulso": "Segundo reportagem da Al Jazeera English, o secretario do Tesouro dos Estados Unidos, Scott Bessent, confirmou que esta residindo em uma base militar norte-americana. A decisao de seguranca foi adotada apos alertas de inteligencia israelense sobre ameacas de retaliacao iranianas a autoridades de Washington.",
-      "titulo_curto": "Secretario do Tesouro dos EUA confirma residência em base militar devido a ameacas do Ira",
-      "palavras_chave": [
-        "Scott Bessent",
-        "EUA",
-        "Ira",
-        "tesouro norte-americano",
-        "seguranca nacional"
-      ],
-      "urgencia_score": 91,
-      "data_publicacao": "2026-11-22T02:05:50Z",
-      "impacto_pratico": "Aumento no nivel de alerta geopolitico e de seguranca para altas autoridades governamentais dos EUA.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Al Jazeera English"
-      ],
-      "relevancia_score": 89,
-      "horas_em_destaque": 8,
-      "paises_envolvidos": [
-        "US",
-        "IR",
-        "IL"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/politica/estados-unidos",
-          "motivo_conexao": "Acompanhe as decisoes de seguranca e diplomacia da administracao norte-americana.",
-          "titulo_existente": "Politica nos Estados Unidos"
-        }
-      ]
-    },
-    {
-      "slug": "sul-tera-temporais-com-rajadas-de-vento-acima-de-80-km-h-no-domingo",
-      "categoria": "Ciencia_Clima",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-23T04:29:31Z",
-      "updated_at": "2026-11-22T04:29:31Z",
-      "fontes_urls": [
-        "https://www.poder360.com.br/poder-brasil/sul-tera-temporais-com-rajadas-de-vento-acima-de-80-km-h-no-domingo/"
-      ],
-      "resumo_pulso": "Conforme alertas do Poder360 e da Defesa Civil, o avanço de uma nova frente fria eleva o risco de vendavais, granizo e volumes expressivos de chuva no Rio Grande do Sul e demais estados sulistas. O cenário agrava os impactos provocados por tempestades recentes na região.",
-      "titulo_curto": "Nova frente fria mantém região Sul em alerta para temporais e ventos acima de 80 km/h",
-      "palavras_chave": [
-        "Sul",
-        "Temporais",
-        "Clima",
-        "Defesa Civil"
-      ],
-      "urgencia_score": 95,
-      "data_publicacao": "2026-11-22T02:04:02Z",
-      "impacto_pratico": "Risco de interrupção no fornecimento de energia, quedas de árvores e transtornos para o tráfego rodoviário e a aviação regional.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Poder360"
-      ],
+      "slug": "bancos-rebaixam-brasil-fuga-capital-mexico-fiscal",
+      "status": "novo",
+      "ttl_horas": 48,
+      "expires_at": "2026-11-24T09:59:50Z",
+      "updated_at": "2026-11-22T09:59:50Z",
+      "titulo_tema": "Bancos Globais Rebaixam Brasil e Preferem México Diante de Incerteza Fiscal e Juros",
+      "sintese_nerd": "A deterioração do cenário fiscal brasileiro e os juros elevados levaram bancões globais a rebaixar ativos do país, transferindo fluxo de capital emergente para o México. Essa realocação pressiona o câmbio do real e reduz a margem para cortes na taxa Selic no curto prazo.",
+      "rota_editoria": "/economia",
+      "data_publicacao": "2026-11-22T09:59:50Z",
+      "gatilho_vitrine": "EXIBIR_DESTAQUE_HOME_ECONOMIA",
+      "origem_pipeline": "curadoria",
       "relevancia_score": 92,
-      "horas_em_destaque": 12,
-      "paises_envolvidos": [
-        "BR"
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Politica",
+        "Geopolitica_Radar"
       ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/clima",
-          "motivo_conexao": "Aborda os impactos de eventos climáticos extremos e monitoramento de riscos ambientais.",
-          "titulo_existente": "Clima, Amazônia e Transição Energética"
-        }
+      "palavras_chave_busca": [
+        "investimento estrangeiro",
+        "mercados emergentes",
+        "rebaixamento brasil",
+        "mexico economia",
+        "risco fiscal",
+        "taxa selic"
       ]
     },
     {
-      "slug": "brasil-bate-recorde-turistas-estrangeiros-supera-meta-2026",
-      "categoria": "Mobilidade_Fronteiras",
+      "slug": "eua-china-corrida-tecnologica-chips-inteligencia-artificial",
+      "status": "novo",
+      "ttl_horas": 72,
+      "expires_at": "2026-11-25T09:59:50Z",
+      "updated_at": "2026-11-22T09:59:50Z",
+      "titulo_tema": "Guerra Fria da IA: Modelos Chineses Usam Nuvem Americana para Burlar Sanções de Chips",
+      "sintese_nerd": "Provedores chineses de IA aproveitam o aluguel de data centers em solo americano equipados com chips avançados para treinar e distribuir seus modelos globalmente. A brecha expõe a dificuldade dos EUA em aplicar sanções tecnológicas eficazes sem estrangular o próprio mercado de computação em nuvem.",
+      "rota_editoria": "/radar",
+      "data_publicacao": "2026-11-22T09:59:50Z",
+      "gatilho_vitrine": "BOOST_BUSCA_TECNOLOGIA_GEOPOLITICA",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 88,
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Cultura"
+      ],
+      "palavras_chave_busca": [
+        "inteligencia artificial",
+        "eua china ia",
+        "chips de ia",
+        "nvidia data centers",
+        "sancoes tecnologicas",
+        "regulacao digital"
+      ]
+    },
+    {
+      "slug": "stf-concentracao-processos-moraes-imunidade-parlamentar",
+      "status": "novo",
+      "ttl_horas": 36,
+      "expires_at": "2026-11-23T21:59:50Z",
+      "updated_at": "2026-11-22T09:59:50Z",
+      "titulo_tema": "Concentração de Processos Criminais no STF Tenciona Relação com o Congresso",
+      "sintese_nerd": "Com 44% dos casos criminais sob relatoria de um único ministro e novos votos sobre os limites da imunidade parlamentar, o STF reacende o embate institucional com o Poder Legislativo. O cenário mantém elevada a temperatura política em Brasília e pressiona a pauta de reformas no Congresso.",
+      "rota_editoria": "/politica",
+      "data_publicacao": "2026-11-22T09:59:50Z",
+      "gatilho_vitrine": "EXIBIR_RADAR_POLITICA",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 85,
+      "categoria_primaria": "Politica",
+      "categorias_cruzadas": [
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "supremo tribunal federal",
+        "alexandre de moraes",
+        "imunidade parlamentar",
+        "processos criminais",
+        "congresso nacional",
+        "flavio dino"
+      ]
+    },
+    {
+      "slug": "protestos-franca-custo-de-vida-servicos-publicos",
+      "status": "novo",
       "ttl_horas": 24,
-      "expires_at": "2026-11-23T03:19:08Z",
-      "updated_at": "2026-11-22T03:19:08Z",
-      "fontes_urls": [
-        "https://g1.globo.com/jornal-nacional/noticia/2026/11/21/brasil-recebe-75-milhoes-de-turistas-estrangeiros-e-supera-meta-do-ano-com-dois-meses-de-antecedencia.ghtml"
+      "expires_at": "2026-11-23T09:59:50Z",
+      "updated_at": "2026-11-22T09:59:50Z",
+      "titulo_tema": "França Enfrenta Sexto Fim de Semana de Manifestações Contra Custo de Vida",
+      "sintese_nerd": "Milhares de pessoas saíram às ruas em várias cidades francesas contestando a perda do poder de compra e o sucateamento dos serviços públicos. O descontentamento social na segunda maior economia da Zona do Euro reflete a persistência da inflação e pressiona o orçamento do governo francês.",
+      "rota_editoria": "/radar",
+      "data_publicacao": "2026-11-22T09:59:50Z",
+      "gatilho_vitrine": "EXIBIR_CARROSSEL_INTERNACIONAL",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 82,
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Cultura"
       ],
-      "resumo_pulso": "Segundo relatorio do Ministerio do Turismo divulgado pelo G1, o Brasil recebeu 7,5 milhoes de visitantes estrangeiros, batendo a meta anual dois meses antes do previsto. A receita gerada por turistas internacionais atingiu o patamar recorde de R$ 45,6 bilhoes.",
-      "titulo_curto": "Brasil atinge 7,5 milhoes de turistas internacionais e supera meta do ano com antecedencia",
-      "palavras_chave": [
-        "turismo",
-        "viagens internacionais",
-        "Ministerio do Turismo",
-        "receita cambial"
+      "palavras_chave_busca": [
+        "protestos franca",
+        "custo de vida europa",
+        "inflacao uniao europeia",
+        "servicos publicos",
+        "emmanuel macron",
+        "crise europeia"
+      ]
+    },
+    {
+      "slug": "terremoto-magnitude-peru-lima-alerta",
+      "status": "em_alta",
+      "ttl_horas": 12,
+      "expires_at": "2026-11-22T21:59:50Z",
+      "updated_at": "2026-11-22T09:59:50Z",
+      "titulo_tema": "Terremoto de Magnitude 6,9 Atinge o Peru e Causa Apreensão na América do Sul",
+      "sintese_nerd": "Um forte abalo sísmico de magnitude 6,9 sacudiu o Peru e foi sentido na capital Lima, acionando protocolos de emergência na região andina. Eventos sísmicos nessa escala na Costa do Pacífico exigem monitoramento contínuo de danos à infraestrutura e alertas marítimos na América do Sul.",
+      "rota_editoria": "/ultimas-noticias",
+      "data_publicacao": "2026-11-22T09:59:50Z",
+      "gatilho_vitrine": "ALERT_Urgente",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 80,
+      "categoria_primaria": "Resumo_Ultimas",
+      "categorias_cruzadas": [
+        "Geopolitica_Radar"
       ],
-      "urgencia_score": 88,
-      "data_publicacao": "2026-11-22T01:29:23Z",
-      "impacto_pratico": "Impulso no setor do comercio, hotelaria e servicos com forte entrada de divisas estrangeiras.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "G1 Economia"
-      ],
-      "relevancia_score": 90,
-      "horas_em_destaque": 12,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
-          "motivo_conexao": "Confira dados sobre crescimento do setor de servicos e entrada de capital externo no pais.",
-          "titulo_existente": "Economia no Brasil"
-        }
+      "palavras_chave_busca": [
+        "terremoto peru",
+        "tremor lima",
+        "sismo peru 6.9",
+        "defesa civil peru",
+        "alerta tsunami",
+        "abalo sismico"
       ]
     }
   ]
