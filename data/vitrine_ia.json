@@ -2,8 +2,8 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-22T19:52:54Z",
-  "batch_id": "20261122-1952",
+  "updatedAt": "2026-11-22T20:40:27Z",
+  "batch_id": "20261122-2039",
   "temas_ativos": [
     {
       "slug": "ataque-houthis-refinaria-saudita-preco-petroleo",
@@ -218,50 +218,52 @@
     },
     {
       "slug": "ataque-russo-supermercado-kyiv-vyshneve",
+      "titulo_tema": "Balanço de ataque russo contra supermercado na região de Kyiv sobe para três mortos",
+      "titulo_curto": "Balanço de ataque russo contra supermercado na região de Kyiv sobe para três mortos",
       "status": "novo",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 18,
-      "expires_at": "2026-11-23T13:26:46Z",
-      "updated_at": "2026-11-22T19:29:16Z",
-      "fontes_urls": [
-        "https://www.ukrinform.net/rubric-ato/4187456-death-toll-from-russian-attack-on-supermarket-in-vyshneve-rises-to-two.html"
-      ],
-      "titulo_tema": "Balanço de ataque russo contra supermercado na região de Kyiv sobe para dois mortos",
-      "resumo_pulso": "Segundo atualização da Ukrinform e do The Kyiv Independent, subiu para dois o número de mortos confirmados no bombardeio russo que atingiu um supermercado em horário comercial na cidade de Vyshneve, na região de Kyiv. A ofensiva deixou ainda pelo menos oito feridos e foi classificada por autoridades locais como terrorismo contra civis.",
-      "sintese_nerd": "Acentua os riscos à segurança de áreas civis na Ucrânia e pressiona por reforços urgentes em defesas antiaéreas.",
-      "titulo_curto": "Balanço de ataque russo contra supermercado na região de Kyiv sobe para dois mortos",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "ucrânia",
-        "kyiv",
-        "vyshneve",
-        "ataque russo"
-      ],
-      "urgencia_score": 95,
-      "data_publicacao": "2026-11-22T18:43:47Z",
-      "gatilho_vitrine": "Segundo atualização da Ukrinform e do The Kyiv Independent, subiu para dois o número de mortos confirmados no bombardeio russo que atingiu um supermercado em horário comercial na cidade de Vyshneve, na região de Kyiv. A ofensiva deixou ainda pelo menos oito feridos e foi classificada por autoridades locais como terrorismo contra civis.",
-      "impacto_pratico": "Acentua os riscos à segurança de áreas civis na Ucrânia e pressiona por reforços urgentes em defesas antiaéreas.",
       "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "Ukrinform",
-        "The Kyiv Independent"
-      ],
-      "relevancia_score": 92,
-      "paises_envolvidos": [
-        "UA",
-        "RU"
-      ],
       "categoria_primaria": "Geopolitica_Radar",
+      "categoria": "Geopolitica_Relacoes",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
       ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 94,
+      "urgencia_score": 96,
+      "ttl_horas": 18,
+      "expires_at": "2026-11-23T13:26:46Z",
       "palavras_chave_busca": [
         "ucrânia",
         "kyiv",
         "vyshneve",
-        "ataque russo"
-      ]
+        "ataque russo",
+        "guerra"
+      ],
+      "palavras_chave": [
+        "ucrânia",
+        "kyiv",
+        "vyshneve",
+        "ataque russo",
+        "guerra"
+      ],
+      "gatilho_vitrine": "Segundo atualização da Ukrinform e do The Kyiv Independent, subiu para três o número de mortos confirmados no bombardeio russo que atingiu um supermercado em horário comercial em Vyshneve, na região de Kyiv. A ofensiva deixou ainda pelo menos 15 feridos, incluindo três crianças, e foi tratada por autoridades locais como mais um ato deliberado de terror contra civis.",
+      "resumo_pulso": "Segundo atualização da Ukrinform e do The Kyiv Independent, subiu para três o número de mortos confirmados no bombardeio russo que atingiu um supermercado em horário comercial em Vyshneve, na região de Kyiv. A ofensiva deixou ainda pelo menos 15 feridos, incluindo três crianças, e foi tratada por autoridades locais como mais um ato deliberado de terror contra civis.",
+      "sintese_nerd": "Eleva os riscos operacionais para civis e reforça a vulnerabilidade de infraestruturas comerciais na Ucrânia.",
+      "impacto_pratico": "Eleva os riscos operacionais para civis e reforça a vulnerabilidade de infraestruturas comerciais na Ucrânia.",
+      "paises_envolvidos": [
+        "UA",
+        "RU"
+      ],
+      "veiculos_origem": [
+        "Ukrinform",
+        "The Kyiv Independent"
+      ],
+      "fontes_urls": [
+        "https://www.ukrinform.net/rubric-ato/4187471-death-toll-from-russian-strike-on-supermarket-in-vyshneve-rises-to-three.html"
+      ],
+      "data_publicacao": "2026-11-22T18:43:47Z",
+      "updated_at": "2026-11-22T20:40:27Z"
     },
     {
       "slug": "pulso-1-20261122-1840",
@@ -437,49 +439,49 @@
     },
     {
       "slug": "pane-sistema-trava-voos-delta-atlanta-eua",
-      "titulo_tema": "Agência de aviação dos EUA suspende temporariamente voos da Delta em Atlanta após falha sistêmica",
-      "titulo_curto": "Agência de aviação dos EUA suspende temporariamente voos da Delta em Atlanta após falha sistêmica",
       "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Geopolitica_Radar",
       "categoria": "Mobilidade_Fronteiras",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 88,
-      "urgencia_score": 90,
       "ttl_horas": 12,
       "expires_at": "2026-11-23T05:55:16Z",
-      "palavras_chave_busca": [
-        "faa",
-        "delta air lines",
-        "atlanta",
-        "aviação"
+      "updated_at": "2026-11-22T19:52:54Z",
+      "fontes_urls": [
+        "https://g1.globo.com/mundo/noticia/2026/11/22/suspensao-temporaria-voos-companhia-aerea-eua-falha-em-sistema.ghtml"
       ],
+      "titulo_tema": "Agência de aviação dos EUA suspende temporariamente voos da Delta em Atlanta após falha sistêmica",
+      "resumo_pulso": "Segundo apuração do G1 Mundo e da Reuters, a Administração Federal de Aviação dos Estados Unidos (FAA) determinou a suspensão temporária das decolagens da Delta Air Lines no Aeroporto Internacional Hartsfield-Jackson, em Atlanta. A medida decorre de uma pane em um sistema automatizado da companhia.",
+      "sintese_nerd": "Passageiros que utilizam o aeroporto de Atlanta enfrentam atrasos significativos e cancelamentos em rotas domésticas e internacionais.",
+      "titulo_curto": "Agência de aviação dos EUA suspende temporariamente voos da Delta em Atlanta após falha sistêmica",
+      "rota_editoria": "/radar",
       "palavras_chave": [
         "faa",
         "delta air lines",
         "atlanta",
         "aviação"
       ],
+      "urgencia_score": 90,
+      "data_publicacao": "2026-11-22T17:42:40Z",
       "gatilho_vitrine": "Segundo apuração do G1 Mundo e da Reuters, a Administração Federal de Aviação dos Estados Unidos (FAA) determinou a suspensão temporária das decolagens da Delta Air Lines no Aeroporto Internacional Hartsfield-Jackson, em Atlanta. A medida decorre de uma pane em um sistema automatizado da companhia.",
-      "resumo_pulso": "Segundo apuração do G1 Mundo e da Reuters, a Administração Federal de Aviação dos Estados Unidos (FAA) determinou a suspensão temporária das decolagens da Delta Air Lines no Aeroporto Internacional Hartsfield-Jackson, em Atlanta. A medida decorre de uma pane em um sistema automatizado da companhia.",
-      "sintese_nerd": "Passageiros que utilizam o aeroporto de Atlanta enfrentam atrasos significativos e cancelamentos em rotas domésticas e internacionais.",
       "impacto_pratico": "Passageiros que utilizam o aeroporto de Atlanta enfrentam atrasos significativos e cancelamentos em rotas domésticas e internacionais.",
-      "paises_envolvidos": [
-        "US"
-      ],
+      "origem_pipeline": "pulso",
       "veiculos_origem": [
         "G1 Mundo",
         "Reuters"
       ],
-      "fontes_urls": [
-        "https://g1.globo.com/mundo/noticia/2026/11/22/suspensao-temporaria-voos-companhia-aerea-eua-falha-em-sistema.ghtml"
+      "relevancia_score": 88,
+      "paises_envolvidos": [
+        "US"
       ],
-      "data_publicacao": "2026-11-22T17:42:40Z",
-      "updated_at": "2026-11-22T19:52:54Z"
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "faa",
+        "delta air lines",
+        "atlanta",
+        "aviação"
+      ]
     },
     {
       "slug": "ataque-com-drone-atinge-navio-russo-em-bengasi-na-libia",
@@ -596,30 +598,30 @@
         "jair bolsonaro",
         "saúde",
         "brasília",
-        "hospital df star"
+        "política"
       ],
       "palavras_chave": [
         "jair bolsonaro",
         "saúde",
         "brasília",
-        "hospital df star"
+        "política"
       ],
       "gatilho_vitrine": "Conforme boletim oficial divulgado pelo Hospital DF Star e reportado pela Agência Brasil e pelo G1, o ex-presidente Jair Bolsonaro segue internado em unidade de terapia intensiva com diagnóstico de abdômen agudo obstrutivo. O paciente mantém tratamento clínico, jejum e suporte nutricional.",
       "resumo_pulso": "Conforme boletim oficial divulgado pelo Hospital DF Star e reportado pela Agência Brasil e pelo G1, o ex-presidente Jair Bolsonaro segue internado em unidade de terapia intensiva com diagnóstico de abdômen agudo obstrutivo. O paciente mantém tratamento clínico, jejum e suporte nutricional.",
-      "sintese_nerd": "A internação hospitalar mantém o ex-presidente sob observação médica contínua, sem previsão de liberação para atividades públicas.",
-      "impacto_pratico": "A internação hospitalar mantém o ex-presidente sob observação médica contínua, sem previsão de liberação para atividades públicas.",
+      "sintese_nerd": "Mantém atenção sobre o cenário político nacional e a dinâmica institucional em Brasília.",
+      "impacto_pratico": "Mantém atenção sobre o cenário político nacional e a dinâmica institucional em Brasília.",
       "paises_envolvidos": [
         "BR"
       ],
       "veiculos_origem": [
-        "Agência Brasil (EBC)",
-        "G1 Política"
+        "G1 Política",
+        "Poder360"
       ],
       "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/bolsonaro-segue-internado-na-uti-sem-previsao-de-alta"
+        "https://g1.globo.com/politica/politico/noticia/2026/11/22/bolsonaro-esta-estavel-diz-hospital.ghtml"
       ],
       "data_publicacao": "2026-11-22T16:54:30Z",
-      "updated_at": "2026-11-22T19:52:54Z"
+      "updated_at": "2026-11-22T20:40:27Z"
     },
     {
       "slug": "colonos-israelenses-atacam-vilas-palestinas-na-cisjordania",
@@ -737,33 +739,34 @@
         "cop31",
         "clima",
         "onu",
-        "antália",
+        "turquia",
         "combustíveis fósseis"
       ],
       "palavras_chave": [
         "cop31",
         "clima",
         "onu",
-        "antália",
+        "turquia",
         "combustíveis fósseis"
       ],
-      "gatilho_vitrine": "Segundo apuração da Agência Brasil e da cobertura internacional da COP31 em Antália, a conferência encerrou-se sem a adoção de um documento final, algo inédito desde 2009. A ausência de consenso reflete divergências profundas sobre financiamento climático e a transição para eliminação de combustíveis fósseis.",
-      "resumo_pulso": "Segundo apuração da Agência Brasil e da cobertura internacional da COP31 em Antália, a conferência encerrou-se sem a adoção de um documento final, algo inédito desde 2009. A ausência de consenso reflete divergências profundas sobre financiamento climático e a transição para eliminação de combustíveis fósseis.",
-      "sintese_nerd": "A paralisação nas negociações globais pressiona governos a revisarem metas nacionais e afeta o fluxo de aportes financeiros voltados para a preservação ambiental e adaptação climática.",
-      "impacto_pratico": "A paralisação nas negociações globais pressiona governos a revisarem metas nacionais e afeta o fluxo de aportes financeiros voltados para a preservação ambiental e adaptação climática.",
+      "gatilho_vitrine": "Segundo apuração atualizada da BBC News Brasil e da Agência Brasil, a 31ª Conferência da ONU sobre Mudança do Clima (COP31), realizada em Antália, encerrou-se sem a adoção de um documento final. A falta de consenso reflete divergências profundas sobre o financiamento climático e a transição para eliminação de combustíveis fósseis, marcando a primeira vez desde 2009 que o evento termina sem acordo.",
+      "resumo_pulso": "Segundo apuração atualizada da BBC News Brasil e da Agência Brasil, a 31ª Conferência da ONU sobre Mudança do Clima (COP31), realizada em Antália, encerrou-se sem a adoção de um documento final. A falta de consenso reflete divergências profundas sobre o financiamento climático e a transição para eliminação de combustíveis fósseis, marcando a primeira vez desde 2009 que o evento termina sem acordo.",
+      "sintese_nerd": "Atrasas metas globais de descarbonização e compromete o fluxo de recursos para adaptação climática em países em desenvolvimento.",
+      "impacto_pratico": "Atrasas metas globais de descarbonização e compromete o fluxo de recursos para adaptação climática em países em desenvolvimento.",
       "paises_envolvidos": [
         "TR",
         "BR"
       ],
       "veiculos_origem": [
-        "Agência Brasil (EBC)",
-        "Parabólica"
+        "BBC News Brasil",
+        "Agência Brasil"
       ],
       "fontes_urls": [
+        "https://www.bbc.com/portuguese/articles/cq742zpk1ln4o?at_medium=RSS&at_campaign=rss",
         "https://agenciabrasil.ebc.com.br/internacional/noticia/2026-11/cop-nao-terminava-sem-acordo-desde-2009"
       ],
       "data_publicacao": "2026-11-22T16:26:50Z",
-      "updated_at": "2026-11-22T19:52:54Z"
+      "updated_at": "2026-11-22T20:40:27Z"
     },
     {
       "slug": "mega-sena-acumula-e-premio-vai-a-65-milhoes",
@@ -855,36 +858,43 @@
     },
     {
       "slug": "ataque-russo-supermercado-kyiv-vyshneve",
+      "titulo_curto": "Balanço de ataque russo contra supermercado na região de Kyiv sobe para três mortos",
+      "resumo_pulso": "Segundo atualização da Ukrinform e do The Kyiv Independent, subiu para três o número de mortos confirmados no bombardeio russo que atingiu um supermercado em horário comercial em Vyshneve, na região de Kyiv. A ofensiva deixou ainda pelo menos 15 feridos, incluindo três crianças, e foi tratada por autoridades locais como mais um ato deliberado de terror contra civis.",
+      "impacto_pratico": "Eleva os riscos operacionais para civis e reforça a vulnerabilidade de infraestruturas comerciais na Ucrânia.",
       "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 18,
-      "expires_at": "2026-11-23T13:26:46Z",
-      "updated_at": "2026-11-22T19:29:16Z",
-      "fontes_urls": [
-        "https://www.ukrinform.net/rubric-ato/4187456-death-toll-from-russian-attack-on-supermarket-in-vyshneve-rises-to-two.html"
-      ],
-      "resumo_pulso": "Segundo atualização da Ukrinform e do The Kyiv Independent, subiu para dois o número de mortos confirmados no bombardeio russo que atingiu um supermercado em horário comercial na cidade de Vyshneve, na região de Kyiv. A ofensiva deixou ainda pelo menos oito feridos e foi classificada por autoridades locais como terrorismo contra civis.",
-      "titulo_curto": "Balanço de ataque russo contra supermercado na região de Kyiv sobe para dois mortos",
-      "palavras_chave": [
-        "Ucrânia",
-        "Kyiv",
-        "Vyshneve",
-        "Ataque Russo"
-      ],
-      "urgencia_score": 95,
-      "data_publicacao": "2026-11-22T18:43:47Z",
-      "impacto_pratico": "Acentua os riscos à segurança de áreas civis na Ucrânia e pressiona por reforços urgentes em defesas antiaéreas.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Ukrinform",
-        "The Kyiv Independent"
-      ],
-      "relevancia_score": 92,
-      "horas_em_destaque": 12,
       "paises_envolvidos": [
         "UA",
         "RU"
       ],
-      "links_internos_relacionados": []
+      "urgencia_score": 96,
+      "relevancia_score": 94,
+      "nivel_confianca": "alta",
+      "ttl_horas": 18,
+      "horas_em_destaque": 12,
+      "veiculos_origem": [
+        "Ukrinform",
+        "The Kyiv Independent"
+      ],
+      "fontes_urls": [
+        "https://www.ukrinform.net/rubric-ato/4187471-death-toll-from-russian-strike-on-supermarket-in-vyshneve-rises-to-three.html"
+      ],
+      "palavras_chave": [
+        "Ucrânia",
+        "Kyiv",
+        "Vyshneve",
+        "Ataque Russo",
+        "Guerra"
+      ],
+      "data_publicacao": "2026-11-22T18:43:47Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "O que é uma sanção internacional?",
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-sancao-internacional",
+          "motivo_conexao": "Compreenda como restrições globais e sanções são aplicadas em resposta a conflitos geopolíticos."
+        }
+      ],
+      "expires_at": "2026-11-23T13:26:46Z",
+      "updated_at": "2026-11-22T20:40:27Z"
     },
     {
       "slug": "pulso-1-20261122-1840",
@@ -1093,41 +1103,41 @@
     },
     {
       "slug": "pane-sistema-trava-voos-delta-atlanta-eua",
-      "titulo_curto": "Agência de aviação dos EUA suspende temporariamente voos da Delta em Atlanta após falha sistêmica",
-      "resumo_pulso": "Segundo apuração do G1 Mundo e da Reuters, a Administração Federal de Aviação dos Estados Unidos (FAA) determinou a suspensão temporária das decolagens da Delta Air Lines no Aeroporto Internacional Hartsfield-Jackson, em Atlanta. A medida decorre de uma pane em um sistema automatizado da companhia.",
-      "impacto_pratico": "Passageiros que utilizam o aeroporto de Atlanta enfrentam atrasos significativos e cancelamentos em rotas domésticas e internacionais.",
       "categoria": "Mobilidade_Fronteiras",
-      "paises_envolvidos": [
-        "US"
-      ],
-      "urgencia_score": 90,
-      "relevancia_score": 88,
-      "nivel_confianca": "alta",
       "ttl_horas": 12,
-      "horas_em_destaque": 12,
-      "veiculos_origem": [
-        "G1 Mundo",
-        "Reuters"
-      ],
+      "expires_at": "2026-11-23T05:55:16Z",
+      "updated_at": "2026-11-22T19:52:54Z",
       "fontes_urls": [
         "https://g1.globo.com/mundo/noticia/2026/11/22/suspensao-temporaria-voos-companhia-aerea-eua-falha-em-sistema.ghtml"
       ],
+      "resumo_pulso": "Segundo apuração do G1 Mundo e da Reuters, a Administração Federal de Aviação dos Estados Unidos (FAA) determinou a suspensão temporária das decolagens da Delta Air Lines no Aeroporto Internacional Hartsfield-Jackson, em Atlanta. A medida decorre de uma pane em um sistema automatizado da companhia.",
+      "titulo_curto": "Agência de aviação dos EUA suspende temporariamente voos da Delta em Atlanta após falha sistêmica",
       "palavras_chave": [
         "FAA",
         "Delta Air Lines",
         "Atlanta",
         "Aviação"
       ],
+      "urgencia_score": 90,
       "data_publicacao": "2026-11-22T17:42:40Z",
+      "impacto_pratico": "Passageiros que utilizam o aeroporto de Atlanta enfrentam atrasos significativos e cancelamentos em rotas domésticas e internacionais.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "G1 Mundo",
+        "Reuters"
+      ],
+      "relevancia_score": 88,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "US"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "Política nos Estados Unidos",
           "url_existente": "https://www.rodandoomundo.com.br/politica/estados-unidos",
-          "motivo_conexao": "Contextualiza os impactos operacionais e regulatórios de agências federais norte-americanas."
+          "motivo_conexao": "Contextualiza os impactos operacionais e regulatórios de agências federais norte-americanas.",
+          "titulo_existente": "Política nos Estados Unidos"
         }
-      ],
-      "expires_at": "2026-11-23T05:55:16Z",
-      "updated_at": "2026-11-22T19:52:54Z"
+      ]
     },
     {
       "slug": "ataque-com-drone-atinge-navio-russo-em-bengasi-na-libia",
@@ -1198,7 +1208,7 @@
       "slug": "bolsonaro-clinicamente-estavel-uti-df-star",
       "titulo_curto": "Boletim médico confirma ex-presidente Bolsonaro estável em UTI de Brasília sem previsão de alta",
       "resumo_pulso": "Conforme boletim oficial divulgado pelo Hospital DF Star e reportado pela Agência Brasil e pelo G1, o ex-presidente Jair Bolsonaro segue internado em unidade de terapia intensiva com diagnóstico de abdômen agudo obstrutivo. O paciente mantém tratamento clínico, jejum e suporte nutricional.",
-      "impacto_pratico": "A internação hospitalar mantém o ex-presidente sob observação médica contínua, sem previsão de liberação para atividades públicas.",
+      "impacto_pratico": "Mantém atenção sobre o cenário político nacional e a dinâmica institucional em Brasília.",
       "categoria": "Sociedade_Cultura",
       "paises_envolvidos": [
         "BR"
@@ -1207,30 +1217,30 @@
       "relevancia_score": 94,
       "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 24,
+      "horas_em_destaque": 12,
       "veiculos_origem": [
-        "Agência Brasil (EBC)",
-        "G1 Política"
+        "G1 Política",
+        "Poder360"
       ],
       "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/bolsonaro-segue-internado-na-uti-sem-previsao-de-alta"
+        "https://g1.globo.com/politica/politico/noticia/2026/11/22/bolsonaro-esta-estavel-diz-hospital.ghtml"
       ],
       "palavras_chave": [
         "Jair Bolsonaro",
         "Saúde",
         "Brasília",
-        "Hospital DF Star"
+        "Política"
       ],
       "data_publicacao": "2026-11-22T16:54:30Z",
       "links_internos_relacionados": [
         {
           "titulo_existente": "Política no Brasil",
           "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
-          "motivo_conexao": "Acompanha os principais desdobramentos políticos e institucionais envolvendo lideranças nacionais."
+          "motivo_conexao": "Acompanhe os principais desdobramentos da política nacional e dos bastidores em Brasília."
         }
       ],
       "expires_at": "2026-11-23T17:12:49Z",
-      "updated_at": "2026-11-22T19:52:54Z"
+      "updated_at": "2026-11-22T20:40:27Z"
     },
     {
       "slug": "colonos-israelenses-atacam-vilas-palestinas-na-cisjordania",
@@ -1301,8 +1311,8 @@
     {
       "slug": "cop31-termina-sem-acordo-impasse-fosseis",
       "titulo_curto": "COP31 encerra-se sem acordo climático na Turquia após impasse histórico sobre fósseis",
-      "resumo_pulso": "Segundo apuração da Agência Brasil e da cobertura internacional da COP31 em Antália, a conferência encerrou-se sem a adoção de um documento final, algo inédito desde 2009. A ausência de consenso reflete divergências profundas sobre financiamento climático e a transição para eliminação de combustíveis fósseis.",
-      "impacto_pratico": "A paralisação nas negociações globais pressiona governos a revisarem metas nacionais e afeta o fluxo de aportes financeiros voltados para a preservação ambiental e adaptação climática.",
+      "resumo_pulso": "Segundo apuração atualizada da BBC News Brasil e da Agência Brasil, a 31ª Conferência da ONU sobre Mudança do Clima (COP31), realizada em Antália, encerrou-se sem a adoção de um documento final. A falta de consenso reflete divergências profundas sobre o financiamento climático e a transição para eliminação de combustíveis fósseis, marcando a primeira vez desde 2009 que o evento termina sem acordo.",
+      "impacto_pratico": "Atrasas metas globais de descarbonização e compromete o fluxo de recursos para adaptação climática em países em desenvolvimento.",
       "categoria": "Ciencia_Clima",
       "paises_envolvidos": [
         "TR",
@@ -1314,17 +1324,18 @@
       "ttl_horas": 24,
       "horas_em_destaque": 24,
       "veiculos_origem": [
-        "Agência Brasil (EBC)",
-        "Parabólica"
+        "BBC News Brasil",
+        "Agência Brasil"
       ],
       "fontes_urls": [
+        "https://www.bbc.com/portuguese/articles/cq742zpk1ln4o?at_medium=RSS&at_campaign=rss",
         "https://agenciabrasil.ebc.com.br/internacional/noticia/2026-11/cop-nao-terminava-sem-acordo-desde-2009"
       ],
       "palavras_chave": [
         "COP31",
         "Clima",
         "ONU",
-        "Antália",
+        "Turquia",
         "Combustíveis Fósseis"
       ],
       "data_publicacao": "2026-11-22T16:26:50Z",
@@ -1332,16 +1343,16 @@
         {
           "titulo_existente": "O que é a COP30?",
           "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-a-cop30",
-          "motivo_conexao": "Complementa a leitura ao explicar o histórico e a relevância das conferências do clima da ONU para o futuro do planeta."
+          "motivo_conexao": "Entenda o papel das Conferências do Clima da ONU e os impactos das negociações multilaterais."
         },
         {
           "titulo_existente": "Clima, Amazônia e Transição Energética",
           "url_existente": "https://www.rodandoomundo.com.br/clima",
-          "motivo_conexao": "Contextorna o impacto das negociações internacionais sobre as metas globais de descarbonização e transição energética."
+          "motivo_conexao": "Acompanhe os desdobramentos da transição energética e das metas globais de preservação."
         }
       ],
       "expires_at": "2026-11-24T16:26:50Z",
-      "updated_at": "2026-11-22T19:52:54Z"
+      "updated_at": "2026-11-22T20:40:27Z"
     },
     {
       "slug": "mega-sena-acumula-e-premio-vai-a-65-milhoes",
