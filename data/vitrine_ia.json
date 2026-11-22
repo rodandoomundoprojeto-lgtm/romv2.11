@@ -2,140 +2,105 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-22T15:58:13Z",
-  "batch_id": "20261122-1557",
+  "updatedAt": "2026-11-22T16:40:02Z",
+  "batch_id": "20261122-1640",
   "temas_ativos": [
     {
-      "slug": "china-espionagem-chips-nvidia-sancoes-eua",
-      "titulo_tema": "Guerra dos Chips: China intensifica ações secretas para contornar sanções dos EUA e obter semicondutores da Nvidia",
-      "status": "em_alta",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Cultura"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 92,
-      "ttl_horas": 72,
-      "expires_at": "2026-11-25T15:58:13Z",
-      "palavras_chave_busca": [
-        "chips nvidia",
-        "sanções eua china",
-        "espionagem tecnológica",
-        "semicondutores",
-        "inteligência artificial",
-        "guerra comercial"
-      ],
-      "gatilho_vitrine": "Exibir na home em destaques de tecnologia geopolítica e disputas de mercado.",
-      "sintese_nerd": "A ofensiva velada de Pequim para obter chips de inteligência artificial da Nvidia evidencia o acirramento da guerra fria tecnológica entre as duas superpotências. Para o leitor brasileiro, esse travamento global afeta a cadeia de suprimentos de hardware e encarece o avanço da infraestrutura digital local.",
-      "data_publicacao": "2026-11-22T15:58:13Z",
-      "updated_at": "2026-11-22T15:58:13Z"
-    },
-    {
-      "slug": "cop-termina-sem-acordo-impasse-combustiveis-fosseis",
-      "titulo_tema": "Fracasso na Cúpula do Clima: COP termina sem acordo sobre transição energética e financiamento",
+      "slug": "cop31-termina-sem-acordo-impasse-combustiveis-fosseis",
       "status": "novo",
+      "ttl_horas": 48,
+      "expires_at": "2026-11-24T16:26:50Z",
+      "updated_at": "2026-11-22T16:26:50Z",
+      "titulo_tema": "COP31 encerra sem acordo global após impasse sobre eliminação de combustíveis fósseis",
+      "sintese_nerd": "A incapacidade de delegados na COP31 em firmar um consenso sobre a eliminação progressiva dos combustíveis fósseis ilustra a resistência contínua de nações produtoras e o racha na diplomacia climática. O fracasso em estabelecer metas firmes adia compromissos cruciais para conter o aquecimento global e impacta diretamente os prazos de investimentos em energias limpas.",
+      "rota_editoria": "/radar",
+      "data_publicacao": "2026-11-22T16:26:50Z",
+      "gatilho_vitrine": "Explicar os impasses diplomáticos nas negociações internacionais sobre o clima e seus efeitos na transição energética",
       "origem_pipeline": "curadoria",
+      "relevancia_score": 90,
       "categoria_primaria": "Geopolitica_Radar",
       "categorias_cruzadas": [
         "Economia",
         "Politica"
       ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 90,
-      "ttl_horas": 48,
-      "expires_at": "2026-11-24T15:58:13Z",
       "palavras_chave_busca": [
-        "cop clima",
+        "cop31",
         "combustíveis fósseis",
-        "transição energética",
-        "financiamento climático",
-        "acordo do clima",
-        "união europeia"
+        "mudanças climáticas",
+        "diplomacia climática",
+        "transição energética"
       ],
-      "gatilho_vitrine": "Destacar no topo do Radar Geopolítico e no canal de Meio Ambiente e Economia.",
-      "sintese_nerd": "O encerramento sem consenso da COP reflete o racha diplomático entre países desenvolvidos e produtores de petróleo sobre a eliminação de fósseis e fundos de adaptação. A falta de diretrizes globais compromete metas ambientais e gera incerteza para a atração de investimentos verdes no Brasil.",
-      "data_publicacao": "2026-11-22T15:58:13Z",
-      "updated_at": "2026-11-22T15:58:13Z"
+      "urgencia_score": 85
     },
     {
-      "slug": "ataques-mar-baltico-escoamento-petroleo-russia",
-      "titulo_tema": "Escalação no Báltico: Ataques a embarcações ameaçam rota estratégica do petróleo e grãos russos",
+      "slug": "ataques-no-baltico-ameacam-rota-petroleo-graos-russia",
       "status": "novo",
+      "ttl_horas": 48,
+      "expires_at": "2026-11-24T16:26:50Z",
+      "updated_at": "2026-11-22T16:26:50Z",
+      "titulo_tema": "Ataques no Mar Báltico ameaçam rotas globais de energia e grãos",
+      "sintese_nerd": "A escalada de incidentes de segurança no Mar Báltico pressiona rotas vitais de exportação de petróleo e grãos da Rússia, gerando forte apreensão na Europa sobre a integridade de infraestruturas críticas. O desdobramento afeta diretamente os custos globais de energia e a previsibilidade do abastecimento de commodities agrícolas.",
+      "rota_editoria": "/radar",
+      "data_publicacao": "2026-11-22T16:26:50Z",
+      "gatilho_vitrine": "Destacar riscos logísticos internacionais e impactos nos preços globais de commodities",
       "origem_pipeline": "curadoria",
+      "relevancia_score": 92,
       "categoria_primaria": "Geopolitica_Radar",
       "categorias_cruzadas": [
-        "Economia"
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "mar báltico",
+        "rússia",
+        "petróleo",
+        "grãos",
+        "segurança energética",
+        "finlândia"
+      ]
+    },
+    {
+      "slug": "pulso-1-20261122-1640",
+      "titulo_tema": "Canada’s PM appears next to Trump impersonator at press dinner",
+      "titulo_curto": "Canada’s PM appears next to Trump impersonator at press dinner",
+      "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categoria": "Geopolitica_Relacoes",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
       ],
       "rota_editoria": "/radar",
       "relevancia_score": 88,
-      "ttl_horas": 48,
-      "expires_at": "2026-11-24T15:58:13Z",
+      "urgencia_score": 90,
+      "ttl_horas": 6,
+      "expires_at": "2026-11-22T22:40:02Z",
       "palavras_chave_busca": [
-        "mar báltico",
-        "petróleo russo",
-        "exportação de grãos",
-        "guerra ucrânia rússia",
-        "preço do barril",
-        "segurança marítima"
+        "radar",
+        "tempo real",
+        "qa"
       ],
-      "gatilho_vitrine": "Acionar alertas de volatilidade no preço do petróleo e rotas marítimas de commodities.",
-      "sintese_nerd": "As investidas contra navios no Mar Báltico colocam em risco o escoamento de commodities fundamentais da Rússia e acendem o alerta na Europa. Um gargalo nessa rota pressiona os fretes internacionais e pode causar repasses nos preços dos combustíveis no Brasil.",
-      "data_publicacao": "2026-11-22T15:58:13Z",
-      "updated_at": "2026-11-22T15:58:13Z"
-    },
-    {
-      "slug": "chile-queda-pib-recuperacao-lenta-america-latina",
-      "titulo_tema": "Sinal de Alerta Sul-Americano: Chile registra maior tombo do PIB desde 2020",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Politica"
+      "palavras_chave": [
+        "radar",
+        "tempo real",
+        "qa"
       ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 82,
-      "ttl_horas": 36,
-      "expires_at": "2026-11-24T03:58:13Z",
-      "palavras_chave_busca": [
-        "pib chile",
-        "recessão américa latina",
-        "banco central chile",
-        "investimentos privados",
-        "desaceleração econômica",
-        "comércio regional"
+      "gatilho_vitrine": "Segundo Al Jazeera English, A Donald Trump impersonator took to the stage alongside Mark Carney at Canada’s annual Parliamentary Press Gallery..",
+      "resumo_pulso": "Segundo Al Jazeera English, A Donald Trump impersonator took to the stage alongside Mark Carney at Canada’s annual Parliamentary Press Gallery..",
+      "sintese_nerd": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "paises_envolvidos": [
+        "QA"
       ],
-      "gatilho_vitrine": "Inserir em painel de Economia Sul-Americana e análises comparativas da região.",
-      "sintese_nerd": "A retração de 1,8% no PIB chileno no terceiro trimestre expõe a retração dos investimentos e a lentidão da retomada econômica regional. O resultado evidencia os desafios fiscais do país vizinho e acende um sinal de alerta para a dinâmica do comércio na América Latina.",
-      "data_publicacao": "2026-11-22T15:58:13Z",
-      "updated_at": "2026-11-22T15:58:13Z"
-    },
-    {
-      "slug": "banco-do-brasil-bbas3-avaliacoes-mercado-crise",
-      "titulo_tema": "Mercado em Foco: Ações do Banco do Brasil (BBAS3) concentram atenções após volatilidade",
-      "status": "em_alta",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Politica"
+      "veiculos_origem": [
+        "Al Jazeera English"
       ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 80,
-      "ttl_horas": 24,
-      "expires_at": "2026-11-23T15:58:13Z",
-      "palavras_chave_busca": [
-        "banco do brasil",
-        "bbas3",
-        "ações bbas3",
-        "xp investimentos",
-        "setor financeiro",
-        "ações estatais"
+      "fontes_urls": [
+        "https://www.aljazeera.com/video/newsfeed/2026/11/22/canadas-pm-appears-next-to-trump-impersonator-at-press-dinner?traffic_source=rss"
       ],
-      "gatilho_vitrine": "Exibir na seção de Finanças e Mercados impulsionado por buscas em alta sobre ações brasileiras.",
-      "sintese_nerd": "O aumento nas buscas pelas ações do Banco do Brasil reflete a incerteza dos investidores divididos entre relatórios de analistas e o risco fiscal de estatais. A precificação do ativo serve como termômetro da confiança do mercado privado na governança de corporações públicas.",
-      "data_publicacao": "2026-11-22T15:58:13Z",
-      "updated_at": "2026-11-22T15:58:13Z"
+      "data_publicacao": "2026-11-22T16:06:46+00:00",
+      "updated_at": "2026-11-22T16:40:02Z"
     },
     {
       "slug": "espioes-chips-e-a-nvidia-campanha-secreta-china-driblar-eua",
@@ -188,51 +153,116 @@
       ]
     },
     {
-      "slug": "chile-tem-maior-tombo-do-pib-desde-2020-e-bc-ve-recuperacao-mais-lenta",
+      "slug": "pulso-4-20261122-1640",
+      "titulo_tema": "Chuvas no RS afetam mais de 25 mil pessoas em 42 cidades",
+      "titulo_curto": "Chuvas no RS afetam mais de 25 mil pessoas em 42 cidades",
       "status": "novo",
-      "categoria": "Economia_Comercio",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-23T15:40:07Z",
-      "updated_at": "2026-11-22T15:40:21Z",
-      "fontes_urls": [
-        "https://www.infomoney.com.br/economia/chile-tem-maior-tombo-do-pib-desde-2020-e-bc-ve-recuperacao-mais-lenta/"
-      ],
-      "titulo_tema": "PIB do Chile registra maior queda desde 2020 e Banco Central aponta recuperação lenta",
-      "resumo_pulso": "Segundo reportagem do InfoMoney Mercados com base em declarações de Rosanna Costa, o Produto Interno Bruto (PIB) do Chile caiu 1,8% no terceiro trimestre, marcando o maior recuo desde 2020. A autoridade monetária destacou a ausência de sinais claros de retomada imediata dos investimentos.",
-      "sintese_nerd": "Reflete cautela nos mercados latino-americanos e possíveis reflexos no comércio regional.",
-      "titulo_curto": "PIB do Chile registra maior queda desde 2020 e Banco Central aponta recuperação lenta",
-      "rota_editoria": "/economia",
-      "palavras_chave": [
-        "chile",
-        "pib",
-        "banco central",
-        "economia",
-        "américa latina"
-      ],
-      "urgencia_score": 88,
-      "data_publicacao": "2026-11-22T15:30:55Z",
-      "gatilho_vitrine": "Segundo reportagem do InfoMoney Mercados com base em declarações de Rosanna Costa, o Produto Interno Bruto (PIB) do Chile caiu 1,8% no terceiro trimestre, marcando o maior recuo desde 2020. A autoridade monetária destacou a ausência de sinais claros de retomada imediata dos investimentos.",
-      "impacto_pratico": "Reflete cautela nos mercados latino-americanos e possíveis reflexos no comércio regional.",
       "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "InfoMoney Mercados"
-      ],
-      "relevancia_score": 89,
-      "paises_envolvidos": [
-        "CL"
-      ],
-      "categoria_primaria": "Economia",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categoria": "Geopolitica_Relacoes",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
       ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 76,
+      "urgencia_score": 75,
+      "ttl_horas": 6,
+      "expires_at": "2026-11-23T16:26:11Z",
+      "palavras_chave_busca": [
+        "radar",
+        "tempo real",
+        "br"
+      ],
+      "palavras_chave": [
+        "radar",
+        "tempo real",
+        "br"
+      ],
+      "gatilho_vitrine": "Segundo Agência Brasil (EBC), As chuvas que atingem Rio Grande do Sul desde a sexta-feira (20) afetaram mais de 25 mil pessoas, segundo informou a Defesa Civil do estado neste domingo (22). Foram registradas 47 ocorrências em 42 municípios gaúchos. Houve registro de danos humanos ou materiais em 39 municípios. Predominaram vendavais, queda de granizo, chuvas intensas e enxurradas. No total, 25.123",
+      "resumo_pulso": "Segundo Agência Brasil (EBC), As chuvas que atingem Rio Grande do Sul desde a sexta-feira (20) afetaram mais de 25 mil pessoas, segundo informou a Defesa Civil do estado neste domingo (22). Foram registradas 47 ocorrências em 42 municípios gaúchos. Houve registro de danos humanos ou materiais em 39 municípios. Predominaram vendavais, queda de granizo, chuvas intensas e enxurradas. No total, 25.123",
+      "sintese_nerd": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "veiculos_origem": [
+        "Agência Brasil (EBC)"
+      ],
+      "fontes_urls": [
+        "https://agenciabrasil.ebc.com.br/meio-ambiente/noticia/2026-11/chuvas-no-rs-afetam-mais-de-25-mil-pessoas-em-42-cidades"
+      ],
+      "data_publicacao": "2026-11-22T15:35:00Z",
+      "updated_at": "2026-11-22T16:40:02Z"
+    },
+    {
+      "slug": "chile-tem-maior-tombo-pib-desde-2020-recuperacao-lenta",
+      "status": "novo",
+      "ttl_horas": 72,
+      "expires_at": "2026-11-25T16:26:50Z",
+      "updated_at": "2026-11-22T16:26:50Z",
+      "titulo_tema": "PIB do Chile registra maior queda desde 2020 e Banco Central aponta recuperação lenta",
+      "sintese_nerd": "A contração de 1,8% no PIB chileno no terceiro trimestre — a pior marca desde a crise de 2020 — evidencia a inércia dos investimentos produtivos na economia andina, segundo o Banco Central local. O revés na principal economia de referência regional serve de termômetro para os desafios de crescimento e juros na América Latina.",
+      "rota_editoria": "/economia",
+      "data_publicacao": "2026-11-22T15:30:55Z",
+      "gatilho_vitrine": "Analisar o cenário macroeconômico latino-americano e os reflexos nos mercados emergentes",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 88,
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Geopolitica_Radar"
+      ],
       "palavras_chave_busca": [
         "chile",
         "pib",
-        "banco central",
-        "economia",
-        "américa latina"
+        "banco central do chile",
+        "economia da américa latina",
+        "investimentos",
+        "recuperação econômica"
       ]
+    },
+    {
+      "slug": "pulso-5-20261122-1640",
+      "titulo_tema": "Can we build a more ethical AI future?",
+      "titulo_curto": "Can we build a more ethical AI future?",
+      "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categoria": "Geopolitica_Relacoes",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 72,
+      "urgencia_score": 70,
+      "ttl_horas": 6,
+      "expires_at": "2026-11-22T22:40:02Z",
+      "palavras_chave_busca": [
+        "radar",
+        "tempo real",
+        "qa"
+      ],
+      "palavras_chave": [
+        "radar",
+        "tempo real",
+        "qa"
+      ],
+      "gatilho_vitrine": "Segundo Al Jazeera English, Marc Lamont Hill speaks with tech entrepreneur Anil Dash about AI's risks and the fight for ethical technology..",
+      "resumo_pulso": "Segundo Al Jazeera English, Marc Lamont Hill speaks with tech entrepreneur Anil Dash about AI's risks and the fight for ethical technology..",
+      "sintese_nerd": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "paises_envolvidos": [
+        "QA"
+      ],
+      "veiculos_origem": [
+        "Al Jazeera English"
+      ],
+      "fontes_urls": [
+        "https://www.aljazeera.com/video/upfront/2026/11/22/can-we-build-a-more-ethical-ai-future?traffic_source=rss"
+      ],
+      "data_publicacao": "2026-11-22T15:30:09+00:00",
+      "updated_at": "2026-11-22T16:40:02Z"
     },
     {
       "slug": "russia-strikes-gas-service-facility-in-dnipropetrovsk-region-with-guided-bomb",
@@ -524,51 +554,6 @@
       ]
     },
     {
-      "slug": "el-nino-galapagos-chuvas",
-      "status": "novo",
-      "categoria": "Ciencia_Clima",
-      "ttl_horas": 18,
-      "expires_at": "2026-11-23T07:53:12Z",
-      "updated_at": "2026-11-22T13:53:12Z",
-      "fontes_urls": [
-        "https://g1.globo.com/mundo/noticia/2026/11/22/el-nino-galapagos-chuvas.ghtml"
-      ],
-      "titulo_tema": "Fortes chuvas provocadas pelo El Niño afetam mais de 7 mil pessoas em Galápagos",
-      "resumo_pulso": "Conforme reportado pelo G1 Mundo, temporais intensos associados ao fenômeno El Niño atingiram o arquipélago equatoriano de Galápagos, deixando milhares de desalojados e causando inundações severas.",
-      "sintese_nerd": "Aumenta riscos para o turismo e infraestrutura local em ilhas preservadas do Equador.",
-      "titulo_curto": "Fortes chuvas provocadas pelo El Niño afetam mais de 7 mil pessoas em Galápagos",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "el niño",
-        "galápagos",
-        "equador",
-        "inundações"
-      ],
-      "urgencia_score": 90,
-      "data_publicacao": "2026-11-22T13:34:11Z",
-      "gatilho_vitrine": "Conforme reportado pelo G1 Mundo, temporais intensos associados ao fenômeno El Niño atingiram o arquipélago equatoriano de Galápagos, deixando milhares de desalojados e causando inundações severas.",
-      "impacto_pratico": "Aumenta riscos para o turismo e infraestrutura local em ilhas preservadas do Equador.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "G1 Mundo"
-      ],
-      "relevancia_score": 88,
-      "paises_envolvidos": [
-        "EC"
-      ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "el niño",
-        "galápagos",
-        "equador",
-        "inundações"
-      ]
-    },
-    {
       "slug": "por-que-o-cobre-queridinho-da-era-da-ia-despencou-9-em-uma-semana",
       "status": "novo",
       "categoria": "Economia_Comercio",
@@ -794,190 +779,91 @@
         "yuan",
         "mercados emergentes"
       ]
-    },
-    {
-      "slug": "camara-aprova-credito-300-mi-combater-incendios",
-      "status": "novo",
-      "categoria": "Ciencia_Clima",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-23T10:43:20Z",
-      "updated_at": "2026-11-22T10:43:20Z",
-      "fontes_urls": [
-        "https://www.poder360.com.br/poder-congresso/camara-aprova-credito-de-r-300-mi-para-combater-incendios/"
-      ],
-      "titulo_tema": "Câmara aprova crédito extraordinário de R$ 300 milhões para combate a incêndios e desastres",
-      "resumo_pulso": "Conforme divulgado pelo Poder360, a Câmara dos Deputados aprovou medida provisória que libera R$ 300 milhões em créditos extraordinários para a defesa civil. A verba será direcionada ao combate a incêndios florestais e à mitigação de estragos causados por eventos climáticos extremos.",
-      "sintese_nerd": "Aporte direto de recursos federais para municípios atingidos por emergências ambientais e aceleração das ações de resposta da Defesa Civil.",
-      "titulo_curto": "Câmara aprova crédito extraordinário de R$ 300 milhões para combate a incêndios e desastres",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "câmara dos deputados",
-        "crédito extraordinário",
-        "incêndios florestais",
-        "defesa civil",
-        "orçamento"
-      ],
-      "urgencia_score": 90,
-      "data_publicacao": "2026-11-22T10:00:10Z",
-      "gatilho_vitrine": "Conforme divulgado pelo Poder360, a Câmara dos Deputados aprovou medida provisória que libera R$ 300 milhões em créditos extraordinários para a defesa civil. A verba será direcionada ao combate a incêndios florestais e à mitigação de estragos causados por eventos climáticos extremos.",
-      "impacto_pratico": "Aporte direto de recursos federais para municípios atingidos por emergências ambientais e aceleração das ações de resposta da Defesa Civil.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "Poder360"
-      ],
-      "relevancia_score": 91,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "câmara dos deputados",
-        "crédito extraordinário",
-        "incêndios florestais",
-        "defesa civil",
-        "orçamento"
-      ]
-    }
-  ],
-  "temas_curadoria": [
-    {
-      "slug": "china-espionagem-chips-nvidia-sancoes-eua",
-      "titulo_tema": "Guerra dos Chips: China intensifica ações secretas para contornar sanções dos EUA e obter semicondutores da Nvidia",
-      "status": "em_alta",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Cultura"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 92,
-      "ttl_horas": 72,
-      "expires_at": "2026-11-25T15:58:13Z",
-      "palavras_chave_busca": [
-        "chips nvidia",
-        "sanções eua china",
-        "espionagem tecnológica",
-        "semicondutores",
-        "inteligência artificial",
-        "guerra comercial"
-      ],
-      "gatilho_vitrine": "Exibir na home em destaques de tecnologia geopolítica e disputas de mercado.",
-      "sintese_nerd": "A ofensiva velada de Pequim para obter chips de inteligência artificial da Nvidia evidencia o acirramento da guerra fria tecnológica entre as duas superpotências. Para o leitor brasileiro, esse travamento global afeta a cadeia de suprimentos de hardware e encarece o avanço da infraestrutura digital local.",
-      "data_publicacao": "2026-11-22T15:58:13Z",
-      "updated_at": "2026-11-22T15:58:13Z"
-    },
-    {
-      "slug": "cop-termina-sem-acordo-impasse-combustiveis-fosseis",
-      "titulo_tema": "Fracasso na Cúpula do Clima: COP termina sem acordo sobre transição energética e financiamento",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Politica"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 90,
-      "ttl_horas": 48,
-      "expires_at": "2026-11-24T15:58:13Z",
-      "palavras_chave_busca": [
-        "cop clima",
-        "combustíveis fósseis",
-        "transição energética",
-        "financiamento climático",
-        "acordo do clima",
-        "união europeia"
-      ],
-      "gatilho_vitrine": "Destacar no topo do Radar Geopolítico e no canal de Meio Ambiente e Economia.",
-      "sintese_nerd": "O encerramento sem consenso da COP reflete o racha diplomático entre países desenvolvidos e produtores de petróleo sobre a eliminação de fósseis e fundos de adaptação. A falta de diretrizes globais compromete metas ambientais e gera incerteza para a atração de investimentos verdes no Brasil.",
-      "data_publicacao": "2026-11-22T15:58:13Z",
-      "updated_at": "2026-11-22T15:58:13Z"
-    },
-    {
-      "slug": "ataques-mar-baltico-escoamento-petroleo-russia",
-      "titulo_tema": "Escalação no Báltico: Ataques a embarcações ameaçam rota estratégica do petróleo e grãos russos",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 88,
-      "ttl_horas": 48,
-      "expires_at": "2026-11-24T15:58:13Z",
-      "palavras_chave_busca": [
-        "mar báltico",
-        "petróleo russo",
-        "exportação de grãos",
-        "guerra ucrânia rússia",
-        "preço do barril",
-        "segurança marítima"
-      ],
-      "gatilho_vitrine": "Acionar alertas de volatilidade no preço do petróleo e rotas marítimas de commodities.",
-      "sintese_nerd": "As investidas contra navios no Mar Báltico colocam em risco o escoamento de commodities fundamentais da Rússia e acendem o alerta na Europa. Um gargalo nessa rota pressiona os fretes internacionais e pode causar repasses nos preços dos combustíveis no Brasil.",
-      "data_publicacao": "2026-11-22T15:58:13Z",
-      "updated_at": "2026-11-22T15:58:13Z"
-    },
-    {
-      "slug": "chile-queda-pib-recuperacao-lenta-america-latina",
-      "titulo_tema": "Sinal de Alerta Sul-Americano: Chile registra maior tombo do PIB desde 2020",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Politica"
-      ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 82,
-      "ttl_horas": 36,
-      "expires_at": "2026-11-24T03:58:13Z",
-      "palavras_chave_busca": [
-        "pib chile",
-        "recessão américa latina",
-        "banco central chile",
-        "investimentos privados",
-        "desaceleração econômica",
-        "comércio regional"
-      ],
-      "gatilho_vitrine": "Inserir em painel de Economia Sul-Americana e análises comparativas da região.",
-      "sintese_nerd": "A retração de 1,8% no PIB chileno no terceiro trimestre expõe a retração dos investimentos e a lentidão da retomada econômica regional. O resultado evidencia os desafios fiscais do país vizinho e acende um sinal de alerta para a dinâmica do comércio na América Latina.",
-      "data_publicacao": "2026-11-22T15:58:13Z",
-      "updated_at": "2026-11-22T15:58:13Z"
-    },
-    {
-      "slug": "banco-do-brasil-bbas3-avaliacoes-mercado-crise",
-      "titulo_tema": "Mercado em Foco: Ações do Banco do Brasil (BBAS3) concentram atenções após volatilidade",
-      "status": "em_alta",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Politica"
-      ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 80,
-      "ttl_horas": 24,
-      "expires_at": "2026-11-23T15:58:13Z",
-      "palavras_chave_busca": [
-        "banco do brasil",
-        "bbas3",
-        "ações bbas3",
-        "xp investimentos",
-        "setor financeiro",
-        "ações estatais"
-      ],
-      "gatilho_vitrine": "Exibir na seção de Finanças e Mercados impulsionado por buscas em alta sobre ações brasileiras.",
-      "sintese_nerd": "O aumento nas buscas pelas ações do Banco do Brasil reflete a incerteza dos investidores divididos entre relatórios de analistas e o risco fiscal de estatais. A precificação do ativo serve como termômetro da confiança do mercado privado na governança de corporações públicas.",
-      "data_publicacao": "2026-11-22T15:58:13Z",
-      "updated_at": "2026-11-22T15:58:13Z"
     }
   ],
   "noticias_quentes": [
+    {
+      "slug": "pulso-2-20261122-1640",
+      "titulo_curto": "Com impasse sobre combustíveis fósseis, COP31 termina sem acordo final",
+      "resumo_pulso": "Segundo Agência Brasil (EBC), A 31ª Conferência das Nações Unidas sobre Mudança do Clima (COP31), realizada em Antália, na Turquia, terminou neste domingo (22) sem a elaboração de um acordo final. O impasse ocorreu em função de divergências de países produtores de petróleo sobre menções a um prazo para o fim do uso de combustíveis fósseis. Notícias relacionadas: Sociedade civil diz que COP31 poder",
+      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "categoria": "Geopolitica_Relacoes",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "urgencia_score": 85,
+      "relevancia_score": 84,
+      "nivel_confianca": "alta",
+      "ttl_horas": 6,
+      "horas_em_destaque": 6,
+      "veiculos_origem": [
+        "Agência Brasil (EBC)"
+      ],
+      "fontes_urls": [
+        "https://agenciabrasil.ebc.com.br/meio-ambiente/noticia/2026-11/com-impasse-sobre-combustiveis-fosseis-cop31-termina-sem-acordo-final"
+      ],
+      "palavras_chave": [
+        "radar",
+        "tempo real",
+        "br"
+      ],
+      "data_publicacao": "2026-11-22T16:26:50Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "O que é inflação?",
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
+          "motivo_conexao": "Compreenda por que os preços sobem de forma generalizada, como o IPCA é calculado e de que maneira os juros do Banco Central afetam o poder de compra."
+        },
+        {
+          "titulo_existente": "Como funcionam as eleições nos EUA?",
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/como-funcionam-as-eleicoes-nos-eua",
+          "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos."
+        }
+      ],
+      "expires_at": "2026-11-24T16:26:50Z",
+      "updated_at": "2026-11-22T16:40:02Z"
+    },
+    {
+      "slug": "pulso-1-20261122-1640",
+      "titulo_curto": "Canada’s PM appears next to Trump impersonator at press dinner",
+      "resumo_pulso": "Segundo Al Jazeera English, A Donald Trump impersonator took to the stage alongside Mark Carney at Canada’s annual Parliamentary Press Gallery..",
+      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "categoria": "Geopolitica_Relacoes",
+      "paises_envolvidos": [
+        "QA"
+      ],
+      "urgencia_score": 90,
+      "relevancia_score": 88,
+      "nivel_confianca": "alta",
+      "ttl_horas": 6,
+      "horas_em_destaque": 6,
+      "veiculos_origem": [
+        "Al Jazeera English"
+      ],
+      "fontes_urls": [
+        "https://www.aljazeera.com/video/newsfeed/2026/11/22/canadas-pm-appears-next-to-trump-impersonator-at-press-dinner?traffic_source=rss"
+      ],
+      "palavras_chave": [
+        "radar",
+        "tempo real",
+        "qa"
+      ],
+      "data_publicacao": "2026-11-22T16:06:46+00:00",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "O que é inflação?",
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
+          "motivo_conexao": "Compreenda por que os preços sobem de forma generalizada, como o IPCA é calculado e de que maneira os juros do Banco Central afetam o poder de compra."
+        },
+        {
+          "titulo_existente": "Como funcionam as eleições nos EUA?",
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/como-funcionam-as-eleicoes-nos-eua",
+          "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos."
+        }
+      ],
+      "expires_at": "2026-11-22T22:40:02Z",
+      "updated_at": "2026-11-22T16:40:02Z"
+    },
     {
       "slug": "espioes-chips-e-a-nvidia-campanha-secreta-china-driblar-eua",
       "categoria": "Geopolitica_Relacoes",
@@ -1019,6 +905,47 @@
       ]
     },
     {
+      "slug": "pulso-4-20261122-1640",
+      "titulo_curto": "Chuvas no RS afetam mais de 25 mil pessoas em 42 cidades",
+      "resumo_pulso": "Segundo Agência Brasil (EBC), As chuvas que atingem Rio Grande do Sul desde a sexta-feira (20) afetaram mais de 25 mil pessoas, segundo informou a Defesa Civil do estado neste domingo (22). Foram registradas 47 ocorrências em 42 municípios gaúchos. Houve registro de danos humanos ou materiais em 39 municípios. Predominaram vendavais, queda de granizo, chuvas intensas e enxurradas. No total, 25.123",
+      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "categoria": "Geopolitica_Relacoes",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "urgencia_score": 75,
+      "relevancia_score": 76,
+      "nivel_confianca": "alta",
+      "ttl_horas": 6,
+      "horas_em_destaque": 6,
+      "veiculos_origem": [
+        "Agência Brasil (EBC)"
+      ],
+      "fontes_urls": [
+        "https://agenciabrasil.ebc.com.br/meio-ambiente/noticia/2026-11/chuvas-no-rs-afetam-mais-de-25-mil-pessoas-em-42-cidades"
+      ],
+      "palavras_chave": [
+        "radar",
+        "tempo real",
+        "br"
+      ],
+      "data_publicacao": "2026-11-22T15:35:00Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "O que é inflação?",
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
+          "motivo_conexao": "Compreenda por que os preços sobem de forma generalizada, como o IPCA é calculado e de que maneira os juros do Banco Central afetam o poder de compra."
+        },
+        {
+          "titulo_existente": "Como funcionam as eleições nos EUA?",
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/como-funcionam-as-eleicoes-nos-eua",
+          "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos."
+        }
+      ],
+      "expires_at": "2026-11-23T16:26:11Z",
+      "updated_at": "2026-11-22T16:40:02Z"
+    },
+    {
       "slug": "chile-tem-maior-tombo-do-pib-desde-2020-e-bc-ve-recuperacao-mais-lenta",
       "categoria": "Economia_Comercio",
       "ttl_horas": 24,
@@ -1055,6 +982,47 @@
           "titulo_existente": "Economia no Brasil"
         }
       ]
+    },
+    {
+      "slug": "pulso-5-20261122-1640",
+      "titulo_curto": "Can we build a more ethical AI future?",
+      "resumo_pulso": "Segundo Al Jazeera English, Marc Lamont Hill speaks with tech entrepreneur Anil Dash about AI's risks and the fight for ethical technology..",
+      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "categoria": "Geopolitica_Relacoes",
+      "paises_envolvidos": [
+        "QA"
+      ],
+      "urgencia_score": 70,
+      "relevancia_score": 72,
+      "nivel_confianca": "alta",
+      "ttl_horas": 6,
+      "horas_em_destaque": 6,
+      "veiculos_origem": [
+        "Al Jazeera English"
+      ],
+      "fontes_urls": [
+        "https://www.aljazeera.com/video/upfront/2026/11/22/can-we-build-a-more-ethical-ai-future?traffic_source=rss"
+      ],
+      "palavras_chave": [
+        "radar",
+        "tempo real",
+        "qa"
+      ],
+      "data_publicacao": "2026-11-22T15:30:09+00:00",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "O que é inflação?",
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
+          "motivo_conexao": "Compreenda por que os preços sobem de forma generalizada, como o IPCA é calculado e de que maneira os juros do Banco Central afetam o poder de compra."
+        },
+        {
+          "titulo_existente": "Como funcionam as eleições nos EUA?",
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/como-funcionam-as-eleicoes-nos-eua",
+          "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos."
+        }
+      ],
+      "expires_at": "2026-11-22T22:40:02Z",
+      "updated_at": "2026-11-22T16:40:02Z"
     },
     {
       "slug": "russia-strikes-gas-service-facility-in-dnipropetrovsk-region-with-guided-bomb",
@@ -1284,37 +1252,6 @@
           "titulo_existente": "O que é uma sanção internacional?"
         }
       ]
-    },
-    {
-      "slug": "el-nino-galapagos-chuvas",
-      "categoria": "Ciencia_Clima",
-      "ttl_horas": 18,
-      "expires_at": "2026-11-23T07:53:12Z",
-      "updated_at": "2026-11-22T13:53:12Z",
-      "fontes_urls": [
-        "https://g1.globo.com/mundo/noticia/2026/11/22/el-nino-galapagos-chuvas.ghtml"
-      ],
-      "resumo_pulso": "Conforme reportado pelo G1 Mundo, temporais intensos associados ao fenômeno El Niño atingiram o arquipélago equatoriano de Galápagos, deixando milhares de desalojados e causando inundações severas.",
-      "titulo_curto": "Fortes chuvas provocadas pelo El Niño afetam mais de 7 mil pessoas em Galápagos",
-      "palavras_chave": [
-        "El Niño",
-        "Galápagos",
-        "Equador",
-        "Inundações"
-      ],
-      "urgencia_score": 90,
-      "data_publicacao": "2026-11-22T13:34:11Z",
-      "impacto_pratico": "Aumenta riscos para o turismo e infraestrutura local em ilhas preservadas do Equador.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "G1 Mundo"
-      ],
-      "relevancia_score": 88,
-      "horas_em_destaque": 12,
-      "paises_envolvidos": [
-        "EC"
-      ],
-      "links_internos_relacionados": []
     },
     {
       "slug": "por-que-o-cobre-queridinho-da-era-da-ia-despencou-9-em-uma-semana",
@@ -1613,113 +1550,87 @@
         "RU"
       ],
       "links_internos_relacionados": []
-    },
+    }
+  ],
+  "temas_curadoria": [
     {
-      "slug": "navio-de-carga-russo-em-chamas-apos-ataque-de-drones-na-finlandia",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 18,
-      "expires_at": "2026-11-23T03:43:42Z",
-      "updated_at": "2026-11-22T11:40:14Z",
-      "fontes_urls": [
-        "https://www.aljazeera.com/video/newsfeed/2026/11/22/russian-ship-attacked-by-drone-in-baltic-sea-off-finland?traffic_source=rss",
-        "https://www.ukrinform.net/rubric-emergencies/4187353-fire-on-russian-cargo-ship-off-finland-remains-unextinguished-after-attack.html"
+      "slug": "ataques-no-baltico-ameacam-rota-petroleo-graos-russia",
+      "status": "novo",
+      "ttl_horas": 48,
+      "expires_at": "2026-11-24T16:26:50Z",
+      "updated_at": "2026-11-22T16:26:50Z",
+      "titulo_tema": "Ataques no Mar Báltico ameaçam rotas globais de energia e grãos",
+      "sintese_nerd": "A escalada de incidentes de segurança no Mar Báltico pressiona rotas vitais de exportação de petróleo e grãos da Rússia, gerando forte apreensão na Europa sobre a integridade de infraestruturas críticas. O desdobramento afeta diretamente os custos globais de energia e a previsibilidade do abastecimento de commodities agrícolas.",
+      "rota_editoria": "/radar",
+      "data_publicacao": "2026-11-22T16:26:50Z",
+      "gatilho_vitrine": "Destacar riscos logísticos internacionais e impactos nos preços globais de commodities",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 92,
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
       ],
-      "resumo_pulso": "Segundo informações da Guarda Fronteiriça Finlandesa reportadas pela Al Jazeera e Ukrinform, o navio de carga russo Sparta II continua em chamas no Mar Báltico perto da Finlândia. Equipes de emergência trabalham para conter o fogo iniciado após suposto ataque por drones.",
-      "titulo_curto": "Incêndio em navio de carga russo atinge segunda noite no Mar Báltico após ataque",
-      "palavras_chave": [
-        "Mar Báltico",
-        "Finlândia",
-        "Rússia",
-        "Sparta II",
-        "Incêndio"
-      ],
-      "urgencia_score": 94,
-      "data_publicacao": "2026-11-22T09:23:25Z",
-      "impacto_pratico": "O incidente amplia a tensão de navegação e traz alertas ambientais nas águas territoriais do Mar Báltico.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Al Jazeera English",
-        "Ukrinform",
-        "The Moscow Times"
-      ],
-      "relevancia_score": 91,
-      "horas_em_destaque": 10,
-      "paises_envolvidos": [
-        "RU",
-        "FI"
-      ],
-      "links_internos_relacionados": []
-    },
-    {
-      "slug": "senado-aprova-cordao-girassol-tulipa-vermelha-parkinson",
-      "categoria": "Sociedade_Cultura",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-23T09:43:42Z",
-      "updated_at": "2026-11-22T09:43:42Z",
-      "fontes_urls": [
-        "https://www.poder360.com.br/poder-congresso/cas-aprova-cordao-de-identificacao-para-pessoas-com-parkinson/"
-      ],
-      "resumo_pulso": "Conforme divulgado pelo Poder360, a Comissão de Assuntos Sociais do Senado aprovou projeto de lei que institui a tulipa vermelha como símbolo nacional de identificação para pessoas com doença de Parkinson. O acessório opcional visa assegurar atendimento prioritário e humanizado em serviços públicos e privados.",
-      "titulo_curto": "Comissão do Senado aprova cordão com tulipa vermelha para identificação de pessoas com Parkinson",
-      "palavras_chave": [
-        "Parkinson",
-        "Senado",
-        "Tulipa vermelha",
-        "Prioridade"
-      ],
-      "urgencia_score": 85,
-      "data_publicacao": "2026-11-22T09:20:58Z",
-      "impacto_pratico": "Garante maior facilidade na identificação e prioridade para pacientes com Parkinson no Brasil.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Poder360"
-      ],
-      "relevancia_score": 87,
-      "horas_em_destaque": 12,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/saude",
-          "motivo_conexao": "Complementa a discussão sobre avanços em direitos de saúde e acessibilidade no Brasil.",
-          "titulo_existente": "Movimentos sociais e parlamentares debatem investimentos em saúde, educação e transição ecológica"
-        }
+      "palavras_chave_busca": [
+        "mar báltico",
+        "rússia",
+        "petróleo",
+        "grãos",
+        "segurança energética",
+        "finlândia"
       ]
     },
     {
-      "slug": "eua-dominam-infraestrutura-ia-alugada-por-modelos-chineses",
-      "categoria": "Economia_Comercio",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-23T10:43:20Z",
-      "updated_at": "2026-11-22T10:43:20Z",
-      "fontes_urls": [
-        "https://www.infomoney.com.br/business/global/eua-dominam-infraestrutura-de-ia-mas-isso-tem-ajudado-os-modelos-chineses/"
+      "slug": "cop31-termina-sem-acordo-impasse-combustiveis-fosseis",
+      "status": "novo",
+      "ttl_horas": 48,
+      "expires_at": "2026-11-24T16:26:50Z",
+      "updated_at": "2026-11-22T16:26:50Z",
+      "titulo_tema": "COP31 encerra sem acordo global após impasse sobre eliminação de combustíveis fósseis",
+      "sintese_nerd": "A incapacidade de delegados na COP31 em firmar um consenso sobre a eliminação progressiva dos combustíveis fósseis ilustra a resistência contínua de nações produtoras e o racha na diplomacia climática. O fracasso em estabelecer metas firmes adia compromissos cruciais para conter o aquecimento global e impacta diretamente os prazos de investimentos em energias limpas.",
+      "rota_editoria": "/radar",
+      "data_publicacao": "2026-11-22T16:26:50Z",
+      "gatilho_vitrine": "Explicar os impasses diplomáticos nas negociações internacionais sobre o clima e seus efeitos na transição energética",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 90,
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Politica"
       ],
-      "resumo_pulso": "Segundo análise do InfoMoney, provedores de tecnologia na China têm alugado capacidade de processamento em data centers norte-americanos equipados com chips de alta performance. A prática permite que desenvolvedores chineses ofereçam grandes modelos de linguagem globalmente, contornando gargalos de infraestrutura local.",
-      "titulo_curto": "Modelos chineses de inteligência artificial utilizam infraestrutura de data centers nos EUA",
-      "palavras_chave": [
-        "Inteligência Artificial",
-        "EUA",
-        "China",
-        "data centers",
-        "chips",
-        "semicondutores"
+      "palavras_chave_busca": [
+        "cop31",
+        "combustíveis fósseis",
+        "mudanças climáticas",
+        "diplomacia climática",
+        "transição energética"
+      ]
+    },
+    {
+      "slug": "chile-tem-maior-tombo-pib-desde-2020-recuperacao-lenta",
+      "status": "novo",
+      "ttl_horas": 72,
+      "expires_at": "2026-11-25T16:26:50Z",
+      "updated_at": "2026-11-22T16:26:50Z",
+      "titulo_tema": "PIB do Chile registra maior queda desde 2020 e Banco Central aponta recuperação lenta",
+      "sintese_nerd": "A contração de 1,8% no PIB chileno no terceiro trimestre — a pior marca desde a crise de 2020 — evidencia a inércia dos investimentos produtivos na economia andina, segundo o Banco Central local. O revés na principal economia de referência regional serve de termômetro para os desafios de crescimento e juros na América Latina.",
+      "rota_editoria": "/economia",
+      "data_publicacao": "2026-11-22T15:30:55Z",
+      "gatilho_vitrine": "Analisar o cenário macroeconômico latino-americano e os reflexos nos mercados emergentes",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 88,
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Geopolitica_Radar"
       ],
-      "urgencia_score": 87,
-      "data_publicacao": "2026-11-22T08:00:00Z",
-      "impacto_pratico": "Reflexos diretos na disputa geopolítica e regulatória sobre semicondutores, capacidade computacional e normas globais de cibersegurança.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "InfoMoney Mercados"
-      ],
-      "relevancia_score": 89,
-      "horas_em_destaque": 12,
-      "paises_envolvidos": [
-        "US",
-        "CN"
-      ],
-      "links_internos_relacionados": []
+      "palavras_chave_busca": [
+        "chile",
+        "pib",
+        "banco central do chile",
+        "economia da américa latina",
+        "investimentos",
+        "recuperação econômica"
+      ]
     }
   ]
 }
