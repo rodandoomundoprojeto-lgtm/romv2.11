@@ -3,6 +3,10 @@
 (function () {
   'use strict';
 
+  if ('scrollRestoration' in history) {
+    try { history.scrollRestoration = 'manual'; } catch (e) { }
+  }
+
   var CONT = {
     sul: { n: 'América do Sul', short: 'América do Sul', box: [[-86, -56], [-33, 13]] },
     central: { n: 'América Central e Caribe', short: 'América Central', box: [[-93, 7], [-58, 28]] },
@@ -18499,6 +18503,11 @@
           .catch(function () { /* silêncio se offline */ });
       });
   }
+
+  window.loadLiveSponsors = loadLiveSponsors;
+  window.addEventListener('focus', function () {
+    loadLiveSponsors();
+  });
 
   /* ====================================================================
      SUG-CURADORIA-IA: Vitrine de Temas em Alta (/api/vitrine-em-alta)

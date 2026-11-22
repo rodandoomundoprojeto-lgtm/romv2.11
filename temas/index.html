@@ -47,6 +47,12 @@
         ? saved
         : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
       document.documentElement.setAttribute('data-theme', t);
+      if ('scrollRestoration' in history) {
+        try { history.scrollRestoration = 'manual'; } catch (e) { }
+      }
+      if (!location.hash || location.hash.indexOf('#/') === 0) {
+        window.scrollTo(0, 0);
+      }
     })();
   </script>
 </head>
