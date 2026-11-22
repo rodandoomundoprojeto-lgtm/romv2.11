@@ -2,23 +2,74 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-22T07:27:20Z",
-  "batch_id": "20261122-0726",
+  "updatedAt": "2026-11-22T07:46:01Z",
+  "batch_id": "20261122-0745",
   "temas_ativos": [
     {
-      "slug": "impasse-fossil-cop31-transicao-energetica-impactos",
-      "titulo_tema": "Impasse sobre combustiveis fosseis prorroga COP31 em meio a disputa geopolitica",
+      "slug": "ataque-russo-infraestrutura-chernihiv-dnipropetrovsk",
+      "titulo_tema": "Ataques russos atingem infraestrutura crítica nas regiões de Chernihiv e Dnipropetrovsk",
+      "titulo_curto": "Ataques russos atingem infraestrutura crítica nas regiões de Chernihiv e Dnipropetrovsk",
       "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categoria": "Geopolitica_Relacoes",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 90,
+      "urgencia_score": 92,
+      "ttl_horas": 12,
+      "expires_at": "2026-11-22T19:46:01Z",
+      "palavras_chave_busca": [
+        "ucrânia",
+        "rússia",
+        "guerra",
+        "infraestrutura"
+      ],
+      "palavras_chave": [
+        "ucrânia",
+        "rússia",
+        "guerra",
+        "infraestrutura"
+      ],
+      "gatilho_vitrine": "Conforme reportado pela agência Ukrinform, forças russas realizaram novos ataques contra instalações de infraestrutura nas regiões de Chernihiv e Dnipropetrovsk, resultando em incêndios e danos materiais. As autoridades locais seguem avaliando o impacto operacional dos bombardeios na rede de serviços essenciais.",
+      "resumo_pulso": "Conforme reportado pela agência Ukrinform, forças russas realizaram novos ataques contra instalações de infraestrutura nas regiões de Chernihiv e Dnipropetrovsk, resultando em incêndios e danos materiais. As autoridades locais seguem avaliando o impacto operacional dos bombardeios na rede de serviços essenciais.",
+      "sintese_nerd": "Possíveis interrupções no fornecimento de energia e serviços básicos nas regiões afetadas.",
+      "impacto_pratico": "Possíveis interrupções no fornecimento de energia e serviços básicos nas regiões afetadas.",
+      "paises_envolvidos": [
+        "UA",
+        "RU"
+      ],
+      "veiculos_origem": [
+        "Ukrinform"
+      ],
+      "fontes_urls": [
+        "https://www.ukrinform.net/rubric-ato/4187296-russian-strike-on-enterprise-in-chernihiv-region-sparks-fire.html",
+        "https://www.ukrinform.net/rubric-ato/4187291-russian-forces-attack-infrastructure-facilities-in-dnipropetrovsk-region.html"
+      ],
+      "data_publicacao": "2026-11-22T07:29:00Z",
+      "updated_at": "2026-11-22T07:46:01Z"
+    },
+    {
+      "slug": "impasse-fossil-cop31-transicao-energetica-impactos",
+      "status": "novo",
+      "ttl_horas": 48,
+      "expires_at": "2026-11-24T07:27:20Z",
+      "updated_at": "2026-11-22T07:27:20Z",
+      "titulo_tema": "Impasse sobre combustiveis fosseis prorroga COP31 em meio a disputa geopolitica",
+      "sintese_nerd": "O bloqueio nas negociacoes da COP31 reflete o choque entre paises dependentes da exportacao de hidrocarbonetos e blocos que exigem metas de descarbonizacao mais severas. Para o Brasil e o Sul Global, o desfecho impacta diretamente o financiamento climático internacional e os custos da transicao energetica matriz.",
+      "rota_editoria": "/radar",
+      "data_publicacao": "2026-11-22T07:27:20Z",
+      "gatilho_vitrine": "Exibir no topo do Radar Geopolitico e destacar analise de impacto no mercado de commodities energéticas.",
       "origem_pipeline": "curadoria",
+      "relevancia_score": 92,
       "categoria_primaria": "Geopolitica_Radar",
       "categorias_cruzadas": [
         "Economia",
         "Politica"
       ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 92,
-      "ttl_horas": 48,
-      "expires_at": "2026-11-24T07:27:20Z",
       "palavras_chave_busca": [
         "cop31",
         "combustiveis fosseis",
@@ -26,52 +77,52 @@
         "cupula do clima",
         "mercado de carbono",
         "petroleo global"
-      ],
-      "gatilho_vitrine": "Exibir no topo do Radar Geopolitico e destacar analise de impacto no mercado de commodities energéticas.",
-      "sintese_nerd": "O bloqueio nas negociacoes da COP31 reflete o choque entre paises dependentes da exportacao de hidrocarbonetos e blocos que exigem metas de descarbonizacao mais severas. Para o Brasil e o Sul Global, o desfecho impacta diretamente o financiamento climático internacional e os custos da transicao energetica matriz.",
-      "data_publicacao": "2026-11-22T07:27:20Z",
-      "updated_at": "2026-11-22T07:27:20Z"
+      ]
     },
     {
       "slug": "parceria-estrategica-brasil-uniao-europeia-comercio-geopolitica",
-      "titulo_tema": "Reconfiguracao das relacoes comerciais entre Brasil e Uniao Europeia",
       "status": "novo",
+      "ttl_horas": 72,
+      "expires_at": "2026-11-25T07:27:20Z",
+      "updated_at": "2026-11-22T07:27:20Z",
+      "titulo_tema": "Reconfiguracao das relacoes comerciais entre Brasil e Uniao Europeia",
+      "sintese_nerd": "A busca europeia por diversificacao de suprimentos e minerais criticos reabre espaco para consolidar acordos bilaterais e multilaterais com o Brasil. Esse movimento exige ajustes regulatorios nas exportacoes agroambientais brasileiras diante das exigencias de sustentabilidade do bloco europeu.",
+      "rota_editoria": "/politica",
+      "data_publicacao": "2026-11-22T07:27:20Z",
+      "gatilho_vitrine": "Agrupar artigos sobre diplomacia de negocios, exportacoes brasileiras e regulamentacao ambiental europeia.",
       "origem_pipeline": "curadoria",
+      "relevancia_score": 88,
       "categoria_primaria": "Politica",
       "categorias_cruzadas": [
         "Economia",
         "Geopolitica_Radar"
       ],
-      "rota_editoria": "/politica",
-      "relevancia_score": 88,
-      "ttl_horas": 72,
-      "expires_at": "2026-11-25T07:27:20Z",
       "palavras_chave_busca": [
         "uniao europeia e brasil",
         "acordo mercosul ue",
         "cadeia de suprimentos",
         "diplomacia comercial",
         "comercio exterior brasil"
-      ],
-      "gatilho_vitrine": "Agrupar artigos sobre diplomacia de negocios, exportacoes brasileiras e regulamentacao ambiental europeia.",
-      "sintese_nerd": "A busca europeia por diversificacao de suprimentos e minerais criticos reabre espaco para consolidar acordos bilaterais e multilaterais com o Brasil. Esse movimento exige ajustes regulatorios nas exportacoes agroambientais brasileiras diante das exigencias de sustentabilidade do bloco europeu.",
-      "data_publicacao": "2026-11-22T07:27:20Z",
-      "updated_at": "2026-11-22T07:27:20Z"
+      ]
     },
     {
       "slug": "novo-congresso-eua-ajuda-ucrania-fator-trump",
-      "titulo_tema": "Articulacao diplomatica da Ucrania perante o novo Congresso dos EUA e o fator Donald Trump",
       "status": "novo",
+      "ttl_horas": 48,
+      "expires_at": "2026-11-24T07:27:20Z",
+      "updated_at": "2026-11-22T07:27:20Z",
+      "titulo_tema": "Articulacao diplomatica da Ucrania perante o novo Congresso dos EUA e o fator Donald Trump",
+      "sintese_nerd": "Com a nova composicao legislativa em Washington e a influencia da agenda de Donald Trump, Kiev acelera a reorganizacao das bancadas de apoio bilateral para garantir verbas militares e financeiras. Uma eventual reducao do auxilio norte-americano forçara a Uniao Europeia a assumir custos maiores na seguranca regional.",
+      "rota_editoria": "/radar",
+      "data_publicacao": "2026-11-22T07:27:20Z",
+      "gatilho_vitrine": "Destacar na aba Geopolitica e vincular aos dashboards de conflitos no Leste Europeu e Orcamento dos EUA.",
       "origem_pipeline": "curadoria",
+      "relevancia_score": 86,
       "categoria_primaria": "Geopolitica_Radar",
       "categorias_cruzadas": [
         "Politica",
         "Economia"
       ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 86,
-      "ttl_horas": 48,
-      "expires_at": "2026-11-24T07:27:20Z",
       "palavras_chave_busca": [
         "congresso dos eua",
         "ajuda a ucrania",
@@ -79,25 +130,25 @@
         "otan",
         "guerra na ucrania",
         "diplomacia americana"
-      ],
-      "gatilho_vitrine": "Destacar na aba Geopolitica e vincular aos dashboards de conflitos no Leste Europeu e Orcamento dos EUA.",
-      "sintese_nerd": "Com a nova composicao legislativa em Washington e a influencia da agenda de Donald Trump, Kiev acelera a reorganizacao das bancadas de apoio bilateral para garantir verbas militares e financeiras. Uma eventual reducao do auxilio norte-americano forçara a Uniao Europeia a assumir custos maiores na seguranca regional.",
-      "data_publicacao": "2026-11-22T07:27:20Z",
-      "updated_at": "2026-11-22T07:27:20Z"
+      ]
     },
     {
       "slug": "reforma-tributaria-regulamentacao-cbs-ibs-reidi-contratos",
-      "titulo_tema": "Regulamentacao da Reforma Tributaria e impactos nos contratos de infraestrutura",
       "status": "novo",
+      "ttl_horas": 120,
+      "expires_at": "2026-11-27T07:27:20Z",
+      "updated_at": "2026-11-22T07:27:20Z",
+      "titulo_tema": "Regulamentacao da Reforma Tributaria e impactos nos contratos de infraestrutura",
+      "sintese_nerd": "A definicao das regras de compensacao da CBS/IBS e a manutencao do REIDI reorganizam a matriz de risco e os calculos de equilibrio economico-financeiro em grandes concessoes. A transicao do sistema tributario exige previsibilidade juridica do STF para nao desestimular investimentos privados de longo prazo.",
+      "rota_editoria": "/economia",
+      "data_publicacao": "2026-11-22T07:27:20Z",
+      "gatilho_vitrine": "Impulsionar no hub de Economia e Politica Fiscal para leitores interessados em negocios e regulamentacao.",
       "origem_pipeline": "curadoria",
+      "relevancia_score": 82,
       "categoria_primaria": "Economia",
       "categorias_cruzadas": [
         "Politica"
       ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 82,
-      "ttl_horas": 120,
-      "expires_at": "2026-11-27T07:27:20Z",
       "palavras_chave_busca": [
         "reforma tributaria",
         "cbs e ibs",
@@ -105,37 +156,33 @@
         "repeticao de indebito",
         "seguranca juridica",
         "infraestrutura brasil"
-      ],
-      "gatilho_vitrine": "Impulsionar no hub de Economia e Politica Fiscal para leitores interessados em negocios e regulamentacao.",
-      "sintese_nerd": "A definicao das regras de compensacao da CBS/IBS e a manutencao do REIDI reorganizam a matriz de risco e os calculos de equilibrio economico-financeiro em grandes concessoes. A transicao do sistema tributario exige previsibilidade juridica do STF para nao desestimular investimentos privados de longo prazo.",
-      "data_publicacao": "2026-11-22T07:27:20Z",
-      "updated_at": "2026-11-22T07:27:20Z"
+      ]
     },
     {
       "slug": "vulnerabilidade-critica-java-ciberseguranca-global-ia",
-      "titulo_tema": "Descoberta de falha critica no Java acende alerta global de ciberseguranca",
       "status": "novo",
+      "ttl_horas": 48,
+      "expires_at": "2026-11-24T07:27:20Z",
+      "updated_at": "2026-11-22T07:27:20Z",
+      "titulo_tema": "Descoberta de falha critica no Java acende alerta global de ciberseguranca",
+      "sintese_nerd": "A identificacao por IA de uma brecha estrutural no Java expoe infraestruturas criticas do sistema financeiro e corporativo mundial. O caso acelera o debate sobre auditoria automatizada e conformidade digital em empresas brasileiras de grande porte.",
+      "rota_editoria": "/cultura",
+      "data_publicacao": "2026-11-22T07:27:20Z",
+      "gatilho_vitrine": "Exibir na secao de Tecnologia e Sociedade destacando o papel da IA na auditoria de codigos corporativos.",
       "origem_pipeline": "curadoria",
+      "relevancia_score": 75,
       "categoria_primaria": "Cultura",
       "categorias_cruzadas": [
         "Economia",
         "Geopolitica_Radar"
       ],
-      "rota_editoria": "/cultura",
-      "relevancia_score": 75,
-      "ttl_horas": 48,
-      "expires_at": "2026-11-24T07:27:20Z",
       "palavras_chave_busca": [
         "vulnerabilidade java",
         "ciberseguranca",
         "seguranca digital",
         "inteligencia artificial hacking",
         "sistemas corporativos"
-      ],
-      "gatilho_vitrine": "Exibir na secao de Tecnologia e Sociedade destacando o papel da IA na auditoria de codigos corporativos.",
-      "sintese_nerd": "A identificacao por IA de uma brecha estrutural no Java expoe infraestruturas criticas do sistema financeiro e corporativo mundial. O caso acelera o debate sobre auditoria automatizada e conformidade digital em empresas brasileiras de grande porte.",
-      "data_publicacao": "2026-11-22T07:27:20Z",
-      "updated_at": "2026-11-22T07:27:20Z"
+      ]
     },
     {
       "slug": "ucrania-prepara-reativacao-bancada-congresso-eua",
@@ -792,190 +839,42 @@
         "ministerio do turismo",
         "receita cambial"
       ]
-    },
-    {
-      "slug": "cidade-eua-mares-gigantescas-california-florida",
-      "status": "novo",
-      "categoria": "Ciencia_Clima",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-23T02:01:17Z",
-      "updated_at": "2026-11-22T02:01:17Z",
-      "fontes_urls": [
-        "https://g1.globo.com/mundo/noticia/2026/11/21/cidade-nos-eua-se-prepara-para-mares-gigantescas-prefeito-pede-que-moradores-estoquem-comida-e-reconsiderem-viagens.ghtml"
-      ],
-      "titulo_tema": "Prefeituras na Flórida e Califórnia emitem alertas de marés extremas e pedem estoque de comida",
-      "resumo_pulso": "Segundo apuração do G1 Mundo, autoridades municipais de regiões da Flórida e da Califórnia intensificaram preparativos para marés anormalmente altas e tempestades severas. O fenômeno, associado aos desdobramentos do El Niño, ameaça comprometer viagens na semana do Dia de Ação de Graças.",
-      "sintese_nerd": "Perturbações severas no tráfego aéreo e rodoviário nos EUA durante feriado prolongado.",
-      "titulo_curto": "Prefeituras na Flórida e Califórnia emitem alertas de marés extremas e pedem estoque de comida",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "eua",
-        "flórida",
-        "califórnia",
-        "tempestades",
-        "el niño"
-      ],
-      "urgencia_score": 93,
-      "data_publicacao": "2026-11-22T01:24:02Z",
-      "gatilho_vitrine": "Segundo apuração do G1 Mundo, autoridades municipais de regiões da Flórida e da Califórnia intensificaram preparativos para marés anormalmente altas e tempestades severas. O fenômeno, associado aos desdobramentos do El Niño, ameaça comprometer viagens na semana do Dia de Ação de Graças.",
-      "impacto_pratico": "Perturbações severas no tráfego aéreo e rodoviário nos EUA durante feriado prolongado.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "G1 Mundo"
-      ],
-      "relevancia_score": 90,
-      "paises_envolvidos": [
-        "US"
-      ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "eua",
-        "flórida",
-        "califórnia",
-        "tempestades",
-        "el niño"
-      ]
-    }
-  ],
-  "temas_curadoria": [
-    {
-      "slug": "impasse-fossil-cop31-transicao-energetica-impactos",
-      "titulo_tema": "Impasse sobre combustiveis fosseis prorroga COP31 em meio a disputa geopolitica",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Politica"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 92,
-      "ttl_horas": 48,
-      "expires_at": "2026-11-24T07:27:20Z",
-      "palavras_chave_busca": [
-        "cop31",
-        "combustiveis fosseis",
-        "transicao energetica",
-        "cupula do clima",
-        "mercado de carbono",
-        "petroleo global"
-      ],
-      "gatilho_vitrine": "Exibir no topo do Radar Geopolitico e destacar analise de impacto no mercado de commodities energéticas.",
-      "sintese_nerd": "O bloqueio nas negociacoes da COP31 reflete o choque entre paises dependentes da exportacao de hidrocarbonetos e blocos que exigem metas de descarbonizacao mais severas. Para o Brasil e o Sul Global, o desfecho impacta diretamente o financiamento climático internacional e os custos da transicao energetica matriz.",
-      "data_publicacao": "2026-11-22T07:27:20Z",
-      "updated_at": "2026-11-22T07:27:20Z"
-    },
-    {
-      "slug": "parceria-estrategica-brasil-uniao-europeia-comercio-geopolitica",
-      "titulo_tema": "Reconfiguracao das relacoes comerciais entre Brasil e Uniao Europeia",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Politica",
-      "categorias_cruzadas": [
-        "Economia",
-        "Geopolitica_Radar"
-      ],
-      "rota_editoria": "/politica",
-      "relevancia_score": 88,
-      "ttl_horas": 72,
-      "expires_at": "2026-11-25T07:27:20Z",
-      "palavras_chave_busca": [
-        "uniao europeia e brasil",
-        "acordo mercosul ue",
-        "cadeia de suprimentos",
-        "diplomacia comercial",
-        "comercio exterior brasil"
-      ],
-      "gatilho_vitrine": "Agrupar artigos sobre diplomacia de negocios, exportacoes brasileiras e regulamentacao ambiental europeia.",
-      "sintese_nerd": "A busca europeia por diversificacao de suprimentos e minerais criticos reabre espaco para consolidar acordos bilaterais e multilaterais com o Brasil. Esse movimento exige ajustes regulatorios nas exportacoes agroambientais brasileiras diante das exigencias de sustentabilidade do bloco europeu.",
-      "data_publicacao": "2026-11-22T07:27:20Z",
-      "updated_at": "2026-11-22T07:27:20Z"
-    },
-    {
-      "slug": "novo-congresso-eua-ajuda-ucrania-fator-trump",
-      "titulo_tema": "Articulacao diplomatica da Ucrania perante o novo Congresso dos EUA e o fator Donald Trump",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Politica",
-        "Economia"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 86,
-      "ttl_horas": 48,
-      "expires_at": "2026-11-24T07:27:20Z",
-      "palavras_chave_busca": [
-        "congresso dos eua",
-        "ajuda a ucrania",
-        "donald trump",
-        "otan",
-        "guerra na ucrania",
-        "diplomacia americana"
-      ],
-      "gatilho_vitrine": "Destacar na aba Geopolitica e vincular aos dashboards de conflitos no Leste Europeu e Orcamento dos EUA.",
-      "sintese_nerd": "Com a nova composicao legislativa em Washington e a influencia da agenda de Donald Trump, Kiev acelera a reorganizacao das bancadas de apoio bilateral para garantir verbas militares e financeiras. Uma eventual reducao do auxilio norte-americano forçara a Uniao Europeia a assumir custos maiores na seguranca regional.",
-      "data_publicacao": "2026-11-22T07:27:20Z",
-      "updated_at": "2026-11-22T07:27:20Z"
-    },
-    {
-      "slug": "reforma-tributaria-regulamentacao-cbs-ibs-reidi-contratos",
-      "titulo_tema": "Regulamentacao da Reforma Tributaria e impactos nos contratos de infraestrutura",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Politica"
-      ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 82,
-      "ttl_horas": 120,
-      "expires_at": "2026-11-27T07:27:20Z",
-      "palavras_chave_busca": [
-        "reforma tributaria",
-        "cbs e ibs",
-        "reidi",
-        "repeticao de indebito",
-        "seguranca juridica",
-        "infraestrutura brasil"
-      ],
-      "gatilho_vitrine": "Impulsionar no hub de Economia e Politica Fiscal para leitores interessados em negocios e regulamentacao.",
-      "sintese_nerd": "A definicao das regras de compensacao da CBS/IBS e a manutencao do REIDI reorganizam a matriz de risco e os calculos de equilibrio economico-financeiro em grandes concessoes. A transicao do sistema tributario exige previsibilidade juridica do STF para nao desestimular investimentos privados de longo prazo.",
-      "data_publicacao": "2026-11-22T07:27:20Z",
-      "updated_at": "2026-11-22T07:27:20Z"
-    },
-    {
-      "slug": "vulnerabilidade-critica-java-ciberseguranca-global-ia",
-      "titulo_tema": "Descoberta de falha critica no Java acende alerta global de ciberseguranca",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Cultura",
-      "categorias_cruzadas": [
-        "Economia",
-        "Geopolitica_Radar"
-      ],
-      "rota_editoria": "/cultura",
-      "relevancia_score": 75,
-      "ttl_horas": 48,
-      "expires_at": "2026-11-24T07:27:20Z",
-      "palavras_chave_busca": [
-        "vulnerabilidade java",
-        "ciberseguranca",
-        "seguranca digital",
-        "inteligencia artificial hacking",
-        "sistemas corporativos"
-      ],
-      "gatilho_vitrine": "Exibir na secao de Tecnologia e Sociedade destacando o papel da IA na auditoria de codigos corporativos.",
-      "sintese_nerd": "A identificacao por IA de uma brecha estrutural no Java expoe infraestruturas criticas do sistema financeiro e corporativo mundial. O caso acelera o debate sobre auditoria automatizada e conformidade digital em empresas brasileiras de grande porte.",
-      "data_publicacao": "2026-11-22T07:27:20Z",
-      "updated_at": "2026-11-22T07:27:20Z"
     }
   ],
   "noticias_quentes": [
+    {
+      "slug": "ataque-russo-infraestrutura-chernihiv-dnipropetrovsk",
+      "titulo_curto": "Ataques russos atingem infraestrutura crítica nas regiões de Chernihiv e Dnipropetrovsk",
+      "resumo_pulso": "Conforme reportado pela agência Ukrinform, forças russas realizaram novos ataques contra instalações de infraestrutura nas regiões de Chernihiv e Dnipropetrovsk, resultando em incêndios e danos materiais. As autoridades locais seguem avaliando o impacto operacional dos bombardeios na rede de serviços essenciais.",
+      "impacto_pratico": "Possíveis interrupções no fornecimento de energia e serviços básicos nas regiões afetadas.",
+      "categoria": "Geopolitica_Relacoes",
+      "paises_envolvidos": [
+        "UA",
+        "RU"
+      ],
+      "urgencia_score": 92,
+      "relevancia_score": 90,
+      "nivel_confianca": "alta",
+      "ttl_horas": 12,
+      "horas_em_destaque": 6,
+      "veiculos_origem": [
+        "Ukrinform"
+      ],
+      "fontes_urls": [
+        "https://www.ukrinform.net/rubric-ato/4187296-russian-strike-on-enterprise-in-chernihiv-region-sparks-fire.html",
+        "https://www.ukrinform.net/rubric-ato/4187291-russian-forces-attack-infrastructure-facilities-in-dnipropetrovsk-region.html"
+      ],
+      "palavras_chave": [
+        "Ucrânia",
+        "Rússia",
+        "Guerra",
+        "Infraestrutura"
+      ],
+      "data_publicacao": "2026-11-22T07:29:00Z",
+      "links_internos_relacionados": [],
+      "expires_at": "2026-11-22T19:46:01Z",
+      "updated_at": "2026-11-22T07:46:01Z"
+    },
     {
       "slug": "ucrania-prepara-reativacao-bancada-congresso-eua",
       "categoria": "Geopolitica_Relacoes",
@@ -1697,44 +1596,139 @@
           "titulo_existente": "O que é uma sanção internacional?"
         }
       ]
+    }
+  ],
+  "temas_curadoria": [
+    {
+      "slug": "impasse-fossil-cop31-transicao-energetica-impactos",
+      "status": "novo",
+      "ttl_horas": 48,
+      "expires_at": "2026-11-24T07:27:20Z",
+      "updated_at": "2026-11-22T07:27:20Z",
+      "titulo_tema": "Impasse sobre combustiveis fosseis prorroga COP31 em meio a disputa geopolitica",
+      "sintese_nerd": "O bloqueio nas negociacoes da COP31 reflete o choque entre paises dependentes da exportacao de hidrocarbonetos e blocos que exigem metas de descarbonizacao mais severas. Para o Brasil e o Sul Global, o desfecho impacta diretamente o financiamento climático internacional e os custos da transicao energetica matriz.",
+      "rota_editoria": "/radar",
+      "data_publicacao": "2026-11-22T07:27:20Z",
+      "gatilho_vitrine": "Exibir no topo do Radar Geopolitico e destacar analise de impacto no mercado de commodities energéticas.",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 92,
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Politica"
+      ],
+      "palavras_chave_busca": [
+        "cop31",
+        "combustiveis fosseis",
+        "transicao energetica",
+        "cupula do clima",
+        "mercado de carbono",
+        "petroleo global"
+      ]
     },
     {
-      "slug": "canada-adere-ao-fundo-de-inovacao-da-otan-em-meio-a-tensoes-com-eua",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-22T23:32:56Z",
-      "updated_at": "2026-11-22T02:01:17Z",
-      "fontes_urls": [
-        "https://www.defenseone.com/policy/2026/11/canada-joins-nato-innovation-fund-promises-business-usual-us/417391/"
+      "slug": "parceria-estrategica-brasil-uniao-europeia-comercio-geopolitica",
+      "status": "novo",
+      "ttl_horas": 72,
+      "expires_at": "2026-11-25T07:27:20Z",
+      "updated_at": "2026-11-22T07:27:20Z",
+      "titulo_tema": "Reconfiguracao das relacoes comerciais entre Brasil e Uniao Europeia",
+      "sintese_nerd": "A busca europeia por diversificacao de suprimentos e minerais criticos reabre espaco para consolidar acordos bilaterais e multilaterais com o Brasil. Esse movimento exige ajustes regulatorios nas exportacoes agroambientais brasileiras diante das exigencias de sustentabilidade do bloco europeu.",
+      "rota_editoria": "/politica",
+      "data_publicacao": "2026-11-22T07:27:20Z",
+      "gatilho_vitrine": "Agrupar artigos sobre diplomacia de negocios, exportacoes brasileiras e regulamentacao ambiental europeia.",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 88,
+      "categoria_primaria": "Politica",
+      "categorias_cruzadas": [
+        "Economia",
+        "Geopolitica_Radar"
       ],
-      "resumo_pulso": "Conforme reportado pelo Defense One, o Canadá oficializou sua adesão ao Fundo de Inovação da OTAN. A decisão reflete uma reação direta às críticas e à redução de cooperação militar por parte da administração de Washington em relação aos aliados tradicionais.",
-      "titulo_curto": "Canadá ingressa no Fundo de Inovação da OTAN em sinal de distanciamento estratégico dos EUA",
-      "palavras_chave": [
-        "Canadá",
-        "OTAN",
-        "EUA",
-        "Defesa",
-        "Inovação"
+      "palavras_chave_busca": [
+        "uniao europeia e brasil",
+        "acordo mercosul ue",
+        "cadeia de suprimentos",
+        "diplomacia comercial",
+        "comercio exterior brasil"
+      ]
+    },
+    {
+      "slug": "novo-congresso-eua-ajuda-ucrania-fator-trump",
+      "status": "novo",
+      "ttl_horas": 48,
+      "expires_at": "2026-11-24T07:27:20Z",
+      "updated_at": "2026-11-22T07:27:20Z",
+      "titulo_tema": "Articulacao diplomatica da Ucrania perante o novo Congresso dos EUA e o fator Donald Trump",
+      "sintese_nerd": "Com a nova composicao legislativa em Washington e a influencia da agenda de Donald Trump, Kiev acelera a reorganizacao das bancadas de apoio bilateral para garantir verbas militares e financeiras. Uma eventual reducao do auxilio norte-americano forçara a Uniao Europeia a assumir custos maiores na seguranca regional.",
+      "rota_editoria": "/radar",
+      "data_publicacao": "2026-11-22T07:27:20Z",
+      "gatilho_vitrine": "Destacar na aba Geopolitica e vincular aos dashboards de conflitos no Leste Europeu e Orcamento dos EUA.",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 86,
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Politica",
+        "Economia"
       ],
-      "urgencia_score": 90,
-      "data_publicacao": "2026-11-21T23:16:41Z",
-      "impacto_pratico": "Realinhamento de investimentos em tecnologia de defesa e cooperação transatlântica.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Defense One"
+      "palavras_chave_busca": [
+        "congresso dos eua",
+        "ajuda a ucrania",
+        "donald trump",
+        "otan",
+        "guerra na ucrania",
+        "diplomacia americana"
+      ]
+    },
+    {
+      "slug": "reforma-tributaria-regulamentacao-cbs-ibs-reidi-contratos",
+      "status": "novo",
+      "ttl_horas": 120,
+      "expires_at": "2026-11-27T07:27:20Z",
+      "updated_at": "2026-11-22T07:27:20Z",
+      "titulo_tema": "Regulamentacao da Reforma Tributaria e impactos nos contratos de infraestrutura",
+      "sintese_nerd": "A definicao das regras de compensacao da CBS/IBS e a manutencao do REIDI reorganizam a matriz de risco e os calculos de equilibrio economico-financeiro em grandes concessoes. A transicao do sistema tributario exige previsibilidade juridica do STF para nao desestimular investimentos privados de longo prazo.",
+      "rota_editoria": "/economia",
+      "data_publicacao": "2026-11-22T07:27:20Z",
+      "gatilho_vitrine": "Impulsionar no hub de Economia e Politica Fiscal para leitores interessados em negocios e regulamentacao.",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 82,
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Politica"
       ],
-      "relevancia_score": 89,
-      "horas_em_destaque": 12,
-      "paises_envolvidos": [
-        "CA",
-        "US"
+      "palavras_chave_busca": [
+        "reforma tributaria",
+        "cbs e ibs",
+        "reidi",
+        "repeticao de indebito",
+        "seguranca juridica",
+        "infraestrutura brasil"
+      ]
+    },
+    {
+      "slug": "vulnerabilidade-critica-java-ciberseguranca-global-ia",
+      "status": "novo",
+      "ttl_horas": 48,
+      "expires_at": "2026-11-24T07:27:20Z",
+      "updated_at": "2026-11-22T07:27:20Z",
+      "titulo_tema": "Descoberta de falha critica no Java acende alerta global de ciberseguranca",
+      "sintese_nerd": "A identificacao por IA de uma brecha estrutural no Java expoe infraestruturas criticas do sistema financeiro e corporativo mundial. O caso acelera o debate sobre auditoria automatizada e conformidade digital em empresas brasileiras de grande porte.",
+      "rota_editoria": "/cultura",
+      "data_publicacao": "2026-11-22T07:27:20Z",
+      "gatilho_vitrine": "Exibir na secao de Tecnologia e Sociedade destacando o papel da IA na auditoria de codigos corporativos.",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 75,
+      "categoria_primaria": "Cultura",
+      "categorias_cruzadas": [
+        "Economia",
+        "Geopolitica_Radar"
       ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/politica/estados-unidos",
-          "motivo_conexao": "Analisa os impactos da política externa e comercial da Casa Branca com aliados.",
-          "titulo_existente": "Política nos Estados Unidos"
-        }
+      "palavras_chave_busca": [
+        "vulnerabilidade java",
+        "ciberseguranca",
+        "seguranca digital",
+        "inteligencia artificial hacking",
+        "sistemas corporativos"
       ]
     }
   ]
