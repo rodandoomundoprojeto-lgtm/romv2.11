@@ -2,13 +2,63 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-22T14:45:18Z",
-  "batch_id": "20261122-1444",
+  "updatedAt": "2026-11-22T15:40:21Z",
+  "batch_id": "20261122-1539",
   "temas_ativos": [
     {
-      "slug": "oab-sp-estima-perda-de-r-200-bilhoes-por-ano-com-pejotizacao",
-      "titulo_tema": "OAB-SP aponta perda de R$ 200 bi anuais com pejotização e entrega estudo ao STF",
-      "titulo_curto": "OAB-SP aponta perda de R$ 200 bi anuais com pejotização e entrega estudo ao STF",
+      "slug": "espioes-chips-e-a-nvidia-campanha-secreta-china-driblar-eua",
+      "titulo_tema": "Agência de espionagem da China mantém campanha secreta para obter chips de IA e burlar barreiras dos EUA",
+      "titulo_curto": "Agência de espionagem da China mantém campanha secreta para obter chips de IA e burlar barreiras dos EUA",
+      "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categoria": "Geopolitica_Relacoes",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 92,
+      "urgencia_score": 91,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-23T15:40:21Z",
+      "palavras_chave_busca": [
+        "china",
+        "eua",
+        "chips",
+        "nvidia",
+        "inteligência artificial",
+        "espionagem"
+      ],
+      "palavras_chave": [
+        "china",
+        "eua",
+        "chips",
+        "nvidia",
+        "inteligência artificial",
+        "espionagem"
+      ],
+      "gatilho_vitrine": "Segundo apuração do InfoMoney, autoridades de inteligência apontam que a China opera uma campanha clandestina para garantir acesso a chips avançados de inteligência artificial e informações estratégicas do setor, contornando restrições impostas por Washington.",
+      "resumo_pulso": "Segundo apuração do InfoMoney, autoridades de inteligência apontam que a China opera uma campanha clandestina para garantir acesso a chips avançados de inteligência artificial e informações estratégicas do setor, contornando restrições impostas por Washington.",
+      "sintese_nerd": "Acentua a disputa tecnológica global e as salvaguardas de segurança em semicondutores.",
+      "impacto_pratico": "Acentua a disputa tecnológica global e as salvaguardas de segurança em semicondutores.",
+      "paises_envolvidos": [
+        "CN",
+        "US"
+      ],
+      "veiculos_origem": [
+        "InfoMoney Mercados"
+      ],
+      "fontes_urls": [
+        "https://www.infomoney.com.br/business/global/espioes-chips-e-a-nvidia-a-campanha-secreta-da-china-para-driblar-os-eua/"
+      ],
+      "data_publicacao": "2026-11-22T15:38:47Z",
+      "updated_at": "2026-11-22T15:40:21Z"
+    },
+    {
+      "slug": "chile-tem-maior-tombo-do-pib-desde-2020-e-bc-ve-recuperacao-mais-lenta",
+      "titulo_tema": "PIB do Chile registra maior queda desde 2020 e Banco Central aponta recuperação lenta",
+      "titulo_curto": "PIB do Chile registra maior queda desde 2020 e Banco Central aponta recuperação lenta",
       "status": "novo",
       "origem_pipeline": "pulso",
       "categoria_primaria": "Economia",
@@ -18,17 +68,150 @@
         "Resumo_Ultimas"
       ],
       "rota_editoria": "/economia",
-      "relevancia_score": 90,
-      "urgencia_score": 89,
+      "relevancia_score": 89,
+      "urgencia_score": 88,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-23T15:40:07Z",
+      "palavras_chave_busca": [
+        "chile",
+        "pib",
+        "banco central",
+        "economia",
+        "américa latina"
+      ],
+      "palavras_chave": [
+        "chile",
+        "pib",
+        "banco central",
+        "economia",
+        "américa latina"
+      ],
+      "gatilho_vitrine": "Segundo reportagem do InfoMoney Mercados com base em declarações de Rosanna Costa, o Produto Interno Bruto (PIB) do Chile caiu 1,8% no terceiro trimestre, marcando o maior recuo desde 2020. A autoridade monetária destacou a ausência de sinais claros de retomada imediata dos investimentos.",
+      "resumo_pulso": "Segundo reportagem do InfoMoney Mercados com base em declarações de Rosanna Costa, o Produto Interno Bruto (PIB) do Chile caiu 1,8% no terceiro trimestre, marcando o maior recuo desde 2020. A autoridade monetária destacou a ausência de sinais claros de retomada imediata dos investimentos.",
+      "sintese_nerd": "Reflete cautela nos mercados latino-americanos e possíveis reflexos no comércio regional.",
+      "impacto_pratico": "Reflete cautela nos mercados latino-americanos e possíveis reflexos no comércio regional.",
+      "paises_envolvidos": [
+        "CL"
+      ],
+      "veiculos_origem": [
+        "InfoMoney Mercados"
+      ],
+      "fontes_urls": [
+        "https://www.infomoney.com.br/economia/chile-tem-maior-tombo-do-pib-desde-2020-e-bc-ve-recuperacao-mais-lenta/"
+      ],
+      "data_publicacao": "2026-11-22T15:30:55Z",
+      "updated_at": "2026-11-22T15:40:21Z"
+    },
+    {
+      "slug": "russia-strikes-gas-service-facility-in-dnipropetrovsk-region-with-guided-bomb",
+      "status": "novo",
+      "categoria": "Geopolitica_Relacoes",
+      "ttl_horas": 18,
+      "expires_at": "2026-11-23T09:40:07Z",
+      "updated_at": "2026-11-22T15:40:07Z",
+      "fontes_urls": [
+        "https://www.ukrinform.net/rubric-ato/4187418-russia-strikes-gas-service-facility-in-dnipropetrovsk-region-with-guided-bomb.html"
+      ],
+      "titulo_tema": "Ataque russo com bomba guiada atinge instalação de gás em Dnipropetrovsk e deixa feridos",
+      "resumo_pulso": "Segundo apuração da Ukrinform, forças russas realizaram um ataque com bomba guiada contra uma instalação de serviços de gás na região de Dnipropetrovsk, resultando em feridos e agravando os danos à infraestrutura civil ucraniana.",
+      "sintese_nerd": "Interrupção de serviços essenciais e riscos de desabastecimento de gás na região afetada.",
+      "titulo_curto": "Ataque russo com bomba guiada atinge instalação de gás em Dnipropetrovsk e deixa feridos",
+      "rota_editoria": "/radar",
+      "palavras_chave": [
+        "ucrânia",
+        "rússia",
+        "dnipropetrovsk",
+        "infraestrutura",
+        "guerra"
+      ],
+      "urgencia_score": 94,
+      "data_publicacao": "2026-11-22T15:20:00Z",
+      "gatilho_vitrine": "Segundo apuração da Ukrinform, forças russas realizaram um ataque com bomba guiada contra uma instalação de serviços de gás na região de Dnipropetrovsk, resultando em feridos e agravando os danos à infraestrutura civil ucraniana.",
+      "impacto_pratico": "Interrupção de serviços essenciais e riscos de desabastecimento de gás na região afetada.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "Ukrinform"
+      ],
+      "relevancia_score": 91,
+      "paises_envolvidos": [
+        "UA",
+        "RU"
+      ],
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "ucrânia",
+        "rússia",
+        "dnipropetrovsk",
+        "infraestrutura",
+        "guerra"
+      ]
+    },
+    {
+      "slug": "apos-temporal-governo-reconhece-calamidade-publica-em-tupancireta",
+      "titulo_tema": "Governo federal reconhece calamidade pública em Tupanciretã (RS) após temporal",
+      "titulo_curto": "Governo federal reconhece calamidade pública em Tupanciretã (RS) após temporal",
+      "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categoria": "Ciencia_Clima",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 91,
+      "urgencia_score": 94,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-23T15:40:07Z",
+      "palavras_chave_busca": [
+        "tupanciretã",
+        "rio grande do sul",
+        "calamidade pública",
+        "temporais",
+        "defesa civil"
+      ],
+      "palavras_chave": [
+        "tupanciretã",
+        "rio grande do sul",
+        "calamidade pública",
+        "temporais",
+        "defesa civil"
+      ],
+      "gatilho_vitrine": "Segundo portaria publicada em edição extra do Diário Oficial da União divulgada pela Agência Brasil (EBC), o governo federal reconheceu o estado de calamidade pública em Tupanciretã (RS). A medida visa agilizar a liberação de recursos e o suporte à população afetada pelas fortes tempestades.",
+      "resumo_pulso": "Segundo portaria publicada em edição extra do Diário Oficial da União divulgada pela Agência Brasil (EBC), o governo federal reconheceu o estado de calamidade pública em Tupanciretã (RS). A medida visa agilizar a liberação de recursos e o suporte à população afetada pelas fortes tempestades.",
+      "sintese_nerd": "Facilita o envio de verbas emergenciais e apoio direto aos moradores desalojados ou prejudicados pelas enchentes.",
+      "impacto_pratico": "Facilita o envio de verbas emergenciais e apoio direto aos moradores desalojados ou prejudicados pelas enchentes.",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "veiculos_origem": [
+        "Agência Brasil (EBC)"
+      ],
+      "fontes_urls": [
+        "https://agenciabrasil.ebc.com.br/meio-ambiente/noticia/2026-11/apos-temporal-governo-reconhece-calamidade-publica-em-tupancireta"
+      ],
+      "data_publicacao": "2026-11-22T14:53:00Z",
+      "updated_at": "2026-11-22T15:40:21Z"
+    },
+    {
+      "slug": "oab-sp-estima-perda-de-r-200-bilhoes-por-ano-com-pejotizacao",
+      "status": "novo",
+      "categoria": "Economia_Comercio",
       "ttl_horas": 24,
       "expires_at": "2026-11-23T14:45:18Z",
-      "palavras_chave_busca": [
-        "pejotização",
-        "oab-sp",
-        "stf",
-        "previdência",
-        "trabalho"
+      "updated_at": "2026-11-22T14:45:18Z",
+      "fontes_urls": [
+        "https://www.poder360.com.br/poder-justica/oab-sp-estima-perda-de-r-200-bilhoes-por-ano-com-pejotizacao/"
       ],
+      "titulo_tema": "OAB-SP aponta perda de R$ 200 bi anuais com pejotização e entrega estudo ao STF",
+      "resumo_pulso": "Conforme reportado pelo Poder360, a OAB de São Paulo protocolou no Supremo Tribunal Federal um estudo calculando que a migração de trabalhadores para o modelo PJ gera perdas bilionárias em tributos e na Previdência Social.",
+      "sintese_nerd": "Potenciais mudanças na jurisprudência trabalhista brasileira e impacto nas contas da Previdência.",
+      "titulo_curto": "OAB-SP aponta perda de R$ 200 bi anuais com pejotização e entrega estudo ao STF",
+      "rota_editoria": "/economia",
       "palavras_chave": [
         "pejotização",
         "oab-sp",
@@ -36,26 +219,133 @@
         "previdência",
         "trabalho"
       ],
+      "urgencia_score": 89,
+      "data_publicacao": "2026-11-22T14:33:55Z",
       "gatilho_vitrine": "Conforme reportado pelo Poder360, a OAB de São Paulo protocolou no Supremo Tribunal Federal um estudo calculando que a migração de trabalhadores para o modelo PJ gera perdas bilionárias em tributos e na Previdência Social.",
-      "resumo_pulso": "Conforme reportado pelo Poder360, a OAB de São Paulo protocolou no Supremo Tribunal Federal um estudo calculando que a migração de trabalhadores para o modelo PJ gera perdas bilionárias em tributos e na Previdência Social.",
-      "sintese_nerd": "Potenciais mudanças na jurisprudência trabalhista brasileira e impacto nas contas da Previdência.",
       "impacto_pratico": "Potenciais mudanças na jurisprudência trabalhista brasileira e impacto nas contas da Previdência.",
-      "paises_envolvidos": [
-        "BR"
-      ],
+      "origem_pipeline": "pulso",
       "veiculos_origem": [
         "Poder360"
       ],
-      "fontes_urls": [
-        "https://www.poder360.com.br/poder-justica/oab-sp-estima-perda-de-r-200-bilhoes-por-ano-com-pejotizacao/"
+      "relevancia_score": 90,
+      "paises_envolvidos": [
+        "BR"
       ],
-      "data_publicacao": "2026-11-22T14:33:55Z",
-      "updated_at": "2026-11-22T14:45:18Z"
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "pejotização",
+        "oab-sp",
+        "stf",
+        "previdência",
+        "trabalho"
+      ]
+    },
+    {
+      "slug": "boca-juniors-vence-sul-americana-sobre-o-atletico-mg",
+      "titulo_tema": "Boca Juniors derrota o Atlético-MG por 2 a 0 e conquista a Copa Sul-Americana de 2026",
+      "titulo_curto": "Boca Juniors derrota o Atlético-MG por 2 a 0 e conquista a Copa Sul-Americana de 2026",
+      "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Cultura",
+      "categoria": "Sociedade_Cultura",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/cultura",
+      "relevancia_score": 88,
+      "urgencia_score": 85,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-23T15:40:21Z",
+      "palavras_chave_busca": [
+        "boca juniors",
+        "atlético-mg",
+        "copa sul-americana",
+        "futebol",
+        "colômbia"
+      ],
+      "palavras_chave": [
+        "boca juniors",
+        "atlético-mg",
+        "copa sul-americana",
+        "futebol",
+        "colômbia"
+      ],
+      "gatilho_vitrine": "Conforme noticiado pela Agência Brasil (EBC), o Boca Juniors venceu o Atlético-MG por 2 a 0 em partida realizada em Barranquilla, na Colômbia. Com gols de Ascacíbar e Merentiel, o clube argentino garantiu o título da Copa Sul-Americana, ampliando o histórico de vices do time mineiro.",
+      "resumo_pulso": "Conforme noticiado pela Agência Brasil (EBC), o Boca Juniors venceu o Atlético-MG por 2 a 0 em partida realizada em Barranquilla, na Colômbia. Com gols de Ascacíbar e Merentiel, o clube argentino garantiu o título da Copa Sul-Americana, ampliando o histórico de vices do time mineiro.",
+      "sintese_nerd": "Movimentação intensa de torcedores e impacto no cenário do futebol sul-americano.",
+      "impacto_pratico": "Movimentação intensa de torcedores e impacto no cenário do futebol sul-americano.",
+      "paises_envolvidos": [
+        "AR",
+        "BR",
+        "CO"
+      ],
+      "veiculos_origem": [
+        "Agência Brasil (EBC)"
+      ],
+      "fontes_urls": [
+        "https://agenciabrasil.ebc.com.br/esportes/noticia/2026-11/boca-juniors-vence-sul-americana-sobre-o-atletico-mg"
+      ],
+      "data_publicacao": "2026-11-22T14:28:00Z",
+      "updated_at": "2026-11-22T15:40:21Z"
     },
     {
       "slug": "iran-unveils-dual-missile-launcher-new-missile-city-what-to-know",
+      "status": "novo",
+      "categoria": "Geopolitica_Relacoes",
+      "ttl_horas": 18,
+      "expires_at": "2026-11-23T08:45:18Z",
+      "updated_at": "2026-11-22T14:45:18Z",
+      "fontes_urls": [
+        "https://www.aljazeera.com/news/2026/11/22/iran-unveils-dual-missile-launcher-new-missile-city-what-to-know?traffic_source=rss"
+      ],
       "titulo_tema": "Irã exibe novo lançador duplo de mísseis e complexo subterrâneo em meio a tensões com EUA",
+      "resumo_pulso": "Segundo apuração da Al Jazeera English, autoridades militares iranianas inauguraram uma nova instalação subterrânea apelidada de 'cidade de mísseis' e revelaram um lançador duplo de artefatos balísticos, em demonstração de capacidade bélica apesar de ataques recentes.",
+      "sintese_nerd": "Aumento da tensão no Golfo Pérsico e riscos geopolíticos para rotas de energia e tráfego marítimo internacional.",
       "titulo_curto": "Irã exibe novo lançador duplo de mísseis e complexo subterrâneo em meio a tensões com EUA",
+      "rota_editoria": "/radar",
+      "palavras_chave": [
+        "irã",
+        "mísseis",
+        "golfo pérsico",
+        "defesa",
+        "eua"
+      ],
+      "urgencia_score": 96,
+      "data_publicacao": "2026-11-22T14:20:41Z",
+      "gatilho_vitrine": "Segundo apuração da Al Jazeera English, autoridades militares iranianas inauguraram uma nova instalação subterrânea apelidada de 'cidade de mísseis' e revelaram um lançador duplo de artefatos balísticos, em demonstração de capacidade bélica apesar de ataques recentes.",
+      "impacto_pratico": "Aumento da tensão no Golfo Pérsico e riscos geopolíticos para rotas de energia e tráfego marítimo internacional.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "Al Jazeera English"
+      ],
+      "relevancia_score": 93,
+      "paises_envolvidos": [
+        "IR",
+        "US",
+        "BH"
+      ],
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "irã",
+        "mísseis",
+        "golfo pérsico",
+        "defesa",
+        "eua"
+      ]
+    },
+    {
+      "slug": "russian-attacks-cause-serious-damage-to-odesa-power-grid",
+      "titulo_tema": "Ataques russos intensificam danos à rede elétrica de Odesa e geram novas interrupções",
+      "titulo_curto": "Ataques russos intensificam danos à rede elétrica de Odesa e geram novas interrupções",
       "status": "novo",
       "origem_pipeline": "pulso",
       "categoria_primaria": "Geopolitica_Radar",
@@ -70,86 +360,36 @@
       "ttl_horas": 18,
       "expires_at": "2026-11-23T08:45:18Z",
       "palavras_chave_busca": [
-        "irã",
-        "mísseis",
-        "golfo pérsico",
-        "defesa",
-        "eua"
+        "odesa",
+        "ucrânia",
+        "energia",
+        "ataques russos",
+        "infraestrutura"
       ],
       "palavras_chave": [
-        "irã",
-        "mísseis",
-        "golfo pérsico",
-        "defesa",
-        "eua"
-      ],
-      "gatilho_vitrine": "Segundo apuração da Al Jazeera English, autoridades militares iranianas inauguraram uma nova instalação subterrânea apelidada de 'cidade de mísseis' e revelaram um lançador duplo de artefatos balísticos, em demonstração de capacidade bélica apesar de ataques recentes.",
-      "resumo_pulso": "Segundo apuração da Al Jazeera English, autoridades militares iranianas inauguraram uma nova instalação subterrânea apelidada de 'cidade de mísseis' e revelaram um lançador duplo de artefatos balísticos, em demonstração de capacidade bélica apesar de ataques recentes.",
-      "sintese_nerd": "Aumento da tensão no Golfo Pérsico e riscos geopolíticos para rotas de energia e tráfego marítimo internacional.",
-      "impacto_pratico": "Aumento da tensão no Golfo Pérsico e riscos geopolíticos para rotas de energia e tráfego marítimo internacional.",
-      "paises_envolvidos": [
-        "IR",
-        "US",
-        "BH"
-      ],
-      "veiculos_origem": [
-        "Al Jazeera English"
-      ],
-      "fontes_urls": [
-        "https://www.aljazeera.com/news/2026/11/22/iran-unveils-dual-missile-launcher-new-missile-city-what-to-know?traffic_source=rss"
-      ],
-      "data_publicacao": "2026-11-22T14:20:41Z",
-      "updated_at": "2026-11-22T14:45:18Z"
-    },
-    {
-      "slug": "russian-attacks-cause-serious-damage-to-odesa-power-grid",
-      "titulo_tema": "Ataques russos causam danos severos à rede elétrica de Odesa e geram apagões",
-      "titulo_curto": "Ataques russos causam danos severos à rede elétrica de Odesa e geram apagões",
-      "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Geopolitica_Radar",
-      "categoria": "Geopolitica_Relacoes",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 91,
-      "urgencia_score": 95,
-      "ttl_horas": 18,
-      "expires_at": "2026-11-23T08:45:18Z",
-      "palavras_chave_busca": [
-        "ucrânia",
         "odesa",
-        "energia",
-        "ataques",
-        "rússia"
-      ],
-      "palavras_chave": [
         "ucrânia",
-        "odesa",
         "energia",
-        "ataques",
-        "rússia"
+        "ataques russos",
+        "infraestrutura"
       ],
-      "gatilho_vitrine": "Segundo o The Kyiv Independent, equipes de emergência operam para restabelecer o fornecimento de energia em Odesa após novos bombardeios russos danificarem criticamente a infraestrutura local.",
-      "resumo_pulso": "Segundo o The Kyiv Independent, equipes de emergência operam para restabelecer o fornecimento de energia em Odesa após novos bombardeios russos danificarem criticamente a infraestrutura local.",
-      "sintese_nerd": "Desabastecimento de energia e necessidade de uso de centros de resiliência e aquecimento na Ucrânia.",
-      "impacto_pratico": "Desabastecimento de energia e necessidade de uso de centros de resiliência e aquecimento na Ucrânia.",
+      "gatilho_vitrine": "Segundo apuração da Ukrenergo e do The Kyiv Independent, equipes de emergência enfrentam dificuldades contínuas e alertas de ataque aéreo para restabelecer o fornecimento de energia em Odesa após novos bombardeios russos danificarem criticamente a infraestrutura local.",
+      "resumo_pulso": "Segundo apuração da Ukrenergo e do The Kyiv Independent, equipes de emergência enfrentam dificuldades contínuas e alertas de ataque aéreo para restabelecer o fornecimento de energia em Odesa após novos bombardeios russos danificarem criticamente a infraestrutura local.",
+      "sintese_nerd": "Apagões recorrentes afetam serviços essenciais e o cotidiano de moradores na região sul da Ucrânia.",
+      "impacto_pratico": "Apagões recorrentes afetam serviços essenciais e o cotidiano de moradores na região sul da Ucrânia.",
       "paises_envolvidos": [
         "UA",
         "RU"
       ],
       "veiculos_origem": [
         "The Kyiv Independent",
-        "Ukrinform"
+        "Ukrenergo"
       ],
       "fontes_urls": [
-        "https://kyivindependent.com/russian-attacks-cause-serious-damage-to-odesa-power-grid-as-outages-disrupt-city/",
-        "https://www.ukrinform.net/rubric-society/4187397-odesa-has-291-invincibility-centers-in-operation.html"
+        "https://kyivindependent.com/russian-attacks-cause-serious-damage-to-odesa-power-grid-as-outages-disrupt-city/"
       ],
       "data_publicacao": "2026-11-22T14:12:00Z",
-      "updated_at": "2026-11-22T14:45:18Z"
+      "updated_at": "2026-11-22T15:40:21Z"
     },
     {
       "slug": "el-nino-galapagos-chuvas",
@@ -648,271 +888,175 @@
         "combate subterrâneo",
         "gasoduto"
       ]
-    },
-    {
-      "slug": "navio-de-carga-russo-em-chamas-apos-ataque-de-drones-na-finlandia",
-      "status": "novo",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 18,
-      "expires_at": "2026-11-23T03:43:42Z",
-      "updated_at": "2026-11-22T11:40:14Z",
-      "fontes_urls": [
-        "https://www.aljazeera.com/video/newsfeed/2026/11/22/russian-ship-attacked-by-drone-in-baltic-sea-off-finland?traffic_source=rss",
-        "https://www.ukrinform.net/rubric-emergencies/4187353-fire-on-russian-cargo-ship-off-finland-remains-unextinguished-after-attack.html"
-      ],
-      "titulo_tema": "Incêndio em navio de carga russo atinge segunda noite no Mar Báltico após ataque",
-      "resumo_pulso": "Segundo informações da Guarda Fronteiriça Finlandesa reportadas pela Al Jazeera e Ukrinform, o navio de carga russo Sparta II continua em chamas no Mar Báltico perto da Finlândia. Equipes de emergência trabalham para conter o fogo iniciado após suposto ataque por drones.",
-      "sintese_nerd": "O incidente amplia a tensão de navegação e traz alertas ambientais nas águas territoriais do Mar Báltico.",
-      "titulo_curto": "Incêndio em navio de carga russo atinge segunda noite no Mar Báltico após ataque",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "mar báltico",
-        "finlândia",
-        "rússia",
-        "sparta ii",
-        "incêndio"
-      ],
-      "urgencia_score": 94,
-      "data_publicacao": "2026-11-22T09:23:25Z",
-      "gatilho_vitrine": "Segundo informações da Guarda Fronteiriça Finlandesa reportadas pela Al Jazeera e Ukrinform, o navio de carga russo Sparta II continua em chamas no Mar Báltico perto da Finlândia. Equipes de emergência trabalham para conter o fogo iniciado após suposto ataque por drones.",
-      "impacto_pratico": "O incidente amplia a tensão de navegação e traz alertas ambientais nas águas territoriais do Mar Báltico.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "Al Jazeera English",
-        "Ukrinform",
-        "The Moscow Times"
-      ],
-      "relevancia_score": 91,
-      "paises_envolvidos": [
-        "RU",
-        "FI"
-      ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "mar báltico",
-        "finlândia",
-        "rússia",
-        "sparta ii",
-        "incêndio"
-      ]
-    },
-    {
-      "slug": "senado-aprova-cordao-girassol-tulipa-vermelha-parkinson",
-      "status": "novo",
-      "categoria": "Sociedade_Cultura",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-23T09:43:42Z",
-      "updated_at": "2026-11-22T09:43:42Z",
-      "fontes_urls": [
-        "https://www.poder360.com.br/poder-congresso/cas-aprova-cordao-de-identificacao-para-pessoas-com-parkinson/"
-      ],
-      "titulo_tema": "Comissão do Senado aprova cordão com tulipa vermelha para identificação de pessoas com Parkinson",
-      "resumo_pulso": "Conforme divulgado pelo Poder360, a Comissão de Assuntos Sociais do Senado aprovou projeto de lei que institui a tulipa vermelha como símbolo nacional de identificação para pessoas com doença de Parkinson. O acessório opcional visa assegurar atendimento prioritário e humanizado em serviços públicos e privados.",
-      "sintese_nerd": "Garante maior facilidade na identificação e prioridade para pacientes com Parkinson no Brasil.",
-      "titulo_curto": "Comissão do Senado aprova cordão com tulipa vermelha para identificação de pessoas com Parkinson",
-      "rota_editoria": "/cultura",
-      "palavras_chave": [
-        "parkinson",
-        "senado",
-        "tulipa vermelha",
-        "prioridade"
-      ],
-      "urgencia_score": 85,
-      "data_publicacao": "2026-11-22T09:20:58Z",
-      "gatilho_vitrine": "Conforme divulgado pelo Poder360, a Comissão de Assuntos Sociais do Senado aprovou projeto de lei que institui a tulipa vermelha como símbolo nacional de identificação para pessoas com doença de Parkinson. O acessório opcional visa assegurar atendimento prioritário e humanizado em serviços públicos e privados.",
-      "impacto_pratico": "Garante maior facilidade na identificação e prioridade para pacientes com Parkinson no Brasil.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "Poder360"
-      ],
-      "relevancia_score": 87,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "categoria_primaria": "Cultura",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "parkinson",
-        "senado",
-        "tulipa vermelha",
-        "prioridade"
-      ]
-    },
-    {
-      "slug": "eua-dominam-infraestrutura-ia-alugada-por-modelos-chineses",
-      "status": "novo",
-      "categoria": "Economia_Comercio",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-23T10:43:20Z",
-      "updated_at": "2026-11-22T10:43:20Z",
-      "fontes_urls": [
-        "https://www.infomoney.com.br/business/global/eua-dominam-infraestrutura-de-ia-mas-isso-tem-ajudado-os-modelos-chineses/"
-      ],
-      "titulo_tema": "Modelos chineses de inteligência artificial utilizam infraestrutura de data centers nos EUA",
-      "resumo_pulso": "Segundo análise do InfoMoney, provedores de tecnologia na China têm alugado capacidade de processamento em data centers norte-americanos equipados com chips de alta performance. A prática permite que desenvolvedores chineses ofereçam grandes modelos de linguagem globalmente, contornando gargalos de infraestrutura local.",
-      "sintese_nerd": "Reflexos diretos na disputa geopolítica e regulatória sobre semicondutores, capacidade computacional e normas globais de cibersegurança.",
-      "titulo_curto": "Modelos chineses de inteligência artificial utilizam infraestrutura de data centers nos EUA",
-      "rota_editoria": "/economia",
-      "palavras_chave": [
-        "inteligência artificial",
-        "eua",
-        "china",
-        "data centers",
-        "chips",
-        "semicondutores"
-      ],
-      "urgencia_score": 87,
-      "data_publicacao": "2026-11-22T08:00:00Z",
-      "gatilho_vitrine": "Segundo análise do InfoMoney, provedores de tecnologia na China têm alugado capacidade de processamento em data centers norte-americanos equipados com chips de alta performance. A prática permite que desenvolvedores chineses ofereçam grandes modelos de linguagem globalmente, contornando gargalos de infraestrutura local.",
-      "impacto_pratico": "Reflexos diretos na disputa geopolítica e regulatória sobre semicondutores, capacidade computacional e normas globais de cibersegurança.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "InfoMoney Mercados"
-      ],
-      "relevancia_score": 89,
-      "paises_envolvidos": [
-        "US",
-        "CN"
-      ],
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "inteligência artificial",
-        "eua",
-        "china",
-        "data centers",
-        "chips",
-        "semicondutores"
-      ]
-    },
-    {
-      "slug": "mexico-ganha-espaco-entre-emergentes-enquanto-brasil-perde-preferencia",
-      "status": "novo",
-      "categoria": "Economia_Comercio",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-23T08:48:14Z",
-      "updated_at": "2026-11-22T08:48:14Z",
-      "fontes_urls": [
-        "https://www.infomoney.com.br/mercados/mexico-ganha-espaco-entre-emergentes-enquanto-brasil-perde-preferencia-dos-bancoes/"
-      ],
-      "titulo_tema": "México ganha espaço entre investidores estrangeiros enquanto Brasil perde preferência",
-      "resumo_pulso": "Segundo análise do InfoMoney com base em relatórios de grandes instituições financeiras globais como UBS, Morgan Stanley e Goldman Sachs, o México desponta como alternativa favorita entre mercados emergentes. O movimento reflete preocupações internacionais com o cenário fiscal e o ritmo de crescimento brasileiro.",
-      "sintese_nerd": "Possível realocação de fluxos de capital estrangeiro e volatilidade nas expectativas cambiais.",
-      "titulo_curto": "México ganha espaço entre investidores estrangeiros enquanto Brasil perde preferência",
-      "rota_editoria": "/economia",
-      "palavras_chave": [
-        "mercados",
-        "méxico",
-        "brasil",
-        "investimentos",
-        "emergentes"
-      ],
-      "urgencia_score": 88,
-      "data_publicacao": "2026-11-22T08:00:00Z",
-      "gatilho_vitrine": "Segundo análise do InfoMoney com base em relatórios de grandes instituições financeiras globais como UBS, Morgan Stanley e Goldman Sachs, o México desponta como alternativa favorita entre mercados emergentes. O movimento reflete preocupações internacionais com o cenário fiscal e o ritmo de crescimento brasileiro.",
-      "impacto_pratico": "Possível realocação de fluxos de capital estrangeiro e volatilidade nas expectativas cambiais.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "InfoMoney Mercados"
-      ],
-      "relevancia_score": 90,
-      "paises_envolvidos": [
-        "BR",
-        "MX",
-        "US"
-      ],
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "mercados",
-        "méxico",
-        "brasil",
-        "investimentos",
-        "emergentes"
-      ]
-    },
-    {
-      "slug": "ataque-russo-infraestrutura-chernihiv-dnipropetrovsk",
-      "status": "novo",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 12,
-      "expires_at": "2026-11-22T19:46:01Z",
-      "updated_at": "2026-11-22T07:46:01Z",
-      "fontes_urls": [
-        "https://www.ukrinform.net/rubric-ato/4187296-russian-strike-on-enterprise-in-chernihiv-region-sparks-fire.html",
-        "https://www.ukrinform.net/rubric-ato/4187291-russian-forces-attack-infrastructure-facilities-in-dnipropetrovsk-region.html"
-      ],
-      "titulo_tema": "Ataques russos atingem infraestrutura crítica nas regiões de Chernihiv e Dnipropetrovsk",
-      "resumo_pulso": "Conforme reportado pela agência Ukrinform, forças russas realizaram novos ataques contra instalações de infraestrutura nas regiões de Chernihiv e Dnipropetrovsk, resultando em incêndios e danos materiais. As autoridades locais seguem avaliando o impacto operacional dos bombardeios na rede de serviços essenciais.",
-      "sintese_nerd": "Possíveis interrupções no fornecimento de energia e serviços básicos nas regiões afetadas.",
-      "titulo_curto": "Ataques russos atingem infraestrutura crítica nas regiões de Chernihiv e Dnipropetrovsk",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "ucrânia",
-        "rússia",
-        "guerra",
-        "infraestrutura"
-      ],
-      "urgencia_score": 92,
-      "data_publicacao": "2026-11-22T07:29:00Z",
-      "gatilho_vitrine": "Conforme reportado pela agência Ukrinform, forças russas realizaram novos ataques contra instalações de infraestrutura nas regiões de Chernihiv e Dnipropetrovsk, resultando em incêndios e danos materiais. As autoridades locais seguem avaliando o impacto operacional dos bombardeios na rede de serviços essenciais.",
-      "impacto_pratico": "Possíveis interrupções no fornecimento de energia e serviços básicos nas regiões afetadas.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "Ukrinform"
-      ],
-      "relevancia_score": 90,
-      "paises_envolvidos": [
-        "UA",
-        "RU"
-      ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "ucrânia",
-        "rússia",
-        "guerra",
-        "infraestrutura"
-      ]
     }
   ],
   "noticias_quentes": [
     {
-      "slug": "oab-sp-estima-perda-de-r-200-bilhoes-por-ano-com-pejotizacao",
-      "titulo_curto": "OAB-SP aponta perda de R$ 200 bi anuais com pejotização e entrega estudo ao STF",
-      "resumo_pulso": "Conforme reportado pelo Poder360, a OAB de São Paulo protocolou no Supremo Tribunal Federal um estudo calculando que a migração de trabalhadores para o modelo PJ gera perdas bilionárias em tributos e na Previdência Social.",
-      "impacto_pratico": "Potenciais mudanças na jurisprudência trabalhista brasileira e impacto nas contas da Previdência.",
+      "slug": "espioes-chips-e-a-nvidia-campanha-secreta-china-driblar-eua",
+      "titulo_curto": "Agência de espionagem da China mantém campanha secreta para obter chips de IA e burlar barreiras dos EUA",
+      "resumo_pulso": "Segundo apuração do InfoMoney, autoridades de inteligência apontam que a China opera uma campanha clandestina para garantir acesso a chips avançados de inteligência artificial e informações estratégicas do setor, contornando restrições impostas por Washington.",
+      "impacto_pratico": "Acentua a disputa tecnológica global e as salvaguardas de segurança em semicondutores.",
+      "categoria": "Geopolitica_Relacoes",
+      "paises_envolvidos": [
+        "CN",
+        "US"
+      ],
+      "urgencia_score": 91,
+      "relevancia_score": 92,
+      "nivel_confianca": "media",
+      "ttl_horas": 24,
+      "horas_em_destaque": 16,
+      "veiculos_origem": [
+        "InfoMoney Mercados"
+      ],
+      "fontes_urls": [
+        "https://www.infomoney.com.br/business/global/espioes-chips-e-a-nvidia-a-campanha-secreta-da-china-para-driblar-os-eua/"
+      ],
+      "palavras_chave": [
+        "China",
+        "EUA",
+        "chips",
+        "Nvidia",
+        "inteligência artificial",
+        "espionagem"
+      ],
+      "data_publicacao": "2026-11-22T15:38:47Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "O que é uma sanção internacional?",
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-sancao-internacional",
+          "motivo_conexao": "Ajuda a compreender o uso de restrições tecnológicas e comerciais na geopolítica atual."
+        }
+      ],
+      "expires_at": "2026-11-23T15:40:21Z",
+      "updated_at": "2026-11-22T15:40:21Z"
+    },
+    {
+      "slug": "chile-tem-maior-tombo-do-pib-desde-2020-e-bc-ve-recuperacao-mais-lenta",
+      "titulo_curto": "PIB do Chile registra maior queda desde 2020 e Banco Central aponta recuperação lenta",
+      "resumo_pulso": "Segundo reportagem do InfoMoney Mercados com base em declarações de Rosanna Costa, o Produto Interno Bruto (PIB) do Chile caiu 1,8% no terceiro trimestre, marcando o maior recuo desde 2020. A autoridade monetária destacou a ausência de sinais claros de retomada imediata dos investimentos.",
+      "impacto_pratico": "Reflete cautela nos mercados latino-americanos e possíveis reflexos no comércio regional.",
       "categoria": "Economia_Comercio",
       "paises_envolvidos": [
-        "BR"
+        "CL"
       ],
-      "urgencia_score": 89,
-      "relevancia_score": 90,
+      "urgencia_score": 88,
+      "relevancia_score": 89,
       "nivel_confianca": "alta",
       "ttl_horas": 24,
       "horas_em_destaque": 12,
       "veiculos_origem": [
-        "Poder360"
+        "InfoMoney Mercados"
       ],
+      "fontes_urls": [
+        "https://www.infomoney.com.br/economia/chile-tem-maior-tombo-do-pib-desde-2020-e-bc-ve-recuperacao-mais-lenta/"
+      ],
+      "palavras_chave": [
+        "Chile",
+        "PIB",
+        "Banco Central",
+        "economia",
+        "América Latina"
+      ],
+      "data_publicacao": "2026-11-22T15:30:55Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "Economia no Brasil",
+          "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
+          "motivo_conexao": "Permite contextualizar tendências econômicas regionais e indicadores de atividade na América do Sul."
+        }
+      ],
+      "expires_at": "2026-11-23T15:40:07Z",
+      "updated_at": "2026-11-22T15:40:21Z"
+    },
+    {
+      "slug": "russia-strikes-gas-service-facility-in-dnipropetrovsk-region-with-guided-bomb",
+      "categoria": "Geopolitica_Relacoes",
+      "ttl_horas": 18,
+      "expires_at": "2026-11-23T09:40:07Z",
+      "updated_at": "2026-11-22T15:40:07Z",
+      "fontes_urls": [
+        "https://www.ukrinform.net/rubric-ato/4187418-russia-strikes-gas-service-facility-in-dnipropetrovsk-region-with-guided-bomb.html"
+      ],
+      "resumo_pulso": "Segundo apuração da Ukrinform, forças russas realizaram um ataque com bomba guiada contra uma instalação de serviços de gás na região de Dnipropetrovsk, resultando em feridos e agravando os danos à infraestrutura civil ucraniana.",
+      "titulo_curto": "Ataque russo com bomba guiada atinge instalação de gás em Dnipropetrovsk e deixa feridos",
+      "palavras_chave": [
+        "Ucrânia",
+        "Rússia",
+        "Dnipropetrovsk",
+        "infraestrutura",
+        "guerra"
+      ],
+      "urgencia_score": 94,
+      "data_publicacao": "2026-11-22T15:20:00Z",
+      "impacto_pratico": "Interrupção de serviços essenciais e riscos de desabastecimento de gás na região afetada.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Ukrinform"
+      ],
+      "relevancia_score": 91,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "UA",
+        "RU"
+      ],
+      "links_internos_relacionados": [
+        {
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-sancao-internacional",
+          "motivo_conexao": "Contextualiza as restrições geopolíticas e o impacto de conflitos armados sobre a estabilidade internacional.",
+          "titulo_existente": "O que é uma sanção internacional?"
+        }
+      ]
+    },
+    {
+      "slug": "apos-temporal-governo-reconhece-calamidade-publica-em-tupancireta",
+      "titulo_curto": "Governo federal reconhece calamidade pública em Tupanciretã (RS) após temporal",
+      "resumo_pulso": "Segundo portaria publicada em edição extra do Diário Oficial da União divulgada pela Agência Brasil (EBC), o governo federal reconheceu o estado de calamidade pública em Tupanciretã (RS). A medida visa agilizar a liberação de recursos e o suporte à população afetada pelas fortes tempestades.",
+      "impacto_pratico": "Facilita o envio de verbas emergenciais e apoio direto aos moradores desalojados ou prejudicados pelas enchentes.",
+      "categoria": "Ciencia_Clima",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "urgencia_score": 94,
+      "relevancia_score": 91,
+      "nivel_confianca": "alta",
+      "ttl_horas": 24,
+      "horas_em_destaque": 18,
+      "veiculos_origem": [
+        "Agência Brasil (EBC)"
+      ],
+      "fontes_urls": [
+        "https://agenciabrasil.ebc.com.br/meio-ambiente/noticia/2026-11/apos-temporal-governo-reconhece-calamidade-publica-em-tupancireta"
+      ],
+      "palavras_chave": [
+        "Tupanciretã",
+        "Rio Grande do Sul",
+        "calamidade pública",
+        "temporais",
+        "defesa civil"
+      ],
+      "data_publicacao": "2026-11-22T14:53:00Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "Clima, Amazônia e Transição Energética",
+          "url_existente": "https://www.rodandoomundo.com.br/clima",
+          "motivo_conexao": "Relaciona eventos climáticos extremos e políticas de adaptação e mitigação de desastres no Brasil."
+        }
+      ],
+      "expires_at": "2026-11-23T15:40:07Z",
+      "updated_at": "2026-11-22T15:40:21Z"
+    },
+    {
+      "slug": "oab-sp-estima-perda-de-r-200-bilhoes-por-ano-com-pejotizacao",
+      "categoria": "Economia_Comercio",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-23T14:45:18Z",
+      "updated_at": "2026-11-22T14:45:18Z",
       "fontes_urls": [
         "https://www.poder360.com.br/poder-justica/oab-sp-estima-perda-de-r-200-bilhoes-por-ano-com-pejotizacao/"
       ],
+      "resumo_pulso": "Conforme reportado pelo Poder360, a OAB de São Paulo protocolou no Supremo Tribunal Federal um estudo calculando que a migração de trabalhadores para o modelo PJ gera perdas bilionárias em tributos e na Previdência Social.",
+      "titulo_curto": "OAB-SP aponta perda de R$ 200 bi anuais com pejotização e entrega estudo ao STF",
       "palavras_chave": [
         "pejotização",
         "OAB-SP",
@@ -920,39 +1064,71 @@
         "Previdência",
         "trabalho"
       ],
+      "urgencia_score": 89,
       "data_publicacao": "2026-11-22T14:33:55Z",
+      "impacto_pratico": "Potenciais mudanças na jurisprudência trabalhista brasileira e impacto nas contas da Previdência.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Poder360"
+      ],
+      "relevancia_score": 90,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "BR"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "Economia no Brasil",
           "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
-          "motivo_conexao": "Aprofunda as discussões sobre mercado de trabalho e impacto fiscal no país."
+          "motivo_conexao": "Aprofunda as discussões sobre mercado de trabalho e impacto fiscal no país.",
+          "titulo_existente": "Economia no Brasil"
         }
+      ]
+    },
+    {
+      "slug": "boca-juniors-vence-sul-americana-sobre-o-atletico-mg",
+      "titulo_curto": "Boca Juniors derrota o Atlético-MG por 2 a 0 e conquista a Copa Sul-Americana de 2026",
+      "resumo_pulso": "Conforme noticiado pela Agência Brasil (EBC), o Boca Juniors venceu o Atlético-MG por 2 a 0 em partida realizada em Barranquilla, na Colômbia. Com gols de Ascacíbar e Merentiel, o clube argentino garantiu o título da Copa Sul-Americana, ampliando o histórico de vices do time mineiro.",
+      "impacto_pratico": "Movimentação intensa de torcedores e impacto no cenário do futebol sul-americano.",
+      "categoria": "Sociedade_Cultura",
+      "paises_envolvidos": [
+        "AR",
+        "BR",
+        "CO"
       ],
-      "expires_at": "2026-11-23T14:45:18Z",
-      "updated_at": "2026-11-22T14:45:18Z"
+      "urgencia_score": 85,
+      "relevancia_score": 88,
+      "nivel_confianca": "alta",
+      "ttl_horas": 24,
+      "horas_em_destaque": 12,
+      "veiculos_origem": [
+        "Agência Brasil (EBC)"
+      ],
+      "fontes_urls": [
+        "https://agenciabrasil.ebc.com.br/esportes/noticia/2026-11/boca-juniors-vence-sul-americana-sobre-o-atletico-mg"
+      ],
+      "palavras_chave": [
+        "Boca Juniors",
+        "Atlético-MG",
+        "Copa Sul-Americana",
+        "futebol",
+        "Colômbia"
+      ],
+      "data_publicacao": "2026-11-22T14:28:00Z",
+      "links_internos_relacionados": [],
+      "expires_at": "2026-11-23T15:40:21Z",
+      "updated_at": "2026-11-22T15:40:21Z"
     },
     {
       "slug": "iran-unveils-dual-missile-launcher-new-missile-city-what-to-know",
-      "titulo_curto": "Irã exibe novo lançador duplo de mísseis e complexo subterrâneo em meio a tensões com EUA",
-      "resumo_pulso": "Segundo apuração da Al Jazeera English, autoridades militares iranianas inauguraram uma nova instalação subterrânea apelidada de 'cidade de mísseis' e revelaram um lançador duplo de artefatos balísticos, em demonstração de capacidade bélica apesar de ataques recentes.",
-      "impacto_pratico": "Aumento da tensão no Golfo Pérsico e riscos geopolíticos para rotas de energia e tráfego marítimo internacional.",
       "categoria": "Geopolitica_Relacoes",
-      "paises_envolvidos": [
-        "IR",
-        "US",
-        "BH"
-      ],
-      "urgencia_score": 96,
-      "relevancia_score": 93,
-      "nivel_confianca": "alta",
       "ttl_horas": 18,
-      "horas_em_destaque": 12,
-      "veiculos_origem": [
-        "Al Jazeera English"
-      ],
+      "expires_at": "2026-11-23T08:45:18Z",
+      "updated_at": "2026-11-22T14:45:18Z",
       "fontes_urls": [
         "https://www.aljazeera.com/news/2026/11/22/iran-unveils-dual-missile-launcher-new-missile-city-what-to-know?traffic_source=rss"
       ],
+      "resumo_pulso": "Segundo apuração da Al Jazeera English, autoridades militares iranianas inauguraram uma nova instalação subterrânea apelidada de 'cidade de mísseis' e revelaram um lançador duplo de artefatos balísticos, em demonstração de capacidade bélica apesar de ataques recentes.",
+      "titulo_curto": "Irã exibe novo lançador duplo de mísseis e complexo subterrâneo em meio a tensões com EUA",
       "palavras_chave": [
         "Irã",
         "mísseis",
@@ -960,51 +1136,67 @@
         "defesa",
         "EUA"
       ],
+      "urgencia_score": 96,
       "data_publicacao": "2026-11-22T14:20:41Z",
+      "impacto_pratico": "Aumento da tensão no Golfo Pérsico e riscos geopolíticos para rotas de energia e tráfego marítimo internacional.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Al Jazeera English"
+      ],
+      "relevancia_score": 93,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "IR",
+        "US",
+        "BH"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "O que é uma sanção internacional?",
           "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-sancao-internacional",
-          "motivo_conexao": "Contextualiza o uso de pressões e restrições no cenário geopolítico do Oriente Médio."
+          "motivo_conexao": "Contextualiza o uso de pressões e restrições no cenário geopolítico do Oriente Médio.",
+          "titulo_existente": "O que é uma sanção internacional?"
         }
-      ],
-      "expires_at": "2026-11-23T08:45:18Z",
-      "updated_at": "2026-11-22T14:45:18Z"
+      ]
     },
     {
       "slug": "russian-attacks-cause-serious-damage-to-odesa-power-grid",
-      "titulo_curto": "Ataques russos causam danos severos à rede elétrica de Odesa e geram apagões",
-      "resumo_pulso": "Segundo o The Kyiv Independent, equipes de emergência operam para restabelecer o fornecimento de energia em Odesa após novos bombardeios russos danificarem criticamente a infraestrutura local.",
-      "impacto_pratico": "Desabastecimento de energia e necessidade de uso de centros de resiliência e aquecimento na Ucrânia.",
+      "titulo_curto": "Ataques russos intensificam danos à rede elétrica de Odesa e geram novas interrupções",
+      "resumo_pulso": "Segundo apuração da Ukrenergo e do The Kyiv Independent, equipes de emergência enfrentam dificuldades contínuas e alertas de ataque aéreo para restabelecer o fornecimento de energia em Odesa após novos bombardeios russos danificarem criticamente a infraestrutura local.",
+      "impacto_pratico": "Apagões recorrentes afetam serviços essenciais e o cotidiano de moradores na região sul da Ucrânia.",
       "categoria": "Geopolitica_Relacoes",
       "paises_envolvidos": [
         "UA",
         "RU"
       ],
-      "urgencia_score": 95,
-      "relevancia_score": 91,
+      "urgencia_score": 96,
+      "relevancia_score": 93,
       "nivel_confianca": "alta",
       "ttl_horas": 18,
       "horas_em_destaque": 12,
       "veiculos_origem": [
         "The Kyiv Independent",
-        "Ukrinform"
+        "Ukrenergo"
       ],
       "fontes_urls": [
-        "https://kyivindependent.com/russian-attacks-cause-serious-damage-to-odesa-power-grid-as-outages-disrupt-city/",
-        "https://www.ukrinform.net/rubric-society/4187397-odesa-has-291-invincibility-centers-in-operation.html"
+        "https://kyivindependent.com/russian-attacks-cause-serious-damage-to-odesa-power-grid-as-outages-disrupt-city/"
       ],
       "palavras_chave": [
-        "Ucrânia",
         "Odesa",
+        "Ucrânia",
         "energia",
-        "ataques",
-        "Rússia"
+        "ataques russos",
+        "infraestrutura"
       ],
       "data_publicacao": "2026-11-22T14:12:00Z",
-      "links_internos_relacionados": [],
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "O que é uma sanção internacional?",
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-sancao-internacional",
+          "motivo_conexao": "Contextualiza o impacto de conflitos geopolíticos e sanções sobre a infraestrutura energética."
+        }
+      ],
       "expires_at": "2026-11-23T08:45:18Z",
-      "updated_at": "2026-11-22T14:45:18Z"
+      "updated_at": "2026-11-22T15:40:21Z"
     },
     {
       "slug": "el-nino-galapagos-chuvas",
@@ -1441,189 +1633,6 @@
         "CN"
       ],
       "links_internos_relacionados": []
-    },
-    {
-      "slug": "mexico-ganha-espaco-entre-emergentes-enquanto-brasil-perde-preferencia",
-      "categoria": "Economia_Comercio",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-23T08:48:14Z",
-      "updated_at": "2026-11-22T08:48:14Z",
-      "fontes_urls": [
-        "https://www.infomoney.com.br/mercados/mexico-ganha-espaco-entre-emergentes-enquanto-brasil-perde-preferencia-dos-bancoes/"
-      ],
-      "resumo_pulso": "Segundo análise do InfoMoney com base em relatórios de grandes instituições financeiras globais como UBS, Morgan Stanley e Goldman Sachs, o México desponta como alternativa favorita entre mercados emergentes. O movimento reflete preocupações internacionais com o cenário fiscal e o ritmo de crescimento brasileiro.",
-      "titulo_curto": "México ganha espaço entre investidores estrangeiros enquanto Brasil perde preferência",
-      "palavras_chave": [
-        "Mercados",
-        "México",
-        "Brasil",
-        "Investimentos",
-        "Emergentes"
-      ],
-      "urgencia_score": 88,
-      "data_publicacao": "2026-11-22T08:00:00Z",
-      "impacto_pratico": "Possível realocação de fluxos de capital estrangeiro e volatilidade nas expectativas cambiais.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "InfoMoney Mercados"
-      ],
-      "relevancia_score": 90,
-      "horas_em_destaque": 12,
-      "paises_envolvidos": [
-        "BR",
-        "MX",
-        "US"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
-          "motivo_conexao": "Contextualiza os indicadores de atividade e o apetite de investidores em relação ao Brasil.",
-          "titulo_existente": "Economia no Brasil"
-        }
-      ]
-    },
-    {
-      "slug": "ataque-russo-infraestrutura-chernihiv-dnipropetrovsk",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 12,
-      "expires_at": "2026-11-22T19:46:01Z",
-      "updated_at": "2026-11-22T07:46:01Z",
-      "fontes_urls": [
-        "https://www.ukrinform.net/rubric-ato/4187296-russian-strike-on-enterprise-in-chernihiv-region-sparks-fire.html",
-        "https://www.ukrinform.net/rubric-ato/4187291-russian-forces-attack-infrastructure-facilities-in-dnipropetrovsk-region.html"
-      ],
-      "resumo_pulso": "Conforme reportado pela agência Ukrinform, forças russas realizaram novos ataques contra instalações de infraestrutura nas regiões de Chernihiv e Dnipropetrovsk, resultando em incêndios e danos materiais. As autoridades locais seguem avaliando o impacto operacional dos bombardeios na rede de serviços essenciais.",
-      "titulo_curto": "Ataques russos atingem infraestrutura crítica nas regiões de Chernihiv e Dnipropetrovsk",
-      "palavras_chave": [
-        "Ucrânia",
-        "Rússia",
-        "Guerra",
-        "Infraestrutura"
-      ],
-      "urgencia_score": 92,
-      "data_publicacao": "2026-11-22T07:29:00Z",
-      "impacto_pratico": "Possíveis interrupções no fornecimento de energia e serviços básicos nas regiões afetadas.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Ukrinform"
-      ],
-      "relevancia_score": 90,
-      "horas_em_destaque": 6,
-      "paises_envolvidos": [
-        "UA",
-        "RU"
-      ],
-      "links_internos_relacionados": []
-    },
-    {
-      "slug": "agrovoltaica-cresce-com-criacao-de-ovelhas-em-usinas-solares",
-      "categoria": "Ciencia_Clima",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-23T10:43:20Z",
-      "updated_at": "2026-11-22T10:43:20Z",
-      "fontes_urls": [
-        "https://g1.globo.com/economia/agronegocios/noticia/2026/11/22/ovelhas-entre-paineis-solares-entenda-a-tendencia-que-une-geracao-de-energia-e-criacao-de-animais.ghtml"
-      ],
-      "resumo_pulso": "Segundo reportagem do G1 Economia, a agrovoltaica — integração entre criação de animais e geração fotovoltaica — já é adotada em 10% das usinas solares dos EUA e avança em províncias chinesas. A presença de ovelhas nos parques solares substitui a roçagem mecânica, reduzindo custos operacionais e promovendo o uso sustentável do solo.",
-      "titulo_curto": "Uso de ovelhas para manejo de vegetação em fazendas solares avança nos EUA e na China",
-      "palavras_chave": [
-        "Agrovoltaica",
-        "energia solar",
-        "sustentabilidade",
-        "agronegócio",
-        "painéis fotovoltaicos"
-      ],
-      "urgencia_score": 82,
-      "data_publicacao": "2026-11-22T07:00:01Z",
-      "impacto_pratico": "Inovação no setor agropecuário e de energias renováveis com redução de custos de manutenção e otimização do uso da terra.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "G1 Economia"
-      ],
-      "relevancia_score": 85,
-      "horas_em_destaque": 8,
-      "paises_envolvidos": [
-        "US",
-        "CN",
-        "BR"
-      ],
-      "links_internos_relacionados": []
-    },
-    {
-      "slug": "nova-especie-perereca-descoberta-minas-gerais",
-      "categoria": "Ciencia_Clima",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-23T10:43:20Z",
-      "updated_at": "2026-11-22T10:43:20Z",
-      "fontes_urls": [
-        "https://g1.globo.com/economia/agronegocios/globo-rural/noticia/2026/11/22/nova-especie-de-perereca-e-descoberta-em-minas-gerais-apos-cientista-ouvir-canto-incomum.ghtml"
-      ],
-      "resumo_pulso": "Conforme reportado pelo G1 Economia, pesquisadores descreveram formalmente a Ololygon cataguas, uma nova espécie de anfíbio descoberta na Zona da Mata mineira. A identificação ocorreu após mais de dez anos de investigação científica iniciada pela percepção de um canto vocal diferenciado em área preservada.",
-      "titulo_curto": "Cientistas identificam nova espécie de perereca na Mata Atlântica em Minas Gerais",
-      "palavras_chave": [
-        "Biodiversidade",
-        "Mata Atlântica",
-        "Minas Gerais",
-        "ciência",
-        "Ololygon cataguas"
-      ],
-      "urgencia_score": 80,
-      "data_publicacao": "2026-11-22T07:00:00Z",
-      "impacto_pratico": "Reforça a importância da conservação da biodiversidade na Mata Atlântica e impulsiona estudos sobre bioacústica e patrimônio biológico.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "G1 Economia"
-      ],
-      "relevancia_score": 82,
-      "horas_em_destaque": 6,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "links_internos_relacionados": []
-    },
-    {
-      "slug": "ucrania-prepara-reativacao-bancada-congresso-eua",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-23T06:28:54Z",
-      "updated_at": "2026-11-22T06:28:54Z",
-      "fontes_urls": [
-        "https://www.ukrinform.net/rubric-polytics/4187283-ukraine-preparing-to-revive-congressional-ukraine-caucuses-in-both-chambers-of-new-us-congress-charge-daffaires.html"
-      ],
-      "resumo_pulso": "Conforme informado pela agência Ukrinform com base em declarações diplomáticas, a Ucrânia definiu como prioridade a reativação de frentes parlamentares na Câmara e no Senado norte-americanos a partir de janeiro. A meta da diplomacia em Washington é restabelecer pontes bilaterais e garantir a continuidade da assistência militar.",
-      "titulo_curto": "Diplomacia ucraniana articula recomposição de bancada de apoio no novo Congresso dos EUA",
-      "palavras_chave": [
-        "Ucrânia",
-        "Estados Unidos",
-        "Congresso",
-        "diplomacia",
-        "ajuda militar"
-      ],
-      "urgencia_score": 86,
-      "data_publicacao": "2026-11-22T06:10:00Z",
-      "impacto_pratico": "Influência direta na aprovação de novos pacotes de ajuda financeira e militar americana para a Europa Oriental.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Ukrinform"
-      ],
-      "relevancia_score": 88,
-      "horas_em_destaque": 12,
-      "paises_envolvidos": [
-        "UA",
-        "US"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/politica/estados-unidos",
-          "motivo_conexao": "Contextualiza o funcionamento do Congresso americano e a formulação de políticas externas em Washington.",
-          "titulo_existente": "Política nos Estados Unidos"
-        },
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/eleicoes",
-          "motivo_conexao": "Analisa como a nova composição partidária dos EUA afeta alianças com governos europeus.",
-          "titulo_existente": "Repercussão internacional das eleições americanas redesenha alianças diplomáticas"
-        }
-      ]
     }
   ],
   "temas_curadoria": [
