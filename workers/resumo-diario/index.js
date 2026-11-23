@@ -751,7 +751,265 @@ async function coletarNoticias() {
 
 const coletarResumoDoDia = coletarNoticias;
 
-function montarHtmlNewsletter(noticias, dataHoje) {
+const ROTAS_PUBLICAS_VALIDAS_WORKER = new Set([
+  '/',
+  '/resumo-do-dia',
+  '/parcerias',
+  '/radar',
+  '/dossies',
+  '/sobre',
+  '/clube',
+  '/entenda',
+  '/ultimas-noticias',
+  '/comparar',
+  '/economia',
+  '/geopolitica',
+  '/tecnologia',
+  '/clima',
+  '/cultura',
+  '/saude',
+  '/eleicoes'
+]);
+
+function escapeHtml(str) {
+  return String(str == null ? '' : str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+function getHojeYmdBrasiliaWorker(now = new Date()) {
+  const dt = now instanceof Date ? now : new Date(now);
+  const parts = new Intl.DateTimeFormat('en-CA', {
+    timeZone: 'America/Sao_Paulo',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit'
+  }).formatToParts(dt);
+  const map = {};
+  for (const part of parts) {
+    if (part.type !== 'literal') map[part.type] = part.value;
+  }
+  return `${map.year}-${map.month}-${map.day}`;
+}
+
+function isCotaEmVigenciaWorker(cota, hojeYmd = getHojeYmdBrasiliaWorker()) {
+  if (!cota || cota.ativo !== true) return false;
+  const temNome = typeof cota.nome === 'string' && cota.nome.trim().length > 0;
+  const temLogo = typeof cota.logo_url === 'string' && cota.logo_url.trim().length > 0;
+  const temNomeImg = typeof cota.nome_imagem_url === 'string' && cota.nome_imagem_url.trim().length > 0;
+  if (!temNome && !temLogo && !temNomeImg) return false;
+
+  const dataInicio = typeof cota.data_inicio === 'string' ? cota.data_inicio.trim() : '';
+  const dataFim = typeof cota.data_fim === 'string' ? cota.data_fim.trim() : '';
+  if (dataInicio && hojeYmd < dataInicio) return false;
+  if (dataFim && hojeYmd > dataFim) return false;
+
+  return true;
+}
+
+function filtrarCotasAtivasWorker(cotaRaw, hojeYmd = getHojeYmdBrasiliaWorker()) {
+  if (!cotaRaw) return [];
+  const lista = Array.isArray(cotaRaw) ? cotaRaw : [cotaRaw];
+  return lista.filter((item) => isCotaEmVigenciaWorker(item, hojeYmd));
+}
+
+function resolverUrlImagemPatrocinadorWorker(
+  rawImgUrl,
+  { cota = 'resumo_dia', id = '', media = 'logo', idx = 0, updatedAt = '' } = {}
+) {
+  if (!rawImgUrl || typeof rawImgUrl !== 'string') return null;
+  const trimmed = rawImgUrl.trim();
+  if (!trimmed) return null;
+
+  if (/^https:\/\//i.test(trimmed)) {
+    return trimmed;
+  }
+  if (/^http:\/\//i.test(trimmed)) {
+    return trimmed.replace(/^http:\/\//i, 'https://');
+  }
+  if (trimmed.startsWith('//')) {
+    return `https:${trimmed}`;
+  }
+  if (trimmed.startsWith('/')) {
+    return `https://www.rodandoomundo.com.br${trimmed}`;
+  }
+  if (/^data:image\//i.test(trimmed)) {
+    const resolvedId = id !== undefined && id !== null && String(id).trim() !== ''
+      ? String(id).trim()
+      : String(idx);
+    const vParam = updatedAt ? `&v=${encodeURIComponent(String(updatedAt).slice(0, 19))}` : '';
+    return `https://www.rodandoomundo.com.br/api/patrocinadores?media=${encodeURIComponent(media)}&cota=${encodeURIComponent(cota)}&id=${encodeURIComponent(resolvedId)}${vParam}`;
+  }
+
+  return null;
+}
+
+function resolverUrlCtaWorker(linkUrl) {
+  if (!linkUrl || typeof linkUrl !== 'string') return null;
+  const trimmed = linkUrl.trim();
+  if (!trimmed) return null;
+
+  if (/^https?:\/\//i.test(trimmed)) {
+    try {
+      const parsed = new URL(trimmed);
+      if ((parsed.protocol === 'https:' || parsed.protocol === 'http:') && parsed.hostname) {
+        return trimmed;
+      }
+    } catch {
+      return null;
+    }
+    return null;
+  }
+
+  if (trimmed.startsWith('/') && !trimmed.startsWith('//')) {
+    try {
+      const parsed = new URL(trimmed, 'https://www.rodandoomundo.com.br');
+      if (parsed.origin !== 'https://www.rodandoomundo.com.br') return null;
+      const pathname = parsed.pathname.length > 1
+        ? parsed.pathname.replace(/\/+$/, '')
+        : parsed.pathname;
+      if (ROTAS_PUBLICAS_VALIDAS_WORKER.has(pathname)) {
+        return `https://www.rodandoomundo.com.br${trimmed}`;
+      }
+    } catch {
+      return null;
+    }
+    return null;
+  }
+
+  return null;
+}
+
+function montarBlocoPatrocinadoresNewsletter(listaAtivos, { updatedAt = '' } = {}) {
+  if (!Array.isArray(listaAtivos) || listaAtivos.length === 0) return '';
+
+  return listaAtivos
+    .map((item, idx) => {
+      if (!item || typeof item !== 'object') return '';
+      const nomeTexto = typeof item.nome === 'string' ? item.nome.trim() : '';
+      const fraseTexto = typeof item.frase === 'string' ? item.frase.trim() : '';
+      const logoUrl = resolverUrlImagemPatrocinadorWorker(item.logo_url, {
+        cota: 'resumo_dia',
+        id: item.id || '',
+        media: 'logo',
+        idx,
+        updatedAt
+      });
+      const nomeImgUrl = resolverUrlImagemPatrocinadorWorker(item.nome_imagem_url, {
+        cota: 'resumo_dia',
+        id: item.id || '',
+        media: 'nome_imagem',
+        idx,
+        updatedAt
+      });
+      const ctaUrl = resolverUrlCtaWorker(item.link_url);
+      const ctaTexto =
+        (typeof item.cta_texto === 'string' && item.cta_texto.trim()) || 'Saiba mais';
+
+      const logoCellHtml = logoUrl
+        ? `<td width="46" valign="middle" style="padding-right:10px;">
+            <img src="${escapeHtml(logoUrl)}" width="36" height="36" alt="${escapeHtml(nomeTexto || 'Patrocinador')}" style="width:36px;height:36px;border-radius:6px;object-fit:contain;display:block;border:1px solid #30363d;background:#0d1117;" />
+          </td>`
+        : '';
+
+      let marcaHtml = '';
+      if (nomeImgUrl) {
+        marcaHtml = `<img src="${escapeHtml(nomeImgUrl)}" alt="${escapeHtml(nomeTexto || 'Patrocinador')}" style="max-height:24px;width:auto;display:block;border:0;" />`;
+      } else if (nomeTexto) {
+        marcaHtml = `<strong style="color:#f0f6fc;font-size:15px;font-weight:700;line-height:1.3;">${escapeHtml(nomeTexto)}</strong>`;
+      }
+
+      const fraseHtml = fraseTexto
+        ? `<tr>
+            <td style="padding-top:8px;">
+              <p style="margin:0;color:#c9d1d9;font-size:13px;line-height:1.45;">${escapeHtml(fraseTexto)}</p>
+            </td>
+          </tr>`
+        : '';
+
+      const ctaCellHtml = ctaUrl !== null
+        ? `<td valign="middle" align="right" style="padding-left:12px;white-space:nowrap;">
+            <a href="${escapeHtml(ctaUrl)}" target="_blank" rel="noopener noreferrer" style="display:inline-block;background:rgba(210,153,34,0.16);border:1px solid rgba(210,153,34,0.5);color:#d29922;text-decoration:none;font-size:12px;font-weight:700;padding:6px 14px;border-radius:6px;white-space:nowrap;">${escapeHtml(ctaTexto)}</a>
+          </td>`
+        : '';
+
+      return `<table width="100%" cellpadding="0" cellspacing="0" border="0" style="width:100%;border-collapse:separate;background:#161b22;border:1px solid rgba(210,153,34,0.45);border-left:3px solid #d29922;border-radius:10px;padding:14px 18px;margin-bottom:18px;">
+  <tr>
+    <td style="padding-bottom:8px;">
+      <span style="color:#d29922;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;">OFERECIMENTO</span>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">
+        <tr>
+          ${logoCellHtml}
+          <td valign="middle" align="left">
+            ${marcaHtml}
+          </td>
+          ${ctaCellHtml}
+        </tr>
+      </table>
+    </td>
+  </tr>
+  ${fraseHtml}
+</table>`;
+    })
+    .filter(Boolean)
+    .join('\n');
+}
+
+async function coletarPatrocinadoresResumo(env = {}) {
+  const endpoints = [
+    `https://www.rodandoomundo.com.br/api/patrocinadores?_t=${Date.now()}`,
+    `https://www.rodandoomundo.com.br/v2/patrocinadores?_t=${Date.now()}`,
+    `https://www.rodandoomundo.com.br/data/patrocinadores.json?_t=${Date.now()}`
+  ];
+
+  for (const url of endpoints) {
+    try {
+      const ctrl = new AbortController();
+      const t = setTimeout(() => ctrl.abort(), 4500);
+      const res = await fetch(url, {
+        cache: 'no-store',
+        headers: {
+          Accept: 'application/json',
+          'Cache-Control': 'no-cache',
+          Pragma: 'no-cache',
+          'User-Agent': 'Mozilla/5.0 (compatible; RodandoOMundoWorker/2.1; +https://www.rodandoomundo.com.br)'
+        },
+        signal: ctrl.signal
+      });
+      clearTimeout(t);
+      if (!res || !res.ok) continue;
+      const data = await res.json();
+      if (data && data.cotas && !data.fallback) {
+        return {
+          ativos: filtrarCotasAtivasWorker(data.cotas.resumo_dia),
+          updatedAt: String(data.atualizado_em || '')
+        };
+      }
+    } catch {
+      // Tenta próximo endpoint na sequência
+    }
+  }
+
+  return { ativos: [], updatedAt: '' };
+}
+
+function montarHtmlNewsletter(noticias, dataHoje, patrocinadoresInfo = { ativos: [], updatedAt: '' }) {
+  const listaPatrocinadores = Array.isArray(patrocinadoresInfo)
+    ? patrocinadoresInfo
+    : (Array.isArray(patrocinadoresInfo?.ativos) ? patrocinadoresInfo.ativos : []);
+  const updatedAtPat = !Array.isArray(patrocinadoresInfo) && patrocinadoresInfo?.updatedAt
+    ? String(patrocinadoresInfo.updatedAt)
+    : '';
+  const blocoPatrocinadoresHtml = montarBlocoPatrocinadoresNewsletter(listaPatrocinadores, {
+    updatedAt: updatedAtPat
+  });
   const cardsHtml = noticias
     .map((rawItem, idx) => {
       const n = normalizarItemResumo(rawItem, idx);
@@ -827,6 +1085,8 @@ function montarHtmlNewsletter(noticias, dataHoje) {
       <p style="color:#8b949e;font-size:13px;margin:0;">As 5 principais notícias apuradas por relevância editorial com contexto global.</p>
     </div>
 
+    ${blocoPatrocinadoresHtml}
+
     <div>
       ${cardsHtml}
     </div>
@@ -867,14 +1127,18 @@ async function executarEnvioResumo(env, testEmail = null) {
     year: 'numeric'
   });
 
-  const noticias = await coletarResumoDoDia();
+  const [noticias, patrocinadoresInfo] = await Promise.all([
+    coletarResumoDoDia(),
+    coletarPatrocinadoresResumo(env)
+  ]);
   if (!noticias || noticias.length === 0) {
     console.error('Nenhuma notícia pôde ser coletada hoje para o envio.');
     return { ok: false, error: 'Nenhuma notícia coletada.' };
   }
 
-  const emailHtml = montarHtmlNewsletter(noticias, dataHoje);
+  const emailHtml = montarHtmlNewsletter(noticias, dataHoje, patrocinadoresInfo);
   const emailSubject = `Resumo do Dia — 5 destaques globais (${dataHoje})`;
+  const patrocinadoresAtivos = (patrocinadoresInfo?.ativos || []).map((p) => p.nome || p.id);
 
   if (testEmail) {
     const res = await fetch('https://api.resend.com/emails', {
@@ -895,6 +1159,7 @@ async function executarEnvioResumo(env, testEmail = null) {
       ok: res.ok,
       modo: 'teste',
       destinatario: testEmail,
+      patrocinadoresAtivos,
       resendResponse: result
     };
   }
@@ -921,6 +1186,7 @@ async function executarEnvioResumo(env, testEmail = null) {
   if (destinatarios.length === 0) {
     return {
       ok: true,
+      patrocinadoresAtivos,
       message: 'Nenhum inscrito ativo na lista do Resend para envio hoje.'
     };
   }
@@ -949,9 +1215,18 @@ async function executarEnvioResumo(env, testEmail = null) {
     ok: true,
     totalInscritos: destinatarios.length,
     enviados: enviados,
-    data: dataHoje
+    data: dataHoje,
+    patrocinadoresAtivos
   };
 }
+
+export {
+  montarHtmlNewsletter,
+  filtrarCotasAtivasWorker,
+  coletarPatrocinadoresResumo,
+  resolverUrlImagemPatrocinadorWorker,
+  resolverUrlCtaWorker
+};
 
 export default {
   // Handler executado automaticamente pelo Cron Trigger da Cloudflare

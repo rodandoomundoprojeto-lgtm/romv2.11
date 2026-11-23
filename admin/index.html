@@ -8232,7 +8232,7 @@
         {
           key: 'resumo_dia',
           titulo: 'Cota 03 — Briefing Matinal (Resumo do Dia)',
-          desc: 'Oferecimento no topo do Resumo do Dia. Suporta co-patrocínio ou rotação entre várias marcas.',
+          desc: 'Oferecimento no topo do Resumo do Dia (site e e-mail matinal). Suporta co-patrocínio entre marcas.',
           extra: 'none',
           defaultItem: () => ({
             id: gerarSponsorId('resumo'),
@@ -8825,9 +8825,9 @@
               const ctx = canvas.getContext('2d');
               ctx.clearRect(0, 0, w, h);
               ctx.drawImage(img, 0, 0, w, h);
-              let dataUri = canvas.toDataURL('image/webp', 0.88);
-              if (!dataUri.startsWith('data:image/webp')) {
-                dataUri = canvas.toDataURL('image/png');
+              let dataUri = canvas.toDataURL('image/png');
+              if (dataUri.length > 220000) {
+                dataUri = canvas.toDataURL('image/jpeg', 0.9);
               }
               URL.revokeObjectURL(objUrl);
               resolve(dataUri);

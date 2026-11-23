@@ -1,6 +1,12 @@
 // Cloudflare Pages Function: /api/newsletter-subscribe
 // Registra o inscrito no Resend e envia e-mail de confirmação
 
+import {
+  carregarDadosPatrocinadores,
+  filtrarCotasAtivas,
+  montarHtmlPatrocinadoresEmail
+} from './patrocinadores.js';
+
 const CORS_HEADERS = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Methods': 'POST, OPTIONS',
@@ -65,6 +71,18 @@ export async function onRequestPost(context) {
 
       // 2. Dispara e-mail de boas-vindas
       try {
+        let sponsorHtml = '';
+        try {
+          const dadosPat = await carregarDadosPatrocinadores(req, env);
+          const ativosResumo = filtrarCotasAtivas(dadosPat?.cotas?.resumo_dia);
+          sponsorHtml = montarHtmlPatrocinadoresEmail(ativosResumo, {
+            updatedAt: dadosPat?.atualizado_em || ''
+          });
+        } catch (errSponsor) {
+          console.warn('Erro ao carregar patrocinadores do resumo:', errSponsor.message);
+          sponsorHtml = '';
+        }
+
         const saudacao = nome ? `Olá, ${nome}!` : 'Olá!';
         const welcomeHtml = `
 <!DOCTYPE html>
@@ -87,6 +105,7 @@ export async function onRequestPost(context) {
       <p style="color:#8b949e;font-size:14px;line-height:1.6;margin:0 0 24px 0;">
         Todos os dias pela manhã, você receberá nossa curadoria com as 5 principais notícias do mundo, contextualizadas e com links diretos para as fontes originais e análises comparadas.
       </p>
+      ${sponsorHtml}
       <div style="text-align:center;margin:30px 0;">
         <a href="https://www.rodandoomundo.com.br/resumo-do-dia" style="background:#238636;color:#ffffff;text-decoration:none;padding:12px 24px;border-radius:6px;font-weight:600;font-size:14px;display:inline-block;">Acessar o Resumo de Hoje</a>
       </div>
