@@ -7797,7 +7797,7 @@
         {
           key: 'gaveta_contextual',
           titulo: 'Cota 04 — Território & Contexto (Geo)',
-          desc: 'Card no rodapé da gaveta de veículos do país. Suporta múltiplos patrocinadores segmentados por países. Use {pais} na frase.',
+          desc: 'Selo no topo (ao lado do nome do país) e card no rodapé da gaveta de veículos, além de box educacional na seção /entenda. Suporta múltiplos patrocinadores segmentados por países. Use {pais} na frase.',
           extra: 'paises',
           defaultItem: () => ({
             id: gerarSponsorId('geo'),
@@ -8430,8 +8430,13 @@
             });
           }
           renderPatrociniosGrid();
-          setPatrociniosTab('ativos');
-          showBanner('patrocinios-banner', 'Patrocínios atualizados com sucesso! Conferindo na aba Ativos & Contratos.', 'ok');
+          if (opts && opts.irParaAtivos && patrociniosActiveTab === 'ativos') {
+            setPatrociniosTab('ativos');
+          }
+          showBanner('patrocinios-banner', 'Patrocínios atualizados e publicados com sucesso!', 'ok');
+          if (typeof showToast === 'function') {
+            showToast('Patrocínios salvos e publicados ao vivo.', 'ok');
+          }
         } catch (err) {
           showBanner('patrocinios-banner', 'Erro ao salvar patrocínios: ' + err.message, 'err');
         } finally {

@@ -5352,6 +5352,10 @@
       '<button type="button" class="fav-star-btn fav-country-btn' + (countryFav ? ' is-fav' : '') + '" id="btn-fav-country" aria-pressed="' + countryFav + '" title="' + (countryFav ? 'Remover país dos favoritos' : 'Salvar país nos favoritos') + '" aria-label="' + (countryFav ? 'Remover país dos favoritos' : 'Salvar país nos favoritos') + '">' +
       (countryFav ? ICON_STAR_ON : ICON_STAR_OFF) +
       '</button>' +
+      '<a id="slot-sponsor-drawer-top" class="sponsor-slot sponsor-drawer-top-badge" hidden aria-label="Apoio Contextual" href="/parcerias" data-spa-link>' +
+      '<span class="sponsor-drawer-top-label">Apoio</span>' +
+      '<span class="sponsor-drawer-top-brand"><span class="mock-brand-logo sponsor-brand-target">Sua Marca</span></span>' +
+      '</a>' +
       '</div>' +
       (langs ? '<span class="country-langs-detail"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg> Idioma(s): ' + esc(langs) + '</span>' : '') +
       '</div>' +
@@ -5438,8 +5442,19 @@
       var q = encodeURIComponent(cName);
       h += atlasSectionHtml;
       h += '<div class="atlas-live-fallback-note"><p>Cobertura contínua via Atlas Vivo. <a target="_blank" rel="noopener" href="https://news.google.com/search?q=' + q + '&hl=pt-BR&gl=BR&ceid=BR:pt-419">Ver mais no Google Notícias ' + ICON_ARROW.replace('<svg', '<svg width="14" height="14" style="fill:none;stroke:currentColor;stroke-width:2.2"') + '</a></p></div>';
+      h += '<div id="slot-sponsor-drawer" class="sponsor-slot sponsor-slot-drawer" hidden aria-label="Apoio Contextual">' +
+        '<div class="sponsor-drawer-card">' +
+        '<div class="sponsor-drawer-head">' +
+        '<span class="sponsor-tag">Destaque de Mercado</span>' +
+        '<span class="mock-brand-logo sponsor-brand-target">Sua Marca</span>' +
+        '</div>' +
+        '<p class="sponsor-drawer-msg">Câmbio comercial, investimentos e soluções para suas conexões com <span id="sponsor-country-name">' + esc(cName) + '</span>.</p>' +
+        '<a class="btn btn-secondary sponsor-drawer-btn" href="/parcerias" data-spa-link>Conhecer soluções</a>' +
+        '</div>' +
+        '</div>';
       panel.innerHTML = h;
       bindCrumbs();
+      if (typeof applyLiveSponsors === 'function') applyLiveSponsors();
       bindAtlasLiveRefresh(cCodeUp, cName);
       carregarAtlasPaisAoVivo(cCodeUp, cName, false);
       return;
@@ -11559,6 +11574,14 @@
     }
     var cObj = byA2[cCode] || byA2['BR'];
     var cCont = (cObj && cObj.c) || 'sul';
+    var sponsorEntendaCode = (paises && paises[0]) ? String(paises[0]).trim().toUpperCase() : '';
+    if (!sponsorEntendaCode || !byA2[sponsorEntendaCode]) {
+      var infSp = inferirPaisesDeTextoClient(titulo + ' ' + resumo);
+      sponsorEntendaCode = (infSp && infSp[0] && byA2[infSp[0]]) ? infSp[0] : '';
+    }
+    var sponsorEntendaCountryName = (sponsorEntendaCode && byA2[sponsorEntendaCode] && byA2[sponsorEntendaCode].n)
+      ? byA2[sponsorEntendaCode].n
+      : 'o mundo';
 
     var routePath = '/entenda/' + cleanSlug;
     updateSeoMeta(titulo + ' — Entenda o assunto | Rodando o Mundo', resumo || titulo, routePath);
@@ -11591,6 +11614,7 @@
     h += renderShareBtn({ url: routePath, title: titulo, source: 'Entenda o assunto · Rodando o Mundo', type: 'dossie', summary: resumo });
     h += '</div>';
     h += '</header>';
+    h += '<aside id="slot-sponsor-entenda-guide" class="sponsor-slot sponsor-slot-entenda" hidden aria-label="Apoio Educacional" data-entenda-country="' + esc(sponsorEntendaCode) + '" data-entenda-country-name="' + esc(sponsorEntendaCountryName) + '"></aside>';
 
     if (resumo || contexto) {
       h += '<section class="hub-block entenda-v2-summary-box" aria-label="Resumo executivo e contexto">';
@@ -11829,6 +11853,9 @@
     h += '<button type="button" class="btn" data-ver-noticias-assunto data-termo="' + esc(ex.termoBusca) + '" data-pais="' + esc(ex.pais) + '" data-cont="' + esc(ex.continente) + '" data-topico="' + esc(ex.tipoNoticia) + '">Ver últimas notícias sobre este assunto</button>';
     h += '</div>';
     h += '</header>';
+    var exPaisCode = ex.pais ? String(ex.pais).trim().toUpperCase() : '';
+    var exPaisName = (exPaisCode && byA2[exPaisCode] && byA2[exPaisCode].n) ? byA2[exPaisCode].n : 'o mundo';
+    h += '<aside id="slot-sponsor-entenda-guide" class="sponsor-slot sponsor-slot-entenda" hidden aria-label="Apoio Educacional" data-entenda-country="' + esc(exPaisCode) + '" data-entenda-country-name="' + esc(exPaisName) + '"></aside>';
 
     h += '<div class="hub-block entenda-body-prose">';
     (ex.textoExplicativo || []).forEach(function (par) {
@@ -11881,6 +11908,7 @@
         else if (location.pathname !== routePath || location.hash) history.pushState({ entendaSlug: slug }, '', routePath);
       } catch (e) { }
     }
+    if (typeof applyLiveSponsors === 'function') applyLiveSponsors();
   }
 
   function obterDataHojeLocal() {
@@ -15197,6 +15225,9 @@
       eh += '<a href="/entenda" class="btn btn-secondary entenda-head-view-all" data-spa-link>Ver todos os ' + totalGuias + ' guias →</a>';
     }
     eh += '</div>';
+    if (isFullPage) {
+      eh += '<aside id="slot-sponsor-entenda-hub" class="sponsor-slot sponsor-slot-entenda" hidden aria-label="Apoio Educacional" data-entenda-country="" data-entenda-country-name="o mundo"></aside>';
+    }
 
     function renderCardV2(art) {
       var slug = normalizarSlugEntendaClient(art.slug);
@@ -15271,6 +15302,7 @@
 
     entendaSec.innerHTML = eh;
     bindDynamicEditorialActions(entendaSec);
+    if (typeof applyLiveSponsors === 'function') applyLiveSponsors();
 
     var refreshBtn = document.getElementById('btn-refresh-entenda');
     if (refreshBtn) {
@@ -18159,18 +18191,43 @@
       var sMaster = document.getElementById('slot-cota-master');
       var sResumo = document.getElementById('slot-sponsor-resumo');
       var sDrawer = document.getElementById('slot-sponsor-drawer');
+      var sDrawerTop = document.getElementById('slot-sponsor-drawer-top');
       if (sMaster) sMaster.hidden = false;
       if (sResumo) sResumo.hidden = false;
       if (sDrawer) sDrawer.hidden = false;
+      if (sDrawerTop) sDrawerTop.hidden = false;
+
+      var entendaSlots = document.querySelectorAll('.sponsor-slot-entenda');
+      entendaSlots.forEach(function (slot) {
+        var eName = slot.getAttribute('data-entenda-country-name') || 'o mundo';
+        var entendaMsg = (vert === 'educacao')
+          ? 'Cursos de idiomas, intercâmbio e certificações globais com foco em ' + eName + '.'
+          : (vert === 'turismo')
+            ? 'Seguro viagem internacional, eSIM global e assistência 24h para seus roteiros em ' + eName + '.'
+            : 'Câmbio comercial, contas globais e soluções de investimento para suas conexões com ' + eName + '.';
+        slot.innerHTML =
+          '<div class="sponsor-entenda-info">' +
+          '<span class="sponsor-tag">Apoio Educacional</span>' +
+          '<span class="mock-brand-logo sponsor-brand-target">' + esc(bName) + '</span>' +
+          '<span class="sponsor-entenda-desc">' + esc(entendaMsg) + '</span>' +
+          '</div>' +
+          '<a class="sponsor-cta-pill" href="/parcerias" data-spa-link>Conhecer soluções</a>';
+        slot.hidden = false;
+      });
     };
 
     window.toggleCommercialSlots = function (visible) {
       var sMaster = document.getElementById('slot-cota-master');
       var sResumo = document.getElementById('slot-sponsor-resumo');
       var sDrawer = document.getElementById('slot-sponsor-drawer');
+      var sDrawerTop = document.getElementById('slot-sponsor-drawer-top');
       if (sMaster) sMaster.hidden = !visible;
       if (sResumo) sResumo.hidden = !visible;
       if (sDrawer) sDrawer.hidden = !visible;
+      if (sDrawerTop) sDrawerTop.hidden = !visible;
+      document.querySelectorAll('.sponsor-slot-entenda').forEach(function (slot) {
+        slot.hidden = !visible;
+      });
     };
 
     window.toggleCommercialPointers = function (visible) {
@@ -18334,6 +18391,37 @@
     });
   }
 
+  function selectContextualSponsor(listDrawer, countryCode) {
+    if (!Array.isArray(listDrawer) || !listDrawer.length) return null;
+    var code = String(countryCode || '').trim().toUpperCase();
+    var chosen = null;
+    if (code) {
+      for (var i = 0; i < listDrawer.length; i++) {
+        var cand = listDrawer[i];
+        if (!cand) continue;
+        if (matchesCountryTarget(cand.paises_alvo, code)) {
+          if (cand.paises_alvo && String(cand.paises_alvo).trim().toLowerCase() !== 'todos') {
+            return cand;
+          }
+          if (!chosen) chosen = cand;
+        }
+      }
+      return chosen;
+    }
+    // Sem país específico (hub geral /entenda ou guia conceitual sem país):
+    // prioridade: global ('todos') -> segmentado BR -> primeiro ativo
+    var brFallback = null;
+    for (var k = 0; k < listDrawer.length; k++) {
+      var item = listDrawer[k];
+      if (!item) continue;
+      var alvo = String(item.paises_alvo || 'todos').trim().toLowerCase();
+      if (!alvo || alvo === 'todos') return item;
+      if (!brFallback && matchesCountryTarget(item.paises_alvo, 'BR')) brFallback = item;
+      if (!chosen) chosen = item;
+    }
+    return brFallback || chosen;
+  }
+
   function applyLiveSponsors(cotas) {
     if (isCommercialDemoMode) return;
     var c = cotas || liveSponsorsCache;
@@ -18380,87 +18468,128 @@
       }
     }
 
-    // Cota 04 — Território & Contexto (Gaveta do País)
+    // Cota 04 — Território & Contexto (Gaveta do País: Topo + Rodapé)
     var sDrawer = document.getElementById('slot-sponsor-drawer');
+    var sDrawerTop = document.getElementById('slot-sponsor-drawer-top');
     var listDrawer = toSponsorList(c.gaveta_contextual);
-    if (sDrawer) {
-      var curCountryCode = (state && state.country && state.country.a2) ? state.country.a2 : '';
-      var curCountryName = (document.getElementById('sponsor-country-name') || {}).textContent || (state && state.country && state.country.n) || 'o exterior';
-      var cDrawer = null;
-      for (var i = 0; i < listDrawer.length; i++) {
-        var dCandidate = listDrawer[i];
-        if (matchesCountryTarget(dCandidate.paises_alvo, curCountryCode)) {
-          if (dCandidate.paises_alvo && dCandidate.paises_alvo !== 'todos') {
-            cDrawer = dCandidate;
-            break;
-          }
-          if (!cDrawer) cDrawer = dCandidate;
-        }
+    if (sDrawer || sDrawerTop) {
+      var curCountryCode = '';
+      if (state && state.country) {
+        curCountryCode = (state.cont === 'sul' && (state.country.a2 === 'FR' || state.country.id === '250'))
+          ? 'GF'
+          : (state.country.a2 || state.country.id || '');
       }
+      var curCountryName = (state && state.country && typeof countryDisplayName === 'function')
+        ? countryDisplayName(state.country, state.cont)
+        : ((document.getElementById('sponsor-country-name') || {}).textContent || 'o exterior');
+      var cDrawer = selectContextualSponsor(listDrawer, curCountryCode);
 
       if (cDrawer) {
-        var headD = sDrawer.querySelector('.sponsor-drawer-head');
-        if (headD) {
-          headD.innerHTML =
-            '<span class="sponsor-tag">Apoio Contextual</span>' +
-            renderSponsorBrandEl(cDrawer);
+        if (sDrawer) {
+          var headD = sDrawer.querySelector('.sponsor-drawer-head');
+          if (headD) {
+            headD.innerHTML =
+              '<span class="sponsor-tag">Apoio Contextual</span>' +
+              renderSponsorBrandEl(cDrawer);
+          }
+          var msgD = sDrawer.querySelector('.sponsor-drawer-msg');
+          if (msgD) {
+            var rawMsg = (cDrawer.frase || 'Soluções globais para suas conexões com {pais}.');
+            msgD.innerHTML = esc(rawMsg).replace(/\{pais\}/g, '<span id="sponsor-country-name">' + esc(curCountryName) + '</span>');
+          }
+          var btnD = sDrawer.querySelector('.sponsor-drawer-btn');
+          applySponsorLinkAttrs(btnD, cDrawer.link_url, cDrawer.cta_texto || 'Conhecer soluções');
+          sDrawer.hidden = false;
         }
-        var msgD = sDrawer.querySelector('.sponsor-drawer-msg');
-        if (msgD) {
-          var rawMsg = (cDrawer.frase || 'Soluções globais para suas conexões com {pais}.');
-          msgD.innerHTML = esc(rawMsg).replace(/\{pais\}/g, '<span id="sponsor-country-name">' + esc(curCountryName) + '</span>');
+        if (sDrawerTop) {
+          sDrawerTop.innerHTML =
+            '<span class="sponsor-drawer-top-label">Apoio</span>' +
+            '<span class="sponsor-drawer-top-brand">' + renderSponsorBrandEl(cDrawer) + '</span>';
+          sDrawerTop.setAttribute('title', 'Apoio Contextual · ' + (cDrawer.nome || 'Parceiro'));
+          sDrawerTop.setAttribute('aria-label', 'Apoio Contextual: ' + (cDrawer.nome || 'Parceiro'));
+          applySponsorLinkAttrs(sDrawerTop, cDrawer.link_url);
+          sDrawerTop.hidden = false;
         }
-        var btnD = sDrawer.querySelector('.sponsor-drawer-btn');
-        applySponsorLinkAttrs(btnD, cDrawer.link_url, cDrawer.cta_texto || 'Conhecer soluções');
-        sDrawer.hidden = false;
       } else {
-        sDrawer.hidden = true;
+        if (sDrawer) sDrawer.hidden = true;
+        if (sDrawerTop) sDrawerTop.hidden = true;
       }
     }
 
-    // Cota 02 — Inteligência Setorial (Dossiês / Hubs Temáticos)
+    // Cota 04 — Seção /entenda (Hub e Guias Didáticos)
     var dossieHost = document.getElementById('thematic-hub-view');
+    var secEntendaHost = document.getElementById('entenda-o-assunto');
+    var entendaSlots = document.querySelectorAll('.sponsor-slot-entenda');
+    entendaSlots.forEach(function (slot) {
+      var inHub = slot.id === 'slot-sponsor-entenda-hub';
+      if (inHub && (!secEntendaHost || secEntendaHost.hidden)) return;
+      if (!inHub && (!dossieHost || dossieHost.hidden)) return;
+      var eCode = slot.getAttribute('data-entenda-country') || '';
+      var eName = slot.getAttribute('data-entenda-country-name') || 'o mundo';
+      var cEntenda = selectContextualSponsor(listDrawer, eCode);
+      if (cEntenda) {
+        var rawMsgE = (cEntenda.frase || 'Soluções globais para suas conexões com {pais}.');
+        var descHtmlE = esc(rawMsgE).replace(/\{pais\}/g, '<strong>' + esc(eName) + '</strong>');
+        slot.innerHTML =
+          '<div class="sponsor-entenda-info">' +
+          '<span class="sponsor-tag">Apoio Educacional</span>' +
+          renderSponsorBrandEl(cEntenda) +
+          '<span class="sponsor-entenda-desc">' + descHtmlE + '</span>' +
+          '</div>' +
+          '<a class="sponsor-cta-pill" href="/parcerias" data-spa-link>' + esc(cEntenda.cta_texto || 'Conhecer soluções') + '</a>';
+        applySponsorLinkAttrs(slot.querySelector('.sponsor-cta-pill'), cEntenda.link_url);
+        slot.hidden = false;
+      } else {
+        slot.hidden = true;
+      }
+    });
+
+    // Cota 02 — Inteligência Setorial (Dossiês / Hubs Temáticos)
     var listDossie = toSponsorList(c.dossie_tematico);
     if (dossieHost && !dossieHost.hidden) {
       var existingDossieSlot = document.getElementById('slot-cota-dossie');
-      var curPath = window.location.pathname;
-      var cDossie = null;
-      for (var j = 0; j < listDossie.length; j++) {
-        var cand = listDossie[j];
-        if (matchesHubTarget(cand.hub_alvo, curPath)) {
-          if (cand.hub_alvo && cand.hub_alvo !== 'todos') {
-            cDossie = cand;
-            break;
+      var curPath = window.location.pathname || '';
+      if (curPath.toLowerCase().indexOf('/entenda') === 0 || (state && state.entendaSlug)) {
+        if (existingDossieSlot) existingDossieSlot.hidden = true;
+      } else {
+        var cDossie = null;
+        for (var j = 0; j < listDossie.length; j++) {
+          var cand = listDossie[j];
+          if (matchesHubTarget(cand.hub_alvo, curPath)) {
+            if (cand.hub_alvo && cand.hub_alvo !== 'todos') {
+              cDossie = cand;
+              break;
+            }
+            if (!cDossie) cDossie = cand;
           }
-          if (!cDossie) cDossie = cand;
         }
-      }
 
-      if (cDossie) {
-        if (!existingDossieSlot) {
-          existingDossieSlot = document.createElement('aside');
-          existingDossieSlot.id = 'slot-cota-dossie';
-          existingDossieSlot.className = 'sponsor-slot sponsor-slot-dossie';
-          existingDossieSlot.setAttribute('aria-label', 'Apoio Setorial');
-          var container = dossieHost.querySelector('.hub-container') || dossieHost;
-          var heroEl = container.querySelector('.hub-hero, .dossie-hero');
-          if (heroEl && heroEl.nextSibling) {
-            container.insertBefore(existingDossieSlot, heroEl.nextSibling);
-          } else {
-            container.insertBefore(existingDossieSlot, container.firstChild);
+        if (cDossie) {
+          if (!existingDossieSlot) {
+            existingDossieSlot = document.createElement('aside');
+            existingDossieSlot.id = 'slot-cota-dossie';
+            existingDossieSlot.className = 'sponsor-slot sponsor-slot-dossie';
+            existingDossieSlot.setAttribute('aria-label', 'Apoio Setorial');
+            var container = dossieHost.querySelector('.hub-container') || dossieHost;
+            var heroEl = container.querySelector('.hub-hero, .dossie-hero');
+            if (heroEl && heroEl.nextSibling) {
+              container.insertBefore(existingDossieSlot, heroEl.nextSibling);
+            } else {
+              container.insertBefore(existingDossieSlot, container.firstChild);
+            }
           }
+          existingDossieSlot.innerHTML =
+            '<div class="sponsor-dossie-info">' +
+            '<span class="sponsor-tag">Apoio Setorial</span>' +
+            renderSponsorBrandEl(cDossie) +
+            '<span class="sponsor-dossie-desc">' + esc(cDossie.frase || '') + '</span>' +
+            '</div>' +
+            '<a class="sponsor-cta-pill" href="/parcerias" data-spa-link>' + esc(cDossie.cta_texto || 'Saiba mais') + '</a>';
+          applySponsorLinkAttrs(existingDossieSlot.querySelector('.sponsor-cta-pill'), cDossie.link_url);
+          existingDossieSlot.hidden = false;
+        } else if (existingDossieSlot) {
+          existingDossieSlot.hidden = true;
         }
-        existingDossieSlot.innerHTML =
-          '<div class="sponsor-dossie-info">' +
-          '<span class="sponsor-tag">Apoio Setorial</span>' +
-          renderSponsorBrandEl(cDossie) +
-          '<span class="sponsor-dossie-desc">' + esc(cDossie.frase || '') + '</span>' +
-          '</div>' +
-          '<a class="sponsor-cta-pill" href="/parcerias" data-spa-link>' + esc(cDossie.cta_texto || 'Saiba mais') + '</a>';
-        applySponsorLinkAttrs(existingDossieSlot.querySelector('.sponsor-cta-pill'), cDossie.link_url);
-        existingDossieSlot.hidden = false;
-      } else if (existingDossieSlot) {
-        existingDossieSlot.hidden = true;
       }
     }
   }
