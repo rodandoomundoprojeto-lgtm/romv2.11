@@ -1604,6 +1604,56 @@
       background: color-mix(in srgb, var(--primary) 16%, var(--surface));
       color: var(--text);
     }
+    .geo-continents-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 10px;
+      margin-top: 6px;
+    }
+    .geo-continent-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 10px 12px;
+      background: var(--surface);
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      transition: all var(--transition);
+      position: relative;
+    }
+    .geo-continent-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-1px);
+    }
+    .geo-continent-card.is-selected {
+      border-color: var(--primary);
+      background: color-mix(in srgb, var(--primary) 12%, var(--surface));
+      box-shadow: 0 0 0 1px var(--primary);
+    }
+    .geo-continent-card.is-conflict {
+      border-color: #f85149;
+      background: color-mix(in srgb, #f85149 10%, var(--surface));
+    }
+    .geo-cont-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .geo-cont-title {
+      font-weight: 600;
+      font-size: 0.84rem;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+    .geo-cont-desc {
+      font-size: 0.74rem;
+      color: var(--text-muted);
+      line-height: 1.3;
+    }
     .geo-picker-chips {
       display: flex;
       flex-wrap: wrap;
@@ -8198,19 +8248,20 @@
         },
         {
           key: 'gaveta_contextual',
-          titulo: 'Cota 04 — Território & Contexto (Geo)',
-          desc: 'Selo no topo (ao lado do nome do país) e card no rodapé da gaveta de veículos, além de box educacional na seção /entenda. Suporta múltiplos patrocinadores segmentados por países. Use {pais} na frase.',
-          extra: 'paises',
+          titulo: 'Cota 04 — Território & Contexto (Continentes)',
+          desc: 'Selo no topo (ao lado do nome do país) e card no rodapé da gaveta de todos os países do continente escolhido, além de presença garantida no Carrossel Dinâmico de Apoio Educacional na seção /entenda. Use {pais} ou {continente} na frase.',
+          extra: 'continentes',
           defaultItem: () => ({
             id: gerarSponsorId('geo'),
             ativo: false,
             nome: '',
             logo_url: '',
-            frase: 'Soluções globais para suas conexões com {pais}.',
+            frase: 'Soluções para suas conexões com {pais}.',
             cta_texto: 'Conhecer soluções',
             link_url: '',
             data_inicio: '',
             data_fim: '',
+            continentes_alvo: 'todos',
             paises_alvo: 'todos'
           })
         }
@@ -8342,8 +8393,55 @@
         return iniA <= fimB && iniB <= fimA;
       }
 
-      function obterMapaUsoPaisesCota04(excludeItemId) {
-        const byCode = new Map();
+      const CONTINENTES_CONFIG_C04 = [
+        { key: 'todos', label: 'Global (Todos os continentes)', flag: '🌐', desc: 'Exibido em todos os países e territórios onde não houver patrocinador regional.' },
+        { key: 'sul', label: 'América do Sul', flag: '🌎', desc: '12 países (Brasil, Argentina, Chile, Colômbia, Uruguai, Peru, etc.)' },
+        { key: 'norte', label: 'América do Norte & Central', flag: '🌎', desc: 'EUA, Canadá, México, Caribe e América Central' },
+        { key: 'europa', label: 'Europa', flag: '🌍', desc: '~45 países (Reino Unido, França, Alemanha, Portugal, Espanha, Itália, etc.)' },
+        { key: 'asia', label: 'Ásia', flag: '🌏', desc: '~48 países (China, Japão, Índia, Coreia do Sul, Emirados, etc.)' },
+        { key: 'africa', label: 'África', flag: '🌍', desc: '~54 países (África do Sul, Egito, Nigéria, Angola, Marrocos, etc.)' },
+        { key: 'oceania', label: 'Oceania', flag: '🌏', desc: 'Austrália, Nova Zelândia e arquipélagos do Pacífico' }
+      ];
+
+      function parseContinentesAlvo(item) {
+        const raw = String((item && (item.continentes_alvo || item.paises_alvo)) || '').trim().toLowerCase();
+        if (!raw || raw === 'todos') {
+          return { isTodos: true, keys: ['todos'] };
+        }
+        const validKeys = new Set(['todos', 'sul', 'norte', 'central', 'europa', 'asia', 'africa', 'oceania']);
+        const seen = new Set();
+        raw.split(',').forEach(p => {
+          const k = p.trim().toLowerCase();
+          if (validKeys.has(k)) {
+            if (k === 'todos') seen.add('todos');
+            else seen.add(k);
+          }
+        });
+        if (seen.has('todos') || !seen.size) {
+          return { isTodos: true, keys: ['todos'] };
+        }
+        return { isTodos: false, keys: Array.from(seen) };
+      }
+
+      function serializeContinentesAlvo(keys) {
+        if (!Array.isArray(keys) || !keys.length || keys.includes('todos')) return 'todos';
+        return keys.join(',');
+      }
+
+      function formatarContinentesResumoHtml(item) {
+        const parsed = parseContinentesAlvo(item);
+        if (parsed.isTodos) {
+          return '<span><strong>Cobertura:</strong> 🌐 Global (Todos os continentes)</span>';
+        }
+        const nomes = parsed.keys.map((k) => {
+          const cfg = CONTINENTES_CONFIG_C04.find((c) => c.key === k);
+          return cfg ? `${cfg.flag} ${cfg.label}` : k;
+        }).join(', ');
+        return `<span><strong>Continente(s) (${parsed.keys.length}):</strong> ${escAttr(nomes)}</span>`;
+      }
+
+      function obterMapaUsoContinentesCota04(excludeItemId) {
+        const byCont = new Map();
         const global = [];
         const list = patrociniosState.gaveta_contextual || [];
         list.forEach((it) => {
@@ -8361,62 +8459,31 @@
             periodoTxt: formatarPeriodoContratoCurto(it),
             item: it
           };
-          const parsed = parsePaisesAlvoGeo(it.paises_alvo);
+          const parsed = parseContinentesAlvo(it);
           if (parsed.isTodos) {
             global.push(uso);
           } else {
-            parsed.codes.forEach((c) => {
-              const up = c.toUpperCase();
-              if (!byCode.has(up)) byCode.set(up, []);
-              byCode.get(up).push(uso);
+            parsed.keys.forEach((k) => {
+              if (!byCont.has(k)) byCont.set(k, []);
+              byCont.get(k).push(uso);
             });
           }
         });
-        return { byCode, global };
-      }
-
-      function getGeoPickerUi(item) {
-        const parsed = parsePaisesAlvoGeo(item && item.paises_alvo);
-        let ui = geoPickerUiState.get(item.id);
-        if (!ui) {
-          ui = {
-            mode: parsed.isTodos ? 'todos' : 'especificos',
-            query: '',
-            filterTab: 'todos',
-            cont: ''
-          };
-          geoPickerUiState.set(item.id, ui);
-        } else if (!parsed.isTodos && ui.mode !== 'especificos') {
-          ui.mode = 'especificos';
-        }
-        return ui;
-      }
-
-      function formatarPaisesResumoHtml(raw) {
-        const parsed = parsePaisesAlvoGeo(raw);
-        if (parsed.isTodos) {
-          return '<span><strong>Países:</strong> 🌐 Todos os países e territórios</span>';
-        }
-        const nomesCompletos = parsed.codes.map((c) => `${obterNomePais(c)} (${c})`).join(', ');
-        const visiveis = parsed.codes.slice(0, 6).map((c) =>
-          `<span style="display:inline-flex;align-items:center;gap:3px;padding:1px 6px;border-radius:4px;border:1px solid var(--border);background:var(--surface);font-size:0.74rem;" title="${escAttr(obterNomePais(c))} (${escAttr(c)})">${obterBandeiraPais(c)} ${escAttr(obterNomePais(c))} <code>${escAttr(c)}</code></span>`
-        ).join(' ');
-        const extra = parsed.codes.length > 6 ? `<span class="admin-sub" style="font-size:0.74rem;">+${parsed.codes.length - 6} mais</span>` : '';
-        return `<span style="display:inline-flex;align-items:center;gap:5px;flex-wrap:wrap;" title="${escAttr(nomesCompletos)}"><strong>Países (${parsed.codes.length}):</strong> ${visiveis} ${extra}</span>`;
+        return { byCont, global };
       }
 
       function renderResumoUsoCota04() {
         const resumoEl = document.getElementById('cota04-uso-resumo');
         if (!resumoEl) return;
-        const mapa = obterMapaUsoPaisesCota04(null);
-        const totalEspecificos = mapa.byCode.size;
+        const mapa = obterMapaUsoContinentesCota04(null);
+        const totalEspecificos = mapa.byCont.size;
         const totalGlobais = mapa.global.length;
 
         if (!totalEspecificos && !totalGlobais) {
           resumoEl.innerHTML = `
             <div class="cota04-uso-resumo-head">
-              <span>🗺️ Ocupação de Territórios (Cota 04)</span>
-              <span style="font-size:0.75rem;color:#2ea043;">● Todos os ${CATALOGO_GEO_ROM.length} países e territórios estão disponíveis</span>
+              <span>🗺️ Ocupação Continental (Cota 04)</span>
+              <span style="font-size:0.75rem;color:#2ea043;">● Todos os 6 continentes estão disponíveis para novos parceiros</span>
             </div>
           `;
           return;
@@ -8427,26 +8494,22 @@
           const icon = u.status === 'agendado' ? '◷' : '●';
           pills.push(`
             <span class="cota04-uso-pill is-global" title="${escAttr(u.statusLabel)} · Contrato: ${escAttr(u.periodoTxt)}">
-              <span>🌐 <strong>Todos os territórios</strong></span>
+              <span>🌐 <strong>Global (Todos)</strong></span>
               <span>· ${escAttr(u.nome)}</span>
               <span style="opacity:0.85;">(${icon} ${escAttr(u.ateTxt)})</span>
             </span>
           `);
         });
 
-        const sortedCodes = Array.from(mapa.byCode.keys()).sort((a, b) => obterNomePais(a).localeCompare(obterNomePais(b), 'pt-BR'));
-        sortedCodes.forEach((codeUp) => {
-          const usos = mapa.byCode.get(codeUp) || [];
-          const geo = CATALOGO_GEO_MAP.get(codeUp);
-          const dispCode = geo ? geo.code : codeUp;
-          const flag = obterBandeiraPais(dispCode);
-          const nomePais = obterNomePais(dispCode);
+        CONTINENTES_CONFIG_C04.forEach((cfg) => {
+          if (cfg.key === 'todos') return;
+          const usos = mapa.byCont.get(cfg.key) || [];
           usos.forEach((u) => {
             const cls = u.status === 'agendado' ? 'is-agendado' : 'is-vigente';
             const icon = u.status === 'agendado' ? '◷' : '●';
             pills.push(`
               <span class="cota04-uso-pill ${cls}" title="${escAttr(u.statusLabel)} · Contrato: ${escAttr(u.periodoTxt)}">
-                <span>${flag} <strong>${escAttr(nomePais)}</strong> <code>${escAttr(dispCode)}</code></span>
+                <span>${cfg.flag} <strong>${escAttr(cfg.label)}</strong></span>
                 <span>· ${escAttr(u.nome)}</span>
                 <span style="opacity:0.85;">(${icon} ${escAttr(u.ateTxt)})</span>
               </span>
@@ -8456,64 +8519,11 @@
 
         resumoEl.innerHTML = `
           <div class="cota04-uso-resumo-head">
-            <span>🗺️ Territórios em uso ou agendados agora (${totalEspecificos} específico(s)${totalGlobais ? ` · ${totalGlobais} global` : ''})</span>
-            <span class="admin-sub" style="font-size:0.74rem;">Contratos pausados ou expirados não bloqueiam territórios</span>
+            <span>🗺️ Continentes em uso ou agendados agora (${totalEspecificos} continente(s)${totalGlobais ? ` · ${totalGlobais} global` : ''})</span>
+            <span class="admin-sub" style="font-size:0.74rem;">Os patrocinadores também entram em rotação no Carrossel da seção /entenda</span>
           </div>
           <div class="cota04-uso-pills">${pills.join('')}</div>
         `;
-      }
-
-      function renderGeoPickerList(item, ui, mapa, selectedSet) {
-        const listEl = document.querySelector(`[data-geo-list="${item.id}"]`);
-        if (!listEl) return;
-        const prevScroll = listEl.scrollTop;
-        const qNorm = normalizarBuscaGeo(String(ui.query || '').trim());
-        const contFilter = String(ui.cont || '').trim();
-        const tab = ui.filterTab || 'todos';
-
-        const filtered = CATALOGO_GEO_ROM.filter((g) => {
-          if (contFilter && g.cont !== contFilter) return false;
-          if (qNorm && !g.searchKey.includes(qNorm)) return false;
-          const usos = mapa.byCode.get(g.codeUpper) || [];
-          if (tab === 'disponiveis' && usos.length > 0) return false;
-          if (tab === 'em_uso' && usos.length === 0) return false;
-          if (tab === 'territorios' && g.tipo !== 'territorio') return false;
-          return true;
-        });
-
-        if (!filtered.length) {
-          listEl.innerHTML = `<div class="admin-sub" style="padding:14px;text-align:center;">Nenhum país ou território encontrado para os filtros atuais.</div>`;
-        } else {
-          listEl.innerHTML = filtered.map((g) => {
-            const isSel = selectedSet.has(g.codeUpper);
-            const usos = mapa.byCode.get(g.codeUpper) || [];
-            let statusPillHtml = '<span class="geo-status-pill geo-status-free">✓ Disponível</span>';
-            if (usos.length > 0) {
-              const overlapUso = usos.find((u) => contratosSobrepoem(item, u.item)) || usos[0];
-              const extraCnt = usos.length > 1 ? ` +${usos.length - 1}` : '';
-              const allTitles = usos.map((u) => `${u.nome} (${u.periodoTxt})`).join(' | ');
-              if (overlapUso.status === 'agendado') {
-                statusPillHtml = `<span class="geo-status-pill geo-status-sched" title="${escAttr(allTitles)}">◷ Agendado · ${escAttr(overlapUso.nome)} (${escAttr(overlapUso.periodoTxt)})${extraCnt}</span>`;
-              } else {
-                statusPillHtml = `<span class="geo-status-pill geo-status-used" title="${escAttr(allTitles)}">🔒 Em uso · ${escAttr(overlapUso.nome)} (${escAttr(overlapUso.ateTxt)})${extraCnt}</span>`;
-              }
-            }
-            const terrTag = g.tipo === 'territorio' ? '<span class="geo-row-tag-terr">Território</span>' : '';
-            return `
-              <label class="geo-row${isSel ? ' is-selected' : ''}">
-                <span class="geo-row-main">
-                  <input type="checkbox" data-geo-check="${escAttr(g.code)}" ${isSel ? 'checked' : ''} />
-                  <span aria-hidden="true">${g.flag}</span>
-                  <span class="geo-row-name" title="${escAttr(g.nome)} (${escAttr(g.contLabel)})">${escAttr(g.nome)}</span>
-                  <code class="geo-row-code">${escAttr(g.code)}</code>
-                  ${terrTag}
-                </span>
-                ${statusPillHtml}
-              </label>
-            `;
-          }).join('');
-        }
-        listEl.scrollTop = prevScroll;
       }
 
       function refreshGeoPickerCard(itemId) {
@@ -8523,88 +8533,51 @@
         const pickerEl = document.querySelector(`[data-geo-picker="${item.id}"]`);
         if (!pickerEl) return;
 
-        const ui = getGeoPickerUi(item);
-        const parsed = parsePaisesAlvoGeo(item.paises_alvo);
-        const selectedSet = new Set(parsed.codes.map((c) => c.toUpperCase()));
-        const mapa = obterMapaUsoPaisesCota04(item.id);
+        const parsed = parseContinentesAlvo(item);
+        const selectedKeys = new Set(parsed.keys);
+        const mapa = obterMapaUsoContinentesCota04(item.id);
 
         const countEl = pickerEl.querySelector(`[data-geo-count="${item.id}"]`);
         if (countEl) {
-          countEl.textContent = ui.mode === 'todos'
-            ? `Todos (${CATALOGO_GEO_ROM.length})`
-            : `${parsed.codes.length} selecionado(s)`;
+          countEl.textContent = parsed.isTodos
+            ? 'Global (Todos os continentes)'
+            : `${parsed.keys.length} continente(s) selecionado(s)`;
         }
 
-        pickerEl.querySelectorAll('[data-geo-mode]').forEach((btn) => {
-          btn.classList.toggle('active', btn.getAttribute('data-geo-mode') === ui.mode);
-        });
-
-        const globalBox = pickerEl.querySelector(`[data-geo-global-box="${item.id}"]`);
-        const specificBox = pickerEl.querySelector(`[data-geo-specific-box="${item.id}"]`);
-        if (ui.mode === 'todos') {
-          if (globalBox) {
-            const outrosGlobais = mapa.global.map((g) => `${escAttr(g.nome)} (${escAttr(g.ateTxt)})`).join(', ');
-            const especificosCount = mapa.byCode.size;
-            let infoHtml = `
-              <div class="geo-conflict-box is-info" style="background:color-mix(in srgb, var(--primary) 8%, var(--surface));border-color:color-mix(in srgb, var(--primary) 40%, var(--border));">
-                <span>🌐 Este patrocinador será exibido em <strong>todos os ${CATALOGO_GEO_ROM.length} países e territórios</strong> onde não houver patrocinador específico.</span>
-            `;
-            if (outrosGlobais) {
-              infoHtml += `<span>⚠️ <strong>Outro contrato global ativo/agendado:</strong> ${outrosGlobais}.</span>`;
-            }
-            if (especificosCount > 0) {
-              const listaEsp = Array.from(mapa.byCode.entries()).slice(0, 6).map(([codeUp, usos]) => {
-                const u = usos[0];
-                return `${obterBandeiraPais(codeUp)} ${escAttr(obterNomePais(codeUp))} (${escAttr(u.nome)}, ${escAttr(u.ateTxt)})`;
-              }).join(' · ');
-              const extraEsp = especificosCount > 6 ? ` e +${especificosCount - 6}` : '';
-              infoHtml += `<span>ℹ️ <strong>${especificosCount} território(s) já têm patrocínio exclusivo prioritário:</strong> ${listaEsp}${extraEsp}.</span>`;
-            }
-            infoHtml += `</div>`;
-            globalBox.innerHTML = infoHtml;
-            globalBox.style.display = 'block';
-          }
-          if (specificBox) specificBox.style.display = 'none';
-          return;
-        }
-
-        if (globalBox) {
-          globalBox.innerHTML = '';
-          globalBox.style.display = 'none';
-        }
-        if (specificBox) specificBox.style.display = 'flex';
-
-        const chipsEl = pickerEl.querySelector(`[data-geo-chips="${item.id}"]`);
         const alertsEl = pickerEl.querySelector(`[data-geo-alerts="${item.id}"]`);
+        const gridEl = pickerEl.querySelector(`[data-geo-continents-grid="${item.id}"]`);
         const conflitos = [];
-        const outrosPeriodos = [];
 
-        if (chipsEl) {
-          if (!parsed.codes.length) {
-            chipsEl.innerHTML = `<span class="admin-sub" style="font-size:0.76rem;font-style:italic;">Nenhum país selecionado ainda. Marque ao menos um país/território abaixo (se salvar sem marcar nenhum, valerá para todos).</span>`;
-          } else {
-            chipsEl.innerHTML = parsed.codes.map((c) => {
-              const up = c.toUpperCase();
-              const usos = mapa.byCode.get(up) || [];
-              const over = usos.filter((u) => contratosSobrepoem(item, u.item));
-              const nonOver = usos.filter((u) => !contratosSobrepoem(item, u.item));
-              over.forEach((u) => conflitos.push({ code: c, uso: u }));
-              nonOver.forEach((u) => outrosPeriodos.push({ code: c, uso: u }));
-              const hasConflict = over.length > 0;
-              const titleTxt = hasConflict
-                ? `Conflito: ${over.map((u) => `${u.nome} (${u.periodoTxt})`).join(', ')}`
-                : (nonOver.length ? `Outro contrato em período distinto: ${nonOver.map((u) => `${u.nome} (${u.periodoTxt})`).join(', ')}` : `${obterNomePais(c)} (${c})`);
-              return `
-                <span class="geo-chip${hasConflict ? ' is-conflict' : ''}" title="${escAttr(titleTxt)}">
-                  ${hasConflict ? '<span aria-hidden="true">🔒</span>' : ''}
-                  <span aria-hidden="true">${obterBandeiraPais(c)}</span>
-                  <span>${escAttr(obterNomePais(c))}</span>
-                  <code style="font-size:0.68rem;opacity:0.8;">${escAttr(c)}</code>
-                  <button type="button" class="geo-chip-remove" data-geo-remove="${escAttr(c)}" aria-label="Remover ${escAttr(obterNomePais(c))}">×</button>
-                </span>
-              `;
-            }).join('');
-          }
+        if (gridEl) {
+          gridEl.innerHTML = CONTINENTES_CONFIG_C04.map((cfg) => {
+            const isSel = parsed.isTodos ? (cfg.key === 'todos') : selectedKeys.has(cfg.key);
+            const usos = (cfg.key === 'todos') ? mapa.global : (mapa.byCont.get(cfg.key) || []);
+            const over = usos.filter((u) => contratosSobrepoem(item, u.item));
+            if (isSel && over.length > 0) {
+              conflitos.push({ cfg, over });
+            }
+            let statusBadge = '<span class="geo-status-pill geo-status-free">✓ Livre</span>';
+            if (usos.length > 0) {
+              const u0 = over[0] || usos[0];
+              const isOver = over.length > 0;
+              const pillClass = isOver ? (u0.status === 'agendado' ? 'geo-status-sched' : 'geo-status-used') : 'geo-status-free';
+              statusBadge = `<span class="geo-status-pill ${pillClass}" title="${escAttr(u0.nome)} (${escAttr(u0.periodoTxt)})">${isOver ? '🔒' : 'ℹ️'} ${escAttr(u0.nome)} (${escAttr(u0.ateTxt)})</span>`;
+            }
+
+            return `
+              <label class="geo-continent-card${isSel ? ' is-selected' : ''}${over.length && isSel ? ' is-conflict' : ''}">
+                <div class="geo-cont-head">
+                  <div class="geo-cont-title">
+                    <input type="checkbox" data-geo-cont-check="${escAttr(cfg.key)}" data-item-id="${escAttr(item.id)}" ${isSel ? 'checked' : ''} />
+                    <span>${cfg.flag}</span>
+                    <span>${escAttr(cfg.label)}</span>
+                  </div>
+                  ${statusBadge}
+                </div>
+                <div class="geo-cont-desc">${escAttr(cfg.desc)}</div>
+              </label>
+            `;
+          }).join('');
         }
 
         if (alertsEl) {
@@ -8612,46 +8585,20 @@
           if (conflitos.length) {
             blocks.push(`
               <div class="geo-conflict-box is-warn">
-                <strong>⚠️ Conflito de vigência detectado (${conflitos.length}):</strong>
-                ${conflitos.map((x) => `<span>• ${obterBandeiraPais(x.code)} <strong>${escAttr(obterNomePais(x.code))} (${escAttr(x.code)})</strong> já está em uso por <strong>${escAttr(x.uso.nome)}</strong> (${escAttr(x.uso.periodoTxt)})</span>`).join('')}
+                <strong>⚠️ Conflito de vigência por continente (${conflitos.length}):</strong>
+                ${conflitos.map((c) => `<span>• <strong>${escAttr(c.cfg.label)}</strong> já possui contrato com <strong>${escAttr(c.over.map(o => o.nome).join(', '))}</strong> para o mesmo período.</span>`).join('')}
               </div>
             `);
           }
-          if (outrosPeriodos.length) {
+          if (!parsed.isTodos && mapa.global.length) {
             blocks.push(`
               <div class="geo-conflict-box is-info">
-                <strong>ℹ️ Território(s) com contrato em outro período (sem sobreposição):</strong>
-                ${outrosPeriodos.map((x) => `<span>• ${obterBandeiraPais(x.code)} ${escAttr(obterNomePais(x.code))} (${escAttr(x.code)}): ${escAttr(x.uso.nome)} (${escAttr(x.uso.periodoTxt)})</span>`).join('')}
-              </div>
-            `);
-          }
-          if (mapa.global.length) {
-            blocks.push(`
-              <div class="geo-conflict-box is-info">
-                <span>🌐 Há contrato global (<code>todos</code>) ativo/agendado com <strong>${mapa.global.map((g) => `${escAttr(g.nome)} (${escAttr(g.ateTxt)})`).join(', ')}</strong>. Países específicos selecionados aqui terão prioridade sobre o global.</span>
+                <span>🌐 Há contrato global (<code>todos</code>) ativo com <strong>${mapa.global.map(g => `${escAttr(g.nome)} (${escAttr(g.ateTxt)})`).join(', ')}</strong>. O patrocinador regional terá exclusividade territorial prioritária sobre o global nos continentes selecionados.</span>
               </div>
             `);
           }
           alertsEl.innerHTML = blocks.join('');
         }
-
-        const tabsEl = pickerEl.querySelector(`[data-geo-tabs="${item.id}"]`);
-        if (tabsEl) {
-          const emUsoCount = CATALOGO_GEO_ROM.filter((g) => (mapa.byCode.get(g.codeUpper) || []).length > 0).length;
-          const terrCount = CATALOGO_GEO_ROM.filter((g) => g.tipo === 'territorio').length;
-          const dispCount = CATALOGO_GEO_ROM.length - emUsoCount;
-          const tabs = [
-            ['todos', `Todos (${CATALOGO_GEO_ROM.length})`],
-            ['disponiveis', `Disponíveis (${dispCount})`],
-            ['em_uso', `Em uso (${emUsoCount})`],
-            ['territorios', `Territórios (${terrCount})`]
-          ];
-          tabsEl.innerHTML = tabs.map(([k, lbl]) =>
-            `<button type="button" class="geo-tab-btn${(ui.filterTab || 'todos') === k ? ' active' : ''}" data-geo-tab="${k}">${lbl}</button>`
-          ).join('');
-        }
-
-        renderGeoPickerList(item, ui, mapa, selectedSet);
       }
 
       function refreshAllGeoPickersCota04() {
@@ -8674,13 +8621,25 @@
         if (!prevEl) return;
         const nome = (item.nome || '').trim();
         let paisPreview = 'Brasil';
+        let contPreview = 'América do Sul';
         if (key === 'gaveta_contextual') {
-          const parsedPrev = parsePaisesAlvoGeo(item.paises_alvo);
-          if (!parsedPrev.isTodos && parsedPrev.codes.length) {
-            paisPreview = obterNomePais(parsedPrev.codes[0]);
+          const parsedCont = parseContinentesAlvo(item);
+          if (!parsedCont.isTodos && parsedCont.keys.length) {
+            const c0 = parsedCont.keys[0];
+            const cfg = CONTINENTES_CONFIG_C04.find(c => c.key === c0);
+            if (cfg) {
+              contPreview = cfg.label;
+              if (c0 === 'europa') paisPreview = 'França';
+              else if (c0 === 'norte') paisPreview = 'Estados Unidos';
+              else if (c0 === 'asia') paisPreview = 'Japão';
+              else if (c0 === 'africa') paisPreview = 'África do Sul';
+              else if (c0 === 'oceania') paisPreview = 'Austrália';
+            }
           }
         }
-        const frase = (item.frase || '').trim().replace(/\{pais\}/g, paisPreview);
+        const frase = (item.frase || '').trim()
+          .replace(/\{pais\}/g, paisPreview)
+          .replace(/\{continente\}/g, contPreview);
         const cta = (item.cta_texto || '').trim() || 'Saiba mais';
         const st = obterStatusContrato(item);
         const periodoTxt = (item.data_inicio || item.data_fim)
@@ -8770,8 +8729,8 @@
           let segmentacaoTxt = '';
           if (meta.extra === 'hub') {
             segmentacaoTxt = `<span><strong>Alvo:</strong> ${escAttr(item.hub_alvo || 'todos')}</span>`;
-          } else if (meta.extra === 'paises') {
-            segmentacaoTxt = formatarPaisesResumoHtml(item.paises_alvo);
+          } else if (meta.extra === 'continentes' || meta.extra === 'paises') {
+            segmentacaoTxt = formatarContinentesResumoHtml(item);
           }
 
           const row = document.createElement('div');
@@ -8961,37 +8920,18 @@
                   </select>
                 </div>
               `;
-            } else if (meta.extra === 'paises') {
+            } else if (meta.extra === 'continentes' || meta.extra === 'paises') {
               extraHtml = `
                 <div class="admin-field geo-picker" data-geo-picker="${escAttr(item.id)}">
                   <div class="geo-picker-head">
-                    <label style="margin:0;">Países e Territórios Alvo <span class="admin-sub">(Cota 04 · Geo)</span></label>
+                    <label style="margin:0;">Continente(s) Alvo <span class="admin-sub">(Cota 04 · Território & Contexto)</span></label>
                     <span class="geo-picker-count" data-geo-count="${escAttr(item.id)}"></span>
                   </div>
-                  <div class="geo-picker-modes">
-                    <button type="button" class="geo-mode-btn" data-geo-mode="todos" data-geo-id="${escAttr(item.id)}">🌐 Todos os países e territórios</button>
-                    <button type="button" class="geo-mode-btn" data-geo-mode="especificos" data-geo-id="${escAttr(item.id)}">📍 Selecionar países / territórios</button>
-                  </div>
-                  <div data-geo-global-box="${escAttr(item.id)}"></div>
-                  <div data-geo-specific-box="${escAttr(item.id)}" style="display:flex;flex-direction:column;gap:8px;">
-                    <div class="geo-picker-chips" data-geo-chips="${escAttr(item.id)}"></div>
-                    <div data-geo-alerts="${escAttr(item.id)}"></div>
-                    <div class="geo-picker-toolbar">
-                      <input class="admin-input" type="search" data-geo-search="${escAttr(item.id)}" placeholder="Buscar país, território ou código (ex: Brasil, Guiana, BR, US-HI)..." />
-                      <select class="admin-select" data-geo-cont="${escAttr(item.id)}">
-                        <option value="">Todos os continentes</option>
-                        <option value="sul">América do Sul</option>
-                        <option value="central">América Central e Caribe</option>
-                        <option value="norte">América do Norte</option>
-                        <option value="europa">Europa</option>
-                        <option value="africa">África</option>
-                        <option value="asia">Ásia</option>
-                        <option value="oceania">Oceania</option>
-                      </select>
-                    </div>
-                    <div class="geo-picker-tabs" data-geo-tabs="${escAttr(item.id)}"></div>
-                    <div class="geo-picker-list" data-geo-list="${escAttr(item.id)}"></div>
-                  </div>
+                  <span class="admin-sub" style="font-size:0.75rem;margin-top:2px;display:block;">
+                    Selecione o continente exclusivo deste patrocinador. Ele será exibido em todos os países da região e entrará na rotação do Carrossel Educacional no <code>/entenda</code>.
+                  </span>
+                  <div data-geo-alerts="${escAttr(item.id)}"></div>
+                  <div class="geo-continents-grid" data-geo-continents-grid="${escAttr(item.id)}"></div>
                 </div>
               `;
             }
@@ -9061,12 +9001,8 @@
             `;
 
             container.appendChild(card);
-            if (meta.extra === 'paises') {
-              const ui = getGeoPickerUi(item);
-              const sInp = card.querySelector(`[data-geo-search="${item.id}"]`);
-              if (sInp) sInp.value = ui.query || '';
-              const cSel = card.querySelector(`[data-geo-cont="${item.id}"]`);
-              if (cSel) cSel.value = ui.cont || '';
+            if (meta.extra === 'continentes' || meta.extra === 'paises') {
+              refreshGeoPickerCard(item.id);
             }
             renderPreviewCota(meta.key, item.id);
           });
@@ -9079,100 +9015,29 @@
           if (it && it.id) refreshGeoPickerCard(it.id);
         });
 
-        // Seletor Geo da Cota 04: modo (todos vs específicos)
-        grid.querySelectorAll('[data-geo-mode]').forEach((btn) => {
-          btn.addEventListener('click', () => {
-            const id = btn.getAttribute('data-geo-id');
-            const mode = btn.getAttribute('data-geo-mode');
+        // Seletor de Continente da Cota 04: marcar/desmarcar continentes
+        grid.querySelectorAll('[data-geo-cont-check]').forEach((cb) => {
+          cb.addEventListener('change', () => {
+            const id = cb.getAttribute('data-item-id');
+            const contKey = cb.getAttribute('data-geo-cont-check');
             const item = (patrociniosState.gaveta_contextual || []).find((x) => x.id === id);
             if (!item) return;
-            const ui = getGeoPickerUi(item);
-            ui.mode = mode === 'especificos' ? 'especificos' : 'todos';
-            if (ui.mode === 'todos') {
-              item.paises_alvo = 'todos';
-            }
-            refreshAllGeoPickersCota04();
-          });
-        });
+            const parsed = parseContinentesAlvo(item);
+            let nextKeys = parsed.isTodos ? [] : parsed.keys.slice();
 
-        // Seletor Geo da Cota 04: busca por nome ou código
-        grid.querySelectorAll('[data-geo-search]').forEach((inp) => {
-          inp.addEventListener('input', () => {
-            const id = inp.getAttribute('data-geo-search');
-            const item = (patrociniosState.gaveta_contextual || []).find((x) => x.id === id);
-            if (!item) return;
-            const ui = getGeoPickerUi(item);
-            ui.query = inp.value;
-            refreshGeoPickerCard(id);
-          });
-        });
-
-        // Seletor Geo da Cota 04: filtro por continente
-        grid.querySelectorAll('[data-geo-cont]').forEach((sel) => {
-          sel.addEventListener('change', () => {
-            const id = sel.getAttribute('data-geo-cont');
-            const item = (patrociniosState.gaveta_contextual || []).find((x) => x.id === id);
-            if (!item) return;
-            const ui = getGeoPickerUi(item);
-            ui.cont = sel.value;
-            refreshGeoPickerCard(id);
-          });
-        });
-
-        // Seletor Geo da Cota 04: abas (Todos / Disponíveis / Em uso / Territórios)
-        grid.querySelectorAll('[data-geo-tabs]').forEach((tabsEl) => {
-          tabsEl.addEventListener('click', (e) => {
-            const tabBtn = e.target.closest('[data-geo-tab]');
-            if (!tabBtn) return;
-            const id = tabsEl.getAttribute('data-geo-tabs');
-            const item = (patrociniosState.gaveta_contextual || []).find((x) => x.id === id);
-            if (!item) return;
-            const ui = getGeoPickerUi(item);
-            ui.filterTab = tabBtn.getAttribute('data-geo-tab') || 'todos';
-            refreshGeoPickerCard(id);
-          });
-        });
-
-        // Seletor Geo da Cota 04: remover chip selecionado
-        grid.querySelectorAll('[data-geo-chips]').forEach((chipsEl) => {
-          chipsEl.addEventListener('click', (e) => {
-            const rmBtn = e.target.closest('[data-geo-remove]');
-            if (!rmBtn) return;
-            const id = chipsEl.getAttribute('data-geo-chips');
-            const codeRemove = (rmBtn.getAttribute('data-geo-remove') || '').toUpperCase();
-            const item = (patrociniosState.gaveta_contextual || []).find((x) => x.id === id);
-            if (!item) return;
-            const ui = getGeoPickerUi(item);
-            ui.mode = 'especificos';
-            const parsed = parsePaisesAlvoGeo(item.paises_alvo);
-            const nextCodes = parsed.codes.filter((c) => c.toUpperCase() !== codeRemove);
-            item.paises_alvo = serializePaisesAlvoGeo(false, nextCodes);
-            refreshAllGeoPickersCota04();
-          });
-        });
-
-        // Seletor Geo da Cota 04: marcar/desmarcar países e territórios
-        grid.querySelectorAll('[data-geo-list]').forEach((listEl) => {
-          listEl.addEventListener('change', (e) => {
-            const cb = e.target.closest('[data-geo-check]');
-            if (!cb) return;
-            const id = listEl.getAttribute('data-geo-list');
-            const codeVal = cb.getAttribute('data-geo-check') || '';
-            const codeUp = codeVal.toUpperCase();
-            const item = (patrociniosState.gaveta_contextual || []).find((x) => x.id === id);
-            if (!item) return;
-            const ui = getGeoPickerUi(item);
-            ui.mode = 'especificos';
-            const parsed = parsePaisesAlvoGeo(item.paises_alvo);
-            let nextCodes = parsed.codes.slice();
-            if (cb.checked) {
-              if (!nextCodes.some((c) => c.toUpperCase() === codeUp)) {
-                nextCodes.push(codeVal);
-              }
+            if (contKey === 'todos') {
+              nextKeys = cb.checked ? ['todos'] : ['sul'];
             } else {
-              nextCodes = nextCodes.filter((c) => c.toUpperCase() !== codeUp);
+              nextKeys = nextKeys.filter(k => k !== 'todos');
+              if (cb.checked) {
+                if (!nextKeys.includes(contKey)) nextKeys.push(contKey);
+              } else {
+                nextKeys = nextKeys.filter(k => k !== contKey);
+              }
+              if (!nextKeys.length) nextKeys = ['todos'];
             }
-            item.paises_alvo = serializePaisesAlvoGeo(false, nextCodes);
+            item.continentes_alvo = serializeContinentesAlvo(nextKeys);
+            item.paises_alvo = 'todos';
             refreshAllGeoPickersCota04();
           });
         });

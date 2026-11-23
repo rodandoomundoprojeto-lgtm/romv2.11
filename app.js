@@ -16750,9 +16750,9 @@
     },
     gaveta_contextual: {
       key: 'gaveta_contextual',
-      label: 'Cota 04 — Território & Contexto (Geo)',
-      titulo: 'Cota 04 — Território & Contexto (Geo)',
-      subtitle: 'Esta é a solicitação da Cota 04 — Território & Contexto (Geo). O time institucional está preparando a contextualização territorial exclusiva e enviará o material completo junto com as condições vigentes por e-mail.'
+      label: 'Cota 04 — Território & Contexto (Continentes)',
+      titulo: 'Cota 04 — Território & Contexto (Continentes)',
+      subtitle: 'Esta é a solicitação da Cota 04 — Território & Contexto (Continentes). O time institucional está preparando a contextualização continental exclusiva e enviará o material completo junto com as condições vigentes por e-mail.'
     },
     geral: {
       key: 'geral',
@@ -16995,7 +16995,7 @@
         'cota_master': 'Cota 01 — Founding Partner (Master)',
         'dossie_tematico': 'Cota 02 — Inteligência Setorial (Dossiês)',
         'resumo_dia': 'Cota 03 — Briefing Matinal (Resumo do Dia)',
-        'gaveta_contextual': 'Cota 04 — Território & Contexto (Geo)',
+        'gaveta_contextual': 'Cota 04 — Território & Contexto (Continentes)',
         'projeto_especial': 'Projeto Especial / Outros'
       };
 
@@ -18421,14 +18421,60 @@
     return { primary: country.a2 || country.id || '', fallback: '' };
   }
 
-  function findSpecificContextualSponsor(listDrawer, code) {
-    if (!code) return null;
+  var CONT_NAMES_PT = {
+    sul: 'América do Sul',
+    norte: 'América do Norte',
+    central: 'América Central & Caribe',
+    europa: 'Europa',
+    asia: 'Ásia',
+    africa: 'África',
+    oceania: 'Oceania',
+    todos: 'Global'
+  };
+
+  function matchesContinentTarget(continentesAlvo, contKey) {
+    var alvo = String(continentesAlvo || 'todos').trim().toLowerCase();
+    if (!alvo || alvo === 'todos') return true;
+    var cont = String(contKey || '').trim().toLowerCase();
+    if (!cont) return false;
+    var lista = alvo.split(',').map(function (s) { return s.trim(); }).filter(Boolean);
+    if (lista.indexOf(cont) !== -1) return true;
+    if (cont === 'central' && (lista.indexOf('norte') !== -1 || lista.indexOf('norte_central') !== -1)) return true;
+    if (cont === 'norte' && lista.indexOf('norte_central') !== -1) return true;
+    return false;
+  }
+
+  function getSponsorContinentLabel(sponsor) {
+    if (!sponsor) return 'Global';
+    var raw = String(sponsor.continentes_alvo || '').trim().toLowerCase();
+    if (!raw || raw === 'todos') {
+      var pAlvo = String(sponsor.paises_alvo || '').trim().toLowerCase();
+      if (pAlvo && pAlvo !== 'todos') return pAlvo.toUpperCase();
+      return 'Global';
+    }
+    var parts = raw.split(',').map(function (p) { return p.trim(); }).filter(Boolean);
+    if (!parts.length || parts[0] === 'todos') return 'Global';
+    return parts.map(function (k) { return CONT_NAMES_PT[k] || k; }).join(', ');
+  }
+
+  function findSpecificContextualSponsor(listDrawer, code, contKey, countryObj) {
+    if (!Array.isArray(listDrawer)) return null;
+    var cont = String(contKey || (countryObj && countryObj.c) || '').trim().toLowerCase();
     for (var i = 0; i < listDrawer.length; i++) {
       var cand = listDrawer[i];
       if (!cand) continue;
-      if (matchesCountryTarget(cand.paises_alvo, code)) {
-        var alvo = String(cand.paises_alvo || '').trim().toLowerCase();
-        if (alvo && alvo !== 'todos') return cand;
+      var contAlvo = String(cand.continentes_alvo || '').trim().toLowerCase();
+      var pAlvo = String(cand.paises_alvo || '').trim().toLowerCase();
+      if (contAlvo && contAlvo !== 'todos') {
+        if (cont && matchesContinentTarget(contAlvo, cont)) return cand;
+        if (countryObj && Array.isArray(countryObj.also)) {
+          for (var a = 0; a < countryObj.also.length; a++) {
+            if (matchesContinentTarget(contAlvo, countryObj.also[a])) return cand;
+          }
+        }
+      }
+      if (code && pAlvo && pAlvo !== 'todos' && matchesCountryTarget(pAlvo, code)) {
+        return cand;
       }
     }
     return null;
@@ -18438,27 +18484,28 @@
     for (var i = 0; i < listDrawer.length; i++) {
       var cand = listDrawer[i];
       if (!cand) continue;
-      var alvo = String(cand.paises_alvo || 'todos').trim().toLowerCase();
-      if (!alvo || alvo === 'todos') return cand;
+      var contAlvo = String(cand.continentes_alvo || 'todos').trim().toLowerCase();
+      var pAlvo = String(cand.paises_alvo || 'todos').trim().toLowerCase();
+      if ((!contAlvo || contAlvo === 'todos') && (!pAlvo || pAlvo === 'todos')) return cand;
     }
     return null;
   }
 
-  function selectContextualSponsor(listDrawer, countryCode, fallbackCode) {
+  function selectContextualSponsor(listDrawer, countryCode, fallbackCode, contKey, countryObj) {
     if (!Array.isArray(listDrawer) || !listDrawer.length) return null;
     var code = String(countryCode || '').trim().toUpperCase();
     var fb = String(fallbackCode || '').trim().toUpperCase();
-    if (code) {
-      var exact = findSpecificContextualSponsor(listDrawer, code);
+    var cont = String(contKey || (countryObj && countryObj.c) || '').trim().toLowerCase();
+
+    if (cont || code) {
+      var exact = findSpecificContextualSponsor(listDrawer, code, cont, countryObj);
       if (exact) return exact;
       if (fb && fb !== code) {
-        var fbMatch = findSpecificContextualSponsor(listDrawer, fb);
+        var fbMatch = findSpecificContextualSponsor(listDrawer, fb, cont, countryObj);
         if (fbMatch) return fbMatch;
       }
       return findGlobalContextualSponsor(listDrawer);
     }
-    // Sem país específico (hub geral /entenda ou guia conceitual sem país):
-    // prioridade: global ('todos') -> segmentado BR -> primeiro ativo
     var globalMatch = findGlobalContextualSponsor(listDrawer);
     if (globalMatch) return globalMatch;
     var brFallback = null;
@@ -18470,6 +18517,179 @@
       if (!chosen) chosen = item;
     }
     return brFallback || chosen;
+  }
+
+  function selectContextualSponsorsList(listDrawer, countryCode, fallbackCode, contKey) {
+    if (!Array.isArray(listDrawer) || !listDrawer.length) return [];
+    var result = [];
+    var seenIds = {};
+
+    function addItem(it) {
+      if (!it) return;
+      var id = it.id || (it.nome + '_' + (it.frase || '') + '_' + (it.continentes_alvo || ''));
+      if (!seenIds[id]) {
+        seenIds[id] = true;
+        result.push(it);
+      }
+    }
+
+    var cont = String(contKey || '').trim().toLowerCase();
+    var code = String(countryCode || '').trim().toUpperCase();
+
+    if (cont) {
+      listDrawer.forEach(function (cand) {
+        if (!cand) return;
+        var cAlvo = String(cand.continentes_alvo || '').trim().toLowerCase();
+        if (cAlvo && cAlvo !== 'todos' && matchesContinentTarget(cAlvo, cont)) addItem(cand);
+      });
+    }
+    if (code) {
+      listDrawer.forEach(function (cand) {
+        if (!cand) return;
+        var pAlvo = String(cand.paises_alvo || '').trim().toLowerCase();
+        if (pAlvo && pAlvo !== 'todos' && matchesCountryTarget(pAlvo, code)) addItem(cand);
+      });
+    }
+
+    listDrawer.forEach(function (cand) {
+      if (!cand) return;
+      var cAlvo = String(cand.continentes_alvo || '').trim().toLowerCase();
+      if (cAlvo && cAlvo !== 'todos') addItem(cand);
+    });
+
+    listDrawer.forEach(function (cand) {
+      if (!cand) return;
+      var cAlvo = String(cand.continentes_alvo || 'todos').trim().toLowerCase();
+      var pAlvo = String(cand.paises_alvo || 'todos').trim().toLowerCase();
+      if ((!cAlvo || cAlvo === 'todos') && (!pAlvo || pAlvo === 'todos')) addItem(cand);
+    });
+
+    if (result.length === 0) {
+      listDrawer.forEach(addItem);
+    }
+    return result;
+  }
+
+  function renderEntendaSponsorSlot(slot, listSponsors, eName) {
+    if (!slot) return;
+    if (slot._carouselTimer) {
+      clearInterval(slot._carouselTimer);
+      slot._carouselTimer = null;
+    }
+    if (!Array.isArray(listSponsors) || listSponsors.length === 0) {
+      slot.hidden = true;
+      slot.innerHTML = '';
+      return;
+    }
+
+    if (listSponsors.length === 1) {
+      var c = listSponsors[0];
+      var sContLabel1 = getSponsorContinentLabel(c);
+      var tag1 = sContLabel1 !== 'Global' ? ('Apoio Educacional · ' + sContLabel1) : 'Apoio Educacional';
+      var rawMsg = (c.frase || 'Soluções globais para suas conexões com {pais}.');
+      var descHtml = esc(rawMsg)
+        .replace(/\{pais\}/g, '<strong>' + esc(eName) + '</strong>')
+        .replace(/\{continente\}/g, '<strong>' + esc(sContLabel1) + '</strong>');
+      slot.innerHTML =
+        '<div class="sponsor-entenda-info">' +
+        '<span class="sponsor-tag">' + esc(tag1) + '</span>' +
+        renderSponsorBrandEl(c) +
+        '<span class="sponsor-entenda-desc">' + descHtml + '</span>' +
+        '</div>' +
+        '<a class="sponsor-cta-pill" href="/parcerias" data-spa-link>' + esc(c.cta_texto || 'Conhecer soluções') + '</a>';
+      applySponsorLinkAttrs(slot.querySelector('.sponsor-cta-pill'), c.link_url);
+      slot.hidden = false;
+      return;
+    }
+
+    // Multi-patrocinadores: Carrossel com transição suave e indicadores (dots) entre continentes
+    var slidesHtml = '';
+    for (var i = 0; i < listSponsors.length; i++) {
+      var it = listSponsors[i];
+      var sContLabel = getSponsorContinentLabel(it);
+      var tagSlide = sContLabel !== 'Global' ? ('Apoio Educacional · ' + sContLabel) : 'Apoio Educacional';
+      var rawMsgI = (it.frase || 'Soluções globais para suas conexões com {pais}.');
+      var descHtmlI = esc(rawMsgI)
+        .replace(/\{pais\}/g, '<strong>' + esc(eName) + '</strong>')
+        .replace(/\{continente\}/g, '<strong>' + esc(sContLabel) + '</strong>');
+      var isActive = (i === 0) ? ' active' : '';
+      slidesHtml +=
+        '<div class="sponsor-carousel-slide' + isActive + '" data-slide-index="' + i + '">' +
+        '<div class="sponsor-entenda-info">' +
+        '<span class="sponsor-tag">' + esc(tagSlide) + '</span>' +
+        renderSponsorBrandEl(it) +
+        '<span class="sponsor-entenda-desc">' + descHtmlI + '</span>' +
+        '</div>' +
+        '<a class="sponsor-cta-pill" href="/parcerias" data-spa-link>' + esc(it.cta_texto || 'Conhecer soluções') + '</a>' +
+        '</div>';
+    }
+
+    var dotsHtml = '<div class="sponsor-carousel-dots" role="tablist" aria-label="Navegar entre patrocinadores dos continentes">';
+    for (var d = 0; d < listSponsors.length; d++) {
+      var dotActive = (d === 0) ? ' active' : '';
+      var sNome = listSponsors[d].nome || ('Apoiador ' + (d + 1));
+      var sContLabelD = getSponsorContinentLabel(listSponsors[d]);
+      var dotLabel = sContLabelD !== 'Global' ? (sNome + ' (' + sContLabelD + ')') : sNome;
+      dotsHtml += '<button type="button" class="sponsor-dot' + dotActive + '" data-dot-index="' + d + '" aria-label="Exibir ' + esc(dotLabel) + '" title="' + esc(dotLabel) + '"></button>';
+    }
+    dotsHtml += '</div>';
+
+    slot.innerHTML =
+      '<div class="sponsor-carousel-wrapper">' +
+      '<div class="sponsor-carousel-track">' + slidesHtml + '</div>' +
+      dotsHtml +
+      '</div>';
+
+    var slides = slot.querySelectorAll('.sponsor-carousel-slide');
+    var dots = slot.querySelectorAll('.sponsor-dot');
+    slides.forEach(function (slideEl, idx) {
+      applySponsorLinkAttrs(slideEl.querySelector('.sponsor-cta-pill'), listSponsors[idx].link_url);
+    });
+
+    var curSlide = 0;
+    var isPaused = false;
+
+    function goTo(nextIdx) {
+      if (!slides.length) return;
+      if (nextIdx < 0) nextIdx = slides.length - 1;
+      if (nextIdx >= slides.length) nextIdx = 0;
+      curSlide = nextIdx;
+      slides.forEach(function (s, idx) {
+        if (idx === curSlide) {
+          s.classList.add('active');
+        } else {
+          s.classList.remove('active');
+        }
+      });
+      dots.forEach(function (dot, idx) {
+        dot.classList.toggle('active', idx === curSlide);
+        dot.setAttribute('aria-selected', idx === curSlide ? 'true' : 'false');
+      });
+    }
+
+    dots.forEach(function (dotBtn) {
+      dotBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var target = parseInt(dotBtn.getAttribute('data-dot-index'), 10);
+        if (!isNaN(target)) goTo(target);
+      });
+    });
+
+    slot.onmouseenter = function () { isPaused = true; };
+    slot.onmouseleave = function () { isPaused = false; };
+    slot.addEventListener('touchstart', function () { isPaused = true; }, { passive: true });
+    slot.addEventListener('touchend', function () {
+      setTimeout(function () { isPaused = false; }, 4000);
+    }, { passive: true });
+
+    slot._carouselTimer = setInterval(function () {
+      if (!isPaused && slot.offsetParent !== null) {
+        goTo(curSlide + 1);
+      }
+    }, 7000);
+
+    slot.hidden = false;
   }
 
   function applyLiveSponsors(cotas) {
@@ -18524,24 +18744,30 @@
     var sDrawerTop = document.getElementById('slot-sponsor-drawer-top');
     var listDrawer = toSponsorList(c.gaveta_contextual);
     if (sDrawer || sDrawerTop) {
-      var drawerCodes = resolveDrawerSponsorCodes(state && state.country, state && state.cont, state && state.islandName);
-      var curCountryName = (state && state.country && typeof countryDisplayName === 'function')
-        ? countryDisplayName(state.country, state.cont)
+      var curCountry = state && state.country;
+      var curCont = (state && state.cont) || (curCountry && curCountry.c) || '';
+      var drawerCodes = resolveDrawerSponsorCodes(curCountry, curCont, state && state.islandName);
+      var curCountryName = (curCountry && typeof countryDisplayName === 'function')
+        ? countryDisplayName(curCountry, curCont)
         : ((document.getElementById('sponsor-country-name') || {}).textContent || 'o exterior');
-      var cDrawer = selectContextualSponsor(listDrawer, drawerCodes.primary, drawerCodes.fallback);
+      var cDrawer = selectContextualSponsor(listDrawer, drawerCodes.primary, drawerCodes.fallback, curCont, curCountry);
 
       if (cDrawer) {
+        var contLabel = getSponsorContinentLabel(cDrawer);
+        var tagDrawer = contLabel !== 'Global' ? ('Apoio Regional · ' + contLabel) : 'Apoio Contextual';
         if (sDrawer) {
           var headD = sDrawer.querySelector('.sponsor-drawer-head');
           if (headD) {
             headD.innerHTML =
-              '<span class="sponsor-tag">Apoio Contextual</span>' +
+              '<span class="sponsor-tag">' + esc(tagDrawer) + '</span>' +
               renderSponsorBrandEl(cDrawer);
           }
           var msgD = sDrawer.querySelector('.sponsor-drawer-msg');
           if (msgD) {
             var rawMsg = (cDrawer.frase || 'Soluções globais para suas conexões com {pais}.');
-            msgD.innerHTML = esc(rawMsg).replace(/\{pais\}/g, '<span id="sponsor-country-name">' + esc(curCountryName) + '</span>');
+            msgD.innerHTML = esc(rawMsg)
+              .replace(/\{pais\}/g, '<span id="sponsor-country-name">' + esc(curCountryName) + '</span>')
+              .replace(/\{continente\}/g, esc(contLabel));
           }
           var btnD = sDrawer.querySelector('.sponsor-drawer-btn');
           applySponsorLinkAttrs(btnD, cDrawer.link_url, cDrawer.cta_texto || 'Conhecer soluções');
@@ -18549,10 +18775,10 @@
         }
         if (sDrawerTop) {
           sDrawerTop.innerHTML =
-            '<span class="sponsor-drawer-top-label">Apoio</span>' +
+            '<span class="sponsor-drawer-top-label">' + esc(tagDrawer) + '</span>' +
             '<span class="sponsor-drawer-top-brand">' + renderSponsorBrandEl(cDrawer) + '</span>';
-          sDrawerTop.setAttribute('title', 'Apoio Contextual · ' + (cDrawer.nome || 'Parceiro'));
-          sDrawerTop.setAttribute('aria-label', 'Apoio Contextual: ' + (cDrawer.nome || 'Parceiro'));
+          sDrawerTop.setAttribute('title', tagDrawer + ' · ' + (cDrawer.nome || 'Parceiro'));
+          sDrawerTop.setAttribute('aria-label', tagDrawer + ': ' + (cDrawer.nome || 'Parceiro'));
           applySponsorLinkAttrs(sDrawerTop, cDrawer.link_url);
           sDrawerTop.hidden = false;
         }
@@ -18562,32 +18788,28 @@
       }
     }
 
-    // Cota 04 — Seção /entenda (Hub e Guias Didáticos)
+    // Cota 04 — Seção /entenda (Hub e Guias Didáticos com suporte a Multi-Patrocinadores em Carrossel)
     var dossieHost = document.getElementById('thematic-hub-view');
     var secEntendaHost = document.getElementById('entenda-o-assunto');
     var entendaSlots = document.querySelectorAll('.sponsor-slot-entenda');
     entendaSlots.forEach(function (slot) {
       var inHub = slot.id === 'slot-sponsor-entenda-hub';
-      if (inHub && (!secEntendaHost || secEntendaHost.hidden)) return;
-      if (!inHub && (!dossieHost || dossieHost.hidden)) return;
+      if (inHub && (!secEntendaHost || secEntendaHost.hidden)) {
+        if (slot._carouselTimer) { clearInterval(slot._carouselTimer); slot._carouselTimer = null; }
+        return;
+      }
+      if (!inHub && (!dossieHost || dossieHost.hidden)) {
+        if (slot._carouselTimer) { clearInterval(slot._carouselTimer); slot._carouselTimer = null; }
+        return;
+      }
       var eCode = slot.getAttribute('data-entenda-country') || '';
       var eName = slot.getAttribute('data-entenda-country-name') || 'o mundo';
-      var cEntenda = selectContextualSponsor(listDrawer, eCode);
-      if (cEntenda) {
-        var rawMsgE = (cEntenda.frase || 'Soluções globais para suas conexões com {pais}.');
-        var descHtmlE = esc(rawMsgE).replace(/\{pais\}/g, '<strong>' + esc(eName) + '</strong>');
-        slot.innerHTML =
-          '<div class="sponsor-entenda-info">' +
-          '<span class="sponsor-tag">Apoio Educacional</span>' +
-          renderSponsorBrandEl(cEntenda) +
-          '<span class="sponsor-entenda-desc">' + descHtmlE + '</span>' +
-          '</div>' +
-          '<a class="sponsor-cta-pill" href="/parcerias" data-spa-link>' + esc(cEntenda.cta_texto || 'Conhecer soluções') + '</a>';
-        applySponsorLinkAttrs(slot.querySelector('.sponsor-cta-pill'), cEntenda.link_url);
-        slot.hidden = false;
-      } else {
-        slot.hidden = true;
+      var eCont = slot.getAttribute('data-entenda-continent') || '';
+      if (!eCont && eCode && byA2[eCode]) {
+        eCont = byA2[eCode].c || '';
       }
+      var sponsorsEntenda = selectContextualSponsorsList(listDrawer, eCode, '', eCont);
+      renderEntendaSponsorSlot(slot, sponsorsEntenda, eName);
     });
 
     // Cota 02 — Inteligência Setorial (Dossiês / Hubs Temáticos)

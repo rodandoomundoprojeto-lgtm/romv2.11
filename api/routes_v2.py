@@ -6482,6 +6482,20 @@ class CotaPatrocinioItem(BaseModel):
     exibir_no_sobre: bool = True
     hub_alvo: str = Field(default="todos", max_length=40)
     paises_alvo: str = Field(default="todos", max_length=2000)
+    continentes_alvo: str = Field(default="todos", max_length=200)
+
+    @field_validator("continentes_alvo", mode="before")
+    @classmethod
+    def normalizar_continentes_alvo(cls, v: Any) -> str:
+        s = str(v or "").strip().lower()
+        if not s or s == "todos":
+            return "todos"
+        partes = [p.strip() for p in s.split(",") if p.strip()]
+        validos = {"todos", "sul", "norte", "central", "europa", "asia", "africa", "oceania"}
+        filtrados = [p for p in partes if p in validos]
+        if not filtrados or "todos" in filtrados:
+            return "todos"
+        return ",".join(filtrados)
 
     @field_validator("id", mode="before")
     @classmethod
@@ -6537,6 +6551,7 @@ class CotasPatrocinioMap(BaseModel):
     gaveta_contextual: List[CotaPatrocinioItem] = Field(default_factory=lambda: [CotaPatrocinioItem(
         frase="Soluções globais para suas conexões com {pais}.",
         cta_texto="Conhecer soluções",
+        continentes_alvo="todos",
         paises_alvo="todos",
     )])
 
