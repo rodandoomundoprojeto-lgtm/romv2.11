@@ -14988,7 +14988,7 @@
     var statusHtml = (d.tipo === 'especial')
       ? renderDossieStatusBadge(d, st)
       : '<span class="hub-home-meta-badge">Permanente · ' + metaText + '</span>';
-    return '<article class="hub-home-card dossie-rotativo-card">' +
+    return '<article class="hub-home-card dossie-rotativo-card" data-dossie-slug="' + esc(d.slug || '') + '" data-dossie-rota="' + esc(d.rota || '') + '" data-dossie-cat="' + esc(d.categoria || '') + '">' +
       '<div class="hub-home-card-top">' +
       renderDossieIconHtml(d) +
       statusHtml +
@@ -14997,6 +14997,7 @@
       '<h3><a href="' + esc(href) + '" data-spa-link>' + esc(d.titulo) + '</a></h3>' +
       (d.meta_info && d.tipo === 'especial' ? '<div class="dossie-meta-period">' + esc(d.meta_info) + '</div>' : '') +
       '<p>' + esc(d.subtitulo || '') + '</p>' +
+      '<div class="dossie-card-sponsor" hidden></div>' +
       '<div class="hub-home-card-foot">' +
       '<a class="hub-home-open" href="' + esc(href) + '" data-spa-link>Acessar dossiê →</a>' +
       '</div>' +
@@ -15177,6 +15178,9 @@
 
     bindDynamicEditorialActions(gridEl);
     bindDossieRotativoNav();
+    if (typeof applyDossiesRotativosSponsors === 'function') {
+      applyDossiesRotativosSponsors();
+    }
     if (navEl) navEl.hidden = (picks.length <= visible);
 
     applyDossieRotativoIndex();
@@ -18692,6 +18696,91 @@
     slot.hidden = false;
   }
 
+  function normalizeDossieSponsorText(val) {
+    var s = String(val || '').toLowerCase();
+    if (typeof s.normalize === 'function') {
+      s = s.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    }
+    return s;
+  }
+
+  function selectDossieCardSponsor(listDossie, slug, rota, categoria) {
+    if (!Array.isArray(listDossie) || !listDossie.length) return null;
+    var pathTarget = '/dossies/' + String(slug || '').trim().toLowerCase();
+    var rotaNorm = normalizeDossieSponsorText(rota);
+    var catNorm = normalizeDossieSponsorText(categoria);
+    var combinedPath = pathTarget + ' ' + rotaNorm + ' ' + catNorm;
+
+    var exactMatch = null;
+    var hubMatch = null;
+    var globalMatch = null;
+
+    for (var i = 0; i < listDossie.length; i++) {
+      var cand = listDossie[i];
+      if (!cand) continue;
+      var alvo = String(cand.hub_alvo || 'todos').trim().toLowerCase();
+      if (!alvo || alvo === 'todos') {
+        if (!globalMatch) globalMatch = cand;
+        continue;
+      }
+      if (alvo.indexOf('dossie:') === 0) {
+        if (!exactMatch && matchesHubTarget(alvo, pathTarget)) {
+          exactMatch = cand;
+        }
+        continue;
+      }
+      if (!hubMatch && matchesHubTarget(alvo, combinedPath)) {
+        hubMatch = cand;
+      }
+    }
+    return exactMatch || hubMatch || globalMatch || null;
+  }
+
+  function applyDossiesRotativosSponsors(cotas) {
+    var gridEl = document.getElementById('dossies-rotativos-grid');
+    if (!gridEl) return;
+    var cards = gridEl.querySelectorAll('.dossie-rotativo-card');
+    if (!cards.length) return;
+
+    var c = cotas || liveSponsorsCache;
+    var listDossie = c ? toSponsorList(c.dossie_tematico) : [];
+
+    cards.forEach(function (card) {
+      var slot = card.querySelector('.dossie-card-sponsor');
+      if (!slot) return;
+      if (isCommercialDemoMode || !listDossie.length) {
+        slot.hidden = true;
+        slot.innerHTML = '';
+        card.classList.remove('has-cota2-sponsor');
+        return;
+      }
+
+      var slug = card.getAttribute('data-dossie-slug') || '';
+      var rota = card.getAttribute('data-dossie-rota') || '';
+      var cat = card.getAttribute('data-dossie-cat') || '';
+      var cDossie = selectDossieCardSponsor(listDossie, slug, rota, cat);
+
+      if (!cDossie) {
+        slot.hidden = true;
+        slot.innerHTML = '';
+        card.classList.remove('has-cota2-sponsor');
+        return;
+      }
+
+      slot.innerHTML =
+        '<div class="dossie-card-sponsor-top">' +
+        '<span class="sponsor-tag">Apoio Setorial</span>' +
+        '<a class="dossie-card-sponsor-cta" href="/parcerias" data-spa-link>' + esc(cDossie.cta_texto || 'Saiba mais') + '</a>' +
+        '</div>' +
+        '<div class="dossie-card-sponsor-brand">' +
+        renderSponsorBrandEl(cDossie) +
+        '</div>';
+      applySponsorLinkAttrs(slot.querySelector('.dossie-card-sponsor-cta'), cDossie.link_url, cDossie.cta_texto || 'Saiba mais');
+      slot.hidden = false;
+      card.classList.add('has-cota2-sponsor');
+    });
+  }
+
   function applyLiveSponsors(cotas) {
     if (isCommercialDemoMode) return;
     var c = cotas || liveSponsorsCache;
@@ -18811,6 +18900,9 @@
       var sponsorsEntenda = selectContextualSponsorsList(listDrawer, eCode, '', eCont);
       renderEntendaSponsorSlot(slot, sponsorsEntenda, eName);
     });
+
+    // Cota 02 — Inteligência Setorial (Carrossel Dossiês em Foco na Home)
+    applyDossiesRotativosSponsors(c);
 
     // Cota 02 — Inteligência Setorial (Dossiês / Hubs Temáticos)
     var listDossie = toSponsorList(c.dossie_tematico);

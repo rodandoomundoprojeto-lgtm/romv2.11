@@ -12264,6 +12264,84 @@ button.support-link.topbar-more-btn:hover {
   }
 }
 
+/* Slot compacto da Cota 02 dentro do card do carrossel "Dossiês em Foco" */
+.dossie-card-sponsor:not([hidden]) {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: var(--space-3);
+  padding: 0.55rem 0.7rem;
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.12) 0%, rgba(56, 189, 248, 0.05) 60%, rgba(15, 23, 42, 0.65) 100%);
+  border: 1px solid rgba(245, 158, 11, 0.34);
+  border-left: 3px solid #f59e0b;
+  border-radius: var(--radius-sm, 6px);
+}
+
+[data-theme="light"] .dossie-card-sponsor:not([hidden]) {
+  background: linear-gradient(135deg, rgba(254, 243, 199, 0.78) 0%, rgba(248, 250, 252, 0.98) 100%);
+  border-color: rgba(217, 119, 6, 0.35);
+  border-left: 3px solid #d97706;
+}
+
+.dossie-card-sponsor-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+}
+
+.dossie-card-sponsor-top .sponsor-tag {
+  font-size: 0.64rem;
+  padding: 2px 6px;
+}
+
+.dossie-card-sponsor-cta {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #fbbf24;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+[data-theme="light"] .dossie-card-sponsor-cta {
+  color: #b45309;
+}
+
+.dossie-card-sponsor-cta:hover {
+  text-decoration: underline;
+}
+
+.dossie-card-sponsor-brand {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}
+
+.dossie-card-sponsor-brand .sponsor-brand-combo {
+  gap: 0.45rem;
+  min-width: 0;
+}
+
+.dossie-card-sponsor-brand .sponsor-logo-img {
+  max-height: 22px;
+  max-width: 72px;
+  border-radius: 4px;
+}
+
+.dossie-card-sponsor-brand .sponsor-name-img {
+  max-height: 20px;
+  max-width: 120px;
+}
+
+.dossie-card-sponsor-brand .sponsor-brand-name,
+.dossie-card-sponsor-brand .mock-brand-logo {
+  font-size: 0.8rem;
+  line-height: 1.25;
+  white-space: normal;
+  word-break: break-word;
+}
+
 /* 5. Slot Cota 04 — Box Educacional na seção /entenda */
 .sponsor-slot-entenda {
   margin: var(--space-4) 0;
