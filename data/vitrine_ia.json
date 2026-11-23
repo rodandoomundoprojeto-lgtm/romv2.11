@@ -2,33 +2,164 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-23T00:55:09Z",
-  "batch_id": "20261123-0054",
+  "updatedAt": "2026-11-23T01:31:00Z",
+  "batch_id": "20261123-0130",
   "temas_ativos": [
     {
-      "slug": "south-korea-stock-market-tumbles-ai-bubble",
-      "titulo_tema": "Bolsa de valores da Coreia do Sul desaba com temores sobre bolha no setor de inteligência artificial",
-      "titulo_curto": "Bolsa de valores da Coreia do Sul desaba com temores sobre bolha no setor de inteligência artificial",
-      "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Economia",
-      "categoria": "Economia_Comercio",
+      "slug": "ataque-navios-petroleiros-estreito-ormuz-impacto-petroleo",
+      "titulo_tema": "Ataque a Petroleiros no Estreito de Ormuz Eleva Tensão no Oriente Médio e Alerta Global do Petróleo",
+      "status": "em_alta",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
       "categorias_cruzadas": [
         "Economia",
-        "Resumo_Ultimas"
+        "Politica"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 95,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-25T01:31:00Z",
+      "palavras_chave_busca": [
+        "estreito de ormuz",
+        "guarda revolucionaria",
+        "irã",
+        "petróleo brent",
+        "preço dos combustíveis",
+        "crise energetica",
+        "petrobras"
+      ],
+      "gatilho_vitrine": "Destacar risco de desabastecimento global e forte volatilidade no preço do barril de petróleo.",
+      "sintese_nerd": "A escalada militar com ataques a navios petroleiros na rota de Ormuz ameaça o fluxo de vinte por cento do petróleo mundial, disparando o barril no mercado internacional. Para o Brasil, o movimento pressiona a política de preços da Petrobras, amplia o risco inflacionário e pode adiar cortes de juros pelo Banco Central.",
+      "data_publicacao": "2026-11-23T01:31:00Z",
+      "updated_at": "2026-11-23T01:31:00Z"
+    },
+    {
+      "slug": "queda-bolsas-asia-temor-bolha-inteligencia-artificial",
+      "titulo_tema": "Queda Forte nas Bolsas Asiáticas Alimenta Temor de Bolha Global de Inteligência Artificial",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Geopolitica_Radar",
+        "Cultura"
       ],
       "rota_editoria": "/economia",
-      "relevancia_score": 91,
-      "urgencia_score": 89,
+      "relevancia_score": 88,
+      "ttl_horas": 36,
+      "expires_at": "2026-11-24T13:31:00Z",
+      "palavras_chave_busca": [
+        "mercado financeiro",
+        "ações de tecnologia",
+        "inteligencia artificial",
+        "bolha de ia",
+        "bolsa de seul",
+        "kospi",
+        "b3",
+        "aversão ao risco"
+      ],
+      "gatilho_vitrine": "Monitorar aversão ao risco em ativos de tecnologia e contágio no mercado acionário brasileiro.",
+      "sintese_nerd": "A forte desvalorização no índice Kospi da Coreia do Sul sinaliza desconfiança dos investidores quanto aos retornos financeiros dos massivos investimentos em inteligência artificial. O movimento de aversão global ao risco reduz o fluxo de capital para emergentes como o Brasil e traz volatilidade ao dólar.",
+      "data_publicacao": "2026-11-23T01:31:00Z",
+      "updated_at": "2026-11-23T01:31:00Z"
+    },
+    {
+      "slug": "brasil-critica-rascunho-cop31-exclusao-paises-desenvolvimento",
+      "titulo_tema": "Brasil Critica Rascunho da COP31 por Excluir Pleitos de Países em Desenvolvimento",
+      "status": "em_alta",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Politica",
+        "Economia"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 86,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-25T01:31:00Z",
+      "palavras_chave_busca": [
+        "cop31",
+        "diplomacia climatica",
+        "financiamento climático",
+        "países em desenvolvimento",
+        "liliam chagas",
+        "transição energetica",
+        "cop no brasil"
+      ],
+      "gatilho_vitrine": "Acompanhar o impasse diplomático sobre financiamento climático e a postura da diplomacia brasileira.",
+      "sintese_nerd": "A diplomacia brasileira rejeitou o texto preliminar da COP31 alegando que as metas impostas desconsideram as assimetrias econômicas dos países emergentes. O impasse coloca em xeque compromissos de financiamento para a transição energética e expõe a divisão do Sul Global frente às exigências das potências centrais.",
+      "data_publicacao": "2026-11-23T01:31:00Z",
+      "updated_at": "2026-11-23T01:31:00Z"
+    },
+    {
+      "slug": "stf-julgamento-presencial-emendas-ex-ministro-juscelino-filho",
+      "titulo_tema": "Zanin Envia Denúncia de Emendas do Ex-Ministro Juscelino Filho ao Plenário Presencial do STF",
+      "status": "em_alta",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Politica",
+      "categorias_cruzadas": [
+        "Eleicoes",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/politica",
+      "relevancia_score": 82,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-25T01:31:00Z",
+      "palavras_chave_busca": [
+        "cristiano zanin",
+        "stf",
+        "juscelino filho",
+        "emendas parlamentares",
+        "orçamento secreto",
+        "pgr",
+        "transparência fiscal"
+      ],
+      "gatilho_vitrine": "Acompanhar desdobramentos do julgamento presencial no STF e regras de transparência de emendas.",
+      "sintese_nerd": "Ao retirar a denúncia da Procuradoria-Geral da República contra Juscelino Filho do plenário virtual, o ministro Zanin joga luz sobre o uso de emendas parlamentares em grandes obras públicas. A decisão impõe novos testes institucionais à governabilidade no Congresso e à fiscalização do Orçamento da União.",
+      "data_publicacao": "2026-11-23T01:31:00Z",
+      "updated_at": "2026-11-23T01:31:00Z"
+    },
+    {
+      "slug": "democratas-ampliam-maioria-camara-eua-resultado-historico",
+      "titulo_tema": "Democratas Garantem Maioria Histórica na Câmara dos EUA e Alteram Dinâmica de Poder",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Eleicoes",
+      "categorias_cruzadas": [
+        "Politica",
+        "Geopolitica_Radar"
+      ],
+      "rota_editoria": "/eleicoes",
+      "relevancia_score": 80,
+      "ttl_horas": 72,
+      "expires_at": "2026-11-26T01:31:00Z",
+      "palavras_chave_busca": [
+        "câmara dos eua",
+        "partido democrata",
+        "eleições americanas",
+        "congresso dos eua",
+        "donald trump",
+        "governança washington"
+      ],
+      "gatilho_vitrine": "Analisar o impacto do novo equilíbrio de forças no Congresso dos EUA para acordos comerciais e sanções.",
+      "sintese_nerd": "A conquista de 258 cadeiras pelos Democratas marca a maior bancada do partido na Câmara norte-americana desde 1992, criando travamento fiscal e veto a projetos conservadores da Casa Branca. O reposicionamento do Congresso força novas negociações bilaterais e redefine prioridades em sanções e cooperação externa.",
+      "data_publicacao": "2026-11-23T01:31:00Z",
+      "updated_at": "2026-11-23T01:31:00Z"
+    },
+    {
+      "slug": "south-korea-stock-market-tumbles-ai-bubble",
+      "status": "novo",
+      "categoria": "Economia_Comercio",
       "ttl_horas": 24,
       "expires_at": "2026-11-24T00:55:09Z",
-      "palavras_chave_busca": [
-        "coreia do sul",
-        "kospi",
-        "bolsa de valores",
-        "inteligência artificial",
-        "mercados"
+      "updated_at": "2026-11-23T00:55:09Z",
+      "fontes_urls": [
+        "https://www.aljazeera.com/news/2026/11/23/south-koreas-stock-market-tumbles-as-ai-bubble-fears-mount?traffic_source=rss"
       ],
+      "titulo_tema": "Bolsa de valores da Coreia do Sul desaba com temores sobre bolha no setor de inteligência artificial",
+      "resumo_pulso": "Conforme noticiado pela Al Jazeera English, o índice Kospi, principal indicador da bolsa sul-coreana, registrou queda superior a 3% nas primeiras negociações. O movimento reflete a cautela generalizada dos investidores asiáticos diante de incertezas e temores de sobrevalorização corporativa ligada à cadeia de inteligência artificial.",
+      "sintese_nerd": "Possível volatilidade em mercados emergentes e globais voltados à tecnologia e semicondutores.",
+      "titulo_curto": "Bolsa de valores da Coreia do Sul desaba com temores sobre bolha no setor de inteligência artificial",
+      "rota_editoria": "/economia",
       "palavras_chave": [
         "coreia do sul",
         "kospi",
@@ -36,21 +167,30 @@
         "inteligência artificial",
         "mercados"
       ],
+      "urgencia_score": 89,
+      "data_publicacao": "2026-11-23T00:18:03Z",
       "gatilho_vitrine": "Conforme noticiado pela Al Jazeera English, o índice Kospi, principal indicador da bolsa sul-coreana, registrou queda superior a 3% nas primeiras negociações. O movimento reflete a cautela generalizada dos investidores asiáticos diante de incertezas e temores de sobrevalorização corporativa ligada à cadeia de inteligência artificial.",
-      "resumo_pulso": "Conforme noticiado pela Al Jazeera English, o índice Kospi, principal indicador da bolsa sul-coreana, registrou queda superior a 3% nas primeiras negociações. O movimento reflete a cautela generalizada dos investidores asiáticos diante de incertezas e temores de sobrevalorização corporativa ligada à cadeia de inteligência artificial.",
-      "sintese_nerd": "Possível volatilidade em mercados emergentes e globais voltados à tecnologia e semicondutores.",
       "impacto_pratico": "Possível volatilidade em mercados emergentes e globais voltados à tecnologia e semicondutores.",
-      "paises_envolvidos": [
-        "KR"
-      ],
+      "origem_pipeline": "pulso",
       "veiculos_origem": [
         "Al Jazeera English"
       ],
-      "fontes_urls": [
-        "https://www.aljazeera.com/news/2026/11/23/south-koreas-stock-market-tumbles-as-ai-bubble-fears-mount?traffic_source=rss"
+      "relevancia_score": 91,
+      "paises_envolvidos": [
+        "KR"
       ],
-      "data_publicacao": "2026-11-23T00:18:03Z",
-      "updated_at": "2026-11-23T00:55:09Z"
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "coreia do sul",
+        "kospi",
+        "bolsa de valores",
+        "inteligência artificial",
+        "mercados"
+      ]
     },
     {
       "slug": "trump-assina-lei-fim-moeda-1-centavo-eua",
@@ -147,28 +287,19 @@
     },
     {
       "slug": "polish-authorities-find-russian-missile-remains-at-three-sites",
-      "titulo_tema": "Procuradoria da Polônia localiza destroços de mísseis russos Kh-101 em três pontos no leste do país",
-      "titulo_curto": "Procuradoria da Polônia localiza destroços de mísseis russos Kh-101 em três pontos no leste do país",
       "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Geopolitica_Radar",
       "categoria": "Geopolitica_Relacoes",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 94,
-      "urgencia_score": 95,
       "ttl_horas": 18,
       "expires_at": "2026-11-23T17:36:25Z",
-      "palavras_chave_busca": [
-        "polônia",
-        "mísseis russos",
-        "kh-101",
-        "espaço aéreo",
-        "otan"
+      "updated_at": "2026-11-23T00:55:09Z",
+      "fontes_urls": [
+        "https://kyivindependent.com/polish-authorities-find-russian-missile-remains-at-three-sites-following-airspace-incursion/"
       ],
+      "titulo_tema": "Procuradoria da Polônia localiza destroços de mísseis russos Kh-101 em três pontos no leste do país",
+      "resumo_pulso": "Segundo informações divulgadas pelo The Kyiv Independent, a Procuradoria Distrital de Lublin confirmou a descoberta de fragmentos de mísseis de cruzeiro Kh-101 em três localidades distintas no leste polonês (Nowy Lipowiec, Rudnik e Mołodycz), após recente incursão registrada no espaço aéreo da região.",
+      "sintese_nerd": "Elevação do nível de alerta nas fronteiras orientais da OTAN e intensificação do monitoramento de defesa aérea na Polônia.",
+      "titulo_curto": "Procuradoria da Polônia localiza destroços de mísseis russos Kh-101 em três pontos no leste do país",
+      "rota_editoria": "/radar",
       "palavras_chave": [
         "polônia",
         "mísseis russos",
@@ -176,23 +307,32 @@
         "espaço aéreo",
         "otan"
       ],
+      "urgencia_score": 95,
+      "data_publicacao": "2026-11-22T23:26:30Z",
       "gatilho_vitrine": "Segundo informações divulgadas pelo The Kyiv Independent, a Procuradoria Distrital de Lublin confirmou a descoberta de fragmentos de mísseis de cruzeiro Kh-101 em três localidades distintas no leste polonês (Nowy Lipowiec, Rudnik e Mołodycz), após recente incursão registrada no espaço aéreo da região.",
-      "resumo_pulso": "Segundo informações divulgadas pelo The Kyiv Independent, a Procuradoria Distrital de Lublin confirmou a descoberta de fragmentos de mísseis de cruzeiro Kh-101 em três localidades distintas no leste polonês (Nowy Lipowiec, Rudnik e Mołodycz), após recente incursão registrada no espaço aéreo da região.",
-      "sintese_nerd": "Elevação do nível de alerta nas fronteiras orientais da OTAN e intensificação do monitoramento de defesa aérea na Polônia.",
       "impacto_pratico": "Elevação do nível de alerta nas fronteiras orientais da OTAN e intensificação do monitoramento de defesa aérea na Polônia.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "The Kyiv Independent"
+      ],
+      "relevancia_score": 94,
       "paises_envolvidos": [
         "PL",
         "RU",
         "UA"
       ],
-      "veiculos_origem": [
-        "The Kyiv Independent"
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
       ],
-      "fontes_urls": [
-        "https://kyivindependent.com/polish-authorities-find-russian-missile-remains-at-three-sites-following-airspace-incursion/"
-      ],
-      "data_publicacao": "2026-11-22T23:26:30Z",
-      "updated_at": "2026-11-23T00:55:09Z"
+      "palavras_chave_busca": [
+        "polônia",
+        "mísseis russos",
+        "kh-101",
+        "espaço aéreo",
+        "otan"
+      ]
     },
     {
       "slug": "ministro-educacao-coreia-do-sul-renuncia-fraudes-exames",
@@ -237,116 +377,6 @@
         "educação",
         "renúncia",
         "vestibular"
-      ]
-    },
-    {
-      "slug": "dolar-digital-usdt-alta-pressao-cambial-real",
-      "status": "novo",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-23T22:25:43Z",
-      "updated_at": "2026-11-22T22:25:43Z",
-      "titulo_tema": "Pressão no câmbio: Dólar digital atinge R$ 6,15 no fim de semana e sinaliza abertura estressada",
-      "sintese_nerd": "A disparada do Tether (USDT) para R$ 6,15 durante o final de semana reflete a busca por proteção cambial pelo mercado cripto antes da abertura das bolsas. Essa divergência em relação ao dólar comercial sinaliza forte apreensão dos investidores com o cenário fiscal doméstico e o cenário de juros internacionais.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-22T22:25:43Z",
-      "gatilho_vitrine": "Destacar impacto do USDT no apetite ao risco e projecoes para o mercado cambial brasileiro.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 92,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Politica",
-        "Geopolitica_Radar"
-      ],
-      "palavras_chave_busca": [
-        "dolar digital",
-        "usdt",
-        "cotacao dolar",
-        "cambio",
-        "banco central",
-        "mercado financeiro",
-        "real desvalorizacao"
-      ]
-    },
-    {
-      "slug": "cop31-impasse-combustiveis-fosseis-transicao-energetica",
-      "status": "novo",
-      "ttl_horas": 72,
-      "expires_at": "2026-11-25T22:25:43Z",
-      "updated_at": "2026-11-22T22:25:43Z",
-      "titulo_tema": "COP31 encerra sem acordo global sobre eliminação gradual de combustíveis fósseis",
-      "sintese_nerd": "A COP31 consagrou-se como a mais longa e inconclusiva da história devido às divergências intransponíveis sobre o financiamento climático e a transição dos combustíveis fósseis. O fracasso diplomático amplia a incerteza regulatória para mercados emergentes exportadores de commodities e expõe os limites da diplomacia multilateral ambiental.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-22T22:25:43Z",
-      "gatilho_vitrine": "Exibir materias sobre o impasse diplomatico entre paises produtores de petroleo e blocos por metas de descarbonizacao.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 88,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Politica",
-        "Cultura"
-      ],
-      "palavras_chave_busca": [
-        "cop31",
-        "mudancas climaticas",
-        "combustiveis fosseis",
-        "transicao energetica",
-        "acordo do clima",
-        "diplomacia ambiental"
-      ]
-    },
-    {
-      "slug": "juros-altos-selic-custo-brasil-investimentos",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-24T22:25:43Z",
-      "updated_at": "2026-11-22T22:25:43Z",
-      "titulo_tema": "Debate sobre permanência de juros elevados ressalta gargalos estruturais do Custo Brasil",
-      "sintese_nerd": "Economistas apontam que a manutenção dos juros em patamares elevados no Brasil deriva da incerteza fiscal sustentada e dos custos sistêmicos que reduzem a produtividade do setor privado. O binômio entre juros altos e entraves tributários continua a afastar o investimento direto estrangeiro e a estrangular a expansão produtiva.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-22T22:25:43Z",
-      "gatilho_vitrine": "Selecionar analises macroeconomicas detalhadas sobre a relacao entre divida publica e juros reais.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 86,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Politica"
-      ],
-      "palavras_chave_busca": [
-        "taxa selic",
-        "juros altos",
-        "custo brasil",
-        "banco central",
-        "politica monetaria",
-        "investimento estrangeiro",
-        "reforma tributaria"
-      ]
-    },
-    {
-      "slug": "uniao-europeia-taxacao-big-techs-orcamento-comunitario",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-24T22:25:43Z",
-      "updated_at": "2026-11-22T22:25:43Z",
-      "titulo_tema": "União Europeia propõe tributação de multinacionais de tecnologia para reforçar orçamento",
-      "sintese_nerd": "A proposta da UE de impor uma taxa sobre a receita de multinacionais de tecnologia com faturamento global superior a 750 milhões de euros marca uma nova etapa na soberania fiscal digital. Caso aprovada, a medida deve redefinir padrões globais de tributação sobre plataformas de dados e inteligência artificial, influenciando legislações na América Latina.",
-      "rota_editoria": "/politica",
-      "data_publicacao": "2026-11-22T22:25:43Z",
-      "gatilho_vitrine": "Posicionar artigos sobre regulacao e tributacao de gigantes digitais no topo de Politica e Economia.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 85,
-      "categoria_primaria": "Politica",
-      "categorias_cruzadas": [
-        "Economia",
-        "Cultura"
-      ],
-      "palavras_chave_busca": [
-        "uniao europeia",
-        "taxacao big techs",
-        "regulacao digital",
-        "imposto sobre gigantes de tecnologia",
-        "economia digital",
-        "receita liquida"
       ]
     },
     {
@@ -439,34 +469,6 @@
         "tesouro direto",
         "escolas",
         "olitef"
-      ]
-    },
-    {
-      "slug": "trump-ameaca-ataques-ira-bloqueio-naval",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-24T22:25:43Z",
-      "updated_at": "2026-11-22T22:25:43Z",
-      "titulo_tema": "Donald Trump ameaça retomar ataques ao Irã e afundar navios em furo a bloqueio naval",
-      "sintese_nerd": "A retórica agressiva de Donald Trump sobre restabelecer ataques e afundar embarcações iranianas eleva o risco geopolítico na rota do Estreito de Ormuz. O endurecimento das sanções navais ameaça restringir a oferta global de petróleo, gerando repasses inflacionários diretos nas cadeias produtivas globais.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-22T21:57:19Z",
-      "gatilho_vitrine": "Priorizar analise do impacto do cerco militar no preco do petroleo global e inflacao de combustiveis.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 94,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Politica"
-      ],
-      "palavras_chave_busca": [
-        "donald trump",
-        "ira",
-        "bloqueio naval",
-        "petroleo",
-        "tensao geopolitica",
-        "oriente medio",
-        "politica externa eua"
       ]
     },
     {
@@ -614,28 +616,19 @@
     },
     {
       "slug": "conflitos-no-congo-dificultam-resposta-surto-ebola-oms",
-      "titulo_tema": "OMS alerta que combates armados no leste do Congo colocam em risco pacientes e operações contra o Ebola",
-      "titulo_curto": "OMS alerta que combates armados no leste do Congo colocam em risco pacientes e operações contra o Ebola",
       "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Geopolitica_Radar",
       "categoria": "Geopolitica_Relacoes",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 90,
-      "urgencia_score": 93,
       "ttl_horas": 24,
       "expires_at": "2026-11-23T21:18:43Z",
-      "palavras_chave_busca": [
-        "oms",
-        "ebola",
-        "congo",
-        "conflito armado",
-        "saúde pública"
+      "updated_at": "2026-11-23T00:55:09Z",
+      "fontes_urls": [
+        "https://www.aljazeera.com/news/2026/11/23/who-chief-calls-for-peace-amid-heavy-fighting-in-ebola-hit-dr-congo-region?traffic_source=rss"
       ],
+      "titulo_tema": "OMS alerta que combates armados no leste do Congo colocam em risco pacientes e operações contra o Ebola",
+      "resumo_pulso": "Segundo alerta emitido pelo diretor-geral da Organização Mundial da Saúde (OMS) e reportado pela Al Jazeera English, a intensificação de confrontos militares nas proximidades de hospitais no leste da República Democrática do Congo tem comprometido severamente o combate ao surto de Ebola e exposto profissionais de saúde a graves riscos.",
+      "sintese_nerd": "Preocupação sanitária internacional com a expansão de epidemias em zonas de conflito armado sem assistência médica contínua.",
+      "titulo_curto": "OMS alerta que combates armados no leste do Congo colocam em risco pacientes e operações contra o Ebola",
+      "rota_editoria": "/radar",
       "palavras_chave": [
         "oms",
         "ebola",
@@ -643,21 +636,30 @@
         "conflito armado",
         "saúde pública"
       ],
+      "urgencia_score": 93,
+      "data_publicacao": "2026-11-22T21:15:00Z",
       "gatilho_vitrine": "Segundo alerta emitido pelo diretor-geral da Organização Mundial da Saúde (OMS) e reportado pela Al Jazeera English, a intensificação de confrontos militares nas proximidades de hospitais no leste da República Democrática do Congo tem comprometido severamente o combate ao surto de Ebola e exposto profissionais de saúde a graves riscos.",
-      "resumo_pulso": "Segundo alerta emitido pelo diretor-geral da Organização Mundial da Saúde (OMS) e reportado pela Al Jazeera English, a intensificação de confrontos militares nas proximidades de hospitais no leste da República Democrática do Congo tem comprometido severamente o combate ao surto de Ebola e exposto profissionais de saúde a graves riscos.",
-      "sintese_nerd": "Preocupação sanitária internacional com a expansão de epidemias em zonas de conflito armado sem assistência médica contínua.",
       "impacto_pratico": "Preocupação sanitária internacional com a expansão de epidemias em zonas de conflito armado sem assistência médica contínua.",
-      "paises_envolvidos": [
-        "CD"
-      ],
+      "origem_pipeline": "pulso",
       "veiculos_origem": [
         "Al Jazeera English"
       ],
-      "fontes_urls": [
-        "https://www.aljazeera.com/news/2026/11/23/who-chief-calls-for-peace-amid-heavy-fighting-in-ebola-hit-dr-congo-region?traffic_source=rss"
+      "relevancia_score": 90,
+      "paises_envolvidos": [
+        "CD"
       ],
-      "data_publicacao": "2026-11-22T21:15:00Z",
-      "updated_at": "2026-11-23T00:55:09Z"
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "oms",
+        "ebola",
+        "congo",
+        "conflito armado",
+        "saúde pública"
+      ]
     },
     {
       "slug": "reforma-tributaria-positiva-nanoempreendedores-associacao",
@@ -854,27 +856,160 @@
       ]
     }
   ],
+  "temas_curadoria": [
+    {
+      "slug": "ataque-navios-petroleiros-estreito-ormuz-impacto-petroleo",
+      "titulo_tema": "Ataque a Petroleiros no Estreito de Ormuz Eleva Tensão no Oriente Médio e Alerta Global do Petróleo",
+      "status": "em_alta",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Politica"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 95,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-25T01:31:00Z",
+      "palavras_chave_busca": [
+        "estreito de ormuz",
+        "guarda revolucionaria",
+        "irã",
+        "petróleo brent",
+        "preço dos combustíveis",
+        "crise energetica",
+        "petrobras"
+      ],
+      "gatilho_vitrine": "Destacar risco de desabastecimento global e forte volatilidade no preço do barril de petróleo.",
+      "sintese_nerd": "A escalada militar com ataques a navios petroleiros na rota de Ormuz ameaça o fluxo de vinte por cento do petróleo mundial, disparando o barril no mercado internacional. Para o Brasil, o movimento pressiona a política de preços da Petrobras, amplia o risco inflacionário e pode adiar cortes de juros pelo Banco Central.",
+      "data_publicacao": "2026-11-23T01:31:00Z",
+      "updated_at": "2026-11-23T01:31:00Z"
+    },
+    {
+      "slug": "queda-bolsas-asia-temor-bolha-inteligencia-artificial",
+      "titulo_tema": "Queda Forte nas Bolsas Asiáticas Alimenta Temor de Bolha Global de Inteligência Artificial",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Geopolitica_Radar",
+        "Cultura"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 88,
+      "ttl_horas": 36,
+      "expires_at": "2026-11-24T13:31:00Z",
+      "palavras_chave_busca": [
+        "mercado financeiro",
+        "ações de tecnologia",
+        "inteligencia artificial",
+        "bolha de ia",
+        "bolsa de seul",
+        "kospi",
+        "b3",
+        "aversão ao risco"
+      ],
+      "gatilho_vitrine": "Monitorar aversão ao risco em ativos de tecnologia e contágio no mercado acionário brasileiro.",
+      "sintese_nerd": "A forte desvalorização no índice Kospi da Coreia do Sul sinaliza desconfiança dos investidores quanto aos retornos financeiros dos massivos investimentos em inteligência artificial. O movimento de aversão global ao risco reduz o fluxo de capital para emergentes como o Brasil e traz volatilidade ao dólar.",
+      "data_publicacao": "2026-11-23T01:31:00Z",
+      "updated_at": "2026-11-23T01:31:00Z"
+    },
+    {
+      "slug": "brasil-critica-rascunho-cop31-exclusao-paises-desenvolvimento",
+      "titulo_tema": "Brasil Critica Rascunho da COP31 por Excluir Pleitos de Países em Desenvolvimento",
+      "status": "em_alta",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Politica",
+        "Economia"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 86,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-25T01:31:00Z",
+      "palavras_chave_busca": [
+        "cop31",
+        "diplomacia climatica",
+        "financiamento climático",
+        "países em desenvolvimento",
+        "liliam chagas",
+        "transição energetica",
+        "cop no brasil"
+      ],
+      "gatilho_vitrine": "Acompanhar o impasse diplomático sobre financiamento climático e a postura da diplomacia brasileira.",
+      "sintese_nerd": "A diplomacia brasileira rejeitou o texto preliminar da COP31 alegando que as metas impostas desconsideram as assimetrias econômicas dos países emergentes. O impasse coloca em xeque compromissos de financiamento para a transição energética e expõe a divisão do Sul Global frente às exigências das potências centrais.",
+      "data_publicacao": "2026-11-23T01:31:00Z",
+      "updated_at": "2026-11-23T01:31:00Z"
+    },
+    {
+      "slug": "stf-julgamento-presencial-emendas-ex-ministro-juscelino-filho",
+      "titulo_tema": "Zanin Envia Denúncia de Emendas do Ex-Ministro Juscelino Filho ao Plenário Presencial do STF",
+      "status": "em_alta",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Politica",
+      "categorias_cruzadas": [
+        "Eleicoes",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/politica",
+      "relevancia_score": 82,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-25T01:31:00Z",
+      "palavras_chave_busca": [
+        "cristiano zanin",
+        "stf",
+        "juscelino filho",
+        "emendas parlamentares",
+        "orçamento secreto",
+        "pgr",
+        "transparência fiscal"
+      ],
+      "gatilho_vitrine": "Acompanhar desdobramentos do julgamento presencial no STF e regras de transparência de emendas.",
+      "sintese_nerd": "Ao retirar a denúncia da Procuradoria-Geral da República contra Juscelino Filho do plenário virtual, o ministro Zanin joga luz sobre o uso de emendas parlamentares em grandes obras públicas. A decisão impõe novos testes institucionais à governabilidade no Congresso e à fiscalização do Orçamento da União.",
+      "data_publicacao": "2026-11-23T01:31:00Z",
+      "updated_at": "2026-11-23T01:31:00Z"
+    },
+    {
+      "slug": "democratas-ampliam-maioria-camara-eua-resultado-historico",
+      "titulo_tema": "Democratas Garantem Maioria Histórica na Câmara dos EUA e Alteram Dinâmica de Poder",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Eleicoes",
+      "categorias_cruzadas": [
+        "Politica",
+        "Geopolitica_Radar"
+      ],
+      "rota_editoria": "/eleicoes",
+      "relevancia_score": 80,
+      "ttl_horas": 72,
+      "expires_at": "2026-11-26T01:31:00Z",
+      "palavras_chave_busca": [
+        "câmara dos eua",
+        "partido democrata",
+        "eleições americanas",
+        "congresso dos eua",
+        "donald trump",
+        "governança washington"
+      ],
+      "gatilho_vitrine": "Analisar o impacto do novo equilíbrio de forças no Congresso dos EUA para acordos comerciais e sanções.",
+      "sintese_nerd": "A conquista de 258 cadeiras pelos Democratas marca a maior bancada do partido na Câmara norte-americana desde 1992, criando travamento fiscal e veto a projetos conservadores da Casa Branca. O reposicionamento do Congresso força novas negociações bilaterais e redefine prioridades em sanções e cooperação externa.",
+      "data_publicacao": "2026-11-23T01:31:00Z",
+      "updated_at": "2026-11-23T01:31:00Z"
+    }
+  ],
   "noticias_quentes": [
     {
       "slug": "south-korea-stock-market-tumbles-ai-bubble",
-      "titulo_curto": "Bolsa de valores da Coreia do Sul desaba com temores sobre bolha no setor de inteligência artificial",
-      "resumo_pulso": "Conforme noticiado pela Al Jazeera English, o índice Kospi, principal indicador da bolsa sul-coreana, registrou queda superior a 3% nas primeiras negociações. O movimento reflete a cautela generalizada dos investidores asiáticos diante de incertezas e temores de sobrevalorização corporativa ligada à cadeia de inteligência artificial.",
-      "impacto_pratico": "Possível volatilidade em mercados emergentes e globais voltados à tecnologia e semicondutores.",
       "categoria": "Economia_Comercio",
-      "paises_envolvidos": [
-        "KR"
-      ],
-      "urgencia_score": 89,
-      "relevancia_score": 91,
-      "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 24,
-      "veiculos_origem": [
-        "Al Jazeera English"
-      ],
+      "expires_at": "2026-11-24T00:55:09Z",
+      "updated_at": "2026-11-23T00:55:09Z",
       "fontes_urls": [
         "https://www.aljazeera.com/news/2026/11/23/south-koreas-stock-market-tumbles-as-ai-bubble-fears-mount?traffic_source=rss"
       ],
+      "resumo_pulso": "Conforme noticiado pela Al Jazeera English, o índice Kospi, principal indicador da bolsa sul-coreana, registrou queda superior a 3% nas primeiras negociações. O movimento reflete a cautela generalizada dos investidores asiáticos diante de incertezas e temores de sobrevalorização corporativa ligada à cadeia de inteligência artificial.",
+      "titulo_curto": "Bolsa de valores da Coreia do Sul desaba com temores sobre bolha no setor de inteligência artificial",
       "palavras_chave": [
         "Coreia do Sul",
         "Kospi",
@@ -882,16 +1017,25 @@
         "inteligência artificial",
         "mercados"
       ],
+      "urgencia_score": 89,
       "data_publicacao": "2026-11-23T00:18:03Z",
+      "impacto_pratico": "Possível volatilidade em mercados emergentes e globais voltados à tecnologia e semicondutores.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Al Jazeera English"
+      ],
+      "relevancia_score": 91,
+      "horas_em_destaque": 24,
+      "paises_envolvidos": [
+        "KR"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "Economia no Brasil",
           "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
-          "motivo_conexao": "Permite acompanhar os reflexos de oscilações em bolsas internacionais sobre o cenário financeiro global."
+          "motivo_conexao": "Permite acompanhar os reflexos de oscilações em bolsas internacionais sobre o cenário financeiro global.",
+          "titulo_existente": "Economia no Brasil"
         }
-      ],
-      "expires_at": "2026-11-24T00:55:09Z",
-      "updated_at": "2026-11-23T00:55:09Z"
+      ]
     },
     {
       "slug": "trump-assina-lei-fim-moeda-1-centavo-eua",
@@ -972,26 +1116,15 @@
     },
     {
       "slug": "polish-authorities-find-russian-missile-remains-at-three-sites",
-      "titulo_curto": "Procuradoria da Polônia localiza destroços de mísseis russos Kh-101 em três pontos no leste do país",
-      "resumo_pulso": "Segundo informações divulgadas pelo The Kyiv Independent, a Procuradoria Distrital de Lublin confirmou a descoberta de fragmentos de mísseis de cruzeiro Kh-101 em três localidades distintas no leste polonês (Nowy Lipowiec, Rudnik e Mołodycz), após recente incursão registrada no espaço aéreo da região.",
-      "impacto_pratico": "Elevação do nível de alerta nas fronteiras orientais da OTAN e intensificação do monitoramento de defesa aérea na Polônia.",
       "categoria": "Geopolitica_Relacoes",
-      "paises_envolvidos": [
-        "PL",
-        "RU",
-        "UA"
-      ],
-      "urgencia_score": 95,
-      "relevancia_score": 94,
-      "nivel_confianca": "alta",
       "ttl_horas": 18,
-      "horas_em_destaque": 18,
-      "veiculos_origem": [
-        "The Kyiv Independent"
-      ],
+      "expires_at": "2026-11-23T17:36:25Z",
+      "updated_at": "2026-11-23T00:55:09Z",
       "fontes_urls": [
         "https://kyivindependent.com/polish-authorities-find-russian-missile-remains-at-three-sites-following-airspace-incursion/"
       ],
+      "resumo_pulso": "Segundo informações divulgadas pelo The Kyiv Independent, a Procuradoria Distrital de Lublin confirmou a descoberta de fragmentos de mísseis de cruzeiro Kh-101 em três localidades distintas no leste polonês (Nowy Lipowiec, Rudnik e Mołodycz), após recente incursão registrada no espaço aéreo da região.",
+      "titulo_curto": "Procuradoria da Polônia localiza destroços de mísseis russos Kh-101 em três pontos no leste do país",
       "palavras_chave": [
         "Polônia",
         "mísseis russos",
@@ -999,16 +1132,27 @@
         "espaço aéreo",
         "OTAN"
       ],
+      "urgencia_score": 95,
       "data_publicacao": "2026-11-22T23:26:30Z",
+      "impacto_pratico": "Elevação do nível de alerta nas fronteiras orientais da OTAN e intensificação do monitoramento de defesa aérea na Polônia.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "The Kyiv Independent"
+      ],
+      "relevancia_score": 94,
+      "horas_em_destaque": 18,
+      "paises_envolvidos": [
+        "PL",
+        "RU",
+        "UA"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "O que é uma sanção internacional?",
           "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-sancao-internacional",
-          "motivo_conexao": "Explica o contexto geopolítico de pressões e respostas multilaterais a conflitos no Leste Europeu."
+          "motivo_conexao": "Explica o contexto geopolítico de pressões e respostas multilaterais a conflitos no Leste Europeu.",
+          "titulo_existente": "O que é uma sanção internacional?"
         }
-      ],
-      "expires_at": "2026-11-23T17:36:25Z",
-      "updated_at": "2026-11-23T00:55:09Z"
+      ]
     },
     {
       "slug": "ministro-educacao-coreia-do-sul-renuncia-fraudes-exames",
@@ -1228,24 +1372,15 @@
     },
     {
       "slug": "conflitos-no-congo-dificultam-resposta-surto-ebola-oms",
-      "titulo_curto": "OMS alerta que combates armados no leste do Congo colocam em risco pacientes e operações contra o Ebola",
-      "resumo_pulso": "Segundo alerta emitido pelo diretor-geral da Organização Mundial da Saúde (OMS) e reportado pela Al Jazeera English, a intensificação de confrontos militares nas proximidades de hospitais no leste da República Democrática do Congo tem comprometido severamente o combate ao surto de Ebola e exposto profissionais de saúde a graves riscos.",
-      "impacto_pratico": "Preocupação sanitária internacional com a expansão de epidemias em zonas de conflito armado sem assistência médica contínua.",
       "categoria": "Geopolitica_Relacoes",
-      "paises_envolvidos": [
-        "CD"
-      ],
-      "urgencia_score": 93,
-      "relevancia_score": 90,
-      "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 24,
-      "veiculos_origem": [
-        "Al Jazeera English"
-      ],
+      "expires_at": "2026-11-23T21:18:43Z",
+      "updated_at": "2026-11-23T00:55:09Z",
       "fontes_urls": [
         "https://www.aljazeera.com/news/2026/11/23/who-chief-calls-for-peace-amid-heavy-fighting-in-ebola-hit-dr-congo-region?traffic_source=rss"
       ],
+      "resumo_pulso": "Segundo alerta emitido pelo diretor-geral da Organização Mundial da Saúde (OMS) e reportado pela Al Jazeera English, a intensificação de confrontos militares nas proximidades de hospitais no leste da República Democrática do Congo tem comprometido severamente o combate ao surto de Ebola e exposto profissionais de saúde a graves riscos.",
+      "titulo_curto": "OMS alerta que combates armados no leste do Congo colocam em risco pacientes e operações contra o Ebola",
       "palavras_chave": [
         "OMS",
         "Ebola",
@@ -1253,16 +1388,25 @@
         "conflito armado",
         "saúde pública"
       ],
+      "urgencia_score": 93,
       "data_publicacao": "2026-11-22T21:15:00Z",
+      "impacto_pratico": "Preocupação sanitária internacional com a expansão de epidemias em zonas de conflito armado sem assistência médica contínua.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Al Jazeera English"
+      ],
+      "relevancia_score": 90,
+      "horas_em_destaque": 24,
+      "paises_envolvidos": [
+        "CD"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "Movimentos sociais e parlamentares debatem investimentos em saúde, educação e transição ecológica",
           "url_existente": "https://www.rodandoomundo.com.br/saude",
-          "motivo_conexao": "Aborda diretrizes globais e nacionais de fortalecimento de sistemas de saúde frente a emergências sanitárias."
+          "motivo_conexao": "Aborda diretrizes globais e nacionais de fortalecimento de sistemas de saúde frente a emergências sanitárias.",
+          "titulo_existente": "Movimentos sociais e parlamentares debatem investimentos em saúde, educação e transição ecológica"
         }
-      ],
-      "expires_at": "2026-11-23T21:18:43Z",
-      "updated_at": "2026-11-23T00:55:09Z"
+      ]
     },
     {
       "slug": "reforma-tributaria-positiva-nanoempreendedores-associacao",
@@ -1533,24 +1677,15 @@
     },
     {
       "slug": "pane-sistema-trava-voos-delta-atlanta-eua",
-      "titulo_curto": "Administração Federal de Aviação dos EUA suspende voos da Delta em Atlanta após falha sistêmica",
-      "resumo_pulso": "Conforme apuração do Poder360, a Administração Federal de Aviação (FAA) dos Estados Unidos determinou a paralisação temporária das operações da Delta Air Lines com partidas e chegadas no Aeroporto Internacional Hartsfield-Jackson, em Atlanta, em decorrência de uma pane em sistemas automatizados da companhia.",
-      "impacto_pratico": "Possíveis atrasos e cancelamentos em conexões internacionais que passam pelo principal hub aeroportuário de Atlanta.",
       "categoria": "Mobilidade_Fronteiras",
-      "paises_envolvidos": [
-        "US"
-      ],
-      "urgencia_score": 90,
-      "relevancia_score": 88,
-      "nivel_confianca": "alta",
       "ttl_horas": 12,
-      "horas_em_destaque": 12,
-      "veiculos_origem": [
-        "Poder360"
-      ],
+      "expires_at": "2026-11-23T12:55:09Z",
+      "updated_at": "2026-11-23T00:55:09Z",
       "fontes_urls": [
         "https://www.poder360.com.br/poder-internacional/agencia-de-aviacao-suspende-voos-da-delta-apos-falha-de-sistema/"
       ],
+      "resumo_pulso": "Conforme apuração do Poder360, a Administração Federal de Aviação (FAA) dos Estados Unidos determinou a paralisação temporária das operações da Delta Air Lines com partidas e chegadas no Aeroporto Internacional Hartsfield-Jackson, em Atlanta, em decorrência de uma pane em sistemas automatizados da companhia.",
+      "titulo_curto": "Administração Federal de Aviação dos EUA suspende voos da Delta em Atlanta após falha sistêmica",
       "palavras_chave": [
         "Delta Air Lines",
         "Atlanta",
@@ -1558,38 +1693,37 @@
         "aviação",
         "EUA"
       ],
+      "urgencia_score": 90,
       "data_publicacao": "2026-11-22T17:55:10.993874+00:00",
+      "impacto_pratico": "Possíveis atrasos e cancelamentos em conexões internacionais que passam pelo principal hub aeroportuário de Atlanta.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Poder360"
+      ],
+      "relevancia_score": 88,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "US"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "Política nos Estados Unidos",
           "url_existente": "https://www.rodandoomundo.com.br/politica/estados-unidos",
-          "motivo_conexao": "Relaciona-se ao monitoramento de agências reguladoras federais e infraestrutura nos Estados Unidos."
+          "motivo_conexao": "Relaciona-se ao monitoramento de agências reguladoras federais e infraestrutura nos Estados Unidos.",
+          "titulo_existente": "Política nos Estados Unidos"
         }
-      ],
-      "expires_at": "2026-11-23T12:55:09Z",
-      "updated_at": "2026-11-23T00:55:09Z"
+      ]
     },
     {
       "slug": "chuvas-no-rs-afetam-mais-de-25-mil-pessoas-em-42-cidades",
-      "titulo_curto": "Defesa Civil atualiza para 46 o número de municípios atingidos por temporais severos no Rio Grande do Sul",
-      "resumo_pulso": "Conforme apuração da Agência Brasil (EBC) e da BBC News Brasil, a Defesa Civil do Rio Grande do Sul atualizou para 46 o número de municípios afetados pelas tempestades registradas desde sexta-feira (20). O município de Tupanciretã contabiliza cinco óbitos e centenas de feridos, enquanto equipes de resgate mantêm o atendimento às mais de 25 mil pessoas impactadas.",
-      "impacto_pratico": "Atenção redobrada para motoristas e moradores em áreas de risco no Rio Grande do Sul devido a alagamentos e bloqueios em rodovias.",
       "categoria": "Ciencia_Clima",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "urgencia_score": 98,
-      "relevancia_score": 96,
-      "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 24,
-      "veiculos_origem": [
-        "Agência Brasil (EBC)",
-        "BBC News Brasil"
-      ],
+      "expires_at": "2026-11-24T00:55:09Z",
+      "updated_at": "2026-11-23T00:55:09Z",
       "fontes_urls": [
         "https://agenciabrasil.ebc.com.br/meio-ambiente/noticia/2026-11/temporais-atingem-46-municipios-e-mais-de-25-mil-pessoas-no-rs"
       ],
+      "resumo_pulso": "Conforme apuração da Agência Brasil (EBC) e da BBC News Brasil, a Defesa Civil do Rio Grande do Sul atualizou para 46 o número de municípios afetados pelas tempestades registradas desde sexta-feira (20). O município de Tupanciretã contabiliza cinco óbitos e centenas de feridos, enquanto equipes de resgate mantêm o atendimento às mais de 25 mil pessoas impactadas.",
+      "titulo_curto": "Defesa Civil atualiza para 46 o número de municípios atingidos por temporais severos no Rio Grande do Sul",
       "palavras_chave": [
         "Rio Grande do Sul",
         "temporais",
@@ -1597,155 +1731,25 @@
         "Tupanciretã",
         "chuvas"
       ],
+      "urgencia_score": 98,
       "data_publicacao": "2026-11-22T16:26:04.515171+00:00",
+      "impacto_pratico": "Atenção redobrada para motoristas e moradores em áreas de risco no Rio Grande do Sul devido a alagamentos e bloqueios em rodovias.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Agência Brasil (EBC)",
+        "BBC News Brasil"
+      ],
+      "relevancia_score": 96,
+      "horas_em_destaque": 24,
+      "paises_envolvidos": [
+        "BR"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "Clima, Amazônia e Transição Energética",
           "url_existente": "https://www.rodandoomundo.com.br/clima",
-          "motivo_conexao": "Contextualiza a frequência de eventos climáticos extremos e o impacto de desastres naturais no Brasil."
+          "motivo_conexao": "Contextualiza a frequência de eventos climáticos extremos e o impacto de desastres naturais no Brasil.",
+          "titulo_existente": "Clima, Amazônia e Transição Energética"
         }
-      ],
-      "expires_at": "2026-11-24T00:55:09Z",
-      "updated_at": "2026-11-23T00:55:09Z"
-    }
-  ],
-  "temas_curadoria": [
-    {
-      "slug": "dolar-digital-usdt-alta-pressao-cambial-real",
-      "status": "novo",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-23T22:25:43Z",
-      "updated_at": "2026-11-22T22:25:43Z",
-      "titulo_tema": "Pressão no câmbio: Dólar digital atinge R$ 6,15 no fim de semana e sinaliza abertura estressada",
-      "sintese_nerd": "A disparada do Tether (USDT) para R$ 6,15 durante o final de semana reflete a busca por proteção cambial pelo mercado cripto antes da abertura das bolsas. Essa divergência em relação ao dólar comercial sinaliza forte apreensão dos investidores com o cenário fiscal doméstico e o cenário de juros internacionais.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-22T22:25:43Z",
-      "gatilho_vitrine": "Destacar impacto do USDT no apetite ao risco e projecoes para o mercado cambial brasileiro.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 92,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Politica",
-        "Geopolitica_Radar"
-      ],
-      "palavras_chave_busca": [
-        "dolar digital",
-        "usdt",
-        "cotacao dolar",
-        "cambio",
-        "banco central",
-        "mercado financeiro",
-        "real desvalorizacao"
-      ]
-    },
-    {
-      "slug": "cop31-impasse-combustiveis-fosseis-transicao-energetica",
-      "status": "novo",
-      "ttl_horas": 72,
-      "expires_at": "2026-11-25T22:25:43Z",
-      "updated_at": "2026-11-22T22:25:43Z",
-      "titulo_tema": "COP31 encerra sem acordo global sobre eliminação gradual de combustíveis fósseis",
-      "sintese_nerd": "A COP31 consagrou-se como a mais longa e inconclusiva da história devido às divergências intransponíveis sobre o financiamento climático e a transição dos combustíveis fósseis. O fracasso diplomático amplia a incerteza regulatória para mercados emergentes exportadores de commodities e expõe os limites da diplomacia multilateral ambiental.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-22T22:25:43Z",
-      "gatilho_vitrine": "Exibir materias sobre o impasse diplomatico entre paises produtores de petroleo e blocos por metas de descarbonizacao.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 88,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Politica",
-        "Cultura"
-      ],
-      "palavras_chave_busca": [
-        "cop31",
-        "mudancas climaticas",
-        "combustiveis fosseis",
-        "transicao energetica",
-        "acordo do clima",
-        "diplomacia ambiental"
-      ]
-    },
-    {
-      "slug": "juros-altos-selic-custo-brasil-investimentos",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-24T22:25:43Z",
-      "updated_at": "2026-11-22T22:25:43Z",
-      "titulo_tema": "Debate sobre permanência de juros elevados ressalta gargalos estruturais do Custo Brasil",
-      "sintese_nerd": "Economistas apontam que a manutenção dos juros em patamares elevados no Brasil deriva da incerteza fiscal sustentada e dos custos sistêmicos que reduzem a produtividade do setor privado. O binômio entre juros altos e entraves tributários continua a afastar o investimento direto estrangeiro e a estrangular a expansão produtiva.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-22T22:25:43Z",
-      "gatilho_vitrine": "Selecionar analises macroeconomicas detalhadas sobre a relacao entre divida publica e juros reais.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 86,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Politica"
-      ],
-      "palavras_chave_busca": [
-        "taxa selic",
-        "juros altos",
-        "custo brasil",
-        "banco central",
-        "politica monetaria",
-        "investimento estrangeiro",
-        "reforma tributaria"
-      ]
-    },
-    {
-      "slug": "uniao-europeia-taxacao-big-techs-orcamento-comunitario",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-24T22:25:43Z",
-      "updated_at": "2026-11-22T22:25:43Z",
-      "titulo_tema": "União Europeia propõe tributação de multinacionais de tecnologia para reforçar orçamento",
-      "sintese_nerd": "A proposta da UE de impor uma taxa sobre a receita de multinacionais de tecnologia com faturamento global superior a 750 milhões de euros marca uma nova etapa na soberania fiscal digital. Caso aprovada, a medida deve redefinir padrões globais de tributação sobre plataformas de dados e inteligência artificial, influenciando legislações na América Latina.",
-      "rota_editoria": "/politica",
-      "data_publicacao": "2026-11-22T22:25:43Z",
-      "gatilho_vitrine": "Posicionar artigos sobre regulacao e tributacao de gigantes digitais no topo de Politica e Economia.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 85,
-      "categoria_primaria": "Politica",
-      "categorias_cruzadas": [
-        "Economia",
-        "Cultura"
-      ],
-      "palavras_chave_busca": [
-        "uniao europeia",
-        "taxacao big techs",
-        "regulacao digital",
-        "imposto sobre gigantes de tecnologia",
-        "economia digital",
-        "receita liquida"
-      ]
-    },
-    {
-      "slug": "trump-ameaca-ataques-ira-bloqueio-naval",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-24T22:25:43Z",
-      "updated_at": "2026-11-22T22:25:43Z",
-      "titulo_tema": "Donald Trump ameaça retomar ataques ao Irã e afundar navios em furo a bloqueio naval",
-      "sintese_nerd": "A retórica agressiva de Donald Trump sobre restabelecer ataques e afundar embarcações iranianas eleva o risco geopolítico na rota do Estreito de Ormuz. O endurecimento das sanções navais ameaça restringir a oferta global de petróleo, gerando repasses inflacionários diretos nas cadeias produtivas globais.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-22T21:57:19Z",
-      "gatilho_vitrine": "Priorizar analise do impacto do cerco militar no preco do petroleo global e inflacao de combustiveis.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 94,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Politica"
-      ],
-      "palavras_chave_busca": [
-        "donald trump",
-        "ira",
-        "bloqueio naval",
-        "petroleo",
-        "tensao geopolitica",
-        "oriente medio",
-        "politica externa eua"
       ]
     }
   ]
