@@ -2,271 +2,328 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-23T07:34:54Z",
-  "batch_id": "20261123-0733",
+  "updatedAt": "2026-11-23T07:51:45Z",
+  "batch_id": "20261123-0751",
   "temas_ativos": [
     {
-      "slug": "governo-publica-saida-jose-guimaraes-relacoes-institucionais",
-      "titulo_tema": "Governo publica no Diário Oficial a saída de José Guimarães das Relações Institucionais",
-      "titulo_curto": "Governo publica no Diário Oficial a saída de José Guimarães das Relações Institucionais",
-      "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Geopolitica_Radar",
-      "categoria": "Geopolitica_Relacoes",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 90,
-      "urgencia_score": 92,
-      "ttl_horas": 24,
-      "expires_at": "2026-11-24T07:34:54Z",
-      "palavras_chave_busca": [
-        "josé guimarães",
-        "relações institucionais",
-        "governo federal",
-        "diário oficial"
-      ],
-      "palavras_chave": [
-        "josé guimarães",
-        "relações institucionais",
-        "governo federal",
-        "diário oficial"
-      ],
-      "gatilho_vitrine": "Conforme apuração do portal Poder360, o governo federal publicou na edição desta segunda-feira do Diário Oficial da União a exoneração de José Guimarães da Secretaria de Relações Institucionais. A alteração mexe com a articulação política do Palácio do Planalto no Congresso.",
-      "resumo_pulso": "Conforme apuração do portal Poder360, o governo federal publicou na edição desta segunda-feira do Diário Oficial da União a exoneração de José Guimarães da Secretaria de Relações Institucionais. A alteração mexe com a articulação política do Palácio do Planalto no Congresso.",
-      "sintese_nerd": "Modifica o comando da articulação governista no Legislativo em meio a votações econômicas cruciais.",
-      "impacto_pratico": "Modifica o comando da articulação governista no Legislativo em meio a votações econômicas cruciais.",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "veiculos_origem": [
-        "Poder360"
-      ],
-      "fontes_urls": [
-        "https://www.poder360.com.br/poder-governo/governo-publica-saida-de-jose-guimaraes-das-relacoes-institucionais/"
-      ],
-      "data_publicacao": "2026-11-23T07:26:24Z",
-      "updated_at": "2026-11-23T07:34:54Z"
-    },
-    {
-      "slug": "acoes-tecnologia-eua-pior-semana-desde-pandemia",
-      "titulo_tema": "Ações de tecnologia dos EUA registram a pior semana desde a pandemia com temores sobre IA",
-      "titulo_curto": "Ações de tecnologia dos EUA registram a pior semana desde a pandemia com temores sobre IA",
-      "status": "novo",
-      "origem_pipeline": "pulso",
+      "slug": "queda-acoes-tecnologia-eua-bolsas-globais-ia",
+      "titulo_tema": "Pior Semana Tech nos EUA desde a Pandemia Pressiona Bolsas e Alimenta Temor de Bolha em Inteligência Artificial",
+      "status": "em_alta",
+      "origem_pipeline": "curadoria",
       "categoria_primaria": "Economia",
-      "categoria": "Economia_Comercio",
       "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
+        "Geopolitica_Radar",
+        "Cultura"
       ],
       "rota_editoria": "/economia",
       "relevancia_score": 92,
-      "urgencia_score": 90,
-      "ttl_horas": 24,
-      "expires_at": "2026-11-24T07:34:54Z",
-      "palavras_chave_busca": [
-        "nasdaq",
-        "tecnologia",
-        "eua",
-        "inteligência artificial",
-        "mercado financeiro"
-      ],
-      "palavras_chave": [
-        "nasdaq",
-        "tecnologia",
-        "eua",
-        "inteligência artificial",
-        "mercado financeiro"
-      ],
-      "gatilho_vitrine": "Segundo dados do Poder360, o índice Nasdaq 100 despencou 10,4% na última semana e entrou em mercado de baixa. O recuo acentuado é impulsionado por crescentes receios de investidores em relação à sustentabilidade dos investimentos em inteligência artificial.",
-      "resumo_pulso": "Segundo dados do Poder360, o índice Nasdaq 100 despencou 10,4% na última semana e entrou em mercado de baixa. O recuo acentuado é impulsionado por crescentes receios de investidores em relação à sustentabilidade dos investimentos em inteligência artificial.",
-      "sintese_nerd": "Gera volatilidade nos mercados globais e cautela entre investidores de ativos de tecnologia.",
-      "impacto_pratico": "Gera volatilidade nos mercados globais e cautela entre investidores de ativos de tecnologia.",
-      "paises_envolvidos": [
-        "US"
-      ],
-      "veiculos_origem": [
-        "Poder360"
-      ],
-      "fontes_urls": [
-        "https://www.poder360.com.br/poder-economia/acoes-de-tecnologia-dos-eua-tem-pior-semana-desde-a-pandemia/"
-      ],
-      "data_publicacao": "2026-11-23T06:41:04Z",
-      "updated_at": "2026-11-23T07:34:54Z"
-    },
-    {
-      "slug": "brasil-4-lugar-ranking-global-felicidade-trabalho",
-      "titulo_tema": "Brasil conquista a 4ª posição no ranking global de felicidade no trabalho",
-      "titulo_curto": "Brasil conquista a 4ª posição no ranking global de felicidade no trabalho",
-      "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Cultura",
-      "categoria": "Sociedade_Cultura",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/cultura",
-      "relevancia_score": 85,
-      "urgencia_score": 80,
-      "ttl_horas": 24,
-      "expires_at": "2026-11-24T07:34:54Z",
-      "palavras_chave_busca": [
-        "trabalho",
-        "felicidade",
-        "brasil",
-        "economia",
-        "ranking global"
-      ],
-      "palavras_chave": [
-        "trabalho",
-        "felicidade",
-        "brasil",
-        "economia",
-        "ranking global"
-      ],
-      "gatilho_vitrine": "Conforme levantamento da Ticket em parceria com a Happyforce divulgado pelo G1, o Brasil ocupa o quarto lugar no Índice Global de Alegria no Trabalho. O país superou grandes economias como Estados Unidos, Alemanha e Japão na percepção dos trabalhadores.",
-      "resumo_pulso": "Conforme levantamento da Ticket em parceria com a Happyforce divulgado pelo G1, o Brasil ocupa o quarto lugar no Índice Global de Alegria no Trabalho. O país superou grandes economias como Estados Unidos, Alemanha e Japão na percepção dos trabalhadores.",
-      "sintese_nerd": "Aponta diferenciais culturais e de clima organizacional no ambiente corporativo brasileiro.",
-      "impacto_pratico": "Aponta diferenciais culturais e de clima organizacional no ambiente corporativo brasileiro.",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "veiculos_origem": [
-        "G1 Economia"
-      ],
-      "fontes_urls": [
-        "https://g1.globo.com/trabalho-e-carreira/noticia/2026/11/23/brasil-e-o-4o-mais-feliz-do-mundo-no-trabalho-veja-ranking-e-por-que-o-pais-supera-nacoes-mais-ricas.ghtml"
-      ],
-      "data_publicacao": "2026-11-23T06:00:00Z",
-      "updated_at": "2026-11-23T07:34:54Z"
-    },
-    {
-      "slug": "cientistas-cultivam-batatas-em-solo-simulado-da-lua",
-      "titulo_tema": "Cientistas conseguem cultivar batatas com sucesso em solo simulado da Lua",
-      "titulo_curto": "Cientistas conseguem cultivar batatas com sucesso em solo simulado da Lua",
-      "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Geopolitica_Radar",
-      "categoria": "Ciencia_Clima",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 82,
-      "urgencia_score": 78,
-      "ttl_horas": 24,
-      "expires_at": "2026-11-24T07:34:54Z",
-      "palavras_chave_busca": [
-        "lua",
-        "agricultura espacial",
-        "ciência",
-        "pesquisa",
-        "alimentação"
-      ],
-      "palavras_chave": [
-        "lua",
-        "agricultura espacial",
-        "ciência",
-        "pesquisa",
-        "alimentação"
-      ],
-      "gatilho_vitrine": "Segundo reportagem do G1, pesquisadores da Universidade Estadual do Oregon conseguiram cultivar batatas nutritivas e seguras para consumo em laboratório utilizando solo simulado semelhante ao lunar. O avanço tecnológico visa garantir fontes futuras de alimento para missões espaciais prolongadas.",
-      "resumo_pulso": "Segundo reportagem do G1, pesquisadores da Universidade Estadual do Oregon conseguiram cultivar batatas nutritivas e seguras para consumo em laboratório utilizando solo simulado semelhante ao lunar. O avanço tecnológico visa garantir fontes futuras de alimento para missões espaciais prolongadas.",
-      "sintese_nerd": "Abre perspectivas para a agricultura espacial e sustentabilidade em futuras bases lunares.",
-      "impacto_pratico": "Abre perspectivas para a agricultura espacial e sustentabilidade em futuras bases lunares.",
-      "paises_envolvidos": [
-        "US"
-      ],
-      "veiculos_origem": [
-        "G1 Economia"
-      ],
-      "fontes_urls": [
-        "https://g1.globo.com/economia/agronegocios/noticia/2026/11/23/batatas-espaciais-cientistas-descobrem-como-cultivar-alimento-em-solo-semelhante-ao-da-lua.ghtml"
-      ],
-      "data_publicacao": "2026-11-23T06:00:00Z",
-      "updated_at": "2026-11-23T07:34:54Z"
-    },
-    {
-      "slug": "camara-vota-projeto-ajuste-fiscal-impacto-economia-2027",
-      "status": "novo",
       "ttl_horas": 48,
-      "expires_at": "2026-11-25T04:52:43Z",
-      "updated_at": "2026-11-23T04:52:43Z",
-      "titulo_tema": "Câmara vota projeto de ajuste fiscal com expectativa de economia de R$ 50 bilhões",
-      "sintese_nerd": "O avanço do pacote de ajuste fiscal na Câmara busca garantir a sustentabilidade das contas públicas e atinge diretamente as expectativas inflacionárias e de juros para 2027. A aprovação da medida sinaliza ao mercado financeiro o compromisso com a meta de economia de R$ 50 bilhões, influenciando o câmbio e a previsibilidade macroeconômica brasileira.",
-      "rota_editoria": "/politica",
-      "data_publicacao": "2026-11-23T04:52:43Z",
-      "gatilho_vitrine": "Exibir na vitrine principal como destaque econômico e institucional do dia, conectando a votação do Congresso às projeções fiscais do país.",
+      "expires_at": "2026-11-25T07:51:45Z",
+      "palavras_chave_busca": [
+        "nasdaq 100",
+        "ações de tecnologia",
+        "bolha de inteligência artificial",
+        "mercado de ações eua",
+        "b3 dólar",
+        "investimento em ia"
+      ],
+      "gatilho_vitrine": "Filtrar análises sobre retração no setor de tecnologia norte-americano e reflexos no mercado acionário e no dólar no Brasil.",
+      "sintese_nerd": "A forte correção de mais de dez por cento no Nasdaq expõe o ceticismo dos investidores em relação aos prazos de retorno dos massivos investimentos em IA generativa. Esse movimento global de aversão ao risco pressiona o câmbio em emergentes como o Brasil e aumenta a volatilidade na B3.",
+      "data_publicacao": "2026-11-23T07:51:45Z",
+      "updated_at": "2026-11-23T07:51:45Z"
+    },
+    {
+      "slug": "eduardo-braga-pec-ajuste-fiscal-orcamento-brasil",
+      "titulo_tema": "Relator do Orçamento Defende Alteração Constitucional para Garantir Novo Ajuste Fiscal",
+      "status": "novo",
       "origem_pipeline": "curadoria",
-      "relevancia_score": 95,
       "categoria_primaria": "Politica",
       "categorias_cruzadas": [
         "Economia"
       ],
+      "rota_editoria": "/politica",
+      "relevancia_score": 89,
+      "ttl_horas": 72,
+      "expires_at": "2026-11-26T07:51:45Z",
       "palavras_chave_busca": [
+        "eduardo braga",
+        "orçamento 2027",
         "ajuste fiscal",
-        "camara dos deputados",
-        "economia 2027",
-        "gasto publico",
-        "mauro benevides",
-        "governo lula"
-      ]
+        "pec fiscal",
+        "congresso nacional",
+        "arcabouço fiscal",
+        "despesas públicas"
+      ],
+      "gatilho_vitrine": "Vincular artigos sobre reestruturação de gastos públicos, negociação orçamentária no Congresso e governabilidade.",
+      "sintese_nerd": "A proposta de alteração constitucional pelo relator do Orçamento busca acomodar metas fiscais e promessas políticas sem paralisar investimentos vitais. O movimento expõe o impasse estrutural entre a rigidez dos gastos obrigatórios e a sustentabilidade das contas públicas federais.",
+      "data_publicacao": "2026-11-23T07:51:45Z",
+      "updated_at": "2026-11-23T07:51:45Z"
     },
     {
-      "slug": "trump-avalia-adiar-ataques-iran-pressao-israel",
+      "slug": "guerra-ucrania-explosao-navio-russo-libia-drones",
+      "titulo_tema": "Escalação da Guerra na Ucrânia e Incidente com Navio Russo na Líbia Ampliam Tensão Geopolítica",
       "status": "novo",
-      "ttl_horas": 72,
-      "expires_at": "2026-11-26T04:52:43Z",
-      "updated_at": "2026-11-23T04:52:43Z",
-      "titulo_tema": "Trump pondera adiamento de novos ataques ao Irã sob forte pressão israelense",
-      "sintese_nerd": "A hesitação de Washington em lançar novos ataques ao Irã reflete um cabo de guerra diplomático e estratégico diante das pressões militares de Israel e do temor de escalada nos conflitos regionais. Como consequência, a instabilidade no Estreito de Ormuz mantém a volatilidade nos preços globais do petróleo e pressiona a inflação importada.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-23T04:52:43Z",
-      "gatilho_vitrine": "Destacar no Radar de Geopolítica para explicar os desdobramentos diplomáticos e militares na rota do petróleo global.",
       "origem_pipeline": "curadoria",
-      "relevancia_score": 90,
       "categoria_primaria": "Geopolitica_Radar",
       "categorias_cruzadas": [
+        "Politica",
         "Economia"
       ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 86,
+      "ttl_horas": 36,
+      "expires_at": "2026-11-24T19:51:45Z",
       "palavras_chave_busca": [
-        "donald trump",
-        "ira",
-        "israel",
-        "oriente medio",
-        "estreito de ormuz",
-        "petroleo"
-      ]
+        "guerra na ucrânia",
+        "navio de guerra russo",
+        "porto de benghazi líbia",
+        "ataques de drones",
+        "ofensiva em pokrovsk",
+        "conflito rússia otan"
+      ],
+      "gatilho_vitrine": "Mapear matérias de cobertura de conflitos armados internacionais e desdobramentos navais no Mediterrâneo.",
+      "sintese_nerd": "O aumento expressivo de combates na Ucrânia somado à destruição de uma corveta russa na Líbia sinaliza o transbordamento da presença militar de Moscou para fora do teatro europeu. A dinâmica pressiona o mercado global de energia e acentua o atrito diplomático entre potências geopolíticas.",
+      "data_publicacao": "2026-11-23T07:51:45Z",
+      "updated_at": "2026-11-23T07:51:45Z"
     },
     {
-      "slug": "proposta-ue-taxar-big-techs-receita-digital",
+      "slug": "eleicoes-espanha-alberto-feijoo-conservadores-europa",
+      "titulo_tema": "Espanha Entra em Reta Final Eleitoral com Foco na Ascensão Conservadora de Alberto Feijóo",
       "status": "novo",
-      "ttl_horas": 96,
-      "expires_at": "2026-11-27T04:52:43Z",
-      "updated_at": "2026-11-23T04:52:43Z",
-      "titulo_tema": "União Europeia avança com proposta de taxação de 3% sobre receitas de big techs",
-      "sintese_nerd": "A ofensiva regulatória da União Europeia para cobrar 3% sobre a receita digital das gigantes tecnológicas redefine as regras de tributação global para o setor de inovação. A medida serve de precedente para discussões fiscais semelhantes em economias emergentes, afetando o modelo de negócios transnacional das plataformas.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-23T04:52:43Z",
-      "gatilho_vitrine": "Posicionar na editoria de Geopolitica e Cultura para debater a soberania digital e o cerco regulatório internacional sobre as grandes empresas de tecnologia.",
       "origem_pipeline": "curadoria",
-      "relevancia_score": 85,
-      "categoria_primaria": "Geopolitica_Radar",
+      "categoria_primaria": "Eleicoes",
+      "categorias_cruzadas": [
+        "Geopolitica_Radar",
+        "Politica"
+      ],
+      "rota_editoria": "/eleicoes",
+      "relevancia_score": 82,
+      "ttl_horas": 96,
+      "expires_at": "2026-11-27T07:51:45Z",
+      "palavras_chave_busca": [
+        "eleições na espanha",
+        "alberto feijóo",
+        "partido popular espanhol",
+        "política europeia",
+        "união europeia",
+        "sistema eleitoral espanha"
+      ],
+      "gatilho_vitrine": "Agrupar relatórios sobre corridas eleitorais europeias e alinhamentos geopolíticos no bloco europeu.",
+      "sintese_nerd": "A disputa pelo governo espanhol coloca à prova a capacidade da centro-direita em consolidar maiorias em meio à polarização no continente. O resultado na quarta maior economia da Zona do Euro impactará diretamente as políticas de migração e a coesão interna da União Europeia.",
+      "data_publicacao": "2026-11-23T07:51:45Z",
+      "updated_at": "2026-11-23T07:51:45Z"
+    },
+    {
+      "slug": "mp-das-bets-stf-saude-publica-regulacao",
+      "titulo_tema": "Julgamento no STF e MP das Bets Colocam Impactos na Saúde Pública no Centro do Debate",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Politica",
       "categorias_cruzadas": [
         "Economia",
         "Cultura"
       ],
+      "rota_editoria": "/politica",
+      "relevancia_score": 80,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-25T07:51:45Z",
       "palavras_chave_busca": [
-        "uniao europeia",
-        "big techs",
-        "taxacao digital",
-        "regulacao tecnologica",
-        "economia digital"
+        "mp das bets",
+        "stf apostas online",
+        "saúde pública bets",
+        "regulacao de apostas",
+        "vício em jogos ludopatia",
+        "impacto econômico bets"
+      ],
+      "gatilho_vitrine": "Selecionar reportagens sobre regulamentação financeira de plataformas de apostas e custos sociais no Brasil.",
+      "sintese_nerd": "A discussão em curso no Judiciário e no Legislativo evidencia a sobreposição da arrecadação tributária às consequências de saúde mental e endividamento das famílias. A indefinição regulatória gera insegurança jurídica e demanda limites mais rígidos na publicidade e concessão de crédito.",
+      "data_publicacao": "2026-11-23T07:51:45Z",
+      "updated_at": "2026-11-23T07:51:45Z"
+    },
+    {
+      "slug": "governo-publica-saida-jose-guimaraes-relacoes-institucionais",
+      "status": "novo",
+      "categoria": "Geopolitica_Relacoes",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-24T07:34:54Z",
+      "updated_at": "2026-11-23T07:34:54Z",
+      "fontes_urls": [
+        "https://www.poder360.com.br/poder-governo/governo-publica-saida-de-jose-guimaraes-das-relacoes-institucionais/"
+      ],
+      "titulo_tema": "Governo publica no Diário Oficial a saída de José Guimarães das Relações Institucionais",
+      "resumo_pulso": "Conforme apuração do portal Poder360, o governo federal publicou na edição desta segunda-feira do Diário Oficial da União a exoneração de José Guimarães da Secretaria de Relações Institucionais. A alteração mexe com a articulação política do Palácio do Planalto no Congresso.",
+      "sintese_nerd": "Modifica o comando da articulação governista no Legislativo em meio a votações econômicas cruciais.",
+      "titulo_curto": "Governo publica no Diário Oficial a saída de José Guimarães das Relações Institucionais",
+      "rota_editoria": "/radar",
+      "palavras_chave": [
+        "josé guimarães",
+        "relações institucionais",
+        "governo federal",
+        "diário oficial"
+      ],
+      "urgencia_score": 92,
+      "data_publicacao": "2026-11-23T07:26:24Z",
+      "gatilho_vitrine": "Conforme apuração do portal Poder360, o governo federal publicou na edição desta segunda-feira do Diário Oficial da União a exoneração de José Guimarães da Secretaria de Relações Institucionais. A alteração mexe com a articulação política do Palácio do Planalto no Congresso.",
+      "impacto_pratico": "Modifica o comando da articulação governista no Legislativo em meio a votações econômicas cruciais.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "Poder360"
+      ],
+      "relevancia_score": 90,
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "josé guimarães",
+        "relações institucionais",
+        "governo federal",
+        "diário oficial"
+      ]
+    },
+    {
+      "slug": "acoes-tecnologia-eua-pior-semana-desde-pandemia",
+      "status": "novo",
+      "categoria": "Economia_Comercio",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-24T07:34:54Z",
+      "updated_at": "2026-11-23T07:34:54Z",
+      "fontes_urls": [
+        "https://www.poder360.com.br/poder-economia/acoes-de-tecnologia-dos-eua-tem-pior-semana-desde-a-pandemia/"
+      ],
+      "titulo_tema": "Ações de tecnologia dos EUA registram a pior semana desde a pandemia com temores sobre IA",
+      "resumo_pulso": "Segundo dados do Poder360, o índice Nasdaq 100 despencou 10,4% na última semana e entrou em mercado de baixa. O recuo acentuado é impulsionado por crescentes receios de investidores em relação à sustentabilidade dos investimentos em inteligência artificial.",
+      "sintese_nerd": "Gera volatilidade nos mercados globais e cautela entre investidores de ativos de tecnologia.",
+      "titulo_curto": "Ações de tecnologia dos EUA registram a pior semana desde a pandemia com temores sobre IA",
+      "rota_editoria": "/economia",
+      "palavras_chave": [
+        "nasdaq",
+        "tecnologia",
+        "eua",
+        "inteligência artificial",
+        "mercado financeiro"
+      ],
+      "urgencia_score": 90,
+      "data_publicacao": "2026-11-23T06:41:04Z",
+      "gatilho_vitrine": "Segundo dados do Poder360, o índice Nasdaq 100 despencou 10,4% na última semana e entrou em mercado de baixa. O recuo acentuado é impulsionado por crescentes receios de investidores em relação à sustentabilidade dos investimentos em inteligência artificial.",
+      "impacto_pratico": "Gera volatilidade nos mercados globais e cautela entre investidores de ativos de tecnologia.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "Poder360"
+      ],
+      "relevancia_score": 92,
+      "paises_envolvidos": [
+        "US"
+      ],
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "nasdaq",
+        "tecnologia",
+        "eua",
+        "inteligência artificial",
+        "mercado financeiro"
+      ]
+    },
+    {
+      "slug": "brasil-4-lugar-ranking-global-felicidade-trabalho",
+      "status": "novo",
+      "categoria": "Sociedade_Cultura",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-24T07:34:54Z",
+      "updated_at": "2026-11-23T07:34:54Z",
+      "fontes_urls": [
+        "https://g1.globo.com/trabalho-e-carreira/noticia/2026/11/23/brasil-e-o-4o-mais-feliz-do-mundo-no-trabalho-veja-ranking-e-por-que-o-pais-supera-nacoes-mais-ricas.ghtml"
+      ],
+      "titulo_tema": "Brasil conquista a 4ª posição no ranking global de felicidade no trabalho",
+      "resumo_pulso": "Conforme levantamento da Ticket em parceria com a Happyforce divulgado pelo G1, o Brasil ocupa o quarto lugar no Índice Global de Alegria no Trabalho. O país superou grandes economias como Estados Unidos, Alemanha e Japão na percepção dos trabalhadores.",
+      "sintese_nerd": "Aponta diferenciais culturais e de clima organizacional no ambiente corporativo brasileiro.",
+      "titulo_curto": "Brasil conquista a 4ª posição no ranking global de felicidade no trabalho",
+      "rota_editoria": "/cultura",
+      "palavras_chave": [
+        "trabalho",
+        "felicidade",
+        "brasil",
+        "economia",
+        "ranking global"
+      ],
+      "urgencia_score": 80,
+      "data_publicacao": "2026-11-23T06:00:00Z",
+      "gatilho_vitrine": "Conforme levantamento da Ticket em parceria com a Happyforce divulgado pelo G1, o Brasil ocupa o quarto lugar no Índice Global de Alegria no Trabalho. O país superou grandes economias como Estados Unidos, Alemanha e Japão na percepção dos trabalhadores.",
+      "impacto_pratico": "Aponta diferenciais culturais e de clima organizacional no ambiente corporativo brasileiro.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "G1 Economia"
+      ],
+      "relevancia_score": 85,
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "categoria_primaria": "Cultura",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "trabalho",
+        "felicidade",
+        "brasil",
+        "economia",
+        "ranking global"
+      ]
+    },
+    {
+      "slug": "cientistas-cultivam-batatas-em-solo-simulado-da-lua",
+      "status": "novo",
+      "categoria": "Ciencia_Clima",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-24T07:34:54Z",
+      "updated_at": "2026-11-23T07:34:54Z",
+      "fontes_urls": [
+        "https://g1.globo.com/economia/agronegocios/noticia/2026/11/23/batatas-espaciais-cientistas-descobrem-como-cultivar-alimento-em-solo-semelhante-ao-da-lua.ghtml"
+      ],
+      "titulo_tema": "Cientistas conseguem cultivar batatas com sucesso em solo simulado da Lua",
+      "resumo_pulso": "Segundo reportagem do G1, pesquisadores da Universidade Estadual do Oregon conseguiram cultivar batatas nutritivas e seguras para consumo em laboratório utilizando solo simulado semelhante ao lunar. O avanço tecnológico visa garantir fontes futuras de alimento para missões espaciais prolongadas.",
+      "sintese_nerd": "Abre perspectivas para a agricultura espacial e sustentabilidade em futuras bases lunares.",
+      "titulo_curto": "Cientistas conseguem cultivar batatas com sucesso em solo simulado da Lua",
+      "rota_editoria": "/radar",
+      "palavras_chave": [
+        "lua",
+        "agricultura espacial",
+        "ciência",
+        "pesquisa",
+        "alimentação"
+      ],
+      "urgencia_score": 78,
+      "data_publicacao": "2026-11-23T06:00:00Z",
+      "gatilho_vitrine": "Segundo reportagem do G1, pesquisadores da Universidade Estadual do Oregon conseguiram cultivar batatas nutritivas e seguras para consumo em laboratório utilizando solo simulado semelhante ao lunar. O avanço tecnológico visa garantir fontes futuras de alimento para missões espaciais prolongadas.",
+      "impacto_pratico": "Abre perspectivas para a agricultura espacial e sustentabilidade em futuras bases lunares.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "G1 Economia"
+      ],
+      "relevancia_score": 82,
+      "paises_envolvidos": [
+        "US"
+      ],
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "lua",
+        "agricultura espacial",
+        "ciência",
+        "pesquisa",
+        "alimentação"
       ]
     },
     {
@@ -790,158 +847,194 @@
         "renúncia",
         "vestibular"
       ]
-    },
+    }
+  ],
+  "temas_curadoria": [
     {
-      "slug": "dolar-digital-usdt-bate-r-615-em-negociacao-dominical",
-      "status": "novo",
-      "categoria": "Economia_Comercio",
-      "ttl_horas": 12,
-      "expires_at": "2026-11-23T10:39:18Z",
-      "updated_at": "2026-11-22T23:12:33Z",
-      "fontes_urls": [
-        "https://www.poder360.com.br/poder-economia/dolar-digital-chega-a-r-615-em-negociacao-neste-domingo/"
-      ],
-      "titulo_tema": "Cotação do dólar digital (USDT) atinge R$ 6,15 em negociações antecipadas no fim de semana",
-      "resumo_pulso": "Conforme dados do Poder360, a cotação do token USDT na corretora OKX distanciou-se do câmbio comercial tradicional e alcançou R$ 6,15 em transações realizadas no domingo, sinalizando cautela para a abertura dos mercados.",
-      "sintese_nerd": "Potencial pressão de alta sobre o câmbio oficial e expectativas de volatilidade para investidores no Brasil.",
-      "titulo_curto": "Cotação do dólar digital (USDT) atinge R$ 6,15 em negociações antecipadas no fim de semana",
-      "rota_editoria": "/economia",
-      "palavras_chave": [
-        "dólar digital",
-        "usdt",
-        "câmbio",
-        "mercado financeiro",
-        "poder360"
-      ],
-      "urgencia_score": 89,
-      "data_publicacao": "2026-11-22T22:23:52Z",
-      "gatilho_vitrine": "Conforme dados do Poder360, a cotação do token USDT na corretora OKX distanciou-se do câmbio comercial tradicional e alcançou R$ 6,15 em transações realizadas no domingo, sinalizando cautela para a abertura dos mercados.",
-      "impacto_pratico": "Potencial pressão de alta sobre o câmbio oficial e expectativas de volatilidade para investidores no Brasil.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "Poder360"
-      ],
-      "relevancia_score": 90,
-      "paises_envolvidos": [
-        "BR"
-      ],
+      "slug": "queda-acoes-tecnologia-eua-bolsas-globais-ia",
+      "titulo_tema": "Pior Semana Tech nos EUA desde a Pandemia Pressiona Bolsas e Alimenta Temor de Bolha em Inteligência Artificial",
+      "status": "em_alta",
+      "origem_pipeline": "curadoria",
       "categoria_primaria": "Economia",
       "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
+        "Geopolitica_Radar",
+        "Cultura"
       ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 92,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-25T07:51:45Z",
       "palavras_chave_busca": [
-        "dólar digital",
-        "usdt",
-        "câmbio",
-        "mercado financeiro",
-        "poder360"
-      ]
+        "nasdaq 100",
+        "ações de tecnologia",
+        "bolha de inteligência artificial",
+        "mercado de ações eua",
+        "b3 dólar",
+        "investimento em ia"
+      ],
+      "gatilho_vitrine": "Filtrar análises sobre retração no setor de tecnologia norte-americano e reflexos no mercado acionário e no dólar no Brasil.",
+      "sintese_nerd": "A forte correção de mais de dez por cento no Nasdaq expõe o ceticismo dos investidores em relação aos prazos de retorno dos massivos investimentos em IA generativa. Esse movimento global de aversão ao risco pressiona o câmbio em emergentes como o Brasil e aumenta a volatilidade na B3.",
+      "data_publicacao": "2026-11-23T07:51:45Z",
+      "updated_at": "2026-11-23T07:51:45Z"
     },
     {
-      "slug": "escolas-ja-podem-se-inscrever-para-olitef-2027",
+      "slug": "eduardo-braga-pec-ajuste-fiscal-orcamento-brasil",
+      "titulo_tema": "Relator do Orçamento Defende Alteração Constitucional para Garantir Novo Ajuste Fiscal",
       "status": "novo",
-      "categoria": "Sociedade_Cultura",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-23T23:38:00Z",
-      "updated_at": "2026-11-23T05:59:54Z",
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/escolas-ja-podem-se-inscrever-para-olitef-2027"
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Politica",
+      "categorias_cruzadas": [
+        "Economia"
       ],
-      "titulo_tema": "MEC e Tesouro Nacional abrem inscrições para a Olimpíada do Tesouro Direto de Educação Financeira de 2027",
-      "resumo_pulso": "Conforme comunicado oficial da Agência Brasil (EBC), estão abertas as inscrições para a Olimpíada do Tesouro Direto de Educação Financeira (OLITEF) de 2027, destinada a estudantes do Ensino Fundamental, Médio e EJA em todo o país.",
-      "sintese_nerd": "Incentivo à inclusão financeira e ao aprendizado de gestão de recursos para estudantes da rede pública e privada.",
-      "titulo_curto": "MEC e Tesouro Nacional abrem inscrições para a Olimpíada do Tesouro Direto de Educação Financeira de 2027",
-      "rota_editoria": "/cultura",
-      "palavras_chave": [
-        "olitef",
-        "tesouro nacional",
-        "educacao financeira",
-        "escolas"
+      "rota_editoria": "/politica",
+      "relevancia_score": 89,
+      "ttl_horas": 72,
+      "expires_at": "2026-11-26T07:51:45Z",
+      "palavras_chave_busca": [
+        "eduardo braga",
+        "orçamento 2027",
+        "ajuste fiscal",
+        "pec fiscal",
+        "congresso nacional",
+        "arcabouço fiscal",
+        "despesas públicas"
       ],
-      "urgencia_score": 75,
-      "data_publicacao": "2026-11-22T22:00:00Z",
-      "gatilho_vitrine": "Conforme comunicado oficial da Agência Brasil (EBC), estão abertas as inscrições para a Olimpíada do Tesouro Direto de Educação Financeira (OLITEF) de 2027, destinada a estudantes do Ensino Fundamental, Médio e EJA em todo o país.",
-      "impacto_pratico": "Incentivo à inclusão financeira e ao aprendizado de gestão de recursos para estudantes da rede pública e privada.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "Agência Brasil (EBC)"
+      "gatilho_vitrine": "Vincular artigos sobre reestruturação de gastos públicos, negociação orçamentária no Congresso e governabilidade.",
+      "sintese_nerd": "A proposta de alteração constitucional pelo relator do Orçamento busca acomodar metas fiscais e promessas políticas sem paralisar investimentos vitais. O movimento expõe o impasse estrutural entre a rigidez dos gastos obrigatórios e a sustentabilidade das contas públicas federais.",
+      "data_publicacao": "2026-11-23T07:51:45Z",
+      "updated_at": "2026-11-23T07:51:45Z"
+    },
+    {
+      "slug": "guerra-ucrania-explosao-navio-russo-libia-drones",
+      "titulo_tema": "Escalação da Guerra na Ucrânia e Incidente com Navio Russo na Líbia Ampliam Tensão Geopolítica",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Politica",
+        "Economia"
       ],
-      "relevancia_score": 80,
-      "paises_envolvidos": [
-        "BR"
+      "rota_editoria": "/radar",
+      "relevancia_score": 86,
+      "ttl_horas": 36,
+      "expires_at": "2026-11-24T19:51:45Z",
+      "palavras_chave_busca": [
+        "guerra na ucrânia",
+        "navio de guerra russo",
+        "porto de benghazi líbia",
+        "ataques de drones",
+        "ofensiva em pokrovsk",
+        "conflito rússia otan"
       ],
-      "categoria_primaria": "Cultura",
+      "gatilho_vitrine": "Mapear matérias de cobertura de conflitos armados internacionais e desdobramentos navais no Mediterrâneo.",
+      "sintese_nerd": "O aumento expressivo de combates na Ucrânia somado à destruição de uma corveta russa na Líbia sinaliza o transbordamento da presença militar de Moscou para fora do teatro europeu. A dinâmica pressiona o mercado global de energia e acentua o atrito diplomático entre potências geopolíticas.",
+      "data_publicacao": "2026-11-23T07:51:45Z",
+      "updated_at": "2026-11-23T07:51:45Z"
+    },
+    {
+      "slug": "eleicoes-espanha-alberto-feijoo-conservadores-europa",
+      "titulo_tema": "Espanha Entra em Reta Final Eleitoral com Foco na Ascensão Conservadora de Alberto Feijóo",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Eleicoes",
+      "categorias_cruzadas": [
+        "Geopolitica_Radar",
+        "Politica"
+      ],
+      "rota_editoria": "/eleicoes",
+      "relevancia_score": 82,
+      "ttl_horas": 96,
+      "expires_at": "2026-11-27T07:51:45Z",
+      "palavras_chave_busca": [
+        "eleições na espanha",
+        "alberto feijóo",
+        "partido popular espanhol",
+        "política europeia",
+        "união europeia",
+        "sistema eleitoral espanha"
+      ],
+      "gatilho_vitrine": "Agrupar relatórios sobre corridas eleitorais europeias e alinhamentos geopolíticos no bloco europeu.",
+      "sintese_nerd": "A disputa pelo governo espanhol coloca à prova a capacidade da centro-direita em consolidar maiorias em meio à polarização no continente. O resultado na quarta maior economia da Zona do Euro impactará diretamente as políticas de migração e a coesão interna da União Europeia.",
+      "data_publicacao": "2026-11-23T07:51:45Z",
+      "updated_at": "2026-11-23T07:51:45Z"
+    },
+    {
+      "slug": "mp-das-bets-stf-saude-publica-regulacao",
+      "titulo_tema": "Julgamento no STF e MP das Bets Colocam Impactos na Saúde Pública no Centro do Debate",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Politica",
       "categorias_cruzadas": [
         "Economia",
-        "Resumo_Ultimas"
+        "Cultura"
       ],
+      "rota_editoria": "/politica",
+      "relevancia_score": 80,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-25T07:51:45Z",
       "palavras_chave_busca": [
-        "olitef",
-        "tesouro nacional",
-        "educacao financeira",
-        "escolas"
-      ]
+        "mp das bets",
+        "stf apostas online",
+        "saúde pública bets",
+        "regulacao de apostas",
+        "vício em jogos ludopatia",
+        "impacto econômico bets"
+      ],
+      "gatilho_vitrine": "Selecionar reportagens sobre regulamentação financeira de plataformas de apostas e custos sociais no Brasil.",
+      "sintese_nerd": "A discussão em curso no Judiciário e no Legislativo evidencia a sobreposição da arrecadação tributária às consequências de saúde mental e endividamento das famílias. A indefinição regulatória gera insegurança jurídica e demanda limites mais rígidos na publicidade e concessão de crédito.",
+      "data_publicacao": "2026-11-23T07:51:45Z",
+      "updated_at": "2026-11-23T07:51:45Z"
     }
   ],
   "noticias_quentes": [
     {
       "slug": "governo-publica-saida-jose-guimaraes-relacoes-institucionais",
-      "titulo_curto": "Governo publica no Diário Oficial a saída de José Guimarães das Relações Institucionais",
-      "resumo_pulso": "Conforme apuração do portal Poder360, o governo federal publicou na edição desta segunda-feira do Diário Oficial da União a exoneração de José Guimarães da Secretaria de Relações Institucionais. A alteração mexe com a articulação política do Palácio do Planalto no Congresso.",
-      "impacto_pratico": "Modifica o comando da articulação governista no Legislativo em meio a votações econômicas cruciais.",
       "categoria": "Geopolitica_Relacoes",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "urgencia_score": 92,
-      "relevancia_score": 90,
-      "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 12,
-      "veiculos_origem": [
-        "Poder360"
-      ],
+      "expires_at": "2026-11-24T07:34:54Z",
+      "updated_at": "2026-11-23T07:34:54Z",
       "fontes_urls": [
         "https://www.poder360.com.br/poder-governo/governo-publica-saida-de-jose-guimaraes-das-relacoes-institucionais/"
       ],
+      "resumo_pulso": "Conforme apuração do portal Poder360, o governo federal publicou na edição desta segunda-feira do Diário Oficial da União a exoneração de José Guimarães da Secretaria de Relações Institucionais. A alteração mexe com a articulação política do Palácio do Planalto no Congresso.",
+      "titulo_curto": "Governo publica no Diário Oficial a saída de José Guimarães das Relações Institucionais",
       "palavras_chave": [
         "José Guimarães",
         "Relações Institucionais",
         "Governo Federal",
         "Diário Oficial"
       ],
+      "urgencia_score": 92,
       "data_publicacao": "2026-11-23T07:26:24Z",
-      "links_internos_relacionados": [
-        {
-          "titulo_existente": "Política no Brasil",
-          "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
-          "motivo_conexao": "Acompanha as movimentações e decisões do Planalto e do Congresso Nacional."
-        }
-      ],
-      "expires_at": "2026-11-24T07:34:54Z",
-      "updated_at": "2026-11-23T07:34:54Z"
-    },
-    {
-      "slug": "acoes-tecnologia-eua-pior-semana-desde-pandemia",
-      "titulo_curto": "Ações de tecnologia dos EUA registram a pior semana desde a pandemia com temores sobre IA",
-      "resumo_pulso": "Segundo dados do Poder360, o índice Nasdaq 100 despencou 10,4% na última semana e entrou em mercado de baixa. O recuo acentuado é impulsionado por crescentes receios de investidores em relação à sustentabilidade dos investimentos em inteligência artificial.",
-      "impacto_pratico": "Gera volatilidade nos mercados globais e cautela entre investidores de ativos de tecnologia.",
-      "categoria": "Economia_Comercio",
-      "paises_envolvidos": [
-        "US"
-      ],
-      "urgencia_score": 90,
-      "relevancia_score": 92,
+      "impacto_pratico": "Modifica o comando da articulação governista no Legislativo em meio a votações econômicas cruciais.",
       "nivel_confianca": "alta",
-      "ttl_horas": 24,
-      "horas_em_destaque": 12,
       "veiculos_origem": [
         "Poder360"
       ],
+      "relevancia_score": 90,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "links_internos_relacionados": [
+        {
+          "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
+          "motivo_conexao": "Acompanha as movimentações e decisões do Planalto e do Congresso Nacional.",
+          "titulo_existente": "Política no Brasil"
+        }
+      ]
+    },
+    {
+      "slug": "acoes-tecnologia-eua-pior-semana-desde-pandemia",
+      "categoria": "Economia_Comercio",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-24T07:34:54Z",
+      "updated_at": "2026-11-23T07:34:54Z",
       "fontes_urls": [
         "https://www.poder360.com.br/poder-economia/acoes-de-tecnologia-dos-eua-tem-pior-semana-desde-a-pandemia/"
       ],
+      "resumo_pulso": "Segundo dados do Poder360, o índice Nasdaq 100 despencou 10,4% na última semana e entrou em mercado de baixa. O recuo acentuado é impulsionado por crescentes receios de investidores em relação à sustentabilidade dos investimentos em inteligência artificial.",
+      "titulo_curto": "Ações de tecnologia dos EUA registram a pior semana desde a pandemia com temores sobre IA",
       "palavras_chave": [
         "Nasdaq",
         "Tecnologia",
@@ -949,37 +1042,37 @@
         "Inteligência Artificial",
         "Mercado Financeiro"
       ],
+      "urgencia_score": 90,
       "data_publicacao": "2026-11-23T06:41:04Z",
+      "impacto_pratico": "Gera volatilidade nos mercados globais e cautela entre investidores de ativos de tecnologia.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Poder360"
+      ],
+      "relevancia_score": 92,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "US"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "Banco Central e mercado financeiro acompanham inflação de serviços, câmbio e metas fiscais",
           "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
-          "motivo_conexao": "Relaciona o comportamento dos mercados internacionais com as expectativas macroeconômicas."
+          "motivo_conexao": "Relaciona o comportamento dos mercados internacionais com as expectativas macroeconômicas.",
+          "titulo_existente": "Banco Central e mercado financeiro acompanham inflação de serviços, câmbio e metas fiscais"
         }
-      ],
-      "expires_at": "2026-11-24T07:34:54Z",
-      "updated_at": "2026-11-23T07:34:54Z"
+      ]
     },
     {
       "slug": "brasil-4-lugar-ranking-global-felicidade-trabalho",
-      "titulo_curto": "Brasil conquista a 4ª posição no ranking global de felicidade no trabalho",
-      "resumo_pulso": "Conforme levantamento da Ticket em parceria com a Happyforce divulgado pelo G1, o Brasil ocupa o quarto lugar no Índice Global de Alegria no Trabalho. O país superou grandes economias como Estados Unidos, Alemanha e Japão na percepção dos trabalhadores.",
-      "impacto_pratico": "Aponta diferenciais culturais e de clima organizacional no ambiente corporativo brasileiro.",
       "categoria": "Sociedade_Cultura",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "urgencia_score": 80,
-      "relevancia_score": 85,
-      "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 8,
-      "veiculos_origem": [
-        "G1 Economia"
-      ],
+      "expires_at": "2026-11-24T07:34:54Z",
+      "updated_at": "2026-11-23T07:34:54Z",
       "fontes_urls": [
         "https://g1.globo.com/trabalho-e-carreira/noticia/2026/11/23/brasil-e-o-4o-mais-feliz-do-mundo-no-trabalho-veja-ranking-e-por-que-o-pais-supera-nacoes-mais-ricas.ghtml"
       ],
+      "resumo_pulso": "Conforme levantamento da Ticket em parceria com a Happyforce divulgado pelo G1, o Brasil ocupa o quarto lugar no Índice Global de Alegria no Trabalho. O país superou grandes economias como Estados Unidos, Alemanha e Japão na percepção dos trabalhadores.",
+      "titulo_curto": "Brasil conquista a 4ª posição no ranking global de felicidade no trabalho",
       "palavras_chave": [
         "Trabalho",
         "Felicidade",
@@ -987,37 +1080,37 @@
         "Economia",
         "Ranking Global"
       ],
+      "urgencia_score": 80,
       "data_publicacao": "2026-11-23T06:00:00Z",
-      "links_internos_relacionados": [
-        {
-          "titulo_existente": "Economia no Brasil",
-          "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
-          "motivo_conexao": "Contextualiza indicadores de mercado de trabalho e bem-estar corporativo no país."
-        }
-      ],
-      "expires_at": "2026-11-24T07:34:54Z",
-      "updated_at": "2026-11-23T07:34:54Z"
-    },
-    {
-      "slug": "cientistas-cultivam-batatas-em-solo-simulado-da-lua",
-      "titulo_curto": "Cientistas conseguem cultivar batatas com sucesso em solo simulado da Lua",
-      "resumo_pulso": "Segundo reportagem do G1, pesquisadores da Universidade Estadual do Oregon conseguiram cultivar batatas nutritivas e seguras para consumo em laboratório utilizando solo simulado semelhante ao lunar. O avanço tecnológico visa garantir fontes futuras de alimento para missões espaciais prolongadas.",
-      "impacto_pratico": "Abre perspectivas para a agricultura espacial e sustentabilidade em futuras bases lunares.",
-      "categoria": "Ciencia_Clima",
-      "paises_envolvidos": [
-        "US"
-      ],
-      "urgencia_score": 78,
-      "relevancia_score": 82,
+      "impacto_pratico": "Aponta diferenciais culturais e de clima organizacional no ambiente corporativo brasileiro.",
       "nivel_confianca": "alta",
-      "ttl_horas": 24,
-      "horas_em_destaque": 6,
       "veiculos_origem": [
         "G1 Economia"
       ],
+      "relevancia_score": 85,
+      "horas_em_destaque": 8,
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "links_internos_relacionados": [
+        {
+          "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
+          "motivo_conexao": "Contextualiza indicadores de mercado de trabalho e bem-estar corporativo no país.",
+          "titulo_existente": "Economia no Brasil"
+        }
+      ]
+    },
+    {
+      "slug": "cientistas-cultivam-batatas-em-solo-simulado-da-lua",
+      "categoria": "Ciencia_Clima",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-24T07:34:54Z",
+      "updated_at": "2026-11-23T07:34:54Z",
       "fontes_urls": [
         "https://g1.globo.com/economia/agronegocios/noticia/2026/11/23/batatas-espaciais-cientistas-descobrem-como-cultivar-alimento-em-solo-semelhante-ao-da-lua.ghtml"
       ],
+      "resumo_pulso": "Segundo reportagem do G1, pesquisadores da Universidade Estadual do Oregon conseguiram cultivar batatas nutritivas e seguras para consumo em laboratório utilizando solo simulado semelhante ao lunar. O avanço tecnológico visa garantir fontes futuras de alimento para missões espaciais prolongadas.",
+      "titulo_curto": "Cientistas conseguem cultivar batatas com sucesso em solo simulado da Lua",
       "palavras_chave": [
         "Lua",
         "Agricultura Espacial",
@@ -1025,10 +1118,19 @@
         "Pesquisa",
         "Alimentação"
       ],
+      "urgencia_score": 78,
       "data_publicacao": "2026-11-23T06:00:00Z",
-      "links_internos_relacionados": [],
-      "expires_at": "2026-11-24T07:34:54Z",
-      "updated_at": "2026-11-23T07:34:54Z"
+      "impacto_pratico": "Abre perspectivas para a agricultura espacial e sustentabilidade em futuras bases lunares.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "G1 Economia"
+      ],
+      "relevancia_score": 82,
+      "horas_em_destaque": 6,
+      "paises_envolvidos": [
+        "US"
+      ],
+      "links_internos_relacionados": []
     },
     {
       "slug": "exercito-eua-planeja-detonar-explosivos-iowa-ordem-judicial",
@@ -1627,86 +1729,6 @@
         "UA"
       ],
       "links_internos_relacionados": []
-    }
-  ],
-  "temas_curadoria": [
-    {
-      "slug": "camara-vota-projeto-ajuste-fiscal-impacto-economia-2027",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-25T04:52:43Z",
-      "updated_at": "2026-11-23T04:52:43Z",
-      "titulo_tema": "Câmara vota projeto de ajuste fiscal com expectativa de economia de R$ 50 bilhões",
-      "sintese_nerd": "O avanço do pacote de ajuste fiscal na Câmara busca garantir a sustentabilidade das contas públicas e atinge diretamente as expectativas inflacionárias e de juros para 2027. A aprovação da medida sinaliza ao mercado financeiro o compromisso com a meta de economia de R$ 50 bilhões, influenciando o câmbio e a previsibilidade macroeconômica brasileira.",
-      "rota_editoria": "/politica",
-      "data_publicacao": "2026-11-23T04:52:43Z",
-      "gatilho_vitrine": "Exibir na vitrine principal como destaque econômico e institucional do dia, conectando a votação do Congresso às projeções fiscais do país.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 95,
-      "categoria_primaria": "Politica",
-      "categorias_cruzadas": [
-        "Economia"
-      ],
-      "palavras_chave_busca": [
-        "ajuste fiscal",
-        "camara dos deputados",
-        "economia 2027",
-        "gasto publico",
-        "mauro benevides",
-        "governo lula"
-      ]
-    },
-    {
-      "slug": "trump-avalia-adiar-ataques-iran-pressao-israel",
-      "status": "novo",
-      "ttl_horas": 72,
-      "expires_at": "2026-11-26T04:52:43Z",
-      "updated_at": "2026-11-23T04:52:43Z",
-      "titulo_tema": "Trump pondera adiamento de novos ataques ao Irã sob forte pressão israelense",
-      "sintese_nerd": "A hesitação de Washington em lançar novos ataques ao Irã reflete um cabo de guerra diplomático e estratégico diante das pressões militares de Israel e do temor de escalada nos conflitos regionais. Como consequência, a instabilidade no Estreito de Ormuz mantém a volatilidade nos preços globais do petróleo e pressiona a inflação importada.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-23T04:52:43Z",
-      "gatilho_vitrine": "Destacar no Radar de Geopolítica para explicar os desdobramentos diplomáticos e militares na rota do petróleo global.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 90,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia"
-      ],
-      "palavras_chave_busca": [
-        "donald trump",
-        "ira",
-        "israel",
-        "oriente medio",
-        "estreito de ormuz",
-        "petroleo"
-      ]
-    },
-    {
-      "slug": "proposta-ue-taxar-big-techs-receita-digital",
-      "status": "novo",
-      "ttl_horas": 96,
-      "expires_at": "2026-11-27T04:52:43Z",
-      "updated_at": "2026-11-23T04:52:43Z",
-      "titulo_tema": "União Europeia avança com proposta de taxação de 3% sobre receitas de big techs",
-      "sintese_nerd": "A ofensiva regulatória da União Europeia para cobrar 3% sobre a receita digital das gigantes tecnológicas redefine as regras de tributação global para o setor de inovação. A medida serve de precedente para discussões fiscais semelhantes em economias emergentes, afetando o modelo de negócios transnacional das plataformas.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-23T04:52:43Z",
-      "gatilho_vitrine": "Posicionar na editoria de Geopolitica e Cultura para debater a soberania digital e o cerco regulatório internacional sobre as grandes empresas de tecnologia.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 85,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Cultura"
-      ],
-      "palavras_chave_busca": [
-        "uniao europeia",
-        "big techs",
-        "taxacao digital",
-        "regulacao tecnologica",
-        "economia digital"
-      ]
     }
   ]
 }
