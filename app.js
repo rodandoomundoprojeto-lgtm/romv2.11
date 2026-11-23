@@ -18486,6 +18486,7 @@
         var innerM = sMaster.querySelector('.sponsor-inner');
         if (innerM) {
           innerM.innerHTML =
+            '<span class="sponsor-master-badge" aria-hidden="true">✦ Parceiro Global</span>' +
             '<span class="sponsor-eyebrow">' + esc(cMaster.frase || 'Apresentado com exclusividade global por') + '</span>' +
             renderSponsorBrandEl(cMaster) +
             '<a class="sponsor-cta-link" href="/parcerias" data-spa-link>' + esc(cMaster.cta_texto || 'Conheça as soluções →') + '</a>';
