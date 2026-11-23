@@ -2,224 +2,333 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-23T13:07:42Z",
-  "batch_id": "20261123-1307",
+  "updatedAt": "2026-11-23T13:37:22Z",
+  "batch_id": "20261123-1336",
   "temas_ativos": [
     {
-      "slug": "pulso-1-20261123-1307",
-      "titulo_tema": "Bukele exporta seu modelo de combate ao crime para o atoleiro haitiano",
-      "titulo_curto": "Bukele exporta seu modelo de combate ao crime para o atoleiro haitiano",
+      "slug": "dolar-seis-reais-ajuste-fiscal-camara-focus",
+      "titulo_tema": "Dólar atinge R$ 6,00 em meio a incertezas fiscais e votação do ajuste fiscal na Câmara",
+      "status": "em_alta",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Politica",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 95,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-25T13:37:22Z",
+      "palavras_chave_busca": [
+        "dolar hoje",
+        "ajuste fiscal",
+        "camara dos deputados",
+        "gabriel galipolo",
+        "boletim focus",
+        "inflacao brasil",
+        "pacote fiscal"
+      ],
+      "gatilho_vitrine": "Destacar impactos do câmbio e do pacote fiscal no poder de compra e mercado financeiro",
+      "sintese_nerd": "A depreciação do real refletida na marca histórica dos R$ 6,00 decorre da cautela dos investidores frente às negociações do pacote fiscal e às expectativas elevadas do Boletim Focus. Diante desse quadro, o Banco Central sinaliza postura rigorosa na condução da política monetária para evitar o repasse cambial à inflação de preços.",
+      "data_publicacao": "2026-11-23T13:37:22Z",
+      "updated_at": "2026-11-23T13:37:22Z"
+    },
+    {
+      "slug": "iran-bloqueio-naval-eua-escalada-oriente-medio",
+      "titulo_tema": "Irã ameaça reação total a bloqueio naval dos EUA em nova escalada no Oriente Médio",
       "status": "novo",
-      "origem_pipeline": "pulso",
+      "origem_pipeline": "curadoria",
       "categoria_primaria": "Geopolitica_Radar",
-      "categoria": "Geopolitica_Relacoes",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 90,
+      "ttl_horas": 72,
+      "expires_at": "2026-11-26T13:37:22Z",
+      "palavras_chave_busca": [
+        "ira eua",
+        "bloqueio naval",
+        "oriente medio",
+        "petroleo geopolitica",
+        "tensao militar",
+        "sancoes internacionais"
+      ],
+      "gatilho_vitrine": "Acompanhar desdobramentos de crise energética e rotas de navegação global",
+      "sintese_nerd": "A promessa de Teerã de usar todos os meios disponíveis contra o cerco naval americano intensifica os riscos de desrupção no fornecimento global de petróleo e nas rotas marítimas críticas. O avanço do conflito regional ameaça inflacionar os preços de combustíveis no mundo, ampliando o aperto monetário em diversas economias.",
+      "data_publicacao": "2026-11-23T13:37:22Z",
+      "updated_at": "2026-11-23T13:37:22Z"
+    },
+    {
+      "slug": "ucrania-libia-sabotagem-starlink-europa-refinaria-russia",
+      "titulo_tema": "Ucrânia projeta poder na Líbia e Europa investiga sabotagens a satélites Starlink",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Politica",
+        "Cultura"
       ],
       "rota_editoria": "/radar",
       "relevancia_score": 88,
-      "urgencia_score": 90,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-25T13:37:22Z",
+      "palavras_chave_busca": [
+        "guerra ucrania russia",
+        "navio russo libia",
+        "sabotagem starlink",
+        "refinaria lukoil",
+        "drones ucranianos",
+        "seguranca europeia"
+      ],
+      "gatilho_vitrine": "Mapear a internacionalização dos confrontos e novos alvos de infraestrutura crítica",
+      "sintese_nerd": "Ao atingir embarcações russas fora do teatro europeu e refinarias em Perm, a Ucrânia expande o alcance assimétrico do conflito para além de suas fronteiras. Simultaneamente, investigações na União Europeia sobre ataques de incêndio a terminais Starlink evidenciam a vulnerabilidade da infraestrutura digital e espacial da Otan.",
+      "data_publicacao": "2026-11-23T13:37:22Z",
+      "updated_at": "2026-11-23T13:37:22Z"
+    },
+    {
+      "slug": "crise-migratoria-cubanos-refugio-brasil-2026",
+      "titulo_tema": "Apagões e colapso econômico em Cuba elevam pedidos de refúgio no Brasil a patamar recorde",
+      "status": "em_alta",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Politica",
+      "categorias_cruzadas": [
+        "Geopolitica_Radar",
+        "Cultura"
+      ],
+      "rota_editoria": "/politica",
+      "relevancia_score": 82,
+      "ttl_horas": 96,
+      "expires_at": "2026-11-27T13:37:22Z",
+      "palavras_chave_busca": [
+        "refugiados cubanos",
+        "crise em cuba",
+        "obmigra",
+        "migracao brasil",
+        "ministerio da justica",
+        "politica migratoria"
+      ],
+      "gatilho_vitrine": "Analisar a capacidade de acolhimento institucional e razões geopolíticas do fluxo migratório",
+      "sintese_nerd": "O colapso no sistema elétrico de Havana e o desabastecimento em Cuba impulsionaram mais de 33 mil pedidos de refúgio de cubanos no Brasil em 2026, revelando o agravamento da crise socioeconômica na ilha. O fluxo permanente testa as políticas brasileiras de integração migratória e os compromissos diplomáticos na América Latina.",
+      "data_publicacao": "2026-11-23T13:37:22Z",
+      "updated_at": "2026-11-23T13:37:22Z"
+    },
+    {
+      "slug": "pulso-1-20261123-1307",
+      "status": "novo",
+      "categoria": "Geopolitica_Relacoes",
       "ttl_horas": 6,
       "expires_at": "2026-11-23T19:07:42Z",
-      "palavras_chave_busca": [
-        "radar",
-        "tempo real",
-        "br"
-      ],
-      "palavras_chave": [
-        "radar",
-        "tempo real",
-        "br"
-      ],
-      "gatilho_vitrine": "Segundo G1 Mundo, Presidente de El Salvador divulga vídeo de helicópteros bombardeando mansão no Haiti Em busca do terceiro mandato em El Salvador, Nayib Bukele tenta exportar seu modelo de combate à criminalidade para o vizinho Haiti, onde fracassaram todas as iniciativas anteriores para erradicar as gangues, responsáveis pela morte de 6 mil pessoas nos primeiros n.",
-      "resumo_pulso": "Segundo G1 Mundo, Presidente de El Salvador divulga vídeo de helicópteros bombardeando mansão no Haiti Em busca do terceiro mandato em El Salvador, Nayib Bukele tenta exportar seu modelo de combate à criminalidade para o vizinho Haiti, onde fracassaram todas as iniciativas anteriores para erradicar as gangues, responsáveis pela morte de 6 mil pessoas nos primeiros n.",
-      "sintese_nerd": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "veiculos_origem": [
-        "G1 Mundo"
-      ],
+      "updated_at": "2026-11-23T13:07:42Z",
       "fontes_urls": [
         "https://g1.globo.com/mundo/blog/sandra-cohen/post/2026/11/23/bukele-exporta-seu-modelo-de-combate-ao-crime-para-o-atoleiro-haitiano.ghtml"
       ],
-      "data_publicacao": "2026-11-23T13:00:18+00:00",
-      "updated_at": "2026-11-23T13:07:42Z"
-    },
-    {
-      "slug": "pulso-2-20261123-1307",
-      "titulo_tema": "Vídeo: CDH foi ao Rio de Janeiro acompanhar caso do menino desaparecido Edson Davi",
-      "titulo_curto": "Vídeo: CDH foi ao Rio de Janeiro acompanhar caso do menino desaparecido Edson Davi",
-      "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Geopolitica_Radar",
-      "categoria": "Geopolitica_Relacoes",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
+      "titulo_tema": "Bukele exporta seu modelo de combate ao crime para o atoleiro haitiano",
+      "resumo_pulso": "Segundo G1 Mundo, Presidente de El Salvador divulga vídeo de helicópteros bombardeando mansão no Haiti Em busca do terceiro mandato em El Salvador, Nayib Bukele tenta exportar seu modelo de combate à criminalidade para o vizinho Haiti, onde fracassaram todas as iniciativas anteriores para erradicar as gangues, responsáveis pela morte de 6 mil pessoas nos primeiros n.",
+      "sintese_nerd": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "titulo_curto": "Bukele exporta seu modelo de combate ao crime para o atoleiro haitiano",
       "rota_editoria": "/radar",
-      "relevancia_score": 84,
-      "urgencia_score": 85,
-      "ttl_horas": 6,
-      "expires_at": "2026-11-23T19:07:42Z",
-      "palavras_chave_busca": [
-        "radar",
-        "tempo real",
-        "br"
-      ],
       "palavras_chave": [
         "radar",
         "tempo real",
         "br"
       ],
-      "gatilho_vitrine": "Segundo Agência Senado, Nesta sexta-feira (20), a Comissão de Direitos Humanos (CDH) esteve no Rio de Janeiro para acompanhar as investigações sobre o desaparecimento do menino Edson Davi, que aconteceu na Praia da Barra da Tijuca aos 6 anos de idade, em 2024. A presidente da CDH, senadora Damares Alves, se reuniu com familiares do menino e com parlamentares para acompanh.",
-      "resumo_pulso": "Segundo Agência Senado, Nesta sexta-feira (20), a Comissão de Direitos Humanos (CDH) esteve no Rio de Janeiro para acompanhar as investigações sobre o desaparecimento do menino Edson Davi, que aconteceu na Praia da Barra da Tijuca aos 6 anos de idade, em 2024. A presidente da CDH, senadora Damares Alves, se reuniu com familiares do menino e com parlamentares para acompanh.",
-      "sintese_nerd": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "urgencia_score": 90,
+      "data_publicacao": "2026-11-23T13:00:18+00:00",
+      "gatilho_vitrine": "Segundo G1 Mundo, Presidente de El Salvador divulga vídeo de helicópteros bombardeando mansão no Haiti Em busca do terceiro mandato em El Salvador, Nayib Bukele tenta exportar seu modelo de combate à criminalidade para o vizinho Haiti, onde fracassaram todas as iniciativas anteriores para erradicar as gangues, responsáveis pela morte de 6 mil pessoas nos primeiros n.",
       "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "G1 Mundo"
+      ],
+      "relevancia_score": 88,
       "paises_envolvidos": [
         "BR"
       ],
-      "veiculos_origem": [
-        "Agência Senado"
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
       ],
+      "palavras_chave_busca": [
+        "radar",
+        "tempo real",
+        "br"
+      ]
+    },
+    {
+      "slug": "pulso-2-20261123-1307",
+      "status": "novo",
+      "categoria": "Geopolitica_Relacoes",
+      "ttl_horas": 6,
+      "expires_at": "2026-11-23T19:07:42Z",
+      "updated_at": "2026-11-23T13:07:42Z",
       "fontes_urls": [
         "https://www12.senado.leg.br/noticias/videos/2026/11/cdh-foi-ao-rio-de-janeiro-acompanhar-caso-do-menino-desaparecido-edson-davi"
       ],
+      "titulo_tema": "Vídeo: CDH foi ao Rio de Janeiro acompanhar caso do menino desaparecido Edson Davi",
+      "resumo_pulso": "Segundo Agência Senado, Nesta sexta-feira (20), a Comissão de Direitos Humanos (CDH) esteve no Rio de Janeiro para acompanhar as investigações sobre o desaparecimento do menino Edson Davi, que aconteceu na Praia da Barra da Tijuca aos 6 anos de idade, em 2024. A presidente da CDH, senadora Damares Alves, se reuniu com familiares do menino e com parlamentares para acompanh.",
+      "sintese_nerd": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "titulo_curto": "Vídeo: CDH foi ao Rio de Janeiro acompanhar caso do menino desaparecido Edson Davi",
+      "rota_editoria": "/radar",
+      "palavras_chave": [
+        "radar",
+        "tempo real",
+        "br"
+      ],
+      "urgencia_score": 85,
       "data_publicacao": "2026-11-23T12:47:31+00:00",
-      "updated_at": "2026-11-23T13:07:42Z"
+      "gatilho_vitrine": "Segundo Agência Senado, Nesta sexta-feira (20), a Comissão de Direitos Humanos (CDH) esteve no Rio de Janeiro para acompanhar as investigações sobre o desaparecimento do menino Edson Davi, que aconteceu na Praia da Barra da Tijuca aos 6 anos de idade, em 2024. A presidente da CDH, senadora Damares Alves, se reuniu com familiares do menino e com parlamentares para acompanh.",
+      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "Agência Senado"
+      ],
+      "relevancia_score": 84,
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "radar",
+        "tempo real",
+        "br"
+      ]
     },
     {
       "slug": "pulso-3-20261123-1307",
-      "titulo_tema": "Plano de Moretti é um 'primeiro passo', e governo Lula pode fazer outros ajustes fiscais no futuro, afirma Laura Carvalho",
-      "titulo_curto": "Plano de Moretti é um 'primeiro passo', e governo Lula pode fazer outros ajustes fiscais no futuro, afirma Laura Carvalho",
       "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Geopolitica_Radar",
       "categoria": "Geopolitica_Relacoes",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 80,
-      "urgencia_score": 80,
       "ttl_horas": 6,
       "expires_at": "2026-11-23T19:07:42Z",
-      "palavras_chave_busca": [
-        "radar",
-        "tempo real",
-        "gb"
-      ],
-      "palavras_chave": [
-        "radar",
-        "tempo real",
-        "gb"
-      ],
-      "gatilho_vitrine": "Segundo BBC News Brasil, Professora da USP esteve na primeira reunião econômica pós-reeleição de Lula. Para ela, desgaste público da proposta do ministro do Planejamento poderia ter sido evitado com melhor comunicação..",
-      "resumo_pulso": "Segundo BBC News Brasil, Professora da USP esteve na primeira reunião econômica pós-reeleição de Lula. Para ela, desgaste público da proposta do ministro do Planejamento poderia ter sido evitado com melhor comunicação..",
-      "sintese_nerd": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "paises_envolvidos": [
-        "GB"
-      ],
-      "veiculos_origem": [
-        "BBC News Brasil"
-      ],
+      "updated_at": "2026-11-23T13:07:42Z",
       "fontes_urls": [
         "https://www.bbc.com/portuguese/articles/cm1dvg9n5w2xo?at_medium=RSS&at_campaign=rss"
       ],
+      "titulo_tema": "Plano de Moretti é um 'primeiro passo', e governo Lula pode fazer outros ajustes fiscais no futuro, afirma Laura Carvalho",
+      "resumo_pulso": "Segundo BBC News Brasil, Professora da USP esteve na primeira reunião econômica pós-reeleição de Lula. Para ela, desgaste público da proposta do ministro do Planejamento poderia ter sido evitado com melhor comunicação..",
+      "sintese_nerd": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "titulo_curto": "Plano de Moretti é um 'primeiro passo', e governo Lula pode fazer outros ajustes fiscais no futuro, afirma Laura Carvalho",
+      "rota_editoria": "/radar",
+      "palavras_chave": [
+        "radar",
+        "tempo real",
+        "gb"
+      ],
+      "urgencia_score": 80,
       "data_publicacao": "2026-11-23T12:46:58+00:00",
-      "updated_at": "2026-11-23T13:07:42Z"
+      "gatilho_vitrine": "Segundo BBC News Brasil, Professora da USP esteve na primeira reunião econômica pós-reeleição de Lula. Para ela, desgaste público da proposta do ministro do Planejamento poderia ter sido evitado com melhor comunicação..",
+      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "BBC News Brasil"
+      ],
+      "relevancia_score": 80,
+      "paises_envolvidos": [
+        "GB"
+      ],
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "radar",
+        "tempo real",
+        "gb"
+      ]
     },
     {
       "slug": "pulso-4-20261123-1307",
-      "titulo_tema": "O jogador de futebol argentino Paredes desmaia durante entrevista pós-jogo",
-      "titulo_curto": "O jogador de futebol argentino Paredes desmaia durante entrevista pós-jogo",
       "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Geopolitica_Radar",
       "categoria": "Geopolitica_Relacoes",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 76,
-      "urgencia_score": 75,
       "ttl_horas": 6,
       "expires_at": "2026-11-23T19:07:42Z",
-      "palavras_chave_busca": [
-        "radar",
-        "tempo real",
-        "qa"
-      ],
-      "palavras_chave": [
-        "radar",
-        "tempo real",
-        "qa"
-      ],
-      "gatilho_vitrine": "Segundo Al Jazeera English, O jogador de futebol argentino Leandro Paredes desmaiou durante uma entrevista pós-jogo após a vitória na Colômbia..",
-      "resumo_pulso": "Segundo Al Jazeera English, O jogador de futebol argentino Leandro Paredes desmaiou durante uma entrevista pós-jogo após a vitória na Colômbia..",
-      "sintese_nerd": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "paises_envolvidos": [
-        "QA"
-      ],
-      "veiculos_origem": [
-        "Al Jazeera English"
-      ],
+      "updated_at": "2026-11-23T13:07:42Z",
       "fontes_urls": [
         "https://www.aljazeera.com/video/newsfeed/2026/11/23/argentina-footballer-paredes-collapses-during-post-match-interview?traffic_source=rss"
       ],
-      "data_publicacao": "2026-11-23T12:40:21+00:00",
-      "updated_at": "2026-11-23T13:07:42Z"
-    },
-    {
-      "slug": "pulso-5-20261123-1307",
-      "titulo_tema": "Como os EUA, a China e a Rússia competem pela riqueza mineral de África",
-      "titulo_curto": "Como os EUA, a China e a Rússia competem pela riqueza mineral de África",
-      "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Geopolitica_Radar",
-      "categoria": "Geopolitica_Relacoes",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
+      "titulo_tema": "O jogador de futebol argentino Paredes desmaia durante entrevista pós-jogo",
+      "resumo_pulso": "Segundo Al Jazeera English, O jogador de futebol argentino Leandro Paredes desmaiou durante uma entrevista pós-jogo após a vitória na Colômbia..",
+      "sintese_nerd": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "titulo_curto": "O jogador de futebol argentino Paredes desmaia durante entrevista pós-jogo",
       "rota_editoria": "/radar",
-      "relevancia_score": 72,
-      "urgencia_score": 70,
-      "ttl_horas": 6,
-      "expires_at": "2026-11-23T19:07:42Z",
-      "palavras_chave_busca": [
-        "radar",
-        "tempo real",
-        "qa"
-      ],
       "palavras_chave": [
         "radar",
         "tempo real",
         "qa"
       ],
-      "gatilho_vitrine": "Segundo Al Jazeera English, Os EUA, a China e a Rússia estão a competir pela riqueza mineral de África, levantando questões sobre quem irá beneficiar..",
+      "urgencia_score": 75,
+      "data_publicacao": "2026-11-23T12:40:21+00:00",
+      "gatilho_vitrine": "Segundo Al Jazeera English, O jogador de futebol argentino Leandro Paredes desmaiou durante uma entrevista pós-jogo após a vitória na Colômbia..",
+      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "Al Jazeera English"
+      ],
+      "relevancia_score": 76,
+      "paises_envolvidos": [
+        "QA"
+      ],
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "radar",
+        "tempo real",
+        "qa"
+      ]
+    },
+    {
+      "slug": "pulso-5-20261123-1307",
+      "status": "novo",
+      "categoria": "Geopolitica_Relacoes",
+      "ttl_horas": 6,
+      "expires_at": "2026-11-23T19:07:42Z",
+      "updated_at": "2026-11-23T13:07:42Z",
+      "fontes_urls": [
+        "https://www.aljazeera.com/news/2026/11/23/how-the-us-china-and-russia-are-competing-for-africas-mineral-wealth?traffic_source=rss"
+      ],
+      "titulo_tema": "Como os EUA, a China e a Rússia competem pela riqueza mineral de África",
       "resumo_pulso": "Segundo Al Jazeera English, Os EUA, a China e a Rússia estão a competir pela riqueza mineral de África, levantando questões sobre quem irá beneficiar..",
       "sintese_nerd": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "titulo_curto": "Como os EUA, a China e a Rússia competem pela riqueza mineral de África",
+      "rota_editoria": "/radar",
+      "palavras_chave": [
+        "radar",
+        "tempo real",
+        "qa"
+      ],
+      "urgencia_score": 70,
+      "data_publicacao": "2026-11-23T12:34:54+00:00",
+      "gatilho_vitrine": "Segundo Al Jazeera English, Os EUA, a China e a Rússia estão a competir pela riqueza mineral de África, levantando questões sobre quem irá beneficiar..",
       "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "Al Jazeera English"
+      ],
+      "relevancia_score": 72,
       "paises_envolvidos": [
         "QA",
         "US"
       ],
-      "veiculos_origem": [
-        "Al Jazeera English"
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
       ],
-      "fontes_urls": [
-        "https://www.aljazeera.com/news/2026/11/23/how-the-us-china-and-russia-are-competing-for-africas-mineral-wealth?traffic_source=rss"
-      ],
-      "data_publicacao": "2026-11-23T12:34:54+00:00",
-      "updated_at": "2026-11-23T13:07:42Z"
+      "palavras_chave_busca": [
+        "radar",
+        "tempo real",
+        "qa"
+      ]
     },
     {
       "slug": "escala-6x1-governo-publica-regras-trabalho",
@@ -408,143 +517,6 @@
         "mudanças climáticas",
         "onu",
         "transição energética"
-      ]
-    },
-    {
-      "slug": "cop31-fracasso-impasse-combustiveis-fosseis-ue",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-25T10:44:14Z",
-      "updated_at": "2026-11-23T10:44:14Z",
-      "titulo_tema": "Fracasso da COP31: Impasse sobre Combustíveis Fósseis Divide Bloco Global",
-      "sintese_nerd": "O bloqueio promovido por países produtores de petróleo barrou a meta global de eliminação dos combustíveis fósseis na COP31, gerando forte rejeição da União Europeia. O impasse expõe a desconexão entre metas de descarbonização e os interesses geoeconômicos das potências energéticas, com impacto direto no mercado de commodities.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-23T10:44:14Z",
-      "gatilho_vitrine": "Destacar na Home o colapso das negociações climáticas e seus desdobramentos na matriz energética mundial",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 92,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Politica"
-      ],
-      "palavras_chave_busca": [
-        "cop31",
-        "combustiveis fosseis",
-        "transicao energetica",
-        "uniao europeia",
-        "arabia saudita",
-        "mudancas climaticas",
-        "acordo de paris"
-      ]
-    },
-    {
-      "slug": "meta-fiscal-2027-tensa-mercado-financeiro-lula",
-      "status": "novo",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-24T10:44:14Z",
-      "updated_at": "2026-11-23T10:44:14Z",
-      "titulo_tema": "Votação do Pacote Fiscal e Meta de 2027 Elevam Tensão Econômica no Brasil",
-      "sintese_nerd": "A tentativa de votação do ajuste fiscal na Câmara somada às declarações do Executivo contra o mercado elevaram o risco fiscal, levando o EWZ a despencar e o dólar a se aproximar de patamares críticos. A aposta da meta fiscal em premissas heterodoxas pressiona a curva de juros futuros e desafia a ancoragem das expectativas inflacionárias.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-23T10:44:14Z",
-      "gatilho_vitrine": "Impulsionar artigos explicativos sobre o impacto do pacote de ajuste fiscal e da taxa de câmbio no bolso do leitor",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 90,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Politica"
-      ],
-      "palavras_chave_busca": [
-        "meta fiscal 2027",
-        "pacote fiscal",
-        "dolar hoje",
-        "ewz",
-        "selic",
-        "lara resende",
-        "congresso nacional",
-        "mercado financeiro"
-      ]
-    },
-    {
-      "slug": "garantias-seguranca-ucrania-trump-kushner-otan",
-      "status": "novo",
-      "ttl_horas": 36,
-      "expires_at": "2026-11-24T22:44:14Z",
-      "updated_at": "2026-11-23T10:44:14Z",
-      "titulo_tema": "EUA Sinalizam Condições para Garantias de Segurança no Estilo OTAN à Ucrânia",
-      "sintese_nerd": "Intermediários da futura política externa norte-americana condicionaram o apoio a proteções equivalentes ao Artigo 5 da OTAN para Kiev ao estrito alinhamento com os interesses estratégicos de Washington. Essa postura pragmática altera a equação de forças no conflito contra a Rússia e força a Europa a reavaliar sua autonomia de defesa.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-23T10:44:14Z",
-      "gatilho_vitrine": "Fixar no Radar de Geopolítica para acompanhar os novos termos da diplomacia de Washington para o conflito leste-europeu",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 86,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Politica"
-      ],
-      "palavras_chave_busca": [
-        "ucrânia",
-        "eua",
-        "donald trump",
-        "artigo 5 otan",
-        "jared kushner",
-        "guerra da ucrânia",
-        "diplomacia de paz"
-      ]
-    },
-    {
-      "slug": "investigacao-espionagem-chinesa-nvidia-tecnologia",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-25T10:44:14Z",
-      "updated_at": "2026-11-23T10:44:14Z",
-      "titulo_tema": "Suspeita de Espionagem Chinesa Envolvendo a Nvidia Acirra Guerra Tecnológica",
-      "sintese_nerd": "Revelações sobre contatos de agentes de inteligência chineses com pessoas ligadas à cúpula da Nvidia intensificam o escrutínio de segurança sobre a indústria de microchips nos EUA. O episódio amplia o protecionismo tecnológico global e acelera a fragmentação das cadeias de suprimento de tecnologia de ponta.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-23T10:44:14Z",
-      "gatilho_vitrine": "Relacionar reportagem com o embate global pelo domínio da inteligência artificial e semicondutores",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 81,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Cultura",
-        "Economia"
-      ],
-      "palavras_chave_busca": [
-        "nvidia",
-        "espionagem chinesa",
-        "semicondutores",
-        "inteligencia artificial",
-        "eua vs china",
-        "seguranca cibernetica"
-      ]
-    },
-    {
-      "slug": "cgu-investiga-servidores-banco-central-caso-master",
-      "status": "novo",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-24T10:44:14Z",
-      "updated_at": "2026-11-23T10:44:14Z",
-      "titulo_tema": "CGU Apura Evolução Patrimonial de Servidores do Banco Central após Caso Master",
-      "sintese_nerd": "A Controladoria-Geral da União abriu apurações sobre variações patrimoniais atípicas de servidores do BC após o afastamento de funcionários ligados a investigados no setor bancário. O caso reacende o debate sobre governança institucional e exigências de integridade nos órgãos de fiscalização do sistema financeiro.",
-      "rota_editoria": "/politica",
-      "data_publicacao": "2026-11-23T10:44:14Z",
-      "gatilho_vitrine": "Exibir na editoria de Política as investigações de compliance nas instituições reguladoras federais",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 78,
-      "categoria_primaria": "Politica",
-      "categorias_cruzadas": [
-        "Economia"
-      ],
-      "palavras_chave_busca": [
-        "banco central",
-        "cgu",
-        "banco master",
-        "investigacao bc",
-        "servidores públicos",
-        "vorcaro",
-        "compliance financeiro"
       ]
     },
     {
@@ -829,212 +801,323 @@
       ]
     }
   ],
+  "temas_curadoria": [
+    {
+      "slug": "dolar-seis-reais-ajuste-fiscal-camara-focus",
+      "titulo_tema": "Dólar atinge R$ 6,00 em meio a incertezas fiscais e votação do ajuste fiscal na Câmara",
+      "status": "em_alta",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Politica",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 95,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-25T13:37:22Z",
+      "palavras_chave_busca": [
+        "dolar hoje",
+        "ajuste fiscal",
+        "camara dos deputados",
+        "gabriel galipolo",
+        "boletim focus",
+        "inflacao brasil",
+        "pacote fiscal"
+      ],
+      "gatilho_vitrine": "Destacar impactos do câmbio e do pacote fiscal no poder de compra e mercado financeiro",
+      "sintese_nerd": "A depreciação do real refletida na marca histórica dos R$ 6,00 decorre da cautela dos investidores frente às negociações do pacote fiscal e às expectativas elevadas do Boletim Focus. Diante desse quadro, o Banco Central sinaliza postura rigorosa na condução da política monetária para evitar o repasse cambial à inflação de preços.",
+      "data_publicacao": "2026-11-23T13:37:22Z",
+      "updated_at": "2026-11-23T13:37:22Z"
+    },
+    {
+      "slug": "iran-bloqueio-naval-eua-escalada-oriente-medio",
+      "titulo_tema": "Irã ameaça reação total a bloqueio naval dos EUA em nova escalada no Oriente Médio",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 90,
+      "ttl_horas": 72,
+      "expires_at": "2026-11-26T13:37:22Z",
+      "palavras_chave_busca": [
+        "ira eua",
+        "bloqueio naval",
+        "oriente medio",
+        "petroleo geopolitica",
+        "tensao militar",
+        "sancoes internacionais"
+      ],
+      "gatilho_vitrine": "Acompanhar desdobramentos de crise energética e rotas de navegação global",
+      "sintese_nerd": "A promessa de Teerã de usar todos os meios disponíveis contra o cerco naval americano intensifica os riscos de desrupção no fornecimento global de petróleo e nas rotas marítimas críticas. O avanço do conflito regional ameaça inflacionar os preços de combustíveis no mundo, ampliando o aperto monetário em diversas economias.",
+      "data_publicacao": "2026-11-23T13:37:22Z",
+      "updated_at": "2026-11-23T13:37:22Z"
+    },
+    {
+      "slug": "ucrania-libia-sabotagem-starlink-europa-refinaria-russia",
+      "titulo_tema": "Ucrânia projeta poder na Líbia e Europa investiga sabotagens a satélites Starlink",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Politica",
+        "Cultura"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 88,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-25T13:37:22Z",
+      "palavras_chave_busca": [
+        "guerra ucrania russia",
+        "navio russo libia",
+        "sabotagem starlink",
+        "refinaria lukoil",
+        "drones ucranianos",
+        "seguranca europeia"
+      ],
+      "gatilho_vitrine": "Mapear a internacionalização dos confrontos e novos alvos de infraestrutura crítica",
+      "sintese_nerd": "Ao atingir embarcações russas fora do teatro europeu e refinarias em Perm, a Ucrânia expande o alcance assimétrico do conflito para além de suas fronteiras. Simultaneamente, investigações na União Europeia sobre ataques de incêndio a terminais Starlink evidenciam a vulnerabilidade da infraestrutura digital e espacial da Otan.",
+      "data_publicacao": "2026-11-23T13:37:22Z",
+      "updated_at": "2026-11-23T13:37:22Z"
+    },
+    {
+      "slug": "crise-migratoria-cubanos-refugio-brasil-2026",
+      "titulo_tema": "Apagões e colapso econômico em Cuba elevam pedidos de refúgio no Brasil a patamar recorde",
+      "status": "em_alta",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Politica",
+      "categorias_cruzadas": [
+        "Geopolitica_Radar",
+        "Cultura"
+      ],
+      "rota_editoria": "/politica",
+      "relevancia_score": 82,
+      "ttl_horas": 96,
+      "expires_at": "2026-11-27T13:37:22Z",
+      "palavras_chave_busca": [
+        "refugiados cubanos",
+        "crise em cuba",
+        "obmigra",
+        "migracao brasil",
+        "ministerio da justica",
+        "politica migratoria"
+      ],
+      "gatilho_vitrine": "Analisar a capacidade de acolhimento institucional e razões geopolíticas do fluxo migratório",
+      "sintese_nerd": "O colapso no sistema elétrico de Havana e o desabastecimento em Cuba impulsionaram mais de 33 mil pedidos de refúgio de cubanos no Brasil em 2026, revelando o agravamento da crise socioeconômica na ilha. O fluxo permanente testa as políticas brasileiras de integração migratória e os compromissos diplomáticos na América Latina.",
+      "data_publicacao": "2026-11-23T13:37:22Z",
+      "updated_at": "2026-11-23T13:37:22Z"
+    }
+  ],
   "noticias_quentes": [
     {
       "slug": "pulso-1-20261123-1307",
-      "titulo_curto": "Bukele exporta seu modelo de combate ao crime para o atoleiro haitiano",
-      "resumo_pulso": "Segundo G1 Mundo, Presidente de El Salvador divulga vídeo de helicópteros bombardeando mansão no Haiti Em busca do terceiro mandato em El Salvador, Nayib Bukele tenta exportar seu modelo de combate à criminalidade para o vizinho Haiti, onde fracassaram todas as iniciativas anteriores para erradicar as gangues, responsáveis pela morte de 6 mil pessoas nos primeiros n.",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
       "categoria": "Geopolitica_Relacoes",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "urgencia_score": 90,
-      "relevancia_score": 88,
-      "nivel_confianca": "alta",
       "ttl_horas": 6,
-      "horas_em_destaque": 6,
-      "veiculos_origem": [
-        "G1 Mundo"
-      ],
+      "expires_at": "2026-11-23T19:07:42Z",
+      "updated_at": "2026-11-23T13:07:42Z",
       "fontes_urls": [
         "https://g1.globo.com/mundo/blog/sandra-cohen/post/2026/11/23/bukele-exporta-seu-modelo-de-combate-ao-crime-para-o-atoleiro-haitiano.ghtml"
       ],
+      "resumo_pulso": "Segundo G1 Mundo, Presidente de El Salvador divulga vídeo de helicópteros bombardeando mansão no Haiti Em busca do terceiro mandato em El Salvador, Nayib Bukele tenta exportar seu modelo de combate à criminalidade para o vizinho Haiti, onde fracassaram todas as iniciativas anteriores para erradicar as gangues, responsáveis pela morte de 6 mil pessoas nos primeiros n.",
+      "titulo_curto": "Bukele exporta seu modelo de combate ao crime para o atoleiro haitiano",
       "palavras_chave": [
         "radar",
         "tempo real",
         "br"
       ],
+      "urgencia_score": 90,
       "data_publicacao": "2026-11-23T13:00:18+00:00",
-      "links_internos_relacionados": [
-        {
-          "titulo_existente": "O que é inflação?",
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
-          "motivo_conexao": "Compreenda por que os preços sobem de forma generalizada, como o IPCA é calculado e de que maneira os juros do Banco Central afetam o poder de compra."
-        },
-        {
-          "titulo_existente": "Como funcionam as eleições nos EUA?",
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/como-funcionam-as-eleicoes-nos-eua",
-          "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos."
-        }
-      ],
-      "expires_at": "2026-11-23T19:07:42Z",
-      "updated_at": "2026-11-23T13:07:42Z"
-    },
-    {
-      "slug": "pulso-2-20261123-1307",
-      "titulo_curto": "Vídeo: CDH foi ao Rio de Janeiro acompanhar caso do menino desaparecido Edson Davi",
-      "resumo_pulso": "Segundo Agência Senado, Nesta sexta-feira (20), a Comissão de Direitos Humanos (CDH) esteve no Rio de Janeiro para acompanhar as investigações sobre o desaparecimento do menino Edson Davi, que aconteceu na Praia da Barra da Tijuca aos 6 anos de idade, em 2024. A presidente da CDH, senadora Damares Alves, se reuniu com familiares do menino e com parlamentares para acompanh.",
       "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "categoria": "Geopolitica_Relacoes",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "G1 Mundo"
+      ],
+      "relevancia_score": 88,
+      "horas_em_destaque": 6,
       "paises_envolvidos": [
         "BR"
       ],
-      "urgencia_score": 85,
-      "relevancia_score": 84,
-      "nivel_confianca": "alta",
+      "links_internos_relacionados": [
+        {
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
+          "motivo_conexao": "Compreenda por que os preços sobem de forma generalizada, como o IPCA é calculado e de que maneira os juros do Banco Central afetam o poder de compra.",
+          "titulo_existente": "O que é inflação?"
+        },
+        {
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/como-funcionam-as-eleicoes-nos-eua",
+          "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos.",
+          "titulo_existente": "Como funcionam as eleições nos EUA?"
+        }
+      ]
+    },
+    {
+      "slug": "pulso-2-20261123-1307",
+      "categoria": "Geopolitica_Relacoes",
       "ttl_horas": 6,
-      "horas_em_destaque": 6,
-      "veiculos_origem": [
-        "Agência Senado"
-      ],
+      "expires_at": "2026-11-23T19:07:42Z",
+      "updated_at": "2026-11-23T13:07:42Z",
       "fontes_urls": [
         "https://www12.senado.leg.br/noticias/videos/2026/11/cdh-foi-ao-rio-de-janeiro-acompanhar-caso-do-menino-desaparecido-edson-davi"
       ],
+      "resumo_pulso": "Segundo Agência Senado, Nesta sexta-feira (20), a Comissão de Direitos Humanos (CDH) esteve no Rio de Janeiro para acompanhar as investigações sobre o desaparecimento do menino Edson Davi, que aconteceu na Praia da Barra da Tijuca aos 6 anos de idade, em 2024. A presidente da CDH, senadora Damares Alves, se reuniu com familiares do menino e com parlamentares para acompanh.",
+      "titulo_curto": "Vídeo: CDH foi ao Rio de Janeiro acompanhar caso do menino desaparecido Edson Davi",
       "palavras_chave": [
         "radar",
         "tempo real",
         "br"
       ],
+      "urgencia_score": 85,
       "data_publicacao": "2026-11-23T12:47:31+00:00",
+      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Agência Senado"
+      ],
+      "relevancia_score": 84,
+      "horas_em_destaque": 6,
+      "paises_envolvidos": [
+        "BR"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "O que é inflação?",
           "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
-          "motivo_conexao": "Compreenda por que os preços sobem de forma generalizada, como o IPCA é calculado e de que maneira os juros do Banco Central afetam o poder de compra."
+          "motivo_conexao": "Compreenda por que os preços sobem de forma generalizada, como o IPCA é calculado e de que maneira os juros do Banco Central afetam o poder de compra.",
+          "titulo_existente": "O que é inflação?"
         },
         {
-          "titulo_existente": "Como funcionam as eleições nos EUA?",
           "url_existente": "https://www.rodandoomundo.com.br/entenda/como-funcionam-as-eleicoes-nos-eua",
-          "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos."
+          "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos.",
+          "titulo_existente": "Como funcionam as eleições nos EUA?"
         }
-      ],
-      "expires_at": "2026-11-23T19:07:42Z",
-      "updated_at": "2026-11-23T13:07:42Z"
+      ]
     },
     {
       "slug": "pulso-3-20261123-1307",
-      "titulo_curto": "Plano de Moretti é um 'primeiro passo', e governo Lula pode fazer outros ajustes fiscais no futuro, afirma Laura Carvalho",
-      "resumo_pulso": "Segundo BBC News Brasil, Professora da USP esteve na primeira reunião econômica pós-reeleição de Lula. Para ela, desgaste público da proposta do ministro do Planejamento poderia ter sido evitado com melhor comunicação..",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
       "categoria": "Geopolitica_Relacoes",
-      "paises_envolvidos": [
-        "GB"
-      ],
-      "urgencia_score": 80,
-      "relevancia_score": 80,
-      "nivel_confianca": "alta",
       "ttl_horas": 6,
-      "horas_em_destaque": 6,
-      "veiculos_origem": [
-        "BBC News Brasil"
-      ],
+      "expires_at": "2026-11-23T19:07:42Z",
+      "updated_at": "2026-11-23T13:07:42Z",
       "fontes_urls": [
         "https://www.bbc.com/portuguese/articles/cm1dvg9n5w2xo?at_medium=RSS&at_campaign=rss"
       ],
+      "resumo_pulso": "Segundo BBC News Brasil, Professora da USP esteve na primeira reunião econômica pós-reeleição de Lula. Para ela, desgaste público da proposta do ministro do Planejamento poderia ter sido evitado com melhor comunicação..",
+      "titulo_curto": "Plano de Moretti é um 'primeiro passo', e governo Lula pode fazer outros ajustes fiscais no futuro, afirma Laura Carvalho",
       "palavras_chave": [
         "radar",
         "tempo real",
         "gb"
       ],
+      "urgencia_score": 80,
       "data_publicacao": "2026-11-23T12:46:58+00:00",
+      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "BBC News Brasil"
+      ],
+      "relevancia_score": 80,
+      "horas_em_destaque": 6,
+      "paises_envolvidos": [
+        "GB"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "O que é inflação?",
           "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
-          "motivo_conexao": "Compreenda por que os preços sobem de forma generalizada, como o IPCA é calculado e de que maneira os juros do Banco Central afetam o poder de compra."
+          "motivo_conexao": "Compreenda por que os preços sobem de forma generalizada, como o IPCA é calculado e de que maneira os juros do Banco Central afetam o poder de compra.",
+          "titulo_existente": "O que é inflação?"
         },
         {
-          "titulo_existente": "Como funcionam as eleições nos EUA?",
           "url_existente": "https://www.rodandoomundo.com.br/entenda/como-funcionam-as-eleicoes-nos-eua",
-          "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos."
+          "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos.",
+          "titulo_existente": "Como funcionam as eleições nos EUA?"
         }
-      ],
-      "expires_at": "2026-11-23T19:07:42Z",
-      "updated_at": "2026-11-23T13:07:42Z"
+      ]
     },
     {
       "slug": "pulso-4-20261123-1307",
-      "titulo_curto": "O jogador de futebol argentino Paredes desmaia durante entrevista pós-jogo",
-      "resumo_pulso": "Segundo Al Jazeera English, O jogador de futebol argentino Leandro Paredes desmaiou durante uma entrevista pós-jogo após a vitória na Colômbia..",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
       "categoria": "Geopolitica_Relacoes",
-      "paises_envolvidos": [
-        "QA"
-      ],
-      "urgencia_score": 75,
-      "relevancia_score": 76,
-      "nivel_confianca": "alta",
       "ttl_horas": 6,
-      "horas_em_destaque": 6,
-      "veiculos_origem": [
-        "Al Jazeera English"
-      ],
+      "expires_at": "2026-11-23T19:07:42Z",
+      "updated_at": "2026-11-23T13:07:42Z",
       "fontes_urls": [
         "https://www.aljazeera.com/video/newsfeed/2026/11/23/argentina-footballer-paredes-collapses-during-post-match-interview?traffic_source=rss"
       ],
+      "resumo_pulso": "Segundo Al Jazeera English, O jogador de futebol argentino Leandro Paredes desmaiou durante uma entrevista pós-jogo após a vitória na Colômbia..",
+      "titulo_curto": "O jogador de futebol argentino Paredes desmaia durante entrevista pós-jogo",
       "palavras_chave": [
         "radar",
         "tempo real",
         "qa"
       ],
+      "urgencia_score": 75,
       "data_publicacao": "2026-11-23T12:40:21+00:00",
+      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Al Jazeera English"
+      ],
+      "relevancia_score": 76,
+      "horas_em_destaque": 6,
+      "paises_envolvidos": [
+        "QA"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "O que é inflação?",
           "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
-          "motivo_conexao": "Compreenda por que os preços sobem de forma generalizada, como o IPCA é calculado e de que maneira os juros do Banco Central afetam o poder de compra."
+          "motivo_conexao": "Compreenda por que os preços sobem de forma generalizada, como o IPCA é calculado e de que maneira os juros do Banco Central afetam o poder de compra.",
+          "titulo_existente": "O que é inflação?"
         },
         {
-          "titulo_existente": "Como funcionam as eleições nos EUA?",
           "url_existente": "https://www.rodandoomundo.com.br/entenda/como-funcionam-as-eleicoes-nos-eua",
-          "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos."
+          "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos.",
+          "titulo_existente": "Como funcionam as eleições nos EUA?"
         }
-      ],
-      "expires_at": "2026-11-23T19:07:42Z",
-      "updated_at": "2026-11-23T13:07:42Z"
+      ]
     },
     {
       "slug": "pulso-5-20261123-1307",
-      "titulo_curto": "Como os EUA, a China e a Rússia competem pela riqueza mineral de África",
-      "resumo_pulso": "Segundo Al Jazeera English, Os EUA, a China e a Rússia estão a competir pela riqueza mineral de África, levantando questões sobre quem irá beneficiar..",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
       "categoria": "Geopolitica_Relacoes",
+      "ttl_horas": 6,
+      "expires_at": "2026-11-23T19:07:42Z",
+      "updated_at": "2026-11-23T13:07:42Z",
+      "fontes_urls": [
+        "https://www.aljazeera.com/news/2026/11/23/how-the-us-china-and-russia-are-competing-for-africas-mineral-wealth?traffic_source=rss"
+      ],
+      "resumo_pulso": "Segundo Al Jazeera English, Os EUA, a China e a Rússia estão a competir pela riqueza mineral de África, levantando questões sobre quem irá beneficiar..",
+      "titulo_curto": "Como os EUA, a China e a Rússia competem pela riqueza mineral de África",
+      "palavras_chave": [
+        "radar",
+        "tempo real",
+        "qa"
+      ],
+      "urgencia_score": 70,
+      "data_publicacao": "2026-11-23T12:34:54+00:00",
+      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Al Jazeera English"
+      ],
+      "relevancia_score": 72,
+      "horas_em_destaque": 6,
       "paises_envolvidos": [
         "QA",
         "US"
       ],
-      "urgencia_score": 70,
-      "relevancia_score": 72,
-      "nivel_confianca": "alta",
-      "ttl_horas": 6,
-      "horas_em_destaque": 6,
-      "veiculos_origem": [
-        "Al Jazeera English"
-      ],
-      "fontes_urls": [
-        "https://www.aljazeera.com/news/2026/11/23/how-the-us-china-and-russia-are-competing-for-africas-mineral-wealth?traffic_source=rss"
-      ],
-      "palavras_chave": [
-        "radar",
-        "tempo real",
-        "qa"
-      ],
-      "data_publicacao": "2026-11-23T12:34:54+00:00",
       "links_internos_relacionados": [
         {
-          "titulo_existente": "O que é inflação?",
           "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
-          "motivo_conexao": "Compreenda por que os preços sobem de forma generalizada, como o IPCA é calculado e de que maneira os juros do Banco Central afetam o poder de compra."
+          "motivo_conexao": "Compreenda por que os preços sobem de forma generalizada, como o IPCA é calculado e de que maneira os juros do Banco Central afetam o poder de compra.",
+          "titulo_existente": "O que é inflação?"
         },
         {
-          "titulo_existente": "Como funcionam as eleições nos EUA?",
           "url_existente": "https://www.rodandoomundo.com.br/entenda/como-funcionam-as-eleicoes-nos-eua",
-          "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos."
+          "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos.",
+          "titulo_existente": "Como funcionam as eleições nos EUA?"
         }
-      ],
-      "expires_at": "2026-11-23T19:07:42Z",
-      "updated_at": "2026-11-23T13:07:42Z"
+      ]
     },
     {
       "slug": "escala-6x1-governo-publica-regras-trabalho",
@@ -1614,145 +1697,6 @@
           "motivo_conexao": "Relaciona as decisões de agências e forças federais dos Estados Unidos com o debate de governança e cumprimento de ordens judiciais.",
           "titulo_existente": "Política nos Estados Unidos"
         }
-      ]
-    }
-  ],
-  "temas_curadoria": [
-    {
-      "slug": "cop31-fracasso-impasse-combustiveis-fosseis-ue",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-25T10:44:14Z",
-      "updated_at": "2026-11-23T10:44:14Z",
-      "titulo_tema": "Fracasso da COP31: Impasse sobre Combustíveis Fósseis Divide Bloco Global",
-      "sintese_nerd": "O bloqueio promovido por países produtores de petróleo barrou a meta global de eliminação dos combustíveis fósseis na COP31, gerando forte rejeição da União Europeia. O impasse expõe a desconexão entre metas de descarbonização e os interesses geoeconômicos das potências energéticas, com impacto direto no mercado de commodities.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-23T10:44:14Z",
-      "gatilho_vitrine": "Destacar na Home o colapso das negociações climáticas e seus desdobramentos na matriz energética mundial",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 92,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Politica"
-      ],
-      "palavras_chave_busca": [
-        "cop31",
-        "combustiveis fosseis",
-        "transicao energetica",
-        "uniao europeia",
-        "arabia saudita",
-        "mudancas climaticas",
-        "acordo de paris"
-      ]
-    },
-    {
-      "slug": "meta-fiscal-2027-tensa-mercado-financeiro-lula",
-      "status": "novo",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-24T10:44:14Z",
-      "updated_at": "2026-11-23T10:44:14Z",
-      "titulo_tema": "Votação do Pacote Fiscal e Meta de 2027 Elevam Tensão Econômica no Brasil",
-      "sintese_nerd": "A tentativa de votação do ajuste fiscal na Câmara somada às declarações do Executivo contra o mercado elevaram o risco fiscal, levando o EWZ a despencar e o dólar a se aproximar de patamares críticos. A aposta da meta fiscal em premissas heterodoxas pressiona a curva de juros futuros e desafia a ancoragem das expectativas inflacionárias.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-23T10:44:14Z",
-      "gatilho_vitrine": "Impulsionar artigos explicativos sobre o impacto do pacote de ajuste fiscal e da taxa de câmbio no bolso do leitor",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 90,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Politica"
-      ],
-      "palavras_chave_busca": [
-        "meta fiscal 2027",
-        "pacote fiscal",
-        "dolar hoje",
-        "ewz",
-        "selic",
-        "lara resende",
-        "congresso nacional",
-        "mercado financeiro"
-      ]
-    },
-    {
-      "slug": "garantias-seguranca-ucrania-trump-kushner-otan",
-      "status": "novo",
-      "ttl_horas": 36,
-      "expires_at": "2026-11-24T22:44:14Z",
-      "updated_at": "2026-11-23T10:44:14Z",
-      "titulo_tema": "EUA Sinalizam Condições para Garantias de Segurança no Estilo OTAN à Ucrânia",
-      "sintese_nerd": "Intermediários da futura política externa norte-americana condicionaram o apoio a proteções equivalentes ao Artigo 5 da OTAN para Kiev ao estrito alinhamento com os interesses estratégicos de Washington. Essa postura pragmática altera a equação de forças no conflito contra a Rússia e força a Europa a reavaliar sua autonomia de defesa.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-23T10:44:14Z",
-      "gatilho_vitrine": "Fixar no Radar de Geopolítica para acompanhar os novos termos da diplomacia de Washington para o conflito leste-europeu",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 86,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Politica"
-      ],
-      "palavras_chave_busca": [
-        "ucrânia",
-        "eua",
-        "donald trump",
-        "artigo 5 otan",
-        "jared kushner",
-        "guerra da ucrânia",
-        "diplomacia de paz"
-      ]
-    },
-    {
-      "slug": "investigacao-espionagem-chinesa-nvidia-tecnologia",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-25T10:44:14Z",
-      "updated_at": "2026-11-23T10:44:14Z",
-      "titulo_tema": "Suspeita de Espionagem Chinesa Envolvendo a Nvidia Acirra Guerra Tecnológica",
-      "sintese_nerd": "Revelações sobre contatos de agentes de inteligência chineses com pessoas ligadas à cúpula da Nvidia intensificam o escrutínio de segurança sobre a indústria de microchips nos EUA. O episódio amplia o protecionismo tecnológico global e acelera a fragmentação das cadeias de suprimento de tecnologia de ponta.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-23T10:44:14Z",
-      "gatilho_vitrine": "Relacionar reportagem com o embate global pelo domínio da inteligência artificial e semicondutores",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 81,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Cultura",
-        "Economia"
-      ],
-      "palavras_chave_busca": [
-        "nvidia",
-        "espionagem chinesa",
-        "semicondutores",
-        "inteligencia artificial",
-        "eua vs china",
-        "seguranca cibernetica"
-      ]
-    },
-    {
-      "slug": "cgu-investiga-servidores-banco-central-caso-master",
-      "status": "novo",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-24T10:44:14Z",
-      "updated_at": "2026-11-23T10:44:14Z",
-      "titulo_tema": "CGU Apura Evolução Patrimonial de Servidores do Banco Central após Caso Master",
-      "sintese_nerd": "A Controladoria-Geral da União abriu apurações sobre variações patrimoniais atípicas de servidores do BC após o afastamento de funcionários ligados a investigados no setor bancário. O caso reacende o debate sobre governança institucional e exigências de integridade nos órgãos de fiscalização do sistema financeiro.",
-      "rota_editoria": "/politica",
-      "data_publicacao": "2026-11-23T10:44:14Z",
-      "gatilho_vitrine": "Exibir na editoria de Política as investigações de compliance nas instituições reguladoras federais",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 78,
-      "categoria_primaria": "Politica",
-      "categorias_cruzadas": [
-        "Economia"
-      ],
-      "palavras_chave_busca": [
-        "banco central",
-        "cgu",
-        "banco master",
-        "investigacao bc",
-        "servidores públicos",
-        "vorcaro",
-        "compliance financeiro"
       ]
     }
   ]
