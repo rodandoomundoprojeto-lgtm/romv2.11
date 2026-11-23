@@ -2,143 +2,325 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-23T07:51:45Z",
-  "batch_id": "20261123-0751",
+  "updatedAt": "2026-11-23T09:18:15Z",
+  "batch_id": "20261123-0917",
   "temas_ativos": [
     {
-      "slug": "queda-acoes-tecnologia-eua-bolsas-globais-ia",
-      "titulo_tema": "Pior Semana Tech nos EUA desde a Pandemia Pressiona Bolsas e Alimenta Temor de Bolha em Inteligência Artificial",
-      "status": "em_alta",
+      "slug": "camara-dos-deputados-pauta-ajuste-fiscal-e-pautas-sociais",
+      "titulo_tema": "Câmara dos Deputados define pauta de votações da semana com foco em ajuste fiscal e segurança",
+      "titulo_curto": "Câmara dos Deputados define pauta de votações da semana com foco em ajuste fiscal e segurança",
+      "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categoria": "Geopolitica_Relacoes",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 91,
+      "urgencia_score": 89,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-24T09:18:15Z",
+      "palavras_chave_busca": [
+        "câmara dos deputados",
+        "congresso",
+        "ajuste fiscal",
+        "política"
+      ],
+      "palavras_chave": [
+        "câmara dos deputados",
+        "congresso",
+        "ajuste fiscal",
+        "política"
+      ],
+      "gatilho_vitrine": "Segundo levantamento do Poder360, a Câmara dos Deputados inicia os trabalhos desta segunda-feira analisando a pauta de votações prioritárias, que inclui o projeto de ajuste fiscal, medidas de reparação histórica, reforço no monitoramento de agressores e propostas de combate ao racismo nas escolas. A articulação busca destravar votações cruciais para o Executivo.",
+      "resumo_pulso": "Segundo levantamento do Poder360, a Câmara dos Deputados inicia os trabalhos desta segunda-feira analisando a pauta de votações prioritárias, que inclui o projeto de ajuste fiscal, medidas de reparação histórica, reforço no monitoramento de agressores e propostas de combate ao racismo nas escolas. A articulação busca destravar votações cruciais para o Executivo.",
+      "sintese_nerd": "Define o andamento de pautas legislativas de impacto orçamentário e social direto para a população brasileira.",
+      "impacto_pratico": "Define o andamento de pautas legislativas de impacto orçamentário e social direto para a população brasileira.",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "veiculos_origem": [
+        "Poder360"
+      ],
+      "fontes_urls": [
+        "https://www.poder360.com.br/poder-congresso/saiba-quais-acoes-estao-na-pauta-da-camara-nesta-2a-feira/"
+      ],
+      "data_publicacao": "2026-11-23T09:15:52Z",
+      "updated_at": "2026-11-23T09:18:15Z"
+    },
+    {
+      "slug": "ucrania-afunda-corveta-russa-ataque-drones-costa-libia",
+      "titulo_tema": "Ucrânia atinge e afunda corveta russa em ataque coordenado de drones na costa da Líbia",
+      "titulo_curto": "Ucrânia atinge e afunda corveta russa em ataque coordenado de drones na costa da Líbia",
+      "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categoria": "Geopolitica_Relacoes",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 95,
+      "urgencia_score": 96,
+      "ttl_horas": 18,
+      "expires_at": "2026-11-24T03:18:15Z",
+      "palavras_chave_busca": [
+        "ucrânia",
+        "rússia",
+        "marinha",
+        "líbia",
+        "drones"
+      ],
+      "palavras_chave": [
+        "ucrânia",
+        "rússia",
+        "marinha",
+        "líbia",
+        "drones"
+      ],
+      "gatilho_vitrine": "Segundo apuração do The Kyiv Independent, forças ucranianas conduziram uma operação secreta bem-sucedida que culminou no afundamento de uma corveta da Marinha Russa em águas próximas à costa da Líbia. A ação militar demonstra a expansão das frentes de combate e da campanha de sabotagem de ativos logísticos russos para fora do Mar Negro.",
+      "resumo_pulso": "Segundo apuração do The Kyiv Independent, forças ucranianas conduziram uma operação secreta bem-sucedida que culminou no afundamento de uma corveta da Marinha Russa em águas próximas à costa da Líbia. A ação militar demonstra a expansão das frentes de combate e da campanha de sabotagem de ativos logísticos russos para fora do Mar Negro.",
+      "sintese_nerd": "Altera o panorama estratégico de segurança marítima internacional e eleva o nível de atrito geopolítico em rotas comerciais do norte da África.",
+      "impacto_pratico": "Altera o panorama estratégico de segurança marítima internacional e eleva o nível de atrito geopolítico em rotas comerciais do norte da África.",
+      "paises_envolvidos": [
+        "UA",
+        "RU",
+        "LY"
+      ],
+      "veiculos_origem": [
+        "The Kyiv Independent"
+      ],
+      "fontes_urls": [
+        "https://kyivindependent.com/no-safe-routes-ukraine-sinks-russian-corvette-in-drone-attack-off-libyan-coast/"
+      ],
+      "data_publicacao": "2026-11-23T08:59:28Z",
+      "updated_at": "2026-11-23T09:18:15Z"
+    },
+    {
+      "slug": "plano-moretti-primeiro-passo-ajustes-fiscais-futuros",
+      "titulo_tema": "Governo Lula precisará adotar novos ajustes fiscais no futuro, avalia economista Laura Carvalho",
+      "titulo_curto": "Governo Lula precisará adotar novos ajustes fiscais no futuro, avalia economista Laura Carvalho",
+      "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Economia",
+      "categoria": "Economia_Comercio",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 92,
+      "urgencia_score": 90,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-24T09:18:15Z",
+      "palavras_chave_busca": [
+        "ajuste fiscal",
+        "governo federal",
+        "economia",
+        "contas públicas"
+      ],
+      "palavras_chave": [
+        "ajuste fiscal",
+        "governo federal",
+        "economia",
+        "contas públicas"
+      ],
+      "gatilho_vitrine": "Conforme entrevista da professora da USP Laura Carvalho repercutida pela BBC News Brasil, o pacote de ajuste fiscal apresentado pelo ministro do Planejamento representa apenas um 'primeiro passo'. Para a especialista, o governo federal deverá implementar medidas adicionais de controle de gastos e o desgaste público inicial poderia ter sido atenuado com melhor comunicação oficial.",
+      "resumo_pulso": "Conforme entrevista da professora da USP Laura Carvalho repercutida pela BBC News Brasil, o pacote de ajuste fiscal apresentado pelo ministro do Planejamento representa apenas um 'primeiro passo'. Para a especialista, o governo federal deverá implementar medidas adicionais de controle de gastos e o desgaste público inicial poderia ter sido atenuado com melhor comunicação oficial.",
+      "sintese_nerd": "Ajusta as expectativas de agentes econômicos e analistas sobre a trajetória das contas públicas e a sustentabilidade do arcabouço fiscal nos próximos anos.",
+      "impacto_pratico": "Ajusta as expectativas de agentes econômicos e analistas sobre a trajetória das contas públicas e a sustentabilidade do arcabouço fiscal nos próximos anos.",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "veiculos_origem": [
+        "BBC News Brasil"
+      ],
+      "fontes_urls": [
+        "https://www.bbc.com/portuguese/articles/cm1dvg9n5w2xo?at_medium=RSS&at_campaign=rss"
+      ],
+      "data_publicacao": "2026-11-23T08:55:34Z",
+      "updated_at": "2026-11-23T09:18:15Z"
+    },
+    {
+      "slug": "estrangeiros-reforcam-compras-dolar-futuro-pressao-real",
+      "titulo_tema": "Investidores estrangeiros intensificam compras de dólar futuro e mantêm forte pressão sobre o real",
+      "titulo_curto": "Investidores estrangeiros intensificam compras de dólar futuro e mantêm forte pressão sobre o real",
+      "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Economia",
+      "categoria": "Economia_Comercio",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 94,
+      "urgencia_score": 92,
+      "ttl_horas": 12,
+      "expires_at": "2026-11-23T21:18:15Z",
+      "palavras_chave_busca": [
+        "dólar",
+        "câmbio",
+        "banco central",
+        "mercado financeiro"
+      ],
+      "palavras_chave": [
+        "dólar",
+        "câmbio",
+        "banco central",
+        "mercado financeiro"
+      ],
+      "gatilho_vitrine": "Conforme análise do InfoMoney Mercados, investidores estrangeiros reforçaram posições compradoras em contratos de dólar futuro, elevando a cotação e mantendo o real sob intensa pressão compradora. O movimento é sustentado por apreensões persistentes em relação aos fundamentos fiscais brasileiros e à sólida valorização global da moeda norte-americana, apesar das intervenções do Banco Central.",
+      "resumo_pulso": "Conforme análise do InfoMoney Mercados, investidores estrangeiros reforçaram posições compradoras em contratos de dólar futuro, elevando a cotação e mantendo o real sob intensa pressão compradora. O movimento é sustentado por apreensões persistentes em relação aos fundamentos fiscais brasileiros e à sólida valorização global da moeda norte-americana, apesar das intervenções do Banco Central.",
+      "sintese_nerd": "Aumenta a volatilidade no câmbio doméstico e encarece transações atreladas à cotação do dólar para importadores e viajantes.",
+      "impacto_pratico": "Aumenta a volatilidade no câmbio doméstico e encarece transações atreladas à cotação do dólar para importadores e viajantes.",
+      "paises_envolvidos": [
+        "BR",
+        "US"
+      ],
+      "veiculos_origem": [
+        "InfoMoney Mercados"
+      ],
+      "fontes_urls": [
+        "https://www.infomoney.com.br/mercados/estrangeiros-compras-dolar-futuro-pressao-real/"
+      ],
+      "data_publicacao": "2026-11-23T08:15:00Z",
+      "updated_at": "2026-11-23T09:18:15Z"
+    },
+    {
+      "slug": "risco-estagflacao-brasil-ajuste-fiscal-2027",
+      "status": "novo",
+      "ttl_horas": 72,
+      "expires_at": "2026-11-26T08:12:44Z",
+      "updated_at": "2026-11-23T08:12:44Z",
+      "titulo_tema": "Risco de Estagflação e Impasse no Ajuste Fiscal Brasileiro",
+      "sintese_nerd": "A demora na definição de metas fiscais sólidas leva bancos globais a alertarem para o risco de estagflação no Brasil até 2027. Em resposta, lideranças do Congresso defendem revisões constitucionais orçamentárias para equilibrar as contas sem sacrificar programas sociais.",
+      "rota_editoria": "/economia",
+      "data_publicacao": "2026-11-23T08:12:44Z",
+      "gatilho_vitrine": "Exibir análise de risco fiscal e recomendações de proteção patrimonial para investidores brasileiros",
       "origem_pipeline": "curadoria",
+      "relevancia_score": 92,
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Politica",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "estagflacao",
+        "ajuste fiscal",
+        "eduardo braga",
+        "ubs brasil",
+        "orcamento 2027",
+        "inflacao e juros",
+        "ntn-b"
+      ]
+    },
+    {
+      "slug": "queda-acoes-tecnologia-eua-bolha-ia",
+      "status": "novo",
+      "ttl_horas": 48,
+      "expires_at": "2026-11-25T08:12:44Z",
+      "updated_at": "2026-11-23T08:12:44Z",
+      "titulo_tema": "Correção no Setor de Tecnologia dos EUA e Incertezas sobre IA",
+      "sintese_nerd": "O índice Nasdaq 100 registra sua pior semana desde a pandemia com investidores questionando o retorno financeiro imediato dos massivos aportes em inteligência artificial. O movimento reflete no apetite por risco global e amplia a volatilidade em bolsas emergentes como a B3.",
+      "rota_editoria": "/economia",
+      "data_publicacao": "2026-11-23T08:12:44Z",
+      "gatilho_vitrine": "Destacar a instabilidade nos mercados globais impulsionada pela revisão de expectativas no setor de tecnologia",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 88,
       "categoria_primaria": "Economia",
       "categorias_cruzadas": [
         "Geopolitica_Radar",
         "Cultura"
       ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 92,
-      "ttl_horas": 48,
-      "expires_at": "2026-11-25T07:51:45Z",
       "palavras_chave_busca": [
         "nasdaq 100",
-        "ações de tecnologia",
-        "bolha de inteligência artificial",
-        "mercado de ações eua",
-        "b3 dólar",
-        "investimento em ia"
-      ],
-      "gatilho_vitrine": "Filtrar análises sobre retração no setor de tecnologia norte-americano e reflexos no mercado acionário e no dólar no Brasil.",
-      "sintese_nerd": "A forte correção de mais de dez por cento no Nasdaq expõe o ceticismo dos investidores em relação aos prazos de retorno dos massivos investimentos em IA generativa. Esse movimento global de aversão ao risco pressiona o câmbio em emergentes como o Brasil e aumenta a volatilidade na B3.",
-      "data_publicacao": "2026-11-23T07:51:45Z",
-      "updated_at": "2026-11-23T07:51:45Z"
+        "acoes de tecnologia",
+        "bolha ia",
+        "mercado de baixa",
+        "wall street",
+        "investimentos tecnologia"
+      ]
     },
     {
-      "slug": "eduardo-braga-pec-ajuste-fiscal-orcamento-brasil",
-      "titulo_tema": "Relator do Orçamento Defende Alteração Constitucional para Garantir Novo Ajuste Fiscal",
+      "slug": "ataques-drones-ucrania-navios-russos-libia",
       "status": "novo",
+      "ttl_horas": 48,
+      "expires_at": "2026-11-25T08:12:44Z",
+      "updated_at": "2026-11-23T08:12:44Z",
+      "titulo_tema": "Internacionalização do Conflito: Ucrânia Reivindica Ataques a Navios Russos na Líbia",
+      "sintese_nerd": "A afirmação do governo ucraniano de ter executado ataques com drones contra embarcações russas na costa líbia evidencia a projeção global da guerra. A ação amplia o alcance das hostilidades para a bacia do Mediterrâneo e afeta rotas logísticas estratégicas.",
+      "rota_editoria": "/radar",
+      "data_publicacao": "2026-11-23T08:12:44Z",
+      "gatilho_vitrine": "Mapear a expansão geográfica das operações ucranianas fora do front europeu",
       "origem_pipeline": "curadoria",
-      "categoria_primaria": "Politica",
-      "categorias_cruzadas": [
-        "Economia"
-      ],
-      "rota_editoria": "/politica",
-      "relevancia_score": 89,
-      "ttl_horas": 72,
-      "expires_at": "2026-11-26T07:51:45Z",
-      "palavras_chave_busca": [
-        "eduardo braga",
-        "orçamento 2027",
-        "ajuste fiscal",
-        "pec fiscal",
-        "congresso nacional",
-        "arcabouço fiscal",
-        "despesas públicas"
-      ],
-      "gatilho_vitrine": "Vincular artigos sobre reestruturação de gastos públicos, negociação orçamentária no Congresso e governabilidade.",
-      "sintese_nerd": "A proposta de alteração constitucional pelo relator do Orçamento busca acomodar metas fiscais e promessas políticas sem paralisar investimentos vitais. O movimento expõe o impasse estrutural entre a rigidez dos gastos obrigatórios e a sustentabilidade das contas públicas federais.",
-      "data_publicacao": "2026-11-23T07:51:45Z",
-      "updated_at": "2026-11-23T07:51:45Z"
-    },
-    {
-      "slug": "guerra-ucrania-explosao-navio-russo-libia-drones",
-      "titulo_tema": "Escalação da Guerra na Ucrânia e Incidente com Navio Russo na Líbia Ampliam Tensão Geopolítica",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
+      "relevancia_score": 86,
       "categoria_primaria": "Geopolitica_Radar",
       "categorias_cruzadas": [
-        "Politica",
-        "Economia"
+        "Resumo_Ultimas"
       ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 86,
-      "ttl_horas": 36,
-      "expires_at": "2026-11-24T19:51:45Z",
       "palavras_chave_busca": [
-        "guerra na ucrânia",
-        "navio de guerra russo",
-        "porto de benghazi líbia",
-        "ataques de drones",
-        "ofensiva em pokrovsk",
-        "conflito rússia otan"
-      ],
-      "gatilho_vitrine": "Mapear matérias de cobertura de conflitos armados internacionais e desdobramentos navais no Mediterrâneo.",
-      "sintese_nerd": "O aumento expressivo de combates na Ucrânia somado à destruição de uma corveta russa na Líbia sinaliza o transbordamento da presença militar de Moscou para fora do teatro europeu. A dinâmica pressiona o mercado global de energia e acentua o atrito diplomático entre potências geopolíticas.",
-      "data_publicacao": "2026-11-23T07:51:45Z",
-      "updated_at": "2026-11-23T07:51:45Z"
+        "guerra ucrania russia",
+        "drones libia",
+        "zelensky",
+        "marinha russa",
+        "geopolitica mediterraneo",
+        "conflito internacional"
+      ]
     },
     {
-      "slug": "eleicoes-espanha-alberto-feijoo-conservadores-europa",
-      "titulo_tema": "Espanha Entra em Reta Final Eleitoral com Foco na Ascensão Conservadora de Alberto Feijóo",
+      "slug": "regulamentacao-mp-bets-saude-publica-brasil",
       "status": "novo",
+      "ttl_horas": 72,
+      "expires_at": "2026-11-26T08:12:44Z",
+      "updated_at": "2026-11-23T08:12:44Z",
+      "titulo_tema": "Impacto das Apostas Eletrônicas na Saúde Pública e Regulação das Bets",
+      "sintese_nerd": "Debates no STF e alterações na MP das Bets acentuam a divergência entre a arrecadação fiscal e as despesas públicas de saúde decorrentes da ludopatia. A discussão exige equilíbrio entre regulação econômica estrita e medidas efetivas de proteção ao consumidor.",
+      "rota_editoria": "/politica",
+      "data_publicacao": "2026-11-23T08:12:44Z",
+      "gatilho_vitrine": "Vincular as sessões legislativas e judiciais aos reflexos socioeconômicos do vício em apostas",
       "origem_pipeline": "curadoria",
-      "categoria_primaria": "Eleicoes",
-      "categorias_cruzadas": [
-        "Geopolitica_Radar",
-        "Politica"
-      ],
-      "rota_editoria": "/eleicoes",
-      "relevancia_score": 82,
-      "ttl_horas": 96,
-      "expires_at": "2026-11-27T07:51:45Z",
-      "palavras_chave_busca": [
-        "eleições na espanha",
-        "alberto feijóo",
-        "partido popular espanhol",
-        "política europeia",
-        "união europeia",
-        "sistema eleitoral espanha"
-      ],
-      "gatilho_vitrine": "Agrupar relatórios sobre corridas eleitorais europeias e alinhamentos geopolíticos no bloco europeu.",
-      "sintese_nerd": "A disputa pelo governo espanhol coloca à prova a capacidade da centro-direita em consolidar maiorias em meio à polarização no continente. O resultado na quarta maior economia da Zona do Euro impactará diretamente as políticas de migração e a coesão interna da União Europeia.",
-      "data_publicacao": "2026-11-23T07:51:45Z",
-      "updated_at": "2026-11-23T07:51:45Z"
-    },
-    {
-      "slug": "mp-das-bets-stf-saude-publica-regulacao",
-      "titulo_tema": "Julgamento no STF e MP das Bets Colocam Impactos na Saúde Pública no Centro do Debate",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
+      "relevancia_score": 79,
       "categoria_primaria": "Politica",
       "categorias_cruzadas": [
         "Economia",
         "Cultura"
       ],
-      "rota_editoria": "/politica",
-      "relevancia_score": 80,
-      "ttl_horas": 48,
-      "expires_at": "2026-11-25T07:51:45Z",
       "palavras_chave_busca": [
         "mp das bets",
-        "stf apostas online",
-        "saúde pública bets",
-        "regulacao de apostas",
-        "vício em jogos ludopatia",
-        "impacto econômico bets"
+        "regulamentacao apostas",
+        "saude publica stf",
+        "ludopatia brasil",
+        "mercado de apostas online"
+      ]
+    },
+    {
+      "slug": "brasil-ranking-global-felicidade-trabalho",
+      "status": "novo",
+      "ttl_horas": 96,
+      "expires_at": "2026-11-27T08:12:44Z",
+      "updated_at": "2026-11-23T08:12:44Z",
+      "titulo_tema": "Brasil Ocupa a 4ª Posição em Ranking Global de Felicidade no Trabalho",
+      "sintese_nerd": "Pesquisa global aponta que o Brasil supera nações desenvolvidas no índice de satisfação profissional, impulsionado por conexões interpessoais no ambiente de trabalho. O estudo traz insights sobre a relação entre clima organizacional, engajamento e produtividade no país.",
+      "rota_editoria": "/cultura",
+      "data_publicacao": "2026-11-23T08:12:44Z",
+      "gatilho_vitrine": "Explicar os fatores socioculturais que posicionam os trabalhadores brasileiros no topo da satisfação profissional",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 74,
+      "categoria_primaria": "Cultura",
+      "categorias_cruzadas": [
+        "Economia"
       ],
-      "gatilho_vitrine": "Selecionar reportagens sobre regulamentação financeira de plataformas de apostas e custos sociais no Brasil.",
-      "sintese_nerd": "A discussão em curso no Judiciário e no Legislativo evidencia a sobreposição da arrecadação tributária às consequências de saúde mental e endividamento das famílias. A indefinição regulatória gera insegurança jurídica e demanda limites mais rígidos na publicidade e concessão de crédito.",
-      "data_publicacao": "2026-11-23T07:51:45Z",
-      "updated_at": "2026-11-23T07:51:45Z"
+      "palavras_chave_busca": [
+        "felicidade no trabalho",
+        "ambiente corporativo brasil",
+        "pesquisa ticket happyforce",
+        "mercado de trabalho",
+        "relacionamento profissional"
+      ]
     },
     {
       "slug": "governo-publica-saida-jose-guimaraes-relacoes-institucionais",
@@ -187,97 +369,50 @@
     },
     {
       "slug": "acoes-tecnologia-eua-pior-semana-desde-pandemia",
+      "titulo_tema": "Ações de tecnologia dos EUA iniciam recuperação nos futuros após pior semana desde a pandemia",
+      "titulo_curto": "Ações de tecnologia dos EUA iniciam recuperação nos futuros após pior semana desde a pandemia",
       "status": "novo",
-      "categoria": "Economia_Comercio",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-24T07:34:54Z",
-      "updated_at": "2026-11-23T07:34:54Z",
-      "fontes_urls": [
-        "https://www.poder360.com.br/poder-economia/acoes-de-tecnologia-dos-eua-tem-pior-semana-desde-a-pandemia/"
-      ],
-      "titulo_tema": "Ações de tecnologia dos EUA registram a pior semana desde a pandemia com temores sobre IA",
-      "resumo_pulso": "Segundo dados do Poder360, o índice Nasdaq 100 despencou 10,4% na última semana e entrou em mercado de baixa. O recuo acentuado é impulsionado por crescentes receios de investidores em relação à sustentabilidade dos investimentos em inteligência artificial.",
-      "sintese_nerd": "Gera volatilidade nos mercados globais e cautela entre investidores de ativos de tecnologia.",
-      "titulo_curto": "Ações de tecnologia dos EUA registram a pior semana desde a pandemia com temores sobre IA",
-      "rota_editoria": "/economia",
-      "palavras_chave": [
-        "nasdaq",
-        "tecnologia",
-        "eua",
-        "inteligência artificial",
-        "mercado financeiro"
-      ],
-      "urgencia_score": 90,
-      "data_publicacao": "2026-11-23T06:41:04Z",
-      "gatilho_vitrine": "Segundo dados do Poder360, o índice Nasdaq 100 despencou 10,4% na última semana e entrou em mercado de baixa. O recuo acentuado é impulsionado por crescentes receios de investidores em relação à sustentabilidade dos investimentos em inteligência artificial.",
-      "impacto_pratico": "Gera volatilidade nos mercados globais e cautela entre investidores de ativos de tecnologia.",
       "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "Poder360"
-      ],
-      "relevancia_score": 92,
-      "paises_envolvidos": [
-        "US"
-      ],
       "categoria_primaria": "Economia",
+      "categoria": "Economia_Comercio",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
       ],
-      "palavras_chave_busca": [
-        "nasdaq",
-        "tecnologia",
-        "eua",
-        "inteligência artificial",
-        "mercado financeiro"
-      ]
-    },
-    {
-      "slug": "brasil-4-lugar-ranking-global-felicidade-trabalho",
-      "status": "novo",
-      "categoria": "Sociedade_Cultura",
+      "rota_editoria": "/economia",
+      "relevancia_score": 93,
+      "urgencia_score": 91,
       "ttl_horas": 24,
       "expires_at": "2026-11-24T07:34:54Z",
-      "updated_at": "2026-11-23T07:34:54Z",
-      "fontes_urls": [
-        "https://g1.globo.com/trabalho-e-carreira/noticia/2026/11/23/brasil-e-o-4o-mais-feliz-do-mundo-no-trabalho-veja-ranking-e-por-que-o-pais-supera-nacoes-mais-ricas.ghtml"
+      "palavras_chave_busca": [
+        "nasdaq",
+        "inteligência artificial",
+        "bolsa de nova york",
+        "tecnologia"
       ],
-      "titulo_tema": "Brasil conquista a 4ª posição no ranking global de felicidade no trabalho",
-      "resumo_pulso": "Conforme levantamento da Ticket em parceria com a Happyforce divulgado pelo G1, o Brasil ocupa o quarto lugar no Índice Global de Alegria no Trabalho. O país superou grandes economias como Estados Unidos, Alemanha e Japão na percepção dos trabalhadores.",
-      "sintese_nerd": "Aponta diferenciais culturais e de clima organizacional no ambiente corporativo brasileiro.",
-      "titulo_curto": "Brasil conquista a 4ª posição no ranking global de felicidade no trabalho",
-      "rota_editoria": "/cultura",
       "palavras_chave": [
-        "trabalho",
-        "felicidade",
-        "brasil",
-        "economia",
-        "ranking global"
+        "nasdaq",
+        "inteligência artificial",
+        "bolsa de nova york",
+        "tecnologia"
       ],
-      "urgencia_score": 80,
-      "data_publicacao": "2026-11-23T06:00:00Z",
-      "gatilho_vitrine": "Conforme levantamento da Ticket em parceria com a Happyforce divulgado pelo G1, o Brasil ocupa o quarto lugar no Índice Global de Alegria no Trabalho. O país superou grandes economias como Estados Unidos, Alemanha e Japão na percepção dos trabalhadores.",
-      "impacto_pratico": "Aponta diferenciais culturais e de clima organizacional no ambiente corporativo brasileiro.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "G1 Economia"
-      ],
-      "relevancia_score": 85,
+      "gatilho_vitrine": "Segundo apuração do InfoMoney e dados do mercado internacional, os contratos futuros de Nova York operam em alta nesta segunda-feira, buscando uma recuperação após o índice Nasdaq 100 registrar sua pior semana desde a pandemia. O movimento ocorre em meio à persistência de receios de investidores quanto à sustentabilidade dos elevados investimentos e aportes na cadeia de inteligência artificial.",
+      "resumo_pulso": "Segundo apuração do InfoMoney e dados do mercado internacional, os contratos futuros de Nova York operam em alta nesta segunda-feira, buscando uma recuperação após o índice Nasdaq 100 registrar sua pior semana desde a pandemia. O movimento ocorre em meio à persistência de receios de investidores quanto à sustentabilidade dos elevados investimentos e aportes na cadeia de inteligência artificial.",
+      "sintese_nerd": "Investidores de tecnologia e mercados globais monitoram a volatilidade das bolsas internacionais, que afeta diretamente o apetite ao risco e repercute nos ativos de países emergentes.",
+      "impacto_pratico": "Investidores de tecnologia e mercados globais monitoram a volatilidade das bolsas internacionais, que afeta diretamente o apetite ao risco e repercute nos ativos de países emergentes.",
       "paises_envolvidos": [
+        "US",
         "BR"
       ],
-      "categoria_primaria": "Cultura",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
+      "veiculos_origem": [
+        "InfoMoney Mercados",
+        "Poder360"
       ],
-      "palavras_chave_busca": [
-        "trabalho",
-        "felicidade",
-        "brasil",
-        "economia",
-        "ranking global"
-      ]
+      "fontes_urls": [
+        "https://www.infomoney.com.br/mercados/futuros-de-ny-sobem-apos-liquidacao-de-acoes-de-tecnologia-na-semana-passada/"
+      ],
+      "data_publicacao": "2026-11-23T06:41:04Z",
+      "updated_at": "2026-11-23T09:18:15Z"
     },
     {
       "slug": "cientistas-cultivam-batatas-em-solo-simulado-da-lua",
@@ -703,290 +838,161 @@
         "moeda",
         "economia"
       ]
-    },
-    {
-      "slug": "premie-espanha-critica-trump-bolsonaro-milei",
-      "status": "novo",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-23T23:36:25Z",
-      "updated_at": "2026-11-22T23:38:00Z",
-      "fontes_urls": [
-        "https://www.poder360.com.br/poder-internacional/premie-espanha-critica-trump-bolsonaro-e-milei-em-ato-de-campanha/"
-      ],
-      "titulo_tema": "Primeiro-ministro da Espanha classifica Trump, Bolsonaro e Milei como integrantes da extrema direita",
-      "resumo_pulso": "Conforme reportagem do Poder360, o premiê espanhol Pedro Sánchez criticou severamente Donald Trump, Jair Bolsonaro e Javier Milei durante ato político, apontando que o grupo representa um retrocesso associado à extrema direita global.",
-      "sintese_nerd": "Atritos diplomáticos e realinhamento de discursos políticos entre governos da Europa e da América Latina.",
-      "titulo_curto": "Primeiro-ministro da Espanha classifica Trump, Bolsonaro e Milei como integrantes da extrema direita",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "pedro sánchez",
-        "espanha",
-        "extrema direita",
-        "geopolítica"
-      ],
-      "urgencia_score": 85,
-      "data_publicacao": "2026-11-22T23:30:59Z",
-      "gatilho_vitrine": "Conforme reportagem do Poder360, o premiê espanhol Pedro Sánchez criticou severamente Donald Trump, Jair Bolsonaro e Javier Milei durante ato político, apontando que o grupo representa um retrocesso associado à extrema direita global.",
-      "impacto_pratico": "Atritos diplomáticos e realinhamento de discursos políticos entre governos da Europa e da América Latina.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "Poder360"
-      ],
-      "relevancia_score": 88,
-      "paises_envolvidos": [
-        "ES",
-        "US",
-        "BR",
-        "AR"
-      ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "pedro sánchez",
-        "espanha",
-        "extrema direita",
-        "geopolítica"
-      ]
-    },
-    {
-      "slug": "polish-authorities-find-russian-missile-remains-at-three-sites",
-      "status": "novo",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 18,
-      "expires_at": "2026-11-23T17:36:25Z",
-      "updated_at": "2026-11-23T02:18:29Z",
-      "fontes_urls": [
-        "https://www.aljazeera.com/news/2026/11/23/poland-says-russia-tried-to-assassinate-ukrainian-rapper-twice?traffic_source=rss",
-        "https://kyivindependent.com/polish-authorities-find-russian-missile-remains-at-three-sites-following-airspace-incursion/"
-      ],
-      "titulo_tema": "Polônia confirma vestígios de mísseis russos e apura tentativas de atentados contra dissidentes na Europa",
-      "resumo_pulso": "Segundo informações da Al Jazeera e do The Kyiv Independent, autoridades polonesas confirmaram a descoberta de fragmentos de mísseis russos Kh-101 em três localidades do leste do país após incursão aérea. Em paralelo, Varsóvia revelou investigações sobre planos de atentados direcionados a figuras dissidentes.",
-      "sintese_nerd": "Aumento da tensão de segurança nas fronteiras orientais da União Europeia e intensificação de medidas defensivas da OTAN.",
-      "titulo_curto": "Polônia confirma vestígios de mísseis russos e apura tentativas de atentados contra dissidentes na Europa",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "polônia",
-        "rússia",
-        "mísseis",
-        "segurança",
-        "otan"
-      ],
-      "urgencia_score": 96,
-      "data_publicacao": "2026-11-22T23:26:30Z",
-      "gatilho_vitrine": "Segundo informações da Al Jazeera e do The Kyiv Independent, autoridades polonesas confirmaram a descoberta de fragmentos de mísseis russos Kh-101 em três localidades do leste do país após incursão aérea. Em paralelo, Varsóvia revelou investigações sobre planos de atentados direcionados a figuras dissidentes.",
-      "impacto_pratico": "Aumento da tensão de segurança nas fronteiras orientais da União Europeia e intensificação de medidas defensivas da OTAN.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "Al Jazeera English",
-        "The Kyiv Independent"
-      ],
-      "relevancia_score": 95,
-      "paises_envolvidos": [
-        "PL",
-        "RU",
-        "UA"
-      ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "polônia",
-        "rússia",
-        "mísseis",
-        "segurança",
-        "otan"
-      ]
-    },
-    {
-      "slug": "ministro-educacao-coreia-do-sul-renuncia-fraudes-exames",
-      "status": "novo",
-      "categoria": "Sociedade_Cultura",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-23T22:39:18Z",
-      "updated_at": "2026-11-22T23:12:33Z",
-      "fontes_urls": [
-        "https://www.poder360.com.br/poder-internacional/ministro-da-educacao-da-coreia-do-sul-renuncia-apos-fraudes-em-exames/"
-      ],
-      "titulo_tema": "Ministro da Educação da Coreia do Sul renuncia após falhas e transtornos em exames nacionais",
-      "resumo_pulso": "Segundo apuração do Poder360, Choi Kyo-jin renunciou ao cargo após mudanças de última hora nas regras do vestibular nacional provocarem forte instabilidade e protestos entre estudantes e famílias.",
-      "sintese_nerd": "Instabilidade política e administrativa no setor educacional sul-coreano.",
-      "titulo_curto": "Ministro da Educação da Coreia do Sul renuncia após falhas e transtornos em exames nacionais",
-      "rota_editoria": "/cultura",
-      "palavras_chave": [
-        "coreia do sul",
-        "educação",
-        "renúncia",
-        "vestibular"
-      ],
-      "urgencia_score": 85,
-      "data_publicacao": "2026-11-22T22:35:23Z",
-      "gatilho_vitrine": "Segundo apuração do Poder360, Choi Kyo-jin renunciou ao cargo após mudanças de última hora nas regras do vestibular nacional provocarem forte instabilidade e protestos entre estudantes e famílias.",
-      "impacto_pratico": "Instabilidade política e administrativa no setor educacional sul-coreano.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "Poder360"
-      ],
-      "relevancia_score": 83,
-      "paises_envolvidos": [
-        "KR"
-      ],
-      "categoria_primaria": "Cultura",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "coreia do sul",
-        "educação",
-        "renúncia",
-        "vestibular"
-      ]
-    }
-  ],
-  "temas_curadoria": [
-    {
-      "slug": "queda-acoes-tecnologia-eua-bolsas-globais-ia",
-      "titulo_tema": "Pior Semana Tech nos EUA desde a Pandemia Pressiona Bolsas e Alimenta Temor de Bolha em Inteligência Artificial",
-      "status": "em_alta",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Geopolitica_Radar",
-        "Cultura"
-      ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 92,
-      "ttl_horas": 48,
-      "expires_at": "2026-11-25T07:51:45Z",
-      "palavras_chave_busca": [
-        "nasdaq 100",
-        "ações de tecnologia",
-        "bolha de inteligência artificial",
-        "mercado de ações eua",
-        "b3 dólar",
-        "investimento em ia"
-      ],
-      "gatilho_vitrine": "Filtrar análises sobre retração no setor de tecnologia norte-americano e reflexos no mercado acionário e no dólar no Brasil.",
-      "sintese_nerd": "A forte correção de mais de dez por cento no Nasdaq expõe o ceticismo dos investidores em relação aos prazos de retorno dos massivos investimentos em IA generativa. Esse movimento global de aversão ao risco pressiona o câmbio em emergentes como o Brasil e aumenta a volatilidade na B3.",
-      "data_publicacao": "2026-11-23T07:51:45Z",
-      "updated_at": "2026-11-23T07:51:45Z"
-    },
-    {
-      "slug": "eduardo-braga-pec-ajuste-fiscal-orcamento-brasil",
-      "titulo_tema": "Relator do Orçamento Defende Alteração Constitucional para Garantir Novo Ajuste Fiscal",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Politica",
-      "categorias_cruzadas": [
-        "Economia"
-      ],
-      "rota_editoria": "/politica",
-      "relevancia_score": 89,
-      "ttl_horas": 72,
-      "expires_at": "2026-11-26T07:51:45Z",
-      "palavras_chave_busca": [
-        "eduardo braga",
-        "orçamento 2027",
-        "ajuste fiscal",
-        "pec fiscal",
-        "congresso nacional",
-        "arcabouço fiscal",
-        "despesas públicas"
-      ],
-      "gatilho_vitrine": "Vincular artigos sobre reestruturação de gastos públicos, negociação orçamentária no Congresso e governabilidade.",
-      "sintese_nerd": "A proposta de alteração constitucional pelo relator do Orçamento busca acomodar metas fiscais e promessas políticas sem paralisar investimentos vitais. O movimento expõe o impasse estrutural entre a rigidez dos gastos obrigatórios e a sustentabilidade das contas públicas federais.",
-      "data_publicacao": "2026-11-23T07:51:45Z",
-      "updated_at": "2026-11-23T07:51:45Z"
-    },
-    {
-      "slug": "guerra-ucrania-explosao-navio-russo-libia-drones",
-      "titulo_tema": "Escalação da Guerra na Ucrânia e Incidente com Navio Russo na Líbia Ampliam Tensão Geopolítica",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Politica",
-        "Economia"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 86,
-      "ttl_horas": 36,
-      "expires_at": "2026-11-24T19:51:45Z",
-      "palavras_chave_busca": [
-        "guerra na ucrânia",
-        "navio de guerra russo",
-        "porto de benghazi líbia",
-        "ataques de drones",
-        "ofensiva em pokrovsk",
-        "conflito rússia otan"
-      ],
-      "gatilho_vitrine": "Mapear matérias de cobertura de conflitos armados internacionais e desdobramentos navais no Mediterrâneo.",
-      "sintese_nerd": "O aumento expressivo de combates na Ucrânia somado à destruição de uma corveta russa na Líbia sinaliza o transbordamento da presença militar de Moscou para fora do teatro europeu. A dinâmica pressiona o mercado global de energia e acentua o atrito diplomático entre potências geopolíticas.",
-      "data_publicacao": "2026-11-23T07:51:45Z",
-      "updated_at": "2026-11-23T07:51:45Z"
-    },
-    {
-      "slug": "eleicoes-espanha-alberto-feijoo-conservadores-europa",
-      "titulo_tema": "Espanha Entra em Reta Final Eleitoral com Foco na Ascensão Conservadora de Alberto Feijóo",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Eleicoes",
-      "categorias_cruzadas": [
-        "Geopolitica_Radar",
-        "Politica"
-      ],
-      "rota_editoria": "/eleicoes",
-      "relevancia_score": 82,
-      "ttl_horas": 96,
-      "expires_at": "2026-11-27T07:51:45Z",
-      "palavras_chave_busca": [
-        "eleições na espanha",
-        "alberto feijóo",
-        "partido popular espanhol",
-        "política europeia",
-        "união europeia",
-        "sistema eleitoral espanha"
-      ],
-      "gatilho_vitrine": "Agrupar relatórios sobre corridas eleitorais europeias e alinhamentos geopolíticos no bloco europeu.",
-      "sintese_nerd": "A disputa pelo governo espanhol coloca à prova a capacidade da centro-direita em consolidar maiorias em meio à polarização no continente. O resultado na quarta maior economia da Zona do Euro impactará diretamente as políticas de migração e a coesão interna da União Europeia.",
-      "data_publicacao": "2026-11-23T07:51:45Z",
-      "updated_at": "2026-11-23T07:51:45Z"
-    },
-    {
-      "slug": "mp-das-bets-stf-saude-publica-regulacao",
-      "titulo_tema": "Julgamento no STF e MP das Bets Colocam Impactos na Saúde Pública no Centro do Debate",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Politica",
-      "categorias_cruzadas": [
-        "Economia",
-        "Cultura"
-      ],
-      "rota_editoria": "/politica",
-      "relevancia_score": 80,
-      "ttl_horas": 48,
-      "expires_at": "2026-11-25T07:51:45Z",
-      "palavras_chave_busca": [
-        "mp das bets",
-        "stf apostas online",
-        "saúde pública bets",
-        "regulacao de apostas",
-        "vício em jogos ludopatia",
-        "impacto econômico bets"
-      ],
-      "gatilho_vitrine": "Selecionar reportagens sobre regulamentação financeira de plataformas de apostas e custos sociais no Brasil.",
-      "sintese_nerd": "A discussão em curso no Judiciário e no Legislativo evidencia a sobreposição da arrecadação tributária às consequências de saúde mental e endividamento das famílias. A indefinição regulatória gera insegurança jurídica e demanda limites mais rígidos na publicidade e concessão de crédito.",
-      "data_publicacao": "2026-11-23T07:51:45Z",
-      "updated_at": "2026-11-23T07:51:45Z"
     }
   ],
   "noticias_quentes": [
+    {
+      "slug": "camara-dos-deputados-pauta-ajuste-fiscal-e-pautas-sociais",
+      "titulo_curto": "Câmara dos Deputados define pauta de votações da semana com foco em ajuste fiscal e segurança",
+      "resumo_pulso": "Segundo levantamento do Poder360, a Câmara dos Deputados inicia os trabalhos desta segunda-feira analisando a pauta de votações prioritárias, que inclui o projeto de ajuste fiscal, medidas de reparação histórica, reforço no monitoramento de agressores e propostas de combate ao racismo nas escolas. A articulação busca destravar votações cruciais para o Executivo.",
+      "impacto_pratico": "Define o andamento de pautas legislativas de impacto orçamentário e social direto para a população brasileira.",
+      "categoria": "Geopolitica_Relacoes",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "urgencia_score": 89,
+      "relevancia_score": 91,
+      "nivel_confianca": "alta",
+      "ttl_horas": 24,
+      "horas_em_destaque": 12,
+      "veiculos_origem": [
+        "Poder360"
+      ],
+      "fontes_urls": [
+        "https://www.poder360.com.br/poder-congresso/saiba-quais-acoes-estao-na-pauta-da-camara-nesta-2a-feira/"
+      ],
+      "palavras_chave": [
+        "Câmara dos Deputados",
+        "Congresso",
+        "Ajuste Fiscal",
+        "Política"
+      ],
+      "data_publicacao": "2026-11-23T09:15:52Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "Política no Brasil",
+          "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
+          "motivo_conexao": "Acompanha a articulação do Congresso Nacional frente aos projetos prioritários do governo."
+        }
+      ],
+      "expires_at": "2026-11-24T09:18:15Z",
+      "updated_at": "2026-11-23T09:18:15Z"
+    },
+    {
+      "slug": "ucrania-afunda-corveta-russa-ataque-drones-costa-libia",
+      "titulo_curto": "Ucrânia atinge e afunda corveta russa em ataque coordenado de drones na costa da Líbia",
+      "resumo_pulso": "Segundo apuração do The Kyiv Independent, forças ucranianas conduziram uma operação secreta bem-sucedida que culminou no afundamento de uma corveta da Marinha Russa em águas próximas à costa da Líbia. A ação militar demonstra a expansão das frentes de combate e da campanha de sabotagem de ativos logísticos russos para fora do Mar Negro.",
+      "impacto_pratico": "Altera o panorama estratégico de segurança marítima internacional e eleva o nível de atrito geopolítico em rotas comerciais do norte da África.",
+      "categoria": "Geopolitica_Relacoes",
+      "paises_envolvidos": [
+        "UA",
+        "RU",
+        "LY"
+      ],
+      "urgencia_score": 96,
+      "relevancia_score": 95,
+      "nivel_confianca": "alta",
+      "ttl_horas": 18,
+      "horas_em_destaque": 12,
+      "veiculos_origem": [
+        "The Kyiv Independent"
+      ],
+      "fontes_urls": [
+        "https://kyivindependent.com/no-safe-routes-ukraine-sinks-russian-corvette-in-drone-attack-off-libyan-coast/"
+      ],
+      "palavras_chave": [
+        "Ucrânia",
+        "Rússia",
+        "Marinha",
+        "Líbia",
+        "Drones"
+      ],
+      "data_publicacao": "2026-11-23T08:59:28Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "O que é uma sanção internacional?",
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-sancao-internacional",
+          "motivo_conexao": "Explica o contexto de pressões geopolíticas e restrições estratégicas entre potências globais."
+        }
+      ],
+      "expires_at": "2026-11-24T03:18:15Z",
+      "updated_at": "2026-11-23T09:18:15Z"
+    },
+    {
+      "slug": "plano-moretti-primeiro-passo-ajustes-fiscais-futuros",
+      "titulo_curto": "Governo Lula precisará adotar novos ajustes fiscais no futuro, avalia economista Laura Carvalho",
+      "resumo_pulso": "Conforme entrevista da professora da USP Laura Carvalho repercutida pela BBC News Brasil, o pacote de ajuste fiscal apresentado pelo ministro do Planejamento representa apenas um 'primeiro passo'. Para a especialista, o governo federal deverá implementar medidas adicionais de controle de gastos e o desgaste público inicial poderia ter sido atenuado com melhor comunicação oficial.",
+      "impacto_pratico": "Ajusta as expectativas de agentes econômicos e analistas sobre a trajetória das contas públicas e a sustentabilidade do arcabouço fiscal nos próximos anos.",
+      "categoria": "Economia_Comercio",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "urgencia_score": 90,
+      "relevancia_score": 92,
+      "nivel_confianca": "alta",
+      "ttl_horas": 24,
+      "horas_em_destaque": 16,
+      "veiculos_origem": [
+        "BBC News Brasil"
+      ],
+      "fontes_urls": [
+        "https://www.bbc.com/portuguese/articles/cm1dvg9n5w2xo?at_medium=RSS&at_campaign=rss"
+      ],
+      "palavras_chave": [
+        "Ajuste Fiscal",
+        "Governo Federal",
+        "Economia",
+        "Contas Públicas"
+      ],
+      "data_publicacao": "2026-11-23T08:55:34Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "Implementação da Reforma Tributária e medidas de revisão de gastos avançam em Brasília",
+          "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
+          "motivo_conexao": "Relaciona o debate sobre o ajuste fiscal às discussões estruturais de revisão de gastos no país."
+        }
+      ],
+      "expires_at": "2026-11-24T09:18:15Z",
+      "updated_at": "2026-11-23T09:18:15Z"
+    },
+    {
+      "slug": "estrangeiros-reforcam-compras-dolar-futuro-pressao-real",
+      "titulo_curto": "Investidores estrangeiros intensificam compras de dólar futuro e mantêm forte pressão sobre o real",
+      "resumo_pulso": "Conforme análise do InfoMoney Mercados, investidores estrangeiros reforçaram posições compradoras em contratos de dólar futuro, elevando a cotação e mantendo o real sob intensa pressão compradora. O movimento é sustentado por apreensões persistentes em relação aos fundamentos fiscais brasileiros e à sólida valorização global da moeda norte-americana, apesar das intervenções do Banco Central.",
+      "impacto_pratico": "Aumenta a volatilidade no câmbio doméstico e encarece transações atreladas à cotação do dólar para importadores e viajantes.",
+      "categoria": "Economia_Comercio",
+      "paises_envolvidos": [
+        "BR",
+        "US"
+      ],
+      "urgencia_score": 92,
+      "relevancia_score": 94,
+      "nivel_confianca": "alta",
+      "ttl_horas": 12,
+      "horas_em_destaque": 12,
+      "veiculos_origem": [
+        "InfoMoney Mercados"
+      ],
+      "fontes_urls": [
+        "https://www.infomoney.com.br/mercados/estrangeiros-compras-dolar-futuro-pressao-real/"
+      ],
+      "palavras_chave": [
+        "Dólar",
+        "Câmbio",
+        "Banco Central",
+        "Mercado Financeiro"
+      ],
+      "data_publicacao": "2026-11-23T08:15:00Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "Banco Central e mercado financeiro acompanham inflação de serviços, câmbio e metas fiscais",
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
+          "motivo_conexao": "Detalha como o comportamento cambial e as metas fiscais afetam diretamente o poder de compra e a inflação."
+        }
+      ],
+      "expires_at": "2026-11-23T21:18:15Z",
+      "updated_at": "2026-11-23T09:18:15Z"
+    },
     {
       "slug": "governo-publica-saida-jose-guimaraes-relacoes-institucionais",
       "categoria": "Geopolitica_Relacoes",
@@ -1026,41 +1032,42 @@
     },
     {
       "slug": "acoes-tecnologia-eua-pior-semana-desde-pandemia",
+      "titulo_curto": "Ações de tecnologia dos EUA iniciam recuperação nos futuros após pior semana desde a pandemia",
+      "resumo_pulso": "Segundo apuração do InfoMoney e dados do mercado internacional, os contratos futuros de Nova York operam em alta nesta segunda-feira, buscando uma recuperação após o índice Nasdaq 100 registrar sua pior semana desde a pandemia. O movimento ocorre em meio à persistência de receios de investidores quanto à sustentabilidade dos elevados investimentos e aportes na cadeia de inteligência artificial.",
+      "impacto_pratico": "Investidores de tecnologia e mercados globais monitoram a volatilidade das bolsas internacionais, que afeta diretamente o apetite ao risco e repercute nos ativos de países emergentes.",
       "categoria": "Economia_Comercio",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-24T07:34:54Z",
-      "updated_at": "2026-11-23T07:34:54Z",
-      "fontes_urls": [
-        "https://www.poder360.com.br/poder-economia/acoes-de-tecnologia-dos-eua-tem-pior-semana-desde-a-pandemia/"
+      "paises_envolvidos": [
+        "US",
+        "BR"
       ],
-      "resumo_pulso": "Segundo dados do Poder360, o índice Nasdaq 100 despencou 10,4% na última semana e entrou em mercado de baixa. O recuo acentuado é impulsionado por crescentes receios de investidores em relação à sustentabilidade dos investimentos em inteligência artificial.",
-      "titulo_curto": "Ações de tecnologia dos EUA registram a pior semana desde a pandemia com temores sobre IA",
-      "palavras_chave": [
-        "Nasdaq",
-        "Tecnologia",
-        "EUA",
-        "Inteligência Artificial",
-        "Mercado Financeiro"
-      ],
-      "urgencia_score": 90,
-      "data_publicacao": "2026-11-23T06:41:04Z",
-      "impacto_pratico": "Gera volatilidade nos mercados globais e cautela entre investidores de ativos de tecnologia.",
+      "urgencia_score": 91,
+      "relevancia_score": 93,
       "nivel_confianca": "alta",
+      "ttl_horas": 24,
+      "horas_em_destaque": 12,
       "veiculos_origem": [
+        "InfoMoney Mercados",
         "Poder360"
       ],
-      "relevancia_score": 92,
-      "horas_em_destaque": 12,
-      "paises_envolvidos": [
-        "US"
+      "fontes_urls": [
+        "https://www.infomoney.com.br/mercados/futuros-de-ny-sobem-apos-liquidacao-de-acoes-de-tecnologia-na-semana-passada/"
       ],
+      "palavras_chave": [
+        "Nasdaq",
+        "Inteligência Artificial",
+        "Bolsa de Nova York",
+        "Tecnologia"
+      ],
+      "data_publicacao": "2026-11-23T06:41:04Z",
       "links_internos_relacionados": [
         {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
-          "motivo_conexao": "Relaciona o comportamento dos mercados internacionais com as expectativas macroeconômicas.",
-          "titulo_existente": "Banco Central e mercado financeiro acompanham inflação de serviços, câmbio e metas fiscais"
+          "titulo_existente": "Economia no Brasil",
+          "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
+          "motivo_conexao": "Contextualiza os reflexos da volatilidade internacional sobre os mercados globais e o câmbio."
         }
-      ]
+      ],
+      "expires_at": "2026-11-24T07:34:54Z",
+      "updated_at": "2026-11-23T09:18:15Z"
     },
     {
       "slug": "brasil-4-lugar-ranking-global-felicidade-trabalho",
@@ -1582,153 +1589,140 @@
           "titulo_existente": "Banco Central e mercado financeiro acompanham inflação de serviços, câmbio e metas fiscais"
         }
       ]
-    },
+    }
+  ],
+  "temas_curadoria": [
     {
-      "slug": "escolas-ja-podem-se-inscrever-para-olitef-2027",
-      "categoria": "Sociedade_Cultura",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-23T23:38:00Z",
-      "updated_at": "2026-11-23T05:59:54Z",
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/escolas-ja-podem-se-inscrever-para-olitef-2027"
+      "slug": "risco-estagflacao-brasil-ajuste-fiscal-2027",
+      "status": "novo",
+      "ttl_horas": 72,
+      "expires_at": "2026-11-26T08:12:44Z",
+      "updated_at": "2026-11-23T08:12:44Z",
+      "titulo_tema": "Risco de Estagflação e Impasse no Ajuste Fiscal Brasileiro",
+      "sintese_nerd": "A demora na definição de metas fiscais sólidas leva bancos globais a alertarem para o risco de estagflação no Brasil até 2027. Em resposta, lideranças do Congresso defendem revisões constitucionais orçamentárias para equilibrar as contas sem sacrificar programas sociais.",
+      "rota_editoria": "/economia",
+      "data_publicacao": "2026-11-23T08:12:44Z",
+      "gatilho_vitrine": "Exibir análise de risco fiscal e recomendações de proteção patrimonial para investidores brasileiros",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 92,
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Politica",
+        "Resumo_Ultimas"
       ],
-      "resumo_pulso": "Conforme comunicado oficial da Agência Brasil (EBC), estão abertas as inscrições para a Olimpíada do Tesouro Direto de Educação Financeira (OLITEF) de 2027, destinada a estudantes do Ensino Fundamental, Médio e EJA em todo o país.",
-      "titulo_curto": "MEC e Tesouro Nacional abrem inscrições para a Olimpíada do Tesouro Direto de Educação Financeira de 2027",
-      "palavras_chave": [
-        "OLITEF",
-        "Tesouro Nacional",
-        "educacao financeira",
-        "escolas"
-      ],
-      "urgencia_score": 75,
-      "data_publicacao": "2026-11-22T22:00:00Z",
-      "impacto_pratico": "Incentivo à inclusão financeira e ao aprendizado de gestão de recursos para estudantes da rede pública e privada.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Agência Brasil (EBC)"
-      ],
-      "relevancia_score": 80,
-      "horas_em_destaque": 12,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
-          "motivo_conexao": "Complementa iniciativas educacionais sobre finanças, preços e planejamento econômico.",
-          "titulo_existente": "O que é inflação?"
-        }
+      "palavras_chave_busca": [
+        "estagflacao",
+        "ajuste fiscal",
+        "eduardo braga",
+        "ubs brasil",
+        "orcamento 2027",
+        "inflacao e juros",
+        "ntn-b"
       ]
     },
     {
-      "slug": "russia-tenta-desconectar-fontes-energia-odesa-dnipropetrovsk-zelensky",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 18,
-      "expires_at": "2026-11-23T15:35:16Z",
-      "updated_at": "2026-11-22T23:24:49Z",
-      "fontes_urls": [
-        "https://www.ukrinform.net/rubric-ato/4187483-russia-tries-to-cut-off-odesa-and-dnipropetrovsk-regions-from-energy-sources-zelensky.html"
+      "slug": "queda-acoes-tecnologia-eua-bolha-ia",
+      "status": "novo",
+      "ttl_horas": 48,
+      "expires_at": "2026-11-25T08:12:44Z",
+      "updated_at": "2026-11-23T08:12:44Z",
+      "titulo_tema": "Correção no Setor de Tecnologia dos EUA e Incertezas sobre IA",
+      "sintese_nerd": "O índice Nasdaq 100 registra sua pior semana desde a pandemia com investidores questionando o retorno financeiro imediato dos massivos aportes em inteligência artificial. O movimento reflete no apetite por risco global e amplia a volatilidade em bolsas emergentes como a B3.",
+      "rota_editoria": "/economia",
+      "data_publicacao": "2026-11-23T08:12:44Z",
+      "gatilho_vitrine": "Destacar a instabilidade nos mercados globais impulsionada pela revisão de expectativas no setor de tecnologia",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 88,
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Geopolitica_Radar",
+        "Cultura"
       ],
-      "resumo_pulso": "Segundo pronunciamento do presidente ucraniano Volodymyr Zelensky e relatórios da Ukrinform, as forças russas intensificaram bombardeios direcionados para tentar isolar as regiões de Odesa e Dnipropetrovsk de redes de energia no início do inverno.",
-      "titulo_curto": "Zelensky aponta que ataques russos visam desconectar Odesa e Dnipropetrovsk de fontes de energia",
-      "palavras_chave": [
-        "Ucrânia",
-        "Rússia",
-        "Infraestrutura energética",
-        "Odesa",
-        "Dnipropetrovsk"
-      ],
-      "urgencia_score": 96,
-      "data_publicacao": "2026-11-22T21:32:00Z",
-      "impacto_pratico": "Possíveis apagões prolongados e agravamento da crise humanitária e energética na Ucrânia.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Ukrinform",
-        "The Kyiv Independent"
-      ],
-      "relevancia_score": 95,
-      "horas_em_destaque": 12,
-      "paises_envolvidos": [
-        "UA",
-        "RU"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-sancao-internacional",
-          "motivo_conexao": "Explica o contexto geopolítico das medidas de pressão e conflitos na Europa Oriental.",
-          "titulo_existente": "O que é uma sanção internacional?"
-        }
+      "palavras_chave_busca": [
+        "nasdaq 100",
+        "acoes de tecnologia",
+        "bolha ia",
+        "mercado de baixa",
+        "wall street",
+        "investimentos tecnologia"
       ]
     },
     {
-      "slug": "cientista-chefe-openai-defende-limites-desenvolvimento-ia",
-      "categoria": "Ciencia_Clima",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-23T21:35:16Z",
-      "updated_at": "2026-11-22T21:45:26Z",
-      "fontes_urls": [
-        "https://www.infomoney.com.br/business/cientista-chefe-da-openai-defende-limites-para-o-desenvolvimento-de-ia-no-setor/"
+      "slug": "ataques-drones-ucrania-navios-russos-libia",
+      "status": "novo",
+      "ttl_horas": 48,
+      "expires_at": "2026-11-25T08:12:44Z",
+      "updated_at": "2026-11-23T08:12:44Z",
+      "titulo_tema": "Internacionalização do Conflito: Ucrânia Reivindica Ataques a Navios Russos na Líbia",
+      "sintese_nerd": "A afirmação do governo ucraniano de ter executado ataques com drones contra embarcações russas na costa líbia evidencia a projeção global da guerra. A ação amplia o alcance das hostilidades para a bacia do Mediterrâneo e afeta rotas logísticas estratégicas.",
+      "rota_editoria": "/radar",
+      "data_publicacao": "2026-11-23T08:12:44Z",
+      "gatilho_vitrine": "Mapear a expansão geográfica das operações ucranianas fora do front europeu",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 86,
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Resumo_Ultimas"
       ],
-      "resumo_pulso": "Conforme apuração do InfoMoney, Jakub Pachocki, cientista-chefe da OpenAI, defendeu a criação de padrões globais para toda a indústria com o objetivo de estabelecer limites rígidos para o avanço de modelos avançados de inteligência artificial.",
-      "titulo_curto": "Cientista-chefe da OpenAI defende padronização de limites éticos e técnicos para inteligência artificial",
-      "palavras_chave": [
-        "OpenAI",
-        "Inteligência Artificial",
-        "Regulação",
-        "Tecnologia",
-        "Ética"
-      ],
-      "urgencia_score": 88,
-      "data_publicacao": "2026-11-22T21:30:00Z",
-      "impacto_pratico": "Pode influenciar diretamente futuras regulações governamentais sobre o desenvolvimento e uso corporativo de ferramentas de IA.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "InfoMoney Mercados"
-      ],
-      "relevancia_score": 90,
-      "horas_em_destaque": 12,
-      "paises_envolvidos": [
-        "US"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/radar",
-          "motivo_conexao": "Relaciona avanços tecnológicos e novas infraestruturas ao desenvolvimento industrial.",
-          "titulo_existente": "Investimentos em energia solar, eólica e biocombustíveis aceleram transição energética no Brasil"
-        }
+      "palavras_chave_busca": [
+        "guerra ucrania russia",
+        "drones libia",
+        "zelensky",
+        "marinha russa",
+        "geopolitica mediterraneo",
+        "conflito internacional"
       ]
     },
     {
-      "slug": "peticao-demissao-ministro-veteranos-ucrania-vitalii-kim",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-23T21:35:16Z",
-      "updated_at": "2026-11-22T21:45:26Z",
-      "fontes_urls": [
-        "https://kyivindependent.com/petition-to-oust-vitalii-kim-as-ukraines-veterans-minister-gains-enough-support-to-prompt-government-response-2/"
+      "slug": "regulamentacao-mp-bets-saude-publica-brasil",
+      "status": "novo",
+      "ttl_horas": 72,
+      "expires_at": "2026-11-26T08:12:44Z",
+      "updated_at": "2026-11-23T08:12:44Z",
+      "titulo_tema": "Impacto das Apostas Eletrônicas na Saúde Pública e Regulação das Bets",
+      "sintese_nerd": "Debates no STF e alterações na MP das Bets acentuam a divergência entre a arrecadação fiscal e as despesas públicas de saúde decorrentes da ludopatia. A discussão exige equilíbrio entre regulação econômica estrita e medidas efetivas de proteção ao consumidor.",
+      "rota_editoria": "/politica",
+      "data_publicacao": "2026-11-23T08:12:44Z",
+      "gatilho_vitrine": "Vincular as sessões legislativas e judiciais aos reflexos socioeconômicos do vício em apostas",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 79,
+      "categoria_primaria": "Politica",
+      "categorias_cruzadas": [
+        "Economia",
+        "Cultura"
       ],
-      "resumo_pulso": "Segundo dados divulgados pelo The Kyiv Independent, uma petição pública exigindo a renúncia do ministro de Veteranos da Ucrânia, Vitalii Kim, ultrapassou 25 mil assinaturas, obrigando o Gabinete de Ministros a analisar e responder ao pleito em até dez dias.",
-      "titulo_curto": "Petição para afastar Vitalii Kim do Ministério de Veteranos da Ucrânia atinge limite oficial",
-      "palavras_chave": [
-        "Ucrânia",
-        "Vitalii Kim",
-        "Ministério de Veteranos",
-        "Petição",
-        "Governo"
+      "palavras_chave_busca": [
+        "mp das bets",
+        "regulamentacao apostas",
+        "saude publica stf",
+        "ludopatia brasil",
+        "mercado de apostas online"
+      ]
+    },
+    {
+      "slug": "brasil-ranking-global-felicidade-trabalho",
+      "status": "novo",
+      "ttl_horas": 96,
+      "expires_at": "2026-11-27T08:12:44Z",
+      "updated_at": "2026-11-23T08:12:44Z",
+      "titulo_tema": "Brasil Ocupa a 4ª Posição em Ranking Global de Felicidade no Trabalho",
+      "sintese_nerd": "Pesquisa global aponta que o Brasil supera nações desenvolvidas no índice de satisfação profissional, impulsionado por conexões interpessoais no ambiente de trabalho. O estudo traz insights sobre a relação entre clima organizacional, engajamento e produtividade no país.",
+      "rota_editoria": "/cultura",
+      "data_publicacao": "2026-11-23T08:12:44Z",
+      "gatilho_vitrine": "Explicar os fatores socioculturais que posicionam os trabalhadores brasileiros no topo da satisfação profissional",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 74,
+      "categoria_primaria": "Cultura",
+      "categorias_cruzadas": [
+        "Economia"
       ],
-      "urgencia_score": 82,
-      "data_publicacao": "2026-11-22T21:24:59Z",
-      "impacto_pratico": "Gera pressão política interna sobre o governo ucraniano em meio ao esforço de guerra.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "The Kyiv Independent"
-      ],
-      "relevancia_score": 84,
-      "horas_em_destaque": 12,
-      "paises_envolvidos": [
-        "UA"
-      ],
-      "links_internos_relacionados": []
+      "palavras_chave_busca": [
+        "felicidade no trabalho",
+        "ambiente corporativo brasil",
+        "pesquisa ticket happyforce",
+        "mercado de trabalho",
+        "relacionamento profissional"
+      ]
     }
   ]
 }
