@@ -2,61 +2,153 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-22T23:38:00Z",
-  "batch_id": "20261122-2337",
+  "updatedAt": "2026-11-23T00:55:09Z",
+  "batch_id": "20261123-0054",
   "temas_ativos": [
     {
-      "slug": "premie-espanha-critica-trump-bolsonaro-milei",
-      "titulo_tema": "Primeiro-ministro da Espanha classifica Trump, Bolsonaro e Milei como integrantes da extrema direita",
-      "titulo_curto": "Primeiro-ministro da Espanha classifica Trump, Bolsonaro e Milei como integrantes da extrema direita",
+      "slug": "south-korea-stock-market-tumbles-ai-bubble",
+      "titulo_tema": "Bolsa de valores da Coreia do Sul desaba com temores sobre bolha no setor de inteligência artificial",
+      "titulo_curto": "Bolsa de valores da Coreia do Sul desaba com temores sobre bolha no setor de inteligência artificial",
       "status": "novo",
       "origem_pipeline": "pulso",
-      "categoria_primaria": "Geopolitica_Radar",
-      "categoria": "Geopolitica_Relacoes",
+      "categoria_primaria": "Economia",
+      "categoria": "Economia_Comercio",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
       ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 88,
-      "urgencia_score": 85,
+      "rota_editoria": "/economia",
+      "relevancia_score": 91,
+      "urgencia_score": 89,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-24T00:55:09Z",
+      "palavras_chave_busca": [
+        "coreia do sul",
+        "kospi",
+        "bolsa de valores",
+        "inteligência artificial",
+        "mercados"
+      ],
+      "palavras_chave": [
+        "coreia do sul",
+        "kospi",
+        "bolsa de valores",
+        "inteligência artificial",
+        "mercados"
+      ],
+      "gatilho_vitrine": "Conforme noticiado pela Al Jazeera English, o índice Kospi, principal indicador da bolsa sul-coreana, registrou queda superior a 3% nas primeiras negociações. O movimento reflete a cautela generalizada dos investidores asiáticos diante de incertezas e temores de sobrevalorização corporativa ligada à cadeia de inteligência artificial.",
+      "resumo_pulso": "Conforme noticiado pela Al Jazeera English, o índice Kospi, principal indicador da bolsa sul-coreana, registrou queda superior a 3% nas primeiras negociações. O movimento reflete a cautela generalizada dos investidores asiáticos diante de incertezas e temores de sobrevalorização corporativa ligada à cadeia de inteligência artificial.",
+      "sintese_nerd": "Possível volatilidade em mercados emergentes e globais voltados à tecnologia e semicondutores.",
+      "impacto_pratico": "Possível volatilidade em mercados emergentes e globais voltados à tecnologia e semicondutores.",
+      "paises_envolvidos": [
+        "KR"
+      ],
+      "veiculos_origem": [
+        "Al Jazeera English"
+      ],
+      "fontes_urls": [
+        "https://www.aljazeera.com/news/2026/11/23/south-koreas-stock-market-tumbles-as-ai-bubble-fears-mount?traffic_source=rss"
+      ],
+      "data_publicacao": "2026-11-23T00:18:03Z",
+      "updated_at": "2026-11-23T00:55:09Z"
+    },
+    {
+      "slug": "trump-assina-lei-fim-moeda-1-centavo-eua",
+      "status": "novo",
+      "categoria": "Economia_Comercio",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-24T00:10:47Z",
+      "updated_at": "2026-11-23T00:10:47Z",
+      "fontes_urls": [
+        "https://www.poder360.com.br/poder-internacional/trump-assina-lei-que-encerra-producao-de-moeda-de-us-001/"
+      ],
+      "titulo_tema": "Presidente Trump assina lei que encerra oficialmente a produção da moeda de 1 centavo nos EUA",
+      "resumo_pulso": "Conforme reportado pelo Poder360, o presidente Donald Trump sancionou a chamada 'Lei dos Centavos Comuns', extinguindo formalmente a fabricação do tradicional 'penny' (moeda de US$ 0,01) nos Estados Unidos.",
+      "sintese_nerd": "Modificações nos trocos comerciais e ajustes nas operações de contagem de dinheiro miúdo no varejo norte-americano.",
+      "titulo_curto": "Presidente Trump assina lei que encerra oficialmente a produção da moeda de 1 centavo nos EUA",
+      "rota_editoria": "/economia",
+      "palavras_chave": [
+        "estados unidos",
+        "donald trump",
+        "moeda",
+        "economia"
+      ],
+      "urgencia_score": 86,
+      "data_publicacao": "2026-11-23T00:02:49Z",
+      "gatilho_vitrine": "Conforme reportado pelo Poder360, o presidente Donald Trump sancionou a chamada 'Lei dos Centavos Comuns', extinguindo formalmente a fabricação do tradicional 'penny' (moeda de US$ 0,01) nos Estados Unidos.",
+      "impacto_pratico": "Modificações nos trocos comerciais e ajustes nas operações de contagem de dinheiro miúdo no varejo norte-americano.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "Poder360"
+      ],
+      "relevancia_score": 85,
+      "paises_envolvidos": [
+        "US"
+      ],
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "estados unidos",
+        "donald trump",
+        "moeda",
+        "economia"
+      ]
+    },
+    {
+      "slug": "premie-espanha-critica-trump-bolsonaro-milei",
+      "status": "novo",
+      "categoria": "Geopolitica_Relacoes",
       "ttl_horas": 24,
       "expires_at": "2026-11-23T23:36:25Z",
-      "palavras_chave_busca": [
-        "pedro sánchez",
-        "espanha",
-        "extrema direita",
-        "geopolítica"
+      "updated_at": "2026-11-22T23:38:00Z",
+      "fontes_urls": [
+        "https://www.poder360.com.br/poder-internacional/premie-espanha-critica-trump-bolsonaro-e-milei-em-ato-de-campanha/"
       ],
+      "titulo_tema": "Primeiro-ministro da Espanha classifica Trump, Bolsonaro e Milei como integrantes da extrema direita",
+      "resumo_pulso": "Conforme reportagem do Poder360, o premiê espanhol Pedro Sánchez criticou severamente Donald Trump, Jair Bolsonaro e Javier Milei durante ato político, apontando que o grupo representa um retrocesso associado à extrema direita global.",
+      "sintese_nerd": "Atritos diplomáticos e realinhamento de discursos políticos entre governos da Europa e da América Latina.",
+      "titulo_curto": "Primeiro-ministro da Espanha classifica Trump, Bolsonaro e Milei como integrantes da extrema direita",
+      "rota_editoria": "/radar",
       "palavras_chave": [
         "pedro sánchez",
         "espanha",
         "extrema direita",
         "geopolítica"
       ],
+      "urgencia_score": 85,
+      "data_publicacao": "2026-11-22T23:30:59Z",
       "gatilho_vitrine": "Conforme reportagem do Poder360, o premiê espanhol Pedro Sánchez criticou severamente Donald Trump, Jair Bolsonaro e Javier Milei durante ato político, apontando que o grupo representa um retrocesso associado à extrema direita global.",
-      "resumo_pulso": "Conforme reportagem do Poder360, o premiê espanhol Pedro Sánchez criticou severamente Donald Trump, Jair Bolsonaro e Javier Milei durante ato político, apontando que o grupo representa um retrocesso associado à extrema direita global.",
-      "sintese_nerd": "Atritos diplomáticos e realinhamento de discursos políticos entre governos da Europa e da América Latina.",
       "impacto_pratico": "Atritos diplomáticos e realinhamento de discursos políticos entre governos da Europa e da América Latina.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "Poder360"
+      ],
+      "relevancia_score": 88,
       "paises_envolvidos": [
         "ES",
         "US",
         "BR",
         "AR"
       ],
-      "veiculos_origem": [
-        "Poder360"
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
       ],
-      "fontes_urls": [
-        "https://www.poder360.com.br/poder-internacional/premie-espanha-critica-trump-bolsonaro-e-milei-em-ato-de-campanha/"
-      ],
-      "data_publicacao": "2026-11-22T23:30:59Z",
-      "updated_at": "2026-11-22T23:38:00Z"
+      "palavras_chave_busca": [
+        "pedro sánchez",
+        "espanha",
+        "extrema direita",
+        "geopolítica"
+      ]
     },
     {
       "slug": "polish-authorities-find-russian-missile-remains-at-three-sites",
-      "titulo_tema": "Procuradoria da Polônia confirma restos de mísseis russos em três locais após nova incursão",
-      "titulo_curto": "Procuradoria da Polônia confirma restos de mísseis russos em três locais após nova incursão",
+      "titulo_tema": "Procuradoria da Polônia localiza destroços de mísseis russos Kh-101 em três pontos no leste do país",
+      "titulo_curto": "Procuradoria da Polônia localiza destroços de mísseis russos Kh-101 em três pontos no leste do país",
       "status": "novo",
       "origem_pipeline": "pulso",
       "categoria_primaria": "Geopolitica_Radar",
@@ -73,19 +165,21 @@
       "palavras_chave_busca": [
         "polônia",
         "mísseis russos",
-        "otan",
-        "espaço aéreo"
+        "kh-101",
+        "espaço aéreo",
+        "otan"
       ],
       "palavras_chave": [
         "polônia",
         "mísseis russos",
-        "otan",
-        "espaço aéreo"
+        "kh-101",
+        "espaço aéreo",
+        "otan"
       ],
-      "gatilho_vitrine": "Segundo apuração do The Kyiv Independent, a Procuradoria Distrital de Lublin informou que destroços de mísseis de cruzeiro Kh-101 fabricados recentemente em Dubna foram encontrados em três localidades no leste polonês após recente invasão do espaço aéreo.",
-      "resumo_pulso": "Segundo apuração do The Kyiv Independent, a Procuradoria Distrital de Lublin informou que destroços de mísseis de cruzeiro Kh-101 fabricados recentemente em Dubna foram encontrados em três localidades no leste polonês após recente invasão do espaço aéreo.",
-      "sintese_nerd": "Elevação do nível de alerta militar na fronteira oriental da OTAN e intensificação de medidas de defesa antiaérea europeias.",
-      "impacto_pratico": "Elevação do nível de alerta militar na fronteira oriental da OTAN e intensificação de medidas de defesa antiaérea europeias.",
+      "gatilho_vitrine": "Segundo informações divulgadas pelo The Kyiv Independent, a Procuradoria Distrital de Lublin confirmou a descoberta de fragmentos de mísseis de cruzeiro Kh-101 em três localidades distintas no leste polonês (Nowy Lipowiec, Rudnik e Mołodycz), após recente incursão registrada no espaço aéreo da região.",
+      "resumo_pulso": "Segundo informações divulgadas pelo The Kyiv Independent, a Procuradoria Distrital de Lublin confirmou a descoberta de fragmentos de mísseis de cruzeiro Kh-101 em três localidades distintas no leste polonês (Nowy Lipowiec, Rudnik e Mołodycz), após recente incursão registrada no espaço aéreo da região.",
+      "sintese_nerd": "Elevação do nível de alerta nas fronteiras orientais da OTAN e intensificação do monitoramento de defesa aérea na Polônia.",
+      "impacto_pratico": "Elevação do nível de alerta nas fronteiras orientais da OTAN e intensificação do monitoramento de defesa aérea na Polônia.",
       "paises_envolvidos": [
         "PL",
         "RU",
@@ -98,7 +192,7 @@
         "https://kyivindependent.com/polish-authorities-find-russian-missile-remains-at-three-sites-following-airspace-incursion/"
       ],
       "data_publicacao": "2026-11-22T23:26:30Z",
-      "updated_at": "2026-11-22T23:38:00Z"
+      "updated_at": "2026-11-23T00:55:09Z"
     },
     {
       "slug": "ministro-educacao-coreia-do-sul-renuncia-fraudes-exames",
@@ -304,48 +398,48 @@
     },
     {
       "slug": "escolas-ja-podem-se-inscrever-para-olitef-2027",
-      "titulo_tema": "MEC e Tesouro Nacional abrem inscrições para a Olimpíada do Tesouro Direto de Educação Financeira de 2027",
-      "titulo_curto": "MEC e Tesouro Nacional abrem inscrições para a Olimpíada do Tesouro Direto de Educação Financeira de 2027",
       "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Cultura",
       "categoria": "Sociedade_Cultura",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/cultura",
-      "relevancia_score": 80,
-      "urgencia_score": 75,
       "ttl_horas": 24,
       "expires_at": "2026-11-23T23:38:00Z",
-      "palavras_chave_busca": [
-        "educação financeira",
-        "tesouro direto",
-        "escolas",
-        "olitef"
+      "updated_at": "2026-11-22T23:38:00Z",
+      "fontes_urls": [
+        "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/escolas-ja-podem-se-inscrever-para-olitef-2027"
       ],
+      "titulo_tema": "MEC e Tesouro Nacional abrem inscrições para a Olimpíada do Tesouro Direto de Educação Financeira de 2027",
+      "resumo_pulso": "Conforme comunicado oficial da Agência Brasil (EBC), estão abertas as inscrições para a Olimpíada do Tesouro Direto de Educação Financeira (OLITEF) de 2027, destinada a estudantes do Ensino Fundamental, Médio e EJA em todo o país.",
+      "sintese_nerd": "Estímulo à alfabetização financeira de jovens estudantes da rede pública e privada no Brasil.",
+      "titulo_curto": "MEC e Tesouro Nacional abrem inscrições para a Olimpíada do Tesouro Direto de Educação Financeira de 2027",
+      "rota_editoria": "/cultura",
       "palavras_chave": [
         "educação financeira",
         "tesouro direto",
         "escolas",
         "olitef"
       ],
+      "urgencia_score": 75,
+      "data_publicacao": "2026-11-22T22:00:00Z",
       "gatilho_vitrine": "Conforme comunicado oficial da Agência Brasil (EBC), estão abertas as inscrições para a Olimpíada do Tesouro Direto de Educação Financeira (OLITEF) de 2027, destinada a estudantes do Ensino Fundamental, Médio e EJA em todo o país.",
-      "resumo_pulso": "Conforme comunicado oficial da Agência Brasil (EBC), estão abertas as inscrições para a Olimpíada do Tesouro Direto de Educação Financeira (OLITEF) de 2027, destinada a estudantes do Ensino Fundamental, Médio e EJA em todo o país.",
-      "sintese_nerd": "Estímulo à alfabetização financeira de jovens estudantes da rede pública e privada no Brasil.",
       "impacto_pratico": "Estímulo à alfabetização financeira de jovens estudantes da rede pública e privada no Brasil.",
-      "paises_envolvidos": [
-        "BR"
-      ],
+      "origem_pipeline": "pulso",
       "veiculos_origem": [
         "Agência Brasil (EBC)"
       ],
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/escolas-ja-podem-se-inscrever-para-olitef-2027"
+      "relevancia_score": 80,
+      "paises_envolvidos": [
+        "BR"
       ],
-      "data_publicacao": "2026-11-22T22:00:00Z",
-      "updated_at": "2026-11-22T23:38:00Z"
+      "categoria_primaria": "Cultura",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "educação financeira",
+        "tesouro direto",
+        "escolas",
+        "olitef"
+      ]
     },
     {
       "slug": "trump-ameaca-ataques-ira-bloqueio-naval",
@@ -520,50 +614,50 @@
     },
     {
       "slug": "conflitos-no-congo-dificultam-resposta-surto-ebola-oms",
+      "titulo_tema": "OMS alerta que combates armados no leste do Congo colocam em risco pacientes e operações contra o Ebola",
+      "titulo_curto": "OMS alerta que combates armados no leste do Congo colocam em risco pacientes e operações contra o Ebola",
       "status": "novo",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-23T21:18:43Z",
-      "updated_at": "2026-11-22T21:45:26Z",
-      "fontes_urls": [
-        "https://www.infomoney.com.br/mundo/conflitos-no-congo-dificultam-resposta-ao-surto-de-ebola-diz-diretor-geral-%e2%81%a0da-oms/"
-      ],
-      "titulo_tema": "Conflitos no leste do Congo agravam surto de Ebola e dificultam assistência da OMS",
-      "resumo_pulso": "Segundo alerta divulgado pelo diretor-geral da Organização Mundial da Saúde (OMS) e reportado pelo InfoMoney, a intensificação de ataques e conflitos armados no leste do Congo desde o final de outubro tem comprometido severamente a resposta médica e o combate ao surto de Ebola na região.",
-      "sintese_nerd": "Risco de disseminação sanitária e restrições severas ao trabalho humanitário internacional.",
-      "titulo_curto": "Conflitos no leste do Congo agravam surto de Ebola e dificultam assistência da OMS",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "congo",
-        "ebola",
-        "oms",
-        "crise humanitária",
-        "saúde pública"
-      ],
-      "urgencia_score": 93,
-      "data_publicacao": "2026-11-22T21:15:00Z",
-      "gatilho_vitrine": "Segundo alerta divulgado pelo diretor-geral da Organização Mundial da Saúde (OMS) e reportado pelo InfoMoney, a intensificação de ataques e conflitos armados no leste do Congo desde o final de outubro tem comprometido severamente a resposta médica e o combate ao surto de Ebola na região.",
-      "impacto_pratico": "Risco de disseminação sanitária e restrições severas ao trabalho humanitário internacional.",
       "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "InfoMoney Mercados"
-      ],
-      "relevancia_score": 90,
-      "paises_envolvidos": [
-        "CD"
-      ],
       "categoria_primaria": "Geopolitica_Radar",
+      "categoria": "Geopolitica_Relacoes",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
       ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 90,
+      "urgencia_score": 93,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-23T21:18:43Z",
       "palavras_chave_busca": [
-        "congo",
-        "ebola",
         "oms",
-        "crise humanitária",
+        "ebola",
+        "congo",
+        "conflito armado",
         "saúde pública"
-      ]
+      ],
+      "palavras_chave": [
+        "oms",
+        "ebola",
+        "congo",
+        "conflito armado",
+        "saúde pública"
+      ],
+      "gatilho_vitrine": "Segundo alerta emitido pelo diretor-geral da Organização Mundial da Saúde (OMS) e reportado pela Al Jazeera English, a intensificação de confrontos militares nas proximidades de hospitais no leste da República Democrática do Congo tem comprometido severamente o combate ao surto de Ebola e exposto profissionais de saúde a graves riscos.",
+      "resumo_pulso": "Segundo alerta emitido pelo diretor-geral da Organização Mundial da Saúde (OMS) e reportado pela Al Jazeera English, a intensificação de confrontos militares nas proximidades de hospitais no leste da República Democrática do Congo tem comprometido severamente o combate ao surto de Ebola e exposto profissionais de saúde a graves riscos.",
+      "sintese_nerd": "Preocupação sanitária internacional com a expansão de epidemias em zonas de conflito armado sem assistência médica contínua.",
+      "impacto_pratico": "Preocupação sanitária internacional com a expansão de epidemias em zonas de conflito armado sem assistência médica contínua.",
+      "paises_envolvidos": [
+        "CD"
+      ],
+      "veiculos_origem": [
+        "Al Jazeera English"
+      ],
+      "fontes_urls": [
+        "https://www.aljazeera.com/news/2026/11/23/who-chief-calls-for-peace-amid-heavy-fighting-in-ebola-hit-dr-congo-region?traffic_source=rss"
+      ],
+      "data_publicacao": "2026-11-22T21:15:00Z",
+      "updated_at": "2026-11-23T00:55:09Z"
     },
     {
       "slug": "reforma-tributaria-positiva-nanoempreendedores-associacao",
@@ -758,146 +852,129 @@
         "cinema",
         "cooperação internacional"
       ]
-    },
-    {
-      "slug": "simposio-nacional-matematica-premia-professores-e-expoe-solucoes",
-      "status": "novo",
-      "categoria": "Sociedade_Cultura",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-23T21:18:43Z",
-      "updated_at": "2026-11-22T21:45:26Z",
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/educacao/noticia/2026-11/simposio-de-matematica-premia-professores-e-expoe-solucoes-de-ensino"
-      ],
-      "titulo_tema": "9º Simpósio Nacional de Formação do Professor de Matemática encerra programação em São Paulo",
-      "resumo_pulso": "Conforme cobertura da Agência Brasil (EBC), o 9º Simpósio Nacional da Formação do Professor de Matemática chegou ao fim em São Paulo após debater novas metodologias pedagógicas, premiar docentes e destacar soluções inovadoras para o ensino da disciplina na rede básica.",
-      "sintese_nerd": "Estímulo à melhoria da qualidade do ensino de ciências exatas na educação básica brasileira.",
-      "titulo_curto": "9º Simpósio Nacional de Formação do Professor de Matemática encerra programação em São Paulo",
-      "rota_editoria": "/cultura",
-      "palavras_chave": [
-        "matemática",
-        "educação",
-        "são paulo",
-        "professores",
-        "simpósio"
-      ],
-      "urgencia_score": 78,
-      "data_publicacao": "2026-11-22T20:01:00Z",
-      "gatilho_vitrine": "Conforme cobertura da Agência Brasil (EBC), o 9º Simpósio Nacional da Formação do Professor de Matemática chegou ao fim em São Paulo após debater novas metodologias pedagógicas, premiar docentes e destacar soluções inovadoras para o ensino da disciplina na rede básica.",
-      "impacto_pratico": "Estímulo à melhoria da qualidade do ensino de ciências exatas na educação básica brasileira.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "Agência Brasil (EBC)"
-      ],
-      "relevancia_score": 82,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "categoria_primaria": "Cultura",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "matemática",
-        "educação",
-        "são paulo",
-        "professores",
-        "simpósio"
-      ]
-    },
-    {
-      "slug": "democratas-atingem-258-cadeiras-camara-eua",
-      "titulo_tema": "Partido Democrata conquista maioria expressiva na Câmara dos EUA após vitória na Carolina do Norte",
-      "titulo_curto": "Partido Democrata conquista maioria expressiva na Câmara dos EUA após vitória na Carolina do Norte",
-      "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Geopolitica_Radar",
-      "categoria": "Geopolitica_Relacoes",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 92,
-      "urgencia_score": 91,
-      "ttl_horas": 24,
-      "expires_at": "2026-11-23T19:26:46Z",
-      "palavras_chave_busca": [
-        "eua",
-        "câmara dos representantes",
-        "partido democrata",
-        "congresso"
-      ],
-      "palavras_chave": [
-        "eua",
-        "câmara dos representantes",
-        "partido democrata",
-        "congresso"
-      ],
-      "gatilho_vitrine": "Segundo reportagem da Al Jazeera English, a vitória em assento adicional na Carolina do Norte garantiu aos democratas 258 assentos na Câmara dos Representantes, consolidando a maior bancada do partido na casa legislativa desde 1992.",
-      "resumo_pulso": "Segundo reportagem da Al Jazeera English, a vitória em assento adicional na Carolina do Norte garantiu aos democratas 258 assentos na Câmara dos Representantes, consolidando a maior bancada do partido na casa legislativa desde 1992.",
-      "sintese_nerd": "Redesenho das negociações legislativas em Washington e maior capacidade de oposição à agenda da Casa Branca.",
-      "impacto_pratico": "Redesenho das negociações legislativas em Washington e maior capacidade de oposição à agenda da Casa Branca.",
-      "paises_envolvidos": [
-        "US"
-      ],
-      "veiculos_origem": [
-        "Al Jazeera English"
-      ],
-      "fontes_urls": [
-        "https://www.aljazeera.com/news/2026/11/22/democrats-win-largest-house-majority-since-1992-with-north-carolina-seat"
-      ],
-      "data_publicacao": "2026-11-22T19:19:45Z",
-      "updated_at": "2026-11-22T23:38:00Z"
     }
   ],
   "noticias_quentes": [
     {
-      "slug": "premie-espanha-critica-trump-bolsonaro-milei",
-      "titulo_curto": "Primeiro-ministro da Espanha classifica Trump, Bolsonaro e Milei como integrantes da extrema direita",
-      "resumo_pulso": "Conforme reportagem do Poder360, o premiê espanhol Pedro Sánchez criticou severamente Donald Trump, Jair Bolsonaro e Javier Milei durante ato político, apontando que o grupo representa um retrocesso associado à extrema direita global.",
-      "impacto_pratico": "Atritos diplomáticos e realinhamento de discursos políticos entre governos da Europa e da América Latina.",
-      "categoria": "Geopolitica_Relacoes",
+      "slug": "south-korea-stock-market-tumbles-ai-bubble",
+      "titulo_curto": "Bolsa de valores da Coreia do Sul desaba com temores sobre bolha no setor de inteligência artificial",
+      "resumo_pulso": "Conforme noticiado pela Al Jazeera English, o índice Kospi, principal indicador da bolsa sul-coreana, registrou queda superior a 3% nas primeiras negociações. O movimento reflete a cautela generalizada dos investidores asiáticos diante de incertezas e temores de sobrevalorização corporativa ligada à cadeia de inteligência artificial.",
+      "impacto_pratico": "Possível volatilidade em mercados emergentes e globais voltados à tecnologia e semicondutores.",
+      "categoria": "Economia_Comercio",
       "paises_envolvidos": [
-        "ES",
-        "US",
-        "BR",
-        "AR"
+        "KR"
       ],
-      "urgencia_score": 85,
-      "relevancia_score": 88,
+      "urgencia_score": 89,
+      "relevancia_score": 91,
       "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 12,
+      "horas_em_destaque": 24,
+      "veiculos_origem": [
+        "Al Jazeera English"
+      ],
+      "fontes_urls": [
+        "https://www.aljazeera.com/news/2026/11/23/south-koreas-stock-market-tumbles-as-ai-bubble-fears-mount?traffic_source=rss"
+      ],
+      "palavras_chave": [
+        "Coreia do Sul",
+        "Kospi",
+        "bolsa de valores",
+        "inteligência artificial",
+        "mercados"
+      ],
+      "data_publicacao": "2026-11-23T00:18:03Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "Economia no Brasil",
+          "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
+          "motivo_conexao": "Permite acompanhar os reflexos de oscilações em bolsas internacionais sobre o cenário financeiro global."
+        }
+      ],
+      "expires_at": "2026-11-24T00:55:09Z",
+      "updated_at": "2026-11-23T00:55:09Z"
+    },
+    {
+      "slug": "trump-assina-lei-fim-moeda-1-centavo-eua",
+      "categoria": "Economia_Comercio",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-24T00:10:47Z",
+      "updated_at": "2026-11-23T00:10:47Z",
+      "fontes_urls": [
+        "https://www.poder360.com.br/poder-internacional/trump-assina-lei-que-encerra-producao-de-moeda-de-us-001/"
+      ],
+      "resumo_pulso": "Conforme reportado pelo Poder360, o presidente Donald Trump sancionou a chamada 'Lei dos Centavos Comuns', extinguindo formalmente a fabricação do tradicional 'penny' (moeda de US$ 0,01) nos Estados Unidos.",
+      "titulo_curto": "Presidente Trump assina lei que encerra oficialmente a produção da moeda de 1 centavo nos EUA",
+      "palavras_chave": [
+        "Estados Unidos",
+        "Donald Trump",
+        "Moeda",
+        "Economia"
+      ],
+      "urgencia_score": 86,
+      "data_publicacao": "2026-11-23T00:02:49Z",
+      "impacto_pratico": "Modificações nos trocos comerciais e ajustes nas operações de contagem de dinheiro miúdo no varejo norte-americano.",
+      "nivel_confianca": "alta",
       "veiculos_origem": [
         "Poder360"
       ],
+      "relevancia_score": 85,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "US"
+      ],
+      "links_internos_relacionados": [
+        {
+          "url_existente": "https://www.rodandoomundo.com.br/politica/estados-unidos",
+          "motivo_conexao": "Acompanha as decisões legislativas e executivas da administração norte-americana.",
+          "titulo_existente": "Política nos Estados Unidos"
+        }
+      ]
+    },
+    {
+      "slug": "premie-espanha-critica-trump-bolsonaro-milei",
+      "categoria": "Geopolitica_Relacoes",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-23T23:36:25Z",
+      "updated_at": "2026-11-22T23:38:00Z",
       "fontes_urls": [
         "https://www.poder360.com.br/poder-internacional/premie-espanha-critica-trump-bolsonaro-e-milei-em-ato-de-campanha/"
       ],
+      "resumo_pulso": "Conforme reportagem do Poder360, o premiê espanhol Pedro Sánchez criticou severamente Donald Trump, Jair Bolsonaro e Javier Milei durante ato político, apontando que o grupo representa um retrocesso associado à extrema direita global.",
+      "titulo_curto": "Primeiro-ministro da Espanha classifica Trump, Bolsonaro e Milei como integrantes da extrema direita",
       "palavras_chave": [
         "Pedro Sánchez",
         "Espanha",
         "Extrema direita",
         "Geopolítica"
       ],
+      "urgencia_score": 85,
       "data_publicacao": "2026-11-22T23:30:59Z",
+      "impacto_pratico": "Atritos diplomáticos e realinhamento de discursos políticos entre governos da Europa e da América Latina.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Poder360"
+      ],
+      "relevancia_score": 88,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "ES",
+        "US",
+        "BR",
+        "AR"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "Eleições e Democracia no Mundo",
           "url_existente": "https://www.rodandoomundo.com.br/eleicoes",
-          "motivo_conexao": "Relaciona o debate político internacional com a polarização democrática global."
+          "motivo_conexao": "Relaciona o debate político internacional com a polarização democrática global.",
+          "titulo_existente": "Eleições e Democracia no Mundo"
         }
-      ],
-      "expires_at": "2026-11-23T23:36:25Z",
-      "updated_at": "2026-11-22T23:38:00Z"
+      ]
     },
     {
       "slug": "polish-authorities-find-russian-missile-remains-at-three-sites",
-      "titulo_curto": "Procuradoria da Polônia confirma restos de mísseis russos em três locais após nova incursão",
-      "resumo_pulso": "Segundo apuração do The Kyiv Independent, a Procuradoria Distrital de Lublin informou que destroços de mísseis de cruzeiro Kh-101 fabricados recentemente em Dubna foram encontrados em três localidades no leste polonês após recente invasão do espaço aéreo.",
-      "impacto_pratico": "Elevação do nível de alerta militar na fronteira oriental da OTAN e intensificação de medidas de defesa antiaérea europeias.",
+      "titulo_curto": "Procuradoria da Polônia localiza destroços de mísseis russos Kh-101 em três pontos no leste do país",
+      "resumo_pulso": "Segundo informações divulgadas pelo The Kyiv Independent, a Procuradoria Distrital de Lublin confirmou a descoberta de fragmentos de mísseis de cruzeiro Kh-101 em três localidades distintas no leste polonês (Nowy Lipowiec, Rudnik e Mołodycz), após recente incursão registrada no espaço aéreo da região.",
+      "impacto_pratico": "Elevação do nível de alerta nas fronteiras orientais da OTAN e intensificação do monitoramento de defesa aérea na Polônia.",
       "categoria": "Geopolitica_Relacoes",
       "paises_envolvidos": [
         "PL",
@@ -908,7 +985,7 @@
       "relevancia_score": 94,
       "nivel_confianca": "alta",
       "ttl_horas": 18,
-      "horas_em_destaque": 12,
+      "horas_em_destaque": 18,
       "veiculos_origem": [
         "The Kyiv Independent"
       ],
@@ -917,20 +994,21 @@
       ],
       "palavras_chave": [
         "Polônia",
-        "Mísseis russos",
-        "OTAN",
-        "Espaço aéreo"
+        "mísseis russos",
+        "Kh-101",
+        "espaço aéreo",
+        "OTAN"
       ],
       "data_publicacao": "2026-11-22T23:26:30Z",
       "links_internos_relacionados": [
         {
           "titulo_existente": "O que é uma sanção internacional?",
           "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-sancao-internacional",
-          "motivo_conexao": "Explica o contexto geopolítico das restrições e respostas diplomáticas a conflitos internacionais."
+          "motivo_conexao": "Explica o contexto geopolítico de pressões e respostas multilaterais a conflitos no Leste Europeu."
         }
       ],
       "expires_at": "2026-11-23T17:36:25Z",
-      "updated_at": "2026-11-22T23:38:00Z"
+      "updated_at": "2026-11-23T00:55:09Z"
     },
     {
       "slug": "ministro-educacao-coreia-do-sul-renuncia-fraudes-exames",
@@ -1003,40 +1081,40 @@
     },
     {
       "slug": "escolas-ja-podem-se-inscrever-para-olitef-2027",
-      "titulo_curto": "MEC e Tesouro Nacional abrem inscrições para a Olimpíada do Tesouro Direto de Educação Financeira de 2027",
-      "resumo_pulso": "Conforme comunicado oficial da Agência Brasil (EBC), estão abertas as inscrições para a Olimpíada do Tesouro Direto de Educação Financeira (OLITEF) de 2027, destinada a estudantes do Ensino Fundamental, Médio e EJA em todo o país.",
-      "impacto_pratico": "Estímulo à alfabetização financeira de jovens estudantes da rede pública e privada no Brasil.",
       "categoria": "Sociedade_Cultura",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "urgencia_score": 75,
-      "relevancia_score": 80,
-      "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 12,
-      "veiculos_origem": [
-        "Agência Brasil (EBC)"
-      ],
+      "expires_at": "2026-11-23T23:38:00Z",
+      "updated_at": "2026-11-22T23:38:00Z",
       "fontes_urls": [
         "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/escolas-ja-podem-se-inscrever-para-olitef-2027"
       ],
+      "resumo_pulso": "Conforme comunicado oficial da Agência Brasil (EBC), estão abertas as inscrições para a Olimpíada do Tesouro Direto de Educação Financeira (OLITEF) de 2027, destinada a estudantes do Ensino Fundamental, Médio e EJA em todo o país.",
+      "titulo_curto": "MEC e Tesouro Nacional abrem inscrições para a Olimpíada do Tesouro Direto de Educação Financeira de 2027",
       "palavras_chave": [
         "Educação financeira",
         "Tesouro Direto",
         "Escolas",
         "OLITEF"
       ],
+      "urgencia_score": 75,
       "data_publicacao": "2026-11-22T22:00:00Z",
+      "impacto_pratico": "Estímulo à alfabetização financeira de jovens estudantes da rede pública e privada no Brasil.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Agência Brasil (EBC)"
+      ],
+      "relevancia_score": 80,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "BR"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "Economia no Brasil",
           "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
-          "motivo_conexao": "Contextua a importância da educação financeira e da gestão de recursos no cenário econômico nacional."
+          "motivo_conexao": "Contextua a importância da educação financeira e da gestão de recursos no cenário econômico nacional.",
+          "titulo_existente": "Economia no Brasil"
         }
-      ],
-      "expires_at": "2026-11-23T23:38:00Z",
-      "updated_at": "2026-11-22T23:38:00Z"
+      ]
     },
     {
       "slug": "russia-tenta-desconectar-fontes-energia-odesa-dnipropetrovsk-zelensky",
@@ -1150,41 +1228,41 @@
     },
     {
       "slug": "conflitos-no-congo-dificultam-resposta-surto-ebola-oms",
+      "titulo_curto": "OMS alerta que combates armados no leste do Congo colocam em risco pacientes e operações contra o Ebola",
+      "resumo_pulso": "Segundo alerta emitido pelo diretor-geral da Organização Mundial da Saúde (OMS) e reportado pela Al Jazeera English, a intensificação de confrontos militares nas proximidades de hospitais no leste da República Democrática do Congo tem comprometido severamente o combate ao surto de Ebola e exposto profissionais de saúde a graves riscos.",
+      "impacto_pratico": "Preocupação sanitária internacional com a expansão de epidemias em zonas de conflito armado sem assistência médica contínua.",
       "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-23T21:18:43Z",
-      "updated_at": "2026-11-22T21:45:26Z",
-      "fontes_urls": [
-        "https://www.infomoney.com.br/mundo/conflitos-no-congo-dificultam-resposta-ao-surto-de-ebola-diz-diretor-geral-%e2%81%a0da-oms/"
-      ],
-      "resumo_pulso": "Segundo alerta divulgado pelo diretor-geral da Organização Mundial da Saúde (OMS) e reportado pelo InfoMoney, a intensificação de ataques e conflitos armados no leste do Congo desde o final de outubro tem comprometido severamente a resposta médica e o combate ao surto de Ebola na região.",
-      "titulo_curto": "Conflitos no leste do Congo agravam surto de Ebola e dificultam assistência da OMS",
-      "palavras_chave": [
-        "Congo",
-        "Ebola",
-        "OMS",
-        "Crise Humanitária",
-        "Saúde Pública"
-      ],
-      "urgencia_score": 93,
-      "data_publicacao": "2026-11-22T21:15:00Z",
-      "impacto_pratico": "Risco de disseminação sanitária e restrições severas ao trabalho humanitário internacional.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "InfoMoney Mercados"
-      ],
-      "relevancia_score": 90,
-      "horas_em_destaque": 12,
       "paises_envolvidos": [
         "CD"
       ],
+      "urgencia_score": 93,
+      "relevancia_score": 90,
+      "nivel_confianca": "alta",
+      "ttl_horas": 24,
+      "horas_em_destaque": 24,
+      "veiculos_origem": [
+        "Al Jazeera English"
+      ],
+      "fontes_urls": [
+        "https://www.aljazeera.com/news/2026/11/23/who-chief-calls-for-peace-amid-heavy-fighting-in-ebola-hit-dr-congo-region?traffic_source=rss"
+      ],
+      "palavras_chave": [
+        "OMS",
+        "Ebola",
+        "Congo",
+        "conflito armado",
+        "saúde pública"
+      ],
+      "data_publicacao": "2026-11-22T21:15:00Z",
       "links_internos_relacionados": [
         {
+          "titulo_existente": "Movimentos sociais e parlamentares debatem investimentos em saúde, educação e transição ecológica",
           "url_existente": "https://www.rodandoomundo.com.br/saude",
-          "motivo_conexao": "Aborda diretrizes globais e nacionais voltadas para a preservação de sistemas de saúde.",
-          "titulo_existente": "Movimentos sociais e parlamentares debatem investimentos em saúde, educação e transição ecológica"
+          "motivo_conexao": "Aborda diretrizes globais e nacionais de fortalecimento de sistemas de saúde frente a emergências sanitárias."
         }
-      ]
+      ],
+      "expires_at": "2026-11-23T21:18:43Z",
+      "updated_at": "2026-11-23T00:55:09Z"
     },
     {
       "slug": "reforma-tributaria-positiva-nanoempreendedores-associacao",
@@ -1378,40 +1456,40 @@
     },
     {
       "slug": "democratas-atingem-258-cadeiras-camara-eua",
-      "titulo_curto": "Partido Democrata conquista maioria expressiva na Câmara dos EUA após vitória na Carolina do Norte",
-      "resumo_pulso": "Segundo reportagem da Al Jazeera English, a vitória em assento adicional na Carolina do Norte garantiu aos democratas 258 assentos na Câmara dos Representantes, consolidando a maior bancada do partido na casa legislativa desde 1992.",
-      "impacto_pratico": "Redesenho das negociações legislativas em Washington e maior capacidade de oposição à agenda da Casa Branca.",
       "categoria": "Geopolitica_Relacoes",
-      "paises_envolvidos": [
-        "US"
-      ],
-      "urgencia_score": 91,
-      "relevancia_score": 92,
-      "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 12,
-      "veiculos_origem": [
-        "Al Jazeera English"
-      ],
+      "expires_at": "2026-11-23T19:26:46Z",
+      "updated_at": "2026-11-22T23:38:00Z",
       "fontes_urls": [
         "https://www.aljazeera.com/news/2026/11/22/democrats-win-largest-house-majority-since-1992-with-north-carolina-seat"
       ],
+      "resumo_pulso": "Segundo reportagem da Al Jazeera English, a vitória em assento adicional na Carolina do Norte garantiu aos democratas 258 assentos na Câmara dos Representantes, consolidando a maior bancada do partido na casa legislativa desde 1992.",
+      "titulo_curto": "Partido Democrata conquista maioria expressiva na Câmara dos EUA após vitória na Carolina do Norte",
       "palavras_chave": [
         "EUA",
         "Câmara dos Representantes",
         "Partido Democrata",
         "Congresso"
       ],
+      "urgencia_score": 91,
       "data_publicacao": "2026-11-22T19:19:45Z",
+      "impacto_pratico": "Redesenho das negociações legislativas em Washington e maior capacidade de oposição à agenda da Casa Branca.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Al Jazeera English"
+      ],
+      "relevancia_score": 92,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "US"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "Política nos Estados Unidos",
           "url_existente": "https://www.rodandoomundo.com.br/politica/estados-unidos",
-          "motivo_conexao": "Aprofunda a análise sobre a dinâmica de poder entre o Congresso americano e a Casa Branca."
+          "motivo_conexao": "Aprofunda a análise sobre a dinâmica de poder entre o Congresso americano e a Casa Branca.",
+          "titulo_existente": "Política nos Estados Unidos"
         }
-      ],
-      "expires_at": "2026-11-23T19:26:46Z",
-      "updated_at": "2026-11-22T23:38:00Z"
+      ]
     },
     {
       "slug": "ataque-russo-supermercado-kyiv-vyshneve",
@@ -1454,168 +1532,81 @@
       ]
     },
     {
-      "slug": "pulso-1-20261122-1840",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 6,
-      "expires_at": "2026-11-23T00:40:42Z",
-      "updated_at": "2026-11-22T18:40:42Z",
-      "fontes_urls": [
-        "https://www.aljazeera.com/video/newsfeed/2026/11/22/civilians-killed-in-rsf-drone-strikes-in-sudan?traffic_source=rss"
-      ],
-      "resumo_pulso": "Segundo Al Jazeera English, Several civilians have been killed and several buildings damaged in drone strikes by Sudan’s Rapid Support Forces..",
-      "titulo_curto": "Civilians killed in RSF drone strikes in Sudan",
-      "palavras_chave": [
-        "radar",
-        "tempo real",
-        "qa"
+      "slug": "pane-sistema-trava-voos-delta-atlanta-eua",
+      "titulo_curto": "Administração Federal de Aviação dos EUA suspende voos da Delta em Atlanta após falha sistêmica",
+      "resumo_pulso": "Conforme apuração do Poder360, a Administração Federal de Aviação (FAA) dos Estados Unidos determinou a paralisação temporária das operações da Delta Air Lines com partidas e chegadas no Aeroporto Internacional Hartsfield-Jackson, em Atlanta, em decorrência de uma pane em sistemas automatizados da companhia.",
+      "impacto_pratico": "Possíveis atrasos e cancelamentos em conexões internacionais que passam pelo principal hub aeroportuário de Atlanta.",
+      "categoria": "Mobilidade_Fronteiras",
+      "paises_envolvidos": [
+        "US"
       ],
       "urgencia_score": 90,
-      "data_publicacao": "2026-11-22T18:12:07+00:00",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Al Jazeera English"
-      ],
       "relevancia_score": 88,
-      "horas_em_destaque": 6,
-      "paises_envolvidos": [
-        "QA"
+      "nivel_confianca": "alta",
+      "ttl_horas": 12,
+      "horas_em_destaque": 12,
+      "veiculos_origem": [
+        "Poder360"
       ],
+      "fontes_urls": [
+        "https://www.poder360.com.br/poder-internacional/agencia-de-aviacao-suspende-voos-da-delta-apos-falha-de-sistema/"
+      ],
+      "palavras_chave": [
+        "Delta Air Lines",
+        "Atlanta",
+        "FAA",
+        "aviação",
+        "EUA"
+      ],
+      "data_publicacao": "2026-11-22T17:55:10.993874+00:00",
       "links_internos_relacionados": [
         {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
-          "motivo_conexao": "Compreenda por que os preços sobem de forma generalizada, como o IPCA é calculado e de que maneira os juros do Banco Central afetam o poder de compra.",
-          "titulo_existente": "O que é inflação?"
-        },
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/como-funcionam-as-eleicoes-nos-eua",
-          "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos.",
-          "titulo_existente": "Como funcionam as eleições nos EUA?"
+          "titulo_existente": "Política nos Estados Unidos",
+          "url_existente": "https://www.rodandoomundo.com.br/politica/estados-unidos",
+          "motivo_conexao": "Relaciona-se ao monitoramento de agências reguladoras federais e infraestrutura nos Estados Unidos."
         }
-      ]
+      ],
+      "expires_at": "2026-11-23T12:55:09Z",
+      "updated_at": "2026-11-23T00:55:09Z"
     },
     {
-      "slug": "pulso-2-20261122-1840",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 6,
-      "expires_at": "2026-11-23T00:40:42Z",
-      "updated_at": "2026-11-22T18:40:42Z",
-      "fontes_urls": [
-        "https://www.aljazeera.com/video/newsfeed/2026/11/22/suspected-drone-attack-causes-explosion-on-russian-ship-in-libya?traffic_source=rss"
-      ],
-      "resumo_pulso": "Segundo Al Jazeera English, A Russian ship has been struck in a suspected drone attack while docked at Libya’s Benghazi naval base..",
-      "titulo_curto": "Suspected drone attack causes explosion on Russian ship in Libya",
-      "palavras_chave": [
-        "radar",
-        "tempo real",
-        "qa"
-      ],
-      "urgencia_score": 85,
-      "data_publicacao": "2026-11-22T18:11:30+00:00",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Al Jazeera English"
-      ],
-      "relevancia_score": 84,
-      "horas_em_destaque": 6,
+      "slug": "chuvas-no-rs-afetam-mais-de-25-mil-pessoas-em-42-cidades",
+      "titulo_curto": "Defesa Civil atualiza para 46 o número de municípios atingidos por temporais severos no Rio Grande do Sul",
+      "resumo_pulso": "Conforme apuração da Agência Brasil (EBC) e da BBC News Brasil, a Defesa Civil do Rio Grande do Sul atualizou para 46 o número de municípios afetados pelas tempestades registradas desde sexta-feira (20). O município de Tupanciretã contabiliza cinco óbitos e centenas de feridos, enquanto equipes de resgate mantêm o atendimento às mais de 25 mil pessoas impactadas.",
+      "impacto_pratico": "Atenção redobrada para motoristas e moradores em áreas de risco no Rio Grande do Sul devido a alagamentos e bloqueios em rodovias.",
+      "categoria": "Ciencia_Clima",
       "paises_envolvidos": [
-        "QA"
+        "BR"
       ],
+      "urgencia_score": 98,
+      "relevancia_score": 96,
+      "nivel_confianca": "alta",
+      "ttl_horas": 24,
+      "horas_em_destaque": 24,
+      "veiculos_origem": [
+        "Agência Brasil (EBC)",
+        "BBC News Brasil"
+      ],
+      "fontes_urls": [
+        "https://agenciabrasil.ebc.com.br/meio-ambiente/noticia/2026-11/temporais-atingem-46-municipios-e-mais-de-25-mil-pessoas-no-rs"
+      ],
+      "palavras_chave": [
+        "Rio Grande do Sul",
+        "temporais",
+        "Defesa Civil",
+        "Tupanciretã",
+        "chuvas"
+      ],
+      "data_publicacao": "2026-11-22T16:26:04.515171+00:00",
       "links_internos_relacionados": [
         {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
-          "motivo_conexao": "Compreenda por que os preços sobem de forma generalizada, como o IPCA é calculado e de que maneira os juros do Banco Central afetam o poder de compra.",
-          "titulo_existente": "O que é inflação?"
-        },
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/como-funcionam-as-eleicoes-nos-eua",
-          "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos.",
-          "titulo_existente": "Como funcionam as eleições nos EUA?"
+          "titulo_existente": "Clima, Amazônia e Transição Energética",
+          "url_existente": "https://www.rodandoomundo.com.br/clima",
+          "motivo_conexao": "Contextualiza a frequência de eventos climáticos extremos e o impacto de desastres naturais no Brasil."
         }
-      ]
-    },
-    {
-      "slug": "pulso-3-20261122-1840",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 6,
-      "expires_at": "2026-11-23T00:40:42Z",
-      "updated_at": "2026-11-22T18:40:42Z",
-      "fontes_urls": [
-        "https://www.aljazeera.com/video/newsfeed/2026/11/22/un-climate-talks-collapse-without-a-deal?traffic_source=rss"
       ],
-      "resumo_pulso": "Segundo Al Jazeera English, The longest UN climate summit in history ended without a deal in Turkiye, the first such failure since 2009..",
-      "titulo_curto": "UN climate talks collapse without a deal",
-      "palavras_chave": [
-        "radar",
-        "tempo real",
-        "qa"
-      ],
-      "urgencia_score": 80,
-      "data_publicacao": "2026-11-22T18:04:25+00:00",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Al Jazeera English"
-      ],
-      "relevancia_score": 80,
-      "horas_em_destaque": 6,
-      "paises_envolvidos": [
-        "QA"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
-          "motivo_conexao": "Compreenda por que os preços sobem de forma generalizada, como o IPCA é calculado e de que maneira os juros do Banco Central afetam o poder de compra.",
-          "titulo_existente": "O que é inflação?"
-        },
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/como-funcionam-as-eleicoes-nos-eua",
-          "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos.",
-          "titulo_existente": "Como funcionam as eleições nos EUA?"
-        }
-      ]
-    },
-    {
-      "slug": "pulso-4-20261122-1840",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 6,
-      "expires_at": "2026-11-23T00:40:42Z",
-      "updated_at": "2026-11-22T18:40:42Z",
-      "fontes_urls": [
-        "https://www.aljazeera.com/video/al-jazeera-world/2026/11/22/coxs-bazar-rohingya-life-in-exile?traffic_source=rss"
-      ],
-      "resumo_pulso": "Segundo Al Jazeera English, Rohingya families face hunger, loss and an uncertain future during Ramadan..",
-      "titulo_curto": "Cox’s Bazar: Rohingya Life in Exile",
-      "palavras_chave": [
-        "radar",
-        "tempo real",
-        "qa"
-      ],
-      "urgencia_score": 75,
-      "data_publicacao": "2026-11-22T18:02:06+00:00",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Al Jazeera English"
-      ],
-      "relevancia_score": 76,
-      "horas_em_destaque": 6,
-      "paises_envolvidos": [
-        "QA"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
-          "motivo_conexao": "Compreenda por que os preços sobem de forma generalizada, como o IPCA é calculado e de que maneira os juros do Banco Central afetam o poder de compra.",
-          "titulo_existente": "O que é inflação?"
-        },
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/como-funcionam-as-eleicoes-nos-eua",
-          "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos.",
-          "titulo_existente": "Como funcionam as eleições nos EUA?"
-        }
-      ]
+      "expires_at": "2026-11-24T00:55:09Z",
+      "updated_at": "2026-11-23T00:55:09Z"
     }
   ],
   "temas_curadoria": [
