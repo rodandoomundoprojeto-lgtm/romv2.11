@@ -600,7 +600,7 @@ async function coletarResumoDoDiaLocal() {
         const ctrl = new AbortController();
         const t = setTimeout(() => ctrl.abort(), 5000);
         const res = await fetch(f.url, {
-          cache: 'no-store',
+          cf: { cacheTtl: 0, cacheEverything: false },
           headers: {
             'User-Agent': 'Mozilla/5.0 (compatible; RodandoOMundoBot/2.12; +https://www.rodandoomundo.com.br)',
             'Cache-Control': 'no-cache',
@@ -721,29 +721,35 @@ async function coletarResumoDoDiaLocal() {
 }
 
 async function coletarNoticias() {
-  try {
-    const ctrl = new AbortController();
-    const t = setTimeout(() => ctrl.abort(), 7000);
-    const apiUrl = `https://www.rodandoomundo.com.br/api/resumo?_t=${Date.now()}&refresh=1`;
-    const res = await fetch(apiUrl, {
-      cache: 'no-store',
-      headers: {
-        Accept: 'application/json',
-        'Cache-Control': 'no-cache',
-        Pragma: 'no-cache',
-        'User-Agent': 'Mozilla/5.0 (compatible; RodandoOMundoWorker/2.1; +https://www.rodandoomundo.com.br)'
-      },
-      signal: ctrl.signal
-    });
-    clearTimeout(t);
-    if (res.ok) {
-      const data = await res.json();
-      if (data && Array.isArray(data.items) && data.items.length >= 3 && !data.fallback) {
-        return data.items.map((item, idx) => normalizarItemResumo(item, idx));
+  const apiUrls = [
+    `https://www.rodandoomundo.com.br/api/resumo?_t=${Date.now()}&refresh=1`,
+    `https://rodandoomundo.pages.dev/api/resumo?_t=${Date.now()}&refresh=1`
+  ];
+
+  for (const apiUrl of apiUrls) {
+    try {
+      const ctrl = new AbortController();
+      const t = setTimeout(() => ctrl.abort(), 7000);
+      const res = await fetch(apiUrl, {
+        cf: { cacheTtl: 0, cacheEverything: false },
+        headers: {
+          Accept: 'application/json',
+          'Cache-Control': 'no-cache',
+          Pragma: 'no-cache',
+          'User-Agent': 'Mozilla/5.0 (compatible; RodandoOMundoWorker/2.1; +https://www.rodandoomundo.com.br)'
+        },
+        signal: ctrl.signal
+      });
+      clearTimeout(t);
+      if (res.ok) {
+        const data = await res.json();
+        if (data && Array.isArray(data.items) && data.items.length >= 3 && !data.fallback) {
+          return data.items.map((item, idx) => normalizarItemResumo(item, idx));
+        }
       }
+    } catch (err) {
+      console.warn('Fallback ao tentar coletar notícias no Worker:', apiUrl, err.message);
     }
-  } catch (err) {
-    console.warn('Fallback para coletor RSS local no Worker:', err.message);
   }
 
   return coletarResumoDoDiaLocal();
@@ -966,7 +972,8 @@ async function coletarPatrocinadoresResumo(env = {}) {
   const endpoints = [
     `https://www.rodandoomundo.com.br/api/patrocinadores?_t=${Date.now()}`,
     `https://www.rodandoomundo.com.br/v2/patrocinadores?_t=${Date.now()}`,
-    `https://www.rodandoomundo.com.br/data/patrocinadores.json?_t=${Date.now()}`
+    `https://www.rodandoomundo.com.br/data/patrocinadores.json?_t=${Date.now()}`,
+    `https://rodandoomundo.pages.dev/api/patrocinadores?_t=${Date.now()}`
   ];
 
   for (const url of endpoints) {
@@ -974,7 +981,7 @@ async function coletarPatrocinadoresResumo(env = {}) {
       const ctrl = new AbortController();
       const t = setTimeout(() => ctrl.abort(), 4500);
       const res = await fetch(url, {
-        cache: 'no-store',
+        cf: { cacheTtl: 0, cacheEverything: false },
         headers: {
           Accept: 'application/json',
           'Cache-Control': 'no-cache',
