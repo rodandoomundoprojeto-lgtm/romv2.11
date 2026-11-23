@@ -2,9 +2,104 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-23T02:18:29Z",
-  "batch_id": "20261123-0217",
+  "updatedAt": "2026-11-23T03:29:17Z",
+  "batch_id": "20261123-0328",
   "temas_ativos": [
+    {
+      "slug": "camara-vota-projeto-de-ajuste-fiscal-nesta-segunda",
+      "titulo_tema": "Câmara dos Deputados pauta votação do projeto de ajuste fiscal com projeção de economizar R$ 50 bi",
+      "titulo_curto": "Câmara dos Deputados pauta votação do projeto de ajuste fiscal com projeção de economizar R$ 50 bi",
+      "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Economia",
+      "categoria": "Economia_Comercio",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 96,
+      "urgencia_score": 95,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-24T03:29:17Z",
+      "palavras_chave_busca": [
+        "ajuste fiscal",
+        "câmara dos deputados",
+        "metas fiscais",
+        "orçamento",
+        "brasil"
+      ],
+      "palavras_chave": [
+        "ajuste fiscal",
+        "câmara dos deputados",
+        "metas fiscais",
+        "orçamento",
+        "brasil"
+      ],
+      "gatilho_vitrine": "Conforme reportado pelo G1 Política, a Câmara dos Deputados incluiu em sua pauta desta segunda-feira a votação final da proposta de ajuste fiscal enviada pelo Poder Executivo. O texto, mantido sem alterações pelo relator Mauro Benevides após aprovação no Senado, prevê gerar uma economia de até R$ 50 bilhões até 2027.",
+      "resumo_pulso": "Conforme reportado pelo G1 Política, a Câmara dos Deputados incluiu em sua pauta desta segunda-feira a votação final da proposta de ajuste fiscal enviada pelo Poder Executivo. O texto, mantido sem alterações pelo relator Mauro Benevides após aprovação no Senado, prevê gerar uma economia de até R$ 50 bilhões até 2027.",
+      "sintese_nerd": "A apreciação da matéria busca reequilibrar as metas fiscais do governo federal, influenciando diretamente as expectativas de juros e o orçamento de investimentos públicos.",
+      "impacto_pratico": "A apreciação da matéria busca reequilibrar as metas fiscais do governo federal, influenciando diretamente as expectativas de juros e o orçamento de investimentos públicos.",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "veiculos_origem": [
+        "G1 Política"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/politica/noticia/2026/11/23/camara-vota-projeto-de-ajuste-fiscal-nesta-segunda-projecao-de-economia-e-de-r-50-bilhoes-em-2027.ghtml"
+      ],
+      "data_publicacao": "2026-11-23T03:00:01Z",
+      "updated_at": "2026-11-23T03:29:17Z"
+    },
+    {
+      "slug": "agentes-ice-prendem-mexicanos-em-aeroporto-nos-eua",
+      "titulo_tema": "Prisão de pai e filha mexicanos por agentes do ICE em aeroporto nos EUA gera forte repercussão",
+      "titulo_curto": "Prisão de pai e filha mexicanos por agentes do ICE em aeroporto nos EUA gera forte repercussão",
+      "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categoria": "Mobilidade_Fronteiras",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 92,
+      "urgencia_score": 91,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-24T03:29:17Z",
+      "palavras_chave_busca": [
+        "ice",
+        "imigração",
+        "estados unidos",
+        "seattle",
+        "direitos civis"
+      ],
+      "palavras_chave": [
+        "ice",
+        "imigração",
+        "estados unidos",
+        "seattle",
+        "direitos civis"
+      ],
+      "gatilho_vitrine": "Segundo apuração do G1 Mundo, a prisão truculenta de um pai e de sua filha por agentes de imigração norte-americanos (ICE) no aeroporto de Seattle provocou ampla indignação após imagens circularem nas redes sociais. As autoridades abordaram a família mexicana quando ela embarcava para uma cerimônia religiosa na Califórnia.",
+      "resumo_pulso": "Segundo apuração do G1 Mundo, a prisão truculenta de um pai e de sua filha por agentes de imigração norte-americanos (ICE) no aeroporto de Seattle provocou ampla indignação após imagens circularem nas redes sociais. As autoridades abordaram a família mexicana quando ela embarcava para uma cerimônia religiosa na Califórnia.",
+      "sintese_nerd": "O episódio exemplifica a rigidez nas operações de fiscalização do Serviço de Imigração dos EUA, impactando o fluxo de viajantes e comunidades imigrantes nas áreas de trânsito internacional.",
+      "impacto_pratico": "O episódio exemplifica a rigidez nas operações de fiscalização do Serviço de Imigração dos EUA, impactando o fluxo de viajantes e comunidades imigrantes nas áreas de trânsito internacional.",
+      "paises_envolvidos": [
+        "US",
+        "MX"
+      ],
+      "veiculos_origem": [
+        "G1 Mundo"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/mundo/noticia/2026/11/23/pai-e-filha-presos-pelo-ice-nos-eua.ghtml"
+      ],
+      "data_publicacao": "2026-11-23T03:00:01Z",
+      "updated_at": "2026-11-23T03:29:17Z"
+    },
     {
       "slug": "escalada-estrito-ormuz-ataques-petroleiros-preco-petroleo",
       "status": "em_alta",
@@ -286,28 +381,20 @@
     },
     {
       "slug": "polish-authorities-find-russian-missile-remains-at-three-sites",
-      "titulo_tema": "Polônia confirma vestígios de mísseis russos e apura tentativas de atentados contra dissidentes na Europa",
-      "titulo_curto": "Polônia confirma vestígios de mísseis russos e apura tentativas de atentados contra dissidentes na Europa",
       "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Geopolitica_Radar",
       "categoria": "Geopolitica_Relacoes",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 95,
-      "urgencia_score": 96,
       "ttl_horas": 18,
       "expires_at": "2026-11-23T17:36:25Z",
-      "palavras_chave_busca": [
-        "polônia",
-        "rússia",
-        "mísseis",
-        "segurança",
-        "otan"
+      "updated_at": "2026-11-23T02:18:29Z",
+      "fontes_urls": [
+        "https://www.aljazeera.com/news/2026/11/23/poland-says-russia-tried-to-assassinate-ukrainian-rapper-twice?traffic_source=rss",
+        "https://kyivindependent.com/polish-authorities-find-russian-missile-remains-at-three-sites-following-airspace-incursion/"
       ],
+      "titulo_tema": "Polônia confirma vestígios de mísseis russos e apura tentativas de atentados contra dissidentes na Europa",
+      "resumo_pulso": "Segundo informações da Al Jazeera e do The Kyiv Independent, autoridades polonesas confirmaram a descoberta de fragmentos de mísseis russos Kh-101 em três localidades do leste do país após incursão aérea. Em paralelo, Varsóvia revelou investigações sobre planos de atentados direcionados a figuras dissidentes.",
+      "sintese_nerd": "Aumento da tensão de segurança nas fronteiras orientais da União Europeia e intensificação de medidas defensivas da OTAN.",
+      "titulo_curto": "Polônia confirma vestígios de mísseis russos e apura tentativas de atentados contra dissidentes na Europa",
+      "rota_editoria": "/radar",
       "palavras_chave": [
         "polônia",
         "rússia",
@@ -315,25 +402,33 @@
         "segurança",
         "otan"
       ],
+      "urgencia_score": 96,
+      "data_publicacao": "2026-11-22T23:26:30Z",
       "gatilho_vitrine": "Segundo informações da Al Jazeera e do The Kyiv Independent, autoridades polonesas confirmaram a descoberta de fragmentos de mísseis russos Kh-101 em três localidades do leste do país após incursão aérea. Em paralelo, Varsóvia revelou investigações sobre planos de atentados direcionados a figuras dissidentes.",
-      "resumo_pulso": "Segundo informações da Al Jazeera e do The Kyiv Independent, autoridades polonesas confirmaram a descoberta de fragmentos de mísseis russos Kh-101 em três localidades do leste do país após incursão aérea. Em paralelo, Varsóvia revelou investigações sobre planos de atentados direcionados a figuras dissidentes.",
-      "sintese_nerd": "Aumento da tensão de segurança nas fronteiras orientais da União Europeia e intensificação de medidas defensivas da OTAN.",
       "impacto_pratico": "Aumento da tensão de segurança nas fronteiras orientais da União Europeia e intensificação de medidas defensivas da OTAN.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "Al Jazeera English",
+        "The Kyiv Independent"
+      ],
+      "relevancia_score": 95,
       "paises_envolvidos": [
         "PL",
         "RU",
         "UA"
       ],
-      "veiculos_origem": [
-        "Al Jazeera English",
-        "The Kyiv Independent"
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
       ],
-      "fontes_urls": [
-        "https://www.aljazeera.com/news/2026/11/23/poland-says-russia-tried-to-assassinate-ukrainian-rapper-twice?traffic_source=rss",
-        "https://kyivindependent.com/polish-authorities-find-russian-missile-remains-at-three-sites-following-airspace-incursion/"
-      ],
-      "data_publicacao": "2026-11-22T23:26:30Z",
-      "updated_at": "2026-11-23T02:18:29Z"
+      "palavras_chave_busca": [
+        "polônia",
+        "rússia",
+        "mísseis",
+        "segurança",
+        "otan"
+      ]
     },
     {
       "slug": "ministro-educacao-coreia-do-sul-renuncia-fraudes-exames",
@@ -755,109 +850,86 @@
         "tributos",
         "mercado"
       ]
-    },
-    {
-      "slug": "ue-propoe-taxar-big-techs-para-financiar-orcamento",
-      "status": "novo",
-      "categoria": "Economia_Comercio",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-23T21:11:46Z",
-      "updated_at": "2026-11-22T21:11:46Z",
-      "fontes_urls": [
-        "https://www.poder360.com.br/poder-internacional/ue-propoe-taxar-big-techs-para-financiar-orcamento/"
-      ],
-      "titulo_tema": "União Europeia propõe nova taxação de big techs para reforçar financiamento de orçamento",
-      "resumo_pulso": "Conforme reportado pelo Poder360, a União Europeia apresentou uma proposta de taxação sobre a receita líquida anual de grandes empresas de tecnologia. A medida prevê atingir companhias que faturem pelo menos 50 milhões de euros no bloco e 750 milhões de euros globalmente.",
-      "sintese_nerd": "Grandes corporações de tecnologia global poderão enfrentar novos tributos operacionais, influenciando custos de serviços digitais na Europa.",
-      "titulo_curto": "União Europeia propõe nova taxação de big techs para reforçar financiamento de orçamento",
-      "rota_editoria": "/economia",
-      "palavras_chave": [
-        "união europeia",
-        "big techs",
-        "impostos",
-        "economia",
-        "regulação"
-      ],
-      "urgencia_score": 89,
-      "data_publicacao": "2026-11-22T20:45:47Z",
-      "gatilho_vitrine": "Conforme reportado pelo Poder360, a União Europeia apresentou uma proposta de taxação sobre a receita líquida anual de grandes empresas de tecnologia. A medida prevê atingir companhias que faturem pelo menos 50 milhões de euros no bloco e 750 milhões de euros globalmente.",
-      "impacto_pratico": "Grandes corporações de tecnologia global poderão enfrentar novos tributos operacionais, influenciando custos de serviços digitais na Europa.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "Poder360"
-      ],
-      "relevancia_score": 91,
-      "paises_envolvidos": [
-        "DE",
-        "FR",
-        "EU"
-      ],
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "união europeia",
-        "big techs",
-        "impostos",
-        "economia",
-        "regulação"
-      ]
-    },
-    {
-      "slug": "plataforma-streaming-filmes-paises-brics",
-      "status": "novo",
-      "categoria": "Sociedade_Cultura",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-23T21:18:43Z",
-      "updated_at": "2026-11-22T21:45:26Z",
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/cultura/noticia/2026-11/nova-plataforma-de-streaming-exibira-filmes-de-paises-do-brics"
-      ],
-      "titulo_tema": "Nova plataforma de streaming unificada exibirá produções cinematográficas dos países do Brics",
-      "resumo_pulso": "Segundo reportagem da Agência Brasil (EBC), uma nova plataforma de streaming voltada para a exibição de filmes dos países membros do Brics (Brasil, Rússia, Índia, China e África do Sul) foi lançada com o objetivo de fortalecer a cooperação cultural e oferecer uma alternativa à hegemonia midiática ocidental.",
-      "sintese_nerd": "Ampliação do acesso a conteúdos audiovisuais alternativos e fomento à indústria cultural dos países membros.",
-      "titulo_curto": "Nova plataforma de streaming unificada exibirá produções cinematográficas dos países do Brics",
-      "rota_editoria": "/cultura",
-      "palavras_chave": [
-        "brics",
-        "streaming",
-        "cultura",
-        "cinema",
-        "cooperação internacional"
-      ],
-      "urgencia_score": 80,
-      "data_publicacao": "2026-11-22T20:05:00Z",
-      "gatilho_vitrine": "Segundo reportagem da Agência Brasil (EBC), uma nova plataforma de streaming voltada para a exibição de filmes dos países membros do Brics (Brasil, Rússia, Índia, China e África do Sul) foi lançada com o objetivo de fortalecer a cooperação cultural e oferecer uma alternativa à hegemonia midiática ocidental.",
-      "impacto_pratico": "Ampliação do acesso a conteúdos audiovisuais alternativos e fomento à indústria cultural dos países membros.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "Agência Brasil (EBC)"
-      ],
-      "relevancia_score": 84,
-      "paises_envolvidos": [
-        "BR",
-        "RU",
-        "IN",
-        "CN",
-        "ZA"
-      ],
-      "categoria_primaria": "Cultura",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "brics",
-        "streaming",
-        "cultura",
-        "cinema",
-        "cooperação internacional"
-      ]
     }
   ],
   "noticias_quentes": [
+    {
+      "slug": "camara-vota-projeto-de-ajuste-fiscal-nesta-segunda",
+      "titulo_curto": "Câmara dos Deputados pauta votação do projeto de ajuste fiscal com projeção de economizar R$ 50 bi",
+      "resumo_pulso": "Conforme reportado pelo G1 Política, a Câmara dos Deputados incluiu em sua pauta desta segunda-feira a votação final da proposta de ajuste fiscal enviada pelo Poder Executivo. O texto, mantido sem alterações pelo relator Mauro Benevides após aprovação no Senado, prevê gerar uma economia de até R$ 50 bilhões até 2027.",
+      "impacto_pratico": "A apreciação da matéria busca reequilibrar as metas fiscais do governo federal, influenciando diretamente as expectativas de juros e o orçamento de investimentos públicos.",
+      "categoria": "Economia_Comercio",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "urgencia_score": 95,
+      "relevancia_score": 96,
+      "nivel_confianca": "alta",
+      "ttl_horas": 24,
+      "horas_em_destaque": 12,
+      "veiculos_origem": [
+        "G1 Política"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/politica/noticia/2026/11/23/camara-vota-projeto-de-ajuste-fiscal-nesta-segunda-projecao-de-economia-e-de-r-50-bilhoes-em-2027.ghtml"
+      ],
+      "palavras_chave": [
+        "ajuste fiscal",
+        "Câmara dos Deputados",
+        "metas fiscais",
+        "Orçamento",
+        "Brasil"
+      ],
+      "data_publicacao": "2026-11-23T03:00:01Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "O que é o Orçamento?",
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-o-orcamento",
+          "motivo_conexao": "Explica a importância do equilíbrio fiscal e como os recursos de impostos são distribuídos e fiscalizados no país."
+        }
+      ],
+      "expires_at": "2026-11-24T03:29:17Z",
+      "updated_at": "2026-11-23T03:29:17Z"
+    },
+    {
+      "slug": "agentes-ice-prendem-mexicanos-em-aeroporto-nos-eua",
+      "titulo_curto": "Prisão de pai e filha mexicanos por agentes do ICE em aeroporto nos EUA gera forte repercussão",
+      "resumo_pulso": "Segundo apuração do G1 Mundo, a prisão truculenta de um pai e de sua filha por agentes de imigração norte-americanos (ICE) no aeroporto de Seattle provocou ampla indignação após imagens circularem nas redes sociais. As autoridades abordaram a família mexicana quando ela embarcava para uma cerimônia religiosa na Califórnia.",
+      "impacto_pratico": "O episódio exemplifica a rigidez nas operações de fiscalização do Serviço de Imigração dos EUA, impactando o fluxo de viajantes e comunidades imigrantes nas áreas de trânsito internacional.",
+      "categoria": "Mobilidade_Fronteiras",
+      "paises_envolvidos": [
+        "US",
+        "MX"
+      ],
+      "urgencia_score": 91,
+      "relevancia_score": 92,
+      "nivel_confianca": "alta",
+      "ttl_horas": 24,
+      "horas_em_destaque": 12,
+      "veiculos_origem": [
+        "G1 Mundo"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/mundo/noticia/2026/11/23/pai-e-filha-presos-pelo-ice-nos-eua.ghtml"
+      ],
+      "palavras_chave": [
+        "ICE",
+        "imigração",
+        "Estados Unidos",
+        "Seattle",
+        "direitos civis"
+      ],
+      "data_publicacao": "2026-11-23T03:00:01Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "Política nos Estados Unidos",
+          "url_existente": "https://www.rodandoomundo.com.br/politica/estados-unidos",
+          "motivo_conexao": "Entenda as medidas de controle fronteiriço e imigratório implementadas pelo governo norte-americano."
+        }
+      ],
+      "expires_at": "2026-11-24T03:29:17Z",
+      "updated_at": "2026-11-23T03:29:17Z"
+    },
     {
       "slug": "south-korea-stock-market-tumbles-ai-bubble",
       "categoria": "Economia_Comercio",
@@ -975,28 +1047,16 @@
     },
     {
       "slug": "polish-authorities-find-russian-missile-remains-at-three-sites",
-      "titulo_curto": "Polônia confirma vestígios de mísseis russos e apura tentativas de atentados contra dissidentes na Europa",
-      "resumo_pulso": "Segundo informações da Al Jazeera e do The Kyiv Independent, autoridades polonesas confirmaram a descoberta de fragmentos de mísseis russos Kh-101 em três localidades do leste do país após incursão aérea. Em paralelo, Varsóvia revelou investigações sobre planos de atentados direcionados a figuras dissidentes.",
-      "impacto_pratico": "Aumento da tensão de segurança nas fronteiras orientais da União Europeia e intensificação de medidas defensivas da OTAN.",
       "categoria": "Geopolitica_Relacoes",
-      "paises_envolvidos": [
-        "PL",
-        "RU",
-        "UA"
-      ],
-      "urgencia_score": 96,
-      "relevancia_score": 95,
-      "nivel_confianca": "alta",
       "ttl_horas": 18,
-      "horas_em_destaque": 18,
-      "veiculos_origem": [
-        "Al Jazeera English",
-        "The Kyiv Independent"
-      ],
+      "expires_at": "2026-11-23T17:36:25Z",
+      "updated_at": "2026-11-23T02:18:29Z",
       "fontes_urls": [
         "https://www.aljazeera.com/news/2026/11/23/poland-says-russia-tried-to-assassinate-ukrainian-rapper-twice?traffic_source=rss",
         "https://kyivindependent.com/polish-authorities-find-russian-missile-remains-at-three-sites-following-airspace-incursion/"
       ],
+      "resumo_pulso": "Segundo informações da Al Jazeera e do The Kyiv Independent, autoridades polonesas confirmaram a descoberta de fragmentos de mísseis russos Kh-101 em três localidades do leste do país após incursão aérea. Em paralelo, Varsóvia revelou investigações sobre planos de atentados direcionados a figuras dissidentes.",
+      "titulo_curto": "Polônia confirma vestígios de mísseis russos e apura tentativas de atentados contra dissidentes na Europa",
       "palavras_chave": [
         "Polônia",
         "Rússia",
@@ -1004,16 +1064,28 @@
         "segurança",
         "OTAN"
       ],
+      "urgencia_score": 96,
       "data_publicacao": "2026-11-22T23:26:30Z",
+      "impacto_pratico": "Aumento da tensão de segurança nas fronteiras orientais da União Europeia e intensificação de medidas defensivas da OTAN.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Al Jazeera English",
+        "The Kyiv Independent"
+      ],
+      "relevancia_score": 95,
+      "horas_em_destaque": 18,
+      "paises_envolvidos": [
+        "PL",
+        "RU",
+        "UA"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "O que é uma sanção internacional?",
           "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-sancao-internacional",
-          "motivo_conexao": "Explica o contexto geopolítico e as medidas de pressão diplomática decorrentes de conflitos internacionais."
+          "motivo_conexao": "Explica o contexto geopolítico e as medidas de pressão diplomática decorrentes de conflitos internacionais.",
+          "titulo_existente": "O que é uma sanção internacional?"
         }
-      ],
-      "expires_at": "2026-11-23T17:36:25Z",
-      "updated_at": "2026-11-23T02:18:29Z"
+      ]
     },
     {
       "slug": "ministro-educacao-coreia-do-sul-renuncia-fraudes-exames",
@@ -1346,6 +1418,45 @@
       ]
     },
     {
+      "slug": "trump-ameaca-retomar-ataques-ao-ira-e-afundar-navios-bloqueio",
+      "titulo_curto": "Donald Trump ameaça retomar ataques ao Irã e afundar navios que tentarem furar bloqueio naval",
+      "resumo_pulso": "Segundo apuração do Iran International, o presidente dos EUA, Donald Trump, declarou que pretende retomar operações militares contra o Irã no início do ano caso não ocorra um acordo diplomático. O líder norte-americano também alertou que embarcações iranianas que tentarem romper o bloqueio naval dos EUA serão afundadas.",
+      "impacto_pratico": "A escalada de declarações entre Washington e Teerã eleva a volatilidade nas cotações internacionais do petróleo e amplia o risco no tráfego marítimo comercial do Oriente Médio.",
+      "categoria": "Geopolitica_Relacoes",
+      "paises_envolvidos": [
+        "US",
+        "IR"
+      ],
+      "urgencia_score": 96,
+      "relevancia_score": 94,
+      "nivel_confianca": "alta",
+      "ttl_horas": 18,
+      "horas_em_destaque": 12,
+      "veiculos_origem": [
+        "Iran International"
+      ],
+      "fontes_urls": [
+        "https://www.iranintl.com/en/202611226299"
+      ],
+      "palavras_chave": [
+        "Donald Trump",
+        "Irã",
+        "bloqueio naval",
+        "tensões geopolíticas",
+        "petróleo"
+      ],
+      "data_publicacao": "2026-11-22T20:58:58Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "O que é uma sanção internacional?",
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-sancao-internacional",
+          "motivo_conexao": "Detalha o funcionamento de restrições comerciais e bloqueios navais como instrumentos de pressão militar e diplomática."
+        }
+      ],
+      "expires_at": "2026-11-23T21:29:17Z",
+      "updated_at": "2026-11-23T03:29:17Z"
+    },
+    {
       "slug": "ue-propoe-taxar-big-techs-para-financiar-orcamento",
       "categoria": "Economia_Comercio",
       "ttl_horas": 24,
@@ -1495,125 +1606,6 @@
           "titulo_existente": "Política nos Estados Unidos"
         }
       ]
-    },
-    {
-      "slug": "ataque-russo-supermercado-kyiv-vyshneve",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 18,
-      "expires_at": "2026-11-23T13:26:46Z",
-      "updated_at": "2026-11-22T21:11:46Z",
-      "fontes_urls": [
-        "https://www.ukrinform.net/rubric-ato/4187471-death-toll-from-russian-strike-on-supermarket-in-vyshneve-rises-to-three.html"
-      ],
-      "resumo_pulso": "Segundo atualização da Ukrinform e do The Kyiv Independent, subiu para três o número de mortos confirmados no bombardeio russo que atingiu um supermercado em horário comercial em Vyshneve, na região de Kyiv. A ofensiva deixou ainda 15 feridos, incluindo três crianças.",
-      "titulo_curto": "Balanço de ataque russo contra supermercado em Vyshneve sobe para três mortos",
-      "palavras_chave": [
-        "Ucrânia",
-        "Kyiv",
-        "Ataque Russo",
-        "Vyshneve",
-        "Guerra"
-      ],
-      "urgencia_score": 96,
-      "data_publicacao": "2026-11-22T18:43:47Z",
-      "impacto_pratico": "A intensificação de ataques contra infraestruturas comerciais e civis eleva os riscos humanitários e afeta o comércio local na Ucrânia.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Ukrinform",
-        "The Kyiv Independent"
-      ],
-      "relevancia_score": 94,
-      "horas_em_destaque": 18,
-      "paises_envolvidos": [
-        "UA",
-        "RU"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-sancao-internacional",
-          "motivo_conexao": "Explica o arcabouço de restrições diplomáticas e econômicas aplicadas em decorrência de conflitos armados.",
-          "titulo_existente": "O que é uma sanção internacional?"
-        }
-      ]
-    },
-    {
-      "slug": "pane-sistema-trava-voos-delta-atlanta-eua",
-      "categoria": "Mobilidade_Fronteiras",
-      "ttl_horas": 12,
-      "expires_at": "2026-11-23T12:55:09Z",
-      "updated_at": "2026-11-23T00:55:09Z",
-      "fontes_urls": [
-        "https://www.poder360.com.br/poder-internacional/agencia-de-aviacao-suspende-voos-da-delta-apos-falha-de-sistema/"
-      ],
-      "resumo_pulso": "Conforme apuração do Poder360, a Administração Federal de Aviação (FAA) dos Estados Unidos determinou a paralisação temporária das operações da Delta Air Lines com partidas e chegadas no Aeroporto Internacional Hartsfield-Jackson, em Atlanta, em decorrência de uma pane em sistemas automatizados da companhia.",
-      "titulo_curto": "Administração Federal de Aviação dos EUA suspende voos da Delta em Atlanta após falha sistêmica",
-      "palavras_chave": [
-        "Delta Air Lines",
-        "Atlanta",
-        "FAA",
-        "aviação",
-        "EUA"
-      ],
-      "urgencia_score": 90,
-      "data_publicacao": "2026-11-22T17:55:10.993874+00:00",
-      "impacto_pratico": "Possíveis atrasos e cancelamentos em conexões internacionais que passam pelo principal hub aeroportuário de Atlanta.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Poder360"
-      ],
-      "relevancia_score": 88,
-      "horas_em_destaque": 12,
-      "paises_envolvidos": [
-        "US"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/politica/estados-unidos",
-          "motivo_conexao": "Relaciona-se ao monitoramento de agências reguladoras federais e infraestrutura nos Estados Unidos.",
-          "titulo_existente": "Política nos Estados Unidos"
-        }
-      ]
-    },
-    {
-      "slug": "chuvas-no-rs-afetam-mais-de-25-mil-pessoas-em-42-cidades",
-      "titulo_curto": "Defesa Civil do Rio Grande do Sul atualiza alerta e aponta terça-feira como dia mais crítico para temporais",
-      "resumo_pulso": "Conforme apuração da Agência Brasil e do Poder360, a Defesa Civil do Rio Grande do Sul elevou para 46 o número de municípios afetados pelas fortes tempestades que atingem o Estado, com cinco mortes registradas e Tupanciretã entre os mais atingidos. As autoridades mantêm alerta máximo para a metade norte e indicam esta terça-feira como o momento mais crítico para novos temporais.",
-      "impacto_pratico": "Risco elevado de alagamentos, interdição de rodovias e danos à infraestrutura na metade norte do Rio Grande do Sul.",
-      "categoria": "Ciencia_Clima",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "urgencia_score": 99,
-      "relevancia_score": 97,
-      "nivel_confianca": "alta",
-      "ttl_horas": 24,
-      "horas_em_destaque": 24,
-      "veiculos_origem": [
-        "Agência Brasil (EBC)",
-        "Poder360",
-        "BBC News Brasil"
-      ],
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/meio-ambiente/noticia/2026-11/temporais-atingem-46-municipios-e-mais-de-25-mil-pessoas-no-rs",
-        "https://www.poder360.com.br/poder-brasil/defesa-civil-do-rs-emite-alerta-para-novos-temporais-apos-5-mortes/"
-      ],
-      "palavras_chave": [
-        "Rio Grande do Sul",
-        "Defesa Civil",
-        "temporais",
-        "Tupanciretã",
-        "chuvas"
-      ],
-      "data_publicacao": "2026-11-22T16:26:04.515171+00:00",
-      "links_internos_relacionados": [
-        {
-          "titulo_existente": "Clima, Amazônia e Transição Energética",
-          "url_existente": "https://www.rodandoomundo.com.br/clima",
-          "motivo_conexao": "Contextualiza os impactos de eventos climáticos extremos e a gestão de desastres no país."
-        }
-      ],
-      "expires_at": "2026-11-24T00:55:09Z",
-      "updated_at": "2026-11-23T02:18:29Z"
     }
   ],
   "temas_curadoria": [
