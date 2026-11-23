@@ -18391,31 +18391,81 @@
     });
   }
 
-  function selectContextualSponsor(listDrawer, countryCode) {
+  var TERRITORY_SPONSOR_MAP = [
+    { id: '250-guadeloupe', re: /Guadalupe/i, primary: 'GP', fallback: 'FR' },
+    { id: '250-martinique', re: /Martinica/i, primary: 'MQ', fallback: 'FR' },
+    { id: '250-mayotte', re: /Mayotte/i, primary: 'YT', fallback: 'FR' },
+    { id: '250-reunion', re: /Reuni[aã]o/i, primary: 'RE', fallback: 'FR' },
+    { id: '528-bonaire', re: /Bonaire/i, primary: 'BQ-BO', fallback: 'NL' },
+    { id: '528-st-eustatius', re: /Santo Eust[aá]quio/i, primary: 'BQ-SE', fallback: 'NL' },
+    { id: '528-saba', re: /\bSaba\b/i, primary: 'BQ-SA', fallback: 'NL' },
+    { id: '840-hawaii', re: /Hava[ií]/i, primary: 'US-HI', fallback: 'US' },
+    { id: '152-easter', re: /P[aá]scoa/i, primary: 'CL-EA', fallback: 'CL' },
+    { id: '218-galapagos', re: /Gal[aá]pagos/i, primary: 'EC-GA', fallback: 'EC' },
+    { id: '724-canarias', re: /Can[aá]rias/i, primary: 'ES-CN', fallback: 'ES' }
+  ];
+
+  function resolveDrawerSponsorCodes(country, cont, islandName) {
+    if (!country) return { primary: '', fallback: '' };
+    if (cont === 'sul' && (country.a2 === 'FR' || country.id === '250')) {
+      return { primary: 'GF', fallback: '' };
+    }
+    var cid = String(country.id || '');
+    var iName = String(islandName || country.islandName || '');
+    for (var i = 0; i < TERRITORY_SPONSOR_MAP.length; i++) {
+      var t = TERRITORY_SPONSOR_MAP[i];
+      if ((cid && cid === t.id) || (iName && t.re.test(iName))) {
+        return { primary: t.primary, fallback: t.fallback };
+      }
+    }
+    return { primary: country.a2 || country.id || '', fallback: '' };
+  }
+
+  function findSpecificContextualSponsor(listDrawer, code) {
+    if (!code) return null;
+    for (var i = 0; i < listDrawer.length; i++) {
+      var cand = listDrawer[i];
+      if (!cand) continue;
+      if (matchesCountryTarget(cand.paises_alvo, code)) {
+        var alvo = String(cand.paises_alvo || '').trim().toLowerCase();
+        if (alvo && alvo !== 'todos') return cand;
+      }
+    }
+    return null;
+  }
+
+  function findGlobalContextualSponsor(listDrawer) {
+    for (var i = 0; i < listDrawer.length; i++) {
+      var cand = listDrawer[i];
+      if (!cand) continue;
+      var alvo = String(cand.paises_alvo || 'todos').trim().toLowerCase();
+      if (!alvo || alvo === 'todos') return cand;
+    }
+    return null;
+  }
+
+  function selectContextualSponsor(listDrawer, countryCode, fallbackCode) {
     if (!Array.isArray(listDrawer) || !listDrawer.length) return null;
     var code = String(countryCode || '').trim().toUpperCase();
-    var chosen = null;
+    var fb = String(fallbackCode || '').trim().toUpperCase();
     if (code) {
-      for (var i = 0; i < listDrawer.length; i++) {
-        var cand = listDrawer[i];
-        if (!cand) continue;
-        if (matchesCountryTarget(cand.paises_alvo, code)) {
-          if (cand.paises_alvo && String(cand.paises_alvo).trim().toLowerCase() !== 'todos') {
-            return cand;
-          }
-          if (!chosen) chosen = cand;
-        }
+      var exact = findSpecificContextualSponsor(listDrawer, code);
+      if (exact) return exact;
+      if (fb && fb !== code) {
+        var fbMatch = findSpecificContextualSponsor(listDrawer, fb);
+        if (fbMatch) return fbMatch;
       }
-      return chosen;
+      return findGlobalContextualSponsor(listDrawer);
     }
     // Sem país específico (hub geral /entenda ou guia conceitual sem país):
     // prioridade: global ('todos') -> segmentado BR -> primeiro ativo
+    var globalMatch = findGlobalContextualSponsor(listDrawer);
+    if (globalMatch) return globalMatch;
     var brFallback = null;
+    var chosen = null;
     for (var k = 0; k < listDrawer.length; k++) {
       var item = listDrawer[k];
       if (!item) continue;
-      var alvo = String(item.paises_alvo || 'todos').trim().toLowerCase();
-      if (!alvo || alvo === 'todos') return item;
       if (!brFallback && matchesCountryTarget(item.paises_alvo, 'BR')) brFallback = item;
       if (!chosen) chosen = item;
     }
@@ -18473,16 +18523,11 @@
     var sDrawerTop = document.getElementById('slot-sponsor-drawer-top');
     var listDrawer = toSponsorList(c.gaveta_contextual);
     if (sDrawer || sDrawerTop) {
-      var curCountryCode = '';
-      if (state && state.country) {
-        curCountryCode = (state.cont === 'sul' && (state.country.a2 === 'FR' || state.country.id === '250'))
-          ? 'GF'
-          : (state.country.a2 || state.country.id || '');
-      }
+      var drawerCodes = resolveDrawerSponsorCodes(state && state.country, state && state.cont, state && state.islandName);
       var curCountryName = (state && state.country && typeof countryDisplayName === 'function')
         ? countryDisplayName(state.country, state.cont)
         : ((document.getElementById('sponsor-country-name') || {}).textContent || 'o exterior');
-      var cDrawer = selectContextualSponsor(listDrawer, curCountryCode);
+      var cDrawer = selectContextualSponsor(listDrawer, drawerCodes.primary, drawerCodes.fallback);
 
       if (cDrawer) {
         if (sDrawer) {

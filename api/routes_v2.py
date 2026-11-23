@@ -6481,7 +6481,7 @@ class CotaPatrocinioItem(BaseModel):
     data_fim: str = Field(default="", max_length=20)
     exibir_no_sobre: bool = True
     hub_alvo: str = Field(default="todos", max_length=40)
-    paises_alvo: str = Field(default="todos", max_length=200)
+    paises_alvo: str = Field(default="todos", max_length=2000)
 
     @field_validator("id", mode="before")
     @classmethod
