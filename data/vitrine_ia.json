@@ -2,9 +2,90 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-24T10:02:20Z",
-  "batch_id": "20261124-1001",
+  "updatedAt": "2026-11-24T10:23:09Z",
+  "batch_id": "20261124-1022",
   "temas_ativos": [
+    {
+      "slug": "pacote-fiscal-lula-contingenciamento-impacto-mercado",
+      "titulo_tema": "Ajuste Fiscal e Tramitação do Pacote do Governo no Congresso",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Politica",
+        "Geopolitica_Radar"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 92,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-26T10:23:09Z",
+      "palavras_chave_busca": [
+        "pacote fiscal",
+        "governo lula",
+        "contingenciamento",
+        "congresso nacional",
+        "economia brasil",
+        "contas publicas"
+      ],
+      "gatilho_vitrine": "Exibir análises sobre os impactos do ajuste fiscal nas contas públicas e no câmbio",
+      "sintese_nerd": "A aprovação do pacote fiscal e as negociações de bastidores no Congresso buscam estabilizar as contas públicas, gerando repercussões diretas sobre o apetite a risco dos investidores e a cotação do dólar. O avanço dessas medidas dita o tom da política econômica brasileira para os próximos anos.",
+      "data_publicacao": "2026-11-24T10:23:09Z",
+      "updated_at": "2026-11-24T10:23:09Z"
+    },
+    {
+      "slug": "samsung-restrincoes-eua-crise-chips-nvidia",
+      "titulo_tema": "Sanções dos EUA e Geopolítica de Semicondutores",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Cultura"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 88,
+      "ttl_horas": 72,
+      "expires_at": "2026-11-27T10:23:09Z",
+      "palavras_chave_busca": [
+        "semicondutores",
+        "nvidia",
+        "eua",
+        "china",
+        "geopolitica tecnologica",
+        "cadeia de suprimentos"
+      ],
+      "gatilho_vitrine": "Destacar reportagens sobre a guerra tecnológica global e o controle de exportação de chips avançados",
+      "sintese_nerd": "Novas restrições comerciais impostas pelos EUA a empresas ligadas à cadeia de semicondutores acirram a disputa tecnológica global pela hegemonia da Inteligência Artificial. Esse choque afeta diretamente as cadeias globais de suprimentos e o mercado acionário de tecnologia.",
+      "data_publicacao": "2026-11-24T10:23:09Z",
+      "updated_at": "2026-11-24T10:23:09Z"
+    },
+    {
+      "slug": "sui-canca-alerta-espaco-aereo-russia-coreia-do-sul",
+      "titulo_tema": "Tensão Geopolítica: Alerta de Ataque Aéreo na Coreia do Sul",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Resumo_Ultimas",
+        "Economia"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 86,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-25T10:23:09Z",
+      "palavras_chave_busca": [
+        "coreia do sul",
+        "russia",
+        "espaco aereo",
+        "alerta de ataque",
+        "tensao militar",
+        "indo-pacifico"
+      ],
+      "gatilho_vitrine": "Priorizar coberturas sobre incidentes militares internacionais e suas repercussões diplomáticas",
+      "sintese_nerd": "Aproximações incomuns de aeronaves militares russas perto do espaço aéreo sul-coreano elevaram as tensões regionais no Indo-Pacífico e forçaram emissão inédita de alerta de defesa. O episódio reforça a interconexão entre as frentes de conflito na Europa Oriental e na Ásia.",
+      "data_publicacao": "2026-11-24T10:23:09Z",
+      "updated_at": "2026-11-24T10:23:09Z"
+    },
     {
       "slug": "malaysia-set-to-return-rohingya-refugees-to-myanmar",
       "status": "novo",
@@ -51,114 +132,6 @@
         "rohingyas",
         "refugiados",
         "cij"
-      ]
-    },
-    {
-      "slug": "lula-concessoes-ajuste-fiscal-congresso-dolar",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-26T08:05:02Z",
-      "updated_at": "2026-11-24T08:05:02Z",
-      "titulo_tema": "Concessões fiscais do governo no Congresso e o impacto no câmbio",
-      "sintese_nerd": "Para garantir a aprovação do pacote fiscal no Congresso, o governo cedeu em pontos cruciais como a preservação de benefícios tributários. Essa flexibilização fiscal gera cautela nos mercados financeiros, mantendo a cotação do dólar pressionada no Brasil.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-24T08:05:02Z",
-      "gatilho_vitrine": "Analise as negociações do governo Lula no Congresso para aprovar o pacote fiscal e o efeito sobre o dólar.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 92,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Politica"
-      ],
-      "palavras_chave_busca": [
-        "ajuste fiscal",
-        "pacote de cortes",
-        "lula",
-        "congresso nacional",
-        "dólar r$ 6",
-        "meta fiscal",
-        "isenções tributárias"
-      ]
-    },
-    {
-      "slug": "fracasso-negociacoes-climaticas-onu-cop-combustiveis-fosseis",
-      "status": "novo",
-      "ttl_horas": 72,
-      "expires_at": "2026-11-27T08:05:02Z",
-      "updated_at": "2026-11-24T08:05:02Z",
-      "titulo_tema": "Impasse e fracasso nas negociações de financiamento climático da ONU",
-      "sintese_nerd": "O bloqueio promovido por grandes produtores de petróleo contra o abandono progressivo dos combustíveis fósseis levou quase cem países a abandonarem a cúpula do clima da ONU. O impasse aprofunda a incerteza sobre o financiamento global para a transição energética justa e mitigações ambientais.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-24T08:05:02Z",
-      "gatilho_vitrine": "Entenda o colapso das conversas diplomáticas da ONU sobre clima e transição energética.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 88,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Politica"
-      ],
-      "palavras_chave_busca": [
-        "cop clima onu",
-        "acordo climático",
-        "combustíveis fósseis",
-        "união europeia",
-        "arábia saudita",
-        "financiamento climático"
-      ]
-    },
-    {
-      "slug": "inteligencia-artificial-desinformacao-eleicoes-taiwan-china",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-26T08:05:02Z",
-      "updated_at": "2026-11-24T08:05:02Z",
-      "titulo_tema": "Uso de contas falsas com IA para manipulação nas eleições de Taiwan",
-      "sintese_nerd": "Operações de inteligência cibernética utilizando perfis sintéticos gerados por IA foram identificadas tentando moldar a opinião pública nas eleições de Taiwan. O episódio sinaliza a sofisticação das táticas de guerra de informação e a ameaça persistente à integridade eleitoral democrática.",
-      "rota_editoria": "/eleicoes",
-      "data_publicacao": "2026-11-24T08:05:02Z",
-      "gatilho_vitrine": "Veja como robôs e IA generativa estão sendo usados para influenciar pleitos democráticos.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 86,
-      "categoria_primaria": "Eleicoes",
-      "categorias_cruzadas": [
-        "Geopolitica_Radar",
-        "Cultura"
-      ],
-      "palavras_chave_busca": [
-        "inteligencia artificial",
-        "eleições taiwan",
-        "desinformação ia",
-        "guerra cibernética",
-        "propaganda chinesa",
-        "redes sociais"
-      ]
-    },
-    {
-      "slug": "australia-multas-big-techs-regulacao-redes-sociais",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-26T08:05:02Z",
-      "updated_at": "2026-11-24T08:05:02Z",
-      "titulo_tema": "Pressão regulatória sobre Big Techs: Austrália avança com multas bilionárias",
-      "sintese_nerd": "O governo australiano apresentou uma nova legislação que prevê sanções de até 5% do faturamento global de multinacionais de tecnologia por falhas na contenção de danos virtuais. A medida fortalece a tendência internacional de responsabilização jurídica direta das plataformas por seus conteúdos.",
-      "rota_editoria": "/cultura",
-      "data_publicacao": "2026-11-24T08:05:02Z",
-      "gatilho_vitrine": "Acompanhe o avanço da legislação global que penaliza plataformas por danos nas redes sociais.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 81,
-      "categoria_primaria": "Cultura",
-      "categorias_cruzadas": [
-        "Geopolitica_Radar",
-        "Politica"
-      ],
-      "palavras_chave_busca": [
-        "big techs",
-        "regulação de redes",
-        "austrália lei internet",
-        "segurança digital",
-        "multas plataformas",
-        "big tech regulation"
       ]
     },
     {
@@ -302,28 +275,20 @@
     },
     {
       "slug": "dolar-atinge-marca-de-6-reais-pressionado-por-cenario-fiscal-e-exterior",
-      "titulo_tema": "Dólar mantém pressão e atinge R$ 6,00; BC monitora reservas",
-      "titulo_curto": "Dólar mantém pressão e atinge R$ 6,00; BC monitora reservas",
       "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Economia",
       "categoria": "Economia_Comercio",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 98,
-      "urgencia_score": 97,
       "ttl_horas": 12,
       "expires_at": "2026-11-24T21:25:31Z",
-      "palavras_chave_busca": [
-        "dólar",
-        "câmbio",
-        "banco central",
-        "reservas internacionais",
-        "economia"
+      "updated_at": "2026-11-24T10:02:20Z",
+      "fontes_urls": [
+        "https://www.bbc.com/portuguese/articles/cwm253lr95zjo?at_medium=RSS&at_campaign=rss",
+        "https://www.infomoney.com.br/economia/reservas-internacionais-bc-segurar-dolar/"
       ],
+      "titulo_tema": "Dólar mantém pressão e atinge R$ 6,00; BC monitora reservas",
+      "resumo_pulso": "A cotação do dólar permanece no patamar de R$ 6,00, pressionada pelo cenário fiscal interno e pela força da moeda americana no exterior. Segundo o InfoMoney, o Banco Central possui US$ 363 bilhões em reservas, mas especialistas alertam para os limites de intervenção direta para conter a volatilidade cambial.",
+      "sintese_nerd": "Aumento nos custos de importação e pressão inflacionária sobre produtos cotados em dólar, afetando o poder de compra do consumidor.",
+      "titulo_curto": "Dólar mantém pressão e atinge R$ 6,00; BC monitora reservas",
+      "rota_editoria": "/economia",
       "palavras_chave": [
         "dólar",
         "câmbio",
@@ -331,24 +296,32 @@
         "reservas internacionais",
         "economia"
       ],
+      "urgencia_score": 97,
+      "data_publicacao": "2026-11-24T03:00:00Z",
       "gatilho_vitrine": "A cotação do dólar permanece no patamar de R$ 6,00, pressionada pelo cenário fiscal interno e pela força da moeda americana no exterior. Segundo o InfoMoney, o Banco Central possui US$ 363 bilhões em reservas, mas especialistas alertam para os limites de intervenção direta para conter a volatilidade cambial.",
-      "resumo_pulso": "A cotação do dólar permanece no patamar de R$ 6,00, pressionada pelo cenário fiscal interno e pela força da moeda americana no exterior. Segundo o InfoMoney, o Banco Central possui US$ 363 bilhões em reservas, mas especialistas alertam para os limites de intervenção direta para conter a volatilidade cambial.",
-      "sintese_nerd": "Aumento nos custos de importação e pressão inflacionária sobre produtos cotados em dólar, afetando o poder de compra do consumidor.",
       "impacto_pratico": "Aumento nos custos de importação e pressão inflacionária sobre produtos cotados em dólar, afetando o poder de compra do consumidor.",
-      "paises_envolvidos": [
-        "BR",
-        "US"
-      ],
+      "origem_pipeline": "pulso",
       "veiculos_origem": [
         "BBC News Brasil",
         "InfoMoney"
       ],
-      "fontes_urls": [
-        "https://www.bbc.com/portuguese/articles/cwm253lr95zjo?at_medium=RSS&at_campaign=rss",
-        "https://www.infomoney.com.br/economia/reservas-internacionais-bc-segurar-dolar/"
+      "relevancia_score": 98,
+      "paises_envolvidos": [
+        "BR",
+        "US"
       ],
-      "data_publicacao": "2026-11-24T03:00:00Z",
-      "updated_at": "2026-11-24T10:02:20Z"
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "dólar",
+        "câmbio",
+        "banco central",
+        "reservas internacionais",
+        "economia"
+      ]
     },
     {
       "slug": "ucrania-expande-ataques-drones-embarcacoes-russas-libia-e-europa",
@@ -732,49 +705,49 @@
     },
     {
       "slug": "eua-impoem-novas-sancoes-contra-redes-financeiras-do-ira",
-      "titulo_tema": "Irã enfrenta crise cambial e sanções financeiras dos EUA",
-      "titulo_curto": "Irã enfrenta crise cambial e sanções financeiras dos EUA",
       "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Geopolitica_Radar",
       "categoria": "Geopolitica_Relacoes",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 85,
-      "urgencia_score": 90,
       "ttl_horas": 24,
       "expires_at": "2026-11-25T10:02:20Z",
-      "palavras_chave_busca": [
-        "irã",
-        "sanções",
-        "dólar",
-        "crise econômica"
+      "updated_at": "2026-11-24T10:02:20Z",
+      "fontes_urls": [
+        "https://www.iranintl.com/en/202611246967"
       ],
+      "titulo_tema": "Irã enfrenta crise cambial e sanções financeiras dos EUA",
+      "resumo_pulso": "A moeda iraniana, o rial, ultrapassou a marca de 2,8 milhões por dólar no mercado paralelo. Segundo o Iran International, a crise é agravada por sanções financeiras dos EUA e pelo bloqueio naval que restringe as exportações de petróleo do país.",
+      "sintese_nerd": "Aprofundamento da crise econômica no Irã com impacto direto na inflação local e na capacidade de comércio exterior.",
+      "titulo_curto": "Irã enfrenta crise cambial e sanções financeiras dos EUA",
+      "rota_editoria": "/radar",
       "palavras_chave": [
         "irã",
         "sanções",
         "dólar",
         "crise econômica"
       ],
+      "urgencia_score": 90,
+      "data_publicacao": "2026-11-23T20:47:59.842605+00:00",
       "gatilho_vitrine": "A moeda iraniana, o rial, ultrapassou a marca de 2,8 milhões por dólar no mercado paralelo. Segundo o Iran International, a crise é agravada por sanções financeiras dos EUA e pelo bloqueio naval que restringe as exportações de petróleo do país.",
-      "resumo_pulso": "A moeda iraniana, o rial, ultrapassou a marca de 2,8 milhões por dólar no mercado paralelo. Segundo o Iran International, a crise é agravada por sanções financeiras dos EUA e pelo bloqueio naval que restringe as exportações de petróleo do país.",
-      "sintese_nerd": "Aprofundamento da crise econômica no Irã com impacto direto na inflação local e na capacidade de comércio exterior.",
       "impacto_pratico": "Aprofundamento da crise econômica no Irã com impacto direto na inflação local e na capacidade de comércio exterior.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "Iran International"
+      ],
+      "relevancia_score": 85,
       "paises_envolvidos": [
         "IR",
         "US"
       ],
-      "veiculos_origem": [
-        "Iran International"
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
       ],
-      "fontes_urls": [
-        "https://www.iranintl.com/en/202611246967"
-      ],
-      "data_publicacao": "2026-11-23T20:47:59.842605+00:00",
-      "updated_at": "2026-11-24T10:02:20Z"
+      "palavras_chave_busca": [
+        "irã",
+        "sanções",
+        "dólar",
+        "crise econômica"
+      ]
     },
     {
       "slug": "captura-narcotraficante-mexicano-fbi",
@@ -824,6 +797,89 @@
         "extradição",
         "narcotráfico"
       ]
+    }
+  ],
+  "temas_curadoria": [
+    {
+      "slug": "pacote-fiscal-lula-contingenciamento-impacto-mercado",
+      "titulo_tema": "Ajuste Fiscal e Tramitação do Pacote do Governo no Congresso",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Politica",
+        "Geopolitica_Radar"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 92,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-26T10:23:09Z",
+      "palavras_chave_busca": [
+        "pacote fiscal",
+        "governo lula",
+        "contingenciamento",
+        "congresso nacional",
+        "economia brasil",
+        "contas publicas"
+      ],
+      "gatilho_vitrine": "Exibir análises sobre os impactos do ajuste fiscal nas contas públicas e no câmbio",
+      "sintese_nerd": "A aprovação do pacote fiscal e as negociações de bastidores no Congresso buscam estabilizar as contas públicas, gerando repercussões diretas sobre o apetite a risco dos investidores e a cotação do dólar. O avanço dessas medidas dita o tom da política econômica brasileira para os próximos anos.",
+      "data_publicacao": "2026-11-24T10:23:09Z",
+      "updated_at": "2026-11-24T10:23:09Z"
+    },
+    {
+      "slug": "samsung-restrincoes-eua-crise-chips-nvidia",
+      "titulo_tema": "Sanções dos EUA e Geopolítica de Semicondutores",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Cultura"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 88,
+      "ttl_horas": 72,
+      "expires_at": "2026-11-27T10:23:09Z",
+      "palavras_chave_busca": [
+        "semicondutores",
+        "nvidia",
+        "eua",
+        "china",
+        "geopolitica tecnologica",
+        "cadeia de suprimentos"
+      ],
+      "gatilho_vitrine": "Destacar reportagens sobre a guerra tecnológica global e o controle de exportação de chips avançados",
+      "sintese_nerd": "Novas restrições comerciais impostas pelos EUA a empresas ligadas à cadeia de semicondutores acirram a disputa tecnológica global pela hegemonia da Inteligência Artificial. Esse choque afeta diretamente as cadeias globais de suprimentos e o mercado acionário de tecnologia.",
+      "data_publicacao": "2026-11-24T10:23:09Z",
+      "updated_at": "2026-11-24T10:23:09Z"
+    },
+    {
+      "slug": "sui-canca-alerta-espaco-aereo-russia-coreia-do-sul",
+      "titulo_tema": "Tensão Geopolítica: Alerta de Ataque Aéreo na Coreia do Sul",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Resumo_Ultimas",
+        "Economia"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 86,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-25T10:23:09Z",
+      "palavras_chave_busca": [
+        "coreia do sul",
+        "russia",
+        "espaco aereo",
+        "alerta de ataque",
+        "tensao militar",
+        "indo-pacifico"
+      ],
+      "gatilho_vitrine": "Priorizar coberturas sobre incidentes militares internacionais e suas repercussões diplomáticas",
+      "sintese_nerd": "Aproximações incomuns de aeronaves militares russas perto do espaço aéreo sul-coreano elevaram as tensões regionais no Indo-Pacífico e forçaram emissão inédita de alerta de defesa. O episódio reforça a interconexão entre as frentes de conflito na Europa Oriental e na Ásia.",
+      "data_publicacao": "2026-11-24T10:23:09Z",
+      "updated_at": "2026-11-24T10:23:09Z"
     }
   ],
   "noticias_quentes": [
@@ -965,27 +1021,16 @@
     },
     {
       "slug": "dolar-atinge-marca-de-6-reais-pressionado-por-cenario-fiscal-e-exterior",
-      "titulo_curto": "Dólar mantém pressão e atinge R$ 6,00; BC monitora reservas",
-      "resumo_pulso": "A cotação do dólar permanece no patamar de R$ 6,00, pressionada pelo cenário fiscal interno e pela força da moeda americana no exterior. Segundo o InfoMoney, o Banco Central possui US$ 363 bilhões em reservas, mas especialistas alertam para os limites de intervenção direta para conter a volatilidade cambial.",
-      "impacto_pratico": "Aumento nos custos de importação e pressão inflacionária sobre produtos cotados em dólar, afetando o poder de compra do consumidor.",
       "categoria": "Economia_Comercio",
-      "paises_envolvidos": [
-        "BR",
-        "US"
-      ],
-      "urgencia_score": 97,
-      "relevancia_score": 98,
-      "nivel_confianca": "alta",
       "ttl_horas": 12,
-      "horas_em_destaque": 12,
-      "veiculos_origem": [
-        "BBC News Brasil",
-        "InfoMoney"
-      ],
+      "expires_at": "2026-11-24T21:25:31Z",
+      "updated_at": "2026-11-24T10:02:20Z",
       "fontes_urls": [
         "https://www.bbc.com/portuguese/articles/cwm253lr95zjo?at_medium=RSS&at_campaign=rss",
         "https://www.infomoney.com.br/economia/reservas-internacionais-bc-segurar-dolar/"
       ],
+      "resumo_pulso": "A cotação do dólar permanece no patamar de R$ 6,00, pressionada pelo cenário fiscal interno e pela força da moeda americana no exterior. Segundo o InfoMoney, o Banco Central possui US$ 363 bilhões em reservas, mas especialistas alertam para os limites de intervenção direta para conter a volatilidade cambial.",
+      "titulo_curto": "Dólar mantém pressão e atinge R$ 6,00; BC monitora reservas",
       "palavras_chave": [
         "dólar",
         "câmbio",
@@ -993,21 +1038,32 @@
         "reservas internacionais",
         "economia"
       ],
+      "urgencia_score": 97,
       "data_publicacao": "2026-11-24T03:00:00Z",
+      "impacto_pratico": "Aumento nos custos de importação e pressão inflacionária sobre produtos cotados em dólar, afetando o poder de compra do consumidor.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "BBC News Brasil",
+        "InfoMoney"
+      ],
+      "relevancia_score": 98,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "BR",
+        "US"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "Economia no Brasil",
           "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
-          "motivo_conexao": "Contexto sobre o cenário econômico brasileiro e as variáveis que impactam o câmbio."
+          "motivo_conexao": "Contexto sobre o cenário econômico brasileiro e as variáveis que impactam o câmbio.",
+          "titulo_existente": "Economia no Brasil"
         },
         {
-          "titulo_existente": "O que é inflação?",
           "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
-          "motivo_conexao": "Explicação sobre como a desvalorização cambial impacta a inflação interna."
+          "motivo_conexao": "Explicação sobre como a desvalorização cambial impacta a inflação interna.",
+          "titulo_existente": "O que é inflação?"
         }
-      ],
-      "expires_at": "2026-11-24T21:25:31Z",
-      "updated_at": "2026-11-24T10:02:20Z"
+      ]
     },
     {
       "slug": "ucrania-expande-ataques-drones-embarcacoes-russas-libia-e-europa",
@@ -1342,41 +1398,41 @@
     },
     {
       "slug": "eua-impoem-novas-sancoes-contra-redes-financeiras-do-ira",
-      "titulo_curto": "Irã enfrenta crise cambial e sanções financeiras dos EUA",
-      "resumo_pulso": "A moeda iraniana, o rial, ultrapassou a marca de 2,8 milhões por dólar no mercado paralelo. Segundo o Iran International, a crise é agravada por sanções financeiras dos EUA e pelo bloqueio naval que restringe as exportações de petróleo do país.",
-      "impacto_pratico": "Aprofundamento da crise econômica no Irã com impacto direto na inflação local e na capacidade de comércio exterior.",
       "categoria": "Geopolitica_Relacoes",
-      "paises_envolvidos": [
-        "IR",
-        "US"
-      ],
-      "urgencia_score": 90,
-      "relevancia_score": 85,
-      "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 12,
-      "veiculos_origem": [
-        "Iran International"
-      ],
+      "expires_at": "2026-11-25T10:02:20Z",
+      "updated_at": "2026-11-24T10:02:20Z",
       "fontes_urls": [
         "https://www.iranintl.com/en/202611246967"
       ],
+      "resumo_pulso": "A moeda iraniana, o rial, ultrapassou a marca de 2,8 milhões por dólar no mercado paralelo. Segundo o Iran International, a crise é agravada por sanções financeiras dos EUA e pelo bloqueio naval que restringe as exportações de petróleo do país.",
+      "titulo_curto": "Irã enfrenta crise cambial e sanções financeiras dos EUA",
       "palavras_chave": [
         "Irã",
         "sanções",
         "dólar",
         "crise econômica"
       ],
+      "urgencia_score": 90,
       "data_publicacao": "2026-11-23T20:47:59.842605+00:00",
+      "impacto_pratico": "Aprofundamento da crise econômica no Irã com impacto direto na inflação local e na capacidade de comércio exterior.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Iran International"
+      ],
+      "relevancia_score": 85,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "IR",
+        "US"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "O que é uma sanção internacional?",
           "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-sancao-internacional",
-          "motivo_conexao": "Entenda como as sanções financeiras funcionam como ferramenta de pressão geopolítica."
+          "motivo_conexao": "Entenda como as sanções financeiras funcionam como ferramenta de pressão geopolítica.",
+          "titulo_existente": "O que é uma sanção internacional?"
         }
-      ],
-      "expires_at": "2026-11-25T10:02:20Z",
-      "updated_at": "2026-11-24T10:02:20Z"
+      ]
     },
     {
       "slug": "captura-narcotraficante-mexicano-fbi",
@@ -1416,116 +1472,6 @@
           "motivo_conexao": "Acompanhe os desdobramentos de acordos internacionais de segurança e controle de fronteiras de Washington.",
           "titulo_existente": "Política nos Estados Unidos"
         }
-      ]
-    }
-  ],
-  "temas_curadoria": [
-    {
-      "slug": "lula-concessoes-ajuste-fiscal-congresso-dolar",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-26T08:05:02Z",
-      "updated_at": "2026-11-24T08:05:02Z",
-      "titulo_tema": "Concessões fiscais do governo no Congresso e o impacto no câmbio",
-      "sintese_nerd": "Para garantir a aprovação do pacote fiscal no Congresso, o governo cedeu em pontos cruciais como a preservação de benefícios tributários. Essa flexibilização fiscal gera cautela nos mercados financeiros, mantendo a cotação do dólar pressionada no Brasil.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-24T08:05:02Z",
-      "gatilho_vitrine": "Analise as negociações do governo Lula no Congresso para aprovar o pacote fiscal e o efeito sobre o dólar.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 92,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Politica"
-      ],
-      "palavras_chave_busca": [
-        "ajuste fiscal",
-        "pacote de cortes",
-        "lula",
-        "congresso nacional",
-        "dólar r$ 6",
-        "meta fiscal",
-        "isenções tributárias"
-      ]
-    },
-    {
-      "slug": "fracasso-negociacoes-climaticas-onu-cop-combustiveis-fosseis",
-      "status": "novo",
-      "ttl_horas": 72,
-      "expires_at": "2026-11-27T08:05:02Z",
-      "updated_at": "2026-11-24T08:05:02Z",
-      "titulo_tema": "Impasse e fracasso nas negociações de financiamento climático da ONU",
-      "sintese_nerd": "O bloqueio promovido por grandes produtores de petróleo contra o abandono progressivo dos combustíveis fósseis levou quase cem países a abandonarem a cúpula do clima da ONU. O impasse aprofunda a incerteza sobre o financiamento global para a transição energética justa e mitigações ambientais.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-24T08:05:02Z",
-      "gatilho_vitrine": "Entenda o colapso das conversas diplomáticas da ONU sobre clima e transição energética.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 88,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Politica"
-      ],
-      "palavras_chave_busca": [
-        "cop clima onu",
-        "acordo climático",
-        "combustíveis fósseis",
-        "união europeia",
-        "arábia saudita",
-        "financiamento climático"
-      ]
-    },
-    {
-      "slug": "inteligencia-artificial-desinformacao-eleicoes-taiwan-china",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-26T08:05:02Z",
-      "updated_at": "2026-11-24T08:05:02Z",
-      "titulo_tema": "Uso de contas falsas com IA para manipulação nas eleições de Taiwan",
-      "sintese_nerd": "Operações de inteligência cibernética utilizando perfis sintéticos gerados por IA foram identificadas tentando moldar a opinião pública nas eleições de Taiwan. O episódio sinaliza a sofisticação das táticas de guerra de informação e a ameaça persistente à integridade eleitoral democrática.",
-      "rota_editoria": "/eleicoes",
-      "data_publicacao": "2026-11-24T08:05:02Z",
-      "gatilho_vitrine": "Veja como robôs e IA generativa estão sendo usados para influenciar pleitos democráticos.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 86,
-      "categoria_primaria": "Eleicoes",
-      "categorias_cruzadas": [
-        "Geopolitica_Radar",
-        "Cultura"
-      ],
-      "palavras_chave_busca": [
-        "inteligencia artificial",
-        "eleições taiwan",
-        "desinformação ia",
-        "guerra cibernética",
-        "propaganda chinesa",
-        "redes sociais"
-      ]
-    },
-    {
-      "slug": "australia-multas-big-techs-regulacao-redes-sociais",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-26T08:05:02Z",
-      "updated_at": "2026-11-24T08:05:02Z",
-      "titulo_tema": "Pressão regulatória sobre Big Techs: Austrália avança com multas bilionárias",
-      "sintese_nerd": "O governo australiano apresentou uma nova legislação que prevê sanções de até 5% do faturamento global de multinacionais de tecnologia por falhas na contenção de danos virtuais. A medida fortalece a tendência internacional de responsabilização jurídica direta das plataformas por seus conteúdos.",
-      "rota_editoria": "/cultura",
-      "data_publicacao": "2026-11-24T08:05:02Z",
-      "gatilho_vitrine": "Acompanhe o avanço da legislação global que penaliza plataformas por danos nas redes sociais.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 81,
-      "categoria_primaria": "Cultura",
-      "categorias_cruzadas": [
-        "Geopolitica_Radar",
-        "Politica"
-      ],
-      "palavras_chave_busca": [
-        "big techs",
-        "regulação de redes",
-        "austrália lei internet",
-        "segurança digital",
-        "multas plataformas",
-        "big tech regulation"
       ]
     }
   ]
