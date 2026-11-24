@@ -2,53 +2,161 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-24T00:57:38Z",
-  "batch_id": "20261124-0056",
+  "updatedAt": "2026-11-24T01:29:11Z",
+  "batch_id": "20261124-0128",
   "temas_ativos": [
     {
-      "slug": "petrobras-margem-equatorial-exploracao-aumento",
-      "titulo_tema": "Com foco na Margem Equatorial, Petrobras eleva investimentos em exploração em 41%",
-      "titulo_curto": "Com foco na Margem Equatorial, Petrobras eleva investimentos em exploração em 41%",
+      "slug": "crise-hormuz-petroleo-navios-incendio",
+      "titulo_tema": "Tensão no Estreito de Hormuz: Navios atingidos por minas geram alerta global de energia",
       "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Economia",
-      "categoria": "Economia_Comercio",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
       ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 98,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-26T01:29:11Z",
+      "palavras_chave_busca": [
+        "estreito de hormuz",
+        "petróleo",
+        "guarda revolucionária do irã",
+        "crise energética",
+        "navios petroleiros",
+        "geopolítica do oriente médio"
+      ],
+      "gatilho_vitrine": "Destacar impacto imediato de conflitos no Oriente Médio sobre os preços globais do petróleo e reflexos na inflação e câmbio no Brasil.",
+      "sintese_nerd": "A detonação de minas navais no Estreito de Hormuz incendiando petroleiros ameaça diretamente o fluxo de suprimento energético mundial, elevando a volatilidade do Brent. Para o Brasil, choques nos preços internacionais do petróleo pressionam os custos internos de combustíveis e a inflação gerida pela Petrobras.",
+      "data_publicacao": "2026-11-24T01:29:11Z",
+      "updated_at": "2026-11-24T01:29:11Z"
+    },
+    {
+      "slug": "retorno-jensen-huang-nvidia-impacto-mercados",
+      "titulo_tema": "Retorno de Jensen Huang à Nvidia impulsiona ações e acende debate sobre volatilidade em IA",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Geopolitica_Radar",
+        "Cultura"
+      ],
       "rota_editoria": "/economia",
-      "relevancia_score": 90,
-      "urgencia_score": 89,
-      "ttl_horas": 24,
-      "expires_at": "2026-11-25T00:57:38Z",
+      "relevancia_score": 92,
+      "ttl_horas": 72,
+      "expires_at": "2026-11-27T01:29:11Z",
+      "palavras_chave_busca": [
+        "nvidia",
+        "jensen huang",
+        "inteligência artificial",
+        "mercado acionário",
+        "controles de exportação",
+        "bolsa de nova york"
+      ],
+      "gatilho_vitrine": "Analisar o peso do setor tecnológico norte-americano sobre os mercados globais e as novas sanções comerciais dos EUA.",
+      "sintese_nerd": "A recondução unânime de Jensen Huang à liderança da Nvidia provocou disparada nas ações da gigante de semicondutores, aliviando incertezas regulatórias e o escrutínio sobre o comércio global de chips. O movimento reflete a extrema dependência dos mercados financeiros internacionais em relação ao ecossistema de inteligência artificial.",
+      "data_publicacao": "2026-11-24T01:29:11Z",
+      "updated_at": "2026-11-24T01:29:11Z"
+    },
+    {
+      "slug": "petrobras-margem-equatorial-exploracao",
+      "titulo_tema": "Petrobras eleva investimentos em exploração em 41% com foco na Margem Equatorial",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Politica",
+        "Geopolitica_Radar"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 88,
+      "ttl_horas": 96,
+      "expires_at": "2026-11-28T01:29:11Z",
       "palavras_chave_busca": [
         "petrobras",
         "margem equatorial",
-        "exploração",
-        "energia"
+        "exploração de petróleo",
+        "investimentos",
+        "setor energético",
+        "governo federal"
       ],
+      "gatilho_vitrine": "Monitorar a estratégia corporativa da estatal brasileira frente aos novos desafios de transição energética e reservas exploratórias.",
+      "sintese_nerd": "O anúncio de um aporte multibilionário pela Petrobras para novas fronteiras, com destaque para a Margem Equatorial, equilibra a busca por reposição de reservas com debates ambientais sensíveis. A decisão direciona o foco da estatal para a segurança energética de longo prazo e geração de caixa.",
+      "data_publicacao": "2026-11-24T01:29:11Z",
+      "updated_at": "2026-11-24T01:29:11Z"
+    },
+    {
+      "slug": "zelensky-cobre-adesao-otan-assembleia",
+      "titulo_tema": "Zelensky pressiona por inclusão da Ucrânia na OTAN durante assembleia da aliança",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Politica",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 85,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-26T01:29:11Z",
+      "palavras_chave_busca": [
+        "ucrânia",
+        "otan",
+        "volodymyr zelensky",
+        "guerra na europa",
+        "segurança internacional",
+        "diplomacia"
+      ],
+      "gatilho_vitrine": "Cobrir os desdobramentos diplomáticos e de segurança na Europa Oriental e os riscos de escalada militar.",
+      "sintese_nerd": "A insistência de Volodymyr Zelensky na admissão imediata da Ucrânia à OTAN busca garantias formais de defesa frente às incursões aéreas russas na Europa. A pauta testa a coesão dos aliados ocidentais e o patamar de tolerância a uma escalada direta com Moscou.",
+      "data_publicacao": "2026-11-24T01:29:11Z",
+      "updated_at": "2026-11-24T01:29:11Z"
+    },
+    {
+      "slug": "petrobras-margem-equatorial-exploracao-aumento",
+      "status": "novo",
+      "categoria": "Economia_Comercio",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-25T00:57:38Z",
+      "updated_at": "2026-11-24T00:57:38Z",
+      "fontes_urls": [
+        "https://www.poder360.com.br/poder-energia/com-margem-equatorial-petrobras-eleva-aportes-em-exploracao-em-41/"
+      ],
+      "titulo_tema": "Com foco na Margem Equatorial, Petrobras eleva investimentos em exploração em 41%",
+      "resumo_pulso": "Segundo apuração do portal Poder360, a Petrobras anunciou um montante de US$ 10 bilhões voltado a novas fronteiras exploratórias, representando um salto de 41% nos aportes do setor. A estatal planeja a perfuração de cerca de 50 novos poços ao longo dos próximos cinco anos.",
+      "sintese_nerd": "A expansão exploratória redefine as diretrizes energéticas do país e mobiliza debates sobre matrizes produtivas e exigências ambientais.",
+      "titulo_curto": "Com foco na Margem Equatorial, Petrobras eleva investimentos em exploração em 41%",
+      "rota_editoria": "/economia",
       "palavras_chave": [
         "petrobras",
         "margem equatorial",
         "exploração",
         "energia"
       ],
+      "urgencia_score": 89,
+      "data_publicacao": "2026-11-24T00:47:09Z",
       "gatilho_vitrine": "Segundo apuração do portal Poder360, a Petrobras anunciou um montante de US$ 10 bilhões voltado a novas fronteiras exploratórias, representando um salto de 41% nos aportes do setor. A estatal planeja a perfuração de cerca de 50 novos poços ao longo dos próximos cinco anos.",
-      "resumo_pulso": "Segundo apuração do portal Poder360, a Petrobras anunciou um montante de US$ 10 bilhões voltado a novas fronteiras exploratórias, representando um salto de 41% nos aportes do setor. A estatal planeja a perfuração de cerca de 50 novos poços ao longo dos próximos cinco anos.",
-      "sintese_nerd": "A expansão exploratória redefine as diretrizes energéticas do país e mobiliza debates sobre matrizes produtivas e exigências ambientais.",
       "impacto_pratico": "A expansão exploratória redefine as diretrizes energéticas do país e mobiliza debates sobre matrizes produtivas e exigências ambientais.",
-      "paises_envolvidos": [
-        "BR"
-      ],
+      "origem_pipeline": "pulso",
       "veiculos_origem": [
         "Poder360"
       ],
-      "fontes_urls": [
-        "https://www.poder360.com.br/poder-energia/com-margem-equatorial-petrobras-eleva-aportes-em-exploracao-em-41/"
+      "relevancia_score": 90,
+      "paises_envolvidos": [
+        "BR"
       ],
-      "data_publicacao": "2026-11-24T00:47:09Z",
-      "updated_at": "2026-11-24T00:57:38Z"
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "petrobras",
+        "margem equatorial",
+        "exploração",
+        "energia"
+      ]
     },
     {
       "slug": "nvidia-jensen-huang-retorno-acoes-alta",
@@ -100,48 +208,48 @@
     },
     {
       "slug": "petrobras-dividendos-extraordinarios-15-bilhoes",
-      "titulo_tema": "Conselho da Petrobras aprova distribuição de remuneração extraordinária de R$ 15,6 bilhões",
-      "titulo_curto": "Conselho da Petrobras aprova distribuição de remuneração extraordinária de R$ 15,6 bilhões",
       "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Economia",
       "categoria": "Economia_Comercio",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 93,
-      "urgencia_score": 92,
       "ttl_horas": 24,
       "expires_at": "2026-11-25T00:57:38Z",
-      "palavras_chave_busca": [
-        "petrobras",
-        "dividendos",
-        "economia",
-        "ações"
+      "updated_at": "2026-11-24T00:57:38Z",
+      "fontes_urls": [
+        "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/petrobras-aprova-pagamento-de-r-156-bilhoes-acionistas"
       ],
+      "titulo_tema": "Conselho da Petrobras aprova distribuição de remuneração extraordinária de R$ 15,6 bilhões",
+      "resumo_pulso": "Conforme comunicado oficial divulgado pela Agência Brasil, o Conselho de Administração da Petrobras aprovou o pagamento de R$ 15,6 bilhões em dividendos intercalares aos acionistas. O montante será distribuído em parcela única na forma de remuneração extraordinária, equivalente a pouco mais de R$ 1,21 por ação ordinária e preferencial.",
+      "sintese_nerd": "A forte distribuição de dividendos impacta diretamente o fluxo de caixa da estatal e atrai investidores focados em proventos na bolsa de valores.",
+      "titulo_curto": "Conselho da Petrobras aprova distribuição de remuneração extraordinária de R$ 15,6 bilhões",
+      "rota_editoria": "/economia",
       "palavras_chave": [
         "petrobras",
         "dividendos",
         "economia",
         "ações"
       ],
+      "urgencia_score": 92,
+      "data_publicacao": "2026-11-24T00:03:00Z",
       "gatilho_vitrine": "Conforme comunicado oficial divulgado pela Agência Brasil, o Conselho de Administração da Petrobras aprovou o pagamento de R$ 15,6 bilhões em dividendos intercalares aos acionistas. O montante será distribuído em parcela única na forma de remuneração extraordinária, equivalente a pouco mais de R$ 1,21 por ação ordinária e preferencial.",
-      "resumo_pulso": "Conforme comunicado oficial divulgado pela Agência Brasil, o Conselho de Administração da Petrobras aprovou o pagamento de R$ 15,6 bilhões em dividendos intercalares aos acionistas. O montante será distribuído em parcela única na forma de remuneração extraordinária, equivalente a pouco mais de R$ 1,21 por ação ordinária e preferencial.",
-      "sintese_nerd": "A forte distribuição de dividendos impacta diretamente o fluxo de caixa da estatal e atrai investidores focados em proventos na bolsa de valores.",
       "impacto_pratico": "A forte distribuição de dividendos impacta diretamente o fluxo de caixa da estatal e atrai investidores focados em proventos na bolsa de valores.",
-      "paises_envolvidos": [
-        "BR"
-      ],
+      "origem_pipeline": "pulso",
       "veiculos_origem": [
         "Agência Brasil (EBC)"
       ],
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/petrobras-aprova-pagamento-de-r-156-bilhoes-acionistas"
+      "relevancia_score": 93,
+      "paises_envolvidos": [
+        "BR"
       ],
-      "data_publicacao": "2026-11-24T00:03:00Z",
-      "updated_at": "2026-11-24T00:57:38Z"
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "petrobras",
+        "dividendos",
+        "economia",
+        "ações"
+      ]
     },
     {
       "slug": "petrobras-retorno-mercado-etanol-milho",
@@ -407,142 +515,6 @@
       ]
     },
     {
-      "slug": "votacao-pacote-ajuste-fiscal-camara-impacto-mercado",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-25T22:32:34Z",
-      "updated_at": "2026-11-23T22:32:34Z",
-      "titulo_tema": "Votação do Pacote de Ajuste Fiscal na Câmara e Reação dos Mercados",
-      "sintese_nerd": "A votação do projeto de ajuste fiscal na Câmara, prevendo economia de R$ 50 bilhões até 2027, gera forte embate político e volatilidade nos mercados. A incerteza sobre a aprovação sem desidratação pressiona o Ibovespa e reflete a preocupação com a sustentabilidade das contas públicas brasileiras.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-23T22:32:34Z",
-      "gatilho_vitrine": "Exibir analises sobre a votacao do pacote fiscal e o impacto direto no Ibovespa e no dolar",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 95,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Politica",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "ajuste fiscal",
-        "câmara dos deputados",
-        "ibovespa",
-        "corte de gastos",
-        "meta fiscal",
-        "teto de gastos"
-      ]
-    },
-    {
-      "slug": "retorno-ceo-nvidia-alta-recorde-acoes-impacto-juros-fed",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-25T22:32:34Z",
-      "updated_at": "2026-11-23T22:32:34Z",
-      "titulo_tema": "Retorno do CEO da Nvidia, Disparada Tecnológica e Pressão nos Juros dos EUA",
-      "sintese_nerd": "A volta de Jensen Huang ao comando da Nvidia fez a empresa valorizar US$ 952 bilhões em um único dia, impulsionando os mercados globais de tecnologia. O otimismo renovado fortaleceu o dólar em escala global, alimentando expectativas de manutenção de juros altos pelo Federal Reserve nos EUA.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-23T22:32:34Z",
-      "gatilho_vitrine": "Destacar a disparada das acoes da Nvidia e o fortalecimento do dolar frente a moedas emergentes",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 90,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Geopolitica_Radar",
-        "Cultura"
-      ],
-      "palavras_chave_busca": [
-        "nvidia",
-        "jensen huang",
-        "federal reserve",
-        "juros eua",
-        "dolar",
-        "inteligencia artificial",
-        "big techs"
-      ]
-    },
-    {
-      "slug": "regulamentacao-portaria-fim-escala-6x1-impacto-trabalhista",
-      "status": "novo",
-      "ttl_horas": 72,
-      "expires_at": "2026-11-26T22:32:34Z",
-      "updated_at": "2026-11-23T22:32:34Z",
-      "titulo_tema": "Portaria de Regulamentação do Fim da Escala 6x1",
-      "sintese_nerd": "O governo federal oficializou a portaria que regulamenta a redução da jornada de trabalho sem corte salarial, estabelecendo 90 dias de fiscalização orientativa. A medida atende a demandas sociais de produtividade e bem-estar, mas exige adaptação imediata de setores intensivos em mão de obra.",
-      "rota_editoria": "/politica",
-      "data_publicacao": "2026-11-23T22:32:34Z",
-      "gatilho_vitrine": "Agrupar conteudos sobre as novas regras da jornada de trabalho e fiscalizacao de empresas",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 88,
-      "categoria_primaria": "Politica",
-      "categorias_cruzadas": [
-        "Economia",
-        "Cultura"
-      ],
-      "palavras_chave_busca": [
-        "escala 6x1",
-        "portaria trabalho",
-        "jornada de trabalho",
-        "clt",
-        "reforma trabalhista",
-        "ministério do trabalho"
-      ]
-    },
-    {
-      "slug": "sucessao-lideranca-gra-ira-mojtaba-khamenei",
-      "status": "novo",
-      "ttl_horas": 120,
-      "expires_at": "2026-11-28T22:32:34Z",
-      "updated_at": "2026-11-23T22:32:34Z",
-      "titulo_tema": "Sucessão no Irã e a Escolha de Mojtaba Khamenei como Líder Supremo",
-      "sintese_nerd": "Revelações apontam que clérigos iranianos selecionaram Mojtaba Khamenei para suceder seu pai na liderança suprema do Irã em reuniões de bastidores. A consolidação da sucessão familiar no regime teocrático sinaliza a manutenção da linha dura do país perante o Ocidente e novas tensões no Oriente Médio.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-23T22:32:34Z",
-      "gatilho_vitrine": "Posicionar analises sobre a estabilidade geopolitica no Oriente Medio e a sucessao iraniana",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 86,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Politica",
-        "Economia"
-      ],
-      "palavras_chave_busca": [
-        "irã",
-        "mojtaba khamenei",
-        "ali khamenei",
-        "líder supremo",
-        "oriente médio",
-        "geopolítica militar"
-      ]
-    },
-    {
-      "slug": "reforma-judiciario-litigancia-uniao-stf-gilmar-mendes",
-      "status": "novo",
-      "ttl_horas": 72,
-      "expires_at": "2026-11-26T22:32:34Z",
-      "updated_at": "2026-11-23T22:32:34Z",
-      "titulo_tema": "Propostas de Reforma Estrutural no Judiciário e Litigância Contra a União",
-      "sintese_nerd": "Propostas de alteração no sistema judiciário visam conter contenciosos bilionários contra a União e conter rombos fiscais decorrentes de decisões judiciais. O debate expõe a tensão entre a necessidade de segurança jurídica, a neutralidade das cortes e o impacto orçamentário sobre o Estado.",
-      "rota_editoria": "/politica",
-      "data_publicacao": "2026-11-23T22:32:34Z",
-      "gatilho_vitrine": "Reunir artigos sobre reformas institucionais no Judiciario e combate a fraudes contra o Tesouro",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 81,
-      "categoria_primaria": "Politica",
-      "categorias_cruzadas": [
-        "Cultura",
-        "Economia"
-      ],
-      "palavras_chave_busca": [
-        "stf",
-        "gilmar mendes",
-        "reforma do judiciário",
-        "litigância união",
-        "crise institucional",
-        "segurança jurídica"
-      ]
-    },
-    {
       "slug": "pulso-4-20261123-2248",
       "status": "novo",
       "categoria": "Geopolitica_Relacoes",
@@ -803,43 +775,153 @@
       ]
     }
   ],
+  "temas_curadoria": [
+    {
+      "slug": "crise-hormuz-petroleo-navios-incendio",
+      "titulo_tema": "Tensão no Estreito de Hormuz: Navios atingidos por minas geram alerta global de energia",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 98,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-26T01:29:11Z",
+      "palavras_chave_busca": [
+        "estreito de hormuz",
+        "petróleo",
+        "guarda revolucionária do irã",
+        "crise energética",
+        "navios petroleiros",
+        "geopolítica do oriente médio"
+      ],
+      "gatilho_vitrine": "Destacar impacto imediato de conflitos no Oriente Médio sobre os preços globais do petróleo e reflexos na inflação e câmbio no Brasil.",
+      "sintese_nerd": "A detonação de minas navais no Estreito de Hormuz incendiando petroleiros ameaça diretamente o fluxo de suprimento energético mundial, elevando a volatilidade do Brent. Para o Brasil, choques nos preços internacionais do petróleo pressionam os custos internos de combustíveis e a inflação gerida pela Petrobras.",
+      "data_publicacao": "2026-11-24T01:29:11Z",
+      "updated_at": "2026-11-24T01:29:11Z"
+    },
+    {
+      "slug": "retorno-jensen-huang-nvidia-impacto-mercados",
+      "titulo_tema": "Retorno de Jensen Huang à Nvidia impulsiona ações e acende debate sobre volatilidade em IA",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Geopolitica_Radar",
+        "Cultura"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 92,
+      "ttl_horas": 72,
+      "expires_at": "2026-11-27T01:29:11Z",
+      "palavras_chave_busca": [
+        "nvidia",
+        "jensen huang",
+        "inteligência artificial",
+        "mercado acionário",
+        "controles de exportação",
+        "bolsa de nova york"
+      ],
+      "gatilho_vitrine": "Analisar o peso do setor tecnológico norte-americano sobre os mercados globais e as novas sanções comerciais dos EUA.",
+      "sintese_nerd": "A recondução unânime de Jensen Huang à liderança da Nvidia provocou disparada nas ações da gigante de semicondutores, aliviando incertezas regulatórias e o escrutínio sobre o comércio global de chips. O movimento reflete a extrema dependência dos mercados financeiros internacionais em relação ao ecossistema de inteligência artificial.",
+      "data_publicacao": "2026-11-24T01:29:11Z",
+      "updated_at": "2026-11-24T01:29:11Z"
+    },
+    {
+      "slug": "petrobras-margem-equatorial-exploracao",
+      "titulo_tema": "Petrobras eleva investimentos em exploração em 41% com foco na Margem Equatorial",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Politica",
+        "Geopolitica_Radar"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 88,
+      "ttl_horas": 96,
+      "expires_at": "2026-11-28T01:29:11Z",
+      "palavras_chave_busca": [
+        "petrobras",
+        "margem equatorial",
+        "exploração de petróleo",
+        "investimentos",
+        "setor energético",
+        "governo federal"
+      ],
+      "gatilho_vitrine": "Monitorar a estratégia corporativa da estatal brasileira frente aos novos desafios de transição energética e reservas exploratórias.",
+      "sintese_nerd": "O anúncio de um aporte multibilionário pela Petrobras para novas fronteiras, com destaque para a Margem Equatorial, equilibra a busca por reposição de reservas com debates ambientais sensíveis. A decisão direciona o foco da estatal para a segurança energética de longo prazo e geração de caixa.",
+      "data_publicacao": "2026-11-24T01:29:11Z",
+      "updated_at": "2026-11-24T01:29:11Z"
+    },
+    {
+      "slug": "zelensky-cobre-adesao-otan-assembleia",
+      "titulo_tema": "Zelensky pressiona por inclusão da Ucrânia na OTAN durante assembleia da aliança",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Politica",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 85,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-26T01:29:11Z",
+      "palavras_chave_busca": [
+        "ucrânia",
+        "otan",
+        "volodymyr zelensky",
+        "guerra na europa",
+        "segurança internacional",
+        "diplomacia"
+      ],
+      "gatilho_vitrine": "Cobrir os desdobramentos diplomáticos e de segurança na Europa Oriental e os riscos de escalada militar.",
+      "sintese_nerd": "A insistência de Volodymyr Zelensky na admissão imediata da Ucrânia à OTAN busca garantias formais de defesa frente às incursões aéreas russas na Europa. A pauta testa a coesão dos aliados ocidentais e o patamar de tolerância a uma escalada direta com Moscou.",
+      "data_publicacao": "2026-11-24T01:29:11Z",
+      "updated_at": "2026-11-24T01:29:11Z"
+    }
+  ],
   "noticias_quentes": [
     {
       "slug": "petrobras-margem-equatorial-exploracao-aumento",
-      "titulo_curto": "Com foco na Margem Equatorial, Petrobras eleva investimentos em exploração em 41%",
-      "resumo_pulso": "Segundo apuração do portal Poder360, a Petrobras anunciou um montante de US$ 10 bilhões voltado a novas fronteiras exploratórias, representando um salto de 41% nos aportes do setor. A estatal planeja a perfuração de cerca de 50 novos poços ao longo dos próximos cinco anos.",
-      "impacto_pratico": "A expansão exploratória redefine as diretrizes energéticas do país e mobiliza debates sobre matrizes produtivas e exigências ambientais.",
       "categoria": "Economia_Comercio",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "urgencia_score": 89,
-      "relevancia_score": 90,
-      "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 12,
-      "veiculos_origem": [
-        "Poder360"
-      ],
+      "expires_at": "2026-11-25T00:57:38Z",
+      "updated_at": "2026-11-24T00:57:38Z",
       "fontes_urls": [
         "https://www.poder360.com.br/poder-energia/com-margem-equatorial-petrobras-eleva-aportes-em-exploracao-em-41/"
       ],
+      "resumo_pulso": "Segundo apuração do portal Poder360, a Petrobras anunciou um montante de US$ 10 bilhões voltado a novas fronteiras exploratórias, representando um salto de 41% nos aportes do setor. A estatal planeja a perfuração de cerca de 50 novos poços ao longo dos próximos cinco anos.",
+      "titulo_curto": "Com foco na Margem Equatorial, Petrobras eleva investimentos em exploração em 41%",
       "palavras_chave": [
         "Petrobras",
         "Margem Equatorial",
         "Exploração",
         "Energia"
       ],
+      "urgencia_score": 89,
       "data_publicacao": "2026-11-24T00:47:09Z",
+      "impacto_pratico": "A expansão exploratória redefine as diretrizes energéticas do país e mobiliza debates sobre matrizes produtivas e exigências ambientais.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Poder360"
+      ],
+      "relevancia_score": 90,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "BR"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "Investimentos em energia solar, eólica e biocombustíveis aceleram transição energética no Brasil",
           "url_existente": "https://www.rodandoomundo.com.br/radar",
-          "motivo_conexao": "Relaciona as decisões de investimento da Petrobras com o debate sobre novas fronteiras de energia e transição."
+          "motivo_conexao": "Relaciona as decisões de investimento da Petrobras com o debate sobre novas fronteiras de energia e transição.",
+          "titulo_existente": "Investimentos em energia solar, eólica e biocombustíveis aceleram transição energética no Brasil"
         }
-      ],
-      "expires_at": "2026-11-25T00:57:38Z",
-      "updated_at": "2026-11-24T00:57:38Z"
+      ]
     },
     {
       "slug": "nvidia-jensen-huang-retorno-acoes-alta",
@@ -877,40 +959,40 @@
     },
     {
       "slug": "petrobras-dividendos-extraordinarios-15-bilhoes",
-      "titulo_curto": "Conselho da Petrobras aprova distribuição de remuneração extraordinária de R$ 15,6 bilhões",
-      "resumo_pulso": "Conforme comunicado oficial divulgado pela Agência Brasil, o Conselho de Administração da Petrobras aprovou o pagamento de R$ 15,6 bilhões em dividendos intercalares aos acionistas. O montante será distribuído em parcela única na forma de remuneração extraordinária, equivalente a pouco mais de R$ 1,21 por ação ordinária e preferencial.",
-      "impacto_pratico": "A forte distribuição de dividendos impacta diretamente o fluxo de caixa da estatal e atrai investidores focados em proventos na bolsa de valores.",
       "categoria": "Economia_Comercio",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "urgencia_score": 92,
-      "relevancia_score": 93,
-      "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 12,
-      "veiculos_origem": [
-        "Agência Brasil (EBC)"
-      ],
+      "expires_at": "2026-11-25T00:57:38Z",
+      "updated_at": "2026-11-24T00:57:38Z",
       "fontes_urls": [
         "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/petrobras-aprova-pagamento-de-r-156-bilhoes-acionistas"
       ],
+      "resumo_pulso": "Conforme comunicado oficial divulgado pela Agência Brasil, o Conselho de Administração da Petrobras aprovou o pagamento de R$ 15,6 bilhões em dividendos intercalares aos acionistas. O montante será distribuído em parcela única na forma de remuneração extraordinária, equivalente a pouco mais de R$ 1,21 por ação ordinária e preferencial.",
+      "titulo_curto": "Conselho da Petrobras aprova distribuição de remuneração extraordinária de R$ 15,6 bilhões",
       "palavras_chave": [
         "Petrobras",
         "Dividendos",
         "Economia",
         "Ações"
       ],
+      "urgencia_score": 92,
       "data_publicacao": "2026-11-24T00:03:00Z",
+      "impacto_pratico": "A forte distribuição de dividendos impacta diretamente o fluxo de caixa da estatal e atrai investidores focados em proventos na bolsa de valores.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Agência Brasil (EBC)"
+      ],
+      "relevancia_score": 93,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "BR"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "Economia no Brasil",
           "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
-          "motivo_conexao": "Contextualiza o impacto de grandes distribuições de dividendos de estatais no cenário econômico brasileiro."
+          "motivo_conexao": "Contextualiza o impacto de grandes distribuições de dividendos de estatais no cenário econômico brasileiro.",
+          "titulo_existente": "Economia no Brasil"
         }
-      ],
-      "expires_at": "2026-11-25T00:57:38Z",
-      "updated_at": "2026-11-24T00:57:38Z"
+      ]
     },
     {
       "slug": "petrobras-retorno-mercado-etanol-milho",
@@ -1581,144 +1663,6 @@
           "motivo_conexao": "Cobertura das transformações no mercado de trabalho e regulamentações trabalhistas.",
           "titulo_existente": "Economia no Brasil"
         }
-      ]
-    }
-  ],
-  "temas_curadoria": [
-    {
-      "slug": "votacao-pacote-ajuste-fiscal-camara-impacto-mercado",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-25T22:32:34Z",
-      "updated_at": "2026-11-23T22:32:34Z",
-      "titulo_tema": "Votação do Pacote de Ajuste Fiscal na Câmara e Reação dos Mercados",
-      "sintese_nerd": "A votação do projeto de ajuste fiscal na Câmara, prevendo economia de R$ 50 bilhões até 2027, gera forte embate político e volatilidade nos mercados. A incerteza sobre a aprovação sem desidratação pressiona o Ibovespa e reflete a preocupação com a sustentabilidade das contas públicas brasileiras.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-23T22:32:34Z",
-      "gatilho_vitrine": "Exibir analises sobre a votacao do pacote fiscal e o impacto direto no Ibovespa e no dolar",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 95,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Politica",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "ajuste fiscal",
-        "câmara dos deputados",
-        "ibovespa",
-        "corte de gastos",
-        "meta fiscal",
-        "teto de gastos"
-      ]
-    },
-    {
-      "slug": "retorno-ceo-nvidia-alta-recorde-acoes-impacto-juros-fed",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-25T22:32:34Z",
-      "updated_at": "2026-11-23T22:32:34Z",
-      "titulo_tema": "Retorno do CEO da Nvidia, Disparada Tecnológica e Pressão nos Juros dos EUA",
-      "sintese_nerd": "A volta de Jensen Huang ao comando da Nvidia fez a empresa valorizar US$ 952 bilhões em um único dia, impulsionando os mercados globais de tecnologia. O otimismo renovado fortaleceu o dólar em escala global, alimentando expectativas de manutenção de juros altos pelo Federal Reserve nos EUA.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-23T22:32:34Z",
-      "gatilho_vitrine": "Destacar a disparada das acoes da Nvidia e o fortalecimento do dolar frente a moedas emergentes",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 90,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Geopolitica_Radar",
-        "Cultura"
-      ],
-      "palavras_chave_busca": [
-        "nvidia",
-        "jensen huang",
-        "federal reserve",
-        "juros eua",
-        "dolar",
-        "inteligencia artificial",
-        "big techs"
-      ]
-    },
-    {
-      "slug": "regulamentacao-portaria-fim-escala-6x1-impacto-trabalhista",
-      "status": "novo",
-      "ttl_horas": 72,
-      "expires_at": "2026-11-26T22:32:34Z",
-      "updated_at": "2026-11-23T22:32:34Z",
-      "titulo_tema": "Portaria de Regulamentação do Fim da Escala 6x1",
-      "sintese_nerd": "O governo federal oficializou a portaria que regulamenta a redução da jornada de trabalho sem corte salarial, estabelecendo 90 dias de fiscalização orientativa. A medida atende a demandas sociais de produtividade e bem-estar, mas exige adaptação imediata de setores intensivos em mão de obra.",
-      "rota_editoria": "/politica",
-      "data_publicacao": "2026-11-23T22:32:34Z",
-      "gatilho_vitrine": "Agrupar conteudos sobre as novas regras da jornada de trabalho e fiscalizacao de empresas",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 88,
-      "categoria_primaria": "Politica",
-      "categorias_cruzadas": [
-        "Economia",
-        "Cultura"
-      ],
-      "palavras_chave_busca": [
-        "escala 6x1",
-        "portaria trabalho",
-        "jornada de trabalho",
-        "clt",
-        "reforma trabalhista",
-        "ministério do trabalho"
-      ]
-    },
-    {
-      "slug": "sucessao-lideranca-gra-ira-mojtaba-khamenei",
-      "status": "novo",
-      "ttl_horas": 120,
-      "expires_at": "2026-11-28T22:32:34Z",
-      "updated_at": "2026-11-23T22:32:34Z",
-      "titulo_tema": "Sucessão no Irã e a Escolha de Mojtaba Khamenei como Líder Supremo",
-      "sintese_nerd": "Revelações apontam que clérigos iranianos selecionaram Mojtaba Khamenei para suceder seu pai na liderança suprema do Irã em reuniões de bastidores. A consolidação da sucessão familiar no regime teocrático sinaliza a manutenção da linha dura do país perante o Ocidente e novas tensões no Oriente Médio.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-23T22:32:34Z",
-      "gatilho_vitrine": "Posicionar analises sobre a estabilidade geopolitica no Oriente Medio e a sucessao iraniana",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 86,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Politica",
-        "Economia"
-      ],
-      "palavras_chave_busca": [
-        "irã",
-        "mojtaba khamenei",
-        "ali khamenei",
-        "líder supremo",
-        "oriente médio",
-        "geopolítica militar"
-      ]
-    },
-    {
-      "slug": "reforma-judiciario-litigancia-uniao-stf-gilmar-mendes",
-      "status": "novo",
-      "ttl_horas": 72,
-      "expires_at": "2026-11-26T22:32:34Z",
-      "updated_at": "2026-11-23T22:32:34Z",
-      "titulo_tema": "Propostas de Reforma Estrutural no Judiciário e Litigância Contra a União",
-      "sintese_nerd": "Propostas de alteração no sistema judiciário visam conter contenciosos bilionários contra a União e conter rombos fiscais decorrentes de decisões judiciais. O debate expõe a tensão entre a necessidade de segurança jurídica, a neutralidade das cortes e o impacto orçamentário sobre o Estado.",
-      "rota_editoria": "/politica",
-      "data_publicacao": "2026-11-23T22:32:34Z",
-      "gatilho_vitrine": "Reunir artigos sobre reformas institucionais no Judiciario e combate a fraudes contra o Tesouro",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 81,
-      "categoria_primaria": "Politica",
-      "categorias_cruzadas": [
-        "Cultura",
-        "Economia"
-      ],
-      "palavras_chave_busca": [
-        "stf",
-        "gilmar mendes",
-        "reforma do judiciário",
-        "litigância união",
-        "crise institucional",
-        "segurança jurídica"
       ]
     }
   ]
