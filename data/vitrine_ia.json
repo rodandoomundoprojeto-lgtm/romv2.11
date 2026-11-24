@@ -2,89 +2,328 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-24T10:23:09Z",
-  "batch_id": "20261124-1022",
+  "updatedAt": "2026-11-24T11:24:03Z",
+  "batch_id": "20261124-1124",
   "temas_ativos": [
     {
-      "slug": "pacote-fiscal-lula-contingenciamento-impacto-mercado",
-      "titulo_tema": "Ajuste Fiscal e Tramitação do Pacote do Governo no Congresso",
+      "slug": "pulso-1-20261124-1124",
+      "titulo_tema": "Áudio: Projeto estimula empresas a custearem medicamentos de funcionários",
+      "titulo_curto": "Áudio: Projeto estimula empresas a custearem medicamentos de funcionários",
       "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Politica",
-        "Geopolitica_Radar"
-      ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 92,
-      "ttl_horas": 48,
-      "expires_at": "2026-11-26T10:23:09Z",
-      "palavras_chave_busca": [
-        "pacote fiscal",
-        "governo lula",
-        "contingenciamento",
-        "congresso nacional",
-        "economia brasil",
-        "contas publicas"
-      ],
-      "gatilho_vitrine": "Exibir análises sobre os impactos do ajuste fiscal nas contas públicas e no câmbio",
-      "sintese_nerd": "A aprovação do pacote fiscal e as negociações de bastidores no Congresso buscam estabilizar as contas públicas, gerando repercussões diretas sobre o apetite a risco dos investidores e a cotação do dólar. O avanço dessas medidas dita o tom da política econômica brasileira para os próximos anos.",
-      "data_publicacao": "2026-11-24T10:23:09Z",
-      "updated_at": "2026-11-24T10:23:09Z"
-    },
-    {
-      "slug": "samsung-restrincoes-eua-crise-chips-nvidia",
-      "titulo_tema": "Sanções dos EUA e Geopolítica de Semicondutores",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
+      "origem_pipeline": "pulso",
       "categoria_primaria": "Geopolitica_Radar",
+      "categoria": "Geopolitica_Relacoes",
       "categorias_cruzadas": [
         "Economia",
-        "Cultura"
+        "Resumo_Ultimas"
       ],
       "rota_editoria": "/radar",
       "relevancia_score": 88,
-      "ttl_horas": 72,
-      "expires_at": "2026-11-27T10:23:09Z",
+      "urgencia_score": 90,
+      "ttl_horas": 6,
+      "expires_at": "2026-11-24T17:24:03Z",
       "palavras_chave_busca": [
-        "semicondutores",
-        "nvidia",
-        "eua",
-        "china",
-        "geopolitica tecnologica",
-        "cadeia de suprimentos"
+        "radar",
+        "tempo real",
+        "br"
       ],
-      "gatilho_vitrine": "Destacar reportagens sobre a guerra tecnológica global e o controle de exportação de chips avançados",
-      "sintese_nerd": "Novas restrições comerciais impostas pelos EUA a empresas ligadas à cadeia de semicondutores acirram a disputa tecnológica global pela hegemonia da Inteligência Artificial. Esse choque afeta diretamente as cadeias globais de suprimentos e o mercado acionário de tecnologia.",
-      "data_publicacao": "2026-11-24T10:23:09Z",
-      "updated_at": "2026-11-24T10:23:09Z"
+      "palavras_chave": [
+        "radar",
+        "tempo real",
+        "br"
+      ],
+      "gatilho_vitrine": "Segundo Agência Senado, Está pronto para votação na Comissão de Assuntos Econômicos (CAE) um projeto (PL 3.079/2024) que permite que empresas ajudem funcionários e dependentes a comprar medicamentos em troca de incentivos fiscais. A proposta do senador Weverton (PDT-MA) prevê a compra de remédios com receita médica. O relator, senador Nelsinho Trad (PSD-MS), sugeriu limit.",
+      "resumo_pulso": "Segundo Agência Senado, Está pronto para votação na Comissão de Assuntos Econômicos (CAE) um projeto (PL 3.079/2024) que permite que empresas ajudem funcionários e dependentes a comprar medicamentos em troca de incentivos fiscais. A proposta do senador Weverton (PDT-MA) prevê a compra de remédios com receita médica. O relator, senador Nelsinho Trad (PSD-MS), sugeriu limit.",
+      "sintese_nerd": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "veiculos_origem": [
+        "Agência Senado"
+      ],
+      "fontes_urls": [
+        "https://www12.senado.leg.br/noticias/audios/2026/11/projeto-estimula-empresas-a-custearem-medicamentos-de-funcionarios"
+      ],
+      "data_publicacao": "2026-11-24T11:22:50+00:00",
+      "updated_at": "2026-11-24T11:24:03Z"
     },
     {
-      "slug": "sui-canca-alerta-espaco-aereo-russia-coreia-do-sul",
-      "titulo_tema": "Tensão Geopolítica: Alerta de Ataque Aéreo na Coreia do Sul",
+      "slug": "pulso-2-20261124-1124",
+      "titulo_tema": "Entenda o plano Moretti, o ajuste fiscal aprovado pela Câmara",
+      "titulo_curto": "Entenda o plano Moretti, o ajuste fiscal aprovado pela Câmara",
       "status": "novo",
-      "origem_pipeline": "curadoria",
+      "origem_pipeline": "pulso",
       "categoria_primaria": "Geopolitica_Radar",
+      "categoria": "Geopolitica_Relacoes",
       "categorias_cruzadas": [
-        "Resumo_Ultimas",
-        "Economia"
+        "Economia",
+        "Resumo_Ultimas"
       ],
       "rota_editoria": "/radar",
-      "relevancia_score": 86,
-      "ttl_horas": 24,
-      "expires_at": "2026-11-25T10:23:09Z",
+      "relevancia_score": 84,
+      "urgencia_score": 85,
+      "ttl_horas": 6,
+      "expires_at": "2026-11-24T17:24:03Z",
+      "palavras_chave_busca": [
+        "radar",
+        "tempo real",
+        "br"
+      ],
+      "palavras_chave": [
+        "radar",
+        "tempo real",
+        "br"
+      ],
+      "gatilho_vitrine": "Segundo G1 Política, Câmara aprova projeto de ajuste fiscal; texto segue para sanção do presidente Lula A Câmara dos Deputados aprovou na segunda-feira (23/11) o pacto de medidas de ajuste fiscal proposto pelo governo federal. O projeto, que ficou conhecido como Plano Moretti e já tinha passado pelo Senado, tem o potencial de gerar uma economia entre R$ 50 bilhões e R$.",
+      "resumo_pulso": "Segundo G1 Política, Câmara aprova projeto de ajuste fiscal; texto segue para sanção do presidente Lula A Câmara dos Deputados aprovou na segunda-feira (23/11) o pacto de medidas de ajuste fiscal proposto pelo governo federal. O projeto, que ficou conhecido como Plano Moretti e já tinha passado pelo Senado, tem o potencial de gerar uma economia entre R$ 50 bilhões e R$.",
+      "sintese_nerd": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "veiculos_origem": [
+        "G1 Política"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/economia/noticia/2026/11/24/entenda-o-plano-moretti-o-ajuste-fiscal-aprovado-pela-camara.ghtml"
+      ],
+      "data_publicacao": "2026-11-24T11:21:42+00:00",
+      "updated_at": "2026-11-24T11:24:03Z"
+    },
+    {
+      "slug": "pulso-3-20261124-1124",
+      "titulo_tema": "Iraque ordena aquisição de campos petrolíferos em áreas sob controle curdo",
+      "titulo_curto": "Iraque ordena aquisição de campos petrolíferos em áreas sob controle curdo",
+      "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categoria": "Geopolitica_Relacoes",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 80,
+      "urgencia_score": 80,
+      "ttl_horas": 6,
+      "expires_at": "2026-11-24T17:24:03Z",
+      "palavras_chave_busca": [
+        "radar",
+        "tempo real",
+        "qa"
+      ],
+      "palavras_chave": [
+        "radar",
+        "tempo real",
+        "qa"
+      ],
+      "gatilho_vitrine": "Segundo Al Jazeera English, O primeiro-ministro Ali al-Zaidi também ordena ao seu governo que tome todas as travessias na região curda após um inquérito sobre contrabando de petróleo..",
+      "resumo_pulso": "Segundo Al Jazeera English, O primeiro-ministro Ali al-Zaidi também ordena ao seu governo que tome todas as travessias na região curda após um inquérito sobre contrabando de petróleo..",
+      "sintese_nerd": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "paises_envolvidos": [
+        "QA"
+      ],
+      "veiculos_origem": [
+        "Al Jazeera English"
+      ],
+      "fontes_urls": [
+        "https://www.aljazeera.com/news/2026/11/24/iraq-orders-takeover-of-oilfields-in-areas-under-kurdish-control?traffic_source=rss"
+      ],
+      "data_publicacao": "2026-11-24T11:19:04+00:00",
+      "updated_at": "2026-11-24T11:24:03Z"
+    },
+    {
+      "slug": "pulso-4-20261124-1124",
+      "titulo_tema": "Explosão em restaurante no Vietnã mata pelo menos seis pessoas",
+      "titulo_curto": "Explosão em restaurante no Vietnã mata pelo menos seis pessoas",
+      "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categoria": "Geopolitica_Relacoes",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 76,
+      "urgencia_score": 75,
+      "ttl_horas": 6,
+      "expires_at": "2026-11-24T17:24:03Z",
+      "palavras_chave_busca": [
+        "radar",
+        "tempo real",
+        "qa"
+      ],
+      "palavras_chave": [
+        "radar",
+        "tempo real",
+        "qa"
+      ],
+      "gatilho_vitrine": "Segundo Al Jazeera English, Pelo menos 10 feridos após explosão em restaurante no distrito de Dong Da, em Hanói, durante as operações de resgate em andamento..",
+      "resumo_pulso": "Segundo Al Jazeera English, Pelo menos 10 feridos após explosão em restaurante no distrito de Dong Da, em Hanói, durante as operações de resgate em andamento..",
+      "sintese_nerd": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "paises_envolvidos": [
+        "QA"
+      ],
+      "veiculos_origem": [
+        "Al Jazeera English"
+      ],
+      "fontes_urls": [
+        "https://www.aljazeera.com/news/2026/11/24/vietnam-restaurant-blast-kills-at-least-six?traffic_source=rss"
+      ],
+      "data_publicacao": "2026-11-24T11:17:20+00:00",
+      "updated_at": "2026-11-24T11:24:03Z"
+    },
+    {
+      "slug": "pulso-5-20261124-1124",
+      "titulo_tema": "De olho no Lula 4, Centrão garante vitória do ajuste fiscal, mas governo precisa dar segundo passo",
+      "titulo_curto": "De olho no Lula 4, Centrão garante vitória do ajuste fiscal, mas governo precisa dar segundo passo",
+      "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categoria": "Geopolitica_Relacoes",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 72,
+      "urgencia_score": 70,
+      "ttl_horas": 6,
+      "expires_at": "2026-11-24T17:24:03Z",
+      "palavras_chave_busca": [
+        "radar",
+        "tempo real",
+        "br"
+      ],
+      "palavras_chave": [
+        "radar",
+        "tempo real",
+        "br"
+      ],
+      "gatilho_vitrine": "Segundo G1 Política, Câmara aprova texto-base do pacote de ajuste fiscal do governo De olho na montagem dos ministérios do próximo governo Luiz Inácio Lula da Silva (PT), os partidos do Centrão ajudaram o presidente a obter uma vitória nesta segunda-feira (23) na Câmara dos Deputados, em operação comanda pelo presidente da Casa, Hugo Motta (Republicanos-PB). Com isso, .",
+      "resumo_pulso": "Segundo G1 Política, Câmara aprova texto-base do pacote de ajuste fiscal do governo De olho na montagem dos ministérios do próximo governo Luiz Inácio Lula da Silva (PT), os partidos do Centrão ajudaram o presidente a obter uma vitória nesta segunda-feira (23) na Câmara dos Deputados, em operação comanda pelo presidente da Casa, Hugo Motta (Republicanos-PB). Com isso, .",
+      "sintese_nerd": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "veiculos_origem": [
+        "G1 Política"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/politica/blog/valdo-cruz/post/2026/11/24/de-olho-no-lula-4-centrao-garante-vitoria-do-ajuste-fiscal-mas-governo-precisa-dar-um-segundo-passo.ghtml"
+      ],
+      "data_publicacao": "2026-11-24T10:48:38+00:00",
+      "updated_at": "2026-11-24T11:24:03Z"
+    },
+    {
+      "slug": "aprovacao-pacote-fiscal-camara-impacto-contas-publicas-brasil",
+      "status": "novo",
+      "ttl_horas": 48,
+      "expires_at": "2026-11-26T10:37:05Z",
+      "updated_at": "2026-11-24T10:37:05Z",
+      "titulo_tema": "Aprovação do Pacote Fiscal na Câmara e os Desafios de Execução para 2027",
+      "sintese_nerd": "A aprovação do pacote fiscal na Câmara dos Deputados projeta uma economia significativa para 2027, mas enfrenta ceticismo dos mercados quanto à rigidez na execução das despesas. O cenário político interno, marcado por resistências na base aliada, tensiona as expectativas para a estabilização da dívida pública.",
+      "rota_editoria": "/economia",
+      "data_publicacao": "2026-11-24T10:37:05Z",
+      "gatilho_vitrine": "Destacar análises sobre a votação do pacote fiscal na Câmara e os impactos reais nas contas públicas e no câmbio a partir de 2027.",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 95,
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Politica",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "pacote fiscal",
+        "câmara dos deputados",
+        "contas públicas",
+        "ajuste fiscal",
+        "governo lula",
+        "economia 2027",
+        "orçamento"
+      ]
+    },
+    {
+      "slug": "caca-rrompimento-espaco-aereo-coreia-do-sul-avental-russia",
+      "status": "novo",
+      "ttl_horas": 36,
+      "expires_at": "2026-11-25T22:37:05Z",
+      "updated_at": "2026-11-24T10:37:05Z",
+      "titulo_tema": "Tensão na Ásia: Caças Russos Acionam Alerta de Ataque Aéreo na Coreia do Sul",
+      "sintese_nerd": "A aproximação inédita de aeronaves militares russas da ilha sul-coreana elevou o nível de prontidão militar em Seul, gerando um alerta de ataque aéreo sem precedentes na região. O episódio intensifica as fissuras geopolíticas entre potências asiáticas e ocidentais, repercutindo nas cadeias globais de suprimentos e segurança.",
+      "rota_editoria": "/radar",
+      "data_publicacao": "2026-11-24T10:37:05Z",
+      "gatilho_vitrine": "Exibir no radar geopolítico o avanço de aeronaves russas próximas ao espaço sul-coreano e as repercussões regionais.",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 90,
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia"
+      ],
       "palavras_chave_busca": [
         "coreia do sul",
-        "russia",
-        "espaco aereo",
-        "alerta de ataque",
-        "tensao militar",
-        "indo-pacifico"
+        "rússia",
+        "espaço aéreo",
+        "alerta de ataque aéreo",
+        "geopolítica ásia",
+        "aviação militar"
+      ]
+    },
+    {
+      "slug": "reservas-internacionais-banco-central-limites-dolar",
+      "status": "novo",
+      "ttl_horas": 48,
+      "expires_at": "2026-11-26T10:37:05Z",
+      "updated_at": "2026-11-24T10:37:05Z",
+      "titulo_tema": "Os Limites das Reservas Internacionais do BC para Conter a Alta do Dólar",
+      "sintese_nerd": "Mesmo dispondo de um robusto colchão em reservas internacionais, o Banco Central enfrenta restrições estruturais para segurar a escalada do dólar frente ao real. O fenômeno reflete desequilíbrios macroeconômicos globais e locais que limitam o uso de ativos cambiais sem gerar riscos adicionais à inflação.",
+      "rota_editoria": "/economia",
+      "data_publicacao": "2026-11-24T10:37:05Z",
+      "gatilho_vitrine": "Conectar a discussão sobre o volume de reservas cambiais do Brasil com a eficácia real de intervenções no câmbio.",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 88,
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Geopolitica_Radar"
       ],
-      "gatilho_vitrine": "Priorizar coberturas sobre incidentes militares internacionais e suas repercussões diplomáticas",
-      "sintese_nerd": "Aproximações incomuns de aeronaves militares russas perto do espaço aéreo sul-coreano elevaram as tensões regionais no Indo-Pacífico e forçaram emissão inédita de alerta de defesa. O episódio reforça a interconexão entre as frentes de conflito na Europa Oriental e na Ásia.",
-      "data_publicacao": "2026-11-24T10:23:09Z",
-      "updated_at": "2026-11-24T10:23:09Z"
+      "palavras_chave_busca": [
+        "reservas internacionais",
+        "banco central",
+        "dólar",
+        "câmbio",
+        "economia brasileira",
+        "política monetária"
+      ]
+    },
+    {
+      "slug": "braskem-acordo-preliminar-reestruturacao-dividas",
+      "status": "novo",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-25T10:37:05Z",
+      "updated_at": "2026-11-24T10:37:05Z",
+      "titulo_tema": "Braskem Anuncia Acordo Preliminar com Credores sobre Reestruturação de Dívidas",
+      "sintese_nerd": "O avanço nas negociações entre a Braskem e seus credores para um plano de recuperação extrajudicial busca sanar o endividamento da petroquímica. A estabilização financeira da companhia é crucial para a manutenção de operações estratégicas do setor industrial e químico brasileiro.",
+      "rota_editoria": "/economia",
+      "data_publicacao": "2026-11-24T10:37:05Z",
+      "gatilho_vitrine": "Atualizar investidores e o público sobre o avanço na reestruturação da dívida da petroquímica Braskem.",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 82,
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "braskem",
+        "reestruturação de dívidas",
+        "recuperação extrajudicial",
+        "mercado financeiro",
+        "credores"
+      ]
     },
     {
       "slug": "malaysia-set-to-return-rohingya-refugees-to-myanmar",
@@ -609,280 +848,214 @@
         "etanol",
         "biocombustíveis"
       ]
-    },
-    {
-      "slug": "cvm-suspende-registro-brb-banco-brasilia",
-      "status": "novo",
-      "categoria": "Economia_Comercio",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-25T00:27:46Z",
-      "updated_at": "2026-11-24T03:25:31Z",
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/brb-diz-que-banco-segue-funcionando-apos-suspensao-da-cvm"
-      ],
-      "titulo_tema": "BRB garante funcionamento de serviços bancários após decisão restritiva da CVM",
-      "resumo_pulso": "O Banco de Brasília (BRB) emitiu nota oficial informando que seus atendimentos e serviços operacionais continuam funcionando normalmente. Conforme divulgado pela Agência Brasil, a instituição esclareceu que a suspensão aplicada pela Comissão de Valores Mobiliários (CVM) restringe-se às negociações de mercado aberto devido ao atraso no envio de demonstrações financeiras.",
-      "sintese_nerd": "Clientes e correntistas mantêm acesso regular às suas contas, saques e transferências, com o impacto limitado às ações da instituição na bolsa de valores.",
-      "titulo_curto": "BRB garante funcionamento de serviços bancários após decisão restritiva da CVM",
-      "rota_editoria": "/economia",
-      "palavras_chave": [
-        "brb",
-        "cvm",
-        "banco de brasília",
-        "mercado de capitais",
-        "balanço"
-      ],
-      "urgencia_score": 88,
-      "data_publicacao": "2026-11-23T23:05:34Z",
-      "gatilho_vitrine": "O Banco de Brasília (BRB) emitiu nota oficial informando que seus atendimentos e serviços operacionais continuam funcionando normalmente. Conforme divulgado pela Agência Brasil, a instituição esclareceu que a suspensão aplicada pela Comissão de Valores Mobiliários (CVM) restringe-se às negociações de mercado aberto devido ao atraso no envio de demonstrações financeiras.",
-      "impacto_pratico": "Clientes e correntistas mantêm acesso regular às suas contas, saques e transferências, com o impacto limitado às ações da instituição na bolsa de valores.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "Agência Brasil (EBC)",
-        "G1 Economia"
-      ],
-      "relevancia_score": 87,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "brb",
-        "cvm",
-        "banco de brasília",
-        "mercado de capitais",
-        "balanço"
-      ]
-    },
-    {
-      "slug": "china-condena-funcionario-morte-espionagem",
-      "status": "novo",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-25T00:27:46Z",
-      "updated_at": "2026-11-24T00:27:46Z",
-      "fontes_urls": [
-        "https://g1.globo.com/mundo/noticia/2026/11/23/china-condena-funcionario-a-morte-por-espionagem-e-vazamento-de-segredos-de-estado.ghtml"
-      ],
-      "titulo_tema": "China condena funcionário público à morte por vazamento de segredos de Estado",
-      "resumo_pulso": "Segundo reportagem do G1 Mundo citando comunicados de entidades ligadas ao governo em Pequim, um servidor chinês foi sentenciado à morte por realizar atividades de espionagem para um país estrangeiro. O caso ocorre em meio ao reforço das legislações de segurança nacional no país.",
-      "sintese_nerd": "Reflete o rigor no cumprimento das leis de contrainteligência da China em um momento de crescentes disputas geopolíticas.",
-      "titulo_curto": "China condena funcionário público à morte por vazamento de segredos de Estado",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "china",
-        "espionagem",
-        "segurança nacional",
-        "pequim"
-      ],
-      "urgencia_score": 87,
-      "data_publicacao": "2026-11-23T22:56:02Z",
-      "gatilho_vitrine": "Segundo reportagem do G1 Mundo citando comunicados de entidades ligadas ao governo em Pequim, um servidor chinês foi sentenciado à morte por realizar atividades de espionagem para um país estrangeiro. O caso ocorre em meio ao reforço das legislações de segurança nacional no país.",
-      "impacto_pratico": "Reflete o rigor no cumprimento das leis de contrainteligência da China em um momento de crescentes disputas geopolíticas.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "G1 Mundo"
-      ],
-      "relevancia_score": 85,
-      "paises_envolvidos": [
-        "CN"
-      ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "china",
-        "espionagem",
-        "segurança nacional",
-        "pequim"
-      ]
-    },
-    {
-      "slug": "eua-impoem-novas-sancoes-contra-redes-financeiras-do-ira",
-      "status": "novo",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-25T10:02:20Z",
-      "updated_at": "2026-11-24T10:02:20Z",
-      "fontes_urls": [
-        "https://www.iranintl.com/en/202611246967"
-      ],
-      "titulo_tema": "Irã enfrenta crise cambial e sanções financeiras dos EUA",
-      "resumo_pulso": "A moeda iraniana, o rial, ultrapassou a marca de 2,8 milhões por dólar no mercado paralelo. Segundo o Iran International, a crise é agravada por sanções financeiras dos EUA e pelo bloqueio naval que restringe as exportações de petróleo do país.",
-      "sintese_nerd": "Aprofundamento da crise econômica no Irã com impacto direto na inflação local e na capacidade de comércio exterior.",
-      "titulo_curto": "Irã enfrenta crise cambial e sanções financeiras dos EUA",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "irã",
-        "sanções",
-        "dólar",
-        "crise econômica"
-      ],
-      "urgencia_score": 90,
-      "data_publicacao": "2026-11-23T20:47:59.842605+00:00",
-      "gatilho_vitrine": "A moeda iraniana, o rial, ultrapassou a marca de 2,8 milhões por dólar no mercado paralelo. Segundo o Iran International, a crise é agravada por sanções financeiras dos EUA e pelo bloqueio naval que restringe as exportações de petróleo do país.",
-      "impacto_pratico": "Aprofundamento da crise econômica no Irã com impacto direto na inflação local e na capacidade de comércio exterior.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "Iran International"
-      ],
-      "relevancia_score": 85,
-      "paises_envolvidos": [
-        "IR",
-        "US"
-      ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "irã",
-        "sanções",
-        "dólar",
-        "crise econômica"
-      ]
-    },
-    {
-      "slug": "captura-narcotraficante-mexicano-fbi",
-      "status": "novo",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-25T04:35:46Z",
-      "updated_at": "2026-11-24T04:35:46Z",
-      "fontes_urls": [
-        "https://www.aljazeera.com/news/2026/11/24/mexico-to-try-el-chapo-isidro-despite-us-extradition-request?traffic_source=rss"
-      ],
-      "titulo_tema": "México decide processar 'El Chapo Isidro' localmente antes de avaliar extradição para os EUA",
-      "resumo_pulso": "O governo do México informou que julgará o narcotraficante Fausto Isidro Meza Flores em tribunais mexicanos por acusações de tráfico e porte ilícito de armas antes de responder ao pedido formal de extradição dos EUA. Conforme reportaram a Al Jazeera English e a BBC News Brasil, Meza Flores figurava entre os dez criminosos mais procurados pelo FBI e foi capturado após um forte confronto armado em Sinaloa.",
-      "sintese_nerd": "A decisão do sistema judiciário mexicano adiciona complexidade à cooperação de segurança e extradições na fronteira entre México e Estados Unidos.",
-      "titulo_curto": "México decide processar 'El Chapo Isidro' localmente antes de avaliar extradição para os EUA",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "el chapo isidro",
-        "méxico",
-        "fbi",
-        "extradição",
-        "narcotráfico"
-      ],
-      "urgencia_score": 89,
-      "data_publicacao": "2026-11-23T11:51:01.492268+00:00",
-      "gatilho_vitrine": "O governo do México informou que julgará o narcotraficante Fausto Isidro Meza Flores em tribunais mexicanos por acusações de tráfico e porte ilícito de armas antes de responder ao pedido formal de extradição dos EUA. Conforme reportaram a Al Jazeera English e a BBC News Brasil, Meza Flores figurava entre os dez criminosos mais procurados pelo FBI e foi capturado após um forte confronto armado em Sinaloa.",
-      "impacto_pratico": "A decisão do sistema judiciário mexicano adiciona complexidade à cooperação de segurança e extradições na fronteira entre México e Estados Unidos.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "Al Jazeera English",
-        "BBC News Brasil"
-      ],
-      "relevancia_score": 87,
-      "paises_envolvidos": [
-        "MX",
-        "US"
-      ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "el chapo isidro",
-        "méxico",
-        "fbi",
-        "extradição",
-        "narcotráfico"
-      ]
-    }
-  ],
-  "temas_curadoria": [
-    {
-      "slug": "pacote-fiscal-lula-contingenciamento-impacto-mercado",
-      "titulo_tema": "Ajuste Fiscal e Tramitação do Pacote do Governo no Congresso",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Politica",
-        "Geopolitica_Radar"
-      ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 92,
-      "ttl_horas": 48,
-      "expires_at": "2026-11-26T10:23:09Z",
-      "palavras_chave_busca": [
-        "pacote fiscal",
-        "governo lula",
-        "contingenciamento",
-        "congresso nacional",
-        "economia brasil",
-        "contas publicas"
-      ],
-      "gatilho_vitrine": "Exibir análises sobre os impactos do ajuste fiscal nas contas públicas e no câmbio",
-      "sintese_nerd": "A aprovação do pacote fiscal e as negociações de bastidores no Congresso buscam estabilizar as contas públicas, gerando repercussões diretas sobre o apetite a risco dos investidores e a cotação do dólar. O avanço dessas medidas dita o tom da política econômica brasileira para os próximos anos.",
-      "data_publicacao": "2026-11-24T10:23:09Z",
-      "updated_at": "2026-11-24T10:23:09Z"
-    },
-    {
-      "slug": "samsung-restrincoes-eua-crise-chips-nvidia",
-      "titulo_tema": "Sanções dos EUA e Geopolítica de Semicondutores",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Cultura"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 88,
-      "ttl_horas": 72,
-      "expires_at": "2026-11-27T10:23:09Z",
-      "palavras_chave_busca": [
-        "semicondutores",
-        "nvidia",
-        "eua",
-        "china",
-        "geopolitica tecnologica",
-        "cadeia de suprimentos"
-      ],
-      "gatilho_vitrine": "Destacar reportagens sobre a guerra tecnológica global e o controle de exportação de chips avançados",
-      "sintese_nerd": "Novas restrições comerciais impostas pelos EUA a empresas ligadas à cadeia de semicondutores acirram a disputa tecnológica global pela hegemonia da Inteligência Artificial. Esse choque afeta diretamente as cadeias globais de suprimentos e o mercado acionário de tecnologia.",
-      "data_publicacao": "2026-11-24T10:23:09Z",
-      "updated_at": "2026-11-24T10:23:09Z"
-    },
-    {
-      "slug": "sui-canca-alerta-espaco-aereo-russia-coreia-do-sul",
-      "titulo_tema": "Tensão Geopolítica: Alerta de Ataque Aéreo na Coreia do Sul",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Resumo_Ultimas",
-        "Economia"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 86,
-      "ttl_horas": 24,
-      "expires_at": "2026-11-25T10:23:09Z",
-      "palavras_chave_busca": [
-        "coreia do sul",
-        "russia",
-        "espaco aereo",
-        "alerta de ataque",
-        "tensao militar",
-        "indo-pacifico"
-      ],
-      "gatilho_vitrine": "Priorizar coberturas sobre incidentes militares internacionais e suas repercussões diplomáticas",
-      "sintese_nerd": "Aproximações incomuns de aeronaves militares russas perto do espaço aéreo sul-coreano elevaram as tensões regionais no Indo-Pacífico e forçaram emissão inédita de alerta de defesa. O episódio reforça a interconexão entre as frentes de conflito na Europa Oriental e na Ásia.",
-      "data_publicacao": "2026-11-24T10:23:09Z",
-      "updated_at": "2026-11-24T10:23:09Z"
     }
   ],
   "noticias_quentes": [
+    {
+      "slug": "pulso-1-20261124-1124",
+      "titulo_curto": "Áudio: Projeto estimula empresas a custearem medicamentos de funcionários",
+      "resumo_pulso": "Segundo Agência Senado, Está pronto para votação na Comissão de Assuntos Econômicos (CAE) um projeto (PL 3.079/2024) que permite que empresas ajudem funcionários e dependentes a comprar medicamentos em troca de incentivos fiscais. A proposta do senador Weverton (PDT-MA) prevê a compra de remédios com receita médica. O relator, senador Nelsinho Trad (PSD-MS), sugeriu limit.",
+      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "categoria": "Geopolitica_Relacoes",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "urgencia_score": 90,
+      "relevancia_score": 88,
+      "nivel_confianca": "alta",
+      "ttl_horas": 6,
+      "horas_em_destaque": 6,
+      "veiculos_origem": [
+        "Agência Senado"
+      ],
+      "fontes_urls": [
+        "https://www12.senado.leg.br/noticias/audios/2026/11/projeto-estimula-empresas-a-custearem-medicamentos-de-funcionarios"
+      ],
+      "palavras_chave": [
+        "radar",
+        "tempo real",
+        "br"
+      ],
+      "data_publicacao": "2026-11-24T11:22:50+00:00",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "O que é inflação?",
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
+          "motivo_conexao": "Compreenda por que os preços sobem de forma generalizada, como o IPCA é calculado e de que maneira os juros do Banco Central afetam o poder de compra."
+        },
+        {
+          "titulo_existente": "Como funcionam as eleições nos EUA?",
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/como-funcionam-as-eleicoes-nos-eua",
+          "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos."
+        }
+      ],
+      "expires_at": "2026-11-24T17:24:03Z",
+      "updated_at": "2026-11-24T11:24:03Z"
+    },
+    {
+      "slug": "pulso-2-20261124-1124",
+      "titulo_curto": "Entenda o plano Moretti, o ajuste fiscal aprovado pela Câmara",
+      "resumo_pulso": "Segundo G1 Política, Câmara aprova projeto de ajuste fiscal; texto segue para sanção do presidente Lula A Câmara dos Deputados aprovou na segunda-feira (23/11) o pacto de medidas de ajuste fiscal proposto pelo governo federal. O projeto, que ficou conhecido como Plano Moretti e já tinha passado pelo Senado, tem o potencial de gerar uma economia entre R$ 50 bilhões e R$.",
+      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "categoria": "Geopolitica_Relacoes",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "urgencia_score": 85,
+      "relevancia_score": 84,
+      "nivel_confianca": "alta",
+      "ttl_horas": 6,
+      "horas_em_destaque": 6,
+      "veiculos_origem": [
+        "G1 Política"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/economia/noticia/2026/11/24/entenda-o-plano-moretti-o-ajuste-fiscal-aprovado-pela-camara.ghtml"
+      ],
+      "palavras_chave": [
+        "radar",
+        "tempo real",
+        "br"
+      ],
+      "data_publicacao": "2026-11-24T11:21:42+00:00",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "O que é inflação?",
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
+          "motivo_conexao": "Compreenda por que os preços sobem de forma generalizada, como o IPCA é calculado e de que maneira os juros do Banco Central afetam o poder de compra."
+        },
+        {
+          "titulo_existente": "Como funcionam as eleições nos EUA?",
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/como-funcionam-as-eleicoes-nos-eua",
+          "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos."
+        }
+      ],
+      "expires_at": "2026-11-24T17:24:03Z",
+      "updated_at": "2026-11-24T11:24:03Z"
+    },
+    {
+      "slug": "pulso-3-20261124-1124",
+      "titulo_curto": "Iraque ordena aquisição de campos petrolíferos em áreas sob controle curdo",
+      "resumo_pulso": "Segundo Al Jazeera English, O primeiro-ministro Ali al-Zaidi também ordena ao seu governo que tome todas as travessias na região curda após um inquérito sobre contrabando de petróleo..",
+      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "categoria": "Geopolitica_Relacoes",
+      "paises_envolvidos": [
+        "QA"
+      ],
+      "urgencia_score": 80,
+      "relevancia_score": 80,
+      "nivel_confianca": "alta",
+      "ttl_horas": 6,
+      "horas_em_destaque": 6,
+      "veiculos_origem": [
+        "Al Jazeera English"
+      ],
+      "fontes_urls": [
+        "https://www.aljazeera.com/news/2026/11/24/iraq-orders-takeover-of-oilfields-in-areas-under-kurdish-control?traffic_source=rss"
+      ],
+      "palavras_chave": [
+        "radar",
+        "tempo real",
+        "qa"
+      ],
+      "data_publicacao": "2026-11-24T11:19:04+00:00",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "O que é inflação?",
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
+          "motivo_conexao": "Compreenda por que os preços sobem de forma generalizada, como o IPCA é calculado e de que maneira os juros do Banco Central afetam o poder de compra."
+        },
+        {
+          "titulo_existente": "Como funcionam as eleições nos EUA?",
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/como-funcionam-as-eleicoes-nos-eua",
+          "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos."
+        }
+      ],
+      "expires_at": "2026-11-24T17:24:03Z",
+      "updated_at": "2026-11-24T11:24:03Z"
+    },
+    {
+      "slug": "pulso-4-20261124-1124",
+      "titulo_curto": "Explosão em restaurante no Vietnã mata pelo menos seis pessoas",
+      "resumo_pulso": "Segundo Al Jazeera English, Pelo menos 10 feridos após explosão em restaurante no distrito de Dong Da, em Hanói, durante as operações de resgate em andamento..",
+      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "categoria": "Geopolitica_Relacoes",
+      "paises_envolvidos": [
+        "QA"
+      ],
+      "urgencia_score": 75,
+      "relevancia_score": 76,
+      "nivel_confianca": "alta",
+      "ttl_horas": 6,
+      "horas_em_destaque": 6,
+      "veiculos_origem": [
+        "Al Jazeera English"
+      ],
+      "fontes_urls": [
+        "https://www.aljazeera.com/news/2026/11/24/vietnam-restaurant-blast-kills-at-least-six?traffic_source=rss"
+      ],
+      "palavras_chave": [
+        "radar",
+        "tempo real",
+        "qa"
+      ],
+      "data_publicacao": "2026-11-24T11:17:20+00:00",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "O que é inflação?",
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
+          "motivo_conexao": "Compreenda por que os preços sobem de forma generalizada, como o IPCA é calculado e de que maneira os juros do Banco Central afetam o poder de compra."
+        },
+        {
+          "titulo_existente": "Como funcionam as eleições nos EUA?",
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/como-funcionam-as-eleicoes-nos-eua",
+          "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos."
+        }
+      ],
+      "expires_at": "2026-11-24T17:24:03Z",
+      "updated_at": "2026-11-24T11:24:03Z"
+    },
+    {
+      "slug": "pulso-5-20261124-1124",
+      "titulo_curto": "De olho no Lula 4, Centrão garante vitória do ajuste fiscal, mas governo precisa dar segundo passo",
+      "resumo_pulso": "Segundo G1 Política, Câmara aprova texto-base do pacote de ajuste fiscal do governo De olho na montagem dos ministérios do próximo governo Luiz Inácio Lula da Silva (PT), os partidos do Centrão ajudaram o presidente a obter uma vitória nesta segunda-feira (23) na Câmara dos Deputados, em operação comanda pelo presidente da Casa, Hugo Motta (Republicanos-PB). Com isso, .",
+      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "categoria": "Geopolitica_Relacoes",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "urgencia_score": 70,
+      "relevancia_score": 72,
+      "nivel_confianca": "alta",
+      "ttl_horas": 6,
+      "horas_em_destaque": 6,
+      "veiculos_origem": [
+        "G1 Política"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/politica/blog/valdo-cruz/post/2026/11/24/de-olho-no-lula-4-centrao-garante-vitoria-do-ajuste-fiscal-mas-governo-precisa-dar-um-segundo-passo.ghtml"
+      ],
+      "palavras_chave": [
+        "radar",
+        "tempo real",
+        "br"
+      ],
+      "data_publicacao": "2026-11-24T10:48:38+00:00",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "O que é inflação?",
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
+          "motivo_conexao": "Compreenda por que os preços sobem de forma generalizada, como o IPCA é calculado e de que maneira os juros do Banco Central afetam o poder de compra."
+        },
+        {
+          "titulo_existente": "Como funcionam as eleições nos EUA?",
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/como-funcionam-as-eleicoes-nos-eua",
+          "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos."
+        }
+      ],
+      "expires_at": "2026-11-24T17:24:03Z",
+      "updated_at": "2026-11-24T11:24:03Z"
+    },
     {
       "slug": "malaysia-set-to-return-rohingya-refugees-to-myanmar",
       "categoria": "Geopolitica_Relacoes",
@@ -1433,45 +1606,112 @@
           "titulo_existente": "O que é uma sanção internacional?"
         }
       ]
+    }
+  ],
+  "temas_curadoria": [
+    {
+      "slug": "aprovacao-pacote-fiscal-camara-impacto-contas-publicas-brasil",
+      "status": "novo",
+      "ttl_horas": 48,
+      "expires_at": "2026-11-26T10:37:05Z",
+      "updated_at": "2026-11-24T10:37:05Z",
+      "titulo_tema": "Aprovação do Pacote Fiscal na Câmara e os Desafios de Execução para 2027",
+      "sintese_nerd": "A aprovação do pacote fiscal na Câmara dos Deputados projeta uma economia significativa para 2027, mas enfrenta ceticismo dos mercados quanto à rigidez na execução das despesas. O cenário político interno, marcado por resistências na base aliada, tensiona as expectativas para a estabilização da dívida pública.",
+      "rota_editoria": "/economia",
+      "data_publicacao": "2026-11-24T10:37:05Z",
+      "gatilho_vitrine": "Destacar análises sobre a votação do pacote fiscal na Câmara e os impactos reais nas contas públicas e no câmbio a partir de 2027.",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 95,
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Politica",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "pacote fiscal",
+        "câmara dos deputados",
+        "contas públicas",
+        "ajuste fiscal",
+        "governo lula",
+        "economia 2027",
+        "orçamento"
+      ]
     },
     {
-      "slug": "captura-narcotraficante-mexicano-fbi",
-      "categoria": "Geopolitica_Relacoes",
+      "slug": "caca-rrompimento-espaco-aereo-coreia-do-sul-avental-russia",
+      "status": "novo",
+      "ttl_horas": 36,
+      "expires_at": "2026-11-25T22:37:05Z",
+      "updated_at": "2026-11-24T10:37:05Z",
+      "titulo_tema": "Tensão na Ásia: Caças Russos Acionam Alerta de Ataque Aéreo na Coreia do Sul",
+      "sintese_nerd": "A aproximação inédita de aeronaves militares russas da ilha sul-coreana elevou o nível de prontidão militar em Seul, gerando um alerta de ataque aéreo sem precedentes na região. O episódio intensifica as fissuras geopolíticas entre potências asiáticas e ocidentais, repercutindo nas cadeias globais de suprimentos e segurança.",
+      "rota_editoria": "/radar",
+      "data_publicacao": "2026-11-24T10:37:05Z",
+      "gatilho_vitrine": "Exibir no radar geopolítico o avanço de aeronaves russas próximas ao espaço sul-coreano e as repercussões regionais.",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 90,
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia"
+      ],
+      "palavras_chave_busca": [
+        "coreia do sul",
+        "rússia",
+        "espaço aéreo",
+        "alerta de ataque aéreo",
+        "geopolítica ásia",
+        "aviação militar"
+      ]
+    },
+    {
+      "slug": "reservas-internacionais-banco-central-limites-dolar",
+      "status": "novo",
+      "ttl_horas": 48,
+      "expires_at": "2026-11-26T10:37:05Z",
+      "updated_at": "2026-11-24T10:37:05Z",
+      "titulo_tema": "Os Limites das Reservas Internacionais do BC para Conter a Alta do Dólar",
+      "sintese_nerd": "Mesmo dispondo de um robusto colchão em reservas internacionais, o Banco Central enfrenta restrições estruturais para segurar a escalada do dólar frente ao real. O fenômeno reflete desequilíbrios macroeconômicos globais e locais que limitam o uso de ativos cambiais sem gerar riscos adicionais à inflação.",
+      "rota_editoria": "/economia",
+      "data_publicacao": "2026-11-24T10:37:05Z",
+      "gatilho_vitrine": "Conectar a discussão sobre o volume de reservas cambiais do Brasil com a eficácia real de intervenções no câmbio.",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 88,
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Geopolitica_Radar"
+      ],
+      "palavras_chave_busca": [
+        "reservas internacionais",
+        "banco central",
+        "dólar",
+        "câmbio",
+        "economia brasileira",
+        "política monetária"
+      ]
+    },
+    {
+      "slug": "braskem-acordo-preliminar-reestruturacao-dividas",
+      "status": "novo",
       "ttl_horas": 24,
-      "expires_at": "2026-11-25T04:35:46Z",
-      "updated_at": "2026-11-24T04:35:46Z",
-      "fontes_urls": [
-        "https://www.aljazeera.com/news/2026/11/24/mexico-to-try-el-chapo-isidro-despite-us-extradition-request?traffic_source=rss"
+      "expires_at": "2026-11-25T10:37:05Z",
+      "updated_at": "2026-11-24T10:37:05Z",
+      "titulo_tema": "Braskem Anuncia Acordo Preliminar com Credores sobre Reestruturação de Dívidas",
+      "sintese_nerd": "O avanço nas negociações entre a Braskem e seus credores para um plano de recuperação extrajudicial busca sanar o endividamento da petroquímica. A estabilização financeira da companhia é crucial para a manutenção de operações estratégicas do setor industrial e químico brasileiro.",
+      "rota_editoria": "/economia",
+      "data_publicacao": "2026-11-24T10:37:05Z",
+      "gatilho_vitrine": "Atualizar investidores e o público sobre o avanço na reestruturação da dívida da petroquímica Braskem.",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 82,
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Resumo_Ultimas"
       ],
-      "resumo_pulso": "O governo do México informou que julgará o narcotraficante Fausto Isidro Meza Flores em tribunais mexicanos por acusações de tráfico e porte ilícito de armas antes de responder ao pedido formal de extradição dos EUA. Conforme reportaram a Al Jazeera English e a BBC News Brasil, Meza Flores figurava entre os dez criminosos mais procurados pelo FBI e foi capturado após um forte confronto armado em Sinaloa.",
-      "titulo_curto": "México decide processar 'El Chapo Isidro' localmente antes de avaliar extradição para os EUA",
-      "palavras_chave": [
-        "El Chapo Isidro",
-        "México",
-        "FBI",
-        "Extradição",
-        "Narcotráfico"
-      ],
-      "urgencia_score": 89,
-      "data_publicacao": "2026-11-23T11:51:01.492268+00:00",
-      "impacto_pratico": "A decisão do sistema judiciário mexicano adiciona complexidade à cooperação de segurança e extradições na fronteira entre México e Estados Unidos.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Al Jazeera English",
-        "BBC News Brasil"
-      ],
-      "relevancia_score": 87,
-      "horas_em_destaque": 8,
-      "paises_envolvidos": [
-        "MX",
-        "US"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/politica/estados-unidos",
-          "motivo_conexao": "Acompanhe os desdobramentos de acordos internacionais de segurança e controle de fronteiras de Washington.",
-          "titulo_existente": "Política nos Estados Unidos"
-        }
+      "palavras_chave_busca": [
+        "braskem",
+        "reestruturação de dívidas",
+        "recuperação extrajudicial",
+        "mercado financeiro",
+        "credores"
       ]
     }
   ]
