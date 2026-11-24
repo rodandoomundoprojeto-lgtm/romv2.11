@@ -2,13 +2,13 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-24T11:24:03Z",
-  "batch_id": "20261124-1124",
+  "updatedAt": "2026-11-24T12:28:51Z",
+  "batch_id": "20261124-1228",
   "temas_ativos": [
     {
-      "slug": "pulso-1-20261124-1124",
-      "titulo_tema": "Áudio: Projeto estimula empresas a custearem medicamentos de funcionários",
-      "titulo_curto": "Áudio: Projeto estimula empresas a custearem medicamentos de funcionários",
+      "slug": "aviso-militares-russos-coreia-do-sul",
+      "titulo_tema": "Bombardeiros estratégicos russos entram em zona de defesa da Coreia do Sul e geram alerta",
+      "titulo_curto": "Bombardeiros estratégicos russos entram em zona de defesa da Coreia do Sul e geram alerta",
       "status": "novo",
       "origem_pipeline": "pulso",
       "categoria_primaria": "Geopolitica_Radar",
@@ -19,206 +19,298 @@
       ],
       "rota_editoria": "/radar",
       "relevancia_score": 88,
-      "urgencia_score": 90,
-      "ttl_horas": 6,
-      "expires_at": "2026-11-24T17:24:03Z",
+      "urgencia_score": 89,
+      "ttl_horas": 18,
+      "expires_at": "2026-11-25T06:28:51Z",
       "palavras_chave_busca": [
-        "radar",
-        "tempo real",
-        "br"
+        "russia",
+        "coreia do sul",
+        "defesa aerea",
+        "geopolitica"
       ],
       "palavras_chave": [
-        "radar",
-        "tempo real",
-        "br"
+        "russia",
+        "coreia do sul",
+        "defesa aerea",
+        "geopolitica"
       ],
-      "gatilho_vitrine": "Segundo Agência Senado, Está pronto para votação na Comissão de Assuntos Econômicos (CAE) um projeto (PL 3.079/2024) que permite que empresas ajudem funcionários e dependentes a comprar medicamentos em troca de incentivos fiscais. A proposta do senador Weverton (PDT-MA) prevê a compra de remédios com receita médica. O relator, senador Nelsinho Trad (PSD-MS), sugeriu limit.",
-      "resumo_pulso": "Segundo Agência Senado, Está pronto para votação na Comissão de Assuntos Econômicos (CAE) um projeto (PL 3.079/2024) que permite que empresas ajudem funcionários e dependentes a comprar medicamentos em troca de incentivos fiscais. A proposta do senador Weverton (PDT-MA) prevê a compra de remédios com receita médica. O relator, senador Nelsinho Trad (PSD-MS), sugeriu limit.",
-      "sintese_nerd": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "gatilho_vitrine": "Conforme apuração do G1 Mundo com base na agência sul-coreana Yonhap, aeronaves militares estratégicas Tu-160 da Rússia ingressaram na zona de identificação de defesa aérea da Coreia do Sul, acionando protocolos de alerta. O Ministério da Defesa russo classificou a operação como um voo programado regular.",
+      "resumo_pulso": "Conforme apuração do G1 Mundo com base na agência sul-coreana Yonhap, aeronaves militares estratégicas Tu-160 da Rússia ingressaram na zona de identificação de defesa aérea da Coreia do Sul, acionando protocolos de alerta. O Ministério da Defesa russo classificou a operação como um voo programado regular.",
+      "sintese_nerd": "Aumenta a tensão militar na península coreana e eleva a vigilância de forças aliadas na região do Pacífico.",
+      "impacto_pratico": "Aumenta a tensão militar na península coreana e eleva a vigilância de forças aliadas na região do Pacífico.",
+      "paises_envolvidos": [
+        "RU",
+        "KR"
+      ],
+      "veiculos_origem": [
+        "G1 Mundo",
+        "Yonhap"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/mundo/noticia/2026/11/24/bombardeiros-russos-coreia-do-sul.ghtml"
+      ],
+      "data_publicacao": "2026-11-24T12:07:42Z",
+      "updated_at": "2026-11-24T12:28:51Z"
+    },
+    {
+      "slug": "fim-da-escala-6-por-1-trabalho-acordos-coletivos",
+      "titulo_tema": "Governo recomenda acordos coletivos até o dia 16 para setores que desejarem escala de trabalho diferente",
+      "titulo_curto": "Governo recomenda acordos coletivos até o dia 16 para setores que desejarem escala de trabalho diferente",
+      "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Economia",
+      "categoria": "Economia_Comercio",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 92,
+      "urgencia_score": 91,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-25T12:28:51Z",
+      "palavras_chave_busca": [
+        "trabalho",
+        "escala 6x1",
+        "ministerio do trabalho",
+        "acordo coletivo"
+      ],
+      "palavras_chave": [
+        "trabalho",
+        "escala 6x1",
+        "ministerio do trabalho",
+        "acordo coletivo"
+      ],
+      "gatilho_vitrine": "Segundo reportagem do G1 Política, o ministro do Trabalho, Luiz Marinho, recomendou que empresas e sindicatos de setores que queiram manter jornadas alternativas — sem a folga padrão obrigatória aos sábados e domingos — formalizem acordos coletivos até o dia 16. A orientação ocorre no contexto de transição das novas regras sobre o repouso semanal remunerado.",
+      "resumo_pulso": "Segundo reportagem do G1 Política, o ministro do Trabalho, Luiz Marinho, recomendou que empresas e sindicatos de setores que queiram manter jornadas alternativas — sem a folga padrão obrigatória aos sábados e domingos — formalizem acordos coletivos até o dia 16. A orientação ocorre no contexto de transição das novas regras sobre o repouso semanal remunerado.",
+      "sintese_nerd": "Trabalhadores e empregadores de comércio e serviços precisam renegociar convenções coletivas para evitar conflitos trabalhistas com a nova legislação.",
+      "impacto_pratico": "Trabalhadores e empregadores de comércio e serviços precisam renegociar convenções coletivas para evitar conflitos trabalhistas com a nova legislação.",
       "paises_envolvidos": [
         "BR"
       ],
       "veiculos_origem": [
-        "Agência Senado"
+        "G1 Política"
       ],
+      "fontes_urls": [
+        "https://g1.globo.com/economia/noticia/2026/11/24/fim-da-escala-6-por-1-ministro-recomenda-que-setor-da-economia-feche-acordo-coletivo-ate-dia-16-se-quiser-escala-diferente.ghtml"
+      ],
+      "data_publicacao": "2026-11-24T11:34:00Z",
+      "updated_at": "2026-11-24T12:28:51Z"
+    },
+    {
+      "slug": "pulso-1-20261124-1124",
+      "status": "novo",
+      "categoria": "Geopolitica_Relacoes",
+      "ttl_horas": 6,
+      "expires_at": "2026-11-24T17:24:03Z",
+      "updated_at": "2026-11-24T11:24:03Z",
       "fontes_urls": [
         "https://www12.senado.leg.br/noticias/audios/2026/11/projeto-estimula-empresas-a-custearem-medicamentos-de-funcionarios"
       ],
+      "titulo_tema": "Áudio: Projeto estimula empresas a custearem medicamentos de funcionários",
+      "resumo_pulso": "Segundo Agência Senado, Está pronto para votação na Comissão de Assuntos Econômicos (CAE) um projeto (PL 3.079/2024) que permite que empresas ajudem funcionários e dependentes a comprar medicamentos em troca de incentivos fiscais. A proposta do senador Weverton (PDT-MA) prevê a compra de remédios com receita médica. O relator, senador Nelsinho Trad (PSD-MS), sugeriu limit.",
+      "sintese_nerd": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "titulo_curto": "Áudio: Projeto estimula empresas a custearem medicamentos de funcionários",
+      "rota_editoria": "/radar",
+      "palavras_chave": [
+        "radar",
+        "tempo real",
+        "br"
+      ],
+      "urgencia_score": 90,
       "data_publicacao": "2026-11-24T11:22:50+00:00",
-      "updated_at": "2026-11-24T11:24:03Z"
+      "gatilho_vitrine": "Segundo Agência Senado, Está pronto para votação na Comissão de Assuntos Econômicos (CAE) um projeto (PL 3.079/2024) que permite que empresas ajudem funcionários e dependentes a comprar medicamentos em troca de incentivos fiscais. A proposta do senador Weverton (PDT-MA) prevê a compra de remédios com receita médica. O relator, senador Nelsinho Trad (PSD-MS), sugeriu limit.",
+      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "Agência Senado"
+      ],
+      "relevancia_score": 88,
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "radar",
+        "tempo real",
+        "br"
+      ]
     },
     {
       "slug": "pulso-2-20261124-1124",
-      "titulo_tema": "Entenda o plano Moretti, o ajuste fiscal aprovado pela Câmara",
-      "titulo_curto": "Entenda o plano Moretti, o ajuste fiscal aprovado pela Câmara",
       "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Geopolitica_Radar",
       "categoria": "Geopolitica_Relacoes",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 84,
-      "urgencia_score": 85,
       "ttl_horas": 6,
       "expires_at": "2026-11-24T17:24:03Z",
-      "palavras_chave_busca": [
-        "radar",
-        "tempo real",
-        "br"
-      ],
-      "palavras_chave": [
-        "radar",
-        "tempo real",
-        "br"
-      ],
-      "gatilho_vitrine": "Segundo G1 Política, Câmara aprova projeto de ajuste fiscal; texto segue para sanção do presidente Lula A Câmara dos Deputados aprovou na segunda-feira (23/11) o pacto de medidas de ajuste fiscal proposto pelo governo federal. O projeto, que ficou conhecido como Plano Moretti e já tinha passado pelo Senado, tem o potencial de gerar uma economia entre R$ 50 bilhões e R$.",
-      "resumo_pulso": "Segundo G1 Política, Câmara aprova projeto de ajuste fiscal; texto segue para sanção do presidente Lula A Câmara dos Deputados aprovou na segunda-feira (23/11) o pacto de medidas de ajuste fiscal proposto pelo governo federal. O projeto, que ficou conhecido como Plano Moretti e já tinha passado pelo Senado, tem o potencial de gerar uma economia entre R$ 50 bilhões e R$.",
-      "sintese_nerd": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "veiculos_origem": [
-        "G1 Política"
-      ],
+      "updated_at": "2026-11-24T11:24:03Z",
       "fontes_urls": [
         "https://g1.globo.com/economia/noticia/2026/11/24/entenda-o-plano-moretti-o-ajuste-fiscal-aprovado-pela-camara.ghtml"
       ],
+      "titulo_tema": "Entenda o plano Moretti, o ajuste fiscal aprovado pela Câmara",
+      "resumo_pulso": "Segundo G1 Política, Câmara aprova projeto de ajuste fiscal; texto segue para sanção do presidente Lula A Câmara dos Deputados aprovou na segunda-feira (23/11) o pacto de medidas de ajuste fiscal proposto pelo governo federal. O projeto, que ficou conhecido como Plano Moretti e já tinha passado pelo Senado, tem o potencial de gerar uma economia entre R$ 50 bilhões e R$.",
+      "sintese_nerd": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "titulo_curto": "Entenda o plano Moretti, o ajuste fiscal aprovado pela Câmara",
+      "rota_editoria": "/radar",
+      "palavras_chave": [
+        "radar",
+        "tempo real",
+        "br"
+      ],
+      "urgencia_score": 85,
       "data_publicacao": "2026-11-24T11:21:42+00:00",
-      "updated_at": "2026-11-24T11:24:03Z"
-    },
-    {
-      "slug": "pulso-3-20261124-1124",
-      "titulo_tema": "Iraque ordena aquisição de campos petrolíferos em áreas sob controle curdo",
-      "titulo_curto": "Iraque ordena aquisição de campos petrolíferos em áreas sob controle curdo",
-      "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Geopolitica_Radar",
-      "categoria": "Geopolitica_Relacoes",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 80,
-      "urgencia_score": 80,
-      "ttl_horas": 6,
-      "expires_at": "2026-11-24T17:24:03Z",
-      "palavras_chave_busca": [
-        "radar",
-        "tempo real",
-        "qa"
-      ],
-      "palavras_chave": [
-        "radar",
-        "tempo real",
-        "qa"
-      ],
-      "gatilho_vitrine": "Segundo Al Jazeera English, O primeiro-ministro Ali al-Zaidi também ordena ao seu governo que tome todas as travessias na região curda após um inquérito sobre contrabando de petróleo..",
-      "resumo_pulso": "Segundo Al Jazeera English, O primeiro-ministro Ali al-Zaidi também ordena ao seu governo que tome todas as travessias na região curda após um inquérito sobre contrabando de petróleo..",
-      "sintese_nerd": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "gatilho_vitrine": "Segundo G1 Política, Câmara aprova projeto de ajuste fiscal; texto segue para sanção do presidente Lula A Câmara dos Deputados aprovou na segunda-feira (23/11) o pacto de medidas de ajuste fiscal proposto pelo governo federal. O projeto, que ficou conhecido como Plano Moretti e já tinha passado pelo Senado, tem o potencial de gerar uma economia entre R$ 50 bilhões e R$.",
       "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "paises_envolvidos": [
-        "QA"
-      ],
-      "veiculos_origem": [
-        "Al Jazeera English"
-      ],
-      "fontes_urls": [
-        "https://www.aljazeera.com/news/2026/11/24/iraq-orders-takeover-of-oilfields-in-areas-under-kurdish-control?traffic_source=rss"
-      ],
-      "data_publicacao": "2026-11-24T11:19:04+00:00",
-      "updated_at": "2026-11-24T11:24:03Z"
-    },
-    {
-      "slug": "pulso-4-20261124-1124",
-      "titulo_tema": "Explosão em restaurante no Vietnã mata pelo menos seis pessoas",
-      "titulo_curto": "Explosão em restaurante no Vietnã mata pelo menos seis pessoas",
-      "status": "novo",
       "origem_pipeline": "pulso",
-      "categoria_primaria": "Geopolitica_Radar",
-      "categoria": "Geopolitica_Relacoes",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 76,
-      "urgencia_score": 75,
-      "ttl_horas": 6,
-      "expires_at": "2026-11-24T17:24:03Z",
-      "palavras_chave_busca": [
-        "radar",
-        "tempo real",
-        "qa"
-      ],
-      "palavras_chave": [
-        "radar",
-        "tempo real",
-        "qa"
-      ],
-      "gatilho_vitrine": "Segundo Al Jazeera English, Pelo menos 10 feridos após explosão em restaurante no distrito de Dong Da, em Hanói, durante as operações de resgate em andamento..",
-      "resumo_pulso": "Segundo Al Jazeera English, Pelo menos 10 feridos após explosão em restaurante no distrito de Dong Da, em Hanói, durante as operações de resgate em andamento..",
-      "sintese_nerd": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "paises_envolvidos": [
-        "QA"
-      ],
-      "veiculos_origem": [
-        "Al Jazeera English"
-      ],
-      "fontes_urls": [
-        "https://www.aljazeera.com/news/2026/11/24/vietnam-restaurant-blast-kills-at-least-six?traffic_source=rss"
-      ],
-      "data_publicacao": "2026-11-24T11:17:20+00:00",
-      "updated_at": "2026-11-24T11:24:03Z"
-    },
-    {
-      "slug": "pulso-5-20261124-1124",
-      "titulo_tema": "De olho no Lula 4, Centrão garante vitória do ajuste fiscal, mas governo precisa dar segundo passo",
-      "titulo_curto": "De olho no Lula 4, Centrão garante vitória do ajuste fiscal, mas governo precisa dar segundo passo",
-      "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Geopolitica_Radar",
-      "categoria": "Geopolitica_Relacoes",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 72,
-      "urgencia_score": 70,
-      "ttl_horas": 6,
-      "expires_at": "2026-11-24T17:24:03Z",
-      "palavras_chave_busca": [
-        "radar",
-        "tempo real",
-        "br"
-      ],
-      "palavras_chave": [
-        "radar",
-        "tempo real",
-        "br"
-      ],
-      "gatilho_vitrine": "Segundo G1 Política, Câmara aprova texto-base do pacote de ajuste fiscal do governo De olho na montagem dos ministérios do próximo governo Luiz Inácio Lula da Silva (PT), os partidos do Centrão ajudaram o presidente a obter uma vitória nesta segunda-feira (23) na Câmara dos Deputados, em operação comanda pelo presidente da Casa, Hugo Motta (Republicanos-PB). Com isso, .",
-      "resumo_pulso": "Segundo G1 Política, Câmara aprova texto-base do pacote de ajuste fiscal do governo De olho na montagem dos ministérios do próximo governo Luiz Inácio Lula da Silva (PT), os partidos do Centrão ajudaram o presidente a obter uma vitória nesta segunda-feira (23) na Câmara dos Deputados, em operação comanda pelo presidente da Casa, Hugo Motta (Republicanos-PB). Com isso, .",
-      "sintese_nerd": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "paises_envolvidos": [
-        "BR"
-      ],
       "veiculos_origem": [
         "G1 Política"
       ],
+      "relevancia_score": 84,
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "radar",
+        "tempo real",
+        "br"
+      ]
+    },
+    {
+      "slug": "pulso-3-20261124-1124",
+      "status": "novo",
+      "categoria": "Geopolitica_Relacoes",
+      "ttl_horas": 6,
+      "expires_at": "2026-11-24T17:24:03Z",
+      "updated_at": "2026-11-24T11:24:03Z",
+      "fontes_urls": [
+        "https://www.aljazeera.com/news/2026/11/24/iraq-orders-takeover-of-oilfields-in-areas-under-kurdish-control?traffic_source=rss"
+      ],
+      "titulo_tema": "Iraque ordena aquisição de campos petrolíferos em áreas sob controle curdo",
+      "resumo_pulso": "Segundo Al Jazeera English, O primeiro-ministro Ali al-Zaidi também ordena ao seu governo que tome todas as travessias na região curda após um inquérito sobre contrabando de petróleo..",
+      "sintese_nerd": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "titulo_curto": "Iraque ordena aquisição de campos petrolíferos em áreas sob controle curdo",
+      "rota_editoria": "/radar",
+      "palavras_chave": [
+        "radar",
+        "tempo real",
+        "qa"
+      ],
+      "urgencia_score": 80,
+      "data_publicacao": "2026-11-24T11:19:04+00:00",
+      "gatilho_vitrine": "Segundo Al Jazeera English, O primeiro-ministro Ali al-Zaidi também ordena ao seu governo que tome todas as travessias na região curda após um inquérito sobre contrabando de petróleo..",
+      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "Al Jazeera English"
+      ],
+      "relevancia_score": 80,
+      "paises_envolvidos": [
+        "QA"
+      ],
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "radar",
+        "tempo real",
+        "qa"
+      ]
+    },
+    {
+      "slug": "pulso-4-20261124-1124",
+      "status": "novo",
+      "categoria": "Geopolitica_Relacoes",
+      "ttl_horas": 6,
+      "expires_at": "2026-11-24T17:24:03Z",
+      "updated_at": "2026-11-24T11:24:03Z",
+      "fontes_urls": [
+        "https://www.aljazeera.com/news/2026/11/24/vietnam-restaurant-blast-kills-at-least-six?traffic_source=rss"
+      ],
+      "titulo_tema": "Explosão em restaurante no Vietnã mata pelo menos seis pessoas",
+      "resumo_pulso": "Segundo Al Jazeera English, Pelo menos 10 feridos após explosão em restaurante no distrito de Dong Da, em Hanói, durante as operações de resgate em andamento..",
+      "sintese_nerd": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "titulo_curto": "Explosão em restaurante no Vietnã mata pelo menos seis pessoas",
+      "rota_editoria": "/radar",
+      "palavras_chave": [
+        "radar",
+        "tempo real",
+        "qa"
+      ],
+      "urgencia_score": 75,
+      "data_publicacao": "2026-11-24T11:17:20+00:00",
+      "gatilho_vitrine": "Segundo Al Jazeera English, Pelo menos 10 feridos após explosão em restaurante no distrito de Dong Da, em Hanói, durante as operações de resgate em andamento..",
+      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "Al Jazeera English"
+      ],
+      "relevancia_score": 76,
+      "paises_envolvidos": [
+        "QA"
+      ],
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "radar",
+        "tempo real",
+        "qa"
+      ]
+    },
+    {
+      "slug": "pulso-5-20261124-1124",
+      "status": "novo",
+      "categoria": "Geopolitica_Relacoes",
+      "ttl_horas": 6,
+      "expires_at": "2026-11-24T17:24:03Z",
+      "updated_at": "2026-11-24T11:24:03Z",
       "fontes_urls": [
         "https://g1.globo.com/politica/blog/valdo-cruz/post/2026/11/24/de-olho-no-lula-4-centrao-garante-vitoria-do-ajuste-fiscal-mas-governo-precisa-dar-um-segundo-passo.ghtml"
       ],
+      "titulo_tema": "De olho no Lula 4, Centrão garante vitória do ajuste fiscal, mas governo precisa dar segundo passo",
+      "resumo_pulso": "Segundo G1 Política, Câmara aprova texto-base do pacote de ajuste fiscal do governo De olho na montagem dos ministérios do próximo governo Luiz Inácio Lula da Silva (PT), os partidos do Centrão ajudaram o presidente a obter uma vitória nesta segunda-feira (23) na Câmara dos Deputados, em operação comanda pelo presidente da Casa, Hugo Motta (Republicanos-PB). Com isso, .",
+      "sintese_nerd": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "titulo_curto": "De olho no Lula 4, Centrão garante vitória do ajuste fiscal, mas governo precisa dar segundo passo",
+      "rota_editoria": "/radar",
+      "palavras_chave": [
+        "radar",
+        "tempo real",
+        "br"
+      ],
+      "urgencia_score": 70,
       "data_publicacao": "2026-11-24T10:48:38+00:00",
-      "updated_at": "2026-11-24T11:24:03Z"
+      "gatilho_vitrine": "Segundo G1 Política, Câmara aprova texto-base do pacote de ajuste fiscal do governo De olho na montagem dos ministérios do próximo governo Luiz Inácio Lula da Silva (PT), os partidos do Centrão ajudaram o presidente a obter uma vitória nesta segunda-feira (23) na Câmara dos Deputados, em operação comanda pelo presidente da Casa, Hugo Motta (Republicanos-PB). Com isso, .",
+      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "G1 Política"
+      ],
+      "relevancia_score": 72,
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "radar",
+        "tempo real",
+        "br"
+      ]
     },
     {
       "slug": "aprovacao-pacote-fiscal-camara-impacto-contas-publicas-brasil",
@@ -514,53 +606,52 @@
     },
     {
       "slug": "dolar-atinge-marca-de-6-reais-pressionado-por-cenario-fiscal-e-exterior",
+      "titulo_tema": "Dólar abre em alta e consolida patamar de R$ 6,00 pressionado por fiscal e exterior",
+      "titulo_curto": "Dólar abre em alta e consolida patamar de R$ 6,00 pressionado por fiscal e exterior",
       "status": "novo",
-      "categoria": "Economia_Comercio",
-      "ttl_horas": 12,
-      "expires_at": "2026-11-24T21:25:31Z",
-      "updated_at": "2026-11-24T10:02:20Z",
-      "fontes_urls": [
-        "https://www.bbc.com/portuguese/articles/cwm253lr95zjo?at_medium=RSS&at_campaign=rss",
-        "https://www.infomoney.com.br/economia/reservas-internacionais-bc-segurar-dolar/"
-      ],
-      "titulo_tema": "Dólar mantém pressão e atinge R$ 6,00; BC monitora reservas",
-      "resumo_pulso": "A cotação do dólar permanece no patamar de R$ 6,00, pressionada pelo cenário fiscal interno e pela força da moeda americana no exterior. Segundo o InfoMoney, o Banco Central possui US$ 363 bilhões em reservas, mas especialistas alertam para os limites de intervenção direta para conter a volatilidade cambial.",
-      "sintese_nerd": "Aumento nos custos de importação e pressão inflacionária sobre produtos cotados em dólar, afetando o poder de compra do consumidor.",
-      "titulo_curto": "Dólar mantém pressão e atinge R$ 6,00; BC monitora reservas",
-      "rota_editoria": "/economia",
-      "palavras_chave": [
-        "dólar",
-        "câmbio",
-        "banco central",
-        "reservas internacionais",
-        "economia"
-      ],
-      "urgencia_score": 97,
-      "data_publicacao": "2026-11-24T03:00:00Z",
-      "gatilho_vitrine": "A cotação do dólar permanece no patamar de R$ 6,00, pressionada pelo cenário fiscal interno e pela força da moeda americana no exterior. Segundo o InfoMoney, o Banco Central possui US$ 363 bilhões em reservas, mas especialistas alertam para os limites de intervenção direta para conter a volatilidade cambial.",
-      "impacto_pratico": "Aumento nos custos de importação e pressão inflacionária sobre produtos cotados em dólar, afetando o poder de compra do consumidor.",
       "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "BBC News Brasil",
-        "InfoMoney"
-      ],
-      "relevancia_score": 98,
-      "paises_envolvidos": [
-        "BR",
-        "US"
-      ],
       "categoria_primaria": "Economia",
+      "categoria": "Economia_Comercio",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
       ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 99,
+      "urgencia_score": 98,
+      "ttl_horas": 12,
+      "expires_at": "2026-11-24T21:25:31Z",
       "palavras_chave_busca": [
-        "dólar",
-        "câmbio",
-        "banco central",
-        "reservas internacionais",
-        "economia"
-      ]
+        "dolar",
+        "cambio",
+        "economia",
+        "bc",
+        "inflacao"
+      ],
+      "palavras_chave": [
+        "dolar",
+        "cambio",
+        "economia",
+        "bc",
+        "inflacao"
+      ],
+      "gatilho_vitrine": "Conforme apuração do G1 Economia, a cotação do dólar abriu a sessão desta terça-feira (24) mantendo a pressão e negociando perto de R$ 5,95, após romper a marca de R$ 6,00 na véspera pela primeira vez desde abril de 2025. O cenário continua influenciado por incertezas fiscais domésticas e pela força da moeda norte-americana.",
+      "resumo_pulso": "Conforme apuração do G1 Economia, a cotação do dólar abriu a sessão desta terça-feira (24) mantendo a pressão e negociando perto de R$ 5,95, após romper a marca de R$ 6,00 na véspera pela primeira vez desde abril de 2025. O cenário continua influenciado por incertezas fiscais domésticas e pela força da moeda norte-americana.",
+      "sintese_nerd": "A alta prolongada do dólar encarece custos de importação, passagens aéreas e produtos com insumos estrangeiros, pressionando ainda mais a inflação interna.",
+      "impacto_pratico": "A alta prolongada do dólar encarece custos de importação, passagens aéreas e produtos com insumos estrangeiros, pressionando ainda mais a inflação interna.",
+      "paises_envolvidos": [
+        "BR",
+        "US"
+      ],
+      "veiculos_origem": [
+        "G1 Economia",
+        "InfoMoney"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/economia/noticia/2026/11/24/dolar-ibovespa.ghtml"
+      ],
+      "data_publicacao": "2026-11-24T03:00:00Z",
+      "updated_at": "2026-11-24T12:28:51Z"
     },
     {
       "slug": "ucrania-expande-ataques-drones-embarcacoes-russas-libia-e-europa",
@@ -759,302 +850,289 @@
         "inteligência artificial",
         "mercado financeiro"
       ]
-    },
-    {
-      "slug": "petrobras-dividendos-extraordinarios-15-bilhoes",
-      "status": "novo",
-      "categoria": "Economia_Comercio",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-25T00:57:38Z",
-      "updated_at": "2026-11-24T00:57:38Z",
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/petrobras-aprova-pagamento-de-r-156-bilhoes-acionistas"
-      ],
-      "titulo_tema": "Conselho da Petrobras aprova distribuição de remuneração extraordinária de R$ 15,6 bilhões",
-      "resumo_pulso": "Conforme comunicado oficial divulgado pela Agência Brasil, o Conselho de Administração da Petrobras aprovou o pagamento de R$ 15,6 bilhões em dividendos intercalares aos acionistas. O montante será distribuído em parcela única na forma de remuneração extraordinária, equivalente a pouco mais de R$ 1,21 por ação ordinária e preferencial.",
-      "sintese_nerd": "A forte distribuição de dividendos impacta diretamente o fluxo de caixa da estatal e atrai investidores focados em proventos na bolsa de valores.",
-      "titulo_curto": "Conselho da Petrobras aprova distribuição de remuneração extraordinária de R$ 15,6 bilhões",
-      "rota_editoria": "/economia",
-      "palavras_chave": [
-        "petrobras",
-        "dividendos",
-        "economia",
-        "ações"
-      ],
-      "urgencia_score": 92,
-      "data_publicacao": "2026-11-24T00:03:00Z",
-      "gatilho_vitrine": "Conforme comunicado oficial divulgado pela Agência Brasil, o Conselho de Administração da Petrobras aprovou o pagamento de R$ 15,6 bilhões em dividendos intercalares aos acionistas. O montante será distribuído em parcela única na forma de remuneração extraordinária, equivalente a pouco mais de R$ 1,21 por ação ordinária e preferencial.",
-      "impacto_pratico": "A forte distribuição de dividendos impacta diretamente o fluxo de caixa da estatal e atrai investidores focados em proventos na bolsa de valores.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "Agência Brasil (EBC)"
-      ],
-      "relevancia_score": 93,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "petrobras",
-        "dividendos",
-        "economia",
-        "ações"
-      ]
-    },
-    {
-      "slug": "petrobras-retorno-mercado-etanol-milho",
-      "status": "novo",
-      "categoria": "Economia_Comercio",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-24T23:45:58Z",
-      "updated_at": "2026-11-23T23:46:06Z",
-      "fontes_urls": [
-        "https://g1.globo.com/economia/negocios/noticia/2026/11/23/petrobras-etanol.ghtml"
-      ],
-      "titulo_tema": "Petrobras retorna ao setor de etanol com aporte de R$ 2,8 bilhões na Neomille",
-      "resumo_pulso": "A Petrobras anunciou a compra de 42% da Neomille, produtora de etanol de milho do Grupo CerradinhoBio, por R$ 2,8 bilhões. O movimento marca o retorno da estatal ao setor de biocombustíveis, segundo informações do G1 e Poder360.",
-      "sintese_nerd": "Mudança na estratégia de investimentos da estatal, focando em transição energética e biocombustíveis.",
-      "titulo_curto": "Petrobras retorna ao setor de etanol com aporte de R$ 2,8 bilhões na Neomille",
-      "rota_editoria": "/economia",
-      "palavras_chave": [
-        "petrobras",
-        "etanol",
-        "biocombustíveis"
-      ],
-      "urgencia_score": 85,
-      "data_publicacao": "2026-11-23T23:22:44Z",
-      "gatilho_vitrine": "A Petrobras anunciou a compra de 42% da Neomille, produtora de etanol de milho do Grupo CerradinhoBio, por R$ 2,8 bilhões. O movimento marca o retorno da estatal ao setor de biocombustíveis, segundo informações do G1 e Poder360.",
-      "impacto_pratico": "Mudança na estratégia de investimentos da estatal, focando em transição energética e biocombustíveis.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "G1 Economia",
-        "Poder360"
-      ],
-      "relevancia_score": 88,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "petrobras",
-        "etanol",
-        "biocombustíveis"
-      ]
     }
   ],
   "noticias_quentes": [
     {
-      "slug": "pulso-1-20261124-1124",
-      "titulo_curto": "Áudio: Projeto estimula empresas a custearem medicamentos de funcionários",
-      "resumo_pulso": "Segundo Agência Senado, Está pronto para votação na Comissão de Assuntos Econômicos (CAE) um projeto (PL 3.079/2024) que permite que empresas ajudem funcionários e dependentes a comprar medicamentos em troca de incentivos fiscais. A proposta do senador Weverton (PDT-MA) prevê a compra de remédios com receita médica. O relator, senador Nelsinho Trad (PSD-MS), sugeriu limit.",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "slug": "aviso-militares-russos-coreia-do-sul",
+      "titulo_curto": "Bombardeiros estratégicos russos entram em zona de defesa da Coreia do Sul e geram alerta",
+      "resumo_pulso": "Conforme apuração do G1 Mundo com base na agência sul-coreana Yonhap, aeronaves militares estratégicas Tu-160 da Rússia ingressaram na zona de identificação de defesa aérea da Coreia do Sul, acionando protocolos de alerta. O Ministério da Defesa russo classificou a operação como um voo programado regular.",
+      "impacto_pratico": "Aumenta a tensão militar na península coreana e eleva a vigilância de forças aliadas na região do Pacífico.",
       "categoria": "Geopolitica_Relacoes",
+      "paises_envolvidos": [
+        "RU",
+        "KR"
+      ],
+      "urgencia_score": 89,
+      "relevancia_score": 88,
+      "nivel_confianca": "alta",
+      "ttl_horas": 18,
+      "horas_em_destaque": 12,
+      "veiculos_origem": [
+        "G1 Mundo",
+        "Yonhap"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/mundo/noticia/2026/11/24/bombardeiros-russos-coreia-do-sul.ghtml"
+      ],
+      "palavras_chave": [
+        "russia",
+        "coreia do sul",
+        "defesa aerea",
+        "geopolitica"
+      ],
+      "data_publicacao": "2026-11-24T12:07:42Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "O que é uma sanção internacional?",
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-sancao-internacional",
+          "motivo_conexao": "Auxilia na compreensão das manobras geopolíticas e pressões estratégicas entre potências."
+        }
+      ],
+      "expires_at": "2026-11-25T06:28:51Z",
+      "updated_at": "2026-11-24T12:28:51Z"
+    },
+    {
+      "slug": "fim-da-escala-6-por-1-trabalho-acordos-coletivos",
+      "titulo_curto": "Governo recomenda acordos coletivos até o dia 16 para setores que desejarem escala de trabalho diferente",
+      "resumo_pulso": "Segundo reportagem do G1 Política, o ministro do Trabalho, Luiz Marinho, recomendou que empresas e sindicatos de setores que queiram manter jornadas alternativas — sem a folga padrão obrigatória aos sábados e domingos — formalizem acordos coletivos até o dia 16. A orientação ocorre no contexto de transição das novas regras sobre o repouso semanal remunerado.",
+      "impacto_pratico": "Trabalhadores e empregadores de comércio e serviços precisam renegociar convenções coletivas para evitar conflitos trabalhistas com a nova legislação.",
+      "categoria": "Economia_Comercio",
       "paises_envolvidos": [
         "BR"
       ],
-      "urgencia_score": 90,
-      "relevancia_score": 88,
+      "urgencia_score": 91,
+      "relevancia_score": 92,
       "nivel_confianca": "alta",
-      "ttl_horas": 6,
-      "horas_em_destaque": 6,
+      "ttl_horas": 24,
+      "horas_em_destaque": 12,
       "veiculos_origem": [
-        "Agência Senado"
+        "G1 Política"
       ],
+      "fontes_urls": [
+        "https://g1.globo.com/economia/noticia/2026/11/24/fim-da-escala-6-por-1-ministro-recomenda-que-setor-da-economia-feche-acordo-coletivo-ate-dia-16-se-quiser-escala-diferente.ghtml"
+      ],
+      "palavras_chave": [
+        "trabalho",
+        "escala 6x1",
+        "ministerio do trabalho",
+        "acordo coletivo"
+      ],
+      "data_publicacao": "2026-11-24T11:34:00Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "Economia no Brasil",
+          "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
+          "motivo_conexao": "Contextua os impactos das diretrizes trabalhistas e negociações coletivas no mercado nacional."
+        }
+      ],
+      "expires_at": "2026-11-25T12:28:51Z",
+      "updated_at": "2026-11-24T12:28:51Z"
+    },
+    {
+      "slug": "pulso-1-20261124-1124",
+      "categoria": "Geopolitica_Relacoes",
+      "ttl_horas": 6,
+      "expires_at": "2026-11-24T17:24:03Z",
+      "updated_at": "2026-11-24T11:24:03Z",
       "fontes_urls": [
         "https://www12.senado.leg.br/noticias/audios/2026/11/projeto-estimula-empresas-a-custearem-medicamentos-de-funcionarios"
       ],
+      "resumo_pulso": "Segundo Agência Senado, Está pronto para votação na Comissão de Assuntos Econômicos (CAE) um projeto (PL 3.079/2024) que permite que empresas ajudem funcionários e dependentes a comprar medicamentos em troca de incentivos fiscais. A proposta do senador Weverton (PDT-MA) prevê a compra de remédios com receita médica. O relator, senador Nelsinho Trad (PSD-MS), sugeriu limit.",
+      "titulo_curto": "Áudio: Projeto estimula empresas a custearem medicamentos de funcionários",
       "palavras_chave": [
         "radar",
         "tempo real",
         "br"
       ],
+      "urgencia_score": 90,
       "data_publicacao": "2026-11-24T11:22:50+00:00",
+      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Agência Senado"
+      ],
+      "relevancia_score": 88,
+      "horas_em_destaque": 6,
+      "paises_envolvidos": [
+        "BR"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "O que é inflação?",
           "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
-          "motivo_conexao": "Compreenda por que os preços sobem de forma generalizada, como o IPCA é calculado e de que maneira os juros do Banco Central afetam o poder de compra."
+          "motivo_conexao": "Compreenda por que os preços sobem de forma generalizada, como o IPCA é calculado e de que maneira os juros do Banco Central afetam o poder de compra.",
+          "titulo_existente": "O que é inflação?"
         },
         {
-          "titulo_existente": "Como funcionam as eleições nos EUA?",
           "url_existente": "https://www.rodandoomundo.com.br/entenda/como-funcionam-as-eleicoes-nos-eua",
-          "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos."
+          "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos.",
+          "titulo_existente": "Como funcionam as eleições nos EUA?"
         }
-      ],
-      "expires_at": "2026-11-24T17:24:03Z",
-      "updated_at": "2026-11-24T11:24:03Z"
+      ]
     },
     {
       "slug": "pulso-2-20261124-1124",
-      "titulo_curto": "Entenda o plano Moretti, o ajuste fiscal aprovado pela Câmara",
-      "resumo_pulso": "Segundo G1 Política, Câmara aprova projeto de ajuste fiscal; texto segue para sanção do presidente Lula A Câmara dos Deputados aprovou na segunda-feira (23/11) o pacto de medidas de ajuste fiscal proposto pelo governo federal. O projeto, que ficou conhecido como Plano Moretti e já tinha passado pelo Senado, tem o potencial de gerar uma economia entre R$ 50 bilhões e R$.",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
       "categoria": "Geopolitica_Relacoes",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "urgencia_score": 85,
-      "relevancia_score": 84,
-      "nivel_confianca": "alta",
       "ttl_horas": 6,
-      "horas_em_destaque": 6,
-      "veiculos_origem": [
-        "G1 Política"
-      ],
+      "expires_at": "2026-11-24T17:24:03Z",
+      "updated_at": "2026-11-24T11:24:03Z",
       "fontes_urls": [
         "https://g1.globo.com/economia/noticia/2026/11/24/entenda-o-plano-moretti-o-ajuste-fiscal-aprovado-pela-camara.ghtml"
       ],
+      "resumo_pulso": "Segundo G1 Política, Câmara aprova projeto de ajuste fiscal; texto segue para sanção do presidente Lula A Câmara dos Deputados aprovou na segunda-feira (23/11) o pacto de medidas de ajuste fiscal proposto pelo governo federal. O projeto, que ficou conhecido como Plano Moretti e já tinha passado pelo Senado, tem o potencial de gerar uma economia entre R$ 50 bilhões e R$.",
+      "titulo_curto": "Entenda o plano Moretti, o ajuste fiscal aprovado pela Câmara",
       "palavras_chave": [
         "radar",
         "tempo real",
         "br"
       ],
+      "urgencia_score": 85,
       "data_publicacao": "2026-11-24T11:21:42+00:00",
-      "links_internos_relacionados": [
-        {
-          "titulo_existente": "O que é inflação?",
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
-          "motivo_conexao": "Compreenda por que os preços sobem de forma generalizada, como o IPCA é calculado e de que maneira os juros do Banco Central afetam o poder de compra."
-        },
-        {
-          "titulo_existente": "Como funcionam as eleições nos EUA?",
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/como-funcionam-as-eleicoes-nos-eua",
-          "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos."
-        }
-      ],
-      "expires_at": "2026-11-24T17:24:03Z",
-      "updated_at": "2026-11-24T11:24:03Z"
-    },
-    {
-      "slug": "pulso-3-20261124-1124",
-      "titulo_curto": "Iraque ordena aquisição de campos petrolíferos em áreas sob controle curdo",
-      "resumo_pulso": "Segundo Al Jazeera English, O primeiro-ministro Ali al-Zaidi também ordena ao seu governo que tome todas as travessias na região curda após um inquérito sobre contrabando de petróleo..",
       "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "categoria": "Geopolitica_Relacoes",
-      "paises_envolvidos": [
-        "QA"
-      ],
-      "urgencia_score": 80,
-      "relevancia_score": 80,
       "nivel_confianca": "alta",
-      "ttl_horas": 6,
-      "horas_em_destaque": 6,
-      "veiculos_origem": [
-        "Al Jazeera English"
-      ],
-      "fontes_urls": [
-        "https://www.aljazeera.com/news/2026/11/24/iraq-orders-takeover-of-oilfields-in-areas-under-kurdish-control?traffic_source=rss"
-      ],
-      "palavras_chave": [
-        "radar",
-        "tempo real",
-        "qa"
-      ],
-      "data_publicacao": "2026-11-24T11:19:04+00:00",
-      "links_internos_relacionados": [
-        {
-          "titulo_existente": "O que é inflação?",
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
-          "motivo_conexao": "Compreenda por que os preços sobem de forma generalizada, como o IPCA é calculado e de que maneira os juros do Banco Central afetam o poder de compra."
-        },
-        {
-          "titulo_existente": "Como funcionam as eleições nos EUA?",
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/como-funcionam-as-eleicoes-nos-eua",
-          "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos."
-        }
-      ],
-      "expires_at": "2026-11-24T17:24:03Z",
-      "updated_at": "2026-11-24T11:24:03Z"
-    },
-    {
-      "slug": "pulso-4-20261124-1124",
-      "titulo_curto": "Explosão em restaurante no Vietnã mata pelo menos seis pessoas",
-      "resumo_pulso": "Segundo Al Jazeera English, Pelo menos 10 feridos após explosão em restaurante no distrito de Dong Da, em Hanói, durante as operações de resgate em andamento..",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "categoria": "Geopolitica_Relacoes",
-      "paises_envolvidos": [
-        "QA"
-      ],
-      "urgencia_score": 75,
-      "relevancia_score": 76,
-      "nivel_confianca": "alta",
-      "ttl_horas": 6,
-      "horas_em_destaque": 6,
-      "veiculos_origem": [
-        "Al Jazeera English"
-      ],
-      "fontes_urls": [
-        "https://www.aljazeera.com/news/2026/11/24/vietnam-restaurant-blast-kills-at-least-six?traffic_source=rss"
-      ],
-      "palavras_chave": [
-        "radar",
-        "tempo real",
-        "qa"
-      ],
-      "data_publicacao": "2026-11-24T11:17:20+00:00",
-      "links_internos_relacionados": [
-        {
-          "titulo_existente": "O que é inflação?",
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
-          "motivo_conexao": "Compreenda por que os preços sobem de forma generalizada, como o IPCA é calculado e de que maneira os juros do Banco Central afetam o poder de compra."
-        },
-        {
-          "titulo_existente": "Como funcionam as eleições nos EUA?",
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/como-funcionam-as-eleicoes-nos-eua",
-          "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos."
-        }
-      ],
-      "expires_at": "2026-11-24T17:24:03Z",
-      "updated_at": "2026-11-24T11:24:03Z"
-    },
-    {
-      "slug": "pulso-5-20261124-1124",
-      "titulo_curto": "De olho no Lula 4, Centrão garante vitória do ajuste fiscal, mas governo precisa dar segundo passo",
-      "resumo_pulso": "Segundo G1 Política, Câmara aprova texto-base do pacote de ajuste fiscal do governo De olho na montagem dos ministérios do próximo governo Luiz Inácio Lula da Silva (PT), os partidos do Centrão ajudaram o presidente a obter uma vitória nesta segunda-feira (23) na Câmara dos Deputados, em operação comanda pelo presidente da Casa, Hugo Motta (Republicanos-PB). Com isso, .",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "categoria": "Geopolitica_Relacoes",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "urgencia_score": 70,
-      "relevancia_score": 72,
-      "nivel_confianca": "alta",
-      "ttl_horas": 6,
-      "horas_em_destaque": 6,
       "veiculos_origem": [
         "G1 Política"
       ],
+      "relevancia_score": 84,
+      "horas_em_destaque": 6,
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "links_internos_relacionados": [
+        {
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
+          "motivo_conexao": "Compreenda por que os preços sobem de forma generalizada, como o IPCA é calculado e de que maneira os juros do Banco Central afetam o poder de compra.",
+          "titulo_existente": "O que é inflação?"
+        },
+        {
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/como-funcionam-as-eleicoes-nos-eua",
+          "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos.",
+          "titulo_existente": "Como funcionam as eleições nos EUA?"
+        }
+      ]
+    },
+    {
+      "slug": "pulso-3-20261124-1124",
+      "categoria": "Geopolitica_Relacoes",
+      "ttl_horas": 6,
+      "expires_at": "2026-11-24T17:24:03Z",
+      "updated_at": "2026-11-24T11:24:03Z",
+      "fontes_urls": [
+        "https://www.aljazeera.com/news/2026/11/24/iraq-orders-takeover-of-oilfields-in-areas-under-kurdish-control?traffic_source=rss"
+      ],
+      "resumo_pulso": "Segundo Al Jazeera English, O primeiro-ministro Ali al-Zaidi também ordena ao seu governo que tome todas as travessias na região curda após um inquérito sobre contrabando de petróleo..",
+      "titulo_curto": "Iraque ordena aquisição de campos petrolíferos em áreas sob controle curdo",
+      "palavras_chave": [
+        "radar",
+        "tempo real",
+        "qa"
+      ],
+      "urgencia_score": 80,
+      "data_publicacao": "2026-11-24T11:19:04+00:00",
+      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Al Jazeera English"
+      ],
+      "relevancia_score": 80,
+      "horas_em_destaque": 6,
+      "paises_envolvidos": [
+        "QA"
+      ],
+      "links_internos_relacionados": [
+        {
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
+          "motivo_conexao": "Compreenda por que os preços sobem de forma generalizada, como o IPCA é calculado e de que maneira os juros do Banco Central afetam o poder de compra.",
+          "titulo_existente": "O que é inflação?"
+        },
+        {
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/como-funcionam-as-eleicoes-nos-eua",
+          "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos.",
+          "titulo_existente": "Como funcionam as eleições nos EUA?"
+        }
+      ]
+    },
+    {
+      "slug": "pulso-4-20261124-1124",
+      "categoria": "Geopolitica_Relacoes",
+      "ttl_horas": 6,
+      "expires_at": "2026-11-24T17:24:03Z",
+      "updated_at": "2026-11-24T11:24:03Z",
+      "fontes_urls": [
+        "https://www.aljazeera.com/news/2026/11/24/vietnam-restaurant-blast-kills-at-least-six?traffic_source=rss"
+      ],
+      "resumo_pulso": "Segundo Al Jazeera English, Pelo menos 10 feridos após explosão em restaurante no distrito de Dong Da, em Hanói, durante as operações de resgate em andamento..",
+      "titulo_curto": "Explosão em restaurante no Vietnã mata pelo menos seis pessoas",
+      "palavras_chave": [
+        "radar",
+        "tempo real",
+        "qa"
+      ],
+      "urgencia_score": 75,
+      "data_publicacao": "2026-11-24T11:17:20+00:00",
+      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Al Jazeera English"
+      ],
+      "relevancia_score": 76,
+      "horas_em_destaque": 6,
+      "paises_envolvidos": [
+        "QA"
+      ],
+      "links_internos_relacionados": [
+        {
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
+          "motivo_conexao": "Compreenda por que os preços sobem de forma generalizada, como o IPCA é calculado e de que maneira os juros do Banco Central afetam o poder de compra.",
+          "titulo_existente": "O que é inflação?"
+        },
+        {
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/como-funcionam-as-eleicoes-nos-eua",
+          "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos.",
+          "titulo_existente": "Como funcionam as eleições nos EUA?"
+        }
+      ]
+    },
+    {
+      "slug": "pulso-5-20261124-1124",
+      "categoria": "Geopolitica_Relacoes",
+      "ttl_horas": 6,
+      "expires_at": "2026-11-24T17:24:03Z",
+      "updated_at": "2026-11-24T11:24:03Z",
       "fontes_urls": [
         "https://g1.globo.com/politica/blog/valdo-cruz/post/2026/11/24/de-olho-no-lula-4-centrao-garante-vitoria-do-ajuste-fiscal-mas-governo-precisa-dar-um-segundo-passo.ghtml"
       ],
+      "resumo_pulso": "Segundo G1 Política, Câmara aprova texto-base do pacote de ajuste fiscal do governo De olho na montagem dos ministérios do próximo governo Luiz Inácio Lula da Silva (PT), os partidos do Centrão ajudaram o presidente a obter uma vitória nesta segunda-feira (23) na Câmara dos Deputados, em operação comanda pelo presidente da Casa, Hugo Motta (Republicanos-PB). Com isso, .",
+      "titulo_curto": "De olho no Lula 4, Centrão garante vitória do ajuste fiscal, mas governo precisa dar segundo passo",
       "palavras_chave": [
         "radar",
         "tempo real",
         "br"
       ],
+      "urgencia_score": 70,
       "data_publicacao": "2026-11-24T10:48:38+00:00",
+      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "G1 Política"
+      ],
+      "relevancia_score": 72,
+      "horas_em_destaque": 6,
+      "paises_envolvidos": [
+        "BR"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "O que é inflação?",
           "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
-          "motivo_conexao": "Compreenda por que os preços sobem de forma generalizada, como o IPCA é calculado e de que maneira os juros do Banco Central afetam o poder de compra."
+          "motivo_conexao": "Compreenda por que os preços sobem de forma generalizada, como o IPCA é calculado e de que maneira os juros do Banco Central afetam o poder de compra.",
+          "titulo_existente": "O que é inflação?"
         },
         {
-          "titulo_existente": "Como funcionam as eleições nos EUA?",
           "url_existente": "https://www.rodandoomundo.com.br/entenda/como-funcionam-as-eleicoes-nos-eua",
-          "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos."
+          "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos.",
+          "titulo_existente": "Como funcionam as eleições nos EUA?"
         }
-      ],
-      "expires_at": "2026-11-24T17:24:03Z",
-      "updated_at": "2026-11-24T11:24:03Z"
+      ]
     },
     {
       "slug": "malaysia-set-to-return-rohingya-refugees-to-myanmar",
@@ -1194,49 +1272,48 @@
     },
     {
       "slug": "dolar-atinge-marca-de-6-reais-pressionado-por-cenario-fiscal-e-exterior",
+      "titulo_curto": "Dólar abre em alta e consolida patamar de R$ 6,00 pressionado por fiscal e exterior",
+      "resumo_pulso": "Conforme apuração do G1 Economia, a cotação do dólar abriu a sessão desta terça-feira (24) mantendo a pressão e negociando perto de R$ 5,95, após romper a marca de R$ 6,00 na véspera pela primeira vez desde abril de 2025. O cenário continua influenciado por incertezas fiscais domésticas e pela força da moeda norte-americana.",
+      "impacto_pratico": "A alta prolongada do dólar encarece custos de importação, passagens aéreas e produtos com insumos estrangeiros, pressionando ainda mais a inflação interna.",
       "categoria": "Economia_Comercio",
-      "ttl_horas": 12,
-      "expires_at": "2026-11-24T21:25:31Z",
-      "updated_at": "2026-11-24T10:02:20Z",
-      "fontes_urls": [
-        "https://www.bbc.com/portuguese/articles/cwm253lr95zjo?at_medium=RSS&at_campaign=rss",
-        "https://www.infomoney.com.br/economia/reservas-internacionais-bc-segurar-dolar/"
-      ],
-      "resumo_pulso": "A cotação do dólar permanece no patamar de R$ 6,00, pressionada pelo cenário fiscal interno e pela força da moeda americana no exterior. Segundo o InfoMoney, o Banco Central possui US$ 363 bilhões em reservas, mas especialistas alertam para os limites de intervenção direta para conter a volatilidade cambial.",
-      "titulo_curto": "Dólar mantém pressão e atinge R$ 6,00; BC monitora reservas",
-      "palavras_chave": [
-        "dólar",
-        "câmbio",
-        "Banco Central",
-        "reservas internacionais",
-        "economia"
-      ],
-      "urgencia_score": 97,
-      "data_publicacao": "2026-11-24T03:00:00Z",
-      "impacto_pratico": "Aumento nos custos de importação e pressão inflacionária sobre produtos cotados em dólar, afetando o poder de compra do consumidor.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "BBC News Brasil",
-        "InfoMoney"
-      ],
-      "relevancia_score": 98,
-      "horas_em_destaque": 12,
       "paises_envolvidos": [
         "BR",
         "US"
       ],
+      "urgencia_score": 98,
+      "relevancia_score": 99,
+      "nivel_confianca": "alta",
+      "ttl_horas": 12,
+      "horas_em_destaque": 12,
+      "veiculos_origem": [
+        "G1 Economia",
+        "InfoMoney"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/economia/noticia/2026/11/24/dolar-ibovespa.ghtml"
+      ],
+      "palavras_chave": [
+        "dolar",
+        "cambio",
+        "economia",
+        "bc",
+        "inflacao"
+      ],
+      "data_publicacao": "2026-11-24T03:00:00Z",
       "links_internos_relacionados": [
         {
-          "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
-          "motivo_conexao": "Contexto sobre o cenário econômico brasileiro e as variáveis que impactam o câmbio.",
-          "titulo_existente": "Economia no Brasil"
+          "titulo_existente": "O que é inflação?",
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
+          "motivo_conexao": "Explica como a alta do câmbio e a volatilidade dos preços impactam o IPCA e o poder de compra."
         },
         {
+          "titulo_existente": "Banco Central e mercado financeiro acompanham inflação de serviços, câmbio e metas fiscais",
           "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
-          "motivo_conexao": "Explicação sobre como a desvalorização cambial impacta a inflação interna.",
-          "titulo_existente": "O que é inflação?"
+          "motivo_conexao": "Relaciona a dinâmica cambial com as decisões macroeconômicas do Banco Central."
         }
-      ]
+      ],
+      "expires_at": "2026-11-24T21:25:31Z",
+      "updated_at": "2026-11-24T12:28:51Z"
     },
     {
       "slug": "ucrania-expande-ataques-drones-embarcacoes-russas-libia-e-europa",
@@ -1537,75 +1614,6 @@
         "BR"
       ],
       "links_internos_relacionados": []
-    },
-    {
-      "slug": "china-condena-funcionario-morte-espionagem",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-25T00:27:46Z",
-      "updated_at": "2026-11-24T00:27:46Z",
-      "fontes_urls": [
-        "https://g1.globo.com/mundo/noticia/2026/11/23/china-condena-funcionario-a-morte-por-espionagem-e-vazamento-de-segredos-de-estado.ghtml"
-      ],
-      "resumo_pulso": "Segundo reportagem do G1 Mundo citando comunicados de entidades ligadas ao governo em Pequim, um servidor chinês foi sentenciado à morte por realizar atividades de espionagem para um país estrangeiro. O caso ocorre em meio ao reforço das legislações de segurança nacional no país.",
-      "titulo_curto": "China condena funcionário público à morte por vazamento de segredos de Estado",
-      "palavras_chave": [
-        "China",
-        "espionagem",
-        "segurança nacional",
-        "Pequim"
-      ],
-      "urgencia_score": 87,
-      "data_publicacao": "2026-11-23T22:56:02Z",
-      "impacto_pratico": "Reflete o rigor no cumprimento das leis de contrainteligência da China em um momento de crescentes disputas geopolíticas.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "G1 Mundo"
-      ],
-      "relevancia_score": 85,
-      "horas_em_destaque": 8,
-      "paises_envolvidos": [
-        "CN"
-      ],
-      "links_internos_relacionados": []
-    },
-    {
-      "slug": "eua-impoem-novas-sancoes-contra-redes-financeiras-do-ira",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-25T10:02:20Z",
-      "updated_at": "2026-11-24T10:02:20Z",
-      "fontes_urls": [
-        "https://www.iranintl.com/en/202611246967"
-      ],
-      "resumo_pulso": "A moeda iraniana, o rial, ultrapassou a marca de 2,8 milhões por dólar no mercado paralelo. Segundo o Iran International, a crise é agravada por sanções financeiras dos EUA e pelo bloqueio naval que restringe as exportações de petróleo do país.",
-      "titulo_curto": "Irã enfrenta crise cambial e sanções financeiras dos EUA",
-      "palavras_chave": [
-        "Irã",
-        "sanções",
-        "dólar",
-        "crise econômica"
-      ],
-      "urgencia_score": 90,
-      "data_publicacao": "2026-11-23T20:47:59.842605+00:00",
-      "impacto_pratico": "Aprofundamento da crise econômica no Irã com impacto direto na inflação local e na capacidade de comércio exterior.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Iran International"
-      ],
-      "relevancia_score": 85,
-      "horas_em_destaque": 12,
-      "paises_envolvidos": [
-        "IR",
-        "US"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-sancao-internacional",
-          "motivo_conexao": "Entenda como as sanções financeiras funcionam como ferramenta de pressão geopolítica.",
-          "titulo_existente": "O que é uma sanção internacional?"
-        }
-      ]
     }
   ],
   "temas_curadoria": [
