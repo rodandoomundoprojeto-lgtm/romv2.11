@@ -18,6 +18,9 @@ MODELO_PADRAO = _RAW_CURADORIA_MODEL or "gemini-3.5-flash"
 MODELOS_FALLBACK = [
     "gemini-3.5-flash",
     "gemini-3.5-flash-lite",
+    "gemini-3.6-flash",
+    "gemini-3.7-flash",
+    "gemini-3.1-flash-lite",
     "gemini-3.8-flash",
 ]
 
@@ -128,6 +131,10 @@ Analise os dados acima, faça os cruzamentos interdisciplinares e gere o payload
                             break
                     except APIError as e:
                         ultimo_erro = e
+                        msg = str(e).upper()
+                        if any(k in msg for k in ("FREE_TIER_REQUESTS", "PER DAY", "PER_DAY", "LIMIT: 20", "EXCEEDED YOUR CURRENT QUOTA")):
+                            print(f"[curadoria] Cota diária Free Tier esgotada em {mod}. Pulando modelo...")
+                            break
                         print(f"[Aviso] Erro na API com {mod} (tentativa {tentativa}): {e}. Aguardando retry...")
                         time.sleep(3 * tentativa)
                     except Exception as e:

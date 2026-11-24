@@ -237,7 +237,14 @@ INSTRUÇÕES E REGRAS MANDATÓRIAS:
     if key:
         client = genai.Client(api_key=key, http_options=types.HttpOptions(timeout=35_000))
         modelo_env = (os.getenv("GEMINI_MODEL_RADAR") or os.getenv("GEMINI_MODEL") or "").strip()
-        modelos = ([modelo_env] if modelo_env else []) + ["gemini-3.5-flash", "gemini-3.5-flash-lite", "gemini-3.8-flash"]
+        modelos = ([modelo_env] if modelo_env else []) + [
+            "gemini-3.5-flash",
+            "gemini-3.5-flash-lite",
+            "gemini-3.6-flash",
+            "gemini-3.7-flash",
+            "gemini-3.1-flash-lite",
+            "gemini-3.8-flash",
+        ]
         vistos_m = set()
         modelos = [m for m in modelos if not (m in vistos_m or vistos_m.add(m))]
 
@@ -259,8 +266,18 @@ INSTRUÇÕES E REGRAS MANDATÓRIAS:
                 except Exception as e:
                     last_err = e
                     msg = str(e).upper()
+                    eh_quota_diaria = any(
+                        k in msg for k in (
+                            "FREE_TIER_REQUESTS", "PER DAY", "PER_DAY",
+                            "LIMIT: 20", "EXCEEDED YOUR CURRENT QUOTA",
+                            "GENERATEREQUESTSPERDAY", "DAILY"
+                        )
+                    )
                     eh_rate_limit = any(k in msg for k in ("429", "RESOURCE_EXHAUSTED", "503", "UNAVAILABLE", "504", "TIMEOUT"))
                     eh_not_found = any(k in msg for k in ("404", "NOT_FOUND"))
+                    if eh_quota_diaria:
+                        print(f"[!] Cota diária Free Tier esgotada em {modelo}. Pulando imediatamente...")
+                        break
                     if eh_rate_limit:
                         espera = min(3 * tentativa + idx_m * 2, 12)
                         print(f"[!] Rate limit/instabilidade em {modelo} para '{item.get('fonte_nome')}' (tentativa {tentativa}). Aguardando {espera}s...")

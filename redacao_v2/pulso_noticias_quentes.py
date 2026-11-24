@@ -50,6 +50,8 @@ MODELO_PULSO = _RAW_MODELO_PULSO or "gemini-3.5-flash"
 MODELOS_PULSO_FALLBACK = [
     "gemini-3.5-flash",
     "gemini-3.5-flash-lite",
+    "gemini-3.6-flash",
+    "gemini-3.7-flash",
     "gemini-3.1-flash-lite",
     "gemini-3.8-flash",
 ]
@@ -822,8 +824,18 @@ Analise o lote (incluindo eventuais análises de canais do YouTube quando tratar
             except Exception as exc:  # noqa: BLE001
                 ultimo_erro = exc
                 msg = str(exc).upper()
+                eh_quota_diaria = any(
+                    k in msg for k in (
+                        "FREE_TIER_REQUESTS", "PER DAY", "PER_DAY",
+                        "LIMIT: 20", "EXCEEDED YOUR CURRENT QUOTA",
+                        "GENERATEREQUESTSPERDAY", "DAILY"
+                    )
+                )
                 eh_rate_limit = any(k in msg for k in ("429", "RESOURCE_EXHAUSTED", "503", "UNAVAILABLE", "504", "DEADLINE_EXCEEDED", "TIMEOUT"))
                 eh_not_found = any(k in msg for k in ("404", "NOT_FOUND"))
+                if eh_quota_diaria:
+                    print(f"[pulso_30m] Cota diária excedida no Free Tier para {candidato}. Pulando imediatamente para próximo modelo...")
+                    break
                 if eh_rate_limit:
                     espera = min(3 * tentativa + idx_cand * 2, 12)
                     print(f"[pulso_30m] Rate limit/instabilidade em {candidato} (tentativa {tentativa}): {msg[:80]}. Aguardando {espera}s...")
@@ -836,15 +848,35 @@ Analise o lote (incluindo eventuais análises de canais do YouTube quando tratar
         if response is not None:
             break
 
-    if response is None:
-        raise RuntimeError(f"Nenhum modelo Gemini disponível para pulso: {ultimo_erro}")
+    payload: Optional[PayloadNoticiasQuentes] = None
 
-    payload: Optional[PayloadNoticiasQuentes] = getattr(response, "parsed", None)
+    if response is not None:
+        payload = getattr(response, "parsed", None)
+        if payload is None:
+            payload = PayloadNoticiasQuentes.model_validate_json(response.text)
+        payload.batch_id = payload.batch_id or batch_atual
+        payload.model_id = modelo_usado
+    else:
+        # Contingência via Zelador Grok se Gemini esgotou todas as cotas
+        try:
+            from scripts.vigia_grok import gerar_json_zelador_ia
+            schema_json = json.dumps(PayloadNoticiasQuentes.model_json_schema(), ensure_ascii=False)
+            prompt_zelador = (
+                f"{system_prompt}\n\n"
+                f"IMPORTANTE: Retorne estritamente um JSON compatível com PayloadNoticiasQuentes:\n"
+                f"{schema_json}"
+            )
+            raw_zelador = gerar_json_zelador_ia(prompt_sistema=prompt_zelador, prompt_usuario=prompt_usuario, timeout=45)
+            if raw_zelador:
+                payload = PayloadNoticiasQuentes.model_validate_json(raw_zelador)
+                payload.batch_id = payload.batch_id or batch_atual
+                payload.model_id = "zelador-contingencia"
+                print(f"[pulso_30m] Sucesso na contingência Zelador Grok ({len(payload.noticias)} notícias recuperadas).")
+        except Exception as exc_z:
+            print(f"[pulso_30m] Contingência Zelador falhou: {exc_z}")
+
     if payload is None:
-        payload = PayloadNoticiasQuentes.model_validate_json(response.text)
-
-    payload.batch_id = payload.batch_id or batch_atual
-    payload.model_id = modelo_usado
+        raise RuntimeError(f"Nenhum modelo Gemini ou contingência disponível para pulso: {ultimo_erro}")
 
     # Resolve data_publicacao deterministicamente (DB ativo -> URLs coletadas -> n.data_publicacao válida -> gerado_em)
     agora_ref = datetime.now(timezone.utc)

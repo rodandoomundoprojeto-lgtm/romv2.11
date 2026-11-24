@@ -65,6 +65,8 @@ MODELO_EDITORIAL = _RAW_MODELO_EDITORIAL or "gemini-3.5-flash"
 MODELOS_EDITORIAL_FALLBACK = [
     "gemini-3.5-flash",
     "gemini-3.5-flash-lite",
+    "gemini-3.6-flash",
+    "gemini-3.7-flash",
     "gemini-3.1-flash-lite",
     "gemini-3.8-flash",
 ]
@@ -104,8 +106,18 @@ def _gerar_com_fallback(
             except Exception as exc:  # noqa: BLE001
                 ultimo_erro = exc
                 msg = str(exc).upper()
+                eh_quota_diaria = any(
+                    k in msg for k in (
+                        "FREE_TIER_REQUESTS", "PER DAY", "PER_DAY",
+                        "LIMIT: 20", "EXCEEDED YOUR CURRENT QUOTA",
+                        "GENERATEREQUESTSPERDAY", "DAILY"
+                    )
+                )
                 eh_rate_limit = any(k in msg for k in ("429", "RESOURCE_EXHAUSTED", "503", "UNAVAILABLE", "504", "DEADLINE_EXCEEDED", "TIMEOUT"))
                 eh_not_found = any(k in msg for k in ("404", "NOT_FOUND"))
+                if eh_quota_diaria:
+                    print(f"[editorial_v2] Cota diária excedida no Free Tier para {candidato}. Pulando imediatamente para fallback...")
+                    break
                 if eh_rate_limit:
                     espera = min(4 * tentativa + idx_cand * 3, 15)
                     print(f"[editorial_v2] Rate limit/instabilidade em {candidato} (tentativa {tentativa}): {msg[:80]}. Aguardando {espera}s...")

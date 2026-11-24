@@ -801,7 +801,19 @@ DIRETRIZES OBRIGATÓRIAS:
 
 def _gerar_com_fallback_gemini(client: Any, contents: str, config: Any, preferred_model: str = "") -> tuple[Any, str]:
     """Executa generate_content tentando o modelo configurado e fallbacks ativos."""
-    candidatos = [m.strip() for m in [preferred_model, "gemini-3.5-flash", "gemini-3.5-flash-lite", "gemini-3.1-flash-lite", "gemini-3.8-flash"] if m and m.strip()]
+    candidatos = [
+        m.strip()
+        for m in [
+            preferred_model,
+            "gemini-3.5-flash",
+            "gemini-3.5-flash-lite",
+            "gemini-3.6-flash",
+            "gemini-3.7-flash",
+            "gemini-3.1-flash-lite",
+            "gemini-3.8-flash",
+        ]
+        if m and m.strip()
+    ]
     vistos: set[str] = set()
     modelos = [m for m in candidatos if not (m in vistos or vistos.add(m))]
     ultimo_erro: Optional[Exception] = None
@@ -811,6 +823,9 @@ def _gerar_com_fallback_gemini(client: Any, contents: str, config: Any, preferre
             return res, modelo
         except Exception as exc:  # noqa: BLE001
             ultimo_erro = exc
+            msg = str(exc).upper()
+            if any(k in msg for k in ("FREE_TIER_REQUESTS", "PER DAY", "PER_DAY", "LIMIT: 20", "EXCEEDED YOUR CURRENT QUOTA")):
+                print(f"[dossies_ai] Cota diária excedida no Free Tier para {modelo}. Pulando imediatamente...")
             continue
     raise ultimo_erro or RuntimeError("Nenhum modelo Gemini disponível respondeu.")
 
