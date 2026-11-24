@@ -2,13 +2,125 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-24T04:35:46Z",
-  "batch_id": "20261124-0435",
+  "updatedAt": "2026-11-24T05:57:15Z",
+  "batch_id": "20261124-0556",
   "temas_ativos": [
     {
+      "slug": "dolar-6-reais-ajuste-fiscal-governo-mercado",
+      "status": "em_alta",
+      "ttl_horas": 48,
+      "expires_at": "2026-11-26T04:45:54Z",
+      "updated_at": "2026-11-24T04:45:54Z",
+      "titulo_tema": "Disparada do Dólar a R$ 6 e Impasse Fiscal no Brasil",
+      "sintese_nerd": "A disparada do dólar até a marca de R$ 6 reflete a combinação de um cenário externo desfavorável com a desconfiança do mercado financeiro quanto ao cumprimento das metas fiscais brasileiras. Essa desvalorização do real encarece cadeias produtivas importadas e pressiona a inflação, afetando diretamente o poder de compra do consumidor.",
+      "rota_editoria": "/economia",
+      "data_publicacao": "2026-11-24T04:45:54Z",
+      "gatilho_vitrine": "Exibir analise sobre disparada do dolar e crise de confianca fiscal",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 95,
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Politica",
+        "Geopolitica_Radar"
+      ],
+      "palavras_chave_busca": [
+        "dolar a 6 reais",
+        "ajuste fiscal",
+        "mercado financeiro",
+        "governo lula",
+        "cambio",
+        "inflacao",
+        "bruno moretti",
+        "faria lima"
+      ]
+    },
+    {
+      "slug": "camara-aprova-ajuste-fiscal-divisao-base-governo",
+      "status": "novo",
+      "ttl_horas": 48,
+      "expires_at": "2026-11-26T04:45:54Z",
+      "updated_at": "2026-11-24T04:45:54Z",
+      "titulo_tema": "Aprovação do Ajuste Fiscal na Câmara e Tensão na Base Governista",
+      "sintese_nerd": "A aprovação do projeto de ajuste fiscal de até R$ 56 bilhões expôs fissuras na base governista, registrando abstenções de deputados do PT e PSOL. Ao mesmo tempo, lideranças do Centrão passam a exigir novas medidas fiscais e maior representação ministerial para garantir governabilidade.",
+      "rota_editoria": "/politica",
+      "data_publicacao": "2026-11-24T04:45:54Z",
+      "gatilho_vitrine": "Destacar votacao do pacote fiscal na Camara e divergencias na base aliada",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 90,
+      "categoria_primaria": "Politica",
+      "categorias_cruzadas": [
+        "Economia",
+        "Eleicoes"
+      ],
+      "palavras_chave_busca": [
+        "ajuste fiscal",
+        "camara dos deputados",
+        "hugo motta",
+        "bruno moretti",
+        "erika hilton",
+        "lindbergh farias",
+        "centrao",
+        "orcamento"
+      ]
+    },
+    {
+      "slug": "ataques-russos-zaporizhzhia-infraestrutura-ucrania",
+      "status": "novo",
+      "ttl_horas": 36,
+      "expires_at": "2026-11-25T16:45:54Z",
+      "updated_at": "2026-11-24T04:45:54Z",
+      "titulo_tema": "Intensificação de Ataques Russos a Zaporizhzhia e Tensões na Ucrânia",
+      "sintese_nerd": "A nova onda de bombardeios russos contra edifícios residenciais em Zaporizhzhia reforça a estratégia de desgaste da infraestrutura civil ucraniana no período de inverno. A utilização de novas variantes tecnológicas de drones amplia os desafios operacionais das forças de defesa e tensiona o apoio ocidental.",
+      "rota_editoria": "/radar",
+      "data_publicacao": "2026-11-24T04:45:54Z",
+      "gatilho_vitrine": "Mapear desdobramentos dos novos bombardeios russos em zonas residenciais na Ucrania",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 86,
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Politica",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "guerra na ucrania",
+        "zaporizhzhia",
+        "ataques russos",
+        "drones molniya",
+        "geopolitica europeia",
+        "conflito russia ucrania"
+      ]
+    },
+    {
+      "slug": "iran-repressao-cantora-parastoo-ahmadi-direitos-humanos",
+      "status": "novo",
+      "ttl_horas": 48,
+      "expires_at": "2026-11-26T04:45:54Z",
+      "updated_at": "2026-11-24T04:45:54Z",
+      "titulo_tema": "Açoite de Cantora no Irã Evidencia Recrudescimento do Controle Estatal",
+      "sintese_nerd": "A aplicação de pena corporal por açoite contra a cantora Parastoo Ahmadi gerou comoção internacional e reacendeu denúncias sobre a supressão de direitos civis no Irã. O caso reflete o uso de métodos coercitivos rigorosos por regimes autoritários para conter manifestações culturais e artísticas independentes.",
+      "rota_editoria": "/cultura",
+      "data_publicacao": "2026-11-24T04:45:54Z",
+      "gatilho_vitrine": "Monitorar reacoes internacionais a punicao corporal de artistas no Ira",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 78,
+      "categoria_primaria": "Cultura",
+      "categorias_cruzadas": [
+        "Geopolitica_Radar",
+        "Politica"
+      ],
+      "palavras_chave_busca": [
+        "iran",
+        "parastoo ahmadi",
+        "direitos humanos",
+        "liberdade de expressao",
+        "direitos das mulheres",
+        "oriente medio"
+      ]
+    },
+    {
       "slug": "ataque-russo-predio-residencial-zaporizhzhia",
-      "titulo_tema": "Ataque com mísseis russos a edifício residencial em Zaporizhzhia deixa pelo menos 2 mortos e 22 feridos",
-      "titulo_curto": "Ataque com mísseis russos a edifício residencial em Zaporizhzhia deixa pelo menos 2 mortos e 22 feridos",
+      "titulo_tema": "Ataque russo a edifício residencial em Zaporizhzhia deixa mortos e feridos",
+      "titulo_curto": "Ataque russo a edifício residencial em Zaporizhzhia deixa mortos e feridos",
       "status": "novo",
       "origem_pipeline": "pulso",
       "categoria_primaria": "Geopolitica_Radar",
@@ -23,23 +135,21 @@
       "ttl_horas": 12,
       "expires_at": "2026-11-24T16:35:46Z",
       "palavras_chave_busca": [
-        "zaporizhzhia",
         "ucrânia",
         "rússia",
-        "guerra na ucrânia",
-        "bombardeio"
+        "zaporizhzhia",
+        "guerra"
       ],
       "palavras_chave": [
-        "zaporizhzhia",
         "ucrânia",
         "rússia",
-        "guerra na ucrânia",
-        "bombardeio"
+        "zaporizhzhia",
+        "guerra"
       ],
-      "gatilho_vitrine": "Forças armadas da Rússia bombardearam um prédio residencial de cinco andares e instalações de transporte no distrito de Kosmichnyi, em Zaporizhzhia. Segundo comunicados da administração militar regional repercutidos pelas agências Ukrinform e The Kyiv Independent, equipes de resgate atuam nos escombros para resgatar sobreviventes enquanto o balanço de vítimas segue em atualização.",
-      "resumo_pulso": "Forças armadas da Rússia bombardearam um prédio residencial de cinco andares e instalações de transporte no distrito de Kosmichnyi, em Zaporizhzhia. Segundo comunicados da administração militar regional repercutidos pelas agências Ukrinform e The Kyiv Independent, equipes de resgate atuam nos escombros para resgatar sobreviventes enquanto o balanço de vítimas segue em atualização.",
-      "sintese_nerd": "A intensificação dos ataques urbanos agrava a crise humanitária e a sobrecarga da infraestrutura energética e de transportes na Ucrânia.",
-      "impacto_pratico": "A intensificação dos ataques urbanos agrava a crise humanitária e a sobrecarga da infraestrutura energética e de transportes na Ucrânia.",
+      "gatilho_vitrine": "Forças russas atingiram um prédio residencial de cinco andares em Zaporizhzhia, resultando em pelo menos 2 mortos e 22 feridos. Equipes de resgate continuam as buscas nos escombros, segundo informações da administração militar local e da agência Ukrinform.",
+      "resumo_pulso": "Forças russas atingiram um prédio residencial de cinco andares em Zaporizhzhia, resultando em pelo menos 2 mortos e 22 feridos. Equipes de resgate continuam as buscas nos escombros, segundo informações da administração militar local e da agência Ukrinform.",
+      "sintese_nerd": "O ataque intensifica a tensão na região e reforça os riscos de segurança para civis em áreas próximas à linha de frente.",
+      "impacto_pratico": "O ataque intensifica a tensão na região e reforça os riscos de segurança para civis em áreas próximas à linha de frente.",
       "paises_envolvidos": [
         "UA",
         "RU"
@@ -49,16 +159,15 @@
         "The Kyiv Independent"
       ],
       "fontes_urls": [
-        "https://kyivindependent.com/2-killed-22-injured-in-russian-attack-on-residential-building-in-zaporizhzhia/",
-        "https://www.ukrinform.net/rubric-ato/4187890-russian-strikes-on-zaporizhzhia-leave-11-injured-houses-destroyed.html"
+        "https://kyivindependent.com/2-killed-22-injured-in-russian-attack-on-residential-building-in-zaporizhzhia/"
       ],
       "data_publicacao": "2026-11-24T04:20:00Z",
-      "updated_at": "2026-11-24T04:35:46Z"
+      "updated_at": "2026-11-24T05:57:15Z"
     },
     {
       "slug": "dolar-atinge-marca-de-6-reais-pressionado-por-cenario-fiscal-e-exterior",
-      "titulo_tema": "Dólar encosta na marca de R$ 6,00 em dia de forte volatilidade e reação do governo ao mercado",
-      "titulo_curto": "Dólar encosta na marca de R$ 6,00 em dia de forte volatilidade e reação do governo ao mercado",
+      "titulo_tema": "Dólar mantém pressão e oscila próximo aos R$ 6,00 em meio a incertezas fiscais",
+      "titulo_curto": "Dólar mantém pressão e oscila próximo aos R$ 6,00 em meio a incertezas fiscais",
       "status": "novo",
       "origem_pipeline": "pulso",
       "categoria_primaria": "Economia",
@@ -69,41 +178,39 @@
       ],
       "rota_editoria": "/economia",
       "relevancia_score": 97,
-      "urgencia_score": 96,
-      "ttl_horas": 18,
+      "urgencia_score": 95,
+      "ttl_horas": 12,
       "expires_at": "2026-11-24T21:25:31Z",
       "palavras_chave_busca": [
         "dólar",
         "câmbio",
-        "mercado financeiro",
-        "inflação",
-        "faria lima"
+        "economia",
+        "inflação"
       ],
       "palavras_chave": [
         "dólar",
         "câmbio",
-        "mercado financeiro",
-        "inflação",
-        "faria lima"
+        "economia",
+        "inflação"
       ],
-      "gatilho_vitrine": "A moeda americana ultrapassou temporariamente o patamar de R$ 6,00 antes de fechar cotada a R$ 5,92, impulsionada pelo fortalecimento do dólar no cenário global e pelas dúvidas de investidores sobre a meta fiscal doméstica. De acordo com análises veiculadas pela BBC News Brasil e pelo G1 Economia, declarações do presidente Lula criticando exigências da Faria Lima acentuaram a volatilidade no mercado de câmbio.",
-      "resumo_pulso": "A moeda americana ultrapassou temporariamente o patamar de R$ 6,00 antes de fechar cotada a R$ 5,92, impulsionada pelo fortalecimento do dólar no cenário global e pelas dúvidas de investidores sobre a meta fiscal doméstica. De acordo com análises veiculadas pela BBC News Brasil e pelo G1 Economia, declarações do presidente Lula criticando exigências da Faria Lima acentuaram a volatilidade no mercado de câmbio.",
-      "sintese_nerd": "A valorização do dólar pressiona custos de importação, passagens aéreas internacionais e itens da cesta básica atrelados às commodities agrícolas.",
-      "impacto_pratico": "A valorização do dólar pressiona custos de importação, passagens aéreas internacionais e itens da cesta básica atrelados às commodities agrícolas.",
+      "gatilho_vitrine": "A moeda americana segue em patamar elevado, fechando o último pregão a R$ 5,92, pressionada pelo cenário global e pela desconfiança do mercado quanto ao ajuste fiscal doméstico. Analistas da BBC News Brasil apontam que a combinação de fatores internos e externos mantém a volatilidade alta.",
+      "resumo_pulso": "A moeda americana segue em patamar elevado, fechando o último pregão a R$ 5,92, pressionada pelo cenário global e pela desconfiança do mercado quanto ao ajuste fiscal doméstico. Analistas da BBC News Brasil apontam que a combinação de fatores internos e externos mantém a volatilidade alta.",
+      "sintese_nerd": "A alta do dólar encarece importações e pressiona a inflação, impactando diretamente o custo de vida e o planejamento de viagens internacionais.",
+      "impacto_pratico": "A alta do dólar encarece importações e pressiona a inflação, impactando diretamente o custo de vida e o planejamento de viagens internacionais.",
       "paises_envolvidos": [
         "BR",
         "US"
       ],
       "veiculos_origem": [
-        "BBC News Brasil",
-        "G1 Economia"
+        "G1 Economia",
+        "BBC News Brasil"
       ],
       "fontes_urls": [
-        "https://www.bbc.com/portuguese/articles/cwm253lr95zjo?at_medium=RSS&at_campaign=rss",
-        "https://g1.globo.com/economia/noticia/2026/11/24/dolar-a-r-6-o-que-explica-a-disparada-da-moeda-e-o-que-pode-frear-novas-altas.ghtml"
+        "https://g1.globo.com/economia/noticia/2026/11/24/dolar-a-r-6-o-que-explica-a-disparada-da-moeda-e-o-que-pode-frear-novas-altas.ghtml",
+        "https://www.bbc.com/portuguese/articles/cwm253lr95zjo"
       ],
       "data_publicacao": "2026-11-24T03:00:00Z",
-      "updated_at": "2026-11-24T04:35:46Z"
+      "updated_at": "2026-11-24T05:57:15Z"
     },
     {
       "slug": "ucrania-expande-ataques-drones-embarcacoes-russas-libia-e-europa",
@@ -207,8 +314,8 @@
     },
     {
       "slug": "camara-aprova-texto-base-ajuste-fiscal-governo",
-      "titulo_tema": "Após aprovação do ajuste fiscal na Câmara, Hugo Motta defende novas medidas econômicas ainda em 2026",
-      "titulo_curto": "Após aprovação do ajuste fiscal na Câmara, Hugo Motta defende novas medidas econômicas ainda em 2026",
+      "titulo_tema": "Câmara aprova texto-base do ajuste fiscal e Motta defende novas medidas ainda em 2026",
+      "titulo_curto": "Câmara aprova texto-base do ajuste fiscal e Motta defende novas medidas ainda em 2026",
       "status": "novo",
       "origem_pipeline": "pulso",
       "categoria_primaria": "Economia",
@@ -218,152 +325,40 @@
         "Resumo_Ultimas"
       ],
       "rota_editoria": "/economia",
-      "relevancia_score": 98,
-      "urgencia_score": 98,
+      "relevancia_score": 99,
+      "urgencia_score": 99,
       "ttl_horas": 12,
       "expires_at": "2026-11-24T14:14:14Z",
       "palavras_chave_busca": [
         "ajuste fiscal",
         "câmara dos deputados",
         "hugo motta",
-        "contas públicas",
-        "lula"
+        "economia"
       ],
       "palavras_chave": [
         "ajuste fiscal",
         "câmara dos deputados",
         "hugo motta",
-        "contas públicas",
-        "lula"
+        "economia"
       ],
-      "gatilho_vitrine": "Após a Câmara dos Deputados aprovar o texto-base do pacote de ajuste fiscal por 353 votos a 128, o presidente da Casa, Hugo Motta, defendeu publicamente que o Executivo adote novos cortes de gastos ainda em 2026. Segundo informações da Agência Brasil, do G1 Política e do Poder360, a proposta aprovada prevê uma economia de até R$ 56 bilhões e segue em fase de análise dos destaques antes da promulgação.",
-      "resumo_pulso": "Após a Câmara dos Deputados aprovar o texto-base do pacote de ajuste fiscal por 353 votos a 128, o presidente da Casa, Hugo Motta, defendeu publicamente que o Executivo adote novos cortes de gastos ainda em 2026. Segundo informações da Agência Brasil, do G1 Política e do Poder360, a proposta aprovada prevê uma economia de até R$ 56 bilhões e segue em fase de análise dos destaques antes da promulgação.",
-      "sintese_nerd": "A consolidação do pacote fiscal busca estabilizar a trajetória da dívida pública e conter as pressões sobre a inflação e a taxa de juros no médio prazo.",
-      "impacto_pratico": "A consolidação do pacote fiscal busca estabilizar a trajetória da dívida pública e conter as pressões sobre a inflação e a taxa de juros no médio prazo.",
+      "gatilho_vitrine": "A Câmara dos Deputados aprovou o texto-base do projeto de ajuste fiscal por 353 votos a 128. O presidente da Casa, Hugo Motta, defendeu que o governo adote novas medidas econômicas ainda este ano para consolidar a governabilidade.",
+      "resumo_pulso": "A Câmara dos Deputados aprovou o texto-base do projeto de ajuste fiscal por 353 votos a 128. O presidente da Casa, Hugo Motta, defendeu que o governo adote novas medidas econômicas ainda este ano para consolidar a governabilidade.",
+      "sintese_nerd": "A aprovação sinaliza um esforço de contenção de gastos que pode influenciar a trajetória da taxa Selic e a volatilidade do câmbio.",
+      "impacto_pratico": "A aprovação sinaliza um esforço de contenção de gastos que pode influenciar a trajetória da taxa Selic e a volatilidade do câmbio.",
       "paises_envolvidos": [
         "BR"
       ],
       "veiculos_origem": [
-        "Agência Brasil (EBC)",
+        "Agência Brasil",
         "G1 Política",
-        "Poder360",
-        "InfoMoney"
+        "Poder360"
       ],
       "fontes_urls": [
         "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/camara-aprova-texto-base-do-projeto-de-ajuste-fiscal",
-        "https://g1.globo.com/politica/noticia/2026/11/24/apos-camara-aprovar-ajuste-de-lula-hugo-motta-defende-novas-medidas-fiscais-ainda-em-2026.ghtml",
-        "https://www.poder360.com.br/poder-congresso/motta-exalta-centrao-apos-ajuste-fiscal-fiel-para-a-governabilidade/"
+        "https://g1.globo.com/politica/noticia/2026/11/24/apos-camara-aprovar-ajuste-de-lula-hugo-motta-defende-novas-medidas-fiscais-ainda-em-2026.ghtml"
       ],
       "data_publicacao": "2026-11-24T01:44:00Z",
-      "updated_at": "2026-11-24T04:35:46Z"
-    },
-    {
-      "slug": "crise-hormuz-petroleo-navios-incendio",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-26T01:29:11Z",
-      "updated_at": "2026-11-24T01:29:11Z",
-      "titulo_tema": "Tensão no Estreito de Hormuz: Navios atingidos por minas geram alerta global de energia",
-      "sintese_nerd": "A detonação de minas navais no Estreito de Hormuz incendiando petroleiros ameaça diretamente o fluxo de suprimento energético mundial, elevando a volatilidade do Brent. Para o Brasil, choques nos preços internacionais do petróleo pressionam os custos internos de combustíveis e a inflação gerida pela Petrobras.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-24T01:29:11Z",
-      "gatilho_vitrine": "Destacar impacto imediato de conflitos no Oriente Médio sobre os preços globais do petróleo e reflexos na inflação e câmbio no Brasil.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 98,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "estreito de hormuz",
-        "petróleo",
-        "guarda revolucionária do irã",
-        "crise energética",
-        "navios petroleiros",
-        "geopolítica do oriente médio"
-      ]
-    },
-    {
-      "slug": "retorno-jensen-huang-nvidia-impacto-mercados",
-      "status": "novo",
-      "ttl_horas": 72,
-      "expires_at": "2026-11-27T01:29:11Z",
-      "updated_at": "2026-11-24T01:29:11Z",
-      "titulo_tema": "Retorno de Jensen Huang à Nvidia impulsiona ações e acende debate sobre volatilidade em IA",
-      "sintese_nerd": "A recondução unânime de Jensen Huang à liderança da Nvidia provocou disparada nas ações da gigante de semicondutores, aliviando incertezas regulatórias e o escrutínio sobre o comércio global de chips. O movimento reflete a extrema dependência dos mercados financeiros internacionais em relação ao ecossistema de inteligência artificial.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-24T01:29:11Z",
-      "gatilho_vitrine": "Analisar o peso do setor tecnológico norte-americano sobre os mercados globais e as novas sanções comerciais dos EUA.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 92,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Geopolitica_Radar",
-        "Cultura"
-      ],
-      "palavras_chave_busca": [
-        "nvidia",
-        "jensen huang",
-        "inteligência artificial",
-        "mercado acionário",
-        "controles de exportação",
-        "bolsa de nova york"
-      ]
-    },
-    {
-      "slug": "petrobras-margem-equatorial-exploracao",
-      "status": "novo",
-      "ttl_horas": 96,
-      "expires_at": "2026-11-28T01:29:11Z",
-      "updated_at": "2026-11-24T01:29:11Z",
-      "titulo_tema": "Petrobras eleva investimentos em exploração em 41% com foco na Margem Equatorial",
-      "sintese_nerd": "O anúncio de um aporte multibilionário pela Petrobras para novas fronteiras, com destaque para a Margem Equatorial, equilibra a busca por reposição de reservas com debates ambientais sensíveis. A decisão direciona o foco da estatal para a segurança energética de longo prazo e geração de caixa.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-24T01:29:11Z",
-      "gatilho_vitrine": "Monitorar a estratégia corporativa da estatal brasileira frente aos novos desafios de transição energética e reservas exploratórias.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 88,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Politica",
-        "Geopolitica_Radar"
-      ],
-      "palavras_chave_busca": [
-        "petrobras",
-        "margem equatorial",
-        "exploração de petróleo",
-        "investimentos",
-        "setor energético",
-        "governo federal"
-      ]
-    },
-    {
-      "slug": "zelensky-cobre-adesao-otan-assembleia",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-26T01:29:11Z",
-      "updated_at": "2026-11-24T01:29:11Z",
-      "titulo_tema": "Zelensky pressiona por inclusão da Ucrânia na OTAN durante assembleia da aliança",
-      "sintese_nerd": "A insistência de Volodymyr Zelensky na admissão imediata da Ucrânia à OTAN busca garantias formais de defesa frente às incursões aéreas russas na Europa. A pauta testa a coesão dos aliados ocidentais e o patamar de tolerância a uma escalada direta com Moscou.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-24T01:29:11Z",
-      "gatilho_vitrine": "Cobrir os desdobramentos diplomáticos e de segurança na Europa Oriental e os riscos de escalada militar.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 85,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Politica",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "ucrânia",
-        "otan",
-        "volodymyr zelensky",
-        "guerra na europa",
-        "segurança internacional",
-        "diplomacia"
-      ]
+      "updated_at": "2026-11-24T05:57:15Z"
     },
     {
       "slug": "nvidia-jensen-huang-retorno-acoes-alta",
@@ -596,244 +591,20 @@
       ]
     },
     {
-      "slug": "pulso-1-20261123-2248",
-      "status": "novo",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 6,
-      "expires_at": "2026-11-24T04:48:55Z",
-      "updated_at": "2026-11-23T22:48:55Z",
-      "fontes_urls": [
-        "https://g1.globo.com/mundo/noticia/2026/11/23/ira-aplica-pena-de-74-chibatadas-em-cantora-e-equipe.ghtml"
-      ],
-      "titulo_tema": "Irã aplica pena de 74 chibatadas em cantora e equipe",
-      "resumo_pulso": "Segundo G1 Mundo, Uma cantora iraniana e quatro integrantes de sua equipe de produção receberam 74 chibatadas cada, após serem condenados por “ofender a decência pública ao produzir e publicar conteúdo obsceno e imoral na internet”, informou um site de notícias iraniano nesta segunda-feira. Parastoo Ahmadi e os outros quatro também foram condenados a dois anos de pr.",
-      "sintese_nerd": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "titulo_curto": "Irã aplica pena de 74 chibatadas em cantora e equipe",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "radar",
-        "tempo real",
-        "br"
-      ],
-      "urgencia_score": 90,
-      "data_publicacao": "2026-11-23T22:42:20+00:00",
-      "gatilho_vitrine": "Segundo G1 Mundo, Uma cantora iraniana e quatro integrantes de sua equipe de produção receberam 74 chibatadas cada, após serem condenados por “ofender a decência pública ao produzir e publicar conteúdo obsceno e imoral na internet”, informou um site de notícias iraniano nesta segunda-feira. Parastoo Ahmadi e os outros quatro também foram condenados a dois anos de pr.",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "G1 Mundo"
-      ],
-      "relevancia_score": 88,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "radar",
-        "tempo real",
-        "br"
-      ]
-    },
-    {
-      "slug": "pulso-2-20261123-2248",
-      "status": "novo",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 6,
-      "expires_at": "2026-11-24T04:48:55Z",
-      "updated_at": "2026-11-23T22:48:55Z",
-      "fontes_urls": [
-        "https://g1.globo.com/economia/negocios/noticia/2026/11/23/petrobras-etanol.ghtml"
-      ],
-      "titulo_tema": "Petrobras volta ao mercado de etanol com compra de 42% de produtora por R$ 2,8 bilhões",
-      "resumo_pulso": "Segundo G1 Economia, A Petrobras anunciou nesta segunda-feira (23) que voltará ao setor de produção de etanol após fechar um acordo para comprar 42% da Neomille, empresa de etanol de milho do Grupo CerradinhoBio. O negócio foi fechado por R$ 2,8 bilhões e marca o retorno da estatal a um mercado do qual estava afastada. A Neomille é a terceira maior produtora de etanol .",
-      "sintese_nerd": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "titulo_curto": "Petrobras volta ao mercado de etanol com compra de 42% de produtora por R$ 2,8 bilhões",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "radar",
-        "tempo real",
-        "br"
-      ],
-      "urgencia_score": 85,
-      "data_publicacao": "2026-11-23T22:40:42+00:00",
-      "gatilho_vitrine": "Segundo G1 Economia, A Petrobras anunciou nesta segunda-feira (23) que voltará ao setor de produção de etanol após fechar um acordo para comprar 42% da Neomille, empresa de etanol de milho do Grupo CerradinhoBio. O negócio foi fechado por R$ 2,8 bilhões e marca o retorno da estatal a um mercado do qual estava afastada. A Neomille é a terceira maior produtora de etanol .",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "G1 Economia"
-      ],
-      "relevancia_score": 84,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "radar",
-        "tempo real",
-        "br"
-      ]
-    },
-    {
-      "slug": "pulso-3-20261123-2248",
-      "status": "novo",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 6,
-      "expires_at": "2026-11-24T04:48:55Z",
-      "updated_at": "2026-11-23T22:48:55Z",
-      "fontes_urls": [
-        "https://g1.globo.com/economia/noticia/2026/11/23/petrobras-investimento-2027-a-2031.ghtml"
-      ],
-      "titulo_tema": "Petrobras prevê investir US$ 122 bilhões até 2031, alta de 11,9% em relação ao plano anterior",
-      "resumo_pulso": "Segundo G1 Economia, A Petrobras prevê investir US$ 122 bilhões entre 2027 e 2031, um aumento de 11,9% em relação ao volume projetado no plano de negócios anterior, que abrangia o período de 2026 a 2030. A maior parte dos recursos, US$ 87 bilhões (mais de 70% do total), será destinada à área de Exploração e Produção, principal foco de atuação da estatal. * Reportagem e.",
-      "sintese_nerd": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "titulo_curto": "Petrobras prevê investir US$ 122 bilhões até 2031, alta de 11,9% em relação ao plano anterior",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "radar",
-        "tempo real",
-        "br"
-      ],
-      "urgencia_score": 80,
-      "data_publicacao": "2026-11-23T22:38:01+00:00",
-      "gatilho_vitrine": "Segundo G1 Economia, A Petrobras prevê investir US$ 122 bilhões entre 2027 e 2031, um aumento de 11,9% em relação ao volume projetado no plano de negócios anterior, que abrangia o período de 2026 a 2030. A maior parte dos recursos, US$ 87 bilhões (mais de 70% do total), será destinada à área de Exploração e Produção, principal foco de atuação da estatal. * Reportagem e.",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "G1 Economia"
-      ],
-      "relevancia_score": 80,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "radar",
-        "tempo real",
-        "br"
-      ]
-    },
-    {
-      "slug": "pulso-4-20261123-2248",
-      "status": "novo",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 6,
-      "expires_at": "2026-11-24T04:48:55Z",
-      "updated_at": "2026-11-23T22:48:55Z",
-      "fontes_urls": [
-        "https://g1.globo.com/politica/ao-vivo/ajuste-fiscal-camara-deputados.ghtml"
-      ],
-      "titulo_tema": "Câmara discute projeto de ajuste fiscal do governo; ASSISTA",
-      "resumo_pulso": "Segundo G1 Política, Câmara discute projeto de ajuste fiscal do governo; ASSISTA Proposta foi aprovada no Senado na semana passada; texto projeta uma economia de R$ 50 bilhões nas contas do governo federal em 2027. O relator da proposta na Câmara, deputado Mauro Benevides (União Brasil-CE), manteve o mesmo texto aprovado pelos senadores.. Proposta prevê limite de 2% no.",
-      "sintese_nerd": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "titulo_curto": "Câmara discute projeto de ajuste fiscal do governo; ASSISTA",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "radar",
-        "tempo real",
-        "br"
-      ],
-      "urgencia_score": 75,
-      "data_publicacao": "2026-11-23T22:30:43+00:00",
-      "gatilho_vitrine": "Segundo G1 Política, Câmara discute projeto de ajuste fiscal do governo; ASSISTA Proposta foi aprovada no Senado na semana passada; texto projeta uma economia de R$ 50 bilhões nas contas do governo federal em 2027. O relator da proposta na Câmara, deputado Mauro Benevides (União Brasil-CE), manteve o mesmo texto aprovado pelos senadores.. Proposta prevê limite de 2% no.",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "G1 Política"
-      ],
-      "relevancia_score": 76,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "radar",
-        "tempo real",
-        "br"
-      ]
-    },
-    {
-      "slug": "pulso-5-20261123-2248",
-      "status": "novo",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 6,
-      "expires_at": "2026-11-24T04:48:55Z",
-      "updated_at": "2026-11-23T22:48:55Z",
-      "fontes_urls": [
-        "https://www.bbc.com/portuguese/articles/cjr4gzz45pk2o?at_medium=RSS&at_campaign=rss"
-      ],
-      "titulo_tema": "Os testes que garantem a segurança de vacinas - e como combater desinformação sobre elas",
-      "resumo_pulso": "Segundo BBC News Brasil, Dos testes de laboratório até o monitoramento permanente da sua segurança, as vacinas passam por diversas verificações, antes e depois de chegarem ao público..",
-      "sintese_nerd": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "titulo_curto": "Os testes que garantem a segurança de vacinas - e como combater desinformação sobre elas",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "radar",
-        "tempo real",
-        "gb"
-      ],
-      "urgencia_score": 70,
-      "data_publicacao": "2026-11-23T22:21:28+00:00",
-      "gatilho_vitrine": "Segundo BBC News Brasil, Dos testes de laboratório até o monitoramento permanente da sua segurança, as vacinas passam por diversas verificações, antes e depois de chegarem ao público..",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "BBC News Brasil"
-      ],
-      "relevancia_score": 72,
-      "paises_envolvidos": [
-        "GB"
-      ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "radar",
-        "tempo real",
-        "gb"
-      ]
-    },
-    {
       "slug": "captura-narcotraficante-mexicano-fbi",
-      "titulo_tema": "México decide processar 'El Chapo Isidro' localmente antes de avaliar extradição para os EUA",
-      "titulo_curto": "México decide processar 'El Chapo Isidro' localmente antes de avaliar extradição para os EUA",
       "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Geopolitica_Radar",
       "categoria": "Geopolitica_Relacoes",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 87,
-      "urgencia_score": 89,
       "ttl_horas": 24,
       "expires_at": "2026-11-25T04:35:46Z",
-      "palavras_chave_busca": [
-        "el chapo isidro",
-        "méxico",
-        "fbi",
-        "extradição",
-        "narcotráfico"
+      "updated_at": "2026-11-24T04:35:46Z",
+      "fontes_urls": [
+        "https://www.aljazeera.com/news/2026/11/24/mexico-to-try-el-chapo-isidro-despite-us-extradition-request?traffic_source=rss"
       ],
+      "titulo_tema": "México decide processar 'El Chapo Isidro' localmente antes de avaliar extradição para os EUA",
+      "resumo_pulso": "O governo do México informou que julgará o narcotraficante Fausto Isidro Meza Flores em tribunais mexicanos por acusações de tráfico e porte ilícito de armas antes de responder ao pedido formal de extradição dos EUA. Conforme reportaram a Al Jazeera English e a BBC News Brasil, Meza Flores figurava entre os dez criminosos mais procurados pelo FBI e foi capturado após um forte confronto armado em Sinaloa.",
+      "sintese_nerd": "A decisão do sistema judiciário mexicano adiciona complexidade à cooperação de segurança e extradições na fronteira entre México e Estados Unidos.",
+      "titulo_curto": "México decide processar 'El Chapo Isidro' localmente antes de avaliar extradição para os EUA",
+      "rota_editoria": "/radar",
       "palavras_chave": [
         "el chapo isidro",
         "méxico",
@@ -841,31 +612,40 @@
         "extradição",
         "narcotráfico"
       ],
+      "urgencia_score": 89,
+      "data_publicacao": "2026-11-23T11:51:01.492268+00:00",
       "gatilho_vitrine": "O governo do México informou que julgará o narcotraficante Fausto Isidro Meza Flores em tribunais mexicanos por acusações de tráfico e porte ilícito de armas antes de responder ao pedido formal de extradição dos EUA. Conforme reportaram a Al Jazeera English e a BBC News Brasil, Meza Flores figurava entre os dez criminosos mais procurados pelo FBI e foi capturado após um forte confronto armado em Sinaloa.",
-      "resumo_pulso": "O governo do México informou que julgará o narcotraficante Fausto Isidro Meza Flores em tribunais mexicanos por acusações de tráfico e porte ilícito de armas antes de responder ao pedido formal de extradição dos EUA. Conforme reportaram a Al Jazeera English e a BBC News Brasil, Meza Flores figurava entre os dez criminosos mais procurados pelo FBI e foi capturado após um forte confronto armado em Sinaloa.",
-      "sintese_nerd": "A decisão do sistema judiciário mexicano adiciona complexidade à cooperação de segurança e extradições na fronteira entre México e Estados Unidos.",
       "impacto_pratico": "A decisão do sistema judiciário mexicano adiciona complexidade à cooperação de segurança e extradições na fronteira entre México e Estados Unidos.",
-      "paises_envolvidos": [
-        "MX",
-        "US"
-      ],
+      "origem_pipeline": "pulso",
       "veiculos_origem": [
         "Al Jazeera English",
         "BBC News Brasil"
       ],
-      "fontes_urls": [
-        "https://www.aljazeera.com/news/2026/11/24/mexico-to-try-el-chapo-isidro-despite-us-extradition-request?traffic_source=rss"
+      "relevancia_score": 87,
+      "paises_envolvidos": [
+        "MX",
+        "US"
       ],
-      "data_publicacao": "2026-11-23T11:51:01.492268+00:00",
-      "updated_at": "2026-11-24T04:35:46Z"
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "el chapo isidro",
+        "méxico",
+        "fbi",
+        "extradição",
+        "narcotráfico"
+      ]
     }
   ],
   "noticias_quentes": [
     {
       "slug": "ataque-russo-predio-residencial-zaporizhzhia",
-      "titulo_curto": "Ataque com mísseis russos a edifício residencial em Zaporizhzhia deixa pelo menos 2 mortos e 22 feridos",
-      "resumo_pulso": "Forças armadas da Rússia bombardearam um prédio residencial de cinco andares e instalações de transporte no distrito de Kosmichnyi, em Zaporizhzhia. Segundo comunicados da administração militar regional repercutidos pelas agências Ukrinform e The Kyiv Independent, equipes de resgate atuam nos escombros para resgatar sobreviventes enquanto o balanço de vítimas segue em atualização.",
-      "impacto_pratico": "A intensificação dos ataques urbanos agrava a crise humanitária e a sobrecarga da infraestrutura energética e de transportes na Ucrânia.",
+      "titulo_curto": "Ataque russo a edifício residencial em Zaporizhzhia deixa mortos e feridos",
+      "resumo_pulso": "Forças russas atingiram um prédio residencial de cinco andares em Zaporizhzhia, resultando em pelo menos 2 mortos e 22 feridos. Equipes de resgate continuam as buscas nos escombros, segundo informações da administração militar local e da agência Ukrinform.",
+      "impacto_pratico": "O ataque intensifica a tensão na região e reforça os riscos de segurança para civis em áreas próximas à linha de frente.",
       "categoria": "Geopolitica_Relacoes",
       "paises_envolvidos": [
         "UA",
@@ -875,72 +655,64 @@
       "relevancia_score": 88,
       "nivel_confianca": "alta",
       "ttl_horas": 12,
-      "horas_em_destaque": 8,
+      "horas_em_destaque": 6,
       "veiculos_origem": [
         "Ukrinform",
         "The Kyiv Independent"
       ],
       "fontes_urls": [
-        "https://kyivindependent.com/2-killed-22-injured-in-russian-attack-on-residential-building-in-zaporizhzhia/",
-        "https://www.ukrinform.net/rubric-ato/4187890-russian-strikes-on-zaporizhzhia-leave-11-injured-houses-destroyed.html"
+        "https://kyivindependent.com/2-killed-22-injured-in-russian-attack-on-residential-building-in-zaporizhzhia/"
       ],
       "palavras_chave": [
-        "Zaporizhzhia",
         "Ucrânia",
         "Rússia",
-        "Guerra na Ucrânia",
-        "Bombardeio"
+        "Zaporizhzhia",
+        "guerra"
       ],
       "data_publicacao": "2026-11-24T04:20:00Z",
       "links_internos_relacionados": [],
       "expires_at": "2026-11-24T16:35:46Z",
-      "updated_at": "2026-11-24T04:35:46Z"
+      "updated_at": "2026-11-24T05:57:15Z"
     },
     {
       "slug": "dolar-atinge-marca-de-6-reais-pressionado-por-cenario-fiscal-e-exterior",
-      "titulo_curto": "Dólar encosta na marca de R$ 6,00 em dia de forte volatilidade e reação do governo ao mercado",
-      "resumo_pulso": "A moeda americana ultrapassou temporariamente o patamar de R$ 6,00 antes de fechar cotada a R$ 5,92, impulsionada pelo fortalecimento do dólar no cenário global e pelas dúvidas de investidores sobre a meta fiscal doméstica. De acordo com análises veiculadas pela BBC News Brasil e pelo G1 Economia, declarações do presidente Lula criticando exigências da Faria Lima acentuaram a volatilidade no mercado de câmbio.",
-      "impacto_pratico": "A valorização do dólar pressiona custos de importação, passagens aéreas internacionais e itens da cesta básica atrelados às commodities agrícolas.",
+      "titulo_curto": "Dólar mantém pressão e oscila próximo aos R$ 6,00 em meio a incertezas fiscais",
+      "resumo_pulso": "A moeda americana segue em patamar elevado, fechando o último pregão a R$ 5,92, pressionada pelo cenário global e pela desconfiança do mercado quanto ao ajuste fiscal doméstico. Analistas da BBC News Brasil apontam que a combinação de fatores internos e externos mantém a volatilidade alta.",
+      "impacto_pratico": "A alta do dólar encarece importações e pressiona a inflação, impactando diretamente o custo de vida e o planejamento de viagens internacionais.",
       "categoria": "Economia_Comercio",
       "paises_envolvidos": [
         "BR",
         "US"
       ],
-      "urgencia_score": 96,
+      "urgencia_score": 95,
       "relevancia_score": 97,
       "nivel_confianca": "alta",
-      "ttl_horas": 18,
+      "ttl_horas": 12,
       "horas_em_destaque": 12,
       "veiculos_origem": [
-        "BBC News Brasil",
-        "G1 Economia"
+        "G1 Economia",
+        "BBC News Brasil"
       ],
       "fontes_urls": [
-        "https://www.bbc.com/portuguese/articles/cwm253lr95zjo?at_medium=RSS&at_campaign=rss",
-        "https://g1.globo.com/economia/noticia/2026/11/24/dolar-a-r-6-o-que-explica-a-disparada-da-moeda-e-o-que-pode-frear-novas-altas.ghtml"
+        "https://g1.globo.com/economia/noticia/2026/11/24/dolar-a-r-6-o-que-explica-a-disparada-da-moeda-e-o-que-pode-frear-novas-altas.ghtml",
+        "https://www.bbc.com/portuguese/articles/cwm253lr95zjo"
       ],
       "palavras_chave": [
-        "Dólar",
-        "Câmbio",
-        "Mercado financeiro",
-        "Inflação",
-        "Faria Lima"
+        "dólar",
+        "câmbio",
+        "economia",
+        "inflação"
       ],
       "data_publicacao": "2026-11-24T03:00:00Z",
       "links_internos_relacionados": [
         {
-          "titulo_existente": "O que é inflação?",
+          "titulo_existente": "Banco Central e mercado financeiro acompanham inflação de serviços, câmbio e metas fiscais",
           "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
-          "motivo_conexao": "Entenda como a alta da moeda estrangeira repassa custos para o consumidor final e impacta a inflação."
-        },
-        {
-          "titulo_existente": "Economia no Brasil",
-          "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
-          "motivo_conexao": "Cobertura contínua das oscilações do câmbio, juros e decisões do Banco Central."
+          "motivo_conexao": "Explica a relação entre câmbio, inflação e as decisões do Banco Central."
         }
       ],
       "expires_at": "2026-11-24T21:25:31Z",
-      "updated_at": "2026-11-24T04:35:46Z"
+      "updated_at": "2026-11-24T05:57:15Z"
     },
     {
       "slug": "ucrania-expande-ataques-drones-embarcacoes-russas-libia-e-europa",
@@ -1014,51 +786,43 @@
     },
     {
       "slug": "camara-aprova-texto-base-ajuste-fiscal-governo",
-      "titulo_curto": "Após aprovação do ajuste fiscal na Câmara, Hugo Motta defende novas medidas econômicas ainda em 2026",
-      "resumo_pulso": "Após a Câmara dos Deputados aprovar o texto-base do pacote de ajuste fiscal por 353 votos a 128, o presidente da Casa, Hugo Motta, defendeu publicamente que o Executivo adote novos cortes de gastos ainda em 2026. Segundo informações da Agência Brasil, do G1 Política e do Poder360, a proposta aprovada prevê uma economia de até R$ 56 bilhões e segue em fase de análise dos destaques antes da promulgação.",
-      "impacto_pratico": "A consolidação do pacote fiscal busca estabilizar a trajetória da dívida pública e conter as pressões sobre a inflação e a taxa de juros no médio prazo.",
+      "titulo_curto": "Câmara aprova texto-base do ajuste fiscal e Motta defende novas medidas ainda em 2026",
+      "resumo_pulso": "A Câmara dos Deputados aprovou o texto-base do projeto de ajuste fiscal por 353 votos a 128. O presidente da Casa, Hugo Motta, defendeu que o governo adote novas medidas econômicas ainda este ano para consolidar a governabilidade.",
+      "impacto_pratico": "A aprovação sinaliza um esforço de contenção de gastos que pode influenciar a trajetória da taxa Selic e a volatilidade do câmbio.",
       "categoria": "Economia_Comercio",
       "paises_envolvidos": [
         "BR"
       ],
-      "urgencia_score": 98,
-      "relevancia_score": 98,
+      "urgencia_score": 99,
+      "relevancia_score": 99,
       "nivel_confianca": "alta",
       "ttl_horas": 12,
       "horas_em_destaque": 12,
       "veiculos_origem": [
-        "Agência Brasil (EBC)",
+        "Agência Brasil",
         "G1 Política",
-        "Poder360",
-        "InfoMoney"
+        "Poder360"
       ],
       "fontes_urls": [
         "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/camara-aprova-texto-base-do-projeto-de-ajuste-fiscal",
-        "https://g1.globo.com/politica/noticia/2026/11/24/apos-camara-aprovar-ajuste-de-lula-hugo-motta-defende-novas-medidas-fiscais-ainda-em-2026.ghtml",
-        "https://www.poder360.com.br/poder-congresso/motta-exalta-centrao-apos-ajuste-fiscal-fiel-para-a-governabilidade/"
+        "https://g1.globo.com/politica/noticia/2026/11/24/apos-camara-aprovar-ajuste-de-lula-hugo-motta-defende-novas-medidas-fiscais-ainda-em-2026.ghtml"
       ],
       "palavras_chave": [
-        "Ajuste fiscal",
+        "ajuste fiscal",
         "Câmara dos Deputados",
         "Hugo Motta",
-        "Contas públicas",
-        "Lula"
+        "economia"
       ],
       "data_publicacao": "2026-11-24T01:44:00Z",
       "links_internos_relacionados": [
         {
-          "titulo_existente": "O que é o Orçamento?",
+          "titulo_existente": "Congresso e Planalto negociam prioridades da pauta econômica e votação do Orçamento",
           "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-o-orcamento",
-          "motivo_conexao": "Explica como funciona a distribuição das receitas e despesas federais e o impacto do contingenciamento fiscal."
-        },
-        {
-          "titulo_existente": "Política no Brasil",
-          "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
-          "motivo_conexao": "Acompanhe as articulações entre o Congresso Nacional e o Palácio do Planalto sobre as pautas econômicas."
+          "motivo_conexao": "Contextualiza a articulação política necessária para a aprovação de medidas fiscais."
         }
       ],
       "expires_at": "2026-11-24T14:14:14Z",
-      "updated_at": "2026-11-24T04:35:46Z"
+      "updated_at": "2026-11-24T05:57:15Z"
     },
     {
       "slug": "petrobras-margem-equatorial-exploracao-aumento",
@@ -1270,232 +1034,16 @@
       "links_internos_relacionados": []
     },
     {
-      "slug": "pulso-1-20261123-2248",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 6,
-      "expires_at": "2026-11-24T04:48:55Z",
-      "updated_at": "2026-11-23T22:48:55Z",
-      "fontes_urls": [
-        "https://g1.globo.com/mundo/noticia/2026/11/23/ira-aplica-pena-de-74-chibatadas-em-cantora-e-equipe.ghtml"
-      ],
-      "resumo_pulso": "Segundo G1 Mundo, Uma cantora iraniana e quatro integrantes de sua equipe de produção receberam 74 chibatadas cada, após serem condenados por “ofender a decência pública ao produzir e publicar conteúdo obsceno e imoral na internet”, informou um site de notícias iraniano nesta segunda-feira. Parastoo Ahmadi e os outros quatro também foram condenados a dois anos de pr.",
-      "titulo_curto": "Irã aplica pena de 74 chibatadas em cantora e equipe",
-      "palavras_chave": [
-        "radar",
-        "tempo real",
-        "br"
-      ],
-      "urgencia_score": 90,
-      "data_publicacao": "2026-11-23T22:42:20+00:00",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "G1 Mundo"
-      ],
-      "relevancia_score": 88,
-      "horas_em_destaque": 6,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
-          "motivo_conexao": "Compreenda por que os preços sobem de forma generalizada, como o IPCA é calculado e de que maneira os juros do Banco Central afetam o poder de compra.",
-          "titulo_existente": "O que é inflação?"
-        },
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/como-funcionam-as-eleicoes-nos-eua",
-          "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos.",
-          "titulo_existente": "Como funcionam as eleições nos EUA?"
-        }
-      ]
-    },
-    {
-      "slug": "pulso-2-20261123-2248",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 6,
-      "expires_at": "2026-11-24T04:48:55Z",
-      "updated_at": "2026-11-23T22:48:55Z",
-      "fontes_urls": [
-        "https://g1.globo.com/economia/negocios/noticia/2026/11/23/petrobras-etanol.ghtml"
-      ],
-      "resumo_pulso": "Segundo G1 Economia, A Petrobras anunciou nesta segunda-feira (23) que voltará ao setor de produção de etanol após fechar um acordo para comprar 42% da Neomille, empresa de etanol de milho do Grupo CerradinhoBio. O negócio foi fechado por R$ 2,8 bilhões e marca o retorno da estatal a um mercado do qual estava afastada. A Neomille é a terceira maior produtora de etanol .",
-      "titulo_curto": "Petrobras volta ao mercado de etanol com compra de 42% de produtora por R$ 2,8 bilhões",
-      "palavras_chave": [
-        "radar",
-        "tempo real",
-        "br"
-      ],
-      "urgencia_score": 85,
-      "data_publicacao": "2026-11-23T22:40:42+00:00",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "G1 Economia"
-      ],
-      "relevancia_score": 84,
-      "horas_em_destaque": 6,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
-          "motivo_conexao": "Compreenda por que os preços sobem de forma generalizada, como o IPCA é calculado e de que maneira os juros do Banco Central afetam o poder de compra.",
-          "titulo_existente": "O que é inflação?"
-        },
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/como-funcionam-as-eleicoes-nos-eua",
-          "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos.",
-          "titulo_existente": "Como funcionam as eleições nos EUA?"
-        }
-      ]
-    },
-    {
-      "slug": "pulso-3-20261123-2248",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 6,
-      "expires_at": "2026-11-24T04:48:55Z",
-      "updated_at": "2026-11-23T22:48:55Z",
-      "fontes_urls": [
-        "https://g1.globo.com/economia/noticia/2026/11/23/petrobras-investimento-2027-a-2031.ghtml"
-      ],
-      "resumo_pulso": "Segundo G1 Economia, A Petrobras prevê investir US$ 122 bilhões entre 2027 e 2031, um aumento de 11,9% em relação ao volume projetado no plano de negócios anterior, que abrangia o período de 2026 a 2030. A maior parte dos recursos, US$ 87 bilhões (mais de 70% do total), será destinada à área de Exploração e Produção, principal foco de atuação da estatal. * Reportagem e.",
-      "titulo_curto": "Petrobras prevê investir US$ 122 bilhões até 2031, alta de 11,9% em relação ao plano anterior",
-      "palavras_chave": [
-        "radar",
-        "tempo real",
-        "br"
-      ],
-      "urgencia_score": 80,
-      "data_publicacao": "2026-11-23T22:38:01+00:00",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "G1 Economia"
-      ],
-      "relevancia_score": 80,
-      "horas_em_destaque": 6,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
-          "motivo_conexao": "Compreenda por que os preços sobem de forma generalizada, como o IPCA é calculado e de que maneira os juros do Banco Central afetam o poder de compra.",
-          "titulo_existente": "O que é inflação?"
-        },
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/como-funcionam-as-eleicoes-nos-eua",
-          "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos.",
-          "titulo_existente": "Como funcionam as eleições nos EUA?"
-        }
-      ]
-    },
-    {
-      "slug": "pulso-4-20261123-2248",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 6,
-      "expires_at": "2026-11-24T04:48:55Z",
-      "updated_at": "2026-11-23T22:48:55Z",
-      "fontes_urls": [
-        "https://g1.globo.com/politica/ao-vivo/ajuste-fiscal-camara-deputados.ghtml"
-      ],
-      "resumo_pulso": "Segundo G1 Política, Câmara discute projeto de ajuste fiscal do governo; ASSISTA Proposta foi aprovada no Senado na semana passada; texto projeta uma economia de R$ 50 bilhões nas contas do governo federal em 2027. O relator da proposta na Câmara, deputado Mauro Benevides (União Brasil-CE), manteve o mesmo texto aprovado pelos senadores.. Proposta prevê limite de 2% no.",
-      "titulo_curto": "Câmara discute projeto de ajuste fiscal do governo; ASSISTA",
-      "palavras_chave": [
-        "radar",
-        "tempo real",
-        "br"
-      ],
-      "urgencia_score": 75,
-      "data_publicacao": "2026-11-23T22:30:43+00:00",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "G1 Política"
-      ],
-      "relevancia_score": 76,
-      "horas_em_destaque": 6,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
-          "motivo_conexao": "Compreenda por que os preços sobem de forma generalizada, como o IPCA é calculado e de que maneira os juros do Banco Central afetam o poder de compra.",
-          "titulo_existente": "O que é inflação?"
-        },
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/como-funcionam-as-eleicoes-nos-eua",
-          "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos.",
-          "titulo_existente": "Como funcionam as eleições nos EUA?"
-        }
-      ]
-    },
-    {
-      "slug": "pulso-5-20261123-2248",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 6,
-      "expires_at": "2026-11-24T04:48:55Z",
-      "updated_at": "2026-11-23T22:48:55Z",
-      "fontes_urls": [
-        "https://www.bbc.com/portuguese/articles/cjr4gzz45pk2o?at_medium=RSS&at_campaign=rss"
-      ],
-      "resumo_pulso": "Segundo BBC News Brasil, Dos testes de laboratório até o monitoramento permanente da sua segurança, as vacinas passam por diversas verificações, antes e depois de chegarem ao público..",
-      "titulo_curto": "Os testes que garantem a segurança de vacinas - e como combater desinformação sobre elas",
-      "palavras_chave": [
-        "radar",
-        "tempo real",
-        "gb"
-      ],
-      "urgencia_score": 70,
-      "data_publicacao": "2026-11-23T22:21:28+00:00",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "BBC News Brasil"
-      ],
-      "relevancia_score": 72,
-      "horas_em_destaque": 6,
-      "paises_envolvidos": [
-        "GB"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
-          "motivo_conexao": "Compreenda por que os preços sobem de forma generalizada, como o IPCA é calculado e de que maneira os juros do Banco Central afetam o poder de compra.",
-          "titulo_existente": "O que é inflação?"
-        },
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/como-funcionam-as-eleicoes-nos-eua",
-          "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos.",
-          "titulo_existente": "Como funcionam as eleições nos EUA?"
-        }
-      ]
-    },
-    {
       "slug": "captura-narcotraficante-mexicano-fbi",
-      "titulo_curto": "México decide processar 'El Chapo Isidro' localmente antes de avaliar extradição para os EUA",
-      "resumo_pulso": "O governo do México informou que julgará o narcotraficante Fausto Isidro Meza Flores em tribunais mexicanos por acusações de tráfico e porte ilícito de armas antes de responder ao pedido formal de extradição dos EUA. Conforme reportaram a Al Jazeera English e a BBC News Brasil, Meza Flores figurava entre os dez criminosos mais procurados pelo FBI e foi capturado após um forte confronto armado em Sinaloa.",
-      "impacto_pratico": "A decisão do sistema judiciário mexicano adiciona complexidade à cooperação de segurança e extradições na fronteira entre México e Estados Unidos.",
       "categoria": "Geopolitica_Relacoes",
-      "paises_envolvidos": [
-        "MX",
-        "US"
-      ],
-      "urgencia_score": 89,
-      "relevancia_score": 87,
-      "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 8,
-      "veiculos_origem": [
-        "Al Jazeera English",
-        "BBC News Brasil"
-      ],
+      "expires_at": "2026-11-25T04:35:46Z",
+      "updated_at": "2026-11-24T04:35:46Z",
       "fontes_urls": [
         "https://www.aljazeera.com/news/2026/11/24/mexico-to-try-el-chapo-isidro-despite-us-extradition-request?traffic_source=rss"
       ],
+      "resumo_pulso": "O governo do México informou que julgará o narcotraficante Fausto Isidro Meza Flores em tribunais mexicanos por acusações de tráfico e porte ilícito de armas antes de responder ao pedido formal de extradição dos EUA. Conforme reportaram a Al Jazeera English e a BBC News Brasil, Meza Flores figurava entre os dez criminosos mais procurados pelo FBI e foi capturado após um forte confronto armado em Sinaloa.",
+      "titulo_curto": "México decide processar 'El Chapo Isidro' localmente antes de avaliar extradição para os EUA",
       "palavras_chave": [
         "El Chapo Isidro",
         "México",
@@ -1503,125 +1051,140 @@
         "Extradição",
         "Narcotráfico"
       ],
+      "urgencia_score": 89,
       "data_publicacao": "2026-11-23T11:51:01.492268+00:00",
+      "impacto_pratico": "A decisão do sistema judiciário mexicano adiciona complexidade à cooperação de segurança e extradições na fronteira entre México e Estados Unidos.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Al Jazeera English",
+        "BBC News Brasil"
+      ],
+      "relevancia_score": 87,
+      "horas_em_destaque": 8,
+      "paises_envolvidos": [
+        "MX",
+        "US"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "Política nos Estados Unidos",
           "url_existente": "https://www.rodandoomundo.com.br/politica/estados-unidos",
-          "motivo_conexao": "Acompanhe os desdobramentos de acordos internacionais de segurança e controle de fronteiras de Washington."
+          "motivo_conexao": "Acompanhe os desdobramentos de acordos internacionais de segurança e controle de fronteiras de Washington.",
+          "titulo_existente": "Política nos Estados Unidos"
         }
-      ],
-      "expires_at": "2026-11-25T04:35:46Z",
-      "updated_at": "2026-11-24T04:35:46Z"
+      ]
     }
   ],
   "temas_curadoria": [
     {
-      "slug": "crise-hormuz-petroleo-navios-incendio",
-      "status": "novo",
+      "slug": "dolar-6-reais-ajuste-fiscal-governo-mercado",
+      "status": "em_alta",
       "ttl_horas": 48,
-      "expires_at": "2026-11-26T01:29:11Z",
-      "updated_at": "2026-11-24T01:29:11Z",
-      "titulo_tema": "Tensão no Estreito de Hormuz: Navios atingidos por minas geram alerta global de energia",
-      "sintese_nerd": "A detonação de minas navais no Estreito de Hormuz incendiando petroleiros ameaça diretamente o fluxo de suprimento energético mundial, elevando a volatilidade do Brent. Para o Brasil, choques nos preços internacionais do petróleo pressionam os custos internos de combustíveis e a inflação gerida pela Petrobras.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-24T01:29:11Z",
-      "gatilho_vitrine": "Destacar impacto imediato de conflitos no Oriente Médio sobre os preços globais do petróleo e reflexos na inflação e câmbio no Brasil.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 98,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "estreito de hormuz",
-        "petróleo",
-        "guarda revolucionária do irã",
-        "crise energética",
-        "navios petroleiros",
-        "geopolítica do oriente médio"
-      ]
-    },
-    {
-      "slug": "retorno-jensen-huang-nvidia-impacto-mercados",
-      "status": "novo",
-      "ttl_horas": 72,
-      "expires_at": "2026-11-27T01:29:11Z",
-      "updated_at": "2026-11-24T01:29:11Z",
-      "titulo_tema": "Retorno de Jensen Huang à Nvidia impulsiona ações e acende debate sobre volatilidade em IA",
-      "sintese_nerd": "A recondução unânime de Jensen Huang à liderança da Nvidia provocou disparada nas ações da gigante de semicondutores, aliviando incertezas regulatórias e o escrutínio sobre o comércio global de chips. O movimento reflete a extrema dependência dos mercados financeiros internacionais em relação ao ecossistema de inteligência artificial.",
+      "expires_at": "2026-11-26T04:45:54Z",
+      "updated_at": "2026-11-24T04:45:54Z",
+      "titulo_tema": "Disparada do Dólar a R$ 6 e Impasse Fiscal no Brasil",
+      "sintese_nerd": "A disparada do dólar até a marca de R$ 6 reflete a combinação de um cenário externo desfavorável com a desconfiança do mercado financeiro quanto ao cumprimento das metas fiscais brasileiras. Essa desvalorização do real encarece cadeias produtivas importadas e pressiona a inflação, afetando diretamente o poder de compra do consumidor.",
       "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-24T01:29:11Z",
-      "gatilho_vitrine": "Analisar o peso do setor tecnológico norte-americano sobre os mercados globais e as novas sanções comerciais dos EUA.",
+      "data_publicacao": "2026-11-24T04:45:54Z",
+      "gatilho_vitrine": "Exibir analise sobre disparada do dolar e crise de confianca fiscal",
       "origem_pipeline": "curadoria",
-      "relevancia_score": 92,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Geopolitica_Radar",
-        "Cultura"
-      ],
-      "palavras_chave_busca": [
-        "nvidia",
-        "jensen huang",
-        "inteligência artificial",
-        "mercado acionário",
-        "controles de exportação",
-        "bolsa de nova york"
-      ]
-    },
-    {
-      "slug": "petrobras-margem-equatorial-exploracao",
-      "status": "novo",
-      "ttl_horas": 96,
-      "expires_at": "2026-11-28T01:29:11Z",
-      "updated_at": "2026-11-24T01:29:11Z",
-      "titulo_tema": "Petrobras eleva investimentos em exploração em 41% com foco na Margem Equatorial",
-      "sintese_nerd": "O anúncio de um aporte multibilionário pela Petrobras para novas fronteiras, com destaque para a Margem Equatorial, equilibra a busca por reposição de reservas com debates ambientais sensíveis. A decisão direciona o foco da estatal para a segurança energética de longo prazo e geração de caixa.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-24T01:29:11Z",
-      "gatilho_vitrine": "Monitorar a estratégia corporativa da estatal brasileira frente aos novos desafios de transição energética e reservas exploratórias.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 88,
+      "relevancia_score": 95,
       "categoria_primaria": "Economia",
       "categorias_cruzadas": [
         "Politica",
         "Geopolitica_Radar"
       ],
       "palavras_chave_busca": [
-        "petrobras",
-        "margem equatorial",
-        "exploração de petróleo",
-        "investimentos",
-        "setor energético",
-        "governo federal"
+        "dolar a 6 reais",
+        "ajuste fiscal",
+        "mercado financeiro",
+        "governo lula",
+        "cambio",
+        "inflacao",
+        "bruno moretti",
+        "faria lima"
       ]
     },
     {
-      "slug": "zelensky-cobre-adesao-otan-assembleia",
+      "slug": "camara-aprova-ajuste-fiscal-divisao-base-governo",
       "status": "novo",
       "ttl_horas": 48,
-      "expires_at": "2026-11-26T01:29:11Z",
-      "updated_at": "2026-11-24T01:29:11Z",
-      "titulo_tema": "Zelensky pressiona por inclusão da Ucrânia na OTAN durante assembleia da aliança",
-      "sintese_nerd": "A insistência de Volodymyr Zelensky na admissão imediata da Ucrânia à OTAN busca garantias formais de defesa frente às incursões aéreas russas na Europa. A pauta testa a coesão dos aliados ocidentais e o patamar de tolerância a uma escalada direta com Moscou.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-24T01:29:11Z",
-      "gatilho_vitrine": "Cobrir os desdobramentos diplomáticos e de segurança na Europa Oriental e os riscos de escalada militar.",
+      "expires_at": "2026-11-26T04:45:54Z",
+      "updated_at": "2026-11-24T04:45:54Z",
+      "titulo_tema": "Aprovação do Ajuste Fiscal na Câmara e Tensão na Base Governista",
+      "sintese_nerd": "A aprovação do projeto de ajuste fiscal de até R$ 56 bilhões expôs fissuras na base governista, registrando abstenções de deputados do PT e PSOL. Ao mesmo tempo, lideranças do Centrão passam a exigir novas medidas fiscais e maior representação ministerial para garantir governabilidade.",
+      "rota_editoria": "/politica",
+      "data_publicacao": "2026-11-24T04:45:54Z",
+      "gatilho_vitrine": "Destacar votacao do pacote fiscal na Camara e divergencias na base aliada",
       "origem_pipeline": "curadoria",
-      "relevancia_score": 85,
+      "relevancia_score": 90,
+      "categoria_primaria": "Politica",
+      "categorias_cruzadas": [
+        "Economia",
+        "Eleicoes"
+      ],
+      "palavras_chave_busca": [
+        "ajuste fiscal",
+        "camara dos deputados",
+        "hugo motta",
+        "bruno moretti",
+        "erika hilton",
+        "lindbergh farias",
+        "centrao",
+        "orcamento"
+      ]
+    },
+    {
+      "slug": "ataques-russos-zaporizhzhia-infraestrutura-ucrania",
+      "status": "novo",
+      "ttl_horas": 36,
+      "expires_at": "2026-11-25T16:45:54Z",
+      "updated_at": "2026-11-24T04:45:54Z",
+      "titulo_tema": "Intensificação de Ataques Russos a Zaporizhzhia e Tensões na Ucrânia",
+      "sintese_nerd": "A nova onda de bombardeios russos contra edifícios residenciais em Zaporizhzhia reforça a estratégia de desgaste da infraestrutura civil ucraniana no período de inverno. A utilização de novas variantes tecnológicas de drones amplia os desafios operacionais das forças de defesa e tensiona o apoio ocidental.",
+      "rota_editoria": "/radar",
+      "data_publicacao": "2026-11-24T04:45:54Z",
+      "gatilho_vitrine": "Mapear desdobramentos dos novos bombardeios russos em zonas residenciais na Ucrania",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 86,
       "categoria_primaria": "Geopolitica_Radar",
       "categorias_cruzadas": [
         "Politica",
         "Resumo_Ultimas"
       ],
       "palavras_chave_busca": [
-        "ucrânia",
-        "otan",
-        "volodymyr zelensky",
-        "guerra na europa",
-        "segurança internacional",
-        "diplomacia"
+        "guerra na ucrania",
+        "zaporizhzhia",
+        "ataques russos",
+        "drones molniya",
+        "geopolitica europeia",
+        "conflito russia ucrania"
+      ]
+    },
+    {
+      "slug": "iran-repressao-cantora-parastoo-ahmadi-direitos-humanos",
+      "status": "novo",
+      "ttl_horas": 48,
+      "expires_at": "2026-11-26T04:45:54Z",
+      "updated_at": "2026-11-24T04:45:54Z",
+      "titulo_tema": "Açoite de Cantora no Irã Evidencia Recrudescimento do Controle Estatal",
+      "sintese_nerd": "A aplicação de pena corporal por açoite contra a cantora Parastoo Ahmadi gerou comoção internacional e reacendeu denúncias sobre a supressão de direitos civis no Irã. O caso reflete o uso de métodos coercitivos rigorosos por regimes autoritários para conter manifestações culturais e artísticas independentes.",
+      "rota_editoria": "/cultura",
+      "data_publicacao": "2026-11-24T04:45:54Z",
+      "gatilho_vitrine": "Monitorar reacoes internacionais a punicao corporal de artistas no Ira",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 78,
+      "categoria_primaria": "Cultura",
+      "categorias_cruzadas": [
+        "Geopolitica_Radar",
+        "Politica"
+      ],
+      "palavras_chave_busca": [
+        "iran",
+        "parastoo ahmadi",
+        "direitos humanos",
+        "liberdade de expressao",
+        "direitos das mulheres",
+        "oriente medio"
       ]
     }
   ]
