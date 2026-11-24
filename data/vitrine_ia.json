@@ -2,9 +2,60 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-24T23:20:33Z",
-  "batch_id": "20261124-2319",
+  "updatedAt": "2026-11-24T23:24:39Z",
+  "batch_id": "20261124-2324",
   "temas_ativos": [
+    {
+      "slug": "brasil-nao-retornara-embaixador-argentina-crise",
+      "titulo_tema": "Lula decide que embaixador do Brasil não retornará a Buenos Aires após crise diplomática",
+      "titulo_curto": "Lula decide que embaixador do Brasil não retornará a Buenos Aires após crise diplomática",
+      "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categoria": "Geopolitica_Relacoes",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 94,
+      "urgencia_score": 92,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-25T23:24:39Z",
+      "palavras_chave_busca": [
+        "brasil",
+        "argentina",
+        "itamaraty",
+        "júlio bitelli",
+        "lula",
+        "diplomacia"
+      ],
+      "palavras_chave": [
+        "brasil",
+        "argentina",
+        "itamaraty",
+        "júlio bitelli",
+        "lula",
+        "diplomacia"
+      ],
+      "gatilho_vitrine": "Segundo apuração do G1 Política e confirmação de diplomatas do Itamaraty, o governo brasileiro decidiu que o embaixador Júlio Bitelli não voltará à Argentina. A medida consolida o esfriamento diplomático entre os dois países após meses de tensões e desentendimentos entre as chancelarias.",
+      "resumo_pulso": "Segundo apuração do G1 Política e confirmação de diplomatas do Itamaraty, o governo brasileiro decidiu que o embaixador Júlio Bitelli não voltará à Argentina. A medida consolida o esfriamento diplomático entre os dois países após meses de tensões e desentendimentos entre as chancelarias.",
+      "sintese_nerd": "A ausência de embaixador de carreira pode desacelerar negociações bilaterais de comércio, acordos de fronteira e articulações no âmbito do Mercosul.",
+      "impacto_pratico": "A ausência de embaixador de carreira pode desacelerar negociações bilaterais de comércio, acordos de fronteira e articulações no âmbito do Mercosul.",
+      "paises_envolvidos": [
+        "BR",
+        "AR"
+      ],
+      "veiculos_origem": [
+        "G1 Política",
+        "TV Globo"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/politica/noticia/2026/11/24/brasil-decide-que-embaixador-brasileiro-na-argentina-nao-retornara-a-buenos-aires.ghtml"
+      ],
+      "data_publicacao": "2026-11-24T23:20:16Z",
+      "updated_at": "2026-11-24T23:24:39Z"
+    },
     {
       "slug": "golfo-persico-exportacoes-petroleo-ormuz",
       "status": "novo",
@@ -14,6 +65,7 @@
       "titulo_tema": "Exportações de petróleo no Golfo Pérsico retornam a níveis pré-crise apesar de ataques em Ormuz",
       "sintese_nerd": "Apesar das contínuas ameaças marítimas no Estreito de Ormuz, produtores como Arábia Saudita e Emirados Árabes conseguiram restaurar seus volumes de exportação de petróleo bruto. Essa adaptação logística diminui os riscos de um choque repentino na oferta mundial de combustíveis.",
       "rota_editoria": "/radar",
+      "urgencia_score": 85,
       "data_publicacao": "2026-11-24T23:18:08Z",
       "gatilho_vitrine": "Monitorar a resiliência das rotas marítimas de petróleo no Oriente Médio e a estabilidade da oferta global.",
       "origem_pipeline": "curadoria",
@@ -29,8 +81,7 @@
         "seguranca energetica",
         "frete maritimo",
         "tensao oriente medio"
-      ],
-      "urgencia_score": 85
+      ]
     },
     {
       "slug": "brasil-reacao-ue-barreiras-comerciais-frango-mel",
@@ -141,8 +192,102 @@
     },
     {
       "slug": "moraes-autoriza-advogado-visitar-bolsonaro-hospital",
+      "status": "novo",
+      "categoria": "Geopolitica_Relacoes",
+      "ttl_horas": 12,
+      "expires_at": "2026-11-25T11:19:15Z",
+      "updated_at": "2026-11-24T23:20:33Z",
+      "fontes_urls": [
+        "https://www.poder360.com.br/poder-justica/moraes-autoriza-advogado-a-visitar-bolsonaro-no-hospital/"
+      ],
       "titulo_tema": "Moraes autoriza advogado a visitar o ex-presidente Jair Bolsonaro no hospital",
+      "resumo_pulso": "Segundo apuração do portal Poder360, o ministro Alexandre de Moraes autorizou a visita de advogados ao ex-presidente Jair Bolsonaro, internado na UTI do hospital DF Star desde sábado (21). A decisão judicial impõe estrita proibição ao uso de celulares e câmeras durante os encontros.",
+      "sintese_nerd": "Acompanhamento jurídico e médico do ex-presidente em meio às restrições cautelares impostas pelo STF.",
       "titulo_curto": "Moraes autoriza advogado a visitar o ex-presidente Jair Bolsonaro no hospital",
+      "rota_editoria": "/radar",
+      "palavras_chave": [
+        "alexandre de moraes",
+        "jair bolsonaro",
+        "df star",
+        "stf",
+        "visita médica"
+      ],
+      "urgencia_score": 90,
+      "data_publicacao": "2026-11-24T23:17:16Z",
+      "gatilho_vitrine": "Segundo apuração do portal Poder360, o ministro Alexandre de Moraes autorizou a visita de advogados ao ex-presidente Jair Bolsonaro, internado na UTI do hospital DF Star desde sábado (21). A decisão judicial impõe estrita proibição ao uso de celulares e câmeras durante os encontros.",
+      "impacto_pratico": "Acompanhamento jurídico e médico do ex-presidente em meio às restrições cautelares impostas pelo STF.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "Poder360"
+      ],
+      "relevancia_score": 92,
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "alexandre de moraes",
+        "jair bolsonaro",
+        "df star",
+        "stf",
+        "visita médica"
+      ]
+    },
+    {
+      "slug": "camara-aprova-raca-cor-prontuarios-sus-chacina-acari",
+      "status": "novo",
+      "categoria": "Sociedade_Cultura",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-25T23:20:33Z",
+      "updated_at": "2026-11-24T23:20:33Z",
+      "fontes_urls": [
+        "https://www.youtube.com/watch?v=_wREA4YDJ_g"
+      ],
+      "titulo_tema": "Câmara aprova inclusão de raça e cor no SUS e reconhecimento de indenização da Chacina de Acari",
+      "resumo_pulso": "Segundo informou o canal oficial da Câmara dos Deputados, o plenário aprovou o projeto que obriga o registro de raça e cor nos prontuários médicos do SUS. Além disso, os parlamentares aprovaram o projeto que reconhece a responsabilidade do Estado e concede pensão às famílias das vítimas da Chacina de Acari (RJ).",
+      "sintese_nerd": "Mudança nos procedimentos de atendimento no SUS e reparação financeira direta para familiares de vítimas de violência histórica de Estado.",
+      "titulo_curto": "Câmara aprova inclusão de raça e cor no SUS e reconhecimento de indenização da Chacina de Acari",
+      "rota_editoria": "/cultura",
+      "palavras_chave": [
+        "câmara dos deputados",
+        "sus",
+        "chacina de acari",
+        "direitos humanos",
+        "legislação"
+      ],
+      "urgencia_score": 86,
+      "data_publicacao": "2026-11-24T23:09:55Z",
+      "gatilho_vitrine": "Segundo informou o canal oficial da Câmara dos Deputados, o plenário aprovou o projeto que obriga o registro de raça e cor nos prontuários médicos do SUS. Além disso, os parlamentares aprovaram o projeto que reconhece a responsabilidade do Estado e concede pensão às famílias das vítimas da Chacina de Acari (RJ).",
+      "impacto_pratico": "Mudança nos procedimentos de atendimento no SUS e reparação financeira direta para familiares de vítimas de violência histórica de Estado.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "Câmara dos Deputados - YouTube"
+      ],
+      "relevancia_score": 90,
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "categoria_primaria": "Cultura",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "câmara dos deputados",
+        "sus",
+        "chacina de acari",
+        "direitos humanos",
+        "legislação"
+      ]
+    },
+    {
+      "slug": "ataques-drones-russos-incendio-predio-kiev",
+      "titulo_tema": "Ataques de drones russos provocam incêndio em prédio residencial e deixam feridos em Kiev",
+      "titulo_curto": "Ataques de drones russos provocam incêndio em prédio residencial e deixam feridos em Kiev",
       "status": "novo",
       "origem_pipeline": "pulso",
       "categoria_primaria": "Geopolitica_Radar",
@@ -152,111 +297,58 @@
         "Resumo_Ultimas"
       ],
       "rota_editoria": "/radar",
-      "relevancia_score": 92,
+      "relevancia_score": 88,
       "urgencia_score": 90,
-      "ttl_horas": 12,
-      "expires_at": "2026-11-25T11:19:15Z",
+      "ttl_horas": 18,
+      "expires_at": "2026-11-25T17:24:39Z",
       "palavras_chave_busca": [
-        "alexandre de moraes",
-        "jair bolsonaro",
-        "df star",
-        "stf",
-        "visita médica"
+        "ucrânia",
+        "rússia",
+        "kiev",
+        "drones",
+        "conflito"
       ],
       "palavras_chave": [
-        "alexandre de moraes",
-        "jair bolsonaro",
-        "df star",
-        "stf",
-        "visita médica"
+        "ucrânia",
+        "rússia",
+        "kiev",
+        "drones",
+        "conflito"
       ],
-      "gatilho_vitrine": "Segundo apuração do portal Poder360, o ministro Alexandre de Moraes autorizou a visita de advogados ao ex-presidente Jair Bolsonaro, internado na UTI do hospital DF Star desde sábado (21). A decisão judicial impõe estrita proibição ao uso de celulares e câmeras durante os encontros.",
-      "resumo_pulso": "Segundo apuração do portal Poder360, o ministro Alexandre de Moraes autorizou a visita de advogados ao ex-presidente Jair Bolsonaro, internado na UTI do hospital DF Star desde sábado (21). A decisão judicial impõe estrita proibição ao uso de celulares e câmeras durante os encontros.",
-      "sintese_nerd": "Acompanhamento jurídico e médico do ex-presidente em meio às restrições cautelares impostas pelo STF.",
-      "impacto_pratico": "Acompanhamento jurídico e médico do ex-presidente em meio às restrições cautelares impostas pelo STF.",
+      "gatilho_vitrine": "Conforme reportado pelas agências Ukrinform e The Kyiv Independent, destroços de um drone russo provocaram incêndio em um edifício residencial de 16 andares em Kiev. Os ataques noturnos também causaram mortes na região de Odesa, elevando o alerta de defesa aérea na Ucrânia.",
+      "resumo_pulso": "Conforme reportado pelas agências Ukrinform e The Kyiv Independent, destroços de um drone russo provocaram incêndio em um edifício residencial de 16 andares em Kiev. Os ataques noturnos também causaram mortes na região de Odesa, elevando o alerta de defesa aérea na Ucrânia.",
+      "sintese_nerd": "Intensificação dos alertas de segurança para residentes e missões estrangeiras na capital ucraniana.",
+      "impacto_pratico": "Intensificação dos alertas de segurança para residentes e missões estrangeiras na capital ucraniana.",
       "paises_envolvidos": [
-        "BR"
+        "UA",
+        "RU"
       ],
       "veiculos_origem": [
-        "Poder360"
+        "Ukrinform",
+        "The Kyiv Independent"
       ],
       "fontes_urls": [
-        "https://www.poder360.com.br/poder-justica/moraes-autoriza-advogado-a-visitar-bolsonaro-no-hospital/"
+        "https://kyivindependent.com/russian-attacks-kill-2-in-odesa-oblast-including-child-injure-more-in-kyiv/",
+        "https://www.ukrinform.net/rubric-ato/4188265-debris-from-russian-drone-causes-fire-in-16story-residential-building-in-kyiv.html"
       ],
-      "data_publicacao": "2026-11-24T23:17:16Z",
-      "updated_at": "2026-11-24T23:20:33Z"
-    },
-    {
-      "slug": "camara-aprova-raca-cor-prontuarios-sus-chacina-acari",
-      "titulo_tema": "Câmara aprova inclusão de raça e cor no SUS e reconhecimento de indenização da Chacina de Acari",
-      "titulo_curto": "Câmara aprova inclusão de raça e cor no SUS e reconhecimento de indenização da Chacina de Acari",
-      "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Cultura",
-      "categoria": "Sociedade_Cultura",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/cultura",
-      "relevancia_score": 90,
-      "urgencia_score": 86,
-      "ttl_horas": 24,
-      "expires_at": "2026-11-25T23:20:33Z",
-      "palavras_chave_busca": [
-        "câmara dos deputados",
-        "sus",
-        "chacina de acari",
-        "direitos humanos",
-        "legislação"
-      ],
-      "palavras_chave": [
-        "câmara dos deputados",
-        "sus",
-        "chacina de acari",
-        "direitos humanos",
-        "legislação"
-      ],
-      "gatilho_vitrine": "Segundo informou o canal oficial da Câmara dos Deputados, o plenário aprovou o projeto que obriga o registro de raça e cor nos prontuários médicos do SUS. Além disso, os parlamentares aprovaram o projeto que reconhece a responsabilidade do Estado e concede pensão às famílias das vítimas da Chacina de Acari (RJ).",
-      "resumo_pulso": "Segundo informou o canal oficial da Câmara dos Deputados, o plenário aprovou o projeto que obriga o registro de raça e cor nos prontuários médicos do SUS. Além disso, os parlamentares aprovaram o projeto que reconhece a responsabilidade do Estado e concede pensão às famílias das vítimas da Chacina de Acari (RJ).",
-      "sintese_nerd": "Mudança nos procedimentos de atendimento no SUS e reparação financeira direta para familiares de vítimas de violência histórica de Estado.",
-      "impacto_pratico": "Mudança nos procedimentos de atendimento no SUS e reparação financeira direta para familiares de vítimas de violência histórica de Estado.",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "veiculos_origem": [
-        "Câmara dos Deputados - YouTube"
-      ],
-      "fontes_urls": [
-        "https://www.youtube.com/watch?v=_wREA4YDJ_g"
-      ],
-      "data_publicacao": "2026-11-24T23:09:55Z",
-      "updated_at": "2026-11-24T23:20:33Z"
+      "data_publicacao": "2026-11-24T23:08:00Z",
+      "updated_at": "2026-11-24T23:24:39Z"
     },
     {
       "slug": "justica-condena-engenheiros-incendio-ninho-do-urubu",
-      "titulo_tema": "Justiça do Rio condena dois engenheiros a 8 anos de prisão por tragédia no Ninho do Urubu",
-      "titulo_curto": "Justiça do Rio condena dois engenheiros a 8 anos de prisão por tragédia no Ninho do Urubu",
       "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Cultura",
       "categoria": "Sociedade_Cultura",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/cultura",
-      "relevancia_score": 91,
-      "urgencia_score": 88,
       "ttl_horas": 24,
       "expires_at": "2026-11-25T23:20:33Z",
-      "palavras_chave_busca": [
-        "ninho do urubu",
-        "flamengo",
-        "justiça do rio",
-        "responsabilidade técnica",
-        "incêndio 2019"
+      "updated_at": "2026-11-24T23:20:33Z",
+      "fontes_urls": [
+        "https://www.poder360.com.br/poder-justica/justica-condena-2-engenheiros-por-incendio-no-ninho-do-urubu/"
       ],
+      "titulo_tema": "Justiça do Rio condena dois engenheiros a 8 anos de prisão por tragédia no Ninho do Urubu",
+      "resumo_pulso": "Conforme apuração do portal Poder360, a Justiça do Rio de Janeiro condenou dois engenheiros a 8 anos de prisão pelo incêndio no centro de treinamento do Flamengo em 2019. A decisão responsabilizou os profissionais por falhas de segurança nos alojamentos que resultaram na morte de dez jovens atletas.",
+      "sintese_nerd": "Cria precedente judicial rigoroso sobre responsabilidade técnica e segurança em alojamentos desportivos e instalações coletivas.",
+      "titulo_curto": "Justiça do Rio condena dois engenheiros a 8 anos de prisão por tragédia no Ninho do Urubu",
+      "rota_editoria": "/cultura",
       "palavras_chave": [
         "ninho do urubu",
         "flamengo",
@@ -264,26 +356,35 @@
         "responsabilidade técnica",
         "incêndio 2019"
       ],
+      "urgencia_score": 88,
+      "data_publicacao": "2026-11-24T23:03:39Z",
       "gatilho_vitrine": "Conforme apuração do portal Poder360, a Justiça do Rio de Janeiro condenou dois engenheiros a 8 anos de prisão pelo incêndio no centro de treinamento do Flamengo em 2019. A decisão responsabilizou os profissionais por falhas de segurança nos alojamentos que resultaram na morte de dez jovens atletas.",
-      "resumo_pulso": "Conforme apuração do portal Poder360, a Justiça do Rio de Janeiro condenou dois engenheiros a 8 anos de prisão pelo incêndio no centro de treinamento do Flamengo em 2019. A decisão responsabilizou os profissionais por falhas de segurança nos alojamentos que resultaram na morte de dez jovens atletas.",
-      "sintese_nerd": "Cria precedente judicial rigoroso sobre responsabilidade técnica e segurança em alojamentos desportivos e instalações coletivas.",
       "impacto_pratico": "Cria precedente judicial rigoroso sobre responsabilidade técnica e segurança em alojamentos desportivos e instalações coletivas.",
-      "paises_envolvidos": [
-        "BR"
-      ],
+      "origem_pipeline": "pulso",
       "veiculos_origem": [
         "Poder360"
       ],
-      "fontes_urls": [
-        "https://www.poder360.com.br/poder-justica/justica-condena-2-engenheiros-por-incendio-no-ninho-do-urubu/"
+      "relevancia_score": 91,
+      "paises_envolvidos": [
+        "BR"
       ],
-      "data_publicacao": "2026-11-24T23:03:39Z",
-      "updated_at": "2026-11-24T23:20:33Z"
+      "categoria_primaria": "Cultura",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "ninho do urubu",
+        "flamengo",
+        "justiça do rio",
+        "responsabilidade técnica",
+        "incêndio 2019"
+      ]
     },
     {
-      "slug": "argentina-entra-em-recessao-tecnica-setembro",
-      "titulo_tema": "Atividade econômica da Argentina encolhe e entra em recessão técnica em setembro",
-      "titulo_curto": "Atividade econômica da Argentina encolhe e entra em recessão técnica em setembro",
+      "slug": "itau-entra-no-minha-casa-minha-vida-faixa-3",
+      "titulo_tema": "Itaú passa a oferecer financiamento pelo Minha Casa, Minha Vida para faixa de maior renda",
+      "titulo_curto": "Itaú passa a oferecer financiamento pelo Minha Casa, Minha Vida para faixa de maior renda",
       "status": "novo",
       "origem_pipeline": "pulso",
       "categoria_primaria": "Economia",
@@ -293,17 +394,55 @@
         "Resumo_Ultimas"
       ],
       "rota_editoria": "/economia",
-      "relevancia_score": 89,
-      "urgencia_score": 88,
+      "relevancia_score": 87,
+      "urgencia_score": 85,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-25T23:24:39Z",
+      "palavras_chave_busca": [
+        "itaú",
+        "minha casa minha vida",
+        "crédito imobiliário",
+        "caixa",
+        "habitação"
+      ],
+      "palavras_chave": [
+        "itaú",
+        "minha casa minha vida",
+        "crédito imobiliário",
+        "caixa",
+        "habitação"
+      ],
+      "gatilho_vitrine": "Segundo apuração do InfoMoney, o Itaú Unibanco anunciou o início da oferta de crédito imobiliário pelo programa Minha Casa, Minha Vida voltado à Faixa 3 (renda entre R$ 5 mil e R$ 9,6 mil). A iniciativa marca a expansão dos bancos privados em um mercado tradicionalmente dominado pela Caixa Econômica Federal.",
+      "resumo_pulso": "Segundo apuração do InfoMoney, o Itaú Unibanco anunciou o início da oferta de crédito imobiliário pelo programa Minha Casa, Minha Vida voltado à Faixa 3 (renda entre R$ 5 mil e R$ 9,6 mil). A iniciativa marca a expansão dos bancos privados em um mercado tradicionalmente dominado pela Caixa Econômica Federal.",
+      "sintese_nerd": "Amplia as opções de financiamento habitacional com juros subsidiados para famílias de renda média urbana.",
+      "impacto_pratico": "Amplia as opções de financiamento habitacional com juros subsidiados para famílias de renda média urbana.",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "veiculos_origem": [
+        "InfoMoney"
+      ],
+      "fontes_urls": [
+        "https://www.infomoney.com.br/business/itau-entra-no-mcmv-e-avanca-sobre-mercado-dominado-pela-caixa/"
+      ],
+      "data_publicacao": "2026-11-24T22:51:03Z",
+      "updated_at": "2026-11-24T23:24:39Z"
+    },
+    {
+      "slug": "argentina-entra-em-recessao-tecnica-setembro",
+      "status": "novo",
+      "categoria": "Economia_Comercio",
       "ttl_horas": 24,
       "expires_at": "2026-11-25T23:19:15Z",
-      "palavras_chave_busca": [
-        "argentina",
-        "javier milei",
-        "indec",
-        "recessão técnica",
-        "pib"
+      "updated_at": "2026-11-24T23:20:33Z",
+      "fontes_urls": [
+        "https://g1.globo.com/economia/noticia/2026/11/24/economia-da-argentina-encolhe-e-entra-em-recessao-tecnica-apontam-dados-preliminares.ghtml"
       ],
+      "titulo_tema": "Atividade econômica da Argentina encolhe e entra em recessão técnica em setembro",
+      "resumo_pulso": "Conforme dados preliminares do Indec e apuração do G1 Economia, a atividade econômica argentina caiu 1,2% em setembro na comparação anual. O resultado veio abaixo das projeções do mercado financeiro e confirmou a entrada do país vizinho em um quadro de recessão técnica.",
+      "sintese_nerd": "Afeta o fluxo de comércio bilateral com o Brasil e a demanda por produtos manufaturados brasileiros na região.",
+      "titulo_curto": "Atividade econômica da Argentina encolhe e entra em recessão técnica em setembro",
+      "rota_editoria": "/economia",
       "palavras_chave": [
         "argentina",
         "javier milei",
@@ -311,47 +450,47 @@
         "recessão técnica",
         "pib"
       ],
+      "urgencia_score": 88,
+      "data_publicacao": "2026-11-24T22:33:17Z",
       "gatilho_vitrine": "Conforme dados preliminares do Indec e apuração do G1 Economia, a atividade econômica argentina caiu 1,2% em setembro na comparação anual. O resultado veio abaixo das projeções do mercado financeiro e confirmou a entrada do país vizinho em um quadro de recessão técnica.",
-      "resumo_pulso": "Conforme dados preliminares do Indec e apuração do G1 Economia, a atividade econômica argentina caiu 1,2% em setembro na comparação anual. O resultado veio abaixo das projeções do mercado financeiro e confirmou a entrada do país vizinho em um quadro de recessão técnica.",
-      "sintese_nerd": "Afeta o fluxo de comércio bilateral com o Brasil e a demanda por produtos manufaturados brasileiros na região.",
       "impacto_pratico": "Afeta o fluxo de comércio bilateral com o Brasil e a demanda por produtos manufaturados brasileiros na região.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "G1 Economia"
+      ],
+      "relevancia_score": 89,
       "paises_envolvidos": [
         "AR",
         "BR"
       ],
-      "veiculos_origem": [
-        "G1 Economia"
-      ],
-      "fontes_urls": [
-        "https://g1.globo.com/economia/noticia/2026/11/24/economia-da-argentina-encolhe-e-entra-em-recessao-tecnica-apontam-dados-preliminares.ghtml"
-      ],
-      "data_publicacao": "2026-11-24T22:33:17Z",
-      "updated_at": "2026-11-24T23:20:33Z"
-    },
-    {
-      "slug": "ira-divulga-video-ataque-aviao-comercial-guerra",
-      "titulo_tema": "Imprensa iraniana divulga vídeo de suposto ataque a avião comercial no início do conflito",
-      "titulo_curto": "Imprensa iraniana divulga vídeo de suposto ataque a avião comercial no início do conflito",
-      "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Geopolitica_Radar",
-      "categoria": "Geopolitica_Relacoes",
+      "categoria_primaria": "Economia",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
       ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 89,
-      "urgencia_score": 88,
+      "palavras_chave_busca": [
+        "argentina",
+        "javier milei",
+        "indec",
+        "recessão técnica",
+        "pib"
+      ]
+    },
+    {
+      "slug": "ira-divulga-video-ataque-aviao-comercial-guerra",
+      "status": "novo",
+      "categoria": "Geopolitica_Relacoes",
       "ttl_horas": 18,
       "expires_at": "2026-11-25T17:20:33Z",
-      "palavras_chave_busca": [
-        "irã",
-        "aviação civil",
-        "oriente médio",
-        "eua",
-        "israel"
+      "updated_at": "2026-11-24T23:20:33Z",
+      "fontes_urls": [
+        "https://g1.globo.com/mundo/noticia/2026/11/24/imprensa-iraniana-divulga-video-de-suposto-ataque-a-aviao-comercial-no-inicio-da-guerra.ghtml"
       ],
+      "titulo_tema": "Imprensa iraniana divulga vídeo de suposto ataque a avião comercial no início do conflito",
+      "resumo_pulso": "Conforme reportado pelo G1 Mundo com base em veículos estatais do Irã, a imprensa iraniana divulgou imagens que mostrariam o momento em que uma aeronave comercial foi atingida no início das hostilidades na região. Teerã atribui a ação a forças americanas e israelenses, enquanto apurações internacionais buscam verificação independente dos registros.",
+      "sintese_nerd": "Eleva a tensão diplomática e traz novas incertezas quanto à segurança da aviação civil em rotas do Oriente Médio.",
+      "titulo_curto": "Imprensa iraniana divulga vídeo de suposto ataque a avião comercial no início do conflito",
+      "rota_editoria": "/radar",
       "palavras_chave": [
         "irã",
         "aviação civil",
@@ -359,48 +498,48 @@
         "eua",
         "israel"
       ],
+      "urgencia_score": 88,
+      "data_publicacao": "2026-11-24T22:07:59Z",
       "gatilho_vitrine": "Conforme reportado pelo G1 Mundo com base em veículos estatais do Irã, a imprensa iraniana divulgou imagens que mostrariam o momento em que uma aeronave comercial foi atingida no início das hostilidades na região. Teerã atribui a ação a forças americanas e israelenses, enquanto apurações internacionais buscam verificação independente dos registros.",
-      "resumo_pulso": "Conforme reportado pelo G1 Mundo com base em veículos estatais do Irã, a imprensa iraniana divulgou imagens que mostrariam o momento em que uma aeronave comercial foi atingida no início das hostilidades na região. Teerã atribui a ação a forças americanas e israelenses, enquanto apurações internacionais buscam verificação independente dos registros.",
-      "sintese_nerd": "Eleva a tensão diplomática e traz novas incertezas quanto à segurança da aviação civil em rotas do Oriente Médio.",
       "impacto_pratico": "Eleva a tensão diplomática e traz novas incertezas quanto à segurança da aviação civil em rotas do Oriente Médio.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "G1 Mundo"
+      ],
+      "relevancia_score": 89,
       "paises_envolvidos": [
         "IR",
         "US",
         "IL"
       ],
-      "veiculos_origem": [
-        "G1 Mundo"
-      ],
-      "fontes_urls": [
-        "https://g1.globo.com/mundo/noticia/2026/11/24/imprensa-iraniana-divulga-video-de-suposto-ataque-a-aviao-comercial-no-inicio-da-guerra.ghtml"
-      ],
-      "data_publicacao": "2026-11-24T22:07:59Z",
-      "updated_at": "2026-11-24T23:20:33Z"
-    },
-    {
-      "slug": "dolar-cai-5-91-ajuste-fiscal-sancao",
-      "titulo_tema": "Dólar recua para R$ 5,91 com expectativa por medidas fiscais e sanção do governo",
-      "titulo_curto": "Dólar recua para R$ 5,91 com expectativa por medidas fiscais e sanção do governo",
-      "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Economia",
-      "categoria": "Economia_Comercio",
+      "categoria_primaria": "Geopolitica_Radar",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
       ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 93,
-      "urgencia_score": 89,
+      "palavras_chave_busca": [
+        "irã",
+        "aviação civil",
+        "oriente médio",
+        "eua",
+        "israel"
+      ]
+    },
+    {
+      "slug": "dolar-cai-5-91-ajuste-fiscal-sancao",
+      "status": "novo",
+      "categoria": "Economia_Comercio",
       "ttl_horas": 12,
       "expires_at": "2026-11-25T11:20:33Z",
-      "palavras_chave_busca": [
-        "dólar",
-        "ajuste fiscal",
-        "ibovespa",
-        "mercado financeiro",
-        "câmbio"
+      "updated_at": "2026-11-24T23:20:33Z",
+      "fontes_urls": [
+        "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/dolar-cai-para-r-591-com-expectativa-de-ajuste-fiscal"
       ],
+      "titulo_tema": "Dólar recua para R$ 5,91 com expectativa por medidas fiscais e sanção do governo",
+      "resumo_pulso": "Segundo dados divulgados pela Agência Brasil e análise do mercado financeiro, o dólar comercial encerrou o dia em queda de 0,3%, cotado a R$ 5,91. O alívio cambial refletiu o avanço nas negociações sobre o pacote de contenção de gastos públicos e a sanção presidencial do plano de ajuste.",
+      "sintese_nerd": "Redução pontual da pressão sobre importações e expectativas inflacionárias de curto prazo no Brasil.",
+      "titulo_curto": "Dólar recua para R$ 5,91 com expectativa por medidas fiscais e sanção do governo",
+      "rota_editoria": "/economia",
       "palavras_chave": [
         "dólar",
         "ajuste fiscal",
@@ -408,23 +547,32 @@
         "mercado financeiro",
         "câmbio"
       ],
+      "urgencia_score": 89,
+      "data_publicacao": "2026-11-24T22:01:00Z",
       "gatilho_vitrine": "Segundo dados divulgados pela Agência Brasil e análise do mercado financeiro, o dólar comercial encerrou o dia em queda de 0,3%, cotado a R$ 5,91. O alívio cambial refletiu o avanço nas negociações sobre o pacote de contenção de gastos públicos e a sanção presidencial do plano de ajuste.",
-      "resumo_pulso": "Segundo dados divulgados pela Agência Brasil e análise do mercado financeiro, o dólar comercial encerrou o dia em queda de 0,3%, cotado a R$ 5,91. O alívio cambial refletiu o avanço nas negociações sobre o pacote de contenção de gastos públicos e a sanção presidencial do plano de ajuste.",
-      "sintese_nerd": "Redução pontual da pressão sobre importações e expectativas inflacionárias de curto prazo no Brasil.",
       "impacto_pratico": "Redução pontual da pressão sobre importações e expectativas inflacionárias de curto prazo no Brasil.",
-      "paises_envolvidos": [
-        "BR",
-        "US"
-      ],
+      "origem_pipeline": "pulso",
       "veiculos_origem": [
         "Agência Brasil (EBC)",
         "Market Makers"
       ],
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/dolar-cai-para-r-591-com-expectativa-de-ajuste-fiscal"
+      "relevancia_score": 93,
+      "paises_envolvidos": [
+        "BR",
+        "US"
       ],
-      "data_publicacao": "2026-11-24T22:01:00Z",
-      "updated_at": "2026-11-24T23:20:33Z"
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "dólar",
+        "ajuste fiscal",
+        "ibovespa",
+        "mercado financeiro",
+        "câmbio"
+      ]
     },
     {
       "slug": "ceo-nvidia-jensen-huang-retorno-pedido-desculpas",
@@ -718,174 +866,61 @@
         "irã",
         "segredos comerciais"
       ]
-    },
-    {
-      "slug": "eua-usam-cavalos-patrulha-fronteira-mexico",
-      "status": "novo",
-      "categoria": "Mobilidade_Fronteiras",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-25T22:33:09Z",
-      "updated_at": "2026-11-24T22:33:09Z",
-      "fontes_urls": [
-        "https://g1.globo.com/mundo/noticia/2026/11/24/video-eua-usam-cavalos-para-prender-imigrantes-na-fronteira-com-o-mexico.ghtml"
-      ],
-      "titulo_tema": "Patrulha de Fronteira dos EUA utiliza patrulhamento a cavalo para deter imigrantes na divisa com o México",
-      "resumo_pulso": "Segundo apuração do G1 Mundo com base em vídeos divulgados pela Alfândega e Proteção de Fronteiras dos EUA (CBP), autoridades norte-americanas voltaram a empregar patrulhas montadas a cavalo para conter travessias na fronteira sul. A ação registrou prisões e reacendeu controvérsia sobre métodos de contenção migratória.",
-      "sintese_nerd": "Intensificação do policiamento ostensivo impacta diretamente rotas migratórias e procedimentos de detenção na fronteira sul dos Estados Unidos.",
-      "titulo_curto": "Patrulha de Fronteira dos EUA utiliza patrulhamento a cavalo para deter imigrantes na divisa com o México",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "eua",
-        "méxico",
-        "fronteira",
-        "imigração",
-        "cbp"
-      ],
-      "urgencia_score": 88,
-      "data_publicacao": "2026-11-24T20:02:27Z",
-      "gatilho_vitrine": "Segundo apuração do G1 Mundo com base em vídeos divulgados pela Alfândega e Proteção de Fronteiras dos EUA (CBP), autoridades norte-americanas voltaram a empregar patrulhas montadas a cavalo para conter travessias na fronteira sul. A ação registrou prisões e reacendeu controvérsia sobre métodos de contenção migratória.",
-      "impacto_pratico": "Intensificação do policiamento ostensivo impacta diretamente rotas migratórias e procedimentos de detenção na fronteira sul dos Estados Unidos.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "G1 Mundo",
-        "CBP"
-      ],
-      "relevancia_score": 89,
-      "paises_envolvidos": [
-        "US",
-        "MX"
-      ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "eua",
-        "méxico",
-        "fronteira",
-        "imigração",
-        "cbp"
-      ]
-    },
-    {
-      "slug": "bombeiros-condenados-chile-incendios-vina-del-mar",
-      "status": "novo",
-      "categoria": "Sociedade_Cultura",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-25T21:59:11Z",
-      "updated_at": "2026-11-24T21:59:11Z",
-      "fontes_urls": [
-        "https://g1.globo.com/mundo/noticia/2026/11/24/7-bombeiros-sao-condenados-no-chile-por-incendios-que-deixaram-138-mortos.ghtml"
-      ],
-      "titulo_tema": "Tribunal no Chile condena sete bombeiros por incêndios florestais que deixaram 138 mortos",
-      "resumo_pulso": "Conforme apuração do G1 Mundo, a Justiça chilena condenou sete bombeiros e brigadistas por orquestrarem e provocarem os incêndios florestais que devastaram a região de Viña del Mar em fevereiro de 2024, causando a morte de 138 pessoas. A investigação apontou que o grupo agia motivado pela busca de ganhos financeiros com horas extras.",
-      "sintese_nerd": "O caso chocou a opinião pública internacional e levou a uma revisão rigorosa dos protocolos operacionais de emergência no Chile.",
-      "titulo_curto": "Tribunal no Chile condena sete bombeiros por incêndios florestais que deixaram 138 mortos",
-      "rota_editoria": "/cultura",
-      "palavras_chave": [
-        "chile",
-        "viña del mar",
-        "incêndios florestais",
-        "bombeiros",
-        "condenação"
-      ],
-      "urgencia_score": 87,
-      "data_publicacao": "2026-11-24T19:56:23Z",
-      "gatilho_vitrine": "Conforme apuração do G1 Mundo, a Justiça chilena condenou sete bombeiros e brigadistas por orquestrarem e provocarem os incêndios florestais que devastaram a região de Viña del Mar em fevereiro de 2024, causando a morte de 138 pessoas. A investigação apontou que o grupo agia motivado pela busca de ganhos financeiros com horas extras.",
-      "impacto_pratico": "O caso chocou a opinião pública internacional e levou a uma revisão rigorosa dos protocolos operacionais de emergência no Chile.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "G1 Mundo"
-      ],
-      "relevancia_score": 89,
-      "paises_envolvidos": [
-        "CL"
-      ],
-      "categoria_primaria": "Cultura",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "chile",
-        "viña del mar",
-        "incêndios florestais",
-        "bombeiros",
-        "condenação"
-      ]
-    },
-    {
-      "slug": "anthropic-claude-prova-hipotese-riemann-matematica",
-      "status": "novo",
-      "categoria": "Ciencia_Clima",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-25T21:59:11Z",
-      "updated_at": "2026-11-24T21:59:11Z",
-      "fontes_urls": [
-        "https://www.nexojornal.com.br/expresso/2026/11/24/hipotese-de-riemann-resolvida-anthropic-claude-gpt-ia-matematica"
-      ],
-      "titulo_tema": "Pesquisadores anunciam que IA da Anthropic ajudou a demonstrar a Hipótese de Riemann",
-      "resumo_pulso": "Segundo reportagem do Nexo Jornal, o matemático Levent Alpöge, pesquisador da Anthropic, afirmou ter utilizado o chatbot Claude para provar a Hipótese de Riemann, um dos célebres Problemas do Milênio da matemática. O anúncio ocorre em meio a avanços de grandes modelos de linguagem na resolução de enigmas científicos complexos.",
-      "sintese_nerd": "A demonstração abre novas fronteiras para a aplicação de inteligência artificial em pesquisas científicas de ponta.",
-      "titulo_curto": "Pesquisadores anunciam que IA da Anthropic ajudou a demonstrar a Hipótese de Riemann",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "anthropic",
-        "claude",
-        "hipótese de riemann",
-        "inteligência artificial",
-        "matemática"
-      ],
-      "urgencia_score": 85,
-      "data_publicacao": "2026-11-24T19:31:18Z",
-      "gatilho_vitrine": "Segundo reportagem do Nexo Jornal, o matemático Levent Alpöge, pesquisador da Anthropic, afirmou ter utilizado o chatbot Claude para provar a Hipótese de Riemann, um dos célebres Problemas do Milênio da matemática. O anúncio ocorre em meio a avanços de grandes modelos de linguagem na resolução de enigmas científicos complexos.",
-      "impacto_pratico": "A demonstração abre novas fronteiras para a aplicação de inteligência artificial em pesquisas científicas de ponta.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "Nexo Jornal"
-      ],
-      "relevancia_score": 88,
-      "paises_envolvidos": [
-        "US"
-      ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "anthropic",
-        "claude",
-        "hipótese de riemann",
-        "inteligência artificial",
-        "matemática"
-      ]
     }
   ],
   "noticias_quentes": [
     {
-      "slug": "exportacoes-petroleo-golfo-persico-nivel-pre-guerra",
-      "titulo_curto": "Exportações de petróleo no Golfo Pérsico retornam aos níveis pré-guerra apesar de ataques em Hormuz",
-      "resumo_pulso": "Segundo dados de rastreamento marítimo da Kpler divulgados pela agência Iran International, as remessas de petróleo dos países do Golfo Pérsico retomaram o volume observado antes do conflito regional. Arábia Saudita e Emirados Árabes Unidos lideraram a recuperação, operando com rotas alternativas e reforço de escolta militar no Estreito de Hormuz.",
-      "impacto_pratico": "Mitiga a escalada extrema nos preços internacionais do barril de petróleo e ameniza impactos nos combustíveis globais.",
-      "categoria": "Economia_Comercio",
+      "slug": "brasil-nao-retornara-embaixador-argentina-crise",
+      "titulo_curto": "Lula decide que embaixador do Brasil não retornará a Buenos Aires após crise diplomática",
+      "resumo_pulso": "Segundo apuração do G1 Política e confirmação de diplomatas do Itamaraty, o governo brasileiro decidiu que o embaixador Júlio Bitelli não voltará à Argentina. A medida consolida o esfriamento diplomático entre os dois países após meses de tensões e desentendimentos entre as chancelarias.",
+      "impacto_pratico": "A ausência de embaixador de carreira pode desacelerar negociações bilaterais de comércio, acordos de fronteira e articulações no âmbito do Mercosul.",
+      "categoria": "Geopolitica_Relacoes",
       "paises_envolvidos": [
-        "SA",
-        "AE",
-        "IR"
+        "BR",
+        "AR"
       ],
-      "urgencia_score": 85,
-      "relevancia_score": 88,
+      "urgencia_score": 92,
+      "relevancia_score": 94,
       "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 8,
+      "horas_em_destaque": 12,
       "veiculos_origem": [
-        "Iran International"
+        "G1 Política",
+        "TV Globo"
       ],
+      "fontes_urls": [
+        "https://g1.globo.com/politica/noticia/2026/11/24/brasil-decide-que-embaixador-brasileiro-na-argentina-nao-retornara-a-buenos-aires.ghtml"
+      ],
+      "palavras_chave": [
+        "Brasil",
+        "Argentina",
+        "Itamaraty",
+        "Júlio Bitelli",
+        "Lula",
+        "diplomacia"
+      ],
+      "data_publicacao": "2026-11-24T23:20:16Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "Política no Brasil",
+          "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
+          "motivo_conexao": "Acompanhe as decisões da diplomacia e do Poder Executivo em questões internacionais."
+        }
+      ],
+      "expires_at": "2026-11-25T23:24:39Z",
+      "updated_at": "2026-11-24T23:24:39Z"
+    },
+    {
+      "slug": "exportacoes-petroleo-golfo-persico-nivel-pre-guerra",
+      "categoria": "Economia_Comercio",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-27T23:18:08Z",
+      "updated_at": "2026-11-24T23:20:33Z",
       "fontes_urls": [
         "https://www.iranintl.com/en/202611249881"
       ],
+      "resumo_pulso": "Segundo dados de rastreamento marítimo da Kpler divulgados pela agência Iran International, as remessas de petróleo dos países do Golfo Pérsico retomaram o volume observado antes do conflito regional. Arábia Saudita e Emirados Árabes Unidos lideraram a recuperação, operando com rotas alternativas e reforço de escolta militar no Estreito de Hormuz.",
+      "titulo_curto": "Exportações de petróleo no Golfo Pérsico retornam aos níveis pré-guerra apesar de ataques em Hormuz",
       "palavras_chave": [
         "Petróleo",
         "Golfo Pérsico",
@@ -893,31 +928,33 @@
         "Kpler",
         "Arábia Saudita"
       ],
+      "urgencia_score": 85,
       "data_publicacao": "2026-11-24T23:18:08Z",
-      "links_internos_relacionados": [],
-      "expires_at": "2026-11-27T23:18:08Z",
-      "updated_at": "2026-11-24T23:20:33Z"
+      "impacto_pratico": "Mitiga a escalada extrema nos preços internacionais do barril de petróleo e ameniza impactos nos combustíveis globais.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Iran International"
+      ],
+      "relevancia_score": 88,
+      "horas_em_destaque": 8,
+      "paises_envolvidos": [
+        "SA",
+        "AE",
+        "IR"
+      ],
+      "links_internos_relacionados": []
     },
     {
       "slug": "moraes-autoriza-advogado-visitar-bolsonaro-hospital",
-      "titulo_curto": "Moraes autoriza advogado a visitar o ex-presidente Jair Bolsonaro no hospital",
-      "resumo_pulso": "Segundo apuração do portal Poder360, o ministro Alexandre de Moraes autorizou a visita de advogados ao ex-presidente Jair Bolsonaro, internado na UTI do hospital DF Star desde sábado (21). A decisão judicial impõe estrita proibição ao uso de celulares e câmeras durante os encontros.",
-      "impacto_pratico": "Acompanhamento jurídico e médico do ex-presidente em meio às restrições cautelares impostas pelo STF.",
       "categoria": "Geopolitica_Relacoes",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "urgencia_score": 90,
-      "relevancia_score": 92,
-      "nivel_confianca": "alta",
       "ttl_horas": 12,
-      "horas_em_destaque": 6,
-      "veiculos_origem": [
-        "Poder360"
-      ],
+      "expires_at": "2026-11-25T11:19:15Z",
+      "updated_at": "2026-11-24T23:20:33Z",
       "fontes_urls": [
         "https://www.poder360.com.br/poder-justica/moraes-autoriza-advogado-a-visitar-bolsonaro-no-hospital/"
       ],
+      "resumo_pulso": "Segundo apuração do portal Poder360, o ministro Alexandre de Moraes autorizou a visita de advogados ao ex-presidente Jair Bolsonaro, internado na UTI do hospital DF Star desde sábado (21). A decisão judicial impõe estrita proibição ao uso de celulares e câmeras durante os encontros.",
+      "titulo_curto": "Moraes autoriza advogado a visitar o ex-presidente Jair Bolsonaro no hospital",
       "palavras_chave": [
         "Alexandre de Moraes",
         "Jair Bolsonaro",
@@ -925,37 +962,37 @@
         "STF",
         "Visita médica"
       ],
+      "urgencia_score": 90,
       "data_publicacao": "2026-11-24T23:17:16Z",
-      "links_internos_relacionados": [
-        {
-          "titulo_existente": "Política no Brasil",
-          "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
-          "motivo_conexao": "Contextualiza os desdobramentos judiciais envolvendo lideranças políticas nacionais."
-        }
+      "impacto_pratico": "Acompanhamento jurídico e médico do ex-presidente em meio às restrições cautelares impostas pelo STF.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Poder360"
       ],
-      "expires_at": "2026-11-25T11:19:15Z",
-      "updated_at": "2026-11-24T23:20:33Z"
-    },
-    {
-      "slug": "camara-aprova-raca-cor-prontuarios-sus-chacina-acari",
-      "titulo_curto": "Câmara aprova inclusão de raça e cor no SUS e reconhecimento de indenização da Chacina de Acari",
-      "resumo_pulso": "Segundo informou o canal oficial da Câmara dos Deputados, o plenário aprovou o projeto que obriga o registro de raça e cor nos prontuários médicos do SUS. Além disso, os parlamentares aprovaram o projeto que reconhece a responsabilidade do Estado e concede pensão às famílias das vítimas da Chacina de Acari (RJ).",
-      "impacto_pratico": "Mudança nos procedimentos de atendimento no SUS e reparação financeira direta para familiares de vítimas de violência histórica de Estado.",
-      "categoria": "Sociedade_Cultura",
+      "relevancia_score": 92,
+      "horas_em_destaque": 6,
       "paises_envolvidos": [
         "BR"
       ],
-      "urgencia_score": 86,
-      "relevancia_score": 90,
-      "nivel_confianca": "alta",
+      "links_internos_relacionados": [
+        {
+          "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
+          "motivo_conexao": "Contextualiza os desdobramentos judiciais envolvendo lideranças políticas nacionais.",
+          "titulo_existente": "Política no Brasil"
+        }
+      ]
+    },
+    {
+      "slug": "camara-aprova-raca-cor-prontuarios-sus-chacina-acari",
+      "categoria": "Sociedade_Cultura",
       "ttl_horas": 24,
-      "horas_em_destaque": 12,
-      "veiculos_origem": [
-        "Câmara dos Deputados - YouTube"
-      ],
+      "expires_at": "2026-11-25T23:20:33Z",
+      "updated_at": "2026-11-24T23:20:33Z",
       "fontes_urls": [
         "https://www.youtube.com/watch?v=_wREA4YDJ_g"
       ],
+      "resumo_pulso": "Segundo informou o canal oficial da Câmara dos Deputados, o plenário aprovou o projeto que obriga o registro de raça e cor nos prontuários médicos do SUS. Além disso, os parlamentares aprovaram o projeto que reconhece a responsabilidade do Estado e concede pensão às famílias das vítimas da Chacina de Acari (RJ).",
+      "titulo_curto": "Câmara aprova inclusão de raça e cor no SUS e reconhecimento de indenização da Chacina de Acari",
       "palavras_chave": [
         "Câmara dos Deputados",
         "SUS",
@@ -963,37 +1000,78 @@
         "Direitos Humanos",
         "Legislação"
       ],
+      "urgencia_score": 86,
       "data_publicacao": "2026-11-24T23:09:55Z",
-      "links_internos_relacionados": [
-        {
-          "titulo_existente": "Política no Brasil",
-          "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
-          "motivo_conexao": "Mostra a tramitação e aprovação de propostas sociais essenciais no Congresso Nacional."
-        }
+      "impacto_pratico": "Mudança nos procedimentos de atendimento no SUS e reparação financeira direta para familiares de vítimas de violência histórica de Estado.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Câmara dos Deputados - YouTube"
       ],
-      "expires_at": "2026-11-25T23:20:33Z",
-      "updated_at": "2026-11-24T23:20:33Z"
-    },
-    {
-      "slug": "justica-condena-engenheiros-incendio-ninho-do-urubu",
-      "titulo_curto": "Justiça do Rio condena dois engenheiros a 8 anos de prisão por tragédia no Ninho do Urubu",
-      "resumo_pulso": "Conforme apuração do portal Poder360, a Justiça do Rio de Janeiro condenou dois engenheiros a 8 anos de prisão pelo incêndio no centro de treinamento do Flamengo em 2019. A decisão responsabilizou os profissionais por falhas de segurança nos alojamentos que resultaram na morte de dez jovens atletas.",
-      "impacto_pratico": "Cria precedente judicial rigoroso sobre responsabilidade técnica e segurança em alojamentos desportivos e instalações coletivas.",
-      "categoria": "Sociedade_Cultura",
+      "relevancia_score": 90,
+      "horas_em_destaque": 12,
       "paises_envolvidos": [
         "BR"
       ],
-      "urgencia_score": 88,
-      "relevancia_score": 91,
-      "nivel_confianca": "alta",
-      "ttl_horas": 24,
-      "horas_em_destaque": 12,
-      "veiculos_origem": [
-        "Poder360"
+      "links_internos_relacionados": [
+        {
+          "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
+          "motivo_conexao": "Mostra a tramitação e aprovação de propostas sociais essenciais no Congresso Nacional.",
+          "titulo_existente": "Política no Brasil"
+        }
+      ]
+    },
+    {
+      "slug": "ataques-drones-russos-incendio-predio-kiev",
+      "titulo_curto": "Ataques de drones russos provocam incêndio em prédio residencial e deixam feridos em Kiev",
+      "resumo_pulso": "Conforme reportado pelas agências Ukrinform e The Kyiv Independent, destroços de um drone russo provocaram incêndio em um edifício residencial de 16 andares em Kiev. Os ataques noturnos também causaram mortes na região de Odesa, elevando o alerta de defesa aérea na Ucrânia.",
+      "impacto_pratico": "Intensificação dos alertas de segurança para residentes e missões estrangeiras na capital ucraniana.",
+      "categoria": "Geopolitica_Relacoes",
+      "paises_envolvidos": [
+        "UA",
+        "RU"
       ],
+      "urgencia_score": 90,
+      "relevancia_score": 88,
+      "nivel_confianca": "alta",
+      "ttl_horas": 18,
+      "horas_em_destaque": 8,
+      "veiculos_origem": [
+        "Ukrinform",
+        "The Kyiv Independent"
+      ],
+      "fontes_urls": [
+        "https://kyivindependent.com/russian-attacks-kill-2-in-odesa-oblast-including-child-injure-more-in-kyiv/",
+        "https://www.ukrinform.net/rubric-ato/4188265-debris-from-russian-drone-causes-fire-in-16story-residential-building-in-kyiv.html"
+      ],
+      "palavras_chave": [
+        "Ucrânia",
+        "Rússia",
+        "Kiev",
+        "drones",
+        "conflito"
+      ],
+      "data_publicacao": "2026-11-24T23:08:00Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "O que é uma sanção internacional?",
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-sancao-internacional",
+          "motivo_conexao": "Compreenda as medidas econômicas e geopolíticas aplicadas no contexto do conflito no leste europeu."
+        }
+      ],
+      "expires_at": "2026-11-25T17:24:39Z",
+      "updated_at": "2026-11-24T23:24:39Z"
+    },
+    {
+      "slug": "justica-condena-engenheiros-incendio-ninho-do-urubu",
+      "categoria": "Sociedade_Cultura",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-25T23:20:33Z",
+      "updated_at": "2026-11-24T23:20:33Z",
       "fontes_urls": [
         "https://www.poder360.com.br/poder-justica/justica-condena-2-engenheiros-por-incendio-no-ninho-do-urubu/"
       ],
+      "resumo_pulso": "Conforme apuração do portal Poder360, a Justiça do Rio de Janeiro condenou dois engenheiros a 8 anos de prisão pelo incêndio no centro de treinamento do Flamengo em 2019. A decisão responsabilizou os profissionais por falhas de segurança nos alojamentos que resultaram na morte de dez jovens atletas.",
+      "titulo_curto": "Justiça do Rio condena dois engenheiros a 8 anos de prisão por tragédia no Ninho do Urubu",
       "palavras_chave": [
         "Ninho do Urubu",
         "Flamengo",
@@ -1001,32 +1079,69 @@
         "Responsabilidade Técnica",
         "Incêndio 2019"
       ],
+      "urgencia_score": 88,
       "data_publicacao": "2026-11-24T23:03:39Z",
-      "links_internos_relacionados": [],
-      "expires_at": "2026-11-25T23:20:33Z",
-      "updated_at": "2026-11-24T23:20:33Z"
+      "impacto_pratico": "Cria precedente judicial rigoroso sobre responsabilidade técnica e segurança em alojamentos desportivos e instalações coletivas.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Poder360"
+      ],
+      "relevancia_score": 91,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "links_internos_relacionados": []
+    },
+    {
+      "slug": "itau-entra-no-minha-casa-minha-vida-faixa-3",
+      "titulo_curto": "Itaú passa a oferecer financiamento pelo Minha Casa, Minha Vida para faixa de maior renda",
+      "resumo_pulso": "Segundo apuração do InfoMoney, o Itaú Unibanco anunciou o início da oferta de crédito imobiliário pelo programa Minha Casa, Minha Vida voltado à Faixa 3 (renda entre R$ 5 mil e R$ 9,6 mil). A iniciativa marca a expansão dos bancos privados em um mercado tradicionalmente dominado pela Caixa Econômica Federal.",
+      "impacto_pratico": "Amplia as opções de financiamento habitacional com juros subsidiados para famílias de renda média urbana.",
+      "categoria": "Economia_Comercio",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "urgencia_score": 85,
+      "relevancia_score": 87,
+      "nivel_confianca": "alta",
+      "ttl_horas": 24,
+      "horas_em_destaque": 6,
+      "veiculos_origem": [
+        "InfoMoney"
+      ],
+      "fontes_urls": [
+        "https://www.infomoney.com.br/business/itau-entra-no-mcmv-e-avanca-sobre-mercado-dominado-pela-caixa/"
+      ],
+      "palavras_chave": [
+        "Itaú",
+        "Minha Casa Minha Vida",
+        "crédito imobiliário",
+        "Caixa",
+        "habitação"
+      ],
+      "data_publicacao": "2026-11-24T22:51:03Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "Economia no Brasil",
+          "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
+          "motivo_conexao": "Acompanhe as tendências de crédito, setor imobiliário e taxas de juros no país."
+        }
+      ],
+      "expires_at": "2026-11-25T23:24:39Z",
+      "updated_at": "2026-11-24T23:24:39Z"
     },
     {
       "slug": "argentina-entra-em-recessao-tecnica-setembro",
-      "titulo_curto": "Atividade econômica da Argentina encolhe e entra em recessão técnica em setembro",
-      "resumo_pulso": "Conforme dados preliminares do Indec e apuração do G1 Economia, a atividade econômica argentina caiu 1,2% em setembro na comparação anual. O resultado veio abaixo das projeções do mercado financeiro e confirmou a entrada do país vizinho em um quadro de recessão técnica.",
-      "impacto_pratico": "Afeta o fluxo de comércio bilateral com o Brasil e a demanda por produtos manufaturados brasileiros na região.",
       "categoria": "Economia_Comercio",
-      "paises_envolvidos": [
-        "AR",
-        "BR"
-      ],
-      "urgencia_score": 88,
-      "relevancia_score": 89,
-      "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 12,
-      "veiculos_origem": [
-        "G1 Economia"
-      ],
+      "expires_at": "2026-11-25T23:19:15Z",
+      "updated_at": "2026-11-24T23:20:33Z",
       "fontes_urls": [
         "https://g1.globo.com/economia/noticia/2026/11/24/economia-da-argentina-encolhe-e-entra-em-recessao-tecnica-apontam-dados-preliminares.ghtml"
       ],
+      "resumo_pulso": "Conforme dados preliminares do Indec e apuração do G1 Economia, a atividade econômica argentina caiu 1,2% em setembro na comparação anual. O resultado veio abaixo das projeções do mercado financeiro e confirmou a entrada do país vizinho em um quadro de recessão técnica.",
+      "titulo_curto": "Atividade econômica da Argentina encolhe e entra em recessão técnica em setembro",
       "palavras_chave": [
         "Argentina",
         "Javier Milei",
@@ -1034,39 +1149,38 @@
         "Recessão Técnica",
         "PIB"
       ],
+      "urgencia_score": 88,
       "data_publicacao": "2026-11-24T22:33:17Z",
+      "impacto_pratico": "Afeta o fluxo de comércio bilateral com o Brasil e a demanda por produtos manufaturados brasileiros na região.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "G1 Economia"
+      ],
+      "relevancia_score": 89,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "AR",
+        "BR"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "Economia no Brasil",
           "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
-          "motivo_conexao": "Permite analisar a exposição comercial do mercado brasileiro às oscilações da economia argentina."
+          "motivo_conexao": "Permite analisar a exposição comercial do mercado brasileiro às oscilações da economia argentina.",
+          "titulo_existente": "Economia no Brasil"
         }
-      ],
-      "expires_at": "2026-11-25T23:19:15Z",
-      "updated_at": "2026-11-24T23:20:33Z"
+      ]
     },
     {
       "slug": "ira-divulga-video-ataque-aviao-comercial-guerra",
-      "titulo_curto": "Imprensa iraniana divulga vídeo de suposto ataque a avião comercial no início do conflito",
-      "resumo_pulso": "Conforme reportado pelo G1 Mundo com base em veículos estatais do Irã, a imprensa iraniana divulgou imagens que mostrariam o momento em que uma aeronave comercial foi atingida no início das hostilidades na região. Teerã atribui a ação a forças americanas e israelenses, enquanto apurações internacionais buscam verificação independente dos registros.",
-      "impacto_pratico": "Eleva a tensão diplomática e traz novas incertezas quanto à segurança da aviação civil em rotas do Oriente Médio.",
       "categoria": "Geopolitica_Relacoes",
-      "paises_envolvidos": [
-        "IR",
-        "US",
-        "IL"
-      ],
-      "urgencia_score": 88,
-      "relevancia_score": 89,
-      "nivel_confianca": "preliminar",
       "ttl_horas": 18,
-      "horas_em_destaque": 8,
-      "veiculos_origem": [
-        "G1 Mundo"
-      ],
+      "expires_at": "2026-11-25T17:20:33Z",
+      "updated_at": "2026-11-24T23:20:33Z",
       "fontes_urls": [
         "https://g1.globo.com/mundo/noticia/2026/11/24/imprensa-iraniana-divulga-video-de-suposto-ataque-a-aviao-comercial-no-inicio-da-guerra.ghtml"
       ],
+      "resumo_pulso": "Conforme reportado pelo G1 Mundo com base em veículos estatais do Irã, a imprensa iraniana divulgou imagens que mostrariam o momento em que uma aeronave comercial foi atingida no início das hostilidades na região. Teerã atribui a ação a forças americanas e israelenses, enquanto apurações internacionais buscam verificação independente dos registros.",
+      "titulo_curto": "Imprensa iraniana divulga vídeo de suposto ataque a avião comercial no início do conflito",
       "palavras_chave": [
         "Irã",
         "Aviação Civil",
@@ -1074,39 +1188,39 @@
         "EUA",
         "Israel"
       ],
+      "urgencia_score": 88,
       "data_publicacao": "2026-11-24T22:07:59Z",
+      "impacto_pratico": "Eleva a tensão diplomática e traz novas incertezas quanto à segurança da aviação civil em rotas do Oriente Médio.",
+      "nivel_confianca": "preliminar",
+      "veiculos_origem": [
+        "G1 Mundo"
+      ],
+      "relevancia_score": 89,
+      "horas_em_destaque": 8,
+      "paises_envolvidos": [
+        "IR",
+        "US",
+        "IL"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "O que é uma sanção internacional?",
           "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-sancao-internacional",
-          "motivo_conexao": "Ajuda a compreender o contexto de escalada militar e sanções na região do Golfo."
+          "motivo_conexao": "Ajuda a compreender o contexto de escalada militar e sanções na região do Golfo.",
+          "titulo_existente": "O que é uma sanção internacional?"
         }
-      ],
-      "expires_at": "2026-11-25T17:20:33Z",
-      "updated_at": "2026-11-24T23:20:33Z"
+      ]
     },
     {
       "slug": "dolar-cai-5-91-ajuste-fiscal-sancao",
-      "titulo_curto": "Dólar recua para R$ 5,91 com expectativa por medidas fiscais e sanção do governo",
-      "resumo_pulso": "Segundo dados divulgados pela Agência Brasil e análise do mercado financeiro, o dólar comercial encerrou o dia em queda de 0,3%, cotado a R$ 5,91. O alívio cambial refletiu o avanço nas negociações sobre o pacote de contenção de gastos públicos e a sanção presidencial do plano de ajuste.",
-      "impacto_pratico": "Redução pontual da pressão sobre importações e expectativas inflacionárias de curto prazo no Brasil.",
       "categoria": "Economia_Comercio",
-      "paises_envolvidos": [
-        "BR",
-        "US"
-      ],
-      "urgencia_score": 89,
-      "relevancia_score": 93,
-      "nivel_confianca": "alta",
       "ttl_horas": 12,
-      "horas_em_destaque": 8,
-      "veiculos_origem": [
-        "Agência Brasil (EBC)",
-        "Market Makers"
-      ],
+      "expires_at": "2026-11-25T11:20:33Z",
+      "updated_at": "2026-11-24T23:20:33Z",
       "fontes_urls": [
         "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/dolar-cai-para-r-591-com-expectativa-de-ajuste-fiscal"
       ],
+      "resumo_pulso": "Segundo dados divulgados pela Agência Brasil e análise do mercado financeiro, o dólar comercial encerrou o dia em queda de 0,3%, cotado a R$ 5,91. O alívio cambial refletiu o avanço nas negociações sobre o pacote de contenção de gastos públicos e a sanção presidencial do plano de ajuste.",
+      "titulo_curto": "Dólar recua para R$ 5,91 com expectativa por medidas fiscais e sanção do governo",
       "palavras_chave": [
         "Dólar",
         "Ajuste Fiscal",
@@ -1114,21 +1228,32 @@
         "Mercado Financeiro",
         "Câmbio"
       ],
+      "urgencia_score": 89,
       "data_publicacao": "2026-11-24T22:01:00Z",
+      "impacto_pratico": "Redução pontual da pressão sobre importações e expectativas inflacionárias de curto prazo no Brasil.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Agência Brasil (EBC)",
+        "Market Makers"
+      ],
+      "relevancia_score": 93,
+      "horas_em_destaque": 8,
+      "paises_envolvidos": [
+        "BR",
+        "US"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "O que é inflação?",
           "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
-          "motivo_conexao": "Explica como a variação da taxa de câmbio afeta os preços e a inflação oficial no país."
+          "motivo_conexao": "Explica como a variação da taxa de câmbio afeta os preços e a inflação oficial no país.",
+          "titulo_existente": "O que é inflação?"
         },
         {
-          "titulo_existente": "Economia no Brasil",
           "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
-          "motivo_conexao": "Acompanha os desdobramentos do ajuste fiscal e do mercado de ativos no Brasil."
+          "motivo_conexao": "Acompanha os desdobramentos do ajuste fiscal e do mercado de ativos no Brasil.",
+          "titulo_existente": "Economia no Brasil"
         }
-      ],
-      "expires_at": "2026-11-25T11:20:33Z",
-      "updated_at": "2026-11-24T23:20:33Z"
+      ]
     },
     {
       "slug": "ceo-nvidia-jensen-huang-retorno-pedido-desculpas",
@@ -1505,108 +1630,6 @@
           "titulo_existente": "O que é uma sanção internacional?"
         }
       ]
-    },
-    {
-      "slug": "fim-da-escala-6-por-1-trabalho-acordos-coletivos",
-      "categoria": "Economia_Comercio",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-25T12:28:51Z",
-      "updated_at": "2026-11-24T12:28:51Z",
-      "fontes_urls": [
-        "https://g1.globo.com/economia/noticia/2026/11/24/fim-da-escala-6-por-1-ministro-recomenda-que-setor-da-economia-feche-acordo-coletivo-ate-dia-16-se-quiser-escala-diferente.ghtml"
-      ],
-      "resumo_pulso": "Segundo reportagem do G1 Política, o ministro do Trabalho, Luiz Marinho, recomendou que empresas e sindicatos de setores que queiram manter jornadas alternativas — sem a folga padrão obrigatória aos sábados e domingos — formalizem acordos coletivos até o dia 16. A orientação ocorre no contexto de transição das novas regras sobre o repouso semanal remunerado.",
-      "titulo_curto": "Governo recomenda acordos coletivos até o dia 16 para setores que desejarem escala de trabalho diferente",
-      "palavras_chave": [
-        "trabalho",
-        "escala 6x1",
-        "ministerio do trabalho",
-        "acordo coletivo"
-      ],
-      "urgencia_score": 91,
-      "data_publicacao": "2026-11-24T11:34:00Z",
-      "impacto_pratico": "Trabalhadores e empregadores de comércio e serviços precisam renegociar convenções coletivas para evitar conflitos trabalhistas com a nova legislação.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "G1 Política"
-      ],
-      "relevancia_score": 92,
-      "horas_em_destaque": 12,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
-          "motivo_conexao": "Contextua os impactos das diretrizes trabalhistas e negociações coletivas no mercado nacional.",
-          "titulo_existente": "Economia no Brasil"
-        }
-      ]
-    },
-    {
-      "slug": "malaysia-set-to-return-rohingya-refugees-to-myanmar",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-25T08:43:53Z",
-      "updated_at": "2026-11-24T08:43:53Z",
-      "fontes_urls": [
-        "https://www.aljazeera.com/news/2026/11/24/malaysia-set-to-return-thousands-of-rohingya-refugees-to-myanmar-2?traffic_source=rss"
-      ],
-      "resumo_pulso": "Segundo reportagem da Al Jazeera English, o governo da Malásia anunciou planos para retornar milhares de refugiados rohingyas a Mianmar. A medida ocorre poucos dias após a Corte Internacional de Justiça (CIJ) emitir parecer sobre o genocídio da minoria, gerando preocupações humanitárias internacionais.",
-      "titulo_curto": "Malásia planeja repatriação de refugiados rohingyas para Mianmar após decisão da CIJ",
-      "palavras_chave": [
-        "Malásia",
-        "Mianmar",
-        "Rohingyas",
-        "Refugiados",
-        "CIJ"
-      ],
-      "urgencia_score": 85,
-      "data_publicacao": "2026-11-24T08:21:41Z",
-      "impacto_pratico": "A repatriação levanta debates críticos sobre direitos humanos, segurança de refugiados e o cumprimento de resoluções de tribunais internacionais.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Al Jazeera English"
-      ],
-      "relevancia_score": 84,
-      "horas_em_destaque": 12,
-      "paises_envolvidos": [
-        "MY",
-        "MM"
-      ],
-      "links_internos_relacionados": []
-    },
-    {
-      "slug": "papa-francisco-diarios-crise-espiritual",
-      "categoria": "Sociedade_Cultura",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-25T08:43:53Z",
-      "updated_at": "2026-11-24T08:43:53Z",
-      "fontes_urls": [
-        "https://g1.globo.com/mundo/noticia/2026/11/24/diarios-revelam-que-o-papa-francisco-teve-visoes-do-diabo-e-do-inferno.ghtml"
-      ],
-      "resumo_pulso": "Conforme apuração do G1 Mundo com base em nova publicação de registros pessoais, o Papa Francisco passou por uma intensa crise espiritual a partir de 2021, lidando com desafios sobre o exercício de poder na Igreja Católica. Os escritos mostram reflexões profundas do pontífice falecido em abril de 2025.",
-      "titulo_curto": "Diários póstumos revelam que Papa Francisco enfrentou crise espiritual e visões entre 2021 e 2023",
-      "palavras_chave": [
-        "Papa Francisco",
-        "Vaticano",
-        "Igreja Católica",
-        "Diários"
-      ],
-      "urgencia_score": 83,
-      "data_publicacao": "2026-11-24T07:30:10Z",
-      "impacto_pratico": "A divulgação dos diários oferece uma perspectiva inédita sobre os bastidores e o estado mental e espiritual da liderança máxima do Vaticano durante os anos recentes.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "G1 Mundo"
-      ],
-      "relevancia_score": 86,
-      "horas_em_destaque": 12,
-      "paises_envolvidos": [
-        "VA",
-        "IT"
-      ],
-      "links_internos_relacionados": []
     }
   ],
   "temas_curadoria": [
