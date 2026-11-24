@@ -2,23 +2,76 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-24T01:29:11Z",
-  "batch_id": "20261124-0128",
+  "updatedAt": "2026-11-24T02:14:14Z",
+  "batch_id": "20261124-0213",
   "temas_ativos": [
     {
-      "slug": "crise-hormuz-petroleo-navios-incendio",
-      "titulo_tema": "Tensão no Estreito de Hormuz: Navios atingidos por minas geram alerta global de energia",
+      "slug": "camara-aprova-texto-base-ajuste-fiscal-governo",
+      "titulo_tema": "Câmara aprova texto-base do projeto de ajuste fiscal do governo Lula",
+      "titulo_curto": "Câmara aprova texto-base do projeto de ajuste fiscal do governo Lula",
       "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Economia",
+      "categoria": "Economia_Comercio",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 98,
+      "urgencia_score": 98,
+      "ttl_horas": 12,
+      "expires_at": "2026-11-24T14:14:14Z",
+      "palavras_chave_busca": [
+        "ajuste fiscal",
+        "câmara dos deputados",
+        "governo lula",
+        "contas públicas"
+      ],
+      "palavras_chave": [
+        "ajuste fiscal",
+        "câmara dos deputados",
+        "governo lula",
+        "contas públicas"
+      ],
+      "gatilho_vitrine": "A Câmara dos Deputados aprovou, por 353 votos a favor, o texto-base do projeto de ajuste fiscal que visa equilibrar as contas públicas para 2027. Conforme apuração da Agência Brasil e G1, a proposta segue agora para a análise de destaques, mantendo o impacto estimado de R$ 50 bilhões.",
+      "resumo_pulso": "A Câmara dos Deputados aprovou, por 353 votos a favor, o texto-base do projeto de ajuste fiscal que visa equilibrar as contas públicas para 2027. Conforme apuração da Agência Brasil e G1, a proposta segue agora para a análise de destaques, mantendo o impacto estimado de R$ 50 bilhões.",
+      "sintese_nerd": "A medida é central para a estabilidade das contas públicas e influencia diretamente as expectativas do mercado financeiro sobre a trajetória da dívida e da inflação.",
+      "impacto_pratico": "A medida é central para a estabilidade das contas públicas e influencia diretamente as expectativas do mercado financeiro sobre a trajetória da dívida e da inflação.",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "veiculos_origem": [
+        "Agência Brasil",
+        "G1 Política",
+        "InfoMoney",
+        "JOTA Info"
+      ],
+      "fontes_urls": [
+        "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/camara-aprova-texto-base-do-projeto-de-ajuste-fiscal",
+        "https://g1.globo.com/politica/ao-vivo/ajuste-fiscal-camara-deputados.ghtml"
+      ],
+      "data_publicacao": "2026-11-24T01:44:00Z",
+      "updated_at": "2026-11-24T02:14:14Z"
+    },
+    {
+      "slug": "crise-hormuz-petroleo-navios-incendio",
+      "status": "novo",
+      "ttl_horas": 48,
+      "expires_at": "2026-11-26T01:29:11Z",
+      "updated_at": "2026-11-24T01:29:11Z",
+      "titulo_tema": "Tensão no Estreito de Hormuz: Navios atingidos por minas geram alerta global de energia",
+      "sintese_nerd": "A detonação de minas navais no Estreito de Hormuz incendiando petroleiros ameaça diretamente o fluxo de suprimento energético mundial, elevando a volatilidade do Brent. Para o Brasil, choques nos preços internacionais do petróleo pressionam os custos internos de combustíveis e a inflação gerida pela Petrobras.",
+      "rota_editoria": "/radar",
+      "data_publicacao": "2026-11-24T01:29:11Z",
+      "gatilho_vitrine": "Destacar impacto imediato de conflitos no Oriente Médio sobre os preços globais do petróleo e reflexos na inflação e câmbio no Brasil.",
       "origem_pipeline": "curadoria",
+      "relevancia_score": 98,
       "categoria_primaria": "Geopolitica_Radar",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
       ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 98,
-      "ttl_horas": 48,
-      "expires_at": "2026-11-26T01:29:11Z",
       "palavras_chave_busca": [
         "estreito de hormuz",
         "petróleo",
@@ -26,26 +79,26 @@
         "crise energética",
         "navios petroleiros",
         "geopolítica do oriente médio"
-      ],
-      "gatilho_vitrine": "Destacar impacto imediato de conflitos no Oriente Médio sobre os preços globais do petróleo e reflexos na inflação e câmbio no Brasil.",
-      "sintese_nerd": "A detonação de minas navais no Estreito de Hormuz incendiando petroleiros ameaça diretamente o fluxo de suprimento energético mundial, elevando a volatilidade do Brent. Para o Brasil, choques nos preços internacionais do petróleo pressionam os custos internos de combustíveis e a inflação gerida pela Petrobras.",
-      "data_publicacao": "2026-11-24T01:29:11Z",
-      "updated_at": "2026-11-24T01:29:11Z"
+      ]
     },
     {
       "slug": "retorno-jensen-huang-nvidia-impacto-mercados",
-      "titulo_tema": "Retorno de Jensen Huang à Nvidia impulsiona ações e acende debate sobre volatilidade em IA",
       "status": "novo",
+      "ttl_horas": 72,
+      "expires_at": "2026-11-27T01:29:11Z",
+      "updated_at": "2026-11-24T01:29:11Z",
+      "titulo_tema": "Retorno de Jensen Huang à Nvidia impulsiona ações e acende debate sobre volatilidade em IA",
+      "sintese_nerd": "A recondução unânime de Jensen Huang à liderança da Nvidia provocou disparada nas ações da gigante de semicondutores, aliviando incertezas regulatórias e o escrutínio sobre o comércio global de chips. O movimento reflete a extrema dependência dos mercados financeiros internacionais em relação ao ecossistema de inteligência artificial.",
+      "rota_editoria": "/economia",
+      "data_publicacao": "2026-11-24T01:29:11Z",
+      "gatilho_vitrine": "Analisar o peso do setor tecnológico norte-americano sobre os mercados globais e as novas sanções comerciais dos EUA.",
       "origem_pipeline": "curadoria",
+      "relevancia_score": 92,
       "categoria_primaria": "Economia",
       "categorias_cruzadas": [
         "Geopolitica_Radar",
         "Cultura"
       ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 92,
-      "ttl_horas": 72,
-      "expires_at": "2026-11-27T01:29:11Z",
       "palavras_chave_busca": [
         "nvidia",
         "jensen huang",
@@ -53,26 +106,26 @@
         "mercado acionário",
         "controles de exportação",
         "bolsa de nova york"
-      ],
-      "gatilho_vitrine": "Analisar o peso do setor tecnológico norte-americano sobre os mercados globais e as novas sanções comerciais dos EUA.",
-      "sintese_nerd": "A recondução unânime de Jensen Huang à liderança da Nvidia provocou disparada nas ações da gigante de semicondutores, aliviando incertezas regulatórias e o escrutínio sobre o comércio global de chips. O movimento reflete a extrema dependência dos mercados financeiros internacionais em relação ao ecossistema de inteligência artificial.",
-      "data_publicacao": "2026-11-24T01:29:11Z",
-      "updated_at": "2026-11-24T01:29:11Z"
+      ]
     },
     {
       "slug": "petrobras-margem-equatorial-exploracao",
-      "titulo_tema": "Petrobras eleva investimentos em exploração em 41% com foco na Margem Equatorial",
       "status": "novo",
+      "ttl_horas": 96,
+      "expires_at": "2026-11-28T01:29:11Z",
+      "updated_at": "2026-11-24T01:29:11Z",
+      "titulo_tema": "Petrobras eleva investimentos em exploração em 41% com foco na Margem Equatorial",
+      "sintese_nerd": "O anúncio de um aporte multibilionário pela Petrobras para novas fronteiras, com destaque para a Margem Equatorial, equilibra a busca por reposição de reservas com debates ambientais sensíveis. A decisão direciona o foco da estatal para a segurança energética de longo prazo e geração de caixa.",
+      "rota_editoria": "/economia",
+      "data_publicacao": "2026-11-24T01:29:11Z",
+      "gatilho_vitrine": "Monitorar a estratégia corporativa da estatal brasileira frente aos novos desafios de transição energética e reservas exploratórias.",
       "origem_pipeline": "curadoria",
+      "relevancia_score": 88,
       "categoria_primaria": "Economia",
       "categorias_cruzadas": [
         "Politica",
         "Geopolitica_Radar"
       ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 88,
-      "ttl_horas": 96,
-      "expires_at": "2026-11-28T01:29:11Z",
       "palavras_chave_busca": [
         "petrobras",
         "margem equatorial",
@@ -80,26 +133,26 @@
         "investimentos",
         "setor energético",
         "governo federal"
-      ],
-      "gatilho_vitrine": "Monitorar a estratégia corporativa da estatal brasileira frente aos novos desafios de transição energética e reservas exploratórias.",
-      "sintese_nerd": "O anúncio de um aporte multibilionário pela Petrobras para novas fronteiras, com destaque para a Margem Equatorial, equilibra a busca por reposição de reservas com debates ambientais sensíveis. A decisão direciona o foco da estatal para a segurança energética de longo prazo e geração de caixa.",
-      "data_publicacao": "2026-11-24T01:29:11Z",
-      "updated_at": "2026-11-24T01:29:11Z"
+      ]
     },
     {
       "slug": "zelensky-cobre-adesao-otan-assembleia",
-      "titulo_tema": "Zelensky pressiona por inclusão da Ucrânia na OTAN durante assembleia da aliança",
       "status": "novo",
+      "ttl_horas": 48,
+      "expires_at": "2026-11-26T01:29:11Z",
+      "updated_at": "2026-11-24T01:29:11Z",
+      "titulo_tema": "Zelensky pressiona por inclusão da Ucrânia na OTAN durante assembleia da aliança",
+      "sintese_nerd": "A insistência de Volodymyr Zelensky na admissão imediata da Ucrânia à OTAN busca garantias formais de defesa frente às incursões aéreas russas na Europa. A pauta testa a coesão dos aliados ocidentais e o patamar de tolerância a uma escalada direta com Moscou.",
+      "rota_editoria": "/radar",
+      "data_publicacao": "2026-11-24T01:29:11Z",
+      "gatilho_vitrine": "Cobrir os desdobramentos diplomáticos e de segurança na Europa Oriental e os riscos de escalada militar.",
       "origem_pipeline": "curadoria",
+      "relevancia_score": 85,
       "categoria_primaria": "Geopolitica_Radar",
       "categorias_cruzadas": [
         "Politica",
         "Resumo_Ultimas"
       ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 85,
-      "ttl_horas": 48,
-      "expires_at": "2026-11-26T01:29:11Z",
       "palavras_chave_busca": [
         "ucrânia",
         "otan",
@@ -107,55 +160,6 @@
         "guerra na europa",
         "segurança internacional",
         "diplomacia"
-      ],
-      "gatilho_vitrine": "Cobrir os desdobramentos diplomáticos e de segurança na Europa Oriental e os riscos de escalada militar.",
-      "sintese_nerd": "A insistência de Volodymyr Zelensky na admissão imediata da Ucrânia à OTAN busca garantias formais de defesa frente às incursões aéreas russas na Europa. A pauta testa a coesão dos aliados ocidentais e o patamar de tolerância a uma escalada direta com Moscou.",
-      "data_publicacao": "2026-11-24T01:29:11Z",
-      "updated_at": "2026-11-24T01:29:11Z"
-    },
-    {
-      "slug": "petrobras-margem-equatorial-exploracao-aumento",
-      "status": "novo",
-      "categoria": "Economia_Comercio",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-25T00:57:38Z",
-      "updated_at": "2026-11-24T00:57:38Z",
-      "fontes_urls": [
-        "https://www.poder360.com.br/poder-energia/com-margem-equatorial-petrobras-eleva-aportes-em-exploracao-em-41/"
-      ],
-      "titulo_tema": "Com foco na Margem Equatorial, Petrobras eleva investimentos em exploração em 41%",
-      "resumo_pulso": "Segundo apuração do portal Poder360, a Petrobras anunciou um montante de US$ 10 bilhões voltado a novas fronteiras exploratórias, representando um salto de 41% nos aportes do setor. A estatal planeja a perfuração de cerca de 50 novos poços ao longo dos próximos cinco anos.",
-      "sintese_nerd": "A expansão exploratória redefine as diretrizes energéticas do país e mobiliza debates sobre matrizes produtivas e exigências ambientais.",
-      "titulo_curto": "Com foco na Margem Equatorial, Petrobras eleva investimentos em exploração em 41%",
-      "rota_editoria": "/economia",
-      "palavras_chave": [
-        "petrobras",
-        "margem equatorial",
-        "exploração",
-        "energia"
-      ],
-      "urgencia_score": 89,
-      "data_publicacao": "2026-11-24T00:47:09Z",
-      "gatilho_vitrine": "Segundo apuração do portal Poder360, a Petrobras anunciou um montante de US$ 10 bilhões voltado a novas fronteiras exploratórias, representando um salto de 41% nos aportes do setor. A estatal planeja a perfuração de cerca de 50 novos poços ao longo dos próximos cinco anos.",
-      "impacto_pratico": "A expansão exploratória redefine as diretrizes energéticas do país e mobiliza debates sobre matrizes produtivas e exigências ambientais.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "Poder360"
-      ],
-      "relevancia_score": 90,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "petrobras",
-        "margem equatorial",
-        "exploração",
-        "energia"
       ]
     },
     {
@@ -775,117 +779,48 @@
       ]
     }
   ],
-  "temas_curadoria": [
-    {
-      "slug": "crise-hormuz-petroleo-navios-incendio",
-      "titulo_tema": "Tensão no Estreito de Hormuz: Navios atingidos por minas geram alerta global de energia",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 98,
-      "ttl_horas": 48,
-      "expires_at": "2026-11-26T01:29:11Z",
-      "palavras_chave_busca": [
-        "estreito de hormuz",
-        "petróleo",
-        "guarda revolucionária do irã",
-        "crise energética",
-        "navios petroleiros",
-        "geopolítica do oriente médio"
-      ],
-      "gatilho_vitrine": "Destacar impacto imediato de conflitos no Oriente Médio sobre os preços globais do petróleo e reflexos na inflação e câmbio no Brasil.",
-      "sintese_nerd": "A detonação de minas navais no Estreito de Hormuz incendiando petroleiros ameaça diretamente o fluxo de suprimento energético mundial, elevando a volatilidade do Brent. Para o Brasil, choques nos preços internacionais do petróleo pressionam os custos internos de combustíveis e a inflação gerida pela Petrobras.",
-      "data_publicacao": "2026-11-24T01:29:11Z",
-      "updated_at": "2026-11-24T01:29:11Z"
-    },
-    {
-      "slug": "retorno-jensen-huang-nvidia-impacto-mercados",
-      "titulo_tema": "Retorno de Jensen Huang à Nvidia impulsiona ações e acende debate sobre volatilidade em IA",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Geopolitica_Radar",
-        "Cultura"
-      ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 92,
-      "ttl_horas": 72,
-      "expires_at": "2026-11-27T01:29:11Z",
-      "palavras_chave_busca": [
-        "nvidia",
-        "jensen huang",
-        "inteligência artificial",
-        "mercado acionário",
-        "controles de exportação",
-        "bolsa de nova york"
-      ],
-      "gatilho_vitrine": "Analisar o peso do setor tecnológico norte-americano sobre os mercados globais e as novas sanções comerciais dos EUA.",
-      "sintese_nerd": "A recondução unânime de Jensen Huang à liderança da Nvidia provocou disparada nas ações da gigante de semicondutores, aliviando incertezas regulatórias e o escrutínio sobre o comércio global de chips. O movimento reflete a extrema dependência dos mercados financeiros internacionais em relação ao ecossistema de inteligência artificial.",
-      "data_publicacao": "2026-11-24T01:29:11Z",
-      "updated_at": "2026-11-24T01:29:11Z"
-    },
-    {
-      "slug": "petrobras-margem-equatorial-exploracao",
-      "titulo_tema": "Petrobras eleva investimentos em exploração em 41% com foco na Margem Equatorial",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Politica",
-        "Geopolitica_Radar"
-      ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 88,
-      "ttl_horas": 96,
-      "expires_at": "2026-11-28T01:29:11Z",
-      "palavras_chave_busca": [
-        "petrobras",
-        "margem equatorial",
-        "exploração de petróleo",
-        "investimentos",
-        "setor energético",
-        "governo federal"
-      ],
-      "gatilho_vitrine": "Monitorar a estratégia corporativa da estatal brasileira frente aos novos desafios de transição energética e reservas exploratórias.",
-      "sintese_nerd": "O anúncio de um aporte multibilionário pela Petrobras para novas fronteiras, com destaque para a Margem Equatorial, equilibra a busca por reposição de reservas com debates ambientais sensíveis. A decisão direciona o foco da estatal para a segurança energética de longo prazo e geração de caixa.",
-      "data_publicacao": "2026-11-24T01:29:11Z",
-      "updated_at": "2026-11-24T01:29:11Z"
-    },
-    {
-      "slug": "zelensky-cobre-adesao-otan-assembleia",
-      "titulo_tema": "Zelensky pressiona por inclusão da Ucrânia na OTAN durante assembleia da aliança",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Politica",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 85,
-      "ttl_horas": 48,
-      "expires_at": "2026-11-26T01:29:11Z",
-      "palavras_chave_busca": [
-        "ucrânia",
-        "otan",
-        "volodymyr zelensky",
-        "guerra na europa",
-        "segurança internacional",
-        "diplomacia"
-      ],
-      "gatilho_vitrine": "Cobrir os desdobramentos diplomáticos e de segurança na Europa Oriental e os riscos de escalada militar.",
-      "sintese_nerd": "A insistência de Volodymyr Zelensky na admissão imediata da Ucrânia à OTAN busca garantias formais de defesa frente às incursões aéreas russas na Europa. A pauta testa a coesão dos aliados ocidentais e o patamar de tolerância a uma escalada direta com Moscou.",
-      "data_publicacao": "2026-11-24T01:29:11Z",
-      "updated_at": "2026-11-24T01:29:11Z"
-    }
-  ],
   "noticias_quentes": [
+    {
+      "slug": "camara-aprova-texto-base-ajuste-fiscal-governo",
+      "titulo_curto": "Câmara aprova texto-base do projeto de ajuste fiscal do governo Lula",
+      "resumo_pulso": "A Câmara dos Deputados aprovou, por 353 votos a favor, o texto-base do projeto de ajuste fiscal que visa equilibrar as contas públicas para 2027. Conforme apuração da Agência Brasil e G1, a proposta segue agora para a análise de destaques, mantendo o impacto estimado de R$ 50 bilhões.",
+      "impacto_pratico": "A medida é central para a estabilidade das contas públicas e influencia diretamente as expectativas do mercado financeiro sobre a trajetória da dívida e da inflação.",
+      "categoria": "Economia_Comercio",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "urgencia_score": 98,
+      "relevancia_score": 98,
+      "nivel_confianca": "alta",
+      "ttl_horas": 12,
+      "horas_em_destaque": 12,
+      "veiculos_origem": [
+        "Agência Brasil",
+        "G1 Política",
+        "InfoMoney",
+        "JOTA Info"
+      ],
+      "fontes_urls": [
+        "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/camara-aprova-texto-base-do-projeto-de-ajuste-fiscal",
+        "https://g1.globo.com/politica/ao-vivo/ajuste-fiscal-camara-deputados.ghtml"
+      ],
+      "palavras_chave": [
+        "ajuste fiscal",
+        "Câmara dos Deputados",
+        "governo Lula",
+        "contas públicas"
+      ],
+      "data_publicacao": "2026-11-24T01:44:00Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "Congresso e Planalto negociam prioridades da pauta econômica e votação do Orçamento",
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-o-orcamento",
+          "motivo_conexao": "Contextualiza a importância da articulação política na aprovação de medidas de ajuste fiscal."
+        }
+      ],
+      "expires_at": "2026-11-24T14:14:14Z",
+      "updated_at": "2026-11-24T02:14:14Z"
+    },
     {
       "slug": "petrobras-margem-equatorial-exploracao-aumento",
       "categoria": "Economia_Comercio",
@@ -1627,42 +1562,115 @@
           "titulo_existente": "Política no Brasil"
         }
       ]
+    }
+  ],
+  "temas_curadoria": [
+    {
+      "slug": "crise-hormuz-petroleo-navios-incendio",
+      "status": "novo",
+      "ttl_horas": 48,
+      "expires_at": "2026-11-26T01:29:11Z",
+      "updated_at": "2026-11-24T01:29:11Z",
+      "titulo_tema": "Tensão no Estreito de Hormuz: Navios atingidos por minas geram alerta global de energia",
+      "sintese_nerd": "A detonação de minas navais no Estreito de Hormuz incendiando petroleiros ameaça diretamente o fluxo de suprimento energético mundial, elevando a volatilidade do Brent. Para o Brasil, choques nos preços internacionais do petróleo pressionam os custos internos de combustíveis e a inflação gerida pela Petrobras.",
+      "rota_editoria": "/radar",
+      "data_publicacao": "2026-11-24T01:29:11Z",
+      "gatilho_vitrine": "Destacar impacto imediato de conflitos no Oriente Médio sobre os preços globais do petróleo e reflexos na inflação e câmbio no Brasil.",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 98,
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "estreito de hormuz",
+        "petróleo",
+        "guarda revolucionária do irã",
+        "crise energética",
+        "navios petroleiros",
+        "geopolítica do oriente médio"
+      ]
     },
     {
-      "slug": "escala-6x1-governo-publica-regras-trabalho",
-      "categoria": "Economia_Comercio",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-25T00:27:46Z",
-      "updated_at": "2026-11-24T00:27:46Z",
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/jornada-5x2-veja-como-ficam-regras-de-salario-folgas-e-horas-extras"
+      "slug": "retorno-jensen-huang-nvidia-impacto-mercados",
+      "status": "novo",
+      "ttl_horas": 72,
+      "expires_at": "2026-11-27T01:29:11Z",
+      "updated_at": "2026-11-24T01:29:11Z",
+      "titulo_tema": "Retorno de Jensen Huang à Nvidia impulsiona ações e acende debate sobre volatilidade em IA",
+      "sintese_nerd": "A recondução unânime de Jensen Huang à liderança da Nvidia provocou disparada nas ações da gigante de semicondutores, aliviando incertezas regulatórias e o escrutínio sobre o comércio global de chips. O movimento reflete a extrema dependência dos mercados financeiros internacionais em relação ao ecossistema de inteligência artificial.",
+      "rota_editoria": "/economia",
+      "data_publicacao": "2026-11-24T01:29:11Z",
+      "gatilho_vitrine": "Analisar o peso do setor tecnológico norte-americano sobre os mercados globais e as novas sanções comerciais dos EUA.",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 92,
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Geopolitica_Radar",
+        "Cultura"
       ],
-      "resumo_pulso": "Conforme publicação oficial da Agência Brasil, o Ministério do Trabalho detalhou as regras complementares para a implementação da jornada 5x2 a partir de meados de dezembro. O texto estabelece normas específicas sobre o cálculo salarial, o descanso semanal remunerado e o papel das negociações coletivas.",
-      "titulo_curto": "Ministério do Trabalho publica portaria com regras de salário e descanso na jornada 5x2",
-      "palavras_chave": [
-        "jornada 5x2",
-        "Ministério do Trabalho",
-        "portaria",
-        "direitos trabalhistas"
+      "palavras_chave_busca": [
+        "nvidia",
+        "jensen huang",
+        "inteligência artificial",
+        "mercado acionário",
+        "controles de exportação",
+        "bolsa de nova york"
+      ]
+    },
+    {
+      "slug": "petrobras-margem-equatorial-exploracao",
+      "status": "novo",
+      "ttl_horas": 96,
+      "expires_at": "2026-11-28T01:29:11Z",
+      "updated_at": "2026-11-24T01:29:11Z",
+      "titulo_tema": "Petrobras eleva investimentos em exploração em 41% com foco na Margem Equatorial",
+      "sintese_nerd": "O anúncio de um aporte multibilionário pela Petrobras para novas fronteiras, com destaque para a Margem Equatorial, equilibra a busca por reposição de reservas com debates ambientais sensíveis. A decisão direciona o foco da estatal para a segurança energética de longo prazo e geração de caixa.",
+      "rota_editoria": "/economia",
+      "data_publicacao": "2026-11-24T01:29:11Z",
+      "gatilho_vitrine": "Monitorar a estratégia corporativa da estatal brasileira frente aos novos desafios de transição energética e reservas exploratórias.",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 88,
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Politica",
+        "Geopolitica_Radar"
       ],
-      "urgencia_score": 92,
-      "data_publicacao": "2026-11-23T11:51:01.492268+00:00",
-      "impacto_pratico": "Orienta trabalhadores e empresas sobre a transição de escalas e o cálculo proporcional de horas extras e folgas.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Agência Brasil"
+      "palavras_chave_busca": [
+        "petrobras",
+        "margem equatorial",
+        "exploração de petróleo",
+        "investimentos",
+        "setor energético",
+        "governo federal"
+      ]
+    },
+    {
+      "slug": "zelensky-cobre-adesao-otan-assembleia",
+      "status": "novo",
+      "ttl_horas": 48,
+      "expires_at": "2026-11-26T01:29:11Z",
+      "updated_at": "2026-11-24T01:29:11Z",
+      "titulo_tema": "Zelensky pressiona por inclusão da Ucrânia na OTAN durante assembleia da aliança",
+      "sintese_nerd": "A insistência de Volodymyr Zelensky na admissão imediata da Ucrânia à OTAN busca garantias formais de defesa frente às incursões aéreas russas na Europa. A pauta testa a coesão dos aliados ocidentais e o patamar de tolerância a uma escalada direta com Moscou.",
+      "rota_editoria": "/radar",
+      "data_publicacao": "2026-11-24T01:29:11Z",
+      "gatilho_vitrine": "Cobrir os desdobramentos diplomáticos e de segurança na Europa Oriental e os riscos de escalada militar.",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 85,
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Politica",
+        "Resumo_Ultimas"
       ],
-      "relevancia_score": 94,
-      "horas_em_destaque": 12,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
-          "motivo_conexao": "Cobertura das transformações no mercado de trabalho e regulamentações trabalhistas.",
-          "titulo_existente": "Economia no Brasil"
-        }
+      "palavras_chave_busca": [
+        "ucrânia",
+        "otan",
+        "volodymyr zelensky",
+        "guerra na europa",
+        "segurança internacional",
+        "diplomacia"
       ]
     }
   ]
