@@ -2,143 +2,159 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-25T10:23:45Z",
-  "batch_id": "20261125-1023",
+  "updatedAt": "2026-11-25T11:29:04Z",
+  "batch_id": "20261125-1128",
   "temas_ativos": [
     {
-      "slug": "governo-novas-medidas-ajuste-fiscal-meta-divida",
-      "titulo_tema": "Governo prepara novo pacote fiscal para conter dívida pública e cumprir metas",
+      "slug": "venezuela-revela-divida-publica-de-242-do-pib",
+      "titulo_tema": "Governo da Venezuela divulga dados macroeconômicos e aponta dívida pública de 242% do PIB",
+      "titulo_curto": "Governo da Venezuela divulga dados macroeconômicos e aponta dívida pública de 242% do PIB",
       "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Politica",
-      "categorias_cruzadas": [
-        "Economia"
-      ],
-      "rota_editoria": "/politica",
-      "relevancia_score": 91,
-      "ttl_horas": 48,
-      "expires_at": "2026-11-27T10:23:45Z",
-      "palavras_chave_busca": [
-        "ajuste fiscal",
-        "ministério do planejamento",
-        "dívida pública",
-        "meta primária",
-        "corte de gastos",
-        "responsabilidade fiscal"
-      ],
-      "gatilho_vitrine": "Filtrar análises fiscais do governo federal e impacto no câmbio e taxa Selic",
-      "sintese_nerd": "O Ministério do Planejamento articula novas medidas de contenção fiscal para assegurar o cumprimento das metas do arcabouço sem reduzir programas sociais. A sinalização busca acalmar o mercado financeiro contra a trajetória ascendente da dívida pública, refletindo diretamente no custo do crédito e na inflação interna.",
-      "data_publicacao": "2026-11-25T10:23:45Z",
-      "updated_at": "2026-11-25T10:23:45Z"
-    },
-    {
-      "slug": "ue-pacote-45-bilhoes-ucrania-zaporizhzhia-crise",
-      "titulo_tema": "União Europeia propõe € 45 bilhões para a Ucrânia enquanto ataque afeta usina de Zaporizhzhia",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Geopolitica_Radar",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Economia",
+      "categoria": "Economia_Comercio",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
       ],
-      "rota_editoria": "/radar",
+      "rota_editoria": "/economia",
       "relevancia_score": 89,
-      "ttl_horas": 72,
-      "expires_at": "2026-11-28T10:23:45Z",
+      "urgencia_score": 88,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-26T11:29:04Z",
       "palavras_chave_busca": [
-        "união europeia",
-        "ucrânia",
-        "zaporizhzhia",
-        "ursula von der leyen",
-        "ajuda europeia",
-        "guerra na ucrânia",
-        "crise energética"
+        "venezuela",
+        "dívida pública",
+        "pib",
+        "economia"
       ],
-      "gatilho_vitrine": "Destacar desdobramentos geopolíticos do financiamento europeu e riscos de segurança energética global",
-      "sintese_nerd": "A Comissão Europeia anunciou um novo mecanismo de suporte de € 45 bilhões para cobrir o orçamento ucraniano em 2027, ao mesmo tempo em que a usina nuclear de Zaporizhzhia perdeu energia externa devido a ataques russos. A escalada tensiona o mercado europeu de energia e amplia o envolvimento fiscal do bloco financeiro europeu no conflito.",
-      "data_publicacao": "2026-11-25T10:23:45Z",
-      "updated_at": "2026-11-25T10:23:45Z"
+      "palavras_chave": [
+        "venezuela",
+        "dívida pública",
+        "pib",
+        "economia"
+      ],
+      "gatilho_vitrine": "Conforme apuração do Poder360 com base em informações divulgadas pelo governo de Delcy Rodríguez, a Venezuela revelou dados macroeconômicos pela primeira vez em anos, indicando que os passivos somavam US$ 237,5 bilhões ao final de 2025.",
+      "resumo_pulso": "Conforme apuração do Poder360 com base em informações divulgadas pelo governo de Delcy Rodríguez, a Venezuela revelou dados macroeconômicos pela primeira vez em anos, indicando que os passivos somavam US$ 237,5 bilhões ao final de 2025.",
+      "sintese_nerd": "A revelação dimensiona o tamanho da crise econômica venezuelana e repercute nas discussões sobre sanções e reestruturação financeira na América Latina.",
+      "impacto_pratico": "A revelação dimensiona o tamanho da crise econômica venezuelana e repercute nas discussões sobre sanções e reestruturação financeira na América Latina.",
+      "paises_envolvidos": [
+        "VE"
+      ],
+      "veiculos_origem": [
+        "Poder360"
+      ],
+      "fontes_urls": [
+        "https://www.poder360.com.br/poder-internacional/venezuela-revela-divida-publica-de-242-do-pib/"
+      ],
+      "data_publicacao": "2026-11-25T11:23:32Z",
+      "updated_at": "2026-11-25T11:29:04Z"
     },
     {
-      "slug": "dolar-testa-6-reais-ibovespa-pressao-fiscal-juros",
-      "titulo_tema": "Mercado sob pressão: Minidólar aproxima-se dos R$ 6,00 e Ibovespa acentua queda",
+      "slug": "deficit-primario-2026-pressao-dolar-6-reais",
       "status": "novo",
+      "ttl_horas": 48,
+      "expires_at": "2026-11-27T10:39:52Z",
+      "updated_at": "2026-11-25T10:39:52Z",
+      "titulo_tema": "Ampliação do Déficit Primário de 2026 Pressiona Câmbio e Testa Dólar a R$ 6,00",
+      "sintese_nerd": "A elevação nas projeções do déficit público para 2026 enfraquece a credibilidade fiscal brasileira e impulsiona o dólar em direção ao patamar histórico dos R$ 6,00. Esse movimento encarece insumos importados e aumenta a pressão sobre a Selic, encarecendo o crédito para o consumidor final.",
+      "rota_editoria": "/economia",
+      "data_publicacao": "2026-11-25T10:39:52Z",
+      "gatilho_vitrine": "Monitore o impacto da revisão do resultado primário do governo sobre o dólar e o mercado futuro.",
       "origem_pipeline": "curadoria",
+      "relevancia_score": 92,
       "categoria_primaria": "Economia",
       "categorias_cruzadas": [
-        "Politica"
-      ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 88,
-      "ttl_horas": 24,
-      "expires_at": "2026-11-26T10:23:45Z",
-      "palavras_chave_busca": [
-        "dólar 6 reais",
-        "minidólar wdoz26",
-        "ibovespa",
-        "câmbio",
-        "bolsa de valores",
-        "pressão fiscal",
-        "juros futuros"
-      ],
-      "gatilho_vitrine": "Selecionar notícias de câmbio, volatilidade da B3 e repercussão no custo de vida do brasileiro",
-      "sintese_nerd": "A incerteza sobre o ritmo de cortes de juros internacionais e a desconfiança com as contas públicas brasileiras levaram os contratos futuros do dólar a flertar com a marca histórica de R$ 6,00. A depreciação cambial encarece insumos importados e pressiona os índices de inflação do consumidor no Brasil.",
-      "data_publicacao": "2026-11-25T10:23:45Z",
-      "updated_at": "2026-11-25T10:23:45Z"
-    },
-    {
-      "slug": "mercados-de-previsao-eleicoes-2026-regulacao-b3",
-      "titulo_tema": "Debate sobre regulação de mercados de previsão para as eleições de 2026 ganha força no Brasil",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Eleicoes",
-      "categorias_cruzadas": [
         "Politica",
-        "Economia"
+        "Resumo_Ultimas"
       ],
-      "rota_editoria": "/eleicoes",
-      "relevancia_score": 85,
-      "ttl_horas": 96,
-      "expires_at": "2026-11-29T10:23:45Z",
       "palavras_chave_busca": [
-        "mercados de previsão",
-        "eleições 2026",
-        "regulação financeira",
-        "b3",
-        "prediction markets",
-        "polymarket",
-        "cvm"
-      ],
-      "gatilho_vitrine": "Indexar artigos sobre integridade eleitoral, apostas políticas e regulação do mercado de capitais",
-      "sintese_nerd": "A aproximação das eleições presidenciais de 2026 reacendeu a discussão sobre banir ou regulamentar os mercados de previsão financeira sobre resultados eleitorais. A falta de regras claras ameaça provocar fuga de capitais para plataformas estrangeiras e desafia as autoridades regulatórias brasileiras.",
-      "data_publicacao": "2026-11-25T10:23:45Z",
-      "updated_at": "2026-11-25T10:23:45Z"
+        "deficit primario",
+        "meta fiscal 2026",
+        "dolar a 6 reais",
+        "ibovespa hoje",
+        "politica fiscal brasil",
+        "cambio e inflacao"
+      ]
     },
     {
-      "slug": "ira-racionamento-energia-sancoes-eua-misseis",
-      "titulo_tema": "Irã raciona energia diante de sanções dos EUA e avança em programa balístico",
+      "slug": "ue-pacote-socorro-ucrania-crise-energetica-russia",
       "status": "novo",
+      "ttl_horas": 72,
+      "expires_at": "2026-11-28T10:39:52Z",
+      "updated_at": "2026-11-25T10:39:52Z",
+      "titulo_tema": "União Europeia Propõe Pacote de €45 Bi para a Ucrânia em Meio à Crise Energética",
+      "sintese_nerd": "Os recorrentes ataques russos à infraestrutura elétrica ucraniana, incluindo o desligamento da usina nuclear de Zaporizhzhia, levaram a UE a propor um fundo de € 45 bilhões até 2027. O impasse renova o risco de picos nos preços globais de energia e fertilizantes, afetando a cadeia de suprimentos agrícola brasileira.",
+      "rota_editoria": "/radar",
+      "data_publicacao": "2026-11-25T10:39:52Z",
+      "gatilho_vitrine": "Acompanhe o desdobramento do socorro europeu à Ucrânia e as ameaças à infraestrutura de energia.",
       "origem_pipeline": "curadoria",
+      "relevancia_score": 88,
       "categoria_primaria": "Geopolitica_Radar",
       "categorias_cruzadas": [
-        "Economia"
+        "Economia",
+        "Politica"
       ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 82,
-      "ttl_horas": 72,
-      "expires_at": "2026-11-28T10:23:45Z",
       "palavras_chave_busca": [
-        "irã",
-        "racionamento de energia",
-        "sanções eua",
-        "mísseis balísticos",
-        "crise energética",
-        "oriente médio"
+        "uniao europeia ucrania",
+        "ursula von der leyen",
+        "crise energetica ucrania",
+        "usina de zaporizhzhia",
+        "pacote 45 bilhoes euros",
+        "cessar fogo energetico"
+      ]
+    },
+    {
+      "slug": "mercados-de-previsao-eleicoes-2026-regulacao-financeira",
+      "status": "novo",
+      "ttl_horas": 96,
+      "expires_at": "2026-11-29T10:39:52Z",
+      "updated_at": "2026-11-25T10:39:52Z",
+      "titulo_tema": "Debate sobre Mercados de Previsão Eleitoral para 2026 Expõe Fuga de Capital",
+      "sintese_nerd": "A indefinição regulatória sobre plataformas de previsão política no Brasil está levando investidores locais a migrar recursos para corretoras nos EUA antes da eleição de 2026. A escolha pela proibição em vez da regulamentação pode privar o mercado doméstico de métricas preditivas e drenar liquidez da B3.",
+      "rota_editoria": "/eleicoes",
+      "data_publicacao": "2026-11-25T10:39:52Z",
+      "gatilho_vitrine": "Entenda a controvérsia sobre a regulação de mercados de apostas políticas antes do pleito de 2026.",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 85,
+      "categoria_primaria": "Eleicoes",
+      "categorias_cruzadas": [
+        "Economia",
+        "Politica"
       ],
-      "gatilho_vitrine": "Agrupar relatórios sobre a crise energética do Oriente Médio e corrida armamentista regional",
-      "sintese_nerd": "Mesmo figurando entre os maiores produtores mundiais de petróleo, o Irã entrou em regime de racionamento elétrico devido ao sucateamento da infraestrutura provocado por sanções severas dos EUA. Paralelamente, o país expande a tecnologia de mísseis balísticos, aumentando o risco de atrito militar no Oriente Médio.",
-      "data_publicacao": "2026-11-25T10:23:45Z",
-      "updated_at": "2026-11-25T10:23:45Z"
+      "palavras_chave_busca": [
+        "mercados de previsao",
+        "apostas eleitorais 2026",
+        "regulacao b3",
+        "fuga de capitais",
+        "eleicoes 2026 brasil",
+        "polymarket brasil"
+      ]
+    },
+    {
+      "slug": "receita-federal-lote-extra-imposto-de-renda-2026",
+      "status": "em_alta",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-26T10:39:52Z",
+      "updated_at": "2026-11-25T10:39:52Z",
+      "titulo_tema": "Receita Federal Abre Consulta a Lote Extra da Restituição do IR 2026",
+      "sintese_nerd": "A liberação da consulta ao lote extra da restituição do Imposto de Renda de 2026 injeta recursos represados na malha fina de volta na economia doméstica. Para o contribuinte, é a oportunidade de regularizar pendências fiscais e utilizar o crédito residual em um cenário de Selic elevada.",
+      "rota_editoria": "/economia",
+      "data_publicacao": "2026-11-25T10:39:52Z",
+      "gatilho_vitrine": "Verifique se o seu CPF foi contemplado no lote residual de restituição do Imposto de Renda.",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 78,
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "restituicao imposto de renda",
+        "lote extra ir 2026",
+        "consulta receita federal",
+        "malha fina ir",
+        "como consultar restituicao"
+      ]
     },
     {
       "slug": "dow-jones-futuro-cai-inflacao-eua-tarifas",
@@ -284,52 +300,52 @@
     },
     {
       "slug": "ataque-drones-refinarias-russia-samara",
+      "titulo_tema": "Forças ucranianas atingem refinarias na região de Samara em novos ataques de drones",
+      "titulo_curto": "Forças ucranianas atingem refinarias na região de Samara em novos ataques de drones",
       "status": "novo",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 12,
-      "expires_at": "2026-11-26T01:56:41Z",
-      "updated_at": "2026-11-25T10:16:24Z",
-      "fontes_urls": [
-        "https://www.themoscowtimes.com/2026/11/25/one-killed-in-samara-region-as-ukraine-strikes-oil-refinery-a94368"
-      ],
-      "titulo_tema": "Ataques de drones provocam incêndio em refinarias na Rússia",
-      "resumo_pulso": "Novas confirmações indicam que ataques de drones atingiram refinarias da Rosneft na região de Samara, resultando em mortes e danos estruturais. A Ucrânia intensificou operações contra a infraestrutura energética russa.",
-      "sintese_nerd": "Potencial pressão sobre o preço global do petróleo e instabilidade no fornecimento de combustíveis na região.",
-      "titulo_curto": "Ataques de drones provocam incêndio em refinarias na Rússia",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "rússia",
-        "ucrânia",
-        "drones",
-        "petróleo",
-        "guerra"
-      ],
-      "urgencia_score": 92,
-      "data_publicacao": "2026-11-25T07:38:00Z",
-      "gatilho_vitrine": "Novas confirmações indicam que ataques de drones atingiram refinarias da Rosneft na região de Samara, resultando em mortes e danos estruturais. A Ucrânia intensificou operações contra a infraestrutura energética russa.",
-      "impacto_pratico": "Potencial pressão sobre o preço global do petróleo e instabilidade no fornecimento de combustíveis na região.",
       "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "The Moscow Times",
-        "Ukrinform"
-      ],
-      "relevancia_score": 90,
-      "paises_envolvidos": [
-        "RU",
-        "UA"
-      ],
       "categoria_primaria": "Geopolitica_Radar",
+      "categoria": "Geopolitica_Relacoes",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
       ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 91,
+      "urgencia_score": 93,
+      "ttl_horas": 12,
+      "expires_at": "2026-11-26T01:56:41Z",
       "palavras_chave_busca": [
-        "rússia",
         "ucrânia",
+        "rússia",
+        "refinarias",
         "drones",
-        "petróleo",
         "guerra"
-      ]
+      ],
+      "palavras_chave": [
+        "ucrânia",
+        "rússia",
+        "refinarias",
+        "drones",
+        "guerra"
+      ],
+      "gatilho_vitrine": "Segundo relatórios do Estado-Maior da Ucrânia e veículos internacionais, forças ucranianas realizaram ataques coordenados contra duas refinarias de petróleo na região russa de Samara. A ofensiva intensifica a pressão sobre a infraestrutura energética de Moscou.",
+      "resumo_pulso": "Segundo relatórios do Estado-Maior da Ucrânia e veículos internacionais, forças ucranianas realizaram ataques coordenados contra duas refinarias de petróleo na região russa de Samara. A ofensiva intensifica a pressão sobre a infraestrutura energética de Moscou.",
+      "sintese_nerd": "A escalada nos ataques a refinarias pode gerar volatilidade adicional nos mercados globais de petróleo e derivados.",
+      "impacto_pratico": "A escalada nos ataques a refinarias pode gerar volatilidade adicional nos mercados globais de petróleo e derivados.",
+      "paises_envolvidos": [
+        "UA",
+        "RU"
+      ],
+      "veiculos_origem": [
+        "Ukrinform",
+        "Geopolitical Futures"
+      ],
+      "fontes_urls": [
+        "https://www.ukrinform.net/rubric-ato/4188460-ukrainian-forces-strike-two-russian-oil-refineries.html"
+      ],
+      "data_publicacao": "2026-11-25T07:38:00Z",
+      "updated_at": "2026-11-25T11:29:04Z"
     },
     {
       "slug": "exercito-eua-explosao-material-toxico-iowa",
@@ -839,144 +855,38 @@
       ]
     }
   ],
-  "temas_curadoria": [
-    {
-      "slug": "governo-novas-medidas-ajuste-fiscal-meta-divida",
-      "titulo_tema": "Governo prepara novo pacote fiscal para conter dívida pública e cumprir metas",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Politica",
-      "categorias_cruzadas": [
-        "Economia"
-      ],
-      "rota_editoria": "/politica",
-      "relevancia_score": 91,
-      "ttl_horas": 48,
-      "expires_at": "2026-11-27T10:23:45Z",
-      "palavras_chave_busca": [
-        "ajuste fiscal",
-        "ministério do planejamento",
-        "dívida pública",
-        "meta primária",
-        "corte de gastos",
-        "responsabilidade fiscal"
-      ],
-      "gatilho_vitrine": "Filtrar análises fiscais do governo federal e impacto no câmbio e taxa Selic",
-      "sintese_nerd": "O Ministério do Planejamento articula novas medidas de contenção fiscal para assegurar o cumprimento das metas do arcabouço sem reduzir programas sociais. A sinalização busca acalmar o mercado financeiro contra a trajetória ascendente da dívida pública, refletindo diretamente no custo do crédito e na inflação interna.",
-      "data_publicacao": "2026-11-25T10:23:45Z",
-      "updated_at": "2026-11-25T10:23:45Z"
-    },
-    {
-      "slug": "ue-pacote-45-bilhoes-ucrania-zaporizhzhia-crise",
-      "titulo_tema": "União Europeia propõe € 45 bilhões para a Ucrânia enquanto ataque afeta usina de Zaporizhzhia",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 89,
-      "ttl_horas": 72,
-      "expires_at": "2026-11-28T10:23:45Z",
-      "palavras_chave_busca": [
-        "união europeia",
-        "ucrânia",
-        "zaporizhzhia",
-        "ursula von der leyen",
-        "ajuda europeia",
-        "guerra na ucrânia",
-        "crise energética"
-      ],
-      "gatilho_vitrine": "Destacar desdobramentos geopolíticos do financiamento europeu e riscos de segurança energética global",
-      "sintese_nerd": "A Comissão Europeia anunciou um novo mecanismo de suporte de € 45 bilhões para cobrir o orçamento ucraniano em 2027, ao mesmo tempo em que a usina nuclear de Zaporizhzhia perdeu energia externa devido a ataques russos. A escalada tensiona o mercado europeu de energia e amplia o envolvimento fiscal do bloco financeiro europeu no conflito.",
-      "data_publicacao": "2026-11-25T10:23:45Z",
-      "updated_at": "2026-11-25T10:23:45Z"
-    },
-    {
-      "slug": "dolar-testa-6-reais-ibovespa-pressao-fiscal-juros",
-      "titulo_tema": "Mercado sob pressão: Minidólar aproxima-se dos R$ 6,00 e Ibovespa acentua queda",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Politica"
-      ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 88,
-      "ttl_horas": 24,
-      "expires_at": "2026-11-26T10:23:45Z",
-      "palavras_chave_busca": [
-        "dólar 6 reais",
-        "minidólar wdoz26",
-        "ibovespa",
-        "câmbio",
-        "bolsa de valores",
-        "pressão fiscal",
-        "juros futuros"
-      ],
-      "gatilho_vitrine": "Selecionar notícias de câmbio, volatilidade da B3 e repercussão no custo de vida do brasileiro",
-      "sintese_nerd": "A incerteza sobre o ritmo de cortes de juros internacionais e a desconfiança com as contas públicas brasileiras levaram os contratos futuros do dólar a flertar com a marca histórica de R$ 6,00. A depreciação cambial encarece insumos importados e pressiona os índices de inflação do consumidor no Brasil.",
-      "data_publicacao": "2026-11-25T10:23:45Z",
-      "updated_at": "2026-11-25T10:23:45Z"
-    },
-    {
-      "slug": "mercados-de-previsao-eleicoes-2026-regulacao-b3",
-      "titulo_tema": "Debate sobre regulação de mercados de previsão para as eleições de 2026 ganha força no Brasil",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Eleicoes",
-      "categorias_cruzadas": [
-        "Politica",
-        "Economia"
-      ],
-      "rota_editoria": "/eleicoes",
-      "relevancia_score": 85,
-      "ttl_horas": 96,
-      "expires_at": "2026-11-29T10:23:45Z",
-      "palavras_chave_busca": [
-        "mercados de previsão",
-        "eleições 2026",
-        "regulação financeira",
-        "b3",
-        "prediction markets",
-        "polymarket",
-        "cvm"
-      ],
-      "gatilho_vitrine": "Indexar artigos sobre integridade eleitoral, apostas políticas e regulação do mercado de capitais",
-      "sintese_nerd": "A aproximação das eleições presidenciais de 2026 reacendeu a discussão sobre banir ou regulamentar os mercados de previsão financeira sobre resultados eleitorais. A falta de regras claras ameaça provocar fuga de capitais para plataformas estrangeiras e desafia as autoridades regulatórias brasileiras.",
-      "data_publicacao": "2026-11-25T10:23:45Z",
-      "updated_at": "2026-11-25T10:23:45Z"
-    },
-    {
-      "slug": "ira-racionamento-energia-sancoes-eua-misseis",
-      "titulo_tema": "Irã raciona energia diante de sanções dos EUA e avança em programa balístico",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 82,
-      "ttl_horas": 72,
-      "expires_at": "2026-11-28T10:23:45Z",
-      "palavras_chave_busca": [
-        "irã",
-        "racionamento de energia",
-        "sanções eua",
-        "mísseis balísticos",
-        "crise energética",
-        "oriente médio"
-      ],
-      "gatilho_vitrine": "Agrupar relatórios sobre a crise energética do Oriente Médio e corrida armamentista regional",
-      "sintese_nerd": "Mesmo figurando entre os maiores produtores mundiais de petróleo, o Irã entrou em regime de racionamento elétrico devido ao sucateamento da infraestrutura provocado por sanções severas dos EUA. Paralelamente, o país expande a tecnologia de mísseis balísticos, aumentando o risco de atrito militar no Oriente Médio.",
-      "data_publicacao": "2026-11-25T10:23:45Z",
-      "updated_at": "2026-11-25T10:23:45Z"
-    }
-  ],
   "noticias_quentes": [
+    {
+      "slug": "venezuela-revela-divida-publica-de-242-do-pib",
+      "titulo_curto": "Governo da Venezuela divulga dados macroeconômicos e aponta dívida pública de 242% do PIB",
+      "resumo_pulso": "Conforme apuração do Poder360 com base em informações divulgadas pelo governo de Delcy Rodríguez, a Venezuela revelou dados macroeconômicos pela primeira vez em anos, indicando que os passivos somavam US$ 237,5 bilhões ao final de 2025.",
+      "impacto_pratico": "A revelação dimensiona o tamanho da crise econômica venezuelana e repercute nas discussões sobre sanções e reestruturação financeira na América Latina.",
+      "categoria": "Economia_Comercio",
+      "paises_envolvidos": [
+        "VE"
+      ],
+      "urgencia_score": 88,
+      "relevancia_score": 89,
+      "nivel_confianca": "alta",
+      "ttl_horas": 24,
+      "horas_em_destaque": 8,
+      "veiculos_origem": [
+        "Poder360"
+      ],
+      "fontes_urls": [
+        "https://www.poder360.com.br/poder-internacional/venezuela-revela-divida-publica-de-242-do-pib/"
+      ],
+      "palavras_chave": [
+        "Venezuela",
+        "dívida pública",
+        "PIB",
+        "economia"
+      ],
+      "data_publicacao": "2026-11-25T11:23:32Z",
+      "links_internos_relacionados": [],
+      "expires_at": "2026-11-26T11:29:04Z",
+      "updated_at": "2026-11-25T11:29:04Z"
+    },
     {
       "slug": "dow-jones-futuro-cai-inflacao-eua-tarifas",
       "categoria": "Economia_Comercio",
@@ -1094,37 +1004,37 @@
     },
     {
       "slug": "ataque-drones-refinarias-russia-samara",
+      "titulo_curto": "Forças ucranianas atingem refinarias na região de Samara em novos ataques de drones",
+      "resumo_pulso": "Segundo relatórios do Estado-Maior da Ucrânia e veículos internacionais, forças ucranianas realizaram ataques coordenados contra duas refinarias de petróleo na região russa de Samara. A ofensiva intensifica a pressão sobre a infraestrutura energética de Moscou.",
+      "impacto_pratico": "A escalada nos ataques a refinarias pode gerar volatilidade adicional nos mercados globais de petróleo e derivados.",
       "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 12,
-      "expires_at": "2026-11-26T01:56:41Z",
-      "updated_at": "2026-11-25T10:16:24Z",
-      "fontes_urls": [
-        "https://www.themoscowtimes.com/2026/11/25/one-killed-in-samara-region-as-ukraine-strikes-oil-refinery-a94368"
-      ],
-      "resumo_pulso": "Novas confirmações indicam que ataques de drones atingiram refinarias da Rosneft na região de Samara, resultando em mortes e danos estruturais. A Ucrânia intensificou operações contra a infraestrutura energética russa.",
-      "titulo_curto": "Ataques de drones provocam incêndio em refinarias na Rússia",
-      "palavras_chave": [
-        "Rússia",
-        "Ucrânia",
-        "Drones",
-        "Petróleo",
-        "Guerra"
-      ],
-      "urgencia_score": 92,
-      "data_publicacao": "2026-11-25T07:38:00Z",
-      "impacto_pratico": "Potencial pressão sobre o preço global do petróleo e instabilidade no fornecimento de combustíveis na região.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "The Moscow Times",
-        "Ukrinform"
-      ],
-      "relevancia_score": 90,
-      "horas_em_destaque": 8,
       "paises_envolvidos": [
-        "RU",
-        "UA"
+        "UA",
+        "RU"
       ],
-      "links_internos_relacionados": []
+      "urgencia_score": 93,
+      "relevancia_score": 91,
+      "nivel_confianca": "alta",
+      "ttl_horas": 12,
+      "horas_em_destaque": 6,
+      "veiculos_origem": [
+        "Ukrinform",
+        "Geopolitical Futures"
+      ],
+      "fontes_urls": [
+        "https://www.ukrinform.net/rubric-ato/4188460-ukrainian-forces-strike-two-russian-oil-refineries.html"
+      ],
+      "palavras_chave": [
+        "Ucrânia",
+        "Rússia",
+        "refinarias",
+        "drones",
+        "guerra"
+      ],
+      "data_publicacao": "2026-11-25T07:38:00Z",
+      "links_internos_relacionados": [],
+      "expires_at": "2026-11-26T01:56:41Z",
+      "updated_at": "2026-11-25T11:29:04Z"
     },
     {
       "slug": "exercito-eua-explosao-material-toxico-iowa",
@@ -1678,44 +1588,113 @@
           "titulo_existente": "Política no Brasil"
         }
       ]
+    }
+  ],
+  "temas_curadoria": [
+    {
+      "slug": "deficit-primario-2026-pressao-dolar-6-reais",
+      "status": "novo",
+      "ttl_horas": 48,
+      "expires_at": "2026-11-27T10:39:52Z",
+      "updated_at": "2026-11-25T10:39:52Z",
+      "titulo_tema": "Ampliação do Déficit Primário de 2026 Pressiona Câmbio e Testa Dólar a R$ 6,00",
+      "sintese_nerd": "A elevação nas projeções do déficit público para 2026 enfraquece a credibilidade fiscal brasileira e impulsiona o dólar em direção ao patamar histórico dos R$ 6,00. Esse movimento encarece insumos importados e aumenta a pressão sobre a Selic, encarecendo o crédito para o consumidor final.",
+      "rota_editoria": "/economia",
+      "data_publicacao": "2026-11-25T10:39:52Z",
+      "gatilho_vitrine": "Monitore o impacto da revisão do resultado primário do governo sobre o dólar e o mercado futuro.",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 92,
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Politica",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "deficit primario",
+        "meta fiscal 2026",
+        "dolar a 6 reais",
+        "ibovespa hoje",
+        "politica fiscal brasil",
+        "cambio e inflacao"
+      ]
     },
     {
-      "slug": "brasil-nao-retornara-embaixador-argentina-crise",
-      "categoria": "Geopolitica_Relacoes",
+      "slug": "ue-pacote-socorro-ucrania-crise-energetica-russia",
+      "status": "novo",
+      "ttl_horas": 72,
+      "expires_at": "2026-11-28T10:39:52Z",
+      "updated_at": "2026-11-25T10:39:52Z",
+      "titulo_tema": "União Europeia Propõe Pacote de €45 Bi para a Ucrânia em Meio à Crise Energética",
+      "sintese_nerd": "Os recorrentes ataques russos à infraestrutura elétrica ucraniana, incluindo o desligamento da usina nuclear de Zaporizhzhia, levaram a UE a propor um fundo de € 45 bilhões até 2027. O impasse renova o risco de picos nos preços globais de energia e fertilizantes, afetando a cadeia de suprimentos agrícola brasileira.",
+      "rota_editoria": "/radar",
+      "data_publicacao": "2026-11-25T10:39:52Z",
+      "gatilho_vitrine": "Acompanhe o desdobramento do socorro europeu à Ucrânia e as ameaças à infraestrutura de energia.",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 88,
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Politica"
+      ],
+      "palavras_chave_busca": [
+        "uniao europeia ucrania",
+        "ursula von der leyen",
+        "crise energetica ucrania",
+        "usina de zaporizhzhia",
+        "pacote 45 bilhoes euros",
+        "cessar fogo energetico"
+      ]
+    },
+    {
+      "slug": "mercados-de-previsao-eleicoes-2026-regulacao-financeira",
+      "status": "novo",
+      "ttl_horas": 96,
+      "expires_at": "2026-11-29T10:39:52Z",
+      "updated_at": "2026-11-25T10:39:52Z",
+      "titulo_tema": "Debate sobre Mercados de Previsão Eleitoral para 2026 Expõe Fuga de Capital",
+      "sintese_nerd": "A indefinição regulatória sobre plataformas de previsão política no Brasil está levando investidores locais a migrar recursos para corretoras nos EUA antes da eleição de 2026. A escolha pela proibição em vez da regulamentação pode privar o mercado doméstico de métricas preditivas e drenar liquidez da B3.",
+      "rota_editoria": "/eleicoes",
+      "data_publicacao": "2026-11-25T10:39:52Z",
+      "gatilho_vitrine": "Entenda a controvérsia sobre a regulação de mercados de apostas políticas antes do pleito de 2026.",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 85,
+      "categoria_primaria": "Eleicoes",
+      "categorias_cruzadas": [
+        "Economia",
+        "Politica"
+      ],
+      "palavras_chave_busca": [
+        "mercados de previsao",
+        "apostas eleitorais 2026",
+        "regulacao b3",
+        "fuga de capitais",
+        "eleicoes 2026 brasil",
+        "polymarket brasil"
+      ]
+    },
+    {
+      "slug": "receita-federal-lote-extra-imposto-de-renda-2026",
+      "status": "em_alta",
       "ttl_horas": 24,
-      "expires_at": "2026-11-25T23:24:39Z",
-      "updated_at": "2026-11-25T02:11:11Z",
-      "fontes_urls": [
-        "https://g1.globo.com/politica/noticia/2026/11/24/brasil-decide-que-embaixador-brasileiro-na-argentina-nao-retornara-a-buenos-aires.ghtml"
+      "expires_at": "2026-11-26T10:39:52Z",
+      "updated_at": "2026-11-25T10:39:52Z",
+      "titulo_tema": "Receita Federal Abre Consulta a Lote Extra da Restituição do IR 2026",
+      "sintese_nerd": "A liberação da consulta ao lote extra da restituição do Imposto de Renda de 2026 injeta recursos represados na malha fina de volta na economia doméstica. Para o contribuinte, é a oportunidade de regularizar pendências fiscais e utilizar o crédito residual em um cenário de Selic elevada.",
+      "rota_editoria": "/economia",
+      "data_publicacao": "2026-11-25T10:39:52Z",
+      "gatilho_vitrine": "Verifique se o seu CPF foi contemplado no lote residual de restituição do Imposto de Renda.",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 78,
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Resumo_Ultimas"
       ],
-      "resumo_pulso": "Segundo apuração do G1 Política e confirmação de diplomatas do Itamaraty, o governo brasileiro decidiu que o embaixador Júlio Bitelli não voltará à Argentina. A medida consolida o esfriamento diplomático entre os dois países após meses de tensões.",
-      "titulo_curto": "Lula decide que embaixador do Brasil não retornará a Buenos Aires após crise diplomática",
-      "palavras_chave": [
-        "Brasil",
-        "Argentina",
-        "Diplomacia",
-        "Itamaraty"
-      ],
-      "urgencia_score": 92,
-      "data_publicacao": "2026-11-24T23:20:16Z",
-      "impacto_pratico": "Sinaliza a manutenção de relações bilaterais em nível inferior ao de embaixadores plenos, afetando o diálogo comercial e político no Cone Sul.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "G1 Política",
-        "Itamaraty"
-      ],
-      "relevancia_score": 94,
-      "horas_em_destaque": 16,
-      "paises_envolvidos": [
-        "BR",
-        "AR"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
-          "motivo_conexao": "Contextualiza a dinâmica de relações internacionais e diplomacia comercial do Brasil.",
-          "titulo_existente": "Mercados e aliados internacionais avaliam impacto da política comercial norte-americana"
-        }
+      "palavras_chave_busca": [
+        "restituicao imposto de renda",
+        "lote extra ir 2026",
+        "consulta receita federal",
+        "malha fina ir",
+        "como consultar restituicao"
       ]
     }
   ]
