@@ -2,9 +2,55 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-25T05:04:03Z",
-  "batch_id": "20261125-0503",
+  "updatedAt": "2026-11-25T06:24:54Z",
+  "batch_id": "20261125-0624",
   "temas_ativos": [
+    {
+      "slug": "forcas-seguranca-entram-supermercado-refens-colombia",
+      "titulo_tema": "Forças de segurança entram em supermercado com reféns na Colômbia",
+      "titulo_curto": "Forças de segurança entram em supermercado com reféns na Colômbia",
+      "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categoria": "Geopolitica_Relacoes",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 90,
+      "urgencia_score": 92,
+      "ttl_horas": 12,
+      "expires_at": "2026-11-25T18:24:54Z",
+      "palavras_chave_busca": [
+        "colômbia",
+        "cartagena",
+        "reféns",
+        "segurança"
+      ],
+      "palavras_chave": [
+        "colômbia",
+        "cartagena",
+        "reféns",
+        "segurança"
+      ],
+      "gatilho_vitrine": "Segundo apuração do G1 Mundo, forças de segurança colombianas ingressaram nesta quarta-feira (25) no estabelecimento comercial em Cartagena onde dezenas de pessoas eram mantidas reféns desde o dia anterior por criminosos armados.",
+      "resumo_pulso": "Segundo apuração do G1 Mundo, forças de segurança colombianas ingressaram nesta quarta-feira (25) no estabelecimento comercial em Cartagena onde dezenas de pessoas eram mantidas reféns desde o dia anterior por criminosos armados.",
+      "sintese_nerd": "Atenção para viajantes na região de Cartagena e possíveis interrupções em serviços locais de segurança.",
+      "impacto_pratico": "Atenção para viajantes na região de Cartagena e possíveis interrupções em serviços locais de segurança.",
+      "paises_envolvidos": [
+        "CO"
+      ],
+      "veiculos_origem": [
+        "G1 Mundo",
+        "Reuters"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/mundo/noticia/2026/11/25/supermercado-com-refens-na-colombia.ghtml"
+      ],
+      "data_publicacao": "2026-11-25T06:21:06Z",
+      "updated_at": "2026-11-25T06:24:54Z"
+    },
     {
       "slug": "reforma-tributaria-escala-6x1-pressao-inflacao-2027",
       "status": "novo",
@@ -17,7 +63,7 @@
       "data_publicacao": "2026-11-25T04:46:15Z",
       "gatilho_vitrine": "Destacar na editoria de Economia conectando as mudanças estruturais e fiscais ao custo de vida do brasileiro.",
       "origem_pipeline": "curadoria",
-      "relevancia_score": 90,
+      "relevancia_score": 91,
       "categoria_primaria": "Economia",
       "categorias_cruzadas": [
         "Politica"
@@ -29,7 +75,8 @@
         "banco central",
         "equipe econômica",
         "custo de vida"
-      ]
+      ],
+      "urgencia_score": 88
     },
     {
       "slug": "governo-reduz-contencao-gastos-orcamento",
@@ -113,8 +160,8 @@
     },
     {
       "slug": "coreia-do-norte-expulsa-chefe-escritorio-suico",
-      "titulo_tema": "Coreia do Norte expulsa chefe de escritório diplomático da Suíça em Pyongyang",
-      "titulo_curto": "Coreia do Norte expulsa chefe de escritório diplomático da Suíça em Pyongyang",
+      "titulo_tema": "Coreia do Norte expulsa chefe de escritório diplomático suíço em Pyongyang",
+      "titulo_curto": "Coreia do Norte expulsa chefe de escritório diplomático suíço em Pyongyang",
       "status": "novo",
       "origem_pipeline": "pulso",
       "categoria_primaria": "Geopolitica_Radar",
@@ -124,8 +171,8 @@
         "Resumo_Ultimas"
       ],
       "rota_editoria": "/radar",
-      "relevancia_score": 88,
-      "urgencia_score": 89,
+      "relevancia_score": 89,
+      "urgencia_score": 90,
       "ttl_horas": 24,
       "expires_at": "2026-11-26T05:04:03Z",
       "palavras_chave_busca": [
@@ -140,10 +187,10 @@
         "diplomacia",
         "pyongyang"
       ],
-      "gatilho_vitrine": "Segundo reportagem do G1 Mundo, a Coreia do Norte exigiu o fechamento do escritório diplomático da Suíça em Pyongyang e ordenou a expulsão do principal diplomata responsável em até 48 horas. A medida acirra tensões diplomáticas na península coreana.",
-      "resumo_pulso": "Segundo reportagem do G1 Mundo, a Coreia do Norte exigiu o fechamento do escritório diplomático da Suíça em Pyongyang e ordenou a expulsão do principal diplomata responsável em até 48 horas. A medida acirra tensões diplomáticas na península coreana.",
-      "sintese_nerd": "Afeta as relações diplomáticas da Suíça e de nações ocidentais com o regime norte-coreano.",
-      "impacto_pratico": "Afeta as relações diplomáticas da Suíça e de nações ocidentais com o regime norte-coreano.",
+      "gatilho_vitrine": "Conforme desdobramento reportado pelo G1 Mundo, a Coreia do Norte intensificou medidas e ordenou a expulsão do principal diplomata suíço em Pyongyang após exigir o fechamento da representação diplomática na capital norte-coreana.",
+      "resumo_pulso": "Conforme desdobramento reportado pelo G1 Mundo, a Coreia do Norte intensificou medidas e ordenou a expulsão do principal diplomata suíço em Pyongyang após exigir o fechamento da representação diplomática na capital norte-coreana.",
+      "sintese_nerd": "Aumento das restrições e tensões diplomáticas na Península Coreana.",
+      "impacto_pratico": "Aumento das restrições e tensões diplomáticas na Península Coreana.",
       "paises_envolvidos": [
         "KP",
         "CH"
@@ -155,57 +202,57 @@
         "https://g1.globo.com/mundo/noticia/2026/11/25/coreia-do-norte-expulsa-chefe-de-escritorio-diplomatico-suico.ghtml"
       ],
       "data_publicacao": "2026-11-25T03:57:35Z",
-      "updated_at": "2026-11-25T05:04:03Z"
+      "updated_at": "2026-11-25T06:24:54Z"
     },
     {
       "slug": "justica-derruba-suspensao-regras-vale-refeicao",
-      "titulo_tema": "Decisão judicial restabelece novas regras e teto de taxas para vale-refeição e alimentação",
-      "titulo_curto": "Decisão judicial restabelece novas regras e teto de taxas para vale-refeição e alimentação",
       "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Economia",
       "categoria": "Economia_Comercio",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 90,
-      "urgencia_score": 88,
       "ttl_horas": 24,
       "expires_at": "2026-11-26T03:57:23Z",
-      "palavras_chave_busca": [
-        "vale-refeição",
-        "vale-alimentação",
-        "justiça",
-        "economia"
-      ],
-      "palavras_chave": [
-        "vale-refeição",
-        "vale-alimentação",
-        "justiça",
-        "economia"
-      ],
-      "gatilho_vitrine": "Conforme apuração do G1 Economia, um juiz aceitou recurso do governo e restabeleceu as diretrizes e o teto de taxas para o vale-refeição e o vale-alimentação em todo o país. A medida altera o formato de cobrança pelas operadoras e amplia a aceitação dos benefícios em estabelecimentos comerciais.",
-      "resumo_pulso": "Conforme apuração do G1 Economia, um juiz aceitou recurso do governo e restabeleceu as diretrizes e o teto de taxas para o vale-refeição e o vale-alimentação em todo o país. A medida altera o formato de cobrança pelas operadoras e amplia a aceitação dos benefícios em estabelecimentos comerciais.",
-      "sintese_nerd": "Impacta diretamente as empresas operadoras de benefícios, o comércio varejista e a dinâmica de pagamentos para os trabalhadores.",
-      "impacto_pratico": "Impacta diretamente as empresas operadoras de benefícios, o comércio varejista e a dinâmica de pagamentos para os trabalhadores.",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "veiculos_origem": [
-        "G1 Economia"
-      ],
+      "updated_at": "2026-11-25T05:04:03Z",
       "fontes_urls": [
         "https://g1.globo.com/df/distrito-federal/noticia/2026/11/25/justica-derruba-suspensao-e-restabelece-regras-para-vale-refeicao-e-alimentacao-entenda.ghtml"
       ],
+      "titulo_tema": "Decisão judicial restabelece novas regras e teto de taxas para vale-refeição e alimentação",
+      "resumo_pulso": "Conforme apuração do G1 Economia, um juiz aceitou recurso do governo e restabeleceu as diretrizes e o teto de taxas para o vale-refeição e o vale-alimentação em todo o país. A medida altera o formato de cobrança pelas operadoras e amplia a aceitação dos benefícios em estabelecimentos comerciais.",
+      "sintese_nerd": "Impacta diretamente as empresas operadoras de benefícios, o comércio varejista e a dinâmica de pagamentos para os trabalhadores.",
+      "titulo_curto": "Decisão judicial restabelece novas regras e teto de taxas para vale-refeição e alimentação",
+      "rota_editoria": "/economia",
+      "palavras_chave": [
+        "vale-refeição",
+        "vale-alimentação",
+        "justiça",
+        "economia"
+      ],
+      "urgencia_score": 88,
       "data_publicacao": "2026-11-25T03:17:42Z",
-      "updated_at": "2026-11-25T05:04:03Z"
+      "gatilho_vitrine": "Conforme apuração do G1 Economia, um juiz aceitou recurso do governo e restabeleceu as diretrizes e o teto de taxas para o vale-refeição e o vale-alimentação em todo o país. A medida altera o formato de cobrança pelas operadoras e amplia a aceitação dos benefícios em estabelecimentos comerciais.",
+      "impacto_pratico": "Impacta diretamente as empresas operadoras de benefícios, o comércio varejista e a dinâmica de pagamentos para os trabalhadores.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "G1 Economia"
+      ],
+      "relevancia_score": 90,
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "vale-refeição",
+        "vale-alimentação",
+        "justiça",
+        "economia"
+      ]
     },
     {
       "slug": "governo-reduz-contencao-despesas-orcamento-12-bilhoes",
-      "titulo_tema": "Governo federal articula aprovação de oito projetos econômicos no Congresso até dezembro",
-      "titulo_curto": "Governo federal articula aprovação de oito projetos econômicos no Congresso até dezembro",
+      "titulo_tema": "Governo articula aprovação de oito projetos econômicos no Congresso até dezembro",
+      "titulo_curto": "Governo articula aprovação de oito projetos econômicos no Congresso até dezembro",
       "status": "novo",
       "origem_pipeline": "pulso",
       "categoria_primaria": "Economia",
@@ -215,38 +262,37 @@
         "Resumo_Ultimas"
       ],
       "rota_editoria": "/economia",
-      "relevancia_score": 93,
-      "urgencia_score": 90,
+      "relevancia_score": 92,
+      "urgencia_score": 89,
       "ttl_horas": 24,
       "expires_at": "2026-11-26T02:52:34Z",
       "palavras_chave_busca": [
-        "governo federal",
-        "congresso nacional",
-        "ajuste fiscal",
-        "economia"
+        "economia",
+        "congresso",
+        "orçamento",
+        "governo federal"
       ],
       "palavras_chave": [
-        "governo federal",
-        "congresso nacional",
-        "ajuste fiscal",
-        "economia"
+        "economia",
+        "congresso",
+        "orçamento",
+        "governo federal"
       ],
-      "gatilho_vitrine": "Segundo apuração do G1 Política, a equipe econômica do governo federal busca aprovar pelo menos oito projetos de teor econômico no Congresso Nacional até o início do recesso parlamentar, previsto para 23 de dezembro. A articulação ocorre após a sanção do pacote de ajuste fiscal e visa consolidar as bases para o exercício fiscal do próximo ano.",
-      "resumo_pulso": "Segundo apuração do G1 Política, a equipe econômica do governo federal busca aprovar pelo menos oito projetos de teor econômico no Congresso Nacional até o início do recesso parlamentar, previsto para 23 de dezembro. A articulação ocorre após a sanção do pacote de ajuste fiscal e visa consolidar as bases para o exercício fiscal do próximo ano.",
-      "sintese_nerd": "Afeta diretamente as expectativas do mercado financeiro, o planejamento orçamentário para o próximo ano e a estabilidade da dívida pública.",
-      "impacto_pratico": "Afeta diretamente as expectativas do mercado financeiro, o planejamento orçamentário para o próximo ano e a estabilidade da dívida pública.",
+      "gatilho_vitrine": "Segundo apuração do G1 Política, a equipe econômica busca acelerar a votação de ao menos oito projetos de teor econômico no Congresso Nacional antes do início do recesso parlamentar, marcado para 23 de dezembro.",
+      "resumo_pulso": "Segundo apuração do G1 Política, a equipe econômica busca acelerar a votação de ao menos oito projetos de teor econômico no Congresso Nacional antes do início do recesso parlamentar, marcado para 23 de dezembro.",
+      "sintese_nerd": "Impacta diretamente as expectativas fiscais e o planejamento orçamentário para o próximo ano.",
+      "impacto_pratico": "Impacta diretamente as expectativas fiscais e o planejamento orçamentário para o próximo ano.",
       "paises_envolvidos": [
         "BR"
       ],
       "veiculos_origem": [
-        "G1 Política",
-        "Nexo Jornal"
+        "G1 Política"
       ],
       "fontes_urls": [
         "https://g1.globo.com/politica/noticia/2026/11/25/governo-lula-tem-ao-menos-oito-projetos-economicos-para-aprovar-no-congresso-ate-o-fim-de-2026.ghtml"
       ],
       "data_publicacao": "2026-11-25T02:38:46Z",
-      "updated_at": "2026-11-25T05:04:03Z"
+      "updated_at": "2026-11-25T06:24:54Z"
     },
     {
       "slug": "assessor-trump-brasil-deixa-cargo-departamento-estado",
@@ -804,71 +850,99 @@
         "drones",
         "guerra"
       ]
-    },
-    {
-      "slug": "justica-condena-engenheiros-incendio-ninho-do-urubu",
-      "status": "novo",
-      "categoria": "Sociedade_Cultura",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-25T23:20:33Z",
-      "updated_at": "2026-11-24T23:20:33Z",
-      "fontes_urls": [
-        "https://www.poder360.com.br/poder-justica/justica-condena-2-engenheiros-por-incendio-no-ninho-do-urubu/"
-      ],
-      "titulo_tema": "Justiça do Rio condena dois engenheiros a 8 anos de prisão por tragédia no Ninho do Urubu",
-      "resumo_pulso": "Conforme apuração do portal Poder360, a Justiça do Rio de Janeiro condenou dois engenheiros a 8 anos de prisão pelo incêndio no centro de treinamento do Flamengo em 2019. A decisão responsabilizou os profissionais por falhas de segurança nos alojamentos que resultaram na morte de dez jovens atletas.",
-      "sintese_nerd": "Cria precedente judicial rigoroso sobre responsabilidade técnica e segurança em alojamentos desportivos e instalações coletivas.",
-      "titulo_curto": "Justiça do Rio condena dois engenheiros a 8 anos de prisão por tragédia no Ninho do Urubu",
-      "rota_editoria": "/cultura",
-      "palavras_chave": [
-        "ninho do urubu",
-        "flamengo",
-        "justiça do rio",
-        "responsabilidade técnica",
-        "incêndio 2019"
-      ],
-      "urgencia_score": 88,
-      "data_publicacao": "2026-11-24T23:03:39Z",
-      "gatilho_vitrine": "Conforme apuração do portal Poder360, a Justiça do Rio de Janeiro condenou dois engenheiros a 8 anos de prisão pelo incêndio no centro de treinamento do Flamengo em 2019. A decisão responsabilizou os profissionais por falhas de segurança nos alojamentos que resultaram na morte de dez jovens atletas.",
-      "impacto_pratico": "Cria precedente judicial rigoroso sobre responsabilidade técnica e segurança em alojamentos desportivos e instalações coletivas.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "Poder360"
-      ],
-      "relevancia_score": 91,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "categoria_primaria": "Cultura",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "ninho do urubu",
-        "flamengo",
-        "justiça do rio",
-        "responsabilidade técnica",
-        "incêndio 2019"
-      ]
     }
   ],
   "noticias_quentes": [
     {
+      "slug": "forcas-seguranca-entram-supermercado-refens-colombia",
+      "titulo_curto": "Forças de segurança entram em supermercado com reféns na Colômbia",
+      "resumo_pulso": "Segundo apuração do G1 Mundo, forças de segurança colombianas ingressaram nesta quarta-feira (25) no estabelecimento comercial em Cartagena onde dezenas de pessoas eram mantidas reféns desde o dia anterior por criminosos armados.",
+      "impacto_pratico": "Atenção para viajantes na região de Cartagena e possíveis interrupções em serviços locais de segurança.",
+      "categoria": "Geopolitica_Relacoes",
+      "paises_envolvidos": [
+        "CO"
+      ],
+      "urgencia_score": 92,
+      "relevancia_score": 90,
+      "nivel_confianca": "alta",
+      "ttl_horas": 12,
+      "horas_em_destaque": 12,
+      "veiculos_origem": [
+        "G1 Mundo",
+        "Reuters"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/mundo/noticia/2026/11/25/supermercado-com-refens-na-colombia.ghtml"
+      ],
+      "palavras_chave": [
+        "Colômbia",
+        "Cartagena",
+        "reféns",
+        "segurança"
+      ],
+      "data_publicacao": "2026-11-25T06:21:06Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "Política nos Estados Unidos",
+          "url_existente": "https://www.rodandoomundo.com.br/politica/estados-unidos",
+          "motivo_conexao": "Contextualiza desdobramentos de segurança internacional e operações especiais."
+        }
+      ],
+      "expires_at": "2026-11-25T18:24:54Z",
+      "updated_at": "2026-11-25T06:24:54Z"
+    },
+    {
+      "slug": "reforma-tributaria-fim-escala-6x1-inflacao-2027",
+      "titulo_curto": "Reforma tributária e fim da escala 6x1 podem pressionar inflação em 2027",
+      "resumo_pulso": "Conforme análise do G1 Economia, o início do novo imposto sobre consumo da reforma tributária e as mudanças na jornada de trabalho são apontados por especialistas como fatores de pressão inflacionária para o início de 2027.",
+      "impacto_pratico": "Possível impacto nos preços de serviços e custos de mão de obra para empresas, monitorado pelo Banco Central.",
+      "categoria": "Economia_Comercio",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "urgencia_score": 88,
+      "relevancia_score": 91,
+      "nivel_confianca": "alta",
+      "ttl_horas": 24,
+      "horas_em_destaque": 18,
+      "veiculos_origem": [
+        "G1 Economia"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/economia/noticia/2026/11/25/reforma-tributaria-e-fim-da-escala-6x1-podem-pressionar-inflacao-em-2027-bc-e-equipe-economica-monitoram-impactos.ghtml"
+      ],
+      "palavras_chave": [
+        "inflação",
+        "reforma tributária",
+        "escala 6x1",
+        "Banco Central"
+      ],
+      "data_publicacao": "2026-11-25T04:46:15Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "O que é inflação?",
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
+          "motivo_conexao": "Detalha como índices de preços e custos afetam diretamente o poder de compra da população."
+        }
+      ],
+      "expires_at": "2026-11-28T04:46:15Z",
+      "updated_at": "2026-11-25T06:24:54Z"
+    },
+    {
       "slug": "coreia-do-norte-expulsa-chefe-escritorio-suico",
-      "titulo_curto": "Coreia do Norte expulsa chefe de escritório diplomático da Suíça em Pyongyang",
-      "resumo_pulso": "Segundo reportagem do G1 Mundo, a Coreia do Norte exigiu o fechamento do escritório diplomático da Suíça em Pyongyang e ordenou a expulsão do principal diplomata responsável em até 48 horas. A medida acirra tensões diplomáticas na península coreana.",
-      "impacto_pratico": "Afeta as relações diplomáticas da Suíça e de nações ocidentais com o regime norte-coreano.",
+      "titulo_curto": "Coreia do Norte expulsa chefe de escritório diplomático suíço em Pyongyang",
+      "resumo_pulso": "Conforme desdobramento reportado pelo G1 Mundo, a Coreia do Norte intensificou medidas e ordenou a expulsão do principal diplomata suíço em Pyongyang após exigir o fechamento da representação diplomática na capital norte-coreana.",
+      "impacto_pratico": "Aumento das restrições e tensões diplomáticas na Península Coreana.",
       "categoria": "Geopolitica_Relacoes",
       "paises_envolvidos": [
         "KP",
         "CH"
       ],
-      "urgencia_score": 89,
-      "relevancia_score": 88,
+      "urgencia_score": 90,
+      "relevancia_score": 89,
       "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 12,
+      "horas_em_destaque": 18,
       "veiculos_origem": [
         "G1 Mundo"
       ],
@@ -878,94 +952,93 @@
       "palavras_chave": [
         "Coreia do Norte",
         "Suíça",
-        "Diplomacia",
+        "diplomacia",
         "Pyongyang"
       ],
       "data_publicacao": "2026-11-25T03:57:35Z",
       "links_internos_relacionados": [
         {
-          "titulo_existente": "Mercados e aliados internacionais avaliam impacto da política comercial norte-americana",
-          "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
-          "motivo_conexao": "Contextualiza tensões geopolíticas globais e movimentações diplomáticas internacionais."
+          "titulo_existente": "O que é uma sanção internacional?",
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-sancao-internacional",
+          "motivo_conexao": "Ajuda a compreender o uso de restrições diplomáticas como instrumento de pressão."
         }
       ],
       "expires_at": "2026-11-26T05:04:03Z",
-      "updated_at": "2026-11-25T05:04:03Z"
+      "updated_at": "2026-11-25T06:24:54Z"
     },
     {
       "slug": "justica-derruba-suspensao-regras-vale-refeicao",
-      "titulo_curto": "Decisão judicial restabelece novas regras e teto de taxas para vale-refeição e alimentação",
-      "resumo_pulso": "Conforme apuração do G1 Economia, um juiz aceitou recurso do governo e restabeleceu as diretrizes e o teto de taxas para o vale-refeição e o vale-alimentação em todo o país. A medida altera o formato de cobrança pelas operadoras e amplia a aceitação dos benefícios em estabelecimentos comerciais.",
-      "impacto_pratico": "Impacta diretamente as empresas operadoras de benefícios, o comércio varejista e a dinâmica de pagamentos para os trabalhadores.",
       "categoria": "Economia_Comercio",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "urgencia_score": 88,
-      "relevancia_score": 90,
-      "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 12,
-      "veiculos_origem": [
-        "G1 Economia"
-      ],
+      "expires_at": "2026-11-26T03:57:23Z",
+      "updated_at": "2026-11-25T05:04:03Z",
       "fontes_urls": [
         "https://g1.globo.com/df/distrito-federal/noticia/2026/11/25/justica-derruba-suspensao-e-restabelece-regras-para-vale-refeicao-e-alimentacao-entenda.ghtml"
       ],
+      "resumo_pulso": "Conforme apuração do G1 Economia, um juiz aceitou recurso do governo e restabeleceu as diretrizes e o teto de taxas para o vale-refeição e o vale-alimentação em todo o país. A medida altera o formato de cobrança pelas operadoras e amplia a aceitação dos benefícios em estabelecimentos comerciais.",
+      "titulo_curto": "Decisão judicial restabelece novas regras e teto de taxas para vale-refeição e alimentação",
       "palavras_chave": [
         "Vale-refeição",
         "Vale-alimentação",
         "Justiça",
         "Economia"
       ],
+      "urgencia_score": 88,
       "data_publicacao": "2026-11-25T03:17:42Z",
+      "impacto_pratico": "Impacta diretamente as empresas operadoras de benefícios, o comércio varejista e a dinâmica de pagamentos para os trabalhadores.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "G1 Economia"
+      ],
+      "relevancia_score": 90,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "BR"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "Economia no Brasil",
           "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
-          "motivo_conexao": "Relaciona a decisão sobre benefícios corporativos com o panorama da economia brasileira."
+          "motivo_conexao": "Relaciona a decisão sobre benefícios corporativos com o panorama da economia brasileira.",
+          "titulo_existente": "Economia no Brasil"
         }
-      ],
-      "expires_at": "2026-11-26T03:57:23Z",
-      "updated_at": "2026-11-25T05:04:03Z"
+      ]
     },
     {
       "slug": "governo-reduz-contencao-despesas-orcamento-12-bilhoes",
-      "titulo_curto": "Governo federal articula aprovação de oito projetos econômicos no Congresso até dezembro",
-      "resumo_pulso": "Segundo apuração do G1 Política, a equipe econômica do governo federal busca aprovar pelo menos oito projetos de teor econômico no Congresso Nacional até o início do recesso parlamentar, previsto para 23 de dezembro. A articulação ocorre após a sanção do pacote de ajuste fiscal e visa consolidar as bases para o exercício fiscal do próximo ano.",
-      "impacto_pratico": "Afeta diretamente as expectativas do mercado financeiro, o planejamento orçamentário para o próximo ano e a estabilidade da dívida pública.",
+      "titulo_curto": "Governo articula aprovação de oito projetos econômicos no Congresso até dezembro",
+      "resumo_pulso": "Segundo apuração do G1 Política, a equipe econômica busca acelerar a votação de ao menos oito projetos de teor econômico no Congresso Nacional antes do início do recesso parlamentar, marcado para 23 de dezembro.",
+      "impacto_pratico": "Impacta diretamente as expectativas fiscais e o planejamento orçamentário para o próximo ano.",
       "categoria": "Economia_Comercio",
       "paises_envolvidos": [
         "BR"
       ],
-      "urgencia_score": 90,
-      "relevancia_score": 93,
+      "urgencia_score": 89,
+      "relevancia_score": 92,
       "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 12,
+      "horas_em_destaque": 20,
       "veiculos_origem": [
-        "G1 Política",
-        "Nexo Jornal"
+        "G1 Política"
       ],
       "fontes_urls": [
         "https://g1.globo.com/politica/noticia/2026/11/25/governo-lula-tem-ao-menos-oito-projetos-economicos-para-aprovar-no-congresso-ate-o-fim-de-2026.ghtml"
       ],
       "palavras_chave": [
-        "Governo Federal",
-        "Congresso Nacional",
-        "Ajuste Fiscal",
-        "Economia"
+        "economia",
+        "Congresso",
+        "orçamento",
+        "governo federal"
       ],
       "data_publicacao": "2026-11-25T02:38:46Z",
       "links_internos_relacionados": [
         {
-          "titulo_existente": "Congresso e Planalto negociam prioridades da pauta econômica e votação do Orçamento",
+          "titulo_existente": "O que é o Orçamento?",
           "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-o-orcamento",
-          "motivo_conexao": "Complementa a análise sobre a articulação do governo no Congresso para aprovação de pautas econômicas."
+          "motivo_conexao": "Explica a dinâmica de tramitação e alocação dos recursos públicos no Congresso."
         }
       ],
       "expires_at": "2026-11-26T02:52:34Z",
-      "updated_at": "2026-11-25T05:04:03Z"
+      "updated_at": "2026-11-25T06:24:54Z"
     },
     {
       "slug": "assessor-trump-brasil-deixa-cargo-departamento-estado",
@@ -1506,85 +1579,6 @@
           "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
           "motivo_conexao": "Acompanhe as tendências de crédito, setor imobiliário e taxas de juros no país.",
           "titulo_existente": "Economia no Brasil"
-        }
-      ]
-    },
-    {
-      "slug": "argentina-entra-em-recessao-tecnica-setembro",
-      "categoria": "Economia_Comercio",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-25T23:19:15Z",
-      "updated_at": "2026-11-24T23:20:33Z",
-      "fontes_urls": [
-        "https://g1.globo.com/economia/noticia/2026/11/24/economia-da-argentina-encolhe-e-entra-em-recessao-tecnica-apontam-dados-preliminares.ghtml"
-      ],
-      "resumo_pulso": "Conforme dados preliminares do Indec e apuração do G1 Economia, a atividade econômica argentina caiu 1,2% em setembro na comparação anual. O resultado veio abaixo das projeções do mercado financeiro e confirmou a entrada do país vizinho em um quadro de recessão técnica.",
-      "titulo_curto": "Atividade econômica da Argentina encolhe e entra em recessão técnica em setembro",
-      "palavras_chave": [
-        "Argentina",
-        "Javier Milei",
-        "Indec",
-        "Recessão Técnica",
-        "PIB"
-      ],
-      "urgencia_score": 88,
-      "data_publicacao": "2026-11-24T22:33:17Z",
-      "impacto_pratico": "Afeta o fluxo de comércio bilateral com o Brasil e a demanda por produtos manufaturados brasileiros na região.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "G1 Economia"
-      ],
-      "relevancia_score": 89,
-      "horas_em_destaque": 12,
-      "paises_envolvidos": [
-        "AR",
-        "BR"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
-          "motivo_conexao": "Permite analisar a exposição comercial do mercado brasileiro às oscilações da economia argentina.",
-          "titulo_existente": "Economia no Brasil"
-        }
-      ]
-    },
-    {
-      "slug": "ira-divulga-video-ataque-aviao-comercial-guerra",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 18,
-      "expires_at": "2026-11-25T17:20:33Z",
-      "updated_at": "2026-11-24T23:20:33Z",
-      "fontes_urls": [
-        "https://g1.globo.com/mundo/noticia/2026/11/24/imprensa-iraniana-divulga-video-de-suposto-ataque-a-aviao-comercial-no-inicio-da-guerra.ghtml"
-      ],
-      "resumo_pulso": "Conforme reportado pelo G1 Mundo com base em veículos estatais do Irã, a imprensa iraniana divulgou imagens que mostrariam o momento em que uma aeronave comercial foi atingida no início das hostilidades na região. Teerã atribui a ação a forças americanas e israelenses, enquanto apurações internacionais buscam verificação independente dos registros.",
-      "titulo_curto": "Imprensa iraniana divulga vídeo de suposto ataque a avião comercial no início do conflito",
-      "palavras_chave": [
-        "Irã",
-        "Aviação Civil",
-        "Oriente Médio",
-        "EUA",
-        "Israel"
-      ],
-      "urgencia_score": 88,
-      "data_publicacao": "2026-11-24T22:07:59Z",
-      "impacto_pratico": "Eleva a tensão diplomática e traz novas incertezas quanto à segurança da aviação civil em rotas do Oriente Médio.",
-      "nivel_confianca": "preliminar",
-      "veiculos_origem": [
-        "G1 Mundo"
-      ],
-      "relevancia_score": 89,
-      "horas_em_destaque": 8,
-      "paises_envolvidos": [
-        "IR",
-        "US",
-        "IL"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-sancao-internacional",
-          "motivo_conexao": "Ajuda a compreender o contexto de escalada militar e sanções na região do Golfo.",
-          "titulo_existente": "O que é uma sanção internacional?"
         }
       ]
     }
