@@ -2,87 +2,304 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-25T19:10:37Z",
-  "batch_id": "20261125-1910",
+  "updatedAt": "2026-11-25T19:52:36Z",
+  "batch_id": "20261125-1952",
   "temas_ativos": [
     {
-      "slug": "especulacao-ministerio-fazenda-impacto-dolar-tesouro",
-      "titulo_tema": "Especulações sobre o Ministério da Fazenda derrubam dólar e afetam Tesouro Direto",
+      "slug": "pulso-1-20261125-1952",
+      "titulo_tema": "'Meio milhão de mortos': vazamento de dados revela números impressionantes de soldados russos que perderam a vida na guerra na Ucrânia",
+      "titulo_curto": "'Meio milhão de mortos': vazamento de dados revela números impressionantes de soldados russos que perderam a vida na guerra na Ucrânia",
       "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categoria": "Geopolitica_Relacoes",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 88,
+      "urgencia_score": 90,
+      "ttl_horas": 6,
+      "expires_at": "2026-11-26T01:52:36Z",
+      "palavras_chave_busca": [
+        "radar",
+        "tempo real",
+        "gb"
+      ],
+      "palavras_chave": [
+        "radar",
+        "tempo real",
+        "gb"
+      ],
+      "gatilho_vitrine": "Segundo BBC News Brasil, Dados vazados da agência de estatísticas russa revelam como que invasão da Ucrânia impactou nos padrões de mortalidade do país; em 2025, maioria das vítimas tinha menos de 24 anos.",
+      "resumo_pulso": "Segundo BBC News Brasil, Dados vazados da agência de estatísticas russa revelam como que invasão da Ucrânia impactou nos padrões de mortalidade do país; em 2025, maioria das vítimas tinha menos de 24 anos.",
+      "sintese_nerd": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "paises_envolvidos": [
+        "GB"
+      ],
+      "veiculos_origem": [
+        "BBC News Brasil"
+      ],
+      "fontes_urls": [
+        "https://www.bbc.com/portuguese/articles/ckdd1zq7r56no?at_medium=RSS&at_campaign=rss"
+      ],
+      "data_publicacao": "2026-11-25T19:43:08+00:00",
+      "updated_at": "2026-11-25T19:52:36Z"
+    },
+    {
+      "slug": "pulso-2-20261125-1952",
+      "titulo_tema": "Paim volta a defender mudança na contribuição previdenciária das empresas",
+      "titulo_curto": "Paim volta a defender mudança na contribuição previdenciária das empresas",
+      "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categoria": "Geopolitica_Relacoes",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 84,
+      "urgencia_score": 85,
+      "ttl_horas": 6,
+      "expires_at": "2026-11-26T01:52:36Z",
+      "palavras_chave_busca": [
+        "radar",
+        "tempo real",
+        "br"
+      ],
+      "palavras_chave": [
+        "radar",
+        "tempo real",
+        "br"
+      ],
+      "gatilho_vitrine": "Segundo Agência Senado, Em pronunciamento no Plenário nesta quarta-feira (25), o senador Paulo Paim (PT-RS) voltou a defender a mudança na forma de contribuição das empresas para a Previdência Social que está prevista na PEC 1/2026: com a cobrança calculada sobre o faturamento, e não sobre a folha de salários. A PEC 1/2026 é uma proposta de emenda à Constituição apresenta.",
+      "resumo_pulso": "Segundo Agência Senado, Em pronunciamento no Plenário nesta quarta-feira (25), o senador Paulo Paim (PT-RS) voltou a defender a mudança na forma de contribuição das empresas para a Previdência Social que está prevista na PEC 1/2026: com a cobrança calculada sobre o faturamento, e não sobre a folha de salários. A PEC 1/2026 é uma proposta de emenda à Constituição apresenta.",
+      "sintese_nerd": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "veiculos_origem": [
+        "Agência Senado"
+      ],
+      "fontes_urls": [
+        "https://www12.senado.leg.br/noticias/materias/2026/11/25/paim-volta-a-defender-mudanca-na-contribuicao-previdenciaria-das-empresas"
+      ],
+      "data_publicacao": "2026-11-25T19:39:02+00:00",
+      "updated_at": "2026-11-25T19:52:36Z"
+    },
+    {
+      "slug": "especulacoes-ministerio-fazenda-queda-dolar-tesouro",
+      "status": "novo",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-26T19:38:47Z",
+      "updated_at": "2026-11-25T19:38:47Z",
+      "titulo_tema": "Especulações sobre o Ministério da Fazenda movimentam câmbio e juros no Brasil",
+      "sintese_nerd": "Rumores sobre mudanças no comando do Ministério da Fazenda geraram forte volatilidade, derrubando a cotação do dólar para a faixa de R$ 5,81 e impulsionando ajustes nos títulos públicos. A incerteza fiscal segue ditando o humor dos investidores e o custo de captação do país.",
+      "rota_editoria": "/economia",
+      "data_publicacao": "2026-11-25T19:38:47Z",
+      "gatilho_vitrine": "Destacar análises sobre a reação dos mercados financeiros brasileiros às trocas e especulações na equipe econômica do governo.",
       "origem_pipeline": "curadoria",
+      "relevancia_score": 92,
       "categoria_primaria": "Economia",
       "categorias_cruzadas": [
         "Politica",
         "Resumo_Ultimas"
       ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 92,
-      "ttl_horas": 24,
-      "expires_at": "2026-11-26T19:10:37Z",
       "palavras_chave_busca": [
         "ministério da fazenda",
+        "luiz carlos trabuco",
+        "câmbio",
         "dólar",
         "tesouro direto",
-        "governo lula",
-        "cenário fiscal",
-        "mercado financeiro"
-      ],
-      "gatilho_vitrine": "Destaque a forte volatilidade nos mercados brasileiros impulsionada por expectativas sobre a equipe econômica do governo.",
-      "sintese_nerd": "Rumores sobre a futura liderança do Ministério da Fazenda geraram forte volatilidade, derrubando o dólar para a faixa de R$ 5,82 e provocando instabilidade e pane temporária na plataforma do Tesouro Direto. Para o cidadão, a indefinição fiscal repercute diretamente na percepção de risco-país e nos rendimentos dos investimentos locais.",
-      "data_publicacao": "2026-11-25T19:10:37Z",
-      "updated_at": "2026-11-25T19:10:37Z"
+        "política fiscal"
+      ]
     },
     {
-      "slug": "acordo-brasil-alemanha-minerais-criticos-estrategicos",
-      "titulo_tema": "Fortalecimento de acordo de minerais críticos entre Brasil e Alemanha",
+      "slug": "vazamento-dados-guerra-ucrania-baixas-russas",
       "status": "novo",
+      "ttl_horas": 48,
+      "expires_at": "2026-11-27T19:38:47Z",
+      "updated_at": "2026-11-25T19:38:47Z",
+      "titulo_tema": "Vazamento revela impacto demográfico severo e meio milhão de baixas russas na Ucrânia",
+      "sintese_nerd": "Dados vazados da inteligência estatística russa estimam cerca de meio milhão de baixas militares na Ucrânia, evidenciando uma pressão demográfica profunda sobre a juventude do país agressor. Esse desgaste humano corrói a sustentabilidade a longo prazo da economia e da mão de obra russa.",
+      "rota_editoria": "/radar",
+      "data_publicacao": "2026-11-25T19:38:47Z",
+      "gatilho_vitrine": "Priorizar coberturas aprofundadas sobre o custo humano e estratégico prolongado dos conflitos armados no Leste Europeu.",
       "origem_pipeline": "curadoria",
+      "relevancia_score": 88,
       "categoria_primaria": "Geopolitica_Radar",
       "categorias_cruzadas": [
+        "Cultura",
         "Economia"
       ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 88,
-      "ttl_horas": 72,
-      "expires_at": "2026-11-28T19:10:37Z",
       "palavras_chave_busca": [
-        "minerais críticos",
-        "brasil",
-        "alemanha",
-        "acordo comercial",
-        "geopolítica",
-        "transição energética"
-      ],
-      "gatilho_vitrine": "Exiba no radar global as articulações diplomáticas e industriais do Brasil em relação a insumos estratégicos para a transição energética europeia.",
-      "sintese_nerd": "A aproximação entre Brasília e Berlim em torno de minerais estratégicos insere o Brasil nas cadeias globais de suprimentos voltadas à transição verde e à alta tecnologia. Essa cooperação eleva o peso geopolítico do país nas negociações comerciais com potências ocidentais.",
-      "data_publicacao": "2026-11-25T19:10:37Z",
-      "updated_at": "2026-11-25T19:10:37Z"
+        "guerra na ucrânia",
+        "baixas russas",
+        "geopolítica global",
+        "vladimir putin",
+        "mortalidade militar",
+        "sanções"
+      ]
     },
     {
-      "slug": "reforma-tributaria-estrategia-logistica-amazon-brasil",
-      "titulo_tema": "Reforma tributária e a rota de expansão logística da Amazon para 2027",
+      "slug": "spacex-aprovacao-fcc-data-centers-espaciais",
       "status": "novo",
+      "ttl_horas": 72,
+      "expires_at": "2026-11-28T19:38:47Z",
+      "updated_at": "2026-11-25T19:38:47Z",
+      "titulo_tema": "EUA aprovam projeto da SpaceX para implantação de data centers espaciais",
+      "sintese_nerd": "A autorização da FCC para o projeto Starmind da SpaceX consolida uma nova fronteira na infraestrutura de processamento de dados fora da Terra. A disputa pela soberania tecnológica e espacial redefine a hegemonia das grandes potências sobre a economia digital.",
+      "rota_editoria": "/radar",
+      "data_publicacao": "2026-11-25T19:38:47Z",
+      "gatilho_vitrine": "Exibir artigos sobre a corrida tecnológica espacial e a nova infraestrutura global de dados e telecomunicações.",
       "origem_pipeline": "curadoria",
-      "categoria_primaria": "Economia",
+      "relevancia_score": 85,
+      "categoria_primaria": "Geopolitica_Radar",
       "categorias_cruzadas": [
-        "Cultura"
+        "Cultura",
+        "Economia"
       ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 80,
-      "ttl_horas": 48,
-      "expires_at": "2026-11-27T19:10:37Z",
       "palavras_chave_busca": [
-        "reforma tributária",
-        "amazon brasil",
-        "logística",
-        "centros de distribuição",
-        "consumo",
-        "economia brasileira"
+        "spacex",
+        "elon musk",
+        "fcc",
+        "data centers espaciais",
+        "starmind",
+        "tecnologia global"
+      ]
+    },
+    {
+      "slug": "pulso-3-20261125-1952",
+      "titulo_tema": "CDH: vínculo posterior entre réu e vítima de estupro de vulnerável não afasta pena",
+      "titulo_curto": "CDH: vínculo posterior entre réu e vítima de estupro de vulnerável não afasta pena",
+      "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categoria": "Geopolitica_Relacoes",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
       ],
-      "gatilho_vitrine": "Mostre como grandes corporações adaptam seus planos de infraestrutura e distribuição diante das novas regras fiscais do país.",
-      "sintese_nerd": "A decisão da Amazon de manter seus planos de expansão logística com foco na proximidade ao consumidor, independentemente dos incentivos da reforma tributária, redesenha o mapa do e-commerce nacional. A estratégia prioriza a agilidade na entrega em detrimento de vantagens puramente fiscais.",
-      "data_publicacao": "2026-11-25T19:10:37Z",
-      "updated_at": "2026-11-25T19:10:37Z"
+      "rota_editoria": "/radar",
+      "relevancia_score": 80,
+      "urgencia_score": 80,
+      "ttl_horas": 6,
+      "expires_at": "2026-11-26T01:52:36Z",
+      "palavras_chave_busca": [
+        "radar",
+        "tempo real",
+        "br"
+      ],
+      "palavras_chave": [
+        "radar",
+        "tempo real",
+        "br"
+      ],
+      "gatilho_vitrine": "Segundo Agência Senado, Praticar sexo com pessoa menor de 14 anos é crime. E, pela lei, não há circunstância capaz de relativizar o cumprimento da pena, de 10 a 18 anos de reclusão. Para deixar ainda mais clara a \"absoluta presunção de vulnerabilidade da vítima\" e a \"inadmissibilidade da relativização da pena\", conforme já estabelece o Código Penal, a Comissão de Direitos.",
+      "resumo_pulso": "Segundo Agência Senado, Praticar sexo com pessoa menor de 14 anos é crime. E, pela lei, não há circunstância capaz de relativizar o cumprimento da pena, de 10 a 18 anos de reclusão. Para deixar ainda mais clara a \"absoluta presunção de vulnerabilidade da vítima\" e a \"inadmissibilidade da relativização da pena\", conforme já estabelece o Código Penal, a Comissão de Direitos.",
+      "sintese_nerd": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "veiculos_origem": [
+        "Agência Senado"
+      ],
+      "fontes_urls": [
+        "https://www12.senado.leg.br/noticias/materias/2026/11/25/cdh-vinculo-posterior-entre-reu-e-vitima-de-estupro-de-vulneravel-nao-afasta-pena"
+      ],
+      "data_publicacao": "2026-11-25T19:28:32+00:00",
+      "updated_at": "2026-11-25T19:52:36Z"
+    },
+    {
+      "slug": "pulso-4-20261125-1952",
+      "titulo_tema": "O gol maravilhoso de Bellingham gera comparações com Zidane",
+      "titulo_curto": "O gol maravilhoso de Bellingham gera comparações com Zidane",
+      "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categoria": "Geopolitica_Relacoes",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 76,
+      "urgencia_score": 75,
+      "ttl_horas": 6,
+      "expires_at": "2026-11-26T01:52:36Z",
+      "palavras_chave_busca": [
+        "radar",
+        "tempo real",
+        "qa"
+      ],
+      "palavras_chave": [
+        "radar",
+        "tempo real",
+        "qa"
+      ],
+      "gatilho_vitrine": "Segundo Al Jazeera English, O gol espetacular de Jude Bellingham na goleada do Real Madrid por 5 a 1 sobre o PSV gerou comparações com uma lenda do clube..",
+      "resumo_pulso": "Segundo Al Jazeera English, O gol espetacular de Jude Bellingham na goleada do Real Madrid por 5 a 1 sobre o PSV gerou comparações com uma lenda do clube..",
+      "sintese_nerd": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "paises_envolvidos": [
+        "QA"
+      ],
+      "veiculos_origem": [
+        "Al Jazeera English"
+      ],
+      "fontes_urls": [
+        "https://www.aljazeera.com/video/newsfeed/2026/11/25/bellinghams-wondergoal-sparks-zidane-comparisons?traffic_source=rss"
+      ],
+      "data_publicacao": "2026-11-25T19:27:56+00:00",
+      "updated_at": "2026-11-25T19:52:36Z"
+    },
+    {
+      "slug": "pulso-5-20261125-1952",
+      "titulo_tema": "Dueire celebra 81 anos do Hospital de Câncer e pede mais investimentos",
+      "titulo_curto": "Dueire celebra 81 anos do Hospital de Câncer e pede mais investimentos",
+      "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categoria": "Geopolitica_Relacoes",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 72,
+      "urgencia_score": 70,
+      "ttl_horas": 6,
+      "expires_at": "2026-11-26T01:52:36Z",
+      "palavras_chave_busca": [
+        "radar",
+        "tempo real",
+        "br"
+      ],
+      "palavras_chave": [
+        "radar",
+        "tempo real",
+        "br"
+      ],
+      "gatilho_vitrine": "Segundo Agência Senado, O senador Fernando Dueire (PSD-PE) homenageou nesta quarta-feira (25) os 81 anos do Hospital de Câncer de Pernambuco, fundado em 1945. Em pronunciamento no Plenário, ele ressaltou a contribuição da instituição para a saúde pública no estado e o trabalho de atendimento e acolhimento de pacientes com câncer e de seus familiares. Segundo ele, a instit.",
+      "resumo_pulso": "Segundo Agência Senado, O senador Fernando Dueire (PSD-PE) homenageou nesta quarta-feira (25) os 81 anos do Hospital de Câncer de Pernambuco, fundado em 1945. Em pronunciamento no Plenário, ele ressaltou a contribuição da instituição para a saúde pública no estado e o trabalho de atendimento e acolhimento de pacientes com câncer e de seus familiares. Segundo ele, a instit.",
+      "sintese_nerd": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "veiculos_origem": [
+        "Agência Senado"
+      ],
+      "fontes_urls": [
+        "https://www12.senado.leg.br/noticias/materias/2026/11/25/dueire-celebra-81-anos-do-hospital-de-cancer-e-pede-mais-investimentos"
+      ],
+      "data_publicacao": "2026-11-25T19:23:28+00:00",
+      "updated_at": "2026-11-25T19:52:36Z"
     },
     {
       "slug": "ccj-senado-aprova-registro-obrigatorio-moteis-cadastur",
@@ -613,307 +830,214 @@
         "tempo real",
         "br"
       ]
-    },
-    {
-      "slug": "pulso-5-20261125-1701",
-      "status": "novo",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 6,
-      "expires_at": "2026-11-25T23:01:06Z",
-      "updated_at": "2026-11-25T17:01:06Z",
-      "fontes_urls": [
-        "https://g1.globo.com/politica/noticia/2026/11/25/lula-reune-ex-ministros-da-justica-para-discutir-nova-pasta-da-seguranca-publica.ghtml"
-      ],
-      "titulo_tema": "Lula reúne ex-ministros da Justiça para discutir estrutura de nova pasta da Segurança Pública",
-      "resumo_pulso": "Segundo G1 Política, O presidente Luiz Inácio Lula da Silva (PT) reuniu, na manhã desta quarta-feira (25), três ex-ministros da Justiça e atuais membros do governo para discutir a criação do Ministério da Segurança Pública. A reunião, que ocorreu no Palácio da Alvorada, contou com a presença do ocupante da pasta, Wellington César Lima e Silva, além da ministra da Casa .",
-      "sintese_nerd": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "titulo_curto": "Lula reúne ex-ministros da Justiça para discutir estrutura de nova pasta da Segurança Pública",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "radar",
-        "tempo real",
-        "br"
-      ],
-      "urgencia_score": 70,
-      "data_publicacao": "2026-11-25T16:45:46+00:00",
-      "gatilho_vitrine": "Segundo G1 Política, O presidente Luiz Inácio Lula da Silva (PT) reuniu, na manhã desta quarta-feira (25), três ex-ministros da Justiça e atuais membros do governo para discutir a criação do Ministério da Segurança Pública. A reunião, que ocorreu no Palácio da Alvorada, contou com a presença do ocupante da pasta, Wellington César Lima e Silva, além da ministra da Casa .",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "G1 Política"
-      ],
-      "relevancia_score": 72,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "radar",
-        "tempo real",
-        "br"
-      ]
-    },
-    {
-      "slug": "pulso-1-20261125-1535",
-      "status": "novo",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 6,
-      "expires_at": "2026-11-25T21:35:29Z",
-      "updated_at": "2026-11-25T15:35:29Z",
-      "fontes_urls": [
-        "https://g1.globo.com/economia/noticia/2026/11/25/trump-amplia-ofensiva-comercial.ghtml"
-      ],
-      "titulo_tema": "Trump amplia ofensiva comercial e propõe novas tarifas contra Brasil, China e outros parceiros",
-      "resumo_pulso": "Segundo G1 Economia, Donald Trump, presidente dos EUA, é recebido em Shenzen, China, pelo presidente chinês Xi Jinping. REUTERS / Carlos Barria O governo de Donald Trump propôs nesta quarta-feira (25) cobrar uma tarifa adicional de 10% sobre aviões brasileiros e elevar os impostos sobre o açúcar importado do Brasil. Em outra frente, os Estados Unidos anunciaram uma pro.",
-      "sintese_nerd": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "titulo_curto": "Trump amplia ofensiva comercial e propõe novas tarifas contra Brasil, China e outros parceiros",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "radar",
-        "tempo real",
-        "br"
-      ],
-      "urgencia_score": 90,
-      "data_publicacao": "2026-11-25T15:19:52+00:00",
-      "gatilho_vitrine": "Segundo G1 Economia, Donald Trump, presidente dos EUA, é recebido em Shenzen, China, pelo presidente chinês Xi Jinping. REUTERS / Carlos Barria O governo de Donald Trump propôs nesta quarta-feira (25) cobrar uma tarifa adicional de 10% sobre aviões brasileiros e elevar os impostos sobre o açúcar importado do Brasil. Em outra frente, os Estados Unidos anunciaram uma pro.",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "G1 Economia"
-      ],
-      "relevancia_score": 88,
-      "paises_envolvidos": [
-        "BR",
-        "US"
-      ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "radar",
-        "tempo real",
-        "br"
-      ]
-    },
-    {
-      "slug": "pulso-2-20261125-1535",
-      "status": "novo",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 6,
-      "expires_at": "2026-11-25T21:35:29Z",
-      "updated_at": "2026-11-25T15:35:29Z",
-      "fontes_urls": [
-        "https://www12.senado.leg.br/noticias/materias/2026/11/25/vai-a-plenario-inclusao-de-fundo-constitucional-do-df-na-constituicao"
-      ],
-      "titulo_tema": "Vai a Plenário inclusão de Fundo Constitucional do DF na Constituição",
-      "resumo_pulso": "Segundo Agência Senado, A Comissão de Constituição e Justiça (CCJ) aprovou proposta de emenda à Constituição que inclui expressamente o Fundo Constitucional do Distrito Federal (FCDF) na Carta Magna como o responsável por financiar as forças policiais e o corpo de bombeiros do DF. Hoje, há menção apenas a um \"fundo próprio\". O texto vai a Plenário, assim como o requerimen.",
-      "sintese_nerd": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "titulo_curto": "Vai a Plenário inclusão de Fundo Constitucional do DF na Constituição",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "radar",
-        "tempo real",
-        "br"
-      ],
-      "urgencia_score": 85,
-      "data_publicacao": "2026-11-25T15:19:38+00:00",
-      "gatilho_vitrine": "Segundo Agência Senado, A Comissão de Constituição e Justiça (CCJ) aprovou proposta de emenda à Constituição que inclui expressamente o Fundo Constitucional do Distrito Federal (FCDF) na Carta Magna como o responsável por financiar as forças policiais e o corpo de bombeiros do DF. Hoje, há menção apenas a um \"fundo próprio\". O texto vai a Plenário, assim como o requerimen.",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "Agência Senado"
-      ],
-      "relevancia_score": 84,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "radar",
-        "tempo real",
-        "br"
-      ]
-    },
-    {
-      "slug": "pulso-3-20261125-1535",
-      "status": "novo",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 6,
-      "expires_at": "2026-11-25T21:35:29Z",
-      "updated_at": "2026-11-25T15:35:29Z",
-      "fontes_urls": [
-        "https://g1.globo.com/mundo/noticia/2026/11/25/eua-fazem-explosao-controlada-de-material-toxico-que-gerou-polemica-e-virou-batalha-judicial.ghtml"
-      ],
-      "titulo_tema": "EUA fazem explosão controlada de material tóxico que gerou polêmica e virou batalha judicial",
-      "resumo_pulso": "Segundo G1 Mundo, EUA divulgam vídeo de preparativos para explosão controlada de material tóxico O Exército dos Estados Unidos realizou nesta quarta-feira (25) a polêmica explosão controlada de 68 barris de azida de chumbo, substância usada na fabricação de munições. A detonação ocorreu no estado de Iowa e só foi possível com autorização da Justiça, após uma disputa.",
-      "sintese_nerd": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "titulo_curto": "EUA fazem explosão controlada de material tóxico que gerou polêmica e virou batalha judicial",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "radar",
-        "tempo real",
-        "br"
-      ],
-      "urgencia_score": 80,
-      "data_publicacao": "2026-11-25T15:07:16+00:00",
-      "gatilho_vitrine": "Segundo G1 Mundo, EUA divulgam vídeo de preparativos para explosão controlada de material tóxico O Exército dos Estados Unidos realizou nesta quarta-feira (25) a polêmica explosão controlada de 68 barris de azida de chumbo, substância usada na fabricação de munições. A detonação ocorreu no estado de Iowa e só foi possível com autorização da Justiça, após uma disputa.",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "G1 Mundo"
-      ],
-      "relevancia_score": 80,
-      "paises_envolvidos": [
-        "BR",
-        "US"
-      ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "radar",
-        "tempo real",
-        "br"
-      ]
-    },
-    {
-      "slug": "pulso-4-20261125-1535",
-      "status": "novo",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 6,
-      "expires_at": "2026-11-25T21:35:29Z",
-      "updated_at": "2026-11-25T15:35:29Z",
-      "fontes_urls": [
-        "https://www12.senado.leg.br/noticias/materias/2026/11/25/frente-parlamentar-mista-de-defesa-seguranca-e-soberania-e-aprovada-na-cre"
-      ],
-      "titulo_tema": "Frente Parlamentar Mista de Defesa, Segurança e Soberania é aprovada na CRE",
-      "resumo_pulso": "Segundo Agência Senado, Acompanhar o orçamento da defesa e propor medidas para proteger as fronteiras e as águas brasileiras estão entre as atribuições da Frente Parlamentar Mista de Defesa, Segurança e Soberania, cuja criação foi aprovada nesta quarta-feira (25) pela Comissão de Relações Exteriores (CRE). Autor da projeto de resolução que cria a frente parlamentar (PRS 5.",
-      "sintese_nerd": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "titulo_curto": "Frente Parlamentar Mista de Defesa, Segurança e Soberania é aprovada na CRE",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "radar",
-        "tempo real",
-        "br"
-      ],
-      "urgencia_score": 75,
-      "data_publicacao": "2026-11-25T15:06:18+00:00",
-      "gatilho_vitrine": "Segundo Agência Senado, Acompanhar o orçamento da defesa e propor medidas para proteger as fronteiras e as águas brasileiras estão entre as atribuições da Frente Parlamentar Mista de Defesa, Segurança e Soberania, cuja criação foi aprovada nesta quarta-feira (25) pela Comissão de Relações Exteriores (CRE). Autor da projeto de resolução que cria a frente parlamentar (PRS 5.",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "Agência Senado"
-      ],
-      "relevancia_score": 76,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "radar",
-        "tempo real",
-        "br"
-      ]
-    }
-  ],
-  "temas_curadoria": [
-    {
-      "slug": "especulacao-ministerio-fazenda-impacto-dolar-tesouro",
-      "titulo_tema": "Especulações sobre o Ministério da Fazenda derrubam dólar e afetam Tesouro Direto",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Politica",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 92,
-      "ttl_horas": 24,
-      "expires_at": "2026-11-26T19:10:37Z",
-      "palavras_chave_busca": [
-        "ministério da fazenda",
-        "dólar",
-        "tesouro direto",
-        "governo lula",
-        "cenário fiscal",
-        "mercado financeiro"
-      ],
-      "gatilho_vitrine": "Destaque a forte volatilidade nos mercados brasileiros impulsionada por expectativas sobre a equipe econômica do governo.",
-      "sintese_nerd": "Rumores sobre a futura liderança do Ministério da Fazenda geraram forte volatilidade, derrubando o dólar para a faixa de R$ 5,82 e provocando instabilidade e pane temporária na plataforma do Tesouro Direto. Para o cidadão, a indefinição fiscal repercute diretamente na percepção de risco-país e nos rendimentos dos investimentos locais.",
-      "data_publicacao": "2026-11-25T19:10:37Z",
-      "updated_at": "2026-11-25T19:10:37Z"
-    },
-    {
-      "slug": "acordo-brasil-alemanha-minerais-criticos-estrategicos",
-      "titulo_tema": "Fortalecimento de acordo de minerais críticos entre Brasil e Alemanha",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 88,
-      "ttl_horas": 72,
-      "expires_at": "2026-11-28T19:10:37Z",
-      "palavras_chave_busca": [
-        "minerais críticos",
-        "brasil",
-        "alemanha",
-        "acordo comercial",
-        "geopolítica",
-        "transição energética"
-      ],
-      "gatilho_vitrine": "Exiba no radar global as articulações diplomáticas e industriais do Brasil em relação a insumos estratégicos para a transição energética europeia.",
-      "sintese_nerd": "A aproximação entre Brasília e Berlim em torno de minerais estratégicos insere o Brasil nas cadeias globais de suprimentos voltadas à transição verde e à alta tecnologia. Essa cooperação eleva o peso geopolítico do país nas negociações comerciais com potências ocidentais.",
-      "data_publicacao": "2026-11-25T19:10:37Z",
-      "updated_at": "2026-11-25T19:10:37Z"
-    },
-    {
-      "slug": "reforma-tributaria-estrategia-logistica-amazon-brasil",
-      "titulo_tema": "Reforma tributária e a rota de expansão logística da Amazon para 2027",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Cultura"
-      ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 80,
-      "ttl_horas": 48,
-      "expires_at": "2026-11-27T19:10:37Z",
-      "palavras_chave_busca": [
-        "reforma tributária",
-        "amazon brasil",
-        "logística",
-        "centros de distribuição",
-        "consumo",
-        "economia brasileira"
-      ],
-      "gatilho_vitrine": "Mostre como grandes corporações adaptam seus planos de infraestrutura e distribuição diante das novas regras fiscais do país.",
-      "sintese_nerd": "A decisão da Amazon de manter seus planos de expansão logística com foco na proximidade ao consumidor, independentemente dos incentivos da reforma tributária, redesenha o mapa do e-commerce nacional. A estratégia prioriza a agilidade na entrega em detrimento de vantagens puramente fiscais.",
-      "data_publicacao": "2026-11-25T19:10:37Z",
-      "updated_at": "2026-11-25T19:10:37Z"
     }
   ],
   "noticias_quentes": [
+    {
+      "slug": "pulso-1-20261125-1952",
+      "titulo_curto": "'Meio milhão de mortos': vazamento de dados revela números impressionantes de soldados russos que perderam a vida na guerra na Ucrânia",
+      "resumo_pulso": "Segundo BBC News Brasil, Dados vazados da agência de estatísticas russa revelam como que invasão da Ucrânia impactou nos padrões de mortalidade do país; em 2025, maioria das vítimas tinha menos de 24 anos.",
+      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "categoria": "Geopolitica_Relacoes",
+      "paises_envolvidos": [
+        "GB"
+      ],
+      "urgencia_score": 90,
+      "relevancia_score": 88,
+      "nivel_confianca": "alta",
+      "ttl_horas": 6,
+      "horas_em_destaque": 6,
+      "veiculos_origem": [
+        "BBC News Brasil"
+      ],
+      "fontes_urls": [
+        "https://www.bbc.com/portuguese/articles/ckdd1zq7r56no?at_medium=RSS&at_campaign=rss"
+      ],
+      "palavras_chave": [
+        "radar",
+        "tempo real",
+        "gb"
+      ],
+      "data_publicacao": "2026-11-25T19:43:08+00:00",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "O que é inflação?",
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
+          "motivo_conexao": "Compreenda por que os preços sobem de forma generalizada, como o IPCA é calculado e de que maneira os juros do Banco Central afetam o poder de compra."
+        },
+        {
+          "titulo_existente": "Como funcionam as eleições nos EUA?",
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/como-funcionam-as-eleicoes-nos-eua",
+          "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos."
+        }
+      ],
+      "expires_at": "2026-11-26T01:52:36Z",
+      "updated_at": "2026-11-25T19:52:36Z"
+    },
+    {
+      "slug": "pulso-2-20261125-1952",
+      "titulo_curto": "Paim volta a defender mudança na contribuição previdenciária das empresas",
+      "resumo_pulso": "Segundo Agência Senado, Em pronunciamento no Plenário nesta quarta-feira (25), o senador Paulo Paim (PT-RS) voltou a defender a mudança na forma de contribuição das empresas para a Previdência Social que está prevista na PEC 1/2026: com a cobrança calculada sobre o faturamento, e não sobre a folha de salários. A PEC 1/2026 é uma proposta de emenda à Constituição apresenta.",
+      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "categoria": "Geopolitica_Relacoes",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "urgencia_score": 85,
+      "relevancia_score": 84,
+      "nivel_confianca": "alta",
+      "ttl_horas": 6,
+      "horas_em_destaque": 6,
+      "veiculos_origem": [
+        "Agência Senado"
+      ],
+      "fontes_urls": [
+        "https://www12.senado.leg.br/noticias/materias/2026/11/25/paim-volta-a-defender-mudanca-na-contribuicao-previdenciaria-das-empresas"
+      ],
+      "palavras_chave": [
+        "radar",
+        "tempo real",
+        "br"
+      ],
+      "data_publicacao": "2026-11-25T19:39:02+00:00",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "O que é inflação?",
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
+          "motivo_conexao": "Compreenda por que os preços sobem de forma generalizada, como o IPCA é calculado e de que maneira os juros do Banco Central afetam o poder de compra."
+        },
+        {
+          "titulo_existente": "Como funcionam as eleições nos EUA?",
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/como-funcionam-as-eleicoes-nos-eua",
+          "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos."
+        }
+      ],
+      "expires_at": "2026-11-26T01:52:36Z",
+      "updated_at": "2026-11-25T19:52:36Z"
+    },
+    {
+      "slug": "pulso-3-20261125-1952",
+      "titulo_curto": "CDH: vínculo posterior entre réu e vítima de estupro de vulnerável não afasta pena",
+      "resumo_pulso": "Segundo Agência Senado, Praticar sexo com pessoa menor de 14 anos é crime. E, pela lei, não há circunstância capaz de relativizar o cumprimento da pena, de 10 a 18 anos de reclusão. Para deixar ainda mais clara a \"absoluta presunção de vulnerabilidade da vítima\" e a \"inadmissibilidade da relativização da pena\", conforme já estabelece o Código Penal, a Comissão de Direitos.",
+      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "categoria": "Geopolitica_Relacoes",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "urgencia_score": 80,
+      "relevancia_score": 80,
+      "nivel_confianca": "alta",
+      "ttl_horas": 6,
+      "horas_em_destaque": 6,
+      "veiculos_origem": [
+        "Agência Senado"
+      ],
+      "fontes_urls": [
+        "https://www12.senado.leg.br/noticias/materias/2026/11/25/cdh-vinculo-posterior-entre-reu-e-vitima-de-estupro-de-vulneravel-nao-afasta-pena"
+      ],
+      "palavras_chave": [
+        "radar",
+        "tempo real",
+        "br"
+      ],
+      "data_publicacao": "2026-11-25T19:28:32+00:00",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "O que é inflação?",
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
+          "motivo_conexao": "Compreenda por que os preços sobem de forma generalizada, como o IPCA é calculado e de que maneira os juros do Banco Central afetam o poder de compra."
+        },
+        {
+          "titulo_existente": "Como funcionam as eleições nos EUA?",
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/como-funcionam-as-eleicoes-nos-eua",
+          "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos."
+        }
+      ],
+      "expires_at": "2026-11-26T01:52:36Z",
+      "updated_at": "2026-11-25T19:52:36Z"
+    },
+    {
+      "slug": "pulso-4-20261125-1952",
+      "titulo_curto": "O gol maravilhoso de Bellingham gera comparações com Zidane",
+      "resumo_pulso": "Segundo Al Jazeera English, O gol espetacular de Jude Bellingham na goleada do Real Madrid por 5 a 1 sobre o PSV gerou comparações com uma lenda do clube..",
+      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "categoria": "Geopolitica_Relacoes",
+      "paises_envolvidos": [
+        "QA"
+      ],
+      "urgencia_score": 75,
+      "relevancia_score": 76,
+      "nivel_confianca": "alta",
+      "ttl_horas": 6,
+      "horas_em_destaque": 6,
+      "veiculos_origem": [
+        "Al Jazeera English"
+      ],
+      "fontes_urls": [
+        "https://www.aljazeera.com/video/newsfeed/2026/11/25/bellinghams-wondergoal-sparks-zidane-comparisons?traffic_source=rss"
+      ],
+      "palavras_chave": [
+        "radar",
+        "tempo real",
+        "qa"
+      ],
+      "data_publicacao": "2026-11-25T19:27:56+00:00",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "O que é inflação?",
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
+          "motivo_conexao": "Compreenda por que os preços sobem de forma generalizada, como o IPCA é calculado e de que maneira os juros do Banco Central afetam o poder de compra."
+        },
+        {
+          "titulo_existente": "Como funcionam as eleições nos EUA?",
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/como-funcionam-as-eleicoes-nos-eua",
+          "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos."
+        }
+      ],
+      "expires_at": "2026-11-26T01:52:36Z",
+      "updated_at": "2026-11-25T19:52:36Z"
+    },
+    {
+      "slug": "pulso-5-20261125-1952",
+      "titulo_curto": "Dueire celebra 81 anos do Hospital de Câncer e pede mais investimentos",
+      "resumo_pulso": "Segundo Agência Senado, O senador Fernando Dueire (PSD-PE) homenageou nesta quarta-feira (25) os 81 anos do Hospital de Câncer de Pernambuco, fundado em 1945. Em pronunciamento no Plenário, ele ressaltou a contribuição da instituição para a saúde pública no estado e o trabalho de atendimento e acolhimento de pacientes com câncer e de seus familiares. Segundo ele, a instit.",
+      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "categoria": "Geopolitica_Relacoes",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "urgencia_score": 70,
+      "relevancia_score": 72,
+      "nivel_confianca": "alta",
+      "ttl_horas": 6,
+      "horas_em_destaque": 6,
+      "veiculos_origem": [
+        "Agência Senado"
+      ],
+      "fontes_urls": [
+        "https://www12.senado.leg.br/noticias/materias/2026/11/25/dueire-celebra-81-anos-do-hospital-de-cancer-e-pede-mais-investimentos"
+      ],
+      "palavras_chave": [
+        "radar",
+        "tempo real",
+        "br"
+      ],
+      "data_publicacao": "2026-11-25T19:23:28+00:00",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "O que é inflação?",
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
+          "motivo_conexao": "Compreenda por que os preços sobem de forma generalizada, como o IPCA é calculado e de que maneira os juros do Banco Central afetam o poder de compra."
+        },
+        {
+          "titulo_existente": "Como funcionam as eleições nos EUA?",
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/como-funcionam-as-eleicoes-nos-eua",
+          "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos."
+        }
+      ],
+      "expires_at": "2026-11-26T01:52:36Z",
+      "updated_at": "2026-11-25T19:52:36Z"
+    },
     {
       "slug": "ccj-senado-aprova-registro-obrigatorio-moteis-cadastur",
       "categoria": "Sociedade_Cultura",
@@ -1516,211 +1640,88 @@
           "titulo_existente": "Como funcionam as eleições nos EUA?"
         }
       ]
-    },
+    }
+  ],
+  "temas_curadoria": [
     {
-      "slug": "pulso-3-20261125-1535",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 6,
-      "expires_at": "2026-11-25T21:35:29Z",
-      "updated_at": "2026-11-25T15:35:29Z",
-      "fontes_urls": [
-        "https://g1.globo.com/mundo/noticia/2026/11/25/eua-fazem-explosao-controlada-de-material-toxico-que-gerou-polemica-e-virou-batalha-judicial.ghtml"
+      "slug": "especulacoes-ministerio-fazenda-queda-dolar-tesouro",
+      "status": "novo",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-26T19:38:47Z",
+      "updated_at": "2026-11-25T19:38:47Z",
+      "titulo_tema": "Especulações sobre o Ministério da Fazenda movimentam câmbio e juros no Brasil",
+      "sintese_nerd": "Rumores sobre mudanças no comando do Ministério da Fazenda geraram forte volatilidade, derrubando a cotação do dólar para a faixa de R$ 5,81 e impulsionando ajustes nos títulos públicos. A incerteza fiscal segue ditando o humor dos investidores e o custo de captação do país.",
+      "rota_editoria": "/economia",
+      "data_publicacao": "2026-11-25T19:38:47Z",
+      "gatilho_vitrine": "Destacar análises sobre a reação dos mercados financeiros brasileiros às trocas e especulações na equipe econômica do governo.",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 92,
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Politica",
+        "Resumo_Ultimas"
       ],
-      "resumo_pulso": "Segundo G1 Mundo, EUA divulgam vídeo de preparativos para explosão controlada de material tóxico O Exército dos Estados Unidos realizou nesta quarta-feira (25) a polêmica explosão controlada de 68 barris de azida de chumbo, substância usada na fabricação de munições. A detonação ocorreu no estado de Iowa e só foi possível com autorização da Justiça, após uma disputa.",
-      "titulo_curto": "EUA fazem explosão controlada de material tóxico que gerou polêmica e virou batalha judicial",
-      "palavras_chave": [
-        "radar",
-        "tempo real",
-        "br"
-      ],
-      "urgencia_score": 80,
-      "data_publicacao": "2026-11-25T15:07:16+00:00",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "G1 Mundo"
-      ],
-      "relevancia_score": 80,
-      "horas_em_destaque": 6,
-      "paises_envolvidos": [
-        "BR",
-        "US"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
-          "motivo_conexao": "Compreenda por que os preços sobem de forma generalizada, como o IPCA é calculado e de que maneira os juros do Banco Central afetam o poder de compra.",
-          "titulo_existente": "O que é inflação?"
-        },
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/como-funcionam-as-eleicoes-nos-eua",
-          "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos.",
-          "titulo_existente": "Como funcionam as eleições nos EUA?"
-        }
+      "palavras_chave_busca": [
+        "ministério da fazenda",
+        "luiz carlos trabuco",
+        "câmbio",
+        "dólar",
+        "tesouro direto",
+        "política fiscal"
       ]
     },
     {
-      "slug": "pulso-4-20261125-1535",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 6,
-      "expires_at": "2026-11-25T21:35:29Z",
-      "updated_at": "2026-11-25T15:35:29Z",
-      "fontes_urls": [
-        "https://www12.senado.leg.br/noticias/materias/2026/11/25/frente-parlamentar-mista-de-defesa-seguranca-e-soberania-e-aprovada-na-cre"
-      ],
-      "resumo_pulso": "Segundo Agência Senado, Acompanhar o orçamento da defesa e propor medidas para proteger as fronteiras e as águas brasileiras estão entre as atribuições da Frente Parlamentar Mista de Defesa, Segurança e Soberania, cuja criação foi aprovada nesta quarta-feira (25) pela Comissão de Relações Exteriores (CRE). Autor da projeto de resolução que cria a frente parlamentar (PRS 5.",
-      "titulo_curto": "Frente Parlamentar Mista de Defesa, Segurança e Soberania é aprovada na CRE",
-      "palavras_chave": [
-        "radar",
-        "tempo real",
-        "br"
-      ],
-      "urgencia_score": 75,
-      "data_publicacao": "2026-11-25T15:06:18+00:00",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Agência Senado"
-      ],
-      "relevancia_score": 76,
-      "horas_em_destaque": 6,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
-          "motivo_conexao": "Compreenda por que os preços sobem de forma generalizada, como o IPCA é calculado e de que maneira os juros do Banco Central afetam o poder de compra.",
-          "titulo_existente": "O que é inflação?"
-        },
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/como-funcionam-as-eleicoes-nos-eua",
-          "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos.",
-          "titulo_existente": "Como funcionam as eleições nos EUA?"
-        }
-      ]
-    },
-    {
-      "slug": "pulso-5-20261125-1535",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 6,
-      "expires_at": "2026-11-25T21:35:29Z",
-      "updated_at": "2026-11-25T15:35:29Z",
-      "fontes_urls": [
-        "https://www12.senado.leg.br/noticias/materias/2026/11/25/cre-recomenda-criacao-de-agencia-nacional-para-prevenir-ataques-digitais"
-      ],
-      "resumo_pulso": "Segundo Agência Senado, O Brasil precisa de uma estrutura nacional para prevenir ataques digitais e proteger serviços essenciais, como os de saúde e energia. Para enfrentar o problema, o senador Nelsinho Trad (PSD-MS) recomenda a criação de uma Agência Nacional de Cibersegurança e de uma lei com regras mínimas de proteção para órgãos públicos e empresas. As recomendações .",
-      "titulo_curto": "CRE recomenda criação de agência nacional para prevenir ataques digitais",
-      "palavras_chave": [
-        "radar",
-        "tempo real",
-        "br"
-      ],
-      "urgencia_score": 70,
-      "data_publicacao": "2026-11-25T15:00:37+00:00",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Agência Senado"
-      ],
-      "relevancia_score": 72,
-      "horas_em_destaque": 6,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
-          "motivo_conexao": "Compreenda por que os preços sobem de forma generalizada, como o IPCA é calculado e de que maneira os juros do Banco Central afetam o poder de compra.",
-          "titulo_existente": "O que é inflação?"
-        },
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/como-funcionam-as-eleicoes-nos-eua",
-          "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos.",
-          "titulo_existente": "Como funcionam as eleições nos EUA?"
-        }
-      ]
-    },
-    {
-      "slug": "pulso-1-20261125-1420",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 6,
-      "expires_at": "2026-11-25T20:20:31Z",
-      "updated_at": "2026-11-25T14:20:31Z",
-      "fontes_urls": [
-        "https://g1.globo.com/economia/noticia/2026/11/25/ministro-do-planejamento-diz-que-equipe-economica-tem-conjunto-de-medidas-para-melhorar-contas-publicas-mas-nao-antecipa.ghtml"
-      ],
-      "resumo_pulso": "Segundo G1 Política, O ministro do Planejamento, Bruno Moretti, afirmou nesta quarta-feira (25) que a equipe econômica está trabalhando em um \"conjunto de medidas\" para melhorar ainda mais as contas públicas..",
-      "titulo_curto": "Ministro do Planejamento diz que equipe econômica tem 'conjunto de medidas' para melhorar contas públicas, mas não antecipa",
-      "palavras_chave": [
-        "radar",
-        "tempo real",
-        "br"
-      ],
-      "urgencia_score": 90,
-      "data_publicacao": "2026-11-25T14:15:32+00:00",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "G1 Política"
-      ],
+      "slug": "vazamento-dados-guerra-ucrania-baixas-russas",
+      "status": "novo",
+      "ttl_horas": 48,
+      "expires_at": "2026-11-27T19:38:47Z",
+      "updated_at": "2026-11-25T19:38:47Z",
+      "titulo_tema": "Vazamento revela impacto demográfico severo e meio milhão de baixas russas na Ucrânia",
+      "sintese_nerd": "Dados vazados da inteligência estatística russa estimam cerca de meio milhão de baixas militares na Ucrânia, evidenciando uma pressão demográfica profunda sobre a juventude do país agressor. Esse desgaste humano corrói a sustentabilidade a longo prazo da economia e da mão de obra russa.",
+      "rota_editoria": "/radar",
+      "data_publicacao": "2026-11-25T19:38:47Z",
+      "gatilho_vitrine": "Priorizar coberturas aprofundadas sobre o custo humano e estratégico prolongado dos conflitos armados no Leste Europeu.",
+      "origem_pipeline": "curadoria",
       "relevancia_score": 88,
-      "horas_em_destaque": 6,
-      "paises_envolvidos": [
-        "BR"
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Cultura",
+        "Economia"
       ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
-          "motivo_conexao": "Compreenda por que os preços sobem de forma generalizada, como o IPCA é calculado e de que maneira os juros do Banco Central afetam o poder de compra.",
-          "titulo_existente": "O que é inflação?"
-        },
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/como-funcionam-as-eleicoes-nos-eua",
-          "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos.",
-          "titulo_existente": "Como funcionam as eleições nos EUA?"
-        }
+      "palavras_chave_busca": [
+        "guerra na ucrânia",
+        "baixas russas",
+        "geopolítica global",
+        "vladimir putin",
+        "mortalidade militar",
+        "sanções"
       ]
     },
     {
-      "slug": "pulso-2-20261125-1420",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 6,
-      "expires_at": "2026-11-25T20:20:31Z",
-      "updated_at": "2026-11-25T14:20:31Z",
-      "fontes_urls": [
-        "https://www12.senado.leg.br/noticias/materias/2026/11/25/ccj-confirma-aprovacao-de-crime-de-fraude-contabil-no-mercado-de-capitais"
+      "slug": "spacex-aprovacao-fcc-data-centers-espaciais",
+      "status": "novo",
+      "ttl_horas": 72,
+      "expires_at": "2026-11-28T19:38:47Z",
+      "updated_at": "2026-11-25T19:38:47Z",
+      "titulo_tema": "EUA aprovam projeto da SpaceX para implantação de data centers espaciais",
+      "sintese_nerd": "A autorização da FCC para o projeto Starmind da SpaceX consolida uma nova fronteira na infraestrutura de processamento de dados fora da Terra. A disputa pela soberania tecnológica e espacial redefine a hegemonia das grandes potências sobre a economia digital.",
+      "rota_editoria": "/radar",
+      "data_publicacao": "2026-11-25T19:38:47Z",
+      "gatilho_vitrine": "Exibir artigos sobre a corrida tecnológica espacial e a nova infraestrutura global de dados e telecomunicações.",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 85,
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Cultura",
+        "Economia"
       ],
-      "resumo_pulso": "Segundo Agência Senado, A Comissão de Constituição e Justiça (CCJ) confirmou em turno suplementar, nesta quarta-feira (25), a aprovação do projeto que cria crime específico para a fraude contábil no mercado de valores mobiliários (como a bolsa de valores), com pena de dois a seis anos de reclusão, e multa. O texto vai à Câmara dos Deputados, salvo se houver requerimento d.",
-      "titulo_curto": "CCJ confirma aprovação de crime de fraude contábil no mercado de capitais",
-      "palavras_chave": [
-        "radar",
-        "tempo real",
-        "br"
-      ],
-      "urgencia_score": 85,
-      "data_publicacao": "2026-11-25T13:58:35+00:00",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Agência Senado"
-      ],
-      "relevancia_score": 84,
-      "horas_em_destaque": 6,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
-          "motivo_conexao": "Compreenda por que os preços sobem de forma generalizada, como o IPCA é calculado e de que maneira os juros do Banco Central afetam o poder de compra.",
-          "titulo_existente": "O que é inflação?"
-        },
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/como-funcionam-as-eleicoes-nos-eua",
-          "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos.",
-          "titulo_existente": "Como funcionam as eleições nos EUA?"
-        }
+      "palavras_chave_busca": [
+        "spacex",
+        "elon musk",
+        "fcc",
+        "data centers espaciais",
+        "starmind",
+        "tecnologia global"
       ]
     }
   ]
