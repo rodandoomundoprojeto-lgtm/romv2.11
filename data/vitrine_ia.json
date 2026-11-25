@@ -2,113 +2,303 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-25T13:39:42Z",
-  "batch_id": "20261125-1339",
+  "updatedAt": "2026-11-25T14:20:31Z",
+  "batch_id": "20261125-1420",
   "temas_ativos": [
     {
-      "slug": "eua-propoem-tarifas-aeronaves-brasil",
-      "titulo_tema": "EUA propõem novas tarifas sobre produtos brasileiros",
+      "slug": "pulso-1-20261125-1420",
+      "titulo_tema": "Ministro do Planejamento diz que equipe econômica tem 'conjunto de medidas' para melhorar contas públicas, mas não antecipa",
+      "titulo_curto": "Ministro do Planejamento diz que equipe econômica tem 'conjunto de medidas' para melhorar contas públicas, mas não antecipa",
       "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categoria": "Geopolitica_Relacoes",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 88,
+      "urgencia_score": 90,
+      "ttl_horas": 6,
+      "expires_at": "2026-11-25T20:20:31Z",
+      "palavras_chave_busca": [
+        "radar",
+        "tempo real",
+        "br"
+      ],
+      "palavras_chave": [
+        "radar",
+        "tempo real",
+        "br"
+      ],
+      "gatilho_vitrine": "Segundo G1 Política, O ministro do Planejamento, Bruno Moretti, afirmou nesta quarta-feira (25) que a equipe econômica está trabalhando em um \"conjunto de medidas\" para melhorar ainda mais as contas públicas..",
+      "resumo_pulso": "Segundo G1 Política, O ministro do Planejamento, Bruno Moretti, afirmou nesta quarta-feira (25) que a equipe econômica está trabalhando em um \"conjunto de medidas\" para melhorar ainda mais as contas públicas..",
+      "sintese_nerd": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "veiculos_origem": [
+        "G1 Política"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/economia/noticia/2026/11/25/ministro-do-planejamento-diz-que-equipe-economica-tem-conjunto-de-medidas-para-melhorar-contas-publicas-mas-nao-antecipa.ghtml"
+      ],
+      "data_publicacao": "2026-11-25T14:15:32+00:00",
+      "updated_at": "2026-11-25T14:20:31Z"
+    },
+    {
+      "slug": "eua-propõem-tarifas-aeronaves-embraer",
+      "status": "novo",
+      "ttl_horas": 48,
+      "expires_at": "2026-11-27T13:59:13Z",
+      "updated_at": "2026-11-25T13:59:13Z",
+      "titulo_tema": "EUA propõem tarifas de 10% sobre aeronaves brasileiras",
+      "sintese_nerd": "A proposta de taxação de 10% sobre aeronaves brasileiras pelo governo Trump gera incerteza imediata para a Embraer e pressiona o setor exportador nacional. O movimento faz parte de uma escalada protecionista global que exige resposta diplomática urgente do Itamaraty.",
+      "rota_editoria": "/economia",
+      "data_publicacao": "2026-11-25T13:59:13Z",
+      "gatilho_vitrine": "Analise o impacto da nova política protecionista dos EUA nas ações da Embraer e na balança comercial brasileira.",
       "origem_pipeline": "curadoria",
+      "relevancia_score": 98,
       "categoria_primaria": "Economia",
       "categorias_cruzadas": [
         "Geopolitica_Radar",
         "Politica"
       ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 98,
-      "ttl_horas": 48,
-      "expires_at": "2026-11-27T13:39:42Z",
       "palavras_chave_busca": [
+        "embraer",
+        "embj3",
         "tarifas eua",
-        "exportacoes brasil",
-        "aeronaves",
-        "comercio exterior",
-        "governo trump",
-        "balanca comercial"
-      ],
-      "gatilho_vitrine": "Analise o impacto das novas tarifas americanas na indústria aeronáutica brasileira e nas relações diplomáticas.",
-      "sintese_nerd": "O governo dos EUA propôs tarifas de 10% sobre aeronaves brasileiras, alegando falta de progresso em disputas comerciais. A medida tensiona a balança comercial e exige resposta diplomática imediata do Itamaraty.",
-      "data_publicacao": "2026-11-25T13:39:42Z",
-      "updated_at": "2026-11-25T13:39:42Z"
+        "donald trump",
+        "comércio exterior",
+        "setor aéreo",
+        "política comercial"
+      ]
     },
     {
-      "slug": "ajuste-fiscal-lula-congresso-janeiro",
-      "titulo_tema": "Possível convocação do Congresso em janeiro para ajuste fiscal",
+      "slug": "ajuste-fiscal-lula-pec-congresso",
       "status": "novo",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-26T13:59:13Z",
+      "updated_at": "2026-11-25T13:59:13Z",
+      "titulo_tema": "Governo Lula articula segunda etapa do ajuste fiscal",
+      "sintese_nerd": "O governo busca equilibrar as contas públicas focando em emendas e supersalários, enquanto enfrenta o desafio de manter subsídios ao diesel. A possibilidade de convocação extraordinária do Congresso sinaliza a urgência do cenário fiscal para o mercado.",
+      "rota_editoria": "/politica",
+      "data_publicacao": "2026-11-25T13:59:13Z",
+      "gatilho_vitrine": "Acompanhe a articulação do governo para aprovar medidas de austeridade e o possível impacto no recesso parlamentar.",
       "origem_pipeline": "curadoria",
+      "relevancia_score": 95,
       "categoria_primaria": "Politica",
       "categorias_cruzadas": [
-        "Economia",
-        "Eleicoes"
+        "Economia"
       ],
-      "rota_editoria": "/politica",
-      "relevancia_score": 92,
-      "ttl_horas": 24,
-      "expires_at": "2026-11-26T13:39:42Z",
       "palavras_chave_busca": [
         "ajuste fiscal",
         "pec",
         "lula",
         "congresso nacional",
-        "recesso parlamentar",
-        "economia brasileira"
-      ],
-      "gatilho_vitrine": "Acompanhe a articulação do governo Lula para garantir a aprovação da segunda etapa do ajuste fiscal.",
-      "sintese_nerd": "A equipe econômica avalia convocar o Congresso durante o recesso de janeiro para votar a PEC do ajuste fiscal. A urgência reflete a necessidade de sinalizar responsabilidade fiscal ao mercado diante de um cenário de alta de juros e inflação.",
-      "data_publicacao": "2026-11-25T13:39:42Z",
-      "updated_at": "2026-11-25T13:39:42Z"
+        "emendas parlamentares",
+        "subsídios combustíveis"
+      ]
     },
     {
-      "slug": "tarifas-globais-trump-china",
-      "titulo_tema": "Trump propõe novas tarifas contra 14 parceiros comerciais",
+      "slug": "corte-bancario-setor-financeiro",
       "status": "novo",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-26T13:59:13Z",
+      "updated_at": "2026-11-25T13:59:13Z",
+      "titulo_tema": "Onda de demissões atinge grandes bancos brasileiros",
+      "sintese_nerd": "A demissão de 600 funcionários reflete uma busca por eficiência operacional e digitalização acelerada no setor bancário. O movimento levanta questões sobre a saúde do mercado de trabalho financeiro e a automação de serviços.",
+      "rota_editoria": "/economia",
+      "data_publicacao": "2026-11-25T13:59:13Z",
+      "gatilho_vitrine": "Entenda os motivos por trás da reestruturação e cortes de pessoal nos principais bancos do país.",
       "origem_pipeline": "curadoria",
-      "categoria_primaria": "Geopolitica_Radar",
+      "relevancia_score": 88,
+      "categoria_primaria": "Economia",
       "categorias_cruzadas": [
-        "Economia"
+        "Cultura"
+      ],
+      "palavras_chave_busca": [
+        "itaú",
+        "banco inter",
+        "bv",
+        "demissões",
+        "setor bancário",
+        "mercado de trabalho"
+      ]
+    },
+    {
+      "slug": "pulso-2-20261125-1420",
+      "titulo_tema": "CCJ confirma aprovação de crime de fraude contábil no mercado de capitais",
+      "titulo_curto": "CCJ confirma aprovação de crime de fraude contábil no mercado de capitais",
+      "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categoria": "Geopolitica_Relacoes",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
       ],
       "rota_editoria": "/radar",
-      "relevancia_score": 90,
-      "ttl_horas": 72,
-      "expires_at": "2026-11-28T13:39:42Z",
+      "relevancia_score": 84,
+      "urgencia_score": 85,
+      "ttl_horas": 6,
+      "expires_at": "2026-11-25T20:20:31Z",
       "palavras_chave_busca": [
-        "trump",
-        "tarifas",
-        "china",
-        "guerra comercial",
-        "protecionismo",
-        "economia global"
+        "radar",
+        "tempo real",
+        "br"
       ],
-      "gatilho_vitrine": "Entenda a nova onda de protecionismo americano e seus efeitos nas cadeias globais de suprimentos.",
-      "sintese_nerd": "O governo Trump anunciou planos de tarifas contra 14 países, com foco principal na China, visando conter o excesso de capacidade industrial. A medida sinaliza uma escalada protecionista que pode pressionar a inflação global e alterar fluxos comerciais.",
-      "data_publicacao": "2026-11-25T13:39:42Z",
-      "updated_at": "2026-11-25T13:39:42Z"
+      "palavras_chave": [
+        "radar",
+        "tempo real",
+        "br"
+      ],
+      "gatilho_vitrine": "Segundo Agência Senado, A Comissão de Constituição e Justiça (CCJ) confirmou em turno suplementar, nesta quarta-feira (25), a aprovação do projeto que cria crime específico para a fraude contábil no mercado de valores mobiliários (como a bolsa de valores), com pena de dois a seis anos de reclusão, e multa. O texto vai à Câmara dos Deputados, salvo se houver requerimento d.",
+      "resumo_pulso": "Segundo Agência Senado, A Comissão de Constituição e Justiça (CCJ) confirmou em turno suplementar, nesta quarta-feira (25), a aprovação do projeto que cria crime específico para a fraude contábil no mercado de valores mobiliários (como a bolsa de valores), com pena de dois a seis anos de reclusão, e multa. O texto vai à Câmara dos Deputados, salvo se houver requerimento d.",
+      "sintese_nerd": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "veiculos_origem": [
+        "Agência Senado"
+      ],
+      "fontes_urls": [
+        "https://www12.senado.leg.br/noticias/materias/2026/11/25/ccj-confirma-aprovacao-de-crime-de-fraude-contabil-no-mercado-de-capitais"
+      ],
+      "data_publicacao": "2026-11-25T13:58:35+00:00",
+      "updated_at": "2026-11-25T14:20:31Z"
     },
     {
-      "slug": "pcc-expansao-internacional-abin",
-      "titulo_tema": "Estudo da Abin aponta expansão do PCC em 28 países",
+      "slug": "pulso-3-20261125-1420",
+      "titulo_tema": "Terapia nutricional para pacientes com câncer segue para o Plenário",
+      "titulo_curto": "Terapia nutricional para pacientes com câncer segue para o Plenário",
       "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Politica",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categoria": "Geopolitica_Relacoes",
       "categorias_cruzadas": [
-        "Geopolitica_Radar"
+        "Economia",
+        "Resumo_Ultimas"
       ],
-      "rota_editoria": "/politica",
-      "relevancia_score": 88,
-      "ttl_horas": 48,
-      "expires_at": "2026-11-27T13:39:42Z",
+      "rota_editoria": "/radar",
+      "relevancia_score": 80,
+      "urgencia_score": 80,
+      "ttl_horas": 6,
+      "expires_at": "2026-11-25T20:20:31Z",
       "palavras_chave_busca": [
-        "pcc",
-        "crime organizado",
-        "abin",
-        "seguranca publica",
-        "geopolitica do crime"
+        "radar",
+        "tempo real",
+        "br"
       ],
-      "gatilho_vitrine": "Entenda a dimensão transnacional do crime organizado brasileiro revelada pela Abin.",
-      "sintese_nerd": "Relatório da Abin confirma a presença do PCC em 22 estados brasileiros e 28 países, evidenciando a sofisticação da facção. O dado exige uma resposta coordenada de inteligência nacional e cooperação internacional.",
-      "data_publicacao": "2026-11-25T13:39:42Z",
-      "updated_at": "2026-11-25T13:39:42Z"
+      "palavras_chave": [
+        "radar",
+        "tempo real",
+        "br"
+      ],
+      "gatilho_vitrine": "Segundo Agência Senado, Proposta que garante à pessoa com câncer o acesso a terapia nutricional adequada foi aprovada nesta quarta-feira (25) na Comissão de Assuntos Sociais (CAS). A matéria vai a Plenário. O PL 2.514/2023 altera o Estatuto da Pessoa com Câncer para incluir a terapia nutricional entre os direitos da pessoa com a doença. A terapia nutricional é o acompanha.",
+      "resumo_pulso": "Segundo Agência Senado, Proposta que garante à pessoa com câncer o acesso a terapia nutricional adequada foi aprovada nesta quarta-feira (25) na Comissão de Assuntos Sociais (CAS). A matéria vai a Plenário. O PL 2.514/2023 altera o Estatuto da Pessoa com Câncer para incluir a terapia nutricional entre os direitos da pessoa com a doença. A terapia nutricional é o acompanha.",
+      "sintese_nerd": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "veiculos_origem": [
+        "Agência Senado"
+      ],
+      "fontes_urls": [
+        "https://www12.senado.leg.br/noticias/materias/2026/11/25/terapia-nutricional-para-pacientes-com-cancer-segue-para-o-plenario"
+      ],
+      "data_publicacao": "2026-11-25T13:55:47+00:00",
+      "updated_at": "2026-11-25T14:20:31Z"
+    },
+    {
+      "slug": "pulso-4-20261125-1420",
+      "titulo_tema": "Equipes sírias removem minas terrestres após explosão mortal",
+      "titulo_curto": "Equipes sírias removem minas terrestres após explosão mortal",
+      "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categoria": "Geopolitica_Relacoes",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 76,
+      "urgencia_score": 75,
+      "ttl_horas": 6,
+      "expires_at": "2026-11-25T20:20:31Z",
+      "palavras_chave_busca": [
+        "radar",
+        "tempo real",
+        "qa"
+      ],
+      "palavras_chave": [
+        "radar",
+        "tempo real",
+        "qa"
+      ],
+      "gatilho_vitrine": "Segundo Al Jazeera English, Equipes sírias removem minas terrestres após explosão mortal.",
+      "resumo_pulso": "Segundo Al Jazeera English, Equipes sírias removem minas terrestres após explosão mortal.",
+      "sintese_nerd": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "paises_envolvidos": [
+        "QA"
+      ],
+      "veiculos_origem": [
+        "Al Jazeera English"
+      ],
+      "fontes_urls": [
+        "https://www.aljazeera.com/video/newsfeed/2026/11/25/syrian-teams-clear-landmines-after-deadly-explosion?traffic_source=rss"
+      ],
+      "data_publicacao": "2026-11-25T13:51:15+00:00",
+      "updated_at": "2026-11-25T14:20:31Z"
+    },
+    {
+      "slug": "pulso-5-20261125-1420",
+      "titulo_tema": "Subsídios aos combustíveis já somam cerca de R$ 75 bilhões em 2026, diz equipe econômica; valor deve subir até o fim do ano",
+      "titulo_curto": "Subsídios aos combustíveis já somam cerca de R$ 75 bilhões em 2026, diz equipe econômica; valor deve subir até o fim do ano",
+      "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categoria": "Geopolitica_Relacoes",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 72,
+      "urgencia_score": 70,
+      "ttl_horas": 6,
+      "expires_at": "2026-11-25T20:20:31Z",
+      "palavras_chave_busca": [
+        "radar",
+        "tempo real",
+        "br"
+      ],
+      "palavras_chave": [
+        "radar",
+        "tempo real",
+        "br"
+      ],
+      "gatilho_vitrine": "Segundo G1 Política, O ministro do Planejamento, Bruno Moretti, informou nesta quarta-feira (25) que o valor total de subsídio aos combustíveis neste ano já soma cerca de R$ 75 bilhões. Os valores abrangem, principalmente, os subsídios ao diesel, mas também englobam recursos para impedir um aumento dos preços do etanol e gasolina (em menor proporção). ➡️Com a prorrogaç.",
+      "resumo_pulso": "Segundo G1 Política, O ministro do Planejamento, Bruno Moretti, informou nesta quarta-feira (25) que o valor total de subsídio aos combustíveis neste ano já soma cerca de R$ 75 bilhões. Os valores abrangem, principalmente, os subsídios ao diesel, mas também englobam recursos para impedir um aumento dos preços do etanol e gasolina (em menor proporção). ➡️Com a prorrogaç.",
+      "sintese_nerd": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "veiculos_origem": [
+        "G1 Política"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/economia/noticia/2026/11/25/subsidios-aos-combustiveis-somam-cerca-de-r-75-bilhoes-em-2026-diz-equipe-economica.ghtml"
+      ],
+      "data_publicacao": "2026-11-25T13:46:39+00:00",
+      "updated_at": "2026-11-25T14:20:31Z"
     },
     {
       "slug": "dolar-atinge-597-sancao-ajuste-fiscal-pec",
@@ -680,299 +870,214 @@
         "diplomacia",
         "pyongyang"
       ]
-    },
-    {
-      "slug": "justica-derruba-suspensao-regras-vale-refeicao",
-      "status": "novo",
-      "categoria": "Economia_Comercio",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-26T03:57:23Z",
-      "updated_at": "2026-11-25T05:04:03Z",
-      "fontes_urls": [
-        "https://g1.globo.com/df/distrito-federal/noticia/2026/11/25/justica-derruba-suspensao-e-restabelece-regras-para-vale-refeicao-e-alimentacao-entenda.ghtml"
-      ],
-      "titulo_tema": "Decisão judicial restabelece novas regras e teto de taxas para vale-refeição e alimentação",
-      "resumo_pulso": "Conforme apuração do G1 Economia, um juiz aceitou recurso do governo e restabeleceu as diretrizes e o teto de taxas para o vale-refeição e o vale-alimentação em todo o país. A medida altera o formato de cobrança pelas operadoras e amplia a aceitação dos benefícios em estabelecimentos comerciais.",
-      "sintese_nerd": "Impacta diretamente as empresas operadoras de benefícios, o comércio varejista e a dinâmica de pagamentos para os trabalhadores.",
-      "titulo_curto": "Decisão judicial restabelece novas regras e teto de taxas para vale-refeição e alimentação",
-      "rota_editoria": "/economia",
-      "palavras_chave": [
-        "vale-refeição",
-        "vale-alimentação",
-        "justiça",
-        "economia"
-      ],
-      "urgencia_score": 88,
-      "data_publicacao": "2026-11-25T03:17:42Z",
-      "gatilho_vitrine": "Conforme apuração do G1 Economia, um juiz aceitou recurso do governo e restabeleceu as diretrizes e o teto de taxas para o vale-refeição e o vale-alimentação em todo o país. A medida altera o formato de cobrança pelas operadoras e amplia a aceitação dos benefícios em estabelecimentos comerciais.",
-      "impacto_pratico": "Impacta diretamente as empresas operadoras de benefícios, o comércio varejista e a dinâmica de pagamentos para os trabalhadores.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "G1 Economia"
-      ],
-      "relevancia_score": 90,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "vale-refeição",
-        "vale-alimentação",
-        "justiça",
-        "economia"
-      ]
-    },
-    {
-      "slug": "governo-lula-projetos-economicos-congresso-dezembro",
-      "status": "novo",
-      "categoria": "Economia_Comercio",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-26T09:00:26Z",
-      "updated_at": "2026-11-25T10:16:24Z",
-      "fontes_urls": [
-        "https://g1.globo.com/politica/"
-      ],
-      "titulo_tema": "Governo Lula acelera pauta econômica no Congresso antes do recesso",
-      "resumo_pulso": "A equipe econômica mantém a urgência na aprovação de oito projetos estruturantes até 23 de dezembro. A articulação busca garantir estabilidade fiscal para 2027 em meio a pressões inflacionárias.",
-      "sintese_nerd": "Decisões impactam diretamente o Orçamento federal e a previsibilidade do mercado financeiro para o próximo ano.",
-      "titulo_curto": "Governo Lula acelera pauta econômica no Congresso antes do recesso",
-      "rota_editoria": "/economia",
-      "palavras_chave": [
-        "lula",
-        "congresso",
-        "orçamento",
-        "economia"
-      ],
-      "urgencia_score": 88,
-      "data_publicacao": "2026-11-25T03:00:00Z",
-      "gatilho_vitrine": "A equipe econômica mantém a urgência na aprovação de oito projetos estruturantes até 23 de dezembro. A articulação busca garantir estabilidade fiscal para 2027 em meio a pressões inflacionárias.",
-      "impacto_pratico": "Decisões impactam diretamente o Orçamento federal e a previsibilidade do mercado financeiro para o próximo ano.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "G1 Política"
-      ],
-      "relevancia_score": 93,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "lula",
-        "congresso",
-        "orçamento",
-        "economia"
-      ]
-    },
-    {
-      "slug": "assessor-trump-brasil-deixa-cargo-departamento-estado",
-      "status": "novo",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-26T02:52:34Z",
-      "updated_at": "2026-11-25T02:52:34Z",
-      "fontes_urls": [
-        "https://g1.globo.com/mundo/noticia/2026/11/24/assessor-de-trump-aliado-da-familia-bolsonaro-deixa-cargo-no-departamento-de-estado-dos-eua.ghtml"
-      ],
-      "titulo_tema": "Assessor de Trump para o Brasil e aliado da família Bolsonaro deixa cargo no Departamento de Estado",
-      "resumo_pulso": "Conforme apuração do G1 Mundo, Darren Beattie, assessor sênior para a política em relação ao Brasil na gestão de Donald Trump, deixou o cargo que ocupava no Departamento de Estado dos Estados Unidos. A saída foi confirmada pelas autoridades norte-americanas.",
-      "sintese_nerd": "Altera a dinâmica de interlocução direta entre o governo dos EUA e atores políticos sul-americanos.",
-      "titulo_curto": "Assessor de Trump para o Brasil e aliado da família Bolsonaro deixa cargo no Departamento de Estado",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "eua",
-        "departamento de estado",
-        "darren beattie",
-        "diplomacia",
-        "brasil"
-      ],
-      "urgencia_score": 88,
-      "data_publicacao": "2026-11-25T02:06:32Z",
-      "gatilho_vitrine": "Conforme apuração do G1 Mundo, Darren Beattie, assessor sênior para a política em relação ao Brasil na gestão de Donald Trump, deixou o cargo que ocupava no Departamento de Estado dos Estados Unidos. A saída foi confirmada pelas autoridades norte-americanas.",
-      "impacto_pratico": "Altera a dinâmica de interlocução direta entre o governo dos EUA e atores políticos sul-americanos.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "G1 Mundo"
-      ],
-      "relevancia_score": 89,
-      "paises_envolvidos": [
-        "US",
-        "BR"
-      ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "eua",
-        "departamento de estado",
-        "darren beattie",
-        "diplomacia",
-        "brasil"
-      ]
-    },
-    {
-      "slug": "israel-eisenkot-coalition-partner-government",
-      "status": "novo",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 18,
-      "expires_at": "2026-11-25T19:54:24Z",
-      "updated_at": "2026-11-25T02:11:11Z",
-      "fontes_urls": [
-        "https://www.aljazeera.com/news/2026/11/25/israels-eisenkot-secures-first-coalition-partner-in-bid-to-form-government?traffic_source=rss"
-      ],
-      "titulo_tema": "Ex-chefe militar Gadi Eisenkot assegura primeiro parceiro de coalizão para formar governo em Israel",
-      "resumo_pulso": "Conforme apuração da Al Jazeera English, o partido Yashar firmou um pacto de coalizão com a legenda Our Home, liderada por Avigdor Lieberman, fortalecendo a tentativa de Gadi Eisenkot de estruturar um novo governo.",
-      "sintese_nerd": "Pode redesenhar o cenário político e de segurança em Israel em meio a crises regionais no Oriente Médio.",
-      "titulo_curto": "Ex-chefe militar Gadi Eisenkot assegura primeiro parceiro de coalizão para formar governo em Israel",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "gadi eisenkot",
-        "israel",
-        "coalizão",
-        "avigdor lieberman"
-      ],
-      "urgencia_score": 87,
-      "data_publicacao": "2026-11-25T01:30:44Z",
-      "gatilho_vitrine": "Conforme apuração da Al Jazeera English, o partido Yashar firmou um pacto de coalizão com a legenda Our Home, liderada por Avigdor Lieberman, fortalecendo a tentativa de Gadi Eisenkot de estruturar um novo governo.",
-      "impacto_pratico": "Pode redesenhar o cenário político e de segurança em Israel em meio a crises regionais no Oriente Médio.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "Al Jazeera English"
-      ],
-      "relevancia_score": 86,
-      "paises_envolvidos": [
-        "IL"
-      ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "gadi eisenkot",
-        "israel",
-        "coalizão",
-        "avigdor lieberman"
-      ]
-    }
-  ],
-  "temas_curadoria": [
-    {
-      "slug": "eua-propoem-tarifas-aeronaves-brasil",
-      "titulo_tema": "EUA propõem novas tarifas sobre produtos brasileiros",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Geopolitica_Radar",
-        "Politica"
-      ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 98,
-      "ttl_horas": 48,
-      "expires_at": "2026-11-27T13:39:42Z",
-      "palavras_chave_busca": [
-        "tarifas eua",
-        "exportacoes brasil",
-        "aeronaves",
-        "comercio exterior",
-        "governo trump",
-        "balanca comercial"
-      ],
-      "gatilho_vitrine": "Analise o impacto das novas tarifas americanas na indústria aeronáutica brasileira e nas relações diplomáticas.",
-      "sintese_nerd": "O governo dos EUA propôs tarifas de 10% sobre aeronaves brasileiras, alegando falta de progresso em disputas comerciais. A medida tensiona a balança comercial e exige resposta diplomática imediata do Itamaraty.",
-      "data_publicacao": "2026-11-25T13:39:42Z",
-      "updated_at": "2026-11-25T13:39:42Z"
-    },
-    {
-      "slug": "ajuste-fiscal-lula-congresso-janeiro",
-      "titulo_tema": "Possível convocação do Congresso em janeiro para ajuste fiscal",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Politica",
-      "categorias_cruzadas": [
-        "Economia",
-        "Eleicoes"
-      ],
-      "rota_editoria": "/politica",
-      "relevancia_score": 92,
-      "ttl_horas": 24,
-      "expires_at": "2026-11-26T13:39:42Z",
-      "palavras_chave_busca": [
-        "ajuste fiscal",
-        "pec",
-        "lula",
-        "congresso nacional",
-        "recesso parlamentar",
-        "economia brasileira"
-      ],
-      "gatilho_vitrine": "Acompanhe a articulação do governo Lula para garantir a aprovação da segunda etapa do ajuste fiscal.",
-      "sintese_nerd": "A equipe econômica avalia convocar o Congresso durante o recesso de janeiro para votar a PEC do ajuste fiscal. A urgência reflete a necessidade de sinalizar responsabilidade fiscal ao mercado diante de um cenário de alta de juros e inflação.",
-      "data_publicacao": "2026-11-25T13:39:42Z",
-      "updated_at": "2026-11-25T13:39:42Z"
-    },
-    {
-      "slug": "tarifas-globais-trump-china",
-      "titulo_tema": "Trump propõe novas tarifas contra 14 parceiros comerciais",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 90,
-      "ttl_horas": 72,
-      "expires_at": "2026-11-28T13:39:42Z",
-      "palavras_chave_busca": [
-        "trump",
-        "tarifas",
-        "china",
-        "guerra comercial",
-        "protecionismo",
-        "economia global"
-      ],
-      "gatilho_vitrine": "Entenda a nova onda de protecionismo americano e seus efeitos nas cadeias globais de suprimentos.",
-      "sintese_nerd": "O governo Trump anunciou planos de tarifas contra 14 países, com foco principal na China, visando conter o excesso de capacidade industrial. A medida sinaliza uma escalada protecionista que pode pressionar a inflação global e alterar fluxos comerciais.",
-      "data_publicacao": "2026-11-25T13:39:42Z",
-      "updated_at": "2026-11-25T13:39:42Z"
-    },
-    {
-      "slug": "pcc-expansao-internacional-abin",
-      "titulo_tema": "Estudo da Abin aponta expansão do PCC em 28 países",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Politica",
-      "categorias_cruzadas": [
-        "Geopolitica_Radar"
-      ],
-      "rota_editoria": "/politica",
-      "relevancia_score": 88,
-      "ttl_horas": 48,
-      "expires_at": "2026-11-27T13:39:42Z",
-      "palavras_chave_busca": [
-        "pcc",
-        "crime organizado",
-        "abin",
-        "seguranca publica",
-        "geopolitica do crime"
-      ],
-      "gatilho_vitrine": "Entenda a dimensão transnacional do crime organizado brasileiro revelada pela Abin.",
-      "sintese_nerd": "Relatório da Abin confirma a presença do PCC em 22 estados brasileiros e 28 países, evidenciando a sofisticação da facção. O dado exige uma resposta coordenada de inteligência nacional e cooperação internacional.",
-      "data_publicacao": "2026-11-25T13:39:42Z",
-      "updated_at": "2026-11-25T13:39:42Z"
     }
   ],
   "noticias_quentes": [
+    {
+      "slug": "pulso-1-20261125-1420",
+      "titulo_curto": "Ministro do Planejamento diz que equipe econômica tem 'conjunto de medidas' para melhorar contas públicas, mas não antecipa",
+      "resumo_pulso": "Segundo G1 Política, O ministro do Planejamento, Bruno Moretti, afirmou nesta quarta-feira (25) que a equipe econômica está trabalhando em um \"conjunto de medidas\" para melhorar ainda mais as contas públicas..",
+      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "categoria": "Geopolitica_Relacoes",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "urgencia_score": 90,
+      "relevancia_score": 88,
+      "nivel_confianca": "alta",
+      "ttl_horas": 6,
+      "horas_em_destaque": 6,
+      "veiculos_origem": [
+        "G1 Política"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/economia/noticia/2026/11/25/ministro-do-planejamento-diz-que-equipe-economica-tem-conjunto-de-medidas-para-melhorar-contas-publicas-mas-nao-antecipa.ghtml"
+      ],
+      "palavras_chave": [
+        "radar",
+        "tempo real",
+        "br"
+      ],
+      "data_publicacao": "2026-11-25T14:15:32+00:00",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "O que é inflação?",
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
+          "motivo_conexao": "Compreenda por que os preços sobem de forma generalizada, como o IPCA é calculado e de que maneira os juros do Banco Central afetam o poder de compra."
+        },
+        {
+          "titulo_existente": "Como funcionam as eleições nos EUA?",
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/como-funcionam-as-eleicoes-nos-eua",
+          "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos."
+        }
+      ],
+      "expires_at": "2026-11-25T20:20:31Z",
+      "updated_at": "2026-11-25T14:20:31Z"
+    },
+    {
+      "slug": "pulso-2-20261125-1420",
+      "titulo_curto": "CCJ confirma aprovação de crime de fraude contábil no mercado de capitais",
+      "resumo_pulso": "Segundo Agência Senado, A Comissão de Constituição e Justiça (CCJ) confirmou em turno suplementar, nesta quarta-feira (25), a aprovação do projeto que cria crime específico para a fraude contábil no mercado de valores mobiliários (como a bolsa de valores), com pena de dois a seis anos de reclusão, e multa. O texto vai à Câmara dos Deputados, salvo se houver requerimento d.",
+      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "categoria": "Geopolitica_Relacoes",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "urgencia_score": 85,
+      "relevancia_score": 84,
+      "nivel_confianca": "alta",
+      "ttl_horas": 6,
+      "horas_em_destaque": 6,
+      "veiculos_origem": [
+        "Agência Senado"
+      ],
+      "fontes_urls": [
+        "https://www12.senado.leg.br/noticias/materias/2026/11/25/ccj-confirma-aprovacao-de-crime-de-fraude-contabil-no-mercado-de-capitais"
+      ],
+      "palavras_chave": [
+        "radar",
+        "tempo real",
+        "br"
+      ],
+      "data_publicacao": "2026-11-25T13:58:35+00:00",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "O que é inflação?",
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
+          "motivo_conexao": "Compreenda por que os preços sobem de forma generalizada, como o IPCA é calculado e de que maneira os juros do Banco Central afetam o poder de compra."
+        },
+        {
+          "titulo_existente": "Como funcionam as eleições nos EUA?",
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/como-funcionam-as-eleicoes-nos-eua",
+          "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos."
+        }
+      ],
+      "expires_at": "2026-11-25T20:20:31Z",
+      "updated_at": "2026-11-25T14:20:31Z"
+    },
+    {
+      "slug": "pulso-3-20261125-1420",
+      "titulo_curto": "Terapia nutricional para pacientes com câncer segue para o Plenário",
+      "resumo_pulso": "Segundo Agência Senado, Proposta que garante à pessoa com câncer o acesso a terapia nutricional adequada foi aprovada nesta quarta-feira (25) na Comissão de Assuntos Sociais (CAS). A matéria vai a Plenário. O PL 2.514/2023 altera o Estatuto da Pessoa com Câncer para incluir a terapia nutricional entre os direitos da pessoa com a doença. A terapia nutricional é o acompanha.",
+      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "categoria": "Geopolitica_Relacoes",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "urgencia_score": 80,
+      "relevancia_score": 80,
+      "nivel_confianca": "alta",
+      "ttl_horas": 6,
+      "horas_em_destaque": 6,
+      "veiculos_origem": [
+        "Agência Senado"
+      ],
+      "fontes_urls": [
+        "https://www12.senado.leg.br/noticias/materias/2026/11/25/terapia-nutricional-para-pacientes-com-cancer-segue-para-o-plenario"
+      ],
+      "palavras_chave": [
+        "radar",
+        "tempo real",
+        "br"
+      ],
+      "data_publicacao": "2026-11-25T13:55:47+00:00",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "O que é inflação?",
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
+          "motivo_conexao": "Compreenda por que os preços sobem de forma generalizada, como o IPCA é calculado e de que maneira os juros do Banco Central afetam o poder de compra."
+        },
+        {
+          "titulo_existente": "Como funcionam as eleições nos EUA?",
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/como-funcionam-as-eleicoes-nos-eua",
+          "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos."
+        }
+      ],
+      "expires_at": "2026-11-25T20:20:31Z",
+      "updated_at": "2026-11-25T14:20:31Z"
+    },
+    {
+      "slug": "pulso-4-20261125-1420",
+      "titulo_curto": "Equipes sírias removem minas terrestres após explosão mortal",
+      "resumo_pulso": "Segundo Al Jazeera English, Equipes sírias removem minas terrestres após explosão mortal.",
+      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "categoria": "Geopolitica_Relacoes",
+      "paises_envolvidos": [
+        "QA"
+      ],
+      "urgencia_score": 75,
+      "relevancia_score": 76,
+      "nivel_confianca": "alta",
+      "ttl_horas": 6,
+      "horas_em_destaque": 6,
+      "veiculos_origem": [
+        "Al Jazeera English"
+      ],
+      "fontes_urls": [
+        "https://www.aljazeera.com/video/newsfeed/2026/11/25/syrian-teams-clear-landmines-after-deadly-explosion?traffic_source=rss"
+      ],
+      "palavras_chave": [
+        "radar",
+        "tempo real",
+        "qa"
+      ],
+      "data_publicacao": "2026-11-25T13:51:15+00:00",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "O que é inflação?",
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
+          "motivo_conexao": "Compreenda por que os preços sobem de forma generalizada, como o IPCA é calculado e de que maneira os juros do Banco Central afetam o poder de compra."
+        },
+        {
+          "titulo_existente": "Como funcionam as eleições nos EUA?",
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/como-funcionam-as-eleicoes-nos-eua",
+          "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos."
+        }
+      ],
+      "expires_at": "2026-11-25T20:20:31Z",
+      "updated_at": "2026-11-25T14:20:31Z"
+    },
+    {
+      "slug": "pulso-5-20261125-1420",
+      "titulo_curto": "Subsídios aos combustíveis já somam cerca de R$ 75 bilhões em 2026, diz equipe econômica; valor deve subir até o fim do ano",
+      "resumo_pulso": "Segundo G1 Política, O ministro do Planejamento, Bruno Moretti, informou nesta quarta-feira (25) que o valor total de subsídio aos combustíveis neste ano já soma cerca de R$ 75 bilhões. Os valores abrangem, principalmente, os subsídios ao diesel, mas também englobam recursos para impedir um aumento dos preços do etanol e gasolina (em menor proporção). ➡️Com a prorrogaç.",
+      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
+      "categoria": "Geopolitica_Relacoes",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "urgencia_score": 70,
+      "relevancia_score": 72,
+      "nivel_confianca": "alta",
+      "ttl_horas": 6,
+      "horas_em_destaque": 6,
+      "veiculos_origem": [
+        "G1 Política"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/economia/noticia/2026/11/25/subsidios-aos-combustiveis-somam-cerca-de-r-75-bilhoes-em-2026-diz-equipe-economica.ghtml"
+      ],
+      "palavras_chave": [
+        "radar",
+        "tempo real",
+        "br"
+      ],
+      "data_publicacao": "2026-11-25T13:46:39+00:00",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "O que é inflação?",
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
+          "motivo_conexao": "Compreenda por que os preços sobem de forma generalizada, como o IPCA é calculado e de que maneira os juros do Banco Central afetam o poder de compra."
+        },
+        {
+          "titulo_existente": "Como funcionam as eleições nos EUA?",
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/como-funcionam-as-eleicoes-nos-eua",
+          "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos."
+        }
+      ],
+      "expires_at": "2026-11-25T20:20:31Z",
+      "updated_at": "2026-11-25T14:20:31Z"
+    },
     {
       "slug": "dolar-atinge-597-sancao-ajuste-fiscal-pec",
       "categoria": "Economia_Comercio",
@@ -1530,195 +1635,87 @@
           "titulo_existente": "Congresso e Planalto negociam prioridades da pauta econômica e votação do Orçamento"
         }
       ]
-    },
+    }
+  ],
+  "temas_curadoria": [
     {
-      "slug": "governo-reduz-contencao-despesas-orcamento-12-bilhoes",
-      "categoria": "Economia_Comercio",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-26T02:52:34Z",
-      "updated_at": "2026-11-25T07:56:41Z",
-      "fontes_urls": [
-        "https://www.poder360.com.br/poder-economia/governo-reduz-contencao-de-gastos-no-orcamento-para-r-126-bi/"
+      "slug": "eua-propõem-tarifas-aeronaves-embraer",
+      "status": "novo",
+      "ttl_horas": 48,
+      "expires_at": "2026-11-27T13:59:13Z",
+      "updated_at": "2026-11-25T13:59:13Z",
+      "titulo_tema": "EUA propõem tarifas de 10% sobre aeronaves brasileiras",
+      "sintese_nerd": "A proposta de taxação de 10% sobre aeronaves brasileiras pelo governo Trump gera incerteza imediata para a Embraer e pressiona o setor exportador nacional. O movimento faz parte de uma escalada protecionista global que exige resposta diplomática urgente do Itamaraty.",
+      "rota_editoria": "/economia",
+      "data_publicacao": "2026-11-25T13:59:13Z",
+      "gatilho_vitrine": "Analise o impacto da nova política protecionista dos EUA nas ações da Embraer e na balança comercial brasileira.",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 98,
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Geopolitica_Radar",
+        "Politica"
       ],
-      "resumo_pulso": "Segundo apuração do portal Poder360, o governo federal reduziu o volume de contenção de despesas no Orçamento para R$ 12,6 bilhões. A revisão ocorreu após a retirada de R$ 10,5 bilhões em subsídios aos combustíveis do cálculo da meta fiscal.",
-      "titulo_curto": "Governo reduz contenção de gastos no Orçamento para R$ 12,6 bilhões após ajuste na meta fiscal",
-      "palavras_chave": [
-        "Orçamento",
-        "contensão de gastos",
-        "meta fiscal",
-        "subsídios",
-        "economia"
-      ],
-      "urgencia_score": 89,
-      "data_publicacao": "2026-11-25T02:38:46Z",
-      "impacto_pratico": "A mudança alivia temporariamente o bloqueio de verbas discricionárias da máquina pública e altera a dinâmica de execução do Orçamento federal.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Poder360"
-      ],
-      "relevancia_score": 92,
-      "horas_em_destaque": 16,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-o-orcamento",
-          "motivo_conexao": "Explica a mecânica de planejamento e os limites de gastos públicos no Brasil.",
-          "titulo_existente": "O que é o Orçamento?"
-        },
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
-          "motivo_conexao": "Relaciona o ajuste de despesas às diretrizes fiscais em discussão no Congresso e no Planalto.",
-          "titulo_existente": "Implementação da Reforma Tributária e medidas de revisão de gastos avançam em Brasília"
-        }
+      "palavras_chave_busca": [
+        "embraer",
+        "embj3",
+        "tarifas eua",
+        "donald trump",
+        "comércio exterior",
+        "setor aéreo",
+        "política comercial"
       ]
     },
     {
-      "slug": "assessor-trump-brasil-deixa-cargo-departamento-estado",
-      "categoria": "Geopolitica_Relacoes",
+      "slug": "ajuste-fiscal-lula-pec-congresso",
+      "status": "novo",
       "ttl_horas": 24,
-      "expires_at": "2026-11-26T02:52:34Z",
-      "updated_at": "2026-11-25T02:52:34Z",
-      "fontes_urls": [
-        "https://g1.globo.com/mundo/noticia/2026/11/24/assessor-de-trump-aliado-da-familia-bolsonaro-deixa-cargo-no-departamento-de-estado-dos-eua.ghtml"
+      "expires_at": "2026-11-26T13:59:13Z",
+      "updated_at": "2026-11-25T13:59:13Z",
+      "titulo_tema": "Governo Lula articula segunda etapa do ajuste fiscal",
+      "sintese_nerd": "O governo busca equilibrar as contas públicas focando em emendas e supersalários, enquanto enfrenta o desafio de manter subsídios ao diesel. A possibilidade de convocação extraordinária do Congresso sinaliza a urgência do cenário fiscal para o mercado.",
+      "rota_editoria": "/politica",
+      "data_publicacao": "2026-11-25T13:59:13Z",
+      "gatilho_vitrine": "Acompanhe a articulação do governo para aprovar medidas de austeridade e o possível impacto no recesso parlamentar.",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 95,
+      "categoria_primaria": "Politica",
+      "categorias_cruzadas": [
+        "Economia"
       ],
-      "resumo_pulso": "Conforme apuração do G1 Mundo, Darren Beattie, assessor sênior para a política em relação ao Brasil na gestão de Donald Trump, deixou o cargo que ocupava no Departamento de Estado dos Estados Unidos. A saída foi confirmada pelas autoridades norte-americanas.",
-      "titulo_curto": "Assessor de Trump para o Brasil e aliado da família Bolsonaro deixa cargo no Departamento de Estado",
-      "palavras_chave": [
-        "EUA",
-        "Departamento de Estado",
-        "Darren Beattie",
-        "Diplomacia",
-        "Brasil"
-      ],
-      "urgencia_score": 88,
-      "data_publicacao": "2026-11-25T02:06:32Z",
-      "impacto_pratico": "Altera a dinâmica de interlocução direta entre o governo dos EUA e atores políticos sul-americanos.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "G1 Mundo"
-      ],
-      "relevancia_score": 89,
-      "horas_em_destaque": 12,
-      "paises_envolvidos": [
-        "US",
-        "BR"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/politica/estados-unidos",
-          "motivo_conexao": "Detalha as movimentações de gabinete e a diplomacia do governo norte-americano.",
-          "titulo_existente": "Política nos Estados Unidos"
-        }
+      "palavras_chave_busca": [
+        "ajuste fiscal",
+        "pec",
+        "lula",
+        "congresso nacional",
+        "emendas parlamentares",
+        "subsídios combustíveis"
       ]
     },
     {
-      "slug": "abin-mapeia-avanco-faccoes-crime-organizado-brasil",
-      "categoria": "Sociedade_Cultura",
+      "slug": "corte-bancario-setor-financeiro",
+      "status": "novo",
       "ttl_horas": 24,
-      "expires_at": "2026-11-26T01:54:24Z",
-      "updated_at": "2026-11-25T02:52:34Z",
-      "fontes_urls": [
-        "https://www.poder360.com.br/poder-seguranca-publica/abin-mapeia-avanco-de-pcc-cv-e-tcp-e-identifica-31-faccoes-no-pais/"
-      ],
-      "resumo_pulso": "Segundo apuração do portal Poder360 com base em dados de inteligência, a Agência Brasileira de Inteligência (Abin) mapeou a expansão de facções como PCC, Comando Vermelho e TCP, identificando 31 organizações de atuação nacional ou interestadual e dezenas de células estaduais.",
-      "titulo_curto": "Abin mapeia avanço de PCC, CV e TCP e identifica 31 facções criminosas no país",
-      "palavras_chave": [
-        "Abin",
-        "PCC",
-        "Comando Vermelho",
-        "Segurança Pública",
-        "Facções"
-      ],
-      "urgencia_score": 90,
-      "data_publicacao": "2026-11-25T01:33:19Z",
-      "impacto_pratico": "Reforça o monitoramento de segurança pública e a articulação entre órgãos federais e estaduais no combate ao crime organizado.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Poder360"
-      ],
-      "relevancia_score": 92,
-      "horas_em_destaque": 12,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
-          "motivo_conexao": "Contextualiza a atuação de órgãos de inteligência e segurança do Estado.",
-          "titulo_existente": "Política no Brasil"
-        }
-      ]
-    },
-    {
-      "slug": "israel-eisenkot-coalition-partner-government",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 18,
-      "expires_at": "2026-11-25T19:54:24Z",
-      "updated_at": "2026-11-25T02:11:11Z",
-      "fontes_urls": [
-        "https://www.aljazeera.com/news/2026/11/25/israels-eisenkot-secures-first-coalition-partner-in-bid-to-form-government?traffic_source=rss"
-      ],
-      "resumo_pulso": "Conforme apuração da Al Jazeera English, o partido Yashar firmou um pacto de coalizão com a legenda Our Home, liderada por Avigdor Lieberman, fortalecendo a tentativa de Gadi Eisenkot de estruturar um novo governo.",
-      "titulo_curto": "Ex-chefe militar Gadi Eisenkot assegura primeiro parceiro de coalizão para formar governo em Israel",
-      "palavras_chave": [
-        "Gadi Eisenkot",
-        "Israel",
-        "Coalizão",
-        "Avigdor Lieberman"
-      ],
-      "urgencia_score": 87,
-      "data_publicacao": "2026-11-25T01:30:44Z",
-      "impacto_pratico": "Pode redesenhar o cenário político e de segurança em Israel em meio a crises regionais no Oriente Médio.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Al Jazeera English"
-      ],
-      "relevancia_score": 86,
-      "horas_em_destaque": 8,
-      "paises_envolvidos": [
-        "IL"
-      ],
-      "links_internos_relacionados": []
-    },
-    {
-      "slug": "eua-suspendem-operacoes-equador-investigacao",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-26T01:29:18Z",
-      "updated_at": "2026-11-25T02:11:11Z",
-      "fontes_urls": [
-        "https://g1.globo.com/mundo/noticia/2026/11/24/governo-trump-suspende-operacoes-militares-conjuntas-com-equador-diz-jornal.ghtml"
-      ],
-      "resumo_pulso": "Segundo apuração do G1 Mundo com base no jornal The New York Times, o governo dos Estados Unidos suspendeu operações militares conjuntas com o Equador. A medida foi adotada no âmbito de uma apuração sobre uma ação letal conduzida por forças equatorianas.",
-      "titulo_curto": "EUA suspendem operações militares conjuntas com o Equador após investigação de morte",
-      "palavras_chave": [
-        "EUA",
-        "Equador",
-        "Operações Militares",
-        "Narcotráfico"
-      ],
-      "urgencia_score": 89,
-      "data_publicacao": "2026-11-25T01:00:24Z",
-      "impacto_pratico": "Afeta a cooperação de segurança e inteligência na luta contra o narcoterrorismo na América Latina.",
-      "nivel_confianca": "media",
-      "veiculos_origem": [
-        "G1 Mundo",
-        "The New York Times"
-      ],
+      "expires_at": "2026-11-26T13:59:13Z",
+      "updated_at": "2026-11-25T13:59:13Z",
+      "titulo_tema": "Onda de demissões atinge grandes bancos brasileiros",
+      "sintese_nerd": "A demissão de 600 funcionários reflete uma busca por eficiência operacional e digitalização acelerada no setor bancário. O movimento levanta questões sobre a saúde do mercado de trabalho financeiro e a automação de serviços.",
+      "rota_editoria": "/economia",
+      "data_publicacao": "2026-11-25T13:59:13Z",
+      "gatilho_vitrine": "Entenda os motivos por trás da reestruturação e cortes de pessoal nos principais bancos do país.",
+      "origem_pipeline": "curadoria",
       "relevancia_score": 88,
-      "horas_em_destaque": 12,
-      "paises_envolvidos": [
-        "US",
-        "EC"
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Cultura"
       ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-sancao-internacional",
-          "motivo_conexao": "Ajuda a compreender o impacto de medidas restritivas e suspensões diplomáticas e militares entre nações.",
-          "titulo_existente": "O que é uma sanção internacional?"
-        }
+      "palavras_chave_busca": [
+        "itaú",
+        "banco inter",
+        "bv",
+        "demissões",
+        "setor bancário",
+        "mercado de trabalho"
       ]
     }
   ]
