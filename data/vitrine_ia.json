@@ -2,13 +2,13 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-25T11:29:04Z",
-  "batch_id": "20261125-1128",
+  "updatedAt": "2026-11-25T12:37:15Z",
+  "batch_id": "20261125-1236",
   "temas_ativos": [
     {
-      "slug": "venezuela-revela-divida-publica-de-242-do-pib",
-      "titulo_tema": "Governo da Venezuela divulga dados macroeconômicos e aponta dívida pública de 242% do PIB",
-      "titulo_curto": "Governo da Venezuela divulga dados macroeconômicos e aponta dívida pública de 242% do PIB",
+      "slug": "dolar-atinge-597-sancao-ajuste-fiscal-pec",
+      "titulo_tema": "Dólar atinge R$ 5,97 após sanção do ajuste fiscal e sinalizações sobre nova PEC",
+      "titulo_curto": "Dólar atinge R$ 5,97 após sanção do ajuste fiscal e sinalizações sobre nova PEC",
       "status": "novo",
       "origem_pipeline": "pulso",
       "categoria_primaria": "Economia",
@@ -18,37 +18,232 @@
         "Resumo_Ultimas"
       ],
       "rota_editoria": "/economia",
+      "relevancia_score": 94,
+      "urgencia_score": 92,
+      "ttl_horas": 12,
+      "expires_at": "2026-11-26T00:37:15Z",
+      "palavras_chave_busca": [
+        "dólar",
+        "ajuste fiscal",
+        "pec",
+        "lei complementar 239",
+        "câmbio"
+      ],
+      "palavras_chave": [
+        "dólar",
+        "ajuste fiscal",
+        "pec",
+        "lei complementar 239",
+        "câmbio"
+      ],
+      "gatilho_vitrine": "Conforme apuração do G1 Economia e dados divulgados pela TV Senado, o dólar registrou alta no início da sessão até a marca de R$ 5,97, impulsionado por expectativas de inflação nos Estados Unidos e pela sanção integral da Lei Complementar 239/2026. Paralelamente, reportagens do JOTA indicam que o governo estuda o envio de uma nova Proposta de Emenda à Constituição para conter despesas antes do encerramento da legislatura.",
+      "resumo_pulso": "Conforme apuração do G1 Economia e dados divulgados pela TV Senado, o dólar registrou alta no início da sessão até a marca de R$ 5,97, impulsionado por expectativas de inflação nos Estados Unidos e pela sanção integral da Lei Complementar 239/2026. Paralelamente, reportagens do JOTA indicam que o governo estuda o envio de uma nova Proposta de Emenda à Constituição para conter despesas antes do encerramento da legislatura.",
+      "sintese_nerd": "Pressiona custos de insumos importados, viagens ao exterior e preços de produtos atrelados ao câmbio no mercado nacional.",
+      "impacto_pratico": "Pressiona custos de insumos importados, viagens ao exterior e preços de produtos atrelados ao câmbio no mercado nacional.",
+      "paises_envolvidos": [
+        "BR",
+        "US"
+      ],
+      "veiculos_origem": [
+        "G1 Economia",
+        "TV Senado",
+        "JOTA Info"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/economia/noticia/2026/11/25/dolar-ibovespa.ghtml",
+        "https://www.youtube.com/watch?v=IElxEQeHd-0",
+        "https://www.jota.info/newsletters/jota-principal/governo-estuda-enviar-nova-pec-ajuste-fiscal"
+      ],
+      "data_publicacao": "2026-11-25T12:22:01Z",
+      "updated_at": "2026-11-25T12:37:15Z"
+    },
+    {
+      "slug": "ataques-russos-infraestrutura-energia-ucrania-apagaos",
+      "titulo_tema": "Ataques maciços de drones e mísseis russos provocam apagões em cinco regiões da Ucrânia",
+      "titulo_curto": "Ataques maciços de drones e mísseis russos provocam apagões em cinco regiões da Ucrânia",
+      "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categoria": "Geopolitica_Relacoes",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/radar",
       "relevancia_score": 89,
-      "urgencia_score": 88,
+      "urgencia_score": 91,
+      "ttl_horas": 18,
+      "expires_at": "2026-11-26T06:37:15Z",
+      "palavras_chave_busca": [
+        "ucrânia",
+        "rússia",
+        "energia",
+        "drones",
+        "apagão"
+      ],
+      "palavras_chave": [
+        "ucrânia",
+        "rússia",
+        "energia",
+        "drones",
+        "apagão"
+      ],
+      "gatilho_vitrine": "Segundo dados fornecidos pelas autoridades de Kiev e veiculados por Al Jazeera English e The Kyiv Independent, novos bombardeios russos com mais de 100 drones atingiram a infraestrutura energética da Ucrânia. As investidas paralisaram a geração em usinas térmicas e provocaram a interrupção no fornecimento elétrico em Zaporizhia, Dnipropetrovsk e outras três províncias.",
+      "resumo_pulso": "Segundo dados fornecidos pelas autoridades de Kiev e veiculados por Al Jazeera English e The Kyiv Independent, novos bombardeios russos com mais de 100 drones atingiram a infraestrutura energética da Ucrânia. As investidas paralisaram a geração em usinas térmicas e provocaram a interrupção no fornecimento elétrico em Zaporizhia, Dnipropetrovsk e outras três províncias.",
+      "sintese_nerd": "Aumenta os riscos de crise humanitária e desabastecimento de energia com a chegada do inverno na região.",
+      "impacto_pratico": "Aumenta os riscos de crise humanitária e desabastecimento de energia com a chegada do inverno na região.",
+      "paises_envolvidos": [
+        "UA",
+        "RU"
+      ],
+      "veiculos_origem": [
+        "Al Jazeera English",
+        "The Kyiv Independent"
+      ],
+      "fontes_urls": [
+        "https://www.aljazeera.com/news/2026/11/25/russian-strikes-on-ukraine-cause-power-outages-in-five-regions?traffic_source=rss",
+        "https://kyivindependent.com/russian-attacks-kill-9-injure-59-across-ukraine-over-past-day-halt-power-generation-at-thermal-power-plant/"
+      ],
+      "data_publicacao": "2026-11-25T12:19:17Z",
+      "updated_at": "2026-11-25T12:37:15Z"
+    },
+    {
+      "slug": "haddad-sinaliza-fora-de-novo-governo-lula",
+      "titulo_tema": "Fernando Haddad sinaliza a Lula que planeja deixar o governo ao fim do mandato",
+      "titulo_curto": "Fernando Haddad sinaliza a Lula que planeja deixar o governo ao fim do mandato",
+      "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Economia",
+      "categoria": "Economia_Comercio",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 93,
+      "urgencia_score": 90,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-26T12:37:15Z",
+      "palavras_chave_busca": [
+        "fernando haddad",
+        "lula",
+        "ministério da fazenda",
+        "governo federal"
+      ],
+      "palavras_chave": [
+        "fernando haddad",
+        "lula",
+        "ministério da fazenda",
+        "governo federal"
+      ],
+      "gatilho_vitrine": "Conforme apuração divulgada pelo G1 Política, o ministro da Fazenda, Fernando Haddad, sinalizou ao presidente Luiz Inácio Lula da Silva sua intenção de não integrar a equipe ministerial em um eventual próximo ciclo de governo. O movimento abre espaço para especulações políticas sobre a sucessão na pasta econômica.",
+      "resumo_pulso": "Conforme apuração divulgada pelo G1 Política, o ministro da Fazenda, Fernando Haddad, sinalizou ao presidente Luiz Inácio Lula da Silva sua intenção de não integrar a equipe ministerial em um eventual próximo ciclo de governo. O movimento abre espaço para especulações políticas sobre a sucessão na pasta econômica.",
+      "sintese_nerd": "Gera incerteza nos mercados financeiros quanto à continuidade da atual condução da política fiscal.",
+      "impacto_pratico": "Gera incerteza nos mercados financeiros quanto à continuidade da atual condução da política fiscal.",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "veiculos_origem": [
+        "G1 Política"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/politica/blog/gerson-camarotti/post/2026/11/25/haddad-sinaliza-a-lula-que-deve-ficar-fora-do-novo-governo.ghtml"
+      ],
+      "data_publicacao": "2026-11-25T12:07:34Z",
+      "updated_at": "2026-11-25T12:37:15Z"
+    },
+    {
+      "slug": "suprema-corte-iraque-autoriza-tropas-fronteira-petroleo-curdistao",
+      "titulo_tema": "Suprema Corte do Iraque autoriza envio de tropas para a fronteira em meio a disputa de petróleo com o Curdistão",
+      "titulo_curto": "Suprema Corte do Iraque autoriza envio de tropas para a fronteira em meio a disputa de petróleo com o Curdistão",
+      "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categoria": "Geopolitica_Relacoes",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 88,
+      "urgencia_score": 89,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-26T12:37:15Z",
+      "palavras_chave_busca": [
+        "iraque",
+        "curdistão",
+        "petróleo",
+        "suprema corte",
+        "tropas"
+      ],
+      "palavras_chave": [
+        "iraque",
+        "curdistão",
+        "petróleo",
+        "suprema corte",
+        "tropas"
+      ],
+      "gatilho_vitrine": "Segundo informações da televisão estatal iraquiana reproduzidas pelo G1 Mundo, a Suprema Corte do Iraque autorizou o deslocamento de tropas federais para a fronteira nacional. A decisão ocorre em meio a uma contenda entre Bagdá e as autoridades do Curdistão pelo controle operacional e financeiro de campos de exploração petrolífera.",
+      "resumo_pulso": "Segundo informações da televisão estatal iraquiana reproduzidas pelo G1 Mundo, a Suprema Corte do Iraque autorizou o deslocamento de tropas federais para a fronteira nacional. A decisão ocorre em meio a uma contenda entre Bagdá e as autoridades do Curdistão pelo controle operacional e financeiro de campos de exploração petrolífera.",
+      "sintese_nerd": "Eleva as tensões geopolíticas no Oriente Médio e pode influenciar as cotações internacionais do barril de petróleo.",
+      "impacto_pratico": "Eleva as tensões geopolíticas no Oriente Médio e pode influenciar as cotações internacionais do barril de petróleo.",
+      "paises_envolvidos": [
+        "IQ"
+      ],
+      "veiculos_origem": [
+        "G1 Mundo",
+        "Televisão Estatal Iraquiana"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/mundo/noticia/2026/11/25/suprema-corte-do-iraque-autoriza-envio-de-tropas-ao-curdistao-em-meio-a-disputa-por-petroleo.ghtml"
+      ],
+      "data_publicacao": "2026-11-25T11:45:58Z",
+      "updated_at": "2026-11-25T12:37:15Z"
+    },
+    {
+      "slug": "venezuela-revela-divida-publica-de-242-do-pib",
+      "status": "novo",
+      "categoria": "Economia_Comercio",
       "ttl_horas": 24,
       "expires_at": "2026-11-26T11:29:04Z",
-      "palavras_chave_busca": [
-        "venezuela",
-        "dívida pública",
-        "pib",
-        "economia"
+      "updated_at": "2026-11-25T11:29:04Z",
+      "fontes_urls": [
+        "https://www.poder360.com.br/poder-internacional/venezuela-revela-divida-publica-de-242-do-pib/"
       ],
+      "titulo_tema": "Governo da Venezuela divulga dados macroeconômicos e aponta dívida pública de 242% do PIB",
+      "resumo_pulso": "Conforme apuração do Poder360 com base em informações divulgadas pelo governo de Delcy Rodríguez, a Venezuela revelou dados macroeconômicos pela primeira vez em anos, indicando que os passivos somavam US$ 237,5 bilhões ao final de 2025.",
+      "sintese_nerd": "A revelação dimensiona o tamanho da crise econômica venezuelana e repercute nas discussões sobre sanções e reestruturação financeira na América Latina.",
+      "titulo_curto": "Governo da Venezuela divulga dados macroeconômicos e aponta dívida pública de 242% do PIB",
+      "rota_editoria": "/economia",
       "palavras_chave": [
         "venezuela",
         "dívida pública",
         "pib",
         "economia"
       ],
+      "urgencia_score": 88,
+      "data_publicacao": "2026-11-25T11:23:32Z",
       "gatilho_vitrine": "Conforme apuração do Poder360 com base em informações divulgadas pelo governo de Delcy Rodríguez, a Venezuela revelou dados macroeconômicos pela primeira vez em anos, indicando que os passivos somavam US$ 237,5 bilhões ao final de 2025.",
-      "resumo_pulso": "Conforme apuração do Poder360 com base em informações divulgadas pelo governo de Delcy Rodríguez, a Venezuela revelou dados macroeconômicos pela primeira vez em anos, indicando que os passivos somavam US$ 237,5 bilhões ao final de 2025.",
-      "sintese_nerd": "A revelação dimensiona o tamanho da crise econômica venezuelana e repercute nas discussões sobre sanções e reestruturação financeira na América Latina.",
       "impacto_pratico": "A revelação dimensiona o tamanho da crise econômica venezuelana e repercute nas discussões sobre sanções e reestruturação financeira na América Latina.",
-      "paises_envolvidos": [
-        "VE"
-      ],
+      "origem_pipeline": "pulso",
       "veiculos_origem": [
         "Poder360"
       ],
-      "fontes_urls": [
-        "https://www.poder360.com.br/poder-internacional/venezuela-revela-divida-publica-de-242-do-pib/"
+      "relevancia_score": 89,
+      "paises_envolvidos": [
+        "VE"
       ],
-      "data_publicacao": "2026-11-25T11:23:32Z",
-      "updated_at": "2026-11-25T11:29:04Z"
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "venezuela",
+        "dívida pública",
+        "pib",
+        "economia"
+      ]
     },
     {
       "slug": "deficit-primario-2026-pressao-dolar-6-reais",
@@ -300,28 +495,19 @@
     },
     {
       "slug": "ataque-drones-refinarias-russia-samara",
-      "titulo_tema": "Forças ucranianas atingem refinarias na região de Samara em novos ataques de drones",
-      "titulo_curto": "Forças ucranianas atingem refinarias na região de Samara em novos ataques de drones",
       "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Geopolitica_Radar",
       "categoria": "Geopolitica_Relacoes",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 91,
-      "urgencia_score": 93,
       "ttl_horas": 12,
       "expires_at": "2026-11-26T01:56:41Z",
-      "palavras_chave_busca": [
-        "ucrânia",
-        "rússia",
-        "refinarias",
-        "drones",
-        "guerra"
+      "updated_at": "2026-11-25T11:29:04Z",
+      "fontes_urls": [
+        "https://www.ukrinform.net/rubric-ato/4188460-ukrainian-forces-strike-two-russian-oil-refineries.html"
       ],
+      "titulo_tema": "Forças ucranianas atingem refinarias na região de Samara em novos ataques de drones",
+      "resumo_pulso": "Segundo relatórios do Estado-Maior da Ucrânia e veículos internacionais, forças ucranianas realizaram ataques coordenados contra duas refinarias de petróleo na região russa de Samara. A ofensiva intensifica a pressão sobre a infraestrutura energética de Moscou.",
+      "sintese_nerd": "A escalada nos ataques a refinarias pode gerar volatilidade adicional nos mercados globais de petróleo e derivados.",
+      "titulo_curto": "Forças ucranianas atingem refinarias na região de Samara em novos ataques de drones",
+      "rota_editoria": "/radar",
       "palavras_chave": [
         "ucrânia",
         "rússia",
@@ -329,23 +515,32 @@
         "drones",
         "guerra"
       ],
+      "urgencia_score": 93,
+      "data_publicacao": "2026-11-25T07:38:00Z",
       "gatilho_vitrine": "Segundo relatórios do Estado-Maior da Ucrânia e veículos internacionais, forças ucranianas realizaram ataques coordenados contra duas refinarias de petróleo na região russa de Samara. A ofensiva intensifica a pressão sobre a infraestrutura energética de Moscou.",
-      "resumo_pulso": "Segundo relatórios do Estado-Maior da Ucrânia e veículos internacionais, forças ucranianas realizaram ataques coordenados contra duas refinarias de petróleo na região russa de Samara. A ofensiva intensifica a pressão sobre a infraestrutura energética de Moscou.",
-      "sintese_nerd": "A escalada nos ataques a refinarias pode gerar volatilidade adicional nos mercados globais de petróleo e derivados.",
       "impacto_pratico": "A escalada nos ataques a refinarias pode gerar volatilidade adicional nos mercados globais de petróleo e derivados.",
-      "paises_envolvidos": [
-        "UA",
-        "RU"
-      ],
+      "origem_pipeline": "pulso",
       "veiculos_origem": [
         "Ukrinform",
         "Geopolitical Futures"
       ],
-      "fontes_urls": [
-        "https://www.ukrinform.net/rubric-ato/4188460-ukrainian-forces-strike-two-russian-oil-refineries.html"
+      "relevancia_score": 91,
+      "paises_envolvidos": [
+        "UA",
+        "RU"
       ],
-      "data_publicacao": "2026-11-25T07:38:00Z",
-      "updated_at": "2026-11-25T11:29:04Z"
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "ucrânia",
+        "rússia",
+        "refinarias",
+        "drones",
+        "guerra"
+      ]
     },
     {
       "slug": "exercito-eua-explosao-material-toxico-iowa",
@@ -669,223 +864,192 @@
         "coalizão",
         "avigdor lieberman"
       ]
-    },
-    {
-      "slug": "eua-suspendem-operacoes-equador-investigacao",
-      "status": "novo",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-26T01:29:18Z",
-      "updated_at": "2026-11-25T02:11:11Z",
-      "fontes_urls": [
-        "https://g1.globo.com/mundo/noticia/2026/11/24/governo-trump-suspende-operacoes-militares-conjuntas-com-equador-diz-jornal.ghtml"
-      ],
-      "titulo_tema": "EUA suspendem operações militares conjuntas com o Equador após investigação de morte",
-      "resumo_pulso": "Segundo apuração do G1 Mundo com base no jornal The New York Times, o governo dos Estados Unidos suspendeu operações militares conjuntas com o Equador. A medida foi adotada no âmbito de uma apuração sobre uma ação letal conduzida por forças equatorianas.",
-      "sintese_nerd": "Afeta a cooperação de segurança e inteligência na luta contra o narcoterrorismo na América Latina.",
-      "titulo_curto": "EUA suspendem operações militares conjuntas com o Equador após investigação de morte",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "eua",
-        "equador",
-        "operações militares",
-        "narcotráfico"
-      ],
-      "urgencia_score": 89,
-      "data_publicacao": "2026-11-25T01:00:24Z",
-      "gatilho_vitrine": "Segundo apuração do G1 Mundo com base no jornal The New York Times, o governo dos Estados Unidos suspendeu operações militares conjuntas com o Equador. A medida foi adotada no âmbito de uma apuração sobre uma ação letal conduzida por forças equatorianas.",
-      "impacto_pratico": "Afeta a cooperação de segurança e inteligência na luta contra o narcoterrorismo na América Latina.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "G1 Mundo",
-        "The New York Times"
-      ],
-      "relevancia_score": 88,
-      "paises_envolvidos": [
-        "US",
-        "EC"
-      ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "eua",
-        "equador",
-        "operações militares",
-        "narcotráfico"
-      ]
-    },
-    {
-      "slug": "apagao-atinge-cidades-colombia-ataque-usina",
-      "status": "novo",
-      "categoria": "Sociedade_Cultura",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-26T01:29:18Z",
-      "updated_at": "2026-11-25T02:11:11Z",
-      "fontes_urls": [
-        "https://g1.globo.com/mundo/noticia/2026/11/24/apagao-atinge-cidades-da-colombia-apos-ataque-com-explosivos-a-usina.ghtml"
-      ],
-      "titulo_tema": "Ataque com explosivos a usina elétrica provoca apagão no sudoeste da Colômbia",
-      "resumo_pulso": "Conforme apuração do G1 Mundo, um atentado com bombas contra uma usina elétrica gerou um apagão de grandes proporções no sudoeste colombiano, afetando mais de 2 milhões de pessoas nas regiões de Nariño, Putumayo, Cauca e Huila.",
-      "sintese_nerd": "Interrupção severa de serviços essenciais e mobilização de autoridades locais para restabelecimento da rede elétrica.",
-      "titulo_curto": "Ataque com explosivos a usina elétrica provoca apagão no sudoeste da Colômbia",
-      "rota_editoria": "/cultura",
-      "palavras_chave": [
-        "colômbia",
-        "apagão",
-        "atentado",
-        "infraestrutura"
-      ],
-      "urgencia_score": 88,
-      "data_publicacao": "2026-11-25T00:41:45Z",
-      "gatilho_vitrine": "Conforme apuração do G1 Mundo, um atentado com bombas contra uma usina elétrica gerou um apagão de grandes proporções no sudoeste colombiano, afetando mais de 2 milhões de pessoas nas regiões de Nariño, Putumayo, Cauca e Huila.",
-      "impacto_pratico": "Interrupção severa de serviços essenciais e mobilização de autoridades locais para restabelecimento da rede elétrica.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "G1 Mundo"
-      ],
-      "relevancia_score": 87,
-      "paises_envolvidos": [
-        "CO"
-      ],
-      "categoria_primaria": "Cultura",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "colômbia",
-        "apagão",
-        "atentado",
-        "infraestrutura"
-      ]
-    },
-    {
-      "slug": "mega-sena-acumula-premio-75-milhoes",
-      "status": "novo",
-      "categoria": "Sociedade_Cultura",
-      "ttl_horas": 12,
-      "expires_at": "2026-11-25T13:54:24Z",
-      "updated_at": "2026-11-25T02:52:34Z",
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/geral/noticia/2026-11/mega-sena-acumula-para-r-75-milhoes-confira-os-numeros-sorteados",
-        "https://g1.globo.com/loterias/mega-sena/noticia/2026/11/24/mega-sena-concurso-3090-confira-os-numeros-sorteados.ghtml"
-      ],
-      "titulo_tema": "Mega-Sena acumula e prêmio estimado vai a R$ 75 milhões para o próximo sorteio",
-      "resumo_pulso": "Segundo dados divulgados pela Agência Brasil e pelo G1 Economia, nenhuma aposta acertou as seis dezenas do concurso 3.090 da Mega-Sena. O prêmio principal acumulou, estimando-se R$ 75 milhões para a próxima extração.",
-      "sintese_nerd": "Movimenta apostas lotéricas em todo o país com a elevação do valor do prêmio principal.",
-      "titulo_curto": "Mega-Sena acumula e prêmio estimado vai a R$ 75 milhões para o próximo sorteio",
-      "rota_editoria": "/cultura",
-      "palavras_chave": [
-        "mega-sena",
-        "loterias",
-        "prêmio",
-        "caixa"
-      ],
-      "urgencia_score": 80,
-      "data_publicacao": "2026-11-25T00:32:00Z",
-      "gatilho_vitrine": "Segundo dados divulgados pela Agência Brasil e pelo G1 Economia, nenhuma aposta acertou as seis dezenas do concurso 3.090 da Mega-Sena. O prêmio principal acumulou, estimando-se R$ 75 milhões para a próxima extração.",
-      "impacto_pratico": "Movimenta apostas lotéricas em todo o país com a elevação do valor do prêmio principal.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "Agência Brasil (EBC)",
-        "G1 Economia"
-      ],
-      "relevancia_score": 75,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "categoria_primaria": "Cultura",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "mega-sena",
-        "loterias",
-        "prêmio",
-        "caixa"
-      ]
-    },
-    {
-      "slug": "senado-aprova-plano-nacional-cultura-dez-anos",
-      "status": "novo",
-      "categoria": "Sociedade_Cultura",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-26T00:16:31Z",
-      "updated_at": "2026-11-25T02:52:34Z",
-      "fontes_urls": [
-        "https://www12.senado.leg.br/noticias/materias/2026/11/24/senado-aprova-plano-nacional-de-cultura-para-os-proximos-10-anos"
-      ],
-      "titulo_tema": "Senado aprova novo Plano Nacional de Cultura com diretrizes para a próxima década",
-      "resumo_pulso": "Conforme apuração da Agência Senado, o Plenário aprovou o PL 5.894/2025 que institui o novo Plano Nacional de Cultura (PNC). O texto, que segue para sanção presidencial, estabelece princípios, metas e descentralização de recursos para orientar as políticas culturais do país nos próximos dez anos.",
-      "sintese_nerd": "Direciona o planejamento de políticas públicas e repasses de recursos para o setor cultural em âmbito nacional.",
-      "titulo_curto": "Senado aprova novo Plano Nacional de Cultura com diretrizes para a próxima década",
-      "rota_editoria": "/cultura",
-      "palavras_chave": [
-        "senado",
-        "plano nacional de cultura",
-        "cultura",
-        "legislação"
-      ],
-      "urgencia_score": 86,
-      "data_publicacao": "2026-11-24T23:56:23Z",
-      "gatilho_vitrine": "Conforme apuração da Agência Senado, o Plenário aprovou o PL 5.894/2025 que institui o novo Plano Nacional de Cultura (PNC). O texto, que segue para sanção presidencial, estabelece princípios, metas e descentralização de recursos para orientar as políticas culturais do país nos próximos dez anos.",
-      "impacto_pratico": "Direciona o planejamento de políticas públicas e repasses de recursos para o setor cultural em âmbito nacional.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "Agência Senado"
-      ],
-      "relevancia_score": 89,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "categoria_primaria": "Cultura",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "senado",
-        "plano nacional de cultura",
-        "cultura",
-        "legislação"
-      ]
     }
   ],
   "noticias_quentes": [
     {
-      "slug": "venezuela-revela-divida-publica-de-242-do-pib",
-      "titulo_curto": "Governo da Venezuela divulga dados macroeconômicos e aponta dívida pública de 242% do PIB",
-      "resumo_pulso": "Conforme apuração do Poder360 com base em informações divulgadas pelo governo de Delcy Rodríguez, a Venezuela revelou dados macroeconômicos pela primeira vez em anos, indicando que os passivos somavam US$ 237,5 bilhões ao final de 2025.",
-      "impacto_pratico": "A revelação dimensiona o tamanho da crise econômica venezuelana e repercute nas discussões sobre sanções e reestruturação financeira na América Latina.",
+      "slug": "dolar-atinge-597-sancao-ajuste-fiscal-pec",
+      "titulo_curto": "Dólar atinge R$ 5,97 após sanção do ajuste fiscal e sinalizações sobre nova PEC",
+      "resumo_pulso": "Conforme apuração do G1 Economia e dados divulgados pela TV Senado, o dólar registrou alta no início da sessão até a marca de R$ 5,97, impulsionado por expectativas de inflação nos Estados Unidos e pela sanção integral da Lei Complementar 239/2026. Paralelamente, reportagens do JOTA indicam que o governo estuda o envio de uma nova Proposta de Emenda à Constituição para conter despesas antes do encerramento da legislatura.",
+      "impacto_pratico": "Pressiona custos de insumos importados, viagens ao exterior e preços de produtos atrelados ao câmbio no mercado nacional.",
       "categoria": "Economia_Comercio",
       "paises_envolvidos": [
-        "VE"
+        "BR",
+        "US"
       ],
-      "urgencia_score": 88,
-      "relevancia_score": 89,
+      "urgencia_score": 92,
+      "relevancia_score": 94,
       "nivel_confianca": "alta",
-      "ttl_horas": 24,
+      "ttl_horas": 12,
       "horas_em_destaque": 8,
       "veiculos_origem": [
-        "Poder360"
+        "G1 Economia",
+        "TV Senado",
+        "JOTA Info"
       ],
+      "fontes_urls": [
+        "https://g1.globo.com/economia/noticia/2026/11/25/dolar-ibovespa.ghtml",
+        "https://www.youtube.com/watch?v=IElxEQeHd-0",
+        "https://www.jota.info/newsletters/jota-principal/governo-estuda-enviar-nova-pec-ajuste-fiscal"
+      ],
+      "palavras_chave": [
+        "Dólar",
+        "Ajuste Fiscal",
+        "PEC",
+        "Lei Complementar 239",
+        "Câmbio"
+      ],
+      "data_publicacao": "2026-11-25T12:22:01Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "Economia no Brasil",
+          "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
+          "motivo_conexao": "Acompanhe análises completas sobre câmbio, política fiscal e inflação no cenário nacional."
+        },
+        {
+          "titulo_existente": "Banco Central e mercado financeiro acompanham inflação de serviços, câmbio e metas fiscais",
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
+          "motivo_conexao": "Entenda a relação entre a variação cambial e o cumprimento das metas inflacionárias no país."
+        }
+      ],
+      "expires_at": "2026-11-26T00:37:15Z",
+      "updated_at": "2026-11-25T12:37:15Z"
+    },
+    {
+      "slug": "ataques-russos-infraestrutura-energia-ucrania-apagaos",
+      "titulo_curto": "Ataques maciços de drones e mísseis russos provocam apagões em cinco regiões da Ucrânia",
+      "resumo_pulso": "Segundo dados fornecidos pelas autoridades de Kiev e veiculados por Al Jazeera English e The Kyiv Independent, novos bombardeios russos com mais de 100 drones atingiram a infraestrutura energética da Ucrânia. As investidas paralisaram a geração em usinas térmicas e provocaram a interrupção no fornecimento elétrico em Zaporizhia, Dnipropetrovsk e outras três províncias.",
+      "impacto_pratico": "Aumenta os riscos de crise humanitária e desabastecimento de energia com a chegada do inverno na região.",
+      "categoria": "Geopolitica_Relacoes",
+      "paises_envolvidos": [
+        "UA",
+        "RU"
+      ],
+      "urgencia_score": 91,
+      "relevancia_score": 89,
+      "nivel_confianca": "alta",
+      "ttl_horas": 18,
+      "horas_em_destaque": 8,
+      "veiculos_origem": [
+        "Al Jazeera English",
+        "The Kyiv Independent"
+      ],
+      "fontes_urls": [
+        "https://www.aljazeera.com/news/2026/11/25/russian-strikes-on-ukraine-cause-power-outages-in-five-regions?traffic_source=rss",
+        "https://kyivindependent.com/russian-attacks-kill-9-injure-59-across-ukraine-over-past-day-halt-power-generation-at-thermal-power-plant/"
+      ],
+      "palavras_chave": [
+        "Ucrânia",
+        "Rússia",
+        "Energia",
+        "Drones",
+        "Apagão"
+      ],
+      "data_publicacao": "2026-11-25T12:19:17Z",
+      "links_internos_relacionados": [],
+      "expires_at": "2026-11-26T06:37:15Z",
+      "updated_at": "2026-11-25T12:37:15Z"
+    },
+    {
+      "slug": "haddad-sinaliza-fora-de-novo-governo-lula",
+      "titulo_curto": "Fernando Haddad sinaliza a Lula que planeja deixar o governo ao fim do mandato",
+      "resumo_pulso": "Conforme apuração divulgada pelo G1 Política, o ministro da Fazenda, Fernando Haddad, sinalizou ao presidente Luiz Inácio Lula da Silva sua intenção de não integrar a equipe ministerial em um eventual próximo ciclo de governo. O movimento abre espaço para especulações políticas sobre a sucessão na pasta econômica.",
+      "impacto_pratico": "Gera incerteza nos mercados financeiros quanto à continuidade da atual condução da política fiscal.",
+      "categoria": "Economia_Comercio",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "urgencia_score": 90,
+      "relevancia_score": 93,
+      "nivel_confianca": "media",
+      "ttl_horas": 24,
+      "horas_em_destaque": 12,
+      "veiculos_origem": [
+        "G1 Política"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/politica/blog/gerson-camarotti/post/2026/11/25/haddad-sinaliza-a-lula-que-deve-ficar-fora-do-novo-governo.ghtml"
+      ],
+      "palavras_chave": [
+        "Fernando Haddad",
+        "Lula",
+        "Ministério da Fazenda",
+        "Governo Federal"
+      ],
+      "data_publicacao": "2026-11-25T12:07:34Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "Política no Brasil",
+          "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
+          "motivo_conexao": "Confira os desdobramentos sobre articulações políticas e mudanças de quadros no Governo Federal."
+        }
+      ],
+      "expires_at": "2026-11-26T12:37:15Z",
+      "updated_at": "2026-11-25T12:37:15Z"
+    },
+    {
+      "slug": "suprema-corte-iraque-autoriza-tropas-fronteira-petroleo-curdistao",
+      "titulo_curto": "Suprema Corte do Iraque autoriza envio de tropas para a fronteira em meio a disputa de petróleo com o Curdistão",
+      "resumo_pulso": "Segundo informações da televisão estatal iraquiana reproduzidas pelo G1 Mundo, a Suprema Corte do Iraque autorizou o deslocamento de tropas federais para a fronteira nacional. A decisão ocorre em meio a uma contenda entre Bagdá e as autoridades do Curdistão pelo controle operacional e financeiro de campos de exploração petrolífera.",
+      "impacto_pratico": "Eleva as tensões geopolíticas no Oriente Médio e pode influenciar as cotações internacionais do barril de petróleo.",
+      "categoria": "Geopolitica_Relacoes",
+      "paises_envolvidos": [
+        "IQ"
+      ],
+      "urgencia_score": 89,
+      "relevancia_score": 88,
+      "nivel_confianca": "alta",
+      "ttl_horas": 24,
+      "horas_em_destaque": 12,
+      "veiculos_origem": [
+        "G1 Mundo",
+        "Televisão Estatal Iraquiana"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/mundo/noticia/2026/11/25/suprema-corte-do-iraque-autoriza-envio-de-tropas-ao-curdistao-em-meio-a-disputa-por-petroleo.ghtml"
+      ],
+      "palavras_chave": [
+        "Iraque",
+        "Curdistão",
+        "Petróleo",
+        "Suprema Corte",
+        "Tropas"
+      ],
+      "data_publicacao": "2026-11-25T11:45:58Z",
+      "links_internos_relacionados": [],
+      "expires_at": "2026-11-26T12:37:15Z",
+      "updated_at": "2026-11-25T12:37:15Z"
+    },
+    {
+      "slug": "venezuela-revela-divida-publica-de-242-do-pib",
+      "categoria": "Economia_Comercio",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-26T11:29:04Z",
+      "updated_at": "2026-11-25T11:29:04Z",
       "fontes_urls": [
         "https://www.poder360.com.br/poder-internacional/venezuela-revela-divida-publica-de-242-do-pib/"
       ],
+      "resumo_pulso": "Conforme apuração do Poder360 com base em informações divulgadas pelo governo de Delcy Rodríguez, a Venezuela revelou dados macroeconômicos pela primeira vez em anos, indicando que os passivos somavam US$ 237,5 bilhões ao final de 2025.",
+      "titulo_curto": "Governo da Venezuela divulga dados macroeconômicos e aponta dívida pública de 242% do PIB",
       "palavras_chave": [
         "Venezuela",
         "dívida pública",
         "PIB",
         "economia"
       ],
+      "urgencia_score": 88,
       "data_publicacao": "2026-11-25T11:23:32Z",
-      "links_internos_relacionados": [],
-      "expires_at": "2026-11-26T11:29:04Z",
-      "updated_at": "2026-11-25T11:29:04Z"
+      "impacto_pratico": "A revelação dimensiona o tamanho da crise econômica venezuelana e repercute nas discussões sobre sanções e reestruturação financeira na América Latina.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Poder360"
+      ],
+      "relevancia_score": 89,
+      "horas_em_destaque": 8,
+      "paises_envolvidos": [
+        "VE"
+      ],
+      "links_internos_relacionados": []
     },
     {
       "slug": "dow-jones-futuro-cai-inflacao-eua-tarifas",
@@ -1004,26 +1168,15 @@
     },
     {
       "slug": "ataque-drones-refinarias-russia-samara",
-      "titulo_curto": "Forças ucranianas atingem refinarias na região de Samara em novos ataques de drones",
-      "resumo_pulso": "Segundo relatórios do Estado-Maior da Ucrânia e veículos internacionais, forças ucranianas realizaram ataques coordenados contra duas refinarias de petróleo na região russa de Samara. A ofensiva intensifica a pressão sobre a infraestrutura energética de Moscou.",
-      "impacto_pratico": "A escalada nos ataques a refinarias pode gerar volatilidade adicional nos mercados globais de petróleo e derivados.",
       "categoria": "Geopolitica_Relacoes",
-      "paises_envolvidos": [
-        "UA",
-        "RU"
-      ],
-      "urgencia_score": 93,
-      "relevancia_score": 91,
-      "nivel_confianca": "alta",
       "ttl_horas": 12,
-      "horas_em_destaque": 6,
-      "veiculos_origem": [
-        "Ukrinform",
-        "Geopolitical Futures"
-      ],
+      "expires_at": "2026-11-26T01:56:41Z",
+      "updated_at": "2026-11-25T11:29:04Z",
       "fontes_urls": [
         "https://www.ukrinform.net/rubric-ato/4188460-ukrainian-forces-strike-two-russian-oil-refineries.html"
       ],
+      "resumo_pulso": "Segundo relatórios do Estado-Maior da Ucrânia e veículos internacionais, forças ucranianas realizaram ataques coordenados contra duas refinarias de petróleo na região russa de Samara. A ofensiva intensifica a pressão sobre a infraestrutura energética de Moscou.",
+      "titulo_curto": "Forças ucranianas atingem refinarias na região de Samara em novos ataques de drones",
       "palavras_chave": [
         "Ucrânia",
         "Rússia",
@@ -1031,10 +1184,21 @@
         "drones",
         "guerra"
       ],
+      "urgencia_score": 93,
       "data_publicacao": "2026-11-25T07:38:00Z",
-      "links_internos_relacionados": [],
-      "expires_at": "2026-11-26T01:56:41Z",
-      "updated_at": "2026-11-25T11:29:04Z"
+      "impacto_pratico": "A escalada nos ataques a refinarias pode gerar volatilidade adicional nos mercados globais de petróleo e derivados.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Ukrinform",
+        "Geopolitical Futures"
+      ],
+      "relevancia_score": 91,
+      "horas_em_destaque": 6,
+      "paises_envolvidos": [
+        "UA",
+        "RU"
+      ],
+      "links_internos_relacionados": []
     },
     {
       "slug": "exercito-eua-explosao-material-toxico-iowa",
@@ -1448,144 +1612,6 @@
           "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-sancao-internacional",
           "motivo_conexao": "Ajuda a compreender o impacto de medidas restritivas e suspensões diplomáticas e militares entre nações.",
           "titulo_existente": "O que é uma sanção internacional?"
-        }
-      ]
-    },
-    {
-      "slug": "apagao-atinge-cidades-colombia-ataque-usina",
-      "categoria": "Sociedade_Cultura",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-26T01:29:18Z",
-      "updated_at": "2026-11-25T02:11:11Z",
-      "fontes_urls": [
-        "https://g1.globo.com/mundo/noticia/2026/11/24/apagao-atinge-cidades-da-colombia-apos-ataque-com-explosivos-a-usina.ghtml"
-      ],
-      "resumo_pulso": "Conforme apuração do G1 Mundo, um atentado com bombas contra uma usina elétrica gerou um apagão de grandes proporções no sudoeste colombiano, afetando mais de 2 milhões de pessoas nas regiões de Nariño, Putumayo, Cauca e Huila.",
-      "titulo_curto": "Ataque com explosivos a usina elétrica provoca apagão no sudoeste da Colômbia",
-      "palavras_chave": [
-        "Colômbia",
-        "Apagão",
-        "Atentado",
-        "Infraestrutura"
-      ],
-      "urgencia_score": 88,
-      "data_publicacao": "2026-11-25T00:41:45Z",
-      "impacto_pratico": "Interrupção severa de serviços essenciais e mobilização de autoridades locais para restabelecimento da rede elétrica.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "G1 Mundo"
-      ],
-      "relevancia_score": 87,
-      "horas_em_destaque": 10,
-      "paises_envolvidos": [
-        "CO"
-      ],
-      "links_internos_relacionados": []
-    },
-    {
-      "slug": "mega-sena-acumula-premio-75-milhoes",
-      "categoria": "Sociedade_Cultura",
-      "ttl_horas": 12,
-      "expires_at": "2026-11-25T13:54:24Z",
-      "updated_at": "2026-11-25T02:52:34Z",
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/geral/noticia/2026-11/mega-sena-acumula-para-r-75-milhoes-confira-os-numeros-sorteados",
-        "https://g1.globo.com/loterias/mega-sena/noticia/2026/11/24/mega-sena-concurso-3090-confira-os-numeros-sorteados.ghtml"
-      ],
-      "resumo_pulso": "Segundo dados divulgados pela Agência Brasil e pelo G1 Economia, nenhuma aposta acertou as seis dezenas do concurso 3.090 da Mega-Sena. O prêmio principal acumulou, estimando-se R$ 75 milhões para a próxima extração.",
-      "titulo_curto": "Mega-Sena acumula e prêmio estimado vai a R$ 75 milhões para o próximo sorteio",
-      "palavras_chave": [
-        "Mega-Sena",
-        "Loterias",
-        "Prêmio",
-        "Caixa"
-      ],
-      "urgencia_score": 80,
-      "data_publicacao": "2026-11-25T00:32:00Z",
-      "impacto_pratico": "Movimenta apostas lotéricas em todo o país com a elevação do valor do prêmio principal.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Agência Brasil (EBC)",
-        "G1 Economia"
-      ],
-      "relevancia_score": 75,
-      "horas_em_destaque": 6,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "links_internos_relacionados": []
-    },
-    {
-      "slug": "senado-aprova-plano-nacional-cultura-dez-anos",
-      "categoria": "Sociedade_Cultura",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-26T00:16:31Z",
-      "updated_at": "2026-11-25T02:52:34Z",
-      "fontes_urls": [
-        "https://www12.senado.leg.br/noticias/materias/2026/11/24/senado-aprova-plano-nacional-de-cultura-para-os-proximos-10-anos"
-      ],
-      "resumo_pulso": "Conforme apuração da Agência Senado, o Plenário aprovou o PL 5.894/2025 que institui o novo Plano Nacional de Cultura (PNC). O texto, que segue para sanção presidencial, estabelece princípios, metas e descentralização de recursos para orientar as políticas culturais do país nos próximos dez anos.",
-      "titulo_curto": "Senado aprova novo Plano Nacional de Cultura com diretrizes para a próxima década",
-      "palavras_chave": [
-        "Senado",
-        "Plano Nacional de Cultura",
-        "Cultura",
-        "Legislação"
-      ],
-      "urgencia_score": 86,
-      "data_publicacao": "2026-11-24T23:56:23Z",
-      "impacto_pratico": "Direciona o planejamento de políticas públicas e repasses de recursos para o setor cultural em âmbito nacional.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Agência Senado"
-      ],
-      "relevancia_score": 89,
-      "horas_em_destaque": 12,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
-          "motivo_conexao": "Relaciona a aprovação de projetos estratégicos no Congresso Nacional.",
-          "titulo_existente": "Política no Brasil"
-        }
-      ]
-    },
-    {
-      "slug": "camara-votacao-regulacao-big-techs",
-      "categoria": "Economia_Comercio",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-26T00:16:31Z",
-      "updated_at": "2026-11-25T00:16:31Z",
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/projeto-de-regulacao-das-big-techs-sera-votado-na-proxima-semana"
-      ],
-      "resumo_pulso": "Segundo informações divulgadas pela Agência Brasil, o Projeto de Lei 4675/2025, conhecido como PL dos Mercados Digitais, entrará na pauta de votações da Câmara dos Deputados na próxima semana. O calendário foi confirmado pelo relator Aliel Machado em articulação com a presidência da Casa.",
-      "titulo_curto": "Câmara dos Deputados define votação do projeto de regulação das big techs para próxima semana",
-      "palavras_chave": [
-        "Câmara dos Deputados",
-        "Big Techs",
-        "Mercados Digitais",
-        "Regulação"
-      ],
-      "urgencia_score": 87,
-      "data_publicacao": "2026-11-24T23:23:00Z",
-      "impacto_pratico": "Pode alterar o modelo de negócios e as regras de atuação de grandes empresas de tecnologia no mercado nacional.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Agência Brasil (EBC)"
-      ],
-      "relevancia_score": 90,
-      "horas_em_destaque": 12,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
-          "motivo_conexao": "Acompanha a articulação de pautas legislativas prioritárias no Congresso Nacional.",
-          "titulo_existente": "Política no Brasil"
         }
       ]
     }
