@@ -2,80 +2,155 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-25T03:57:23Z",
-  "batch_id": "20261125-0357",
+  "updatedAt": "2026-11-25T04:24:40Z",
+  "batch_id": "20261125-0424",
   "temas_ativos": [
     {
-      "slug": "justica-derruba-suspensao-regras-vale-refeicao",
-      "titulo_tema": "Justiça acata recurso e restabelece novas regras e teto de taxas para vale-refeição e alimentação",
-      "titulo_curto": "Justiça acata recurso e restabelece novas regras e teto de taxas para vale-refeição e alimentação",
+      "slug": "huawei-condenada-eua-sancoes-ira",
+      "titulo_tema": "Huawei é condenada em tribunal dos EUA por violações de sanções ao Irã",
       "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Economia",
-      "categoria": "Economia_Comercio",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
       "categorias_cruzadas": [
         "Economia",
+        "Politica"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 92,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-27T04:24:40Z",
+      "palavras_chave_busca": [
+        "huawei",
+        "eua",
+        "irã",
+        "sanções",
+        "justiça americana",
+        "tecnologia",
+        "segurança nacional"
+      ],
+      "gatilho_vitrine": "Exibir análises sobre a guerra tecnológica e o impacto das sanções secundárias dos EUA contra empresas globais.",
+      "sintese_nerd": "Um júri federal americano condenou a gigante chinesa Huawei por burlar sanções internacionais e lavar dinheiro ligado ao Irã, intensificando a disputa tecnológica e comercial entre Washington e Pequim. O desdobramento jurídico reforça o risco regulatório para multinacionais que operam em mercados cruzados por barreiras geopolíticas.",
+      "data_publicacao": "2026-11-25T04:24:40Z",
+      "updated_at": "2026-11-25T04:24:40Z"
+    },
+    {
+      "slug": "reforma-tributaria-escala-6x1-inflacao-brasil",
+      "titulo_tema": "Reforma tributária e debate sobre escala 6x1 acendem alerta para inflação em 2027",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Politica",
         "Resumo_Ultimas"
       ],
       "rota_editoria": "/economia",
-      "relevancia_score": 90,
-      "urgencia_score": 88,
+      "relevancia_score": 88,
+      "ttl_horas": 72,
+      "expires_at": "2026-11-28T04:24:40Z",
+      "palavras_chave_busca": [
+        "reforma tributária",
+        "escala 6x1",
+        "inflação 2027",
+        "banco central",
+        "equipe econômica",
+        "custo de vida",
+        "pib"
+      ],
+      "gatilho_vitrine": "Destacar reportagens sobre os desafios macroeconômicos e fiscais monitorados pelo Banco Central para o próximo biênio.",
+      "sintese_nerd": "A transição para o novo imposto sobre o consumo da reforma tributária e a possível flexibilização da escala de trabalho 6x1 geram pressões altistas sobre custos e serviços projetadas para o início de 2027. A equipe econômica e o Banco Central monitoram de perto os efeitos colaterais dessas mudanças estruturais na inflação interna.",
+      "data_publicacao": "2026-11-25T04:24:40Z",
+      "updated_at": "2026-11-25T04:24:40Z"
+    },
+    {
+      "slug": "inquerito-fake-news-stf-impactos-democracia",
+      "titulo_tema": "Encerramento do inquérito das fake news no STF redesenha papel da Suprema Corte",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Politica",
+      "categorias_cruzadas": [
+        "Eleicoes",
+        "Cultura"
+      ],
+      "rota_editoria": "/politica",
+      "relevancia_score": 85,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-27T04:24:40Z",
+      "palavras_chave_busca": [
+        "stf",
+        "inquérito das fake news",
+        "alexandre de moraes",
+        "edson fachin",
+        "supremo tribunal federal",
+        "democracia",
+        "poderes da república"
+      ],
+      "gatilho_vitrine": "Reunir artigos de opinião e análises institucionais sobre o ativismo judicial e a segurança jurídica no Brasil.",
+      "sintese_nerd": "Após mais de sete anos de tramitação, o encerramento do inquérito das fake news pelo Supremo Tribunal Federal reabre o debate jurídico sobre os limites da atuação da Corte na proteção institucional. Especialistas divergem sobre o equilíbrio entre a defesa da democracia e a erosão dos procedimentos processuais tradicionais.",
+      "data_publicacao": "2026-11-25T04:24:40Z",
+      "updated_at": "2026-11-25T04:24:40Z"
+    },
+    {
+      "slug": "justica-derruba-suspensao-regras-vale-refeicao",
+      "status": "novo",
+      "categoria": "Economia_Comercio",
       "ttl_horas": 24,
       "expires_at": "2026-11-26T03:57:23Z",
-      "palavras_chave_busca": [
-        "vale-refeição",
-        "vale-alimentação",
-        "justiça",
-        "economia",
-        "trabalho"
-      ],
-      "palavras_chave": [
-        "vale-refeição",
-        "vale-alimentação",
-        "justiça",
-        "economia",
-        "trabalho"
-      ],
-      "gatilho_vitrine": "Segundo apuração do G1 Economia, um juiz brasileiro acatou recurso do governo e restabeleceu as diretrizes para os vales-refeição e alimentação em todo o país. A decisão judicial reativa o teto para as taxas cobradas pelas empresas operadoras nas transações efetuadas com os benefícios.",
-      "resumo_pulso": "Segundo apuração do G1 Economia, um juiz brasileiro acatou recurso do governo e restabeleceu as diretrizes para os vales-refeição e alimentação em todo o país. A decisão judicial reativa o teto para as taxas cobradas pelas empresas operadoras nas transações efetuadas com os benefícios.",
-      "sintese_nerd": "Trabalhadores e estabelecimentos comerciais podem observar mudanças nas taxas praticadas e maior concorrência entre operadoras de benefícios.",
-      "impacto_pratico": "Trabalhadores e estabelecimentos comerciais podem observar mudanças nas taxas praticadas e maior concorrência entre operadoras de benefícios.",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "veiculos_origem": [
-        "G1 Economia"
-      ],
+      "updated_at": "2026-11-25T03:57:23Z",
       "fontes_urls": [
         "https://g1.globo.com/df/distrito-federal/noticia/2026/11/25/justica-derruba-suspensao-e-restabelece-regras-para-vale-refeicao-e-alimentacao-entenda.ghtml"
       ],
+      "titulo_tema": "Justiça acata recurso e restabelece novas regras e teto de taxas para vale-refeição e alimentação",
+      "resumo_pulso": "Segundo apuração do G1 Economia, um juiz brasileiro acatou recurso do governo e restabeleceu as diretrizes para os vales-refeição e alimentação em todo o país. A decisão judicial reativa o teto para as taxas cobradas pelas empresas operadoras nas transações efetuadas com os benefícios.",
+      "sintese_nerd": "Trabalhadores e estabelecimentos comerciais podem observar mudanças nas taxas praticadas e maior concorrência entre operadoras de benefícios.",
+      "titulo_curto": "Justiça acata recurso e restabelece novas regras e teto de taxas para vale-refeição e alimentação",
+      "rota_editoria": "/economia",
+      "palavras_chave": [
+        "vale-refeição",
+        "vale-alimentação",
+        "justiça",
+        "economia",
+        "trabalho"
+      ],
+      "urgencia_score": 88,
       "data_publicacao": "2026-11-25T03:17:42Z",
-      "updated_at": "2026-11-25T03:57:23Z"
-    },
-    {
-      "slug": "governo-reduz-contencao-despesas-orcamento-12-bilhoes",
-      "titulo_tema": "Governo Lula corre contra o tempo para aprovar pacote com oito projetos econômicos no Congresso até dezembro",
-      "titulo_curto": "Governo Lula corre contra o tempo para aprovar pacote com oito projetos econômicos no Congresso até dezembro",
-      "status": "novo",
+      "gatilho_vitrine": "Segundo apuração do G1 Economia, um juiz brasileiro acatou recurso do governo e restabeleceu as diretrizes para os vales-refeição e alimentação em todo o país. A decisão judicial reativa o teto para as taxas cobradas pelas empresas operadoras nas transações efetuadas com os benefícios.",
+      "impacto_pratico": "Trabalhadores e estabelecimentos comerciais podem observar mudanças nas taxas praticadas e maior concorrência entre operadoras de benefícios.",
       "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "G1 Economia"
+      ],
+      "relevancia_score": 90,
+      "paises_envolvidos": [
+        "BR"
+      ],
       "categoria_primaria": "Economia",
-      "categoria": "Economia_Comercio",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
       ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 93,
-      "urgencia_score": 90,
+      "palavras_chave_busca": [
+        "vale-refeição",
+        "vale-alimentação",
+        "justiça",
+        "economia",
+        "trabalho"
+      ]
+    },
+    {
+      "slug": "governo-reduz-contencao-despesas-orcamento-12-bilhoes",
+      "status": "novo",
+      "categoria": "Economia_Comercio",
       "ttl_horas": 24,
       "expires_at": "2026-11-26T02:52:34Z",
-      "palavras_chave_busca": [
-        "congresso nacional",
-        "ajuste fiscal",
-        "economia",
-        "governo federal",
-        "orçamento"
+      "updated_at": "2026-11-25T03:57:23Z",
+      "fontes_urls": [
+        "https://g1.globo.com/politica/noticia/2026/11/25/governo-lula-tem-ao-menos-oito-projetos-economicos-para-aprovar-no-congresso-ate-o-fim-de-2026.ghtml"
       ],
+      "titulo_tema": "Governo Lula corre contra o tempo para aprovar pacote com oito projetos econômicos no Congresso até dezembro",
+      "resumo_pulso": "Segundo apuração do G1 Política, a equipe econômica do governo federal articula a aprovação de pelo menos oito projetos econômicos no Congresso Nacional até o início do recesso parlamentar, em 23 de dezembro. A movimentação ocorre após a sanção das medidas de ajuste fiscal e visa consolidar a transição das contas públicas para o próximo ano.",
+      "sintese_nerd": "Aceleração de pautas fiscais pode gerar oscilações de curto prazo no câmbio e nas expectativas do mercado financeiro para a inflação.",
+      "titulo_curto": "Governo Lula corre contra o tempo para aprovar pacote com oito projetos econômicos no Congresso até dezembro",
+      "rota_editoria": "/economia",
       "palavras_chave": [
         "congresso nacional",
         "ajuste fiscal",
@@ -83,22 +158,31 @@
         "governo federal",
         "orçamento"
       ],
+      "urgencia_score": 90,
+      "data_publicacao": "2026-11-25T02:38:46Z",
       "gatilho_vitrine": "Segundo apuração do G1 Política, a equipe econômica do governo federal articula a aprovação de pelo menos oito projetos econômicos no Congresso Nacional até o início do recesso parlamentar, em 23 de dezembro. A movimentação ocorre após a sanção das medidas de ajuste fiscal e visa consolidar a transição das contas públicas para o próximo ano.",
-      "resumo_pulso": "Segundo apuração do G1 Política, a equipe econômica do governo federal articula a aprovação de pelo menos oito projetos econômicos no Congresso Nacional até o início do recesso parlamentar, em 23 de dezembro. A movimentação ocorre após a sanção das medidas de ajuste fiscal e visa consolidar a transição das contas públicas para o próximo ano.",
-      "sintese_nerd": "Aceleração de pautas fiscais pode gerar oscilações de curto prazo no câmbio e nas expectativas do mercado financeiro para a inflação.",
       "impacto_pratico": "Aceleração de pautas fiscais pode gerar oscilações de curto prazo no câmbio e nas expectativas do mercado financeiro para a inflação.",
-      "paises_envolvidos": [
-        "BR"
-      ],
+      "origem_pipeline": "pulso",
       "veiculos_origem": [
         "G1 Política",
         "Agência Brasil (EBC)"
       ],
-      "fontes_urls": [
-        "https://g1.globo.com/politica/noticia/2026/11/25/governo-lula-tem-ao-menos-oito-projetos-economicos-para-aprovar-no-congresso-ate-o-fim-de-2026.ghtml"
+      "relevancia_score": 93,
+      "paises_envolvidos": [
+        "BR"
       ],
-      "data_publicacao": "2026-11-25T02:38:46Z",
-      "updated_at": "2026-11-25T03:57:23Z"
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "congresso nacional",
+        "ajuste fiscal",
+        "economia",
+        "governo federal",
+        "orçamento"
+      ]
     },
     {
       "slug": "assessor-trump-brasil-deixa-cargo-departamento-estado",
@@ -146,86 +230,6 @@
         "darren beattie",
         "diplomacia",
         "brasil"
-      ]
-    },
-    {
-      "slug": "ajuste-fiscal-sancionado-lula-impacto-economia-pib",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-27T02:00:47Z",
-      "updated_at": "2026-11-25T02:00:47Z",
-      "titulo_tema": "Sancionamento de Ajuste Fiscal e Projeções para a Economia",
-      "sintese_nerd": "O presidente Lula sancionou pacote de ajuste fiscal com potencial de economia de R$ 56 bilhões para 2027, em meio à revisão de projeções macroeconômicas pelo Ministério da Fazenda. A medida busca conter o avanço da dívida pública e estabilizar as expectativas de inflação e câmbio no mercado interno.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-25T02:00:47Z",
-      "gatilho_vitrine": "Analise o impacto do pacote de ajuste fiscal sancionado pelo governo nas contas públicas e no câmbio brasileiro.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 95,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Politica",
-        "Geopolitica_Radar"
-      ],
-      "palavras_chave_busca": [
-        "ajuste fiscal",
-        "governo lula",
-        "economia brasil",
-        "pib",
-        "inflação",
-        "ministério da fazenda"
-      ]
-    },
-    {
-      "slug": "inquerito-fake-news-supremo-stf-moraes",
-      "status": "novo",
-      "ttl_horas": 72,
-      "expires_at": "2026-11-28T02:00:47Z",
-      "updated_at": "2026-11-25T02:00:47Z",
-      "titulo_tema": "Encerramento do Inquérito das Fake News no STF",
-      "sintese_nerd": "O encerramento do inquérito das fake news pelo presidente do STF, Edson Fachin, marca o fim de um dos períodos mais polarizados e decisivos da atuação recente do Judiciário brasileiro. A condução do procedimento gerou intensos debates sobre os limites institucionais na proteção da democracia e da Constituição.",
-      "rota_editoria": "/politica",
-      "data_publicacao": "2026-11-25T02:00:47Z",
-      "gatilho_vitrine": "Destaque os desdobramentos institucionais do encerramento do inquérito das fake news após mais de sete anos de tramitação no STF.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 90,
-      "categoria_primaria": "Politica",
-      "categorias_cruzadas": [
-        "Eleicoes",
-        "Cultura"
-      ],
-      "palavras_chave_busca": [
-        "stf",
-        "inquérito das fake news",
-        "edson fachin",
-        "supremo tribunal federal",
-        "democracia",
-        "instituições"
-      ]
-    },
-    {
-      "slug": "argentina-recessao-tecnica-pib-setembro",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-27T02:00:47Z",
-      "updated_at": "2026-11-25T02:00:47Z",
-      "titulo_tema": "Argentina Entra em Recessão Técnica com Queda no PIB",
-      "sintese_nerd": "A atividade econômica da Argentina registrou queda de 1,2% em setembro na comparação anual, consolidando o quadro de recessão técnica apontado pelo Indec. O cenário afeta diretamente as trocas comerciais com o Brasil e a dinâmica econômica do Cone Sul.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-25T02:00:47Z",
-      "gatilho_vitrine": "Monitore os dados do Indec que confirmam a entrada da economia argentina em recessão técnica no terceiro trimestre.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 85,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Geopolitica_Radar"
-      ],
-      "palavras_chave_busca": [
-        "argentina",
-        "recessão técnica",
-        "pib argentina",
-        "indec",
-        "economia sul-americana",
-        "comércio exterior"
       ]
     },
     {
@@ -879,27 +883,104 @@
       ]
     }
   ],
+  "temas_curadoria": [
+    {
+      "slug": "huawei-condenada-eua-sancoes-ira",
+      "titulo_tema": "Huawei é condenada em tribunal dos EUA por violações de sanções ao Irã",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Politica"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 92,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-27T04:24:40Z",
+      "palavras_chave_busca": [
+        "huawei",
+        "eua",
+        "irã",
+        "sanções",
+        "justiça americana",
+        "tecnologia",
+        "segurança nacional"
+      ],
+      "gatilho_vitrine": "Exibir análises sobre a guerra tecnológica e o impacto das sanções secundárias dos EUA contra empresas globais.",
+      "sintese_nerd": "Um júri federal americano condenou a gigante chinesa Huawei por burlar sanções internacionais e lavar dinheiro ligado ao Irã, intensificando a disputa tecnológica e comercial entre Washington e Pequim. O desdobramento jurídico reforça o risco regulatório para multinacionais que operam em mercados cruzados por barreiras geopolíticas.",
+      "data_publicacao": "2026-11-25T04:24:40Z",
+      "updated_at": "2026-11-25T04:24:40Z"
+    },
+    {
+      "slug": "reforma-tributaria-escala-6x1-inflacao-brasil",
+      "titulo_tema": "Reforma tributária e debate sobre escala 6x1 acendem alerta para inflação em 2027",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Politica",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 88,
+      "ttl_horas": 72,
+      "expires_at": "2026-11-28T04:24:40Z",
+      "palavras_chave_busca": [
+        "reforma tributária",
+        "escala 6x1",
+        "inflação 2027",
+        "banco central",
+        "equipe econômica",
+        "custo de vida",
+        "pib"
+      ],
+      "gatilho_vitrine": "Destacar reportagens sobre os desafios macroeconômicos e fiscais monitorados pelo Banco Central para o próximo biênio.",
+      "sintese_nerd": "A transição para o novo imposto sobre o consumo da reforma tributária e a possível flexibilização da escala de trabalho 6x1 geram pressões altistas sobre custos e serviços projetadas para o início de 2027. A equipe econômica e o Banco Central monitoram de perto os efeitos colaterais dessas mudanças estruturais na inflação interna.",
+      "data_publicacao": "2026-11-25T04:24:40Z",
+      "updated_at": "2026-11-25T04:24:40Z"
+    },
+    {
+      "slug": "inquerito-fake-news-stf-impactos-democracia",
+      "titulo_tema": "Encerramento do inquérito das fake news no STF redesenha papel da Suprema Corte",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Politica",
+      "categorias_cruzadas": [
+        "Eleicoes",
+        "Cultura"
+      ],
+      "rota_editoria": "/politica",
+      "relevancia_score": 85,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-27T04:24:40Z",
+      "palavras_chave_busca": [
+        "stf",
+        "inquérito das fake news",
+        "alexandre de moraes",
+        "edson fachin",
+        "supremo tribunal federal",
+        "democracia",
+        "poderes da república"
+      ],
+      "gatilho_vitrine": "Reunir artigos de opinião e análises institucionais sobre o ativismo judicial e a segurança jurídica no Brasil.",
+      "sintese_nerd": "Após mais de sete anos de tramitação, o encerramento do inquérito das fake news pelo Supremo Tribunal Federal reabre o debate jurídico sobre os limites da atuação da Corte na proteção institucional. Especialistas divergem sobre o equilíbrio entre a defesa da democracia e a erosão dos procedimentos processuais tradicionais.",
+      "data_publicacao": "2026-11-25T04:24:40Z",
+      "updated_at": "2026-11-25T04:24:40Z"
+    }
+  ],
   "noticias_quentes": [
     {
       "slug": "justica-derruba-suspensao-regras-vale-refeicao",
-      "titulo_curto": "Justiça acata recurso e restabelece novas regras e teto de taxas para vale-refeição e alimentação",
-      "resumo_pulso": "Segundo apuração do G1 Economia, um juiz brasileiro acatou recurso do governo e restabeleceu as diretrizes para os vales-refeição e alimentação em todo o país. A decisão judicial reativa o teto para as taxas cobradas pelas empresas operadoras nas transações efetuadas com os benefícios.",
-      "impacto_pratico": "Trabalhadores e estabelecimentos comerciais podem observar mudanças nas taxas praticadas e maior concorrência entre operadoras de benefícios.",
       "categoria": "Economia_Comercio",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "urgencia_score": 88,
-      "relevancia_score": 90,
-      "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 12,
-      "veiculos_origem": [
-        "G1 Economia"
-      ],
+      "expires_at": "2026-11-26T03:57:23Z",
+      "updated_at": "2026-11-25T03:57:23Z",
       "fontes_urls": [
         "https://g1.globo.com/df/distrito-federal/noticia/2026/11/25/justica-derruba-suspensao-e-restabelece-regras-para-vale-refeicao-e-alimentacao-entenda.ghtml"
       ],
+      "resumo_pulso": "Segundo apuração do G1 Economia, um juiz brasileiro acatou recurso do governo e restabeleceu as diretrizes para os vales-refeição e alimentação em todo o país. A decisão judicial reativa o teto para as taxas cobradas pelas empresas operadoras nas transações efetuadas com os benefícios.",
+      "titulo_curto": "Justiça acata recurso e restabelece novas regras e teto de taxas para vale-refeição e alimentação",
       "palavras_chave": [
         "Vale-Refeição",
         "Vale-Alimentação",
@@ -907,38 +988,37 @@
         "Economia",
         "Trabalho"
       ],
+      "urgencia_score": 88,
       "data_publicacao": "2026-11-25T03:17:42Z",
-      "links_internos_relacionados": [
-        {
-          "titulo_existente": "Economia no Brasil",
-          "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
-          "motivo_conexao": "Analisa o impacto das decisões regulatórias e trabalhistas na renda das famílias."
-        }
+      "impacto_pratico": "Trabalhadores e estabelecimentos comerciais podem observar mudanças nas taxas praticadas e maior concorrência entre operadoras de benefícios.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "G1 Economia"
       ],
-      "expires_at": "2026-11-26T03:57:23Z",
-      "updated_at": "2026-11-25T03:57:23Z"
-    },
-    {
-      "slug": "governo-reduz-contencao-despesas-orcamento-12-bilhoes",
-      "titulo_curto": "Governo Lula corre contra o tempo para aprovar pacote com oito projetos econômicos no Congresso até dezembro",
-      "resumo_pulso": "Segundo apuração do G1 Política, a equipe econômica do governo federal articula a aprovação de pelo menos oito projetos econômicos no Congresso Nacional até o início do recesso parlamentar, em 23 de dezembro. A movimentação ocorre após a sanção das medidas de ajuste fiscal e visa consolidar a transição das contas públicas para o próximo ano.",
-      "impacto_pratico": "Aceleração de pautas fiscais pode gerar oscilações de curto prazo no câmbio e nas expectativas do mercado financeiro para a inflação.",
-      "categoria": "Economia_Comercio",
+      "relevancia_score": 90,
+      "horas_em_destaque": 12,
       "paises_envolvidos": [
         "BR"
       ],
-      "urgencia_score": 90,
-      "relevancia_score": 93,
-      "nivel_confianca": "alta",
+      "links_internos_relacionados": [
+        {
+          "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
+          "motivo_conexao": "Analisa o impacto das decisões regulatórias e trabalhistas na renda das famílias.",
+          "titulo_existente": "Economia no Brasil"
+        }
+      ]
+    },
+    {
+      "slug": "governo-reduz-contencao-despesas-orcamento-12-bilhoes",
+      "categoria": "Economia_Comercio",
       "ttl_horas": 24,
-      "horas_em_destaque": 12,
-      "veiculos_origem": [
-        "G1 Política",
-        "Agência Brasil (EBC)"
-      ],
+      "expires_at": "2026-11-26T02:52:34Z",
+      "updated_at": "2026-11-25T03:57:23Z",
       "fontes_urls": [
         "https://g1.globo.com/politica/noticia/2026/11/25/governo-lula-tem-ao-menos-oito-projetos-economicos-para-aprovar-no-congresso-ate-o-fim-de-2026.ghtml"
       ],
+      "resumo_pulso": "Segundo apuração do G1 Política, a equipe econômica do governo federal articula a aprovação de pelo menos oito projetos econômicos no Congresso Nacional até o início do recesso parlamentar, em 23 de dezembro. A movimentação ocorre após a sanção das medidas de ajuste fiscal e visa consolidar a transição das contas públicas para o próximo ano.",
+      "titulo_curto": "Governo Lula corre contra o tempo para aprovar pacote com oito projetos econômicos no Congresso até dezembro",
       "palavras_chave": [
         "Congresso Nacional",
         "Ajuste Fiscal",
@@ -946,21 +1026,31 @@
         "Governo Federal",
         "Orçamento"
       ],
+      "urgencia_score": 90,
       "data_publicacao": "2026-11-25T02:38:46Z",
+      "impacto_pratico": "Aceleração de pautas fiscais pode gerar oscilações de curto prazo no câmbio e nas expectativas do mercado financeiro para a inflação.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "G1 Política",
+        "Agência Brasil (EBC)"
+      ],
+      "relevancia_score": 93,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "BR"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "O que é o Orçamento?",
           "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-o-orcamento",
-          "motivo_conexao": "Explica o planejamento de gastos públicos e a distribuição de recursos entre os Poderes."
+          "motivo_conexao": "Explica o planejamento de gastos públicos e a distribuição de recursos entre os Poderes.",
+          "titulo_existente": "O que é o Orçamento?"
         },
         {
-          "titulo_existente": "Economia no Brasil",
           "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
-          "motivo_conexao": "Contextualiza o impacto das contas públicas e da inflação no cenário nacional."
+          "motivo_conexao": "Contextualiza o impacto das contas públicas e da inflação no cenário nacional.",
+          "titulo_existente": "Economia no Brasil"
         }
-      ],
-      "expires_at": "2026-11-26T02:52:34Z",
-      "updated_at": "2026-11-25T03:57:23Z"
+      ]
     },
     {
       "slug": "assessor-trump-brasil-deixa-cargo-departamento-estado",
@@ -1626,115 +1716,6 @@
           "motivo_conexao": "Acompanha os desdobramentos do ajuste fiscal e do mercado de ativos no Brasil.",
           "titulo_existente": "Economia no Brasil"
         }
-      ]
-    }
-  ],
-  "temas_curadoria": [
-    {
-      "slug": "ajuste-fiscal-sancionado-lula-impacto-economia-pib",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-27T02:00:47Z",
-      "updated_at": "2026-11-25T02:00:47Z",
-      "titulo_tema": "Sancionamento de Ajuste Fiscal e Projeções para a Economia",
-      "sintese_nerd": "O presidente Lula sancionou pacote de ajuste fiscal com potencial de economia de R$ 56 bilhões para 2027, em meio à revisão de projeções macroeconômicas pelo Ministério da Fazenda. A medida busca conter o avanço da dívida pública e estabilizar as expectativas de inflação e câmbio no mercado interno.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-25T02:00:47Z",
-      "gatilho_vitrine": "Analise o impacto do pacote de ajuste fiscal sancionado pelo governo nas contas públicas e no câmbio brasileiro.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 95,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Politica",
-        "Geopolitica_Radar"
-      ],
-      "palavras_chave_busca": [
-        "ajuste fiscal",
-        "governo lula",
-        "economia brasil",
-        "pib",
-        "inflação",
-        "ministério da fazenda"
-      ]
-    },
-    {
-      "slug": "inquerito-fake-news-supremo-stf-moraes",
-      "status": "novo",
-      "ttl_horas": 72,
-      "expires_at": "2026-11-28T02:00:47Z",
-      "updated_at": "2026-11-25T02:00:47Z",
-      "titulo_tema": "Encerramento do Inquérito das Fake News no STF",
-      "sintese_nerd": "O encerramento do inquérito das fake news pelo presidente do STF, Edson Fachin, marca o fim de um dos períodos mais polarizados e decisivos da atuação recente do Judiciário brasileiro. A condução do procedimento gerou intensos debates sobre os limites institucionais na proteção da democracia e da Constituição.",
-      "rota_editoria": "/politica",
-      "data_publicacao": "2026-11-25T02:00:47Z",
-      "gatilho_vitrine": "Destaque os desdobramentos institucionais do encerramento do inquérito das fake news após mais de sete anos de tramitação no STF.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 90,
-      "categoria_primaria": "Politica",
-      "categorias_cruzadas": [
-        "Eleicoes",
-        "Cultura"
-      ],
-      "palavras_chave_busca": [
-        "stf",
-        "inquérito das fake news",
-        "edson fachin",
-        "supremo tribunal federal",
-        "democracia",
-        "instituições"
-      ]
-    },
-    {
-      "slug": "abin-mapeia-faccoes-criminosas-brasil",
-      "status": "novo",
-      "ttl_horas": 36,
-      "expires_at": "2026-11-26T14:00:47Z",
-      "updated_at": "2026-11-25T02:00:47Z",
-      "titulo_tema": "Mapeamento da ABIN Identifica 31 Facções Criminosas no País",
-      "sintese_nerd": "A Agência Brasileira de Inteligência identificou a atuação de 31 facções e dezenas de células estaduais, evidenciando a capilaridade e o desafio persistente do crime organizado para a segurança pública nacional. O avanço dessas estruturas exige respostas coordenadas entre os governos federal e estaduais.",
-      "rota_editoria": "/politica",
-      "data_publicacao": "2026-11-25T02:00:47Z",
-      "gatilho_vitrine": "Explore o relatório da ABIN que detalha a expansão de grandes organizações criminosas e de dezenas de células estaduais pelo Brasil.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 88,
-      "categoria_primaria": "Politica",
-      "categorias_cruzadas": [
-        "Resumo_Ultimas",
-        "Economia"
-      ],
-      "palavras_chave_busca": [
-        "abin",
-        "pcc",
-        "cv",
-        "segurança pública",
-        "facções criminosas",
-        "inteligência"
-      ]
-    },
-    {
-      "slug": "argentina-recessao-tecnica-pib-setembro",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-27T02:00:47Z",
-      "updated_at": "2026-11-25T02:00:47Z",
-      "titulo_tema": "Argentina Entra em Recessão Técnica com Queda no PIB",
-      "sintese_nerd": "A atividade econômica da Argentina registrou queda de 1,2% em setembro na comparação anual, consolidando o quadro de recessão técnica apontado pelo Indec. O cenário afeta diretamente as trocas comerciais com o Brasil e a dinâmica econômica do Cone Sul.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-25T02:00:47Z",
-      "gatilho_vitrine": "Monitore os dados do Indec que confirmam a entrada da economia argentina em recessão técnica no terceiro trimestre.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 85,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Geopolitica_Radar"
-      ],
-      "palavras_chave_busca": [
-        "argentina",
-        "recessão técnica",
-        "pib argentina",
-        "indec",
-        "economia sul-americana",
-        "comércio exterior"
       ]
     }
   ]
