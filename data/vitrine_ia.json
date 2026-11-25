@@ -2,9 +2,101 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-25T22:49:53Z",
-  "batch_id": "20261125-2249",
+  "updatedAt": "2026-11-25T23:45:58Z",
+  "batch_id": "20261125-2345",
   "temas_ativos": [
+    {
+      "slug": "pgr-denuncia-gustavo-gayer-stf-cota-parlamentar",
+      "titulo_tema": "PGR denuncia deputado Gustavo Gayer ao STF por esquema de desvio de cota parlamentar",
+      "titulo_curto": "PGR denuncia deputado Gustavo Gayer ao STF por esquema de desvio de cota parlamentar",
+      "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categoria": "Geopolitica_Relacoes",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 93,
+      "urgencia_score": 91,
+      "ttl_horas": 12,
+      "expires_at": "2026-11-26T11:45:58Z",
+      "palavras_chave_busca": [
+        "pgr",
+        "stf",
+        "gustavo gayer",
+        "cota parlamentar",
+        "corrupção"
+      ],
+      "palavras_chave": [
+        "pgr",
+        "stf",
+        "gustavo gayer",
+        "cota parlamentar",
+        "corrupção"
+      ],
+      "gatilho_vitrine": "Segundo apuração do G1, a Procuradoria-Geral da República denunciou ao STF o deputado Gustavo Gayer como líder de um esquema de desvio de verbas da cota parlamentar. O parlamentar, recentemente eleito senador, é acusado de associação criminosa, peculato e uso de documento falso, cabendo agora ao ministro Alexandre de Moraes abrir prazos para a defesa.",
+      "resumo_pulso": "Segundo apuração do G1, a Procuradoria-Geral da República denunciou ao STF o deputado Gustavo Gayer como líder de um esquema de desvio de verbas da cota parlamentar. O parlamentar, recentemente eleito senador, é acusado de associação criminosa, peculato e uso de documento falso, cabendo agora ao ministro Alexandre de Moraes abrir prazos para a defesa.",
+      "sintese_nerd": "Movimenta o cenário político em Brasília e atrai forte repercussão institucional sobre a integridade parlamentar antes do início da nova legislatura.",
+      "impacto_pratico": "Movimenta o cenário político em Brasília e atrai forte repercussão institucional sobre a integridade parlamentar antes do início da nova legislatura.",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "veiculos_origem": [
+        "G1 Política"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/politica/noticia/2026/11/25/pgr-denuncia-deputado-gustavo-gayer-ao-stf-por-esquema-de-desvio-de-cota-parlamentar-na-camara.ghtml"
+      ],
+      "data_publicacao": "2026-11-25T23:08:50Z",
+      "updated_at": "2026-11-25T23:45:58Z"
+    },
+    {
+      "slug": "stf-valor-exato-causa-trabalhista-divergencia-tst",
+      "titulo_tema": "STF define que ações trabalhistas devem indicar valor exato da causa em divergência com o TST",
+      "titulo_curto": "STF define que ações trabalhistas devem indicar valor exato da causa em divergência com o TST",
+      "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categoria": "Geopolitica_Relacoes",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 87,
+      "urgencia_score": 85,
+      "ttl_horas": 18,
+      "expires_at": "2026-11-26T17:45:58Z",
+      "palavras_chave_busca": [
+        "stf",
+        "tst",
+        "direito trabalhista",
+        "valor da causa"
+      ],
+      "palavras_chave": [
+        "stf",
+        "tst",
+        "direito trabalhista",
+        "valor da causa"
+      ],
+      "gatilho_vitrine": "Conforme apuração do JOTA, o Supremo Tribunal Federal divergiu do entendimento do Tribunal Superior do Trabalho ao estipular que petições iniciais trabalhistas informem o valor exato da causa. A Corte abriu exceções apenas para hipóteses onde a mensuração prévia seja impossível.",
+      "resumo_pulso": "Conforme apuração do JOTA, o Supremo Tribunal Federal divergiu do entendimento do Tribunal Superior do Trabalho ao estipular que petições iniciais trabalhistas informem o valor exato da causa. A Corte abriu exceções apenas para hipóteses onde a mensuração prévia seja impossível.",
+      "sintese_nerd": "Altera procedimentos jurídicos para advogados e empresas no âmbito da Justiça do Trabalho.",
+      "impacto_pratico": "Altera procedimentos jurídicos para advogados e empresas no âmbito da Justiça do Trabalho.",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "veiculos_origem": [
+        "JOTA Info"
+      ],
+      "fontes_urls": [
+        "https://www.jota.info/stf/do-supremo/stf-diverge-de-entendimento-do-tst-e-acao-trabalhista-deve-indicar-valor-exato-da-causa"
+      ],
+      "data_publicacao": "2026-11-25T22:55:24Z",
+      "updated_at": "2026-11-25T23:45:58Z"
+    },
     {
       "slug": "cmn-medidas-endividamento-familias",
       "status": "novo",
@@ -14,6 +106,7 @@
       "titulo_tema": "Novas medidas do CMN para conter o endividamento das famílias",
       "sintese_nerd": "O Conselho Monetário Nacional endureceu as diretrizes para instituições financeiras, visando mitigar o risco de crédito e o superendividamento. A medida força uma readequação dos limites de crédito, afetando diretamente o consumo das famílias brasileiras.",
       "rota_editoria": "/economia",
+      "urgencia_score": 88,
       "data_publicacao": "2026-11-25T22:35:21Z",
       "gatilho_vitrine": "Entenda como as novas regras do CMN impactam o limite do seu cartão de crédito e a saúde financeira das famílias.",
       "origem_pipeline": "curadoria",
@@ -29,8 +122,7 @@
         "cartao de credito",
         "risco de credito",
         "economia domestica"
-      ],
-      "urgencia_score": 88
+      ]
     },
     {
       "slug": "tensao-comercial-brasil-eua-tarifas-agronegocio",
@@ -112,53 +204,96 @@
     },
     {
       "slug": "senado-aprova-formalizacao-forca-nacional-sus",
-      "titulo_tema": "Senado aprova projeto que torna permanente a Força Nacional do SUS",
-      "titulo_curto": "Senado aprova projeto que torna permanente a Força Nacional do SUS",
       "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Cultura",
       "categoria": "Sociedade_Cultura",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/cultura",
-      "relevancia_score": 88,
-      "urgencia_score": 85,
       "ttl_horas": 12,
       "expires_at": "2026-11-26T10:49:53Z",
-      "palavras_chave_busca": [
-        "sus",
-        "senado",
-        "saúde",
-        "emergência"
-      ],
-      "palavras_chave": [
-        "sus",
-        "senado",
-        "saúde",
-        "emergência"
-      ],
-      "gatilho_vitrine": "Conforme apuração da Agência Senado, o Plenário aprovou o projeto que confere amparo legal à Força Nacional do SUS, tornando-a permanente. A equipe especializada, criada originalmente por decreto em 2011, atuará de forma contínua em emergências de saúde pública e desastres.",
-      "resumo_pulso": "Conforme apuração da Agência Senado, o Plenário aprovou o projeto que confere amparo legal à Força Nacional do SUS, tornando-a permanente. A equipe especializada, criada originalmente por decreto em 2011, atuará de forma contínua em emergências de saúde pública e desastres.",
-      "sintese_nerd": "Reforço na capacidade de resposta rápida do governo federal em situações de emergência sanitária e desastres naturais.",
-      "impacto_pratico": "Reforço na capacidade de resposta rápida do governo federal em situações de emergência sanitária e desastres naturais.",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "veiculos_origem": [
-        "Agência Senado"
-      ],
+      "updated_at": "2026-11-25T22:49:53Z",
       "fontes_urls": [
         "https://www12.senado.leg.br/noticias/audios/2026/11/senado-aprova-formalizacao-da-forca-nacional-do-sus"
       ],
+      "titulo_tema": "Senado aprova projeto que torna permanente a Força Nacional do SUS",
+      "resumo_pulso": "Conforme apuração da Agência Senado, o Plenário aprovou o projeto que confere amparo legal à Força Nacional do SUS, tornando-a permanente. A equipe especializada, criada originalmente por decreto em 2011, atuará de forma contínua em emergências de saúde pública e desastres.",
+      "sintese_nerd": "Reforço na capacidade de resposta rápida do governo federal em situações de emergência sanitária e desastres naturais.",
+      "titulo_curto": "Senado aprova projeto que torna permanente a Força Nacional do SUS",
+      "rota_editoria": "/cultura",
+      "palavras_chave": [
+        "sus",
+        "senado",
+        "saúde",
+        "emergência"
+      ],
+      "urgencia_score": 85,
       "data_publicacao": "2026-11-25T22:30:03Z",
-      "updated_at": "2026-11-25T22:49:53Z"
+      "gatilho_vitrine": "Conforme apuração da Agência Senado, o Plenário aprovou o projeto que confere amparo legal à Força Nacional do SUS, tornando-a permanente. A equipe especializada, criada originalmente por decreto em 2011, atuará de forma contínua em emergências de saúde pública e desastres.",
+      "impacto_pratico": "Reforço na capacidade de resposta rápida do governo federal em situações de emergência sanitária e desastres naturais.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "Agência Senado"
+      ],
+      "relevancia_score": 88,
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "categoria_primaria": "Cultura",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "sus",
+        "senado",
+        "saúde",
+        "emergência"
+      ]
     },
     {
       "slug": "cct-senado-aprova-39-concessoes-radio",
+      "status": "novo",
+      "categoria": "Sociedade_Cultura",
+      "ttl_horas": 12,
+      "expires_at": "2026-11-26T10:49:53Z",
+      "updated_at": "2026-11-25T22:49:53Z",
+      "fontes_urls": [
+        "https://www12.senado.leg.br/noticias/materias/2026/11/25/cct-aprova-39-concessoes-e-renovacoes-para-emissoras-de-radio"
+      ],
       "titulo_tema": "Comissão de Ciência e Tecnologia do Senado aprova 39 concessões de rádio",
+      "resumo_pulso": "Segundo a Agência Senado, a CCT aprovou 39 projetos de decreto legislativo para concessão e renovação de outorgas de rádio em 13 estados. A medida foca principalmente em rádios comunitárias e sem fins lucrativos voltadas à integração social.",
+      "sintese_nerd": "Expansão da infraestrutura de comunicação local e comunitária em diversas regiões do país.",
       "titulo_curto": "Comissão de Ciência e Tecnologia do Senado aprova 39 concessões de rádio",
+      "rota_editoria": "/cultura",
+      "palavras_chave": [
+        "senado",
+        "rádio",
+        "comunicação"
+      ],
+      "urgencia_score": 75,
+      "data_publicacao": "2026-11-25T22:24:38Z",
+      "gatilho_vitrine": "Segundo a Agência Senado, a CCT aprovou 39 projetos de decreto legislativo para concessão e renovação de outorgas de rádio em 13 estados. A medida foca principalmente em rádios comunitárias e sem fins lucrativos voltadas à integração social.",
+      "impacto_pratico": "Expansão da infraestrutura de comunicação local e comunitária em diversas regiões do país.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "Agência Senado"
+      ],
+      "relevancia_score": 80,
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "categoria_primaria": "Cultura",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "senado",
+        "rádio",
+        "comunicação"
+      ]
+    },
+    {
+      "slug": "camara-aprova-marco-nacional-educacao-tempo-integral",
+      "titulo_tema": "Câmara dos Deputados aprova projeto que cria o Marco Nacional da Educação em Tempo Integral",
+      "titulo_curto": "Câmara dos Deputados aprova projeto que cria o Marco Nacional da Educação em Tempo Integral",
       "status": "novo",
       "origem_pipeline": "pulso",
       "categoria_primaria": "Cultura",
@@ -168,35 +303,82 @@
         "Resumo_Ultimas"
       ],
       "rota_editoria": "/cultura",
-      "relevancia_score": 80,
-      "urgencia_score": 75,
-      "ttl_horas": 12,
-      "expires_at": "2026-11-26T10:49:53Z",
+      "relevancia_score": 90,
+      "urgencia_score": 87,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-26T23:45:58Z",
       "palavras_chave_busca": [
-        "senado",
-        "rádio",
-        "comunicação"
+        "educação em tempo integral",
+        "câmara dos deputados",
+        "marco legal",
+        "escolas"
       ],
       "palavras_chave": [
-        "senado",
-        "rádio",
-        "comunicação"
+        "educação em tempo integral",
+        "câmara dos deputados",
+        "marco legal",
+        "escolas"
       ],
-      "gatilho_vitrine": "Segundo a Agência Senado, a CCT aprovou 39 projetos de decreto legislativo para concessão e renovação de outorgas de rádio em 13 estados. A medida foca principalmente em rádios comunitárias e sem fins lucrativos voltadas à integração social.",
-      "resumo_pulso": "Segundo a Agência Senado, a CCT aprovou 39 projetos de decreto legislativo para concessão e renovação de outorgas de rádio em 13 estados. A medida foca principalmente em rádios comunitárias e sem fins lucrativos voltadas à integração social.",
-      "sintese_nerd": "Expansão da infraestrutura de comunicação local e comunitária em diversas regiões do país.",
-      "impacto_pratico": "Expansão da infraestrutura de comunicação local e comunitária em diversas regiões do país.",
+      "gatilho_vitrine": "Conforme relatórios do G1, a Câmara dos Deputados aprovou o projeto de lei que institui o Marco Nacional da Educação em Tempo Integral, determinando o mínimo de sete horas diárias ou 35 semanais nas escolas. A implementação ocorrerá de forma progressiva conforme cronograma estabelecido por cada sistema de ensino.",
+      "resumo_pulso": "Conforme relatórios do G1, a Câmara dos Deputados aprovou o projeto de lei que institui o Marco Nacional da Educação em Tempo Integral, determinando o mínimo de sete horas diárias ou 35 semanais nas escolas. A implementação ocorrerá de forma progressiva conforme cronograma estabelecido por cada sistema de ensino.",
+      "sintese_nerd": "Direciona novos investimentos e planeja mudanças estruturais e pedagógicas nas redes de ensino em todo o país.",
+      "impacto_pratico": "Direciona novos investimentos e planeja mudanças estruturais e pedagógicas nas redes de ensino em todo o país.",
       "paises_envolvidos": [
         "BR"
       ],
       "veiculos_origem": [
-        "Agência Senado"
+        "G1 Política"
       ],
       "fontes_urls": [
-        "https://www12.senado.leg.br/noticias/materias/2026/11/25/cct-aprova-39-concessoes-e-renovacoes-para-emissoras-de-radio"
+        "https://g1.globo.com/politica/noticia/2026/11/25/camara-aprova-criacao-de-marco-nacional-da-educacao-em-tempo-integral.ghtml"
       ],
-      "data_publicacao": "2026-11-25T22:24:38Z",
-      "updated_at": "2026-11-25T22:49:53Z"
+      "data_publicacao": "2026-11-25T21:57:21Z",
+      "updated_at": "2026-11-25T23:45:58Z"
+    },
+    {
+      "slug": "kim-jong-un-status-nuclear-inviolavel-coreia-norte",
+      "titulo_tema": "Kim Jong-un afirma que status nuclear da Coreia do Norte é inviolável e faz ameaças",
+      "titulo_curto": "Kim Jong-un afirma que status nuclear da Coreia do Norte é inviolável e faz ameaças",
+      "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categoria": "Geopolitica_Relacoes",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 88,
+      "urgencia_score": 90,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-26T23:45:58Z",
+      "palavras_chave_busca": [
+        "coreia do norte",
+        "kim jong-un",
+        "armas nucleares",
+        "geopolítica"
+      ],
+      "palavras_chave": [
+        "coreia do norte",
+        "kim jong-un",
+        "armas nucleares",
+        "geopolítica"
+      ],
+      "gatilho_vitrine": "Segundo informações da agência estatal KCNA repercutidas pelo G1 Mundo, o líder norte-coreano Kim Jong-un declarou que o país jamais abrirá mão de seu status nuclear. Ele advertiu que qualquer tentativa de contestar essa condição será tratada como declaração de guerra.",
+      "resumo_pulso": "Segundo informações da agência estatal KCNA repercutidas pelo G1 Mundo, o líder norte-coreano Kim Jong-un declarou que o país jamais abrirá mão de seu status nuclear. Ele advertiu que qualquer tentativa de contestar essa condição será tratada como declaração de guerra.",
+      "sintese_nerd": "Eleva as tensões geopolíticas na península coreana e preocupa observadores internacionais de segurança.",
+      "impacto_pratico": "Eleva as tensões geopolíticas na península coreana e preocupa observadores internacionais de segurança.",
+      "paises_envolvidos": [
+        "KP"
+      ],
+      "veiculos_origem": [
+        "G1 Mundo"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/mundo/noticia/2026/11/25/kim-jong-un-diz-que-status-nuclear-da-coreia-do-norte-e-inviolavel-e-faz-ameaca-com-guerra.ghtml"
+      ],
+      "data_publicacao": "2026-11-25T21:57:00Z",
+      "updated_at": "2026-11-25T23:45:58Z"
     },
     {
       "slug": "comissao-orcamento-aprova-alta-receita-petroleo-2027",
@@ -644,289 +826,262 @@
         "hospedagem",
         "legislação"
       ]
-    },
-    {
-      "slug": "comissao-senado-convoca-ministro-concessao-rodovia-ro-mt",
-      "status": "novo",
-      "categoria": "Economia_Comercio",
-      "ttl_horas": 12,
-      "expires_at": "2026-11-26T06:47:39Z",
-      "updated_at": "2026-11-25T18:47:39Z",
-      "fontes_urls": [
-        "https://www12.senado.leg.br/noticias/materias/2026/11/25/comissao-convoca-ministro-para-explicar-concessao-de-rodovia-entre-ro-mt"
-      ],
-      "titulo_tema": "Comissão de Infraestrutura do Senado aprova convocação de ministro para explicar concessão da Rota Agro Central",
-      "resumo_pulso": "Conforme informações da Agência Senado, a Comissão de Infraestrutura (CI) aprovou a convocação do ministro dos Transportes, George Santoro, para prestar esclarecimentos sobre o edital de concessão da Rota Agro Central, que liga Vilhena (RO) a Cuiabá (MT). O leilão está agendado para o próximo dia 17 de dezembro.",
-      "sintese_nerd": "Altera o cronograma e suscita debates regulatórios sobre os investimentos em infraestrutura rodoviária na região Centro-Norte.",
-      "titulo_curto": "Comissão de Infraestrutura do Senado aprova convocação de ministro para explicar concessão da Rota Agro Central",
-      "rota_editoria": "/economia",
-      "palavras_chave": [
-        "senado",
-        "concessão",
-        "rodovia",
-        "infraestrutura",
-        "transportes"
-      ],
-      "urgencia_score": 86,
-      "data_publicacao": "2026-11-25T18:37:02Z",
-      "gatilho_vitrine": "Conforme informações da Agência Senado, a Comissão de Infraestrutura (CI) aprovou a convocação do ministro dos Transportes, George Santoro, para prestar esclarecimentos sobre o edital de concessão da Rota Agro Central, que liga Vilhena (RO) a Cuiabá (MT). O leilão está agendado para o próximo dia 17 de dezembro.",
-      "impacto_pratico": "Altera o cronograma e suscita debates regulatórios sobre os investimentos em infraestrutura rodoviária na região Centro-Norte.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "Agência Senado"
-      ],
-      "relevancia_score": 88,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "senado",
-        "concessão",
-        "rodovia",
-        "infraestrutura",
-        "transportes"
-      ]
-    },
-    {
-      "slug": "pulso-1-20261125-1752",
-      "status": "novo",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 6,
-      "expires_at": "2026-11-25T23:52:57Z",
-      "updated_at": "2026-11-25T17:52:57Z",
-      "fontes_urls": [
-        "https://www12.senado.leg.br/noticias/audios/2026/11/projeto-que-dificulta-liberdade-provisoria-em-audiencias-de-custodia-vai-ao-plenario"
-      ],
-      "titulo_tema": "Áudio: Projeto que dificulta liberdade provisória em audiências de custódia vai ao Plenário",
-      "resumo_pulso": "Segundo Agência Senado, A Comissão de Constituição e Justiça do Senado (CCJ) aprovou nesta quarta-feira (25) um projeto de lei que dificulta a concessão de liberdade provisória nas audiências de custódia. O projeto (PL 714/2023) segue para votação no Plenário do Senado. Ouça o áudio..",
-      "sintese_nerd": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "titulo_curto": "Áudio: Projeto que dificulta liberdade provisória em audiências de custódia vai ao Plenário",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "radar",
-        "tempo real",
-        "br"
-      ],
-      "urgencia_score": 90,
-      "data_publicacao": "2026-11-25T17:43:48+00:00",
-      "gatilho_vitrine": "Segundo Agência Senado, A Comissão de Constituição e Justiça do Senado (CCJ) aprovou nesta quarta-feira (25) um projeto de lei que dificulta a concessão de liberdade provisória nas audiências de custódia. O projeto (PL 714/2023) segue para votação no Plenário do Senado. Ouça o áudio..",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "Agência Senado"
-      ],
-      "relevancia_score": 88,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "radar",
-        "tempo real",
-        "br"
-      ]
-    },
-    {
-      "slug": "pulso-2-20261125-1752",
-      "status": "novo",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 6,
-      "expires_at": "2026-11-25T23:52:57Z",
-      "updated_at": "2026-11-25T17:52:57Z",
-      "fontes_urls": [
-        "https://www12.senado.leg.br/noticias/audios/2026/11/medidas-protetivas-para-mulheres-poderao-valer-em-todo-o-mercosul"
-      ],
-      "titulo_tema": "Áudio: Medidas protetivas para mulheres poderão valer em todo o Mercosul",
-      "resumo_pulso": "Segundo Agência Senado, Medidas protetivas para mulheres vítimas de violência de gênero poderão ser executadas em qualquer país do Mercado Comum do Sul (Mercosul), segundo um acordo internacional (PDL 274/2026) aprovado nesta quarta-feira (25) pela Comissão de Relações Exteriores e Defesa Nacional (CRE), com parecer favorável da senadora Leany Lemos (PSB-DF). O texto foi .",
-      "sintese_nerd": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "titulo_curto": "Áudio: Medidas protetivas para mulheres poderão valer em todo o Mercosul",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "radar",
-        "tempo real",
-        "br"
-      ],
-      "urgencia_score": 85,
-      "data_publicacao": "2026-11-25T17:38:01+00:00",
-      "gatilho_vitrine": "Segundo Agência Senado, Medidas protetivas para mulheres vítimas de violência de gênero poderão ser executadas em qualquer país do Mercado Comum do Sul (Mercosul), segundo um acordo internacional (PDL 274/2026) aprovado nesta quarta-feira (25) pela Comissão de Relações Exteriores e Defesa Nacional (CRE), com parecer favorável da senadora Leany Lemos (PSB-DF). O texto foi .",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "Agência Senado"
-      ],
-      "relevancia_score": 84,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "radar",
-        "tempo real",
-        "br"
-      ]
-    },
-    {
-      "slug": "pulso-3-20261125-1752",
-      "status": "novo",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 6,
-      "expires_at": "2026-11-25T23:52:57Z",
-      "updated_at": "2026-11-25T17:52:57Z",
-      "fontes_urls": [
-        "https://www12.senado.leg.br/noticias/materias/2026/11/25/bancada-feminina-cobra-mais-espaco-nas-decisoes-do-senado"
-      ],
-      "titulo_tema": "Bancada feminina cobra mais espaço nas decisões do Senado",
-      "resumo_pulso": "Segundo Agência Senado, A bancada feminina do Senado pediu ao presidente da Casa, Davi Alcolumbre (União-AP), mais espaço para relatar projetos e participar das discussões sobre o Orçamento da União e a reforma eleitoral. O encontro ocorreu na manhã desta quarta-feira (25), na residência oficial do Senado. Em manifestação sobre a reunião, o presidente afirmou que dará apo.",
-      "sintese_nerd": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "titulo_curto": "Bancada feminina cobra mais espaço nas decisões do Senado",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "radar",
-        "tempo real",
-        "br"
-      ],
-      "urgencia_score": 80,
-      "data_publicacao": "2026-11-25T17:34:05+00:00",
-      "gatilho_vitrine": "Segundo Agência Senado, A bancada feminina do Senado pediu ao presidente da Casa, Davi Alcolumbre (União-AP), mais espaço para relatar projetos e participar das discussões sobre o Orçamento da União e a reforma eleitoral. O encontro ocorreu na manhã desta quarta-feira (25), na residência oficial do Senado. Em manifestação sobre a reunião, o presidente afirmou que dará apo.",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "Agência Senado"
-      ],
-      "relevancia_score": 80,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "radar",
-        "tempo real",
-        "br"
-      ]
     }
   ],
   "noticias_quentes": [
     {
-      "slug": "cmn-medidas-endividamento-familias",
-      "titulo_curto": "CMN e Banco Central anunciam medidas para conter endividamento das famílias",
-      "resumo_pulso": "Conforme apuração do G1 e InfoMoney, o Conselho Monetário Nacional aprovou novas diretrizes para instituições financeiras. As medidas exigem maior monitoramento do risco de crédito e redução gradual de limites para clientes inadimplentes.",
-      "impacto_pratico": "Mudanças no acesso ao crédito e na gestão de faturas de cartão de crédito para consumidores brasileiros.",
-      "categoria": "Economia_Comercio",
+      "slug": "pgr-denuncia-gustavo-gayer-stf-cota-parlamentar",
+      "titulo_curto": "PGR denuncia deputado Gustavo Gayer ao STF por esquema de desvio de cota parlamentar",
+      "resumo_pulso": "Segundo apuração do G1, a Procuradoria-Geral da República denunciou ao STF o deputado Gustavo Gayer como líder de um esquema de desvio de verbas da cota parlamentar. O parlamentar, recentemente eleito senador, é acusado de associação criminosa, peculato e uso de documento falso, cabendo agora ao ministro Alexandre de Moraes abrir prazos para a defesa.",
+      "impacto_pratico": "Movimenta o cenário político em Brasília e atrai forte repercussão institucional sobre a integridade parlamentar antes do início da nova legislatura.",
+      "categoria": "Geopolitica_Relacoes",
       "paises_envolvidos": [
         "BR"
       ],
-      "urgencia_score": 88,
-      "relevancia_score": 92,
+      "urgencia_score": 91,
+      "relevancia_score": 93,
       "nivel_confianca": "alta",
       "ttl_horas": 12,
-      "horas_em_destaque": 8,
+      "horas_em_destaque": 12,
       "veiculos_origem": [
-        "G1",
-        "InfoMoney"
+        "G1 Política"
       ],
+      "fontes_urls": [
+        "https://g1.globo.com/politica/noticia/2026/11/25/pgr-denuncia-deputado-gustavo-gayer-ao-stf-por-esquema-de-desvio-de-cota-parlamentar-na-camara.ghtml"
+      ],
+      "palavras_chave": [
+        "PGR",
+        "STF",
+        "Gustavo Gayer",
+        "cota parlamentar",
+        "corrupção"
+      ],
+      "data_publicacao": "2026-11-25T23:08:50Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "STF analisa regras de transparência e limites constitucionais entre os Poderes",
+          "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
+          "motivo_conexao": "Contextualiza a atuação do STF frente a investigações e denúncias envolvendo parlamentares."
+        }
+      ],
+      "expires_at": "2026-11-26T11:45:58Z",
+      "updated_at": "2026-11-25T23:45:58Z"
+    },
+    {
+      "slug": "stf-valor-exato-causa-trabalhista-divergencia-tst",
+      "titulo_curto": "STF define que ações trabalhistas devem indicar valor exato da causa em divergência com o TST",
+      "resumo_pulso": "Conforme apuração do JOTA, o Supremo Tribunal Federal divergiu do entendimento do Tribunal Superior do Trabalho ao estipular que petições iniciais trabalhistas informem o valor exato da causa. A Corte abriu exceções apenas para hipóteses onde a mensuração prévia seja impossível.",
+      "impacto_pratico": "Altera procedimentos jurídicos para advogados e empresas no âmbito da Justiça do Trabalho.",
+      "categoria": "Geopolitica_Relacoes",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "urgencia_score": 85,
+      "relevancia_score": 87,
+      "nivel_confianca": "alta",
+      "ttl_horas": 18,
+      "horas_em_destaque": 10,
+      "veiculos_origem": [
+        "JOTA Info"
+      ],
+      "fontes_urls": [
+        "https://www.jota.info/stf/do-supremo/stf-diverge-de-entendimento-do-tst-e-acao-trabalhista-deve-indicar-valor-exato-da-causa"
+      ],
+      "palavras_chave": [
+        "STF",
+        "TST",
+        "direito trabalhista",
+        "valor da causa"
+      ],
+      "data_publicacao": "2026-11-25T22:55:24Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "STF analisa regras de transparência e limites constitucionais entre os Poderes",
+          "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
+          "motivo_conexao": "Ilustra o ativismo e as diretrizes decisórias do STF sobre normas processuais."
+        }
+      ],
+      "expires_at": "2026-11-26T17:45:58Z",
+      "updated_at": "2026-11-25T23:45:58Z"
+    },
+    {
+      "slug": "cmn-medidas-endividamento-familias",
+      "categoria": "Economia_Comercio",
+      "ttl_horas": 12,
+      "expires_at": "2026-11-26T22:35:21Z",
+      "updated_at": "2026-11-25T22:49:53Z",
       "fontes_urls": [
         "https://g1.globo.com/economia/noticia/2026/11/25/cmn-anuncia-medidas-para-conter-o-endividamento-das-familias.ghtml"
       ],
+      "resumo_pulso": "Conforme apuração do G1 e InfoMoney, o Conselho Monetário Nacional aprovou novas diretrizes para instituições financeiras. As medidas exigem maior monitoramento do risco de crédito e redução gradual de limites para clientes inadimplentes.",
+      "titulo_curto": "CMN e Banco Central anunciam medidas para conter endividamento das famílias",
       "palavras_chave": [
         "CMN",
         "Banco Central",
         "Crédito",
         "Endividamento"
       ],
+      "urgencia_score": 88,
       "data_publicacao": "2026-11-25T22:35:21Z",
-      "links_internos_relacionados": [
-        {
-          "titulo_existente": "Banco Central e mercado financeiro acompanham inflação de serviços, câmbio e metas fiscais",
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
-          "motivo_conexao": "As medidas de crédito impactam diretamente o consumo e a dinâmica inflacionária monitorada pelo BC."
-        }
+      "impacto_pratico": "Mudanças no acesso ao crédito e na gestão de faturas de cartão de crédito para consumidores brasileiros.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "G1",
+        "InfoMoney"
       ],
-      "expires_at": "2026-11-26T22:35:21Z",
-      "updated_at": "2026-11-25T22:49:53Z"
-    },
-    {
-      "slug": "senado-aprova-formalizacao-forca-nacional-sus",
-      "titulo_curto": "Senado aprova projeto que torna permanente a Força Nacional do SUS",
-      "resumo_pulso": "Conforme apuração da Agência Senado, o Plenário aprovou o projeto que confere amparo legal à Força Nacional do SUS, tornando-a permanente. A equipe especializada, criada originalmente por decreto em 2011, atuará de forma contínua em emergências de saúde pública e desastres.",
-      "impacto_pratico": "Reforço na capacidade de resposta rápida do governo federal em situações de emergência sanitária e desastres naturais.",
-      "categoria": "Sociedade_Cultura",
+      "relevancia_score": 92,
+      "horas_em_destaque": 8,
       "paises_envolvidos": [
         "BR"
       ],
-      "urgencia_score": 85,
-      "relevancia_score": 88,
-      "nivel_confianca": "alta",
+      "links_internos_relacionados": [
+        {
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
+          "motivo_conexao": "As medidas de crédito impactam diretamente o consumo e a dinâmica inflacionária monitorada pelo BC.",
+          "titulo_existente": "Banco Central e mercado financeiro acompanham inflação de serviços, câmbio e metas fiscais"
+        }
+      ]
+    },
+    {
+      "slug": "senado-aprova-formalizacao-forca-nacional-sus",
+      "categoria": "Sociedade_Cultura",
       "ttl_horas": 12,
-      "horas_em_destaque": 6,
-      "veiculos_origem": [
-        "Agência Senado"
-      ],
+      "expires_at": "2026-11-26T10:49:53Z",
+      "updated_at": "2026-11-25T22:49:53Z",
       "fontes_urls": [
         "https://www12.senado.leg.br/noticias/audios/2026/11/senado-aprova-formalizacao-da-forca-nacional-do-sus"
       ],
+      "resumo_pulso": "Conforme apuração da Agência Senado, o Plenário aprovou o projeto que confere amparo legal à Força Nacional do SUS, tornando-a permanente. A equipe especializada, criada originalmente por decreto em 2011, atuará de forma contínua em emergências de saúde pública e desastres.",
+      "titulo_curto": "Senado aprova projeto que torna permanente a Força Nacional do SUS",
       "palavras_chave": [
         "SUS",
         "Senado",
         "Saúde",
         "Emergência"
       ],
+      "urgencia_score": 85,
       "data_publicacao": "2026-11-25T22:30:03Z",
-      "links_internos_relacionados": [
-        {
-          "titulo_existente": "Movimentos sociais e parlamentares debatem investimentos em saúde, educação e transição ecológica",
-          "url_existente": "https://www.rodandoomundo.com.br/saude",
-          "motivo_conexao": "O projeto complementa o debate sobre o fortalecimento das políticas públicas de saúde no Brasil."
-        }
-      ],
-      "expires_at": "2026-11-26T10:49:53Z",
-      "updated_at": "2026-11-25T22:49:53Z"
-    },
-    {
-      "slug": "cct-senado-aprova-39-concessoes-radio",
-      "titulo_curto": "Comissão de Ciência e Tecnologia do Senado aprova 39 concessões de rádio",
-      "resumo_pulso": "Segundo a Agência Senado, a CCT aprovou 39 projetos de decreto legislativo para concessão e renovação de outorgas de rádio em 13 estados. A medida foca principalmente em rádios comunitárias e sem fins lucrativos voltadas à integração social.",
-      "impacto_pratico": "Expansão da infraestrutura de comunicação local e comunitária em diversas regiões do país.",
-      "categoria": "Sociedade_Cultura",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "urgencia_score": 75,
-      "relevancia_score": 80,
+      "impacto_pratico": "Reforço na capacidade de resposta rápida do governo federal em situações de emergência sanitária e desastres naturais.",
       "nivel_confianca": "alta",
-      "ttl_horas": 12,
-      "horas_em_destaque": 4,
       "veiculos_origem": [
         "Agência Senado"
       ],
+      "relevancia_score": 88,
+      "horas_em_destaque": 6,
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "links_internos_relacionados": [
+        {
+          "url_existente": "https://www.rodandoomundo.com.br/saude",
+          "motivo_conexao": "O projeto complementa o debate sobre o fortalecimento das políticas públicas de saúde no Brasil.",
+          "titulo_existente": "Movimentos sociais e parlamentares debatem investimentos em saúde, educação e transição ecológica"
+        }
+      ]
+    },
+    {
+      "slug": "cct-senado-aprova-39-concessoes-radio",
+      "categoria": "Sociedade_Cultura",
+      "ttl_horas": 12,
+      "expires_at": "2026-11-26T10:49:53Z",
+      "updated_at": "2026-11-25T22:49:53Z",
       "fontes_urls": [
         "https://www12.senado.leg.br/noticias/materias/2026/11/25/cct-aprova-39-concessoes-e-renovacoes-para-emissoras-de-radio"
       ],
+      "resumo_pulso": "Segundo a Agência Senado, a CCT aprovou 39 projetos de decreto legislativo para concessão e renovação de outorgas de rádio em 13 estados. A medida foca principalmente em rádios comunitárias e sem fins lucrativos voltadas à integração social.",
+      "titulo_curto": "Comissão de Ciência e Tecnologia do Senado aprova 39 concessões de rádio",
       "palavras_chave": [
         "Senado",
         "Rádio",
         "Comunicação"
       ],
+      "urgencia_score": 75,
       "data_publicacao": "2026-11-25T22:24:38Z",
-      "links_internos_relacionados": [],
-      "expires_at": "2026-11-26T10:49:53Z",
-      "updated_at": "2026-11-25T22:49:53Z"
+      "impacto_pratico": "Expansão da infraestrutura de comunicação local e comunitária em diversas regiões do país.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Agência Senado"
+      ],
+      "relevancia_score": 80,
+      "horas_em_destaque": 4,
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "links_internos_relacionados": []
+    },
+    {
+      "slug": "camara-aprova-marco-nacional-educacao-tempo-integral",
+      "titulo_curto": "Câmara dos Deputados aprova projeto que cria o Marco Nacional da Educação em Tempo Integral",
+      "resumo_pulso": "Conforme relatórios do G1, a Câmara dos Deputados aprovou o projeto de lei que institui o Marco Nacional da Educação em Tempo Integral, determinando o mínimo de sete horas diárias ou 35 semanais nas escolas. A implementação ocorrerá de forma progressiva conforme cronograma estabelecido por cada sistema de ensino.",
+      "impacto_pratico": "Direciona novos investimentos e planeja mudanças estruturais e pedagógicas nas redes de ensino em todo o país.",
+      "categoria": "Sociedade_Cultura",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "urgencia_score": 87,
+      "relevancia_score": 90,
+      "nivel_confianca": "alta",
+      "ttl_horas": 24,
+      "horas_em_destaque": 12,
+      "veiculos_origem": [
+        "G1 Política"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/politica/noticia/2026/11/25/camara-aprova-criacao-de-marco-nacional-da-educacao-em-tempo-integral.ghtml"
+      ],
+      "palavras_chave": [
+        "educação em tempo integral",
+        "Câmara dos Deputados",
+        "marco legal",
+        "escolas"
+      ],
+      "data_publicacao": "2026-11-25T21:57:21Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "Movimentos sociais e parlamentares debatem investimentos em saúde, educação e transição ecológica",
+          "url_existente": "https://www.rodandoomundo.com.br/saude",
+          "motivo_conexao": "Relaciona-se com os debates legislativos em torno de investimentos e diretrizes sociais básicas."
+        }
+      ],
+      "expires_at": "2026-11-26T23:45:58Z",
+      "updated_at": "2026-11-25T23:45:58Z"
+    },
+    {
+      "slug": "kim-jong-un-status-nuclear-inviolavel-coreia-norte",
+      "titulo_curto": "Kim Jong-un afirma que status nuclear da Coreia do Norte é inviolável e faz ameaças",
+      "resumo_pulso": "Segundo informações da agência estatal KCNA repercutidas pelo G1 Mundo, o líder norte-coreano Kim Jong-un declarou que o país jamais abrirá mão de seu status nuclear. Ele advertiu que qualquer tentativa de contestar essa condição será tratada como declaração de guerra.",
+      "impacto_pratico": "Eleva as tensões geopolíticas na península coreana e preocupa observadores internacionais de segurança.",
+      "categoria": "Geopolitica_Relacoes",
+      "paises_envolvidos": [
+        "KP"
+      ],
+      "urgencia_score": 90,
+      "relevancia_score": 88,
+      "nivel_confianca": "alta",
+      "ttl_horas": 24,
+      "horas_em_destaque": 12,
+      "veiculos_origem": [
+        "G1 Mundo"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/mundo/noticia/2026/11/25/kim-jong-un-diz-que-status-nuclear-da-coreia-do-norte-e-inviolavel-e-faz-ameaca-com-guerra.ghtml"
+      ],
+      "palavras_chave": [
+        "Coreia do Norte",
+        "Kim Jong-un",
+        "armas nucleares",
+        "geopolítica"
+      ],
+      "data_publicacao": "2026-11-25T21:57:00Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "O que é uma sanção internacional?",
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-sancao-internacional",
+          "motivo_conexao": "Ajuda a compreender o isolamento diplomático e as pressões internacionais sobre a Coreia do Norte."
+        }
+      ],
+      "expires_at": "2026-11-26T23:45:58Z",
+      "updated_at": "2026-11-25T23:45:58Z"
     },
     {
       "slug": "comissao-orcamento-aprova-alta-receita-petroleo-2027",
@@ -1428,170 +1583,6 @@
       "horas_em_destaque": 6,
       "paises_envolvidos": [
         "BR"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
-          "motivo_conexao": "Compreenda por que os preços sobem de forma generalizada, como o IPCA é calculado e de que maneira os juros do Banco Central afetam o poder de compra.",
-          "titulo_existente": "O que é inflação?"
-        },
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/como-funcionam-as-eleicoes-nos-eua",
-          "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos.",
-          "titulo_existente": "Como funcionam as eleições nos EUA?"
-        }
-      ]
-    },
-    {
-      "slug": "pulso-2-20261125-1752",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 6,
-      "expires_at": "2026-11-25T23:52:57Z",
-      "updated_at": "2026-11-25T17:52:57Z",
-      "fontes_urls": [
-        "https://www12.senado.leg.br/noticias/audios/2026/11/medidas-protetivas-para-mulheres-poderao-valer-em-todo-o-mercosul"
-      ],
-      "resumo_pulso": "Segundo Agência Senado, Medidas protetivas para mulheres vítimas de violência de gênero poderão ser executadas em qualquer país do Mercado Comum do Sul (Mercosul), segundo um acordo internacional (PDL 274/2026) aprovado nesta quarta-feira (25) pela Comissão de Relações Exteriores e Defesa Nacional (CRE), com parecer favorável da senadora Leany Lemos (PSB-DF). O texto foi .",
-      "titulo_curto": "Áudio: Medidas protetivas para mulheres poderão valer em todo o Mercosul",
-      "palavras_chave": [
-        "radar",
-        "tempo real",
-        "br"
-      ],
-      "urgencia_score": 85,
-      "data_publicacao": "2026-11-25T17:38:01+00:00",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Agência Senado"
-      ],
-      "relevancia_score": 84,
-      "horas_em_destaque": 6,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
-          "motivo_conexao": "Compreenda por que os preços sobem de forma generalizada, como o IPCA é calculado e de que maneira os juros do Banco Central afetam o poder de compra.",
-          "titulo_existente": "O que é inflação?"
-        },
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/como-funcionam-as-eleicoes-nos-eua",
-          "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos.",
-          "titulo_existente": "Como funcionam as eleições nos EUA?"
-        }
-      ]
-    },
-    {
-      "slug": "pulso-3-20261125-1752",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 6,
-      "expires_at": "2026-11-25T23:52:57Z",
-      "updated_at": "2026-11-25T17:52:57Z",
-      "fontes_urls": [
-        "https://www12.senado.leg.br/noticias/materias/2026/11/25/bancada-feminina-cobra-mais-espaco-nas-decisoes-do-senado"
-      ],
-      "resumo_pulso": "Segundo Agência Senado, A bancada feminina do Senado pediu ao presidente da Casa, Davi Alcolumbre (União-AP), mais espaço para relatar projetos e participar das discussões sobre o Orçamento da União e a reforma eleitoral. O encontro ocorreu na manhã desta quarta-feira (25), na residência oficial do Senado. Em manifestação sobre a reunião, o presidente afirmou que dará apo.",
-      "titulo_curto": "Bancada feminina cobra mais espaço nas decisões do Senado",
-      "palavras_chave": [
-        "radar",
-        "tempo real",
-        "br"
-      ],
-      "urgencia_score": 80,
-      "data_publicacao": "2026-11-25T17:34:05+00:00",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Agência Senado"
-      ],
-      "relevancia_score": 80,
-      "horas_em_destaque": 6,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
-          "motivo_conexao": "Compreenda por que os preços sobem de forma generalizada, como o IPCA é calculado e de que maneira os juros do Banco Central afetam o poder de compra.",
-          "titulo_existente": "O que é inflação?"
-        },
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/como-funcionam-as-eleicoes-nos-eua",
-          "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos.",
-          "titulo_existente": "Como funcionam as eleições nos EUA?"
-        }
-      ]
-    },
-    {
-      "slug": "pulso-4-20261125-1752",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 6,
-      "expires_at": "2026-11-25T23:52:57Z",
-      "updated_at": "2026-11-25T17:52:57Z",
-      "fontes_urls": [
-        "https://www12.senado.leg.br/noticias/videos/2026/11/ao-vivo-ce-debate-importancia-das-faculdades-catolicas-na-amazonia-2013-25-11-26"
-      ],
-      "resumo_pulso": "Segundo Agência Senado, Vídeo: Ao vivo: CE debate importância das faculdades católicas na Amazônia – 25/11/26.",
-      "titulo_curto": "Vídeo: Ao vivo: CE debate importância das faculdades católicas na Amazônia – 25/11/26",
-      "palavras_chave": [
-        "radar",
-        "tempo real",
-        "br"
-      ],
-      "urgencia_score": 75,
-      "data_publicacao": "2026-11-25T17:32:52+00:00",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Agência Senado"
-      ],
-      "relevancia_score": 76,
-      "horas_em_destaque": 6,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
-          "motivo_conexao": "Compreenda por que os preços sobem de forma generalizada, como o IPCA é calculado e de que maneira os juros do Banco Central afetam o poder de compra.",
-          "titulo_existente": "O que é inflação?"
-        },
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/como-funcionam-as-eleicoes-nos-eua",
-          "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos.",
-          "titulo_existente": "Como funcionam as eleições nos EUA?"
-        }
-      ]
-    },
-    {
-      "slug": "pulso-5-20261125-1752",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 6,
-      "expires_at": "2026-11-25T23:52:57Z",
-      "updated_at": "2026-11-25T17:52:57Z",
-      "fontes_urls": [
-        "https://www.bbc.com/portuguese/articles/ck879j789y1zo?at_medium=RSS&at_campaign=rss"
-      ],
-      "resumo_pulso": "Segundo BBC News Brasil, Criadora de conteúdo que faz vídeos no metrô de Londres recebeu o diagnóstico de encefalite anti-receptor NMDA..",
-      "titulo_curto": "A influenciadora que ficou 2 meses internada em clínica psiquiátrica por um erro: 'Fui rotulada como psicótica por ser mulher'",
-      "palavras_chave": [
-        "radar",
-        "tempo real",
-        "gb"
-      ],
-      "urgencia_score": 70,
-      "data_publicacao": "2026-11-25T17:30:06+00:00",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "BBC News Brasil"
-      ],
-      "relevancia_score": 72,
-      "horas_em_destaque": 6,
-      "paises_envolvidos": [
-        "GB"
       ],
       "links_internos_relacionados": [
         {
