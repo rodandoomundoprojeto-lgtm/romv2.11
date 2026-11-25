@@ -2965,6 +2965,9 @@
               <div id="patrocinios-cotas-grid" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: var(--space-4); margin-top: var(--space-3);">
                 <!-- Renderizado via JS para as 4 cotas -->
               </div>
+              <div style="display:flex;justify-content:flex-end;align-items:center;gap:12px;margin-top:var(--space-4);padding:var(--space-3) 0;border-top:1px solid var(--border);">
+                <button id="btn-patrocinios-salvar-bottom" class="admin-btn admin-btn-primary" type="button">💾 Salvar e Publicar Patrocínios</button>
+              </div>
             </div>
 
             <div id="pat-panel-ativos" class="hidden">
@@ -3899,7 +3902,17 @@
         const ct = (res.headers.get('content-type') || '').toLowerCase();
         const data = await res.json().catch(() => ({}));
         if (!res.ok) {
-          let msg = (data && data.detail) || ('Erro HTTP ' + res.status);
+          let msg = '';
+          if (Array.isArray(data && data.detail)) {
+            msg = data.detail.map(d => {
+              const campo = d.loc ? d.loc.filter(x => x !== 'body' && x !== 'cotas').join('.') : '';
+              return (campo ? `[${campo}] ` : '') + (d.msg || JSON.stringify(d));
+            }).join(' | ');
+          } else if (typeof (data && data.detail) === 'string') {
+            msg = data.detail;
+          } else {
+            msg = 'Erro HTTP ' + res.status;
+          }
           if (res.status === 401) {
             msg = 'Sessão expirada. Faça login novamente.';
           } else if (res.status === 403) {
@@ -8526,6 +8539,31 @@
         `;
       }
 
+      function handleGeoContCheckChange(cb) {
+        if (!cb) return;
+        const id = cb.getAttribute('data-item-id');
+        const contKey = cb.getAttribute('data-geo-cont-check');
+        const item = (patrociniosState.gaveta_contextual || []).find((x) => x.id === id);
+        if (!item) return;
+        const parsed = parseContinentesAlvo(item);
+        let nextKeys = parsed.isTodos ? [] : parsed.keys.slice();
+
+        if (contKey === 'todos') {
+          nextKeys = cb.checked ? ['todos'] : ['sul'];
+        } else {
+          nextKeys = nextKeys.filter(k => k !== 'todos');
+          if (cb.checked) {
+            if (!nextKeys.includes(contKey)) nextKeys.push(contKey);
+          } else {
+            nextKeys = nextKeys.filter(k => k !== contKey);
+          }
+          if (!nextKeys.length) nextKeys = ['todos'];
+        }
+        item.continentes_alvo = serializeContinentesAlvo(nextKeys);
+        item.paises_alvo = 'todos';
+        refreshAllGeoPickersCota04();
+      }
+
       function refreshGeoPickerCard(itemId) {
         const list = patrociniosState.gaveta_contextual || [];
         const item = list.find((x) => x.id === itemId);
@@ -8578,6 +8616,10 @@
               </label>
             `;
           }).join('');
+
+          gridEl.querySelectorAll('[data-geo-cont-check]').forEach((cb) => {
+            cb.addEventListener('change', () => handleGeoContCheckChange(cb));
+          });
         }
 
         if (alertsEl) {
@@ -8877,7 +8919,10 @@
                 </div>
                 <p class="admin-sub" style="margin-top:3px;font-size:0.83rem;">${meta.desc}</p>
               </div>
-              <button type="button" class="admin-btn admin-btn-sm admin-btn-primary" data-add-sponsor="${meta.key}">+ Adicionar Patrocinador</button>
+              <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+                <button type="button" class="admin-btn admin-btn-sm admin-btn-primary" data-add-sponsor="${meta.key}">+ Adicionar Patrocinador</button>
+                <button type="button" class="admin-btn admin-btn-sm" data-save-cota="${meta.key}" title="Salvar e publicar alterações de patrocínios">💾 Salvar</button>
+              </div>
             </div>
             ${cota04ResumoHtml}
             <div class="cota-sponsors-container" id="container-sponsors-${meta.key}" style="display:grid;grid-template-columns:repeat(auto-fit, minmax(340px, 1fr));gap:var(--space-4);">
@@ -9015,31 +9060,14 @@
           if (it && it.id) refreshGeoPickerCard(it.id);
         });
 
-        // Seletor de Continente da Cota 04: marcar/desmarcar continentes
-        grid.querySelectorAll('[data-geo-cont-check]').forEach((cb) => {
-          cb.addEventListener('change', () => {
-            const id = cb.getAttribute('data-item-id');
-            const contKey = cb.getAttribute('data-geo-cont-check');
-            const item = (patrociniosState.gaveta_contextual || []).find((x) => x.id === id);
-            if (!item) return;
-            const parsed = parseContinentesAlvo(item);
-            let nextKeys = parsed.isTodos ? [] : parsed.keys.slice();
+        // Botões Salvar dentro de cada Cota
+        grid.querySelectorAll('[data-save-cota]').forEach(btn => {
+          btn.addEventListener('click', () => salvarPatrocinadores());
+        });
 
-            if (contKey === 'todos') {
-              nextKeys = cb.checked ? ['todos'] : ['sul'];
-            } else {
-              nextKeys = nextKeys.filter(k => k !== 'todos');
-              if (cb.checked) {
-                if (!nextKeys.includes(contKey)) nextKeys.push(contKey);
-              } else {
-                nextKeys = nextKeys.filter(k => k !== contKey);
-              }
-              if (!nextKeys.length) nextKeys = ['todos'];
-            }
-            item.continentes_alvo = serializeContinentesAlvo(nextKeys);
-            item.paises_alvo = 'todos';
-            refreshAllGeoPickersCota04();
-          });
+        // Delegação de evento do Seletor de Continente da Cota 04 (evita perda de listeners em re-renders)
+        grid.querySelectorAll('[data-geo-cont-check]').forEach((cb) => {
+          cb.addEventListener('change', () => handleGeoContCheckChange(cb));
         });
 
         // Adicionar novo patrocinador em uma cota
@@ -9202,14 +9230,25 @@
         for (const m of COTAS_META) {
           const list = patrociniosState[m.key] || [];
           for (const it of list) {
+            // Normalização proativa de URLs de link se faltar https://
+            if (it.link_url && typeof it.link_url === 'string') {
+              const u = it.link_url.trim();
+              if (u && !/^(https?:\/\/|\/)/i.test(u) && u.includes('.')) {
+                it.link_url = 'https://' + u;
+              }
+            }
             if (it.data_inicio && it.data_fim && it.data_fim < it.data_inicio) {
-              showBanner('patrocinios-banner', `Erro em ${m.titulo} (${it.nome || 'Patrocinador'}): a data de término não pode ser anterior à data de início.`, 'err');
+              const erroMsg = `Erro em ${m.titulo} (${it.nome || 'Patrocinador'}): a data de término não pode ser anterior à data de início.`;
+              showBanner('patrocinios-banner', erroMsg, 'err');
+              if (typeof showToast === 'function') showToast(erroMsg, 'err');
+              const b = $('patrocinios-banner');
+              if (b) b.scrollIntoView({ behavior: 'smooth', block: 'center' });
               return;
             }
           }
         }
-        const btn = $('btn-patrocinios-salvar');
-        if (btn) { btn.disabled = true; btn.textContent = 'Salvando...'; }
+        const btns = [$('btn-patrocinios-salvar'), $('btn-patrocinios-salvar-bottom')].filter(Boolean);
+        btns.forEach(b => { b.disabled = true; b.textContent = 'Salvando...'; });
         try {
           const res = await apiFetch('/v2/admin/patrocinadores', {
             method: 'PUT',
@@ -9233,14 +9272,23 @@
           }
         } catch (err) {
           showBanner('patrocinios-banner', 'Erro ao salvar patrocínios: ' + err.message, 'err');
+          if (typeof showToast === 'function') {
+            showToast('Erro ao salvar: ' + err.message, 'err');
+          }
+          const bannerEl = document.getElementById('patrocinios-banner');
+          if (bannerEl) bannerEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
         } finally {
-          if (btn) { btn.disabled = false; btn.textContent = 'Salvar e Publicar'; }
+          btns.forEach(b => {
+            b.disabled = false;
+            b.textContent = b.id === 'btn-patrocinios-salvar-bottom' ? '💾 Salvar e Publicar Patrocínios' : 'Salvar e Publicar';
+          });
         }
       }
 
       if ($('tab-btn-pat-config')) $('tab-btn-pat-config').addEventListener('click', () => setPatrociniosTab('config'));
       if ($('tab-btn-pat-ativos')) $('tab-btn-pat-ativos').addEventListener('click', () => setPatrociniosTab('ativos'));
       if ($('btn-patrocinios-salvar')) $('btn-patrocinios-salvar').addEventListener('click', () => salvarPatrocinadores({ irParaAtivos: true }));
+      if ($('btn-patrocinios-salvar-bottom')) $('btn-patrocinios-salvar-bottom').addEventListener('click', () => salvarPatrocinadores({ irParaAtivos: true }));
       if ($('btn-patrocinios-recarregar')) $('btn-patrocinios-recarregar').addEventListener('click', carregarPatrocinadores);
     })();
   </script>

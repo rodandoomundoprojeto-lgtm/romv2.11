@@ -5427,6 +5427,10 @@
       '</div>' +
       '<div class="atlas-live-controls">' +
       '<span class="atlas-live-updated" id="atlas-live-updated-label">Sincronizando...</span>' +
+      '<button type="button" class="btn-atlas-refresh" id="btn-atlas-refresh" title="Atualizar manchetes agora (sem cache)" aria-label="Atualizar manchetes agora">' +
+      '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>' +
+      '<span>Atualizar</span>' +
+      '</button>' +
       '<button type="button" class="btn-atlas-toggle" id="btn-atlas-toggle" aria-expanded="' + (!atlasMinimized) + '" aria-controls="atlas-live-news-list" title="' + (atlasMinimized ? 'Expandir últimas manchetes' : 'Minimizar últimas manchetes') + '" aria-label="' + (atlasMinimized ? 'Expandir últimas manchetes' : 'Minimizar últimas manchetes') + '">' +
       '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>' +
       '<span>' + (atlasMinimized ? 'Expandir' : 'Minimizar') + '</span>' +
@@ -5748,54 +5752,50 @@
     var refreshBtn = panel.querySelector('#btn-atlas-refresh');
     var listEl = panel.querySelector('#atlas-live-news-list');
 
+    var cachedRaw = null;
+    try { cachedRaw = localStorage.getItem(cacheKey); } catch (e) { }
+    var cachedParsed = null;
+    if (cachedRaw) {
+      try {
+        cachedParsed = JSON.parse(cachedRaw);
+      } catch (e) { }
+    }
+
     if (forceRefresh) {
       delete atlasSessionRevalidated[cCode];
-      try { localStorage.removeItem(cacheKey); } catch (e) { }
       if (refreshBtn) refreshBtn.classList.add('is-refreshing');
-      if (listEl) listEl.classList.add('is-loading');
-    } else {
-      try {
-        var raw = localStorage.getItem(cacheKey);
-        if (raw) {
-          var parsed = JSON.parse(raw);
-          var cacheValid = false;
-          if (parsed && Array.isArray(parsed.items) && parsed.items.length && Number(parsed.ts) > 0) {
-            var cacheAge = Date.now() - Number(parsed.ts);
-            if (cacheAge < ATLAS_PAIS_TTL_MS) {
-              var sortedCached = sortAtlasPaisItems(parsed.items);
-              var newestItem = sortedCached[0];
-              var newestTime = newestItem && newestItem.publishedAt ? new Date(newestItem.publishedAt).getTime() : 0;
-              var isStale = !newestTime || isNaN(newestTime) || (Date.now() - newestTime > 24 * 3600 * 1000);
-              if (!isStale) {
-                cacheValid = true;
-              }
-            }
+      if (listEl && (!cachedParsed || !Array.isArray(cachedParsed.items) || !cachedParsed.items.length)) {
+        listEl.classList.add('is-loading');
+      }
+    } else if (cachedParsed && Array.isArray(cachedParsed.items) && cachedParsed.items.length && Number(cachedParsed.ts) > 0) {
+      var cacheAge = Date.now() - Number(cachedParsed.ts);
+      var sortedCached = sortAtlasPaisItems(cachedParsed.items);
+      var newestItem = sortedCached[0];
+      var newestTime = newestItem && newestItem.publishedAt ? new Date(newestItem.publishedAt).getTime() : 0;
+      var isStale = !newestTime || isNaN(newestTime) || (Date.now() - newestTime > 24 * 3600 * 1000);
+
+      // Renderiza imediatamente o que já temos em cache (Stale-While-Revalidate)
+      renderAtlasPaisItems(sortedCached, cCode, cachedParsed.updatedAt);
+
+      if (cacheAge < ATLAS_PAIS_TTL_MS && !isStale) {
+        atlasSessionRevalidated[cCode] = Number(cachedParsed.ts);
+        ensureAtlasItemsTranslated(sortedCached, cCode, function (updatedItems) {
+          try {
+            localStorage.setItem(cacheKey, JSON.stringify({ ts: cachedParsed.ts || Date.now(), updatedAt: cachedParsed.updatedAt, items: updatedItems }));
+          } catch (e) { }
+          var activeFeed = panel.querySelector('#atlas-live-news-feed');
+          if (activeFeed && activeFeed.getAttribute('data-country') === String(cCode)) {
+            renderAtlasPaisItems(updatedItems, cCode, cachedParsed.updatedAt);
           }
-          if (cacheValid) {
-            atlasSessionRevalidated[cCode] = Number(parsed.ts);
-            renderAtlasPaisItems(parsed.items, cCode, parsed.updatedAt);
-            ensureAtlasItemsTranslated(parsed.items, cCode, function (updatedItems) {
-              try {
-                localStorage.setItem(cacheKey, JSON.stringify({ ts: parsed.ts || Date.now(), updatedAt: parsed.updatedAt, items: updatedItems }));
-              } catch (e) { }
-              var activeFeed = panel.querySelector('#atlas-live-news-feed');
-              if (activeFeed && activeFeed.getAttribute('data-country') === String(cCode)) {
-                renderAtlasPaisItems(updatedItems, cCode, parsed.updatedAt);
-              }
-            });
-            atlasAutoRefreshTimer = setTimeout(function () {
-              var currentFeed = panel.querySelector('#atlas-live-news-feed');
-              if (currentFeed && currentFeed.getAttribute('data-country') === String(cCode)) {
-                carregarAtlasPaisAoVivo(cCode, cName, true);
-              }
-            }, 240000);
-            return;
-          } else {
-            try { localStorage.removeItem(cacheKey); } catch (e) { }
-            delete atlasSessionRevalidated[cCode];
+        });
+        atlasAutoRefreshTimer = setTimeout(function () {
+          var currentFeed = panel.querySelector('#atlas-live-news-feed');
+          if (currentFeed && currentFeed.getAttribute('data-country') === String(cCode)) {
+            carregarAtlasPaisAoVivo(cCode, cName, true);
           }
-        }
-      } catch (e) { }
+        }, 240000);
+        return;
+      }
     }
 
     var qs = '?pais=' + encodeURIComponent(cCode) + '&nome=' + encodeURIComponent(cName) + '&_t=' + Date.now() + (forceRefresh ? '&refresh=1' : '');
@@ -5810,7 +5810,88 @@
       return resp.json().catch(function () { return null; });
     }
 
+    function fallbackBrazilDirect() {
+      return fetch('/api/ultimas-noticias?_t=' + Date.now(), { cache: 'no-store' })
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (j) {
+          if (j && Array.isArray(j.noticias) && j.noticias.length > 0) {
+            var mapped = j.noticias.slice(0, 8).map(function (n) {
+              return {
+                titleOriginal: n.titulo,
+                titlePt: n.titulo,
+                url: n.url,
+                source: n.fonte || 'Imprensa Brasileira',
+                publishedAt: n.publicadoEm || new Date().toISOString()
+              };
+            });
+            return { ok: true, updatedAt: new Date().toISOString(), items: mapped, fallback: true };
+          }
+          return null;
+        })
+        .catch(function () {
+          return fetch('/data/feed_output.json?_t=' + Date.now(), { cache: 'no-store' })
+            .then(function (r) { return r.ok ? r.json() : null; })
+            .then(function (list) {
+              if (Array.isArray(list) && list.length > 0) {
+                var mapped = list.slice(0, 8).map(function (n) {
+                  return {
+                    titleOriginal: n.titulo,
+                    titlePt: n.titulo,
+                    url: n.fonte_url || n.url || '#',
+                    source: n.fonte_nome || 'Imprensa Brasileira',
+                    publishedAt: n.data_publicacao || new Date().toISOString()
+                  };
+                });
+                return { ok: true, updatedAt: new Date().toISOString(), items: mapped, fallback: true };
+              }
+              return null;
+            })
+            .catch(function () { return null; });
+        });
+    }
+
+    function parseXmlStringItems(xmlStr, countryCode) {
+      try {
+        var parser = new DOMParser();
+        var xmlDoc = parser.parseFromString(xmlStr, 'text/xml');
+        var itemEls = xmlDoc.querySelectorAll('item, entry');
+        var out = [];
+        for (var i = 0; i < itemEls.length && i < 12; i++) {
+          var el = itemEls[i];
+          var tEl = el.querySelector('title');
+          var rawT = tEl ? tEl.textContent.trim() : '';
+          var linkEl = el.querySelector('link');
+          var linkHref = linkEl ? (linkEl.getAttribute('href') || linkEl.textContent || '').trim() : '';
+          var srcEl = el.querySelector('source');
+          var src = srcEl ? srcEl.textContent.trim() : '';
+          var pEl = el.querySelector('pubDate, published, updated');
+          var pub = pEl ? pEl.textContent.trim() : '';
+          var dt = pub ? new Date(pub) : null;
+          var isoPub = (dt && !isNaN(dt.getTime())) ? dt.toISOString() : '';
+          var dash = rawT.lastIndexOf(' - ');
+          var cleanT = dash > 15 ? rawT.slice(0, dash).trim() : rawT;
+          if (!src && dash > 15) src = rawT.slice(dash + 3).trim();
+          if (cleanT && linkHref && /^https?:\/\//i.test(linkHref)) {
+            out.push({
+              titleOriginal: cleanT,
+              titlePt: cleanT,
+              url: linkHref,
+              source: src || 'Imprensa Internacional',
+              publishedAt: isoPub
+            });
+          }
+        }
+        return out;
+      } catch (e) {
+        return [];
+      }
+    }
+
     function fallbackRssBrowser() {
+      if (cCode === 'BR') {
+        return fallbackBrazilDirect();
+      }
+
       var EDITIONS = {
         US: { hl: 'en-US', gl: 'US', ceid: 'US:en' },
         BR: { hl: 'pt-BR', gl: 'BR', ceid: 'BR:pt-419' },
@@ -5851,30 +5932,50 @@
         rssTarget = 'https://news.google.com/rss/search?q=' + encodeURIComponent(searchName + ' when:24h') + '&hl=en&gl=' + encodeURIComponent(cCode) + '&ceid=' + encodeURIComponent(cCode) + ':en';
       }
       rssTarget += (rssTarget.indexOf('?') === -1 ? '?' : '&') + '_t=' + Date.now();
-      var proxyUrl = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(rssTarget) + '&_t=' + Date.now();
-      return fetch(proxyUrl, { cache: 'no-store' })
-        .then(function (r) { return r.ok ? r.json() : null; })
-        .then(function (j) {
-          if (!j || j.status !== 'ok' || !Array.isArray(j.items)) return null;
-          var mapped = j.items.map(function (it) {
-            var rawT = String(it.title || '').trim();
-            var dash = rawT.lastIndexOf(' - ');
-            var cleanT = dash > 15 ? rawT.slice(0, dash).trim() : rawT;
-            var src = dash > 15 ? rawT.slice(dash + 3).trim() : (it.author || 'Imprensa Internacional');
-            var dt = it.pubDate ? new Date(String(it.pubDate).replace(' ', 'T') + 'Z') : null;
-            var isoPub = (dt && !isNaN(dt.getTime())) ? dt.toISOString() : '';
-            return {
-              titleOriginal: cleanT,
-              titlePt: cleanT,
-              url: it.link,
-              source: src,
-              publishedAt: isoPub
-            };
-          }).filter(function (it) { return it.titleOriginal && it.url; });
-          var sortedFallback = sortAtlasPaisItems(mapped).slice(0, 8);
-          return { ok: true, updatedAt: new Date().toISOString(), items: sortedFallback, fallback: true };
+
+      // Tentativa 1: proxy AllOrigins com XML bruto e parser nativo DOMParser
+      var aoUrl = 'https://api.allorigins.win/raw?url=' + encodeURIComponent(rssTarget) + '&_t=' + Date.now();
+      return fetch(aoUrl, { cache: 'no-store' })
+        .then(function (r) { return r.ok ? r.text() : null; })
+        .then(function (xmlText) {
+          if (xmlText && (xmlText.indexOf('<item') !== -1 || xmlText.indexOf('<entry') !== -1)) {
+            var itemsParsed = parseXmlStringItems(xmlText, cCode);
+            if (itemsParsed.length > 0) {
+              var sortedFallback = sortAtlasPaisItems(itemsParsed).slice(0, 8);
+              return { ok: true, updatedAt: new Date().toISOString(), items: sortedFallback, fallback: true };
+            }
+          }
+          return null;
         })
-        .catch(function () { return null; });
+        .catch(function () { return null; })
+        .then(function (resAo) {
+          if (resAo && resAo.items && resAo.items.length) return resAo;
+          // Tentativa 2: proxy rss2json
+          var proxyUrl = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(rssTarget) + '&_t=' + Date.now();
+          return fetch(proxyUrl, { cache: 'no-store' })
+            .then(function (r) { return r.ok ? r.json() : null; })
+            .then(function (j) {
+              if (!j || j.status !== 'ok' || !Array.isArray(j.items)) return null;
+              var mapped = j.items.map(function (it) {
+                var rawT = String(it.title || '').trim();
+                var dash = rawT.lastIndexOf(' - ');
+                var cleanT = dash > 15 ? rawT.slice(0, dash).trim() : rawT;
+                var src = dash > 15 ? rawT.slice(dash + 3).trim() : (it.author || 'Imprensa Internacional');
+                var dt = it.pubDate ? new Date(String(it.pubDate).replace(' ', 'T') + 'Z') : null;
+                var isoPub = (dt && !isNaN(dt.getTime())) ? dt.toISOString() : '';
+                return {
+                  titleOriginal: cleanT,
+                  titlePt: cleanT,
+                  url: it.link,
+                  source: src,
+                  publishedAt: isoPub
+                };
+              }).filter(function (it) { return it.titleOriginal && it.url; });
+              var sortedFallback = sortAtlasPaisItems(mapped).slice(0, 8);
+              return { ok: true, updatedAt: new Date().toISOString(), items: sortedFallback, fallback: true };
+            })
+            .catch(function () { return null; });
+        });
     }
 
     fetch(url, fetchOpts)
@@ -5917,6 +6018,11 @@
               renderAtlasPaisItems(updatedItems, cCode, updateIso);
             }
           });
+        } else if (cachedParsed && Array.isArray(cachedParsed.items) && cachedParsed.items.length) {
+          // Se falhou a requisição de rede mas temos cache anterior, preserva os itens e avisa o usuário
+          renderAtlasPaisItems(cachedParsed.items, cCode, cachedParsed.updatedAt);
+          var updatedEl = panel.querySelector('#atlas-live-updated-label');
+          if (updatedEl) updatedEl.textContent = 'Atualizado anteriormente';
         } else {
           try { localStorage.removeItem(cacheKey); } catch (e) { }
           delete atlasSessionRevalidated[cCode];
@@ -5932,9 +6038,13 @@
       })
       .catch(function () {
         if (refreshBtn) refreshBtn.classList.remove('is-refreshing');
-        try { localStorage.removeItem(cacheKey); } catch (e) { }
-        delete atlasSessionRevalidated[cCode];
-        renderAtlasPaisItems([], cCode, '');
+        if (cachedParsed && Array.isArray(cachedParsed.items) && cachedParsed.items.length) {
+          renderAtlasPaisItems(cachedParsed.items, cCode, cachedParsed.updatedAt);
+        } else {
+          try { localStorage.removeItem(cacheKey); } catch (e) { }
+          delete atlasSessionRevalidated[cCode];
+          renderAtlasPaisItems([], cCode, '');
+        }
       });
   }
 

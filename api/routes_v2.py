@@ -6457,6 +6457,8 @@ def _validar_link_url(valor: str) -> str:
         return ""
     if v.startswith(("https://", "http://", "/")):
         return v
+    if "." in v and not v.startswith("javascript:"):
+        return f"https://{v}"
     raise ValueError("Link de destino deve começar com https://, http:// ou /.")
 
 

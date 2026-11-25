@@ -108,13 +108,27 @@ def _eh_conteudo_editorial_rico(item: Optional[Dict[str, Any]]) -> bool:
 
 
 def carregar_prompt_pulso(caminho: Path = PROMPT_0_PATH) -> str:
-    """Lê o System Prompt 0 do diretório `redacao_v2/prompts/`."""
+    """Lê o System Prompt 0 do diretório `redacao_v2/prompts/` com injeção de calibrações da IA Juíza."""
+    texto_base = ""
     if caminho.exists():
-        return caminho.read_text(encoding="utf-8").strip()
-    arquivos = sorted(PROMPTS_DIR.glob("prompt_0*.md"))
-    if arquivos:
-        return arquivos[0].read_text(encoding="utf-8").strip()
-    raise FileNotFoundError(f"System Prompt 0 não encontrado em {caminho}")
+        texto_base = caminho.read_text(encoding="utf-8").strip()
+    else:
+        arquivos = sorted(PROMPTS_DIR.glob("prompt_0*.md"))
+        if arquivos:
+            texto_base = arquivos[0].read_text(encoding="utf-8").strip()
+        else:
+            raise FileNotFoundError(f"System Prompt 0 não encontrado em {caminho}")
+
+    # Injeção dinâmica das calibrações da IA Juíza do dia
+    try:
+        from .ia_juiza import formatar_bloco_prompt_juiza
+        bloco_juiza = formatar_bloco_prompt_juiza(alvo_agente="pulso_30m")
+        if bloco_juiza:
+            texto_base = f"{texto_base}\n\n{bloco_juiza}"
+    except Exception:
+        pass
+
+    return texto_base
 
 
 def _obter_db_url(db_url: Optional[str] = None) -> str:

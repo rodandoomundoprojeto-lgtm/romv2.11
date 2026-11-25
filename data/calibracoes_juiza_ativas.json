@@ -1,0 +1,37 @@
+{
+  "batch_data": "2026-11-25",
+  "gerado_em": "2026-11-25T02:58:16.353398+00:00",
+  "modelo_juiza": "gemini-3.5-flash-lite",
+  "veredito_geral": "aprovado_com_ressalvas",
+  "calibracoes": [
+    {
+      "alvo_agente": "pulso_30m",
+      "tipo_diretriz": "ajuste_tom",
+      "titulo_regra": "Eliminação de Clichês de Abertura",
+      "instrucao_prompt": "Evite iniciar matérias com frases feitas como 'Em um mundo globalizado' ou 'Cenário nebuloso'. Vá direto ao fato concreto e ao impacto imediato.",
+      "prioridade": 4
+    },
+    {
+      "alvo_agente": "colunista_nerd",
+      "tipo_diretriz": "foco_tematico",
+      "titulo_regra": "Obrigatoriedade do Ângulo do Viajante",
+      "instrucao_prompt": "Toda pauta de política externa ou macroeconomia deve obrigatoriamente incluir um parágrafo sobre reflexos em vistos, fronteiras, custo de vida local ou cotação cambial.",
+      "prioridade": 5
+    }
+  ],
+  "pautas_ouro_dia": [
+    "Os reflexos econômicos e cambiais da revisão do Orçamento para R$ 12,6 bilhões",
+    "A nova diretriz da ONU Turismo sobre acolhimento a viajantes muçulmanos e o potencial para o Brasil",
+    "Segurança aérea e alertas de defesa no Leste Europeu e na Península Coreana"
+  ],
+  "golden_exemplars": [
+    {
+      "tipo_conteudo": "pulso_noticia",
+      "titulo": "Lula decide que embaixador do Brasil não retornará a Buenos Aires após crise diplomática",
+      "categoria": "Geopolítica",
+      "nota_isencao": 96,
+      "texto_exemplo": "O Ministério das Relações Exteriores do Brasil (MRE) decidiu que o embaixador brasileiro na Argentina, Júlio Bitelli, não retornará a Buenos Aires, consolidando o esfriamento diplomático após meses de tensões entre os principais parceiros comerciais do Mercosul.",
+      "justificativa_excelencia": "Mantém tom estritamente diplomático, rigor documental e contextualização regional precisa sem juízo de valor."
+    }
+  ]
+}

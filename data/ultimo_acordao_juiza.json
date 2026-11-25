@@ -1,0 +1,103 @@
+{
+  "batch_data": "2026-11-25",
+  "modelo_juiza": "gemini-3.5-flash-lite",
+  "total_avaliados": 35,
+  "media_isencao": 89.2,
+  "media_qualidade_nerd": 87.5,
+  "alucinacoes_detectadas": 0,
+  "cliches_detectados": 2,
+  "veredito_geral": "aprovado_com_ressalvas",
+  "resumo_acordao": "O Tribunal Noturno encerra a sua sessão de calibração constatando um padrão global de cobertura sólido e substancial por parte das IAs operárias ao longo das últimas 24 horas. Houve rigor na captação dos grandes eixos geopolíticos e econômicos, com destaque para a crise diplomática entre Brasil e Argentina e os desdobramentos fiscais internos. Contudo, detectaram-se pequenas derrapagens em clichês narrativos e em ganchos de impacto prático para o viajante que merecem correção imediata.\n\nComo diretrizes para o novo ciclo, determina-se maior precisão no filtro do impacto cambial e das rotas de circulação internacional, desestimulando adjetivações emocionais na editoria de economia. A vigilância factual manteve-se intacta, sem registros de alucinações, assegurando a confiabilidade das fontes primárias e secundárias monitoradas pelo portal Rodando o Mundo.",
+  "itens_avaliados": [
+    {
+      "origem_tipo": "noticia_quente",
+      "identificador": "brasil-nao-retornara-embaixador-argentina-crise",
+      "nota_isencao": 96,
+      "nota_factual": 98,
+      "nota_estilo_nerd": 92,
+      "teve_alucinacao": false,
+      "teve_cliche_ou_sensacionalismo": false,
+      "parecer_resumido": "Cobertura exemplar do esfriamento diplomático com a Argentina, mantendo total sobriedade factual."
+    },
+    {
+      "origem_tipo": "noticia_quente",
+      "identificador": "dolar-cai-5-91-ajuste-fiscal-sancao",
+      "nota_isencao": 94,
+      "nota_factual": 95,
+      "nota_estilo_nerd": 95,
+      "teve_alucinacao": false,
+      "teve_cliche_ou_sensacionalismo": false,
+      "parecer_resumido": "Excelente ponte entre o cenário fiscal e o impacto direto no bolso do turista e no câmbio."
+    },
+    {
+      "origem_tipo": "noticia_quente",
+      "identificador": "mega-sena-acumula-premio-75-milhoes",
+      "nota_isencao": 78,
+      "nota_factual": 90,
+      "nota_estilo_nerd": 65,
+      "teve_alucinacao": false,
+      "teve_cliche_ou_sensacionalismo": true,
+      "parecer_resumido": "Notícia excessivamente utilitária sem aprofundamento analítico característico do portal."
+    }
+  ],
+  "pontos_cegos": [
+    {
+      "tema": "Apelo da OMS contra o bloqueio de combustíveis em Cuba",
+      "regiao_ou_paises": [
+        "Cuba",
+        "Estados Unidos",
+        "Suíça"
+      ],
+      "por_que_era_importante": "Afeta diretamente a estabilidade humanitária e sanitária no Caribe, rota turística relevante e foco de atenção institucional global.",
+      "sugestao_pauta_urgente": "Produzir um panorama sobre o impacto das sanções de combustíveis na infraestrutura médica e turística de Havana."
+    },
+    {
+      "tema": "Decisão do Tribunal Arbitral do Esporte sobre a Copa Africana de Nações (AFCON)",
+      "regiao_ou_paises": [
+        "Senegal",
+        "Marrocos"
+      ],
+      "por_que_era_importante": "Envolve grandes movimentações de torcedores, segurança de fronteiras e calendários de viagens continentais.",
+      "sugestao_pauta_urgente": "Analisar o impacto da revirlegal no turismo esportivo e na logística de voos entre o oeste africano e o norte do continente."
+    }
+  ],
+  "calibracoes_geradas": [
+    {
+      "alvo_agente": "pulso_30m",
+      "tipo_diretriz": "ajuste_tom",
+      "titulo_regra": "Eliminação de Clichês de Abertura",
+      "instrucao_prompt": "Evite iniciar matérias com frases feitas como 'Em um mundo globalizado' ou 'Cenário nebuloso'. Vá direto ao fato concreto e ao impacto imediato.",
+      "prioridade": 4
+    },
+    {
+      "alvo_agente": "colunista_nerd",
+      "tipo_diretriz": "foco_tematico",
+      "titulo_regra": "Obrigatoriedade do Ângulo do Viajante",
+      "instrucao_prompt": "Toda pauta de política externa ou macroeconomia deve obrigatoriamente incluir um parágrafo sobre reflexos em vistos, fronteiras, custo de vida local ou cotação cambial.",
+      "prioridade": 5
+    }
+  ],
+  "golden_exemplars": [
+    {
+      "tipo_conteudo": "pulso_noticia",
+      "titulo": "Lula decide que embaixador do Brasil não retornará a Buenos Aires após crise diplomática",
+      "categoria": "Geopolítica",
+      "nota_isencao": 96,
+      "texto_exemplo": "O Ministério das Relações Exteriores do Brasil (MRE) decidiu que o embaixador brasileiro na Argentina, Júlio Bitelli, não retornará a Buenos Aires, consolidando o esfriamento diplomático após meses de tensões entre os principais parceiros comerciais do Mercosul.",
+      "justificativa_excelencia": "Mantém tom estritamente diplomático, rigor documental e contextualização regional precisa sem juízo de valor."
+    }
+  ],
+  "ajustes_fontes": [
+    {
+      "fonte_nome": "Al Jazeera English",
+      "peso_anterior": 4,
+      "novo_peso": 5,
+      "motivo": "Demonstrou excelente cobertura em furos internacionais de relevância humanitária e esportiva global."
+    }
+  ],
+  "pautas_ouro_dia": [
+    "Os reflexos econômicos e cambiais da revisão do Orçamento para R$ 12,6 bilhões",
+    "A nova diretriz da ONU Turismo sobre acolhimento a viajantes muçulmanos e o potencial para o Brasil",
+    "Segurança aérea e alertas de defesa no Leste Europeu e na Península Coreana"
+  ]
+}

@@ -496,3 +496,122 @@ def notificar_aprovacao_admin_discord(
     except Exception as e:
         print(f"[!] Erro ao enviar alerta de aprovação para o Discord: {e}")
         return False
+
+
+def notificar_acordao_juiza_discord(acordao: Any, webhook_url: Optional[str] = None) -> bool:
+    """Dispara um embed executivo e estilizado com o Acórdão da IA Juíza para o Discord."""
+    if _is_test_environment():
+        return True
+
+    target_url = (
+        webhook_url
+        or os.getenv("DISCORD_WEBHOOK_JUIZA")
+        or os.getenv("DISCORD_WEBHOOK_URL")
+        or os.getenv("DISCORD_WEBHOOK_RADAR")
+        or ""
+    ).strip()
+
+    if not target_url:
+        print("[!] Nenhum DISCORD_WEBHOOK_URL configurado para a IA Juíza.")
+        return False
+
+    # Determina cores conforme o veredito
+    veredito = getattr(acordao, "veredito_geral", "aprovado_com_ressalvas")
+    if veredito == "excelente":
+        cor = 0x2ECC71  # Verde Esmeralda
+        selo_veredito = "🟢 EXCELENTE — Conformidade Total"
+    elif veredito == "necessita_calibracao_rigorosa":
+        cor = 0xE74C3C  # Vermelho
+        selo_veredito = "🔴 NECESSITA CALIBRAÇÃO RIGOROSA"
+    else:
+        cor = 0xF1C40F  # Dourado / Amarelo
+        selo_veredito = "🟡 APROVADO COM RESSALVAS"
+
+    batch_data = getattr(acordao, "batch_data", datetime.now(timezone.utc).strftime("%Y-%m-%d"))
+    resumo = (getattr(acordao, "resumo_acordao", "") or "")[:1500]
+
+    # Monta campos do embed
+    fields = [
+        {
+            "name": "⚖️ Veredito do Tribunal",
+            "value": f"**{selo_veredito}**\n*Modelo da Juíza: `{getattr(acordao, 'modelo_juiza', 'gemini-2.5-pro')}`*",
+            "inline": False,
+        },
+        {
+            "name": "📊 Métricas de Qualidade (24h)",
+            "value": (
+                f"• **Média Isenção:** `{getattr(acordao, 'media_isencao', 0):.1f}/100`\n"
+                f"• **Estilo / Impacto:** `{getattr(acordao, 'media_qualidade_nerd', 0):.1f}/100`\n"
+                f"• **Total Avaliados:** `{getattr(acordao, 'total_avaliados', 0)}`\n"
+                f"• **Alucinações Detectadas:** `{getattr(acordao, 'alucinacoes_detectadas', 0)}`"
+            ),
+            "inline": True,
+        },
+    ]
+
+    # Pontos cegos da madrugada
+    pontos_cegos = getattr(acordao, "pontos_cegos", [])
+    if pontos_cegos:
+        texto_cegos = []
+        for p in pontos_cegos[:3]:
+            tema = getattr(p, "tema", str(p))
+            paises = getattr(p, "regiao_ou_paises", [])
+            sugestao = getattr(p, "sugestao_pauta_urgente", "")
+            flags = " ".join(_iso_to_flag(c) for c in paises) if paises else "🌐"
+            texto_cegos.append(f"• **{flags} {tema}**\n  ↳ *Pauta matinal:* {sugestao[:150]}")
+        fields.append({
+            "name": "🔍 Pontos Cegos Internacionais Detectados",
+            "value": "\n".join(texto_cegos)[:1024],
+            "inline": False,
+        })
+
+    # Calibrações Ativas para as IAs Operárias
+    calibracoes = getattr(acordao, "calibracoes_geradas", [])
+    if calibracoes:
+        texto_calib = []
+        for c in calibracoes[:4]:
+            titulo = getattr(c, "titulo_regra", "Diretriz")
+            alvo = getattr(c, "alvo_agente", "todos")
+            instrucao = getattr(c, "instrucao_prompt", "")
+            texto_calib.append(f"• `[{alvo}]` **{titulo}:** {instrucao[:140]}")
+        fields.append({
+            "name": "🛠️ Diretrizes Injetadas nas IAs para Hoje",
+            "value": "\n".join(texto_calib)[:1024],
+            "inline": False,
+        })
+
+    # Pautas de Ouro para a Manhã
+    pautas = getattr(acordao, "pautas_ouro_dia", [])
+    if pautas:
+        texto_pautas = "\n".join(f"🎯 {p[:140]}" for p in pautas[:3])
+        fields.append({
+            "name": "📰 Pautas de Ouro Recomendadas para a Manhã",
+            "value": texto_pautas[:1024],
+            "inline": False,
+        })
+
+    payload = {
+        "content": "⚖️ **O Tribunal da Madrugada Acabou de Publicar o Acórdão do Dia!**",
+        "embeds": [
+            {
+                "title": f"⚖️ Acórdão Editorial Noturno — Sessão {batch_data}",
+                "description": resumo,
+                "url": "https://www.rodandoomundo.com.br",
+                "color": cor,
+                "fields": fields,
+                "footer": {
+                    "text": "Motor V2 • IA Juíza e Desembargadora Editorial • Rodando o Mundo",
+                    "icon_url": "https://www.rodandoomundo.com.br/favicon.svg",
+                },
+                "timestamp": datetime.now(timezone.utc).isoformat(),
+            }
+        ],
+    }
+
+    try:
+        r = requests.post(target_url, json=payload, timeout=10)
+        return r.status_code in [200, 204]
+    except Exception as exc:
+        print(f"[!] Erro ao enviar Acórdão da IA Juíza para o Discord: {exc}")
+        return False
+

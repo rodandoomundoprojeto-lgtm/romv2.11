@@ -131,13 +131,28 @@ def _gerar_com_fallback(
 
 
 def carregar_prompt(caminho: Path, prefixo_fallback: str) -> str:
-    """Lê o arquivo Markdown de System Prompt em `redacao_v2/prompts/`."""
+    """Lê o arquivo Markdown de System Prompt em `redacao_v2/prompts/` com injeção de calibrações da IA Juíza."""
+    texto_base = ""
     if caminho.exists():
-        return caminho.read_text(encoding="utf-8").strip()
-    candidatos = sorted(PROMPTS_DIR.glob(f"{prefixo_fallback}*.md"))
-    if candidatos:
-        return candidatos[0].read_text(encoding="utf-8").strip()
-    raise FileNotFoundError(f"System Prompt não encontrado em {caminho}")
+        texto_base = caminho.read_text(encoding="utf-8").strip()
+    else:
+        candidatos = sorted(PROMPTS_DIR.glob(f"{prefixo_fallback}*.md"))
+        if candidatos:
+            texto_base = candidatos[0].read_text(encoding="utf-8").strip()
+        else:
+            raise FileNotFoundError(f"System Prompt não encontrado em {caminho}")
+
+    # Determina o alvo do agente com base no arquivo/prefixo
+    alvo = "colunista_nerd" if "prompt_3" in prefixo_fallback else ("pesquisador_factual" if "prompt_1" in prefixo_fallback else "todos")
+    try:
+        from .ia_juiza import formatar_bloco_prompt_juiza
+        bloco_juiza = formatar_bloco_prompt_juiza(alvo_agente=alvo)
+        if bloco_juiza:
+            texto_base = f"{texto_base}\n\n{bloco_juiza}"
+    except Exception:
+        pass
+
+    return texto_base
 
 
 def _obter_db_url(db_url: Optional[str] = None) -> str:

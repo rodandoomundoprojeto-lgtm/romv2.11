@@ -531,3 +531,87 @@ class ResultadoAuditoria(BaseModel):
         elif self.erros_criticos and not self.problemas_encontrados:
             self.problemas_encontrados = list(self.erros_criticos)
         return self
+
+
+# ============================================================================
+# 5. CONTRATOS DA IA JUÍZA (TRIBUNAL NOTURNO & META-CALIBRAÇÃO)
+# ============================================================================
+
+class ItemAvaliacaoProducao(BaseModel):
+    """Julgamento individual de um item produzido nas últimas 24h pelas IAs operárias."""
+    origem_tipo: Literal["noticia_quente", "coluna_editorial", "curadoria_insight"] = Field(
+        description="Qual pipeline de IA produziu este item"
+    )
+    identificador: str = Field(description="Slug ou título do item analisado")
+    nota_isencao: int = Field(ge=0, le=100, description="Nota de 0 a 100 em equilíbrio e isenção")
+    nota_factual: int = Field(ge=0, le=100, description="Nota de 0 a 100 em fidelidade e checagem factual")
+    nota_estilo_nerd: int = Field(ge=0, le=100, description="Nota de 0 a 100 no viés de impacto prático/geopolítico do RoM")
+    teve_alucinacao: bool = Field(default=False, description="True se extrapolou dados não suportados pelas fontes")
+    teve_cliche_ou_sensacionalismo: bool = Field(default=False, description="True se utilizou adjetivações vazias ou sensacionalismo")
+    parecer_resumido: str = Field(description="Crítica pontual e construtiva da Juíza (1 a 2 frases)")
+
+
+class PontoCegoIdentificado(BaseModel):
+    """Acontecimento internacional relevante que as IAs deixaram passar nas últimas 24h."""
+    tema: str = Field(description="Nome do acontecimento global")
+    regiao_ou_paises: List[str] = Field(description="Países ou blocos envolvidos")
+    por_que_era_importante: str = Field(description="Impacto geopolítico, cambial ou de viagens para o público brasileiro")
+    sugestao_pauta_urgente: str = Field(description="Ângulo editorial sugerido para cobrir na manhã")
+
+
+class DiretrizCalibracaoJuiza(BaseModel):
+    """Instrução e ajuste fino para injetar nos prompts das IAs operárias no novo dia."""
+    alvo_agente: Literal["pulso_30m", "colunista_nerd", "pesquisador_factual", "todos"] = Field(
+        description="Qual agente operacional deve receber esta diretriz"
+    )
+    tipo_diretriz: Literal["alerta_factual", "ajuste_tom", "foco_tematico", "cuidado_geopolitico"] = Field(
+        description="Natureza da calibração"
+    )
+    titulo_regra: str = Field(description="Título curto da regra calibrada")
+    instrucao_prompt: str = Field(description="Diretriz imperativa precisa para inserção no prompt")
+    prioridade: int = Field(ge=1, le=5, default=3, description="Nível de prioridade (5 é alerta máximo)")
+
+
+class GoldenExemplarItem(BaseModel):
+    """Exemplo padrão-ouro selecionado pela Juíza para calibrar os few-shot prompts."""
+    tipo_conteudo: Literal["pulso_noticia", "coluna_editorial", "entenda_assunto"] = Field(
+        description="Tipo de peça editorial"
+    )
+    titulo: str = Field(description="Título do conteúdo exemplar")
+    categoria: str = Field(description="Categoria temática")
+    nota_isencao: int = Field(ge=85, le=100, description="Nota de isenção atribuída (mínimo 85)")
+    texto_exemplo: str = Field(description="Trecho ou íntegra representativa de alta qualidade")
+    justificativa_excelencia: str = Field(description="Por que este item serve de modelo para as outras IAs")
+
+
+class AjusteFonteJuiza(BaseModel):
+    """Sugestão ou ajuste de peso de confiança de uma fonte monitorada."""
+    fonte_nome: str = Field(description="Nome do veículo ou fonte primária")
+    peso_anterior: int = Field(ge=1, le=5, description="Peso atual no banco")
+    novo_peso: int = Field(ge=1, le=5, description="Novo peso sugerido/aplicado")
+    motivo: str = Field(description="Justificativa técnica baseada na assertividade ou ruído da fonte")
+
+
+class AcordaoNoturnoPayload(BaseModel):
+    """Acórdão final consolidado da IA Juíza emitido no julgamento de madrugada."""
+    batch_data: str = Field(description="Data da sessão no formato YYYY-MM-DD")
+    modelo_juiza: str = Field(default="gemini-2.5-pro", description="Identificador do modelo que julgou")
+    total_avaliados: int = Field(description="Total de matérias/pulsos submetidos ao julgamento")
+    media_isencao: float = Field(description="Média aritmética de isenção de 0 a 100")
+    media_qualidade_nerd: float = Field(description="Média de aderência ao tom e impacto prático do RoM")
+    alucinacoes_detectadas: int = Field(default=0, description="Quantidade de alucinações detectadas")
+    cliches_detectados: int = Field(default=0, description="Quantidade de clichês/sensacionalismo detectados")
+    veredito_geral: Literal["excelente", "aprovado_com_ressalvas", "necessita_calibracao_rigorosa"] = Field(
+        description="Classificação final do trabalho da redação nas 24h"
+    )
+    resumo_acordao: str = Field(description="Veredito executivo e despacho da Juíza (2 a 4 parágrafos densos)")
+    itens_avaliados: List[ItemAvaliacaoProducao] = Field(default_factory=list)
+    pontos_cegos: List[PontoCegoIdentificado] = Field(default_factory=list)
+    calibracoes_geradas: List[DiretrizCalibracaoJuiza] = Field(default_factory=list)
+    golden_exemplars: List[GoldenExemplarItem] = Field(default_factory=list)
+    ajustes_fontes: List[AjusteFonteJuiza] = Field(default_factory=list)
+    pautas_ouro_dia: List[str] = Field(
+        default_factory=list,
+        description="As 3 a 5 pautas prioritárias recomendadas para a manhã da redação"
+    )
+

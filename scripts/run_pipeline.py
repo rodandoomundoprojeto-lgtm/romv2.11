@@ -467,19 +467,25 @@ async def _executar_modo_coluna(
 # 4. ENTRYPOINT CLI (ARGPARSE)
 # ============================================================================
 
+async def _executar_modo_juiza(dry_run: bool) -> Dict[str, Any]:
+    from redacao_v2.ia_juiza import executar_sessao_tribunal_noturno_async
+    acordao = await executar_sessao_tribunal_noturno_async(dry_run=dry_run)
+    return acordao.model_dump()
+
+
 def criar_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog="run_pipeline.py",
         description=(
             "CLI Oficial de Execução do Motor Editorial V2 — Rodando o Mundo "
-            "(modos: pulso [30m], curadoria [3h], coluna [4 agentes])."
+            "(modos: pulso [30m], curadoria [3h], coluna [4 agentes], juiza [tribunal noturno])."
         ),
     )
     parser.add_argument(
         "--modo",
         required=True,
-        choices=["pulso", "curadoria", "coluna"],
-        help="Modo de execução do pipeline: 'pulso' (30m), 'curadoria' (3h) ou 'coluna' (4 agentes).",
+        choices=["pulso", "curadoria", "coluna", "juiza"],
+        help="Modo de execução do pipeline: 'pulso' (30m), 'curadoria' (3h), 'coluna' (4 agentes) ou 'juiza' (tribunal noturno).",
     )
     parser.add_argument(
         "--dry-run",
@@ -543,6 +549,8 @@ def main(argv: Optional[List[str]] = None) -> int:
                 saida = _executar_modo_curadoria(dry_run=args.dry_run, horas=args.horas, limit=args.limit)
             elif args.modo == "coluna":
                 saida = asyncio.run(_executar_modo_coluna(dry_run=args.dry_run, tema=args.tema, slug=args.slug))
+            elif args.modo == "juiza":
+                saida = asyncio.run(_executar_modo_juiza(dry_run=args.dry_run))
             else:
                 parser.error(f"Modo desconhecido: {args.modo}")
                 return 2

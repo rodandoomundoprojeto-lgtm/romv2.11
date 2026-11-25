@@ -7,6 +7,7 @@ import {
   newsResponseHeaders,
   compareIsoDesc,
   parseFeedItems,
+  resolverBackendUrl,
 } from '../lib/rss.js';
 
 const CORS_HEADERS = {
@@ -259,6 +260,13 @@ function parseRssXml(xmlText, countryCode) {
   return items.slice(0, 15);
 }
 
+const FONTES_DIRETAS_BRASIL = [
+  { nome: 'g1 Brasil', url: 'https://g1.globo.com/rss/g1/' },
+  { nome: 'Agência Brasil', url: 'https://agenciabrasil.ebc.com.br/rss/ultimasnoticias/feed.xml' },
+  { nome: 'Metrópoles', url: 'https://www.metropoles.com/feed' },
+  { nome: 'Folha de S.Paulo', url: 'https://feeds.folha.uol.com.br/emcimadahora/rss091.xml' },
+];
+
 async function fetchRssAtlas(rssUrl, countryCode, isRefresh) {
   const ctrl = new AbortController();
   const tid = setTimeout(() => ctrl.abort(), 7500);
@@ -284,7 +292,26 @@ async function fetchRssAtlas(rssUrl, countryCode, isRefresh) {
     clearTimeout(tid);
   }
 
-  // Contingência no Edge: coletor estruturado via rss2json com cache-busting dinâmico
+  // Contingência 1 no Edge: proxy CORS allorigins.win (devolve o XML bruto original do RSS)
+  try {
+    const ctrlAo = new AbortController();
+    const tidAo = setTimeout(() => ctrlAo.abort(), 6500);
+    const cbUrl = rssUrl + (rssUrl.includes('?') ? '&' : '?') + '_t=' + Date.now();
+    const aoUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(cbUrl)}`;
+    const respAo = await fetch(aoUrl, { cache: 'no-store', signal: ctrlAo.signal });
+    clearTimeout(tidAo);
+    if (respAo.ok) {
+      const rawXml = await respAo.text();
+      if (rawXml && (rawXml.includes('<item') || rawXml.includes('<entry'))) {
+        const parsedAo = parseRssXml(rawXml, countryCode);
+        if (parsedAo.length > 0) return { ok: true, items: parsedAo };
+      }
+    }
+  } catch {
+    // Segue para contingência 2
+  }
+
+  // Contingência 2 no Edge: coletor estruturado via rss2json com cache-busting dinâmico
   try {
     const ctrlFb = new AbortController();
     const tidFb = setTimeout(() => ctrlFb.abort(), 6000);
@@ -389,6 +416,36 @@ export async function handleAtlasPais(request, env = {}) {
   let resRss = await fetchRssAtlas(rssUrl, pais, isRefresh);
   let items = resRss.items;
 
+  // Contingência de Alta Confiabilidade para o Brasil:
+  // Se Google News bloquear ou retornar vazio no Edge, consome feeds RSS diretos nacionais
+  if (pais === 'BR' && items.length === 0) {
+    for (const fonte of FONTES_DIRETAS_BRASIL) {
+      try {
+        const cFb = new AbortController();
+        const tFb = setTimeout(() => cFb.abort(), 4500);
+        const respFb = await fetch(fonte.url, {
+          cache: 'no-store',
+          signal: cFb.signal,
+          headers: {
+            'User-Agent': BROWSER_UA,
+            'Accept': 'application/rss+xml, application/xml, text/xml;q=0.9, */*;q=0.8',
+            ...(isRefresh ? { 'Cache-Control': 'no-cache', Pragma: 'no-cache' } : {}),
+          },
+        });
+        clearTimeout(tFb);
+        if (respFb.ok) {
+          const xmlFb = await respFb.text();
+          const parsedFb = parseRssXml(xmlFb, 'BR');
+          if (parsedFb.length > 0) {
+            items = parsedFb;
+            usedFallback = true;
+            break;
+          }
+        }
+      } catch { }
+    }
+  }
+
   // Fallback 1: se o Top Headlines da edição nativa ou o when:24h retornar vazio, tenta busca com when:2d
   if (items.length === 0 && pais !== 'BR') {
     const searchLang = (edition && edition.hl) || (PT_COUNTRIES.has(pais) ? 'pt-BR' : 'en');
@@ -410,6 +467,32 @@ export async function handleAtlasPais(request, env = {}) {
     if (res7d.items.length > 0) {
       items = res7d.items;
       usedFallback = true;
+    }
+  }
+
+  // Contingência com Backend FastAPI (Motor V2):
+  // Se ainda vazio e houver backend configurado, consulta o endpoint com cache persistido no PostgreSQL
+  if (items.length === 0) {
+    const backendUrl = resolverBackendUrl(env, request);
+    if (backendUrl) {
+      try {
+        const bCtrl = new AbortController();
+        const bTid = setTimeout(() => bCtrl.abort(), 5000);
+        const bUrl = new URL(`/api/atlas-pais${url.search}`, backendUrl);
+        const bResp = await fetch(bUrl.toString(), {
+          headers: { Accept: 'application/json', 'X-ROM-Edge-Proxy': '1' },
+          signal: bCtrl.signal,
+          cache: 'no-store',
+        });
+        clearTimeout(bTid);
+        if (bResp.ok) {
+          const bData = await bResp.json();
+          if (bData && Array.isArray(bData.items) && bData.items.length > 0) {
+            items = bData.items;
+            usedFallback = true;
+          }
+        }
+      } catch { }
     }
   }
 
