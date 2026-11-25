@@ -2,180 +2,276 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-25T12:37:15Z",
-  "batch_id": "20261125-1236",
+  "updatedAt": "2026-11-25T13:39:42Z",
+  "batch_id": "20261125-1339",
   "temas_ativos": [
     {
-      "slug": "dolar-atinge-597-sancao-ajuste-fiscal-pec",
-      "titulo_tema": "Dólar atinge R$ 5,97 após sanção do ajuste fiscal e sinalizações sobre nova PEC",
-      "titulo_curto": "Dólar atinge R$ 5,97 após sanção do ajuste fiscal e sinalizações sobre nova PEC",
+      "slug": "eua-propoem-tarifas-aeronaves-brasil",
+      "titulo_tema": "EUA propõem novas tarifas sobre produtos brasileiros",
       "status": "novo",
-      "origem_pipeline": "pulso",
+      "origem_pipeline": "curadoria",
       "categoria_primaria": "Economia",
-      "categoria": "Economia_Comercio",
       "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
+        "Geopolitica_Radar",
+        "Politica"
       ],
       "rota_editoria": "/economia",
-      "relevancia_score": 94,
-      "urgencia_score": 92,
+      "relevancia_score": 98,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-27T13:39:42Z",
+      "palavras_chave_busca": [
+        "tarifas eua",
+        "exportacoes brasil",
+        "aeronaves",
+        "comercio exterior",
+        "governo trump",
+        "balanca comercial"
+      ],
+      "gatilho_vitrine": "Analise o impacto das novas tarifas americanas na indústria aeronáutica brasileira e nas relações diplomáticas.",
+      "sintese_nerd": "O governo dos EUA propôs tarifas de 10% sobre aeronaves brasileiras, alegando falta de progresso em disputas comerciais. A medida tensiona a balança comercial e exige resposta diplomática imediata do Itamaraty.",
+      "data_publicacao": "2026-11-25T13:39:42Z",
+      "updated_at": "2026-11-25T13:39:42Z"
+    },
+    {
+      "slug": "ajuste-fiscal-lula-congresso-janeiro",
+      "titulo_tema": "Possível convocação do Congresso em janeiro para ajuste fiscal",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Politica",
+      "categorias_cruzadas": [
+        "Economia",
+        "Eleicoes"
+      ],
+      "rota_editoria": "/politica",
+      "relevancia_score": 92,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-26T13:39:42Z",
+      "palavras_chave_busca": [
+        "ajuste fiscal",
+        "pec",
+        "lula",
+        "congresso nacional",
+        "recesso parlamentar",
+        "economia brasileira"
+      ],
+      "gatilho_vitrine": "Acompanhe a articulação do governo Lula para garantir a aprovação da segunda etapa do ajuste fiscal.",
+      "sintese_nerd": "A equipe econômica avalia convocar o Congresso durante o recesso de janeiro para votar a PEC do ajuste fiscal. A urgência reflete a necessidade de sinalizar responsabilidade fiscal ao mercado diante de um cenário de alta de juros e inflação.",
+      "data_publicacao": "2026-11-25T13:39:42Z",
+      "updated_at": "2026-11-25T13:39:42Z"
+    },
+    {
+      "slug": "tarifas-globais-trump-china",
+      "titulo_tema": "Trump propõe novas tarifas contra 14 parceiros comerciais",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 90,
+      "ttl_horas": 72,
+      "expires_at": "2026-11-28T13:39:42Z",
+      "palavras_chave_busca": [
+        "trump",
+        "tarifas",
+        "china",
+        "guerra comercial",
+        "protecionismo",
+        "economia global"
+      ],
+      "gatilho_vitrine": "Entenda a nova onda de protecionismo americano e seus efeitos nas cadeias globais de suprimentos.",
+      "sintese_nerd": "O governo Trump anunciou planos de tarifas contra 14 países, com foco principal na China, visando conter o excesso de capacidade industrial. A medida sinaliza uma escalada protecionista que pode pressionar a inflação global e alterar fluxos comerciais.",
+      "data_publicacao": "2026-11-25T13:39:42Z",
+      "updated_at": "2026-11-25T13:39:42Z"
+    },
+    {
+      "slug": "pcc-expansao-internacional-abin",
+      "titulo_tema": "Estudo da Abin aponta expansão do PCC em 28 países",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Politica",
+      "categorias_cruzadas": [
+        "Geopolitica_Radar"
+      ],
+      "rota_editoria": "/politica",
+      "relevancia_score": 88,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-27T13:39:42Z",
+      "palavras_chave_busca": [
+        "pcc",
+        "crime organizado",
+        "abin",
+        "seguranca publica",
+        "geopolitica do crime"
+      ],
+      "gatilho_vitrine": "Entenda a dimensão transnacional do crime organizado brasileiro revelada pela Abin.",
+      "sintese_nerd": "Relatório da Abin confirma a presença do PCC em 22 estados brasileiros e 28 países, evidenciando a sofisticação da facção. O dado exige uma resposta coordenada de inteligência nacional e cooperação internacional.",
+      "data_publicacao": "2026-11-25T13:39:42Z",
+      "updated_at": "2026-11-25T13:39:42Z"
+    },
+    {
+      "slug": "dolar-atinge-597-sancao-ajuste-fiscal-pec",
+      "status": "novo",
+      "categoria": "Economia_Comercio",
       "ttl_horas": 12,
       "expires_at": "2026-11-26T00:37:15Z",
-      "palavras_chave_busca": [
-        "dólar",
-        "ajuste fiscal",
-        "pec",
-        "lei complementar 239",
-        "câmbio"
-      ],
-      "palavras_chave": [
-        "dólar",
-        "ajuste fiscal",
-        "pec",
-        "lei complementar 239",
-        "câmbio"
-      ],
-      "gatilho_vitrine": "Conforme apuração do G1 Economia e dados divulgados pela TV Senado, o dólar registrou alta no início da sessão até a marca de R$ 5,97, impulsionado por expectativas de inflação nos Estados Unidos e pela sanção integral da Lei Complementar 239/2026. Paralelamente, reportagens do JOTA indicam que o governo estuda o envio de uma nova Proposta de Emenda à Constituição para conter despesas antes do encerramento da legislatura.",
-      "resumo_pulso": "Conforme apuração do G1 Economia e dados divulgados pela TV Senado, o dólar registrou alta no início da sessão até a marca de R$ 5,97, impulsionado por expectativas de inflação nos Estados Unidos e pela sanção integral da Lei Complementar 239/2026. Paralelamente, reportagens do JOTA indicam que o governo estuda o envio de uma nova Proposta de Emenda à Constituição para conter despesas antes do encerramento da legislatura.",
-      "sintese_nerd": "Pressiona custos de insumos importados, viagens ao exterior e preços de produtos atrelados ao câmbio no mercado nacional.",
-      "impacto_pratico": "Pressiona custos de insumos importados, viagens ao exterior e preços de produtos atrelados ao câmbio no mercado nacional.",
-      "paises_envolvidos": [
-        "BR",
-        "US"
-      ],
-      "veiculos_origem": [
-        "G1 Economia",
-        "TV Senado",
-        "JOTA Info"
-      ],
+      "updated_at": "2026-11-25T12:37:15Z",
       "fontes_urls": [
         "https://g1.globo.com/economia/noticia/2026/11/25/dolar-ibovespa.ghtml",
         "https://www.youtube.com/watch?v=IElxEQeHd-0",
         "https://www.jota.info/newsletters/jota-principal/governo-estuda-enviar-nova-pec-ajuste-fiscal"
       ],
+      "titulo_tema": "Dólar atinge R$ 5,97 após sanção do ajuste fiscal e sinalizações sobre nova PEC",
+      "resumo_pulso": "Conforme apuração do G1 Economia e dados divulgados pela TV Senado, o dólar registrou alta no início da sessão até a marca de R$ 5,97, impulsionado por expectativas de inflação nos Estados Unidos e pela sanção integral da Lei Complementar 239/2026. Paralelamente, reportagens do JOTA indicam que o governo estuda o envio de uma nova Proposta de Emenda à Constituição para conter despesas antes do encerramento da legislatura.",
+      "sintese_nerd": "Pressiona custos de insumos importados, viagens ao exterior e preços de produtos atrelados ao câmbio no mercado nacional.",
+      "titulo_curto": "Dólar atinge R$ 5,97 após sanção do ajuste fiscal e sinalizações sobre nova PEC",
+      "rota_editoria": "/economia",
+      "palavras_chave": [
+        "dólar",
+        "ajuste fiscal",
+        "pec",
+        "lei complementar 239",
+        "câmbio"
+      ],
+      "urgencia_score": 92,
       "data_publicacao": "2026-11-25T12:22:01Z",
-      "updated_at": "2026-11-25T12:37:15Z"
-    },
-    {
-      "slug": "ataques-russos-infraestrutura-energia-ucrania-apagaos",
-      "titulo_tema": "Ataques maciços de drones e mísseis russos provocam apagões em cinco regiões da Ucrânia",
-      "titulo_curto": "Ataques maciços de drones e mísseis russos provocam apagões em cinco regiões da Ucrânia",
-      "status": "novo",
+      "gatilho_vitrine": "Conforme apuração do G1 Economia e dados divulgados pela TV Senado, o dólar registrou alta no início da sessão até a marca de R$ 5,97, impulsionado por expectativas de inflação nos Estados Unidos e pela sanção integral da Lei Complementar 239/2026. Paralelamente, reportagens do JOTA indicam que o governo estuda o envio de uma nova Proposta de Emenda à Constituição para conter despesas antes do encerramento da legislatura.",
+      "impacto_pratico": "Pressiona custos de insumos importados, viagens ao exterior e preços de produtos atrelados ao câmbio no mercado nacional.",
       "origem_pipeline": "pulso",
-      "categoria_primaria": "Geopolitica_Radar",
-      "categoria": "Geopolitica_Relacoes",
+      "veiculos_origem": [
+        "G1 Economia",
+        "TV Senado",
+        "JOTA Info"
+      ],
+      "relevancia_score": 94,
+      "paises_envolvidos": [
+        "BR",
+        "US"
+      ],
+      "categoria_primaria": "Economia",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
       ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 89,
-      "urgencia_score": 91,
+      "palavras_chave_busca": [
+        "dólar",
+        "ajuste fiscal",
+        "pec",
+        "lei complementar 239",
+        "câmbio"
+      ]
+    },
+    {
+      "slug": "ataques-russos-infraestrutura-energia-ucrania-apagaos",
+      "status": "novo",
+      "categoria": "Geopolitica_Relacoes",
       "ttl_horas": 18,
       "expires_at": "2026-11-26T06:37:15Z",
-      "palavras_chave_busca": [
-        "ucrânia",
-        "rússia",
-        "energia",
-        "drones",
-        "apagão"
-      ],
-      "palavras_chave": [
-        "ucrânia",
-        "rússia",
-        "energia",
-        "drones",
-        "apagão"
-      ],
-      "gatilho_vitrine": "Segundo dados fornecidos pelas autoridades de Kiev e veiculados por Al Jazeera English e The Kyiv Independent, novos bombardeios russos com mais de 100 drones atingiram a infraestrutura energética da Ucrânia. As investidas paralisaram a geração em usinas térmicas e provocaram a interrupção no fornecimento elétrico em Zaporizhia, Dnipropetrovsk e outras três províncias.",
-      "resumo_pulso": "Segundo dados fornecidos pelas autoridades de Kiev e veiculados por Al Jazeera English e The Kyiv Independent, novos bombardeios russos com mais de 100 drones atingiram a infraestrutura energética da Ucrânia. As investidas paralisaram a geração em usinas térmicas e provocaram a interrupção no fornecimento elétrico em Zaporizhia, Dnipropetrovsk e outras três províncias.",
-      "sintese_nerd": "Aumenta os riscos de crise humanitária e desabastecimento de energia com a chegada do inverno na região.",
-      "impacto_pratico": "Aumenta os riscos de crise humanitária e desabastecimento de energia com a chegada do inverno na região.",
-      "paises_envolvidos": [
-        "UA",
-        "RU"
-      ],
-      "veiculos_origem": [
-        "Al Jazeera English",
-        "The Kyiv Independent"
-      ],
+      "updated_at": "2026-11-25T12:37:15Z",
       "fontes_urls": [
         "https://www.aljazeera.com/news/2026/11/25/russian-strikes-on-ukraine-cause-power-outages-in-five-regions?traffic_source=rss",
         "https://kyivindependent.com/russian-attacks-kill-9-injure-59-across-ukraine-over-past-day-halt-power-generation-at-thermal-power-plant/"
       ],
+      "titulo_tema": "Ataques maciços de drones e mísseis russos provocam apagões em cinco regiões da Ucrânia",
+      "resumo_pulso": "Segundo dados fornecidos pelas autoridades de Kiev e veiculados por Al Jazeera English e The Kyiv Independent, novos bombardeios russos com mais de 100 drones atingiram a infraestrutura energética da Ucrânia. As investidas paralisaram a geração em usinas térmicas e provocaram a interrupção no fornecimento elétrico em Zaporizhia, Dnipropetrovsk e outras três províncias.",
+      "sintese_nerd": "Aumenta os riscos de crise humanitária e desabastecimento de energia com a chegada do inverno na região.",
+      "titulo_curto": "Ataques maciços de drones e mísseis russos provocam apagões em cinco regiões da Ucrânia",
+      "rota_editoria": "/radar",
+      "palavras_chave": [
+        "ucrânia",
+        "rússia",
+        "energia",
+        "drones",
+        "apagão"
+      ],
+      "urgencia_score": 91,
       "data_publicacao": "2026-11-25T12:19:17Z",
-      "updated_at": "2026-11-25T12:37:15Z"
+      "gatilho_vitrine": "Segundo dados fornecidos pelas autoridades de Kiev e veiculados por Al Jazeera English e The Kyiv Independent, novos bombardeios russos com mais de 100 drones atingiram a infraestrutura energética da Ucrânia. As investidas paralisaram a geração em usinas térmicas e provocaram a interrupção no fornecimento elétrico em Zaporizhia, Dnipropetrovsk e outras três províncias.",
+      "impacto_pratico": "Aumenta os riscos de crise humanitária e desabastecimento de energia com a chegada do inverno na região.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "Al Jazeera English",
+        "The Kyiv Independent"
+      ],
+      "relevancia_score": 89,
+      "paises_envolvidos": [
+        "UA",
+        "RU"
+      ],
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "ucrânia",
+        "rússia",
+        "energia",
+        "drones",
+        "apagão"
+      ]
     },
     {
       "slug": "haddad-sinaliza-fora-de-novo-governo-lula",
-      "titulo_tema": "Fernando Haddad sinaliza a Lula que planeja deixar o governo ao fim do mandato",
-      "titulo_curto": "Fernando Haddad sinaliza a Lula que planeja deixar o governo ao fim do mandato",
       "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Economia",
       "categoria": "Economia_Comercio",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 93,
-      "urgencia_score": 90,
       "ttl_horas": 24,
       "expires_at": "2026-11-26T12:37:15Z",
-      "palavras_chave_busca": [
-        "fernando haddad",
-        "lula",
-        "ministério da fazenda",
-        "governo federal"
-      ],
-      "palavras_chave": [
-        "fernando haddad",
-        "lula",
-        "ministério da fazenda",
-        "governo federal"
-      ],
-      "gatilho_vitrine": "Conforme apuração divulgada pelo G1 Política, o ministro da Fazenda, Fernando Haddad, sinalizou ao presidente Luiz Inácio Lula da Silva sua intenção de não integrar a equipe ministerial em um eventual próximo ciclo de governo. O movimento abre espaço para especulações políticas sobre a sucessão na pasta econômica.",
-      "resumo_pulso": "Conforme apuração divulgada pelo G1 Política, o ministro da Fazenda, Fernando Haddad, sinalizou ao presidente Luiz Inácio Lula da Silva sua intenção de não integrar a equipe ministerial em um eventual próximo ciclo de governo. O movimento abre espaço para especulações políticas sobre a sucessão na pasta econômica.",
-      "sintese_nerd": "Gera incerteza nos mercados financeiros quanto à continuidade da atual condução da política fiscal.",
-      "impacto_pratico": "Gera incerteza nos mercados financeiros quanto à continuidade da atual condução da política fiscal.",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "veiculos_origem": [
-        "G1 Política"
-      ],
+      "updated_at": "2026-11-25T12:37:15Z",
       "fontes_urls": [
         "https://g1.globo.com/politica/blog/gerson-camarotti/post/2026/11/25/haddad-sinaliza-a-lula-que-deve-ficar-fora-do-novo-governo.ghtml"
       ],
+      "titulo_tema": "Fernando Haddad sinaliza a Lula que planeja deixar o governo ao fim do mandato",
+      "resumo_pulso": "Conforme apuração divulgada pelo G1 Política, o ministro da Fazenda, Fernando Haddad, sinalizou ao presidente Luiz Inácio Lula da Silva sua intenção de não integrar a equipe ministerial em um eventual próximo ciclo de governo. O movimento abre espaço para especulações políticas sobre a sucessão na pasta econômica.",
+      "sintese_nerd": "Gera incerteza nos mercados financeiros quanto à continuidade da atual condução da política fiscal.",
+      "titulo_curto": "Fernando Haddad sinaliza a Lula que planeja deixar o governo ao fim do mandato",
+      "rota_editoria": "/economia",
+      "palavras_chave": [
+        "fernando haddad",
+        "lula",
+        "ministério da fazenda",
+        "governo federal"
+      ],
+      "urgencia_score": 90,
       "data_publicacao": "2026-11-25T12:07:34Z",
-      "updated_at": "2026-11-25T12:37:15Z"
-    },
-    {
-      "slug": "suprema-corte-iraque-autoriza-tropas-fronteira-petroleo-curdistao",
-      "titulo_tema": "Suprema Corte do Iraque autoriza envio de tropas para a fronteira em meio a disputa de petróleo com o Curdistão",
-      "titulo_curto": "Suprema Corte do Iraque autoriza envio de tropas para a fronteira em meio a disputa de petróleo com o Curdistão",
-      "status": "novo",
+      "gatilho_vitrine": "Conforme apuração divulgada pelo G1 Política, o ministro da Fazenda, Fernando Haddad, sinalizou ao presidente Luiz Inácio Lula da Silva sua intenção de não integrar a equipe ministerial em um eventual próximo ciclo de governo. O movimento abre espaço para especulações políticas sobre a sucessão na pasta econômica.",
+      "impacto_pratico": "Gera incerteza nos mercados financeiros quanto à continuidade da atual condução da política fiscal.",
       "origem_pipeline": "pulso",
-      "categoria_primaria": "Geopolitica_Radar",
-      "categoria": "Geopolitica_Relacoes",
+      "veiculos_origem": [
+        "G1 Política"
+      ],
+      "relevancia_score": 93,
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "categoria_primaria": "Economia",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
       ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 88,
-      "urgencia_score": 89,
+      "palavras_chave_busca": [
+        "fernando haddad",
+        "lula",
+        "ministério da fazenda",
+        "governo federal"
+      ]
+    },
+    {
+      "slug": "suprema-corte-iraque-autoriza-tropas-fronteira-petroleo-curdistao",
+      "status": "novo",
+      "categoria": "Geopolitica_Relacoes",
       "ttl_horas": 24,
       "expires_at": "2026-11-26T12:37:15Z",
-      "palavras_chave_busca": [
-        "iraque",
-        "curdistão",
-        "petróleo",
-        "suprema corte",
-        "tropas"
+      "updated_at": "2026-11-25T12:37:15Z",
+      "fontes_urls": [
+        "https://g1.globo.com/mundo/noticia/2026/11/25/suprema-corte-do-iraque-autoriza-envio-de-tropas-ao-curdistao-em-meio-a-disputa-por-petroleo.ghtml"
       ],
+      "titulo_tema": "Suprema Corte do Iraque autoriza envio de tropas para a fronteira em meio a disputa de petróleo com o Curdistão",
+      "resumo_pulso": "Segundo informações da televisão estatal iraquiana reproduzidas pelo G1 Mundo, a Suprema Corte do Iraque autorizou o deslocamento de tropas federais para a fronteira nacional. A decisão ocorre em meio a uma contenda entre Bagdá e as autoridades do Curdistão pelo controle operacional e financeiro de campos de exploração petrolífera.",
+      "sintese_nerd": "Eleva as tensões geopolíticas no Oriente Médio e pode influenciar as cotações internacionais do barril de petróleo.",
+      "titulo_curto": "Suprema Corte do Iraque autoriza envio de tropas para a fronteira em meio a disputa de petróleo com o Curdistão",
+      "rota_editoria": "/radar",
       "palavras_chave": [
         "iraque",
         "curdistão",
@@ -183,22 +279,31 @@
         "suprema corte",
         "tropas"
       ],
+      "urgencia_score": 89,
+      "data_publicacao": "2026-11-25T11:45:58Z",
       "gatilho_vitrine": "Segundo informações da televisão estatal iraquiana reproduzidas pelo G1 Mundo, a Suprema Corte do Iraque autorizou o deslocamento de tropas federais para a fronteira nacional. A decisão ocorre em meio a uma contenda entre Bagdá e as autoridades do Curdistão pelo controle operacional e financeiro de campos de exploração petrolífera.",
-      "resumo_pulso": "Segundo informações da televisão estatal iraquiana reproduzidas pelo G1 Mundo, a Suprema Corte do Iraque autorizou o deslocamento de tropas federais para a fronteira nacional. A decisão ocorre em meio a uma contenda entre Bagdá e as autoridades do Curdistão pelo controle operacional e financeiro de campos de exploração petrolífera.",
-      "sintese_nerd": "Eleva as tensões geopolíticas no Oriente Médio e pode influenciar as cotações internacionais do barril de petróleo.",
       "impacto_pratico": "Eleva as tensões geopolíticas no Oriente Médio e pode influenciar as cotações internacionais do barril de petróleo.",
-      "paises_envolvidos": [
-        "IQ"
-      ],
+      "origem_pipeline": "pulso",
       "veiculos_origem": [
         "G1 Mundo",
         "Televisão Estatal Iraquiana"
       ],
-      "fontes_urls": [
-        "https://g1.globo.com/mundo/noticia/2026/11/25/suprema-corte-do-iraque-autoriza-envio-de-tropas-ao-curdistao-em-meio-a-disputa-por-petroleo.ghtml"
+      "relevancia_score": 88,
+      "paises_envolvidos": [
+        "IQ"
       ],
-      "data_publicacao": "2026-11-25T11:45:58Z",
-      "updated_at": "2026-11-25T12:37:15Z"
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "iraque",
+        "curdistão",
+        "petróleo",
+        "suprema corte",
+        "tropas"
+      ]
     },
     {
       "slug": "venezuela-revela-divida-publica-de-242-do-pib",
@@ -243,112 +348,6 @@
         "dívida pública",
         "pib",
         "economia"
-      ]
-    },
-    {
-      "slug": "deficit-primario-2026-pressao-dolar-6-reais",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-27T10:39:52Z",
-      "updated_at": "2026-11-25T10:39:52Z",
-      "titulo_tema": "Ampliação do Déficit Primário de 2026 Pressiona Câmbio e Testa Dólar a R$ 6,00",
-      "sintese_nerd": "A elevação nas projeções do déficit público para 2026 enfraquece a credibilidade fiscal brasileira e impulsiona o dólar em direção ao patamar histórico dos R$ 6,00. Esse movimento encarece insumos importados e aumenta a pressão sobre a Selic, encarecendo o crédito para o consumidor final.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-25T10:39:52Z",
-      "gatilho_vitrine": "Monitore o impacto da revisão do resultado primário do governo sobre o dólar e o mercado futuro.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 92,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Politica",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "deficit primario",
-        "meta fiscal 2026",
-        "dolar a 6 reais",
-        "ibovespa hoje",
-        "politica fiscal brasil",
-        "cambio e inflacao"
-      ]
-    },
-    {
-      "slug": "ue-pacote-socorro-ucrania-crise-energetica-russia",
-      "status": "novo",
-      "ttl_horas": 72,
-      "expires_at": "2026-11-28T10:39:52Z",
-      "updated_at": "2026-11-25T10:39:52Z",
-      "titulo_tema": "União Europeia Propõe Pacote de €45 Bi para a Ucrânia em Meio à Crise Energética",
-      "sintese_nerd": "Os recorrentes ataques russos à infraestrutura elétrica ucraniana, incluindo o desligamento da usina nuclear de Zaporizhzhia, levaram a UE a propor um fundo de € 45 bilhões até 2027. O impasse renova o risco de picos nos preços globais de energia e fertilizantes, afetando a cadeia de suprimentos agrícola brasileira.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-25T10:39:52Z",
-      "gatilho_vitrine": "Acompanhe o desdobramento do socorro europeu à Ucrânia e as ameaças à infraestrutura de energia.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 88,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Politica"
-      ],
-      "palavras_chave_busca": [
-        "uniao europeia ucrania",
-        "ursula von der leyen",
-        "crise energetica ucrania",
-        "usina de zaporizhzhia",
-        "pacote 45 bilhoes euros",
-        "cessar fogo energetico"
-      ]
-    },
-    {
-      "slug": "mercados-de-previsao-eleicoes-2026-regulacao-financeira",
-      "status": "novo",
-      "ttl_horas": 96,
-      "expires_at": "2026-11-29T10:39:52Z",
-      "updated_at": "2026-11-25T10:39:52Z",
-      "titulo_tema": "Debate sobre Mercados de Previsão Eleitoral para 2026 Expõe Fuga de Capital",
-      "sintese_nerd": "A indefinição regulatória sobre plataformas de previsão política no Brasil está levando investidores locais a migrar recursos para corretoras nos EUA antes da eleição de 2026. A escolha pela proibição em vez da regulamentação pode privar o mercado doméstico de métricas preditivas e drenar liquidez da B3.",
-      "rota_editoria": "/eleicoes",
-      "data_publicacao": "2026-11-25T10:39:52Z",
-      "gatilho_vitrine": "Entenda a controvérsia sobre a regulação de mercados de apostas políticas antes do pleito de 2026.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 85,
-      "categoria_primaria": "Eleicoes",
-      "categorias_cruzadas": [
-        "Economia",
-        "Politica"
-      ],
-      "palavras_chave_busca": [
-        "mercados de previsao",
-        "apostas eleitorais 2026",
-        "regulacao b3",
-        "fuga de capitais",
-        "eleicoes 2026 brasil",
-        "polymarket brasil"
-      ]
-    },
-    {
-      "slug": "receita-federal-lote-extra-imposto-de-renda-2026",
-      "status": "em_alta",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-26T10:39:52Z",
-      "updated_at": "2026-11-25T10:39:52Z",
-      "titulo_tema": "Receita Federal Abre Consulta a Lote Extra da Restituição do IR 2026",
-      "sintese_nerd": "A liberação da consulta ao lote extra da restituição do Imposto de Renda de 2026 injeta recursos represados na malha fina de volta na economia doméstica. Para o contribuinte, é a oportunidade de regularizar pendências fiscais e utilizar o crédito residual em um cenário de Selic elevada.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-25T10:39:52Z",
-      "gatilho_vitrine": "Verifique se o seu CPF foi contemplado no lote residual de restituição do Imposto de Renda.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 78,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "restituicao imposto de renda",
-        "lote extra ir 2026",
-        "consulta receita federal",
-        "malha fina ir",
-        "como consultar restituicao"
       ]
     },
     {
@@ -866,32 +865,127 @@
       ]
     }
   ],
+  "temas_curadoria": [
+    {
+      "slug": "eua-propoem-tarifas-aeronaves-brasil",
+      "titulo_tema": "EUA propõem novas tarifas sobre produtos brasileiros",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Geopolitica_Radar",
+        "Politica"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 98,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-27T13:39:42Z",
+      "palavras_chave_busca": [
+        "tarifas eua",
+        "exportacoes brasil",
+        "aeronaves",
+        "comercio exterior",
+        "governo trump",
+        "balanca comercial"
+      ],
+      "gatilho_vitrine": "Analise o impacto das novas tarifas americanas na indústria aeronáutica brasileira e nas relações diplomáticas.",
+      "sintese_nerd": "O governo dos EUA propôs tarifas de 10% sobre aeronaves brasileiras, alegando falta de progresso em disputas comerciais. A medida tensiona a balança comercial e exige resposta diplomática imediata do Itamaraty.",
+      "data_publicacao": "2026-11-25T13:39:42Z",
+      "updated_at": "2026-11-25T13:39:42Z"
+    },
+    {
+      "slug": "ajuste-fiscal-lula-congresso-janeiro",
+      "titulo_tema": "Possível convocação do Congresso em janeiro para ajuste fiscal",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Politica",
+      "categorias_cruzadas": [
+        "Economia",
+        "Eleicoes"
+      ],
+      "rota_editoria": "/politica",
+      "relevancia_score": 92,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-26T13:39:42Z",
+      "palavras_chave_busca": [
+        "ajuste fiscal",
+        "pec",
+        "lula",
+        "congresso nacional",
+        "recesso parlamentar",
+        "economia brasileira"
+      ],
+      "gatilho_vitrine": "Acompanhe a articulação do governo Lula para garantir a aprovação da segunda etapa do ajuste fiscal.",
+      "sintese_nerd": "A equipe econômica avalia convocar o Congresso durante o recesso de janeiro para votar a PEC do ajuste fiscal. A urgência reflete a necessidade de sinalizar responsabilidade fiscal ao mercado diante de um cenário de alta de juros e inflação.",
+      "data_publicacao": "2026-11-25T13:39:42Z",
+      "updated_at": "2026-11-25T13:39:42Z"
+    },
+    {
+      "slug": "tarifas-globais-trump-china",
+      "titulo_tema": "Trump propõe novas tarifas contra 14 parceiros comerciais",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 90,
+      "ttl_horas": 72,
+      "expires_at": "2026-11-28T13:39:42Z",
+      "palavras_chave_busca": [
+        "trump",
+        "tarifas",
+        "china",
+        "guerra comercial",
+        "protecionismo",
+        "economia global"
+      ],
+      "gatilho_vitrine": "Entenda a nova onda de protecionismo americano e seus efeitos nas cadeias globais de suprimentos.",
+      "sintese_nerd": "O governo Trump anunciou planos de tarifas contra 14 países, com foco principal na China, visando conter o excesso de capacidade industrial. A medida sinaliza uma escalada protecionista que pode pressionar a inflação global e alterar fluxos comerciais.",
+      "data_publicacao": "2026-11-25T13:39:42Z",
+      "updated_at": "2026-11-25T13:39:42Z"
+    },
+    {
+      "slug": "pcc-expansao-internacional-abin",
+      "titulo_tema": "Estudo da Abin aponta expansão do PCC em 28 países",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Politica",
+      "categorias_cruzadas": [
+        "Geopolitica_Radar"
+      ],
+      "rota_editoria": "/politica",
+      "relevancia_score": 88,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-27T13:39:42Z",
+      "palavras_chave_busca": [
+        "pcc",
+        "crime organizado",
+        "abin",
+        "seguranca publica",
+        "geopolitica do crime"
+      ],
+      "gatilho_vitrine": "Entenda a dimensão transnacional do crime organizado brasileiro revelada pela Abin.",
+      "sintese_nerd": "Relatório da Abin confirma a presença do PCC em 22 estados brasileiros e 28 países, evidenciando a sofisticação da facção. O dado exige uma resposta coordenada de inteligência nacional e cooperação internacional.",
+      "data_publicacao": "2026-11-25T13:39:42Z",
+      "updated_at": "2026-11-25T13:39:42Z"
+    }
+  ],
   "noticias_quentes": [
     {
       "slug": "dolar-atinge-597-sancao-ajuste-fiscal-pec",
-      "titulo_curto": "Dólar atinge R$ 5,97 após sanção do ajuste fiscal e sinalizações sobre nova PEC",
-      "resumo_pulso": "Conforme apuração do G1 Economia e dados divulgados pela TV Senado, o dólar registrou alta no início da sessão até a marca de R$ 5,97, impulsionado por expectativas de inflação nos Estados Unidos e pela sanção integral da Lei Complementar 239/2026. Paralelamente, reportagens do JOTA indicam que o governo estuda o envio de uma nova Proposta de Emenda à Constituição para conter despesas antes do encerramento da legislatura.",
-      "impacto_pratico": "Pressiona custos de insumos importados, viagens ao exterior e preços de produtos atrelados ao câmbio no mercado nacional.",
       "categoria": "Economia_Comercio",
-      "paises_envolvidos": [
-        "BR",
-        "US"
-      ],
-      "urgencia_score": 92,
-      "relevancia_score": 94,
-      "nivel_confianca": "alta",
       "ttl_horas": 12,
-      "horas_em_destaque": 8,
-      "veiculos_origem": [
-        "G1 Economia",
-        "TV Senado",
-        "JOTA Info"
-      ],
+      "expires_at": "2026-11-26T00:37:15Z",
+      "updated_at": "2026-11-25T12:37:15Z",
       "fontes_urls": [
         "https://g1.globo.com/economia/noticia/2026/11/25/dolar-ibovespa.ghtml",
         "https://www.youtube.com/watch?v=IElxEQeHd-0",
         "https://www.jota.info/newsletters/jota-principal/governo-estuda-enviar-nova-pec-ajuste-fiscal"
       ],
+      "resumo_pulso": "Conforme apuração do G1 Economia e dados divulgados pela TV Senado, o dólar registrou alta no início da sessão até a marca de R$ 5,97, impulsionado por expectativas de inflação nos Estados Unidos e pela sanção integral da Lei Complementar 239/2026. Paralelamente, reportagens do JOTA indicam que o governo estuda o envio de uma nova Proposta de Emenda à Constituição para conter despesas antes do encerramento da legislatura.",
+      "titulo_curto": "Dólar atinge R$ 5,97 após sanção do ajuste fiscal e sinalizações sobre nova PEC",
       "palavras_chave": [
         "Dólar",
         "Ajuste Fiscal",
@@ -899,45 +993,46 @@
         "Lei Complementar 239",
         "Câmbio"
       ],
+      "urgencia_score": 92,
       "data_publicacao": "2026-11-25T12:22:01Z",
+      "impacto_pratico": "Pressiona custos de insumos importados, viagens ao exterior e preços de produtos atrelados ao câmbio no mercado nacional.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "G1 Economia",
+        "TV Senado",
+        "JOTA Info"
+      ],
+      "relevancia_score": 94,
+      "horas_em_destaque": 8,
+      "paises_envolvidos": [
+        "BR",
+        "US"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "Economia no Brasil",
           "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
-          "motivo_conexao": "Acompanhe análises completas sobre câmbio, política fiscal e inflação no cenário nacional."
+          "motivo_conexao": "Acompanhe análises completas sobre câmbio, política fiscal e inflação no cenário nacional.",
+          "titulo_existente": "Economia no Brasil"
         },
         {
-          "titulo_existente": "Banco Central e mercado financeiro acompanham inflação de serviços, câmbio e metas fiscais",
           "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
-          "motivo_conexao": "Entenda a relação entre a variação cambial e o cumprimento das metas inflacionárias no país."
+          "motivo_conexao": "Entenda a relação entre a variação cambial e o cumprimento das metas inflacionárias no país.",
+          "titulo_existente": "Banco Central e mercado financeiro acompanham inflação de serviços, câmbio e metas fiscais"
         }
-      ],
-      "expires_at": "2026-11-26T00:37:15Z",
-      "updated_at": "2026-11-25T12:37:15Z"
+      ]
     },
     {
       "slug": "ataques-russos-infraestrutura-energia-ucrania-apagaos",
-      "titulo_curto": "Ataques maciços de drones e mísseis russos provocam apagões em cinco regiões da Ucrânia",
-      "resumo_pulso": "Segundo dados fornecidos pelas autoridades de Kiev e veiculados por Al Jazeera English e The Kyiv Independent, novos bombardeios russos com mais de 100 drones atingiram a infraestrutura energética da Ucrânia. As investidas paralisaram a geração em usinas térmicas e provocaram a interrupção no fornecimento elétrico em Zaporizhia, Dnipropetrovsk e outras três províncias.",
-      "impacto_pratico": "Aumenta os riscos de crise humanitária e desabastecimento de energia com a chegada do inverno na região.",
       "categoria": "Geopolitica_Relacoes",
-      "paises_envolvidos": [
-        "UA",
-        "RU"
-      ],
-      "urgencia_score": 91,
-      "relevancia_score": 89,
-      "nivel_confianca": "alta",
       "ttl_horas": 18,
-      "horas_em_destaque": 8,
-      "veiculos_origem": [
-        "Al Jazeera English",
-        "The Kyiv Independent"
-      ],
+      "expires_at": "2026-11-26T06:37:15Z",
+      "updated_at": "2026-11-25T12:37:15Z",
       "fontes_urls": [
         "https://www.aljazeera.com/news/2026/11/25/russian-strikes-on-ukraine-cause-power-outages-in-five-regions?traffic_source=rss",
         "https://kyivindependent.com/russian-attacks-kill-9-injure-59-across-ukraine-over-past-day-halt-power-generation-at-thermal-power-plant/"
       ],
+      "resumo_pulso": "Segundo dados fornecidos pelas autoridades de Kiev e veiculados por Al Jazeera English e The Kyiv Independent, novos bombardeios russos com mais de 100 drones atingiram a infraestrutura energética da Ucrânia. As investidas paralisaram a geração em usinas térmicas e provocaram a interrupção no fornecimento elétrico em Zaporizhia, Dnipropetrovsk e outras três províncias.",
+      "titulo_curto": "Ataques maciços de drones e mísseis russos provocam apagões em cinco regiões da Ucrânia",
       "palavras_chave": [
         "Ucrânia",
         "Rússia",
@@ -945,69 +1040,70 @@
         "Drones",
         "Apagão"
       ],
+      "urgencia_score": 91,
       "data_publicacao": "2026-11-25T12:19:17Z",
-      "links_internos_relacionados": [],
-      "expires_at": "2026-11-26T06:37:15Z",
-      "updated_at": "2026-11-25T12:37:15Z"
+      "impacto_pratico": "Aumenta os riscos de crise humanitária e desabastecimento de energia com a chegada do inverno na região.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Al Jazeera English",
+        "The Kyiv Independent"
+      ],
+      "relevancia_score": 89,
+      "horas_em_destaque": 8,
+      "paises_envolvidos": [
+        "UA",
+        "RU"
+      ],
+      "links_internos_relacionados": []
     },
     {
       "slug": "haddad-sinaliza-fora-de-novo-governo-lula",
-      "titulo_curto": "Fernando Haddad sinaliza a Lula que planeja deixar o governo ao fim do mandato",
-      "resumo_pulso": "Conforme apuração divulgada pelo G1 Política, o ministro da Fazenda, Fernando Haddad, sinalizou ao presidente Luiz Inácio Lula da Silva sua intenção de não integrar a equipe ministerial em um eventual próximo ciclo de governo. O movimento abre espaço para especulações políticas sobre a sucessão na pasta econômica.",
-      "impacto_pratico": "Gera incerteza nos mercados financeiros quanto à continuidade da atual condução da política fiscal.",
       "categoria": "Economia_Comercio",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "urgencia_score": 90,
-      "relevancia_score": 93,
-      "nivel_confianca": "media",
       "ttl_horas": 24,
-      "horas_em_destaque": 12,
-      "veiculos_origem": [
-        "G1 Política"
-      ],
+      "expires_at": "2026-11-26T12:37:15Z",
+      "updated_at": "2026-11-25T12:37:15Z",
       "fontes_urls": [
         "https://g1.globo.com/politica/blog/gerson-camarotti/post/2026/11/25/haddad-sinaliza-a-lula-que-deve-ficar-fora-do-novo-governo.ghtml"
       ],
+      "resumo_pulso": "Conforme apuração divulgada pelo G1 Política, o ministro da Fazenda, Fernando Haddad, sinalizou ao presidente Luiz Inácio Lula da Silva sua intenção de não integrar a equipe ministerial em um eventual próximo ciclo de governo. O movimento abre espaço para especulações políticas sobre a sucessão na pasta econômica.",
+      "titulo_curto": "Fernando Haddad sinaliza a Lula que planeja deixar o governo ao fim do mandato",
       "palavras_chave": [
         "Fernando Haddad",
         "Lula",
         "Ministério da Fazenda",
         "Governo Federal"
       ],
+      "urgencia_score": 90,
       "data_publicacao": "2026-11-25T12:07:34Z",
+      "impacto_pratico": "Gera incerteza nos mercados financeiros quanto à continuidade da atual condução da política fiscal.",
+      "nivel_confianca": "media",
+      "veiculos_origem": [
+        "G1 Política"
+      ],
+      "relevancia_score": 93,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "BR"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "Política no Brasil",
           "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
-          "motivo_conexao": "Confira os desdobramentos sobre articulações políticas e mudanças de quadros no Governo Federal."
+          "motivo_conexao": "Confira os desdobramentos sobre articulações políticas e mudanças de quadros no Governo Federal.",
+          "titulo_existente": "Política no Brasil"
         }
-      ],
-      "expires_at": "2026-11-26T12:37:15Z",
-      "updated_at": "2026-11-25T12:37:15Z"
+      ]
     },
     {
       "slug": "suprema-corte-iraque-autoriza-tropas-fronteira-petroleo-curdistao",
-      "titulo_curto": "Suprema Corte do Iraque autoriza envio de tropas para a fronteira em meio a disputa de petróleo com o Curdistão",
-      "resumo_pulso": "Segundo informações da televisão estatal iraquiana reproduzidas pelo G1 Mundo, a Suprema Corte do Iraque autorizou o deslocamento de tropas federais para a fronteira nacional. A decisão ocorre em meio a uma contenda entre Bagdá e as autoridades do Curdistão pelo controle operacional e financeiro de campos de exploração petrolífera.",
-      "impacto_pratico": "Eleva as tensões geopolíticas no Oriente Médio e pode influenciar as cotações internacionais do barril de petróleo.",
       "categoria": "Geopolitica_Relacoes",
-      "paises_envolvidos": [
-        "IQ"
-      ],
-      "urgencia_score": 89,
-      "relevancia_score": 88,
-      "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 12,
-      "veiculos_origem": [
-        "G1 Mundo",
-        "Televisão Estatal Iraquiana"
-      ],
+      "expires_at": "2026-11-26T12:37:15Z",
+      "updated_at": "2026-11-25T12:37:15Z",
       "fontes_urls": [
         "https://g1.globo.com/mundo/noticia/2026/11/25/suprema-corte-do-iraque-autoriza-envio-de-tropas-ao-curdistao-em-meio-a-disputa-por-petroleo.ghtml"
       ],
+      "resumo_pulso": "Segundo informações da televisão estatal iraquiana reproduzidas pelo G1 Mundo, a Suprema Corte do Iraque autorizou o deslocamento de tropas federais para a fronteira nacional. A decisão ocorre em meio a uma contenda entre Bagdá e as autoridades do Curdistão pelo controle operacional e financeiro de campos de exploração petrolífera.",
+      "titulo_curto": "Suprema Corte do Iraque autoriza envio de tropas para a fronteira em meio a disputa de petróleo com o Curdistão",
       "palavras_chave": [
         "Iraque",
         "Curdistão",
@@ -1015,10 +1111,20 @@
         "Suprema Corte",
         "Tropas"
       ],
+      "urgencia_score": 89,
       "data_publicacao": "2026-11-25T11:45:58Z",
-      "links_internos_relacionados": [],
-      "expires_at": "2026-11-26T12:37:15Z",
-      "updated_at": "2026-11-25T12:37:15Z"
+      "impacto_pratico": "Eleva as tensões geopolíticas no Oriente Médio e pode influenciar as cotações internacionais do barril de petróleo.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "G1 Mundo",
+        "Televisão Estatal Iraquiana"
+      ],
+      "relevancia_score": 88,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "IQ"
+      ],
+      "links_internos_relacionados": []
     },
     {
       "slug": "venezuela-revela-divida-publica-de-242-do-pib",
@@ -1613,114 +1719,6 @@
           "motivo_conexao": "Ajuda a compreender o impacto de medidas restritivas e suspensões diplomáticas e militares entre nações.",
           "titulo_existente": "O que é uma sanção internacional?"
         }
-      ]
-    }
-  ],
-  "temas_curadoria": [
-    {
-      "slug": "deficit-primario-2026-pressao-dolar-6-reais",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-27T10:39:52Z",
-      "updated_at": "2026-11-25T10:39:52Z",
-      "titulo_tema": "Ampliação do Déficit Primário de 2026 Pressiona Câmbio e Testa Dólar a R$ 6,00",
-      "sintese_nerd": "A elevação nas projeções do déficit público para 2026 enfraquece a credibilidade fiscal brasileira e impulsiona o dólar em direção ao patamar histórico dos R$ 6,00. Esse movimento encarece insumos importados e aumenta a pressão sobre a Selic, encarecendo o crédito para o consumidor final.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-25T10:39:52Z",
-      "gatilho_vitrine": "Monitore o impacto da revisão do resultado primário do governo sobre o dólar e o mercado futuro.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 92,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Politica",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "deficit primario",
-        "meta fiscal 2026",
-        "dolar a 6 reais",
-        "ibovespa hoje",
-        "politica fiscal brasil",
-        "cambio e inflacao"
-      ]
-    },
-    {
-      "slug": "ue-pacote-socorro-ucrania-crise-energetica-russia",
-      "status": "novo",
-      "ttl_horas": 72,
-      "expires_at": "2026-11-28T10:39:52Z",
-      "updated_at": "2026-11-25T10:39:52Z",
-      "titulo_tema": "União Europeia Propõe Pacote de €45 Bi para a Ucrânia em Meio à Crise Energética",
-      "sintese_nerd": "Os recorrentes ataques russos à infraestrutura elétrica ucraniana, incluindo o desligamento da usina nuclear de Zaporizhzhia, levaram a UE a propor um fundo de € 45 bilhões até 2027. O impasse renova o risco de picos nos preços globais de energia e fertilizantes, afetando a cadeia de suprimentos agrícola brasileira.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-25T10:39:52Z",
-      "gatilho_vitrine": "Acompanhe o desdobramento do socorro europeu à Ucrânia e as ameaças à infraestrutura de energia.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 88,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Politica"
-      ],
-      "palavras_chave_busca": [
-        "uniao europeia ucrania",
-        "ursula von der leyen",
-        "crise energetica ucrania",
-        "usina de zaporizhzhia",
-        "pacote 45 bilhoes euros",
-        "cessar fogo energetico"
-      ]
-    },
-    {
-      "slug": "mercados-de-previsao-eleicoes-2026-regulacao-financeira",
-      "status": "novo",
-      "ttl_horas": 96,
-      "expires_at": "2026-11-29T10:39:52Z",
-      "updated_at": "2026-11-25T10:39:52Z",
-      "titulo_tema": "Debate sobre Mercados de Previsão Eleitoral para 2026 Expõe Fuga de Capital",
-      "sintese_nerd": "A indefinição regulatória sobre plataformas de previsão política no Brasil está levando investidores locais a migrar recursos para corretoras nos EUA antes da eleição de 2026. A escolha pela proibição em vez da regulamentação pode privar o mercado doméstico de métricas preditivas e drenar liquidez da B3.",
-      "rota_editoria": "/eleicoes",
-      "data_publicacao": "2026-11-25T10:39:52Z",
-      "gatilho_vitrine": "Entenda a controvérsia sobre a regulação de mercados de apostas políticas antes do pleito de 2026.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 85,
-      "categoria_primaria": "Eleicoes",
-      "categorias_cruzadas": [
-        "Economia",
-        "Politica"
-      ],
-      "palavras_chave_busca": [
-        "mercados de previsao",
-        "apostas eleitorais 2026",
-        "regulacao b3",
-        "fuga de capitais",
-        "eleicoes 2026 brasil",
-        "polymarket brasil"
-      ]
-    },
-    {
-      "slug": "receita-federal-lote-extra-imposto-de-renda-2026",
-      "status": "em_alta",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-26T10:39:52Z",
-      "updated_at": "2026-11-25T10:39:52Z",
-      "titulo_tema": "Receita Federal Abre Consulta a Lote Extra da Restituição do IR 2026",
-      "sintese_nerd": "A liberação da consulta ao lote extra da restituição do Imposto de Renda de 2026 injeta recursos represados na malha fina de volta na economia doméstica. Para o contribuinte, é a oportunidade de regularizar pendências fiscais e utilizar o crédito residual em um cenário de Selic elevada.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-25T10:39:52Z",
-      "gatilho_vitrine": "Verifique se o seu CPF foi contemplado no lote residual de restituição do Imposto de Renda.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 78,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "restituicao imposto de renda",
-        "lote extra ir 2026",
-        "consulta receita federal",
-        "malha fina ir",
-        "como consultar restituicao"
       ]
     }
   ]
