@@ -2,13 +2,13 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-25T07:56:41Z",
-  "batch_id": "20261125-0755",
+  "updatedAt": "2026-11-25T09:00:26Z",
+  "batch_id": "20261125-0859",
   "temas_ativos": [
     {
-      "slug": "itau-bv-inter-demissoes-bancarios",
-      "titulo_tema": "Bancos Itaú, BV e Inter desligam cerca de 600 funcionários, aponta sindicato",
-      "titulo_curto": "Bancos Itaú, BV e Inter desligam cerca de 600 funcionários, aponta sindicato",
+      "slug": "dow-jones-futuro-cai-inflacao-eua-tarifas",
+      "titulo_tema": "Mercados futuros de Nova York recuam com expectativa de inflação e temor de novas tarifas nos EUA",
+      "titulo_curto": "Mercados futuros de Nova York recuam com expectativa de inflação e temor de novas tarifas nos EUA",
       "status": "novo",
       "origem_pipeline": "pulso",
       "categoria_primaria": "Economia",
@@ -18,143 +18,256 @@
         "Resumo_Ultimas"
       ],
       "rota_editoria": "/economia",
-      "relevancia_score": 89,
-      "urgencia_score": 87,
-      "ttl_horas": 24,
-      "expires_at": "2026-11-26T07:56:41Z",
+      "relevancia_score": 88,
+      "urgencia_score": 86,
+      "ttl_horas": 12,
+      "expires_at": "2026-11-25T21:00:26Z",
       "palavras_chave_busca": [
-        "itaú",
-        "banco bv",
-        "banco inter",
-        "demissões",
-        "bancários"
+        "dow jones",
+        "inflação eua",
+        "pce",
+        "tarifas comerciais",
+        "mercados financeiros"
       ],
       "palavras_chave": [
-        "itaú",
-        "banco bv",
-        "banco inter",
-        "demissões",
-        "bancários"
+        "dow jones",
+        "inflação eua",
+        "pce",
+        "tarifas comerciais",
+        "mercados financeiros"
       ],
-      "gatilho_vitrine": "Conforme levantamento divulgado pelo Poder360 com base em sindicatos da categoria, instituições financeiras como Itaú, Banco BV e Banco Inter realizaram cortes que somam cerca de 600 demissões, com dezenas de bancários ainda aguardando definições sobre os desligamentos.",
-      "resumo_pulso": "Conforme levantamento divulgado pelo Poder360 com base em sindicatos da categoria, instituições financeiras como Itaú, Banco BV e Banco Inter realizaram cortes que somam cerca de 600 demissões, com dezenas de bancários ainda aguardando definições sobre os desligamentos.",
-      "sintese_nerd": "O movimento impacta o mercado de trabalho do setor financeiro e reflete reestruturações operacionais internas dos bancos privados.",
-      "impacto_pratico": "O movimento impacta o mercado de trabalho do setor financeiro e reflete reestruturações operacionais internas dos bancos privados.",
+      "gatilho_vitrine": "Conforme apuração do InfoMoney, os contratos futuros de Dow Jones registram queda diante da proximidade da divulgação do índice PCE de outubro e do monitoramento de possíveis anúncios de tarifas protecionistas contra parceiros comerciais por Washington.",
+      "resumo_pulso": "Conforme apuração do InfoMoney, os contratos futuros de Dow Jones registram queda diante da proximidade da divulgação do índice PCE de outubro e do monitoramento de possíveis anúncios de tarifas protecionistas contra parceiros comerciais por Washington.",
+      "sintese_nerd": "A cautela externa pode repercutir na abertura dos mercados emergentes e influenciar a taxa de câmbio doméstica.",
+      "impacto_pratico": "A cautela externa pode repercutir na abertura dos mercados emergentes e influenciar a taxa de câmbio doméstica.",
+      "paises_envolvidos": [
+        "US",
+        "CN"
+      ],
+      "veiculos_origem": [
+        "InfoMoney Mercados"
+      ],
+      "fontes_urls": [
+        "https://www.infomoney.com.br/mercados/dow-jones-futuro-cai-antes-de-inflacao-dos-eua-e-em-meio-a-temor-de-novas-tarifas/"
+      ],
+      "data_publicacao": "2026-11-25T08:49:22Z",
+      "updated_at": "2026-11-25T09:00:26Z"
+    },
+    {
+      "slug": "julgamento-van-hattem-stf-tensao-senado-supremo",
+      "titulo_tema": "Julgamento de Van Hattem no STF inaugura embates entre Legislativo e Supremo para 2027",
+      "titulo_curto": "Julgamento de Van Hattem no STF inaugura embates entre Legislativo e Supremo para 2027",
+      "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categoria": "Geopolitica_Relacoes",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 92,
+      "urgencia_score": 89,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-26T09:00:26Z",
+      "palavras_chave_busca": [
+        "stf",
+        "senado",
+        "van hattem",
+        "pgr",
+        "relação entre os poderes"
+      ],
+      "palavras_chave": [
+        "stf",
+        "senado",
+        "van hattem",
+        "pgr",
+        "relação entre os poderes"
+      ],
+      "gatilho_vitrine": "Segundo análise da BBC News Brasil, a eventual aceitação de denúncia da Procuradoria-Geral da República contra o deputado e senador eleito Van Hattem pode transformá-lo em réu por calúnia e injúria, acendendo alertas para possíveis retaliações políticas no Parlamento.",
+      "resumo_pulso": "Segundo análise da BBC News Brasil, a eventual aceitação de denúncia da Procuradoria-Geral da República contra o deputado e senador eleito Van Hattem pode transformá-lo em réu por calúnia e injúria, acendendo alertas para possíveis retaliações políticas no Parlamento.",
+      "sintese_nerd": "Potencializa o atrito institucional entre o Poder Judiciário e parlamentares críticos à Suprema Corte no início do próximo ciclo legislativo.",
+      "impacto_pratico": "Potencializa o atrito institucional entre o Poder Judiciário e parlamentares críticos à Suprema Corte no início do próximo ciclo legislativo.",
       "paises_envolvidos": [
         "BR"
       ],
       "veiculos_origem": [
-        "Poder360"
+        "BBC News Brasil"
       ],
       "fontes_urls": [
-        "https://www.poder360.com.br/poder-economia/itau-bv-e-inter-demitem-cerca-de-600-funcionarios/"
+        "https://www.bbc.com/portuguese/articles/cqdr13l5e830o?at_medium=RSS&at_campaign=rss"
       ],
-      "data_publicacao": "2026-11-25T07:51:21Z",
-      "updated_at": "2026-11-25T07:56:41Z"
+      "data_publicacao": "2026-11-25T08:44:53Z",
+      "updated_at": "2026-11-25T09:00:26Z"
     },
     {
-      "slug": "governo-lula-ajuste-fiscal-orcamento",
-      "status": "novo",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-26T07:42:33Z",
-      "updated_at": "2026-11-25T07:42:33Z",
-      "titulo_tema": "Governo Lula discute novas medidas fiscais após redução de contenção",
-      "sintese_nerd": "O governo revisou a contenção orçamentária para R$ 12,6 bilhões após manobras contábeis em subsídios, sinalizando um cenário de pressão fiscal persistente. A reunião ministerial de hoje é crucial para definir a sustentabilidade das contas públicas e o impacto nas expectativas do mercado financeiro.",
-      "rota_editoria": "/politica",
-      "data_publicacao": "2026-11-25T07:42:33Z",
-      "gatilho_vitrine": "Acompanhe a reunião decisiva da equipe econômica sobre o futuro do orçamento e a estratégia de contenção de gastos.",
+      "slug": "dolar-seis-reais-impacto-inflacao-bolso",
+      "status": "em_alta",
+      "ttl_horas": 48,
+      "expires_at": "2026-11-27T08:09:29Z",
+      "updated_at": "2026-11-25T08:09:29Z",
+      "titulo_tema": "Dólar em R$ 6 e a transmissão para a inflação de alimentos e consumo",
+      "sintese_nerd": "A desvalorização cambial pressiona custos de insumos agrícolas e combustíveis, repassando a alta diretamente aos preços de supermercado. O cenário exige do Banco Central manter juros elevados enquanto o governo tenta calibrar o fiscal.",
+      "rota_editoria": "/economia",
+      "data_publicacao": "2026-11-25T08:09:29Z",
+      "gatilho_vitrine": "Exibir analise de impacto da alta do dolar no poder de compra do consumidor brasileiro",
       "origem_pipeline": "curadoria",
-      "relevancia_score": 98,
+      "relevancia_score": 95,
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Politica",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "dolar hoje",
+        "dolar a 6 reais",
+        "inflacao alimentos",
+        "ipca",
+        "taxa de cambio",
+        "politica fiscal"
+      ]
+    },
+    {
+      "slug": "eua-descartam-tropas-ucrania-pos-guerra",
+      "status": "novo",
+      "ttl_horas": 72,
+      "expires_at": "2026-11-28T08:09:29Z",
+      "updated_at": "2026-11-25T08:09:29Z",
+      "titulo_tema": "EUA descartam envio de tropas e bases na Ucrânia sob garantias pós-guerra",
+      "sintese_nerd": "Washington estabeleceu linhas vermelhas ao descartar presença militar direta no território ucraniano após eventual cessar-fogo. A posição desaponta Kiev e força os aliados europeus a assumirem o protagonismo da segurança no continente.",
+      "rota_editoria": "/radar",
+      "data_publicacao": "2026-11-25T08:09:29Z",
+      "gatilho_vitrine": "Destacar analise sobre limites do apoio militar dos EUA no leste europeu",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 90,
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Politica"
+      ],
+      "palavras_chave_busca": [
+        "guerra na ucrania",
+        "tropas americanas ucrania",
+        "otan",
+        "seguranca europeia",
+        "acordo de paz ucrania",
+        "geopolitica eua"
+      ]
+    },
+    {
+      "slug": "fim-escala-6x1-calculo-horas-extras",
+      "status": "em_alta",
+      "ttl_horas": 48,
+      "expires_at": "2026-11-27T08:09:29Z",
+      "updated_at": "2026-11-25T08:09:29Z",
+      "titulo_tema": "Regulamentação do fim da escala 6x1 altera valor e cálculo de horas extras",
+      "sintese_nerd": "Com o teto da jornada semanal reduzido, o valor-hora da remuneração dos trabalhadores aumenta, elevando o custo das horas suplementares para as empresas. A medida beneficia a qualidade de vida do trabalhador, mas gera desafios de produtividade no setor produtivo.",
+      "rota_editoria": "/economia",
+      "data_publicacao": "2026-11-25T08:09:29Z",
+      "gatilho_vitrine": "Posicionar explicativo sobre novos custos trabalhistas e regras de jornada",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 87,
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Politica",
+        "Cultura"
+      ],
+      "palavras_chave_busca": [
+        "fim da escala 6x1",
+        "horas extras 6x1",
+        "decreto escala de trabalho",
+        "clt horas extras",
+        "direitos trabalhistas",
+        "jornada de trabalho"
+      ]
+    },
+    {
+      "slug": "governo-revisa-orcamento-contencao-gastos",
+      "status": "novo",
+      "ttl_horas": 36,
+      "expires_at": "2026-11-26T20:09:29Z",
+      "updated_at": "2026-11-25T08:09:29Z",
+      "titulo_tema": "Governo reduz contenção no Orçamento para R$ 12,6 bilhões após ajuste fiscal",
+      "sintese_nerd": "A readequação das contas do governo permitiu aliviar o contingenciamento após retirar subsídios de combustíveis da meta primária. A estratégia busca dar fôlego aos ministérios sem descumprir totalmente o arcabouço fiscal vigente.",
+      "rota_editoria": "/politica",
+      "data_publicacao": "2026-11-25T08:09:29Z",
+      "gatilho_vitrine": "Exibir atualizacao sobre a meta fiscal e o remanejamento orçamentario do governo",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 84,
       "categoria_primaria": "Politica",
       "categorias_cruzadas": [
         "Economia"
       ],
       "palavras_chave_busca": [
-        "lula",
-        "equipe economica",
+        "orcamento federal",
+        "contencao de gastos",
         "meta fiscal",
-        "orcamento 2026",
-        "bruno moretti",
-        "miriam belchior",
-        "gastos publicos"
+        "equipe economica lula",
+        "subsidio combustiveis",
+        "relatorio de receitas e despesas"
       ]
     },
     {
-      "slug": "escalada-conflito-ucrania-russia-drones",
+      "slug": "itau-bv-inter-demissoes-bancarios",
       "status": "novo",
-      "ttl_horas": 12,
-      "expires_at": "2026-11-25T19:42:33Z",
-      "updated_at": "2026-11-25T07:42:33Z",
-      "titulo_tema": "Intensificação de ataques russos com drones na Ucrânia",
-      "sintese_nerd": "A ofensiva russa com mais de 100 drones em uma única noite demonstra a escalada na estratégia de desgaste da infraestrutura crítica ucraniana. O impacto direto é a instabilidade no fornecimento de energia e o aumento da pressão sobre a ajuda financeira e militar da União Europeia.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-25T07:42:33Z",
-      "gatilho_vitrine": "Acompanhe a atualização do conflito: ataques massivos de drones russos atingem infraestrutura civil e energética na Ucrânia.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 92,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia"
+      "categoria": "Economia_Comercio",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-26T07:56:41Z",
+      "updated_at": "2026-11-25T07:56:41Z",
+      "fontes_urls": [
+        "https://www.poder360.com.br/poder-economia/itau-bv-e-inter-demitem-cerca-de-600-funcionarios/"
       ],
-      "palavras_chave_busca": [
-        "guerra ucrania",
-        "russia",
-        "drones",
-        "infraestrutura energetica",
-        "conflito geopolitico",
-        "zelensky"
-      ]
-    },
-    {
-      "slug": "fim-escala-6x1-impacto-trabalhista",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-27T07:42:33Z",
-      "updated_at": "2026-11-25T07:42:33Z",
-      "titulo_tema": "Fim da escala 6x1 e novos cálculos de horas extras",
-      "sintese_nerd": "A transição para o modelo 5x2 altera a base de cálculo do divisor salarial, elevando o custo da hora extra para o empregador. Essa mudança exige adaptação imediata do RH das empresas e altera a dinâmica de remuneração variável no Brasil.",
+      "titulo_tema": "Bancos Itaú, BV e Inter desligam cerca de 600 funcionários, aponta sindicato",
+      "resumo_pulso": "Conforme levantamento divulgado pelo Poder360 com base em sindicatos da categoria, instituições financeiras como Itaú, Banco BV e Banco Inter realizaram cortes que somam cerca de 600 demissões, com dezenas de bancários ainda aguardando definições sobre os desligamentos.",
+      "sintese_nerd": "O movimento impacta o mercado de trabalho do setor financeiro e reflete reestruturações operacionais internas dos bancos privados.",
+      "titulo_curto": "Bancos Itaú, BV e Inter desligam cerca de 600 funcionários, aponta sindicato",
       "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-25T07:42:33Z",
-      "gatilho_vitrine": "Entenda como o fim da escala 6x1 altera o cálculo das suas horas extras e o impacto nas empresas.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 88,
+      "palavras_chave": [
+        "itaú",
+        "banco bv",
+        "banco inter",
+        "demissões",
+        "bancários"
+      ],
+      "urgencia_score": 87,
+      "data_publicacao": "2026-11-25T07:51:21Z",
+      "gatilho_vitrine": "Conforme levantamento divulgado pelo Poder360 com base em sindicatos da categoria, instituições financeiras como Itaú, Banco BV e Banco Inter realizaram cortes que somam cerca de 600 demissões, com dezenas de bancários ainda aguardando definições sobre os desligamentos.",
+      "impacto_pratico": "O movimento impacta o mercado de trabalho do setor financeiro e reflete reestruturações operacionais internas dos bancos privados.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "Poder360"
+      ],
+      "relevancia_score": 89,
+      "paises_envolvidos": [
+        "BR"
+      ],
       "categoria_primaria": "Economia",
       "categorias_cruzadas": [
-        "Cultura"
+        "Economia",
+        "Resumo_Ultimas"
       ],
       "palavras_chave_busca": [
-        "escala 6x1",
-        "reforma trabalhista",
-        "horas extras",
-        "direitos trabalhistas",
-        "decreto lula",
-        "mercado de trabalho"
+        "itaú",
+        "banco bv",
+        "banco inter",
+        "demissões",
+        "bancários"
       ]
     },
     {
       "slug": "ataque-drones-refinarias-russia-samara",
-      "titulo_tema": "Ataques de drones provocam incêndio em duas refinarias de petróleo na região russa de Samara",
-      "titulo_curto": "Ataques de drones provocam incêndio em duas refinarias de petróleo na região russa de Samara",
       "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Geopolitica_Radar",
       "categoria": "Geopolitica_Relacoes",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 90,
-      "urgencia_score": 91,
       "ttl_horas": 18,
       "expires_at": "2026-11-26T01:56:41Z",
-      "palavras_chave_busca": [
-        "rússia",
-        "samara",
-        "refinarias",
-        "drones",
-        "petróleo"
+      "updated_at": "2026-11-25T07:56:41Z",
+      "fontes_urls": [
+        "https://www.ukrinform.net/rubric-ato/4188325-two-rosneft-oil-refineries-in-russias-samara-region-on-fire-following-drone-attack-media.html"
       ],
+      "titulo_tema": "Ataques de drones provocam incêndio em duas refinarias de petróleo na região russa de Samara",
+      "resumo_pulso": "Conforme apuração de veículos de imprensa internacional e da Ukrinform, um ataque coordenado de drones deflagrou incêndios em duas refinarias de petróleo da Rosneft localizadas na região russa de Samara, incluindo a unidade na cidade de Syzran.",
+      "sintese_nerd": "A escalada de ataques contra infraestruturas energéticas na Rússia pode gerar volatilidade adicional nos preços internacionais do petróleo e derivados.",
+      "titulo_curto": "Ataques de drones provocam incêndio em duas refinarias de petróleo na região russa de Samara",
+      "rota_editoria": "/radar",
       "palavras_chave": [
         "rússia",
         "samara",
@@ -162,95 +275,95 @@
         "drones",
         "petróleo"
       ],
+      "urgencia_score": 91,
+      "data_publicacao": "2026-11-25T07:38:00Z",
       "gatilho_vitrine": "Conforme apuração de veículos de imprensa internacional e da Ukrinform, um ataque coordenado de drones deflagrou incêndios em duas refinarias de petróleo da Rosneft localizadas na região russa de Samara, incluindo a unidade na cidade de Syzran.",
-      "resumo_pulso": "Conforme apuração de veículos de imprensa internacional e da Ukrinform, um ataque coordenado de drones deflagrou incêndios em duas refinarias de petróleo da Rosneft localizadas na região russa de Samara, incluindo a unidade na cidade de Syzran.",
-      "sintese_nerd": "A escalada de ataques contra infraestruturas energéticas na Rússia pode gerar volatilidade adicional nos preços internacionais do petróleo e derivados.",
       "impacto_pratico": "A escalada de ataques contra infraestruturas energéticas na Rússia pode gerar volatilidade adicional nos preços internacionais do petróleo e derivados.",
-      "paises_envolvidos": [
-        "RU",
-        "UA"
-      ],
+      "origem_pipeline": "pulso",
       "veiculos_origem": [
         "Ukrinform",
         "The Kyiv Independent"
       ],
-      "fontes_urls": [
-        "https://www.ukrinform.net/rubric-ato/4188325-two-rosneft-oil-refineries-in-russias-samara-region-on-fire-following-drone-attack-media.html"
+      "relevancia_score": 90,
+      "paises_envolvidos": [
+        "RU",
+        "UA"
       ],
-      "data_publicacao": "2026-11-25T07:38:00Z",
-      "updated_at": "2026-11-25T07:56:41Z"
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "rússia",
+        "samara",
+        "refinarias",
+        "drones",
+        "petróleo"
+      ]
     },
     {
       "slug": "exercito-eua-explosao-material-toxico-iowa",
-      "titulo_tema": "Exército dos EUA realiza destruição controlada de material tóxico para munições em Iowa",
-      "titulo_curto": "Exército dos EUA realiza destruição controlada de material tóxico para munições em Iowa",
       "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Geopolitica_Radar",
       "categoria": "Geopolitica_Relacoes",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 85,
-      "urgencia_score": 84,
       "ttl_horas": 24,
       "expires_at": "2026-11-26T07:56:41Z",
-      "palavras_chave_busca": [
-        "estados unidos",
-        "iowa",
-        "exército",
-        "material tóxico",
-        "munições"
-      ],
-      "palavras_chave": [
-        "estados unidos",
-        "iowa",
-        "exército",
-        "material tóxico",
-        "munições"
-      ],
-      "gatilho_vitrine": "Segundo apuração do G1 Mundo, o Exército dos Estados Unidos planeja detonar 68 barris de azida de chumbo — substância empregada na fabricação de armamentos — na Fábrica de Munições de Iowa, após autorização judicial decorrente de disputa sobre riscos ambientais.",
-      "resumo_pulso": "Segundo apuração do G1 Mundo, o Exército dos Estados Unidos planeja detonar 68 barris de azida de chumbo — substância empregada na fabricação de armamentos — na Fábrica de Munições de Iowa, após autorização judicial decorrente de disputa sobre riscos ambientais.",
-      "sintese_nerd": "A operação pontual visa descartar compostos químicos voláteis, gerando monitoramento de segurança ambiental por comunidades locais.",
-      "impacto_pratico": "A operação pontual visa descartar compostos químicos voláteis, gerando monitoramento de segurança ambiental por comunidades locais.",
-      "paises_envolvidos": [
-        "US"
-      ],
-      "veiculos_origem": [
-        "G1 Mundo"
-      ],
+      "updated_at": "2026-11-25T07:56:41Z",
       "fontes_urls": [
         "https://g1.globo.com/mundo/noticia/2026/11/25/em-meio-a-preocupacoes-da-populacao-exercito-dos-eua-vai-explodir-material-toxico-usado-na-fabricacao-de-bombas.ghtml"
       ],
+      "titulo_tema": "Exército dos EUA realiza destruição controlada de material tóxico para munições em Iowa",
+      "resumo_pulso": "Segundo apuração do G1 Mundo, o Exército dos Estados Unidos planeja detonar 68 barris de azida de chumbo — substância empregada na fabricação de armamentos — na Fábrica de Munições de Iowa, após autorização judicial decorrente de disputa sobre riscos ambientais.",
+      "sintese_nerd": "A operação pontual visa descartar compostos químicos voláteis, gerando monitoramento de segurança ambiental por comunidades locais.",
+      "titulo_curto": "Exército dos EUA realiza destruição controlada de material tóxico para munições em Iowa",
+      "rota_editoria": "/radar",
+      "palavras_chave": [
+        "estados unidos",
+        "iowa",
+        "exército",
+        "material tóxico",
+        "munições"
+      ],
+      "urgencia_score": 84,
       "data_publicacao": "2026-11-25T07:00:22Z",
-      "updated_at": "2026-11-25T07:56:41Z"
-    },
-    {
-      "slug": "forcas-seguranca-entram-supermercado-refens-colombia",
-      "titulo_tema": "Presidente da Colômbia confirma resgate de reféns em supermercado em Cartagena",
-      "titulo_curto": "Presidente da Colômbia confirma resgate de reféns em supermercado em Cartagena",
-      "status": "novo",
+      "gatilho_vitrine": "Segundo apuração do G1 Mundo, o Exército dos Estados Unidos planeja detonar 68 barris de azida de chumbo — substância empregada na fabricação de armamentos — na Fábrica de Munições de Iowa, após autorização judicial decorrente de disputa sobre riscos ambientais.",
+      "impacto_pratico": "A operação pontual visa descartar compostos químicos voláteis, gerando monitoramento de segurança ambiental por comunidades locais.",
       "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "G1 Mundo"
+      ],
+      "relevancia_score": 85,
+      "paises_envolvidos": [
+        "US"
+      ],
       "categoria_primaria": "Geopolitica_Radar",
-      "categoria": "Geopolitica_Relacoes",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
       ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 91,
-      "urgencia_score": 93,
+      "palavras_chave_busca": [
+        "estados unidos",
+        "iowa",
+        "exército",
+        "material tóxico",
+        "munições"
+      ]
+    },
+    {
+      "slug": "forcas-seguranca-entram-supermercado-refens-colombia",
+      "status": "novo",
+      "categoria": "Geopolitica_Relacoes",
       "ttl_horas": 12,
       "expires_at": "2026-11-25T18:24:54Z",
-      "palavras_chave_busca": [
-        "colômbia",
-        "cartagena",
-        "reféns",
-        "supermercado",
-        "segurança"
+      "updated_at": "2026-11-25T07:56:41Z",
+      "fontes_urls": [
+        "https://g1.globo.com/mundo/noticia/2026/11/25/supermercado-com-refens-colombia.ghtml"
       ],
+      "titulo_tema": "Presidente da Colômbia confirma resgate de reféns em supermercado em Cartagena",
+      "resumo_pulso": "Segundo o presidente da Colômbia, Abelardo de la Espriella, as forças de segurança concluíram com sucesso o resgate de todos os reféns mantidos em um supermercado em Cartagena por cerca de 17 horas, com o registro da morte de um dos sequestradores na operação.",
+      "sintese_nerd": "A operação encerra o impasse de segurança em Cartagena, restabelecendo a normalidade comercial e o tráfego na região.",
+      "titulo_curto": "Presidente da Colômbia confirma resgate de reféns em supermercado em Cartagena",
+      "rota_editoria": "/radar",
       "palavras_chave": [
         "colômbia",
         "cartagena",
@@ -258,21 +371,30 @@
         "supermercado",
         "segurança"
       ],
+      "urgencia_score": 93,
+      "data_publicacao": "2026-11-25T06:21:06Z",
       "gatilho_vitrine": "Segundo o presidente da Colômbia, Abelardo de la Espriella, as forças de segurança concluíram com sucesso o resgate de todos os reféns mantidos em um supermercado em Cartagena por cerca de 17 horas, com o registro da morte de um dos sequestradores na operação.",
-      "resumo_pulso": "Segundo o presidente da Colômbia, Abelardo de la Espriella, as forças de segurança concluíram com sucesso o resgate de todos os reféns mantidos em um supermercado em Cartagena por cerca de 17 horas, com o registro da morte de um dos sequestradores na operação.",
-      "sintese_nerd": "A operação encerra o impasse de segurança em Cartagena, restabelecendo a normalidade comercial e o tráfego na região.",
       "impacto_pratico": "A operação encerra o impasse de segurança em Cartagena, restabelecendo a normalidade comercial e o tráfego na região.",
-      "paises_envolvidos": [
-        "CO"
-      ],
+      "origem_pipeline": "pulso",
       "veiculos_origem": [
         "G1 Mundo"
       ],
-      "fontes_urls": [
-        "https://g1.globo.com/mundo/noticia/2026/11/25/supermercado-com-refens-colombia.ghtml"
+      "relevancia_score": 91,
+      "paises_envolvidos": [
+        "CO"
       ],
-      "data_publicacao": "2026-11-25T06:21:06Z",
-      "updated_at": "2026-11-25T07:56:41Z"
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "colômbia",
+        "cartagena",
+        "reféns",
+        "supermercado",
+        "segurança"
+      ]
     },
     {
       "slug": "coreia-do-norte-expulsa-chefe-escritorio-suico",
@@ -366,9 +488,9 @@
       ]
     },
     {
-      "slug": "governo-reduz-contencao-despesas-orcamento-12-bilhoes",
-      "titulo_tema": "Governo reduz contenção de gastos no Orçamento para R$ 12,6 bilhões após ajuste na meta fiscal",
-      "titulo_curto": "Governo reduz contenção de gastos no Orçamento para R$ 12,6 bilhões após ajuste na meta fiscal",
+      "slug": "governo-lula-projetos-economicos-congresso-dezembro",
+      "titulo_tema": "Governo Lula corre contra o tempo para aprovar ao menos oito projetos econômicos no Congresso até fim de 2026",
+      "titulo_curto": "Governo Lula corre contra o tempo para aprovar ao menos oito projetos econômicos no Congresso até fim de 2026",
       "status": "novo",
       "origem_pipeline": "pulso",
       "categoria_primaria": "Economia",
@@ -378,39 +500,39 @@
         "Resumo_Ultimas"
       ],
       "rota_editoria": "/economia",
-      "relevancia_score": 92,
-      "urgencia_score": 89,
+      "relevancia_score": 93,
+      "urgencia_score": 90,
       "ttl_horas": 24,
-      "expires_at": "2026-11-26T02:52:34Z",
+      "expires_at": "2026-11-26T09:00:26Z",
       "palavras_chave_busca": [
+        "governo lula",
+        "congresso nacional",
+        "projetos econômicos",
         "orçamento",
-        "contensão de gastos",
-        "meta fiscal",
-        "subsídios",
-        "economia"
+        "recesso parlamentar"
       ],
       "palavras_chave": [
+        "governo lula",
+        "congresso nacional",
+        "projetos econômicos",
         "orçamento",
-        "contensão de gastos",
-        "meta fiscal",
-        "subsídios",
-        "economia"
+        "recesso parlamentar"
       ],
-      "gatilho_vitrine": "Segundo apuração do portal Poder360, o governo federal reduziu o volume de contenção de despesas no Orçamento para R$ 12,6 bilhões. A revisão ocorreu após a retirada de R$ 10,5 bilhões em subsídios aos combustíveis do cálculo da meta fiscal.",
-      "resumo_pulso": "Segundo apuração do portal Poder360, o governo federal reduziu o volume de contenção de despesas no Orçamento para R$ 12,6 bilhões. A revisão ocorreu após a retirada de R$ 10,5 bilhões em subsídios aos combustíveis do cálculo da meta fiscal.",
-      "sintese_nerd": "A mudança alivia temporariamente o bloqueio de verbas discricionárias da máquina pública e altera a dinâmica de execução do Orçamento federal.",
-      "impacto_pratico": "A mudança alivia temporariamente o bloqueio de verbas discricionárias da máquina pública e altera a dinâmica de execução do Orçamento federal.",
+      "gatilho_vitrine": "Conforme apuração do G1 Política, a equipe econômica do governo federal busca acelerar a análise de pelo menos oito medidas econômicas no Congresso Nacional antes do início do recesso parlamentar, marcado para 23 de dezembro.",
+      "resumo_pulso": "Conforme apuração do G1 Política, a equipe econômica do governo federal busca acelerar a análise de pelo menos oito medidas econômicas no Congresso Nacional antes do início do recesso parlamentar, marcado para 23 de dezembro.",
+      "sintese_nerd": "Aceleração de pautas fiscais e orçamentárias pode gerar volatilidade nos mercados financeiros e alterar expectativas para o fechamento do ano.",
+      "impacto_pratico": "Aceleração de pautas fiscais e orçamentárias pode gerar volatilidade nos mercados financeiros e alterar expectativas para o fechamento do ano.",
       "paises_envolvidos": [
         "BR"
       ],
       "veiculos_origem": [
-        "Poder360"
+        "G1 Política"
       ],
       "fontes_urls": [
-        "https://www.poder360.com.br/poder-economia/governo-reduz-contencao-de-gastos-no-orcamento-para-r-126-bi/"
+        "https://g1.globo.com/politica/noticia/2026/11/25/governo-lula-tem-ao-menos-oito-projetos-economicos-para-aprovar-no-congresso-ate-o-fim-de-2026.ghtml"
       ],
-      "data_publicacao": "2026-11-25T02:38:46Z",
-      "updated_at": "2026-11-25T07:56:41Z"
+      "data_publicacao": "2026-11-25T03:00:00Z",
+      "updated_at": "2026-11-25T09:00:26Z"
     },
     {
       "slug": "assessor-trump-brasil-deixa-cargo-departamento-estado",
@@ -733,171 +855,97 @@
         "mercados digitais",
         "regulação"
       ]
-    },
-    {
-      "slug": "brasil-nao-retornara-embaixador-argentina-crise",
-      "status": "novo",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-25T23:24:39Z",
-      "updated_at": "2026-11-25T02:11:11Z",
-      "fontes_urls": [
-        "https://g1.globo.com/politica/noticia/2026/11/24/brasil-decide-que-embaixador-brasileiro-na-argentina-nao-retornara-a-buenos-aires.ghtml"
-      ],
-      "titulo_tema": "Lula decide que embaixador do Brasil não retornará a Buenos Aires após crise diplomática",
-      "resumo_pulso": "Segundo apuração do G1 Política e confirmação de diplomatas do Itamaraty, o governo brasileiro decidiu que o embaixador Júlio Bitelli não voltará à Argentina. A medida consolida o esfriamento diplomático entre os dois países após meses de tensões.",
-      "sintese_nerd": "Sinaliza a manutenção de relações bilaterais em nível inferior ao de embaixadores plenos, afetando o diálogo comercial e político no Cone Sul.",
-      "titulo_curto": "Lula decide que embaixador do Brasil não retornará a Buenos Aires após crise diplomática",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "brasil",
-        "argentina",
-        "diplomacia",
-        "itamaraty"
-      ],
-      "urgencia_score": 92,
-      "data_publicacao": "2026-11-24T23:20:16Z",
-      "gatilho_vitrine": "Segundo apuração do G1 Política e confirmação de diplomatas do Itamaraty, o governo brasileiro decidiu que o embaixador Júlio Bitelli não voltará à Argentina. A medida consolida o esfriamento diplomático entre os dois países após meses de tensões.",
-      "impacto_pratico": "Sinaliza a manutenção de relações bilaterais em nível inferior ao de embaixadores plenos, afetando o diálogo comercial e político no Cone Sul.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "G1 Política",
-        "Itamaraty"
-      ],
-      "relevancia_score": 94,
-      "paises_envolvidos": [
-        "BR",
-        "AR"
-      ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "brasil",
-        "argentina",
-        "diplomacia",
-        "itamaraty"
-      ]
-    },
-    {
-      "slug": "exportacoes-petroleo-golfo-persico-nivel-pre-guerra",
-      "status": "novo",
-      "categoria": "Economia_Comercio",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-27T23:18:08Z",
-      "updated_at": "2026-11-25T02:11:11Z",
-      "fontes_urls": [
-        "https://www.iranintl.com/en/202611249881"
-      ],
-      "titulo_tema": "Exportações de petróleo no Golfo Pérsico retornam aos níveis pré-guerra apesar de ataques em Hormuz",
-      "resumo_pulso": "Segundo dados de rastreamento marítimo da Kpler divulgados pela agência Iran International, as remessas de petróleo dos países do Golfo Pérsico retomaram o volume observado antes do conflito regional. Arábia Saudita e Emirados Árabes Unidos lideraram a recuperação, operando com rotas alternativas e reforço de escolta militar no Estreito de Hormuz.",
-      "sintese_nerd": "Estabiliza o fornecimento global de energia e reduz volatilidade nos preços internacionais do petróleo.",
-      "titulo_curto": "Exportações de petróleo no Golfo Pérsico retornam aos níveis pré-guerra apesar de ataques em Hormuz",
-      "rota_editoria": "/economia",
-      "palavras_chave": [
-        "petróleo",
-        "golfo pérsico",
-        "estreito de hormuz",
-        "energia"
-      ],
-      "urgencia_score": 85,
-      "data_publicacao": "2026-11-24T23:18:08Z",
-      "gatilho_vitrine": "Segundo dados de rastreamento marítimo da Kpler divulgados pela agência Iran International, as remessas de petróleo dos países do Golfo Pérsico retomaram o volume observado antes do conflito regional. Arábia Saudita e Emirados Árabes Unidos lideraram a recuperação, operando com rotas alternativas e reforço de escolta militar no Estreito de Hormuz.",
-      "impacto_pratico": "Estabiliza o fornecimento global de energia e reduz volatilidade nos preços internacionais do petróleo.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "Iran International",
-        "Kpler"
-      ],
-      "relevancia_score": 88,
-      "paises_envolvidos": [
-        "SA",
-        "AE",
-        "IR"
-      ],
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "petróleo",
-        "golfo pérsico",
-        "estreito de hormuz",
-        "energia"
-      ]
-    },
-    {
-      "slug": "moraes-autoriza-advogado-visitar-bolsonaro-hospital",
-      "status": "novo",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 12,
-      "expires_at": "2026-11-25T11:19:15Z",
-      "updated_at": "2026-11-24T23:20:33Z",
-      "fontes_urls": [
-        "https://www.poder360.com.br/poder-justica/moraes-autoriza-advogado-a-visitar-bolsonaro-no-hospital/"
-      ],
-      "titulo_tema": "Moraes autoriza advogado a visitar o ex-presidente Jair Bolsonaro no hospital",
-      "resumo_pulso": "Segundo apuração do portal Poder360, o ministro Alexandre de Moraes autorizou a visita de advogados ao ex-presidente Jair Bolsonaro, internado na UTI do hospital DF Star desde sábado (21). A decisão judicial impõe estrita proibição ao uso de celulares e câmeras durante os encontros.",
-      "sintese_nerd": "Acompanhamento jurídico e médico do ex-presidente em meio às restrições cautelares impostas pelo STF.",
-      "titulo_curto": "Moraes autoriza advogado a visitar o ex-presidente Jair Bolsonaro no hospital",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "alexandre de moraes",
-        "jair bolsonaro",
-        "df star",
-        "stf",
-        "visita médica"
-      ],
-      "urgencia_score": 90,
-      "data_publicacao": "2026-11-24T23:17:16Z",
-      "gatilho_vitrine": "Segundo apuração do portal Poder360, o ministro Alexandre de Moraes autorizou a visita de advogados ao ex-presidente Jair Bolsonaro, internado na UTI do hospital DF Star desde sábado (21). A decisão judicial impõe estrita proibição ao uso de celulares e câmeras durante os encontros.",
-      "impacto_pratico": "Acompanhamento jurídico e médico do ex-presidente em meio às restrições cautelares impostas pelo STF.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "Poder360"
-      ],
-      "relevancia_score": 92,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "alexandre de moraes",
-        "jair bolsonaro",
-        "df star",
-        "stf",
-        "visita médica"
-      ]
     }
   ],
   "noticias_quentes": [
     {
-      "slug": "itau-bv-inter-demissoes-bancarios",
-      "titulo_curto": "Bancos Itaú, BV e Inter desligam cerca de 600 funcionários, aponta sindicato",
-      "resumo_pulso": "Conforme levantamento divulgado pelo Poder360 com base em sindicatos da categoria, instituições financeiras como Itaú, Banco BV e Banco Inter realizaram cortes que somam cerca de 600 demissões, com dezenas de bancários ainda aguardando definições sobre os desligamentos.",
-      "impacto_pratico": "O movimento impacta o mercado de trabalho do setor financeiro e reflete reestruturações operacionais internas dos bancos privados.",
+      "slug": "dow-jones-futuro-cai-inflacao-eua-tarifas",
+      "titulo_curto": "Mercados futuros de Nova York recuam com expectativa de inflação e temor de novas tarifas nos EUA",
+      "resumo_pulso": "Conforme apuração do InfoMoney, os contratos futuros de Dow Jones registram queda diante da proximidade da divulgação do índice PCE de outubro e do monitoramento de possíveis anúncios de tarifas protecionistas contra parceiros comerciais por Washington.",
+      "impacto_pratico": "A cautela externa pode repercutir na abertura dos mercados emergentes e influenciar a taxa de câmbio doméstica.",
       "categoria": "Economia_Comercio",
+      "paises_envolvidos": [
+        "US",
+        "CN"
+      ],
+      "urgencia_score": 86,
+      "relevancia_score": 88,
+      "nivel_confianca": "alta",
+      "ttl_horas": 12,
+      "horas_em_destaque": 6,
+      "veiculos_origem": [
+        "InfoMoney Mercados"
+      ],
+      "fontes_urls": [
+        "https://www.infomoney.com.br/mercados/dow-jones-futuro-cai-antes-de-inflacao-dos-eua-e-em-meio-a-temor-de-novas-tarifas/"
+      ],
+      "palavras_chave": [
+        "Dow Jones",
+        "Inflação EUA",
+        "PCE",
+        "Tarifas comerciais",
+        "Mercados financeiros"
+      ],
+      "data_publicacao": "2026-11-25T08:49:22Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "Banco Central e mercado financeiro acompanham inflação de serviços, câmbio e metas fiscais",
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
+          "motivo_conexao": "Ajuda a compreender como indicadores de inflação internacional e doméstica afetam os ativos e decisões macroeconômicas."
+        }
+      ],
+      "expires_at": "2026-11-25T21:00:26Z",
+      "updated_at": "2026-11-25T09:00:26Z"
+    },
+    {
+      "slug": "julgamento-van-hattem-stf-tensao-senado-supremo",
+      "titulo_curto": "Julgamento de Van Hattem no STF inaugura embates entre Legislativo e Supremo para 2027",
+      "resumo_pulso": "Segundo análise da BBC News Brasil, a eventual aceitação de denúncia da Procuradoria-Geral da República contra o deputado e senador eleito Van Hattem pode transformá-lo em réu por calúnia e injúria, acendendo alertas para possíveis retaliações políticas no Parlamento.",
+      "impacto_pratico": "Potencializa o atrito institucional entre o Poder Judiciário e parlamentares críticos à Suprema Corte no início do próximo ciclo legislativo.",
+      "categoria": "Geopolitica_Relacoes",
       "paises_envolvidos": [
         "BR"
       ],
-      "urgencia_score": 87,
-      "relevancia_score": 89,
+      "urgencia_score": 89,
+      "relevancia_score": 92,
       "nivel_confianca": "alta",
       "ttl_horas": 24,
       "horas_em_destaque": 12,
       "veiculos_origem": [
-        "Poder360"
+        "BBC News Brasil"
       ],
+      "fontes_urls": [
+        "https://www.bbc.com/portuguese/articles/cqdr13l5e830o?at_medium=RSS&at_campaign=rss"
+      ],
+      "palavras_chave": [
+        "STF",
+        "Senado",
+        "Van Hattem",
+        "PGR",
+        "Relação entre os Poderes"
+      ],
+      "data_publicacao": "2026-11-25T08:44:53Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "STF analisa regras de transparência e limites constitucionais entre os Poderes",
+          "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
+          "motivo_conexao": "Relaciona-se com o monitoramento contínuo das prerrogativas institucionais e tensões entre STF e Congresso."
+        }
+      ],
+      "expires_at": "2026-11-26T09:00:26Z",
+      "updated_at": "2026-11-25T09:00:26Z"
+    },
+    {
+      "slug": "itau-bv-inter-demissoes-bancarios",
+      "categoria": "Economia_Comercio",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-26T07:56:41Z",
+      "updated_at": "2026-11-25T07:56:41Z",
       "fontes_urls": [
         "https://www.poder360.com.br/poder-economia/itau-bv-e-inter-demitem-cerca-de-600-funcionarios/"
       ],
+      "resumo_pulso": "Conforme levantamento divulgado pelo Poder360 com base em sindicatos da categoria, instituições financeiras como Itaú, Banco BV e Banco Inter realizaram cortes que somam cerca de 600 demissões, com dezenas de bancários ainda aguardando definições sobre os desligamentos.",
+      "titulo_curto": "Bancos Itaú, BV e Inter desligam cerca de 600 funcionários, aponta sindicato",
       "palavras_chave": [
         "Itaú",
         "Banco BV",
@@ -905,39 +953,37 @@
         "demissões",
         "bancários"
       ],
+      "urgencia_score": 87,
       "data_publicacao": "2026-11-25T07:51:21Z",
+      "impacto_pratico": "O movimento impacta o mercado de trabalho do setor financeiro e reflete reestruturações operacionais internas dos bancos privados.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Poder360"
+      ],
+      "relevancia_score": 89,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "BR"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "Emprego, renda das famílias e financiamento industrial entram no centro do debate econômico",
           "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
-          "motivo_conexao": "Contextualiza as movimentações no mercado de trabalho e o emprego formal no Brasil."
+          "motivo_conexao": "Contextualiza as movimentações no mercado de trabalho e o emprego formal no Brasil.",
+          "titulo_existente": "Emprego, renda das famílias e financiamento industrial entram no centro do debate econômico"
         }
-      ],
-      "expires_at": "2026-11-26T07:56:41Z",
-      "updated_at": "2026-11-25T07:56:41Z"
+      ]
     },
     {
       "slug": "ataque-drones-refinarias-russia-samara",
-      "titulo_curto": "Ataques de drones provocam incêndio em duas refinarias de petróleo na região russa de Samara",
-      "resumo_pulso": "Conforme apuração de veículos de imprensa internacional e da Ukrinform, um ataque coordenado de drones deflagrou incêndios em duas refinarias de petróleo da Rosneft localizadas na região russa de Samara, incluindo a unidade na cidade de Syzran.",
-      "impacto_pratico": "A escalada de ataques contra infraestruturas energéticas na Rússia pode gerar volatilidade adicional nos preços internacionais do petróleo e derivados.",
       "categoria": "Geopolitica_Relacoes",
-      "paises_envolvidos": [
-        "RU",
-        "UA"
-      ],
-      "urgencia_score": 91,
-      "relevancia_score": 90,
-      "nivel_confianca": "alta",
       "ttl_horas": 18,
-      "horas_em_destaque": 12,
-      "veiculos_origem": [
-        "Ukrinform",
-        "The Kyiv Independent"
-      ],
+      "expires_at": "2026-11-26T01:56:41Z",
+      "updated_at": "2026-11-25T07:56:41Z",
       "fontes_urls": [
         "https://www.ukrinform.net/rubric-ato/4188325-two-rosneft-oil-refineries-in-russias-samara-region-on-fire-following-drone-attack-media.html"
       ],
+      "resumo_pulso": "Conforme apuração de veículos de imprensa internacional e da Ukrinform, um ataque coordenado de drones deflagrou incêndios em duas refinarias de petróleo da Rosneft localizadas na região russa de Samara, incluindo a unidade na cidade de Syzran.",
+      "titulo_curto": "Ataques de drones provocam incêndio em duas refinarias de petróleo na região russa de Samara",
       "palavras_chave": [
         "Rússia",
         "Samara",
@@ -945,37 +991,39 @@
         "drones",
         "petróleo"
       ],
+      "urgencia_score": 91,
       "data_publicacao": "2026-11-25T07:38:00Z",
+      "impacto_pratico": "A escalada de ataques contra infraestruturas energéticas na Rússia pode gerar volatilidade adicional nos preços internacionais do petróleo e derivados.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Ukrinform",
+        "The Kyiv Independent"
+      ],
+      "relevancia_score": 90,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "RU",
+        "UA"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "O que é uma sanção internacional?",
           "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-sancao-internacional",
-          "motivo_conexao": "Contextualiza o impacto de conflitos geopolíticos e restrições sobre o setor energético global."
+          "motivo_conexao": "Contextualiza o impacto de conflitos geopolíticos e restrições sobre o setor energético global.",
+          "titulo_existente": "O que é uma sanção internacional?"
         }
-      ],
-      "expires_at": "2026-11-26T01:56:41Z",
-      "updated_at": "2026-11-25T07:56:41Z"
+      ]
     },
     {
       "slug": "exercito-eua-explosao-material-toxico-iowa",
-      "titulo_curto": "Exército dos EUA realiza destruição controlada de material tóxico para munições em Iowa",
-      "resumo_pulso": "Segundo apuração do G1 Mundo, o Exército dos Estados Unidos planeja detonar 68 barris de azida de chumbo — substância empregada na fabricação de armamentos — na Fábrica de Munições de Iowa, após autorização judicial decorrente de disputa sobre riscos ambientais.",
-      "impacto_pratico": "A operação pontual visa descartar compostos químicos voláteis, gerando monitoramento de segurança ambiental por comunidades locais.",
       "categoria": "Geopolitica_Relacoes",
-      "paises_envolvidos": [
-        "US"
-      ],
-      "urgencia_score": 84,
-      "relevancia_score": 85,
-      "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 12,
-      "veiculos_origem": [
-        "G1 Mundo"
-      ],
+      "expires_at": "2026-11-26T07:56:41Z",
+      "updated_at": "2026-11-25T07:56:41Z",
       "fontes_urls": [
         "https://g1.globo.com/mundo/noticia/2026/11/25/em-meio-a-preocupacoes-da-populacao-exercito-dos-eua-vai-explodir-material-toxico-usado-na-fabricacao-de-bombas.ghtml"
       ],
+      "resumo_pulso": "Segundo apuração do G1 Mundo, o Exército dos Estados Unidos planeja detonar 68 barris de azida de chumbo — substância empregada na fabricação de armamentos — na Fábrica de Munições de Iowa, após autorização judicial decorrente de disputa sobre riscos ambientais.",
+      "titulo_curto": "Exército dos EUA realiza destruição controlada de material tóxico para munições em Iowa",
       "palavras_chave": [
         "Estados Unidos",
         "Iowa",
@@ -983,37 +1031,37 @@
         "material tóxico",
         "munições"
       ],
+      "urgencia_score": 84,
       "data_publicacao": "2026-11-25T07:00:22Z",
-      "links_internos_relacionados": [
-        {
-          "titulo_existente": "Casa Branca anuncia novos nomes para o gabinete e detalha prioridades em imigração e comércio",
-          "url_existente": "https://www.rodandoomundo.com.br/politica/estados-unidos",
-          "motivo_conexao": "Acompanha decisões administrativas e de defesa do governo norte-americano."
-        }
-      ],
-      "expires_at": "2026-11-26T07:56:41Z",
-      "updated_at": "2026-11-25T07:56:41Z"
-    },
-    {
-      "slug": "forcas-seguranca-entram-supermercado-refens-colombia",
-      "titulo_curto": "Presidente da Colômbia confirma resgate de reféns em supermercado em Cartagena",
-      "resumo_pulso": "Segundo o presidente da Colômbia, Abelardo de la Espriella, as forças de segurança concluíram com sucesso o resgate de todos os reféns mantidos em um supermercado em Cartagena por cerca de 17 horas, com o registro da morte de um dos sequestradores na operação.",
-      "impacto_pratico": "A operação encerra o impasse de segurança em Cartagena, restabelecendo a normalidade comercial e o tráfego na região.",
-      "categoria": "Geopolitica_Relacoes",
-      "paises_envolvidos": [
-        "CO"
-      ],
-      "urgencia_score": 93,
-      "relevancia_score": 91,
+      "impacto_pratico": "A operação pontual visa descartar compostos químicos voláteis, gerando monitoramento de segurança ambiental por comunidades locais.",
       "nivel_confianca": "alta",
-      "ttl_horas": 12,
-      "horas_em_destaque": 12,
       "veiculos_origem": [
         "G1 Mundo"
       ],
+      "relevancia_score": 85,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "US"
+      ],
+      "links_internos_relacionados": [
+        {
+          "url_existente": "https://www.rodandoomundo.com.br/politica/estados-unidos",
+          "motivo_conexao": "Acompanha decisões administrativas e de defesa do governo norte-americano.",
+          "titulo_existente": "Casa Branca anuncia novos nomes para o gabinete e detalha prioridades em imigração e comércio"
+        }
+      ]
+    },
+    {
+      "slug": "forcas-seguranca-entram-supermercado-refens-colombia",
+      "categoria": "Geopolitica_Relacoes",
+      "ttl_horas": 12,
+      "expires_at": "2026-11-25T18:24:54Z",
+      "updated_at": "2026-11-25T07:56:41Z",
       "fontes_urls": [
         "https://g1.globo.com/mundo/noticia/2026/11/25/supermercado-com-refens-colombia.ghtml"
       ],
+      "resumo_pulso": "Segundo o presidente da Colômbia, Abelardo de la Espriella, as forças de segurança concluíram com sucesso o resgate de todos os reféns mantidos em um supermercado em Cartagena por cerca de 17 horas, com o registro da morte de um dos sequestradores na operação.",
+      "titulo_curto": "Presidente da Colômbia confirma resgate de reféns em supermercado em Cartagena",
       "palavras_chave": [
         "Colômbia",
         "Cartagena",
@@ -1021,16 +1069,25 @@
         "supermercado",
         "segurança"
       ],
+      "urgencia_score": 93,
       "data_publicacao": "2026-11-25T06:21:06Z",
+      "impacto_pratico": "A operação encerra o impasse de segurança em Cartagena, restabelecendo a normalidade comercial e o tráfego na região.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "G1 Mundo"
+      ],
+      "relevancia_score": 91,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "CO"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "Mercados e aliados internacionais avaliam impacto da política comercial norte-americana",
           "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
-          "motivo_conexao": "Acompanha desdobramentos de segurança e impactos regionais na América Latina."
+          "motivo_conexao": "Acompanha desdobramentos de segurança e impactos regionais na América Latina.",
+          "titulo_existente": "Mercados e aliados internacionais avaliam impacto da política comercial norte-americana"
         }
-      ],
-      "expires_at": "2026-11-25T18:24:54Z",
-      "updated_at": "2026-11-25T07:56:41Z"
+      ]
     },
     {
       "slug": "reforma-tributaria-fim-escala-6x1-inflacao-2027",
@@ -1145,25 +1202,54 @@
       ]
     },
     {
-      "slug": "governo-reduz-contencao-despesas-orcamento-12-bilhoes",
-      "titulo_curto": "Governo reduz contenção de gastos no Orçamento para R$ 12,6 bilhões após ajuste na meta fiscal",
-      "resumo_pulso": "Segundo apuração do portal Poder360, o governo federal reduziu o volume de contenção de despesas no Orçamento para R$ 12,6 bilhões. A revisão ocorreu após a retirada de R$ 10,5 bilhões em subsídios aos combustíveis do cálculo da meta fiscal.",
-      "impacto_pratico": "A mudança alivia temporariamente o bloqueio de verbas discricionárias da máquina pública e altera a dinâmica de execução do Orçamento federal.",
+      "slug": "governo-lula-projetos-economicos-congresso-dezembro",
+      "titulo_curto": "Governo Lula corre contra o tempo para aprovar ao menos oito projetos econômicos no Congresso até fim de 2026",
+      "resumo_pulso": "Conforme apuração do G1 Política, a equipe econômica do governo federal busca acelerar a análise de pelo menos oito medidas econômicas no Congresso Nacional antes do início do recesso parlamentar, marcado para 23 de dezembro.",
+      "impacto_pratico": "Aceleração de pautas fiscais e orçamentárias pode gerar volatilidade nos mercados financeiros e alterar expectativas para o fechamento do ano.",
       "categoria": "Economia_Comercio",
       "paises_envolvidos": [
         "BR"
       ],
-      "urgencia_score": 89,
-      "relevancia_score": 92,
+      "urgencia_score": 90,
+      "relevancia_score": 93,
       "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 16,
+      "horas_em_destaque": 12,
       "veiculos_origem": [
-        "Poder360"
+        "G1 Política"
       ],
+      "fontes_urls": [
+        "https://g1.globo.com/politica/noticia/2026/11/25/governo-lula-tem-ao-menos-oito-projetos-economicos-para-aprovar-no-congresso-ate-o-fim-de-2026.ghtml"
+      ],
+      "palavras_chave": [
+        "Governo Lula",
+        "Congresso Nacional",
+        "Projetos Econômicos",
+        "Orçamento",
+        "Recesso Parlamentar"
+      ],
+      "data_publicacao": "2026-11-25T03:00:00Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "Congresso e Planalto negociam prioridades da pauta econômica e votação do Orçamento",
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-o-orcamento",
+          "motivo_conexao": "Complementa a leitura sobre a articulação do governo com o Legislativo para aprovar pacotes econômicos."
+        }
+      ],
+      "expires_at": "2026-11-26T09:00:26Z",
+      "updated_at": "2026-11-25T09:00:26Z"
+    },
+    {
+      "slug": "governo-reduz-contencao-despesas-orcamento-12-bilhoes",
+      "categoria": "Economia_Comercio",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-26T02:52:34Z",
+      "updated_at": "2026-11-25T07:56:41Z",
       "fontes_urls": [
         "https://www.poder360.com.br/poder-economia/governo-reduz-contencao-de-gastos-no-orcamento-para-r-126-bi/"
       ],
+      "resumo_pulso": "Segundo apuração do portal Poder360, o governo federal reduziu o volume de contenção de despesas no Orçamento para R$ 12,6 bilhões. A revisão ocorreu após a retirada de R$ 10,5 bilhões em subsídios aos combustíveis do cálculo da meta fiscal.",
+      "titulo_curto": "Governo reduz contenção de gastos no Orçamento para R$ 12,6 bilhões após ajuste na meta fiscal",
       "palavras_chave": [
         "Orçamento",
         "contensão de gastos",
@@ -1171,21 +1257,30 @@
         "subsídios",
         "economia"
       ],
+      "urgencia_score": 89,
       "data_publicacao": "2026-11-25T02:38:46Z",
+      "impacto_pratico": "A mudança alivia temporariamente o bloqueio de verbas discricionárias da máquina pública e altera a dinâmica de execução do Orçamento federal.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Poder360"
+      ],
+      "relevancia_score": 92,
+      "horas_em_destaque": 16,
+      "paises_envolvidos": [
+        "BR"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "O que é o Orçamento?",
           "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-o-orcamento",
-          "motivo_conexao": "Explica a mecânica de planejamento e os limites de gastos públicos no Brasil."
+          "motivo_conexao": "Explica a mecânica de planejamento e os limites de gastos públicos no Brasil.",
+          "titulo_existente": "O que é o Orçamento?"
         },
         {
-          "titulo_existente": "Implementação da Reforma Tributária e medidas de revisão de gastos avançam em Brasília",
           "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
-          "motivo_conexao": "Relaciona o ajuste de despesas às diretrizes fiscais em discussão no Congresso e no Planalto."
+          "motivo_conexao": "Relaciona o ajuste de despesas às diretrizes fiscais em discussão no Congresso e no Planalto.",
+          "titulo_existente": "Implementação da Reforma Tributária e medidas de revisão de gastos avançam em Brasília"
         }
-      ],
-      "expires_at": "2026-11-26T02:52:34Z",
-      "updated_at": "2026-11-25T07:56:41Z"
+      ]
     },
     {
       "slug": "assessor-trump-brasil-deixa-cargo-departamento-estado",
@@ -1510,196 +1605,113 @@
           "titulo_existente": "Mercados e aliados internacionais avaliam impacto da política comercial norte-americana"
         }
       ]
-    },
-    {
-      "slug": "exportacoes-petroleo-golfo-persico-nivel-pre-guerra",
-      "categoria": "Economia_Comercio",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-27T23:18:08Z",
-      "updated_at": "2026-11-25T02:11:11Z",
-      "fontes_urls": [
-        "https://www.iranintl.com/en/202611249881"
-      ],
-      "resumo_pulso": "Segundo dados de rastreamento marítimo da Kpler divulgados pela agência Iran International, as remessas de petróleo dos países do Golfo Pérsico retomaram o volume observado antes do conflito regional. Arábia Saudita e Emirados Árabes Unidos lideraram a recuperação, operando com rotas alternativas e reforço de escolta militar no Estreito de Hormuz.",
-      "titulo_curto": "Exportações de petróleo no Golfo Pérsico retornam aos níveis pré-guerra apesar de ataques em Hormuz",
-      "palavras_chave": [
-        "Petróleo",
-        "Golfo Pérsico",
-        "Estreito de Hormuz",
-        "Energia"
-      ],
-      "urgencia_score": 85,
-      "data_publicacao": "2026-11-24T23:18:08Z",
-      "impacto_pratico": "Estabiliza o fornecimento global de energia e reduz volatilidade nos preços internacionais do petróleo.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Iran International",
-        "Kpler"
-      ],
-      "relevancia_score": 88,
-      "horas_em_destaque": 12,
-      "paises_envolvidos": [
-        "SA",
-        "AE",
-        "IR"
-      ],
-      "links_internos_relacionados": []
-    },
-    {
-      "slug": "moraes-autoriza-advogado-visitar-bolsonaro-hospital",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 12,
-      "expires_at": "2026-11-25T11:19:15Z",
-      "updated_at": "2026-11-24T23:20:33Z",
-      "fontes_urls": [
-        "https://www.poder360.com.br/poder-justica/moraes-autoriza-advogado-a-visitar-bolsonaro-no-hospital/"
-      ],
-      "resumo_pulso": "Segundo apuração do portal Poder360, o ministro Alexandre de Moraes autorizou a visita de advogados ao ex-presidente Jair Bolsonaro, internado na UTI do hospital DF Star desde sábado (21). A decisão judicial impõe estrita proibição ao uso de celulares e câmeras durante os encontros.",
-      "titulo_curto": "Moraes autoriza advogado a visitar o ex-presidente Jair Bolsonaro no hospital",
-      "palavras_chave": [
-        "Alexandre de Moraes",
-        "Jair Bolsonaro",
-        "DF Star",
-        "STF",
-        "Visita médica"
-      ],
-      "urgencia_score": 90,
-      "data_publicacao": "2026-11-24T23:17:16Z",
-      "impacto_pratico": "Acompanhamento jurídico e médico do ex-presidente em meio às restrições cautelares impostas pelo STF.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Poder360"
-      ],
-      "relevancia_score": 92,
-      "horas_em_destaque": 6,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
-          "motivo_conexao": "Contextualiza os desdobramentos judiciais envolvendo lideranças políticas nacionais.",
-          "titulo_existente": "Política no Brasil"
-        }
-      ]
-    },
-    {
-      "slug": "camara-aprova-raca-cor-prontuarios-sus-chacina-acari",
-      "categoria": "Sociedade_Cultura",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-25T23:20:33Z",
-      "updated_at": "2026-11-24T23:20:33Z",
-      "fontes_urls": [
-        "https://www.youtube.com/watch?v=_wREA4YDJ_g"
-      ],
-      "resumo_pulso": "Segundo informou o canal oficial da Câmara dos Deputados, o plenário aprovou o projeto que obriga o registro de raça e cor nos prontuários médicos do SUS. Além disso, os parlamentares aprovaram o projeto que reconhece a responsabilidade do Estado e concede pensão às famílias das vítimas da Chacina de Acari (RJ).",
-      "titulo_curto": "Câmara aprova inclusão de raça e cor no SUS e reconhecimento de indenização da Chacina de Acari",
-      "palavras_chave": [
-        "Câmara dos Deputados",
-        "SUS",
-        "Chacina de Acari",
-        "Direitos Humanos",
-        "Legislação"
-      ],
-      "urgencia_score": 86,
-      "data_publicacao": "2026-11-24T23:09:55Z",
-      "impacto_pratico": "Mudança nos procedimentos de atendimento no SUS e reparação financeira direta para familiares de vítimas de violência histórica de Estado.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Câmara dos Deputados - YouTube"
-      ],
-      "relevancia_score": 90,
-      "horas_em_destaque": 12,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
-          "motivo_conexao": "Mostra a tramitação e aprovação de propostas sociais essenciais no Congresso Nacional.",
-          "titulo_existente": "Política no Brasil"
-        }
-      ]
     }
   ],
   "temas_curadoria": [
     {
-      "slug": "governo-lula-ajuste-fiscal-orcamento",
-      "status": "novo",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-26T07:42:33Z",
-      "updated_at": "2026-11-25T07:42:33Z",
-      "titulo_tema": "Governo Lula discute novas medidas fiscais após redução de contenção",
-      "sintese_nerd": "O governo revisou a contenção orçamentária para R$ 12,6 bilhões após manobras contábeis em subsídios, sinalizando um cenário de pressão fiscal persistente. A reunião ministerial de hoje é crucial para definir a sustentabilidade das contas públicas e o impacto nas expectativas do mercado financeiro.",
-      "rota_editoria": "/politica",
-      "data_publicacao": "2026-11-25T07:42:33Z",
-      "gatilho_vitrine": "Acompanhe a reunião decisiva da equipe econômica sobre o futuro do orçamento e a estratégia de contenção de gastos.",
+      "slug": "dolar-seis-reais-impacto-inflacao-bolso",
+      "status": "em_alta",
+      "ttl_horas": 48,
+      "expires_at": "2026-11-27T08:09:29Z",
+      "updated_at": "2026-11-25T08:09:29Z",
+      "titulo_tema": "Dólar em R$ 6 e a transmissão para a inflação de alimentos e consumo",
+      "sintese_nerd": "A desvalorização cambial pressiona custos de insumos agrícolas e combustíveis, repassando a alta diretamente aos preços de supermercado. O cenário exige do Banco Central manter juros elevados enquanto o governo tenta calibrar o fiscal.",
+      "rota_editoria": "/economia",
+      "data_publicacao": "2026-11-25T08:09:29Z",
+      "gatilho_vitrine": "Exibir analise de impacto da alta do dolar no poder de compra do consumidor brasileiro",
       "origem_pipeline": "curadoria",
-      "relevancia_score": 98,
+      "relevancia_score": 95,
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Politica",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "dolar hoje",
+        "dolar a 6 reais",
+        "inflacao alimentos",
+        "ipca",
+        "taxa de cambio",
+        "politica fiscal"
+      ]
+    },
+    {
+      "slug": "eua-descartam-tropas-ucrania-pos-guerra",
+      "status": "novo",
+      "ttl_horas": 72,
+      "expires_at": "2026-11-28T08:09:29Z",
+      "updated_at": "2026-11-25T08:09:29Z",
+      "titulo_tema": "EUA descartam envio de tropas e bases na Ucrânia sob garantias pós-guerra",
+      "sintese_nerd": "Washington estabeleceu linhas vermelhas ao descartar presença militar direta no território ucraniano após eventual cessar-fogo. A posição desaponta Kiev e força os aliados europeus a assumirem o protagonismo da segurança no continente.",
+      "rota_editoria": "/radar",
+      "data_publicacao": "2026-11-25T08:09:29Z",
+      "gatilho_vitrine": "Destacar analise sobre limites do apoio militar dos EUA no leste europeu",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 90,
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Politica"
+      ],
+      "palavras_chave_busca": [
+        "guerra na ucrania",
+        "tropas americanas ucrania",
+        "otan",
+        "seguranca europeia",
+        "acordo de paz ucrania",
+        "geopolitica eua"
+      ]
+    },
+    {
+      "slug": "fim-escala-6x1-calculo-horas-extras",
+      "status": "em_alta",
+      "ttl_horas": 48,
+      "expires_at": "2026-11-27T08:09:29Z",
+      "updated_at": "2026-11-25T08:09:29Z",
+      "titulo_tema": "Regulamentação do fim da escala 6x1 altera valor e cálculo de horas extras",
+      "sintese_nerd": "Com o teto da jornada semanal reduzido, o valor-hora da remuneração dos trabalhadores aumenta, elevando o custo das horas suplementares para as empresas. A medida beneficia a qualidade de vida do trabalhador, mas gera desafios de produtividade no setor produtivo.",
+      "rota_editoria": "/economia",
+      "data_publicacao": "2026-11-25T08:09:29Z",
+      "gatilho_vitrine": "Posicionar explicativo sobre novos custos trabalhistas e regras de jornada",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 87,
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Politica",
+        "Cultura"
+      ],
+      "palavras_chave_busca": [
+        "fim da escala 6x1",
+        "horas extras 6x1",
+        "decreto escala de trabalho",
+        "clt horas extras",
+        "direitos trabalhistas",
+        "jornada de trabalho"
+      ]
+    },
+    {
+      "slug": "governo-revisa-orcamento-contencao-gastos",
+      "status": "novo",
+      "ttl_horas": 36,
+      "expires_at": "2026-11-26T20:09:29Z",
+      "updated_at": "2026-11-25T08:09:29Z",
+      "titulo_tema": "Governo reduz contenção no Orçamento para R$ 12,6 bilhões após ajuste fiscal",
+      "sintese_nerd": "A readequação das contas do governo permitiu aliviar o contingenciamento após retirar subsídios de combustíveis da meta primária. A estratégia busca dar fôlego aos ministérios sem descumprir totalmente o arcabouço fiscal vigente.",
+      "rota_editoria": "/politica",
+      "data_publicacao": "2026-11-25T08:09:29Z",
+      "gatilho_vitrine": "Exibir atualizacao sobre a meta fiscal e o remanejamento orçamentario do governo",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 84,
       "categoria_primaria": "Politica",
       "categorias_cruzadas": [
         "Economia"
       ],
       "palavras_chave_busca": [
-        "lula",
-        "equipe economica",
+        "orcamento federal",
+        "contencao de gastos",
         "meta fiscal",
-        "orcamento 2026",
-        "bruno moretti",
-        "miriam belchior",
-        "gastos publicos"
-      ]
-    },
-    {
-      "slug": "escalada-conflito-ucrania-russia-drones",
-      "status": "novo",
-      "ttl_horas": 12,
-      "expires_at": "2026-11-25T19:42:33Z",
-      "updated_at": "2026-11-25T07:42:33Z",
-      "titulo_tema": "Intensificação de ataques russos com drones na Ucrânia",
-      "sintese_nerd": "A ofensiva russa com mais de 100 drones em uma única noite demonstra a escalada na estratégia de desgaste da infraestrutura crítica ucraniana. O impacto direto é a instabilidade no fornecimento de energia e o aumento da pressão sobre a ajuda financeira e militar da União Europeia.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-25T07:42:33Z",
-      "gatilho_vitrine": "Acompanhe a atualização do conflito: ataques massivos de drones russos atingem infraestrutura civil e energética na Ucrânia.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 92,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia"
-      ],
-      "palavras_chave_busca": [
-        "guerra ucrania",
-        "russia",
-        "drones",
-        "infraestrutura energetica",
-        "conflito geopolitico",
-        "zelensky"
-      ]
-    },
-    {
-      "slug": "fim-escala-6x1-impacto-trabalhista",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-27T07:42:33Z",
-      "updated_at": "2026-11-25T07:42:33Z",
-      "titulo_tema": "Fim da escala 6x1 e novos cálculos de horas extras",
-      "sintese_nerd": "A transição para o modelo 5x2 altera a base de cálculo do divisor salarial, elevando o custo da hora extra para o empregador. Essa mudança exige adaptação imediata do RH das empresas e altera a dinâmica de remuneração variável no Brasil.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-25T07:42:33Z",
-      "gatilho_vitrine": "Entenda como o fim da escala 6x1 altera o cálculo das suas horas extras e o impacto nas empresas.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 88,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Cultura"
-      ],
-      "palavras_chave_busca": [
-        "escala 6x1",
-        "reforma trabalhista",
-        "horas extras",
-        "direitos trabalhistas",
-        "decreto lula",
-        "mercado de trabalho"
+        "equipe economica lula",
+        "subsidio combustiveis",
+        "relatorio de receitas e despesas"
       ]
     }
   ]
