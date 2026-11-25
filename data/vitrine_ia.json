@@ -2,170 +2,275 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-25T21:53:20Z",
-  "batch_id": "20261125-2153",
+  "updatedAt": "2026-11-25T22:11:19Z",
+  "batch_id": "20261125-2211",
   "temas_ativos": [
     {
-      "slug": "comissao-orcamento-aprova-alta-receita-petroleo-2027",
-      "titulo_tema": "Comissão Mista de Orçamento aprova elevação de R$ 37,1 bilhões na previsão de arrecadação para 2027",
-      "titulo_curto": "Comissão Mista de Orçamento aprova elevação de R$ 37,1 bilhões na previsão de arrecadação para 2027",
+      "slug": "tarifas-eua-brasil-governo-lula-reage",
+      "titulo_tema": "Governo Lula rejeita ameaças tarifárias dos EUA e tensão comercial escala",
       "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Economia",
-      "categoria": "Economia_Comercio",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
       "categorias_cruzadas": [
         "Economia",
-        "Resumo_Ultimas"
+        "Politica"
       ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 93,
-      "urgencia_score": 89,
-      "ttl_horas": 24,
-      "expires_at": "2026-11-26T21:53:20Z",
+      "rota_editoria": "/radar",
+      "relevancia_score": 95,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-27T22:11:19Z",
       "palavras_chave_busca": [
-        "orçamento",
-        "cmo",
-        "arrecadação",
-        "petróleo",
-        "2027"
+        "eua",
+        "brasil",
+        "tarifas",
+        "governo lula",
+        "pix",
+        "ustr",
+        "comércio exterior",
+        "omc"
       ],
-      "palavras_chave": [
-        "orçamento",
-        "cmo",
-        "arrecadação",
-        "petróleo",
-        "2027"
-      ],
-      "gatilho_vitrine": "Segundo dados divulgados pela Agência Senado, a Comissão Mista de Orçamento (CMO) aprovou relatório que eleva a receita projetada para o próximo ano, impulsionada majoritariamente por ganhos com o petróleo e cortes em benefícios fiscais.",
-      "resumo_pulso": "Segundo dados divulgados pela Agência Senado, a Comissão Mista de Orçamento (CMO) aprovou relatório que eleva a receita projetada para o próximo ano, impulsionada majoritariamente por ganhos com o petróleo e cortes em benefícios fiscais.",
-      "sintese_nerd": "O incremento na estimativa alivia o debate sobre o cumprimento das metas fiscais e o planejamento financeiro da União para 2027.",
-      "impacto_pratico": "O incremento na estimativa alivia o debate sobre o cumprimento das metas fiscais e o planejamento financeiro da União para 2027.",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "veiculos_origem": [
-        "Agência Senado"
-      ],
-      "fontes_urls": [
-        "https://www12.senado.leg.br/noticias/audios/2026/11/previsao-de-receita-para-2027-sobe-r-37-1-bilhoes-no-orcamento"
-      ],
-      "data_publicacao": "2026-11-25T21:36:36Z",
-      "updated_at": "2026-11-25T21:53:20Z"
+      "gatilho_vitrine": "Destacar o impacto das retaliações comerciais americanas no agronegócio e na soberania regulatória brasileira.",
+      "sintese_nerd": "A administração dos EUA ameaça taxar produtos brasileiros como açúcar e aeronaves na tentativa de forçar mudanças em regulamentações locais, como o Pix. O Planalto classificou a medida como inaceitável, gerando um impasse diplomático com repercussões diretas no câmbio e nos mercados globais.",
+      "data_publicacao": "2026-11-25T22:11:19Z",
+      "updated_at": "2026-11-25T22:11:19Z"
     },
     {
-      "slug": "tse-cria-grupo-trabalho-combate-crime-organizado-eleicoes",
-      "titulo_tema": "TSE cria grupo de trabalho para mapear e combater a atuação do crime organizado nas eleições",
-      "titulo_curto": "TSE cria grupo de trabalho para mapear e combater a atuação do crime organizado nas eleições",
+      "slug": "fcc-autoriza-spacex-data-centers-espaco",
+      "titulo_tema": "FCC autoriza SpaceX a lançar um milhão de satélites para data centers no espaço",
       "status": "novo",
-      "origem_pipeline": "pulso",
+      "origem_pipeline": "curadoria",
       "categoria_primaria": "Cultura",
-      "categoria": "Sociedade_Cultura",
       "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
+        "Geopolitica_Radar",
+        "Economia"
       ],
       "rota_editoria": "/cultura",
       "relevancia_score": 90,
-      "urgencia_score": 88,
-      "ttl_horas": 24,
-      "expires_at": "2026-11-26T21:53:20Z",
+      "ttl_horas": 72,
+      "expires_at": "2026-11-28T22:11:19Z",
+      "palavras_chave_busca": [
+        "spacex",
+        "elon musk",
+        "fcc",
+        "satélites",
+        "data centers",
+        "inteligência artificial",
+        "tecnologia espacial",
+        "starmind"
+      ],
+      "gatilho_vitrine": "Exibir o avanço tecnológico na infraestrutura global de computação e inteligência artificial fora da Terra.",
+      "sintese_nerd": "A aprovação regulatória da FCC permite que a SpaceX implemente o projeto Starmind até 2040, revolucionando a computação em nuvem com data centers orbitais. Esse movimento redefine a geopolítica tecnológica e a soberania digital global.",
+      "data_publicacao": "2026-11-25T22:11:19Z",
+      "updated_at": "2026-11-25T22:11:19Z"
+    },
+    {
+      "slug": "tse-mapeia-crime-organizado-eleicoes",
+      "titulo_tema": "TSE cria grupo de trabalho para mapear infiltração do crime organizado nas eleições",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Eleicoes",
+      "categorias_cruzadas": [
+        "Politica"
+      ],
+      "rota_editoria": "/eleicoes",
+      "relevancia_score": 88,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-27T22:11:19Z",
       "palavras_chave_busca": [
         "tse",
+        "nunes marques",
         "crime organizado",
         "eleições",
-        "nunes marques"
+        "facções",
+        "milícias",
+        "democracia",
+        "justiça eleitoral"
       ],
+      "gatilho_vitrine": "Destacar as medidas institucionais para blindar o processo democrático brasileiro contra o avanço de facções criminosas.",
+      "sintese_nerd": "Diante da crescente preocupação com a segurança institucional, a presidência do TSE instituiu um grupo de trabalho focado em diagnosticar e combater a atuação de facções e milícias nas disputas eleitorais. A medida busca blindar o pleito e preservar a legitimidade dos mandatos políticos.",
+      "data_publicacao": "2026-11-25T22:11:19Z",
+      "updated_at": "2026-11-25T22:11:19Z"
+    },
+    {
+      "slug": "cosan-venda-ativos-reduzir-divida",
+      "titulo_tema": "Cosan negocia venda de participações na Rumo, Compass e Moove para desalavancagem",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Politica"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 85,
+      "ttl_horas": 36,
+      "expires_at": "2026-11-27T10:11:19Z",
+      "palavras_chave_busca": [
+        "cosan",
+        "rumo",
+        "compass",
+        "moove",
+        "dívida",
+        "fusões e aquisições",
+        "mercado financeiro",
+        "ibovespa"
+      ],
+      "gatilho_vitrine": "Mostrar as movimentações das grandes corporações brasileiras para recompor o balanço em meio ao cenário de juros elevados.",
+      "sintese_nerd": "A holding Cosan busca alienar fatias minoritárias de suas principais subsidiárias para mitigar sua alavancagem financeira. A iniciativa atrai o apetite de grandes players globais e impacta diretamente a dinâmica de investimentos no setor de infraestrutura e logística.",
+      "data_publicacao": "2026-11-25T22:11:19Z",
+      "updated_at": "2026-11-25T22:11:19Z"
+    },
+    {
+      "slug": "comissao-orcamento-aprova-alta-receita-petroleo-2027",
+      "status": "novo",
+      "categoria": "Economia_Comercio",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-26T21:53:20Z",
+      "updated_at": "2026-11-25T21:53:20Z",
+      "fontes_urls": [
+        "https://www12.senado.leg.br/noticias/audios/2026/11/previsao-de-receita-para-2027-sobe-r-37-1-bilhoes-no-orcamento"
+      ],
+      "titulo_tema": "Comissão Mista de Orçamento aprova elevação de R$ 37,1 bilhões na previsão de arrecadação para 2027",
+      "resumo_pulso": "Segundo dados divulgados pela Agência Senado, a Comissão Mista de Orçamento (CMO) aprovou relatório que eleva a receita projetada para o próximo ano, impulsionada majoritariamente por ganhos com o petróleo e cortes em benefícios fiscais.",
+      "sintese_nerd": "O incremento na estimativa alivia o debate sobre o cumprimento das metas fiscais e o planejamento financeiro da União para 2027.",
+      "titulo_curto": "Comissão Mista de Orçamento aprova elevação de R$ 37,1 bilhões na previsão de arrecadação para 2027",
+      "rota_editoria": "/economia",
       "palavras_chave": [
-        "tse",
-        "crime organizado",
-        "eleições",
-        "nunes marques"
+        "orçamento",
+        "cmo",
+        "arrecadação",
+        "petróleo",
+        "2027"
       ],
-      "gatilho_vitrine": "Conforme apuração do G1, o presidente do Tribunal Superior Eleitoral (TSE), ministro Nunes Marques, instituiu um grupo de trabalho focado em mapear vulnerabilidades e propor medidas de prevenção contra a interferência de facções e milícias nos processos eleitorais.",
-      "resumo_pulso": "Conforme apuração do G1, o presidente do Tribunal Superior Eleitoral (TSE), ministro Nunes Marques, instituiu um grupo de trabalho focado em mapear vulnerabilidades e propor medidas de prevenção contra a interferência de facções e milícias nos processos eleitorais.",
-      "sintese_nerd": "A medida visa blindar campanhas e o pleito contra pressões de organizações criminosas, aumentando a segurança institucional nas zonas de votação.",
-      "impacto_pratico": "A medida visa blindar campanhas e o pleito contra pressões de organizações criminosas, aumentando a segurança institucional nas zonas de votação.",
+      "urgencia_score": 89,
+      "data_publicacao": "2026-11-25T21:36:36Z",
+      "gatilho_vitrine": "Segundo dados divulgados pela Agência Senado, a Comissão Mista de Orçamento (CMO) aprovou relatório que eleva a receita projetada para o próximo ano, impulsionada majoritariamente por ganhos com o petróleo e cortes em benefícios fiscais.",
+      "impacto_pratico": "O incremento na estimativa alivia o debate sobre o cumprimento das metas fiscais e o planejamento financeiro da União para 2027.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "Agência Senado"
+      ],
+      "relevancia_score": 93,
       "paises_envolvidos": [
         "BR"
       ],
-      "veiculos_origem": [
-        "G1 Política"
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
       ],
+      "palavras_chave_busca": [
+        "orçamento",
+        "cmo",
+        "arrecadação",
+        "petróleo",
+        "2027"
+      ]
+    },
+    {
+      "slug": "tse-cria-grupo-trabalho-combate-crime-organizado-eleicoes",
+      "status": "novo",
+      "categoria": "Sociedade_Cultura",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-26T21:53:20Z",
+      "updated_at": "2026-11-25T21:53:20Z",
       "fontes_urls": [
         "https://g1.globo.com/politica/noticia/2026/11/25/tse-vai-mapear-atuacao-do-crime-organizado-nas-eleicoes-para-ampliar-combate.ghtml"
       ],
+      "titulo_tema": "TSE cria grupo de trabalho para mapear e combater a atuação do crime organizado nas eleições",
+      "resumo_pulso": "Conforme apuração do G1, o presidente do Tribunal Superior Eleitoral (TSE), ministro Nunes Marques, instituiu um grupo de trabalho focado em mapear vulnerabilidades e propor medidas de prevenção contra a interferência de facções e milícias nos processos eleitorais.",
+      "sintese_nerd": "A medida visa blindar campanhas e o pleito contra pressões de organizações criminosas, aumentando a segurança institucional nas zonas de votação.",
+      "titulo_curto": "TSE cria grupo de trabalho para mapear e combater a atuação do crime organizado nas eleições",
+      "rota_editoria": "/cultura",
+      "palavras_chave": [
+        "tse",
+        "crime organizado",
+        "eleições",
+        "nunes marques"
+      ],
+      "urgencia_score": 88,
       "data_publicacao": "2026-11-25T21:30:46Z",
-      "updated_at": "2026-11-25T21:53:20Z"
+      "gatilho_vitrine": "Conforme apuração do G1, o presidente do Tribunal Superior Eleitoral (TSE), ministro Nunes Marques, instituiu um grupo de trabalho focado em mapear vulnerabilidades e propor medidas de prevenção contra a interferência de facções e milícias nos processos eleitorais.",
+      "impacto_pratico": "A medida visa blindar campanhas e o pleito contra pressões de organizações criminosas, aumentando a segurança institucional nas zonas de votação.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "G1 Política"
+      ],
+      "relevancia_score": 90,
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "categoria_primaria": "Cultura",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "tse",
+        "crime organizado",
+        "eleições",
+        "nunes marques"
+      ]
     },
     {
       "slug": "governo-renova-subsidio-diesel-por-30-dias",
-      "titulo_tema": "Equipe econômica avalia prorrogação do subsídio ao diesel por mais 30 dias",
-      "titulo_curto": "Equipe econômica avalia prorrogação do subsídio ao diesel por mais 30 dias",
       "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Economia",
       "categoria": "Economia_Comercio",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 90,
-      "urgencia_score": 87,
       "ttl_horas": 18,
       "expires_at": "2026-11-26T15:53:20Z",
-      "palavras_chave_busca": [
-        "subsídio",
-        "diesel",
-        "economia",
-        "contas públicas"
-      ],
-      "palavras_chave": [
-        "subsídio",
-        "diesel",
-        "economia",
-        "contas públicas"
-      ],
-      "gatilho_vitrine": "Conforme apuração da Agência Brasil, o governo federal deve estender a subvenção ao diesel por mais um mês, medida que pode custar até R$ 10,5 bilhões adicionais e elevar o impacto total das políticas de contenção de combustíveis para cerca de R$ 85 bilhões em 2026.",
-      "resumo_pulso": "Conforme apuração da Agência Brasil, o governo federal deve estender a subvenção ao diesel por mais um mês, medida que pode custar até R$ 10,5 bilhões adicionais e elevar o impacto total das políticas de contenção de combustíveis para cerca de R$ 85 bilhões em 2026.",
-      "sintese_nerd": "A prorrogação mitiga pressões inflacionárias de curto prazo sobre fretes e o transporte rodoviário, mas pressiona o resultado fiscal.",
-      "impacto_pratico": "A prorrogação mitiga pressões inflacionárias de curto prazo sobre fretes e o transporte rodoviário, mas pressiona o resultado fiscal.",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "veiculos_origem": [
-        "Agência Brasil (EBC)"
-      ],
+      "updated_at": "2026-11-25T21:53:20Z",
       "fontes_urls": [
         "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/governo-deve-renovar-subsidio-ao-diesel-por-mais-30-dias"
       ],
+      "titulo_tema": "Equipe econômica avalia prorrogação do subsídio ao diesel por mais 30 dias",
+      "resumo_pulso": "Conforme apuração da Agência Brasil, o governo federal deve estender a subvenção ao diesel por mais um mês, medida que pode custar até R$ 10,5 bilhões adicionais e elevar o impacto total das políticas de contenção de combustíveis para cerca de R$ 85 bilhões em 2026.",
+      "sintese_nerd": "A prorrogação mitiga pressões inflacionárias de curto prazo sobre fretes e o transporte rodoviário, mas pressiona o resultado fiscal.",
+      "titulo_curto": "Equipe econômica avalia prorrogação do subsídio ao diesel por mais 30 dias",
+      "rota_editoria": "/economia",
+      "palavras_chave": [
+        "subsídio",
+        "diesel",
+        "economia",
+        "contas públicas"
+      ],
+      "urgencia_score": 87,
       "data_publicacao": "2026-11-25T21:11:00Z",
-      "updated_at": "2026-11-25T21:53:20Z"
-    },
-    {
-      "slug": "moraes-rejeita-indicar-recursos-penduricalhos-mpu",
-      "titulo_tema": "Alexandre de Moraes rejeita pedido do MPU para indicar fontes de recursos para pagamento de penduricalhos",
-      "titulo_curto": "Alexandre de Moraes rejeita pedido do MPU para indicar fontes de recursos para pagamento de penduricalhos",
-      "status": "novo",
+      "gatilho_vitrine": "Conforme apuração da Agência Brasil, o governo federal deve estender a subvenção ao diesel por mais um mês, medida que pode custar até R$ 10,5 bilhões adicionais e elevar o impacto total das políticas de contenção de combustíveis para cerca de R$ 85 bilhões em 2026.",
+      "impacto_pratico": "A prorrogação mitiga pressões inflacionárias de curto prazo sobre fretes e o transporte rodoviário, mas pressiona o resultado fiscal.",
       "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "Agência Brasil (EBC)"
+      ],
+      "relevancia_score": 90,
+      "paises_envolvidos": [
+        "BR"
+      ],
       "categoria_primaria": "Economia",
-      "categoria": "Economia_Comercio",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
       ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 92,
-      "urgencia_score": 90,
+      "palavras_chave_busca": [
+        "subsídio",
+        "diesel",
+        "economia",
+        "contas públicas"
+      ]
+    },
+    {
+      "slug": "moraes-rejeita-indicar-recursos-penduricalhos-mpu",
+      "status": "novo",
+      "categoria": "Economia_Comercio",
       "ttl_horas": 12,
       "expires_at": "2026-11-26T09:53:20Z",
-      "palavras_chave_busca": [
-        "stf",
-        "alexandre de moraes",
-        "mpu",
-        "penduricalhos",
-        "orçamento"
+      "updated_at": "2026-11-25T21:53:20Z",
+      "fontes_urls": [
+        "https://agenciabrasil.ebc.com.br/justica/noticia/2026-11/moraes-rejeita-indicar-recursos-para-pagar-penduricalhos-do-mpu"
       ],
+      "titulo_tema": "Alexandre de Moraes rejeita pedido do MPU para indicar fontes de recursos para pagamento de penduricalhos",
+      "resumo_pulso": "Segundo decisão do ministro Alexandre de Moraes divulgada pela Agência Brasil e pelo Poder360, o STF negou o pedido do Ministério Público da União para apontar de onde tirar fundos para pagar verbas indenizatórias. Moraes destacou que cabe ao Executivo e ao Legislativo deliberar sobre aberturas de crédito extra.",
+      "sintese_nerd": "A decisão reafirma a separação de poderes em questões orçamentárias e restringe manobras para expansão de gastos com o funcionalismo público.",
+      "titulo_curto": "Alexandre de Moraes rejeita pedido do MPU para indicar fontes de recursos para pagamento de penduricalhos",
+      "rota_editoria": "/economia",
       "palavras_chave": [
         "stf",
         "alexandre de moraes",
@@ -173,22 +278,31 @@
         "penduricalhos",
         "orçamento"
       ],
+      "urgencia_score": 90,
+      "data_publicacao": "2026-11-25T20:47:00Z",
       "gatilho_vitrine": "Segundo decisão do ministro Alexandre de Moraes divulgada pela Agência Brasil e pelo Poder360, o STF negou o pedido do Ministério Público da União para apontar de onde tirar fundos para pagar verbas indenizatórias. Moraes destacou que cabe ao Executivo e ao Legislativo deliberar sobre aberturas de crédito extra.",
-      "resumo_pulso": "Segundo decisão do ministro Alexandre de Moraes divulgada pela Agência Brasil e pelo Poder360, o STF negou o pedido do Ministério Público da União para apontar de onde tirar fundos para pagar verbas indenizatórias. Moraes destacou que cabe ao Executivo e ao Legislativo deliberar sobre aberturas de crédito extra.",
-      "sintese_nerd": "A decisão reafirma a separação de poderes em questões orçamentárias e restringe manobras para expansão de gastos com o funcionalismo público.",
       "impacto_pratico": "A decisão reafirma a separação de poderes em questões orçamentárias e restringe manobras para expansão de gastos com o funcionalismo público.",
-      "paises_envolvidos": [
-        "BR"
-      ],
+      "origem_pipeline": "pulso",
       "veiculos_origem": [
         "Agência Brasil (EBC)",
         "Poder360"
       ],
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/justica/noticia/2026-11/moraes-rejeita-indicar-recursos-para-pagar-penduricalhos-do-mpu"
+      "relevancia_score": 92,
+      "paises_envolvidos": [
+        "BR"
       ],
-      "data_publicacao": "2026-11-25T20:47:00Z",
-      "updated_at": "2026-11-25T21:53:20Z"
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "stf",
+        "alexandre de moraes",
+        "mpu",
+        "penduricalhos",
+        "orçamento"
+      ]
     },
     {
       "slug": "subcomissao-yanomami-aprova-relatorio-plano-decenal",
@@ -319,87 +433,6 @@
         "radar",
         "tempo real",
         "br"
-      ]
-    },
-    {
-      "slug": "especulacoes-ministerio-fazenda-queda-dolar-tesouro",
-      "status": "novo",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-26T19:38:47Z",
-      "updated_at": "2026-11-25T19:38:47Z",
-      "titulo_tema": "Especulações sobre o Ministério da Fazenda movimentam câmbio e juros no Brasil",
-      "sintese_nerd": "Rumores sobre mudanças no comando do Ministério da Fazenda geraram forte volatilidade, derrubando a cotação do dólar para a faixa de R$ 5,81 e impulsionando ajustes nos títulos públicos. A incerteza fiscal segue ditando o humor dos investidores e o custo de captação do país.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-25T19:38:47Z",
-      "gatilho_vitrine": "Destacar análises sobre a reação dos mercados financeiros brasileiros às trocas e especulações na equipe econômica do governo.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 92,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Politica",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "ministério da fazenda",
-        "luiz carlos trabuco",
-        "câmbio",
-        "dólar",
-        "tesouro direto",
-        "política fiscal"
-      ]
-    },
-    {
-      "slug": "vazamento-dados-guerra-ucrania-baixas-russas",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-27T19:38:47Z",
-      "updated_at": "2026-11-25T19:38:47Z",
-      "titulo_tema": "Vazamento revela impacto demográfico severo e meio milhão de baixas russas na Ucrânia",
-      "sintese_nerd": "Dados vazados da inteligência estatística russa estimam cerca de meio milhão de baixas militares na Ucrânia, evidenciando uma pressão demográfica profunda sobre a juventude do país agressor. Esse desgaste humano corrói a sustentabilidade a longo prazo da economia e da mão de obra russa.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-25T19:38:47Z",
-      "gatilho_vitrine": "Priorizar coberturas aprofundadas sobre o custo humano e estratégico prolongado dos conflitos armados no Leste Europeu.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 88,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Cultura",
-        "Economia"
-      ],
-      "palavras_chave_busca": [
-        "guerra na ucrânia",
-        "baixas russas",
-        "geopolítica global",
-        "vladimir putin",
-        "mortalidade militar",
-        "sanções"
-      ]
-    },
-    {
-      "slug": "spacex-aprovacao-fcc-data-centers-espaciais",
-      "status": "novo",
-      "ttl_horas": 72,
-      "expires_at": "2026-11-28T19:38:47Z",
-      "updated_at": "2026-11-25T19:38:47Z",
-      "titulo_tema": "EUA aprovam projeto da SpaceX para implantação de data centers espaciais",
-      "sintese_nerd": "A autorização da FCC para o projeto Starmind da SpaceX consolida uma nova fronteira na infraestrutura de processamento de dados fora da Terra. A disputa pela soberania tecnológica e espacial redefine a hegemonia das grandes potências sobre a economia digital.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-25T19:38:47Z",
-      "gatilho_vitrine": "Exibir artigos sobre a corrida tecnológica espacial e a nova infraestrutura global de dados e telecomunicações.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 85,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Cultura",
-        "Economia"
-      ],
-      "palavras_chave_busca": [
-        "spacex",
-        "elon musk",
-        "fcc",
-        "data centers espaciais",
-        "starmind",
-        "tecnologia global"
       ]
     },
     {
@@ -796,72 +829,136 @@
         "tempo real",
         "br"
       ]
-    },
+    }
+  ],
+  "temas_curadoria": [
     {
-      "slug": "pulso-5-20261125-1752",
+      "slug": "tarifas-eua-brasil-governo-lula-reage",
+      "titulo_tema": "Governo Lula rejeita ameaças tarifárias dos EUA e tensão comercial escala",
       "status": "novo",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 6,
-      "expires_at": "2026-11-25T23:52:57Z",
-      "updated_at": "2026-11-25T17:52:57Z",
-      "fontes_urls": [
-        "https://www.bbc.com/portuguese/articles/ck879j789y1zo?at_medium=RSS&at_campaign=rss"
-      ],
-      "titulo_tema": "A influenciadora que ficou 2 meses internada em clínica psiquiátrica por um erro: 'Fui rotulada como psicótica por ser mulher'",
-      "resumo_pulso": "Segundo BBC News Brasil, Criadora de conteúdo que faz vídeos no metrô de Londres recebeu o diagnóstico de encefalite anti-receptor NMDA..",
-      "sintese_nerd": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "titulo_curto": "A influenciadora que ficou 2 meses internada em clínica psiquiátrica por um erro: 'Fui rotulada como psicótica por ser mulher'",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "radar",
-        "tempo real",
-        "gb"
-      ],
-      "urgencia_score": 70,
-      "data_publicacao": "2026-11-25T17:30:06+00:00",
-      "gatilho_vitrine": "Segundo BBC News Brasil, Criadora de conteúdo que faz vídeos no metrô de Londres recebeu o diagnóstico de encefalite anti-receptor NMDA..",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "BBC News Brasil"
-      ],
-      "relevancia_score": 72,
-      "paises_envolvidos": [
-        "GB"
-      ],
+      "origem_pipeline": "curadoria",
       "categoria_primaria": "Geopolitica_Radar",
       "categorias_cruzadas": [
         "Economia",
-        "Resumo_Ultimas"
+        "Politica"
       ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 95,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-27T22:11:19Z",
       "palavras_chave_busca": [
-        "radar",
-        "tempo real",
-        "gb"
-      ]
+        "eua",
+        "brasil",
+        "tarifas",
+        "governo lula",
+        "pix",
+        "ustr",
+        "comércio exterior",
+        "omc"
+      ],
+      "gatilho_vitrine": "Destacar o impacto das retaliações comerciais americanas no agronegócio e na soberania regulatória brasileira.",
+      "sintese_nerd": "A administração dos EUA ameaça taxar produtos brasileiros como açúcar e aeronaves na tentativa de forçar mudanças em regulamentações locais, como o Pix. O Planalto classificou a medida como inaceitável, gerando um impasse diplomático com repercussões diretas no câmbio e nos mercados globais.",
+      "data_publicacao": "2026-11-25T22:11:19Z",
+      "updated_at": "2026-11-25T22:11:19Z"
+    },
+    {
+      "slug": "fcc-autoriza-spacex-data-centers-espaco",
+      "titulo_tema": "FCC autoriza SpaceX a lançar um milhão de satélites para data centers no espaço",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Cultura",
+      "categorias_cruzadas": [
+        "Geopolitica_Radar",
+        "Economia"
+      ],
+      "rota_editoria": "/cultura",
+      "relevancia_score": 90,
+      "ttl_horas": 72,
+      "expires_at": "2026-11-28T22:11:19Z",
+      "palavras_chave_busca": [
+        "spacex",
+        "elon musk",
+        "fcc",
+        "satélites",
+        "data centers",
+        "inteligência artificial",
+        "tecnologia espacial",
+        "starmind"
+      ],
+      "gatilho_vitrine": "Exibir o avanço tecnológico na infraestrutura global de computação e inteligência artificial fora da Terra.",
+      "sintese_nerd": "A aprovação regulatória da FCC permite que a SpaceX implemente o projeto Starmind até 2040, revolucionando a computação em nuvem com data centers orbitais. Esse movimento redefine a geopolítica tecnológica e a soberania digital global.",
+      "data_publicacao": "2026-11-25T22:11:19Z",
+      "updated_at": "2026-11-25T22:11:19Z"
+    },
+    {
+      "slug": "tse-mapeia-crime-organizado-eleicoes",
+      "titulo_tema": "TSE cria grupo de trabalho para mapear infiltração do crime organizado nas eleições",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Eleicoes",
+      "categorias_cruzadas": [
+        "Politica"
+      ],
+      "rota_editoria": "/eleicoes",
+      "relevancia_score": 88,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-27T22:11:19Z",
+      "palavras_chave_busca": [
+        "tse",
+        "nunes marques",
+        "crime organizado",
+        "eleições",
+        "facções",
+        "milícias",
+        "democracia",
+        "justiça eleitoral"
+      ],
+      "gatilho_vitrine": "Destacar as medidas institucionais para blindar o processo democrático brasileiro contra o avanço de facções criminosas.",
+      "sintese_nerd": "Diante da crescente preocupação com a segurança institucional, a presidência do TSE instituiu um grupo de trabalho focado em diagnosticar e combater a atuação de facções e milícias nas disputas eleitorais. A medida busca blindar o pleito e preservar a legitimidade dos mandatos políticos.",
+      "data_publicacao": "2026-11-25T22:11:19Z",
+      "updated_at": "2026-11-25T22:11:19Z"
+    },
+    {
+      "slug": "cosan-venda-ativos-reduzir-divida",
+      "titulo_tema": "Cosan negocia venda de participações na Rumo, Compass e Moove para desalavancagem",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Politica"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 85,
+      "ttl_horas": 36,
+      "expires_at": "2026-11-27T10:11:19Z",
+      "palavras_chave_busca": [
+        "cosan",
+        "rumo",
+        "compass",
+        "moove",
+        "dívida",
+        "fusões e aquisições",
+        "mercado financeiro",
+        "ibovespa"
+      ],
+      "gatilho_vitrine": "Mostrar as movimentações das grandes corporações brasileiras para recompor o balanço em meio ao cenário de juros elevados.",
+      "sintese_nerd": "A holding Cosan busca alienar fatias minoritárias de suas principais subsidiárias para mitigar sua alavancagem financeira. A iniciativa atrai o apetite de grandes players globais e impacta diretamente a dinâmica de investimentos no setor de infraestrutura e logística.",
+      "data_publicacao": "2026-11-25T22:11:19Z",
+      "updated_at": "2026-11-25T22:11:19Z"
     }
   ],
   "noticias_quentes": [
     {
       "slug": "comissao-orcamento-aprova-alta-receita-petroleo-2027",
-      "titulo_curto": "Comissão Mista de Orçamento aprova elevação de R$ 37,1 bilhões na previsão de arrecadação para 2027",
-      "resumo_pulso": "Segundo dados divulgados pela Agência Senado, a Comissão Mista de Orçamento (CMO) aprovou relatório que eleva a receita projetada para o próximo ano, impulsionada majoritariamente por ganhos com o petróleo e cortes em benefícios fiscais.",
-      "impacto_pratico": "O incremento na estimativa alivia o debate sobre o cumprimento das metas fiscais e o planejamento financeiro da União para 2027.",
       "categoria": "Economia_Comercio",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "urgencia_score": 89,
-      "relevancia_score": 93,
-      "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 18,
-      "veiculos_origem": [
-        "Agência Senado"
-      ],
+      "expires_at": "2026-11-26T21:53:20Z",
+      "updated_at": "2026-11-25T21:53:20Z",
       "fontes_urls": [
         "https://www12.senado.leg.br/noticias/audios/2026/11/previsao-de-receita-para-2027-sobe-r-37-1-bilhoes-no-orcamento"
       ],
+      "resumo_pulso": "Segundo dados divulgados pela Agência Senado, a Comissão Mista de Orçamento (CMO) aprovou relatório que eleva a receita projetada para o próximo ano, impulsionada majoritariamente por ganhos com o petróleo e cortes em benefícios fiscais.",
+      "titulo_curto": "Comissão Mista de Orçamento aprova elevação de R$ 37,1 bilhões na previsão de arrecadação para 2027",
       "palavras_chave": [
         "Orçamento",
         "CMO",
@@ -869,117 +966,116 @@
         "petróleo",
         "2027"
       ],
+      "urgencia_score": 89,
       "data_publicacao": "2026-11-25T21:36:36Z",
-      "links_internos_relacionados": [
-        {
-          "titulo_existente": "O que é o Orçamento?",
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-o-orcamento",
-          "motivo_conexao": "Ajuda a compreender o processo de tramitação e as fontes de receitas que compõem o orçamento federal."
-        },
-        {
-          "titulo_existente": "Economia no Brasil",
-          "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
-          "motivo_conexao": "Acompanha os impactos das projeções fiscais e da arrecadação nos mercados e contas públicas."
-        }
+      "impacto_pratico": "O incremento na estimativa alivia o debate sobre o cumprimento das metas fiscais e o planejamento financeiro da União para 2027.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Agência Senado"
       ],
-      "expires_at": "2026-11-26T21:53:20Z",
-      "updated_at": "2026-11-25T21:53:20Z"
-    },
-    {
-      "slug": "tse-cria-grupo-trabalho-combate-crime-organizado-eleicoes",
-      "titulo_curto": "TSE cria grupo de trabalho para mapear e combater a atuação do crime organizado nas eleições",
-      "resumo_pulso": "Conforme apuração do G1, o presidente do Tribunal Superior Eleitoral (TSE), ministro Nunes Marques, instituiu um grupo de trabalho focado em mapear vulnerabilidades e propor medidas de prevenção contra a interferência de facções e milícias nos processos eleitorais.",
-      "impacto_pratico": "A medida visa blindar campanhas e o pleito contra pressões de organizações criminosas, aumentando a segurança institucional nas zonas de votação.",
-      "categoria": "Sociedade_Cultura",
+      "relevancia_score": 93,
+      "horas_em_destaque": 18,
       "paises_envolvidos": [
         "BR"
       ],
-      "urgencia_score": 88,
-      "relevancia_score": 90,
-      "nivel_confianca": "alta",
+      "links_internos_relacionados": [
+        {
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-o-orcamento",
+          "motivo_conexao": "Ajuda a compreender o processo de tramitação e as fontes de receitas que compõem o orçamento federal.",
+          "titulo_existente": "O que é o Orçamento?"
+        },
+        {
+          "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
+          "motivo_conexao": "Acompanha os impactos das projeções fiscais e da arrecadação nos mercados e contas públicas.",
+          "titulo_existente": "Economia no Brasil"
+        }
+      ]
+    },
+    {
+      "slug": "tse-cria-grupo-trabalho-combate-crime-organizado-eleicoes",
+      "categoria": "Sociedade_Cultura",
       "ttl_horas": 24,
-      "horas_em_destaque": 12,
-      "veiculos_origem": [
-        "G1 Política"
-      ],
+      "expires_at": "2026-11-26T21:53:20Z",
+      "updated_at": "2026-11-25T21:53:20Z",
       "fontes_urls": [
         "https://g1.globo.com/politica/noticia/2026/11/25/tse-vai-mapear-atuacao-do-crime-organizado-nas-eleicoes-para-ampliar-combate.ghtml"
       ],
+      "resumo_pulso": "Conforme apuração do G1, o presidente do Tribunal Superior Eleitoral (TSE), ministro Nunes Marques, instituiu um grupo de trabalho focado em mapear vulnerabilidades e propor medidas de prevenção contra a interferência de facções e milícias nos processos eleitorais.",
+      "titulo_curto": "TSE cria grupo de trabalho para mapear e combater a atuação do crime organizado nas eleições",
       "palavras_chave": [
         "TSE",
         "crime organizado",
         "eleições",
         "Nunes Marques"
       ],
+      "urgencia_score": 88,
       "data_publicacao": "2026-11-25T21:30:46Z",
-      "links_internos_relacionados": [
-        {
-          "titulo_existente": "Política no Brasil",
-          "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
-          "motivo_conexao": "Relaciona as decisões dos tribunais superiores com o cenário político e de segurança nacional."
-        }
+      "impacto_pratico": "A medida visa blindar campanhas e o pleito contra pressões de organizações criminosas, aumentando a segurança institucional nas zonas de votação.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "G1 Política"
       ],
-      "expires_at": "2026-11-26T21:53:20Z",
-      "updated_at": "2026-11-25T21:53:20Z"
-    },
-    {
-      "slug": "governo-renova-subsidio-diesel-por-30-dias",
-      "titulo_curto": "Equipe econômica avalia prorrogação do subsídio ao diesel por mais 30 dias",
-      "resumo_pulso": "Conforme apuração da Agência Brasil, o governo federal deve estender a subvenção ao diesel por mais um mês, medida que pode custar até R$ 10,5 bilhões adicionais e elevar o impacto total das políticas de contenção de combustíveis para cerca de R$ 85 bilhões em 2026.",
-      "impacto_pratico": "A prorrogação mitiga pressões inflacionárias de curto prazo sobre fretes e o transporte rodoviário, mas pressiona o resultado fiscal.",
-      "categoria": "Economia_Comercio",
+      "relevancia_score": 90,
+      "horas_em_destaque": 12,
       "paises_envolvidos": [
         "BR"
       ],
-      "urgencia_score": 87,
-      "relevancia_score": 90,
-      "nivel_confianca": "alta",
+      "links_internos_relacionados": [
+        {
+          "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
+          "motivo_conexao": "Relaciona as decisões dos tribunais superiores com o cenário político e de segurança nacional.",
+          "titulo_existente": "Política no Brasil"
+        }
+      ]
+    },
+    {
+      "slug": "governo-renova-subsidio-diesel-por-30-dias",
+      "categoria": "Economia_Comercio",
       "ttl_horas": 18,
-      "horas_em_destaque": 12,
-      "veiculos_origem": [
-        "Agência Brasil (EBC)"
-      ],
+      "expires_at": "2026-11-26T15:53:20Z",
+      "updated_at": "2026-11-25T21:53:20Z",
       "fontes_urls": [
         "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/governo-deve-renovar-subsidio-ao-diesel-por-mais-30-dias"
       ],
+      "resumo_pulso": "Conforme apuração da Agência Brasil, o governo federal deve estender a subvenção ao diesel por mais um mês, medida que pode custar até R$ 10,5 bilhões adicionais e elevar o impacto total das políticas de contenção de combustíveis para cerca de R$ 85 bilhões em 2026.",
+      "titulo_curto": "Equipe econômica avalia prorrogação do subsídio ao diesel por mais 30 dias",
       "palavras_chave": [
         "subsídio",
         "diesel",
         "economia",
         "contas públicas"
       ],
+      "urgencia_score": 87,
       "data_publicacao": "2026-11-25T21:11:00Z",
-      "links_internos_relacionados": [
-        {
-          "titulo_existente": "Banco Central e mercado financeiro acompanham inflação de serviços, câmbio e metas fiscais",
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
-          "motivo_conexao": "Discute os reflexos das políticas de preços administrados sobre a inflação geral e as expectativas do mercado."
-        }
+      "impacto_pratico": "A prorrogação mitiga pressões inflacionárias de curto prazo sobre fretes e o transporte rodoviário, mas pressiona o resultado fiscal.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Agência Brasil (EBC)"
       ],
-      "expires_at": "2026-11-26T15:53:20Z",
-      "updated_at": "2026-11-25T21:53:20Z"
-    },
-    {
-      "slug": "moraes-rejeita-indicar-recursos-penduricalhos-mpu",
-      "titulo_curto": "Alexandre de Moraes rejeita pedido do MPU para indicar fontes de recursos para pagamento de penduricalhos",
-      "resumo_pulso": "Segundo decisão do ministro Alexandre de Moraes divulgada pela Agência Brasil e pelo Poder360, o STF negou o pedido do Ministério Público da União para apontar de onde tirar fundos para pagar verbas indenizatórias. Moraes destacou que cabe ao Executivo e ao Legislativo deliberar sobre aberturas de crédito extra.",
-      "impacto_pratico": "A decisão reafirma a separação de poderes em questões orçamentárias e restringe manobras para expansão de gastos com o funcionalismo público.",
-      "categoria": "Economia_Comercio",
+      "relevancia_score": 90,
+      "horas_em_destaque": 12,
       "paises_envolvidos": [
         "BR"
       ],
-      "urgencia_score": 90,
-      "relevancia_score": 92,
-      "nivel_confianca": "alta",
+      "links_internos_relacionados": [
+        {
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
+          "motivo_conexao": "Discute os reflexos das políticas de preços administrados sobre a inflação geral e as expectativas do mercado.",
+          "titulo_existente": "Banco Central e mercado financeiro acompanham inflação de serviços, câmbio e metas fiscais"
+        }
+      ]
+    },
+    {
+      "slug": "moraes-rejeita-indicar-recursos-penduricalhos-mpu",
+      "categoria": "Economia_Comercio",
       "ttl_horas": 12,
-      "horas_em_destaque": 12,
-      "veiculos_origem": [
-        "Agência Brasil (EBC)",
-        "Poder360"
-      ],
+      "expires_at": "2026-11-26T09:53:20Z",
+      "updated_at": "2026-11-25T21:53:20Z",
       "fontes_urls": [
         "https://agenciabrasil.ebc.com.br/justica/noticia/2026-11/moraes-rejeita-indicar-recursos-para-pagar-penduricalhos-do-mpu"
       ],
+      "resumo_pulso": "Segundo decisão do ministro Alexandre de Moraes divulgada pela Agência Brasil e pelo Poder360, o STF negou o pedido do Ministério Público da União para apontar de onde tirar fundos para pagar verbas indenizatórias. Moraes destacou que cabe ao Executivo e ao Legislativo deliberar sobre aberturas de crédito extra.",
+      "titulo_curto": "Alexandre de Moraes rejeita pedido do MPU para indicar fontes de recursos para pagamento de penduricalhos",
       "palavras_chave": [
         "STF",
         "Alexandre de Moraes",
@@ -987,21 +1083,31 @@
         "penduricalhos",
         "orçamento"
       ],
+      "urgencia_score": 90,
       "data_publicacao": "2026-11-25T20:47:00Z",
+      "impacto_pratico": "A decisão reafirma a separação de poderes em questões orçamentárias e restringe manobras para expansão de gastos com o funcionalismo público.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Agência Brasil (EBC)",
+        "Poder360"
+      ],
+      "relevancia_score": 92,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "BR"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "STF analisa regras de transparência e limites constitucionais entre os Poderes",
           "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
-          "motivo_conexao": "Contextualiza a atuação da Suprema Corte na moderação de conflitos institucionais e limites de gastos."
+          "motivo_conexao": "Contextualiza a atuação da Suprema Corte na moderação de conflitos institucionais e limites de gastos.",
+          "titulo_existente": "STF analisa regras de transparência e limites constitucionais entre os Poderes"
         },
         {
-          "titulo_existente": "O que é o Orçamento?",
           "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-o-orcamento",
-          "motivo_conexao": "Explica o funcionamento da repartição de verbas públicas e a aprovação de créditos adicionais."
+          "motivo_conexao": "Explica o funcionamento da repartição de verbas públicas e a aprovação de créditos adicionais.",
+          "titulo_existente": "O que é o Orçamento?"
         }
-      ],
-      "expires_at": "2026-11-26T09:53:20Z",
-      "updated_at": "2026-11-25T21:53:20Z"
+      ]
     },
     {
       "slug": "subcomissao-yanomami-aprova-relatorio-plano-decenal",
@@ -1640,89 +1746,6 @@
           "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos.",
           "titulo_existente": "Como funcionam as eleições nos EUA?"
         }
-      ]
-    }
-  ],
-  "temas_curadoria": [
-    {
-      "slug": "especulacoes-ministerio-fazenda-queda-dolar-tesouro",
-      "status": "novo",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-26T19:38:47Z",
-      "updated_at": "2026-11-25T19:38:47Z",
-      "titulo_tema": "Especulações sobre o Ministério da Fazenda movimentam câmbio e juros no Brasil",
-      "sintese_nerd": "Rumores sobre mudanças no comando do Ministério da Fazenda geraram forte volatilidade, derrubando a cotação do dólar para a faixa de R$ 5,81 e impulsionando ajustes nos títulos públicos. A incerteza fiscal segue ditando o humor dos investidores e o custo de captação do país.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-25T19:38:47Z",
-      "gatilho_vitrine": "Destacar análises sobre a reação dos mercados financeiros brasileiros às trocas e especulações na equipe econômica do governo.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 92,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Politica",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "ministério da fazenda",
-        "luiz carlos trabuco",
-        "câmbio",
-        "dólar",
-        "tesouro direto",
-        "política fiscal"
-      ]
-    },
-    {
-      "slug": "vazamento-dados-guerra-ucrania-baixas-russas",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-27T19:38:47Z",
-      "updated_at": "2026-11-25T19:38:47Z",
-      "titulo_tema": "Vazamento revela impacto demográfico severo e meio milhão de baixas russas na Ucrânia",
-      "sintese_nerd": "Dados vazados da inteligência estatística russa estimam cerca de meio milhão de baixas militares na Ucrânia, evidenciando uma pressão demográfica profunda sobre a juventude do país agressor. Esse desgaste humano corrói a sustentabilidade a longo prazo da economia e da mão de obra russa.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-25T19:38:47Z",
-      "gatilho_vitrine": "Priorizar coberturas aprofundadas sobre o custo humano e estratégico prolongado dos conflitos armados no Leste Europeu.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 88,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Cultura",
-        "Economia"
-      ],
-      "palavras_chave_busca": [
-        "guerra na ucrânia",
-        "baixas russas",
-        "geopolítica global",
-        "vladimir putin",
-        "mortalidade militar",
-        "sanções"
-      ]
-    },
-    {
-      "slug": "spacex-aprovacao-fcc-data-centers-espaciais",
-      "status": "novo",
-      "ttl_horas": 72,
-      "expires_at": "2026-11-28T19:38:47Z",
-      "updated_at": "2026-11-25T19:38:47Z",
-      "titulo_tema": "EUA aprovam projeto da SpaceX para implantação de data centers espaciais",
-      "sintese_nerd": "A autorização da FCC para o projeto Starmind da SpaceX consolida uma nova fronteira na infraestrutura de processamento de dados fora da Terra. A disputa pela soberania tecnológica e espacial redefine a hegemonia das grandes potências sobre a economia digital.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-25T19:38:47Z",
-      "gatilho_vitrine": "Exibir artigos sobre a corrida tecnológica espacial e a nova infraestrutura global de dados e telecomunicações.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 85,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Cultura",
-        "Economia"
-      ],
-      "palavras_chave_busca": [
-        "spacex",
-        "elon musk",
-        "fcc",
-        "data centers espaciais",
-        "starmind",
-        "tecnologia global"
       ]
     }
   ]
