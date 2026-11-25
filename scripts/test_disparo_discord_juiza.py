@@ -30,20 +30,18 @@ def main():
 
     webhook_url = (
         os.getenv("DISCORD_WEBHOOK_JUIZA")
-        or os.getenv("DISCORD_WEBHOOK_URL")
-        or os.getenv("DISCORD_WEBHOOK_RADAR")
         or ""
     ).strip()
 
-    print(f"Enviando Acórdão da IA Juíza ({acordao.batch_data}) para o Discord...")
-    print(f"Webhook configurado: {'SIM (' + webhook_url[:35] + '...)' if webhook_url else 'NÃO'}")
+    print(f"Enviando Acórdão da IA Juíza ({acordao.batch_data}) exclusivamente para o canal JUIZERA...")
+    print(f"Webhook JUIZERA configurado: {'SIM (' + webhook_url[:35] + '...)' if webhook_url else 'NÃO'}")
 
     sucesso = notificar_acordao_juiza_discord(acordao)
     if sucesso:
-        print("✅ Embed da IA Juíza disparado com sucesso para o Discord!")
+        print("✅ Embed da IA Juíza disparado com sucesso para o canal JUIZERA!")
         return 0
     else:
-        print("⚠️ Falha ao disparar para o Discord (verifique se DISCORD_WEBHOOK_URL está definido no .env).")
+        print("⚠️ Falha ao disparar para o Discord (verifique se DISCORD_WEBHOOK_JUIZA está definido no .env).")
         return 1
 
 if __name__ == "__main__":

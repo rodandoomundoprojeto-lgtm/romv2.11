@@ -18309,7 +18309,10 @@
       if (sMaster) sMaster.hidden = false;
       if (sResumo) sResumo.hidden = false;
       if (sDrawer) sDrawer.hidden = false;
-      if (sDrawerTop) sDrawerTop.hidden = false;
+      if (sDrawerTop) {
+        sDrawerTop.hidden = false;
+        scheduleSponsorBadgeWrapSync();
+      }
 
       var entendaSlots = document.querySelectorAll('.sponsor-slot-entenda');
       entendaSlots.forEach(function (slot) {
@@ -18338,7 +18341,10 @@
       if (sMaster) sMaster.hidden = !visible;
       if (sResumo) sResumo.hidden = !visible;
       if (sDrawer) sDrawer.hidden = !visible;
-      if (sDrawerTop) sDrawerTop.hidden = !visible;
+      if (sDrawerTop) {
+        sDrawerTop.hidden = !visible;
+        if (visible) scheduleSponsorBadgeWrapSync();
+      }
       document.querySelectorAll('.sponsor-slot-entenda').forEach(function (slot) {
         slot.hidden = !visible;
       });
@@ -18891,6 +18897,53 @@
     });
   }
 
+  var sponsorBadgeWrapRO = null;
+  var sponsorBadgeWrapResizeBound = false;
+
+  /**
+   * Aligns the drawer top sponsor badge with the country title's first letter
+   * when it wraps onto a second line, keeping it right-aligned on a single line.
+   */
+  function syncSponsorBadgeWrap() {
+    var head = document.querySelector('.country-title-head');
+    var badge = document.getElementById('slot-sponsor-drawer-top');
+    if (!head || !badge || badge.hidden) return;
+    var titleEl = head.querySelector('h2');
+    if (!titleEl) return;
+    badge.classList.remove('is-wrapped');
+    var titleRect = titleEl.getBoundingClientRect();
+    var badgeRect = badge.getBoundingClientRect();
+    if (titleRect.height > 0 && badgeRect.height > 0 && badgeRect.top >= titleRect.bottom - 4) {
+      badge.classList.add('is-wrapped');
+    }
+  }
+
+  function scheduleSponsorBadgeWrapSync() {
+    var head = document.querySelector('.country-title-head');
+    var badge = document.getElementById('slot-sponsor-drawer-top');
+    if (badge) {
+      badge.querySelectorAll('img').forEach(function (img) {
+        if (!img.complete) {
+          img.addEventListener('load', syncSponsorBadgeWrap, { once: true });
+        }
+      });
+    }
+    if (typeof ResizeObserver === 'function' && head) {
+      if (sponsorBadgeWrapRO) sponsorBadgeWrapRO.disconnect();
+      sponsorBadgeWrapRO = new ResizeObserver(syncSponsorBadgeWrap);
+      sponsorBadgeWrapRO.observe(head);
+    }
+    if (!sponsorBadgeWrapResizeBound) {
+      sponsorBadgeWrapResizeBound = true;
+      window.addEventListener('resize', syncSponsorBadgeWrap);
+    }
+    if (typeof requestAnimationFrame === 'function') {
+      requestAnimationFrame(syncSponsorBadgeWrap);
+    } else {
+      syncSponsorBadgeWrap();
+    }
+  }
+
   function applyLiveSponsors(cotas) {
     if (isCommercialDemoMode) return;
     var c = cotas || liveSponsorsCache;
@@ -18980,6 +19033,7 @@
           sDrawerTop.setAttribute('aria-label', tagDrawer + ': ' + (cDrawer.nome || 'Parceiro'));
           applySponsorLinkAttrs(sDrawerTop, cDrawer.link_url);
           sDrawerTop.hidden = false;
+          scheduleSponsorBadgeWrapSync();
         }
       } else {
         if (sDrawer) sDrawer.hidden = true;

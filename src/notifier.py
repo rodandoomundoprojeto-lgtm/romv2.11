@@ -499,20 +499,18 @@ def notificar_aprovacao_admin_discord(
 
 
 def notificar_acordao_juiza_discord(acordao: Any, webhook_url: Optional[str] = None) -> bool:
-    """Dispara um embed executivo e estilizado com o Acórdão da IA Juíza para o Discord."""
+    """Dispara um embed executivo e estilizado com o Acórdão da IA Juíza EXCLUSIVAMENTE para o canal JUIZERA no Discord."""
     if _is_test_environment():
         return True
 
     target_url = (
         webhook_url
         or os.getenv("DISCORD_WEBHOOK_JUIZA")
-        or os.getenv("DISCORD_WEBHOOK_URL")
-        or os.getenv("DISCORD_WEBHOOK_RADAR")
         or ""
     ).strip()
 
     if not target_url:
-        print("[!] Nenhum DISCORD_WEBHOOK_URL configurado para a IA Juíza.")
+        print("[!] Nenhum DISCORD_WEBHOOK_JUIZA configurado no .env. Envio exclusivo ao canal JUIZERA cancelado.")
         return False
 
     # Determina cores conforme o veredito
