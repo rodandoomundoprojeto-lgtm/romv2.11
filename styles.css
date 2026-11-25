@@ -12018,6 +12018,7 @@ button.support-link.topbar-more-btn:hover {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
   gap: 0.5rem;
 }
 
@@ -12039,11 +12040,16 @@ button.support-link.topbar-more-btn:hover {
 .sponsor-drawer-top-badge {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
+  flex-wrap: wrap;
+  row-gap: 0.25rem;
+  column-gap: 0.45rem;
   margin-left: auto;
   max-width: 100%;
-  padding: 0.26rem 0.65rem;
-  border-radius: 999px;
+  min-width: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+  padding: 0.3rem 0.7rem;
+  border-radius: 14px;
   text-decoration: none;
   color: inherit;
   background: linear-gradient(135deg, rgba(245, 158, 11, 0.18) 0%, rgba(15, 23, 42, 0.82) 100%);
@@ -12079,8 +12085,11 @@ button.support-link.topbar-more-btn:hover {
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.06em;
+  line-height: 1.25;
   color: #fbbf24;
-  white-space: nowrap;
+  white-space: normal;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .sponsor-drawer-top-label::before {
@@ -12095,11 +12104,15 @@ button.support-link.topbar-more-btn:hover {
 .sponsor-drawer-top-brand {
   display: inline-flex;
   align-items: center;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .sponsor-drawer-top-badge .sponsor-brand-combo {
   gap: 0.35rem;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
+  min-width: 0;
+  max-width: 100%;
   padding: 0;
   background: transparent;
   border: 0;
@@ -12108,23 +12121,30 @@ button.support-link.topbar-more-btn:hover {
 .sponsor-drawer-top-badge .sponsor-logo-img {
   max-height: 20px;
   max-width: 84px;
+  flex-shrink: 0;
   border-radius: 3px;
 }
 
 .sponsor-drawer-top-badge .sponsor-name-img {
   max-height: 18px;
-  max-width: 90px;
+  max-width: min(90px, 100%);
 }
 
 .sponsor-drawer-top-badge .sponsor-brand-name {
   font-size: 0.78rem;
   font-weight: 700;
-  white-space: nowrap;
+  line-height: 1.2;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  min-width: 0;
 }
 
 .sponsor-drawer-top-badge .mock-brand-logo {
   font-size: 0.74rem;
   padding: 0.08rem 0.38rem;
+  max-width: 100%;
+  white-space: normal;
+  overflow-wrap: anywhere;
 }
 
 /* Logo e Marca em imagem nos slots comerciais (Cotas 01-04) */
@@ -12134,6 +12154,9 @@ button.support-link.topbar-more-btn:hover {
   gap: 0.55rem;
   vertical-align: middle;
   flex-wrap: wrap;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
   padding: 0.18rem 0.6rem;
   border-radius: 6px;
   background: rgba(255, 255, 255, 0.04);
@@ -12250,6 +12273,7 @@ button.support-link.topbar-more-btn:hover {
   .sponsor-brand-name {
     font-size: 0.86rem;
     white-space: normal;
+    overflow-wrap: anywhere;
   }
   .sponsor-logo-img {
     max-height: 24px;
@@ -12478,9 +12502,18 @@ button.support-link.topbar-more-btn:hover {
   }
 }
 
+@media (max-width: 640px) {
+  .sponsor-drawer-top-badge {
+    margin-left: 0;
+    padding: 0.32rem 0.65rem;
+  }
+}
+
 @media (max-width: 480px) {
   .sponsor-drawer-top-badge {
     margin-left: 0;
+    padding: 0.32rem 0.6rem;
+    border-radius: 12px;
   }
   .sponsor-drawer-top-badge .sponsor-logo-img {
     max-height: 18px;
