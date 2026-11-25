@@ -2,22 +2,73 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-25T07:42:33Z",
-  "batch_id": "20261125-0741",
+  "updatedAt": "2026-11-25T07:56:41Z",
+  "batch_id": "20261125-0755",
   "temas_ativos": [
     {
-      "slug": "governo-lula-ajuste-fiscal-orcamento",
-      "titulo_tema": "Governo Lula discute novas medidas fiscais após redução de contenção",
+      "slug": "itau-bv-inter-demissoes-bancarios",
+      "titulo_tema": "Bancos Itaú, BV e Inter desligam cerca de 600 funcionários, aponta sindicato",
+      "titulo_curto": "Bancos Itaú, BV e Inter desligam cerca de 600 funcionários, aponta sindicato",
       "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Economia",
+      "categoria": "Economia_Comercio",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 89,
+      "urgencia_score": 87,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-26T07:56:41Z",
+      "palavras_chave_busca": [
+        "itaú",
+        "banco bv",
+        "banco inter",
+        "demissões",
+        "bancários"
+      ],
+      "palavras_chave": [
+        "itaú",
+        "banco bv",
+        "banco inter",
+        "demissões",
+        "bancários"
+      ],
+      "gatilho_vitrine": "Conforme levantamento divulgado pelo Poder360 com base em sindicatos da categoria, instituições financeiras como Itaú, Banco BV e Banco Inter realizaram cortes que somam cerca de 600 demissões, com dezenas de bancários ainda aguardando definições sobre os desligamentos.",
+      "resumo_pulso": "Conforme levantamento divulgado pelo Poder360 com base em sindicatos da categoria, instituições financeiras como Itaú, Banco BV e Banco Inter realizaram cortes que somam cerca de 600 demissões, com dezenas de bancários ainda aguardando definições sobre os desligamentos.",
+      "sintese_nerd": "O movimento impacta o mercado de trabalho do setor financeiro e reflete reestruturações operacionais internas dos bancos privados.",
+      "impacto_pratico": "O movimento impacta o mercado de trabalho do setor financeiro e reflete reestruturações operacionais internas dos bancos privados.",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "veiculos_origem": [
+        "Poder360"
+      ],
+      "fontes_urls": [
+        "https://www.poder360.com.br/poder-economia/itau-bv-e-inter-demitem-cerca-de-600-funcionarios/"
+      ],
+      "data_publicacao": "2026-11-25T07:51:21Z",
+      "updated_at": "2026-11-25T07:56:41Z"
+    },
+    {
+      "slug": "governo-lula-ajuste-fiscal-orcamento",
+      "status": "novo",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-26T07:42:33Z",
+      "updated_at": "2026-11-25T07:42:33Z",
+      "titulo_tema": "Governo Lula discute novas medidas fiscais após redução de contenção",
+      "sintese_nerd": "O governo revisou a contenção orçamentária para R$ 12,6 bilhões após manobras contábeis em subsídios, sinalizando um cenário de pressão fiscal persistente. A reunião ministerial de hoje é crucial para definir a sustentabilidade das contas públicas e o impacto nas expectativas do mercado financeiro.",
+      "rota_editoria": "/politica",
+      "data_publicacao": "2026-11-25T07:42:33Z",
+      "gatilho_vitrine": "Acompanhe a reunião decisiva da equipe econômica sobre o futuro do orçamento e a estratégia de contenção de gastos.",
       "origem_pipeline": "curadoria",
+      "relevancia_score": 98,
       "categoria_primaria": "Politica",
       "categorias_cruzadas": [
         "Economia"
       ],
-      "rota_editoria": "/politica",
-      "relevancia_score": 98,
-      "ttl_horas": 24,
-      "expires_at": "2026-11-26T07:42:33Z",
       "palavras_chave_busca": [
         "lula",
         "equipe economica",
@@ -26,25 +77,25 @@
         "bruno moretti",
         "miriam belchior",
         "gastos publicos"
-      ],
-      "gatilho_vitrine": "Acompanhe a reunião decisiva da equipe econômica sobre o futuro do orçamento e a estratégia de contenção de gastos.",
-      "sintese_nerd": "O governo revisou a contenção orçamentária para R$ 12,6 bilhões após manobras contábeis em subsídios, sinalizando um cenário de pressão fiscal persistente. A reunião ministerial de hoje é crucial para definir a sustentabilidade das contas públicas e o impacto nas expectativas do mercado financeiro.",
-      "data_publicacao": "2026-11-25T07:42:33Z",
-      "updated_at": "2026-11-25T07:42:33Z"
+      ]
     },
     {
       "slug": "escalada-conflito-ucrania-russia-drones",
-      "titulo_tema": "Intensificação de ataques russos com drones na Ucrânia",
       "status": "novo",
+      "ttl_horas": 12,
+      "expires_at": "2026-11-25T19:42:33Z",
+      "updated_at": "2026-11-25T07:42:33Z",
+      "titulo_tema": "Intensificação de ataques russos com drones na Ucrânia",
+      "sintese_nerd": "A ofensiva russa com mais de 100 drones em uma única noite demonstra a escalada na estratégia de desgaste da infraestrutura crítica ucraniana. O impacto direto é a instabilidade no fornecimento de energia e o aumento da pressão sobre a ajuda financeira e militar da União Europeia.",
+      "rota_editoria": "/radar",
+      "data_publicacao": "2026-11-25T07:42:33Z",
+      "gatilho_vitrine": "Acompanhe a atualização do conflito: ataques massivos de drones russos atingem infraestrutura civil e energética na Ucrânia.",
       "origem_pipeline": "curadoria",
+      "relevancia_score": 92,
       "categoria_primaria": "Geopolitica_Radar",
       "categorias_cruzadas": [
         "Economia"
       ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 92,
-      "ttl_horas": 12,
-      "expires_at": "2026-11-25T19:42:33Z",
       "palavras_chave_busca": [
         "guerra ucrania",
         "russia",
@@ -52,25 +103,25 @@
         "infraestrutura energetica",
         "conflito geopolitico",
         "zelensky"
-      ],
-      "gatilho_vitrine": "Acompanhe a atualização do conflito: ataques massivos de drones russos atingem infraestrutura civil e energética na Ucrânia.",
-      "sintese_nerd": "A ofensiva russa com mais de 100 drones em uma única noite demonstra a escalada na estratégia de desgaste da infraestrutura crítica ucraniana. O impacto direto é a instabilidade no fornecimento de energia e o aumento da pressão sobre a ajuda financeira e militar da União Europeia.",
-      "data_publicacao": "2026-11-25T07:42:33Z",
-      "updated_at": "2026-11-25T07:42:33Z"
+      ]
     },
     {
       "slug": "fim-escala-6x1-impacto-trabalhista",
-      "titulo_tema": "Fim da escala 6x1 e novos cálculos de horas extras",
       "status": "novo",
+      "ttl_horas": 48,
+      "expires_at": "2026-11-27T07:42:33Z",
+      "updated_at": "2026-11-25T07:42:33Z",
+      "titulo_tema": "Fim da escala 6x1 e novos cálculos de horas extras",
+      "sintese_nerd": "A transição para o modelo 5x2 altera a base de cálculo do divisor salarial, elevando o custo da hora extra para o empregador. Essa mudança exige adaptação imediata do RH das empresas e altera a dinâmica de remuneração variável no Brasil.",
+      "rota_editoria": "/economia",
+      "data_publicacao": "2026-11-25T07:42:33Z",
+      "gatilho_vitrine": "Entenda como o fim da escala 6x1 altera o cálculo das suas horas extras e o impacto nas empresas.",
       "origem_pipeline": "curadoria",
+      "relevancia_score": 88,
       "categoria_primaria": "Economia",
       "categorias_cruzadas": [
         "Cultura"
       ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 88,
-      "ttl_horas": 48,
-      "expires_at": "2026-11-27T07:42:33Z",
       "palavras_chave_busca": [
         "escala 6x1",
         "reforma trabalhista",
@@ -78,57 +129,150 @@
         "direitos trabalhistas",
         "decreto lula",
         "mercado de trabalho"
-      ],
-      "gatilho_vitrine": "Entenda como o fim da escala 6x1 altera o cálculo das suas horas extras e o impacto nas empresas.",
-      "sintese_nerd": "A transição para o modelo 5x2 altera a base de cálculo do divisor salarial, elevando o custo da hora extra para o empregador. Essa mudança exige adaptação imediata do RH das empresas e altera a dinâmica de remuneração variável no Brasil.",
-      "data_publicacao": "2026-11-25T07:42:33Z",
-      "updated_at": "2026-11-25T07:42:33Z"
+      ]
     },
     {
-      "slug": "forcas-seguranca-entram-supermercado-refens-colombia",
+      "slug": "ataque-drones-refinarias-russia-samara",
+      "titulo_tema": "Ataques de drones provocam incêndio em duas refinarias de petróleo na região russa de Samara",
+      "titulo_curto": "Ataques de drones provocam incêndio em duas refinarias de petróleo na região russa de Samara",
       "status": "novo",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 12,
-      "expires_at": "2026-11-25T18:24:54Z",
-      "updated_at": "2026-11-25T06:24:54Z",
-      "fontes_urls": [
-        "https://g1.globo.com/mundo/noticia/2026/11/25/supermercado-com-refens-na-colombia.ghtml"
-      ],
-      "titulo_tema": "Forças de segurança entram em supermercado com reféns na Colômbia",
-      "resumo_pulso": "Segundo apuração do G1 Mundo, forças de segurança colombianas ingressaram nesta quarta-feira (25) no estabelecimento comercial em Cartagena onde dezenas de pessoas eram mantidas reféns desde o dia anterior por criminosos armados.",
-      "sintese_nerd": "Atenção para viajantes na região de Cartagena e possíveis interrupções em serviços locais de segurança.",
-      "titulo_curto": "Forças de segurança entram em supermercado com reféns na Colômbia",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "colômbia",
-        "cartagena",
-        "reféns",
-        "segurança"
-      ],
-      "urgencia_score": 92,
-      "data_publicacao": "2026-11-25T06:21:06Z",
-      "gatilho_vitrine": "Segundo apuração do G1 Mundo, forças de segurança colombianas ingressaram nesta quarta-feira (25) no estabelecimento comercial em Cartagena onde dezenas de pessoas eram mantidas reféns desde o dia anterior por criminosos armados.",
-      "impacto_pratico": "Atenção para viajantes na região de Cartagena e possíveis interrupções em serviços locais de segurança.",
       "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "G1 Mundo",
-        "Reuters"
-      ],
-      "relevancia_score": 90,
-      "paises_envolvidos": [
-        "CO"
-      ],
       "categoria_primaria": "Geopolitica_Radar",
+      "categoria": "Geopolitica_Relacoes",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
       ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 90,
+      "urgencia_score": 91,
+      "ttl_horas": 18,
+      "expires_at": "2026-11-26T01:56:41Z",
+      "palavras_chave_busca": [
+        "rússia",
+        "samara",
+        "refinarias",
+        "drones",
+        "petróleo"
+      ],
+      "palavras_chave": [
+        "rússia",
+        "samara",
+        "refinarias",
+        "drones",
+        "petróleo"
+      ],
+      "gatilho_vitrine": "Conforme apuração de veículos de imprensa internacional e da Ukrinform, um ataque coordenado de drones deflagrou incêndios em duas refinarias de petróleo da Rosneft localizadas na região russa de Samara, incluindo a unidade na cidade de Syzran.",
+      "resumo_pulso": "Conforme apuração de veículos de imprensa internacional e da Ukrinform, um ataque coordenado de drones deflagrou incêndios em duas refinarias de petróleo da Rosneft localizadas na região russa de Samara, incluindo a unidade na cidade de Syzran.",
+      "sintese_nerd": "A escalada de ataques contra infraestruturas energéticas na Rússia pode gerar volatilidade adicional nos preços internacionais do petróleo e derivados.",
+      "impacto_pratico": "A escalada de ataques contra infraestruturas energéticas na Rússia pode gerar volatilidade adicional nos preços internacionais do petróleo e derivados.",
+      "paises_envolvidos": [
+        "RU",
+        "UA"
+      ],
+      "veiculos_origem": [
+        "Ukrinform",
+        "The Kyiv Independent"
+      ],
+      "fontes_urls": [
+        "https://www.ukrinform.net/rubric-ato/4188325-two-rosneft-oil-refineries-in-russias-samara-region-on-fire-following-drone-attack-media.html"
+      ],
+      "data_publicacao": "2026-11-25T07:38:00Z",
+      "updated_at": "2026-11-25T07:56:41Z"
+    },
+    {
+      "slug": "exercito-eua-explosao-material-toxico-iowa",
+      "titulo_tema": "Exército dos EUA realiza destruição controlada de material tóxico para munições em Iowa",
+      "titulo_curto": "Exército dos EUA realiza destruição controlada de material tóxico para munições em Iowa",
+      "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categoria": "Geopolitica_Relacoes",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 85,
+      "urgencia_score": 84,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-26T07:56:41Z",
+      "palavras_chave_busca": [
+        "estados unidos",
+        "iowa",
+        "exército",
+        "material tóxico",
+        "munições"
+      ],
+      "palavras_chave": [
+        "estados unidos",
+        "iowa",
+        "exército",
+        "material tóxico",
+        "munições"
+      ],
+      "gatilho_vitrine": "Segundo apuração do G1 Mundo, o Exército dos Estados Unidos planeja detonar 68 barris de azida de chumbo — substância empregada na fabricação de armamentos — na Fábrica de Munições de Iowa, após autorização judicial decorrente de disputa sobre riscos ambientais.",
+      "resumo_pulso": "Segundo apuração do G1 Mundo, o Exército dos Estados Unidos planeja detonar 68 barris de azida de chumbo — substância empregada na fabricação de armamentos — na Fábrica de Munições de Iowa, após autorização judicial decorrente de disputa sobre riscos ambientais.",
+      "sintese_nerd": "A operação pontual visa descartar compostos químicos voláteis, gerando monitoramento de segurança ambiental por comunidades locais.",
+      "impacto_pratico": "A operação pontual visa descartar compostos químicos voláteis, gerando monitoramento de segurança ambiental por comunidades locais.",
+      "paises_envolvidos": [
+        "US"
+      ],
+      "veiculos_origem": [
+        "G1 Mundo"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/mundo/noticia/2026/11/25/em-meio-a-preocupacoes-da-populacao-exercito-dos-eua-vai-explodir-material-toxico-usado-na-fabricacao-de-bombas.ghtml"
+      ],
+      "data_publicacao": "2026-11-25T07:00:22Z",
+      "updated_at": "2026-11-25T07:56:41Z"
+    },
+    {
+      "slug": "forcas-seguranca-entram-supermercado-refens-colombia",
+      "titulo_tema": "Presidente da Colômbia confirma resgate de reféns em supermercado em Cartagena",
+      "titulo_curto": "Presidente da Colômbia confirma resgate de reféns em supermercado em Cartagena",
+      "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categoria": "Geopolitica_Relacoes",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 91,
+      "urgencia_score": 93,
+      "ttl_horas": 12,
+      "expires_at": "2026-11-25T18:24:54Z",
       "palavras_chave_busca": [
         "colômbia",
         "cartagena",
         "reféns",
+        "supermercado",
         "segurança"
-      ]
+      ],
+      "palavras_chave": [
+        "colômbia",
+        "cartagena",
+        "reféns",
+        "supermercado",
+        "segurança"
+      ],
+      "gatilho_vitrine": "Segundo o presidente da Colômbia, Abelardo de la Espriella, as forças de segurança concluíram com sucesso o resgate de todos os reféns mantidos em um supermercado em Cartagena por cerca de 17 horas, com o registro da morte de um dos sequestradores na operação.",
+      "resumo_pulso": "Segundo o presidente da Colômbia, Abelardo de la Espriella, as forças de segurança concluíram com sucesso o resgate de todos os reféns mantidos em um supermercado em Cartagena por cerca de 17 horas, com o registro da morte de um dos sequestradores na operação.",
+      "sintese_nerd": "A operação encerra o impasse de segurança em Cartagena, restabelecendo a normalidade comercial e o tráfego na região.",
+      "impacto_pratico": "A operação encerra o impasse de segurança em Cartagena, restabelecendo a normalidade comercial e o tráfego na região.",
+      "paises_envolvidos": [
+        "CO"
+      ],
+      "veiculos_origem": [
+        "G1 Mundo"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/mundo/noticia/2026/11/25/supermercado-com-refens-colombia.ghtml"
+      ],
+      "data_publicacao": "2026-11-25T06:21:06Z",
+      "updated_at": "2026-11-25T07:56:41Z"
     },
     {
       "slug": "coreia-do-norte-expulsa-chefe-escritorio-suico",
@@ -223,48 +367,50 @@
     },
     {
       "slug": "governo-reduz-contencao-despesas-orcamento-12-bilhoes",
+      "titulo_tema": "Governo reduz contenção de gastos no Orçamento para R$ 12,6 bilhões após ajuste na meta fiscal",
+      "titulo_curto": "Governo reduz contenção de gastos no Orçamento para R$ 12,6 bilhões após ajuste na meta fiscal",
       "status": "novo",
-      "categoria": "Economia_Comercio",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-26T02:52:34Z",
-      "updated_at": "2026-11-25T06:24:54Z",
-      "fontes_urls": [
-        "https://g1.globo.com/politica/noticia/2026/11/25/governo-lula-tem-ao-menos-oito-projetos-economicos-para-aprovar-no-congresso-ate-o-fim-de-2026.ghtml"
-      ],
-      "titulo_tema": "Governo articula aprovação de oito projetos econômicos no Congresso até dezembro",
-      "resumo_pulso": "Segundo apuração do G1 Política, a equipe econômica busca acelerar a votação de ao menos oito projetos de teor econômico no Congresso Nacional antes do início do recesso parlamentar, marcado para 23 de dezembro.",
-      "sintese_nerd": "Impacta diretamente as expectativas fiscais e o planejamento orçamentário para o próximo ano.",
-      "titulo_curto": "Governo articula aprovação de oito projetos econômicos no Congresso até dezembro",
-      "rota_editoria": "/economia",
-      "palavras_chave": [
-        "economia",
-        "congresso",
-        "orçamento",
-        "governo federal"
-      ],
-      "urgencia_score": 89,
-      "data_publicacao": "2026-11-25T02:38:46Z",
-      "gatilho_vitrine": "Segundo apuração do G1 Política, a equipe econômica busca acelerar a votação de ao menos oito projetos de teor econômico no Congresso Nacional antes do início do recesso parlamentar, marcado para 23 de dezembro.",
-      "impacto_pratico": "Impacta diretamente as expectativas fiscais e o planejamento orçamentário para o próximo ano.",
       "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "G1 Política"
-      ],
-      "relevancia_score": 92,
-      "paises_envolvidos": [
-        "BR"
-      ],
       "categoria_primaria": "Economia",
+      "categoria": "Economia_Comercio",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
       ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 92,
+      "urgencia_score": 89,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-26T02:52:34Z",
       "palavras_chave_busca": [
-        "economia",
-        "congresso",
         "orçamento",
-        "governo federal"
-      ]
+        "contensão de gastos",
+        "meta fiscal",
+        "subsídios",
+        "economia"
+      ],
+      "palavras_chave": [
+        "orçamento",
+        "contensão de gastos",
+        "meta fiscal",
+        "subsídios",
+        "economia"
+      ],
+      "gatilho_vitrine": "Segundo apuração do portal Poder360, o governo federal reduziu o volume de contenção de despesas no Orçamento para R$ 12,6 bilhões. A revisão ocorreu após a retirada de R$ 10,5 bilhões em subsídios aos combustíveis do cálculo da meta fiscal.",
+      "resumo_pulso": "Segundo apuração do portal Poder360, o governo federal reduziu o volume de contenção de despesas no Orçamento para R$ 12,6 bilhões. A revisão ocorreu após a retirada de R$ 10,5 bilhões em subsídios aos combustíveis do cálculo da meta fiscal.",
+      "sintese_nerd": "A mudança alivia temporariamente o bloqueio de verbas discricionárias da máquina pública e altera a dinâmica de execução do Orçamento federal.",
+      "impacto_pratico": "A mudança alivia temporariamente o bloqueio de verbas discricionárias da máquina pública e altera a dinâmica de execução do Orçamento federal.",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "veiculos_origem": [
+        "Poder360"
+      ],
+      "fontes_urls": [
+        "https://www.poder360.com.br/poder-economia/governo-reduz-contencao-de-gastos-no-orcamento-para-r-126-bi/"
+      ],
+      "data_publicacao": "2026-11-25T02:38:46Z",
+      "updated_at": "2026-11-25T07:56:41Z"
     },
     {
       "slug": "assessor-trump-brasil-deixa-cargo-departamento-estado",
@@ -729,220 +875,162 @@
         "stf",
         "visita médica"
       ]
-    },
-    {
-      "slug": "camara-aprova-raca-cor-prontuarios-sus-chacina-acari",
-      "status": "novo",
-      "categoria": "Sociedade_Cultura",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-25T23:20:33Z",
-      "updated_at": "2026-11-24T23:20:33Z",
-      "fontes_urls": [
-        "https://www.youtube.com/watch?v=_wREA4YDJ_g"
-      ],
-      "titulo_tema": "Câmara aprova inclusão de raça e cor no SUS e reconhecimento de indenização da Chacina de Acari",
-      "resumo_pulso": "Segundo informou o canal oficial da Câmara dos Deputados, o plenário aprovou o projeto que obriga o registro de raça e cor nos prontuários médicos do SUS. Além disso, os parlamentares aprovaram o projeto que reconhece a responsabilidade do Estado e concede pensão às famílias das vítimas da Chacina de Acari (RJ).",
-      "sintese_nerd": "Mudança nos procedimentos de atendimento no SUS e reparação financeira direta para familiares de vítimas de violência histórica de Estado.",
-      "titulo_curto": "Câmara aprova inclusão de raça e cor no SUS e reconhecimento de indenização da Chacina de Acari",
-      "rota_editoria": "/cultura",
-      "palavras_chave": [
-        "câmara dos deputados",
-        "sus",
-        "chacina de acari",
-        "direitos humanos",
-        "legislação"
-      ],
-      "urgencia_score": 86,
-      "data_publicacao": "2026-11-24T23:09:55Z",
-      "gatilho_vitrine": "Segundo informou o canal oficial da Câmara dos Deputados, o plenário aprovou o projeto que obriga o registro de raça e cor nos prontuários médicos do SUS. Além disso, os parlamentares aprovaram o projeto que reconhece a responsabilidade do Estado e concede pensão às famílias das vítimas da Chacina de Acari (RJ).",
-      "impacto_pratico": "Mudança nos procedimentos de atendimento no SUS e reparação financeira direta para familiares de vítimas de violência histórica de Estado.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "Câmara dos Deputados - YouTube"
-      ],
-      "relevancia_score": 90,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "categoria_primaria": "Cultura",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "câmara dos deputados",
-        "sus",
-        "chacina de acari",
-        "direitos humanos",
-        "legislação"
-      ]
-    },
-    {
-      "slug": "ataques-drones-russos-incendio-predio-kiev",
-      "status": "novo",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 18,
-      "expires_at": "2026-11-25T17:24:39Z",
-      "updated_at": "2026-11-25T02:11:11Z",
-      "fontes_urls": [
-        "https://kyivindependent.com/russian-attacks-kill-2-in-odesa-oblast-including-child-injure-more-in-kyiv/"
-      ],
-      "titulo_tema": "Ataques de drones russos provocam incêndio e deixam vítimas na Ucrânia",
-      "resumo_pulso": "Conforme reportado por The Kyiv Independent, novos ataques noturnos russos atingiram a região de Odesa, causando mortes, e provocaram incêndios em um edifício residencial em Kiev. Paralelamente, canais de monitoramento apontam ataques de drones ucranianos contra refinarias de petróleo na Rússia.",
-      "sintese_nerd": "Intensificação do conflito Leste-Europeu com impactos diretos sobre infraestrutura civil e energética de ambos os países.",
-      "titulo_curto": "Ataques de drones russos provocam incêndio e deixam vítimas na Ucrânia",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "ucrânia",
-        "rússia",
-        "drones",
-        "guerra"
-      ],
-      "urgencia_score": 91,
-      "data_publicacao": "2026-11-24T23:08:00Z",
-      "gatilho_vitrine": "Conforme reportado por The Kyiv Independent, novos ataques noturnos russos atingiram a região de Odesa, causando mortes, e provocaram incêndios em um edifício residencial em Kiev. Paralelamente, canais de monitoramento apontam ataques de drones ucranianos contra refinarias de petróleo na Rússia.",
-      "impacto_pratico": "Intensificação do conflito Leste-Europeu com impactos diretos sobre infraestrutura civil e energética de ambos os países.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "The Kyiv Independent"
-      ],
-      "relevancia_score": 90,
-      "paises_envolvidos": [
-        "UA",
-        "RU"
-      ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "ucrânia",
-        "rússia",
-        "drones",
-        "guerra"
-      ]
-    }
-  ],
-  "temas_curadoria": [
-    {
-      "slug": "governo-lula-ajuste-fiscal-orcamento",
-      "titulo_tema": "Governo Lula discute novas medidas fiscais após redução de contenção",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Politica",
-      "categorias_cruzadas": [
-        "Economia"
-      ],
-      "rota_editoria": "/politica",
-      "relevancia_score": 98,
-      "ttl_horas": 24,
-      "expires_at": "2026-11-26T07:42:33Z",
-      "palavras_chave_busca": [
-        "lula",
-        "equipe economica",
-        "meta fiscal",
-        "orcamento 2026",
-        "bruno moretti",
-        "miriam belchior",
-        "gastos publicos"
-      ],
-      "gatilho_vitrine": "Acompanhe a reunião decisiva da equipe econômica sobre o futuro do orçamento e a estratégia de contenção de gastos.",
-      "sintese_nerd": "O governo revisou a contenção orçamentária para R$ 12,6 bilhões após manobras contábeis em subsídios, sinalizando um cenário de pressão fiscal persistente. A reunião ministerial de hoje é crucial para definir a sustentabilidade das contas públicas e o impacto nas expectativas do mercado financeiro.",
-      "data_publicacao": "2026-11-25T07:42:33Z",
-      "updated_at": "2026-11-25T07:42:33Z"
-    },
-    {
-      "slug": "escalada-conflito-ucrania-russia-drones",
-      "titulo_tema": "Intensificação de ataques russos com drones na Ucrânia",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 92,
-      "ttl_horas": 12,
-      "expires_at": "2026-11-25T19:42:33Z",
-      "palavras_chave_busca": [
-        "guerra ucrania",
-        "russia",
-        "drones",
-        "infraestrutura energetica",
-        "conflito geopolitico",
-        "zelensky"
-      ],
-      "gatilho_vitrine": "Acompanhe a atualização do conflito: ataques massivos de drones russos atingem infraestrutura civil e energética na Ucrânia.",
-      "sintese_nerd": "A ofensiva russa com mais de 100 drones em uma única noite demonstra a escalada na estratégia de desgaste da infraestrutura crítica ucraniana. O impacto direto é a instabilidade no fornecimento de energia e o aumento da pressão sobre a ajuda financeira e militar da União Europeia.",
-      "data_publicacao": "2026-11-25T07:42:33Z",
-      "updated_at": "2026-11-25T07:42:33Z"
-    },
-    {
-      "slug": "fim-escala-6x1-impacto-trabalhista",
-      "titulo_tema": "Fim da escala 6x1 e novos cálculos de horas extras",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Cultura"
-      ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 88,
-      "ttl_horas": 48,
-      "expires_at": "2026-11-27T07:42:33Z",
-      "palavras_chave_busca": [
-        "escala 6x1",
-        "reforma trabalhista",
-        "horas extras",
-        "direitos trabalhistas",
-        "decreto lula",
-        "mercado de trabalho"
-      ],
-      "gatilho_vitrine": "Entenda como o fim da escala 6x1 altera o cálculo das suas horas extras e o impacto nas empresas.",
-      "sintese_nerd": "A transição para o modelo 5x2 altera a base de cálculo do divisor salarial, elevando o custo da hora extra para o empregador. Essa mudança exige adaptação imediata do RH das empresas e altera a dinâmica de remuneração variável no Brasil.",
-      "data_publicacao": "2026-11-25T07:42:33Z",
-      "updated_at": "2026-11-25T07:42:33Z"
     }
   ],
   "noticias_quentes": [
     {
-      "slug": "forcas-seguranca-entram-supermercado-refens-colombia",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 12,
-      "expires_at": "2026-11-25T18:24:54Z",
-      "updated_at": "2026-11-25T06:24:54Z",
-      "fontes_urls": [
-        "https://g1.globo.com/mundo/noticia/2026/11/25/supermercado-com-refens-na-colombia.ghtml"
+      "slug": "itau-bv-inter-demissoes-bancarios",
+      "titulo_curto": "Bancos Itaú, BV e Inter desligam cerca de 600 funcionários, aponta sindicato",
+      "resumo_pulso": "Conforme levantamento divulgado pelo Poder360 com base em sindicatos da categoria, instituições financeiras como Itaú, Banco BV e Banco Inter realizaram cortes que somam cerca de 600 demissões, com dezenas de bancários ainda aguardando definições sobre os desligamentos.",
+      "impacto_pratico": "O movimento impacta o mercado de trabalho do setor financeiro e reflete reestruturações operacionais internas dos bancos privados.",
+      "categoria": "Economia_Comercio",
+      "paises_envolvidos": [
+        "BR"
       ],
-      "resumo_pulso": "Segundo apuração do G1 Mundo, forças de segurança colombianas ingressaram nesta quarta-feira (25) no estabelecimento comercial em Cartagena onde dezenas de pessoas eram mantidas reféns desde o dia anterior por criminosos armados.",
-      "titulo_curto": "Forças de segurança entram em supermercado com reféns na Colômbia",
+      "urgencia_score": 87,
+      "relevancia_score": 89,
+      "nivel_confianca": "alta",
+      "ttl_horas": 24,
+      "horas_em_destaque": 12,
+      "veiculos_origem": [
+        "Poder360"
+      ],
+      "fontes_urls": [
+        "https://www.poder360.com.br/poder-economia/itau-bv-e-inter-demitem-cerca-de-600-funcionarios/"
+      ],
+      "palavras_chave": [
+        "Itaú",
+        "Banco BV",
+        "Banco Inter",
+        "demissões",
+        "bancários"
+      ],
+      "data_publicacao": "2026-11-25T07:51:21Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "Emprego, renda das famílias e financiamento industrial entram no centro do debate econômico",
+          "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
+          "motivo_conexao": "Contextualiza as movimentações no mercado de trabalho e o emprego formal no Brasil."
+        }
+      ],
+      "expires_at": "2026-11-26T07:56:41Z",
+      "updated_at": "2026-11-25T07:56:41Z"
+    },
+    {
+      "slug": "ataque-drones-refinarias-russia-samara",
+      "titulo_curto": "Ataques de drones provocam incêndio em duas refinarias de petróleo na região russa de Samara",
+      "resumo_pulso": "Conforme apuração de veículos de imprensa internacional e da Ukrinform, um ataque coordenado de drones deflagrou incêndios em duas refinarias de petróleo da Rosneft localizadas na região russa de Samara, incluindo a unidade na cidade de Syzran.",
+      "impacto_pratico": "A escalada de ataques contra infraestruturas energéticas na Rússia pode gerar volatilidade adicional nos preços internacionais do petróleo e derivados.",
+      "categoria": "Geopolitica_Relacoes",
+      "paises_envolvidos": [
+        "RU",
+        "UA"
+      ],
+      "urgencia_score": 91,
+      "relevancia_score": 90,
+      "nivel_confianca": "alta",
+      "ttl_horas": 18,
+      "horas_em_destaque": 12,
+      "veiculos_origem": [
+        "Ukrinform",
+        "The Kyiv Independent"
+      ],
+      "fontes_urls": [
+        "https://www.ukrinform.net/rubric-ato/4188325-two-rosneft-oil-refineries-in-russias-samara-region-on-fire-following-drone-attack-media.html"
+      ],
+      "palavras_chave": [
+        "Rússia",
+        "Samara",
+        "refinarias",
+        "drones",
+        "petróleo"
+      ],
+      "data_publicacao": "2026-11-25T07:38:00Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "O que é uma sanção internacional?",
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-sancao-internacional",
+          "motivo_conexao": "Contextualiza o impacto de conflitos geopolíticos e restrições sobre o setor energético global."
+        }
+      ],
+      "expires_at": "2026-11-26T01:56:41Z",
+      "updated_at": "2026-11-25T07:56:41Z"
+    },
+    {
+      "slug": "exercito-eua-explosao-material-toxico-iowa",
+      "titulo_curto": "Exército dos EUA realiza destruição controlada de material tóxico para munições em Iowa",
+      "resumo_pulso": "Segundo apuração do G1 Mundo, o Exército dos Estados Unidos planeja detonar 68 barris de azida de chumbo — substância empregada na fabricação de armamentos — na Fábrica de Munições de Iowa, após autorização judicial decorrente de disputa sobre riscos ambientais.",
+      "impacto_pratico": "A operação pontual visa descartar compostos químicos voláteis, gerando monitoramento de segurança ambiental por comunidades locais.",
+      "categoria": "Geopolitica_Relacoes",
+      "paises_envolvidos": [
+        "US"
+      ],
+      "urgencia_score": 84,
+      "relevancia_score": 85,
+      "nivel_confianca": "alta",
+      "ttl_horas": 24,
+      "horas_em_destaque": 12,
+      "veiculos_origem": [
+        "G1 Mundo"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/mundo/noticia/2026/11/25/em-meio-a-preocupacoes-da-populacao-exercito-dos-eua-vai-explodir-material-toxico-usado-na-fabricacao-de-bombas.ghtml"
+      ],
+      "palavras_chave": [
+        "Estados Unidos",
+        "Iowa",
+        "exército",
+        "material tóxico",
+        "munições"
+      ],
+      "data_publicacao": "2026-11-25T07:00:22Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "Casa Branca anuncia novos nomes para o gabinete e detalha prioridades em imigração e comércio",
+          "url_existente": "https://www.rodandoomundo.com.br/politica/estados-unidos",
+          "motivo_conexao": "Acompanha decisões administrativas e de defesa do governo norte-americano."
+        }
+      ],
+      "expires_at": "2026-11-26T07:56:41Z",
+      "updated_at": "2026-11-25T07:56:41Z"
+    },
+    {
+      "slug": "forcas-seguranca-entram-supermercado-refens-colombia",
+      "titulo_curto": "Presidente da Colômbia confirma resgate de reféns em supermercado em Cartagena",
+      "resumo_pulso": "Segundo o presidente da Colômbia, Abelardo de la Espriella, as forças de segurança concluíram com sucesso o resgate de todos os reféns mantidos em um supermercado em Cartagena por cerca de 17 horas, com o registro da morte de um dos sequestradores na operação.",
+      "impacto_pratico": "A operação encerra o impasse de segurança em Cartagena, restabelecendo a normalidade comercial e o tráfego na região.",
+      "categoria": "Geopolitica_Relacoes",
+      "paises_envolvidos": [
+        "CO"
+      ],
+      "urgencia_score": 93,
+      "relevancia_score": 91,
+      "nivel_confianca": "alta",
+      "ttl_horas": 12,
+      "horas_em_destaque": 12,
+      "veiculos_origem": [
+        "G1 Mundo"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/mundo/noticia/2026/11/25/supermercado-com-refens-colombia.ghtml"
+      ],
       "palavras_chave": [
         "Colômbia",
         "Cartagena",
         "reféns",
+        "supermercado",
         "segurança"
       ],
-      "urgencia_score": 92,
       "data_publicacao": "2026-11-25T06:21:06Z",
-      "impacto_pratico": "Atenção para viajantes na região de Cartagena e possíveis interrupções em serviços locais de segurança.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "G1 Mundo",
-        "Reuters"
-      ],
-      "relevancia_score": 90,
-      "horas_em_destaque": 12,
-      "paises_envolvidos": [
-        "CO"
-      ],
       "links_internos_relacionados": [
         {
-          "url_existente": "https://www.rodandoomundo.com.br/politica/estados-unidos",
-          "motivo_conexao": "Contextualiza desdobramentos de segurança internacional e operações especiais.",
-          "titulo_existente": "Política nos Estados Unidos"
+          "titulo_existente": "Mercados e aliados internacionais avaliam impacto da política comercial norte-americana",
+          "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
+          "motivo_conexao": "Acompanha desdobramentos de segurança e impactos regionais na América Latina."
         }
-      ]
+      ],
+      "expires_at": "2026-11-25T18:24:54Z",
+      "updated_at": "2026-11-25T07:56:41Z"
     },
     {
       "slug": "reforma-tributaria-fim-escala-6x1-inflacao-2027",
@@ -1058,40 +1146,46 @@
     },
     {
       "slug": "governo-reduz-contencao-despesas-orcamento-12-bilhoes",
+      "titulo_curto": "Governo reduz contenção de gastos no Orçamento para R$ 12,6 bilhões após ajuste na meta fiscal",
+      "resumo_pulso": "Segundo apuração do portal Poder360, o governo federal reduziu o volume de contenção de despesas no Orçamento para R$ 12,6 bilhões. A revisão ocorreu após a retirada de R$ 10,5 bilhões em subsídios aos combustíveis do cálculo da meta fiscal.",
+      "impacto_pratico": "A mudança alivia temporariamente o bloqueio de verbas discricionárias da máquina pública e altera a dinâmica de execução do Orçamento federal.",
       "categoria": "Economia_Comercio",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-26T02:52:34Z",
-      "updated_at": "2026-11-25T06:24:54Z",
-      "fontes_urls": [
-        "https://g1.globo.com/politica/noticia/2026/11/25/governo-lula-tem-ao-menos-oito-projetos-economicos-para-aprovar-no-congresso-ate-o-fim-de-2026.ghtml"
-      ],
-      "resumo_pulso": "Segundo apuração do G1 Política, a equipe econômica busca acelerar a votação de ao menos oito projetos de teor econômico no Congresso Nacional antes do início do recesso parlamentar, marcado para 23 de dezembro.",
-      "titulo_curto": "Governo articula aprovação de oito projetos econômicos no Congresso até dezembro",
-      "palavras_chave": [
-        "economia",
-        "Congresso",
-        "orçamento",
-        "governo federal"
-      ],
-      "urgencia_score": 89,
-      "data_publicacao": "2026-11-25T02:38:46Z",
-      "impacto_pratico": "Impacta diretamente as expectativas fiscais e o planejamento orçamentário para o próximo ano.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "G1 Política"
-      ],
-      "relevancia_score": 92,
-      "horas_em_destaque": 20,
       "paises_envolvidos": [
         "BR"
       ],
+      "urgencia_score": 89,
+      "relevancia_score": 92,
+      "nivel_confianca": "alta",
+      "ttl_horas": 24,
+      "horas_em_destaque": 16,
+      "veiculos_origem": [
+        "Poder360"
+      ],
+      "fontes_urls": [
+        "https://www.poder360.com.br/poder-economia/governo-reduz-contencao-de-gastos-no-orcamento-para-r-126-bi/"
+      ],
+      "palavras_chave": [
+        "Orçamento",
+        "contensão de gastos",
+        "meta fiscal",
+        "subsídios",
+        "economia"
+      ],
+      "data_publicacao": "2026-11-25T02:38:46Z",
       "links_internos_relacionados": [
         {
+          "titulo_existente": "O que é o Orçamento?",
           "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-o-orcamento",
-          "motivo_conexao": "Explica a dinâmica de tramitação e alocação dos recursos públicos no Congresso.",
-          "titulo_existente": "O que é o Orçamento?"
+          "motivo_conexao": "Explica a mecânica de planejamento e os limites de gastos públicos no Brasil."
+        },
+        {
+          "titulo_existente": "Implementação da Reforma Tributária e medidas de revisão de gastos avançam em Brasília",
+          "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
+          "motivo_conexao": "Relaciona o ajuste de despesas às diretrizes fiscais em discussão no Congresso e no Planalto."
         }
-      ]
+      ],
+      "expires_at": "2026-11-26T02:52:34Z",
+      "updated_at": "2026-11-25T07:56:41Z"
     },
     {
       "slug": "assessor-trump-brasil-deixa-cargo-departamento-estado",
@@ -1526,113 +1620,86 @@
           "titulo_existente": "Política no Brasil"
         }
       ]
-    },
+    }
+  ],
+  "temas_curadoria": [
     {
-      "slug": "ataques-drones-russos-incendio-predio-kiev",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 18,
-      "expires_at": "2026-11-25T17:24:39Z",
-      "updated_at": "2026-11-25T02:11:11Z",
-      "fontes_urls": [
-        "https://kyivindependent.com/russian-attacks-kill-2-in-odesa-oblast-including-child-injure-more-in-kyiv/"
+      "slug": "governo-lula-ajuste-fiscal-orcamento",
+      "status": "novo",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-26T07:42:33Z",
+      "updated_at": "2026-11-25T07:42:33Z",
+      "titulo_tema": "Governo Lula discute novas medidas fiscais após redução de contenção",
+      "sintese_nerd": "O governo revisou a contenção orçamentária para R$ 12,6 bilhões após manobras contábeis em subsídios, sinalizando um cenário de pressão fiscal persistente. A reunião ministerial de hoje é crucial para definir a sustentabilidade das contas públicas e o impacto nas expectativas do mercado financeiro.",
+      "rota_editoria": "/politica",
+      "data_publicacao": "2026-11-25T07:42:33Z",
+      "gatilho_vitrine": "Acompanhe a reunião decisiva da equipe econômica sobre o futuro do orçamento e a estratégia de contenção de gastos.",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 98,
+      "categoria_primaria": "Politica",
+      "categorias_cruzadas": [
+        "Economia"
       ],
-      "resumo_pulso": "Conforme reportado por The Kyiv Independent, novos ataques noturnos russos atingiram a região de Odesa, causando mortes, e provocaram incêndios em um edifício residencial em Kiev. Paralelamente, canais de monitoramento apontam ataques de drones ucranianos contra refinarias de petróleo na Rússia.",
-      "titulo_curto": "Ataques de drones russos provocam incêndio e deixam vítimas na Ucrânia",
-      "palavras_chave": [
-        "Ucrânia",
-        "Rússia",
-        "Drones",
-        "Guerra"
-      ],
-      "urgencia_score": 91,
-      "data_publicacao": "2026-11-24T23:08:00Z",
-      "impacto_pratico": "Intensificação do conflito Leste-Europeu com impactos diretos sobre infraestrutura civil e energética de ambos os países.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "The Kyiv Independent"
-      ],
-      "relevancia_score": 90,
-      "horas_em_destaque": 10,
-      "paises_envolvidos": [
-        "UA",
-        "RU"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-sancao-internacional",
-          "motivo_conexao": "Auxilia na leitura sobre o contexto de pressões econômicas e sanções decorrentes do conflito.",
-          "titulo_existente": "O que é uma sanção internacional?"
-        }
+      "palavras_chave_busca": [
+        "lula",
+        "equipe economica",
+        "meta fiscal",
+        "orcamento 2026",
+        "bruno moretti",
+        "miriam belchior",
+        "gastos publicos"
       ]
     },
     {
-      "slug": "justica-condena-engenheiros-incendio-ninho-do-urubu",
-      "categoria": "Sociedade_Cultura",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-25T23:20:33Z",
-      "updated_at": "2026-11-24T23:20:33Z",
-      "fontes_urls": [
-        "https://www.poder360.com.br/poder-justica/justica-condena-2-engenheiros-por-incendio-no-ninho-do-urubu/"
+      "slug": "escalada-conflito-ucrania-russia-drones",
+      "status": "novo",
+      "ttl_horas": 12,
+      "expires_at": "2026-11-25T19:42:33Z",
+      "updated_at": "2026-11-25T07:42:33Z",
+      "titulo_tema": "Intensificação de ataques russos com drones na Ucrânia",
+      "sintese_nerd": "A ofensiva russa com mais de 100 drones em uma única noite demonstra a escalada na estratégia de desgaste da infraestrutura crítica ucraniana. O impacto direto é a instabilidade no fornecimento de energia e o aumento da pressão sobre a ajuda financeira e militar da União Europeia.",
+      "rota_editoria": "/radar",
+      "data_publicacao": "2026-11-25T07:42:33Z",
+      "gatilho_vitrine": "Acompanhe a atualização do conflito: ataques massivos de drones russos atingem infraestrutura civil e energética na Ucrânia.",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 92,
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia"
       ],
-      "resumo_pulso": "Conforme apuração do portal Poder360, a Justiça do Rio de Janeiro condenou dois engenheiros a 8 anos de prisão pelo incêndio no centro de treinamento do Flamengo em 2019. A decisão responsabilizou os profissionais por falhas de segurança nos alojamentos que resultaram na morte de dez jovens atletas.",
-      "titulo_curto": "Justiça do Rio condena dois engenheiros a 8 anos de prisão por tragédia no Ninho do Urubu",
-      "palavras_chave": [
-        "Ninho do Urubu",
-        "Flamengo",
-        "Justiça do Rio",
-        "Responsabilidade Técnica",
-        "Incêndio 2019"
-      ],
-      "urgencia_score": 88,
-      "data_publicacao": "2026-11-24T23:03:39Z",
-      "impacto_pratico": "Cria precedente judicial rigoroso sobre responsabilidade técnica e segurança em alojamentos desportivos e instalações coletivas.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Poder360"
-      ],
-      "relevancia_score": 91,
-      "horas_em_destaque": 12,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "links_internos_relacionados": []
+      "palavras_chave_busca": [
+        "guerra ucrania",
+        "russia",
+        "drones",
+        "infraestrutura energetica",
+        "conflito geopolitico",
+        "zelensky"
+      ]
     },
     {
-      "slug": "itau-entra-no-minha-casa-minha-vida-faixa-3",
-      "categoria": "Economia_Comercio",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-25T23:24:39Z",
-      "updated_at": "2026-11-24T23:24:39Z",
-      "fontes_urls": [
-        "https://www.infomoney.com.br/business/itau-entra-no-mcmv-e-avanca-sobre-mercado-dominado-pela-caixa/"
+      "slug": "fim-escala-6x1-impacto-trabalhista",
+      "status": "novo",
+      "ttl_horas": 48,
+      "expires_at": "2026-11-27T07:42:33Z",
+      "updated_at": "2026-11-25T07:42:33Z",
+      "titulo_tema": "Fim da escala 6x1 e novos cálculos de horas extras",
+      "sintese_nerd": "A transição para o modelo 5x2 altera a base de cálculo do divisor salarial, elevando o custo da hora extra para o empregador. Essa mudança exige adaptação imediata do RH das empresas e altera a dinâmica de remuneração variável no Brasil.",
+      "rota_editoria": "/economia",
+      "data_publicacao": "2026-11-25T07:42:33Z",
+      "gatilho_vitrine": "Entenda como o fim da escala 6x1 altera o cálculo das suas horas extras e o impacto nas empresas.",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 88,
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Cultura"
       ],
-      "resumo_pulso": "Segundo apuração do InfoMoney, o Itaú Unibanco anunciou o início da oferta de crédito imobiliário pelo programa Minha Casa, Minha Vida voltado à Faixa 3 (renda entre R$ 5 mil e R$ 9,6 mil). A iniciativa marca a expansão dos bancos privados em um mercado tradicionalmente dominado pela Caixa Econômica Federal.",
-      "titulo_curto": "Itaú passa a oferecer financiamento pelo Minha Casa, Minha Vida para faixa de maior renda",
-      "palavras_chave": [
-        "Itaú",
-        "Minha Casa Minha Vida",
-        "crédito imobiliário",
-        "Caixa",
-        "habitação"
-      ],
-      "urgencia_score": 85,
-      "data_publicacao": "2026-11-24T22:51:03Z",
-      "impacto_pratico": "Amplia as opções de financiamento habitacional com juros subsidiados para famílias de renda média urbana.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "InfoMoney"
-      ],
-      "relevancia_score": 87,
-      "horas_em_destaque": 6,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
-          "motivo_conexao": "Acompanhe as tendências de crédito, setor imobiliário e taxas de juros no país.",
-          "titulo_existente": "Economia no Brasil"
-        }
+      "palavras_chave_busca": [
+        "escala 6x1",
+        "reforma trabalhista",
+        "horas extras",
+        "direitos trabalhistas",
+        "decreto lula",
+        "mercado de trabalho"
       ]
     }
   ]
