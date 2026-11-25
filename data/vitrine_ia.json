@@ -2,279 +2,369 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-25T00:16:31Z",
-  "batch_id": "20261125-0016",
+  "updatedAt": "2026-11-25T01:34:32Z",
+  "batch_id": "20261125-0134",
   "temas_ativos": [
     {
-      "slug": "senado-aprova-plano-nacional-cultura-dez-anos",
-      "titulo_tema": "Senado aprova novo Plano Nacional de Cultura com diretrizes para a próxima década",
-      "titulo_curto": "Senado aprova novo Plano Nacional de Cultura com diretrizes para a próxima década",
+      "slug": "ataques-drones-ucrania-refinarias-russia-tensao-houthis",
+      "titulo_tema": "Escalada militar global: Ataques a refinarias russas e ameaças Houthis a portos no Mar Vermelho",
       "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Cultura",
-      "categoria": "Sociedade_Cultura",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/cultura",
-      "relevancia_score": 89,
-      "urgencia_score": 86,
-      "ttl_horas": 24,
-      "expires_at": "2026-11-26T00:16:31Z",
-      "palavras_chave_busca": [
-        "senado",
-        "cultura",
-        "plano nacional de cultura",
-        "sanção"
-      ],
-      "palavras_chave": [
-        "senado",
-        "cultura",
-        "plano nacional de cultura",
-        "sanção"
-      ],
-      "gatilho_vitrine": "Conforme apuração da Agência Senado, o Plenário aprovou o PL 5.894/2025 que institui o novo Plano Nacional de Cultura (PNC). O texto, que segue para sanção presidencial, estabelece princípios, metas e descentralização de recursos para orientar as políticas culturais do país nos próximos dez anos.",
-      "resumo_pulso": "Conforme apuração da Agência Senado, o Plenário aprovou o PL 5.894/2025 que institui o novo Plano Nacional de Cultura (PNC). O texto, que segue para sanção presidencial, estabelece princípios, metas e descentralização de recursos para orientar as políticas culturais do país nos próximos dez anos.",
-      "sintese_nerd": "Orienta o financiamento e a gestão de políticas culturais e artísticas em âmbito nacional e municipal.",
-      "impacto_pratico": "Orienta o financiamento e a gestão de políticas culturais e artísticas em âmbito nacional e municipal.",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "veiculos_origem": [
-        "Agência Senado"
-      ],
-      "fontes_urls": [
-        "https://www12.senado.leg.br/noticias/materias/2026/11/24/senado-aprova-plano-nacional-de-cultura-para-os-proximos-10-anos"
-      ],
-      "data_publicacao": "2026-11-24T23:56:23Z",
-      "updated_at": "2026-11-25T00:16:31Z"
-    },
-    {
-      "slug": "camara-votacao-regulacao-big-techs",
-      "titulo_tema": "Câmara dos Deputados define votação do projeto de regulação das big techs para próxima semana",
-      "titulo_curto": "Câmara dos Deputados define votação do projeto de regulação das big techs para próxima semana",
-      "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Economia",
-      "categoria": "Economia_Comercio",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 90,
-      "urgencia_score": 87,
-      "ttl_horas": 24,
-      "expires_at": "2026-11-26T00:16:31Z",
-      "palavras_chave_busca": [
-        "câmara dos deputados",
-        "big techs",
-        "mercados digitais",
-        "regulação"
-      ],
-      "palavras_chave": [
-        "câmara dos deputados",
-        "big techs",
-        "mercados digitais",
-        "regulação"
-      ],
-      "gatilho_vitrine": "Segundo informações divulgadas pela Agência Brasil, o Projeto de Lei 4675/2025, conhecido como PL dos Mercados Digitais, entrará na pauta de votações da Câmara dos Deputados na próxima semana. O calendário foi confirmado pelo relator Aliel Machado em articulação com a presidência da Casa.",
-      "resumo_pulso": "Segundo informações divulgadas pela Agência Brasil, o Projeto de Lei 4675/2025, conhecido como PL dos Mercados Digitais, entrará na pauta de votações da Câmara dos Deputados na próxima semana. O calendário foi confirmado pelo relator Aliel Machado em articulação com a presidência da Casa.",
-      "sintese_nerd": "Pode alterar o modelo de negócios e as regras de atuação de grandes empresas de tecnologia no mercado nacional.",
-      "impacto_pratico": "Pode alterar o modelo de negócios e as regras de atuação de grandes empresas de tecnologia no mercado nacional.",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "veiculos_origem": [
-        "Agência Brasil (EBC)"
-      ],
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/projeto-de-regulacao-das-big-techs-sera-votado-na-proxima-semana"
-      ],
-      "data_publicacao": "2026-11-24T23:23:00Z",
-      "updated_at": "2026-11-25T00:16:31Z"
-    },
-    {
-      "slug": "brasil-nao-retornara-embaixador-argentina-crise",
-      "titulo_tema": "Lula decide que embaixador do Brasil não retornará a Buenos Aires após crise diplomática",
-      "titulo_curto": "Lula decide que embaixador do Brasil não retornará a Buenos Aires após crise diplomática",
-      "status": "novo",
-      "origem_pipeline": "pulso",
+      "origem_pipeline": "curadoria",
       "categoria_primaria": "Geopolitica_Radar",
-      "categoria": "Geopolitica_Relacoes",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
       ],
       "rota_editoria": "/radar",
-      "relevancia_score": 94,
-      "urgencia_score": 92,
+      "relevancia_score": 89,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-27T01:34:32Z",
+      "palavras_chave_busca": [
+        "guerra na ucrania",
+        "refinarias russas",
+        "ataque de drones",
+        "houthis mar vermelho",
+        "preco do petroleo",
+        "geopolitica de energia"
+      ],
+      "gatilho_vitrine": "Exibir hub temático sobre impactos dos conflitos na Ucrânia e Oriente Médio na cotação do petróleo e inflação global.",
+      "sintese_nerd": "Ataques massivos com drones ucranianos contra infraestruturas petrolíferas russas e novas ameaças dos Houthis contra portos sauditas elevam os riscos sobre a oferta global de energia. O aperto no fornecimento de combustíveis pressiona a cotação do barril de petróleo, gerando efeitos colaterais na inflação mundial e na curva de juros dos mercados emergentes.",
+      "data_publicacao": "2026-11-25T01:34:32Z",
+      "updated_at": "2026-11-25T01:34:32Z"
+    },
+    {
+      "slug": "lula-sanciona-pacote-fiscal-perspectivas-pib-inflacao",
+      "titulo_tema": "Sancionado o pacote de ajuste fiscal: Impactos no PIB, câmbio e governabilidade",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Politica",
+        "Eleicoes"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 88,
+      "ttl_horas": 72,
+      "expires_at": "2026-11-28T01:34:32Z",
+      "palavras_chave_busca": [
+        "ajuste fiscal",
+        "pacote fiscal lula",
+        "projecao pib brasil",
+        "inflacao e dolar",
+        "orcamento federal",
+        "meta fiscal 2027"
+      ],
+      "gatilho_vitrine": "Destacar na capa a análise da sanção do ajuste fiscal e os desdobramentos na taxa Selic e no dólar.",
+      "sintese_nerd": "A sanção do pacote de ajuste fiscal com projeção de economia de até R$ 56 bilhões visa ancorar as expectativas da dívida pública frente ao mercado financeiro. No entanto, a revisão concomitante das projeções do PIB e da inflação pelo Ministério da Fazenda exige um delicado equilíbrio entre austeridade fiscal e manutenção do crescimento econômico.",
+      "data_publicacao": "2026-11-25T01:34:32Z",
+      "updated_at": "2026-11-25T01:34:32Z"
+    },
+    {
+      "slug": "abin-mapeia-31-faccoes-criminosas-avanco-pcc-cv",
+      "titulo_tema": "Relatório inédito da Abin aponta expansão nacional com 31 facções criminosas no Brasil",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Politica",
+      "categorias_cruzadas": [
+        "Cultura",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/politica",
+      "relevancia_score": 86,
+      "ttl_horas": 96,
+      "expires_at": "2026-11-29T01:34:32Z",
+      "palavras_chave_busca": [
+        "abin faccoes criminosas",
+        "pcc cv tcp",
+        "seguranca publica brasil",
+        "mapeamento crime organizado",
+        "relatorio inteligencia abin",
+        "crime organizado estados"
+      ],
+      "gatilho_vitrine": "Acionar cobertura especial sobre segurança pública e o desafio institucional do combate ao crime organizado.",
+      "sintese_nerd": "O mapeamento da Agência Brasileira de Inteligência identificou 31 facções e 75 células regionais ativas, sinalizando o avanço da interiorização de grupos como PCC, CV e TCP. A penetração dessas organizações no tecido econômico e em instituições locais amplia a complexidade do debate sobre a PEC da Segurança Pública e a integração dos órgãos federais e estaduais.",
+      "data_publicacao": "2026-11-25T01:34:32Z",
+      "updated_at": "2026-11-25T01:34:32Z"
+    },
+    {
+      "slug": "argentina-recessao-tecnica-queda-pib-impacto-brasil",
+      "titulo_tema": "Argentina entra em recessão técnica após nova queda na atividade econômica",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Geopolitica_Radar",
+        "Politica"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 82,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-27T01:34:32Z",
+      "palavras_chave_busca": [
+        "recessao argentina",
+        "pib argentina indec",
+        "economia argentina milei",
+        "comercio brasil argentina",
+        "mercosul economia",
+        "crise argentina"
+      ],
+      "gatilho_vitrine": "Promover análise de conjuntura sul-americana destacando os impactos do PIB argentino no comércio exterior brasileiro.",
+      "sintese_nerd": "O recuo consecutivo da atividade econômica na Argentina oficializa o estado de recessão técnica no país vizinho, refletindo o severo ajuste de demanda promovido pelo plano econômico atual. O desaquecimento reduz as exportações industriais brasileiras para seu principal parceiro regional, afetando o balanço comercial do Mercosul.",
+      "data_publicacao": "2026-11-25T01:34:32Z",
+      "updated_at": "2026-11-25T01:34:32Z"
+    },
+    {
+      "slug": "cni-acao-stf-inconstitucionalidade-fim-jornada-6x1",
+      "titulo_tema": "CNI aciona o STF contra decretos que regulamentam a flexibilização da escala 6x1",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Politica",
+      "categorias_cruzadas": [
+        "Economia",
+        "Cultura"
+      ],
+      "rota_editoria": "/politica",
+      "relevancia_score": 80,
+      "ttl_horas": 72,
+      "expires_at": "2026-11-28T01:34:32Z",
+      "palavras_chave_busca": [
+        "cni stf escala 6x1",
+        "fim da jornada 6x1",
+        "regulamentacao trabalho",
+        "clt jornada de trabalho",
+        "supremo tribunal federal",
+        "direitos trabalhistas"
+      ],
+      "gatilho_vitrine": "Inserir no bloco de debates jurídicos e econômicos sobre produtividade e direitos trabalhistas no Brasil.",
+      "sintese_nerd": "A Confederação Nacional da Indústria questiona no Supremo Tribunal Federal a legalidade dos decretos federais que normatizam a alteração da jornada 6x1. O impasse jurídico contrapõe o argumento patronal de impacto nos custos operacionais da indústria e do comércio ao movimento social e governamental por melhores condições de trabalho e qualidade de vida.",
+      "data_publicacao": "2026-11-25T01:34:32Z",
+      "updated_at": "2026-11-25T01:34:32Z"
+    },
+    {
+      "slug": "eua-suspendem-operacoes-equador-investigacao",
+      "status": "novo",
+      "categoria": "Geopolitica_Relacoes",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-26T01:29:18Z",
+      "updated_at": "2026-11-25T01:29:18Z",
+      "fontes_urls": [
+        "https://g1.globo.com/mundo/noticia/2026/11/24/governo-trump-suspende-operacoes-militares-conjuntas-com-equador-diz-jornal.ghtml"
+      ],
+      "titulo_tema": "EUA suspendem operações militares conjuntas com o Equador após investigação de morte",
+      "resumo_pulso": "Segundo apuração do G1 Mundo com base no jornal The New York Times, o governo dos Estados Unidos suspendeu operações militares conjuntas com o Equador. A medida foi adotada no âmbito de uma apuração sobre uma ação letal conduzida por forças equatorianas.",
+      "sintese_nerd": "Afeta a cooperação de segurança internacional e o combate ao narcoterrorismo na América do Sul.",
+      "titulo_curto": "EUA suspendem operações militares conjuntas com o Equador após investigação de morte",
+      "rota_editoria": "/radar",
+      "palavras_chave": [
+        "eua",
+        "equador",
+        "operações militares",
+        "investigação"
+      ],
+      "urgencia_score": 89,
+      "data_publicacao": "2026-11-25T01:00:24Z",
+      "gatilho_vitrine": "Segundo apuração do G1 Mundo com base no jornal The New York Times, o governo dos Estados Unidos suspendeu operações militares conjuntas com o Equador. A medida foi adotada no âmbito de uma apuração sobre uma ação letal conduzida por forças equatorianas.",
+      "impacto_pratico": "Afeta a cooperação de segurança internacional e o combate ao narcoterrorismo na América do Sul.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "G1 Mundo"
+      ],
+      "relevancia_score": 88,
+      "paises_envolvidos": [
+        "US",
+        "EC"
+      ],
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "eua",
+        "equador",
+        "operações militares",
+        "investigação"
+      ]
+    },
+    {
+      "slug": "apagao-atinge-cidades-colombia-ataque-usina",
+      "status": "novo",
+      "categoria": "Sociedade_Cultura",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-26T01:29:18Z",
+      "updated_at": "2026-11-25T01:29:18Z",
+      "fontes_urls": [
+        "https://g1.globo.com/mundo/noticia/2026/11/24/apagao-atinge-cidades-da-colombia-apos-ataque-com-explosivos-a-usina.ghtml"
+      ],
+      "titulo_tema": "Ataque com explosivos a usina elétrica provoca apagão no sudoeste da Colômbia",
+      "resumo_pulso": "Conforme apuração do G1 Mundo, um atentado com bombas contra uma usina elétrica gerou um apagão de grandes proporções no sudoeste colombiano, afetando mais de 2 milhões de pessoas nas regiões de Nariño, Putumayo, Cauca e Huila.",
+      "sintese_nerd": "Interrupção grave de serviços essenciais e fornecimento de energia para milhões de cidadãos na Colômbia.",
+      "titulo_curto": "Ataque com explosivos a usina elétrica provoca apagão no sudoeste da Colômbia",
+      "rota_editoria": "/cultura",
+      "palavras_chave": [
+        "colômbia",
+        "apagão",
+        "infraestrutura",
+        "energia"
+      ],
+      "urgencia_score": 88,
+      "data_publicacao": "2026-11-25T00:41:45Z",
+      "gatilho_vitrine": "Conforme apuração do G1 Mundo, um atentado com bombas contra uma usina elétrica gerou um apagão de grandes proporções no sudoeste colombiano, afetando mais de 2 milhões de pessoas nas regiões de Nariño, Putumayo, Cauca e Huila.",
+      "impacto_pratico": "Interrupção grave de serviços essenciais e fornecimento de energia para milhões de cidadãos na Colômbia.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "G1 Mundo"
+      ],
+      "relevancia_score": 87,
+      "paises_envolvidos": [
+        "CO"
+      ],
+      "categoria_primaria": "Cultura",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "colômbia",
+        "apagão",
+        "infraestrutura",
+        "energia"
+      ]
+    },
+    {
+      "slug": "senado-aprova-plano-nacional-cultura-dez-anos",
+      "status": "novo",
+      "categoria": "Sociedade_Cultura",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-26T00:16:31Z",
+      "updated_at": "2026-11-25T01:29:18Z",
+      "fontes_urls": [
+        "https://www12.senado.leg.br/noticias/materias/2026/11/24/senado-aprova-plano-nacional-de-cultura-para-os-proximos-10-anos"
+      ],
+      "titulo_tema": "Senado aprova novo Plano Nacional de Cultura com diretrizes para a próxima década",
+      "resumo_pulso": "Conforme apuração da Agência Senado, o Plenário aprovou o PL 5.894/2025 que institui o novo Plano Nacional de Cultura (PNC). O texto, que segue para sanção presidencial, estabelece princípios, metas e descentralização de recursos para orientar as políticas culturais do país nos próximos dez anos.",
+      "sintese_nerd": "Direciona o planejamento e os investimentos em cultura no Brasil para a próxima década.",
+      "titulo_curto": "Senado aprova novo Plano Nacional de Cultura com diretrizes para a próxima década",
+      "rota_editoria": "/cultura",
+      "palavras_chave": [
+        "senado",
+        "cultura",
+        "plano nacional",
+        "brasil"
+      ],
+      "urgencia_score": 86,
+      "data_publicacao": "2026-11-24T23:56:23Z",
+      "gatilho_vitrine": "Conforme apuração da Agência Senado, o Plenário aprovou o PL 5.894/2025 que institui o novo Plano Nacional de Cultura (PNC). O texto, que segue para sanção presidencial, estabelece princípios, metas e descentralização de recursos para orientar as políticas culturais do país nos próximos dez anos.",
+      "impacto_pratico": "Direciona o planejamento e os investimentos em cultura no Brasil para a próxima década.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "Agência Senado"
+      ],
+      "relevancia_score": 89,
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "categoria_primaria": "Cultura",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "senado",
+        "cultura",
+        "plano nacional",
+        "brasil"
+      ]
+    },
+    {
+      "slug": "camara-votacao-regulacao-big-techs",
+      "status": "novo",
+      "categoria": "Economia_Comercio",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-26T00:16:31Z",
+      "updated_at": "2026-11-25T00:16:31Z",
+      "fontes_urls": [
+        "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/projeto-de-regulacao-das-big-techs-sera-votado-na-proxima-semana"
+      ],
+      "titulo_tema": "Câmara dos Deputados define votação do projeto de regulação das big techs para próxima semana",
+      "resumo_pulso": "Segundo informações divulgadas pela Agência Brasil, o Projeto de Lei 4675/2025, conhecido como PL dos Mercados Digitais, entrará na pauta de votações da Câmara dos Deputados na próxima semana. O calendário foi confirmado pelo relator Aliel Machado em articulação com a presidência da Casa.",
+      "sintese_nerd": "Pode alterar o modelo de negócios e as regras de atuação de grandes empresas de tecnologia no mercado nacional.",
+      "titulo_curto": "Câmara dos Deputados define votação do projeto de regulação das big techs para próxima semana",
+      "rota_editoria": "/economia",
+      "palavras_chave": [
+        "câmara dos deputados",
+        "big techs",
+        "mercados digitais",
+        "regulação"
+      ],
+      "urgencia_score": 87,
+      "data_publicacao": "2026-11-24T23:23:00Z",
+      "gatilho_vitrine": "Segundo informações divulgadas pela Agência Brasil, o Projeto de Lei 4675/2025, conhecido como PL dos Mercados Digitais, entrará na pauta de votações da Câmara dos Deputados na próxima semana. O calendário foi confirmado pelo relator Aliel Machado em articulação com a presidência da Casa.",
+      "impacto_pratico": "Pode alterar o modelo de negócios e as regras de atuação de grandes empresas de tecnologia no mercado nacional.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "Agência Brasil (EBC)"
+      ],
+      "relevancia_score": 90,
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "câmara dos deputados",
+        "big techs",
+        "mercados digitais",
+        "regulação"
+      ]
+    },
+    {
+      "slug": "brasil-nao-retornara-embaixador-argentina-crise",
+      "status": "novo",
+      "categoria": "Geopolitica_Relacoes",
       "ttl_horas": 24,
       "expires_at": "2026-11-25T23:24:39Z",
-      "palavras_chave_busca": [
-        "itamaraty",
-        "argentina",
-        "brasil",
-        "embaixador",
-        "crise diplomática"
+      "updated_at": "2026-11-25T01:29:18Z",
+      "fontes_urls": [
+        "https://g1.globo.com/politica/noticia/2026/11/24/brasil-decide-que-embaixador-brasileiro-na-argentina-nao-retornara-a-buenos-aires.ghtml"
       ],
+      "titulo_tema": "Lula decide que embaixador do Brasil não retornará a Buenos Aires após crise diplomática",
+      "resumo_pulso": "Segundo apuração do G1 Política e confirmação de diplomatas do Itamaraty, o governo brasileiro decidiu que o embaixador Júlio Bitelli não voltará à Argentina. A medida consolida o esfriamento diplomático entre os dois países após meses de tensões.",
+      "sintese_nerd": "Afeta as relações comerciais bilaterais e canais diplomáticos na América do Sul.",
+      "titulo_curto": "Lula decide que embaixador do Brasil não retornará a Buenos Aires após crise diplomática",
+      "rota_editoria": "/radar",
       "palavras_chave": [
-        "itamaraty",
-        "argentina",
         "brasil",
-        "embaixador",
-        "crise diplomática"
+        "argentina",
+        "itamaraty",
+        "diplomacia"
       ],
-      "gatilho_vitrine": "Segundo apuração do G1 Política e confirmação de diplomatas do Itamaraty, o governo brasileiro decidiu que o embaixador Júlio Bitelli não voltará à Argentina. A medida consolida o esfriamento diplomático entre os dois países após meses de tensões e desentendimentos entre as chancelarias.",
-      "resumo_pulso": "Segundo apuração do G1 Política e confirmação de diplomatas do Itamaraty, o governo brasileiro decidiu que o embaixador Júlio Bitelli não voltará à Argentina. A medida consolida o esfriamento diplomático entre os dois países após meses de tensões e desentendimentos entre as chancelarias.",
-      "sintese_nerd": "Afeta as relações bilaterais e o comércio regional entre Brasil e Argentina.",
-      "impacto_pratico": "Afeta as relações bilaterais e o comércio regional entre Brasil e Argentina.",
+      "urgencia_score": 92,
+      "data_publicacao": "2026-11-24T23:20:16Z",
+      "gatilho_vitrine": "Segundo apuração do G1 Política e confirmação de diplomatas do Itamaraty, o governo brasileiro decidiu que o embaixador Júlio Bitelli não voltará à Argentina. A medida consolida o esfriamento diplomático entre os dois países após meses de tensões.",
+      "impacto_pratico": "Afeta as relações comerciais bilaterais e canais diplomáticos na América do Sul.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "G1 Política"
+      ],
+      "relevancia_score": 94,
       "paises_envolvidos": [
         "BR",
         "AR"
       ],
-      "veiculos_origem": [
-        "G1 Política"
-      ],
-      "fontes_urls": [
-        "https://g1.globo.com/politica/noticia/2026/11/24/brasil-decide-que-embaixador-brasileiro-na-argentina-nao-retornara-a-buenos-aires.ghtml"
-      ],
-      "data_publicacao": "2026-11-24T23:20:16Z",
-      "updated_at": "2026-11-25T00:16:31Z"
-    },
-    {
-      "slug": "golfo-persico-exportacoes-petroleo-ormuz",
-      "status": "novo",
-      "ttl_horas": 72,
-      "expires_at": "2026-11-27T23:18:08Z",
-      "updated_at": "2026-11-24T23:18:08Z",
-      "titulo_tema": "Exportações de petróleo no Golfo Pérsico retornam a níveis pré-crise apesar de ataques em Ormuz",
-      "sintese_nerd": "Apesar das contínuas ameaças marítimas no Estreito de Ormuz, produtores como Arábia Saudita e Emirados Árabes conseguiram restaurar seus volumes de exportação de petróleo bruto. Essa adaptação logística diminui os riscos de um choque repentino na oferta mundial de combustíveis.",
-      "rota_editoria": "/radar",
-      "urgencia_score": 85,
-      "data_publicacao": "2026-11-24T23:18:08Z",
-      "gatilho_vitrine": "Monitorar a resiliência das rotas marítimas de petróleo no Oriente Médio e a estabilidade da oferta global.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 88,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia"
-      ],
-      "palavras_chave_busca": [
-        "estreito de ormuz",
-        "petroleo golfo persico",
-        "arabia saudita exportacoes",
-        "seguranca energetica",
-        "frete maritimo",
-        "tensao oriente medio"
-      ]
-    },
-    {
-      "slug": "brasil-reacao-ue-barreiras-comerciais-frango-mel",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-26T23:18:08Z",
-      "updated_at": "2026-11-24T23:18:08Z",
-      "titulo_tema": "Tensão Comercial: Brasil manifesta indignação após UE adiar liberação de frango e mel",
-      "sintese_nerd": "O adiamento da União Europeia na liberação das importações de carne de frango e mel brasileiros expõe entraves protecionistas travando a diplomacia comercial do agro nacional. O impasse impacta diretamente o saldo da balança comercial brasileira e a rentabilidade do setor exportador diante dos rígidos padrões europeus.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-24T23:18:08Z",
-      "gatilho_vitrine": "Destacar no hub de Economia e Geopolítica as tensões protecionistas da UE contra o agro brasileiro.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 90,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Geopolitica_Radar",
-        "Politica"
-      ],
-      "palavras_chave_busca": [
-        "agronegocio brasil",
-        "uniao europeia",
-        "barreiras sanitarias",
-        "embargo frango mel",
-        "diplomacia comercial",
-        "exportacao agro"
-      ]
-    },
-    {
-      "slug": "eua-investigacao-jd-vance-petroleo-venezuela",
-      "status": "novo",
-      "ttl_horas": 72,
-      "expires_at": "2026-11-27T23:18:08Z",
-      "updated_at": "2026-11-24T23:18:08Z",
-      "titulo_tema": "Senado dos EUA investiga atuação de JD Vance em contrato petrolífero na Venezuela",
-      "sintese_nerd": "A investigação no Senado americano sobre a intermediação de contratos petrolíferos na Venezuela coloca em xeque a política externa e de energia de Washington no cenário pós-Maduro. A disputa pelo controle de grandes reservas de óleo bruto reflete no preço internacional do barril e nos acordos geopolíticos no continente.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-24T23:18:08Z",
-      "gatilho_vitrine": "Impulsionar análise sobre os desdobramentos políticos e corporativos na geopolítica do petróleo pós-Maduro.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 88,
       "categoria_primaria": "Geopolitica_Radar",
       "categorias_cruzadas": [
         "Economia",
-        "Politica"
-      ],
-      "palavras_chave_busca": [
-        "petroleo venezuela",
-        "jd vance",
-        "senado eua",
-        "vitol venezuela",
-        "geopolitica energia",
-        "transicao venezuela"
-      ]
-    },
-    {
-      "slug": "argentina-recessao-tecnica-milei-diplomacia-paraguai",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-26T23:18:08Z",
-      "updated_at": "2026-11-24T23:18:08Z",
-      "titulo_tema": "Argentina entra em recessão técnica e Milei intensifica articulações na América do Sul",
-      "sintese_nerd": "Com a confirmação de recessão técnica após recuo de 1,2% na atividade econômica, o governo Javier Milei enfrenta desaceleração interna enquanto busca alinhamentos diplomáticos no Paraguai. O desaquecimento do principal parceiro comercial sul-americano acende o alerta para as exportações industriais brasileiras.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-24T23:18:08Z",
-      "gatilho_vitrine": "Conectar a recessão técnica na Argentina com os desdobramentos geopolíticos e comerciais na região do Mercosul.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 86,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Geopolitica_Radar",
-        "Politica"
-      ],
-      "palavras_chave_busca": [
-        "recessao argentina",
-        "javier milei",
-        "economia argentina indec",
-        "santiago pena paraguai",
-        "mercosul",
-        "crise américa do sul"
-      ]
-    },
-    {
-      "slug": "bc-leilao-linha-dolar-liquidez-cambio",
-      "status": "novo",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-25T23:18:08Z",
-      "updated_at": "2026-11-24T23:18:08Z",
-      "titulo_tema": "Banco Central anuncia leilão de linha de US$ 2 bilhões para conter pressão cambial",
-      "sintese_nerd": "O Banco Central ofertou até US$ 2 bilhões em leilões de linha com compromisso de reprazo para prover liquidez ao mercado de câmbio no fim de ano. A intervenção busca atenuar distorções temporárias da moeda estrangeira e evitar o repasse de choque cambial para a inflação de preços ao consumidor.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-24T23:18:08Z",
-      "gatilho_vitrine": "Explicar a atuação direta do BC no mercado cambial e seu reflexo prático na cotação do dólar comercial.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 84,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
         "Resumo_Ultimas"
       ],
       "palavras_chave_busca": [
-        "banco central",
-        "leilao de linha",
-        "dolar cambio",
-        "liquidez mercado",
-        "politica monetaria",
-        "copom"
+        "brasil",
+        "argentina",
+        "itamaraty",
+        "diplomacia"
       ]
     },
     {
@@ -373,52 +463,50 @@
     },
     {
       "slug": "ataques-drones-russos-incendio-predio-kiev",
-      "titulo_tema": "Ataques de drones russos provocam incêndio em prédio residencial e deixam feridos em Kiev",
-      "titulo_curto": "Ataques de drones russos provocam incêndio em prédio residencial e deixam feridos em Kiev",
       "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Geopolitica_Radar",
       "categoria": "Geopolitica_Relacoes",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 88,
-      "urgencia_score": 90,
       "ttl_horas": 18,
       "expires_at": "2026-11-25T17:24:39Z",
-      "palavras_chave_busca": [
-        "ucrânia",
-        "rússia",
-        "kiev",
-        "drones",
-        "odesa"
+      "updated_at": "2026-11-25T01:29:18Z",
+      "fontes_urls": [
+        "https://kyivindependent.com/russian-attacks-kill-2-in-odesa-oblast-including-child-injure-more-in-kyiv/",
+        "https://kyivindependent.com/ukrainian-drones-reportedly-strike-russian-oil-refineries-in-massive-attack/"
       ],
+      "titulo_tema": "Ataques de drones russos provocam incêndio e deixam vítimas na Ucrânia",
+      "resumo_pulso": "Conforme reportado por The Kyiv Independent, novos ataques noturnos russos atingiram a região de Odesa, causando mortes, e provocaram incêndios em um edifício residencial em Kiev. Paralelamente, canais de monitoramento apontam ataques de drones ucranianos contra refinarias de petróleo na Rússia.",
+      "sintese_nerd": "Eleva os riscos de segurança civil na Ucrânia e impacta a infraestrutura energética regional.",
+      "titulo_curto": "Ataques de drones russos provocam incêndio e deixam vítimas na Ucrânia",
+      "rota_editoria": "/radar",
       "palavras_chave": [
         "ucrânia",
         "rússia",
-        "kiev",
-        "drones",
-        "odesa"
+        "ataques",
+        "drones"
       ],
-      "gatilho_vitrine": "Conforme reportado pelas agências Ukrinform e The Kyiv Independent, destroços de um drone russo provocaram incêndio em um edifício residencial de 16 andares em Kiev. Os ataques noturnos também causaram mortes na região de Odesa, elevando o alerta de defesa aérea na Ucrânia.",
-      "resumo_pulso": "Conforme reportado pelas agências Ukrinform e The Kyiv Independent, destroços de um drone russo provocaram incêndio em um edifício residencial de 16 andares em Kiev. Os ataques noturnos também causaram mortes na região de Odesa, elevando o alerta de defesa aérea na Ucrânia.",
-      "sintese_nerd": "Intensifica riscos de segurança para civis e reforça a pressão por apoio militar internacional na Europa.",
-      "impacto_pratico": "Intensifica riscos de segurança para civis e reforça a pressão por apoio militar internacional na Europa.",
+      "urgencia_score": 91,
+      "data_publicacao": "2026-11-24T23:08:00Z",
+      "gatilho_vitrine": "Conforme reportado por The Kyiv Independent, novos ataques noturnos russos atingiram a região de Odesa, causando mortes, e provocaram incêndios em um edifício residencial em Kiev. Paralelamente, canais de monitoramento apontam ataques de drones ucranianos contra refinarias de petróleo na Rússia.",
+      "impacto_pratico": "Eleva os riscos de segurança civil na Ucrânia e impacta a infraestrutura energética regional.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "The Kyiv Independent"
+      ],
+      "relevancia_score": 90,
       "paises_envolvidos": [
         "UA",
         "RU"
       ],
-      "veiculos_origem": [
-        "The Kyiv Independent",
-        "Ukrinform"
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
       ],
-      "fontes_urls": [
-        "https://kyivindependent.com/russian-attacks-kill-2-in-odesa-oblast-including-child-injure-more-in-kyiv/"
-      ],
-      "data_publicacao": "2026-11-24T23:08:00Z",
-      "updated_at": "2026-11-25T00:16:31Z"
+      "palavras_chave_busca": [
+        "ucrânia",
+        "rússia",
+        "ataques",
+        "drones"
+      ]
     },
     {
       "slug": "justica-condena-engenheiros-incendio-ninho-do-urubu",
@@ -755,219 +843,326 @@
         "stf",
         "demissão"
       ]
-    },
+    }
+  ],
+  "temas_curadoria": [
     {
-      "slug": "semas-multa-mineradora-para-poluicao-rio",
+      "slug": "ataques-drones-ucrania-refinarias-russia-tensao-houthis",
+      "titulo_tema": "Escalada militar global: Ataques a refinarias russas e ameaças Houthis a portos no Mar Vermelho",
       "status": "novo",
-      "categoria": "Ciencia_Clima",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-25T22:33:09Z",
-      "updated_at": "2026-11-24T22:33:09Z",
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/meio-ambiente/noticia/2026-11/mineradora-e-multada-em-r-169-milhoes-no-para-por-poluicao-de-rio"
-      ],
-      "titulo_tema": "Governo do Pará multa mineradora em R$ 16,9 milhões por poluição de rios no sudeste do estado",
-      "resumo_pulso": "Segundo comunicado divulgado pela Agência Brasil, a Secretaria de Meio Ambiente do Pará (Semas) autuou a Mineração Caraíba S.A. em R$ 16,9 milhões e interditou o beneficiamento de minério em Tucumã e São Félix do Xingu. A decisão ocorreu após apuração de denúncias comunitárias relativas a contaminação hídrica.",
-      "sintese_nerd": "A interdição suspende as atividades de extração de minério na área até o cumprimento das exigências sanitárias e ambientais.",
-      "titulo_curto": "Governo do Pará multa mineradora em R$ 16,9 milhões por poluição de rios no sudeste do estado",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "pará",
-        "semas",
-        "mineração caraíba",
-        "poluição hídrica",
-        "meio ambiente"
-      ],
-      "urgencia_score": 86,
-      "data_publicacao": "2026-11-24T21:47:00Z",
-      "gatilho_vitrine": "Segundo comunicado divulgado pela Agência Brasil, a Secretaria de Meio Ambiente do Pará (Semas) autuou a Mineração Caraíba S.A. em R$ 16,9 milhões e interditou o beneficiamento de minério em Tucumã e São Félix do Xingu. A decisão ocorreu após apuração de denúncias comunitárias relativas a contaminação hídrica.",
-      "impacto_pratico": "A interdição suspende as atividades de extração de minério na área até o cumprimento das exigências sanitárias e ambientais.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "Agência Brasil"
-      ],
-      "relevancia_score": 87,
-      "paises_envolvidos": [
-        "BR"
-      ],
+      "origem_pipeline": "curadoria",
       "categoria_primaria": "Geopolitica_Radar",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
       ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 89,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-27T01:34:32Z",
       "palavras_chave_busca": [
-        "pará",
-        "semas",
-        "mineração caraíba",
-        "poluição hídrica",
-        "meio ambiente"
-      ]
+        "guerra na ucrania",
+        "refinarias russas",
+        "ataque de drones",
+        "houthis mar vermelho",
+        "preco do petroleo",
+        "geopolitica de energia"
+      ],
+      "gatilho_vitrine": "Exibir hub temático sobre impactos dos conflitos na Ucrânia e Oriente Médio na cotação do petróleo e inflação global.",
+      "sintese_nerd": "Ataques massivos com drones ucranianos contra infraestruturas petrolíferas russas e novas ameaças dos Houthis contra portos sauditas elevam os riscos sobre a oferta global de energia. O aperto no fornecimento de combustíveis pressiona a cotação do barril de petróleo, gerando efeitos colaterais na inflação mundial e na curva de juros dos mercados emergentes.",
+      "data_publicacao": "2026-11-25T01:34:32Z",
+      "updated_at": "2026-11-25T01:34:32Z"
     },
     {
-      "slug": "onu-aprova-proposta-brasil-turismo-muculmano",
+      "slug": "lula-sanciona-pacote-fiscal-perspectivas-pib-inflacao",
+      "titulo_tema": "Sancionado o pacote de ajuste fiscal: Impactos no PIB, câmbio e governabilidade",
       "status": "novo",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-25T21:59:11Z",
-      "updated_at": "2026-11-24T21:59:11Z",
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/internacional/noticia/2026-11/onu-aprova-proposta-do-brasil-de-turismo-amigavel-para-muculmanos"
-      ],
-      "titulo_tema": "ONU Turismo aprova proposta brasileira para acolher necessidades de viajantes muçulmanos",
-      "resumo_pulso": "Segundo comunicado oficial da Agência Brasil, a ONU Turismo aprovou por aclamação a proposta apresentada pelo Brasil para incentivar serviços turísticos adaptados às necessidades culturais e religiosas de viajantes muçulmanos. A aprovação ocorreu durante sessão em Abu Dhabi, contando com o endosso de nações como Indonésia, Irã e Nigéria, e marcou o encerramento da presidência brasileira no Conselho Executivo da organização.",
-      "sintese_nerd": "A medida fomenta novas diretrizes para o setor de turismo internacional e reforça parcerias comerciais e diplomáticas do Brasil com o mundo islâmico.",
-      "titulo_curto": "ONU Turismo aprova proposta brasileira para acolher necessidades de viajantes muçulmanos",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "onu turismo",
-        "brasil",
-        "turismo muçulmano",
-        "abu dhabi",
-        "diplomacia"
-      ],
-      "urgencia_score": 88,
-      "data_publicacao": "2026-11-24T21:22:00Z",
-      "gatilho_vitrine": "Segundo comunicado oficial da Agência Brasil, a ONU Turismo aprovou por aclamação a proposta apresentada pelo Brasil para incentivar serviços turísticos adaptados às necessidades culturais e religiosas de viajantes muçulmanos. A aprovação ocorreu durante sessão em Abu Dhabi, contando com o endosso de nações como Indonésia, Irã e Nigéria, e marcou o encerramento da presidência brasileira no Conselho Executivo da organização.",
-      "impacto_pratico": "A medida fomenta novas diretrizes para o setor de turismo internacional e reforça parcerias comerciais e diplomáticas do Brasil com o mundo islâmico.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "Agência Brasil (EBC)"
-      ],
-      "relevancia_score": 90,
-      "paises_envolvidos": [
-        "BR",
-        "AE",
-        "ID",
-        "IR",
-        "NG"
-      ],
-      "categoria_primaria": "Geopolitica_Radar",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Economia",
       "categorias_cruzadas": [
-        "Economia",
+        "Politica",
+        "Eleicoes"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 88,
+      "ttl_horas": 72,
+      "expires_at": "2026-11-28T01:34:32Z",
+      "palavras_chave_busca": [
+        "ajuste fiscal",
+        "pacote fiscal lula",
+        "projecao pib brasil",
+        "inflacao e dolar",
+        "orcamento federal",
+        "meta fiscal 2027"
+      ],
+      "gatilho_vitrine": "Destacar na capa a análise da sanção do ajuste fiscal e os desdobramentos na taxa Selic e no dólar.",
+      "sintese_nerd": "A sanção do pacote de ajuste fiscal com projeção de economia de até R$ 56 bilhões visa ancorar as expectativas da dívida pública frente ao mercado financeiro. No entanto, a revisão concomitante das projeções do PIB e da inflação pelo Ministério da Fazenda exige um delicado equilíbrio entre austeridade fiscal e manutenção do crescimento econômico.",
+      "data_publicacao": "2026-11-25T01:34:32Z",
+      "updated_at": "2026-11-25T01:34:32Z"
+    },
+    {
+      "slug": "abin-mapeia-31-faccoes-criminosas-avanco-pcc-cv",
+      "titulo_tema": "Relatório inédito da Abin aponta expansão nacional com 31 facções criminosas no Brasil",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Politica",
+      "categorias_cruzadas": [
+        "Cultura",
         "Resumo_Ultimas"
       ],
+      "rota_editoria": "/politica",
+      "relevancia_score": 86,
+      "ttl_horas": 96,
+      "expires_at": "2026-11-29T01:34:32Z",
       "palavras_chave_busca": [
-        "onu turismo",
-        "brasil",
-        "turismo muçulmano",
-        "abu dhabi",
-        "diplomacia"
-      ]
+        "abin faccoes criminosas",
+        "pcc cv tcp",
+        "seguranca publica brasil",
+        "mapeamento crime organizado",
+        "relatorio inteligencia abin",
+        "crime organizado estados"
+      ],
+      "gatilho_vitrine": "Acionar cobertura especial sobre segurança pública e o desafio institucional do combate ao crime organizado.",
+      "sintese_nerd": "O mapeamento da Agência Brasileira de Inteligência identificou 31 facções e 75 células regionais ativas, sinalizando o avanço da interiorização de grupos como PCC, CV e TCP. A penetração dessas organizações no tecido econômico e em instituições locais amplia a complexidade do debate sobre a PEC da Segurança Pública e a integração dos órgãos federais e estaduais.",
+      "data_publicacao": "2026-11-25T01:34:32Z",
+      "updated_at": "2026-11-25T01:34:32Z"
+    },
+    {
+      "slug": "argentina-recessao-tecnica-queda-pib-impacto-brasil",
+      "titulo_tema": "Argentina entra em recessão técnica após nova queda na atividade econômica",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Geopolitica_Radar",
+        "Politica"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 82,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-27T01:34:32Z",
+      "palavras_chave_busca": [
+        "recessao argentina",
+        "pib argentina indec",
+        "economia argentina milei",
+        "comercio brasil argentina",
+        "mercosul economia",
+        "crise argentina"
+      ],
+      "gatilho_vitrine": "Promover análise de conjuntura sul-americana destacando os impactos do PIB argentino no comércio exterior brasileiro.",
+      "sintese_nerd": "O recuo consecutivo da atividade econômica na Argentina oficializa o estado de recessão técnica no país vizinho, refletindo o severo ajuste de demanda promovido pelo plano econômico atual. O desaquecimento reduz as exportações industriais brasileiras para seu principal parceiro regional, afetando o balanço comercial do Mercosul.",
+      "data_publicacao": "2026-11-25T01:34:32Z",
+      "updated_at": "2026-11-25T01:34:32Z"
+    },
+    {
+      "slug": "cni-acao-stf-inconstitucionalidade-fim-jornada-6x1",
+      "titulo_tema": "CNI aciona o STF contra decretos que regulamentam a flexibilização da escala 6x1",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Politica",
+      "categorias_cruzadas": [
+        "Economia",
+        "Cultura"
+      ],
+      "rota_editoria": "/politica",
+      "relevancia_score": 80,
+      "ttl_horas": 72,
+      "expires_at": "2026-11-28T01:34:32Z",
+      "palavras_chave_busca": [
+        "cni stf escala 6x1",
+        "fim da jornada 6x1",
+        "regulamentacao trabalho",
+        "clt jornada de trabalho",
+        "supremo tribunal federal",
+        "direitos trabalhistas"
+      ],
+      "gatilho_vitrine": "Inserir no bloco de debates jurídicos e econômicos sobre produtividade e direitos trabalhistas no Brasil.",
+      "sintese_nerd": "A Confederação Nacional da Indústria questiona no Supremo Tribunal Federal a legalidade dos decretos federais que normatizam a alteração da jornada 6x1. O impasse jurídico contrapõe o argumento patronal de impacto nos custos operacionais da indústria e do comércio ao movimento social e governamental por melhores condições de trabalho e qualidade de vida.",
+      "data_publicacao": "2026-11-25T01:34:32Z",
+      "updated_at": "2026-11-25T01:34:32Z"
     }
   ],
   "noticias_quentes": [
     {
-      "slug": "senado-aprova-plano-nacional-cultura-dez-anos",
-      "titulo_curto": "Senado aprova novo Plano Nacional de Cultura com diretrizes para a próxima década",
-      "resumo_pulso": "Conforme apuração da Agência Senado, o Plenário aprovou o PL 5.894/2025 que institui o novo Plano Nacional de Cultura (PNC). O texto, que segue para sanção presidencial, estabelece princípios, metas e descentralização de recursos para orientar as políticas culturais do país nos próximos dez anos.",
-      "impacto_pratico": "Orienta o financiamento e a gestão de políticas culturais e artísticas em âmbito nacional e municipal.",
-      "categoria": "Sociedade_Cultura",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "urgencia_score": 86,
-      "relevancia_score": 89,
-      "nivel_confianca": "alta",
+      "slug": "eua-suspendem-operacoes-equador-investigacao",
+      "categoria": "Geopolitica_Relacoes",
       "ttl_horas": 24,
-      "horas_em_destaque": 12,
-      "veiculos_origem": [
-        "Agência Senado"
+      "expires_at": "2026-11-26T01:29:18Z",
+      "updated_at": "2026-11-25T01:29:18Z",
+      "fontes_urls": [
+        "https://g1.globo.com/mundo/noticia/2026/11/24/governo-trump-suspende-operacoes-militares-conjuntas-com-equador-diz-jornal.ghtml"
       ],
+      "resumo_pulso": "Segundo apuração do G1 Mundo com base no jornal The New York Times, o governo dos Estados Unidos suspendeu operações militares conjuntas com o Equador. A medida foi adotada no âmbito de uma apuração sobre uma ação letal conduzida por forças equatorianas.",
+      "titulo_curto": "EUA suspendem operações militares conjuntas com o Equador após investigação de morte",
+      "palavras_chave": [
+        "EUA",
+        "Equador",
+        "Operações Militares",
+        "Investigação"
+      ],
+      "urgencia_score": 89,
+      "data_publicacao": "2026-11-25T01:00:24Z",
+      "impacto_pratico": "Afeta a cooperação de segurança internacional e o combate ao narcoterrorismo na América do Sul.",
+      "nivel_confianca": "media",
+      "veiculos_origem": [
+        "G1 Mundo"
+      ],
+      "relevancia_score": 88,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "US",
+        "EC"
+      ],
+      "links_internos_relacionados": [
+        {
+          "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
+          "motivo_conexao": "Analise como as decisões de política externa dos EUA repercutem entre parceiros internacionais.",
+          "titulo_existente": "Mercados e aliados internacionais avaliam impacto da política comercial norte-americana"
+        }
+      ]
+    },
+    {
+      "slug": "apagao-atinge-cidades-colombia-ataque-usina",
+      "categoria": "Sociedade_Cultura",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-26T01:29:18Z",
+      "updated_at": "2026-11-25T01:29:18Z",
+      "fontes_urls": [
+        "https://g1.globo.com/mundo/noticia/2026/11/24/apagao-atinge-cidades-da-colombia-apos-ataque-com-explosivos-a-usina.ghtml"
+      ],
+      "resumo_pulso": "Conforme apuração do G1 Mundo, um atentado com bombas contra uma usina elétrica gerou um apagão de grandes proporções no sudoeste colombiano, afetando mais de 2 milhões de pessoas nas regiões de Nariño, Putumayo, Cauca e Huila.",
+      "titulo_curto": "Ataque com explosivos a usina elétrica provoca apagão no sudoeste da Colômbia",
+      "palavras_chave": [
+        "Colômbia",
+        "Apagão",
+        "Infraestrutura",
+        "Energia"
+      ],
+      "urgencia_score": 88,
+      "data_publicacao": "2026-11-25T00:41:45Z",
+      "impacto_pratico": "Interrupção grave de serviços essenciais e fornecimento de energia para milhões de cidadãos na Colômbia.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "G1 Mundo"
+      ],
+      "relevancia_score": 87,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "CO"
+      ],
+      "links_internos_relacionados": []
+    },
+    {
+      "slug": "senado-aprova-plano-nacional-cultura-dez-anos",
+      "categoria": "Sociedade_Cultura",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-26T00:16:31Z",
+      "updated_at": "2026-11-25T01:29:18Z",
       "fontes_urls": [
         "https://www12.senado.leg.br/noticias/materias/2026/11/24/senado-aprova-plano-nacional-de-cultura-para-os-proximos-10-anos"
       ],
+      "resumo_pulso": "Conforme apuração da Agência Senado, o Plenário aprovou o PL 5.894/2025 que institui o novo Plano Nacional de Cultura (PNC). O texto, que segue para sanção presidencial, estabelece princípios, metas e descentralização de recursos para orientar as políticas culturais do país nos próximos dez anos.",
+      "titulo_curto": "Senado aprova novo Plano Nacional de Cultura com diretrizes para a próxima década",
       "palavras_chave": [
         "Senado",
         "Cultura",
-        "Plano Nacional de Cultura",
-        "Sanção"
+        "Plano Nacional",
+        "Brasil"
       ],
+      "urgencia_score": 86,
       "data_publicacao": "2026-11-24T23:56:23Z",
-      "links_internos_relacionados": [
-        {
-          "titulo_existente": "Movimentos sociais e parlamentares debatem investimentos em saúde, educação e transição ecológica",
-          "url_existente": "https://www.rodandoomundo.com.br/saude",
-          "motivo_conexao": "Relaciona-se com políticas públicas setoriais e debates orçamentários no Congresso."
-        }
+      "impacto_pratico": "Direciona o planejamento e os investimentos em cultura no Brasil para a próxima década.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Agência Senado"
       ],
-      "expires_at": "2026-11-26T00:16:31Z",
-      "updated_at": "2026-11-25T00:16:31Z"
-    },
-    {
-      "slug": "camara-votacao-regulacao-big-techs",
-      "titulo_curto": "Câmara dos Deputados define votação do projeto de regulação das big techs para próxima semana",
-      "resumo_pulso": "Segundo informações divulgadas pela Agência Brasil, o Projeto de Lei 4675/2025, conhecido como PL dos Mercados Digitais, entrará na pauta de votações da Câmara dos Deputados na próxima semana. O calendário foi confirmado pelo relator Aliel Machado em articulação com a presidência da Casa.",
-      "impacto_pratico": "Pode alterar o modelo de negócios e as regras de atuação de grandes empresas de tecnologia no mercado nacional.",
-      "categoria": "Economia_Comercio",
+      "relevancia_score": 89,
+      "horas_em_destaque": 12,
       "paises_envolvidos": [
         "BR"
       ],
-      "urgencia_score": 87,
-      "relevancia_score": 90,
-      "nivel_confianca": "alta",
+      "links_internos_relacionados": [
+        {
+          "url_existente": "https://www.rodandoomundo.com.br/saude",
+          "motivo_conexao": "Veja como o Congresso articula pisos e diretrizes para políticas públicas sociais e culturais.",
+          "titulo_existente": "Movimentos sociais e parlamentares debatem investimentos em saúde, educação e transição ecológica"
+        }
+      ]
+    },
+    {
+      "slug": "camara-votacao-regulacao-big-techs",
+      "categoria": "Economia_Comercio",
       "ttl_horas": 24,
-      "horas_em_destaque": 12,
-      "veiculos_origem": [
-        "Agência Brasil (EBC)"
-      ],
+      "expires_at": "2026-11-26T00:16:31Z",
+      "updated_at": "2026-11-25T00:16:31Z",
       "fontes_urls": [
         "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/projeto-de-regulacao-das-big-techs-sera-votado-na-proxima-semana"
       ],
+      "resumo_pulso": "Segundo informações divulgadas pela Agência Brasil, o Projeto de Lei 4675/2025, conhecido como PL dos Mercados Digitais, entrará na pauta de votações da Câmara dos Deputados na próxima semana. O calendário foi confirmado pelo relator Aliel Machado em articulação com a presidência da Casa.",
+      "titulo_curto": "Câmara dos Deputados define votação do projeto de regulação das big techs para próxima semana",
       "palavras_chave": [
         "Câmara dos Deputados",
         "Big Techs",
         "Mercados Digitais",
         "Regulação"
       ],
+      "urgencia_score": 87,
       "data_publicacao": "2026-11-24T23:23:00Z",
+      "impacto_pratico": "Pode alterar o modelo de negócios e as regras de atuação de grandes empresas de tecnologia no mercado nacional.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Agência Brasil (EBC)"
+      ],
+      "relevancia_score": 90,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "BR"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "Política no Brasil",
           "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
-          "motivo_conexao": "Acompanha a articulação de pautas legislativas prioritárias no Congresso Nacional."
+          "motivo_conexao": "Acompanha a articulação de pautas legislativas prioritárias no Congresso Nacional.",
+          "titulo_existente": "Política no Brasil"
         }
-      ],
-      "expires_at": "2026-11-26T00:16:31Z",
-      "updated_at": "2026-11-25T00:16:31Z"
+      ]
     },
     {
       "slug": "brasil-nao-retornara-embaixador-argentina-crise",
-      "titulo_curto": "Lula decide que embaixador do Brasil não retornará a Buenos Aires após crise diplomática",
-      "resumo_pulso": "Segundo apuração do G1 Política e confirmação de diplomatas do Itamaraty, o governo brasileiro decidiu que o embaixador Júlio Bitelli não voltará à Argentina. A medida consolida o esfriamento diplomático entre os dois países após meses de tensões e desentendimentos entre as chancelarias.",
-      "impacto_pratico": "Afeta as relações bilaterais e o comércio regional entre Brasil e Argentina.",
       "categoria": "Geopolitica_Relacoes",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-25T23:24:39Z",
+      "updated_at": "2026-11-25T01:29:18Z",
+      "fontes_urls": [
+        "https://g1.globo.com/politica/noticia/2026/11/24/brasil-decide-que-embaixador-brasileiro-na-argentina-nao-retornara-a-buenos-aires.ghtml"
+      ],
+      "resumo_pulso": "Segundo apuração do G1 Política e confirmação de diplomatas do Itamaraty, o governo brasileiro decidiu que o embaixador Júlio Bitelli não voltará à Argentina. A medida consolida o esfriamento diplomático entre os dois países após meses de tensões.",
+      "titulo_curto": "Lula decide que embaixador do Brasil não retornará a Buenos Aires após crise diplomática",
+      "palavras_chave": [
+        "Brasil",
+        "Argentina",
+        "Itamaraty",
+        "Diplomacia"
+      ],
+      "urgencia_score": 92,
+      "data_publicacao": "2026-11-24T23:20:16Z",
+      "impacto_pratico": "Afeta as relações comerciais bilaterais e canais diplomáticos na América do Sul.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "G1 Política"
+      ],
+      "relevancia_score": 94,
+      "horas_em_destaque": 12,
       "paises_envolvidos": [
         "BR",
         "AR"
       ],
-      "urgencia_score": 92,
-      "relevancia_score": 94,
-      "nivel_confianca": "alta",
-      "ttl_horas": 24,
-      "horas_em_destaque": 12,
-      "veiculos_origem": [
-        "G1 Política"
-      ],
-      "fontes_urls": [
-        "https://g1.globo.com/politica/noticia/2026/11/24/brasil-decide-que-embaixador-brasileiro-na-argentina-nao-retornara-a-buenos-aires.ghtml"
-      ],
-      "palavras_chave": [
-        "Itamaraty",
-        "Argentina",
-        "Brasil",
-        "Embaixador",
-        "Crise diplomática"
-      ],
-      "data_publicacao": "2026-11-24T23:20:16Z",
       "links_internos_relacionados": [
         {
-          "titulo_existente": "Repercussão internacional das eleições americanas redesenha alianças diplomáticas",
           "url_existente": "https://www.rodandoomundo.com.br/eleicoes",
-          "motivo_conexao": "Contextualiza a dinâmica de alianças e relações diplomáticas regionais."
+          "motivo_conexao": "Compreenda como crises e articulações geopolíticas alteram as alianças regionais e globais.",
+          "titulo_existente": "Repercussão internacional das eleições americanas redesenha alianças diplomáticas"
         }
-      ],
-      "expires_at": "2026-11-25T23:24:39Z",
-      "updated_at": "2026-11-25T00:16:31Z"
+      ]
     },
     {
       "slug": "exportacoes-petroleo-golfo-persico-nivel-pre-guerra",
@@ -1081,43 +1276,42 @@
     },
     {
       "slug": "ataques-drones-russos-incendio-predio-kiev",
-      "titulo_curto": "Ataques de drones russos provocam incêndio em prédio residencial e deixam feridos em Kiev",
-      "resumo_pulso": "Conforme reportado pelas agências Ukrinform e The Kyiv Independent, destroços de um drone russo provocaram incêndio em um edifício residencial de 16 andares em Kiev. Os ataques noturnos também causaram mortes na região de Odesa, elevando o alerta de defesa aérea na Ucrânia.",
-      "impacto_pratico": "Intensifica riscos de segurança para civis e reforça a pressão por apoio militar internacional na Europa.",
       "categoria": "Geopolitica_Relacoes",
+      "ttl_horas": 18,
+      "expires_at": "2026-11-25T17:24:39Z",
+      "updated_at": "2026-11-25T01:29:18Z",
+      "fontes_urls": [
+        "https://kyivindependent.com/russian-attacks-kill-2-in-odesa-oblast-including-child-injure-more-in-kyiv/",
+        "https://kyivindependent.com/ukrainian-drones-reportedly-strike-russian-oil-refineries-in-massive-attack/"
+      ],
+      "resumo_pulso": "Conforme reportado por The Kyiv Independent, novos ataques noturnos russos atingiram a região de Odesa, causando mortes, e provocaram incêndios em um edifício residencial em Kiev. Paralelamente, canais de monitoramento apontam ataques de drones ucranianos contra refinarias de petróleo na Rússia.",
+      "titulo_curto": "Ataques de drones russos provocam incêndio e deixam vítimas na Ucrânia",
+      "palavras_chave": [
+        "Ucrânia",
+        "Rússia",
+        "Ataques",
+        "Drones"
+      ],
+      "urgencia_score": 91,
+      "data_publicacao": "2026-11-24T23:08:00Z",
+      "impacto_pratico": "Eleva os riscos de segurança civil na Ucrânia e impacta a infraestrutura energética regional.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "The Kyiv Independent"
+      ],
+      "relevancia_score": 90,
+      "horas_em_destaque": 12,
       "paises_envolvidos": [
         "UA",
         "RU"
       ],
-      "urgencia_score": 90,
-      "relevancia_score": 88,
-      "nivel_confianca": "alta",
-      "ttl_horas": 18,
-      "horas_em_destaque": 8,
-      "veiculos_origem": [
-        "The Kyiv Independent",
-        "Ukrinform"
-      ],
-      "fontes_urls": [
-        "https://kyivindependent.com/russian-attacks-kill-2-in-odesa-oblast-including-child-injure-more-in-kyiv/"
-      ],
-      "palavras_chave": [
-        "Ucrânia",
-        "Rússia",
-        "Kiev",
-        "Drones",
-        "Odesa"
-      ],
-      "data_publicacao": "2026-11-24T23:08:00Z",
       "links_internos_relacionados": [
         {
-          "titulo_existente": "O que é uma sanção internacional?",
           "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-sancao-internacional",
-          "motivo_conexao": "Contextualiza as medidas econômicas e pressões geopolíticas decorrentes do conflito."
+          "motivo_conexao": "Entenda as ferramentas de pressão e o contexto geopolítico do conflito no Leste Europeu.",
+          "titulo_existente": "O que é uma sanção internacional?"
         }
-      ],
-      "expires_at": "2026-11-25T17:24:39Z",
-      "updated_at": "2026-11-25T00:16:31Z"
+      ]
     },
     {
       "slug": "justica-condena-engenheiros-incendio-ninho-do-urubu",
@@ -1544,213 +1738,6 @@
           "motivo_conexao": "Explica o contexto de restrições financeiras e comerciais transfronteiriças aplicadas pelos EUA.",
           "titulo_existente": "O que é uma sanção internacional?"
         }
-      ]
-    },
-    {
-      "slug": "eua-usam-cavalos-patrulha-fronteira-mexico",
-      "categoria": "Mobilidade_Fronteiras",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-25T22:33:09Z",
-      "updated_at": "2026-11-24T22:33:09Z",
-      "fontes_urls": [
-        "https://g1.globo.com/mundo/noticia/2026/11/24/video-eua-usam-cavalos-para-prender-imigrantes-na-fronteira-com-o-mexico.ghtml"
-      ],
-      "resumo_pulso": "Segundo apuração do G1 Mundo com base em vídeos divulgados pela Alfândega e Proteção de Fronteiras dos EUA (CBP), autoridades norte-americanas voltaram a empregar patrulhas montadas a cavalo para conter travessias na fronteira sul. A ação registrou prisões e reacendeu controvérsia sobre métodos de contenção migratória.",
-      "titulo_curto": "Patrulha de Fronteira dos EUA utiliza patrulhamento a cavalo para deter imigrantes na divisa com o México",
-      "palavras_chave": [
-        "EUA",
-        "México",
-        "Fronteira",
-        "Imigração",
-        "CBP"
-      ],
-      "urgencia_score": 88,
-      "data_publicacao": "2026-11-24T20:02:27Z",
-      "impacto_pratico": "Intensificação do policiamento ostensivo impacta diretamente rotas migratórias e procedimentos de detenção na fronteira sul dos Estados Unidos.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "G1 Mundo",
-        "CBP"
-      ],
-      "relevancia_score": 89,
-      "horas_em_destaque": 8,
-      "paises_envolvidos": [
-        "US",
-        "MX"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/politica/estados-unidos",
-          "motivo_conexao": "Compreenda como o endurecimento das diretrizes de fiscalização fronteiriça integra o debate político em Washington.",
-          "titulo_existente": "Política nos Estados Unidos"
-        }
-      ]
-    },
-    {
-      "slug": "bombeiros-condenados-chile-incendios-vina-del-mar",
-      "categoria": "Sociedade_Cultura",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-25T21:59:11Z",
-      "updated_at": "2026-11-24T21:59:11Z",
-      "fontes_urls": [
-        "https://g1.globo.com/mundo/noticia/2026/11/24/7-bombeiros-sao-condenados-no-chile-por-incendios-que-deixaram-138-mortos.ghtml"
-      ],
-      "resumo_pulso": "Conforme apuração do G1 Mundo, a Justiça chilena condenou sete bombeiros e brigadistas por orquestrarem e provocarem os incêndios florestais que devastaram a região de Viña del Mar em fevereiro de 2024, causando a morte de 138 pessoas. A investigação apontou que o grupo agia motivado pela busca de ganhos financeiros com horas extras.",
-      "titulo_curto": "Tribunal no Chile condena sete bombeiros por incêndios florestais que deixaram 138 mortos",
-      "palavras_chave": [
-        "Chile",
-        "Viña del Mar",
-        "incêndios florestais",
-        "bombeiros",
-        "condenação"
-      ],
-      "urgencia_score": 87,
-      "data_publicacao": "2026-11-24T19:56:23Z",
-      "impacto_pratico": "O caso chocou a opinião pública internacional e levou a uma revisão rigorosa dos protocolos operacionais de emergência no Chile.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "G1 Mundo"
-      ],
-      "relevancia_score": 89,
-      "horas_em_destaque": 12,
-      "paises_envolvidos": [
-        "CL"
-      ],
-      "links_internos_relacionados": []
-    }
-  ],
-  "temas_curadoria": [
-    {
-      "slug": "brasil-reacao-ue-barreiras-comerciais-frango-mel",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-26T23:18:08Z",
-      "updated_at": "2026-11-24T23:18:08Z",
-      "titulo_tema": "Tensão Comercial: Brasil manifesta indignação após UE adiar liberação de frango e mel",
-      "sintese_nerd": "O adiamento da União Europeia na liberação das importações de carne de frango e mel brasileiros expõe entraves protecionistas travando a diplomacia comercial do agro nacional. O impasse impacta diretamente o saldo da balança comercial brasileira e a rentabilidade do setor exportador diante dos rígidos padrões europeus.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-24T23:18:08Z",
-      "gatilho_vitrine": "Destacar no hub de Economia e Geopolítica as tensões protecionistas da UE contra o agro brasileiro.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 90,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Geopolitica_Radar",
-        "Politica"
-      ],
-      "palavras_chave_busca": [
-        "agronegocio brasil",
-        "uniao europeia",
-        "barreiras sanitarias",
-        "embargo frango mel",
-        "diplomacia comercial",
-        "exportacao agro"
-      ]
-    },
-    {
-      "slug": "eua-investigacao-jd-vance-petroleo-venezuela",
-      "status": "novo",
-      "ttl_horas": 72,
-      "expires_at": "2026-11-27T23:18:08Z",
-      "updated_at": "2026-11-24T23:18:08Z",
-      "titulo_tema": "Senado dos EUA investiga atuação de JD Vance em contrato petrolífero na Venezuela",
-      "sintese_nerd": "A investigação no Senado americano sobre a intermediação de contratos petrolíferos na Venezuela coloca em xeque a política externa e de energia de Washington no cenário pós-Maduro. A disputa pelo controle de grandes reservas de óleo bruto reflete no preço internacional do barril e nos acordos geopolíticos no continente.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-24T23:18:08Z",
-      "gatilho_vitrine": "Impulsionar análise sobre os desdobramentos políticos e corporativos na geopolítica do petróleo pós-Maduro.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 88,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Politica"
-      ],
-      "palavras_chave_busca": [
-        "petroleo venezuela",
-        "jd vance",
-        "senado eua",
-        "vitol venezuela",
-        "geopolitica energia",
-        "transicao venezuela"
-      ]
-    },
-    {
-      "slug": "argentina-recessao-tecnica-milei-diplomacia-paraguai",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-26T23:18:08Z",
-      "updated_at": "2026-11-24T23:18:08Z",
-      "titulo_tema": "Argentina entra em recessão técnica e Milei intensifica articulações na América do Sul",
-      "sintese_nerd": "Com a confirmação de recessão técnica após recuo de 1,2% na atividade econômica, o governo Javier Milei enfrenta desaceleração interna enquanto busca alinhamentos diplomáticos no Paraguai. O desaquecimento do principal parceiro comercial sul-americano acende o alerta para as exportações industriais brasileiras.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-24T23:18:08Z",
-      "gatilho_vitrine": "Conectar a recessão técnica na Argentina com os desdobramentos geopolíticos e comerciais na região do Mercosul.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 86,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Geopolitica_Radar",
-        "Politica"
-      ],
-      "palavras_chave_busca": [
-        "recessao argentina",
-        "javier milei",
-        "economia argentina indec",
-        "santiago pena paraguai",
-        "mercosul",
-        "crise américa do sul"
-      ]
-    },
-    {
-      "slug": "bc-leilao-linha-dolar-liquidez-cambio",
-      "status": "novo",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-25T23:18:08Z",
-      "updated_at": "2026-11-24T23:18:08Z",
-      "titulo_tema": "Banco Central anuncia leilão de linha de US$ 2 bilhões para conter pressão cambial",
-      "sintese_nerd": "O Banco Central ofertou até US$ 2 bilhões em leilões de linha com compromisso de reprazo para prover liquidez ao mercado de câmbio no fim de ano. A intervenção busca atenuar distorções temporárias da moeda estrangeira e evitar o repasse de choque cambial para a inflação de preços ao consumidor.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-24T23:18:08Z",
-      "gatilho_vitrine": "Explicar a atuação direta do BC no mercado cambial e seu reflexo prático na cotação do dólar comercial.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 84,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "banco central",
-        "leilao de linha",
-        "dolar cambio",
-        "liquidez mercado",
-        "politica monetaria",
-        "copom"
-      ]
-    },
-    {
-      "slug": "golfo-persico-exportacoes-petroleo-ormuz",
-      "status": "novo",
-      "ttl_horas": 72,
-      "expires_at": "2026-11-27T23:18:08Z",
-      "updated_at": "2026-11-24T23:18:08Z",
-      "titulo_tema": "Exportações de petróleo no Golfo Pérsico retornam a níveis pré-crise apesar de ataques em Ormuz",
-      "sintese_nerd": "Apesar das contínuas ameaças marítimas no Estreito de Ormuz, produtores como Arábia Saudita e Emirados Árabes conseguiram restaurar seus volumes de exportação de petróleo bruto. Essa adaptação logística diminui os riscos de um choque repentino na oferta mundial de combustíveis.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-24T23:18:08Z",
-      "gatilho_vitrine": "Monitorar a resiliência das rotas marítimas de petróleo no Oriente Médio e a estabilidade da oferta global.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 82,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia"
-      ],
-      "palavras_chave_busca": [
-        "estreito de ormuz",
-        "petroleo golfo persico",
-        "arabia saudita exportacoes",
-        "seguranca energetica",
-        "frete maritimo",
-        "tensao oriente medio"
       ]
     }
   ]
