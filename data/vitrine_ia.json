@@ -2,80 +2,150 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-25T18:47:39Z",
-  "batch_id": "20261125-1847",
+  "updatedAt": "2026-11-25T19:10:37Z",
+  "batch_id": "20261125-1910",
   "temas_ativos": [
     {
-      "slug": "ccj-senado-aprova-registro-obrigatorio-moteis-cadastur",
-      "titulo_tema": "CCJ do Senado aprova projeto que torna obrigatório o registro de motéis no Ministério do Turismo",
-      "titulo_curto": "CCJ do Senado aprova projeto que torna obrigatório o registro de motéis no Ministério do Turismo",
+      "slug": "especulacao-ministerio-fazenda-impacto-dolar-tesouro",
+      "titulo_tema": "Especulações sobre o Ministério da Fazenda derrubam dólar e afetam Tesouro Direto",
       "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Cultura",
-      "categoria": "Sociedade_Cultura",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/cultura",
-      "relevancia_score": 85,
-      "urgencia_score": 84,
-      "ttl_horas": 12,
-      "expires_at": "2026-11-26T06:47:39Z",
-      "palavras_chave_busca": [
-        "senado",
-        "turismo",
-        "cadastur",
-        "hospedagem",
-        "legislação"
-      ],
-      "palavras_chave": [
-        "senado",
-        "turismo",
-        "cadastur",
-        "hospedagem",
-        "legislação"
-      ],
-      "gatilho_vitrine": "Segundo apuração da Agência Senado, a Comissão de Constituição e Justiça (CCJ) aprovou o projeto que exige o cadastramento de motéis no Cadastur. A medida visa legalizar a atividade no setor de hospedagem e garantir o acesso a linhas de financiamento e qualificação profissional.",
-      "resumo_pulso": "Segundo apuração da Agência Senado, a Comissão de Constituição e Justiça (CCJ) aprovou o projeto que exige o cadastramento de motéis no Cadastur. A medida visa legalizar a atividade no setor de hospedagem e garantir o acesso a linhas de financiamento e qualificação profissional.",
-      "sintese_nerd": "Facilita o acesso a crédito e linhas de fomento para estabelecimentos do setor hoteleiro e de serviços.",
-      "impacto_pratico": "Facilita o acesso a crédito e linhas de fomento para estabelecimentos do setor hoteleiro e de serviços.",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "veiculos_origem": [
-        "Agência Senado"
-      ],
-      "fontes_urls": [
-        "https://www12.senado.leg.br/noticias/materias/2026/11/25/ccj-aprova-registro-de-moteis-como-meio-de-hospedagem-no-ministerio-do-turismo"
-      ],
-      "data_publicacao": "2026-11-25T18:39:58Z",
-      "updated_at": "2026-11-25T18:47:39Z"
-    },
-    {
-      "slug": "comissao-senado-convoca-ministro-concessao-rodovia-ro-mt",
-      "titulo_tema": "Comissão de Infraestrutura do Senado aprova convocação de ministro para explicar concessão da Rota Agro Central",
-      "titulo_curto": "Comissão de Infraestrutura do Senado aprova convocação de ministro para explicar concessão da Rota Agro Central",
-      "status": "novo",
-      "origem_pipeline": "pulso",
+      "origem_pipeline": "curadoria",
       "categoria_primaria": "Economia",
-      "categoria": "Economia_Comercio",
       "categorias_cruzadas": [
-        "Economia",
+        "Politica",
         "Resumo_Ultimas"
       ],
       "rota_editoria": "/economia",
+      "relevancia_score": 92,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-26T19:10:37Z",
+      "palavras_chave_busca": [
+        "ministério da fazenda",
+        "dólar",
+        "tesouro direto",
+        "governo lula",
+        "cenário fiscal",
+        "mercado financeiro"
+      ],
+      "gatilho_vitrine": "Destaque a forte volatilidade nos mercados brasileiros impulsionada por expectativas sobre a equipe econômica do governo.",
+      "sintese_nerd": "Rumores sobre a futura liderança do Ministério da Fazenda geraram forte volatilidade, derrubando o dólar para a faixa de R$ 5,82 e provocando instabilidade e pane temporária na plataforma do Tesouro Direto. Para o cidadão, a indefinição fiscal repercute diretamente na percepção de risco-país e nos rendimentos dos investimentos locais.",
+      "data_publicacao": "2026-11-25T19:10:37Z",
+      "updated_at": "2026-11-25T19:10:37Z"
+    },
+    {
+      "slug": "acordo-brasil-alemanha-minerais-criticos-estrategicos",
+      "titulo_tema": "Fortalecimento de acordo de minerais críticos entre Brasil e Alemanha",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia"
+      ],
+      "rota_editoria": "/radar",
       "relevancia_score": 88,
-      "urgencia_score": 86,
+      "ttl_horas": 72,
+      "expires_at": "2026-11-28T19:10:37Z",
+      "palavras_chave_busca": [
+        "minerais críticos",
+        "brasil",
+        "alemanha",
+        "acordo comercial",
+        "geopolítica",
+        "transição energética"
+      ],
+      "gatilho_vitrine": "Exiba no radar global as articulações diplomáticas e industriais do Brasil em relação a insumos estratégicos para a transição energética europeia.",
+      "sintese_nerd": "A aproximação entre Brasília e Berlim em torno de minerais estratégicos insere o Brasil nas cadeias globais de suprimentos voltadas à transição verde e à alta tecnologia. Essa cooperação eleva o peso geopolítico do país nas negociações comerciais com potências ocidentais.",
+      "data_publicacao": "2026-11-25T19:10:37Z",
+      "updated_at": "2026-11-25T19:10:37Z"
+    },
+    {
+      "slug": "reforma-tributaria-estrategia-logistica-amazon-brasil",
+      "titulo_tema": "Reforma tributária e a rota de expansão logística da Amazon para 2027",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Cultura"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 80,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-27T19:10:37Z",
+      "palavras_chave_busca": [
+        "reforma tributária",
+        "amazon brasil",
+        "logística",
+        "centros de distribuição",
+        "consumo",
+        "economia brasileira"
+      ],
+      "gatilho_vitrine": "Mostre como grandes corporações adaptam seus planos de infraestrutura e distribuição diante das novas regras fiscais do país.",
+      "sintese_nerd": "A decisão da Amazon de manter seus planos de expansão logística com foco na proximidade ao consumidor, independentemente dos incentivos da reforma tributária, redesenha o mapa do e-commerce nacional. A estratégia prioriza a agilidade na entrega em detrimento de vantagens puramente fiscais.",
+      "data_publicacao": "2026-11-25T19:10:37Z",
+      "updated_at": "2026-11-25T19:10:37Z"
+    },
+    {
+      "slug": "ccj-senado-aprova-registro-obrigatorio-moteis-cadastur",
+      "status": "novo",
+      "categoria": "Sociedade_Cultura",
       "ttl_horas": 12,
       "expires_at": "2026-11-26T06:47:39Z",
+      "updated_at": "2026-11-25T18:47:39Z",
+      "fontes_urls": [
+        "https://www12.senado.leg.br/noticias/materias/2026/11/25/ccj-aprova-registro-de-moteis-como-meio-de-hospedagem-no-ministerio-do-turismo"
+      ],
+      "titulo_tema": "CCJ do Senado aprova projeto que torna obrigatório o registro de motéis no Ministério do Turismo",
+      "resumo_pulso": "Segundo apuração da Agência Senado, a Comissão de Constituição e Justiça (CCJ) aprovou o projeto que exige o cadastramento de motéis no Cadastur. A medida visa legalizar a atividade no setor de hospedagem e garantir o acesso a linhas de financiamento e qualificação profissional.",
+      "sintese_nerd": "Facilita o acesso a crédito e linhas de fomento para estabelecimentos do setor hoteleiro e de serviços.",
+      "titulo_curto": "CCJ do Senado aprova projeto que torna obrigatório o registro de motéis no Ministério do Turismo",
+      "rota_editoria": "/cultura",
+      "palavras_chave": [
+        "senado",
+        "turismo",
+        "cadastur",
+        "hospedagem",
+        "legislação"
+      ],
+      "urgencia_score": 84,
+      "data_publicacao": "2026-11-25T18:39:58Z",
+      "gatilho_vitrine": "Segundo apuração da Agência Senado, a Comissão de Constituição e Justiça (CCJ) aprovou o projeto que exige o cadastramento de motéis no Cadastur. A medida visa legalizar a atividade no setor de hospedagem e garantir o acesso a linhas de financiamento e qualificação profissional.",
+      "impacto_pratico": "Facilita o acesso a crédito e linhas de fomento para estabelecimentos do setor hoteleiro e de serviços.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "Agência Senado"
+      ],
+      "relevancia_score": 85,
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "categoria_primaria": "Cultura",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
       "palavras_chave_busca": [
         "senado",
-        "concessão",
-        "rodovia",
-        "infraestrutura",
-        "transportes"
+        "turismo",
+        "cadastur",
+        "hospedagem",
+        "legislação"
+      ]
+    },
+    {
+      "slug": "comissao-senado-convoca-ministro-concessao-rodovia-ro-mt",
+      "status": "novo",
+      "categoria": "Economia_Comercio",
+      "ttl_horas": 12,
+      "expires_at": "2026-11-26T06:47:39Z",
+      "updated_at": "2026-11-25T18:47:39Z",
+      "fontes_urls": [
+        "https://www12.senado.leg.br/noticias/materias/2026/11/25/comissao-convoca-ministro-para-explicar-concessao-de-rodovia-entre-ro-mt"
       ],
+      "titulo_tema": "Comissão de Infraestrutura do Senado aprova convocação de ministro para explicar concessão da Rota Agro Central",
+      "resumo_pulso": "Conforme informações da Agência Senado, a Comissão de Infraestrutura (CI) aprovou a convocação do ministro dos Transportes, George Santoro, para prestar esclarecimentos sobre o edital de concessão da Rota Agro Central, que liga Vilhena (RO) a Cuiabá (MT). O leilão está agendado para o próximo dia 17 de dezembro.",
+      "sintese_nerd": "Altera o cronograma e suscita debates regulatórios sobre os investimentos em infraestrutura rodoviária na região Centro-Norte.",
+      "titulo_curto": "Comissão de Infraestrutura do Senado aprova convocação de ministro para explicar concessão da Rota Agro Central",
+      "rota_editoria": "/economia",
       "palavras_chave": [
         "senado",
         "concessão",
@@ -83,21 +153,30 @@
         "infraestrutura",
         "transportes"
       ],
+      "urgencia_score": 86,
+      "data_publicacao": "2026-11-25T18:37:02Z",
       "gatilho_vitrine": "Conforme informações da Agência Senado, a Comissão de Infraestrutura (CI) aprovou a convocação do ministro dos Transportes, George Santoro, para prestar esclarecimentos sobre o edital de concessão da Rota Agro Central, que liga Vilhena (RO) a Cuiabá (MT). O leilão está agendado para o próximo dia 17 de dezembro.",
-      "resumo_pulso": "Conforme informações da Agência Senado, a Comissão de Infraestrutura (CI) aprovou a convocação do ministro dos Transportes, George Santoro, para prestar esclarecimentos sobre o edital de concessão da Rota Agro Central, que liga Vilhena (RO) a Cuiabá (MT). O leilão está agendado para o próximo dia 17 de dezembro.",
-      "sintese_nerd": "Altera o cronograma e suscita debates regulatórios sobre os investimentos em infraestrutura rodoviária na região Centro-Norte.",
       "impacto_pratico": "Altera o cronograma e suscita debates regulatórios sobre os investimentos em infraestrutura rodoviária na região Centro-Norte.",
-      "paises_envolvidos": [
-        "BR"
-      ],
+      "origem_pipeline": "pulso",
       "veiculos_origem": [
         "Agência Senado"
       ],
-      "fontes_urls": [
-        "https://www12.senado.leg.br/noticias/materias/2026/11/25/comissao-convoca-ministro-para-explicar-concessao-de-rodovia-entre-ro-mt"
+      "relevancia_score": 88,
+      "paises_envolvidos": [
+        "BR"
       ],
-      "data_publicacao": "2026-11-25T18:37:02Z",
-      "updated_at": "2026-11-25T18:47:39Z"
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "senado",
+        "concessão",
+        "rodovia",
+        "infraestrutura",
+        "transportes"
+      ]
     },
     {
       "slug": "pulso-1-20261125-1752",
@@ -316,28 +395,19 @@
     },
     {
       "slug": "eua-propoem-novas-tarifas-acucar-e-aeronaves-brasil",
-      "titulo_tema": "Governo dos EUA propõe novas tarifas sobre açúcar brasileiro e taxa adicional para aeronaves",
-      "titulo_curto": "Governo dos EUA propõe novas tarifas sobre açúcar brasileiro e taxa adicional para aeronaves",
       "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Economia",
       "categoria": "Economia_Comercio",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 93,
-      "urgencia_score": 91,
       "ttl_horas": 18,
       "expires_at": "2026-11-26T12:47:39Z",
-      "palavras_chave_busca": [
-        "eua",
-        "tarifas",
-        "açúcar",
-        "aeronaves",
-        "exportações"
+      "updated_at": "2026-11-25T18:47:39Z",
+      "fontes_urls": [
+        "https://g1.globo.com/economia/agronegocios/noticia/2026/11/25/eua-querem-mudar-taxacao-sobre-acucar-brasileiro-veja-como-pode-ficar.ghtml"
       ],
+      "titulo_tema": "Governo dos EUA propõe novas tarifas sobre açúcar brasileiro e taxa adicional para aeronaves",
+      "resumo_pulso": "Segundo reportagem do G1 Economia, o governo dos Estados Unidos propôs elevar a tributação sobre o açúcar importado que exceder a cota anual de 100 mil toneladas, além de instituir uma tarifa adicional de 10% sobre aeronaves brasileiras. A medida integra um novo pacote de barreiras comerciais direcionado a 14 economias.",
+      "sintese_nerd": "Impacta diretamente as exportações do setor sucroenergético e da aviação civil brasileira para o mercado norte-americano.",
+      "titulo_curto": "Governo dos EUA propõe novas tarifas sobre açúcar brasileiro e taxa adicional para aeronaves",
+      "rota_editoria": "/economia",
       "palavras_chave": [
         "eua",
         "tarifas",
@@ -345,22 +415,31 @@
         "aeronaves",
         "exportações"
       ],
+      "urgencia_score": 91,
+      "data_publicacao": "2026-11-25T17:25:14Z",
       "gatilho_vitrine": "Segundo reportagem do G1 Economia, o governo dos Estados Unidos propôs elevar a tributação sobre o açúcar importado que exceder a cota anual de 100 mil toneladas, além de instituir uma tarifa adicional de 10% sobre aeronaves brasileiras. A medida integra um novo pacote de barreiras comerciais direcionado a 14 economias.",
-      "resumo_pulso": "Segundo reportagem do G1 Economia, o governo dos Estados Unidos propôs elevar a tributação sobre o açúcar importado que exceder a cota anual de 100 mil toneladas, além de instituir uma tarifa adicional de 10% sobre aeronaves brasileiras. A medida integra um novo pacote de barreiras comerciais direcionado a 14 economias.",
-      "sintese_nerd": "Impacta diretamente as exportações do setor sucroenergético e da aviação civil brasileira para o mercado norte-americano.",
       "impacto_pratico": "Impacta diretamente as exportações do setor sucroenergético e da aviação civil brasileira para o mercado norte-americano.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "G1 Economia"
+      ],
+      "relevancia_score": 93,
       "paises_envolvidos": [
         "BR",
         "US"
       ],
-      "veiculos_origem": [
-        "G1 Economia"
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
       ],
-      "fontes_urls": [
-        "https://g1.globo.com/economia/agronegocios/noticia/2026/11/25/eua-querem-mudar-taxacao-sobre-acucar-brasileiro-veja-como-pode-ficar.ghtml"
-      ],
-      "data_publicacao": "2026-11-25T17:25:14Z",
-      "updated_at": "2026-11-25T18:47:39Z"
+      "palavras_chave_busca": [
+        "eua",
+        "tarifas",
+        "açúcar",
+        "aeronaves",
+        "exportações"
+      ]
     },
     {
       "slug": "pulso-1-20261125-1701",
@@ -751,143 +830,101 @@
         "tempo real",
         "br"
       ]
-    },
+    }
+  ],
+  "temas_curadoria": [
     {
-      "slug": "pulso-5-20261125-1535",
+      "slug": "especulacao-ministerio-fazenda-impacto-dolar-tesouro",
+      "titulo_tema": "Especulações sobre o Ministério da Fazenda derrubam dólar e afetam Tesouro Direto",
       "status": "novo",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 6,
-      "expires_at": "2026-11-25T21:35:29Z",
-      "updated_at": "2026-11-25T15:35:29Z",
-      "fontes_urls": [
-        "https://www12.senado.leg.br/noticias/materias/2026/11/25/cre-recomenda-criacao-de-agencia-nacional-para-prevenir-ataques-digitais"
-      ],
-      "titulo_tema": "CRE recomenda criação de agência nacional para prevenir ataques digitais",
-      "resumo_pulso": "Segundo Agência Senado, O Brasil precisa de uma estrutura nacional para prevenir ataques digitais e proteger serviços essenciais, como os de saúde e energia. Para enfrentar o problema, o senador Nelsinho Trad (PSD-MS) recomenda a criação de uma Agência Nacional de Cibersegurança e de uma lei com regras mínimas de proteção para órgãos públicos e empresas. As recomendações .",
-      "sintese_nerd": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "titulo_curto": "CRE recomenda criação de agência nacional para prevenir ataques digitais",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "radar",
-        "tempo real",
-        "br"
-      ],
-      "urgencia_score": 70,
-      "data_publicacao": "2026-11-25T15:00:37+00:00",
-      "gatilho_vitrine": "Segundo Agência Senado, O Brasil precisa de uma estrutura nacional para prevenir ataques digitais e proteger serviços essenciais, como os de saúde e energia. Para enfrentar o problema, o senador Nelsinho Trad (PSD-MS) recomenda a criação de uma Agência Nacional de Cibersegurança e de uma lei com regras mínimas de proteção para órgãos públicos e empresas. As recomendações .",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "Agência Senado"
-      ],
-      "relevancia_score": 72,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "radar",
-        "tempo real",
-        "br"
-      ]
-    },
-    {
-      "slug": "pulso-1-20261125-1420",
-      "status": "novo",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 6,
-      "expires_at": "2026-11-25T20:20:31Z",
-      "updated_at": "2026-11-25T14:20:31Z",
-      "fontes_urls": [
-        "https://g1.globo.com/economia/noticia/2026/11/25/ministro-do-planejamento-diz-que-equipe-economica-tem-conjunto-de-medidas-para-melhorar-contas-publicas-mas-nao-antecipa.ghtml"
-      ],
-      "titulo_tema": "Ministro do Planejamento diz que equipe econômica tem 'conjunto de medidas' para melhorar contas públicas, mas não antecipa",
-      "resumo_pulso": "Segundo G1 Política, O ministro do Planejamento, Bruno Moretti, afirmou nesta quarta-feira (25) que a equipe econômica está trabalhando em um \"conjunto de medidas\" para melhorar ainda mais as contas públicas..",
-      "sintese_nerd": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "titulo_curto": "Ministro do Planejamento diz que equipe econômica tem 'conjunto de medidas' para melhorar contas públicas, mas não antecipa",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "radar",
-        "tempo real",
-        "br"
-      ],
-      "urgencia_score": 90,
-      "data_publicacao": "2026-11-25T14:15:32+00:00",
-      "gatilho_vitrine": "Segundo G1 Política, O ministro do Planejamento, Bruno Moretti, afirmou nesta quarta-feira (25) que a equipe econômica está trabalhando em um \"conjunto de medidas\" para melhorar ainda mais as contas públicas..",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "G1 Política"
-      ],
-      "relevancia_score": 88,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "radar",
-        "tempo real",
-        "br"
-      ]
-    },
-    {
-      "slug": "eua-propõem-tarifas-aeronaves-embraer",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-27T13:59:13Z",
-      "updated_at": "2026-11-25T13:59:13Z",
-      "titulo_tema": "EUA propõem tarifas de 10% sobre aeronaves brasileiras",
-      "sintese_nerd": "A proposta de taxação de 10% sobre aeronaves brasileiras pelo governo Trump gera incerteza imediata para a Embraer e pressiona o setor exportador nacional. O movimento faz parte de uma escalada protecionista global que exige resposta diplomática urgente do Itamaraty.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-25T13:59:13Z",
-      "gatilho_vitrine": "Analise o impacto da nova política protecionista dos EUA nas ações da Embraer e na balança comercial brasileira.",
       "origem_pipeline": "curadoria",
-      "relevancia_score": 98,
       "categoria_primaria": "Economia",
       "categorias_cruzadas": [
-        "Geopolitica_Radar",
-        "Politica"
+        "Politica",
+        "Resumo_Ultimas"
       ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 92,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-26T19:10:37Z",
       "palavras_chave_busca": [
-        "embraer",
-        "embj3",
-        "tarifas eua",
-        "donald trump",
-        "comércio exterior",
-        "setor aéreo",
-        "política comercial"
-      ]
+        "ministério da fazenda",
+        "dólar",
+        "tesouro direto",
+        "governo lula",
+        "cenário fiscal",
+        "mercado financeiro"
+      ],
+      "gatilho_vitrine": "Destaque a forte volatilidade nos mercados brasileiros impulsionada por expectativas sobre a equipe econômica do governo.",
+      "sintese_nerd": "Rumores sobre a futura liderança do Ministério da Fazenda geraram forte volatilidade, derrubando o dólar para a faixa de R$ 5,82 e provocando instabilidade e pane temporária na plataforma do Tesouro Direto. Para o cidadão, a indefinição fiscal repercute diretamente na percepção de risco-país e nos rendimentos dos investimentos locais.",
+      "data_publicacao": "2026-11-25T19:10:37Z",
+      "updated_at": "2026-11-25T19:10:37Z"
+    },
+    {
+      "slug": "acordo-brasil-alemanha-minerais-criticos-estrategicos",
+      "titulo_tema": "Fortalecimento de acordo de minerais críticos entre Brasil e Alemanha",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 88,
+      "ttl_horas": 72,
+      "expires_at": "2026-11-28T19:10:37Z",
+      "palavras_chave_busca": [
+        "minerais críticos",
+        "brasil",
+        "alemanha",
+        "acordo comercial",
+        "geopolítica",
+        "transição energética"
+      ],
+      "gatilho_vitrine": "Exiba no radar global as articulações diplomáticas e industriais do Brasil em relação a insumos estratégicos para a transição energética europeia.",
+      "sintese_nerd": "A aproximação entre Brasília e Berlim em torno de minerais estratégicos insere o Brasil nas cadeias globais de suprimentos voltadas à transição verde e à alta tecnologia. Essa cooperação eleva o peso geopolítico do país nas negociações comerciais com potências ocidentais.",
+      "data_publicacao": "2026-11-25T19:10:37Z",
+      "updated_at": "2026-11-25T19:10:37Z"
+    },
+    {
+      "slug": "reforma-tributaria-estrategia-logistica-amazon-brasil",
+      "titulo_tema": "Reforma tributária e a rota de expansão logística da Amazon para 2027",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Cultura"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 80,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-27T19:10:37Z",
+      "palavras_chave_busca": [
+        "reforma tributária",
+        "amazon brasil",
+        "logística",
+        "centros de distribuição",
+        "consumo",
+        "economia brasileira"
+      ],
+      "gatilho_vitrine": "Mostre como grandes corporações adaptam seus planos de infraestrutura e distribuição diante das novas regras fiscais do país.",
+      "sintese_nerd": "A decisão da Amazon de manter seus planos de expansão logística com foco na proximidade ao consumidor, independentemente dos incentivos da reforma tributária, redesenha o mapa do e-commerce nacional. A estratégia prioriza a agilidade na entrega em detrimento de vantagens puramente fiscais.",
+      "data_publicacao": "2026-11-25T19:10:37Z",
+      "updated_at": "2026-11-25T19:10:37Z"
     }
   ],
   "noticias_quentes": [
     {
       "slug": "ccj-senado-aprova-registro-obrigatorio-moteis-cadastur",
-      "titulo_curto": "CCJ do Senado aprova projeto que torna obrigatório o registro de motéis no Ministério do Turismo",
-      "resumo_pulso": "Segundo apuração da Agência Senado, a Comissão de Constituição e Justiça (CCJ) aprovou o projeto que exige o cadastramento de motéis no Cadastur. A medida visa legalizar a atividade no setor de hospedagem e garantir o acesso a linhas de financiamento e qualificação profissional.",
-      "impacto_pratico": "Facilita o acesso a crédito e linhas de fomento para estabelecimentos do setor hoteleiro e de serviços.",
       "categoria": "Sociedade_Cultura",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "urgencia_score": 84,
-      "relevancia_score": 85,
-      "nivel_confianca": "alta",
       "ttl_horas": 12,
-      "horas_em_destaque": 12,
-      "veiculos_origem": [
-        "Agência Senado"
-      ],
+      "expires_at": "2026-11-26T06:47:39Z",
+      "updated_at": "2026-11-25T18:47:39Z",
       "fontes_urls": [
         "https://www12.senado.leg.br/noticias/materias/2026/11/25/ccj-aprova-registro-de-moteis-como-meio-de-hospedagem-no-ministerio-do-turismo"
       ],
+      "resumo_pulso": "Segundo apuração da Agência Senado, a Comissão de Constituição e Justiça (CCJ) aprovou o projeto que exige o cadastramento de motéis no Cadastur. A medida visa legalizar a atividade no setor de hospedagem e garantir o acesso a linhas de financiamento e qualificação profissional.",
+      "titulo_curto": "CCJ do Senado aprova projeto que torna obrigatório o registro de motéis no Ministério do Turismo",
       "palavras_chave": [
         "Senado",
         "Turismo",
@@ -895,31 +932,31 @@
         "Hospedagem",
         "Legislação"
       ],
+      "urgencia_score": 84,
       "data_publicacao": "2026-11-25T18:39:58Z",
-      "links_internos_relacionados": [],
-      "expires_at": "2026-11-26T06:47:39Z",
-      "updated_at": "2026-11-25T18:47:39Z"
-    },
-    {
-      "slug": "comissao-senado-convoca-ministro-concessao-rodovia-ro-mt",
-      "titulo_curto": "Comissão de Infraestrutura do Senado aprova convocação de ministro para explicar concessão da Rota Agro Central",
-      "resumo_pulso": "Conforme informações da Agência Senado, a Comissão de Infraestrutura (CI) aprovou a convocação do ministro dos Transportes, George Santoro, para prestar esclarecimentos sobre o edital de concessão da Rota Agro Central, que liga Vilhena (RO) a Cuiabá (MT). O leilão está agendado para o próximo dia 17 de dezembro.",
-      "impacto_pratico": "Altera o cronograma e suscita debates regulatórios sobre os investimentos em infraestrutura rodoviária na região Centro-Norte.",
-      "categoria": "Economia_Comercio",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "urgencia_score": 86,
-      "relevancia_score": 88,
+      "impacto_pratico": "Facilita o acesso a crédito e linhas de fomento para estabelecimentos do setor hoteleiro e de serviços.",
       "nivel_confianca": "alta",
-      "ttl_horas": 12,
-      "horas_em_destaque": 12,
       "veiculos_origem": [
         "Agência Senado"
       ],
+      "relevancia_score": 85,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "links_internos_relacionados": []
+    },
+    {
+      "slug": "comissao-senado-convoca-ministro-concessao-rodovia-ro-mt",
+      "categoria": "Economia_Comercio",
+      "ttl_horas": 12,
+      "expires_at": "2026-11-26T06:47:39Z",
+      "updated_at": "2026-11-25T18:47:39Z",
       "fontes_urls": [
         "https://www12.senado.leg.br/noticias/materias/2026/11/25/comissao-convoca-ministro-para-explicar-concessao-de-rodovia-entre-ro-mt"
       ],
+      "resumo_pulso": "Conforme informações da Agência Senado, a Comissão de Infraestrutura (CI) aprovou a convocação do ministro dos Transportes, George Santoro, para prestar esclarecimentos sobre o edital de concessão da Rota Agro Central, que liga Vilhena (RO) a Cuiabá (MT). O leilão está agendado para o próximo dia 17 de dezembro.",
+      "titulo_curto": "Comissão de Infraestrutura do Senado aprova convocação de ministro para explicar concessão da Rota Agro Central",
       "palavras_chave": [
         "Senado",
         "Concessão",
@@ -927,16 +964,25 @@
         "Infraestrutura",
         "Transportes"
       ],
+      "urgencia_score": 86,
       "data_publicacao": "2026-11-25T18:37:02Z",
+      "impacto_pratico": "Altera o cronograma e suscita debates regulatórios sobre os investimentos em infraestrutura rodoviária na região Centro-Norte.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Agência Senado"
+      ],
+      "relevancia_score": 88,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "BR"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "Economia no Brasil",
           "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
-          "motivo_conexao": "Contextualiza investimentos em infraestrutura e o impacto fiscal das concessões públicas."
+          "motivo_conexao": "Contextualiza investimentos em infraestrutura e o impacto fiscal das concessões públicas.",
+          "titulo_existente": "Economia no Brasil"
         }
-      ],
-      "expires_at": "2026-11-26T06:47:39Z",
-      "updated_at": "2026-11-25T18:47:39Z"
+      ]
     },
     {
       "slug": "pulso-1-20261125-1752",
@@ -1145,25 +1191,15 @@
     },
     {
       "slug": "eua-propoem-novas-tarifas-acucar-e-aeronaves-brasil",
-      "titulo_curto": "Governo dos EUA propõe novas tarifas sobre açúcar brasileiro e taxa adicional para aeronaves",
-      "resumo_pulso": "Segundo reportagem do G1 Economia, o governo dos Estados Unidos propôs elevar a tributação sobre o açúcar importado que exceder a cota anual de 100 mil toneladas, além de instituir uma tarifa adicional de 10% sobre aeronaves brasileiras. A medida integra um novo pacote de barreiras comerciais direcionado a 14 economias.",
-      "impacto_pratico": "Impacta diretamente as exportações do setor sucroenergético e da aviação civil brasileira para o mercado norte-americano.",
       "categoria": "Economia_Comercio",
-      "paises_envolvidos": [
-        "BR",
-        "US"
-      ],
-      "urgencia_score": 91,
-      "relevancia_score": 93,
-      "nivel_confianca": "alta",
       "ttl_horas": 18,
-      "horas_em_destaque": 18,
-      "veiculos_origem": [
-        "G1 Economia"
-      ],
+      "expires_at": "2026-11-26T12:47:39Z",
+      "updated_at": "2026-11-25T18:47:39Z",
       "fontes_urls": [
         "https://g1.globo.com/economia/agronegocios/noticia/2026/11/25/eua-querem-mudar-taxacao-sobre-acucar-brasileiro-veja-como-pode-ficar.ghtml"
       ],
+      "resumo_pulso": "Segundo reportagem do G1 Economia, o governo dos Estados Unidos propôs elevar a tributação sobre o açúcar importado que exceder a cota anual de 100 mil toneladas, além de instituir uma tarifa adicional de 10% sobre aeronaves brasileiras. A medida integra um novo pacote de barreiras comerciais direcionado a 14 economias.",
+      "titulo_curto": "Governo dos EUA propõe novas tarifas sobre açúcar brasileiro e taxa adicional para aeronaves",
       "palavras_chave": [
         "EUA",
         "Tarifas",
@@ -1171,16 +1207,26 @@
         "Aeronaves",
         "Exportações"
       ],
+      "urgencia_score": 91,
       "data_publicacao": "2026-11-25T17:25:14Z",
+      "impacto_pratico": "Impacta diretamente as exportações do setor sucroenergético e da aviação civil brasileira para o mercado norte-americano.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "G1 Economia"
+      ],
+      "relevancia_score": 93,
+      "horas_em_destaque": 18,
+      "paises_envolvidos": [
+        "BR",
+        "US"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "O que é uma sanção internacional?",
           "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-sancao-internacional",
-          "motivo_conexao": "Explica o mecanismo econômico e político das barreiras comerciais e tarifas impostas por governos."
+          "motivo_conexao": "Explica o mecanismo econômico e político das barreiras comerciais e tarifas impostas por governos.",
+          "titulo_existente": "O que é uma sanção internacional?"
         }
-      ],
-      "expires_at": "2026-11-26T12:47:39Z",
-      "updated_at": "2026-11-25T18:47:39Z"
+      ]
     },
     {
       "slug": "pulso-1-20261125-1701",
@@ -1675,88 +1721,6 @@
           "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos.",
           "titulo_existente": "Como funcionam as eleições nos EUA?"
         }
-      ]
-    }
-  ],
-  "temas_curadoria": [
-    {
-      "slug": "eua-propõem-tarifas-aeronaves-embraer",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-27T13:59:13Z",
-      "updated_at": "2026-11-25T13:59:13Z",
-      "titulo_tema": "EUA propõem tarifas de 10% sobre aeronaves brasileiras",
-      "sintese_nerd": "A proposta de taxação de 10% sobre aeronaves brasileiras pelo governo Trump gera incerteza imediata para a Embraer e pressiona o setor exportador nacional. O movimento faz parte de uma escalada protecionista global que exige resposta diplomática urgente do Itamaraty.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-25T13:59:13Z",
-      "gatilho_vitrine": "Analise o impacto da nova política protecionista dos EUA nas ações da Embraer e na balança comercial brasileira.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 98,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Geopolitica_Radar",
-        "Politica"
-      ],
-      "palavras_chave_busca": [
-        "embraer",
-        "embj3",
-        "tarifas eua",
-        "donald trump",
-        "comércio exterior",
-        "setor aéreo",
-        "política comercial"
-      ]
-    },
-    {
-      "slug": "ajuste-fiscal-lula-pec-congresso",
-      "status": "novo",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-26T13:59:13Z",
-      "updated_at": "2026-11-25T13:59:13Z",
-      "titulo_tema": "Governo Lula articula segunda etapa do ajuste fiscal",
-      "sintese_nerd": "O governo busca equilibrar as contas públicas focando em emendas e supersalários, enquanto enfrenta o desafio de manter subsídios ao diesel. A possibilidade de convocação extraordinária do Congresso sinaliza a urgência do cenário fiscal para o mercado.",
-      "rota_editoria": "/politica",
-      "data_publicacao": "2026-11-25T13:59:13Z",
-      "gatilho_vitrine": "Acompanhe a articulação do governo para aprovar medidas de austeridade e o possível impacto no recesso parlamentar.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 95,
-      "categoria_primaria": "Politica",
-      "categorias_cruzadas": [
-        "Economia"
-      ],
-      "palavras_chave_busca": [
-        "ajuste fiscal",
-        "pec",
-        "lula",
-        "congresso nacional",
-        "emendas parlamentares",
-        "subsídios combustíveis"
-      ]
-    },
-    {
-      "slug": "corte-bancario-setor-financeiro",
-      "status": "novo",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-26T13:59:13Z",
-      "updated_at": "2026-11-25T13:59:13Z",
-      "titulo_tema": "Onda de demissões atinge grandes bancos brasileiros",
-      "sintese_nerd": "A demissão de 600 funcionários reflete uma busca por eficiência operacional e digitalização acelerada no setor bancário. O movimento levanta questões sobre a saúde do mercado de trabalho financeiro e a automação de serviços.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-25T13:59:13Z",
-      "gatilho_vitrine": "Entenda os motivos por trás da reestruturação e cortes de pessoal nos principais bancos do país.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 88,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Cultura"
-      ],
-      "palavras_chave_busca": [
-        "itaú",
-        "banco inter",
-        "bv",
-        "demissões",
-        "setor bancário",
-        "mercado de trabalho"
       ]
     }
   ]
