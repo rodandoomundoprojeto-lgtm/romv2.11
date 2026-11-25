@@ -2,9 +2,99 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-24T23:24:39Z",
-  "batch_id": "20261124-2324",
+  "updatedAt": "2026-11-25T00:16:31Z",
+  "batch_id": "20261125-0016",
   "temas_ativos": [
+    {
+      "slug": "senado-aprova-plano-nacional-cultura-dez-anos",
+      "titulo_tema": "Senado aprova novo Plano Nacional de Cultura com diretrizes para a próxima década",
+      "titulo_curto": "Senado aprova novo Plano Nacional de Cultura com diretrizes para a próxima década",
+      "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Cultura",
+      "categoria": "Sociedade_Cultura",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/cultura",
+      "relevancia_score": 89,
+      "urgencia_score": 86,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-26T00:16:31Z",
+      "palavras_chave_busca": [
+        "senado",
+        "cultura",
+        "plano nacional de cultura",
+        "sanção"
+      ],
+      "palavras_chave": [
+        "senado",
+        "cultura",
+        "plano nacional de cultura",
+        "sanção"
+      ],
+      "gatilho_vitrine": "Conforme apuração da Agência Senado, o Plenário aprovou o PL 5.894/2025 que institui o novo Plano Nacional de Cultura (PNC). O texto, que segue para sanção presidencial, estabelece princípios, metas e descentralização de recursos para orientar as políticas culturais do país nos próximos dez anos.",
+      "resumo_pulso": "Conforme apuração da Agência Senado, o Plenário aprovou o PL 5.894/2025 que institui o novo Plano Nacional de Cultura (PNC). O texto, que segue para sanção presidencial, estabelece princípios, metas e descentralização de recursos para orientar as políticas culturais do país nos próximos dez anos.",
+      "sintese_nerd": "Orienta o financiamento e a gestão de políticas culturais e artísticas em âmbito nacional e municipal.",
+      "impacto_pratico": "Orienta o financiamento e a gestão de políticas culturais e artísticas em âmbito nacional e municipal.",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "veiculos_origem": [
+        "Agência Senado"
+      ],
+      "fontes_urls": [
+        "https://www12.senado.leg.br/noticias/materias/2026/11/24/senado-aprova-plano-nacional-de-cultura-para-os-proximos-10-anos"
+      ],
+      "data_publicacao": "2026-11-24T23:56:23Z",
+      "updated_at": "2026-11-25T00:16:31Z"
+    },
+    {
+      "slug": "camara-votacao-regulacao-big-techs",
+      "titulo_tema": "Câmara dos Deputados define votação do projeto de regulação das big techs para próxima semana",
+      "titulo_curto": "Câmara dos Deputados define votação do projeto de regulação das big techs para próxima semana",
+      "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Economia",
+      "categoria": "Economia_Comercio",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 90,
+      "urgencia_score": 87,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-26T00:16:31Z",
+      "palavras_chave_busca": [
+        "câmara dos deputados",
+        "big techs",
+        "mercados digitais",
+        "regulação"
+      ],
+      "palavras_chave": [
+        "câmara dos deputados",
+        "big techs",
+        "mercados digitais",
+        "regulação"
+      ],
+      "gatilho_vitrine": "Segundo informações divulgadas pela Agência Brasil, o Projeto de Lei 4675/2025, conhecido como PL dos Mercados Digitais, entrará na pauta de votações da Câmara dos Deputados na próxima semana. O calendário foi confirmado pelo relator Aliel Machado em articulação com a presidência da Casa.",
+      "resumo_pulso": "Segundo informações divulgadas pela Agência Brasil, o Projeto de Lei 4675/2025, conhecido como PL dos Mercados Digitais, entrará na pauta de votações da Câmara dos Deputados na próxima semana. O calendário foi confirmado pelo relator Aliel Machado em articulação com a presidência da Casa.",
+      "sintese_nerd": "Pode alterar o modelo de negócios e as regras de atuação de grandes empresas de tecnologia no mercado nacional.",
+      "impacto_pratico": "Pode alterar o modelo de negócios e as regras de atuação de grandes empresas de tecnologia no mercado nacional.",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "veiculos_origem": [
+        "Agência Brasil (EBC)"
+      ],
+      "fontes_urls": [
+        "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/projeto-de-regulacao-das-big-techs-sera-votado-na-proxima-semana"
+      ],
+      "data_publicacao": "2026-11-24T23:23:00Z",
+      "updated_at": "2026-11-25T00:16:31Z"
+    },
     {
       "slug": "brasil-nao-retornara-embaixador-argentina-crise",
       "titulo_tema": "Lula decide que embaixador do Brasil não retornará a Buenos Aires após crise diplomática",
@@ -23,38 +113,35 @@
       "ttl_horas": 24,
       "expires_at": "2026-11-25T23:24:39Z",
       "palavras_chave_busca": [
-        "brasil",
-        "argentina",
         "itamaraty",
-        "júlio bitelli",
-        "lula",
-        "diplomacia"
+        "argentina",
+        "brasil",
+        "embaixador",
+        "crise diplomática"
       ],
       "palavras_chave": [
-        "brasil",
-        "argentina",
         "itamaraty",
-        "júlio bitelli",
-        "lula",
-        "diplomacia"
+        "argentina",
+        "brasil",
+        "embaixador",
+        "crise diplomática"
       ],
       "gatilho_vitrine": "Segundo apuração do G1 Política e confirmação de diplomatas do Itamaraty, o governo brasileiro decidiu que o embaixador Júlio Bitelli não voltará à Argentina. A medida consolida o esfriamento diplomático entre os dois países após meses de tensões e desentendimentos entre as chancelarias.",
       "resumo_pulso": "Segundo apuração do G1 Política e confirmação de diplomatas do Itamaraty, o governo brasileiro decidiu que o embaixador Júlio Bitelli não voltará à Argentina. A medida consolida o esfriamento diplomático entre os dois países após meses de tensões e desentendimentos entre as chancelarias.",
-      "sintese_nerd": "A ausência de embaixador de carreira pode desacelerar negociações bilaterais de comércio, acordos de fronteira e articulações no âmbito do Mercosul.",
-      "impacto_pratico": "A ausência de embaixador de carreira pode desacelerar negociações bilaterais de comércio, acordos de fronteira e articulações no âmbito do Mercosul.",
+      "sintese_nerd": "Afeta as relações bilaterais e o comércio regional entre Brasil e Argentina.",
+      "impacto_pratico": "Afeta as relações bilaterais e o comércio regional entre Brasil e Argentina.",
       "paises_envolvidos": [
         "BR",
         "AR"
       ],
       "veiculos_origem": [
-        "G1 Política",
-        "TV Globo"
+        "G1 Política"
       ],
       "fontes_urls": [
         "https://g1.globo.com/politica/noticia/2026/11/24/brasil-decide-que-embaixador-brasileiro-na-argentina-nao-retornara-a-buenos-aires.ghtml"
       ],
       "data_publicacao": "2026-11-24T23:20:16Z",
-      "updated_at": "2026-11-24T23:24:39Z"
+      "updated_at": "2026-11-25T00:16:31Z"
     },
     {
       "slug": "golfo-persico-exportacoes-petroleo-ormuz",
@@ -306,33 +393,32 @@
         "rússia",
         "kiev",
         "drones",
-        "conflito"
+        "odesa"
       ],
       "palavras_chave": [
         "ucrânia",
         "rússia",
         "kiev",
         "drones",
-        "conflito"
+        "odesa"
       ],
       "gatilho_vitrine": "Conforme reportado pelas agências Ukrinform e The Kyiv Independent, destroços de um drone russo provocaram incêndio em um edifício residencial de 16 andares em Kiev. Os ataques noturnos também causaram mortes na região de Odesa, elevando o alerta de defesa aérea na Ucrânia.",
       "resumo_pulso": "Conforme reportado pelas agências Ukrinform e The Kyiv Independent, destroços de um drone russo provocaram incêndio em um edifício residencial de 16 andares em Kiev. Os ataques noturnos também causaram mortes na região de Odesa, elevando o alerta de defesa aérea na Ucrânia.",
-      "sintese_nerd": "Intensificação dos alertas de segurança para residentes e missões estrangeiras na capital ucraniana.",
-      "impacto_pratico": "Intensificação dos alertas de segurança para residentes e missões estrangeiras na capital ucraniana.",
+      "sintese_nerd": "Intensifica riscos de segurança para civis e reforça a pressão por apoio militar internacional na Europa.",
+      "impacto_pratico": "Intensifica riscos de segurança para civis e reforça a pressão por apoio militar internacional na Europa.",
       "paises_envolvidos": [
         "UA",
         "RU"
       ],
       "veiculos_origem": [
-        "Ukrinform",
-        "The Kyiv Independent"
+        "The Kyiv Independent",
+        "Ukrinform"
       ],
       "fontes_urls": [
-        "https://kyivindependent.com/russian-attacks-kill-2-in-odesa-oblast-including-child-injure-more-in-kyiv/",
-        "https://www.ukrinform.net/rubric-ato/4188265-debris-from-russian-drone-causes-fire-in-16story-residential-building-in-kyiv.html"
+        "https://kyivindependent.com/russian-attacks-kill-2-in-odesa-oblast-including-child-injure-more-in-kyiv/"
       ],
       "data_publicacao": "2026-11-24T23:08:00Z",
-      "updated_at": "2026-11-24T23:24:39Z"
+      "updated_at": "2026-11-25T00:16:31Z"
     },
     {
       "slug": "justica-condena-engenheiros-incendio-ninho-do-urubu",
@@ -383,28 +469,19 @@
     },
     {
       "slug": "itau-entra-no-minha-casa-minha-vida-faixa-3",
-      "titulo_tema": "Itaú passa a oferecer financiamento pelo Minha Casa, Minha Vida para faixa de maior renda",
-      "titulo_curto": "Itaú passa a oferecer financiamento pelo Minha Casa, Minha Vida para faixa de maior renda",
       "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Economia",
       "categoria": "Economia_Comercio",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 87,
-      "urgencia_score": 85,
       "ttl_horas": 24,
       "expires_at": "2026-11-25T23:24:39Z",
-      "palavras_chave_busca": [
-        "itaú",
-        "minha casa minha vida",
-        "crédito imobiliário",
-        "caixa",
-        "habitação"
+      "updated_at": "2026-11-24T23:24:39Z",
+      "fontes_urls": [
+        "https://www.infomoney.com.br/business/itau-entra-no-mcmv-e-avanca-sobre-mercado-dominado-pela-caixa/"
       ],
+      "titulo_tema": "Itaú passa a oferecer financiamento pelo Minha Casa, Minha Vida para faixa de maior renda",
+      "resumo_pulso": "Segundo apuração do InfoMoney, o Itaú Unibanco anunciou o início da oferta de crédito imobiliário pelo programa Minha Casa, Minha Vida voltado à Faixa 3 (renda entre R$ 5 mil e R$ 9,6 mil). A iniciativa marca a expansão dos bancos privados em um mercado tradicionalmente dominado pela Caixa Econômica Federal.",
+      "sintese_nerd": "Amplia as opções de financiamento habitacional com juros subsidiados para famílias de renda média urbana.",
+      "titulo_curto": "Itaú passa a oferecer financiamento pelo Minha Casa, Minha Vida para faixa de maior renda",
+      "rota_editoria": "/economia",
       "palavras_chave": [
         "itaú",
         "minha casa minha vida",
@@ -412,21 +489,30 @@
         "caixa",
         "habitação"
       ],
+      "urgencia_score": 85,
+      "data_publicacao": "2026-11-24T22:51:03Z",
       "gatilho_vitrine": "Segundo apuração do InfoMoney, o Itaú Unibanco anunciou o início da oferta de crédito imobiliário pelo programa Minha Casa, Minha Vida voltado à Faixa 3 (renda entre R$ 5 mil e R$ 9,6 mil). A iniciativa marca a expansão dos bancos privados em um mercado tradicionalmente dominado pela Caixa Econômica Federal.",
-      "resumo_pulso": "Segundo apuração do InfoMoney, o Itaú Unibanco anunciou o início da oferta de crédito imobiliário pelo programa Minha Casa, Minha Vida voltado à Faixa 3 (renda entre R$ 5 mil e R$ 9,6 mil). A iniciativa marca a expansão dos bancos privados em um mercado tradicionalmente dominado pela Caixa Econômica Federal.",
-      "sintese_nerd": "Amplia as opções de financiamento habitacional com juros subsidiados para famílias de renda média urbana.",
       "impacto_pratico": "Amplia as opções de financiamento habitacional com juros subsidiados para famílias de renda média urbana.",
-      "paises_envolvidos": [
-        "BR"
-      ],
+      "origem_pipeline": "pulso",
       "veiculos_origem": [
         "InfoMoney"
       ],
-      "fontes_urls": [
-        "https://www.infomoney.com.br/business/itau-entra-no-mcmv-e-avanca-sobre-mercado-dominado-pela-caixa/"
+      "relevancia_score": 87,
+      "paises_envolvidos": [
+        "BR"
       ],
-      "data_publicacao": "2026-11-24T22:51:03Z",
-      "updated_at": "2026-11-24T23:24:39Z"
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "itaú",
+        "minha casa minha vida",
+        "crédito imobiliário",
+        "caixa",
+        "habitação"
+      ]
     },
     {
       "slug": "argentina-entra-em-recessao-tecnica-setembro",
@@ -767,113 +853,88 @@
         "abu dhabi",
         "diplomacia"
       ]
-    },
-    {
-      "slug": "moraes-rejeita-pedido-zambelli-pena-italia",
-      "status": "novo",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-25T21:59:11Z",
-      "updated_at": "2026-11-24T21:59:11Z",
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/justica/noticia/2026-11/moraes-nega-diminuir-pena-de-carla-zambelli",
-        "https://g1.globo.com/politica/noticia/2026/11/24/moraes-rejeita-pedido-da-defesa-de-zambelli-para-descontar-de-pena-da-ex-deputada-tempo-que-ela-ficou-presa-na-italia.ghtml"
-      ],
-      "titulo_tema": "Moraes rejeita pedido de Carla Zambelli para abater da pena período de prisão na Itália",
-      "resumo_pulso": "Conforme apuração da Agência Brasil e do G1, o ministro Alexandre de Moraes, do Supremo Tribunal Federal (STF), negou o pedido da defesa da ex-deputada Carla Zambelli para descontar da pena o tempo em que ela permaneceu detida na Itália e sob medidas cautelares. O magistrado apontou que a ex-parlamentar encontra-se na condição de foragida, o que impede a concessão de benefícios na execução penal.",
-      "sintese_nerd": "Mantém rigor nos desdobramentos judiciais de processos envolvendo figuras políticas condenadas pelo STF.",
-      "titulo_curto": "Moraes rejeita pedido de Carla Zambelli para abater da pena período de prisão na Itália",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "alexandre de moraes",
-        "stf",
-        "carla zambelli",
-        "itália",
-        "justiça"
-      ],
-      "urgencia_score": 90,
-      "data_publicacao": "2026-11-24T21:12:00Z",
-      "gatilho_vitrine": "Conforme apuração da Agência Brasil e do G1, o ministro Alexandre de Moraes, do Supremo Tribunal Federal (STF), negou o pedido da defesa da ex-deputada Carla Zambelli para descontar da pena o tempo em que ela permaneceu detida na Itália e sob medidas cautelares. O magistrado apontou que a ex-parlamentar encontra-se na condição de foragida, o que impede a concessão de benefícios na execução penal.",
-      "impacto_pratico": "Mantém rigor nos desdobramentos judiciais de processos envolvendo figuras políticas condenadas pelo STF.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "Agência Brasil (EBC)",
-        "G1 Política"
-      ],
-      "relevancia_score": 91,
-      "paises_envolvidos": [
-        "BR",
-        "IT"
-      ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "alexandre de moraes",
-        "stf",
-        "carla zambelli",
-        "itália",
-        "justiça"
-      ]
-    },
-    {
-      "slug": "huawei-condenada-eua-crimes-ira-segredos",
-      "status": "novo",
-      "categoria": "Economia_Comercio",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-25T21:59:11Z",
-      "updated_at": "2026-11-24T21:59:11Z",
-      "fontes_urls": [
-        "https://g1.globo.com/tecnologia/noticia/2026/11/24/chinesa-huawei-e-condenada-nos-eua.ghtml"
-      ],
-      "titulo_tema": "Tribunal federal dos EUA condena chinesa Huawei por fraudes e roubo de segredos comerciais",
-      "resumo_pulso": "Segundo reportagem do G1 Economia com base em agências internacionais, um júri federal no Brooklyn considerou a gigante chinesa de tecnologia Huawei culpada em dez das doze acusações criminais enfrentadas em processo nos Estados Unidos. A empresa foi responsabilizada por enganar instituições financeiras sobre operações no Irã e por apropriação indébita de segredos industriais norte-americanos.",
-      "sintese_nerd": "A condenação intensifica as tensões tecnológicas e comerciais entre Washington e Pequim, com potenciais desdobramentos globais para o setor de telecomunicações.",
-      "titulo_curto": "Tribunal federal dos EUA condena chinesa Huawei por fraudes e roubo de segredos comerciais",
-      "rota_editoria": "/economia",
-      "palavras_chave": [
-        "huawei",
-        "eua",
-        "china",
-        "irã",
-        "segredos comerciais"
-      ],
-      "urgencia_score": 89,
-      "data_publicacao": "2026-11-24T20:51:12Z",
-      "gatilho_vitrine": "Segundo reportagem do G1 Economia com base em agências internacionais, um júri federal no Brooklyn considerou a gigante chinesa de tecnologia Huawei culpada em dez das doze acusações criminais enfrentadas em processo nos Estados Unidos. A empresa foi responsabilizada por enganar instituições financeiras sobre operações no Irã e por apropriação indébita de segredos industriais norte-americanos.",
-      "impacto_pratico": "A condenação intensifica as tensões tecnológicas e comerciais entre Washington e Pequim, com potenciais desdobramentos globais para o setor de telecomunicações.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "G1 Economia"
-      ],
-      "relevancia_score": 90,
-      "paises_envolvidos": [
-        "US",
-        "CN",
-        "IR"
-      ],
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "huawei",
-        "eua",
-        "china",
-        "irã",
-        "segredos comerciais"
-      ]
     }
   ],
   "noticias_quentes": [
     {
+      "slug": "senado-aprova-plano-nacional-cultura-dez-anos",
+      "titulo_curto": "Senado aprova novo Plano Nacional de Cultura com diretrizes para a próxima década",
+      "resumo_pulso": "Conforme apuração da Agência Senado, o Plenário aprovou o PL 5.894/2025 que institui o novo Plano Nacional de Cultura (PNC). O texto, que segue para sanção presidencial, estabelece princípios, metas e descentralização de recursos para orientar as políticas culturais do país nos próximos dez anos.",
+      "impacto_pratico": "Orienta o financiamento e a gestão de políticas culturais e artísticas em âmbito nacional e municipal.",
+      "categoria": "Sociedade_Cultura",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "urgencia_score": 86,
+      "relevancia_score": 89,
+      "nivel_confianca": "alta",
+      "ttl_horas": 24,
+      "horas_em_destaque": 12,
+      "veiculos_origem": [
+        "Agência Senado"
+      ],
+      "fontes_urls": [
+        "https://www12.senado.leg.br/noticias/materias/2026/11/24/senado-aprova-plano-nacional-de-cultura-para-os-proximos-10-anos"
+      ],
+      "palavras_chave": [
+        "Senado",
+        "Cultura",
+        "Plano Nacional de Cultura",
+        "Sanção"
+      ],
+      "data_publicacao": "2026-11-24T23:56:23Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "Movimentos sociais e parlamentares debatem investimentos em saúde, educação e transição ecológica",
+          "url_existente": "https://www.rodandoomundo.com.br/saude",
+          "motivo_conexao": "Relaciona-se com políticas públicas setoriais e debates orçamentários no Congresso."
+        }
+      ],
+      "expires_at": "2026-11-26T00:16:31Z",
+      "updated_at": "2026-11-25T00:16:31Z"
+    },
+    {
+      "slug": "camara-votacao-regulacao-big-techs",
+      "titulo_curto": "Câmara dos Deputados define votação do projeto de regulação das big techs para próxima semana",
+      "resumo_pulso": "Segundo informações divulgadas pela Agência Brasil, o Projeto de Lei 4675/2025, conhecido como PL dos Mercados Digitais, entrará na pauta de votações da Câmara dos Deputados na próxima semana. O calendário foi confirmado pelo relator Aliel Machado em articulação com a presidência da Casa.",
+      "impacto_pratico": "Pode alterar o modelo de negócios e as regras de atuação de grandes empresas de tecnologia no mercado nacional.",
+      "categoria": "Economia_Comercio",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "urgencia_score": 87,
+      "relevancia_score": 90,
+      "nivel_confianca": "alta",
+      "ttl_horas": 24,
+      "horas_em_destaque": 12,
+      "veiculos_origem": [
+        "Agência Brasil (EBC)"
+      ],
+      "fontes_urls": [
+        "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/projeto-de-regulacao-das-big-techs-sera-votado-na-proxima-semana"
+      ],
+      "palavras_chave": [
+        "Câmara dos Deputados",
+        "Big Techs",
+        "Mercados Digitais",
+        "Regulação"
+      ],
+      "data_publicacao": "2026-11-24T23:23:00Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "Política no Brasil",
+          "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
+          "motivo_conexao": "Acompanha a articulação de pautas legislativas prioritárias no Congresso Nacional."
+        }
+      ],
+      "expires_at": "2026-11-26T00:16:31Z",
+      "updated_at": "2026-11-25T00:16:31Z"
+    },
+    {
       "slug": "brasil-nao-retornara-embaixador-argentina-crise",
       "titulo_curto": "Lula decide que embaixador do Brasil não retornará a Buenos Aires após crise diplomática",
       "resumo_pulso": "Segundo apuração do G1 Política e confirmação de diplomatas do Itamaraty, o governo brasileiro decidiu que o embaixador Júlio Bitelli não voltará à Argentina. A medida consolida o esfriamento diplomático entre os dois países após meses de tensões e desentendimentos entre as chancelarias.",
-      "impacto_pratico": "A ausência de embaixador de carreira pode desacelerar negociações bilaterais de comércio, acordos de fronteira e articulações no âmbito do Mercosul.",
+      "impacto_pratico": "Afeta as relações bilaterais e o comércio regional entre Brasil e Argentina.",
       "categoria": "Geopolitica_Relacoes",
       "paises_envolvidos": [
         "BR",
@@ -885,30 +946,28 @@
       "ttl_horas": 24,
       "horas_em_destaque": 12,
       "veiculos_origem": [
-        "G1 Política",
-        "TV Globo"
+        "G1 Política"
       ],
       "fontes_urls": [
         "https://g1.globo.com/politica/noticia/2026/11/24/brasil-decide-que-embaixador-brasileiro-na-argentina-nao-retornara-a-buenos-aires.ghtml"
       ],
       "palavras_chave": [
-        "Brasil",
-        "Argentina",
         "Itamaraty",
-        "Júlio Bitelli",
-        "Lula",
-        "diplomacia"
+        "Argentina",
+        "Brasil",
+        "Embaixador",
+        "Crise diplomática"
       ],
       "data_publicacao": "2026-11-24T23:20:16Z",
       "links_internos_relacionados": [
         {
-          "titulo_existente": "Política no Brasil",
-          "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
-          "motivo_conexao": "Acompanhe as decisões da diplomacia e do Poder Executivo em questões internacionais."
+          "titulo_existente": "Repercussão internacional das eleições americanas redesenha alianças diplomáticas",
+          "url_existente": "https://www.rodandoomundo.com.br/eleicoes",
+          "motivo_conexao": "Contextualiza a dinâmica de alianças e relações diplomáticas regionais."
         }
       ],
       "expires_at": "2026-11-25T23:24:39Z",
-      "updated_at": "2026-11-24T23:24:39Z"
+      "updated_at": "2026-11-25T00:16:31Z"
     },
     {
       "slug": "exportacoes-petroleo-golfo-persico-nivel-pre-guerra",
@@ -1024,7 +1083,7 @@
       "slug": "ataques-drones-russos-incendio-predio-kiev",
       "titulo_curto": "Ataques de drones russos provocam incêndio em prédio residencial e deixam feridos em Kiev",
       "resumo_pulso": "Conforme reportado pelas agências Ukrinform e The Kyiv Independent, destroços de um drone russo provocaram incêndio em um edifício residencial de 16 andares em Kiev. Os ataques noturnos também causaram mortes na região de Odesa, elevando o alerta de defesa aérea na Ucrânia.",
-      "impacto_pratico": "Intensificação dos alertas de segurança para residentes e missões estrangeiras na capital ucraniana.",
+      "impacto_pratico": "Intensifica riscos de segurança para civis e reforça a pressão por apoio militar internacional na Europa.",
       "categoria": "Geopolitica_Relacoes",
       "paises_envolvidos": [
         "UA",
@@ -1036,30 +1095,29 @@
       "ttl_horas": 18,
       "horas_em_destaque": 8,
       "veiculos_origem": [
-        "Ukrinform",
-        "The Kyiv Independent"
+        "The Kyiv Independent",
+        "Ukrinform"
       ],
       "fontes_urls": [
-        "https://kyivindependent.com/russian-attacks-kill-2-in-odesa-oblast-including-child-injure-more-in-kyiv/",
-        "https://www.ukrinform.net/rubric-ato/4188265-debris-from-russian-drone-causes-fire-in-16story-residential-building-in-kyiv.html"
+        "https://kyivindependent.com/russian-attacks-kill-2-in-odesa-oblast-including-child-injure-more-in-kyiv/"
       ],
       "palavras_chave": [
         "Ucrânia",
         "Rússia",
         "Kiev",
-        "drones",
-        "conflito"
+        "Drones",
+        "Odesa"
       ],
       "data_publicacao": "2026-11-24T23:08:00Z",
       "links_internos_relacionados": [
         {
           "titulo_existente": "O que é uma sanção internacional?",
           "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-sancao-internacional",
-          "motivo_conexao": "Compreenda as medidas econômicas e geopolíticas aplicadas no contexto do conflito no leste europeu."
+          "motivo_conexao": "Contextualiza as medidas econômicas e pressões geopolíticas decorrentes do conflito."
         }
       ],
       "expires_at": "2026-11-25T17:24:39Z",
-      "updated_at": "2026-11-24T23:24:39Z"
+      "updated_at": "2026-11-25T00:16:31Z"
     },
     {
       "slug": "justica-condena-engenheiros-incendio-ninho-do-urubu",
@@ -1095,24 +1153,15 @@
     },
     {
       "slug": "itau-entra-no-minha-casa-minha-vida-faixa-3",
-      "titulo_curto": "Itaú passa a oferecer financiamento pelo Minha Casa, Minha Vida para faixa de maior renda",
-      "resumo_pulso": "Segundo apuração do InfoMoney, o Itaú Unibanco anunciou o início da oferta de crédito imobiliário pelo programa Minha Casa, Minha Vida voltado à Faixa 3 (renda entre R$ 5 mil e R$ 9,6 mil). A iniciativa marca a expansão dos bancos privados em um mercado tradicionalmente dominado pela Caixa Econômica Federal.",
-      "impacto_pratico": "Amplia as opções de financiamento habitacional com juros subsidiados para famílias de renda média urbana.",
       "categoria": "Economia_Comercio",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "urgencia_score": 85,
-      "relevancia_score": 87,
-      "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 6,
-      "veiculos_origem": [
-        "InfoMoney"
-      ],
+      "expires_at": "2026-11-25T23:24:39Z",
+      "updated_at": "2026-11-24T23:24:39Z",
       "fontes_urls": [
         "https://www.infomoney.com.br/business/itau-entra-no-mcmv-e-avanca-sobre-mercado-dominado-pela-caixa/"
       ],
+      "resumo_pulso": "Segundo apuração do InfoMoney, o Itaú Unibanco anunciou o início da oferta de crédito imobiliário pelo programa Minha Casa, Minha Vida voltado à Faixa 3 (renda entre R$ 5 mil e R$ 9,6 mil). A iniciativa marca a expansão dos bancos privados em um mercado tradicionalmente dominado pela Caixa Econômica Federal.",
+      "titulo_curto": "Itaú passa a oferecer financiamento pelo Minha Casa, Minha Vida para faixa de maior renda",
       "palavras_chave": [
         "Itaú",
         "Minha Casa Minha Vida",
@@ -1120,16 +1169,25 @@
         "Caixa",
         "habitação"
       ],
+      "urgencia_score": 85,
       "data_publicacao": "2026-11-24T22:51:03Z",
+      "impacto_pratico": "Amplia as opções de financiamento habitacional com juros subsidiados para famílias de renda média urbana.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "InfoMoney"
+      ],
+      "relevancia_score": 87,
+      "horas_em_destaque": 6,
+      "paises_envolvidos": [
+        "BR"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "Economia no Brasil",
           "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
-          "motivo_conexao": "Acompanhe as tendências de crédito, setor imobiliário e taxas de juros no país."
+          "motivo_conexao": "Acompanhe as tendências de crédito, setor imobiliário e taxas de juros no país.",
+          "titulo_existente": "Economia no Brasil"
         }
-      ],
-      "expires_at": "2026-11-25T23:24:39Z",
-      "updated_at": "2026-11-24T23:24:39Z"
+      ]
     },
     {
       "slug": "argentina-entra-em-recessao-tecnica-setembro",
@@ -1559,77 +1617,6 @@
         "CL"
       ],
       "links_internos_relacionados": []
-    },
-    {
-      "slug": "anthropic-claude-prova-hipotese-riemann-matematica",
-      "categoria": "Ciencia_Clima",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-25T21:59:11Z",
-      "updated_at": "2026-11-24T21:59:11Z",
-      "fontes_urls": [
-        "https://www.nexojornal.com.br/expresso/2026/11/24/hipotese-de-riemann-resolvida-anthropic-claude-gpt-ia-matematica"
-      ],
-      "resumo_pulso": "Segundo reportagem do Nexo Jornal, o matemático Levent Alpöge, pesquisador da Anthropic, afirmou ter utilizado o chatbot Claude para provar a Hipótese de Riemann, um dos célebres Problemas do Milênio da matemática. O anúncio ocorre em meio a avanços de grandes modelos de linguagem na resolução de enigmas científicos complexos.",
-      "titulo_curto": "Pesquisadores anunciam que IA da Anthropic ajudou a demonstrar a Hipótese de Riemann",
-      "palavras_chave": [
-        "Anthropic",
-        "Claude",
-        "Hipótese de Riemann",
-        "inteligência artificial",
-        "matemática"
-      ],
-      "urgencia_score": 85,
-      "data_publicacao": "2026-11-24T19:31:18Z",
-      "impacto_pratico": "A demonstração abre novas fronteiras para a aplicação de inteligência artificial em pesquisas científicas de ponta.",
-      "nivel_confianca": "preliminar",
-      "veiculos_origem": [
-        "Nexo Jornal"
-      ],
-      "relevancia_score": 88,
-      "horas_em_destaque": 12,
-      "paises_envolvidos": [
-        "US"
-      ],
-      "links_internos_relacionados": []
-    },
-    {
-      "slug": "aviso-militares-russos-coreia-do-sul",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 18,
-      "expires_at": "2026-11-25T06:28:51Z",
-      "updated_at": "2026-11-24T12:28:51Z",
-      "fontes_urls": [
-        "https://g1.globo.com/mundo/noticia/2026/11/24/bombardeiros-russos-coreia-do-sul.ghtml"
-      ],
-      "resumo_pulso": "Conforme apuração do G1 Mundo com base na agência sul-coreana Yonhap, aeronaves militares estratégicas Tu-160 da Rússia ingressaram na zona de identificação de defesa aérea da Coreia do Sul, acionando protocolos de alerta. O Ministério da Defesa russo classificou a operação como um voo programado regular.",
-      "titulo_curto": "Bombardeiros estratégicos russos entram em zona de defesa da Coreia do Sul e geram alerta",
-      "palavras_chave": [
-        "russia",
-        "coreia do sul",
-        "defesa aerea",
-        "geopolitica"
-      ],
-      "urgencia_score": 89,
-      "data_publicacao": "2026-11-24T12:07:42Z",
-      "impacto_pratico": "Aumenta a tensão militar na península coreana e eleva a vigilância de forças aliadas na região do Pacífico.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "G1 Mundo",
-        "Yonhap"
-      ],
-      "relevancia_score": 88,
-      "horas_em_destaque": 12,
-      "paises_envolvidos": [
-        "RU",
-        "KR"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-sancao-internacional",
-          "motivo_conexao": "Auxilia na compreensão das manobras geopolíticas e pressões estratégicas entre potências.",
-          "titulo_existente": "O que é uma sanção internacional?"
-        }
-      ]
     }
   ],
   "temas_curadoria": [
