@@ -2,33 +2,24 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-25T09:00:26Z",
-  "batch_id": "20261125-0859",
+  "updatedAt": "2026-11-25T10:16:24Z",
+  "batch_id": "20261125-1012",
   "temas_ativos": [
     {
       "slug": "dow-jones-futuro-cai-inflacao-eua-tarifas",
-      "titulo_tema": "Mercados futuros de Nova York recuam com expectativa de inflação e temor de novas tarifas nos EUA",
-      "titulo_curto": "Mercados futuros de Nova York recuam com expectativa de inflação e temor de novas tarifas nos EUA",
       "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Economia",
       "categoria": "Economia_Comercio",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 88,
-      "urgencia_score": 86,
       "ttl_horas": 12,
       "expires_at": "2026-11-25T21:00:26Z",
-      "palavras_chave_busca": [
-        "dow jones",
-        "inflação eua",
-        "pce",
-        "tarifas comerciais",
-        "mercados financeiros"
+      "updated_at": "2026-11-25T09:00:26Z",
+      "fontes_urls": [
+        "https://www.infomoney.com.br/mercados/dow-jones-futuro-cai-antes-de-inflacao-dos-eua-e-em-meio-a-temor-de-novas-tarifas/"
       ],
+      "titulo_tema": "Mercados futuros de Nova York recuam com expectativa de inflação e temor de novas tarifas nos EUA",
+      "resumo_pulso": "Conforme apuração do InfoMoney, os contratos futuros de Dow Jones registram queda diante da proximidade da divulgação do índice PCE de outubro e do monitoramento de possíveis anúncios de tarifas protecionistas contra parceiros comerciais por Washington.",
+      "sintese_nerd": "A cautela externa pode repercutir na abertura dos mercados emergentes e influenciar a taxa de câmbio doméstica.",
+      "titulo_curto": "Mercados futuros de Nova York recuam com expectativa de inflação e temor de novas tarifas nos EUA",
+      "rota_editoria": "/economia",
       "palavras_chave": [
         "dow jones",
         "inflação eua",
@@ -36,22 +27,31 @@
         "tarifas comerciais",
         "mercados financeiros"
       ],
+      "urgencia_score": 86,
+      "data_publicacao": "2026-11-25T08:49:22Z",
       "gatilho_vitrine": "Conforme apuração do InfoMoney, os contratos futuros de Dow Jones registram queda diante da proximidade da divulgação do índice PCE de outubro e do monitoramento de possíveis anúncios de tarifas protecionistas contra parceiros comerciais por Washington.",
-      "resumo_pulso": "Conforme apuração do InfoMoney, os contratos futuros de Dow Jones registram queda diante da proximidade da divulgação do índice PCE de outubro e do monitoramento de possíveis anúncios de tarifas protecionistas contra parceiros comerciais por Washington.",
-      "sintese_nerd": "A cautela externa pode repercutir na abertura dos mercados emergentes e influenciar a taxa de câmbio doméstica.",
       "impacto_pratico": "A cautela externa pode repercutir na abertura dos mercados emergentes e influenciar a taxa de câmbio doméstica.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "InfoMoney Mercados"
+      ],
+      "relevancia_score": 88,
       "paises_envolvidos": [
         "US",
         "CN"
       ],
-      "veiculos_origem": [
-        "InfoMoney Mercados"
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
       ],
-      "fontes_urls": [
-        "https://www.infomoney.com.br/mercados/dow-jones-futuro-cai-antes-de-inflacao-dos-eua-e-em-meio-a-temor-de-novas-tarifas/"
-      ],
-      "data_publicacao": "2026-11-25T08:49:22Z",
-      "updated_at": "2026-11-25T09:00:26Z"
+      "palavras_chave_busca": [
+        "dow jones",
+        "inflação eua",
+        "pce",
+        "tarifas comerciais",
+        "mercados financeiros"
+      ]
     },
     {
       "slug": "julgamento-van-hattem-stf-tensao-senado-supremo",
@@ -67,27 +67,27 @@
       ],
       "rota_editoria": "/radar",
       "relevancia_score": 92,
-      "urgencia_score": 89,
+      "urgencia_score": 90,
       "ttl_horas": 24,
       "expires_at": "2026-11-26T09:00:26Z",
       "palavras_chave_busca": [
         "stf",
-        "senado",
         "van hattem",
+        "congresso",
         "pgr",
-        "relação entre os poderes"
+        "política"
       ],
       "palavras_chave": [
         "stf",
-        "senado",
         "van hattem",
+        "congresso",
         "pgr",
-        "relação entre os poderes"
+        "política"
       ],
-      "gatilho_vitrine": "Segundo análise da BBC News Brasil, a eventual aceitação de denúncia da Procuradoria-Geral da República contra o deputado e senador eleito Van Hattem pode transformá-lo em réu por calúnia e injúria, acendendo alertas para possíveis retaliações políticas no Parlamento.",
-      "resumo_pulso": "Segundo análise da BBC News Brasil, a eventual aceitação de denúncia da Procuradoria-Geral da República contra o deputado e senador eleito Van Hattem pode transformá-lo em réu por calúnia e injúria, acendendo alertas para possíveis retaliações políticas no Parlamento.",
-      "sintese_nerd": "Potencializa o atrito institucional entre o Poder Judiciário e parlamentares críticos à Suprema Corte no início do próximo ciclo legislativo.",
-      "impacto_pratico": "Potencializa o atrito institucional entre o Poder Judiciário e parlamentares críticos à Suprema Corte no início do próximo ciclo legislativo.",
+      "gatilho_vitrine": "O caso segue em monitoramento após novas movimentações na Corte. A possível aceitação da denúncia da PGR contra o senador eleito Van Hattem por calúnia e injúria mantém o alerta para tensões institucionais entre o Parlamento e o Judiciário.",
+      "resumo_pulso": "O caso segue em monitoramento após novas movimentações na Corte. A possível aceitação da denúncia da PGR contra o senador eleito Van Hattem por calúnia e injúria mantém o alerta para tensões institucionais entre o Parlamento e o Judiciário.",
+      "sintese_nerd": "Possível aumento da polarização política e risco de retaliações legislativas contra o STF no início da próxima legislatura.",
+      "impacto_pratico": "Possível aumento da polarização política e risco de retaliações legislativas contra o STF no início da próxima legislatura.",
       "paises_envolvidos": [
         "BR"
       ],
@@ -95,10 +95,10 @@
         "BBC News Brasil"
       ],
       "fontes_urls": [
-        "https://www.bbc.com/portuguese/articles/cqdr13l5e830o?at_medium=RSS&at_campaign=rss"
+        "https://www.bbc.com/portuguese/"
       ],
       "data_publicacao": "2026-11-25T08:44:53Z",
-      "updated_at": "2026-11-25T09:00:26Z"
+      "updated_at": "2026-11-25T10:16:24Z"
     },
     {
       "slug": "dolar-seis-reais-impacto-inflacao-bolso",
@@ -255,52 +255,52 @@
     },
     {
       "slug": "ataque-drones-refinarias-russia-samara",
+      "titulo_tema": "Ataques de drones provocam incêndio em refinarias na Rússia",
+      "titulo_curto": "Ataques de drones provocam incêndio em refinarias na Rússia",
       "status": "novo",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 18,
-      "expires_at": "2026-11-26T01:56:41Z",
-      "updated_at": "2026-11-25T07:56:41Z",
-      "fontes_urls": [
-        "https://www.ukrinform.net/rubric-ato/4188325-two-rosneft-oil-refineries-in-russias-samara-region-on-fire-following-drone-attack-media.html"
-      ],
-      "titulo_tema": "Ataques de drones provocam incêndio em duas refinarias de petróleo na região russa de Samara",
-      "resumo_pulso": "Conforme apuração de veículos de imprensa internacional e da Ukrinform, um ataque coordenado de drones deflagrou incêndios em duas refinarias de petróleo da Rosneft localizadas na região russa de Samara, incluindo a unidade na cidade de Syzran.",
-      "sintese_nerd": "A escalada de ataques contra infraestruturas energéticas na Rússia pode gerar volatilidade adicional nos preços internacionais do petróleo e derivados.",
-      "titulo_curto": "Ataques de drones provocam incêndio em duas refinarias de petróleo na região russa de Samara",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "rússia",
-        "samara",
-        "refinarias",
-        "drones",
-        "petróleo"
-      ],
-      "urgencia_score": 91,
-      "data_publicacao": "2026-11-25T07:38:00Z",
-      "gatilho_vitrine": "Conforme apuração de veículos de imprensa internacional e da Ukrinform, um ataque coordenado de drones deflagrou incêndios em duas refinarias de petróleo da Rosneft localizadas na região russa de Samara, incluindo a unidade na cidade de Syzran.",
-      "impacto_pratico": "A escalada de ataques contra infraestruturas energéticas na Rússia pode gerar volatilidade adicional nos preços internacionais do petróleo e derivados.",
       "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "Ukrinform",
-        "The Kyiv Independent"
-      ],
-      "relevancia_score": 90,
-      "paises_envolvidos": [
-        "RU",
-        "UA"
-      ],
       "categoria_primaria": "Geopolitica_Radar",
+      "categoria": "Geopolitica_Relacoes",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
       ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 90,
+      "urgencia_score": 92,
+      "ttl_horas": 12,
+      "expires_at": "2026-11-26T01:56:41Z",
       "palavras_chave_busca": [
         "rússia",
-        "samara",
-        "refinarias",
+        "ucrânia",
         "drones",
-        "petróleo"
-      ]
+        "petróleo",
+        "guerra"
+      ],
+      "palavras_chave": [
+        "rússia",
+        "ucrânia",
+        "drones",
+        "petróleo",
+        "guerra"
+      ],
+      "gatilho_vitrine": "Novas confirmações indicam que ataques de drones atingiram refinarias da Rosneft na região de Samara, resultando em mortes e danos estruturais. A Ucrânia intensificou operações contra a infraestrutura energética russa.",
+      "resumo_pulso": "Novas confirmações indicam que ataques de drones atingiram refinarias da Rosneft na região de Samara, resultando em mortes e danos estruturais. A Ucrânia intensificou operações contra a infraestrutura energética russa.",
+      "sintese_nerd": "Potencial pressão sobre o preço global do petróleo e instabilidade no fornecimento de combustíveis na região.",
+      "impacto_pratico": "Potencial pressão sobre o preço global do petróleo e instabilidade no fornecimento de combustíveis na região.",
+      "paises_envolvidos": [
+        "RU",
+        "UA"
+      ],
+      "veiculos_origem": [
+        "The Moscow Times",
+        "Ukrinform"
+      ],
+      "fontes_urls": [
+        "https://www.themoscowtimes.com/2026/11/25/one-killed-in-samara-region-as-ukraine-strikes-oil-refinery-a94368"
+      ],
+      "data_publicacao": "2026-11-25T07:38:00Z",
+      "updated_at": "2026-11-25T10:16:24Z"
     },
     {
       "slug": "exercito-eua-explosao-material-toxico-iowa",
@@ -489,8 +489,8 @@
     },
     {
       "slug": "governo-lula-projetos-economicos-congresso-dezembro",
-      "titulo_tema": "Governo Lula corre contra o tempo para aprovar ao menos oito projetos econômicos no Congresso até fim de 2026",
-      "titulo_curto": "Governo Lula corre contra o tempo para aprovar ao menos oito projetos econômicos no Congresso até fim de 2026",
+      "titulo_tema": "Governo Lula acelera pauta econômica no Congresso antes do recesso",
+      "titulo_curto": "Governo Lula acelera pauta econômica no Congresso antes do recesso",
       "status": "novo",
       "origem_pipeline": "pulso",
       "categoria_primaria": "Economia",
@@ -501,27 +501,25 @@
       ],
       "rota_editoria": "/economia",
       "relevancia_score": 93,
-      "urgencia_score": 90,
+      "urgencia_score": 88,
       "ttl_horas": 24,
       "expires_at": "2026-11-26T09:00:26Z",
       "palavras_chave_busca": [
-        "governo lula",
-        "congresso nacional",
-        "projetos econômicos",
+        "lula",
+        "congresso",
         "orçamento",
-        "recesso parlamentar"
+        "economia"
       ],
       "palavras_chave": [
-        "governo lula",
-        "congresso nacional",
-        "projetos econômicos",
+        "lula",
+        "congresso",
         "orçamento",
-        "recesso parlamentar"
+        "economia"
       ],
-      "gatilho_vitrine": "Conforme apuração do G1 Política, a equipe econômica do governo federal busca acelerar a análise de pelo menos oito medidas econômicas no Congresso Nacional antes do início do recesso parlamentar, marcado para 23 de dezembro.",
-      "resumo_pulso": "Conforme apuração do G1 Política, a equipe econômica do governo federal busca acelerar a análise de pelo menos oito medidas econômicas no Congresso Nacional antes do início do recesso parlamentar, marcado para 23 de dezembro.",
-      "sintese_nerd": "Aceleração de pautas fiscais e orçamentárias pode gerar volatilidade nos mercados financeiros e alterar expectativas para o fechamento do ano.",
-      "impacto_pratico": "Aceleração de pautas fiscais e orçamentárias pode gerar volatilidade nos mercados financeiros e alterar expectativas para o fechamento do ano.",
+      "gatilho_vitrine": "A equipe econômica mantém a urgência na aprovação de oito projetos estruturantes até 23 de dezembro. A articulação busca garantir estabilidade fiscal para 2027 em meio a pressões inflacionárias.",
+      "resumo_pulso": "A equipe econômica mantém a urgência na aprovação de oito projetos estruturantes até 23 de dezembro. A articulação busca garantir estabilidade fiscal para 2027 em meio a pressões inflacionárias.",
+      "sintese_nerd": "Decisões impactam diretamente o Orçamento federal e a previsibilidade do mercado financeiro para o próximo ano.",
+      "impacto_pratico": "Decisões impactam diretamente o Orçamento federal e a previsibilidade do mercado financeiro para o próximo ano.",
       "paises_envolvidos": [
         "BR"
       ],
@@ -529,10 +527,10 @@
         "G1 Política"
       ],
       "fontes_urls": [
-        "https://g1.globo.com/politica/noticia/2026/11/25/governo-lula-tem-ao-menos-oito-projetos-economicos-para-aprovar-no-congresso-ate-o-fim-de-2026.ghtml"
+        "https://g1.globo.com/politica/"
       ],
       "data_publicacao": "2026-11-25T03:00:00Z",
-      "updated_at": "2026-11-25T09:00:26Z"
+      "updated_at": "2026-11-25T10:16:24Z"
     },
     {
       "slug": "assessor-trump-brasil-deixa-cargo-departamento-estado",
@@ -860,25 +858,15 @@
   "noticias_quentes": [
     {
       "slug": "dow-jones-futuro-cai-inflacao-eua-tarifas",
-      "titulo_curto": "Mercados futuros de Nova York recuam com expectativa de inflação e temor de novas tarifas nos EUA",
-      "resumo_pulso": "Conforme apuração do InfoMoney, os contratos futuros de Dow Jones registram queda diante da proximidade da divulgação do índice PCE de outubro e do monitoramento de possíveis anúncios de tarifas protecionistas contra parceiros comerciais por Washington.",
-      "impacto_pratico": "A cautela externa pode repercutir na abertura dos mercados emergentes e influenciar a taxa de câmbio doméstica.",
       "categoria": "Economia_Comercio",
-      "paises_envolvidos": [
-        "US",
-        "CN"
-      ],
-      "urgencia_score": 86,
-      "relevancia_score": 88,
-      "nivel_confianca": "alta",
       "ttl_horas": 12,
-      "horas_em_destaque": 6,
-      "veiculos_origem": [
-        "InfoMoney Mercados"
-      ],
+      "expires_at": "2026-11-25T21:00:26Z",
+      "updated_at": "2026-11-25T09:00:26Z",
       "fontes_urls": [
         "https://www.infomoney.com.br/mercados/dow-jones-futuro-cai-antes-de-inflacao-dos-eua-e-em-meio-a-temor-de-novas-tarifas/"
       ],
+      "resumo_pulso": "Conforme apuração do InfoMoney, os contratos futuros de Dow Jones registram queda diante da proximidade da divulgação do índice PCE de outubro e do monitoramento de possíveis anúncios de tarifas protecionistas contra parceiros comerciais por Washington.",
+      "titulo_curto": "Mercados futuros de Nova York recuam com expectativa de inflação e temor de novas tarifas nos EUA",
       "palavras_chave": [
         "Dow Jones",
         "Inflação EUA",
@@ -886,27 +874,37 @@
         "Tarifas comerciais",
         "Mercados financeiros"
       ],
+      "urgencia_score": 86,
       "data_publicacao": "2026-11-25T08:49:22Z",
+      "impacto_pratico": "A cautela externa pode repercutir na abertura dos mercados emergentes e influenciar a taxa de câmbio doméstica.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "InfoMoney Mercados"
+      ],
+      "relevancia_score": 88,
+      "horas_em_destaque": 6,
+      "paises_envolvidos": [
+        "US",
+        "CN"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "Banco Central e mercado financeiro acompanham inflação de serviços, câmbio e metas fiscais",
           "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
-          "motivo_conexao": "Ajuda a compreender como indicadores de inflação internacional e doméstica afetam os ativos e decisões macroeconômicas."
+          "motivo_conexao": "Ajuda a compreender como indicadores de inflação internacional e doméstica afetam os ativos e decisões macroeconômicas.",
+          "titulo_existente": "Banco Central e mercado financeiro acompanham inflação de serviços, câmbio e metas fiscais"
         }
-      ],
-      "expires_at": "2026-11-25T21:00:26Z",
-      "updated_at": "2026-11-25T09:00:26Z"
+      ]
     },
     {
       "slug": "julgamento-van-hattem-stf-tensao-senado-supremo",
       "titulo_curto": "Julgamento de Van Hattem no STF inaugura embates entre Legislativo e Supremo para 2027",
-      "resumo_pulso": "Segundo análise da BBC News Brasil, a eventual aceitação de denúncia da Procuradoria-Geral da República contra o deputado e senador eleito Van Hattem pode transformá-lo em réu por calúnia e injúria, acendendo alertas para possíveis retaliações políticas no Parlamento.",
-      "impacto_pratico": "Potencializa o atrito institucional entre o Poder Judiciário e parlamentares críticos à Suprema Corte no início do próximo ciclo legislativo.",
+      "resumo_pulso": "O caso segue em monitoramento após novas movimentações na Corte. A possível aceitação da denúncia da PGR contra o senador eleito Van Hattem por calúnia e injúria mantém o alerta para tensões institucionais entre o Parlamento e o Judiciário.",
+      "impacto_pratico": "Possível aumento da polarização política e risco de retaliações legislativas contra o STF no início da próxima legislatura.",
       "categoria": "Geopolitica_Relacoes",
       "paises_envolvidos": [
         "BR"
       ],
-      "urgencia_score": 89,
+      "urgencia_score": 90,
       "relevancia_score": 92,
       "nivel_confianca": "alta",
       "ttl_horas": 24,
@@ -915,25 +913,25 @@
         "BBC News Brasil"
       ],
       "fontes_urls": [
-        "https://www.bbc.com/portuguese/articles/cqdr13l5e830o?at_medium=RSS&at_campaign=rss"
+        "https://www.bbc.com/portuguese/"
       ],
       "palavras_chave": [
         "STF",
-        "Senado",
         "Van Hattem",
+        "Congresso",
         "PGR",
-        "Relação entre os Poderes"
+        "Política"
       ],
       "data_publicacao": "2026-11-25T08:44:53Z",
       "links_internos_relacionados": [
         {
           "titulo_existente": "STF analisa regras de transparência e limites constitucionais entre os Poderes",
           "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
-          "motivo_conexao": "Relaciona-se com o monitoramento contínuo das prerrogativas institucionais e tensões entre STF e Congresso."
+          "motivo_conexao": "Contextualiza a relação entre o STF e o Legislativo."
         }
       ],
       "expires_at": "2026-11-26T09:00:26Z",
-      "updated_at": "2026-11-25T09:00:26Z"
+      "updated_at": "2026-11-25T10:16:24Z"
     },
     {
       "slug": "itau-bv-inter-demissoes-bancarios",
@@ -975,43 +973,37 @@
     },
     {
       "slug": "ataque-drones-refinarias-russia-samara",
+      "titulo_curto": "Ataques de drones provocam incêndio em refinarias na Rússia",
+      "resumo_pulso": "Novas confirmações indicam que ataques de drones atingiram refinarias da Rosneft na região de Samara, resultando em mortes e danos estruturais. A Ucrânia intensificou operações contra a infraestrutura energética russa.",
+      "impacto_pratico": "Potencial pressão sobre o preço global do petróleo e instabilidade no fornecimento de combustíveis na região.",
       "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 18,
-      "expires_at": "2026-11-26T01:56:41Z",
-      "updated_at": "2026-11-25T07:56:41Z",
-      "fontes_urls": [
-        "https://www.ukrinform.net/rubric-ato/4188325-two-rosneft-oil-refineries-in-russias-samara-region-on-fire-following-drone-attack-media.html"
-      ],
-      "resumo_pulso": "Conforme apuração de veículos de imprensa internacional e da Ukrinform, um ataque coordenado de drones deflagrou incêndios em duas refinarias de petróleo da Rosneft localizadas na região russa de Samara, incluindo a unidade na cidade de Syzran.",
-      "titulo_curto": "Ataques de drones provocam incêndio em duas refinarias de petróleo na região russa de Samara",
-      "palavras_chave": [
-        "Rússia",
-        "Samara",
-        "refinarias",
-        "drones",
-        "petróleo"
-      ],
-      "urgencia_score": 91,
-      "data_publicacao": "2026-11-25T07:38:00Z",
-      "impacto_pratico": "A escalada de ataques contra infraestruturas energéticas na Rússia pode gerar volatilidade adicional nos preços internacionais do petróleo e derivados.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Ukrinform",
-        "The Kyiv Independent"
-      ],
-      "relevancia_score": 90,
-      "horas_em_destaque": 12,
       "paises_envolvidos": [
         "RU",
         "UA"
       ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-sancao-internacional",
-          "motivo_conexao": "Contextualiza o impacto de conflitos geopolíticos e restrições sobre o setor energético global.",
-          "titulo_existente": "O que é uma sanção internacional?"
-        }
-      ]
+      "urgencia_score": 92,
+      "relevancia_score": 90,
+      "nivel_confianca": "alta",
+      "ttl_horas": 12,
+      "horas_em_destaque": 8,
+      "veiculos_origem": [
+        "The Moscow Times",
+        "Ukrinform"
+      ],
+      "fontes_urls": [
+        "https://www.themoscowtimes.com/2026/11/25/one-killed-in-samara-region-as-ukraine-strikes-oil-refinery-a94368"
+      ],
+      "palavras_chave": [
+        "Rússia",
+        "Ucrânia",
+        "Drones",
+        "Petróleo",
+        "Guerra"
+      ],
+      "data_publicacao": "2026-11-25T07:38:00Z",
+      "links_internos_relacionados": [],
+      "expires_at": "2026-11-26T01:56:41Z",
+      "updated_at": "2026-11-25T10:16:24Z"
     },
     {
       "slug": "exercito-eua-explosao-material-toxico-iowa",
@@ -1203,14 +1195,14 @@
     },
     {
       "slug": "governo-lula-projetos-economicos-congresso-dezembro",
-      "titulo_curto": "Governo Lula corre contra o tempo para aprovar ao menos oito projetos econômicos no Congresso até fim de 2026",
-      "resumo_pulso": "Conforme apuração do G1 Política, a equipe econômica do governo federal busca acelerar a análise de pelo menos oito medidas econômicas no Congresso Nacional antes do início do recesso parlamentar, marcado para 23 de dezembro.",
-      "impacto_pratico": "Aceleração de pautas fiscais e orçamentárias pode gerar volatilidade nos mercados financeiros e alterar expectativas para o fechamento do ano.",
+      "titulo_curto": "Governo Lula acelera pauta econômica no Congresso antes do recesso",
+      "resumo_pulso": "A equipe econômica mantém a urgência na aprovação de oito projetos estruturantes até 23 de dezembro. A articulação busca garantir estabilidade fiscal para 2027 em meio a pressões inflacionárias.",
+      "impacto_pratico": "Decisões impactam diretamente o Orçamento federal e a previsibilidade do mercado financeiro para o próximo ano.",
       "categoria": "Economia_Comercio",
       "paises_envolvidos": [
         "BR"
       ],
-      "urgencia_score": 90,
+      "urgencia_score": 88,
       "relevancia_score": 93,
       "nivel_confianca": "alta",
       "ttl_horas": 24,
@@ -1219,25 +1211,24 @@
         "G1 Política"
       ],
       "fontes_urls": [
-        "https://g1.globo.com/politica/noticia/2026/11/25/governo-lula-tem-ao-menos-oito-projetos-economicos-para-aprovar-no-congresso-ate-o-fim-de-2026.ghtml"
+        "https://g1.globo.com/politica/"
       ],
       "palavras_chave": [
-        "Governo Lula",
-        "Congresso Nacional",
-        "Projetos Econômicos",
+        "Lula",
+        "Congresso",
         "Orçamento",
-        "Recesso Parlamentar"
+        "Economia"
       ],
       "data_publicacao": "2026-11-25T03:00:00Z",
       "links_internos_relacionados": [
         {
           "titulo_existente": "Congresso e Planalto negociam prioridades da pauta econômica e votação do Orçamento",
           "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-o-orcamento",
-          "motivo_conexao": "Complementa a leitura sobre a articulação do governo com o Legislativo para aprovar pacotes econômicos."
+          "motivo_conexao": "Detalha a articulação política em torno do Orçamento."
         }
       ],
       "expires_at": "2026-11-26T09:00:26Z",
-      "updated_at": "2026-11-25T09:00:26Z"
+      "updated_at": "2026-11-25T10:16:24Z"
     },
     {
       "slug": "governo-reduz-contencao-despesas-orcamento-12-bilhoes",
