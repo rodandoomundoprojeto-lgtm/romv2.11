@@ -2,122 +2,201 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-25T22:11:19Z",
-  "batch_id": "20261125-2211",
+  "updatedAt": "2026-11-25T22:49:53Z",
+  "batch_id": "20261125-2249",
   "temas_ativos": [
     {
-      "slug": "tarifas-eua-brasil-governo-lula-reage",
-      "titulo_tema": "Governo Lula rejeita ameaças tarifárias dos EUA e tensão comercial escala",
+      "slug": "cmn-medidas-endividamento-familias",
       "status": "novo",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-26T22:35:21Z",
+      "updated_at": "2026-11-25T22:35:21Z",
+      "titulo_tema": "Novas medidas do CMN para conter o endividamento das famílias",
+      "sintese_nerd": "O Conselho Monetário Nacional endureceu as diretrizes para instituições financeiras, visando mitigar o risco de crédito e o superendividamento. A medida força uma readequação dos limites de crédito, afetando diretamente o consumo das famílias brasileiras.",
+      "rota_editoria": "/economia",
+      "data_publicacao": "2026-11-25T22:35:21Z",
+      "gatilho_vitrine": "Entenda como as novas regras do CMN impactam o limite do seu cartão de crédito e a saúde financeira das famílias.",
       "origem_pipeline": "curadoria",
+      "relevancia_score": 92,
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Politica"
+      ],
+      "palavras_chave_busca": [
+        "cmn",
+        "banco central",
+        "endividamento",
+        "cartao de credito",
+        "risco de credito",
+        "economia domestica"
+      ],
+      "urgencia_score": 88
+    },
+    {
+      "slug": "tensao-comercial-brasil-eua-tarifas-agronegocio",
+      "status": "novo",
+      "ttl_horas": 48,
+      "expires_at": "2026-11-27T22:35:21Z",
+      "updated_at": "2026-11-25T22:35:21Z",
+      "titulo_tema": "Escalada de tensões comerciais entre Brasil e EUA",
+      "sintese_nerd": "O governo Trump sinaliza sobretaxas contra produtos brasileiros como retaliação a políticas de comércio digital e Pix, criando um risco direto para a balança comercial. A resposta brasileira, que cogita recorrer à OMC, marca um ponto de inflexão na diplomacia econômica entre os dois países.",
+      "rota_editoria": "/radar",
+      "data_publicacao": "2026-11-25T22:35:21Z",
+      "gatilho_vitrine": "Analise o impacto das ameaças tarifárias de Washington sobre o agronegócio e a soberania digital brasileira.",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 98,
       "categoria_primaria": "Geopolitica_Radar",
       "categorias_cruzadas": [
         "Economia",
         "Politica"
       ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 95,
-      "ttl_horas": 48,
-      "expires_at": "2026-11-27T22:11:19Z",
       "palavras_chave_busca": [
-        "eua",
-        "brasil",
-        "tarifas",
-        "governo lula",
+        "tarifas eua",
+        "governo trump",
+        "agronegocio brasileiro",
+        "guerra comercial",
+        "exportacoes brasil",
         "pix",
-        "ustr",
-        "comércio exterior",
         "omc"
-      ],
-      "gatilho_vitrine": "Destacar o impacto das retaliações comerciais americanas no agronegócio e na soberania regulatória brasileira.",
-      "sintese_nerd": "A administração dos EUA ameaça taxar produtos brasileiros como açúcar e aeronaves na tentativa de forçar mudanças em regulamentações locais, como o Pix. O Planalto classificou a medida como inaceitável, gerando um impasse diplomático com repercussões diretas no câmbio e nos mercados globais.",
-      "data_publicacao": "2026-11-25T22:11:19Z",
-      "updated_at": "2026-11-25T22:11:19Z"
+      ]
     },
     {
-      "slug": "fcc-autoriza-spacex-data-centers-espaco",
-      "titulo_tema": "FCC autoriza SpaceX a lançar um milhão de satélites para data centers no espaço",
+      "slug": "spacex-satelites-data-centers-geopolitica",
       "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Cultura",
-      "categorias_cruzadas": [
-        "Geopolitica_Radar",
-        "Economia"
-      ],
-      "rota_editoria": "/cultura",
-      "relevancia_score": 90,
       "ttl_horas": 72,
-      "expires_at": "2026-11-28T22:11:19Z",
+      "expires_at": "2026-11-28T22:35:21Z",
+      "updated_at": "2026-11-25T22:35:21Z",
+      "titulo_tema": "EUA autorizam SpaceX a lançar satélites para data centers",
+      "sintese_nerd": "A autorização para a SpaceX instalar data centers em órbita até 2038 redefine a soberania tecnológica e a infraestrutura de dados global. O projeto levanta questões críticas sobre segurança, controle de dados e a dependência de empresas privadas em setores estratégicos.",
+      "rota_editoria": "/radar",
+      "data_publicacao": "2026-11-25T22:35:21Z",
+      "gatilho_vitrine": "A nova fronteira da infraestrutura digital: SpaceX e a corrida pelos data centers em órbita.",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 88,
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Cultura"
+      ],
       "palavras_chave_busca": [
         "spacex",
         "elon musk",
-        "fcc",
-        "satélites",
-        "data centers",
-        "inteligência artificial",
-        "tecnologia espacial",
-        "starmind"
-      ],
-      "gatilho_vitrine": "Exibir o avanço tecnológico na infraestrutura global de computação e inteligência artificial fora da Terra.",
-      "sintese_nerd": "A aprovação regulatória da FCC permite que a SpaceX implemente o projeto Starmind até 2040, revolucionando a computação em nuvem com data centers orbitais. Esse movimento redefine a geopolítica tecnológica e a soberania digital global.",
-      "data_publicacao": "2026-11-25T22:11:19Z",
-      "updated_at": "2026-11-25T22:11:19Z"
+        "data centers espaciais",
+        "infraestrutura digital",
+        "geopolitica da tecnologia"
+      ]
     },
     {
-      "slug": "tse-mapeia-crime-organizado-eleicoes",
-      "titulo_tema": "TSE cria grupo de trabalho para mapear infiltração do crime organizado nas eleições",
+      "slug": "tse-combate-crime-organizado-eleicoes",
       "status": "novo",
+      "ttl_horas": 48,
+      "expires_at": "2026-11-27T22:35:21Z",
+      "updated_at": "2026-11-25T22:35:21Z",
+      "titulo_tema": "TSE cria grupo para mapear crime organizado nas eleições",
+      "sintese_nerd": "O TSE, sob a presidência de Nunes Marques, busca institucionalizar o enfrentamento ao crime organizado nas eleições. A medida visa proteger a integridade do voto contra a crescente interferência de grupos criminosos em territórios locais.",
+      "rota_editoria": "/eleicoes",
+      "data_publicacao": "2026-11-25T22:35:21Z",
+      "gatilho_vitrine": "Justiça Eleitoral intensifica o combate à influência de facções e milícias no processo democrático.",
       "origem_pipeline": "curadoria",
+      "relevancia_score": 86,
       "categoria_primaria": "Eleicoes",
       "categorias_cruzadas": [
         "Politica"
       ],
-      "rota_editoria": "/eleicoes",
-      "relevancia_score": 88,
-      "ttl_horas": 48,
-      "expires_at": "2026-11-27T22:11:19Z",
       "palavras_chave_busca": [
         "tse",
-        "nunes marques",
         "crime organizado",
-        "eleições",
-        "facções",
-        "milícias",
-        "democracia",
-        "justiça eleitoral"
-      ],
-      "gatilho_vitrine": "Destacar as medidas institucionais para blindar o processo democrático brasileiro contra o avanço de facções criminosas.",
-      "sintese_nerd": "Diante da crescente preocupação com a segurança institucional, a presidência do TSE instituiu um grupo de trabalho focado em diagnosticar e combater a atuação de facções e milícias nas disputas eleitorais. A medida busca blindar o pleito e preservar a legitimidade dos mandatos políticos.",
-      "data_publicacao": "2026-11-25T22:11:19Z",
-      "updated_at": "2026-11-25T22:11:19Z"
+        "eleicoes 2026",
+        "seguranca eleitoral",
+        "nunes marques"
+      ]
     },
     {
-      "slug": "cosan-venda-ativos-reduzir-divida",
-      "titulo_tema": "Cosan negocia venda de participações na Rumo, Compass e Moove para desalavancagem",
+      "slug": "senado-aprova-formalizacao-forca-nacional-sus",
+      "titulo_tema": "Senado aprova projeto que torna permanente a Força Nacional do SUS",
+      "titulo_curto": "Senado aprova projeto que torna permanente a Força Nacional do SUS",
       "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Economia",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Cultura",
+      "categoria": "Sociedade_Cultura",
       "categorias_cruzadas": [
-        "Politica"
+        "Economia",
+        "Resumo_Ultimas"
       ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 85,
-      "ttl_horas": 36,
-      "expires_at": "2026-11-27T10:11:19Z",
+      "rota_editoria": "/cultura",
+      "relevancia_score": 88,
+      "urgencia_score": 85,
+      "ttl_horas": 12,
+      "expires_at": "2026-11-26T10:49:53Z",
       "palavras_chave_busca": [
-        "cosan",
-        "rumo",
-        "compass",
-        "moove",
-        "dívida",
-        "fusões e aquisições",
-        "mercado financeiro",
-        "ibovespa"
+        "sus",
+        "senado",
+        "saúde",
+        "emergência"
       ],
-      "gatilho_vitrine": "Mostrar as movimentações das grandes corporações brasileiras para recompor o balanço em meio ao cenário de juros elevados.",
-      "sintese_nerd": "A holding Cosan busca alienar fatias minoritárias de suas principais subsidiárias para mitigar sua alavancagem financeira. A iniciativa atrai o apetite de grandes players globais e impacta diretamente a dinâmica de investimentos no setor de infraestrutura e logística.",
-      "data_publicacao": "2026-11-25T22:11:19Z",
-      "updated_at": "2026-11-25T22:11:19Z"
+      "palavras_chave": [
+        "sus",
+        "senado",
+        "saúde",
+        "emergência"
+      ],
+      "gatilho_vitrine": "Conforme apuração da Agência Senado, o Plenário aprovou o projeto que confere amparo legal à Força Nacional do SUS, tornando-a permanente. A equipe especializada, criada originalmente por decreto em 2011, atuará de forma contínua em emergências de saúde pública e desastres.",
+      "resumo_pulso": "Conforme apuração da Agência Senado, o Plenário aprovou o projeto que confere amparo legal à Força Nacional do SUS, tornando-a permanente. A equipe especializada, criada originalmente por decreto em 2011, atuará de forma contínua em emergências de saúde pública e desastres.",
+      "sintese_nerd": "Reforço na capacidade de resposta rápida do governo federal em situações de emergência sanitária e desastres naturais.",
+      "impacto_pratico": "Reforço na capacidade de resposta rápida do governo federal em situações de emergência sanitária e desastres naturais.",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "veiculos_origem": [
+        "Agência Senado"
+      ],
+      "fontes_urls": [
+        "https://www12.senado.leg.br/noticias/audios/2026/11/senado-aprova-formalizacao-da-forca-nacional-do-sus"
+      ],
+      "data_publicacao": "2026-11-25T22:30:03Z",
+      "updated_at": "2026-11-25T22:49:53Z"
+    },
+    {
+      "slug": "cct-senado-aprova-39-concessoes-radio",
+      "titulo_tema": "Comissão de Ciência e Tecnologia do Senado aprova 39 concessões de rádio",
+      "titulo_curto": "Comissão de Ciência e Tecnologia do Senado aprova 39 concessões de rádio",
+      "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Cultura",
+      "categoria": "Sociedade_Cultura",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/cultura",
+      "relevancia_score": 80,
+      "urgencia_score": 75,
+      "ttl_horas": 12,
+      "expires_at": "2026-11-26T10:49:53Z",
+      "palavras_chave_busca": [
+        "senado",
+        "rádio",
+        "comunicação"
+      ],
+      "palavras_chave": [
+        "senado",
+        "rádio",
+        "comunicação"
+      ],
+      "gatilho_vitrine": "Segundo a Agência Senado, a CCT aprovou 39 projetos de decreto legislativo para concessão e renovação de outorgas de rádio em 13 estados. A medida foca principalmente em rádios comunitárias e sem fins lucrativos voltadas à integração social.",
+      "resumo_pulso": "Segundo a Agência Senado, a CCT aprovou 39 projetos de decreto legislativo para concessão e renovação de outorgas de rádio em 13 estados. A medida foca principalmente em rádios comunitárias e sem fins lucrativos voltadas à integração social.",
+      "sintese_nerd": "Expansão da infraestrutura de comunicação local e comunitária em diversas regiões do país.",
+      "impacto_pratico": "Expansão da infraestrutura de comunicação local e comunitária em diversas regiões do país.",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "veiculos_origem": [
+        "Agência Senado"
+      ],
+      "fontes_urls": [
+        "https://www12.senado.leg.br/noticias/materias/2026/11/25/cct-aprova-39-concessoes-e-renovacoes-para-emissoras-de-radio"
+      ],
+      "data_publicacao": "2026-11-25T22:24:38Z",
+      "updated_at": "2026-11-25T22:49:53Z"
     },
     {
       "slug": "comissao-orcamento-aprova-alta-receita-petroleo-2027",
@@ -164,51 +243,6 @@
         "arrecadação",
         "petróleo",
         "2027"
-      ]
-    },
-    {
-      "slug": "tse-cria-grupo-trabalho-combate-crime-organizado-eleicoes",
-      "status": "novo",
-      "categoria": "Sociedade_Cultura",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-26T21:53:20Z",
-      "updated_at": "2026-11-25T21:53:20Z",
-      "fontes_urls": [
-        "https://g1.globo.com/politica/noticia/2026/11/25/tse-vai-mapear-atuacao-do-crime-organizado-nas-eleicoes-para-ampliar-combate.ghtml"
-      ],
-      "titulo_tema": "TSE cria grupo de trabalho para mapear e combater a atuação do crime organizado nas eleições",
-      "resumo_pulso": "Conforme apuração do G1, o presidente do Tribunal Superior Eleitoral (TSE), ministro Nunes Marques, instituiu um grupo de trabalho focado em mapear vulnerabilidades e propor medidas de prevenção contra a interferência de facções e milícias nos processos eleitorais.",
-      "sintese_nerd": "A medida visa blindar campanhas e o pleito contra pressões de organizações criminosas, aumentando a segurança institucional nas zonas de votação.",
-      "titulo_curto": "TSE cria grupo de trabalho para mapear e combater a atuação do crime organizado nas eleições",
-      "rota_editoria": "/cultura",
-      "palavras_chave": [
-        "tse",
-        "crime organizado",
-        "eleições",
-        "nunes marques"
-      ],
-      "urgencia_score": 88,
-      "data_publicacao": "2026-11-25T21:30:46Z",
-      "gatilho_vitrine": "Conforme apuração do G1, o presidente do Tribunal Superior Eleitoral (TSE), ministro Nunes Marques, instituiu um grupo de trabalho focado em mapear vulnerabilidades e propor medidas de prevenção contra a interferência de facções e milícias nos processos eleitorais.",
-      "impacto_pratico": "A medida visa blindar campanhas e o pleito contra pressões de organizações criminosas, aumentando a segurança institucional nas zonas de votação.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "G1 Política"
-      ],
-      "relevancia_score": 90,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "categoria_primaria": "Cultura",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "tse",
-        "crime organizado",
-        "eleições",
-        "nunes marques"
       ]
     },
     {
@@ -786,168 +820,114 @@
         "tempo real",
         "br"
       ]
-    },
-    {
-      "slug": "pulso-4-20261125-1752",
-      "status": "novo",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 6,
-      "expires_at": "2026-11-25T23:52:57Z",
-      "updated_at": "2026-11-25T17:52:57Z",
-      "fontes_urls": [
-        "https://www12.senado.leg.br/noticias/videos/2026/11/ao-vivo-ce-debate-importancia-das-faculdades-catolicas-na-amazonia-2013-25-11-26"
-      ],
-      "titulo_tema": "Vídeo: Ao vivo: CE debate importância das faculdades católicas na Amazônia – 25/11/26",
-      "resumo_pulso": "Segundo Agência Senado, Vídeo: Ao vivo: CE debate importância das faculdades católicas na Amazônia – 25/11/26.",
-      "sintese_nerd": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "titulo_curto": "Vídeo: Ao vivo: CE debate importância das faculdades católicas na Amazônia – 25/11/26",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "radar",
-        "tempo real",
-        "br"
-      ],
-      "urgencia_score": 75,
-      "data_publicacao": "2026-11-25T17:32:52+00:00",
-      "gatilho_vitrine": "Segundo Agência Senado, Vídeo: Ao vivo: CE debate importância das faculdades católicas na Amazônia – 25/11/26.",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "Agência Senado"
-      ],
-      "relevancia_score": 76,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "radar",
-        "tempo real",
-        "br"
-      ]
-    }
-  ],
-  "temas_curadoria": [
-    {
-      "slug": "tarifas-eua-brasil-governo-lula-reage",
-      "titulo_tema": "Governo Lula rejeita ameaças tarifárias dos EUA e tensão comercial escala",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Politica"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 95,
-      "ttl_horas": 48,
-      "expires_at": "2026-11-27T22:11:19Z",
-      "palavras_chave_busca": [
-        "eua",
-        "brasil",
-        "tarifas",
-        "governo lula",
-        "pix",
-        "ustr",
-        "comércio exterior",
-        "omc"
-      ],
-      "gatilho_vitrine": "Destacar o impacto das retaliações comerciais americanas no agronegócio e na soberania regulatória brasileira.",
-      "sintese_nerd": "A administração dos EUA ameaça taxar produtos brasileiros como açúcar e aeronaves na tentativa de forçar mudanças em regulamentações locais, como o Pix. O Planalto classificou a medida como inaceitável, gerando um impasse diplomático com repercussões diretas no câmbio e nos mercados globais.",
-      "data_publicacao": "2026-11-25T22:11:19Z",
-      "updated_at": "2026-11-25T22:11:19Z"
-    },
-    {
-      "slug": "fcc-autoriza-spacex-data-centers-espaco",
-      "titulo_tema": "FCC autoriza SpaceX a lançar um milhão de satélites para data centers no espaço",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Cultura",
-      "categorias_cruzadas": [
-        "Geopolitica_Radar",
-        "Economia"
-      ],
-      "rota_editoria": "/cultura",
-      "relevancia_score": 90,
-      "ttl_horas": 72,
-      "expires_at": "2026-11-28T22:11:19Z",
-      "palavras_chave_busca": [
-        "spacex",
-        "elon musk",
-        "fcc",
-        "satélites",
-        "data centers",
-        "inteligência artificial",
-        "tecnologia espacial",
-        "starmind"
-      ],
-      "gatilho_vitrine": "Exibir o avanço tecnológico na infraestrutura global de computação e inteligência artificial fora da Terra.",
-      "sintese_nerd": "A aprovação regulatória da FCC permite que a SpaceX implemente o projeto Starmind até 2040, revolucionando a computação em nuvem com data centers orbitais. Esse movimento redefine a geopolítica tecnológica e a soberania digital global.",
-      "data_publicacao": "2026-11-25T22:11:19Z",
-      "updated_at": "2026-11-25T22:11:19Z"
-    },
-    {
-      "slug": "tse-mapeia-crime-organizado-eleicoes",
-      "titulo_tema": "TSE cria grupo de trabalho para mapear infiltração do crime organizado nas eleições",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Eleicoes",
-      "categorias_cruzadas": [
-        "Politica"
-      ],
-      "rota_editoria": "/eleicoes",
-      "relevancia_score": 88,
-      "ttl_horas": 48,
-      "expires_at": "2026-11-27T22:11:19Z",
-      "palavras_chave_busca": [
-        "tse",
-        "nunes marques",
-        "crime organizado",
-        "eleições",
-        "facções",
-        "milícias",
-        "democracia",
-        "justiça eleitoral"
-      ],
-      "gatilho_vitrine": "Destacar as medidas institucionais para blindar o processo democrático brasileiro contra o avanço de facções criminosas.",
-      "sintese_nerd": "Diante da crescente preocupação com a segurança institucional, a presidência do TSE instituiu um grupo de trabalho focado em diagnosticar e combater a atuação de facções e milícias nas disputas eleitorais. A medida busca blindar o pleito e preservar a legitimidade dos mandatos políticos.",
-      "data_publicacao": "2026-11-25T22:11:19Z",
-      "updated_at": "2026-11-25T22:11:19Z"
-    },
-    {
-      "slug": "cosan-venda-ativos-reduzir-divida",
-      "titulo_tema": "Cosan negocia venda de participações na Rumo, Compass e Moove para desalavancagem",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Politica"
-      ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 85,
-      "ttl_horas": 36,
-      "expires_at": "2026-11-27T10:11:19Z",
-      "palavras_chave_busca": [
-        "cosan",
-        "rumo",
-        "compass",
-        "moove",
-        "dívida",
-        "fusões e aquisições",
-        "mercado financeiro",
-        "ibovespa"
-      ],
-      "gatilho_vitrine": "Mostrar as movimentações das grandes corporações brasileiras para recompor o balanço em meio ao cenário de juros elevados.",
-      "sintese_nerd": "A holding Cosan busca alienar fatias minoritárias de suas principais subsidiárias para mitigar sua alavancagem financeira. A iniciativa atrai o apetite de grandes players globais e impacta diretamente a dinâmica de investimentos no setor de infraestrutura e logística.",
-      "data_publicacao": "2026-11-25T22:11:19Z",
-      "updated_at": "2026-11-25T22:11:19Z"
     }
   ],
   "noticias_quentes": [
+    {
+      "slug": "cmn-medidas-endividamento-familias",
+      "titulo_curto": "CMN e Banco Central anunciam medidas para conter endividamento das famílias",
+      "resumo_pulso": "Conforme apuração do G1 e InfoMoney, o Conselho Monetário Nacional aprovou novas diretrizes para instituições financeiras. As medidas exigem maior monitoramento do risco de crédito e redução gradual de limites para clientes inadimplentes.",
+      "impacto_pratico": "Mudanças no acesso ao crédito e na gestão de faturas de cartão de crédito para consumidores brasileiros.",
+      "categoria": "Economia_Comercio",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "urgencia_score": 88,
+      "relevancia_score": 92,
+      "nivel_confianca": "alta",
+      "ttl_horas": 12,
+      "horas_em_destaque": 8,
+      "veiculos_origem": [
+        "G1",
+        "InfoMoney"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/economia/noticia/2026/11/25/cmn-anuncia-medidas-para-conter-o-endividamento-das-familias.ghtml"
+      ],
+      "palavras_chave": [
+        "CMN",
+        "Banco Central",
+        "Crédito",
+        "Endividamento"
+      ],
+      "data_publicacao": "2026-11-25T22:35:21Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "Banco Central e mercado financeiro acompanham inflação de serviços, câmbio e metas fiscais",
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
+          "motivo_conexao": "As medidas de crédito impactam diretamente o consumo e a dinâmica inflacionária monitorada pelo BC."
+        }
+      ],
+      "expires_at": "2026-11-26T22:35:21Z",
+      "updated_at": "2026-11-25T22:49:53Z"
+    },
+    {
+      "slug": "senado-aprova-formalizacao-forca-nacional-sus",
+      "titulo_curto": "Senado aprova projeto que torna permanente a Força Nacional do SUS",
+      "resumo_pulso": "Conforme apuração da Agência Senado, o Plenário aprovou o projeto que confere amparo legal à Força Nacional do SUS, tornando-a permanente. A equipe especializada, criada originalmente por decreto em 2011, atuará de forma contínua em emergências de saúde pública e desastres.",
+      "impacto_pratico": "Reforço na capacidade de resposta rápida do governo federal em situações de emergência sanitária e desastres naturais.",
+      "categoria": "Sociedade_Cultura",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "urgencia_score": 85,
+      "relevancia_score": 88,
+      "nivel_confianca": "alta",
+      "ttl_horas": 12,
+      "horas_em_destaque": 6,
+      "veiculos_origem": [
+        "Agência Senado"
+      ],
+      "fontes_urls": [
+        "https://www12.senado.leg.br/noticias/audios/2026/11/senado-aprova-formalizacao-da-forca-nacional-do-sus"
+      ],
+      "palavras_chave": [
+        "SUS",
+        "Senado",
+        "Saúde",
+        "Emergência"
+      ],
+      "data_publicacao": "2026-11-25T22:30:03Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "Movimentos sociais e parlamentares debatem investimentos em saúde, educação e transição ecológica",
+          "url_existente": "https://www.rodandoomundo.com.br/saude",
+          "motivo_conexao": "O projeto complementa o debate sobre o fortalecimento das políticas públicas de saúde no Brasil."
+        }
+      ],
+      "expires_at": "2026-11-26T10:49:53Z",
+      "updated_at": "2026-11-25T22:49:53Z"
+    },
+    {
+      "slug": "cct-senado-aprova-39-concessoes-radio",
+      "titulo_curto": "Comissão de Ciência e Tecnologia do Senado aprova 39 concessões de rádio",
+      "resumo_pulso": "Segundo a Agência Senado, a CCT aprovou 39 projetos de decreto legislativo para concessão e renovação de outorgas de rádio em 13 estados. A medida foca principalmente em rádios comunitárias e sem fins lucrativos voltadas à integração social.",
+      "impacto_pratico": "Expansão da infraestrutura de comunicação local e comunitária em diversas regiões do país.",
+      "categoria": "Sociedade_Cultura",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "urgencia_score": 75,
+      "relevancia_score": 80,
+      "nivel_confianca": "alta",
+      "ttl_horas": 12,
+      "horas_em_destaque": 4,
+      "veiculos_origem": [
+        "Agência Senado"
+      ],
+      "fontes_urls": [
+        "https://www12.senado.leg.br/noticias/materias/2026/11/25/cct-aprova-39-concessoes-e-renovacoes-para-emissoras-de-radio"
+      ],
+      "palavras_chave": [
+        "Senado",
+        "Rádio",
+        "Comunicação"
+      ],
+      "data_publicacao": "2026-11-25T22:24:38Z",
+      "links_internos_relacionados": [],
+      "expires_at": "2026-11-26T10:49:53Z",
+      "updated_at": "2026-11-25T22:49:53Z"
+    },
     {
       "slug": "comissao-orcamento-aprova-alta-receita-petroleo-2027",
       "categoria": "Economia_Comercio",
@@ -1625,127 +1605,111 @@
           "titulo_existente": "Como funcionam as eleições nos EUA?"
         }
       ]
-    },
+    }
+  ],
+  "temas_curadoria": [
     {
-      "slug": "eua-propoem-novas-tarifas-acucar-e-aeronaves-brasil",
-      "categoria": "Economia_Comercio",
-      "ttl_horas": 18,
-      "expires_at": "2026-11-26T12:47:39Z",
-      "updated_at": "2026-11-25T18:47:39Z",
-      "fontes_urls": [
-        "https://g1.globo.com/economia/agronegocios/noticia/2026/11/25/eua-querem-mudar-taxacao-sobre-acucar-brasileiro-veja-como-pode-ficar.ghtml"
+      "slug": "tensao-comercial-brasil-eua-tarifas-agronegocio",
+      "status": "novo",
+      "ttl_horas": 48,
+      "expires_at": "2026-11-27T22:35:21Z",
+      "updated_at": "2026-11-25T22:35:21Z",
+      "titulo_tema": "Escalada de tensões comerciais entre Brasil e EUA",
+      "sintese_nerd": "O governo Trump sinaliza sobretaxas contra produtos brasileiros como retaliação a políticas de comércio digital e Pix, criando um risco direto para a balança comercial. A resposta brasileira, que cogita recorrer à OMC, marca um ponto de inflexão na diplomacia econômica entre os dois países.",
+      "rota_editoria": "/radar",
+      "data_publicacao": "2026-11-25T22:35:21Z",
+      "gatilho_vitrine": "Analise o impacto das ameaças tarifárias de Washington sobre o agronegócio e a soberania digital brasileira.",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 98,
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Politica"
       ],
-      "resumo_pulso": "Segundo reportagem do G1 Economia, o governo dos Estados Unidos propôs elevar a tributação sobre o açúcar importado que exceder a cota anual de 100 mil toneladas, além de instituir uma tarifa adicional de 10% sobre aeronaves brasileiras. A medida integra um novo pacote de barreiras comerciais direcionado a 14 economias.",
-      "titulo_curto": "Governo dos EUA propõe novas tarifas sobre açúcar brasileiro e taxa adicional para aeronaves",
-      "palavras_chave": [
-        "EUA",
-        "Tarifas",
-        "Açúcar",
-        "Aeronaves",
-        "Exportações"
-      ],
-      "urgencia_score": 91,
-      "data_publicacao": "2026-11-25T17:25:14Z",
-      "impacto_pratico": "Impacta diretamente as exportações do setor sucroenergético e da aviação civil brasileira para o mercado norte-americano.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "G1 Economia"
-      ],
-      "relevancia_score": 93,
-      "horas_em_destaque": 18,
-      "paises_envolvidos": [
-        "BR",
-        "US"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-sancao-internacional",
-          "motivo_conexao": "Explica o mecanismo econômico e político das barreiras comerciais e tarifas impostas por governos.",
-          "titulo_existente": "O que é uma sanção internacional?"
-        }
+      "palavras_chave_busca": [
+        "tarifas eua",
+        "governo trump",
+        "agronegocio brasileiro",
+        "guerra comercial",
+        "exportacoes brasil",
+        "pix",
+        "omc"
       ]
     },
     {
-      "slug": "pulso-1-20261125-1701",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 6,
-      "expires_at": "2026-11-25T23:01:06Z",
-      "updated_at": "2026-11-25T17:01:06Z",
-      "fontes_urls": [
-        "https://g1.globo.com/economia/noticia/2026/11/25/trump-tarifas-ia-bolsa-de-ny-wall-street.ghtml"
+      "slug": "cmn-medidas-endividamento-familias",
+      "status": "novo",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-26T22:35:21Z",
+      "updated_at": "2026-11-25T22:35:21Z",
+      "titulo_tema": "Novas medidas do CMN para conter o endividamento das famílias",
+      "sintese_nerd": "O Conselho Monetário Nacional endureceu as diretrizes para instituições financeiras, visando mitigar o risco de crédito e o superendividamento. A medida força uma readequação dos limites de crédito, afetando diretamente o consumo das famílias brasileiras.",
+      "rota_editoria": "/economia",
+      "data_publicacao": "2026-11-25T22:35:21Z",
+      "gatilho_vitrine": "Entenda como as novas regras do CMN impactam o limite do seu cartão de crédito e a saúde financeira das famílias.",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 92,
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Politica"
       ],
-      "resumo_pulso": "Segundo G1 Economia, Trump durante coletiva de imprensa na Casa Branca em 20 de novembro de 2026. Reuters As bolsas de Nova York despencaram nesta quarta-feira (25), pressionadas por uma nova rodada de tarifas anunciadas pelo governo de Donald Trump e pela forte venda de ações ligadas à inteligência artificial (IA). Por volta das 13h20, o índice de tecnologia Nasdaq ca.",
-      "titulo_curto": "Tarifas de Trump e crise da IA provocam dia de queda em Wall Street",
-      "palavras_chave": [
-        "radar",
-        "tempo real",
-        "br"
-      ],
-      "urgencia_score": 90,
-      "data_publicacao": "2026-11-25T16:55:37+00:00",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "G1 Economia"
-      ],
+      "palavras_chave_busca": [
+        "cmn",
+        "banco central",
+        "endividamento",
+        "cartao de credito",
+        "risco de credito",
+        "economia domestica"
+      ]
+    },
+    {
+      "slug": "spacex-satelites-data-centers-geopolitica",
+      "status": "novo",
+      "ttl_horas": 72,
+      "expires_at": "2026-11-28T22:35:21Z",
+      "updated_at": "2026-11-25T22:35:21Z",
+      "titulo_tema": "EUA autorizam SpaceX a lançar satélites para data centers",
+      "sintese_nerd": "A autorização para a SpaceX instalar data centers em órbita até 2038 redefine a soberania tecnológica e a infraestrutura de dados global. O projeto levanta questões críticas sobre segurança, controle de dados e a dependência de empresas privadas em setores estratégicos.",
+      "rota_editoria": "/radar",
+      "data_publicacao": "2026-11-25T22:35:21Z",
+      "gatilho_vitrine": "A nova fronteira da infraestrutura digital: SpaceX e a corrida pelos data centers em órbita.",
+      "origem_pipeline": "curadoria",
       "relevancia_score": 88,
-      "horas_em_destaque": 6,
-      "paises_envolvidos": [
-        "BR",
-        "US"
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Cultura"
       ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
-          "motivo_conexao": "Compreenda por que os preços sobem de forma generalizada, como o IPCA é calculado e de que maneira os juros do Banco Central afetam o poder de compra.",
-          "titulo_existente": "O que é inflação?"
-        },
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/como-funcionam-as-eleicoes-nos-eua",
-          "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos.",
-          "titulo_existente": "Como funcionam as eleições nos EUA?"
-        }
+      "palavras_chave_busca": [
+        "spacex",
+        "elon musk",
+        "data centers espaciais",
+        "infraestrutura digital",
+        "geopolitica da tecnologia"
       ]
     },
     {
-      "slug": "pulso-2-20261125-1701",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 6,
-      "expires_at": "2026-11-25T23:01:06Z",
-      "updated_at": "2026-11-25T17:01:06Z",
-      "fontes_urls": [
-        "https://g1.globo.com/mundo/noticia/2026/11/25/cerca-de-2000-migrantes-chegam-a-uma-ilha-das-canarias-em-um-unico-dia.ghtml"
+      "slug": "tse-combate-crime-organizado-eleicoes",
+      "status": "novo",
+      "ttl_horas": 48,
+      "expires_at": "2026-11-27T22:35:21Z",
+      "updated_at": "2026-11-25T22:35:21Z",
+      "titulo_tema": "TSE cria grupo para mapear crime organizado nas eleições",
+      "sintese_nerd": "O TSE, sob a presidência de Nunes Marques, busca institucionalizar o enfrentamento ao crime organizado nas eleições. A medida visa proteger a integridade do voto contra a crescente interferência de grupos criminosos em territórios locais.",
+      "rota_editoria": "/eleicoes",
+      "data_publicacao": "2026-11-25T22:35:21Z",
+      "gatilho_vitrine": "Justiça Eleitoral intensifica o combate à influência de facções e milícias no processo democrático.",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 86,
+      "categoria_primaria": "Eleicoes",
+      "categorias_cruzadas": [
+        "Politica"
       ],
-      "resumo_pulso": "Segundo G1 Mundo, Barco de madeira carregando 102 migrantes africanos atracado no porto de La Restinga, na ilha de El Hierro, nas Canárias, em 25 de novembro de 2026. Antonio Sempere/AFP Cerca de 2.000 migrantes chegaram na terça-feira (24) à ilha espanhola de El Hierro, no arquipélago das Canárias, em meio a um aumento expressivo das chegadas de embarcações precári.",
-      "titulo_curto": "Novo Ceuta? Cerca de 2.000 migrantes chegam a uma ilha espanhola das Canárias em um único dia",
-      "palavras_chave": [
-        "radar",
-        "tempo real",
-        "br"
-      ],
-      "urgencia_score": 85,
-      "data_publicacao": "2026-11-25T16:54:04+00:00",
-      "impacto_pratico": "Acompanhamento de impacto institucional, econômico e internacional.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "G1 Mundo"
-      ],
-      "relevancia_score": 84,
-      "horas_em_destaque": 6,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
-          "motivo_conexao": "Compreenda por que os preços sobem de forma generalizada, como o IPCA é calculado e de que maneira os juros do Banco Central afetam o poder de compra.",
-          "titulo_existente": "O que é inflação?"
-        },
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/como-funcionam-as-eleicoes-nos-eua",
-          "motivo_conexao": "Saiba o que é o Colégio Eleitoral, por que os estados-pêndulo decidem a Casa Branca e como funciona o voto indireto nos Estados Unidos.",
-          "titulo_existente": "Como funcionam as eleições nos EUA?"
-        }
+      "palavras_chave_busca": [
+        "tse",
+        "crime organizado",
+        "eleicoes 2026",
+        "seguranca eleitoral",
+        "nunes marques"
       ]
     }
   ]
