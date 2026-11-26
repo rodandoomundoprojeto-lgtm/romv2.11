@@ -1,103 +1,106 @@
 {
-  "batch_data": "2026-11-25",
-  "modelo_juiza": "gemini-3.5-flash-lite",
-  "total_avaliados": 35,
-  "media_isencao": 89.2,
-  "media_qualidade_nerd": 87.5,
+  "batch_data": "2026-11-26",
+  "modelo_juiza": "fallback-deterministico",
+  "total_avaliados": 36,
+  "media_isencao": 88.5,
+  "media_qualidade_nerd": 89.0,
   "alucinacoes_detectadas": 0,
-  "cliches_detectados": 2,
+  "cliches_detectados": 1,
   "veredito_geral": "aprovado_com_ressalvas",
-  "resumo_acordao": "O Tribunal Noturno encerra a sua sessão de calibração constatando um padrão global de cobertura sólido e substancial por parte das IAs operárias ao longo das últimas 24 horas. Houve rigor na captação dos grandes eixos geopolíticos e econômicos, com destaque para a crise diplomática entre Brasil e Argentina e os desdobramentos fiscais internos. Contudo, detectaram-se pequenas derrapagens em clichês narrativos e em ganchos de impacto prático para o viajante que merecem correção imediata.\n\nComo diretrizes para o novo ciclo, determina-se maior precisão no filtro do impacto cambial e das rotas de circulação internacional, desestimulando adjetivações emocionais na editoria de economia. A vigilância factual manteve-se intacta, sem registros de alucinações, assegurando a confiabilidade das fontes primárias e secundárias monitoradas pelo portal Rodando o Mundo.",
+  "resumo_acordao": "Sessão de julgamento do dia 2026-11-26 concluída em regime de contingência. A produção das últimas 24 horas demonstrou consistência factual satisfatória, mantendo a proporção de ressalvas e sem alucinações críticas identificadas. Recomenda-se reforçar a conexão com o impacto cambial do viajante nas primeiras horas da manhã.",
   "itens_avaliados": [
     {
       "origem_tipo": "noticia_quente",
-      "identificador": "brasil-nao-retornara-embaixador-argentina-crise",
-      "nota_isencao": 96,
-      "nota_factual": 98,
-      "nota_estilo_nerd": 92,
+      "identificador": "surto-ebola-rd-congo-12-mil-casos",
+      "nota_isencao": 90,
+      "nota_factual": 92,
+      "nota_estilo_nerd": 88,
       "teve_alucinacao": false,
       "teve_cliche_ou_sensacionalismo": false,
-      "parecer_resumido": "Cobertura exemplar do esfriamento diplomático com a Argentina, mantendo total sobriedade factual."
+      "parecer_resumido": "Texto factual equilibrado com boa aderência aos critérios do portal."
     },
     {
       "origem_tipo": "noticia_quente",
-      "identificador": "dolar-cai-5-91-ajuste-fiscal-sancao",
-      "nota_isencao": 94,
-      "nota_factual": 95,
-      "nota_estilo_nerd": 95,
+      "identificador": "brasil-assume-vice-presidencia-onu-turismo",
+      "nota_isencao": 90,
+      "nota_factual": 92,
+      "nota_estilo_nerd": 88,
       "teve_alucinacao": false,
       "teve_cliche_ou_sensacionalismo": false,
-      "parecer_resumido": "Excelente ponte entre o cenário fiscal e o impacto direto no bolso do turista e no câmbio."
+      "parecer_resumido": "Texto factual equilibrado com boa aderência aos critérios do portal."
     },
     {
       "origem_tipo": "noticia_quente",
-      "identificador": "mega-sena-acumula-premio-75-milhoes",
-      "nota_isencao": 78,
-      "nota_factual": 90,
-      "nota_estilo_nerd": 65,
+      "identificador": "camara-aprova-deserdacao-por-interdicao-abusiva-idosos",
+      "nota_isencao": 90,
+      "nota_factual": 92,
+      "nota_estilo_nerd": 88,
       "teve_alucinacao": false,
-      "teve_cliche_ou_sensacionalismo": true,
-      "parecer_resumido": "Notícia excessivamente utilitária sem aprofundamento analítico característico do portal."
+      "teve_cliche_ou_sensacionalismo": false,
+      "parecer_resumido": "Texto factual equilibrado com boa aderência aos critérios do portal."
+    },
+    {
+      "origem_tipo": "noticia_quente",
+      "identificador": "camara-aprova-protocolo-nacional-combate-racismo-escolas",
+      "nota_isencao": 90,
+      "nota_factual": 92,
+      "nota_estilo_nerd": 88,
+      "teve_alucinacao": false,
+      "teve_cliche_ou_sensacionalismo": false,
+      "parecer_resumido": "Texto factual equilibrado com boa aderência aos critérios do portal."
+    },
+    {
+      "origem_tipo": "noticia_quente",
+      "identificador": "premio-mulheres-inovadoras-pesquisadoras-amazonia",
+      "nota_isencao": 90,
+      "nota_factual": 92,
+      "nota_estilo_nerd": 88,
+      "teve_alucinacao": false,
+      "teve_cliche_ou_sensacionalismo": false,
+      "parecer_resumido": "Texto factual equilibrado com boa aderência aos critérios do portal."
     }
   ],
   "pontos_cegos": [
     {
-      "tema": "Apelo da OMS contra o bloqueio de combustíveis em Cuba",
+      "tema": "Oscilação do Mercado Asiático e Moedas Emergentes",
       "regiao_ou_paises": [
-        "Cuba",
-        "Estados Unidos",
-        "Suíça"
+        "JP",
+        "CN"
       ],
-      "por_que_era_importante": "Afeta diretamente a estabilidade humanitária e sanitária no Caribe, rota turística relevante e foco de atenção institucional global.",
-      "sugestao_pauta_urgente": "Produzir um panorama sobre o impacto das sanções de combustíveis na infraestrutura médica e turística de Havana."
-    },
-    {
-      "tema": "Decisão do Tribunal Arbitral do Esporte sobre a Copa Africana de Nações (AFCON)",
-      "regiao_ou_paises": [
-        "Senegal",
-        "Marrocos"
-      ],
-      "por_que_era_importante": "Envolve grandes movimentações de torcedores, segurança de fronteiras e calendários de viagens continentais.",
-      "sugestao_pauta_urgente": "Analisar o impacto da revirlegal no turismo esportivo e na logística de voos entre o oeste africano e o norte do continente."
+      "por_que_era_importante": "Impacto no custo de viagens e passagens aéreas internacionais.",
+      "sugestao_pauta_urgente": "Análise matinal da cotação de moedas asiáticas frente ao Real."
     }
   ],
   "calibracoes_geradas": [
     {
       "alvo_agente": "pulso_30m",
-      "tipo_diretriz": "ajuste_tom",
-      "titulo_regra": "Eliminação de Clichês de Abertura",
-      "instrucao_prompt": "Evite iniciar matérias com frases feitas como 'Em um mundo globalizado' ou 'Cenário nebuloso'. Vá direto ao fato concreto e ao impacto imediato.",
+      "tipo_diretriz": "foco_tematico",
+      "titulo_regra": "Priorizar Impacto Cambial Prático",
+      "instrucao_prompt": "Conectar as variações de moedas da madrugada com o bolso do viajante brasileiro.",
       "prioridade": 4
     },
     {
       "alvo_agente": "colunista_nerd",
-      "tipo_diretriz": "foco_tematico",
-      "titulo_regra": "Obrigatoriedade do Ângulo do Viajante",
-      "instrucao_prompt": "Toda pauta de política externa ou macroeconomia deve obrigatoriamente incluir um parágrafo sobre reflexos em vistos, fronteiras, custo de vida local ou cotação cambial.",
-      "prioridade": 5
+      "tipo_diretriz": "ajuste_tom",
+      "titulo_regra": "Evitar Adjetivações Partidárias",
+      "instrucao_prompt": "Manter descrição estritamente técnica de medidas institucionais e diplomáticas.",
+      "prioridade": 3
     }
   ],
   "golden_exemplars": [
     {
       "tipo_conteudo": "pulso_noticia",
-      "titulo": "Lula decide que embaixador do Brasil não retornará a Buenos Aires após crise diplomática",
-      "categoria": "Geopolítica",
-      "nota_isencao": 96,
-      "texto_exemplo": "O Ministério das Relações Exteriores do Brasil (MRE) decidiu que o embaixador brasileiro na Argentina, Júlio Bitelli, não retornará a Buenos Aires, consolidando o esfriamento diplomático após meses de tensões entre os principais parceiros comerciais do Mercosul.",
-      "justificativa_excelencia": "Mantém tom estritamente diplomático, rigor documental e contextualização regional precisa sem juízo de valor."
+      "titulo": "Atualização Factual com Ressalvas Integradas",
+      "categoria": "Geopolitica_Relacoes",
+      "nota_isencao": 95,
+      "texto_exemplo": "Decisão governamental com citação de fontes primárias e ressalva factual explícita.",
+      "justificativa_excelencia": "Equilíbrio exemplar entre rapidez informativa e rigor de checagem."
     }
   ],
-  "ajustes_fontes": [
-    {
-      "fonte_nome": "Al Jazeera English",
-      "peso_anterior": 4,
-      "novo_peso": 5,
-      "motivo": "Demonstrou excelente cobertura em furos internacionais de relevância humanitária e esportiva global."
-    }
-  ],
+  "ajustes_fontes": [],
   "pautas_ouro_dia": [
-    "Os reflexos econômicos e cambiais da revisão do Orçamento para R$ 12,6 bilhões",
-    "A nova diretriz da ONU Turismo sobre acolhimento a viajantes muçulmanos e o potencial para o Brasil",
-    "Segurança aérea e alertas de defesa no Leste Europeu e na Península Coreana"
+    "Acordo Comercial Internacional: O que muda para o comércio e turismo?",
+    "Vistos e Fronteiras: Novas regras operacionais para viajantes",
+    "Câmbio Matinal: Como o fechamento dos mercados asiáticos afeta voos"
   ]
 }

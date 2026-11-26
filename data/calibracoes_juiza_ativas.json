@@ -1,37 +1,37 @@
 {
-  "batch_data": "2026-11-25",
-  "gerado_em": "2026-11-25T02:58:16.353398+00:00",
-  "modelo_juiza": "gemini-3.5-flash-lite",
+  "batch_data": "2026-11-26",
+  "gerado_em": "2026-11-26T07:54:32.798537+00:00",
+  "modelo_juiza": "fallback-deterministico",
   "veredito_geral": "aprovado_com_ressalvas",
   "calibracoes": [
     {
       "alvo_agente": "pulso_30m",
-      "tipo_diretriz": "ajuste_tom",
-      "titulo_regra": "Eliminação de Clichês de Abertura",
-      "instrucao_prompt": "Evite iniciar matérias com frases feitas como 'Em um mundo globalizado' ou 'Cenário nebuloso'. Vá direto ao fato concreto e ao impacto imediato.",
+      "tipo_diretriz": "foco_tematico",
+      "titulo_regra": "Priorizar Impacto Cambial Prático",
+      "instrucao_prompt": "Conectar as variações de moedas da madrugada com o bolso do viajante brasileiro.",
       "prioridade": 4
     },
     {
       "alvo_agente": "colunista_nerd",
-      "tipo_diretriz": "foco_tematico",
-      "titulo_regra": "Obrigatoriedade do Ângulo do Viajante",
-      "instrucao_prompt": "Toda pauta de política externa ou macroeconomia deve obrigatoriamente incluir um parágrafo sobre reflexos em vistos, fronteiras, custo de vida local ou cotação cambial.",
-      "prioridade": 5
+      "tipo_diretriz": "ajuste_tom",
+      "titulo_regra": "Evitar Adjetivações Partidárias",
+      "instrucao_prompt": "Manter descrição estritamente técnica de medidas institucionais e diplomáticas.",
+      "prioridade": 3
     }
   ],
   "pautas_ouro_dia": [
-    "Os reflexos econômicos e cambiais da revisão do Orçamento para R$ 12,6 bilhões",
-    "A nova diretriz da ONU Turismo sobre acolhimento a viajantes muçulmanos e o potencial para o Brasil",
-    "Segurança aérea e alertas de defesa no Leste Europeu e na Península Coreana"
+    "Acordo Comercial Internacional: O que muda para o comércio e turismo?",
+    "Vistos e Fronteiras: Novas regras operacionais para viajantes",
+    "Câmbio Matinal: Como o fechamento dos mercados asiáticos afeta voos"
   ],
   "golden_exemplars": [
     {
       "tipo_conteudo": "pulso_noticia",
-      "titulo": "Lula decide que embaixador do Brasil não retornará a Buenos Aires após crise diplomática",
-      "categoria": "Geopolítica",
-      "nota_isencao": 96,
-      "texto_exemplo": "O Ministério das Relações Exteriores do Brasil (MRE) decidiu que o embaixador brasileiro na Argentina, Júlio Bitelli, não retornará a Buenos Aires, consolidando o esfriamento diplomático após meses de tensões entre os principais parceiros comerciais do Mercosul.",
-      "justificativa_excelencia": "Mantém tom estritamente diplomático, rigor documental e contextualização regional precisa sem juízo de valor."
+      "titulo": "Atualização Factual com Ressalvas Integradas",
+      "categoria": "Geopolitica_Relacoes",
+      "nota_isencao": 95,
+      "texto_exemplo": "Decisão governamental com citação de fontes primárias e ressalva factual explícita.",
+      "justificativa_excelencia": "Equilíbrio exemplar entre rapidez informativa e rigor de checagem."
     }
   ]
 }
