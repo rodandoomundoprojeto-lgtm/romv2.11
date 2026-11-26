@@ -2,22 +2,26 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-26T04:20:35Z",
-  "batch_id": "20261126-0420",
+  "updatedAt": "2026-11-26T05:00:23Z",
+  "batch_id": "20261126-0500",
   "temas_ativos": [
     {
       "slug": "tensao-israel-ira-ameaca-regional",
-      "titulo_tema": "Escalada de tensões entre Israel e Irã",
       "status": "novo",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-27T04:20:35Z",
+      "updated_at": "2026-11-26T04:20:35Z",
+      "titulo_tema": "Escalada de tensões entre Israel e Irã",
+      "sintese_nerd": "O impasse entre a ala militar israelense e o governo Netanyahu sobre ataques ao Irã coloca o Oriente Médio em alerta máximo. A instabilidade ameaça a segurança energética global e pode impactar o preço do barril de petróleo.",
+      "rota_editoria": "/radar",
+      "data_publicacao": "2026-11-26T04:20:35Z",
+      "gatilho_vitrine": "Acompanhe o risco de um novo conflito direto entre Israel e Irã e seus reflexos nos preços globais de energia.",
       "origem_pipeline": "curadoria",
+      "relevancia_score": 95,
       "categoria_primaria": "Geopolitica_Radar",
       "categorias_cruzadas": [
         "Economia"
       ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 95,
-      "ttl_horas": 24,
-      "expires_at": "2026-11-27T04:20:35Z",
       "palavras_chave_busca": [
         "israel",
         "irã",
@@ -25,25 +29,25 @@
         "gadi eisenkot",
         "conflito oriente médio",
         "petróleo"
-      ],
-      "gatilho_vitrine": "Acompanhe o risco de um novo conflito direto entre Israel e Irã e seus reflexos nos preços globais de energia.",
-      "sintese_nerd": "O impasse entre a ala militar israelense e o governo Netanyahu sobre ataques ao Irã coloca o Oriente Médio em alerta máximo. A instabilidade ameaça a segurança energética global e pode impactar o preço do barril de petróleo.",
-      "data_publicacao": "2026-11-26T04:20:35Z",
-      "updated_at": "2026-11-26T04:20:35Z"
+      ]
     },
     {
       "slug": "orcamento-2027-revisao-receita",
-      "titulo_tema": "Revisão do Orçamento 2027 e impacto fiscal",
       "status": "novo",
+      "ttl_horas": 72,
+      "expires_at": "2026-11-29T04:20:35Z",
+      "updated_at": "2026-11-26T04:20:35Z",
+      "titulo_tema": "Revisão do Orçamento 2027 e impacto fiscal",
+      "sintese_nerd": "A comissão orçamentária elevou a estimativa de receita em R$ 37,1 bilhões, incorporando a reforma tributária e ajustes nas projeções do PIB. O movimento reflete a tentativa do governo de equilibrar as contas diante de um cenário de crescimento econômico mais moderado.",
+      "rota_editoria": "/economia",
+      "data_publicacao": "2026-11-26T04:20:35Z",
+      "gatilho_vitrine": "Entenda como a revisão das receitas orçamentárias reflete as mudanças na economia brasileira para 2027.",
       "origem_pipeline": "curadoria",
+      "relevancia_score": 92,
       "categoria_primaria": "Economia",
       "categorias_cruzadas": [
         "Politica"
       ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 92,
-      "ttl_horas": 72,
-      "expires_at": "2026-11-29T04:20:35Z",
       "palavras_chave_busca": [
         "orçamento 2027",
         "reforma tributária",
@@ -51,25 +55,25 @@
         "royalties petróleo",
         "meta fiscal",
         "congresso nacional"
-      ],
-      "gatilho_vitrine": "Entenda como a revisão das receitas orçamentárias reflete as mudanças na economia brasileira para 2027.",
-      "sintese_nerd": "A comissão orçamentária elevou a estimativa de receita em R$ 37,1 bilhões, incorporando a reforma tributária e ajustes nas projeções do PIB. O movimento reflete a tentativa do governo de equilibrar as contas diante de um cenário de crescimento econômico mais moderado.",
-      "data_publicacao": "2026-11-26T04:20:35Z",
-      "updated_at": "2026-11-26T04:20:35Z"
+      ]
     },
     {
       "slug": "crime-organizado-mapa-faccoes",
-      "titulo_tema": "Panorama do crime organizado no Brasil",
       "status": "novo",
+      "ttl_horas": 48,
+      "expires_at": "2026-11-28T04:20:35Z",
+      "updated_at": "2026-11-26T04:20:35Z",
+      "titulo_tema": "Panorama do crime organizado no Brasil",
+      "sintese_nerd": "O relatório inédito da Abin mapeia a evolução de 31 facções criminosas, evidenciando a capilaridade do crime organizado no território nacional. O dado é crucial para o debate sobre políticas de segurança pública e inteligência estatal.",
+      "rota_editoria": "/politica",
+      "data_publicacao": "2026-11-26T04:20:35Z",
+      "gatilho_vitrine": "Analise o novo levantamento da Abin sobre a expansão das facções criminosas no Brasil nas últimas duas décadas.",
       "origem_pipeline": "curadoria",
+      "relevancia_score": 88,
       "categoria_primaria": "Politica",
       "categorias_cruzadas": [
         "Cultura"
       ],
-      "rota_editoria": "/politica",
-      "relevancia_score": 88,
-      "ttl_horas": 48,
-      "expires_at": "2026-11-28T04:20:35Z",
       "palavras_chave_busca": [
         "segurança pública",
         "abin",
@@ -77,11 +81,7 @@
         "pcc",
         "crime organizado",
         "inteligência"
-      ],
-      "gatilho_vitrine": "Analise o novo levantamento da Abin sobre a expansão das facções criminosas no Brasil nas últimas duas décadas.",
-      "sintese_nerd": "O relatório inédito da Abin mapeia a evolução de 31 facções criminosas, evidenciando a capilaridade do crime organizado no território nacional. O dado é crucial para o debate sobre políticas de segurança pública e inteligência estatal.",
-      "data_publicacao": "2026-11-26T04:20:35Z",
-      "updated_at": "2026-11-26T04:20:35Z"
+      ]
     },
     {
       "slug": "camara-aprova-deserdacao-por-interdicao-abusiva-idosos",
@@ -130,18 +130,22 @@
     },
     {
       "slug": "tarifas-trump-brasil-acucar-aeronaves",
-      "titulo_tema": "Tarifas de Trump sobre açúcar e aeronaves brasileiras",
       "status": "novo",
+      "ttl_horas": 48,
+      "expires_at": "2026-11-28T04:20:35Z",
+      "updated_at": "2026-11-26T04:20:35Z",
+      "titulo_tema": "Tarifas de Trump sobre açúcar e aeronaves brasileiras",
+      "sintese_nerd": "O governo Trump anunciou novas tarifas sobre açúcar e aeronaves brasileiras sob o pretexto de proteger produtores locais. A medida pressiona a balança comercial brasileira e exige uma resposta diplomática estratégica em um cenário de crescente protecionismo global.",
+      "rota_editoria": "/radar",
+      "data_publicacao": "2026-11-26T02:00:40Z",
+      "gatilho_vitrine": "Analise o impacto das novas tarifas protecionistas dos EUA na economia brasileira e as possíveis respostas diplomáticas.",
       "origem_pipeline": "curadoria",
+      "relevancia_score": 98,
       "categoria_primaria": "Geopolitica_Radar",
       "categorias_cruzadas": [
         "Economia",
         "Politica"
       ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 98,
-      "ttl_horas": 48,
-      "expires_at": "2026-11-28T04:20:35Z",
       "palavras_chave_busca": [
         "donald trump",
         "tarifas de importação",
@@ -149,11 +153,7 @@
         "setor aéreo",
         "protecionismo eua",
         "balança comercial"
-      ],
-      "gatilho_vitrine": "Analise o impacto das novas tarifas protecionistas dos EUA na economia brasileira e as possíveis respostas diplomáticas.",
-      "sintese_nerd": "O governo Trump anunciou novas tarifas sobre açúcar e aeronaves brasileiras sob o pretexto de proteger produtores locais. A medida pressiona a balança comercial brasileira e exige uma resposta diplomática estratégica em um cenário de crescente protecionismo global.",
-      "data_publicacao": "2026-11-26T02:00:40Z",
-      "updated_at": "2026-11-26T04:20:35Z"
+      ]
     },
     {
       "slug": "premio-mulheres-inovadoras-pesquisadoras-amazonia",
@@ -740,113 +740,57 @@
         "povos indígenas",
         "amazônia"
       ]
-    }
-  ],
-  "temas_curadoria": [
-    {
-      "slug": "tensao-israel-ira-ameaca-regional",
-      "titulo_tema": "Escalada de tensões entre Israel e Irã",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 95,
-      "ttl_horas": 24,
-      "expires_at": "2026-11-27T04:20:35Z",
-      "palavras_chave_busca": [
-        "israel",
-        "irã",
-        "benjamin netanyahu",
-        "gadi eisenkot",
-        "conflito oriente médio",
-        "petróleo"
-      ],
-      "gatilho_vitrine": "Acompanhe o risco de um novo conflito direto entre Israel e Irã e seus reflexos nos preços globais de energia.",
-      "sintese_nerd": "O impasse entre a ala militar israelense e o governo Netanyahu sobre ataques ao Irã coloca o Oriente Médio em alerta máximo. A instabilidade ameaça a segurança energética global e pode impactar o preço do barril de petróleo.",
-      "data_publicacao": "2026-11-26T04:20:35Z",
-      "updated_at": "2026-11-26T04:20:35Z"
     },
     {
-      "slug": "orcamento-2027-revisao-receita",
-      "titulo_tema": "Revisão do Orçamento 2027 e impacto fiscal",
+      "slug": "eua-propoem-novas-tarifas-acucar-e-aeronaves-brasil",
+      "titulo_tema": "Governo brasileiro reage a novas propostas de tarifas dos EUA sobre açúcar e aeronaves",
+      "titulo_curto": "Governo brasileiro reage a novas propostas de tarifas dos EUA sobre açúcar e aeronaves",
       "status": "novo",
-      "origem_pipeline": "curadoria",
+      "origem_pipeline": "pulso",
       "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Politica"
-      ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 92,
-      "ttl_horas": 72,
-      "expires_at": "2026-11-29T04:20:35Z",
-      "palavras_chave_busca": [
-        "orçamento 2027",
-        "reforma tributária",
-        "pib",
-        "royalties petróleo",
-        "meta fiscal",
-        "congresso nacional"
-      ],
-      "gatilho_vitrine": "Entenda como a revisão das receitas orçamentárias reflete as mudanças na economia brasileira para 2027.",
-      "sintese_nerd": "A comissão orçamentária elevou a estimativa de receita em R$ 37,1 bilhões, incorporando a reforma tributária e ajustes nas projeções do PIB. O movimento reflete a tentativa do governo de equilibrar as contas diante de um cenário de crescimento econômico mais moderado.",
-      "data_publicacao": "2026-11-26T04:20:35Z",
-      "updated_at": "2026-11-26T04:20:35Z"
-    },
-    {
-      "slug": "crime-organizado-mapa-faccoes",
-      "titulo_tema": "Panorama do crime organizado no Brasil",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Politica",
-      "categorias_cruzadas": [
-        "Cultura"
-      ],
-      "rota_editoria": "/politica",
-      "relevancia_score": 88,
-      "ttl_horas": 48,
-      "expires_at": "2026-11-28T04:20:35Z",
-      "palavras_chave_busca": [
-        "segurança pública",
-        "abin",
-        "facções criminosas",
-        "pcc",
-        "crime organizado",
-        "inteligência"
-      ],
-      "gatilho_vitrine": "Analise o novo levantamento da Abin sobre a expansão das facções criminosas no Brasil nas últimas duas décadas.",
-      "sintese_nerd": "O relatório inédito da Abin mapeia a evolução de 31 facções criminosas, evidenciando a capilaridade do crime organizado no território nacional. O dado é crucial para o debate sobre políticas de segurança pública e inteligência estatal.",
-      "data_publicacao": "2026-11-26T04:20:35Z",
-      "updated_at": "2026-11-26T04:20:35Z"
-    },
-    {
-      "slug": "tarifas-trump-brasil-acucar-aeronaves",
-      "titulo_tema": "Tarifas de Trump sobre açúcar e aeronaves brasileiras",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Geopolitica_Radar",
+      "categoria": "Economia_Comercio",
       "categorias_cruzadas": [
         "Economia",
-        "Politica"
+        "Resumo_Ultimas"
       ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 98,
-      "ttl_horas": 48,
-      "expires_at": "2026-11-28T04:20:35Z",
+      "rota_editoria": "/economia",
+      "relevancia_score": 94,
+      "urgencia_score": 92,
+      "ttl_horas": 12,
+      "expires_at": "2026-11-26T17:00:23Z",
       "palavras_chave_busca": [
-        "donald trump",
-        "tarifas de importação",
-        "agronegócio brasileiro",
-        "setor aéreo",
-        "protecionismo eua",
-        "balança comercial"
+        "tarifas",
+        "eua",
+        "brasil",
+        "comercio",
+        "açucar",
+        "aeronaves"
       ],
-      "gatilho_vitrine": "Analise o impacto das novas tarifas protecionistas dos EUA na economia brasileira e as possíveis respostas diplomáticas.",
-      "sintese_nerd": "O governo Trump anunciou novas tarifas sobre açúcar e aeronaves brasileiras sob o pretexto de proteger produtores locais. A medida pressiona a balança comercial brasileira e exige uma resposta diplomática estratégica em um cenário de crescente protecionismo global.",
-      "data_publicacao": "2026-11-26T02:00:40Z",
-      "updated_at": "2026-11-26T04:20:35Z"
+      "palavras_chave": [
+        "tarifas",
+        "eua",
+        "brasil",
+        "comercio",
+        "açucar",
+        "aeronaves"
+      ],
+      "gatilho_vitrine": "O governo brasileiro classificou como inaceitáveis as novas propostas de tarifas dos Estados Unidos sobre o açúcar e aeronaves nacionais. Segundo a Al Jazeera, o Palácio do Planalto busca uma resolução negociada para evitar o impacto comercial do novo pacote de barreiras norte-americano.",
+      "resumo_pulso": "O governo brasileiro classificou como inaceitáveis as novas propostas de tarifas dos Estados Unidos sobre o açúcar e aeronaves nacionais. Segundo a Al Jazeera, o Palácio do Planalto busca uma resolução negociada para evitar o impacto comercial do novo pacote de barreiras norte-americano.",
+      "sintese_nerd": "Possível encarecimento de exportações brasileiras e necessidade de renegociação diplomática com Washington.",
+      "impacto_pratico": "Possível encarecimento de exportações brasileiras e necessidade de renegociação diplomática com Washington.",
+      "paises_envolvidos": [
+        "BR",
+        "US"
+      ],
+      "veiculos_origem": [
+        "Al Jazeera",
+        "G1 Economia"
+      ],
+      "fontes_urls": [
+        "https://www.aljazeera.com/news/2026/11/26/brazil-blasts-unacceptable-new-us-tariff-proposals?traffic_source=rss"
+      ],
+      "data_publicacao": "2026-11-25T18:47:37.310364+00:00",
+      "updated_at": "2026-11-26T05:00:23Z"
     }
   ],
   "noticias_quentes": [
@@ -1400,6 +1344,47 @@
       ]
     },
     {
+      "slug": "eua-propoem-novas-tarifas-acucar-e-aeronaves-brasil",
+      "titulo_curto": "Governo brasileiro reage a novas propostas de tarifas dos EUA sobre açúcar e aeronaves",
+      "resumo_pulso": "O governo brasileiro classificou como inaceitáveis as novas propostas de tarifas dos Estados Unidos sobre o açúcar e aeronaves nacionais. Segundo a Al Jazeera, o Palácio do Planalto busca uma resolução negociada para evitar o impacto comercial do novo pacote de barreiras norte-americano.",
+      "impacto_pratico": "Possível encarecimento de exportações brasileiras e necessidade de renegociação diplomática com Washington.",
+      "categoria": "Economia_Comercio",
+      "paises_envolvidos": [
+        "BR",
+        "US"
+      ],
+      "urgencia_score": 92,
+      "relevancia_score": 94,
+      "nivel_confianca": "alta",
+      "ttl_horas": 12,
+      "horas_em_destaque": 12,
+      "veiculos_origem": [
+        "Al Jazeera",
+        "G1 Economia"
+      ],
+      "fontes_urls": [
+        "https://www.aljazeera.com/news/2026/11/26/brazil-blasts-unacceptable-new-us-tariff-proposals?traffic_source=rss"
+      ],
+      "palavras_chave": [
+        "tarifas",
+        "EUA",
+        "Brasil",
+        "comercio",
+        "açucar",
+        "aeronaves"
+      ],
+      "data_publicacao": "2026-11-25T18:47:37.310364+00:00",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "Mercados e aliados internacionais avaliam impacto da política comercial norte-americana",
+          "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
+          "motivo_conexao": "Contextualiza a reação internacional às medidas protecionistas dos EUA."
+        }
+      ],
+      "expires_at": "2026-11-26T17:00:23Z",
+      "updated_at": "2026-11-26T05:00:23Z"
+    },
+    {
       "slug": "ccj-senado-aprova-registro-obrigatorio-moteis-cadastur",
       "categoria": "Sociedade_Cultura",
       "ttl_horas": 12,
@@ -1430,6 +1415,113 @@
         "BR"
       ],
       "links_internos_relacionados": []
+    }
+  ],
+  "temas_curadoria": [
+    {
+      "slug": "tensao-israel-ira-ameaca-regional",
+      "status": "novo",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-27T04:20:35Z",
+      "updated_at": "2026-11-26T04:20:35Z",
+      "titulo_tema": "Escalada de tensões entre Israel e Irã",
+      "sintese_nerd": "O impasse entre a ala militar israelense e o governo Netanyahu sobre ataques ao Irã coloca o Oriente Médio em alerta máximo. A instabilidade ameaça a segurança energética global e pode impactar o preço do barril de petróleo.",
+      "rota_editoria": "/radar",
+      "data_publicacao": "2026-11-26T04:20:35Z",
+      "gatilho_vitrine": "Acompanhe o risco de um novo conflito direto entre Israel e Irã e seus reflexos nos preços globais de energia.",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 95,
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia"
+      ],
+      "palavras_chave_busca": [
+        "israel",
+        "irã",
+        "benjamin netanyahu",
+        "gadi eisenkot",
+        "conflito oriente médio",
+        "petróleo"
+      ]
+    },
+    {
+      "slug": "orcamento-2027-revisao-receita",
+      "status": "novo",
+      "ttl_horas": 72,
+      "expires_at": "2026-11-29T04:20:35Z",
+      "updated_at": "2026-11-26T04:20:35Z",
+      "titulo_tema": "Revisão do Orçamento 2027 e impacto fiscal",
+      "sintese_nerd": "A comissão orçamentária elevou a estimativa de receita em R$ 37,1 bilhões, incorporando a reforma tributária e ajustes nas projeções do PIB. O movimento reflete a tentativa do governo de equilibrar as contas diante de um cenário de crescimento econômico mais moderado.",
+      "rota_editoria": "/economia",
+      "data_publicacao": "2026-11-26T04:20:35Z",
+      "gatilho_vitrine": "Entenda como a revisão das receitas orçamentárias reflete as mudanças na economia brasileira para 2027.",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 92,
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Politica"
+      ],
+      "palavras_chave_busca": [
+        "orçamento 2027",
+        "reforma tributária",
+        "pib",
+        "royalties petróleo",
+        "meta fiscal",
+        "congresso nacional"
+      ]
+    },
+    {
+      "slug": "crime-organizado-mapa-faccoes",
+      "status": "novo",
+      "ttl_horas": 48,
+      "expires_at": "2026-11-28T04:20:35Z",
+      "updated_at": "2026-11-26T04:20:35Z",
+      "titulo_tema": "Panorama do crime organizado no Brasil",
+      "sintese_nerd": "O relatório inédito da Abin mapeia a evolução de 31 facções criminosas, evidenciando a capilaridade do crime organizado no território nacional. O dado é crucial para o debate sobre políticas de segurança pública e inteligência estatal.",
+      "rota_editoria": "/politica",
+      "data_publicacao": "2026-11-26T04:20:35Z",
+      "gatilho_vitrine": "Analise o novo levantamento da Abin sobre a expansão das facções criminosas no Brasil nas últimas duas décadas.",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 88,
+      "categoria_primaria": "Politica",
+      "categorias_cruzadas": [
+        "Cultura"
+      ],
+      "palavras_chave_busca": [
+        "segurança pública",
+        "abin",
+        "facções criminosas",
+        "pcc",
+        "crime organizado",
+        "inteligência"
+      ]
+    },
+    {
+      "slug": "tarifas-trump-brasil-acucar-aeronaves",
+      "status": "novo",
+      "ttl_horas": 48,
+      "expires_at": "2026-11-28T04:20:35Z",
+      "updated_at": "2026-11-26T04:20:35Z",
+      "titulo_tema": "Tarifas de Trump sobre açúcar e aeronaves brasileiras",
+      "sintese_nerd": "O governo Trump anunciou novas tarifas sobre açúcar e aeronaves brasileiras sob o pretexto de proteger produtores locais. A medida pressiona a balança comercial brasileira e exige uma resposta diplomática estratégica em um cenário de crescente protecionismo global.",
+      "rota_editoria": "/radar",
+      "data_publicacao": "2026-11-26T02:00:40Z",
+      "gatilho_vitrine": "Analise o impacto das novas tarifas protecionistas dos EUA na economia brasileira e as possíveis respostas diplomáticas.",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 98,
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Politica"
+      ],
+      "palavras_chave_busca": [
+        "donald trump",
+        "tarifas de importação",
+        "agronegócio brasileiro",
+        "setor aéreo",
+        "protecionismo eua",
+        "balança comercial"
+      ]
     }
   ]
 }
