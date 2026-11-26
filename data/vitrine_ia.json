@@ -2,8 +2,8 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-26T22:51:42Z",
-  "batch_id": "20261126-2251",
+  "updatedAt": "2026-11-26T23:50:37Z",
+  "batch_id": "20261126-2350",
   "temas_ativos": [
     {
       "slug": "luiz-carlos-trabuco-ministerio-fazenda-impacto-mercado",
@@ -87,50 +87,95 @@
       ]
     },
     {
-      "slug": "pix-novas-regras-seguranca-2027",
-      "titulo_tema": "Banco Central anuncia novas regras de segurança e melhorias no Pix para 2027",
-      "titulo_curto": "Banco Central anuncia novas regras de segurança e melhorias no Pix para 2027",
+      "slug": "venezuela-revogara-lei-que-previa- ate-30-anos-prisao-opositores",
+      "titulo_tema": "Venezuela anuncia revogação de lei que impedia opositores de exercer cargos públicos e previa longas penas",
+      "titulo_curto": "Venezuela anuncia revogação de lei que impedia opositores de exercer cargos públicos e previa longas penas",
       "status": "novo",
       "origem_pipeline": "pulso",
-      "categoria_primaria": "Economia",
-      "categoria": "Economia_Comercio",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categoria": "Geopolitica_Relacoes",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
       ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 90,
-      "urgencia_score": 88,
+      "rota_editoria": "/radar",
+      "relevancia_score": 88,
+      "urgencia_score": 87,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-27T23:50:37Z",
+      "palavras_chave_busca": [
+        "venezuela",
+        "assembleia nacional",
+        "oposição",
+        "direitos políticos"
+      ],
+      "palavras_chave": [
+        "venezuela",
+        "assembleia nacional",
+        "oposição",
+        "direitos políticos"
+      ],
+      "gatilho_vitrine": "Segundo reportagem do G1 Mundo, o presidente do Parlamento venezuelano, Jorge Rodríguez, anunciou que o país revogará a lei que impunha penas de até 30 anos e inelegibilidade perpétua a opositores do regime. A medida faz parte de um novo acordo político entre o governo interino e a oposição.",
+      "resumo_pulso": "Segundo reportagem do G1 Mundo, o presidente do Parlamento venezuelano, Jorge Rodríguez, anunciou que o país revogará a lei que impunha penas de até 30 anos e inelegibilidade perpétua a opositores do regime. A medida faz parte de um novo acordo político entre o governo interino e a oposição.",
+      "sintese_nerd": "A flexibilização das regras políticas na Venezuela pode atenuar tensões diplomáticas regionais e abrir caminho para a normalização de fronteiras e fluxos comerciais terrestres.",
+      "impacto_pratico": "A flexibilização das regras políticas na Venezuela pode atenuar tensões diplomáticas regionais e abrir caminho para a normalização de fronteiras e fluxos comerciais terrestres.",
+      "paises_envolvidos": [
+        "VE"
+      ],
+      "veiculos_origem": [
+        "G1 Mundo"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/mundo/noticia/2026/11/26/venezuela-revogara-lei-que-torna-opositores-inelegiveis-pelo-resto-da-vida-diz-chefe-do-parlamento.ghtml"
+      ],
+      "data_publicacao": "2026-11-26T21:52:09Z",
+      "updated_at": "2026-11-26T23:50:37Z"
+    },
+    {
+      "slug": "pix-novas-regras-seguranca-2027",
+      "status": "novo",
+      "categoria": "Economia_Comercio",
       "ttl_horas": 24,
       "expires_at": "2026-11-27T22:51:42Z",
-      "palavras_chave_busca": [
-        "pix",
-        "banco central",
-        "segurança",
-        "2027"
+      "updated_at": "2026-11-26T22:51:42Z",
+      "fontes_urls": [
+        "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/pix-tera-novas-regras-de-seguranca-e-melhorias-em-2027"
       ],
+      "titulo_tema": "Banco Central anuncia novas regras de segurança e melhorias no Pix para 2027",
+      "resumo_pulso": "Conforme comunicado da Agência Brasil e do Banco Central, a 29ª Reunião Plenária do Fórum Pix detalhou a agenda evolutiva do sistema para 2027. Entre as novidades estão o aprimoramento do Pix Automático, ferramentas avançadas contra fraudes e mecanismos para coibir mensagens ofensivas em transações.",
+      "sintese_nerd": "Usuários e viajantes contarão com maior proteção digital e facilidade na devolução de valores transferidos por engano.",
+      "titulo_curto": "Banco Central anuncia novas regras de segurança e melhorias no Pix para 2027",
+      "rota_editoria": "/economia",
       "palavras_chave": [
         "pix",
         "banco central",
         "segurança",
         "2027"
       ],
+      "urgencia_score": 88,
+      "data_publicacao": "2026-11-26T21:36:00Z",
       "gatilho_vitrine": "Conforme comunicado da Agência Brasil e do Banco Central, a 29ª Reunião Plenária do Fórum Pix detalhou a agenda evolutiva do sistema para 2027. Entre as novidades estão o aprimoramento do Pix Automático, ferramentas avançadas contra fraudes e mecanismos para coibir mensagens ofensivas em transações.",
-      "resumo_pulso": "Conforme comunicado da Agência Brasil e do Banco Central, a 29ª Reunião Plenária do Fórum Pix detalhou a agenda evolutiva do sistema para 2027. Entre as novidades estão o aprimoramento do Pix Automático, ferramentas avançadas contra fraudes e mecanismos para coibir mensagens ofensivas em transações.",
-      "sintese_nerd": "Usuários e viajantes contarão com maior proteção digital e facilidade na devolução de valores transferidos por engano.",
       "impacto_pratico": "Usuários e viajantes contarão com maior proteção digital e facilidade na devolução de valores transferidos por engano.",
-      "paises_envolvidos": [
-        "BR"
-      ],
+      "origem_pipeline": "pulso",
       "veiculos_origem": [
         "Agência Brasil (EBC)",
         "Banco Central do Brasil"
       ],
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/pix-tera-novas-regras-de-seguranca-e-melhorias-em-2027"
+      "relevancia_score": 90,
+      "paises_envolvidos": [
+        "BR"
       ],
-      "data_publicacao": "2026-11-26T21:36:00Z",
-      "updated_at": "2026-11-26T22:51:42Z"
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "pix",
+        "banco central",
+        "segurança",
+        "2027"
+      ]
     },
     {
       "slug": "lula-cleitinho-negociacao-divida-minas-gerais",
@@ -375,49 +420,51 @@
     },
     {
       "slug": "orcamento-2027-aprovacao-relatorio-preliminar-cmo",
+      "titulo_tema": "Eduardo Braga aponta novo ajuste fiscal após aprovação do relatório preliminar do Orçamento de 2027",
+      "titulo_curto": "Eduardo Braga aponta novo ajuste fiscal após aprovação do relatório preliminar do Orçamento de 2027",
       "status": "novo",
-      "categoria": "Economia_Comercio",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-27T18:52:27Z",
-      "updated_at": "2026-11-26T20:55:45Z",
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/cmo-aprova-relatorio-do-orcamento-de-2027-com-corte-de-r-209-bilhoes"
-      ],
-      "titulo_tema": "CMO aprova relatório preliminar do Orçamento de 2027 com cortes para emendas parlamentares",
-      "resumo_pulso": "Conforme apuração da Agência Brasil e do Poder360, a Comissão Mista de Orçamento (CMO) aprovou o parecer preliminar da proposta orçamentária de 2027, prevendo o cancelamento de R$ 2,09 bilhões em despesas discricionárias para acomodar emendas. O relator-geral, senador Eduardo Braga, indicou esforço para preservar pisos de saúde e educação.",
-      "sintese_nerd": "Define a alocação de recursos públicos federais, impactando diretamente investimentos em infraestrutura, programas sociais e serviços públicos no próximo ano.",
-      "titulo_curto": "CMO aprova relatório preliminar do Orçamento de 2027 com cortes para emendas parlamentares",
-      "rota_editoria": "/economia",
-      "palavras_chave": [
-        "orçamento 2027",
-        "cmo",
-        "congresso nacional",
-        "gastos públicos"
-      ],
-      "urgencia_score": 92,
-      "data_publicacao": "2026-11-26T18:17:34Z",
-      "gatilho_vitrine": "Conforme apuração da Agência Brasil e do Poder360, a Comissão Mista de Orçamento (CMO) aprovou o parecer preliminar da proposta orçamentária de 2027, prevendo o cancelamento de R$ 2,09 bilhões em despesas discricionárias para acomodar emendas. O relator-geral, senador Eduardo Braga, indicou esforço para preservar pisos de saúde e educação.",
-      "impacto_pratico": "Define a alocação de recursos públicos federais, impactando diretamente investimentos em infraestrutura, programas sociais e serviços públicos no próximo ano.",
       "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "Agência Brasil (EBC)",
-        "Poder360"
-      ],
-      "relevancia_score": 94,
-      "paises_envolvidos": [
-        "BR"
-      ],
       "categoria_primaria": "Economia",
+      "categoria": "Economia_Comercio",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
       ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 94,
+      "urgencia_score": 92,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-27T18:52:27Z",
       "palavras_chave_busca": [
         "orçamento 2027",
-        "cmo",
+        "eduardo braga",
+        "ajuste fiscal",
         "congresso nacional",
-        "gastos públicos"
-      ]
+        "cmo"
+      ],
+      "palavras_chave": [
+        "orçamento 2027",
+        "eduardo braga",
+        "ajuste fiscal",
+        "congresso nacional",
+        "cmo"
+      ],
+      "gatilho_vitrine": "Conforme apuração da TV Senado e da Agência Brasil, o senador Eduardo Braga defendeu um novo ajuste fiscal após a apresentação do parecer preliminar da proposta orçamentária de 2027. O texto prevê cortes em despesas discricionárias para acomodar emendas, com votação definitiva estimada até 17 de dezembro, impactando diretamente o planejamento de gastos públicos.",
+      "resumo_pulso": "Conforme apuração da TV Senado e da Agência Brasil, o senador Eduardo Braga defendeu um novo ajuste fiscal após a apresentação do parecer preliminar da proposta orçamentária de 2027. O texto prevê cortes em despesas discricionárias para acomodar emendas, com votação definitiva estimada até 17 de dezembro, impactando diretamente o planejamento de gastos públicos.",
+      "sintese_nerd": "A reavaliação de gastos e cortes fiscais pode influenciar a entrega de serviços públicos e os investimentos federais em infraestrutura e políticas sociais.",
+      "impacto_pratico": "A reavaliação de gastos e cortes fiscais pode influenciar a entrega de serviços públicos e os investimentos federais em infraestrutura e políticas sociais.",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "veiculos_origem": [
+        "TV Senado",
+        "Agência Brasil (EBC)"
+      ],
+      "fontes_urls": [
+        "https://www.youtube.com/watch?v=8AGIThsUL_s"
+      ],
+      "data_publicacao": "2026-11-26T18:17:34Z",
+      "updated_at": "2026-11-26T23:50:37Z"
     },
     {
       "slug": "senado-aprova-fim-fianca-homicidio-transito-embriaguez",
@@ -847,95 +894,83 @@
         "pib",
         "câmbio"
       ]
-    },
-    {
-      "slug": "dolar-cai-abaixo-5-80-lula-trabuco-fazenda",
-      "titulo_tema": "Ibovespa dispara e dólar recua após Luiz Carlos Trabuco aceitar comando da Fazenda",
-      "titulo_curto": "Ibovespa dispara e dólar recua após Luiz Carlos Trabuco aceitar comando da Fazenda",
-      "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Economia",
-      "categoria": "Economia_Comercio",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 99,
-      "urgencia_score": 98,
-      "ttl_horas": 12,
-      "expires_at": "2026-11-27T00:31:54Z",
-      "palavras_chave_busca": [
-        "luiz trabuco",
-        "ministério da fazenda",
-        "ibovespa",
-        "dólar",
-        "economia"
-      ],
-      "palavras_chave": [
-        "luiz trabuco",
-        "ministério da fazenda",
-        "ibovespa",
-        "dólar",
-        "economia"
-      ],
-      "gatilho_vitrine": "Segundo apuração do G1 Economia e da InfoMoney, o mercado financeiro reagiu fortemente com a confirmação de que Luiz Carlos Trabuco, presidente do conselho do Bradesco, aceitou o convite para assumir o Ministério da Fazenda no próximo mandato. A notícia impulsionou a bolsa e aliviou as cotações do dólar, gerando impacto cambial direto e favorável para o bolso do viajante brasileiro e para importadores.",
-      "resumo_pulso": "Segundo apuração do G1 Economia e da InfoMoney, o mercado financeiro reagiu fortemente com a confirmação de que Luiz Carlos Trabuco, presidente do conselho do Bradesco, aceitou o convite para assumir o Ministério da Fazenda no próximo mandato. A notícia impulsionou a bolsa e aliviou as cotações do dólar, gerando impacto cambial direto e favorável para o bolso do viajante brasileiro e para importadores.",
-      "sintese_nerd": "A valorização do real barateia passagens aéreas internacionais, hospedagens e compras no exterior para o viajante brasileiro.",
-      "impacto_pratico": "A valorização do real barateia passagens aéreas internacionais, hospedagens e compras no exterior para o viajante brasileiro.",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "veiculos_origem": [
-        "G1 Economia",
-        "InfoMoney Mercados",
-        "JOTA Info"
-      ],
-      "fontes_urls": [
-        "https://g1.globo.com/economia/noticia/2026/11/26/trabuco-ibovespa-fazenda-dolar.ghtml"
-      ],
-      "data_publicacao": "2026-11-26T12:25:11Z",
-      "updated_at": "2026-11-26T22:51:42Z"
     }
   ],
   "noticias_quentes": [
     {
-      "slug": "pix-novas-regras-seguranca-2027",
-      "titulo_curto": "Banco Central anuncia novas regras de segurança e melhorias no Pix para 2027",
-      "resumo_pulso": "Conforme comunicado da Agência Brasil e do Banco Central, a 29ª Reunião Plenária do Fórum Pix detalhou a agenda evolutiva do sistema para 2027. Entre as novidades estão o aprimoramento do Pix Automático, ferramentas avançadas contra fraudes e mecanismos para coibir mensagens ofensivas em transações.",
-      "impacto_pratico": "Usuários e viajantes contarão com maior proteção digital e facilidade na devolução de valores transferidos por engano.",
-      "categoria": "Economia_Comercio",
+      "slug": "venezuela-revogara-lei-que-previa- ate-30-anos-prisao-opositores",
+      "titulo_curto": "Venezuela anuncia revogação de lei que impedia opositores de exercer cargos públicos e previa longas penas",
+      "resumo_pulso": "Segundo reportagem do G1 Mundo, o presidente do Parlamento venezuelano, Jorge Rodríguez, anunciou que o país revogará a lei que impunha penas de até 30 anos e inelegibilidade perpétua a opositores do regime. A medida faz parte de um novo acordo político entre o governo interino e a oposição.",
+      "impacto_pratico": "A flexibilização das regras políticas na Venezuela pode atenuar tensões diplomáticas regionais e abrir caminho para a normalização de fronteiras e fluxos comerciais terrestres.",
+      "categoria": "Geopolitica_Relacoes",
       "paises_envolvidos": [
-        "BR"
+        "VE"
       ],
-      "urgencia_score": 88,
-      "relevancia_score": 90,
+      "urgencia_score": 87,
+      "relevancia_score": 88,
       "nivel_confianca": "alta",
       "ttl_horas": 24,
       "horas_em_destaque": 12,
       "veiculos_origem": [
-        "Agência Brasil (EBC)",
-        "Banco Central do Brasil"
+        "G1 Mundo"
       ],
+      "fontes_urls": [
+        "https://g1.globo.com/mundo/noticia/2026/11/26/venezuela-revogara-lei-que-torna-opositores-inelegiveis-pelo-resto-da-vida-diz-chefe-do-parlamento.ghtml"
+      ],
+      "palavras_chave": [
+        "Venezuela",
+        "Assembleia Nacional",
+        "Oposição",
+        "Direitos Políticos"
+      ],
+      "data_publicacao": "2026-11-26T21:52:09Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "Cenário eleitoral e articulações partidárias movimentam disputas políticas no Brasil e nas Américas",
+          "url_existente": "https://www.rodandoomundo.com.br/eleicoes",
+          "motivo_conexao": "Acompanhe as mudanças institucionais e os desdobramentos democráticos nos países da América Latina."
+        }
+      ],
+      "expires_at": "2026-11-27T23:50:37Z",
+      "updated_at": "2026-11-26T23:50:37Z"
+    },
+    {
+      "slug": "pix-novas-regras-seguranca-2027",
+      "categoria": "Economia_Comercio",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-27T22:51:42Z",
+      "updated_at": "2026-11-26T22:51:42Z",
       "fontes_urls": [
         "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/pix-tera-novas-regras-de-seguranca-e-melhorias-em-2027"
       ],
+      "resumo_pulso": "Conforme comunicado da Agência Brasil e do Banco Central, a 29ª Reunião Plenária do Fórum Pix detalhou a agenda evolutiva do sistema para 2027. Entre as novidades estão o aprimoramento do Pix Automático, ferramentas avançadas contra fraudes e mecanismos para coibir mensagens ofensivas em transações.",
+      "titulo_curto": "Banco Central anuncia novas regras de segurança e melhorias no Pix para 2027",
       "palavras_chave": [
         "Pix",
         "Banco Central",
         "Segurança",
         "2027"
       ],
+      "urgencia_score": 88,
       "data_publicacao": "2026-11-26T21:36:00Z",
+      "impacto_pratico": "Usuários e viajantes contarão com maior proteção digital e facilidade na devolução de valores transferidos por engano.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Agência Brasil (EBC)",
+        "Banco Central do Brasil"
+      ],
+      "relevancia_score": 90,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "BR"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "Banco Central e mercado financeiro acompanham inflação de serviços, câmbio e metas fiscais",
           "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
-          "motivo_conexao": "Entenda como as diretrizes monetárias e regulatórias do Banco Central impactam o cotidiano financeiro."
+          "motivo_conexao": "Entenda como as diretrizes monetárias e regulatórias do Banco Central impactam o cotidiano financeiro.",
+          "titulo_existente": "Banco Central e mercado financeiro acompanham inflação de serviços, câmbio e metas fiscais"
         }
-      ],
-      "expires_at": "2026-11-27T22:51:42Z",
-      "updated_at": "2026-11-26T22:51:42Z"
+      ]
     },
     {
       "slug": "stf-piso-nacional-professores-leis-locais",
@@ -1212,41 +1247,47 @@
     },
     {
       "slug": "orcamento-2027-aprovacao-relatorio-preliminar-cmo",
+      "titulo_curto": "Eduardo Braga aponta novo ajuste fiscal após aprovação do relatório preliminar do Orçamento de 2027",
+      "resumo_pulso": "Conforme apuração da TV Senado e da Agência Brasil, o senador Eduardo Braga defendeu um novo ajuste fiscal após a apresentação do parecer preliminar da proposta orçamentária de 2027. O texto prevê cortes em despesas discricionárias para acomodar emendas, com votação definitiva estimada até 17 de dezembro, impactando diretamente o planejamento de gastos públicos.",
+      "impacto_pratico": "A reavaliação de gastos e cortes fiscais pode influenciar a entrega de serviços públicos e os investimentos federais em infraestrutura e políticas sociais.",
       "categoria": "Economia_Comercio",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-27T18:52:27Z",
-      "updated_at": "2026-11-26T20:55:45Z",
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/cmo-aprova-relatorio-do-orcamento-de-2027-com-corte-de-r-209-bilhoes"
-      ],
-      "resumo_pulso": "Conforme apuração da Agência Brasil e do Poder360, a Comissão Mista de Orçamento (CMO) aprovou o parecer preliminar da proposta orçamentária de 2027, prevendo o cancelamento de R$ 2,09 bilhões em despesas discricionárias para acomodar emendas. O relator-geral, senador Eduardo Braga, indicou esforço para preservar pisos de saúde e educação.",
-      "titulo_curto": "CMO aprova relatório preliminar do Orçamento de 2027 com cortes para emendas parlamentares",
-      "palavras_chave": [
-        "Orçamento 2027",
-        "CMO",
-        "Congresso Nacional",
-        "Gastos Públicos"
-      ],
-      "urgencia_score": 92,
-      "data_publicacao": "2026-11-26T18:17:34Z",
-      "impacto_pratico": "Define a alocação de recursos públicos federais, impactando diretamente investimentos em infraestrutura, programas sociais e serviços públicos no próximo ano.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Agência Brasil (EBC)",
-        "Poder360"
-      ],
-      "relevancia_score": 94,
-      "horas_em_destaque": 18,
       "paises_envolvidos": [
         "BR"
       ],
+      "urgencia_score": 92,
+      "relevancia_score": 94,
+      "nivel_confianca": "alta",
+      "ttl_horas": 24,
+      "horas_em_destaque": 18,
+      "veiculos_origem": [
+        "TV Senado",
+        "Agência Brasil (EBC)"
+      ],
+      "fontes_urls": [
+        "https://www.youtube.com/watch?v=8AGIThsUL_s"
+      ],
+      "palavras_chave": [
+        "Orçamento 2027",
+        "Eduardo Braga",
+        "Ajuste Fiscal",
+        "Congresso Nacional",
+        "CMO"
+      ],
+      "data_publicacao": "2026-11-26T18:17:34Z",
       "links_internos_relacionados": [
         {
+          "titulo_existente": "O que é o Orçamento?",
           "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-o-orcamento",
-          "motivo_conexao": "Entenda como o planejamento das contas públicas afeta a distribuição de verbas federais.",
-          "titulo_existente": "O que é o Orçamento?"
+          "motivo_conexao": "Compreenda a dinâmica de distribuição de recursos públicos entre saúde, educação e dívida no orçamento federal."
+        },
+        {
+          "titulo_existente": "Congresso e Planalto negociam prioridades da pauta econômica e votação do Orçamento",
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-o-orcamento",
+          "motivo_conexao": "Veja os detalhes das articulações políticas em torno das metas fiscais e emendas parlamentares."
         }
-      ]
+      ],
+      "expires_at": "2026-11-27T18:52:27Z",
+      "updated_at": "2026-11-26T23:50:37Z"
     },
     {
       "slug": "senado-aprova-fim-fianca-homicidio-transito-embriaguez",
@@ -1636,46 +1677,6 @@
           "titulo_existente": "Mercados e aliados internacionais avaliam impacto da política comercial norte-americana"
         }
       ]
-    },
-    {
-      "slug": "dolar-cai-abaixo-5-80-lula-trabuco-fazenda",
-      "titulo_curto": "Ibovespa dispara e dólar recua após Luiz Carlos Trabuco aceitar comando da Fazenda",
-      "resumo_pulso": "Segundo apuração do G1 Economia e da InfoMoney, o mercado financeiro reagiu fortemente com a confirmação de que Luiz Carlos Trabuco, presidente do conselho do Bradesco, aceitou o convite para assumir o Ministério da Fazenda no próximo mandato. A notícia impulsionou a bolsa e aliviou as cotações do dólar, gerando impacto cambial direto e favorável para o bolso do viajante brasileiro e para importadores.",
-      "impacto_pratico": "A valorização do real barateia passagens aéreas internacionais, hospedagens e compras no exterior para o viajante brasileiro.",
-      "categoria": "Economia_Comercio",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "urgencia_score": 98,
-      "relevancia_score": 99,
-      "nivel_confianca": "alta",
-      "ttl_horas": 12,
-      "horas_em_destaque": 24,
-      "veiculos_origem": [
-        "G1 Economia",
-        "InfoMoney Mercados",
-        "JOTA Info"
-      ],
-      "fontes_urls": [
-        "https://g1.globo.com/economia/noticia/2026/11/26/trabuco-ibovespa-fazenda-dolar.ghtml"
-      ],
-      "palavras_chave": [
-        "Luiz Trabuco",
-        "Ministério da Fazenda",
-        "Ibovespa",
-        "Dólar",
-        "Economia"
-      ],
-      "data_publicacao": "2026-11-26T12:25:11Z",
-      "links_internos_relacionados": [
-        {
-          "titulo_existente": "Economia no Brasil",
-          "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
-          "motivo_conexao": "Acompanhe as oscilações do câmbio e os reflexos da transição econômica no mercado brasileiro."
-        }
-      ],
-      "expires_at": "2026-11-27T00:31:54Z",
-      "updated_at": "2026-11-26T22:51:42Z"
     }
   ],
   "temas_curadoria": [
