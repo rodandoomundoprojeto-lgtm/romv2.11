@@ -2,8 +2,8 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-26T14:17:46Z",
-  "batch_id": "20261126-1417",
+  "updatedAt": "2026-11-26T15:31:02Z",
+  "batch_id": "20261126-1530",
   "temas_ativos": [
     {
       "slug": "trabuco-cotado-fazenda-ibovespa-dolar-queda",
@@ -115,28 +115,19 @@
     },
     {
       "slug": "ataque-drones-kuwait-mortes",
-      "titulo_tema": "Ataque de drones no Kuwait deixa dois italianos mortos e eleva tensão na região",
-      "titulo_curto": "Ataque de drones no Kuwait deixa dois italianos mortos e eleva tensão na região",
       "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Geopolitica_Radar",
       "categoria": "Geopolitica_Relacoes",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 88,
-      "urgencia_score": 91,
       "ttl_horas": 12,
       "expires_at": "2026-11-27T02:17:46Z",
-      "palavras_chave_busca": [
-        "kuwait",
-        "ataque de drones",
-        "irã",
-        "oriente médio",
-        "petróleo"
+      "updated_at": "2026-11-26T14:17:46Z",
+      "fontes_urls": [
+        "https://g1.globo.com/mundo/noticia/2026/11/26/dois-italianos-morrem-ataque-ira-kuwait-diz-agencia.ghtml"
       ],
+      "titulo_tema": "Ataque de drones no Kuwait deixa dois italianos mortos e eleva tensão na região",
+      "resumo_pulso": "Segundo informações da Ansa e do G1 Mundo, dois cidadãos italianos morreram em um ataque de drones hostis atribuído ao Irã contra um alvo estratégico no Kuwait. Autoridades locais e agências internacionais monitoram a escalada de hostilidades na região do Golfo Pérsico.",
+      "sintese_nerd": "A escalada de conflitos no Oriente Médio pode gerar volatilidade imediata nos preços internacionais do petróleo, encarecendo os combustíveis e impactando indiretamente os custos de passagens aéreas para viajantes.",
+      "titulo_curto": "Ataque de drones no Kuwait deixa dois italianos mortos e eleva tensão na região",
+      "rota_editoria": "/radar",
       "palavras_chave": [
         "kuwait",
         "ataque de drones",
@@ -144,49 +135,49 @@
         "oriente médio",
         "petróleo"
       ],
+      "urgencia_score": 91,
+      "data_publicacao": "2026-11-26T13:53:40Z",
       "gatilho_vitrine": "Segundo informações da Ansa e do G1 Mundo, dois cidadãos italianos morreram em um ataque de drones hostis atribuído ao Irã contra um alvo estratégico no Kuwait. Autoridades locais e agências internacionais monitoram a escalada de hostilidades na região do Golfo Pérsico.",
-      "resumo_pulso": "Segundo informações da Ansa e do G1 Mundo, dois cidadãos italianos morreram em um ataque de drones hostis atribuído ao Irã contra um alvo estratégico no Kuwait. Autoridades locais e agências internacionais monitoram a escalada de hostilidades na região do Golfo Pérsico.",
-      "sintese_nerd": "A escalada de conflitos no Oriente Médio pode gerar volatilidade imediata nos preços internacionais do petróleo, encarecendo os combustíveis e impactando indiretamente os custos de passagens aéreas para viajantes.",
       "impacto_pratico": "A escalada de conflitos no Oriente Médio pode gerar volatilidade imediata nos preços internacionais do petróleo, encarecendo os combustíveis e impactando indiretamente os custos de passagens aéreas para viajantes.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "G1 Mundo",
+        "Ansa"
+      ],
+      "relevancia_score": 88,
       "paises_envolvidos": [
         "KW",
         "IT",
         "IR"
       ],
-      "veiculos_origem": [
-        "G1 Mundo",
-        "Ansa"
-      ],
-      "fontes_urls": [
-        "https://g1.globo.com/mundo/noticia/2026/11/26/dois-italianos-morrem-ataque-ira-kuwait-diz-agencia.ghtml"
-      ],
-      "data_publicacao": "2026-11-26T13:53:40Z",
-      "updated_at": "2026-11-26T14:17:46Z"
-    },
-    {
-      "slug": "protestos-paraguai-crise-ueno-bank",
-      "titulo_tema": "Milhares protestam no Paraguai contra violência de gênero e crise do Ueno Bank",
-      "titulo_curto": "Milhares protestam no Paraguai contra violência de gênero e crise do Ueno Bank",
-      "status": "novo",
-      "origem_pipeline": "pulso",
       "categoria_primaria": "Geopolitica_Radar",
-      "categoria": "Mobilidade_Fronteiras",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
       ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 84,
-      "urgencia_score": 82,
+      "palavras_chave_busca": [
+        "kuwait",
+        "ataque de drones",
+        "irã",
+        "oriente médio",
+        "petróleo"
+      ]
+    },
+    {
+      "slug": "protestos-paraguai-crise-ueno-bank",
+      "status": "novo",
+      "categoria": "Mobilidade_Fronteiras",
       "ttl_horas": 24,
       "expires_at": "2026-11-27T14:17:46Z",
-      "palavras_chave_busca": [
-        "paraguai",
-        "ueno bank",
-        "protestos",
-        "fronteira",
-        "economia"
+      "updated_at": "2026-11-26T14:17:46Z",
+      "fontes_urls": [
+        "https://g1.globo.com/mundo/noticia/2026/11/26/milhares-protestam-no-paraguai-contra-violencia-contra-a-mulher-e-crise-do-ueno-bank.ghtml"
       ],
+      "titulo_tema": "Milhares protestam no Paraguai contra violência de gênero e crise do Ueno Bank",
+      "resumo_pulso": "Conforme apuração do G1 Economia, milhares de pessoas tomaram as ruas de Assunção para protestar contra a violência de gênero e exigir a devolução de economias após a quebra do Ueno Bank. O movimento gera reflexos na segurança e na estabilidade financeira de cidades fronteiriças com o Brasil.",
+      "sintese_nerd": "Turistas e viajantes que cruzam a fronteiriça com o Paraguai devem redobrar a atenção com instabilidades bancárias e manifestações locais na região de Assunção e áreas de comércio fronteiriço.",
+      "titulo_curto": "Milhares protestam no Paraguai contra violência de gênero e crise do Ueno Bank",
+      "rota_editoria": "/radar",
       "palavras_chave": [
         "paraguai",
         "ueno bank",
@@ -194,27 +185,83 @@
         "fronteira",
         "economia"
       ],
+      "urgencia_score": 82,
+      "data_publicacao": "2026-11-26T13:48:36Z",
       "gatilho_vitrine": "Conforme apuração do G1 Economia, milhares de pessoas tomaram as ruas de Assunção para protestar contra a violência de gênero e exigir a devolução de economias após a quebra do Ueno Bank. O movimento gera reflexos na segurança e na estabilidade financeira de cidades fronteiriças com o Brasil.",
-      "resumo_pulso": "Conforme apuração do G1 Economia, milhares de pessoas tomaram as ruas de Assunção para protestar contra a violência de gênero e exigir a devolução de economias após a quebra do Ueno Bank. O movimento gera reflexos na segurança e na estabilidade financeira de cidades fronteiriças com o Brasil.",
-      "sintese_nerd": "Turistas e viajantes que cruzam a fronteiriça com o Paraguai devem redobrar a atenção com instabilidades bancárias e manifestações locais na região de Assunção e áreas de comércio fronteiriço.",
       "impacto_pratico": "Turistas e viajantes que cruzam a fronteiriça com o Paraguai devem redobrar a atenção com instabilidades bancárias e manifestações locais na região de Assunção e áreas de comércio fronteiriço.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "G1 Economia"
+      ],
+      "relevancia_score": 84,
       "paises_envolvidos": [
         "PY",
         "BR"
       ],
-      "veiculos_origem": [
-        "G1 Economia"
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
       ],
-      "fontes_urls": [
-        "https://g1.globo.com/mundo/noticia/2026/11/26/milhares-protestam-no-paraguai-contra-violencia-contra-a-mulher-e-crise-do-ueno-bank.ghtml"
-      ],
-      "data_publicacao": "2026-11-26T13:48:36Z",
-      "updated_at": "2026-11-26T14:17:46Z"
+      "palavras_chave_busca": [
+        "paraguai",
+        "ueno bank",
+        "protestos",
+        "fronteira",
+        "economia"
+      ]
     },
     {
       "slug": "contas-externas-brasil-outubro",
+      "status": "novo",
+      "categoria": "Economia_Comercio",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-27T14:17:46Z",
+      "updated_at": "2026-11-26T14:17:46Z",
+      "fontes_urls": [
+        "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/contas-externas-tem-deficit-de-us-4-bilhoes-em-outubro"
+      ],
       "titulo_tema": "Contas externas do Brasil registram déficit de US$ 4 bilhões em outubro, aponta Banco Central",
+      "resumo_pulso": "Segundo dados divulgados pelo Banco Central, as contas externas brasileiras registraram déficit de US$ 4 bilhões em outubro de 2026, mantendo o patamar do mesmo período do ano anterior. O acumulado em 12 meses atingiu US$ 60,6 bilhões, o equivalente a 2,34% do PIB, exigindo monitoramento por parte de investidores e viajantes atentos aos rumos cambiais.",
+      "sintese_nerd": "O déficit nas contas externas influencia o fluxo de divisas para o país, o que pode gerar pressões pontuais sobre a cotação do dólar e o planejamento de gastos de viajantes.",
       "titulo_curto": "Contas externas do Brasil registram déficit de US$ 4 bilhões em outubro, aponta Banco Central",
+      "rota_editoria": "/economia",
+      "palavras_chave": [
+        "contas externas",
+        "banco central",
+        "déficit",
+        "pib",
+        "câmbio"
+      ],
+      "urgencia_score": 88,
+      "data_publicacao": "2026-11-26T13:33:00Z",
+      "gatilho_vitrine": "Segundo dados divulgados pelo Banco Central, as contas externas brasileiras registraram déficit de US$ 4 bilhões em outubro de 2026, mantendo o patamar do mesmo período do ano anterior. O acumulado em 12 meses atingiu US$ 60,6 bilhões, o equivalente a 2,34% do PIB, exigindo monitoramento por parte de investidores e viajantes atentos aos rumos cambiais.",
+      "impacto_pratico": "O déficit nas contas externas influencia o fluxo de divisas para o país, o que pode gerar pressões pontuais sobre a cotação do dólar e o planejamento de gastos de viajantes.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "Agência Brasil (EBC)"
+      ],
+      "relevancia_score": 90,
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "contas externas",
+        "banco central",
+        "déficit",
+        "pib",
+        "câmbio"
+      ]
+    },
+    {
+      "slug": "alckmin-critica-tarifas-eua-aviao",
+      "titulo_tema": "Embraer e governo brasileiro alertam que tarifas de Trump sobre aeronaves encarecerão passagens nos EUA",
+      "titulo_curto": "Embraer e governo brasileiro alertam que tarifas de Trump sobre aeronaves encarecerão passagens nos EUA",
       "status": "novo",
       "origem_pipeline": "pulso",
       "categoria_primaria": "Economia",
@@ -224,75 +271,30 @@
         "Resumo_Ultimas"
       ],
       "rota_editoria": "/economia",
-      "relevancia_score": 90,
-      "urgencia_score": 88,
+      "relevancia_score": 92,
+      "urgencia_score": 90,
       "ttl_horas": 24,
       "expires_at": "2026-11-27T14:17:46Z",
       "palavras_chave_busca": [
-        "contas externas",
-        "banco central",
-        "déficit",
-        "pib",
-        "câmbio"
+        "embraer",
+        "tarifas",
+        "eua",
+        "donald trump",
+        "passagens aereas",
+        "aviacao"
       ],
       "palavras_chave": [
-        "contas externas",
-        "banco central",
-        "déficit",
-        "pib",
-        "câmbio"
-      ],
-      "gatilho_vitrine": "Segundo dados divulgados pelo Banco Central, as contas externas brasileiras registraram déficit de US$ 4 bilhões em outubro de 2026, mantendo o patamar do mesmo período do ano anterior. O acumulado em 12 meses atingiu US$ 60,6 bilhões, o equivalente a 2,34% do PIB, exigindo monitoramento por parte de investidores e viajantes atentos aos rumos cambiais.",
-      "resumo_pulso": "Segundo dados divulgados pelo Banco Central, as contas externas brasileiras registraram déficit de US$ 4 bilhões em outubro de 2026, mantendo o patamar do mesmo período do ano anterior. O acumulado em 12 meses atingiu US$ 60,6 bilhões, o equivalente a 2,34% do PIB, exigindo monitoramento por parte de investidores e viajantes atentos aos rumos cambiais.",
-      "sintese_nerd": "O déficit nas contas externas influencia o fluxo de divisas para o país, o que pode gerar pressões pontuais sobre a cotação do dólar e o planejamento de gastos de viajantes.",
-      "impacto_pratico": "O déficit nas contas externas influencia o fluxo de divisas para o país, o que pode gerar pressões pontuais sobre a cotação do dólar e o planejamento de gastos de viajantes.",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "veiculos_origem": [
-        "Agência Brasil (EBC)"
-      ],
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/contas-externas-tem-deficit-de-us-4-bilhoes-em-outubro"
-      ],
-      "data_publicacao": "2026-11-26T13:33:00Z",
-      "updated_at": "2026-11-26T14:17:46Z"
-    },
-    {
-      "slug": "alckmin-critica-tarifas-eua-aviao",
-      "titulo_tema": "Alckmin classifica tarifa de 10% dos EUA sobre aviões brasileiros como irrazoável",
-      "titulo_curto": "Alckmin classifica tarifa de 10% dos EUA sobre aviões brasileiros como irrazoável",
-      "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Geopolitica_Radar",
-      "categoria": "Geopolitica_Relacoes",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 91,
-      "urgencia_score": 89,
-      "ttl_horas": 24,
-      "expires_at": "2026-11-27T14:17:46Z",
-      "palavras_chave_busca": [
-        "geraldo alckmin",
+        "embraer",
         "tarifas",
-        "estados unidos",
-        "comércio exterior",
-        "aviação"
+        "eua",
+        "donald trump",
+        "passagens aereas",
+        "aviacao"
       ],
-      "palavras_chave": [
-        "geraldo alckmin",
-        "tarifas",
-        "estados unidos",
-        "comércio exterior",
-        "aviação"
-      ],
-      "gatilho_vitrine": "Conforme apuração do G1, o vice-presidente Geraldo Alckmin criticou duramente a nova tarifa de 10% anunciada pelos Estados Unidos sobre aeronaves brasileiras, classificando a medida como completamente irrazoável. O governo brasileiro articula ações diplomáticas para reverter a taxação comercial imposta por Washington.",
-      "resumo_pulso": "Conforme apuração do G1, o vice-presidente Geraldo Alckmin criticou duramente a nova tarifa de 10% anunciada pelos Estados Unidos sobre aeronaves brasileiras, classificando a medida como completamente irrazoável. O governo brasileiro articula ações diplomáticas para reverter a taxação comercial imposta por Washington.",
-      "sintese_nerd": "A imposição de tarifas afeta a competitividade de exportações industriais estratégicas do Brasil, gerando incertezas nas relações comerciais bilaterais com reflexos no câmbio comercial.",
-      "impacto_pratico": "A imposição de tarifas afeta a competitividade de exportações industriais estratégicas do Brasil, gerando incertezas nas relações comerciais bilaterais com reflexos no câmbio comercial.",
+      "gatilho_vitrine": "Conforme declarações do presidente-executivo da Embraer, Francisco Gomes Neto, repercutidas pelo G1 Economia, as novas tarifas comerciais propostas pelos Estados Unidos sob a gestão de Donald Trump podem pressionar a inflação americana e encarecer bilhetes aéreos. O governo brasileiro mantém articulações para reverter o atrito tarifário.",
+      "resumo_pulso": "Conforme declarações do presidente-executivo da Embraer, Francisco Gomes Neto, repercutidas pelo G1 Economia, as novas tarifas comerciais propostas pelos Estados Unidos sob a gestão de Donald Trump podem pressionar a inflação americana e encarecer bilhetes aéreos. O governo brasileiro mantém articulações para reverter o atrito tarifário.",
+      "sintese_nerd": "A taxação de 10% sobre aeronaves brasileiras pode gerar reflexos no preço de passagens aéreas e no custo operacional de companhias de aviação, impactando turistas e viajantes frequentes.",
+      "impacto_pratico": "A taxação de 10% sobre aeronaves brasileiras pode gerar reflexos no preço de passagens aéreas e no custo operacional de companhias de aviação, impactando turistas e viajantes frequentes.",
       "paises_envolvidos": [
         "BR",
         "US"
@@ -301,15 +303,15 @@
         "G1 Economia"
       ],
       "fontes_urls": [
-        "https://g1.globo.com/economia/noticia/2026/11/26/alckimin-eua-tarias.ghtml"
+        "https://g1.globo.com/economia/noticia/2026/11/26/embraer-aeronaves-eua.ghtml"
       ],
       "data_publicacao": "2026-11-26T13:31:21Z",
-      "updated_at": "2026-11-26T14:17:46Z"
+      "updated_at": "2026-11-26T15:31:02Z"
     },
     {
       "slug": "dolar-cai-abaixo-5-80-lula-trabuco-fazenda",
-      "titulo_tema": "Dólar recua abaixo de R$ 5,80 após sondagem de Trabuco para a Fazenda",
-      "titulo_curto": "Dólar recua abaixo de R$ 5,80 após sondagem de Trabuco para a Fazenda",
+      "titulo_tema": "Dólar recua abaixo de R$ 5,80 com otimismo sobre Trabuco na Fazenda e novas medidas fiscais",
+      "titulo_curto": "Dólar recua abaixo de R$ 5,80 com otimismo sobre Trabuco na Fazenda e novas medidas fiscais",
       "status": "novo",
       "origem_pipeline": "pulso",
       "categoria_primaria": "Economia",
@@ -319,40 +321,45 @@
         "Resumo_Ultimas"
       ],
       "rota_editoria": "/economia",
-      "relevancia_score": 96,
-      "urgencia_score": 93,
+      "relevancia_score": 97,
+      "urgencia_score": 94,
       "ttl_horas": 12,
       "expires_at": "2026-11-27T00:31:54Z",
       "palavras_chave_busca": [
-        "dólar",
-        "câmbio",
-        "ministério da fazenda",
-        "viagem internacional",
-        "economia"
+        "dolar",
+        "cambio",
+        "luiz trabuco",
+        "ministerio da fazenda",
+        "economia",
+        "viagem internacional"
       ],
       "palavras_chave": [
-        "dólar",
-        "câmbio",
-        "ministério da fazenda",
-        "viagem internacional",
-        "economia"
+        "dolar",
+        "cambio",
+        "luiz trabuco",
+        "ministerio da fazenda",
+        "economia",
+        "viagem internacional"
       ],
-      "gatilho_vitrine": "Conforme apuração da InfoMoney e desdobramentos de mercado, a moeda norte-americana opera cotada abaixo de R$ 5,80 na esteira das discussões sobre a equipe econômica e novas medidas fiscais. Para o viajante e o consumidor brasileiro, o alívio no câmbio reduz o custo de passagens, hospedagens e compras no exterior, embora analistas destaquem a necessidade de atenção à volatilidade cambial.",
-      "resumo_pulso": "Conforme apuração da InfoMoney e desdobramentos de mercado, a moeda norte-americana opera cotada abaixo de R$ 5,80 na esteira das discussões sobre a equipe econômica e novas medidas fiscais. Para o viajante e o consumidor brasileiro, o alívio no câmbio reduz o custo de passagens, hospedagens e compras no exterior, embora analistas destaquem a necessidade de atenção à volatilidade cambial.",
-      "sintese_nerd": "Alívio momentâneo no câmbio reduz o custo de viagens internacionais, passagens aéreas e importações para o consumidor brasileiro.",
-      "impacto_pratico": "Alívio momentâneo no câmbio reduz o custo de viagens internacionais, passagens aéreas e importações para o consumidor brasileiro.",
+      "gatilho_vitrine": "Segundo apuração da InfoMoney e do Canal Meio, a expectativa em torno de uma possível indicação de Luiz Trabuco para o Ministério da Fazenda e as discussões sobre novas medidas fiscais impulsionaram a confiança do mercado. Para o viajante brasileiro, a queda da cotação cambial abaixo de R$ 5,80 representa um alívio direto no custo de passagens aéreas, reservas internacionais e compras no exterior.",
+      "resumo_pulso": "Segundo apuração da InfoMoney e do Canal Meio, a expectativa em torno de uma possível indicação de Luiz Trabuco para o Ministério da Fazenda e as discussões sobre novas medidas fiscais impulsionaram a confiança do mercado. Para o viajante brasileiro, a queda da cotação cambial abaixo de R$ 5,80 representa um alívio direto no custo de passagens aéreas, reservas internacionais e compras no exterior.",
+      "sintese_nerd": "A retração do câmbio abaixo de R$ 5,80 barateia o planejamento de viagens internacionais, reduz o custo de passagens e hospedagens no exterior e alivia a importação de insumos.",
+      "impacto_pratico": "A retração do câmbio abaixo de R$ 5,80 barateia o planejamento de viagens internacionais, reduz o custo de passagens e hospedagens no exterior e alivia a importação de insumos.",
       "paises_envolvidos": [
-        "BR"
+        "BR",
+        "US"
       ],
       "veiculos_origem": [
-        "InfoMoney",
-        "G1 Política"
+        "InfoMoney Mercados",
+        "Canal Meio",
+        "Poder360"
       ],
       "fontes_urls": [
-        "https://g1.globo.com/politica/blog/valdo-cruz/post/2026/11/26/lula-precisa-negociar-com-aliados-novas-medidas-fiscais-antes-de-fazer-convites-para-ministerios.ghtml"
+        "https://www.infomoney.com.br/politica/kassab-percepcao-de-que-lula-trabuco-na-fazenda-ja-melhora-confianca-no-governo/",
+        "https://www.canalmeio.com.br/2026/11/26/trabuco-no-governo-vaga-no-stf-e-tarifas-de-trump-decisoes-na-mesa-de-lula/"
       ],
       "data_publicacao": "2026-11-26T12:25:11Z",
-      "updated_at": "2026-11-26T14:17:46Z"
+      "updated_at": "2026-11-26T15:31:02Z"
     },
     {
       "slug": "ipca-15-novembro-alta-alimentos",
@@ -882,27 +889,15 @@
   "noticias_quentes": [
     {
       "slug": "ataque-drones-kuwait-mortes",
-      "titulo_curto": "Ataque de drones no Kuwait deixa dois italianos mortos e eleva tensão na região",
-      "resumo_pulso": "Segundo informações da Ansa e do G1 Mundo, dois cidadãos italianos morreram em um ataque de drones hostis atribuído ao Irã contra um alvo estratégico no Kuwait. Autoridades locais e agências internacionais monitoram a escalada de hostilidades na região do Golfo Pérsico.",
-      "impacto_pratico": "A escalada de conflitos no Oriente Médio pode gerar volatilidade imediata nos preços internacionais do petróleo, encarecendo os combustíveis e impactando indiretamente os custos de passagens aéreas para viajantes.",
       "categoria": "Geopolitica_Relacoes",
-      "paises_envolvidos": [
-        "KW",
-        "IT",
-        "IR"
-      ],
-      "urgencia_score": 91,
-      "relevancia_score": 88,
-      "nivel_confianca": "alta",
       "ttl_horas": 12,
-      "horas_em_destaque": 8,
-      "veiculos_origem": [
-        "G1 Mundo",
-        "Ansa"
-      ],
+      "expires_at": "2026-11-27T02:17:46Z",
+      "updated_at": "2026-11-26T14:17:46Z",
       "fontes_urls": [
         "https://g1.globo.com/mundo/noticia/2026/11/26/dois-italianos-morrem-ataque-ira-kuwait-diz-agencia.ghtml"
       ],
+      "resumo_pulso": "Segundo informações da Ansa e do G1 Mundo, dois cidadãos italianos morreram em um ataque de drones hostis atribuído ao Irã contra um alvo estratégico no Kuwait. Autoridades locais e agências internacionais monitoram a escalada de hostilidades na região do Golfo Pérsico.",
+      "titulo_curto": "Ataque de drones no Kuwait deixa dois italianos mortos e eleva tensão na região",
       "palavras_chave": [
         "Kuwait",
         "ataque de drones",
@@ -910,38 +905,40 @@
         "Oriente Médio",
         "petróleo"
       ],
+      "urgencia_score": 91,
       "data_publicacao": "2026-11-26T13:53:40Z",
+      "impacto_pratico": "A escalada de conflitos no Oriente Médio pode gerar volatilidade imediata nos preços internacionais do petróleo, encarecendo os combustíveis e impactando indiretamente os custos de passagens aéreas para viajantes.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "G1 Mundo",
+        "Ansa"
+      ],
+      "relevancia_score": 88,
+      "horas_em_destaque": 8,
+      "paises_envolvidos": [
+        "KW",
+        "IT",
+        "IR"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "O que é uma sanção internacional?",
           "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-sancao-internacional",
-          "motivo_conexao": "Compreenda os desdobramentos diplomáticos e econômicos de conflitos e sanções no cenário global."
+          "motivo_conexao": "Compreenda os desdobramentos diplomáticos e econômicos de conflitos e sanções no cenário global.",
+          "titulo_existente": "O que é uma sanção internacional?"
         }
-      ],
-      "expires_at": "2026-11-27T02:17:46Z",
-      "updated_at": "2026-11-26T14:17:46Z"
+      ]
     },
     {
       "slug": "protestos-paraguai-crise-ueno-bank",
-      "titulo_curto": "Milhares protestam no Paraguai contra violência de gênero e crise do Ueno Bank",
-      "resumo_pulso": "Conforme apuração do G1 Economia, milhares de pessoas tomaram as ruas de Assunção para protestar contra a violência de gênero e exigir a devolução de economias após a quebra do Ueno Bank. O movimento gera reflexos na segurança e na estabilidade financeira de cidades fronteiriças com o Brasil.",
-      "impacto_pratico": "Turistas e viajantes que cruzam a fronteiriça com o Paraguai devem redobrar a atenção com instabilidades bancárias e manifestações locais na região de Assunção e áreas de comércio fronteiriço.",
       "categoria": "Mobilidade_Fronteiras",
-      "paises_envolvidos": [
-        "PY",
-        "BR"
-      ],
-      "urgencia_score": 82,
-      "relevancia_score": 84,
-      "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 12,
-      "veiculos_origem": [
-        "G1 Economia"
-      ],
+      "expires_at": "2026-11-27T14:17:46Z",
+      "updated_at": "2026-11-26T14:17:46Z",
       "fontes_urls": [
         "https://g1.globo.com/mundo/noticia/2026/11/26/milhares-protestam-no-paraguai-contra-violencia-contra-a-mulher-e-crise-do-ueno-bank.ghtml"
       ],
+      "resumo_pulso": "Conforme apuração do G1 Economia, milhares de pessoas tomaram as ruas de Assunção para protestar contra a violência de gênero e exigir a devolução de economias após a quebra do Ueno Bank. O movimento gera reflexos na segurança e na estabilidade financeira de cidades fronteiriças com o Brasil.",
+      "titulo_curto": "Milhares protestam no Paraguai contra violência de gênero e crise do Ueno Bank",
       "palavras_chave": [
         "Paraguai",
         "Ueno Bank",
@@ -949,37 +946,38 @@
         "fronteira",
         "economia"
       ],
+      "urgencia_score": 82,
       "data_publicacao": "2026-11-26T13:48:36Z",
+      "impacto_pratico": "Turistas e viajantes que cruzam a fronteiriça com o Paraguai devem redobrar a atenção com instabilidades bancárias e manifestações locais na região de Assunção e áreas de comércio fronteiriço.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "G1 Economia"
+      ],
+      "relevancia_score": 84,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "PY",
+        "BR"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "Economia no Brasil",
           "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
-          "motivo_conexao": "Acompanhe os reflexos de crises financeiras em países vizinhos na economia e no turismo regional."
+          "motivo_conexao": "Acompanhe os reflexos de crises financeiras em países vizinhos na economia e no turismo regional.",
+          "titulo_existente": "Economia no Brasil"
         }
-      ],
-      "expires_at": "2026-11-27T14:17:46Z",
-      "updated_at": "2026-11-26T14:17:46Z"
+      ]
     },
     {
       "slug": "contas-externas-brasil-outubro",
-      "titulo_curto": "Contas externas do Brasil registram déficit de US$ 4 bilhões em outubro, aponta Banco Central",
-      "resumo_pulso": "Segundo dados divulgados pelo Banco Central, as contas externas brasileiras registraram déficit de US$ 4 bilhões em outubro de 2026, mantendo o patamar do mesmo período do ano anterior. O acumulado em 12 meses atingiu US$ 60,6 bilhões, o equivalente a 2,34% do PIB, exigindo monitoramento por parte de investidores e viajantes atentos aos rumos cambiais.",
-      "impacto_pratico": "O déficit nas contas externas influencia o fluxo de divisas para o país, o que pode gerar pressões pontuais sobre a cotação do dólar e o planejamento de gastos de viajantes.",
       "categoria": "Economia_Comercio",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "urgencia_score": 88,
-      "relevancia_score": 90,
-      "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 12,
-      "veiculos_origem": [
-        "Agência Brasil (EBC)"
-      ],
+      "expires_at": "2026-11-27T14:17:46Z",
+      "updated_at": "2026-11-26T14:17:46Z",
       "fontes_urls": [
         "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/contas-externas-tem-deficit-de-us-4-bilhoes-em-outubro"
       ],
+      "resumo_pulso": "Segundo dados divulgados pelo Banco Central, as contas externas brasileiras registraram déficit de US$ 4 bilhões em outubro de 2026, mantendo o patamar do mesmo período do ano anterior. O acumulado em 12 meses atingiu US$ 60,6 bilhões, o equivalente a 2,34% do PIB, exigindo monitoramento por parte de investidores e viajantes atentos aos rumos cambiais.",
+      "titulo_curto": "Contas externas do Brasil registram déficit de US$ 4 bilhões em outubro, aponta Banco Central",
       "palavras_chave": [
         "contas externas",
         "Banco Central",
@@ -987,99 +985,118 @@
         "PIB",
         "câmbio"
       ],
+      "urgencia_score": 88,
       "data_publicacao": "2026-11-26T13:33:00Z",
+      "impacto_pratico": "O déficit nas contas externas influencia o fluxo de divisas para o país, o que pode gerar pressões pontuais sobre a cotação do dólar e o planejamento de gastos de viajantes.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Agência Brasil (EBC)"
+      ],
+      "relevancia_score": 90,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "BR"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "Economia no Brasil",
           "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
-          "motivo_conexao": "Veja mais detalhes sobre o balanço de pagamentos e a saúde fiscal e externa do Brasil."
+          "motivo_conexao": "Veja mais detalhes sobre o balanço de pagamentos e a saúde fiscal e externa do Brasil.",
+          "titulo_existente": "Economia no Brasil"
         }
-      ],
-      "expires_at": "2026-11-27T14:17:46Z",
-      "updated_at": "2026-11-26T14:17:46Z"
+      ]
     },
     {
       "slug": "alckmin-critica-tarifas-eua-aviao",
-      "titulo_curto": "Alckmin classifica tarifa de 10% dos EUA sobre aviões brasileiros como irrazoável",
-      "resumo_pulso": "Conforme apuração do G1, o vice-presidente Geraldo Alckmin criticou duramente a nova tarifa de 10% anunciada pelos Estados Unidos sobre aeronaves brasileiras, classificando a medida como completamente irrazoável. O governo brasileiro articula ações diplomáticas para reverter a taxação comercial imposta por Washington.",
-      "impacto_pratico": "A imposição de tarifas afeta a competitividade de exportações industriais estratégicas do Brasil, gerando incertezas nas relações comerciais bilaterais com reflexos no câmbio comercial.",
-      "categoria": "Geopolitica_Relacoes",
+      "titulo_curto": "Embraer e governo brasileiro alertam que tarifas de Trump sobre aeronaves encarecerão passagens nos EUA",
+      "resumo_pulso": "Conforme declarações do presidente-executivo da Embraer, Francisco Gomes Neto, repercutidas pelo G1 Economia, as novas tarifas comerciais propostas pelos Estados Unidos sob a gestão de Donald Trump podem pressionar a inflação americana e encarecer bilhetes aéreos. O governo brasileiro mantém articulações para reverter o atrito tarifário.",
+      "impacto_pratico": "A taxação de 10% sobre aeronaves brasileiras pode gerar reflexos no preço de passagens aéreas e no custo operacional de companhias de aviação, impactando turistas e viajantes frequentes.",
+      "categoria": "Economia_Comercio",
       "paises_envolvidos": [
         "BR",
         "US"
       ],
-      "urgencia_score": 89,
-      "relevancia_score": 91,
+      "urgencia_score": 90,
+      "relevancia_score": 92,
       "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 16,
+      "horas_em_destaque": 18,
       "veiculos_origem": [
         "G1 Economia"
       ],
       "fontes_urls": [
-        "https://g1.globo.com/economia/noticia/2026/11/26/alckimin-eua-tarias.ghtml"
+        "https://g1.globo.com/economia/noticia/2026/11/26/embraer-aeronaves-eua.ghtml"
       ],
       "palavras_chave": [
-        "Geraldo Alckmin",
+        "Embraer",
         "tarifas",
-        "Estados Unidos",
-        "comércio exterior",
-        "aviação"
+        "EUA",
+        "Donald Trump",
+        "passagens aereas",
+        "aviacao"
       ],
       "data_publicacao": "2026-11-26T13:31:21Z",
       "links_internos_relacionados": [
         {
+          "titulo_existente": "Política nos Estados Unidos",
+          "url_existente": "https://www.rodandoomundo.com.br/politica/estados-unidos",
+          "motivo_conexao": "Analise os desdobramentos comerciais e tarifários impostos pela administração americana."
+        },
+        {
           "titulo_existente": "Mercados e aliados internacionais avaliam impacto da política comercial norte-americana",
           "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
-          "motivo_conexao": "Analise como as barreiras alfandegárias norte-americanas repercutem na economia e na diplomacia brasileira."
+          "motivo_conexao": "Veja como o Brasil e parceiros globais respondem às barreiras alfandegárias de Washington."
         }
       ],
       "expires_at": "2026-11-27T14:17:46Z",
-      "updated_at": "2026-11-26T14:17:46Z"
+      "updated_at": "2026-11-26T15:31:02Z"
     },
     {
       "slug": "dolar-cai-abaixo-5-80-lula-trabuco-fazenda",
-      "titulo_curto": "Dólar recua abaixo de R$ 5,80 após sondagem de Trabuco para a Fazenda",
-      "resumo_pulso": "Conforme apuração da InfoMoney e desdobramentos de mercado, a moeda norte-americana opera cotada abaixo de R$ 5,80 na esteira das discussões sobre a equipe econômica e novas medidas fiscais. Para o viajante e o consumidor brasileiro, o alívio no câmbio reduz o custo de passagens, hospedagens e compras no exterior, embora analistas destaquem a necessidade de atenção à volatilidade cambial.",
-      "impacto_pratico": "Alívio momentâneo no câmbio reduz o custo de viagens internacionais, passagens aéreas e importações para o consumidor brasileiro.",
+      "titulo_curto": "Dólar recua abaixo de R$ 5,80 com otimismo sobre Trabuco na Fazenda e novas medidas fiscais",
+      "resumo_pulso": "Segundo apuração da InfoMoney e do Canal Meio, a expectativa em torno de uma possível indicação de Luiz Trabuco para o Ministério da Fazenda e as discussões sobre novas medidas fiscais impulsionaram a confiança do mercado. Para o viajante brasileiro, a queda da cotação cambial abaixo de R$ 5,80 representa um alívio direto no custo de passagens aéreas, reservas internacionais e compras no exterior.",
+      "impacto_pratico": "A retração do câmbio abaixo de R$ 5,80 barateia o planejamento de viagens internacionais, reduz o custo de passagens e hospedagens no exterior e alivia a importação de insumos.",
       "categoria": "Economia_Comercio",
       "paises_envolvidos": [
-        "BR"
+        "BR",
+        "US"
       ],
-      "urgencia_score": 93,
-      "relevancia_score": 96,
+      "urgencia_score": 94,
+      "relevancia_score": 97,
       "nivel_confianca": "alta",
       "ttl_horas": 12,
       "horas_em_destaque": 12,
       "veiculos_origem": [
-        "InfoMoney",
-        "G1 Política"
+        "InfoMoney Mercados",
+        "Canal Meio",
+        "Poder360"
       ],
       "fontes_urls": [
-        "https://g1.globo.com/politica/blog/valdo-cruz/post/2026/11/26/lula-precisa-negociar-com-aliados-novas-medidas-fiscais-antes-de-fazer-convites-para-ministerios.ghtml"
+        "https://www.infomoney.com.br/politica/kassab-percepcao-de-que-lula-trabuco-na-fazenda-ja-melhora-confianca-no-governo/",
+        "https://www.canalmeio.com.br/2026/11/26/trabuco-no-governo-vaga-no-stf-e-tarifas-de-trump-decisoes-na-mesa-de-lula/"
       ],
       "palavras_chave": [
-        "dólar",
-        "câmbio",
-        "Ministério da Fazenda",
-        "viagem internacional",
-        "economia"
+        "dolar",
+        "cambio",
+        "Luiz Trabuco",
+        "Ministerio da Fazenda",
+        "economia",
+        "viagem internacional"
       ],
       "data_publicacao": "2026-11-26T12:25:11Z",
       "links_internos_relacionados": [
         {
           "titulo_existente": "Economia no Brasil",
           "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
-          "motivo_conexao": "Acompanhe as análises diárias sobre o comportamento do câmbio e o impacto na economia nacional."
+          "motivo_conexao": "Acompanhe os reflexos da oscilação cambial e das decisões da equipe econômica para o bolso dos consumidores e viajantes."
         },
         {
           "titulo_existente": "Banco Central e mercado financeiro acompanham inflação de serviços, câmbio e metas fiscais",
           "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
-          "motivo_conexao": "Entenda como as decisões macroeconômicas influenciam diretamente o poder de compra e o preço das moedas estrangeiras."
+          "motivo_conexao": "Entenda como o cenário fiscal e cambial impacta a inflação e o planejamento financeiro."
         }
       ],
       "expires_at": "2026-11-27T00:31:54Z",
-      "updated_at": "2026-11-26T14:17:46Z"
+      "updated_at": "2026-11-26T15:31:02Z"
     },
     {
       "slug": "ipca-15-novembro-alta-alimentos",
@@ -1593,40 +1610,41 @@
     },
     {
       "slug": "cmn-medidas-endividamento-familias",
+      "titulo_curto": "Banco Central anuncia redução de limite de cartão de crédito para até 20 milhões de inadimplentes a partir de 2027",
+      "resumo_pulso": "Segundo dados divulgados pelo Banco Central e apurados pelo G1 Política, clientes com histórico de uso recorrente do crédito rotativo e atrasos em faturas terão os limites reduzidos gradualmente a partir de 1º de julho de 2027. A medida busca mitigar o endividamento das famílias brasileiras.",
+      "impacto_pratico": "Consumidores com histórico de inadimplência no rotativo do cartão precisarão redobrar o planejamento financeiro devido à restrição de crédito planejada para o médio prazo.",
       "categoria": "Economia_Comercio",
-      "ttl_horas": 18,
-      "expires_at": "2026-11-26T22:35:21Z",
-      "updated_at": "2026-11-26T03:32:21Z",
-      "fontes_urls": [
-        "https://g1.globo.com/economia/noticia/2026/11/26/limite-do-cartao-de-quem-usa-o-credito-rotativo-com-frequencia-sera-reduzido-entenda-a-mudanca.ghtml"
-      ],
-      "resumo_pulso": "Conforme apuração do G1, a partir de julho de 2027, instituições financeiras serão obrigadas a reduzir gradualmente o limite do cartão de crédito para clientes com uso recorrente do rotativo. A medida visa conter o endividamento das famílias brasileiras.",
-      "titulo_curto": "Bancos deverão reduzir limite de crédito rotativo para clientes inadimplentes",
-      "palavras_chave": [
-        "cartao de credito",
-        "endividamento",
-        "bancos",
-        "economia"
-      ],
-      "urgencia_score": 89,
-      "data_publicacao": "2026-11-25T22:35:21Z",
-      "impacto_pratico": "Consumidores com uso frequente do rotativo terão limites reduzidos, exigindo maior controle financeiro.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "G1 Economia"
-      ],
-      "relevancia_score": 92,
-      "horas_em_destaque": 12,
       "paises_envolvidos": [
         "BR"
       ],
+      "urgencia_score": 89,
+      "relevancia_score": 91,
+      "nivel_confianca": "alta",
+      "ttl_horas": 24,
+      "horas_em_destaque": 18,
+      "veiculos_origem": [
+        "G1 Política"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/economia/noticia/2026/11/26/ate-20-milhoes-de-pessoas-podem-ter-limite-do-cartao-de-credito-reduzido-para-conter-endividamento-diz-banco-central.ghtml"
+      ],
+      "palavras_chave": [
+        "Banco Central",
+        "cartao de credito",
+        "endividamento",
+        "credito rotativo",
+        "economia"
+      ],
+      "data_publicacao": "2026-11-25T22:35:21Z",
       "links_internos_relacionados": [
         {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
-          "motivo_conexao": "Explica como o custo do crédito e juros afetam o poder de compra das famílias.",
-          "titulo_existente": "O que é inflação?"
+          "titulo_existente": "Economia no Brasil",
+          "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
+          "motivo_conexao": "Acompanhe as novas regras regulatórias do sistema financeiro e seus impactos no crédito."
         }
-      ]
+      ],
+      "expires_at": "2026-11-26T22:35:21Z",
+      "updated_at": "2026-11-26T15:31:02Z"
     }
   ],
   "temas_curadoria": [
