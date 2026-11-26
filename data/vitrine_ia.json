@@ -2,13 +2,13 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-26T11:25:56Z",
-  "batch_id": "20261126-1125",
+  "updatedAt": "2026-11-26T12:31:54Z",
+  "batch_id": "20261126-1231",
   "temas_ativos": [
     {
-      "slug": "grupo-fictor-alvo-operacao-suspeita-fraude",
-      "titulo_tema": "Grupo Fictor é alvo de operação da polícia por suspeita de fraude bilionária",
-      "titulo_curto": "Grupo Fictor é alvo de operação da polícia por suspeita de fraude bilionária",
+      "slug": "dolar-cai-abaixo-5-80-lula-trabuco-fazenda",
+      "titulo_tema": "Dólar recua abaixo de R$ 5,80 após sondagem de Trabuco para a Fazenda",
+      "titulo_curto": "Dólar recua abaixo de R$ 5,80 após sondagem de Trabuco para a Fazenda",
       "status": "novo",
       "origem_pipeline": "pulso",
       "categoria_primaria": "Economia",
@@ -18,111 +18,199 @@
         "Resumo_Ultimas"
       ],
       "rota_editoria": "/economia",
-      "relevancia_score": 89,
-      "urgencia_score": 88,
-      "ttl_horas": 24,
-      "expires_at": "2026-11-27T11:25:56Z",
+      "relevancia_score": 95,
+      "urgencia_score": 92,
+      "ttl_horas": 12,
+      "expires_at": "2026-11-27T00:31:54Z",
       "palavras_chave_busca": [
-        "grupo fictor",
-        "banco master",
-        "fraude",
-        "justiça",
+        "dólar",
+        "câmbio",
+        "ministério da fazenda",
+        "luiz carlos trabuco",
         "economia"
       ],
       "palavras_chave": [
-        "grupo fictor",
-        "banco master",
-        "fraude",
-        "justiça",
+        "dólar",
+        "câmbio",
+        "ministério da fazenda",
+        "luiz carlos trabuco",
         "economia"
       ],
-      "gatilho_vitrine": "Segundo informações da InfoMoney e do Poder360, o Grupo Fictor, que tentou adquirir o Banco Master, tornou-se alvo de uma operação policial nesta quinta-feira devido a suspeitas de fraude. A Justiça determinou o bloqueio de ativos e bens estimados em mais de R$ 4 bilhões.",
-      "resumo_pulso": "Segundo informações da InfoMoney e do Poder360, o Grupo Fictor, que tentou adquirir o Banco Master, tornou-se alvo de uma operação policial nesta quinta-feira devido a suspeitas de fraude. A Justiça determinou o bloqueio de ativos e bens estimados em mais de R$ 4 bilhões.",
-      "sintese_nerd": "A operação gera repercussão no setor financeiro nacional, exigindo cautela de investidores e correntistas vinculados às instituições envolvidas.",
-      "impacto_pratico": "A operação gera repercussão no setor financeiro nacional, exigindo cautela de investidores e correntistas vinculados às instituições envolvidas.",
+      "gatilho_vitrine": "Conforme apuração da InfoMoney, a moeda norte-americana registrou queda expressiva e ficou cotada abaixo de R$ 5,80 após o presidente Luiz Inácio Lula da Silva sondar Luiz Carlos Trabuco, presidente do conselho do Bradesco, para assumir o Ministério da Fazenda. Para o viajante e o consumidor brasileiro, o movimento momentâneo reduz o custo de importações e barateia despesas em viagens internacionais, refletindo as expectativas do mercado diante de mudanças na equipe econômica.",
+      "resumo_pulso": "Conforme apuração da InfoMoney, a moeda norte-americana registrou queda expressiva e ficou cotada abaixo de R$ 5,80 após o presidente Luiz Inácio Lula da Silva sondar Luiz Carlos Trabuco, presidente do conselho do Bradesco, para assumir o Ministério da Fazenda. Para o viajante e o consumidor brasileiro, o movimento momentâneo reduz o custo de importações e barateia despesas em viagens internacionais, refletindo as expectativas do mercado diante de mudanças na equipe econômica.",
+      "sintese_nerd": "A queda do dólar abaixo de R$ 5,80 alivia o bolso do turista brasileiro em viagens ao exterior e reduz a pressão sobre o custo de produtos importados e passagens aéreas internacionais.",
+      "impacto_pratico": "A queda do dólar abaixo de R$ 5,80 alivia o bolso do turista brasileiro em viagens ao exterior e reduz a pressão sobre o custo de produtos importados e passagens aéreas internacionais.",
+      "paises_envolvidos": [
+        "BR",
+        "US"
+      ],
+      "veiculos_origem": [
+        "InfoMoney Mercados"
+      ],
+      "fontes_urls": [
+        "https://www.infomoney.com.br/mercados/dolar-hoje-abertura-fechamento-comercial-turismo-26112026/"
+      ],
+      "data_publicacao": "2026-11-26T12:25:11Z",
+      "updated_at": "2026-11-26T12:31:54Z"
+    },
+    {
+      "slug": "ipca-15-novembro-alta-alimentos",
+      "titulo_tema": "Prévia da inflação oficial sobe 0,22% em novembro impulsionada por alimentos",
+      "titulo_curto": "Prévia da inflação oficial sobe 0,22% em novembro impulsionada por alimentos",
+      "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Economia",
+      "categoria": "Economia_Comercio",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 92,
+      "urgencia_score": 90,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-27T12:31:54Z",
+      "palavras_chave_busca": [
+        "ipca-15",
+        "inflação",
+        "ibge",
+        "economia",
+        "custo de vida"
+      ],
+      "palavras_chave": [
+        "ipca-15",
+        "inflação",
+        "ibge",
+        "economia",
+        "custo de vida"
+      ],
+      "gatilho_vitrine": "Segundo dados divulgados pelo IBGE e repercutidos pelo Poder360 e G1 Economia, o Índice Nacional de Preços ao Consumidor Amplo 15 (IPCA-15) subiu 0,22% em novembro, elevando a taxa acumulada em 12 meses para 4,64%. O avanço foi puxado principalmente pelo encarecimento de itens alimentícios devido a fatores climáticos desfavoráveis em regiões produtoras.",
+      "resumo_pulso": "Segundo dados divulgados pelo IBGE e repercutidos pelo Poder360 e G1 Economia, o Índice Nacional de Preços ao Consumidor Amplo 15 (IPCA-15) subiu 0,22% em novembro, elevando a taxa acumulada em 12 meses para 4,64%. O avanço foi puxado principalmente pelo encarecimento de itens alimentícios devido a fatores climáticos desfavoráveis em regiões produtoras.",
+      "sintese_nerd": "A alta na prévia da inflação impacta o orçamento doméstico das famílias brasileiras, encarecendo a cesta de compras e pressionando o custo de vida nas principais regiões metropolitanas.",
+      "impacto_pratico": "A alta na prévia da inflação impacta o orçamento doméstico das famílias brasileiras, encarecendo a cesta de compras e pressionando o custo de vida nas principais regiões metropolitanas.",
       "paises_envolvidos": [
         "BR"
       ],
       "veiculos_origem": [
-        "InfoMoney Mercados",
-        "Poder360"
+        "Poder360",
+        "G1 Economia"
       ],
+      "fontes_urls": [
+        "https://www.poder360.com.br/poder-economia/previa-da-inflacao-sobe-022-em-novembro-em-12-meses-vai-a-464/",
+        "https://g1.globo.com/economia/noticia/2026/11/26/ipca-15-previa-da-inflacao-novembro.ghtml"
+      ],
+      "data_publicacao": "2026-11-26T12:04:33Z",
+      "updated_at": "2026-11-26T12:31:54Z"
+    },
+    {
+      "slug": "grupo-fictor-alvo-operacao-suspeita-fraude",
+      "status": "novo",
+      "categoria": "Economia_Comercio",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-27T11:25:56Z",
+      "updated_at": "2026-11-26T11:25:56Z",
       "fontes_urls": [
         "https://www.infomoney.com.br/brasil/grupo-fictor-que-tentou-comprar-o-master-e-alvo-de-operacao-por-suspeita-de-fraude/",
         "https://www.poder360.com.br/poder-justica/policia-faz-operacao-contra-grupo-que-tentou-comprar-master/"
       ],
-      "data_publicacao": "2026-11-26T11:21:39Z",
-      "updated_at": "2026-11-26T11:25:56Z"
-    },
-    {
-      "slug": "alckmin-cotado-ministerio-seguranca-publica",
-      "titulo_tema": "Aliados defendem Geraldo Alckmin para comando do futuro Ministério da Segurança Pública",
-      "titulo_curto": "Aliados defendem Geraldo Alckmin para comando do futuro Ministério da Segurança Pública",
-      "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Geopolitica_Radar",
-      "categoria": "Geopolitica_Relacoes",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 87,
-      "urgencia_score": 85,
-      "ttl_horas": 24,
-      "expires_at": "2026-11-27T11:25:56Z",
-      "palavras_chave_busca": [
-        "geraldo alckmin",
-        "segurança pública",
-        "governo federal",
-        "política"
-      ],
+      "titulo_tema": "Grupo Fictor é alvo de operação da polícia por suspeita de fraude bilionária",
+      "resumo_pulso": "Segundo informações da InfoMoney e do Poder360, o Grupo Fictor, que tentou adquirir o Banco Master, tornou-se alvo de uma operação policial nesta quinta-feira devido a suspeitas de fraude. A Justiça determinou o bloqueio de ativos e bens estimados em mais de R$ 4 bilhões.",
+      "sintese_nerd": "A operação gera repercussão no setor financeiro nacional, exigindo cautela de investidores e correntistas vinculados às instituições envolvidas.",
+      "titulo_curto": "Grupo Fictor é alvo de operação da polícia por suspeita de fraude bilionária",
+      "rota_editoria": "/economia",
       "palavras_chave": [
-        "geraldo alckmin",
-        "segurança pública",
-        "governo federal",
-        "política"
+        "grupo fictor",
+        "banco master",
+        "fraude",
+        "justiça",
+        "economia"
       ],
-      "gatilho_vitrine": "Conforme apuração do blog da Andréia Sadi no G1, o vice-presidente Geraldo Alckmin passou a ser fortemente cotado por aliados para assumir o Ministério da Segurança Pública. A nova pasta tem previsão de criação em 2027 como parte dos esforços do governo para centralizar e intensificar o combate ao crime organizado.",
-      "resumo_pulso": "Conforme apuração do blog da Andréia Sadi no G1, o vice-presidente Geraldo Alckmin passou a ser fortemente cotado por aliados para assumir o Ministério da Segurança Pública. A nova pasta tem previsão de criação em 2027 como parte dos esforços do governo para centralizar e intensificar o combate ao crime organizado.",
-      "sintese_nerd": "Pode reconfigurar a articulação política do Executivo federal e as diretrizes de segurança nas fronteiras e estados.",
-      "impacto_pratico": "Pode reconfigurar a articulação política do Executivo federal e as diretrizes de segurança nas fronteiras e estados.",
+      "urgencia_score": 88,
+      "data_publicacao": "2026-11-26T11:21:39Z",
+      "gatilho_vitrine": "Segundo informações da InfoMoney e do Poder360, o Grupo Fictor, que tentou adquirir o Banco Master, tornou-se alvo de uma operação policial nesta quinta-feira devido a suspeitas de fraude. A Justiça determinou o bloqueio de ativos e bens estimados em mais de R$ 4 bilhões.",
+      "impacto_pratico": "A operação gera repercussão no setor financeiro nacional, exigindo cautela de investidores e correntistas vinculados às instituições envolvidas.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "InfoMoney Mercados",
+        "Poder360"
+      ],
+      "relevancia_score": 89,
       "paises_envolvidos": [
         "BR"
       ],
-      "veiculos_origem": [
-        "G1 Política"
-      ],
-      "fontes_urls": [
-        "https://g1.globo.com/politica/blog/andreia-sadi/post/2026/11/26/alckmin-seguranca-publica.ghtml"
-      ],
-      "data_publicacao": "2026-11-26T11:06:01Z",
-      "updated_at": "2026-11-26T11:25:56Z"
-    },
-    {
-      "slug": "nvidia-suspende-servidores-sudeste-asiatico",
-      "titulo_tema": "Nvidia suspende envio de servidores com chips de IA para o Sudeste Asiático em meio a novas regras dos EUA",
-      "titulo_curto": "Nvidia suspende envio de servidores com chips de IA para o Sudeste Asiático em meio a novas regras dos EUA",
-      "status": "novo",
-      "origem_pipeline": "pulso",
       "categoria_primaria": "Economia",
-      "categoria": "Economia_Comercio",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
       ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 85,
-      "urgencia_score": 84,
+      "palavras_chave_busca": [
+        "grupo fictor",
+        "banco master",
+        "fraude",
+        "justiça",
+        "economia"
+      ]
+    },
+    {
+      "slug": "alckmin-cotado-ministerio-seguranca-publica",
+      "status": "novo",
+      "categoria": "Geopolitica_Relacoes",
       "ttl_horas": 24,
       "expires_at": "2026-11-27T11:25:56Z",
-      "palavras_chave_busca": [
-        "nvidia",
-        "inteligência artificial",
-        "tecnologia",
-        "estados unidos",
-        "sudeste asiático"
+      "updated_at": "2026-11-26T11:25:56Z",
+      "fontes_urls": [
+        "https://g1.globo.com/politica/blog/andreia-sadi/post/2026/11/26/alckmin-seguranca-publica.ghtml"
       ],
+      "titulo_tema": "Aliados defendem Geraldo Alckmin para comando do futuro Ministério da Segurança Pública",
+      "resumo_pulso": "Conforme apuração do blog da Andréia Sadi no G1, o vice-presidente Geraldo Alckmin passou a ser fortemente cotado por aliados para assumir o Ministério da Segurança Pública. A nova pasta tem previsão de criação em 2027 como parte dos esforços do governo para centralizar e intensificar o combate ao crime organizado.",
+      "sintese_nerd": "Pode reconfigurar a articulação política do Executivo federal e as diretrizes de segurança nas fronteiras e estados.",
+      "titulo_curto": "Aliados defendem Geraldo Alckmin para comando do futuro Ministério da Segurança Pública",
+      "rota_editoria": "/radar",
+      "palavras_chave": [
+        "geraldo alckmin",
+        "segurança pública",
+        "governo federal",
+        "política"
+      ],
+      "urgencia_score": 85,
+      "data_publicacao": "2026-11-26T11:06:01Z",
+      "gatilho_vitrine": "Conforme apuração do blog da Andréia Sadi no G1, o vice-presidente Geraldo Alckmin passou a ser fortemente cotado por aliados para assumir o Ministério da Segurança Pública. A nova pasta tem previsão de criação em 2027 como parte dos esforços do governo para centralizar e intensificar o combate ao crime organizado.",
+      "impacto_pratico": "Pode reconfigurar a articulação política do Executivo federal e as diretrizes de segurança nas fronteiras e estados.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "G1 Política"
+      ],
+      "relevancia_score": 87,
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "geraldo alckmin",
+        "segurança pública",
+        "governo federal",
+        "política"
+      ]
+    },
+    {
+      "slug": "nvidia-suspende-servidores-sudeste-asiatico",
+      "status": "novo",
+      "categoria": "Economia_Comercio",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-27T11:25:56Z",
+      "updated_at": "2026-11-26T11:25:56Z",
+      "fontes_urls": [
+        "https://g1.globo.com/tecnologia/noticia/2026/11/26/escandalo-de-espionagem-leva-eua-a-endurecer-regras-e-nvidia-barra-servidores-no-sudeste-asiatico.ghtml"
+      ],
+      "titulo_tema": "Nvidia suspende envio de servidores com chips de IA para o Sudeste Asiático em meio a novas regras dos EUA",
+      "resumo_pulso": "Segundo reportagem do G1 baseada em informações do Financial Times, a fabricante americana Nvidia proibiu o envio de servidores equipados com chips de inteligência artificial para quatro países do Sudeste Asiático (Malásia, Singapura, Tailândia e Indonésia). A medida decorre do endurecimento das restrições de exportação impostas por Washington devido a escândalos de espionagem.",
+      "sintese_nerd": "Afeta cadeias globais de suprimento de tecnologia e o comércio exterior de semicondutores na Ásia.",
+      "titulo_curto": "Nvidia suspende envio de servidores com chips de IA para o Sudeste Asiático em meio a novas regras dos EUA",
+      "rota_editoria": "/economia",
       "palavras_chave": [
         "nvidia",
         "inteligência artificial",
@@ -130,10 +218,15 @@
         "estados unidos",
         "sudeste asiático"
       ],
+      "urgencia_score": 84,
+      "data_publicacao": "2026-11-26T10:59:34Z",
       "gatilho_vitrine": "Segundo reportagem do G1 baseada em informações do Financial Times, a fabricante americana Nvidia proibiu o envio de servidores equipados com chips de inteligência artificial para quatro países do Sudeste Asiático (Malásia, Singapura, Tailândia e Indonésia). A medida decorre do endurecimento das restrições de exportação impostas por Washington devido a escândalos de espionagem.",
-      "resumo_pulso": "Segundo reportagem do G1 baseada em informações do Financial Times, a fabricante americana Nvidia proibiu o envio de servidores equipados com chips de inteligência artificial para quatro países do Sudeste Asiático (Malásia, Singapura, Tailândia e Indonésia). A medida decorre do endurecimento das restrições de exportação impostas por Washington devido a escândalos de espionagem.",
-      "sintese_nerd": "Afeta cadeias globais de suprimento de tecnologia e o comércio exterior de semicondutores na Ásia.",
       "impacto_pratico": "Afeta cadeias globais de suprimento de tecnologia e o comércio exterior de semicondutores na Ásia.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "G1 Economia"
+      ],
+      "relevancia_score": 85,
       "paises_envolvidos": [
         "US",
         "MY",
@@ -141,14 +234,18 @@
         "TH",
         "ID"
       ],
-      "veiculos_origem": [
-        "G1 Economia"
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
       ],
-      "fontes_urls": [
-        "https://g1.globo.com/tecnologia/noticia/2026/11/26/escandalo-de-espionagem-leva-eua-a-endurecer-regras-e-nvidia-barra-servidores-no-sudeste-asiatico.ghtml"
-      ],
-      "data_publicacao": "2026-11-26T10:59:34Z",
-      "updated_at": "2026-11-26T11:25:56Z"
+      "palavras_chave_busca": [
+        "nvidia",
+        "inteligência artificial",
+        "tecnologia",
+        "estados unidos",
+        "sudeste asiático"
+      ]
     },
     {
       "slug": "colombia-abandona-brics-politica-externa-eua",
@@ -463,28 +560,19 @@
     },
     {
       "slug": "tarifas-trump-acucar-brasileiro",
-      "titulo_tema": "China, Brasil e União Europeia reagem a novas tarifas anunciadas por Donald Trump",
-      "titulo_curto": "China, Brasil e União Europeia reagem a novas tarifas anunciadas por Donald Trump",
       "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Economia",
       "categoria": "Economia_Comercio",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 93,
-      "urgencia_score": 90,
       "ttl_horas": 12,
       "expires_at": "2026-11-28T04:20:35Z",
-      "palavras_chave_busca": [
-        "tarifas",
-        "donald trump",
-        "comércio exterior",
-        "câmbio",
-        "brasil"
+      "updated_at": "2026-11-26T11:25:56Z",
+      "fontes_urls": [
+        "https://g1.globo.com/economia/noticia/2026/11/26/china-brasil-e-uniao-europeia-reagem-a-novas-tarifas-anunciadas-por-trump.ghtml"
       ],
+      "titulo_tema": "China, Brasil e União Europeia reagem a novas tarifas anunciadas por Donald Trump",
+      "resumo_pulso": "Conforme apuração do G1, o Brasil e outras 13 economias, incluindo China e União Europeia, manifestaram reações críticas à nova rodada de tarifas comerciais anunciada pelo governo dos Estados Unidos sob a gestão de Donald Trump. Especialistas ressaltam que, apesar do atrito geopolítico, o impacto prático sobre o câmbio comercial e o custo para viajantes e importadores brasileiros segue monitorado de perto.",
+      "sintese_nerd": "Oscilações no câmbio comercial podem influenciar o planejamento financeiro de importadores e viajantes com destino aos Estados Unidos.",
+      "titulo_curto": "China, Brasil e União Europeia reagem a novas tarifas anunciadas por Donald Trump",
+      "rota_editoria": "/economia",
       "palavras_chave": [
         "tarifas",
         "donald trump",
@@ -492,24 +580,33 @@
         "câmbio",
         "brasil"
       ],
+      "urgencia_score": 90,
+      "data_publicacao": "2026-11-26T02:00:40Z",
       "gatilho_vitrine": "Conforme apuração do G1, o Brasil e outras 13 economias, incluindo China e União Europeia, manifestaram reações críticas à nova rodada de tarifas comerciais anunciada pelo governo dos Estados Unidos sob a gestão de Donald Trump. Especialistas ressaltam que, apesar do atrito geopolítico, o impacto prático sobre o câmbio comercial e o custo para viajantes e importadores brasileiros segue monitorado de perto.",
-      "resumo_pulso": "Conforme apuração do G1, o Brasil e outras 13 economias, incluindo China e União Europeia, manifestaram reações críticas à nova rodada de tarifas comerciais anunciada pelo governo dos Estados Unidos sob a gestão de Donald Trump. Especialistas ressaltam que, apesar do atrito geopolítico, o impacto prático sobre o câmbio comercial e o custo para viajantes e importadores brasileiros segue monitorado de perto.",
-      "sintese_nerd": "Oscilações no câmbio comercial podem influenciar o planejamento financeiro de importadores e viajantes com destino aos Estados Unidos.",
       "impacto_pratico": "Oscilações no câmbio comercial podem influenciar o planejamento financeiro de importadores e viajantes com destino aos Estados Unidos.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "G1 Economia"
+      ],
+      "relevancia_score": 93,
       "paises_envolvidos": [
         "BR",
         "US",
         "CN",
         "EU"
       ],
-      "veiculos_origem": [
-        "G1 Economia"
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
       ],
-      "fontes_urls": [
-        "https://g1.globo.com/economia/noticia/2026/11/26/china-brasil-e-uniao-europeia-reagem-a-novas-tarifas-anunciadas-por-trump.ghtml"
-      ],
-      "data_publicacao": "2026-11-26T02:00:40Z",
-      "updated_at": "2026-11-26T11:25:56Z"
+      "palavras_chave_busca": [
+        "tarifas",
+        "donald trump",
+        "comércio exterior",
+        "câmbio",
+        "brasil"
+      ]
     },
     {
       "slug": "brasil-assume-vice-presidencia-onu-turismo",
@@ -649,51 +746,6 @@
       ]
     },
     {
-      "slug": "pgr-denuncia-gustavo-gayer-stf-cota-parlamentar",
-      "status": "novo",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 12,
-      "expires_at": "2026-11-26T11:45:58Z",
-      "updated_at": "2026-11-26T01:00:03Z",
-      "fontes_urls": [
-        "https://g1.globo.com/politica/noticia/2026/11/25/pgr-denuncia-deputado-gustavo-gayer-ao-stf-por-esquema-de-desvio-de-cota-parlamentar-na-camara.ghtml"
-      ],
-      "titulo_tema": "PGR denuncia deputado Gustavo Gayer ao STF por esquema de desvio de cota parlamentar",
-      "resumo_pulso": "Segundo apuração do G1, a Procuradoria-Geral da República denunciou ao STF o deputado Gustavo Gayer como líder de um esquema de desvio de verbas da cota parlamentar. O parlamentar, recentemente eleito senador, é acusado de associação criminosa, peculato e uso de documento falso, cabendo agora ao ministro Alexandre de Moraes abrir prazos para a defesa.",
-      "sintese_nerd": "Acompanhamento institucional de desdobramentos judiciais envolvendo parlamentares eleitos para o Senado.",
-      "titulo_curto": "PGR denuncia deputado Gustavo Gayer ao STF por esquema de desvio de cota parlamentar",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "pgr",
-        "stf",
-        "gustavo gayer",
-        "cota parlamentar"
-      ],
-      "urgencia_score": 91,
-      "data_publicacao": "2026-11-25T23:08:50Z",
-      "gatilho_vitrine": "Segundo apuração do G1, a Procuradoria-Geral da República denunciou ao STF o deputado Gustavo Gayer como líder de um esquema de desvio de verbas da cota parlamentar. O parlamentar, recentemente eleito senador, é acusado de associação criminosa, peculato e uso de documento falso, cabendo agora ao ministro Alexandre de Moraes abrir prazos para a defesa.",
-      "impacto_pratico": "Acompanhamento institucional de desdobramentos judiciais envolvendo parlamentares eleitos para o Senado.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "G1 Política"
-      ],
-      "relevancia_score": 93,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "pgr",
-        "stf",
-        "gustavo gayer",
-        "cota parlamentar"
-      ]
-    },
-    {
       "slug": "stf-valor-exato-causa-trabalhista-divergencia-tst",
       "status": "novo",
       "categoria": "Geopolitica_Relacoes",
@@ -827,76 +879,105 @@
         "marco legal",
         "escolas"
       ]
-    },
-    {
-      "slug": "kim-jong-un-status-nuclear-inviolavel-coreia-norte",
-      "status": "novo",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-26T23:45:58Z",
-      "updated_at": "2026-11-25T23:45:58Z",
-      "fontes_urls": [
-        "https://g1.globo.com/mundo/noticia/2026/11/25/kim-jong-un-diz-que-status-nuclear-da-coreia-do-norte-e-inviolavel-e-faz-ameaca-com-guerra.ghtml"
-      ],
-      "titulo_tema": "Kim Jong-un afirma que status nuclear da Coreia do Norte é inviolável e faz ameaças",
-      "resumo_pulso": "Segundo informações da agência estatal KCNA repercutidas pelo G1 Mundo, o líder norte-coreano Kim Jong-un declarou que o país jamais abrirá mão de seu status nuclear. Ele advertiu que qualquer tentativa de contestar essa condição será tratada como declaração de guerra.",
-      "sintese_nerd": "Eleva as tensões geopolíticas na península coreana e preocupa observadores internacionais de segurança.",
-      "titulo_curto": "Kim Jong-un afirma que status nuclear da Coreia do Norte é inviolável e faz ameaças",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "coreia do norte",
-        "kim jong-un",
-        "armas nucleares",
-        "geopolítica"
-      ],
-      "urgencia_score": 90,
-      "data_publicacao": "2026-11-25T21:57:00Z",
-      "gatilho_vitrine": "Segundo informações da agência estatal KCNA repercutidas pelo G1 Mundo, o líder norte-coreano Kim Jong-un declarou que o país jamais abrirá mão de seu status nuclear. Ele advertiu que qualquer tentativa de contestar essa condição será tratada como declaração de guerra.",
-      "impacto_pratico": "Eleva as tensões geopolíticas na península coreana e preocupa observadores internacionais de segurança.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "G1 Mundo"
-      ],
-      "relevancia_score": 88,
-      "paises_envolvidos": [
-        "KP"
-      ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "coreia do norte",
-        "kim jong-un",
-        "armas nucleares",
-        "geopolítica"
-      ]
     }
   ],
   "noticias_quentes": [
     {
-      "slug": "grupo-fictor-alvo-operacao-suspeita-fraude",
-      "titulo_curto": "Grupo Fictor é alvo de operação da polícia por suspeita de fraude bilionária",
-      "resumo_pulso": "Segundo informações da InfoMoney e do Poder360, o Grupo Fictor, que tentou adquirir o Banco Master, tornou-se alvo de uma operação policial nesta quinta-feira devido a suspeitas de fraude. A Justiça determinou o bloqueio de ativos e bens estimados em mais de R$ 4 bilhões.",
-      "impacto_pratico": "A operação gera repercussão no setor financeiro nacional, exigindo cautela de investidores e correntistas vinculados às instituições envolvidas.",
+      "slug": "dolar-cai-abaixo-5-80-lula-trabuco-fazenda",
+      "titulo_curto": "Dólar recua abaixo de R$ 5,80 após sondagem de Trabuco para a Fazenda",
+      "resumo_pulso": "Conforme apuração da InfoMoney, a moeda norte-americana registrou queda expressiva e ficou cotada abaixo de R$ 5,80 após o presidente Luiz Inácio Lula da Silva sondar Luiz Carlos Trabuco, presidente do conselho do Bradesco, para assumir o Ministério da Fazenda. Para o viajante e o consumidor brasileiro, o movimento momentâneo reduz o custo de importações e barateia despesas em viagens internacionais, refletindo as expectativas do mercado diante de mudanças na equipe econômica.",
+      "impacto_pratico": "A queda do dólar abaixo de R$ 5,80 alivia o bolso do turista brasileiro em viagens ao exterior e reduz a pressão sobre o custo de produtos importados e passagens aéreas internacionais.",
+      "categoria": "Economia_Comercio",
+      "paises_envolvidos": [
+        "BR",
+        "US"
+      ],
+      "urgencia_score": 92,
+      "relevancia_score": 95,
+      "nivel_confianca": "alta",
+      "ttl_horas": 12,
+      "horas_em_destaque": 12,
+      "veiculos_origem": [
+        "InfoMoney Mercados"
+      ],
+      "fontes_urls": [
+        "https://www.infomoney.com.br/mercados/dolar-hoje-abertura-fechamento-comercial-turismo-26112026/"
+      ],
+      "palavras_chave": [
+        "Dólar",
+        "Câmbio",
+        "Ministério da Fazenda",
+        "Luiz Carlos Trabuco",
+        "Economia"
+      ],
+      "data_publicacao": "2026-11-26T12:25:11Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "Economia no Brasil",
+          "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
+          "motivo_conexao": "Complementa a análise sobre o comportamento do câmbio e os impactos na economia nacional."
+        },
+        {
+          "titulo_existente": "Banco Central e mercado financeiro acompanham inflação de serviços, câmbio e metas fiscais",
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
+          "motivo_conexao": "Relaciona as oscilações cambiais com as projeções macroeconômicas e o poder de compra."
+        }
+      ],
+      "expires_at": "2026-11-27T00:31:54Z",
+      "updated_at": "2026-11-26T12:31:54Z"
+    },
+    {
+      "slug": "ipca-15-novembro-alta-alimentos",
+      "titulo_curto": "Prévia da inflação oficial sobe 0,22% em novembro impulsionada por alimentos",
+      "resumo_pulso": "Segundo dados divulgados pelo IBGE e repercutidos pelo Poder360 e G1 Economia, o Índice Nacional de Preços ao Consumidor Amplo 15 (IPCA-15) subiu 0,22% em novembro, elevando a taxa acumulada em 12 meses para 4,64%. O avanço foi puxado principalmente pelo encarecimento de itens alimentícios devido a fatores climáticos desfavoráveis em regiões produtoras.",
+      "impacto_pratico": "A alta na prévia da inflação impacta o orçamento doméstico das famílias brasileiras, encarecendo a cesta de compras e pressionando o custo de vida nas principais regiões metropolitanas.",
       "categoria": "Economia_Comercio",
       "paises_envolvidos": [
         "BR"
       ],
-      "urgencia_score": 88,
-      "relevancia_score": 89,
+      "urgencia_score": 90,
+      "relevancia_score": 92,
       "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 12,
+      "horas_em_destaque": 18,
       "veiculos_origem": [
-        "InfoMoney Mercados",
-        "Poder360"
+        "Poder360",
+        "G1 Economia"
       ],
+      "fontes_urls": [
+        "https://www.poder360.com.br/poder-economia/previa-da-inflacao-sobe-022-em-novembro-em-12-meses-vai-a-464/",
+        "https://g1.globo.com/economia/noticia/2026/11/26/ipca-15-previa-da-inflacao-novembro.ghtml"
+      ],
+      "palavras_chave": [
+        "IPCA-15",
+        "Inflação",
+        "IBGE",
+        "Economia",
+        "Custo de Vida"
+      ],
+      "data_publicacao": "2026-11-26T12:04:33Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "O que é inflação?",
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
+          "motivo_conexao": "Explica o conceito e a metodologia de cálculo dos índices de inflação no Brasil."
+        }
+      ],
+      "expires_at": "2026-11-27T12:31:54Z",
+      "updated_at": "2026-11-26T12:31:54Z"
+    },
+    {
+      "slug": "grupo-fictor-alvo-operacao-suspeita-fraude",
+      "categoria": "Economia_Comercio",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-27T11:25:56Z",
+      "updated_at": "2026-11-26T11:25:56Z",
       "fontes_urls": [
         "https://www.infomoney.com.br/brasil/grupo-fictor-que-tentou-comprar-o-master-e-alvo-de-operacao-por-suspeita-de-fraude/",
         "https://www.poder360.com.br/poder-justica/policia-faz-operacao-contra-grupo-que-tentou-comprar-master/"
       ],
+      "resumo_pulso": "Segundo informações da InfoMoney e do Poder360, o Grupo Fictor, que tentou adquirir o Banco Master, tornou-se alvo de uma operação policial nesta quinta-feira devido a suspeitas de fraude. A Justiça determinou o bloqueio de ativos e bens estimados em mais de R$ 4 bilhões.",
+      "titulo_curto": "Grupo Fictor é alvo de operação da polícia por suspeita de fraude bilionária",
       "palavras_chave": [
         "Grupo Fictor",
         "Banco Master",
@@ -904,78 +985,75 @@
         "Justiça",
         "Economia"
       ],
+      "urgencia_score": 88,
       "data_publicacao": "2026-11-26T11:21:39Z",
-      "links_internos_relacionados": [
-        {
-          "titulo_existente": "Economia no Brasil",
-          "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
-          "motivo_conexao": "Contextorna investigações e estabilidade do mercado financeiro e bancário nacional."
-        }
+      "impacto_pratico": "A operação gera repercussão no setor financeiro nacional, exigindo cautela de investidores e correntistas vinculados às instituições envolvidas.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "InfoMoney Mercados",
+        "Poder360"
       ],
-      "expires_at": "2026-11-27T11:25:56Z",
-      "updated_at": "2026-11-26T11:25:56Z"
-    },
-    {
-      "slug": "alckmin-cotado-ministerio-seguranca-publica",
-      "titulo_curto": "Aliados defendem Geraldo Alckmin para comando do futuro Ministério da Segurança Pública",
-      "resumo_pulso": "Conforme apuração do blog da Andréia Sadi no G1, o vice-presidente Geraldo Alckmin passou a ser fortemente cotado por aliados para assumir o Ministério da Segurança Pública. A nova pasta tem previsão de criação em 2027 como parte dos esforços do governo para centralizar e intensificar o combate ao crime organizado.",
-      "impacto_pratico": "Pode reconfigurar a articulação política do Executivo federal e as diretrizes de segurança nas fronteiras e estados.",
-      "categoria": "Geopolitica_Relacoes",
+      "relevancia_score": 89,
+      "horas_em_destaque": 12,
       "paises_envolvidos": [
         "BR"
       ],
-      "urgencia_score": 85,
-      "relevancia_score": 87,
-      "nivel_confianca": "alta",
+      "links_internos_relacionados": [
+        {
+          "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
+          "motivo_conexao": "Contextorna investigações e estabilidade do mercado financeiro e bancário nacional.",
+          "titulo_existente": "Economia no Brasil"
+        }
+      ]
+    },
+    {
+      "slug": "alckmin-cotado-ministerio-seguranca-publica",
+      "categoria": "Geopolitica_Relacoes",
       "ttl_horas": 24,
-      "horas_em_destaque": 12,
-      "veiculos_origem": [
-        "G1 Política"
-      ],
+      "expires_at": "2026-11-27T11:25:56Z",
+      "updated_at": "2026-11-26T11:25:56Z",
       "fontes_urls": [
         "https://g1.globo.com/politica/blog/andreia-sadi/post/2026/11/26/alckmin-seguranca-publica.ghtml"
       ],
+      "resumo_pulso": "Conforme apuração do blog da Andréia Sadi no G1, o vice-presidente Geraldo Alckmin passou a ser fortemente cotado por aliados para assumir o Ministério da Segurança Pública. A nova pasta tem previsão de criação em 2027 como parte dos esforços do governo para centralizar e intensificar o combate ao crime organizado.",
+      "titulo_curto": "Aliados defendem Geraldo Alckmin para comando do futuro Ministério da Segurança Pública",
       "palavras_chave": [
         "Geraldo Alckmin",
         "Segurança Pública",
         "Governo Federal",
         "Política"
       ],
+      "urgencia_score": 85,
       "data_publicacao": "2026-11-26T11:06:01Z",
+      "impacto_pratico": "Pode reconfigurar a articulação política do Executivo federal e as diretrizes de segurança nas fronteiras e estados.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "G1 Política"
+      ],
+      "relevancia_score": 87,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "BR"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "Política no Brasil",
           "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
-          "motivo_conexao": "Acompanha as movimentações e negociações na alta cúpula do Planalto."
+          "motivo_conexao": "Acompanha as movimentações e negociações na alta cúpula do Planalto.",
+          "titulo_existente": "Política no Brasil"
         }
-      ],
-      "expires_at": "2026-11-27T11:25:56Z",
-      "updated_at": "2026-11-26T11:25:56Z"
+      ]
     },
     {
       "slug": "nvidia-suspende-servidores-sudeste-asiatico",
-      "titulo_curto": "Nvidia suspende envio de servidores com chips de IA para o Sudeste Asiático em meio a novas regras dos EUA",
-      "resumo_pulso": "Segundo reportagem do G1 baseada em informações do Financial Times, a fabricante americana Nvidia proibiu o envio de servidores equipados com chips de inteligência artificial para quatro países do Sudeste Asiático (Malásia, Singapura, Tailândia e Indonésia). A medida decorre do endurecimento das restrições de exportação impostas por Washington devido a escândalos de espionagem.",
-      "impacto_pratico": "Afeta cadeias globais de suprimento de tecnologia e o comércio exterior de semicondutores na Ásia.",
       "categoria": "Economia_Comercio",
-      "paises_envolvidos": [
-        "US",
-        "MY",
-        "SG",
-        "TH",
-        "ID"
-      ],
-      "urgencia_score": 84,
-      "relevancia_score": 85,
-      "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 12,
-      "veiculos_origem": [
-        "G1 Economia"
-      ],
+      "expires_at": "2026-11-27T11:25:56Z",
+      "updated_at": "2026-11-26T11:25:56Z",
       "fontes_urls": [
         "https://g1.globo.com/tecnologia/noticia/2026/11/26/escandalo-de-espionagem-leva-eua-a-endurecer-regras-e-nvidia-barra-servidores-no-sudeste-asiatico.ghtml"
       ],
+      "resumo_pulso": "Segundo reportagem do G1 baseada em informações do Financial Times, a fabricante americana Nvidia proibiu o envio de servidores equipados com chips de inteligência artificial para quatro países do Sudeste Asiático (Malásia, Singapura, Tailândia e Indonésia). A medida decorre do endurecimento das restrições de exportação impostas por Washington devido a escândalos de espionagem.",
+      "titulo_curto": "Nvidia suspende envio de servidores com chips de IA para o Sudeste Asiático em meio a novas regras dos EUA",
       "palavras_chave": [
         "Nvidia",
         "Inteligência Artificial",
@@ -983,16 +1061,29 @@
         "Estados Unidos",
         "Sudeste Asiático"
       ],
+      "urgencia_score": 84,
       "data_publicacao": "2026-11-26T10:59:34Z",
+      "impacto_pratico": "Afeta cadeias globais de suprimento de tecnologia e o comércio exterior de semicondutores na Ásia.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "G1 Economia"
+      ],
+      "relevancia_score": 85,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "US",
+        "MY",
+        "SG",
+        "TH",
+        "ID"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "O que é uma sanção internacional?",
           "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-sancao-internacional",
-          "motivo_conexao": "Explica o uso de restrições tecnológicas e comerciais como instrumentos de política externa."
+          "motivo_conexao": "Explica o uso de restrições tecnológicas e comerciais como instrumentos de política externa.",
+          "titulo_existente": "O que é uma sanção internacional?"
         }
-      ],
-      "expires_at": "2026-11-27T11:25:56Z",
-      "updated_at": "2026-11-26T11:25:56Z"
+      ]
     },
     {
       "slug": "explosao-instalacao-petrolifera-bangkok",
@@ -1157,27 +1248,15 @@
     },
     {
       "slug": "tarifas-trump-acucar-brasileiro",
-      "titulo_curto": "China, Brasil e União Europeia reagem a novas tarifas anunciadas por Donald Trump",
-      "resumo_pulso": "Conforme apuração do G1, o Brasil e outras 13 economias, incluindo China e União Europeia, manifestaram reações críticas à nova rodada de tarifas comerciais anunciada pelo governo dos Estados Unidos sob a gestão de Donald Trump. Especialistas ressaltam que, apesar do atrito geopolítico, o impacto prático sobre o câmbio comercial e o custo para viajantes e importadores brasileiros segue monitorado de perto.",
-      "impacto_pratico": "Oscilações no câmbio comercial podem influenciar o planejamento financeiro de importadores e viajantes com destino aos Estados Unidos.",
       "categoria": "Economia_Comercio",
-      "paises_envolvidos": [
-        "BR",
-        "US",
-        "CN",
-        "EU"
-      ],
-      "urgencia_score": 90,
-      "relevancia_score": 93,
-      "nivel_confianca": "alta",
       "ttl_horas": 12,
-      "horas_em_destaque": 12,
-      "veiculos_origem": [
-        "G1 Economia"
-      ],
+      "expires_at": "2026-11-28T04:20:35Z",
+      "updated_at": "2026-11-26T11:25:56Z",
       "fontes_urls": [
         "https://g1.globo.com/economia/noticia/2026/11/26/china-brasil-e-uniao-europeia-reagem-a-novas-tarifas-anunciadas-por-trump.ghtml"
       ],
+      "resumo_pulso": "Conforme apuração do G1, o Brasil e outras 13 economias, incluindo China e União Europeia, manifestaram reações críticas à nova rodada de tarifas comerciais anunciada pelo governo dos Estados Unidos sob a gestão de Donald Trump. Especialistas ressaltam que, apesar do atrito geopolítico, o impacto prático sobre o câmbio comercial e o custo para viajantes e importadores brasileiros segue monitorado de perto.",
+      "titulo_curto": "China, Brasil e União Europeia reagem a novas tarifas anunciadas por Donald Trump",
       "palavras_chave": [
         "Tarifas",
         "Donald Trump",
@@ -1185,21 +1264,33 @@
         "Câmbio",
         "Brasil"
       ],
+      "urgencia_score": 90,
       "data_publicacao": "2026-11-26T02:00:40Z",
+      "impacto_pratico": "Oscilações no câmbio comercial podem influenciar o planejamento financeiro de importadores e viajantes com destino aos Estados Unidos.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "G1 Economia"
+      ],
+      "relevancia_score": 93,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "BR",
+        "US",
+        "CN",
+        "EU"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "Economia no Brasil",
           "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
-          "motivo_conexao": "Analisa o impacto das decisões comerciais externas sobre o cenário macroeconômico brasileiro e o câmbio."
+          "motivo_conexao": "Analisa o impacto das decisões comerciais externas sobre o cenário macroeconômico brasileiro e o câmbio.",
+          "titulo_existente": "Economia no Brasil"
         },
         {
-          "titulo_existente": "Política nos Estados Unidos",
           "url_existente": "https://www.rodandoomundo.com.br/politica/estados-unidos",
-          "motivo_conexao": "Detalha as diretrizes tarifárias e econômicas implementadas pela Casa Branca."
+          "motivo_conexao": "Detalha as diretrizes tarifárias e econômicas implementadas pela Casa Branca.",
+          "titulo_existente": "Política nos Estados Unidos"
         }
-      ],
-      "expires_at": "2026-11-28T04:20:35Z",
-      "updated_at": "2026-11-26T11:25:56Z"
+      ]
     },
     {
       "slug": "brasil-assume-vice-presidencia-onu-turismo",
@@ -1305,43 +1396,6 @@
           "url_existente": "https://www.rodandoomundo.com.br/saude",
           "motivo_conexao": "Relaciona-se com pautas legislativas voltadas para direitos humanos e diretrizes sociais.",
           "titulo_existente": "Movimentos sociais e parlamentares debatem investimentos em saúde, educação e transição ecológica"
-        }
-      ]
-    },
-    {
-      "slug": "pgr-denuncia-gustavo-gayer-stf-cota-parlamentar",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 12,
-      "expires_at": "2026-11-26T11:45:58Z",
-      "updated_at": "2026-11-26T01:00:03Z",
-      "fontes_urls": [
-        "https://g1.globo.com/politica/noticia/2026/11/25/pgr-denuncia-deputado-gustavo-gayer-ao-stf-por-esquema-de-desvio-de-cota-parlamentar-na-camara.ghtml"
-      ],
-      "resumo_pulso": "Segundo apuração do G1, a Procuradoria-Geral da República denunciou ao STF o deputado Gustavo Gayer como líder de um esquema de desvio de verbas da cota parlamentar. O parlamentar, recentemente eleito senador, é acusado de associação criminosa, peculato e uso de documento falso, cabendo agora ao ministro Alexandre de Moraes abrir prazos para a defesa.",
-      "titulo_curto": "PGR denuncia deputado Gustavo Gayer ao STF por esquema de desvio de cota parlamentar",
-      "palavras_chave": [
-        "PGR",
-        "STF",
-        "Gustavo Gayer",
-        "Cota parlamentar"
-      ],
-      "urgencia_score": 91,
-      "data_publicacao": "2026-11-25T23:08:50Z",
-      "impacto_pratico": "Acompanhamento institucional de desdobramentos judiciais envolvendo parlamentares eleitos para o Senado.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "G1 Política"
-      ],
-      "relevancia_score": 93,
-      "horas_em_destaque": 6,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
-          "motivo_conexao": "Contextualiza a atuação do STF frente a denúncias contra parlamentares.",
-          "titulo_existente": "STF analisa regras de transparência e limites constitucionais entre os Poderes"
         }
       ]
     },
@@ -1564,43 +1618,6 @@
           "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
           "motivo_conexao": "Relaciona as decisões dos tribunais superiores com o cenário político e de segurança nacional.",
           "titulo_existente": "Política no Brasil"
-        }
-      ]
-    },
-    {
-      "slug": "governo-renova-subsidio-diesel-por-30-dias",
-      "categoria": "Economia_Comercio",
-      "ttl_horas": 18,
-      "expires_at": "2026-11-26T15:53:20Z",
-      "updated_at": "2026-11-25T21:53:20Z",
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/governo-deve-renovar-subsidio-ao-diesel-por-mais-30-dias"
-      ],
-      "resumo_pulso": "Conforme apuração da Agência Brasil, o governo federal deve estender a subvenção ao diesel por mais um mês, medida que pode custar até R$ 10,5 bilhões adicionais e elevar o impacto total das políticas de contenção de combustíveis para cerca de R$ 85 bilhões em 2026.",
-      "titulo_curto": "Equipe econômica avalia prorrogação do subsídio ao diesel por mais 30 dias",
-      "palavras_chave": [
-        "subsídio",
-        "diesel",
-        "economia",
-        "contas públicas"
-      ],
-      "urgencia_score": 87,
-      "data_publicacao": "2026-11-25T21:11:00Z",
-      "impacto_pratico": "A prorrogação mitiga pressões inflacionárias de curto prazo sobre fretes e o transporte rodoviário, mas pressiona o resultado fiscal.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Agência Brasil (EBC)"
-      ],
-      "relevancia_score": 90,
-      "horas_em_destaque": 12,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
-          "motivo_conexao": "Discute os reflexos das políticas de preços administrados sobre a inflação geral e as expectativas do mercado.",
-          "titulo_existente": "Banco Central e mercado financeiro acompanham inflação de serviços, câmbio e metas fiscais"
         }
       ]
     }
