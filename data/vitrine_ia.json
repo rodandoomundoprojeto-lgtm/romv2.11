@@ -2,9 +2,87 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-26T10:08:15Z",
-  "batch_id": "20261126-1007",
+  "updatedAt": "2026-11-26T10:25:12Z",
+  "batch_id": "20261126-1025",
   "temas_ativos": [
+    {
+      "slug": "colombia-abandona-brics-politica-externa-eua",
+      "titulo_tema": "Colômbia abandona iniciativa de entrada nos Brics",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Politica",
+        "Economia"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 92,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-28T10:25:12Z",
+      "palavras_chave_busca": [
+        "colômbia",
+        "brics",
+        "gustavo petro",
+        "política externa",
+        "eua",
+        "banco dos brics"
+      ],
+      "gatilho_vitrine": "Destaque a reviravolta na diplomacia sul-americana e os reflexos comerciais na região",
+      "sintese_nerd": "A decisão do governo de Gustavo Petro de recuar da entrada nos Brics sinaliza uma realinhamento estratégico voltado à reaproximação com os Estados Unidos. Essa guinada altera o eixo de influência geopolítica na América do Sul e impacta acordos comerciais regionais.",
+      "data_publicacao": "2026-11-26T10:25:12Z",
+      "updated_at": "2026-11-26T10:25:12Z"
+    },
+    {
+      "slug": "governo-lula-projetos-economicos-congresso",
+      "titulo_tema": "Prazo limite para votação de projetos econômicos no Congresso",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Politica"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 88,
+      "ttl_horas": 72,
+      "expires_at": "2026-11-29T10:25:12Z",
+      "palavras_chave_busca": [
+        "governo lula",
+        "congresso nacional",
+        "projetos econômicos",
+        "ajuste fiscal",
+        "orçamento"
+      ],
+      "gatilho_vitrine": "Mostre a corrida contra o relógio do Executivo para destravar pautas fiscais antes da renovação parlamentar",
+      "sintese_nerd": "Com a proximidade do fim do ano legislativo e a perspectiva de um Congresso mais oposicionista, o governo enfrenta uma janela estreita para aprovar pautas econômicas vitais. O sucesso dessas votações ditará o ritmo da previsibilidade fiscal e o comportamento dos juros futuros.",
+      "data_publicacao": "2026-11-26T10:25:12Z",
+      "updated_at": "2026-11-26T10:25:12Z"
+    },
+    {
+      "slug": "governo-multa-google-transparencia-anuncios",
+      "titulo_tema": "Senacon abre processo e pode multar Google por anúncios",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Politica",
+      "categorias_cruzadas": [
+        "Cultura",
+        "Economia"
+      ],
+      "rota_editoria": "/politica",
+      "relevancia_score": 85,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-28T10:25:12Z",
+      "palavras_chave_busca": [
+        "google",
+        "senacon",
+        "transparência em anúncios",
+        "big techs",
+        "regulação digital"
+      ],
+      "gatilho_vitrine": "Explore o aperto do cerco regulatório do governo federal sobre as práticas comerciais das big techs",
+      "sintese_nerd": "A investida da Secretaria Nacional do Consumidor contra a falta de transparência em anúncios do Google eleva o tom da regulação digital no Brasil. A medida reflete o esforço global de governos para impor maior responsabilidade corporativa sobre as gigantes da tecnologia.",
+      "data_publicacao": "2026-11-26T10:25:12Z",
+      "updated_at": "2026-11-26T10:25:12Z"
+    },
     {
       "slug": "explosao-instalacao-petrolifera-bangkok",
       "status": "novo",
@@ -50,113 +128,6 @@
         "explosão",
         "petróleo",
         "segurança"
-      ]
-    },
-    {
-      "slug": "tarifaco-trump-reacao-governo-lula-impacto-cambio",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-28T08:08:49Z",
-      "updated_at": "2026-11-26T08:08:49Z",
-      "titulo_tema": "Ameaça de tarifaço de Trump e a reação do governo Lula frente à alta do dólar",
-      "sintese_nerd": "A ofensiva protecionista dos EUA sob Donald Trump pressiona o comércio internacional e gera turbulências cambiais, forçando o governo brasileiro a recalibrar sua estratégia diplomática e comercial. Essa instabilidade externa encarece importações e alimenta pressões inflacionárias internas, refletindo diretamente na cotação do dólar e no bolso do consumidor.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-26T08:08:49Z",
-      "gatilho_vitrine": "Destacar na Vitrine de Economia e Geopolítica as repercussões comerciais da política externa americana sobre a inflação e o câmbio brasileiro.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 95,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Geopolitica_Radar",
-        "Politica"
-      ],
-      "palavras_chave_busca": [
-        "tarifaço",
-        "donald trump",
-        "governo lula",
-        "dólar alto",
-        "comércio exterior",
-        "protecionismo",
-        "economia global"
-      ]
-    },
-    {
-      "slug": "fuga-investidores-brasil-mexico-mercados-emergentes",
-      "status": "novo",
-      "ttl_horas": 72,
-      "expires_at": "2026-11-29T08:08:49Z",
-      "updated_at": "2026-11-26T08:08:49Z",
-      "titulo_tema": "Queda na alocação de investidores no Brasil e avanço do México entre emergentes",
-      "sintese_nerd": "Fundos globais de investimento estão redimensionando suas carteiras na América Latina, reduzindo a exposição a ativos brasileiros de peso — como a Vale — em favor do mercado mexicano. Esse movimento reflete incertezas fiscais internas e a busca por maior segurança regulatória fora do Brasil.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-26T08:08:49Z",
-      "gatilho_vitrine": "Posicionar o tema no topo da editoria de Economia para explicar a perda de espaço do mercado brasileiro frente a rivais latino-americanos.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 90,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Geopolitica_Radar"
-      ],
-      "palavras_chave_busca": [
-        "investidores estrangeiros",
-        "mercados emergentes",
-        "méxico",
-        "bolsa de valores",
-        "vale",
-        "fuga de capital",
-        "economia brasileira"
-      ]
-    },
-    {
-      "slug": "dolarizacao-informal-pequeno-investidor-busca-protecao",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-28T08:08:49Z",
-      "updated_at": "2026-11-26T08:08:49Z",
-      "titulo_tema": "Corrida do pequeno investidor ao dólar e filas em bancos internacionais",
-      "sintese_nerd": "A alta persistente da cotação do dólar ultrapassando a barreira psicológica de R$ 6 provocou uma mudança estrutural no comportamento do pequeno investidor brasileiro, que passou a buscar contas internacionais em massa. Essa corrida reflete o temor generalizado de desvalorização da moeda local e a busca por proteção patrimonial fora do país.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-26T08:08:49Z",
-      "gatilho_vitrine": "Exibir na home como destaque de comportamento financeiro e impacto cambial direto na vida do cidadão.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 88,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "dolarização",
-        "pequeno investidor",
-        "conta internacional",
-        "câmbio",
-        "dólar a r$ 6",
-        "proteção patrimonial"
-      ]
-    },
-    {
-      "slug": "ccj-senado-aprova-crimes-mercado-capitais-americanas",
-      "status": "novo",
-      "ttl_horas": 72,
-      "expires_at": "2026-11-29T08:08:49Z",
-      "updated_at": "2026-11-26T08:08:49Z",
-      "titulo_tema": "CCJ do Senado aprova projeto que criminaliza fraudes no mercado de capitais",
-      "sintese_nerd": "À luz de crises contábeis históricas no mercado financeiro brasileiro, o Congresso avança na tipificação penal de fraudes corporativas para endurecer a punição a gestores e controladores. A medida busca restaurar a confiança dos investidores na governança das empresas listadas em bolsa.",
-      "rota_editoria": "/politica",
-      "data_publicacao": "2026-11-26T08:08:49Z",
-      "gatilho_vitrine": "Movimentar a seção de Política Institucional para conectar o avanço legislativo com a supervisão de grandes escândalos corporativos.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 85,
-      "categoria_primaria": "Politica",
-      "categorias_cruzadas": [
-        "Economia"
-      ],
-      "palavras_chave_busca": [
-        "ccj do senado",
-        "mercado de capitais",
-        "fraude financeira",
-        "americanas",
-        "crimes societários",
-        "regulação"
       ]
     },
     {
@@ -347,29 +318,19 @@
     },
     {
       "slug": "tarifas-trump-acucar-brasileiro",
-      "titulo_tema": "Tarifaço de Trump sobre açúcar e aeronaves gera alerta, mas analistas apontam impacto cambial e prático moderado",
-      "titulo_curto": "Tarifaço de Trump sobre açúcar e aeronaves gera alerta, mas analistas apontam impacto cambial e prático moderado",
       "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Economia",
       "categoria": "Economia_Comercio",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 92,
-      "urgencia_score": 89,
       "ttl_horas": 12,
       "expires_at": "2026-11-28T04:20:35Z",
-      "palavras_chave_busca": [
-        "tarifaço",
-        "eua",
-        "açúcar",
-        "aeronaves",
-        "câmbio",
-        "donald trump"
+      "updated_at": "2026-11-26T10:08:15Z",
+      "fontes_urls": [
+        "https://g1.globo.com/economia/agronegocios/noticia/2026/11/26/tarifaco-de-trump-nova-taxa-sobre-acucar-brasileiro-deve-ter-impacto-praticamente-nulo-diz-analista.ghtml"
       ],
+      "titulo_tema": "Tarifaço de Trump sobre açúcar e aeronaves gera alerta, mas analistas apontam impacto cambial e prático moderado",
+      "resumo_pulso": "Conforme apuração do G1 e do Poder360, o governo dos Estados Unidos propôs novas tarifas sobre o açúcar brasileiro e sobretaxa de 10% em aeronaves. Analistas indicam que o efeito imediato nas cotações e no bolso do viajante pode ser atenuado pelas cotas vigentes, mas o cenário exige monitoramento do câmbio comercial.",
+      "sintese_nerd": "Para o viajante brasileiro e investidores, a volatilidade no câmbio comercial pode refletir nas cotações do dólar, afetando custos de viagens internacionais e importados.",
+      "titulo_curto": "Tarifaço de Trump sobre açúcar e aeronaves gera alerta, mas analistas apontam impacto cambial e prático moderado",
+      "rota_editoria": "/economia",
       "palavras_chave": [
         "tarifaço",
         "eua",
@@ -378,23 +339,33 @@
         "câmbio",
         "donald trump"
       ],
+      "urgencia_score": 89,
+      "data_publicacao": "2026-11-26T02:00:40Z",
       "gatilho_vitrine": "Conforme apuração do G1 e do Poder360, o governo dos Estados Unidos propôs novas tarifas sobre o açúcar brasileiro e sobretaxa de 10% em aeronaves. Analistas indicam que o efeito imediato nas cotações e no bolso do viajante pode ser atenuado pelas cotas vigentes, mas o cenário exige monitoramento do câmbio comercial.",
-      "resumo_pulso": "Conforme apuração do G1 e do Poder360, o governo dos Estados Unidos propôs novas tarifas sobre o açúcar brasileiro e sobretaxa de 10% em aeronaves. Analistas indicam que o efeito imediato nas cotações e no bolso do viajante pode ser atenuado pelas cotas vigentes, mas o cenário exige monitoramento do câmbio comercial.",
-      "sintese_nerd": "Para o viajante brasileiro e investidores, a volatilidade no câmbio comercial pode refletir nas cotações do dólar, afetando custos de viagens internacionais e importados.",
       "impacto_pratico": "Para o viajante brasileiro e investidores, a volatilidade no câmbio comercial pode refletir nas cotações do dólar, afetando custos de viagens internacionais e importados.",
-      "paises_envolvidos": [
-        "BR",
-        "US"
-      ],
+      "origem_pipeline": "pulso",
       "veiculos_origem": [
         "G1 Economia",
         "Poder360"
       ],
-      "fontes_urls": [
-        "https://g1.globo.com/economia/agronegocios/noticia/2026/11/26/tarifaco-de-trump-nova-taxa-sobre-acucar-brasileiro-deve-ter-impacto-praticamente-nulo-diz-analista.ghtml"
+      "relevancia_score": 92,
+      "paises_envolvidos": [
+        "BR",
+        "US"
       ],
-      "data_publicacao": "2026-11-26T02:00:40Z",
-      "updated_at": "2026-11-26T10:08:15Z"
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "tarifaço",
+        "eua",
+        "açúcar",
+        "aeronaves",
+        "câmbio",
+        "donald trump"
+      ]
     },
     {
       "slug": "brasil-assume-vice-presidencia-onu-turismo",
@@ -847,6 +818,86 @@
       ]
     }
   ],
+  "temas_curadoria": [
+    {
+      "slug": "colombia-abandona-brics-politica-externa-eua",
+      "titulo_tema": "Colômbia abandona iniciativa de entrada nos Brics",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Politica",
+        "Economia"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 92,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-28T10:25:12Z",
+      "palavras_chave_busca": [
+        "colômbia",
+        "brics",
+        "gustavo petro",
+        "política externa",
+        "eua",
+        "banco dos brics"
+      ],
+      "gatilho_vitrine": "Destaque a reviravolta na diplomacia sul-americana e os reflexos comerciais na região",
+      "sintese_nerd": "A decisão do governo de Gustavo Petro de recuar da entrada nos Brics sinaliza uma realinhamento estratégico voltado à reaproximação com os Estados Unidos. Essa guinada altera o eixo de influência geopolítica na América do Sul e impacta acordos comerciais regionais.",
+      "data_publicacao": "2026-11-26T10:25:12Z",
+      "updated_at": "2026-11-26T10:25:12Z"
+    },
+    {
+      "slug": "governo-lula-projetos-economicos-congresso",
+      "titulo_tema": "Prazo limite para votação de projetos econômicos no Congresso",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Politica"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 88,
+      "ttl_horas": 72,
+      "expires_at": "2026-11-29T10:25:12Z",
+      "palavras_chave_busca": [
+        "governo lula",
+        "congresso nacional",
+        "projetos econômicos",
+        "ajuste fiscal",
+        "orçamento"
+      ],
+      "gatilho_vitrine": "Mostre a corrida contra o relógio do Executivo para destravar pautas fiscais antes da renovação parlamentar",
+      "sintese_nerd": "Com a proximidade do fim do ano legislativo e a perspectiva de um Congresso mais oposicionista, o governo enfrenta uma janela estreita para aprovar pautas econômicas vitais. O sucesso dessas votações ditará o ritmo da previsibilidade fiscal e o comportamento dos juros futuros.",
+      "data_publicacao": "2026-11-26T10:25:12Z",
+      "updated_at": "2026-11-26T10:25:12Z"
+    },
+    {
+      "slug": "governo-multa-google-transparencia-anuncios",
+      "titulo_tema": "Senacon abre processo e pode multar Google por anúncios",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Politica",
+      "categorias_cruzadas": [
+        "Cultura",
+        "Economia"
+      ],
+      "rota_editoria": "/politica",
+      "relevancia_score": 85,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-28T10:25:12Z",
+      "palavras_chave_busca": [
+        "google",
+        "senacon",
+        "transparência em anúncios",
+        "big techs",
+        "regulação digital"
+      ],
+      "gatilho_vitrine": "Explore o aperto do cerco regulatório do governo federal sobre as práticas comerciais das big techs",
+      "sintese_nerd": "A investida da Secretaria Nacional do Consumidor contra a falta de transparência em anúncios do Google eleva o tom da regulação digital no Brasil. A medida reflete o esforço global de governos para impor maior responsabilidade corporativa sobre as gigantes da tecnologia.",
+      "data_publicacao": "2026-11-26T10:25:12Z",
+      "updated_at": "2026-11-26T10:25:12Z"
+    }
+  ],
   "noticias_quentes": [
     {
       "slug": "explosao-instalacao-petrolifera-bangkok",
@@ -1011,26 +1062,15 @@
     },
     {
       "slug": "tarifas-trump-acucar-brasileiro",
-      "titulo_curto": "Tarifaço de Trump sobre açúcar e aeronaves gera alerta, mas analistas apontam impacto cambial e prático moderado",
-      "resumo_pulso": "Conforme apuração do G1 e do Poder360, o governo dos Estados Unidos propôs novas tarifas sobre o açúcar brasileiro e sobretaxa de 10% em aeronaves. Analistas indicam que o efeito imediato nas cotações e no bolso do viajante pode ser atenuado pelas cotas vigentes, mas o cenário exige monitoramento do câmbio comercial.",
-      "impacto_pratico": "Para o viajante brasileiro e investidores, a volatilidade no câmbio comercial pode refletir nas cotações do dólar, afetando custos de viagens internacionais e importados.",
       "categoria": "Economia_Comercio",
-      "paises_envolvidos": [
-        "BR",
-        "US"
-      ],
-      "urgencia_score": 89,
-      "relevancia_score": 92,
-      "nivel_confianca": "alta",
       "ttl_horas": 12,
-      "horas_em_destaque": 12,
-      "veiculos_origem": [
-        "G1 Economia",
-        "Poder360"
-      ],
+      "expires_at": "2026-11-28T04:20:35Z",
+      "updated_at": "2026-11-26T10:08:15Z",
       "fontes_urls": [
         "https://g1.globo.com/economia/agronegocios/noticia/2026/11/26/tarifaco-de-trump-nova-taxa-sobre-acucar-brasileiro-deve-ter-impacto-praticamente-nulo-diz-analista.ghtml"
       ],
+      "resumo_pulso": "Conforme apuração do G1 e do Poder360, o governo dos Estados Unidos propôs novas tarifas sobre o açúcar brasileiro e sobretaxa de 10% em aeronaves. Analistas indicam que o efeito imediato nas cotações e no bolso do viajante pode ser atenuado pelas cotas vigentes, mas o cenário exige monitoramento do câmbio comercial.",
+      "titulo_curto": "Tarifaço de Trump sobre açúcar e aeronaves gera alerta, mas analistas apontam impacto cambial e prático moderado",
       "palavras_chave": [
         "Tarifaço",
         "EUA",
@@ -1039,16 +1079,27 @@
         "Câmbio",
         "Donald Trump"
       ],
+      "urgencia_score": 89,
       "data_publicacao": "2026-11-26T02:00:40Z",
+      "impacto_pratico": "Para o viajante brasileiro e investidores, a volatilidade no câmbio comercial pode refletir nas cotações do dólar, afetando custos de viagens internacionais e importados.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "G1 Economia",
+        "Poder360"
+      ],
+      "relevancia_score": 92,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "BR",
+        "US"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "Economia no Brasil",
           "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
-          "motivo_conexao": "Contextualiza os reflexos de pressões comerciais internacionais sobre o mercado e o câmbio brasileiro."
+          "motivo_conexao": "Contextualiza os reflexos de pressões comerciais internacionais sobre o mercado e o câmbio brasileiro.",
+          "titulo_existente": "Economia no Brasil"
         }
-      ],
-      "expires_at": "2026-11-28T04:20:35Z",
-      "updated_at": "2026-11-26T10:08:15Z"
+      ]
     },
     {
       "slug": "brasil-assume-vice-presidencia-onu-turismo",
@@ -1518,115 +1569,6 @@
           "motivo_conexao": "Discute os reflexos das políticas de preços administrados sobre a inflação geral e as expectativas do mercado.",
           "titulo_existente": "Banco Central e mercado financeiro acompanham inflação de serviços, câmbio e metas fiscais"
         }
-      ]
-    }
-  ],
-  "temas_curadoria": [
-    {
-      "slug": "tarifaco-trump-reacao-governo-lula-impacto-cambio",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-28T08:08:49Z",
-      "updated_at": "2026-11-26T08:08:49Z",
-      "titulo_tema": "Ameaça de tarifaço de Trump e a reação do governo Lula frente à alta do dólar",
-      "sintese_nerd": "A ofensiva protecionista dos EUA sob Donald Trump pressiona o comércio internacional e gera turbulências cambiais, forçando o governo brasileiro a recalibrar sua estratégia diplomática e comercial. Essa instabilidade externa encarece importações e alimenta pressões inflacionárias internas, refletindo diretamente na cotação do dólar e no bolso do consumidor.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-26T08:08:49Z",
-      "gatilho_vitrine": "Destacar na Vitrine de Economia e Geopolítica as repercussões comerciais da política externa americana sobre a inflação e o câmbio brasileiro.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 95,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Geopolitica_Radar",
-        "Politica"
-      ],
-      "palavras_chave_busca": [
-        "tarifaço",
-        "donald trump",
-        "governo lula",
-        "dólar alto",
-        "comércio exterior",
-        "protecionismo",
-        "economia global"
-      ]
-    },
-    {
-      "slug": "fuga-investidores-brasil-mexico-mercados-emergentes",
-      "status": "novo",
-      "ttl_horas": 72,
-      "expires_at": "2026-11-29T08:08:49Z",
-      "updated_at": "2026-11-26T08:08:49Z",
-      "titulo_tema": "Queda na alocação de investidores no Brasil e avanço do México entre emergentes",
-      "sintese_nerd": "Fundos globais de investimento estão redimensionando suas carteiras na América Latina, reduzindo a exposição a ativos brasileiros de peso — como a Vale — em favor do mercado mexicano. Esse movimento reflete incertezas fiscais internas e a busca por maior segurança regulatória fora do Brasil.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-26T08:08:49Z",
-      "gatilho_vitrine": "Posicionar o tema no topo da editoria de Economia para explicar a perda de espaço do mercado brasileiro frente a rivais latino-americanos.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 90,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Geopolitica_Radar"
-      ],
-      "palavras_chave_busca": [
-        "investidores estrangeiros",
-        "mercados emergentes",
-        "méxico",
-        "bolsa de valores",
-        "vale",
-        "fuga de capital",
-        "economia brasileira"
-      ]
-    },
-    {
-      "slug": "dolarizacao-informal-pequeno-investidor-busca-protecao",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-28T08:08:49Z",
-      "updated_at": "2026-11-26T08:08:49Z",
-      "titulo_tema": "Corrida do pequeno investidor ao dólar e filas em bancos internacionais",
-      "sintese_nerd": "A alta persistente da cotação do dólar ultrapassando a barreira psicológica de R$ 6 provocou uma mudança estrutural no comportamento do pequeno investidor brasileiro, que passou a buscar contas internacionais em massa. Essa corrida reflete o temor generalizado de desvalorização da moeda local e a busca por proteção patrimonial fora do país.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-26T08:08:49Z",
-      "gatilho_vitrine": "Exibir na home como destaque de comportamento financeiro e impacto cambial direto na vida do cidadão.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 88,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "dolarização",
-        "pequeno investidor",
-        "conta internacional",
-        "câmbio",
-        "dólar a r$ 6",
-        "proteção patrimonial"
-      ]
-    },
-    {
-      "slug": "ccj-senado-aprova-crimes-mercado-capitais-americanas",
-      "status": "novo",
-      "ttl_horas": 72,
-      "expires_at": "2026-11-29T08:08:49Z",
-      "updated_at": "2026-11-26T08:08:49Z",
-      "titulo_tema": "CCJ do Senado aprova projeto que criminaliza fraudes no mercado de capitais",
-      "sintese_nerd": "À luz de crises contábeis históricas no mercado financeiro brasileiro, o Congresso avança na tipificação penal de fraudes corporativas para endurecer a punição a gestores e controladores. A medida busca restaurar a confiança dos investidores na governança das empresas listadas em bolsa.",
-      "rota_editoria": "/politica",
-      "data_publicacao": "2026-11-26T08:08:49Z",
-      "gatilho_vitrine": "Movimentar a seção de Política Institucional para conectar o avanço legislativo com a supervisão de grandes escândalos corporativos.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 85,
-      "categoria_primaria": "Politica",
-      "categorias_cruzadas": [
-        "Economia"
-      ],
-      "palavras_chave_busca": [
-        "ccj do senado",
-        "mercado de capitais",
-        "fraude financeira",
-        "americanas",
-        "crimes societários",
-        "regulação"
       ]
     }
   ]
