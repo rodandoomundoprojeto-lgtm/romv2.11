@@ -2,82 +2,157 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-26T21:49:42Z",
-  "batch_id": "20261126-2149",
+  "updatedAt": "2026-11-26T22:09:50Z",
+  "batch_id": "20261126-2209",
   "temas_ativos": [
     {
-      "slug": "stf-piso-nacional-professores-leis-locais",
-      "titulo_tema": "STF decide que aplicação de piso nacional de professores exige lei em estados e municípios",
-      "titulo_curto": "STF decide que aplicação de piso nacional de professores exige lei em estados e municípios",
+      "slug": "trabuco-no-ministerio-da-fazenda-impacto-bolsa-e-dolar",
+      "titulo_tema": "Indicação de Luiz Carlos Trabuco para o Ministério da Fazenda dispara Ibovespa e aprecia o Real",
       "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Cultura",
-      "categoria": "Sociedade_Cultura",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Economia",
       "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
+        "Politica"
       ],
-      "rota_editoria": "/cultura",
+      "rota_editoria": "/economia",
+      "relevancia_score": 98,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-28T22:09:50Z",
+      "palavras_chave_busca": [
+        "luiz carlos trabuco",
+        "ministério da fazenda",
+        "ibovespa",
+        "dólar",
+        "bradesco",
+        "mercado financeiro",
+        "governo lula",
+        "política fiscal"
+      ],
+      "gatilho_vitrine": "Destaque na Vitrine IA: cruze a recepção calorosa da Faria Lima com o desafio real de controle das contas públicas e ajuste fiscal no quarto mandato.",
+      "sintese_nerd": "A forte expectativa pela nomeação do banqueiro Luiz Carlos Trabuco para a Fazenda gerou alívio imediato no mercado financeiro, fazendo o Ibovespa disparar mais de 6% e o dólar recuar. A reação positiva reflete a percepção de interlocutores econômicos de que o perfil conciliador e pragmático de Trabuco pode destravar negociações fiscais cruciais.",
+      "data_publicacao": "2026-11-26T22:09:50Z",
+      "updated_at": "2026-11-26T22:09:50Z"
+    },
+    {
+      "slug": "ataque-drone-kuwait-tensoes-oriente-medio",
+      "titulo_tema": "Ataque de drone no Kuwait mata técnicos europeus e gera onda de condenação global contra o Irã",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia"
+      ],
+      "rota_editoria": "/radar",
       "relevancia_score": 90,
-      "urgencia_score": 89,
+      "ttl_horas": 36,
+      "expires_at": "2026-11-28T10:09:50Z",
+      "palavras_chave_busca": [
+        "irã",
+        "kuwait",
+        "ataque de drone",
+        "geopolítica",
+        "união europeia",
+        "petróleo",
+        "sanções internacionais",
+        "oriente médio"
+      ],
+      "gatilho_vitrine": "Posicione no Radar Global: examine o risco de escalada militar no Golfo Pérsico e os reflexos imediatos sobre a estabilidade energética internacional.",
+      "sintese_nerd": "Um ataque com drones no Kuwait que resultou na morte de dois técnicos italianos intensificou a pressão diplomática ocidental sobre Teerã, enquanto o governo iraniano nega envolvimento e aponta suposta operação de falsa bandeira. O episódio ameaça desestabilizar ainda mais rotas comerciais e energéticas vitais no Oriente Médio.",
+      "data_publicacao": "2026-11-26T22:09:50Z",
+      "updated_at": "2026-11-26T22:09:50Z"
+    },
+    {
+      "slug": "novas-tarifas-eua-brasil-acucar-e-avioes",
+      "titulo_tema": "Escritório de Comércio dos EUA propõe novas sobretaxas alfandegárias contra açúcar e aeronaves brasileiras",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 86,
+      "ttl_horas": 72,
+      "expires_at": "2026-11-29T22:09:50Z",
+      "palavras_chave_busca": [
+        "tarifas eua",
+        "ustr",
+        "açúcar",
+        "aeronaves",
+        "comércio exterior",
+        "balança comercial",
+        "protecionismo",
+        "exportações brasileiras"
+      ],
+      "gatilho_vitrine": "Conecte Comércio Exterior e Economia: mostre como o protecionismo norte-americano mira setores-chave da pauta exportadora nacional.",
+      "sintese_nerd": "O anúncio de novas propostas de sobretaxas pelo governo dos Estados Unidos atingindo diretamente produtos como açúcar e aviões brasileiros insere-se em uma rodada global de pressões tarifárias protecionistas. A medida impõe novos desafios diplomáticos e comerciais para a balança de pagamentos do Brasil.",
+      "data_publicacao": "2026-11-26T22:09:50Z",
+      "updated_at": "2026-11-26T22:09:50Z"
+    },
+    {
+      "slug": "stf-piso-nacional-professores-leis-locais",
+      "status": "novo",
+      "categoria": "Sociedade_Cultura",
       "ttl_horas": 24,
       "expires_at": "2026-11-27T21:49:42Z",
-      "palavras_chave_busca": [
-        "stf",
-        "piso salarial",
-        "professores",
-        "educação",
-        "contas públicas"
-      ],
-      "palavras_chave": [
-        "stf",
-        "piso salarial",
-        "professores",
-        "educação",
-        "contas públicas"
-      ],
-      "gatilho_vitrine": "Conforme apuração do G1 Política e do Poder360, o Supremo Tribunal Federal (STF) definiu que o reajuste do piso nacional do magistério depende da aprovação de leis específicas por cada estado e município. A Corte entendeu que o efeito cascata automático para os demais níveis da carreira é inconstitucional, garantindo previsibilidade fiscal aos entes federativos.",
-      "resumo_pulso": "Conforme apuração do G1 Política e do Poder360, o Supremo Tribunal Federal (STF) definiu que o reajuste do piso nacional do magistério depende da aprovação de leis específicas por cada estado e município. A Corte entendeu que o efeito cascata automático para os demais níveis da carreira é inconstitucional, garantindo previsibilidade fiscal aos entes federativos.",
-      "sintese_nerd": "A decisão evita impactos orçamentários abruptos em prefeituras e governos estaduais, preservando investimentos em outras áreas da administração pública.",
-      "impacto_pratico": "A decisão evita impactos orçamentários abruptos em prefeituras e governos estaduais, preservando investimentos em outras áreas da administração pública.",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "veiculos_origem": [
-        "G1 Política",
-        "Poder360"
-      ],
+      "updated_at": "2026-11-26T21:49:42Z",
       "fontes_urls": [
         "https://g1.globo.com/politica/noticia/2026/11/26/stf-decide-que-aplicacao-piso-nacional-de-professores-depende-de-lei-aprovada-em-estados-e-municipios.ghtml",
         "https://www.poder360.com.br/poder-justica/stf-obriga-estados-e-municipios-a-aplicar-piso-atualizado-a-professores/"
       ],
+      "titulo_tema": "STF decide que aplicação de piso nacional de professores exige lei em estados e municípios",
+      "resumo_pulso": "Conforme apuração do G1 Política e do Poder360, o Supremo Tribunal Federal (STF) definiu que o reajuste do piso nacional do magistério depende da aprovação de leis específicas por cada estado e município. A Corte entendeu que o efeito cascata automático para os demais níveis da carreira é inconstitucional, garantindo previsibilidade fiscal aos entes federativos.",
+      "sintese_nerd": "A decisão evita impactos orçamentários abruptos em prefeituras e governos estaduais, preservando investimentos em outras áreas da administração pública.",
+      "titulo_curto": "STF decide que aplicação de piso nacional de professores exige lei em estados e municípios",
+      "rota_editoria": "/cultura",
+      "palavras_chave": [
+        "stf",
+        "piso salarial",
+        "professores",
+        "educação",
+        "contas públicas"
+      ],
+      "urgencia_score": 89,
       "data_publicacao": "2026-11-26T21:30:17Z",
-      "updated_at": "2026-11-26T21:49:42Z"
-    },
-    {
-      "slug": "lula-cleitinho-negociacao-divida-minas-gerais",
-      "titulo_tema": "Lula e o governador eleito Cleitinho debatem pagamento de dívida mineira em Brasília",
-      "titulo_curto": "Lula e o governador eleito Cleitinho debatem pagamento de dívida mineira em Brasília",
-      "status": "novo",
+      "gatilho_vitrine": "Conforme apuração do G1 Política e do Poder360, o Supremo Tribunal Federal (STF) definiu que o reajuste do piso nacional do magistério depende da aprovação de leis específicas por cada estado e município. A Corte entendeu que o efeito cascata automático para os demais níveis da carreira é inconstitucional, garantindo previsibilidade fiscal aos entes federativos.",
+      "impacto_pratico": "A decisão evita impactos orçamentários abruptos em prefeituras e governos estaduais, preservando investimentos em outras áreas da administração pública.",
       "origem_pipeline": "pulso",
-      "categoria_primaria": "Economia",
-      "categoria": "Economia_Comercio",
+      "veiculos_origem": [
+        "G1 Política",
+        "Poder360"
+      ],
+      "relevancia_score": 90,
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "categoria_primaria": "Cultura",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
       ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 87,
-      "urgencia_score": 88,
+      "palavras_chave_busca": [
+        "stf",
+        "piso salarial",
+        "professores",
+        "educação",
+        "contas públicas"
+      ]
+    },
+    {
+      "slug": "lula-cleitinho-negociacao-divida-minas-gerais",
+      "status": "novo",
+      "categoria": "Economia_Comercio",
       "ttl_horas": 24,
       "expires_at": "2026-11-27T21:49:42Z",
-      "palavras_chave_busca": [
-        "minas gerais",
-        "dívida pública",
-        "lula",
-        "cleitinho",
-        "propag"
+      "updated_at": "2026-11-26T21:49:42Z",
+      "fontes_urls": [
+        "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/lula-e-cleitinho-debatem-negociacao-de-divida-de-minas-gerais"
       ],
+      "titulo_tema": "Lula e o governador eleito Cleitinho debatem pagamento de dívida mineira em Brasília",
+      "resumo_pulso": "Segundo comunicado da Agência Brasil, o presidente Luiz Inácio Lula da Silva reuniu-se no Palácio da Alvorada com o governador eleito de Minas Gerais, Cleitinho. No centro das conversas esteve a negociação da dívida bilionária do estado estimada em cerca de R$ 180 bilhões dentro do Programa de Pleno Pagamento da Dívida dos Estados.",
+      "sintese_nerd": "A renegociação fiscal de Minas Gerais impacta diretamente a estabilidade financeira regional e o custo de serviços públicos para os cidadãos mineiros.",
+      "titulo_curto": "Lula e o governador eleito Cleitinho debatem pagamento de dívida mineira em Brasília",
+      "rota_editoria": "/economia",
       "palavras_chave": [
         "minas gerais",
         "dívida pública",
@@ -85,21 +160,30 @@
         "cleitinho",
         "propag"
       ],
+      "urgencia_score": 88,
+      "data_publicacao": "2026-11-26T20:31:00Z",
       "gatilho_vitrine": "Segundo comunicado da Agência Brasil, o presidente Luiz Inácio Lula da Silva reuniu-se no Palácio da Alvorada com o governador eleito de Minas Gerais, Cleitinho. No centro das conversas esteve a negociação da dívida bilionária do estado estimada em cerca de R$ 180 bilhões dentro do Programa de Pleno Pagamento da Dívida dos Estados.",
-      "resumo_pulso": "Segundo comunicado da Agência Brasil, o presidente Luiz Inácio Lula da Silva reuniu-se no Palácio da Alvorada com o governador eleito de Minas Gerais, Cleitinho. No centro das conversas esteve a negociação da dívida bilionária do estado estimada em cerca de R$ 180 bilhões dentro do Programa de Pleno Pagamento da Dívida dos Estados.",
-      "sintese_nerd": "A renegociação fiscal de Minas Gerais impacta diretamente a estabilidade financeira regional e o custo de serviços públicos para os cidadãos mineiros.",
       "impacto_pratico": "A renegociação fiscal de Minas Gerais impacta diretamente a estabilidade financeira regional e o custo de serviços públicos para os cidadãos mineiros.",
-      "paises_envolvidos": [
-        "BR"
-      ],
+      "origem_pipeline": "pulso",
       "veiculos_origem": [
         "Agência Brasil (EBC)"
       ],
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/lula-e-cleitinho-debatem-negociacao-de-divida-de-minas-gerais"
+      "relevancia_score": 87,
+      "paises_envolvidos": [
+        "BR"
       ],
-      "data_publicacao": "2026-11-26T20:31:00Z",
-      "updated_at": "2026-11-26T21:49:42Z"
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "minas gerais",
+        "dívida pública",
+        "lula",
+        "cleitinho",
+        "propag"
+      ]
     },
     {
       "slug": "reino-unido-prepara-100-mil-reservistas-marinha",
@@ -196,114 +280,6 @@
         "cocos do nordeste",
         "lanceiros negros",
         "cultura"
-      ]
-    },
-    {
-      "slug": "clubes-de-futebol-stf-patrocinio-bets",
-      "status": "novo",
-      "ttl_horas": 36,
-      "expires_at": "2026-11-28T07:45:22Z",
-      "updated_at": "2026-11-26T19:45:22Z",
-      "titulo_tema": "Clubes de futebol acionam STF por transição em patrocínios de bets",
-      "sintese_nerd": "A judicialização dos contratos de patrocínio das empresas de apostas esportivas coloca o STF no centro de um debate multibilionário que afeta a saúde financeira dos clubes de futebol. A exigência de regras de transição expõe o choque entre a nova regulamentação federal e os compromissos comerciais vigentes no esporte.",
-      "rota_editoria": "/politica",
-      "urgencia_score": 88,
-      "data_publicacao": "2026-11-26T19:45:22Z",
-      "gatilho_vitrine": "Exibir a repercussão jurídica e financeira da regulamentação das apostas esportivas e o pleito dos clubes de futebol junto ao Supremo.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 88,
-      "categoria_primaria": "Politica",
-      "categorias_cruzadas": [
-        "Economia",
-        "Cultura"
-      ],
-      "palavras_chave_busca": [
-        "stf",
-        "bets",
-        "apostas esportivas",
-        "futebol brasileiro",
-        "patrocínio",
-        "ministro luiz fux"
-      ]
-    },
-    {
-      "slug": "pacote-fiscal-e-revisao-de-gastos-governo-lula",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-28T19:45:22Z",
-      "updated_at": "2026-11-26T19:45:22Z",
-      "titulo_tema": "Governo discute novas medidas fiscais e revisão de gastos públicos para 2027",
-      "sintese_nerd": "O Ministério da Fazenda articula novas medidas de contenção de despesas e revisão de supersalários para garantir previsibilidade fiscal a partir de 2027, gerando reações divergentes na base aliada. A busca por equilíbrio nas contas públicas impacta diretamente a curva de juros futuros e a confiança dos investidores na economia nacional.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-26T19:45:22Z",
-      "gatilho_vitrine": "Destacar análises sobre a sustentabilidade fiscal do Brasil e os impactos das discussões de controle de despesas nos mercados e na inflação.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 95,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Politica",
-        "Geopolitica_Radar"
-      ],
-      "palavras_chave_busca": [
-        "pacote fiscal",
-        "dario durigan",
-        "ministério da fazenda",
-        "gastos públicos",
-        "revisão de despesas",
-        "austeridade fiscal",
-        "governo lula"
-      ]
-    },
-    {
-      "slug": "tensao-comercial-brasil-eua-governo-trump",
-      "status": "novo",
-      "ttl_horas": 72,
-      "expires_at": "2026-11-29T19:45:22Z",
-      "updated_at": "2026-11-26T19:45:22Z",
-      "titulo_tema": "Planalto avalia reações a novas tarifas e impasse comercial com governo Trump",
-      "sintese_nerd": "O endurecimento das negociações bilaterais e o avanço de barreiras tarifárias pela administração Trump empurraram o governo brasileiro a reavaliar sua estratégia diplomática e comercial. O atrito impõe riscos diretos às exportações nacionais e exige respostas coordenadas da política externa do país.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-26T19:45:22Z",
-      "gatilho_vitrine": "Priorizar conteúdos sobre o cenário de atritos diplomáticos e econômicos entre o Brasil e os Estados Unidos sob a nova administração norte-americana.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 90,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Politica"
-      ],
-      "palavras_chave_busca": [
-        "governo trump",
-        "relações brasil eua",
-        "tarifas comerciais",
-        "diplomacia",
-        "comércio exterior",
-        "geopolítica"
-      ]
-    },
-    {
-      "slug": "investimento-externo-europa-brasil-banco-central",
-      "status": "novo",
-      "ttl_horas": 96,
-      "expires_at": "2026-11-30T19:45:22Z",
-      "updated_at": "2026-11-26T19:45:22Z",
-      "titulo_tema": "Europa consolida posição como principal polo investidor direto no Brasil",
-      "sintese_nerd": "Dados do Banco Central apontam a Europa como principal origem dos investimentos diretos no Brasil, superando outras regiões em aportes estruturais. Esse fluxo de capital reforça a resiliência da economia interna em meio a cenários globais de aversão ao risco.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-26T19:45:22Z",
-      "gatilho_vitrine": "Destacar dados recentes do Banco Central sobre a rota dos fluxos de capital internacional e a atratividade do mercado brasileiro.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 82,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Geopolitica_Radar"
-      ],
-      "palavras_chave_busca": [
-        "investimento estrangeiro",
-        "banco central",
-        "união europeia",
-        "economia brasileira",
-        "capital externo"
       ]
     },
     {
@@ -879,29 +855,105 @@
       ]
     }
   ],
+  "temas_curadoria": [
+    {
+      "slug": "trabuco-no-ministerio-da-fazenda-impacto-bolsa-e-dolar",
+      "titulo_tema": "Indicação de Luiz Carlos Trabuco para o Ministério da Fazenda dispara Ibovespa e aprecia o Real",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Politica"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 98,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-28T22:09:50Z",
+      "palavras_chave_busca": [
+        "luiz carlos trabuco",
+        "ministério da fazenda",
+        "ibovespa",
+        "dólar",
+        "bradesco",
+        "mercado financeiro",
+        "governo lula",
+        "política fiscal"
+      ],
+      "gatilho_vitrine": "Destaque na Vitrine IA: cruze a recepção calorosa da Faria Lima com o desafio real de controle das contas públicas e ajuste fiscal no quarto mandato.",
+      "sintese_nerd": "A forte expectativa pela nomeação do banqueiro Luiz Carlos Trabuco para a Fazenda gerou alívio imediato no mercado financeiro, fazendo o Ibovespa disparar mais de 6% e o dólar recuar. A reação positiva reflete a percepção de interlocutores econômicos de que o perfil conciliador e pragmático de Trabuco pode destravar negociações fiscais cruciais.",
+      "data_publicacao": "2026-11-26T22:09:50Z",
+      "updated_at": "2026-11-26T22:09:50Z"
+    },
+    {
+      "slug": "ataque-drone-kuwait-tensoes-oriente-medio",
+      "titulo_tema": "Ataque de drone no Kuwait mata técnicos europeus e gera onda de condenação global contra o Irã",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 90,
+      "ttl_horas": 36,
+      "expires_at": "2026-11-28T10:09:50Z",
+      "palavras_chave_busca": [
+        "irã",
+        "kuwait",
+        "ataque de drone",
+        "geopolítica",
+        "união europeia",
+        "petróleo",
+        "sanções internacionais",
+        "oriente médio"
+      ],
+      "gatilho_vitrine": "Posicione no Radar Global: examine o risco de escalada militar no Golfo Pérsico e os reflexos imediatos sobre a estabilidade energética internacional.",
+      "sintese_nerd": "Um ataque com drones no Kuwait que resultou na morte de dois técnicos italianos intensificou a pressão diplomática ocidental sobre Teerã, enquanto o governo iraniano nega envolvimento e aponta suposta operação de falsa bandeira. O episódio ameaça desestabilizar ainda mais rotas comerciais e energéticas vitais no Oriente Médio.",
+      "data_publicacao": "2026-11-26T22:09:50Z",
+      "updated_at": "2026-11-26T22:09:50Z"
+    },
+    {
+      "slug": "novas-tarifas-eua-brasil-acucar-e-avioes",
+      "titulo_tema": "Escritório de Comércio dos EUA propõe novas sobretaxas alfandegárias contra açúcar e aeronaves brasileiras",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 86,
+      "ttl_horas": 72,
+      "expires_at": "2026-11-29T22:09:50Z",
+      "palavras_chave_busca": [
+        "tarifas eua",
+        "ustr",
+        "açúcar",
+        "aeronaves",
+        "comércio exterior",
+        "balança comercial",
+        "protecionismo",
+        "exportações brasileiras"
+      ],
+      "gatilho_vitrine": "Conecte Comércio Exterior e Economia: mostre como o protecionismo norte-americano mira setores-chave da pauta exportadora nacional.",
+      "sintese_nerd": "O anúncio de novas propostas de sobretaxas pelo governo dos Estados Unidos atingindo diretamente produtos como açúcar e aviões brasileiros insere-se em uma rodada global de pressões tarifárias protecionistas. A medida impõe novos desafios diplomáticos e comerciais para a balança de pagamentos do Brasil.",
+      "data_publicacao": "2026-11-26T22:09:50Z",
+      "updated_at": "2026-11-26T22:09:50Z"
+    }
+  ],
   "noticias_quentes": [
     {
       "slug": "stf-piso-nacional-professores-leis-locais",
-      "titulo_curto": "STF decide que aplicação de piso nacional de professores exige lei em estados e municípios",
-      "resumo_pulso": "Conforme apuração do G1 Política e do Poder360, o Supremo Tribunal Federal (STF) definiu que o reajuste do piso nacional do magistério depende da aprovação de leis específicas por cada estado e município. A Corte entendeu que o efeito cascata automático para os demais níveis da carreira é inconstitucional, garantindo previsibilidade fiscal aos entes federativos.",
-      "impacto_pratico": "A decisão evita impactos orçamentários abruptos em prefeituras e governos estaduais, preservando investimentos em outras áreas da administração pública.",
       "categoria": "Sociedade_Cultura",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "urgencia_score": 89,
-      "relevancia_score": 90,
-      "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 12,
-      "veiculos_origem": [
-        "G1 Política",
-        "Poder360"
-      ],
+      "expires_at": "2026-11-27T21:49:42Z",
+      "updated_at": "2026-11-26T21:49:42Z",
       "fontes_urls": [
         "https://g1.globo.com/politica/noticia/2026/11/26/stf-decide-que-aplicacao-piso-nacional-de-professores-depende-de-lei-aprovada-em-estados-e-municipios.ghtml",
         "https://www.poder360.com.br/poder-justica/stf-obriga-estados-e-municipios-a-aplicar-piso-atualizado-a-professores/"
       ],
+      "resumo_pulso": "Conforme apuração do G1 Política e do Poder360, o Supremo Tribunal Federal (STF) definiu que o reajuste do piso nacional do magistério depende da aprovação de leis específicas por cada estado e município. A Corte entendeu que o efeito cascata automático para os demais níveis da carreira é inconstitucional, garantindo previsibilidade fiscal aos entes federativos.",
+      "titulo_curto": "STF decide que aplicação de piso nacional de professores exige lei em estados e municípios",
       "palavras_chave": [
         "STF",
         "Piso Salarial",
@@ -909,42 +961,43 @@
         "Educação",
         "Contas Públicas"
       ],
+      "urgencia_score": 89,
       "data_publicacao": "2026-11-26T21:30:17Z",
-      "links_internos_relacionados": [
-        {
-          "titulo_existente": "Política no Brasil",
-          "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
-          "motivo_conexao": "Acompanha as decisões do Supremo Tribunal Federal de grande impacto federativo."
-        },
-        {
-          "titulo_existente": "STF analisa regras de transparência e limites constitucionais entre os Poderes",
-          "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
-          "motivo_conexao": "Detalha o papel fiscalizador e normativo do STF nas contas públicas estaduais e municipais."
-        }
+      "impacto_pratico": "A decisão evita impactos orçamentários abruptos em prefeituras e governos estaduais, preservando investimentos em outras áreas da administração pública.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "G1 Política",
+        "Poder360"
       ],
-      "expires_at": "2026-11-27T21:49:42Z",
-      "updated_at": "2026-11-26T21:49:42Z"
-    },
-    {
-      "slug": "lula-cleitinho-negociacao-divida-minas-gerais",
-      "titulo_curto": "Lula e o governador eleito Cleitinho debatem pagamento de dívida mineira em Brasília",
-      "resumo_pulso": "Segundo comunicado da Agência Brasil, o presidente Luiz Inácio Lula da Silva reuniu-se no Palácio da Alvorada com o governador eleito de Minas Gerais, Cleitinho. No centro das conversas esteve a negociação da dívida bilionária do estado estimada em cerca de R$ 180 bilhões dentro do Programa de Pleno Pagamento da Dívida dos Estados.",
-      "impacto_pratico": "A renegociação fiscal de Minas Gerais impacta diretamente a estabilidade financeira regional e o custo de serviços públicos para os cidadãos mineiros.",
-      "categoria": "Economia_Comercio",
+      "relevancia_score": 90,
+      "horas_em_destaque": 12,
       "paises_envolvidos": [
         "BR"
       ],
-      "urgencia_score": 88,
-      "relevancia_score": 87,
-      "nivel_confianca": "alta",
+      "links_internos_relacionados": [
+        {
+          "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
+          "motivo_conexao": "Acompanha as decisões do Supremo Tribunal Federal de grande impacto federativo.",
+          "titulo_existente": "Política no Brasil"
+        },
+        {
+          "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
+          "motivo_conexao": "Detalha o papel fiscalizador e normativo do STF nas contas públicas estaduais e municipais.",
+          "titulo_existente": "STF analisa regras de transparência e limites constitucionais entre os Poderes"
+        }
+      ]
+    },
+    {
+      "slug": "lula-cleitinho-negociacao-divida-minas-gerais",
+      "categoria": "Economia_Comercio",
       "ttl_horas": 24,
-      "horas_em_destaque": 12,
-      "veiculos_origem": [
-        "Agência Brasil (EBC)"
-      ],
+      "expires_at": "2026-11-27T21:49:42Z",
+      "updated_at": "2026-11-26T21:49:42Z",
       "fontes_urls": [
         "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/lula-e-cleitinho-debatem-negociacao-de-divida-de-minas-gerais"
       ],
+      "resumo_pulso": "Segundo comunicado da Agência Brasil, o presidente Luiz Inácio Lula da Silva reuniu-se no Palácio da Alvorada com o governador eleito de Minas Gerais, Cleitinho. No centro das conversas esteve a negociação da dívida bilionária do estado estimada em cerca de R$ 180 bilhões dentro do Programa de Pleno Pagamento da Dívida dos Estados.",
+      "titulo_curto": "Lula e o governador eleito Cleitinho debatem pagamento de dívida mineira em Brasília",
       "palavras_chave": [
         "Minas Gerais",
         "Dívida Pública",
@@ -952,16 +1005,25 @@
         "Cleitinho",
         "Propag"
       ],
+      "urgencia_score": 88,
       "data_publicacao": "2026-11-26T20:31:00Z",
+      "impacto_pratico": "A renegociação fiscal de Minas Gerais impacta diretamente a estabilidade financeira regional e o custo de serviços públicos para os cidadãos mineiros.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Agência Brasil (EBC)"
+      ],
+      "relevancia_score": 87,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "BR"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "O que é o Orçamento?",
           "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-o-orcamento",
-          "motivo_conexao": "Ajuda a compreender o peso das dívidas estaduais nas contas do governo federal e no planejamento orçamentário."
+          "motivo_conexao": "Ajuda a compreender o peso das dívidas estaduais nas contas do governo federal e no planejamento orçamentário.",
+          "titulo_existente": "O que é o Orçamento?"
         }
-      ],
-      "expires_at": "2026-11-27T21:49:42Z",
-      "updated_at": "2026-11-26T21:49:42Z"
+      ]
     },
     {
       "slug": "reino-unido-prepara-100-mil-reservistas-marinha",
@@ -1582,26 +1644,16 @@
     },
     {
       "slug": "dolar-cai-abaixo-5-80-lula-trabuco-fazenda",
-      "titulo_curto": "Mercados reagem e dólar recua com Luiz Trabuco em Brasília cotado para a Fazenda",
-      "resumo_pulso": "Segundo apuração da InfoMoney e G1 Política, a chegada de Luiz Trabuco a Brasília para um encontro com o presidente Lula elevou as expectativas de mercado em torno de seu nome para assumir o Ministério da Fazenda. A repercussão gerou forte euforia nos mercados, aliviando o câmbio e barateando custos para o viajante brasileiro e para importadores.",
-      "impacto_pratico": "A queda do dólar reduz diretamente o custo de viagens internacionais, passagens aéreas e importações de eletrônicos e combustíveis para o consumidor brasileiro.",
       "categoria": "Economia_Comercio",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "urgencia_score": 96,
-      "relevancia_score": 99,
-      "nivel_confianca": "alta",
       "ttl_horas": 12,
-      "horas_em_destaque": 24,
-      "veiculos_origem": [
-        "InfoMoney Mercados",
-        "G1 Política"
-      ],
+      "expires_at": "2026-11-27T00:31:54Z",
+      "updated_at": "2026-11-26T21:49:42Z",
       "fontes_urls": [
         "https://www.infomoney.com.br/politica/trabuco-aceita-convite-de-lula-para-assumir-ministerio-da-fazenda-dizem-agencias/",
         "https://g1.globo.com/politica/noticia/2026/11/26/luiz-trabuco-chega-a-brasilia-para-se-reunir-com-lula-executivo-do-bradesco-e-cotado-para-assumir-ministerio-da-fazenda.ghtml"
       ],
+      "resumo_pulso": "Segundo apuração da InfoMoney e G1 Política, a chegada de Luiz Trabuco a Brasília para um encontro com o presidente Lula elevou as expectativas de mercado em torno de seu nome para assumir o Ministério da Fazenda. A repercussão gerou forte euforia nos mercados, aliviando o câmbio e barateando custos para o viajante brasileiro e para importadores.",
+      "titulo_curto": "Mercados reagem e dólar recua com Luiz Trabuco em Brasília cotado para a Fazenda",
       "palavras_chave": [
         "Luiz Trabuco",
         "Ministério da Fazenda",
@@ -1609,21 +1661,31 @@
         "Mercado Financeiro",
         "Câmbio"
       ],
+      "urgencia_score": 96,
       "data_publicacao": "2026-11-26T12:25:11Z",
+      "impacto_pratico": "A queda do dólar reduz diretamente o custo de viagens internacionais, passagens aéreas e importações de eletrônicos e combustíveis para o consumidor brasileiro.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "InfoMoney Mercados",
+        "G1 Política"
+      ],
+      "relevancia_score": 99,
+      "horas_em_destaque": 24,
+      "paises_envolvidos": [
+        "BR"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "Economia no Brasil",
           "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
-          "motivo_conexao": "Contextualiza os impactos da escolha do comando da Fazenda sobre a cotação do dólar e os planos de viagem."
+          "motivo_conexao": "Contextualiza os impactos da escolha do comando da Fazenda sobre a cotação do dólar e os planos de viagem.",
+          "titulo_existente": "Economia no Brasil"
         },
         {
-          "titulo_existente": "Banco Central e mercado financeiro acompanham inflação de serviços, câmbio e metas fiscais",
           "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
-          "motivo_conexao": "Relaciona a oscilação cambial com o poder de compra e o planejamento financeiro do cidadão."
+          "motivo_conexao": "Relaciona a oscilação cambial com o poder de compra e o planejamento financeiro do cidadão.",
+          "titulo_existente": "Banco Central e mercado financeiro acompanham inflação de serviços, câmbio e metas fiscais"
         }
-      ],
-      "expires_at": "2026-11-27T00:31:54Z",
-      "updated_at": "2026-11-26T21:49:42Z"
+      ]
     },
     {
       "slug": "ipca-15-novembro-alta-alimentos",
@@ -1663,115 +1725,6 @@
           "motivo_conexao": "Explica o conceito e a metodologia de cálculo dos índices de inflação no Brasil.",
           "titulo_existente": "O que é inflação?"
         }
-      ]
-    }
-  ],
-  "temas_curadoria": [
-    {
-      "slug": "pacote-fiscal-e-revisao-de-gastos-governo-lula",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-28T19:45:22Z",
-      "updated_at": "2026-11-26T19:45:22Z",
-      "titulo_tema": "Governo discute novas medidas fiscais e revisão de gastos públicos para 2027",
-      "sintese_nerd": "O Ministério da Fazenda articula novas medidas de contenção de despesas e revisão de supersalários para garantir previsibilidade fiscal a partir de 2027, gerando reações divergentes na base aliada. A busca por equilíbrio nas contas públicas impacta diretamente a curva de juros futuros e a confiança dos investidores na economia nacional.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-26T19:45:22Z",
-      "gatilho_vitrine": "Destacar análises sobre a sustentabilidade fiscal do Brasil e os impactos das discussões de controle de despesas nos mercados e na inflação.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 95,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Politica",
-        "Geopolitica_Radar"
-      ],
-      "palavras_chave_busca": [
-        "pacote fiscal",
-        "dario durigan",
-        "ministério da fazenda",
-        "gastos públicos",
-        "revisão de despesas",
-        "austeridade fiscal",
-        "governo lula"
-      ]
-    },
-    {
-      "slug": "tensao-comercial-brasil-eua-governo-trump",
-      "status": "novo",
-      "ttl_horas": 72,
-      "expires_at": "2026-11-29T19:45:22Z",
-      "updated_at": "2026-11-26T19:45:22Z",
-      "titulo_tema": "Planalto avalia reações a novas tarifas e impasse comercial com governo Trump",
-      "sintese_nerd": "O endurecimento das negociações bilaterais e o avanço de barreiras tarifárias pela administração Trump empurraram o governo brasileiro a reavaliar sua estratégia diplomática e comercial. O atrito impõe riscos diretos às exportações nacionais e exige respostas coordenadas da política externa do país.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-26T19:45:22Z",
-      "gatilho_vitrine": "Priorizar conteúdos sobre o cenário de atritos diplomáticos e econômicos entre o Brasil e os Estados Unidos sob a nova administração norte-americana.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 90,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Politica"
-      ],
-      "palavras_chave_busca": [
-        "governo trump",
-        "relações brasil eua",
-        "tarifas comerciais",
-        "diplomacia",
-        "comércio exterior",
-        "geopolítica"
-      ]
-    },
-    {
-      "slug": "clubes-de-futebol-stf-patrocinio-bets",
-      "status": "novo",
-      "ttl_horas": 36,
-      "expires_at": "2026-11-28T07:45:22Z",
-      "updated_at": "2026-11-26T19:45:22Z",
-      "titulo_tema": "Clubes de futebol acionam STF por transição em patrocínios de bets",
-      "sintese_nerd": "A judicialização dos contratos de patrocínio das empresas de apostas esportivas coloca o STF no centro de um debate multibilionário que afeta a saúde financeira dos clubes de futebol. A exigência de regras de transição expõe o choque entre a nova regulamentação federal e os compromissos comerciais vigentes no esporte.",
-      "rota_editoria": "/politica",
-      "data_publicacao": "2026-11-26T19:45:22Z",
-      "gatilho_vitrine": "Exibir a repercussão jurídica e financeira da regulamentação das apostas esportivas e o pleito dos clubes de futebol junto ao Supremo.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 88,
-      "categoria_primaria": "Politica",
-      "categorias_cruzadas": [
-        "Economia",
-        "Cultura"
-      ],
-      "palavras_chave_busca": [
-        "stf",
-        "bets",
-        "apostas esportivas",
-        "futebol brasileiro",
-        "patrocínio",
-        "ministro luiz fux"
-      ]
-    },
-    {
-      "slug": "investimento-externo-europa-brasil-banco-central",
-      "status": "novo",
-      "ttl_horas": 96,
-      "expires_at": "2026-11-30T19:45:22Z",
-      "updated_at": "2026-11-26T19:45:22Z",
-      "titulo_tema": "Europa consolida posição como principal polo investidor direto no Brasil",
-      "sintese_nerd": "Dados do Banco Central apontam a Europa como principal origem dos investimentos diretos no Brasil, superando outras regiões em aportes estruturais. Esse fluxo de capital reforça a resiliência da economia interna em meio a cenários globais de aversão ao risco.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-26T19:45:22Z",
-      "gatilho_vitrine": "Destacar dados recentes do Banco Central sobre a rota dos fluxos de capital internacional e a atratividade do mercado brasileiro.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 82,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Geopolitica_Radar"
-      ],
-      "palavras_chave_busca": [
-        "investimento estrangeiro",
-        "banco central",
-        "união europeia",
-        "economia brasileira",
-        "capital externo"
       ]
     }
   ]
