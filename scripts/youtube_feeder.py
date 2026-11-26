@@ -273,31 +273,54 @@ def limpar_descricao_youtube(desc_bruta: str, titulo: str = "", nome_canal: str 
 
         linhas_limpas.append(linha)
 
-    combinado = re.sub(r"\s+", " ", " ".join(linhas_limpas)).strip()
+    partes_unidas: List[str] = []
+    for idx_l, linha_atual in enumerate(linhas_limpas):
+        if idx_l > 0 and partes_unidas:
+            anterior = partes_unidas[-1]
+            if not anterior.endswith((".", "!", "?", ":", ";", "…")) and re.match(r"^[A-ZÁÉÍÓÚÂÊÔÃÕÇ]", linha_atual):
+                partes_unidas[-1] = anterior + "."
+        partes_unidas.append(linha_atual)
+
+    combinado = re.sub(r"\s+", " ", " ".join(partes_unidas)).strip()
     if not combinado or len(combinado) < 25:
         return fallback
     if tit_norm and _normalizar_comparacao_yt(combinado) == tit_norm:
         return fallback
 
-    foi_truncado_na_origem = len(raw) >= 315 and not combinado.endswith((".", "!", "?", "…"))
-    if len(combinado) > 320:
-        corte = combinado[:320]
-        ultimo_ponto = max(corte.rfind("."), corte.rfind("!"), corte.rfind("?"))
-        if ultimo_ponto >= 140:
-            combinado = corte[: ultimo_ponto + 1].strip()
-        else:
-            combinado = corte.rsplit(" ", 1)[0].strip() if " " in corte else corte.strip()
-            foi_truncado_na_origem = True
+    def _ultima_sentenca_completa(texto_in: str, min_idx: int = 60) -> str:
+        """Retorna até o último ponto final de sentença válido, ignorando abreviações curtas."""
+        matches = list(re.finditer(r"(?<!\b[nNdDrRsS])(?<!\b[A-Za-z])[.!?](?=\s|$)", texto_in))
+        for m in reversed(matches):
+            pos = m.start()
+            if pos >= min_idx:
+                return texto_in[: pos + 1].strip()
+        return ""
 
-    if foi_truncado_na_origem and " " in combinado:
-        if len(raw) >= 315:
-            combinado = combinado.rsplit(" ", 1)[0].strip()
-        palavras = combinado.split()
-        while len(palavras) > 4 and palavras[-1].lower().strip(",;:") in _CONECTORES_FINAIS_YT:
-            palavras.pop()
-        combinado = " ".join(palavras).rstrip(",;:- ")
-        if combinado and not combinado.endswith((".", "!", "?", "…")):
-            combinado += "..."
+    veio_truncado = combinado.endswith(("...", "…")) or (len(raw) >= 315 and not combinado.endswith((".", "!", "?")))
+    if veio_truncado:
+        combinado = re.sub(r"(?:\.{2,}|…)+\s*$", "", combinado).strip()
+        sentenca = _ultima_sentenca_completa(combinado, min_idx=60)
+        if sentenca:
+            combinado = sentenca
+        else:
+            return fallback
+
+    if len(combinado) > 420:
+        corte = combinado[:420]
+        sentenca = _ultima_sentenca_completa(corte, min_idx=60)
+        if sentenca:
+            combinado = sentenca
+        else:
+            return fallback
+
+    if not combinado.endswith((".", "!", "?")):
+        sentenca = _ultima_sentenca_completa(combinado, min_idx=60)
+        if sentenca:
+            combinado = sentenca
+        elif len(raw) < 315:
+            combinado = combinado.rstrip(",;:- ") + "."
+        else:
+            return fallback
 
     if not combinado or len(combinado) < 25:
         return fallback

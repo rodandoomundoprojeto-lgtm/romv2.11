@@ -3881,6 +3881,33 @@
           .replace(/'/g, '&#39;');
       }
 
+      function finalizarNarrativaAdminDefinitiva(texto, fallbackText) {
+        let s = String(texto ?? '').trim();
+        if (!s) return fallbackText || '';
+        const tinhaReticencias = /(?:\.{2,}|…)\s*$/.test(s);
+        if (tinhaReticencias) {
+          s = s.replace(/(?:\.{2,}|…)+\s*$/g, '').trim();
+        }
+        if (!tinhaReticencias && /[.!?]$/.test(s)) {
+          return s;
+        }
+        let ultimoCorte = -1;
+        const reSent = /[.!?](?=\s|$)/g;
+        let m;
+        while ((m = reSent.exec(s)) !== null) {
+          const idx = m.index;
+          const antes = s.slice(Math.max(0, idx - 3), idx);
+          if (/(?:^|\s)(?:n|dr|sr|sra|prof|art|inc|vol|p|ex)$/i.test(antes)) continue;
+          if (idx >= 55) ultimoCorte = idx;
+        }
+        if (ultimoCorte >= 55) {
+          return s.slice(0, ultimoCorte + 1).trim();
+        }
+        if (fallbackText) return fallbackText;
+        if (/[.!?]$/.test(s)) return s;
+        return 'Confira a cobertura completa e todos os desdobramentos diretamente no conteúdo original.';
+      }
+
       async function apiFetch(path, options = {}) {
         const base = (state.apiBase || '').replace(/\/+$/, '');
         const url = base + path + (path.includes('?') ? '&' : '?') + '_t=' + Date.now();
@@ -5600,7 +5627,8 @@
 
           const linkExt = c.fonte_url && c.fonte_url !== '/radar' ? ` <a href="${escapeHtml(c.fonte_url)}" target="_blank" rel="noopener noreferrer" title="Abrir link original da notícia" style="color:var(--primary);text-decoration:none;font-size:0.8rem;">↗</a>` : '';
 
-          const resumoCurto = c.resumo ? `<div class="admin-sub" style="margin-top:3px;font-size:0.8rem;line-height:1.35;max-width:540px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;" title="${escapeHtml(c.resumo)}">${escapeHtml(c.resumo)}</div>` : '';
+          const resumoFinal = c.resumo ? finalizarNarrativaAdminDefinitiva(c.resumo, '') : '';
+          const resumoCurto = resumoFinal ? `<div class="admin-sub" style="margin-top:3px;font-size:0.8rem;line-height:1.35;max-width:540px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;" title="${escapeHtml(resumoFinal)}">${escapeHtml(resumoFinal)}</div>` : '';
 
           const radarChecked = state.bulk.radar.has(String(c.slug)) ? 'checked' : '';
           const nivelSelVal = nivelRelevanciaRadar(c);
@@ -5783,7 +5811,7 @@
                       ${badgeRecem}
                       <span class="badge" style="font-size:0.7rem;">${escapeHtml(v.categoria || canalInfo.categoria || 'geopolitica')}</span>
                     </div>
-                    <p class="radar-video-desc">${escapeHtml(v.resumo || 'Análise em vídeo.')}</p>
+                    <p class="radar-video-desc">${escapeHtml(finalizarNarrativaAdminDefinitiva(v.resumo || '', `Análise e cobertura em vídeo publicada pelo canal ${v.canal || canalInfo.nome || 'YouTube'} no YouTube.`))}</p>
                     <div class="radar-video-action-bar" id="radar-video-action-${idx}">
                       ${btnAcao}
                       <a href="${escapeHtml(urlYt)}" target="_blank" rel="noopener noreferrer" class="admin-btn admin-btn-sm" style="text-decoration:none; font-size:0.75rem; padding:4px 8px;">Assistir ↗</a>
@@ -5849,12 +5877,16 @@
         }
 
         try {
+          const canalVideoNome = video.canal || video.fonte_nome || 'YouTube';
+          const fallbackVideoTexto = `Análise e cobertura em vídeo publicada pelo canal ${canalVideoNome} no YouTube.`;
+          const resumoVideoDefinitivo = finalizarNarrativaAdminDefinitiva(video.resumo || video.analise || '', fallbackVideoTexto);
+          const analiseVideoDefinitiva = video.analise ? finalizarNarrativaAdminDefinitiva(video.analise, '') : '';
           const payload = {
             video_id: video.video_id,
             titulo: video.titulo,
-            resumo: video.resumo || video.analise || '',
-            analise: video.analise || video.resumo || '',
-            canal: video.canal || video.fonte_nome || 'YouTube',
+            resumo: resumoVideoDefinitivo,
+            analise: analiseVideoDefinitiva,
+            canal: canalVideoNome,
             fonte_nome: video.fonte_nome || video.canal || 'YouTube',
             url: video.url || video.fonte_url,
             fonte_url: video.fonte_url || video.url,

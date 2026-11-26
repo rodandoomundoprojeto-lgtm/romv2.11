@@ -13277,7 +13277,47 @@
     return texto;
   }
 
+  function finalizarNarrativaRadarDefinitiva(texto, fallbackText) {
+    var s = String(texto || '').trim();
+    if (!s) return fallbackText || '';
+
+    var tinhaReticencias = /(?:\.{2,}|…)\s*$/.test(s);
+    if (tinhaReticencias) {
+      s = s.replace(/(?:\.{2,}|…)+\s*$/g, '').trim();
+    }
+
+    if (!tinhaReticencias && /[.!?]$/.test(s)) {
+      return s;
+    }
+
+    var ultimoCorte = -1;
+    var reSent = /[.!?](?=\s|$)/g;
+    var m;
+    while ((m = reSent.exec(s)) !== null) {
+      var idx = m.index;
+      var antes = s.slice(Math.max(0, idx - 3), idx);
+      if (/(?:^|\s)(?:n|dr|sr|sra|prof|art|inc|vol|p|ex)$/i.test(antes)) {
+        continue;
+      }
+      if (idx >= 55) {
+        ultimoCorte = idx;
+      }
+    }
+
+    if (ultimoCorte >= 55) {
+      return s.slice(0, ultimoCorte + 1).trim();
+    }
+
+    if (fallbackText) return fallbackText;
+    if (/[.!?]$/.test(s)) return s;
+    return 'Confira a cobertura completa e todos os desdobramentos diretamente no conteúdo original.';
+  }
+
   function limparResumoRadar(resumo, titulo, fonteNome, isVideo) {
+    var fallbackVid = 'Análise e cobertura em vídeo publicada pelo canal ' + (fonteNome || 'YouTube') + ' no YouTube.';
+    var fallbackDefault = isVideo
+      ? fallbackVid
+      : 'Confira a cobertura completa e todos os desdobramentos diretamente no conteúdo original.';
     var txt = String(resumo || '')
       .replace(/\ufffc/g, ' ')
       .replace(/^Síntese automática de contingência\s*\([^)]*\):\s*/i, '')
@@ -13317,15 +13357,26 @@
         return true;
       });
 
-      txt = linhas.join(' ').replace(/\s+/g, ' ').trim();
-      var fallbackVid = 'Análise e cobertura em vídeo publicada pelo canal ' + (fonteNome || 'YouTube') + ' no YouTube.';
+      var partesUnidas = [];
+      for (var iL = 0; iL < linhas.length; iL++) {
+        var lAtual = linhas[iL];
+        if (iL > 0 && partesUnidas.length) {
+          var lAnt = partesUnidas[partesUnidas.length - 1];
+          if (!/[.!?:;…]$/.test(lAnt) && /^[A-ZÁÉÍÓÚÂÊÔÃÕÇ]/.test(lAtual)) {
+            partesUnidas[partesUnidas.length - 1] = lAnt + '.';
+          }
+        }
+        partesUnidas.push(lAtual);
+      }
+
+      txt = partesUnidas.join(' ').replace(/\s+/g, ' ').trim();
       if (!txt || txt.length < 25) return fallbackVid;
       if (titulo && txt.toLowerCase().replace(/[^a-z0-9]/g, '') === String(titulo).toLowerCase().replace(/[^a-z0-9]/g, '')) {
         return fallbackVid;
       }
     }
 
-    return txt;
+    return finalizarNarrativaRadarDefinitiva(txt, fallbackDefault);
   }
 
   function renderRadarCardHtml(item, detailsId) {
@@ -13346,6 +13397,9 @@
       .replace(/^Contexto associado nas buscas:\s*/i, '')
       .replace(/^[A-Z0-9_]{3,30}:\s*/, '')
       .trim();
+    if (cleanAnalise) {
+      cleanAnalise = finalizarNarrativaRadarDefinitiva(cleanAnalise, '');
+    }
 
     var ehPromptOuDebug = function (txt) {
       if (!txt) return true;

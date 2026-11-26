@@ -163,6 +163,28 @@ class TestBotYouTubeFeederIntegracao(unittest.TestCase):
         )
         self.assertEqual(item_norm["analise"], "")
 
+    def test_limpar_descricao_sem_truncamento_abrupto(self):
+        """Garante que descrições truncadas ou longas nunca terminem com reticências."""
+        res_com_segunda_frase_cortada = yt_feeder.limpar_descricao_youtube(
+            "Em entrevista ao programa Agenda Econômica, da TV Senado, a economista Monica de Bolle apontou "
+            "um desafio estrutural urgente para o país: grande parte da nossa dívida pública segue indexada à "
+            "Selic, em títulos pós-fixados\nNa prática, isso trava a coordenação entre as políticas fiscal e "
+            "monetária e mantém...",
+            titulo="Quais são os desafios do quarto governo de Lula? #shorts",
+            nome_canal="TV Senado",
+        )
+        self.assertFalse(res_com_segunda_frase_cortada.endswith(("...", "…")))
+        self.assertTrue(res_com_segunda_frase_cortada.endswith((".", "!", "?")))
+        self.assertIn("Monica de Bolle", res_com_segunda_frase_cortada)
+
+        res_frase_unica_cortada = yt_feeder.limpar_descricao_youtube(
+            "Os Estados Unidos anunciaram novas tarifas sobre o açúcar que entra no país acima...",
+            titulo="Trump mira a EMBRAER",
+            nome_canal="Canal Teste",
+        )
+        self.assertFalse(res_frase_unica_cortada.endswith(("...", "…")))
+        self.assertTrue(res_frase_unica_cortada.endswith((".", "!", "?")))
+
 
 if __name__ == "__main__":
     unittest.main()
