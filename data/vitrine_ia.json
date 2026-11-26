@@ -2,33 +2,104 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-26T12:31:54Z",
-  "batch_id": "20261126-1231",
+  "updatedAt": "2026-11-26T13:38:34Z",
+  "batch_id": "20261126-1338",
   "temas_ativos": [
     {
-      "slug": "dolar-cai-abaixo-5-80-lula-trabuco-fazenda",
-      "titulo_tema": "Dólar recua abaixo de R$ 5,80 após sondagem de Trabuco para a Fazenda",
-      "titulo_curto": "Dólar recua abaixo de R$ 5,80 após sondagem de Trabuco para a Fazenda",
+      "slug": "trabuco-fazenda-mercado-reage-bolsa-dolar",
+      "titulo_tema": "Sondagem de Luiz Carlos Trabuco para o Ministério da Fazenda move mercados",
       "status": "novo",
-      "origem_pipeline": "pulso",
+      "origem_pipeline": "curadoria",
       "categoria_primaria": "Economia",
-      "categoria": "Economia_Comercio",
       "categorias_cruzadas": [
-        "Economia",
+        "Politica",
         "Resumo_Ultimas"
       ],
       "rota_editoria": "/economia",
       "relevancia_score": 95,
-      "urgencia_score": 92,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-27T13:38:34Z",
+      "palavras_chave_busca": [
+        "luiz carlos trabuco",
+        "ministério da fazenda",
+        "ibovespa",
+        "dólar",
+        "faria lima",
+        "contas públicas"
+      ],
+      "gatilho_vitrine": "Destacar o impacto imediato da possível indicação de Trabuco para a equipe econômica na queda do dólar e alta da bolsa.",
+      "sintese_nerd": "A especulação em torno do nome de Luiz Carlos Trabuco para assumir a pasta da Fazenda gerou alívio imediato na Faria Lima, fazendo o Ibovespa disparar e o dólar recuar abaixo de R$ 5,80. O movimento reflete a percepção do mercado de que um perfil alinhado ao setor financeiro tradicional pode sinalizar maior rigor fiscal e estabilidade nas contas públicas.",
+      "data_publicacao": "2026-11-26T13:38:34Z",
+      "updated_at": "2026-11-26T13:38:34Z"
+    },
+    {
+      "slug": "banco-central-regras-credito-rotativo-endividamento",
+      "titulo_tema": "Novas regras do Banco Central reduzem limite do rotativo e apertam crédito",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Politica",
+        "Cultura"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 90,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-28T13:38:34Z",
+      "palavras_chave_busca": [
+        "banco central",
+        "crédito rotativo",
+        "endividamento das famílias",
+        "cartão de crédito",
+        "cmn"
+      ],
+      "gatilho_vitrine": "Explicar as novas diretrizes do Conselho Monetário Nacional para o controle do endividamento e suas consequências para o bolso do consumidor.",
+      "sintese_nerd": "O Banco Central determinou medidas estruturais para frear o endividamento das famílias, impondo a redução de limites no cartão de crédito para usuários frequentes do rotativo com base no histórico global do sistema financeiro. A medida busca conter a inadimplência sistêmica, mas impõe um aperto na liquidez de curto prazo para o consumidor brasileiro.",
+      "data_publicacao": "2026-11-26T13:38:34Z",
+      "updated_at": "2026-11-26T13:38:34Z"
+    },
+    {
+      "slug": "macron-carne-brasileira-ue-veto-agronegocio",
+      "titulo_tema": "Emmanuel Macron comemora veto da União Europeia à carne brasileira",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Politica"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 88,
+      "ttl_horas": 36,
+      "expires_at": "2026-11-28T01:38:34Z",
+      "palavras_chave_busca": [
+        "emmanuel macron",
+        "carne brasileira",
+        "união europeia",
+        "agronegócio",
+        "acordo mercosul ue",
+        "frança"
+      ],
+      "gatilho_vitrine": "Analisar as tensões comerciais entre o Mercosul e a União Europeia após declarações protecionistas do presidente francês.",
+      "sintese_nerd": "O presidente francês Emmanuel Macron classificou a carne bovina do Brasil como 'dopada' e celebrou restrições comerciais impostas pelo mercado europeu, evidenciando barreiras protecionistas disfarçadas de exigências sanitárias. O episódio acirra o impasse diplomático em torno de acordos bilaterais e coloca em xeque a competitividade do agronegócio brasileiro no Velho Continente.",
+      "data_publicacao": "2026-11-26T13:38:34Z",
+      "updated_at": "2026-11-26T13:38:34Z"
+    },
+    {
+      "slug": "dolar-cai-abaixo-5-80-lula-trabuco-fazenda",
+      "status": "novo",
+      "categoria": "Economia_Comercio",
       "ttl_horas": 12,
       "expires_at": "2026-11-27T00:31:54Z",
-      "palavras_chave_busca": [
-        "dólar",
-        "câmbio",
-        "ministério da fazenda",
-        "luiz carlos trabuco",
-        "economia"
+      "updated_at": "2026-11-26T12:31:54Z",
+      "fontes_urls": [
+        "https://www.infomoney.com.br/mercados/dolar-hoje-abertura-fechamento-comercial-turismo-26112026/"
       ],
+      "titulo_tema": "Dólar recua abaixo de R$ 5,80 após sondagem de Trabuco para a Fazenda",
+      "resumo_pulso": "Conforme apuração da InfoMoney, a moeda norte-americana registrou queda expressiva e ficou cotada abaixo de R$ 5,80 após o presidente Luiz Inácio Lula da Silva sondar Luiz Carlos Trabuco, presidente do conselho do Bradesco, para assumir o Ministério da Fazenda. Para o viajante e o consumidor brasileiro, o movimento momentâneo reduz o custo de importações e barateia despesas em viagens internacionais, refletindo as expectativas do mercado diante de mudanças na equipe econômica.",
+      "sintese_nerd": "A queda do dólar abaixo de R$ 5,80 alivia o bolso do turista brasileiro em viagens ao exterior e reduz a pressão sobre o custo de produtos importados e passagens aéreas internacionais.",
+      "titulo_curto": "Dólar recua abaixo de R$ 5,80 após sondagem de Trabuco para a Fazenda",
+      "rota_editoria": "/economia",
       "palavras_chave": [
         "dólar",
         "câmbio",
@@ -36,47 +107,48 @@
         "luiz carlos trabuco",
         "economia"
       ],
+      "urgencia_score": 92,
+      "data_publicacao": "2026-11-26T12:25:11Z",
       "gatilho_vitrine": "Conforme apuração da InfoMoney, a moeda norte-americana registrou queda expressiva e ficou cotada abaixo de R$ 5,80 após o presidente Luiz Inácio Lula da Silva sondar Luiz Carlos Trabuco, presidente do conselho do Bradesco, para assumir o Ministério da Fazenda. Para o viajante e o consumidor brasileiro, o movimento momentâneo reduz o custo de importações e barateia despesas em viagens internacionais, refletindo as expectativas do mercado diante de mudanças na equipe econômica.",
-      "resumo_pulso": "Conforme apuração da InfoMoney, a moeda norte-americana registrou queda expressiva e ficou cotada abaixo de R$ 5,80 após o presidente Luiz Inácio Lula da Silva sondar Luiz Carlos Trabuco, presidente do conselho do Bradesco, para assumir o Ministério da Fazenda. Para o viajante e o consumidor brasileiro, o movimento momentâneo reduz o custo de importações e barateia despesas em viagens internacionais, refletindo as expectativas do mercado diante de mudanças na equipe econômica.",
-      "sintese_nerd": "A queda do dólar abaixo de R$ 5,80 alivia o bolso do turista brasileiro em viagens ao exterior e reduz a pressão sobre o custo de produtos importados e passagens aéreas internacionais.",
       "impacto_pratico": "A queda do dólar abaixo de R$ 5,80 alivia o bolso do turista brasileiro em viagens ao exterior e reduz a pressão sobre o custo de produtos importados e passagens aéreas internacionais.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "InfoMoney Mercados"
+      ],
+      "relevancia_score": 95,
       "paises_envolvidos": [
         "BR",
         "US"
       ],
-      "veiculos_origem": [
-        "InfoMoney Mercados"
-      ],
-      "fontes_urls": [
-        "https://www.infomoney.com.br/mercados/dolar-hoje-abertura-fechamento-comercial-turismo-26112026/"
-      ],
-      "data_publicacao": "2026-11-26T12:25:11Z",
-      "updated_at": "2026-11-26T12:31:54Z"
-    },
-    {
-      "slug": "ipca-15-novembro-alta-alimentos",
-      "titulo_tema": "Prévia da inflação oficial sobe 0,22% em novembro impulsionada por alimentos",
-      "titulo_curto": "Prévia da inflação oficial sobe 0,22% em novembro impulsionada por alimentos",
-      "status": "novo",
-      "origem_pipeline": "pulso",
       "categoria_primaria": "Economia",
-      "categoria": "Economia_Comercio",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
       ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 92,
-      "urgencia_score": 90,
+      "palavras_chave_busca": [
+        "dólar",
+        "câmbio",
+        "ministério da fazenda",
+        "luiz carlos trabuco",
+        "economia"
+      ]
+    },
+    {
+      "slug": "ipca-15-novembro-alta-alimentos",
+      "status": "novo",
+      "categoria": "Economia_Comercio",
       "ttl_horas": 24,
       "expires_at": "2026-11-27T12:31:54Z",
-      "palavras_chave_busca": [
-        "ipca-15",
-        "inflação",
-        "ibge",
-        "economia",
-        "custo de vida"
+      "updated_at": "2026-11-26T12:31:54Z",
+      "fontes_urls": [
+        "https://www.poder360.com.br/poder-economia/previa-da-inflacao-sobe-022-em-novembro-em-12-meses-vai-a-464/",
+        "https://g1.globo.com/economia/noticia/2026/11/26/ipca-15-previa-da-inflacao-novembro.ghtml"
       ],
+      "titulo_tema": "Prévia da inflação oficial sobe 0,22% em novembro impulsionada por alimentos",
+      "resumo_pulso": "Segundo dados divulgados pelo IBGE e repercutidos pelo Poder360 e G1 Economia, o Índice Nacional de Preços ao Consumidor Amplo 15 (IPCA-15) subiu 0,22% em novembro, elevando a taxa acumulada em 12 meses para 4,64%. O avanço foi puxado principalmente pelo encarecimento de itens alimentícios devido a fatores climáticos desfavoráveis em regiões produtoras.",
+      "sintese_nerd": "A alta na prévia da inflação impacta o orçamento doméstico das famílias brasileiras, encarecendo a cesta de compras e pressionando o custo de vida nas principais regiões metropolitanas.",
+      "titulo_curto": "Prévia da inflação oficial sobe 0,22% em novembro impulsionada por alimentos",
+      "rota_editoria": "/economia",
       "palavras_chave": [
         "ipca-15",
         "inflação",
@@ -84,23 +156,31 @@
         "economia",
         "custo de vida"
       ],
+      "urgencia_score": 90,
+      "data_publicacao": "2026-11-26T12:04:33Z",
       "gatilho_vitrine": "Segundo dados divulgados pelo IBGE e repercutidos pelo Poder360 e G1 Economia, o Índice Nacional de Preços ao Consumidor Amplo 15 (IPCA-15) subiu 0,22% em novembro, elevando a taxa acumulada em 12 meses para 4,64%. O avanço foi puxado principalmente pelo encarecimento de itens alimentícios devido a fatores climáticos desfavoráveis em regiões produtoras.",
-      "resumo_pulso": "Segundo dados divulgados pelo IBGE e repercutidos pelo Poder360 e G1 Economia, o Índice Nacional de Preços ao Consumidor Amplo 15 (IPCA-15) subiu 0,22% em novembro, elevando a taxa acumulada em 12 meses para 4,64%. O avanço foi puxado principalmente pelo encarecimento de itens alimentícios devido a fatores climáticos desfavoráveis em regiões produtoras.",
-      "sintese_nerd": "A alta na prévia da inflação impacta o orçamento doméstico das famílias brasileiras, encarecendo a cesta de compras e pressionando o custo de vida nas principais regiões metropolitanas.",
       "impacto_pratico": "A alta na prévia da inflação impacta o orçamento doméstico das famílias brasileiras, encarecendo a cesta de compras e pressionando o custo de vida nas principais regiões metropolitanas.",
-      "paises_envolvidos": [
-        "BR"
-      ],
+      "origem_pipeline": "pulso",
       "veiculos_origem": [
         "Poder360",
         "G1 Economia"
       ],
-      "fontes_urls": [
-        "https://www.poder360.com.br/poder-economia/previa-da-inflacao-sobe-022-em-novembro-em-12-meses-vai-a-464/",
-        "https://g1.globo.com/economia/noticia/2026/11/26/ipca-15-previa-da-inflacao-novembro.ghtml"
+      "relevancia_score": 92,
+      "paises_envolvidos": [
+        "BR"
       ],
-      "data_publicacao": "2026-11-26T12:04:33Z",
-      "updated_at": "2026-11-26T12:31:54Z"
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "ipca-15",
+        "inflação",
+        "ibge",
+        "economia",
+        "custo de vida"
+      ]
     },
     {
       "slug": "grupo-fictor-alvo-operacao-suspeita-fraude",
@@ -245,84 +325,6 @@
         "tecnologia",
         "estados unidos",
         "sudeste asiático"
-      ]
-    },
-    {
-      "slug": "colombia-abandona-brics-politica-externa-eua",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-28T10:25:12Z",
-      "updated_at": "2026-11-26T10:25:12Z",
-      "titulo_tema": "Colômbia abandona iniciativa de entrada nos Brics",
-      "sintese_nerd": "A decisão do governo de Gustavo Petro de recuar da entrada nos Brics sinaliza uma realinhamento estratégico voltado à reaproximação com os Estados Unidos. Essa guinada altera o eixo de influência geopolítica na América do Sul e impacta acordos comerciais regionais.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-26T10:25:12Z",
-      "gatilho_vitrine": "Destaque a reviravolta na diplomacia sul-americana e os reflexos comerciais na região",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 92,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Politica",
-        "Economia"
-      ],
-      "palavras_chave_busca": [
-        "colômbia",
-        "brics",
-        "gustavo petro",
-        "política externa",
-        "eua",
-        "banco dos brics"
-      ]
-    },
-    {
-      "slug": "governo-lula-projetos-economicos-congresso",
-      "status": "novo",
-      "ttl_horas": 72,
-      "expires_at": "2026-11-29T10:25:12Z",
-      "updated_at": "2026-11-26T10:25:12Z",
-      "titulo_tema": "Prazo limite para votação de projetos econômicos no Congresso",
-      "sintese_nerd": "Com a proximidade do fim do ano legislativo e a perspectiva de um Congresso mais oposicionista, o governo enfrenta uma janela estreita para aprovar pautas econômicas vitais. O sucesso dessas votações ditará o ritmo da previsibilidade fiscal e o comportamento dos juros futuros.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-26T10:25:12Z",
-      "gatilho_vitrine": "Mostre a corrida contra o relógio do Executivo para destravar pautas fiscais antes da renovação parlamentar",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 88,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Politica"
-      ],
-      "palavras_chave_busca": [
-        "governo lula",
-        "congresso nacional",
-        "projetos econômicos",
-        "ajuste fiscal",
-        "orçamento"
-      ]
-    },
-    {
-      "slug": "governo-multa-google-transparencia-anuncios",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-28T10:25:12Z",
-      "updated_at": "2026-11-26T10:25:12Z",
-      "titulo_tema": "Senacon abre processo e pode multar Google por anúncios",
-      "sintese_nerd": "A investida da Secretaria Nacional do Consumidor contra a falta de transparência em anúncios do Google eleva o tom da regulação digital no Brasil. A medida reflete o esforço global de governos para impor maior responsabilidade corporativa sobre as gigantes da tecnologia.",
-      "rota_editoria": "/politica",
-      "data_publicacao": "2026-11-26T10:25:12Z",
-      "gatilho_vitrine": "Explore o aperto do cerco regulatório do governo federal sobre as práticas comerciais das big techs",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 85,
-      "categoria_primaria": "Politica",
-      "categorias_cruzadas": [
-        "Cultura",
-        "Economia"
-      ],
-      "palavras_chave_busca": [
-        "google",
-        "senacon",
-        "transparência em anúncios",
-        "big techs",
-        "regulação digital"
       ]
     },
     {
@@ -881,28 +883,100 @@
       ]
     }
   ],
+  "temas_curadoria": [
+    {
+      "slug": "trabuco-fazenda-mercado-reage-bolsa-dolar",
+      "titulo_tema": "Sondagem de Luiz Carlos Trabuco para o Ministério da Fazenda move mercados",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Politica",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 95,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-27T13:38:34Z",
+      "palavras_chave_busca": [
+        "luiz carlos trabuco",
+        "ministério da fazenda",
+        "ibovespa",
+        "dólar",
+        "faria lima",
+        "contas públicas"
+      ],
+      "gatilho_vitrine": "Destacar o impacto imediato da possível indicação de Trabuco para a equipe econômica na queda do dólar e alta da bolsa.",
+      "sintese_nerd": "A especulação em torno do nome de Luiz Carlos Trabuco para assumir a pasta da Fazenda gerou alívio imediato na Faria Lima, fazendo o Ibovespa disparar e o dólar recuar abaixo de R$ 5,80. O movimento reflete a percepção do mercado de que um perfil alinhado ao setor financeiro tradicional pode sinalizar maior rigor fiscal e estabilidade nas contas públicas.",
+      "data_publicacao": "2026-11-26T13:38:34Z",
+      "updated_at": "2026-11-26T13:38:34Z"
+    },
+    {
+      "slug": "banco-central-regras-credito-rotativo-endividamento",
+      "titulo_tema": "Novas regras do Banco Central reduzem limite do rotativo e apertam crédito",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Politica",
+        "Cultura"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 90,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-28T13:38:34Z",
+      "palavras_chave_busca": [
+        "banco central",
+        "crédito rotativo",
+        "endividamento das famílias",
+        "cartão de crédito",
+        "cmn"
+      ],
+      "gatilho_vitrine": "Explicar as novas diretrizes do Conselho Monetário Nacional para o controle do endividamento e suas consequências para o bolso do consumidor.",
+      "sintese_nerd": "O Banco Central determinou medidas estruturais para frear o endividamento das famílias, impondo a redução de limites no cartão de crédito para usuários frequentes do rotativo com base no histórico global do sistema financeiro. A medida busca conter a inadimplência sistêmica, mas impõe um aperto na liquidez de curto prazo para o consumidor brasileiro.",
+      "data_publicacao": "2026-11-26T13:38:34Z",
+      "updated_at": "2026-11-26T13:38:34Z"
+    },
+    {
+      "slug": "macron-carne-brasileira-ue-veto-agronegocio",
+      "titulo_tema": "Emmanuel Macron comemora veto da União Europeia à carne brasileira",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Politica"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 88,
+      "ttl_horas": 36,
+      "expires_at": "2026-11-28T01:38:34Z",
+      "palavras_chave_busca": [
+        "emmanuel macron",
+        "carne brasileira",
+        "união europeia",
+        "agronegócio",
+        "acordo mercosul ue",
+        "frança"
+      ],
+      "gatilho_vitrine": "Analisar as tensões comerciais entre o Mercosul e a União Europeia após declarações protecionistas do presidente francês.",
+      "sintese_nerd": "O presidente francês Emmanuel Macron classificou a carne bovina do Brasil como 'dopada' e celebrou restrições comerciais impostas pelo mercado europeu, evidenciando barreiras protecionistas disfarçadas de exigências sanitárias. O episódio acirra o impasse diplomático em torno de acordos bilaterais e coloca em xeque a competitividade do agronegócio brasileiro no Velho Continente.",
+      "data_publicacao": "2026-11-26T13:38:34Z",
+      "updated_at": "2026-11-26T13:38:34Z"
+    }
+  ],
   "noticias_quentes": [
     {
       "slug": "dolar-cai-abaixo-5-80-lula-trabuco-fazenda",
-      "titulo_curto": "Dólar recua abaixo de R$ 5,80 após sondagem de Trabuco para a Fazenda",
-      "resumo_pulso": "Conforme apuração da InfoMoney, a moeda norte-americana registrou queda expressiva e ficou cotada abaixo de R$ 5,80 após o presidente Luiz Inácio Lula da Silva sondar Luiz Carlos Trabuco, presidente do conselho do Bradesco, para assumir o Ministério da Fazenda. Para o viajante e o consumidor brasileiro, o movimento momentâneo reduz o custo de importações e barateia despesas em viagens internacionais, refletindo as expectativas do mercado diante de mudanças na equipe econômica.",
-      "impacto_pratico": "A queda do dólar abaixo de R$ 5,80 alivia o bolso do turista brasileiro em viagens ao exterior e reduz a pressão sobre o custo de produtos importados e passagens aéreas internacionais.",
       "categoria": "Economia_Comercio",
-      "paises_envolvidos": [
-        "BR",
-        "US"
-      ],
-      "urgencia_score": 92,
-      "relevancia_score": 95,
-      "nivel_confianca": "alta",
       "ttl_horas": 12,
-      "horas_em_destaque": 12,
-      "veiculos_origem": [
-        "InfoMoney Mercados"
-      ],
+      "expires_at": "2026-11-27T00:31:54Z",
+      "updated_at": "2026-11-26T12:31:54Z",
       "fontes_urls": [
         "https://www.infomoney.com.br/mercados/dolar-hoje-abertura-fechamento-comercial-turismo-26112026/"
       ],
+      "resumo_pulso": "Conforme apuração da InfoMoney, a moeda norte-americana registrou queda expressiva e ficou cotada abaixo de R$ 5,80 após o presidente Luiz Inácio Lula da Silva sondar Luiz Carlos Trabuco, presidente do conselho do Bradesco, para assumir o Ministério da Fazenda. Para o viajante e o consumidor brasileiro, o movimento momentâneo reduz o custo de importações e barateia despesas em viagens internacionais, refletindo as expectativas do mercado diante de mudanças na equipe econômica.",
+      "titulo_curto": "Dólar recua abaixo de R$ 5,80 após sondagem de Trabuco para a Fazenda",
       "palavras_chave": [
         "Dólar",
         "Câmbio",
@@ -910,44 +984,44 @@
         "Luiz Carlos Trabuco",
         "Economia"
       ],
+      "urgencia_score": 92,
       "data_publicacao": "2026-11-26T12:25:11Z",
+      "impacto_pratico": "A queda do dólar abaixo de R$ 5,80 alivia o bolso do turista brasileiro em viagens ao exterior e reduz a pressão sobre o custo de produtos importados e passagens aéreas internacionais.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "InfoMoney Mercados"
+      ],
+      "relevancia_score": 95,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "BR",
+        "US"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "Economia no Brasil",
           "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
-          "motivo_conexao": "Complementa a análise sobre o comportamento do câmbio e os impactos na economia nacional."
+          "motivo_conexao": "Complementa a análise sobre o comportamento do câmbio e os impactos na economia nacional.",
+          "titulo_existente": "Economia no Brasil"
         },
         {
-          "titulo_existente": "Banco Central e mercado financeiro acompanham inflação de serviços, câmbio e metas fiscais",
           "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
-          "motivo_conexao": "Relaciona as oscilações cambiais com as projeções macroeconômicas e o poder de compra."
+          "motivo_conexao": "Relaciona as oscilações cambiais com as projeções macroeconômicas e o poder de compra.",
+          "titulo_existente": "Banco Central e mercado financeiro acompanham inflação de serviços, câmbio e metas fiscais"
         }
-      ],
-      "expires_at": "2026-11-27T00:31:54Z",
-      "updated_at": "2026-11-26T12:31:54Z"
+      ]
     },
     {
       "slug": "ipca-15-novembro-alta-alimentos",
-      "titulo_curto": "Prévia da inflação oficial sobe 0,22% em novembro impulsionada por alimentos",
-      "resumo_pulso": "Segundo dados divulgados pelo IBGE e repercutidos pelo Poder360 e G1 Economia, o Índice Nacional de Preços ao Consumidor Amplo 15 (IPCA-15) subiu 0,22% em novembro, elevando a taxa acumulada em 12 meses para 4,64%. O avanço foi puxado principalmente pelo encarecimento de itens alimentícios devido a fatores climáticos desfavoráveis em regiões produtoras.",
-      "impacto_pratico": "A alta na prévia da inflação impacta o orçamento doméstico das famílias brasileiras, encarecendo a cesta de compras e pressionando o custo de vida nas principais regiões metropolitanas.",
       "categoria": "Economia_Comercio",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "urgencia_score": 90,
-      "relevancia_score": 92,
-      "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 18,
-      "veiculos_origem": [
-        "Poder360",
-        "G1 Economia"
-      ],
+      "expires_at": "2026-11-27T12:31:54Z",
+      "updated_at": "2026-11-26T12:31:54Z",
       "fontes_urls": [
         "https://www.poder360.com.br/poder-economia/previa-da-inflacao-sobe-022-em-novembro-em-12-meses-vai-a-464/",
         "https://g1.globo.com/economia/noticia/2026/11/26/ipca-15-previa-da-inflacao-novembro.ghtml"
       ],
+      "resumo_pulso": "Segundo dados divulgados pelo IBGE e repercutidos pelo Poder360 e G1 Economia, o Índice Nacional de Preços ao Consumidor Amplo 15 (IPCA-15) subiu 0,22% em novembro, elevando a taxa acumulada em 12 meses para 4,64%. O avanço foi puxado principalmente pelo encarecimento de itens alimentícios devido a fatores climáticos desfavoráveis em regiões produtoras.",
+      "titulo_curto": "Prévia da inflação oficial sobe 0,22% em novembro impulsionada por alimentos",
       "palavras_chave": [
         "IPCA-15",
         "Inflação",
@@ -955,16 +1029,26 @@
         "Economia",
         "Custo de Vida"
       ],
+      "urgencia_score": 90,
       "data_publicacao": "2026-11-26T12:04:33Z",
+      "impacto_pratico": "A alta na prévia da inflação impacta o orçamento doméstico das famílias brasileiras, encarecendo a cesta de compras e pressionando o custo de vida nas principais regiões metropolitanas.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Poder360",
+        "G1 Economia"
+      ],
+      "relevancia_score": 92,
+      "horas_em_destaque": 18,
+      "paises_envolvidos": [
+        "BR"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "O que é inflação?",
           "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
-          "motivo_conexao": "Explica o conceito e a metodologia de cálculo dos índices de inflação no Brasil."
+          "motivo_conexao": "Explica o conceito e a metodologia de cálculo dos índices de inflação no Brasil.",
+          "titulo_existente": "O que é inflação?"
         }
-      ],
-      "expires_at": "2026-11-27T12:31:54Z",
-      "updated_at": "2026-11-26T12:31:54Z"
+      ]
     },
     {
       "slug": "grupo-fictor-alvo-operacao-suspeita-fraude",
@@ -1619,86 +1703,6 @@
           "motivo_conexao": "Relaciona as decisões dos tribunais superiores com o cenário político e de segurança nacional.",
           "titulo_existente": "Política no Brasil"
         }
-      ]
-    }
-  ],
-  "temas_curadoria": [
-    {
-      "slug": "colombia-abandona-brics-politica-externa-eua",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-28T10:25:12Z",
-      "updated_at": "2026-11-26T10:25:12Z",
-      "titulo_tema": "Colômbia abandona iniciativa de entrada nos Brics",
-      "sintese_nerd": "A decisão do governo de Gustavo Petro de recuar da entrada nos Brics sinaliza uma realinhamento estratégico voltado à reaproximação com os Estados Unidos. Essa guinada altera o eixo de influência geopolítica na América do Sul e impacta acordos comerciais regionais.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-26T10:25:12Z",
-      "gatilho_vitrine": "Destaque a reviravolta na diplomacia sul-americana e os reflexos comerciais na região",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 92,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Politica",
-        "Economia"
-      ],
-      "palavras_chave_busca": [
-        "colômbia",
-        "brics",
-        "gustavo petro",
-        "política externa",
-        "eua",
-        "banco dos brics"
-      ]
-    },
-    {
-      "slug": "governo-lula-projetos-economicos-congresso",
-      "status": "novo",
-      "ttl_horas": 72,
-      "expires_at": "2026-11-29T10:25:12Z",
-      "updated_at": "2026-11-26T10:25:12Z",
-      "titulo_tema": "Prazo limite para votação de projetos econômicos no Congresso",
-      "sintese_nerd": "Com a proximidade do fim do ano legislativo e a perspectiva de um Congresso mais oposicionista, o governo enfrenta uma janela estreita para aprovar pautas econômicas vitais. O sucesso dessas votações ditará o ritmo da previsibilidade fiscal e o comportamento dos juros futuros.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-26T10:25:12Z",
-      "gatilho_vitrine": "Mostre a corrida contra o relógio do Executivo para destravar pautas fiscais antes da renovação parlamentar",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 88,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Politica"
-      ],
-      "palavras_chave_busca": [
-        "governo lula",
-        "congresso nacional",
-        "projetos econômicos",
-        "ajuste fiscal",
-        "orçamento"
-      ]
-    },
-    {
-      "slug": "governo-multa-google-transparencia-anuncios",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-28T10:25:12Z",
-      "updated_at": "2026-11-26T10:25:12Z",
-      "titulo_tema": "Senacon abre processo e pode multar Google por anúncios",
-      "sintese_nerd": "A investida da Secretaria Nacional do Consumidor contra a falta de transparência em anúncios do Google eleva o tom da regulação digital no Brasil. A medida reflete o esforço global de governos para impor maior responsabilidade corporativa sobre as gigantes da tecnologia.",
-      "rota_editoria": "/politica",
-      "data_publicacao": "2026-11-26T10:25:12Z",
-      "gatilho_vitrine": "Explore o aperto do cerco regulatório do governo federal sobre as práticas comerciais das big techs",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 85,
-      "categoria_primaria": "Politica",
-      "categorias_cruzadas": [
-        "Cultura",
-        "Economia"
-      ],
-      "palavras_chave_busca": [
-        "google",
-        "senacon",
-        "transparência em anúncios",
-        "big techs",
-        "regulação digital"
       ]
     }
   ]
