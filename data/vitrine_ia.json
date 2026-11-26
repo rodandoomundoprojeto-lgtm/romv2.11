@@ -2,156 +2,158 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-26T03:32:21Z",
-  "batch_id": "20261126-0331",
+  "updatedAt": "2026-11-26T04:20:35Z",
+  "batch_id": "20261126-0420",
   "temas_ativos": [
     {
-      "slug": "camara-aprova-deserdacao-por-interdicao-abusiva-idosos",
-      "titulo_tema": "Câmara aprova projeto que prevê deserdação por interdição abusiva de idosos",
-      "titulo_curto": "Câmara aprova projeto que prevê deserdação por interdição abusiva de idosos",
+      "slug": "tensao-israel-ira-ameaca-regional",
+      "titulo_tema": "Escalada de tensões entre Israel e Irã",
       "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Cultura",
-      "categoria": "Sociedade_Cultura",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
       "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
+        "Economia"
       ],
-      "rota_editoria": "/cultura",
+      "rota_editoria": "/radar",
+      "relevancia_score": 95,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-27T04:20:35Z",
+      "palavras_chave_busca": [
+        "israel",
+        "irã",
+        "benjamin netanyahu",
+        "gadi eisenkot",
+        "conflito oriente médio",
+        "petróleo"
+      ],
+      "gatilho_vitrine": "Acompanhe o risco de um novo conflito direto entre Israel e Irã e seus reflexos nos preços globais de energia.",
+      "sintese_nerd": "O impasse entre a ala militar israelense e o governo Netanyahu sobre ataques ao Irã coloca o Oriente Médio em alerta máximo. A instabilidade ameaça a segurança energética global e pode impactar o preço do barril de petróleo.",
+      "data_publicacao": "2026-11-26T04:20:35Z",
+      "updated_at": "2026-11-26T04:20:35Z"
+    },
+    {
+      "slug": "orcamento-2027-revisao-receita",
+      "titulo_tema": "Revisão do Orçamento 2027 e impacto fiscal",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Politica"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 92,
+      "ttl_horas": 72,
+      "expires_at": "2026-11-29T04:20:35Z",
+      "palavras_chave_busca": [
+        "orçamento 2027",
+        "reforma tributária",
+        "pib",
+        "royalties petróleo",
+        "meta fiscal",
+        "congresso nacional"
+      ],
+      "gatilho_vitrine": "Entenda como a revisão das receitas orçamentárias reflete as mudanças na economia brasileira para 2027.",
+      "sintese_nerd": "A comissão orçamentária elevou a estimativa de receita em R$ 37,1 bilhões, incorporando a reforma tributária e ajustes nas projeções do PIB. O movimento reflete a tentativa do governo de equilibrar as contas diante de um cenário de crescimento econômico mais moderado.",
+      "data_publicacao": "2026-11-26T04:20:35Z",
+      "updated_at": "2026-11-26T04:20:35Z"
+    },
+    {
+      "slug": "crime-organizado-mapa-faccoes",
+      "titulo_tema": "Panorama do crime organizado no Brasil",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Politica",
+      "categorias_cruzadas": [
+        "Cultura"
+      ],
+      "rota_editoria": "/politica",
       "relevancia_score": 88,
-      "urgencia_score": 85,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-28T04:20:35Z",
+      "palavras_chave_busca": [
+        "segurança pública",
+        "abin",
+        "facções criminosas",
+        "pcc",
+        "crime organizado",
+        "inteligência"
+      ],
+      "gatilho_vitrine": "Analise o novo levantamento da Abin sobre a expansão das facções criminosas no Brasil nas últimas duas décadas.",
+      "sintese_nerd": "O relatório inédito da Abin mapeia a evolução de 31 facções criminosas, evidenciando a capilaridade do crime organizado no território nacional. O dado é crucial para o debate sobre políticas de segurança pública e inteligência estatal.",
+      "data_publicacao": "2026-11-26T04:20:35Z",
+      "updated_at": "2026-11-26T04:20:35Z"
+    },
+    {
+      "slug": "camara-aprova-deserdacao-por-interdicao-abusiva-idosos",
+      "status": "novo",
+      "categoria": "Sociedade_Cultura",
       "ttl_horas": 24,
       "expires_at": "2026-11-27T03:32:21Z",
-      "palavras_chave_busca": [
-        "camara",
-        "idosos",
-        "heranca",
-        "lei"
+      "updated_at": "2026-11-26T03:32:21Z",
+      "fontes_urls": [
+        "https://g1.globo.com/politica/noticia/2026/11/26/heranca-deserdacao-curatela-idosos-camara.ghtml"
       ],
+      "titulo_tema": "Câmara aprova projeto que prevê deserdação por interdição abusiva de idosos",
+      "resumo_pulso": "A Câmara dos Deputados aprovou projeto de lei que estabelece a perda do direito à herança para quem tentar interditar idosos com o objetivo de desviar patrimônio. A medida, de autoria do deputado Eriberto Medeiros, visa combater a violência patrimonial.",
+      "sintese_nerd": "A Câmara dos Deputados aprovou projeto de lei que estabelece a perda do direito à herança para quem tentar interditar idosos com o objetivo de desviar patrimônio. A medida, de autoria do deputado Eriberto Medeiros, visa combater a violência patrimonial.",
+      "titulo_curto": "Câmara aprova projeto que prevê deserdação por interdição abusiva de idosos",
+      "rota_editoria": "/cultura",
       "palavras_chave": [
         "camara",
         "idosos",
         "heranca",
         "lei"
       ],
+      "urgencia_score": 85,
+      "data_publicacao": "2026-11-26T03:00:00Z",
       "gatilho_vitrine": "A Câmara dos Deputados aprovou projeto de lei que estabelece a perda do direito à herança para quem tentar interditar idosos com o objetivo de desviar patrimônio. A medida, de autoria do deputado Eriberto Medeiros, visa combater a violência patrimonial.",
-      "resumo_pulso": "A Câmara dos Deputados aprovou projeto de lei que estabelece a perda do direito à herança para quem tentar interditar idosos com o objetivo de desviar patrimônio. A medida, de autoria do deputado Eriberto Medeiros, visa combater a violência patrimonial.",
-      "sintese_nerd": "A Câmara dos Deputados aprovou projeto de lei que estabelece a perda do direito à herança para quem tentar interditar idosos com o objetivo de desviar patrimônio. A medida, de autoria do deputado Eriberto Medeiros, visa combater a violência patrimonial.",
       "impacto_pratico": "A Câmara dos Deputados aprovou projeto de lei que estabelece a perda do direito à herança para quem tentar interditar idosos com o objetivo de desviar patrimônio. A medida, de autoria do deputado Eriberto Medeiros, visa combater a violência patrimonial.",
-      "paises_envolvidos": [
-        "BR"
-      ],
+      "origem_pipeline": "pulso",
       "veiculos_origem": [
         "G1 Política"
       ],
-      "fontes_urls": [
-        "https://g1.globo.com/politica/noticia/2026/11/26/heranca-deserdacao-curatela-idosos-camara.ghtml"
+      "relevancia_score": 88,
+      "paises_envolvidos": [
+        "BR"
       ],
-      "data_publicacao": "2026-11-26T03:00:00Z",
-      "updated_at": "2026-11-26T03:32:21Z"
-    },
-    {
-      "slug": "tarifas-trump-impacto-brasil",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-28T02:00:40Z",
-      "updated_at": "2026-11-26T02:00:40Z",
-      "titulo_tema": "Tarifas de Trump sobre açúcar e aeronaves brasileiras",
-      "sintese_nerd": "O governo Trump propôs elevar tarifas sobre açúcar e aeronaves brasileiras sob o pretexto de proteger produtores locais. A medida sinaliza um endurecimento protecionista que pode pressionar o câmbio e exigir resposta diplomática do Itamaraty.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-26T02:00:40Z",
-      "gatilho_vitrine": "Analise o impacto das novas barreiras comerciais dos EUA na balança comercial brasileira e no agronegócio.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 95,
-      "categoria_primaria": "Economia",
+      "categoria_primaria": "Cultura",
       "categorias_cruzadas": [
-        "Geopolitica_Radar",
-        "Politica"
+        "Economia",
+        "Resumo_Ultimas"
       ],
       "palavras_chave_busca": [
-        "donald trump",
-        "tarifas de importacao",
-        "comercio exterior",
-        "acucar brasileiro",
-        "setor aeronautico",
-        "protecionismo eua"
+        "camara",
+        "idosos",
+        "heranca",
+        "lei"
       ]
     },
     {
-      "slug": "tensao-ucrania-russia-base-aerea",
+      "slug": "tarifas-trump-brasil-acucar-aeronaves",
+      "titulo_tema": "Tarifas de Trump sobre açúcar e aeronaves brasileiras",
       "status": "novo",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-27T02:00:40Z",
-      "updated_at": "2026-11-26T02:00:40Z",
-      "titulo_tema": "Ataque ucraniano a base aérea russa em Nizhny Novgorod",
-      "sintese_nerd": "O ataque ucraniano a uma base aérea profunda em território russo demonstra uma nova capacidade de projeção de força. O evento eleva a tensão geopolítica e pode impactar mercados de commodities energéticas.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-26T02:00:40Z",
-      "gatilho_vitrine": "Acompanhe a escalada do conflito no Leste Europeu e seus reflexos na segurança energética e global.",
       "origem_pipeline": "curadoria",
-      "relevancia_score": 90,
       "categoria_primaria": "Geopolitica_Radar",
       "categorias_cruzadas": [
-        "Economia"
-      ],
-      "palavras_chave_busca": [
-        "guerra na ucrania",
-        "russia",
-        "nizhny novgorod",
-        "conflito militar",
-        "geopolitica global"
-      ]
-    },
-    {
-      "slug": "cmn-bc-endividamento-familias",
-      "status": "novo",
-      "ttl_horas": 72,
-      "expires_at": "2026-11-29T02:00:40Z",
-      "updated_at": "2026-11-26T02:00:40Z",
-      "titulo_tema": "Novas medidas do CMN e BC para conter endividamento das famílias",
-      "sintese_nerd": "O CMN e o BC endureceram critérios para concessão de crédito visando frear o endividamento das famílias. A medida busca estabilidade macroeconômica, mas pode reduzir a liquidez no curto prazo.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-26T02:00:40Z",
-      "gatilho_vitrine": "Entenda como as novas regras de crédito impactam o consumo e a saúde financeira das famílias brasileiras.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 88,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
+        "Economia",
         "Politica"
       ],
-      "palavras_chave_busca": [
-        "cmn",
-        "banco central",
-        "endividamento",
-        "credito",
-        "economia brasileira",
-        "juros"
-      ]
-    },
-    {
-      "slug": "federalizacao-brb-cenario-politico",
-      "status": "novo",
+      "rota_editoria": "/radar",
+      "relevancia_score": 98,
       "ttl_horas": 48,
-      "expires_at": "2026-11-28T02:00:40Z",
-      "updated_at": "2026-11-26T02:00:40Z",
-      "titulo_tema": "Federalização do BRB ganha viabilidade após eleições",
-      "sintese_nerd": "A sinalização de viabilidade para a federalização do BRB após as eleições altera o xadrez político local e a estrutura do banco. O movimento exige atenção sobre a governança e o futuro da instituição.",
-      "rota_editoria": "/politica",
-      "data_publicacao": "2026-11-26T02:00:40Z",
-      "gatilho_vitrine": "Acompanhe os desdobramentos da possível federalização do BRB e seus impactos no sistema financeiro regional.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 85,
-      "categoria_primaria": "Politica",
-      "categorias_cruzadas": [
-        "Economia"
-      ],
+      "expires_at": "2026-11-28T04:20:35Z",
       "palavras_chave_busca": [
-        "brb",
-        "federalizacao",
-        "banco de brasilia",
-        "politica distrital",
-        "setor bancario"
-      ]
+        "donald trump",
+        "tarifas de importação",
+        "agronegócio brasileiro",
+        "setor aéreo",
+        "protecionismo eua",
+        "balança comercial"
+      ],
+      "gatilho_vitrine": "Analise o impacto das novas tarifas protecionistas dos EUA na economia brasileira e as possíveis respostas diplomáticas.",
+      "sintese_nerd": "O governo Trump anunciou novas tarifas sobre açúcar e aeronaves brasileiras sob o pretexto de proteger produtores locais. A medida pressiona a balança comercial brasileira e exige uma resposta diplomática estratégica em um cenário de crescente protecionismo global.",
+      "data_publicacao": "2026-11-26T02:00:40Z",
+      "updated_at": "2026-11-26T04:20:35Z"
     },
     {
       "slug": "premio-mulheres-inovadoras-pesquisadoras-amazonia",
@@ -335,48 +337,48 @@
     },
     {
       "slug": "cmn-medidas-endividamento-familias",
-      "titulo_tema": "Bancos deverão reduzir limite de crédito rotativo para clientes inadimplentes",
-      "titulo_curto": "Bancos deverão reduzir limite de crédito rotativo para clientes inadimplentes",
       "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Economia",
       "categoria": "Economia_Comercio",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 92,
-      "urgencia_score": 89,
       "ttl_horas": 18,
       "expires_at": "2026-11-26T22:35:21Z",
-      "palavras_chave_busca": [
-        "cartao de credito",
-        "endividamento",
-        "bancos",
-        "economia"
+      "updated_at": "2026-11-26T03:32:21Z",
+      "fontes_urls": [
+        "https://g1.globo.com/economia/noticia/2026/11/26/limite-do-cartao-de-quem-usa-o-credito-rotativo-com-frequencia-sera-reduzido-entenda-a-mudanca.ghtml"
       ],
+      "titulo_tema": "Bancos deverão reduzir limite de crédito rotativo para clientes inadimplentes",
+      "resumo_pulso": "Conforme apuração do G1, a partir de julho de 2027, instituições financeiras serão obrigadas a reduzir gradualmente o limite do cartão de crédito para clientes com uso recorrente do rotativo. A medida visa conter o endividamento das famílias brasileiras.",
+      "sintese_nerd": "Consumidores com uso frequente do rotativo terão limites reduzidos, exigindo maior controle financeiro.",
+      "titulo_curto": "Bancos deverão reduzir limite de crédito rotativo para clientes inadimplentes",
+      "rota_editoria": "/economia",
       "palavras_chave": [
         "cartao de credito",
         "endividamento",
         "bancos",
         "economia"
       ],
+      "urgencia_score": 89,
+      "data_publicacao": "2026-11-25T22:35:21Z",
       "gatilho_vitrine": "Conforme apuração do G1, a partir de julho de 2027, instituições financeiras serão obrigadas a reduzir gradualmente o limite do cartão de crédito para clientes com uso recorrente do rotativo. A medida visa conter o endividamento das famílias brasileiras.",
-      "resumo_pulso": "Conforme apuração do G1, a partir de julho de 2027, instituições financeiras serão obrigadas a reduzir gradualmente o limite do cartão de crédito para clientes com uso recorrente do rotativo. A medida visa conter o endividamento das famílias brasileiras.",
-      "sintese_nerd": "Consumidores com uso frequente do rotativo terão limites reduzidos, exigindo maior controle financeiro.",
       "impacto_pratico": "Consumidores com uso frequente do rotativo terão limites reduzidos, exigindo maior controle financeiro.",
-      "paises_envolvidos": [
-        "BR"
-      ],
+      "origem_pipeline": "pulso",
       "veiculos_origem": [
         "G1 Economia"
       ],
-      "fontes_urls": [
-        "https://g1.globo.com/economia/noticia/2026/11/26/limite-do-cartao-de-quem-usa-o-credito-rotativo-com-frequencia-sera-reduzido-entenda-a-mudanca.ghtml"
+      "relevancia_score": 92,
+      "paises_envolvidos": [
+        "BR"
       ],
-      "data_publicacao": "2026-11-25T22:35:21Z",
-      "updated_at": "2026-11-26T03:32:21Z"
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "cartao de credito",
+        "endividamento",
+        "bancos",
+        "economia"
+      ]
     },
     {
       "slug": "senado-aprova-formalizacao-forca-nacional-sus",
@@ -740,37 +742,144 @@
       ]
     }
   ],
+  "temas_curadoria": [
+    {
+      "slug": "tensao-israel-ira-ameaca-regional",
+      "titulo_tema": "Escalada de tensões entre Israel e Irã",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 95,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-27T04:20:35Z",
+      "palavras_chave_busca": [
+        "israel",
+        "irã",
+        "benjamin netanyahu",
+        "gadi eisenkot",
+        "conflito oriente médio",
+        "petróleo"
+      ],
+      "gatilho_vitrine": "Acompanhe o risco de um novo conflito direto entre Israel e Irã e seus reflexos nos preços globais de energia.",
+      "sintese_nerd": "O impasse entre a ala militar israelense e o governo Netanyahu sobre ataques ao Irã coloca o Oriente Médio em alerta máximo. A instabilidade ameaça a segurança energética global e pode impactar o preço do barril de petróleo.",
+      "data_publicacao": "2026-11-26T04:20:35Z",
+      "updated_at": "2026-11-26T04:20:35Z"
+    },
+    {
+      "slug": "orcamento-2027-revisao-receita",
+      "titulo_tema": "Revisão do Orçamento 2027 e impacto fiscal",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Politica"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 92,
+      "ttl_horas": 72,
+      "expires_at": "2026-11-29T04:20:35Z",
+      "palavras_chave_busca": [
+        "orçamento 2027",
+        "reforma tributária",
+        "pib",
+        "royalties petróleo",
+        "meta fiscal",
+        "congresso nacional"
+      ],
+      "gatilho_vitrine": "Entenda como a revisão das receitas orçamentárias reflete as mudanças na economia brasileira para 2027.",
+      "sintese_nerd": "A comissão orçamentária elevou a estimativa de receita em R$ 37,1 bilhões, incorporando a reforma tributária e ajustes nas projeções do PIB. O movimento reflete a tentativa do governo de equilibrar as contas diante de um cenário de crescimento econômico mais moderado.",
+      "data_publicacao": "2026-11-26T04:20:35Z",
+      "updated_at": "2026-11-26T04:20:35Z"
+    },
+    {
+      "slug": "crime-organizado-mapa-faccoes",
+      "titulo_tema": "Panorama do crime organizado no Brasil",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Politica",
+      "categorias_cruzadas": [
+        "Cultura"
+      ],
+      "rota_editoria": "/politica",
+      "relevancia_score": 88,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-28T04:20:35Z",
+      "palavras_chave_busca": [
+        "segurança pública",
+        "abin",
+        "facções criminosas",
+        "pcc",
+        "crime organizado",
+        "inteligência"
+      ],
+      "gatilho_vitrine": "Analise o novo levantamento da Abin sobre a expansão das facções criminosas no Brasil nas últimas duas décadas.",
+      "sintese_nerd": "O relatório inédito da Abin mapeia a evolução de 31 facções criminosas, evidenciando a capilaridade do crime organizado no território nacional. O dado é crucial para o debate sobre políticas de segurança pública e inteligência estatal.",
+      "data_publicacao": "2026-11-26T04:20:35Z",
+      "updated_at": "2026-11-26T04:20:35Z"
+    },
+    {
+      "slug": "tarifas-trump-brasil-acucar-aeronaves",
+      "titulo_tema": "Tarifas de Trump sobre açúcar e aeronaves brasileiras",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Politica"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 98,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-28T04:20:35Z",
+      "palavras_chave_busca": [
+        "donald trump",
+        "tarifas de importação",
+        "agronegócio brasileiro",
+        "setor aéreo",
+        "protecionismo eua",
+        "balança comercial"
+      ],
+      "gatilho_vitrine": "Analise o impacto das novas tarifas protecionistas dos EUA na economia brasileira e as possíveis respostas diplomáticas.",
+      "sintese_nerd": "O governo Trump anunciou novas tarifas sobre açúcar e aeronaves brasileiras sob o pretexto de proteger produtores locais. A medida pressiona a balança comercial brasileira e exige uma resposta diplomática estratégica em um cenário de crescente protecionismo global.",
+      "data_publicacao": "2026-11-26T02:00:40Z",
+      "updated_at": "2026-11-26T04:20:35Z"
+    }
+  ],
   "noticias_quentes": [
     {
       "slug": "camara-aprova-deserdacao-por-interdicao-abusiva-idosos",
-      "titulo_curto": "Câmara aprova projeto que prevê deserdação por interdição abusiva de idosos",
-      "resumo_pulso": "A Câmara dos Deputados aprovou projeto de lei que estabelece a perda do direito à herança para quem tentar interditar idosos com o objetivo de desviar patrimônio. A medida, de autoria do deputado Eriberto Medeiros, visa combater a violência patrimonial.",
-      "impacto_pratico": null,
       "categoria": "Sociedade_Cultura",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "urgencia_score": 85,
-      "relevancia_score": 88,
-      "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 12,
-      "veiculos_origem": [
-        "G1 Política"
-      ],
+      "expires_at": "2026-11-27T03:32:21Z",
+      "updated_at": "2026-11-26T03:32:21Z",
       "fontes_urls": [
         "https://g1.globo.com/politica/noticia/2026/11/26/heranca-deserdacao-curatela-idosos-camara.ghtml"
       ],
+      "resumo_pulso": "A Câmara dos Deputados aprovou projeto de lei que estabelece a perda do direito à herança para quem tentar interditar idosos com o objetivo de desviar patrimônio. A medida, de autoria do deputado Eriberto Medeiros, visa combater a violência patrimonial.",
+      "titulo_curto": "Câmara aprova projeto que prevê deserdação por interdição abusiva de idosos",
       "palavras_chave": [
         "camara",
         "idosos",
         "heranca",
         "lei"
       ],
+      "urgencia_score": 85,
       "data_publicacao": "2026-11-26T03:00:00Z",
-      "links_internos_relacionados": [],
-      "expires_at": "2026-11-27T03:32:21Z",
-      "updated_at": "2026-11-26T03:32:21Z"
+      "impacto_pratico": null,
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "G1 Política"
+      ],
+      "relevancia_score": 88,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "links_internos_relacionados": []
     },
     {
       "slug": "premio-mulheres-inovadoras-pesquisadoras-amazonia",
@@ -922,40 +1031,40 @@
     },
     {
       "slug": "cmn-medidas-endividamento-familias",
-      "titulo_curto": "Bancos deverão reduzir limite de crédito rotativo para clientes inadimplentes",
-      "resumo_pulso": "Conforme apuração do G1, a partir de julho de 2027, instituições financeiras serão obrigadas a reduzir gradualmente o limite do cartão de crédito para clientes com uso recorrente do rotativo. A medida visa conter o endividamento das famílias brasileiras.",
-      "impacto_pratico": "Consumidores com uso frequente do rotativo terão limites reduzidos, exigindo maior controle financeiro.",
       "categoria": "Economia_Comercio",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "urgencia_score": 89,
-      "relevancia_score": 92,
-      "nivel_confianca": "alta",
       "ttl_horas": 18,
-      "horas_em_destaque": 12,
-      "veiculos_origem": [
-        "G1 Economia"
-      ],
+      "expires_at": "2026-11-26T22:35:21Z",
+      "updated_at": "2026-11-26T03:32:21Z",
       "fontes_urls": [
         "https://g1.globo.com/economia/noticia/2026/11/26/limite-do-cartao-de-quem-usa-o-credito-rotativo-com-frequencia-sera-reduzido-entenda-a-mudanca.ghtml"
       ],
+      "resumo_pulso": "Conforme apuração do G1, a partir de julho de 2027, instituições financeiras serão obrigadas a reduzir gradualmente o limite do cartão de crédito para clientes com uso recorrente do rotativo. A medida visa conter o endividamento das famílias brasileiras.",
+      "titulo_curto": "Bancos deverão reduzir limite de crédito rotativo para clientes inadimplentes",
       "palavras_chave": [
         "cartao de credito",
         "endividamento",
         "bancos",
         "economia"
       ],
+      "urgencia_score": 89,
       "data_publicacao": "2026-11-25T22:35:21Z",
+      "impacto_pratico": "Consumidores com uso frequente do rotativo terão limites reduzidos, exigindo maior controle financeiro.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "G1 Economia"
+      ],
+      "relevancia_score": 92,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "BR"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "O que é inflação?",
           "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
-          "motivo_conexao": "Explica como o custo do crédito e juros afetam o poder de compra das famílias."
+          "motivo_conexao": "Explica como o custo do crédito e juros afetam o poder de compra das famílias.",
+          "titulo_existente": "O que é inflação?"
         }
-      ],
-      "expires_at": "2026-11-26T22:35:21Z",
-      "updated_at": "2026-11-26T03:32:21Z"
+      ]
     },
     {
       "slug": "senado-aprova-formalizacao-forca-nacional-sus",
@@ -1321,111 +1430,6 @@
         "BR"
       ],
       "links_internos_relacionados": []
-    }
-  ],
-  "temas_curadoria": [
-    {
-      "slug": "tarifas-trump-impacto-brasil",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-28T02:00:40Z",
-      "updated_at": "2026-11-26T02:00:40Z",
-      "titulo_tema": "Tarifas de Trump sobre açúcar e aeronaves brasileiras",
-      "sintese_nerd": "O governo Trump propôs elevar tarifas sobre açúcar e aeronaves brasileiras sob o pretexto de proteger produtores locais. A medida sinaliza um endurecimento protecionista que pode pressionar o câmbio e exigir resposta diplomática do Itamaraty.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-26T02:00:40Z",
-      "gatilho_vitrine": "Analise o impacto das novas barreiras comerciais dos EUA na balança comercial brasileira e no agronegócio.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 95,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Geopolitica_Radar",
-        "Politica"
-      ],
-      "palavras_chave_busca": [
-        "donald trump",
-        "tarifas de importacao",
-        "comercio exterior",
-        "acucar brasileiro",
-        "setor aeronautico",
-        "protecionismo eua"
-      ]
-    },
-    {
-      "slug": "tensao-ucrania-russia-base-aerea",
-      "status": "novo",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-27T02:00:40Z",
-      "updated_at": "2026-11-26T02:00:40Z",
-      "titulo_tema": "Ataque ucraniano a base aérea russa em Nizhny Novgorod",
-      "sintese_nerd": "O ataque ucraniano a uma base aérea profunda em território russo demonstra uma nova capacidade de projeção de força. O evento eleva a tensão geopolítica e pode impactar mercados de commodities energéticas.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-26T02:00:40Z",
-      "gatilho_vitrine": "Acompanhe a escalada do conflito no Leste Europeu e seus reflexos na segurança energética e global.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 90,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia"
-      ],
-      "palavras_chave_busca": [
-        "guerra na ucrania",
-        "russia",
-        "nizhny novgorod",
-        "conflito militar",
-        "geopolitica global"
-      ]
-    },
-    {
-      "slug": "cmn-bc-endividamento-familias",
-      "status": "novo",
-      "ttl_horas": 72,
-      "expires_at": "2026-11-29T02:00:40Z",
-      "updated_at": "2026-11-26T02:00:40Z",
-      "titulo_tema": "Novas medidas do CMN e BC para conter endividamento das famílias",
-      "sintese_nerd": "O CMN e o BC endureceram critérios para concessão de crédito visando frear o endividamento das famílias. A medida busca estabilidade macroeconômica, mas pode reduzir a liquidez no curto prazo.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-26T02:00:40Z",
-      "gatilho_vitrine": "Entenda como as novas regras de crédito impactam o consumo e a saúde financeira das famílias brasileiras.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 88,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Politica"
-      ],
-      "palavras_chave_busca": [
-        "cmn",
-        "banco central",
-        "endividamento",
-        "credito",
-        "economia brasileira",
-        "juros"
-      ]
-    },
-    {
-      "slug": "federalizacao-brb-cenario-politico",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-28T02:00:40Z",
-      "updated_at": "2026-11-26T02:00:40Z",
-      "titulo_tema": "Federalização do BRB ganha viabilidade após eleições",
-      "sintese_nerd": "A sinalização de viabilidade para a federalização do BRB após as eleições altera o xadrez político local e a estrutura do banco. O movimento exige atenção sobre a governança e o futuro da instituição.",
-      "rota_editoria": "/politica",
-      "data_publicacao": "2026-11-26T02:00:40Z",
-      "gatilho_vitrine": "Acompanhe os desdobramentos da possível federalização do BRB e seus impactos no sistema financeiro regional.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 85,
-      "categoria_primaria": "Politica",
-      "categorias_cruzadas": [
-        "Economia"
-      ],
-      "palavras_chave_busca": [
-        "brb",
-        "federalizacao",
-        "banco de brasilia",
-        "politica distrital",
-        "setor bancario"
-      ]
     }
   ]
 }
