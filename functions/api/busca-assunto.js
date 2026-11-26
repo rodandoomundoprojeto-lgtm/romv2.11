@@ -151,13 +151,21 @@ function palavrasSimilares(qRaw, cRaw) {
 const STOPWORDS_BUSCA = new Set([
   'de', 'da', 'do', 'das', 'dos', 'e', 'em', 'no', 'na', 'nos', 'nas', 'o', 'a', 'os', 'as',
   'para', 'pra', 'com', 'por', 'pelo', 'pela', 'pelos', 'pelas', 'que', 'se', 'um', 'uma', 'uns', 'umas',
-  'sobre', 'sob', 'ao', 'aos', 'aqui', 'ali', 'como', 'mais', 'mas', 'ou', 'seus', 'suas', 'seu', 'sua',
-  'antes', 'apos', 'entre', 'contra', 'desde', 'durante', 'ate', 'sem', 'disse', 'diz', 'fala', 'veja',
+  'sobre', 'sob', 'ao', 'aos', 'aqui', 'ali', 'como', 'mais', 'menos', 'quase', 'cerca', 'mas', 'ou', 'seus', 'suas', 'seu', 'sua',
+  'antes', 'apos', 'entre', 'contra', 'desde', 'durante', 'ate', 'sem', 'disse', 'diz', 'dizem', 'fala', 'veja', 'saiba', 'entenda',
+  'pega', 'pegou', 'pegam', 'deixa', 'deixou', 'deixam', 'faz', 'fez', 'fazem', 'fica', 'ficou', 'ficam',
+  'leva', 'levou', 'levam', 'causa', 'causou', 'causam', 'provoca', 'provocou', 'registra', 'registrou',
+  'atinge', 'atingiu', 'chega', 'chegou', 'passa', 'passou', 'vira', 'virou', 'entra', 'entrou', 'sai', 'saiu',
+  'segue', 'seguiu', 'pode', 'podem', 'deve', 'devem', 'vai', 'vao', 'foi', 'foram', 'esta', 'estao', 'tem', 'teve',
+  'afirma', 'afirmou', 'anuncia', 'anunciou', 'aponta', 'apontou', 'mostra', 'mostrou', 'revela', 'revelou', 'pede', 'pediu', 'cobra', 'cobrou',
   'novo', 'nova', 'novos', 'novas', 'hoje', 'ontem', 'agora', 'onde', 'quando', 'porque', 'isso', 'aquilo',
   'este', 'esta', 'estes', 'estas', 'esse', 'essa', 'esses', 'essas', 'aquele', 'aquela',
-  'the', 'of', 'and', 'in', 'on', 'at', 'to', 'for', 'with', 'by', 'about',
-  'la', 'el', 'los', 'las', 'del', 'al', 'en', 'con', 'un', 'una',
-  'le', 'les', 'des', 'du', 'et', 'und', 'mit', 'von'
+  'the', 'of', 'and', 'in', 'on', 'at', 'to', 'for', 'with', 'by', 'about', 'from', 'into', 'over', 'after', 'amid', 'least', 'more', 'than',
+  'leaves', 'left', 'catches', 'caught', 'says', 'said', 'has', 'have', 'had', 'was', 'were', 'are', 'is', 'been', 'will', 'would', 'could',
+  'la', 'el', 'los', 'las', 'del', 'al', 'en', 'con', 'un', 'una', 'tras', 'ante', 'bajo',
+  'le', 'les', 'des', 'du', 'et', 'dans', 'sur', 'avec', 'pour', 'par', 'plus', 'moins', 'apres',
+  'und', 'mit', 'von', 'auf', 'fur', 'uber', 'nach', 'bei', 'aus', 'einem', 'einer', 'mindestens',
+  'في', 'فى', 'من', 'على', 'إلى', 'الى', 'عن', 'مع', 'بعد', 'قبل', 'أقل', 'اقل', 'أكثر', 'اكثر', 'نحو', 'ما', 'لا', 'يقل', 'شخصا', 'شخصًا'
 ]);
 
 const ENTIDADES_COMPOSTAS = [
@@ -263,10 +271,13 @@ const PALAVRAS_COMUNS_INTACTAS = new Set([
   'fome', 'pobreza', 'riqueza', 'petroleo', 'gas', 'ouro', 'soja', 'carne', 'cafe', 'crime',
   'policia', 'justica', 'lei', 'leis', 'direito', 'direitos', 'estado', 'estados', 'pais', 'paises', 'cidade',
   'empresa', 'empresas', 'mercado', 'mercados', 'industria', 'comércio', 'ciencia', 'ambiente', 'floresta',
-  'inflacao', 'orcamento', 'eleicao', 'eleicoes', 'sancoes', 'tarifa', 'tarifas', 'acordos', 'tratado',
-  'exercito', 'marinha', 'aeronautica', 'armas', 'nuclear', 'espaco', 'satelite', 'internet', 'acoes',
-  'bolsa', 'investimento', 'investimentos', 'divida', 'pib', 'credito', 'financas', 'trabalho', 'salario',
-  'greve', 'protesto', 'protestos', 'manifestacao', 'crise', 'ataque', 'ataques', 'paz', 'cessar-fogo',
+  'inflacao', 'orcamento', 'eleicao', 'eleicoes', 'sancoes', 'tarifa', 'tarifas', 'tarifaco', 'acordos', 'tratado',
+  'exercito', 'marinha', 'aeronautica', 'armas', 'nuclear', 'espaco', 'satelite', 'satelites', 'internet', 'acoes',
+  'bolsa', 'bolsas', 'investimento', 'investimentos', 'divida', 'pib', 'credito', 'financas', 'trabalho', 'salario',
+  'greve', 'protesto', 'protestos', 'manifestacao', 'crise', 'ataque', 'ataques', 'paz', 'cessar-fogo', 'tregua',
+  'caminhao', 'tanque', 'caminhao-tanque', 'combustivel', 'fogo', 'incendio', 'chamas', 'explosao', 'acidente', 'colisao',
+  'morte', 'mortes', 'mortos', 'feridos', 'vitimas', 'terremoto', 'sismo', 'enchente', 'inundacao', 'bombardeio', 'misseis', 'drones', 'refens',
+  'primeiro-ministro', 'porta-avioes', 'vice-presidente', 'meio-ambiente',
   'fronteiras', 'imigrantes', 'refugiados', 'mulheres', 'jovens', 'infancia', 'moradia', 'transporte',
   'antes', 'apos', 'sobre', 'entre', 'contra', 'desde', 'durante', 'ate', 'sem', 'sob', 'disse', 'diz',
   'fala', 'veja', 'novo', 'nova', 'hoje', 'ontem', 'agora', 'como', 'onde', 'quando', 'porque', 'isso', 'aquilo'
@@ -276,24 +287,42 @@ function ehTokenCJK(str) {
   return /[\u3040-\u30ff\u3400-\u9fff\uac00-\ud7af]/u.test(String(str || ''));
 }
 
+function ehTokenNumericoPuro(str) {
+  const s = String(str || '').trim();
+  if (!s) return false;
+  return /^\d+(?:[.,]\d+)?(?:mn|bn|m|b|k|mil|bi|tri|%|º|ª|th|st|nd|rd)?$/i.test(s);
+}
+
 const ALIASES_PAIS_BUSCA = {
   CL: ['chile', 'chileno', 'chilena', 'chilenos', 'chilenas'],
   BR: ['brasil', 'brazil', 'brasileiro', 'brasileira', 'brasileiros', 'brasileiras', 'brazilian'],
   US: ['estados unidos', 'eua', 'usa', 'united states', 'americano', 'americana', 'americanos', 'americanas', 'american', 'norte americano', 'norte americana'],
   AR: ['argentina', 'argentino', 'argentinos', 'argentinas', 'argentine'],
-  DE: ['alemanha', 'germany', 'deutschland', 'alemao', 'alema', 'alemaes', 'alemas', 'german'],
-  FR: ['franca', 'france', 'frances', 'francesa', 'franceses', 'francesas', 'french'],
+  DE: ['alemanha', 'germany', 'deutschland', 'alemao', 'alema', 'alemaes', 'alemas', 'german', 'deutsche', 'deutschen'],
+  FR: ['franca', 'france', 'frances', 'francesa', 'franceses', 'francesas', 'french', 'francais', 'francaise'],
   GB: ['reino unido', 'united kingdom', 'uk', 'inglaterra', 'england', 'britanico', 'britanica', 'britanicos', 'britanicas', 'british'],
   ES: ['espanha', 'spain', 'espana', 'espanhol', 'espanhola', 'espanhois', 'espanholas', 'spanish'],
   IT: ['italia', 'italy', 'italiano', 'italiana', 'italianos', 'italianas', 'italian'],
   PT: ['portugal', 'portugues', 'portuguesa', 'portugueses', 'portuguesas', 'portuguese'],
-  JP: ['japao', 'japan', 'japones', 'japonesa', 'japoneses', 'japonesas', 'japanese'],
-  CN: ['china', 'chines', 'chinesa', 'chineses', 'chinesas', 'chinese'],
-  KR: ['coreia do sul', 'south korea', 'sul coreano', 'sul coreana', 'coreano', 'coreana', 'korean'],
-  RU: ['russia', 'russo', 'russa', 'russos', 'russas', 'russian'],
-  UA: ['ucrania', 'ukraine', 'ucraniano', 'ucraniana', 'ucranianos', 'ucranianas', 'ukrainian'],
-  IL: ['israel', 'israelense', 'israelenses', 'israeli'],
-  IR: ['ira', 'iran', 'iraniano', 'iraniana', 'iranianos', 'iranianas', 'iranian'],
+  JP: ['japao', 'japan', 'japones', 'japonesa', 'japoneses', 'japonesas', 'japanese', '日本'],
+  CN: ['china', 'chines', 'chinesa', 'chineses', 'chinesas', 'chinese', '中国', '中國'],
+  KR: ['coreia do sul', 'south korea', 'sul coreano', 'sul coreana', 'coreano', 'coreana', 'korean', '한국'],
+  KP: ['coreia do norte', 'north korea', 'norte coreano', 'norte coreana', '북한'],
+  RU: ['russia', 'russo', 'russa', 'russos', 'russas', 'russian', 'россия', 'российский'],
+  UA: ['ucrania', 'ukraine', 'ucraniano', 'ucraniana', 'ucranianos', 'ucranianas', 'ukrainian', 'україна', 'украина'],
+  IL: ['israel', 'israelense', 'israelenses', 'israeli', 'ישראל', 'إسرائيل'],
+  PS: ['palestina', 'palestine', 'palestino', 'palestinos', 'palestinian', 'فلسطين'],
+  IR: ['ira', 'iran', 'iraniano', 'iraniana', 'iranianos', 'iranianas', 'iranian', 'ایران', 'إيران'],
+  IQ: ['iraque', 'iraq', 'iraquiano', 'iraqi', 'العراق'],
+  LB: ['libano', 'lebanon', 'libanes', 'lebanese', 'لبنان'],
+  SY: ['siria', 'syria', 'sirio', 'syrian', 'سوريا'],
+  JO: ['jordania', 'jordan', 'jordaniano', 'jordanian', 'الأردن'],
+  YE: ['iemen', 'yemen', 'iemenita', 'yemeni', 'اليمن'],
+  AE: ['emirados arabes', 'emirados', 'uae', 'emirati', 'الإمارات'],
+  QA: ['catar', 'qatar', 'catari', 'qatari', 'قطر'],
+  KW: ['kuwait', 'koweit', 'الكويت'],
+  OM: ['oma', 'oman', 'عمان'],
+  BH: ['bahrein', 'bahrain', 'البحرين'],
   MX: ['mexico', 'mexicano', 'mexicana', 'mexicanos', 'mexicanas', 'mexican'],
   CO: ['colombia', 'colombiano', 'colombiana', 'colombianos', 'colombianas', 'colombian'],
   VE: ['venezuela', 'venezuelano', 'venezuelana', 'venezuelanos', 'venezuelanas', 'venezuelan'],
@@ -304,36 +333,43 @@ const ALIASES_PAIS_BUSCA = {
   BO: ['bolivia', 'boliviano', 'boliviana', 'bolivianos', 'bolivianas', 'bolivian'],
   CA: ['canada', 'canadense', 'canadenses', 'canadian'],
   AU: ['australia', 'australiano', 'australiana', 'australianos', 'australianas', 'australian'],
-  IN: ['india', 'indiano', 'indiana', 'indianos', 'indianas', 'indian'],
+  IN: ['india', 'indiano', 'indiana', 'indianos', 'indianas', 'indian', 'भारत'],
   ZA: ['africa do sul', 'south africa', 'sul africano', 'sul africana', 'south african'],
   TR: ['turquia', 'turkey', 'turkiye', 'turco', 'turca', 'turcos', 'turcas', 'turkish'],
-  SA: ['arabia saudita', 'saudi arabia', 'saudita', 'sauditas', 'saudi'],
-  EG: ['egito', 'egypt', 'egipcio', 'egipcia', 'egipcios', 'egipcias', 'egyptian'],
+  SA: ['arabia saudita', 'saudi arabia', 'saudita', 'sauditas', 'saudi', 'السعودية'],
+  EG: ['egito', 'egypt', 'egipcio', 'egipcia', 'egipcios', 'egipcias', 'egyptian', 'مصر', 'مصري', 'مصرية'],
+  SD: ['sudao', 'sudan', 'sudanes', 'sudanese', 'السودان'],
+  LY: ['libia', 'libya', 'libio', 'libyan', 'ليبيا'],
+  TN: ['tunisia', 'tunisiano', 'tunisian', 'تونس'],
+  DZ: ['argelia', 'algeria', 'argelino', 'algerian', 'الجزائر'],
   PL: ['polonia', 'poland', 'polska', 'polones', 'polonesa', 'poloneses', 'polonesas', 'polish'],
   NL: ['paises baixos', 'holanda', 'netherlands', 'holland', 'holandes', 'holandesa', 'dutch'],
   BE: ['belgica', 'belgium', 'belga', 'belgas', 'belgian'],
-  CH: ['suica', 'switzerland', 'suico', 'suica', 'suicos', 'swiss'],
-  SE: ['suecia', 'sweden', 'sueco', 'sueca', 'suecos', 'swedish'],
-  NO: ['noruega', 'norway', 'noruegues', 'norueguesa', 'noruegueses', 'norwegian'],
-  DK: ['dinamarca', 'denmark', 'dinamarques', 'dinamarquesa', 'danish'],
-  FI: ['finlandia', 'finland', 'finlandes', 'finlandesa', 'finnish'],
-  GR: ['grecia', 'greece', 'grego', 'grega', 'gregos', 'greek'],
+  CH: ['suica', 'switzerland', 'suico', 'suica', 'suicos', 'swiss', 'schweiz', 'suisse'],
+  SE: ['suecia', 'sweden', 'sueco', 'sueca', 'suecos', 'swedish', 'sverige'],
+  NO: ['noruega', 'norway', 'noruegues', 'norueguesa', 'noruegueses', 'norwegian', 'norge'],
+  DK: ['dinamarca', 'denmark', 'dinamarques', 'dinamarquesa', 'danish', 'danmark'],
+  FI: ['finlandia', 'finland', 'finlandes', 'finlandesa', 'finnish', 'suomi'],
+  GR: ['grecia', 'greece', 'grego', 'grega', 'gregos', 'greek', 'ελλάδα'],
   CZ: ['republica tcheca', 'tchequia', 'czechia', 'czech republic', 'tcheco', 'tcheca'],
   HU: ['hungria', 'hungary', 'hungaro', 'hungara', 'hungarian'],
   RO: ['romenia', 'romania', 'romeno', 'romena', 'romanian'],
-  AT: ['austria', 'austriaco', 'austriaca', 'austrian'],
+  AT: ['austria', 'austriaco', 'austriaca', 'austrian', 'osterreich'],
   IE: ['irlanda', 'ireland', 'irlandes', 'irlandesa', 'irish'],
   NZ: ['nova zelandia', 'new zealand', 'neozelandes', 'neozelandesa'],
   ID: ['indonesia', 'indonesio', 'indonesia', 'indonesian'],
-  TH: ['tailandia', 'thailand', 'tailandes', 'tailandesa', 'thai'],
+  MY: ['malasia', 'malaysia', 'malaio', 'malaysian'],
+  SG: ['singapura', 'cingapura', 'singapore', 'singaporean'],
+  TH: ['tailandia', 'thailand', 'tailandes', 'tailandesa', 'thai', 'ไทย'],
   VN: ['vietna', 'vietnam', 'vietnamita', 'vietnamese'],
   PH: ['filipinas', 'philippines', 'filipino', 'filipina', 'filipinos'],
-  TW: ['taiwan', 'taiwanes', 'taiwanesa', 'taiwanese'],
-  HK: ['hong kong'],
-  PK: ['paquistao', 'pakistan', 'paquistanes', 'paquistanesa', 'pakistani'],
+  TW: ['taiwan', 'taiwanes', 'taiwanesa', 'taiwanese', '台灣', '台湾'],
+  HK: ['hong kong', '香港'],
+  PK: ['paquistao', 'pakistan', 'paquistanes', 'paquistanesa', 'pakistani', 'پاکستان'],
+  BD: ['bangladesh', 'banglades', 'bengali', 'বাংলাদেশ'],
   NG: ['nigeria', 'nigeriano', 'nigeriana', 'nigerianos', 'nigerian'],
   KE: ['quenia', 'kenya', 'queniano', 'queniana', 'kenyan'],
-  MA: ['marrocos', 'morocco', 'marroquino', 'marroquina', 'moroccan'],
+  MA: ['marrocos', 'morocco', 'marroquino', 'marroquina', 'moroccan', 'maroc', 'المغرب'],
 };
 
 function desacoplarPaisDaConsulta(termo, countryCode, countryName) {
@@ -451,26 +487,35 @@ function extrairTermoResilienteConsulta(termo) {
   if (!termo) return '';
   const limpo = String(termo || '')
     .replace(/[«»""''„”]/g, '')
-    .replace(/[-–—|:,;!?()]/g, ' ')
+    .replace(/(^|\s)-+(\s|$)/g, ' ')
+    .replace(/[–—|:,;!?()]/g, ' ')
+    .replace(/\s+/g, ' ')
     .trim();
   const palavras = limpo.split(/\s+/).filter(Boolean);
 
-  if (palavras.length <= 3) return limpo;
+  if (palavras.length <= 4) {
+    const semStop = palavras.filter((p) => {
+      const n = normalizar(p);
+      return n && !STOPWORDS_BUSCA.has(n) && !ehTokenNumericoPuro(n);
+    });
+    return semStop.length > 0 ? semStop.join(' ') : limpo;
+  }
 
   const significativas = palavras.filter((p) => {
     const n = normalizar(p);
-    if (!n || STOPWORDS_BUSCA.has(n)) return false;
+    if (!n || STOPWORDS_BUSCA.has(n) || ehTokenNumericoPuro(n)) return false;
     if (/^[A-Z0-9]{2,5}$/.test(p) || ehTokenCJK(p)) return n.length >= 2;
-    return n.length >= 3;
+    return n.length >= 2;
   });
 
-  if (significativas.length <= 3 && significativas.length > 0) {
+  if (significativas.length <= 4 && significativas.length > 0) {
     return significativas.join(' ');
   }
 
   const pontuadas = significativas.map((p, idx) => {
     const n = normalizar(p);
     let peso = 0;
+    if (/\p{L}-\p{L}/u.test(p)) peso += 6;
     if (/^[A-ZÀ-Ý]/.test(p)) peso += 5;
     if (VOCABULARIO_CANONICO.has(n)) peso += 6;
     if (/^[A-Z0-9]{2,5}$/.test(p)) peso += 7;
@@ -498,7 +543,7 @@ function corrigirTermoEstatico(rawQ) {
   if (palavrasOrig.length > 3) {
     const corrigidas = palavrasOrig.map((pal, idx) => {
       const n = palavrasNorm[idx];
-      if (!n || n.length < 3 || STOPWORDS_BUSCA.has(n) || PALAVRAS_COMUNS_INTACTAS.has(n)) return pal;
+      if (!n || n.length < 3 || /\p{L}-\p{L}/u.test(pal) || STOPWORDS_BUSCA.has(n) || PALAVRAS_COMUNS_INTACTAS.has(n)) return pal;
       if (/^[A-ZÀ-Ý0-9]{2,6}$/.test(pal)) return pal;
       if (MAPA_CORRECOES_DIRETAS[n]) return MAPA_CORRECOES_DIRETAS[n];
       if (VOCABULARIO_CANONICO.has(n)) return VOCABULARIO_CANONICO.get(n) || pal;
@@ -562,7 +607,7 @@ function corrigirTermoEstatico(rawQ) {
 
   const corrigidas = palavrasOrig.map((pal, idx) => {
     const n = palavrasNorm[idx];
-    if (!n || n.length < 3 || STOPWORDS_BUSCA.has(n) || PALAVRAS_COMUNS_INTACTAS.has(n)) return pal;
+    if (!n || n.length < 3 || /\p{L}-\p{L}/u.test(pal) || STOPWORDS_BUSCA.has(n) || PALAVRAS_COMUNS_INTACTAS.has(n)) return pal;
     if (/^[A-ZÀ-Ý0-9]{2,6}$/.test(pal)) return pal;
 
     if (MAPA_CORRECOES_DIRETAS[n]) {
@@ -840,158 +885,612 @@ function parseRssItems(xml, nomeVeiculo) {
   return items;
 }
 
-function tokenCombinaNoTexto(tk, alvo, palavrasAlvo) {
-  if (!tk) return true;
-  if (STOPWORDS_BUSCA.has(tk)) return true;
-  if (alvo.includes(tk)) return true;
-  if (tk.length < 5) return false;
-  for (let i = 0; i < palavrasAlvo.length; i++) {
-    const w = palavrasAlvo[i];
-    if (w.length < 4) continue;
-    if (w.startsWith(tk) || tk.startsWith(w)) {
-      if (Math.min(w.length, tk.length) >= 5) return true;
+function limparMancheteContexto(s) {
+  return String(s || '')
+    .replace(/[\u0000-\u001f\u007f<>{}\[\]`]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim()
+    .slice(0, 240);
+}
+
+function ehScriptSemitico(str) {
+  return /[\u0590-\u05ff\u0600-\u06ff\u0750-\u077f\u08a0-\u08ff]/u.test(String(str || ''));
+}
+
+function normalizarRaizSemitica(w) {
+  let s = String(w || '').trim();
+  if (!s) return '';
+  // Remove tashkeel/diacríticos árabes e hebraicos e tatweel
+  s = s.replace(/[\u064b-\u065f\u0670\u0640\u0591-\u05c7]/gu, '');
+  // Unifica alef/ya/ta-marbuta em árabe para comparação resiliente
+  s = s
+    .replace(/[أإآٱ]/g, 'ا')
+    .replace(/ى/g, 'ي')
+    .replace(/ؤ/g, 'و')
+    .replace(/ئ/g, 'ي');
+  return s;
+}
+
+function removerCliticoSemitico(w) {
+  let s = normalizarRaizSemitica(w);
+  if (s.length < 4) return s;
+  // Prefixos clíticos árabes comuns: وال، بال، كال، فال، لل، ال، و، ب، ل، ف
+  if (/^(?:وال|بال|كال|فال)/.test(s) && s.length >= 6) s = s.slice(3);
+  else if (/^(?:ال|لل)/.test(s) && s.length >= 5) s = s.slice(2);
+  else if (/^[وبلفك]ال/.test(s) && s.length >= 6) s = s.slice(3);
+  else if (/^[وبلف]/.test(s) && s.length >= 5) s = s.slice(1);
+  // Prefixos clíticos hebraicos comuns: וה، בה، לה، מה، שה، ה، ו، ב، ל، מ، ש
+  else if (/^(?:וה|בה|לה|מה|שה)/.test(s) && s.length >= 5) s = s.slice(2);
+  else if (/^[הובלמשכ]/.test(s) && s.length >= 5) s = s.slice(1);
+  // Sufixo feminino/plural leve em árabe (ة / ه)
+  if (s.length >= 4 && /[ةه]$/.test(s)) s = s.slice(0, -1);
+  return s;
+}
+
+function tokenCasaScriptSemitico(tkRaw, alvoNorm, palavrasAlvo) {
+  const tk = normalizarRaizSemitica(tkRaw);
+  if (!tk || tk.length < 2) return false;
+  const alvoSem = normalizarRaizSemitica(alvoNorm);
+  if (tk.includes(' ')) {
+    if (alvoSem.includes(tk)) return true;
+    const partes = tk.split(/\s+/).filter((p) => p.length >= 2);
+    if (partes.length >= 2) {
+      return partes.every((p) => tokenCasaScriptSemitico(p, alvoSem, palavrasAlvo));
     }
-    if (palavrasSimilares(tk, w).match) return true;
+    return false;
+  }
+  const raizTk = removerCliticoSemitico(tk);
+  for (let i = 0; i < palavrasAlvo.length; i++) {
+    const w = normalizarRaizSemitica(palavrasAlvo[i]);
+    if (!w) continue;
+    if (w === tk || w === raizTk) return true;
+    const raizW = removerCliticoSemitico(w);
+    if (raizTk.length >= 3 && raizW === raizTk) return true;
+    if (raizTk.length >= 4 && (raizW.startsWith(raizTk) || raizTk.startsWith(raizW))) return true;
   }
   return false;
 }
 
-function tokenCasaComLimite(tk, alvo, palavrasAlvo) {
+function tokenCombinaNoTexto(tk, alvo, palavrasAlvo) {
   if (!tk) return false;
+  if (STOPWORDS_BUSCA.has(tk) || ehTokenNumericoPuro(tk)) return false;
+  if (ehScriptSemitico(tk)) {
+    return tokenCasaScriptSemitico(tk, alvo, palavrasAlvo);
+  }
   if (ehTokenCJK(tk)) {
     return alvo.includes(tk);
+  }
+  if (tk.includes(' ')) {
+    const tkEspaco = tk.replace(/-/g, ' ').replace(/\s+/g, ' ').trim();
+    const alvoEspaco = alvo.replace(/-/g, ' ').replace(/\s+/g, ' ');
+    return alvo.includes(tk) || alvoEspaco.includes(tkEspaco);
+  }
+  if (tk.includes('-')) {
+    const semHifen = tk.replace(/-/g, ' ').trim();
+    const colado = tk.replace(/-/g, '').trim();
+    const alvoEspaco = alvo.replace(/-/g, ' ').replace(/\s+/g, ' ');
+    if (alvo.includes(tk) || alvoEspaco.includes(semHifen) || (colado.length >= 5 && alvo.includes(colado))) {
+      return true;
+    }
+    const partesHifen = semHifen.split(/\s+/).filter((p) => p.length >= 3 && !STOPWORDS_BUSCA.has(p));
+    if (partesHifen.length >= 2 && partesHifen.every((p) => tokenCasaComLimite(p, alvo, palavrasAlvo))) {
+      return true;
+    }
+    return false;
   }
   if (tk.length <= 3) {
     return palavrasAlvo.includes(tk);
   }
-  return alvo.includes(tk) || tokenCombinaNoTexto(tk, alvo, palavrasAlvo);
-}
-
-function pontuarConjuntoLexical(tituloNorm, resumoNorm, palavrasTit, palavrasRes, termoNorm, tokens) {
-  let score = 0;
-  if (termoNorm && tituloNorm.includes(termoNorm)) {
-    score += 140;
-  } else if (termoNorm && resumoNorm.includes(termoNorm)) {
-    score += 55;
-  }
-
-  const relTokens = (tokens || []).filter((tk) => tk.length >= 2 && !STOPWORDS_BUSCA.has(tk));
-  const baseTokens = relTokens.length > 0 ? relTokens : (tokens || []);
-  if (baseTokens.length > 0) {
-    let tTit = 0, tRes = 0;
-    for (const tk of baseTokens) {
-      if (tokenCasaComLimite(tk, tituloNorm, palavrasTit)) tTit++;
-      else if (tokenCasaComLimite(tk, resumoNorm, palavrasRes)) tRes++;
+  if (palavrasAlvo.includes(tk)) return true;
+  if (tk.length < 4) return false;
+  for (let i = 0; i < palavrasAlvo.length; i++) {
+    const w = palavrasAlvo[i];
+    if (w.length < 4) continue;
+    // Plural/flexão direta apenas (NUNCA usar palavrasSimilares fonético aqui para não gerar falsos positivos)
+    if (
+      w === tk + 's' ||
+      tk === w + 's' ||
+      w === tk + 'es' ||
+      tk === w + 'es' ||
+      w === tk + 'n' ||
+      tk === w + 'n' ||
+      w === tk + 'en' ||
+      tk === w + 'en'
+    ) {
+      return true;
     }
-    const fracTit = tTit / baseTokens.length;
-    const fracRes = tRes / baseTokens.length;
-
-    if (tTit === baseTokens.length) score += 90;
-    else score += Math.round(fracTit * 65);
-
-    if (tRes === baseTokens.length) score += 30;
-    else score += Math.round(fracRes * 20);
-  }
-  return score;
-}
-
-function calcularRelevanciaArtigo(item, termoNorm, tokens, tokensOrig = [], topicKey = '', termosExtras = []) {
-  const tituloNorm = normalizar(item.titulo || '');
-  const resumoNorm = normalizar(item.resumo || '');
-  const palavrasTit = tituloNorm.replace(/[^\p{L}\p{N}\s]/gu, ' ').split(/\s+/).filter(Boolean);
-  const palavrasRes = resumoNorm.replace(/[^\p{L}\p{N}\s]/gu, ' ').split(/\s+/).filter(Boolean);
-
-  let score = pontuarConjuntoLexical(tituloNorm, resumoNorm, palavrasTit, palavrasRes, termoNorm, tokens);
-
-  if (Array.isArray(termosExtras) && termosExtras.length > 0) {
-    for (const extra of termosExtras) {
-      if (!extra || !extra.termoNorm) continue;
-      const sExtra = pontuarConjuntoLexical(tituloNorm, resumoNorm, palavrasTit, palavrasRes, extra.termoNorm, extra.tokens || []);
-      if (sExtra > score) score = sExtra;
-    }
-  }
-
-  if (tokensOrig && tokensOrig.length > 0) {
-    let tOrig = 0;
-    for (const tk of tokensOrig) {
-      if (tokenCasaComLimite(tk, tituloNorm, palavrasTit)) tOrig++;
-    }
-    score += Math.round((tOrig / tokensOrig.length) * 20);
-  }
-
-  // Bônus de afinidade temática quando o utilizador está dentro de um tópico específico
-  if (topicKey && TERMOS_CONTEXTO_TOPICO[topicKey]) {
-    const textoCompleto = tituloNorm + ' ' + resumoNorm;
-    const kws = TERMOS_CONTEXTO_TOPICO[topicKey];
-    let matchesTopico = 0;
-    for (const kw of kws) {
-      if (textoCompleto.includes(normalizar(kw))) {
-        matchesTopico++;
-        if (matchesTopico >= 2) break;
-      }
-    }
-    score += matchesTopico * 14;
-  }
-
-  if (item.publicadoEm) {
-    const ts = new Date(item.publicadoEm).getTime();
-    if (!Number.isNaN(ts)) {
-      const horasAtras = Math.max(0, (Date.now() - ts) / (3600 * 1000));
-      if (horasAtras <= 6) score += 35;
-      else if (horasAtras <= 12) score += 25;
-      else if (horasAtras <= 24) score += 15;
-      else if (horasAtras <= 72) score += 8;
-    }
-  }
-
-  return score;
-}
-
-function combinaComTermo(item, termoNorm, tokens, countryTokensSet = null) {
-  if (!termoNorm) return true;
-  const alvo = normalizar((item.titulo || '') + ' ' + (item.resumo || ''));
-  if (!alvo) return false;
-
-  if (ehTokenCJK(termoNorm) && alvo.includes(termoNorm)) return true;
-
-  const palavrasAlvo = alvo.replace(/[^\p{L}\p{N}\s]/gu, ' ').split(/\s+/).filter(Boolean);
-
-  if (!ehTokenCJK(termoNorm) && termoNorm.length <= 3 && !termoNorm.includes(' ')) {
-    return palavrasAlvo.includes(termoNorm);
-  }
-  if (alvo.includes(termoNorm)) return true;
-
-  const tokensRelevantes = (tokens || []).filter((tk) => tk.length >= 2 && !STOPWORDS_BUSCA.has(tk));
-  const listaTokens = tokensRelevantes.length > 0 ? tokensRelevantes : (tokens || []);
-  if (listaTokens.length === 0) return true;
-
-  if (listaTokens.length === 1) {
-    return tokenCasaComLimite(listaTokens[0], alvo, palavrasAlvo);
-  }
-
-  let casados = 0;
-  for (const tk of listaTokens) {
-    if (tokenCasaComLimite(tk, alvo, palavrasAlvo)) {
-      casados++;
-    }
-  }
-
-  if (casados === listaTokens.length) return true;
-
-  // Para consultas multi-palavra, aceita quando ao menos 1 token substantivo (preferencialmente não-país) casa com precisão
-  const temCountrySet = countryTokensSet && countryTokensSet.size > 0;
-  const naoPaisTokens = temCountrySet
-    ? listaTokens.filter((tk) => !countryTokensSet.has(tk))
-    : listaTokens;
-  const tokensRef = naoPaisTokens.length > 0 ? naoPaisTokens : listaTokens;
-
-  for (const tk of tokensRef) {
-    if (tokenCasaComLimite(tk, alvo, palavrasAlvo)) {
+    if ((w.startsWith(tk) || tk.startsWith(w)) && Math.min(w.length, tk.length) >= 5 && Math.abs(w.length - tk.length) <= 3) {
       return true;
     }
   }
-
   return false;
+}
+
+function tokenCasaComLimite(tkRaw, alvo, palavrasAlvo) {
+  const tk = normalizar(tkRaw);
+  if (!tk || ehTokenNumericoPuro(tk) || STOPWORDS_BUSCA.has(tk)) return false;
+  if (ehScriptSemitico(tk)) {
+    return tokenCasaScriptSemitico(tk, alvo, palavrasAlvo);
+  }
+  if (ehTokenCJK(tk)) {
+    return alvo.includes(tk);
+  }
+  if (!tk.includes(' ') && !tk.includes('-') && tk.length <= 3) {
+    return palavrasAlvo.includes(tk);
+  }
+  return tokenCombinaNoTexto(tk, alvo, palavrasAlvo);
+}
+
+// Modificadores genéricos secundários que não devem bloquear match de conceito único forte (ex: "Terremoto costa")
+const MODIFICADORES_SECUNDARIOS = new Set([
+  'costa', 'coast', 'coastal', 'norte', 'sul', 'leste', 'oeste', 'central', 'centro', 'capital', 'regiao', 'region',
+  'interior', 'fronteira', 'alta', 'queda', 'recorde', 'record', 'nivel', 'level', 'taxa', 'rate',
+  'plano', 'plan', 'medida', 'medidas', 'projeto', 'caso', 'setor', 'sistema', 'nacional', 'global', 'mundial',
+  'alerta', 'risco', 'impacto', 'efeito', 'dados', 'relatorio', 'report', 'update', 'crise'
+]);
+
+// Palavras genéricas de tradução de manchete que não devem criar auxBuckets espúrios (ex: "30 people dead" -> "people")
+const PALAVRAS_VAZIAS_CONTEXTO = new Set([
+  'people', 'person', 'persons', 'pessoas', 'pessoa', 'individuos', 'officials', 'authorities', 'autoridades',
+  'today', 'yesterday', 'years', 'year', 'anos', 'days', 'week', 'month', 'time', 'part', 'number', 'numbers',
+  'group', 'state', 'states', 'country', 'countries', 'world', 'news', 'media', 'video', 'videos', 'photo', 'photos',
+  'report', 'reports', 'according', 'amid', 'following', 'near', 'around', 'several', 'dozens', 'dezenas',
+  'شخص', 'اشخاص', 'أشخاص', 'عام', 'اليوم', 'أمس', 'مصادر', 'تفاصيل', 'فيديو', 'صور'
+]);
+
+// Dicionário universal de conceitos e sinônimos jornalísticos (multilíngue) para cobrir variações reais da imprensa
+const GRUPOS_SINONIMOS_UNIVERSAIS = [
+  {
+    id: 'fuel_truck',
+    triggers: ['caminhao-tanque', 'caminhao tanque', 'carreta-tanque', 'caminhao de combustivel', 'tanker truck', 'fuel tanker', 'fuel truck', 'petrol tanker', 'oil truck'],
+    queryByLang: {
+      en: '("fuel truck" OR tanker OR "fuel tanker" OR "oil truck")',
+      ar: '("مواد بترولية" OR "شاحنة وقود" OR صهريج OR شاحنة)',
+      es: '("camión cisterna" OR "pipa de combustible")',
+      fr: '("camion-citerne" OR "camion citerne")',
+      de: '(Tanklastwagen OR Tankwagen)',
+      ja: '(タンクローリー)',
+    },
+    matchTerms: [
+      'fuel truck', 'tanker truck', 'tank truck', 'fuel tanker', 'petrol tanker', 'oil truck', 'oil tanker', 'tanker', 'tankers',
+      'caminhao-tanque', 'caminhao tanque', 'carreta-tanque',
+      'مواد بترولية', 'المواد البترولية', 'بترولية', 'شاحنة وقود', 'شاحنة صهريج', 'صهريج', 'ناقلة', 'شاحنة', 'タンクローリー', '유조차', 'מיכלית'
+    ],
+    matchTermsByLang: {
+      es: ['camion cisterna', 'pipa de combustible'],
+      fr: ['camion-citerne', 'camion citerne'],
+      de: ['tanklastwagen', 'tankwagen'],
+    },
+  },
+  {
+    id: 'fire',
+    triggers: ['fogo', 'incendio', 'incendios', 'chamas', 'pega fogo', 'pegou fogo', 'fire', 'wildfire', 'blaze', 'flames'],
+    queryByLang: {
+      en: '(fire OR blaze OR flames)',
+      ar: '(حريق OR اشتعال OR نيران OR تفحم)',
+      es: '(incendio OR fuego OR llamas)',
+      fr: '(incendie OR feu OR flammes)',
+      de: '(Brand OR Feuer OR Flammen)',
+      ja: '(火災 OR 炎上 OR 火事)',
+      ko: '(화재 OR 불)',
+    },
+    matchTerms: [
+      'fire', 'fires', 'wildfire', 'wildfires', 'blaze', 'flames', 'inferno', 'burning', 'burned', 'ablaze',
+      'fogo', 'incendio', 'incendios', 'chamas',
+      'حريق', 'نيران', 'اشتعال', 'تفحم', 'اندلاع', 'שריפה', 'آتش', '火災', '炎上', '火事', '화재', '산불', 'пожар', 'возгорание'
+    ],
+    matchTermsByLang: {
+      es: ['fuego', 'llamas'],
+      fr: ['incendie', 'flammes'],
+      de: ['brand', 'feuer', 'flammen'],
+      tr: ['yangin'],
+    },
+  },
+  {
+    id: 'explosion',
+    triggers: ['explosao', 'explosoes', 'explode', 'explodiu', 'explosion', 'blast', 'blasts'],
+    queryByLang: {
+      en: '(explosion OR blast)',
+      ar: '(انفجار OR تفجير)',
+      es: '(explosión OR estallido)',
+      fr: '(explosion OR déflagration)',
+      de: '(Explosion OR Detonation)',
+      ja: '(爆発)',
+    },
+    matchTerms: [
+      'explosion', 'explosions', 'blast', 'blasts', 'exploded', 'detonation',
+      'explosao', 'explosoes',
+      'انفجار', 'تفجير', 'פיצוץ', '爆発', '폭발', 'взрыв'
+    ],
+    matchTermsByLang: {
+      es: ['estallido'],
+      fr: ['deflagration'],
+      tr: ['patlama'],
+    },
+  },
+  {
+    id: 'deaths',
+    triggers: ['mortos', 'mortes', 'morte', 'morrem', 'morreu', 'vitimas', 'fatais', 'fatal', 'killed', 'dead', 'deaths', 'casualties', 'fatalities'],
+    queryByLang: {
+      en: '(killed OR dead OR deaths OR casualties)',
+      ar: '(مصرع OR قتلى OR وفاة OR ضحايا OR مقتل)',
+      es: '(muertos OR fallecidos OR víctimas)',
+      fr: '(morts OR tués OR décès OR victimes)',
+      de: '(Tote OR Todesopfer OR getötet)',
+      ja: '(死亡 OR 死者 OR 犠牲者)',
+      ko: '(사망 OR 사망자)',
+    },
+    matchTerms: [
+      'killed', 'killing', 'kills', 'dead', 'death', 'deaths', 'deadly', 'fatal', 'fatalities', 'casualties', 'death toll',
+      'mortos', 'mortes', 'morte', 'morrem', 'morreu', 'vitimas',
+      'مصرع', 'قتلى', 'قتيل', 'وفاة', 'وفيات', 'ضحايا', 'مقتل', 'הרוגים', 'מותם', 'کشته', '死亡', '死者', '犠牲', '사망', '숨져', 'погибли', 'жертв'
+    ],
+    matchTermsByLang: {
+      es: ['muertos', 'fallecidos'],
+      fr: ['morts', 'tues', 'deces'],
+      de: ['tote', 'toten', 'todesopfer', 'getotet', 'ums leben'],
+      tr: ['olu', 'hayatini kaybetti'],
+    },
+  },
+  {
+    id: 'accident_crash',
+    triggers: ['acidente', 'acidentes', 'colisao', 'capota', 'capotou', 'descarrilamento', 'engavetamento', 'accident', 'crash', 'collision', 'overturns', 'derailment'],
+    queryByLang: {
+      en: '(crash OR accident OR overturns OR collision)',
+      ar: '(حادث OR تصادم OR انقلاب)',
+      es: '(accidente OR choque OR colisión)',
+      fr: '(accident OR collision)',
+      de: '(Unfall OR Kollision OR Unglück)',
+      ja: '(事故 OR 衝突)',
+    },
+    matchTerms: [
+      'crash', 'crashes', 'crashed', 'accident', 'accidents', 'collision', 'overturns', 'overturned', 'derailment', 'pileup',
+      'acidente', 'acidentes', 'colisao', 'capotamento',
+      'حادث', 'تصادم', 'انقلاب', 'תאונה', 'حادثه', '事故', '衝突', '脱線', '사고', '충돌', 'авария', 'дтп', 'катастрофа'
+    ],
+    matchTermsByLang: {
+      es: ['choque'],
+      de: ['unfall', 'ungluck', 'kollision'],
+      tr: ['kaza'],
+    },
+  },
+  {
+    id: 'ceasefire',
+    triggers: ['cessar-fogo', 'cessar fogo', 'tregua', 'armisticio', 'ceasefire', 'truce'],
+    queryByLang: {
+      en: '(ceasefire OR truce)',
+      ar: '("وقف إطلاق النار" OR هدنة)',
+      he: '("הפסקת אש" OR עסקה)',
+      ru: '(перемирие OR "прекращение огня")',
+    },
+    matchTerms: [
+      'ceasefire', 'cease-fire', 'truce', 'armistice', 'cessar-fogo', 'tregua',
+      'وقف إطلاق النار', 'وقف اطلاق النار', 'هدنة', 'הפסקת אש', 'آتش‌بس', '停戦', '休戦', '정전', '휴전', 'перемирие', 'прекращение огня'
+    ],
+    matchTermsByLang: {
+      es: ['alto el fuego'],
+      fr: ['cessez-le-feu'],
+      de: ['waffenruhe', 'waffenstillstand'],
+      tr: ['ateskes'],
+    },
+  },
+  {
+    id: 'earthquake',
+    triggers: ['terremoto', 'terremotos', 'sismo', 'abalo sismico', 'earthquake', 'quake'],
+    queryByLang: {
+      en: '(earthquake OR quake OR seismic)',
+      ja: '(地震 OR 震度)',
+      ar: '(زلزال OR هزة أرضية)',
+      tr: '(deprem)',
+      es: '(terremoto OR sismo)',
+      zh: '(地震)',
+    },
+    matchTerms: [
+      'earthquake', 'earthquakes', 'quake', 'tremor', 'seismic', 'richter', 'terremoto', 'sismo',
+      'زلزال', 'هزة', 'רעידת אדמה', 'زلزله', '地震', '震度', '지진', 'землетрясение'
+    ],
+    matchTermsByLang: {
+      fr: ['seisme'],
+      de: ['erdbeben'],
+      tr: ['deprem'],
+      id: ['gempa'],
+    },
+  },
+  {
+    id: 'flood',
+    triggers: ['enchente', 'enchentes', 'inundacao', 'inundacoes', 'alagamento', 'flood', 'floods', 'flooding'],
+    queryByLang: {
+      en: '(flood OR floods OR flooding)',
+      ar: '(فيضانات OR سيول)',
+      es: '(inundaciones OR inundación)',
+      de: '(Hochwasser OR Überschwemmung)',
+      ja: '(洪水 OR 豪雨)',
+    },
+    matchTerms: [
+      'flood', 'floods', 'flooding', 'flooded', 'deluge', 'flash flood', 'enchente', 'enchentes', 'inundacao',
+      'فيضانات', 'سيول', 'שיטפונות', 'سیل', '洪水', '浸水', '홍수', '폭우', 'наводнение'
+    ],
+    matchTermsByLang: {
+      es: ['inundaciones'],
+      fr: ['inondation'],
+      de: ['hochwasser', 'uberschwemmung'],
+      id: ['banjir'],
+      tr: ['sel'],
+    },
+  },
+  {
+    id: 'interest_rates',
+    triggers: ['juros', 'taxa de juros', 'selic', 'corte de juros', 'alta de juros', 'interest rate', 'interest rates'],
+    queryByLang: {
+      en: '("interest rates" OR "interest rate" OR "rate cut" OR "rate hike")',
+      ar: '("أسعار الفائدة" OR "سعر الفائدة" OR الفائدة)',
+      de: '(Zinsen OR Leitzins)',
+      fr: '("taux d\'intérêt" OR taux)',
+      es: '("tasas de interés" OR "tipos de interés")',
+      ja: '(金利 OR 利上げ OR 利下げ)',
+      ko: '(금리 OR 기준금리)',
+    },
+    matchTerms: [
+      'interest rate', 'interest rates', 'rate cut', 'rate hike', 'benchmark rate', 'policy rate', 'borrowing costs',
+      'juros', 'selic',
+      'أسعار الفائدة', 'سعر الفائدة', 'الفائدة', 'ריבית', '金利', '利上げ', '利下げ', '政策金利', '금리', '기준금리', 'ключевая ставка', 'ставка', '利率', '降息', '加息'
+    ],
+    matchTermsByLang: {
+      es: ['tasas de interes', 'tipos de interes'],
+      fr: ['taux'],
+      de: ['zinsen', 'leitzins'],
+      tr: ['faiz'],
+    },
+  },
+  {
+    id: 'tariffs',
+    triggers: ['tarifa', 'tarifas', 'tarifaco', 'imposto de importacao', 'tariff', 'tariffs'],
+    queryByLang: {
+      en: '(tariffs OR tariff OR duties)',
+      ar: '(رسوم جمركية OR تعريفات)',
+      de: '(Zölle OR Strafzölle)',
+      fr: '("droits de douane" OR tarifs)',
+      es: '(aranceles OR tarifas)',
+      ja: '(関税)',
+      zh: '(关税 OR 關稅)',
+      ko: '(관세)',
+    },
+    matchTerms: [
+      'tariff', 'tariffs', 'duties', 'customs duties', 'trade war', 'levies',
+      'tarifa', 'tarifas', 'tarifaco',
+      'رسوم جمركية', 'تعريفات', 'جمركية', 'מכסים', 'تعرفه', '関税', '관세', '关税', '關稅', 'пошлины', 'тарифы'
+    ],
+    matchTermsByLang: {
+      es: ['arancel', 'aranceles'],
+      fr: ['droits de douane'],
+      de: ['zolle', 'strafzolle'],
+      tr: ['gumruk vergisi'],
+    },
+  },
+  {
+    id: 'inflation',
+    triggers: ['inflacao', 'ipca', 'carestia', 'inflation'],
+    queryByLang: {
+      en: '(inflation OR CPI OR "consumer prices")',
+      ar: '(التضخم OR تضخم)',
+      de: '(Inflation OR Teuerung)',
+      ja: '(インフレ OR 物価)',
+      ko: '(인플레이션 OR 물가)',
+      zh: '(通胀 OR 通貨膨脹 OR CPI)',
+    },
+    matchTerms: [
+      'inflation', 'inflationary', 'cpi', 'consumer prices', 'cost of living',
+      'inflacao', 'ipca',
+      'التضخم', 'تضخم', 'אינפלציה', 'تورم', 'インフレ', '物価', '인플레이션', '물가', '通胀', '通貨膨脹', 'инфляция'
+    ],
+    matchTermsByLang: {
+      es: ['inflacion'],
+      de: ['teuerung'],
+      tr: ['enflasyon'],
+      id: ['inflasi'],
+    },
+  },
+  {
+    id: 'strike_labor',
+    triggers: ['greve', 'greves', 'paralisacao', 'walkout'],
+    queryByLang: {
+      en: '(strike OR walkout OR stoppage)',
+      fr: '(grève OR grèves)',
+      de: '(Streik OR Warnstreik)',
+      es: '(huelga OR paro)',
+      ar: '(إضراب)',
+    },
+    matchTerms: [
+      'strike', 'strikes', 'walkout', 'stoppage', 'industrial action',
+      'greve', 'greves', 'paralisacao',
+      'إضراب', 'اضراب', 'שביתה', 'اعتصاب', 'ストライキ', '파업', 'забастовка'
+    ],
+    matchTermsByLang: {
+      es: ['huelga', 'paro'],
+      de: ['streik', 'warnstreik'],
+      tr: ['grev'],
+    },
+  },
+  {
+    id: 'protests',
+    triggers: ['protesto', 'protestos', 'manifestacao', 'manifestacoes', 'protest', 'protests'],
+    queryByLang: {
+      en: '(protests OR protest OR demonstrations OR unrest)',
+      ar: '(احتجاجات OR مظاهرات)',
+      fr: '(manifestations OR protestations)',
+      de: '(Proteste OR Demonstrationen)',
+      es: '(protestas OR manifestaciones)',
+    },
+    matchTerms: [
+      'protest', 'protests', 'protesters', 'demonstration', 'demonstrations', 'rally', 'rallies', 'unrest', 'riots',
+      'protesto', 'protestos', 'manifestacao', 'manifestacoes',
+      'احتجاجات', 'مظاهرات', 'تظاهرات', 'הפגנות', 'اعتراضات', 'デモ', '抗議', '시위', '집회', 'протесты', 'митинг'
+    ],
+    matchTermsByLang: {
+      es: ['protestas', 'manifestaciones'],
+      de: ['proteste', 'demonstrationen'],
+      id: ['unjuk rasa'],
+    },
+  },
+  {
+    id: 'hostages',
+    triggers: ['refem', 'refens', 'hostage', 'hostages'],
+    queryByLang: {
+      en: '(hostages OR hostage OR captives)',
+      he: '(חטופים OR שבויים)',
+      ar: '(رهائن OR أسرى OR محتجزين)',
+    },
+    matchTerms: [
+      'hostage', 'hostages', 'captive', 'captives', 'abducted', 'kidnapped',
+      'refem', 'refens',
+      'رهائن', 'محتجزين', 'أسرى', 'חטופים', 'שבויים', 'گروگان', '人質', '인질', 'заложник'
+    ],
+    matchTermsByLang: {
+      es: ['rehenes'],
+      fr: ['otages'],
+      de: ['geiseln'],
+    },
+  },
+  {
+    id: 'attack_military',
+    triggers: ['ataque', 'ataques', 'bombardeio', 'bombardeios', 'misseis', 'missil', 'drones', 'airstrike', 'airstrikes'],
+    queryByLang: {
+      en: '(attack OR strike OR airstrike OR missiles OR drones)',
+      ar: '(هجوم OR غارة OR قصف OR صواريخ OR مسيرات)',
+      he: '(מתקפה OR תקיפה OR טילים OR כטב"ם)',
+      uk: '(атака OR удар OR ракети OR дрони)',
+      ru: '(атака OR удар OR ракеты OR беспилотники)',
+    },
+    matchTerms: [
+      'attack', 'attacks', 'attacked', 'strike', 'strikes', 'airstrike', 'airstrikes', 'missile', 'missiles', 'drone', 'drones', 'shelling', 'bombardment', 'bombing',
+      'ataque', 'ataques', 'bombardeio', 'misseis', 'missil',
+      'هجوم', 'هجمات', 'غارة', 'غارات', 'قصف', 'صواريخ', 'صاروخ', 'مسيرات', 'مسيرة', 'מתקפה', 'תקיפה', 'טילים', 'حمله', 'موشک', '攻撃', 'ミサイル', '空爆', '공격', '미사일', 'атака', 'удар', 'ракет', 'дрон', 'беспилотник'
+    ],
+    matchTermsByLang: {
+      de: ['angriff', 'luftangriff', 'raketen'],
+      fr: ['attaque', 'frappe'],
+      tr: ['saldiri'],
+    },
+  },
+  {
+    id: 'elections',
+    triggers: ['eleicao', 'eleicoes', 'pleito', 'urnas', 'votacao', 'election', 'elections'],
+    queryByLang: {
+      en: '(election OR elections OR vote OR polls)',
+      ar: '(انتخابات OR تصويت)',
+      de: '(Wahl OR Wahlen)',
+      fr: '(élection OR élections OR scrutin)',
+      es: '(elecciones OR elección OR comicios)',
+      ja: '(選挙 OR 投開票)',
+      ko: '(선거 OR 대선 OR 총선)',
+    },
+    matchTerms: [
+      'election', 'elections', 'electoral', 'vote', 'voting', 'ballot', 'polls', 'runoff',
+      'eleicao', 'eleicoes', 'pleito', 'urnas', 'votacao',
+      'انتخابات', 'تصويت', 'اقتراع', 'בחירות', '選挙', '投開票', '선거', '대선', '총선', 'выборы', 'голосование'
+    ],
+    matchTermsByLang: {
+      es: ['elecciones', 'comicios'],
+      fr: ['scrutin'],
+      de: ['wahl', 'wahlen'],
+      tr: ['secim'],
+      id: ['pemilu'],
+    },
+  },
+  {
+    id: 'gdp',
+    triggers: ['pib', 'gdp', 'produto interno bruto'],
+    queryByLang: {
+      en: '(GDP OR "economic growth")',
+      de: '(BIP OR Wirtschaftswachstum)',
+      ar: '("الناتج المحلي" OR "نمو اقتصادي")',
+      ja: '(GDP OR 実質GDP OR 経済成長)',
+      zh: '(GDP OR 经济增长)',
+      ko: '(GDP OR 경제성장률)',
+    },
+    matchTerms: [
+      'gdp', 'economic growth', 'gross domestic product', 'pib', 'ввп',
+      'الناتج المحلي', 'نمو اقتصادي', 'תמ"ג', 'צמיחה', '実質gdp', '経済成長', '경제성장', '성장률', '经济增长'
+    ],
+    matchTermsByLang: {
+      de: ['bip', 'wirtschaftswachstum'],
+      it: ['pil'],
+      nl: ['bbp'],
+      pl: ['pkb'],
+      tr: ['gsyh'],
+    },
+  },
+];
+
+// Idioma nativo primário de cada país (ISO Alpha-2) para cobertura universal dos 190+ países
+const LOCALE_PRIMARIO_POR_PAIS = {
+  BR: 'pt', PT: 'pt', AO: 'pt', MZ: 'pt', CV: 'pt', GW: 'pt', ST: 'pt', TL: 'pt', MO: 'pt',
+  ES: 'es', MX: 'es', AR: 'es', CO: 'es', CL: 'es', PE: 'es', VE: 'es', EC: 'es', GT: 'es', CU: 'es',
+  BO: 'es', DO: 'es', HN: 'es', PY: 'es', SV: 'es', NI: 'es', CR: 'es', PA: 'es', UY: 'es', GQ: 'es', PR: 'es',
+  FR: 'fr', MC: 'fr', SN: 'fr', CI: 'fr', ML: 'fr', BF: 'fr', NE: 'fr', TG: 'fr', BJ: 'fr', GN: 'fr',
+  GA: 'fr', CG: 'fr', CD: 'fr', CM: 'fr', CF: 'fr', TD: 'fr', DJ: 'fr', KM: 'fr', MG: 'fr', BI: 'fr',
+  HT: 'fr', PF: 'fr', NC: 'fr', GF: 'fr', GP: 'fr', MQ: 'fr', RE: 'fr', YT: 'fr', MF: 'fr',
+  EG: 'ar', SA: 'ar', AE: 'ar', QA: 'ar', KW: 'ar', BH: 'ar', OM: 'ar', JO: 'ar', LB: 'ar', SY: 'ar',
+  IQ: 'ar', YE: 'ar', PS: 'ar', LY: 'ar', TN: 'ar', DZ: 'ar', MA: 'ar', MR: 'ar', SD: 'ar',
+  DE: 'de', AT: 'de', LI: 'de', CH: 'de', BE: 'fr', LU: 'fr',
+  IT: 'it', SM: 'it', VA: 'it', NL: 'nl', SR: 'nl', AW: 'nl', CW: 'nl',
+  PL: 'pl', UA: 'uk', RU: 'ru', BY: 'ru', KZ: 'ru', KG: 'ru',
+  CZ: 'cs', SK: 'sk', HU: 'hu', RO: 'ro', MD: 'ro', BG: 'bg',
+  GR: 'el', CY: 'el', TR: 'tr', AZ: 'az', UZ: 'uz',
+  SE: 'sv', AX: 'sv', NO: 'no', DK: 'da', FO: 'da', GL: 'da', FI: 'fi', IS: 'is',
+  RS: 'sr', ME: 'sr', HR: 'hr', BA: 'bs', SI: 'sl', MK: 'mk', AL: 'sq', XK: 'sq',
+  LT: 'lt', LV: 'lv', EE: 'et', GE: 'ka', AM: 'hy',
+  IL: 'he', IR: 'fa', AF: 'fa',
+  JP: 'ja', KR: 'ko', KP: 'ko', CN: 'zh-CN', TW: 'zh-TW', HK: 'zh-TW',
+  IN: 'en', PK: 'en', BD: 'bn', LK: 'en', NP: 'ne',
+  ID: 'id', MY: 'en', BN: 'ms', SG: 'en', PH: 'en',
+  TH: 'th', VN: 'vi', MM: 'my', KH: 'km', LA: 'lo', MN: 'mn',
+  ET: 'am', SO: 'so',
+};
+
+// Todos os idiomas reais da imprensa local por país (incluindo países bilíngues/multilíngues e edições em inglês)
+const IDIOMAS_OFICIAIS_POR_PAIS = {
+  EG: ['ar', 'en'], SA: ['ar', 'en'], AE: ['ar', 'en'], QA: ['ar', 'en'], KW: ['ar', 'en'],
+  BH: ['ar', 'en'], OM: ['ar', 'en'], JO: ['ar', 'en'], SY: ['ar', 'en'], IQ: ['ar', 'en'],
+  YE: ['ar', 'en'], PS: ['ar', 'en'], LY: ['ar', 'en'], SD: ['ar', 'en'],
+  MA: ['fr', 'ar', 'en'], DZ: ['fr', 'ar', 'en'], TN: ['fr', 'ar', 'en'], LB: ['ar', 'fr', 'en'], MR: ['ar', 'fr', 'en'],
+  IL: ['he', 'en', 'ar'], IR: ['fa', 'en'], AF: ['fa', 'en'], TR: ['tr', 'en'],
+  JP: ['ja', 'en'], KR: ['ko', 'en'], KP: ['ko', 'en'],
+  CN: ['zh-CN', 'en'], TW: ['zh-TW', 'en'], HK: ['zh-TW', 'en'], MO: ['pt', 'zh-TW', 'en'],
+  IN: ['en', 'hi'], PK: ['en', 'ur'], BD: ['en', 'bn'], LK: ['en', 'si', 'ta'], NP: ['en', 'ne'],
+  ID: ['id', 'en'], MY: ['en', 'ms', 'zh-CN'], SG: ['en', 'zh-CN', 'ms'], PH: ['en', 'tl'],
+  TH: ['th', 'en'], VN: ['vi', 'en'], MM: ['en', 'my'], KH: ['en', 'km'], MN: ['mn', 'en'],
+  CH: ['de', 'fr', 'it', 'en'], BE: ['fr', 'nl', 'en'], CA: ['en', 'fr'], LU: ['fr', 'de', 'en'],
+  UA: ['uk', 'en', 'ru'], BY: ['ru', 'en'], KZ: ['ru', 'en'], KG: ['ru', 'en'], RU: ['ru', 'en'],
+  ZA: ['en', 'af'], KE: ['en', 'sw'], TZ: ['en', 'sw'], ET: ['en', 'am'],
+};
+
+function normalizarCodigoIdioma(langRaw, countryCode = '') {
+  const l = String(langRaw || '').trim();
+  const lower = l.toLowerCase();
+  const c = String(countryCode || '').toUpperCase().trim();
+  if (!lower) return LOCALE_PRIMARIO_POR_PAIS[c] || 'en';
+  if (lower === 'zh-tw' || lower === 'zh-hant' || lower === 'zh_tw') return 'zh-TW';
+  if (lower === 'zh-cn' || lower === 'zh-hans' || lower === 'zh_cn') return 'zh-CN';
+  if (lower === 'zh') return ['TW', 'HK', 'MO'].includes(c) ? 'zh-TW' : 'zh-CN';
+  return lower.split('-')[0] || 'en';
+}
+
+function obterIdiomasPais(countryCode, clientLang = '') {
+  const cc = String(countryCode || '').toUpperCase().trim();
+  const lista = [];
+  const add = (lg) => {
+    const code = normalizarCodigoIdioma(lg, cc);
+    if (code && !lista.includes(code)) lista.push(code);
+  };
+  if (IDIOMAS_OFICIAIS_POR_PAIS[cc]) {
+    IDIOMAS_OFICIAIS_POR_PAIS[cc].forEach(add);
+  } else if (LOCALE_PRIMARIO_POR_PAIS[cc]) {
+    add(LOCALE_PRIMARIO_POR_PAIS[cc]);
+  }
+  if (clientLang) add(clientLang);
+  add('en'); // Sempre garante tradução em inglês (qEn) para cobertura internacional/bilíngue
+  return lista;
 }
 
 async function fetchXml(url, timeoutMs = 4200, isRefresh = false) {
@@ -1001,7 +1500,7 @@ async function fetchXml(url, timeoutMs = 4200, isRefresh = false) {
     const resp = await fetch(url, {
       cache: 'no-store',
       headers: {
-        'User-Agent': 'Mozilla/5.0 (compatible; RodandoOMundo/2.11)',
+        'User-Agent': 'Mozilla/5.0 (compatible; RodandoOMundo/2.12)',
         Accept: 'application/rss+xml, application/atom+xml, application/xml, text/xml, */*',
         ...(isRefresh ? { 'Cache-Control': 'no-cache', Pragma: 'no-cache' } : {}),
       },
@@ -1017,9 +1516,10 @@ async function fetchXml(url, timeoutMs = 4200, isRefresh = false) {
 }
 
 function localeParams(lang, countryCode) {
-  const l = String(lang || 'pt').toLowerCase();
+  const raw = String(lang || 'pt').trim();
+  const l = raw.toLowerCase();
   const c = String(countryCode || 'BR').toUpperCase();
-  if (l === 'pt') {
+  if (l === 'pt' || l.startsWith('pt-')) {
     const ptPaises = ['PT', 'AO', 'MZ', 'CV', 'GW', 'ST', 'TL'];
     const isPtEur = ptPaises.includes(c);
     const gl = isPtEur ? 'PT' : 'BR';
@@ -1028,19 +1528,19 @@ function localeParams(lang, countryCode) {
     const mkt = isPtEur ? 'pt-PT' : 'pt-BR';
     return { hl, gl, ceid, mkt };
   }
-  if (l === 'es') {
+  if (l === 'es' || l.startsWith('es-')) {
     const gl = ['AR', 'CL', 'CO', 'MX', 'PE', 'ES', 'UY', 'VE', 'CU', 'DO', 'PA', 'CR', 'GT', 'HN', 'SV', 'NI', 'BO', 'PY', 'EC'].includes(c) ? c : 'ES';
     return { hl: 'es', gl, ceid: `${gl}:es`, mkt: 'es-ES' };
   }
-  if (l === 'fr') {
+  if (l === 'fr' || l.startsWith('fr-')) {
     const frGl = ['FR', 'BE', 'CH', 'CA', 'SN', 'CI', 'CM', 'CD', 'CG', 'MA', 'DZ', 'TN', 'MG', 'HT', 'LU'].includes(c) ? c : 'FR';
     return { hl: 'fr', gl: frGl, ceid: `${frGl}:fr`, mkt: 'fr-FR' };
   }
-  if (l === 'ar') {
-    const arGl = ['EG', 'MA', 'DZ', 'TN', 'SA', 'AE', 'QA', 'KW', 'JO', 'LB', 'IQ', 'SY', 'YE', 'OM', 'LY', 'SD', 'PS'].includes(c) ? c : 'EG';
+  if (l === 'ar' || l.startsWith('ar-')) {
+    const arGl = ['EG', 'MA', 'DZ', 'TN', 'SA', 'AE', 'QA', 'KW', 'JO', 'LB', 'IQ', 'SY', 'YE', 'OM', 'LY', 'SD', 'PS', 'BH', 'MR'].includes(c) ? c : 'EG';
     return { hl: 'ar', gl: arGl, ceid: `${arGl}:ar`, mkt: 'ar-SA' };
   }
-  if (l === 'de') {
+  if (l === 'de' || l.startsWith('de-')) {
     const deGl = ['DE', 'AT', 'CH'].includes(c) ? c : 'DE';
     return { hl: 'de', gl: deGl, ceid: `${deGl}:de`, mkt: 'de-DE' };
   }
@@ -1059,14 +1559,20 @@ function localeParams(lang, countryCode) {
     return { hl: 'tr', gl: 'TR', ceid: 'TR:tr', mkt: 'tr-TR' };
   }
   if (l === 'ja') return { hl: 'ja', gl: 'JP', ceid: 'JP:ja', mkt: 'ja-JP' };
-  if (l === 'zh') {
-    const isTwHk = ['TW', 'HK', 'MO'].includes(c);
+  if (l === 'zh-tw' || l === 'zh-hant' || (l === 'zh' && ['TW', 'HK', 'MO'].includes(c))) {
     const gl = c === 'HK' ? 'HK' : 'TW';
-    return { hl: isTwHk ? 'zh-TW' : 'zh-CN', gl, ceid: `${gl}:${isTwHk ? 'zh-Hant' : 'zh-Hans'}`, mkt: isTwHk ? 'zh-TW' : 'zh-CN' };
+    return { hl: 'zh-TW', gl, ceid: `${gl}:zh-Hant`, mkt: 'zh-TW' };
+  }
+  if (l === 'zh-cn' || l === 'zh-hans' || l === 'zh') {
+    return { hl: 'zh-CN', gl: 'CN', ceid: 'CN:zh-Hans', mkt: 'zh-CN' };
   }
   if (l === 'ko') return { hl: 'ko', gl: 'KR', ceid: 'KR:ko', mkt: 'ko-KR' };
   if (l === 'hi') return { hl: 'hi', gl: 'IN', ceid: 'IN:hi', mkt: 'en-IN' };
+  if (l === 'ur') return { hl: 'ur', gl: 'PK', ceid: 'PK:ur', mkt: 'en-US' };
   if (l === 'bn') return { hl: 'bn', gl: c === 'IN' ? 'IN' : 'BD', ceid: `${c === 'IN' ? 'IN' : 'BD'}:bn`, mkt: 'en-IN' };
+  if (l === 'si') return { hl: 'si', gl: 'LK', ceid: 'LK:si', mkt: 'en-US' };
+  if (l === 'ta') return { hl: 'ta', gl: c === 'LK' ? 'LK' : 'IN', ceid: `${c === 'LK' ? 'LK' : 'IN'}:ta`, mkt: 'en-IN' };
+  if (l === 'tl' || l === 'fil') return { hl: 'en-PH', gl: 'PH', ceid: 'PH:en', mkt: 'en-PH' };
   if (l === 'id' || l === 'ms') {
     const idGl = c === 'MY' ? 'MY' : 'ID';
     return { hl: l === 'ms' ? 'ms' : 'id', gl: idGl, ceid: `${idGl}:${l === 'ms' ? 'ms' : 'id'}`, mkt: 'id-ID' };
@@ -1075,6 +1581,7 @@ function localeParams(lang, countryCode) {
   if (l === 'no') return { hl: 'no', gl: 'NO', ceid: 'NO:no', mkt: 'nb-NO' };
   if (l === 'da' || l === 'fo') return { hl: 'da', gl: 'DK', ceid: 'DK:da', mkt: 'da-DK' };
   if (l === 'fi') return { hl: 'fi', gl: 'FI', ceid: 'FI:fi', mkt: 'fi-FI' };
+  if (l === 'is') return { hl: 'is', gl: 'IS', ceid: 'IS:is', mkt: 'en-US' };
   if (l === 'el') return { hl: 'el', gl: 'GR', ceid: 'GR:el', mkt: 'el-GR' };
   if (l === 'cs') return { hl: 'cs', gl: 'CZ', ceid: 'CZ:cs', mkt: 'cs-CZ' };
   if (l === 'sk') return { hl: 'sk', gl: 'SK', ceid: 'SK:sk', mkt: 'sk-SK' };
@@ -1083,25 +1590,32 @@ function localeParams(lang, countryCode) {
   if (l === 'bg') return { hl: 'bg', gl: 'BG', ceid: 'BG:bg', mkt: 'bg-BG' };
   if (l === 'sr' || l === 'hr' || l === 'bs' || l === 'cnr') return { hl: l === 'hr' ? 'hr' : 'sr', gl: c || 'RS', ceid: `${c || 'RS'}:${l === 'hr' ? 'hr' : 'sr'}`, mkt: 'en-US' };
   if (l === 'sl') return { hl: 'sl', gl: 'SI', ceid: 'SI:sl', mkt: 'sl-SI' };
+  if (l === 'sq') return { hl: 'sq', gl: 'AL', ceid: 'AL:sq', mkt: 'en-US' };
+  if (l === 'mk') return { hl: 'mk', gl: 'MK', ceid: 'MK:mk', mkt: 'en-US' };
   if (l === 'lt') return { hl: 'lt', gl: 'LT', ceid: 'LT:lt', mkt: 'lt-LT' };
   if (l === 'lv') return { hl: 'lv', gl: 'LV', ceid: 'LV:lv', mkt: 'lv-LV' };
   if (l === 'et') return { hl: 'et', gl: 'EE', ceid: 'EE:et', mkt: 'et-EE' };
+  if (l === 'ka') return { hl: 'ka', gl: 'GE', ceid: 'GE:ka', mkt: 'en-US' };
+  if (l === 'hy') return { hl: 'hy', gl: 'AM', ceid: 'AM:hy', mkt: 'en-US' };
   if (l === 'he') return { hl: 'he', gl: 'IL', ceid: 'IL:he', mkt: 'he-IL' };
   if (l === 'fa') return { hl: 'fa', gl: 'IR', ceid: 'IR:fa', mkt: 'en-US' };
   if (l === 'th') return { hl: 'th', gl: 'TH', ceid: 'TH:th', mkt: 'th-TH' };
   if (l === 'vi') return { hl: 'vi', gl: 'VN', ceid: 'VN:vi', mkt: 'vi-VN' };
-  const gl = ['US', 'GB', 'CA', 'AU', 'IN', 'ZA', 'IE', 'NZ', 'NG', 'KE', 'GH', 'UG', 'TZ', 'ZW', 'ZM', 'NA', 'BW', 'RW', 'ET', 'PH', 'SG', 'PK'].includes(c) ? c : 'US';
+  if (l === 'af') return { hl: 'en-ZA', gl: 'ZA', ceid: 'ZA:en', mkt: 'en-ZA' };
+  if (l === 'sw') return { hl: 'sw', gl: c === 'TZ' ? 'TZ' : 'KE', ceid: `${c === 'TZ' ? 'TZ' : 'KE'}:sw`, mkt: 'en-US' };
+  if (l === 'am') return { hl: 'am', gl: 'ET', ceid: 'ET:am', mkt: 'en-US' };
+  const gl = ['US', 'GB', 'CA', 'AU', 'IN', 'ZA', 'IE', 'NZ', 'NG', 'KE', 'GH', 'UG', 'TZ', 'ZW', 'ZM', 'NA', 'BW', 'RW', 'ET', 'PH', 'SG', 'PK', 'MY', 'IL'].includes(c) ? c : 'US';
   return { hl: 'en', gl, ceid: `${gl}:en`, mkt: 'en-US' };
 }
 
 const DICIONARIO_SIGLAS_TERMOS = {
   pib: {
     en: 'GDP', de: 'BIP', nl: 'bbp', it: 'PIL', pl: 'PKB', tr: 'GSYH',
-    ru: 'ВВП', uk: 'ВВП', ja: 'GDP', zh: 'GDP', ko: 'GDP', ar: 'الناتج المحلي الإجمالي',
+    ru: 'ВВП', uk: 'ВВП', ja: 'GDP', 'zh-CN': 'GDP', 'zh-TW': 'GDP', zh: 'GDP', ko: 'GDP', ar: 'الناتج المحلي الإجمالي',
     es: 'PIB', fr: 'PIB', pt: 'PIB',
   },
   ia: {
-    en: 'AI', de: 'KI', ja: 'AI', zh: 'AI', ko: 'AI', ru: 'ИИ', es: 'IA', fr: 'IA',
+    en: 'AI', de: 'KI', ja: 'AI', 'zh-CN': 'AI', 'zh-TW': 'AI', zh: 'AI', ko: 'AI', ru: 'ИИ', es: 'IA', fr: 'IA',
   },
   onu: {
     en: 'UN', de: 'UN', ru: 'ООН', ar: 'الأمم المتحدة', ja: '国連', es: 'ONU', fr: 'ONU',
@@ -1117,32 +1631,32 @@ const DICIONARIO_SIGLAS_TERMOS = {
   },
   'banco central': {
     en: 'central bank', es: 'Banco Central', fr: 'banque centrale', de: 'Zentralbank',
-    it: 'banca centrale', ja: '中央銀行', zh: '央行', ko: '중앙은행',
+    it: 'banca centrale', ja: '中央銀行', 'zh-CN': '央行', 'zh-TW': '央行', zh: '央行', ko: '중앙은행',
     ar: 'البنك المركزي', ru: 'центральный банк',
   },
   inflacao: {
     en: 'inflation', es: 'inflación', fr: 'inflation', de: 'Inflation',
-    it: 'inflazione', ja: 'インフレ', zh: '通胀', ko: '인플레이션',
+    it: 'inflazione', ja: 'インフレ', 'zh-CN': '通胀', 'zh-TW': '通膨', zh: '通胀', ko: '인플레이션',
     ar: 'التضخم', ru: 'инфляция',
   },
   eleicoes: {
     en: 'elections', es: 'elecciones', fr: 'élections', de: 'Wahlen',
-    it: 'elezioni', ja: '選挙', zh: '选举', ko: '선거',
+    it: 'elezioni', ja: '選挙', 'zh-CN': '选举', 'zh-TW': '選舉', zh: '选举', ko: '선거',
     ar: 'انتخابات', ru: 'выборы',
   },
   eleicao: {
     en: 'election', es: 'elección', fr: 'élection', de: 'Wahl',
-    it: 'elezione', ja: '選挙', zh: '选举', ko: '선거',
+    it: 'elezione', ja: '選挙', 'zh-CN': '选举', 'zh-TW': '選舉', zh: '选举', ko: '선거',
     ar: 'انتخابات', ru: 'выборы',
   },
   juros: {
     en: 'interest rates', es: 'tasas de interés', fr: "taux d'intérêt", de: 'Zinsen',
-    it: 'tassi di interesse', ja: '金利', zh: '利率', ko: '금리',
+    it: 'tassi di interesse', ja: '金利', 'zh-CN': '利率', 'zh-TW': '利率', zh: '利率', ko: '금리',
     ar: 'أسعار الفائدة', ru: 'ключевая ставка',
   },
   'taxa de juros': {
     en: 'interest rate', es: 'tasa de interés', fr: "taux d'intérêt", de: 'Leitzins',
-    it: 'tasso di interesse', ja: '政策金利', zh: '利率', ko: '기준금리',
+    it: 'tasso di interesse', ja: '政策金利', 'zh-CN': '利率', 'zh-TW': '利率', zh: '利率', ko: '기준금리',
     ar: 'سعر الفائدة', ru: 'ключевая ставка',
   },
 };
@@ -1151,18 +1665,18 @@ function aplicarDicionarioNaFrase(texto, langCode) {
   let out = String(texto || '').trim();
   if (!out || !langCode) return out;
   const exato = DICIONARIO_SIGLAS_TERMOS[normalizar(out)];
-  if (exato && exato[langCode]) return exato[langCode];
+  if (exato && (exato[langCode] || exato[langCode.split('-')[0]])) {
+    return exato[langCode] || exato[langCode.split('-')[0]];
+  }
 
-  // Substitui expressões compostas conhecidas e siglas na frase quando o tradutor não alterou
   const chavesOrdenadas = Object.keys(DICIONARIO_SIGLAS_TERMOS).sort((a, b) => b.length - a.length);
   for (const chave of chavesOrdenadas) {
     const mapa = DICIONARIO_SIGLAS_TERMOS[chave];
-    const dest = mapa && mapa[langCode];
+    const dest = mapa && (mapa[langCode] || mapa[langCode.split('-')[0]]);
     if (!dest) continue;
     const rx = new RegExp(`(?:^|\\s)${chave.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}(?=$|\\s)`, 'i');
     const outNorm = normalizar(out);
     if (rx.test(outNorm)) {
-      // Substitui preservando espaços ao redor
       const tokens = out.split(/\s+/);
       const chaveParts = chave.split(/\s+/);
       if (chaveParts.length === 1) {
@@ -1188,49 +1702,55 @@ function aplicarDicionarioNaFrase(texto, langCode) {
 }
 
 async function traduzirTermoParaIdioma(q, lang) {
-  const l = String(lang || 'pt').toLowerCase();
-  if (!q || l === 'pt') return q;
+  const rawLang = String(lang || 'pt').trim();
+  const l = rawLang === 'zh-TW' || rawLang === 'zh-CN' ? rawLang : rawLang.toLowerCase();
+  if (!q) return '';
+  if (l === 'pt' && /[ãõçêôà]/i.test(q)) return q;
 
   const qNorm = normalizar(q);
   const direto = DICIONARIO_SIGLAS_TERMOS[qNorm];
-  if (direto && direto[l]) {
-    return direto[l];
+  if (direto && (direto[l] || direto[l.split('-')[0]])) {
+    return direto[l] || direto[l.split('-')[0]];
   }
 
   let traduzido = '';
   try {
-    const url =
-      'https://clients5.google.com/translate_a/t?client=dict-chrome-ex&sl=auto&tl=' +
+    const urlGtx =
+      'https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=' +
       encodeURIComponent(l) +
-      '&q=' +
+      '&dt=t&q=' +
       encodeURIComponent(q);
     const ctrl = new AbortController();
-    const t = setTimeout(() => ctrl.abort(), 2500);
-    const r = await fetch(url, { signal: ctrl.signal });
+    const t = setTimeout(() => ctrl.abort(), 2600);
+    const r = await fetch(urlGtx, { signal: ctrl.signal });
     clearTimeout(t);
     if (r.ok) {
       const j = await r.json();
-      const trad = (Array.isArray(j) && ((Array.isArray(j[0]) && j[0][0]) || (typeof j[0] === 'string' && j[0]))) || '';
-      if (trad && typeof trad === 'string' && trad.trim()) traduzido = trad.trim();
+      if (Array.isArray(j) && Array.isArray(j[0])) {
+        const joined = j[0]
+          .map((seg) => (Array.isArray(seg) && typeof seg[0] === 'string' ? seg[0] : ''))
+          .join('')
+          .trim();
+        if (joined) traduzido = joined;
+      }
     }
   } catch { }
 
   if (!traduzido) {
     try {
-      const urlMm =
-        'https://api.mymemory.translated.net/get?q=' +
-        encodeURIComponent(q) +
-        '&langpair=pt|' +
-        encodeURIComponent(l);
+      const urlClients =
+        'https://clients5.google.com/translate_a/t?client=dict-chrome-ex&sl=auto&tl=' +
+        encodeURIComponent(l) +
+        '&q=' +
+        encodeURIComponent(q);
       const ctrl2 = new AbortController();
       const t2 = setTimeout(() => ctrl2.abort(), 2500);
-      const r2 = await fetch(urlMm, { signal: ctrl2.signal });
+      const r2 = await fetch(urlClients, { signal: ctrl2.signal });
       clearTimeout(t2);
       if (r2.ok) {
         const j2 = await r2.json();
-        if (j2 && j2.responseData && j2.responseData.translatedText) {
-          traduzido = j2.responseData.translatedText.trim();
-        }
+        const trad = (Array.isArray(j2) && ((Array.isArray(j2[0]) && j2[0][0]) || (typeof j2[0] === 'string' && j2[0]))) || '';
+        if (trad && typeof trad === 'string' && trad.trim()) traduzido = trad.trim();
       }
     } catch { }
   }
@@ -1239,12 +1759,727 @@ async function traduzirTermoParaIdioma(q, lang) {
   return aplicarDicionarioNaFrase(baseFallback, l);
 }
 
-function deduplicarEOrdenar(lista, termoNorm, tokens, maxItens = MAX_POR_VEICULO_PADRAO, topicKey = '', termosExtras = []) {
+async function traduzirLoteLinhasParaIdioma(linhas, lang) {
+  const validas = (linhas || []).map((s) => String(s || '').replace(/\r?\n/g, ' ').trim());
+  if (!validas.length) return [];
+  const rawLang = String(lang || 'en').trim();
+  const l = rawLang === 'zh-TW' || rawLang === 'zh-CN' ? rawLang : rawLang.toLowerCase();
+  if (l === 'pt' && validas.some((v) => /[ãõçêôà]/i.test(v))) {
+    return validas;
+  }
+  const bloco = validas.join('\n');
+  const tradBloco = await traduzirTermoParaIdioma(bloco, l);
+  if (!tradBloco) return validas;
+  const partes = tradBloco.split(/\r?\n/).map((p) => aplicarDicionarioNaFrase(p.trim(), l));
+  if (partes.length === validas.length) return partes;
+  return validas.map((orig, idx) => partes[idx] || orig);
+}
+
+// Domínios estritamente em idioma nativo cujo nome no cadastro usa palavras inglesas (ex: "United Daily News" -> udn.com)
+const DOMINIOS_NATIVOS_NAO_INGLES = new Set([
+  'udn.com', 'chinatimes.com', 'twreporter.org',
+  'mk.co.kr', 'donga.com', 'ohmynews.com',
+  'yomiuri.co.jp', 'sankei.com', 'jcp.or.jp', 'kinyobi.co.jp',
+  'maannews.net', 'alquds.com', 'al-akhbar.com', 'annahar.com', 'megaphone.news', 'daraj.media', 'raseef22.net',
+  'youm7.com', 'almasryalyoum.com',
+  'kompas.com', 'republika.co.id', 'tirto.id', 'bisnis.com', 'projectmultatuli.org', 'remotivi.or.id', 'konde.co',
+  'cumhuriyet.com.tr', 'birgun.net', 'evrensel.net', 'gazeteduvar.com.tr', 'yenisafak.com', 'sabah.com.tr', 't24.com.tr',
+  'now14.co.il',
+]);
+
+// Títulos de jornais em línguas românicas/germânicas que contêm palavras como "Monde"/"Mundo"/"Temps"/"Standard"
+const PADRAO_NOME_NAO_INGLES_RE = /\b(le monde|le temps|le figaro|le parisien|le soir|le devoir|le360|le desk|la presse|l'economiste|l’economiste|el mundo|el tiempo|el pais|el universal|el comercio|el mercurio|el nacional|el espectador|el observador|il tempo|il messaggero|il sole|il giornale|der standard|die presse|die zeit|die welt|der spiegel|o globo|o pais|o estado|folha de|correio|diario de|jornal de)\b/i;
+
+function ehVeiculoEmIngles(veiculo) {
+  if (!veiculo) return false;
+  if (veiculo.lang && String(veiculo.lang).toLowerCase().startsWith('en')) return true;
+  if (veiculo.lang && !String(veiculo.lang).toLowerCase().startsWith('en')) return false;
+
+  const nRaw = String(veiculo.n || '').trim();
+  const n = normalizar(nRaw);
+  const d = String(veiculo.d || '').trim().toLowerCase().replace(/^www\./, '');
+  const u = String(veiculo.u || '').trim().toLowerCase();
+
+  // Subdomínio ou path explicitamente em outro idioma (ex: fr.hespress.com, fr.le360.ma)
+  if (/^(?:https?:\/\/)?(?:www\.)?(?:fr|es|pt|ar|de|it|ru|ja|ko|zh)\./i.test(u) || /^(?:fr|es|pt|ar|de|it|ru|ja|ko|zh)\./i.test(d)) {
+    return false;
+  }
+
+  // Subdomínio ou path explicitamente em inglês (ex: english.ahram.org.eg, madamasr.com/en/, nhk.or.jp/nhkworld/en/, en.yna.co.kr, asahi.com/ajw/)
+  if (
+    /^(?:https?:\/\/)?(?:www\.)?(?:english|en|eng|world|asia|global|e\.vnexpress|today\.lorientlejour|japannews)\./i.test(u) ||
+    /^(?:english|en|eng|world|asia|e\.vnexpress|today\.lorientlejour|japannews)\./i.test(d) ||
+    /\/(?:en|english|ajw)(?:\/|$|-|_|\?)/i.test(u) ||
+    /nhkworld\/en/i.test(u) ||
+    /-english\b/i.test(u)
+  ) {
+    return true;
+  }
+
+  if (DOMINIOS_NATIVOS_NAO_INGLES.has(d)) return false;
+
+  // Lista verificada de domínios internacionais anglófonos em países não-anglófonos
+  if (
+    d.includes('dailynewsegypt') ||
+    d.includes('egyptindependent') ||
+    d.includes('kyivindependent') ||
+    d.includes('kyivpost') ||
+    d.includes('ukrinform.net') ||
+    d.includes('themoscowtimes') ||
+    d.includes('japantimes') ||
+    d.includes('japan-forward') ||
+    d.includes('koreatimes') ||
+    d.includes('koreaherald') ||
+    d.includes('koreajoongangdaily') ||
+    d.includes('chinadaily') ||
+    d.includes('globaltimes.cn') ||
+    d.includes('caixinglobal') ||
+    d.includes('scmp.com') ||
+    d.includes('taipeitimes') ||
+    d.includes('focustaiwan') ||
+    d.includes('newbloommag') ||
+    d.includes('straitstimes') ||
+    d.includes('channelnewsasia') ||
+    d.includes('mothership.sg') ||
+    d.includes('bangkokpost') ||
+    d.includes('nationthailand') ||
+    d.includes('prachataienglish') ||
+    d.includes('vietnamnews') ||
+    d.includes('tuoitrenews') ||
+    d.includes('thejakartapost') ||
+    d.includes('thestar.com.my') ||
+    d.includes('malaysiakini') ||
+    d.includes('freemalaysiatoday') ||
+    d.includes('theedgemalaysia') ||
+    d.includes('nst.com.my') ||
+    d.includes('inquirer.net') ||
+    d.includes('rappler.com') ||
+    d.includes('manilatimes') ||
+    d.includes('philstar') ||
+    d.includes('timesofisrael') ||
+    d.includes('jpost.com') ||
+    d.includes('haaretz.com') ||
+    d.includes('israelhayom.com') ||
+    d.includes('israelnationalnews') ||
+    d.includes('972mag.com') ||
+    d.includes('palestinechronicle') ||
+    d.includes('mondoweiss') ||
+    d.includes('dailysabah') ||
+    d.includes('hurriyetdailynews') ||
+    d.includes('arabnews') ||
+    d.includes('saudigazette') ||
+    d.includes('thenationalnews') ||
+    d.includes('gulfnews') ||
+    d.includes('khaleejtimes') ||
+    d.includes('arabianbusiness') ||
+    d.includes('aljazeera.com') ||
+    d.includes('thepeninsulaqatar') ||
+    d.includes('gulf-times') ||
+    d.includes('dohanews') ||
+    d.includes('middleeasteye') ||
+    d.includes('dailystar.com.lb') ||
+    d.includes('tehrantimes') ||
+    d.includes('presstv.ir') ||
+    d.includes('dawn.com') ||
+    d.includes('tribune.com.pk') ||
+    d.includes('thenews.com.pk') ||
+    d.includes('brecorder.com') ||
+    d.includes('geo.tv') ||
+    d.includes('thehindu.com') ||
+    d.includes('indianexpress') ||
+    d.includes('timesofindia') ||
+    d.includes('hindustantimes') ||
+    d.includes('scroll.in') ||
+    d.includes('thewire.in') ||
+    d.includes('livemint') ||
+    d.includes('deccanherald') ||
+    d.includes('tribuneindia') ||
+    d.includes('business-standard') ||
+    d.includes('firstpost') ||
+    d.includes('republicworld') ||
+    d.includes('opindia') ||
+    d.includes('bne.eu') ||
+    d.includes('balkaninsight') ||
+    d.includes('thelocal.') ||
+    d.includes('politico.eu') ||
+    d.includes('euractiv.com') ||
+    d.includes('dw.com') ||
+    d.includes('france24.com') ||
+    d.includes('reuters.com') ||
+    d.includes('apnews.com') ||
+    d.includes('bbc.com') ||
+    d.includes('bbc.co.uk') ||
+    d.includes('cnn.com') ||
+    d.includes('batimes.com.ar') ||
+    d.includes('mercopress') ||
+    d.includes('brazilreports')
+  ) {
+    return true;
+  }
+
+  if (PADRAO_NOME_NAO_INGLES_RE.test(nRaw) || PADRAO_NOME_NAO_INGLES_RE.test(n)) {
+    return false;
+  }
+
+  if (/\b(english|ahram online|nhk world|france 24|cna|scmp|mada masr)\b/.test(n)) {
+    return true;
+  }
+
+  const tldRomanoGermanico = /\.(br|pt|ao|mz|cv|es|ar|mx|cl|co|pe|uy|py|bo|ec|ve|cr|pa|do|gt|fr|it|de|at|nl|pl|ru|ua|cz|sk|hu|ro|bg|gr|rs|hr|si)$/i.test(d);
+  if (
+    !tldRomanoGermanico &&
+    /\b(independent|post|times|herald|daily|news|tribune|journal|voice|standard|gazette|express|monitor|world|guardian|telegraph|chronicle|observer|mirror|inquirer)\b/.test(n)
+  ) {
+    return true;
+  }
+
+  return false;
+}
+
+function detectarIdiomaPreferencialVeiculo(veiculo, countryCode, idiomasPais) {
+  const u = String((veiculo && veiculo.u) || '').toLowerCase();
+  const d = String((veiculo && veiculo.d) || '').toLowerCase().replace(/^www\./, '');
+  const mSub = d.match(/^(fr|es|pt|ar|de|it|ru|ja|ko)\./) || u.match(/^https?:\/\/(?:www\.)?(fr|es|pt|ar|de|it|ru|ja|ko)\./);
+  if (mSub && mSub[1]) return mSub[1];
+
+  if (ehVeiculoEmIngles(veiculo)) return 'en';
+
+  const lista = Array.isArray(idiomasPais) && idiomasPais.length > 0 ? idiomasPais : obterIdiomasPais(countryCode);
+  const nativoNaoIngles = lista.find((lg) => lg !== 'en');
+  return nativoNaoIngles || lista[0] || 'en';
+}
+
+function extrairConceitosAtomicosTexto(texto, countryTokensSet = null) {
+  const limpo = String(texto || '')
+    .replace(/[«»""''„”]/g, ' ')
+    .replace(/(^|\s)-+(\s|$)/g, ' ')
+    .replace(/[–—|:,;!?()\[\]]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+  if (!limpo) return [];
+
+  const normFull = normalizar(limpo);
+  const conceitos = [];
+  const intervalosConsumidos = [];
+
+  // 1. Detecta grupos compostos conhecidos de GRUPOS_SINONIMOS_UNIVERSAIS (ex: caminhão-tanque, taxa de juros, cessar-fogo)
+  for (const grp of GRUPOS_SINONIMOS_UNIVERSAIS) {
+    for (const trig of grp.triggers) {
+      const trigNorm = normalizar(trig);
+      if (!trigNorm) continue;
+      const rx = new RegExp(`(?:^|[^\\p{L}\\p{N}])${trigNorm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}(?=$|[^\\p{L}\\p{N}])`, 'iu');
+      const m = rx.exec(normFull);
+      if (m) {
+        conceitos.push({ raw: trig, norm: trigNorm, groupId: grp.id, pos: m.index });
+        intervalosConsumidos.push(...trigNorm.replace(/-/g, ' ').split(/\s+/).filter(Boolean));
+        if (trigNorm.includes('-')) intervalosConsumidos.push(trigNorm);
+        break;
+      }
+    }
+  }
+
+  // 2. Detecta entidades compostas conhecidas (ex: Donald Trump, Supremo Tribunal Federal, Casa Branca)
+  for (const ent of ENTIDADES_COMPOSTAS) {
+    const entNorm = normalizar(ent);
+    if (!entNorm || (countryTokensSet && countryTokensSet.has(entNorm))) continue;
+    const rx = new RegExp(`(?:^|[^\\p{L}\\p{N}])${entNorm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}(?=$|[^\\p{L}\\p{N}])`, 'iu');
+    const m = rx.exec(normFull);
+    if (m) {
+      conceitos.push({ raw: ent, norm: entNorm, groupId: null, isEntity: true, pos: m.index });
+      intervalosConsumidos.push(...entNorm.split(/\s+/).filter(Boolean));
+    }
+  }
+
+  const consumidosSet = new Set(intervalosConsumidos);
+  const palavras = limpo.split(/\s+/).filter(Boolean);
+
+  // Se toda a consulta são apenas 2 nomes próprios em maiúscula (ex: "Nunes Marques", "Jude Bellingham"), mantém como 1 entidade única
+  if (
+    conceitos.length === 0 &&
+    palavras.length === 2 &&
+    /^[A-ZÀ-Ý][\p{L}'-]+$/u.test(palavras[0]) &&
+    /^[A-ZÀ-Ý][\p{L}'-]+$/u.test(palavras[1]) &&
+    !STOPWORDS_BUSCA.has(normalizar(palavras[0])) &&
+    !STOPWORDS_BUSCA.has(normalizar(palavras[1])) &&
+    !PALAVRAS_COMUNS_INTACTAS.has(normalizar(palavras[0])) &&
+    !PALAVRAS_COMUNS_INTACTAS.has(normalizar(palavras[1]))
+  ) {
+    const joined = `${palavras[0]} ${palavras[1]}`;
+    return [{ raw: joined, norm: normalizar(joined), groupId: null, isEntity: true, pos: 0 }];
+  }
+
+  palavras.forEach((pRaw, idx) => {
+    const p = pRaw.replace(/^-+|-+$/g, '');
+    const n = normalizar(p);
+    if (!n || n.length < 2) return;
+    if (STOPWORDS_BUSCA.has(n) || ehTokenNumericoPuro(n)) return;
+    if (countryTokensSet && countryTokensSet.has(n)) return;
+    if (consumidosSet.has(n)) return;
+    if (n.includes('-')) {
+      const subParts = n.split('-').filter(Boolean);
+      if (subParts.every((sp) => consumidosSet.has(sp))) return;
+    }
+    consumidosSet.add(n);
+    conceitos.push({
+      raw: p,
+      norm: n,
+      groupId: null,
+      isModifier: MODIFICADORES_SECUNDARIOS.has(n),
+      pos: 1000 + idx,
+    });
+  });
+
+  conceitos.sort((a, b) => a.pos - b.pos);
+  return conceitos;
+}
+
+function extrairTokensSubstantivosIdioma(texto, countryTokensSet = null) {
+  if (!texto) return [];
+  const limpo = String(texto)
+    .replace(/[«»""''„”()\[\]:,;!?|।،؛]/g, ' ')
+    .replace(/(^|\s)-+(\s|$)/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+  if (!limpo) return [];
+  const out = [];
+  for (const wRaw of limpo.split(/\s+/)) {
+    const w = wRaw.replace(/^-+|-+$/g, '');
+    const n = normalizar(w);
+    if (!n || STOPWORDS_BUSCA.has(n) || ehTokenNumericoPuro(n)) continue;
+    if (countryTokensSet && countryTokensSet.has(n)) continue;
+    if (!ehTokenCJK(w) && !ehScriptSemitico(w) && n.length < 2) continue;
+    if (!out.includes(n)) out.push(n);
+  }
+  return out;
+}
+
+async function construirPlanoSemanticoMultilingue({
+  qLocal,
+  qOriginal,
+  headlineContext,
+  termosTurbinados,
+  country,
+  countryName,
+  clientLang,
+}) {
+  const idiomasPais = obterIdiomasPais(country, clientLang);
+  const desacopladoQ = desacoplarPaisDaConsulta(qLocal || qOriginal, country, countryName);
+  const countryTokensSet = new Set(desacopladoQ.countryTokensSet);
+
+  const ctxBruto = headlineContext || (String(qOriginal || '').trim().split(/\s+/).length >= 5 ? qOriginal : '');
+  const desacopladoCtx = ctxBruto
+    ? desacoplarPaisDaConsulta(ctxBruto, country, countryName)
+    : { termoLocal: '', countryTokensSet: new Set() };
+  desacopladoCtx.countryTokensSet.forEach((tk) => countryTokensSet.add(tk));
+
+  const qSemPais = desacopladoQ.termoLocal || qLocal || qOriginal || '';
+  const ctxSemPais = desacopladoCtx.termoLocal || '';
+
+  // Extrai números presentes na consulta/manchete apenas para desempate (JAMAIS aprovam artigo sozinhos)
+  const numerosContexto = new Set();
+  for (const fonteNum of [qOriginal, headlineContext]) {
+    const matches = String(fonteNum || '').match(/\b\d{1,4}\b/g) || [];
+    matches.forEach((num) => numerosContexto.add(num));
+  }
+
+  const conceitosCore = extrairConceitosAtomicosTexto(qSemPais, countryTokensSet).slice(0, 5);
+  const conceitosCtx = ctxSemPais ? extrairConceitosAtomicosTexto(ctxSemPais, countryTokensSet) : [];
+
+  // Enriquecimento por grupos de sinônimos detectados no contexto completo da manchete
+  const idsCore = new Set(conceitosCore.map((c) => c.groupId).filter(Boolean));
+  const normasCore = new Set(conceitosCore.map((c) => c.norm));
+  const conceitosAux = [];
+  for (const c of conceitosCtx) {
+    if (c.groupId && !idsCore.has(c.groupId)) {
+      idsCore.add(c.groupId);
+      conceitosAux.push(c);
+    } else if (!c.groupId && !normasCore.has(c.norm) && !c.isModifier) {
+      normasCore.add(c.norm);
+      conceitosAux.push(c);
+    }
+  }
+  if (Array.isArray(termosTurbinados)) {
+    for (const tb of termosTurbinados.slice(0, 4)) {
+      const tbNorm = normalizar(tb);
+      if (tbNorm && tbNorm.length >= 3 && !normasCore.has(tbNorm) && !STOPWORDS_BUSCA.has(tbNorm) && !ehTokenNumericoPuro(tbNorm)) {
+        normasCore.add(tbNorm);
+        conceitosAux.push({ raw: String(tb).trim(), norm: tbNorm, groupId: null, pos: 2000 });
+      }
+    }
+  }
+
+  // Monta lote único de linhas para traduzir em paralelo para TODOS os idiomas do país (sempre incluindo 'en')
+  const linhasParaTraduzir = [
+    qSemPais,
+    ctxSemPais || qSemPais,
+    ...conceitosCore.map((c) => c.raw),
+    ...conceitosAux.slice(0, 3).map((c) => c.raw),
+  ];
+
+  const traducoesPorIdioma = {};
+  await Promise.all(
+    idiomasPais.map(async (lg) => {
+      const resLinhas = await traduzirLoteLinhasParaIdioma(linhasParaTraduzir, lg);
+      traducoesPorIdioma[lg] = {
+        qTrad: resLinhas[0] || qSemPais,
+        ctxTrad: resLinhas[1] || '',
+        coreTrad: conceitosCore.map((_, idx) => resLinhas[2 + idx] || ''),
+        auxTrad: conceitosAux.slice(0, 3).map((_, idx) => resLinhas[2 + conceitosCore.length + idx] || ''),
+      };
+    })
+  );
+
+  // Detecta também grupos universais acionados pela tradução em inglês do contexto (ex: "catches fire", "tanker truck")
+  const ctxEnNorm = normalizar(
+    `${(traducoesPorIdioma.en && traducoesPorIdioma.en.qTrad) || ''} ${(traducoesPorIdioma.en && traducoesPorIdioma.en.ctxTrad) || ''}`
+  );
+  for (const grp of GRUPOS_SINONIMOS_UNIVERSAIS) {
+    if (idsCore.has(grp.id)) continue;
+    const acionouEn = grp.triggers.some((trig) => {
+      const tn = normalizar(trig);
+      return tn && ctxEnNorm.includes(tn);
+    });
+    if (acionouEn) {
+      idsCore.add(grp.id);
+      conceitosAux.push({ raw: grp.triggers[0], norm: normalizar(grp.triggers[0]), groupId: grp.id, pos: 1500 });
+    }
+  }
+
+  const montarBucket = (conceito, idx, isCore) => {
+    const termos = new Set();
+    const addTerm = (t) => {
+      const clean = String(t || '').trim();
+      if (!clean) return;
+      const n = ehScriptSemitico(clean) ? normalizarRaizSemitica(clean) : normalizar(clean);
+      if (!n || ehTokenNumericoPuro(n) || STOPWORDS_BUSCA.has(n) || PALAVRAS_VAZIAS_CONTEXTO.has(n)) return;
+      if (countryTokensSet.has(n)) return;
+      termos.add(n);
+    };
+
+    addTerm(conceito.raw);
+    addTerm(conceito.norm);
+    if (conceito.isEntity && conceito.norm.includes(' ')) {
+      conceito.norm.split(/\s+/).filter((p) => p.length >= 4).forEach(addTerm);
+    }
+
+    const ehCompostoHifenOuFrase = Boolean(conceito.groupId || conceito.norm.includes('-') || conceito.norm.includes(' '));
+
+    if (conceito.groupId) {
+      const grp = GRUPOS_SINONIMOS_UNIVERSAIS.find((g) => g.id === conceito.groupId);
+      if (grp) {
+        grp.matchTerms.forEach(addTerm);
+        if (grp.matchTermsByLang) {
+          for (const lg of idiomasPais) {
+            const lgBase = lg.split('-')[0];
+            const extrasLg = grp.matchTermsByLang[lg] || grp.matchTermsByLang[lgBase];
+            if (Array.isArray(extrasLg)) extrasLg.forEach(addTerm);
+          }
+        }
+      }
+    }
+
+    for (const lg of idiomasPais) {
+      const pacote = traducoesPorIdioma[lg];
+      if (!pacote) continue;
+      const tradItem = isCore ? pacote.coreTrad[idx] : pacote.auxTrad[idx];
+      if (tradItem) {
+        addTerm(tradItem);
+        // Não fragmenta compostos ("Tank truck" -> "tank" + "truck") em palavras soltas ambíguas!
+        if (!ehCompostoHifenOuFrase) {
+          extrairTokensSubstantivosIdioma(tradItem, countryTokensSet).forEach(addTerm);
+        }
+      }
+    }
+
+    return {
+      id: conceito.groupId || `c_${isCore ? 'core' : 'aux'}_${idx}_${conceito.norm}`,
+      groupId: conceito.groupId || null,
+      isCore,
+      isEntity: Boolean(conceito.isEntity),
+      isModifier: Boolean(conceito.isModifier),
+      terms: [...termos],
+    };
+  };
+
+  const coreBuckets = conceitosCore
+    .map((c, idx) => montarBucket(c, idx, true))
+    .filter((b) => b.terms.length > 0);
+
+  const auxBuckets = conceitosAux
+    .slice(0, 4)
+    .map((c, idx) => montarBucket(c, idx, false))
+    .filter((b) => b.terms.length > 0);
+
+  // Tokens contextuais adicionais da frase traduzida completa (ex: "タンクローリー", "Todesopfer", "الوراق")
+  for (const lg of idiomasPais) {
+    const pacote = traducoesPorIdioma[lg];
+    if (!pacote || !pacote.ctxTrad) continue;
+    const toksCtx = extrairTokensSubstantivosIdioma(pacote.ctxTrad, countryTokensSet);
+    const jaCobertos = new Set([...coreBuckets, ...auxBuckets].flatMap((b) => b.terms));
+    const novos = toksCtx.filter(
+      (tk) => tk.length >= 3 && !jaCobertos.has(tk) && !MODIFICADORES_SECUNDARIOS.has(tk) && !PALAVRAS_VAZIAS_CONTEXTO.has(tk)
+    );
+    if (novos.length > 0) {
+      auxBuckets.push({
+        id: `ctx_extra_${lg}`,
+        groupId: null,
+        isCore: false,
+        isEntity: false,
+        isModifier: false,
+        terms: novos.slice(0, 6),
+      });
+    }
+  }
+
+  // Constrói queries RSS otimizadas por idioma (primária enxuta + booleana com sinônimos + fallback nuclear de >=2 conceitos)
+  const queriesPorIdioma = {};
+  for (const lg of idiomasPais) {
+    const pacote = traducoesPorIdioma[lg] || { qTrad: qSemPais, ctxTrad: '', coreTrad: [] };
+    const lgBase = lg.split('-')[0];
+    const primaria = extrairTermoResilienteConsulta(pacote.qTrad || qSemPais);
+
+    // Cláusula booleana por conceito para evitar perda por vocabulário divergente (ex: "fuel truck" vs "tanker", "blaze" vs "fire")
+    const clausulasConceito = [];
+    for (let i = 0; i < conceitosCore.length && clausulasConceito.length < 3; i++) {
+      const c = conceitosCore[i];
+      if (c.isModifier && conceitosCore.length >= 2) continue;
+      if (c.groupId) {
+        const grp = GRUPOS_SINONIMOS_UNIVERSAIS.find((g) => g.id === c.groupId);
+        const synClause = grp && grp.queryByLang && (grp.queryByLang[lg] || grp.queryByLang[lgBase]);
+        if (synClause) {
+          clausulasConceito.push(synClause);
+          continue;
+        }
+      }
+      const tConceito = extrairTermoResilienteConsulta(pacote.coreTrad[i] || c.raw);
+      if (tConceito) {
+        clausulasConceito.push(tConceito.includes(' ') ? `"${tConceito}"` : tConceito);
+      }
+    }
+
+    // Se houver 3 cláusulas de evento composto (ex: objeto + fogo + mortos), agrupa as 2 cláusulas de evento num OR: Objeto (Evento1 OR Evento2)
+    let booleana = '';
+    if (clausulasConceito.length >= 3) {
+      const c0 = clausulasConceito[0];
+      const limparParen = (s) => s.replace(/^\(|\)$/g, '').trim();
+      booleana = `${c0} (${limparParen(clausulasConceito[1])} OR ${limparParen(clausulasConceito[2])})`;
+    } else if (clausulasConceito.length === 2) {
+      booleana = `${clausulasConceito[0]} ${clausulasConceito[1]}`;
+    } else if (clausulasConceito.length === 1) {
+      booleana = clausulasConceito[0];
+    }
+
+    // Query nuclear relaxada: NUNCA reduz evento multi-conceito a 1 única palavra comum isolada
+    let relaxada = '';
+    if (clausulasConceito.length >= 2) {
+      relaxada = `${clausulasConceito[0]} ${clausulasConceito[1]}`;
+    } else {
+      const toksPrim = extrairTokensSubstantivosIdioma(primaria, countryTokensSet);
+      relaxada = toksPrim.length >= 2 ? `${toksPrim[0]} ${toksPrim[1]}` : primaria;
+    }
+
+    queriesPorIdioma[lg] = {
+      primaria: primaria || qSemPais,
+      booleana,
+      relaxada: relaxada || primaria || qSemPais,
+      qTradBruto: pacote.qTrad || qSemPais,
+    };
+  }
+
+  return {
+    idiomasPais,
+    qSemPais,
+    ctxSemPais,
+    countryTokensSet,
+    numerosContexto,
+    coreBuckets,
+    auxBuckets,
+    queriesPorIdioma,
+    qEn: (queriesPorIdioma.en && queriesPorIdioma.en.qTradBruto) || '',
+  };
+}
+
+const TERMOS_NAVAIS_PETROLEIRO_RE = /\b(seabed|hormuz|strait|shipping|vessel|vessels|fleet|maritime|navy|naval|port|ports|gulf|sea|ocean|pirates|somali|offshore|warship|warships)\b/i;
+const TERMOS_RODOVIARIOS_CAMINHAO_RE = /\b(truck|trucks|lorry|road|highway|ring road|driver|overturns|overturned|crash|collision|blaze|fire|giza|warraq|cairo)\b/i;
+const TERMOS_TANKER_AMBIGUOS = new Set(['tanker', 'tankers', 'oil tanker', 'ناقلة']);
+const EXPRESSOES_TIRO_OU_METAFORA_FIRE_RE = /\b(opens?\s+fire|opened\s+fire|opening\s+fire|fires\s+(?:on|at|into|upon|missiles?|rockets?|drones?|shells?|shots?|rounds?|bullets?|artillery|mortars?|torpedoes|warning|back|minister|coach|manager|chief|head|director)|fired\s+(?:on|at|into|upon|missiles?|rockets?|drones?|shells?|shots?|rounds?|bullets?)|under\s+fire|returns?\s+fire|returned\s+fire|exchanges?\s+fire|exchanged\s+fire|friendly\s+fire|live\s+fire|cease-?fire|line\s+of\s+fire|abrir\s+fogo|abriu\s+fogo|abriram\s+fogo|sob\s+fogo|troca\s+de\s+tiros)\b/gi;
+const TERMOS_FIRE_AMBIGUOS = new Set(['fire', 'fires', 'fogo']);
+
+function bucketCasaEmTexto(bucket, textoNorm, palavrasTexto) {
+  if (!bucket || !Array.isArray(bucket.terms) || !textoNorm) return false;
+  let casouInambiguo = false;
+  let casouApenasTanker = false;
+  let casouApenasFire = false;
+
+  for (const term of bucket.terms) {
+    const matched = ehScriptSemitico(term)
+      ? tokenCasaScriptSemitico(term, textoNorm, palavrasTexto)
+      : tokenCasaComLimite(term, textoNorm, palavrasTexto);
+    if (!matched) continue;
+
+    if (bucket.groupId === 'fuel_truck' && TERMOS_TANKER_AMBIGUOS.has(term)) {
+      casouApenasTanker = true;
+      continue;
+    }
+    if (bucket.groupId === 'fire' && TERMOS_FIRE_AMBIGUOS.has(term)) {
+      casouApenasFire = true;
+      continue;
+    }
+    casouInambiguo = true;
+    break;
+  }
+
+  if (casouInambiguo) return true;
+  if (casouApenasTanker) {
+    // Rejeita navios-petroleiros marítimos quando o contexto é caminhão-tanque rodoviário e não há nenhum indicador terrestre/incêndio
+    if (TERMOS_NAVAIS_PETROLEIRO_RE.test(textoNorm) && !TERMOS_RODOVIARIOS_CAMINHAO_RE.test(textoNorm)) {
+      return false;
+    }
+    return true;
+  }
+  if (casouApenasFire) {
+    // Rejeita expressões militares/políticas de tiro ou demissão ("army fires on drones", "opens fire", "under fire", "ceasefire")
+    const semTiros = textoNorm.replace(EXPRESSOES_TIRO_OU_METAFORA_FIRE_RE, ' ').trim();
+    if (!semTiros) return false;
+    const palavrasSemTiros = semTiros.replace(/[^\p{L}\p{N}\s]/gu, ' ').split(/\s+/).filter(Boolean);
+    return tokenCasaComLimite('fire', semTiros, palavrasSemTiros) || tokenCasaComLimite('fogo', semTiros, palavrasSemTiros);
+  }
+  return false;
+}
+
+function avaliarArtigoContraPlano(item, plano, topicKey = '') {
+  if (!item || !item.titulo) return { aprovado: false, score: 0 };
+  if (!plano) return { aprovado: true, score: 10 };
+
+  const tituloRaw = String(item.titulo || '');
+  const resumoRaw = String(item.resumo || '');
+  const tituloNorm = normalizar(tituloRaw);
+  const resumoNorm = normalizar(resumoRaw);
+  const comboNorm = `${tituloNorm} ${resumoNorm}`.trim();
+  if (!comboNorm) return { aprovado: false, score: 0 };
+
+  const palavrasTit = tituloNorm.replace(/[^\p{L}\p{N}\s]/gu, ' ').split(/\s+/).filter(Boolean);
+  const palavrasRes = resumoNorm.replace(/[^\p{L}\p{N}\s]/gu, ' ').split(/\s+/).filter(Boolean);
+  const palavrasCombo = [...palavrasTit, ...palavrasRes];
+
+  // Se o texto tem script semítico (árabe/hebraico), preserva palavras originais para análise de clíticos
+  const palavrasSemTit = ehScriptSemitico(tituloRaw)
+    ? tituloRaw.replace(/[^\p{L}\p{N}\s]/gu, ' ').split(/\s+/).filter(Boolean)
+    : palavrasTit;
+  const palavrasSemCombo = ehScriptSemitico(tituloRaw + ' ' + resumoRaw)
+    ? `${tituloRaw} ${resumoRaw}`.replace(/[^\p{L}\p{N}\s]/gu, ' ').split(/\s+/).filter(Boolean)
+    : palavrasCombo;
+  const textoTitCheck = ehScriptSemitico(tituloRaw) ? `${tituloNorm} ${tituloRaw}` : tituloNorm;
+  const textoComboCheck = ehScriptSemitico(tituloRaw + ' ' + resumoRaw) ? `${comboNorm} ${tituloRaw} ${resumoRaw}` : comboNorm;
+
+  const coreBuckets = plano.coreBuckets || [];
+  const auxBuckets = plano.auxBuckets || [];
+  const obrigatorios = coreBuckets.filter((b) => !b.isModifier);
+  const listaCoreRef = obrigatorios.length > 0 ? obrigatorios : coreBuckets;
+
+  // Caso especial: o usuário pesquisou exclusivamente o nome do próprio país (ex: q = "Egito")
+  if (listaCoreRef.length === 0) {
+    const temPais = [...(plano.countryTokensSet || [])].some((ctk) =>
+      ehScriptSemitico(ctk)
+        ? tokenCasaScriptSemitico(ctk, textoComboCheck, palavrasSemCombo)
+        : tokenCasaComLimite(ctk, comboNorm, palavrasCombo)
+    );
+    return { aprovado: temPais, score: temPais ? 60 : 0 };
+  }
+
+  let coreTit = 0;
+  let coreCombo = 0;
+  for (const b of listaCoreRef) {
+    const mTit = bucketCasaEmTexto(b, textoTitCheck, palavrasSemTit);
+    const mCombo = mTit || bucketCasaEmTexto(b, textoComboCheck, palavrasSemCombo);
+    if (mTit) coreTit++;
+    if (mCombo) coreCombo++;
+  }
+
+  let auxTit = 0;
+  let auxCombo = 0;
+  for (const b of auxBuckets) {
+    const mTit = bucketCasaEmTexto(b, textoTitCheck, palavrasSemTit);
+    const mCombo = mTit || bucketCasaEmTexto(b, textoComboCheck, palavrasSemCombo);
+    if (mTit) auxTit++;
+    if (mCombo) auxCombo++;
+  }
+
+  let aprovado = false;
+  if (listaCoreRef.length === 1) {
+    aprovado = coreCombo >= 1;
+  } else {
+    // Eventos com >= 2 conceitos distintos exigem >= 2 conceitos casados (core+core ou core+contexto da manchete),
+    // impedindo que 1 único substantivo polissêmico isolado (ex: "tanker" no Golfo ou "Trump" em pauta alheia) vaze!
+    aprovado = coreCombo >= 2 || (coreCombo >= 1 && auxCombo >= 1);
+  }
+
+  if (!aprovado) {
+    return { aprovado: false, score: 0 };
+  }
+
+  let score = coreTit * 55 + (coreCombo - coreTit) * 26 + auxTit * 22 + (auxCombo - auxTit) * 10;
+  if (coreCombo === listaCoreRef.length) score += 55;
+  if (coreTit >= 2) score += 35;
+
+  const qSemPaisNorm = normalizar(plano.qSemPais || '');
+  if (qSemPaisNorm && qSemPaisNorm.length >= 4 && tituloNorm.includes(qSemPaisNorm)) {
+    score += 90;
+  }
+
+  // Números da manchete ("30", "2027", etc.) SÓ entram como bônus de desempate APÓS aprovação lexical
+  if (plano.numerosContexto && plano.numerosContexto.size > 0) {
+    for (const num of plano.numerosContexto) {
+      if (palavrasTit.includes(num)) {
+        score += 12;
+        break;
+      }
+      if (palavrasCombo.includes(num)) {
+        score += 6;
+        break;
+      }
+    }
+  }
+
+  if (topicKey && TERMOS_CONTEXTO_TOPICO[topicKey]) {
+    const kws = TERMOS_CONTEXTO_TOPICO[topicKey];
+    let matchesTopico = 0;
+    for (const kw of kws) {
+      if (comboNorm.includes(normalizar(kw))) {
+        matchesTopico++;
+        if (matchesTopico >= 2) break;
+      }
+    }
+    score += matchesTopico * 12;
+  }
+
+  if (item.publicadoEm) {
+    const ts = new Date(item.publicadoEm).getTime();
+    if (!Number.isNaN(ts)) {
+      const horasAtras = Math.max(0, (Date.now() - ts) / (3600 * 1000));
+      if (horasAtras <= 6) score += 35;
+      else if (horasAtras <= 12) score += 25;
+      else if (horasAtras <= 24) score += 15;
+      else if (horasAtras <= 72) score += 8;
+    }
+  }
+
+  return { aprovado: true, score };
+}
+
+function deduplicarEOrdenarComPlano(lista, plano = null, maxItens = MAX_POR_VEICULO_PADRAO, topicKey = '', isEnrich = false) {
   const mapa = new Map();
   for (const item of lista) {
     const chave = normalizar(item.titulo).replace(/[^\p{L}\p{N}]/gu, '').slice(0, 58);
     if (!chave) continue;
-    const rel = calcularRelevanciaArtigo(item, termoNorm, tokens, [], topicKey, termosExtras);
+
+    let rel = 20;
+    if (!isEnrich && plano) {
+      const aval = avaliarArtigoContraPlano(item, plano, topicKey);
+      if (!aval.aprovado) continue;
+      rel = aval.score;
+    }
+
     const existente = mapa.get(chave);
     if (!existente) {
       mapa.set(chave, { ...item, relevancia: rel });
@@ -1276,10 +2511,12 @@ function dentroDoPeriodo(publicadoEm, periodo) {
   if (!publicadoEm) return false;
   const ts = new Date(publicadoEm).getTime();
   if (Number.isNaN(ts)) return false;
-  const diffMs = Math.max(0, Date.now() - ts);
-  if (periodo === '24h') return diffMs <= 36 * 60 * 60 * 1000;
-  if (periodo === '7d') return diffMs <= 8 * 24 * 60 * 60 * 1000;
-  if (periodo === '30d') return diffMs <= 32 * 24 * 60 * 60 * 1000;
+  const agora = Date.now();
+  if (ts > agora + 24 * 60 * 60 * 1000) return false;
+  const diffMs = Math.max(0, agora - ts);
+  if (periodo === '24h') return diffMs <= 30 * 60 * 60 * 1000;
+  if (periodo === '7d') return diffMs <= 7 * 24 * 60 * 60 * 1000 + 6 * 3600 * 1000;
+  if (periodo === '30d') return diffMs <= 31 * 24 * 60 * 60 * 1000;
   return true;
 }
 
@@ -1296,104 +2533,29 @@ async function descobrirTermoViaGoogleNews(q, loc, isRefresh = false) {
   }
 }
 
-function ehVeiculoEmIngles(veiculo) {
-  if (!veiculo) return false;
-  const n = normalizar(veiculo.n || '');
-  const d = normalizar(veiculo.d || '');
-  if (
-    d.includes('kyivindependent') ||
-    d.includes('kyivpost') ||
-    d.includes('ukrinform.net') ||
-    d.includes('japantimes') ||
-    d.includes('koreatimes') ||
-    d.includes('koreaherald') ||
-    d.includes('scmp.com') ||
-    d.includes('aljazeera.com') ||
-    d.includes('timesofisrael') ||
-    d.includes('jpost.com') ||
-    d.includes('bne.eu') ||
-    d.includes('balkaninsight') ||
-    d.includes('thelocal.') ||
-    d.includes('reuters.com') ||
-    d.includes('apnews.com') ||
-    d.includes('bbc.com') ||
-    d.includes('cnn.com')
-  ) {
-    return true;
-  }
-  if (
-    /\b(independent|post|times|herald|daily|news|tribune|journal|voice|standard|gazette|express|monitor|world)\b/.test(n) &&
-    !d.endsWith('.br') && !d.endsWith('.pt') && !d.endsWith('.es') && !d.endsWith('.fr') && !d.endsWith('.it')
-  ) {
-    return true;
-  }
-  return false;
-}
-
-function extrairTermoCentralRelaxado(termo, countryTokensSet = null) {
-  if (!termo) return '';
-  const limpo = String(termo || '')
-    .replace(/[«»""''„”]/g, '')
-    .replace(/[-–—|:,;!?()]/g, ' ')
-    .trim();
-  const palavras = limpo.split(/\s+/).filter(Boolean);
-  if (palavras.length <= 1) return limpo;
-
-  const filtradas = palavras.filter((p) => {
-    const n = normalizar(p);
-    if (!n || STOPWORDS_BUSCA.has(n)) return false;
-    if (countryTokensSet && countryTokensSet.has(n)) return false;
-    if (/^[A-Z0-9]{2,5}$/.test(p) || ehTokenCJK(p)) return n.length >= 2;
-    return n.length >= 3;
-  });
-
-  const significativas = filtradas.length > 0
-    ? filtradas
-    : palavras.filter((p) => {
-        const n = normalizar(p);
-        if (!n || STOPWORDS_BUSCA.has(n)) return false;
-        return /^[A-Z0-9]{2,5}$/.test(p) || ehTokenCJK(p) ? n.length >= 2 : n.length >= 3;
-      });
-
-  if (significativas.length === 0) return palavras[0];
-
-  const sigla = significativas.find((p) => /^[A-Z0-9]{2,5}$/.test(p));
-  if (sigla) return sigla;
-
-  const maiuscula = significativas.find((p) => /^[A-ZÀ-Ý]/.test(p));
-  if (maiuscula) return maiuscula;
-
-  significativas.sort((a, b) => b.length - a.length);
-  return significativas[0];
-}
-
 async function buscarPorVeiculo(
   veiculo,
   q,
   topicTerm,
-  loc,
+  country,
   periodo = '24h',
-  qTrad = '',
-  topicTrad = '',
-  qCorrigido = '',
+  plano = null,
+  topicTradMap = {},
   isEnrich = false,
   topicKey = '',
-  isRefresh = false,
-  qEn = '',
-  countryTokensSet = null,
-  qOrig = ''
+  isRefresh = false
 ) {
   const dom = String(veiculo.d || '').trim().toLowerCase();
   if (!dom) return [];
   const maxArtigos = limiteArtigosPorPeriodo(periodo);
 
-  const ehIngles = ehVeiculoEmIngles(veiculo);
-  const locEfetivo = ehIngles
-    ? { hl: 'en', gl: (loc && loc.gl) || 'US', ceid: `${(loc && loc.gl) || 'US'}:en`, mkt: 'en-US' }
-    : loc;
+  const idiomasPais = (plano && plano.idiomasPais) || obterIdiomasPais(country);
+  const langVeic = detectarIdiomaPreferencialVeiculo(veiculo, country, idiomasPais);
+  const locEfetivo = localeParams(langVeic, country);
 
   if (isEnrich) {
-    const qFoco = topicTerm ? `${topicTerm} site:${dom}` : (q ? `${q} site:${dom}` : `site:${dom}`);
+    const tFoco = topicTradMap[langVeic] || topicTerm || '';
+    const qFoco = tFoco ? `${tFoco} site:${dom}` : (q ? `${q} site:${dom}` : `site:${dom}`);
     const bingUrl = `https://www.bing.com/news/search?q=${encodeURIComponent(qFoco)}&format=rss&mkt=${encodeURIComponent(locEfetivo.mkt)}`;
     const googleUrl = `https://news.google.com/rss/search?q=${encodeURIComponent(qFoco)}&hl=${encodeURIComponent(locEfetivo.hl)}&gl=${encodeURIComponent(locEfetivo.gl)}&ceid=${encodeURIComponent(locEfetivo.ceid)}`;
 
@@ -1409,53 +2571,37 @@ async function buscarPorVeiculo(
       itensGoogle = parseRssItems(gfXml, veiculo.n);
     }
 
-    const todos = [...itensBing, ...itensGoogle];
-    return deduplicarEOrdenar(todos, '', [], maxArtigos, topicKey);
+    const todos = [...itensBing, ...itensGoogle].filter((it) => dentroDoPeriodo(it.publicadoEm, periodo));
+    return deduplicarEOrdenarComPlano(todos, null, maxArtigos, topicKey, true);
   }
 
-  const qBase = qCorrigido && normalizar(qCorrigido) !== normalizar(q) ? qCorrigido : q;
-  let qEfetivo = qTrad && normalizar(qTrad) !== normalizar(qBase) ? qTrad : qBase;
-  if (ehIngles && qEn && normalizar(qEn) !== normalizar(qBase)) {
-    qEfetivo = qEn;
-  }
-  const tEfetivo = topicTrad || topicTerm || '';
+  const queriesVeic = (plano && plano.queriesPorIdioma && (plano.queriesPorIdioma[langVeic] || plano.queriesPorIdioma.en)) || {
+    primaria: extrairTermoResilienteConsulta(q),
+    booleana: '',
+    relaxada: extrairTermoResilienteConsulta(q),
+  };
+  const qConsulta = queriesVeic.primaria;
+  const qBooleana = queriesVeic.booleana;
+  const tEfetivo = topicTradMap[langVeic] || topicTerm || '';
 
   const whenTag = periodo === '24h' ? ' when:1d' : (periodo === '7d' ? ' when:7d' : (periodo === '30d' ? ' when:30d' : ''));
   const bingInterval = periodo === '24h' ? '&qft=interval%3d%227%22' : (periodo === '7d' ? '&qft=interval%3d%228%22' : (periodo === '30d' ? '&qft=interval%3d%229%22' : ''));
-
-  const splitToks = (txt) => normalizar(txt).replace(/[^\p{L}\p{N}\s]/gu, ' ').split(/\s+/).filter((t) => t.length >= 2);
-  const termoNorm = normalizar(qBase);
-  const tokens = splitToks(qBase);
-  const termoOrigNorm = normalizar(qOrig || q);
-  const tokensOrig = splitToks(qOrig || q);
-  const termoTradNorm = normalizar(qEfetivo);
-  const tokensTrad = splitToks(qEfetivo);
-  const termoEnNorm = qEn ? normalizar(qEn) : '';
-  const tokensEn = qEn ? splitToks(qEn) : [];
-
-  const qConsulta = extrairTermoResilienteConsulta(qEfetivo);
-  const qBaseConsulta = extrairTermoResilienteConsulta(qBase);
-  const qEnConsulta = qEn ? extrairTermoResilienteConsulta(qEn) : '';
 
   const requisicoes = [
     fetchXml(`https://www.bing.com/news/search?q=${encodeURIComponent(`${qConsulta} site:${dom}`)}&format=rss&mkt=${encodeURIComponent(locEfetivo.mkt)}${bingInterval}`, 3800, isRefresh),
     fetchXml(`https://news.google.com/rss/search?q=${encodeURIComponent(`${qConsulta} site:${dom}` + whenTag)}&hl=${encodeURIComponent(locEfetivo.hl)}&gl=${encodeURIComponent(locEfetivo.gl)}&ceid=${encodeURIComponent(locEfetivo.ceid)}`, 3800, isRefresh),
   ];
 
-  if (periodo === 'all') {
-    if (tEfetivo && normalizar(tEfetivo) !== normalizar(qConsulta)) {
-      requisicoes.push(
-        fetchXml(`https://news.google.com/rss/search?q=${encodeURIComponent(`${qConsulta} ${tEfetivo} site:${dom}`)}&hl=${encodeURIComponent(locEfetivo.hl)}&gl=${encodeURIComponent(locEfetivo.gl)}&ceid=${encodeURIComponent(locEfetivo.ceid)}`, 3500, isRefresh)
-      );
-    }
-    if (normalizar(qBaseConsulta) !== normalizar(qConsulta)) {
-      requisicoes.push(
-        fetchXml(`https://news.google.com/rss/search?q=${encodeURIComponent(`${qBaseConsulta} site:${dom}`)}&hl=${encodeURIComponent(locEfetivo.hl)}&gl=${encodeURIComponent(locEfetivo.gl)}&ceid=${encodeURIComponent(locEfetivo.ceid)}`, 3400, isRefresh)
-      );
-    }
-  } else if (tEfetivo && normalizar(tEfetivo) !== normalizar(qConsulta)) {
+  // Dispara também a variante booleana com sinônimos jornalísticos (ex: ("fuel truck" OR tanker) (fire OR blaze OR killed))
+  if (qBooleana && normalizar(qBooleana) !== normalizar(qConsulta)) {
     requisicoes.push(
-      fetchXml(`https://news.google.com/rss/search?q=${encodeURIComponent(`${qConsulta} ${tEfetivo} site:${dom}` + whenTag)}&hl=${encodeURIComponent(locEfetivo.hl)}&gl=${encodeURIComponent(locEfetivo.gl)}&ceid=${encodeURIComponent(locEfetivo.ceid)}`, 3400, isRefresh)
+      fetchXml(`https://news.google.com/rss/search?q=${encodeURIComponent(`${qBooleana} site:${dom}` + whenTag)}&hl=${encodeURIComponent(locEfetivo.hl)}&gl=${encodeURIComponent(locEfetivo.gl)}&ceid=${encodeURIComponent(locEfetivo.ceid)}`, 3800, isRefresh)
+    );
+  }
+
+  if (tEfetivo && normalizar(tEfetivo) !== normalizar(qConsulta)) {
+    requisicoes.push(
+      fetchXml(`https://news.google.com/rss/search?q=${encodeURIComponent(`${qConsulta} ${tEfetivo} site:${dom}` + (periodo === 'all' ? '' : whenTag))}&hl=${encodeURIComponent(locEfetivo.hl)}&gl=${encodeURIComponent(locEfetivo.gl)}&ceid=${encodeURIComponent(locEfetivo.ceid)}`, 3400, isRefresh)
     );
   }
 
@@ -1465,60 +2611,36 @@ async function buscarPorVeiculo(
     if (xml) todosBrutos.push(...parseRssItems(xml, veiculo.n));
   }
 
-  // Fallback 1: versão em inglês quando a consulta local vier vazia
-  if (todosBrutos.length === 0 && qEnConsulta && normalizar(qEnConsulta) !== normalizar(qConsulta)) {
-    const fallbackEnXml = await fetchXml(
-      `https://news.google.com/rss/search?q=${encodeURIComponent(`${qEnConsulta} site:${dom}` + whenTag)}&hl=en&gl=${encodeURIComponent((loc && loc.gl) || 'US')}&ceid=${encodeURIComponent((loc && loc.gl) || 'US')}:en`,
-      3000,
-      isRefresh
-    );
-    if (fallbackEnXml) todosBrutos.push(...parseRssItems(fallbackEnXml, veiculo.n));
-  }
-
-  // Fallback 2: relaxamento para entidade/sigla central sem o nome do país
-  if (todosBrutos.length === 0) {
-    const termoRelaxado = extrairTermoCentralRelaxado(qEfetivo, countryTokensSet) || extrairTermoCentralRelaxado(qBase, countryTokensSet);
-    if (termoRelaxado && normalizar(termoRelaxado) !== normalizar(qConsulta)) {
-      const fallbackRelaxadoXml = await fetchXml(
-        `https://news.google.com/rss/search?q=${encodeURIComponent(`${termoRelaxado} site:${dom}` + whenTag)}&hl=${encodeURIComponent(locEfetivo.hl)}&gl=${encodeURIComponent(locEfetivo.gl)}&ceid=${encodeURIComponent(locEfetivo.ceid)}`,
-        3000,
-        isRefresh
-      );
-      if (fallbackRelaxadoXml) todosBrutos.push(...parseRssItems(fallbackRelaxadoXml, veiculo.n));
+  // Fallback 1: se o veículo nativo também tiver cobertura em inglês (ex: domínios bilíngues como madamasr.com), tenta em inglês (ou vice-versa)
+  if (todosBrutos.length === 0 && plano && plano.queriesPorIdioma) {
+    const langAlt = langVeic === 'en' ? idiomasPais.find((lg) => lg !== 'en') : 'en';
+    if (langAlt && plano.queriesPorIdioma[langAlt]) {
+      const locAlt = localeParams(langAlt, country);
+      const qAlt = plano.queriesPorIdioma[langAlt].booleana || plano.queriesPorIdioma[langAlt].primaria;
+      if (qAlt && normalizar(qAlt) !== normalizar(qConsulta)) {
+        const fbAltXml = await fetchXml(
+          `https://news.google.com/rss/search?q=${encodeURIComponent(`${qAlt} site:${dom}` + whenTag)}&hl=${encodeURIComponent(locAlt.hl)}&gl=${encodeURIComponent(locAlt.gl)}&ceid=${encodeURIComponent(locAlt.ceid)}`,
+          3000,
+          isRefresh
+        );
+        if (fbAltXml) todosBrutos.push(...parseRssItems(fbAltXml, veiculo.n));
+      }
     }
   }
 
-  // Fallback 3: remove restrição de data 'whenTag' mantendo o termo central (apenas se ainda vazio)
-  if (todosBrutos.length === 0 && (periodo === '24h' || periodo === '7d')) {
-    const termoParaFallback = extrairTermoCentralRelaxado(qEfetivo, countryTokensSet) || qConsulta;
-    const googleSemWhenUrl = `https://news.google.com/rss/search?q=${encodeURIComponent(`${termoParaFallback} site:${dom}`)}&hl=${encodeURIComponent(locEfetivo.hl)}&gl=${encodeURIComponent(locEfetivo.gl)}&ceid=${encodeURIComponent(locEfetivo.ceid)}`;
-    const fallbackXml = await fetchXml(googleSemWhenUrl, 3000, isRefresh);
-    if (fallbackXml) todosBrutos.push(...parseRssItems(fallbackXml, veiculo.n));
+  // Fallback 2: relaxamento mantendo no mínimo o par nuclear de conceitos (NUNCA palavra comum única isolada e NUNCA sem filtro de período/relevância)
+  if (todosBrutos.length === 0 && queriesVeic.relaxada && normalizar(queriesVeic.relaxada) !== normalizar(qConsulta)) {
+    const fbRelaxXml = await fetchXml(
+      `https://news.google.com/rss/search?q=${encodeURIComponent(`${queriesVeic.relaxada} site:${dom}` + whenTag)}&hl=${encodeURIComponent(locEfetivo.hl)}&gl=${encodeURIComponent(locEfetivo.gl)}&ceid=${encodeURIComponent(locEfetivo.ceid)}`,
+      2800,
+      isRefresh
+    );
+    if (fbRelaxXml) todosBrutos.push(...parseRssItems(fbRelaxXml, veiculo.n));
   }
 
-  const combinaQualquer = (it) =>
-    combinaComTermo(it, termoNorm, tokens, countryTokensSet) ||
-    combinaComTermo(it, termoTradNorm, tokensTrad, countryTokensSet) ||
-    (termoEnNorm && combinaComTermo(it, termoEnNorm, tokensEn, countryTokensSet)) ||
-    combinaComTermo(it, termoOrigNorm, tokensOrig, countryTokensSet);
-
-  let combinados = todosBrutos
-    .filter((it) => combinaQualquer(it) && dentroDoPeriodo(it.publicadoEm, periodo));
-
-  if (combinados.length === 0 && todosBrutos.length > 0) {
-    combinados = todosBrutos.filter((it) => dentroDoPeriodo(it.publicadoEm, periodo));
-  }
-  if (combinados.length === 0 && todosBrutos.length > 0) {
-    combinados = todosBrutos;
-  }
-
-  const termosExtras = [
-    { termoNorm: termoTradNorm, tokens: tokensTrad },
-    { termoNorm: termoEnNorm, tokens: tokensEn },
-    { termoNorm: termoOrigNorm, tokens: tokensOrig },
-  ];
-
-  return deduplicarEOrdenar(combinados, termoNorm, tokens, maxArtigos, topicKey, termosExtras);
+  // Filtragem estrita de período e relevância temática (PROIBIDO retornar todosBrutos sem filtro!)
+  const dentroJanela = todosBrutos.filter((it) => dentroDoPeriodo(it.publicadoEm, periodo));
+  return deduplicarEOrdenarComPlano(dentroJanela, plano, maxArtigos, topicKey, false);
 }
 
 function limparCacheExpirado() {
@@ -1532,34 +2654,51 @@ function limparCacheExpirado() {
   }
 }
 
-// Busca agregada em lotes de domínios para capturar muito mais matérias
-async function buscarArtigosAgregadosPais(dominios, qBusca, loc, per, topicTrad = '', isRefresh = false, countryTokensSet = null, qEn = '') {
-  if (!dominios || !dominios.length || !qBusca) return [];
+// Busca agregada em lotes de domínios agrupados por idioma real do veículo (nativo + inglês em países mistos)
+async function buscarArtigosAgregadosPais(listaVeiculos, country, plano, per, isRefresh = false) {
+  if (!listaVeiculos || !listaVeiculos.length || !plano) return [];
   const whenTag = per === '24h' ? ' when:1d' : (per === '7d' ? ' when:7d' : (per === '30d' ? ' when:30d' : ''));
-  const qConsulta = extrairTermoResilienteConsulta(qBusca);
+  const bingInterval = per === '24h' ? '&qft=interval%3d%227%22' : (per === '7d' ? '&qft=interval%3d%228%22' : (per === '30d' ? '&qft=interval%3d%229%22' : ''));
 
-  const lotes = [];
-  const tamanhoLote = 9;
-  for (let i = 0; i < Math.min(dominios.length, 36); i += tamanhoLote) {
-    lotes.push(dominios.slice(i, i + tamanhoLote));
+  const dominiosPorIdioma = new Map();
+  for (const v of listaVeiculos) {
+    if (!v || !v.d) continue;
+    const lg = detectarIdiomaPreferencialVeiculo(v, country, plano.idiomasPais);
+    if (!dominiosPorIdioma.has(lg)) dominiosPorIdioma.set(lg, []);
+    const arr = dominiosPorIdioma.get(lg);
+    if (!arr.includes(v.d)) arr.push(v.d);
+  }
+
+  // Se o país possui múltiplos idiomas oficiais (ex: EG com ar + en, JP com ja + en), garante lote no idioma nativo primário também
+  const nativoPrim = plano.idiomasPais[0];
+  if (nativoPrim && !dominiosPorIdioma.has(nativoPrim)) {
+    dominiosPorIdioma.set(nativoPrim, listaVeiculos.map((v) => v.d).filter(Boolean).slice(0, 9));
   }
 
   const consultas = [];
-  const bingInterval = per === '24h' ? '&qft=interval%3d%227%22' : (per === '7d' ? '&qft=interval%3d%228%22' : (per === '30d' ? '&qft=interval%3d%229%22' : ''));
-  consultas.push(
-    fetchXml(`https://www.bing.com/news/search?q=${encodeURIComponent(qConsulta)}&format=rss&mkt=${encodeURIComponent(loc.mkt)}${bingInterval}`, 3600, isRefresh)
-  );
-  for (const lote of lotes) {
-    const orClause = lote.map((d) => `site:${d}`).join(' OR ');
-    const qPrincipal = `${qConsulta} (${orClause})${whenTag}`;
-    consultas.push(
-      fetchXml(`https://news.google.com/rss/search?q=${encodeURIComponent(qPrincipal)}&hl=${encodeURIComponent(loc.hl)}&gl=${encodeURIComponent(loc.gl)}&ceid=${encodeURIComponent(loc.ceid)}`, 3800, isRefresh)
-    );
-    if (per === 'all' && topicTrad && normalizar(topicTrad) !== normalizar(qConsulta)) {
-      const qTematica = `${qConsulta} ${topicTrad} (${orClause})`;
+  const tamanhoLote = 9;
+
+  for (const [lg, doms] of dominiosPorIdioma.entries()) {
+    const qInfo = plano.queriesPorIdioma[lg] || plano.queriesPorIdioma.en;
+    if (!qInfo || !doms.length) continue;
+    const locLg = localeParams(lg, country);
+    const qUso = qInfo.booleana || qInfo.primaria;
+
+    const lotes = [];
+    for (let i = 0; i < Math.min(doms.length, 36); i += tamanhoLote) {
+      lotes.push(doms.slice(i, i + tamanhoLote));
+    }
+
+    for (const lote of lotes) {
+      const orClause = lote.map((d) => `site:${d}`).join(' OR ');
       consultas.push(
-        fetchXml(`https://news.google.com/rss/search?q=${encodeURIComponent(qTematica)}&hl=${encodeURIComponent(loc.hl)}&gl=${encodeURIComponent(loc.gl)}&ceid=${encodeURIComponent(loc.ceid)}`, 3600, isRefresh)
+        fetchXml(`https://news.google.com/rss/search?q=${encodeURIComponent(`${qUso} (${orClause})${whenTag}`)}&hl=${encodeURIComponent(locLg.hl)}&gl=${encodeURIComponent(locLg.gl)}&ceid=${encodeURIComponent(locLg.ceid)}`, 3800, isRefresh)
       );
+      if (qInfo.primaria && qInfo.booleana && normalizar(qInfo.primaria) !== normalizar(qInfo.booleana)) {
+        consultas.push(
+          fetchXml(`https://www.bing.com/news/search?q=${encodeURIComponent(`${qInfo.primaria} (${orClause})`)}&format=rss&mkt=${encodeURIComponent(locLg.mkt)}${bingInterval}`, 3500, isRefresh)
+        );
+      }
     }
   }
 
@@ -1567,34 +2706,6 @@ async function buscarArtigosAgregadosPais(dominios, qBusca, loc, per, topicTrad 
   const todos = [];
   for (const xml of xmls) {
     if (xml) todos.push(...parseRssItems(xml, ''));
-  }
-
-  if (todos.length === 0) {
-    const termoRelaxado = extrairTermoCentralRelaxado(qBusca, countryTokensSet);
-    const consultasFallback = [];
-    if (termoRelaxado && normalizar(termoRelaxado) !== normalizar(qConsulta)) {
-      const whenRelax = per === '24h' ? whenTag : '';
-      for (const lote of lotes.slice(0, 2)) {
-        const orClause = lote.map((d) => `site:${d}`).join(' OR ');
-        consultasFallback.push(
-          fetchXml(`https://news.google.com/rss/search?q=${encodeURIComponent(`${termoRelaxado} (${orClause})${whenRelax}`)}&hl=${encodeURIComponent(loc.hl)}&gl=${encodeURIComponent(loc.gl)}&ceid=${encodeURIComponent(loc.ceid)}`, 3000, isRefresh)
-        );
-      }
-    }
-    if (qEn && normalizar(qEn) !== normalizar(qConsulta)) {
-      const orClauseEn = lotes[0] ? lotes[0].map((d) => `site:${d}`).join(' OR ') : '';
-      if (orClauseEn) {
-        consultasFallback.push(
-          fetchXml(`https://news.google.com/rss/search?q=${encodeURIComponent(`${extrairTermoResilienteConsulta(qEn)} (${orClauseEn})${whenTag}`)}&hl=en&gl=${encodeURIComponent(loc.gl || 'US')}&ceid=${encodeURIComponent((loc.gl || 'US') + ':en')}`, 3000, isRefresh)
-        );
-      }
-    }
-    if (consultasFallback.length > 0) {
-      const xmlsFb = await Promise.all(consultasFallback);
-      for (const xml of xmlsFb) {
-        if (xml) todos.push(...parseRssItems(xml, ''));
-      }
-    }
   }
 
   return todos.filter((it) => dentroDoPeriodo(it.publicadoEm, per));
@@ -1690,6 +2801,8 @@ async function handleBuscaAssunto(req) {
     const u = new URL(req.url);
     params = {
       q: u.searchParams.get('q') || '',
+      headlineContext: u.searchParams.get('headlineContext') || '',
+      fromHotCompare: u.searchParams.get('fromHotCompare') === '1' || u.searchParams.get('fromHotCompare') === 'true',
       mode: u.searchParams.get('mode') || '',
       trending: u.searchParams.get('trending') === '1' || u.searchParams.get('mode') === 'trending',
       cont: u.searchParams.get('cont') || '',
@@ -1700,6 +2813,7 @@ async function handleBuscaAssunto(req) {
       lang: u.searchParams.get('lang') || 'pt',
       periodo: u.searchParams.get('periodo') || '24h',
       outlets: [],
+      termosTurbinados: [],
     };
     const rawOutlets = u.searchParams.get('outlets') || '';
     if (rawOutlets) {
@@ -1714,6 +2828,11 @@ async function handleBuscaAssunto(req) {
   const isRefresh = isRefreshRequest(req, req.method === 'POST' ? params : null);
   const isTrendingMode = Boolean(params.mode === 'trending' || params.trending);
   const isEnrich = Boolean(params.isEnrich || params.enrich);
+  const fromHotCompare = Boolean(params.fromHotCompare || params.hotCompare);
+  const headlineContext = limparMancheteContexto(params.headlineContext || '');
+  const termosTurbinados = Array.isArray(params.termosTurbinados)
+    ? params.termosTurbinados.map((t) => limparTermo(t)).filter(Boolean).slice(0, 6)
+    : [];
   const q = limparTermo(params.q || params.assunto || '');
   if (!isTrendingMode && !isEnrich && q.length < 2) {
     return json({ erro: 'vazio', mensagem: 'Digite pelo menos 2 caracteres para buscar.' }, 400, SEM_CACHE);
@@ -1748,6 +2867,7 @@ async function handleBuscaAssunto(req) {
         b: String(o.b || 'I').slice(0, 2),
         ind: !!o.ind,
         st: !!o.st,
+        lang: o.lang ? String(o.lang).slice(0, 10) : '',
         pais: String(o.pais || country || '').toUpperCase().slice(0, 4),
       };
     })
@@ -1755,14 +2875,14 @@ async function handleBuscaAssunto(req) {
 
   if (!listaVeiculos.length && (country === 'BR' || country === '076' || !country)) {
     listaVeiculos = [
-      { n: 'g1', u: 'https://g1.globo.com', d: 'g1.globo.com', b: 'I', ind: false, st: false, pais: 'BR' },
-      { n: 'Folha de S.Paulo', u: 'https://www.folha.uol.com.br', d: 'folha.uol.com.br', b: 'I', ind: true, st: false, pais: 'BR' },
-      { n: 'O Globo', u: 'https://oglobo.globo.com', d: 'oglobo.globo.com', b: 'I', ind: false, st: false, pais: 'BR' },
-      { n: 'Estadão', u: 'https://www.estadao.com.br', d: 'estadao.com.br', b: 'D', ind: false, st: false, pais: 'BR' },
-      { n: 'Agência Brasil', u: 'https://agenciabrasil.ebc.com.br', d: 'agenciabrasil.ebc.com.br', b: 'I', ind: false, st: true, pais: 'BR' },
-      { n: 'CartaCapital', u: 'https://www.cartacapital.com.br', d: 'cartacapital.com.br', b: 'E', ind: true, st: false, pais: 'BR' },
-      { n: 'Poder360', u: 'https://www.poder360.com.br', d: 'poder360.com.br', b: 'D', ind: true, st: false, pais: 'BR' },
-      { n: 'CNN Brasil', u: 'https://www.cnnbrasil.com.br', d: 'cnnbrasil.com.br', b: 'I', ind: false, st: false, pais: 'BR' }
+      { n: 'g1', u: 'https://g1.globo.com', d: 'g1.globo.com', b: 'I', ind: false, st: false, lang: 'pt', pais: 'BR' },
+      { n: 'Folha de S.Paulo', u: 'https://www.folha.uol.com.br', d: 'folha.uol.com.br', b: 'I', ind: true, st: false, lang: 'pt', pais: 'BR' },
+      { n: 'O Globo', u: 'https://oglobo.globo.com', d: 'oglobo.globo.com', b: 'I', ind: false, st: false, lang: 'pt', pais: 'BR' },
+      { n: 'Estadão', u: 'https://www.estadao.com.br', d: 'estadao.com.br', b: 'D', ind: false, st: false, lang: 'pt', pais: 'BR' },
+      { n: 'Agência Brasil', u: 'https://agenciabrasil.ebc.com.br', d: 'agenciabrasil.ebc.com.br', b: 'I', ind: false, st: true, lang: 'pt', pais: 'BR' },
+      { n: 'CartaCapital', u: 'https://www.cartacapital.com.br', d: 'cartacapital.com.br', b: 'E', ind: true, st: false, lang: 'pt', pais: 'BR' },
+      { n: 'Poder360', u: 'https://www.poder360.com.br', d: 'poder360.com.br', b: 'D', ind: true, st: false, lang: 'pt', pais: 'BR' },
+      { n: 'CNN Brasil', u: 'https://www.cnnbrasil.com.br', d: 'cnnbrasil.com.br', b: 'I', ind: false, st: false, lang: 'pt', pais: 'BR' }
     ];
   }
 
@@ -1778,8 +2898,9 @@ async function handleBuscaAssunto(req) {
   }
 
   const chaveCache = [
-    isEnrich ? 'enrich' : 'search',
+    isEnrich ? 'enrich' : (fromHotCompare ? 'hot' : 'search'),
     normalizar(q),
+    normalizar(headlineContext),
     cont,
     country,
     topic,
@@ -1798,10 +2919,11 @@ async function handleBuscaAssunto(req) {
     }
   }
 
-  const loc = localeParams(lang, country);
+  const idiomasPais = obterIdiomasPais(country, lang);
+  const locPrimario = localeParams(idiomasPais[0] || lang, country);
 
   if (isTrendingMode) {
-    const chaveCacheTrend = `trending|${(country || 'BR').toUpperCase()}|${(lang || 'pt').toLowerCase()}|${topic || 'all'}`;
+    const chaveCacheTrend = `trending|${(country || 'BR').toUpperCase()}|${(idiomasPais[0] || lang || 'pt').toLowerCase()}|${topic || 'all'}`;
     limparCacheExpirado();
     if (isRefresh) {
       CACHE_MEMORIA.delete(chaveCacheTrend);
@@ -1812,11 +2934,11 @@ async function handleBuscaAssunto(req) {
       }
     }
     const domsTrend = listaVeiculos.map((v) => v.d).filter(Boolean);
-    const topicosTrend = await buscarTopicosEmAltaPais(loc, domsTrend, topicTerm, isRefresh);
+    const topicosTrend = await buscarTopicosEmAltaPais(locPrimario, domsTrend, topicTerm, isRefresh);
     const isTrendFallback = topicosTrend.length === 0;
     const payloadTrend = {
       country: (country || 'BR').toUpperCase(),
-      lang: lang || 'pt',
+      lang: idiomasPais[0] || lang || 'pt',
       topicosEmAlta: topicosTrend,
       fallback: isTrendFallback,
       atualizadoEm: new Date().toISOString(),
@@ -1837,46 +2959,73 @@ async function handleBuscaAssunto(req) {
   let qCorrigido = isEnrich ? q : corrigirTermoEstatico(q);
   const jaCorrigiuEstatico = !isEnrich && normalizar(qCorrigido) !== normalizar(q);
   const qBaseInicial = jaCorrigiuEstatico ? qCorrigido : q;
-  const desacopladoInicial = isEnrich
-    ? { termoLocal: qBaseInicial, countryTokensSet: new Set() }
-    : desacoplarPaisDaConsulta(qBaseInicial, country, countryName);
-  const countryTokensSet = desacopladoInicial.countryTokensSet;
 
-  let qTrad = '', topicTrad = '', qDescoberto = '', qEn = '';
+  let planoSemantico = null;
+  const topicTradMap = {};
+  let qDescoberto = '';
+
   if (!isEnrich) {
-    const termoParaTraduzir = desacopladoInicial.termoLocal || qBaseInicial;
-    const precisaTraducaoEn = lang !== 'en' && lang !== 'pt';
-    const promisesTraducao = [
-      traduzirTermoParaIdioma(termoParaTraduzir, lang),
-      topicTerm ? traduzirTermoParaIdioma(topicTerm, lang) : Promise.resolve(''),
-      jaCorrigiuEstatico ? Promise.resolve('') : descobrirTermoViaGoogleNews(termoParaTraduzir, loc, isRefresh),
-      precisaTraducaoEn ? traduzirTermoParaIdioma(termoParaTraduzir, 'en') : Promise.resolve(''),
-    ];
-    const res = await Promise.all(promisesTraducao);
-    qTrad = res[0] || '';
-    topicTrad = res[1] || '';
-    qDescoberto = res[2] || '';
-    qEn = precisaTraducaoEn ? (res[3] || '') : (lang === 'en' ? qTrad : '');
+    const desacopladoTmp = desacoplarPaisDaConsulta(qBaseInicial, country, countryName);
+    const termoDescoberta = desacopladoTmp.termoLocal || qBaseInicial;
+
+    const [planoRes, descobertoRes, ...topicsTradRes] = await Promise.all([
+      construirPlanoSemanticoMultilingue({
+        qLocal: qBaseInicial,
+        qOriginal: q,
+        headlineContext,
+        termosTurbinados,
+        country,
+        countryName,
+        clientLang: lang,
+      }),
+      (jaCorrigiuEstatico || fromHotCompare || Boolean(headlineContext))
+        ? Promise.resolve('')
+        : descobrirTermoViaGoogleNews(termoDescoberta, locPrimario, isRefresh),
+      ...(topicTerm ? idiomasPais.map((lg) => traduzirTermoParaIdioma(topicTerm, lg)) : []),
+    ]);
+
+    planoSemantico = planoRes;
+    qDescoberto = descobertoRes || '';
+    if (topicTerm) {
+      idiomasPais.forEach((lg, idx) => {
+        topicTradMap[lg] = topicsTradRes[idx] || topicTerm;
+      });
+    }
+  } else if (topicTerm) {
+    await Promise.all(
+      idiomasPais.map(async (lg) => {
+        topicTradMap[lg] = await traduzirTermoParaIdioma(topicTerm, lg);
+      })
+    );
   }
 
-  if (!jaCorrigiuEstatico && qDescoberto && normalizar(qDescoberto) !== normalizar(desacopladoInicial.termoLocal || q)) {
+  if (!jaCorrigiuEstatico && qDescoberto && planoSemantico && normalizar(qDescoberto) !== normalizar(planoSemantico.qSemPais || q)) {
     qCorrigido = qDescoberto;
+    planoSemantico = await construirPlanoSemanticoMultilingue({
+      qLocal: qCorrigido,
+      qOriginal: q,
+      headlineContext,
+      termosTurbinados,
+      country,
+      countryName,
+      clientLang: lang,
+    });
   }
 
-  const termoCorrigidoFinal = normalizar(qCorrigido) !== normalizar(q) && normalizar(qCorrigido) !== normalizar(desacopladoInicial.termoLocal)
-    ? qCorrigido
-    : '';
-  const qLocalEfetivo = desacopladoInicial.termoLocal || (jaCorrigiuEstatico ? qCorrigido : q);
+  const termoCorrigidoFinal =
+    !isEnrich &&
+    planoSemantico &&
+    normalizar(qCorrigido) !== normalizar(q) &&
+    normalizar(qCorrigido) !== normalizar(planoSemantico.qSemPais)
+      ? qCorrigido
+      : '';
   const codigoBandeiraPadrao = String(country || '').toLowerCase();
 
   async function coletarPorPeriodo(per) {
     const maxArtigos = limiteArtigosPorPeriodo(per);
-    const dominiosPais = listaVeiculos.map((v) => v.d).filter(Boolean);
-    const qBaseEfetiva = qLocalEfetivo;
-    const qFinalBusca = qTrad && normalizar(qTrad) !== normalizar(qBaseEfetiva) ? qTrad : qBaseEfetiva;
 
-    const agregadosRawPromise = (!isEnrich && dominiosPais.length > 0)
-      ? buscarArtigosAgregadosPais(dominiosPais, qFinalBusca, loc, per, topicTrad || topicTerm, isRefresh, countryTokensSet, qEn)
+    const agregadosRawPromise = (!isEnrich && listaVeiculos.length > 0 && planoSemantico)
+      ? buscarArtigosAgregadosPais(listaVeiculos, country, planoSemantico, per, isRefresh)
       : Promise.resolve([]);
 
     const [agregadosRaw, resultadosIndividuais] = await Promise.all([
@@ -1888,19 +3037,15 @@ async function handleBuscaAssunto(req) {
           const bandeiraUrl = flagCode ? `https://flagcdn.com/w80/${flagCode}.png` : '';
           const artigosRaw = await buscarPorVeiculo(
             veic,
-            qBaseEfetiva,
+            qBaseInicial,
             topicTerm,
-            loc,
+            codigoPaisVeic || country,
             per,
-            qTrad,
-            topicTrad,
-            '',
+            planoSemantico,
+            topicTradMap,
             isEnrich,
             topic,
-            isRefresh,
-            qEn,
-            countryTokensSet,
-            q
+            isRefresh
           );
           return { veic, artigosRaw, codigoPaisVeic, bandeiraUrl };
         })
@@ -1914,9 +3059,13 @@ async function handleBuscaAssunto(req) {
         if (tk && !imagensPorTitulo.has(tk)) imagensPorTitulo.set(tk, art.imagem);
       }
     }
+
     const artigosPorDominio = new Map();
     for (const art of agregadosRaw) {
       if (!art || !art.url) continue;
+      if (!dentroDoPeriodo(art.publicadoEm, per)) continue;
+      if (planoSemantico && !avaliarArtigoContraPlano(art, planoSemantico, topic).aprovado) continue;
+
       let veicAlvo = null;
       let hostArt = '';
       let hostSource = '';
@@ -1955,33 +3104,11 @@ async function handleBuscaAssunto(req) {
       }
     }
 
-    const splitTokens = (txt) => normalizar(txt).replace(/[^\p{L}\p{N}\s]/gu, ' ').split(/\s+/).filter((t) => t.length >= 2);
-    const qBaseNorm = normalizar(qBaseEfetiva);
-    const termoNormTokens = splitTokens(qBaseEfetiva);
-    const qFinalNorm = normalizar(qFinalBusca);
-    const qFinalTokens = splitTokens(qFinalBusca);
-    const qEnNorm = qEn ? normalizar(qEn) : '';
-    const qEnTokens = qEn ? splitTokens(qEn) : [];
-    const qOrigNorm = normalizar(q);
-    const qOrigTokens = splitTokens(q);
-    const termosExtras = [
-      { termoNorm: qFinalNorm, tokens: qFinalTokens },
-      ...(qEn ? [{ termoNorm: qEnNorm, tokens: qEnTokens }] : []),
-      ...(qOrigNorm !== qBaseNorm ? [{ termoNorm: qOrigNorm, tokens: qOrigTokens }] : []),
-    ];
-
-    const combinaQualquerColeta = (it) =>
-      combinaComTermo(it, qBaseNorm, termoNormTokens, countryTokensSet) ||
-      combinaComTermo(it, qFinalNorm, qFinalTokens, countryTokensSet) ||
-      (qEnNorm && combinaComTermo(it, qEnNorm, qEnTokens, countryTokensSet)) ||
-      combinaComTermo(it, qOrigNorm, qOrigTokens, countryTokensSet);
-
     const res = resultadosIndividuais.map(({ veic, artigosRaw, codigoPaisVeic, bandeiraUrl }) => {
-      const extras = artigosPorDominio.get(veic.d) || [];
-      const extrasFiltrados = extras.filter((it) => combinaQualquerColeta(it));
-      const poolPreferencial = [...artigosRaw, ...extrasFiltrados];
-      const todos = poolPreferencial.length > 0 ? poolPreferencial : extras;
-      const combinados = deduplicarEOrdenar(todos, qBaseNorm, termoNormTokens, maxArtigos, topic, termosExtras);
+      const extrasValidados = artigosPorDominio.get(veic.d) || [];
+      // PROIBIDO injetar extras sem filtro: tanto artigosRaw quanto extrasValidados já passaram por dentroDoPeriodo + avaliarArtigoContraPlano
+      const todos = [...artigosRaw, ...extrasValidados];
+      const combinados = deduplicarEOrdenarComPlano(todos, planoSemantico, maxArtigos, topic, isEnrich);
       const artigos = combinados.map((art) => {
         let img = art.imagem || '';
         if (!img && art.titulo) {
@@ -2013,7 +3140,7 @@ async function handleBuscaAssunto(req) {
   }
 
   const inicioExecucao = Date.now();
-  const TEMPO_LIMITE_MS = 8200;
+  const TEMPO_LIMITE_MS = 8500;
 
   let periodoEfetivo = periodo;
   let grupos = await coletarPorPeriodo(periodoEfetivo);
@@ -2028,15 +3155,22 @@ async function handleBuscaAssunto(req) {
     }
   }
 
-  if (!isEnrich && totalInicial === 0 && periodoEfetivo !== 'all' && (Date.now() - inicioExecucao < TEMPO_LIMITE_MS - 1800)) {
-    const gruposAll = await coletarPorPeriodo('all');
-    if (gruposAll.reduce((acc, g) => acc + g.artigos.length, 0) > 0) {
-      periodoEfetivo = 'all';
-      grupos = gruposAll;
+  // Em "Comparar cobertura" de notícia quente (fromHotCompare === true), NUNCA amplia para 'all' (anos anteriores); limita a '30d'
+  const periodoMaximoFallback = fromHotCompare ? '30d' : 'all';
+  if (
+    !isEnrich &&
+    totalInicial === 0 &&
+    periodoEfetivo !== periodoMaximoFallback &&
+    periodoEfetivo !== 'all' &&
+    (Date.now() - inicioExecucao < TEMPO_LIMITE_MS - 1800)
+  ) {
+    const gruposMax = await coletarPorPeriodo(periodoMaximoFallback);
+    if (gruposMax.reduce((acc, g) => acc + g.artigos.length, 0) > 0) {
+      periodoEfetivo = periodoMaximoFallback;
+      grupos = gruposMax;
       totalInicial = grupos.reduce((acc, g) => acc + g.artigos.length, 0);
     }
   }
-
 
   const totalArtigos = grupos.reduce((acc, g) => acc + g.artigos.length, 0);
   const topicosEmAlta = isEnrich ? [] : extrairTopicosEmAlta(grupos, q);
@@ -2068,7 +3202,7 @@ async function handleBuscaAssunto(req) {
     200,
     newsResponseHeaders({ isRefresh, isFallback, corsHeaders: CORS_HEADERS })
   );
-};
+}
 
 export async function onRequestGet(context) {
   return handleBuscaAssunto(context.request);

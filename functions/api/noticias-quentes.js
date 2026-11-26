@@ -547,15 +547,20 @@ async function consultarBackendExterno(backendUrl, caminho, searchParams, timeou
 const STOPWORDS_HOTNEWS_TERMO = new Set([
   'de', 'da', 'do', 'das', 'dos', 'e', 'em', 'no', 'na', 'nos', 'nas', 'o', 'a', 'os', 'as',
   'para', 'pra', 'com', 'por', 'pelo', 'pela', 'pelos', 'pelas', 'que', 'se', 'um', 'uma',
-  'sobre', 'sob', 'ao', 'aos', 'como', 'mais', 'menos', 'mas', 'ou', 'seus', 'suas', 'seu', 'sua',
+  'sobre', 'sob', 'ao', 'aos', 'como', 'mais', 'menos', 'quase', 'cerca', 'mas', 'ou', 'seus', 'suas', 'seu', 'sua',
   'antes', 'apos', 'entre', 'contra', 'desde', 'durante', 'ate', 'sem', 'maior', 'menor', 'melhor', 'pior',
   'novo', 'nova', 'novos', 'novas', 'hoje', 'ontem', 'agora', 'lenta', 'rapida', 'alta', 'baixa',
+  'pega', 'pegou', 'pegam', 'deixa', 'deixou', 'deixam', 'faz', 'fez', 'fazem', 'fica', 'ficou', 'ficam',
+  'leva', 'levou', 'levam', 'causa', 'causou', 'causam', 'provoca', 'provocou', 'provocam',
+  'chega', 'chegou', 'chegam', 'vira', 'virou', 'entra', 'entrou', 'sai', 'saiu',
+  'pode', 'podem', 'deve', 'devem', 'vai', 'vao', 'foi', 'foram', 'esta', 'estao', 'tem', 'teve',
   'registra', 'registrou', 'registram', 'aponta', 'apontam', 'apontou', 'recua', 'recuou',
   'cai', 'caiu', 'caem', 'sobe', 'subiu', 'sobem', 'atinge', 'atingiu', 'marca', 'marcou',
   'destaca', 'destacou', 'alerta', 'alertou', 'adverte', 'advertiu', 'anuncia', 'anunciou',
-  'diz', 'disse', 'afirma', 'afirmou', 'aprova', 'aprovou', 'decide', 'decidiu', 'enfrenta', 'enfrentou',
-  'mostra', 'mostrou', 'revela', 'revelou', 'indica', 'indicou', 'pede', 'pediu', 'mantem', 'manteve',
+  'diz', 'disse', 'dizem', 'afirma', 'afirmou', 'aprova', 'aprovou', 'decide', 'decidiu', 'enfrenta', 'enfrentou',
+  'mostra', 'mostrou', 'revela', 'revelou', 'indica', 'indicou', 'pede', 'pediu', 'cobra', 'cobrou', 'mantem', 'manteve',
   'segue', 'seguiu', 'passa', 'passou', 'eleva', 'elevou', 'reduz', 'reduziu', 'aumenta', 'aumentou',
+  'veja', 'saiba', 'entenda', 'radar', 'tempo real',
   'the', 'of', 'and', 'in', 'on', 'at', 'to', 'for', 'with', 'by', 'el', 'la', 'los', 'las', 'del', 'en',
 ]);
 
@@ -687,44 +692,48 @@ function selecionarTermoBuscaPais(kws, titulo, nomePais, a2) {
     if (!limpo || limpo.length < 2) continue;
     const limpoNorm = normalizar(limpo);
     if (!limpoNorm || termosPaisSet.has(limpoNorm) || STOPWORDS_HOTNEWS_TERMO.has(limpoNorm)) continue;
-    if (/^\d{4}$/.test(limpo)) continue;
+    if (/^\d+$/.test(limpo)) continue;
 
     const palavras = limpo.split(/\s+/).filter(Boolean);
-    if (!palavras.length || palavras.length > 3) continue;
-    if (totalPalavras + palavras.length > 3) continue;
+    if (!palavras.length || palavras.length > 4) continue;
+    if (totalPalavras + palavras.length > 4) continue;
 
     const novosTokens = palavras.filter((w) => !tokensVistos.has(normalizar(w)));
     if (!novosTokens.length) continue;
 
     const candidatoTexto = [...partesEscolhidas, limpo].join(' ');
-    if (candidatoTexto.length > 40) continue;
+    if (candidatoTexto.length > 56) continue;
 
     partesEscolhidas.push(limpo);
     palavras.forEach((w) => tokensVistos.add(normalizar(w)));
     totalPalavras += palavras.length;
-    if (totalPalavras >= 3) break;
+    if (totalPalavras >= 4) break;
   }
 
   if (partesEscolhidas.length > 0) {
     return partesEscolhidas.join(' ');
   }
 
-  // Fallback: extrai núcleo factual enxuto diretamente do título (máx 3 palavras, sem país/verbos/anos)
+  // Fallback: extrai núcleo factual enxuto diretamente do título (máx 4 palavras, preservando compostos hifenizados \p{L}-\p{L}, sem país/verbos/números puros)
   const tituloSemPais = removerPaisDeExpressao(titulo || '', termosPaisSet)
     .replace(/[:|–—]/g, ' ')
+    .replace(/(^|\s)-+(\s|$)/g, ' ')
     .replace(/[.,;!?()\[\]"'«»“”]/g, ' ')
+    .replace(/\s+/g, ' ')
     .trim();
 
   if (tituloSemPais) {
     const tokensTit = tituloSemPais.split(/\s+/).filter(Boolean);
     const candidatas = [];
-    tokensTit.forEach((w, idx) => {
+    tokensTit.forEach((wRaw, idx) => {
+      const w = wRaw.replace(/^-+|-+$/g, '');
       const wn = normalizar(w);
       if (!wn || wn.length < 2) return;
       if (STOPWORDS_HOTNEWS_TERMO.has(wn) || termosPaisSet.has(wn)) return;
       if (/^\d+$/.test(wn)) return;
       let peso = 0;
       if (/^[A-Z0-9]{2,5}$/.test(w)) peso += 10;
+      if (/\p{L}-\p{L}/u.test(w)) peso += 6;
       if (/^[A-ZÀ-Ý]/.test(w)) peso += 5;
       if (wn.length >= 6) peso += 2;
       if (idx < 4) peso += 2;
@@ -739,11 +748,11 @@ function selecionarTermoBuscaPais(kws, titulo, nomePais, a2) {
         if (usados.has(c.wn)) continue;
         usados.add(c.wn);
         top.push(c);
-        if (top.length >= 3) break;
+        if (top.length >= 4) break;
       }
       top.sort((a, b) => a.idx - b.idx);
       const res = top.map((c) => c.w).join(' ').trim();
-      if (res && res.length <= 45) return res;
+      if (res && res.length <= 60) return res;
     }
   }
 
