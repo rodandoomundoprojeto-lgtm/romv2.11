@@ -2,13 +2,63 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-27T11:21:18Z",
-  "batch_id": "20261127-1120",
+  "updatedAt": "2026-11-27T12:28:22Z",
+  "batch_id": "20261127-1227",
   "temas_ativos": [
     {
-      "slug": "senado-argentino-reforma-primarias-milei",
-      "titulo_tema": "Senado argentino aprova reforma que suspende primárias e pode beneficiar Javier Milei",
-      "titulo_curto": "Senado argentino aprova reforma que suspende primárias e pode beneficiar Javier Milei",
+      "slug": "ibge-desemprego-outubro-minima-historica",
+      "titulo_tema": "Taxa de desemprego no Brasil recua para 5,1% em outubro e iguala mínima histórica",
+      "titulo_curto": "Taxa de desemprego no Brasil recua para 5,1% em outubro e iguala mínima histórica",
+      "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Economia",
+      "categoria": "Economia_Comercio",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 95,
+      "urgencia_score": 93,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-28T12:28:22Z",
+      "palavras_chave_busca": [
+        "desemprego",
+        "ibge",
+        "pnad contínua",
+        "mercado de trabalho",
+        "renda"
+      ],
+      "palavras_chave": [
+        "desemprego",
+        "ibge",
+        "pnad contínua",
+        "mercado de trabalho",
+        "renda"
+      ],
+      "gatilho_vitrine": "Segundo dados divulgados pelo IBGE e repercutidos pelo G1 Economia e InfoMoney, a taxa de desemprego no Brasil ficou em 5,1% no trimestre encerrado em outubro de 2026. O resultado iguala o menor patamar da série histórica da Pnad Contínua, alinhado às projeções do mercado financeiro.",
+      "resumo_pulso": "Segundo dados divulgados pelo IBGE e repercutidos pelo G1 Economia e InfoMoney, a taxa de desemprego no Brasil ficou em 5,1% no trimestre encerrado em outubro de 2026. O resultado iguala o menor patamar da série histórica da Pnad Contínua, alinhado às projeções do mercado financeiro.",
+      "sintese_nerd": "Mapeia o aquecimento do mercado de trabalho nacional, sustentando a renda familiar e influenciando as projeções de inflação.",
+      "impacto_pratico": "Mapeia o aquecimento do mercado de trabalho nacional, sustentando a renda familiar e influenciando as projeções de inflação.",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "veiculos_origem": [
+        "IBGE",
+        "G1 Economia",
+        "InfoMoney"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/economia/noticia/2026/11/27/desemprego-pnad-outubro.ghtml",
+        "https://www.infomoney.com.br/economia/brasil-tem-desemprego-de-51-no-tri-ate-outubro-em-linha-com-o-esperado/"
+      ],
+      "data_publicacao": "2026-11-27T12:20:59Z",
+      "updated_at": "2026-11-27T12:28:22Z"
+    },
+    {
+      "slug": "zelensky-critica-relacao-trump-putin",
+      "titulo_tema": "Zelensky critica proximidade entre Trump e Putin e exige maior pressão ocidental sobre a Rússia",
+      "titulo_curto": "Zelensky critica proximidade entre Trump e Putin e exige maior pressão ocidental sobre a Rússia",
       "status": "novo",
       "origem_pipeline": "pulso",
       "categoria_primaria": "Geopolitica_Radar",
@@ -18,64 +68,133 @@
         "Resumo_Ultimas"
       ],
       "rota_editoria": "/radar",
-      "relevancia_score": 89,
+      "relevancia_score": 87,
       "urgencia_score": 88,
       "ttl_horas": 24,
-      "expires_at": "2026-11-28T11:21:18Z",
+      "expires_at": "2026-11-28T12:28:22Z",
       "palavras_chave_busca": [
-        "argentina",
-        "senado",
-        "javier milei",
-        "eleições"
+        "zelensky",
+        "trump",
+        "putin",
+        "ucrânia",
+        "rússia"
       ],
+      "palavras_chave": [
+        "zelensky",
+        "trump",
+        "putin",
+        "ucrânia",
+        "rússia"
+      ],
+      "gatilho_vitrine": "Em entrevista à BBC News Brasil, o presidente ucraniano Volodymyr Zelensky classificou como 'estranha' a relação entre Donald Trump e Vladimir Putin. Zelensky afirmou que a atenção dos EUA foi desviada para o Oriente Médio, enfraquecendo a pressão diplomática contra a agressão russa na Europa.",
+      "resumo_pulso": "Em entrevista à BBC News Brasil, o presidente ucraniano Volodymyr Zelensky classificou como 'estranha' a relação entre Donald Trump e Vladimir Putin. Zelensky afirmou que a atenção dos EUA foi desviada para o Oriente Médio, enfraquecendo a pressão diplomática contra a agressão russa na Europa.",
+      "sintese_nerd": "Influencia os rumos da assistência financeira e militar ocidental para a manutenção do conflito no leste europeu.",
+      "impacto_pratico": "Influencia os rumos da assistência financeira e militar ocidental para a manutenção do conflito no leste europeu.",
+      "paises_envolvidos": [
+        "UA",
+        "US",
+        "RU"
+      ],
+      "veiculos_origem": [
+        "BBC News Brasil"
+      ],
+      "fontes_urls": [
+        "https://www.bbc.com/portuguese/articles/cm5y1pwkr0wwo?at_medium=RSS&at_campaign=rss"
+      ],
+      "data_publicacao": "2026-11-27T12:14:12Z",
+      "updated_at": "2026-11-27T12:28:22Z"
+    },
+    {
+      "slug": "eua-hackers-forca-aerea-cloud-one",
+      "titulo_tema": "Hackers invadem plataforma de dados em nuvem da Força Aérea dos EUA, reporta agência",
+      "titulo_curto": "Hackers invadem plataforma de dados em nuvem da Força Aérea dos EUA, reporta agência",
+      "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categoria": "Geopolitica_Relacoes",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 88,
+      "urgencia_score": 89,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-28T12:28:22Z",
+      "palavras_chave_busca": [
+        "hackers",
+        "força aérea dos eua",
+        "cloud one",
+        "pentágono",
+        "cibersegurança"
+      ],
+      "palavras_chave": [
+        "hackers",
+        "força aérea dos eua",
+        "cloud one",
+        "pentágono",
+        "cibersegurança"
+      ],
+      "gatilho_vitrine": "Segundo fontes do governo norte-americano citadas pela Reuters e pelo G1 Mundo, invasores cibernéticos invadiram a plataforma Cloud One da Força Aérea dos Estados Unidos. O incidente coloca em risco dados de alta sensibilidade tática e operacional, elevando a preocupação com a defesa digital do Pentágono.",
+      "resumo_pulso": "Segundo fontes do governo norte-americano citadas pela Reuters e pelo G1 Mundo, invasores cibernéticos invadiram a plataforma Cloud One da Força Aérea dos Estados Unidos. O incidente coloca em risco dados de alta sensibilidade tática e operacional, elevando a preocupação com a defesa digital do Pentágono.",
+      "sintese_nerd": "Aumenta o rigor em protocolos globais de segurança da informação e sistemas militares de defesa.",
+      "impacto_pratico": "Aumenta o rigor em protocolos globais de segurança da informação e sistemas militares de defesa.",
+      "paises_envolvidos": [
+        "US"
+      ],
+      "veiculos_origem": [
+        "Reuters",
+        "G1 Mundo"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/mundo/noticia/2026/11/27/hackers-invadem-plataforma-de-dados-da-forca-aerea-dos-eua-diz-agencia.ghtml"
+      ],
+      "data_publicacao": "2026-11-27T11:36:21Z",
+      "updated_at": "2026-11-27T12:28:22Z"
+    },
+    {
+      "slug": "senado-argentino-reforma-primarias-milei",
+      "status": "novo",
+      "categoria": "Geopolitica_Relacoes",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-28T11:21:18Z",
+      "updated_at": "2026-11-27T11:21:18Z",
+      "fontes_urls": [
+        "https://www.infomoney.com.br/mundo/senado-argentino-aprova-reforma-que-suspende-primarias-e-pode-favorecer-milei/"
+      ],
+      "titulo_tema": "Senado argentino aprova reforma que suspende primárias e pode beneficiar Javier Milei",
+      "resumo_pulso": "Conforme reportagem da InfoMoney, o Senado da Argentina aprovou uma reforma que suspende as eleições primárias, medida que altera o tabuleiro político nacional e pode favorecer os planos eleitorais do presidente Javier Milei ao desarticular testes antecipados de força da oposição.",
+      "sintese_nerd": "Modifica o calendário político e estratégico de aliados e opositores na Argentina, impactando vizinhos do Mercosul.",
+      "titulo_curto": "Senado argentino aprova reforma que suspende primárias e pode beneficiar Javier Milei",
+      "rota_editoria": "/radar",
       "palavras_chave": [
         "argentina",
         "senado",
         "javier milei",
         "eleições"
       ],
+      "urgencia_score": 88,
+      "data_publicacao": "2026-11-27T11:19:54Z",
       "gatilho_vitrine": "Conforme reportagem da InfoMoney, o Senado da Argentina aprovou uma reforma que suspende as eleições primárias, medida que altera o tabuleiro político nacional e pode favorecer os planos eleitorais do presidente Javier Milei ao desarticular testes antecipados de força da oposição.",
-      "resumo_pulso": "Conforme reportagem da InfoMoney, o Senado da Argentina aprovou uma reforma que suspende as eleições primárias, medida que altera o tabuleiro político nacional e pode favorecer os planos eleitorais do presidente Javier Milei ao desarticular testes antecipados de força da oposição.",
-      "sintese_nerd": "Modifica o calendário político e estratégico de aliados e opositores na Argentina, impactando vizinhos do Mercosul.",
       "impacto_pratico": "Modifica o calendário político e estratégico de aliados e opositores na Argentina, impactando vizinhos do Mercosul.",
-      "paises_envolvidos": [
-        "AR"
-      ],
+      "origem_pipeline": "pulso",
       "veiculos_origem": [
         "InfoMoney"
       ],
-      "fontes_urls": [
-        "https://www.infomoney.com.br/mundo/senado-argentino-aprova-reforma-que-suspende-primarias-e-pode-favorecer-milei/"
+      "relevancia_score": 89,
+      "paises_envolvidos": [
+        "AR"
       ],
-      "data_publicacao": "2026-11-27T11:19:54Z",
-      "updated_at": "2026-11-27T11:21:18Z"
-    },
-    {
-      "slug": "trabuco-ministerio-da-fazenda-impacto-mercado-bolsa-dolar",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-29T10:37:23Z",
-      "updated_at": "2026-11-27T10:37:23Z",
-      "titulo_tema": "Indicação de Luiz Carlos Trabuco para a Fazenda dispara Bolsa e derruba Dólar",
-      "sintese_nerd": "A aceitação de Luiz Carlos Trabuco para o Ministério da Fazenda trouxe alívio imediato ao mercado financeiro, impulsionando o Ibovespa e derrubando a moeda americana. O movimento sinaliza uma tentativa do governo de sinalizar disciplina fiscal, embora exija articulação para contornar divergências internas na base aliada.",
-      "rota_editoria": "/politica",
-      "data_publicacao": "2026-11-27T10:37:23Z",
-      "gatilho_vitrine": "Destacar nomeação de Trabuco na Fazenda e o forte rali de alta nos mercados acionários brasileiros",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 98,
-      "categoria_primaria": "Politica",
+      "categoria_primaria": "Geopolitica_Radar",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
       ],
       "palavras_chave_busca": [
-        "luiz carlos trabuco",
-        "ministério da fazenda",
-        "governo lula",
-        "ibovespa",
-        "dólar hoje",
-        "bradesco",
-        "mercado financeiro"
+        "argentina",
+        "senado",
+        "javier milei",
+        "eleições"
       ]
     },
     {
@@ -160,48 +279,48 @@
     },
     {
       "slug": "cmn-reduz-juros-fundo-clima-baterias",
-      "titulo_tema": "CMN reduz taxa de juros do Fundo Clima para financiamento de baterias nacionais",
-      "titulo_curto": "CMN reduz taxa de juros do Fundo Clima para financiamento de baterias nacionais",
       "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Economia",
       "categoria": "Economia_Comercio",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 88,
-      "urgencia_score": 87,
       "ttl_horas": 24,
       "expires_at": "2026-11-28T11:21:18Z",
-      "palavras_chave_busca": [
-        "cmn",
-        "fundo clima",
-        "baterias",
-        "energia renovável"
+      "updated_at": "2026-11-27T11:21:18Z",
+      "fontes_urls": [
+        "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/cmn-reduz-juros-do-fundo-clima-para-baterias-nacionais"
       ],
+      "titulo_tema": "CMN reduz taxa de juros do Fundo Clima para financiamento de baterias nacionais",
+      "resumo_pulso": "Segundo comunicado oficial da Agência Brasil, o Conselho Monetário Nacional (CMN) aprovou a redução para 6,5% ao ano dos juros do Fundo Clima voltados a projetos de armazenamento de energia que utilizem baterias produzidas no Brasil.",
+      "sintese_nerd": "Estimula a cadeia industrial de energias renováveis e o armazenamento elétrico com insumos nacionais.",
+      "titulo_curto": "CMN reduz taxa de juros do Fundo Clima para financiamento de baterias nacionais",
+      "rota_editoria": "/economia",
       "palavras_chave": [
         "cmn",
         "fundo clima",
         "baterias",
         "energia renovável"
       ],
+      "urgencia_score": 87,
+      "data_publicacao": "2026-11-27T10:02:00Z",
       "gatilho_vitrine": "Segundo comunicado oficial da Agência Brasil, o Conselho Monetário Nacional (CMN) aprovou a redução para 6,5% ao ano dos juros do Fundo Clima voltados a projetos de armazenamento de energia que utilizem baterias produzidas no Brasil.",
-      "resumo_pulso": "Segundo comunicado oficial da Agência Brasil, o Conselho Monetário Nacional (CMN) aprovou a redução para 6,5% ao ano dos juros do Fundo Clima voltados a projetos de armazenamento de energia que utilizem baterias produzidas no Brasil.",
-      "sintese_nerd": "Estimula a cadeia industrial de energias renováveis e o armazenamento elétrico com insumos nacionais.",
       "impacto_pratico": "Estimula a cadeia industrial de energias renováveis e o armazenamento elétrico com insumos nacionais.",
-      "paises_envolvidos": [
-        "BR"
-      ],
+      "origem_pipeline": "pulso",
       "veiculos_origem": [
         "Agência Brasil (EBC)"
       ],
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/cmn-reduz-juros-do-fundo-clima-para-baterias-nacionais"
+      "relevancia_score": 88,
+      "paises_envolvidos": [
+        "BR"
       ],
-      "data_publicacao": "2026-11-27T10:02:00Z",
-      "updated_at": "2026-11-27T11:21:18Z"
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "cmn",
+        "fundo clima",
+        "baterias",
+        "energia renovável"
+      ]
     },
     {
       "slug": "espanha-eleicoes-imigracao-sanchez",
@@ -345,8 +464,8 @@
     },
     {
       "slug": "trabuco-futuro-ministro-fazenda-mercado",
-      "titulo_tema": "Mercados e autoridades celebram Luiz Carlos Trabuco na Fazenda para início do Lula 4",
-      "titulo_curto": "Mercados e autoridades celebram Luiz Carlos Trabuco na Fazenda para início do Lula 4",
+      "titulo_tema": "Dólar despenca para R$ 5,53 na abertura com indicação de Luiz Carlos Trabuco para a Fazenda",
+      "titulo_curto": "Dólar despenca para R$ 5,53 na abertura com indicação de Luiz Carlos Trabuco para a Fazenda",
       "status": "novo",
       "origem_pipeline": "pulso",
       "categoria_primaria": "Economia",
@@ -357,39 +476,41 @@
       ],
       "rota_editoria": "/economia",
       "relevancia_score": 98,
-      "urgencia_score": 96,
+      "urgencia_score": 97,
       "ttl_horas": 24,
       "expires_at": "2026-11-28T01:04:51Z",
       "palavras_chave_busca": [
+        "dólar",
         "luiz carlos trabuco",
         "ministério da fazenda",
-        "mercado financeiro",
-        "ajuste fiscal"
+        "lula 4",
+        "mercado financeiro"
       ],
       "palavras_chave": [
+        "dólar",
         "luiz carlos trabuco",
         "ministério da fazenda",
-        "mercado financeiro",
-        "ajuste fiscal"
+        "lula 4",
+        "mercado financeiro"
       ],
-      "gatilho_vitrine": "Segundo apuração da InfoMoney e do Poder360, a oficialização de Luiz Carlos Trabuco no Ministério da Fazenda recebeu forte apoio de industriais e investidores, sendo vista pela equipe presidencial como elemento facilitador para a aprovação da segunda etapa do ajuste fiscal no início do quarto mandato de Lula.",
-      "resumo_pulso": "Segundo apuração da InfoMoney e do Poder360, a oficialização de Luiz Carlos Trabuco no Ministério da Fazenda recebeu forte apoio de industriais e investidores, sendo vista pela equipe presidencial como elemento facilitador para a aprovação da segunda etapa do ajuste fiscal no início do quarto mandato de Lula.",
-      "sintese_nerd": "A indicação traz maior estabilidade e otimismo aos mercados financeiros, refletindo em reajustes nas projeções cambiais e do Ibovespa.",
-      "impacto_pratico": "A indicação traz maior estabilidade e otimismo aos mercados financeiros, refletindo em reajustes nas projeções cambiais e do Ibovespa.",
+      "gatilho_vitrine": "Conforme apuração do G1 Economia e da InfoMoney, o dólar abriu a sessão em forte queda de 3,61%, cotado a R$ 5,53, reagindo positivamente ao anúncio de Luiz Carlos Trabuco para a Fazenda no quarto mandato de Lula. O movimento ocorre em meio a relatos de bastidores apontando que o grupo do atual ministro Fernando Haddad não participará do próximo governo.",
+      "resumo_pulso": "Conforme apuração do G1 Economia e da InfoMoney, o dólar abriu a sessão em forte queda de 3,61%, cotado a R$ 5,53, reagindo positivamente ao anúncio de Luiz Carlos Trabuco para a Fazenda no quarto mandato de Lula. O movimento ocorre em meio a relatos de bastidores apontando que o grupo do atual ministro Fernando Haddad não participará do próximo governo.",
+      "sintese_nerd": "A queda do dólar alivia custos de importação e passagens aéreas internacionais para viajantes e empresas.",
+      "impacto_pratico": "A queda do dólar alivia custos de importação e passagens aéreas internacionais para viajantes e empresas.",
       "paises_envolvidos": [
         "BR"
       ],
       "veiculos_origem": [
-        "InfoMoney",
-        "Poder360",
-        "G1 Política"
+        "G1 Economia",
+        "G1 Política",
+        "InfoMoney"
       ],
       "fontes_urls": [
-        "https://www.infomoney.com.br/politica/criticos-da-economia-de-lula-industria-e-mercado-celebram-trabuco-na-fazenda/",
-        "https://www.poder360.com.br/poder-economia/bradesco-confirma-ida-de-trabuco-para-a-fazenda/"
+        "https://g1.globo.com/economia/noticia/2026/11/27/dolar-ibovespa.ghtml",
+        "https://g1.globo.com/politica/blog/gerson-camarotti/post/2026/11/27/com-escolha-de-trabuco-grupo-de-haddad-deve-ficar-fora-do-lula-4.ghtml"
       ],
       "data_publicacao": "2026-11-27T00:50:57Z",
-      "updated_at": "2026-11-27T11:21:18Z"
+      "updated_at": "2026-11-27T12:28:22Z"
     },
     {
       "slug": "amazonas-para-roraima-apagao-energia",
@@ -771,175 +892,202 @@
         "preços",
         "combustíveis"
       ]
-    },
-    {
-      "slug": "orcamento-2027-aprovacao-relatorio-preliminar-cmo",
-      "status": "novo",
-      "categoria": "Economia_Comercio",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-27T18:52:27Z",
-      "updated_at": "2026-11-26T23:50:37Z",
-      "fontes_urls": [
-        "https://www.youtube.com/watch?v=8AGIThsUL_s"
-      ],
-      "titulo_tema": "Eduardo Braga aponta novo ajuste fiscal após aprovação do relatório preliminar do Orçamento de 2027",
-      "resumo_pulso": "Conforme apuração da TV Senado e da Agência Brasil, o senador Eduardo Braga defendeu um novo ajuste fiscal após a apresentação do parecer preliminar da proposta orçamentária de 2027. O texto prevê cortes em despesas discricionárias para acomodar emendas, com votação definitiva estimada até 17 de dezembro, impactando diretamente o planejamento de gastos públicos.",
-      "sintese_nerd": "A reavaliação de gastos e cortes fiscais pode influenciar a entrega de serviços públicos e os investimentos federais em infraestrutura e políticas sociais.",
-      "titulo_curto": "Eduardo Braga aponta novo ajuste fiscal após aprovação do relatório preliminar do Orçamento de 2027",
-      "rota_editoria": "/economia",
-      "palavras_chave": [
-        "orçamento 2027",
-        "eduardo braga",
-        "ajuste fiscal",
-        "congresso nacional",
-        "cmo"
-      ],
-      "urgencia_score": 92,
-      "data_publicacao": "2026-11-26T18:17:34Z",
-      "gatilho_vitrine": "Conforme apuração da TV Senado e da Agência Brasil, o senador Eduardo Braga defendeu um novo ajuste fiscal após a apresentação do parecer preliminar da proposta orçamentária de 2027. O texto prevê cortes em despesas discricionárias para acomodar emendas, com votação definitiva estimada até 17 de dezembro, impactando diretamente o planejamento de gastos públicos.",
-      "impacto_pratico": "A reavaliação de gastos e cortes fiscais pode influenciar a entrega de serviços públicos e os investimentos federais em infraestrutura e políticas sociais.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "TV Senado",
-        "Agência Brasil (EBC)"
-      ],
-      "relevancia_score": 94,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "orçamento 2027",
-        "eduardo braga",
-        "ajuste fiscal",
-        "congresso nacional",
-        "cmo"
-      ]
-    },
-    {
-      "slug": "senado-aprova-fim-fianca-homicidio-transito-embriaguez",
-      "status": "novo",
-      "categoria": "Sociedade_Cultura",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-27T18:52:27Z",
-      "updated_at": "2026-11-26T18:52:27Z",
-      "fontes_urls": [
-        "https://g1.globo.com/politica/noticia/2026/11/26/senado-aprova-projeto-que-proibe-fianca-em-caso-de-morte-no-transito-causada-por-embriaguez-ao-volante.ghtml"
-      ],
-      "titulo_tema": "CCJ do Senado aprova projeto que proíbe fiança em casos de morte no trânsito por embriaguez",
-      "resumo_pulso": "Conforme reportagem do G1 Política, a Comissão de Constituição e Justiça (CCJ) do Senado aprovou projeto de lei que extingue a possibilidade de fiança em crimes de homicídio culposo decorrentes de acidentes de trânsito provocados por motoristas embriagados. A medida endurece as punições legais e busca coibir a impunidade.",
-      "sintese_nerd": "A proibição de fiança endurece o rigor penal contra motoristas alcoolizados envolvidos em acidentes fatais nas rodovias brasileiras.",
-      "titulo_curto": "CCJ do Senado aprova projeto que proíbe fiança em casos de morte no trânsito por embriaguez",
-      "rota_editoria": "/cultura",
-      "palavras_chave": [
-        "senado federal",
-        "trânsito",
-        "embriaguez",
-        "segurança pública"
-      ],
-      "urgencia_score": 88,
-      "data_publicacao": "2026-11-26T18:12:48Z",
-      "gatilho_vitrine": "Conforme reportagem do G1 Política, a Comissão de Constituição e Justiça (CCJ) do Senado aprovou projeto de lei que extingue a possibilidade de fiança em crimes de homicídio culposo decorrentes de acidentes de trânsito provocados por motoristas embriagados. A medida endurece as punições legais e busca coibir a impunidade.",
-      "impacto_pratico": "A proibição de fiança endurece o rigor penal contra motoristas alcoolizados envolvidos em acidentes fatais nas rodovias brasileiras.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "G1 Política"
-      ],
-      "relevancia_score": 89,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "categoria_primaria": "Cultura",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "senado federal",
-        "trânsito",
-        "embriaguez",
-        "segurança pública"
-      ]
     }
   ],
   "noticias_quentes": [
     {
-      "slug": "senado-argentino-reforma-primarias-milei",
-      "titulo_curto": "Senado argentino aprova reforma que suspende primárias e pode beneficiar Javier Milei",
-      "resumo_pulso": "Conforme reportagem da InfoMoney, o Senado da Argentina aprovou uma reforma que suspende as eleições primárias, medida que altera o tabuleiro político nacional e pode favorecer os planos eleitorais do presidente Javier Milei ao desarticular testes antecipados de força da oposição.",
-      "impacto_pratico": "Modifica o calendário político e estratégico de aliados e opositores na Argentina, impactando vizinhos do Mercosul.",
-      "categoria": "Geopolitica_Relacoes",
+      "slug": "ibge-desemprego-outubro-minima-historica",
+      "titulo_curto": "Taxa de desemprego no Brasil recua para 5,1% em outubro e iguala mínima histórica",
+      "resumo_pulso": "Segundo dados divulgados pelo IBGE e repercutidos pelo G1 Economia e InfoMoney, a taxa de desemprego no Brasil ficou em 5,1% no trimestre encerrado em outubro de 2026. O resultado iguala o menor patamar da série histórica da Pnad Contínua, alinhado às projeções do mercado financeiro.",
+      "impacto_pratico": "Mapeia o aquecimento do mercado de trabalho nacional, sustentando a renda familiar e influenciando as projeções de inflação.",
+      "categoria": "Economia_Comercio",
       "paises_envolvidos": [
-        "AR"
+        "BR"
       ],
-      "urgencia_score": 88,
-      "relevancia_score": 89,
+      "urgencia_score": 93,
+      "relevancia_score": 95,
       "nivel_confianca": "alta",
       "ttl_horas": 24,
       "horas_em_destaque": 12,
       "veiculos_origem": [
+        "IBGE",
+        "G1 Economia",
         "InfoMoney"
       ],
       "fontes_urls": [
+        "https://g1.globo.com/economia/noticia/2026/11/27/desemprego-pnad-outubro.ghtml",
+        "https://www.infomoney.com.br/economia/brasil-tem-desemprego-de-51-no-tri-ate-outubro-em-linha-com-o-esperado/"
+      ],
+      "palavras_chave": [
+        "desemprego",
+        "IBGE",
+        "Pnad Contínua",
+        "mercado de trabalho",
+        "renda"
+      ],
+      "data_publicacao": "2026-11-27T12:20:59Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "Emprego, renda das famílias e financiamento industrial entram no centro do debate econômico",
+          "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
+          "motivo_conexao": "Contextualiza a trajetória da taxa de ocupação e o consumo das famílias no cenário nacional."
+        }
+      ],
+      "expires_at": "2026-11-28T12:28:22Z",
+      "updated_at": "2026-11-27T12:28:22Z"
+    },
+    {
+      "slug": "zelensky-critica-relacao-trump-putin",
+      "titulo_curto": "Zelensky critica proximidade entre Trump e Putin e exige maior pressão ocidental sobre a Rússia",
+      "resumo_pulso": "Em entrevista à BBC News Brasil, o presidente ucraniano Volodymyr Zelensky classificou como 'estranha' a relação entre Donald Trump e Vladimir Putin. Zelensky afirmou que a atenção dos EUA foi desviada para o Oriente Médio, enfraquecendo a pressão diplomática contra a agressão russa na Europa.",
+      "impacto_pratico": "Influencia os rumos da assistência financeira e militar ocidental para a manutenção do conflito no leste europeu.",
+      "categoria": "Geopolitica_Relacoes",
+      "paises_envolvidos": [
+        "UA",
+        "US",
+        "RU"
+      ],
+      "urgencia_score": 88,
+      "relevancia_score": 87,
+      "nivel_confianca": "alta",
+      "ttl_horas": 24,
+      "horas_em_destaque": 8,
+      "veiculos_origem": [
+        "BBC News Brasil"
+      ],
+      "fontes_urls": [
+        "https://www.bbc.com/portuguese/articles/cm5y1pwkr0wwo?at_medium=RSS&at_campaign=rss"
+      ],
+      "palavras_chave": [
+        "Zelensky",
+        "Trump",
+        "Putin",
+        "Ucrânia",
+        "Rússia"
+      ],
+      "data_publicacao": "2026-11-27T12:14:12Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "Repercussão internacional das eleições americanas redesenha alianças diplomáticas",
+          "url_existente": "https://www.rodandoomundo.com.br/eleicoes",
+          "motivo_conexao": "Analisa o impacto das posições de líderes norte-americanos na diplomacia de defesa europeia."
+        }
+      ],
+      "expires_at": "2026-11-28T12:28:22Z",
+      "updated_at": "2026-11-27T12:28:22Z"
+    },
+    {
+      "slug": "eua-hackers-forca-aerea-cloud-one",
+      "titulo_curto": "Hackers invadem plataforma de dados em nuvem da Força Aérea dos EUA, reporta agência",
+      "resumo_pulso": "Segundo fontes do governo norte-americano citadas pela Reuters e pelo G1 Mundo, invasores cibernéticos invadiram a plataforma Cloud One da Força Aérea dos Estados Unidos. O incidente coloca em risco dados de alta sensibilidade tática e operacional, elevando a preocupação com a defesa digital do Pentágono.",
+      "impacto_pratico": "Aumenta o rigor em protocolos globais de segurança da informação e sistemas militares de defesa.",
+      "categoria": "Geopolitica_Relacoes",
+      "paises_envolvidos": [
+        "US"
+      ],
+      "urgencia_score": 89,
+      "relevancia_score": 88,
+      "nivel_confianca": "media",
+      "ttl_horas": 24,
+      "horas_em_destaque": 8,
+      "veiculos_origem": [
+        "Reuters",
+        "G1 Mundo"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/mundo/noticia/2026/11/27/hackers-invadem-plataforma-de-dados-da-forca-aerea-dos-eua-diz-agencia.ghtml"
+      ],
+      "palavras_chave": [
+        "hackers",
+        "Força Aérea dos EUA",
+        "Cloud One",
+        "Pentágono",
+        "cibersegurança"
+      ],
+      "data_publicacao": "2026-11-27T11:36:21Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "Política nos Estados Unidos",
+          "url_existente": "https://www.rodandoomundo.com.br/politica/estados-unidos",
+          "motivo_conexao": "Acompanhe os desdobramentos sobre segurança nacional e inteligência militar em Washington."
+        }
+      ],
+      "expires_at": "2026-11-28T12:28:22Z",
+      "updated_at": "2026-11-27T12:28:22Z"
+    },
+    {
+      "slug": "senado-argentino-reforma-primarias-milei",
+      "categoria": "Geopolitica_Relacoes",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-28T11:21:18Z",
+      "updated_at": "2026-11-27T11:21:18Z",
+      "fontes_urls": [
         "https://www.infomoney.com.br/mundo/senado-argentino-aprova-reforma-que-suspende-primarias-e-pode-favorecer-milei/"
       ],
+      "resumo_pulso": "Conforme reportagem da InfoMoney, o Senado da Argentina aprovou uma reforma que suspende as eleições primárias, medida que altera o tabuleiro político nacional e pode favorecer os planos eleitorais do presidente Javier Milei ao desarticular testes antecipados de força da oposição.",
+      "titulo_curto": "Senado argentino aprova reforma que suspende primárias e pode beneficiar Javier Milei",
       "palavras_chave": [
         "Argentina",
         "Senado",
         "Javier Milei",
         "Eleições"
       ],
+      "urgencia_score": 88,
       "data_publicacao": "2026-11-27T11:19:54Z",
+      "impacto_pratico": "Modifica o calendário político e estratégico de aliados e opositores na Argentina, impactando vizinhos do Mercosul.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "InfoMoney"
+      ],
+      "relevancia_score": 89,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "AR"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "Eleições e Democracia no Mundo",
           "url_existente": "https://www.rodandoomundo.com.br/eleicoes",
-          "motivo_conexao": "Contextualiza as mudanças eleitorais e o impacto democrático na América Latina."
+          "motivo_conexao": "Contextualiza as mudanças eleitorais e o impacto democrático na América Latina.",
+          "titulo_existente": "Eleições e Democracia no Mundo"
         }
-      ],
-      "expires_at": "2026-11-28T11:21:18Z",
-      "updated_at": "2026-11-27T11:21:18Z"
+      ]
     },
     {
       "slug": "cmn-reduz-juros-fundo-clima-baterias",
-      "titulo_curto": "CMN reduz taxa de juros do Fundo Clima para financiamento de baterias nacionais",
-      "resumo_pulso": "Segundo comunicado oficial da Agência Brasil, o Conselho Monetário Nacional (CMN) aprovou a redução para 6,5% ao ano dos juros do Fundo Clima voltados a projetos de armazenamento de energia que utilizem baterias produzidas no Brasil.",
-      "impacto_pratico": "Estimula a cadeia industrial de energias renováveis e o armazenamento elétrico com insumos nacionais.",
       "categoria": "Economia_Comercio",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "urgencia_score": 87,
-      "relevancia_score": 88,
-      "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 12,
-      "veiculos_origem": [
-        "Agência Brasil (EBC)"
-      ],
+      "expires_at": "2026-11-28T11:21:18Z",
+      "updated_at": "2026-11-27T11:21:18Z",
       "fontes_urls": [
         "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/cmn-reduz-juros-do-fundo-clima-para-baterias-nacionais"
       ],
+      "resumo_pulso": "Segundo comunicado oficial da Agência Brasil, o Conselho Monetário Nacional (CMN) aprovou a redução para 6,5% ao ano dos juros do Fundo Clima voltados a projetos de armazenamento de energia que utilizem baterias produzidas no Brasil.",
+      "titulo_curto": "CMN reduz taxa de juros do Fundo Clima para financiamento de baterias nacionais",
       "palavras_chave": [
         "CMN",
         "Fundo Clima",
         "Baterias",
         "Energia Renovável"
       ],
+      "urgencia_score": 87,
       "data_publicacao": "2026-11-27T10:02:00Z",
+      "impacto_pratico": "Estimula a cadeia industrial de energias renováveis e o armazenamento elétrico com insumos nacionais.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Agência Brasil (EBC)"
+      ],
+      "relevancia_score": 88,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "BR"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "Investimentos em energia solar, eólica e biocombustíveis aceleram transição energética no Brasil",
           "url_existente": "https://www.rodandoomundo.com.br/radar",
-          "motivo_conexao": "Relaciona incentivos financeiros governamentais à transição energética e à inovação sustentável."
+          "motivo_conexao": "Relaciona incentivos financeiros governamentais à transição energética e à inovação sustentável.",
+          "titulo_existente": "Investimentos em energia solar, eólica e biocombustíveis aceleram transição energética no Brasil"
         }
-      ],
-      "expires_at": "2026-11-28T11:21:18Z",
-      "updated_at": "2026-11-27T11:21:18Z"
+      ]
     },
     {
       "slug": "espanha-eleicoes-imigracao-sanchez",
@@ -1052,43 +1200,44 @@
     },
     {
       "slug": "trabuco-futuro-ministro-fazenda-mercado",
-      "titulo_curto": "Mercados e autoridades celebram Luiz Carlos Trabuco na Fazenda para início do Lula 4",
-      "resumo_pulso": "Segundo apuração da InfoMoney e do Poder360, a oficialização de Luiz Carlos Trabuco no Ministério da Fazenda recebeu forte apoio de industriais e investidores, sendo vista pela equipe presidencial como elemento facilitador para a aprovação da segunda etapa do ajuste fiscal no início do quarto mandato de Lula.",
-      "impacto_pratico": "A indicação traz maior estabilidade e otimismo aos mercados financeiros, refletindo em reajustes nas projeções cambiais e do Ibovespa.",
+      "titulo_curto": "Dólar despenca para R$ 5,53 na abertura com indicação de Luiz Carlos Trabuco para a Fazenda",
+      "resumo_pulso": "Conforme apuração do G1 Economia e da InfoMoney, o dólar abriu a sessão em forte queda de 3,61%, cotado a R$ 5,53, reagindo positivamente ao anúncio de Luiz Carlos Trabuco para a Fazenda no quarto mandato de Lula. O movimento ocorre em meio a relatos de bastidores apontando que o grupo do atual ministro Fernando Haddad não participará do próximo governo.",
+      "impacto_pratico": "A queda do dólar alivia custos de importação e passagens aéreas internacionais para viajantes e empresas.",
       "categoria": "Economia_Comercio",
       "paises_envolvidos": [
         "BR"
       ],
-      "urgencia_score": 96,
+      "urgencia_score": 97,
       "relevancia_score": 98,
       "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 24,
+      "horas_em_destaque": 16,
       "veiculos_origem": [
-        "InfoMoney",
-        "Poder360",
-        "G1 Política"
+        "G1 Economia",
+        "G1 Política",
+        "InfoMoney"
       ],
       "fontes_urls": [
-        "https://www.infomoney.com.br/politica/criticos-da-economia-de-lula-industria-e-mercado-celebram-trabuco-na-fazenda/",
-        "https://www.poder360.com.br/poder-economia/bradesco-confirma-ida-de-trabuco-para-a-fazenda/"
+        "https://g1.globo.com/economia/noticia/2026/11/27/dolar-ibovespa.ghtml",
+        "https://g1.globo.com/politica/blog/gerson-camarotti/post/2026/11/27/com-escolha-de-trabuco-grupo-de-haddad-deve-ficar-fora-do-lula-4.ghtml"
       ],
       "palavras_chave": [
+        "dólar",
         "Luiz Carlos Trabuco",
         "Ministério da Fazenda",
-        "Mercado Financeiro",
-        "Ajuste Fiscal"
+        "Lula 4",
+        "mercado financeiro"
       ],
       "data_publicacao": "2026-11-27T00:50:57Z",
       "links_internos_relacionados": [
         {
           "titulo_existente": "Economia no Brasil",
           "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
-          "motivo_conexao": "Acompanhe os desdobramentos da transição econômica e os impactos da equipe de governo nos mercados."
+          "motivo_conexao": "Acompanhe a evolução do mercado de câmbio e as diretrizes fiscais do governo."
         }
       ],
       "expires_at": "2026-11-28T01:04:51Z",
-      "updated_at": "2026-11-27T11:21:18Z"
+      "updated_at": "2026-11-27T12:28:22Z"
     },
     {
       "slug": "amazonas-para-roraima-apagao-energia",
@@ -1512,119 +1661,6 @@
           "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-o-orcamento",
           "motivo_conexao": "Veja os detalhes das articulações políticas em torno das metas fiscais e emendas parlamentares.",
           "titulo_existente": "Congresso e Planalto negociam prioridades da pauta econômica e votação do Orçamento"
-        }
-      ]
-    },
-    {
-      "slug": "senado-aprova-fim-fianca-homicidio-transito-embriaguez",
-      "categoria": "Sociedade_Cultura",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-27T18:52:27Z",
-      "updated_at": "2026-11-26T18:52:27Z",
-      "fontes_urls": [
-        "https://g1.globo.com/politica/noticia/2026/11/26/senado-aprova-projeto-que-proibe-fianca-em-caso-de-morte-no-transito-causada-por-embriaguez-ao-volante.ghtml"
-      ],
-      "resumo_pulso": "Conforme reportagem do G1 Política, a Comissão de Constituição e Justiça (CCJ) do Senado aprovou projeto de lei que extingue a possibilidade de fiança em crimes de homicídio culposo decorrentes de acidentes de trânsito provocados por motoristas embriagados. A medida endurece as punições legais e busca coibir a impunidade.",
-      "titulo_curto": "CCJ do Senado aprova projeto que proíbe fiança em casos de morte no trânsito por embriaguez",
-      "palavras_chave": [
-        "Senado Federal",
-        "Trânsito",
-        "Embriaguez",
-        "Segurança Pública"
-      ],
-      "urgencia_score": 88,
-      "data_publicacao": "2026-11-26T18:12:48Z",
-      "impacto_pratico": "A proibição de fiança endurece o rigor penal contra motoristas alcoolizados envolvidos em acidentes fatais nas rodovias brasileiras.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "G1 Política"
-      ],
-      "relevancia_score": 89,
-      "horas_em_destaque": 12,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
-          "motivo_conexao": "Acompanha votações e tramitações de projetos de lei no Congresso Nacional.",
-          "titulo_existente": "Política no Brasil"
-        }
-      ]
-    },
-    {
-      "slug": "navio-tanque-diesel-ibiza-espanha",
-      "categoria": "Ciencia_Clima",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-27T17:51:15Z",
-      "updated_at": "2026-11-26T17:51:15Z",
-      "fontes_urls": [
-        "https://www.bbc.com/portuguese/articles/c60ev94d02jlo?at_medium=RSS&at_campaign=rss"
-      ],
-      "resumo_pulso": "Conforme apuração da BBC News Brasil, autoridades de salvamento marítimo da Espanha monitoram potenciais impactos ecológicos na costa de Ibiza após um navio-tanque carregado com cerca de 7 mil toneladas de diesel virar na região. O incidente mobiliza equipes de contenção para evitar danos severos ao ecossistema mediterrâneo.",
-      "titulo_curto": "Espanha avalia riscos ambientais após naufrágio de navio-tanque com 7 mil toneladas de diesel perto de Ibiza",
-      "palavras_chave": [
-        "Espanha",
-        "Ibiza",
-        "Meio Ambiente",
-        "Diesel",
-        "Desastre"
-      ],
-      "urgencia_score": 86,
-      "data_publicacao": "2026-11-26T16:08:49Z",
-      "impacto_pratico": "Pode afetar rotas de navegação turísticas e o ecossistema local na região do Mediterrânico, servindo de alerta para o turismo internacional na Espanha.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "BBC News Brasil"
-      ],
-      "relevancia_score": 84,
-      "horas_em_destaque": 12,
-      "paises_envolvidos": [
-        "ES"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/radar",
-          "motivo_conexao": "Relaciona-se com a pauta global de proteção ambiental e desastres ecológicos.",
-          "titulo_existente": "Financiamento climático e metas de redução de desmatamento concentram negociações internacionais"
-        }
-      ]
-    },
-    {
-      "slug": "reforma-tributaria-ifi-aliquota-referencia",
-      "categoria": "Economia_Comercio",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-27T16:40:04Z",
-      "updated_at": "2026-11-26T17:51:15Z",
-      "fontes_urls": [
-        "https://www12.senado.leg.br/noticias/materias/2026/11/26/ifi-entrega-estudo-sobre-aliquota-da-cbs-para-eduardo-braga"
-      ],
-      "resumo_pulso": "Conforme nota técnica da Instituição Fiscal Independente (IFI) entregue ao Senado, o estudo busca balizar a definição da alíquota da Contribuição sobre Bens e Serviços (CBS) até 15 de dezembro. A discussão afeta diretamente o planejamento tributário de empresas e o bolso dos consumidores brasileiros na transição para o novo modelo de impostos sobre consumo.",
-      "titulo_curto": "IFI entrega nota técnica ao Senado e detalha projeções da alíquota da CBS para 2027",
-      "palavras_chave": [
-        "IFI",
-        "Reforma Tributária",
-        "CBS",
-        "Senado",
-        "Economia"
-      ],
-      "urgencia_score": 88,
-      "data_publicacao": "2026-11-26T16:00:01Z",
-      "impacto_pratico": "A definição da alíquota impacta os preços finais de produtos e serviços, influenciando diretamente a inflação e o custo de vida do consumidor e de viajantes no país a partir de 2027.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Agência Senado"
-      ],
-      "relevancia_score": 90,
-      "horas_em_destaque": 12,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
-          "motivo_conexao": "Complementa a leitura sobre os rumos da regulamentação e o impacto da reforma tributária na economia brasileira.",
-          "titulo_existente": "Implementação da Reforma Tributária e medidas de revisão de gastos avançam em Brasília"
         }
       ]
     }
