@@ -2,80 +2,177 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-27T18:53:04Z",
-  "batch_id": "20261127-1852",
+  "updatedAt": "2026-11-27T19:13:54Z",
+  "batch_id": "20261127-1913",
   "temas_ativos": [
     {
-      "slug": "senado-emendas-ldo-2027-meta-fiscal",
-      "titulo_tema": "Projeto da LDO de 2027 recebe mais de 1,5 mil emendas no Senado com debates sobre meta fiscal",
-      "titulo_curto": "Projeto da LDO de 2027 recebe mais de 1,5 mil emendas no Senado com debates sobre meta fiscal",
+      "slug": "trabuco-ministerio-fazenda-ajuste-fiscal-mercado",
+      "titulo_tema": "Indicação de Luiz Carlos Trabuco para a Fazenda em 2027 repercute nos mercados e define rumo fiscal",
       "status": "novo",
-      "origem_pipeline": "pulso",
+      "origem_pipeline": "curadoria",
       "categoria_primaria": "Economia",
-      "categoria": "Economia_Comercio",
       "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
+        "Politica"
       ],
       "rota_editoria": "/economia",
+      "relevancia_score": 95,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-29T19:13:54Z",
+      "palavras_chave_busca": [
+        "luiz carlos trabuco",
+        "ministério da fazenda",
+        "ajuste fiscal",
+        "governo lula",
+        "ibovespa",
+        "câmbio",
+        "economia brasileira"
+      ],
+      "gatilho_vitrine": "Destacar análises sobre o impacto da escolha de Trabuco para a credibilidade fiscal e os desdobramentos nos juros e no câmbio brasileiro.",
+      "sintese_nerd": "A indicação do executivo Luiz Carlos Trabuco para o comando da Fazenda em 2027 atua como âncora de confiança para o mercado financeiro e acalma o câmbio de curto prazo. No entanto, analistas apontam que a estratégia priorizará o ritmo de crescimento dos gastos obrigatórios em detrimento de cortes drásticos, moldando o cenário fiscal que afeta diretamente a inflação e o custo de vida dos brasileiros.",
+      "data_publicacao": "2026-11-27T19:13:54Z",
+      "updated_at": "2026-11-27T19:13:54Z"
+    },
+    {
+      "slug": "orcamento-alema-apoio-ucrania-2027",
+      "titulo_tema": "Alemanha aprova 12 bilhões de euros em apoio à Ucrânia para 2027 em meio a escalada do conflito",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia"
+      ],
+      "rota_editoria": "/radar",
       "relevancia_score": 90,
-      "urgencia_score": 89,
+      "ttl_horas": 72,
+      "expires_at": "2026-11-30T19:13:54Z",
+      "palavras_chave_busca": [
+        "alemanha",
+        "ucrânia",
+        "guerra na europa",
+        "orçamento militar",
+        "geopolítica global",
+        "sanções e conflitos"
+      ],
+      "gatilho_vitrine": "Priorizar o monitoramento do impacto financeiro e diplomático da manutenção do apoio europeu à Ucrânia frente às pressões inflacionárias globais.",
+      "sintese_nerd": "A aprovação de quase 12 bilhões de euros pelo parlamento alemão para o orçamento ucraniano de 2027 reflete o compromisso de Berlim em cobrir lacunas no financiamento de Kiev diante dos custos prolongados da guerra. A medida evidencia o fardo financeiro crescente sobre a economia europeia e sua interconexão com as cadeias globais de energia e segurança.",
+      "data_publicacao": "2026-11-27T19:13:54Z",
+      "updated_at": "2026-11-27T19:13:54Z"
+    },
+    {
+      "slug": "argentina-proibe-propaganda-bets-esportes",
+      "titulo_tema": "Argentina aprova lei unânime que proíbe totalmente propagandas de apostas esportivas",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Politica",
+      "categorias_cruzadas": [
+        "Cultura",
+        "Economia"
+      ],
+      "rota_editoria": "/politica",
+      "relevancia_score": 82,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-29T19:13:54Z",
+      "palavras_chave_busca": [
+        "argentina",
+        "apostas esportivas",
+        "bets",
+        "regulação de publicidade",
+        "impacto social",
+        "esportes"
+      ],
+      "gatilho_vitrine": "Conectar o movimento regulatório na Argentina com o debate em curso no Brasil sobre o controle e tributação das empresas de apostas online.",
+      "sintese_nerd": "A aprovação unânime de lei na Argentina que veta anúncios de apostas esportivas em uniformes, estádios e redes sociais representa uma das medidas mais duras da região contra o avanço das bets. O endurecimento regulatório vizinho serve de comparativo direto para as discussões sobre saúde pública e regulação publicitária no mercado brasileiro.",
+      "data_publicacao": "2026-11-27T19:13:54Z",
+      "updated_at": "2026-11-27T19:13:54Z"
+    },
+    {
+      "slug": "tcu-investiga-prejuizo-fundo-caixa-funcef",
+      "titulo_tema": "TCU assume investigação sobre rombo milionário na Funcef após descumprimento de ordens",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Politica",
+      "categorias_cruzadas": [
+        "Economia"
+      ],
+      "rota_editoria": "/politica",
+      "relevancia_score": 80,
+      "ttl_horas": 36,
+      "expires_at": "2026-11-29T07:13:54Z",
+      "palavras_chave_busca": [
+        "tcu",
+        "funcef",
+        "caixa econômica federal",
+        "fundos de pensão",
+        "investigação de fraudes",
+        "governança corporativa"
+      ],
+      "gatilho_vitrine": "Exibir o avanço dos órgãos de controle sobre a gestão de fundos de pensão estatais e os riscos fiscais associados.",
+      "sintese_nerd": "A decisão do Tribunal de Contas da União de assumir a investigação sobre prejuízos bilionários em fundo gerido pela Caixa coloca sob escrutínio a governança de fundos de pensão estatais. O episódio reabre o debate sobre responsabilidade fiscal e controle de investimentos institucionais no Brasil.",
+      "data_publicacao": "2026-11-27T19:13:54Z",
+      "updated_at": "2026-11-27T19:13:54Z"
+    },
+    {
+      "slug": "senado-emendas-ldo-2027-meta-fiscal",
+      "status": "novo",
+      "categoria": "Economia_Comercio",
       "ttl_horas": 24,
       "expires_at": "2026-11-28T18:53:04Z",
-      "palavras_chave_busca": [
-        "ldo 2027",
-        "senado federal",
-        "meta fiscal",
-        "orçamento",
-        "gastos públicos"
-      ],
-      "palavras_chave": [
-        "ldo 2027",
-        "senado federal",
-        "meta fiscal",
-        "orçamento",
-        "gastos públicos"
-      ],
-      "gatilho_vitrine": "Conforme apuração da Agência Senado, o projeto da Lei de Diretrizes Orçamentárias (LDO) de 2027 recebeu 1.504 emendas de parlamentares. Várias propostas buscam proteger programas sociais de cortes de gastos ou reduzir a meta fiscal a zero, enquanto grupos rivais pressionam por regras mais rígidas para garantir a estabilização rápida da dívida pública.",
-      "resumo_pulso": "Conforme apuração da Agência Senado, o projeto da Lei de Diretrizes Orçamentárias (LDO) de 2027 recebeu 1.504 emendas de parlamentares. Várias propostas buscam proteger programas sociais de cortes de gastos ou reduzir a meta fiscal a zero, enquanto grupos rivais pressionam por regras mais rígidas para garantir a estabilização rápida da dívida pública.",
-      "sintese_nerd": "A discussão impacta diretamente o planejamento de investimentos públicos, emendas parlamentares e a estabilidade fiscal do país.",
-      "impacto_pratico": "A discussão impacta diretamente o planejamento de investimentos públicos, emendas parlamentares e a estabilidade fiscal do país.",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "veiculos_origem": [
-        "Agência Senado"
-      ],
+      "updated_at": "2026-11-27T18:53:04Z",
       "fontes_urls": [
         "https://www12.senado.leg.br/noticias/materias/2026/11/27/emendas-a-ldo-de-2027-tentam-proteger-programas-e-mudar-a-meta-fiscal"
       ],
+      "titulo_tema": "Projeto da LDO de 2027 recebe mais de 1,5 mil emendas no Senado com debates sobre meta fiscal",
+      "resumo_pulso": "Conforme apuração da Agência Senado, o projeto da Lei de Diretrizes Orçamentárias (LDO) de 2027 recebeu 1.504 emendas de parlamentares. Várias propostas buscam proteger programas sociais de cortes de gastos ou reduzir a meta fiscal a zero, enquanto grupos rivais pressionam por regras mais rígidas para garantir a estabilização rápida da dívida pública.",
+      "sintese_nerd": "A discussão impacta diretamente o planejamento de investimentos públicos, emendas parlamentares e a estabilidade fiscal do país.",
+      "titulo_curto": "Projeto da LDO de 2027 recebe mais de 1,5 mil emendas no Senado com debates sobre meta fiscal",
+      "rota_editoria": "/economia",
+      "palavras_chave": [
+        "ldo 2027",
+        "senado federal",
+        "meta fiscal",
+        "orçamento",
+        "gastos públicos"
+      ],
+      "urgencia_score": 89,
       "data_publicacao": "2026-11-27T18:06:03Z",
-      "updated_at": "2026-11-27T18:53:04Z"
-    },
-    {
-      "slug": "argentina-aprova-lei-contra-bets",
-      "titulo_tema": "Congresso da Argentina aprova lei para proibir propaganda de apostas esportivas",
-      "titulo_curto": "Congresso da Argentina aprova lei para proibir propaganda de apostas esportivas",
-      "status": "novo",
+      "gatilho_vitrine": "Conforme apuração da Agência Senado, o projeto da Lei de Diretrizes Orçamentárias (LDO) de 2027 recebeu 1.504 emendas de parlamentares. Várias propostas buscam proteger programas sociais de cortes de gastos ou reduzir a meta fiscal a zero, enquanto grupos rivais pressionam por regras mais rígidas para garantir a estabilização rápida da dívida pública.",
+      "impacto_pratico": "A discussão impacta diretamente o planejamento de investimentos públicos, emendas parlamentares e a estabilidade fiscal do país.",
       "origem_pipeline": "pulso",
-      "categoria_primaria": "Cultura",
-      "categoria": "Sociedade_Cultura",
+      "veiculos_origem": [
+        "Agência Senado"
+      ],
+      "relevancia_score": 90,
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "categoria_primaria": "Economia",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
       ],
-      "rota_editoria": "/cultura",
-      "relevancia_score": 87,
-      "urgencia_score": 88,
+      "palavras_chave_busca": [
+        "ldo 2027",
+        "senado federal",
+        "meta fiscal",
+        "orçamento",
+        "gastos públicos"
+      ]
+    },
+    {
+      "slug": "argentina-aprova-lei-contra-bets",
+      "status": "novo",
+      "categoria": "Sociedade_Cultura",
       "ttl_horas": 24,
       "expires_at": "2026-11-28T18:53:04Z",
-      "palavras_chave_busca": [
-        "argentina",
-        "bets",
-        "apostas esportivas",
-        "ludopatia",
-        "congresso"
+      "updated_at": "2026-11-27T18:53:04Z",
+      "fontes_urls": [
+        "https://g1.globo.com/mundo/noticia/2026/11/27/argentina-aprova-lei-contra-bets-que-proibe-patrocinio-no-esporte.ghtml"
       ],
+      "titulo_tema": "Congresso da Argentina aprova lei para proibir propaganda de apostas esportivas",
+      "resumo_pulso": "Segundo informações da Agência Brasil, do G1 Economia e do Poder360, o Congresso da Argentina aprovou por unanimidade uma legislação rigorosa para combater a ludopatia. A nova lei proíbe publicidade de empresas de apostas esportivas em uniformes, estádios e redes sociais, além de estabelecer mecanismos de autoexclusão para apostadores.",
+      "sintese_nerd": "Afeta o modelo de financiamento de clubes esportivos e o mercado publicitário voltado a plataformas de apostas online.",
+      "titulo_curto": "Congresso da Argentina aprova lei para proibir propaganda de apostas esportivas",
+      "rota_editoria": "/cultura",
       "palavras_chave": [
         "argentina",
         "bets",
@@ -83,22 +180,31 @@
         "ludopatia",
         "congresso"
       ],
+      "urgencia_score": 88,
+      "data_publicacao": "2026-11-27T17:46:09Z",
       "gatilho_vitrine": "Segundo informações da Agência Brasil, do G1 Economia e do Poder360, o Congresso da Argentina aprovou por unanimidade uma legislação rigorosa para combater a ludopatia. A nova lei proíbe publicidade de empresas de apostas esportivas em uniformes, estádios e redes sociais, além de estabelecer mecanismos de autoexclusão para apostadores.",
-      "resumo_pulso": "Segundo informações da Agência Brasil, do G1 Economia e do Poder360, o Congresso da Argentina aprovou por unanimidade uma legislação rigorosa para combater a ludopatia. A nova lei proíbe publicidade de empresas de apostas esportivas em uniformes, estádios e redes sociais, além de estabelecer mecanismos de autoexclusão para apostadores.",
-      "sintese_nerd": "Afeta o modelo de financiamento de clubes esportivos e o mercado publicitário voltado a plataformas de apostas online.",
       "impacto_pratico": "Afeta o modelo de financiamento de clubes esportivos e o mercado publicitário voltado a plataformas de apostas online.",
-      "paises_envolvidos": [
-        "AR"
-      ],
+      "origem_pipeline": "pulso",
       "veiculos_origem": [
         "G1 Economia",
         "Poder360"
       ],
-      "fontes_urls": [
-        "https://g1.globo.com/mundo/noticia/2026/11/27/argentina-aprova-lei-contra-bets-que-proibe-patrocinio-no-esporte.ghtml"
+      "relevancia_score": 87,
+      "paises_envolvidos": [
+        "AR"
       ],
-      "data_publicacao": "2026-11-27T17:46:09Z",
-      "updated_at": "2026-11-27T18:53:04Z"
+      "categoria_primaria": "Cultura",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "argentina",
+        "bets",
+        "apostas esportivas",
+        "ludopatia",
+        "congresso"
+      ]
     },
     {
       "slug": "b3-e-bancos-anunciam-stablecoin-open-brl",
@@ -149,48 +255,48 @@
     },
     {
       "slug": "ministerio-mulheres-lanca-selo-nao-e-nao",
-      "titulo_tema": "Ministério das Mulheres inicia lançamento nacional do selo 'Não é Não' em bares",
-      "titulo_curto": "Ministério das Mulheres inicia lançamento nacional do selo 'Não é Não' em bares",
       "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Cultura",
       "categoria": "Sociedade_Cultura",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/cultura",
-      "relevancia_score": 88,
-      "urgencia_score": 87,
       "ttl_horas": 24,
       "expires_at": "2026-11-28T17:56:25Z",
-      "palavras_chave_busca": [
-        "ministério das mulheres",
-        "selo não é não",
-        "segurança",
-        "violência de gênero"
+      "updated_at": "2026-11-27T18:53:04Z",
+      "fontes_urls": [
+        "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-11/selo-nao-e-nao-mulheres-seguras-e-lancado-hoje-em-bares-brasileiros"
       ],
+      "titulo_tema": "Ministério das Mulheres inicia lançamento nacional do selo 'Não é Não' em bares",
+      "resumo_pulso": "Conforme atualização oficial divulgada pela Agência Brasil, o Ministério das Mulheres iniciou nesta sexta-feira (27) o lançamento nacional do selo 'Não é Não – Mulheres Seguras'. Os primeiros estabelecimentos certificados em Brasília e outras capitais passam a contar com equipes capacitadas para acolher mulheres em situações de constrangimento, assédio ou violência.",
+      "sintese_nerd": "Garante maior segurança e pontos de apoio em redes de entretenimento e estabelecimentos comerciais.",
+      "titulo_curto": "Ministério das Mulheres inicia lançamento nacional do selo 'Não é Não' em bares",
+      "rota_editoria": "/cultura",
       "palavras_chave": [
         "ministério das mulheres",
         "selo não é não",
         "segurança",
         "violência de gênero"
       ],
+      "urgencia_score": 87,
+      "data_publicacao": "2026-11-27T17:21:00Z",
       "gatilho_vitrine": "Conforme atualização oficial divulgada pela Agência Brasil, o Ministério das Mulheres iniciou nesta sexta-feira (27) o lançamento nacional do selo 'Não é Não – Mulheres Seguras'. Os primeiros estabelecimentos certificados em Brasília e outras capitais passam a contar com equipes capacitadas para acolher mulheres em situações de constrangimento, assédio ou violência.",
-      "resumo_pulso": "Conforme atualização oficial divulgada pela Agência Brasil, o Ministério das Mulheres iniciou nesta sexta-feira (27) o lançamento nacional do selo 'Não é Não – Mulheres Seguras'. Os primeiros estabelecimentos certificados em Brasília e outras capitais passam a contar com equipes capacitadas para acolher mulheres em situações de constrangimento, assédio ou violência.",
-      "sintese_nerd": "Garante maior segurança e pontos de apoio em redes de entretenimento e estabelecimentos comerciais.",
       "impacto_pratico": "Garante maior segurança e pontos de apoio em redes de entretenimento e estabelecimentos comerciais.",
-      "paises_envolvidos": [
-        "BR"
-      ],
+      "origem_pipeline": "pulso",
       "veiculos_origem": [
         "Agência Brasil (EBC)"
       ],
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-11/selo-nao-e-nao-mulheres-seguras-e-lancado-hoje-em-bares-brasileiros"
+      "relevancia_score": 88,
+      "paises_envolvidos": [
+        "BR"
       ],
-      "data_publicacao": "2026-11-27T17:21:00Z",
-      "updated_at": "2026-11-27T18:53:04Z"
+      "categoria_primaria": "Cultura",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "ministério das mulheres",
+        "selo não é não",
+        "segurança",
+        "violência de gênero"
+      ]
     },
     {
       "slug": "ministerio-justica-bloqueio-bets-ilegais",
@@ -235,85 +341,6 @@
         "ministério da justiça",
         "apostas",
         "segurança digital"
-      ]
-    },
-    {
-      "slug": "indicacao-trabuco-ministerio-fazenda-impacto-mercados",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-29T16:45:42Z",
-      "updated_at": "2026-11-27T16:45:42Z",
-      "titulo_tema": "Indicação de Luiz Carlos Trabuco para o Ministério da Fazenda e Reação dos Mercados",
-      "sintese_nerd": "A escolha de Luiz Carlos Trabuco para a Fazenda reduziu a percepção de risco institucional, gerando um 'circuit breaker' positivo com queda expressiva nas taxas de juros futuros e títulos públicos. Contudo, o sucesso da gestão dependerá da capacidade de negociar reformas e cortes sobre um orçamento composto por 90% de despesas obrigatórias.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-27T16:45:42Z",
-      "gatilho_vitrine": "Destaque a repercussão imediata da indicação de Trabuco na queda das taxas do Tesouro Direto e os desafios fiscais diante de um orçamento rígido.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 95,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Politica"
-      ],
-      "palavras_chave_busca": [
-        "luiz carlos trabuco",
-        "ministério da fazenda",
-        "tesouro direto",
-        "circuit breaker",
-        "orçamento 2027",
-        "gastos obrigatórios",
-        "mercado financeiro"
-      ]
-    },
-    {
-      "slug": "quarentena-agencias-reguladoras-risco-autonomia",
-      "status": "novo",
-      "ttl_horas": 72,
-      "expires_at": "2026-11-30T16:45:42Z",
-      "updated_at": "2026-11-27T16:45:42Z",
-      "titulo_tema": "Debate sobre a Redução da Quarentena para Diretores de Agências Reguladoras",
-      "sintese_nerd": "A proposta de redução do prazo de quarentena para ex-dirigentes de agências reguladoras gerou forte resistência institucional por abrir flancos a pressões político-partidárias. A perda de autonomia técnica afeta diretamente a previsibilidade regulatória e a segurança jurídica em setores-chave de infraestrutura e serviços.",
-      "rota_editoria": "/politica",
-      "data_publicacao": "2026-11-27T16:45:42Z",
-      "gatilho_vitrine": "Monitore os desdobramentos do manifesto de entidades contra o avanço de projeto de lei que flexibiliza as regras de quarentena de dirigentes regulatórios.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 88,
-      "categoria_primaria": "Politica",
-      "categorias_cruzadas": [
-        "Economia"
-      ],
-      "palavras_chave_busca": [
-        "agências reguladoras",
-        "quarentena",
-        "autonomia institucional",
-        "segurança jurídica",
-        "congresso nacional",
-        "interferência política"
-      ]
-    },
-    {
-      "slug": "bulgaria-bloqueio-sancoes-russia-uniao-europeia",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-29T16:45:42Z",
-      "updated_at": "2026-11-27T16:45:42Z",
-      "titulo_tema": "Bulgária Utiliza Pacote de Sanções da UE contra Rússia para Extrair Concessões Comerciais",
-      "sintese_nerd": "A decisão da Bulgária de travar o mais recente pacote de sanções da União Europeia contra Moscou evidencia as fraturas internas do bloco para conciliar pressões geopolíticas e interesses econômicos locais. O movimento busca reverter restrições sobre a importação de ferro russo, rivalizando indiretamente com os interesses de suprimento da Ucrânia.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-27T16:45:42Z",
-      "gatilho_vitrine": "Exiba no radar global as negociações de bastidores na UE onde a Bulgária condiciona o 22º pacote de sanções a interesses industriais próprios.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 86,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia"
-      ],
-      "palavras_chave_busca": [
-        "bulgária",
-        "união europeia",
-        "sanções à rússia",
-        "importação de ferro",
-        "geopolítica europeia",
-        "comércio global"
       ]
     },
     {
@@ -834,78 +861,128 @@
         "ação de graças",
         "falta de energia"
       ]
-    },
+    }
+  ],
+  "temas_curadoria": [
     {
-      "slug": "ibge-pof-2024-2025-desigualdade-renda",
+      "slug": "trabuco-ministerio-fazenda-ajuste-fiscal-mercado",
+      "titulo_tema": "Indicação de Luiz Carlos Trabuco para a Fazenda em 2027 repercute nos mercados e define rumo fiscal",
       "status": "novo",
-      "categoria": "Economia_Comercio",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-28T13:51:13Z",
-      "updated_at": "2026-11-27T13:51:13Z",
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/familias-mais-pobres-sao-217-mas-ficam-com-apenas-47-da-renda",
-        "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/brasileiros-estao-gastando-mais-com-alimentacao-e-saude-aponta-ibge"
-      ],
-      "titulo_tema": "Pesquisa de Orçamentos Familiares do IBGE aponta alta concentração de renda e gastos maiores com alimentação",
-      "resumo_pulso": "Conforme dados da Pesquisa de Orçamentos Familiares (POF) 2024-2025 divulgados pelo IBGE e pela Agência Brasil, as famílias com renda até dois salários mínimos somam 21,7% da população, mas detêm apenas 4,7% da renda total. O levantamento também revelou que os gastos com alimentação passaram a ocupar 14% das despesas de consumo, ganhando maior espaço no orçamento.",
-      "sintese_nerd": "Evidencia o peso do custo de vida sobre as famílias de menor renda e orienta diretrizes de políticas públicas e sociais.",
-      "titulo_curto": "Pesquisa de Orçamentos Familiares do IBGE aponta alta concentração de renda e gastos maiores com alimentação",
-      "rota_editoria": "/economia",
-      "palavras_chave": [
-        "ibge",
-        "pof",
-        "orçamento familiar",
-        "desigualdade de renda",
-        "alimentação"
-      ],
-      "urgencia_score": 92,
-      "data_publicacao": "2026-11-27T13:05:00Z",
-      "gatilho_vitrine": "Conforme dados da Pesquisa de Orçamentos Familiares (POF) 2024-2025 divulgados pelo IBGE e pela Agência Brasil, as famílias com renda até dois salários mínimos somam 21,7% da população, mas detêm apenas 4,7% da renda total. O levantamento também revelou que os gastos com alimentação passaram a ocupar 14% das despesas de consumo, ganhando maior espaço no orçamento.",
-      "impacto_pratico": "Evidencia o peso do custo de vida sobre as famílias de menor renda e orienta diretrizes de políticas públicas e sociais.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "Agência Brasil (EBC)",
-        "Câmara dos Deputados"
-      ],
-      "relevancia_score": 94,
-      "paises_envolvidos": [
-        "BR"
-      ],
+      "origem_pipeline": "curadoria",
       "categoria_primaria": "Economia",
       "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
+        "Politica"
       ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 95,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-29T19:13:54Z",
       "palavras_chave_busca": [
-        "ibge",
-        "pof",
-        "orçamento familiar",
-        "desigualdade de renda",
-        "alimentação"
-      ]
+        "luiz carlos trabuco",
+        "ministério da fazenda",
+        "ajuste fiscal",
+        "governo lula",
+        "ibovespa",
+        "câmbio",
+        "economia brasileira"
+      ],
+      "gatilho_vitrine": "Destacar análises sobre o impacto da escolha de Trabuco para a credibilidade fiscal e os desdobramentos nos juros e no câmbio brasileiro.",
+      "sintese_nerd": "A indicação do executivo Luiz Carlos Trabuco para o comando da Fazenda em 2027 atua como âncora de confiança para o mercado financeiro e acalma o câmbio de curto prazo. No entanto, analistas apontam que a estratégia priorizará o ritmo de crescimento dos gastos obrigatórios em detrimento de cortes drásticos, moldando o cenário fiscal que afeta diretamente a inflação e o custo de vida dos brasileiros.",
+      "data_publicacao": "2026-11-27T19:13:54Z",
+      "updated_at": "2026-11-27T19:13:54Z"
+    },
+    {
+      "slug": "orcamento-alema-apoio-ucrania-2027",
+      "titulo_tema": "Alemanha aprova 12 bilhões de euros em apoio à Ucrânia para 2027 em meio a escalada do conflito",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 90,
+      "ttl_horas": 72,
+      "expires_at": "2026-11-30T19:13:54Z",
+      "palavras_chave_busca": [
+        "alemanha",
+        "ucrânia",
+        "guerra na europa",
+        "orçamento militar",
+        "geopolítica global",
+        "sanções e conflitos"
+      ],
+      "gatilho_vitrine": "Priorizar o monitoramento do impacto financeiro e diplomático da manutenção do apoio europeu à Ucrânia frente às pressões inflacionárias globais.",
+      "sintese_nerd": "A aprovação de quase 12 bilhões de euros pelo parlamento alemão para o orçamento ucraniano de 2027 reflete o compromisso de Berlim em cobrir lacunas no financiamento de Kiev diante dos custos prolongados da guerra. A medida evidencia o fardo financeiro crescente sobre a economia europeia e sua interconexão com as cadeias globais de energia e segurança.",
+      "data_publicacao": "2026-11-27T19:13:54Z",
+      "updated_at": "2026-11-27T19:13:54Z"
+    },
+    {
+      "slug": "argentina-proibe-propaganda-bets-esportes",
+      "titulo_tema": "Argentina aprova lei unânime que proíbe totalmente propagandas de apostas esportivas",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Politica",
+      "categorias_cruzadas": [
+        "Cultura",
+        "Economia"
+      ],
+      "rota_editoria": "/politica",
+      "relevancia_score": 82,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-29T19:13:54Z",
+      "palavras_chave_busca": [
+        "argentina",
+        "apostas esportivas",
+        "bets",
+        "regulação de publicidade",
+        "impacto social",
+        "esportes"
+      ],
+      "gatilho_vitrine": "Conectar o movimento regulatório na Argentina com o debate em curso no Brasil sobre o controle e tributação das empresas de apostas online.",
+      "sintese_nerd": "A aprovação unânime de lei na Argentina que veta anúncios de apostas esportivas em uniformes, estádios e redes sociais representa uma das medidas mais duras da região contra o avanço das bets. O endurecimento regulatório vizinho serve de comparativo direto para as discussões sobre saúde pública e regulação publicitária no mercado brasileiro.",
+      "data_publicacao": "2026-11-27T19:13:54Z",
+      "updated_at": "2026-11-27T19:13:54Z"
+    },
+    {
+      "slug": "tcu-investiga-prejuizo-fundo-caixa-funcef",
+      "titulo_tema": "TCU assume investigação sobre rombo milionário na Funcef após descumprimento de ordens",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Politica",
+      "categorias_cruzadas": [
+        "Economia"
+      ],
+      "rota_editoria": "/politica",
+      "relevancia_score": 80,
+      "ttl_horas": 36,
+      "expires_at": "2026-11-29T07:13:54Z",
+      "palavras_chave_busca": [
+        "tcu",
+        "funcef",
+        "caixa econômica federal",
+        "fundos de pensão",
+        "investigação de fraudes",
+        "governança corporativa"
+      ],
+      "gatilho_vitrine": "Exibir o avanço dos órgãos de controle sobre a gestão de fundos de pensão estatais e os riscos fiscais associados.",
+      "sintese_nerd": "A decisão do Tribunal de Contas da União de assumir a investigação sobre prejuízos bilionários em fundo gerido pela Caixa coloca sob escrutínio a governança de fundos de pensão estatais. O episódio reabre o debate sobre responsabilidade fiscal e controle de investimentos institucionais no Brasil.",
+      "data_publicacao": "2026-11-27T19:13:54Z",
+      "updated_at": "2026-11-27T19:13:54Z"
     }
   ],
   "noticias_quentes": [
     {
       "slug": "senado-emendas-ldo-2027-meta-fiscal",
-      "titulo_curto": "Projeto da LDO de 2027 recebe mais de 1,5 mil emendas no Senado com debates sobre meta fiscal",
-      "resumo_pulso": "Conforme apuração da Agência Senado, o projeto da Lei de Diretrizes Orçamentárias (LDO) de 2027 recebeu 1.504 emendas de parlamentares. Várias propostas buscam proteger programas sociais de cortes de gastos ou reduzir a meta fiscal a zero, enquanto grupos rivais pressionam por regras mais rígidas para garantir a estabilização rápida da dívida pública.",
-      "impacto_pratico": "A discussão impacta diretamente o planejamento de investimentos públicos, emendas parlamentares e a estabilidade fiscal do país.",
       "categoria": "Economia_Comercio",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "urgencia_score": 89,
-      "relevancia_score": 90,
-      "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 12,
-      "veiculos_origem": [
-        "Agência Senado"
-      ],
+      "expires_at": "2026-11-28T18:53:04Z",
+      "updated_at": "2026-11-27T18:53:04Z",
       "fontes_urls": [
         "https://www12.senado.leg.br/noticias/materias/2026/11/27/emendas-a-ldo-de-2027-tentam-proteger-programas-e-mudar-a-meta-fiscal"
       ],
+      "resumo_pulso": "Conforme apuração da Agência Senado, o projeto da Lei de Diretrizes Orçamentárias (LDO) de 2027 recebeu 1.504 emendas de parlamentares. Várias propostas buscam proteger programas sociais de cortes de gastos ou reduzir a meta fiscal a zero, enquanto grupos rivais pressionam por regras mais rígidas para garantir a estabilização rápida da dívida pública.",
+      "titulo_curto": "Projeto da LDO de 2027 recebe mais de 1,5 mil emendas no Senado com debates sobre meta fiscal",
       "palavras_chave": [
         "LDO 2027",
         "Senado Federal",
@@ -913,38 +990,37 @@
         "Orçamento",
         "Gastos Públicos"
       ],
+      "urgencia_score": 89,
       "data_publicacao": "2026-11-27T18:06:03Z",
+      "impacto_pratico": "A discussão impacta diretamente o planejamento de investimentos públicos, emendas parlamentares e a estabilidade fiscal do país.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Agência Senado"
+      ],
+      "relevancia_score": 90,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "BR"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "O que é o Orçamento?",
           "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-o-orcamento",
-          "motivo_conexao": "Explica como o planejamento e a distribuição de recursos públicos são debatidos no Congresso."
+          "motivo_conexao": "Explica como o planejamento e a distribuição de recursos públicos são debatidos no Congresso.",
+          "titulo_existente": "O que é o Orçamento?"
         }
-      ],
-      "expires_at": "2026-11-28T18:53:04Z",
-      "updated_at": "2026-11-27T18:53:04Z"
+      ]
     },
     {
       "slug": "argentina-aprova-lei-contra-bets",
-      "titulo_curto": "Congresso da Argentina aprova lei para proibir propaganda de apostas esportivas",
-      "resumo_pulso": "Segundo informações da Agência Brasil, do G1 Economia e do Poder360, o Congresso da Argentina aprovou por unanimidade uma legislação rigorosa para combater a ludopatia. A nova lei proíbe publicidade de empresas de apostas esportivas em uniformes, estádios e redes sociais, além de estabelecer mecanismos de autoexclusão para apostadores.",
-      "impacto_pratico": "Afeta o modelo de financiamento de clubes esportivos e o mercado publicitário voltado a plataformas de apostas online.",
       "categoria": "Sociedade_Cultura",
-      "paises_envolvidos": [
-        "AR"
-      ],
-      "urgencia_score": 88,
-      "relevancia_score": 87,
-      "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 12,
-      "veiculos_origem": [
-        "G1 Economia",
-        "Poder360"
-      ],
+      "expires_at": "2026-11-28T18:53:04Z",
+      "updated_at": "2026-11-27T18:53:04Z",
       "fontes_urls": [
         "https://g1.globo.com/mundo/noticia/2026/11/27/argentina-aprova-lei-contra-bets-que-proibe-patrocinio-no-esporte.ghtml"
       ],
+      "resumo_pulso": "Segundo informações da Agência Brasil, do G1 Economia e do Poder360, o Congresso da Argentina aprovou por unanimidade uma legislação rigorosa para combater a ludopatia. A nova lei proíbe publicidade de empresas de apostas esportivas em uniformes, estádios e redes sociais, além de estabelecer mecanismos de autoexclusão para apostadores.",
+      "titulo_curto": "Congresso da Argentina aprova lei para proibir propaganda de apostas esportivas",
       "palavras_chave": [
         "Argentina",
         "Bets",
@@ -952,10 +1028,20 @@
         "Ludopatia",
         "Congresso"
       ],
+      "urgencia_score": 88,
       "data_publicacao": "2026-11-27T17:46:09Z",
-      "links_internos_relacionados": [],
-      "expires_at": "2026-11-28T18:53:04Z",
-      "updated_at": "2026-11-27T18:53:04Z"
+      "impacto_pratico": "Afeta o modelo de financiamento de clubes esportivos e o mercado publicitário voltado a plataformas de apostas online.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "G1 Economia",
+        "Poder360"
+      ],
+      "relevancia_score": 87,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "AR"
+      ],
+      "links_internos_relacionados": []
     },
     {
       "slug": "b3-e-bancos-anunciam-stablecoin-open-brl",
@@ -997,34 +1083,34 @@
     },
     {
       "slug": "ministerio-mulheres-lanca-selo-nao-e-nao",
-      "titulo_curto": "Ministério das Mulheres inicia lançamento nacional do selo 'Não é Não' em bares",
-      "resumo_pulso": "Conforme atualização oficial divulgada pela Agência Brasil, o Ministério das Mulheres iniciou nesta sexta-feira (27) o lançamento nacional do selo 'Não é Não – Mulheres Seguras'. Os primeiros estabelecimentos certificados em Brasília e outras capitais passam a contar com equipes capacitadas para acolher mulheres em situações de constrangimento, assédio ou violência.",
-      "impacto_pratico": "Garante maior segurança e pontos de apoio em redes de entretenimento e estabelecimentos comerciais.",
       "categoria": "Sociedade_Cultura",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "urgencia_score": 87,
-      "relevancia_score": 88,
-      "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 12,
-      "veiculos_origem": [
-        "Agência Brasil (EBC)"
-      ],
+      "expires_at": "2026-11-28T17:56:25Z",
+      "updated_at": "2026-11-27T18:53:04Z",
       "fontes_urls": [
         "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-11/selo-nao-e-nao-mulheres-seguras-e-lancado-hoje-em-bares-brasileiros"
       ],
+      "resumo_pulso": "Conforme atualização oficial divulgada pela Agência Brasil, o Ministério das Mulheres iniciou nesta sexta-feira (27) o lançamento nacional do selo 'Não é Não – Mulheres Seguras'. Os primeiros estabelecimentos certificados em Brasília e outras capitais passam a contar com equipes capacitadas para acolher mulheres em situações de constrangimento, assédio ou violência.",
+      "titulo_curto": "Ministério das Mulheres inicia lançamento nacional do selo 'Não é Não' em bares",
       "palavras_chave": [
         "Ministério das Mulheres",
         "Selo Não é Não",
         "Segurança",
         "Violência de Gênero"
       ],
+      "urgencia_score": 87,
       "data_publicacao": "2026-11-27T17:21:00Z",
-      "links_internos_relacionados": [],
-      "expires_at": "2026-11-28T17:56:25Z",
-      "updated_at": "2026-11-27T18:53:04Z"
+      "impacto_pratico": "Garante maior segurança e pontos de apoio em redes de entretenimento e estabelecimentos comerciais.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Agência Brasil (EBC)"
+      ],
+      "relevancia_score": 88,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "links_internos_relacionados": []
     },
     {
       "slug": "ministerio-justica-bloqueio-bets-ilegais",
@@ -1620,87 +1706,6 @@
           "motivo_conexao": "Acompanhe os desdobramentos sobre segurança nacional e inteligência militar em Washington.",
           "titulo_existente": "Política nos Estados Unidos"
         }
-      ]
-    }
-  ],
-  "temas_curadoria": [
-    {
-      "slug": "indicacao-trabuco-ministerio-fazenda-impacto-mercados",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-29T16:45:42Z",
-      "updated_at": "2026-11-27T16:45:42Z",
-      "titulo_tema": "Indicação de Luiz Carlos Trabuco para o Ministério da Fazenda e Reação dos Mercados",
-      "sintese_nerd": "A escolha de Luiz Carlos Trabuco para a Fazenda reduziu a percepção de risco institucional, gerando um 'circuit breaker' positivo com queda expressiva nas taxas de juros futuros e títulos públicos. Contudo, o sucesso da gestão dependerá da capacidade de negociar reformas e cortes sobre um orçamento composto por 90% de despesas obrigatórias.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-27T16:45:42Z",
-      "gatilho_vitrine": "Destaque a repercussão imediata da indicação de Trabuco na queda das taxas do Tesouro Direto e os desafios fiscais diante de um orçamento rígido.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 95,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Politica"
-      ],
-      "palavras_chave_busca": [
-        "luiz carlos trabuco",
-        "ministério da fazenda",
-        "tesouro direto",
-        "circuit breaker",
-        "orçamento 2027",
-        "gastos obrigatórios",
-        "mercado financeiro"
-      ]
-    },
-    {
-      "slug": "quarentena-agencias-reguladoras-risco-autonomia",
-      "status": "novo",
-      "ttl_horas": 72,
-      "expires_at": "2026-11-30T16:45:42Z",
-      "updated_at": "2026-11-27T16:45:42Z",
-      "titulo_tema": "Debate sobre a Redução da Quarentena para Diretores de Agências Reguladoras",
-      "sintese_nerd": "A proposta de redução do prazo de quarentena para ex-dirigentes de agências reguladoras gerou forte resistência institucional por abrir flancos a pressões político-partidárias. A perda de autonomia técnica afeta diretamente a previsibilidade regulatória e a segurança jurídica em setores-chave de infraestrutura e serviços.",
-      "rota_editoria": "/politica",
-      "data_publicacao": "2026-11-27T16:45:42Z",
-      "gatilho_vitrine": "Monitore os desdobramentos do manifesto de entidades contra o avanço de projeto de lei que flexibiliza as regras de quarentena de dirigentes regulatórios.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 88,
-      "categoria_primaria": "Politica",
-      "categorias_cruzadas": [
-        "Economia"
-      ],
-      "palavras_chave_busca": [
-        "agências reguladoras",
-        "quarentena",
-        "autonomia institucional",
-        "segurança jurídica",
-        "congresso nacional",
-        "interferência política"
-      ]
-    },
-    {
-      "slug": "bulgaria-bloqueio-sancoes-russia-uniao-europeia",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-29T16:45:42Z",
-      "updated_at": "2026-11-27T16:45:42Z",
-      "titulo_tema": "Bulgária Utiliza Pacote de Sanções da UE contra Rússia para Extrair Concessões Comerciais",
-      "sintese_nerd": "A decisão da Bulgária de travar o mais recente pacote de sanções da União Europeia contra Moscou evidencia as fraturas internas do bloco para conciliar pressões geopolíticas e interesses econômicos locais. O movimento busca reverter restrições sobre a importação de ferro russo, rivalizando indiretamente com os interesses de suprimento da Ucrânia.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-27T16:45:42Z",
-      "gatilho_vitrine": "Exiba no radar global as negociações de bastidores na UE onde a Bulgária condiciona o 22º pacote de sanções a interesses industriais próprios.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 86,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia"
-      ],
-      "palavras_chave_busca": [
-        "bulgária",
-        "união europeia",
-        "sanções à rússia",
-        "importação de ferro",
-        "geopolítica europeia",
-        "comércio global"
       ]
     }
   ]
