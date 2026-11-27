@@ -2,33 +2,103 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-27T12:28:22Z",
-  "batch_id": "20261127-1227",
+  "updatedAt": "2026-11-27T13:31:41Z",
+  "batch_id": "20261127-1331",
   "temas_ativos": [
     {
-      "slug": "ibge-desemprego-outubro-minima-historica",
-      "titulo_tema": "Taxa de desemprego no Brasil recua para 5,1% em outubro e iguala mínima histórica",
-      "titulo_curto": "Taxa de desemprego no Brasil recua para 5,1% em outubro e iguala mínima histórica",
+      "slug": "trabuco-ministerio-fazenda-impacto-bolsa-dolar",
+      "titulo_tema": "Indicação de Luiz Carlos Trabuco para a Fazenda causa forte alta na Bolsa e queda do dólar",
       "status": "novo",
-      "origem_pipeline": "pulso",
+      "origem_pipeline": "curadoria",
       "categoria_primaria": "Economia",
-      "categoria": "Economia_Comercio",
       "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
+        "Politica",
+        "Geopolitica_Radar"
       ],
       "rota_editoria": "/economia",
-      "relevancia_score": 95,
-      "urgencia_score": 93,
+      "relevancia_score": 98,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-29T13:31:41Z",
+      "palavras_chave_busca": [
+        "luiz carlos trabuco",
+        "ministério da fazenda",
+        "ibovespa",
+        "dólar",
+        "governo lula",
+        "política fiscal",
+        "taxa selic"
+      ],
+      "gatilho_vitrine": "Destacar análises sobre a guinada econômica com Trabuco na Fazenda, focando nas expectativas de ajuste fiscal e impacto nos juros.",
+      "sintese_nerd": "A confirmação de Luiz Carlos Trabuco no comando da Fazenda sinaliza ao mercado uma guinada em direção à austeridade e ao diálogo fiscal, provocando uma disparada de quase 4% no Ibovespa e forte queda do dólar. Essa recepção positiva reduz o prêmio de risco brasileiro e abre espaço para que o Banco Central acelere o retorno ao ciclo de cortes na taxa Selic.",
+      "data_publicacao": "2026-11-27T13:31:41Z",
+      "updated_at": "2026-11-27T13:31:41Z"
+    },
+    {
+      "slug": "onu-alerta-fome-global-conflitos-el-nino",
+      "titulo_tema": "ONU alerta para avanço da fome global impulsionada por conflitos armados e El Niño",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 85,
+      "ttl_horas": 72,
+      "expires_at": "2026-11-30T13:31:41Z",
+      "palavras_chave_busca": [
+        "onu",
+        "fome global",
+        "el niño",
+        "conflitos internacionais",
+        "segurança alimentar"
+      ],
+      "gatilho_vitrine": "Conectar crises humanitárias globais às cadeias de suprimentos de commodities agrícolas e estabilidade geopolítica.",
+      "sintese_nerd": "Relatório das Nações Unidas aponta que a combinação de guerras geopolíticas prolongadas e os efeitos severos do fenômeno climático El Niño criam novos focos de extrema insegurança alimentar, predominantemente na África. O cenário pressiona o comércio internacional de alimentos e exige coordenação multilateral urgente.",
+      "data_publicacao": "2026-11-27T13:31:41Z",
+      "updated_at": "2026-11-27T13:31:41Z"
+    },
+    {
+      "slug": "bndes-libera-recursos-capital-giro-latam",
+      "titulo_tema": "BNDES injeta R$ 2,7 bilhões na Latam para capital de giro e alívio de custos",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Politica"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 82,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-28T13:31:41Z",
+      "palavras_chave_busca": [
+        "bndes",
+        "latam",
+        "capital de giro",
+        "aviação civil",
+        "combustíveis"
+      ],
+      "gatilho_vitrine": "Exibir o impacto de financiamentos públicos estratégicos para grandes companhias de infraestrutura e transporte.",
+      "sintese_nerd": "A liberação de R$ 2,7 bilhões pelo BNDES visa fortalecer o caixa da Latam frente à alta volatilidade nos preços globais de combustíveis. A medida ilustra o retorno de políticas ativas de fomento a setores intensivos em capital no Brasil.",
+      "data_publicacao": "2026-11-27T13:31:41Z",
+      "updated_at": "2026-11-27T13:31:41Z"
+    },
+    {
+      "slug": "ibge-desemprego-outubro-minima-historica",
+      "status": "novo",
+      "categoria": "Economia_Comercio",
       "ttl_horas": 24,
       "expires_at": "2026-11-28T12:28:22Z",
-      "palavras_chave_busca": [
-        "desemprego",
-        "ibge",
-        "pnad contínua",
-        "mercado de trabalho",
-        "renda"
+      "updated_at": "2026-11-27T12:28:22Z",
+      "fontes_urls": [
+        "https://g1.globo.com/economia/noticia/2026/11/27/desemprego-pnad-outubro.ghtml",
+        "https://www.infomoney.com.br/economia/brasil-tem-desemprego-de-51-no-tri-ate-outubro-em-linha-com-o-esperado/"
       ],
+      "titulo_tema": "Taxa de desemprego no Brasil recua para 5,1% em outubro e iguala mínima histórica",
+      "resumo_pulso": "Segundo dados divulgados pelo IBGE e repercutidos pelo G1 Economia e InfoMoney, a taxa de desemprego no Brasil ficou em 5,1% no trimestre encerrado em outubro de 2026. O resultado iguala o menor patamar da série histórica da Pnad Contínua, alinhado às projeções do mercado financeiro.",
+      "sintese_nerd": "Mapeia o aquecimento do mercado de trabalho nacional, sustentando a renda familiar e influenciando as projeções de inflação.",
+      "titulo_curto": "Taxa de desemprego no Brasil recua para 5,1% em outubro e iguala mínima histórica",
+      "rota_editoria": "/economia",
       "palavras_chave": [
         "desemprego",
         "ibge",
@@ -36,49 +106,48 @@
         "mercado de trabalho",
         "renda"
       ],
+      "urgencia_score": 93,
+      "data_publicacao": "2026-11-27T12:20:59Z",
       "gatilho_vitrine": "Segundo dados divulgados pelo IBGE e repercutidos pelo G1 Economia e InfoMoney, a taxa de desemprego no Brasil ficou em 5,1% no trimestre encerrado em outubro de 2026. O resultado iguala o menor patamar da série histórica da Pnad Contínua, alinhado às projeções do mercado financeiro.",
-      "resumo_pulso": "Segundo dados divulgados pelo IBGE e repercutidos pelo G1 Economia e InfoMoney, a taxa de desemprego no Brasil ficou em 5,1% no trimestre encerrado em outubro de 2026. O resultado iguala o menor patamar da série histórica da Pnad Contínua, alinhado às projeções do mercado financeiro.",
-      "sintese_nerd": "Mapeia o aquecimento do mercado de trabalho nacional, sustentando a renda familiar e influenciando as projeções de inflação.",
       "impacto_pratico": "Mapeia o aquecimento do mercado de trabalho nacional, sustentando a renda familiar e influenciando as projeções de inflação.",
-      "paises_envolvidos": [
-        "BR"
-      ],
+      "origem_pipeline": "pulso",
       "veiculos_origem": [
         "IBGE",
         "G1 Economia",
         "InfoMoney"
       ],
-      "fontes_urls": [
-        "https://g1.globo.com/economia/noticia/2026/11/27/desemprego-pnad-outubro.ghtml",
-        "https://www.infomoney.com.br/economia/brasil-tem-desemprego-de-51-no-tri-ate-outubro-em-linha-com-o-esperado/"
+      "relevancia_score": 95,
+      "paises_envolvidos": [
+        "BR"
       ],
-      "data_publicacao": "2026-11-27T12:20:59Z",
-      "updated_at": "2026-11-27T12:28:22Z"
-    },
-    {
-      "slug": "zelensky-critica-relacao-trump-putin",
-      "titulo_tema": "Zelensky critica proximidade entre Trump e Putin e exige maior pressão ocidental sobre a Rússia",
-      "titulo_curto": "Zelensky critica proximidade entre Trump e Putin e exige maior pressão ocidental sobre a Rússia",
-      "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Geopolitica_Radar",
-      "categoria": "Geopolitica_Relacoes",
+      "categoria_primaria": "Economia",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
       ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 87,
-      "urgencia_score": 88,
+      "palavras_chave_busca": [
+        "desemprego",
+        "ibge",
+        "pnad contínua",
+        "mercado de trabalho",
+        "renda"
+      ]
+    },
+    {
+      "slug": "zelensky-critica-relacao-trump-putin",
+      "status": "novo",
+      "categoria": "Geopolitica_Relacoes",
       "ttl_horas": 24,
       "expires_at": "2026-11-28T12:28:22Z",
-      "palavras_chave_busca": [
-        "zelensky",
-        "trump",
-        "putin",
-        "ucrânia",
-        "rússia"
+      "updated_at": "2026-11-27T12:28:22Z",
+      "fontes_urls": [
+        "https://www.bbc.com/portuguese/articles/cm5y1pwkr0wwo?at_medium=RSS&at_campaign=rss"
       ],
+      "titulo_tema": "Zelensky critica proximidade entre Trump e Putin e exige maior pressão ocidental sobre a Rússia",
+      "resumo_pulso": "Em entrevista à BBC News Brasil, o presidente ucraniano Volodymyr Zelensky classificou como 'estranha' a relação entre Donald Trump e Vladimir Putin. Zelensky afirmou que a atenção dos EUA foi desviada para o Oriente Médio, enfraquecendo a pressão diplomática contra a agressão russa na Europa.",
+      "sintese_nerd": "Influencia os rumos da assistência financeira e militar ocidental para a manutenção do conflito no leste europeu.",
+      "titulo_curto": "Zelensky critica proximidade entre Trump e Putin e exige maior pressão ocidental sobre a Rússia",
+      "rota_editoria": "/radar",
       "palavras_chave": [
         "zelensky",
         "trump",
@@ -86,48 +155,48 @@
         "ucrânia",
         "rússia"
       ],
+      "urgencia_score": 88,
+      "data_publicacao": "2026-11-27T12:14:12Z",
       "gatilho_vitrine": "Em entrevista à BBC News Brasil, o presidente ucraniano Volodymyr Zelensky classificou como 'estranha' a relação entre Donald Trump e Vladimir Putin. Zelensky afirmou que a atenção dos EUA foi desviada para o Oriente Médio, enfraquecendo a pressão diplomática contra a agressão russa na Europa.",
-      "resumo_pulso": "Em entrevista à BBC News Brasil, o presidente ucraniano Volodymyr Zelensky classificou como 'estranha' a relação entre Donald Trump e Vladimir Putin. Zelensky afirmou que a atenção dos EUA foi desviada para o Oriente Médio, enfraquecendo a pressão diplomática contra a agressão russa na Europa.",
-      "sintese_nerd": "Influencia os rumos da assistência financeira e militar ocidental para a manutenção do conflito no leste europeu.",
       "impacto_pratico": "Influencia os rumos da assistência financeira e militar ocidental para a manutenção do conflito no leste europeu.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "BBC News Brasil"
+      ],
+      "relevancia_score": 87,
       "paises_envolvidos": [
         "UA",
         "US",
         "RU"
       ],
-      "veiculos_origem": [
-        "BBC News Brasil"
-      ],
-      "fontes_urls": [
-        "https://www.bbc.com/portuguese/articles/cm5y1pwkr0wwo?at_medium=RSS&at_campaign=rss"
-      ],
-      "data_publicacao": "2026-11-27T12:14:12Z",
-      "updated_at": "2026-11-27T12:28:22Z"
-    },
-    {
-      "slug": "eua-hackers-forca-aerea-cloud-one",
-      "titulo_tema": "Hackers invadem plataforma de dados em nuvem da Força Aérea dos EUA, reporta agência",
-      "titulo_curto": "Hackers invadem plataforma de dados em nuvem da Força Aérea dos EUA, reporta agência",
-      "status": "novo",
-      "origem_pipeline": "pulso",
       "categoria_primaria": "Geopolitica_Radar",
-      "categoria": "Geopolitica_Relacoes",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
       ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 88,
-      "urgencia_score": 89,
+      "palavras_chave_busca": [
+        "zelensky",
+        "trump",
+        "putin",
+        "ucrânia",
+        "rússia"
+      ]
+    },
+    {
+      "slug": "eua-hackers-forca-aerea-cloud-one",
+      "status": "novo",
+      "categoria": "Geopolitica_Relacoes",
       "ttl_horas": 24,
       "expires_at": "2026-11-28T12:28:22Z",
-      "palavras_chave_busca": [
-        "hackers",
-        "força aérea dos eua",
-        "cloud one",
-        "pentágono",
-        "cibersegurança"
+      "updated_at": "2026-11-27T12:28:22Z",
+      "fontes_urls": [
+        "https://g1.globo.com/mundo/noticia/2026/11/27/hackers-invadem-plataforma-de-dados-da-forca-aerea-dos-eua-diz-agencia.ghtml"
       ],
+      "titulo_tema": "Hackers invadem plataforma de dados em nuvem da Força Aérea dos EUA, reporta agência",
+      "resumo_pulso": "Segundo fontes do governo norte-americano citadas pela Reuters e pelo G1 Mundo, invasores cibernéticos invadiram a plataforma Cloud One da Força Aérea dos Estados Unidos. O incidente coloca em risco dados de alta sensibilidade tática e operacional, elevando a preocupação com a defesa digital do Pentágono.",
+      "sintese_nerd": "Aumenta o rigor em protocolos globais de segurança da informação e sistemas militares de defesa.",
+      "titulo_curto": "Hackers invadem plataforma de dados em nuvem da Força Aérea dos EUA, reporta agência",
+      "rota_editoria": "/radar",
       "palavras_chave": [
         "hackers",
         "força aérea dos eua",
@@ -135,22 +204,31 @@
         "pentágono",
         "cibersegurança"
       ],
+      "urgencia_score": 89,
+      "data_publicacao": "2026-11-27T11:36:21Z",
       "gatilho_vitrine": "Segundo fontes do governo norte-americano citadas pela Reuters e pelo G1 Mundo, invasores cibernéticos invadiram a plataforma Cloud One da Força Aérea dos Estados Unidos. O incidente coloca em risco dados de alta sensibilidade tática e operacional, elevando a preocupação com a defesa digital do Pentágono.",
-      "resumo_pulso": "Segundo fontes do governo norte-americano citadas pela Reuters e pelo G1 Mundo, invasores cibernéticos invadiram a plataforma Cloud One da Força Aérea dos Estados Unidos. O incidente coloca em risco dados de alta sensibilidade tática e operacional, elevando a preocupação com a defesa digital do Pentágono.",
-      "sintese_nerd": "Aumenta o rigor em protocolos globais de segurança da informação e sistemas militares de defesa.",
       "impacto_pratico": "Aumenta o rigor em protocolos globais de segurança da informação e sistemas militares de defesa.",
-      "paises_envolvidos": [
-        "US"
-      ],
+      "origem_pipeline": "pulso",
       "veiculos_origem": [
         "Reuters",
         "G1 Mundo"
       ],
-      "fontes_urls": [
-        "https://g1.globo.com/mundo/noticia/2026/11/27/hackers-invadem-plataforma-de-dados-da-forca-aerea-dos-eua-diz-agencia.ghtml"
+      "relevancia_score": 88,
+      "paises_envolvidos": [
+        "US"
       ],
-      "data_publicacao": "2026-11-27T11:36:21Z",
-      "updated_at": "2026-11-27T12:28:22Z"
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "hackers",
+        "força aérea dos eua",
+        "cloud one",
+        "pentágono",
+        "cibersegurança"
+      ]
     },
     {
       "slug": "senado-argentino-reforma-primarias-milei",
@@ -195,86 +273,6 @@
         "senado",
         "javier milei",
         "eleições"
-      ]
-    },
-    {
-      "slug": "estrategia-brasil-tarifas-trump-embraer-diplomacia",
-      "status": "novo",
-      "ttl_horas": 72,
-      "expires_at": "2026-11-30T10:37:23Z",
-      "updated_at": "2026-11-27T10:37:23Z",
-      "titulo_tema": "Brasil articula resposta diplomática contra tarifas de Trump e mitigação de impactos na Embraer",
-      "sintese_nerd": "O Chanceler Mauro Vieira lidera as negociações do governo brasileiro para evitar que o aumento de tarifas anunciado por Donald Trump atinja em cheio a indústria nacional. Enquanto a Embraer tenta sustentar valor de mercado, o país busca alternativas multilaterais contra o protecionismo da Casa Branca.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-27T10:37:23Z",
-      "gatilho_vitrine": "Monitorar negociações do Itamaraty para conter o avanço protecionista sobre exportações estratégicas brasileiras",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 91,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Politica"
-      ],
-      "palavras_chave_busca": [
-        "mauro vieira",
-        "donald trump",
-        "tarifas comerciais",
-        "embraer",
-        "itamaraty",
-        "protecionismo eua",
-        "exportações brasileiras"
-      ]
-    },
-    {
-      "slug": "eleicoes-espanha-crise-demografica-imigracao-europa",
-      "status": "novo",
-      "ttl_horas": 96,
-      "expires_at": "2026-12-01T10:37:23Z",
-      "updated_at": "2026-11-27T10:37:23Z",
-      "titulo_tema": "Eleições na Espanha colocam imigração e transição demográfica no centro do debate europeu",
-      "sintese_nerd": "Com a taxa de natalidade em declínio acentuado, a Espanha vai às urnas em uma disputa cujo tema central é a absorção econômica de imigrantes. O pleito serve como termômetro sobre a ascensão da pauta migratória nas decisões eleitorais de potências do continente europeu.",
-      "rota_editoria": "/eleicoes",
-      "data_publicacao": "2026-11-27T10:37:23Z",
-      "gatilho_vitrine": "Exibir o impacto das eleições espanholas nas políticas de fronteira e trabalho da União Europeia",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 83,
-      "categoria_primaria": "Eleicoes",
-      "categorias_cruzadas": [
-        "Geopolitica_Radar",
-        "Cultura"
-      ],
-      "palavras_chave_busca": [
-        "eleições espanha",
-        "imigração europa",
-        "demografia espanhola",
-        "união europeia",
-        "política migratória"
-      ]
-    },
-    {
-      "slug": "geopolitica-black-friday-soft-power-americano-consumo",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-29T10:37:23Z",
-      "updated_at": "2026-11-27T10:37:23Z",
-      "titulo_tema": "A geopolítica da Black Friday: a expansão do 'soft power' cultural e econômico dos EUA",
-      "sintese_nerd": "A consolidação global da Black Friday ilustra a eficácia do 'soft power' dos EUA em exportar modelos comportamentais e comerciais sem necessidade de datas históricas compartilhadas. O fenômeno altera calendários de varejo mundiais e reflete a dependência de plataformas e dinâmicas de consumo ocidentais.",
-      "rota_editoria": "/cultura",
-      "data_publicacao": "2026-11-27T10:37:23Z",
-      "gatilho_vitrine": "Analisar a conversão de datas comemorativas norte-americanas em motores de consumo globais",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 77,
-      "categoria_primaria": "Cultura",
-      "categorias_cruzadas": [
-        "Economia",
-        "Geopolitica_Radar"
-      ],
-      "palavras_chave_busca": [
-        "black friday",
-        "soft power",
-        "cultura de consumo",
-        "influência americana",
-        "comércio global"
       ]
     },
     {
@@ -464,28 +462,20 @@
     },
     {
       "slug": "trabuco-futuro-ministro-fazenda-mercado",
-      "titulo_tema": "Dólar despenca para R$ 5,53 na abertura com indicação de Luiz Carlos Trabuco para a Fazenda",
-      "titulo_curto": "Dólar despenca para R$ 5,53 na abertura com indicação de Luiz Carlos Trabuco para a Fazenda",
       "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Economia",
       "categoria": "Economia_Comercio",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 98,
-      "urgencia_score": 97,
       "ttl_horas": 24,
       "expires_at": "2026-11-28T01:04:51Z",
-      "palavras_chave_busca": [
-        "dólar",
-        "luiz carlos trabuco",
-        "ministério da fazenda",
-        "lula 4",
-        "mercado financeiro"
+      "updated_at": "2026-11-27T12:28:22Z",
+      "fontes_urls": [
+        "https://g1.globo.com/economia/noticia/2026/11/27/dolar-ibovespa.ghtml",
+        "https://g1.globo.com/politica/blog/gerson-camarotti/post/2026/11/27/com-escolha-de-trabuco-grupo-de-haddad-deve-ficar-fora-do-lula-4.ghtml"
       ],
+      "titulo_tema": "Dólar despenca para R$ 5,53 na abertura com indicação de Luiz Carlos Trabuco para a Fazenda",
+      "resumo_pulso": "Conforme apuração do G1 Economia e da InfoMoney, o dólar abriu a sessão em forte queda de 3,61%, cotado a R$ 5,53, reagindo positivamente ao anúncio de Luiz Carlos Trabuco para a Fazenda no quarto mandato de Lula. O movimento ocorre em meio a relatos de bastidores apontando que o grupo do atual ministro Fernando Haddad não participará do próximo governo.",
+      "sintese_nerd": "A queda do dólar alivia custos de importação e passagens aéreas internacionais para viajantes e empresas.",
+      "titulo_curto": "Dólar despenca para R$ 5,53 na abertura com indicação de Luiz Carlos Trabuco para a Fazenda",
+      "rota_editoria": "/economia",
       "palavras_chave": [
         "dólar",
         "luiz carlos trabuco",
@@ -493,72 +483,31 @@
         "lula 4",
         "mercado financeiro"
       ],
+      "urgencia_score": 97,
+      "data_publicacao": "2026-11-27T00:50:57Z",
       "gatilho_vitrine": "Conforme apuração do G1 Economia e da InfoMoney, o dólar abriu a sessão em forte queda de 3,61%, cotado a R$ 5,53, reagindo positivamente ao anúncio de Luiz Carlos Trabuco para a Fazenda no quarto mandato de Lula. O movimento ocorre em meio a relatos de bastidores apontando que o grupo do atual ministro Fernando Haddad não participará do próximo governo.",
-      "resumo_pulso": "Conforme apuração do G1 Economia e da InfoMoney, o dólar abriu a sessão em forte queda de 3,61%, cotado a R$ 5,53, reagindo positivamente ao anúncio de Luiz Carlos Trabuco para a Fazenda no quarto mandato de Lula. O movimento ocorre em meio a relatos de bastidores apontando que o grupo do atual ministro Fernando Haddad não participará do próximo governo.",
-      "sintese_nerd": "A queda do dólar alivia custos de importação e passagens aéreas internacionais para viajantes e empresas.",
       "impacto_pratico": "A queda do dólar alivia custos de importação e passagens aéreas internacionais para viajantes e empresas.",
-      "paises_envolvidos": [
-        "BR"
-      ],
+      "origem_pipeline": "pulso",
       "veiculos_origem": [
         "G1 Economia",
         "G1 Política",
         "InfoMoney"
       ],
-      "fontes_urls": [
-        "https://g1.globo.com/economia/noticia/2026/11/27/dolar-ibovespa.ghtml",
-        "https://g1.globo.com/politica/blog/gerson-camarotti/post/2026/11/27/com-escolha-de-trabuco-grupo-de-haddad-deve-ficar-fora-do-lula-4.ghtml"
-      ],
-      "data_publicacao": "2026-11-27T00:50:57Z",
-      "updated_at": "2026-11-27T12:28:22Z"
-    },
-    {
-      "slug": "amazonas-para-roraima-apagao-energia",
-      "status": "novo",
-      "categoria": "Mobilidade_Fronteiras",
-      "ttl_horas": 12,
-      "expires_at": "2026-11-27T13:04:51Z",
-      "updated_at": "2026-11-27T02:34:41Z",
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/geral/noticia/2026-11/amazonas-para-e-roraima-passam-por-apagao-de-energia-nesta-quinta"
-      ],
-      "titulo_tema": "Operador Nacional do Sistema relata restabelecimento gradual após apagão na Região Norte",
-      "resumo_pulso": "Segundo dados atualizados da Agência Brasil (EBC), o apagão elétrico que afetou os estados do Amazonas, Pará e Roraima na tarde de quinta-feira decorreu do desligamento de cerca de 2.323 MW em linhas de transmissão. O Operador Nacional do Sistema Elétrico (ONS) informou que o fornecimento de energia vem sendo retomado de forma progressiva nas regiões impactadas.",
-      "sintese_nerd": "Interrupções severas no fornecimento de energia na Região Norte afetam diretamente a mobilidade urbana, serviços essenciais, o comércio local e o planejamento de deslocamentos na área.",
-      "titulo_curto": "Operador Nacional do Sistema relata restabelecimento gradual após apagão na Região Norte",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "apagão",
-        "amazonas",
-        "pará",
-        "roraima",
-        "ons",
-        "energia elétrica"
-      ],
-      "urgencia_score": 89,
-      "data_publicacao": "2026-11-26T23:58:00Z",
-      "gatilho_vitrine": "Segundo dados atualizados da Agência Brasil (EBC), o apagão elétrico que afetou os estados do Amazonas, Pará e Roraima na tarde de quinta-feira decorreu do desligamento de cerca de 2.323 MW em linhas de transmissão. O Operador Nacional do Sistema Elétrico (ONS) informou que o fornecimento de energia vem sendo retomado de forma progressiva nas regiões impactadas.",
-      "impacto_pratico": "Interrupções severas no fornecimento de energia na Região Norte afetam diretamente a mobilidade urbana, serviços essenciais, o comércio local e o planejamento de deslocamentos na área.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "Agência Brasil (EBC)"
-      ],
-      "relevancia_score": 88,
+      "relevancia_score": 98,
       "paises_envolvidos": [
         "BR"
       ],
-      "categoria_primaria": "Geopolitica_Radar",
+      "categoria_primaria": "Economia",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
       ],
       "palavras_chave_busca": [
-        "apagão",
-        "amazonas",
-        "pará",
-        "roraima",
-        "ons",
-        "energia elétrica"
+        "dólar",
+        "luiz carlos trabuco",
+        "ministério da fazenda",
+        "lula 4",
+        "mercado financeiro"
       ]
     },
     {
@@ -894,30 +843,99 @@
       ]
     }
   ],
+  "temas_curadoria": [
+    {
+      "slug": "trabuco-ministerio-fazenda-impacto-bolsa-dolar",
+      "titulo_tema": "Indicação de Luiz Carlos Trabuco para a Fazenda causa forte alta na Bolsa e queda do dólar",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Politica",
+        "Geopolitica_Radar"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 98,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-29T13:31:41Z",
+      "palavras_chave_busca": [
+        "luiz carlos trabuco",
+        "ministério da fazenda",
+        "ibovespa",
+        "dólar",
+        "governo lula",
+        "política fiscal",
+        "taxa selic"
+      ],
+      "gatilho_vitrine": "Destacar análises sobre a guinada econômica com Trabuco na Fazenda, focando nas expectativas de ajuste fiscal e impacto nos juros.",
+      "sintese_nerd": "A confirmação de Luiz Carlos Trabuco no comando da Fazenda sinaliza ao mercado uma guinada em direção à austeridade e ao diálogo fiscal, provocando uma disparada de quase 4% no Ibovespa e forte queda do dólar. Essa recepção positiva reduz o prêmio de risco brasileiro e abre espaço para que o Banco Central acelere o retorno ao ciclo de cortes na taxa Selic.",
+      "data_publicacao": "2026-11-27T13:31:41Z",
+      "updated_at": "2026-11-27T13:31:41Z"
+    },
+    {
+      "slug": "onu-alerta-fome-global-conflitos-el-nino",
+      "titulo_tema": "ONU alerta para avanço da fome global impulsionada por conflitos armados e El Niño",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 85,
+      "ttl_horas": 72,
+      "expires_at": "2026-11-30T13:31:41Z",
+      "palavras_chave_busca": [
+        "onu",
+        "fome global",
+        "el niño",
+        "conflitos internacionais",
+        "segurança alimentar"
+      ],
+      "gatilho_vitrine": "Conectar crises humanitárias globais às cadeias de suprimentos de commodities agrícolas e estabilidade geopolítica.",
+      "sintese_nerd": "Relatório das Nações Unidas aponta que a combinação de guerras geopolíticas prolongadas e os efeitos severos do fenômeno climático El Niño criam novos focos de extrema insegurança alimentar, predominantemente na África. O cenário pressiona o comércio internacional de alimentos e exige coordenação multilateral urgente.",
+      "data_publicacao": "2026-11-27T13:31:41Z",
+      "updated_at": "2026-11-27T13:31:41Z"
+    },
+    {
+      "slug": "bndes-libera-recursos-capital-giro-latam",
+      "titulo_tema": "BNDES injeta R$ 2,7 bilhões na Latam para capital de giro e alívio de custos",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Politica"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 82,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-28T13:31:41Z",
+      "palavras_chave_busca": [
+        "bndes",
+        "latam",
+        "capital de giro",
+        "aviação civil",
+        "combustíveis"
+      ],
+      "gatilho_vitrine": "Exibir o impacto de financiamentos públicos estratégicos para grandes companhias de infraestrutura e transporte.",
+      "sintese_nerd": "A liberação de R$ 2,7 bilhões pelo BNDES visa fortalecer o caixa da Latam frente à alta volatilidade nos preços globais de combustíveis. A medida ilustra o retorno de políticas ativas de fomento a setores intensivos em capital no Brasil.",
+      "data_publicacao": "2026-11-27T13:31:41Z",
+      "updated_at": "2026-11-27T13:31:41Z"
+    }
+  ],
   "noticias_quentes": [
     {
       "slug": "ibge-desemprego-outubro-minima-historica",
-      "titulo_curto": "Taxa de desemprego no Brasil recua para 5,1% em outubro e iguala mínima histórica",
-      "resumo_pulso": "Segundo dados divulgados pelo IBGE e repercutidos pelo G1 Economia e InfoMoney, a taxa de desemprego no Brasil ficou em 5,1% no trimestre encerrado em outubro de 2026. O resultado iguala o menor patamar da série histórica da Pnad Contínua, alinhado às projeções do mercado financeiro.",
-      "impacto_pratico": "Mapeia o aquecimento do mercado de trabalho nacional, sustentando a renda familiar e influenciando as projeções de inflação.",
       "categoria": "Economia_Comercio",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "urgencia_score": 93,
-      "relevancia_score": 95,
-      "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 12,
-      "veiculos_origem": [
-        "IBGE",
-        "G1 Economia",
-        "InfoMoney"
-      ],
+      "expires_at": "2026-11-28T12:28:22Z",
+      "updated_at": "2026-11-27T12:28:22Z",
       "fontes_urls": [
         "https://g1.globo.com/economia/noticia/2026/11/27/desemprego-pnad-outubro.ghtml",
         "https://www.infomoney.com.br/economia/brasil-tem-desemprego-de-51-no-tri-ate-outubro-em-linha-com-o-esperado/"
       ],
+      "resumo_pulso": "Segundo dados divulgados pelo IBGE e repercutidos pelo G1 Economia e InfoMoney, a taxa de desemprego no Brasil ficou em 5,1% no trimestre encerrado em outubro de 2026. O resultado iguala o menor patamar da série histórica da Pnad Contínua, alinhado às projeções do mercado financeiro.",
+      "titulo_curto": "Taxa de desemprego no Brasil recua para 5,1% em outubro e iguala mínima histórica",
       "palavras_chave": [
         "desemprego",
         "IBGE",
@@ -925,39 +943,39 @@
         "mercado de trabalho",
         "renda"
       ],
+      "urgencia_score": 93,
       "data_publicacao": "2026-11-27T12:20:59Z",
+      "impacto_pratico": "Mapeia o aquecimento do mercado de trabalho nacional, sustentando a renda familiar e influenciando as projeções de inflação.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "IBGE",
+        "G1 Economia",
+        "InfoMoney"
+      ],
+      "relevancia_score": 95,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "BR"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "Emprego, renda das famílias e financiamento industrial entram no centro do debate econômico",
           "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
-          "motivo_conexao": "Contextualiza a trajetória da taxa de ocupação e o consumo das famílias no cenário nacional."
+          "motivo_conexao": "Contextualiza a trajetória da taxa de ocupação e o consumo das famílias no cenário nacional.",
+          "titulo_existente": "Emprego, renda das famílias e financiamento industrial entram no centro do debate econômico"
         }
-      ],
-      "expires_at": "2026-11-28T12:28:22Z",
-      "updated_at": "2026-11-27T12:28:22Z"
+      ]
     },
     {
       "slug": "zelensky-critica-relacao-trump-putin",
-      "titulo_curto": "Zelensky critica proximidade entre Trump e Putin e exige maior pressão ocidental sobre a Rússia",
-      "resumo_pulso": "Em entrevista à BBC News Brasil, o presidente ucraniano Volodymyr Zelensky classificou como 'estranha' a relação entre Donald Trump e Vladimir Putin. Zelensky afirmou que a atenção dos EUA foi desviada para o Oriente Médio, enfraquecendo a pressão diplomática contra a agressão russa na Europa.",
-      "impacto_pratico": "Influencia os rumos da assistência financeira e militar ocidental para a manutenção do conflito no leste europeu.",
       "categoria": "Geopolitica_Relacoes",
-      "paises_envolvidos": [
-        "UA",
-        "US",
-        "RU"
-      ],
-      "urgencia_score": 88,
-      "relevancia_score": 87,
-      "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 8,
-      "veiculos_origem": [
-        "BBC News Brasil"
-      ],
+      "expires_at": "2026-11-28T12:28:22Z",
+      "updated_at": "2026-11-27T12:28:22Z",
       "fontes_urls": [
         "https://www.bbc.com/portuguese/articles/cm5y1pwkr0wwo?at_medium=RSS&at_campaign=rss"
       ],
+      "resumo_pulso": "Em entrevista à BBC News Brasil, o presidente ucraniano Volodymyr Zelensky classificou como 'estranha' a relação entre Donald Trump e Vladimir Putin. Zelensky afirmou que a atenção dos EUA foi desviada para o Oriente Médio, enfraquecendo a pressão diplomática contra a agressão russa na Europa.",
+      "titulo_curto": "Zelensky critica proximidade entre Trump e Putin e exige maior pressão ocidental sobre a Rússia",
       "palavras_chave": [
         "Zelensky",
         "Trump",
@@ -965,38 +983,39 @@
         "Ucrânia",
         "Rússia"
       ],
+      "urgencia_score": 88,
       "data_publicacao": "2026-11-27T12:14:12Z",
+      "impacto_pratico": "Influencia os rumos da assistência financeira e militar ocidental para a manutenção do conflito no leste europeu.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "BBC News Brasil"
+      ],
+      "relevancia_score": 87,
+      "horas_em_destaque": 8,
+      "paises_envolvidos": [
+        "UA",
+        "US",
+        "RU"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "Repercussão internacional das eleições americanas redesenha alianças diplomáticas",
           "url_existente": "https://www.rodandoomundo.com.br/eleicoes",
-          "motivo_conexao": "Analisa o impacto das posições de líderes norte-americanos na diplomacia de defesa europeia."
+          "motivo_conexao": "Analisa o impacto das posições de líderes norte-americanos na diplomacia de defesa europeia.",
+          "titulo_existente": "Repercussão internacional das eleições americanas redesenha alianças diplomáticas"
         }
-      ],
-      "expires_at": "2026-11-28T12:28:22Z",
-      "updated_at": "2026-11-27T12:28:22Z"
+      ]
     },
     {
       "slug": "eua-hackers-forca-aerea-cloud-one",
-      "titulo_curto": "Hackers invadem plataforma de dados em nuvem da Força Aérea dos EUA, reporta agência",
-      "resumo_pulso": "Segundo fontes do governo norte-americano citadas pela Reuters e pelo G1 Mundo, invasores cibernéticos invadiram a plataforma Cloud One da Força Aérea dos Estados Unidos. O incidente coloca em risco dados de alta sensibilidade tática e operacional, elevando a preocupação com a defesa digital do Pentágono.",
-      "impacto_pratico": "Aumenta o rigor em protocolos globais de segurança da informação e sistemas militares de defesa.",
       "categoria": "Geopolitica_Relacoes",
-      "paises_envolvidos": [
-        "US"
-      ],
-      "urgencia_score": 89,
-      "relevancia_score": 88,
-      "nivel_confianca": "media",
       "ttl_horas": 24,
-      "horas_em_destaque": 8,
-      "veiculos_origem": [
-        "Reuters",
-        "G1 Mundo"
-      ],
+      "expires_at": "2026-11-28T12:28:22Z",
+      "updated_at": "2026-11-27T12:28:22Z",
       "fontes_urls": [
         "https://g1.globo.com/mundo/noticia/2026/11/27/hackers-invadem-plataforma-de-dados-da-forca-aerea-dos-eua-diz-agencia.ghtml"
       ],
+      "resumo_pulso": "Segundo fontes do governo norte-americano citadas pela Reuters e pelo G1 Mundo, invasores cibernéticos invadiram a plataforma Cloud One da Força Aérea dos Estados Unidos. O incidente coloca em risco dados de alta sensibilidade tática e operacional, elevando a preocupação com a defesa digital do Pentágono.",
+      "titulo_curto": "Hackers invadem plataforma de dados em nuvem da Força Aérea dos EUA, reporta agência",
       "palavras_chave": [
         "hackers",
         "Força Aérea dos EUA",
@@ -1004,16 +1023,26 @@
         "Pentágono",
         "cibersegurança"
       ],
+      "urgencia_score": 89,
       "data_publicacao": "2026-11-27T11:36:21Z",
+      "impacto_pratico": "Aumenta o rigor em protocolos globais de segurança da informação e sistemas militares de defesa.",
+      "nivel_confianca": "media",
+      "veiculos_origem": [
+        "Reuters",
+        "G1 Mundo"
+      ],
+      "relevancia_score": 88,
+      "horas_em_destaque": 8,
+      "paises_envolvidos": [
+        "US"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "Política nos Estados Unidos",
           "url_existente": "https://www.rodandoomundo.com.br/politica/estados-unidos",
-          "motivo_conexao": "Acompanhe os desdobramentos sobre segurança nacional e inteligência militar em Washington."
+          "motivo_conexao": "Acompanhe os desdobramentos sobre segurança nacional e inteligência militar em Washington.",
+          "titulo_existente": "Política nos Estados Unidos"
         }
-      ],
-      "expires_at": "2026-11-28T12:28:22Z",
-      "updated_at": "2026-11-27T12:28:22Z"
+      ]
     },
     {
       "slug": "senado-argentino-reforma-primarias-milei",
@@ -1200,27 +1229,16 @@
     },
     {
       "slug": "trabuco-futuro-ministro-fazenda-mercado",
-      "titulo_curto": "Dólar despenca para R$ 5,53 na abertura com indicação de Luiz Carlos Trabuco para a Fazenda",
-      "resumo_pulso": "Conforme apuração do G1 Economia e da InfoMoney, o dólar abriu a sessão em forte queda de 3,61%, cotado a R$ 5,53, reagindo positivamente ao anúncio de Luiz Carlos Trabuco para a Fazenda no quarto mandato de Lula. O movimento ocorre em meio a relatos de bastidores apontando que o grupo do atual ministro Fernando Haddad não participará do próximo governo.",
-      "impacto_pratico": "A queda do dólar alivia custos de importação e passagens aéreas internacionais para viajantes e empresas.",
       "categoria": "Economia_Comercio",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "urgencia_score": 97,
-      "relevancia_score": 98,
-      "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 16,
-      "veiculos_origem": [
-        "G1 Economia",
-        "G1 Política",
-        "InfoMoney"
-      ],
+      "expires_at": "2026-11-28T01:04:51Z",
+      "updated_at": "2026-11-27T12:28:22Z",
       "fontes_urls": [
         "https://g1.globo.com/economia/noticia/2026/11/27/dolar-ibovespa.ghtml",
         "https://g1.globo.com/politica/blog/gerson-camarotti/post/2026/11/27/com-escolha-de-trabuco-grupo-de-haddad-deve-ficar-fora-do-lula-4.ghtml"
       ],
+      "resumo_pulso": "Conforme apuração do G1 Economia e da InfoMoney, o dólar abriu a sessão em forte queda de 3,61%, cotado a R$ 5,53, reagindo positivamente ao anúncio de Luiz Carlos Trabuco para a Fazenda no quarto mandato de Lula. O movimento ocorre em meio a relatos de bastidores apontando que o grupo do atual ministro Fernando Haddad não participará do próximo governo.",
+      "titulo_curto": "Dólar despenca para R$ 5,53 na abertura com indicação de Luiz Carlos Trabuco para a Fazenda",
       "palavras_chave": [
         "dólar",
         "Luiz Carlos Trabuco",
@@ -1228,49 +1246,27 @@
         "Lula 4",
         "mercado financeiro"
       ],
+      "urgencia_score": 97,
       "data_publicacao": "2026-11-27T00:50:57Z",
-      "links_internos_relacionados": [
-        {
-          "titulo_existente": "Economia no Brasil",
-          "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
-          "motivo_conexao": "Acompanhe a evolução do mercado de câmbio e as diretrizes fiscais do governo."
-        }
-      ],
-      "expires_at": "2026-11-28T01:04:51Z",
-      "updated_at": "2026-11-27T12:28:22Z"
-    },
-    {
-      "slug": "amazonas-para-roraima-apagao-energia",
-      "categoria": "Mobilidade_Fronteiras",
-      "ttl_horas": 12,
-      "expires_at": "2026-11-27T13:04:51Z",
-      "updated_at": "2026-11-27T02:34:41Z",
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/geral/noticia/2026-11/amazonas-para-e-roraima-passam-por-apagao-de-energia-nesta-quinta"
-      ],
-      "resumo_pulso": "Segundo dados atualizados da Agência Brasil (EBC), o apagão elétrico que afetou os estados do Amazonas, Pará e Roraima na tarde de quinta-feira decorreu do desligamento de cerca de 2.323 MW em linhas de transmissão. O Operador Nacional do Sistema Elétrico (ONS) informou que o fornecimento de energia vem sendo retomado de forma progressiva nas regiões impactadas.",
-      "titulo_curto": "Operador Nacional do Sistema relata restabelecimento gradual após apagão na Região Norte",
-      "palavras_chave": [
-        "Apagão",
-        "Amazonas",
-        "Pará",
-        "Roraima",
-        "ONS",
-        "Energia Elétrica"
-      ],
-      "urgencia_score": 89,
-      "data_publicacao": "2026-11-26T23:58:00Z",
-      "impacto_pratico": "Interrupções severas no fornecimento de energia na Região Norte afetam diretamente a mobilidade urbana, serviços essenciais, o comércio local e o planejamento de deslocamentos na área.",
+      "impacto_pratico": "A queda do dólar alivia custos de importação e passagens aéreas internacionais para viajantes e empresas.",
       "nivel_confianca": "alta",
       "veiculos_origem": [
-        "Agência Brasil (EBC)"
+        "G1 Economia",
+        "G1 Política",
+        "InfoMoney"
       ],
-      "relevancia_score": 88,
-      "horas_em_destaque": 6,
+      "relevancia_score": 98,
+      "horas_em_destaque": 16,
       "paises_envolvidos": [
         "BR"
       ],
-      "links_internos_relacionados": []
+      "links_internos_relacionados": [
+        {
+          "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
+          "motivo_conexao": "Acompanhe a evolução do mercado de câmbio e as diretrizes fiscais do governo.",
+          "titulo_existente": "Economia no Brasil"
+        }
+      ]
     },
     {
       "slug": "venezuela-revogara-lei-que-previa- ate-30-anos-prisao-opositores",
@@ -1662,116 +1658,6 @@
           "motivo_conexao": "Veja os detalhes das articulações políticas em torno das metas fiscais e emendas parlamentares.",
           "titulo_existente": "Congresso e Planalto negociam prioridades da pauta econômica e votação do Orçamento"
         }
-      ]
-    }
-  ],
-  "temas_curadoria": [
-    {
-      "slug": "trabuco-ministerio-da-fazenda-impacto-mercado-bolsa-dolar",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-29T10:37:23Z",
-      "updated_at": "2026-11-27T10:37:23Z",
-      "titulo_tema": "Indicação de Luiz Carlos Trabuco para a Fazenda dispara Bolsa e derruba Dólar",
-      "sintese_nerd": "A aceitação de Luiz Carlos Trabuco para o Ministério da Fazenda trouxe alívio imediato ao mercado financeiro, impulsionando o Ibovespa e derrubando a moeda americana. O movimento sinaliza uma tentativa do governo de sinalizar disciplina fiscal, embora exija articulação para contornar divergências internas na base aliada.",
-      "rota_editoria": "/politica",
-      "data_publicacao": "2026-11-27T10:37:23Z",
-      "gatilho_vitrine": "Destacar nomeação de Trabuco na Fazenda e o forte rali de alta nos mercados acionários brasileiros",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 98,
-      "categoria_primaria": "Politica",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "luiz carlos trabuco",
-        "ministério da fazenda",
-        "governo lula",
-        "ibovespa",
-        "dólar hoje",
-        "bradesco",
-        "mercado financeiro"
-      ]
-    },
-    {
-      "slug": "estrategia-brasil-tarifas-trump-embraer-diplomacia",
-      "status": "novo",
-      "ttl_horas": 72,
-      "expires_at": "2026-11-30T10:37:23Z",
-      "updated_at": "2026-11-27T10:37:23Z",
-      "titulo_tema": "Brasil articula resposta diplomática contra tarifas de Trump e mitigação de impactos na Embraer",
-      "sintese_nerd": "O Chanceler Mauro Vieira lidera as negociações do governo brasileiro para evitar que o aumento de tarifas anunciado por Donald Trump atinja em cheio a indústria nacional. Enquanto a Embraer tenta sustentar valor de mercado, o país busca alternativas multilaterais contra o protecionismo da Casa Branca.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-27T10:37:23Z",
-      "gatilho_vitrine": "Monitorar negociações do Itamaraty para conter o avanço protecionista sobre exportações estratégicas brasileiras",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 91,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Politica"
-      ],
-      "palavras_chave_busca": [
-        "mauro vieira",
-        "donald trump",
-        "tarifas comerciais",
-        "embraer",
-        "itamaraty",
-        "protecionismo eua",
-        "exportações brasileiras"
-      ]
-    },
-    {
-      "slug": "eleicoes-espanha-crise-demografica-imigracao-europa",
-      "status": "novo",
-      "ttl_horas": 96,
-      "expires_at": "2026-12-01T10:37:23Z",
-      "updated_at": "2026-11-27T10:37:23Z",
-      "titulo_tema": "Eleições na Espanha colocam imigração e transição demográfica no centro do debate europeu",
-      "sintese_nerd": "Com a taxa de natalidade em declínio acentuado, a Espanha vai às urnas em uma disputa cujo tema central é a absorção econômica de imigrantes. O pleito serve como termômetro sobre a ascensão da pauta migratória nas decisões eleitorais de potências do continente europeu.",
-      "rota_editoria": "/eleicoes",
-      "data_publicacao": "2026-11-27T10:37:23Z",
-      "gatilho_vitrine": "Exibir o impacto das eleições espanholas nas políticas de fronteira e trabalho da União Europeia",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 83,
-      "categoria_primaria": "Eleicoes",
-      "categorias_cruzadas": [
-        "Geopolitica_Radar",
-        "Cultura"
-      ],
-      "palavras_chave_busca": [
-        "eleições espanha",
-        "imigração europa",
-        "demografia espanhola",
-        "união europeia",
-        "política migratória"
-      ]
-    },
-    {
-      "slug": "geopolitica-black-friday-soft-power-americano-consumo",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-29T10:37:23Z",
-      "updated_at": "2026-11-27T10:37:23Z",
-      "titulo_tema": "A geopolítica da Black Friday: a expansão do 'soft power' cultural e econômico dos EUA",
-      "sintese_nerd": "A consolidação global da Black Friday ilustra a eficácia do 'soft power' dos EUA em exportar modelos comportamentais e comerciais sem necessidade de datas históricas compartilhadas. O fenômeno altera calendários de varejo mundiais e reflete a dependência de plataformas e dinâmicas de consumo ocidentais.",
-      "rota_editoria": "/cultura",
-      "data_publicacao": "2026-11-27T10:37:23Z",
-      "gatilho_vitrine": "Analisar a conversão de datas comemorativas norte-americanas em motores de consumo globais",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 77,
-      "categoria_primaria": "Cultura",
-      "categorias_cruzadas": [
-        "Economia",
-        "Geopolitica_Radar"
-      ],
-      "palavras_chave_busca": [
-        "black friday",
-        "soft power",
-        "cultura de consumo",
-        "influência americana",
-        "comércio global"
       ]
     }
   ]
