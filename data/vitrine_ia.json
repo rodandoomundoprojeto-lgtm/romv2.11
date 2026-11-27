@@ -2,62 +2,231 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-27T22:10:48Z",
-  "batch_id": "20261127-2210",
+  "updatedAt": "2026-11-27T22:51:53Z",
+  "batch_id": "20261127-2251",
   "temas_ativos": [
     {
-      "slug": "efeito-trabuco-fazenda-bolsa-dolar-tesouro",
-      "titulo_tema": "Efeito Trabuco na Fazenda: Ibovespa dispara e dólar desaba",
+      "slug": "conta-luz-bandeira-verde-dezembro",
+      "titulo_tema": "Conta de luz terá bandeira verde pelo terceiro mês consecutivo em dezembro",
+      "titulo_curto": "Conta de luz terá bandeira verde pelo terceiro mês consecutivo em dezembro",
       "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Economia",
+      "categoria": "Economia_Comercio",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 90,
+      "urgencia_score": 89,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-28T22:51:53Z",
+      "palavras_chave_busca": [
+        "aneel",
+        "bandeira verde",
+        "conta de luz",
+        "energia",
+        "economia"
+      ],
+      "palavras_chave": [
+        "aneel",
+        "bandeira verde",
+        "conta de luz",
+        "energia",
+        "economia"
+      ],
+      "gatilho_vitrine": "Segundo dados divulgados pela Aneel e reportados pelo Poder360 e pelo G1 Economia, a conta de luz dos consumidores brasileiros não terá cobrança adicional em dezembro, mantendo a bandeira tarifária verde. A decisão reflete condições hidrológicas favoráveis à geração de energia hidrelétrica no país.",
+      "resumo_pulso": "Segundo dados divulgados pela Aneel e reportados pelo Poder360 e pelo G1 Economia, a conta de luz dos consumidores brasileiros não terá cobrança adicional em dezembro, mantendo a bandeira tarifária verde. A decisão reflete condições hidrológicas favoráveis à geração de energia hidrelétrica no país.",
+      "sintese_nerd": "Garante alívio no orçamento doméstico ao evitar taxas extras nas contas de energia elétrica durante o final de ano.",
+      "impacto_pratico": "Garante alívio no orçamento doméstico ao evitar taxas extras nas contas de energia elétrica durante o final de ano.",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "veiculos_origem": [
+        "Poder360",
+        "G1 Economia"
+      ],
+      "fontes_urls": [
+        "https://www.poder360.com.br/poder-energia/conta-de-luz-tera-bandeira-verde-pelo-3o-mes-seguido-em-dezembro/",
+        "https://g1.globo.com/economia/noticia/2026/11/27/conta-de-luz-aneel-mantem-bandeira-tarifaria-verde-em-dezembro.ghtml"
+      ],
+      "data_publicacao": "2026-11-27T22:48:15Z",
+      "updated_at": "2026-11-27T22:51:53Z"
+    },
+    {
+      "slug": "aneel-bandeira-verde-dezembro-conta-luz",
+      "status": "novo",
+      "ttl_horas": 72,
+      "expires_at": "2026-11-30T22:38:06Z",
+      "updated_at": "2026-11-27T22:38:06Z",
+      "titulo_tema": "Aneel mantém bandeira tarifária verde em dezembro e afasta cobrança extra na luz",
+      "sintese_nerd": "As condições favoráveis de geração de energia no país permitiram que a Aneel mantivesse a bandeira tarifária verde durante todo o mês de dezembro, zerando custos adicionais na fatura de eletricidade. Essa estabilidade na matriz energética ajuda a conter pressões inflacionárias de curto prazo no orçamento doméstico.",
+      "rota_editoria": "/economia",
+      "data_publicacao": "2026-11-27T22:38:06Z",
+      "gatilho_vitrine": "Destacar na seção de economia como a manutenção da bandeira verde em dezembro alivia o orçamento das famílias no final do ano.",
       "origem_pipeline": "curadoria",
+      "relevancia_score": 85,
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Cultura"
+      ],
+      "palavras_chave_busca": [
+        "aneel",
+        "bandeira verde",
+        "conta de luz",
+        "tarifa de energia",
+        "inflação",
+        "custo de vida"
+      ]
+    },
+    {
+      "slug": "btg-fundo-credito-consignado-brb",
+      "titulo_tema": "BTG Pactual cria fundo de investimentos para adquirir até R$ 1,5 bilhão em créditos consignados do BRB",
+      "titulo_curto": "BTG Pactual cria fundo de investimentos para adquirir até R$ 1,5 bilhão em créditos consignados do BRB",
+      "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Economia",
+      "categoria": "Economia_Comercio",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 87,
+      "urgencia_score": 85,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-28T22:51:53Z",
+      "palavras_chave_busca": [
+        "btg pactual",
+        "brb",
+        "crédito consignado",
+        "mercado financeiro"
+      ],
+      "palavras_chave": [
+        "btg pactual",
+        "brb",
+        "crédito consignado",
+        "mercado financeiro"
+      ],
+      "gatilho_vitrine": "Segundo reportagem do G1 Economia, o banco BTG Pactual constituiu um fundo de investimentos com o objetivo de comprar até R$ 1,5 bilhão em créditos consignados contratados por servidores públicos do Distrito Federal junto ao Banco de Brasília (BRB). A operação foi comunicada formalmente à B3.",
+      "resumo_pulso": "Segundo reportagem do G1 Economia, o banco BTG Pactual constituiu um fundo de investimentos com o objetivo de comprar até R$ 1,5 bilhão em créditos consignados contratados por servidores públicos do Distrito Federal junto ao Banco de Brasília (BRB). A operação foi comunicada formalmente à B3.",
+      "sintese_nerd": "Movimenta o mercado de crédito e reestrutura posições de liquidez entre grandes instituições financeiras e bancos regionais.",
+      "impacto_pratico": "Movimenta o mercado de crédito e reestrutura posições de liquidez entre grandes instituições financeiras e bancos regionais.",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "veiculos_origem": [
+        "G1 Economia"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/df/distrito-federal/noticia/2026/11/27/btg-cria-fundo-de-investimento-para-comprar-ate-r-15-bilhao-em-creditos-consignados-do-brb.ghtml"
+      ],
+      "data_publicacao": "2026-11-27T22:33:08Z",
+      "updated_at": "2026-11-27T22:51:53Z"
+    },
+    {
+      "slug": "eua-interceptam-navio-bloco-iran",
+      "titulo_tema": "Forças militares dos EUA interceptam e desativam navio mercante em rota de furto ao bloqueio ao Irã",
+      "titulo_curto": "Forças militares dos EUA interceptam e desativam navio mercante em rota de furto ao bloqueio ao Irã",
+      "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categoria": "Geopolitica_Relacoes",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 89,
+      "urgencia_score": 91,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-28T22:51:53Z",
+      "palavras_chave_busca": [
+        "estados unidos",
+        "irã",
+        "bloqueio naval",
+        "marinha",
+        "oriente médio"
+      ],
+      "palavras_chave": [
+        "estados unidos",
+        "irã",
+        "bloqueio naval",
+        "marinha",
+        "oriente médio"
+      ],
+      "gatilho_vitrine": "Conforme relatórios da Al Jazeera e agências internacionais, os militares dos Estados Unidos desativaram a propulsão de um navio mercante sob bandeira de Palau que tentava burlar o bloqueio marítimo imposto ao Irã. A tripulação permaneceu ilesa, mas o episódio eleva as tensões geopolíticas no Oriente Médio.",
+      "resumo_pulso": "Conforme relatórios da Al Jazeera e agências internacionais, os militares dos Estados Unidos desativaram a propulsão de um navio mercante sob bandeira de Palau que tentava burlar o bloqueio marítimo imposto ao Irã. A tripulação permaneceu ilesa, mas o episódio eleva as tensões geopolíticas no Oriente Médio.",
+      "sintese_nerd": "Aumenta o risco de volatilidade nas rotas marítimas internacionais e nos preços globais de commodities.",
+      "impacto_pratico": "Aumenta o risco de volatilidade nas rotas marítimas internacionais e nos preços globais de commodities.",
+      "paises_envolvidos": [
+        "US",
+        "IR",
+        "PW"
+      ],
+      "veiculos_origem": [
+        "Al Jazeera English"
+      ],
+      "fontes_urls": [
+        "https://www.aljazeera.com/news/2026/11/27/us-military-says-it-disabled-merchant-ship-trying-to-breach-iran-blockade?traffic_source=rss"
+      ],
+      "data_publicacao": "2026-11-27T22:22:02Z",
+      "updated_at": "2026-11-27T22:51:53Z"
+    },
+    {
+      "slug": "efeito-trabuco-fazenda-bolsa-dolar-tesouro",
+      "status": "novo",
+      "ttl_horas": 48,
+      "expires_at": "2026-11-29T22:38:06Z",
+      "updated_at": "2026-11-27T22:38:06Z",
+      "titulo_tema": "Indicação de Luiz Carlos Trabuco para a Fazenda causa forte reação nos mercados",
+      "sintese_nerd": "A confirmação de Luiz Carlos Trabuco no comando da Fazenda gerou alívio imediato no mercado corporativo, impulsionando ações e provocando forte queda no dólar e nas taxas do Tesouro Direto. Essa guinada reflete a busca por previsibilidade fiscal, embora levante debates políticos internos sobre os rumos econômicos do governo.",
+      "rota_editoria": "/economia",
+      "data_publicacao": "2026-11-27T22:10:48Z",
+      "gatilho_vitrine": "Exibir na vitrine principal e destacar os impactos da chegada do banqueiro à equipe econômica na inflação e nos ativos brasileiros.",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 95,
       "categoria_primaria": "Economia",
       "categorias_cruzadas": [
         "Politica",
         "Resumo_Ultimas"
       ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 98,
-      "ttl_horas": 48,
-      "expires_at": "2026-11-29T22:10:48Z",
       "palavras_chave_busca": [
         "luiz carlos trabuco",
         "ministério da fazenda",
-        "governo lula",
         "ibovespa",
         "dólar",
         "tesouro direto",
+        "governo lula",
         "mercado financeiro"
-      ],
-      "gatilho_vitrine": "Destacar na Vitrine IA a guinada nos mercados financeiros após a confirmação de Luiz Carlos Trabuco na Fazenda e o impacto direto nas taxas de juros e no câmbio.",
-      "sintese_nerd": "A indicação do banqueiro Luiz Carlos Trabuco para o Ministério da Fazenda gerou alívio imediato nos agentes de mercado, resultando em forte queda do dólar e salto nas ações da bolsa. Contudo, a escolha divide opiniões políticas, reacendendo debates internos sobre a condução fiscal no quarto mandato do governo.",
-      "data_publicacao": "2026-11-27T22:10:48Z",
-      "updated_at": "2026-11-27T22:10:48Z"
+      ]
     },
     {
       "slug": "retorno-edmundo-gonzalez-exilio-venezuela",
-      "titulo_tema": "Edmundo González anuncia retorno à Venezuela após dois anos no exílio",
       "status": "novo",
+      "ttl_horas": 48,
+      "expires_at": "2026-11-29T22:38:06Z",
+      "updated_at": "2026-11-27T22:38:06Z",
+      "titulo_tema": "Opositor Edmundo González anuncia retorno à Venezuela após período no exílio",
+      "sintese_nerd": "O anúncio de retorno do opositor Edmundo González à Venezuela, após dois anos exilado na Espanha, recoloca a pressão sobre o tabuleiro político de Caracas em meio a celebrações religiosas locais. A volta do líder oposicionista desafia o cerco institucional e pode reconfigurar as tensões diplomáticas na região.",
+      "rota_editoria": "/radar",
+      "data_publicacao": "2026-11-27T22:10:48Z",
+      "gatilho_vitrine": "Incluir no Radar Geopolítico para contextualizar as movimentações na política da América Latina e o cenário de transição na Venezuela.",
       "origem_pipeline": "curadoria",
+      "relevancia_score": 82,
       "categoria_primaria": "Geopolitica_Radar",
       "categorias_cruzadas": [
         "Politica"
       ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 88,
-      "ttl_horas": 72,
-      "expires_at": "2026-11-30T22:10:48Z",
       "palavras_chave_busca": [
         "edmundo gonzález",
         "venezuela",
         "exílio",
         "oposição venezuelana",
-        "espanha",
-        "américa latina"
-      ],
-      "gatilho_vitrine": "Exibir no Radar Geopolítico as implicações da volta do principal opositor venezuelano ao país sul-americano e os reflexos diplomáticos na região.",
-      "sintese_nerd": "O anúncio do retorno de Edmundo González da Espanha para a Venezuela altera o tabuleiro político da crise institucional venezuelana. O movimento pressiona o regime local e mobiliza a comunidade internacional atenta à estabilidade democrática na América Latina.",
-      "data_publicacao": "2026-11-27T22:10:48Z",
-      "updated_at": "2026-11-27T22:10:48Z"
+        "geopolítica sul-americana",
+        "espanha"
+      ]
     },
     {
       "slug": "vendas-tesouro-direto-recorde-outubro",
@@ -712,160 +881,126 @@
         "economia",
         "gastos públicos"
       ]
-    },
-    {
-      "slug": "russia-extende-proibicao-exportacao-combustivel-jatos",
-      "status": "novo",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-28T15:54:53Z",
-      "updated_at": "2026-11-27T15:54:53Z",
-      "fontes_urls": [
-        "https://www.themoscowtimes.com/2026/11/27/russia-extends-jet-fuel-export-ban-until-march-2027-a812395"
-      ],
-      "titulo_tema": "Rússia prorroga proibição de exportação de combustível para jatos até março de 2027",
-      "resumo_pulso": "Segundo informações do The Moscow Times e relatórios internacionais, a Rússia estendeu o veto às exportações de combustível de aviação até março de 2027. A medida visa garantir o abastecimento do mercado interno após quedas na produção provocadas por ataques de drones a refinarias.",
-      "sintese_nerd": "Afeta cadeias globais de suprimento de combustíveis para aviação e pressiona preços no setor aéreo internacional.",
-      "titulo_curto": "Rússia prorroga proibição de exportação de combustível para jatos até março de 2027",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "rússia",
-        "combustível de jatos",
-        "exportação",
-        "aviação",
-        "sanções"
-      ],
-      "urgencia_score": 84,
-      "data_publicacao": "2026-11-27T15:07:35Z",
-      "gatilho_vitrine": "Segundo informações do The Moscow Times e relatórios internacionais, a Rússia estendeu o veto às exportações de combustível de aviação até março de 2027. A medida visa garantir o abastecimento do mercado interno após quedas na produção provocadas por ataques de drones a refinarias.",
-      "impacto_pratico": "Afeta cadeias globais de suprimento de combustíveis para aviação e pressiona preços no setor aéreo internacional.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "The Moscow Times"
-      ],
-      "relevancia_score": 85,
-      "paises_envolvidos": [
-        "RU",
-        "UA"
-      ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "rússia",
-        "combustível de jatos",
-        "exportação",
-        "aviação",
-        "sanções"
-      ]
-    },
-    {
-      "slug": "sancionada-lei-eca-educacao-basica-obrigatoria",
-      "status": "novo",
-      "categoria": "Sociedade_Cultura",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-28T14:50:33Z",
-      "updated_at": "2026-11-27T14:50:33Z",
-      "fontes_urls": [
-        "https://www12.senado.leg.br/noticias/materias/2026/11/27/sancionada-lei-que-atualiza-eca-para-garantir-educacao-basica-obrigatoria"
-      ],
-      "titulo_tema": "Lei sancionada atualiza ECA para garantir educação básica obrigatória dos 4 aos 17 anos",
-      "resumo_pulso": "Conforme publicação no Diário Oficial da União reportada pela Agência Senado, o presidente Luiz Inácio Lula da Silva sancionou a Lei 15.555. A norma atualiza o Estatuto da Criança e do Adolescente (ECA) para prever explicitamente a gratuidade e a obrigatoriedade do ensino dos 4 aos 17 anos, além de assegurar vaga a jovens e adultos fora da idade escolar.",
-      "sintese_nerd": "Reforça a obrigação jurídica dos municípios e estados na oferta de vagas escolares e ampliação do acesso à Educação de Jovens e Adultos (EJA).",
-      "titulo_curto": "Lei sancionada atualiza ECA para garantir educação básica obrigatória dos 4 aos 17 anos",
-      "rota_editoria": "/cultura",
-      "palavras_chave": [
-        "eca",
-        "educação básica",
-        "lei 15.555",
-        "agência senado",
-        "ensino gratuito"
-      ],
-      "urgencia_score": 87,
-      "data_publicacao": "2026-11-27T14:43:00Z",
-      "gatilho_vitrine": "Conforme publicação no Diário Oficial da União reportada pela Agência Senado, o presidente Luiz Inácio Lula da Silva sancionou a Lei 15.555. A norma atualiza o Estatuto da Criança e do Adolescente (ECA) para prever explicitamente a gratuidade e a obrigatoriedade do ensino dos 4 aos 17 anos, além de assegurar vaga a jovens e adultos fora da idade escolar.",
-      "impacto_pratico": "Reforça a obrigação jurídica dos municípios e estados na oferta de vagas escolares e ampliação do acesso à Educação de Jovens e Adultos (EJA).",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "Agência Senado"
-      ],
-      "relevancia_score": 90,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "categoria_primaria": "Cultura",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "eca",
-        "educação básica",
-        "lei 15.555",
-        "agência senado",
-        "ensino gratuito"
-      ]
-    }
-  ],
-  "temas_curadoria": [
-    {
-      "slug": "efeito-trabuco-fazenda-bolsa-dolar-tesouro",
-      "titulo_tema": "Efeito Trabuco na Fazenda: Ibovespa dispara e dólar desaba",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Politica",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 98,
-      "ttl_horas": 48,
-      "expires_at": "2026-11-29T22:10:48Z",
-      "palavras_chave_busca": [
-        "luiz carlos trabuco",
-        "ministério da fazenda",
-        "governo lula",
-        "ibovespa",
-        "dólar",
-        "tesouro direto",
-        "mercado financeiro"
-      ],
-      "gatilho_vitrine": "Destacar na Vitrine IA a guinada nos mercados financeiros após a confirmação de Luiz Carlos Trabuco na Fazenda e o impacto direto nas taxas de juros e no câmbio.",
-      "sintese_nerd": "A indicação do banqueiro Luiz Carlos Trabuco para o Ministério da Fazenda gerou alívio imediato nos agentes de mercado, resultando em forte queda do dólar e salto nas ações da bolsa. Contudo, a escolha divide opiniões políticas, reacendendo debates internos sobre a condução fiscal no quarto mandato do governo.",
-      "data_publicacao": "2026-11-27T22:10:48Z",
-      "updated_at": "2026-11-27T22:10:48Z"
-    },
-    {
-      "slug": "retorno-edmundo-gonzalez-exilio-venezuela",
-      "titulo_tema": "Edmundo González anuncia retorno à Venezuela após dois anos no exílio",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Politica"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 88,
-      "ttl_horas": 72,
-      "expires_at": "2026-11-30T22:10:48Z",
-      "palavras_chave_busca": [
-        "edmundo gonzález",
-        "venezuela",
-        "exílio",
-        "oposição venezuelana",
-        "espanha",
-        "américa latina"
-      ],
-      "gatilho_vitrine": "Exibir no Radar Geopolítico as implicações da volta do principal opositor venezuelano ao país sul-americano e os reflexos diplomáticos na região.",
-      "sintese_nerd": "O anúncio do retorno de Edmundo González da Espanha para a Venezuela altera o tabuleiro político da crise institucional venezuelana. O movimento pressiona o regime local e mobiliza a comunidade internacional atenta à estabilidade democrática na América Latina.",
-      "data_publicacao": "2026-11-27T22:10:48Z",
-      "updated_at": "2026-11-27T22:10:48Z"
     }
   ],
   "noticias_quentes": [
+    {
+      "slug": "conta-luz-bandeira-verde-dezembro",
+      "titulo_curto": "Conta de luz terá bandeira verde pelo terceiro mês consecutivo em dezembro",
+      "resumo_pulso": "Segundo dados divulgados pela Aneel e reportados pelo Poder360 e pelo G1 Economia, a conta de luz dos consumidores brasileiros não terá cobrança adicional em dezembro, mantendo a bandeira tarifária verde. A decisão reflete condições hidrológicas favoráveis à geração de energia hidrelétrica no país.",
+      "impacto_pratico": "Garante alívio no orçamento doméstico ao evitar taxas extras nas contas de energia elétrica durante o final de ano.",
+      "categoria": "Economia_Comercio",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "urgencia_score": 89,
+      "relevancia_score": 90,
+      "nivel_confianca": "alta",
+      "ttl_horas": 24,
+      "horas_em_destaque": 24,
+      "veiculos_origem": [
+        "Poder360",
+        "G1 Economia"
+      ],
+      "fontes_urls": [
+        "https://www.poder360.com.br/poder-energia/conta-de-luz-tera-bandeira-verde-pelo-3o-mes-seguido-em-dezembro/",
+        "https://g1.globo.com/economia/noticia/2026/11/27/conta-de-luz-aneel-mantem-bandeira-tarifaria-verde-em-dezembro.ghtml"
+      ],
+      "palavras_chave": [
+        "Aneel",
+        "bandeira verde",
+        "conta de luz",
+        "energia",
+        "economia"
+      ],
+      "data_publicacao": "2026-11-27T22:48:15Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "Economia no Brasil",
+          "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
+          "motivo_conexao": "Complementa a análise sobre o custo de vida e os indicadores econômicos nacionais."
+        }
+      ],
+      "expires_at": "2026-11-28T22:51:53Z",
+      "updated_at": "2026-11-27T22:51:53Z"
+    },
+    {
+      "slug": "btg-fundo-credito-consignado-brb",
+      "titulo_curto": "BTG Pactual cria fundo de investimentos para adquirir até R$ 1,5 bilhão em créditos consignados do BRB",
+      "resumo_pulso": "Segundo reportagem do G1 Economia, o banco BTG Pactual constituiu um fundo de investimentos com o objetivo de comprar até R$ 1,5 bilhão em créditos consignados contratados por servidores públicos do Distrito Federal junto ao Banco de Brasília (BRB). A operação foi comunicada formalmente à B3.",
+      "impacto_pratico": "Movimenta o mercado de crédito e reestrutura posições de liquidez entre grandes instituições financeiras e bancos regionais.",
+      "categoria": "Economia_Comercio",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "urgencia_score": 85,
+      "relevancia_score": 87,
+      "nivel_confianca": "alta",
+      "ttl_horas": 24,
+      "horas_em_destaque": 12,
+      "veiculos_origem": [
+        "G1 Economia"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/df/distrito-federal/noticia/2026/11/27/btg-cria-fundo-de-investimento-para-comprar-ate-r-15-bilhao-em-creditos-consignados-do-brb.ghtml"
+      ],
+      "palavras_chave": [
+        "BTG Pactual",
+        "BRB",
+        "crédito consignado",
+        "mercado financeiro"
+      ],
+      "data_publicacao": "2026-11-27T22:33:08Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "Economia no Brasil",
+          "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
+          "motivo_conexao": "Relaciona-se com a dinâmica do sistema financeiro e operações de crédito no país."
+        }
+      ],
+      "expires_at": "2026-11-28T22:51:53Z",
+      "updated_at": "2026-11-27T22:51:53Z"
+    },
+    {
+      "slug": "eua-interceptam-navio-bloco-iran",
+      "titulo_curto": "Forças militares dos EUA interceptam e desativam navio mercante em rota de furto ao bloqueio ao Irã",
+      "resumo_pulso": "Conforme relatórios da Al Jazeera e agências internacionais, os militares dos Estados Unidos desativaram a propulsão de um navio mercante sob bandeira de Palau que tentava burlar o bloqueio marítimo imposto ao Irã. A tripulação permaneceu ilesa, mas o episódio eleva as tensões geopolíticas no Oriente Médio.",
+      "impacto_pratico": "Aumenta o risco de volatilidade nas rotas marítimas internacionais e nos preços globais de commodities.",
+      "categoria": "Geopolitica_Relacoes",
+      "paises_envolvidos": [
+        "US",
+        "IR",
+        "PW"
+      ],
+      "urgencia_score": 91,
+      "relevancia_score": 89,
+      "nivel_confianca": "alta",
+      "ttl_horas": 24,
+      "horas_em_destaque": 12,
+      "veiculos_origem": [
+        "Al Jazeera English"
+      ],
+      "fontes_urls": [
+        "https://www.aljazeera.com/news/2026/11/27/us-military-says-it-disabled-merchant-ship-trying-to-breach-iran-blockade?traffic_source=rss"
+      ],
+      "palavras_chave": [
+        "Estados Unidos",
+        "Irã",
+        "bloqueio naval",
+        "marinha",
+        "Oriente Médio"
+      ],
+      "data_publicacao": "2026-11-27T22:22:02Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "O que é uma sanção internacional?",
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-sancao-internacional",
+          "motivo_conexao": "Contextualiza o uso de bloqueios e restrições marítimas como instrumentos de pressão geopolítica."
+        }
+      ],
+      "expires_at": "2026-11-28T22:51:53Z",
+      "updated_at": "2026-11-27T22:51:53Z"
+    },
     {
       "slug": "vendas-tesouro-direto-recorde-outubro",
       "categoria": "Economia_Comercio",
@@ -1487,109 +1622,87 @@
         "BR"
       ],
       "links_internos_relacionados": []
+    }
+  ],
+  "temas_curadoria": [
+    {
+      "slug": "aneel-bandeira-verde-dezembro-conta-luz",
+      "status": "novo",
+      "ttl_horas": 72,
+      "expires_at": "2026-11-30T22:38:06Z",
+      "updated_at": "2026-11-27T22:38:06Z",
+      "titulo_tema": "Aneel mantém bandeira tarifária verde em dezembro e afasta cobrança extra na luz",
+      "sintese_nerd": "As condições favoráveis de geração de energia no país permitiram que a Aneel mantivesse a bandeira tarifária verde durante todo o mês de dezembro, zerando custos adicionais na fatura de eletricidade. Essa estabilidade na matriz energética ajuda a conter pressões inflacionárias de curto prazo no orçamento doméstico.",
+      "rota_editoria": "/economia",
+      "data_publicacao": "2026-11-27T22:38:06Z",
+      "gatilho_vitrine": "Destacar na seção de economia como a manutenção da bandeira verde em dezembro alivia o orçamento das famílias no final do ano.",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 85,
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Cultura"
+      ],
+      "palavras_chave_busca": [
+        "aneel",
+        "bandeira verde",
+        "conta de luz",
+        "tarifa de energia",
+        "inflação",
+        "custo de vida"
+      ]
     },
     {
-      "slug": "sp-rompimento-fibra-optica-servicos",
-      "categoria": "Sociedade_Cultura",
-      "ttl_horas": 12,
-      "expires_at": "2026-11-28T03:54:53Z",
-      "updated_at": "2026-11-27T15:54:53Z",
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/geral/noticia/2026-11/sp-rompimento-de-cabos-de-fibra-optica-causa-instabilidade"
+      "slug": "efeito-trabuco-fazenda-bolsa-dolar-tesouro",
+      "status": "novo",
+      "ttl_horas": 48,
+      "expires_at": "2026-11-29T22:38:06Z",
+      "updated_at": "2026-11-27T22:38:06Z",
+      "titulo_tema": "Indicação de Luiz Carlos Trabuco para a Fazenda causa forte reação nos mercados",
+      "sintese_nerd": "A confirmação de Luiz Carlos Trabuco no comando da Fazenda gerou alívio imediato no mercado corporativo, impulsionando ações e provocando forte queda no dólar e nas taxas do Tesouro Direto. Essa guinada reflete a busca por previsibilidade fiscal, embora levante debates políticos internos sobre os rumos econômicos do governo.",
+      "rota_editoria": "/economia",
+      "data_publicacao": "2026-11-27T22:10:48Z",
+      "gatilho_vitrine": "Exibir na vitrine principal e destacar os impactos da chegada do banqueiro à equipe econômica na inflação e nos ativos brasileiros.",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 95,
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Politica",
+        "Resumo_Ultimas"
       ],
-      "resumo_pulso": "Conforme apuração da Agência Brasil, o rompimento de dois cabos de fibra óptica provocou a interrupção e instabilidade em serviços públicos no estado de São Paulo nesta sexta-feira (27). Entre os sistemas afetados estão portais institucionais do governo estadual, plataformas do Detran-SP, Poupatempo e áreas essenciais de segurança, saúde e educação.",
-      "titulo_curto": "Rompimento de cabos de fibra óptica causa instabilidade em serviços públicos de São Paulo",
-      "palavras_chave": [
-        "São Paulo",
-        "fibra óptica",
-        "serviços públicos",
-        "Poupatempo",
-        "Detran-SP"
-      ],
-      "urgencia_score": 89,
-      "data_publicacao": "2026-11-27T14:25:00Z",
-      "impacto_pratico": "Cidadãos paulistas enfrentam dificuldades no acesso a portais de atendimento, emissão de documentos e serviços digitais do estado.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Agência Brasil (EBC)"
-      ],
-      "relevancia_score": 88,
-      "horas_em_destaque": 12,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "links_internos_relacionados": []
+      "palavras_chave_busca": [
+        "luiz carlos trabuco",
+        "ministério da fazenda",
+        "ibovespa",
+        "dólar",
+        "tesouro direto",
+        "governo lula",
+        "mercado financeiro"
+      ]
     },
     {
-      "slug": "ibge-expectativa-vida-mulheres-80-anos",
-      "categoria": "Sociedade_Cultura",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-28T14:50:33Z",
-      "updated_at": "2026-11-27T14:50:33Z",
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/geral/noticia/2026-11/expectativa-de-vida-das-mulheres-no-brasil-supera-os-80-anos"
+      "slug": "retorno-edmundo-gonzalez-exilio-venezuela",
+      "status": "novo",
+      "ttl_horas": 48,
+      "expires_at": "2026-11-29T22:38:06Z",
+      "updated_at": "2026-11-27T22:38:06Z",
+      "titulo_tema": "Opositor Edmundo González anuncia retorno à Venezuela após período no exílio",
+      "sintese_nerd": "O anúncio de retorno do opositor Edmundo González à Venezuela, após dois anos exilado na Espanha, recoloca a pressão sobre o tabuleiro político de Caracas em meio a celebrações religiosas locais. A volta do líder oposicionista desafia o cerco institucional e pode reconfigurar as tensões diplomáticas na região.",
+      "rota_editoria": "/radar",
+      "data_publicacao": "2026-11-27T22:10:48Z",
+      "gatilho_vitrine": "Incluir no Radar Geopolítico para contextualizar as movimentações na política da América Latina e o cenário de transição na Venezuela.",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 82,
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Politica"
       ],
-      "resumo_pulso": "Segundo dados da Tábua de Mortalidade divulgados pelo IBGE e pela Agência Brasil, a expectativa de vida ao nascer para as mulheres no Brasil superou os 80 anos em 2025. Para os homens, o indicador subiu para 73,5 anos, mantendo a diferença histórica de pouco mais de 6,6 anos entre os sexos.",
-      "titulo_curto": "Expectativa de vida das mulheres brasileiras atinge 80,1 anos em 2025, aponta IBGE",
-      "palavras_chave": [
-        "IBGE",
-        "Expectativa de Vida",
-        "Demografia",
-        "Mulheres",
-        "Saúde Pública",
-        "Previdência"
-      ],
-      "urgencia_score": 88,
-      "data_publicacao": "2026-11-27T14:14:00Z",
-      "impacto_pratico": "Impacta diretamente o planejamento previdenciário público e privado, além de políticas públicas de saúde e envelhecimento ativo.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Agência Brasil (EBC)",
-        "IBGE"
-      ],
-      "relevancia_score": 91,
-      "horas_em_destaque": 8,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "links_internos_relacionados": []
-    },
-    {
-      "slug": "entidades-criticam-projeto-flexibilizacao-agencias-reguladoras",
-      "categoria": "Economia_Comercio",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-28T14:50:33Z",
-      "updated_at": "2026-11-27T14:50:33Z",
-      "fontes_urls": [
-        "https://g1.globo.com/politica/noticia/2026/11/27/entidades-manifestam-preocupacao-com-projeto-que-flexibiliza-regras-para-indicacao-de-dirigentes-de-agencias-reguladoras.ghtml"
-      ],
-      "resumo_pulso": "Conforme apurado pelo G1 Política, representantes de múltiplos setores produtivos divulgaram nota conjunta em oposição ao avanço de projeto de lei no Senado. A proposta reduz restrições de quarentena política para a indicação de ocupantes de cargos de liderança em agências reguladoras federais.",
-      "titulo_curto": "Entidades setoriais divulgam manifesto contra projeto que flexibiliza regras de agências reguladoras",
-      "palavras_chave": [
-        "Agências Reguladoras",
-        "Senado",
-        "Segurança Jurídica",
-        "Governança",
-        "G1 Política"
-      ],
-      "urgencia_score": 84,
-      "data_publicacao": "2026-11-27T14:12:18Z",
-      "impacto_pratico": "A medida é vista pelo mercado como um risco de interferência política em agências autárquicas como Anvisa, Aneel e Anatel.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "G1 Política"
-      ],
-      "relevancia_score": 86,
-      "horas_em_destaque": 6,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
-          "motivo_conexao": "Acompanhamento dos desdobramentos legislativos e institucionais do Congresso Nacional.",
-          "titulo_existente": "Política no Brasil"
-        }
+      "palavras_chave_busca": [
+        "edmundo gonzález",
+        "venezuela",
+        "exílio",
+        "oposição venezuelana",
+        "geopolítica sul-americana",
+        "espanha"
       ]
     }
   ]
