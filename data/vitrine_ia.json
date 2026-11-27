@@ -2,33 +2,120 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-27T19:54:33Z",
-  "batch_id": "20261127-1954",
+  "updatedAt": "2026-11-27T20:50:52Z",
+  "batch_id": "20261127-2050",
   "temas_ativos": [
     {
-      "slug": "open-ai-processa-apple-segredos-comerciais",
-      "titulo_tema": "OpenAI processa a Apple por suposto roubo de segredos comerciais e bloqueio de fornecedores",
-      "titulo_curto": "OpenAI processa a Apple por suposto roubo de segredos comerciais e bloqueio de fornecedores",
+      "slug": "senado-aprova-plano-nacional-cultura",
+      "titulo_tema": "Senado aprova novo Plano Nacional de Cultura para orientar diretrizes da próxima década",
+      "titulo_curto": "Senado aprova novo Plano Nacional de Cultura para orientar diretrizes da próxima década",
       "status": "novo",
       "origem_pipeline": "pulso",
-      "categoria_primaria": "Economia",
-      "categoria": "Economia_Comercio",
+      "categoria_primaria": "Cultura",
+      "categoria": "Sociedade_Cultura",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
       ],
-      "rota_editoria": "/economia",
+      "rota_editoria": "/cultura",
       "relevancia_score": 89,
       "urgencia_score": 88,
       "ttl_horas": 24,
-      "expires_at": "2026-11-28T19:54:33Z",
+      "expires_at": "2026-11-28T20:50:52Z",
       "palavras_chave_busca": [
-        "openai",
-        "apple",
-        "inteligência artificial",
-        "processo judicial",
-        "tecnologia"
+        "senado",
+        "plano nacional de cultura",
+        "cultura",
+        "políticas públicas"
       ],
+      "palavras_chave": [
+        "senado",
+        "plano nacional de cultura",
+        "cultura",
+        "políticas públicas"
+      ],
+      "gatilho_vitrine": "Segundo apuração da Agência Senado, o Plenário aprovou o novo Plano Nacional de Cultura (PNC), que estabelecerá diretrizes, metas e indicadores para as políticas culturais do país nos próximos dez anos, preenchendo uma lacuna de dois anos sem planejamento central vigente.",
+      "resumo_pulso": "Segundo apuração da Agência Senado, o Plenário aprovou o novo Plano Nacional de Cultura (PNC), que estabelecerá diretrizes, metas e indicadores para as políticas culturais do país nos próximos dez anos, preenchendo uma lacuna de dois anos sem planejamento central vigente.",
+      "sintese_nerd": "Direcionamento de recursos e programas culturais federais, estaduais e municipais até a próxima década.",
+      "impacto_pratico": "Direcionamento de recursos e programas culturais federais, estaduais e municipais até a próxima década.",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "veiculos_origem": [
+        "Agência Senado"
+      ],
+      "fontes_urls": [
+        "https://www12.senado.leg.br/noticias/videos/2026/11/senado-aprova-plano-nacional-de-cultura-para-proxima-decada"
+      ],
+      "data_publicacao": "2026-11-27T20:39:50Z",
+      "updated_at": "2026-11-27T20:50:52Z"
+    },
+    {
+      "slug": "iran-acusa-ucrania-ataque-kuwait-italia",
+      "titulo_tema": "Irã acusa Ucrânia por suposto ataque de falsa bandeira no Kuwait em meio a reações internacionais",
+      "titulo_curto": "Irã acusa Ucrânia por suposto ataque de falsa bandeira no Kuwait em meio a reações internacionais",
+      "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categoria": "Geopolitica_Relacoes",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 91,
+      "urgencia_score": 90,
+      "ttl_horas": 12,
+      "expires_at": "2026-11-28T08:50:52Z",
+      "palavras_chave_busca": [
+        "irã",
+        "ucrânia",
+        "kuwait",
+        "itália",
+        "geopolítica"
+      ],
+      "palavras_chave": [
+        "irã",
+        "ucrânia",
+        "kuwait",
+        "itália",
+        "geopolítica"
+      ],
+      "gatilho_vitrine": "Conforme análises e relatórios de agências internacionais repercutidos por canais especializados, autoridades iranianas acusaram a Ucrânia de realizar uma operação de falsa bandeira no Kuwait, enquanto a Itália responsabiliza Teerã por um ataque que resultou na morte de dois cidadãos italianos. As informações seguem sob apuração e geram alertas sobre desdobramentos no Oriente Médio.",
+      "resumo_pulso": "Conforme análises e relatórios de agências internacionais repercutidos por canais especializados, autoridades iranianas acusaram a Ucrânia de realizar uma operação de falsa bandeira no Kuwait, enquanto a Itália responsabiliza Teerã por um ataque que resultou na morte de dois cidadãos italianos. As informações seguem sob apuração e geram alertas sobre desdobramentos no Oriente Médio.",
+      "sintese_nerd": "Aumento das tensões diplomáticas e potenciais riscos para rotas de navegação e cadeias energéticas globais.",
+      "impacto_pratico": "Aumento das tensões diplomáticas e potenciais riscos para rotas de navegação e cadeias energéticas globais.",
+      "paises_envolvidos": [
+        "IR",
+        "UA",
+        "IT",
+        "KW"
+      ],
+      "veiculos_origem": [
+        "Parabólica",
+        "Reuters"
+      ],
+      "fontes_urls": [
+        "https://www.youtube.com/watch?v=U1HbdYEFfiY"
+      ],
+      "data_publicacao": "2026-11-27T20:30:15Z",
+      "updated_at": "2026-11-27T20:50:52Z"
+    },
+    {
+      "slug": "open-ai-processa-apple-segredos-comerciais",
+      "status": "novo",
+      "categoria": "Economia_Comercio",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-28T19:54:33Z",
+      "updated_at": "2026-11-27T19:54:33Z",
+      "fontes_urls": [
+        "https://g1.globo.com/tecnologia/noticia/2026/11/27/open-ai-apple-ia-segredo-processo.ghtml"
+      ],
+      "titulo_tema": "OpenAI processa a Apple por suposto roubo de segredos comerciais e bloqueio de fornecedores",
+      "resumo_pulso": "Segundo reportagem do G1 Economia, a OpenAI abriu um processo judicial contra a Apple, acusando a fabricante do iPhone de apropriação indevida de segredos comerciais e de dificultar o acesso da inteligência artificial a fornecedores de equipamentos. A disputa jurídica intensifica a rivalidade tecnológica entre as gigantes do setor.",
+      "sintese_nerd": "Movimenta o mercado de inteligência artificial e pode alterar parcerias estratégicas no ecossistema de tecnologia móvel.",
+      "titulo_curto": "OpenAI processa a Apple por suposto roubo de segredos comerciais e bloqueio de fornecedores",
+      "rota_editoria": "/economia",
       "palavras_chave": [
         "openai",
         "apple",
@@ -36,21 +123,30 @@
         "processo judicial",
         "tecnologia"
       ],
+      "urgencia_score": 88,
+      "data_publicacao": "2026-11-27T19:47:43Z",
       "gatilho_vitrine": "Segundo reportagem do G1 Economia, a OpenAI abriu um processo judicial contra a Apple, acusando a fabricante do iPhone de apropriação indevida de segredos comerciais e de dificultar o acesso da inteligência artificial a fornecedores de equipamentos. A disputa jurídica intensifica a rivalidade tecnológica entre as gigantes do setor.",
-      "resumo_pulso": "Segundo reportagem do G1 Economia, a OpenAI abriu um processo judicial contra a Apple, acusando a fabricante do iPhone de apropriação indevida de segredos comerciais e de dificultar o acesso da inteligência artificial a fornecedores de equipamentos. A disputa jurídica intensifica a rivalidade tecnológica entre as gigantes do setor.",
-      "sintese_nerd": "Movimenta o mercado de inteligência artificial e pode alterar parcerias estratégicas no ecossistema de tecnologia móvel.",
       "impacto_pratico": "Movimenta o mercado de inteligência artificial e pode alterar parcerias estratégicas no ecossistema de tecnologia móvel.",
-      "paises_envolvidos": [
-        "US"
-      ],
+      "origem_pipeline": "pulso",
       "veiculos_origem": [
         "G1 Economia"
       ],
-      "fontes_urls": [
-        "https://g1.globo.com/tecnologia/noticia/2026/11/27/open-ai-apple-ia-segredo-processo.ghtml"
+      "relevancia_score": 89,
+      "paises_envolvidos": [
+        "US"
       ],
-      "data_publicacao": "2026-11-27T19:47:43Z",
-      "updated_at": "2026-11-27T19:54:33Z"
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "openai",
+        "apple",
+        "inteligência artificial",
+        "processo judicial",
+        "tecnologia"
+      ]
     },
     {
       "slug": "dino-suspende-emendas-flavio-bolsonaro-2027",
@@ -61,10 +157,11 @@
       "titulo_tema": "STF: Flávio Dino suspende tramitação de emendas de Flávio Bolsonaro para 2027",
       "sintese_nerd": "A decisão do ministro Flávio Dino de suspender emendas parlamentares voltadas ao orçamento de 2027 acirra o controle do STF sobre a execução de recursos públicos por parlamentares. A medida intensifica o debate sobre a transparência do orçamento impositivo e a separação de poderes no Brasil.",
       "rota_editoria": "/politica",
+      "urgencia_score": 95,
       "data_publicacao": "2026-11-27T19:41:14Z",
       "gatilho_vitrine": "Ilustrar na editoria de política os atritos institucionais contínuos entre o Supremo Tribunal Federal e o Congresso Nacional.",
       "origem_pipeline": "curadoria",
-      "relevancia_score": 92,
+      "relevancia_score": 94,
       "categoria_primaria": "Politica",
       "categorias_cruzadas": [
         "Eleicoes"
@@ -76,8 +173,7 @@
         "emendas parlamentares",
         "orçamento 2027",
         "poder legislativo"
-      ],
-      "urgencia_score": 93
+      ]
     },
     {
       "slug": "trabuco-no-ministerio-da-fazenda-agenda-fiscal-2027",
@@ -162,28 +258,19 @@
     },
     {
       "slug": "fiocruz-alerta-aumento-casos-covid-nova-variante",
-      "titulo_tema": "Fiocruz aponta alta de casos de Síndrome Respiratória por Covid-19 associada a nova variante",
-      "titulo_curto": "Fiocruz aponta alta de casos de Síndrome Respiratória por Covid-19 associada a nova variante",
       "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Cultura",
       "categoria": "Sociedade_Cultura",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/cultura",
-      "relevancia_score": 90,
-      "urgencia_score": 89,
       "ttl_horas": 24,
       "expires_at": "2026-11-28T19:54:33Z",
-      "palavras_chave_busca": [
-        "fiocruz",
-        "covid-19",
-        "srag",
-        "saúde pública",
-        "nova variante"
+      "updated_at": "2026-11-27T19:54:33Z",
+      "fontes_urls": [
+        "https://agenciabrasil.ebc.com.br/saude/noticia/2026-11/aumento-de-casos-de-covid-19-pode-estar-relacionado-nova-variante"
       ],
+      "titulo_tema": "Fiocruz aponta alta de casos de Síndrome Respiratória por Covid-19 associada a nova variante",
+      "resumo_pulso": "Segundo dados do Boletim Infogripe da Fiocruz divulgados pela Agência Brasil, o país registra aumento nos casos de Síndrome Respiratória Aguda Grave (SRAG) por covid-19. O crescimento pode estar ligado à circulação de uma nova variante do vírus, potencialmente mais transmissível, combinada à redução da imunidade populacional.",
+      "sintese_nerd": "Alerta a população e redes de saúde para medidas preventivas e monitoramento de sintomas respiratórios.",
+      "titulo_curto": "Fiocruz aponta alta de casos de Síndrome Respiratória por Covid-19 associada a nova variante",
+      "rota_editoria": "/cultura",
       "palavras_chave": [
         "fiocruz",
         "covid-19",
@@ -191,21 +278,30 @@
         "saúde pública",
         "nova variante"
       ],
+      "urgencia_score": 89,
+      "data_publicacao": "2026-11-27T19:12:00Z",
       "gatilho_vitrine": "Segundo dados do Boletim Infogripe da Fiocruz divulgados pela Agência Brasil, o país registra aumento nos casos de Síndrome Respiratória Aguda Grave (SRAG) por covid-19. O crescimento pode estar ligado à circulação de uma nova variante do vírus, potencialmente mais transmissível, combinada à redução da imunidade populacional.",
-      "resumo_pulso": "Segundo dados do Boletim Infogripe da Fiocruz divulgados pela Agência Brasil, o país registra aumento nos casos de Síndrome Respiratória Aguda Grave (SRAG) por covid-19. O crescimento pode estar ligado à circulação de uma nova variante do vírus, potencialmente mais transmissível, combinada à redução da imunidade populacional.",
-      "sintese_nerd": "Alerta a população e redes de saúde para medidas preventivas e monitoramento de sintomas respiratórios.",
       "impacto_pratico": "Alerta a população e redes de saúde para medidas preventivas e monitoramento de sintomas respiratórios.",
-      "paises_envolvidos": [
-        "BR"
-      ],
+      "origem_pipeline": "pulso",
       "veiculos_origem": [
         "Agência Brasil (EBC)"
       ],
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/saude/noticia/2026-11/aumento-de-casos-de-covid-19-pode-estar-relacionado-nova-variante"
+      "relevancia_score": 90,
+      "paises_envolvidos": [
+        "BR"
       ],
-      "data_publicacao": "2026-11-27T19:12:00Z",
-      "updated_at": "2026-11-27T19:54:33Z"
+      "categoria_primaria": "Cultura",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "fiocruz",
+        "covid-19",
+        "srag",
+        "saúde pública",
+        "nova variante"
+      ]
     },
     {
       "slug": "senado-emendas-ldo-2027-meta-fiscal",
@@ -768,113 +864,17 @@
         "governança",
         "g1 política"
       ]
-    },
-    {
-      "slug": "governo-produtores-repudiam-critica-macron-carne",
-      "status": "novo",
-      "categoria": "Economia_Comercio",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-28T13:51:13Z",
-      "updated_at": "2026-11-27T13:51:13Z",
-      "fontes_urls": [
-        "https://www.infomoney.com.br/politica/governo-e-produtores-repudiam-critica-de-macron-a-carne-brasileira/"
-      ],
-      "titulo_tema": "Governo brasileiro e setor produtivo rechaçam declaração de Emmanuel Macron sobre carne do Mercosul",
-      "resumo_pulso": "Conforme apuração da InfoMoney e canais especializados, o governo do Brasil e entidades do agronegócio manifestaram repúdio às falas do presidente francês Emmanuel Macron, que classificou a carne bovina brasileira e do Mercosul como \"dopada\". O setor reforça que os produtos atendem a rigorosos padrões sanitários internacionais.",
-      "sintese_nerd": "Intensifica o atrito comercial diplomático entre o Mercosul e a União Europeia em meio a debates sobre barreiras protecionistas.",
-      "titulo_curto": "Governo brasileiro e setor produtivo rechaçam declaração de Emmanuel Macron sobre carne do Mercosul",
-      "rota_editoria": "/economia",
-      "palavras_chave": [
-        "emmanuel macron",
-        "carne brasileira",
-        "mercosul",
-        "união europeia",
-        "agronegócio"
-      ],
-      "urgencia_score": 89,
-      "data_publicacao": "2026-11-27T13:49:00Z",
-      "gatilho_vitrine": "Conforme apuração da InfoMoney e canais especializados, o governo do Brasil e entidades do agronegócio manifestaram repúdio às falas do presidente francês Emmanuel Macron, que classificou a carne bovina brasileira e do Mercosul como \"dopada\". O setor reforça que os produtos atendem a rigorosos padrões sanitários internacionais.",
-      "impacto_pratico": "Intensifica o atrito comercial diplomático entre o Mercosul e a União Europeia em meio a debates sobre barreiras protecionistas.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "InfoMoney Mercados",
-        "Prof Ricardo Marcílio"
-      ],
-      "relevancia_score": 90,
-      "paises_envolvidos": [
-        "BR",
-        "FR",
-        "EU"
-      ],
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "emmanuel macron",
-        "carne brasileira",
-        "mercosul",
-        "união europeia",
-        "agronegócio"
-      ]
-    },
-    {
-      "slug": "governo-central-superavit-outubro",
-      "status": "novo",
-      "categoria": "Economia_Comercio",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-28T13:51:13Z",
-      "updated_at": "2026-11-27T17:03:17Z",
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/contas-do-governo-tem-superavit-de-r-523-bilhoes-em-outubro"
-      ],
-      "titulo_tema": "Governo central registra superávit primário de R$ 52,3 bilhões em outubro",
-      "resumo_pulso": "Segundo dados do Tesouro Nacional reportados pela Agência Brasil, o governo central alcançou um superávit primário de R$ 52,3 bilhões em outubro. O resultado superou as expectativas do mercado financeiro, que projetava R$ 43,4 bilhões, refletindo um crescimento real em relação ao mesmo período do ano anterior.",
-      "sintese_nerd": "O resultado positivo acima do esperado pode influenciar positivamente as expectativas do mercado financeiro sobre o cumprimento das metas fiscais e a trajetória da dívida pública.",
-      "titulo_curto": "Governo central registra superávit primário de R$ 52,3 bilhões em outubro",
-      "rota_editoria": "/economia",
-      "palavras_chave": [
-        "superávit",
-        "tesouro nacional",
-        "contas públicas",
-        "economia"
-      ],
-      "urgencia_score": 92,
-      "data_publicacao": "2026-11-27T13:45:49Z",
-      "gatilho_vitrine": "Segundo dados do Tesouro Nacional reportados pela Agência Brasil, o governo central alcançou um superávit primário de R$ 52,3 bilhões em outubro. O resultado superou as expectativas do mercado financeiro, que projetava R$ 43,4 bilhões, refletindo um crescimento real em relação ao mesmo período do ano anterior.",
-      "impacto_pratico": "O resultado positivo acima do esperado pode influenciar positivamente as expectativas do mercado financeiro sobre o cumprimento das metas fiscais e a trajetória da dívida pública.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "Agência Brasil",
-        "Tesouro Nacional"
-      ],
-      "relevancia_score": 93,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "superávit",
-        "tesouro nacional",
-        "contas públicas",
-        "economia"
-      ]
     }
   ],
   "noticias_quentes": [
     {
-      "slug": "open-ai-processa-apple-segredos-comerciais",
-      "titulo_curto": "OpenAI processa a Apple por suposto roubo de segredos comerciais e bloqueio de fornecedores",
-      "resumo_pulso": "Segundo reportagem do G1 Economia, a OpenAI abriu um processo judicial contra a Apple, acusando a fabricante do iPhone de apropriação indevida de segredos comerciais e de dificultar o acesso da inteligência artificial a fornecedores de equipamentos. A disputa jurídica intensifica a rivalidade tecnológica entre as gigantes do setor.",
-      "impacto_pratico": "Movimenta o mercado de inteligência artificial e pode alterar parcerias estratégicas no ecossistema de tecnologia móvel.",
-      "categoria": "Economia_Comercio",
+      "slug": "senado-aprova-plano-nacional-cultura",
+      "titulo_curto": "Senado aprova novo Plano Nacional de Cultura para orientar diretrizes da próxima década",
+      "resumo_pulso": "Segundo apuração da Agência Senado, o Plenário aprovou o novo Plano Nacional de Cultura (PNC), que estabelecerá diretrizes, metas e indicadores para as políticas culturais do país nos próximos dez anos, preenchendo uma lacuna de dois anos sem planejamento central vigente.",
+      "impacto_pratico": "Direcionamento de recursos e programas culturais federais, estaduais e municipais até a próxima década.",
+      "categoria": "Sociedade_Cultura",
       "paises_envolvidos": [
-        "US"
+        "BR"
       ],
       "urgencia_score": 88,
       "relevancia_score": 89,
@@ -882,11 +882,81 @@
       "ttl_horas": 24,
       "horas_em_destaque": 12,
       "veiculos_origem": [
-        "G1 Economia"
+        "Agência Senado"
       ],
+      "fontes_urls": [
+        "https://www12.senado.leg.br/noticias/videos/2026/11/senado-aprova-plano-nacional-de-cultura-para-proxima-decada"
+      ],
+      "palavras_chave": [
+        "Senado",
+        "Plano Nacional de Cultura",
+        "Cultura",
+        "Políticas Públicas"
+      ],
+      "data_publicacao": "2026-11-27T20:39:50Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "Movimentos sociais e parlamentares debatem investimentos em saúde, education e transição ecológica",
+          "url_existente": "https://www.rodandoomundo.com.br/saude",
+          "motivo_conexao": "Relaciona a aprovação de políticas estruturantes de longo prazo pelo Congresso com o planejamento orçamentário e social."
+        }
+      ],
+      "expires_at": "2026-11-28T20:50:52Z",
+      "updated_at": "2026-11-27T20:50:52Z"
+    },
+    {
+      "slug": "iran-acusa-ucrania-ataque-kuwait-italia",
+      "titulo_curto": "Irã acusa Ucrânia por suposto ataque de falsa bandeira no Kuwait em meio a reações internacionais",
+      "resumo_pulso": "Conforme análises e relatórios de agências internacionais repercutidos por canais especializados, autoridades iranianas acusaram a Ucrânia de realizar uma operação de falsa bandeira no Kuwait, enquanto a Itália responsabiliza Teerã por um ataque que resultou na morte de dois cidadãos italianos. As informações seguem sob apuração e geram alertas sobre desdobramentos no Oriente Médio.",
+      "impacto_pratico": "Aumento das tensões diplomáticas e potenciais riscos para rotas de navegação e cadeias energéticas globais.",
+      "categoria": "Geopolitica_Relacoes",
+      "paises_envolvidos": [
+        "IR",
+        "UA",
+        "IT",
+        "KW"
+      ],
+      "urgencia_score": 90,
+      "relevancia_score": 91,
+      "nivel_confianca": "preliminar",
+      "ttl_horas": 12,
+      "horas_em_destaque": 6,
+      "veiculos_origem": [
+        "Parabólica",
+        "Reuters"
+      ],
+      "fontes_urls": [
+        "https://www.youtube.com/watch?v=U1HbdYEFfiY"
+      ],
+      "palavras_chave": [
+        "Irã",
+        "Ucrânia",
+        "Kuwait",
+        "Itália",
+        "Geopolítica"
+      ],
+      "data_publicacao": "2026-11-27T20:30:15Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "O que é uma sanção internacional?",
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-sancao-internacional",
+          "motivo_conexao": "Explica o contexto de pressões geopolíticas e restrições cruzadas entre potências e países sob conflito."
+        }
+      ],
+      "expires_at": "2026-11-28T08:50:52Z",
+      "updated_at": "2026-11-27T20:50:52Z"
+    },
+    {
+      "slug": "open-ai-processa-apple-segredos-comerciais",
+      "categoria": "Economia_Comercio",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-28T19:54:33Z",
+      "updated_at": "2026-11-27T19:54:33Z",
       "fontes_urls": [
         "https://g1.globo.com/tecnologia/noticia/2026/11/27/open-ai-apple-ia-segredo-processo.ghtml"
       ],
+      "resumo_pulso": "Segundo reportagem do G1 Economia, a OpenAI abriu um processo judicial contra a Apple, acusando a fabricante do iPhone de apropriação indevida de segredos comerciais e de dificultar o acesso da inteligência artificial a fornecedores de equipamentos. A disputa jurídica intensifica a rivalidade tecnológica entre as gigantes do setor.",
+      "titulo_curto": "OpenAI processa a Apple por suposto roubo de segredos comerciais e bloqueio de fornecedores",
       "palavras_chave": [
         "OpenAI",
         "Apple",
@@ -894,69 +964,71 @@
         "Processo Judicial",
         "Tecnologia"
       ],
+      "urgencia_score": 88,
       "data_publicacao": "2026-11-27T19:47:43Z",
-      "links_internos_relacionados": [],
-      "expires_at": "2026-11-28T19:54:33Z",
-      "updated_at": "2026-11-27T19:54:33Z"
+      "impacto_pratico": "Movimenta o mercado de inteligência artificial e pode alterar parcerias estratégicas no ecossistema de tecnologia móvel.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "G1 Economia"
+      ],
+      "relevancia_score": 89,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "US"
+      ],
+      "links_internos_relacionados": []
     },
     {
       "slug": "dino-suspende-emendas-flavio-bolsonaro-2027",
       "titulo_curto": "Ministro Flávio Dino suspende tramitação de emendas de Flávio Bolsonaro para 2027",
-      "resumo_pulso": "Conforme apuração do G1 Política, o ministro do STF Flávio Dino determinou a suspensão da tramitação de emendas do senador Flávio Bolsonaro (PL-RJ) para o orçamento de 2027. O magistrado também exigiu que o Senado preste esclarecimentos sobre as circunstâncias de atuação parlamentar do senador fora do território nacional.",
-      "impacto_pratico": "Gera instabilidade institucional no Congresso e paralisa emendas orçamentárias vinculadas ao parlamentar para o próximo exercício fiscal.",
+      "resumo_pulso": "Conforme apuração do JOTA e da Agência Gov, o ministro do STF Flávio Dino determinou a suspensão imediata da execução de 14 emendas apresentadas pelo senador Flávio Bolsonaro ao orçamento de 2027, totalizando R$ 79,3 milhões. A medida cautelar visa resguardar a higidez do processo orçamentário e exige esclarecimentos do Senado.",
+      "impacto_pratico": "Bloqueio temporário de recursos orçamentários e intensificação do debate institucional entre o STF e o Legislativo.",
       "categoria": "Geopolitica_Relacoes",
       "paises_envolvidos": [
         "BR"
       ],
-      "urgencia_score": 93,
-      "relevancia_score": 92,
+      "urgencia_score": 95,
+      "relevancia_score": 94,
       "nivel_confianca": "alta",
       "ttl_horas": 24,
       "horas_em_destaque": 12,
       "veiculos_origem": [
-        "G1 Política"
+        "Agência Gov (Planalto)",
+        "JOTA Info"
       ],
       "fontes_urls": [
-        "https://g1.globo.com/politica/noticia/2026/11/27/dino-suspende-tramitacao-de-emendas-de-flavio-bolsonaro-2027-ministro-pediu-que-senado-explique-atuacao-do-senador-de-fora-do-pais.ghtml"
+        "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/stf-dino-suspende-emendas-parlamentares-de-flavio-bolsonaro",
+        "https://www.jota.info/stf/do-supremo/dino-suspende-tramitacao-de-emendas-de-autoria-de-flavio-bolsonaro"
       ],
       "palavras_chave": [
-        "Flávio Dino",
         "STF",
+        "Flávio Dino",
         "Flávio Bolsonaro",
         "Orçamento 2027",
-        "Senado Federal"
+        "Emendas Parlamentares"
       ],
       "data_publicacao": "2026-11-27T19:41:14Z",
       "links_internos_relacionados": [
         {
           "titulo_existente": "STF analisa regras de transparência e limites constitucionais entre os Poderes",
           "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
-          "motivo_conexao": "Contextualiza a atuação recente do Supremo Tribunal Federal em relação às prerrogativas institucionais e emendas."
+          "motivo_conexao": "Contextualiza a atuação recente do Supremo Tribunal Federal em relação ao controle de emendas e transparência entre os Poderes."
         }
       ],
       "expires_at": "2026-11-28T19:41:14Z",
-      "updated_at": "2026-11-27T19:54:33Z"
+      "updated_at": "2026-11-27T20:50:52Z"
     },
     {
       "slug": "fiocruz-alerta-aumento-casos-covid-nova-variante",
-      "titulo_curto": "Fiocruz aponta alta de casos de Síndrome Respiratória por Covid-19 associada a nova variante",
-      "resumo_pulso": "Segundo dados do Boletim Infogripe da Fiocruz divulgados pela Agência Brasil, o país registra aumento nos casos de Síndrome Respiratória Aguda Grave (SRAG) por covid-19. O crescimento pode estar ligado à circulação de uma nova variante do vírus, potencialmente mais transmissível, combinada à redução da imunidade populacional.",
-      "impacto_pratico": "Alerta a população e redes de saúde para medidas preventivas e monitoramento de sintomas respiratórios.",
       "categoria": "Sociedade_Cultura",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "urgencia_score": 89,
-      "relevancia_score": 90,
-      "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 12,
-      "veiculos_origem": [
-        "Agência Brasil (EBC)"
-      ],
+      "expires_at": "2026-11-28T19:54:33Z",
+      "updated_at": "2026-11-27T19:54:33Z",
       "fontes_urls": [
         "https://agenciabrasil.ebc.com.br/saude/noticia/2026-11/aumento-de-casos-de-covid-19-pode-estar-relacionado-nova-variante"
       ],
+      "resumo_pulso": "Segundo dados do Boletim Infogripe da Fiocruz divulgados pela Agência Brasil, o país registra aumento nos casos de Síndrome Respiratória Aguda Grave (SRAG) por covid-19. O crescimento pode estar ligado à circulação de uma nova variante do vírus, potencialmente mais transmissível, combinada à redução da imunidade populacional.",
+      "titulo_curto": "Fiocruz aponta alta de casos de Síndrome Respiratória por Covid-19 associada a nova variante",
       "palavras_chave": [
         "Fiocruz",
         "Covid-19",
@@ -964,16 +1036,25 @@
         "Saúde Pública",
         "Nova Variante"
       ],
+      "urgencia_score": 89,
       "data_publicacao": "2026-11-27T19:12:00Z",
+      "impacto_pratico": "Alerta a população e redes de saúde para medidas preventivas e monitoramento de sintomas respiratórios.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Agência Brasil (EBC)"
+      ],
+      "relevancia_score": 90,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "BR"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "Movimentos sociais e parlamentares debatem investimentos em saúde, educação e transição ecológica",
           "url_existente": "https://www.rodandoomundo.com.br/saude",
-          "motivo_conexao": "Relaciona o debate de políticas e investimentos em saúde com os desafios sanitários recentes."
+          "motivo_conexao": "Relaciona o debate de políticas e investimentos em saúde com os desafios sanitários recentes.",
+          "titulo_existente": "Movimentos sociais e parlamentares debatem investimentos em saúde, educação e transição ecológica"
         }
-      ],
-      "expires_at": "2026-11-28T19:54:33Z",
-      "updated_at": "2026-11-27T19:54:33Z"
+      ]
     },
     {
       "slug": "senado-emendas-ldo-2027-meta-fiscal",
@@ -1511,83 +1592,6 @@
           "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
           "motivo_conexao": "Panorama sobre grandes grupos corporativos e setores estratégicos da infraestrutura nacional.",
           "titulo_existente": "Economia no Brasil"
-        }
-      ]
-    },
-    {
-      "slug": "tempestade-eua-acao-de-gracas-energia",
-      "categoria": "Ciencia_Clima",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-28T13:51:13Z",
-      "updated_at": "2026-11-27T13:51:13Z",
-      "fontes_urls": [
-        "https://g1.globo.com/mundo/noticia/2026/11/27/tempestade-feriado-dia-de-acao-de-gracas-eua-1-milhao-sem-luz-cancela-voos.ghtml"
-      ],
-      "resumo_pulso": "Segundo reportagem do G1 Mundo, uma forte tempestade com ventos de até 112 km/h atingiu a costa leste dos Estados Unidos durante o feriado de Ação de Graças. O temporal deixou cerca de 1 milhão de residências e comércios sem energia elétrica e provocou cancelamentos generalizados de voos.",
-      "titulo_curto": "Tempestade de Ação de Graças deixa quase 1 milhão sem luz e afeta voos na costa leste dos EUA",
-      "palavras_chave": [
-        "Estados Unidos",
-        "Tempestade",
-        "Ação de Graças",
-        "Falta de Energia"
-      ],
-      "urgencia_score": 88,
-      "data_publicacao": "2026-11-27T13:15:07Z",
-      "impacto_pratico": "Causa transtornos logísticos a viajantes durante um dos feriados de maior circulação no país norte-americano.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "G1 Mundo"
-      ],
-      "relevancia_score": 86,
-      "horas_em_destaque": 12,
-      "paises_envolvidos": [
-        "US"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/politica/estados-unidos",
-          "motivo_conexao": "Fornece contexto geográfico e institucional sobre acontecimentos na sociedade norte-americana.",
-          "titulo_existente": "Política nos Estados Unidos"
-        }
-      ]
-    },
-    {
-      "slug": "ibge-pof-2024-2025-desigualdade-renda",
-      "categoria": "Economia_Comercio",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-28T13:51:13Z",
-      "updated_at": "2026-11-27T13:51:13Z",
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/familias-mais-pobres-sao-217-mas-ficam-com-apenas-47-da-renda",
-        "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/brasileiros-estao-gastando-mais-com-alimentacao-e-saude-aponta-ibge"
-      ],
-      "resumo_pulso": "Conforme dados da Pesquisa de Orçamentos Familiares (POF) 2024-2025 divulgados pelo IBGE e pela Agência Brasil, as famílias com renda até dois salários mínimos somam 21,7% da população, mas detêm apenas 4,7% da renda total. O levantamento também revelou que os gastos com alimentação passaram a ocupar 14% das despesas de consumo, ganhando maior espaço no orçamento.",
-      "titulo_curto": "Pesquisa de Orçamentos Familiares do IBGE aponta alta concentração de renda e gastos maiores com alimentação",
-      "palavras_chave": [
-        "IBGE",
-        "POF",
-        "Orçamento Familiar",
-        "Desigualdade de Renda",
-        "Alimentação"
-      ],
-      "urgencia_score": 92,
-      "data_publicacao": "2026-11-27T13:05:00Z",
-      "impacto_pratico": "Evidencia o peso do custo de vida sobre as famílias de menor renda e orienta diretrizes de políticas públicas e sociais.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Agência Brasil (EBC)",
-        "Câmara dos Deputados"
-      ],
-      "relevancia_score": 94,
-      "horas_em_destaque": 18,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
-          "motivo_conexao": "Complementa a análise sobre o poder de compra e o orçamento das famílias brasileiras.",
-          "titulo_existente": "Emprego, renda das famílias e financiamento industrial entram no centro do debate econômico"
         }
       ]
     }
