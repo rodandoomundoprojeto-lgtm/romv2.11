@@ -2,195 +2,160 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-27T10:07:55Z",
-  "batch_id": "20261127-1006",
+  "updatedAt": "2026-11-27T10:22:12Z",
+  "batch_id": "20261127-1021",
   "temas_ativos": [
     {
-      "slug": "espanha-eleicoes-imigracao-sanchez",
-      "titulo_tema": "Espanha encerra campanha eleitoral marcada pelo debate migratório e teste para a social-democracia",
-      "titulo_curto": "Espanha encerra campanha eleitoral marcada pelo debate migratório e teste para a social-democracia",
+      "slug": "risco-crise-credito-brasil-2027",
+      "titulo_tema": "Alerta de Crise de Crédito no Brasil para 2027",
       "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Geopolitica_Radar",
-      "categoria": "Geopolitica_Relacoes",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Economia",
       "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
+        "Politica"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 95,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-29T10:22:12Z",
+      "palavras_chave_busca": [
+        "crise de credito",
+        "inadimplencia",
+        "bancos",
+        "febraban",
+        "politica monetaria",
+        "endividamento"
+      ],
+      "gatilho_vitrine": "Analise o impacto do endividamento das famílias e a restrição de crédito na economia real.",
+      "sintese_nerd": "O aumento da inadimplência e a deterioração das carteiras bancárias sinalizam um aperto severo na oferta de crédito para 2027. Esse cenário força uma reavaliação das estratégias de alocação de capital e pressiona o governo por medidas de estímulo ou regulação.",
+      "data_publicacao": "2026-11-27T10:22:12Z",
+      "updated_at": "2026-11-27T10:22:12Z"
+    },
+    {
+      "slug": "eleicoes-espanha-imigracao-social-democracia",
+      "titulo_tema": "Eleições na Espanha: Imigração e o Futuro da Social-Democracia",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Eleicoes",
+        "Cultura"
       ],
       "rota_editoria": "/radar",
-      "relevancia_score": 89,
-      "urgencia_score": 90,
-      "ttl_horas": 24,
-      "expires_at": "2026-11-28T10:07:55Z",
+      "relevancia_score": 90,
+      "ttl_horas": 72,
+      "expires_at": "2026-11-30T10:22:12Z",
       "palavras_chave_busca": [
         "espanha",
-        "eleições",
-        "pedro sánchez",
-        "imigração"
+        "eleicoes espanha",
+        "pedro sanchez",
+        "imigracao europa",
+        "social-democracia",
+        "crise politica"
       ],
+      "gatilho_vitrine": "Cubra o impacto das eleições espanholas na estabilidade política europeia e nas políticas migratórias.",
+      "sintese_nerd": "A Espanha enfrenta um momento decisivo onde a imigração e denúncias de corrupção ameaçam a permanência da social-democracia no poder. O resultado impactará diretamente as diretrizes da União Europeia sobre fronteiras e direitos sociais.",
+      "data_publicacao": "2026-11-27T10:22:12Z",
+      "updated_at": "2026-11-27T10:22:12Z"
+    },
+    {
+      "slug": "volatilidade-mercado-ibovespa-dolar",
+      "titulo_tema": "Volatilidade no Ibovespa e Dólar: Ajustes de Mercado",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Geopolitica_Radar"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 88,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-28T10:22:12Z",
+      "palavras_chave_busca": [
+        "ibovespa",
+        "dolar",
+        "day trade",
+        "mercado financeiro",
+        "embraer",
+        "bolsa de valores"
+      ],
+      "gatilho_vitrine": "Monitore a correção técnica dos ativos brasileiros após a forte oscilação recente.",
+      "sintese_nerd": "A quebra de estruturas técnicas no Ibovespa e no minidólar reflete um mercado reagindo a incertezas fiscais e pressões externas. A atenção se volta para a sustentabilidade desses movimentos diante da agenda econômica de fim de ano.",
+      "data_publicacao": "2026-11-27T10:22:12Z",
+      "updated_at": "2026-11-27T10:22:12Z"
+    },
+    {
+      "slug": "conflito-ucrania-russia-escalada-energia",
+      "titulo_tema": "Escalada do Conflito na Ucrânia e Impactos na Infraestrutura",
+      "status": "atualizacao",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 86,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-29T10:22:12Z",
+      "palavras_chave_busca": [
+        "ucrania",
+        "russia",
+        "guerra",
+        "energia",
+        "drones",
+        "geopolitica"
+      ],
+      "gatilho_vitrine": "Atualize o cenário de ataques russos e a resposta da Ucrânia com apoio do Banco Mundial.",
+      "sintese_nerd": "A intensificação dos ataques russos contra infraestrutura energética ucraniana, somada ao financiamento do Banco Mundial, mantém o conflito como um vetor de instabilidade global. A guerra continua a ditar o ritmo de investimentos em reconstrução e segurança energética.",
+      "data_publicacao": "2026-11-27T10:22:12Z",
+      "updated_at": "2026-11-27T10:22:12Z"
+    },
+    {
+      "slug": "espanha-eleicoes-imigracao-sanchez",
+      "status": "novo",
+      "categoria": "Geopolitica_Relacoes",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-28T10:07:55Z",
+      "updated_at": "2026-11-27T10:07:55Z",
+      "fontes_urls": [
+        "https://www.bbc.com/portuguese/articles/cj62p7w0n2zgo?at_medium=RSS&at_campaign=rss",
+        "https://g1.globo.com/mundo/noticia/2026/11/27/espanha-encerra-campanha-eleitoral-sanchez-tenta-frear-direita-e-extrema-direita.ghtml"
+      ],
+      "titulo_tema": "Espanha encerra campanha eleitoral marcada pelo debate migratório e teste para a social-democracia",
+      "resumo_pulso": "Conforme reportagens da BBC News Brasil e do G1 Mundo, a Espanha encerra nesta sexta-feira a campanha para as eleições de 29 de novembro. O primeiro-ministro Pedro Sánchez tenta frear o avanço da direita e da extrema direita em um pleito onde a imigração se consolidou como tema central.",
+      "sintese_nerd": "Possível guinada política na Europa Ocidental com reflexos nas políticas de imigração e relações comerciais com a América Latina.",
+      "titulo_curto": "Espanha encerra campanha eleitoral marcada pelo debate migratório e teste para a social-democracia",
+      "rota_editoria": "/radar",
       "palavras_chave": [
         "espanha",
         "eleições",
         "pedro sánchez",
         "imigração"
       ],
+      "urgencia_score": 90,
+      "data_publicacao": "2026-11-27T09:50:53Z",
       "gatilho_vitrine": "Conforme reportagens da BBC News Brasil e do G1 Mundo, a Espanha encerra nesta sexta-feira a campanha para as eleições de 29 de novembro. O primeiro-ministro Pedro Sánchez tenta frear o avanço da direita e da extrema direita em um pleito onde a imigração se consolidou como tema central.",
-      "resumo_pulso": "Conforme reportagens da BBC News Brasil e do G1 Mundo, a Espanha encerra nesta sexta-feira a campanha para as eleições de 29 de novembro. O primeiro-ministro Pedro Sánchez tenta frear o avanço da direita e da extrema direita em um pleito onde a imigração se consolidou como tema central.",
-      "sintese_nerd": "Possível guinada política na Europa Ocidental com reflexos nas políticas de imigração e relações comerciais com a América Latina.",
       "impacto_pratico": "Possível guinada política na Europa Ocidental com reflexos nas políticas de imigração e relações comerciais com a América Latina.",
-      "paises_envolvidos": [
-        "ES"
-      ],
+      "origem_pipeline": "pulso",
       "veiculos_origem": [
         "BBC News Brasil",
         "G1 Mundo",
         "The Conversation Brasil"
       ],
-      "fontes_urls": [
-        "https://www.bbc.com/portuguese/articles/cj62p7w0n2zgo?at_medium=RSS&at_campaign=rss",
-        "https://g1.globo.com/mundo/noticia/2026/11/27/espanha-encerra-campanha-eleitoral-sanchez-tenta-frear-direita-e-extrema-direita.ghtml"
+      "relevancia_score": 89,
+      "paises_envolvidos": [
+        "ES"
       ],
-      "data_publicacao": "2026-11-27T09:50:53Z",
-      "updated_at": "2026-11-27T10:07:55Z"
-    },
-    {
-      "slug": "trabuco-fazenda-lula-4-mercado-financeiro",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-29T08:05:44Z",
-      "updated_at": "2026-11-27T08:05:44Z",
-      "titulo_tema": "Escolha de Luiz Carlos Trabuco para a Fazenda gera otimismo nos mercados",
-      "sintese_nerd": "A confirmação de Luiz Carlos Trabuco para o comando da Fazenda impulsionou o fundo de ações brasileiras em Nova York e o Ibovespa no cenário interno. O aceno ao setor produtivo busca afastar riscos de estagflação e sinalizar credibilidade fiscal para o ciclo de investimentos.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-27T08:05:44Z",
-      "gatilho_vitrine": "Destacar reação positiva dos mercados globais e locais à indicação do novo ministro da Fazenda",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 95,
-      "categoria_primaria": "Economia",
+      "categoria_primaria": "Geopolitica_Radar",
       "categorias_cruzadas": [
-        "Politica",
+        "Economia",
         "Resumo_Ultimas"
       ],
       "palavras_chave_busca": [
-        "luiz carlos trabuco",
-        "ministério da fazenda",
-        "lula 4",
-        "ibovespa",
-        "ewz",
-        "bradesco",
-        "política fiscal",
-        "mercado financeiro"
-      ]
-    },
-    {
-      "slug": "russia-wagner-africa-tarifas-ue-ucrania",
-      "status": "novo",
-      "ttl_horas": 72,
-      "expires_at": "2026-11-30T08:05:44Z",
-      "updated_at": "2026-11-27T08:05:44Z",
-      "titulo_tema": "Expansão russa na África e restrições comerciais da UE sobre a Ucrânia",
-      "sintese_nerd": "Investigações jornalísticas expõem a consolidação da influência militar russa na África Central via mercenários, enquanto a base industrial ucraniana sofre novos abalos com cotas tarifárias impostas pela União Europeia. O duplo cenário evidencia as ramificações geopolíticas da guerra além dos campos de batalha europeus.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-27T08:05:44Z",
-      "gatilho_vitrine": "Mapear a presença militar russa na África e as barreiras econômicas enfrentadas pela Ucrânia",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 88,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia"
-      ],
-      "palavras_chave_busca": [
-        "grupo wagner",
-        "rússia na áfrica",
-        "siderúrgica ucrânia",
-        "tarifas união europeia",
-        "guerra na ucrânia",
-        "metinvest",
-        "geopolítica global"
-      ]
-    },
-    {
-      "slug": "pacto-de-meca-defesa-arabia-saudita-turquia-paquistao",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-29T08:05:44Z",
-      "updated_at": "2026-11-27T08:05:44Z",
-      "titulo_tema": "Pacto de Meca testa aliança de defesa entre Arábia Saudita, Turquia e Paquistão",
-      "sintese_nerd": "Lideranças de Islamabad, Riad e Ancara se reúnem para estruturar os mecanismos práticos de apoio militar mútuo sob o Pacto de Meca. A iniciativa surge em meio aos ataques contínuos no Mar Vermelho e à busca por autonomia estratégica no Oriente Médio.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-27T08:05:44Z",
-      "gatilho_vitrine": "Analisar a viabilidade prática do bloco de segurança militar no Oriente Médio",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 85,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Politica"
-      ],
-      "palavras_chave_busca": [
-        "pacto de meca",
-        "arábia saudita",
-        "turquia",
-        "paquistão",
-        "oriente médio",
-        "defesa coletiva",
-        "rebeldes houthis",
-        "diplomacia global"
-      ]
-    },
-    {
-      "slug": "petrobras-minerais-criticos-transicao-energetica",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-29T08:05:44Z",
-      "updated_at": "2026-11-27T08:05:44Z",
-      "titulo_tema": "Petrobras estuda entrada na extração de minerais críticos para baterias",
-      "sintese_nerd": "O novo Plano de Negócios da Petrobras prevê a prospecção de atuação na cadeia de minerais críticos e sistemas de armazenamento de energia em grande escala. A mudança visa posicionar a petroleira na corrida global pelos insumos da transição energética e mobilidade elétrica.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-27T08:05:44Z",
-      "gatilho_vitrine": "Acompanhar a diversificação estratégica da Petrobras rumo a matérias-primas da economia verde",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 82,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Geopolitica_Radar",
-        "Cultura"
-      ],
-      "palavras_chave_busca": [
-        "petrobras",
-        "minerais críticos",
-        "transição energética",
-        "baterias",
-        "armazenamento de energia",
-        "lítio",
-        "plano de negócios"
-      ]
-    },
-    {
-      "slug": "vacancia-agencias-reguladoras-federal-governanca",
-      "status": "novo",
-      "ttl_horas": 36,
-      "expires_at": "2026-11-28T20:05:44Z",
-      "updated_at": "2026-11-27T08:05:44Z",
-      "titulo_tema": "Vacância de diretores compromete autonomia e agilidade das agências reguladoras",
-      "sintese_nerd": "Levantamento indica 21 cargos vagos no comando das principais agências reguladoras federais, com atrasos médios superiores a sete meses para preenchimento. A paralisia decisória ameaça a fiscalização de serviços públicos e gera incerteza jurídica para investidores privados.",
-      "rota_editoria": "/politica",
-      "data_publicacao": "2026-11-27T08:05:44Z",
-      "gatilho_vitrine": "Alertar para o impacto institucional do atraso nas nomeações de diretores regulatórios",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 78,
-      "categoria_primaria": "Politica",
-      "categorias_cruzadas": [
-        "Economia"
-      ],
-      "palavras_chave_busca": [
-        "agências reguladoras",
-        "vacância de cargos",
-        "anatel",
-        "aneel",
-        "anvisa",
-        "segurança jurídica",
-        "governança pública",
-        "senado federal"
+        "espanha",
+        "eleições",
+        "pedro sánchez",
+        "imigração"
       ]
     },
     {
@@ -287,51 +252,51 @@
     },
     {
       "slug": "trabuco-futuro-ministro-fazenda-mercado",
-      "titulo_tema": "Mercados e analistas repercutem transição no Ministério da Fazenda com Luiz Carlos Trabuco",
-      "titulo_curto": "Mercados e analistas repercutem transição no Ministério da Fazenda com Luiz Carlos Trabuco",
       "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Economia",
       "categoria": "Economia_Comercio",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 98,
-      "urgencia_score": 95,
       "ttl_horas": 24,
       "expires_at": "2026-11-28T01:04:51Z",
-      "palavras_chave_busca": [
-        "luiz carlos trabuco",
-        "ministério da fazenda",
-        "ibovespa",
-        "mercado financeiro"
+      "updated_at": "2026-11-27T10:07:55Z",
+      "fontes_urls": [
+        "https://g1.globo.com/politica/noticia/2026/11/27/paulo-guedes-haddad-e-durigan-quem-foram-os-ultimos-ministros-da-fazenda-do-brasil-antes-da-escolha-de-trabuco.ghtml",
+        "https://www.infomoney.com.br/mercados/mercados-day-trade-hoje-analistas-27112026/"
       ],
+      "titulo_tema": "Mercados e analistas repercutem transição no Ministério da Fazenda com Luiz Carlos Trabuco",
+      "resumo_pulso": "Segundo apuração do G1 e da InfoMoney, a oficialização de Luiz Carlos Trabuco no Ministério da Fazenda continua gerando forte otimismo e alta nos mercados financeiros, com o Ibovespa registrando disparada expressiva. Veículos destacam sua trajetória no Bradesco e a construção de pontes entre o governo e o setor financeiro.",
+      "sintese_nerd": "Forte volatilidade positiva nos ativos de risco e apreciação do real frente ao dólar devido à expectativa de diálogo fiscal.",
+      "titulo_curto": "Mercados e analistas repercutem transição no Ministério da Fazenda com Luiz Carlos Trabuco",
+      "rota_editoria": "/economia",
       "palavras_chave": [
         "luiz carlos trabuco",
         "ministério da fazenda",
         "ibovespa",
         "mercado financeiro"
       ],
+      "urgencia_score": 95,
+      "data_publicacao": "2026-11-27T00:50:57Z",
       "gatilho_vitrine": "Segundo apuração do G1 e da InfoMoney, a oficialização de Luiz Carlos Trabuco no Ministério da Fazenda continua gerando forte otimismo e alta nos mercados financeiros, com o Ibovespa registrando disparada expressiva. Veículos destacam sua trajetória no Bradesco e a construção de pontes entre o governo e o setor financeiro.",
-      "resumo_pulso": "Segundo apuração do G1 e da InfoMoney, a oficialização de Luiz Carlos Trabuco no Ministério da Fazenda continua gerando forte otimismo e alta nos mercados financeiros, com o Ibovespa registrando disparada expressiva. Veículos destacam sua trajetória no Bradesco e a construção de pontes entre o governo e o setor financeiro.",
-      "sintese_nerd": "Forte volatilidade positiva nos ativos de risco e apreciação do real frente ao dólar devido à expectativa de diálogo fiscal.",
       "impacto_pratico": "Forte volatilidade positiva nos ativos de risco e apreciação do real frente ao dólar devido à expectativa de diálogo fiscal.",
-      "paises_envolvidos": [
-        "BR"
-      ],
+      "origem_pipeline": "pulso",
       "veiculos_origem": [
         "G1 Política",
         "G1 Economia",
         "InfoMoney Mercados"
       ],
-      "fontes_urls": [
-        "https://g1.globo.com/politica/noticia/2026/11/27/paulo-guedes-haddad-e-durigan-quem-foram-os-ultimos-ministros-da-fazenda-do-brasil-antes-da-escolha-de-trabuco.ghtml",
-        "https://www.infomoney.com.br/mercados/mercados-day-trade-hoje-analistas-27112026/"
+      "relevancia_score": 98,
+      "paises_envolvidos": [
+        "BR"
       ],
-      "data_publicacao": "2026-11-27T00:50:57Z",
-      "updated_at": "2026-11-27T10:07:55Z"
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "luiz carlos trabuco",
+        "ministério da fazenda",
+        "ibovespa",
+        "mercado financeiro"
+      ]
     },
     {
       "slug": "amazonas-para-roraima-apagao-energia",
@@ -855,46 +820,153 @@
       ]
     }
   ],
+  "temas_curadoria": [
+    {
+      "slug": "risco-crise-credito-brasil-2027",
+      "titulo_tema": "Alerta de Crise de Crédito no Brasil para 2027",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Politica"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 95,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-29T10:22:12Z",
+      "palavras_chave_busca": [
+        "crise de credito",
+        "inadimplencia",
+        "bancos",
+        "febraban",
+        "politica monetaria",
+        "endividamento"
+      ],
+      "gatilho_vitrine": "Analise o impacto do endividamento das famílias e a restrição de crédito na economia real.",
+      "sintese_nerd": "O aumento da inadimplência e a deterioração das carteiras bancárias sinalizam um aperto severo na oferta de crédito para 2027. Esse cenário força uma reavaliação das estratégias de alocação de capital e pressiona o governo por medidas de estímulo ou regulação.",
+      "data_publicacao": "2026-11-27T10:22:12Z",
+      "updated_at": "2026-11-27T10:22:12Z"
+    },
+    {
+      "slug": "eleicoes-espanha-imigracao-social-democracia",
+      "titulo_tema": "Eleições na Espanha: Imigração e o Futuro da Social-Democracia",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Eleicoes",
+        "Cultura"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 90,
+      "ttl_horas": 72,
+      "expires_at": "2026-11-30T10:22:12Z",
+      "palavras_chave_busca": [
+        "espanha",
+        "eleicoes espanha",
+        "pedro sanchez",
+        "imigracao europa",
+        "social-democracia",
+        "crise politica"
+      ],
+      "gatilho_vitrine": "Cubra o impacto das eleições espanholas na estabilidade política europeia e nas políticas migratórias.",
+      "sintese_nerd": "A Espanha enfrenta um momento decisivo onde a imigração e denúncias de corrupção ameaçam a permanência da social-democracia no poder. O resultado impactará diretamente as diretrizes da União Europeia sobre fronteiras e direitos sociais.",
+      "data_publicacao": "2026-11-27T10:22:12Z",
+      "updated_at": "2026-11-27T10:22:12Z"
+    },
+    {
+      "slug": "volatilidade-mercado-ibovespa-dolar",
+      "titulo_tema": "Volatilidade no Ibovespa e Dólar: Ajustes de Mercado",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Geopolitica_Radar"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 88,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-28T10:22:12Z",
+      "palavras_chave_busca": [
+        "ibovespa",
+        "dolar",
+        "day trade",
+        "mercado financeiro",
+        "embraer",
+        "bolsa de valores"
+      ],
+      "gatilho_vitrine": "Monitore a correção técnica dos ativos brasileiros após a forte oscilação recente.",
+      "sintese_nerd": "A quebra de estruturas técnicas no Ibovespa e no minidólar reflete um mercado reagindo a incertezas fiscais e pressões externas. A atenção se volta para a sustentabilidade desses movimentos diante da agenda econômica de fim de ano.",
+      "data_publicacao": "2026-11-27T10:22:12Z",
+      "updated_at": "2026-11-27T10:22:12Z"
+    },
+    {
+      "slug": "conflito-ucrania-russia-escalada-energia",
+      "titulo_tema": "Escalada do Conflito na Ucrânia e Impactos na Infraestrutura",
+      "status": "atualizacao",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 86,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-29T10:22:12Z",
+      "palavras_chave_busca": [
+        "ucrania",
+        "russia",
+        "guerra",
+        "energia",
+        "drones",
+        "geopolitica"
+      ],
+      "gatilho_vitrine": "Atualize o cenário de ataques russos e a resposta da Ucrânia com apoio do Banco Mundial.",
+      "sintese_nerd": "A intensificação dos ataques russos contra infraestrutura energética ucraniana, somada ao financiamento do Banco Mundial, mantém o conflito como um vetor de instabilidade global. A guerra continua a ditar o ritmo de investimentos em reconstrução e segurança energética.",
+      "data_publicacao": "2026-11-27T10:22:12Z",
+      "updated_at": "2026-11-27T10:22:12Z"
+    }
+  ],
   "noticias_quentes": [
     {
       "slug": "espanha-eleicoes-imigracao-sanchez",
-      "titulo_curto": "Espanha encerra campanha eleitoral marcada pelo debate migratório e teste para a social-democracia",
-      "resumo_pulso": "Conforme reportagens da BBC News Brasil e do G1 Mundo, a Espanha encerra nesta sexta-feira a campanha para as eleições de 29 de novembro. O primeiro-ministro Pedro Sánchez tenta frear o avanço da direita e da extrema direita em um pleito onde a imigração se consolidou como tema central.",
-      "impacto_pratico": "Possível guinada política na Europa Ocidental com reflexos nas políticas de imigração e relações comerciais com a América Latina.",
       "categoria": "Geopolitica_Relacoes",
-      "paises_envolvidos": [
-        "ES"
-      ],
-      "urgencia_score": 90,
-      "relevancia_score": 89,
-      "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 18,
-      "veiculos_origem": [
-        "BBC News Brasil",
-        "G1 Mundo",
-        "The Conversation Brasil"
-      ],
+      "expires_at": "2026-11-28T10:07:55Z",
+      "updated_at": "2026-11-27T10:07:55Z",
       "fontes_urls": [
         "https://www.bbc.com/portuguese/articles/cj62p7w0n2zgo?at_medium=RSS&at_campaign=rss",
         "https://g1.globo.com/mundo/noticia/2026/11/27/espanha-encerra-campanha-eleitoral-sanchez-tenta-frear-direita-e-extrema-direita.ghtml"
       ],
+      "resumo_pulso": "Conforme reportagens da BBC News Brasil e do G1 Mundo, a Espanha encerra nesta sexta-feira a campanha para as eleições de 29 de novembro. O primeiro-ministro Pedro Sánchez tenta frear o avanço da direita e da extrema direita em um pleito onde a imigração se consolidou como tema central.",
+      "titulo_curto": "Espanha encerra campanha eleitoral marcada pelo debate migratório e teste para a social-democracia",
       "palavras_chave": [
         "Espanha",
         "Eleições",
         "Pedro Sánchez",
         "Imigração"
       ],
+      "urgencia_score": 90,
       "data_publicacao": "2026-11-27T09:50:53Z",
+      "impacto_pratico": "Possível guinada política na Europa Ocidental com reflexos nas políticas de imigração e relações comerciais com a América Latina.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "BBC News Brasil",
+        "G1 Mundo",
+        "The Conversation Brasil"
+      ],
+      "relevancia_score": 89,
+      "horas_em_destaque": 18,
+      "paises_envolvidos": [
+        "ES"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "Eleições e Democracia no Mundo",
           "url_existente": "https://www.rodandoomundo.com.br/eleicoes",
-          "motivo_conexao": "Contextualiza os desdobramentos de pleitos decisivos para a estabilidade política na Europa."
+          "motivo_conexao": "Contextualiza os desdobramentos de pleitos decisivos para a estabilidade política na Europa.",
+          "titulo_existente": "Eleições e Democracia no Mundo"
         }
-      ],
-      "expires_at": "2026-11-28T10:07:55Z",
-      "updated_at": "2026-11-27T10:07:55Z"
+      ]
     },
     {
       "slug": "filipinas-sara-duterte-impeachment",
@@ -967,43 +1039,43 @@
     },
     {
       "slug": "trabuco-futuro-ministro-fazenda-mercado",
-      "titulo_curto": "Mercados e analistas repercutem transição no Ministério da Fazenda com Luiz Carlos Trabuco",
-      "resumo_pulso": "Segundo apuração do G1 e da InfoMoney, a oficialização de Luiz Carlos Trabuco no Ministério da Fazenda continua gerando forte otimismo e alta nos mercados financeiros, com o Ibovespa registrando disparada expressiva. Veículos destacam sua trajetória no Bradesco e a construção de pontes entre o governo e o setor financeiro.",
-      "impacto_pratico": "Forte volatilidade positiva nos ativos de risco e apreciação do real frente ao dólar devido à expectativa de diálogo fiscal.",
       "categoria": "Economia_Comercio",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "urgencia_score": 95,
-      "relevancia_score": 98,
-      "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 12,
-      "veiculos_origem": [
-        "G1 Política",
-        "G1 Economia",
-        "InfoMoney Mercados"
-      ],
+      "expires_at": "2026-11-28T01:04:51Z",
+      "updated_at": "2026-11-27T10:07:55Z",
       "fontes_urls": [
         "https://g1.globo.com/politica/noticia/2026/11/27/paulo-guedes-haddad-e-durigan-quem-foram-os-ultimos-ministros-da-fazenda-do-brasil-antes-da-escolha-de-trabuco.ghtml",
         "https://www.infomoney.com.br/mercados/mercados-day-trade-hoje-analistas-27112026/"
       ],
+      "resumo_pulso": "Segundo apuração do G1 e da InfoMoney, a oficialização de Luiz Carlos Trabuco no Ministério da Fazenda continua gerando forte otimismo e alta nos mercados financeiros, com o Ibovespa registrando disparada expressiva. Veículos destacam sua trajetória no Bradesco e a construção de pontes entre o governo e o setor financeiro.",
+      "titulo_curto": "Mercados e analistas repercutem transição no Ministério da Fazenda com Luiz Carlos Trabuco",
       "palavras_chave": [
         "Luiz Carlos Trabuco",
         "Ministério da Fazenda",
         "Ibovespa",
         "Mercado Financeiro"
       ],
+      "urgencia_score": 95,
       "data_publicacao": "2026-11-27T00:50:57Z",
+      "impacto_pratico": "Forte volatilidade positiva nos ativos de risco e apreciação do real frente ao dólar devido à expectativa de diálogo fiscal.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "G1 Política",
+        "G1 Economia",
+        "InfoMoney Mercados"
+      ],
+      "relevancia_score": 98,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "BR"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "Economia no Brasil",
           "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
-          "motivo_conexao": "Acompanhamento detalhado do impacto da nova liderança da Fazenda nos rumos da economia e do mercado."
+          "motivo_conexao": "Acompanhamento detalhado do impacto da nova liderança da Fazenda nos rumos da economia e do mercado.",
+          "titulo_existente": "Economia no Brasil"
         }
-      ],
-      "expires_at": "2026-11-28T01:04:51Z",
-      "updated_at": "2026-11-27T10:07:55Z"
+      ]
     },
     {
       "slug": "amazonas-para-roraima-apagao-energia",
@@ -1620,148 +1692,6 @@
           "motivo_conexao": "Contextualiza a inserção do Brasil em dinâmicas e tensões geopolíticas globais.",
           "titulo_existente": "Mercados e aliados internacionais avaliam impacto da política comercial norte-americana"
         }
-      ]
-    }
-  ],
-  "temas_curadoria": [
-    {
-      "slug": "trabuco-fazenda-lula-4-mercado-financeiro",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-29T08:05:44Z",
-      "updated_at": "2026-11-27T08:05:44Z",
-      "titulo_tema": "Escolha de Luiz Carlos Trabuco para a Fazenda gera otimismo nos mercados",
-      "sintese_nerd": "A confirmação de Luiz Carlos Trabuco para o comando da Fazenda impulsionou o fundo de ações brasileiras em Nova York e o Ibovespa no cenário interno. O aceno ao setor produtivo busca afastar riscos de estagflação e sinalizar credibilidade fiscal para o ciclo de investimentos.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-27T08:05:44Z",
-      "gatilho_vitrine": "Destacar reação positiva dos mercados globais e locais à indicação do novo ministro da Fazenda",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 95,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Politica",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "luiz carlos trabuco",
-        "ministério da fazenda",
-        "lula 4",
-        "ibovespa",
-        "ewz",
-        "bradesco",
-        "política fiscal",
-        "mercado financeiro"
-      ]
-    },
-    {
-      "slug": "russia-wagner-africa-tarifas-ue-ucrania",
-      "status": "novo",
-      "ttl_horas": 72,
-      "expires_at": "2026-11-30T08:05:44Z",
-      "updated_at": "2026-11-27T08:05:44Z",
-      "titulo_tema": "Expansão russa na África e restrições comerciais da UE sobre a Ucrânia",
-      "sintese_nerd": "Investigações jornalísticas expõem a consolidação da influência militar russa na África Central via mercenários, enquanto a base industrial ucraniana sofre novos abalos com cotas tarifárias impostas pela União Europeia. O duplo cenário evidencia as ramificações geopolíticas da guerra além dos campos de batalha europeus.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-27T08:05:44Z",
-      "gatilho_vitrine": "Mapear a presença militar russa na África e as barreiras econômicas enfrentadas pela Ucrânia",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 88,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia"
-      ],
-      "palavras_chave_busca": [
-        "grupo wagner",
-        "rússia na áfrica",
-        "siderúrgica ucrânia",
-        "tarifas união europeia",
-        "guerra na ucrânia",
-        "metinvest",
-        "geopolítica global"
-      ]
-    },
-    {
-      "slug": "pacto-de-meca-defesa-arabia-saudita-turquia-paquistao",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-29T08:05:44Z",
-      "updated_at": "2026-11-27T08:05:44Z",
-      "titulo_tema": "Pacto de Meca testa aliança de defesa entre Arábia Saudita, Turquia e Paquistão",
-      "sintese_nerd": "Lideranças de Islamabad, Riad e Ancara se reúnem para estruturar os mecanismos práticos de apoio militar mútuo sob o Pacto de Meca. A iniciativa surge em meio aos ataques contínuos no Mar Vermelho e à busca por autonomia estratégica no Oriente Médio.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-27T08:05:44Z",
-      "gatilho_vitrine": "Analisar a viabilidade prática do bloco de segurança militar no Oriente Médio",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 85,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Politica"
-      ],
-      "palavras_chave_busca": [
-        "pacto de meca",
-        "arábia saudita",
-        "turquia",
-        "paquistão",
-        "oriente médio",
-        "defesa coletiva",
-        "rebeldes houthis",
-        "diplomacia global"
-      ]
-    },
-    {
-      "slug": "petrobras-minerais-criticos-transicao-energetica",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-29T08:05:44Z",
-      "updated_at": "2026-11-27T08:05:44Z",
-      "titulo_tema": "Petrobras estuda entrada na extração de minerais críticos para baterias",
-      "sintese_nerd": "O novo Plano de Negócios da Petrobras prevê a prospecção de atuação na cadeia de minerais críticos e sistemas de armazenamento de energia em grande escala. A mudança visa posicionar a petroleira na corrida global pelos insumos da transição energética e mobilidade elétrica.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-27T08:05:44Z",
-      "gatilho_vitrine": "Acompanhar a diversificação estratégica da Petrobras rumo a matérias-primas da economia verde",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 82,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Geopolitica_Radar",
-        "Cultura"
-      ],
-      "palavras_chave_busca": [
-        "petrobras",
-        "minerais críticos",
-        "transição energética",
-        "baterias",
-        "armazenamento de energia",
-        "lítio",
-        "plano de negócios"
-      ]
-    },
-    {
-      "slug": "vacancia-agencias-reguladoras-federal-governanca",
-      "status": "novo",
-      "ttl_horas": 36,
-      "expires_at": "2026-11-28T20:05:44Z",
-      "updated_at": "2026-11-27T08:05:44Z",
-      "titulo_tema": "Vacância de diretores compromete autonomia e agilidade das agências reguladoras",
-      "sintese_nerd": "Levantamento indica 21 cargos vagos no comando das principais agências reguladoras federais, com atrasos médios superiores a sete meses para preenchimento. A paralisia decisória ameaça a fiscalização de serviços públicos e gera incerteza jurídica para investidores privados.",
-      "rota_editoria": "/politica",
-      "data_publicacao": "2026-11-27T08:05:44Z",
-      "gatilho_vitrine": "Alertar para o impacto institucional do atraso nas nomeações de diretores regulatórios",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 78,
-      "categoria_primaria": "Politica",
-      "categorias_cruzadas": [
-        "Economia"
-      ],
-      "palavras_chave_busca": [
-        "agências reguladoras",
-        "vacância de cargos",
-        "anatel",
-        "aneel",
-        "anvisa",
-        "segurança jurídica",
-        "governança pública",
-        "senado federal"
       ]
     }
   ]
