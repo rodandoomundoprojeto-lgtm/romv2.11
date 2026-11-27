@@ -2,113 +2,206 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-27T10:22:12Z",
-  "batch_id": "20261127-1021",
+  "updatedAt": "2026-11-27T11:21:18Z",
+  "batch_id": "20261127-1120",
   "temas_ativos": [
     {
-      "slug": "risco-crise-credito-brasil-2027",
-      "titulo_tema": "Alerta de Crise de Crédito no Brasil para 2027",
+      "slug": "senado-argentino-reforma-primarias-milei",
+      "titulo_tema": "Senado argentino aprova reforma que suspende primárias e pode beneficiar Javier Milei",
+      "titulo_curto": "Senado argentino aprova reforma que suspende primárias e pode beneficiar Javier Milei",
       "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Politica"
-      ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 95,
-      "ttl_horas": 48,
-      "expires_at": "2026-11-29T10:22:12Z",
-      "palavras_chave_busca": [
-        "crise de credito",
-        "inadimplencia",
-        "bancos",
-        "febraban",
-        "politica monetaria",
-        "endividamento"
-      ],
-      "gatilho_vitrine": "Analise o impacto do endividamento das famílias e a restrição de crédito na economia real.",
-      "sintese_nerd": "O aumento da inadimplência e a deterioração das carteiras bancárias sinalizam um aperto severo na oferta de crédito para 2027. Esse cenário força uma reavaliação das estratégias de alocação de capital e pressiona o governo por medidas de estímulo ou regulação.",
-      "data_publicacao": "2026-11-27T10:22:12Z",
-      "updated_at": "2026-11-27T10:22:12Z"
-    },
-    {
-      "slug": "eleicoes-espanha-imigracao-social-democracia",
-      "titulo_tema": "Eleições na Espanha: Imigração e o Futuro da Social-Democracia",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
+      "origem_pipeline": "pulso",
       "categoria_primaria": "Geopolitica_Radar",
+      "categoria": "Geopolitica_Relacoes",
       "categorias_cruzadas": [
-        "Eleicoes",
-        "Cultura"
+        "Economia",
+        "Resumo_Ultimas"
       ],
       "rota_editoria": "/radar",
-      "relevancia_score": 90,
-      "ttl_horas": 72,
-      "expires_at": "2026-11-30T10:22:12Z",
+      "relevancia_score": 89,
+      "urgencia_score": 88,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-28T11:21:18Z",
       "palavras_chave_busca": [
-        "espanha",
-        "eleicoes espanha",
-        "pedro sanchez",
-        "imigracao europa",
-        "social-democracia",
-        "crise politica"
+        "argentina",
+        "senado",
+        "javier milei",
+        "eleições"
       ],
-      "gatilho_vitrine": "Cubra o impacto das eleições espanholas na estabilidade política europeia e nas políticas migratórias.",
-      "sintese_nerd": "A Espanha enfrenta um momento decisivo onde a imigração e denúncias de corrupção ameaçam a permanência da social-democracia no poder. O resultado impactará diretamente as diretrizes da União Europeia sobre fronteiras e direitos sociais.",
-      "data_publicacao": "2026-11-27T10:22:12Z",
-      "updated_at": "2026-11-27T10:22:12Z"
+      "palavras_chave": [
+        "argentina",
+        "senado",
+        "javier milei",
+        "eleições"
+      ],
+      "gatilho_vitrine": "Conforme reportagem da InfoMoney, o Senado da Argentina aprovou uma reforma que suspende as eleições primárias, medida que altera o tabuleiro político nacional e pode favorecer os planos eleitorais do presidente Javier Milei ao desarticular testes antecipados de força da oposição.",
+      "resumo_pulso": "Conforme reportagem da InfoMoney, o Senado da Argentina aprovou uma reforma que suspende as eleições primárias, medida que altera o tabuleiro político nacional e pode favorecer os planos eleitorais do presidente Javier Milei ao desarticular testes antecipados de força da oposição.",
+      "sintese_nerd": "Modifica o calendário político e estratégico de aliados e opositores na Argentina, impactando vizinhos do Mercosul.",
+      "impacto_pratico": "Modifica o calendário político e estratégico de aliados e opositores na Argentina, impactando vizinhos do Mercosul.",
+      "paises_envolvidos": [
+        "AR"
+      ],
+      "veiculos_origem": [
+        "InfoMoney"
+      ],
+      "fontes_urls": [
+        "https://www.infomoney.com.br/mundo/senado-argentino-aprova-reforma-que-suspende-primarias-e-pode-favorecer-milei/"
+      ],
+      "data_publicacao": "2026-11-27T11:19:54Z",
+      "updated_at": "2026-11-27T11:21:18Z"
     },
     {
-      "slug": "volatilidade-mercado-ibovespa-dolar",
-      "titulo_tema": "Volatilidade no Ibovespa e Dólar: Ajustes de Mercado",
+      "slug": "trabuco-ministerio-da-fazenda-impacto-mercado-bolsa-dolar",
       "status": "novo",
+      "ttl_horas": 48,
+      "expires_at": "2026-11-29T10:37:23Z",
+      "updated_at": "2026-11-27T10:37:23Z",
+      "titulo_tema": "Indicação de Luiz Carlos Trabuco para a Fazenda dispara Bolsa e derruba Dólar",
+      "sintese_nerd": "A aceitação de Luiz Carlos Trabuco para o Ministério da Fazenda trouxe alívio imediato ao mercado financeiro, impulsionando o Ibovespa e derrubando a moeda americana. O movimento sinaliza uma tentativa do governo de sinalizar disciplina fiscal, embora exija articulação para contornar divergências internas na base aliada.",
+      "rota_editoria": "/politica",
+      "data_publicacao": "2026-11-27T10:37:23Z",
+      "gatilho_vitrine": "Destacar nomeação de Trabuco na Fazenda e o forte rali de alta nos mercados acionários brasileiros",
       "origem_pipeline": "curadoria",
-      "categoria_primaria": "Economia",
+      "relevancia_score": 98,
+      "categoria_primaria": "Politica",
       "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "luiz carlos trabuco",
+        "ministério da fazenda",
+        "governo lula",
+        "ibovespa",
+        "dólar hoje",
+        "bradesco",
+        "mercado financeiro"
+      ]
+    },
+    {
+      "slug": "estrategia-brasil-tarifas-trump-embraer-diplomacia",
+      "status": "novo",
+      "ttl_horas": 72,
+      "expires_at": "2026-11-30T10:37:23Z",
+      "updated_at": "2026-11-27T10:37:23Z",
+      "titulo_tema": "Brasil articula resposta diplomática contra tarifas de Trump e mitigação de impactos na Embraer",
+      "sintese_nerd": "O Chanceler Mauro Vieira lidera as negociações do governo brasileiro para evitar que o aumento de tarifas anunciado por Donald Trump atinja em cheio a indústria nacional. Enquanto a Embraer tenta sustentar valor de mercado, o país busca alternativas multilaterais contra o protecionismo da Casa Branca.",
+      "rota_editoria": "/radar",
+      "data_publicacao": "2026-11-27T10:37:23Z",
+      "gatilho_vitrine": "Monitorar negociações do Itamaraty para conter o avanço protecionista sobre exportações estratégicas brasileiras",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 91,
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Politica"
+      ],
+      "palavras_chave_busca": [
+        "mauro vieira",
+        "donald trump",
+        "tarifas comerciais",
+        "embraer",
+        "itamaraty",
+        "protecionismo eua",
+        "exportações brasileiras"
+      ]
+    },
+    {
+      "slug": "eleicoes-espanha-crise-demografica-imigracao-europa",
+      "status": "novo",
+      "ttl_horas": 96,
+      "expires_at": "2026-12-01T10:37:23Z",
+      "updated_at": "2026-11-27T10:37:23Z",
+      "titulo_tema": "Eleições na Espanha colocam imigração e transição demográfica no centro do debate europeu",
+      "sintese_nerd": "Com a taxa de natalidade em declínio acentuado, a Espanha vai às urnas em uma disputa cujo tema central é a absorção econômica de imigrantes. O pleito serve como termômetro sobre a ascensão da pauta migratória nas decisões eleitorais de potências do continente europeu.",
+      "rota_editoria": "/eleicoes",
+      "data_publicacao": "2026-11-27T10:37:23Z",
+      "gatilho_vitrine": "Exibir o impacto das eleições espanholas nas políticas de fronteira e trabalho da União Europeia",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 83,
+      "categoria_primaria": "Eleicoes",
+      "categorias_cruzadas": [
+        "Geopolitica_Radar",
+        "Cultura"
+      ],
+      "palavras_chave_busca": [
+        "eleições espanha",
+        "imigração europa",
+        "demografia espanhola",
+        "união europeia",
+        "política migratória"
+      ]
+    },
+    {
+      "slug": "geopolitica-black-friday-soft-power-americano-consumo",
+      "status": "novo",
+      "ttl_horas": 48,
+      "expires_at": "2026-11-29T10:37:23Z",
+      "updated_at": "2026-11-27T10:37:23Z",
+      "titulo_tema": "A geopolítica da Black Friday: a expansão do 'soft power' cultural e econômico dos EUA",
+      "sintese_nerd": "A consolidação global da Black Friday ilustra a eficácia do 'soft power' dos EUA em exportar modelos comportamentais e comerciais sem necessidade de datas históricas compartilhadas. O fenômeno altera calendários de varejo mundiais e reflete a dependência de plataformas e dinâmicas de consumo ocidentais.",
+      "rota_editoria": "/cultura",
+      "data_publicacao": "2026-11-27T10:37:23Z",
+      "gatilho_vitrine": "Analisar a conversão de datas comemorativas norte-americanas em motores de consumo globais",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 77,
+      "categoria_primaria": "Cultura",
+      "categorias_cruzadas": [
+        "Economia",
         "Geopolitica_Radar"
+      ],
+      "palavras_chave_busca": [
+        "black friday",
+        "soft power",
+        "cultura de consumo",
+        "influência americana",
+        "comércio global"
+      ]
+    },
+    {
+      "slug": "cmn-reduz-juros-fundo-clima-baterias",
+      "titulo_tema": "CMN reduz taxa de juros do Fundo Clima para financiamento de baterias nacionais",
+      "titulo_curto": "CMN reduz taxa de juros do Fundo Clima para financiamento de baterias nacionais",
+      "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Economia",
+      "categoria": "Economia_Comercio",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
       ],
       "rota_editoria": "/economia",
       "relevancia_score": 88,
+      "urgencia_score": 87,
       "ttl_horas": 24,
-      "expires_at": "2026-11-28T10:22:12Z",
+      "expires_at": "2026-11-28T11:21:18Z",
       "palavras_chave_busca": [
-        "ibovespa",
-        "dolar",
-        "day trade",
-        "mercado financeiro",
-        "embraer",
-        "bolsa de valores"
+        "cmn",
+        "fundo clima",
+        "baterias",
+        "energia renovável"
       ],
-      "gatilho_vitrine": "Monitore a correção técnica dos ativos brasileiros após a forte oscilação recente.",
-      "sintese_nerd": "A quebra de estruturas técnicas no Ibovespa e no minidólar reflete um mercado reagindo a incertezas fiscais e pressões externas. A atenção se volta para a sustentabilidade desses movimentos diante da agenda econômica de fim de ano.",
-      "data_publicacao": "2026-11-27T10:22:12Z",
-      "updated_at": "2026-11-27T10:22:12Z"
-    },
-    {
-      "slug": "conflito-ucrania-russia-escalada-energia",
-      "titulo_tema": "Escalada do Conflito na Ucrânia e Impactos na Infraestrutura",
-      "status": "atualizacao",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia"
+      "palavras_chave": [
+        "cmn",
+        "fundo clima",
+        "baterias",
+        "energia renovável"
       ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 86,
-      "ttl_horas": 48,
-      "expires_at": "2026-11-29T10:22:12Z",
-      "palavras_chave_busca": [
-        "ucrania",
-        "russia",
-        "guerra",
-        "energia",
-        "drones",
-        "geopolitica"
+      "gatilho_vitrine": "Segundo comunicado oficial da Agência Brasil, o Conselho Monetário Nacional (CMN) aprovou a redução para 6,5% ao ano dos juros do Fundo Clima voltados a projetos de armazenamento de energia que utilizem baterias produzidas no Brasil.",
+      "resumo_pulso": "Segundo comunicado oficial da Agência Brasil, o Conselho Monetário Nacional (CMN) aprovou a redução para 6,5% ao ano dos juros do Fundo Clima voltados a projetos de armazenamento de energia que utilizem baterias produzidas no Brasil.",
+      "sintese_nerd": "Estimula a cadeia industrial de energias renováveis e o armazenamento elétrico com insumos nacionais.",
+      "impacto_pratico": "Estimula a cadeia industrial de energias renováveis e o armazenamento elétrico com insumos nacionais.",
+      "paises_envolvidos": [
+        "BR"
       ],
-      "gatilho_vitrine": "Atualize o cenário de ataques russos e a resposta da Ucrânia com apoio do Banco Mundial.",
-      "sintese_nerd": "A intensificação dos ataques russos contra infraestrutura energética ucraniana, somada ao financiamento do Banco Mundial, mantém o conflito como um vetor de instabilidade global. A guerra continua a ditar o ritmo de investimentos em reconstrução e segurança energética.",
-      "data_publicacao": "2026-11-27T10:22:12Z",
-      "updated_at": "2026-11-27T10:22:12Z"
+      "veiculos_origem": [
+        "Agência Brasil (EBC)"
+      ],
+      "fontes_urls": [
+        "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/cmn-reduz-juros-do-fundo-clima-para-baterias-nacionais"
+      ],
+      "data_publicacao": "2026-11-27T10:02:00Z",
+      "updated_at": "2026-11-27T11:21:18Z"
     },
     {
       "slug": "espanha-eleicoes-imigracao-sanchez",
@@ -252,51 +345,51 @@
     },
     {
       "slug": "trabuco-futuro-ministro-fazenda-mercado",
+      "titulo_tema": "Mercados e autoridades celebram Luiz Carlos Trabuco na Fazenda para início do Lula 4",
+      "titulo_curto": "Mercados e autoridades celebram Luiz Carlos Trabuco na Fazenda para início do Lula 4",
       "status": "novo",
-      "categoria": "Economia_Comercio",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-28T01:04:51Z",
-      "updated_at": "2026-11-27T10:07:55Z",
-      "fontes_urls": [
-        "https://g1.globo.com/politica/noticia/2026/11/27/paulo-guedes-haddad-e-durigan-quem-foram-os-ultimos-ministros-da-fazenda-do-brasil-antes-da-escolha-de-trabuco.ghtml",
-        "https://www.infomoney.com.br/mercados/mercados-day-trade-hoje-analistas-27112026/"
-      ],
-      "titulo_tema": "Mercados e analistas repercutem transição no Ministério da Fazenda com Luiz Carlos Trabuco",
-      "resumo_pulso": "Segundo apuração do G1 e da InfoMoney, a oficialização de Luiz Carlos Trabuco no Ministério da Fazenda continua gerando forte otimismo e alta nos mercados financeiros, com o Ibovespa registrando disparada expressiva. Veículos destacam sua trajetória no Bradesco e a construção de pontes entre o governo e o setor financeiro.",
-      "sintese_nerd": "Forte volatilidade positiva nos ativos de risco e apreciação do real frente ao dólar devido à expectativa de diálogo fiscal.",
-      "titulo_curto": "Mercados e analistas repercutem transição no Ministério da Fazenda com Luiz Carlos Trabuco",
-      "rota_editoria": "/economia",
-      "palavras_chave": [
-        "luiz carlos trabuco",
-        "ministério da fazenda",
-        "ibovespa",
-        "mercado financeiro"
-      ],
-      "urgencia_score": 95,
-      "data_publicacao": "2026-11-27T00:50:57Z",
-      "gatilho_vitrine": "Segundo apuração do G1 e da InfoMoney, a oficialização de Luiz Carlos Trabuco no Ministério da Fazenda continua gerando forte otimismo e alta nos mercados financeiros, com o Ibovespa registrando disparada expressiva. Veículos destacam sua trajetória no Bradesco e a construção de pontes entre o governo e o setor financeiro.",
-      "impacto_pratico": "Forte volatilidade positiva nos ativos de risco e apreciação do real frente ao dólar devido à expectativa de diálogo fiscal.",
       "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "G1 Política",
-        "G1 Economia",
-        "InfoMoney Mercados"
-      ],
-      "relevancia_score": 98,
-      "paises_envolvidos": [
-        "BR"
-      ],
       "categoria_primaria": "Economia",
+      "categoria": "Economia_Comercio",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
       ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 98,
+      "urgencia_score": 96,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-28T01:04:51Z",
       "palavras_chave_busca": [
         "luiz carlos trabuco",
         "ministério da fazenda",
-        "ibovespa",
-        "mercado financeiro"
-      ]
+        "mercado financeiro",
+        "ajuste fiscal"
+      ],
+      "palavras_chave": [
+        "luiz carlos trabuco",
+        "ministério da fazenda",
+        "mercado financeiro",
+        "ajuste fiscal"
+      ],
+      "gatilho_vitrine": "Segundo apuração da InfoMoney e do Poder360, a oficialização de Luiz Carlos Trabuco no Ministério da Fazenda recebeu forte apoio de industriais e investidores, sendo vista pela equipe presidencial como elemento facilitador para a aprovação da segunda etapa do ajuste fiscal no início do quarto mandato de Lula.",
+      "resumo_pulso": "Segundo apuração da InfoMoney e do Poder360, a oficialização de Luiz Carlos Trabuco no Ministério da Fazenda recebeu forte apoio de industriais e investidores, sendo vista pela equipe presidencial como elemento facilitador para a aprovação da segunda etapa do ajuste fiscal no início do quarto mandato de Lula.",
+      "sintese_nerd": "A indicação traz maior estabilidade e otimismo aos mercados financeiros, refletindo em reajustes nas projeções cambiais e do Ibovespa.",
+      "impacto_pratico": "A indicação traz maior estabilidade e otimismo aos mercados financeiros, refletindo em reajustes nas projeções cambiais e do Ibovespa.",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "veiculos_origem": [
+        "InfoMoney",
+        "Poder360",
+        "G1 Política"
+      ],
+      "fontes_urls": [
+        "https://www.infomoney.com.br/politica/criticos-da-economia-de-lula-industria-e-mercado-celebram-trabuco-na-fazenda/",
+        "https://www.poder360.com.br/poder-economia/bradesco-confirma-ida-de-trabuco-para-a-fazenda/"
+      ],
+      "data_publicacao": "2026-11-27T00:50:57Z",
+      "updated_at": "2026-11-27T11:21:18Z"
     },
     {
       "slug": "amazonas-para-roraima-apagao-energia",
@@ -771,163 +864,83 @@
         "embriaguez",
         "segurança pública"
       ]
-    },
-    {
-      "slug": "navio-tanque-diesel-ibiza-espanha",
-      "status": "novo",
-      "categoria": "Ciencia_Clima",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-27T17:51:15Z",
-      "updated_at": "2026-11-26T17:51:15Z",
-      "fontes_urls": [
-        "https://www.bbc.com/portuguese/articles/c60ev94d02jlo?at_medium=RSS&at_campaign=rss"
-      ],
-      "titulo_tema": "Espanha avalia riscos ambientais após naufrágio de navio-tanque com 7 mil toneladas de diesel perto de Ibiza",
-      "resumo_pulso": "Conforme apuração da BBC News Brasil, autoridades de salvamento marítimo da Espanha monitoram potenciais impactos ecológicos na costa de Ibiza após um navio-tanque carregado com cerca de 7 mil toneladas de diesel virar na região. O incidente mobiliza equipes de contenção para evitar danos severos ao ecossistema mediterrâneo.",
-      "sintese_nerd": "Pode afetar rotas de navegação turísticas e o ecossistema local na região do Mediterrânico, servindo de alerta para o turismo internacional na Espanha.",
-      "titulo_curto": "Espanha avalia riscos ambientais após naufrágio de navio-tanque com 7 mil toneladas de diesel perto de Ibiza",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "espanha",
-        "ibiza",
-        "meio ambiente",
-        "diesel",
-        "desastre"
-      ],
-      "urgencia_score": 86,
-      "data_publicacao": "2026-11-26T16:08:49Z",
-      "gatilho_vitrine": "Conforme apuração da BBC News Brasil, autoridades de salvamento marítimo da Espanha monitoram potenciais impactos ecológicos na costa de Ibiza após um navio-tanque carregado com cerca de 7 mil toneladas de diesel virar na região. O incidente mobiliza equipes de contenção para evitar danos severos ao ecossistema mediterrâneo.",
-      "impacto_pratico": "Pode afetar rotas de navegação turísticas e o ecossistema local na região do Mediterrânico, servindo de alerta para o turismo internacional na Espanha.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "BBC News Brasil"
-      ],
-      "relevancia_score": 84,
-      "paises_envolvidos": [
-        "ES"
-      ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "espanha",
-        "ibiza",
-        "meio ambiente",
-        "diesel",
-        "desastre"
-      ]
-    }
-  ],
-  "temas_curadoria": [
-    {
-      "slug": "risco-crise-credito-brasil-2027",
-      "titulo_tema": "Alerta de Crise de Crédito no Brasil para 2027",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Politica"
-      ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 95,
-      "ttl_horas": 48,
-      "expires_at": "2026-11-29T10:22:12Z",
-      "palavras_chave_busca": [
-        "crise de credito",
-        "inadimplencia",
-        "bancos",
-        "febraban",
-        "politica monetaria",
-        "endividamento"
-      ],
-      "gatilho_vitrine": "Analise o impacto do endividamento das famílias e a restrição de crédito na economia real.",
-      "sintese_nerd": "O aumento da inadimplência e a deterioração das carteiras bancárias sinalizam um aperto severo na oferta de crédito para 2027. Esse cenário força uma reavaliação das estratégias de alocação de capital e pressiona o governo por medidas de estímulo ou regulação.",
-      "data_publicacao": "2026-11-27T10:22:12Z",
-      "updated_at": "2026-11-27T10:22:12Z"
-    },
-    {
-      "slug": "eleicoes-espanha-imigracao-social-democracia",
-      "titulo_tema": "Eleições na Espanha: Imigração e o Futuro da Social-Democracia",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Eleicoes",
-        "Cultura"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 90,
-      "ttl_horas": 72,
-      "expires_at": "2026-11-30T10:22:12Z",
-      "palavras_chave_busca": [
-        "espanha",
-        "eleicoes espanha",
-        "pedro sanchez",
-        "imigracao europa",
-        "social-democracia",
-        "crise politica"
-      ],
-      "gatilho_vitrine": "Cubra o impacto das eleições espanholas na estabilidade política europeia e nas políticas migratórias.",
-      "sintese_nerd": "A Espanha enfrenta um momento decisivo onde a imigração e denúncias de corrupção ameaçam a permanência da social-democracia no poder. O resultado impactará diretamente as diretrizes da União Europeia sobre fronteiras e direitos sociais.",
-      "data_publicacao": "2026-11-27T10:22:12Z",
-      "updated_at": "2026-11-27T10:22:12Z"
-    },
-    {
-      "slug": "volatilidade-mercado-ibovespa-dolar",
-      "titulo_tema": "Volatilidade no Ibovespa e Dólar: Ajustes de Mercado",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Geopolitica_Radar"
-      ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 88,
-      "ttl_horas": 24,
-      "expires_at": "2026-11-28T10:22:12Z",
-      "palavras_chave_busca": [
-        "ibovespa",
-        "dolar",
-        "day trade",
-        "mercado financeiro",
-        "embraer",
-        "bolsa de valores"
-      ],
-      "gatilho_vitrine": "Monitore a correção técnica dos ativos brasileiros após a forte oscilação recente.",
-      "sintese_nerd": "A quebra de estruturas técnicas no Ibovespa e no minidólar reflete um mercado reagindo a incertezas fiscais e pressões externas. A atenção se volta para a sustentabilidade desses movimentos diante da agenda econômica de fim de ano.",
-      "data_publicacao": "2026-11-27T10:22:12Z",
-      "updated_at": "2026-11-27T10:22:12Z"
-    },
-    {
-      "slug": "conflito-ucrania-russia-escalada-energia",
-      "titulo_tema": "Escalada do Conflito na Ucrânia e Impactos na Infraestrutura",
-      "status": "atualizacao",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 86,
-      "ttl_horas": 48,
-      "expires_at": "2026-11-29T10:22:12Z",
-      "palavras_chave_busca": [
-        "ucrania",
-        "russia",
-        "guerra",
-        "energia",
-        "drones",
-        "geopolitica"
-      ],
-      "gatilho_vitrine": "Atualize o cenário de ataques russos e a resposta da Ucrânia com apoio do Banco Mundial.",
-      "sintese_nerd": "A intensificação dos ataques russos contra infraestrutura energética ucraniana, somada ao financiamento do Banco Mundial, mantém o conflito como um vetor de instabilidade global. A guerra continua a ditar o ritmo de investimentos em reconstrução e segurança energética.",
-      "data_publicacao": "2026-11-27T10:22:12Z",
-      "updated_at": "2026-11-27T10:22:12Z"
     }
   ],
   "noticias_quentes": [
+    {
+      "slug": "senado-argentino-reforma-primarias-milei",
+      "titulo_curto": "Senado argentino aprova reforma que suspende primárias e pode beneficiar Javier Milei",
+      "resumo_pulso": "Conforme reportagem da InfoMoney, o Senado da Argentina aprovou uma reforma que suspende as eleições primárias, medida que altera o tabuleiro político nacional e pode favorecer os planos eleitorais do presidente Javier Milei ao desarticular testes antecipados de força da oposição.",
+      "impacto_pratico": "Modifica o calendário político e estratégico de aliados e opositores na Argentina, impactando vizinhos do Mercosul.",
+      "categoria": "Geopolitica_Relacoes",
+      "paises_envolvidos": [
+        "AR"
+      ],
+      "urgencia_score": 88,
+      "relevancia_score": 89,
+      "nivel_confianca": "alta",
+      "ttl_horas": 24,
+      "horas_em_destaque": 12,
+      "veiculos_origem": [
+        "InfoMoney"
+      ],
+      "fontes_urls": [
+        "https://www.infomoney.com.br/mundo/senado-argentino-aprova-reforma-que-suspende-primarias-e-pode-favorecer-milei/"
+      ],
+      "palavras_chave": [
+        "Argentina",
+        "Senado",
+        "Javier Milei",
+        "Eleições"
+      ],
+      "data_publicacao": "2026-11-27T11:19:54Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "Eleições e Democracia no Mundo",
+          "url_existente": "https://www.rodandoomundo.com.br/eleicoes",
+          "motivo_conexao": "Contextualiza as mudanças eleitorais e o impacto democrático na América Latina."
+        }
+      ],
+      "expires_at": "2026-11-28T11:21:18Z",
+      "updated_at": "2026-11-27T11:21:18Z"
+    },
+    {
+      "slug": "cmn-reduz-juros-fundo-clima-baterias",
+      "titulo_curto": "CMN reduz taxa de juros do Fundo Clima para financiamento de baterias nacionais",
+      "resumo_pulso": "Segundo comunicado oficial da Agência Brasil, o Conselho Monetário Nacional (CMN) aprovou a redução para 6,5% ao ano dos juros do Fundo Clima voltados a projetos de armazenamento de energia que utilizem baterias produzidas no Brasil.",
+      "impacto_pratico": "Estimula a cadeia industrial de energias renováveis e o armazenamento elétrico com insumos nacionais.",
+      "categoria": "Economia_Comercio",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "urgencia_score": 87,
+      "relevancia_score": 88,
+      "nivel_confianca": "alta",
+      "ttl_horas": 24,
+      "horas_em_destaque": 12,
+      "veiculos_origem": [
+        "Agência Brasil (EBC)"
+      ],
+      "fontes_urls": [
+        "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/cmn-reduz-juros-do-fundo-clima-para-baterias-nacionais"
+      ],
+      "palavras_chave": [
+        "CMN",
+        "Fundo Clima",
+        "Baterias",
+        "Energia Renovável"
+      ],
+      "data_publicacao": "2026-11-27T10:02:00Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "Investimentos em energia solar, eólica e biocombustíveis aceleram transição energética no Brasil",
+          "url_existente": "https://www.rodandoomundo.com.br/radar",
+          "motivo_conexao": "Relaciona incentivos financeiros governamentais à transição energética e à inovação sustentável."
+        }
+      ],
+      "expires_at": "2026-11-28T11:21:18Z",
+      "updated_at": "2026-11-27T11:21:18Z"
+    },
     {
       "slug": "espanha-eleicoes-imigracao-sanchez",
       "categoria": "Geopolitica_Relacoes",
@@ -1039,43 +1052,43 @@
     },
     {
       "slug": "trabuco-futuro-ministro-fazenda-mercado",
+      "titulo_curto": "Mercados e autoridades celebram Luiz Carlos Trabuco na Fazenda para início do Lula 4",
+      "resumo_pulso": "Segundo apuração da InfoMoney e do Poder360, a oficialização de Luiz Carlos Trabuco no Ministério da Fazenda recebeu forte apoio de industriais e investidores, sendo vista pela equipe presidencial como elemento facilitador para a aprovação da segunda etapa do ajuste fiscal no início do quarto mandato de Lula.",
+      "impacto_pratico": "A indicação traz maior estabilidade e otimismo aos mercados financeiros, refletindo em reajustes nas projeções cambiais e do Ibovespa.",
       "categoria": "Economia_Comercio",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-28T01:04:51Z",
-      "updated_at": "2026-11-27T10:07:55Z",
-      "fontes_urls": [
-        "https://g1.globo.com/politica/noticia/2026/11/27/paulo-guedes-haddad-e-durigan-quem-foram-os-ultimos-ministros-da-fazenda-do-brasil-antes-da-escolha-de-trabuco.ghtml",
-        "https://www.infomoney.com.br/mercados/mercados-day-trade-hoje-analistas-27112026/"
-      ],
-      "resumo_pulso": "Segundo apuração do G1 e da InfoMoney, a oficialização de Luiz Carlos Trabuco no Ministério da Fazenda continua gerando forte otimismo e alta nos mercados financeiros, com o Ibovespa registrando disparada expressiva. Veículos destacam sua trajetória no Bradesco e a construção de pontes entre o governo e o setor financeiro.",
-      "titulo_curto": "Mercados e analistas repercutem transição no Ministério da Fazenda com Luiz Carlos Trabuco",
-      "palavras_chave": [
-        "Luiz Carlos Trabuco",
-        "Ministério da Fazenda",
-        "Ibovespa",
-        "Mercado Financeiro"
-      ],
-      "urgencia_score": 95,
-      "data_publicacao": "2026-11-27T00:50:57Z",
-      "impacto_pratico": "Forte volatilidade positiva nos ativos de risco e apreciação do real frente ao dólar devido à expectativa de diálogo fiscal.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "G1 Política",
-        "G1 Economia",
-        "InfoMoney Mercados"
-      ],
-      "relevancia_score": 98,
-      "horas_em_destaque": 12,
       "paises_envolvidos": [
         "BR"
       ],
+      "urgencia_score": 96,
+      "relevancia_score": 98,
+      "nivel_confianca": "alta",
+      "ttl_horas": 24,
+      "horas_em_destaque": 24,
+      "veiculos_origem": [
+        "InfoMoney",
+        "Poder360",
+        "G1 Política"
+      ],
+      "fontes_urls": [
+        "https://www.infomoney.com.br/politica/criticos-da-economia-de-lula-industria-e-mercado-celebram-trabuco-na-fazenda/",
+        "https://www.poder360.com.br/poder-economia/bradesco-confirma-ida-de-trabuco-para-a-fazenda/"
+      ],
+      "palavras_chave": [
+        "Luiz Carlos Trabuco",
+        "Ministério da Fazenda",
+        "Mercado Financeiro",
+        "Ajuste Fiscal"
+      ],
+      "data_publicacao": "2026-11-27T00:50:57Z",
       "links_internos_relacionados": [
         {
+          "titulo_existente": "Economia no Brasil",
           "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
-          "motivo_conexao": "Acompanhamento detalhado do impacto da nova liderança da Fazenda nos rumos da economia e do mercado.",
-          "titulo_existente": "Economia no Brasil"
+          "motivo_conexao": "Acompanhe os desdobramentos da transição econômica e os impactos da equipe de governo nos mercados."
         }
-      ]
+      ],
+      "expires_at": "2026-11-28T01:04:51Z",
+      "updated_at": "2026-11-27T11:21:18Z"
     },
     {
       "slug": "amazonas-para-roraima-apagao-energia",
@@ -1614,84 +1627,115 @@
           "titulo_existente": "Implementação da Reforma Tributária e medidas de revisão de gastos avançam em Brasília"
         }
       ]
-    },
+    }
+  ],
+  "temas_curadoria": [
     {
-      "slug": "seca-amazonia-auxilio-emergencial-pescadores",
-      "categoria": "Sociedade_Cultura",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-27T16:40:04Z",
-      "updated_at": "2026-11-26T16:40:04Z",
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/seca-na-amazonia-governo-estuda-auxilio-emergencial-para-pescadores"
+      "slug": "trabuco-ministerio-da-fazenda-impacto-mercado-bolsa-dolar",
+      "status": "novo",
+      "ttl_horas": 48,
+      "expires_at": "2026-11-29T10:37:23Z",
+      "updated_at": "2026-11-27T10:37:23Z",
+      "titulo_tema": "Indicação de Luiz Carlos Trabuco para a Fazenda dispara Bolsa e derruba Dólar",
+      "sintese_nerd": "A aceitação de Luiz Carlos Trabuco para o Ministério da Fazenda trouxe alívio imediato ao mercado financeiro, impulsionando o Ibovespa e derrubando a moeda americana. O movimento sinaliza uma tentativa do governo de sinalizar disciplina fiscal, embora exija articulação para contornar divergências internas na base aliada.",
+      "rota_editoria": "/politica",
+      "data_publicacao": "2026-11-27T10:37:23Z",
+      "gatilho_vitrine": "Destacar nomeação de Trabuco na Fazenda e o forte rali de alta nos mercados acionários brasileiros",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 98,
+      "categoria_primaria": "Politica",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
       ],
-      "resumo_pulso": "Segundo apuração da Agência Brasil, o governo federal avalia a concessão de um benefício extraordinário para socorrer cerca de 400 mil pescadores artesanais nos estados do Amazonas e do Pará. A seca severa tem dificultado a navegação e provocado expressiva mortandade de pescados na região.",
-      "titulo_curto": "Governo estuda auxílio emergencial para 400 mil pescadores afetados pela severa seca na Amazônia",
-      "palavras_chave": [
-        "seca",
-        "Amazonia",
-        "pescadores",
-        "auxilio",
-        "governo federal"
-      ],
-      "urgencia_score": 87,
-      "data_publicacao": "2026-11-26T15:56:00Z",
-      "impacto_pratico": "A paralisação da atividade pesqueira e as dificuldades logísticas na Amazônia encarecem o custo de vida local e exigem realocação de recursos do orçamento federal para assistência humanitária e econômica.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Agência Brasil (EBC)"
-      ],
-      "relevancia_score": 88,
-      "horas_em_destaque": 12,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/radar",
-          "motivo_conexao": "Relaciona eventos climáticos extremos e apoio socioeconômico a populações vulneráveis na Amazônia.",
-          "titulo_existente": "Financiamento climático e metas de redução de desmatamento concentram negociações internacionais"
-        }
+      "palavras_chave_busca": [
+        "luiz carlos trabuco",
+        "ministério da fazenda",
+        "governo lula",
+        "ibovespa",
+        "dólar hoje",
+        "bradesco",
+        "mercado financeiro"
       ]
     },
     {
-      "slug": "brasileiros-recrutados-guerra-russia-ucrania",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-27T17:51:15Z",
-      "updated_at": "2026-11-26T17:51:15Z",
-      "fontes_urls": [
-        "https://g1.globo.com/mundo/noticia/2026/11/26/brasileiros-foram-atraidos-para-lutar-pela-russia-e-roubados-pelos-proprios-recrutadores-relata-nyt.ghtml"
+      "slug": "estrategia-brasil-tarifas-trump-embraer-diplomacia",
+      "status": "novo",
+      "ttl_horas": 72,
+      "expires_at": "2026-11-30T10:37:23Z",
+      "updated_at": "2026-11-27T10:37:23Z",
+      "titulo_tema": "Brasil articula resposta diplomática contra tarifas de Trump e mitigação de impactos na Embraer",
+      "sintese_nerd": "O Chanceler Mauro Vieira lidera as negociações do governo brasileiro para evitar que o aumento de tarifas anunciado por Donald Trump atinja em cheio a indústria nacional. Enquanto a Embraer tenta sustentar valor de mercado, o país busca alternativas multilaterais contra o protecionismo da Casa Branca.",
+      "rota_editoria": "/radar",
+      "data_publicacao": "2026-11-27T10:37:23Z",
+      "gatilho_vitrine": "Monitorar negociações do Itamaraty para conter o avanço protecionista sobre exportações estratégicas brasileiras",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 91,
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Politica"
       ],
-      "resumo_pulso": "Segundo apuração do jornal The New York Times repercutida pelo G1, dezenas de brasileiros atraídos por falsas promessas de altos pagamentos para integrar o Exército russo acabaram extorquidos e abandonados na linha de frente. O caso acende alertas consulares sobre redes de aliciamento internacional de cidadãos brasileiros.",
-      "titulo_curto": "Reportagem do NYT aponta que brasileiros atraídos para guerra na Ucrânia foram roubados por recrutadores",
-      "palavras_chave": [
-        "Rússia",
-        "Ucrânia",
-        "Mercenários",
-        "Brasileiros",
-        "Segurança"
+      "palavras_chave_busca": [
+        "mauro vieira",
+        "donald trump",
+        "tarifas comerciais",
+        "embraer",
+        "itamaraty",
+        "protecionismo eua",
+        "exportações brasileiras"
+      ]
+    },
+    {
+      "slug": "eleicoes-espanha-crise-demografica-imigracao-europa",
+      "status": "novo",
+      "ttl_horas": 96,
+      "expires_at": "2026-12-01T10:37:23Z",
+      "updated_at": "2026-11-27T10:37:23Z",
+      "titulo_tema": "Eleições na Espanha colocam imigração e transição demográfica no centro do debate europeu",
+      "sintese_nerd": "Com a taxa de natalidade em declínio acentuado, a Espanha vai às urnas em uma disputa cujo tema central é a absorção econômica de imigrantes. O pleito serve como termômetro sobre a ascensão da pauta migratória nas decisões eleitorais de potências do continente europeu.",
+      "rota_editoria": "/eleicoes",
+      "data_publicacao": "2026-11-27T10:37:23Z",
+      "gatilho_vitrine": "Exibir o impacto das eleições espanholas nas políticas de fronteira e trabalho da União Europeia",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 83,
+      "categoria_primaria": "Eleicoes",
+      "categorias_cruzadas": [
+        "Geopolitica_Radar",
+        "Cultura"
       ],
-      "urgencia_score": 90,
-      "data_publicacao": "2026-11-26T15:30:02Z",
-      "impacto_pratico": "Serve como alerta severo para viajantes e cidadãos sobre golpes de aliciamento internacional e os riscos extremos associados a ofertas de emprego em zonas de conflito bélico.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "G1 Mundo",
-        "The New York Times"
+      "palavras_chave_busca": [
+        "eleições espanha",
+        "imigração europa",
+        "demografia espanhola",
+        "união europeia",
+        "política migratória"
+      ]
+    },
+    {
+      "slug": "geopolitica-black-friday-soft-power-americano-consumo",
+      "status": "novo",
+      "ttl_horas": 48,
+      "expires_at": "2026-11-29T10:37:23Z",
+      "updated_at": "2026-11-27T10:37:23Z",
+      "titulo_tema": "A geopolítica da Black Friday: a expansão do 'soft power' cultural e econômico dos EUA",
+      "sintese_nerd": "A consolidação global da Black Friday ilustra a eficácia do 'soft power' dos EUA em exportar modelos comportamentais e comerciais sem necessidade de datas históricas compartilhadas. O fenômeno altera calendários de varejo mundiais e reflete a dependência de plataformas e dinâmicas de consumo ocidentais.",
+      "rota_editoria": "/cultura",
+      "data_publicacao": "2026-11-27T10:37:23Z",
+      "gatilho_vitrine": "Analisar a conversão de datas comemorativas norte-americanas em motores de consumo globais",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 77,
+      "categoria_primaria": "Cultura",
+      "categorias_cruzadas": [
+        "Economia",
+        "Geopolitica_Radar"
       ],
-      "relevancia_score": 88,
-      "horas_em_destaque": 12,
-      "paises_envolvidos": [
-        "BR",
-        "RU",
-        "UA"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
-          "motivo_conexao": "Contextualiza a inserção do Brasil em dinâmicas e tensões geopolíticas globais.",
-          "titulo_existente": "Mercados e aliados internacionais avaliam impacto da política comercial norte-americana"
-        }
+      "palavras_chave_busca": [
+        "black friday",
+        "soft power",
+        "cultura de consumo",
+        "influência americana",
+        "comércio global"
       ]
     }
   ]
