@@ -1,37 +1,37 @@
 {
-  "batch_data": "2026-11-26",
-  "gerado_em": "2026-11-26T07:54:32.798537+00:00",
-  "modelo_juiza": "fallback-deterministico",
+  "batch_data": "2026-11-27",
+  "gerado_em": "2026-11-27T07:53:31.123605+00:00",
+  "modelo_juiza": "gemini-3.5-flash-lite",
   "veredito_geral": "aprovado_com_ressalvas",
   "calibracoes": [
     {
       "alvo_agente": "pulso_30m",
       "tipo_diretriz": "foco_tematico",
-      "titulo_regra": "Priorizar Impacto Cambial Prático",
-      "instrucao_prompt": "Conectar as variações de moedas da madrugada com o bolso do viajante brasileiro.",
+      "titulo_regra": "Radar Geopolítico Asiático Oculto",
+      "instrucao_prompt": "Ao monitorar feeds internacionais, dar prioridade imediata a crises institucionais na Ásia-Pacífico (como Filipinas e rotas de semicondutores) que possam impactar cadeias globais de suprimentos.",
       "prioridade": 4
     },
     {
       "alvo_agente": "colunista_nerd",
       "tipo_diretriz": "ajuste_tom",
-      "titulo_regra": "Evitar Adjetivações Partidárias",
-      "instrucao_prompt": "Manter descrição estritamente técnica de medidas institucionais e diplomáticas.",
+      "titulo_regra": "Eliminação de Clichês Retóricos",
+      "instrucao_prompt": "Proibir o uso de frases feitas e aberturas genéricas como 'Em um cenário cada vez mais globalizado' ou 'Resta saber se' em colunas editoriais. Exigir início direto com o fato econômico ou geográfico de impacto.",
       "prioridade": 3
     }
   ],
   "pautas_ouro_dia": [
-    "Acordo Comercial Internacional: O que muda para o comércio e turismo?",
-    "Vistos e Fronteiras: Novas regras operacionais para viajantes",
-    "Câmbio Matinal: Como o fechamento dos mercados asiáticos afeta voos"
+    "Impacto imediato da queda do dólar abaixo de R$ 5,75 no planejamento de férias internacionais de alta temporada",
+    "A auditoria da União Europeia que desmente falas protecionistas sobre a carne brasileira",
+    "As novas regras de segurança do Pix anunciadas pelo Banco Central para o ciclo de 2027"
   ],
   "golden_exemplars": [
     {
       "tipo_conteudo": "pulso_noticia",
-      "titulo": "Atualização Factual com Ressalvas Integradas",
-      "categoria": "Geopolitica_Relacoes",
-      "nota_isencao": 95,
-      "texto_exemplo": "Decisão governamental com citação de fontes primárias e ressalva factual explícita.",
-      "justificativa_excelencia": "Equilíbrio exemplar entre rapidez informativa e rigor de checagem."
+      "titulo": "Ibovespa dispara 6% e dólar recua abaixo de R$ 5,75 após Luiz Carlos Trabuco aceitar comando da Fazenda",
+      "categoria": "Economia & Câmbio",
+      "nota_isencao": 98,
+      "texto_exemplo": "Segundo apuração da Agência Brasil, da BBC News Brasil e do G1 Economia, o mercado financeiro reagiu fortemente com a confirmação de que Luiz Carlos Trabuco... recuou para R$ 5,74, gerando um alívio cambial imediato e favorável para o bolso do viajante brasileiro e para o custo de importações.",
+      "justificativa_excelencia": "Demonstra a perfeita aplicação do DNA do portal: traduzir um fato macroeconômico puramente técnico em um indicador prático imediato para o viajante e consumidor brasileiro."
     }
   ]
 }

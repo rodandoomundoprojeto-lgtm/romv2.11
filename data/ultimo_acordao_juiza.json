@@ -1,106 +1,103 @@
 {
-  "batch_data": "2026-11-26",
-  "modelo_juiza": "fallback-deterministico",
-  "total_avaliados": 36,
-  "media_isencao": 88.5,
-  "media_qualidade_nerd": 89.0,
+  "batch_data": "2026-11-27",
+  "modelo_juiza": "gemini-3.5-flash-lite",
+  "total_avaliados": 35,
+  "media_isencao": 89.4,
+  "media_qualidade_nerd": 88.2,
   "alucinacoes_detectadas": 0,
   "cliches_detectados": 1,
   "veredito_geral": "aprovado_com_ressalvas",
-  "resumo_acordao": "Sessão de julgamento do dia 2026-11-26 concluída em regime de contingência. A produção das últimas 24 horas demonstrou consistência factual satisfatória, mantendo a proporção de ressalvas e sem alucinações críticas identificadas. Recomenda-se reforçar a conexão com o impacto cambial do viajante nas primeiras horas da manhã.",
+  "resumo_acordao": "O Tribunal Noturno encerra a sua sessão de julgamento com um balanço amplamente positivo da produção jornalística e editorial do Rodando o Mundo nas últimas 24 horas. Destacou-se a cobertura exemplar e multifacetada da indicação de Luiz Carlos Trabuco para o Ministério da Fazenda, conectando com precisão cirúrgica a euforia bursátil, o recuo do dólar e os impactos práticos no custo de vida e no planejamento cambial do viajante brasileiro. A redação manteve rigor exemplar na apuração factual, sem registro de alucinações, embora pequenas redundâncias estilísticas e clichês tenham sido detectadas em rascunhos preliminares de colunas.\n\nContudo, a varredura dos pontos cegos da madrugada revelou lacunas notáveis na cobertura de desdobramentos internacionais cruciais, a exemplo do processo de impeachment da vice-presidente das Filipinas, Sara Duterte, e das articulações de defesa coletiva no Oriente Médio através do pacto em Islamabad. As diretrizes de calibração para o novo ciclo exigem maior agilidade na ponte entre crises institucionais asiáticas e o radar geopolítico global, mantendo a êncora inegociável de traduzir a grande política internacional em impactos diretos para a mobilidade e o bolso do leitor.",
   "itens_avaliados": [
     {
       "origem_tipo": "noticia_quente",
-      "identificador": "surto-ebola-rd-congo-12-mil-casos",
-      "nota_isencao": 90,
-      "nota_factual": 92,
-      "nota_estilo_nerd": 88,
+      "identificador": "trabuco-futuro-ministro-fazenda-mercado",
+      "nota_isencao": 98,
+      "nota_factual": 100,
+      "nota_estilo_nerd": 99,
       "teve_alucinacao": false,
       "teve_cliche_ou_sensacionalismo": false,
-      "parecer_resumido": "Texto factual equilibrado com boa aderência aos critérios do portal."
+      "parecer_resumido": "Excelente cobertura cruzada, unindo com maestria a reação do mercado financeiro e os reflexos imediatos no câmbio para o viajante."
     },
     {
       "origem_tipo": "noticia_quente",
-      "identificador": "brasil-assume-vice-presidencia-onu-turismo",
-      "nota_isencao": 90,
-      "nota_factual": 92,
-      "nota_estilo_nerd": 88,
+      "identificador": "exportadores-brasileiros-rebatem-macron-carne",
+      "nota_isencao": 94,
+      "nota_factual": 95,
+      "nota_estilo_nerd": 92,
       "teve_alucinacao": false,
       "teve_cliche_ou_sensacionalismo": false,
-      "parecer_resumido": "Texto factual equilibrado com boa aderência aos critérios do portal."
+      "parecer_resumido": "Boa contundência na defesa do agronegócio nacional frente ao protecionismo europeu, ancorada em dados técnicos sólidos."
     },
     {
-      "origem_tipo": "noticia_quente",
-      "identificador": "camara-aprova-deserdacao-por-interdicao-abusiva-idosos",
-      "nota_isencao": 90,
-      "nota_factual": 92,
-      "nota_estilo_nerd": 88,
+      "origem_tipo": "coluna_editorial",
+      "identificador": "trabuco-fazenda-repercussao-mercado-orcamento",
+      "nota_isencao": 91,
+      "nota_factual": 90,
+      "nota_estilo_nerd": 93,
       "teve_alucinacao": false,
-      "teve_cliche_ou_sensacionalismo": false,
-      "parecer_resumido": "Texto factual equilibrado com boa aderência aos critérios do portal."
-    },
-    {
-      "origem_tipo": "noticia_quente",
-      "identificador": "camara-aprova-protocolo-nacional-combate-racismo-escolas",
-      "nota_isencao": 90,
-      "nota_factual": 92,
-      "nota_estilo_nerd": 88,
-      "teve_alucinacao": false,
-      "teve_cliche_ou_sensacionalismo": false,
-      "parecer_resumido": "Texto factual equilibrado com boa aderência aos critérios do portal."
-    },
-    {
-      "origem_tipo": "noticia_quente",
-      "identificador": "premio-mulheres-inovadoras-pesquisadoras-amazonia",
-      "nota_isencao": 90,
-      "nota_factual": 92,
-      "nota_estilo_nerd": 88,
-      "teve_alucinacao": false,
-      "teve_cliche_ou_sensacionalismo": false,
-      "parecer_resumido": "Texto factual equilibrado com boa aderência aos critérios do portal."
+      "teve_cliche_ou_sensacionalismo": true,
+      "parecer_resumido": "Texto analítico de alto nível, embora tenha resvalado em leve clichê retórico na introdução ao tratar do cenário político."
     }
   ],
   "pontos_cegos": [
     {
-      "tema": "Oscilação do Mercado Asiático e Moedas Emergentes",
+      "tema": "Processo de impeachment e crise política da Vice-Presidente das Filipinas Sara Duterte",
       "regiao_ou_paises": [
-        "JP",
-        "CN"
+        "Filipinas",
+        "Sudeste Asiático"
       ],
-      "por_que_era_importante": "Impacto no custo de viagens e passagens aéreas internacionais.",
-      "sugestao_pauta_urgente": "Análise matinal da cotação de moedas asiáticas frente ao Real."
+      "por_que_era_importante": "A instabilidade institucional no arquipélago afeta rotas comerciais estratégicas na Ásia e a segurança jurídica de investimentos regionais.",
+      "sugestao_pauta_urgente": "Publicar um Pulso 30m detalhando os desdobramentos do processo de impeachment de Sara Duterte e os reflexos para o turismo e negócios na região."
+    },
+    {
+      "tema": "Reunião de cúpula de defesa coletiva em Islamabad (Pacto da Meca / Turquia, Arábia Saudita e Paquistão)",
+      "regiao_ou_paises": [
+        "Paquistão",
+        "Arábia Saudita",
+        "Turquia"
+      ],
+      "por_que_era_importante": "Novas alianças militares no Oriente Médio impactam diretamente a volatilidade do petróleo Brent e, por consequência, o preço dos combustíveis e passagens aéreas no Brasil.",
+      "sugestao_pauta_urgente": "Analisar em nota rápida como o pacto de defesa no Sul da Ásia e Oriente Médio tensiona os mercados energéticos globais."
     }
   ],
   "calibracoes_geradas": [
     {
       "alvo_agente": "pulso_30m",
       "tipo_diretriz": "foco_tematico",
-      "titulo_regra": "Priorizar Impacto Cambial Prático",
-      "instrucao_prompt": "Conectar as variações de moedas da madrugada com o bolso do viajante brasileiro.",
+      "titulo_regra": "Radar Geopolítico Asiático Oculto",
+      "instrucao_prompt": "Ao monitorar feeds internacionais, dar prioridade imediata a crises institucionais na Ásia-Pacífico (como Filipinas e rotas de semicondutores) que possam impactar cadeias globais de suprimentos.",
       "prioridade": 4
     },
     {
       "alvo_agente": "colunista_nerd",
       "tipo_diretriz": "ajuste_tom",
-      "titulo_regra": "Evitar Adjetivações Partidárias",
-      "instrucao_prompt": "Manter descrição estritamente técnica de medidas institucionais e diplomáticas.",
+      "titulo_regra": "Eliminação de Clichês Retóricos",
+      "instrucao_prompt": "Proibir o uso de frases feitas e aberturas genéricas como 'Em um cenário cada vez mais globalizado' ou 'Resta saber se' em colunas editoriais. Exigir início direto com o fato econômico ou geográfico de impacto.",
       "prioridade": 3
     }
   ],
   "golden_exemplars": [
     {
       "tipo_conteudo": "pulso_noticia",
-      "titulo": "Atualização Factual com Ressalvas Integradas",
-      "categoria": "Geopolitica_Relacoes",
-      "nota_isencao": 95,
-      "texto_exemplo": "Decisão governamental com citação de fontes primárias e ressalva factual explícita.",
-      "justificativa_excelencia": "Equilíbrio exemplar entre rapidez informativa e rigor de checagem."
+      "titulo": "Ibovespa dispara 6% e dólar recua abaixo de R$ 5,75 após Luiz Carlos Trabuco aceitar comando da Fazenda",
+      "categoria": "Economia & Câmbio",
+      "nota_isencao": 98,
+      "texto_exemplo": "Segundo apuração da Agência Brasil, da BBC News Brasil e do G1 Economia, o mercado financeiro reagiu fortemente com a confirmação de que Luiz Carlos Trabuco... recuou para R$ 5,74, gerando um alívio cambial imediato e favorável para o bolso do viajante brasileiro e para o custo de importações.",
+      "justificativa_excelencia": "Demonstra a perfeita aplicação do DNA do portal: traduzir um fato macroeconômico puramente técnico em um indicador prático imediato para o viajante e consumidor brasileiro."
     }
   ],
-  "ajustes_fontes": [],
+  "ajustes_fontes": [
+    {
+      "fonte_nome": "Al Jazeera English",
+      "peso_anterior": 4,
+      "novo_peso": 5,
+      "motivo": "Demonstrou excelente capacidade de antecipação de fatos factuais globais na madrugada, servindo como ótimo radar para pontos cegos."
+    }
+  ],
   "pautas_ouro_dia": [
-    "Acordo Comercial Internacional: O que muda para o comércio e turismo?",
-    "Vistos e Fronteiras: Novas regras operacionais para viajantes",
-    "Câmbio Matinal: Como o fechamento dos mercados asiáticos afeta voos"
+    "Impacto imediato da queda do dólar abaixo de R$ 5,75 no planejamento de férias internacionais de alta temporada",
+    "A auditoria da União Europeia que desmente falas protecionistas sobre a carne brasileira",
+    "As novas regras de segurança do Pix anunciadas pelo Banco Central para o ciclo de 2027"
   ]
 }
