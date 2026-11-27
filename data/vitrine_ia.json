@@ -2,78 +2,123 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-27T21:50:54Z",
-  "batch_id": "20261127-2150",
+  "updatedAt": "2026-11-27T22:10:48Z",
+  "batch_id": "20261127-2210",
   "temas_ativos": [
     {
-      "slug": "vendas-tesouro-direto-recorde-outubro",
-      "titulo_tema": "Vendas do Tesouro Direto registram o melhor mês de outubro da história com R$ 10,57 bilhões",
-      "titulo_curto": "Vendas do Tesouro Direto registram o melhor mês de outubro da história com R$ 10,57 bilhões",
+      "slug": "efeito-trabuco-fazenda-bolsa-dolar-tesouro",
+      "titulo_tema": "Efeito Trabuco na Fazenda: Ibovespa dispara e dólar desaba",
       "status": "novo",
-      "origem_pipeline": "pulso",
+      "origem_pipeline": "curadoria",
       "categoria_primaria": "Economia",
-      "categoria": "Economia_Comercio",
       "categorias_cruzadas": [
-        "Economia",
+        "Politica",
         "Resumo_Ultimas"
       ],
       "rota_editoria": "/economia",
-      "relevancia_score": 91,
-      "urgencia_score": 90,
+      "relevancia_score": 98,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-29T22:10:48Z",
+      "palavras_chave_busca": [
+        "luiz carlos trabuco",
+        "ministério da fazenda",
+        "governo lula",
+        "ibovespa",
+        "dólar",
+        "tesouro direto",
+        "mercado financeiro"
+      ],
+      "gatilho_vitrine": "Destacar na Vitrine IA a guinada nos mercados financeiros após a confirmação de Luiz Carlos Trabuco na Fazenda e o impacto direto nas taxas de juros e no câmbio.",
+      "sintese_nerd": "A indicação do banqueiro Luiz Carlos Trabuco para o Ministério da Fazenda gerou alívio imediato nos agentes de mercado, resultando em forte queda do dólar e salto nas ações da bolsa. Contudo, a escolha divide opiniões políticas, reacendendo debates internos sobre a condução fiscal no quarto mandato do governo.",
+      "data_publicacao": "2026-11-27T22:10:48Z",
+      "updated_at": "2026-11-27T22:10:48Z"
+    },
+    {
+      "slug": "retorno-edmundo-gonzalez-exilio-venezuela",
+      "titulo_tema": "Edmundo González anuncia retorno à Venezuela após dois anos no exílio",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Politica"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 88,
+      "ttl_horas": 72,
+      "expires_at": "2026-11-30T22:10:48Z",
+      "palavras_chave_busca": [
+        "edmundo gonzález",
+        "venezuela",
+        "exílio",
+        "oposição venezuelana",
+        "espanha",
+        "américa latina"
+      ],
+      "gatilho_vitrine": "Exibir no Radar Geopolítico as implicações da volta do principal opositor venezuelano ao país sul-americano e os reflexos diplomáticos na região.",
+      "sintese_nerd": "O anúncio do retorno de Edmundo González da Espanha para a Venezuela altera o tabuleiro político da crise institucional venezuelana. O movimento pressiona o regime local e mobiliza a comunidade internacional atenta à estabilidade democrática na América Latina.",
+      "data_publicacao": "2026-11-27T22:10:48Z",
+      "updated_at": "2026-11-27T22:10:48Z"
+    },
+    {
+      "slug": "vendas-tesouro-direto-recorde-outubro",
+      "status": "novo",
+      "categoria": "Economia_Comercio",
       "ttl_horas": 24,
       "expires_at": "2026-11-28T21:50:54Z",
-      "palavras_chave_busca": [
-        "tesouro direto",
-        "tesouro nacional",
-        "renda fixa",
-        "investimentos"
+      "updated_at": "2026-11-27T21:50:54Z",
+      "fontes_urls": [
+        "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/vendas-do-tesouro-direto-registram-melhor-outubro-da-historia"
       ],
+      "titulo_tema": "Vendas do Tesouro Direto registram o melhor mês de outubro da história com R$ 10,57 bilhões",
+      "resumo_pulso": "Conforme dados divulgados pelo Tesouro Nacional e reportados pela Agência Brasil, as vendas de títulos públicos a pessoas físicas pela internet alcançaram R$ 10,57 bilhões em outubro, o maior volume já registrado para o mês. O desempenho foi impulsionado pela introdução do novo título Tesouro Reserva.",
+      "sintese_nerd": "Oferece novas opções de aplicação em renda fixa para pequenos investidores, competindo diretamente com a poupança.",
+      "titulo_curto": "Vendas do Tesouro Direto registram o melhor mês de outubro da história com R$ 10,57 bilhões",
+      "rota_editoria": "/economia",
       "palavras_chave": [
         "tesouro direto",
         "tesouro nacional",
         "renda fixa",
         "investimentos"
       ],
+      "urgencia_score": 90,
+      "data_publicacao": "2026-11-27T21:01:00Z",
       "gatilho_vitrine": "Conforme dados divulgados pelo Tesouro Nacional e reportados pela Agência Brasil, as vendas de títulos públicos a pessoas físicas pela internet alcançaram R$ 10,57 bilhões em outubro, o maior volume já registrado para o mês. O desempenho foi impulsionado pela introdução do novo título Tesouro Reserva.",
-      "resumo_pulso": "Conforme dados divulgados pelo Tesouro Nacional e reportados pela Agência Brasil, as vendas de títulos públicos a pessoas físicas pela internet alcançaram R$ 10,57 bilhões em outubro, o maior volume já registrado para o mês. O desempenho foi impulsionado pela introdução do novo título Tesouro Reserva.",
-      "sintese_nerd": "Oferece novas opções de aplicação em renda fixa para pequenos investidores, competindo diretamente com a poupança.",
       "impacto_pratico": "Oferece novas opções de aplicação em renda fixa para pequenos investidores, competindo diretamente com a poupança.",
-      "paises_envolvidos": [
-        "BR"
-      ],
+      "origem_pipeline": "pulso",
       "veiculos_origem": [
         "Agência Brasil (EBC)"
       ],
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/vendas-do-tesouro-direto-registram-melhor-outubro-da-historia"
+      "relevancia_score": 91,
+      "paises_envolvidos": [
+        "BR"
       ],
-      "data_publicacao": "2026-11-27T21:01:00Z",
-      "updated_at": "2026-11-27T21:50:54Z"
-    },
-    {
-      "slug": "brasil-mercosul-caribe-america-central",
-      "titulo_tema": "Governo brasileiro busca aproximar o Mercosul de mercados do Caribe e da América Central",
-      "titulo_curto": "Governo brasileiro busca aproximar o Mercosul de mercados do Caribe e da América Central",
-      "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Geopolitica_Radar",
-      "categoria": "Geopolitica_Relacoes",
+      "categoria_primaria": "Economia",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
       ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 89,
-      "urgencia_score": 88,
+      "palavras_chave_busca": [
+        "tesouro direto",
+        "tesouro nacional",
+        "renda fixa",
+        "investimentos"
+      ]
+    },
+    {
+      "slug": "brasil-mercosul-caribe-america-central",
+      "status": "novo",
+      "categoria": "Geopolitica_Relacoes",
       "ttl_horas": 24,
       "expires_at": "2026-11-28T21:50:54Z",
-      "palavras_chave_busca": [
-        "mercosul",
-        "comércio exterior",
-        "américa central",
-        "caribe",
-        "diplomacia"
+      "updated_at": "2026-11-27T21:50:54Z",
+      "fontes_urls": [
+        "https://agenciabrasil.ebc.com.br/internacional/noticia/2026-11/brasil-quer-aproximar-mercosul-de-mercados-do-caribe-e-america-central"
       ],
+      "titulo_tema": "Governo brasileiro busca aproximar o Mercosul de mercados do Caribe e da América Central",
+      "resumo_pulso": "Segundo apuração da Agência Brasil, o governo brasileiro pretende usar a 69ª Cúpula do Mercosul, agendada para os dias 3 e 4 de dezembro em Montevidéu, para estreitar laços comerciais com os mercados do Caribe e da América Central. O evento também marcará a transição da presidência pro tempore do bloco para a Argentina.",
+      "sintese_nerd": "Pode ampliar o leque de acordos comerciais e rotas de exportação para o agronegócio e a indústria brasileira.",
+      "titulo_curto": "Governo brasileiro busca aproximar o Mercosul de mercados do Caribe e da América Central",
+      "rota_editoria": "/radar",
       "palavras_chave": [
         "mercosul",
         "comércio exterior",
@@ -81,10 +126,15 @@
         "caribe",
         "diplomacia"
       ],
+      "urgencia_score": 88,
+      "data_publicacao": "2026-11-27T20:57:00Z",
       "gatilho_vitrine": "Segundo apuração da Agência Brasil, o governo brasileiro pretende usar a 69ª Cúpula do Mercosul, agendada para os dias 3 e 4 de dezembro em Montevidéu, para estreitar laços comerciais com os mercados do Caribe e da América Central. O evento também marcará a transição da presidência pro tempore do bloco para a Argentina.",
-      "resumo_pulso": "Segundo apuração da Agência Brasil, o governo brasileiro pretende usar a 69ª Cúpula do Mercosul, agendada para os dias 3 e 4 de dezembro em Montevidéu, para estreitar laços comerciais com os mercados do Caribe e da América Central. O evento também marcará a transição da presidência pro tempore do bloco para a Argentina.",
-      "sintese_nerd": "Pode ampliar o leque de acordos comerciais e rotas de exportação para o agronegócio e a indústria brasileira.",
       "impacto_pratico": "Pode ampliar o leque de acordos comerciais e rotas de exportação para o agronegócio e a indústria brasileira.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "Agência Brasil (EBC)"
+      ],
+      "relevancia_score": 89,
       "paises_envolvidos": [
         "BR",
         "UY",
@@ -92,59 +142,63 @@
         "PY",
         "BO"
       ],
-      "veiculos_origem": [
-        "Agência Brasil (EBC)"
-      ],
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/internacional/noticia/2026-11/brasil-quer-aproximar-mercosul-de-mercados-do-caribe-e-america-central"
-      ],
-      "data_publicacao": "2026-11-27T20:57:00Z",
-      "updated_at": "2026-11-27T21:50:54Z"
-    },
-    {
-      "slug": "senado-especial-mulheres-cientistas",
-      "titulo_tema": "Senado realiza sessão especial em homenagem a cientistas e pesquisadoras brasileiras",
-      "titulo_curto": "Senado realiza sessão especial em homenagem a cientistas e pesquisadoras brasileiras",
-      "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Cultura",
-      "categoria": "Sociedade_Cultura",
+      "categoria_primaria": "Geopolitica_Radar",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
       ],
-      "rota_editoria": "/cultura",
-      "relevancia_score": 85,
-      "urgencia_score": 82,
+      "palavras_chave_busca": [
+        "mercosul",
+        "comércio exterior",
+        "américa central",
+        "caribe",
+        "diplomacia"
+      ]
+    },
+    {
+      "slug": "senado-especial-mulheres-cientistas",
+      "status": "novo",
+      "categoria": "Sociedade_Cultura",
       "ttl_horas": 24,
       "expires_at": "2026-11-28T21:50:54Z",
-      "palavras_chave_busca": [
-        "senado federal",
-        "mulheres na ciência",
-        "inovação",
-        "pesquisa"
+      "updated_at": "2026-11-27T21:50:54Z",
+      "fontes_urls": [
+        "https://www12.senado.leg.br/noticias/videos/2026/11/sessao-especial-do-senado-homenageia-mulheres-cientistas-brasileiras"
       ],
+      "titulo_tema": "Senado realiza sessão especial em homenagem a cientistas e pesquisadoras brasileiras",
+      "resumo_pulso": "Conforme apuração da Agência Senado, o Plenário realizou nesta sexta-feira (27) uma sessão especial proposta pela senadora Leany Lemos (PSB-DF) para exaltar a contribuição de mulheres cientistas ao desenvolvimento tecnológico e à inovação no país. As participantes enfatizaram a relevância de ampliar a representatividade feminina nas carreiras científicas.",
+      "sintese_nerd": "Fortalece debates institucionais sobre incentivos à pesquisa científica e igualdade de gênero na academia.",
+      "titulo_curto": "Senado realiza sessão especial em homenagem a cientistas e pesquisadoras brasileiras",
+      "rota_editoria": "/cultura",
       "palavras_chave": [
         "senado federal",
         "mulheres na ciência",
         "inovação",
         "pesquisa"
       ],
+      "urgencia_score": 82,
+      "data_publicacao": "2026-11-27T20:52:44Z",
       "gatilho_vitrine": "Conforme apuração da Agência Senado, o Plenário realizou nesta sexta-feira (27) uma sessão especial proposta pela senadora Leany Lemos (PSB-DF) para exaltar a contribuição de mulheres cientistas ao desenvolvimento tecnológico e à inovação no país. As participantes enfatizaram a relevância de ampliar a representatividade feminina nas carreiras científicas.",
-      "resumo_pulso": "Conforme apuração da Agência Senado, o Plenário realizou nesta sexta-feira (27) uma sessão especial proposta pela senadora Leany Lemos (PSB-DF) para exaltar a contribuição de mulheres cientistas ao desenvolvimento tecnológico e à inovação no país. As participantes enfatizaram a relevância de ampliar a representatividade feminina nas carreiras científicas.",
-      "sintese_nerd": "Fortalece debates institucionais sobre incentivos à pesquisa científica e igualdade de gênero na academia.",
       "impacto_pratico": "Fortalece debates institucionais sobre incentivos à pesquisa científica e igualdade de gênero na academia.",
-      "paises_envolvidos": [
-        "BR"
-      ],
+      "origem_pipeline": "pulso",
       "veiculos_origem": [
         "Agência Senado"
       ],
-      "fontes_urls": [
-        "https://www12.senado.leg.br/noticias/videos/2026/11/sessao-especial-do-senado-homenageia-mulheres-cientistas-brasileiras"
+      "relevancia_score": 85,
+      "paises_envolvidos": [
+        "BR"
       ],
-      "data_publicacao": "2026-11-27T20:52:44Z",
-      "updated_at": "2026-11-27T21:50:54Z"
+      "categoria_primaria": "Cultura",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "senado federal",
+        "mulheres na ciência",
+        "inovação",
+        "pesquisa"
+      ]
     },
     {
       "slug": "senado-aprova-plano-nacional-cultura",
@@ -287,114 +341,6 @@
         "inteligência artificial",
         "processo judicial",
         "tecnologia"
-      ]
-    },
-    {
-      "slug": "dino-suspende-emendas-flavio-bolsonaro-2027",
-      "status": "novo",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-28T19:41:14Z",
-      "updated_at": "2026-11-27T19:41:14Z",
-      "titulo_tema": "STF: Flávio Dino suspende tramitação de emendas de Flávio Bolsonaro para 2027",
-      "sintese_nerd": "A decisão do ministro Flávio Dino de suspender emendas parlamentares voltadas ao orçamento de 2027 acirra o controle do STF sobre a execução de recursos públicos por parlamentares. A medida intensifica o debate sobre a transparência do orçamento impositivo e a separação de poderes no Brasil.",
-      "rota_editoria": "/politica",
-      "urgencia_score": 95,
-      "data_publicacao": "2026-11-27T19:41:14Z",
-      "gatilho_vitrine": "Ilustrar na editoria de política os atritos institucionais contínuos entre o Supremo Tribunal Federal e o Congresso Nacional.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 94,
-      "categoria_primaria": "Politica",
-      "categorias_cruzadas": [
-        "Eleicoes"
-      ],
-      "palavras_chave_busca": [
-        "flávio dino",
-        "stf",
-        "flávio bolsonaro",
-        "emendas parlamentares",
-        "orçamento 2027",
-        "poder legislativo"
-      ]
-    },
-    {
-      "slug": "trabuco-no-ministerio-da-fazenda-agenda-fiscal-2027",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-29T19:41:14Z",
-      "updated_at": "2026-11-27T19:41:14Z",
-      "titulo_tema": "Indicação de Luiz Carlos Trabuco para a Fazenda em 2027 e os Desafios Fiscais",
-      "sintese_nerd": "A escolha de Luiz Carlos Trabuco para o comando da Fazenda em 2027 sinaliza uma guinada na articulação econômica com o setor privado, herdando um pacote complexo de reformas fiscais e controle de gastos. Essa transição dita diretamente as expectativas de mercado, inflação e investimentos estrangeiros no início do próximo ciclo político.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-27T19:41:14Z",
-      "gatilho_vitrine": "Exibir na home o impacto da transição na economia nacional e o legado de propostas fiscais deixadas por Dario Durigan.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 95,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Politica",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "luiz carlos trabuco",
-        "ministério da fazenda",
-        "dario durigan",
-        "orçamento 2027",
-        "política fiscal",
-        "governo lula",
-        "economia brasil"
-      ]
-    },
-    {
-      "slug": "pacote-alema-apoio-ucrania-2027-impacto-geopolitico",
-      "status": "novo",
-      "ttl_horas": 36,
-      "expires_at": "2026-11-29T07:41:14Z",
-      "updated_at": "2026-11-27T19:41:14Z",
-      "titulo_tema": "Alemanha aprova 12 bilhões de euros em ajuda à Ucrânia para 2027",
-      "sintese_nerd": "A aprovação de quase 12 bilhões de euros pela Alemanha para sustentar o orçamento ucraniano em 2027 reflete o esforço europeu para blindar sua segurança diante dos custos crescentes da guerra. A decisão impacta diretamente os mercados de energia e o cenário macroeconômico global, exigindo gastos defensivos expressivos da União Europeia.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-27T19:41:14Z",
-      "gatilho_vitrine": "Destacar no radar global os desdobramentos financeiros do conflito europeu e o compromisso de potências com a defesa regional.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 90,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia"
-      ],
-      "palavras_chave_busca": [
-        "alemanha",
-        "ucrânia",
-        "ajuda militar",
-        "guerra na ucrânia",
-        "orçamento europeu",
-        "geopolítica global"
-      ]
-    },
-    {
-      "slug": "argentina-proibe-propaganda-de-bets-nos-esportes",
-      "status": "novo",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-28T19:41:14Z",
-      "updated_at": "2026-11-27T19:41:14Z",
-      "titulo_tema": "Argentina aprova lei que proíbe totalmente propagandas de apostas esportivas",
-      "sintese_nerd": "A proibição unânime de publicidade de bets em uniformes e redes sociais na Argentina marca um endurecimento drástico da regulação de jogos na América Latina. O movimento serve de espelho para discussões regulatorias em curso no Brasil, pesando o equilíbrio entre arrecadação fiscal e saúde pública.",
-      "rota_editoria": "/politica",
-      "data_publicacao": "2026-11-27T19:41:14Z",
-      "gatilho_vitrine": "Conectar a decisão regulatória vizinha aos debates sobre o impacto financeiro e social dos jogos de azar no Brasil.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 85,
-      "categoria_primaria": "Politica",
-      "categorias_cruzadas": [
-        "Cultura",
-        "Economia"
-      ],
-      "palavras_chave_busca": [
-        "bets",
-        "apostas esportivas",
-        "argentina",
-        "regulamentação",
-        "publicidade",
-        "economia da américa latina"
       ]
     },
     {
@@ -863,68 +809,111 @@
       ]
     }
   ],
+  "temas_curadoria": [
+    {
+      "slug": "efeito-trabuco-fazenda-bolsa-dolar-tesouro",
+      "titulo_tema": "Efeito Trabuco na Fazenda: Ibovespa dispara e dólar desaba",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Politica",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 98,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-29T22:10:48Z",
+      "palavras_chave_busca": [
+        "luiz carlos trabuco",
+        "ministério da fazenda",
+        "governo lula",
+        "ibovespa",
+        "dólar",
+        "tesouro direto",
+        "mercado financeiro"
+      ],
+      "gatilho_vitrine": "Destacar na Vitrine IA a guinada nos mercados financeiros após a confirmação de Luiz Carlos Trabuco na Fazenda e o impacto direto nas taxas de juros e no câmbio.",
+      "sintese_nerd": "A indicação do banqueiro Luiz Carlos Trabuco para o Ministério da Fazenda gerou alívio imediato nos agentes de mercado, resultando em forte queda do dólar e salto nas ações da bolsa. Contudo, a escolha divide opiniões políticas, reacendendo debates internos sobre a condução fiscal no quarto mandato do governo.",
+      "data_publicacao": "2026-11-27T22:10:48Z",
+      "updated_at": "2026-11-27T22:10:48Z"
+    },
+    {
+      "slug": "retorno-edmundo-gonzalez-exilio-venezuela",
+      "titulo_tema": "Edmundo González anuncia retorno à Venezuela após dois anos no exílio",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Politica"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 88,
+      "ttl_horas": 72,
+      "expires_at": "2026-11-30T22:10:48Z",
+      "palavras_chave_busca": [
+        "edmundo gonzález",
+        "venezuela",
+        "exílio",
+        "oposição venezuelana",
+        "espanha",
+        "américa latina"
+      ],
+      "gatilho_vitrine": "Exibir no Radar Geopolítico as implicações da volta do principal opositor venezuelano ao país sul-americano e os reflexos diplomáticos na região.",
+      "sintese_nerd": "O anúncio do retorno de Edmundo González da Espanha para a Venezuela altera o tabuleiro político da crise institucional venezuelana. O movimento pressiona o regime local e mobiliza a comunidade internacional atenta à estabilidade democrática na América Latina.",
+      "data_publicacao": "2026-11-27T22:10:48Z",
+      "updated_at": "2026-11-27T22:10:48Z"
+    }
+  ],
   "noticias_quentes": [
     {
       "slug": "vendas-tesouro-direto-recorde-outubro",
-      "titulo_curto": "Vendas do Tesouro Direto registram o melhor mês de outubro da história com R$ 10,57 bilhões",
-      "resumo_pulso": "Conforme dados divulgados pelo Tesouro Nacional e reportados pela Agência Brasil, as vendas de títulos públicos a pessoas físicas pela internet alcançaram R$ 10,57 bilhões em outubro, o maior volume já registrado para o mês. O desempenho foi impulsionado pela introdução do novo título Tesouro Reserva.",
-      "impacto_pratico": "Oferece novas opções de aplicação em renda fixa para pequenos investidores, competindo diretamente com a poupança.",
       "categoria": "Economia_Comercio",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "urgencia_score": 90,
-      "relevancia_score": 91,
-      "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 12,
-      "veiculos_origem": [
-        "Agência Brasil (EBC)"
-      ],
+      "expires_at": "2026-11-28T21:50:54Z",
+      "updated_at": "2026-11-27T21:50:54Z",
       "fontes_urls": [
         "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/vendas-do-tesouro-direto-registram-melhor-outubro-da-historia"
       ],
+      "resumo_pulso": "Conforme dados divulgados pelo Tesouro Nacional e reportados pela Agência Brasil, as vendas de títulos públicos a pessoas físicas pela internet alcançaram R$ 10,57 bilhões em outubro, o maior volume já registrado para o mês. O desempenho foi impulsionado pela introdução do novo título Tesouro Reserva.",
+      "titulo_curto": "Vendas do Tesouro Direto registram o melhor mês de outubro da história com R$ 10,57 bilhões",
       "palavras_chave": [
         "Tesouro Direto",
         "Tesouro Nacional",
         "Renda Fixa",
         "Investimentos"
       ],
+      "urgencia_score": 90,
       "data_publicacao": "2026-11-27T21:01:00Z",
-      "links_internos_relacionados": [
-        {
-          "titulo_existente": "Economia no Brasil",
-          "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
-          "motivo_conexao": "Aprofunda a análise sobre o comportamento do mercado de capitais e opções de investimento para as famílias brasileiras."
-        }
-      ],
-      "expires_at": "2026-11-28T21:50:54Z",
-      "updated_at": "2026-11-27T21:50:54Z"
-    },
-    {
-      "slug": "brasil-mercosul-caribe-america-central",
-      "titulo_curto": "Governo brasileiro busca aproximar o Mercosul de mercados do Caribe e da América Central",
-      "resumo_pulso": "Segundo apuração da Agência Brasil, o governo brasileiro pretende usar a 69ª Cúpula do Mercosul, agendada para os dias 3 e 4 de dezembro em Montevidéu, para estreitar laços comerciais com os mercados do Caribe e da América Central. O evento também marcará a transição da presidência pro tempore do bloco para a Argentina.",
-      "impacto_pratico": "Pode ampliar o leque de acordos comerciais e rotas de exportação para o agronegócio e a indústria brasileira.",
-      "categoria": "Geopolitica_Relacoes",
-      "paises_envolvidos": [
-        "BR",
-        "UY",
-        "AR",
-        "PY",
-        "BO"
-      ],
-      "urgencia_score": 88,
-      "relevancia_score": 89,
+      "impacto_pratico": "Oferece novas opções de aplicação em renda fixa para pequenos investidores, competindo diretamente com a poupança.",
       "nivel_confianca": "alta",
-      "ttl_horas": 24,
-      "horas_em_destaque": 12,
       "veiculos_origem": [
         "Agência Brasil (EBC)"
       ],
+      "relevancia_score": 91,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "links_internos_relacionados": [
+        {
+          "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
+          "motivo_conexao": "Aprofunda a análise sobre o comportamento do mercado de capitais e opções de investimento para as famílias brasileiras.",
+          "titulo_existente": "Economia no Brasil"
+        }
+      ]
+    },
+    {
+      "slug": "brasil-mercosul-caribe-america-central",
+      "categoria": "Geopolitica_Relacoes",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-28T21:50:54Z",
+      "updated_at": "2026-11-27T21:50:54Z",
       "fontes_urls": [
         "https://agenciabrasil.ebc.com.br/internacional/noticia/2026-11/brasil-quer-aproximar-mercosul-de-mercados-do-caribe-e-america-central"
       ],
+      "resumo_pulso": "Segundo apuração da Agência Brasil, o governo brasileiro pretende usar a 69ª Cúpula do Mercosul, agendada para os dias 3 e 4 de dezembro em Montevidéu, para estreitar laços comerciais com os mercados do Caribe e da América Central. O evento também marcará a transição da presidência pro tempore do bloco para a Argentina.",
+      "titulo_curto": "Governo brasileiro busca aproximar o Mercosul de mercados do Caribe e da América Central",
       "palavras_chave": [
         "Mercosul",
         "Comércio Exterior",
@@ -932,53 +921,66 @@
         "Caribe",
         "Diplomacia"
       ],
+      "urgencia_score": 88,
       "data_publicacao": "2026-11-27T20:57:00Z",
+      "impacto_pratico": "Pode ampliar o leque de acordos comerciais e rotas de exportação para o agronegócio e a indústria brasileira.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Agência Brasil (EBC)"
+      ],
+      "relevancia_score": 89,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "BR",
+        "UY",
+        "AR",
+        "PY",
+        "BO"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "Mercados e aliados internacionais avaliam impacto da política comercial norte-americana",
           "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
-          "motivo_conexao": "Conecta as estratégias de integração regional do Mercosul ao panorama global de acordos comerciais."
+          "motivo_conexao": "Conecta as estratégias de integração regional do Mercosul ao panorama global de acordos comerciais.",
+          "titulo_existente": "Mercados e aliados internacionais avaliam impacto da política comercial norte-americana"
         }
-      ],
-      "expires_at": "2026-11-28T21:50:54Z",
-      "updated_at": "2026-11-27T21:50:54Z"
+      ]
     },
     {
       "slug": "senado-especial-mulheres-cientistas",
-      "titulo_curto": "Senado realiza sessão especial em homenagem a cientistas e pesquisadoras brasileiras",
-      "resumo_pulso": "Conforme apuração da Agência Senado, o Plenário realizou nesta sexta-feira (27) uma sessão especial proposta pela senadora Leany Lemos (PSB-DF) para exaltar a contribuição de mulheres cientistas ao desenvolvimento tecnológico e à inovação no país. As participantes enfatizaram a relevância de ampliar a representatividade feminina nas carreiras científicas.",
-      "impacto_pratico": "Fortalece debates institucionais sobre incentivos à pesquisa científica e igualdade de gênero na academia.",
       "categoria": "Sociedade_Cultura",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "urgencia_score": 82,
-      "relevancia_score": 85,
-      "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 12,
-      "veiculos_origem": [
-        "Agência Senado"
-      ],
+      "expires_at": "2026-11-28T21:50:54Z",
+      "updated_at": "2026-11-27T21:50:54Z",
       "fontes_urls": [
         "https://www12.senado.leg.br/noticias/videos/2026/11/sessao-especial-do-senado-homenageia-mulheres-cientistas-brasileiras"
       ],
+      "resumo_pulso": "Conforme apuração da Agência Senado, o Plenário realizou nesta sexta-feira (27) uma sessão especial proposta pela senadora Leany Lemos (PSB-DF) para exaltar a contribuição de mulheres cientistas ao desenvolvimento tecnológico e à inovação no país. As participantes enfatizaram a relevância de ampliar a representatividade feminina nas carreiras científicas.",
+      "titulo_curto": "Senado realiza sessão especial em homenagem a cientistas e pesquisadoras brasileiras",
       "palavras_chave": [
         "Senado Federal",
         "Mulheres na Ciência",
         "Inovação",
         "Pesquisa"
       ],
+      "urgencia_score": 82,
       "data_publicacao": "2026-11-27T20:52:44Z",
+      "impacto_pratico": "Fortalece debates institucionais sobre incentivos à pesquisa científica e igualdade de gênero na academia.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Agência Senado"
+      ],
+      "relevancia_score": 85,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "BR"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "Movimentos sociais e parlamentares debatem investimentos em saúde, educação e transição ecológica",
           "url_existente": "https://www.rodandoomundo.com.br/saude",
-          "motivo_conexao": "Conecta as pautas legislativas voltadas à valorização de políticas públicas de ciência e educação."
+          "motivo_conexao": "Conecta as pautas legislativas voltadas à valorização de políticas públicas de ciência e educação.",
+          "titulo_existente": "Movimentos sociais e parlamentares debatem investimentos em saúde, educação e transição ecológica"
         }
-      ],
-      "expires_at": "2026-11-28T21:50:54Z",
-      "updated_at": "2026-11-27T21:50:54Z"
+      ]
     },
     {
       "slug": "senado-aprova-plano-nacional-cultura",
@@ -1588,115 +1590,6 @@
           "motivo_conexao": "Acompanhamento dos desdobramentos legislativos e institucionais do Congresso Nacional.",
           "titulo_existente": "Política no Brasil"
         }
-      ]
-    }
-  ],
-  "temas_curadoria": [
-    {
-      "slug": "trabuco-no-ministerio-da-fazenda-agenda-fiscal-2027",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-29T19:41:14Z",
-      "updated_at": "2026-11-27T19:41:14Z",
-      "titulo_tema": "Indicação de Luiz Carlos Trabuco para a Fazenda em 2027 e os Desafios Fiscais",
-      "sintese_nerd": "A escolha de Luiz Carlos Trabuco para o comando da Fazenda em 2027 sinaliza uma guinada na articulação econômica com o setor privado, herdando um pacote complexo de reformas fiscais e controle de gastos. Essa transição dita diretamente as expectativas de mercado, inflação e investimentos estrangeiros no início do próximo ciclo político.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-27T19:41:14Z",
-      "gatilho_vitrine": "Exibir na home o impacto da transição na economia nacional e o legado de propostas fiscais deixadas por Dario Durigan.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 95,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Politica",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "luiz carlos trabuco",
-        "ministério da fazenda",
-        "dario durigan",
-        "orçamento 2027",
-        "política fiscal",
-        "governo lula",
-        "economia brasil"
-      ]
-    },
-    {
-      "slug": "pacote-alema-apoio-ucrania-2027-impacto-geopolitico",
-      "status": "novo",
-      "ttl_horas": 36,
-      "expires_at": "2026-11-29T07:41:14Z",
-      "updated_at": "2026-11-27T19:41:14Z",
-      "titulo_tema": "Alemanha aprova 12 bilhões de euros em ajuda à Ucrânia para 2027",
-      "sintese_nerd": "A aprovação de quase 12 bilhões de euros pela Alemanha para sustentar o orçamento ucraniano em 2027 reflete o esforço europeu para blindar sua segurança diante dos custos crescentes da guerra. A decisão impacta diretamente os mercados de energia e o cenário macroeconômico global, exigindo gastos defensivos expressivos da União Europeia.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-27T19:41:14Z",
-      "gatilho_vitrine": "Destacar no radar global os desdobramentos financeiros do conflito europeu e o compromisso de potências com a defesa regional.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 90,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia"
-      ],
-      "palavras_chave_busca": [
-        "alemanha",
-        "ucrânia",
-        "ajuda militar",
-        "guerra na ucrânia",
-        "orçamento europeu",
-        "geopolítica global"
-      ]
-    },
-    {
-      "slug": "argentina-proibe-propaganda-de-bets-nos-esportes",
-      "status": "novo",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-28T19:41:14Z",
-      "updated_at": "2026-11-27T19:41:14Z",
-      "titulo_tema": "Argentina aprova lei que proíbe totalmente propagandas de apostas esportivas",
-      "sintese_nerd": "A proibição unânime de publicidade de bets em uniformes e redes sociais na Argentina marca um endurecimento drástico da regulação de jogos na América Latina. O movimento serve de espelho para discussões regulatorias em curso no Brasil, pesando o equilíbrio entre arrecadação fiscal e saúde pública.",
-      "rota_editoria": "/politica",
-      "data_publicacao": "2026-11-27T19:41:14Z",
-      "gatilho_vitrine": "Conectar a decisão regulatória vizinha aos debates sobre o impacto financeiro e social dos jogos de azar no Brasil.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 85,
-      "categoria_primaria": "Politica",
-      "categorias_cruzadas": [
-        "Cultura",
-        "Economia"
-      ],
-      "palavras_chave_busca": [
-        "bets",
-        "apostas esportivas",
-        "argentina",
-        "regulamentação",
-        "publicidade",
-        "economia da américa latina"
-      ]
-    },
-    {
-      "slug": "dino-suspende-emendas-flavio-bolsonaro-2027",
-      "status": "novo",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-28T19:41:14Z",
-      "updated_at": "2026-11-27T19:41:14Z",
-      "titulo_tema": "STF: Flávio Dino suspende tramitação de emendas de Flávio Bolsonaro para 2027",
-      "sintese_nerd": "A decisão do ministro Flávio Dino de suspender emendas parlamentares voltadas ao orçamento de 2027 acirra o controle do STF sobre a execução de recursos públicos por parlamentares. A medida intensifica o debate sobre a transparência do orçamento impositivo e a separação de poderes no Brasil.",
-      "rota_editoria": "/politica",
-      "data_publicacao": "2026-11-27T19:41:14Z",
-      "gatilho_vitrine": "Ilustrar na editoria de política os atritos institucionais contínuos entre o Supremo Tribunal Federal e o Congresso Nacional.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 82,
-      "categoria_primaria": "Politica",
-      "categorias_cruzadas": [
-        "Eleicoes"
-      ],
-      "palavras_chave_busca": [
-        "flávio dino",
-        "stf",
-        "flávio bolsonaro",
-        "emendas parlamentares",
-        "orçamento 2027",
-        "poder legislativo"
       ]
     }
   ]
