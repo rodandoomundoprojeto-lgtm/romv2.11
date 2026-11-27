@@ -2,88 +2,132 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-27T16:21:25Z",
-  "batch_id": "20261127-1620",
+  "updatedAt": "2026-11-27T17:03:17Z",
+  "batch_id": "20261127-1700",
   "temas_ativos": [
     {
-      "slug": "efeito-trabuco-ibovespa-e-os-rumos-da-economia",
-      "titulo_tema": "Efeito Trabuco na Fazenda e as Reações do Mercado e dos Sindicatos",
+      "slug": "ministerio-justica-bloqueio-bets-ilegais",
+      "titulo_tema": "Ministério da Justiça remove 86 mil sites e perfis de apostas ilegais",
+      "titulo_curto": "Ministério da Justiça remove 86 mil sites e perfis de apostas ilegais",
       "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Politica",
-        "Geopolitica_Radar"
-      ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 92,
-      "ttl_horas": 48,
-      "expires_at": "2026-11-29T16:21:25Z",
-      "palavras_chave_busca": [
-        "trabuco",
-        "ministério da fazenda",
-        "ibovespa",
-        "mercado financeiro",
-        "política fiscal",
-        "centrais sindicais"
-      ],
-      "gatilho_vitrine": "Destaque a transição na economia e os impactos na bolsa e nas expectativas de juros e gastos públicos.",
-      "sintese_nerd": "A especulação e confirmação de nomes para a equipe econômica geram forte volatilidade e euforia inicial na bolsa, enquanto o governo sinaliza a necessidade de ajustes fiscais. Do outro lado, centrais sindicais cobram foco na redução da taxa de juros básica da economia.",
-      "data_publicacao": "2026-11-27T16:21:25Z",
-      "updated_at": "2026-11-27T16:21:25Z"
-    },
-    {
-      "slug": "escalada-tensoes-oriente-medio-iran-eua",
-      "titulo_tema": "Escalada de Tensões entre Irã, EUA e Aliados no Oriente Médio",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Geopolitica_Radar",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Cultura",
+      "categoria": "Sociedade_Cultura",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
       ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 88,
-      "ttl_horas": 72,
-      "expires_at": "2026-11-30T16:21:25Z",
+      "rota_editoria": "/cultura",
+      "relevancia_score": 87,
+      "urgencia_score": 88,
+      "ttl_horas": 12,
+      "expires_at": "2026-11-28T05:03:17Z",
       "palavras_chave_busca": [
-        "irã",
-        "oriente médio",
-        "geopolítica",
-        "sanções",
-        "conflito internacional",
-        "petróleo"
+        "bets",
+        "ministério da justiça",
+        "apostas",
+        "segurança digital"
       ],
-      "gatilho_vitrine": "Posicione os alertas e movimentações militares e diplomáticas do Irã no topo do radar geopolítico internacional.",
-      "sintese_nerd": "Comandantes iranianos intensificam alertas de prontidão militar e rejeitam acusações sobre ataques na região, enquanto Washington mantém uma estratégia multifacetada de sanções e pressão. O impasse geopolítico ameaça rotas energéticas globais e afeta diretamente as perspectivas de inflação e commodities no Brasil.",
-      "data_publicacao": "2026-11-27T16:21:25Z",
-      "updated_at": "2026-11-27T16:21:25Z"
+      "palavras_chave": [
+        "bets",
+        "ministério da justiça",
+        "apostas",
+        "segurança digital"
+      ],
+      "gatilho_vitrine": "Conforme balanço do Ministério da Justiça, 86.176 sites e perfis de apostas online foram retirados do ar ou tiveram bloqueio determinado desde a proibição das bets no Brasil. A ação, que visa coibir publicidade ilegal, impactou canais que somavam 74,7 milhões de seguidores.",
+      "resumo_pulso": "Conforme balanço do Ministério da Justiça, 86.176 sites e perfis de apostas online foram retirados do ar ou tiveram bloqueio determinado desde a proibição das bets no Brasil. A ação, que visa coibir publicidade ilegal, impactou canais que somavam 74,7 milhões de seguidores.",
+      "sintese_nerd": "A medida intensifica o combate à exploração de apostas não regulamentadas e busca proteger usuários contra fraudes e publicidade irregular.",
+      "impacto_pratico": "A medida intensifica o combate à exploração de apostas não regulamentadas e busca proteger usuários contra fraudes e publicidade irregular.",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "veiculos_origem": [
+        "G1 Política"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/politica/noticia/2026/11/27/ministerio-da-justica-tirou-do-ar-86-mil-sites-e-perfis-com-publicidade-ilegal-de-bets-desde-proibicao.ghtml"
+      ],
+      "data_publicacao": "2026-11-27T16:51:19Z",
+      "updated_at": "2026-11-27T17:03:17Z"
     },
     {
-      "slug": "camilo-santana-casa-civil-e-articulacao-politica",
-      "titulo_tema": "Convite de Lula a Camilo Santana para a Casa Civil",
+      "slug": "indicacao-trabuco-ministerio-fazenda-impacto-mercados",
       "status": "novo",
+      "ttl_horas": 48,
+      "expires_at": "2026-11-29T16:45:42Z",
+      "updated_at": "2026-11-27T16:45:42Z",
+      "titulo_tema": "Indicação de Luiz Carlos Trabuco para o Ministério da Fazenda e Reação dos Mercados",
+      "sintese_nerd": "A escolha de Luiz Carlos Trabuco para a Fazenda reduziu a percepção de risco institucional, gerando um 'circuit breaker' positivo com queda expressiva nas taxas de juros futuros e títulos públicos. Contudo, o sucesso da gestão dependerá da capacidade de negociar reformas e cortes sobre um orçamento composto por 90% de despesas obrigatórias.",
+      "rota_editoria": "/economia",
+      "data_publicacao": "2026-11-27T16:45:42Z",
+      "gatilho_vitrine": "Destaque a repercussão imediata da indicação de Trabuco na queda das taxas do Tesouro Direto e os desafios fiscais diante de um orçamento rígido.",
       "origem_pipeline": "curadoria",
+      "relevancia_score": 95,
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Politica"
+      ],
+      "palavras_chave_busca": [
+        "luiz carlos trabuco",
+        "ministério da fazenda",
+        "tesouro direto",
+        "circuit breaker",
+        "orçamento 2027",
+        "gastos obrigatórios",
+        "mercado financeiro"
+      ]
+    },
+    {
+      "slug": "quarentena-agencias-reguladoras-risco-autonomia",
+      "status": "novo",
+      "ttl_horas": 72,
+      "expires_at": "2026-11-30T16:45:42Z",
+      "updated_at": "2026-11-27T16:45:42Z",
+      "titulo_tema": "Debate sobre a Redução da Quarentena para Diretores de Agências Reguladoras",
+      "sintese_nerd": "A proposta de redução do prazo de quarentena para ex-dirigentes de agências reguladoras gerou forte resistência institucional por abrir flancos a pressões político-partidárias. A perda de autonomia técnica afeta diretamente a previsibilidade regulatória e a segurança jurídica em setores-chave de infraestrutura e serviços.",
+      "rota_editoria": "/politica",
+      "data_publicacao": "2026-11-27T16:45:42Z",
+      "gatilho_vitrine": "Monitore os desdobramentos do manifesto de entidades contra o avanço de projeto de lei que flexibiliza as regras de quarentena de dirigentes regulatórios.",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 88,
       "categoria_primaria": "Politica",
       "categorias_cruzadas": [
-        "Eleicoes",
         "Economia"
       ],
-      "rota_editoria": "/politica",
-      "relevancia_score": 85,
-      "ttl_horas": 36,
-      "expires_at": "2026-11-29T04:21:25Z",
       "palavras_chave_busca": [
-        "camilo santana",
-        "casa civil",
-        "governo lula",
-        "articulação política",
-        "esplanada dos ministérios"
+        "agências reguladoras",
+        "quarentena",
+        "autonomia institucional",
+        "segurança jurídica",
+        "congresso nacional",
+        "interferência política"
+      ]
+    },
+    {
+      "slug": "bulgaria-bloqueio-sancoes-russia-uniao-europeia",
+      "status": "novo",
+      "ttl_horas": 48,
+      "expires_at": "2026-11-29T16:45:42Z",
+      "updated_at": "2026-11-27T16:45:42Z",
+      "titulo_tema": "Bulgária Utiliza Pacote de Sanções da UE contra Rússia para Extrair Concessões Comerciais",
+      "sintese_nerd": "A decisão da Bulgária de travar o mais recente pacote de sanções da União Europeia contra Moscou evidencia as fraturas internas do bloco para conciliar pressões geopolíticas e interesses econômicos locais. O movimento busca reverter restrições sobre a importação de ferro russo, rivalizando indiretamente com os interesses de suprimento da Ucrânia.",
+      "rota_editoria": "/radar",
+      "data_publicacao": "2026-11-27T16:45:42Z",
+      "gatilho_vitrine": "Exiba no radar global as negociações de bastidores na UE onde a Bulgária condiciona o 22º pacote de sanções a interesses industriais próprios.",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 86,
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia"
       ],
-      "gatilho_vitrine": "Mapeie as mudanças no primeiro escalão do governo federal e os reflexos na articulação com o Congresso.",
-      "sintese_nerd": "A mudança na chefia da Casa Civil busca oxigenar a articulação política do governo em meio à necessidade de entregas econômicas e ajustes fiscais. A movimentação também redesenha o tabuleiro de alianças para os próximos ciclos políticos e eleitorais.",
-      "data_publicacao": "2026-11-27T16:21:25Z",
-      "updated_at": "2026-11-27T16:21:25Z"
+      "palavras_chave_busca": [
+        "bulgária",
+        "união europeia",
+        "sanções à rússia",
+        "importação de ferro",
+        "geopolítica europeia",
+        "comércio global"
+      ]
     },
     {
       "slug": "senado-projeto-integridade-licitacoes",
@@ -466,6 +510,52 @@
       ]
     },
     {
+      "slug": "governo-central-superavit-outubro",
+      "titulo_tema": "Governo central registra superávit primário de R$ 52,3 bilhões em outubro",
+      "titulo_curto": "Governo central registra superávit primário de R$ 52,3 bilhões em outubro",
+      "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Economia",
+      "categoria": "Economia_Comercio",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 93,
+      "urgencia_score": 92,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-28T13:51:13Z",
+      "palavras_chave_busca": [
+        "superávit",
+        "tesouro nacional",
+        "contas públicas",
+        "economia"
+      ],
+      "palavras_chave": [
+        "superávit",
+        "tesouro nacional",
+        "contas públicas",
+        "economia"
+      ],
+      "gatilho_vitrine": "Segundo dados do Tesouro Nacional reportados pela Agência Brasil, o governo central alcançou um superávit primário de R$ 52,3 bilhões em outubro. O resultado superou as expectativas do mercado financeiro, que projetava R$ 43,4 bilhões, refletindo um crescimento real em relação ao mesmo período do ano anterior.",
+      "resumo_pulso": "Segundo dados do Tesouro Nacional reportados pela Agência Brasil, o governo central alcançou um superávit primário de R$ 52,3 bilhões em outubro. O resultado superou as expectativas do mercado financeiro, que projetava R$ 43,4 bilhões, refletindo um crescimento real em relação ao mesmo período do ano anterior.",
+      "sintese_nerd": "O resultado positivo acima do esperado pode influenciar positivamente as expectativas do mercado financeiro sobre o cumprimento das metas fiscais e a trajetória da dívida pública.",
+      "impacto_pratico": "O resultado positivo acima do esperado pode influenciar positivamente as expectativas do mercado financeiro sobre o cumprimento das metas fiscais e a trajetória da dívida pública.",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "veiculos_origem": [
+        "Agência Brasil",
+        "Tesouro Nacional"
+      ],
+      "fontes_urls": [
+        "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/contas-do-governo-tem-superavit-de-r-523-bilhoes-em-outubro"
+      ],
+      "data_publicacao": "2026-11-27T13:45:49Z",
+      "updated_at": "2026-11-27T17:03:17Z"
+    },
+    {
       "slug": "raizen-avalia-venda-divisao-combustiveis",
       "status": "novo",
       "categoria": "Economia_Comercio",
@@ -798,184 +888,40 @@
         "javier milei",
         "eleições"
       ]
-    },
-    {
-      "slug": "cmn-reduz-juros-fundo-clima-baterias",
-      "status": "novo",
-      "categoria": "Economia_Comercio",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-28T11:21:18Z",
-      "updated_at": "2026-11-27T11:21:18Z",
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/cmn-reduz-juros-do-fundo-clima-para-baterias-nacionais"
-      ],
-      "titulo_tema": "CMN reduz taxa de juros do Fundo Clima para financiamento de baterias nacionais",
-      "resumo_pulso": "Segundo comunicado oficial da Agência Brasil, o Conselho Monetário Nacional (CMN) aprovou a redução para 6,5% ao ano dos juros do Fundo Clima voltados a projetos de armazenamento de energia que utilizem baterias produzidas no Brasil.",
-      "sintese_nerd": "Estimula a cadeia industrial de energias renováveis e o armazenamento elétrico com insumos nacionais.",
-      "titulo_curto": "CMN reduz taxa de juros do Fundo Clima para financiamento de baterias nacionais",
-      "rota_editoria": "/economia",
-      "palavras_chave": [
-        "cmn",
-        "fundo clima",
-        "baterias",
-        "energia renovável"
-      ],
-      "urgencia_score": 87,
-      "data_publicacao": "2026-11-27T10:02:00Z",
-      "gatilho_vitrine": "Segundo comunicado oficial da Agência Brasil, o Conselho Monetário Nacional (CMN) aprovou a redução para 6,5% ao ano dos juros do Fundo Clima voltados a projetos de armazenamento de energia que utilizem baterias produzidas no Brasil.",
-      "impacto_pratico": "Estimula a cadeia industrial de energias renováveis e o armazenamento elétrico com insumos nacionais.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "Agência Brasil (EBC)"
-      ],
-      "relevancia_score": 88,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "cmn",
-        "fundo clima",
-        "baterias",
-        "energia renovável"
-      ]
-    },
-    {
-      "slug": "espanha-eleicoes-imigracao-sanchez",
-      "status": "novo",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-28T10:07:55Z",
-      "updated_at": "2026-11-27T10:07:55Z",
-      "fontes_urls": [
-        "https://www.bbc.com/portuguese/articles/cj62p7w0n2zgo?at_medium=RSS&at_campaign=rss",
-        "https://g1.globo.com/mundo/noticia/2026/11/27/espanha-encerra-campanha-eleitoral-sanchez-tenta-frear-direita-e-extrema-direita.ghtml"
-      ],
-      "titulo_tema": "Espanha encerra campanha eleitoral marcada pelo debate migratório e teste para a social-democracia",
-      "resumo_pulso": "Conforme reportagens da BBC News Brasil e do G1 Mundo, a Espanha encerra nesta sexta-feira a campanha para as eleições de 29 de novembro. O primeiro-ministro Pedro Sánchez tenta frear o avanço da direita e da extrema direita em um pleito onde a imigração se consolidou como tema central.",
-      "sintese_nerd": "Possível guinada política na Europa Ocidental com reflexos nas políticas de imigração e relações comerciais com a América Latina.",
-      "titulo_curto": "Espanha encerra campanha eleitoral marcada pelo debate migratório e teste para a social-democracia",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "espanha",
-        "eleições",
-        "pedro sánchez",
-        "imigração"
-      ],
-      "urgencia_score": 90,
-      "data_publicacao": "2026-11-27T09:50:53Z",
-      "gatilho_vitrine": "Conforme reportagens da BBC News Brasil e do G1 Mundo, a Espanha encerra nesta sexta-feira a campanha para as eleições de 29 de novembro. O primeiro-ministro Pedro Sánchez tenta frear o avanço da direita e da extrema direita em um pleito onde a imigração se consolidou como tema central.",
-      "impacto_pratico": "Possível guinada política na Europa Ocidental com reflexos nas políticas de imigração e relações comerciais com a América Latina.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "BBC News Brasil",
-        "G1 Mundo",
-        "The Conversation Brasil"
-      ],
-      "relevancia_score": 89,
-      "paises_envolvidos": [
-        "ES"
-      ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "espanha",
-        "eleições",
-        "pedro sánchez",
-        "imigração"
-      ]
-    }
-  ],
-  "temas_curadoria": [
-    {
-      "slug": "efeito-trabuco-ibovespa-e-os-rumos-da-economia",
-      "titulo_tema": "Efeito Trabuco na Fazenda e as Reações do Mercado e dos Sindicatos",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Politica",
-        "Geopolitica_Radar"
-      ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 92,
-      "ttl_horas": 48,
-      "expires_at": "2026-11-29T16:21:25Z",
-      "palavras_chave_busca": [
-        "trabuco",
-        "ministério da fazenda",
-        "ibovespa",
-        "mercado financeiro",
-        "política fiscal",
-        "centrais sindicais"
-      ],
-      "gatilho_vitrine": "Destaque a transição na economia e os impactos na bolsa e nas expectativas de juros e gastos públicos.",
-      "sintese_nerd": "A especulação e confirmação de nomes para a equipe econômica geram forte volatilidade e euforia inicial na bolsa, enquanto o governo sinaliza a necessidade de ajustes fiscais. Do outro lado, centrais sindicais cobram foco na redução da taxa de juros básica da economia.",
-      "data_publicacao": "2026-11-27T16:21:25Z",
-      "updated_at": "2026-11-27T16:21:25Z"
-    },
-    {
-      "slug": "escalada-tensoes-oriente-medio-iran-eua",
-      "titulo_tema": "Escalada de Tensões entre Irã, EUA e Aliados no Oriente Médio",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 88,
-      "ttl_horas": 72,
-      "expires_at": "2026-11-30T16:21:25Z",
-      "palavras_chave_busca": [
-        "irã",
-        "oriente médio",
-        "geopolítica",
-        "sanções",
-        "conflito internacional",
-        "petróleo"
-      ],
-      "gatilho_vitrine": "Posicione os alertas e movimentações militares e diplomáticas do Irã no topo do radar geopolítico internacional.",
-      "sintese_nerd": "Comandantes iranianos intensificam alertas de prontidão militar e rejeitam acusações sobre ataques na região, enquanto Washington mantém uma estratégia multifacetada de sanções e pressão. O impasse geopolítico ameaça rotas energéticas globais e afeta diretamente as perspectivas de inflação e commodities no Brasil.",
-      "data_publicacao": "2026-11-27T16:21:25Z",
-      "updated_at": "2026-11-27T16:21:25Z"
-    },
-    {
-      "slug": "camilo-santana-casa-civil-e-articulacao-politica",
-      "titulo_tema": "Convite de Lula a Camilo Santana para a Casa Civil",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Politica",
-      "categorias_cruzadas": [
-        "Eleicoes",
-        "Economia"
-      ],
-      "rota_editoria": "/politica",
-      "relevancia_score": 85,
-      "ttl_horas": 36,
-      "expires_at": "2026-11-29T04:21:25Z",
-      "palavras_chave_busca": [
-        "camilo santana",
-        "casa civil",
-        "governo lula",
-        "articulação política",
-        "esplanada dos ministérios"
-      ],
-      "gatilho_vitrine": "Mapeie as mudanças no primeiro escalão do governo federal e os reflexos na articulação com o Congresso.",
-      "sintese_nerd": "A mudança na chefia da Casa Civil busca oxigenar a articulação política do governo em meio à necessidade de entregas econômicas e ajustes fiscais. A movimentação também redesenha o tabuleiro de alianças para os próximos ciclos políticos e eleitorais.",
-      "data_publicacao": "2026-11-27T16:21:25Z",
-      "updated_at": "2026-11-27T16:21:25Z"
     }
   ],
   "noticias_quentes": [
+    {
+      "slug": "ministerio-justica-bloqueio-bets-ilegais",
+      "titulo_curto": "Ministério da Justiça remove 86 mil sites e perfis de apostas ilegais",
+      "resumo_pulso": "Conforme balanço do Ministério da Justiça, 86.176 sites e perfis de apostas online foram retirados do ar ou tiveram bloqueio determinado desde a proibição das bets no Brasil. A ação, que visa coibir publicidade ilegal, impactou canais que somavam 74,7 milhões de seguidores.",
+      "impacto_pratico": "A medida intensifica o combate à exploração de apostas não regulamentadas e busca proteger usuários contra fraudes e publicidade irregular.",
+      "categoria": "Sociedade_Cultura",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "urgencia_score": 88,
+      "relevancia_score": 87,
+      "nivel_confianca": "alta",
+      "ttl_horas": 12,
+      "horas_em_destaque": 6,
+      "veiculos_origem": [
+        "G1 Política"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/politica/noticia/2026/11/27/ministerio-da-justica-tirou-do-ar-86-mil-sites-e-perfis-com-publicidade-ilegal-de-bets-desde-proibicao.ghtml"
+      ],
+      "palavras_chave": [
+        "bets",
+        "Ministério da Justiça",
+        "apostas",
+        "segurança digital"
+      ],
+      "data_publicacao": "2026-11-27T16:51:19Z",
+      "links_internos_relacionados": [],
+      "expires_at": "2026-11-28T05:03:17Z",
+      "updated_at": "2026-11-27T17:03:17Z"
+    },
     {
       "slug": "senado-projeto-integridade-licitacoes",
       "categoria": "Sociedade_Cultura",
@@ -1269,42 +1215,41 @@
     },
     {
       "slug": "governo-central-superavit-outubro",
+      "titulo_curto": "Governo central registra superávit primário de R$ 52,3 bilhões em outubro",
+      "resumo_pulso": "Segundo dados do Tesouro Nacional reportados pela Agência Brasil, o governo central alcançou um superávit primário de R$ 52,3 bilhões em outubro. O resultado superou as expectativas do mercado financeiro, que projetava R$ 43,4 bilhões, refletindo um crescimento real em relação ao mesmo período do ano anterior.",
+      "impacto_pratico": "O resultado positivo acima do esperado pode influenciar positivamente as expectativas do mercado financeiro sobre o cumprimento das metas fiscais e a trajetória da dívida pública.",
       "categoria": "Economia_Comercio",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-28T13:51:13Z",
-      "updated_at": "2026-11-27T13:51:13Z",
-      "fontes_urls": [
-        "https://www.poder360.com.br/poder-economia/governo-central-registra-superavit-primario-de-r-523-bilhoes-em-outubro/",
-        "https://g1.globo.com/economia/noticia/2026/11/27/contas-do-governo-tem-superavit-de-r-52-bilhoes-em-outubro-melhor-saldo-para-o-mes-em-dez-anos.ghtml"
-      ],
-      "resumo_pulso": "Segundo informações do Tesouro Nacional e do Poder360, o governo central registrou um superávit primário de R$ 52,3 bilhões no mês de outubro, marcando o melhor resultado para o período em uma década. O saldo positivo decorre do desempenho das receitas tributárias acima das despesas federais.",
-      "titulo_curto": "Governo central registra superávit primário de R$ 52,3 bilhões em outubro, melhor saldo em dez anos",
-      "palavras_chave": [
-        "Superávit Primário",
-        "Tesouro Nacional",
-        "Contas Públicas",
-        "Outubro"
-      ],
-      "urgencia_score": 90,
-      "data_publicacao": "2026-11-27T13:45:49Z",
-      "impacto_pratico": "Fortalece a base de cumprimento das metas fiscais de curto prazo e traz alívio momentâneo para as contas públicas.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Poder360",
-        "G1 Política"
-      ],
-      "relevancia_score": 91,
-      "horas_em_destaque": 12,
       "paises_envolvidos": [
         "BR"
       ],
+      "urgencia_score": 92,
+      "relevancia_score": 93,
+      "nivel_confianca": "alta",
+      "ttl_horas": 24,
+      "horas_em_destaque": 12,
+      "veiculos_origem": [
+        "Agência Brasil",
+        "Tesouro Nacional"
+      ],
+      "fontes_urls": [
+        "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/contas-do-governo-tem-superavit-de-r-523-bilhoes-em-outubro"
+      ],
+      "palavras_chave": [
+        "superávit",
+        "Tesouro Nacional",
+        "contas públicas",
+        "economia"
+      ],
+      "data_publicacao": "2026-11-27T13:45:49Z",
       "links_internos_relacionados": [
         {
-          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-o-orcamento",
-          "motivo_conexao": "Explica como o planejamento das contas públicas e o superávit impactam a gestão orçamentária.",
-          "titulo_existente": "O que é o Orçamento?"
+          "titulo_existente": "Economia no Brasil",
+          "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
+          "motivo_conexao": "Contexto sobre o desempenho das contas públicas e indicadores econômicos nacionais."
         }
-      ]
+      ],
+      "expires_at": "2026-11-28T13:51:13Z",
+      "updated_at": "2026-11-27T17:03:17Z"
     },
     {
       "slug": "raizen-avalia-venda-divisao-combustiveis",
@@ -1693,37 +1638,87 @@
           "titulo_existente": "O que é uma sanção internacional?"
         }
       ]
+    }
+  ],
+  "temas_curadoria": [
+    {
+      "slug": "indicacao-trabuco-ministerio-fazenda-impacto-mercados",
+      "status": "novo",
+      "ttl_horas": 48,
+      "expires_at": "2026-11-29T16:45:42Z",
+      "updated_at": "2026-11-27T16:45:42Z",
+      "titulo_tema": "Indicação de Luiz Carlos Trabuco para o Ministério da Fazenda e Reação dos Mercados",
+      "sintese_nerd": "A escolha de Luiz Carlos Trabuco para a Fazenda reduziu a percepção de risco institucional, gerando um 'circuit breaker' positivo com queda expressiva nas taxas de juros futuros e títulos públicos. Contudo, o sucesso da gestão dependerá da capacidade de negociar reformas e cortes sobre um orçamento composto por 90% de despesas obrigatórias.",
+      "rota_editoria": "/economia",
+      "data_publicacao": "2026-11-27T16:45:42Z",
+      "gatilho_vitrine": "Destaque a repercussão imediata da indicação de Trabuco na queda das taxas do Tesouro Direto e os desafios fiscais diante de um orçamento rígido.",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 95,
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Politica"
+      ],
+      "palavras_chave_busca": [
+        "luiz carlos trabuco",
+        "ministério da fazenda",
+        "tesouro direto",
+        "circuit breaker",
+        "orçamento 2027",
+        "gastos obrigatórios",
+        "mercado financeiro"
+      ]
     },
     {
-      "slug": "mega-sena-acumula-82-milhoes",
-      "categoria": "Sociedade_Cultura",
-      "ttl_horas": 12,
-      "expires_at": "2026-11-27T17:00:19Z",
-      "updated_at": "2026-11-27T08:59:39Z",
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/mega-sena-nao-tem-ganhador-e-premio-acumula-para-r-82-milhoes"
+      "slug": "quarentena-agencias-reguladoras-risco-autonomia",
+      "status": "novo",
+      "ttl_horas": 72,
+      "expires_at": "2026-11-30T16:45:42Z",
+      "updated_at": "2026-11-27T16:45:42Z",
+      "titulo_tema": "Debate sobre a Redução da Quarentena para Diretores de Agências Reguladoras",
+      "sintese_nerd": "A proposta de redução do prazo de quarentena para ex-dirigentes de agências reguladoras gerou forte resistência institucional por abrir flancos a pressões político-partidárias. A perda de autonomia técnica afeta diretamente a previsibilidade regulatória e a segurança jurídica em setores-chave de infraestrutura e serviços.",
+      "rota_editoria": "/politica",
+      "data_publicacao": "2026-11-27T16:45:42Z",
+      "gatilho_vitrine": "Monitore os desdobramentos do manifesto de entidades contra o avanço de projeto de lei que flexibiliza as regras de quarentena de dirigentes regulatórios.",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 88,
+      "categoria_primaria": "Politica",
+      "categorias_cruzadas": [
+        "Economia"
       ],
-      "resumo_pulso": "Segundo dados divulgados pela Agência Brasil (EBC), nenhum apostador acertou as dezenas do Concurso 3.091 da Mega-Sena. Com o resultado, o prêmio estimado para o próximo sorteio saltou para R$ 82 milhões.",
-      "titulo_curto": "Mega-Sena acumula em R$ 82 milhões após concurso sem acertadores nas seis dezenas",
-      "palavras_chave": [
-        "Mega-Sena",
-        "Prêmio Acumulado",
-        "Loterias",
-        "Concurso 3091"
+      "palavras_chave_busca": [
+        "agências reguladoras",
+        "quarentena",
+        "autonomia institucional",
+        "segurança jurídica",
+        "congresso nacional",
+        "interferência política"
+      ]
+    },
+    {
+      "slug": "bulgaria-bloqueio-sancoes-russia-uniao-europeia",
+      "status": "novo",
+      "ttl_horas": 48,
+      "expires_at": "2026-11-29T16:45:42Z",
+      "updated_at": "2026-11-27T16:45:42Z",
+      "titulo_tema": "Bulgária Utiliza Pacote de Sanções da UE contra Rússia para Extrair Concessões Comerciais",
+      "sintese_nerd": "A decisão da Bulgária de travar o mais recente pacote de sanções da União Europeia contra Moscou evidencia as fraturas internas do bloco para conciliar pressões geopolíticas e interesses econômicos locais. O movimento busca reverter restrições sobre a importação de ferro russo, rivalizando indiretamente com os interesses de suprimento da Ucrânia.",
+      "rota_editoria": "/radar",
+      "data_publicacao": "2026-11-27T16:45:42Z",
+      "gatilho_vitrine": "Exiba no radar global as negociações de bastidores na UE onde a Bulgária condiciona o 22º pacote de sanções a interesses industriais próprios.",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 86,
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia"
       ],
-      "urgencia_score": 75,
-      "data_publicacao": "2026-11-27T00:58:00Z",
-      "impacto_pratico": "Aumenta a movimentação nas lotéricas e o interesse dos apostadores em todo o país pelo prêmio acumulado.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Agência Brasil (EBC)"
-      ],
-      "relevancia_score": 78,
-      "horas_em_destaque": 6,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "links_internos_relacionados": []
+      "palavras_chave_busca": [
+        "bulgária",
+        "união europeia",
+        "sanções à rússia",
+        "importação de ferro",
+        "geopolítica europeia",
+        "comércio global"
+      ]
     }
   ]
 }
