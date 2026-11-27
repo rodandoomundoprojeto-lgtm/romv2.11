@@ -2,114 +2,210 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-27T19:13:54Z",
-  "batch_id": "20261127-1913",
+  "updatedAt": "2026-11-27T19:54:33Z",
+  "batch_id": "20261127-1954",
   "temas_ativos": [
     {
-      "slug": "trabuco-ministerio-fazenda-ajuste-fiscal-mercado",
-      "titulo_tema": "Indicação de Luiz Carlos Trabuco para a Fazenda em 2027 repercute nos mercados e define rumo fiscal",
+      "slug": "open-ai-processa-apple-segredos-comerciais",
+      "titulo_tema": "OpenAI processa a Apple por suposto roubo de segredos comerciais e bloqueio de fornecedores",
+      "titulo_curto": "OpenAI processa a Apple por suposto roubo de segredos comerciais e bloqueio de fornecedores",
       "status": "novo",
-      "origem_pipeline": "curadoria",
+      "origem_pipeline": "pulso",
       "categoria_primaria": "Economia",
+      "categoria": "Economia_Comercio",
       "categorias_cruzadas": [
-        "Politica"
+        "Economia",
+        "Resumo_Ultimas"
       ],
       "rota_editoria": "/economia",
-      "relevancia_score": 95,
+      "relevancia_score": 89,
+      "urgencia_score": 88,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-28T19:54:33Z",
+      "palavras_chave_busca": [
+        "openai",
+        "apple",
+        "inteligência artificial",
+        "processo judicial",
+        "tecnologia"
+      ],
+      "palavras_chave": [
+        "openai",
+        "apple",
+        "inteligência artificial",
+        "processo judicial",
+        "tecnologia"
+      ],
+      "gatilho_vitrine": "Segundo reportagem do G1 Economia, a OpenAI abriu um processo judicial contra a Apple, acusando a fabricante do iPhone de apropriação indevida de segredos comerciais e de dificultar o acesso da inteligência artificial a fornecedores de equipamentos. A disputa jurídica intensifica a rivalidade tecnológica entre as gigantes do setor.",
+      "resumo_pulso": "Segundo reportagem do G1 Economia, a OpenAI abriu um processo judicial contra a Apple, acusando a fabricante do iPhone de apropriação indevida de segredos comerciais e de dificultar o acesso da inteligência artificial a fornecedores de equipamentos. A disputa jurídica intensifica a rivalidade tecnológica entre as gigantes do setor.",
+      "sintese_nerd": "Movimenta o mercado de inteligência artificial e pode alterar parcerias estratégicas no ecossistema de tecnologia móvel.",
+      "impacto_pratico": "Movimenta o mercado de inteligência artificial e pode alterar parcerias estratégicas no ecossistema de tecnologia móvel.",
+      "paises_envolvidos": [
+        "US"
+      ],
+      "veiculos_origem": [
+        "G1 Economia"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/tecnologia/noticia/2026/11/27/open-ai-apple-ia-segredo-processo.ghtml"
+      ],
+      "data_publicacao": "2026-11-27T19:47:43Z",
+      "updated_at": "2026-11-27T19:54:33Z"
+    },
+    {
+      "slug": "dino-suspende-emendas-flavio-bolsonaro-2027",
+      "status": "novo",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-28T19:41:14Z",
+      "updated_at": "2026-11-27T19:41:14Z",
+      "titulo_tema": "STF: Flávio Dino suspende tramitação de emendas de Flávio Bolsonaro para 2027",
+      "sintese_nerd": "A decisão do ministro Flávio Dino de suspender emendas parlamentares voltadas ao orçamento de 2027 acirra o controle do STF sobre a execução de recursos públicos por parlamentares. A medida intensifica o debate sobre a transparência do orçamento impositivo e a separação de poderes no Brasil.",
+      "rota_editoria": "/politica",
+      "data_publicacao": "2026-11-27T19:41:14Z",
+      "gatilho_vitrine": "Ilustrar na editoria de política os atritos institucionais contínuos entre o Supremo Tribunal Federal e o Congresso Nacional.",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 92,
+      "categoria_primaria": "Politica",
+      "categorias_cruzadas": [
+        "Eleicoes"
+      ],
+      "palavras_chave_busca": [
+        "flávio dino",
+        "stf",
+        "flávio bolsonaro",
+        "emendas parlamentares",
+        "orçamento 2027",
+        "poder legislativo"
+      ],
+      "urgencia_score": 93
+    },
+    {
+      "slug": "trabuco-no-ministerio-da-fazenda-agenda-fiscal-2027",
+      "status": "novo",
       "ttl_horas": 48,
-      "expires_at": "2026-11-29T19:13:54Z",
+      "expires_at": "2026-11-29T19:41:14Z",
+      "updated_at": "2026-11-27T19:41:14Z",
+      "titulo_tema": "Indicação de Luiz Carlos Trabuco para a Fazenda em 2027 e os Desafios Fiscais",
+      "sintese_nerd": "A escolha de Luiz Carlos Trabuco para o comando da Fazenda em 2027 sinaliza uma guinada na articulação econômica com o setor privado, herdando um pacote complexo de reformas fiscais e controle de gastos. Essa transição dita diretamente as expectativas de mercado, inflação e investimentos estrangeiros no início do próximo ciclo político.",
+      "rota_editoria": "/economia",
+      "data_publicacao": "2026-11-27T19:41:14Z",
+      "gatilho_vitrine": "Exibir na home o impacto da transição na economia nacional e o legado de propostas fiscais deixadas por Dario Durigan.",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 95,
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Politica",
+        "Resumo_Ultimas"
+      ],
       "palavras_chave_busca": [
         "luiz carlos trabuco",
         "ministério da fazenda",
-        "ajuste fiscal",
+        "dario durigan",
+        "orçamento 2027",
+        "política fiscal",
         "governo lula",
-        "ibovespa",
-        "câmbio",
-        "economia brasileira"
-      ],
-      "gatilho_vitrine": "Destacar análises sobre o impacto da escolha de Trabuco para a credibilidade fiscal e os desdobramentos nos juros e no câmbio brasileiro.",
-      "sintese_nerd": "A indicação do executivo Luiz Carlos Trabuco para o comando da Fazenda em 2027 atua como âncora de confiança para o mercado financeiro e acalma o câmbio de curto prazo. No entanto, analistas apontam que a estratégia priorizará o ritmo de crescimento dos gastos obrigatórios em detrimento de cortes drásticos, moldando o cenário fiscal que afeta diretamente a inflação e o custo de vida dos brasileiros.",
-      "data_publicacao": "2026-11-27T19:13:54Z",
-      "updated_at": "2026-11-27T19:13:54Z"
+        "economia brasil"
+      ]
     },
     {
-      "slug": "orcamento-alema-apoio-ucrania-2027",
-      "titulo_tema": "Alemanha aprova 12 bilhões de euros em apoio à Ucrânia para 2027 em meio a escalada do conflito",
+      "slug": "pacote-alema-apoio-ucrania-2027-impacto-geopolitico",
       "status": "novo",
+      "ttl_horas": 36,
+      "expires_at": "2026-11-29T07:41:14Z",
+      "updated_at": "2026-11-27T19:41:14Z",
+      "titulo_tema": "Alemanha aprova 12 bilhões de euros em ajuda à Ucrânia para 2027",
+      "sintese_nerd": "A aprovação de quase 12 bilhões de euros pela Alemanha para sustentar o orçamento ucraniano em 2027 reflete o esforço europeu para blindar sua segurança diante dos custos crescentes da guerra. A decisão impacta diretamente os mercados de energia e o cenário macroeconômico global, exigindo gastos defensivos expressivos da União Europeia.",
+      "rota_editoria": "/radar",
+      "data_publicacao": "2026-11-27T19:41:14Z",
+      "gatilho_vitrine": "Destacar no radar global os desdobramentos financeiros do conflito europeu e o compromisso de potências com a defesa regional.",
       "origem_pipeline": "curadoria",
+      "relevancia_score": 90,
       "categoria_primaria": "Geopolitica_Radar",
       "categorias_cruzadas": [
         "Economia"
       ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 90,
-      "ttl_horas": 72,
-      "expires_at": "2026-11-30T19:13:54Z",
       "palavras_chave_busca": [
         "alemanha",
         "ucrânia",
-        "guerra na europa",
-        "orçamento militar",
-        "geopolítica global",
-        "sanções e conflitos"
-      ],
-      "gatilho_vitrine": "Priorizar o monitoramento do impacto financeiro e diplomático da manutenção do apoio europeu à Ucrânia frente às pressões inflacionárias globais.",
-      "sintese_nerd": "A aprovação de quase 12 bilhões de euros pelo parlamento alemão para o orçamento ucraniano de 2027 reflete o compromisso de Berlim em cobrir lacunas no financiamento de Kiev diante dos custos prolongados da guerra. A medida evidencia o fardo financeiro crescente sobre a economia europeia e sua interconexão com as cadeias globais de energia e segurança.",
-      "data_publicacao": "2026-11-27T19:13:54Z",
-      "updated_at": "2026-11-27T19:13:54Z"
+        "ajuda militar",
+        "guerra na ucrânia",
+        "orçamento europeu",
+        "geopolítica global"
+      ]
     },
     {
-      "slug": "argentina-proibe-propaganda-bets-esportes",
-      "titulo_tema": "Argentina aprova lei unânime que proíbe totalmente propagandas de apostas esportivas",
+      "slug": "argentina-proibe-propaganda-de-bets-nos-esportes",
       "status": "novo",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-28T19:41:14Z",
+      "updated_at": "2026-11-27T19:41:14Z",
+      "titulo_tema": "Argentina aprova lei que proíbe totalmente propagandas de apostas esportivas",
+      "sintese_nerd": "A proibição unânime de publicidade de bets em uniformes e redes sociais na Argentina marca um endurecimento drástico da regulação de jogos na América Latina. O movimento serve de espelho para discussões regulatorias em curso no Brasil, pesando o equilíbrio entre arrecadação fiscal e saúde pública.",
+      "rota_editoria": "/politica",
+      "data_publicacao": "2026-11-27T19:41:14Z",
+      "gatilho_vitrine": "Conectar a decisão regulatória vizinha aos debates sobre o impacto financeiro e social dos jogos de azar no Brasil.",
       "origem_pipeline": "curadoria",
+      "relevancia_score": 85,
       "categoria_primaria": "Politica",
       "categorias_cruzadas": [
         "Cultura",
         "Economia"
       ],
-      "rota_editoria": "/politica",
-      "relevancia_score": 82,
-      "ttl_horas": 48,
-      "expires_at": "2026-11-29T19:13:54Z",
       "palavras_chave_busca": [
-        "argentina",
-        "apostas esportivas",
         "bets",
-        "regulação de publicidade",
-        "impacto social",
-        "esportes"
-      ],
-      "gatilho_vitrine": "Conectar o movimento regulatório na Argentina com o debate em curso no Brasil sobre o controle e tributação das empresas de apostas online.",
-      "sintese_nerd": "A aprovação unânime de lei na Argentina que veta anúncios de apostas esportivas em uniformes, estádios e redes sociais representa uma das medidas mais duras da região contra o avanço das bets. O endurecimento regulatório vizinho serve de comparativo direto para as discussões sobre saúde pública e regulação publicitária no mercado brasileiro.",
-      "data_publicacao": "2026-11-27T19:13:54Z",
-      "updated_at": "2026-11-27T19:13:54Z"
+        "apostas esportivas",
+        "argentina",
+        "regulamentação",
+        "publicidade",
+        "economia da américa latina"
+      ]
     },
     {
-      "slug": "tcu-investiga-prejuizo-fundo-caixa-funcef",
-      "titulo_tema": "TCU assume investigação sobre rombo milionário na Funcef após descumprimento de ordens",
+      "slug": "fiocruz-alerta-aumento-casos-covid-nova-variante",
+      "titulo_tema": "Fiocruz aponta alta de casos de Síndrome Respiratória por Covid-19 associada a nova variante",
+      "titulo_curto": "Fiocruz aponta alta de casos de Síndrome Respiratória por Covid-19 associada a nova variante",
       "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Politica",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Cultura",
+      "categoria": "Sociedade_Cultura",
       "categorias_cruzadas": [
-        "Economia"
+        "Economia",
+        "Resumo_Ultimas"
       ],
-      "rota_editoria": "/politica",
-      "relevancia_score": 80,
-      "ttl_horas": 36,
-      "expires_at": "2026-11-29T07:13:54Z",
+      "rota_editoria": "/cultura",
+      "relevancia_score": 90,
+      "urgencia_score": 89,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-28T19:54:33Z",
       "palavras_chave_busca": [
-        "tcu",
-        "funcef",
-        "caixa econômica federal",
-        "fundos de pensão",
-        "investigação de fraudes",
-        "governança corporativa"
+        "fiocruz",
+        "covid-19",
+        "srag",
+        "saúde pública",
+        "nova variante"
       ],
-      "gatilho_vitrine": "Exibir o avanço dos órgãos de controle sobre a gestão de fundos de pensão estatais e os riscos fiscais associados.",
-      "sintese_nerd": "A decisão do Tribunal de Contas da União de assumir a investigação sobre prejuízos bilionários em fundo gerido pela Caixa coloca sob escrutínio a governança de fundos de pensão estatais. O episódio reabre o debate sobre responsabilidade fiscal e controle de investimentos institucionais no Brasil.",
-      "data_publicacao": "2026-11-27T19:13:54Z",
-      "updated_at": "2026-11-27T19:13:54Z"
+      "palavras_chave": [
+        "fiocruz",
+        "covid-19",
+        "srag",
+        "saúde pública",
+        "nova variante"
+      ],
+      "gatilho_vitrine": "Segundo dados do Boletim Infogripe da Fiocruz divulgados pela Agência Brasil, o país registra aumento nos casos de Síndrome Respiratória Aguda Grave (SRAG) por covid-19. O crescimento pode estar ligado à circulação de uma nova variante do vírus, potencialmente mais transmissível, combinada à redução da imunidade populacional.",
+      "resumo_pulso": "Segundo dados do Boletim Infogripe da Fiocruz divulgados pela Agência Brasil, o país registra aumento nos casos de Síndrome Respiratória Aguda Grave (SRAG) por covid-19. O crescimento pode estar ligado à circulação de uma nova variante do vírus, potencialmente mais transmissível, combinada à redução da imunidade populacional.",
+      "sintese_nerd": "Alerta a população e redes de saúde para medidas preventivas e monitoramento de sintomas respiratórios.",
+      "impacto_pratico": "Alerta a população e redes de saúde para medidas preventivas e monitoramento de sintomas respiratórios.",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "veiculos_origem": [
+        "Agência Brasil (EBC)"
+      ],
+      "fontes_urls": [
+        "https://agenciabrasil.ebc.com.br/saude/noticia/2026-11/aumento-de-casos-de-covid-19-pode-estar-relacionado-nova-variante"
+      ],
+      "data_publicacao": "2026-11-27T19:12:00Z",
+      "updated_at": "2026-11-27T19:54:33Z"
     },
     {
       "slug": "senado-emendas-ldo-2027-meta-fiscal",
@@ -768,210 +864,117 @@
         "contas públicas",
         "economia"
       ]
-    },
-    {
-      "slug": "raizen-avalia-venda-divisao-combustiveis",
-      "status": "novo",
-      "categoria": "Economia_Comercio",
-      "ttl_horas": 18,
-      "expires_at": "2026-11-28T08:50:33Z",
-      "updated_at": "2026-11-27T14:50:33Z",
-      "fontes_urls": [
-        "https://g1.globo.com/economia/noticia/2026/11/27/raizen-avalia-venda-de-sua-divisao-de-distribuicao-de-combustiveis.ghtml"
-      ],
-      "titulo_tema": "Raízen avalia venda de sua divisão de distribuição de combustíveis",
-      "resumo_pulso": "Segundo declarações do acionista fundador Rubens Ometto à Reuters e ao G1 Economia, a Raízen avalia a alienação do seu braço de distribuição de combustíveis como parte de um plano de desinvestimento estratégico. Embora potenciais interessados examinem aoperação, a empresa ressalta que não há processo formal ou acordo conclusivo assinado.",
-      "sintese_nerd": "Pode reconfigurar o mercado nacional de distribuição de combustíveis e a concorrência na rede de postos de gasolina.",
-      "titulo_curto": "Raízen avalia venda de sua divisão de distribuição de combustíveis",
-      "rota_editoria": "/economia",
-      "palavras_chave": [
-        "raízen",
-        "rubens ometto",
-        "distribuição de combustíveis",
-        "mercado financeiro",
-        "desinvestimento"
-      ],
-      "urgencia_score": 85,
-      "data_publicacao": "2026-11-27T13:20:24Z",
-      "gatilho_vitrine": "Segundo declarações do acionista fundador Rubens Ometto à Reuters e ao G1 Economia, a Raízen avalia a alienação do seu braço de distribuição de combustíveis como parte de um plano de desinvestimento estratégico. Embora potenciais interessados examinem aoperação, a empresa ressalta que não há processo formal ou acordo conclusivo assinado.",
-      "impacto_pratico": "Pode reconfigurar o mercado nacional de distribuição de combustíveis e a concorrência na rede de postos de gasolina.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "G1 Economia",
-        "Reuters"
-      ],
-      "relevancia_score": 87,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "raízen",
-        "rubens ometto",
-        "distribuição de combustíveis",
-        "mercado financeiro",
-        "desinvestimento"
-      ]
-    },
-    {
-      "slug": "tempestade-eua-acao-de-gracas-energia",
-      "status": "novo",
-      "categoria": "Ciencia_Clima",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-28T13:51:13Z",
-      "updated_at": "2026-11-27T13:51:13Z",
-      "fontes_urls": [
-        "https://g1.globo.com/mundo/noticia/2026/11/27/tempestade-feriado-dia-de-acao-de-gracas-eua-1-milhao-sem-luz-cancela-voos.ghtml"
-      ],
-      "titulo_tema": "Tempestade de Ação de Graças deixa quase 1 milhão sem luz e afeta voos na costa leste dos EUA",
-      "resumo_pulso": "Segundo reportagem do G1 Mundo, uma forte tempestade com ventos de até 112 km/h atingiu a costa leste dos Estados Unidos durante o feriado de Ação de Graças. O temporal deixou cerca de 1 milhão de residências e comércios sem energia elétrica e provocou cancelamentos generalizados de voos.",
-      "sintese_nerd": "Causa transtornos logísticos a viajantes durante um dos feriados de maior circulação no país norte-americano.",
-      "titulo_curto": "Tempestade de Ação de Graças deixa quase 1 milhão sem luz e afeta voos na costa leste dos EUA",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "estados unidos",
-        "tempestade",
-        "ação de graças",
-        "falta de energia"
-      ],
-      "urgencia_score": 88,
-      "data_publicacao": "2026-11-27T13:15:07Z",
-      "gatilho_vitrine": "Segundo reportagem do G1 Mundo, uma forte tempestade com ventos de até 112 km/h atingiu a costa leste dos Estados Unidos durante o feriado de Ação de Graças. O temporal deixou cerca de 1 milhão de residências e comércios sem energia elétrica e provocou cancelamentos generalizados de voos.",
-      "impacto_pratico": "Causa transtornos logísticos a viajantes durante um dos feriados de maior circulação no país norte-americano.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "G1 Mundo"
-      ],
-      "relevancia_score": 86,
-      "paises_envolvidos": [
-        "US"
-      ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "estados unidos",
-        "tempestade",
-        "ação de graças",
-        "falta de energia"
-      ]
-    }
-  ],
-  "temas_curadoria": [
-    {
-      "slug": "trabuco-ministerio-fazenda-ajuste-fiscal-mercado",
-      "titulo_tema": "Indicação de Luiz Carlos Trabuco para a Fazenda em 2027 repercute nos mercados e define rumo fiscal",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Politica"
-      ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 95,
-      "ttl_horas": 48,
-      "expires_at": "2026-11-29T19:13:54Z",
-      "palavras_chave_busca": [
-        "luiz carlos trabuco",
-        "ministério da fazenda",
-        "ajuste fiscal",
-        "governo lula",
-        "ibovespa",
-        "câmbio",
-        "economia brasileira"
-      ],
-      "gatilho_vitrine": "Destacar análises sobre o impacto da escolha de Trabuco para a credibilidade fiscal e os desdobramentos nos juros e no câmbio brasileiro.",
-      "sintese_nerd": "A indicação do executivo Luiz Carlos Trabuco para o comando da Fazenda em 2027 atua como âncora de confiança para o mercado financeiro e acalma o câmbio de curto prazo. No entanto, analistas apontam que a estratégia priorizará o ritmo de crescimento dos gastos obrigatórios em detrimento de cortes drásticos, moldando o cenário fiscal que afeta diretamente a inflação e o custo de vida dos brasileiros.",
-      "data_publicacao": "2026-11-27T19:13:54Z",
-      "updated_at": "2026-11-27T19:13:54Z"
-    },
-    {
-      "slug": "orcamento-alema-apoio-ucrania-2027",
-      "titulo_tema": "Alemanha aprova 12 bilhões de euros em apoio à Ucrânia para 2027 em meio a escalada do conflito",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 90,
-      "ttl_horas": 72,
-      "expires_at": "2026-11-30T19:13:54Z",
-      "palavras_chave_busca": [
-        "alemanha",
-        "ucrânia",
-        "guerra na europa",
-        "orçamento militar",
-        "geopolítica global",
-        "sanções e conflitos"
-      ],
-      "gatilho_vitrine": "Priorizar o monitoramento do impacto financeiro e diplomático da manutenção do apoio europeu à Ucrânia frente às pressões inflacionárias globais.",
-      "sintese_nerd": "A aprovação de quase 12 bilhões de euros pelo parlamento alemão para o orçamento ucraniano de 2027 reflete o compromisso de Berlim em cobrir lacunas no financiamento de Kiev diante dos custos prolongados da guerra. A medida evidencia o fardo financeiro crescente sobre a economia europeia e sua interconexão com as cadeias globais de energia e segurança.",
-      "data_publicacao": "2026-11-27T19:13:54Z",
-      "updated_at": "2026-11-27T19:13:54Z"
-    },
-    {
-      "slug": "argentina-proibe-propaganda-bets-esportes",
-      "titulo_tema": "Argentina aprova lei unânime que proíbe totalmente propagandas de apostas esportivas",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Politica",
-      "categorias_cruzadas": [
-        "Cultura",
-        "Economia"
-      ],
-      "rota_editoria": "/politica",
-      "relevancia_score": 82,
-      "ttl_horas": 48,
-      "expires_at": "2026-11-29T19:13:54Z",
-      "palavras_chave_busca": [
-        "argentina",
-        "apostas esportivas",
-        "bets",
-        "regulação de publicidade",
-        "impacto social",
-        "esportes"
-      ],
-      "gatilho_vitrine": "Conectar o movimento regulatório na Argentina com o debate em curso no Brasil sobre o controle e tributação das empresas de apostas online.",
-      "sintese_nerd": "A aprovação unânime de lei na Argentina que veta anúncios de apostas esportivas em uniformes, estádios e redes sociais representa uma das medidas mais duras da região contra o avanço das bets. O endurecimento regulatório vizinho serve de comparativo direto para as discussões sobre saúde pública e regulação publicitária no mercado brasileiro.",
-      "data_publicacao": "2026-11-27T19:13:54Z",
-      "updated_at": "2026-11-27T19:13:54Z"
-    },
-    {
-      "slug": "tcu-investiga-prejuizo-fundo-caixa-funcef",
-      "titulo_tema": "TCU assume investigação sobre rombo milionário na Funcef após descumprimento de ordens",
-      "status": "novo",
-      "origem_pipeline": "curadoria",
-      "categoria_primaria": "Politica",
-      "categorias_cruzadas": [
-        "Economia"
-      ],
-      "rota_editoria": "/politica",
-      "relevancia_score": 80,
-      "ttl_horas": 36,
-      "expires_at": "2026-11-29T07:13:54Z",
-      "palavras_chave_busca": [
-        "tcu",
-        "funcef",
-        "caixa econômica federal",
-        "fundos de pensão",
-        "investigação de fraudes",
-        "governança corporativa"
-      ],
-      "gatilho_vitrine": "Exibir o avanço dos órgãos de controle sobre a gestão de fundos de pensão estatais e os riscos fiscais associados.",
-      "sintese_nerd": "A decisão do Tribunal de Contas da União de assumir a investigação sobre prejuízos bilionários em fundo gerido pela Caixa coloca sob escrutínio a governança de fundos de pensão estatais. O episódio reabre o debate sobre responsabilidade fiscal e controle de investimentos institucionais no Brasil.",
-      "data_publicacao": "2026-11-27T19:13:54Z",
-      "updated_at": "2026-11-27T19:13:54Z"
     }
   ],
   "noticias_quentes": [
+    {
+      "slug": "open-ai-processa-apple-segredos-comerciais",
+      "titulo_curto": "OpenAI processa a Apple por suposto roubo de segredos comerciais e bloqueio de fornecedores",
+      "resumo_pulso": "Segundo reportagem do G1 Economia, a OpenAI abriu um processo judicial contra a Apple, acusando a fabricante do iPhone de apropriação indevida de segredos comerciais e de dificultar o acesso da inteligência artificial a fornecedores de equipamentos. A disputa jurídica intensifica a rivalidade tecnológica entre as gigantes do setor.",
+      "impacto_pratico": "Movimenta o mercado de inteligência artificial e pode alterar parcerias estratégicas no ecossistema de tecnologia móvel.",
+      "categoria": "Economia_Comercio",
+      "paises_envolvidos": [
+        "US"
+      ],
+      "urgencia_score": 88,
+      "relevancia_score": 89,
+      "nivel_confianca": "alta",
+      "ttl_horas": 24,
+      "horas_em_destaque": 12,
+      "veiculos_origem": [
+        "G1 Economia"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/tecnologia/noticia/2026/11/27/open-ai-apple-ia-segredo-processo.ghtml"
+      ],
+      "palavras_chave": [
+        "OpenAI",
+        "Apple",
+        "Inteligência Artificial",
+        "Processo Judicial",
+        "Tecnologia"
+      ],
+      "data_publicacao": "2026-11-27T19:47:43Z",
+      "links_internos_relacionados": [],
+      "expires_at": "2026-11-28T19:54:33Z",
+      "updated_at": "2026-11-27T19:54:33Z"
+    },
+    {
+      "slug": "dino-suspende-emendas-flavio-bolsonaro-2027",
+      "titulo_curto": "Ministro Flávio Dino suspende tramitação de emendas de Flávio Bolsonaro para 2027",
+      "resumo_pulso": "Conforme apuração do G1 Política, o ministro do STF Flávio Dino determinou a suspensão da tramitação de emendas do senador Flávio Bolsonaro (PL-RJ) para o orçamento de 2027. O magistrado também exigiu que o Senado preste esclarecimentos sobre as circunstâncias de atuação parlamentar do senador fora do território nacional.",
+      "impacto_pratico": "Gera instabilidade institucional no Congresso e paralisa emendas orçamentárias vinculadas ao parlamentar para o próximo exercício fiscal.",
+      "categoria": "Geopolitica_Relacoes",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "urgencia_score": 93,
+      "relevancia_score": 92,
+      "nivel_confianca": "alta",
+      "ttl_horas": 24,
+      "horas_em_destaque": 12,
+      "veiculos_origem": [
+        "G1 Política"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/politica/noticia/2026/11/27/dino-suspende-tramitacao-de-emendas-de-flavio-bolsonaro-2027-ministro-pediu-que-senado-explique-atuacao-do-senador-de-fora-do-pais.ghtml"
+      ],
+      "palavras_chave": [
+        "Flávio Dino",
+        "STF",
+        "Flávio Bolsonaro",
+        "Orçamento 2027",
+        "Senado Federal"
+      ],
+      "data_publicacao": "2026-11-27T19:41:14Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "STF analisa regras de transparência e limites constitucionais entre os Poderes",
+          "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
+          "motivo_conexao": "Contextualiza a atuação recente do Supremo Tribunal Federal em relação às prerrogativas institucionais e emendas."
+        }
+      ],
+      "expires_at": "2026-11-28T19:41:14Z",
+      "updated_at": "2026-11-27T19:54:33Z"
+    },
+    {
+      "slug": "fiocruz-alerta-aumento-casos-covid-nova-variante",
+      "titulo_curto": "Fiocruz aponta alta de casos de Síndrome Respiratória por Covid-19 associada a nova variante",
+      "resumo_pulso": "Segundo dados do Boletim Infogripe da Fiocruz divulgados pela Agência Brasil, o país registra aumento nos casos de Síndrome Respiratória Aguda Grave (SRAG) por covid-19. O crescimento pode estar ligado à circulação de uma nova variante do vírus, potencialmente mais transmissível, combinada à redução da imunidade populacional.",
+      "impacto_pratico": "Alerta a população e redes de saúde para medidas preventivas e monitoramento de sintomas respiratórios.",
+      "categoria": "Sociedade_Cultura",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "urgencia_score": 89,
+      "relevancia_score": 90,
+      "nivel_confianca": "alta",
+      "ttl_horas": 24,
+      "horas_em_destaque": 12,
+      "veiculos_origem": [
+        "Agência Brasil (EBC)"
+      ],
+      "fontes_urls": [
+        "https://agenciabrasil.ebc.com.br/saude/noticia/2026-11/aumento-de-casos-de-covid-19-pode-estar-relacionado-nova-variante"
+      ],
+      "palavras_chave": [
+        "Fiocruz",
+        "Covid-19",
+        "SRAG",
+        "Saúde Pública",
+        "Nova Variante"
+      ],
+      "data_publicacao": "2026-11-27T19:12:00Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "Movimentos sociais e parlamentares debatem investimentos em saúde, educação e transição ecológica",
+          "url_existente": "https://www.rodandoomundo.com.br/saude",
+          "motivo_conexao": "Relaciona o debate de políticas e investimentos em saúde com os desafios sanitários recentes."
+        }
+      ],
+      "expires_at": "2026-11-28T19:54:33Z",
+      "updated_at": "2026-11-27T19:54:33Z"
+    },
     {
       "slug": "senado-emendas-ldo-2027-meta-fiscal",
       "categoria": "Economia_Comercio",
@@ -1587,125 +1590,114 @@
           "titulo_existente": "Emprego, renda das famílias e financiamento industrial entram no centro do debate econômico"
         }
       ]
-    },
+    }
+  ],
+  "temas_curadoria": [
     {
-      "slug": "ibge-desemprego-outubro-minima-historica",
-      "categoria": "Economia_Comercio",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-28T12:28:22Z",
-      "updated_at": "2026-11-27T12:28:22Z",
-      "fontes_urls": [
-        "https://g1.globo.com/economia/noticia/2026/11/27/desemprego-pnad-outubro.ghtml",
-        "https://www.infomoney.com.br/economia/brasil-tem-desemprego-de-51-no-tri-ate-outubro-em-linha-com-o-esperado/"
-      ],
-      "resumo_pulso": "Segundo dados divulgados pelo IBGE e repercutidos pelo G1 Economia e InfoMoney, a taxa de desemprego no Brasil ficou em 5,1% no trimestre encerrado em outubro de 2026. O resultado iguala o menor patamar da série histórica da Pnad Contínua, alinhado às projeções do mercado financeiro.",
-      "titulo_curto": "Taxa de desemprego no Brasil recua para 5,1% em outubro e iguala mínima histórica",
-      "palavras_chave": [
-        "desemprego",
-        "IBGE",
-        "Pnad Contínua",
-        "mercado de trabalho",
-        "renda"
-      ],
-      "urgencia_score": 93,
-      "data_publicacao": "2026-11-27T12:20:59Z",
-      "impacto_pratico": "Mapeia o aquecimento do mercado de trabalho nacional, sustentando a renda familiar e influenciando as projeções de inflação.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "IBGE",
-        "G1 Economia",
-        "InfoMoney"
-      ],
+      "slug": "trabuco-no-ministerio-da-fazenda-agenda-fiscal-2027",
+      "status": "novo",
+      "ttl_horas": 48,
+      "expires_at": "2026-11-29T19:41:14Z",
+      "updated_at": "2026-11-27T19:41:14Z",
+      "titulo_tema": "Indicação de Luiz Carlos Trabuco para a Fazenda em 2027 e os Desafios Fiscais",
+      "sintese_nerd": "A escolha de Luiz Carlos Trabuco para o comando da Fazenda em 2027 sinaliza uma guinada na articulação econômica com o setor privado, herdando um pacote complexo de reformas fiscais e controle de gastos. Essa transição dita diretamente as expectativas de mercado, inflação e investimentos estrangeiros no início do próximo ciclo político.",
+      "rota_editoria": "/economia",
+      "data_publicacao": "2026-11-27T19:41:14Z",
+      "gatilho_vitrine": "Exibir na home o impacto da transição na economia nacional e o legado de propostas fiscais deixadas por Dario Durigan.",
+      "origem_pipeline": "curadoria",
       "relevancia_score": 95,
-      "horas_em_destaque": 12,
-      "paises_envolvidos": [
-        "BR"
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Politica",
+        "Resumo_Ultimas"
       ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
-          "motivo_conexao": "Contextualiza a trajetória da taxa de ocupação e o consumo das famílias no cenário nacional.",
-          "titulo_existente": "Emprego, renda das famílias e financiamento industrial entram no centro do debate econômico"
-        }
+      "palavras_chave_busca": [
+        "luiz carlos trabuco",
+        "ministério da fazenda",
+        "dario durigan",
+        "orçamento 2027",
+        "política fiscal",
+        "governo lula",
+        "economia brasil"
       ]
     },
     {
-      "slug": "zelensky-critica-relacao-trump-putin",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-28T12:28:22Z",
-      "updated_at": "2026-11-27T12:28:22Z",
-      "fontes_urls": [
-        "https://www.bbc.com/portuguese/articles/cm5y1pwkr0wwo?at_medium=RSS&at_campaign=rss"
+      "slug": "pacote-alema-apoio-ucrania-2027-impacto-geopolitico",
+      "status": "novo",
+      "ttl_horas": 36,
+      "expires_at": "2026-11-29T07:41:14Z",
+      "updated_at": "2026-11-27T19:41:14Z",
+      "titulo_tema": "Alemanha aprova 12 bilhões de euros em ajuda à Ucrânia para 2027",
+      "sintese_nerd": "A aprovação de quase 12 bilhões de euros pela Alemanha para sustentar o orçamento ucraniano em 2027 reflete o esforço europeu para blindar sua segurança diante dos custos crescentes da guerra. A decisão impacta diretamente os mercados de energia e o cenário macroeconômico global, exigindo gastos defensivos expressivos da União Europeia.",
+      "rota_editoria": "/radar",
+      "data_publicacao": "2026-11-27T19:41:14Z",
+      "gatilho_vitrine": "Destacar no radar global os desdobramentos financeiros do conflito europeu e o compromisso de potências com a defesa regional.",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 90,
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia"
       ],
-      "resumo_pulso": "Em entrevista à BBC News Brasil, o presidente ucraniano Volodymyr Zelensky classificou como 'estranha' a relação entre Donald Trump e Vladimir Putin. Zelensky afirmou que a atenção dos EUA foi desviada para o Oriente Médio, enfraquecendo a pressão diplomática contra a agressão russa na Europa.",
-      "titulo_curto": "Zelensky critica proximidade entre Trump e Putin e exige maior pressão ocidental sobre a Rússia",
-      "palavras_chave": [
-        "Zelensky",
-        "Trump",
-        "Putin",
-        "Ucrânia",
-        "Rússia"
-      ],
-      "urgencia_score": 88,
-      "data_publicacao": "2026-11-27T12:14:12Z",
-      "impacto_pratico": "Influencia os rumos da assistência financeira e militar ocidental para a manutenção do conflito no leste europeu.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "BBC News Brasil"
-      ],
-      "relevancia_score": 87,
-      "horas_em_destaque": 8,
-      "paises_envolvidos": [
-        "UA",
-        "US",
-        "RU"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/eleicoes",
-          "motivo_conexao": "Analisa o impacto das posições de líderes norte-americanos na diplomacia de defesa europeia.",
-          "titulo_existente": "Repercussão internacional das eleições americanas redesenha alianças diplomáticas"
-        }
+      "palavras_chave_busca": [
+        "alemanha",
+        "ucrânia",
+        "ajuda militar",
+        "guerra na ucrânia",
+        "orçamento europeu",
+        "geopolítica global"
       ]
     },
     {
-      "slug": "eua-hackers-forca-aerea-cloud-one",
-      "categoria": "Geopolitica_Relacoes",
+      "slug": "argentina-proibe-propaganda-de-bets-nos-esportes",
+      "status": "novo",
       "ttl_horas": 24,
-      "expires_at": "2026-11-28T12:28:22Z",
-      "updated_at": "2026-11-27T12:28:22Z",
-      "fontes_urls": [
-        "https://g1.globo.com/mundo/noticia/2026/11/27/hackers-invadem-plataforma-de-dados-da-forca-aerea-dos-eua-diz-agencia.ghtml"
+      "expires_at": "2026-11-28T19:41:14Z",
+      "updated_at": "2026-11-27T19:41:14Z",
+      "titulo_tema": "Argentina aprova lei que proíbe totalmente propagandas de apostas esportivas",
+      "sintese_nerd": "A proibição unânime de publicidade de bets em uniformes e redes sociais na Argentina marca um endurecimento drástico da regulação de jogos na América Latina. O movimento serve de espelho para discussões regulatorias em curso no Brasil, pesando o equilíbrio entre arrecadação fiscal e saúde pública.",
+      "rota_editoria": "/politica",
+      "data_publicacao": "2026-11-27T19:41:14Z",
+      "gatilho_vitrine": "Conectar a decisão regulatória vizinha aos debates sobre o impacto financeiro e social dos jogos de azar no Brasil.",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 85,
+      "categoria_primaria": "Politica",
+      "categorias_cruzadas": [
+        "Cultura",
+        "Economia"
       ],
-      "resumo_pulso": "Segundo fontes do governo norte-americano citadas pela Reuters e pelo G1 Mundo, invasores cibernéticos invadiram a plataforma Cloud One da Força Aérea dos Estados Unidos. O incidente coloca em risco dados de alta sensibilidade tática e operacional, elevando a preocupação com a defesa digital do Pentágono.",
-      "titulo_curto": "Hackers invadem plataforma de dados em nuvem da Força Aérea dos EUA, reporta agência",
-      "palavras_chave": [
-        "hackers",
-        "Força Aérea dos EUA",
-        "Cloud One",
-        "Pentágono",
-        "cibersegurança"
+      "palavras_chave_busca": [
+        "bets",
+        "apostas esportivas",
+        "argentina",
+        "regulamentação",
+        "publicidade",
+        "economia da américa latina"
+      ]
+    },
+    {
+      "slug": "dino-suspende-emendas-flavio-bolsonaro-2027",
+      "status": "novo",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-28T19:41:14Z",
+      "updated_at": "2026-11-27T19:41:14Z",
+      "titulo_tema": "STF: Flávio Dino suspende tramitação de emendas de Flávio Bolsonaro para 2027",
+      "sintese_nerd": "A decisão do ministro Flávio Dino de suspender emendas parlamentares voltadas ao orçamento de 2027 acirra o controle do STF sobre a execução de recursos públicos por parlamentares. A medida intensifica o debate sobre a transparência do orçamento impositivo e a separação de poderes no Brasil.",
+      "rota_editoria": "/politica",
+      "data_publicacao": "2026-11-27T19:41:14Z",
+      "gatilho_vitrine": "Ilustrar na editoria de política os atritos institucionais contínuos entre o Supremo Tribunal Federal e o Congresso Nacional.",
+      "origem_pipeline": "curadoria",
+      "relevancia_score": 82,
+      "categoria_primaria": "Politica",
+      "categorias_cruzadas": [
+        "Eleicoes"
       ],
-      "urgencia_score": 89,
-      "data_publicacao": "2026-11-27T11:36:21Z",
-      "impacto_pratico": "Aumenta o rigor em protocolos globais de segurança da informação e sistemas militares de defesa.",
-      "nivel_confianca": "media",
-      "veiculos_origem": [
-        "Reuters",
-        "G1 Mundo"
-      ],
-      "relevancia_score": 88,
-      "horas_em_destaque": 8,
-      "paises_envolvidos": [
-        "US"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/politica/estados-unidos",
-          "motivo_conexao": "Acompanhe os desdobramentos sobre segurança nacional e inteligência militar em Washington.",
-          "titulo_existente": "Política nos Estados Unidos"
-        }
+      "palavras_chave_busca": [
+        "flávio dino",
+        "stf",
+        "flávio bolsonaro",
+        "emendas parlamentares",
+        "orçamento 2027",
+        "poder legislativo"
       ]
     }
   ]
