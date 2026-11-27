@@ -2,33 +2,79 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-27T01:04:51Z",
-  "batch_id": "20261127-0104",
+  "updatedAt": "2026-11-27T01:37:12Z",
+  "batch_id": "20261127-0137",
   "temas_ativos": [
     {
-      "slug": "trabuco-futuro-ministro-fazenda-mercado",
-      "titulo_tema": "Governo Lula anuncia Luiz Carlos Trabuco como futuro ministro da Fazenda em meio a desafios fiscais",
-      "titulo_curto": "Governo Lula anuncia Luiz Carlos Trabuco como futuro ministro da Fazenda em meio a desafios fiscais",
+      "slug": "luiz-carlos-trabuco-ministerio-fazenda-governo-lula",
+      "titulo_tema": "Indicação de Luiz Carlos Trabuco para o Ministério da Fazenda",
       "status": "novo",
-      "origem_pipeline": "pulso",
+      "origem_pipeline": "curadoria",
       "categoria_primaria": "Economia",
-      "categoria": "Economia_Comercio",
       "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
+        "Politica",
+        "Geopolitica_Radar"
       ],
       "rota_editoria": "/economia",
-      "relevancia_score": 96,
-      "urgencia_score": 95,
+      "relevancia_score": 95,
+      "ttl_horas": 72,
+      "expires_at": "2026-11-30T01:37:12Z",
+      "palavras_chave_busca": [
+        "luiz carlos trabuco",
+        "ministério da fazenda",
+        "governo lula",
+        "bradesco",
+        "mercado financeiro",
+        "faria lima",
+        "política fiscal"
+      ],
+      "gatilho_vitrine": "Destacar análises sobre a guinada econômica, a reação da Faria Lima e o impacto da escolha de Trabuco para a credibilidade fiscal e o câmbio.",
+      "sintese_nerd": "A escolha de Luiz Carlos Trabuco, ex-presidente do Bradesco, para comandar a Fazenda no quarto mandato de Lula busca sinalizar pragmatismo fiscal e apaziguar tensões com o setor financeiro. A medida gera reações mistas entre a ala política governista, mas é vista pelo mercado como um aceno forte à estabilidade das contas públicas e previsibilidade cambial.",
+      "data_publicacao": "2026-11-27T01:37:12Z",
+      "updated_at": "2026-11-27T01:37:12Z"
+    },
+    {
+      "slug": "argentina-proibe-banco-central-imprimir-dinheiro",
+      "titulo_tema": "Argentina proíbe Banco Central de emitir moeda para financiar o Tesouro",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 88,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-29T01:37:12Z",
+      "palavras_chave_busca": [
+        "argentina",
+        "banco central",
+        "emissão de moeda",
+        "inflação",
+        "javier milei",
+        "economia argentina"
+      ],
+      "gatilho_vitrine": "Exibir no radar global as reformas estruturais radicais na Argentina e os reflexos na estabilização regional e no comércio bilateral com o Brasil.",
+      "sintese_nerd": "O Senado argentino aprovou a proibição legal para que o Banco Central emita dinheiro com o objetivo de cobrir déficits do governo, consolidando a agenda de austeridade fiscal extrema. A medida altera profundamente as regras macroeconômicas do país vizinho, impactando diretamente o controle inflacionário e a competitividade das exportações brasileiras.",
+      "data_publicacao": "2026-11-27T01:37:12Z",
+      "updated_at": "2026-11-27T01:37:12Z"
+    },
+    {
+      "slug": "trabuco-futuro-ministro-fazenda-mercado",
+      "status": "novo",
+      "categoria": "Economia_Comercio",
       "ttl_horas": 24,
       "expires_at": "2026-11-28T01:04:51Z",
-      "palavras_chave_busca": [
-        "ministério da fazenda",
-        "luiz carlos trabuco",
-        "economia",
-        "mercado financeiro",
-        "governo lula"
+      "updated_at": "2026-11-27T01:04:51Z",
+      "fontes_urls": [
+        "https://www.bbc.com/portuguese/articles/cv8e014e88xgo?at_medium=RSS&at_campaign=rss",
+        "https://www12.senado.leg.br/noticias/materias/2026/11/26/davi-deseja-201cpleno-exito201d-a-luiz-carlos-trabuco-no-ministerio-da-fazenda"
       ],
+      "titulo_tema": "Governo Lula anuncia Luiz Carlos Trabuco como futuro ministro da Fazenda em meio a desafios fiscais",
+      "resumo_pulso": "Segundo apuração da BBC News Brasil, do G1 e da Agência Senado, o governo federal confirmou o nome de Luiz Carlos Trabuco, presidente do Conselho de Administração do Bradesco, para assumir o Ministério da Fazenda a partir de janeiro. A escolha foi recebida com otimismo por parlamentares como Davi Alcolumbre e por analistas de mercado, que avaliam o executivo como um nome capaz de reduzir a tensão com investidores e calibrar o impacto cambial diante da pressão sobre as contas públicas.",
+      "sintese_nerd": "A indicação de perfil amigável ao mercado financeiro traz alívio temporário às cotações do dólar e aos juros futuros, atenuando pressões inflacionárias que impactam o custo de viagens internacionais e produtos importados para o consumidor brasileiro.",
+      "titulo_curto": "Governo Lula anuncia Luiz Carlos Trabuco como futuro ministro da Fazenda em meio a desafios fiscais",
+      "rota_editoria": "/economia",
       "palavras_chave": [
         "ministério da fazenda",
         "luiz carlos trabuco",
@@ -36,49 +82,48 @@
         "mercado financeiro",
         "governo lula"
       ],
+      "urgencia_score": 95,
+      "data_publicacao": "2026-11-27T00:50:57Z",
       "gatilho_vitrine": "Segundo apuração da BBC News Brasil, do G1 e da Agência Senado, o governo federal confirmou o nome de Luiz Carlos Trabuco, presidente do Conselho de Administração do Bradesco, para assumir o Ministério da Fazenda a partir de janeiro. A escolha foi recebida com otimismo por parlamentares como Davi Alcolumbre e por analistas de mercado, que avaliam o executivo como um nome capaz de reduzir a tensão com investidores e calibrar o impacto cambial diante da pressão sobre as contas públicas.",
-      "resumo_pulso": "Segundo apuração da BBC News Brasil, do G1 e da Agência Senado, o governo federal confirmou o nome de Luiz Carlos Trabuco, presidente do Conselho de Administração do Bradesco, para assumir o Ministério da Fazenda a partir de janeiro. A escolha foi recebida com otimismo por parlamentares como Davi Alcolumbre e por analistas de mercado, que avaliam o executivo como um nome capaz de reduzir a tensão com investidores e calibrar o impacto cambial diante da pressão sobre as contas públicas.",
-      "sintese_nerd": "A indicação de perfil amigável ao mercado financeiro traz alívio temporário às cotações do dólar e aos juros futuros, atenuando pressões inflacionárias que impactam o custo de viagens internacionais e produtos importados para o consumidor brasileiro.",
       "impacto_pratico": "A indicação de perfil amigável ao mercado financeiro traz alívio temporário às cotações do dólar e aos juros futuros, atenuando pressões inflacionárias que impactam o custo de viagens internacionais e produtos importados para o consumidor brasileiro.",
-      "paises_envolvidos": [
-        "BR"
-      ],
+      "origem_pipeline": "pulso",
       "veiculos_origem": [
         "BBC News Brasil",
         "G1 Política",
         "Agência Senado"
       ],
-      "fontes_urls": [
-        "https://www.bbc.com/portuguese/articles/cv8e014e88xgo?at_medium=RSS&at_campaign=rss",
-        "https://www12.senado.leg.br/noticias/materias/2026/11/26/davi-deseja-201cpleno-exito201d-a-luiz-carlos-trabuco-no-ministerio-da-fazenda"
+      "relevancia_score": 96,
+      "paises_envolvidos": [
+        "BR"
       ],
-      "data_publicacao": "2026-11-27T00:50:57Z",
-      "updated_at": "2026-11-27T01:04:51Z"
-    },
-    {
-      "slug": "amazonas-para-roraima-apagao-energia",
-      "titulo_tema": "Apagão de energia elétrica atinge os estados do Amazonas, Pará e Roraima",
-      "titulo_curto": "Apagão de energia elétrica atinge os estados do Amazonas, Pará e Roraima",
-      "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Geopolitica_Radar",
-      "categoria": "Mobilidade_Fronteiras",
+      "categoria_primaria": "Economia",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
       ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 88,
-      "urgencia_score": 90,
+      "palavras_chave_busca": [
+        "ministério da fazenda",
+        "luiz carlos trabuco",
+        "economia",
+        "mercado financeiro",
+        "governo lula"
+      ]
+    },
+    {
+      "slug": "amazonas-para-roraima-apagao-energia",
+      "status": "novo",
+      "categoria": "Mobilidade_Fronteiras",
       "ttl_horas": 12,
       "expires_at": "2026-11-27T13:04:51Z",
-      "palavras_chave_busca": [
-        "apagão",
-        "região norte",
-        "ons",
-        "energia elétrica",
-        "amazonas"
+      "updated_at": "2026-11-27T01:04:51Z",
+      "fontes_urls": [
+        "https://agenciabrasil.ebc.com.br/geral/noticia/2026-11/amazonas-para-e-roraima-passam-por-apagao-de-energia-nesta-quinta"
       ],
+      "titulo_tema": "Apagão de energia elétrica atinge os estados do Amazonas, Pará e Roraima",
+      "resumo_pulso": "Conforme apuração da Agência Brasil (EBC), os estados do Amazonas, Pará e Roraima registraram um apagão de energia elétrica na tarde desta quinta-feira (26) devido ao desligamento de aproximadamente 2.323 MW em linhas de transmissão da Região Norte. O Operador Nacional do Sistema Elétrico (ONS) informou que o restabelecimento do fornecimento de energia ocorre de forma gradual nas localidades afetadas.",
+      "sintese_nerd": "A interrupção no fornecimento elétrico afeta serviços essenciais, transportes locais, funcionamento de aeroportos e a rotina de moradores e viajantes na Região Norte.",
+      "titulo_curto": "Apagão de energia elétrica atinge os estados do Amazonas, Pará e Roraima",
+      "rota_editoria": "/radar",
       "palavras_chave": [
         "apagão",
         "região norte",
@@ -86,101 +131,29 @@
         "energia elétrica",
         "amazonas"
       ],
+      "urgencia_score": 90,
+      "data_publicacao": "2026-11-26T23:58:00Z",
       "gatilho_vitrine": "Conforme apuração da Agência Brasil (EBC), os estados do Amazonas, Pará e Roraima registraram um apagão de energia elétrica na tarde desta quinta-feira (26) devido ao desligamento de aproximadamente 2.323 MW em linhas de transmissão da Região Norte. O Operador Nacional do Sistema Elétrico (ONS) informou que o restabelecimento do fornecimento de energia ocorre de forma gradual nas localidades afetadas.",
-      "resumo_pulso": "Conforme apuração da Agência Brasil (EBC), os estados do Amazonas, Pará e Roraima registraram um apagão de energia elétrica na tarde desta quinta-feira (26) devido ao desligamento de aproximadamente 2.323 MW em linhas de transmissão da Região Norte. O Operador Nacional do Sistema Elétrico (ONS) informou que o restabelecimento do fornecimento de energia ocorre de forma gradual nas localidades afetadas.",
-      "sintese_nerd": "A interrupção no fornecimento elétrico afeta serviços essenciais, transportes locais, funcionamento de aeroportos e a rotina de moradores e viajantes na Região Norte.",
       "impacto_pratico": "A interrupção no fornecimento elétrico afeta serviços essenciais, transportes locais, funcionamento de aeroportos e a rotina de moradores e viajantes na Região Norte.",
-      "paises_envolvidos": [
-        "BR"
-      ],
+      "origem_pipeline": "pulso",
       "veiculos_origem": [
         "Agência Brasil (EBC)"
       ],
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/geral/noticia/2026-11/amazonas-para-e-roraima-passam-por-apagao-de-energia-nesta-quinta"
+      "relevancia_score": 88,
+      "paises_envolvidos": [
+        "BR"
       ],
-      "data_publicacao": "2026-11-26T23:58:00Z",
-      "updated_at": "2026-11-27T01:04:51Z"
-    },
-    {
-      "slug": "luiz-carlos-trabuco-ministerio-fazenda-impacto-mercado",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-28T22:37:19Z",
-      "updated_at": "2026-11-26T22:37:19Z",
-      "titulo_tema": "Indicação de Luiz Carlos Trabuco para a Fazenda dispara Bolsa e baixa o dólar",
-      "sintese_nerd": "A aceitação do convite por Luiz Carlos Trabuco para comandar o Ministério da Fazenda gerou forte otimismo no mercado financeiro, refletindo-se em uma disparada expressiva da Bolsa e recuo acentuado do dólar. A expectativa central gira em torno de uma condução fiscal mais alinhada com as demandas corporativas e de controle de gastos públicos.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-26T22:37:19Z",
-      "gatilho_vitrine": "Exibir no topo da home as repercussões da escolha de Trabuco para a equipe econômica e a forte alta do Ibovespa.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 98,
-      "categoria_primaria": "Economia",
+      "categoria_primaria": "Geopolitica_Radar",
       "categorias_cruzadas": [
-        "Politica",
+        "Economia",
         "Resumo_Ultimas"
       ],
       "palavras_chave_busca": [
-        "luiz carlos trabuco",
-        "ministério da fazenda",
-        "ibovespa",
-        "dólar",
-        "bradesco",
-        "governo lula",
-        "mercado financeiro"
-      ]
-    },
-    {
-      "slug": "brasil-franca-embate-carne-protecionismo",
-      "status": "novo",
-      "ttl_horas": 36,
-      "expires_at": "2026-11-28T10:37:19Z",
-      "updated_at": "2026-11-26T22:37:19Z",
-      "titulo_tema": "Governo brasileiro rebate Macron e acusa França de protecionismo comercial",
-      "sintese_nerd": "Declarações do presidente francês Emmanuel Macron criticando a carne brasileira intensificaram as tensões comerciais entre o Mercosul e a União Europeia sob o rótulo de práticas protecionistas. O episódio afeta diretamente a balança comercial e a projeção internacional do agronegócio nacional.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-26T22:37:19Z",
-      "gatilho_vitrine": "Destacar na editoria de radar global a escalada diplomática e comercial entre Brasil e França motivada por barreiras à exportação de carne.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 90,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia"
-      ],
-      "palavras_chave_busca": [
-        "emmanuel macron",
-        "carne brasileira",
-        "frança",
-        "protecionismo",
-        "união europeia",
-        "agronegócio",
-        "comércio exterior"
-      ]
-    },
-    {
-      "slug": "stf-piso-salarial-professores-estados-municipios",
-      "status": "novo",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-27T22:37:19Z",
-      "updated_at": "2026-11-26T22:37:19Z",
-      "titulo_tema": "STF obriga estados e municípios a aplicarem piso nacional de professores",
-      "sintese_nerd": "O Supremo Tribunal Federal determinou que governos estaduais e municipais devem seguir rigorosamente o valor atualizado do piso salarial nacional do magistério definido pelo Executivo federal. A medida impõe novos desafios orçamentários para gestores locais em meio a restrições fiscais.",
-      "rota_editoria": "/politica",
-      "data_publicacao": "2026-11-26T22:37:19Z",
-      "gatilho_vitrine": "Posicionar a decisão do STF sobre a obrigatoriedade do piso docente nos debates de impacto fiscal para entes subnacionais.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 85,
-      "categoria_primaria": "Politica",
-      "categorias_cruzadas": [
-        "Economia"
-      ],
-      "palavras_chave_busca": [
-        "stf",
-        "piso salarial",
-        "professores",
-        "estados e municípios",
-        "educação",
-        "supremo tribunal federal"
+        "apagão",
+        "região norte",
+        "ons",
+        "energia elétrica",
+        "amazonas"
       ]
     },
     {
@@ -898,30 +871,75 @@
       ]
     }
   ],
+  "temas_curadoria": [
+    {
+      "slug": "luiz-carlos-trabuco-ministerio-fazenda-governo-lula",
+      "titulo_tema": "Indicação de Luiz Carlos Trabuco para o Ministério da Fazenda",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Politica",
+        "Geopolitica_Radar"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 95,
+      "ttl_horas": 72,
+      "expires_at": "2026-11-30T01:37:12Z",
+      "palavras_chave_busca": [
+        "luiz carlos trabuco",
+        "ministério da fazenda",
+        "governo lula",
+        "bradesco",
+        "mercado financeiro",
+        "faria lima",
+        "política fiscal"
+      ],
+      "gatilho_vitrine": "Destacar análises sobre a guinada econômica, a reação da Faria Lima e o impacto da escolha de Trabuco para a credibilidade fiscal e o câmbio.",
+      "sintese_nerd": "A escolha de Luiz Carlos Trabuco, ex-presidente do Bradesco, para comandar a Fazenda no quarto mandato de Lula busca sinalizar pragmatismo fiscal e apaziguar tensões com o setor financeiro. A medida gera reações mistas entre a ala política governista, mas é vista pelo mercado como um aceno forte à estabilidade das contas públicas e previsibilidade cambial.",
+      "data_publicacao": "2026-11-27T01:37:12Z",
+      "updated_at": "2026-11-27T01:37:12Z"
+    },
+    {
+      "slug": "argentina-proibe-banco-central-imprimir-dinheiro",
+      "titulo_tema": "Argentina proíbe Banco Central de emitir moeda para financiar o Tesouro",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 88,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-29T01:37:12Z",
+      "palavras_chave_busca": [
+        "argentina",
+        "banco central",
+        "emissão de moeda",
+        "inflação",
+        "javier milei",
+        "economia argentina"
+      ],
+      "gatilho_vitrine": "Exibir no radar global as reformas estruturais radicais na Argentina e os reflexos na estabilização regional e no comércio bilateral com o Brasil.",
+      "sintese_nerd": "O Senado argentino aprovou a proibição legal para que o Banco Central emita dinheiro com o objetivo de cobrir déficits do governo, consolidando a agenda de austeridade fiscal extrema. A medida altera profundamente as regras macroeconômicas do país vizinho, impactando diretamente o controle inflacionário e a competitividade das exportações brasileiras.",
+      "data_publicacao": "2026-11-27T01:37:12Z",
+      "updated_at": "2026-11-27T01:37:12Z"
+    }
+  ],
   "noticias_quentes": [
     {
       "slug": "trabuco-futuro-ministro-fazenda-mercado",
-      "titulo_curto": "Governo Lula anuncia Luiz Carlos Trabuco como futuro ministro da Fazenda em meio a desafios fiscais",
-      "resumo_pulso": "Segundo apuração da BBC News Brasil, do G1 e da Agência Senado, o governo federal confirmou o nome de Luiz Carlos Trabuco, presidente do Conselho de Administração do Bradesco, para assumir o Ministério da Fazenda a partir de janeiro. A escolha foi recebida com otimismo por parlamentares como Davi Alcolumbre e por analistas de mercado, que avaliam o executivo como um nome capaz de reduzir a tensão com investidores e calibrar o impacto cambial diante da pressão sobre as contas públicas.",
-      "impacto_pratico": "A indicação de perfil amigável ao mercado financeiro traz alívio temporário às cotações do dólar e aos juros futuros, atenuando pressões inflacionárias que impactam o custo de viagens internacionais e produtos importados para o consumidor brasileiro.",
       "categoria": "Economia_Comercio",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "urgencia_score": 95,
-      "relevancia_score": 96,
-      "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 12,
-      "veiculos_origem": [
-        "BBC News Brasil",
-        "G1 Política",
-        "Agência Senado"
-      ],
+      "expires_at": "2026-11-28T01:04:51Z",
+      "updated_at": "2026-11-27T01:04:51Z",
       "fontes_urls": [
         "https://www.bbc.com/portuguese/articles/cv8e014e88xgo?at_medium=RSS&at_campaign=rss",
         "https://www12.senado.leg.br/noticias/materias/2026/11/26/davi-deseja-201cpleno-exito201d-a-luiz-carlos-trabuco-no-ministerio-da-fazenda"
       ],
+      "resumo_pulso": "Segundo apuração da BBC News Brasil, do G1 e da Agência Senado, o governo federal confirmou o nome de Luiz Carlos Trabuco, presidente do Conselho de Administração do Bradesco, para assumir o Ministério da Fazenda a partir de janeiro. A escolha foi recebida com otimismo por parlamentares como Davi Alcolumbre e por analistas de mercado, que avaliam o executivo como um nome capaz de reduzir a tensão com investidores e calibrar o impacto cambial diante da pressão sobre as contas públicas.",
+      "titulo_curto": "Governo Lula anuncia Luiz Carlos Trabuco como futuro ministro da Fazenda em meio a desafios fiscais",
       "palavras_chave": [
         "Ministério da Fazenda",
         "Luiz Carlos Trabuco",
@@ -929,42 +947,44 @@
         "Mercado Financeiro",
         "Governo Lula"
       ],
+      "urgencia_score": 95,
       "data_publicacao": "2026-11-27T00:50:57Z",
-      "links_internos_relacionados": [
-        {
-          "titulo_existente": "Economia no Brasil",
-          "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
-          "motivo_conexao": "Contextualiza os desdobramentos da equipe econômica e reflexos no câmbio e inflação."
-        },
-        {
-          "titulo_existente": "Implementação da Reforma Tributária e medidas de revisão de gastos avançam em Brasília",
-          "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
-          "motivo_conexao": "Relaciona a transição ministerial com as metas fiscais e o controle de gastos públicos."
-        }
+      "impacto_pratico": "A indicação de perfil amigável ao mercado financeiro traz alívio temporário às cotações do dólar e aos juros futuros, atenuando pressões inflacionárias que impactam o custo de viagens internacionais e produtos importados para o consumidor brasileiro.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "BBC News Brasil",
+        "G1 Política",
+        "Agência Senado"
       ],
-      "expires_at": "2026-11-28T01:04:51Z",
-      "updated_at": "2026-11-27T01:04:51Z"
-    },
-    {
-      "slug": "amazonas-para-roraima-apagao-energia",
-      "titulo_curto": "Apagão de energia elétrica atinge os estados do Amazonas, Pará e Roraima",
-      "resumo_pulso": "Conforme apuração da Agência Brasil (EBC), os estados do Amazonas, Pará e Roraima registraram um apagão de energia elétrica na tarde desta quinta-feira (26) devido ao desligamento de aproximadamente 2.323 MW em linhas de transmissão da Região Norte. O Operador Nacional do Sistema Elétrico (ONS) informou que o restabelecimento do fornecimento de energia ocorre de forma gradual nas localidades afetadas.",
-      "impacto_pratico": "A interrupção no fornecimento elétrico afeta serviços essenciais, transportes locais, funcionamento de aeroportos e a rotina de moradores e viajantes na Região Norte.",
-      "categoria": "Mobilidade_Fronteiras",
+      "relevancia_score": 96,
+      "horas_em_destaque": 12,
       "paises_envolvidos": [
         "BR"
       ],
-      "urgencia_score": 90,
-      "relevancia_score": 88,
-      "nivel_confianca": "alta",
+      "links_internos_relacionados": [
+        {
+          "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
+          "motivo_conexao": "Contextualiza os desdobramentos da equipe econômica e reflexos no câmbio e inflação.",
+          "titulo_existente": "Economia no Brasil"
+        },
+        {
+          "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
+          "motivo_conexao": "Relaciona a transição ministerial com as metas fiscais e o controle de gastos públicos.",
+          "titulo_existente": "Implementação da Reforma Tributária e medidas de revisão de gastos avançam em Brasília"
+        }
+      ]
+    },
+    {
+      "slug": "amazonas-para-roraima-apagao-energia",
+      "categoria": "Mobilidade_Fronteiras",
       "ttl_horas": 12,
-      "horas_em_destaque": 6,
-      "veiculos_origem": [
-        "Agência Brasil (EBC)"
-      ],
+      "expires_at": "2026-11-27T13:04:51Z",
+      "updated_at": "2026-11-27T01:04:51Z",
       "fontes_urls": [
         "https://agenciabrasil.ebc.com.br/geral/noticia/2026-11/amazonas-para-e-roraima-passam-por-apagao-de-energia-nesta-quinta"
       ],
+      "resumo_pulso": "Conforme apuração da Agência Brasil (EBC), os estados do Amazonas, Pará e Roraima registraram um apagão de energia elétrica na tarde desta quinta-feira (26) devido ao desligamento de aproximadamente 2.323 MW em linhas de transmissão da Região Norte. O Operador Nacional do Sistema Elétrico (ONS) informou que o restabelecimento do fornecimento de energia ocorre de forma gradual nas localidades afetadas.",
+      "titulo_curto": "Apagão de energia elétrica atinge os estados do Amazonas, Pará e Roraima",
       "palavras_chave": [
         "Apagão",
         "Região Norte",
@@ -972,10 +992,19 @@
         "Energia Elétrica",
         "Amazonas"
       ],
+      "urgencia_score": 90,
       "data_publicacao": "2026-11-26T23:58:00Z",
-      "links_internos_relacionados": [],
-      "expires_at": "2026-11-27T13:04:51Z",
-      "updated_at": "2026-11-27T01:04:51Z"
+      "impacto_pratico": "A interrupção no fornecimento elétrico afeta serviços essenciais, transportes locais, funcionamento de aeroportos e a rotina de moradores e viajantes na Região Norte.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Agência Brasil (EBC)"
+      ],
+      "relevancia_score": 88,
+      "horas_em_destaque": 6,
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "links_internos_relacionados": []
     },
     {
       "slug": "venezuela-revogara-lei-que-previa- ate-30-anos-prisao-opositores",
@@ -1678,89 +1707,6 @@
           "motivo_conexao": "Acompanhe os reflexos de crises financeiras em países vizinhos na economia e no turismo regional.",
           "titulo_existente": "Economia no Brasil"
         }
-      ]
-    }
-  ],
-  "temas_curadoria": [
-    {
-      "slug": "luiz-carlos-trabuco-ministerio-fazenda-impacto-mercado",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-28T22:37:19Z",
-      "updated_at": "2026-11-26T22:37:19Z",
-      "titulo_tema": "Indicação de Luiz Carlos Trabuco para a Fazenda dispara Bolsa e baixa o dólar",
-      "sintese_nerd": "A aceitação do convite por Luiz Carlos Trabuco para comandar o Ministério da Fazenda gerou forte otimismo no mercado financeiro, refletindo-se em uma disparada expressiva da Bolsa e recuo acentuado do dólar. A expectativa central gira em torno de uma condução fiscal mais alinhada com as demandas corporativas e de controle de gastos públicos.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-26T22:37:19Z",
-      "gatilho_vitrine": "Exibir no topo da home as repercussões da escolha de Trabuco para a equipe econômica e a forte alta do Ibovespa.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 98,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Politica",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "luiz carlos trabuco",
-        "ministério da fazenda",
-        "ibovespa",
-        "dólar",
-        "bradesco",
-        "governo lula",
-        "mercado financeiro"
-      ]
-    },
-    {
-      "slug": "brasil-franca-embate-carne-protecionismo",
-      "status": "novo",
-      "ttl_horas": 36,
-      "expires_at": "2026-11-28T10:37:19Z",
-      "updated_at": "2026-11-26T22:37:19Z",
-      "titulo_tema": "Governo brasileiro rebate Macron e acusa França de protecionismo comercial",
-      "sintese_nerd": "Declarações do presidente francês Emmanuel Macron criticando a carne brasileira intensificaram as tensões comerciais entre o Mercosul e a União Europeia sob o rótulo de práticas protecionistas. O episódio afeta diretamente a balança comercial e a projeção internacional do agronegócio nacional.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-26T22:37:19Z",
-      "gatilho_vitrine": "Destacar na editoria de radar global a escalada diplomática e comercial entre Brasil e França motivada por barreiras à exportação de carne.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 90,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia"
-      ],
-      "palavras_chave_busca": [
-        "emmanuel macron",
-        "carne brasileira",
-        "frança",
-        "protecionismo",
-        "união europeia",
-        "agronegócio",
-        "comércio exterior"
-      ]
-    },
-    {
-      "slug": "stf-piso-salarial-professores-estados-municipios",
-      "status": "novo",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-27T22:37:19Z",
-      "updated_at": "2026-11-26T22:37:19Z",
-      "titulo_tema": "STF obriga estados e municípios a aplicarem piso nacional de professores",
-      "sintese_nerd": "O Supremo Tribunal Federal determinou que governos estaduais e municipais devem seguir rigorosamente o valor atualizado do piso salarial nacional do magistério definido pelo Executivo federal. A medida impõe novos desafios orçamentários para gestores locais em meio a restrições fiscais.",
-      "rota_editoria": "/politica",
-      "data_publicacao": "2026-11-26T22:37:19Z",
-      "gatilho_vitrine": "Posicionar a decisão do STF sobre a obrigatoriedade do piso docente nos debates de impacto fiscal para entes subnacionais.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 85,
-      "categoria_primaria": "Politica",
-      "categorias_cruzadas": [
-        "Economia"
-      ],
-      "palavras_chave_busca": [
-        "stf",
-        "piso salarial",
-        "professores",
-        "estados e municípios",
-        "educação",
-        "supremo tribunal federal"
       ]
     }
   ]
