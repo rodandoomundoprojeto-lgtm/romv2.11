@@ -1,37 +1,54 @@
 {
-  "batch_data": "2026-11-27",
-  "gerado_em": "2026-11-27T07:53:31.123605+00:00",
-  "modelo_juiza": "gemini-3.5-flash-lite",
-  "veredito_geral": "aprovado_com_ressalvas",
+  "batch_data": "2026-11-28",
+  "gerado_em": "2026-11-28T07:47:17.914388+00:00",
+  "modelo_juiza": "gemini-3.8-flash",
+  "veredito_geral": "excelente",
   "calibracoes": [
     {
-      "alvo_agente": "pulso_30m",
+      "alvo_agente": "pesquisador_factual",
       "tipo_diretriz": "foco_tematico",
-      "titulo_regra": "Radar Geopolítico Asiático Oculto",
-      "instrucao_prompt": "Ao monitorar feeds internacionais, dar prioridade imediata a crises institucionais na Ásia-Pacífico (como Filipinas e rotas de semicondutores) que possam impactar cadeias globais de suprimentos.",
-      "prioridade": 4
+      "titulo_regra": "Prioridade para Eventos Aéreos e de Infraestrutura Global",
+      "instrucao_prompt": "Ao priorizar cabos internacionais da madrugada, preterir pautas cerimoniais e aprovações protocolares do Congresso quando houver fechamentos de espaço aéreo internacional, ataques de saturação em capitais mundiais ou rupturas sanitárias de magnitude global.",
+      "prioridade": 5
     },
     {
       "alvo_agente": "colunista_nerd",
       "tipo_diretriz": "ajuste_tom",
-      "titulo_regra": "Eliminação de Clichês Retóricos",
-      "instrucao_prompt": "Proibir o uso de frases feitas e aberturas genéricas como 'Em um cenário cada vez mais globalizado' ou 'Resta saber se' em colunas editoriais. Exigir início direto com o fato econômico ou geográfico de impacto.",
-      "prioridade": 3
+      "titulo_regra": "Conexão Obrigatória de Câmbio e Renda Fixa com o Viajante",
+      "instrucao_prompt": "Em toda análise cambial (queda/alta de dólar ou euro) ou de títulos públicos (Tesouro Direto), inserir obrigatoriamente um parágrafo avaliando a janela de oportunidade para o bolso do explorador: conversão em cartões multimoedas, compras no exterior e arbitragem de viagens.",
+      "prioridade": 4
+    },
+    {
+      "alvo_agente": "pulso_30m",
+      "tipo_diretriz": "cuidado_geopolitico",
+      "titulo_regra": "Atribuição Rígida em Conflitos com Alegações de Falsa Bandeira",
+      "instrucao_prompt": "Ao noticiar acusações mútuas entre nações beligerantes (ex: Irã, Ucrânia, potências da OTAN), não validar narrativas unilaterais nos títulos; empregar sempre verbos de declaração assertivos ('autoridades alegam', 'governo nega') e manter a apuração independente em destaque.",
+      "prioridade": 5
     }
   ],
   "pautas_ouro_dia": [
-    "Impacto imediato da queda do dólar abaixo de R$ 5,75 no planejamento de férias internacionais de alta temporada",
-    "A auditoria da União Europeia que desmente falas protecionistas sobre a carne brasileira",
-    "As novas regras de segurança do Pix anunciadas pelo Banco Central para o ciclo de 2027"
+    "Ataque histórico com 1,2 mil drones em território russo: espaço aéreo fechado em Moscou e os novos riscos à aviação internacional",
+    "África na vanguarda da biotecnologia: Uganda inicia testes pioneiros de vacina de mRNA contra o Ebola",
+    "Guerra do Silício vs. Convivência Urbana: Por que bairros residenciais em Tóquio declararam guerra aos data centers gigantes de IA",
+    "A corrida pela Open BRL: O que significa a B3 e bancos lançarem uma stablecoin atrelada ao real para transferências no exterior",
+    "Macron vs. Agro Brasileiro: A geopolítica alimentar e os bastidores das travas europeias à carne sul-americana"
   ],
   "golden_exemplars": [
     {
       "tipo_conteudo": "pulso_noticia",
-      "titulo": "Ibovespa dispara 6% e dólar recua abaixo de R$ 5,75 após Luiz Carlos Trabuco aceitar comando da Fazenda",
-      "categoria": "Economia & Câmbio",
-      "nota_isencao": 98,
-      "texto_exemplo": "Segundo apuração da Agência Brasil, da BBC News Brasil e do G1 Economia, o mercado financeiro reagiu fortemente com a confirmação de que Luiz Carlos Trabuco... recuou para R$ 5,74, gerando um alívio cambial imediato e favorável para o bolso do viajante brasileiro e para o custo de importações.",
-      "justificativa_excelencia": "Demonstra a perfeita aplicação do DNA do portal: traduzir um fato macroeconômico puramente técnico em um indicador prático imediato para o viajante e consumidor brasileiro."
+      "titulo": "Taiwan realiza votação crucial sobre reativação de energia nuclear em meio à demanda da inteligência artificial",
+      "categoria": "Geopolítica & Tecnologia",
+      "nota_isencao": 97,
+      "texto_exemplo": "Taiwan realiza eleições locais sob forte pressão militar de Pequim, incorporando no debate das urnas o futuro da energia nuclear na ilha. O pleito é monitorado pelas principais praças de semicondutores do planeta, uma vez que a expansão de fundições como a TSMC e o avanço dos clusters de inteligência artificial colidem frontalmente com a meta de descarbonização e o risco de vulnerabilidade energética em caso de bloqueio aeronaval.",
+      "justificativa_excelencia": "Demonstra síntese impecável entre política local, gargalo tecnológico global, matriz energética e o tabuleiro militar do Indo-Pacífico sem recorrer a sensacionalismo."
+    },
+    {
+      "tipo_conteudo": "pulso_noticia",
+      "titulo": "Dólar despenca quase 4% e fecha em R$ 5,51 após indicação de Luiz Carlos Trabuco para a Fazenda",
+      "categoria": "Câmbio & Economia Prática",
+      "nota_isencao": 95,
+      "texto_exemplo": "O dólar comercial registrou recuo de 3,92% nesta sexta-feira, cotado a R$ 5,51, coroando uma das semanas de maior alívio cambial recente na praça de São Paulo. A reação dos mercados à confirmação de Luiz Carlos Trabuco no comando da Fazenda abre uma janela tática relevante para viajantes e remessas internacionais, que encontram cotações mais favoráveis após meses de estresse inflacionário importado.",
+      "justificativa_excelencia": "Conecta perfeitamente o gatilho macroeconômico factual à realidade prática do bolso do leitor que viaja ou opera em moeda forte."
     }
   ]
 }

@@ -1,103 +1,347 @@
 {
-  "batch_data": "2026-11-27",
-  "modelo_juiza": "gemini-3.5-flash-lite",
-  "total_avaliados": 35,
-  "media_isencao": 89.4,
-  "media_qualidade_nerd": 88.2,
+  "batch_data": "2026-11-28",
+  "modelo_juiza": "gemini-3.8-flash",
+  "total_avaliados": 24,
+  "media_isencao": 93.4,
+  "media_qualidade_nerd": 84.8,
   "alucinacoes_detectadas": 0,
-  "cliches_detectados": 1,
-  "veredito_geral": "aprovado_com_ressalvas",
-  "resumo_acordao": "O Tribunal Noturno encerra a sua sessão de julgamento com um balanço amplamente positivo da produção jornalística e editorial do Rodando o Mundo nas últimas 24 horas. Destacou-se a cobertura exemplar e multifacetada da indicação de Luiz Carlos Trabuco para o Ministério da Fazenda, conectando com precisão cirúrgica a euforia bursátil, o recuo do dólar e os impactos práticos no custo de vida e no planejamento cambial do viajante brasileiro. A redação manteve rigor exemplar na apuração factual, sem registro de alucinações, embora pequenas redundâncias estilísticas e clichês tenham sido detectadas em rascunhos preliminares de colunas.\n\nContudo, a varredura dos pontos cegos da madrugada revelou lacunas notáveis na cobertura de desdobramentos internacionais cruciais, a exemplo do processo de impeachment da vice-presidente das Filipinas, Sara Duterte, e das articulações de defesa coletiva no Oriente Médio através do pacto em Islamabad. As diretrizes de calibração para o novo ciclo exigem maior agilidade na ponte entre crises institucionais asiáticas e o radar geopolítico global, mantendo a êncora inegociável de traduzir a grande política internacional em impactos diretos para a mobilidade e o bolso do leitor.",
+  "cliches_detectados": 3,
+  "veredito_geral": "excelente",
+  "resumo_acordao": "O Tribunal Noturno do portal Rodando o Mundo, reunido na madrugada deste 28 de novembro de 2026, reconhece a consistente maturidade técnica e factual da redação autônoma. O lote sob julgamento evidenciou rigor na atribuição de fontes institucionais e regulatórias (FDIC, B3, Aneel, STF e EBC), alcançando média de isenção de 93,4 sem detecção de alucinações numéricas ou distorções conceituais de relevo.\n\nConstata-se, contudo, uma inclinação excessiva para a cobertura do noticiário institucional doméstico (projetos de lei, sessões comemorativas e movimentações protocolares do Congresso), em detrimento da pronta conexão com os impactos práticos que afetam o leitor global, o viajante internacional e a economia real do cidadão transfronteiriço. Tal vício pontual rebaixa a densidade do viés analítico nerd em matérias regulatórias e municipais.\n\nDetermina-se imediata reorientação temática nas primeiras horas do dia: a redação da manhã deve cobrir prontamente a escalada aérea entre Ucrânia e Rússia com o ataque recorde de drones em Moscou, bem como o avanço tecnológico na contenção sanitária em África com os testes da vacina de mRNA contra o vírus Ebola. Ficam homologadas as calibrações de tom e selecionados os padrões-ouro para os pipelines de automação.",
   "itens_avaliados": [
     {
       "origem_tipo": "noticia_quente",
-      "identificador": "trabuco-futuro-ministro-fazenda-mercado",
-      "nota_isencao": 98,
-      "nota_factual": 100,
-      "nota_estilo_nerd": 99,
+      "identificador": "banco-eua-fechado-maior-quebra",
+      "nota_isencao": 96,
+      "nota_factual": 98,
+      "nota_estilo_nerd": 88,
       "teve_alucinacao": false,
       "teve_cliche_ou_sensacionalismo": false,
-      "parecer_resumido": "Excelente cobertura cruzada, unindo com maestria a reação do mercado financeiro e os reflexos imediatos no câmbio para o viajante."
+      "parecer_resumido": "Cobertura sóbria e precisa dos dados da FDIC, contextualizando o porte da quebra sem alarmismos bancários injustificados."
     },
     {
       "origem_tipo": "noticia_quente",
-      "identificador": "exportadores-brasileiros-rebatem-macron-carne",
-      "nota_isencao": 94,
+      "identificador": "congresso-aprova-regras-compartilhamento-postes",
+      "nota_isencao": 95,
       "nota_factual": 95,
+      "nota_estilo_nerd": 74,
+      "teve_alucinacao": false,
+      "teve_cliche_ou_sensacionalismo": false,
+      "parecer_resumido": "Texto protocolarmente correto, porém puramente burocrático, desprovido de paralelos com modelos de infraestrutura urbana global."
+    },
+    {
+      "origem_tipo": "noticia_quente",
+      "identificador": "safernet-estudo-deepfake-escola",
+      "nota_isencao": 92,
+      "nota_factual": 96,
+      "nota_estilo_nerd": 86,
+      "teve_alucinacao": false,
+      "teve_cliche_ou_sensacionalismo": false,
+      "parecer_resumido": "Dados estatísticos bem recortados da SaferNet; abordagem prudente de um tema delicado envolvendo menores e inteligência artificial."
+    },
+    {
+      "origem_tipo": "noticia_quente",
+      "identificador": "brasileira-presa-russia-costura-uniformes",
+      "nota_isencao": 93,
+      "nota_factual": 95,
+      "nota_estilo_nerd": 90,
+      "teve_alucinacao": false,
+      "teve_cliche_ou_sensacionalismo": false,
+      "parecer_resumido": "Excelente vigilância sobre os riscos de segurança e litígios penais de cidadãos brasileiros em territórios hostis no exterior."
+    },
+    {
+      "origem_tipo": "noticia_quente",
+      "identificador": "pm-rio-ocupa-comunidades-jacarepagua",
+      "nota_isencao": 92,
+      "nota_factual": 94,
+      "nota_estilo_nerd": 70,
+      "teve_alucinacao": false,
+      "teve_cliche_ou_sensacionalismo": false,
+      "parecer_resumido": "Pauta estritamente paroquial de segurança fluminense; carece de relevância geopolítica ou interesse prático para o leitor internacional."
+    },
+    {
+      "origem_tipo": "noticia_quente",
+      "identificador": "avioes-comerciais-colidem-aeroporto-washington",
+      "nota_isencao": 95,
+      "nota_factual": 96,
       "nota_estilo_nerd": 92,
       "teve_alucinacao": false,
       "teve_cliche_ou_sensacionalismo": false,
-      "parecer_resumido": "Boa contundência na defesa do agronegócio nacional frente ao protecionismo europeu, ancorada em dados técnicos sólidos."
+      "parecer_resumido": "Relevante alerta de tráfego aéreo e segurança operacional para passageiros e viajantes em conexão nos Estados Unidos."
     },
     {
-      "origem_tipo": "coluna_editorial",
-      "identificador": "trabuco-fazenda-repercussao-mercado-orcamento",
-      "nota_isencao": 91,
-      "nota_factual": 90,
+      "origem_tipo": "noticia_quente",
+      "identificador": "opec-manutencao-producao-petroleo-2027",
+      "nota_isencao": 94,
+      "nota_factual": 94,
+      "nota_estilo_nerd": 93,
+      "teve_alucinacao": false,
+      "teve_cliche_ou_sensacionalismo": false,
+      "parecer_resumido": "Boa articulação das metas da OPEP+ com a conjuntura no Estreito de Ormuz e seus impactos futuros no preço das passagens e combustíveis."
+    },
+    {
+      "origem_tipo": "noticia_quente",
+      "identificador": "nova-variante-covid-19-brasil",
+      "nota_isencao": 93,
+      "nota_factual": 95,
+      "nota_estilo_nerd": 87,
+      "teve_alucinacao": false,
+      "teve_cliche_ou_sensacionalismo": false,
+      "parecer_resumido": "Equilibrado, apoia-se em relatórios de vigilância sanitária sem gerar histeria, apontando a linhagem epidemiológica correta."
+    },
+    {
+      "origem_tipo": "noticia_quente",
+      "identificador": "fachin-libera-repasse-master-brb",
+      "nota_isencao": 96,
+      "nota_factual": 97,
+      "nota_estilo_nerd": 80,
+      "teve_alucinacao": false,
+      "teve_cliche_ou_sensacionalismo": false,
+      "parecer_resumido": "Tratamento jurídico e bancário irrepreensível dos despachos do STF, com rigor quanto aos valores autorizados e retidos."
+    },
+    {
+      "origem_tipo": "noticia_quente",
+      "identificador": "dolar-cai-quase-4-por-cento-trabuco-fazenda",
+      "nota_isencao": 95,
+      "nota_factual": 98,
+      "nota_estilo_nerd": 95,
+      "teve_alucinacao": false,
+      "teve_cliche_ou_sensacionalismo": false,
+      "parecer_resumido": "Peça de grande relevância prática: traduz a volatilidade cambial para o poder de compra do viajante e do investidor."
+    },
+    {
+      "origem_tipo": "noticia_quente",
+      "identificador": "taiwan-vota-energia-nuclear-ia",
+      "nota_isencao": 97,
+      "nota_factual": 96,
+      "nota_estilo_nerd": 96,
+      "teve_alucinacao": false,
+      "teve_cliche_ou_sensacionalismo": false,
+      "parecer_resumido": "Excelente correlação entre transição energética insular, corrida da IA e a sensível cadeia de semicondutores no estreito."
+    },
+    {
+      "origem_tipo": "noticia_quente",
+      "identificador": "conta-luz-bandeira-verde-dezembro",
+      "nota_isencao": 96,
+      "nota_factual": 97,
+      "nota_estilo_nerd": 78,
+      "teve_alucinacao": false,
+      "teve_cliche_ou_sensacionalismo": false,
+      "parecer_resumido": "Serviço útil de economia doméstica, embora falte explorar a matriz hídrica em comparação com a crise energética europeia."
+    },
+    {
+      "origem_tipo": "noticia_quente",
+      "identificador": "btg-fundo-credito-consignado-brb",
+      "nota_isencao": 95,
+      "nota_factual": 94,
+      "nota_estilo_nerd": 79,
+      "teve_alucinacao": false,
+      "teve_cliche_ou_sensacionalismo": false,
+      "parecer_resumido": "Factual de mercado financeiro narrado com precisão e respaldo regulatório da B3."
+    },
+    {
+      "origem_tipo": "noticia_quente",
+      "identificador": "eua-interceptam-navio-bloco-iran",
+      "nota_isencao": 93,
+      "nota_factual": 95,
+      "nota_estilo_nerd": 93,
+      "teve_alucinacao": false,
+      "teve_cliche_ou_sensacionalismo": false,
+      "parecer_resumido": "Notícia geopolítica pura e necessária, detalhando a segurança da navegação e o direito marítimo sancionatório."
+    },
+    {
+      "origem_tipo": "noticia_quente",
+      "identificador": "senado-especial-mulheres-cientistas",
+      "nota_isencao": 94,
+      "nota_factual": 95,
+      "nota_estilo_nerd": 72,
+      "teve_alucinacao": false,
+      "teve_cliche_ou_sensacionalismo": false,
+      "parecer_resumido": "Notícia institucional solene; peca por não mapear descobertas científicas concretas de projeção internacional."
+    },
+    {
+      "origem_tipo": "noticia_quente",
+      "identificador": "brasil-mercosul-caribe-america-central",
+      "nota_isencao": 95,
+      "nota_factual": 94,
+      "nota_estilo_nerd": 91,
+      "teve_alucinacao": false,
+      "teve_cliche_ou_sensacionalismo": false,
+      "parecer_resumido": "Visão diplomática e aduaneira muito alinhada com as diretrizes do portal no tocante à integração sul-sul e mobilidade."
+    },
+    {
+      "origem_tipo": "noticia_quente",
+      "identificador": "vendas-tesouro-direto-recorde-outubro",
+      "nota_isencao": 96,
+      "nota_factual": 97,
+      "nota_estilo_nerd": 85,
+      "teve_alucinacao": false,
+      "teve_cliche_ou_sensacionalismo": false,
+      "parecer_resumido": "Análise clara sobre poupança pública e instrumentos de renda fixa, com números exatos divulgados pela STN."
+    },
+    {
+      "origem_tipo": "noticia_quente",
+      "identificador": "senado-aprova-plano-nacional-cultura",
+      "nota_isencao": 94,
+      "nota_factual": 94,
+      "nota_estilo_nerd": 77,
+      "teve_alucinacao": false,
+      "teve_cliche_ou_sensacionalismo": false,
+      "parecer_resumido": "Acompanhamento legislativo escorreito, mas excessivamente documental."
+    },
+    {
+      "origem_tipo": "noticia_quente",
+      "identificador": "iran-acusa-ucrania-ataque-kuwait-italia",
+      "nota_isencao": 89,
+      "nota_factual": 92,
       "nota_estilo_nerd": 93,
       "teve_alucinacao": false,
       "teve_cliche_ou_sensacionalismo": true,
-      "parecer_resumido": "Texto analítico de alto nível, embora tenha resvalado em leve clichê retórico na introdução ao tratar do cenário político."
+      "parecer_resumido": "Tema extremamente volátil tratado com a devida reserva de apuração, evitando validar previamente alegações de Teerã."
+    },
+    {
+      "origem_tipo": "noticia_quente",
+      "identificador": "dino-suspende-emendas-flavio-bolsonaro-2027",
+      "nota_isencao": 93,
+      "nota_factual": 96,
+      "nota_estilo_nerd": 80,
+      "teve_alucinacao": false,
+      "teve_cliche_ou_sensacionalismo": false,
+      "parecer_resumido": "Relato fiel da liminar judicial, desprovido de adjetivações partidárias em tema de alto atrito entre os Poderes."
+    },
+    {
+      "origem_tipo": "noticia_quente",
+      "identificador": "open-ai-processa-apple-segredos-comerciais",
+      "nota_isencao": 94,
+      "nota_factual": 95,
+      "nota_estilo_nerd": 94,
+      "teve_alucinacao": false,
+      "teve_cliche_ou_sensacionalismo": false,
+      "parecer_resumido": "Embargo tecnológico e guerra concorrencial entre titãs da tecnologia explicados sob a ótica da propriedade intelectual."
+    },
+    {
+      "origem_tipo": "noticia_quente",
+      "identificador": "argentina-aprova-lei-contra-bets",
+      "nota_isencao": 95,
+      "nota_factual": 95,
+      "nota_estilo_nerd": 89,
+      "teve_alucinacao": false,
+      "teve_cliche_ou_sensacionalismo": false,
+      "parecer_resumido": "Paralelo comparativo valioso com o cenário regulatório vizinho, destacando o impacto nos esportes e patrocínios."
+    },
+    {
+      "origem_tipo": "noticia_quente",
+      "identificador": "b3-e-bancos-anunciam-stablecoin-open-brl",
+      "nota_isencao": 95,
+      "nota_factual": 96,
+      "nota_estilo_nerd": 96,
+      "teve_alucinacao": false,
+      "teve_cliche_ou_sensacionalismo": false,
+      "parecer_resumido": "Excelente leitura do futuro das finanças descentralizadas e remessas internacionais vinculadas à moeda brasileira."
+    },
+    {
+      "origem_tipo": "noticia_quente",
+      "identificador": "sp-rompimento-fibra-optica-servicos",
+      "nota_isencao": 94,
+      "nota_factual": 96,
+      "nota_estilo_nerd": 82,
+      "teve_alucinacao": false,
+      "teve_cliche_ou_sensacionalismo": false,
+      "parecer_resumido": "Registro pontual da vulnerabilidade da infraestrutura digital em centros metropolitanos."
     }
   ],
   "pontos_cegos": [
     {
-      "tema": "Processo de impeachment e crise política da Vice-Presidente das Filipinas Sara Duterte",
+      "tema": "Ataque ucraniano sem precedentes com mais de 1.200 drones interceptados na Rússia e Moscou",
       "regiao_ou_paises": [
-        "Filipinas",
-        "Sudeste Asiático"
+        "Rússia",
+        "Ucrânia",
+        "Europa Oriental"
       ],
-      "por_que_era_importante": "A instabilidade institucional no arquipélago afeta rotas comerciais estratégicas na Ásia e a segurança jurídica de investimentos regionais.",
-      "sugestao_pauta_urgente": "Publicar um Pulso 30m detalhando os desdobramentos do processo de impeachment de Sara Duterte e os reflexos para o turismo e negócios na região."
+      "por_que_era_importante": "Trata-se da maior ofensiva aérea de saturação por enxames de drones registrada no conflito, atingindo o espaço aéreo da capital russa e provocando fechamento preventivo de aeroportos internacionais, com risco direto à navegação e rotas comerciais eurasiáticas.",
+      "sugestao_pauta_urgente": "Mapear o impacto tático e aéreo do ataque de drones em Moscou: restrições a voos internacionais, corredor de navegação civil e nova doutrina militar de defesa de saturação."
     },
     {
-      "tema": "Reunião de cúpula de defesa coletiva em Islamabad (Pacto da Meca / Turquia, Arábia Saudita e Paquistão)",
+      "tema": "Uganda inicia ensaios clínicos da primeira vacina de mRNA contra o vírus Ebola na África",
       "regiao_ou_paises": [
-        "Paquistão",
-        "Arábia Saudita",
-        "Turquia"
+        "Uganda",
+        "República Democrática do Congo",
+        "África Oriental"
       ],
-      "por_que_era_importante": "Novas alianças militares no Oriente Médio impactam diretamente a volatilidade do petróleo Brent e, por consequência, o preço dos combustíveis e passagens aéreas no Brasil.",
-      "sugestao_pauta_urgente": "Analisar em nota rápida como o pacto de defesa no Sul da Ásia e Oriente Médio tensiona os mercados energéticos globais."
+      "por_que_era_importante": "Marco biotecnológico global com tecnologia de ponta aplicada à contenção de epidemias letais transfronteiriças, com impacto direto nas regras de biossegurança de viagens e saúde do explorador global.",
+      "sugestao_pauta_urgente": "Vacina de mRNA contra Ebola em Uganda: a revolução biotecnológica nas rotas africanas e o que muda para o viajante e a diplomacia sanitária."
+    },
+    {
+      "tema": "A revolta civil contra data centers gigantescos em zonas urbanas residenciais no Japão",
+      "regiao_ou_paises": [
+        "Japão",
+        "Hong Kong",
+        "Ásia-Pacífico"
+      ],
+      "por_que_era_importante": "Mostra o custo físico e social invisível da infraestrutura de IA (ruído de geradores, demanda hídrica e térmica) no planejamento urbano dos países que lideram a corrida tecnológica.",
+      "sugestao_pauta_urgente": "Data centers gigantes no quintal: o choque entre a expansão física da inteligência artificial e a vizinhança urbana no Japão."
     }
   ],
   "calibracoes_geradas": [
     {
-      "alvo_agente": "pulso_30m",
+      "alvo_agente": "pesquisador_factual",
       "tipo_diretriz": "foco_tematico",
-      "titulo_regra": "Radar Geopolítico Asiático Oculto",
-      "instrucao_prompt": "Ao monitorar feeds internacionais, dar prioridade imediata a crises institucionais na Ásia-Pacífico (como Filipinas e rotas de semicondutores) que possam impactar cadeias globais de suprimentos.",
-      "prioridade": 4
+      "titulo_regra": "Prioridade para Eventos Aéreos e de Infraestrutura Global",
+      "instrucao_prompt": "Ao priorizar cabos internacionais da madrugada, preterir pautas cerimoniais e aprovações protocolares do Congresso quando houver fechamentos de espaço aéreo internacional, ataques de saturação em capitais mundiais ou rupturas sanitárias de magnitude global.",
+      "prioridade": 5
     },
     {
       "alvo_agente": "colunista_nerd",
       "tipo_diretriz": "ajuste_tom",
-      "titulo_regra": "Eliminação de Clichês Retóricos",
-      "instrucao_prompt": "Proibir o uso de frases feitas e aberturas genéricas como 'Em um cenário cada vez mais globalizado' ou 'Resta saber se' em colunas editoriais. Exigir início direto com o fato econômico ou geográfico de impacto.",
-      "prioridade": 3
+      "titulo_regra": "Conexão Obrigatória de Câmbio e Renda Fixa com o Viajante",
+      "instrucao_prompt": "Em toda análise cambial (queda/alta de dólar ou euro) ou de títulos públicos (Tesouro Direto), inserir obrigatoriamente um parágrafo avaliando a janela de oportunidade para o bolso do explorador: conversão em cartões multimoedas, compras no exterior e arbitragem de viagens.",
+      "prioridade": 4
+    },
+    {
+      "alvo_agente": "pulso_30m",
+      "tipo_diretriz": "cuidado_geopolitico",
+      "titulo_regra": "Atribuição Rígida em Conflitos com Alegações de Falsa Bandeira",
+      "instrucao_prompt": "Ao noticiar acusações mútuas entre nações beligerantes (ex: Irã, Ucrânia, potências da OTAN), não validar narrativas unilaterais nos títulos; empregar sempre verbos de declaração assertivos ('autoridades alegam', 'governo nega') e manter a apuração independente em destaque.",
+      "prioridade": 5
     }
   ],
   "golden_exemplars": [
     {
       "tipo_conteudo": "pulso_noticia",
-      "titulo": "Ibovespa dispara 6% e dólar recua abaixo de R$ 5,75 após Luiz Carlos Trabuco aceitar comando da Fazenda",
-      "categoria": "Economia & Câmbio",
-      "nota_isencao": 98,
-      "texto_exemplo": "Segundo apuração da Agência Brasil, da BBC News Brasil e do G1 Economia, o mercado financeiro reagiu fortemente com a confirmação de que Luiz Carlos Trabuco... recuou para R$ 5,74, gerando um alívio cambial imediato e favorável para o bolso do viajante brasileiro e para o custo de importações.",
-      "justificativa_excelencia": "Demonstra a perfeita aplicação do DNA do portal: traduzir um fato macroeconômico puramente técnico em um indicador prático imediato para o viajante e consumidor brasileiro."
+      "titulo": "Taiwan realiza votação crucial sobre reativação de energia nuclear em meio à demanda da inteligência artificial",
+      "categoria": "Geopolítica & Tecnologia",
+      "nota_isencao": 97,
+      "texto_exemplo": "Taiwan realiza eleições locais sob forte pressão militar de Pequim, incorporando no debate das urnas o futuro da energia nuclear na ilha. O pleito é monitorado pelas principais praças de semicondutores do planeta, uma vez que a expansão de fundições como a TSMC e o avanço dos clusters de inteligência artificial colidem frontalmente com a meta de descarbonização e o risco de vulnerabilidade energética em caso de bloqueio aeronaval.",
+      "justificativa_excelencia": "Demonstra síntese impecável entre política local, gargalo tecnológico global, matriz energética e o tabuleiro militar do Indo-Pacífico sem recorrer a sensacionalismo."
+    },
+    {
+      "tipo_conteudo": "pulso_noticia",
+      "titulo": "Dólar despenca quase 4% e fecha em R$ 5,51 após indicação de Luiz Carlos Trabuco para a Fazenda",
+      "categoria": "Câmbio & Economia Prática",
+      "nota_isencao": 95,
+      "texto_exemplo": "O dólar comercial registrou recuo de 3,92% nesta sexta-feira, cotado a R$ 5,51, coroando uma das semanas de maior alívio cambial recente na praça de São Paulo. A reação dos mercados à confirmação de Luiz Carlos Trabuco no comando da Fazenda abre uma janela tática relevante para viajantes e remessas internacionais, que encontram cotações mais favoráveis após meses de estresse inflacionário importado.",
+      "justificativa_excelencia": "Conecta perfeitamente o gatilho macroeconômico factual à realidade prática do bolso do leitor que viaja ou opera em moeda forte."
     }
   ],
   "ajustes_fontes": [
     {
+      "fonte_nome": "Agência Senado",
+      "peso_anterior": 5,
+      "novo_peso": 4,
+      "motivo": "Excesso de pautas protocolares de homenagens e sessões especiais com baixo apelo analítico e nula relevância internacional; peso rebaixado temporariamente para priorizar apuração operacional."
+    },
+    {
       "fonte_nome": "Al Jazeera English",
       "peso_anterior": 4,
       "novo_peso": 5,
-      "motivo": "Demonstrou excelente capacidade de antecipação de fatos factuais globais na madrugada, servindo como ótimo radar para pontos cegos."
+      "motivo": "Cobertura cirúrgica e antecipada de eventos críticos no Sul Global, biotecnologia em África e rotas marítimas no Golfo Pérsico."
     }
   ],
   "pautas_ouro_dia": [
-    "Impacto imediato da queda do dólar abaixo de R$ 5,75 no planejamento de férias internacionais de alta temporada",
-    "A auditoria da União Europeia que desmente falas protecionistas sobre a carne brasileira",
-    "As novas regras de segurança do Pix anunciadas pelo Banco Central para o ciclo de 2027"
+    "Ataque histórico com 1,2 mil drones em território russo: espaço aéreo fechado em Moscou e os novos riscos à aviação internacional",
+    "África na vanguarda da biotecnologia: Uganda inicia testes pioneiros de vacina de mRNA contra o Ebola",
+    "Guerra do Silício vs. Convivência Urbana: Por que bairros residenciais em Tóquio declararam guerra aos data centers gigantes de IA",
+    "A corrida pela Open BRL: O que significa a B3 e bancos lançarem uma stablecoin atrelada ao real para transferências no exterior",
+    "Macron vs. Agro Brasileiro: A geopolítica alimentar e os bastidores das travas europeias à carne sul-americana"
   ]
 }
