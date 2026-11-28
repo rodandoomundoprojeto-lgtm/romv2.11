@@ -2,33 +2,104 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-28T00:59:39Z",
-  "batch_id": "20261128-0059",
+  "updatedAt": "2026-11-28T01:30:49Z",
+  "batch_id": "20261128-0130",
   "temas_ativos": [
     {
-      "slug": "fachin-libera-repasse-master-brb",
-      "titulo_tema": "Ministro Edson Fachin libera repasse de R$ 316,4 milhões do banco Master para o BRB",
-      "titulo_curto": "Ministro Edson Fachin libera repasse de R$ 316,4 milhões do banco Master para o BRB",
+      "slug": "opec-mais-manutencao-petroleo-crise-ira",
+      "titulo_tema": "OPEP+ mantém metas de produção de petróleo diante das incertezas da guerra no Irã",
       "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Economia",
-      "categoria": "Economia_Comercio",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 92,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-30T01:30:49Z",
+      "palavras_chave_busca": [
+        "opep",
+        "petroleo",
+        "guerra no ira",
+        "mercado de energia",
+        "preço do barril",
+        "geopolitica energetica"
+      ],
+      "gatilho_vitrine": "Monitore os desdobramentos da OPEP+ e o impacto no mercado global de energia e inflação brasileira.",
+      "sintese_nerd": "A manutenção das metas de produção de petróleo pela OPEP+, em meio ao conflito com o Irã e restrições de bloqueio marítimo, mantém a volatilidade nos preços globais da commodity. Isso pressiona diretamente os custos de importação de combustíveis e a inflação no Brasil.",
+      "data_publicacao": "2026-11-28T01:30:49Z",
+      "updated_at": "2026-11-28T01:30:49Z"
+    },
+    {
+      "slug": "taiwan-energia-nuclear-ia-impacto-global",
+      "titulo_tema": "Referendo em Taiwan sobre energia nuclear e seu impacto na corrida global de inteligência artificial",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Cultura",
+        "Economia"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 88,
+      "ttl_horas": 72,
+      "expires_at": "2026-12-01T01:30:49Z",
+      "palavras_chave_busca": [
+        "taiwan",
+        "energia nuclear",
+        "inteligencia artificial",
+        "semicondutores",
+        "crise energetica",
+        "geopolitica tecnologica"
+      ],
+      "gatilho_vitrine": "Analise a conexão crítica entre a matriz energética de Taiwan, a fabricação mundial de chips e o avanço da IA.",
+      "sintese_nerd": "O referendo taiwanês sobre a retomada da energia nuclear é vital para sustentar a demanda massiva de eletricidade exigida pelas indústrias de semicondutores. Qualquer instabilidade energética na ilha afeta diretamente a cadeia global de suprimentos de tecnologia e o desenvolvimento de IA.",
+      "data_publicacao": "2026-11-28T01:30:49Z",
+      "updated_at": "2026-11-28T01:30:49Z"
+    },
+    {
+      "slug": "caso-master-lavagem-dinheiro-arte-mercado-financeiro",
+      "titulo_tema": "O caso Master e as brechas na regulação de lavagem de dinheiro através de obras de arte",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Politica",
       "categorias_cruzadas": [
         "Economia",
-        "Resumo_Ultimas"
+        "Cultura"
       ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 89,
-      "urgencia_score": 88,
+      "rota_editoria": "/politica",
+      "relevancia_score": 85,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-30T01:30:49Z",
+      "palavras_chave_busca": [
+        "caso master",
+        "lavagem de dinheiro",
+        "mercado de arte",
+        "picasso",
+        "stf",
+        "regulacao financeira"
+      ],
+      "gatilho_vitrine": "Acompanhe as investigações do STF sobre ativos de alto luxo e os desafios regulatórios do mercado de arte no Brasil.",
+      "sintese_nerd": "O bloqueio de ativos de luxo, incluindo obras de arte de alto valor ligadas ao grupo Master, escancara as fragilidades legais na rastreabilidade de compras de grande porte. Essa lacuna facilita a ocultação de capitais e desafia os órgãos de controle financeiro e judiciário.",
+      "data_publicacao": "2026-11-28T01:30:49Z",
+      "updated_at": "2026-11-28T01:30:49Z"
+    },
+    {
+      "slug": "fachin-libera-repasse-master-brb",
+      "status": "novo",
+      "categoria": "Economia_Comercio",
       "ttl_horas": 24,
       "expires_at": "2026-11-29T00:59:39Z",
-      "palavras_chave_busca": [
-        "edson fachin",
-        "stf",
-        "banco master",
-        "brb",
-        "crédito"
+      "updated_at": "2026-11-28T00:59:39Z",
+      "fontes_urls": [
+        "https://www.jota.info/stf/do-supremo/fachin-libera-o-repasse-de-r-3164-milhoes-do-master-para-o-brb"
       ],
+      "titulo_tema": "Ministro Edson Fachin libera repasse de R$ 316,4 milhões do banco Master para o BRB",
+      "resumo_pulso": "Conforme apuração do JOTA e da Agência Brasil, o ministro do STF Edson Fachin autorizou a liberação de R$ 316,4 milhões em repasses do banco Master para o Banco de Brasília (BRB). A decisão manteve restrições apenas sobre créditos controversos comercializados simultaneamente com mais de uma instituição financeira.",
+      "sintese_nerd": "A medida destrava operações financeiras e traz previsibilidade jurídica para a liquidez de instituições ligadas ao conglomerado em apuração.",
+      "titulo_curto": "Ministro Edson Fachin libera repasse de R$ 316,4 milhões do banco Master para o BRB",
+      "rota_editoria": "/economia",
       "palavras_chave": [
         "edson fachin",
         "stf",
@@ -36,47 +107,47 @@
         "brb",
         "crédito"
       ],
+      "urgencia_score": 88,
+      "data_publicacao": "2026-11-28T00:55:28Z",
       "gatilho_vitrine": "Conforme apuração do JOTA e da Agência Brasil, o ministro do STF Edson Fachin autorizou a liberação de R$ 316,4 milhões em repasses do banco Master para o Banco de Brasília (BRB). A decisão manteve restrições apenas sobre créditos controversos comercializados simultaneamente com mais de uma instituição financeira.",
-      "resumo_pulso": "Conforme apuração do JOTA e da Agência Brasil, o ministro do STF Edson Fachin autorizou a liberação de R$ 316,4 milhões em repasses do banco Master para o Banco de Brasília (BRB). A decisão manteve restrições apenas sobre créditos controversos comercializados simultaneamente com mais de uma instituição financeira.",
-      "sintese_nerd": "A medida destrava operações financeiras e traz previsibilidade jurídica para a liquidez de instituições ligadas ao conglomerado em apuração.",
       "impacto_pratico": "A medida destrava operações financeiras e traz previsibilidade jurídica para a liquidez de instituições ligadas ao conglomerado em apuração.",
-      "paises_envolvidos": [
-        "BR"
-      ],
+      "origem_pipeline": "pulso",
       "veiculos_origem": [
         "JOTA Info",
         "Poder360"
       ],
-      "fontes_urls": [
-        "https://www.jota.info/stf/do-supremo/fachin-libera-o-repasse-de-r-3164-milhoes-do-master-para-o-brb"
+      "relevancia_score": 89,
+      "paises_envolvidos": [
+        "BR"
       ],
-      "data_publicacao": "2026-11-28T00:55:28Z",
-      "updated_at": "2026-11-28T00:59:39Z"
-    },
-    {
-      "slug": "nova-variante-covid-19-brasil",
-      "titulo_tema": "Autoridades de saúde monitoram avanço de nova variante da covid-19 identificada em cinco estados",
-      "titulo_curto": "Autoridades de saúde monitoram avanço de nova variante da covid-19 identificada em cinco estados",
-      "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Cultura",
-      "categoria": "Sociedade_Cultura",
+      "categoria_primaria": "Economia",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
       ],
-      "rota_editoria": "/cultura",
-      "relevancia_score": 90,
-      "urgencia_score": 89,
+      "palavras_chave_busca": [
+        "edson fachin",
+        "stf",
+        "banco master",
+        "brb",
+        "crédito"
+      ]
+    },
+    {
+      "slug": "nova-variante-covid-19-brasil",
+      "status": "novo",
+      "categoria": "Sociedade_Cultura",
       "ttl_horas": 24,
       "expires_at": "2026-11-29T00:59:39Z",
-      "palavras_chave_busca": [
-        "covid-19",
-        "variante pj.2.1",
-        "saúde pública",
-        "poder360",
-        "brasil"
+      "updated_at": "2026-11-28T00:59:39Z",
+      "fontes_urls": [
+        "https://www.poder360.com.br/poder-saude/saiba-o-que-se-sabe-sobre-a-nova-variante-da-covid-19-no-brasil/"
       ],
+      "titulo_tema": "Autoridades de saúde monitoram avanço de nova variante da covid-19 identificada em cinco estados",
+      "resumo_pulso": "Segundo informações do portal Poder360 com base em boletins epidemiológicos, a linhagem PJ.2.1 da covid-19 foi detectada em cinco estados brasileiros e no Distrito Federal. Especialistas apontam que a nova cepa pode estar associada ao recente acréscimo nos registros de Síndrome Respiratória Aguda Grave no país.",
+      "sintese_nerd": "Acende alerta sanitário para redes de atendimento médico e reforça a importância de manter a cadência de imunização em grupos vulneráveis.",
+      "titulo_curto": "Autoridades de saúde monitoram avanço de nova variante da covid-19 identificada em cinco estados",
+      "rota_editoria": "/cultura",
       "palavras_chave": [
         "covid-19",
         "variante pj.2.1",
@@ -84,21 +155,30 @@
         "poder360",
         "brasil"
       ],
+      "urgencia_score": 89,
+      "data_publicacao": "2026-11-28T00:20:11Z",
       "gatilho_vitrine": "Segundo informações do portal Poder360 com base em boletins epidemiológicos, a linhagem PJ.2.1 da covid-19 foi detectada em cinco estados brasileiros e no Distrito Federal. Especialistas apontam que a nova cepa pode estar associada ao recente acréscimo nos registros de Síndrome Respiratória Aguda Grave no país.",
-      "resumo_pulso": "Segundo informações do portal Poder360 com base em boletins epidemiológicos, a linhagem PJ.2.1 da covid-19 foi detectada em cinco estados brasileiros e no Distrito Federal. Especialistas apontam que a nova cepa pode estar associada ao recente acréscimo nos registros de Síndrome Respiratória Aguda Grave no país.",
-      "sintese_nerd": "Acende alerta sanitário para redes de atendimento médico e reforça a importância de manter a cadência de imunização em grupos vulneráveis.",
       "impacto_pratico": "Acende alerta sanitário para redes de atendimento médico e reforça a importância de manter a cadência de imunização em grupos vulneráveis.",
-      "paises_envolvidos": [
-        "BR"
-      ],
+      "origem_pipeline": "pulso",
       "veiculos_origem": [
         "Poder360"
       ],
-      "fontes_urls": [
-        "https://www.poder360.com.br/poder-saude/saiba-o-que-se-sabe-sobre-a-nova-variante-da-covid-19-no-brasil/"
+      "relevancia_score": 90,
+      "paises_envolvidos": [
+        "BR"
       ],
-      "data_publicacao": "2026-11-28T00:20:11Z",
-      "updated_at": "2026-11-28T00:59:39Z"
+      "categoria_primaria": "Cultura",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "covid-19",
+        "variante pj.2.1",
+        "saúde pública",
+        "poder360",
+        "brasil"
+      ]
     },
     {
       "slug": "taiwan-vota-energia-nuclear-ia",
@@ -196,28 +276,19 @@
     },
     {
       "slug": "dolar-cai-quase-4-por-cento-trabuco-fazenda",
-      "titulo_tema": "Dólar despenca quase 4% e fecha em R$ 5,51 após indicação de Luiz Carlos Trabuco para a Fazenda",
-      "titulo_curto": "Dólar despenca quase 4% e fecha em R$ 5,51 após indicação de Luiz Carlos Trabuco para a Fazenda",
       "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Economia",
       "categoria": "Economia_Comercio",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 95,
-      "urgencia_score": 94,
       "ttl_horas": 24,
       "expires_at": "2026-11-29T00:59:39Z",
-      "palavras_chave_busca": [
-        "dólar",
-        "luiz carlos trabuco",
-        "ministério da fazenda",
-        "câmbio",
-        "economia"
+      "updated_at": "2026-11-28T00:59:39Z",
+      "fontes_urls": [
+        "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/dolar-cai-quase-4-e-fecha-em-r-551-apos-anuncio-de-trabuco"
       ],
+      "titulo_tema": "Dólar despenca quase 4% e fecha em R$ 5,51 após indicação de Luiz Carlos Trabuco para a Fazenda",
+      "resumo_pulso": "Segundo dados divulgados pela Agência Brasil, o dólar comercial recuou quase 4% nesta sexta-feira (27), fechando cotado a R$ 5,51. A forte queda ocorreu após a confirmação de Luiz Carlos Trabuco para o comando do Ministério da Fazenda no próximo governo, acumulando na semana o maior recuo desde outubro de 2008.",
+      "sintese_nerd": "A queda expressiva alivia custos de importação e reduz pressões inflacionárias sobre produtos cotados em moeda estrangeira no mercado brasileiro.",
+      "titulo_curto": "Dólar despenca quase 4% e fecha em R$ 5,51 após indicação de Luiz Carlos Trabuco para a Fazenda",
+      "rota_editoria": "/economia",
       "palavras_chave": [
         "dólar",
         "luiz carlos trabuco",
@@ -225,47 +296,30 @@
         "câmbio",
         "economia"
       ],
+      "urgencia_score": 94,
+      "data_publicacao": "2026-11-27T22:47:00Z",
       "gatilho_vitrine": "Segundo dados divulgados pela Agência Brasil, o dólar comercial recuou quase 4% nesta sexta-feira (27), fechando cotado a R$ 5,51. A forte queda ocorreu após a confirmação de Luiz Carlos Trabuco para o comando do Ministério da Fazenda no próximo governo, acumulando na semana o maior recuo desde outubro de 2008.",
-      "resumo_pulso": "Segundo dados divulgados pela Agência Brasil, o dólar comercial recuou quase 4% nesta sexta-feira (27), fechando cotado a R$ 5,51. A forte queda ocorreu após a confirmação de Luiz Carlos Trabuco para o comando do Ministério da Fazenda no próximo governo, acumulando na semana o maior recuo desde outubro de 2008.",
-      "sintese_nerd": "A queda expressiva alivia custos de importação e reduz pressões inflacionárias sobre produtos cotados em moeda estrangeira no mercado brasileiro.",
       "impacto_pratico": "A queda expressiva alivia custos de importação e reduz pressões inflacionárias sobre produtos cotados em moeda estrangeira no mercado brasileiro.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "Agência Brasil (EBC)"
+      ],
+      "relevancia_score": 95,
       "paises_envolvidos": [
         "BR",
         "US"
       ],
-      "veiculos_origem": [
-        "Agência Brasil (EBC)"
-      ],
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/dolar-cai-quase-4-e-fecha-em-r-551-apos-anuncio-de-trabuco"
-      ],
-      "data_publicacao": "2026-11-27T22:47:00Z",
-      "updated_at": "2026-11-28T00:59:39Z"
-    },
-    {
-      "slug": "aneel-bandeira-verde-dezembro-conta-luz",
-      "status": "novo",
-      "ttl_horas": 72,
-      "expires_at": "2026-11-30T22:38:06Z",
-      "updated_at": "2026-11-27T22:38:06Z",
-      "titulo_tema": "Aneel mantém bandeira tarifária verde em dezembro e afasta cobrança extra na luz",
-      "sintese_nerd": "As condições favoráveis de geração de energia no país permitiram que a Aneel mantivesse a bandeira tarifária verde durante todo o mês de dezembro, zerando custos adicionais na fatura de eletricidade. Essa estabilidade na matriz energética ajuda a conter pressões inflacionárias de curto prazo no orçamento doméstico.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-27T22:38:06Z",
-      "gatilho_vitrine": "Destacar na seção de economia como a manutenção da bandeira verde em dezembro alivia o orçamento das famílias no final do ano.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 85,
       "categoria_primaria": "Economia",
       "categorias_cruzadas": [
-        "Cultura"
+        "Economia",
+        "Resumo_Ultimas"
       ],
       "palavras_chave_busca": [
-        "aneel",
-        "bandeira verde",
-        "conta de luz",
-        "tarifa de energia",
-        "inflação",
-        "custo de vida"
+        "dólar",
+        "luiz carlos trabuco",
+        "ministério da fazenda",
+        "câmbio",
+        "economia"
       ]
     },
     {
@@ -360,60 +414,6 @@
         "bloqueio naval",
         "marinha",
         "oriente médio"
-      ]
-    },
-    {
-      "slug": "efeito-trabuco-fazenda-bolsa-dolar-tesouro",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-29T22:38:06Z",
-      "updated_at": "2026-11-27T22:38:06Z",
-      "titulo_tema": "Indicação de Luiz Carlos Trabuco para a Fazenda causa forte reação nos mercados",
-      "sintese_nerd": "A confirmação de Luiz Carlos Trabuco no comando da Fazenda gerou alívio imediato no mercado corporativo, impulsionando ações e provocando forte queda no dólar e nas taxas do Tesouro Direto. Essa guinada reflete a busca por previsibilidade fiscal, embora levante debates políticos internos sobre os rumos econômicos do governo.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-27T22:10:48Z",
-      "gatilho_vitrine": "Exibir na vitrine principal e destacar os impactos da chegada do banqueiro à equipe econômica na inflação e nos ativos brasileiros.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 95,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Politica",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "luiz carlos trabuco",
-        "ministério da fazenda",
-        "ibovespa",
-        "dólar",
-        "tesouro direto",
-        "governo lula",
-        "mercado financeiro"
-      ]
-    },
-    {
-      "slug": "retorno-edmundo-gonzalez-exilio-venezuela",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-29T22:38:06Z",
-      "updated_at": "2026-11-27T22:38:06Z",
-      "titulo_tema": "Opositor Edmundo González anuncia retorno à Venezuela após período no exílio",
-      "sintese_nerd": "O anúncio de retorno do opositor Edmundo González à Venezuela, após dois anos exilado na Espanha, recoloca a pressão sobre o tabuleiro político de Caracas em meio a celebrações religiosas locais. A volta do líder oposicionista desafia o cerco institucional e pode reconfigurar as tensões diplomáticas na região.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-27T22:10:48Z",
-      "gatilho_vitrine": "Incluir no Radar Geopolítico para contextualizar as movimentações na política da América Latina e o cenário de transição na Venezuela.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 82,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Politica"
-      ],
-      "palavras_chave_busca": [
-        "edmundo gonzález",
-        "venezuela",
-        "exílio",
-        "oposição venezuelana",
-        "geopolítica sul-americana",
-        "espanha"
       ]
     },
     {
@@ -890,28 +890,100 @@
       ]
     }
   ],
+  "temas_curadoria": [
+    {
+      "slug": "opec-mais-manutencao-petroleo-crise-ira",
+      "titulo_tema": "OPEP+ mantém metas de produção de petróleo diante das incertezas da guerra no Irã",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 92,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-30T01:30:49Z",
+      "palavras_chave_busca": [
+        "opep",
+        "petroleo",
+        "guerra no ira",
+        "mercado de energia",
+        "preço do barril",
+        "geopolitica energetica"
+      ],
+      "gatilho_vitrine": "Monitore os desdobramentos da OPEP+ e o impacto no mercado global de energia e inflação brasileira.",
+      "sintese_nerd": "A manutenção das metas de produção de petróleo pela OPEP+, em meio ao conflito com o Irã e restrições de bloqueio marítimo, mantém a volatilidade nos preços globais da commodity. Isso pressiona diretamente os custos de importação de combustíveis e a inflação no Brasil.",
+      "data_publicacao": "2026-11-28T01:30:49Z",
+      "updated_at": "2026-11-28T01:30:49Z"
+    },
+    {
+      "slug": "taiwan-energia-nuclear-ia-impacto-global",
+      "titulo_tema": "Referendo em Taiwan sobre energia nuclear e seu impacto na corrida global de inteligência artificial",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Cultura",
+        "Economia"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 88,
+      "ttl_horas": 72,
+      "expires_at": "2026-12-01T01:30:49Z",
+      "palavras_chave_busca": [
+        "taiwan",
+        "energia nuclear",
+        "inteligencia artificial",
+        "semicondutores",
+        "crise energetica",
+        "geopolitica tecnologica"
+      ],
+      "gatilho_vitrine": "Analise a conexão crítica entre a matriz energética de Taiwan, a fabricação mundial de chips e o avanço da IA.",
+      "sintese_nerd": "O referendo taiwanês sobre a retomada da energia nuclear é vital para sustentar a demanda massiva de eletricidade exigida pelas indústrias de semicondutores. Qualquer instabilidade energética na ilha afeta diretamente a cadeia global de suprimentos de tecnologia e o desenvolvimento de IA.",
+      "data_publicacao": "2026-11-28T01:30:49Z",
+      "updated_at": "2026-11-28T01:30:49Z"
+    },
+    {
+      "slug": "caso-master-lavagem-dinheiro-arte-mercado-financeiro",
+      "titulo_tema": "O caso Master e as brechas na regulação de lavagem de dinheiro através de obras de arte",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Politica",
+      "categorias_cruzadas": [
+        "Economia",
+        "Cultura"
+      ],
+      "rota_editoria": "/politica",
+      "relevancia_score": 85,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-30T01:30:49Z",
+      "palavras_chave_busca": [
+        "caso master",
+        "lavagem de dinheiro",
+        "mercado de arte",
+        "picasso",
+        "stf",
+        "regulacao financeira"
+      ],
+      "gatilho_vitrine": "Acompanhe as investigações do STF sobre ativos de alto luxo e os desafios regulatórios do mercado de arte no Brasil.",
+      "sintese_nerd": "O bloqueio de ativos de luxo, incluindo obras de arte de alto valor ligadas ao grupo Master, escancara as fragilidades legais na rastreabilidade de compras de grande porte. Essa lacuna facilita a ocultação de capitais e desafia os órgãos de controle financeiro e judiciário.",
+      "data_publicacao": "2026-11-28T01:30:49Z",
+      "updated_at": "2026-11-28T01:30:49Z"
+    }
+  ],
   "noticias_quentes": [
     {
       "slug": "fachin-libera-repasse-master-brb",
-      "titulo_curto": "Ministro Edson Fachin libera repasse de R$ 316,4 milhões do banco Master para o BRB",
-      "resumo_pulso": "Conforme apuração do JOTA e da Agência Brasil, o ministro do STF Edson Fachin autorizou a liberação de R$ 316,4 milhões em repasses do banco Master para o Banco de Brasília (BRB). A decisão manteve restrições apenas sobre créditos controversos comercializados simultaneamente com mais de uma instituição financeira.",
-      "impacto_pratico": "A medida destrava operações financeiras e traz previsibilidade jurídica para a liquidez de instituições ligadas ao conglomerado em apuração.",
       "categoria": "Economia_Comercio",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "urgencia_score": 88,
-      "relevancia_score": 89,
-      "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 12,
-      "veiculos_origem": [
-        "JOTA Info",
-        "Poder360"
-      ],
+      "expires_at": "2026-11-29T00:59:39Z",
+      "updated_at": "2026-11-28T00:59:39Z",
       "fontes_urls": [
         "https://www.jota.info/stf/do-supremo/fachin-libera-o-repasse-de-r-3164-milhoes-do-master-para-o-brb"
       ],
+      "resumo_pulso": "Conforme apuração do JOTA e da Agência Brasil, o ministro do STF Edson Fachin autorizou a liberação de R$ 316,4 milhões em repasses do banco Master para o Banco de Brasília (BRB). A decisão manteve restrições apenas sobre créditos controversos comercializados simultaneamente com mais de uma instituição financeira.",
+      "titulo_curto": "Ministro Edson Fachin libera repasse de R$ 316,4 milhões do banco Master para o BRB",
       "palavras_chave": [
         "Edson Fachin",
         "STF",
@@ -919,37 +991,38 @@
         "BRB",
         "Crédito"
       ],
+      "urgencia_score": 88,
       "data_publicacao": "2026-11-28T00:55:28Z",
-      "links_internos_relacionados": [
-        {
-          "titulo_existente": "STF analisa regras de transparência e limites constitucionais entre os Poderes",
-          "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
-          "motivo_conexao": "Demonstra o papel do Supremo Tribunal Federal na deliberação de litígios financeiros e institucionais complexos."
-        }
+      "impacto_pratico": "A medida destrava operações financeiras e traz previsibilidade jurídica para a liquidez de instituições ligadas ao conglomerado em apuração.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "JOTA Info",
+        "Poder360"
       ],
-      "expires_at": "2026-11-29T00:59:39Z",
-      "updated_at": "2026-11-28T00:59:39Z"
-    },
-    {
-      "slug": "nova-variante-covid-19-brasil",
-      "titulo_curto": "Autoridades de saúde monitoram avanço de nova variante da covid-19 identificada em cinco estados",
-      "resumo_pulso": "Segundo informações do portal Poder360 com base em boletins epidemiológicos, a linhagem PJ.2.1 da covid-19 foi detectada em cinco estados brasileiros e no Distrito Federal. Especialistas apontam que a nova cepa pode estar associada ao recente acréscimo nos registros de Síndrome Respiratória Aguda Grave no país.",
-      "impacto_pratico": "Acende alerta sanitário para redes de atendimento médico e reforça a importância de manter a cadência de imunização em grupos vulneráveis.",
-      "categoria": "Sociedade_Cultura",
+      "relevancia_score": 89,
+      "horas_em_destaque": 12,
       "paises_envolvidos": [
         "BR"
       ],
-      "urgencia_score": 89,
-      "relevancia_score": 90,
-      "nivel_confianca": "alta",
+      "links_internos_relacionados": [
+        {
+          "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
+          "motivo_conexao": "Demonstra o papel do Supremo Tribunal Federal na deliberação de litígios financeiros e institucionais complexos.",
+          "titulo_existente": "STF analisa regras de transparência e limites constitucionais entre os Poderes"
+        }
+      ]
+    },
+    {
+      "slug": "nova-variante-covid-19-brasil",
+      "categoria": "Sociedade_Cultura",
       "ttl_horas": 24,
-      "horas_em_destaque": 12,
-      "veiculos_origem": [
-        "Poder360"
-      ],
+      "expires_at": "2026-11-29T00:59:39Z",
+      "updated_at": "2026-11-28T00:59:39Z",
       "fontes_urls": [
         "https://www.poder360.com.br/poder-saude/saiba-o-que-se-sabe-sobre-a-nova-variante-da-covid-19-no-brasil/"
       ],
+      "resumo_pulso": "Segundo informações do portal Poder360 com base em boletins epidemiológicos, a linhagem PJ.2.1 da covid-19 foi detectada em cinco estados brasileiros e no Distrito Federal. Especialistas apontam que a nova cepa pode estar associada ao recente acréscimo nos registros de Síndrome Respiratória Aguda Grave no país.",
+      "titulo_curto": "Autoridades de saúde monitoram avanço de nova variante da covid-19 identificada em cinco estados",
       "palavras_chave": [
         "Covid-19",
         "Variante PJ.2.1",
@@ -957,16 +1030,25 @@
         "Poder360",
         "Brasil"
       ],
+      "urgencia_score": 89,
       "data_publicacao": "2026-11-28T00:20:11Z",
+      "impacto_pratico": "Acende alerta sanitário para redes de atendimento médico e reforça a importância de manter a cadência de imunização em grupos vulneráveis.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Poder360"
+      ],
+      "relevancia_score": 90,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "BR"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "Movimentos sociais e parlamentares debatem investimentos em saúde, educação e transição ecológica",
           "url_existente": "https://www.rodandoomundo.com.br/saude",
-          "motivo_conexao": "Aborda o impacto de demandas sanitárias urgentes na estrutura de atendimento do país."
+          "motivo_conexao": "Aborda o impacto de demandas sanitárias urgentes na estrutura de atendimento do país.",
+          "titulo_existente": "Movimentos sociais e parlamentares debatem investimentos em saúde, educação e transição ecológica"
         }
-      ],
-      "expires_at": "2026-11-29T00:59:39Z",
-      "updated_at": "2026-11-28T00:59:39Z"
+      ]
     },
     {
       "slug": "taiwan-vota-energia-nuclear-ia",
@@ -1047,25 +1129,15 @@
     },
     {
       "slug": "dolar-cai-quase-4-por-cento-trabuco-fazenda",
-      "titulo_curto": "Dólar despenca quase 4% e fecha em R$ 5,51 após indicação de Luiz Carlos Trabuco para a Fazenda",
-      "resumo_pulso": "Segundo dados divulgados pela Agência Brasil, o dólar comercial recuou quase 4% nesta sexta-feira (27), fechando cotado a R$ 5,51. A forte queda ocorreu após a confirmação de Luiz Carlos Trabuco para o comando do Ministério da Fazenda no próximo governo, acumulando na semana o maior recuo desde outubro de 2008.",
-      "impacto_pratico": "A queda expressiva alivia custos de importação e reduz pressões inflacionárias sobre produtos cotados em moeda estrangeira no mercado brasileiro.",
       "categoria": "Economia_Comercio",
-      "paises_envolvidos": [
-        "BR",
-        "US"
-      ],
-      "urgencia_score": 94,
-      "relevancia_score": 95,
-      "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 12,
-      "veiculos_origem": [
-        "Agência Brasil (EBC)"
-      ],
+      "expires_at": "2026-11-29T00:59:39Z",
+      "updated_at": "2026-11-28T00:59:39Z",
       "fontes_urls": [
         "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/dolar-cai-quase-4-e-fecha-em-r-551-apos-anuncio-de-trabuco"
       ],
+      "resumo_pulso": "Segundo dados divulgados pela Agência Brasil, o dólar comercial recuou quase 4% nesta sexta-feira (27), fechando cotado a R$ 5,51. A forte queda ocorreu após a confirmação de Luiz Carlos Trabuco para o comando do Ministério da Fazenda no próximo governo, acumulando na semana o maior recuo desde outubro de 2008.",
+      "titulo_curto": "Dólar despenca quase 4% e fecha em R$ 5,51 após indicação de Luiz Carlos Trabuco para a Fazenda",
       "palavras_chave": [
         "Dólar",
         "Luiz Carlos Trabuco",
@@ -1073,21 +1145,31 @@
         "Câmbio",
         "Economia"
       ],
+      "urgencia_score": 94,
       "data_publicacao": "2026-11-27T22:47:00Z",
+      "impacto_pratico": "A queda expressiva alivia custos de importação e reduz pressões inflacionárias sobre produtos cotados em moeda estrangeira no mercado brasileiro.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Agência Brasil (EBC)"
+      ],
+      "relevancia_score": 95,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "BR",
+        "US"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "Banco Central e mercado financeiro acompanham inflação de serviços, câmbio e metas fiscais",
           "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-inflacao",
-          "motivo_conexao": "Explica como o comportamento do câmbio e das expectativas financeiras influencia a condução da política econômica e a inflação."
+          "motivo_conexao": "Explica como o comportamento do câmbio e das expectativas financeiras influencia a condução da política econômica e a inflação.",
+          "titulo_existente": "Banco Central e mercado financeiro acompanham inflação de serviços, câmbio e metas fiscais"
         },
         {
-          "titulo_existente": "Economia no Brasil",
           "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
-          "motivo_conexao": "Contextualiza os principais indicadores de mercado, câmbio e contas públicas no cenário nacional."
+          "motivo_conexao": "Contextualiza os principais indicadores de mercado, câmbio e contas públicas no cenário nacional.",
+          "titulo_existente": "Economia no Brasil"
         }
-      ],
-      "expires_at": "2026-11-29T00:59:39Z",
-      "updated_at": "2026-11-28T00:59:39Z"
+      ]
     },
     {
       "slug": "btg-fundo-credito-consignado-brb",
@@ -1641,88 +1723,6 @@
         "BR"
       ],
       "links_internos_relacionados": []
-    }
-  ],
-  "temas_curadoria": [
-    {
-      "slug": "aneel-bandeira-verde-dezembro-conta-luz",
-      "status": "novo",
-      "ttl_horas": 72,
-      "expires_at": "2026-11-30T22:38:06Z",
-      "updated_at": "2026-11-27T22:38:06Z",
-      "titulo_tema": "Aneel mantém bandeira tarifária verde em dezembro e afasta cobrança extra na luz",
-      "sintese_nerd": "As condições favoráveis de geração de energia no país permitiram que a Aneel mantivesse a bandeira tarifária verde durante todo o mês de dezembro, zerando custos adicionais na fatura de eletricidade. Essa estabilidade na matriz energética ajuda a conter pressões inflacionárias de curto prazo no orçamento doméstico.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-27T22:38:06Z",
-      "gatilho_vitrine": "Destacar na seção de economia como a manutenção da bandeira verde em dezembro alivia o orçamento das famílias no final do ano.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 85,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Cultura"
-      ],
-      "palavras_chave_busca": [
-        "aneel",
-        "bandeira verde",
-        "conta de luz",
-        "tarifa de energia",
-        "inflação",
-        "custo de vida"
-      ]
-    },
-    {
-      "slug": "efeito-trabuco-fazenda-bolsa-dolar-tesouro",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-29T22:38:06Z",
-      "updated_at": "2026-11-27T22:38:06Z",
-      "titulo_tema": "Indicação de Luiz Carlos Trabuco para a Fazenda causa forte reação nos mercados",
-      "sintese_nerd": "A confirmação de Luiz Carlos Trabuco no comando da Fazenda gerou alívio imediato no mercado corporativo, impulsionando ações e provocando forte queda no dólar e nas taxas do Tesouro Direto. Essa guinada reflete a busca por previsibilidade fiscal, embora levante debates políticos internos sobre os rumos econômicos do governo.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-27T22:10:48Z",
-      "gatilho_vitrine": "Exibir na vitrine principal e destacar os impactos da chegada do banqueiro à equipe econômica na inflação e nos ativos brasileiros.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 95,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Politica",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "luiz carlos trabuco",
-        "ministério da fazenda",
-        "ibovespa",
-        "dólar",
-        "tesouro direto",
-        "governo lula",
-        "mercado financeiro"
-      ]
-    },
-    {
-      "slug": "retorno-edmundo-gonzalez-exilio-venezuela",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-29T22:38:06Z",
-      "updated_at": "2026-11-27T22:38:06Z",
-      "titulo_tema": "Opositor Edmundo González anuncia retorno à Venezuela após período no exílio",
-      "sintese_nerd": "O anúncio de retorno do opositor Edmundo González à Venezuela, após dois anos exilado na Espanha, recoloca a pressão sobre o tabuleiro político de Caracas em meio a celebrações religiosas locais. A volta do líder oposicionista desafia o cerco institucional e pode reconfigurar as tensões diplomáticas na região.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-27T22:10:48Z",
-      "gatilho_vitrine": "Incluir no Radar Geopolítico para contextualizar as movimentações na política da América Latina e o cenário de transição na Venezuela.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 82,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Politica"
-      ],
-      "palavras_chave_busca": [
-        "edmundo gonzález",
-        "venezuela",
-        "exílio",
-        "oposição venezuelana",
-        "geopolítica sul-americana",
-        "espanha"
-      ]
     }
   ]
 }
