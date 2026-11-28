@@ -2,13 +2,13 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-28T08:18:41Z",
-  "batch_id": "20261128-0818",
+  "updatedAt": "2026-11-28T09:22:08Z",
+  "batch_id": "20261128-0920",
   "temas_ativos": [
     {
-      "slug": "relatora-onu-liberada-costa-rica-tribunal",
-      "titulo_tema": "Relatora especial da ONU é liberada em aeroporto da Costa Rica após decisão de corte constitucional",
-      "titulo_curto": "Relatora especial da ONU é liberada em aeroporto da Costa Rica após decisão de corte constitucional",
+      "slug": "russia-intensifica-ataques-aereos-regioes-ucrania",
+      "titulo_tema": "Autoridades ucranianas relatam mortes e feridos em novos ataques aéreos russos",
+      "titulo_curto": "Autoridades ucranianas relatam mortes e feridos em novos ataques aéreos russos",
       "status": "novo",
       "origem_pipeline": "pulso",
       "categoria_primaria": "Geopolitica_Radar",
@@ -18,17 +18,107 @@
         "Resumo_Ultimas"
       ],
       "rota_editoria": "/radar",
-      "relevancia_score": 85,
-      "urgencia_score": 86,
+      "relevancia_score": 88,
+      "urgencia_score": 91,
+      "ttl_horas": 12,
+      "expires_at": "2026-11-28T21:22:08Z",
+      "palavras_chave_busca": [
+        "ucrânia",
+        "rússia",
+        "conflito armado",
+        "drones",
+        "chernihiv"
+      ],
+      "palavras_chave": [
+        "ucrânia",
+        "rússia",
+        "conflito armado",
+        "drones",
+        "chernihiv"
+      ],
+      "gatilho_vitrine": "Segundo declarações da Força Aérea da Ucrânia e relatos das agências Ukrinform e The Kyiv Independent, disparos de mísseis e mais de 160 drones atingiram posições na região de Chernihiv, Sumy e Donetsk. Autoridades ucranianas alegam que ao menos dez civis morreram e dezenas ficaram feridos, com danos a infraestruturas locais, enquanto a apuração independente sobre a extensão total dos estragos prossegue.",
+      "resumo_pulso": "Segundo declarações da Força Aérea da Ucrânia e relatos das agências Ukrinform e The Kyiv Independent, disparos de mísseis e mais de 160 drones atingiram posições na região de Chernihiv, Sumy e Donetsk. Autoridades ucranianas alegam que ao menos dez civis morreram e dezenas ficaram feridos, com danos a infraestruturas locais, enquanto a apuração independente sobre a extensão total dos estragos prossegue.",
+      "sintese_nerd": "A elevação nos ataques aéreos amplia a instabilidade operacional em rotas de suprimentos e infraestrutura de energia no leste europeu.",
+      "impacto_pratico": "A elevação nos ataques aéreos amplia a instabilidade operacional em rotas de suprimentos e infraestrutura de energia no leste europeu.",
+      "paises_envolvidos": [
+        "UA",
+        "RU"
+      ],
+      "veiculos_origem": [
+        "The Kyiv Independent",
+        "Ukrinform"
+      ],
+      "fontes_urls": [
+        "https://kyivindependent.com/russian-attacks-kill-10-injure-55-across-ukraine-over-past-day-as-deadly-strike-hits-chernihiv-oblast-businesses/",
+        "https://www.ukrinform.net/rubric-ato/4189505-two-women-injured-in-russian-attacks-on-sumy-region-over-past-day.html"
+      ],
+      "data_publicacao": "2026-11-28T09:01:46Z",
+      "updated_at": "2026-11-28T09:22:08Z"
+    },
+    {
+      "slug": "analistas-avaliam-desafios-fiscais-novo-ministro-fazenda",
+      "titulo_tema": "Mercado analisa desafios fiscais e metas de juros com novo comando na Fazenda",
+      "titulo_curto": "Mercado analisa desafios fiscais e metas de juros com novo comando na Fazenda",
+      "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Economia",
+      "categoria": "Economia_Comercio",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 92,
+      "urgencia_score": 89,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-29T09:22:08Z",
+      "palavras_chave_busca": [
+        "ministério da fazenda",
+        "trabuco",
+        "ajuste fiscal",
+        "juros futuros",
+        "mercado financeiro"
+      ],
+      "palavras_chave": [
+        "ministério da fazenda",
+        "trabuco",
+        "ajuste fiscal",
+        "juros futuros",
+        "mercado financeiro"
+      ],
+      "gatilho_vitrine": "Conforme análises veiculadas pelo G1 Economia e InfoMoney Mercados, analistas financeiros avaliam a movimentação das curvas de juros futuros e do câmbio após a indicação de Luiz Carlos Trabuco para o Ministério da Fazenda. O foco do setor produtivo volta-se para a capacidade de articulação em torno de cortes sustentáveis de gastos e regulamentação da reforma tributária.",
+      "resumo_pulso": "Conforme análises veiculadas pelo G1 Economia e InfoMoney Mercados, analistas financeiros avaliam a movimentação das curvas de juros futuros e do câmbio após a indicação de Luiz Carlos Trabuco para o Ministério da Fazenda. O foco do setor produtivo volta-se para a capacidade de articulação em torno de cortes sustentáveis de gastos e regulamentação da reforma tributária.",
+      "sintese_nerd": "A percepção sobre o risco fiscal influi nas cotações do dólar e na projeção da taxa Selic, afetando juros de crédito ao consumidor e investimentos.",
+      "impacto_pratico": "A percepção sobre o risco fiscal influi nas cotações do dólar e na projeção da taxa Selic, afetando juros de crédito ao consumidor e investimentos.",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "veiculos_origem": [
+        "G1 Economia",
+        "InfoMoney Mercados"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/economia/noticia/2026/11/28/os-3-principais-problemas-que-trabuco-tera-que-enfrentar-na-fazenda-no-quarto-mandato-de-lula.ghtml",
+        "https://www.infomoney.com.br/mercados/lula-i-ou-dilma-ii-mercado-ve-ecos-dos-dois-momentos-na-chegada-de-trabuco-a-fazenda/"
+      ],
+      "data_publicacao": "2026-11-28T09:00:00Z",
+      "updated_at": "2026-11-28T09:22:08Z"
+    },
+    {
+      "slug": "relatora-onu-liberada-costa-rica-tribunal",
+      "status": "novo",
+      "categoria": "Geopolitica_Relacoes",
       "ttl_horas": 24,
       "expires_at": "2026-11-29T08:18:41Z",
-      "palavras_chave_busca": [
-        "onu",
-        "francesca albanese",
-        "costa rica",
-        "corte constitucional",
-        "direitos humanos"
+      "updated_at": "2026-11-28T08:18:41Z",
+      "fontes_urls": [
+        "https://www.aljazeera.com/news/2026/11/28/uns-albanese-leaves-costa-rica-airport-after-constitutional-court-verdict?traffic_source=rss"
       ],
+      "titulo_tema": "Relatora especial da ONU é liberada em aeroporto da Costa Rica após decisão de corte constitucional",
+      "resumo_pulso": "Conforme reportado pela Al Jazeera English, a relatora especial da ONU Francesca Albanese deixou o aeroporto da Costa Rica após ter sido retida pelas autoridades locais. A liberação ocorreu por determinação da Corte Constitucional do país, que ordenou a cessação do impedimento de circulação na instalação aeroportuária.",
+      "sintese_nerd": "Garantia de prerrogativas diplomáticas e livre trânsito para representantes em missões das Nações Unidas.",
+      "titulo_curto": "Relatora especial da ONU é liberada em aeroporto da Costa Rica após decisão de corte constitucional",
+      "rota_editoria": "/radar",
       "palavras_chave": [
         "onu",
         "francesca albanese",
@@ -36,22 +126,78 @@
         "corte constitucional",
         "direitos humanos"
       ],
+      "urgencia_score": 86,
+      "data_publicacao": "2026-11-28T08:05:18Z",
       "gatilho_vitrine": "Conforme reportado pela Al Jazeera English, a relatora especial da ONU Francesca Albanese deixou o aeroporto da Costa Rica após ter sido retida pelas autoridades locais. A liberação ocorreu por determinação da Corte Constitucional do país, que ordenou a cessação do impedimento de circulação na instalação aeroportuária.",
-      "resumo_pulso": "Conforme reportado pela Al Jazeera English, a relatora especial da ONU Francesca Albanese deixou o aeroporto da Costa Rica após ter sido retida pelas autoridades locais. A liberação ocorreu por determinação da Corte Constitucional do país, que ordenou a cessação do impedimento de circulação na instalação aeroportuária.",
-      "sintese_nerd": "Garantia de prerrogativas diplomáticas e livre trânsito para representantes em missões das Nações Unidas.",
       "impacto_pratico": "Garantia de prerrogativas diplomáticas e livre trânsito para representantes em missões das Nações Unidas.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "Al Jazeera English"
+      ],
+      "relevancia_score": 85,
       "paises_envolvidos": [
         "CR",
         "UN"
       ],
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "onu",
+        "francesca albanese",
+        "costa rica",
+        "corte constitucional",
+        "direitos humanos"
+      ]
+    },
+    {
+      "slug": "pesquisadores-estudam-especie-rara-cafe-amazonia",
+      "titulo_tema": "Pesquisadores mapeiam espécie rara de café gigante com notas sensoriais no Pará",
+      "titulo_curto": "Pesquisadores mapeiam espécie rara de café gigante com notas sensoriais no Pará",
+      "status": "novo",
+      "origem_pipeline": "pulso",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categoria": "Ciencia_Clima",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 84,
+      "urgencia_score": 81,
+      "ttl_horas": 24,
+      "expires_at": "2026-11-29T09:22:08Z",
+      "palavras_chave_busca": [
+        "coffea liberica",
+        "café beirão",
+        "pará",
+        "amazônia",
+        "pesquisa agrícola"
+      ],
+      "palavras_chave": [
+        "coffea liberica",
+        "café beirão",
+        "pará",
+        "amazônia",
+        "pesquisa agrícola"
+      ],
+      "gatilho_vitrine": "Segundo reportagem do G1 Economia (Globo Rural), pesquisadores no Nordeste do Pará estão investigando o cultivo da espécie Coffea liberica, conhecida localmente como café beirão. A planta desenvolve árvores de até 11 metros de altura e produz frutos com sabor que remete ao chá-verde, representando cerca de 0,01% da produção global da bebida.",
+      "resumo_pulso": "Segundo reportagem do G1 Economia (Globo Rural), pesquisadores no Nordeste do Pará estão investigando o cultivo da espécie Coffea liberica, conhecida localmente como café beirão. A planta desenvolve árvores de até 11 metros de altura e produz frutos com sabor que remete ao chá-verde, representando cerca de 0,01% da produção global da bebida.",
+      "sintese_nerd": "O mapeamento botânico pode abrir novas frentes agrícolas sustentáveis e bioeconomia de nicho na Região Amazônica.",
+      "impacto_pratico": "O mapeamento botânico pode abrir novas frentes agrícolas sustentáveis e bioeconomia de nicho na Região Amazônica.",
+      "paises_envolvidos": [
+        "BR"
+      ],
       "veiculos_origem": [
-        "Al Jazeera English"
+        "G1 Economia"
       ],
       "fontes_urls": [
-        "https://www.aljazeera.com/news/2026/11/28/uns-albanese-leaves-costa-rica-airport-after-constitutional-court-verdict?traffic_source=rss"
+        "https://g1.globo.com/economia/agronegocios/globo-rural/noticia/2026/11/28/cafe-raro-com-arvores-de-11-metros-e-sabor-de-cha-verde-e-estudado-na-amazonia-conheca.ghtml"
       ],
-      "data_publicacao": "2026-11-28T08:05:18Z",
-      "updated_at": "2026-11-28T08:18:41Z"
+      "data_publicacao": "2026-11-28T08:00:00Z",
+      "updated_at": "2026-11-28T09:22:08Z"
     },
     {
       "slug": "queda-dolar-anuncio-trabuco-mercados",
@@ -161,77 +307,69 @@
     },
     {
       "slug": "explosao-escola-afeganistao-kunar",
-      "titulo_tema": "Explosão em escola de ensino fundamental deixa mortos e feridos na província de Kunar, no Afeganistão",
-      "titulo_curto": "Explosão em escola de ensino fundamental deixa mortos e feridos na província de Kunar, no Afeganistão",
       "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Geopolitica_Radar",
       "categoria": "Geopolitica_Relacoes",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 88,
-      "urgencia_score": 92,
       "ttl_horas": 12,
       "expires_at": "2026-11-28T20:18:41Z",
-      "palavras_chave_busca": [
-        "afeganistão",
-        "kunar",
-        "explosão",
-        "escola",
-        "estudantes"
-      ],
-      "palavras_chave": [
-        "afeganistão",
-        "kunar",
-        "explosão",
-        "escola",
-        "estudantes"
-      ],
-      "gatilho_vitrine": "Segundo informações da polícia provincial repercutidas pela Al Jazeera e pelo G1 Mundo, uma explosão atingiu uma escola primária na região de Andar Ser, no leste do Afeganistão, neste sábado (28). Autoridades locais confirmaram que múltiplos estudantes morreram ou ficaram feridos, ressalvando que a causa exata da detonação permanece em apuração.",
-      "resumo_pulso": "Segundo informações da polícia provincial repercutidas pela Al Jazeera e pelo G1 Mundo, uma explosão atingiu uma escola primária na região de Andar Ser, no leste do Afeganistão, neste sábado (28). Autoridades locais confirmaram que múltiplos estudantes morreram ou ficaram feridos, ressalvando que a causa exata da detonação permanece em apuração.",
-      "sintese_nerd": "Alerta de segurança para organizações de apoio humanitário e infraestruturas civis no leste afegão.",
-      "impacto_pratico": "Alerta de segurança para organizações de apoio humanitário e infraestruturas civis no leste afegão.",
-      "paises_envolvidos": [
-        "AF"
-      ],
-      "veiculos_origem": [
-        "G1 Mundo",
-        "Al Jazeera English"
-      ],
+      "updated_at": "2026-11-28T08:18:41Z",
       "fontes_urls": [
         "https://g1.globo.com/mundo/noticia/2026/11/28/explosao-escola-afeganistao.ghtml",
         "https://www.aljazeera.com/news/2026/11/28/students-killed-injured-in-school-explosion-in-afghanistans-kunar-region?traffic_source=rss"
       ],
+      "titulo_tema": "Explosão em escola de ensino fundamental deixa mortos e feridos na província de Kunar, no Afeganistão",
+      "resumo_pulso": "Segundo informações da polícia provincial repercutidas pela Al Jazeera e pelo G1 Mundo, uma explosão atingiu uma escola primária na região de Andar Ser, no leste do Afeganistão, neste sábado (28). Autoridades locais confirmaram que múltiplos estudantes morreram ou ficaram feridos, ressalvando que a causa exata da detonação permanece em apuração.",
+      "sintese_nerd": "Alerta de segurança para organizações de apoio humanitário e infraestruturas civis no leste afegão.",
+      "titulo_curto": "Explosão em escola de ensino fundamental deixa mortos e feridos na província de Kunar, no Afeganistão",
+      "rota_editoria": "/radar",
+      "palavras_chave": [
+        "afeganistão",
+        "kunar",
+        "explosão",
+        "escola",
+        "estudantes"
+      ],
+      "urgencia_score": 92,
       "data_publicacao": "2026-11-28T07:49:10Z",
-      "updated_at": "2026-11-28T08:18:41Z"
-    },
-    {
-      "slug": "drones-ucrania-atacam-refinarias-russia-novoshakhtinsk",
-      "titulo_tema": "Drones ucranianos atingem refinaria de petróleo em Rostov e infraestrutura energética na Rússia",
-      "titulo_curto": "Drones ucranianos atingem refinaria de petróleo em Rostov e infraestrutura energética na Rússia",
-      "status": "novo",
+      "gatilho_vitrine": "Segundo informações da polícia provincial repercutidas pela Al Jazeera e pelo G1 Mundo, uma explosão atingiu uma escola primária na região de Andar Ser, no leste do Afeganistão, neste sábado (28). Autoridades locais confirmaram que múltiplos estudantes morreram ou ficaram feridos, ressalvando que a causa exata da detonação permanece em apuração.",
+      "impacto_pratico": "Alerta de segurança para organizações de apoio humanitário e infraestruturas civis no leste afegão.",
       "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "G1 Mundo",
+        "Al Jazeera English"
+      ],
+      "relevancia_score": 88,
+      "paises_envolvidos": [
+        "AF"
+      ],
       "categoria_primaria": "Geopolitica_Radar",
-      "categoria": "Geopolitica_Relacoes",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
       ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 87,
-      "urgencia_score": 90,
+      "palavras_chave_busca": [
+        "afeganistão",
+        "kunar",
+        "explosão",
+        "escola",
+        "estudantes"
+      ]
+    },
+    {
+      "slug": "drones-ucrania-atacam-refinarias-russia-novoshakhtinsk",
+      "status": "novo",
+      "categoria": "Geopolitica_Relacoes",
       "ttl_horas": 24,
       "expires_at": "2026-11-29T08:18:41Z",
-      "palavras_chave_busca": [
-        "ucrânia",
-        "rússia",
-        "drones",
-        "refinaria novoshakhtinsk",
-        "rostov"
+      "updated_at": "2026-11-28T08:18:41Z",
+      "fontes_urls": [
+        "https://www.ukrinform.net/rubric-ato/4189486-novoshakhtinsk-oil-refinery-oil-pumping-station-in-samara-region-targeted-for-second-time-this-week.html",
+        "https://kyivindependent.com/fire-reported-near-oil-refinery-in-russias-rostov-oblast-amid-ukrainian-drone-attack/"
       ],
+      "titulo_tema": "Drones ucranianos atingem refinaria de petróleo em Rostov e infraestrutura energética na Rússia",
+      "resumo_pulso": "Segundo relatos das agências Ukrinform e The Kyiv Independent, forças militares ucranianas realizaram um ataque noturno com drones contra a refinaria de Novoshakhtinsk, na região de Rostov, e uma estação de bombeamento em Samara. O complexo de Novoshakhtinsk foi alvo de bombardeio pela segunda vez em uma semana, gerando incêndios no local.",
+      "sintese_nerd": "Potenciais reflexos nos preços globais de combustíveis e intensificação de retaliações na infraestrutura energética militar.",
+      "titulo_curto": "Drones ucranianos atingem refinaria de petróleo em Rostov e infraestrutura energética na Rússia",
+      "rota_editoria": "/radar",
       "palavras_chave": [
         "ucrânia",
         "rússia",
@@ -239,24 +377,32 @@
         "refinaria novoshakhtinsk",
         "rostov"
       ],
+      "urgencia_score": 90,
+      "data_publicacao": "2026-11-28T07:43:00Z",
       "gatilho_vitrine": "Segundo relatos das agências Ukrinform e The Kyiv Independent, forças militares ucranianas realizaram um ataque noturno com drones contra a refinaria de Novoshakhtinsk, na região de Rostov, e uma estação de bombeamento em Samara. O complexo de Novoshakhtinsk foi alvo de bombardeio pela segunda vez em uma semana, gerando incêndios no local.",
-      "resumo_pulso": "Segundo relatos das agências Ukrinform e The Kyiv Independent, forças militares ucranianas realizaram um ataque noturno com drones contra a refinaria de Novoshakhtinsk, na região de Rostov, e uma estação de bombeamento em Samara. O complexo de Novoshakhtinsk foi alvo de bombardeio pela segunda vez em uma semana, gerando incêndios no local.",
-      "sintese_nerd": "Potenciais reflexos nos preços globais de combustíveis e intensificação de retaliações na infraestrutura energética militar.",
       "impacto_pratico": "Potenciais reflexos nos preços globais de combustíveis e intensificação de retaliações na infraestrutura energética militar.",
-      "paises_envolvidos": [
-        "UA",
-        "RU"
-      ],
+      "origem_pipeline": "pulso",
       "veiculos_origem": [
         "Ukrinform",
         "The Kyiv Independent"
       ],
-      "fontes_urls": [
-        "https://www.ukrinform.net/rubric-ato/4189486-novoshakhtinsk-oil-refinery-oil-pumping-station-in-samara-region-targeted-for-second-time-this-week.html",
-        "https://kyivindependent.com/fire-reported-near-oil-refinery-in-russias-rostov-oblast-amid-ukrainian-drone-attack/"
+      "relevancia_score": 87,
+      "paises_envolvidos": [
+        "UA",
+        "RU"
       ],
-      "data_publicacao": "2026-11-28T07:43:00Z",
-      "updated_at": "2026-11-28T08:18:41Z"
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "ucrânia",
+        "rússia",
+        "drones",
+        "refinaria novoshakhtinsk",
+        "rostov"
+      ]
     },
     {
       "slug": "safernet-estudo-deepfake-escola",
@@ -734,172 +880,106 @@
         "energia",
         "economia"
       ]
-    },
-    {
-      "slug": "dolar-cai-quase-4-por-cento-trabuco-fazenda",
-      "status": "novo",
-      "categoria": "Economia_Comercio",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-29T00:59:39Z",
-      "updated_at": "2026-11-28T02:18:57Z",
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/dolar-cai-quase-4-e-fecha-em-r-551-apos-anuncio-de-trabuco"
-      ],
-      "titulo_tema": "Dólar despenca quase 4% e fecha em R$ 5,51 após indicação de Luiz Carlos Trabuco para a Fazenda",
-      "resumo_pulso": "Segundo dados divulgados pela Agência Brasil, o dólar comercial recuou quase 4% nesta sexta-feira (27), fechando cotado a R$ 5,51. A forte queda ocorreu após a confirmação de Luiz Carlos Trabuco para o comando do Ministério da Fazenda no próximo governo, acumulando na semana o maior recuo desde outubro de 2008.",
-      "sintese_nerd": "Alívio na cotação do câmbio comercial e barateamento de produtos importados e passagens aéreas internacionais.",
-      "titulo_curto": "Dólar despenca quase 4% e fecha em R$ 5,51 após indicação de Luiz Carlos Trabuco para a Fazenda",
-      "rota_editoria": "/economia",
-      "palavras_chave": [
-        "dólar",
-        "luiz carlos trabuco",
-        "ministério da fazenda",
-        "câmbio",
-        "economia"
-      ],
-      "urgencia_score": 94,
-      "data_publicacao": "2026-11-27T22:47:00Z",
-      "gatilho_vitrine": "Segundo dados divulgados pela Agência Brasil, o dólar comercial recuou quase 4% nesta sexta-feira (27), fechando cotado a R$ 5,51. A forte queda ocorreu após a confirmação de Luiz Carlos Trabuco para o comando do Ministério da Fazenda no próximo governo, acumulando na semana o maior recuo desde outubro de 2008.",
-      "impacto_pratico": "Alívio na cotação do câmbio comercial e barateamento de produtos importados e passagens aéreas internacionais.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "Agência Brasil (EBC)"
-      ],
-      "relevancia_score": 95,
-      "paises_envolvidos": [
-        "BR",
-        "US"
-      ],
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "dólar",
-        "luiz carlos trabuco",
-        "ministério da fazenda",
-        "câmbio",
-        "economia"
-      ]
-    },
-    {
-      "slug": "btg-fundo-credito-consignado-brb",
-      "status": "novo",
-      "categoria": "Economia_Comercio",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-28T22:51:53Z",
-      "updated_at": "2026-11-27T22:51:53Z",
-      "fontes_urls": [
-        "https://g1.globo.com/df/distrito-federal/noticia/2026/11/27/btg-cria-fundo-de-investimento-para-comprar-ate-r-15-bilhao-em-creditos-consignados-do-brb.ghtml"
-      ],
-      "titulo_tema": "BTG Pactual cria fundo de investimentos para adquirir até R$ 1,5 bilhão em créditos consignados do BRB",
-      "resumo_pulso": "Segundo reportagem do G1 Economia, o banco BTG Pactual constituiu um fundo de investimentos com o objetivo de comprar até R$ 1,5 bilhão em créditos consignados contratados por servidores públicos do Distrito Federal junto ao Banco de Brasília (BRB). A operação foi comunicada formalmente à B3.",
-      "sintese_nerd": "Movimenta o mercado de crédito e reestrutura posições de liquidez entre grandes instituições financeiras e bancos regionais.",
-      "titulo_curto": "BTG Pactual cria fundo de investimentos para adquirir até R$ 1,5 bilhão em créditos consignados do BRB",
-      "rota_editoria": "/economia",
-      "palavras_chave": [
-        "btg pactual",
-        "brb",
-        "crédito consignado",
-        "mercado financeiro"
-      ],
-      "urgencia_score": 85,
-      "data_publicacao": "2026-11-27T22:33:08Z",
-      "gatilho_vitrine": "Segundo reportagem do G1 Economia, o banco BTG Pactual constituiu um fundo de investimentos com o objetivo de comprar até R$ 1,5 bilhão em créditos consignados contratados por servidores públicos do Distrito Federal junto ao Banco de Brasília (BRB). A operação foi comunicada formalmente à B3.",
-      "impacto_pratico": "Movimenta o mercado de crédito e reestrutura posições de liquidez entre grandes instituições financeiras e bancos regionais.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "G1 Economia"
-      ],
-      "relevancia_score": 87,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "btg pactual",
-        "brb",
-        "crédito consignado",
-        "mercado financeiro"
-      ]
-    },
-    {
-      "slug": "eua-interceptam-navio-bloco-iran",
-      "status": "novo",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-28T22:51:53Z",
-      "updated_at": "2026-11-27T22:51:53Z",
-      "fontes_urls": [
-        "https://www.aljazeera.com/news/2026/11/27/us-military-says-it-disabled-merchant-ship-trying-to-breach-iran-blockade?traffic_source=rss"
-      ],
-      "titulo_tema": "Forças militares dos EUA interceptam e desativam navio mercante em rota de furto ao bloqueio ao Irã",
-      "resumo_pulso": "Conforme relatórios da Al Jazeera e agências internacionais, os militares dos Estados Unidos desativaram a propulsão de um navio mercante sob bandeira de Palau que tentava burlar o bloqueio marítimo imposto ao Irã. A tripulação permaneceu ilesa, mas o episódio eleva as tensões geopolíticas no Oriente Médio.",
-      "sintese_nerd": "Aumenta o risco de volatilidade nas rotas marítimas internacionais e nos preços globais de commodities.",
-      "titulo_curto": "Forças militares dos EUA interceptam e desativam navio mercante em rota de furto ao bloqueio ao Irã",
-      "rota_editoria": "/radar",
-      "palavras_chave": [
-        "estados unidos",
-        "irã",
-        "bloqueio naval",
-        "marinha",
-        "oriente médio"
-      ],
-      "urgencia_score": 91,
-      "data_publicacao": "2026-11-27T22:22:02Z",
-      "gatilho_vitrine": "Conforme relatórios da Al Jazeera e agências internacionais, os militares dos Estados Unidos desativaram a propulsão de um navio mercante sob bandeira de Palau que tentava burlar o bloqueio marítimo imposto ao Irã. A tripulação permaneceu ilesa, mas o episódio eleva as tensões geopolíticas no Oriente Médio.",
-      "impacto_pratico": "Aumenta o risco de volatilidade nas rotas marítimas internacionais e nos preços globais de commodities.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "Al Jazeera English"
-      ],
-      "relevancia_score": 89,
-      "paises_envolvidos": [
-        "US",
-        "IR",
-        "PW"
-      ],
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "estados unidos",
-        "irã",
-        "bloqueio naval",
-        "marinha",
-        "oriente médio"
-      ]
     }
   ],
   "noticias_quentes": [
     {
-      "slug": "relatora-onu-liberada-costa-rica-tribunal",
-      "titulo_curto": "Relatora especial da ONU é liberada em aeroporto da Costa Rica após decisão de corte constitucional",
-      "resumo_pulso": "Conforme reportado pela Al Jazeera English, a relatora especial da ONU Francesca Albanese deixou o aeroporto da Costa Rica após ter sido retida pelas autoridades locais. A liberação ocorreu por determinação da Corte Constitucional do país, que ordenou a cessação do impedimento de circulação na instalação aeroportuária.",
-      "impacto_pratico": "Garantia de prerrogativas diplomáticas e livre trânsito para representantes em missões das Nações Unidas.",
+      "slug": "russia-intensifica-ataques-aereos-regioes-ucrania",
+      "titulo_curto": "Autoridades ucranianas relatam mortes e feridos em novos ataques aéreos russos",
+      "resumo_pulso": "Segundo declarações da Força Aérea da Ucrânia e relatos das agências Ukrinform e The Kyiv Independent, disparos de mísseis e mais de 160 drones atingiram posições na região de Chernihiv, Sumy e Donetsk. Autoridades ucranianas alegam que ao menos dez civis morreram e dezenas ficaram feridos, com danos a infraestruturas locais, enquanto a apuração independente sobre a extensão total dos estragos prossegue.",
+      "impacto_pratico": "A elevação nos ataques aéreos amplia a instabilidade operacional em rotas de suprimentos e infraestrutura de energia no leste europeu.",
       "categoria": "Geopolitica_Relacoes",
       "paises_envolvidos": [
-        "CR",
-        "UN"
+        "UA",
+        "RU"
       ],
-      "urgencia_score": 86,
-      "relevancia_score": 85,
-      "nivel_confianca": "alta",
-      "ttl_horas": 24,
+      "urgencia_score": 91,
+      "relevancia_score": 88,
+      "nivel_confianca": "media",
+      "ttl_horas": 12,
       "horas_em_destaque": 6,
       "veiculos_origem": [
-        "Al Jazeera English"
+        "The Kyiv Independent",
+        "Ukrinform"
       ],
+      "fontes_urls": [
+        "https://kyivindependent.com/russian-attacks-kill-10-injure-55-across-ukraine-over-past-day-as-deadly-strike-hits-chernihiv-oblast-businesses/",
+        "https://www.ukrinform.net/rubric-ato/4189505-two-women-injured-in-russian-attacks-on-sumy-region-over-past-day.html"
+      ],
+      "palavras_chave": [
+        "Ucrânia",
+        "Rússia",
+        "conflito armado",
+        "drones",
+        "Chernihiv"
+      ],
+      "data_publicacao": "2026-11-28T09:01:46Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "O que é uma sanção internacional?",
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-sancao-internacional",
+          "motivo_conexao": "Contextualiza as medidas econômicas e pressões diplomáticas aplicadas no âmbito da guerra na Ucrânia."
+        }
+      ],
+      "expires_at": "2026-11-28T21:22:08Z",
+      "updated_at": "2026-11-28T09:22:08Z"
+    },
+    {
+      "slug": "analistas-avaliam-desafios-fiscais-novo-ministro-fazenda",
+      "titulo_curto": "Mercado analisa desafios fiscais e metas de juros com novo comando na Fazenda",
+      "resumo_pulso": "Conforme análises veiculadas pelo G1 Economia e InfoMoney Mercados, analistas financeiros avaliam a movimentação das curvas de juros futuros e do câmbio após a indicação de Luiz Carlos Trabuco para o Ministério da Fazenda. O foco do setor produtivo volta-se para a capacidade de articulação em torno de cortes sustentáveis de gastos e regulamentação da reforma tributária.",
+      "impacto_pratico": "A percepção sobre o risco fiscal influi nas cotações do dólar e na projeção da taxa Selic, afetando juros de crédito ao consumidor e investimentos.",
+      "categoria": "Economia_Comercio",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "urgencia_score": 89,
+      "relevancia_score": 92,
+      "nivel_confianca": "alta",
+      "ttl_horas": 24,
+      "horas_em_destaque": 12,
+      "veiculos_origem": [
+        "G1 Economia",
+        "InfoMoney Mercados"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/economia/noticia/2026/11/28/os-3-principais-problemas-que-trabuco-tera-que-enfrentar-na-fazenda-no-quarto-mandato-de-lula.ghtml",
+        "https://www.infomoney.com.br/mercados/lula-i-ou-dilma-ii-mercado-ve-ecos-dos-dois-momentos-na-chegada-de-trabuco-a-fazenda/"
+      ],
+      "palavras_chave": [
+        "Ministério da Fazenda",
+        "Trabuco",
+        "ajuste fiscal",
+        "juros futuros",
+        "mercado financeiro"
+      ],
+      "data_publicacao": "2026-11-28T09:00:00Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "Economia no Brasil",
+          "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
+          "motivo_conexao": "Reúne análises complementares sobre câmbio, juros e equilíbrio das contas públicas brasileiras."
+        },
+        {
+          "titulo_existente": "O que é o Orçamento?",
+          "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-o-orcamento",
+          "motivo_conexao": "Explica o funcionamento do planejamento orçamentário e as amarras fiscais enfrentadas pela equipe econômica."
+        }
+      ],
+      "expires_at": "2026-11-29T09:22:08Z",
+      "updated_at": "2026-11-28T09:22:08Z"
+    },
+    {
+      "slug": "relatora-onu-liberada-costa-rica-tribunal",
+      "categoria": "Geopolitica_Relacoes",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-29T08:18:41Z",
+      "updated_at": "2026-11-28T08:18:41Z",
       "fontes_urls": [
         "https://www.aljazeera.com/news/2026/11/28/uns-albanese-leaves-costa-rica-airport-after-constitutional-court-verdict?traffic_source=rss"
       ],
+      "resumo_pulso": "Conforme reportado pela Al Jazeera English, a relatora especial da ONU Francesca Albanese deixou o aeroporto da Costa Rica após ter sido retida pelas autoridades locais. A liberação ocorreu por determinação da Corte Constitucional do país, que ordenou a cessação do impedimento de circulação na instalação aeroportuária.",
+      "titulo_curto": "Relatora especial da ONU é liberada em aeroporto da Costa Rica após decisão de corte constitucional",
       "palavras_chave": [
         "ONU",
         "Francesca Albanese",
@@ -907,33 +987,71 @@
         "Corte Constitucional",
         "direitos humanos"
       ],
+      "urgencia_score": 86,
       "data_publicacao": "2026-11-28T08:05:18Z",
-      "links_internos_relacionados": [],
-      "expires_at": "2026-11-29T08:18:41Z",
-      "updated_at": "2026-11-28T08:18:41Z"
+      "impacto_pratico": "Garantia de prerrogativas diplomáticas e livre trânsito para representantes em missões das Nações Unidas.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Al Jazeera English"
+      ],
+      "relevancia_score": 85,
+      "horas_em_destaque": 6,
+      "paises_envolvidos": [
+        "CR",
+        "UN"
+      ],
+      "links_internos_relacionados": []
+    },
+    {
+      "slug": "pesquisadores-estudam-especie-rara-cafe-amazonia",
+      "titulo_curto": "Pesquisadores mapeiam espécie rara de café gigante com notas sensoriais no Pará",
+      "resumo_pulso": "Segundo reportagem do G1 Economia (Globo Rural), pesquisadores no Nordeste do Pará estão investigando o cultivo da espécie Coffea liberica, conhecida localmente como café beirão. A planta desenvolve árvores de até 11 metros de altura e produz frutos com sabor que remete ao chá-verde, representando cerca de 0,01% da produção global da bebida.",
+      "impacto_pratico": "O mapeamento botânico pode abrir novas frentes agrícolas sustentáveis e bioeconomia de nicho na Região Amazônica.",
+      "categoria": "Ciencia_Clima",
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "urgencia_score": 81,
+      "relevancia_score": 84,
+      "nivel_confianca": "alta",
+      "ttl_horas": 24,
+      "horas_em_destaque": 6,
+      "veiculos_origem": [
+        "G1 Economia"
+      ],
+      "fontes_urls": [
+        "https://g1.globo.com/economia/agronegocios/globo-rural/noticia/2026/11/28/cafe-raro-com-arvores-de-11-metros-e-sabor-de-cha-verde-e-estudado-na-amazonia-conheca.ghtml"
+      ],
+      "palavras_chave": [
+        "Coffea liberica",
+        "café beirão",
+        "Pará",
+        "Amazônia",
+        "pesquisa agrícola"
+      ],
+      "data_publicacao": "2026-11-28T08:00:00Z",
+      "links_internos_relacionados": [
+        {
+          "titulo_existente": "Clima, Amazônia e Transição Energética",
+          "url_existente": "https://www.rodandoomundo.com.br/clima",
+          "motivo_conexao": "Oferece perspectiva sobre biodiversidade, preservação de biomas e oportunidades de desenvolvimento sustentável."
+        }
+      ],
+      "expires_at": "2026-11-29T09:22:08Z",
+      "updated_at": "2026-11-28T09:22:08Z"
     },
     {
       "slug": "explosao-escola-afeganistao-kunar",
-      "titulo_curto": "Explosão em escola de ensino fundamental deixa mortos e feridos na província de Kunar, no Afeganistão",
-      "resumo_pulso": "Segundo informações da polícia provincial repercutidas pela Al Jazeera e pelo G1 Mundo, uma explosão atingiu uma escola primária na região de Andar Ser, no leste do Afeganistão, neste sábado (28). Autoridades locais confirmaram que múltiplos estudantes morreram ou ficaram feridos, ressalvando que a causa exata da detonação permanece em apuração.",
-      "impacto_pratico": "Alerta de segurança para organizações de apoio humanitário e infraestruturas civis no leste afegão.",
       "categoria": "Geopolitica_Relacoes",
-      "paises_envolvidos": [
-        "AF"
-      ],
-      "urgencia_score": 92,
-      "relevancia_score": 88,
-      "nivel_confianca": "preliminar",
       "ttl_horas": 12,
-      "horas_em_destaque": 6,
-      "veiculos_origem": [
-        "G1 Mundo",
-        "Al Jazeera English"
-      ],
+      "expires_at": "2026-11-28T20:18:41Z",
+      "updated_at": "2026-11-28T08:18:41Z",
       "fontes_urls": [
         "https://g1.globo.com/mundo/noticia/2026/11/28/explosao-escola-afeganistao.ghtml",
         "https://www.aljazeera.com/news/2026/11/28/students-killed-injured-in-school-explosion-in-afghanistans-kunar-region?traffic_source=rss"
       ],
+      "resumo_pulso": "Segundo informações da polícia provincial repercutidas pela Al Jazeera e pelo G1 Mundo, uma explosão atingiu uma escola primária na região de Andar Ser, no leste do Afeganistão, neste sábado (28). Autoridades locais confirmaram que múltiplos estudantes morreram ou ficaram feridos, ressalvando que a causa exata da detonação permanece em apuração.",
+      "titulo_curto": "Explosão em escola de ensino fundamental deixa mortos e feridos na província de Kunar, no Afeganistão",
       "palavras_chave": [
         "Afeganistão",
         "Kunar",
@@ -941,34 +1059,33 @@
         "escola",
         "estudantes"
       ],
+      "urgencia_score": 92,
       "data_publicacao": "2026-11-28T07:49:10Z",
-      "links_internos_relacionados": [],
-      "expires_at": "2026-11-28T20:18:41Z",
-      "updated_at": "2026-11-28T08:18:41Z"
+      "impacto_pratico": "Alerta de segurança para organizações de apoio humanitário e infraestruturas civis no leste afegão.",
+      "nivel_confianca": "preliminar",
+      "veiculos_origem": [
+        "G1 Mundo",
+        "Al Jazeera English"
+      ],
+      "relevancia_score": 88,
+      "horas_em_destaque": 6,
+      "paises_envolvidos": [
+        "AF"
+      ],
+      "links_internos_relacionados": []
     },
     {
       "slug": "drones-ucrania-atacam-refinarias-russia-novoshakhtinsk",
-      "titulo_curto": "Drones ucranianos atingem refinaria de petróleo em Rostov e infraestrutura energética na Rússia",
-      "resumo_pulso": "Segundo relatos das agências Ukrinform e The Kyiv Independent, forças militares ucranianas realizaram um ataque noturno com drones contra a refinaria de Novoshakhtinsk, na região de Rostov, e uma estação de bombeamento em Samara. O complexo de Novoshakhtinsk foi alvo de bombardeio pela segunda vez em uma semana, gerando incêndios no local.",
-      "impacto_pratico": "Potenciais reflexos nos preços globais de combustíveis e intensificação de retaliações na infraestrutura energética militar.",
       "categoria": "Geopolitica_Relacoes",
-      "paises_envolvidos": [
-        "UA",
-        "RU"
-      ],
-      "urgencia_score": 90,
-      "relevancia_score": 87,
-      "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 8,
-      "veiculos_origem": [
-        "Ukrinform",
-        "The Kyiv Independent"
-      ],
+      "expires_at": "2026-11-29T08:18:41Z",
+      "updated_at": "2026-11-28T08:18:41Z",
       "fontes_urls": [
         "https://www.ukrinform.net/rubric-ato/4189486-novoshakhtinsk-oil-refinery-oil-pumping-station-in-samara-region-targeted-for-second-time-this-week.html",
         "https://kyivindependent.com/fire-reported-near-oil-refinery-in-russias-rostov-oblast-amid-ukrainian-drone-attack/"
       ],
+      "resumo_pulso": "Segundo relatos das agências Ukrinform e The Kyiv Independent, forças militares ucranianas realizaram um ataque noturno com drones contra a refinaria de Novoshakhtinsk, na região de Rostov, e uma estação de bombeamento em Samara. O complexo de Novoshakhtinsk foi alvo de bombardeio pela segunda vez em uma semana, gerando incêndios no local.",
+      "titulo_curto": "Drones ucranianos atingem refinaria de petróleo em Rostov e infraestrutura energética na Rússia",
       "palavras_chave": [
         "Ucrânia",
         "Rússia",
@@ -976,10 +1093,21 @@
         "refinaria Novoshakhtinsk",
         "Rostov"
       ],
+      "urgencia_score": 90,
       "data_publicacao": "2026-11-28T07:43:00Z",
-      "links_internos_relacionados": [],
-      "expires_at": "2026-11-29T08:18:41Z",
-      "updated_at": "2026-11-28T08:18:41Z"
+      "impacto_pratico": "Potenciais reflexos nos preços globais de combustíveis e intensificação de retaliações na infraestrutura energética militar.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Ukrinform",
+        "The Kyiv Independent"
+      ],
+      "relevancia_score": 87,
+      "horas_em_destaque": 8,
+      "paises_envolvidos": [
+        "UA",
+        "RU"
+      ],
+      "links_internos_relacionados": []
     },
     {
       "slug": "banco-eua-fechado-maior-quebra",
@@ -1522,122 +1650,6 @@
           "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-sancao-internacional",
           "motivo_conexao": "Contextualiza o uso de bloqueios e restrições marítimas como instrumentos de pressão geopolítica.",
           "titulo_existente": "O que é uma sanção internacional?"
-        }
-      ]
-    },
-    {
-      "slug": "vendas-tesouro-direto-recorde-outubro",
-      "categoria": "Economia_Comercio",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-28T21:50:54Z",
-      "updated_at": "2026-11-27T21:50:54Z",
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/vendas-do-tesouro-direto-registram-melhor-outubro-da-historia"
-      ],
-      "resumo_pulso": "Conforme dados divulgados pelo Tesouro Nacional e reportados pela Agência Brasil, as vendas de títulos públicos a pessoas físicas pela internet alcançaram R$ 10,57 bilhões em outubro, o maior volume já registrado para o mês. O desempenho foi impulsionado pela introdução do novo título Tesouro Reserva.",
-      "titulo_curto": "Vendas do Tesouro Direto registram o melhor mês de outubro da história com R$ 10,57 bilhões",
-      "palavras_chave": [
-        "Tesouro Direto",
-        "Tesouro Nacional",
-        "Renda Fixa",
-        "Investimentos"
-      ],
-      "urgencia_score": 90,
-      "data_publicacao": "2026-11-27T21:01:00Z",
-      "impacto_pratico": "Oferece novas opções de aplicação em renda fixa para pequenos investidores, competindo diretamente com a poupança.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Agência Brasil (EBC)"
-      ],
-      "relevancia_score": 91,
-      "horas_em_destaque": 12,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
-          "motivo_conexao": "Aprofunda a análise sobre o comportamento do mercado de capitais e opções de investimento para as famílias brasileiras.",
-          "titulo_existente": "Economia no Brasil"
-        }
-      ]
-    },
-    {
-      "slug": "brasil-mercosul-caribe-america-central",
-      "categoria": "Geopolitica_Relacoes",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-28T21:50:54Z",
-      "updated_at": "2026-11-27T21:50:54Z",
-      "fontes_urls": [
-        "https://agenciabrasil.ebc.com.br/internacional/noticia/2026-11/brasil-quer-aproximar-mercosul-de-mercados-do-caribe-e-america-central"
-      ],
-      "resumo_pulso": "Segundo apuração da Agência Brasil, o governo brasileiro pretende usar a 69ª Cúpula do Mercosul, agendada para os dias 3 e 4 de dezembro em Montevidéu, para estreitar laços comerciais com os mercados do Caribe e da América Central. O evento também marcará a transição da presidência pro tempore do bloco para a Argentina.",
-      "titulo_curto": "Governo brasileiro busca aproximar o Mercosul de mercados do Caribe e da América Central",
-      "palavras_chave": [
-        "Mercosul",
-        "Comércio Exterior",
-        "América Central",
-        "Caribe",
-        "Diplomacia"
-      ],
-      "urgencia_score": 88,
-      "data_publicacao": "2026-11-27T20:57:00Z",
-      "impacto_pratico": "Pode ampliar o leque de acordos comerciais e rotas de exportação para o agronegócio e a indústria brasileira.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Agência Brasil (EBC)"
-      ],
-      "relevancia_score": 89,
-      "horas_em_destaque": 12,
-      "paises_envolvidos": [
-        "BR",
-        "UY",
-        "AR",
-        "PY",
-        "BO"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
-          "motivo_conexao": "Conecta as estratégias de integração regional do Mercosul ao panorama global de acordos comerciais.",
-          "titulo_existente": "Mercados e aliados internacionais avaliam impacto da política comercial norte-americana"
-        }
-      ]
-    },
-    {
-      "slug": "senado-especial-mulheres-cientistas",
-      "categoria": "Sociedade_Cultura",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-28T21:50:54Z",
-      "updated_at": "2026-11-27T21:50:54Z",
-      "fontes_urls": [
-        "https://www12.senado.leg.br/noticias/videos/2026/11/sessao-especial-do-senado-homenageia-mulheres-cientistas-brasileiras"
-      ],
-      "resumo_pulso": "Conforme apuração da Agência Senado, o Plenário realizou nesta sexta-feira (27) uma sessão especial proposta pela senadora Leany Lemos (PSB-DF) para exaltar a contribuição de mulheres cientistas ao desenvolvimento tecnológico e à inovação no país. As participantes enfatizaram a relevância de ampliar a representatividade feminina nas carreiras científicas.",
-      "titulo_curto": "Senado realiza sessão especial em homenagem a cientistas e pesquisadoras brasileiras",
-      "palavras_chave": [
-        "Senado Federal",
-        "Mulheres na Ciência",
-        "Inovação",
-        "Pesquisa"
-      ],
-      "urgencia_score": 82,
-      "data_publicacao": "2026-11-27T20:52:44Z",
-      "impacto_pratico": "Fortalece debates institucionais sobre incentivos à pesquisa científica e igualdade de gênero na academia.",
-      "nivel_confianca": "alta",
-      "veiculos_origem": [
-        "Agência Senado"
-      ],
-      "relevancia_score": 85,
-      "horas_em_destaque": 12,
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "links_internos_relacionados": [
-        {
-          "url_existente": "https://www.rodandoomundo.com.br/saude",
-          "motivo_conexao": "Conecta as pautas legislativas voltadas à valorização de políticas públicas de ciência e educação.",
-          "titulo_existente": "Movimentos sociais e parlamentares debatem investimentos em saúde, educação e transição ecológica"
         }
       ]
     }
