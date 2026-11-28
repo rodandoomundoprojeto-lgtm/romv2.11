@@ -2,83 +2,153 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-28T09:22:08Z",
-  "batch_id": "20261128-0920",
+  "updatedAt": "2026-11-28T10:05:06Z",
+  "batch_id": "20261128-1004",
   "temas_ativos": [
     {
-      "slug": "russia-intensifica-ataques-aereos-regioes-ucrania",
-      "titulo_tema": "Autoridades ucranianas relatam mortes e feridos em novos ataques aéreos russos",
-      "titulo_curto": "Autoridades ucranianas relatam mortes e feridos em novos ataques aéreos russos",
+      "slug": "efeito-trabuco-desafios-fiscais-e-mercado-financeiro",
+      "titulo_tema": "Efeito Trabuco na Fazenda e as expectativas do mercado para a economia",
       "status": "novo",
-      "origem_pipeline": "pulso",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Politica"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 92,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-30T10:05:06Z",
+      "palavras_chave_busca": [
+        "trabuco",
+        "ministério da fazenda",
+        "juros futuros",
+        "mercado financeiro",
+        "ajuste fiscal",
+        "inflação"
+      ],
+      "gatilho_vitrine": "Destaque a análise sobre os rumos da política fiscal e o impacto das expectativas do mercado financeiro na economia brasileira sob a nova gestão da Fazenda.",
+      "sintese_nerd": "A chegada de Luiz Carlos Trabuco à Fazenda gerou um forte rali inicial nos ativos brasileiros, mas o desafio central agora é converter essa confiança em reformas fiscais concretas. O comportamento dos juros futuros dependerá diretamente da capacidade do governo em ancorar as expectativas inflacionárias e entregar o ajuste fiscal prometido.",
+      "data_publicacao": "2026-11-28T10:05:06Z",
+      "updated_at": "2026-11-28T10:05:06Z"
+    },
+    {
+      "slug": "ameaca-trump-data-centers-brasil-incerteza",
+      "titulo_tema": "Ameaças de Trump sobre data centers e os reflexos para o mercado brasileiro",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
       "categoria_primaria": "Geopolitica_Radar",
-      "categoria": "Geopolitica_Relacoes",
       "categorias_cruzadas": [
         "Economia",
-        "Resumo_Ultimas"
+        "Politica"
       ],
       "rota_editoria": "/radar",
       "relevancia_score": 88,
-      "urgencia_score": 91,
+      "ttl_horas": 72,
+      "expires_at": "2026-12-01T10:05:06Z",
+      "palavras_chave_busca": [
+        "donald trump",
+        "data centers",
+        "tecnologia",
+        "comércio exterior",
+        "sanções",
+        "estados unidos"
+      ],
+      "gatilho_vitrine": "Conecte as pressões protecionistas internacionais e a política externa dos EUA aos riscos e oportunidades para o setor de infraestrutura tecnológica no Brasil.",
+      "sintese_nerd": "A promessa de Donald Trump de taxar empresas norte-americanas que construírem data centers no exterior gerou incertezas imediatas no ecossistema digital brasileiro. Embora o setor local avalie que ainda é cedo para mensurar perdas, a medida acende um alerta sobre a vulnerabilidade de investimentos estrangeiros frente ao protecionismo americano.",
+      "data_publicacao": "2026-11-28T10:05:06Z",
+      "updated_at": "2026-11-28T10:05:06Z"
+    },
+    {
+      "slug": "comissao-aprova-monitoramento-bancario-investigacoes",
+      "titulo_tema": "Aprovação de proposta de monitoramento bancário em investigações no Congresso",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Politica",
+      "categorias_cruzadas": [
+        "Economia"
+      ],
+      "rota_editoria": "/politica",
+      "relevancia_score": 85,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-30T10:05:06Z",
+      "palavras_chave_busca": [
+        "monitoramento bancário",
+        "congresso nacional",
+        "investigações",
+        "organizações criminosas",
+        "bloqueio de bens"
+      ],
+      "gatilho_vitrine": "Mostre o avanço legislativo no combate ao crime financeiro e como as novas regras de rastreamento de ativos afetam o sistema bancário.",
+      "sintese_nerd": "A aprovação na comissão do Congresso de regras mais rígidas para o monitoramento bancário e bloqueio de ativos visa sufocar o financiamento de organizações criminosas. A medida amplia os poderes investigativos, gerando debates institucionais sobre o equilíbrio entre o sigilo financeiro e a eficácia punitiva.",
+      "data_publicacao": "2026-11-28T10:05:06Z",
+      "updated_at": "2026-11-28T10:05:06Z"
+    },
+    {
+      "slug": "russia-intensifica-ataques-aereos-regioes-ucrania",
+      "status": "novo",
+      "categoria": "Geopolitica_Relacoes",
       "ttl_horas": 12,
       "expires_at": "2026-11-28T21:22:08Z",
-      "palavras_chave_busca": [
-        "ucrânia",
-        "rússia",
-        "conflito armado",
-        "drones",
-        "chernihiv"
-      ],
-      "palavras_chave": [
-        "ucrânia",
-        "rússia",
-        "conflito armado",
-        "drones",
-        "chernihiv"
-      ],
-      "gatilho_vitrine": "Segundo declarações da Força Aérea da Ucrânia e relatos das agências Ukrinform e The Kyiv Independent, disparos de mísseis e mais de 160 drones atingiram posições na região de Chernihiv, Sumy e Donetsk. Autoridades ucranianas alegam que ao menos dez civis morreram e dezenas ficaram feridos, com danos a infraestruturas locais, enquanto a apuração independente sobre a extensão total dos estragos prossegue.",
-      "resumo_pulso": "Segundo declarações da Força Aérea da Ucrânia e relatos das agências Ukrinform e The Kyiv Independent, disparos de mísseis e mais de 160 drones atingiram posições na região de Chernihiv, Sumy e Donetsk. Autoridades ucranianas alegam que ao menos dez civis morreram e dezenas ficaram feridos, com danos a infraestruturas locais, enquanto a apuração independente sobre a extensão total dos estragos prossegue.",
-      "sintese_nerd": "A elevação nos ataques aéreos amplia a instabilidade operacional em rotas de suprimentos e infraestrutura de energia no leste europeu.",
-      "impacto_pratico": "A elevação nos ataques aéreos amplia a instabilidade operacional em rotas de suprimentos e infraestrutura de energia no leste europeu.",
-      "paises_envolvidos": [
-        "UA",
-        "RU"
-      ],
-      "veiculos_origem": [
-        "The Kyiv Independent",
-        "Ukrinform"
-      ],
+      "updated_at": "2026-11-28T09:22:08Z",
       "fontes_urls": [
         "https://kyivindependent.com/russian-attacks-kill-10-injure-55-across-ukraine-over-past-day-as-deadly-strike-hits-chernihiv-oblast-businesses/",
         "https://www.ukrinform.net/rubric-ato/4189505-two-women-injured-in-russian-attacks-on-sumy-region-over-past-day.html"
       ],
+      "titulo_tema": "Autoridades ucranianas relatam mortes e feridos em novos ataques aéreos russos",
+      "resumo_pulso": "Segundo declarações da Força Aérea da Ucrânia e relatos das agências Ukrinform e The Kyiv Independent, disparos de mísseis e mais de 160 drones atingiram posições na região de Chernihiv, Sumy e Donetsk. Autoridades ucranianas alegam que ao menos dez civis morreram e dezenas ficaram feridos, com danos a infraestruturas locais, enquanto a apuração independente sobre a extensão total dos estragos prossegue.",
+      "sintese_nerd": "A elevação nos ataques aéreos amplia a instabilidade operacional em rotas de suprimentos e infraestrutura de energia no leste europeu.",
+      "titulo_curto": "Autoridades ucranianas relatam mortes e feridos em novos ataques aéreos russos",
+      "rota_editoria": "/radar",
+      "palavras_chave": [
+        "ucrânia",
+        "rússia",
+        "conflito armado",
+        "drones",
+        "chernihiv"
+      ],
+      "urgencia_score": 91,
       "data_publicacao": "2026-11-28T09:01:46Z",
-      "updated_at": "2026-11-28T09:22:08Z"
-    },
-    {
-      "slug": "analistas-avaliam-desafios-fiscais-novo-ministro-fazenda",
-      "titulo_tema": "Mercado analisa desafios fiscais e metas de juros com novo comando na Fazenda",
-      "titulo_curto": "Mercado analisa desafios fiscais e metas de juros com novo comando na Fazenda",
-      "status": "novo",
+      "gatilho_vitrine": "Segundo declarações da Força Aérea da Ucrânia e relatos das agências Ukrinform e The Kyiv Independent, disparos de mísseis e mais de 160 drones atingiram posições na região de Chernihiv, Sumy e Donetsk. Autoridades ucranianas alegam que ao menos dez civis morreram e dezenas ficaram feridos, com danos a infraestruturas locais, enquanto a apuração independente sobre a extensão total dos estragos prossegue.",
+      "impacto_pratico": "A elevação nos ataques aéreos amplia a instabilidade operacional em rotas de suprimentos e infraestrutura de energia no leste europeu.",
       "origem_pipeline": "pulso",
-      "categoria_primaria": "Economia",
-      "categoria": "Economia_Comercio",
+      "veiculos_origem": [
+        "The Kyiv Independent",
+        "Ukrinform"
+      ],
+      "relevancia_score": 88,
+      "paises_envolvidos": [
+        "UA",
+        "RU"
+      ],
+      "categoria_primaria": "Geopolitica_Radar",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
       ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 92,
-      "urgencia_score": 89,
+      "palavras_chave_busca": [
+        "ucrânia",
+        "rússia",
+        "conflito armado",
+        "drones",
+        "chernihiv"
+      ]
+    },
+    {
+      "slug": "analistas-avaliam-desafios-fiscais-novo-ministro-fazenda",
+      "status": "novo",
+      "categoria": "Economia_Comercio",
       "ttl_horas": 24,
       "expires_at": "2026-11-29T09:22:08Z",
-      "palavras_chave_busca": [
-        "ministério da fazenda",
-        "trabuco",
-        "ajuste fiscal",
-        "juros futuros",
-        "mercado financeiro"
+      "updated_at": "2026-11-28T09:22:08Z",
+      "fontes_urls": [
+        "https://g1.globo.com/economia/noticia/2026/11/28/os-3-principais-problemas-que-trabuco-tera-que-enfrentar-na-fazenda-no-quarto-mandato-de-lula.ghtml",
+        "https://www.infomoney.com.br/mercados/lula-i-ou-dilma-ii-mercado-ve-ecos-dos-dois-momentos-na-chegada-de-trabuco-a-fazenda/"
       ],
+      "titulo_tema": "Mercado analisa desafios fiscais e metas de juros com novo comando na Fazenda",
+      "resumo_pulso": "Conforme análises veiculadas pelo G1 Economia e InfoMoney Mercados, analistas financeiros avaliam a movimentação das curvas de juros futuros e do câmbio após a indicação de Luiz Carlos Trabuco para o Ministério da Fazenda. O foco do setor produtivo volta-se para a capacidade de articulação em torno de cortes sustentáveis de gastos e regulamentação da reforma tributária.",
+      "sintese_nerd": "A percepção sobre o risco fiscal influi nas cotações do dólar e na projeção da taxa Selic, afetando juros de crédito ao consumidor e investimentos.",
+      "titulo_curto": "Mercado analisa desafios fiscais e metas de juros com novo comando na Fazenda",
+      "rota_editoria": "/economia",
       "palavras_chave": [
         "ministério da fazenda",
         "trabuco",
@@ -86,23 +156,31 @@
         "juros futuros",
         "mercado financeiro"
       ],
+      "urgencia_score": 89,
+      "data_publicacao": "2026-11-28T09:00:00Z",
       "gatilho_vitrine": "Conforme análises veiculadas pelo G1 Economia e InfoMoney Mercados, analistas financeiros avaliam a movimentação das curvas de juros futuros e do câmbio após a indicação de Luiz Carlos Trabuco para o Ministério da Fazenda. O foco do setor produtivo volta-se para a capacidade de articulação em torno de cortes sustentáveis de gastos e regulamentação da reforma tributária.",
-      "resumo_pulso": "Conforme análises veiculadas pelo G1 Economia e InfoMoney Mercados, analistas financeiros avaliam a movimentação das curvas de juros futuros e do câmbio após a indicação de Luiz Carlos Trabuco para o Ministério da Fazenda. O foco do setor produtivo volta-se para a capacidade de articulação em torno de cortes sustentáveis de gastos e regulamentação da reforma tributária.",
-      "sintese_nerd": "A percepção sobre o risco fiscal influi nas cotações do dólar e na projeção da taxa Selic, afetando juros de crédito ao consumidor e investimentos.",
       "impacto_pratico": "A percepção sobre o risco fiscal influi nas cotações do dólar e na projeção da taxa Selic, afetando juros de crédito ao consumidor e investimentos.",
-      "paises_envolvidos": [
-        "BR"
-      ],
+      "origem_pipeline": "pulso",
       "veiculos_origem": [
         "G1 Economia",
         "InfoMoney Mercados"
       ],
-      "fontes_urls": [
-        "https://g1.globo.com/economia/noticia/2026/11/28/os-3-principais-problemas-que-trabuco-tera-que-enfrentar-na-fazenda-no-quarto-mandato-de-lula.ghtml",
-        "https://www.infomoney.com.br/mercados/lula-i-ou-dilma-ii-mercado-ve-ecos-dos-dois-momentos-na-chegada-de-trabuco-a-fazenda/"
+      "relevancia_score": 92,
+      "paises_envolvidos": [
+        "BR"
       ],
-      "data_publicacao": "2026-11-28T09:00:00Z",
-      "updated_at": "2026-11-28T09:22:08Z"
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "ministério da fazenda",
+        "trabuco",
+        "ajuste fiscal",
+        "juros futuros",
+        "mercado financeiro"
+      ]
     },
     {
       "slug": "relatora-onu-liberada-costa-rica-tribunal",
@@ -154,28 +232,19 @@
     },
     {
       "slug": "pesquisadores-estudam-especie-rara-cafe-amazonia",
-      "titulo_tema": "Pesquisadores mapeiam espécie rara de café gigante com notas sensoriais no Pará",
-      "titulo_curto": "Pesquisadores mapeiam espécie rara de café gigante com notas sensoriais no Pará",
       "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Geopolitica_Radar",
       "categoria": "Ciencia_Clima",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/radar",
-      "relevancia_score": 84,
-      "urgencia_score": 81,
       "ttl_horas": 24,
       "expires_at": "2026-11-29T09:22:08Z",
-      "palavras_chave_busca": [
-        "coffea liberica",
-        "café beirão",
-        "pará",
-        "amazônia",
-        "pesquisa agrícola"
+      "updated_at": "2026-11-28T09:22:08Z",
+      "fontes_urls": [
+        "https://g1.globo.com/economia/agronegocios/globo-rural/noticia/2026/11/28/cafe-raro-com-arvores-de-11-metros-e-sabor-de-cha-verde-e-estudado-na-amazonia-conheca.ghtml"
       ],
+      "titulo_tema": "Pesquisadores mapeiam espécie rara de café gigante com notas sensoriais no Pará",
+      "resumo_pulso": "Segundo reportagem do G1 Economia (Globo Rural), pesquisadores no Nordeste do Pará estão investigando o cultivo da espécie Coffea liberica, conhecida localmente como café beirão. A planta desenvolve árvores de até 11 metros de altura e produz frutos com sabor que remete ao chá-verde, representando cerca de 0,01% da produção global da bebida.",
+      "sintese_nerd": "O mapeamento botânico pode abrir novas frentes agrícolas sustentáveis e bioeconomia de nicho na Região Amazônica.",
+      "titulo_curto": "Pesquisadores mapeiam espécie rara de café gigante com notas sensoriais no Pará",
+      "rota_editoria": "/radar",
       "palavras_chave": [
         "coffea liberica",
         "café beirão",
@@ -183,126 +252,29 @@
         "amazônia",
         "pesquisa agrícola"
       ],
+      "urgencia_score": 81,
+      "data_publicacao": "2026-11-28T08:00:00Z",
       "gatilho_vitrine": "Segundo reportagem do G1 Economia (Globo Rural), pesquisadores no Nordeste do Pará estão investigando o cultivo da espécie Coffea liberica, conhecida localmente como café beirão. A planta desenvolve árvores de até 11 metros de altura e produz frutos com sabor que remete ao chá-verde, representando cerca de 0,01% da produção global da bebida.",
-      "resumo_pulso": "Segundo reportagem do G1 Economia (Globo Rural), pesquisadores no Nordeste do Pará estão investigando o cultivo da espécie Coffea liberica, conhecida localmente como café beirão. A planta desenvolve árvores de até 11 metros de altura e produz frutos com sabor que remete ao chá-verde, representando cerca de 0,01% da produção global da bebida.",
-      "sintese_nerd": "O mapeamento botânico pode abrir novas frentes agrícolas sustentáveis e bioeconomia de nicho na Região Amazônica.",
       "impacto_pratico": "O mapeamento botânico pode abrir novas frentes agrícolas sustentáveis e bioeconomia de nicho na Região Amazônica.",
-      "paises_envolvidos": [
-        "BR"
-      ],
+      "origem_pipeline": "pulso",
       "veiculos_origem": [
         "G1 Economia"
       ],
-      "fontes_urls": [
-        "https://g1.globo.com/economia/agronegocios/globo-rural/noticia/2026/11/28/cafe-raro-com-arvores-de-11-metros-e-sabor-de-cha-verde-e-estudado-na-amazonia-conheca.ghtml"
+      "relevancia_score": 84,
+      "paises_envolvidos": [
+        "BR"
       ],
-      "data_publicacao": "2026-11-28T08:00:00Z",
-      "updated_at": "2026-11-28T09:22:08Z"
-    },
-    {
-      "slug": "queda-dolar-anuncio-trabuco-mercados",
-      "status": "novo",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-29T07:55:50Z",
-      "updated_at": "2026-11-28T07:55:50Z",
-      "titulo_tema": "Dólar despenca quase 4% e fecha a R$ 5,51 após anúncio econômico",
-      "sintese_nerd": "A forte oscilação e desvalorização do dólar para R$ 5,51 refletem reações diretas a anúncios econômicos de peso conduzidos por figuras centrais do mercado, como Trabuco. Essa movimentação altera os fluxos de capitais estrangeiros e o custo de importações no Brasil.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-28T07:55:50Z",
-      "gatilho_vitrine": "Destaque a queda acentuada da moeda americana e o impacto imediato nas expectativas dos investidores e no câmbio nacional.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 95,
-      "categoria_primaria": "Economia",
+      "categoria_primaria": "Geopolitica_Radar",
       "categorias_cruzadas": [
-        "Geopolitica_Radar",
+        "Economia",
         "Resumo_Ultimas"
       ],
       "palavras_chave_busca": [
-        "dolar hoje",
-        "cambio",
-        "trabuco",
-        "cotacao dolar",
-        "mercado financeiro",
-        "economia brasil"
-      ]
-    },
-    {
-      "slug": "quebra-bancaria-eua-maior-dois-anos",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-30T07:55:50Z",
-      "updated_at": "2026-11-28T07:55:50Z",
-      "titulo_tema": "United Fidelity Bank fecha as portas na maior quebra bancária nos EUA em dois anos",
-      "sintese_nerd": "O fechamento do United Fidelity Bank, com US$ 5,9 bilhões em ativos pelos reguladores americanos, marca a maior falência bancária nos EUA em mais de dois anos. O evento acende alertas sobre a saúde de instituições financeiras regionais sob juros restritivos.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-28T07:55:50Z",
-      "gatilho_vitrine": "Analise os riscos sistêmicos e o impacto da intervenção da FDIC em um banco de médio porte americano para os mercados globais.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 90,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Geopolitica_Radar"
-      ],
-      "palavras_chave_busca": [
-        "quebra bancaria",
-        "eua",
-        "united fidelity bank",
-        "fdic",
-        "sistema financeiro internacional",
-        "crise bancaria"
-      ]
-    },
-    {
-      "slug": "macron-carne-brasileira-dopada-atritos-agro",
-      "status": "novo",
-      "ttl_horas": 72,
-      "expires_at": "2026-12-01T07:55:50Z",
-      "updated_at": "2026-11-28T07:55:50Z",
-      "titulo_tema": "Declaração de Macron sobre 'carne dopada' acirra atritos comerciais com o Brasil",
-      "sintese_nerd": "As críticas do presidente francês Emmanuel Macron à carne do Brasil, rotulada politicamente como 'dopada', evidenciam o protecionismo agrícola europeu em meio a fortes protestos locais. A retórica gera reações institucionais do governo brasileiro e tensiona as negociações comerciais internacionais.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-28T07:55:50Z",
-      "gatilho_vitrine": "Conecte as pressões políticas internas na União Europeia e os protestos de agricultores franceses com as barreiras protecionistas ao agronegócio brasileiro.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 88,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Geopolitica_Radar"
-      ],
-      "palavras_chave_busca": [
-        "macron",
-        "carne brasileira",
-        "agro",
-        "uniao europeia",
-        "comercio exterior",
-        "franca"
-      ]
-    },
-    {
-      "slug": "data-centers-japao-conflito-residencial-ia",
-      "status": "novo",
-      "ttl_horas": 72,
-      "expires_at": "2026-12-01T07:55:50Z",
-      "updated_at": "2026-11-28T07:55:50Z",
-      "titulo_tema": "Expansão global de data centers para inteligência artificial gera revolta em bairros no Japão",
-      "sintese_nerd": "A corrida geopolítica e comercial por supremacia em inteligência artificial impulsiona a construção em massa de gigantescos data centers em áreas residenciais urbanas no Japão. O impacto visual, sonoro e energético dessas estruturas tem provocado fortes protestos de moradores e debates sobre zoneamento.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-28T07:55:50Z",
-      "gatilho_vitrine": "Exponha o choque entre a corrida tecnológica global por infraestrutura de IA e a resistência das comunidades locais afetadas pela especulação imobiliária tecnológica.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 82,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Cultura",
-        "Economia"
-      ],
-      "palavras_chave_busca": [
-        "data centers",
-        "japao",
-        "inteligencia artificial",
-        "tecnologia",
-        "urbanismo",
-        "crise energetica"
+        "coffea liberica",
+        "café beirão",
+        "pará",
+        "amazônia",
+        "pesquisa agrícola"
       ]
     },
     {
@@ -882,30 +854,99 @@
       ]
     }
   ],
+  "temas_curadoria": [
+    {
+      "slug": "efeito-trabuco-desafios-fiscais-e-mercado-financeiro",
+      "titulo_tema": "Efeito Trabuco na Fazenda e as expectativas do mercado para a economia",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Politica"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 92,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-30T10:05:06Z",
+      "palavras_chave_busca": [
+        "trabuco",
+        "ministério da fazenda",
+        "juros futuros",
+        "mercado financeiro",
+        "ajuste fiscal",
+        "inflação"
+      ],
+      "gatilho_vitrine": "Destaque a análise sobre os rumos da política fiscal e o impacto das expectativas do mercado financeiro na economia brasileira sob a nova gestão da Fazenda.",
+      "sintese_nerd": "A chegada de Luiz Carlos Trabuco à Fazenda gerou um forte rali inicial nos ativos brasileiros, mas o desafio central agora é converter essa confiança em reformas fiscais concretas. O comportamento dos juros futuros dependerá diretamente da capacidade do governo em ancorar as expectativas inflacionárias e entregar o ajuste fiscal prometido.",
+      "data_publicacao": "2026-11-28T10:05:06Z",
+      "updated_at": "2026-11-28T10:05:06Z"
+    },
+    {
+      "slug": "ameaca-trump-data-centers-brasil-incerteza",
+      "titulo_tema": "Ameaças de Trump sobre data centers e os reflexos para o mercado brasileiro",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Politica"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 88,
+      "ttl_horas": 72,
+      "expires_at": "2026-12-01T10:05:06Z",
+      "palavras_chave_busca": [
+        "donald trump",
+        "data centers",
+        "tecnologia",
+        "comércio exterior",
+        "sanções",
+        "estados unidos"
+      ],
+      "gatilho_vitrine": "Conecte as pressões protecionistas internacionais e a política externa dos EUA aos riscos e oportunidades para o setor de infraestrutura tecnológica no Brasil.",
+      "sintese_nerd": "A promessa de Donald Trump de taxar empresas norte-americanas que construírem data centers no exterior gerou incertezas imediatas no ecossistema digital brasileiro. Embora o setor local avalie que ainda é cedo para mensurar perdas, a medida acende um alerta sobre a vulnerabilidade de investimentos estrangeiros frente ao protecionismo americano.",
+      "data_publicacao": "2026-11-28T10:05:06Z",
+      "updated_at": "2026-11-28T10:05:06Z"
+    },
+    {
+      "slug": "comissao-aprova-monitoramento-bancario-investigacoes",
+      "titulo_tema": "Aprovação de proposta de monitoramento bancário em investigações no Congresso",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Politica",
+      "categorias_cruzadas": [
+        "Economia"
+      ],
+      "rota_editoria": "/politica",
+      "relevancia_score": 85,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-30T10:05:06Z",
+      "palavras_chave_busca": [
+        "monitoramento bancário",
+        "congresso nacional",
+        "investigações",
+        "organizações criminosas",
+        "bloqueio de bens"
+      ],
+      "gatilho_vitrine": "Mostre o avanço legislativo no combate ao crime financeiro e como as novas regras de rastreamento de ativos afetam o sistema bancário.",
+      "sintese_nerd": "A aprovação na comissão do Congresso de regras mais rígidas para o monitoramento bancário e bloqueio de ativos visa sufocar o financiamento de organizações criminosas. A medida amplia os poderes investigativos, gerando debates institucionais sobre o equilíbrio entre o sigilo financeiro e a eficácia punitiva.",
+      "data_publicacao": "2026-11-28T10:05:06Z",
+      "updated_at": "2026-11-28T10:05:06Z"
+    }
+  ],
   "noticias_quentes": [
     {
       "slug": "russia-intensifica-ataques-aereos-regioes-ucrania",
-      "titulo_curto": "Autoridades ucranianas relatam mortes e feridos em novos ataques aéreos russos",
-      "resumo_pulso": "Segundo declarações da Força Aérea da Ucrânia e relatos das agências Ukrinform e The Kyiv Independent, disparos de mísseis e mais de 160 drones atingiram posições na região de Chernihiv, Sumy e Donetsk. Autoridades ucranianas alegam que ao menos dez civis morreram e dezenas ficaram feridos, com danos a infraestruturas locais, enquanto a apuração independente sobre a extensão total dos estragos prossegue.",
-      "impacto_pratico": "A elevação nos ataques aéreos amplia a instabilidade operacional em rotas de suprimentos e infraestrutura de energia no leste europeu.",
       "categoria": "Geopolitica_Relacoes",
-      "paises_envolvidos": [
-        "UA",
-        "RU"
-      ],
-      "urgencia_score": 91,
-      "relevancia_score": 88,
-      "nivel_confianca": "media",
       "ttl_horas": 12,
-      "horas_em_destaque": 6,
-      "veiculos_origem": [
-        "The Kyiv Independent",
-        "Ukrinform"
-      ],
+      "expires_at": "2026-11-28T21:22:08Z",
+      "updated_at": "2026-11-28T09:22:08Z",
       "fontes_urls": [
         "https://kyivindependent.com/russian-attacks-kill-10-injure-55-across-ukraine-over-past-day-as-deadly-strike-hits-chernihiv-oblast-businesses/",
         "https://www.ukrinform.net/rubric-ato/4189505-two-women-injured-in-russian-attacks-on-sumy-region-over-past-day.html"
       ],
+      "resumo_pulso": "Segundo declarações da Força Aérea da Ucrânia e relatos das agências Ukrinform e The Kyiv Independent, disparos de mísseis e mais de 160 drones atingiram posições na região de Chernihiv, Sumy e Donetsk. Autoridades ucranianas alegam que ao menos dez civis morreram e dezenas ficaram feridos, com danos a infraestruturas locais, enquanto a apuração independente sobre a extensão total dos estragos prossegue.",
+      "titulo_curto": "Autoridades ucranianas relatam mortes e feridos em novos ataques aéreos russos",
       "palavras_chave": [
         "Ucrânia",
         "Rússia",
@@ -913,39 +954,40 @@
         "drones",
         "Chernihiv"
       ],
+      "urgencia_score": 91,
       "data_publicacao": "2026-11-28T09:01:46Z",
+      "impacto_pratico": "A elevação nos ataques aéreos amplia a instabilidade operacional em rotas de suprimentos e infraestrutura de energia no leste europeu.",
+      "nivel_confianca": "media",
+      "veiculos_origem": [
+        "The Kyiv Independent",
+        "Ukrinform"
+      ],
+      "relevancia_score": 88,
+      "horas_em_destaque": 6,
+      "paises_envolvidos": [
+        "UA",
+        "RU"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "O que é uma sanção internacional?",
           "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-sancao-internacional",
-          "motivo_conexao": "Contextualiza as medidas econômicas e pressões diplomáticas aplicadas no âmbito da guerra na Ucrânia."
+          "motivo_conexao": "Contextualiza as medidas econômicas e pressões diplomáticas aplicadas no âmbito da guerra na Ucrânia.",
+          "titulo_existente": "O que é uma sanção internacional?"
         }
-      ],
-      "expires_at": "2026-11-28T21:22:08Z",
-      "updated_at": "2026-11-28T09:22:08Z"
+      ]
     },
     {
       "slug": "analistas-avaliam-desafios-fiscais-novo-ministro-fazenda",
-      "titulo_curto": "Mercado analisa desafios fiscais e metas de juros com novo comando na Fazenda",
-      "resumo_pulso": "Conforme análises veiculadas pelo G1 Economia e InfoMoney Mercados, analistas financeiros avaliam a movimentação das curvas de juros futuros e do câmbio após a indicação de Luiz Carlos Trabuco para o Ministério da Fazenda. O foco do setor produtivo volta-se para a capacidade de articulação em torno de cortes sustentáveis de gastos e regulamentação da reforma tributária.",
-      "impacto_pratico": "A percepção sobre o risco fiscal influi nas cotações do dólar e na projeção da taxa Selic, afetando juros de crédito ao consumidor e investimentos.",
       "categoria": "Economia_Comercio",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "urgencia_score": 89,
-      "relevancia_score": 92,
-      "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 12,
-      "veiculos_origem": [
-        "G1 Economia",
-        "InfoMoney Mercados"
-      ],
+      "expires_at": "2026-11-29T09:22:08Z",
+      "updated_at": "2026-11-28T09:22:08Z",
       "fontes_urls": [
         "https://g1.globo.com/economia/noticia/2026/11/28/os-3-principais-problemas-que-trabuco-tera-que-enfrentar-na-fazenda-no-quarto-mandato-de-lula.ghtml",
         "https://www.infomoney.com.br/mercados/lula-i-ou-dilma-ii-mercado-ve-ecos-dos-dois-momentos-na-chegada-de-trabuco-a-fazenda/"
       ],
+      "resumo_pulso": "Conforme análises veiculadas pelo G1 Economia e InfoMoney Mercados, analistas financeiros avaliam a movimentação das curvas de juros futuros e do câmbio após a indicação de Luiz Carlos Trabuco para o Ministério da Fazenda. O foco do setor produtivo volta-se para a capacidade de articulação em torno de cortes sustentáveis de gastos e regulamentação da reforma tributária.",
+      "titulo_curto": "Mercado analisa desafios fiscais e metas de juros com novo comando na Fazenda",
       "palavras_chave": [
         "Ministério da Fazenda",
         "Trabuco",
@@ -953,21 +995,31 @@
         "juros futuros",
         "mercado financeiro"
       ],
+      "urgencia_score": 89,
       "data_publicacao": "2026-11-28T09:00:00Z",
+      "impacto_pratico": "A percepção sobre o risco fiscal influi nas cotações do dólar e na projeção da taxa Selic, afetando juros de crédito ao consumidor e investimentos.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "G1 Economia",
+        "InfoMoney Mercados"
+      ],
+      "relevancia_score": 92,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "BR"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "Economia no Brasil",
           "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
-          "motivo_conexao": "Reúne análises complementares sobre câmbio, juros e equilíbrio das contas públicas brasileiras."
+          "motivo_conexao": "Reúne análises complementares sobre câmbio, juros e equilíbrio das contas públicas brasileiras.",
+          "titulo_existente": "Economia no Brasil"
         },
         {
-          "titulo_existente": "O que é o Orçamento?",
           "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-o-orcamento",
-          "motivo_conexao": "Explica o funcionamento do planejamento orçamentário e as amarras fiscais enfrentadas pela equipe econômica."
+          "motivo_conexao": "Explica o funcionamento do planejamento orçamentário e as amarras fiscais enfrentadas pela equipe econômica.",
+          "titulo_existente": "O que é o Orçamento?"
         }
-      ],
-      "expires_at": "2026-11-29T09:22:08Z",
-      "updated_at": "2026-11-28T09:22:08Z"
+      ]
     },
     {
       "slug": "relatora-onu-liberada-costa-rica-tribunal",
@@ -1004,24 +1056,15 @@
     },
     {
       "slug": "pesquisadores-estudam-especie-rara-cafe-amazonia",
-      "titulo_curto": "Pesquisadores mapeiam espécie rara de café gigante com notas sensoriais no Pará",
-      "resumo_pulso": "Segundo reportagem do G1 Economia (Globo Rural), pesquisadores no Nordeste do Pará estão investigando o cultivo da espécie Coffea liberica, conhecida localmente como café beirão. A planta desenvolve árvores de até 11 metros de altura e produz frutos com sabor que remete ao chá-verde, representando cerca de 0,01% da produção global da bebida.",
-      "impacto_pratico": "O mapeamento botânico pode abrir novas frentes agrícolas sustentáveis e bioeconomia de nicho na Região Amazônica.",
       "categoria": "Ciencia_Clima",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "urgencia_score": 81,
-      "relevancia_score": 84,
-      "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 6,
-      "veiculos_origem": [
-        "G1 Economia"
-      ],
+      "expires_at": "2026-11-29T09:22:08Z",
+      "updated_at": "2026-11-28T09:22:08Z",
       "fontes_urls": [
         "https://g1.globo.com/economia/agronegocios/globo-rural/noticia/2026/11/28/cafe-raro-com-arvores-de-11-metros-e-sabor-de-cha-verde-e-estudado-na-amazonia-conheca.ghtml"
       ],
+      "resumo_pulso": "Segundo reportagem do G1 Economia (Globo Rural), pesquisadores no Nordeste do Pará estão investigando o cultivo da espécie Coffea liberica, conhecida localmente como café beirão. A planta desenvolve árvores de até 11 metros de altura e produz frutos com sabor que remete ao chá-verde, representando cerca de 0,01% da produção global da bebida.",
+      "titulo_curto": "Pesquisadores mapeiam espécie rara de café gigante com notas sensoriais no Pará",
       "palavras_chave": [
         "Coffea liberica",
         "café beirão",
@@ -1029,16 +1072,25 @@
         "Amazônia",
         "pesquisa agrícola"
       ],
+      "urgencia_score": 81,
       "data_publicacao": "2026-11-28T08:00:00Z",
+      "impacto_pratico": "O mapeamento botânico pode abrir novas frentes agrícolas sustentáveis e bioeconomia de nicho na Região Amazônica.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "G1 Economia"
+      ],
+      "relevancia_score": 84,
+      "horas_em_destaque": 6,
+      "paises_envolvidos": [
+        "BR"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "Clima, Amazônia e Transição Energética",
           "url_existente": "https://www.rodandoomundo.com.br/clima",
-          "motivo_conexao": "Oferece perspectiva sobre biodiversidade, preservação de biomas e oportunidades de desenvolvimento sustentável."
+          "motivo_conexao": "Oferece perspectiva sobre biodiversidade, preservação de biomas e oportunidades de desenvolvimento sustentável.",
+          "titulo_existente": "Clima, Amazônia e Transição Energética"
         }
-      ],
-      "expires_at": "2026-11-29T09:22:08Z",
-      "updated_at": "2026-11-28T09:22:08Z"
+      ]
     },
     {
       "slug": "explosao-escola-afeganistao-kunar",
@@ -1651,114 +1703,6 @@
           "motivo_conexao": "Contextualiza o uso de bloqueios e restrições marítimas como instrumentos de pressão geopolítica.",
           "titulo_existente": "O que é uma sanção internacional?"
         }
-      ]
-    }
-  ],
-  "temas_curadoria": [
-    {
-      "slug": "queda-dolar-anuncio-trabuco-mercados",
-      "status": "novo",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-29T07:55:50Z",
-      "updated_at": "2026-11-28T07:55:50Z",
-      "titulo_tema": "Dólar despenca quase 4% e fecha a R$ 5,51 após anúncio econômico",
-      "sintese_nerd": "A forte oscilação e desvalorização do dólar para R$ 5,51 refletem reações diretas a anúncios econômicos de peso conduzidos por figuras centrais do mercado, como Trabuco. Essa movimentação altera os fluxos de capitais estrangeiros e o custo de importações no Brasil.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-28T07:55:50Z",
-      "gatilho_vitrine": "Destaque a queda acentuada da moeda americana e o impacto imediato nas expectativas dos investidores e no câmbio nacional.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 95,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Geopolitica_Radar",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "dolar hoje",
-        "cambio",
-        "trabuco",
-        "cotacao dolar",
-        "mercado financeiro",
-        "economia brasil"
-      ]
-    },
-    {
-      "slug": "quebra-bancaria-eua-maior-dois-anos",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-30T07:55:50Z",
-      "updated_at": "2026-11-28T07:55:50Z",
-      "titulo_tema": "United Fidelity Bank fecha as portas na maior quebra bancária nos EUA em dois anos",
-      "sintese_nerd": "O fechamento do United Fidelity Bank, com US$ 5,9 bilhões em ativos pelos reguladores americanos, marca a maior falência bancária nos EUA em mais de dois anos. O evento acende alertas sobre a saúde de instituições financeiras regionais sob juros restritivos.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-28T07:55:50Z",
-      "gatilho_vitrine": "Analise os riscos sistêmicos e o impacto da intervenção da FDIC em um banco de médio porte americano para os mercados globais.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 90,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Geopolitica_Radar"
-      ],
-      "palavras_chave_busca": [
-        "quebra bancaria",
-        "eua",
-        "united fidelity bank",
-        "fdic",
-        "sistema financeiro internacional",
-        "crise bancaria"
-      ]
-    },
-    {
-      "slug": "macron-carne-brasileira-dopada-atritos-agro",
-      "status": "novo",
-      "ttl_horas": 72,
-      "expires_at": "2026-12-01T07:55:50Z",
-      "updated_at": "2026-11-28T07:55:50Z",
-      "titulo_tema": "Declaração de Macron sobre 'carne dopada' acirra atritos comerciais com o Brasil",
-      "sintese_nerd": "As críticas do presidente francês Emmanuel Macron à carne do Brasil, rotulada politicamente como 'dopada', evidenciam o protecionismo agrícola europeu em meio a fortes protestos locais. A retórica gera reações institucionais do governo brasileiro e tensiona as negociações comerciais internacionais.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-28T07:55:50Z",
-      "gatilho_vitrine": "Conecte as pressões políticas internas na União Europeia e os protestos de agricultores franceses com as barreiras protecionistas ao agronegócio brasileiro.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 88,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Geopolitica_Radar"
-      ],
-      "palavras_chave_busca": [
-        "macron",
-        "carne brasileira",
-        "agro",
-        "uniao europeia",
-        "comercio exterior",
-        "franca"
-      ]
-    },
-    {
-      "slug": "data-centers-japao-conflito-residencial-ia",
-      "status": "novo",
-      "ttl_horas": 72,
-      "expires_at": "2026-12-01T07:55:50Z",
-      "updated_at": "2026-11-28T07:55:50Z",
-      "titulo_tema": "Expansão global de data centers para inteligência artificial gera revolta em bairros no Japão",
-      "sintese_nerd": "A corrida geopolítica e comercial por supremacia em inteligência artificial impulsiona a construção em massa de gigantescos data centers em áreas residenciais urbanas no Japão. O impacto visual, sonoro e energético dessas estruturas tem provocado fortes protestos de moradores e debates sobre zoneamento.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-28T07:55:50Z",
-      "gatilho_vitrine": "Exponha o choque entre a corrida tecnológica global por infraestrutura de IA e a resistência das comunidades locais afetadas pela especulação imobiliária tecnológica.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 82,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Cultura",
-        "Economia"
-      ],
-      "palavras_chave_busca": [
-        "data centers",
-        "japao",
-        "inteligencia artificial",
-        "tecnologia",
-        "urbanismo",
-        "crise energetica"
       ]
     }
   ]
