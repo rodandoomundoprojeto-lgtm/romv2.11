@@ -2,181 +2,129 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-28T15:41:16Z",
-  "batch_id": "20261128-1541",
+  "updatedAt": "2026-11-28T16:00:17Z",
+  "batch_id": "20261128-1600",
   "temas_ativos": [
     {
-      "slug": "lula-anuncia-trabuco-fazenda-pe-de-meia-universitario",
-      "titulo_tema": "Lula destaca escolha de Trabuco para a Fazenda e anuncia estudo para ampliar Pé-de-Meia",
-      "titulo_curto": "Lula destaca escolha de Trabuco para a Fazenda e anuncia estudo para ampliar Pé-de-Meia",
+      "slug": "jogadora-brasileira-presa-russia-moeda-troca-eua",
+      "titulo_tema": "Jogadora brasileira presa na Rússia vira moeda de troca geopolítica entre Moscou e Washington",
       "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Economia",
-      "categoria": "Economia_Comercio",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
       "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
+        "Politica",
+        "Economia"
       ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 94,
-      "urgencia_score": 93,
+      "rota_editoria": "/radar",
+      "relevancia_score": 92,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-30T16:00:17Z",
+      "palavras_chave_busca": [
+        "letícia lelê villar",
+        "rússia",
+        "eua",
+        "itamaraty",
+        "prisioneiros",
+        "diplomacia",
+        "espionagem"
+      ],
+      "gatilho_vitrine": "Destaque a cobertura sobre a detenção da atleta brasileira Lelê Villar na Rússia e as articulações diplomáticas envolvendo troca de prisioneiros com os Estados Unidos.",
+      "sintese_nerd": "A detenção da ex-jogadora brasileira Lelê Villar na Rússia transformou-se em um peão em complexas negociações de troca de prisioneiros envolvendo potências rivais como Moscou e Washington. O caso testa a capacidade de atuação da diplomacia brasileira do Itamaraty frente a crises de inteligência internacional.",
+      "data_publicacao": "2026-11-28T16:00:17Z",
+      "updated_at": "2026-11-28T16:00:17Z"
+    },
+    {
+      "slug": "lula-anuncia-trabuco-fazenda-pe-de-meia-universitario",
+      "status": "novo",
+      "categoria": "Economia_Comercio",
       "ttl_horas": 24,
       "expires_at": "2026-11-29T15:41:16Z",
-      "palavras_chave_busca": [
-        "luiz carlos trabuco",
-        "ministério da fazenda",
-        "pé-de-meia",
-        "lula"
-      ],
-      "palavras_chave": [
-        "luiz carlos trabuco",
-        "ministério da fazenda",
-        "pé-de-meia",
-        "lula"
-      ],
-      "gatilho_vitrine": "Segundo apuração do Poder360 e G1 Política, o presidente Luiz Inácio Lula da Silva afirmou ter exigido dedicação integral do futuro ministro da Fazenda, Luiz Carlos Trabuco, descrevendo-o como um nome de peso para o comando econômico. Paralelamente, o Ministério da Educação confirmou que o programa Pé-de-Meia Universitário começará em março para estudantes de baixa renda.",
-      "resumo_pulso": "Segundo apuração do Poder360 e G1 Política, o presidente Luiz Inácio Lula da Silva afirmou ter exigido dedicação integral do futuro ministro da Fazenda, Luiz Carlos Trabuco, descrevendo-o como um nome de peso para o comando econômico. Paralelamente, o Ministério da Educação confirmou que o programa Pé-de-Meia Universitário começará em março para estudantes de baixa renda.",
-      "sintese_nerd": "Sinalizações diretas para a condução da política fiscal e expansão de benefícios sociais para estudantes universitários cadastrados no CadÚnico.",
-      "impacto_pratico": "Sinalizações diretas para a condução da política fiscal e expansão de benefícios sociais para estudantes universitários cadastrados no CadÚnico.",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "veiculos_origem": [
-        "Poder360",
-        "G1 Política"
-      ],
+      "updated_at": "2026-11-28T15:41:16Z",
       "fontes_urls": [
         "https://www.poder360.com.br/feed/",
         "https://g1.globo.com/rss/g1/politica/"
       ],
+      "titulo_tema": "Lula destaca escolha de Trabuco para a Fazenda e anuncia estudo para ampliar Pé-de-Meia",
+      "resumo_pulso": "Segundo apuração do Poder360 e G1 Política, o presidente Luiz Inácio Lula da Silva afirmou ter exigido dedicação integral do futuro ministro da Fazenda, Luiz Carlos Trabuco, descrevendo-o como um nome de peso para o comando econômico. Paralelamente, o Ministério da Educação confirmou que o programa Pé-de-Meia Universitário começará em março para estudantes de baixa renda.",
+      "sintese_nerd": "Sinalizações diretas para a condução da política fiscal e expansão de benefícios sociais para estudantes universitários cadastrados no CadÚnico.",
+      "titulo_curto": "Lula destaca escolha de Trabuco para a Fazenda e anuncia estudo para ampliar Pé-de-Meia",
+      "rota_editoria": "/economia",
+      "palavras_chave": [
+        "luiz carlos trabuco",
+        "ministério da fazenda",
+        "pé-de-meia",
+        "lula"
+      ],
+      "urgencia_score": 93,
       "data_publicacao": "2026-11-28T15:39:56Z",
-      "updated_at": "2026-11-28T15:41:16Z"
-    },
-    {
-      "slug": "stf-marca-analise-proposta-gilmar-barrar-pautas-bomba",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-30T13:47:14Z",
-      "updated_at": "2026-11-28T13:47:14Z",
-      "titulo_tema": "STF pauta análise de regras de Gilmar Mendes para barrar pautas-bomba no Congresso",
-      "sintese_nerd": "O Supremo Tribunal Federal marcou para dezembro a análise de diretrizes propostas pelo ministro Gilmar Mendes para conter o impacto fiscal de projetos legislativos. A medida busca blindar o ajuste fiscal do governo contra pressões de despesas aprovadas no Congresso, gerando um novo cabo de guerra entre os Poderes.",
-      "rota_editoria": "/politica",
-      "data_publicacao": "2026-11-28T13:47:14Z",
-      "gatilho_vitrine": "Destacar impacto institucional da regulação do STF sobre gastos públicos e autonomia legislativa.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 92,
-      "categoria_primaria": "Politica",
-      "categorias_cruzadas": [
-        "Economia"
-      ],
-      "palavras_chave_busca": [
-        "stf",
-        "gilmar mendes",
-        "pautas-bomba",
-        "congresso",
-        "contas publicas",
-        "orcamento",
-        "supremo tribunal federal"
-      ]
-    },
-    {
-      "slug": "china-preocupa-empresas-europeias-e-acende-alerta-global",
-      "status": "novo",
-      "ttl_horas": 72,
-      "expires_at": "2026-12-01T13:47:14Z",
-      "updated_at": "2026-11-28T13:47:14Z",
-      "titulo_tema": "Avanço da China e cautela corporativa na Europa acendem alerta nos mercados globais",
-      "sintese_nerd": "Menções preocupadas à China atingiram recordes em balanços corporativos de empresas europeias do índice Stoxx 600, refletindo pressões competitivas e riscos geopolíticos. Esse cenário reconfigura as cadeias globais de suprimento e impõe desafios adicionais à estabilidade econômica internacional.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-28T13:47:14Z",
-      "gatilho_vitrine": "Exibir o crescimento das tensões comerciais globais e o impacto da desaceleração chinesa sobre as multinacionais ocidentais.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 88,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Geopolitica_Radar"
-      ],
-      "palavras_chave_busca": [
-        "china",
-        "europa",
-        "stoxx europe 600",
-        "comercio global",
-        "mercados financeiros",
-        "competitividade"
-      ]
-    },
-    {
-      "slug": "divida-dos-meis-dispara-desde-posse-de-lula",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-30T13:47:14Z",
-      "updated_at": "2026-11-28T13:47:14Z",
-      "titulo_tema": "Dívida dos microempreendedores individuais dispara e governo promete perdão",
-      "sintese_nerd": "O endividamento dos MEIs registrou alta expressiva desde o início da atual gestão federal, impulsionado por juros elevados e dificuldades de caixa. O cenário econômico pressiona o Executivo a desenhar medidas de renegociação e perdão fiscal previstas para o horizonte de 2027.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-28T13:47:14Z",
-      "gatilho_vitrine": "Conectar o peso dos juros elevados e da inflação recente ao endividamento recorde dos pequenos empreendedores brasileiros.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 85,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Politica"
-      ],
-      "palavras_chave_busca": [
-        "mei",
-        "divida",
-        "cnpj",
-        "juros altos",
-        "governo federal",
-        "microempreendedor",
-        "economia domestica"
-      ]
-    },
-    {
-      "slug": "governo-prorroga-subvencao-diesel-30-dias",
-      "titulo_tema": "Governo renova subsídio ao diesel por mais 30 dias com custo mensal bilionário",
-      "titulo_curto": "Governo renova subsídio ao diesel por mais 30 dias com custo mensal bilionário",
-      "status": "novo",
+      "gatilho_vitrine": "Segundo apuração do Poder360 e G1 Política, o presidente Luiz Inácio Lula da Silva afirmou ter exigido dedicação integral do futuro ministro da Fazenda, Luiz Carlos Trabuco, descrevendo-o como um nome de peso para o comando econômico. Paralelamente, o Ministério da Educação confirmou que o programa Pé-de-Meia Universitário começará em março para estudantes de baixa renda.",
+      "impacto_pratico": "Sinalizações diretas para a condução da política fiscal e expansão de benefícios sociais para estudantes universitários cadastrados no CadÚnico.",
       "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "Poder360",
+        "G1 Política"
+      ],
+      "relevancia_score": 94,
+      "paises_envolvidos": [
+        "BR"
+      ],
       "categoria_primaria": "Economia",
-      "categoria": "Economia_Comercio",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
       ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 91,
-      "urgencia_score": 90,
+      "palavras_chave_busca": [
+        "luiz carlos trabuco",
+        "ministério da fazenda",
+        "pé-de-meia",
+        "lula"
+      ]
+    },
+    {
+      "slug": "governo-prorroga-subvencao-diesel-30-dias",
+      "status": "novo",
+      "categoria": "Economia_Comercio",
       "ttl_horas": 24,
       "expires_at": "2026-11-29T13:36:03Z",
-      "palavras_chave_busca": [
-        "subvencao",
-        "diesel",
-        "ministerio da fazenda",
-        "economia"
+      "updated_at": "2026-11-28T15:41:16Z",
+      "fontes_urls": [
+        "https://www.infomoney.com.br/feed/"
       ],
+      "titulo_tema": "Governo renova subsídio ao diesel por mais 30 dias com custo mensal bilionário",
+      "resumo_pulso": "Conforme informações da InfoMoney e do G1 Economia, o Ministério da Fazenda renovou a subvenção ao diesel por mais 30 dias, mantendo o subsídio em R$ 2,12 por litro. A medida assinada pelo ministro em exercício Dario Durigan acarreta um custo estimado em até R$ 10,5 bilhões mensais para conter os preços de transporte.",
+      "sintese_nerd": "Contenção temporária no custo do frete e dos transportes rodoviários, refletindo nos preços ao consumidor.",
+      "titulo_curto": "Governo renova subsídio ao diesel por mais 30 dias com custo mensal bilionário",
+      "rota_editoria": "/economia",
       "palavras_chave": [
         "subvencao",
         "diesel",
         "ministerio da fazenda",
         "economia"
       ],
+      "urgencia_score": 90,
+      "data_publicacao": "2026-11-28T12:40:37Z",
       "gatilho_vitrine": "Conforme informações da InfoMoney e do G1 Economia, o Ministério da Fazenda renovou a subvenção ao diesel por mais 30 dias, mantendo o subsídio em R$ 2,12 por litro. A medida assinada pelo ministro em exercício Dario Durigan acarreta um custo estimado em até R$ 10,5 bilhões mensais para conter os preços de transporte.",
-      "resumo_pulso": "Conforme informações da InfoMoney e do G1 Economia, o Ministério da Fazenda renovou a subvenção ao diesel por mais 30 dias, mantendo o subsídio em R$ 2,12 por litro. A medida assinada pelo ministro em exercício Dario Durigan acarreta um custo estimado em até R$ 10,5 bilhões mensais para conter os preços de transporte.",
-      "sintese_nerd": "Contenção temporária no custo do frete e dos transportes rodoviários, refletindo nos preços ao consumidor.",
       "impacto_pratico": "Contenção temporária no custo do frete e dos transportes rodoviários, refletindo nos preços ao consumidor.",
-      "paises_envolvidos": [
-        "BR"
-      ],
+      "origem_pipeline": "pulso",
       "veiculos_origem": [
         "InfoMoney",
         "G1 Economia"
       ],
-      "fontes_urls": [
-        "https://www.infomoney.com.br/feed/"
+      "relevancia_score": 91,
+      "paises_envolvidos": [
+        "BR"
       ],
-      "data_publicacao": "2026-11-28T12:40:37Z",
-      "updated_at": "2026-11-28T15:41:16Z"
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "subvencao",
+        "diesel",
+        "ministerio da fazenda",
+        "economia"
+      ]
     },
     {
       "slug": "argentina-perde-tentativa-barrar-petroleo-malvinas",
@@ -316,49 +264,49 @@
     },
     {
       "slug": "fundacao-fhc-lamenta-declaracao-lula-morto-vivo",
-      "titulo_tema": "Lula pede desculpas públicas após declaração sobre o estado de saúde de Fernando Henrique Cardoso",
-      "titulo_curto": "Lula pede desculpas públicas após declaração sobre o estado de saúde de Fernando Henrique Cardoso",
       "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Cultura",
       "categoria": "Sociedade_Cultura",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/cultura",
-      "relevancia_score": 91,
-      "urgencia_score": 92,
       "ttl_horas": 24,
       "expires_at": "2026-11-29T11:18:34Z",
-      "palavras_chave_busca": [
-        "lula",
-        "fernando henrique cardoso",
-        "alzheimer",
-        "desculpas"
+      "updated_at": "2026-11-28T15:41:16Z",
+      "fontes_urls": [
+        "https://g1.globo.com/rss/g1/politica/"
       ],
+      "titulo_tema": "Lula pede desculpas públicas após declaração sobre o estado de saúde de Fernando Henrique Cardoso",
+      "resumo_pulso": "Segundo apuração do G1 Política e da InfoMoney, o presidente Luiz Inácio Lula da Silva pediu desculpas neste sábado (28) por sua declaração anterior classificando o ex-presidente Fernando Henrique Cardoso como 'morto-vivo' ao comentar os efeitos do Alzheimer. Lula admitiu que cometeu uma gafe grave e reiterou pedido de desculpas à família.",
+      "sintese_nerd": "Repercussão política imediata sobre o tom do debate público institucional e respeito a ex-chefe de Estado.",
+      "titulo_curto": "Lula pede desculpas públicas após declaração sobre o estado de saúde de Fernando Henrique Cardoso",
+      "rota_editoria": "/cultura",
       "palavras_chave": [
         "lula",
         "fernando henrique cardoso",
         "alzheimer",
         "desculpas"
       ],
+      "urgencia_score": 92,
+      "data_publicacao": "2026-11-28T11:08:48Z",
       "gatilho_vitrine": "Segundo apuração do G1 Política e da InfoMoney, o presidente Luiz Inácio Lula da Silva pediu desculpas neste sábado (28) por sua declaração anterior classificando o ex-presidente Fernando Henrique Cardoso como 'morto-vivo' ao comentar os efeitos do Alzheimer. Lula admitiu que cometeu uma gafe grave e reiterou pedido de desculpas à família.",
-      "resumo_pulso": "Segundo apuração do G1 Política e da InfoMoney, o presidente Luiz Inácio Lula da Silva pediu desculpas neste sábado (28) por sua declaração anterior classificando o ex-presidente Fernando Henrique Cardoso como 'morto-vivo' ao comentar os efeitos do Alzheimer. Lula admitiu que cometeu uma gafe grave e reiterou pedido de desculpas à família.",
-      "sintese_nerd": "Repercussão política imediata sobre o tom do debate público institucional e respeito a ex-chefe de Estado.",
       "impacto_pratico": "Repercussão política imediata sobre o tom do debate público institucional e respeito a ex-chefe de Estado.",
-      "paises_envolvidos": [
-        "BR"
-      ],
+      "origem_pipeline": "pulso",
       "veiculos_origem": [
         "G1 Política",
         "InfoMoney Mercados"
       ],
-      "fontes_urls": [
-        "https://g1.globo.com/rss/g1/politica/"
+      "relevancia_score": 91,
+      "paises_envolvidos": [
+        "BR"
       ],
-      "data_publicacao": "2026-11-28T11:08:48Z",
-      "updated_at": "2026-11-28T15:41:16Z"
+      "categoria_primaria": "Cultura",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "lula",
+        "fernando henrique cardoso",
+        "alzheimer",
+        "desculpas"
+      ]
     },
     {
       "slug": "interdicao-fraudulenta-idoso-perda-heranca",
@@ -894,83 +842,113 @@
       ]
     }
   ],
+  "temas_curadoria": [
+    {
+      "slug": "jogadora-brasileira-presa-russia-moeda-troca-eua",
+      "titulo_tema": "Jogadora brasileira presa na Rússia vira moeda de troca geopolítica entre Moscou e Washington",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Politica",
+        "Economia"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 92,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-30T16:00:17Z",
+      "palavras_chave_busca": [
+        "letícia lelê villar",
+        "rússia",
+        "eua",
+        "itamaraty",
+        "prisioneiros",
+        "diplomacia",
+        "espionagem"
+      ],
+      "gatilho_vitrine": "Destaque a cobertura sobre a detenção da atleta brasileira Lelê Villar na Rússia e as articulações diplomáticas envolvendo troca de prisioneiros com os Estados Unidos.",
+      "sintese_nerd": "A detenção da ex-jogadora brasileira Lelê Villar na Rússia transformou-se em um peão em complexas negociações de troca de prisioneiros envolvendo potências rivais como Moscou e Washington. O caso testa a capacidade de atuação da diplomacia brasileira do Itamaraty frente a crises de inteligência internacional.",
+      "data_publicacao": "2026-11-28T16:00:17Z",
+      "updated_at": "2026-11-28T16:00:17Z"
+    }
+  ],
   "noticias_quentes": [
     {
       "slug": "lula-anuncia-trabuco-fazenda-pe-de-meia-universitario",
-      "titulo_curto": "Lula destaca escolha de Trabuco para a Fazenda e anuncia estudo para ampliar Pé-de-Meia",
-      "resumo_pulso": "Segundo apuração do Poder360 e G1 Política, o presidente Luiz Inácio Lula da Silva afirmou ter exigido dedicação integral do futuro ministro da Fazenda, Luiz Carlos Trabuco, descrevendo-o como um nome de peso para o comando econômico. Paralelamente, o Ministério da Educação confirmou que o programa Pé-de-Meia Universitário começará em março para estudantes de baixa renda.",
-      "impacto_pratico": "Sinalizações diretas para a condução da política fiscal e expansão de benefícios sociais para estudantes universitários cadastrados no CadÚnico.",
       "categoria": "Economia_Comercio",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "urgencia_score": 93,
-      "relevancia_score": 94,
-      "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 12,
-      "veiculos_origem": [
-        "Poder360",
-        "G1 Política"
-      ],
+      "expires_at": "2026-11-29T15:41:16Z",
+      "updated_at": "2026-11-28T15:41:16Z",
       "fontes_urls": [
         "https://www.poder360.com.br/feed/",
         "https://g1.globo.com/rss/g1/politica/"
       ],
+      "resumo_pulso": "Segundo apuração do Poder360 e G1 Política, o presidente Luiz Inácio Lula da Silva afirmou ter exigido dedicação integral do futuro ministro da Fazenda, Luiz Carlos Trabuco, descrevendo-o como um nome de peso para o comando econômico. Paralelamente, o Ministério da Educação confirmou que o programa Pé-de-Meia Universitário começará em março para estudantes de baixa renda.",
+      "titulo_curto": "Lula destaca escolha de Trabuco para a Fazenda e anuncia estudo para ampliar Pé-de-Meia",
       "palavras_chave": [
         "Luiz Carlos Trabuco",
         "Ministério da Fazenda",
         "Pé-de-Meia",
         "Lula"
       ],
+      "urgencia_score": 93,
       "data_publicacao": "2026-11-28T15:39:56Z",
-      "links_internos_relacionados": [
-        {
-          "titulo_existente": "Política no Brasil",
-          "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
-          "motivo_conexao": "Relaciona as articulações ministeriais e anúncios do governo federal."
-        }
+      "impacto_pratico": "Sinalizações diretas para a condução da política fiscal e expansão de benefícios sociais para estudantes universitários cadastrados no CadÚnico.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Poder360",
+        "G1 Política"
       ],
-      "expires_at": "2026-11-29T15:41:16Z",
-      "updated_at": "2026-11-28T15:41:16Z"
-    },
-    {
-      "slug": "governo-prorroga-subvencao-diesel-30-dias",
-      "titulo_curto": "Governo renova subsídio ao diesel por mais 30 dias com custo mensal bilionário",
-      "resumo_pulso": "Conforme informações da InfoMoney e do G1 Economia, o Ministério da Fazenda renovou a subvenção ao diesel por mais 30 dias, mantendo o subsídio em R$ 2,12 por litro. A medida assinada pelo ministro em exercício Dario Durigan acarreta um custo estimado em até R$ 10,5 bilhões mensais para conter os preços de transporte.",
-      "impacto_pratico": "Contenção temporária no custo do frete e dos transportes rodoviários, refletindo nos preços ao consumidor.",
-      "categoria": "Economia_Comercio",
+      "relevancia_score": 94,
+      "horas_em_destaque": 12,
       "paises_envolvidos": [
         "BR"
       ],
-      "urgencia_score": 90,
-      "relevancia_score": 91,
-      "nivel_confianca": "alta",
+      "links_internos_relacionados": [
+        {
+          "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
+          "motivo_conexao": "Relaciona as articulações ministeriais e anúncios do governo federal.",
+          "titulo_existente": "Política no Brasil"
+        }
+      ]
+    },
+    {
+      "slug": "governo-prorroga-subvencao-diesel-30-dias",
+      "categoria": "Economia_Comercio",
       "ttl_horas": 24,
-      "horas_em_destaque": 12,
-      "veiculos_origem": [
-        "InfoMoney",
-        "G1 Economia"
-      ],
+      "expires_at": "2026-11-29T13:36:03Z",
+      "updated_at": "2026-11-28T15:41:16Z",
       "fontes_urls": [
         "https://www.infomoney.com.br/feed/"
       ],
+      "resumo_pulso": "Conforme informações da InfoMoney e do G1 Economia, o Ministério da Fazenda renovou a subvenção ao diesel por mais 30 dias, mantendo o subsídio em R$ 2,12 por litro. A medida assinada pelo ministro em exercício Dario Durigan acarreta um custo estimado em até R$ 10,5 bilhões mensais para conter os preços de transporte.",
+      "titulo_curto": "Governo renova subsídio ao diesel por mais 30 dias com custo mensal bilionário",
       "palavras_chave": [
         "subvencao",
         "diesel",
         "ministerio da fazenda",
         "economia"
       ],
+      "urgencia_score": 90,
       "data_publicacao": "2026-11-28T12:40:37Z",
+      "impacto_pratico": "Contenção temporária no custo do frete e dos transportes rodoviários, refletindo nos preços ao consumidor.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "InfoMoney",
+        "G1 Economia"
+      ],
+      "relevancia_score": 91,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "BR"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "Economia no Brasil",
           "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
-          "motivo_conexao": "Contextualiza a medida fiscal e os impactos nas contas públicas do país."
+          "motivo_conexao": "Contextualiza a medida fiscal e os impactos nas contas públicas do país.",
+          "titulo_existente": "Economia no Brasil"
         }
-      ],
-      "expires_at": "2026-11-29T13:36:03Z",
-      "updated_at": "2026-11-28T15:41:16Z"
+      ]
     },
     {
       "slug": "argentina-perde-tentativa-barrar-petroleo-malvinas",
@@ -1074,41 +1052,41 @@
     },
     {
       "slug": "fundacao-fhc-lamenta-declaracao-lula-morto-vivo",
-      "titulo_curto": "Lula pede desculpas públicas após declaração sobre o estado de saúde de Fernando Henrique Cardoso",
-      "resumo_pulso": "Segundo apuração do G1 Política e da InfoMoney, o presidente Luiz Inácio Lula da Silva pediu desculpas neste sábado (28) por sua declaração anterior classificando o ex-presidente Fernando Henrique Cardoso como 'morto-vivo' ao comentar os efeitos do Alzheimer. Lula admitiu que cometeu uma gafe grave e reiterou pedido de desculpas à família.",
-      "impacto_pratico": "Repercussão política imediata sobre o tom do debate público institucional e respeito a ex-chefe de Estado.",
       "categoria": "Sociedade_Cultura",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "urgencia_score": 92,
-      "relevancia_score": 91,
-      "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 12,
-      "veiculos_origem": [
-        "G1 Política",
-        "InfoMoney Mercados"
-      ],
+      "expires_at": "2026-11-29T11:18:34Z",
+      "updated_at": "2026-11-28T15:41:16Z",
       "fontes_urls": [
         "https://g1.globo.com/rss/g1/politica/"
       ],
+      "resumo_pulso": "Segundo apuração do G1 Política e da InfoMoney, o presidente Luiz Inácio Lula da Silva pediu desculpas neste sábado (28) por sua declaração anterior classificando o ex-presidente Fernando Henrique Cardoso como 'morto-vivo' ao comentar os efeitos do Alzheimer. Lula admitiu que cometeu uma gafe grave e reiterou pedido de desculpas à família.",
+      "titulo_curto": "Lula pede desculpas públicas após declaração sobre o estado de saúde de Fernando Henrique Cardoso",
       "palavras_chave": [
         "Lula",
         "Fernando Henrique Cardoso",
         "Alzheimer",
         "desculpas"
       ],
+      "urgencia_score": 92,
       "data_publicacao": "2026-11-28T11:08:48Z",
+      "impacto_pratico": "Repercussão política imediata sobre o tom do debate público institucional e respeito a ex-chefe de Estado.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "G1 Política",
+        "InfoMoney Mercados"
+      ],
+      "relevancia_score": 91,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "BR"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "Política no Brasil",
           "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
-          "motivo_conexao": "Acompanha os desdobramentos políticos e institucionais no país."
+          "motivo_conexao": "Acompanha os desdobramentos políticos e institucionais no país.",
+          "titulo_existente": "Política no Brasil"
         }
-      ],
-      "expires_at": "2026-11-29T11:18:34Z",
-      "updated_at": "2026-11-28T15:41:16Z"
+      ]
     },
     {
       "slug": "interdicao-fraudulenta-idoso-perda-heranca",
@@ -1642,88 +1620,6 @@
           "motivo_conexao": "Relaciona-se com a pauta legislativa e articulações em andamento no Congresso Nacional.",
           "titulo_existente": "Política no Brasil"
         }
-      ]
-    }
-  ],
-  "temas_curadoria": [
-    {
-      "slug": "stf-marca-analise-proposta-gilmar-barrar-pautas-bomba",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-30T13:47:14Z",
-      "updated_at": "2026-11-28T13:47:14Z",
-      "titulo_tema": "STF pauta análise de regras de Gilmar Mendes para barrar pautas-bomba no Congresso",
-      "sintese_nerd": "O Supremo Tribunal Federal marcou para dezembro a análise de diretrizes propostas pelo ministro Gilmar Mendes para conter o impacto fiscal de projetos legislativos. A medida busca blindar o ajuste fiscal do governo contra pressões de despesas aprovadas no Congresso, gerando um novo cabo de guerra entre os Poderes.",
-      "rota_editoria": "/politica",
-      "data_publicacao": "2026-11-28T13:47:14Z",
-      "gatilho_vitrine": "Destacar impacto institucional da regulação do STF sobre gastos públicos e autonomia legislativa.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 92,
-      "categoria_primaria": "Politica",
-      "categorias_cruzadas": [
-        "Economia"
-      ],
-      "palavras_chave_busca": [
-        "stf",
-        "gilmar mendes",
-        "pautas-bomba",
-        "congresso",
-        "contas publicas",
-        "orcamento",
-        "supremo tribunal federal"
-      ]
-    },
-    {
-      "slug": "china-preocupa-empresas-europeias-e-acende-alerta-global",
-      "status": "novo",
-      "ttl_horas": 72,
-      "expires_at": "2026-12-01T13:47:14Z",
-      "updated_at": "2026-11-28T13:47:14Z",
-      "titulo_tema": "Avanço da China e cautela corporativa na Europa acendem alerta nos mercados globais",
-      "sintese_nerd": "Menções preocupadas à China atingiram recordes em balanços corporativos de empresas europeias do índice Stoxx 600, refletindo pressões competitivas e riscos geopolíticos. Esse cenário reconfigura as cadeias globais de suprimento e impõe desafios adicionais à estabilidade econômica internacional.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-28T13:47:14Z",
-      "gatilho_vitrine": "Exibir o crescimento das tensões comerciais globais e o impacto da desaceleração chinesa sobre as multinacionais ocidentais.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 88,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Geopolitica_Radar"
-      ],
-      "palavras_chave_busca": [
-        "china",
-        "europa",
-        "stoxx europe 600",
-        "comercio global",
-        "mercados financeiros",
-        "competitividade"
-      ]
-    },
-    {
-      "slug": "divida-dos-meis-dispara-desde-posse-de-lula",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-30T13:47:14Z",
-      "updated_at": "2026-11-28T13:47:14Z",
-      "titulo_tema": "Dívida dos microempreendedores individuais dispara e governo promete perdão",
-      "sintese_nerd": "O endividamento dos MEIs registrou alta expressiva desde o início da atual gestão federal, impulsionado por juros elevados e dificuldades de caixa. O cenário econômico pressiona o Executivo a desenhar medidas de renegociação e perdão fiscal previstas para o horizonte de 2027.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-28T13:47:14Z",
-      "gatilho_vitrine": "Conectar o peso dos juros elevados e da inflação recente ao endividamento recorde dos pequenos empreendedores brasileiros.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 85,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Politica"
-      ],
-      "palavras_chave_busca": [
-        "mei",
-        "divida",
-        "cnpj",
-        "juros altos",
-        "governo federal",
-        "microempreendedor",
-        "economia domestica"
       ]
     }
   ]
