@@ -337,6 +337,14 @@
     var twDesc = document.querySelector('meta[name="twitter:description"]');
     if (twDesc) twDesc.setAttribute('content', finalDesc);
 
+    // Dossiê 3.0: remover JSON-LD estruturado ao sair de /dossies/<slug>
+    if (cleanP.indexOf('/dossies/') !== 0) {
+      var oldDossieLd = document.getElementById('dossie-jsonld');
+      if (oldDossieLd && oldDossieLd.parentNode) {
+        oldDossieLd.parentNode.removeChild(oldDossieLd);
+      }
+    }
+
     // Notificar Google Tag Manager / Analytics sobre navegação de rota SPA
     try {
       if (window.dataLayer && typeof window.dataLayer.push === 'function') {
@@ -369,6 +377,9 @@
     return e;
   }
   function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+  function romIconHtml(name, sizeClass, extraClass) {
+    return '<img src="/rodando-o-mundo-icones-512px/' + name + '.png" alt="" aria-hidden="true" class="rom-icon ' + (sizeClass || 'rom-icon--sm') + (extraClass ? ' ' + extraClass : '') + '" decoding="async">';
+  }
 
   // Rótulos de territórios e ilhas com soberania entre parênteses
   function countryDisplayName(c, cont) {
@@ -2923,6 +2934,12 @@
     .style('fill-opacity', function (p) { return p.country.m ? 1 : 0.55; })
     .attr('tabindex', -1);
 
+  var countryHoverOverlay = gZoom.append('path')
+    .attr('class', 'country-hover-overlay')
+    .style('fill', 'none')
+    .style('pointer-events', 'none')
+    .style('display', 'none');
+
   /* ---------- Bloco SUG-28: Camada de Linhas Principais do Globo ---------- */
   var showGlobeLines = false; // Padrão: desativada conforme ticket SUG-28
   var GLOBE_LINES_DATA = [
@@ -3272,6 +3289,9 @@
     projection.fitExtent([[12, 12], [W - 12, H - 12]], { type: 'FeatureCollection', features: feats });
     gZoom.select('.sphere').attr('d', path(sphere));
     countrySel.attr('d', function (p) { return path(p.geom); });
+    if (hoveredMapPart) {
+      syncCountryHoverOverlay(hoveredMapPart);
+    }
     if (globeLinesSel) {
       globeLinesSel.attr('d', function (d) { return path(d.feature); });
     }
@@ -3413,6 +3433,7 @@
     })
     .on('start', function () {
       if (tip) tip.hidden = true;
+      syncCountryHoverOverlay(null);
     })
     .on('zoom', function (e) {
       if (tip) tip.hidden = true;
@@ -3722,6 +3743,7 @@
           (state.targetPulseCountry.id && p.country.id === state.targetPulseCountry.id);
       });
 
+    countrySel.filter('.hot-spot-marker').raise();
     countrySel.filter('.active').raise();
     countrySel.filter('.target-pulsing').raise();
     if (islandMarkerSel) {
@@ -4526,14 +4548,14 @@
       }
     });
 
-    // 3. Despejo suave de buffer quando o leitor rolar para fora ou encerrar hover/foco
-    var scrollThrottleTimer = null;
+    // 3. Despejo suave de buffer após o leitor parar de rolar ou encerrar hover/foco
+    var scrollDebounceTimer = null;
     window.addEventListener('scroll', function () {
-      if (scrollThrottleTimer) return;
-      scrollThrottleTimer = setTimeout(function () {
-        scrollThrottleTimer = null;
+      if (scrollDebounceTimer) clearTimeout(scrollDebounceTimer);
+      scrollDebounceTimer = setTimeout(function () {
+        scrollDebounceTimer = null;
         flushPendingAutonomousUpdates();
-      }, 300);
+      }, 450);
     }, { passive: true });
 
     var interactionFlushTimer = null;
@@ -4575,6 +4597,9 @@
         .classed('hot-spot-pulsing', function (p) {
           return !!(hotPulseActive && getHotNewsForMapPart(p));
         });
+      countrySel.filter('.hot-spot-marker').raise();
+      countrySel.filter('.active').raise();
+      countrySel.filter('.target-pulsing').raise();
     }
     syncQuickCountryCardsHotNews();
     if (hotPulseTimer) clearTimeout(hotPulseTimer);
@@ -4964,8 +4989,35 @@
     }
   });
 
+  var hoveredMapPart = null;
+
+  function syncCountryHoverOverlay(p) {
+    if (!countryHoverOverlay) return;
+    hoveredMapPart = p || null;
+    if (!p || !p.geom) {
+      countryHoverOverlay.style('display', 'none').attr('d', null).attr('clip-path', null);
+      return;
+    }
+    var dStr = path(p.geom);
+    if (!dStr) {
+      countryHoverOverlay.style('display', 'none').attr('d', null).attr('clip-path', null);
+      return;
+    }
+    countryHoverOverlay
+      .attr('d', dStr)
+      .attr('clip-path', p.clip ? 'url(#' + p.clip + ')' : null)
+      .style('display', null);
+  }
+
   function handleMapItemMove(evt, p) {
     if (evt.pointerType === 'touch') return;
+    if (evt.currentTarget && evt.currentTarget.tagName === 'path') {
+      if (hoveredMapPart !== p) {
+        syncCountryHoverOverlay(p);
+      }
+    } else if (hoveredMapPart) {
+      syncCountryHoverOverlay(null);
+    }
     var c = p.country;
     var cName = p.islandName || countryDisplayName(c, p.c);
     var m = countryMedia(c, p.c);
@@ -4983,12 +5035,14 @@
 
   function handleMapItemLeave() {
     tip.hidden = true;
+    syncCountryHoverOverlay(null);
     countrySel.classed('cont-hover', false);
     if (islandMarkerSel) islandMarkerSel.classed('cont-hover', false);
   }
 
   function handleMapItemClick(evt, p) {
     if (tip) tip.hidden = true;
+    syncCountryHoverOverlay(null);
     countrySel.classed('cont-hover', false);
     if (islandMarkerSel) islandMarkerSel.classed('cont-hover', false);
 
@@ -5397,8 +5451,8 @@
       }
 
       var compareActionBtn = hotItem.comparacaoSlug
-        ? '<a href="/comparar/' + esc(hotItem.comparacaoSlug) + '" data-spa-link class="btn btn-secondary panel-hot-compare-btn">⚖️ Comparar perspectivas</a>'
-        : (canCompareHot ? '<button type="button" class="btn btn-secondary panel-hot-compare-btn" data-hot-compare-term="' + esc(hotTerm) + '" data-hot-headline="' + esc(hotItem.title || '') + '">⚖️ Comparar cobertura</button>' : '');
+        ? '<a href="/comparar/' + esc(hotItem.comparacaoSlug) + '" data-spa-link class="btn btn-secondary panel-hot-compare-btn">' + romIconHtml('compare', 'rom-icon--md') + ' Comparar perspectivas</a>'
+        : (canCompareHot ? '<button type="button" class="btn btn-secondary panel-hot-compare-btn" data-hot-compare-term="' + esc(hotTerm) + '" data-hot-headline="' + esc(hotItem.title || '') + '">' + romIconHtml('compare', 'rom-icon--md') + ' Comparar cobertura</button>' : '');
 
       var actionsHtml = (primaryActionBtn || compareActionBtn)
         ? '<div class="panel-hot-actions">' + primaryActionBtn + compareActionBtn + '</div>'
@@ -6670,7 +6724,7 @@
     if (escolhidas.length) {
       var kwJoined = escolhidas.join(' ');
       var kwJoinedToks = kwJoined.split(/\s+/).filter(Boolean);
-      if (titleExtractedToks.length > kwJoinedToks.length && kwJoinedToks.every(function (tk) { return titleFlatNorm.indexOf(norm(tk.replace(/-/g, ' '))) > -1; })) {
+      if (titleExtractedToks.length <= 3 && titleExtractedToks.length > kwJoinedToks.length && kwJoinedToks.every(function (tk) { return titleFlatNorm.indexOf(norm(tk.replace(/-/g, ' '))) > -1; })) {
         return titleExtracted;
       }
       return kwJoined;
@@ -7553,7 +7607,7 @@
           fontesHtml = '<div class="contextual-article-sources">' +
             art.fontes_urls.slice(0, 3).map(function (u, idx) {
               var nome = (Array.isArray(art.veiculos_origem) && art.veiculos_origem[idx]) ? art.veiculos_origem[idx] : 'Fonte original';
-              return '<a class="contextual-source-link" href="' + esc(u) + '" target="_blank" rel="noopener noreferrer">' + esc(nome) + ' ↗</a>';
+              return '<a class="contextual-source-link" href="' + esc(u) + '" target="_blank" rel="noopener noreferrer">' + esc(nome) + ' ' + romIconHtml('external', 'rom-icon--xs') + '</a>';
             }).join('') +
             '</div>';
         }
@@ -9830,6 +9884,18 @@
     if (sectionKey === 'radar') {
       var requestedTab = opts.radarTab || getRadarHubSubtabFromLocation();
       radarHubSubtab = (requestedTab === 'curadoria' || requestedTab === 'colunas') ? requestedTab : 'radar';
+      try {
+        var rawRadarSearch = (typeof opts.searchQuery === 'string') ? opts.searchQuery : (window.location.search || '');
+        if (rawRadarSearch && rawRadarSearch.length > 1) {
+          var radarSp = new URLSearchParams(rawRadarSearch);
+          var radarDlItem = radarSp.get('item') || '';
+          if (radarDlItem) {
+            pendingRadarDeepLink = radarDlItem;
+            radarCategoryFilter = 'todos';
+            radarFormatFilter = 'todos';
+          }
+        }
+      } catch (e) { }
     }
     flushPendingAutonomousUpdates();
     hideMobileChip();
@@ -11248,16 +11314,31 @@
   }
 
   function matchLocalDossieFeedFallback(dossie, queryStr) {
+    var rawQ = String(queryStr || '').trim();
     var kws = (dossie && dossie.regras_classificacao && Array.isArray(dossie.regras_classificacao.palavras_chave))
       ? dossie.regras_classificacao.palavras_chave
       : [];
-    var terms = [];
-    if (queryStr) terms.push(norm(queryStr));
-    kws.forEach(function (k) {
-      var nk = norm(k);
-      if (nk && terms.indexOf(nk) === -1) terms.push(nk);
-    });
-    if (!terms.length) return Promise.resolve([]);
+
+    var STOPWORDS_FALLBACK = {
+      'de': 1, 'do': 1, 'da': 1, 'dos': 1, 'das': 1, 'em': 1, 'no': 1, 'na': 1, 'nos': 1, 'nas': 1,
+      'para': 1, 'por': 1, 'com': 1, 'sem': 1, 'sob': 1, 'sobre': 1, 'que': 1, 'uma': 1, 'um': 1,
+      'uns': 1, 'umas': 1, 'seu': 1, 'sua': 1, 'seus': 1, 'suas': 1, 'este': 1, 'esta': 1, 'esse': 1,
+      'essa': 1, 'aquele': 1, 'aquela': 1, 'the': 1, 'of': 1, 'and': 1, 'in': 1, 'to': 1, 'a': 1,
+      'is': 1, 'for': 1, 'on': 1, 'with': 1, 'as': 1, 'by': 1, 'at': 1, 'deste': 1, 'desta': 1,
+      'ai': 1
+    };
+
+    var GENERIC_TOKENS = {
+      'adocao': 1, 'implementacao': 1, 'cupula': 1, 'seguranca': 1, 'acordo': 1, 'marco': 1,
+      'fase': 1, 'ordem': 1, 'plano': 1, 'sistema': 1, 'ato': 1, 'lei': 1, 'final': 1,
+      'primeiro': 1, 'segundo': 1, 'global': 1, 'nacional': 1, 'internacional': 1
+    };
+
+    var AI_CONTEXT_RE = /(artificial|\bia\b|\bai\b|algoritmo|algoritmos|modelo|modelos|genai|generativa|llm|chatgpt|openai|gemini|claude|deepseek|machine learning|deep learning|computacao|roboti|tech|tecnologia|software|dados|rede neural)/i;
+    var TECH_REG_RE = /(\bia\b|\bai\b|artificial|algoritmo|big tech|plataforma|digital|dados|privacidade|software|internet|rede social|tecnologia|tech|direito autoral)/i;
+
+    var isAiDossie = (dossie && (dossie.slug === 'inteligencia-artificial-e-regulacao' || dossie.slug === 'big-tech-redes-privacidade')) ||
+      kws.some(function (k) { return /intelig[eê]ncia|ia|ai|algoritmo/i.test(k); });
 
     var loadFeed = window._romFeedOutputCache
       ? Promise.resolve(window._romFeedOutputCache)
@@ -11270,22 +11351,68 @@
         .catch(function () { return []; });
 
     return loadFeed.then(function (items) {
+      if (!Array.isArray(items) || !items.length) return [];
       var scored = [];
-      (items || []).forEach(function (it) {
+
+      items.forEach(function (it) {
         var text = norm((it.titulo || '') + ' ' + (it.resumo || '') + ' ' + (it.analise || ''));
         if (!text) return;
+
+        // Se o dossiê ou a busca for sobre IA, rejeita inteligência militar/espionagem sem contexto tech
+        if (isAiDossie && text.indexOf('inteligencia') !== -1 && !AI_CONTEXT_RE.test(text)) {
+          return;
+        }
+
         var score = 0;
-        terms.forEach(function (t, idx) {
-          if (text.indexOf(t) !== -1) {
-            score += (idx === 0 ? 10 : 4);
+
+        if (rawQ) {
+          var qNorm = norm(rawQ);
+          if (text.indexOf(qNorm) !== -1) {
+            score += 40;
           } else {
-            var tokens = t.split(/\s+/).filter(function (w) { return w.length >= 4; });
-            tokens.forEach(function (w) {
-              if (text.indexOf(w) !== -1) score += 2;
-            });
+            var hasAiAct = /ai\s+act/i.test(qNorm);
+            if (hasAiAct) {
+              if (/ai\s+act/i.test(text) || ((/\bia\b/i.test(text) || text.indexOf('inteligencia artificial') !== -1) && /\b(regulacao|lei|marco|act)\b/i.test(text))) {
+                score += 30;
+              }
+            } else {
+              var rawTokens = qNorm.split(/\s+/).filter(Boolean);
+              var meaningful = rawTokens.filter(function (t) {
+                return t.length >= 3 && !STOPWORDS_FALLBACK[t] && !GENERIC_TOKENS[t];
+              });
+
+              if (meaningful.length >= 2) {
+                var matches = 0;
+                meaningful.forEach(function (tk) {
+                  var rx = new RegExp('\\b' + tk + '\\b', 'i');
+                  if (rx.test(text)) matches++;
+                });
+
+                var ratio = matches / meaningful.length;
+                if (ratio >= 0.75) {
+                  score += Math.round(ratio * 25);
+                }
+              }
+            }
           }
-        });
-        if (score > 0) {
+        } else {
+          // Sem busca específica: avalia contra as palavras-chave do dossiê
+          kws.forEach(function (k) {
+            var nk = norm(k);
+            if (!nk) return;
+            if (nk === 'inteligencia artificial') {
+              if (text.indexOf('inteligencia artificial') !== -1) score += 20;
+            } else if (nk === 'ia' || nk === 'llm') {
+              if (new RegExp('\\b' + nk + '\\b', 'i').test(text) && AI_CONTEXT_RE.test(text)) score += 12;
+            } else if (nk === 'regulacao de ia') {
+              if (text.indexOf('regulacao') !== -1 && TECH_REG_RE.test(text)) score += 16;
+            } else if (text.indexOf(nk) !== -1) {
+              score += 15;
+            }
+          });
+        }
+
+        if (score >= 20) {
           scored.push({
             score: score,
             item: {
@@ -11299,6 +11426,7 @@
           });
         }
       });
+
       scored.sort(function (a, b) { return b.score - a.score; });
       return scored.slice(0, 12).map(function (s) { return s.item; });
     });
@@ -11311,20 +11439,22 @@
     var kws = (dossie && dossie.regras_classificacao && Array.isArray(dossie.regras_classificacao.palavras_chave))
       ? dossie.regras_classificacao.palavras_chave
       : [];
-    var q = (customQuery || '').trim() || kws[0] || (dossie && dossie.titulo) || '';
+    var rawCustom = (customQuery || '').trim();
+    var isSpecificQuery = Boolean(rawCustom);
+    var q = rawCustom || kws[0] || (dossie && dossie.titulo) || '';
     if (!q) {
       container.innerHTML = '<p class="dossie-empty-msg">Nenhuma matéria recente encontrada para este dossiê.</p>';
       return;
     }
 
     var statusAtual = computeDossieStatus(dossie);
-    var per = opts.periodo || (statusAtual === 'arquivo' ? 'all' : '7d');
+    var per = opts.periodo || (statusAtual === 'arquivo' ? 'all' : (opts.isMilestoneSearch ? 'all' : '7d'));
     var collected = collectDossieOutlets(dossie);
     var primaryA2 = collected.primaryA2;
     var cObj = byA2[primaryA2] || byA2['BR'];
     var outlets = collected.outlets;
 
-    container.innerHTML = '<div class="dossie-loading-inline">Buscando matérias recentes sobre <strong>' + esc(q) + '</strong>…</div>';
+    container.innerHTML = '<div class="dossie-loading-inline">Buscando matérias sobre <strong>' + esc(q) + '</strong>…</div>';
 
     var isFile = (location.protocol === 'file:');
     var baseUrl = isFile ? 'https://www.rodandoomundo.com.br/api/busca-assunto' : '/api/busca-assunto';
@@ -11385,7 +11515,29 @@
       }
       return res;
     }).then(function (res) {
-      if (res.flat.length > 0 || !kws.length) return res;
+      if (res.flat.length > 0) return res;
+      // Se não encontrou no período de 7d/24h e for marco ou termo específico, tenta automaticamente no arquivo completo
+      if (per !== 'all' && (opts.isMilestoneSearch || isSpecificQuery)) {
+        return runBuscaQuery(q, 'all').then(function (resAll) {
+          if (resAll.flat.length > 0) return resAll;
+          return res;
+        });
+      }
+      return res;
+    }).then(function (res) {
+      if (res.flat.length > 0) return res;
+      // Se for consulta específica/marco que não encontrou nada na busca externa:
+      // Tenta match seguro no feed local com a consulta específica
+      if (isSpecificQuery) {
+        return matchLocalDossieFeedFallback(dossie, q).then(function (localItems) {
+          if (localItems.length > 0) {
+            return { flat: localItems, groupsCount: localItems.length, periodoEfetivo: res.periodoEfetivo };
+          }
+          return res;
+        });
+      }
+      // Se for visualização padrão do dossiê (sem termo específico), tenta palavras-chave alternativas
+      if (!kws.length) return res;
       var altKw = kws.find(function (k) { return norm(k) !== norm(q); });
       if (!altKw) return res;
       return runBuscaQuery(altKw, '7d').then(function (altRes) {
@@ -11393,26 +11545,30 @@
       });
     }).then(function (res) {
       if (res.flat.length > 0) return res;
-      return matchLocalDossieFeedFallback(dossie, q).then(function (localItems) {
-        if (localItems.length > 0) {
-          return { flat: localItems, groupsCount: localItems.length, periodoEfetivo: res.periodoEfetivo };
-        }
-        var fallbackHub = (dossie && dossie.rota && EDITORIAL.paginasTematicas) ? EDITORIAL.paginasTematicas[dossie.rota] : null;
-        if (fallbackHub && Array.isArray(fallbackHub.ultimasNoticias) && fallbackHub.ultimasNoticias.length) {
-          var hubItems = fallbackHub.ultimasNoticias.map(function (n) {
-            return {
-              materia_titulo: n.titulo,
-              materia_url: n.url,
-              veiculo_nome: n.fonte,
-              pais_veiculo: fallbackHub.pais || primaryA2,
-              vies: n.vies || '',
-              publicado_em: n.data ? (n.data + 'T12:00:00Z') : ''
-            };
-          });
-          return { flat: hubItems, groupsCount: hubItems.length, periodoEfetivo: res.periodoEfetivo };
-        }
-        return res;
-      });
+      // Fallback local temático apenas se for a visualização geral do dossiê (não para marco específico)
+      if (!isSpecificQuery) {
+        return matchLocalDossieFeedFallback(dossie, '').then(function (localItems) {
+          if (localItems.length > 0) {
+            return { flat: localItems, groupsCount: localItems.length, periodoEfetivo: res.periodoEfetivo };
+          }
+          var fallbackHub = (dossie && dossie.rota && EDITORIAL.paginasTematicas) ? EDITORIAL.paginasTematicas[dossie.rota] : null;
+          if (fallbackHub && Array.isArray(fallbackHub.ultimasNoticias) && fallbackHub.ultimasNoticias.length) {
+            var hubItems = fallbackHub.ultimasNoticias.map(function (n) {
+              return {
+                materia_titulo: n.titulo,
+                materia_url: n.url,
+                veiculo_nome: n.fonte,
+                pais_veiculo: fallbackHub.pais || primaryA2,
+                vies: n.vies || '',
+                publicado_em: n.data ? (n.data + 'T12:00:00Z') : ''
+              };
+            });
+            return { flat: hubItems, groupsCount: hubItems.length, periodoEfetivo: res.periodoEfetivo };
+          }
+          return res;
+        });
+      }
+      return res;
     }).then(function (res) {
       var extraPromise = Promise.resolve(null);
       if (dossie && dossie.slug === 'conflitos-medio-oriente' && /gaza/i.test(q || '')) {
@@ -11435,7 +11591,29 @@
       });
     }).then(function (res) {
       if (!res || !res.flat || !res.flat.length) {
-        container.innerHTML = '<p class="dossie-empty-msg">Nenhuma materia encontrada para "' + esc(q) + '". Tente outro termo.</p>';
+        var emptyHtml = '<div class="dossie-empty-card" style="padding:28px 18px;text-align:center;background:var(--card-bg, rgba(0,0,0,0.02));border-radius:12px;border:1px dashed var(--border, rgba(0,0,0,0.12));margin:16px 0;">';
+        emptyHtml += '<div style="font-size:2rem;margin-bottom:8px;">🔍</div>';
+        emptyHtml += '<h3 style="font-size:1.05rem;font-weight:700;margin:0 0 6px;">Nenhuma matéria encontrada para “' + esc(q) + '”</h3>';
+        if (per !== 'all') {
+          emptyHtml += '<p style="color:var(--text-muted);font-size:0.88rem;max-width:540px;margin:0 auto 14px;">Não localizamos notícias recentes para este termo no intervalo selecionado (' + (per === '24h' ? 'Últimas 24 horas' : 'Últimos 7 dias') + ').</p>';
+          emptyHtml += '<button type="button" class="btn btn-secondary dossie-retry-all-btn" data-search-term="' + esc(q) + '" style="font-weight:600;">Buscar em todo o período histórico →</button>';
+        } else {
+          emptyHtml += '<p style="color:var(--text-muted);font-size:0.88rem;max-width:540px;margin:0 auto;">Não localizamos matérias com este termo específico nos veículos cadastrados. Experimente consultar a fonte oficial acima ou pesquisar por palavras-chave mais amplas do dossiê.</p>';
+        }
+        emptyHtml += '</div>';
+        container.innerHTML = emptyHtml;
+
+        var retryBtn = container.querySelector('.dossie-retry-all-btn');
+        if (retryBtn) {
+          retryBtn.addEventListener('click', function () {
+            if (thematicHubView) {
+              thematicHubView.querySelectorAll('#dossie-period-filters .period-btn').forEach(function (b) {
+                b.setAttribute('aria-pressed', String(b.getAttribute('data-period') === 'all'));
+              });
+            }
+            fetchDossieLiveNews(dossie, q, targetContainerId, { periodo: 'all', explicitPeriod: true });
+          });
+        }
         return;
       }
       if (res.periodoEfetivo && thematicHubView) {
@@ -11449,14 +11627,18 @@
       var qtdVeiculos = Object.keys(veiculosUnicos).length;
       var termoLabel = res.fallbackTerm ? res.fallbackTerm : q;
       var headerHtml = '<div class="topic-search-header dossie-results-header">';
-      headerHtml += '<p class="topic-search-summary">Exibindo <strong>' + itemsToShow.length + '</strong> ' + (itemsToShow.length === 1 ? 'materia' : 'materias') + ' sobre <strong>"' + esc(termoLabel) + '"</strong> em ' + qtdVeiculos + (qtdVeiculos === 1 ? ' veiculo' : ' veiculos') + '</p>';
+      if (res.fallbackTerm && isSpecificQuery) {
+        headerHtml += '<p class="topic-search-summary">Não encontramos matérias sobre “' + esc(q) + '”. Exibindo <strong>' + itemsToShow.length + '</strong> ' + (itemsToShow.length === 1 ? 'matéria' : 'matérias') + ' sobre <strong>“' + esc(termoLabel) + '”</strong> em ' + qtdVeiculos + (qtdVeiculos === 1 ? ' veículo' : ' veículos') + '</p>';
+      } else {
+        headerHtml += '<p class="topic-search-summary">Exibindo <strong>' + itemsToShow.length + '</strong> ' + (itemsToShow.length === 1 ? 'matéria' : 'matérias') + ' sobre <strong>“' + esc(termoLabel) + '”</strong> em ' + qtdVeiculos + (qtdVeiculos === 1 ? ' veículo' : ' veículos') + '</p>';
+      }
       headerHtml += '<button type="button" class="topic-translate-all-btn" data-translate-all aria-pressed="false">Traduzir todas</button>';
       headerHtml += '</div>';
       container.innerHTML = headerHtml + renderDossieMateriasGridHtml(itemsToShow, primaryA2);
       bindCardTranslations(container);
       bindNewsFavButtons(container);
     }).catch(function () {
-      container.innerHTML = '<p class="dossie-empty-msg">Nao foi possivel carregar as materias ao vivo.</p>';
+      container.innerHTML = '<p class="dossie-empty-msg">Não foi possível carregar as matérias ao vivo.</p>';
     });
   }
 
@@ -11501,7 +11683,7 @@
     var catMeta = {
       politica: { label: 'Política & Poder', icon: '🏛️', cls: 'cat-politica' },
       economia: { label: 'Economia & Mercados', icon: '📈', cls: 'cat-economia' },
-      geopolitica: { label: 'Geopolítica', icon: '🌐', cls: 'cat-geopolitica' },
+      geopolitica: { label: 'Geopolítica', iconHtml: romIconHtml('dossier', 'rom-icon--xs'), cls: 'cat-geopolitica' },
       seguranca: { label: 'Defesa & Segurança', icon: '🛡️', cls: 'cat-seguranca' },
       sociedade: { label: 'Sociedade', icon: '👥', cls: 'cat-sociedade' }
     };
@@ -11522,7 +11704,7 @@
         var meta = catMeta[p.category] || { label: 'Análise', icon: '•', cls: 'cat-default' };
         h += '<article class="dossie-pillar-card ' + esc(meta.cls) + '">';
         h += '<div class="dossie-pillar-top">';
-        h += '<span class="dossie-pillar-badge">' + esc(meta.icon) + ' ' + esc(meta.label) + '</span>';
+        h += '<span class="dossie-pillar-badge">' + (meta.iconHtml || esc(meta.icon)) + ' ' + esc(meta.label) + '</span>';
         h += '<span class="dossie-pillar-num">0' + (idx + 1) + '</span>';
         h += '</div>';
         h += '<h3 class="dossie-pillar-title">' + esc(p.title || '') + '</h3>';
@@ -11536,6 +11718,507 @@
     return h;
   }
 
+  /* ---------- Dossiê 3.0: Follow (localStorage), Camada Editorial, Radar, Timeline & SEO ---------- */
+  var FOLLOWED_DOSSIES_KEY = 'rom_followed_dossies';
+
+  function getFollowedDossiesMap() {
+    try {
+      var raw = localStorage.getItem(FOLLOWED_DOSSIES_KEY);
+      if (!raw) return {};
+      var parsed = JSON.parse(raw);
+      return (parsed && typeof parsed === 'object' && !Array.isArray(parsed)) ? parsed : {};
+    } catch (e) {
+      return {};
+    }
+  }
+
+  function saveFollowedDossiesMap(map) {
+    try {
+      localStorage.setItem(FOLLOWED_DOSSIES_KEY, JSON.stringify(map || {}));
+    } catch (e) { }
+  }
+
+  function isDossieFollowed(slug) {
+    if (!slug) return false;
+    var map = getFollowedDossiesMap();
+    return Boolean(map[String(slug).toLowerCase()]);
+  }
+
+  function toggleFollowDossie(slug, currentCount) {
+    var key = String(slug || '').toLowerCase();
+    if (!key) return false;
+    var map = getFollowedDossiesMap();
+    if (map[key]) {
+      delete map[key];
+      saveFollowedDossiesMap(map);
+      return false;
+    }
+    var nowIso = new Date().toISOString();
+    map[key] = {
+      followed_at: nowIso,
+      last_seen_at: nowIso,
+      last_count: Math.max(0, Number(currentCount || 0))
+    };
+    saveFollowedDossiesMap(map);
+    return true;
+  }
+
+  function markDossieSeen(slug, currentCount) {
+    var key = String(slug || '').toLowerCase();
+    if (!key) return;
+    var map = getFollowedDossiesMap();
+    if (!map[key]) return;
+    map[key].last_seen_at = new Date().toISOString();
+    var cnt = Math.max(0, Number(currentCount || 0));
+    if (cnt > Number(map[key].last_count || 0) || typeof map[key].last_count !== 'number') {
+      map[key].last_count = cnt;
+    }
+    saveFollowedDossiesMap(map);
+  }
+
+  function renderDossieFollowedNewBadgeHtml(d) {
+    if (!d || !d.slug) return '';
+    var key = String(d.slug).toLowerCase();
+    var map = getFollowedDossiesMap();
+    var entry = map[key];
+    if (!entry) return '';
+    var current = Number(d.materias_count || 0);
+    var last = Number(entry.last_count || 0);
+    var diff = current - last;
+    if (diff <= 0) return '';
+    return '<span class="dossie-followed-new-badge" title="Novas matérias desde sua última visita">+' + diff + (diff === 1 ? ' nova' : ' novas') + '</span>';
+  }
+
+  function renderDossieLatestShiftHtml(d) {
+    var eb = d && d.editorial_briefing;
+    var shift = (eb && typeof eb === 'object') ? eb.latest_shift : null;
+    if (!shift || typeof shift !== 'object') return '';
+    var summary = String(shift.summary || '').trim();
+    if (!summary) return '';
+    var tag = String(shift.highlight_tag || 'Última atualização').trim();
+    var updated = String(shift.updated_at || '').trim();
+    var h = '<section class="hub-block dossie-latest-shift" aria-labelledby="dossie-shift-heading">';
+    h += '<div class="dossie-shift-head">';
+    h += '<span class="dossie-shift-pill">⚡ ' + esc(tag) + '</span>';
+    if (updated) h += '<time class="dossie-shift-date" datetime="' + esc(updated) + '">' + esc(updated) + '</time>';
+    h += '</div>';
+    h += '<h2 id="dossie-shift-heading" class="dossie-shift-title">O que mudou recentemente</h2>';
+    h += '<p class="dossie-shift-summary">' + esc(summary) + '</p>';
+    h += '</section>';
+    return h;
+  }
+
+  function renderDossieKeyNumbersHtml(d) {
+    var eb = d && d.editorial_briefing;
+    var nums = (eb && Array.isArray(eb.key_numbers)) ? eb.key_numbers.filter(function (n) {
+      return n && (String(n.value || '').trim() || String(n.label || '').trim());
+    }) : [];
+    if (!nums.length) return '';
+    var h = '<section class="hub-block dossie-numbers-strip" aria-labelledby="dossie-numbers-heading">';
+    h += '<div class="hub-block-head">';
+    h += '<span class="dossie-section-kicker kicker-numeros">Dados &amp; Escala</span>';
+    h += '<h2 id="dossie-numbers-heading">Números que importam</h2>';
+    h += '</div>';
+    h += '<div class="dossie-numbers-grid">';
+    nums.slice(0, 6).forEach(function (n) {
+      h += '<article class="dossie-number-card">';
+      h += '<div class="dossie-number-value">' + esc(n.value || '—') + '</div>';
+      h += '<div class="dossie-number-label">' + esc(n.label || '') + '</div>';
+      if (n.context) h += '<p class="dossie-number-context">' + esc(n.context) + '</p>';
+      if (n.source) h += '<div class="dossie-number-source">Fonte: ' + esc(n.source) + '</div>';
+      h += '</article>';
+    });
+    h += '</div></section>';
+    return h;
+  }
+
+  function renderDossieKeyPlayersHtml(d) {
+    var eb = d && d.editorial_briefing;
+    var players = (eb && Array.isArray(eb.key_players)) ? eb.key_players.filter(function (p) {
+      return p && String(p.name || '').trim();
+    }) : [];
+    if (!players.length) return '';
+    var h = '<section class="hub-block dossie-players-section" aria-labelledby="dossie-players-heading">';
+    h += '<div class="hub-block-head">';
+    h += '<span class="dossie-section-kicker kicker-atores">Protagonistas</span>';
+    h += '<h2 id="dossie-players-heading">Atores-chave</h2>';
+    h += '</div>';
+    h += '<div class="dossie-players-grid">';
+    players.slice(0, 6).forEach(function (p) {
+      var iso = String(p.country_iso || '').trim().toUpperCase();
+      var cObj = (iso && typeof byA2 === 'object') ? byA2[iso] : null;
+      var flagHtml = cObj ? countryFlag(cObj, 'flag-xs', cObj.c) : (iso ? '<span class="dossie-player-iso">' + esc(iso) + '</span>' : '');
+      h += '<article class="dossie-player-card">';
+      h += '<div class="dossie-player-head">';
+      if (flagHtml) h += '<span class="dossie-player-flag">' + flagHtml + '</span>';
+      h += '<div class="dossie-player-id">';
+      h += '<h3 class="dossie-player-name">' + esc(p.name || '') + '</h3>';
+      if (p.role) h += '<div class="dossie-player-role">' + esc(p.role) + '</div>';
+      h += '</div></div>';
+      if (p.stance_summary) h += '<p class="dossie-player-stance">' + esc(p.stance_summary) + '</p>';
+      h += '</article>';
+    });
+    h += '</div></section>';
+    return h;
+  }
+
+  function renderDossieImpactsHtml(d) {
+    var eb = d && d.editorial_briefing;
+    var impacts = (eb && Array.isArray(eb.practical_impacts)) ? eb.practical_impacts.filter(function (im) {
+      return im && (String(im.title || '').trim() || String(im.summary || '').trim());
+    }) : [];
+    if (!impacts.length) return '';
+    var audMeta = {
+      cidadaos_locais: { label: 'Cidadãos locais', icon: '🏠', cls: 'aud-cidadaos' },
+      viajantes_mobilidade: { label: 'Viajantes & Mobilidade', icon: '✈️', cls: 'aud-viajantes' },
+      empresas_comercio: { label: 'Empresas & Comércio', icon: '🏢', cls: 'aud-empresas' },
+      geral: { label: 'Impacto geral', iconHtml: romIconHtml('dossier', 'rom-icon--xs'), cls: 'aud-geral' }
+    };
+    var h = '<section class="hub-block dossie-impacts-section" aria-labelledby="dossie-impacts-heading">';
+    h += '<div class="hub-block-head">';
+    h += '<span class="dossie-section-kicker kicker-impactos">Na Prática</span>';
+    h += '<h2 id="dossie-impacts-heading">Impactos práticos</h2>';
+    h += '</div>';
+    h += '<div class="dossie-impacts-grid">';
+    impacts.slice(0, 6).forEach(function (im) {
+      var meta = audMeta[im.audience] || audMeta.geral;
+      h += '<article class="dossie-impact-card ' + esc(meta.cls) + '">';
+      h += '<span class="dossie-impact-badge">' + (meta.iconHtml || esc(meta.icon)) + ' ' + esc(meta.label) + '</span>';
+      if (im.title) h += '<h3 class="dossie-impact-title">' + esc(im.title) + '</h3>';
+      if (im.summary) h += '<p class="dossie-impact-summary">' + esc(im.summary) + '</p>';
+      h += '</article>';
+    });
+    h += '</div></section>';
+    return h;
+  }
+
+  function computeDossieCoverageStatsFallback(materias) {
+    if (!Array.isArray(materias) || !materias.length) return null;
+    var countryCounts = {};
+    var biasCounts = {};
+    var outlets = {};
+    materias.forEach(function (m) {
+      var pais = String(m.pais_veiculo || '').trim().toUpperCase();
+      if (pais) countryCounts[pais] = (countryCounts[pais] || 0) + 1;
+      var vies = String(m.vies || '').trim().toLowerCase();
+      if (vies) biasCounts[vies] = (biasCounts[vies] || 0) + 1;
+      var nome = String(m.veiculo_nome || m.fonte || '').trim();
+      if (nome) outlets[nome.toLowerCase()] = true;
+    });
+    var total = materias.length;
+    var byCountry = Object.keys(countryCounts).map(function (p) {
+      return { pais: p, count: countryCounts[p], pct: Math.round((countryCounts[p] / total) * 100) };
+    }).sort(function (a, b) { return b.count - a.count; });
+    var byBias = Object.keys(biasCounts).map(function (v) {
+      return { vies: v, count: biasCounts[v], pct: Math.round((biasCounts[v] / total) * 100) };
+    }).sort(function (a, b) { return b.count - a.count; });
+    return {
+      total_materias: total,
+      total_veiculos: Object.keys(outlets).length,
+      primary_sources_count: 0,
+      by_country: byCountry,
+      by_bias: byBias
+    };
+  }
+
+  function normalizeOutletNameForMatch(name) {
+    return String(name || '')
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/^the\s+/i, '')
+      .replace(/[^a-z0-9]+/g, ' ')
+      .trim();
+  }
+
+  function findMateriaByOutlet(outletName, materias) {
+    if (!outletName || !Array.isArray(materias) || !materias.length) return null;
+    var target = normalizeOutletNameForMatch(outletName);
+    if (!target) return null;
+    var exact = null;
+    var partial = null;
+    for (var i = 0; i < materias.length; i++) {
+      var m = materias[i];
+      if (!m) continue;
+      var url = String(m.materia_url || m.url || '').trim();
+      if (!url || !/^https?:\/\//i.test(url)) continue;
+      var src = normalizeOutletNameForMatch(m.veiculo_nome || m.fonte || '');
+      if (!src) continue;
+      if (src === target) {
+        exact = m;
+        break;
+      }
+      if (!partial && target.length >= 3 && src.length >= 3 && (src.indexOf(target) !== -1 || target.indexOf(src) !== -1)) {
+        partial = m;
+      }
+    }
+    return exact || partial;
+  }
+
+  function renderDossieCoverageRadarHtml(d, materias, coverageStats) {
+    var stats = (coverageStats && typeof coverageStats === 'object' && ((Array.isArray(coverageStats.by_country) && coverageStats.by_country.length) || (Array.isArray(coverageStats.by_bias) && coverageStats.by_bias.length)))
+      ? coverageStats
+      : computeDossieCoverageStatsFallback(materias);
+    var angles = (d && Array.isArray(d.coverage_angles)) ? d.coverage_angles.filter(function (a) {
+      return a && (String(a.label || '').trim() || String(a.summary || '').trim());
+    }) : [];
+    var hasStats = Boolean(stats && ((stats.by_country && stats.by_country.length) || (stats.by_bias && stats.by_bias.length)));
+    if (!hasStats && !angles.length) return '';
+
+    var countryPalette = ['#0284c7', '#10b981', '#f59e0b', '#8b5cf6', '#ec4899', '#64748b'];
+    var biasColors = {
+      esquerda: '#dc2626',
+      'centro-esquerda': '#f97316',
+      centro: '#64748b',
+      'centro-direita': '#0284c7',
+      direita: '#1d4ed8',
+      estatal: '#7c3aed',
+      independente: '#059669'
+    };
+
+    var h = '<section class="hub-block dossie-coverage-radar" aria-labelledby="dossie-radar-heading">';
+    h += '<div class="hub-block-head">';
+    h += '<span class="dossie-section-kicker kicker-radar">Comparador de Cobertura</span>';
+    h += '<h2 id="dossie-radar-heading">Como o mundo está cobrindo</h2>';
+    if (stats && stats.total_materias) {
+      h += '<p>Distribuição de <strong>' + esc(String(stats.total_materias)) + '</strong> matérias em <strong>' + esc(String(stats.total_veiculos || 0)) + '</strong> veículos indexados.</p>';
+    }
+    h += '</div>';
+
+    if (hasStats) {
+      h += '<div class="dossie-thermometers-grid">';
+      if (Array.isArray(stats.by_country) && stats.by_country.length) {
+        var topCountries = stats.by_country.slice(0, 6);
+        h += '<div class="dossie-thermometer-box">';
+        h += '<div class="dossie-thermometer-label">Por país de origem</div>';
+        h += '<div class="dossie-thermometer-bar" role="img" aria-label="Distribuição da cobertura por país">';
+        topCountries.forEach(function (item, idx) {
+          var pct = Math.max(4, Number(item.pct || 0));
+          var col = countryPalette[idx % countryPalette.length];
+          h += '<span class="dossie-thermo-seg" style="width:' + pct + '%;background:' + col + ';" title="' + esc(item.pais) + ': ' + esc(String(item.count)) + ' (' + esc(String(item.pct)) + '%)"></span>';
+        });
+        h += '</div>';
+        h += '<div class="dossie-thermometer-legend">';
+        topCountries.forEach(function (item, idx) {
+          var col = countryPalette[idx % countryPalette.length];
+          var cObj = (typeof byA2 === 'object' && item.pais) ? byA2[String(item.pais).toUpperCase()] : null;
+          var labelPais = cObj ? countryDisplayName(cObj, cObj.c) : item.pais;
+          h += '<span class="dossie-thermo-chip"><i style="background:' + col + ';"></i>' + esc(labelPais) + ' <strong>' + esc(String(item.pct)) + '%</strong></span>';
+        });
+        h += '</div></div>';
+      }
+
+      if (Array.isArray(stats.by_bias) && stats.by_bias.length) {
+        var topBiases = stats.by_bias.slice(0, 6);
+        h += '<div class="dossie-thermometer-box">';
+        h += '<div class="dossie-thermometer-label">Por perfil editorial</div>';
+        h += '<div class="dossie-thermometer-bar" role="img" aria-label="Distribuição da cobertura por perfil editorial">';
+        topBiases.forEach(function (item, idx) {
+          var pct = Math.max(4, Number(item.pct || 0));
+          var key = String(item.vies || '').toLowerCase();
+          var col = biasColors[key] || countryPalette[idx % countryPalette.length];
+          var lbl = (typeof BIAS === 'object' && BIAS[key]) ? BIAS[key] : item.vies;
+          h += '<span class="dossie-thermo-seg" style="width:' + pct + '%;background:' + col + ';" title="' + esc(lbl) + ': ' + esc(String(item.count)) + ' (' + esc(String(item.pct)) + '%)"></span>';
+        });
+        h += '</div>';
+        h += '<div class="dossie-thermometer-legend">';
+        topBiases.forEach(function (item, idx) {
+          var key = String(item.vies || '').toLowerCase();
+          var col = biasColors[key] || countryPalette[idx % countryPalette.length];
+          var lbl = (typeof BIAS === 'object' && BIAS[key]) ? BIAS[key] : item.vies;
+          h += '<span class="dossie-thermo-chip"><i style="background:' + col + ';"></i>' + esc(lbl) + ' <strong>' + esc(String(item.pct)) + '%</strong></span>';
+        });
+        h += '</div></div>';
+      }
+      h += '</div>';
+    }
+
+    if (angles.length) {
+      h += '<div class="dossie-angles-grid">';
+      angles.slice(0, 4).forEach(function (ang) {
+        var outlets = Array.isArray(ang.sample_outlets) ? ang.sample_outlets.filter(Boolean) : [];
+        h += '<article class="dossie-angle-card">';
+        h += '<div class="dossie-angle-top">';
+        h += '<h3 class="dossie-angle-label">' + esc(ang.label || 'Ângulo editorial') + '</h3>';
+        if (ang.region_or_scope) h += '<span class="dossie-angle-scope">' + esc(ang.region_or_scope) + '</span>';
+        h += '</div>';
+        if (ang.summary) h += '<p class="dossie-angle-summary">' + esc(ang.summary) + '</p>';
+        if (outlets.length) {
+          h += '<div class="dossie-angle-outlets">';
+          outlets.slice(0, 5).forEach(function (o) {
+            var oName = (o && typeof o === 'object') ? String(o.name || o.veiculo || o.label || '').trim() : String(o || '').trim();
+            if (!oName) return;
+            var oUrl = (o && typeof o === 'object') ? String(o.url || '').trim() : '';
+            var oTitle = (o && typeof o === 'object') ? String(o.title || o.titulo || '').trim() : '';
+            if (!oUrl) {
+              var matched = findMateriaByOutlet(oName, materias);
+              if (matched) {
+                oUrl = String(matched.materia_url || matched.url || '').trim();
+                if (!oTitle) oTitle = String(matched.materia_titulo || matched.titulo || '').trim();
+              }
+            }
+            if (oUrl && /^https?:\/\//i.test(oUrl)) {
+              h += '<a class="dossie-angle-outlet is-link" href="' + esc(oUrl) + '" target="_blank" rel="noopener noreferrer"' + (oTitle ? ' title="' + esc(oTitle) + '"' : '') + '>' + esc(oName) + ' <span class="dossie-angle-outlet-ext" aria-hidden="true">' + romIconHtml('external', 'rom-icon--xs') + '</span></a>';
+            } else {
+              h += '<span class="dossie-angle-outlet">' + esc(oName) + '</span>';
+            }
+          });
+          h += '</div>';
+        }
+        h += '</article>';
+      });
+      h += '</div>';
+    }
+
+    h += '</section>';
+    return h;
+  }
+
+  function renderDossieCoverageFiltersHtml(materias) {
+    if (!Array.isArray(materias) || materias.length < 2) return '';
+    var countries = {};
+    var biases = {};
+    materias.forEach(function (m) {
+      var p = String(m.pais_veiculo || '').trim().toUpperCase();
+      if (p) countries[p] = (countries[p] || 0) + 1;
+      var v = String(m.vies || '').trim().toLowerCase();
+      if (v) biases[v] = (biases[v] || 0) + 1;
+    });
+    var cKeys = Object.keys(countries).sort(function (a, b) { return countries[b] - countries[a]; }).slice(0, 6);
+    var bKeys = Object.keys(biases).sort(function (a, b) { return biases[b] - biases[a]; }).slice(0, 5);
+    if (cKeys.length <= 1 && bKeys.length <= 1) return '';
+
+    var h = '<div class="dossie-coverage-filters" id="dossie-coverage-filters" role="group" aria-label="Filtrar matérias indexadas por país ou perfil editorial">';
+    h += '<button type="button" class="dossie-cov-filter-btn is-active" data-cov-filter-type="all" data-cov-filter-val="all" aria-pressed="true">Todas (' + materias.length + ')</button>';
+    cKeys.forEach(function (p) {
+      var cObj = (typeof byA2 === 'object') ? byA2[p] : null;
+      var label = cObj ? countryDisplayName(cObj, cObj.c) : p;
+      h += '<button type="button" class="dossie-cov-filter-btn" data-cov-filter-type="country" data-cov-filter-val="' + esc(p) + '" aria-pressed="false">' + esc(label) + ' (' + countries[p] + ')</button>';
+    });
+    bKeys.forEach(function (v) {
+      var label = (typeof BIAS === 'object' && BIAS[v]) ? BIAS[v] : v;
+      h += '<button type="button" class="dossie-cov-filter-btn is-bias" data-cov-filter-type="bias" data-cov-filter-val="' + esc(v) + '" aria-pressed="false">' + esc(label) + ' (' + biases[v] + ')</button>';
+    });
+    h += '</div>';
+    return h;
+  }
+
+  function renderDossieRelatedRomHtml(relatedRom) {
+    if (!relatedRom || typeof relatedRom !== 'object') return '';
+    var entendas = Array.isArray(relatedRom.entenda) ? relatedRom.entenda.filter(function (it) {
+      return it && it.url && String(it.url).charAt(0) === '/';
+    }) : [];
+    var colunas = Array.isArray(relatedRom.colunas) ? relatedRom.colunas.filter(function (it) {
+      return it && it.url && String(it.url).charAt(0) === '/';
+    }) : [];
+    if (!entendas.length && !colunas.length) return '';
+
+    var h = '<section class="hub-block dossie-related-rom" aria-labelledby="dossie-related-heading">';
+    h += '<div class="hub-block-head">';
+    h += '<span class="dossie-section-kicker kicker-acervo">Conexões Internas</span>';
+    h += '<h2 id="dossie-related-heading">' + romIconHtml('archive', 'rom-icon--md') + ' Aprofunde no Acervo RoM</h2>';
+    h += '</div>';
+    h += '<div class="dossie-related-grid">';
+    entendas.slice(0, 4).forEach(function (item) {
+      h += '<a class="dossie-related-card is-entenda" href="' + esc(item.url) + '" data-spa-link>';
+      h += '<span class="dossie-related-type">📘 Entenda o Assunto</span>';
+      h += '<h3 class="dossie-related-title">' + esc(item.titulo || item.slug || '') + '</h3>';
+      if (item.resumo) h += '<p class="dossie-related-desc">' + esc(item.resumo) + '</p>';
+      h += '<span class="dossie-related-cta">Ler explicador →</span>';
+      h += '</a>';
+    });
+    colunas.slice(0, 4).forEach(function (item) {
+      h += '<a class="dossie-related-card is-coluna" href="' + esc(item.url) + '" data-spa-link>';
+      h += '<span class="dossie-related-type">✍️ Coluna Editorial</span>';
+      h += '<h3 class="dossie-related-title">' + esc(item.titulo || item.slug || '') + '</h3>';
+      if (item.subtitulo) h += '<p class="dossie-related-desc">' + esc(item.subtitulo) + '</p>';
+      h += '<span class="dossie-related-cta">Ler análise →</span>';
+      h += '</a>';
+    });
+    h += '</div></section>';
+    return h;
+  }
+
+  function renderDossieFaqHtml(d) {
+    var eb = d && d.editorial_briefing;
+    var qs = (eb && Array.isArray(eb.open_questions)) ? eb.open_questions.filter(function (q) {
+      return q && String(q.question || '').trim() && String(q.answer || '').trim();
+    }) : [];
+    if (!qs.length) return '';
+
+    var h = '<section class="hub-block dossie-faq" aria-labelledby="dossie-faq-heading">';
+    h += '<div class="hub-block-head">';
+    h += '<span class="dossie-section-kicker kicker-faq">Dúvidas &amp; Cenários</span>';
+    h += '<h2 id="dossie-faq-heading">Perguntas em aberto</h2>';
+    h += '</div>';
+    h += '<div class="dossie-faq-list">';
+    qs.slice(0, 8).forEach(function (q, idx) {
+      h += '<details class="dossie-faq-item"' + (idx === 0 ? ' open' : '') + '>';
+      h += '<summary>' + esc(q.question) + '</summary>';
+      h += '<p>' + esc(q.answer) + '</p>';
+      h += '</details>';
+    });
+    h += '</div></section>';
+    return h;
+  }
+
+  function updateDossieJsonLd(d, slug) {
+    if (!d || !slug) return;
+    try {
+      var baseUrl = getCanonicalBaseUrl();
+      var pageUrl = baseUrl + '/dossies/' + encodeURIComponent(slug);
+      var collectionNode = {
+        '@type': 'CollectionPage',
+        '@id': pageUrl + '#collection',
+        'url': pageUrl,
+        'name': d.titulo || slug,
+        'description': d.subtitulo || 'Cobertura completa e acompanhamento em tempo real no Rodando o Mundo.',
+        'inLanguage': 'pt-BR',
+        'isPartOf': {
+          '@type': 'WebSite',
+          'name': 'Rodando o Mundo',
+          'url': baseUrl + '/'
+        }
+      };
+      if (d.ultima_atualizacao) collectionNode.dateModified = d.ultima_atualizacao;
+
+      var eb = d.editorial_briefing;
+      var qs = (eb && Array.isArray(eb.open_questions)) ? eb.open_questions.filter(function (q) {
+        return q && String(q.question || '').trim() && String(q.answer || '').trim();
+      }) : [];
+
+      var payload;
+      if (qs.length) {
+        var faqNode = {
+          '@type': 'FAQPage',
+          '@id': pageUrl + '#faq',
+          'mainEntity': qs.slice(0, 10).map(function (q) {
+            return {
+              '@type': 'Question',
+              'name': String(q.question).trim(),
+              'acceptedAnswer': {
+                '@type': 'Answer',
+                'text': String(q.answer).trim()
+              }
+            };
+          })
+        };
+        payload = { '@context': 'https://schema.org', '@graph': [collectionNode, faqNode] };
+      } else {
+        payload = Object.assign({ '@context': 'https://schema.org' }, collectionNode);
+      }
+
+      var scriptEl = document.getElementById('dossie-jsonld');
+      if (!scriptEl) {
+        scriptEl = document.createElement('script');
+        scriptEl.id = 'dossie-jsonld';
+        scriptEl.type = 'application/ld+json';
+        (document.head || document.documentElement).appendChild(scriptEl);
+      }
+      scriptEl.textContent = JSON.stringify(payload);
+    } catch (e) { }
+  }
+
   function renderDossieTimelineHtml(d) {
     var items = d && d.timeline;
     if (!Array.isArray(items) || !items.length) return '';
@@ -11546,44 +12229,87 @@
       upcoming: { badge: 'Próximo Marco', icon: '⏳', cls: 'tl-upcoming' }
     };
 
+    var counts = { all: items.length, past: 0, turning_point: 0, upcoming: 0 };
+    items.forEach(function (it) {
+      var t = (it && it.type && typeMeta[it.type]) ? it.type : 'past';
+      counts[t] = (counts[t] || 0) + 1;
+    });
+
     var h = '<section class="hub-block dossie-timeline" aria-labelledby="dossie-timeline-heading">';
     h += '<div class="hub-block-head">';
     h += '<span class="dossie-section-kicker kicker-cronologia">Cronologia</span>';
     h += '<h2 id="dossie-timeline-heading">Linha do Tempo &amp; Marcos Decisivos</h2>';
-    h += '<p>Clique em um marco para destacar os detalhes.</p>';
+    h += '<p>Filtre por tipo de marco ou busque a cobertura ao vivo de um momento específico.</p>';
     h += '</div>';
+
+    h += '<div class="dossie-tl-filters" role="group" aria-label="Filtrar marcos da linha do tempo">';
+    h += '<button type="button" class="dossie-tl-filter-btn is-active" data-tl-filter="all" aria-pressed="true">Todos (' + counts.all + ')</button>';
+    if (counts.turning_point) h += '<button type="button" class="dossie-tl-filter-btn" data-tl-filter="turning_point" aria-pressed="false">🔥 Pontos de virada (' + counts.turning_point + ')</button>';
+    if (counts.past) h += '<button type="button" class="dossie-tl-filter-btn" data-tl-filter="past" aria-pressed="false">✓ Ocorridos (' + counts.past + ')</button>';
+    if (counts.upcoming) h += '<button type="button" class="dossie-tl-filter-btn" data-tl-filter="upcoming" aria-pressed="false">⏳ Próximos (' + counts.upcoming + ')</button>';
+    h += '</div>';
+
     h += '<div class="dossie-timeline-list">';
     items.forEach(function (item, idx) {
-      var meta = typeMeta[item.type] || typeMeta.past;
-      h += '<button type="button" class="dossie-tl-item ' + esc(meta.cls) + '" data-tl-idx="' + idx + '">';
+      var normType = (item && item.type && typeMeta[item.type]) ? item.type : 'past';
+      var meta = typeMeta[normType];
+      var srcName = String(item.source_name || '').trim();
+      var srcUrl = String(item.source_url || '').trim();
+      var validSrcUrl = /^https?:\/\//i.test(srcUrl) ? srcUrl : '';
+      var queryTerm = String(item.title || '').trim();
+
+      h += '<article class="dossie-tl-item ' + esc(meta.cls) + '" tabindex="0" role="button" data-tl-idx="' + idx + '" data-tl-type="' + esc(normType) + '">';
       h += '<span class="dossie-tl-dot" aria-hidden="true"></span>';
-      h += '<span class="dossie-tl-content">';
-      h += '<span class="dossie-tl-meta">';
+      h += '<div class="dossie-tl-content">';
+      h += '<div class="dossie-tl-meta">';
       h += '<span class="dossie-tl-date">' + esc(item.display_date || item.date || '') + '</span>';
       h += '<span class="dossie-tl-badge">' + esc(meta.icon) + ' ' + esc(meta.badge) + '</span>';
-      h += '</span>';
+      h += '</div>';
       h += '<span class="dossie-tl-title">' + esc(item.title || '') + '</span>';
       h += '<span class="dossie-tl-summary">' + esc(item.summary || '') + '</span>';
-      h += '</span>';
-      h += '</button>';
+      if (srcName || queryTerm) {
+        h += '<div class="dossie-tl-foot">';
+        if (srcName) {
+          if (validSrcUrl) {
+            h += '<a class="dossie-tl-source dossie-tl-source-link" href="' + esc(validSrcUrl) + '" target="_blank" rel="noopener noreferrer" title="Acessar cobertura original de ' + esc(srcName) + '">Fonte original: ' + esc(srcName) + ' ' + romIconHtml('external', 'rom-icon--xs') + '</a>';
+          } else {
+            h += '<span class="dossie-tl-source">Fonte: ' + esc(srcName) + '</span>';
+          }
+        }
+        if (queryTerm) {
+          var btnLabel = validSrcUrl ? 'Buscar outras matérias' : 'Ver cobertura deste marco';
+          h += '<button type="button" class="dossie-tl-search-btn" data-tl-query="' + esc(queryTerm) + '" data-tl-period="all">' + esc(btnLabel) + '</button>';
+        }
+        h += '</div>';
+      }
+      h += '</div>';
+      h += '</article>';
     });
     h += '</div></section>';
     return h;
   }
 
-  function renderDossieDetailDOM(d, materias, slug) {
+  function renderDossieDetailDOM(d, materias, slug, extras) {
     if (!thematicHubView) return;
+    extras = extras || {};
+    var coverageStats = extras.coverageStats || null;
+    var relatedRom = extras.relatedRom || null;
     var status = computeDossieStatus(d);
     var isEspecial = (d.tipo === 'especial');
     var legHub = (d.rota && EDITORIAL.paginasTematicas) ? EDITORIAL.paginasTematicas[d.rota] : null;
     var kws = (d.regras_classificacao && Array.isArray(d.regras_classificacao.palavras_chave)) ? d.regras_classificacao.palavras_chave : [];
     var paises = (d.regras_classificacao && Array.isArray(d.regras_classificacao.paises)) ? d.regras_classificacao.paises : [];
+    var currentMateriasCount = Math.max(Number(d.materias_count || 0), Array.isArray(materias) ? materias.length : 0);
+
+    markDossieSeen(slug, currentMateriasCount);
+    var followed = isDossieFollowed(slug);
 
     updateSeoMeta(
       d.titulo + ' — Dossiê | Rodando o Mundo',
       d.subtitulo || 'Cobertura completa e acompanhamento em tempo real no Rodando o Mundo.',
       '/dossies/' + slug
     );
+    updateDossieJsonLd(d, slug);
 
     var h = '<div class="hub-container dossie-detail-view">';
     h += '<div class="hub-nav-header-row">';
@@ -11609,6 +12335,9 @@
     } else {
       h += '<span class="dossie-status-badge is-permanente">Cobertura permanente</span>';
     }
+    if (d.audit_report && d.audit_report.approved && Number(d.audit_report.nota_isencao || 0) >= 85) {
+      h += '<span class="dossie-audit-badge" title="Síntese auditada quanto à isenção editorial e fontes">✓ Auditado · Isenção ' + esc(String(Math.round(Number(d.audit_report.nota_isencao)))) + '/100</span>';
+    }
     h += '</div>';
     h += '<h1 class="hub-title" id="hub-main-title">' + esc(d.titulo) + '</h1>';
     if (d.meta_info) {
@@ -11619,6 +12348,9 @@
     }
 
     h += '<div class="hub-hero-actions">';
+    h += '<button type="button" class="btn btn-secondary btn-follow-dossie' + (followed ? ' is-following' : '') + '" data-follow-dossie="' + esc(slug) + '" aria-pressed="' + String(followed) + '">' +
+      '<span class="follow-icon" aria-hidden="true">' + (followed ? '✓' : '★') + '</span> ' +
+      '<span class="follow-label">' + (followed ? 'Acompanhando dossiê' : 'Acompanhar dossiê') + '</span></button>';
     h += '<button type="button" class="btn btn-secondary btn-share-dossie" data-share-btn="1"' +
       ' data-share-url="/dossies/' + encodeURIComponent(slug) + '"' +
       ' data-share-title="' + esc(d.titulo) + '"' +
@@ -11647,6 +12379,8 @@
     }
     h += '</header>';
 
+    h += renderDossieLatestShiftHtml(d);
+
     if (legHub && Array.isArray(legHub.resumoEditorial) && legHub.resumoEditorial.length) {
       h += '<section class="hub-block hub-context-block" aria-labelledby="dossie-context-heading">';
       h += '<h2 id="dossie-context-heading">Contexto editorial</h2>';
@@ -11657,6 +12391,10 @@
     }
 
     h += renderDossieExecutiveSummaryHtml(d);
+    h += renderDossieKeyNumbersHtml(d);
+    h += renderDossieKeyPlayersHtml(d);
+    h += renderDossieImpactsHtml(d);
+    h += renderDossieCoverageRadarHtml(d, materias, coverageStats);
     h += renderDossieTimelineHtml(d);
 
     var defaultPer = '7d';
@@ -11677,7 +12415,9 @@
     h += '<div class="period-filters dossie-period-filters" id="dossie-period-filters" role="group" aria-label="Período da busca">';
     h += '<button type="button" class="period-btn" data-period="24h" aria-pressed="' + (defaultPer === '24h') + '">Últimas 24 horas</button>';
     h += '<button type="button" class="period-btn" data-period="7d" aria-pressed="' + (defaultPer === '7d') + '">Últimos 7 dias</button>';
+    h += '<button type="button" class="period-btn" data-period="all" aria-pressed="' + (defaultPer === 'all') + '">Todo o período</button>';
     h += '</div>';
+    h += renderDossieCoverageFiltersHtml(materias);
     h += '<div id="dossie-materias-results" aria-live="polite">';
     if (Array.isArray(materias) && materias.length) {
       h += '<div class="topic-search-header dossie-results-header">';
@@ -11691,17 +12431,49 @@
     h += '</div>';
     h += '</section>';
 
+    h += renderDossieRelatedRomHtml(relatedRom);
+    h += renderDossieFaqHtml(d);
+
     h += '</div>';
     thematicHubView.innerHTML = h;
     window.scrollTo({ top: 0, behavior: 'auto' });
     bindDynamicEditorialActions(thematicHubView);
     if (typeof applyLiveSponsors === 'function') applyLiveSponsors();
 
-    thematicHubView.querySelectorAll('.dossie-tl-item').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        var wasSelected = btn.classList.contains('is-selected');
+    var followBtn = thematicHubView.querySelector('.btn-follow-dossie');
+    if (followBtn) {
+      followBtn.addEventListener('click', function () {
+        var nowFollowed = toggleFollowDossie(slug, currentMateriasCount);
+        followBtn.classList.toggle('is-following', nowFollowed);
+        followBtn.setAttribute('aria-pressed', String(nowFollowed));
+        var iconEl = followBtn.querySelector('.follow-icon');
+        var labelEl = followBtn.querySelector('.follow-label');
+        if (iconEl) iconEl.textContent = nowFollowed ? '✓' : '★';
+        if (labelEl) labelEl.textContent = nowFollowed ? 'Acompanhando dossiê' : 'Acompanhar dossiê';
+      });
+    }
+
+    thematicHubView.querySelectorAll('.dossie-tl-item').forEach(function (card) {
+      card.addEventListener('click', function (ev) {
+        if (ev.target && ev.target.closest('a, .dossie-tl-search-btn')) return;
+        var wasSelected = card.classList.contains('is-selected');
         thematicHubView.querySelectorAll('.dossie-tl-item').forEach(function (b) { b.classList.remove('is-selected'); });
-        if (!wasSelected) btn.classList.add('is-selected');
+        if (!wasSelected) card.classList.add('is-selected');
+      });
+    });
+
+    thematicHubView.querySelectorAll('.dossie-tl-filter-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var filterType = btn.getAttribute('data-tl-filter') || 'all';
+        thematicHubView.querySelectorAll('.dossie-tl-filter-btn').forEach(function (b) {
+          var active = (b === btn);
+          b.classList.toggle('is-active', active);
+          b.setAttribute('aria-pressed', String(active));
+        });
+        thematicHubView.querySelectorAll('.dossie-tl-item').forEach(function (item) {
+          var itemType = item.getAttribute('data-tl-type') || 'past';
+          item.hidden = (filterType !== 'all' && itemType !== filterType);
+        });
       });
     });
 
@@ -11715,6 +12487,51 @@
 
     var liveForm = document.getElementById('dossie-live-search-form');
     var liveInput = document.getElementById('dossie-live-search-input');
+
+    thematicHubView.querySelectorAll('.dossie-tl-search-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var qTerm = btn.getAttribute('data-tl-query') || '';
+        if (!qTerm) return;
+        var qPeriod = btn.getAttribute('data-tl-period') || 'all';
+        if (liveInput) liveInput.value = qTerm;
+        thematicHubView.querySelectorAll('#dossie-period-filters .period-btn').forEach(function (b) {
+          b.setAttribute('aria-pressed', String(b.getAttribute('data-period') === qPeriod));
+        });
+        activePer = qPeriod;
+        fetchDossieLiveNews(d, qTerm, 'dossie-materias-results', { periodo: qPeriod, isMilestoneSearch: true, explicitPeriod: true });
+        var targetHeading = document.getElementById('dossie-materias-heading');
+        if (targetHeading && typeof targetHeading.scrollIntoView === 'function') {
+          targetHeading.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    thematicHubView.querySelectorAll('#dossie-coverage-filters .dossie-cov-filter-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var fType = btn.getAttribute('data-cov-filter-type') || 'all';
+        var fVal = btn.getAttribute('data-cov-filter-val') || 'all';
+        thematicHubView.querySelectorAll('#dossie-coverage-filters .dossie-cov-filter-btn').forEach(function (b) {
+          var active = (b === btn);
+          b.classList.toggle('is-active', active);
+          b.setAttribute('aria-pressed', String(active));
+        });
+        if (!resultsBox || !Array.isArray(materias)) return;
+        var filtered = materias.filter(function (m) {
+          if (fType === 'all') return true;
+          if (fType === 'country') return String(m.pais_veiculo || '').trim().toUpperCase() === fVal;
+          if (fType === 'bias') return String(m.vies || '').trim().toLowerCase() === fVal;
+          return true;
+        });
+        var summaryHtml = '<div class="topic-search-header dossie-results-header">';
+        summaryHtml += '<p class="topic-search-summary">Exibindo <strong>' + filtered.length + '</strong> de ' + materias.length + ' matérias indexadas</p>';
+        summaryHtml += '<button type="button" class="topic-translate-all-btn" data-translate-all aria-pressed="false" title="Traduzir todos os títulos para português">' + ICON_TRANSLATE + ' <span>Traduzir todas</span></button>';
+        summaryHtml += '</div>';
+        resultsBox.innerHTML = summaryHtml + renderDossieMateriasGridHtml(filtered, paises[0] || 'BR');
+        bindCardTranslations(resultsBox);
+        bindNewsFavButtons(resultsBox);
+      });
+    });
+
     if (liveForm && liveInput) {
       liveForm.addEventListener('submit', function (e) {
         e.preventDefault();
@@ -11791,7 +12608,12 @@
         return;
       }
       var materias = (apiData && apiData.ok && Array.isArray(apiData.materias)) ? apiData.materias : [];
-      renderDossieDetailDOM(dossie, materias, normalizedSlug);
+      var coverageStats = (apiData && apiData.ok && apiData.coverage_stats) ? apiData.coverage_stats : null;
+      var relatedRom = (apiData && apiData.ok && apiData.related_rom_content) ? apiData.related_rom_content : null;
+      renderDossieDetailDOM(dossie, materias, normalizedSlug, {
+        coverageStats: coverageStats,
+        relatedRom: relatedRom
+      });
     });
   }
 
@@ -12454,6 +13276,7 @@
   var radarLastFetchAt = 0;
   var radarVisibilityBound = false;
   var radarHubSubtab = 'radar'; // 'radar' | 'curadoria' | 'colunas'
+  var pendingRadarDeepLink = null;
 
   function getRadarHubSubtabFromLocation() {
     try {
@@ -12716,14 +13539,14 @@
     html += '</div>';
     html += '<div style="display:flex;gap:var(--space-2);align-items:center;flex-wrap:wrap;">';
     html += '<button type="button" class="btn btn-secondary radar-btn-refresh" id="btn-atualizar-radar" title="Atualizar agora os briefings do radar"><svg class="radar-refresh-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 4v6h-6"></path><path d="M1 20v-6h6"></path><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg> <span>Atualizar</span></button>';
-    html += '<a href="/resumo-do-dia" class="btn btn-secondary" data-spa-link title="Ver o Resumo do Dia com as 5 principais notícias">📰 Resumo do Dia</a>';
+    html += '<a href="/resumo-do-dia" class="btn btn-secondary" data-spa-link title="Ver o Resumo do Dia com as 5 principais notícias">' + romIconHtml('external', 'rom-icon--md') + ' Resumo do Dia</a>';
     html += '</div>';
     html += '</div>';
 
     var formatFiltersHtml = '<div class="radar-format-filters" role="group" aria-label="Filtrar por formato">';
     formatFiltersHtml += '<button type="button" class="chip-btn radar-format-btn' + (radarFormatFilter === 'todos' ? ' is-active' : '') + '" data-radar-format="todos">Todos</button>';
     formatFiltersHtml += '<button type="button" class="chip-btn radar-format-btn' + (radarFormatFilter === 'video' ? ' is-active' : '') + '" data-radar-format="video">🎬 Vídeos</button>';
-    formatFiltersHtml += '<button type="button" class="chip-btn radar-format-btn' + (radarFormatFilter === 'materia' ? ' is-active' : '') + '" data-radar-format="materia">📰 Matérias</button>';
+    formatFiltersHtml += '<button type="button" class="chip-btn radar-format-btn' + (radarFormatFilter === 'materia' ? ' is-active' : '') + '" data-radar-format="materia">' + romIconHtml('external', 'rom-icon--sm') + ' Matérias</button>';
     formatFiltersHtml += '</div>';
 
     var filtersHtml = '<div class="radar-filters-bar">';
@@ -13430,7 +14253,7 @@
     card += '<div class="radar-card-header">';
     card += '<div class="radar-card-meta">';
     card += '<span class="radar-badge-cat">' + esc(catLabel) + '</span>';
-    card += '<span class="radar-badge-format ' + (isVideo ? 'is-video' : 'is-materia') + '">' + (isVideo ? '🎬 Vídeo' : '📰 Matéria') + '</span>';
+    card += '<span class="radar-badge-format ' + (isVideo ? 'is-video' : 'is-materia') + '">' + (isVideo ? '🎬 Vídeo' : romIconHtml('external', 'rom-icon--xs') + ' Matéria') + '</span>';
     if (item.origem_v2) {
       card += '<span class="radar-v2-pill radar-badge-v2">⚡ Pulso V2</span>';
     }
@@ -13439,7 +14262,7 @@
     } else if (item.origem_tempo_real_web) {
       card += '<span class="resumo-x-tag" title="Apurado em tempo real na imprensa via IA (Groq)">⚡ Tempo Real</span>';
     }
-    var sourceIcon = isVideo ? '🎬 ' : (item.origem_grok_x ? '𝕏 ' : (item.origem_tempo_real_web ? '🌐 ' : '📰 '));
+    var sourceIcon = isVideo ? '🎬 ' : (item.origem_grok_x ? '𝕏 ' : (item.origem_tempo_real_web ? romIconHtml('dossier', 'rom-icon--xs') + ' ' : romIconHtml('external', 'rom-icon--xs') + ' '));
     card += '<span class="radar-source-name">' + sourceIcon + esc(sourceNameLabel) + '</span>';
     var timeInfo = formatarDataPublicacaoCardRadar(pubRaw);
     var timeLabel = timeInfo && timeInfo.text ? (isVideo ? timeInfo.text.replace(/^Publicada\b/, 'Publicado') : timeInfo.text) : '';
@@ -13495,7 +14318,7 @@
 
     card += '<div class="radar-card-footer">';
     if (sourceUrlVal) {
-      card += '<a href="' + esc(sourceUrlVal) + '" target="_blank" rel="noopener noreferrer" class="radar-source-link">' + (isVideo ? 'Assistir vídeo original ↗' : 'Acessar conteúdo original ↗') + '</a>';
+      card += '<a href="' + esc(sourceUrlVal) + '" target="_blank" rel="noopener noreferrer" class="radar-source-link">' + (isVideo ? 'Assistir vídeo original ' : 'Acessar conteúdo original ') + romIconHtml('external', 'rom-icon--xs') + '</a>';
     }
     card += renderShareBtn({
       url: sourceUrlVal || '/radar',
@@ -13589,6 +14412,16 @@
       }
 
       if (videoItems.length > 0) {
+        if (pendingRadarDeepLink) {
+          var dlNormVidPre = normalizeNewsFavTitle(pendingRadarDeepLink);
+          for (var vIdx = 0; vIdx < videoItems.length; vIdx++) {
+            var vTitleNorm = normalizeNewsFavTitle(videoItems[vIdx].titulo || '');
+            if (vTitleNorm && (vTitleNorm === dlNormVidPre || vTitleNorm.indexOf(dlNormVidPre) !== -1 || dlNormVidPre.indexOf(vTitleNorm) !== -1)) {
+              radarVideoCarouselPage = Math.floor(vIdx / RADAR_VIDEO_CAROUSEL_SIZE);
+              break;
+            }
+          }
+        }
         var totalVideoPages = Math.max(1, Math.ceil(videoItems.length / RADAR_VIDEO_CAROUSEL_SIZE));
         radarVideoCarouselPage = ((radarVideoCarouselPage % totalVideoPages) + totalVideoPages) % totalVideoPages;
         var visibleVideos = getVideoCarouselSlice(videoItems, radarVideoCarouselPage);
@@ -13620,6 +14453,18 @@
       }
 
       if (articleItems.length > 0) {
+        if (pendingRadarDeepLink) {
+          var dlNormPre = normalizeNewsFavTitle(pendingRadarDeepLink);
+          for (var aIdx = 0; aIdx < articleItems.length; aIdx++) {
+            var aTitleNorm = normalizeNewsFavTitle(articleItems[aIdx].titulo || '');
+            if (aTitleNorm && (aTitleNorm === dlNormPre || aTitleNorm.indexOf(dlNormPre) !== -1 || dlNormPre.indexOf(aTitleNorm) !== -1)) {
+              if (aIdx + 1 > radarVisibleCount) {
+                radarVisibleCount = aIdx + 1;
+              }
+              break;
+            }
+          }
+        }
         totalForMainPagination = articleItems.length;
         var visibleArticles = articleItems.slice(0, radarVisibleCount);
         visibleMainCount = visibleArticles.length;
@@ -13629,7 +14474,7 @@
 
         var articleSectionHtml = '<section class="radar-section-block radar-section-materias" id="radar-materias-section" aria-labelledby="radar-materias-heading">';
         articleSectionHtml += '<div class="radar-section-header">';
-        articleSectionHtml += '<h3 class="radar-section-title" id="radar-materias-heading">📰 Matérias & Sínteses</h3>';
+        articleSectionHtml += '<h3 class="radar-section-title" id="radar-materias-heading">' + romIconHtml('external', 'rom-icon--md') + ' Matérias & Sínteses</h3>';
         articleSectionHtml += '<span class="radar-section-count">' + articleItems.length + (articleItems.length === 1 ? ' matéria' : ' matérias') + '</span>';
         articleSectionHtml += '</div>';
         articleSectionHtml += '<div class="radar-cards-grid">' + articlesGridHtml + '</div>';
@@ -13736,6 +14581,31 @@
 
     bindNewsFavButtons(listEl);
     bindRadarCardAccordions(listEl);
+    if (pendingRadarDeepLink) {
+      var dlNorm = normalizeNewsFavTitle(pendingRadarDeepLink);
+      var targetRadarCard = null;
+      listEl.querySelectorAll('.radar-card').forEach(function (card) {
+        if (targetRadarCard) return;
+        var titleEl = card.querySelector('.radar-card-title');
+        var cardTitleNorm = normalizeNewsFavTitle(titleEl ? titleEl.textContent : '');
+        if (cardTitleNorm && (cardTitleNorm === dlNorm || cardTitleNorm.indexOf(dlNorm) !== -1 || dlNorm.indexOf(cardTitleNorm) !== -1)) {
+          targetRadarCard = card;
+        }
+      });
+      if (targetRadarCard) {
+        pendingRadarDeepLink = null;
+        if (!targetRadarCard.classList.contains('is-expanded')) {
+          toggleRadarCard(targetRadarCard);
+        }
+        setTimeout(function () {
+          try {
+            targetRadarCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          } catch (e) {
+            targetRadarCard.scrollIntoView();
+          }
+        }, 80);
+      }
+    }
     if (expandedKeys.length > 0) {
       listEl.querySelectorAll('.radar-card').forEach(function (card) {
         var key = card.getAttribute('data-radar-key');
@@ -13763,7 +14633,7 @@
       }
     } else {
       if (totalForMainPagination > RADAR_PAGE_SIZE) {
-        loadMoreWrap.innerHTML = '<p class="radar-load-more-hint">✅ Todos os ' + totalForMainPagination + ' itens exibidos.</p>';
+        loadMoreWrap.innerHTML = '<p class="radar-load-more-hint">' + romIconHtml('archive', 'rom-icon--sm') + ' Todos os ' + totalForMainPagination + ' itens exibidos.</p>';
         loadMoreWrap.style.display = 'flex';
       } else {
         loadMoreWrap.style.display = 'none';
@@ -13803,7 +14673,7 @@
     rh += '<p class="editorial-section-sub">As 5 principais notícias do dia selecionadas por relevância editorial, com síntese de fatos e comparação direta de cobertura entre veículos.</p>';
     rh += '</div>';
     rh += '<div style="display:flex;gap:var(--space-2);align-items:center;flex-wrap:wrap;">';
-    rh += '<a href="/radar" class="btn btn-secondary" data-spa-link title="Ver todos os briefings em tempo real">📡 Radar ao Vivo</a>';
+    rh += '<a href="/radar" class="btn btn-secondary" data-spa-link title="Ver todos os briefings em tempo real">' + romIconHtml('radar', 'rom-icon--md') + ' Radar ao Vivo</a>';
     rh += '<button type="button" class="btn resumo-email-btn" id="btn-resumo-email" data-open-newsletter="Resumo do dia">Receber por e-mail</button>';
     rh += '</div>';
     rh += '</div>';
@@ -13839,7 +14709,7 @@
       var corEditoria = item.corEditoria || defaultEditoriaColors[(Number(rankNum) - 1) % defaultEditoriaColors.length] || '#388bfd';
 
       var countryChipInner = isGlobal
-        ? '<span class="resumo-country-globe" aria-hidden="true">' + esc(item.bandeiraEmoji || '🌍') + '</span> <span>Global</span>'
+        ? '<span class="resumo-country-globe" aria-hidden="true">' + (item.bandeiraEmoji && item.bandeiraEmoji !== '🌍' && item.bandeiraEmoji !== '🌐' ? esc(item.bandeiraEmoji) : romIconHtml('dossier', 'rom-icon--sm')) + '</span> <span>Global</span>'
         : outletFlagImg(cCodeUp, paisLabel) + ' <span>' + esc(paisLabel) + '</span>';
 
       var compSlug = item.comparacaoSlug;
@@ -13866,7 +14736,7 @@
       if (item.origemGrokX && !motorEhGroqWeb) {
         rh += '<span class="resumo-x-tag" title="Verificado via busca no X">𝕏 Tempo Real</span>';
       } else if (item.origemTempoRealWeb || item.origemGrokX) {
-        rh += '<span class="resumo-x-tag" title="Apurado em tempo real na imprensa via IA">🌐 Tempo Real</span>';
+        rh += '<span class="resumo-x-tag" title="Apurado em tempo real na imprensa via IA">' + romIconHtml('dossier', 'rom-icon--xs') + ' Tempo Real</span>';
       }
       rh += '</div>';
 
@@ -13889,12 +14759,12 @@
       rh += '<div class="resumo-actions-compact">';
       if (compSlug) {
         rh += '<a class="btn-compare-primary" href="/comparar/' + esc(compSlug) + '" data-spa-link>' +
-          '<span class="btn-compare-icon" aria-hidden="true">⚖️</span> Comparar (' + totalVeiculos + ' veículos)</a>';
+          '<span class="btn-compare-icon" aria-hidden="true">' + romIconHtml('compare', 'rom-icon--md') + '</span> Comparar (' + totalVeiculos + ' veículos)</a>';
       } else {
         rh += '<button type="button" class="btn-compare-primary" data-ver-noticias-assunto data-termo="' + esc(qBusca) + '" data-headline="' + esc(item.titulo || '') + '" data-pais="' + esc(cCodeUp) + '" data-cont="' + esc(cContKey) + '" data-topico="' + esc(cTopicKey) + '">' +
-          '<span class="btn-compare-icon" aria-hidden="true">⚖️</span> Comparar perspectivas</button>';
+          '<span class="btn-compare-icon" aria-hidden="true">' + romIconHtml('compare', 'rom-icon--md') + '</span> Comparar perspectivas</button>';
       }
-      rh += '<a class="link-original-secondary" href="' + esc(resLink.href) + '"' + resLink.attrs + ' target="_blank" rel="noopener noreferrer" data-resumo-link>Ler original ↗</a>';
+      rh += '<a class="link-original-secondary" href="' + esc(resLink.href) + '"' + resLink.attrs + ' target="_blank" rel="noopener noreferrer" data-resumo-link>Ler original ' + romIconHtml('external', 'rom-icon--xs') + '</a>';
       rh += '<div class="item-action-btns">' +
         renderNewsFavBtn({ url: resLink.href, title: item.titulo, source: item.fonte, countryCode: cCodeUp, publishedAt: item.publicadoEm || '' }) +
         renderShareBtn({ url: resLink.href, title: item.titulo, source: item.fonte, type: 'noticia' }) +
@@ -15220,10 +16090,12 @@
       hh += '<div class="hubs-cards-grid dossies-especiais-grid">';
       especiaisVisiveis.forEach(function (d) {
         var href = '/dossies/' + encodeURIComponent(d.slug);
-        hh += '<article class="hub-home-card dossie-especial-card">';
+        hh += '<article class="hub-home-card dossie-especial-card" data-dossie-slug="' + esc(d.slug || '') + '" data-dossie-rota="' + esc(d.rota || '') + '" data-dossie-cat="' + esc(d.categoria || '') + '">';
         hh += '<div class="hub-home-card-top">';
         hh += renderDossieIconHtml(d);
+        hh += '<a class="dossie-top-sponsor-badge" href="/parcerias" data-spa-link hidden></a>';
         hh += renderDossieStatusBadge(d);
+        hh += renderDossieFollowedNewBadgeHtml(d);
         hh += '</div>';
         hh += '<h3><a href="' + esc(href) + '" data-spa-link>' + esc(d.titulo) + '</a></h3>';
         if (d.meta_info) {
@@ -15266,10 +16138,12 @@
         var href = '/dossies/' + encodeURIComponent(d.slug);
         var vCount = Number(d.veiculos_count || 0);
         var metaText = d.categoria ? esc(d.categoria) + (vCount > 0 ? ' · ' + vCount + ' veículos' : '') : (vCount > 0 ? vCount + ' veículos · Atualizado hoje' : 'Cobertura contínua');
-        hh += '<article class="hub-home-card">';
+        hh += '<article class="hub-home-card" data-dossie-slug="' + esc(d.slug || '') + '" data-dossie-rota="' + esc(d.rota || '') + '" data-dossie-cat="' + esc(d.categoria || '') + '">';
         hh += '<div class="hub-home-card-top">';
         hh += renderDossieIconHtml(d);
+        hh += '<a class="dossie-top-sponsor-badge" href="/parcerias" data-spa-link hidden></a>';
         hh += '<span class="hub-home-meta-badge">' + metaText + '</span>';
+        hh += renderDossieFollowedNewBadgeHtml(d);
         hh += '</div>';
         hh += '<h3><a href="' + esc(href) + '" data-spa-link>' + esc(d.titulo) + '</a></h3>';
         hh += '<p>' + esc(d.subtitulo || '') + '</p>';
@@ -15292,6 +16166,9 @@
 
     hubsSec.innerHTML = hh;
     bindDynamicEditorialActions(hubsSec);
+    if (typeof applyTemasHubsSponsors === 'function') {
+      applyTemasHubsSponsors();
+    }
     hubsSec.querySelectorAll('.dossie-filter-pill').forEach(function (pill) {
       pill.addEventListener('click', function () {
         dossiesState.categoriaAtiva = pill.getAttribute('data-dossie-cat') || 'Todos';
@@ -15403,6 +16280,7 @@
       '<div class="hub-home-card-top">' +
       renderDossieIconHtml(d) +
       statusHtml +
+      renderDossieFollowedNewBadgeHtml(d) +
       renderShareBtn({ url: href, title: d.titulo, source: 'Dossiê RoM', type: 'dossie', summary: d.subtitulo || '' }) +
       '</div>' +
       '<h3><a href="' + esc(href) + '" data-spa-link>' + esc(d.titulo) + '</a></h3>' +
@@ -17894,7 +18772,7 @@
   })();
 
   /* ---------- Versão do sistema (definida pelo nome da pasta do deploy, ex: ROM V2 -> v2, ROM V2.10 -> v2.10) ---------- */
-  var ROM_CURRENT_VERSION = 'v2.1';
+  var ROM_CURRENT_VERSION = 'v2.2';
 
   function initSiteVersion() {
     try {
@@ -19218,6 +20096,48 @@
     });
   }
 
+  function applyTemasHubsSponsors(cotas) {
+    var hubsSec = document.getElementById('temas-hubs');
+    if (!hubsSec) return;
+    var cards = hubsSec.querySelectorAll('.hub-home-card');
+    if (!cards.length) return;
+
+    var c = cotas || liveSponsorsCache;
+    var listDossie = c ? toSponsorList(c.dossie_tematico) : [];
+
+    cards.forEach(function (card) {
+      var badge = card.querySelector('.dossie-top-sponsor-badge');
+      if (!badge) return;
+      if (isCommercialDemoMode || !listDossie.length) {
+        badge.hidden = true;
+        badge.innerHTML = '';
+        card.classList.remove('has-top-sponsor');
+        return;
+      }
+
+      var slug = card.getAttribute('data-dossie-slug') || '';
+      var rota = card.getAttribute('data-dossie-rota') || '';
+      var cat = card.getAttribute('data-dossie-cat') || '';
+      var cDossie = selectDossieCardSponsor(listDossie, slug, rota, cat);
+
+      if (!cDossie) {
+        badge.hidden = true;
+        badge.innerHTML = '';
+        card.classList.remove('has-top-sponsor');
+        return;
+      }
+
+      badge.innerHTML =
+        '<span class="dossie-top-sponsor-label">Apoio</span>' +
+        '<span class="dossie-top-sponsor-brand">' + renderSponsorBrandEl(cDossie) + '</span>';
+      badge.setAttribute('title', 'Apoio Setorial · ' + (cDossie.nome || 'Parceiro'));
+      badge.setAttribute('aria-label', 'Apoio Setorial: ' + (cDossie.nome || 'Parceiro'));
+      applySponsorLinkAttrs(badge, cDossie.link_url);
+      badge.hidden = false;
+      card.classList.add('has-top-sponsor');
+    });
+  }
+
   var sponsorBadgeWrapRO = null;
   var sponsorBadgeWrapResizeBound = false;
 
@@ -19279,7 +20199,7 @@
         var innerM = sMaster.querySelector('.sponsor-inner');
         if (innerM) {
           innerM.innerHTML =
-            '<span class="sponsor-master-badge" aria-hidden="true">✦ Parceiro Global</span>' +
+            '<span class="sponsor-master-badge" aria-hidden="true">' + romIconHtml('partner', 'rom-icon--xs') + ' Parceiro Global</span>' +
             '<span class="sponsor-eyebrow">' + esc(cMaster.frase || 'Apresentado com exclusividade global por') + '</span>' +
             renderSponsorBrandEl(cMaster) +
             '<a class="sponsor-cta-link" href="/parcerias" data-spa-link>' + esc(cMaster.cta_texto || 'Conheça as soluções →') + '</a>';
@@ -19386,8 +20306,9 @@
       renderEntendaSponsorSlot(slot, sponsorsEntenda, eName);
     });
 
-    // Cota 02 — Inteligência Setorial (Carrossel Dossiês em Foco na Home)
+    // Cota 02 — Inteligência Setorial (Carrossel Dossiês em Foco na Home e Grade /dossies)
     applyDossiesRotativosSponsors(c);
+    applyTemasHubsSponsors(c);
 
     // Cota 02 — Inteligência Setorial (Dossiês / Hubs Temáticos)
     var listDossie = toSponsorList(c.dossie_tematico);
@@ -19497,7 +20418,7 @@
 
   var VITRINE_STATUS_META = {
     em_alta: { label: '🔥 Em Alta', cls: 'vitrine-status-em_alta' },
-    novo: { label: '✨ Novo', cls: 'vitrine-status-novo' },
+    novo: { label: 'Novo', iconHtml: romIconHtml('partner', 'rom-icon--xs'), cls: 'vitrine-status-novo' },
     atualizacao: { label: '🔄 Atualização', cls: 'vitrine-status-atualizacao' }
   };
 
@@ -19574,7 +20495,7 @@
       return '<article class="vitrine-ia-card" data-slug="' + esc(tm.slug || '') + '" data-cat="' + esc(catKey) + '">' +
         '<div class="vitrine-ia-card-top">' +
         '<div class="vitrine-ia-card-badges">' +
-        '<span class="vitrine-status-badge ' + esc(stMeta.cls) + '">' + esc(stMeta.label) + '</span>' +
+        '<span class="vitrine-status-badge ' + esc(stMeta.cls) + '">' + (stMeta.iconHtml ? stMeta.iconHtml + ' ' : '') + esc(stMeta.label) + '</span>' +
         '<span class="vitrine-cat-pill">' + esc(catMeta.label) + '</span>' +
         '</div>' +
         '<span class="vitrine-score-pill" title="Score de relevância editorial IA">' + scoreVal + '% rel.</span>' +

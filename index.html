@@ -35,16 +35,14 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500;1,6..72,600&family=Instrument+Sans:wght@400;500;600;700&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css?v=2.1.10-sponsor-align">
-  <link rel="stylesheet" href="/design-system-v3.css">
+  <link rel="stylesheet" href="/styles.css?v=2.2-icons">
+  <link rel="stylesheet" href="/design-system-v2_2.css">
   <script>
-    // Tema inicial: preferência salva pelo usuário ou segue o sistema
+    // Tema inicial V2.2: Dark HUD Geopolítico por padrão ou preferência salva pelo usuário
     (function () {
       var saved = null;
       try { saved = localStorage.getItem('rom_theme'); } catch (e) { }
-      var t = (saved === 'dark' || saved === 'light')
-        ? saved
-        : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      var t = (saved === 'dark' || saved === 'light') ? saved : 'dark';
       document.documentElement.setAttribute('data-theme', t);
       if ('scrollRestoration' in history) {
         try { history.scrollRestoration = 'manual'; } catch (e) { }
@@ -62,6 +60,24 @@
       style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
   <a class="skip" href="#resumo-do-dia" data-scroll>Pular para o conteúdo principal</a>
+
+  <div class="hud-telemetry-bar" aria-label="Telemetria Geopolítica do Atlas">
+    <div class="hud-telemetry-left">
+      <span class="hud-radar-live-pill">
+        <span class="hud-radar-dot" aria-hidden="true"></span>
+        <span>RADAR GEOPOLÍTICO ATIVO</span>
+      </span>
+      <span class="hud-telemetry-clock" id="v22-edition-date">UTC / BRASÍLIA · PULSO 24H</span>
+    </div>
+    <div class="hud-telemetry-center">
+      <span class="hud-stat-chip">🌍 235 PAÍSES &amp; TERRITÓRIOS</span>
+      <span class="hud-stat-chip"><img src="/rodando-o-mundo-icones-512px/radar.png" alt="" aria-hidden="true" class="rom-icon rom-icon--sm" decoding="async"> 31+ VEÍCULOS POR DOSSIÊ</span>
+      <span class="hud-stat-chip"><img src="/rodando-o-mundo-icones-512px/compare.png" alt="" aria-hidden="true" class="rom-icon rom-icon--sm" decoding="async"> ESPECTRO E · I · D</span>
+    </div>
+    <div class="hud-telemetry-right">
+      <a href="/dossies" data-spa-link class="v22-impact-strip">DOSSIÊS PERMANENTES • COMPARE FONTES <img src="/rodando-o-mundo-icones-512px/dossier.png" alt="" aria-hidden="true" class="rom-icon rom-icon--sm" decoding="async"></a>
+    </div>
+  </div>
 
   <header class="topbar header-single" id="main-header">
     <div class="header-container">
@@ -154,6 +170,19 @@
     </div>
   </header>
 
+  <!-- Sala de Situação: Breaking News Ticker ao Vivo -->
+  <aside class="rom-breaking-ticker" id="rom-breaking-ticker" aria-label="Notícias de Última Hora pelo Mundo">
+    <div class="rom-ticker-badge">
+      <span class="rom-ticker-dot" aria-hidden="true"></span>
+      <span>RADAR AO VIVO</span>
+    </div>
+    <div class="rom-ticker-viewport">
+      <div class="rom-ticker-track" id="rom-ticker-track" role="marquee" aria-live="off">
+        <span class="rom-ticker-item">Sintonizando frequências globais e feeds de 235 países e territórios...</span>
+      </div>
+    </div>
+  </aside>
+
   <div class="mobile-nav-backdrop" id="mobile-nav-backdrop" hidden></div>
   <nav class="mobile-nav-drawer" id="mobile-nav-drawer" aria-label="Menu de navegação mobile" hidden>
     <div class="mobile-nav-drawer-header">
@@ -181,7 +210,7 @@
   <!-- Slot Comercial 1: Cota 01 — Founding Partner (Master Global) -->
   <aside id="slot-cota-master" class="sponsor-slot sponsor-slot-master" hidden aria-label="Patrocínio Master">
     <div class="sponsor-inner">
-      <span class="sponsor-master-badge" aria-hidden="true">✦ Parceiro Global</span>
+      <span class="sponsor-master-badge" aria-hidden="true"><img src="/rodando-o-mundo-icones-512px/partner.png" alt="" aria-hidden="true" class="rom-icon rom-icon--xs" decoding="async"> Parceiro Global</span>
       <span class="sponsor-eyebrow">Apresentado com exclusividade global por</span>
       <span class="mock-brand-logo sponsor-brand-target">Sua Marca Aqui</span>
       <a class="sponsor-cta-link" href="/parcerias" data-spa-link>Conheça as soluções de presença global →</a>
@@ -224,6 +253,12 @@
           <span id="btn-mode-radar-text">Radar</span>
         </a>
       </div>
+
+      <!-- Teleporte Global: Sorteio Interativo de Países -->
+      <button type="button" class="btn-teleporte-global" id="btn-teleporte-global" title="Descobrir um país e suas notícias aleatoriamente">
+        <span class="btn-teleporte-dice" aria-hidden="true"><img src="/rodando-o-mundo-icones-512px/dice.png?v=2" alt="" aria-hidden="true" class="rom-icon rom-icon--md" width="20" height="20" decoding="async"></span>
+        <span>Girar o Globo</span>
+      </button>
     </div>
 
     <section class="map-wrap" id="map-wrap-section" aria-label="Mapa-múndi interativo">
@@ -231,6 +266,8 @@
         <div class="map" id="mapa">
           <svg id="mapa-svg" role="img" aria-label="Mapa-múndi dividido por continentes"></svg>
           <div class="tooltip" id="tooltip" hidden></div>
+          <!-- Hover Card Flutuante com Manchete Viva -->
+          <div class="rom-map-hover-card" id="rom-map-hover-card" hidden role="tooltip" aria-hidden="true"></div>
           <button type="button" class="mobile-chip" id="mobile-chip" hidden
             aria-label="Ver veículos do país selecionado">
             <span class="mobile-chip-info">
@@ -426,6 +463,27 @@
       </section>
     </section>
 
+    <!-- Vitrine de Shorts & Stories Geopolíticos (Canal RoM YouTube + Coberturas em Pílulas) -->
+    <section class="rom-shorts-section" id="rom-shorts-section" aria-label="Pílulas e Análises em Vídeo" hidden>
+      <div class="rom-shorts-head">
+        <div class="rom-shorts-title-group">
+          <span class="rom-shorts-live-dot" aria-hidden="true"></span>
+          <h3>Pílulas &amp; Shorts Geopolíticos</h3>
+          <span class="rom-shorts-sub">Análises de 60s do canal oficial RoM</span>
+        </div>
+        <div class="rom-shorts-actions">
+          <div class="rom-shorts-nav" role="group" aria-label="Navegar pelos vídeos">
+            <button type="button" class="rom-shorts-arrow" id="rom-shorts-prev" aria-label="Vídeos anteriores" title="Voltar vídeos">&#8249;</button>
+            <button type="button" class="rom-shorts-arrow" id="rom-shorts-next" aria-label="Próximos vídeos" title="Avançar vídeos">&#8250;</button>
+          </div>
+          <a href="https://www.youtube.com/@rodando-o-mundo" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-secondary">Canal RoM <img src="/rodando-o-mundo-icones-512px/external.png" alt="" aria-hidden="true" class="rom-icon rom-icon--xs" decoding="async"></a>
+        </div>
+      </div>
+      <div class="rom-shorts-track" id="rom-shorts-track" role="list">
+        <!-- Renderizado dinamicamente via JS a partir de data/noticias_youtube.json -->
+      </div>
+    </section>
+
     <!-- ROM V2.12: Modo Feed / Explorador Rápido de Países -->
     <section class="quick-country-view" id="quick-country-view" hidden aria-label="Explorador de países e veículos">
       <div class="quick-country-header">
@@ -465,12 +523,26 @@
     <section id="dossies-rotativos" class="editorial-section dossies-rotativos-section" aria-label="Dossiês em foco">
       <div class="editorial-section-head">
         <div>
-          <p class="editorial-eyebrow">COBERTURA EM TEMPO REAL + PERMANENTE · DOSSIÊS</p>
+          <p class="editorial-eyebrow">● DOSSIÊ PERMANENTE • 31+ VEÍCULOS • TEMPO REAL</p>
           <h2 id="dossies-rotativos-titulo">Dossiês em Foco</h2>
           <p class="editorial-section-sub">Dossiês ao vivo e permanentes do atlas em rotação constante. Navegue pelas setas ou acompanhe a alternância automática.</p>
         </div>
         <a href="/dossies" class="btn btn-secondary" data-spa-link>Ver todos os dossiês →</a>
       </div>
+
+      <!-- Faixa Tática Inspirada nos Shorts do Canal RoM -->
+      <div class="v22-shorts-showcase" id="v22-shorts-showcase" aria-label="Destaques Rápidos do Radar Geopolítico">
+        <span class="v22-shorts-showcase-label">
+          <span class="hud-radar-dot" aria-hidden="true"></span>
+          <span>PULSO DOS SHORTS RoM:</span>
+        </span>
+        <div class="v22-shorts-tags-list">
+          <a href="/guerra-ucrania" data-spa-link class="v22-impact-strip">🇺🇦 GUERRA NA UCRÂNIA • DOSSIÊ PERMANENTE ⚠️</a>
+          <a href="/economia" data-spa-link class="v22-impact-strip is-emerald">🇧🇷 ECONOMIA &amp; SUPERÁVIT • PULSO DE MERCADO 📈</a>
+          <a href="/radar" data-spa-link class="v22-impact-strip is-cyan"><img src="/rodando-o-mundo-icones-512px/dossier.png" alt="" aria-hidden="true" class="rom-icon rom-icon--sm" decoding="async"> 31+ VEÍCULOS • COMPARE VIÉS E / I / D</a>
+        </div>
+      </div>
+
       <div id="dossies-rotativos-grid" class="hubs-cards-grid" aria-live="polite"></div>
       <div class="dossie-rotativo-nav" id="dossies-rotativos-nav" hidden>
         <button type="button" class="dossie-rotativo-arrow" id="dossie-rot-prev" aria-label="Ver dossiê anterior" title="Dossiê anterior">
@@ -836,12 +908,12 @@
 
           <div class="met-pillars-grid" aria-label="Princípios da curadoria">
             <div class="met-pillar-card">
-              <div class="met-pillar-icon" aria-hidden="true">⚖️</div>
+              <div class="met-pillar-icon" aria-hidden="true"><img src="/rodando-o-mundo-icones-512px/compare.png" alt="" aria-hidden="true" class="rom-icon rom-icon--lg" decoding="async"></div>
               <h3>Neutralidade do Atlas</h3>
               <p>O Rodando o Mundo não produz artigos de opinião nem endossa posicionamentos partidários. Atuamos como um atlas analítico de curadoria, permitindo que o leitor compare as coberturas por si mesmo.</p>
             </div>
             <div class="met-pillar-card">
-              <div class="met-pillar-icon" aria-hidden="true">🌐</div>
+              <div class="met-pillar-icon" aria-hidden="true"><img src="/rodando-o-mundo-icones-512px/dossier.png" alt="" aria-hidden="true" class="rom-icon rom-icon--lg" decoding="async"></div>
               <h3>Padrões Internacionais</h3>
               <p>Cruzamos parâmetros reconhecidos por agências e iniciativas internacionais de credibilidade midiática, como <em>Media Bias/Fact Check (MBFC)</em>, <em>AllSides</em> e o Índice de Liberdade de Imprensa da <em>Repórteres Sem Fronteiras</em>.</p>
             </div>
@@ -1350,7 +1422,7 @@
               <article class="clube-plan-card is-featured" id="plan-card-correspondente">
                 <div class="plan-card-badge featured-badge">★ Mais Escolhido · Acesso Completo</div>
                 <div class="plan-card-header">
-                  <div class="plan-icon-wrap" aria-hidden="true">🌐</div>
+                  <div class="plan-icon-wrap" aria-hidden="true"><img src="/rodando-o-mundo-icones-512px/partner.png" alt="" aria-hidden="true" class="rom-icon rom-icon--lg" decoding="async"></div>
                   <h2 class="plan-title">Correspondente</h2>
                   <p class="plan-desc">Para diplomatas, investidores, jornalistas, pesquisadores e leitores que necessitam de inteligência de contexto e dossiês exportáveis.</p>
                 </div>
@@ -1538,7 +1610,7 @@
                 </div>
               </div>
               <div class="hall-member-card hall-cta-card">
-                <span class="member-avatar">✨</span>
+                <span class="member-avatar"><img src="/rodando-o-mundo-icones-512px/partner.png" alt="" aria-hidden="true" class="rom-icon rom-icon--lg" decoding="async"></span>
                 <div class="member-info">
                   <strong class="member-name">Seu Nome Aqui</strong>
                   <span class="member-role">Faça parte desta história</span>
@@ -1793,7 +1865,7 @@
       <span aria-hidden="true">•</span>
       <a href="/termos" data-spa-link>Termos de Uso</a>
     </div>
-    <p class="footer-credit">© <span id="ano">2026</span> ROM · <span class="footer-version" title="Versão atual do site: v2.1">v2.1</span> · Todos os direitos reservados.</p>
+    <p class="footer-credit">© <span id="ano">2026</span> ROM · <span class="footer-version" title="Versão atual do site: v2.2">v2.2</span> · Todos os direitos reservados.</p>
   </footer>
 
   <dialog class="bug-dialog" id="bug-dialog" aria-labelledby="bug-dialog-title">
@@ -1926,12 +1998,16 @@
     <span>Topo</span>
   </button>
 
+  <!-- Toast Notificação Teleporte Global -->
+  <div class="rom-teleporte-toast" id="rom-teleporte-toast" role="status" aria-live="polite"></div>
+
   <script src="/vendor/d3.min.js"></script>
   <script src="/vendor/topojson-client.min.js"></script>
   <script src="/data/world.js"></script>
   <script src="/data/data.js"></script>
   <script src="/data/editorial.js"></script>
-  <script src="/app.js?v=2.1.10-sponsor-align"></script>
+  <script src="/app.js?v=2.2.1-radar-deeplink"></script>
+  <script src="/ui-v2-2.js?v=2.2.1-radar-deeplink" defer></script>
 </body>
 
 </html>

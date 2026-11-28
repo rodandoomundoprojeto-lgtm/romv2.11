@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="pt-BR">
 <head>
 <!-- Google Tag Manager -->
@@ -30,14 +30,13 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500;1,6..72,600&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="/design-system-v2_2.css">
 <script src="/data/data.js"></script>
 <script>
   (function () {
     var saved = null;
     try { saved = localStorage.getItem('rom_theme'); } catch (e) {}
-    var t = (saved === 'dark' || saved === 'light')
-      ? saved
-      : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    var t = (saved === 'dark' || saved === 'light') ? saved : 'dark';
     document.documentElement.setAttribute('data-theme', t);
     if ('scrollRestoration' in history) {
       try { history.scrollRestoration = 'manual'; } catch (e) { }
@@ -89,6 +88,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <a class="support-link" href="/resumo-do-dia">Resumo do dia</a>
     <a class="support-link" href="/entenda">Entenda</a>
     <a class="support-link" href="/cadastrar-veiculo">Cadastrar veículo</a>
+    <a class="support-link" href="#contato">Contato</a>
     <a class="icon-btn x-link" href="https://x.com/rodandomundoapp" target="_blank" rel="noopener noreferrer" aria-label="Siga o Rodando o Mundo no X" title="Siga o Rodando o Mundo no X (@rodandomundoapp)">
       <svg viewBox="0 0 24 24" aria-hidden="true" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
     </a>
@@ -103,7 +103,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <main class="about-page">
   <article class="about-card" style="position: relative;">
     <button type="button" class="about-close-x" id="about-close-btn" aria-label="Fechar e voltar à página anterior" title="Fechar e voltar">✕</button>
-    <p class="about-eyebrow"><span>Nossa proposta</span> <span class="about-version-chip" title="Versão atual da plataforma">v2.1</span></p>
+    <p class="about-eyebrow"><span>Nossa proposta</span> <span class="about-version-chip" title="Versão atual da plataforma">v2.2</span></p>
     <h1>Sobre o Rodando o Mundo</h1>
     <div class="about-copy">
       <p>O mundo é muito maior do que aquilo que chega até nós diariamente. Em um cenário de excesso de informações, desinformação e diferentes interesses editoriais, ter acesso a múltiplas perspectivas nunca foi tão importante.</p>
@@ -138,6 +138,67 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <span>Siga <strong>@rodandomundoapp</strong> no X</span>
         </a>
       </div>
+
+      <!-- Bloco de Contato Direto na Aba Sobre -->
+      <section class="about-contact-box" id="contato" aria-labelledby="about-contact-title">
+        <div class="about-contact-head">
+          <span class="about-contact-badge">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+            Canal Direto
+          </span>
+          <h2 id="about-contact-title" class="about-contact-title">Contato &amp; Atendimento</h2>
+          <p class="about-contact-desc">
+            Dúvidas, sugestões editoriais, relatos de erros ou propostas institucionais e comerciais? Fale diretamente com a equipe do Rodando o Mundo:
+          </p>
+        </div>
+        
+        <div class="about-contact-actions-grid">
+          <a class="about-contact-pill about-contact-pill--primary" href="mailto:contato@rodandoomundo.com.br" title="Enviar e-mail para contato@rodandoomundo.com.br">
+            <div class="about-contact-pill-icon">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+              </svg>
+            </div>
+            <div class="about-contact-pill-content">
+              <span class="about-contact-pill-label">E-mail Editorial &amp; Institucional</span>
+              <strong class="about-contact-pill-value">contato@rodandoomundo.com.br</strong>
+            </div>
+          </a>
+
+          <a class="about-contact-pill" href="/cadastrar-veiculo" title="Indicar veículo ou jornal independente">
+            <div class="about-contact-pill-icon">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="12" y1="8" x2="12" y2="16"/>
+                <line x1="8" y1="12" x2="16" y2="12"/>
+              </svg>
+            </div>
+            <div class="about-contact-pill-content">
+              <span class="about-contact-pill-label">Imprensa Independente</span>
+              <strong class="about-contact-pill-value">Cadastrar Veículo</strong>
+            </div>
+          </a>
+
+          <a class="about-contact-pill" href="/parcerias" title="Parcerias institucionais e mídia kit">
+            <div class="about-contact-pill-icon">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                <circle cx="9" cy="7" r="4"/>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+              </svg>
+            </div>
+            <div class="about-contact-pill-content">
+              <span class="about-contact-pill-label">Institucional &amp; Apoio</span>
+              <strong class="about-contact-pill-value">Parcerias &amp; Mídia Kit</strong>
+            </div>
+          </a>
+        </div>
+      </section>
     </div>
 
     <details class="about-expand-details" id="about-para-quem">
@@ -194,6 +255,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </a>
   </div>
       <div class="footer-contact"><a href="mailto:contato@rodandoomundo.com.br">Contato: contato@rodandoomundo.com.br</a></div><div class="footer-legal-links">
+      <a href="#contato">Fale Conosco</a>
+      <span aria-hidden="true">•</span>
       <a href="/privacidade" data-spa-link>Privacidade (LGPD)</a>
       <span aria-hidden="true">•</span>
       <a href="/termos" data-spa-link>Termos de Uso</a>
@@ -202,7 +265,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <span aria-hidden="true">•</span>
       <a href="/parcerias" data-spa-link>Anuncie / Parcerias</a>
     </div>
-    <p class="footer-credit">© <span id="ano">2026</span> ROM · <span class="footer-version" title="Versão atual do site: v2.1">v2.1</span> · Todos os direitos reservados.</p>
+    <p class="footer-credit">© <span id="ano">2026</span> ROM · <span class="footer-version" title="Versão atual do site: v2.2">v2.2</span> · Todos os direitos reservados.</p>
 </footer>
 
 <script>

@@ -3092,13 +3092,27 @@
       <div id="dossie-ai-section" style="display:none;">
         <div class="admin-card-head" style="margin-bottom:10px;align-items:flex-start;">
           <div>
-            <h4 class="admin-card-title" style="font-size:1rem;margin:0;">Dossiês 2.0 — Camada Editorial (IA)</h4>
-            <p class="admin-sub" id="d-ai-meta" style="margin-top:4px;">Gere, revise e publique a Síntese Executiva e a Linha do Tempo.</p>
+            <h4 class="admin-card-title" style="font-size:1rem;margin:0;">Dossiês 3.0 — Camada Editorial &amp; Pulso Vivo (IA)</h4>
+            <p class="admin-sub" id="d-ai-meta" style="margin-top:4px;">Gere, revise e publique a Síntese Executiva, Camada 3.0 e Linha do Tempo.</p>
           </div>
           <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;">
             <span id="d-workflow-badge" class="badge">workflow: -</span>
+            <button id="btn-checar-pulso-dossie" class="admin-btn admin-btn-sm" type="button" title="Verifica novas matérias e sugere pulso incremental">⚡ Checar Pulso</button>
             <button id="btn-gerar-ia-dossie" class="admin-btn admin-btn-sm" type="button">✨ Gerar / Atualizar com IA</button>
           </div>
+        </div>
+
+        <div id="dossie-audit-summary" style="display:none;margin-bottom:12px;padding:10px 12px;border-radius:10px;border:1px solid rgba(52,211,153,.35);background:rgba(16,185,129,.08);"></div>
+
+        <div id="dossie-pending-pulse-box" style="display:none;margin-bottom:14px;padding:12px 14px;border-radius:10px;border:1px solid rgba(251,191,36,.45);background:rgba(245,158,11,.10);">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px;">
+            <strong style="font-size:.92rem;">⚡ Pulso incremental pendente de aprovação</strong>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;">
+              <button id="btn-aplicar-pulso-dossie" class="admin-btn admin-btn-sm admin-btn-primary" type="button">Aplicar Pulso</button>
+              <button id="btn-descartar-pulso-dossie" class="admin-btn admin-btn-sm admin-btn-danger" type="button">Descartar</button>
+            </div>
+          </div>
+          <div id="dossie-pending-pulse-preview" class="admin-sub" style="white-space:pre-wrap;line-height:1.5;"></div>
         </div>
 
         <div class="admin-field full-span" style="margin-bottom:12px;">
@@ -3134,13 +3148,55 @@
           </div>
         </div>
 
-        <div class="admin-field full-span">
+        <div class="admin-field full-span" style="margin-bottom:14px;">
           <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:6px;">
             <label style="margin:0;">Linha do Tempo (5-7 marcos) — edite em JSON para controle total</label>
             <button id="btn-timeline-add" class="admin-btn admin-btn-sm" type="button" title="Adicionar item modelo">+ Marco</button>
           </div>
-          <textarea id="d-timeline-json" class="admin-textarea" rows="10" style="font-family:ui-monospace,monospace;font-size:12px;" placeholder='[{"date":"2026-10-01","display_date":"Out 2026","title":"...","summary":"...","type":"past"}]'></textarea>
-          <div class="admin-sub">Campos por item: <code>date</code> (YYYY-MM-DD), <code>display_date</code>, <code>title</code>, <code>summary</code>, <code>type</code> (past|turning_point|upcoming).</div>
+          <textarea id="d-timeline-json" class="admin-textarea" rows="8" style="font-family:ui-monospace,monospace;font-size:12px;" placeholder='[{"date":"2026-10-01","display_date":"Out 2026","title":"...","summary":"...","type":"past","source_name":"Reuters","source_url":"https://..."}]'></textarea>
+          <div class="admin-sub">Campos por item: <code>date</code>, <code>display_date</code>, <code>title</code>, <code>summary</code>, <code>type</code> (past|turning_point|upcoming), <code>source_name</code>, <code>source_url</code>.</div>
+        </div>
+
+        <div style="padding:12px;border:1px solid rgba(255,255,255,.08);border-radius:10px;margin-bottom:14px;">
+          <h5 style="margin:0 0 10px;font-size:.92rem;">Dossiê 3.0 — O que mudou recentemente (<code>editorial_briefing.latest_shift</code>)</h5>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin-bottom:8px;">
+            <div class="admin-field">
+              <label for="d-shift-tag">Tag de destaque</label>
+              <input id="d-shift-tag" class="admin-input" type="text" placeholder="Ex: Última atualização" />
+            </div>
+            <div class="admin-field">
+              <label for="d-shift-date">Data (YYYY-MM-DD)</label>
+              <input id="d-shift-date" class="admin-input" type="date" />
+            </div>
+          </div>
+          <div class="admin-field">
+            <label for="d-shift-summary">Resumo factual (1-2 frases)</label>
+            <textarea id="d-shift-summary" class="admin-textarea" rows="2" placeholder="Resumo objetivo do desdobramento mais recente..."></textarea>
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin-bottom:12px;">
+          <div class="admin-field">
+            <label for="d-key-numbers-json">Números-chave (JSON array)</label>
+            <textarea id="d-key-numbers-json" class="admin-textarea" rows="5" style="font-family:ui-monospace,monospace;font-size:12px;" placeholder='[{"value":"US$ 12 bi","label":"...","source":"...","context":"..."}]'></textarea>
+          </div>
+          <div class="admin-field">
+            <label for="d-key-players-json">Atores-chave (JSON array)</label>
+            <textarea id="d-key-players-json" class="admin-textarea" rows="5" style="font-family:ui-monospace,monospace;font-size:12px;" placeholder='[{"name":"...","role":"...","country_iso":"BR","stance_summary":"..."}]'></textarea>
+          </div>
+          <div class="admin-field">
+            <label for="d-practical-impacts-json">Impactos práticos (JSON array)</label>
+            <textarea id="d-practical-impacts-json" class="admin-textarea" rows="5" style="font-family:ui-monospace,monospace;font-size:12px;" placeholder='[{"audience":"geral","title":"...","summary":"..."}]'></textarea>
+          </div>
+          <div class="admin-field">
+            <label for="d-open-questions-json">Perguntas em aberto / FAQ (JSON array)</label>
+            <textarea id="d-open-questions-json" class="admin-textarea" rows="5" style="font-family:ui-monospace,monospace;font-size:12px;" placeholder='[{"question":"...","answer":"..."}]'></textarea>
+          </div>
+        </div>
+
+        <div class="admin-field full-span">
+          <label for="d-coverage-angles-json">Ângulos de cobertura (<code>coverage_angles</code> — JSON array)</label>
+          <textarea id="d-coverage-angles-json" class="admin-textarea" rows="5" style="font-family:ui-monospace,monospace;font-size:12px;" placeholder='[{"label":"Imprensa local vs. internacional","region_or_scope":"BR / Europa","summary":"...","sample_outlets":["Folha","Reuters"]}]'></textarea>
         </div>
       </div>
 
@@ -4621,6 +4677,10 @@
           const tipoBadge = isEspecial
             ? '<span class="badge badge-warn">especial</span>'
             : '<span class="badge">permanente</span>';
+          const hasPendingPulse = Boolean(d.pending_update && d.pending_update.status === 'pending');
+          const pulseBadge = hasPendingPulse
+            ? ' <span class="badge badge-warn" title="Há uma atualização de pulso pendente de revisão">⚡ Pulso pendente</span>'
+            : '';
 
           return `
             <tr>
@@ -4630,7 +4690,7 @@
                 <span class="admin-sub"><code>${escapeHtml(d.slug)}</code> · ${escapeHtml(d.categoria || '—')}</span>
               </td>
               <td>${tipoBadge}</td>
-              <td>${renderDossieStatusBadge(d.status)} ${renderDossieWorkflowStatusBadge(d.workflow_status)}</td>
+              <td>${renderDossieStatusBadge(d.status)} ${renderDossieWorkflowStatusBadge(d.workflow_status)}${pulseBadge}</td>
               <td>${renderBadgeDataEntrada(d.data_inicio || d.created_at || d.ultima_atualizacao)}</td>
               <td>${formatDossiePeriodo(d)}</td>
               <td>${materias} mat. / ${veiculos} veíc.</td>
@@ -4683,6 +4743,74 @@
         el.className = 'badge ' + (ws === 'published' ? 'badge-ok' : (ws === 'review' ? 'badge-warn' : ''));
       }
 
+      function parseJsonArrayField(id, label) {
+        const el = $(id);
+        const raw = (el && el.value ? el.value : '').trim();
+        if (!raw) return [];
+        try {
+          const parsed = JSON.parse(raw);
+          if (!Array.isArray(parsed)) throw new Error('deve ser um array JSON ([])');
+          return parsed;
+        } catch (e) {
+          throw new Error(`JSON de ${label} inválido: ${e.message}`);
+        }
+      }
+
+      function renderDossieAuditSummary(audit) {
+        const box = $('dossie-audit-summary');
+        if (!box) return;
+        if (!audit || typeof audit !== 'object' || Object.keys(audit).length === 0) {
+          box.style.display = 'none';
+          box.innerHTML = '';
+          return;
+        }
+        const approved = Boolean(audit.approved);
+        const nota = audit.nota_isencao != null ? Math.round(Number(audit.nota_isencao)) : null;
+        const avisos = Array.isArray(audit.avisos) ? audit.avisos.filter(Boolean) : [];
+        const removidas = Array.isArray(audit.urls_removidas) ? audit.urls_removidas.filter(Boolean) : [];
+        box.style.borderColor = approved ? 'rgba(52,211,153,.4)' : 'rgba(248,113,113,.45)';
+        box.style.background = approved ? 'rgba(16,185,129,.09)' : 'rgba(239,68,68,.09)';
+        let html = `<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;">`;
+        html += `<strong>${approved ? '✓ Auditoria Aprovada' : '⚠️ Auditoria com Ressalvas'}</strong>`;
+        if (nota !== null && !Number.isNaN(nota)) {
+          html += `<span class="badge ${approved ? 'badge-ok' : 'badge-warn'}">Isenção: ${nota}/100</span>`;
+        }
+        html += `</div>`;
+        if (avisos.length) {
+          html += `<ul style="margin:6px 0 0 18px;padding:0;font-size:.82rem;">${avisos.map((a) => `<li>${escapeHtml(a)}</li>`).join('')}</ul>`;
+        }
+        if (removidas.length) {
+          html += `<div class="admin-sub" style="margin-top:6px;">URLs inválidas removidas (Regra 11): ${removidas.map((u) => `<code>${escapeHtml(u)}</code>`).join(', ')}</div>`;
+        }
+        box.innerHTML = html;
+        box.style.display = 'block';
+      }
+
+      function renderDossiePendingPulseBox(pending) {
+        const box = $('dossie-pending-pulse-box');
+        const prev = $('dossie-pending-pulse-preview');
+        if (!box || !prev) return;
+        if (!pending || typeof pending !== 'object' || pending.status !== 'pending') {
+          box.style.display = 'none';
+          prev.innerHTML = '';
+          return;
+        }
+        const parts = [];
+        if (pending.new_articles_count != null) {
+          parts.push(`Novas matérias analisadas: ${pending.new_articles_count}${pending.model ? ' · Modelo: ' + pending.model : ''}`);
+        }
+        if (pending.proposed_latest_shift && pending.proposed_latest_shift.summary) {
+          const sh = pending.proposed_latest_shift;
+          parts.push(`Última mudança (${sh.updated_at || 'hoje'} — ${sh.highlight_tag || 'Pulso recente'}): ${sh.summary}`);
+        }
+        if (pending.proposed_timeline_item && pending.proposed_timeline_item.title) {
+          const ti = pending.proposed_timeline_item;
+          parts.push(`Novo marco sugerido (${ti.display_date || ti.date || ''}): ${ti.title} — ${ti.summary || ''}`);
+        }
+        prev.textContent = parts.length ? parts.join('\n') : JSON.stringify(pending, null, 2);
+        box.style.display = 'block';
+      }
+
       function getAiFieldsFromModal() {
         const context = ($('d-exec-context').value || '').trim();
         const pillars = [0, 1, 2].map((i) => ({
@@ -4690,17 +4818,35 @@
           description: ($(`d-p${i}-desc`).value || '').trim(),
           category: $(`d-p${i}-cat`).value || 'politica'
         }));
-        let timeline = [];
-        const raw = ($('d-timeline-json').value || '').trim();
-        if (raw) {
-          try {
-            const parsed = JSON.parse(raw);
-            if (Array.isArray(parsed)) timeline = parsed;
-          } catch (e) {
-            throw new Error('JSON da Linha do Tempo inválido: ' + e.message);
-          }
+        const timeline = parseJsonArrayField('d-timeline-json', 'Linha do Tempo');
+        const shiftSummary = ($('d-shift-summary').value || '').trim();
+        const shiftTag = ($('d-shift-tag').value || '').trim();
+        const shiftDate = ($('d-shift-date').value || '').trim();
+        const key_players = parseJsonArrayField('d-key-players-json', 'Atores-chave');
+        const key_numbers = parseJsonArrayField('d-key-numbers-json', 'Números-chave');
+        const practical_impacts = parseJsonArrayField('d-practical-impacts-json', 'Impactos práticos');
+        const open_questions = parseJsonArrayField('d-open-questions-json', 'Perguntas em aberto');
+        const coverage_angles = parseJsonArrayField('d-coverage-angles-json', 'Ângulos de cobertura');
+
+        const editorial_briefing = {
+          key_players,
+          key_numbers,
+          practical_impacts,
+          open_questions
+        };
+        if (shiftSummary || shiftTag || shiftDate) {
+          editorial_briefing.latest_shift = {
+            summary: shiftSummary,
+            updated_at: shiftDate || new Date().toISOString().slice(0, 10),
+            highlight_tag: shiftTag || 'Última atualização'
+          };
         }
-        return { executive_summary: { context, pillars }, timeline };
+        return {
+          executive_summary: { context, pillars },
+          timeline,
+          editorial_briefing,
+          coverage_angles
+        };
       }
 
       function fillAiFieldsFromDossie(dossie) {
@@ -4716,13 +4862,30 @@
         });
         const tl = Array.isArray(dossie.timeline) ? dossie.timeline : [];
         $('d-timeline-json').value = tl.length ? JSON.stringify(tl, null, 2) : '[]';
+
+        const eb = (dossie.editorial_briefing && typeof dossie.editorial_briefing === 'object') ? dossie.editorial_briefing : {};
+        const sh = (eb.latest_shift && typeof eb.latest_shift === 'object') ? eb.latest_shift : {};
+        $('d-shift-tag').value = sh.highlight_tag || '';
+        $('d-shift-date').value = toDateInputValue(sh.updated_at);
+        $('d-shift-summary').value = sh.summary || '';
+        $('d-key-numbers-json').value = Array.isArray(eb.key_numbers) && eb.key_numbers.length ? JSON.stringify(eb.key_numbers, null, 2) : '[]';
+        $('d-key-players-json').value = Array.isArray(eb.key_players) && eb.key_players.length ? JSON.stringify(eb.key_players, null, 2) : '[]';
+        $('d-practical-impacts-json').value = Array.isArray(eb.practical_impacts) && eb.practical_impacts.length ? JSON.stringify(eb.practical_impacts, null, 2) : '[]';
+        $('d-open-questions-json').value = Array.isArray(eb.open_questions) && eb.open_questions.length ? JSON.stringify(eb.open_questions, null, 2) : '[]';
+        const ca = Array.isArray(dossie.coverage_angles) ? dossie.coverage_angles : [];
+        $('d-coverage-angles-json').value = ca.length ? JSON.stringify(ca, null, 2) : '[]';
+
+        state.pendingAuditReport = dossie.audit_report || null;
+        renderDossieAuditSummary(dossie.audit_report);
+        renderDossiePendingPulseBox(dossie.pending_update);
+
         renderDossieWorkflowBadge(dossie.workflow_status || 'published');
         const meta = dossie.ai_metadata || {};
         if (meta.generated_at) {
           const dt = new Date(meta.generated_at);
           $('d-ai-meta').textContent = `Última geração IA: ${dt.toLocaleString('pt-BR')} · ${meta.articles_analyzed ?? 0} matérias analisadas${meta.model ? ' · ' + meta.model : ''}`;
         } else {
-          $('d-ai-meta').textContent = 'Gere, revise e publique a Síntese Executiva e a Linha do Tempo.';
+          $('d-ai-meta').textContent = 'Gere, revise e publique a Síntese Executiva, Camada 3.0 e Linha do Tempo.';
         }
       }
 
@@ -4735,15 +4898,29 @@
           $(`d-p${i}-desc`).value = '';
         });
         $('d-timeline-json').value = '[]';
+        $('d-shift-tag').value = '';
+        $('d-shift-date').value = '';
+        $('d-shift-summary').value = '';
+        $('d-key-numbers-json').value = '[]';
+        $('d-key-players-json').value = '[]';
+        $('d-practical-impacts-json').value = '[]';
+        $('d-open-questions-json').value = '[]';
+        $('d-coverage-angles-json').value = '[]';
+        state.pendingAuditReport = null;
+        renderDossieAuditSummary(null);
+        renderDossiePendingPulseBox(null);
         renderDossieWorkflowBadge('draft');
-        $('d-ai-meta').textContent = 'Gere, revise e publique a Síntese Executiva e a Linha do Tempo.';
+        $('d-ai-meta').textContent = 'Gere, revise e publique a Síntese Executiva, Camada 3.0 e Linha do Tempo.';
       }
 
       function abrirModalDossie(mode, dossie = null) {
         state.dossieModalMode = mode;
         state.slugManuallyEdited = false;
         state.pendingAiMeta = null;
+        state.pendingAuditReport = null;
         hideBanner('modal-dossie-banner');
+        const btnPulse = $('btn-checar-pulso-dossie');
+        if (btnPulse) btnPulse.style.display = (mode === 'edit') ? 'inline-flex' : 'none';
 
         if (mode === 'create') {
           state.editingDossieSlug = null;
@@ -4797,6 +4974,7 @@
         $('modal-dossie').classList.remove('open');
         state.editingDossieSlug = null;
         state.pendingAiMeta = null;
+        state.pendingAuditReport = null;
       }
 
       function abrirModalTemaIa(initialHint = '') {
@@ -4917,7 +5095,7 @@
               regras_classificacao: { palavras_chave: palavrasChave, paises }
             };
             if (aiVisible) {
-              let ai = { executive_summary: { context: '', pillars: [] }, timeline: [] };
+              let ai = { executive_summary: { context: '', pillars: [] }, timeline: [], editorial_briefing: {}, coverage_angles: [] };
               try {
                 ai = getAiFieldsFromModal();
               } catch (e) {
@@ -4926,6 +5104,9 @@
               }
               payload.executive_summary = ai.executive_summary;
               payload.timeline = ai.timeline;
+              payload.editorial_briefing = ai.editorial_briefing;
+              payload.coverage_angles = ai.coverage_angles;
+              if (state.pendingAuditReport) payload.audit_report = state.pendingAuditReport;
               if (state.pendingAiMeta) payload.ai_metadata = state.pendingAiMeta;
               payload.workflow_status = targetWorkflowStatus || (state.pendingAiMeta ? 'review' : 'draft');
             } else if (targetWorkflowStatus) {
@@ -4961,7 +5142,7 @@
             }
             return data;
           } else {
-            let ai = { executive_summary: { context: '', pillars: [] }, timeline: [] };
+            let ai = { executive_summary: { context: '', pillars: [] }, timeline: [], editorial_briefing: {}, coverage_angles: [] };
             try {
               ai = getAiFieldsFromModal();
             } catch (e) {
@@ -4978,8 +5159,11 @@
               meta_info: metaInfo || null,
               regras_classificacao: { palavras_chave: palavrasChave, paises },
               executive_summary: ai.executive_summary,
-              timeline: ai.timeline
+              timeline: ai.timeline,
+              editorial_briefing: ai.editorial_briefing,
+              coverage_angles: ai.coverage_angles
             };
+            if (state.pendingAuditReport) payload.audit_report = state.pendingAuditReport;
             if (state.pendingAiMeta) payload.ai_metadata = state.pendingAiMeta;
             if (targetWorkflowStatus) payload.workflow_status = targetWorkflowStatus;
 
@@ -5026,7 +5210,7 @@
         const btn = $('btn-gerar-ia-dossie');
         const prev = btn.textContent;
         btn.disabled = true;
-        btn.textContent = 'Gerando análise...';
+        btn.textContent = 'Gerando análise 3.0...';
         hideBanner('modal-dossie-banner');
         try {
           const data = await apiFetch(`/v2/admin/dossies/${encodeURIComponent(state.editingDossieSlug)}/generate`, { method: 'POST' });
@@ -5034,8 +5218,8 @@
           const idx = (state.dossies || []).findIndex((d) => d.slug === state.editingDossieSlug);
           if (idx >= 0) state.dossies[idx] = updated;
           fillAiFieldsFromDossie(updated);
-          showBanner('modal-dossie-banner', 'Rascunho gerado pela IA! Revise os campos antes de publicar.', 'ok');
-          showToast('Conteúdo gerado pela IA (status: revisão).', 'ok');
+          showBanner('modal-dossie-banner', 'Rascunho 3.0 gerado e auditado pela IA! Revise os campos antes de publicar.', 'ok');
+          showToast('Conteúdo 3.0 gerado pela IA (status: revisão).', 'ok');
           await carregarDossiesAdmin();
         } catch (err) {
           showBanner('modal-dossie-banner', 'Erro ao gerar com IA: ' + err.message, 'err');
@@ -5043,6 +5227,84 @@
         } finally {
           btn.disabled = false;
           btn.textContent = prev;
+        }
+      });
+
+      $('btn-checar-pulso-dossie').addEventListener('click', async () => {
+        if (state.dossieModalMode !== 'edit' || !state.editingDossieSlug) return;
+        const btn = $('btn-checar-pulso-dossie');
+        const prev = btn.textContent;
+        btn.disabled = true;
+        btn.textContent = 'Checando pulso...';
+        hideBanner('modal-dossie-banner');
+        try {
+          const data = await apiFetch(`/v2/admin/dossies/${encodeURIComponent(state.editingDossieSlug)}/pulse-update`, { method: 'POST' });
+          const updated = data.dossie || null;
+          if (updated) {
+            const idx = (state.dossies || []).findIndex((d) => d.slug === state.editingDossieSlug);
+            if (idx >= 0) state.dossies[idx] = updated;
+            fillAiFieldsFromDossie(updated);
+          } else if (data.pending_update) {
+            renderDossiePendingPulseBox(data.pending_update);
+          }
+          const hasPend = Boolean((data.pending_update && data.pending_update.status === 'pending') || (updated && updated.pending_update && updated.pending_update.status === 'pending'));
+          showBanner(
+            'modal-dossie-banner',
+            hasPend ? 'Pulso incremental detectou novidades! Revise a prévia abaixo e clique em "Aplicar Pulso".' : (data.mensagem || 'Pulso verificado: nenhuma atualização relevante pendente no momento.'),
+            'ok'
+          );
+          showToast(hasPend ? 'Novo pulso pendente gerado!' : 'Pulso verificado.', 'ok');
+          await carregarDossiesAdmin();
+        } catch (err) {
+          showBanner('modal-dossie-banner', 'Erro ao checar pulso: ' + err.message, 'err');
+          showToast('Erro ao checar pulso.', 'err');
+        } finally {
+          btn.disabled = false;
+          btn.textContent = prev;
+        }
+      });
+
+      $('btn-aplicar-pulso-dossie').addEventListener('click', async () => {
+        if (state.dossieModalMode !== 'edit' || !state.editingDossieSlug) return;
+        const btn = $('btn-aplicar-pulso-dossie');
+        btn.disabled = true;
+        hideBanner('modal-dossie-banner');
+        try {
+          const data = await apiFetch(`/v2/admin/dossies/${encodeURIComponent(state.editingDossieSlug)}/apply-pulse`, { method: 'POST' });
+          const updated = data.dossie || data;
+          const idx = (state.dossies || []).findIndex((d) => d.slug === state.editingDossieSlug);
+          if (idx >= 0) state.dossies[idx] = updated;
+          fillAiFieldsFromDossie(updated);
+          showBanner('modal-dossie-banner', 'Pulso aplicado ao dossiê com sucesso!', 'ok');
+          showToast('Pulso aplicado com sucesso!', 'ok');
+          await carregarDossiesAdmin();
+        } catch (err) {
+          showBanner('modal-dossie-banner', 'Erro ao aplicar pulso: ' + err.message, 'err');
+          showToast('Erro ao aplicar pulso.', 'err');
+        } finally {
+          btn.disabled = false;
+        }
+      });
+
+      $('btn-descartar-pulso-dossie').addEventListener('click', async () => {
+        if (state.dossieModalMode !== 'edit' || !state.editingDossieSlug) return;
+        const btn = $('btn-descartar-pulso-dossie');
+        btn.disabled = true;
+        hideBanner('modal-dossie-banner');
+        try {
+          const data = await apiFetch(`/v2/admin/dossies/${encodeURIComponent(state.editingDossieSlug)}/dismiss-pulse`, { method: 'POST' });
+          const updated = data.dossie || data;
+          const idx = (state.dossies || []).findIndex((d) => d.slug === state.editingDossieSlug);
+          if (idx >= 0) state.dossies[idx] = updated;
+          fillAiFieldsFromDossie(updated);
+          showBanner('modal-dossie-banner', 'Pulso pendente descartado.', 'ok');
+          showToast('Pulso descartado.', 'ok');
+          await carregarDossiesAdmin();
+        } catch (err) {
+          showBanner('modal-dossie-banner', 'Erro ao descartar pulso: ' + err.message, 'err');
+          showToast('Erro ao descartar pulso.', 'err');
+        } finally {
+          btn.disabled = false;
         }
       });
 

@@ -1,0 +1,1545 @@
+/* ==========================================================================
+   RODANDO O MUNDO — DESIGN SYSTEM V2.2 (Dark HUD Geopolítico — Edição Shorts)
+   Inspiração Direta: Canal RoM - Atlas Jornalístico (YouTube Shorts)
+   Estética: Obsidian Space + Dark Glass Rim-Light + Mapa Radar Neon + Tarjas de Impacto
+   ========================================================================== */
+
+/* 1. PALETA OBSIDIAN DARK-FIRST & TOKENS TÁTICOS
+   -------------------------------------------------------------------------- */
+:root,
+[data-theme='dark'] {
+  /* Paleta Obsidian Dark-First (Padrão Oficial V2.2) */
+  --bg: #07090E;               /* Obsidian / Espaço profundo */
+  --surface: #0E131C;          /* Painel HUD escuro */
+  --surface-2: #131A26;        /* Card Dark Glass elevado */
+  --surface-featured: #172030;
+  --surface-offset: #1A2333;
+
+  --text: #F8FAFC;             /* Branco puro de alto contraste */
+  --text-muted: #94A3B8;       /* Cinza-azulado técnico */
+  --text-faint: #64748B;
+
+  --primary: #00B4D8;          /* Ciano HUD luminoso */
+  --primary-hover: #22D3EE;
+  --primary-soft: rgba(34, 211, 238, 0.14);
+
+  --hud-cyan: #22D3EE;
+  --hud-emerald: #10B981;
+  --hud-crimson: #EF4444;
+  --accent-amber: #F59E0B;
+  --accent-amber-ring: rgba(245, 158, 11, 0.35);
+
+  --border: rgba(148, 163, 184, 0.16);
+  --border-strong: rgba(34, 211, 238, 0.38);
+  --divider: rgba(148, 163, 184, 0.14);
+
+  --glass-bg: rgba(10, 14, 22, 0.86);
+  --glass-border: rgba(34, 211, 238, 0.22);
+  --glass-blur: blur(22px) saturate(190%);
+
+  /* Cartografia Abissal & Radar Neon */
+  --ocean: #05080D;
+  --graticule: rgba(34, 211, 238, 0.08);
+  --land-stroke: rgba(15, 23, 42, 0.85);
+  --nodata: #161F2C;
+
+  /* Raios de borda estilo Card HUD dos Shorts */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-pill: 999px;
+
+  /* Tipografia 100% Sans-Serif Moderna & Forte + Mono Tático (Zero Serifada) */
+  --font-display: 'Inter', 'Instrument Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-serif: 'Inter', 'Instrument Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-logo: 'Inter', 'Instrument Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Inter', 'Instrument Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', ui-monospace, Menlo, Consolas, monospace;
+
+  --shadow-sm: 0 4px 14px rgba(0, 0, 0, 0.45);
+  --shadow-md: 0 14px 34px -8px rgba(0, 0, 0, 0.72);
+}
+
+/* Modo Claro Alternativo (Tech Ice / Clean Slate — Zero Bege/Papel) */
+[data-theme='light'] {
+  --bg: #F1F5F9;
+  --surface: #FFFFFF;
+  --surface-2: #F8FAFC;
+  --surface-featured: #E2E8F0;
+  --surface-offset: #E2E8F0;
+
+  --text: #0F172A;
+  --text-muted: #475569;
+  --text-faint: #64748B;
+
+  --primary: #0284C7;
+  --primary-hover: #0369A1;
+  --primary-soft: rgba(2, 132, 199, 0.12);
+
+  --hud-cyan: #0284C7;
+  --hud-emerald: #059669;
+  --hud-crimson: #DC2626;
+  --accent-amber: #D97706;
+  --accent-amber-ring: rgba(217, 119, 6, 0.28);
+
+  --border: rgba(15, 23, 42, 0.12);
+  --border-strong: rgba(2, 132, 199, 0.35);
+  --divider: rgba(15, 23, 42, 0.10);
+
+  --glass-bg: rgba(248, 250, 252, 0.90);
+  --glass-border: rgba(2, 132, 199, 0.22);
+  --glass-blur: blur(18px) saturate(160%);
+
+  --ocean: #E2E8F0;
+  --graticule: rgba(2, 132, 199, 0.09);
+  --land-stroke: #F8FAFC;
+  --nodata: #CBD5E1;
+
+  --shadow-sm: 0 2px 10px rgba(15, 23, 42, 0.06);
+  --shadow-md: 0 12px 28px -8px rgba(15, 23, 42, 0.14);
+}
+
+/* 2. TIPOGRAFIA SANS-SERIF DE ALTO IMPACTO & BASE
+   -------------------------------------------------------------------------- */
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+}
+
+body {
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% -15%, rgba(0, 180, 216, 0.12), transparent 70%);
+  color: var(--text);
+  font-family: var(--font-body);
+}
+
+h1,
+h2,
+h3,
+.section-title,
+.panel-head h2,
+.resumo-title,
+.editorial-section-head h2,
+.dossie-card h3,
+.resumo-card h3,
+.radar-card h3,
+.news-card h3,
+.hub-card h3,
+.quick-country-header h2,
+.cad-hero h1 {
+  font-family: var(--font-display) !important;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  color: var(--text);
+}
+
+.brand-name em {
+  font-style: normal;
+  color: var(--hud-cyan);
+}
+
+:focus-visible {
+  outline: 2px solid var(--hud-cyan);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* 3. BARRA DE PREVIEW ISOLADO & TELEMETRIA HUD (.hud-telemetry-bar)
+   -------------------------------------------------------------------------- */
+.v22-preview-banner {
+  background: linear-gradient(90deg, #060911 0%, #0E1A2B 50%, #060911 100%);
+  border-bottom: 1px solid rgba(34, 211, 238, 0.30);
+  color: #E2E8F0;
+  font-family: var(--font-mono);
+  font-size: 0.71rem;
+  line-height: 1.35;
+  padding: 6px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  z-index: 70;
+  position: relative;
+}
+
+.v22-preview-banner-left {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #F8FAFC;
+}
+
+.v22-preview-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--hud-cyan);
+  box-shadow: 0 0 10px var(--hud-cyan);
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.v22-preview-compare-link {
+  color: #22D3EE;
+  background: rgba(34, 211, 238, 0.10);
+  text-decoration: none;
+  padding: 3px 12px;
+  border: 1px solid rgba(34, 211, 238, 0.38);
+  border-radius: var(--radius-pill);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: all 0.18s ease;
+}
+
+.v22-preview-compare-link:hover,
+.v22-preview-compare-link:focus-visible {
+  background: rgba(34, 211, 238, 0.22);
+  border-color: #22D3EE;
+  color: #FFFFFF;
+  box-shadow: 0 0 14px rgba(34, 211, 238, 0.35);
+}
+
+/* Header Principal Dark Glass HUD */
+.topbar.header-single {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  height: auto;
+  min-height: 56px;
+  max-height: none;
+  justify-content: flex-start;
+  background-color: var(--glass-bg);
+  border-bottom: 1px solid var(--glass-border);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  box-shadow: 0 8px 28px -10px rgba(0, 0, 0, 0.65);
+  transition: background-color 0.22s ease, border-color 0.22s ease;
+}
+
+/* Barra de Telemetria Geopolítica (acima do header sticky para rolar naturalmente sem trepidar) */
+.hud-telemetry-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 6px clamp(0.75rem, 2vw, 1.75rem);
+  background-color: var(--glass-bg);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.14);
+}
+
+@media (max-width: 767.98px) {
+  .hud-telemetry-bar {
+    display: none;
+  }
+}
+
+.hud-telemetry-left {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.hud-radar-live-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  background: rgba(239, 68, 68, 0.14);
+  border: 1px solid rgba(239, 68, 68, 0.42);
+  color: #FCA5A5;
+  font-weight: 700;
+}
+
+[data-theme='light'] .hud-radar-live-pill {
+  color: #B91C1C;
+  background: rgba(239, 68, 68, 0.10);
+}
+
+.hud-radar-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: #EF4444;
+  box-shadow: 0 0 8px #EF4444;
+  animation: rom-hud-pulse 1.8s infinite ease-in-out;
+}
+
+@keyframes rom-hud-pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.28); opacity: 0.65; }
+}
+
+.hud-telemetry-clock {
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.hud-telemetry-center {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.hud-stat-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+[data-theme='light'] .hud-stat-chip {
+  background: rgba(15, 23, 42, 0.05);
+  border-color: rgba(15, 23, 42, 0.12);
+}
+
+.hud-telemetry-right {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Tarja Branca de Impacto com Barra Vermelha (Fiel aos Shorts!) */
+.v22-impact-strip {
+  background: #FFFFFF;
+  color: #090B0E;
+  border-left: 4px solid #EF4444;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 4px 11px;
+  border-radius: 3px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+  text-decoration: none;
+  line-height: 1.25;
+}
+
+.v22-impact-strip.is-emerald {
+  border-left-color: #10B981;
+}
+
+.v22-impact-strip.is-cyan {
+  border-left-color: #00B4D8;
+}
+
+/* 4. NAVEGAÇÃO PRINCIPAL & BUSCA HUD
+   -------------------------------------------------------------------------- */
+.topbar.header-single .header-container {
+  height: auto;
+  min-height: 54px;
+  padding-block: 6px;
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1px;
+}
+
+.brand-name {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--text);
+  text-align: center;
+}
+
+.brand-sub {
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--hud-cyan);
+  letter-spacing: 0.08em;
+  text-align: center;
+  width: 100%;
+}
+
+.header-search {
+  border-radius: var(--radius-pill);
+}
+
+.header-search input#busca {
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border);
+  background-color: rgba(15, 23, 36, 0.85);
+  color: var(--text);
+  font-size: var(--text-xs);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  transition: all 0.18s ease;
+}
+
+[data-theme='light'] .header-search input#busca {
+  background-color: var(--surface);
+}
+
+.header-search input#busca:hover {
+  border-color: var(--border-strong);
+}
+
+.header-search input#busca:focus {
+  background-color: var(--surface-2);
+  border-color: var(--hud-cyan);
+  box-shadow: 0 0 0 3px var(--primary-soft), 0 0 16px rgba(34, 211, 238, 0.20);
+}
+
+.search-list {
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--glass-border);
+  background-color: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  box-shadow: var(--shadow-md);
+}
+
+.header-nav-link {
+  border-radius: var(--radius-pill);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--text-muted);
+  transition: color 0.16s ease, background-color 0.16s ease;
+}
+
+.header-nav-link:hover,
+.header-nav-link.is-active,
+.header-nav-link[aria-current="page"] {
+  color: var(--text);
+  background-color: rgba(34, 211, 238, 0.12);
+}
+
+.theme-toggle,
+.fav-top-btn,
+.mobile-menu-btn {
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border);
+  background-color: rgba(255, 255, 255, 0.04);
+  color: var(--text-muted);
+  transition: all 0.16s ease;
+}
+
+.theme-toggle:hover,
+.fav-top-btn:hover,
+.mobile-menu-btn:hover {
+  color: var(--hud-cyan);
+  background-color: rgba(34, 211, 238, 0.12);
+  border-color: var(--border-strong);
+}
+
+/* 5. MAPA-MÚNDI TÁTICO COM GLOW NEON, CONTORNO BRANCO & ANÉIS DE RADAR
+   (Fiel ao Short do Brasil em Verde-Esmeralda e Short da Ucrânia)
+   -------------------------------------------------------------------------- */
+.hero-mode-bar {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-block: var(--space-3);
+  padding-inline: var(--space-4);
+  gap: 10px;
+}
+
+.map-hot-news-pill {
+  position: static;
+  order: 2;
+  width: 100%;
+  max-width: 100%;
+  background-color: var(--glass-bg);
+  color: var(--text);
+  border: 1px solid rgba(16, 185, 129, 0.42);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-radius: var(--radius-pill);
+  box-shadow: 0 0 18px -4px rgba(16, 185, 129, 0.25);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  padding: 6px 14px;
+}
+
+@media (min-width: 960px) {
+  .hero-mode-bar {
+    min-height: 52px;
+  }
+
+  .map-hot-news-pill {
+    position: absolute;
+    top: 50%;
+    left: var(--space-4);
+    transform: translateY(-50%);
+    z-index: 10;
+    order: 0;
+    width: auto;
+    max-width: min(330px, calc(50vw - 230px));
+    transition: max-width 0.24s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+  }
+
+  .map-hot-news-pill:hover,
+  .map-hot-news-pill:focus-visible {
+    max-width: 450px;
+    border-color: var(--hud-cyan);
+    box-shadow: 0 0 24px -4px rgba(34, 211, 238, 0.4);
+  }
+}
+
+.view-mode-toggle {
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--glass-border);
+  background-color: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  padding: 4px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), var(--shadow-sm);
+}
+
+.view-mode-btn {
+  border-radius: var(--radius-pill);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  color: var(--text-muted);
+  transition: all 0.18s ease;
+}
+
+.view-mode-btn.is-active {
+  background: linear-gradient(135deg, #00B4D8 0%, #0284C7 100%);
+  color: #FFFFFF;
+  box-shadow: 0 0 16px rgba(0, 180, 216, 0.45);
+}
+
+/* Palco do Mapa com Anéis de Radar e Brilho Geoespacial (Sem Moldura) */
+.map-wrap {
+  background:
+    radial-gradient(circle at 50% 52%, rgba(34, 211, 238, 0.10) 0%, rgba(16, 185, 129, 0.05) 28%, rgba(5, 8, 13, 0.98) 70%),
+    repeating-radial-gradient(circle at 50% 52%, transparent 0, transparent 68px, rgba(34, 211, 238, 0.045) 69px, transparent 70px),
+    var(--ocean);
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+  overflow: hidden;
+}
+
+[data-theme='light'] .map-wrap {
+  background:
+    radial-gradient(circle at 50% 52%, rgba(2, 132, 199, 0.08) 0%, rgba(226, 232, 240, 0.96) 72%),
+    repeating-radial-gradient(circle at 50% 52%, transparent 0, transparent 68px, rgba(2, 132, 199, 0.05) 69px, transparent 70px),
+    var(--ocean);
+}
+
+.map-wrap .stage,
+.map-wrap .map {
+  border: 0;
+  border-radius: 0;
+  background: transparent !important;
+  box-shadow: none;
+}
+
+/* Destaque de País com Contorno Branco Puro + Glow Neon (Idêntico ao Short 2) */
+.map-wrap svg path {
+  transition: fill 0.18s ease, stroke 0.18s ease, filter 0.2s ease;
+}
+
+.map-wrap svg path.country:hover,
+.map-wrap svg path.country.active,
+.map-wrap svg path.country.selected,
+.map-wrap svg path.country.is-selected,
+.map-wrap svg path.country.pulsing,
+.map-wrap svg path.country.has-pulse,
+.map-wrap svg path.country-hover-overlay,
+.map-wrap svg .country:hover,
+.map-wrap svg .is-selected {
+  stroke: #FFFFFF !important;
+  stroke-width: 1.5px !important;
+  vector-effect: non-scaling-stroke;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  filter: drop-shadow(0 0 10px rgba(34, 211, 238, 0.85)) brightness(1.18);
+}
+
+[data-theme='light'] .map-wrap svg path.country:hover,
+[data-theme='light'] .map-wrap svg path.country.active,
+[data-theme='light'] .map-wrap svg path.country.selected,
+[data-theme='light'] .map-wrap svg path.country.is-selected,
+[data-theme='light'] .map-wrap svg path.country-hover-overlay,
+[data-theme='light'] .map-wrap svg .country:hover,
+[data-theme='light'] .map-wrap svg .is-selected {
+  stroke: #0F172A !important;
+  filter: drop-shadow(0 0 8px rgba(2, 132, 199, 0.55)) brightness(1.06);
+}
+
+/* Controles Flutuantes HUD no Mapa */
+.chip-btn,
+.zoom-ctrl,
+.mobile-chip,
+.map-legend {
+  background-color: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14), var(--shadow-md);
+  border-radius: var(--radius-pill);
+}
+
+.map-legend {
+  border-radius: var(--radius-lg);
+}
+
+.quick-region-pill {
+  border-radius: var(--radius-pill) !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  background-color: rgba(10, 14, 22, 0.82);
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  backdrop-filter: blur(12px);
+}
+
+[data-theme='light'] .quick-region-pill {
+  background-color: rgba(255, 255, 255, 0.88);
+  border-color: rgba(15, 23, 42, 0.15) !important;
+}
+
+.quick-region-pill:hover {
+  color: var(--text);
+  border-color: var(--hud-cyan) !important;
+}
+
+.quick-region-pill.is-active {
+  background: linear-gradient(135deg, #10B981 0%, #059669 100%) !important;
+  color: #FFFFFF !important;
+  border-color: #34D399 !important;
+  box-shadow: 0 0 16px rgba(16, 185, 129, 0.45) !important;
+}
+
+/* Tooltip Tático HUD */
+.map-layers-popover,
+.tooltip {
+  background: linear-gradient(165deg, rgba(19, 26, 38, 0.96) 0%, rgba(10, 14, 22, 0.98) 100%);
+  color: var(--text);
+  border: 1px solid rgba(34, 211, 238, 0.35);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-radius: var(--radius-lg);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18), 0 16px 36px rgba(0, 0, 0, 0.75);
+}
+
+[data-theme='light'] .map-layers-popover,
+[data-theme='light'] .tooltip {
+  background: var(--surface);
+}
+
+.tooltip-hot-news {
+  background: rgba(16, 185, 129, 0.10);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  border-left: 3px solid var(--hud-emerald);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+}
+
+.tooltip-hot-news strong {
+  color: #34D399;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+}
+
+[data-theme='light'] .tooltip-hot-news strong {
+  color: #047857;
+}
+
+/* Faixa "Pulsando Agora" estilo Painel HUD Inferior dos Shorts */
+.pulsando-agora-container {
+  background: linear-gradient(180deg, rgba(16, 22, 34, 0.92), rgba(10, 14, 22, 0.96));
+  border: 1px solid rgba(34, 211, 238, 0.24);
+  border-radius: 14px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10), 0 10px 26px -8px rgba(0, 0, 0, 0.6);
+  margin-top: 10px;
+}
+
+[data-theme='light'] .pulsando-agora-container {
+  background: var(--surface);
+  border-color: var(--border-strong);
+}
+
+.pulsando-agora-header {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--hud-cyan);
+}
+
+.hot-dot,
+.live-dot,
+.radar-live-dot,
+.pulso-indicador,
+.map-hot-news-dot {
+  background-color: var(--hud-emerald);
+  box-shadow: 0 0 10px var(--hud-emerald);
+  animation: rom-emerald-pulse 2s infinite ease-out;
+}
+
+@keyframes rom-emerald-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.55); }
+  70%  { box-shadow: 0 0 0 7px rgba(16, 185, 129, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+/* 6. FAIXA DE DESTAQUES TÁTICOS DOS SHORTS (#v22-shorts-showcase)
+   -------------------------------------------------------------------------- */
+.v22-shorts-showcase {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px 14px;
+  padding: 12px 16px;
+  margin-bottom: 18px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(22, 30, 46, 0.90) 0%, rgba(11, 15, 24, 0.96) 100%);
+  border: 1px solid rgba(34, 211, 238, 0.25);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14), 0 12px 28px -10px rgba(0, 0, 0, 0.65);
+}
+
+[data-theme='light'] .v22-shorts-showcase {
+  background: var(--surface);
+  border-color: var(--border-strong);
+}
+
+.v22-shorts-showcase-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.70rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--hud-cyan);
+}
+
+.v22-shorts-tags-list {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* Painel Lateral do País (preserva position: absolute / fixed do styles.css) */
+.panel {
+  background: linear-gradient(165deg, rgba(16, 22, 34, 0.96) 0%, rgba(10, 14, 22, 0.98) 100%);
+  border-left: 1px solid rgba(34, 211, 238, 0.24);
+  box-shadow: -12px 0 36px rgba(0, 0, 0, 0.72);
+}
+
+[data-theme='light'] .panel {
+  background: rgba(255, 255, 255, 0.96);
+  border-left: 1px solid rgba(15, 23, 42, 0.14);
+}
+
+/* 7. CARDS DARK GLASS HUD COM RIM-LIGHT & LINHA TÁTICA (Fiel ao Short 1)
+   -------------------------------------------------------------------------- */
+.dossie-card,
+.hub-card,
+.radar-card,
+.resumo-card,
+.news-card,
+.outlet-card,
+.compare-card,
+.cad-step-card,
+.cad-reqs-card,
+.cad-form-card,
+.met-pillar-card,
+.met-spectrum-card,
+.parceria-metric-card,
+.parceria-format-card,
+.clube-plan-card,
+.hall-member-card {
+  background: linear-gradient(165deg, rgba(22, 30, 46, 0.92) 0%, rgba(12, 16, 25, 0.97) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    0 14px 34px -10px rgba(0, 0, 0, 0.72);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.22s ease,
+              border-color 0.22s ease,
+              box-shadow 0.22s ease;
+}
+
+[data-theme='light'] .dossie-card,
+[data-theme='light'] .hub-card,
+[data-theme='light'] .radar-card,
+[data-theme='light'] .resumo-card,
+[data-theme='light'] .news-card,
+[data-theme='light'] .outlet-card,
+[data-theme='light'] .compare-card {
+  background: var(--surface);
+  border-color: var(--border);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Linha Tática Luminosa no Topo dos Cards (Vermelha/Âmbar em Dossiês, Ciano/Esmeralda nos demais) */
+.dossie-card::before,
+.hub-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #EF4444 0%, #F59E0B 40%, transparent 90%);
+  pointer-events: none;
+}
+
+.radar-card::before,
+.resumo-card::before,
+.news-card::before,
+.compare-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #22D3EE 0%, #10B981 50%, transparent 90%);
+  pointer-events: none;
+}
+
+.dossie-card:hover,
+.hub-card:hover,
+.radar-card:hover,
+.resumo-card:hover,
+.news-card:hover,
+.outlet-card:hover,
+.compare-card:hover {
+  border-color: rgba(34, 211, 238, 0.55);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.28),
+    0 0 24px -4px rgba(34, 211, 238, 0.28),
+    0 18px 36px -10px rgba(0, 0, 0, 0.80);
+  transform: translateY(-3px);
+}
+
+/* Cápsulas Superiores nos Cards (Idênticas ao "DOSSIÊ PERMANENTE • 31+ VEÍCULOS" do Short) */
+.editorial-eyebrow,
+.sponsor-eyebrow,
+.support-eyebrow,
+.format-tag,
+.plan-card-badge,
+.hall-badge,
+.checkout-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  padding: 4px 12px;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #E2E8F0;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+[data-theme='light'] .editorial-eyebrow,
+[data-theme='light'] .sponsor-eyebrow,
+[data-theme='light'] .support-eyebrow {
+  background: rgba(2, 132, 199, 0.10);
+  border-color: rgba(2, 132, 199, 0.25);
+  color: #0369A1;
+}
+
+/* Badge injetado nos cards de dossiês pelo preview-v2-2.js */
+.v22-card-hud-tag {
+  margin-top: 10px;
+  margin-bottom: 4px;
+}
+
+/* Botões Táticos HUD */
+.btn,
+.btn-primary,
+.btn-secondary {
+  border-radius: var(--radius-pill);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  transition: all 0.18s ease;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #00B4D8 0%, #0284C7 100%);
+  border: 1px solid #38BDF8;
+  color: #FFFFFF;
+  box-shadow: 0 0 18px -4px rgba(0, 180, 216, 0.5);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #22D3EE 0%, #00B4D8 100%);
+  border-color: #7DD3FC;
+  box-shadow: 0 0 24px -2px rgba(34, 211, 238, 0.65);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: var(--text);
+}
+
+[data-theme='light'] .btn-secondary {
+  background: var(--surface);
+  border-color: var(--border-strong);
+}
+
+.btn-secondary:hover {
+  background: rgba(34, 211, 238, 0.14);
+  border-color: var(--hud-cyan);
+}
+
+/* 8. RODAPÉ HUD MINIMALISTA
+   -------------------------------------------------------------------------- */
+.footer {
+  background-color: #05070B;
+  border-top: 1px solid rgba(34, 211, 238, 0.20);
+  padding-block: var(--space-10) var(--space-8);
+  color: var(--text-muted);
+}
+
+[data-theme='light'] .footer {
+  background-color: var(--surface);
+  border-top-color: var(--border);
+}
+
+.footer-social-link {
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.04);
+  transition: all 0.16s ease;
+}
+
+.footer-social-link:hover {
+  border-color: var(--hud-cyan);
+  color: var(--text);
+  background-color: rgba(34, 211, 238, 0.12);
+}
+
+.footer-version {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  color: var(--hud-cyan);
+}
+
+/* ==========================================================================
+   9. SALA DE SITUAÇÃO / WAR ROOM GEOPOLÍTICO (V2.2 VIVA & DINÂMICA)
+   Breaking News Ticker, Sonar Ping, Hover Card, Shorts e Teleporte Global
+   ========================================================================== */
+
+/* 9.1. BREAKING NEWS TICKER AO VIVO */
+.rom-breaking-ticker {
+  display: flex;
+  align-items: center;
+  background: linear-gradient(90deg, rgba(7, 9, 14, 0.96) 0%, rgba(14, 19, 28, 0.92) 50%, rgba(7, 9, 14, 0.96) 100%);
+  border-bottom: 1px solid rgba(34, 211, 238, 0.22);
+  height: 42px;
+  overflow: hidden;
+  position: relative;
+  z-index: 90;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+[data-theme='light'] .rom-breaking-ticker {
+  background: linear-gradient(90deg, #FFFFFF 0%, #F8FAFC 50%, #FFFFFF 100%);
+  border-bottom: 1px solid rgba(2, 132, 199, 0.20);
+}
+
+.rom-ticker-badge {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #DC2626 0%, #991B1B 100%);
+  color: #FFFFFF;
+  font-family: var(--font-display);
+  font-size: 0.6875rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0 16px;
+  height: 100%;
+  box-shadow: 4px 0 16px rgba(220, 38, 38, 0.35);
+  z-index: 2;
+}
+
+.rom-ticker-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  box-shadow: 0 0 10px #FFFFFF;
+  animation: rom-pulse-live 1.2s infinite ease-in-out;
+}
+
+@keyframes rom-pulse-live {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.8); }
+}
+
+.rom-ticker-viewport {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  mask-image: linear-gradient(to right, transparent 0%, black 20px, black calc(100% - 30px), transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 20px, black calc(100% - 30px), transparent 100%);
+}
+
+.rom-ticker-track {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  white-space: nowrap;
+  will-change: transform;
+  animation: rom-ticker-scroll 55s linear infinite;
+  padding-left: 20px;
+}
+
+.rom-ticker-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes rom-ticker-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.rom-ticker-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.rom-ticker-item:hover {
+  color: var(--hud-cyan);
+}
+
+.rom-ticker-flag {
+  width: 18px;
+  height: 12px;
+  object-fit: cover;
+  border-radius: 2px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.rom-ticker-source {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--hud-cyan);
+  background: rgba(34, 211, 238, 0.10);
+  padding: 2px 7px;
+  border-radius: 4px;
+  border: 1px solid rgba(34, 211, 238, 0.25);
+  text-transform: uppercase;
+}
+
+.rom-ticker-time {
+  font-size: 0.6875rem;
+  color: var(--text-faint);
+  font-family: var(--font-mono);
+}
+
+.rom-ticker-sep {
+  color: rgba(148, 163, 184, 0.3);
+  font-size: 0.875rem;
+}
+
+/* 9.2. SONAR PING & CARTOGRAFIA VIVA */
+@keyframes rom-sonar-wave {
+  0% {
+    r: 4px;
+    opacity: 0.95;
+    stroke-width: 2.5px;
+  }
+  60% {
+    opacity: 0.55;
+  }
+  100% {
+    r: 22px;
+    opacity: 0;
+    stroke-width: 0.5px;
+  }
+}
+
+.rom-sonar-ring {
+  fill: none;
+  stroke: var(--accent-amber);
+  animation: rom-sonar-wave 2.2s cubic-bezier(0.2, 0.8, 0.4, 1) infinite;
+  pointer-events: none;
+  transform-origin: center;
+}
+
+.rom-sonar-ring-urgent {
+  stroke: #EF4444;
+  animation-duration: 1.5s;
+}
+
+/* 9.3. HOVER CARD FLUTUANTE ENRIQUECIDO DO MAPA */
+.rom-map-hover-card {
+  position: absolute;
+  z-index: 120;
+  min-width: 280px;
+  max-width: 320px;
+  background: rgba(14, 19, 28, 0.94);
+  border: 1px solid rgba(34, 211, 238, 0.35);
+  border-radius: var(--radius-lg);
+  padding: 14px;
+  box-shadow: 0 16px 38px -8px rgba(0, 0, 0, 0.8), 0 0 20px -4px rgba(34, 211, 238, 0.25);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  pointer-events: none;
+  transform: translate(-50%, -115%);
+  transition: opacity 0.18s cubic-bezier(0.16, 1, 0.3, 1), transform 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+}
+
+[data-theme='light'] .rom-map-hover-card {
+  background: rgba(255, 255, 255, 0.96);
+  border-color: rgba(2, 132, 199, 0.35);
+  box-shadow: 0 14px 34px -6px rgba(15, 23, 42, 0.18), 0 0 16px -2px rgba(2, 132, 199, 0.18);
+}
+
+.rom-hover-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.rom-hover-country {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.9375rem;
+  color: var(--text);
+}
+
+.rom-hover-flag {
+  width: 22px;
+  height: 15px;
+  object-fit: cover;
+  border-radius: 2px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.rom-hover-count {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--hud-cyan);
+  background: rgba(34, 211, 238, 0.12);
+  border: 1px solid rgba(34, 211, 238, 0.25);
+  padding: 2px 7px;
+  border-radius: var(--radius-pill);
+}
+
+.rom-hover-headline {
+  font-family: var(--font-display);
+  font-size: 0.8125rem;
+  line-height: 1.35;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 8px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.rom-hover-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.6875rem;
+  color: var(--text-faint);
+  font-family: var(--font-mono);
+  border-top: 1px solid var(--divider);
+  padding-top: 6px;
+}
+
+.rom-hover-cta {
+  color: var(--hud-cyan);
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+}
+
+/* 9.4. VITRINE DE SHORTS & STORIES GEOPOLÍTICOS */
+.rom-shorts-section {
+  padding: 16px 20px;
+  background: linear-gradient(180deg, rgba(14, 19, 28, 0.6) 0%, rgba(7, 9, 14, 0.8) 100%);
+  border-top: 1px solid rgba(148, 163, 184, 0.12);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+  margin-bottom: 24px;
+}
+
+[data-theme='light'] .rom-shorts-section {
+  background: linear-gradient(180deg, #F8FAFC 0%, #FFFFFF 100%);
+}
+
+.rom-shorts-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.rom-shorts-title-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.rom-shorts-title-group h3 {
+  font-family: var(--font-display);
+  font-size: 0.9375rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  margin: 0;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.rom-shorts-live-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #EF4444;
+  box-shadow: 0 0 10px #EF4444;
+  animation: rom-pulse-live 1.5s infinite;
+}
+
+.rom-shorts-sub {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.rom-shorts-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.rom-shorts-nav {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.rom-shorts-arrow {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid rgba(148, 163, 184, 0.28);
+  background: rgba(15, 23, 42, 0.75);
+  color: var(--text);
+  font-size: 1.25rem;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0 0 2px;
+  transition: background-color 0.18s ease, border-color 0.18s ease, color 0.18s ease, transform 0.15s ease;
+}
+
+.rom-shorts-arrow:hover {
+  border-color: var(--hud-cyan);
+  color: var(--hud-cyan);
+  background: rgba(34, 211, 238, 0.12);
+  transform: translateY(-1px);
+}
+
+.rom-shorts-arrow:active {
+  transform: scale(0.95);
+}
+
+[data-theme='light'] .rom-shorts-arrow {
+  background: #FFFFFF;
+  border-color: rgba(15, 23, 42, 0.16);
+  color: #0F172A;
+}
+
+[data-theme='light'] .rom-shorts-arrow:hover {
+  border-color: #0284C7;
+  color: #0284C7;
+  background: rgba(2, 132, 199, 0.08);
+}
+
+.rom-shorts-track {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(180px, 210px);
+  gap: 14px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 8px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.rom-shorts-track::-webkit-scrollbar {
+  height: 4px;
+}
+
+.rom-shorts-track::-webkit-scrollbar-thumb {
+  background: rgba(34, 211, 238, 0.3);
+  border-radius: var(--radius-pill);
+}
+
+.rom-short-card {
+  position: relative;
+  aspect-ratio: 9 / 14;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: #0A0E17;
+  border: 1px solid rgba(34, 211, 238, 0.25);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+  scroll-snap-align: start;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 14px;
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.22s ease, box-shadow 0.22s ease;
+}
+
+.rom-short-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  border-color: var(--hud-cyan);
+  box-shadow: 0 12px 28px -4px rgba(34, 211, 238, 0.4);
+}
+
+.rom-short-thumb {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.72) contrast(1.08);
+  transition: transform 0.35s ease, filter 0.35s ease;
+}
+
+.rom-short-card:hover .rom-short-thumb {
+  transform: scale(1.06);
+  filter: brightness(0.85) contrast(1.12);
+}
+
+.rom-short-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(7, 9, 14, 0.1) 0%, rgba(7, 9, 14, 0.3) 40%, rgba(7, 9, 14, 0.95) 100%);
+  pointer-events: none;
+}
+
+.rom-short-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.rom-short-tag {
+  align-self: flex-start;
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  background: rgba(220, 38, 38, 0.85);
+  backdrop-filter: blur(6px);
+  padding: 2px 7px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.rom-short-title {
+  font-family: var(--font-display);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  line-height: 1.3;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
+}
+
+.rom-short-channel {
+  font-size: 0.6875rem;
+  color: #CBD5E1;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.rom-short-play-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  backdrop-filter: blur(4px);
+  z-index: 2;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.rom-short-card:hover .rom-short-play-badge {
+  transform: scale(1.15);
+  background: #DC2626;
+  border-color: #DC2626;
+}
+
+/* 9.5. BOTÃO DE TELEPORTE GLOBAL (GIRAR O GLOBO 🎲) */
+.btn-teleporte-global {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: linear-gradient(135deg, rgba(34, 211, 238, 0.18) 0%, rgba(16, 185, 129, 0.22) 100%);
+  border: 1px solid var(--hud-cyan);
+  color: var(--text);
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 0 14px -3px rgba(34, 211, 238, 0.3);
+}
+
+.btn-teleporte-global:hover {
+  background: linear-gradient(135deg, var(--hud-cyan) 0%, #10B981 100%);
+  color: #05080D;
+  border-color: #A5F3FC;
+  transform: translateY(-1px) scale(1.03);
+  box-shadow: 0 0 20px 2px rgba(34, 211, 238, 0.55);
+}
+
+.btn-teleporte-dice {
+  display: inline-block;
+  transition: transform 0.4s ease;
+}
+
+.btn-teleporte-global:hover .btn-teleporte-dice {
+  transform: rotate(180deg) scale(1.2);
+}
+
+.btn-teleporte-global.is-rolling .btn-teleporte-dice {
+  animation: rom-dice-roll 0.6s cubic-bezier(0.2, 0.8, 0.4, 1);
+}
+
+@keyframes rom-dice-roll {
+  0% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(360deg) scale(1.3); }
+  100% { transform: rotate(720deg) scale(1); }
+}
+
+/* Notificação toast de teleporte */
+.rom-teleporte-toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(30px);
+  background: rgba(14, 19, 28, 0.95);
+  border: 1px solid var(--hud-cyan);
+  border-radius: var(--radius-pill);
+  padding: 10px 20px;
+  color: #FFFFFF;
+  font-family: var(--font-display);
+  font-size: 0.875rem;
+  font-weight: 600;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.8), 0 0 18px rgba(34, 211, 238, 0.4);
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.rom-teleporte-toast.is-active {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+

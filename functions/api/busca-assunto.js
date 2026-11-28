@@ -182,7 +182,7 @@ const ENTIDADES_COMPOSTAS = [
   'Gabriel Boric', 'Claudia Sheinbaum', 'Nayib Bukele', 'Benjamin Netanyahu', 'Narendra Modi', 'Recep Erdogan',
   'António Guterres', 'Luís Montenegro', 'Supremo Tribunal Federal', 'Congresso Nacional', 'Banco Central',
   'Federal Reserve', 'Suprema Corte', 'Casa Branca', 'Wall Street', 'Vale do Silício', 'Arcabouço Fiscal',
-  'Reforma Tributária', 'Inteligência Artificial', 'Transição Energética', 'Aquecimento Global', 'Direitos Humanos',
+  'Reforma Tributária', 'Inteligência Artificial', 'AI Act', 'EU AI Act', 'Regulação de IA', 'Transição Energética', 'Aquecimento Global', 'Direitos Humanos',
   'União Europeia', 'Estados Unidos', 'Coreia do Sul', 'Coreia do Norte', 'África do Sul', 'Arábia Saudita', 'Reino Unido'
 ];
 
@@ -1040,6 +1040,35 @@ const PALAVRAS_VAZIAS_CONTEXTO = new Set([
 
 // Dicionário universal de conceitos e sinônimos jornalísticos (multilíngue) para cobrir variações reais da imprensa
 const GRUPOS_SINONIMOS_UNIVERSAIS = [
+  {
+    id: 'ai_act',
+    triggers: ['ai act', 'eu ai act', 'lei de ia', 'regulacao de ia', 'regulamentacao de ia', 'marco legal de ia', 'marco da ia', 'adocao do ai act'],
+    queryByLang: {
+      en: '("AI Act" OR "EU AI Act" OR "AI regulation")',
+      es: '("Ley de IA" OR "AI Act" OR "regulación de IA")',
+      fr: '("législation sur l\'IA" OR "AI Act" OR "règlement sur l\'IA")',
+      de: '("KI-Gesetz" OR "AI Act" OR "KI-Verordnung")',
+      it: '("AI Act" OR "legge sull\'IA")',
+    },
+    matchTerms: [
+      'ai act', 'eu ai act', 'lei de ia', 'regulacao de ia', 'regulamentacao de ia', 'marco legal de ia', 'marco da ia',
+      'ki-gesetz', 'ki-verordnung', 'ai regulation', 'artificial intelligence act', 'loi sur l\'ia', 'règlement sur l\'ia', 'ley de ia'
+    ],
+  },
+  {
+    id: 'artificial_intelligence',
+    triggers: ['inteligencia artificial', 'inteligência artificial', 'artificial intelligence', 'generative ai', 'ia generativa'],
+    queryByLang: {
+      en: '("artificial intelligence" OR "generative AI" OR "AI model")',
+      es: '("inteligencia artificial" OR "IA generativa")',
+      fr: '("intelligence artificielle" OR "IA générative")',
+      de: '("künstliche Intelligenz" OR "Künstliche Intelligenz")',
+    },
+    matchTerms: [
+      'inteligencia artificial', 'inteligência artificial', 'artificial intelligence', 'künstliche intelligenz',
+      'intelligence artificielle', 'ia generativa', 'generative ai', 'genai', 'large language model', 'chatgpt', 'openai'
+    ],
+  },
   {
     id: 'fuel_truck',
     triggers: ['caminhao-tanque', 'caminhao tanque', 'carreta-tanque', 'caminhao de combustivel', 'tanker truck', 'fuel tanker', 'fuel truck', 'petrol tanker', 'oil truck'],
@@ -2304,6 +2333,8 @@ const TERMOS_RODOVIARIOS_CAMINHAO_RE = /\b(truck|trucks|lorry|road|highway|ring 
 const TERMOS_TANKER_AMBIGUOS = new Set(['tanker', 'tankers', 'oil tanker', 'ناقلة']);
 const EXPRESSOES_TIRO_OU_METAFORA_FIRE_RE = /\b(opens?\s+fire|opened\s+fire|opening\s+fire|fires\s+(?:on|at|into|upon|missiles?|rockets?|drones?|shells?|shots?|rounds?|bullets?|artillery|mortars?|torpedoes|warning|back|minister|coach|manager|chief|head|director)|fired\s+(?:on|at|into|upon|missiles?|rockets?|drones?|shells?|shots?|rounds?|bullets?)|under\s+fire|returns?\s+fire|returned\s+fire|exchanges?\s+fire|exchanged\s+fire|friendly\s+fire|live\s+fire|cease-?fire|line\s+of\s+fire|abrir\s+fogo|abriu\s+fogo|abriram\s+fogo|sob\s+fogo|troca\s+de\s+tiros)\b/gi;
 const TERMOS_FIRE_AMBIGUOS = new Set(['fire', 'fires', 'fogo']);
+const TERMOS_IA_AMBIGUOS = new Set(['inteligencia', 'intelligence', 'act', 'ley', 'lei', 'gesetz']);
+const CONTEXTO_TECNOLOGIA_IA_RE = /(artificial|\bia\b|\bai\b|algoritmo|algoritmos|modelo|modelos|genai|generativa|llm|chatgpt|openai|gemini|claude|deepseek|machine learning|deep learning|computacao|roboti|tech|tecnologia|software|dados|rede neural|regulacao de ia)/i;
 
 function bucketCasaEmTexto(bucket, textoNorm, palavrasTexto) {
   if (!bucket || !Array.isArray(bucket.terms) || !textoNorm) return false;
@@ -2324,6 +2355,11 @@ function bucketCasaEmTexto(bucket, textoNorm, palavrasTexto) {
     if (bucket.groupId === 'fire' && TERMOS_FIRE_AMBIGUOS.has(term)) {
       casouApenasFire = true;
       continue;
+    }
+    if ((bucket.groupId === 'artificial_intelligence' || bucket.groupId === 'ai_act') && TERMOS_IA_AMBIGUOS.has(term)) {
+      if (!CONTEXTO_TECNOLOGIA_IA_RE.test(textoNorm)) {
+        continue;
+      }
     }
     casouInambiguo = true;
     break;

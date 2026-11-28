@@ -65,6 +65,67 @@ def _serializar_resultado_editorial(res: Dict[str, Any]) -> Dict[str, Any]:
     return saida
 
 
+def _classificar_materias_dossies_best_effort(materias: List[Dict[str, Any]]) -> Optional[Dict[str, int]]:
+    """Classifica matérias recentes nos dossiês ativos (best-effort, não interrompe o pipeline)."""
+    if not materias:
+        return None
+    try:
+        import psycopg
+        from src.classificador_dossies import classificar_lote_materias
+        from src.estado_db import obter_database_url
+
+        db_url = obter_database_url()
+        if not db_url:
+            return None
+        with psycopg.connect(db_url, connect_timeout=5, prepare_threshold=None) as conn:
+            return classificar_lote_materias(conn, materias, min_score=2)
+    except Exception as exc:  # noqa: BLE001
+        print(f"[AVISO] Falha best-effort na classificação de dossiês: {exc}", file=sys.stderr)
+        return None
+
+
+def _executar_pulso_dossies_best_effort(min_novas: int = 3) -> Dict[str, Any]:
+    """Executa pulso incremental em lote nos dossiês ativos (Dossiê 3.0)."""
+    try:
+        import psycopg
+        from src.dossies_pulso import executar_pulso_dossies_lote
+        from src.estado_db import obter_database_url
+
+        db_url = obter_database_url()
+        if not db_url:
+            return {"ok": False, "skipped": True, "reason": "database_url_indisponivel"}
+        with psycopg.connect(db_url, connect_timeout=5, prepare_threshold=None) as conn:
+            return executar_pulso_dossies_lote(conn, min_novas=min_novas)
+    except Exception as exc:  # noqa: BLE001
+        print(f"[AVISO] Falha best-effort no pulso incremental de dossiês: {exc}", file=sys.stderr)
+        return {"ok": False, "error": str(exc)[:240]}
+
+
+def _extrair_materias_para_dossies(payload_dict: Dict[str, Any]) -> List[Dict[str, Any]]:
+    """Extrai itens normalizados de `noticias_quentes` para classificação em dossiês."""
+    materias: List[Dict[str, Any]] = []
+    for n in (payload_dict.get("noticias_quentes") or []):
+        if not isinstance(n, dict):
+            continue
+        urls = n.get("fontes_urls") or []
+        url = str(urls[0]).strip() if urls else ""
+        veiculos = n.get("veiculos_origem") or []
+        veiculo = str(veiculos[0]).strip() if veiculos else ""
+        paises = n.get("paises_envolvidos") or []
+        pais_iso = str(paises[0]).strip().upper()[:2] if paises else ""
+        if not url or not veiculo:
+            continue
+        materias.append({
+            "titulo": str(n.get("titulo_curto") or "").strip(),
+            "resumo": str(n.get("resumo_pulso") or "").strip(),
+            "url": url,
+            "veiculo": veiculo,
+            "pais_iso": pais_iso,
+            "publicado_em": n.get("data_publicacao"),
+        })
+    return materias
+
+
 # ============================================================================
 # 1. EXECUÇÃO DO MODO PULSO (30m — gemini-2.5-flash)
 # ============================================================================
@@ -522,6 +583,11 @@ def criar_parser() -> argparse.ArgumentParser:
         default=12,
         help="Janela temporal em horas para coleta RSS no modo 'curadoria' (default: 12).",
     )
+    parser.add_argument(
+        "--dossies-pulso",
+        action="store_true",
+        help="Executa também o pulso incremental em lote nos dossiês ativos (Dossiê 3.0).",
+    )
     return parser
 
 
@@ -556,6 +622,12 @@ def main(argv: Optional[List[str]] = None) -> int:
                 return 2
 
         if not args.dry_run:
+            if args.modo == "pulso" and isinstance(saida, dict):
+                res_class = _classificar_materias_dossies_best_effort(_extrair_materias_para_dossies(saida))
+                if res_class is not None:
+                    saida["dossies_classificacao"] = res_class
+            if args.dossies_pulso and isinstance(saida, dict):
+                saida["dossies_pulso"] = _executar_pulso_dossies_best_effort(min_novas=3)
             try:
                 from notificador import alerta_amarelo, alerta_verde
                 if args.modo == "curadoria":
