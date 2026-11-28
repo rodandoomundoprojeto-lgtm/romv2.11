@@ -27,6 +27,10 @@ try:
 except ImportError:
     feedparser = None  # type: ignore
 
+ROOT_DIR = Path(__file__).resolve().parents[1]
+if str(ROOT_DIR) not in sys.path:
+    sys.path.insert(0, str(ROOT_DIR))
+
 try:
     from sinal_agente import agente_ativo
 except ImportError:
@@ -35,7 +39,6 @@ except ImportError:
     except ImportError:
         from contextlib import nullcontext as agente_ativo
 
-ROOT_DIR = Path(__file__).resolve().parents[1]
 CONFIG_SOURCES = ROOT_DIR / "config" / "sources.json"
 DEFAULT_OUT_PATH = ROOT_DIR / "data" / "noticias_youtube.json"
 FEED_OUTPUT_PATH = ROOT_DIR / "data" / "feed_output.json"
@@ -494,13 +497,30 @@ def varrer_todos_canais(max_por_canal: int = 3, max_workers: int = 8) -> List[Di
 
 
 def gravar_payload_atomicamente(dados: Any, destino: Path) -> None:
-    """Grava o dicionário ou lista JSON atomicamente no destino."""
+    """Grava o dicionário ou lista JSON atomicamente no destino (com fallback para locks do Windows/OneDrive)."""
+    import time
+
     destino.parent.mkdir(parents=True, exist_ok=True)
+    conteudo = json.dumps(dados, ensure_ascii=False, indent=2)
     temp_fd, temp_name = tempfile.mkstemp(dir=str(destino.parent), prefix="tmp_yt_", suffix=".json")
     try:
         with open(temp_fd, "w", encoding="utf-8") as f:
-            json.dump(dados, f, ensure_ascii=False, indent=2)
-        os.replace(temp_name, str(destino))
+            f.write(conteudo)
+        ultimo_erro: Optional[Exception] = None
+        for tentativa in range(4):
+            try:
+                os.replace(temp_name, str(destino))
+                return
+            except PermissionError as err:
+                ultimo_erro = err
+                time.sleep(0.15 * (tentativa + 1))
+        # Fallback de escrita direta quando o OneDrive/Windows bloqueia rename atômico
+        destino.write_text(conteudo, encoding="utf-8")
+        if os.path.exists(temp_name):
+            try:
+                os.unlink(temp_name)
+            except Exception:
+                pass
     except Exception:
         if os.path.exists(temp_name):
             try:
