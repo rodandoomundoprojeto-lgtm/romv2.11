@@ -98,7 +98,7 @@ async function handleTesteEnvio(request, env, url) {
     });
   }
 
-  const fromEmail = (env && env.RESEND_FROM_EMAIL) || 'Rodando o Mundo <onboarding@resend.dev>';
+  const fromEmail = (env && env.RESEND_FROM_EMAIL) || 'Rodando o Mundo <contato@rodandoomundo.com.br>';
   try {
     const res = await fetch('https://api.resend.com/emails', {
       method: 'POST',
@@ -272,7 +272,8 @@ async function handleContato(request, env) {
     });
   }
 
-  const destEmail = 'rodandoomundoprojeto@gmail.com';
+  const destEmail = 'contato@rodandoomundo.com.br';
+  const fromEmail = (env && env.RESEND_FROM_EMAIL) || 'Rodando o Mundo <contato@rodandoomundo.com.br>';
   const apiKey = (env && env.RESEND_API_KEY) || 're_QpeSXWvN_2N1aagUEH3yF4cpM9hBGkJix';
   const userEmail = (data.email || data._replyto || data['E-mail'] || data['E-mail de Contato'] || '').trim();
   const subject = data._subject || 'Novo contato — Rodando o Mundo';
@@ -303,7 +304,7 @@ async function handleContato(request, env) {
 </html>`;
 
       const emailPayload = {
-        from: (env && env.RESEND_FROM_EMAIL) || 'Rodando o Mundo <onboarding@resend.dev>',
+        from: fromEmail,
         to: [destEmail],
         subject: subject,
         html: emailHtml
@@ -322,6 +323,51 @@ async function handleContato(request, env) {
       });
 
       if (resResend.ok) {
+        const isParceria = Boolean(
+          (data.Origem && String(data.Origem).includes('Parceiros')) ||
+          data.origem === 'pagina-parcerias' ||
+          (data._subject && String(data._subject).includes('Parceria'))
+        );
+        if (isParceria && userEmail && /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(userEmail)) {
+          try {
+            const nomeCliente = escapeHtml(data.Nome || data['Nome / Empresa'] || data.nome || data.empresa || 'Parceiro(a)');
+            const confirmHtml = `
+<!DOCTYPE html>
+<html lang="pt-BR">
+<body style="margin:0;padding:24px 16px;background-color:#0d1117;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:#c9d1d9;">
+  <div style="max-width:600px;margin:0 auto;background:#161b22;border:1px solid #30363d;border-radius:10px;padding:28px 24px;">
+    <h1 style="color:#58a6ff;font-size:20px;margin:0 0 12px 0;">Olá, ${nomeCliente}!</h1>
+    <p style="color:#c9d1d9;font-size:15px;line-height:1.6;margin:0 0 16px 0;">
+      Recebemos sua mensagem sobre parcerias e patrocínio editorial no <strong>Rodando o Mundo</strong>.
+    </p>
+    <p style="color:#8b949e;font-size:14px;line-height:1.6;margin:0 0 20px 0;">
+      Nossa equipe comercial analisará sua solicitação e retornará em breve através do canal oficial <a href="mailto:${destEmail}" style="color:#58a6ff;text-decoration:none;">${destEmail}</a>.
+    </p>
+    <div style="border-top:1px solid #21262d;margin-top:24px;padding-top:16px;text-align:center;font-size:11px;color:#8b949e;">
+      Rodando o Mundo — Observatório Global de Notícias &bull; <a href="mailto:${destEmail}" style="color:#58a6ff;text-decoration:none;">${destEmail}</a>
+    </div>
+  </div>
+</body>
+</html>`;
+            await fetch('https://api.resend.com/emails', {
+              method: 'POST',
+              headers: {
+                'Authorization': `Bearer ${apiKey}`,
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({
+                from: fromEmail,
+                to: [userEmail],
+                reply_to: destEmail,
+                subject: 'Recebemos seu contato de Parceria — Rodando o Mundo',
+                html: confirmHtml
+              })
+            });
+          } catch (errConfirm) {
+            // ignora erro secundário de confirmação para não afetar retorno principal
+          }
+        }
+
         return new Response(JSON.stringify({ ok: true, success: true, canal: 'resend_cloudflare' }), {
           status: 200,
           headers: { ...CORS_HEADERS, 'Content-Type': 'application/json' }

@@ -1127,7 +1127,7 @@ async function executarEnvioResumo(env, testEmail = null) {
     return { ok: false, error: 'RESEND_API_KEY não configurada.' };
   }
 
-  const fromEmail = env.RESEND_FROM_EMAIL || 'Rodando o Mundo <onboarding@resend.dev>';
+  const fromEmail = env.RESEND_FROM_EMAIL || 'Rodando o Mundo <contato@rodandoomundo.com.br>';
   const dataHoje = new Date().toLocaleDateString('pt-BR', {
     day: '2-digit',
     month: 'long',

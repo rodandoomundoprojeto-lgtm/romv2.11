@@ -48,7 +48,7 @@ export async function onRequestGet(context) {
     });
   }
 
-  const fromEmail = env.RESEND_FROM_EMAIL || 'Rodando o Mundo <onboarding@resend.dev>';
+  const fromEmail = env.RESEND_FROM_EMAIL || 'Rodando o Mundo <contato@rodandoomundo.com.br>';
 
   try {
     const res = await fetch('https://api.resend.com/emails', {

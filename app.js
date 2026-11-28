@@ -9426,7 +9426,7 @@
           }).catch(function () { });
         } catch (eSub) { }
 
-        fetch('https://formsubmit.co/ajax/rodandoomundoprojeto@gmail.com', {
+        fetch('https://formsubmit.co/ajax/contato@rodandoomundo.com.br', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
           body: JSON.stringify(nlPayload)
@@ -16798,7 +16798,7 @@
   })();
 
   /* ---------- sugestão & formulários unificados (/api/contato no Cloudflare Pages + fallback FormSubmit) ---------- */
-  var FB_ENDPOINT = 'https://formsubmit.co/ajax/rodandoomundoprojeto@gmail.com';
+  var FB_ENDPOINT = 'https://formsubmit.co/ajax/contato@rodandoomundo.com.br';
 
   function enviarDadosFormulario(payload) {
     // 1º Tenta a rota /api/contato no Cloudflare Pages Functions
@@ -16890,7 +16890,7 @@
         })
         .catch(function () {
           form.reset();
-          setStatus('Obrigado pelo retorno! Se desejar, fale conosco em rodandoomundoprojeto@gmail.com.', 'ok');
+          setStatus('Obrigado pelo retorno! Se desejar, fale conosco em contato@rodandoomundo.com.br.', 'ok');
         })
         .then(function () { fbSend.disabled = false; fbSend.textContent = 'Enviar'; });
     });
@@ -17112,7 +17112,7 @@
         .catch(function () {
           cadForm.reset();
           setCadStatus(
-            '✓ <strong>Cadastro salvo com sucesso!</strong> Recebemos as informações e analisaremos em breve. Se desejar, confirme em <a href="mailto:rodandoomundoprojeto@gmail.com">rodandoomundoprojeto@gmail.com</a>.',
+            '✓ <strong>Cadastro salvo com sucesso!</strong> Recebemos as informações e analisaremos em breve. Se desejar, confirme em <a href="mailto:contato@rodandoomundo.com.br">contato@rodandoomundo.com.br</a>.',
             'ok'
           );
         })
@@ -17297,8 +17297,27 @@
           nome: nomeVal,
           email: emailVal,
           origem: 'pagina-parcerias',
-          cota_selecionada: cotaSelecionadaAtual
+          cota_selecionada: cotaSelecionadaAtual,
+          remetente_oficial: 'contato@rodandoomundo.com.br',
+          email_institucional: 'contato@rodandoomundo.com.br'
         };
+
+        try {
+          fetch('/api/contato', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: JSON.stringify({
+              _subject: 'Solicitação de Mídia Kit / Parceria (' + cotaSelecionadaAtual + ') — ' + nomeVal,
+              'Nome do Contato': nomeVal,
+              'E-mail': emailVal,
+              'Cota Selecionada': cotaSelecionadaAtual,
+              'Canal Oficial': 'contato@rodandoomundo.com.br',
+              'Origem': 'Modal de Parcerias (/parcerias)',
+              email: emailVal,
+              _replyto: emailVal
+            })
+          }).catch(function () {});
+        } catch (eLeadApi) {}
 
         function handleSuccess() {
           if (fieldsBox) fieldsBox.hidden = true;
@@ -17457,7 +17476,7 @@
           parcForm.reset();
           setParcStatus(
             '🎉 <strong>Solicitação enviada com sucesso!</strong> Agradecemos o interesse da <strong>' +
-            esc(empresa) + '</strong>. Nossa equipe entrará em contato em até 24 horas úteis no e-mail <strong>' +
+            esc(empresa) + '</strong>. Nossa equipe entrará em contato em até 24 horas úteis através de <strong>contato@rodandoomundo.com.br</strong> no e-mail <strong>' +
             esc(email) + '</strong> com nosso mídia kit detalhado e proposta de patrocínio.',
             'ok'
           );
@@ -17465,7 +17484,7 @@
         .catch(function () {
           parcForm.reset();
           setParcStatus(
-            '✓ <strong>Proposta registrada!</strong> Entraremos em contato em breve pelo e-mail informado.',
+            '✓ <strong>Proposta registrada!</strong> Entraremos em contato em breve através de <strong>contato@rodandoomundo.com.br</strong> pelo e-mail informado.',
             'ok'
           );
         })
@@ -17699,7 +17718,7 @@
           .catch(function (err) {
             console.error('Falha ao registrar formulário do Clube:', err);
             setClubeStatus(
-              '⚠️ <strong>Não foi possível registrar seu e-mail automaticamente no momento.</strong><br>Por favor, envie seus dados diretamente para <a href="mailto:rodandoomundoprojeto@gmail.com" style="color:var(--c-accent-blue);text-decoration:underline;font-weight:600;">rodandoomundoprojeto@gmail.com</a> para garantirmos sua vaga na Lista de Espera VIP.',
+              '⚠️ <strong>Não foi possível registrar seu e-mail automaticamente no momento.</strong><br>Por favor, envie seus dados diretamente para <a href="mailto:contato@rodandoomundo.com.br" style="color:var(--c-accent-blue);text-decoration:underline;font-weight:600;">contato@rodandoomundo.com.br</a> para garantirmos sua vaga na Lista de Espera VIP.',
               'err'
             );
           })

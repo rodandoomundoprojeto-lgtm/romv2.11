@@ -40,7 +40,7 @@ export async function onRequestPost(context) {
     }
 
     const apiKey = getResendKey(env);
-    const fromEmail = env.RESEND_FROM_EMAIL || 'Rodando o Mundo <onboarding@resend.dev>';
+    const fromEmail = env.RESEND_FROM_EMAIL || 'Rodando o Mundo <contato@rodandoomundo.com.br>';
     const audienceId = env.RESEND_AUDIENCE_ID;
 
     let emailStatus = null;
