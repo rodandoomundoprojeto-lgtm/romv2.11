@@ -2,144 +2,223 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-28T12:17:15Z",
-  "batch_id": "20261128-1217",
+  "updatedAt": "2026-11-28T13:16:58Z",
+  "batch_id": "20261128-1316",
   "temas_ativos": [
     {
-      "slug": "linha-17-ouro-metro-sp-paralisada",
-      "titulo_tema": "Linha 17-Ouro do Metrô de São Paulo é totalmente paralisada após falha elétrica neste sábado",
-      "titulo_curto": "Linha 17-Ouro do Metrô de São Paulo é totalmente paralisada após falha elétrica neste sábado",
+      "slug": "prorrogacao-subvencao-diesel-impacto-inflacao",
+      "titulo_tema": "Governo prorroga subvenção ao diesel e busca conter pressão inflacionária",
       "status": "novo",
-      "origem_pipeline": "pulso",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Politica",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 90,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-30T13:16:58Z",
+      "palavras_chave_busca": [
+        "subvencao diesel",
+        "ministerio da fazenda",
+        "preco dos combustiveis",
+        "inflacao brasil",
+        "dario durigan",
+        "subsideo diesel"
+      ],
+      "gatilho_vitrine": "Destaque a decisão do Ministério da Fazenda sobre a prorrogação do subsídio e como isso afeta diretamente o custo logístico e a inflação no país.",
+      "sintese_nerd": "A manutenção da subvenção ao diesel pelo Ministério da Fazenda visa segurar os custos do transporte de cargas e evitar um repasse em cadeia para a inflação de alimentos e serviços. No entanto, a medida fiscal gera debates sobre o equilíbrio das contas públicas e o custo de intervenções nos preços administrados.",
+      "data_publicacao": "2026-11-28T13:16:58Z",
+      "updated_at": "2026-11-28T13:16:58Z"
+    },
+    {
+      "slug": "stf-pautas-bomba-impacto-fiscal",
+      "titulo_tema": "STF pauta regras de Gilmar Mendes para barrar pautas-bomba no Congresso",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Politica",
+      "categorias_cruzadas": [
+        "Economia",
+        "Eleicoes"
+      ],
+      "rota_editoria": "/politica",
+      "relevancia_score": 88,
+      "ttl_horas": 72,
+      "expires_at": "2026-12-01T13:16:58Z",
+      "palavras_chave_busca": [
+        "stf pautas bomba",
+        "gilmar mendes",
+        "congresso nacional",
+        "orcamento federal",
+        "politica fiscal brasil"
+      ],
+      "gatilho_vitrine": "Analise o impacto institucional da tentativa do STF de impor travas a projetos com forte impacto financeiro aprovados pelo Congresso.",
+      "sintese_nerd": "A movimentação do Supremo Tribunal Federal para analisar propostas contra pautas-bomba acirra o debate sobre a separação de Poderes e a responsabilidade fiscal. O embate entre o controle de gastos públicos e a autonomia legislativa redefine a governabilidade econômica do país.",
+      "data_publicacao": "2026-11-28T13:16:58Z",
+      "updated_at": "2026-11-28T13:16:58Z"
+    },
+    {
+      "slug": "crise-hormuz-impacto-aviacao-global",
+      "titulo_tema": "Crise no Estreito de Ormuz e instabilidade no Oriente Médio afetam aviação global",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
       "categoria_primaria": "Geopolitica_Radar",
-      "categoria": "Mobilidade_Fronteiras",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
       ],
       "rota_editoria": "/radar",
-      "relevancia_score": 84,
-      "urgencia_score": 86,
+      "relevancia_score": 85,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-30T13:16:58Z",
+      "palavras_chave_busca": [
+        "estreito de hormuz",
+        "crise no oriente medio",
+        "preco do combustivel de aviacao",
+        "norse atlantic",
+        "geopolitica energetica"
+      ],
+      "gatilho_vitrine": "Mostre como as tensões militares no Oriente Médio e a alta nos custos de combustíveis estão colapsando rotas e companhias aéreas internacionais.",
+      "sintese_nerd": "A escalada de conflitos no Oriente Médio e a consequente volatilidade nos preços dos combustíveis derivados do petróleo estrangulam margens de operadoras aéreas globais. Esse choque geopolítico na rota de Ormuz demonstra a vulnerabilidade das cadeias de transporte internacional a crises regionais.",
+      "data_publicacao": "2026-11-28T13:16:58Z",
+      "updated_at": "2026-11-28T13:16:58Z"
+    },
+    {
+      "slug": "linha-17-ouro-metro-sp-paralisada",
+      "status": "novo",
+      "categoria": "Mobilidade_Fronteiras",
       "ttl_horas": 12,
       "expires_at": "2026-11-29T00:17:15Z",
-      "palavras_chave_busca": [
-        "metrô de sp",
-        "linha 17-ouro",
-        "falha elétrica",
-        "transporte público"
-      ],
-      "palavras_chave": [
-        "metrô de sp",
-        "linha 17-ouro",
-        "falha elétrica",
-        "transporte público"
-      ],
-      "gatilho_vitrine": "Conforme informações da InfoMoney Mercados, a circulação da Linha 17-Ouro do monotrilho em São Paulo foi interrompida neste sábado (28) devido a uma pane em subestação elétrica. Ônibus gratuitos foram disponibilizados para atender os passageiros afetados ao longo de todo o trecho.",
-      "resumo_pulso": "Conforme informações da InfoMoney Mercados, a circulação da Linha 17-Ouro do monotrilho em São Paulo foi interrompida neste sábado (28) devido a uma pane em subestação elétrica. Ônibus gratuitos foram disponibilizados para atender os passageiros afetados ao longo de todo o trecho.",
-      "sintese_nerd": "Cidadãos e passageiros que utilizam o sistema de transporte na capital paulista enfrentam atrasos e necessidade de migração para ônibus emergenciais.",
-      "impacto_pratico": "Cidadãos e passageiros que utilizam o sistema de transporte na capital paulista enfrentam atrasos e necessidade de migração para ônibus emergenciais.",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "veiculos_origem": [
-        "InfoMoney Mercados"
-      ],
+      "updated_at": "2026-11-28T12:17:15Z",
       "fontes_urls": [
         "https://www.infomoney.com.br/brasil/linha-17-ouro-do-metro-de-sp-e-totalmente-paralisada-apos-falha-eletrica/"
       ],
-      "data_publicacao": "2026-11-28T12:13:17Z",
-      "updated_at": "2026-11-28T12:17:15Z"
-    },
-    {
-      "slug": "imigrantes-mortos-embarcacao-ilhas-canarias",
-      "titulo_tema": "Pelo menos 14 imigrantes são encontrados mortos em embarcação perto das Ilhas Canárias na Espanha",
-      "titulo_curto": "Pelo menos 14 imigrantes são encontrados mortos em embarcação perto das Ilhas Canárias na Espanha",
-      "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Geopolitica_Radar",
-      "categoria": "Mobilidade_Fronteiras",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
+      "titulo_tema": "Linha 17-Ouro do Metrô de São Paulo é totalmente paralisada após falha elétrica neste sábado",
+      "resumo_pulso": "Conforme informações da InfoMoney Mercados, a circulação da Linha 17-Ouro do monotrilho em São Paulo foi interrompida neste sábado (28) devido a uma pane em subestação elétrica. Ônibus gratuitos foram disponibilizados para atender os passageiros afetados ao longo de todo o trecho.",
+      "sintese_nerd": "Cidadãos e passageiros que utilizam o sistema de transporte na capital paulista enfrentam atrasos e necessidade de migração para ônibus emergenciais.",
+      "titulo_curto": "Linha 17-Ouro do Metrô de São Paulo é totalmente paralisada após falha elétrica neste sábado",
       "rota_editoria": "/radar",
-      "relevancia_score": 87,
-      "urgencia_score": 88,
-      "ttl_horas": 24,
-      "expires_at": "2026-11-29T12:17:15Z",
-      "palavras_chave_busca": [
-        "imigração",
-        "ilhas canárias",
-        "espanha",
-        "salvamento marítimo"
-      ],
       "palavras_chave": [
-        "imigração",
-        "ilhas canárias",
-        "espanha",
-        "salvamento marítimo"
+        "metrô de sp",
+        "linha 17-ouro",
+        "falha elétrica",
+        "transporte público"
       ],
-      "gatilho_vitrine": "Segundo relatórios do G1 Mundo, equipes de salvamento marítimo espanhol localizaram ao menos 14 corpos em uma embarcação precária na costa das Ilhas Canárias. O resgate ocorre na véspera das eleições gerais na Espanha, período marcado por intensas discussões sobre políticas migratórias e segurança fronteiriça.",
-      "resumo_pulso": "Segundo relatórios do G1 Mundo, equipes de salvamento marítimo espanhol localizaram ao menos 14 corpos em uma embarcação precária na costa das Ilhas Canárias. O resgate ocorre na véspera das eleições gerais na Espanha, período marcado por intensas discussões sobre políticas migratórias e segurança fronteiriça.",
-      "sintese_nerd": "Reforça o debate sobre fluxos migratórios irregulares no Mediterrâneo e Atlântico às vésperas do pleito eleitoral espanhol.",
-      "impacto_pratico": "Reforça o debate sobre fluxos migratórios irregulares no Mediterrâneo e Atlântico às vésperas do pleito eleitoral espanhol.",
-      "paises_envolvidos": [
-        "ES"
-      ],
-      "veiculos_origem": [
-        "G1 Mundo"
-      ],
-      "fontes_urls": [
-        "https://g1.globo.com/mundo/noticia/2026/11/28/imigrantes-encontrados-mortos-em-embarcacao-ilhas-canarias.ghtml"
-      ],
-      "data_publicacao": "2026-11-28T12:02:06Z",
-      "updated_at": "2026-11-28T12:17:15Z"
-    },
-    {
-      "slug": "fundacao-fhc-lamenta-declaracao-lula-morto-vivo",
-      "titulo_tema": "Fundação FHC desmente Lula e reforça que declaração sobre saúde do ex-presidente não corresponde aos fatos",
-      "titulo_curto": "Fundação FHC desmente Lula e reforça que declaração sobre saúde do ex-presidente não corresponde aos fatos",
-      "status": "novo",
+      "urgencia_score": 86,
+      "data_publicacao": "2026-11-28T12:13:17Z",
+      "gatilho_vitrine": "Conforme informações da InfoMoney Mercados, a circulação da Linha 17-Ouro do monotrilho em São Paulo foi interrompida neste sábado (28) devido a uma pane em subestação elétrica. Ônibus gratuitos foram disponibilizados para atender os passageiros afetados ao longo de todo o trecho.",
+      "impacto_pratico": "Cidadãos e passageiros que utilizam o sistema de transporte na capital paulista enfrentam atrasos e necessidade de migração para ônibus emergenciais.",
       "origem_pipeline": "pulso",
-      "categoria_primaria": "Cultura",
-      "categoria": "Sociedade_Cultura",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
+      "veiculos_origem": [
+        "InfoMoney Mercados"
       ],
-      "rota_editoria": "/cultura",
-      "relevancia_score": 90,
-      "urgencia_score": 89,
-      "ttl_horas": 24,
-      "expires_at": "2026-11-29T11:18:34Z",
-      "palavras_chave_busca": [
-        "fundação fhc",
-        "luiz inácio lula da silva",
-        "fernando henrique cardoso",
-        "saúde"
-      ],
-      "palavras_chave": [
-        "fundação fhc",
-        "luiz inácio lula da silva",
-        "fernando henrique cardoso",
-        "saúde"
-      ],
-      "gatilho_vitrine": "Segundo apuração da InfoMoney e G1 Política, a Fundação Fernando Henrique Cardoso publicou nova nota desmentindo o relato do presidente Luiz Inácio Lula da Silva sobre o estado de saúde de FHC. A entidade esclareceu que o último encontro entre ambos ocorreu em 2024 e classificou as declarações recentes como infundadas.",
-      "resumo_pulso": "Segundo apuração da InfoMoney e G1 Política, a Fundação Fernando Henrique Cardoso publicou nova nota desmentindo o relato do presidente Luiz Inácio Lula da Silva sobre o estado de saúde de FHC. A entidade esclareceu que o último encontro entre ambos ocorreu em 2024 e classificou as declarações recentes como infundadas.",
-      "sintese_nerd": "A repercussão intensifica debates políticos sobre o tom de declarações públicas de autoridades em relação a ex-presidentes.",
-      "impacto_pratico": "A repercussão intensifica debates políticos sobre o tom de declarações públicas de autoridades em relação a ex-presidentes.",
+      "relevancia_score": 84,
       "paises_envolvidos": [
         "BR"
       ],
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "metrô de sp",
+        "linha 17-ouro",
+        "falha elétrica",
+        "transporte público"
+      ]
+    },
+    {
+      "slug": "imigrantes-mortos-embarcacao-ilhas-canarias",
+      "status": "novo",
+      "categoria": "Mobilidade_Fronteiras",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-29T12:17:15Z",
+      "updated_at": "2026-11-28T12:17:15Z",
+      "fontes_urls": [
+        "https://g1.globo.com/mundo/noticia/2026/11/28/imigrantes-encontrados-mortos-em-embarcacao-ilhas-canarias.ghtml"
+      ],
+      "titulo_tema": "Pelo menos 14 imigrantes são encontrados mortos em embarcação perto das Ilhas Canárias na Espanha",
+      "resumo_pulso": "Segundo relatórios do G1 Mundo, equipes de salvamento marítimo espanhol localizaram ao menos 14 corpos em uma embarcação precária na costa das Ilhas Canárias. O resgate ocorre na véspera das eleições gerais na Espanha, período marcado por intensas discussões sobre políticas migratórias e segurança fronteiriça.",
+      "sintese_nerd": "Reforça o debate sobre fluxos migratórios irregulares no Mediterrâneo e Atlântico às vésperas do pleito eleitoral espanhol.",
+      "titulo_curto": "Pelo menos 14 imigrantes são encontrados mortos em embarcação perto das Ilhas Canárias na Espanha",
+      "rota_editoria": "/radar",
+      "palavras_chave": [
+        "imigração",
+        "ilhas canárias",
+        "espanha",
+        "salvamento marítimo"
+      ],
+      "urgencia_score": 88,
+      "data_publicacao": "2026-11-28T12:02:06Z",
+      "gatilho_vitrine": "Segundo relatórios do G1 Mundo, equipes de salvamento marítimo espanhol localizaram ao menos 14 corpos em uma embarcação precária na costa das Ilhas Canárias. O resgate ocorre na véspera das eleições gerais na Espanha, período marcado por intensas discussões sobre políticas migratórias e segurança fronteiriça.",
+      "impacto_pratico": "Reforça o debate sobre fluxos migratórios irregulares no Mediterrâneo e Atlântico às vésperas do pleito eleitoral espanhol.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "G1 Mundo"
+      ],
+      "relevancia_score": 87,
+      "paises_envolvidos": [
+        "ES"
+      ],
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "imigração",
+        "ilhas canárias",
+        "espanha",
+        "salvamento marítimo"
+      ]
+    },
+    {
+      "slug": "fundacao-fhc-lamenta-declaracao-lula-morto-vivo",
+      "status": "novo",
+      "categoria": "Sociedade_Cultura",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-29T11:18:34Z",
+      "updated_at": "2026-11-28T12:17:15Z",
+      "fontes_urls": [
+        "https://www.infomoney.com.br/politica/fundacao-criada-por-fhc-desmente-relato-de-lula-sobre-saude-do-ex-presidente/"
+      ],
+      "titulo_tema": "Fundação FHC desmente Lula e reforça que declaração sobre saúde do ex-presidente não corresponde aos fatos",
+      "resumo_pulso": "Segundo apuração da InfoMoney e G1 Política, a Fundação Fernando Henrique Cardoso publicou nova nota desmentindo o relato do presidente Luiz Inácio Lula da Silva sobre o estado de saúde de FHC. A entidade esclareceu que o último encontro entre ambos ocorreu em 2024 e classificou as declarações recentes como infundadas.",
+      "sintese_nerd": "A repercussão intensifica debates políticos sobre o tom de declarações públicas de autoridades em relação a ex-presidentes.",
+      "titulo_curto": "Fundação FHC desmente Lula e reforça que declaração sobre saúde do ex-presidente não corresponde aos fatos",
+      "rota_editoria": "/cultura",
+      "palavras_chave": [
+        "fundação fhc",
+        "luiz inácio lula da silva",
+        "fernando henrique cardoso",
+        "saúde"
+      ],
+      "urgencia_score": 89,
+      "data_publicacao": "2026-11-28T11:08:48Z",
+      "gatilho_vitrine": "Segundo apuração da InfoMoney e G1 Política, a Fundação Fernando Henrique Cardoso publicou nova nota desmentindo o relato do presidente Luiz Inácio Lula da Silva sobre o estado de saúde de FHC. A entidade esclareceu que o último encontro entre ambos ocorreu em 2024 e classificou as declarações recentes como infundadas.",
+      "impacto_pratico": "A repercussão intensifica debates políticos sobre o tom de declarações públicas de autoridades em relação a ex-presidentes.",
+      "origem_pipeline": "pulso",
       "veiculos_origem": [
         "InfoMoney Mercados",
         "G1 Política"
       ],
-      "fontes_urls": [
-        "https://www.infomoney.com.br/politica/fundacao-criada-por-fhc-desmente-relato-de-lula-sobre-saude-do-ex-presidente/"
+      "relevancia_score": 90,
+      "paises_envolvidos": [
+        "BR"
       ],
-      "data_publicacao": "2026-11-28T11:08:48Z",
-      "updated_at": "2026-11-28T12:17:15Z"
+      "categoria_primaria": "Cultura",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "fundação fhc",
+        "luiz inácio lula da silva",
+        "fernando henrique cardoso",
+        "saúde"
+      ]
     },
     {
       "slug": "interdicao-fraudulenta-idoso-perda-heranca",
@@ -186,115 +265,6 @@
         "herança",
         "congresso",
         "justiça"
-      ]
-    },
-    {
-      "slug": "ukrania-ataque-drones-moscou-escalada-geopolitica",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-30T10:35:08Z",
-      "updated_at": "2026-11-28T10:35:08Z",
-      "titulo_tema": "Ucrânia lança ataque massivo com centenas de drones contra a região de Moscou",
-      "sintese_nerd": "A investida com mais de 400 drones contra a região de Moscou fecha espaço aéreo e intensifica a guerra de atrito entre Rússia e Ucrânia. O recrudescimento militar eleva a volatilidade nos preços globais de energia e reforça as pressões diplomáticas internacionais.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-28T10:35:08Z",
-      "gatilho_vitrine": "Destacar escalada militar sem precedentes da Ucrânia contra o território russo e seus impactos na segurança europeia",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 92,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "ucrânia",
-        "moscou",
-        "ataque de drones",
-        "guerra na ucrânia",
-        "rússia",
-        "geopolítica europeia",
-        "escalada militar"
-      ]
-    },
-    {
-      "slug": "stf-suspensao-emendas-parlamentares-conflito-congresso",
-      "status": "novo",
-      "ttl_horas": 72,
-      "expires_at": "2026-12-01T10:35:08Z",
-      "updated_at": "2026-11-28T10:35:08Z",
-      "titulo_tema": "STF suspende emendas parlamentares e acirra crise institucional com o Congresso",
-      "sintese_nerd": "A decisão de suspender repasses de emendas impositivas reacendeu a crise entre o Judiciário e o Congresso Nacional, travando votações estratégicas. A disputa expõe o cabo de guerra pelo controle do orçamento federal e desafia a estabilidade política e fiscal do país.",
-      "rota_editoria": "/politica",
-      "data_publicacao": "2026-11-28T10:35:08Z",
-      "gatilho_vitrine": "Analisar o impacto institucional do bloqueio de emendas pelo STF no orçamento federal e na governabilidade",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 88,
-      "categoria_primaria": "Politica",
-      "categorias_cruzadas": [
-        "Economia",
-        "Eleicoes"
-      ],
-      "palavras_chave_busca": [
-        "stf",
-        "emendas parlamentares",
-        "flávio dino",
-        "congresso nacional",
-        "orçamento união",
-        "relação executivo legislativo"
-      ]
-    },
-    {
-      "slug": "ameaca-trump-taxacao-data-centers-impacto-brasil",
-      "status": "novo",
-      "ttl_horas": 96,
-      "expires_at": "2026-12-02T10:35:08Z",
-      "updated_at": "2026-11-28T10:35:08Z",
-      "titulo_tema": "Ameaças de Trump sobre tarifas a data centers no exterior geram incerteza no Brasil",
-      "sintese_nerd": "A sinalização de tarifas sobre empresas americanas que constroem data centers no exterior traz incerteza para o setor de tecnologia e infraestrutura digital no Brasil. A medida reflete o avanço do protecionismo dos EUA e seu potencial desincentivo ao fluxo de capital estrangeiro para emergentes.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-28T10:35:08Z",
-      "gatilho_vitrine": "Mapear o impacto das propostas protecionistas dos EUA sobre investimentos estrangeiros em tecnologia no Brasil",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 85,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Politica",
-        "Geopolitica_Radar"
-      ],
-      "palavras_chave_busca": [
-        "donald trump",
-        "data centers",
-        "taxação eua",
-        "investimento em tecnologia",
-        "mercado brasileiro ti",
-        "protecionismo americano"
-      ]
-    },
-    {
-      "slug": "debate-ajuste-fiscal-governo-lula-meta-pib",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-30T10:35:08Z",
-      "updated_at": "2026-11-28T10:35:08Z",
-      "titulo_tema": "Debate sobre ajuste fiscal e contenção de gastos divide opiniões no cenário econômico",
-      "sintese_nerd": "O embate em torno da intensidade da contenção de despesas públicas divide opiniões entre a necessidade de ancorar expectativas fiscais e o risco de desaceleração econômica. O equilíbrio da política fiscal permanece como fator crítico para determinar a trajetória da taxa Selic e da inflação.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-28T10:35:08Z",
-      "gatilho_vitrine": "Explicar as pressões do mercado e da ala política sobre o pacote de corte de gastos federais",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 81,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Politica",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "ajuste fiscal",
-        "governo lula",
-        "arcabouço fiscal",
-        "contas públicas",
-        "inflação e juros",
-        "selic"
       ]
     },
     {
@@ -883,112 +853,193 @@
       ]
     }
   ],
+  "temas_curadoria": [
+    {
+      "slug": "prorrogacao-subvencao-diesel-impacto-inflacao",
+      "titulo_tema": "Governo prorroga subvenção ao diesel e busca conter pressão inflacionária",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Politica",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 90,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-30T13:16:58Z",
+      "palavras_chave_busca": [
+        "subvencao diesel",
+        "ministerio da fazenda",
+        "preco dos combustiveis",
+        "inflacao brasil",
+        "dario durigan",
+        "subsideo diesel"
+      ],
+      "gatilho_vitrine": "Destaque a decisão do Ministério da Fazenda sobre a prorrogação do subsídio e como isso afeta diretamente o custo logístico e a inflação no país.",
+      "sintese_nerd": "A manutenção da subvenção ao diesel pelo Ministério da Fazenda visa segurar os custos do transporte de cargas e evitar um repasse em cadeia para a inflação de alimentos e serviços. No entanto, a medida fiscal gera debates sobre o equilíbrio das contas públicas e o custo de intervenções nos preços administrados.",
+      "data_publicacao": "2026-11-28T13:16:58Z",
+      "updated_at": "2026-11-28T13:16:58Z"
+    },
+    {
+      "slug": "stf-pautas-bomba-impacto-fiscal",
+      "titulo_tema": "STF pauta regras de Gilmar Mendes para barrar pautas-bomba no Congresso",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Politica",
+      "categorias_cruzadas": [
+        "Economia",
+        "Eleicoes"
+      ],
+      "rota_editoria": "/politica",
+      "relevancia_score": 88,
+      "ttl_horas": 72,
+      "expires_at": "2026-12-01T13:16:58Z",
+      "palavras_chave_busca": [
+        "stf pautas bomba",
+        "gilmar mendes",
+        "congresso nacional",
+        "orcamento federal",
+        "politica fiscal brasil"
+      ],
+      "gatilho_vitrine": "Analise o impacto institucional da tentativa do STF de impor travas a projetos com forte impacto financeiro aprovados pelo Congresso.",
+      "sintese_nerd": "A movimentação do Supremo Tribunal Federal para analisar propostas contra pautas-bomba acirra o debate sobre a separação de Poderes e a responsabilidade fiscal. O embate entre o controle de gastos públicos e a autonomia legislativa redefine a governabilidade econômica do país.",
+      "data_publicacao": "2026-11-28T13:16:58Z",
+      "updated_at": "2026-11-28T13:16:58Z"
+    },
+    {
+      "slug": "crise-hormuz-impacto-aviacao-global",
+      "titulo_tema": "Crise no Estreito de Ormuz e instabilidade no Oriente Médio afetam aviação global",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 85,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-30T13:16:58Z",
+      "palavras_chave_busca": [
+        "estreito de hormuz",
+        "crise no oriente medio",
+        "preco do combustivel de aviacao",
+        "norse atlantic",
+        "geopolitica energetica"
+      ],
+      "gatilho_vitrine": "Mostre como as tensões militares no Oriente Médio e a alta nos custos de combustíveis estão colapsando rotas e companhias aéreas internacionais.",
+      "sintese_nerd": "A escalada de conflitos no Oriente Médio e a consequente volatilidade nos preços dos combustíveis derivados do petróleo estrangulam margens de operadoras aéreas globais. Esse choque geopolítico na rota de Ormuz demonstra a vulnerabilidade das cadeias de transporte internacional a crises regionais.",
+      "data_publicacao": "2026-11-28T13:16:58Z",
+      "updated_at": "2026-11-28T13:16:58Z"
+    }
+  ],
   "noticias_quentes": [
     {
       "slug": "linha-17-ouro-metro-sp-paralisada",
-      "titulo_curto": "Linha 17-Ouro do Metrô de São Paulo é totalmente paralisada após falha elétrica neste sábado",
-      "resumo_pulso": "Conforme informações da InfoMoney Mercados, a circulação da Linha 17-Ouro do monotrilho em São Paulo foi interrompida neste sábado (28) devido a uma pane em subestação elétrica. Ônibus gratuitos foram disponibilizados para atender os passageiros afetados ao longo de todo o trecho.",
-      "impacto_pratico": "Cidadãos e passageiros que utilizam o sistema de transporte na capital paulista enfrentam atrasos e necessidade de migração para ônibus emergenciais.",
       "categoria": "Mobilidade_Fronteiras",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "urgencia_score": 86,
-      "relevancia_score": 84,
-      "nivel_confianca": "alta",
       "ttl_horas": 12,
-      "horas_em_destaque": 6,
-      "veiculos_origem": [
-        "InfoMoney Mercados"
-      ],
+      "expires_at": "2026-11-29T00:17:15Z",
+      "updated_at": "2026-11-28T12:17:15Z",
       "fontes_urls": [
         "https://www.infomoney.com.br/brasil/linha-17-ouro-do-metro-de-sp-e-totalmente-paralisada-apos-falha-eletrica/"
       ],
+      "resumo_pulso": "Conforme informações da InfoMoney Mercados, a circulação da Linha 17-Ouro do monotrilho em São Paulo foi interrompida neste sábado (28) devido a uma pane em subestação elétrica. Ônibus gratuitos foram disponibilizados para atender os passageiros afetados ao longo de todo o trecho.",
+      "titulo_curto": "Linha 17-Ouro do Metrô de São Paulo é totalmente paralisada após falha elétrica neste sábado",
       "palavras_chave": [
         "Metrô de SP",
         "Linha 17-Ouro",
         "Falha elétrica",
         "Transporte público"
       ],
+      "urgencia_score": 86,
       "data_publicacao": "2026-11-28T12:13:17Z",
-      "links_internos_relacionados": [],
-      "expires_at": "2026-11-29T00:17:15Z",
-      "updated_at": "2026-11-28T12:17:15Z"
+      "impacto_pratico": "Cidadãos e passageiros que utilizam o sistema de transporte na capital paulista enfrentam atrasos e necessidade de migração para ônibus emergenciais.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "InfoMoney Mercados"
+      ],
+      "relevancia_score": 84,
+      "horas_em_destaque": 6,
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "links_internos_relacionados": []
     },
     {
       "slug": "imigrantes-mortos-embarcacao-ilhas-canarias",
-      "titulo_curto": "Pelo menos 14 imigrantes são encontrados mortos em embarcação perto das Ilhas Canárias na Espanha",
-      "resumo_pulso": "Segundo relatórios do G1 Mundo, equipes de salvamento marítimo espanhol localizaram ao menos 14 corpos em uma embarcação precária na costa das Ilhas Canárias. O resgate ocorre na véspera das eleições gerais na Espanha, período marcado por intensas discussões sobre políticas migratórias e segurança fronteiriça.",
-      "impacto_pratico": "Reforça o debate sobre fluxos migratórios irregulares no Mediterrâneo e Atlântico às vésperas do pleito eleitoral espanhol.",
       "categoria": "Mobilidade_Fronteiras",
-      "paises_envolvidos": [
-        "ES"
-      ],
-      "urgencia_score": 88,
-      "relevancia_score": 87,
-      "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 12,
-      "veiculos_origem": [
-        "G1 Mundo"
-      ],
+      "expires_at": "2026-11-29T12:17:15Z",
+      "updated_at": "2026-11-28T12:17:15Z",
       "fontes_urls": [
         "https://g1.globo.com/mundo/noticia/2026/11/28/imigrantes-encontrados-mortos-em-embarcacao-ilhas-canarias.ghtml"
       ],
+      "resumo_pulso": "Segundo relatórios do G1 Mundo, equipes de salvamento marítimo espanhol localizaram ao menos 14 corpos em uma embarcação precária na costa das Ilhas Canárias. O resgate ocorre na véspera das eleições gerais na Espanha, período marcado por intensas discussões sobre políticas migratórias e segurança fronteiriça.",
+      "titulo_curto": "Pelo menos 14 imigrantes são encontrados mortos em embarcação perto das Ilhas Canárias na Espanha",
       "palavras_chave": [
         "Imigração",
         "Ilhas Canárias",
         "Espanha",
         "Salvamento marítimo"
       ],
+      "urgencia_score": 88,
       "data_publicacao": "2026-11-28T12:02:06Z",
+      "impacto_pratico": "Reforça o debate sobre fluxos migratórios irregulares no Mediterrâneo e Atlântico às vésperas do pleito eleitoral espanhol.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "G1 Mundo"
+      ],
+      "relevancia_score": 87,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "ES"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "Eleições e Democracia no Mundo",
           "url_existente": "https://www.rodandoomundo.com.br/eleicoes",
-          "motivo_conexao": "Relaciona o impacto das pautas migratórias com o cenário de eleições gerais no país europeu."
+          "motivo_conexao": "Relaciona o impacto das pautas migratórias com o cenário de eleições gerais no país europeu.",
+          "titulo_existente": "Eleições e Democracia no Mundo"
         }
-      ],
-      "expires_at": "2026-11-29T12:17:15Z",
-      "updated_at": "2026-11-28T12:17:15Z"
+      ]
     },
     {
       "slug": "fundacao-fhc-lamenta-declaracao-lula-morto-vivo",
-      "titulo_curto": "Fundação FHC desmente Lula e reforça que declaração sobre saúde do ex-presidente não corresponde aos fatos",
-      "resumo_pulso": "Segundo apuração da InfoMoney e G1 Política, a Fundação Fernando Henrique Cardoso publicou nova nota desmentindo o relato do presidente Luiz Inácio Lula da Silva sobre o estado de saúde de FHC. A entidade esclareceu que o último encontro entre ambos ocorreu em 2024 e classificou as declarações recentes como infundadas.",
-      "impacto_pratico": "A repercussão intensifica debates políticos sobre o tom de declarações públicas de autoridades em relação a ex-presidentes.",
       "categoria": "Sociedade_Cultura",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "urgencia_score": 89,
-      "relevancia_score": 90,
-      "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 12,
-      "veiculos_origem": [
-        "InfoMoney Mercados",
-        "G1 Política"
-      ],
+      "expires_at": "2026-11-29T11:18:34Z",
+      "updated_at": "2026-11-28T12:17:15Z",
       "fontes_urls": [
         "https://www.infomoney.com.br/politica/fundacao-criada-por-fhc-desmente-relato-de-lula-sobre-saude-do-ex-presidente/"
       ],
+      "resumo_pulso": "Segundo apuração da InfoMoney e G1 Política, a Fundação Fernando Henrique Cardoso publicou nova nota desmentindo o relato do presidente Luiz Inácio Lula da Silva sobre o estado de saúde de FHC. A entidade esclareceu que o último encontro entre ambos ocorreu em 2024 e classificou as declarações recentes como infundadas.",
+      "titulo_curto": "Fundação FHC desmente Lula e reforça que declaração sobre saúde do ex-presidente não corresponde aos fatos",
       "palavras_chave": [
         "Fundação FHC",
         "Luiz Inácio Lula da Silva",
         "Fernando Henrique Cardoso",
         "Saúde"
       ],
+      "urgencia_score": 89,
       "data_publicacao": "2026-11-28T11:08:48Z",
+      "impacto_pratico": "A repercussão intensifica debates políticos sobre o tom de declarações públicas de autoridades em relação a ex-presidentes.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "InfoMoney Mercados",
+        "G1 Política"
+      ],
+      "relevancia_score": 90,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "BR"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "Política no Brasil",
           "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
-          "motivo_conexao": "Contextualiza os debates e a polarização em torno de declarações de autoridades no cenário político nacional."
+          "motivo_conexao": "Contextualiza os debates e a polarização em torno de declarações de autoridades no cenário político nacional.",
+          "titulo_existente": "Política no Brasil"
         }
-      ],
-      "expires_at": "2026-11-29T11:18:34Z",
-      "updated_at": "2026-11-28T12:17:15Z"
+      ]
     },
     {
       "slug": "interdicao-fraudulenta-idoso-perda-heranca",
@@ -1641,117 +1692,6 @@
           "motivo_conexao": "Aborda o impacto de demandas sanitárias urgentes na estrutura de atendimento do país.",
           "titulo_existente": "Movimentos sociais e parlamentares debatem investimentos em saúde, educação e transição ecológica"
         }
-      ]
-    }
-  ],
-  "temas_curadoria": [
-    {
-      "slug": "ukrania-ataque-drones-moscou-escalada-geopolitica",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-30T10:35:08Z",
-      "updated_at": "2026-11-28T10:35:08Z",
-      "titulo_tema": "Ucrânia lança ataque massivo com centenas de drones contra a região de Moscou",
-      "sintese_nerd": "A investida com mais de 400 drones contra a região de Moscou fecha espaço aéreo e intensifica a guerra de atrito entre Rússia e Ucrânia. O recrudescimento militar eleva a volatilidade nos preços globais de energia e reforça as pressões diplomáticas internacionais.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-28T10:35:08Z",
-      "gatilho_vitrine": "Destacar escalada militar sem precedentes da Ucrânia contra o território russo e seus impactos na segurança europeia",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 92,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "ucrânia",
-        "moscou",
-        "ataque de drones",
-        "guerra na ucrânia",
-        "rússia",
-        "geopolítica europeia",
-        "escalada militar"
-      ]
-    },
-    {
-      "slug": "stf-suspensao-emendas-parlamentares-conflito-congresso",
-      "status": "novo",
-      "ttl_horas": 72,
-      "expires_at": "2026-12-01T10:35:08Z",
-      "updated_at": "2026-11-28T10:35:08Z",
-      "titulo_tema": "STF suspende emendas parlamentares e acirra crise institucional com o Congresso",
-      "sintese_nerd": "A decisão de suspender repasses de emendas impositivas reacendeu a crise entre o Judiciário e o Congresso Nacional, travando votações estratégicas. A disputa expõe o cabo de guerra pelo controle do orçamento federal e desafia a estabilidade política e fiscal do país.",
-      "rota_editoria": "/politica",
-      "data_publicacao": "2026-11-28T10:35:08Z",
-      "gatilho_vitrine": "Analisar o impacto institucional do bloqueio de emendas pelo STF no orçamento federal e na governabilidade",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 88,
-      "categoria_primaria": "Politica",
-      "categorias_cruzadas": [
-        "Economia",
-        "Eleicoes"
-      ],
-      "palavras_chave_busca": [
-        "stf",
-        "emendas parlamentares",
-        "flávio dino",
-        "congresso nacional",
-        "orçamento união",
-        "relação executivo legislativo"
-      ]
-    },
-    {
-      "slug": "ameaca-trump-taxacao-data-centers-impacto-brasil",
-      "status": "novo",
-      "ttl_horas": 96,
-      "expires_at": "2026-12-02T10:35:08Z",
-      "updated_at": "2026-11-28T10:35:08Z",
-      "titulo_tema": "Ameaças de Trump sobre tarifas a data centers no exterior geram incerteza no Brasil",
-      "sintese_nerd": "A sinalização de tarifas sobre empresas americanas que constroem data centers no exterior traz incerteza para o setor de tecnologia e infraestrutura digital no Brasil. A medida reflete o avanço do protecionismo dos EUA e seu potencial desincentivo ao fluxo de capital estrangeiro para emergentes.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-28T10:35:08Z",
-      "gatilho_vitrine": "Mapear o impacto das propostas protecionistas dos EUA sobre investimentos estrangeiros em tecnologia no Brasil",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 85,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Politica",
-        "Geopolitica_Radar"
-      ],
-      "palavras_chave_busca": [
-        "donald trump",
-        "data centers",
-        "taxação eua",
-        "investimento em tecnologia",
-        "mercado brasileiro ti",
-        "protecionismo americano"
-      ]
-    },
-    {
-      "slug": "debate-ajuste-fiscal-governo-lula-meta-pib",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-30T10:35:08Z",
-      "updated_at": "2026-11-28T10:35:08Z",
-      "titulo_tema": "Debate sobre ajuste fiscal e contenção de gastos divide opiniões no cenário econômico",
-      "sintese_nerd": "O embate em torno da intensidade da contenção de despesas públicas divide opiniões entre a necessidade de ancorar expectativas fiscais e o risco de desaceleração econômica. O equilíbrio da política fiscal permanece como fator crítico para determinar a trajetória da taxa Selic e da inflação.",
-      "rota_editoria": "/economia",
-      "data_publicacao": "2026-11-28T10:35:08Z",
-      "gatilho_vitrine": "Explicar as pressões do mercado e da ala política sobre o pacote de corte de gastos federais",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 81,
-      "categoria_primaria": "Economia",
-      "categorias_cruzadas": [
-        "Politica",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "ajuste fiscal",
-        "governo lula",
-        "arcabouço fiscal",
-        "contas públicas",
-        "inflação e juros",
-        "selic"
       ]
     }
   ]
