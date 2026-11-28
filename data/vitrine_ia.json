@@ -2,33 +2,132 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-28T07:00:52Z",
-  "batch_id": "20261128-0700",
+  "updatedAt": "2026-11-28T07:30:47Z",
+  "batch_id": "20261128-0730",
   "temas_ativos": [
     {
-      "slug": "banco-eua-fechado-maior-quebra",
-      "titulo_tema": "United Fidelity Bank é fechado por reguladores dos EUA na maior quebra bancária em dois anos",
-      "titulo_curto": "United Fidelity Bank é fechado por reguladores dos EUA na maior quebra bancária em dois anos",
+      "slug": "crise-agro-franca-brasil-carne-dopada",
+      "titulo_tema": "Declarações de Macron sobre carne brasileira e pressões do agro europeu",
       "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Economia",
-      "categoria": "Economia_Comercio",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
       "categorias_cruzadas": [
         "Economia",
-        "Resumo_Ultimas"
+        "Politica"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 92,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-30T07:30:47Z",
+      "palavras_chave_busca": [
+        "emmanuel macron",
+        "carne brasileira",
+        "união europeia",
+        "agronegócio",
+        "comércio exterior",
+        "eudr",
+        "protecionismo"
+      ],
+      "gatilho_vitrine": "Exibir análises de barreiras comerciais europeias e o impacto diplomático das falas de Macron no agronegócio brasileiro.",
+      "sintese_nerd": "A pressão de agricultores na União Europeia e as declarações protecionistas de Emmanuel Macron contra o setor pecuário brasileiro evidenciam o uso de barreiras não tarifárias na geopolítica do comércio global. Isso gera atritos diplomáticos diretos e ameaça fatias importantes das exportações brasileiras para o mercado europeu.",
+      "data_publicacao": "2026-11-28T07:30:47Z",
+      "updated_at": "2026-11-28T07:30:47Z"
+    },
+    {
+      "slug": "quebra-banco-eua-maior-dois-anos",
+      "titulo_tema": "United Fidelity Bank é fechado em maior quebra bancária nos EUA em dois anos",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Geopolitica_Radar"
       ],
       "rota_editoria": "/economia",
-      "relevancia_score": 90,
-      "urgencia_score": 92,
+      "relevancia_score": 88,
+      "ttl_horas": 36,
+      "expires_at": "2026-11-29T19:30:47Z",
+      "palavras_chave_busca": [
+        "united fidelity bank",
+        "quebra bancária",
+        "fed",
+        "sistema financeiro americano",
+        "fdic",
+        "crise de liquidez",
+        "mercado global"
+      ],
+      "gatilho_vitrine": "Destacar riscos de liquidez no sistema financeiro internacional e reflexos potenciais para investidores e taxas de juros globais.",
+      "sintese_nerd": "O fechamento do United Fidelity Bank pelo FDIC marca a maior falência bancária nos EUA em mais de dois anos, reacendendo alertas sobre o estresse em instituições financeiras regionais americanas em meio a juros restritivos. O evento repercute na liquidez global e na percepção de risco para ativos emergentes.",
+      "data_publicacao": "2026-11-28T07:30:47Z",
+      "updated_at": "2026-11-28T07:30:47Z"
+    },
+    {
+      "slug": "emendas-orcamentarias-prefeituras-menores",
+      "titulo_tema": "Pressão de emendas parlamentares na capacidade de execução de pequenas prefeituras",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Politica",
+      "categorias_cruzadas": [
+        "Economia"
+      ],
+      "rota_editoria": "/politica",
+      "relevancia_score": 82,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-30T07:30:47Z",
+      "palavras_chave_busca": [
+        "emendas parlamentares",
+        "prefeituras",
+        "orçamento público",
+        "gestão municipal",
+        "congresso nacional",
+        "responsabilidade fiscal"
+      ],
+      "gatilho_vitrine": "Conectar o fluxo de repasses do orçamento federal com os gargalos administrativos enfrentados pelos municípios brasileiros.",
+      "sintese_nerd": "O volume e a rigidez das emendas parlamentares sobrecarregam a capacidade técnica e administrativa de prefeituras de pequeno porte, que muitas vezes carecem de estrutura para gerir e prestar contas dos recursos. Esse descompasso entre o repasse político e a execução técnica compromete a entrega de políticas públicas locais.",
+      "data_publicacao": "2026-11-28T07:30:47Z",
+      "updated_at": "2026-11-28T07:30:47Z"
+    },
+    {
+      "slug": "data-centers-gigantes-japao-bairros",
+      "titulo_tema": "Protestos de moradores no Japão contra invasão de data centers em áreas residenciais",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Cultura",
+      "categorias_cruzadas": [
+        "Geopolitica_Radar",
+        "Economia"
+      ],
+      "rota_editoria": "/cultura",
+      "relevancia_score": 79,
+      "ttl_horas": 72,
+      "expires_at": "2026-12-01T07:30:47Z",
+      "palavras_chave_busca": [
+        "data centers",
+        "japão",
+        "inteligência artificial",
+        "impacto urbano",
+        "crise energética",
+        "tecnologia e sociedade"
+      ],
+      "gatilho_vitrine": "Ilustrar como o boom global de infraestrutura para IA e nuvem gera conflitos urbanos e ambientais diretos em zonas residenciais.",
+      "sintese_nerd": "A corrida global por infraestrutura de inteligência artificial levou à construção de data centers de grande porte em bairros residenciais no Japão, gerando forte reação da comunidade devido a ruídos e alteração da paisagem urbana. O caso ilustra o choque entre a expansão tecnológica digital e a sustentabilidade das cidades.",
+      "data_publicacao": "2026-11-28T07:30:47Z",
+      "updated_at": "2026-11-28T07:30:47Z"
+    },
+    {
+      "slug": "banco-eua-fechado-maior-quebra",
+      "status": "novo",
+      "categoria": "Economia_Comercio",
       "ttl_horas": 24,
       "expires_at": "2026-11-29T07:00:52Z",
-      "palavras_chave_busca": [
-        "banco",
-        "eua",
-        "quebra",
-        "united fidelity bank",
-        "economia"
+      "updated_at": "2026-11-28T07:00:52Z",
+      "fontes_urls": [
+        "https://g1.globo.com/economia/noticia/2026/11/28/banco-dos-eua-e-fechado-na-maior-quebra-em-mais-de-dois-anos.ghtml"
       ],
+      "titulo_tema": "United Fidelity Bank é fechado por reguladores dos EUA na maior quebra bancária em dois anos",
+      "resumo_pulso": "Segundo dados da Federal Deposit Insurance Corporation (FDIC) repercutidos pela imprensa, o United Fidelity Bank, sediado em Indiana, foi fechado por reguladores nesta sexta-feira (27). Com US$ 5,9 bilhões em ativos, o caso representa a maior falência bancária registrada nos Estados Unidos em mais de dois anos.",
+      "sintese_nerd": "Monitoramento de riscos sistêmicos no setor financeiro internacional e possíveis reflexos nos mercados globais.",
+      "titulo_curto": "United Fidelity Bank é fechado por reguladores dos EUA na maior quebra bancária em dois anos",
+      "rota_editoria": "/economia",
       "palavras_chave": [
         "banco",
         "eua",
@@ -36,126 +135,30 @@
         "united fidelity bank",
         "economia"
       ],
+      "urgencia_score": 92,
+      "data_publicacao": "2026-11-28T06:08:45Z",
       "gatilho_vitrine": "Segundo dados da Federal Deposit Insurance Corporation (FDIC) repercutidos pela imprensa, o United Fidelity Bank, sediado em Indiana, foi fechado por reguladores nesta sexta-feira (27). Com US$ 5,9 bilhões em ativos, o caso representa a maior falência bancária registrada nos Estados Unidos em mais de dois anos.",
-      "resumo_pulso": "Segundo dados da Federal Deposit Insurance Corporation (FDIC) repercutidos pela imprensa, o United Fidelity Bank, sediado em Indiana, foi fechado por reguladores nesta sexta-feira (27). Com US$ 5,9 bilhões em ativos, o caso representa a maior falência bancária registrada nos Estados Unidos em mais de dois anos.",
-      "sintese_nerd": "Monitoramento de riscos sistêmicos no setor financeiro internacional e possíveis reflexos nos mercados globais.",
       "impacto_pratico": "Monitoramento de riscos sistêmicos no setor financeiro internacional e possíveis reflexos nos mercados globais.",
-      "paises_envolvidos": [
-        "US"
-      ],
+      "origem_pipeline": "pulso",
       "veiculos_origem": [
         "G1 Economia",
         "FDIC"
       ],
-      "fontes_urls": [
-        "https://g1.globo.com/economia/noticia/2026/11/28/banco-dos-eua-e-fechado-na-maior-quebra-em-mais-de-dois-anos.ghtml"
+      "relevancia_score": 90,
+      "paises_envolvidos": [
+        "US"
       ],
-      "data_publicacao": "2026-11-28T06:08:45Z",
-      "updated_at": "2026-11-28T07:00:52Z"
-    },
-    {
-      "slug": "opec-mais-mantem-metas-petroleo-incerteza-global",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-30T04:41:49Z",
-      "updated_at": "2026-11-28T04:41:49Z",
-      "titulo_tema": "OPEC+ mantém metas de produção de petróleo em meio a incertezas geopolíticas",
-      "sintese_nerd": "A decisão da OPEC+ de manter inalteradas as metas de produção reflete a cautela dos maiores produtores globais diante de conflitos e instabilidades no Oriente Médio. Essa estagnação direta afeta as cotações internacionais do Brent, impactando a inflação importada e os custos logísticos no Brasil e no mundo.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-28T04:41:49Z",
-      "gatilho_vitrine": "Destacar análises sobre a estabilidade do mercado de energia e os reflexos nos preços dos combustíveis e inflação global.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 92,
-      "categoria_primaria": "Geopolitica_Radar",
+      "categoria_primaria": "Economia",
       "categorias_cruzadas": [
-        "Economia"
+        "Economia",
+        "Resumo_Ultimas"
       ],
       "palavras_chave_busca": [
-        "opec+",
-        "petróleo",
-        "mercado global",
-        "energia",
-        "inflação",
-        "geopolítica"
-      ]
-    },
-    {
-      "slug": "ministerio-da-seguranca-publica-pec-governo",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-30T04:41:49Z",
-      "updated_at": "2026-11-28T04:41:49Z",
-      "titulo_tema": "Aprovação da PEC e criação do Ministério da Segurança Pública no Brasil",
-      "sintese_nerd": "A promulgação da PEC da Segurança Pública e a criação iminente da nova pasta ministerial redesenham a arquitetura de combate ao crime e cooperação federativa no país. Especialistas debatem a eficácia de centralizar diretrizes federais em um tema historicamente descentralizado entre estados.",
-      "rota_editoria": "/politica",
-      "data_publicacao": "2026-11-28T04:41:49Z",
-      "gatilho_vitrine": "Destacar análises sobre a reestruturação institucional da segurança pública e a articulação entre Executivo e Congresso.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 85,
-      "categoria_primaria": "Politica",
-      "categorias_cruzadas": [
-        "Eleicoes"
-      ],
-      "palavras_chave_busca": [
-        "segurança pública",
-        "ministério",
-        "pec",
-        "congresso",
-        "governo federal",
-        "instituições"
-      ]
-    },
-    {
-      "slug": "eleicoes-locais-taiwan-desafios-geopoliticos",
-      "status": "novo",
-      "ttl_horas": 36,
-      "expires_at": "2026-11-29T16:41:49Z",
-      "updated_at": "2026-11-28T04:41:49Z",
-      "titulo_tema": "Eleições locais em Taiwan testam equilíbrio político e tensões com Pequim",
-      "sintese_nerd": "As eleições locais em Taiwan funcionam como um referendo indireto sobre a gestão do Partido Democrático Progressista e a relação tensa com a China Continental. O resultado molda as estratégias diplomáticas globais e afeta cadeias cruciais de suprimentos tecnológicos, como a indústria de semicondutores.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-28T04:12:31Z",
-      "gatilho_vitrine": "Priorizar cobertura sobre as eleições em Taiwan e o termômetro democrático em uma das regiões mais sensíveis do planeta.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 88,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Politica",
-        "Eleicoes"
-      ],
-      "palavras_chave_busca": [
-        "taiwan",
-        "eleições locais",
-        "geopolítica",
-        "china",
-        "democracia",
-        "ásia"
-      ]
-    },
-    {
-      "slug": "safernet-estudo-deepfake-escolas-ia",
-      "status": "novo",
-      "ttl_horas": 72,
-      "expires_at": "2026-12-01T04:41:49Z",
-      "updated_at": "2026-11-28T04:41:49Z",
-      "titulo_tema": "Pesquisa da SaferNet aponta uso de IA por adolescentes na criação de deepfakes",
-      "sintese_nerd": "O levantamento da SaferNet expondo a criação de conteúdos falsos com IA por adolescentes joga luz sobre o vazio regulatório e educacional no uso de novas tecnologias. A pauta exige respostas institucionais do Congresso e debates urgentes sobre a responsabilidade das plataformas e a proteção de minorias e mulheres.",
-      "rota_editoria": "/cultura",
-      "data_publicacao": "2026-11-28T04:12:31Z",
-      "gatilho_vitrine": "Impulsionar debates sobre os desafios éticos da inteligência artificial e a necessidade de regulação e educação digital nas escolas.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 86,
-      "categoria_primaria": "Cultura",
-      "categorias_cruzadas": [
-        "Politica"
-      ],
-      "palavras_chave_busca": [
-        "safernet",
-        "deepfake",
-        "inteligência artificial",
-        "escolas",
-        "regulação digital",
-        "sociedade"
+        "banco",
+        "eua",
+        "quebra",
+        "united fidelity bank",
+        "economia"
       ]
     },
     {
@@ -874,28 +877,128 @@
       ]
     }
   ],
+  "temas_curadoria": [
+    {
+      "slug": "crise-agro-franca-brasil-carne-dopada",
+      "titulo_tema": "Declarações de Macron sobre carne brasileira e pressões do agro europeu",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia",
+        "Politica"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 92,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-30T07:30:47Z",
+      "palavras_chave_busca": [
+        "emmanuel macron",
+        "carne brasileira",
+        "união europeia",
+        "agronegócio",
+        "comércio exterior",
+        "eudr",
+        "protecionismo"
+      ],
+      "gatilho_vitrine": "Exibir análises de barreiras comerciais europeias e o impacto diplomático das falas de Macron no agronegócio brasileiro.",
+      "sintese_nerd": "A pressão de agricultores na União Europeia e as declarações protecionistas de Emmanuel Macron contra o setor pecuário brasileiro evidenciam o uso de barreiras não tarifárias na geopolítica do comércio global. Isso gera atritos diplomáticos diretos e ameaça fatias importantes das exportações brasileiras para o mercado europeu.",
+      "data_publicacao": "2026-11-28T07:30:47Z",
+      "updated_at": "2026-11-28T07:30:47Z"
+    },
+    {
+      "slug": "quebra-banco-eua-maior-dois-anos",
+      "titulo_tema": "United Fidelity Bank é fechado em maior quebra bancária nos EUA em dois anos",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Geopolitica_Radar"
+      ],
+      "rota_editoria": "/economia",
+      "relevancia_score": 88,
+      "ttl_horas": 36,
+      "expires_at": "2026-11-29T19:30:47Z",
+      "palavras_chave_busca": [
+        "united fidelity bank",
+        "quebra bancária",
+        "fed",
+        "sistema financeiro americano",
+        "fdic",
+        "crise de liquidez",
+        "mercado global"
+      ],
+      "gatilho_vitrine": "Destacar riscos de liquidez no sistema financeiro internacional e reflexos potenciais para investidores e taxas de juros globais.",
+      "sintese_nerd": "O fechamento do United Fidelity Bank pelo FDIC marca a maior falência bancária nos EUA em mais de dois anos, reacendendo alertas sobre o estresse em instituições financeiras regionais americanas em meio a juros restritivos. O evento repercute na liquidez global e na percepção de risco para ativos emergentes.",
+      "data_publicacao": "2026-11-28T07:30:47Z",
+      "updated_at": "2026-11-28T07:30:47Z"
+    },
+    {
+      "slug": "emendas-orcamentarias-prefeituras-menores",
+      "titulo_tema": "Pressão de emendas parlamentares na capacidade de execução de pequenas prefeituras",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Politica",
+      "categorias_cruzadas": [
+        "Economia"
+      ],
+      "rota_editoria": "/politica",
+      "relevancia_score": 82,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-30T07:30:47Z",
+      "palavras_chave_busca": [
+        "emendas parlamentares",
+        "prefeituras",
+        "orçamento público",
+        "gestão municipal",
+        "congresso nacional",
+        "responsabilidade fiscal"
+      ],
+      "gatilho_vitrine": "Conectar o fluxo de repasses do orçamento federal com os gargalos administrativos enfrentados pelos municípios brasileiros.",
+      "sintese_nerd": "O volume e a rigidez das emendas parlamentares sobrecarregam a capacidade técnica e administrativa de prefeituras de pequeno porte, que muitas vezes carecem de estrutura para gerir e prestar contas dos recursos. Esse descompasso entre o repasse político e a execução técnica compromete a entrega de políticas públicas locais.",
+      "data_publicacao": "2026-11-28T07:30:47Z",
+      "updated_at": "2026-11-28T07:30:47Z"
+    },
+    {
+      "slug": "data-centers-gigantes-japao-bairros",
+      "titulo_tema": "Protestos de moradores no Japão contra invasão de data centers em áreas residenciais",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Cultura",
+      "categorias_cruzadas": [
+        "Geopolitica_Radar",
+        "Economia"
+      ],
+      "rota_editoria": "/cultura",
+      "relevancia_score": 79,
+      "ttl_horas": 72,
+      "expires_at": "2026-12-01T07:30:47Z",
+      "palavras_chave_busca": [
+        "data centers",
+        "japão",
+        "inteligência artificial",
+        "impacto urbano",
+        "crise energética",
+        "tecnologia e sociedade"
+      ],
+      "gatilho_vitrine": "Ilustrar como o boom global de infraestrutura para IA e nuvem gera conflitos urbanos e ambientais diretos em zonas residenciais.",
+      "sintese_nerd": "A corrida global por infraestrutura de inteligência artificial levou à construção de data centers de grande porte em bairros residenciais no Japão, gerando forte reação da comunidade devido a ruídos e alteração da paisagem urbana. O caso ilustra o choque entre a expansão tecnológica digital e a sustentabilidade das cidades.",
+      "data_publicacao": "2026-11-28T07:30:47Z",
+      "updated_at": "2026-11-28T07:30:47Z"
+    }
+  ],
   "noticias_quentes": [
     {
       "slug": "banco-eua-fechado-maior-quebra",
-      "titulo_curto": "United Fidelity Bank é fechado por reguladores dos EUA na maior quebra bancária em dois anos",
-      "resumo_pulso": "Segundo dados da Federal Deposit Insurance Corporation (FDIC) repercutidos pela imprensa, o United Fidelity Bank, sediado em Indiana, foi fechado por reguladores nesta sexta-feira (27). Com US$ 5,9 bilhões em ativos, o caso representa a maior falência bancária registrada nos Estados Unidos em mais de dois anos.",
-      "impacto_pratico": "Monitoramento de riscos sistêmicos no setor financeiro internacional e possíveis reflexos nos mercados globais.",
       "categoria": "Economia_Comercio",
-      "paises_envolvidos": [
-        "US"
-      ],
-      "urgencia_score": 92,
-      "relevancia_score": 90,
-      "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 12,
-      "veiculos_origem": [
-        "G1 Economia",
-        "FDIC"
-      ],
+      "expires_at": "2026-11-29T07:00:52Z",
+      "updated_at": "2026-11-28T07:00:52Z",
       "fontes_urls": [
         "https://g1.globo.com/economia/noticia/2026/11/28/banco-dos-eua-e-fechado-na-maior-quebra-em-mais-de-dois-anos.ghtml"
       ],
+      "resumo_pulso": "Segundo dados da Federal Deposit Insurance Corporation (FDIC) repercutidos pela imprensa, o United Fidelity Bank, sediado em Indiana, foi fechado por reguladores nesta sexta-feira (27). Com US$ 5,9 bilhões em ativos, o caso representa a maior falência bancária registrada nos Estados Unidos em mais de dois anos.",
+      "titulo_curto": "United Fidelity Bank é fechado por reguladores dos EUA na maior quebra bancária em dois anos",
       "palavras_chave": [
         "banco",
         "eua",
@@ -903,16 +1006,26 @@
         "united fidelity bank",
         "economia"
       ],
+      "urgencia_score": 92,
       "data_publicacao": "2026-11-28T06:08:45Z",
+      "impacto_pratico": "Monitoramento de riscos sistêmicos no setor financeiro internacional e possíveis reflexos nos mercados globais.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "G1 Economia",
+        "FDIC"
+      ],
+      "relevancia_score": 90,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "US"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "Economia no Brasil",
           "url_existente": "https://www.rodandoomundo.com.br/economia/brasil",
-          "motivo_conexao": "Contextualiza os impactos de choques e instabilidades financeiras internacionais no cenário doméstico."
+          "motivo_conexao": "Contextualiza os impactos de choques e instabilidades financeiras internacionais no cenário doméstico.",
+          "titulo_existente": "Economia no Brasil"
         }
-      ],
-      "expires_at": "2026-11-29T07:00:52Z",
-      "updated_at": "2026-11-28T07:00:52Z"
+      ]
     },
     {
       "slug": "safernet-estudo-deepfake-escola",
@@ -1645,113 +1758,6 @@
         "US"
       ],
       "links_internos_relacionados": []
-    }
-  ],
-  "temas_curadoria": [
-    {
-      "slug": "opec-mais-mantem-metas-petroleo-incerteza-global",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-30T04:41:49Z",
-      "updated_at": "2026-11-28T04:41:49Z",
-      "titulo_tema": "OPEC+ mantém metas de produção de petróleo em meio a incertezas geopolíticas",
-      "sintese_nerd": "A decisão da OPEC+ de manter inalteradas as metas de produção reflete a cautela dos maiores produtores globais diante de conflitos e instabilidades no Oriente Médio. Essa estagnação direta afeta as cotações internacionais do Brent, impactando a inflação importada e os custos logísticos no Brasil e no mundo.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-28T04:41:49Z",
-      "gatilho_vitrine": "Destacar análises sobre a estabilidade do mercado de energia e os reflexos nos preços dos combustíveis e inflação global.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 92,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia"
-      ],
-      "palavras_chave_busca": [
-        "opec+",
-        "petróleo",
-        "mercado global",
-        "energia",
-        "inflação",
-        "geopolítica"
-      ]
-    },
-    {
-      "slug": "ministerio-da-seguranca-publica-pec-governo",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-30T04:41:49Z",
-      "updated_at": "2026-11-28T04:41:49Z",
-      "titulo_tema": "Aprovação da PEC e criação do Ministério da Segurança Pública no Brasil",
-      "sintese_nerd": "A promulgação da PEC da Segurança Pública e a criação iminente da nova pasta ministerial redesenham a arquitetura de combate ao crime e cooperação federativa no país. Especialistas debatem a eficácia de centralizar diretrizes federais em um tema historicamente descentralizado entre estados.",
-      "rota_editoria": "/politica",
-      "data_publicacao": "2026-11-28T04:41:49Z",
-      "gatilho_vitrine": "Destacar análises sobre a reestruturação institucional da segurança pública e a articulação entre Executivo e Congresso.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 85,
-      "categoria_primaria": "Politica",
-      "categorias_cruzadas": [
-        "Eleicoes"
-      ],
-      "palavras_chave_busca": [
-        "segurança pública",
-        "ministério",
-        "pec",
-        "congresso",
-        "governo federal",
-        "instituições"
-      ]
-    },
-    {
-      "slug": "eleicoes-locais-taiwan-desafios-geopoliticos",
-      "status": "novo",
-      "ttl_horas": 36,
-      "expires_at": "2026-11-29T16:41:49Z",
-      "updated_at": "2026-11-28T04:41:49Z",
-      "titulo_tema": "Eleições locais em Taiwan testam equilíbrio político e tensões com Pequim",
-      "sintese_nerd": "As eleições locais em Taiwan funcionam como um referendo indireto sobre a gestão do Partido Democrático Progressista e a relação tensa com a China Continental. O resultado molda as estratégias diplomáticas globais e afeta cadeias cruciais de suprimentos tecnológicos, como a indústria de semicondutores.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-28T04:12:31Z",
-      "gatilho_vitrine": "Priorizar cobertura sobre as eleições em Taiwan e o termômetro democrático em uma das regiões mais sensíveis do planeta.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 88,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Politica",
-        "Eleicoes"
-      ],
-      "palavras_chave_busca": [
-        "taiwan",
-        "eleições locais",
-        "geopolítica",
-        "china",
-        "democracia",
-        "ásia"
-      ]
-    },
-    {
-      "slug": "safernet-estudo-deepfake-escolas-ia",
-      "status": "novo",
-      "ttl_horas": 72,
-      "expires_at": "2026-12-01T04:41:49Z",
-      "updated_at": "2026-11-28T04:41:49Z",
-      "titulo_tema": "Pesquisa da SaferNet aponta uso de IA por adolescentes na criação de deepfakes",
-      "sintese_nerd": "O levantamento da SaferNet expondo a criação de conteúdos falsos com IA por adolescentes joga luz sobre o vazio regulatório e educacional no uso de novas tecnologias. A pauta exige respostas institucionais do Congresso e debates urgentes sobre a responsabilidade das plataformas e a proteção de minorias e mulheres.",
-      "rota_editoria": "/cultura",
-      "data_publicacao": "2026-11-28T04:12:31Z",
-      "gatilho_vitrine": "Impulsionar debates sobre os desafios éticos da inteligência artificial e a necessidade de regulação e educação digital nas escolas.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 86,
-      "categoria_primaria": "Cultura",
-      "categorias_cruzadas": [
-        "Politica"
-      ],
-      "palavras_chave_busca": [
-        "safernet",
-        "deepfake",
-        "inteligência artificial",
-        "escolas",
-        "regulação digital",
-        "sociedade"
-      ]
     }
   ]
 }
