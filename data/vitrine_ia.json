@@ -2,80 +2,177 @@
   "ok": true,
   "cached": false,
   "source": "snapshot",
-  "updatedAt": "2026-11-28T03:25:49Z",
-  "batch_id": "20261128-0325",
+  "updatedAt": "2026-11-28T04:12:31Z",
+  "batch_id": "20261128-0412",
   "temas_ativos": [
     {
-      "slug": "safernet-estudo-deepfake-escola",
-      "titulo_tema": "Estudo da SaferNet aponta que 1 em cada 8 meninos adolescentes admite criar deepfakes sexuais",
-      "titulo_curto": "Estudo da SaferNet aponta que 1 em cada 8 meninos adolescentes admite criar deepfakes sexuais",
+      "slug": "opec-mais-mantem-producao-petroleo-incerteza-global",
+      "titulo_tema": "OPEC+ mantém metas de produção de petróleo diante de incertezas geopolíticas",
       "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Cultura",
-      "categoria": "Sociedade_Cultura",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
       "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
+        "Economia"
       ],
-      "rota_editoria": "/cultura",
-      "relevancia_score": 90,
-      "urgencia_score": 88,
-      "ttl_horas": 24,
-      "expires_at": "2026-11-29T03:25:49Z",
+      "rota_editoria": "/radar",
+      "relevancia_score": 92,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-30T04:12:31Z",
       "palavras_chave_busca": [
-        "safernet",
-        "deepfake",
-        "inteligência artificial",
-        "escolas",
-        "segurança digital"
+        "opec",
+        "petróleo",
+        "mercado global",
+        "energia",
+        "inflação",
+        "preço dos combustíveis"
       ],
-      "palavras_chave": [
-        "safernet",
-        "deepfake",
-        "inteligência artificial",
-        "escolas",
-        "segurança digital"
-      ],
-      "gatilho_vitrine": "Segundo levantamento divulgado pela ONG SaferNet Brasil e repercutido pelo G1, 12,4% dos meninos adolescentes ouvidos admitem já ter criado pelo menos um deepfake sexual utilizando ferramentas de inteligência artificial. O estudo acende um alerta sobre o uso indevido de tecnologias para assédio contra alunas e professoras.",
-      "resumo_pulso": "Segundo levantamento divulgado pela ONG SaferNet Brasil e repercutido pelo G1, 12,4% dos meninos adolescentes ouvidos admitem já ter criado pelo menos um deepfake sexual utilizando ferramentas de inteligência artificial. O estudo acende um alerta sobre o uso indevido de tecnologias para assédio contra alunas e professoras.",
-      "sintese_nerd": "Evidencia riscos crescentes de crimes virtuais no ambiente escolar e a necessidade de fiscalização e educação digital.",
-      "impacto_pratico": "Evidencia riscos crescentes de crimes virtuais no ambiente escolar e a necessidade de fiscalização e educação digital.",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "veiculos_origem": [
-        "G1 Política"
-      ],
-      "fontes_urls": [
-        "https://g1.globo.com/politica/noticia/2026/11/28/safernet-estudo-deepfake-escola.ghtml"
-      ],
-      "data_publicacao": "2026-11-28T03:00:00Z",
-      "updated_at": "2026-11-28T03:25:49Z"
+      "gatilho_vitrine": "Destaque a decisão da OPEC+ e seus reflexos diretos na inflação global e no custo de energia para os consumidores.",
+      "sintese_nerd": "O cartel petrolífero decidiu congelar as cotas de extração para o início de 2027, priorizando cautela em meio a conflitos no Oriente Médio e tensões de capacidade. Essa estabilidade controlada mitiga choques de oferta imediatos, mas mantém os preços sensíveis às oscilações do câmbio e do dólar para importadores.",
+      "data_publicacao": "2026-11-28T04:12:31Z",
+      "updated_at": "2026-11-28T04:12:31Z"
     },
     {
-      "slug": "brasileira-presa-russia-costura-uniformes",
-      "titulo_tema": "Defesa de atleta brasileira presa na Rússia afirma que ela costura uniformes militares",
-      "titulo_curto": "Defesa de atleta brasileira presa na Rússia afirma que ela costura uniformes militares",
+      "slug": "ataque-drone-russia-refinaria-rostov-impacto-energia",
+      "titulo_tema": "Ataques de drones ucranianos atingem refinaria em Rostov e elevam tensão energética",
       "status": "novo",
-      "origem_pipeline": "pulso",
+      "origem_pipeline": "curadoria",
       "categoria_primaria": "Geopolitica_Radar",
-      "categoria": "Geopolitica_Relacoes",
       "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
+        "Economia"
       ],
       "rota_editoria": "/radar",
       "relevancia_score": 89,
-      "urgencia_score": 87,
+      "ttl_horas": 36,
+      "expires_at": "2026-11-29T16:12:31Z",
+      "palavras_chave_busca": [
+        "rússia",
+        "ucrânia",
+        "refinaria",
+        "energia",
+        "conflito leste europeu",
+        "petróleo russo"
+      ],
+      "gatilho_vitrine": "Conecte os ataques a infraestruturas energéticas na Rússia com a volatilidade dos preços globais de commodities.",
+      "sintese_nerd": "Novas investidas de drones ucranianos contra polos de refino na região russa de Rostov intensificam a pressão sobre a cadeia de suprimentos de combustíveis fósseis na Europa Oriental. Essa escalada tática impõe riscos contínuos à estabilidade dos mercados internacionais de energia.",
+      "data_publicacao": "2026-11-28T04:12:31Z",
+      "updated_at": "2026-11-28T04:12:31Z"
+    },
+    {
+      "slug": "eleicoes-locais-taiwan-geopolitica-asia",
+      "titulo_tema": "Eleições locais em Taiwan testam equilíbrio político e tensões com Pequim",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Eleicoes",
+        "Politica"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 86,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-30T04:12:31Z",
+      "palavras_chave_busca": [
+        "taiwan",
+        "eleições locais",
+        "china",
+        "democracia",
+        "geopolitica",
+        "ásia"
+      ],
+      "gatilho_vitrine": "Mostre a importância das eleições municipais em Taiwan para o cenário de segurança tecnológica e diplomacia global.",
+      "sintese_nerd": "O pleito municipal em Taipei e outras regiões serve como termômetro crucial para a força do partido governista frente à oposição, num momento de alta vigilância regional. O resultado molda o tom das relações com a China e influencia diretamente a cadeia global de semicondutores.",
+      "data_publicacao": "2026-11-28T04:12:31Z",
+      "updated_at": "2026-11-28T04:12:31Z"
+    },
+    {
+      "slug": "safernet-estudo-deepfake-escolas-ia",
+      "titulo_tema": "Estudo da SaferNet revela avanço de deepfakes sexuais criados por adolescentes",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Cultura",
+      "categorias_cruzadas": [
+        "Politica"
+      ],
+      "rota_editoria": "/cultura",
+      "relevancia_score": 85,
+      "ttl_horas": 72,
+      "expires_at": "2026-12-01T04:12:31Z",
+      "palavras_chave_busca": [
+        "deepfake",
+        "inteligência artificial",
+        "safernet",
+        "escolas",
+        "segurança digital",
+        "regulação"
+      ],
+      "gatilho_vitrine": "Exponha o debate urgente sobre o uso antiético de inteligência artificial nas escolas e a necessidade de regulação digital.",
+      "sintese_nerd": "O levantamento inédito apontando que uma parcela significativa de meninos adolescentes recorre a ferramentas de IA para gerar conteúdos falsos expõe uma lacuna grave de letramento digital e salvaguardas legais. O fenômeno pressiona legisladores e educadores a adotarem medidas punitivas e preventivas no ambiente escolar.",
+      "data_publicacao": "2026-11-28T04:12:31Z",
+      "updated_at": "2026-11-28T04:12:31Z"
+    },
+    {
+      "slug": "safernet-estudo-deepfake-escola",
+      "status": "novo",
+      "categoria": "Sociedade_Cultura",
       "ttl_horas": 24,
       "expires_at": "2026-11-29T03:25:49Z",
-      "palavras_chave_busca": [
-        "letícia villar",
-        "rússia",
-        "prisão",
-        "rússia-ucrânia",
-        "itamaraty"
+      "updated_at": "2026-11-28T03:25:49Z",
+      "fontes_urls": [
+        "https://g1.globo.com/politica/noticia/2026/11/28/safernet-estudo-deepfake-escola.ghtml"
       ],
+      "titulo_tema": "Estudo da SaferNet aponta que 1 em cada 8 meninos adolescentes admite criar deepfakes sexuais",
+      "resumo_pulso": "Segundo levantamento divulgado pela ONG SaferNet Brasil e repercutido pelo G1, 12,4% dos meninos adolescentes ouvidos admitem já ter criado pelo menos um deepfake sexual utilizando ferramentas de inteligência artificial. O estudo acende um alerta sobre o uso indevido de tecnologias para assédio contra alunas e professoras.",
+      "sintese_nerd": "Evidencia riscos crescentes de crimes virtuais no ambiente escolar e a necessidade de fiscalização e educação digital.",
+      "titulo_curto": "Estudo da SaferNet aponta que 1 em cada 8 meninos adolescentes admite criar deepfakes sexuais",
+      "rota_editoria": "/cultura",
+      "palavras_chave": [
+        "safernet",
+        "deepfake",
+        "inteligência artificial",
+        "escolas",
+        "segurança digital"
+      ],
+      "urgencia_score": 88,
+      "data_publicacao": "2026-11-28T03:00:00Z",
+      "gatilho_vitrine": "Segundo levantamento divulgado pela ONG SaferNet Brasil e repercutido pelo G1, 12,4% dos meninos adolescentes ouvidos admitem já ter criado pelo menos um deepfake sexual utilizando ferramentas de inteligência artificial. O estudo acende um alerta sobre o uso indevido de tecnologias para assédio contra alunas e professoras.",
+      "impacto_pratico": "Evidencia riscos crescentes de crimes virtuais no ambiente escolar e a necessidade de fiscalização e educação digital.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "G1 Política"
+      ],
+      "relevancia_score": 90,
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "categoria_primaria": "Cultura",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "safernet",
+        "deepfake",
+        "inteligência artificial",
+        "escolas",
+        "segurança digital"
+      ]
+    },
+    {
+      "slug": "brasileira-presa-russia-costura-uniformes",
+      "status": "novo",
+      "categoria": "Geopolitica_Relacoes",
+      "ttl_horas": 24,
+      "expires_at": "2026-11-29T03:25:49Z",
+      "updated_at": "2026-11-28T03:25:49Z",
+      "fontes_urls": [
+        "https://g1.globo.com/mundo/noticia/2026/11/28/brasileira-presa-na-russia-costura-uniformes-para-soldados-lutarem-na-ucrania-diz-defesa.ghtml",
+        "https://www.poder360.com.br/poder-internacional/atleta-brasileira-presa-na-russia-pede-ajuda-em-carta-enviada-a-lula/"
+      ],
+      "titulo_tema": "Defesa de atleta brasileira presa na Rússia afirma que ela costura uniformes militares",
+      "resumo_pulso": "Segundo informações do G1 Mundo e do Poder360 com base em cartas e relatos da defesa, a jogadora brasileira de futebol de areia Letícia Villar, presa na Rússia há mais de um ano, cumpre rotina intensa em colônia penal costurando uniformes destinados a soldados russos. O caso gerou novos apelos diplomáticos por intervenção do governo brasileiro.",
+      "sintese_nerd": "Aumenta a pressão diplomática sobre o Itamaraty em relação à situação de cidadãos brasileiros detidos no exterior.",
+      "titulo_curto": "Defesa de atleta brasileira presa na Rússia afirma que ela costura uniformes militares",
+      "rota_editoria": "/radar",
       "palavras_chave": [
         "letícia villar",
         "rússia",
@@ -83,149 +180,77 @@
         "rússia-ucrânia",
         "itamaraty"
       ],
+      "urgencia_score": 87,
+      "data_publicacao": "2026-11-28T03:00:00Z",
       "gatilho_vitrine": "Segundo informações do G1 Mundo e do Poder360 com base em cartas e relatos da defesa, a jogadora brasileira de futebol de areia Letícia Villar, presa na Rússia há mais de um ano, cumpre rotina intensa em colônia penal costurando uniformes destinados a soldados russos. O caso gerou novos apelos diplomáticos por intervenção do governo brasileiro.",
-      "resumo_pulso": "Segundo informações do G1 Mundo e do Poder360 com base em cartas e relatos da defesa, a jogadora brasileira de futebol de areia Letícia Villar, presa na Rússia há mais de um ano, cumpre rotina intensa em colônia penal costurando uniformes destinados a soldados russos. O caso gerou novos apelos diplomáticos por intervenção do governo brasileiro.",
-      "sintese_nerd": "Aumenta a pressão diplomática sobre o Itamaraty em relação à situação de cidadãos brasileiros detidos no exterior.",
       "impacto_pratico": "Aumenta a pressão diplomática sobre o Itamaraty em relação à situação de cidadãos brasileiros detidos no exterior.",
+      "origem_pipeline": "pulso",
+      "veiculos_origem": [
+        "G1 Mundo",
+        "Poder360"
+      ],
+      "relevancia_score": 89,
       "paises_envolvidos": [
         "BR",
         "RU",
         "UA"
       ],
-      "veiculos_origem": [
-        "G1 Mundo",
-        "Poder360"
-      ],
-      "fontes_urls": [
-        "https://g1.globo.com/mundo/noticia/2026/11/28/brasileira-presa-na-russia-costura-uniformes-para-soldados-lutarem-na-ucrania-diz-defesa.ghtml",
-        "https://www.poder360.com.br/poder-internacional/atleta-brasileira-presa-na-russia-pede-ajuda-em-carta-enviada-a-lula/"
-      ],
-      "data_publicacao": "2026-11-28T03:00:00Z",
-      "updated_at": "2026-11-28T03:25:49Z"
-    },
-    {
-      "slug": "congresso-aprova-regras-compartilhamento-postes",
-      "titulo_tema": "Congresso aprova novas regras e prazo para regularização de fios clandestinos em postes",
-      "titulo_curto": "Congresso aprova novas regras e prazo para regularização de fios clandestinos em postes",
-      "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Cultura",
-      "categoria": "Sociedade_Cultura",
+      "categoria_primaria": "Geopolitica_Radar",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
       ],
-      "rota_editoria": "/cultura",
-      "relevancia_score": 87,
-      "urgencia_score": 85,
+      "palavras_chave_busca": [
+        "letícia villar",
+        "rússia",
+        "prisão",
+        "rússia-ucrânia",
+        "itamaraty"
+      ]
+    },
+    {
+      "slug": "congresso-aprova-regras-compartilhamento-postes",
+      "status": "novo",
+      "categoria": "Sociedade_Cultura",
       "ttl_horas": 24,
       "expires_at": "2026-11-29T03:25:49Z",
-      "palavras_chave_busca": [
-        "congresso nacional",
-        "postes",
-        "fios clandestinos",
-        "energia elétrica"
+      "updated_at": "2026-11-28T03:25:49Z",
+      "fontes_urls": [
+        "https://g1.globo.com/politica/noticia/2026/11/28/fios-clandestinos-terao-prazo-para-ser-regularizados-entenda-regras-aprovadas-pelo-congresso-sobre-compartilhamento-de-postes.ghtml"
       ],
+      "titulo_tema": "Congresso aprova novas regras e prazo para regularização de fios clandestinos em postes",
+      "resumo_pulso": "Conforme reportagem do G1 Política, o Congresso Nacional concluiu a votação de projeto que estabelece normas de fiscalização e prazos para a regularização de instalações e fios clandestinos em postes de energia elétrica. A medida visa organizar a infraestrutura que abrange mais de 53 milhões de pontos em todo o país.",
+      "sintese_nerd": "Traz novas obrigações para operadoras de telecomunicações e distribuidoras de energia quanto à segurança urbana.",
+      "titulo_curto": "Congresso aprova novas regras e prazo para regularização de fios clandestinos em postes",
+      "rota_editoria": "/cultura",
       "palavras_chave": [
         "congresso nacional",
         "postes",
         "fios clandestinos",
         "energia elétrica"
       ],
+      "urgencia_score": 85,
+      "data_publicacao": "2026-11-28T03:00:00Z",
       "gatilho_vitrine": "Conforme reportagem do G1 Política, o Congresso Nacional concluiu a votação de projeto que estabelece normas de fiscalização e prazos para a regularização de instalações e fios clandestinos em postes de energia elétrica. A medida visa organizar a infraestrutura que abrange mais de 53 milhões de pontos em todo o país.",
-      "resumo_pulso": "Conforme reportagem do G1 Política, o Congresso Nacional concluiu a votação de projeto que estabelece normas de fiscalização e prazos para a regularização de instalações e fios clandestinos em postes de energia elétrica. A medida visa organizar a infraestrutura que abrange mais de 53 milhões de pontos em todo o país.",
-      "sintese_nerd": "Traz novas obrigações para operadoras de telecomunicações e distribuidoras de energia quanto à segurança urbana.",
       "impacto_pratico": "Traz novas obrigações para operadoras de telecomunicações e distribuidoras de energia quanto à segurança urbana.",
-      "paises_envolvidos": [
-        "BR"
-      ],
+      "origem_pipeline": "pulso",
       "veiculos_origem": [
         "G1 Política"
       ],
-      "fontes_urls": [
-        "https://g1.globo.com/politica/noticia/2026/11/28/fios-clandestinos-terao-prazo-para-ser-regularizados-entenda-regras-aprovadas-pelo-congresso-sobre-compartilhamento-de-postes.ghtml"
+      "relevancia_score": 87,
+      "paises_envolvidos": [
+        "BR"
       ],
-      "data_publicacao": "2026-11-28T03:00:00Z",
-      "updated_at": "2026-11-28T03:25:49Z"
-    },
-    {
-      "slug": "tensao-no-oriente-medio-opec-producao-petroleo",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-30T01:58:57Z",
-      "updated_at": "2026-11-28T01:58:57Z",
-      "titulo_tema": "OPEP+ mantém metas de petróleo diante de incertezas na guerra com o Irã",
-      "sintese_nerd": "O cartel da OPEP+ decidiu manter estaveis as cotas de producao de petroleo para o inicio de 2027, navegando por incertezas extremas decorrentes do conflito envolvendo o Ira e bloqueios maritimos americanos. A instabilidade energetica pressiona as cadeias globais de suprimento, elevando o risco de volatilidade nos precos dos combustíveis e impactando indiretamente a pressao inflacionaria sentida pelo consumidor brasileiro.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-28T01:58:57Z",
-      "gatilho_vitrine": "Destaque a conexao entre a escalada de tensoes militares no Oriente Medio, a decisao da OPEP+ sobre a oferta de petroleo e os reflexos inflacionarios no mercado global e brasileiro.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 94,
-      "categoria_primaria": "Geopolitica_Radar",
+      "categoria_primaria": "Cultura",
       "categorias_cruzadas": [
         "Economia",
         "Resumo_Ultimas"
       ],
       "palavras_chave_busca": [
-        "opep+",
-        "petroleo",
-        "guerra do ira",
-        "mercado energetico",
-        "inflacao global",
-        "precos dos combustiveis"
-      ]
-    },
-    {
-      "slug": "eleicao-taiwan-energia-nuclear-inteligencia-artificial",
-      "status": "novo",
-      "ttl_horas": 72,
-      "expires_at": "2026-12-01T01:58:57Z",
-      "updated_at": "2026-11-28T01:58:57Z",
-      "titulo_tema": "Referendo em Taiwan sobre energia nuclear e seu impacto estratégico na cadeia de IA",
-      "sintese_nerd": "Os eleitores de Taiwan decidem sobre o retorno da energia nuclear para suprir as necessidades de sua infraestrutura crítica, um fator essencial para a fabricação global de chips avançados. Como a ilha é o coração da produção mundial de semicondutores para Inteligência Artificial, sua segurança energética afeta diretamente a cadeia tecnológica global e a economia digital.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-28T01:58:57Z",
-      "gatilho_vitrine": "Conecte o pleito sobre a revogação da política de abandono nuclear em Taiwan com a demanda massiva por eletricidade da indústria global de semicondutores e chips de IA.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 90,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Cultura"
-      ],
-      "palavras_chave_busca": [
-        "taiwan",
-        "energia nuclear",
-        "semicondutores",
-        "inteligencia artificial",
-        "geopolitica tecnologica",
-        "seguranca energetica"
-      ]
-    },
-    {
-      "slug": "caso-master-stf-fachin-brb-lavagem-dinheiro-arte",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-30T01:58:57Z",
-      "updated_at": "2026-11-28T01:58:57Z",
-      "titulo_tema": "Decisões do STF no Caso Master revelam brechas na lavagem de dinheiro via obras de arte e crédito",
-      "sintese_nerd": "As movimentações jurídicas no Supremo Tribunal Federal sobre os créditos do grupo Master e o envolvimento de ativos bilionários, como pinturas de grandes mestres, escancaram as vulnerabilidades regulatórias na prevenção à lavagem de dinheiro no setor financeiro e no mercado de arte. A controvérsia jurídica afeta a liquidez e a governança de instituições financeiras públicas envolvidas nas operações.",
-      "rota_editoria": "/politica",
-      "data_publicacao": "2026-11-28T01:58:57Z",
-      "gatilho_vitrine": "Reúna as atualizações sobre as liberações de repasses financeiros pelo STF e as investigações envolvendo ativos de alto luxo como obras de arte no esquema do grupo Master.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 86,
-      "categoria_primaria": "Politica",
-      "categorias_cruzadas": [
-        "Economia"
-      ],
-      "palavras_chave_busca": [
-        "caso master",
-        "stf",
-        "brb",
-        "lavagem de dinheiro",
-        "obras de arte",
-        "mercado financeiro"
+        "congresso nacional",
+        "postes",
+        "fios clandestinos",
+        "energia elétrica"
       ]
     },
     {
@@ -279,28 +304,20 @@
     },
     {
       "slug": "fachin-libera-repasse-master-brb",
-      "titulo_tema": "Ministro Edson Fachin libera repasse de R$ 316,4 milhões do banco Master para o BRB",
-      "titulo_curto": "Ministro Edson Fachin libera repasse de R$ 316,4 milhões do banco Master para o BRB",
       "status": "novo",
-      "origem_pipeline": "pulso",
-      "categoria_primaria": "Economia",
       "categoria": "Economia_Comercio",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "rota_editoria": "/economia",
-      "relevancia_score": 91,
-      "urgencia_score": 90,
       "ttl_horas": 24,
       "expires_at": "2026-11-29T00:59:39Z",
-      "palavras_chave_busca": [
-        "edson fachin",
-        "banco master",
-        "brb",
-        "stf",
-        "crédito"
+      "updated_at": "2026-11-28T03:25:49Z",
+      "fontes_urls": [
+        "https://www.poder360.com.br/poder-justica/fachin-libera-r-316-milhoes-do-master-ao-brb/",
+        "https://www.jota.info/stf/do-supremo/fachin-libera-o-repasse-de-r-3164-milhoes-do-master-para-o-brb"
       ],
+      "titulo_tema": "Ministro Edson Fachin libera repasse de R$ 316,4 milhões do banco Master para o BRB",
+      "resumo_pulso": "Segundo apuração do Poder360 e do JOTA, o ministro do STF Edson Fachin autorizou a retomada dos repasses de carteiras de crédito de R$ 316,4 milhões do liquidado banco Master para o Banco de Brasília (BRB). A decisão mantém bloqueados apenas os valores referentes a créditos controversos comercializados simultaneamente com mais de uma instituição financeira.",
+      "sintese_nerd": "Afeta diretamente a liquidação e o fluxo financeiro entre instituições bancárias envolvidas no caso.",
+      "titulo_curto": "Ministro Edson Fachin libera repasse de R$ 316,4 milhões do banco Master para o BRB",
+      "rota_editoria": "/economia",
       "palavras_chave": [
         "edson fachin",
         "banco master",
@@ -308,23 +325,31 @@
         "stf",
         "crédito"
       ],
+      "urgencia_score": 90,
+      "data_publicacao": "2026-11-28T00:55:28Z",
       "gatilho_vitrine": "Segundo apuração do Poder360 e do JOTA, o ministro do STF Edson Fachin autorizou a retomada dos repasses de carteiras de crédito de R$ 316,4 milhões do liquidado banco Master para o Banco de Brasília (BRB). A decisão mantém bloqueados apenas os valores referentes a créditos controversos comercializados simultaneamente com mais de uma instituição financeira.",
-      "resumo_pulso": "Segundo apuração do Poder360 e do JOTA, o ministro do STF Edson Fachin autorizou a retomada dos repasses de carteiras de crédito de R$ 316,4 milhões do liquidado banco Master para o Banco de Brasília (BRB). A decisão mantém bloqueados apenas os valores referentes a créditos controversos comercializados simultaneamente com mais de uma instituição financeira.",
-      "sintese_nerd": "Afeta diretamente a liquidação e o fluxo financeiro entre instituições bancárias envolvidas no caso.",
       "impacto_pratico": "Afeta diretamente a liquidação e o fluxo financeiro entre instituições bancárias envolvidas no caso.",
-      "paises_envolvidos": [
-        "BR"
-      ],
+      "origem_pipeline": "pulso",
       "veiculos_origem": [
         "Poder360",
         "JOTA Info"
       ],
-      "fontes_urls": [
-        "https://www.poder360.com.br/poder-justica/fachin-libera-r-316-milhoes-do-master-ao-brb/",
-        "https://www.jota.info/stf/do-supremo/fachin-libera-o-repasse-de-r-3164-milhoes-do-master-para-o-brb"
+      "relevancia_score": 91,
+      "paises_envolvidos": [
+        "BR"
       ],
-      "data_publicacao": "2026-11-28T00:55:28Z",
-      "updated_at": "2026-11-28T03:25:49Z"
+      "categoria_primaria": "Economia",
+      "categorias_cruzadas": [
+        "Economia",
+        "Resumo_Ultimas"
+      ],
+      "palavras_chave_busca": [
+        "edson fachin",
+        "banco master",
+        "brb",
+        "stf",
+        "crédito"
+      ]
     },
     {
       "slug": "nova-variante-covid-19-brasil",
@@ -843,74 +868,127 @@
         "inovação",
         "pesquisa"
       ]
+    }
+  ],
+  "temas_curadoria": [
+    {
+      "slug": "opec-mais-mantem-producao-petroleo-incerteza-global",
+      "titulo_tema": "OPEC+ mantém metas de produção de petróleo diante de incertezas geopolíticas",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 92,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-30T04:12:31Z",
+      "palavras_chave_busca": [
+        "opec",
+        "petróleo",
+        "mercado global",
+        "energia",
+        "inflação",
+        "preço dos combustíveis"
+      ],
+      "gatilho_vitrine": "Destaque a decisão da OPEC+ e seus reflexos diretos na inflação global e no custo de energia para os consumidores.",
+      "sintese_nerd": "O cartel petrolífero decidiu congelar as cotas de extração para o início de 2027, priorizando cautela em meio a conflitos no Oriente Médio e tensões de capacidade. Essa estabilidade controlada mitiga choques de oferta imediatos, mas mantém os preços sensíveis às oscilações do câmbio e do dólar para importadores.",
+      "data_publicacao": "2026-11-28T04:12:31Z",
+      "updated_at": "2026-11-28T04:12:31Z"
     },
     {
-      "slug": "senado-aprova-plano-nacional-cultura",
+      "slug": "ataque-drone-russia-refinaria-rostov-impacto-energia",
+      "titulo_tema": "Ataques de drones ucranianos atingem refinaria em Rostov e elevam tensão energética",
       "status": "novo",
-      "categoria": "Sociedade_Cultura",
-      "ttl_horas": 24,
-      "expires_at": "2026-11-28T20:50:52Z",
-      "updated_at": "2026-11-27T20:50:52Z",
-      "fontes_urls": [
-        "https://www12.senado.leg.br/noticias/videos/2026/11/senado-aprova-plano-nacional-de-cultura-para-proxima-decada"
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Economia"
       ],
-      "titulo_tema": "Senado aprova novo Plano Nacional de Cultura para orientar diretrizes da próxima década",
-      "resumo_pulso": "Segundo apuração da Agência Senado, o Plenário aprovou o novo Plano Nacional de Cultura (PNC), que estabelecerá diretrizes, metas e indicadores para as políticas culturais do país nos próximos dez anos, preenchendo uma lacuna de dois anos sem planejamento central vigente.",
-      "sintese_nerd": "Direcionamento de recursos e programas culturais federais, estaduais e municipais até a próxima década.",
-      "titulo_curto": "Senado aprova novo Plano Nacional de Cultura para orientar diretrizes da próxima década",
-      "rota_editoria": "/cultura",
-      "palavras_chave": [
-        "senado",
-        "plano nacional de cultura",
-        "cultura",
-        "políticas públicas"
-      ],
-      "urgencia_score": 88,
-      "data_publicacao": "2026-11-27T20:39:50Z",
-      "gatilho_vitrine": "Segundo apuração da Agência Senado, o Plenário aprovou o novo Plano Nacional de Cultura (PNC), que estabelecerá diretrizes, metas e indicadores para as políticas culturais do país nos próximos dez anos, preenchendo uma lacuna de dois anos sem planejamento central vigente.",
-      "impacto_pratico": "Direcionamento de recursos e programas culturais federais, estaduais e municipais até a próxima década.",
-      "origem_pipeline": "pulso",
-      "veiculos_origem": [
-        "Agência Senado"
-      ],
+      "rota_editoria": "/radar",
       "relevancia_score": 89,
-      "paises_envolvidos": [
-        "BR"
+      "ttl_horas": 36,
+      "expires_at": "2026-11-29T16:12:31Z",
+      "palavras_chave_busca": [
+        "rússia",
+        "ucrânia",
+        "refinaria",
+        "energia",
+        "conflito leste europeu",
+        "petróleo russo"
       ],
+      "gatilho_vitrine": "Conecte os ataques a infraestruturas energéticas na Rússia com a volatilidade dos preços globais de commodities.",
+      "sintese_nerd": "Novas investidas de drones ucranianos contra polos de refino na região russa de Rostov intensificam a pressão sobre a cadeia de suprimentos de combustíveis fósseis na Europa Oriental. Essa escalada tática impõe riscos contínuos à estabilidade dos mercados internacionais de energia.",
+      "data_publicacao": "2026-11-28T04:12:31Z",
+      "updated_at": "2026-11-28T04:12:31Z"
+    },
+    {
+      "slug": "eleicoes-locais-taiwan-geopolitica-asia",
+      "titulo_tema": "Eleições locais em Taiwan testam equilíbrio político e tensões com Pequim",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
+      "categoria_primaria": "Geopolitica_Radar",
+      "categorias_cruzadas": [
+        "Eleicoes",
+        "Politica"
+      ],
+      "rota_editoria": "/radar",
+      "relevancia_score": 86,
+      "ttl_horas": 48,
+      "expires_at": "2026-11-30T04:12:31Z",
+      "palavras_chave_busca": [
+        "taiwan",
+        "eleições locais",
+        "china",
+        "democracia",
+        "geopolitica",
+        "ásia"
+      ],
+      "gatilho_vitrine": "Mostre a importância das eleições municipais em Taiwan para o cenário de segurança tecnológica e diplomacia global.",
+      "sintese_nerd": "O pleito municipal em Taipei e outras regiões serve como termômetro crucial para a força do partido governista frente à oposição, num momento de alta vigilância regional. O resultado molda o tom das relações com a China e influencia diretamente a cadeia global de semicondutores.",
+      "data_publicacao": "2026-11-28T04:12:31Z",
+      "updated_at": "2026-11-28T04:12:31Z"
+    },
+    {
+      "slug": "safernet-estudo-deepfake-escolas-ia",
+      "titulo_tema": "Estudo da SaferNet revela avanço de deepfakes sexuais criados por adolescentes",
+      "status": "novo",
+      "origem_pipeline": "curadoria",
       "categoria_primaria": "Cultura",
       "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
+        "Politica"
       ],
+      "rota_editoria": "/cultura",
+      "relevancia_score": 85,
+      "ttl_horas": 72,
+      "expires_at": "2026-12-01T04:12:31Z",
       "palavras_chave_busca": [
-        "senado",
-        "plano nacional de cultura",
-        "cultura",
-        "políticas públicas"
-      ]
+        "deepfake",
+        "inteligência artificial",
+        "safernet",
+        "escolas",
+        "segurança digital",
+        "regulação"
+      ],
+      "gatilho_vitrine": "Exponha o debate urgente sobre o uso antiético de inteligência artificial nas escolas e a necessidade de regulação digital.",
+      "sintese_nerd": "O levantamento inédito apontando que uma parcela significativa de meninos adolescentes recorre a ferramentas de IA para gerar conteúdos falsos expõe uma lacuna grave de letramento digital e salvaguardas legais. O fenômeno pressiona legisladores e educadores a adotarem medidas punitivas e preventivas no ambiente escolar.",
+      "data_publicacao": "2026-11-28T04:12:31Z",
+      "updated_at": "2026-11-28T04:12:31Z"
     }
   ],
   "noticias_quentes": [
     {
       "slug": "safernet-estudo-deepfake-escola",
-      "titulo_curto": "Estudo da SaferNet aponta que 1 em cada 8 meninos adolescentes admite criar deepfakes sexuais",
-      "resumo_pulso": "Segundo levantamento divulgado pela ONG SaferNet Brasil e repercutido pelo G1, 12,4% dos meninos adolescentes ouvidos admitem já ter criado pelo menos um deepfake sexual utilizando ferramentas de inteligência artificial. O estudo acende um alerta sobre o uso indevido de tecnologias para assédio contra alunas e professoras.",
-      "impacto_pratico": "Evidencia riscos crescentes de crimes virtuais no ambiente escolar e a necessidade de fiscalização e educação digital.",
       "categoria": "Sociedade_Cultura",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "urgencia_score": 88,
-      "relevancia_score": 90,
-      "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 12,
-      "veiculos_origem": [
-        "G1 Política"
-      ],
+      "expires_at": "2026-11-29T03:25:49Z",
+      "updated_at": "2026-11-28T03:25:49Z",
       "fontes_urls": [
         "https://g1.globo.com/politica/noticia/2026/11/28/safernet-estudo-deepfake-escola.ghtml"
       ],
+      "resumo_pulso": "Segundo levantamento divulgado pela ONG SaferNet Brasil e repercutido pelo G1, 12,4% dos meninos adolescentes ouvidos admitem já ter criado pelo menos um deepfake sexual utilizando ferramentas de inteligência artificial. O estudo acende um alerta sobre o uso indevido de tecnologias para assédio contra alunas e professoras.",
+      "titulo_curto": "Estudo da SaferNet aponta que 1 em cada 8 meninos adolescentes admite criar deepfakes sexuais",
       "palavras_chave": [
         "SaferNet",
         "deepfake",
@@ -918,35 +996,32 @@
         "escolas",
         "segurança digital"
       ],
+      "urgencia_score": 88,
       "data_publicacao": "2026-11-28T03:00:00Z",
-      "links_internos_relacionados": [],
-      "expires_at": "2026-11-29T03:25:49Z",
-      "updated_at": "2026-11-28T03:25:49Z"
+      "impacto_pratico": "Evidencia riscos crescentes de crimes virtuais no ambiente escolar e a necessidade de fiscalização e educação digital.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "G1 Política"
+      ],
+      "relevancia_score": 90,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "links_internos_relacionados": []
     },
     {
       "slug": "brasileira-presa-russia-costura-uniformes",
-      "titulo_curto": "Defesa de atleta brasileira presa na Rússia afirma que ela costura uniformes militares",
-      "resumo_pulso": "Segundo informações do G1 Mundo e do Poder360 com base em cartas e relatos da defesa, a jogadora brasileira de futebol de areia Letícia Villar, presa na Rússia há mais de um ano, cumpre rotina intensa em colônia penal costurando uniformes destinados a soldados russos. O caso gerou novos apelos diplomáticos por intervenção do governo brasileiro.",
-      "impacto_pratico": "Aumenta a pressão diplomática sobre o Itamaraty em relação à situação de cidadãos brasileiros detidos no exterior.",
       "categoria": "Geopolitica_Relacoes",
-      "paises_envolvidos": [
-        "BR",
-        "RU",
-        "UA"
-      ],
-      "urgencia_score": 87,
-      "relevancia_score": 89,
-      "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 12,
-      "veiculos_origem": [
-        "G1 Mundo",
-        "Poder360"
-      ],
+      "expires_at": "2026-11-29T03:25:49Z",
+      "updated_at": "2026-11-28T03:25:49Z",
       "fontes_urls": [
         "https://g1.globo.com/mundo/noticia/2026/11/28/brasileira-presa-na-russia-costura-uniformes-para-soldados-lutarem-na-ucrania-diz-defesa.ghtml",
         "https://www.poder360.com.br/poder-internacional/atleta-brasileira-presa-na-russia-pede-ajuda-em-carta-enviada-a-lula/"
       ],
+      "resumo_pulso": "Segundo informações do G1 Mundo e do Poder360 com base em cartas e relatos da defesa, a jogadora brasileira de futebol de areia Letícia Villar, presa na Rússia há mais de um ano, cumpre rotina intensa em colônia penal costurando uniformes destinados a soldados russos. O caso gerou novos apelos diplomáticos por intervenção do governo brasileiro.",
+      "titulo_curto": "Defesa de atleta brasileira presa na Rússia afirma que ela costura uniformes militares",
       "palavras_chave": [
         "Letícia Villar",
         "Rússia",
@@ -954,47 +1029,59 @@
         "Rússia-Ucrânia",
         "Itamaraty"
       ],
+      "urgencia_score": 87,
       "data_publicacao": "2026-11-28T03:00:00Z",
+      "impacto_pratico": "Aumenta a pressão diplomática sobre o Itamaraty em relação à situação de cidadãos brasileiros detidos no exterior.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "G1 Mundo",
+        "Poder360"
+      ],
+      "relevancia_score": 89,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "BR",
+        "RU",
+        "UA"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "O que é uma sanção internacional?",
           "url_existente": "https://www.rodandoomundo.com.br/entenda/o-que-e-sancao-internacional",
-          "motivo_conexao": "Explica o contexto geopolítico e de restrições envolvendo a Rússia e relações consulares."
+          "motivo_conexao": "Explica o contexto geopolítico e de restrições envolvendo a Rússia e relações consulares.",
+          "titulo_existente": "O que é uma sanção internacional?"
         }
-      ],
-      "expires_at": "2026-11-29T03:25:49Z",
-      "updated_at": "2026-11-28T03:25:49Z"
+      ]
     },
     {
       "slug": "congresso-aprova-regras-compartilhamento-postes",
-      "titulo_curto": "Congresso aprova novas regras e prazo para regularização de fios clandestinos em postes",
-      "resumo_pulso": "Conforme reportagem do G1 Política, o Congresso Nacional concluiu a votação de projeto que estabelece normas de fiscalização e prazos para a regularização de instalações e fios clandestinos em postes de energia elétrica. A medida visa organizar a infraestrutura que abrange mais de 53 milhões de pontos em todo o país.",
-      "impacto_pratico": "Traz novas obrigações para operadoras de telecomunicações e distribuidoras de energia quanto à segurança urbana.",
       "categoria": "Sociedade_Cultura",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "urgencia_score": 85,
-      "relevancia_score": 87,
-      "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 8,
-      "veiculos_origem": [
-        "G1 Política"
-      ],
+      "expires_at": "2026-11-29T03:25:49Z",
+      "updated_at": "2026-11-28T03:25:49Z",
       "fontes_urls": [
         "https://g1.globo.com/politica/noticia/2026/11/28/fios-clandestinos-terao-prazo-para-ser-regularizados-entenda-regras-aprovadas-pelo-congresso-sobre-compartilhamento-de-postes.ghtml"
       ],
+      "resumo_pulso": "Conforme reportagem do G1 Política, o Congresso Nacional concluiu a votação de projeto que estabelece normas de fiscalização e prazos para a regularização de instalações e fios clandestinos em postes de energia elétrica. A medida visa organizar a infraestrutura que abrange mais de 53 milhões de pontos em todo o país.",
+      "titulo_curto": "Congresso aprova novas regras e prazo para regularização de fios clandestinos em postes",
       "palavras_chave": [
         "Congresso Nacional",
         "postes",
         "fios clandestinos",
         "energia elétrica"
       ],
+      "urgencia_score": 85,
       "data_publicacao": "2026-11-28T03:00:00Z",
-      "links_internos_relacionados": [],
-      "expires_at": "2026-11-29T03:25:49Z",
-      "updated_at": "2026-11-28T03:25:49Z"
+      "impacto_pratico": "Traz novas obrigações para operadoras de telecomunicações e distribuidoras de energia quanto à segurança urbana.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "G1 Política"
+      ],
+      "relevancia_score": 87,
+      "horas_em_destaque": 8,
+      "paises_envolvidos": [
+        "BR"
+      ],
+      "links_internos_relacionados": []
     },
     {
       "slug": "opec-manutencao-producao-petroleo-2027",
@@ -1038,26 +1125,16 @@
     },
     {
       "slug": "fachin-libera-repasse-master-brb",
-      "titulo_curto": "Ministro Edson Fachin libera repasse de R$ 316,4 milhões do banco Master para o BRB",
-      "resumo_pulso": "Segundo apuração do Poder360 e do JOTA, o ministro do STF Edson Fachin autorizou a retomada dos repasses de carteiras de crédito de R$ 316,4 milhões do liquidado banco Master para o Banco de Brasília (BRB). A decisão mantém bloqueados apenas os valores referentes a créditos controversos comercializados simultaneamente com mais de uma instituição financeira.",
-      "impacto_pratico": "Afeta diretamente a liquidação e o fluxo financeiro entre instituições bancárias envolvidas no caso.",
       "categoria": "Economia_Comercio",
-      "paises_envolvidos": [
-        "BR"
-      ],
-      "urgencia_score": 90,
-      "relevancia_score": 91,
-      "nivel_confianca": "alta",
       "ttl_horas": 24,
-      "horas_em_destaque": 12,
-      "veiculos_origem": [
-        "Poder360",
-        "JOTA Info"
-      ],
+      "expires_at": "2026-11-29T00:59:39Z",
+      "updated_at": "2026-11-28T03:25:49Z",
       "fontes_urls": [
         "https://www.poder360.com.br/poder-justica/fachin-libera-r-316-milhoes-do-master-ao-brb/",
         "https://www.jota.info/stf/do-supremo/fachin-libera-o-repasse-de-r-3164-milhoes-do-master-para-o-brb"
       ],
+      "resumo_pulso": "Segundo apuração do Poder360 e do JOTA, o ministro do STF Edson Fachin autorizou a retomada dos repasses de carteiras de crédito de R$ 316,4 milhões do liquidado banco Master para o Banco de Brasília (BRB). A decisão mantém bloqueados apenas os valores referentes a créditos controversos comercializados simultaneamente com mais de uma instituição financeira.",
+      "titulo_curto": "Ministro Edson Fachin libera repasse de R$ 316,4 milhões do banco Master para o BRB",
       "palavras_chave": [
         "Edson Fachin",
         "Banco Master",
@@ -1065,16 +1142,26 @@
         "STF",
         "crédito"
       ],
+      "urgencia_score": 90,
       "data_publicacao": "2026-11-28T00:55:28Z",
+      "impacto_pratico": "Afeta diretamente a liquidação e o fluxo financeiro entre instituições bancárias envolvidas no caso.",
+      "nivel_confianca": "alta",
+      "veiculos_origem": [
+        "Poder360",
+        "JOTA Info"
+      ],
+      "relevancia_score": 91,
+      "horas_em_destaque": 12,
+      "paises_envolvidos": [
+        "BR"
+      ],
       "links_internos_relacionados": [
         {
-          "titulo_existente": "STF analisa regras de transparência e limites constitucionais entre os Poderes",
           "url_existente": "https://www.rodandoomundo.com.br/politica/brasil",
-          "motivo_conexao": "Contextualiza a atuação do STF na moderação de impasses financeiros e institucionais."
+          "motivo_conexao": "Contextualiza a atuação do STF na moderação de impasses financeiros e institucionais.",
+          "titulo_existente": "STF analisa regras de transparência e limites constitucionais entre os Poderes"
         }
-      ],
-      "expires_at": "2026-11-29T00:59:39Z",
-      "updated_at": "2026-11-28T03:25:49Z"
+      ]
     },
     {
       "slug": "nova-variante-covid-19-brasil",
@@ -1653,88 +1740,6 @@
           "motivo_conexao": "Contextualiza a atuação recente do Supremo Tribunal Federal em relação ao controle de emendas e transparência entre os Poderes.",
           "titulo_existente": "STF analisa regras de transparência e limites constitucionais entre os Poderes"
         }
-      ]
-    }
-  ],
-  "temas_curadoria": [
-    {
-      "slug": "tensao-no-oriente-medio-opec-producao-petroleo",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-30T01:58:57Z",
-      "updated_at": "2026-11-28T01:58:57Z",
-      "titulo_tema": "OPEP+ mantém metas de petróleo diante de incertezas na guerra com o Irã",
-      "sintese_nerd": "O cartel da OPEP+ decidiu manter estaveis as cotas de producao de petroleo para o inicio de 2027, navegando por incertezas extremas decorrentes do conflito envolvendo o Ira e bloqueios maritimos americanos. A instabilidade energetica pressiona as cadeias globais de suprimento, elevando o risco de volatilidade nos precos dos combustíveis e impactando indiretamente a pressao inflacionaria sentida pelo consumidor brasileiro.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-28T01:58:57Z",
-      "gatilho_vitrine": "Destaque a conexao entre a escalada de tensoes militares no Oriente Medio, a decisao da OPEP+ sobre a oferta de petroleo e os reflexos inflacionarios no mercado global e brasileiro.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 94,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Resumo_Ultimas"
-      ],
-      "palavras_chave_busca": [
-        "opep+",
-        "petroleo",
-        "guerra do ira",
-        "mercado energetico",
-        "inflacao global",
-        "precos dos combustiveis"
-      ]
-    },
-    {
-      "slug": "eleicao-taiwan-energia-nuclear-inteligencia-artificial",
-      "status": "novo",
-      "ttl_horas": 72,
-      "expires_at": "2026-12-01T01:58:57Z",
-      "updated_at": "2026-11-28T01:58:57Z",
-      "titulo_tema": "Referendo em Taiwan sobre energia nuclear e seu impacto estratégico na cadeia de IA",
-      "sintese_nerd": "Os eleitores de Taiwan decidem sobre o retorno da energia nuclear para suprir as necessidades de sua infraestrutura crítica, um fator essencial para a fabricação global de chips avançados. Como a ilha é o coração da produção mundial de semicondutores para Inteligência Artificial, sua segurança energética afeta diretamente a cadeia tecnológica global e a economia digital.",
-      "rota_editoria": "/radar",
-      "data_publicacao": "2026-11-28T01:58:57Z",
-      "gatilho_vitrine": "Conecte o pleito sobre a revogação da política de abandono nuclear em Taiwan com a demanda massiva por eletricidade da indústria global de semicondutores e chips de IA.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 90,
-      "categoria_primaria": "Geopolitica_Radar",
-      "categorias_cruzadas": [
-        "Economia",
-        "Cultura"
-      ],
-      "palavras_chave_busca": [
-        "taiwan",
-        "energia nuclear",
-        "semicondutores",
-        "inteligencia artificial",
-        "geopolitica tecnologica",
-        "seguranca energetica"
-      ]
-    },
-    {
-      "slug": "caso-master-stf-fachin-brb-lavagem-dinheiro-arte",
-      "status": "novo",
-      "ttl_horas": 48,
-      "expires_at": "2026-11-30T01:58:57Z",
-      "updated_at": "2026-11-28T01:58:57Z",
-      "titulo_tema": "Decisões do STF no Caso Master revelam brechas na lavagem de dinheiro via obras de arte e crédito",
-      "sintese_nerd": "As movimentações jurídicas no Supremo Tribunal Federal sobre os créditos do grupo Master e o envolvimento de ativos bilionários, como pinturas de grandes mestres, escancaram as vulnerabilidades regulatórias na prevenção à lavagem de dinheiro no setor financeiro e no mercado de arte. A controvérsia jurídica afeta a liquidez e a governança de instituições financeiras públicas envolvidas nas operações.",
-      "rota_editoria": "/politica",
-      "data_publicacao": "2026-11-28T01:58:57Z",
-      "gatilho_vitrine": "Reúna as atualizações sobre as liberações de repasses financeiros pelo STF e as investigações envolvendo ativos de alto luxo como obras de arte no esquema do grupo Master.",
-      "origem_pipeline": "curadoria",
-      "relevancia_score": 86,
-      "categoria_primaria": "Politica",
-      "categorias_cruzadas": [
-        "Economia"
-      ],
-      "palavras_chave_busca": [
-        "caso master",
-        "stf",
-        "brb",
-        "lavagem de dinheiro",
-        "obras de arte",
-        "mercado financeiro"
       ]
     }
   ]
